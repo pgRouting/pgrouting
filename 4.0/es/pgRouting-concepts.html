@@ -1452,7 +1452,7 @@ INSERT 0 2
 <ul class="simple">
 <li><p>The vertex is the limit of a cul-de-sac, a no-through road or a no-exit
 road.</p></li>
-<li><p>The vertex is on the limit of the imported graph.</p>
+<li><p>El vértice esta en el limite del grafo importado.</p>
 <ul>
 <li><p>If a larger graph is imported then the vertex might not be a dead end</p></li>
 </ul>
@@ -1498,9 +1498,8 @@ end point of 3 edges.</p>
 </li>
 <li><p>¿Hay un gran acantilado y desde la vista de las águilas parece que el callejón sin salida está cerca del segmento?</p></li>
 </ul>
-<p>Depending on the answer, modification of the data might be needed.</p>
-<p>When there are many dead ends, to speed up processing, the <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a>
-functions can be used to contract the graph.</p>
+<p>Dependiendo de la respuesta, será necesario la modificación de datos.</p>
+<p>Cuando hay muchos callejones sin salida, para acelerar el procesamiento, se pueden utilizar las funciones de <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a> para contraer el grafo.</p>
 </section>
 <section id="linear-edges">
 <h4><a class="toc-backref" href="#id50" role="doc-backlink">Bordes lineales</a><a class="headerlink" href="#linear-edges" title="Link to this heading">¶</a></h4>
@@ -1542,9 +1541,7 @@ functions can be used to contract the graph.</p>
 }" class="graphviz" /></div>
 <p>These linear vertices are correct, for example, when those the vertices are speed
 bumps, stop signals and the application is taking them into account.</p>
-<p>When there are many linear vertices, that need not to be taken into account, to
-speed up the processing, the <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a> functions can be used to
-contract the problem.</p>
+<p>Cuando hay muchas aristas lineales, que no necesitan tomarse en cuenta, para acelerar el procesamiento se pueden utilizar las funciones <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a> para contraer el grafo.</p>
 </section>
 </section>
 </section>
@@ -2832,7 +2829,7 @@ contract the problem.</p>
 <h3><a class="toc-backref" href="#id66" role="doc-backlink">Para las funciones de Ruteo</a><a class="headerlink" href="#for-the-routing-functions" title="Link to this heading">¶</a></h3>
 <p>Para obtener resultados más rápidos, delimitar las consultas a un área de interés para el ruteo.</p>
 <p>En este ejemplo, usar una consulta SQL interna que no incluya algunas aristas en la función de ruteo y dentro del área de los resultados.</p>
-<p>Given this area:</p>
+<p>Dada esta área:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
 <span class="n">FROM</span> <span class="n">edges</span>
 <span class="n">WHERE</span> <span class="n">geom</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
@@ -2854,7 +2851,7 @@ contract the problem.</p>
 
 </pre></div>
 </div>
-<p>Calculate a route:</p>
+<p>Calcular una ruta:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra($$
   SELECT id, source, target, cost, reverse_cost
   FROM edges
@@ -2885,7 +2882,7 @@ contract the problem.</p>
 </li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-parallel-edges-(KSP)">Ejemplo</a></p></li>
 </ul>
-<p class="rubric">Adding Functionality to pgRouting</p>
+<p class="rubric">Agregando Funcionalidad a pgRouting</p>
 <p>Consultar la <a class="reference external" href="https://docs.pgrouting.org/doxygen/">documentation de desarrolladores</a></p>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -2908,7 +2905,7 @@ contract the problem.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en mar 24, 2025.<br/>
+      Actualizado por última vez en mar 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

@@ -202,29 +202,24 @@
 using Brandes Algorithm</p>
 <p class="rubric">可用性</p>
 <ul class="simple">
-<li><p>Version 3.7.0</p>
+<li><p>版本 3.7.0</p>
 <ul>
-<li><p>New experimental function.</p></li>
+<li><p>新实验功能。</p></li>
 </ul>
 </li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>The Brandes Algorithm takes advantage of the sparse graphs for evaluating the
-betweenness centrality score of all vertices.</p>
-<p>Betweenness centrality measures the extent to which a vertex lies on the
-shortest paths between all other pairs of vertices. Vertices with a high
-betweenness centrality score may have considerable influence in a network by the
-virtue of their control over the shortest paths passing between them.</p>
-<p>The removal of these vertices will affect the network by disrupting the
-it, as most of the shortest paths between vertices pass through them.</p>
-<p>This implementation work for both directed and undirected graphs.</p>
+<p>Brandes 算法利用稀疏图来评估所有顶点的中心度得分。</p>
+<p>Betweenness centrality（介数中心性）衡量的是一个顶点在所有其他顶点对之间的最短路径中的重要性。具有较高介数中心性得分的顶点，通常能够对网络产生显著的影响，因为它们控制了通过它们的最短路径。</p>
+<p>这些顶点的移除会影响网络，因为大多数顶点之间的最短路径都经过它们，从而破坏了网络的连接性。</p>
+<p>该实现适用于directed 和undirected。</p>
 <ul class="simple">
-<li><p>Running time:  <span class="math notranslate nohighlight">\(\Theta(VE)\)</span></p></li>
-<li><p>Running space: <span class="math notranslate nohighlight">\(\Theta(VE)\)</span></p></li>
-<li><p>Throws when there are no edges in the graph</p></li>
+<li><p>运行时间: <span class="math notranslate nohighlight">\(Theta(VE)\)</span></p></li>
+<li><p>运行空间: <span class="math notranslate nohighlight">\(\Theta(VE)\)</span></p></li>
+<li><p>当图形中没有边时抛出</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -233,12 +228,12 @@ it, as most of the shortest paths between vertices pass through them.</p>
 <p class="admonition-title"></p>
 <p>pgr_betweennessCentrality(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(vid,</span> <span class="pre">centrality)</span></code></div>
+<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(vid,</span> <span class="pre">centrality)</span></code> 的集合</div>
 </div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>For a directed graph with edges <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span>.</p>
+<dd class="field-odd"><p>对于带边的directed graph:math:<cite>{1, 2, 3, 4}</cite>.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_betweennessCentrality</span><span class="p">(</span>
@@ -256,14 +251,14 @@ it, as most of the shortest paths between vertices pass through them.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Explanation</p>
+<p class="rubric">说明</p>
 <ul class="simple">
-<li><p>The betweenness centrality are between parenthesis.</p></li>
-<li><p>The leaf vertices have betweenness centrality <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
-<li><p>Betweenness centrality of vertex <span class="math notranslate nohighlight">\(6\)</span> is higher than of vertex <span class="math notranslate nohighlight">\(10\)</span>.</p>
+<li><p>介数中心性值位于括号内。</p></li>
+<li><p>叶子节点的介数中心性为 <span class="math notranslate nohighlight">\(0\)</span>。</p></li>
+<li><p>顶点 <span class="math notranslate nohighlight">\(6\)</span> 的间隔中心度高于顶点 <span class="math notranslate nohighlight">\(10\)</span> 的间隔中心度。</p>
 <ul>
-<li><p>Removing vertex <span class="math notranslate nohighlight">\(6\)</span> will create three graph components.</p></li>
-<li><p>Removing vertex <span class="math notranslate nohighlight">\(10\)</span> will create two graph components.</p></li>
+<li><p>移除顶点 <span class="math notranslate nohighlight">\(6\)</span> 将创建三个图形组件。</p></li>
+<li><p>移除节点 <span class="math notranslate nohighlight">\(10\)</span> 将会产生两个图形组件。</p></li>
 </ul>
 </li>
 </ul>
@@ -393,9 +388,9 @@ it, as most of the shortest paths between vertices pass through them.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>顶点的标识符。</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">centrality</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Relative betweenness centrality score of the vertex (will be in range [0,1])</p></td>
+<td><p>该节点的相对介数中心性得分（范围为 [0,1]）</p></td>
 </tr>
 </tbody>
 </table>
@@ -427,7 +422,7 @@ it, as most of the shortest paths between vertices pass through them.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 3月 24, 2025.<br/>
+      Last updated on 3月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

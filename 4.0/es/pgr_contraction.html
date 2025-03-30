@@ -22,7 +22,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="pgr_contractionDeadEnd - Proposed" href="pgr_contractionDeadEnd.html" />
+    <link rel="next" title="pgr_contractionDeadEnd - Propuesto" href="pgr_contractionDeadEnd.html" />
     <link rel="prev" title="Contraction - Familia de funciones" href="contraction-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -124,7 +124,7 @@
 <li><a class="reference internal" href="#the-process-to-create-the-contraction-graph-on-the-database">El proceso para crear el grafo de contracción en la base de datos:</a><ul>
 <li><a class="reference internal" href="#add-additional-columns">Añadir columnas adicionales</a></li>
 <li><a class="reference internal" href="#store-contraction-information">Almacenar información de contracción</a></li>
-<li><a class="reference internal" href="#update-the-edges-and-vertices-tables">Update the edges and vertices tables</a></li>
+<li><a class="reference internal" href="#update-the-edges-and-vertices-tables">Actualizar las tablas de aristas y vértices</a></li>
 <li><a class="reference internal" href="#the-contracted-graph">El grafo contraído</a></li>
 </ul>
 </li>
@@ -145,7 +145,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_contractionDeadEnd.html" title="Next Chapter: pgr_contractionDeadEnd - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
+    <a href="pgr_contractionDeadEnd.html" title="Next Chapter: pgr_contractionDeadEnd - Propuesto"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
     </a>
   </li>
               
@@ -202,7 +202,7 @@
 <li><a class="reference internal" href="#the-process-to-create-the-contraction-graph-on-the-database">El proceso para crear el grafo de contracción en la base de datos:</a><ul>
 <li><a class="reference internal" href="#add-additional-columns">Añadir columnas adicionales</a></li>
 <li><a class="reference internal" href="#store-contraction-information">Almacenar información de contracción</a></li>
-<li><a class="reference internal" href="#update-the-edges-and-vertices-tables">Update the edges and vertices tables</a></li>
+<li><a class="reference internal" href="#update-the-edges-and-vertices-tables">Actualizar las tablas de aristas y vértices</a></li>
 <li><a class="reference internal" href="#the-contracted-graph">El grafo contraído</a></li>
 </ul>
 </li>
@@ -217,7 +217,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_contractionDeadEnd.html" title="Next Chapter: pgr_contractionDeadEnd - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
+    <a href="pgr_contractionDeadEnd.html" title="Next Chapter: pgr_contractionDeadEnd - Propuesto"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -239,27 +239,27 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_contraction</span></code><a class="headerlink" href="#pgr-contraction" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_contraction</span></code> — Realiza la contracción del grafo y devuelve los vértices y aristas contraídos..</p>
 <p class="rubric">Disponibilidad</p>
-<p class="rubric">Version 3.8.0</p>
+<p class="rubric">Versión 3.8.0</p>
 <ul class="simple">
-<li><p>New signature:</p>
+<li><p>Nueva firma:</p>
 <ul>
 <li><p>Previously compulsory parameter <strong>Contraction order</strong> is now optional with
 name <code class="docutils literal notranslate"><span class="pre">methods</span></code>.</p></li>
-<li><p>New name and order of optional parameters.</p></li>
+<li><p>Nuevo nombre y orden de parámetros opcionales.</p></li>
 </ul>
 </li>
-<li><p>Deprecated signature pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+<li><p>Firma obsoleta pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
 </ul>
 <p class="rubric">Versión 3.0.0</p>
 <ul class="simple">
 <li><p>Cambio de columnas de resultados: <code class="docutils literal notranslate"><span class="pre">seq</span></code> se elimina</p></li>
 <li><p>Cambio de nombre de <code class="docutils literal notranslate"><span class="pre">pgr_contractGraph</span></code></p></li>
 <li><p>Correcciones</p></li>
-<li><p>Function promoted to official.</p></li>
+<li><p>Función promovida a oficial.</p></li>
 </ul>
 <p class="rubric">Versión 2.3.0</p>
 <ul class="simple">
-<li><p>New experimental function.</p></li>
+<li><p>Nueva función experimental.</p></li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -267,50 +267,49 @@ name <code class="docutils literal notranslate"><span class="pre">methods</span>
 <p>Las características principales son:</p>
 <ul class="simple">
 <li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
-<li><p>Does not return the full contracted graph.</p>
+<li><p>No devuelve el grafo contraído completo.</p>
 <ul>
-<li><p>Only changes on the graph are returned.</p></li>
+<li><p>Solo se devuelven los cambios en el grafo.</p></li>
 </ul>
 </li>
-<li><p>The returned values include:</p>
+<li><p>Los valores devueltos incluyen:</p>
 <ul>
-<li><p>The new edges generated by linear contraction.</p></li>
-<li><p>The modified vertices generated by dead end contraction.</p></li>
+<li><p>Las nuevas aristas generadas por la contracción lineal.</p></li>
+<li><p>Los vértices modificados por contracción sin salida.</p></li>
 </ul>
 </li>
 <li><p>Los valores devueltos se ordenan de la siguiente manera:</p>
 <ul>
-<li><p>column <code class="docutils literal notranslate"><span class="pre">id</span></code> ascending when its a modified vertex.</p></li>
-<li><p>column <code class="docutils literal notranslate"><span class="pre">id</span></code> with negative numbers descending when its a new edge.</p></li>
+<li><p>columna <code class="docutils literal notranslate"><span class="pre">id</span></code> ascendente cuando es un vértice modificado.</p></li>
+<li><p>columna <code class="docutils literal notranslate"><span class="pre">id</span></code> con números negativos descendentes cuando es una nueva arista.</p></li>
 </ul>
 </li>
 </ul>
 <ul class="simple">
-<li><p>Currently there are two types of contraction methods included in this
-function:</p>
+<li><p>Actualmente hay dos tipos de métodos de contracción incluidos en esta función:</p>
 <ul>
-<li><p>Dead End Contraction. See <a class="reference internal" href="pgr_contractionDeadEnd.html"><span class="doc">pgr_contractionDeadEnd - Proposed</span></a>.</p></li>
-<li><p>Linear Contraction. See <a class="reference internal" href="pgr_contractionLinear.html"><span class="doc">pgr_contractionLinear - Proposed</span></a>.</p></li>
+<li><p>Dead End Contraction. See <a class="reference internal" href="pgr_contractionDeadEnd.html"><span class="doc">pgr_contractionDeadEnd - Propuesto</span></a>.</p></li>
+<li><p>Linear Contraction. See <a class="reference internal" href="pgr_contractionLinear.html"><span class="doc">pgr_contractionLinear - Propuesto</span></a>.</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_contraction(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<strong>options</strong>])</div>
+<div class="line">pgr_contraction(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, [<strong>opciones</strong>])</div>
 </div>
 <div class="line-block">
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">methods,</span> <span class="pre">cycles,</span> <span class="pre">forbidden]</span></code></div>
+<div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">methods,</span> <span class="pre">cycles,</span> <span class="pre">forbidden]</span></code></div>
 <div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Dead end and linear contraction in that order on an undirected graph.</p>
+<dd class="field-odd"><p>Hacer una contracción de callejón sin salida y una contracción lineal en ese orden en un grafo no dirigido.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
@@ -392,7 +391,7 @@ function:</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cycles</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
-<td><p>Number of times the contraction methods will be performed.</p></td>
+<td><p>Número de veces que se realizarán las operaciones de contracción.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
@@ -478,16 +477,16 @@ function:</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>Type of the row.</p>
+<td><p>Tipo de la fila.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> cuando la fila es un vértice.</p>
 <ul>
-<li><p>Column <code class="docutils literal notranslate"><span class="pre">id</span></code> has a positive value.</p></li>
+<li><p>Columna <code class="docutils literal notranslate"><span class="pre">id</span></code> tiene valor positivo.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">e</span></code> cuando la fila es una arista.</p>
 <ul>
-<li><p>Column <code class="docutils literal notranslate"><span class="pre">id</span></code> has a negative value.</p></li>
+<li><p>Columna <code class="docutils literal notranslate"><span class="pre">id</span></code> tiene valor negativo.</p></li>
 </ul>
 </li>
 </ul>
@@ -584,11 +583,8 @@ function:</p>
 </section>
 <section id="the-cycle">
 <h3><a class="toc-backref" href="#id5" role="doc-backlink">El ciclo</a><a class="headerlink" href="#the-cycle" title="Link to this heading">¶</a></h3>
-<p>Contracting a graph can be done with more than one operation.
-The order of the operations affect the resulting contracted graph, after
-applying one operation, the set of vertices that can be contracted
-by another operation changes.</p>
-<p>This implementation cycles <code class="docutils literal notranslate"><span class="pre">cycles</span></code> times through the <code class="docutils literal notranslate"><span class="pre">methods</span></code> .</p>
+<p>Contraer un grafo se puede hacer con más de una operación. El orden de las operaciones afecta al grafo contraído resultante, después de aplicar una operación, el conjunto de vértices que se pueden contraer con otra operación cambia.</p>
+<p>Esta implementación cicla `` cycles`` veces a través de los <code class="docutils literal notranslate"><span class="pre">methods</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nb">input</span><span class="o">&gt;</span>
 <span class="n">do</span> <span class="n">max_cycles</span> <span class="n">times</span> <span class="p">{</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">operation</span> <span class="ow">in</span> <span class="n">operations_order</span><span class="p">)</span>
@@ -616,9 +612,7 @@ by another operation changes.</p>
 <p>El grafo original:</p>
 <a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 241.0px; height: 217.5px;" />
 </a>
-<p>The results do not represent the contracted graph.
-They represent the changes that need to be done to the graph after applying the
-contraction methods.</p>
+<p>Los resultados no representan al grafo contraído. Representan los cambios que necesitan hacerse en el grafo después de aplicar los métodos de contracción.</p>
 <p>Observe que los vértices, por ejemplo, <span class="math notranslate nohighlight">\(6\)</span> , no aparecen en los resultados porque no se vieron afectados por el algoritmo de contracción.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
@@ -649,7 +643,7 @@ contraction methods.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#add-additional-columns" id="id7">Añadir columnas adicionales</a></p></li>
 <li><p><a class="reference internal" href="#store-contraction-information" id="id8">Almacenar información de contracción</a></p></li>
-<li><p><a class="reference internal" href="#update-the-edges-and-vertices-tables" id="id9">Update the edges and vertices tables</a></p></li>
+<li><p><a class="reference internal" href="#update-the-edges-and-vertices-tables" id="id9">Actualizar las tablas de aristas y vértices</a></p></li>
 <li><p><a class="reference internal" href="#the-contracted-graph" id="id10">El grafo contraído</a></p></li>
 </ul>
 </nav>
@@ -659,7 +653,7 @@ contraction methods.</p>
 In this documentation the following will be used:</p>
 <table class="docutils align-default" style="width: 80">
 <thead>
-<tr class="row-odd"><th class="head"><p>Column.</p></th>
+<tr class="row-odd"><th class="head"><p>Columna.</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -698,7 +692,7 @@ In this documentation the following will be used:</p>
 </section>
 <section id="store-contraction-information">
 <h3><a class="toc-backref" href="#id8" role="doc-backlink">Almacenar información de contracción</a><a class="headerlink" href="#store-contraction-information" title="Link to this heading">¶</a></h3>
-<p>Store the contraction results in a table.</p>
+<p>Almacenar los resultados de la contracción en una tabla.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
 <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
@@ -707,7 +701,7 @@ In this documentation the following will be used:</p>
 </div>
 </section>
 <section id="update-the-edges-and-vertices-tables">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Update the edges and vertices tables</a><a class="headerlink" href="#update-the-edges-and-vertices-tables" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Actualizar las tablas de aristas y vértices</a><a class="headerlink" href="#update-the-edges-and-vertices-tables" title="Link to this heading">¶</a></h3>
 <p>Usar la columna <code class="docutils literal notranslate"><span class="pre">is_contracted</span></code> para indicar los vértices contraídos.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
 <span class="n">SET</span> <span class="n">is_contracted</span> <span class="o">=</span> <span class="n">true</span>
@@ -715,8 +709,7 @@ In this documentation the following will be used:</p>
 <span class="n">UPDATE</span> <span class="mi">10</span>
 </pre></div>
 </div>
-<p>Fill <code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code> with the information from the results that belong
-to the vertices.</p>
+<p>Llenar <code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code> con la información de los resultados que pertenecen a los vértices.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
 <span class="n">SET</span> <span class="n">contracted_vertices</span> <span class="o">=</span> <span class="n">contraction_results</span><span class="o">.</span><span class="n">contracted_vertices</span>
 <span class="n">FROM</span> <span class="n">contraction_results</span>
@@ -774,7 +767,7 @@ to the vertices.</p>
 
 </pre></div>
 </div>
-<p>Visually:</p>
+<p>Visualmente:</p>
 <a class="reference internal image-reference" href="_images/newgraph.png"><img alt="_images/newgraph.png" src="_images/newgraph.png" style="width: 184.25px; height: 193.75px;" />
 </a>
 </section>
@@ -791,7 +784,7 @@ vertices in the original graph by using the contracted graph with <code class="d
 <li><p>Caso 3: El origen y/o el destino pertenecen a un vértice.</p></li>
 </ul>
 <p>The final application should consider all of those cases.</p>
-<p>Create a view (or table) of the contracted graph:</p>
+<p>Crear una vista (o tabla) del grafo Contraído:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">VIEW</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">contracted_graph</span><span class="p">;</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">view</span> <span class="s2">&quot;contracted_graph&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
 <span class="n">DROP</span> <span class="n">VIEW</span>
@@ -804,7 +797,7 @@ vertices in the original graph by using the contracted graph with <code class="d
 <span class="n">CREATE</span> <span class="n">VIEW</span>
 </pre></div>
 </div>
-<p>Create the function that will use the contracted graph.</p>
+<p>Crear la función que va a utilizar el grafo contraído.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CREATE OR REPLACE FUNCTION path_cost(source BIGINT, target BIGINT)
 RETURNS SETOF FLOAT AS
 $BODY$
@@ -846,7 +839,7 @@ CREATE FUNCTION
 
 </pre></div>
 </div>
-<p>Case 2: Source and/or target belong to an edge that has contracted vertices.</p>
+<p>Caso 2: El origen y/o el destino pertenecen a una arista que ha contraído vertices.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">path_cost</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
  <span class="n">path_cost</span>
 <span class="o">-----------</span>
@@ -855,7 +848,7 @@ CREATE FUNCTION
 
 </pre></div>
 </div>
-<p>Case 3: Source and/or target belong to a vertex that has been contracted.</p>
+<p>Caso 3: El origen y/o el destino pertenecen a un vértice que ha sido contraído.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">path_cost</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
  <span class="n">path_cost</span>
 <span class="o">-----------</span>
@@ -891,7 +884,7 @@ CREATE FUNCTION
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en mar 24, 2025.<br/>
+      Actualizado por última vez en mar 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

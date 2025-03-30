@@ -235,15 +235,15 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code><a class="headerlink" href="#pgr-findcloseedges" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> - Encuentra las aristas cercanas a una geometría puntual.</p>
 <p class="rubric">Disponibilidad</p>
-<p class="rubric">Version 3.8.0</p>
+<p class="rubric">Versión 3.8.0</p>
 <ul class="simple">
 <li><p>Error messages adjustment.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">partial</span></code> option is removed.</p></li>
-<li><p>Function promoted to official.</p></li>
+<li><p>Opción <code class="docutils literal notranslate"><span class="pre">partial</span></code> se elimina.</p></li>
+<li><p>Función promovida a oficial.</p></li>
 </ul>
 <p class="rubric">Versión 3.4.0</p>
 <ul class="simple">
-<li><p>New proposed function.</p></li>
+<li><p>Nueva función propuesta.</p></li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -253,7 +253,7 @@
 <li><p>El código para realizar los cálculos puede obtenerse para realizar los ajustes específicos que necesite la aplicación.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code> is returned on dryrun executions</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -471,7 +471,7 @@ end-point of the edge.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
-<td><p>Original <code class="docutils literal notranslate"><span class="pre">POINT</span></code> geometry.</p></td>
+<td><p>Geometría original <code class="docutils literal notranslate"><span class="pre">POINT</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
@@ -542,8 +542,8 @@ ST_MakePoint(0,1.5), 5);
   }
 }" class="graphviz" /></div>
 <ul class="simple">
-<li><p>The green node is the original point.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">geom</span></code> has the value of the original point.</p></li>
+<li><p>El nodo verde es el punto original.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom</span></code> Tiene el valor del punto original.</p></li>
 <li><p>The geometry <code class="docutils literal notranslate"><span class="pre">edge</span></code> is a line that connects the original point with the edge
 <span class="math notranslate nohighlight">\(sp \rightarrow ep\)</span> edge.</p></li>
 <li><p>The point is located at the left of the edge.</p></li>
@@ -556,7 +556,7 @@ ST_MakePoint(0,1.5), 5);
 <li><p>Devuelve <code class="docutils literal notranslate"><span class="pre">CONJUNTO</span> <span class="pre">VACÍO</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
-<li><p>Generates a PostgreSQL <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> with the code used.</p></li>
+<li><p>Genera un <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> de PostgreSQL con el código utilizado.</p></li>
 <li><p>The generated code can be used as a starting base code for additional
 requirements, like taking into consideration the SRID.</p></li>
 </ul>
@@ -750,7 +750,7 @@ WHERE rn &lt;= 1
 <td><p>Identifier of the nearest segment.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
-<td><p>Is it on the left, right or both sides of the segment <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>.</p></td>
+<td><p>Está a la izquierda, a la derecha o a ambos lados del segmento <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
 <td><p>En qué parte del segmento se encuentra el punto.</p></td>
@@ -759,11 +759,10 @@ WHERE rn &lt;= 1
 <td><p>La geometría de los puntos.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">distancia</span></code></p></td>
-<td><p>The distance between <code class="docutils literal notranslate"><span class="pre">geom</span></code> and the segment <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>.</p></td>
+<td><p>La distancia entre <code class="docutils literal notranslate"><span class="pre">geom</span></code> y el segmento <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
-<td><p>A segment that connects the <code class="docutils literal notranslate"><span class="pre">geom</span></code> of the point to the closest point
-on the segment <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>.</p></td>
+<td><p>Un segmento que conecta la <code class="docutils literal notranslate"><span class="pre">geom</span></code> del punto al punto mas cercano al segmento <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newPoint</span></code></p></td>
 <td><p>A point on segment <code class="docutils literal notranslate"><span class="pre">edge_id</span></code> that is the closest to <code class="docutils literal notranslate"><span class="pre">geom</span></code>.</p></td>
@@ -785,7 +784,7 @@ on the segment <code class="docutils literal notranslate"><span class="pre">edge
 </section>
 <section id="points-of-interest-fill-up">
 <h4><a class="toc-backref" href="#id8" role="doc-backlink">Points of interest fill up</a><a class="headerlink" href="#points-of-interest-fill-up" title="Link to this heading">¶</a></h4>
-<p>Inserting the points of interest.</p>
+<p>Insertando los puntos de interés.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">pointsOfInterest</span> <span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)),</span>
 <span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="mf">4.2</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">)),</span>
@@ -795,7 +794,7 @@ on the segment <code class="docutils literal notranslate"><span class="pre">edge
 <span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">));</span>
 </pre></div>
 </div>
-<p>Filling the rest of the table.</p>
+<p>Llenando el resto de la tabla.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UPDATE pointsofinterest SET
   edge_id = poi.edge_id,
   side =  poi.side,
@@ -815,7 +814,7 @@ reached from both sides.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>The points of interest:</p>
+<p>Los puntos de interés:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
   <span class="n">pid</span><span class="p">,</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">geom</span><span class="p">,</span>
   <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span> <span class="n">AS</span> <span class="n">frac</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">distance</span> <span class="n">AS</span> <span class="n">dist</span><span class="p">,</span>
@@ -863,7 +862,7 @@ reached from both sides.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en mar 24, 2025.<br/>
+      Actualizado por última vez en mar 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

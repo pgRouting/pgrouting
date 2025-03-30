@@ -244,7 +244,7 @@
 <p class="rubric">版本3.6.0</p>
 <ul class="simple">
 <li><p>标准化输出列为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>pgr_withPointsKSP(One to One)</p>
+<li><p>pgr_withPointsKSP(一对一)</p>
 <ul>
 <li><p>签名更改： <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> 参数从已命名的可选参数改为未命名的必选参数 <strong>driving side</strong>。</p></li>
 <li><p>增加 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 结果列。</p></li>
@@ -252,10 +252,10 @@
 </li>
 <li><p>新拟议的签名：</p>
 <ul>
-<li><p>pgr_withPointsKSP(One to Many)</p></li>
-<li><p>pgr_withPointsKSP(Many to One)</p></li>
-<li><p>pgr_withPointsKSP(Many to Many)</p></li>
-<li><p>pgr_withPointsKSP(Combinations)</p></li>
+<li><p>pgr_withPointsKSP (一对多)</p></li>
+<li><p>pgr_withPointsKSP(多对一)</p></li>
+<li><p>pgr_withPointsKSP(多对多)</p></li>
+<li><p>pgr_withPointsKSP（组合）</p></li>
 </ul>
 </li>
 <li><p>已弃用的签名</p>
@@ -266,12 +266,12 @@
 </ul>
 <p class="rubric">版本 2.2.0</p>
 <ul class="simple">
-<li><p>New proposed function.</p></li>
+<li><p>新提议的函数。</p></li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>修改图以包括 <a class="reference internal" href="#points-sql">Points SQL</a> 中定义的点并使用 Yen 算法查找 <span class="math notranslate nohighlight">\(K\)</span> 最短路径。</p>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -1014,7 +1014,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 3月 24, 2025.<br/>
+      Last updated on 3月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

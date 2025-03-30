@@ -225,7 +225,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code><a class="headerlink" href="#pgr-degree" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> - Para cada vértice de un grafo no dirigido, devuelve el número de aristas incidentes en el vértice.</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="4556b61d-ce72-4238-b67d-73ec80f5d0ee" name="4556b61d-ce72-4238-b67d-73ec80f5d0ee" type="checkbox"><label class="sphinx_collapse__label" for="4556b61d-ce72-4238-b67d-73ec80f5d0ee"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="2ea94740-c1a3-4c51-bd06-c07d46b75ce3" name="2ea94740-c1a3-4c51-bd06-c07d46b75ce3" type="checkbox"><label class="sphinx_collapse__label" for="2ea94740-c1a3-4c51-bd06-c07d46b75ce3"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -246,15 +246,15 @@
 </div>
 </div>
 <p class="rubric">Disponibilidad</p>
-<p class="rubric">Version 3.8.0</p>
+<p class="rubric">Versión 3.8.0</p>
 <ul class="simple">
 <li><p>Error messages adjustment.</p></li>
 <li><p>New signature with only Edges SQL.</p></li>
-<li><p>Function promoted to official.</p></li>
+<li><p>Función promovida a oficial.</p></li>
 </ul>
 <p class="rubric">Versión 3.4.0</p>
 <ul class="simple">
-<li><p>New proposed function.</p></li>
+<li><p>Nueva función propuesta.</p></li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -277,7 +277,7 @@ be shown in a PostgreSQL <code class="docutils literal notranslate"><span class=
 requirements.</p></li>
 </ul>
 </li>
-<li><p>No ordering is performed.</p></li>
+<li><p>No se realiza ningún ordenamiento.</p></li>
 </ul>
 </section>
 <section id="signatures">
@@ -307,7 +307,7 @@ requirements.</p></li>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Get the degree of the vertices defined on the edges table</p>
+<dd class="field-odd"><p>Obtener el grado de los vértices definidos en la tabla de aristas</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree($$SELECT id, source, target FROM edges$$)
@@ -356,7 +356,7 @@ ORDER BY node;
 <p><code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> can use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> embedded in the call.</p>
 <p>For decent size networks, it is best to prepare your vertices table before hand
 and use it on <code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> calls. (See <a class="reference internal" href="#using-a-vertex-table">Using a vertex table</a>)</p>
-<p>Calculate the degree of the nodes:</p>
+<p>Calcula el grado de los vértices:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree(
   $$SELECT id FROM edges$$,
   $$SELECT id, in_edges, out_edges
@@ -553,7 +553,7 @@ and use it on <code class="docutils literal notranslate"><span class="pre">pgr_d
   2 [shape=circle;style=filled;color=green;fontsize=8;width=0.3;fixedsize=true];
   2 -- 2 [label=&quot;1&quot;,fontsize=8];
 }" class="graphviz" /></div>
-<p class="rubric">Using the <a class="reference internal" href="#edges">Edges</a> signature.</p>
+<p class="rubric">Usando la firma <a class="reference internal" href="#edges">Aristas</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="kn">from</span><span class="w"> </span><span class="nn">pgr_degree</span><span class="p">(</span><span class="s1">&#39;SELECT 1 as id, 2 as source, 2 as target&#39;</span><span class="p">);</span>
  <span class="n">node</span> <span class="o">|</span> <span class="n">degree</span>
 <span class="o">------+--------</span>
@@ -577,7 +577,7 @@ and use it on <code class="docutils literal notranslate"><span class="pre">pgr_d
 </section>
 <section id="degree-of-a-sub-graph">
 <h3><a class="toc-backref" href="#id5" role="doc-backlink">Grado de un subgrafo</a><a class="headerlink" href="#degree-of-a-sub-graph" title="Link to this heading">¶</a></h3>
-<p>For the following is a subgraph of the <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>:</p>
+<p>Para el siguiente sub-grafo de <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(E = \{(1, 5 \leftrightarrow 6), (1, 6 \leftrightarrow 10)\}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(V = \{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17\}\)</span></p></li>
@@ -612,7 +612,7 @@ and use it on <code class="docutils literal notranslate"><span class="pre">pgr_d
 <li><p>their degree is 0 in the subgraph and</p></li>
 <li><p>their degree is not shown in the output.</p></li>
 </ul>
-<p class="rubric">Using the <a class="reference internal" href="#edges">Edges</a> signature.</p>
+<p class="rubric">Usando la firma <a class="reference internal" href="#edges">Aristas</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree($$SELECT * FROM edges WHERE id IN (1, 2)$$);
  node | degree
 ------+--------
@@ -641,14 +641,14 @@ and use it on <code class="docutils literal notranslate"><span class="pre">pgr_d
 <h3><a class="toc-backref" href="#id6" role="doc-backlink">Using a vertex table</a><a class="headerlink" href="#using-a-vertex-table" title="Link to this heading">¶</a></h3>
 <p>For decent size networks, it is best to prepare your vertices table before hand
 and use it on <code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> calls.</p>
-<p>Extract the vertex information and save into a table:</p>
+<p>Extraer la información del vértice y almacenar en una tabla:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">AS</span>
 <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">17</span>
 </pre></div>
 </div>
-<p>Calculate the degree of the nodes:</p>
+<p>Calcula el grado de los vértices:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree(
   $$SELECT id FROM edges$$,
   $$SELECT id, in_edges, out_edges FROM vertices$$);
@@ -727,7 +727,7 @@ NOTICE:
 and want the degree of the whole graph rather than a subset, it can be forgo using
 <code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> and work with the <code class="docutils literal notranslate"><span class="pre">in_edges</span></code> and <code class="docutils literal notranslate"><span class="pre">out_edges</span></code> columns
 directly.</p>
-<p>The degree of a dead end is 1.</p>
+<p>El grado de un sin salida es 1.</p>
 <p>Para obtener los callejones sin salida:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span>
 <span class="n">WHERE</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -748,7 +748,7 @@ directly.</p>
 <ul class="simple">
 <li><p>The vertex is the limit of a cul-de-sac, a no-through road or a no-exit
 road.</p></li>
-<li><p>The vertex is on the limit of the imported graph.</p>
+<li><p>El vértice esta en el limite del grafo importado.</p>
 <ul>
 <li><p>If a larger graph is imported then the vertex might not be a dead end</p></li>
 </ul>
@@ -794,9 +794,8 @@ end point of 3 edges.</p>
 </li>
 <li><p>¿Hay un gran acantilado y desde la vista de las águilas parece que el callejón sin salida está cerca del segmento?</p></li>
 </ul>
-<p>Depending on the answer, modification of the data might be needed.</p>
-<p>When there are many dead ends, to speed up processing, the <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a>
-functions can be used to contract the graph.</p>
+<p>Dependiendo de la respuesta, será necesario la modificación de datos.</p>
+<p>Cuando hay muchos callejones sin salida, para acelerar el procesamiento, se pueden utilizar las funciones de <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a> para contraer el grafo.</p>
 </section>
 <section id="finding-linear-vertices">
 <h3><a class="toc-backref" href="#id9" role="doc-backlink">Finding linear vertices</a><a class="headerlink" href="#finding-linear-vertices" title="Link to this heading">¶</a></h3>
@@ -840,9 +839,7 @@ functions can be used to contract the graph.</p>
 }" class="graphviz" /></div>
 <p>These linear vertices are correct, for example, when those the vertices are speed
 bumps, stop signals and the application is taking them into account.</p>
-<p>When there are many linear vertices, that need not to be taken into account, to
-speed up the processing, the <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a> functions can be used to
-contract the problem.</p>
+<p>Cuando hay muchas aristas lineales, que no necesitan tomarse en cuenta, para acelerar el procesamiento se pueden utilizar las funciones <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a> para contraer el grafo.</p>
 </section>
 </section>
 <section id="see-also">
@@ -872,7 +869,7 @@ contract the problem.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en mar 24, 2025.<br/>
+      Actualizado por última vez en mar 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
