@@ -19,35 +19,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN NOT min_version('3.4.0') THEN plan(1) ELSE plan(5) END;
+SELECT plan(5);
 
 CREATE OR REPLACE FUNCTION types_check()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF NOT min_version('3.4.0') THEN
-    RETURN QUERY
-    SELECT skip(1, 'Function is new on 3.4.0');
-    RETURN;
-  END IF;
-
-  RETURN QUERY SELECT has_function('pgr_cuthillmckeeordering');
-  RETURN QUERY SELECT has_function('pgr_cuthillmckeeordering', ARRAY['text']);
-  RETURN QUERY SELECT function_returns('pgr_cuthillmckeeordering', ARRAY['text'],  'setof record');
+  RETURN QUERY SELECT has_function('pgr_topologicalsort');
+  RETURN QUERY SELECT has_function('pgr_topologicalsort', ARRAY['text']);
+  RETURN QUERY SELECT function_returns('pgr_topologicalsort', ARRAY['text'],  'setof record');
 
   RETURN QUERY
-  SELECT bag_eq(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_cuthillmckeeordering'$$,
-    $$SELECT  '{"","seq","node"}'::TEXT[] $$
+  SELECT bag_has(
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_topologicalsort'$$,
+    $$SELECT  '{"","seq","sorted_v"}'::TEXT[] $$
   );
 
   RETURN QUERY
-  SELECT function_types_eq('pgr_cuthillmckeeordering',
+  SELECT function_types_eq('pgr_topologicalsort',
     $$VALUES
-    ('{text,int8,int8}'::TEXT[])
+    ('{text,int4,int8}'::TEXT[])
     $$
   );
+
 END;
 $BODY$
 LANGUAGE plpgsql;

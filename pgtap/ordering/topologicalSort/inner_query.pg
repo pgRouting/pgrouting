@@ -19,40 +19,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN NOT min_version('3.4.0') THEN plan(1) ELSE plan(5) END;
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(24);
 
-CREATE OR REPLACE FUNCTION types_check()
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
+SELECT style_dijkstra('pgr_topologicalsort(',')');
 
-  IF NOT min_version('3.4.0') THEN
-    RETURN QUERY
-    SELECT skip(1, 'Function is new on 3.4.0');
-    RETURN;
-  END IF;
-
-  RETURN QUERY SELECT has_function('pgr_cuthillmckeeordering');
-  RETURN QUERY SELECT has_function('pgr_cuthillmckeeordering', ARRAY['text']);
-  RETURN QUERY SELECT function_returns('pgr_cuthillmckeeordering', ARRAY['text'],  'setof record');
-
-  RETURN QUERY
-  SELECT bag_eq(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_cuthillmckeeordering'$$,
-    $$SELECT  '{"","seq","node"}'::TEXT[] $$
-  );
-
-  RETURN QUERY
-  SELECT function_types_eq('pgr_cuthillmckeeordering',
-    $$VALUES
-    ('{text,int8,int8}'::TEXT[])
-    $$
-  );
-END;
-$BODY$
-LANGUAGE plpgsql;
-
-SELECT types_check();
-
-SELECT * FROM finish();
+SELECT finish();
 ROLLBACK;
