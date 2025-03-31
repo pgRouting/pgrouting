@@ -36,7 +36,7 @@ BEGIN
       ('{"",directed,methods,cycles,forbidden,type,id,contracted_vertices,source,target,cost}'::TEXT[])
       $$,'pgr_contraction: Column names');
 
-    RETURN QUERY SELECT function_types('pgr_contraction',
+    RETURN QUERY SELECT function_types_eq('pgr_contraction',
       $$VALUES ('{text,bool,_int4,int4,_int8,text,int8,_int8,int8,int8,float8}'::TEXT[]),
         ('{text,_int8,int4,_int8,bool,text,int8,_int8,int8,int8,float8}'::TEXT[]) $$);
 
@@ -48,9 +48,8 @@ BEGIN
       ('{"", "", "max_cycles", "forbidden_vertices", "directed", "type", "id", "contracted_vertices", "source", "target", "cost"}'::TEXT[])
       $$);
 
-    RETURN QUERY SELECT set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_contraction'$$,
-      $$SELECT  '{25,1016,23,1016,16,25,20,1016,20,20,701}'::OID[] $$
+    RETURN QUERY SELECT function_types_eq('pgr_contraction',
+      $$SELECT  '{text,_int8,int4,_int8,bool,text,int8,_int8,int8,int8,float8}'::TEXT[] $$
     );
 
 END IF;
