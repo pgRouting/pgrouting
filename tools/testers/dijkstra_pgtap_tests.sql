@@ -158,15 +158,14 @@ BEGIN
       ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
       $$,'proargnames');
 
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proallargtypes from pg_proc where proname = %1$L$$,fn),
+    RETURN QUERY SELECT function_types_eq(fn,
       $$VALUES
-      ('{25,20,20,    16,23,23,20,20,20,20,701,701}'::OID[]),
-      ('{25,20,2277,  16,23,23,20,20,20,20,701,701}'::OID[]),
-      ('{25,2277,20,  16,23,23,20,20,20,20,701,701}'::OID[]),
-      ('{25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[]),
-      ('{25,25,       16,23,23,20,20,20,20,701,701}'::OID[])
-      $$,'proallargtypes');
+      ('{text,int8,int8,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,int8,anyarray,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,int8,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,anyarray,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,text,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
+      $$);
 
     RETURN;
   END IF;
@@ -185,14 +184,13 @@ IF (min_version('3.2.0') AND fn != 'pgr_dijkstra') OR (min_version('3.1.0') AND 
     ('{"","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
     $$);
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proallargtypes from pg_proc where proname = %1$L$$,fn),
+  RETURN QUERY SELECT function_types_eq(fn,
     $$VALUES
-    ('{25,20,20,16,23,23,20,20,701,701}'::OID[]),
-    ('{25,20,2277,16,23,23,20,20,20,701,701}'::OID[]),
-    ('{25,2277,20,16,23,23,20,20,20,701,701}'::OID[]),
-    ('{25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[]),
-    ('{25,25,16,23,23,20,20,20,20,701,701}'::OID[])
+    ('{text,int8,int8,bool,int4,int4,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,int8,anyarray,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,anyarray,int8,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,anyarray,anyarray,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,text,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
     $$);
 
 ELSE
@@ -205,13 +203,11 @@ ELSE
     ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
     $$);
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proallargtypes from pg_proc where proname = %1$L$$,fn),
+  RETURN QUERY SELECT function_types_eq(fn,
     $$VALUES
-    ('{25,20,20,16,23,23,20,20,701,701}'::OID[]),
-    ('{25,20,2277,16,23,23,20,20,20,701,701}'::OID[]),
-    ('{25,2277,20,16,23,23,20,20,20,701,701}'::OID[]),
-    ('{25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[])
+    ('{text,int8,anyarray,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,anyarray,int8,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,anyarray,anyarray,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
     $$);
 END IF;
 
