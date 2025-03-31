@@ -35,10 +35,9 @@ SELECT set_eq(
       ('{"","","","","","turn_restrict_sql","seq","id1","id2","id3","cost"}'::TEXT[])
       $$);
 
-SELECT set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_trspviaedges'$$,
+SELECT function_types_eq('pgr_trspviaedges',
       $$VALUES
-      ('{25,1007,1022,16,16,25,23,23,23,23,701}'::OID[])
+      ('{text,_int4,_float8,bool,bool,text,int4,int4,int4,int4,float8}'::TEXT[])
       $$);
 
 SELECT finish();
