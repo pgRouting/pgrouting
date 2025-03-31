@@ -60,14 +60,14 @@ WHEN min_version('3.2.0') THEN
       ('{"","","","seq","edge","source","target","flow","residual_capacity","cost","agg_cost"}'::TEXT[]),
       ('{"","","seq","edge","source","target","flow","residual_capacity","cost","agg_cost"}'::TEXT[])
       $$),
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_maxflowmincost'$$,
+
+    function_types_eq('pgr_maxflowmincost',
       $$VALUES
-      ('{25,20,20,23,20,20,20,20,20,701,701}'::OID[]),
-      ('{25,20,2277,23,20,20,20,20,20,701,701}'::OID[]),
-      ('{25,2277,20,23,20,20,20,20,20,701,701}'::OID[]),
-      ('{25,2277,2277,23,20,20,20,20,20,701,701}'::OID[]),
-      ('{25,25,23,20,20,20,20,20,701,701}'::OID[])
+      ('{text,int8,int8,int4,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,int8,anyarray,int4,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,int8,int4,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,anyarray,int4,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,text,int4,int8,int8,int8,int8,int8,float8,float8}'::TEXT[])
       $$)
   )
 ELSE
@@ -80,13 +80,13 @@ ELSE
       ('{"","","","seq","edge","source","target","flow","residual_capacity","cost","agg_cost"}'::TEXT[]),
       ('{"","","","seq","edge","source","target","flow","residual_capacity","cost","agg_cost"}'::TEXT[])
       $$),
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_maxflowmincost'$$,
+
+    function_types_eq('pgr_maxflowmincost',
       $$VALUES
-      ('{25,20,20,23,20,20,20,20,20,701,701}'::OID[]),
-      ('{25,20,2277,23,20,20,20,20,20,701,701}'::OID[]),
-      ('{25,2277,20,23,20,20,20,20,20,701,701}'::OID[]),
-      ('{25,2277,2277,23,20,20,20,20,20,701,701}'::OID[])
+      ('{text,int8,int8,int4,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,int8,anyarray,int4,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,int8,int4,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,anyarray,int4,int8,int8,int8,int8,int8,float8,float8}'::TEXT[])
       $$)
   )
 END;
