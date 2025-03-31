@@ -44,11 +44,10 @@ SELECT set_eq(
   $$);
 
 RETURN QUERY
-SELECT set_eq(
-  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_drivingdistance'$$,
+SELECT function_types_eq('pgr_drivingdistance',
   $$VALUES
-  ('{25,20,701,16,20,20,20,20,20,20,701,701}'::OID[]),
-  ('{25,2277,701,16,16,20,20,20,20,20,20,701,701}'::OID[])
+  ('{text,int8,float8,bool,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+  ('{text,anyarray,float8,bool,bool,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[])
   $$);
 ELSE
 -- old signatures
@@ -61,11 +60,10 @@ SELECT set_eq(
   $$);
 
 RETURN QUERY
-SELECT set_eq(
-  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_drivingdistance'$$,
+SELECT function_types_eq('pgr_drivingdistance',
   $$VALUES
-  ('{25,20,701,16,23,20,20,701,701}'::OID[]),
-  ('{25,2277,701,16,16,23,20,20,20,701,701}'::OID[])
+  ('{text,int8,float8,bool,int4,int8,int8,float8,float8}'::TEXT[]),
+  ('{text,anyarray,float8,bool,bool,int4,int8,int8,int8,float8,float8}'::TEXT[])
   $$);
 END IF;
 END;

@@ -60,13 +60,12 @@ SELECT set_eq(
 
 -- parameter types
 RETURN QUERY
-SELECT set_eq(
-    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_dijkstranear'$$,
+SELECT function_types_eq('pgr_dijkstranear',
     $$VALUES
-    ('{25,2277,20,16,20,23,23,20,20,20,20,701,701}'::OID[]),
-    ('{25,2277,2277,16,20,16,23,23,20,20,20,20,701,701}'::OID[]),
-    ('{25,25,16,20,16,23,23,20,20,20,20,701,701}'::OID[]),
-    ('{25,20,2277,16,20,23,23,20,20,20,20,701,701}'::OID[]);
+    ('{text,anyarray,int8,bool,int8,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,anyarray,anyarray,bool,int8,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,text,bool,int8,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,int8,anyarray,bool,int8,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]);
 $$
 );
 END;
