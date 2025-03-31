@@ -30,9 +30,8 @@ SELECT set_eq(
   $$SELECT '{"","","id","the_geom","table_ending","rows_where","outall"}'::TEXT[]$$
 );
 
-SELECT set_eq(
-  $$SELECT proargtypes from pg_proc where proname = 'pgr_nodenetwork'$$,
-  $$SELECT '[0:6]={25,701,25,25,25,25,16}'::OID[]$$
+SELECT function_types_eq('pgr_nodenetwork',
+  $$SELECT '{text,float8,text,text,text,text,bool}'::TEXT[]$$
 );
 
 SELECT set_eq(
