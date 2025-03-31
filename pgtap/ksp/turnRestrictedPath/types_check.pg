@@ -31,9 +31,8 @@ SELECT set_eq(
   $$SELECT  '{"","","","","","directed","heap_paths","stop_on_first","strict","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 
-SELECT set_eq(
-  $$SELECT  proallargtypes FROM pg_proc WHERE proname = 'pgr_turnrestrictedpath'$$,
-  $$SELECT  '{25,25,20,20,23,16,16,16,16,23,23,23,20,20,701,701}'::OID[] $$
+SELECT function_types_eq('pgr_turnrestrictedpath',
+  $$SELECT  '{text,text,int8,int8,int4,bool,bool,bool,bool,int4,int4,int4,int8,int8,float8,float8}'::TEXT[] $$
 );
 SELECT finish();
 ROLLBACK;
