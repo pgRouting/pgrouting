@@ -60,14 +60,13 @@ WHEN min_version('3.2.0') THEN
       ('{"","","","directed","driving_side","details","seq","path_seq","start_pid","end_pid","node","edge","cost","agg_cost"}'::TEXT[])
       $$),
 
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpoints'$$,
+    function_types_eq('pgr_withpoints',
       $$VALUES
-      ('{25,25,20,20,16,1042,16,23,23,20,20,701,701}'::OID[]),
-      ('{25,25,20,2277,16,1042,16,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,25,2277,20,16,1042,16,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,25,2277,2277,16,1042,16,23,23,20,20,20,20,701,701}'::OID[]),
-      ('{25,25,25,16,1042,16,23,23,20,20,20,20,701,701}'::OID[])
+      ('{text,text,int8,int8,bool,bpchar,bool,int4,int4,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,text,anyarray,anyarray,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
+      ('{text,text,anyarray,int8,bool,bpchar,bool,int4,int4,int8,int8,int8,float8,float8}'),
+      ('{text,text,int8,anyarray,bool,bpchar,bool,int4,int4,int8,int8,int8,float8,float8}'),
+      ('{text,text,text,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}')
       $$)
   )
 ELSE
@@ -81,13 +80,12 @@ ELSE
       ('{"","","","","directed","driving_side","details","seq","path_seq","start_pid","end_pid","node","edge","cost","agg_cost"}'::TEXT[])
       $$),
 
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpoints'$$,
+    function_types_eq('pgr_withpoints',
       $$VALUES
-      ('{25,25,20,20,16,1042,16,23,23,20,20,701,701}'::OID[]),
-      ('{25,25,20,2277,16,1042,16,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,25,2277,20,16,1042,16,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,25,2277,2277,16,1042,16,23,23,20,20,20,20,701,701}'::OID[])
+      ('{text,text,int8,int8,16,1042,bool,int4,int4,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,text,int8,anyarray,16,1042,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,text,anyarray,int8,16,1042,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,text,anyarray,anyarray,16,1042,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
       $$)
   )
 END;
