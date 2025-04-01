@@ -60,14 +60,14 @@ WHEN min_version('3.2.0') THEN
       ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
       ('{"","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[])
       $$),
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpointscost'$$,
+
+    function_types_eq('pgr_withpointscost',
       $$VALUES
-      ('{25,25,25,16,1042,20,20,701}'::OID[]),
-      ('{25,25,20,20,16,1042,20,20,701}'::OID[]),
-      ('{25,25,20,2277,16,1042,20,20,701}'::OID[]),
-      ('{25,25,2277,20,16,1042,20,20,701}'::OID[]),
-      ('{25,25,2277,2277,16,1042,20,20,701}'::OID[])
+      ('{text,text,text,bool,bpchar,int8,int8,float8}'::TEXT[]),
+      ('{text,text,int8,int8,bool,bpchar,int8,int8,float8}'::TEXT[]),
+      ('{text,text,int8,anyarray,bool,bpchar,int8,int8,float8}'::TEXT[]),
+      ('{text,text,anyarray,int8,bool,bpchar,int8,int8,float8}'::TEXT[]),
+      ('{text,text,anyarray,anyarray,bool,bpchar,int8,int8,float8}'::TEXT[])
       $$)
   )
 ELSE
@@ -80,13 +80,13 @@ ELSE
       ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
       ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[])
       $$),
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpointscost'$$,
+
+    function_types_eq('pgr_withpointscost',
       $$VALUES
-      ('{25,25,20,20,16,1042,20,20,701}'::OID[]),
-      ('{25,25,20,2277,16,1042,20,20,701}'::OID[]),
-      ('{25,25,2277,20,16,1042,20,20,701}'::OID[]),
-      ('{25,25,2277,2277,16,1042,20,20,701}'::OID[])
+      ('{text,text,int8,int8,bool,bpchar,int8,int8,float8}'::TEXT[]),
+      ('{text,text,int8,anyarray,bool,bpchar,int8,int8,float8}'::TEXT[]),
+      ('{text,text,anyarray,int8,bool,bpchar,int8,int8,float8}'::TEXT[]),
+      ('{text,text,anyarray,anyarray,bool,bpchar,int8,int8,float8}'::TEXT[])
       $$)
   )
 END;

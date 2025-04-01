@@ -30,9 +30,8 @@ SELECT set_eq(
   $$SELECT '{"","","","","","two_way_if_null","oneway","source","target"}'::TEXT[]$$
 );
 
-SELECT set_eq(
-  $$SELECT proargtypes from pg_proc where proname = 'pgr_analyzeoneway'$$,
-  $$SELECT '[0:8]={25,1009,1009,1009,1009,16,25,25,25}'::OID[]$$
+SELECT function_types_eq('pgr_analyzeoneway',
+  $$SELECT '{text,_text,_text,_text,_text,bool,text,text,text}'::TEXT[]$$
 );
 
 SELECT set_eq(

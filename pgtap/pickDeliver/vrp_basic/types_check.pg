@@ -29,10 +29,8 @@ SELECT set_eq(
     $$SELECT  '{"","","","","oid","opos","vid","tarrival","tdepart"}'::TEXT[] $$
 );
 
-SELECT set_eq(
-    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_vrponedepot'$$,
-    $$SELECT  '{25,25,25,23,23,23,23,23,23}'::OID[] $$
-);
+SELECT function_types_eq('pgr_vrponedepot',
+    $$SELECT  '{text,text,text,int4,int4,int4,int4,int4,int4}'::TEXT[] $$);
 
 SELECT finish();
 ROLLBACK;

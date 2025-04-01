@@ -33,10 +33,9 @@ SELECT set_eq(
   ('{"","seq","edge","cost","mincut"}'::TEXT[])
   $$);
 
-SELECT set_eq(
-  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_stoerwagner'$$,
+SELECT function_types_eq('pgr_stoerwagner',
   $$VALUES
-  ('{25,23,20,701,701}'::OID[])
+  ('{text,int4,int8,float8,float8}'::TEXT[])
   $$);;
 
 SELECT finish();

@@ -23,14 +23,9 @@ SELECT plan(4);
 
 SELECT has_function('pgr_alphashape');
 
-/* pgtap does not like geometry type, this is a workaround */
-SELECT set_eq(
-  $$WITH a AS (SELECT  unnest(proargtypes) from pg_proc where proname = 'pgr_alphashape')
-    SELECT typname from a JOIN pg_type ON(oid = unnest)$$,
-  $$VALUES
-    ('float8'),
-    ('geometry')
-  $$);
+SELECT function_types_eq('pgr_alphashape',
+  $$VALUES ('{geometry,float8}'::TEXT[]) $$);
+
 SELECT set_eq(
   $$WITH a AS (SELECT  prorettype from pg_proc where proname = 'pgr_alphashape')
   SELECT typname from a JOIN pg_type ON(oid = prorettype)$$,

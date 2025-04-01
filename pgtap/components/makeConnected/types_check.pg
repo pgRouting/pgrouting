@@ -42,10 +42,9 @@ BEGIN
   );
 
   RETURN QUERY
-  SELECT set_eq(
-    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_makeconnected'$$,
+  SELECT function_types_eq('pgr_makeconnected',
     $$VALUES
-    ('{25,20,20,20}'::OID[])
+    ('{text,int8,int8,int8}'::TEXT[])
     $$
   );
 END;

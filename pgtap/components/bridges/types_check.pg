@@ -31,9 +31,8 @@ SELECT set_eq(
   $$SELECT '{"", "edge"}'::TEXT[] $$
 );
 
-SELECT set_eq(
-  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_bridges'$$,
-  $$SELECT  '{25,20}'::OID[] $$
+SELECT function_types_eq('pgr_bridges',
+  $$SELECT  '{text,int8}'::TEXT[] $$
 );
 
 SELECT * FROM finish();

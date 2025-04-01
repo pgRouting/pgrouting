@@ -30,9 +30,8 @@ SELECT set_eq(
   $$SELECT '{"","","the_geom","id","source","target","rows_where","clean"}'::TEXT[]$$
 );
 
-SELECT set_eq(
-  $$SELECT proargtypes from pg_proc where proname = 'pgr_createtopology'$$,
-  $$SELECT '[0:7]={25,701,25,25,25,25,25,16}'::OID[]$$
+SELECT function_types_eq('pgr_createtopology',
+  $$SELECT '{text,float8,text,text,text,text,text,bool}'::TEXT[]$$
 );
 
 SELECT set_eq(

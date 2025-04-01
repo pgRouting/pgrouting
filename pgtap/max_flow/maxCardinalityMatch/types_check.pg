@@ -40,11 +40,10 @@ WHEN min_version('3.4.0') THEN
       $$
     ),
 
-    set_eq(
-      $$SELECT proallargtypes from pg_proc where proname = 'pgr_maxcardinalitymatch'$$,
+    function_types_eq('pgr_maxcardinalitymatch',
       $$VALUES
-      ('{25,16,23,20,20,20}'::OID[]),
-      ('{25,20}'::OID[])
+      ('{text,bool,int4,int8,int8,int8}'::TEXT[]),
+      ('{text,int8}'::TEXT[])
       $$
   ))
 ELSE
@@ -54,9 +53,8 @@ ELSE
       $$SELECT '{"","directed","seq","edge","source","target"}'::TEXT[]$$
     ),
 
-    set_eq(
-      $$SELECT proallargtypes from pg_proc where proname = 'pgr_maxcardinalitymatch'$$,
-      $$SELECT '{25,16,23,20,20,20}'::OID[]$$
+    function_types_eq('pgr_maxcardinalitymatch',
+      $$SELECT '{text,bool,int4,int8,int8,int8}'::TEXT[]$$
   ))
 END;
 

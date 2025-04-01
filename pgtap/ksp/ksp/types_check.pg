@@ -51,14 +51,13 @@ BEGIN
           ('{"","","","directed","heap_paths","seq","path_id","path_seq",start_vid,end_vid,"node","edge","cost","agg_cost"}'::TEXT[]),
           ('{"","","","","directed","heap_paths","seq","path_id","path_seq",start_vid,end_vid,"node","edge","cost","agg_cost"}'::TEXT[])
           $$),
-      set_eq(
-        $$SELECT  proallargtypes FROM pg_proc WHERE proname = 'pgr_ksp'$$,
+      function_types_eq('pgr_ksp',
         $$VALUES
-        ('{25,25,23,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
-        ('{25,20,20,23,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
-        ('{25,20,2277,23,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
-        ('{25,2277,20,23,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
-        ('{25,2277,2277,23,16,16,23,23,23,20,20,20,20,701,701}'::OID[])
+        ('{text,text,int4,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,int8,int8,int4,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,int8,anyarray,int4,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,anyarray,int8,int4,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,anyarray,anyarray,int4,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
         $$
       )
     )
@@ -68,9 +67,8 @@ BEGIN
         $$SELECT  proargnames from pg_proc WHERE proname = 'pgr_ksp'$$,
         $$SELECT  '{"","","","","directed","heap_paths","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
       ),
-      set_eq(
-        $$SELECT  proallargtypes FROM pg_proc WHERE proname = 'pgr_ksp'$$,
-        $$SELECT  '{25,20,20,23,16,16,23,23,23,20,20,701,701}'::OID[] $$
+      function_types_eq('pgr_ksp',
+        $$SELECT  '{text,int8,int8,int4,bool,bool,int4,int4,int4,int8,int8,float8,float8}'::TEXT[] $$
       )
     )
   END;
