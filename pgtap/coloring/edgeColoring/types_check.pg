@@ -37,8 +37,7 @@ BEGIN
   RETURN QUERY SELECT function_returns('pgr_edgecoloring', ARRAY['text'],  'setof record');
 
   RETURN QUERY
-  SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_edgecoloring'$$,
+  SELECT function_args_eq('pgr_edgecoloring',
     $$SELECT  '{"","edge_id","color_id"}'::TEXT[] $$
   );
 

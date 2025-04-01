@@ -42,11 +42,11 @@ BEGIN
 
       function_returns('pgr_degree', ARRAY['text', 'boolean'], 'setof record'),
 
-      set_eq($$SELECT  proargnames from pg_proc where proname = 'pgr_degree'$$,
+      function_args_eq('pgr_degree',
         $$VALUES
         ('{"","dryrun","node","degree"}'::TEXT[]),
         ('{"","","dryrun","node","degree"}'::TEXT[])
-        $$, 'proargnames'),
+        $$),
 
       function_types_eq('pgr_degree',
         $$VALUES
@@ -57,8 +57,8 @@ BEGIN
   ELSE
     collect_tap(
 
-      set_eq($$SELECT  proargnames from pg_proc where proname = 'pgr_degree'$$,
-        $$VALUES ('{"","","dryrun","node","degree"}'::TEXT[]) $$, 'proargnames'),
+      function_args_eq('pgr_degree',
+        $$VALUES ('{"","","dryrun","node","degree"}'::TEXT[]) $$),
 
       function_types_eq('pgr_degree',
         $$VALUES ('{text,text,bool,int8,int8}'::TEXT[])$$)

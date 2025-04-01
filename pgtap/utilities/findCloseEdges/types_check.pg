@@ -44,15 +44,14 @@ BEGIN
 
   IF min_version('3.8.0') THEN
 
-    RETURN QUERY SELECT bag_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_findcloseedges'$$,
+    RETURN QUERY
+    SELECT function_args_eq('pgr_findcloseedges',
       $$VALUES
-        ('{"","","","cap","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
-        ('{"","","","cap","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
-        ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
-        ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[])
-      $$,
-      'proargnames');
+      ('{"","","","cap","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
+      ('{"","","","cap","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
+      ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
+      ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[])
+      $$);
 
     RETURN QUERY
     SELECT function_types_eq('pgr_findcloseedges',
@@ -65,13 +64,12 @@ BEGIN
 
   ELSE
 
-    RETURN QUERY SELECT bag_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_findcloseedges'$$,
+    RETURN QUERY
+    SELECT function_args_eq('pgr_findcloseedges',
       $$VALUES
-        ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
-        ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[])
-      $$,
-      'proargnames');
+      ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
+      ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[])
+      $$);
 
     RETURN QUERY
     SELECT function_types_eq('pgr_findcloseedges',

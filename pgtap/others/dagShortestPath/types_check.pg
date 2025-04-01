@@ -53,13 +53,14 @@ BEGIN
   SELECT CASE
   WHEN min_version('3.2.0') THEN
     collect_tap(
-      set_has(
-        $$SELECT  proargnames from pg_proc where proname = 'pgr_dagshortestpath'$$,
+
+      function_args_eq('pgr_dagshortestpath',
         $$VALUES
         ('{"","","","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
         ('{"","","","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
         ('{"","","","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[])
+        ('{"","","","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
+        ('{"","",seq,path_seq,node,edge,cost,agg_cost}'::TEXT[])
         $$
       ),
       function_types_eq('pgr_dagshortestpath',
@@ -76,8 +77,8 @@ BEGIN
   ELSE
 
     collect_tap(
-      set_has(
-        $$SELECT  proargnames from pg_proc where proname = 'pgr_dagshortestpath'$$,
+
+      function_args_eq('pgr_dagshortestpath',
         $$VALUES
         ('{"","","","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
         ('{"","","","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),

@@ -37,8 +37,7 @@ BEGIN
   RETURN QUERY SELECT function_returns('pgr_bipartite', ARRAY['text'],  'setof record');
 
   RETURN QUERY
-  SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_bipartite'$$,
+  SELECT function_args_eq('pgr_bipartite',
     $$SELECT  '{"","vertex_id","color_id"}'::TEXT[] $$
   );
 

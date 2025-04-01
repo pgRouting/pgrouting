@@ -46,8 +46,8 @@ END IF;
 RETURN QUERY
 SELECT CASE WHEN min_version('3.6.0')
 THEN collect_tap (
-  set_eq(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_withpointsdd'$$,
+
+  function_args_eq('pgr_withpointsdd',
     $$VALUES
     ('{"","","","","","directed","details","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[]),
     ('{"","","","","","directed","details","equicost","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[]),
@@ -64,8 +64,8 @@ THEN collect_tap (
     $$)
 )
 ELSE collect_tap(
-  set_eq(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_withpointsdd'$$,
+
+  function_args_eq('pgr_withpointsdd',
     $$VALUES
     ('{"","","","","directed","driving_side","details","seq","node","edge","cost","agg_cost"}'::TEXT[]),
     ('{"","","","","directed","driving_side","details","equicost","seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
