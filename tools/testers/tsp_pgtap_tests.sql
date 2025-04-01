@@ -185,7 +185,7 @@ BEGIN
 
   RETURN QUERY
   SELECT function_types_eq(fn,
-    $$VALUES ('{text,int8,int8,23,int8,float8,float8}'::TEXT[]) $$
+    $$VALUES ('{text,int8,int8,int4,int8,float8,float8}'::TEXT[]) $$
   );
 END;
 $BODY$
