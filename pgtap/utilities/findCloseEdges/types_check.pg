@@ -55,7 +55,7 @@ BEGIN
       'proargnames');
 
     RETURN QUERY
-    SELECT function_types('pgr_findcloseedges',
+    SELECT function_types_eq('pgr_findcloseedges',
       $$ VALUES
       ('{text,_geometry,float8,int4,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[]),
       ('{text,geometry,float8,int4,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[]),
@@ -74,7 +74,7 @@ BEGIN
       'proargnames');
 
     RETURN QUERY
-    SELECT function_types('pgr_findcloseedges',
+    SELECT function_types_eq('pgr_findcloseedges',
       $$ VALUES
       ('{text,geometry,float8,int4,bool,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[]),
       ('{text,_geometry,float8,int4,bool,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[])

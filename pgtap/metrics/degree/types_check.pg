@@ -48,11 +48,11 @@ BEGIN
         ('{"","","dryrun","node","degree"}'::TEXT[])
         $$, 'proargnames'),
 
-      set_eq($$SELECT  proallargtypes from pg_proc where proname = 'pgr_degree'$$,
+      function_types_eq('pgr_degree',
         $$VALUES
-        ('{25,16,20,20}'::OID[]),
-        ('{25,25,16,20,20}'::OID[])
-        $$, 'proallargtypes')
+        ('{text,bool,int8,int8}'::TEXT[]),
+        ('{text,text,bool,int8,int8}'::TEXT[])
+        $$)
     )
   ELSE
     collect_tap(
@@ -60,8 +60,8 @@ BEGIN
       set_eq($$SELECT  proargnames from pg_proc where proname = 'pgr_degree'$$,
         $$VALUES ('{"","","dryrun","node","degree"}'::TEXT[]) $$, 'proargnames'),
 
-      set_eq($$SELECT  proallargtypes from pg_proc where proname = 'pgr_degree'$$,
-        $$VALUES ('{25,25,16,20,20}'::OID[])$$, 'proallargtypes')
+      function_types_eq('pgr_degree',
+        $$VALUES ('{text,text,bool,int8,int8}'::TEXT[])$$)
     )
   END;
 

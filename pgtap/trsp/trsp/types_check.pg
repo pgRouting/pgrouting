@@ -37,12 +37,16 @@ SELECT bag_has(
   ('{"","","","","","","","turn_restrict_sql","seq","id1","id2","cost"}'::TEXT[])
   $$, 'old signature names');
 
-SELECT bag_has(
-  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_trsp'$$,
+SELECT function_types_eq('pgr_trsp',
   $$VALUES
-  ('{25,23,23,16,16,25,23,23,23,701}'::OID[]),
-  ('{25,23,701,23,701,16,16,25,23,23,23,701}'::OID[])
-  $$, 'old signature types');
+  ('{text,text,anyarray,int8,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+  ('{text,int4,int4,bool,bool,text,int4,int4,int4,float8}'),
+  ('{text,text,int8,int8,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
+  ('{text,int4,float8,int4,float8,bool,bool,text,int4,int4,int4,float8}'),
+  ('{text,text,int8,anyarray,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
+  ('{text,text,text,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
+  ('{text,text,anyarray,anyarray,bool,int4,int4,int8,int8,int8,int8,float8,float8}')
+  $$);
 
 
 SELECT types_check_general('pgr_trsp');

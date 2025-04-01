@@ -60,14 +60,13 @@ WHEN min_version('3.1.0') THEN
       ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
       ('{"","","directed","start_vid","end_vid","agg_cost"}'::TEXT[])
       $$),
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_dijkstracost'$$,
+    function_types_eq('pgr_dijkstracost',
       $$VALUES
-      ('{25,25,16,20,20,701}'::OID[]),
-      ('{25,20,20,16,20,20,701}'::OID[]),
-      ('{25,20,2277,16,20,20,701}'::OID[]),
-      ('{25,2277,20,16,20,20,701}'::OID[]),
-      ('{25,2277,2277,16,20,20,701}'::OID[])
+      ('{text,text,bool,int8,int8,float8}'::TEXT[]),
+      ('{text,int8,int8,bool,int8,int8,float8}'::TEXT[]),
+      ('{text,int8,anyarray,bool,int8,int8,float8}'::TEXT[]),
+      ('{text,anyarray,int8,bool,int8,int8,float8}'::TEXT[]),
+      ('{text,anyarray,anyarray,bool,int8,int8,float8}'::TEXT[])
       $$)
   )
 ELSE
@@ -80,13 +79,12 @@ ELSE
       ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
       ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[])
       $$),
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_dijkstracost'$$,
+    function_types_eq('pgr_dijkstracost',
       $$VALUES
-      ('{25,20,20,16,20,20,701}'::OID[]),
-      ('{25,20,2277,16,20,20,701}'::OID[]),
-      ('{25,2277,20,16,20,20,701}'::OID[]),
-      ('{25,2277,2277,16,20,20,701}'::OID[])
+      ('{text,int8,int8,bool,int8,int8,float8}'::TEXT[]),
+      ('{text,int8,anyarray,bool,int8,int8,float8}'::TEXT[]),
+      ('{text,anyarray,int8,bool,int8,int8,float8}'::TEXT[]),
+      ('{text,anyarray,anyarray,bool,int8,int8,float8}'::TEXT[])
       $$)
   )
 END;

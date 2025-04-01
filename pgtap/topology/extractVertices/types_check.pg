@@ -30,13 +30,8 @@ SELECT set_eq(
     $$SELECT  '{"","dryrun","id","in_edges","out_edges","x","y","geom"}'::TEXT[] $$
 );
 
-PREPARE fn_types AS
-SELECT ARRAY[25,16,20,1016,1016,701,701,oid] FROM pg_type WHERE typname = 'geometry';
-
-SELECT set_eq(
-    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_extractvertices'$$,
-    $$fn_types$$
-);
+SELECT function_types_eq('pgr_extractvertices',
+    $$VALUES ('{text,bool,int8,_int8,_int8,float8,float8,geometry}'::TEXT[]) $$);
 
 
 SELECT  finish();

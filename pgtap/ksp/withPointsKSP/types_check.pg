@@ -48,15 +48,15 @@ BEGIN
         ('{"","","","","","directed","heap_paths","details","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
         ('{"","","","","","directed","heap_paths","driving_side","details","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[])
         $$),
-      set_eq(
-        $$SELECT proallargtypes FROM pg_proc WHERE proname = 'pgr_withpointsksp'$$,
+
+      function_types_eq('pgr_withpointsksp',
         $$VALUES
-        ('{25,25,20,20,23,1042,16,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
-        ('{25,25,20,2277,23,1042,16,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
-        ('{25,25,2277,20,23,1042,16,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
-        ('{25,25,2277,2277,23,1042,16,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
-        ('{25,25,25,23,1042,16,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
-        ('{25,25,20,20,23,16,16,1042,16,23,23,23,20,20,701,701}'::OID[])
+        ('{text,text,int8,int8,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,text,int8,anyarray,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,text,anyarray,int8,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,text,anyarray,anyarray,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,text,text,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,text,int8,int8,int4,bool,bool,bpchar,bool,int4,int4,int4,int8,int8,float8,float8}'::TEXT[])
         $$)
     )
     ELSE collect_tap(
@@ -64,9 +64,9 @@ BEGIN
         $$SELECT proargnames from pg_proc WHERE proname = 'pgr_withpointsksp'$$,
         $$SELECT '{"","","","","","directed","heap_paths","driving_side","details","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
       ),
-      set_eq(
-        $$SELECT proallargtypes FROM pg_proc WHERE proname = 'pgr_withpointsksp'$$,
-        $$SELECT '{25,25,20,20,23,16,16,1042,16,23,23,23,20,20,701,701}'::OID[] $$
+
+      function_types_eq('pgr_withpointsksp',
+        $$SELECT '{text,text,int8,int8,int4,bool,bool,bpchar,bool,int4,int4,int4,int8,int8,float8,float8}'::TEXT[] $$
       )
     )END;
 

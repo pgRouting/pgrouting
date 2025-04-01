@@ -48,11 +48,10 @@ SELECT bag_has(
 
 -- parameter types
 RETURN QUERY
-SELECT set_eq(
-    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_depthfirstsearch'$$,
+SELECT function_types_eq('pgr_depthfirstsearch',
     $$VALUES
-        ('{25,20,16,20,20,20,20,20,20,701,701}'::OID[]),
-        ('{25,2277,16,20,20,20,20,20,20,701,701}'::OID[])
+        ('{text,int8,bool,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,anyarray,bool,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[])
     $$
 );
 END;
