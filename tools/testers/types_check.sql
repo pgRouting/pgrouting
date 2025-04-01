@@ -82,8 +82,7 @@ BEGIN
 
   IF fn = 'pgr_dijkstra' OR fn = 'pgr_withpoints' THEN
     RETURN QUERY
-    SELECT bag_has(
-      format($$SELECT proargnames from pg_proc where proname = %1$L$$, fn),
+    SELECT function_args_eq(fn,
       format('VALUES (%1$L::TEXT[]),(%2$L::TEXT[]),(%3$L::TEXT[]),(%4$L::TEXT[])',
         -- one to one
         '{"' || array_to_string(
@@ -101,7 +100,7 @@ BEGIN
         '{"' || array_to_string(
           params_names || ARRAY['',''] || optional_params_names || return_params_names_start || startend_v || return_params_names_end,'","')
         || '"}'
-    ),'proargnames ' || fn);
+    ));
 
     RETURN QUERY
     SELECT function_types_eq(fn,
@@ -127,13 +126,12 @@ BEGIN
     IF (min_version('3.1.0') AND fn = 'pgr_dijkstra') OR (min_version('3.2.0') AND fn = 'pgr_withpoints') THEN
       -- combinations
       RETURN QUERY
-      SELECT bag_has(
-        format($$SELECT proargnames from pg_proc where proname = %1$L$$, fn),
+      SELECT function_args_eq(fn,
         format('VALUES (%1$L::TEXT[])',
           '{"' || array_to_string(
             params_names || ARRAY[''] || optional_params_names || return_params_names_start || startend_v || return_params_names_end,'","')
           || '"}'
-        ),'proargnames ' || fn);
+        ));
 
       RETURN QUERY
       SELECT function_types_eq(fn,
@@ -141,7 +139,7 @@ BEGIN
           '{' || array_to_string(
             params_numbers || 'text'::TEXT || optional_params_numbers || return_params_numbers_start || '{int8,int8}'::TEXT[] || return_params_numbers_end,',')
           || '}'
-      ),'proallargtypes ' || fn);
+      ));
 
     END IF;
     RETURN;
@@ -149,8 +147,7 @@ BEGIN
 
   -- TODO should be set_eq when old signatures are removed
   RETURN QUERY
-  SELECT bag_has(
-    format($$SELECT proargnames from pg_proc where proname = %1$L$$, fn),
+  SELECT function_args_has(fn,
     format('VALUES (%1$L::TEXT[]),(%2$L::TEXT[])',
       '{"' || array_to_string(
         params_names || ARRAY[''] || optional_params_names || return_params_names,'","')
@@ -158,7 +155,7 @@ BEGIN
       '{"' || array_to_string(
         params_names || ARRAY['',''] || optional_params_names || return_params_names,'","')
       || '"}'
-  ),'proargnames ' || fn);
+  ));
 
   RETURN QUERY
   SELECT function_types_has(fn,
@@ -238,15 +235,13 @@ BEGIN
   RETURN QUERY SELECT has_function(fn, params_types_words || optional_params_types_words);
   RETURN QUERY SELECT function_returns(fn, params_types_words || optional_params_types_words,'setof record');
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT proargnames from pg_proc where proname = %1$L$$, fn),
+  RETURN QUERY SELECT function_args_eq(fn,
     format(
       $$VALUES (%1$L::TEXT[])$$,
       -- one via
       '{"' || array_to_string(
         params_names || optional_params_names || return_params_names,'","')
-      || '"}'),
-    'proargnames ' || fn);
+      || '"}'));
 
   RETURN QUERY SELECT function_types_eq(fn,
     format(

@@ -151,12 +151,11 @@ BEGIN
   IF (min_version('3.5.0') AND fn = 'pgr_dijkstra') THEN
     RETURN QUERY SELECT has_function(fn, ARRAY['text','text','boolean']);
     RETURN QUERY SELECT function_returns(fn, ARRAY['text','text','boolean'],'setof record');
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proargnames from pg_proc where proname = %1$L$$,fn),
+    RETURN QUERY SELECT function_args_eq(fn,
       $$VALUES
       ('{"","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$,'proargnames');
+      $$);
 
     RETURN QUERY SELECT function_types_eq(fn,
       $$VALUES
@@ -174,8 +173,7 @@ IF (min_version('3.2.0') AND fn != 'pgr_dijkstra') OR (min_version('3.1.0') AND 
   RETURN QUERY SELECT has_function(fn, ARRAY['text','text','boolean']);
   RETURN QUERY SELECT function_returns(fn, ARRAY['text','text','boolean'],'setof record');
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proargnames from pg_proc where proname = %1$L$$,fn),
+  RETURN QUERY SELECT function_args_eq(fn,
     $$VALUES
     ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
     ('{"","","","directed","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
@@ -194,8 +192,7 @@ IF (min_version('3.2.0') AND fn != 'pgr_dijkstra') OR (min_version('3.1.0') AND 
     $$);
 
 ELSE
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proargnames from pg_proc where proname = %1$L$$,fn),
+  RETURN QUERY SELECT function_args_eq(fn,
     $$VALUES
     ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
     ('{"","","","directed","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
