@@ -54,7 +54,7 @@ ELSE
     ),
 
     function_types_eq('pgr_maxcardinalitymatch',
-      $$SELECT '{text,bool,int4,int8,int8,int8}'::TEXT[]$$
+      $$VALUES ('{text,bool,int4,int8,int8,int8}'::TEXT[])$$
   ))
 END;
 

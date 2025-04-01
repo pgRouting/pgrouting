@@ -53,7 +53,7 @@ SELECT set_eq(
 
 SELECT CASE
 WHEN min_version('3.2.0') THEN
-  function_types_eq('pgr_maxflow',
+  function_types_eq('pgr_maxflowmincost_cost',
     $$VALUES
     ('{text,text}'::TEXT[]),
     ('{text,int8,int8}'),
@@ -62,7 +62,7 @@ WHEN min_version('3.2.0') THEN
     ('{text,anyarray,anyarray}')
     $$)
 ELSE
-  function_types_eq('pgr_maxflow',
+  function_types_eq('pgr_maxflowmincost_cost',
     $$VALUES
     ('{text,int8,int8}'::TEXT[]),
     ('{text,int8,anyarray}'),

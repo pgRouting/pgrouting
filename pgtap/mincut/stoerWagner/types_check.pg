@@ -36,7 +36,7 @@ SELECT set_eq(
 SELECT function_types_eq('pgr_stoerwagner',
   $$VALUES
   ('{text,int4,int8,float8,float8}'::TEXT[])
-  $$);;
+  $$);
 
 SELECT finish();
 ROLLBACK;

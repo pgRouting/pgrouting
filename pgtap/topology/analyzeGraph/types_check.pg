@@ -32,7 +32,7 @@ SELECT set_eq(
 
 
 SELECT function_types_eq('pgr_analyzegraph',
-  $$SELECT '{text,float8,text,text,text,text,text}'::TEXT[]$$
+  $$VALUES ('{text,float8,text,text,text,text,text}'::TEXT[])$$
 );
 
 SELECT set_eq(

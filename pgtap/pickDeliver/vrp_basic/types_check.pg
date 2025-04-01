@@ -30,7 +30,7 @@ SELECT set_eq(
 );
 
 SELECT function_types_eq('pgr_vrponedepot',
-    $$SELECT  '{text,text,text,int4,int4,int4,int4,int4,int4}'::TEXT[] $$);
+    $$VALUES ('{text,text,text,int4,int4,int4,int4,int4,int4}'::TEXT[])$$);
 
 SELECT finish();
 ROLLBACK;
