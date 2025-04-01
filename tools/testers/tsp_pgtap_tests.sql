@@ -233,7 +233,7 @@ BEGIN
   RETURN QUERY
   -- parameter types
   SELECT function_types_eq(fn,
-    $$VALUES '{text,int8,int8,float8,int4,int4,int4,float8,float8,float8,bool,int4,int8,float8,float8}'::TEXT[])$$
+    $$VALUES ('{text,int8,int8,float8,int4,int4,int4,float8,float8,float8,bool,int4,int8,float8,float8}'::TEXT[])$$
   );
 END;
 $BODY$
