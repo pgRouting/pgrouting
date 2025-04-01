@@ -81,3 +81,19 @@ $BODY$
       SELECT array_agg(typname ORDER BY idx)  FROM b GROUP BY oid
       $$, $1), $2, $1 || ': Function types');
 $BODY$ LANGUAGE SQL;
+
+CREATE OR REPLACE FUNCTION function_args_eq(TEXT, TEXT)
+RETURNS TEXT AS
+$BODY$
+    SELECT set_eq(format($$
+      SELECT proargnames from pg_proc where proname = '%1$s'
+      $$, $1), $2, $1 || ': Function args names');
+$BODY$ LANGUAGE SQL;
+
+CREATE OR REPLACE FUNCTION function_args_has(TEXT, TEXT)
+RETURNS TEXT AS
+$BODY$
+    SELECT set_has(format($$
+      SELECT proargnames from pg_proc where proname = '%1$s'
+      $$, $1), $2, $1 || ': Function args names');
+$BODY$ LANGUAGE SQL;
