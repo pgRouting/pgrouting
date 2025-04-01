@@ -34,8 +34,8 @@ BEGIN
   RETURN QUERY SELECT has_function('pgr_contractiondeadend', ARRAY['text','boolean','bigint[]']);
   RETURN QUERY SELECT function_returns('pgr_contractiondeadend', ARRAY['text','boolean','bigint[]'], 'setof record');
 
-  RETURN QUERY SELECT set_eq(
-    $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_contractiondeadend'$$,
+  RETURN QUERY
+  SELECT function_args_eq('pgr_contractiondeadend',
     $$VALUES
     ('{"","directed","forbidden","type","id","contracted_vertices","source","target","cost"}'::TEXT[])
     $$);

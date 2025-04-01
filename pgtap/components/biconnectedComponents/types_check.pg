@@ -26,8 +26,7 @@ SELECT has_function('pgr_biconnectedcomponents');
 SELECT has_function('pgr_biconnectedcomponents',    ARRAY['text']);
 SELECT function_returns('pgr_biconnectedcomponents', ARRAY['text'], 'setof record');
 
-SELECT set_eq(
-  $$SELECT proargnames from pg_proc where proname = 'pgr_biconnectedcomponents'$$,
+SELECT function_args_eq('pgr_biconnectedcomponents',
   $$SELECT '{"", "seq","component","edge"}'::TEXT[] $$
 );
 

@@ -37,8 +37,7 @@ RETURN QUERY SELECT has_function('pgr_isplanar', ARRAY['text']);
 RETURN QUERY SELECT function_returns('pgr_isplanar', ARRAY['text'], 'boolean');
 
 RETURN QUERY
-SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_isplanar'$$,
+SELECT function_args_eq('pgr_isplanar',
     $$SELECT  NULL::TEXT[] $$
 );
 

@@ -31,8 +31,7 @@ BEGIN
   RETURN QUERY SELECT function_returns('pgr_topologicalsort', ARRAY['text'],  'setof record');
 
   RETURN QUERY
-  SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_topologicalsort'$$,
+  SELECT function_args_eq('pgr_topologicalsort',
     $$SELECT  '{"","seq","sorted_v"}'::TEXT[] $$
   );
 

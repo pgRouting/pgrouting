@@ -40,8 +40,7 @@ RETURN QUERY
 SELECT function_returns('pgr_betweennesscentrality', ARRAY['text','boolean'],'setof record');
 
 RETURN QUERY
-SELECT set_eq(
-  $$SELECT  proargnames from pg_proc where proname = 'pgr_betweennesscentrality'$$,
+SELECT function_args_eq('pgr_betweennesscentrality',
   $$VALUES
   ('{"","directed","vid","centrality"}'::TEXT[])
   $$);

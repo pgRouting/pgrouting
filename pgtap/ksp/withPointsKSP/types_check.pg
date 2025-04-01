@@ -41,8 +41,8 @@ BEGIN
   /*Remove last 1 row on v4*/
   RETURN QUERY SELECT CASE WHEN min_version('3.6.0')
     THEN collect_tap(
-      set_eq(
-        $$SELECT proargnames from pg_proc WHERE proname = 'pgr_withpointsksp'$$,
+
+      function_args_eq('pgr_withpointsksp',
         $$VALUES
         ('{"","","","","","","directed","heap_paths","details","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
         ('{"","","","","","directed","heap_paths","details","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
@@ -60,8 +60,8 @@ BEGIN
         $$)
     )
     ELSE collect_tap(
-      set_eq(
-        $$SELECT proargnames from pg_proc WHERE proname = 'pgr_withpointsksp'$$,
+
+      function_args_eq('pgr_withpointsksp',
         $$SELECT '{"","","","","","directed","heap_paths","driving_side","details","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
       ),
 

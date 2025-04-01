@@ -48,8 +48,7 @@ RETURN QUERY SELECT function_returns('pgr_dijkstranearcost', ARRAY['text','text'
 
 -- parameter's names
 RETURN QUERY
-SELECT set_eq(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_dijkstranearcost'$$,
+SELECT function_args_eq('pgr_dijkstranearcost',
     $$VALUES
         ('{"","","","directed","cap","start_vid","end_vid","agg_cost"}'::TEXT[]),
         ('{"","","","directed","cap","start_vid","end_vid","agg_cost"}'::TEXT[]),
