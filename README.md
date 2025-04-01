@@ -3,6 +3,7 @@
 [![Join the chat at
 https://gitter.im/pgRouting/pgrouting](https://badges.gitter.im/Join%20Chat.svg)](https://app.gitter.im/#/room/#pgrouting:osgeo.org)
 [Join discourse](https://discourse.osgeo.org/c/pgrouting/15)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15004469.svg)](https://doi.org/10.5281/zenodo.15004469)
 
 
 ## Branches
@@ -97,6 +98,22 @@ Postgresql
 ## USAGE
 
 See online documentation: http://docs.pgrouting.org/latest/en/index.html
+
+## CITATION
+
+To cite pgRouting in publications use:
+
+**BibTeX entry**:
+
+```bibtex
+@Manual{,
+  title = {{pgRouting: Routing on PostgreSQL}},
+  author = {{pgRouting contributors}},
+  year = {2025},
+  doi = {10.5281/zenodo.15004469},
+  url = {https://pgrouting.org/},
+}
+```
 
 ## LICENSE
 
