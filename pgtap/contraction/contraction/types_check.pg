@@ -49,7 +49,7 @@ BEGIN
       $$);
 
     RETURN QUERY SELECT function_types_eq('pgr_contraction',
-      $$SELECT  '{text,_int8,int4,_int8,bool,text,int8,_int8,int8,int8,float8}'::TEXT[] $$
+      $$VALUES ('{text,_int8,int4,_int8,bool,text,int8,_int8,int8,int8,float8}'::TEXT[])$$
     );
 
 END IF;

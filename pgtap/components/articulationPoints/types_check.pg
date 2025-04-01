@@ -32,7 +32,7 @@ SELECT set_eq(
 );
 
 SELECT function_types_eq('pgr_articulationpoints',
-  $$SELECT  '{text,int8}'::TEXT[] $$
+  $$VALUES ('{text,int8}'::TEXT[]) $$
 );
 
 SELECT * FROM finish();

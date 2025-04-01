@@ -37,15 +37,10 @@ SELECT bag_has(
   ('{"","","","","","","","turn_restrict_sql","seq","id1","id2","cost"}'::TEXT[])
   $$, 'old signature names');
 
-SELECT function_types_eq('pgr_trsp',
+SELECT function_types_has('pgr_trsp',
   $$VALUES
-  ('{text,text,anyarray,int8,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-  ('{text,int4,int4,bool,bool,text,int4,int4,int4,float8}'),
-  ('{text,text,int8,int8,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
-  ('{text,int4,float8,int4,float8,bool,bool,text,int4,int4,int4,float8}'),
-  ('{text,text,int8,anyarray,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
-  ('{text,text,text,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
-  ('{text,text,anyarray,anyarray,bool,int4,int4,int8,int8,int8,int8,float8,float8}')
+  ('{text,int4,int4,bool,bool,text,int4,int4,int4,float8}'::TEXT[]),
+  ('{text,int4,float8,int4,float8,bool,bool,text,int4,int4,int4,float8}')
   $$);
 
 

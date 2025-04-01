@@ -35,7 +35,7 @@ SELECT set_eq(
 
 -- parameter types
 SELECT function_types_eq('pgr_full_version',
-    $$SELECT  '{text,text,text,text,text,text,text,text,text}'::TEXT[] $$
+    $$VALUES ('{text,text,text,text,text,text,text,text,text}'::TEXT[])$$
 );
 
 

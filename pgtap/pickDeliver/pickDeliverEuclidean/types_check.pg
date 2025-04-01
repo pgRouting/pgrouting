@@ -35,8 +35,8 @@ SELECT bag_has(
 );
 
 SELECT function_types_eq('pgr_pickdelivereuclidean',
-    $$SELECT
-    '{text,text,float8,int4,int4,int4,int4,int8,int4,int4,int8,float8,float8,float8,float8,float8,float8}'::TEXT[]
+    $$VALUES
+    ('{text,text,float8,int4,int4,int4,int4,int8,int4,int4,int8,float8,float8,float8,float8,float8,float8}'::TEXT[])
     $$);
 
 SELECT finish();

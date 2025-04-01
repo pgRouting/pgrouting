@@ -205,6 +205,7 @@ ELSE
 
   RETURN QUERY SELECT function_types_eq(fn,
     $$VALUES
+    ('{text,int8,int8,bool,int4,int4,int8,int8,float8,float8}'::TEXT[]),
     ('{text,int8,anyarray,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
     ('{text,anyarray,int8,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
     ('{text,anyarray,anyarray,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])

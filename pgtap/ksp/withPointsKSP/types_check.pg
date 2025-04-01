@@ -66,7 +66,7 @@ BEGIN
       ),
 
       function_types_eq('pgr_withpointsksp',
-        $$SELECT '{text,text,int8,int8,int4,bool,bool,bpchar,bool,int4,int4,int4,int8,int8,float8,float8}'::TEXT[] $$
+        $$VALUES '{text,text,int8,int8,int4,bool,bool,bpchar,bool,int4,int4,int4,int8,int8,float8,float8}'::TEXT[])$$
       )
     )END;
 
