@@ -27,8 +27,7 @@ SELECT has_function('pgr_stoerwagner', ARRAY['text']);
 SELECT function_returns('pgr_stoerwagner', ARRAY['text'], 'setof record');
 
 
-SELECT set_eq(
-  $$SELECT  proargnames from pg_proc where proname = 'pgr_stoerwagner'$$,
+SELECT function_args_eq('pgr_stoerwagner',
   $$VALUES
   ('{"","seq","edge","cost","mincut"}'::TEXT[])
   $$);

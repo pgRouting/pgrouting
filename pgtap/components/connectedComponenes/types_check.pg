@@ -25,8 +25,7 @@ SELECT has_function('pgr_connectedcomponents');
 SELECT has_function('pgr_connectedcomponents',    ARRAY['text']);
 SELECT function_returns('pgr_connectedcomponents', ARRAY['text'], 'setof record');
 
-SELECT set_eq(
-  $$SELECT proargnames from pg_proc where proname = 'pgr_connectedcomponents'$$,
+SELECT function_args_eq('pgr_connectedcomponents',
   $$SELECT '{"", "seq","component","node"}'::TEXT[] $$
 );
 

@@ -37,8 +37,7 @@ BEGIN
   RETURN QUERY SELECT function_returns('pgr_cuthillmckeeordering', ARRAY['text'],  'setof record');
 
   RETURN QUERY
-  SELECT bag_eq(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_cuthillmckeeordering'$$,
+  SELECT function_args_eq('pgr_cuthillmckeeordering',
     $$SELECT  '{"","seq","node"}'::TEXT[] $$
   );
 

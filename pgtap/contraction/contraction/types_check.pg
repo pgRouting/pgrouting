@@ -29,12 +29,12 @@ BEGIN
     RETURN QUERY SELECT has_function('pgr_contraction', ARRAY['text','boolean','integer[]','integer','bigint[]']);
     RETURN QUERY SELECT function_returns('pgr_contraction', ARRAY['text','boolean','integer[]','integer','bigint[]'], 'setof record');
 
-    RETURN QUERY SELECT set_eq(
-      $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_contraction'$$,
+    RETURN QUERY
+    SELECT function_args_eq('pgr_contraction',
       $$VALUES
       ('{"","",max_cycles,forbidden_vertices,directed,type,id,contracted_vertices,source,target,cost}'::TEXT[]),
       ('{"",directed,methods,cycles,forbidden,type,id,contracted_vertices,source,target,cost}'::TEXT[])
-      $$,'pgr_contraction: Column names');
+      $$);
 
     RETURN QUERY SELECT function_types_eq('pgr_contraction',
       $$VALUES ('{text,bool,_int4,int4,_int8,text,int8,_int8,int8,int8,float8}'::TEXT[]),
@@ -42,8 +42,8 @@ BEGIN
 
   ELSE
 
-    RETURN QUERY SELECT set_eq(
-      $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_contraction'$$,
+    RETURN QUERY
+    SELECT function_args_eq('pgr_contraction',
       $$VALUES
       ('{"", "", "max_cycles", "forbidden_vertices", "directed", "type", "id", "contracted_vertices", "source", "target", "cost"}'::TEXT[])
       $$);

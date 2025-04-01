@@ -38,8 +38,7 @@ RETURN QUERY SELECT has_function('pgr_lengauertarjandominatortree', ARRAY['text'
 RETURN QUERY SELECT function_returns('pgr_lengauertarjandominatortree', ARRAY['text','bigint'],  'setof record');
 
 RETURN QUERY
-SELECT bag_has(
-  $$SELECT  proargnames from pg_proc where proname = 'pgr_lengauertarjandominatortree'$$,
+SELECT function_args_eq('pgr_lengauertarjandominatortree',
   $$SELECT  '{"","","seq","vertex_id","idom"}'::TEXT[] $$
 );
 

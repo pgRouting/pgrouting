@@ -47,8 +47,8 @@ END;
 SELECT CASE
 WHEN min_version('3.2.0') THEN
   collect_tap(
-    set_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_edgedisjointpaths'$$,
+
+    function_args_eq('pgr_edgedisjointpaths',
       $$VALUES
       ('{"","","","directed","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","seq","path_id","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
@@ -68,8 +68,8 @@ WHEN min_version('3.2.0') THEN
   )
 ELSE
   collect_tap(
-    set_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_edgedisjointpaths'$$,
+
+    function_args_eq('pgr_edgedisjointpaths',
       $$VALUES
       ('{"","","","directed","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","seq","path_id","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),

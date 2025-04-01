@@ -31,8 +31,7 @@ BEGIN
   RETURN QUERY SELECT function_returns('pgr_transitiveclosure', ARRAY['text'],  'setof record');
 
   RETURN QUERY
-  SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_transitiveclosure'$$,
+  SELECT function_args_eq('pgr_transitiveclosure',
     $$SELECT  '{"","seq","vid","target_array"}'::TEXT[] $$
   );
 

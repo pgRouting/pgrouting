@@ -25,8 +25,7 @@ SELECT has_function('pgr_dijkstracostmatrix');
 SELECT has_function('pgr_dijkstracostmatrix', ARRAY['text','anyarray','boolean']);
 SELECT function_returns('pgr_dijkstracostmatrix', ARRAY['text','anyarray','boolean'],'setof record');
 
-SELECT set_eq(
-  $$SELECT  proargnames from pg_proc where proname = 'pgr_dijkstracostmatrix'$$,
+SELECT function_args_eq('pgr_dijkstracostmatrix',
   $$VALUES
   ('{"","","directed","start_vid","end_vid","agg_cost"}'::TEXT[])
   $$);
