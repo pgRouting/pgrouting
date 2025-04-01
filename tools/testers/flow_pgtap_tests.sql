@@ -198,14 +198,13 @@ BEGIN
         ('{"","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[])
         $$),
 
-      set_eq(
-        format($$SELECT proallargtypes FROM pg_proc WHERE proname = %1$L$$, fn_name),
+      function_types_eq(fn_name,
         $$VALUES
-        ('{25,20,20,23,20,20,20,20,20}'::OID[]),
-        ('{25,20,2277,23,20,20,20,20,20}'::OID[]),
-        ('{25,2277,20,23,20,20,20,20,20}'::OID[]),
-        ('{25,2277,2277,23,20,20,20,20,20}'::OID[]),
-        ('{25,25,23,20,20,20,20,20}'::OID[])
+        ('{text,int8,int8,int4,int8,int8,int8,int8,int8}'::TEXT[]),
+        ('{text,int8,anyarray,int4,int8,int8,int8,int8,int8}'::TEXT[]),
+        ('{text,anyarray,int8,int4,int8,int8,int8,int8,int8}'::TEXT[]),
+        ('{text,anyarray,anyarray,int4,int8,int8,int8,int8,int8}'::TEXT[]),
+        ('{text,text,int4,int8,int8,int8,int8,int8}'::TEXT[])
         $$)
     )
   ELSE
@@ -219,13 +218,12 @@ BEGIN
         ('{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[])
         $$),
 
-      set_eq(
-        format($$SELECT proallargtypes FROM pg_proc WHERE proname = %1$L$$, fn_name),
+      function_types_eq(fn_name,
         $$VALUES
-        ('{25,20,20,23,20,20,20,20,20}'::OID[]),
-        ('{25,20,2277,23,20,20,20,20,20}'::OID[]),
-        ('{25,2277,20,23,20,20,20,20,20}'::OID[]),
-        ('{25,2277,2277,23,20,20,20,20,20}'::OID[])
+        ('{text,int8,int8,int4,int8,int8,int8,int8,int8}'::TEXT[]),
+        ('{text,int8,anyarray,int4,int8,int8,int8,int8,int8}'::TEXT[]),
+        ('{text,anyarray,int8,int4,int8,int8,int8,int8,int8}'::TEXT[]),
+        ('{text,anyarray,anyarray,int4,int8,int8,int8,int8,int8}'::TEXT[])
         $$)
     )
 END;

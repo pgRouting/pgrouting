@@ -184,9 +184,8 @@ BEGIN
     'parameters', 'parameter names');
 
   RETURN QUERY
-  SELECT set_eq(
-    format($$SELECT proargnames FROM pg_proc WHERE proname = %1$L$$, fn),
-    $$VALUES ('{25,20,20,23,20,701,701}'::OID[]) $$, 'parameter_types'
+  SELECT function_types_eq(fn,
+    $$VALUES ('{text,int8,int8,23,int8,float8,float8}'::TEXT[]) $$
   );
 END;
 $BODY$
@@ -233,10 +232,8 @@ BEGIN
 
   RETURN QUERY
   -- parameter types
-  SELECT set_eq(
-    format($$SELECT proallargtypes FROM pg_proc WHERE proname = %1$L$$, fn),
-    $$SELECT '{25,20,20,701,23,23,23,701,701,701,16,23,20,701,701}'::OID[] $$,
-    fn || ' parameter types'
+  SELECT function_types_eq(fn,
+    $$SELECT '{text,int8,int8,float8,int4,int4,int4,float8,float8,float8,bool,int4,int8,float8,float8}'::TEXT[] $$
   );
 END;
 $BODY$

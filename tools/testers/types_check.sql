@@ -4,18 +4,18 @@ $BODY$
 DECLARE
   params_types_words TEXT[] = ARRAY['text'];
   params_names TEXT[] = ARRAY[''];
-  params_numbers OID[] = ARRAY[25];
+  params_numbers TEXT[] = ARRAY['text'];
 
   optional_params_types_words TEXT[] = ARRAY['boolean'];
   optional_params_names TEXT[] = ARRAY['directed'];
-  optional_params_numbers OID[] = ARRAY[16];
+  optional_params_numbers TEXT[] = ARRAY['bool'];
 
   return_params_names TEXT[];
-  return_params_numbers OID[];
+  return_params_numbers TEXT[];
   return_params_names_start TEXT[] = ARRAY['seq','path_seq'];
-  return_params_numbers_start OID[] = ARRAY[23,23];
+  return_params_numbers_start TEXT[] = '{int4,int4}'::TEXT[];
   return_params_names_end TEXT[] = ARRAY['node','edge','cost','agg_cost'];
-  return_params_numbers_end OID[] = ARRAY[20,20,701,701];
+  return_params_numbers_end TEXT[] = '{int8,int8,float8,float8}'::TEXT;
 
   start_v TEXT = 'start_vid';
   end_v TEXT = 'end_vid';
@@ -33,14 +33,14 @@ BEGIN
   IF fn LIKE '%trsp%' THEN
     params_types_words := params_types_words || 'text'::TEXT;
     params_names := params_names || ARRAY[''];
-    params_numbers := params_numbers || ARRAY[25::OID];
+    params_numbers := params_numbers || ARRAY['text'];
   END IF;
 
   IF fn = 'pgr_withpoints' THEN
     return_params_names = return_params_names || ARRAY['start_pid','end_pid'];
   ELSE
     return_params_names = return_params_names || ARRAY['start_vid','end_vid'];
-    return_params_numbers = return_params_numbers || ARRAY[20,20]::OID[];
+    return_params_numbers = return_params_numbers || ARRAY['int8','int8']::TEXT[];
   END IF;
   return_params_names = return_params_names || return_params_names_end;
   return_params_numbers = return_params_numbers || return_params_numbers_end;
@@ -48,10 +48,10 @@ BEGIN
   IF fn LIKE '%withpoints%' THEN
     params_types_words := params_types_words || 'text'::TEXT;
     params_names := params_names || ARRAY[''];
-    params_numbers := params_numbers || ARRAY[25::OID];
+    params_numbers := params_numbers || ARRAY['text'];
     optional_params_types_words := optional_params_types_words || ARRAY['character','boolean'];
     optional_params_names := optional_params_names || ARRAY['driving_side','details'];
-    optional_params_numbers := optional_params_numbers || ARRAY[1042::OID, 16::OID];
+    optional_params_numbers := optional_params_numbers || ARRAY['bpchar','bool'];
   END IF;
 
 
@@ -104,26 +104,25 @@ BEGIN
     ),'proargnames ' || fn);
 
     RETURN QUERY
-    SELECT bag_has(
-      format($$SELECT proallargtypes from pg_proc where proname = %1$L$$, fn),
-      format('VALUES (%1$L::OID[]),(%2$L::OID[]),(%3$L::OID[]),(%4$L::OID[])',
+    SELECT function_types_eq(fn,
+      format('VALUES (%1$L::TEXT[]),(%2$L::TEXT[]),(%3$L::TEXT[]),(%4$L::TEXT[])',
         -- one to one
         '{' || array_to_string(
-          params_numbers || ARRAY[20,20]::OID[] || optional_params_numbers || return_params_numbers_start || return_params_numbers_end,',')
+          params_numbers || '{int8,int8}'::TEXT[] || optional_params_numbers || return_params_numbers_start || return_params_numbers_end,',')
         || '}',
         -- one to many
         '{' || array_to_string(
-          params_numbers || ARRAY[20,2277]::OID[] || optional_params_numbers || return_params_numbers_start || 20::OID || return_params_numbers_end,',')
+          params_numbers || '{int8,anyarray}'::TEXT[] || optional_params_numbers || return_params_numbers_start || 'int8' || return_params_numbers_end,',')
         || '}',
         -- many to one
         '{' || array_to_string(
-          params_numbers || ARRAY[2277,20]::OID[] || optional_params_numbers || return_params_numbers_start || 20::OID || return_params_numbers_end,',')
+          params_numbers || '{anyarray,int8}'::TEXT[] || optional_params_numbers || return_params_numbers_start || 'int8'  || return_params_numbers_end,',')
         || '}',
         -- many to many
         '{' || array_to_string(
-          params_numbers || ARRAY[2277,2277]::OID[] || optional_params_numbers || return_params_numbers_start || ARRAY[20,20]::OID[] || return_params_numbers_end,',')
+          params_numbers || '{anyarray,anyarray}'::TEXT[] || optional_params_numbers || return_params_numbers_start || '{int8,int8}'::TEXT[] || return_params_numbers_end,',')
         || '}'
-        ),'proallargtypes ' || fn);
+        ));
 
     IF (min_version('3.1.0') AND fn = 'pgr_dijkstra') OR (min_version('3.2.0') AND fn = 'pgr_withpoints') THEN
       -- combinations
@@ -137,11 +136,10 @@ BEGIN
         ),'proargnames ' || fn);
 
       RETURN QUERY
-      SELECT bag_has(
-        format($$SELECT proallargtypes from pg_proc where proname = %1$L$$, fn),
-        format('VALUES (%1$L::OID[])',
+      SELECT function_types_eq(fn,
+        format('VALUES (%1$L::TEXT[])',
           '{' || array_to_string(
-            params_numbers || 25::OID || optional_params_numbers || return_params_numbers_start || ARRAY[20,20]::OID[] || return_params_numbers_end,',')
+            params_numbers || 'text'::TEXT || optional_params_numbers || return_params_numbers_start || '{int8,int8}'::TEXT[] || return_params_numbers_end,',')
           || '}'
       ),'proallargtypes ' || fn);
 
@@ -163,30 +161,29 @@ BEGIN
   ),'proargnames ' || fn);
 
   RETURN QUERY
-  SELECT bag_has(
-    format($$SELECT proallargtypes from pg_proc where proname = %1$L$$, fn),
-    format('VALUES (%1$L::OID[]),(%2$L::OID[]),(%3$L::OID[]),(%4$L::OID[])',
+  SELECT function_types_has(fn,
+    format('VALUES (%1$L::TEXT[]),(%2$L::TEXT[]),(%3$L::TEXT[]),(%4$L::TEXT[])',
       -- one to one
       '{' || array_to_string(
-        params_numbers || ARRAY[20,20]::OID[] || optional_params_numbers || return_params_numbers,',')
+        params_numbers || '{int8,int8}'::TEXT[] || optional_params_numbers || return_params_numbers,',')
       || '}',
       -- one to many
       '{' || array_to_string(
-        params_numbers || ARRAY[20,2277]::OID[] || optional_params_numbers || return_params_numbers,',')
+        params_numbers || '{int8,anyarray}'::TEXT[] || optional_params_numbers || return_params_numbers,',')
       || '}',
       -- many to one
       '{' || array_to_string(
-        params_numbers || ARRAY[2277,20]::OID[] || optional_params_numbers || return_params_numbers,',')
+        params_numbers || '{anyarray,int8}'::TEXT[] || optional_params_numbers || return_params_numbers,',')
       || '}',
       -- many to many
       '{' || array_to_string(
-        params_numbers || ARRAY[2277,2277]::OID[] || optional_params_numbers || return_params_numbers,',')
+        params_numbers || '{anyarray,anyarray}'::TEXT[] || optional_params_numbers || return_params_numbers,',')
       || '}',
       -- combinations
       '{' || array_to_string(
-        params_numbers || 25::OID || optional_params_numbers || return_params_numbers,',')
+        params_numbers || 'text'::TEXT || optional_params_numbers || return_params_numbers,',')
       || '}'
-    ),'proallargtypes ' || fn);
+    ));
 
 END;
 $BODY$
@@ -199,14 +196,14 @@ DECLARE
   -- edges sql
   params_types_words TEXT[] = ARRAY['text'];
   params_names TEXT[] = ARRAY[''];
-  params_numbers OID[] = ARRAY[25];
+  params_numbers TEXT[] = ARRAY['text'];
 
   optional_params_types_words TEXT[] = ARRAY['boolean','boolean','boolean'];
   optional_params_names TEXT[] = ARRAY['directed','strict','u_turn_on_edge'];
-  optional_params_numbers OID[] = ARRAY[16,16,16];
+  optional_params_numbers TEXT[] = '{bool,bool,bool}'::TEXT[];
 
   return_params_names TEXT[] = ARRAY['seq','path_id','path_seq','start_vid','end_vid','node','edge','cost','agg_cost','route_agg_cost'];
-  return_params_numbers OID[] = ARRAY[23,23,23,20,20,20,20,701,701,701];
+  return_params_numbers TEXT[] = '{int4,int4,int4,int8,int8,int8,int8,float8,float8,float8}'::TEXT[];
 
 BEGIN
   IF fn IN ('pgr_trspvia','pgr_trspvia_withpoints','pgr_withpointsvia') AND NOT min_version('3.4.0') THEN
@@ -218,24 +215,24 @@ BEGIN
     -- restrictions sql
     params_types_words := params_types_words || 'text'::TEXT;
     params_names := params_names || ARRAY[''];
-    params_numbers := params_numbers || ARRAY[25::OID];
+    params_numbers := params_numbers || ARRAY['text'];
   END IF;
 
   IF fn LIKE '%withpoints%' THEN
     -- points sql
     params_types_words := params_types_words || 'text'::TEXT;
     params_names := params_names || ARRAY[''];
-    params_numbers := params_numbers || ARRAY[25::OID];
+    params_numbers := params_numbers || ARRAY['text'];
     -- points optionals
     optional_params_types_words := optional_params_types_words || ARRAY['character','boolean'];
     optional_params_names := optional_params_names || ARRAY['driving_side','details'];
-    optional_params_numbers := optional_params_numbers || ARRAY[1042::OID, 16::OID];
+    optional_params_numbers := optional_params_numbers || '{bpchar,bool}'::TEXT[];
   END IF;
 
   -- vias
   params_types_words := params_types_words || 'anyarray'::TEXT;
   params_names := params_names || ARRAY[''];
-  params_numbers := params_numbers || ARRAY[2277::OID];
+  params_numbers := params_numbers || ARRAY['anyarray'];
 
   RETURN QUERY SELECT has_function(fn);
   RETURN QUERY SELECT has_function(fn, params_types_words || optional_params_types_words);
@@ -251,15 +248,14 @@ BEGIN
       || '"}'),
     'proargnames ' || fn);
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT proallargtypes from pg_proc where proname = %1$L$$, fn),
+  RETURN QUERY SELECT function_types_eq(fn,
     format(
-      $$VALUES (%1$L::OID[])$$,
+      $$VALUES (%1$L::TEXT[])$$,
       -- one via
       '{"' || array_to_string(
         params_numbers || optional_params_numbers || return_params_numbers,'","')
-      || '"}'),
-    'proargnames ' || fn);
+      || '"}'));
+
 
 END;
 $BODY$
