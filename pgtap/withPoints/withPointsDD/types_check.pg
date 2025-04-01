@@ -74,7 +74,7 @@ ELSE collect_tap(
   function_types_eq('pgr_withpointsdd',
     $$VALUES
     ('{text,text,anyarray,float8,bool,bpchar,bool,bool,int4,int8,int8,int8,float8,float8}'::TEXT[]),
-    ('{text,text,int8,float8,bool,bpchar,bool,int4,int8,int8,float8,float8}')
+    ('{text,text,int8,float8,bool,bpchar,bool,int4,int8,int8,float8,float8}'::TEXT[])
     $$)
 )
 END;
