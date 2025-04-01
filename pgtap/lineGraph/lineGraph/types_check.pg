@@ -30,9 +30,8 @@ SELECT set_eq(
   $$SELECT '{"","directed","seq","source","target","cost","reverse_cost"}'::TEXT[] $$
 );
 
-SELECT set_eq(
-  $$SELECT proallargtypes FROM pg_proc WHERE proname = 'pgr_linegraph'$$,
-  $$SELECT '{25,16,23,20,20,701,701}'::OID[] $$
+SELECT function_types_eq('pgr_linegraph',
+  $$SELECT '{text,bool,int4,int8,int8,float8,float8}'::TEXT[] $$
 );
 
 SELECT finish();

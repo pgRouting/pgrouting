@@ -31,10 +31,9 @@ SELECT set_eq(
   ('{"","","","directed","driving_side","start_vid","end_vid","agg_cost"}'::TEXT[])
   $$);
 
-SELECT set_eq(
-  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpointscostmatrix'$$,
+SELECT function_types_eq('pgr_withpointscostmatrix',
   $$VALUES
-  ('{25,25,2277,16,1042,20,20,701}'::OID[])
+  ('{text,text,anyarray,bool,bpchar,int8,int8,float8}'::TEXT[])
   $$);
 
 SELECT finish();

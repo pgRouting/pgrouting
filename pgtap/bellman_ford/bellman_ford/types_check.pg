@@ -64,14 +64,13 @@ BEGIN
         $$
       ),
 
-      set_has(
-        $$SELECT  proallargtypes from pg_proc where proname = 'pgr_bellmanford'$$,
+      function_types_eq('pgr_bellmanford',
         $$VALUES
-        ('{25,20,20,16,23,23,20,20,701,701}'::OID[]),
-        ('{25,20,2277,16,23,23,20,20,20,701,701}'::OID[]),
-        ('{25,2277,20,16,23,23,20,20,20,701,701}'::OID[]),
-        ('{25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[]),
-        ('{25,25,16,23,23,20,20,20,20,701,701}'::OID[])
+        ('{text,int8,int8,bool,int4,int4,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,int8,anyarray,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,anyarray,int8,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,anyarray,anyarray,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,text,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
         $$
       )
     )
@@ -87,13 +86,12 @@ BEGIN
         $$
       ),
 
-      set_eq(
-        $$SELECT  proallargtypes from pg_proc where proname = 'pgr_bellmanford'$$,
+      function_types_eq('pgr_bellmanford',
         $$VALUES
-        ('{25,20,20,16,23,23,20,20,701,701}'::OID[]),
-        ('{25,20,2277,16,23,23,20,20,20,701,701}'::OID[]),
-        ('{25,2277,20,16,23,23,20,20,20,701,701}'::OID[]),
-        ('{25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[])
+        ('{text,int8,int8,bool,int4,int4,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,int8,anyarray,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,anyarray,int8,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+        ('{text,anyarray,anyarray,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
         $$
       )
     )

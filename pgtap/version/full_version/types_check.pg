@@ -34,9 +34,8 @@ SELECT set_eq(
 );
 
 -- parameter types
-SELECT set_eq(
-    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_full_version'$$,
-    $$SELECT  '{25,25,25,25,25,25,25,25,25}'::OID[] $$
+SELECT function_types_eq('pgr_full_version',
+    $$SELECT  '{text,text,text,text,text,text,text,text,text}'::TEXT[] $$
 );
 
 
