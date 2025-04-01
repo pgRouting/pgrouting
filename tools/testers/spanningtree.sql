@@ -11,9 +11,8 @@ BEGIN
     $$SELECT '{"","edge","cost"}'::TEXT[] $$
   );
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$, fn),
-    $$SELECT '{25,20,701}'::OID[] $$
+  RETURN QUERY SELECT function_types_eq(fn,
+    $$SELECT '{text,int8,float8}'::TEXT[] $$
   );
 
 END;
@@ -40,11 +39,10 @@ BEGIN
     $$
   );
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$, fn),
+  RETURN QUERY SELECT function_types_eq(fn,
     $$VALUES
-    ('{25,20,20,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,2277,20,20,20,20,20,20,701,701}'::OID[])
+    ('{text,int8,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,anyarray,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[])
     $$
   );
 
@@ -57,11 +55,10 @@ BEGIN
     $$
   );
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$, fn),
+  RETURN QUERY SELECT function_types_eq(fn,
     $$VALUES
-    ('{25,20,20,20,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,2277,20,20,20,20,20,20,20,701,701}'::OID[])
+    ('{text,int8,int8,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,anyarray,int8,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[])
     $$
   );
 
@@ -96,15 +93,14 @@ BEGIN
     $$
   );
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$, fn),
+  RETURN QUERY SELECT function_types_eq(fn,
     $$VALUES
-    ('{25,20,701,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,2277,701,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,20,1700,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,2277,1700,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,20,701,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,2277,701,20,20,20,20,20,701,701}'::OID[])
+    ('{text,int8,float8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,anyarray,float8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,int8,numeric,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,anyarray,numeric,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,int8,float8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,anyarray,float8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[])
     $$
   );
 
@@ -117,15 +113,14 @@ BEGIN
     $$
   );
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$, fn),
+  RETURN QUERY SELECT function_types_eq(fn,
     $$VALUES
-    ('{25,20,701,20,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,2277,701,20,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,20,1700,20,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,2277,1700,20,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,20,701,20,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,2277,701,20,20,20,20,20,20,701,701}'::OID[])
+    ('{text,int8,float8,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,anyarray,float8,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,int8,numeric,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,anyarray,numeric,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,int8,float8,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,anyarray,float8,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[])
     $$
   );
 

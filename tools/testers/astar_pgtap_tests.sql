@@ -3,12 +3,12 @@ CREATE OR REPLACE FUNCTION astar_types_check(fn TEXT) RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
 the_type_name TEXT = 'double precision';
-the_type_numb TEXT = '701';
+the_type_numb TEXT = 'float8';
 
 BEGIN
   IF fn = 'pgr_bdastar' THEN
     the_type_name = 'numeric';
-    the_type_numb = '1700';
+    the_type_numb = 'numeric';
   END IF;
 
   RETURN QUERY SELECT has_function(fn);
@@ -41,15 +41,14 @@ BEGIN
       ('{"","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
       $$, 'Column names');
 
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$,fn),
+    RETURN QUERY SELECT function_types_eq(fn,
       format($$VALUES
-      ('{25,20,20,16,23,%1$s,%1$s,    23,23,20,20,20,20,701,701}'::OID[]),
-      ('{25,20,2277,16,23,%1$s,%1$s,  23,23,20,20,20,20,701,701}'::OID[]),
-      ('{25,2277,20,16,23,%1$s,%1$s,  23,23,20,20,20,20,701,701}'::OID[]),
-      ('{25,2277,2277,16,23,%1$s,%1$s,23,23,20,20,20,20,701,701}'::OID[]),
-      ('{25,25,16,23,%1$s,%1$s,       23,23,20,20,20,20,701,701}'::OID[])
-      $$,the_type_numb), 'Column types');
+      ('{text,int8,int8,bool,int4,%1$s,%1$s,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,int8,anyarray,bool,int4,%1$s,%1$s,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,int8,bool,int4,%1$s,%1$s,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,anyarray,bool,int4,%1$s,%1$s,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,text,bool,int4,%1$s,%1$s,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
+      $$,the_type_numb));
 
   ELSIF min_version('3.2.0') THEN
     RETURN QUERY SELECT set_eq(
@@ -62,15 +61,14 @@ BEGIN
       ('{"","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
       $$, 'Old column names');
 
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$,fn),
+    RETURN QUERY SELECT function_types_eq(fn,
       format($$VALUES
-      ('{25,20,20,16,23,%1$s,%1$s,23,23,20,20,701,701}'::OID[]),
-      ('{25,20,2277,16,23,%1$s,%1$s,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,20,16,23,%1$s,%1$s,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,2277,16,23,%1$s,%1$s,23,23,20,20,20,20,701,701}'::OID[]),
-      ('{25,25,16,23,%1$s,%1$s,23,23,20,20,20,20,701,701}'::OID[])
-      $$,the_type_numb), 'Old column types');
+      ('{text,int8,int8,bool,int4,%1$s,%1$s,int4,int4,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,int8,anyarray,bool,int4,%1$s,%1$s,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,int8,bool,int4,%1$s,%1$s,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,anyarray,bool,int4,%1$s,%1$s,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,text,bool,int4,%1$s,%1$s,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
+      $$,the_type_numb));
   ELSE
     RETURN QUERY SELECT set_eq(
       format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
@@ -81,14 +79,13 @@ BEGIN
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
       $$, 'Before combinations column names');
 
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$,fn),
+    RETURN QUERY SELECT function_types_eq(fn,
       format($$VALUES
-      ('{25,20,20,16,23,%1$s,%1$s,23,23,20,20,701,701}'::OID[]),
-      ('{25,20,2277,16,23,%1$s,%1$s,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,20,16,23,%1$s,%1$s,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,2277,16,23,%1$s,%1$s,23,23,20,20,20,20,701,701}'::OID[])
-      $$,the_type_numb), 'Before combinations column types');
+      ('{text,int8,int8,bool,int4,%1$s,%1$s,int4,int4,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,int8,anyarray,bool,int4,%1$s,%1$s,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,int8,bool,int4,%1$s,%1$s,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,anyarray,bool,int4,%1$s,%1$s,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
+      $$,the_type_numb));
   END IF;
 
 END;
@@ -99,12 +96,12 @@ CREATE OR REPLACE FUNCTION astarcost_types_check(fn TEXT) RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
 the_type_name TEXT = 'double precision';
-the_type_numb TEXT = '701';
+the_type_numb TEXT = 'float8';
 
 BEGIN
   IF fn = 'pgr_bdastarcost' THEN
     the_type_name = 'numeric';
-    the_type_numb = '1700';
+    the_type_numb = 'numeric';
   END IF;
 
   RETURN QUERY SELECT has_function(fn);
@@ -137,14 +134,13 @@ BEGIN
       ('{"","","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[])
       $$);
 
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$,fn),
+    RETURN QUERY SELECT function_types_eq(fn,
       format($$VALUES
-      ('{25,20,20,16,23,%1$s,%1$s,20,20,701}'::OID[]),
-      ('{25,20,2277,16,23,%1$s,%1$s,20,20,701}'::OID[]),
-      ('{25,2277,20,16,23,%1$s,%1$s,20,20,701}'::OID[]),
-      ('{25,2277,2277,16,23,%1$s,%1$s,20,20,701}'::OID[]),
-      ('{25,25,16,23,%1$s,%1$s,20,20,701}'::OID[])
+      ('{text,int8,int8,bool,int4,%1$s,%1$s,int8,int8,float8}'::TEXT[]),
+      ('{text,int8,anyarray,bool,int4,%1$s,%1$s,int8,int8,float8}'::TEXT[]),
+      ('{text,anyarray,int8,bool,int4,%1$s,%1$s,int8,int8,float8}'::TEXT[]),
+      ('{text,anyarray,anyarray,bool,int4,%1$s,%1$s,int8,int8,float8}'::TEXT[]),
+      ('{text,text,bool,int4,%1$s,%1$s,int8,int8,float8}'::TEXT[])
       $$,the_type_numb));
   ELSE
     RETURN QUERY SELECT set_eq(
@@ -156,13 +152,12 @@ BEGIN
       ('{"","","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[])
       $$);
 
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$,fn),
+    RETURN QUERY SELECT function_types_eq(fn,
       format($$VALUES
-      ('{25,20,20,16,23,%1$s,%1$s,20,20,701}'::OID[]),
-      ('{25,20,2277,16,23,%1$s,%1$s,20,20,701}'::OID[]),
-      ('{25,2277,20,16,23,%1$s,%1$s,20,20,701}'::OID[]),
-      ('{25,2277,2277,16,23,%1$s,%1$s,20,20,701}'::OID[])
+      ('{text,int8,int8,bool,int4,%1$s,%1$s,int8,int8,float8}'::TEXT[]),
+      ('{text,int8,anyarray,bool,int4,%1$s,%1$s,int8,int8,float8}'::TEXT[]),
+      ('{text,anyarray,int8,bool,int4,%1$s,%1$s,int8,int8,float8}'::TEXT[]),
+      ('{text,anyarray,anyarray,bool,int4,%1$s,%1$s,int8,int8,float8}'::TEXT[])
       $$,the_type_numb));
   END IF;
 
@@ -174,12 +169,12 @@ CREATE OR REPLACE FUNCTION astarcostmatrix_types_check(fn TEXT) RETURNS SETOF TE
 $BODY$
 DECLARE
 the_type_name TEXT = 'double precision';
-the_type_numb TEXT = '701';
+the_type_numb TEXT = 'float8';
 
 BEGIN
   IF fn = 'pgr_bdastarcostmatrix' THEN
     the_type_name = 'numeric';
-    the_type_numb = '1700';
+    the_type_numb = 'numeric';
   END IF;
 
   RETURN QUERY SELECT has_function(fn);
@@ -194,10 +189,9 @@ BEGIN
     ('{"","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[])
     $$);
 
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$,fn),
+    RETURN QUERY SELECT function_types_eq(fn,
       format($$VALUES
-      ('{25,2277,16,23,%1$s,%1$s,20,20,701}'::OID[])
+      ('{text,anyarray,bool,int4,%1$s,%1$s,int8,int8,float8}'::TEXT[])
       $$,the_type_numb));
 
 END;
