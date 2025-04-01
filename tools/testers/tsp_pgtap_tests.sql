@@ -179,9 +179,7 @@ BEGIN
   SELECT array['','start_id','end_id','seq','node','cost','agg_cost'];
 
   RETURN QUERY
-  SELECT bag_has(
-    format($$SELECT proargnames FROM pg_proc WHERE proname = %1$L$$, fn),
-    'parameters', 'parameter names');
+  SELECT function_args_eq(fn, 'parameters');
 
   RETURN QUERY
   SELECT function_types_eq(fn,
@@ -218,16 +216,14 @@ BEGIN
 
   -- parameter names
   RETURN QUERY
-  SELECT set_eq(
-    format($$SELECT proargnames FROM pg_proc WHERE proname = %1$L$$, fn),
+  SELECT function_args_eq(fn,
     $$SELECT '{
     "","start_id","end_id",
     "max_processing_time",
     "tries_per_temperature", "max_changes_per_temperature",
     "max_consecutive_non_changes", "initial_temperature",
     "final_temperature", "cooling_factor",
-    "randomize", "seq", "node", "cost", "agg_cost"}'::TEXT[]$$,
-    fn || ' parameter names'
+    "randomize", "seq", "node", "cost", "agg_cost"}'::TEXT[]$$
   );
 
   RETURN QUERY
