@@ -44,12 +44,11 @@ SELECT bag_has(
 );
 
 RETURN QUERY
-SELECT set_eq(
-  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_lengauertarjandominatortree'$$,
+SELECT function_types_eq('pgr_lengauertarjandominatortree',
   $$VALUES
-  ('{25,20,23,20,20}'::OID[])
-  $$
-);
+  ('{text,int8,int4,int8,int8}'::TEXT[])
+  $$);
+
 END;
 $BODY$
 LANGUAGE plpgsql;

@@ -43,10 +43,9 @@ BEGIN
   );
 
   RETURN QUERY
-  SELECT set_eq(
-    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_edgecoloring'$$,
+  SELECT function_types_eq('pgr_edgecoloring',
     $$VALUES
-    ('{25,20,20}'::OID[])
+    ('{text,int8,int8}'::TEXT[])
     $$
   );
 

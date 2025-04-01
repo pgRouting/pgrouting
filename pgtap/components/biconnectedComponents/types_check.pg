@@ -31,9 +31,8 @@ SELECT set_eq(
   $$SELECT '{"", "seq","component","edge"}'::TEXT[] $$
 );
 
-SELECT set_eq(
-  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_biconnectedcomponents'$$,
-  $$SELECT  '{25,20,20,20}'::OID[] $$
+SELECT function_types_eq('pgr_biconnectedcomponents',
+  $$SELECT  '{text,int8,int8,int8}'::TEXT[] $$
 );
 
 SELECT * FROM finish();

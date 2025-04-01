@@ -54,13 +54,13 @@ THEN collect_tap (
     ('{"","","","","directed","driving_side","details","seq","node","edge","cost","agg_cost"}'::TEXT[]),
     ('{"","","","","directed","driving_side","details","equicost","seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
     $$),
-  set_eq(
-    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpointsdd'$$,
+
+  function_types_eq('pgr_withpointsdd',
     $$VALUES
-    ('{25,25,20,701,1042,16,16,20,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,25,2277,701,1042,16,16,16,20,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,25,20,701,16,1042,16,23,20,20,701,701}'::OID[]),
-    ('{25,25,2277,701,16,1042,16,16,23,20,20,20,701,701}'::OID[])
+    ('{text,text,anyarray,float8,bpchar,bool,bool,bool,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,text,int8,float8,bpchar,bool,bool,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,text,int8,float8,bool,bpchar,bool,int4,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,text,anyarray,float8,bool,bpchar,bool,bool,int4,int8,int8,int8,float8,float8}'::TEXT[])
     $$)
 )
 ELSE collect_tap(
@@ -70,11 +70,11 @@ ELSE collect_tap(
     ('{"","","","","directed","driving_side","details","seq","node","edge","cost","agg_cost"}'::TEXT[]),
     ('{"","","","","directed","driving_side","details","equicost","seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
     $$),
-  set_eq(
-    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpointsdd'$$,
+
+  function_types_eq('pgr_withpointsdd',
     $$VALUES
-    ('{25,25,20,701,16,1042,16,23,20,20,701,701}'::OID[]),
-    ('{25,25,2277,701,16,1042,16,16,23,20,20,20,701,701}'::OID[])
+    ('{text,text,anyarray,float8,bool,bpchar,bool,bool,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,text,int8,float8,bool,bpchar,bool,int4,int8,int8,float8,float8}')
     $$)
 )
 END;
