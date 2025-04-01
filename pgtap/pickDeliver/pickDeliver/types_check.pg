@@ -34,8 +34,8 @@ SELECT set_eq(
 );
 
 SELECT function_types_eq('pgr_pickdeliver',
-    $$SELECT
-    '{text,text,text,float8,int4,int4,int4,int4,int8,int4,int4,int8,int8,float8,float8,float8,float8,float8,float8}'::TEXT[]
+    $$VALUES
+    ('{text,text,text,float8,int4,int4,int4,int4,int8,int4,int4,int8,int8,float8,float8,float8,float8,float8,float8}'::TEXT[])
     $$);
 
 SELECT finish();

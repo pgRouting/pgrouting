@@ -82,10 +82,10 @@ ELSE
 
     function_types_eq('pgr_withpoints',
       $$VALUES
-      ('{text,text,int8,int8,16,1042,bool,int4,int4,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,text,int8,anyarray,16,1042,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,text,anyarray,int8,16,1042,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,text,anyarray,anyarray,16,1042,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
+      ('{text,text,int8,int8,bool,bpchar,bool,int4,int4,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,text,int8,anyarray,bool,bpchar,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,text,anyarray,int8,bool,bpchar,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,text,anyarray,anyarray,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
       $$)
   )
 END;
