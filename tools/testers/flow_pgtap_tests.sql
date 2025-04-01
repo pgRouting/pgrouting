@@ -188,8 +188,8 @@ BEGIN
   RETURN QUERY SELECT CASE
   WHEN min_version('3.2.0') THEN
     collect_tap(
-      set_eq(
-        format($$SELECT proargnames FROM pg_proc WHERE proname = %1$L$$, fn_name),
+
+      function_args_eq(fn_name,
         $$VALUES
         ('{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[]),
         ('{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[]),
@@ -209,8 +209,8 @@ BEGIN
     )
   ELSE
     collect_tap(
-      set_eq(
-        format($$SELECT proargnames FROM pg_proc WHERE proname = %1$L$$, fn_name),
+
+      function_args_eq(fn_name,
         $$VALUES
         ('{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[]),
         ('{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[]),

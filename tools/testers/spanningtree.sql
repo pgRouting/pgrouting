@@ -6,8 +6,7 @@ BEGIN
   RETURN QUERY SELECT has_function(fn,    ARRAY['text']);
   RETURN QUERY SELECT function_returns(fn, ARRAY['text'], 'setof record');
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+  RETURN QUERY SELECT function_args_eq(fn,
     $$SELECT '{"","edge","cost"}'::TEXT[] $$
   );
 
@@ -32,8 +31,7 @@ BEGIN
 
   IF NOT min_version('3.7.0') THEN
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+  RETURN QUERY SELECT function_args_eq(fn,
     $$VALUES
     ('{"","","max_depth","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
     $$
@@ -48,8 +46,7 @@ BEGIN
 
   ELSE
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+  RETURN QUERY SELECT function_args_eq(fn,
     $$VALUES
     ('{"","","max_depth","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[])
     $$
@@ -86,8 +83,7 @@ BEGIN
 
   IF NOT min_version('3.7.0') THEN
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+  RETURN QUERY SELECT function_args_eq(fn,
     $$VALUES
     ('{"","","","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
     $$
@@ -106,8 +102,7 @@ BEGIN
 
   ELSE
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+  RETURN QUERY SELECT function_args_eq(fn,
     $$VALUES
     ('{"","","","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[])
     $$
