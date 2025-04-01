@@ -25,8 +25,7 @@ SELECT has_function('pgr_withpointscostmatrix');
 SELECT has_function('pgr_withpointscostmatrix', ARRAY['text','text','anyarray','boolean','character']);
 SELECT function_returns('pgr_withpointscostmatrix', ARRAY['text','text','anyarray','boolean','character'],'setof record');
 
-SELECT set_eq(
-  $$SELECT  proargnames from pg_proc where proname = 'pgr_withpointscostmatrix'$$,
+SELECT function_args_eq('pgr_withpointscostmatrix',
   $$VALUES
   ('{"","","","directed","driving_side","start_vid","end_vid","agg_cost"}'::TEXT[])
   $$);

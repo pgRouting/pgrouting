@@ -51,8 +51,8 @@ END;
 SELECT CASE
 WHEN min_version('3.2.0') THEN
   collect_tap(
-    set_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_withpointscost'$$,
+
+    function_args_eq('pgr_withpointscost',
       $$VALUES
       ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
       ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
@@ -72,8 +72,8 @@ WHEN min_version('3.2.0') THEN
   )
 ELSE
   collect_tap(
-    set_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_withpointscost'$$,
+
+    function_args_eq('pgr_withpointscost',
       $$VALUES
       ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
       ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),

@@ -32,8 +32,8 @@ WHEN min_version('3.4.0') THEN
   collect_tap(
     has_function('pgr_maxcardinalitymatch', ARRAY['text']),
     function_returns('pgr_maxcardinalitymatch', ARRAY['text'], 'setof bigint'),
-    set_eq(
-      $$SELECT proargnames from pg_proc where proname = 'pgr_maxcardinalitymatch'$$,
+
+    function_args_eq('pgr_maxcardinalitymatch',
       $$VALUES
       ('{"","directed","seq","edge","source","target"}'::TEXT[]),
       ('{"","edge"}'::TEXT[])
@@ -48,8 +48,8 @@ WHEN min_version('3.4.0') THEN
   ))
 ELSE
   collect_tap(
-    set_eq(
-      $$SELECT proargnames from pg_proc where proname = 'pgr_maxcardinalitymatch'$$,
+
+    function_args_eq('pgr_maxcardinalitymatch',
       $$SELECT '{"","directed","seq","edge","source","target"}'::TEXT[]$$
     ),
 

@@ -25,8 +25,7 @@ SELECT has_function('pgr_analyzegraph');
 SELECT has_function('pgr_analyzegraph',ARRAY['text','double precision','text','text','text','text','text']);
 SELECT function_returns('pgr_analyzegraph',ARRAY['text','double precision','text','text','text','text','text'],'character varying');
 
-SELECT set_eq(
-  $$SELECT proargnames from pg_proc where proname = 'pgr_analyzegraph'$$,
+SELECT function_args_eq('pgr_analyzegraph',
   $$SELECT '{"","","the_geom","id","source","target","rows_where"}'::TEXT[]$$
 );
 

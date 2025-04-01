@@ -53,8 +53,8 @@ BEGIN
   SELECT CASE
   WHEN min_version('3.2.0') THEN
     collect_tap(
-      set_eq(
-        $$SELECT  proargnames from pg_proc where proname = 'pgr_edwardmoore'$$,
+
+      function_args_eq('pgr_edwardmoore',
         $$VALUES
         ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
         ('{"","","","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
@@ -76,8 +76,8 @@ BEGIN
     )
   ELSE
     collect_tap(
-      set_eq(
-        $$SELECT  proargnames from pg_proc where proname = 'pgr_edwardmoore'$$,
+
+      function_args_eq('pgr_edwardmoore',
         $$VALUES
         ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
         ('{"","","","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
@@ -86,7 +86,7 @@ BEGIN
         $$
       ),
 
-    function_types_eq('pgr_edwardmoore',
+      function_types_eq('pgr_edwardmoore',
         $$VALUES
         ('{text,int8,int8,bool,int4,int4,int8,int8,float8,float8}'::TEXT[]),
         ('{text,int8,anyarray,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
