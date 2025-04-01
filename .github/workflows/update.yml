@@ -91,7 +91,7 @@ jobs:
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build || exit 1
-          cmake -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
+          cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.12 -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
           make -j 4
           sudo make install
 
