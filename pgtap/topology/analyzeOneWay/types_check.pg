@@ -31,7 +31,7 @@ SELECT set_eq(
 );
 
 SELECT function_types_eq('pgr_analyzeoneway',
-  $$SELECT '{text,_text,_text,_text,_text,bool,text,text,text}'::TEXT[]$$
+  $$VALUES ('{text,_text,_text,_text,_text,bool,text,text,text}'::TEXT[])$$
 );
 
 SELECT set_eq(

@@ -32,7 +32,7 @@ SELECT set_eq(
 );
 
 SELECT function_types_eq('pgr_chinesepostman',
-  $$SELECT '{text,int4,int8,int8,float8,float8}'::TEXT[] $$);
+  $$VALUES ('{text,int4,int8,int8,float8,float8}'::TEXT[]) $$);
 
 SELECT * FROM finish();
 ROLLBACK;

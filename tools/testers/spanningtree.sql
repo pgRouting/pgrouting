@@ -12,7 +12,7 @@ BEGIN
   );
 
   RETURN QUERY SELECT function_types_eq(fn,
-    $$SELECT '{text,int8,float8}'::TEXT[] $$
+    $$VALUES ('{text,int8,float8}'::TEXT[])$$
   );
 
 END;
