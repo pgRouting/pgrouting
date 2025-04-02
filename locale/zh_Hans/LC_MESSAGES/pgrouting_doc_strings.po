@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24 14:17+0000\n"
+"POT-Creation-Date: 2025-03-29 23:42+0000\n"
 "PO-Revision-Date: 2024-10-10 19:47+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -4163,6 +4163,10 @@ msgstr ""
 #, fuzzy
 msgid "Removal of SQL deprecated functions"
 msgstr "移除已弃用的函数和签名"
+
+#, fuzzy
+msgid "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+msgstr "_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
 
 msgid ""
 "pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
@@ -20342,4 +20346,3 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
-
