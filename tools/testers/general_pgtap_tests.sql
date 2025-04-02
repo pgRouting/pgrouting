@@ -97,3 +97,12 @@ $BODY$
       SELECT proargnames from pg_catalog.pg_proc where proname = '%1$s'
       $$, $1), $2, $1 || ': Function args names');
 $BODY$ LANGUAGE SQL;
+
+CREATE OR REPLACE FUNCTION function_returns_geom(TEXT)
+RETURNS TEXT AS
+$BODY$
+SELECT set_eq(format($$
+  WITH a AS (SELECT prorettype FROM pg_proc WHERE proname = '%1$s')
+  SELECT typname from a JOIN pg_type ON(oid = prorettype)$$, $1),
+  $$VALUES ('geometry') $$);
+$BODY$ LANGUAGE SQL;
