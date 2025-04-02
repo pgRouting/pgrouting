@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24 14:17+0000\n"
+"POT-Creation-Date: 2025-03-29 23:42+0000\n"
 "PO-Revision-Date: 2024-09-23 01:16+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4065,6 +4065,9 @@ msgid "Removal of unused C/C++ code"
 msgstr ""
 
 msgid "Removal of SQL deprecated functions"
+msgstr ""
+
+msgid "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
 msgstr ""
 
 msgid ""
@@ -18734,4 +18737,3 @@ msgstr ""
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
-

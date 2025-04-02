@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24 14:17+0000\n"
+"POT-Creation-Date: 2025-03-29 23:42+0000\n"
 "PO-Revision-Date: 2025-03-30 01:13+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4443,6 +4443,10 @@ msgstr "Eliminación de código C/C++ no utilizado"
 
 msgid "Removal of SQL deprecated functions"
 msgstr "Eliminación de funciones obsoletas"
+
+#, fuzzy
+msgid "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+msgstr "Firma obsoleta pgr_contraction(text,bigint[],integer,bigint[],boolean)"
 
 msgid ""
 "pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
@@ -10991,8 +10995,8 @@ msgstr "Los nodos verdes son nodos sin salida."
 
 msgid "Node :math:`3` is a dead end node after node :math:`1` is contracted."
 msgstr ""
-"El nodo :math:`3` es sin salida después de haberse contraído el nodo "
-":math:`1`."
+"El nodo :math:`3` es sin salida después de haberse contraído el nodo :math:"
+"`1`."
 
 msgid "``forbidden_vertices``"
 msgstr "``forbidden_vertices``"
@@ -21634,4 +21638,3 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
-
