@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN min_version('3.2.0') THEN plan (5) ELSE plan(1) END;
+SELECT CASE WHEN min_version('3.2.0') THEN plan (4) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION types_check()
 RETURNS SETOF TEXT AS
@@ -39,12 +39,6 @@ RETURN QUERY SELECT function_returns('pgr_isplanar', ARRAY['text'], 'boolean');
 RETURN QUERY
 SELECT function_args_eq('pgr_isplanar',
     $$SELECT  NULL::TEXT[] $$
-);
-
-RETURN QUERY
-SELECT bag_has(
-    $$SELECT  prorettype from pg_proc where proname = 'pgr_isplanar'$$,
-    $$VALUES ( '16'::oid )$$
 );
 
 END;
