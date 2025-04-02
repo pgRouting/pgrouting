@@ -2,7 +2,7 @@
 # Copyright (C) pgRouting Contributors - Version v3.8
 # This file is distributed under the same license as the pgRouting package.
 # Regina Obe <regina@arrival3d.com>, 2023.
-# Wangdapeng <wangdapeng20191008@gmail.com>, 2023.
+# Wangdapeng <wangdapeng20191008@gmail.com>, 2023, 2025.
 # Zuochenwei <zuochenwei5@gmail.com>, 2023, 2024.
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024.
 # Wang Dapeng <wangdapeng20191008@gmail.com>, 2023.
@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-29 23:42+0000\n"
-"PO-Revision-Date: 2024-10-10 19:47+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2025-04-02 09:14+0000\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -415,9 +415,8 @@ msgstr "文档（如果有）可能需要重写。"
 msgid "Documentation examples might need to be automatically generated."
 msgstr "可能需要自动生成文档示例。"
 
-#, fuzzy
 msgid "Might need a lot of feedback from the community."
-msgstr "可能需要社区的大量反馈。"
+msgstr "需要从社区获取大量反馈意见。"
 
 msgid "Might depend on a proposed function of pgRouting"
 msgstr "可能取决于 pgRouting 的拟议功能"
@@ -681,12 +680,11 @@ msgstr "当 ``NOT 0`` 且 ``start_id = 0`` 时，它是第一个和最后一个�
 msgid "References"
 msgstr "参考"
 
-#, fuzzy
 msgid ""
 "`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/"
 "metric_tsp_approx.html>`__"
 msgstr ""
-"`Boost 的 metric appro 的 metric 近似 <https://www.boost.org/libs/graph/doc/"
+"`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/"
 "metric_tsp_approx.html>`__"
 
 msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
@@ -701,9 +699,8 @@ msgstr ""
 "`维基百科：旅行商问题 <https://en.wikipedia.org/wiki/"
 "Traveling_salesman_problem>`__"
 
-#, fuzzy
 msgid "Vehicle Routing Functions - Category"
-msgstr "车辆路由功能 - 类别（实验）"
+msgstr "车辆路径规划函数 - 分类"
 
 msgid "Pickup and delivery problem"
 msgstr "取货和送货问题"
@@ -1843,10 +1840,10 @@ msgstr ""
 msgid ":doc:`bdAstar-family`"
 msgstr ":doc:`bdAstar-family`"
 
-#, fuzzy
 msgid ""
 "`Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__"
-msgstr "https://www.boost.org/libs/graph/doc/astar_search.html"
+msgstr ""
+"`Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/A*_search_algorithm"
 msgstr "https://en.wikipedia.org/wiki/A*_search_algorithm"
@@ -2661,9 +2658,8 @@ msgid ""
 "ending vertex:"
 msgstr "对于起始顶点和结束顶点之间存在路径的大型图:"
 
-#, fuzzy
 msgid "It is expected to terminate faster than pgr_aStar"
-msgstr "预计终止速度比 pgr_astar 更快"
+msgstr "预计其执行速度将快于 pgr_aStar 函数"
 
 msgid ":doc:`aStar-family`"
 msgstr ":doc:`aStar-family`"
@@ -2811,10 +2807,10 @@ msgstr "``edge_id``"
 msgid "Identifier of the color of the edge."
 msgstr "边颜色的标识符。"
 
-#, fuzzy
 msgid ""
 "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
-msgstr "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
+msgstr ""
+"`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
 
 msgid "Components - Family of functions"
 msgstr "分量 - 函数族"
@@ -2849,9 +2845,8 @@ msgstr "收缩 - 函数族"
 msgid ":doc:`pgr_contraction`"
 msgstr ":doc:`pgr_contraction`"
 
-#, fuzzy
 msgid ":doc:`pgr_contractionDeadEnd`"
-msgstr ":doc:`pgr_contraction`"
+msgstr ":doc:`pgr_contractionDeadEnd`"
 
 msgid ""
 "In large graphs, like the road graphs, or electric networks, graph "
@@ -3145,9 +3140,8 @@ msgid ""
 "paths."
 msgstr ":doc:`pgr_KSP` - 使用 Yen 算法和 pgr_dijkstra 来获得 K 条最短路径。"
 
-#, fuzzy
 msgid ":doc:`pgr_dijkstraVia` - Get a route of a sequence of vertices."
-msgstr ":doc:`pgr_dijkstraVia` - 获取一系列顶点的路径。"
+msgstr ":doc:`pgr_dijkstraVia` - 获取经过一系列顶点的路径。"
 
 msgid ":doc:`pgr_dijkstraNear` - Get the route to the nearest vertex."
 msgstr ":doc:`pgr_dijkstraNear` - 获取到最近顶点的路线。"
@@ -3267,9 +3261,8 @@ msgstr ""
 msgid "Undirected graph"
 msgstr "无向图"
 
-#, fuzzy
 msgid "The weighted undirected graph, :math:`G_u(V,E)`, is defined by:"
-msgstr "加权无向图， :math:`G_u(V,E)` 的定义如下："
+msgstr "加权无向图 :math:`G_u(V,E)` 的定义如下："
 
 msgid ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
 msgstr ""
@@ -3554,9 +3547,8 @@ msgstr "类别"
 msgid ":doc:`VRP-category`"
 msgstr ":doc:`VRP-category`"
 
-#, fuzzy
 msgid "Shortest Path Category"
-msgstr "K最短路径 - 类别"
+msgstr "最短路径算法分类"
 
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ":doc:`pgr_bellmanFord`"
@@ -3567,15 +3559,14 @@ msgstr ":doc:`pgr_dagShortestPath`"
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ":doc:`pgr_edwardMoore`"
 
-#, fuzzy
 msgid "Planar Family"
-msgstr "aStar族"
+msgstr "平面图算法族"
 
 msgid ":doc:`pgr_isPlanar`"
 msgstr ":doc:`pgr_isPlanar`"
 
 msgid "Miscellaneous Algorithms"
-msgstr ""
+msgstr "其他算法"
 
 msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
@@ -3639,9 +3630,8 @@ msgid ""
 "returned."
 msgstr "当最大流量为0时则没有流量并返回 **EMPTY SET** 。"
 
-#, fuzzy
 msgid "There is no flow when source has the same value as target."
-msgstr "当 source与 target相同时，没有流量。"
+msgstr "源点与目标点相同时无流通过。"
 
 msgid "Any duplicated values in source or target are ignored."
 msgstr "source或target 中的任何重复值都将被忽略。"
@@ -3960,11 +3950,10 @@ msgstr ":doc:`pgr_kruskal`"
 msgid ":doc:`pgr_kruskalDD`"
 msgstr ":doc:`pgr_kruskalDD`"
 
-#, fuzzy
 msgid ""
 ":doc:`pgr_degree` - Returns a set of vertices and corresponding count of "
 "incident edges to the vertex."
-msgstr ":doc:`pgr_degree` -返回一组顶点以及该顶点对应的关联边数。"
+msgstr ":doc:`pgr_degree` - 返回顶点集及其关联边数统计。"
 
 msgid ":doc:`prim-family`"
 msgstr ":doc:`prim-family`"
@@ -4020,9 +4009,8 @@ msgstr ":doc:`pgr_extractVertices` - 根据边表信息提取顶点信息。"
 msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
 msgstr ":doc:`pgr_trsp` - 转弯限制最短路径 (TRSP)"
 
-#, fuzzy
 msgid "Utilities family"
-msgstr "实用程序"
+msgstr "实用工具函数集"
 
 msgid ":doc:`pgr_findCloseEdges`"
 msgstr ":doc:`pgr_findCloseEdges`"
@@ -4042,9 +4030,8 @@ msgstr ":doc:`drivingDistance-category`"
 msgid ":doc:`KSP-category`"
 msgstr ":doc:`KSP-category`"
 
-#, fuzzy
 msgid ":doc:`spanningTree-category`"
-msgstr ":doc:`spanningTree-family`"
+msgstr ":doc:`spanningTree-category`"
 
 msgid ":doc:`BFS-category`"
 msgstr ":doc:`BFS-category`"
@@ -4067,19 +4054,17 @@ msgstr ":doc:`release_notes`"
 msgid "pgRouting 4.0.0 Release Notes"
 msgstr "pgRouting 4.0.0 发布说明"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.0 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+"查看本版本已关闭的所有议题和拉取请求,请访问：`GitHub 4.0.0版本里程碑关闭列表 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
-#, fuzzy
 msgid "Functions promoted to official"
-msgstr "实验性的功能被提升为提议的。"
+msgstr "正式版功能函数"
 
 msgid "pgr_trsp"
 msgstr "pgr_trsp"
@@ -4112,7 +4097,7 @@ msgid "pgr_withPointsVia"
 msgstr "pgr_withPointsVia"
 
 msgid "Signatures promoted to official"
-msgstr ""
+msgstr "正式版函数签名"
 
 msgid "pgr_aStar(Combinations)"
 msgstr "pgr_aStar(组合)"
@@ -4138,9 +4123,8 @@ msgstr "pgr_dijkstra(组合)"
 msgid "pgr_dijkstraCost(Combinations)"
 msgstr "pgr_dijkstraCost(组合)"
 
-#, fuzzy
 msgid "pgr_KSP(All signatures)"
-msgstr "TSP 旧签名"
+msgstr "pgr_KSP（所有函数签名版本）"
 
 msgid "pgr_boykovKolmogorov(Combinations)"
 msgstr "pgr_boykovKolmogorov (组合)"
@@ -4158,11 +4142,10 @@ msgid "code enhancements:"
 msgstr "代码改进："
 
 msgid "Removal of unused C/C++ code"
-msgstr ""
+msgstr "移除未使用的C/C++代码"
 
-#, fuzzy
 msgid "Removal of SQL deprecated functions"
-msgstr "移除已弃用的函数和签名"
+msgstr "移除已弃用的SQL函数"
 
 #, fuzzy
 msgid "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
@@ -4186,9 +4169,8 @@ msgstr ""
 msgid "pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
 msgstr "pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
 
-#, fuzzy
 msgid "Removal of SQL deprecated internal functions"
-msgstr "移除已弃用的函数和签名"
+msgstr "移除已弃用的SQL内部函数"
 
 msgid "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
 msgstr "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
@@ -4248,9 +4230,8 @@ msgstr "_v4trsp(text,text,anyarray,anyarray,boolean)"
 msgid "_v4trsp(text,text,text,boolean)"
 msgstr "_v4trsp(text,text,text,boolean)"
 
-#, fuzzy
 msgid "Deprecation of internal C/C++ functions"
-msgstr "已废弃的函数"
+msgstr "弃用内部C/C++函数"
 
 #, fuzzy
 msgid "Internal C/C++ functions in legacy"
@@ -4969,7 +4950,7 @@ msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
 msgstr "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
 
 msgid "Removed"
-msgstr ""
+msgstr "已删除的功能"
 
 msgid "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
 msgstr "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
@@ -6132,26 +6113,26 @@ msgid "To get the dead ends:"
 msgstr "获取死端："
 
 msgid "A dead end happens when"
-msgstr ""
+msgstr "死端（Dead End）的形成条件"
 
 msgid ""
 "The vertex is the limit of a cul-de-sac, a no-through road or a no-exit road."
-msgstr ""
+msgstr "死端顶点（Dead End Vertex）的拓扑定义。"
 
 #, fuzzy
 msgid "The vertex is on the limit of the imported graph."
 msgstr "当 ``true`` 时，顶点收缩，它不是收缩图的一部分。"
 
 msgid "If a larger graph is imported then the vertex might not be a dead end"
-msgstr ""
+msgstr "如果导入了更大的图，则该顶点可能不会是死端"
 
 msgid ""
 "Node :math:`4`, is a dead end on the query, even that it visually looks like "
 "an end point of 3 edges."
-msgstr ""
+msgstr "节点 :math:`4` 在查询中是一个死端，即使从视觉上看它是三条边的终点。"
 
 msgid "Is node :math:`4` a dead end or not?"
-msgstr ""
+msgstr "节点 :math:`4` 是死端还是非死端？"
 
 msgid "The answer to that question will depend on the application."
 msgstr ""
@@ -6198,7 +6179,8 @@ msgstr "要获得线性边："
 msgid ""
 "These linear vertices are correct, for example, when those the vertices are "
 "speed bumps, stop signals and the application is taking them into account."
-msgstr ""
+msgstr "当这些顶点表示减速带、停止信号，并且应用程序将其纳入考虑时，这些线性顶点是正"
+"确的。"
 
 #, fuzzy
 msgid ""
@@ -7396,7 +7378,7 @@ msgid "Version 4.0.0"
 msgstr "版本2.0.0"
 
 msgid "All signatures promoted to official."
-msgstr ""
+msgstr "所有签名均已升级为正式版本。"
 
 msgid "Version 3.6.0"
 msgstr "版本3.6.0"
@@ -7939,7 +7921,7 @@ msgid "``pgr_aStar`` — Shortest path using the A* algorithm."
 msgstr "``pgr_aStar`` —使用 A* 算法的最短路径。"
 
 msgid "Combinations signature promoted to official."
-msgstr ""
+msgstr "组合签名已升级为正式版本。"
 
 msgid "Standarizing output columns to |short-generic-result|"
 msgstr "标准输出列|short-generic-result|"
@@ -7962,7 +7944,7 @@ msgid "New proposed signature:"
 msgstr "新拟议的签名："
 
 msgid "Function promoted to official."
-msgstr ""
+msgstr "函数正式发布。"
 
 msgid "Version 2.4.0"
 msgstr "版本2.4.0"
@@ -9792,7 +9774,8 @@ msgstr "新签名"
 msgid ""
 "Previously compulsory parameter **Contraction order** is now optional with "
 "name ``methods``."
-msgstr ""
+msgstr "之前必需的参数 **Contraction order** 现在已变为可选参数，并更名为 "
+"``methods``。"
 
 #, fuzzy
 msgid "New name and order of optional parameters."
@@ -9855,7 +9838,7 @@ msgid ""
 msgstr "目前有两种类型的收缩方法"
 
 msgid "Dead End Contraction. See :doc:`pgr_contractionDeadEnd`."
-msgstr ""
+msgstr "死角收缩。参考 :doc:`pgr_contractionDeadEnd`。"
 
 msgid "Linear Contraction. See :doc:`pgr_contractionLinear`."
 msgstr ""
@@ -16774,15 +16757,14 @@ msgstr ""
 msgid "pgRouting 3.7.2 Release Notes"
 msgstr "pgRouting 3.7.2 发布说明"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.1 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+"查看本版本已关闭的所有议题和拉取请求，请访问：`GitHub "
+"3.7.2版本里程碑关闭列表 <https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 
 msgid "Build"
 msgstr "构建"
@@ -16823,9 +16805,9 @@ msgid ""
 "milestone for 3.7.1 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.1 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+"查看本版本已关闭的所有议题和拉取请求，请访问：`GitHub "
+"3.7.1版本里程碑关闭列表 <https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>>`__"
 
 msgid ""
 "`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ fails to "
@@ -16857,9 +16839,9 @@ msgid ""
 "milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.7.0 <https://github.com/"
-"pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__ 的 Git 关闭里程碑"
+"查看本版本已关闭的所有议题和拉取请求，请访问：`GitHub "
+"3.7.0版本里程碑关闭列表 <https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>>`__"
 
 msgid ""
 "`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
@@ -16941,9 +16923,9 @@ msgid ""
 "milestone for 3.6.3 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.6.3 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
+"查看本版本已关闭的所有议题和拉取请求，请访问：`GitHub "
+"3.6.3版本里程碑关闭列表 <https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>>`__"
 
 msgid "Explicit minimum requirements:"
 msgstr "最低要求："
