@@ -6,14 +6,14 @@
 # Zuochenwei <zuochenwei5@gmail.com>, 2023, 2024.
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024.
 # Wang Dapeng <wangdapeng20191008@gmail.com>, 2023.
-# DeepL <noreply-mt-deepl@weblate.org>, 2024.
+# DeepL <noreply-mt-deepl@weblate.org>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-29 23:42+0000\n"
 "PO-Revision-Date: 2025-04-02 09:14+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -6135,7 +6135,7 @@ msgid "Is node :math:`4` a dead end or not?"
 msgstr "节点 :math:`4` 是死端还是非死端？"
 
 msgid "The answer to that question will depend on the application."
-msgstr ""
+msgstr "这个问题的答案将取决于应用情况。"
 
 msgid "Is there such a small curb:"
 msgstr "有这么小的路边吗："
@@ -9841,7 +9841,7 @@ msgid "Dead End Contraction. See :doc:`pgr_contractionDeadEnd`."
 msgstr "死角收缩。参考 :doc:`pgr_contractionDeadEnd`。"
 
 msgid "Linear Contraction. See :doc:`pgr_contractionLinear`."
-msgstr ""
+msgstr "线性收缩。参见 :doc:`pgr_contractionLinear`。"
 
 #, fuzzy
 msgid "pgr_contraction(`Edges SQL`_, [**options**])"
