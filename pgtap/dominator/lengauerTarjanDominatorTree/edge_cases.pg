@@ -137,7 +137,7 @@ SELECT set_eq('ltd_test4', $$VALUES (1, 5, 0),(2, 6, 1),(3, 10, 0)$$, 'test3:  u
 PREPARE q5 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edges
-WHERE id <= 3;
+WHERE id <= 3 ORDER BY id;
 
 RETURN QUERY
 SELECT set_eq('q5',
@@ -156,7 +156,7 @@ FROM pgr_lengauerTarjanDominatorTree(
 );
 
 RETURN QUERY
-SELECT set_eq('ltd_test5', $$VALUES (1, 10, 0),(2, 15, 0),(3, 5, 0), (4, 6, 3)$$, 'test5: u<->v<-w<-z root 5');
+SELECT set_eq('ltd_test5', $$VALUES (3, 10, 0),(4, 15, 0),(1, 5, 0), (2, 6, 1)$$, 'test5: u<->v<-w<-z root 5');
 
 
 PREPARE ltd_test6 AS
@@ -166,7 +166,7 @@ FROM pgr_lengauerTarjanDominatorTree(
 );
 
 RETURN QUERY
-SELECT set_eq('ltd_test6', $$VALUES (1, 10, 2),(2,15,0),(3, 5, 4),(4, 6, 1)$$, 'test6: u<->v<-w<-z root 15');
+SELECT set_eq('ltd_test6', $$VALUES (3, 10, 4),(4,15,0),(1, 5, 2),(2, 6, 3)$$, 'test6: u<->v<-w<-z root 15');
 
 END;
 $BODY$
