@@ -100,7 +100,7 @@ SELECT set_eq('bipartite3', $$VALUES (3, 0), (7, 1)$$, '6: Graph is bi-partite')
 PREPARE q4 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edges
-WHERE id <= 2;
+WHERE id <= 2 ORDER BY id;
 
 RETURN QUERY
 SELECT set_eq('q4', $$VALUES (1, 5, 6, 1, 1), (2, 6, 10, -1, 1)$$, '7: Graph with three vertices 1, 2 and 3');
@@ -120,7 +120,7 @@ SELECT set_eq('bipartite4', $$VALUES (5, 0), (6, 1), (10, 0)$$, '8: Bi-partite g
 PREPARE q5 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edges
-WHERE id <= 3;
+WHERE id <= 3 ORDER BY id;
 
 RETURN QUERY
 SELECT set_eq('q5',
