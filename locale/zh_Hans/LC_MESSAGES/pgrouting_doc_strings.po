@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-29 23:42+0000\n"
 "PO-Revision-Date: 2025-04-03 09:47+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -10151,7 +10151,7 @@ msgid "Case 3: Source and/or target belong to a vertex."
 msgstr "情况 3：源和/或目标属于一个顶点。"
 
 msgid "The final application should consider all of those cases."
-msgstr ""
+msgstr "最终应用应考虑所有这些情况。"
 
 #, fuzzy
 msgid "Create a view (or table) of the contracted graph:"
@@ -10254,7 +10254,7 @@ msgid "Dead end vertex on undirected graph"
 msgstr "无向图上的死端顶点"
 
 msgid "They have only one adjacent node."
-msgstr ""
+msgstr "它们只有一个相邻节点。"
 
 msgid "Dead end vertex on directed graph"
 msgstr "有向图上的死端顶点"
@@ -10312,7 +10312,7 @@ msgid ":math:`\\{2, 3\\}`"
 msgstr ":math:`\\{v, w\\}`"
 
 msgid "Has more than one adjacent node and all edges are incoming."
-msgstr ""
+msgstr "有一个以上的相邻节点，且所有边都是传入的。"
 
 #, fuzzy
 msgid ":math:`\\{4\\}`"
@@ -10331,7 +10331,7 @@ msgid "No"
 msgstr "节点"
 
 msgid "Has more than one adjacent node and all edges are outgoing."
-msgstr ""
+msgstr "有一个以上的相邻节点，且所有边都是向外的。"
 
 #, fuzzy
 msgid ":math:`1,2,3,4,5`"
