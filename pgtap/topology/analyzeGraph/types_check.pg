@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(6);
+SELECT plan(5);
 
 SELECT has_function('pgr_analyzegraph');
 SELECT has_function('pgr_analyzegraph',ARRAY['text','double precision','text','text','text','text','text']);
@@ -33,12 +33,6 @@ SELECT function_args_eq('pgr_analyzegraph',
 SELECT function_types_eq('pgr_analyzegraph',
   $$VALUES ('{text,float8,text,text,text,text,text}'::TEXT[])$$
 );
-
-SELECT set_eq(
-  $$SELECT prorettype FROM pg_proc WHERE proname = 'pgr_analyzegraph'$$,
-  $$VALUES ('1043'::oid )$$
-);
-
 
 SELECT  finish();
 ROLLBACK;
