@@ -41,8 +41,7 @@ RETURN QUERY SELECT function_returns('pgr_depthfirstsearch', ARRAY['text','bigin
 RETURN QUERY SELECT function_returns('pgr_depthfirstsearch', ARRAY['text','anyarray','boolean','bigint'],  'setof record');
 
 RETURN QUERY
-SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_depthfirstsearch'$$,
+SELECT function_args_eq('pgr_depthfirstsearch',
     $$SELECT  '{"","","directed","max_depth","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 

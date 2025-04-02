@@ -51,8 +51,8 @@ END;
 SELECT CASE
 WHEN min_version('3.1.0') THEN
   collect_tap(
-    set_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_dijkstracost'$$,
+
+    function_args_eq('pgr_dijkstracost',
       $$VALUES
       ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
       ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
@@ -71,8 +71,8 @@ WHEN min_version('3.1.0') THEN
   )
 ELSE
   collect_tap(
-    set_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_dijkstracost'$$,
+
+    function_args_eq('pgr_dijkstracost',
       $$VALUES
       ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
       ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),

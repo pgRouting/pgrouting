@@ -54,8 +54,8 @@ BEGIN
   SELECT CASE
   WHEN min_version('3.2.0') THEN
     collect_tap(
-      set_eq(
-        $$SELECT  proargnames from pg_proc where proname = 'pgr_binarybreadthfirstsearch'$$,
+
+      function_args_eq('pgr_binarybreadthfirstsearch',
         $$VALUES
         ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
         ('{"","","","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
@@ -77,8 +77,8 @@ BEGIN
     )
   ELSE
     collect_tap(
-      set_eq(
-        $$SELECT  proargnames from pg_proc where proname = 'pgr_binarybreadthfirstsearch'$$,
+
+      function_args_eq('pgr_binarybreadthfirstsearch',
         $$VALUES
         ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
         ('{"","","","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),

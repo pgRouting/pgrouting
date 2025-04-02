@@ -25,8 +25,7 @@ SELECT has_function('pgr_nodenetwork');
 SELECT has_function('pgr_nodenetwork',ARRAY['text','double precision','text','text','text','text','boolean']);
 SELECT function_returns('pgr_nodenetwork',ARRAY['text','double precision','text','text','text','text','boolean'],'text');
 
-SELECT set_eq(
-  $$SELECT proargnames from pg_proc where proname = 'pgr_nodenetwork'$$,
+SELECT function_args_eq('pgr_nodenetwork',
   $$SELECT '{"","","id","the_geom","table_ending","rows_where","outall"}'::TEXT[]$$
 );
 

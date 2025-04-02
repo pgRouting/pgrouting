@@ -44,8 +44,7 @@ ELSE
   skip(2, 'Combinations signature added on 3.1.0')
 END;
 
-SELECT set_eq(
-  $$SELECT  proargnames FROM pg_proc WHERE proname = 'pgr_maxflow'$$,
+SELECT function_args_eq('pgr_maxflow',
   $$SELECT  NULL::TEXT[] $$);
 
 SELECT set_eq(

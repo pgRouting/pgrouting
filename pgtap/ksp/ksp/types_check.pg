@@ -45,8 +45,8 @@ BEGIN
 
   RETURN QUERY SELECT CASE WHEN min_version('3.6.0') THEN
     collect_tap(
-      set_eq(
-          $$SELECT  proargnames from pg_proc WHERE proname = 'pgr_ksp'$$,
+
+      function_args_eq('pgr_ksp',
           $$VALUES
           ('{"","","","directed","heap_paths","seq","path_id","path_seq",start_vid,end_vid,"node","edge","cost","agg_cost"}'::TEXT[]),
           ('{"","","","","directed","heap_paths","seq","path_id","path_seq",start_vid,end_vid,"node","edge","cost","agg_cost"}'::TEXT[])
@@ -63,8 +63,7 @@ BEGIN
     )
   ELSE
     collect_tap(
-      set_eq(
-        $$SELECT  proargnames from pg_proc WHERE proname = 'pgr_ksp'$$,
+      function_args_eq('pgr_ksp',
         $$SELECT  '{"","","","","directed","heap_paths","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
       ),
       function_types_eq('pgr_ksp',

@@ -30,12 +30,11 @@ SELECT has_function('pgr_trsp', ARRAY['text','integer','double precision','integ
 SELECT function_returns('pgr_trsp', ARRAY['text','integer','integer','boolean','boolean','text'],'setof record');
 SELECT function_returns('pgr_trsp', ARRAY['text','integer','double precision','integer','double precision','boolean','boolean','text'],'setof record');
 
-SELECT bag_has(
-  $$SELECT  proargnames from pg_proc where proname = 'pgr_trsp'$$,
+SELECT function_args_has('pgr_trsp',
   $$VALUES
   ('{"","","","","","restrictions_sql","seq","id1","id2","cost"}'::TEXT[]),
   ('{"","","","","","","","turn_restrict_sql","seq","id1","id2","cost"}'::TEXT[])
-  $$, 'old signature names');
+  $$);
 
 SELECT function_types_has('pgr_trsp',
   $$VALUES

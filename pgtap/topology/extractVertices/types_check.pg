@@ -25,8 +25,7 @@ SELECT has_function('pgr_extractvertices');
 SELECT has_function('pgr_extractvertices',    ARRAY['text', 'boolean']);
 SELECT function_returns('pgr_extractvertices', ARRAY['text', 'boolean'], 'setof record');
 
-SELECT set_eq(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_extractvertices'$$,
+SELECT function_args_eq('pgr_extractvertices',
     $$SELECT  '{"","dryrun","id","in_edges","out_edges","x","y","geom"}'::TEXT[] $$
 );
 

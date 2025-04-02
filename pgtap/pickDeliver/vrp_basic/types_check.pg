@@ -24,8 +24,7 @@ SELECT plan(4);
 SELECT has_function('pgr_vrponedepot',ARRAY['text','text','text','integer']);
 SELECT function_returns('pgr_vrponedepot',ARRAY['text','text','text','integer'], 'setof record');
 
-SELECT set_eq(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_vrponedepot'$$,
+SELECT function_args_eq('pgr_vrponedepot',
     $$SELECT  '{"","","","","oid","opos","vid","tarrival","tdepart"}'::TEXT[] $$
 );
 

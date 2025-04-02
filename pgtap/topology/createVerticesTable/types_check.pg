@@ -25,8 +25,7 @@ SELECT has_function('pgr_createverticestable');
 SELECT has_function('pgr_createverticestable',ARRAY['text','text','text','text','text']);
 SELECT function_returns('pgr_createverticestable',ARRAY['text','text','text','text','text'],'text');
 
-SELECT set_eq(
-  $$SELECT proargnames from pg_proc where proname = 'pgr_createverticestable'$$,
+SELECT function_args_eq('pgr_createverticestable',
   $$SELECT '{"","the_geom","source","target","rows_where"}'::TEXT[]$$
 );
 

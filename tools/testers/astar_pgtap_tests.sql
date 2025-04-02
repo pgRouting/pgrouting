@@ -31,15 +31,14 @@ BEGIN
   END IF;
 
   IF min_version('3.6.0') AND fn IN('pgr_astar', 'pgr_bdastar') THEN
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+    RETURN QUERY SELECT function_args_eq(fn,
       $$VALUES
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$, 'Column names');
+      $$);
 
     RETURN QUERY SELECT function_types_eq(fn,
       format($$VALUES
@@ -51,15 +50,14 @@ BEGIN
       $$,the_type_numb));
 
   ELSIF min_version('3.2.0') THEN
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+    RETURN QUERY SELECT function_args_eq(fn,
       $$VALUES
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$, 'Old column names');
+      $$);
 
     RETURN QUERY SELECT function_types_eq(fn,
       format($$VALUES
@@ -70,14 +68,13 @@ BEGIN
       ('{text,text,bool,int4,%1$s,%1$s,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
       $$,the_type_numb));
   ELSE
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+    RETURN QUERY SELECT function_args_eq(fn,
       $$VALUES
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$, 'Before combinations column names');
+      $$);
 
     RETURN QUERY SELECT function_types_eq(fn,
       format($$VALUES
@@ -124,8 +121,7 @@ BEGIN
   END IF;
 
   IF min_version('3.2.0') THEN
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+    RETURN QUERY SELECT function_args_eq(fn,
       $$VALUES
       ('{"","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[]),
@@ -143,8 +139,7 @@ BEGIN
       ('{text,text,bool,int4,%1$s,%1$s,int8,int8,float8}'::TEXT[])
       $$,the_type_numb));
   ELSE
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+    RETURN QUERY SELECT function_args_eq(fn,
       $$VALUES
       ('{"","","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[]),
@@ -183,14 +178,13 @@ BEGIN
 
   RETURN QUERY SELECT function_returns(fn, ARRAY['text','anyarray','boolean','integer',the_type_name,the_type_name],'setof record');
 
-  RETURN QUERY SELECT set_eq(
-    format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+  RETURN QUERY SELECT function_args_eq(fn,
     $$VALUES
     ('{"","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[])
     $$);
 
-    RETURN QUERY SELECT function_types_eq(fn,
-      format($$VALUES
+  RETURN QUERY SELECT function_types_eq(fn,
+    format($$VALUES
       ('{text,anyarray,bool,int4,%1$s,%1$s,int8,int8,float8}'::TEXT[])
       $$,the_type_numb));
 
