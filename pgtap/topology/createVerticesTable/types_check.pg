@@ -26,11 +26,11 @@ SELECT has_function('pgr_createverticestable',ARRAY['text','text','text','text',
 SELECT function_returns('pgr_createverticestable',ARRAY['text','text','text','text','text'],'text');
 
 SELECT function_args_eq('pgr_createverticestable',
-  $$SELECT '{"","the_geom","source","target","rows_where"}'::TEXT[]$$
+  $$VALUES ('{"","the_geom","source","target","rows_where"}'::TEXT[])$$
 );
 
 SELECT function_types_eq('pgr_createverticestable',
-  $$VALUES ('{text,text,text,text,text}'::TEXT[]$$)
+  $$VALUES ('{text,text,text,text,text}'::TEXT[])$$
 );
 
 SELECT set_eq(

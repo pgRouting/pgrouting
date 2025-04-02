@@ -145,7 +145,7 @@ BEGIN
     RETURN;
   END IF;
 
-  -- TODO should be set_eq when old signatures are removed
+  -- TODO should be _eq when old signatures are removed
   RETURN QUERY
   SELECT function_args_has(fn,
     format('VALUES (%1$L::TEXT[]),(%2$L::TEXT[])',
