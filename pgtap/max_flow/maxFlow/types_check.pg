@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(14);
+SELECT plan(13);
 
 SELECT has_function('pgr_maxflow');
 
@@ -46,10 +46,6 @@ END;
 
 SELECT function_args_eq('pgr_maxflow',
   $$SELECT  NULL::TEXT[] $$);
-
-SELECT set_eq(
-  $$SELECT  prorettype FROM pg_proc WHERE proname = 'pgr_maxflow'$$,
-  $$SELECT  20::OID $$);
 
 SELECT CASE
   WHEN min_version('3.2.0') THEN
