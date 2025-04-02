@@ -1,4 +1,3 @@
-
 -- checks the minimum version version for C++ code
 CREATE OR REPLACE FUNCTION min_lib_version(min_version TEXT)
 RETURNS BOOLEAN AS
@@ -80,4 +79,27 @@ SELECT set_has(format($$
     SELECT a.*, t.typname FROM a JOIN pg_catalog.pg_type As t on (t.oid = a.name))
   SELECT array_agg(typname ORDER BY idx)  FROM b GROUP BY oid
   $$, $1), $2, $1 || ': Function types');
+$BODY$ LANGUAGE SQL;
+
+CREATE OR REPLACE FUNCTION function_returns_geom(TEXT)
+RETURNS TEXT AS
+$BODY$
+    SELECT set_eq(
+      format($$
+        WITH
+        a AS (
+          SELECT prorettype
+          FROM pg_catalog.pg_proc
+          WHERE proname = '%1$s'
+        ),
+        b AS (
+          SELECT t.typname::text
+          FROM a
+          JOIN pg_catalog.pg_type AS t ON t.oid = a.prorettype
+        )
+        SELECT typname FROM b
+      $$, $1),
+      ARRAY['geometry'],
+      $1 || ': Function returns geometry'
+    );
 $BODY$ LANGUAGE SQL;
