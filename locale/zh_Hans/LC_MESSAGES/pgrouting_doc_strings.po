@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-29 23:42+0000\n"
-"PO-Revision-Date: 2025-04-02 09:14+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2025-04-03 09:47+0000\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -9841,7 +9841,7 @@ msgid "Dead End Contraction. See :doc:`pgr_contractionDeadEnd`."
 msgstr "死角收缩。参考 :doc:`pgr_contractionDeadEnd`。"
 
 msgid "Linear Contraction. See :doc:`pgr_contractionLinear`."
-msgstr "线性收缩。参见 :doc:`pgr_contractionLinear`。"
+msgstr "线性收缩。参考 :doc:`pgr_contractionLinear`。"
 
 #, fuzzy
 msgid "pgr_contraction(`Edges SQL`_, [**options**])"
@@ -9862,7 +9862,7 @@ msgid "Contraction optional parameters"
 msgstr "可选收缩参数"
 
 msgid "``methods``"
-msgstr ""
+msgstr "``methods``"
 
 #, fuzzy
 msgid "``INTEGER[]``"
@@ -10133,6 +10133,8 @@ msgid ""
 "vertices in the original graph by using the contracted graph with "
 "``pgr_dijkstraCost``"
 msgstr ""
+"根据最终应用的需求，图需要进行预处理。在本示例中，最终应用是使用收缩图通过 "
+"``pgr_dijkstraCost`` 计算原始图中两个顶点之间的成本"
 
 msgid ""
 "There are three cases when calculating the shortest path between a given "
@@ -10275,7 +10277,7 @@ msgid "Dead end"
 msgstr "死端"
 
 msgid "Reason"
-msgstr ""
+msgstr "Reason"
 
 #, fuzzy
 msgid ":math:`6`"
