@@ -737,6 +737,8 @@ Disconnected graphs
 
 .. connecting_graph_start
 
+.. disconnected_graph_start
+
 To get the graph connectivity:
 
 .. literalinclude:: concepts.queries
@@ -745,6 +747,8 @@ To get the graph connectivity:
 
 In this example, the component :math:`2` consists of vertices :math:`\{2, 4\}`
 and both vertices are also part of the dead end result set.
+
+.. disconnected_graph_end
 
 This graph needs to be connected.
 
