@@ -1141,5 +1141,28 @@ WHERE degree = 1;
 (7 rows)
 
 /* --analysis3*/
+WITH
+deadends AS (
+  SELECT id,geom, (in_edges || out_edges)[1] as inhere
+  FROM vertices where array_length(in_edges || out_edges, 1) = 1),
+results AS (
+  SELECT (pgr_findCloseEdges('SELECT id, geom FROM edges WHERE id != ' || inhere , geom, 0.001)).*
+  FROM deadends)
+SELECT d.id, edge_id, distance, st_AsText(geom) AS point, st_asText(edge) edge
+FROM results JOIN deadends d USING (geom);
+ id | edge_id |     distance      |           point           |                 edge
+----+---------+-------------------+---------------------------+--------------------------------------
+  4 |      14 | 1.00008890058e-12 | POINT(1.999999999999 3.5) | LINESTRING(1.999999999999 3.5,2 3.5)
+(1 row)
+
+/* --analysis4*/
+SELECT e1.id AS id1, e2.id AS id2
+FROM edges e1, edges e2 WHERE e1 < e2 AND st_crosses(e1.geom, e2.geom);
+ id1 | id2
+-----+-----
+  13 |  18
+(1 row)
+
+/* --analysis5*/
 ROLLBACK;
 ROLLBACK

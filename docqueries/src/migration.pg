@@ -349,3 +349,16 @@ SELECT *
 FROM pgr_degree($$SELECT id, source, target FROM edges$$)
 WHERE degree = 1;
 /* --analysis3*/
+WITH
+deadends AS (
+  SELECT id,geom, (in_edges || out_edges)[1] as inhere
+  FROM vertices where array_length(in_edges || out_edges, 1) = 1),
+results AS (
+  SELECT (pgr_findCloseEdges('SELECT id, geom FROM edges WHERE id != ' || inhere , geom, 0.001)).*
+  FROM deadends)
+SELECT d.id, edge_id, distance, st_AsText(geom) AS point, st_asText(edge) edge
+FROM results JOIN deadends d USING (geom);
+/* --analysis4*/
+SELECT e1.id AS id1, e2.id AS id2
+FROM edges e1, edges e2 WHERE e1 < e2 AND st_crosses(e1.geom, e2.geom);
+/* --analysis5*/
