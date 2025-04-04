@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-29 23:42+0000\n"
+"POT-Creation-Date: 2025-04-04 04:21+0000\n"
 "PO-Revision-Date: 2025-04-04 14:16+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -10983,7 +10983,8 @@ msgstr ""
 msgid "pgr_contractionDeadEnd(`Edges SQL`_, [**options**])"
 msgstr "pgr_contractionDeadEnd(`SQL de aristas`_, [**opciones**])"
 
-msgid "**options:** ``[directed, forbidden_vertices]``"
+#, fuzzy
+msgid "**options:** ``[directed, forbidden]``"
 msgstr "**opciones:** ``[directed, forbidden]``"
 
 msgid "Dead end contraction on an undirected graph."
@@ -11177,9 +11178,6 @@ msgstr ""
 
 msgid "pgr_contractionLinear(`Edges SQL`_, [**options**])"
 msgstr "pgr_contractionLinear(`SQL de aristas`_, [**opciones**])"
-
-msgid "**options:** ``[directed, max_cycles, forbidden_vertices]``"
-msgstr "**opciones:** ``[directed, forbidden_vertices]``"
 
 msgid "Linear contraction on an undirected graph."
 msgstr "Contracción lineal en un grafo no dirigido."
@@ -21599,3 +21597,6 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#~ msgid "**options:** ``[directed, max_cycles, forbidden_vertices]``"
+#~ msgstr "**opciones:** ``[directed, forbidden_vertices]``"
