@@ -50,7 +50,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --- -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ---
 --- The following functions have MIT-X licence:
----  pgr_analyzeGraph
 ---  pgr_analizeOneWay
 
 --- This is free software, you can redistribute and/or modify it:
