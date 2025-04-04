@@ -68,7 +68,10 @@ For example:
 
 .. rubric:: Dead ends.
 
-Instead of counting the dead ends, determine all the dead ends of the graph.
+Instead of counting the dead ends, determine all the dead ends of the graph
+using :doc:`pgr_degree`.
+
+For example:
 
 .. literalinclude:: migration.queries
    :start-after: --analysis2
@@ -76,24 +79,30 @@ Instead of counting the dead ends, determine all the dead ends of the graph.
 
 .. rubric:: Potential gaps near dead ends.
 
-Instead of counting potential gaps between geometries, determine geometric
-relationships between geometries.
+Instead of counting potential gaps between geometries, determine the geometric
+gaps in the graph using :doc:`pgr_findCloseEdges`.
 
-Several PostGIS functions can be used, for example:
+For example:
 
-* `ST_ClosestPoint <https://postgis.net/docs/ST_ClosestPoint.html>`__
-* `ST_Distance <https://postgis.net/docs/ST_Distance.html>`__
+.. literalinclude:: migration.queries
+   :start-after: --analysis3
+   :end-before: --analysis4
 
 .. rubric::  Topological relationships.
 
 Instead of counting intersections, determine topological relationships between
 geometries.
 
-Several PostGIS functions can be used, for example:
+Several PostGIS functions can be used:
+`ST_Intersects <https://postgis.net/docs/ST_Intersects.html>`__,
+`ST_Crosses <https://postgis.net/docs/ST_Crosses.html>`__,
+`ST_Overlaps <https://postgis.net/docs/ST_Overlaps.html>`__, etc.
 
-* `ST_Intersects <https://postgis.net/docs/ST_Intersects.html>`__
-* `ST_Crosses <https://postgis.net/docs/ST_Crosses.html>`__
-* `ST_Overlaps <https://postgis.net/docs/ST_Overlaps.html>`__
+For example:
+
+.. literalinclude:: migration.queries
+   :start-after: --analysis4
+   :end-before: --analysis5
 
 .. migrate_pgr_analyzeGraph_end
 
