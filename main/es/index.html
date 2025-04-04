@@ -342,7 +342,7 @@ incident edges to the vertex.</p></li>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> - crear una topología basada en la geometría.</p></li>
 <li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> - reconstruir la tabla de vértices en base a la información de origen y destino.</p></li>
-<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> - para analizar los bordes y vértices de la tabla de aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph – Deprecated since 3.8.0</span></a> - para analizar los bordes y vértices de la tabla de aristas.</p></li>
 <li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> - para analizar la direccionalidad de las aristas.</p></li>
 <li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> - para crear nodos a una tabla de aristas sin nodos.</p></li>
 <li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - Extrae información de vértices basada en la tabla de aristas.</p></li>
@@ -417,28 +417,38 @@ incident edges to the vertex.</p></li>
 <h2><a class="reference internal" href="release_notes.html"><span class="doc">Notas de versión</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
 <section id="pgrouting-3-8-0-release-notes">
 <h3>pgRouting 3.8.0 Release Notes<a class="headerlink" href="#pgrouting-3-8-0-release-notes" title="Link to this heading">¶</a></h3>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.8.0%22">Git closed
+milestone for 3.8.0</a></p>
 <p class="rubric">Promotion to official function of pgRouting.</p>
 <ul class="simple">
-<li><p>pgr_extractVertices</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2772">#2772</a>:
+pgr_extractVertices</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
 <li><p>Function promoted to official.</p></li>
 </ul>
 </li>
-<li><p>pgr_degree</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2760">#2760</a>:
+pgr_degree</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
 <li><p>New signature with only Edges SQL.</p></li>
 <li><p>Function promoted to official.</p></li>
 </ul>
 </li>
-<li><p>pgr_findCloseEdges</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2774">#2774</a>:
+pgr_findCloseEdges</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">partial</span></code> option is removed.</p></li>
 <li><p>Function promoted to official.</p></li>
 </ul>
 </li>
+</ul>
+<p class="rubric">Deprecation of functions.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2753">#2753</a>:
+pgr_analyzeGraph</p></li>
 </ul>
 <p class="rubric">Cambios en las funciones oficiales</p>
 <ul class="simple">
@@ -501,7 +511,7 @@ name <code class="docutils literal notranslate"><span class="pre">methods</span>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en mar 30, 2025.<br/>
+      Actualizado por última vez en abr 04, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
