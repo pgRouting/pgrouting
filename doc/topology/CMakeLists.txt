@@ -1,6 +1,5 @@
 
 SET(LOCAL_FILES
-    pgr_analyzeGraph.rst
     pgr_createTopology.rst
     pgr_nodeNetwork.rst
     pgr_analyzeOneWay.rst
