@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-29 23:42+0000\n"
+"POT-Creation-Date: 2025-04-04 04:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -9515,7 +9515,7 @@ msgstr ""
 msgid "pgr_contractionDeadEnd(`Edges SQL`_, [**options**])"
 msgstr ""
 
-msgid "**options:** ``[directed, forbidden_vertices]``"
+msgid "**options:** ``[directed, forbidden]``"
 msgstr ""
 
 msgid "Dead end contraction on an undirected graph."
@@ -9693,9 +9693,6 @@ msgid ""
 msgstr ""
 
 msgid "pgr_contractionLinear(`Edges SQL`_, [**options**])"
-msgstr ""
-
-msgid "**options:** ``[directed, max_cycles, forbidden_vertices]``"
 msgstr ""
 
 msgid "Linear contraction on an undirected graph."

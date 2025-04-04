@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-29 23:42+0000\n"
+"POT-Creation-Date: 2025-04-04 04:21+0000\n"
 "PO-Revision-Date: 2022-12-13 12:30+0000\n"
 "Last-Translator: Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>\n"
 "Language-Team: Korean <https://weblate.osgeo.org/projects/pgrouting/"
@@ -9592,7 +9592,7 @@ msgstr ""
 msgid "pgr_contractionDeadEnd(`Edges SQL`_, [**options**])"
 msgstr ""
 
-msgid "**options:** ``[directed, forbidden_vertices]``"
+msgid "**options:** ``[directed, forbidden]``"
 msgstr ""
 
 #, fuzzy
@@ -9778,9 +9778,6 @@ msgid ""
 msgstr ""
 
 msgid "pgr_contractionLinear(`Edges SQL`_, [**options**])"
-msgstr ""
-
-msgid "**options:** ``[directed, max_cycles, forbidden_vertices]``"
 msgstr ""
 
 #, fuzzy
