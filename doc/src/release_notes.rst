@@ -69,7 +69,7 @@ milestone for 3.8.0
 .. rubric:: Deprecation of functions.
 
 * `#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__:
-  pgr_analizeGraph
+  pgr_analyzeGraph
 
 .. rubric:: Official functions changes
 
