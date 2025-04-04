@@ -135,6 +135,8 @@ DECLARE
 
 
 BEGIN
+  RAISE WARNING 'pgr_analyzegraph(text,double precision,text,text,text,text,text) deprecated function on v3.8.0';
+
   RAISE NOTICE 'PROCESSING:';
   RAISE NOTICE 'pgr_analyzeGraph(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
   RAISE NOTICE 'Performing checks, please wait ...';
@@ -395,16 +397,4 @@ $BODY$
 
 
 COMMENT ON FUNCTION pgr_analyzeGraph(TEXT, FLOAT, TEXT, TEXT, TEXT, TEXT, TEXT)
-IS 'pgr_analyzeGraph
-- Parameters
-  - Edge table name
-  - tolerance
-- Optional parameters
-  - the_geom: default ''the_geom''
-  - id := ''id''
-  - source := ''source''
-  - target := ''target''
-  - rows_where := ''true''
-- Documentation:
-  - ${PROJECT_DOC_LINK}/pgr_analyzeGraph.html
-';
+IS 'pgr_analyzeGraph deprecated function on v3.8.0';

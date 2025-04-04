@@ -20,10 +20,17 @@
 
 .. rubric:: Availability
 
+* Version 3.8.0
+
+  * Deprecated function.
+
 * Version 2.0.0
 
   * Official function.
 
+.. include:: migration.rst
+   :start-after: migrate_pgr_analyzeGraph_start
+   :end-before: migrate_pgr_analyzeGraph_end
 
 Description
 -------------------------------------------------------------------------------
