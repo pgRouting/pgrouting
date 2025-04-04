@@ -272,7 +272,7 @@
 <div class="line">pgr_contractionLinear(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, [<strong>opciones</strong>])</div>
 </div>
 <div class="line-block">
-<div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">forbidden_vertices]</span></code></div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">forbidden]</span></code></div>
 <div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost)</span></code></div>
 </div>
 </div>
@@ -395,12 +395,12 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">forbidden_vertices</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td><p><strong>vacío</strong></p></td>
 <td><p>Identificadores de vértices prohibidos para contracción.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_cycles</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cycles</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
 <td><p>Número de veces que se realizarán las operaciones de contracción en el orden <code class="docutils literal notranslate"><span class="pre">contraction_order</span></code>.</p></td>
@@ -1038,7 +1038,7 @@ $$SELECT * FROM (VALUES
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en mar 30, 2025.<br/>
+      Actualizado por última vez en abr 04, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
