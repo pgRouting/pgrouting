@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-04 04:21+0000\n"
+"POT-Creation-Date: 2025-04-04 16:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3718,6 +3718,105 @@ msgstr ""
 msgid "All deprecated functions will be removed on next mayor version 4.0.0"
 msgstr ""
 
+msgid "Migration of ``pgr_analyzeGraph``"
+msgstr ""
+
+msgid "Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
+msgstr ""
+
+msgid "**Before Deprecation:** The following was calculated:"
+msgstr ""
+
+msgid "Number of isolated segments."
+msgstr ""
+
+msgid "Number of dead ends."
+msgstr ""
+
+msgid "Number of potential gaps found near dead ends."
+msgstr ""
+
+msgid "Number of intersections. (between 2 edges)"
+msgstr ""
+
+msgid "WHERE"
+msgstr ""
+
+msgid "Graph component"
+msgstr ""
+
+msgid "A connected subgraph that is not part of any larger connected subgraph."
+msgstr ""
+
+msgid "Isolated segment"
+msgstr ""
+
+msgid "A graph component with only one segment."
+msgstr ""
+
+msgid "Dead ends"
+msgstr ""
+
+msgid "A vertex that participates in only one edge."
+msgstr ""
+
+msgid "gaps"
+msgstr ""
+
+msgid "Space between two geometries."
+msgstr ""
+
+msgid "Intersection"
+msgstr ""
+
+msgid "Is a topological relationship between two geometries."
+msgstr ""
+
+msgid "Migration."
+msgstr ""
+
+msgid "Components."
+msgstr ""
+
+msgid "Instead of counting only isolated segments, determine all the components of the graph."
+msgstr ""
+
+msgid "Depending of the final application requirements use:"
+msgstr ""
+
+msgid ":doc:`pgr_connectedComponents`"
+msgstr ""
+
+msgid ":doc:`pgr_strongComponents`"
+msgstr ""
+
+msgid ":doc:`pgr_biconnectedComponents`"
+msgstr ""
+
+msgid "For example:"
+msgstr ""
+
+msgid "Dead ends."
+msgstr ""
+
+msgid "Instead of counting the dead ends, determine all the dead ends of the graph using :doc:`pgr_degree`."
+msgstr ""
+
+msgid "Potential gaps near dead ends."
+msgstr ""
+
+msgid "Instead of counting potential gaps between geometries, determine the geometric gaps in the graph using :doc:`pgr_findCloseEdges`."
+msgstr ""
+
+msgid "Topological relationships."
+msgstr ""
+
+msgid "Instead of counting intersections, determine topological relationships between geometries."
+msgstr ""
+
+msgid "Several PostGIS functions can be used: `ST_Intersects <https://postgis.net/docs/ST_Intersects.html>`__, `ST_Crosses <https://postgis.net/docs/ST_Crosses.html>`__, `ST_Overlaps <https://postgis.net/docs/ST_Overlaps.html>`__, etc."
+msgstr ""
+
 msgid "Migration of ``pgr_aStar``"
 msgstr ""
 
@@ -5138,9 +5237,6 @@ msgid "A fairly good method of finding out if contraction can be useful is becau
 msgstr ""
 
 msgid "A complete method on how to contract and how to use the contracted graph is described on :doc:`contraction-family`"
-msgstr ""
-
-msgid "Dead ends"
 msgstr ""
 
 msgid "To get the dead ends:"
@@ -6859,10 +6955,16 @@ msgstr ""
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 msgstr ""
 
-msgid "``pgr_analyzeGraph``"
+msgid "``pgr_analyzeGraph`` -- Deprecated since 3.8.0"
 msgstr ""
 
 msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
+msgstr ""
+
+msgid "Version 3.8.0"
+msgstr ""
+
+msgid "Deprecated function."
 msgstr ""
 
 msgid "The function returns:"
@@ -7922,9 +8024,6 @@ msgid "``pgr_contraction``"
 msgstr ""
 
 msgid "``pgr_contraction`` — Performs graph contraction and returns the contracted vertices and edges."
-msgstr ""
-
-msgid "Version 3.8.0"
 msgstr ""
 
 msgid "New signature:"
@@ -13072,16 +13171,25 @@ msgstr ""
 msgid "pgRouting 3.8.0 Release Notes"
 msgstr ""
 
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.8.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
+msgstr ""
+
 msgid "Promotion to official function of pgRouting."
 msgstr ""
 
-msgid "pgr_extractVertices"
+msgid "`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: pgr_extractVertices"
 msgstr ""
 
-msgid "pgr_degree"
+msgid "`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
 msgstr ""
 
-msgid "pgr_findCloseEdges"
+msgid "`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: pgr_findCloseEdges"
+msgstr ""
+
+msgid "Deprecation of functions."
+msgstr ""
+
+msgid "`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: pgr_analyzeGraph"
 msgstr ""
 
 msgid "Official functions changes"
@@ -13376,6 +13484,9 @@ msgid "Documentation fixes"
 msgstr ""
 
 msgid "Changes on the documentation to the following:"
+msgstr ""
+
+msgid "pgr_degree"
 msgstr ""
 
 msgid "pgr_dijkstra"
@@ -13682,6 +13793,9 @@ msgid "pgr_dijkstraNearCost(One to Many)"
 msgstr ""
 
 msgid "pgr_sequentialVertexColoring"
+msgstr ""
+
+msgid "pgr_extractVertices"
 msgstr ""
 
 msgid "Traversal"
