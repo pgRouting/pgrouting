@@ -8,24 +8,36 @@
 
 ### pgRouting 3.8.0 Release Notes
 
+To see all issues & pull requests closed by this release see the [Git closed
+milestone for 3.8.0
+](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22)
+
 **Promotion to official function of pgRouting.**
 
-* pgr_extractVertices
+* [#2772](https://github.com/pgRouting/pgrouting/issues/2772):
+  pgr_extractVertices
 
   * Error messages adjustment.
   * Function promoted to official.
 
-* pgr_degree
+* [#2760](https://github.com/pgRouting/pgrouting/issues/2760):
+  pgr_degree
 
   * Error messages adjustment.
   * New signature with only Edges SQL.
   * Function promoted to official.
 
-* pgr_findCloseEdges
+* [#2774](https://github.com/pgRouting/pgrouting/issues/2774):
+  pgr_findCloseEdges
 
   * Error messages adjustment.
   * ``partial`` option is removed.
   * Function promoted to official.
+
+**Deprecation of functions.**
+
+* [#2753](https://github.com/pgRouting/pgrouting/issues/2753):
+  pgr_analizeGraph
 
 **Official functions changes**
 
