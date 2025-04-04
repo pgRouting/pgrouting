@@ -608,10 +608,6 @@ sub topology {
         'edge_table,tolerance,the_geom,id,source,target,rows_where,clean',
         '"","",the_geom,id,source,target,rows_where,clean');
     push @commands, update_pg_proc(
-        'pgr_analyzegraph',
-        'edge_table,tolerance,the_geom,id,source,target,rows_where',
-        '"","",the_geom,id,source,target,rows_where');
-    push @commands, update_pg_proc(
         'pgr_analyzeoneway',
         'edge_table,s_in_rules,s_out_rules,t_in_rules,t_out_rules,two_way_if_null,oneway,source,target',
         '"","","","","",two_way_if_null,oneway,source,target');
