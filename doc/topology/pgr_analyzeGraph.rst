@@ -13,7 +13,7 @@
 
 |
 
-``pgr_analyzeGraph``
+``pgr_analyzeGraph`` -- Deprecated since 3.8.0
 ===============================================================================
 
 ``pgr_analyzeGraph`` — Analyzes the network topology.
