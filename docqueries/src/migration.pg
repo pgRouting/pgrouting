@@ -377,3 +377,14 @@ FROM pgr_primDD(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   ARRAY[9, 6], 3.5);
 /* --primDD5 */
+
+/* --analysis1 */
+SELECT *
+FROM pgr_connectedComponents(
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
+);
+/* --analysis2 */
+SELECT *
+FROM pgr_degree($$SELECT id, source, target FROM edges$$)
+WHERE degree = 1;
+/* --analysis3*/

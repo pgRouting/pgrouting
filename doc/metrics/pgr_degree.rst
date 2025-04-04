@@ -348,6 +348,8 @@ development needs.
 Finding dead ends
 ...............................................................................
 
+.. finding_dead_ends_start
+
 If there is a vertices table already built using ``pgr_extractVertices``
 and want the degree of the whole graph rather than a subset, it can be forgo using
 ``pgr_degree`` and work with the ``in_edges`` and ``out_edges`` columns
@@ -358,6 +360,8 @@ The degree of a dead end is 1.
 .. include:: pgRouting-concepts.rst
    :start-after: degree_from_table_start
    :end-before: degree_from_table_end
+
+.. finding_dead_ends_end
 
 Finding linear vertices
 ...............................................................................

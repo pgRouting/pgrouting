@@ -20,6 +20,7 @@ NOTICE:  ----------------------------------------------
 /* --q1.1 */
 /* --q2 */
 SELECT pgr_analyzegraph('edges', 0.001, 'geom');
+WARNING:  pgr_analyzegraph(text,double precision,text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('edges',0.001,'geom','id','source','target','true')
 NOTICE:  Performing checks, please wait ...
@@ -111,6 +112,7 @@ NOTICE:  ----------------------------------------------
 /* --q5.1 */
 /* --q6 */
 SELECT pgr_analyzegraph('edges_noded', 0.001, 'geom');
+WARNING:  pgr_analyzegraph(text,double precision,text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('edges_noded',0.001,'geom','id','source','target','true')
 NOTICE:  Performing checks, please wait ...
@@ -163,6 +165,7 @@ NOTICE:  ----------------------------------------------
 /* --q8.1 */
 /* --q9 */
 SELECT pgr_analyzegraph('edges', 0.001, 'geom', rows_where:='id not in (select old_id from edges where old_id is not null)');
+WARNING:  pgr_analyzegraph(text,double precision,text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('edges',0.001,'geom','id','source','target','id not in (select old_id from edges where old_id is not null)')
 NOTICE:  Performing checks, please wait ...
@@ -185,6 +188,7 @@ NOTICE:                      Ring geometries: 0
 /* --q9.1 */
 /* --q10 */
 SELECT pgr_analyzegraph('edges', 0.001, 'geom', rows_where:='old_id is null');
+WARNING:  pgr_analyzegraph(text,double precision,text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('edges',0.001,'geom','id','source','target','old_id is null')
 NOTICE:  Performing checks, please wait ...
@@ -207,6 +211,7 @@ NOTICE:                      Ring geometries: 0
 /* --q10.1 */
 /* --q11 */
 SELECT pgr_analyzegraph('edges', 0.001, 'geom');
+WARNING:  pgr_analyzegraph(text,double precision,text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('edges',0.001,'geom','id','source','target','true')
 NOTICE:  Performing checks, please wait ...

@@ -24,6 +24,79 @@ Results can be different because of the changes.
 .. contents:: Contents
    :depth: 2
 
+.. migrate_pgr_analyzeGraph_start
+
+Migration of ``pgr_analyzeGraph``
+-------------------------------------------------------------------------------
+
+Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
+
+**Before Deprecation:** The following was calculated:
+
+* Number of isolated segments.
+* Number of dead ends.
+* Number of potential gaps found near dead ends.
+* Number of intersections. (between 2 edges)
+
+WHERE
+
+:Graph component: A connected subgraph that is not part of any larger connected
+                  subgraph.
+:Isolated segment: A graph component with only one segment.
+:Dead ends: A vertex that participates in only one edge.
+:gaps: Space between two geometries.
+:Intersection: Is a topological relationship between two geometries.
+
+.. rubric:: Migration.
+
+.. rubric:: Components.
+
+Instead of counting only isolated segments, determine all the components of the
+graph.
+
+Depending of the final application requirements use:
+
+* :doc:`pgr_connectedComponents`
+* :doc:`pgr_strongComponents`
+* :doc:`pgr_biconnectedComponents`
+
+For example:
+
+.. literalinclude:: migration.queries
+   :start-after: --analysis1
+   :end-before: --analysis2
+
+.. rubric:: Dead ends.
+
+Instead of counting the dead ends, determine all the dead ends of the graph.
+
+.. literalinclude:: migration.queries
+   :start-after: --analysis2
+   :end-before: --analysis3
+
+.. rubric:: Potential gaps near dead ends.
+
+Instead of counting potential gaps between geometries, determine geometric
+relationships between geometries.
+
+Several PostGIS functions can be used, for example:
+
+* `ST_ClosestPoint <https://postgis.net/docs/ST_ClosestPoint.html>`__
+* `ST_Distance <https://postgis.net/docs/ST_Distance.html>`__
+
+.. rubric::  Topological relationships.
+
+Instead of counting intersections, determine topological relationships between
+geometries.
+
+Several PostGIS functions can be used, for example:
+
+* `ST_Intersects <https://postgis.net/docs/ST_Intersects.html>`__
+* `ST_Crosses <https://postgis.net/docs/ST_Crosses.html>`__
+* `ST_Overlaps <https://postgis.net/docs/ST_Overlaps.html>`__
+
+.. migrate_pgr_analyzeGraph_end
+
 Migration of ``pgr_aStar``
 -------------------------------------------------------------------------------
 
@@ -35,7 +108,7 @@ Signatures to be migrated:
 * ``pgr_aStar`` (`One to Many`)
 * ``pgr_aStar`` (`Many to One`)
 
-:Before Migration:
+.. rubric:: Before Migration
 
 * Output columns were |old-generic-result|
 
