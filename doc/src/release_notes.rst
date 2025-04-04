@@ -136,25 +136,37 @@ pgRouting 3.8
 pgRouting 3.8.0 Release Notes
 -------------------------------------------------------------------------------
 
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.8.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__
+
 .. rubric:: Promotion to official function of pgRouting.
 
-* pgr_extractVertices
+* `#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__:
+  pgr_extractVertices
 
   .. include:: pgr_extractVertices.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
-* pgr_degree
+* `#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__:
+  pgr_degree
 
   .. include:: pgr_degree.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
-* pgr_findCloseEdges
+* `#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__:
+  pgr_findCloseEdges
 
   .. include:: pgr_findCloseEdges.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
+
+.. rubric:: Deprecation of functions.
+
+* `#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__:
+  pgr_analizeGraph
 
 .. rubric:: Official functions changes
 
