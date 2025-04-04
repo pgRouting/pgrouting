@@ -1099,5 +1099,47 @@ FROM pgr_primDD(
 (17 rows)
 
 /* --primDD5 */
+/* --analysis1 */
+SELECT *
+FROM pgr_connectedComponents(
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
+);
+ seq | component | node
+-----+-----------+------
+   1 |         1 |    1
+   2 |         1 |    3
+   3 |         1 |    5
+   4 |         1 |    6
+   5 |         1 |    7
+   6 |         1 |    8
+   7 |         1 |    9
+   8 |         1 |   10
+   9 |         1 |   11
+  10 |         1 |   12
+  11 |         1 |   15
+  12 |         1 |   16
+  13 |         1 |   17
+  14 |         2 |    2
+  15 |         2 |    4
+  16 |        13 |   13
+  17 |        13 |   14
+(17 rows)
+
+/* --analysis2 */
+SELECT *
+FROM pgr_degree($$SELECT id, source, target FROM edges$$)
+WHERE degree = 1;
+ node | degree
+------+--------
+    9 |      1
+    5 |      1
+    4 |      1
+   14 |      1
+   13 |      1
+    2 |      1
+    1 |      1
+(7 rows)
+
+/* --analysis3*/
 ROLLBACK;
 ROLLBACK
