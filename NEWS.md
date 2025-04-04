@@ -125,7 +125,7 @@ milestone for 3.8.0
 **Deprecation of functions.**
 
 * [#2753](https://github.com/pgRouting/pgrouting/issues/2753):
-  pgr_analizeGraph
+  pgr_analyzeGraph
 
 **Official functions changes**
 
