@@ -18734,9 +18734,3 @@ msgstr ""
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
-#~ msgid ":doc:`pgr_analyzeGraph`"
-#~ msgstr ":doc:`pgr_analyzeGraph`"
-
-#, fuzzy
-#~ msgid "pgr_findCloseEdges"
-#~ msgstr ":doc:`pgr_findCloseEdges`"
