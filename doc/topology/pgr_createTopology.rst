@@ -104,9 +104,6 @@ The function returns:
 
 .. rubric:: The Vertices Table
 
-The vertices table is a requirement of the
-:doc:`pgr_analyzeOneWay` functions.
-
 The structure of the vertices table is:
 
 :id: ``bigint`` Identifier of the vertex.
@@ -114,9 +111,9 @@ The structure of the vertices table is:
       vertex.
 :chk: ``integer`` Indicator that the vertex might have a problem.
 :ein: ``integer`` Number of vertices in the edge_table that reference this
-      vertex AS incoming. See :doc:`pgr_analyzeOneWay`.
+      vertex AS incoming.
 :eout: ``integer`` Number of vertices in the edge_table that reference this
-       vertex AS outgoing. See :doc:`pgr_analyzeOneWay`.
+       vertex AS outgoing.
 :the_geom: ``geometry`` Point geometry of the vertex.
 
 Usage when the edge table's columns MATCH the default values:

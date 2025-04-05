@@ -8,12 +8,12 @@
    ****************************************************************************
 
 .. index::
-   single: Topology Family ; pgr_analyzeOneWay
-   single: analyzeOneWay
+   single: Topology Family ; pgr_analyzeOneWay - Deprecated since 3.8.0
+   single: analyzeOneWay - Deprecated since 3.8.0
 
 |
 
-``pgr_analyzeOneWay``
+``pgr_analyzeOneWay`` - Deprecated since 3.8.0
 ===============================================================================
 
 ``pgr_analyzeOneWay`` — Analyzes oneway Sstreets and identifies flipped segments.
@@ -23,10 +23,17 @@ segments.
 
 .. rubric:: Availability
 
+* Version 3.8.0
+
+  * Deprecated function.
+
 * Version 2.0.0
 
   * Official function.
 
+.. include:: migration.rst
+   :start-after: migrate_pgr_analyzeOneWay_start
+   :end-before: migrate_pgr_analyzeOneWay_end
 
 Description
 -------------------------------------------------------------------------------
