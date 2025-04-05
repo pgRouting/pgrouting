@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_analyzeOneWay &#8212; pgRouting Manual (3.8)</title>
+    <title>pgr_analyzeOneWay - Deprecated since 3.8.0 &#8212; pgRouting Manual (3.8)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -97,7 +97,8 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code> - Deprecated since 3.8.0</a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
@@ -149,7 +150,8 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code> - Deprecated since 3.8.0</a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
@@ -182,18 +184,71 @@
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
-<section id="pgr-analyzeoneway">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code><a class="headerlink" href="#pgr-analyzeoneway" title="Link to this heading">¶</a></h1>
+<section id="pgr-analyzeoneway-deprecated-since-3-8-0">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code> - Deprecated since 3.8.0<a class="headerlink" href="#pgr-analyzeoneway-deprecated-since-3-8-0" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code> — Analiza las calles de sentido unidireccional e identifica los segmentos volteados.</p>
 <p>Esta función analiza las calles unidireccionales en un gráfico e identifica cualquier segmentos invertido.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
+<li><p>Version 3.8.0</p>
+<ul>
+<li><p>Deprecated function.</p></li>
+</ul>
+</li>
 <li><p>Versión 2.0.0</p>
 <ul>
 <li><p>Official function.</p></li>
 </ul>
 </li>
 </ul>
+<section id="migration-of-pgr-analyzeoneway">
+<h2>Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code><a class="headerlink" href="#migration-of-pgr-analyzeoneway" title="Link to this heading">¶</a></h2>
+<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<ul class="simple">
+<li><p>Number of potential problems in directionality</p></li>
+</ul>
+<p>WHERE</p>
+<p>Directionality problems were calculated based on codes.</p>
+<p class="rubric">Dead ends.</p>
+<p>A routing problem can arise when from a vertex there is only a way on or a way
+out but not both:</p>
+<p>Either saving or using directly <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> get the dead ends
+information and determine if the adjacent edge is one way or not.</p>
+<p>In this example <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> has already been applied.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">deadends</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="nb">id</span>
+  <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">where</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">edges</span> <span class="n">JOIN</span> <span class="n">deadends</span>  <span class="n">USING</span> <span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">reverse_cost</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span> <span class="o">|</span> <span class="n">capacity</span> <span class="o">|</span> <span class="n">reverse_capacity</span> <span class="o">|</span> <span class="n">x1</span> <span class="o">|</span> <span class="n">y1</span> <span class="o">|</span> <span class="n">x2</span> <span class="o">|</span> <span class="n">y2</span> <span class="o">|</span> <span class="n">geom</span>
+<span class="o">----+--------+--------+------+--------------+----------+------------------+----+----+----+----+------</span>
+<span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p class="rubric">Bridges.</p>
+<p>Another routing problem can arise when there is an edge of an undirected graph
+whose deletion increases its number of connected components, and the bridge is
+only one way.</p>
+<p>To determine if the bridges are or not one way.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">reverse_cost</span><span class="o">&lt;</span><span class="mi">0</span> <span class="n">AS</span> <span class="n">is_OneWway</span>
+<span class="n">FROM</span> <span class="n">pgr_bridges</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">)</span>
+<span class="n">JOIN</span> <span class="n">edges</span> <span class="n">ON</span> <span class="p">(</span><span class="n">edge</span> <span class="o">=</span> <span class="nb">id</span><span class="p">);</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">is_onewway</span>
+<span class="o">----+------------</span>
+  <span class="mi">1</span> <span class="o">|</span> <span class="n">f</span>
+  <span class="mi">6</span> <span class="o">|</span> <span class="n">f</span>
+  <span class="mi">7</span> <span class="o">|</span> <span class="n">f</span>
+ <span class="mi">14</span> <span class="o">|</span> <span class="n">f</span>
+ <span class="mi">17</span> <span class="o">|</span> <span class="n">f</span>
+ <span class="mi">18</span> <span class="o">|</span> <span class="n">f</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>El análisis de segmentos que tienen un solo sentido es bastante simple, pero a la vez ser una herramienta poderosa para identificar algunos problemas potenciales que son creados al establecer la dirección de un segmento de la manera equivocada. Un nodo es un <cite>source</cite> si tiene bordes que salen de ese nodo y no hay bordes que entren a ese nodo. Por el contrario, un nodo es un`sink` si todos los bordes entran al nodo pero ninguno sale de ese nodo. Para un nodo <cite>source</cite> es lógicamente imposible existir porque ningún vehículo puede salir del nodo o si algún vehículo logró entrar en el nodo. Asimismo, si tuvieras un nodo <cite>sink</cite> tienes un número infinito de vehículos que se van acumulando en este nodo porque no pueden salir de el.</p>
@@ -327,6 +382,7 @@
         <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
         <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
         <span class="n">oneway</span><span class="o">:=</span><span class="s1">&#39;dir&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_analyzeoneway</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">[],</span><span class="n">text</span><span class="p">[],</span><span class="n">text</span><span class="p">[],</span><span class="n">text</span><span class="p">[],</span><span class="n">boolean</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,TF}&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,FT}&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,FT}&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,TF}&#39;</span><span class="p">,</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="n">graph</span> <span class="k">for</span> <span class="n">one</span> <span class="n">way</span> <span class="n">street</span> <span class="n">errors</span><span class="o">.</span>
