@@ -24,6 +24,26 @@ Results can be different because of the changes.
 .. contents:: Contents
    :depth: 2
 
+.. migrate_pgr_createVerticesTable_start
+
+Migration of ``pgr_createVerticesTable``
+-------------------------------------------------------------------------------
+
+Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
+
+**Before Deprecation:** The following was calculated:
+
+* A table with `<edges>_vertices_pgr` was created.
+
+**After Deprecation:** The user is responsible to create the vertices table,
+indexes, etc. They may use :doc:`pgr_extractVertices` for that purpose.
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- q1
+   :end-before: -- q1-1
+
+.. migrate_pgr_createVerticesTable_end
+
 .. migrate_pgr_analyzeOneWay_start
 
 Migration of ``pgr_analyzeOneWay``
