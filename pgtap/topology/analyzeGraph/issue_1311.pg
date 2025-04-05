@@ -29,7 +29,10 @@ SET client_min_messages = WARNING;
 -- The following should be OK
 -- id INTEGER
 SELECT * INTO edges2 FROM edges;
-SELECT pgr_createVerticesTable('edges2','geom');
+SELECT *, 0 AS cnt, 0 AS chk, 0 AS ein, 0 AS eout, geom AS the_geom
+INTO edges2_vertices_pgr
+FROM pgr_extractVertices('SELECT id, geom FROM edges2');
+
 ALTER TABLE edges2 ALTER COLUMN id SET DATA TYPE INTEGER;
 
 SELECT is(pgr_analyzegraph('edges2', 0.000001, 'geom'), 'OK', '1');

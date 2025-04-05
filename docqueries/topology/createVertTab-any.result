@@ -11,6 +11,7 @@ SELECT AddGeometryColumn ('public','edges','the_geom',0,'LINESTRING',2);
 UPDATE edges SET the_geom = geom;
 UPDATE 18
 SELECT  pgr_createVerticesTable('edges');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edges','the_geom','source','target','true')
 NOTICE:  Performing checks, please wait .....
@@ -27,6 +28,7 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 SELECT  pgr_createVerticesTable('edges','the_geom','source','target');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edges','the_geom','source','target','true')
 NOTICE:  Performing checks, please wait .....
@@ -43,6 +45,7 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 SELECT  pgr_createVerticesTable('edges',the_geom:='the_geom',source:='source',target:='target');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edges','the_geom','source','target','true')
 NOTICE:  Performing checks, please wait .....
@@ -59,6 +62,7 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 SELECT  pgr_createVerticesTable('edges',source:='source',target:='target',the_geom:='the_geom');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edges','the_geom','source','target','true')
 NOTICE:  Performing checks, please wait .....
@@ -75,6 +79,7 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 SELECT  pgr_createVerticesTable('edges',source:='source');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edges','the_geom','source','target','true')
 NOTICE:  Performing checks, please wait .....
@@ -91,6 +96,7 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 SELECT  pgr_createVerticesTable('edges',rows_where:='id < 10');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edges','the_geom','source','target','id < 10')
 NOTICE:  Performing checks, please wait .....
@@ -107,6 +113,7 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 SELECT  pgr_createVerticesTable('edges',rows_where:='the_geom && (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edges','the_geom','source','target','the_geom && (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)')
 NOTICE:  Performing checks, please wait .....
@@ -121,6 +128,7 @@ NOTICE:  select * from public.edges WHERE true AND (the_geom && (select st_buffe
 CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
 SELECT 1
 SELECT  pgr_createVerticesTable('edges',rows_where:='the_geom && (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edges','the_geom','source','target','the_geom && (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
 NOTICE:  Performing checks, please wait .....
@@ -139,6 +147,7 @@ NOTICE:  ----------------------------------------------
 CREATE TABLE mytable AS (SELECT id AS gid, the_geom AS mygeom,source AS src ,target AS tgt FROM edges) ;
 SELECT 18
 SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
 NOTICE:  Performing checks, please wait .....
@@ -155,6 +164,7 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 SELECT  pgr_createVerticesTable('mytable',the_geom:='mygeom',source:='src',target:='tgt');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
 NOTICE:  Performing checks, please wait .....
@@ -171,6 +181,7 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
 NOTICE:  Performing checks, please wait .....
@@ -187,6 +198,7 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',rows_where:='gid < 10');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','gid < 10')
 NOTICE:  Performing checks, please wait .....
@@ -203,6 +215,7 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',rows_where:='gid < 10');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','gid < 10')
 NOTICE:  Performing checks, please wait .....
@@ -220,6 +233,7 @@ NOTICE:  ----------------------------------------------
 
 SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',
 	                            rows_where:='mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)')
 NOTICE:  Performing checks, please wait .....
@@ -237,6 +251,7 @@ NOTICE:  ----------------------------------------------
 
 SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',
 	                            rows_where:='mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)')
 NOTICE:  Performing checks, please wait .....
@@ -258,6 +273,7 @@ CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom)
 SELECT 1
 SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',
 	                            rows_where:='mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
 NOTICE:  Performing checks, please wait .....
@@ -275,6 +291,7 @@ NOTICE:  ----------------------------------------------
 
 SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',
 	                            rows_where:='mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
 NOTICE:  Performing checks, please wait .....
@@ -291,6 +308,7 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 SELECT pgr_createVerticesTable('edges');
+WARNING:  pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edges','the_geom','source','target','true')
 NOTICE:  Performing checks, please wait .....

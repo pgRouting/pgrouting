@@ -302,7 +302,6 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`topology-functions`
-* :doc:`pgr_createVerticesTable`
 
 .. rubric:: Indices and tables
 
