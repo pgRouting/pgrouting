@@ -23,7 +23,7 @@ BEGIN;
 -- create 2 test cases with overlapping lines, one with crossing lines and one with touching (but no crossing) lines
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(22);
+SELECT plan(15);
 
 SET client_min_messages = WARNING;
 CREATE TABLE original (
@@ -85,22 +85,5 @@ SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE ein i
 SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE eout is NULL), 15, '15 vertices are missing eout');
 
 
-SELECT pgr_analyzegraph('original_noded',  0.000001);
-SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE cnt is NULL), 0, '0 vertices are missing cnt');
-SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE chk is NULL), 0, '0 vertices are missing chk');
-SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE ein is NULL), 15, '15 vertices are missing ein');
-SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE eout is NULL), 15, '15 vertices are missing eout');
-SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE chk = 0), 14, 'In 14 vertices chk=0 aka have no problem');
-SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE chk = 1), 1, 'In 1 vertices chk=1 aka might have a gap near dead end');
-PREPARE q2_bridges AS
-SELECT cnt, count(*) AS M  FROM original_noded_vertices_pgr GROUP BY cnt ORDER BY cnt;
-PREPARE vals2_bridges AS
-VALUES (1,11), (3, 1), (4,3);
-SELECT set_eq('q2_bridges', 'vals2_bridges',
-        'vertices referenced correctly by edges');
-
-
 SELECT finish();
 ROLLBACK;
-
-

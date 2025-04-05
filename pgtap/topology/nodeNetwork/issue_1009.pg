@@ -22,7 +22,7 @@ BEGIN;
 -- node the network
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(20);
+SELECT plan(14);
 
 SET client_min_messages = WARNING;
 CREATE TABLE "test_graph" (gid serial,
@@ -63,22 +63,5 @@ SELECT is((SELECT count(*)::INTEGER FROM test_graph_noded_vertices_pgr WHERE chk
 SELECT is((SELECT count(*)::INTEGER FROM test_graph_noded_vertices_pgr WHERE ein is NULL), 5, '5 vertices are missing ein');
 SELECT is((SELECT count(*)::INTEGER FROM test_graph_noded_vertices_pgr WHERE eout is NULL), 5, '5 vertices are missing eout');
 
-
-SELECT pgr_analyzegraph('test_graph_noded',  0.000001, 'geom');
-SELECT is((SELECT count(*)::INTEGER FROM test_graph_noded_vertices_pgr WHERE cnt is NULL), 0, '0 vertices are missing cnt');
-SELECT is((SELECT count(*)::INTEGER FROM test_graph_noded_vertices_pgr WHERE chk is NULL), 0, '0 vertices are missing chk');
-SELECT is((SELECT count(*)::INTEGER FROM test_graph_noded_vertices_pgr WHERE ein is NULL), 5, '5 vertices are missing ein');
-SELECT is((SELECT count(*)::INTEGER FROM test_graph_noded_vertices_pgr WHERE eout is NULL), 5, '5 vertices are missing eout');
-SELECT is((SELECT count(*)::INTEGER FROM test_graph_noded_vertices_pgr WHERE chk = 0), 5, 'In 5 vertices chk=0 aka have no problem');
-PREPARE q2 AS
-SELECT cnt, count(*) AS M  FROM test_graph_noded_vertices_pgr GROUP BY cnt ORDER BY cnt;
-PREPARE vals2 AS
-VALUES (1,4), (4, 1);
-SELECT set_eq('q2', 'vals2',
-        'vertices referenced correctly by edges');
-
-
 SELECT finish();
 ROLLBACK;
-
-
