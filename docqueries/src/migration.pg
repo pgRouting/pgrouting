@@ -401,3 +401,21 @@ FROM results JOIN deadends d USING (geom);
 SELECT e1.id AS id1, e2.id AS id2
 FROM edges e1, edges e2 WHERE e1 < e2 AND st_crosses(e1.geom, e2.geom);
 /* --analysis5*/
+
+/* --OneWay1 */
+WITH
+deadends AS (
+  SELECT (in_edges || out_edges)[1] as id
+  FROM vertices where array_length(in_edges || out_edges, 1) = 1)
+SELECT * FROM edges JOIN deadends  USING (id)
+WHERE cost < 0 OR reverse_cost < 0;
+/* --OneWay2 */
+SELECT id, cost < 0 OR reverse_cost<0 AS is_OneWway
+FROM pgr_bridges('SELECT id, source, target, cost, reverse_cost FROM edges')
+JOIN edges ON (edge = id);
+/* --OneWay3 */
+SELECT id, cost, reverse_cost
+FROM pgr_bridges('SELECT id, source, target, cost, reverse_cost FROM edges')
+JOIN edges ON (edge = id)
+WHERE cost < 0 OR reverse_cost<0;
+/* --OneWay4 */
