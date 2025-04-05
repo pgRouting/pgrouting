@@ -282,7 +282,7 @@ BEGIN
        err = sname is NULL or vname is NULL;
     perform _pgr_onError( err, 2, fnName,
           'Vertex Table: ' || vertname || ' not found',
-          'Please create ' || vertname || ' using  _pgr_createTopology() or pgr_createVerticesTable()',
+          'Please create ' || vertname || ' using  _pgr_createTopology()',
           'Vertex Table: ' || vertname || ' found');
 
 
