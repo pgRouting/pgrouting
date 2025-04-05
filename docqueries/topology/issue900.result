@@ -8,6 +8,7 @@ CREATE TABLE edges AS SELECT * FROM mbta_arc;
 SELECT 18
 ;
 SELECT pgr_CreateTopology('edges', 0.001, 'geom', 'id', clean := true);
+WARNING:  pgr_createtopology(text,double precision,text,text,text,text,text,boolean) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createTopology('edges', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
 NOTICE:  Performing checks, please wait .....

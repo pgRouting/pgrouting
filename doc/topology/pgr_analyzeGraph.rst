@@ -55,8 +55,6 @@ The edge table to be analyzed must contain a source column and a target column
 filled with id's of the vertices of the segments and the corresponding vertices
 table <edge_table>_vertices_pgr that stores the vertices information.
 
-- Use :doc:`pgr_createTopology` to create the topology and the vertices table.
-
 Parameters
 -------------------------------------------------------------------------------
 
@@ -94,9 +92,6 @@ The function returns:
 
 
 .. rubric:: The Vertices Table
-
-The vertices table can be created with
-:doc:`pgr_createTopology <pgr_createTopology>`
 
 The structure of the vertices table is:
 

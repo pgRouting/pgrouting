@@ -8,12 +8,12 @@
    ****************************************************************************
 
 .. index::
-   single: Topology Family ; pgr_createTopology
-   single: createTopology
+   single: Topology Family ; pgr_createTopology - Deprecated since v3.8.0
+   single: createTopology - Deprecated since v3.8.0
 
 |
 
-``pgr_createTopology``
+``pgr_createTopology`` - Deprecated since v3.8.0
 ===============================================================================
 
 ``pgr_createTopology`` — Builds a network topology based on the geometry
@@ -21,10 +21,18 @@ information.
 
 .. rubric:: Availability
 
+* Version 3.8.0
+
+  * Deprecated function.
+
 * Version 2.0.0
 
   * Official function.
   * Renamed from version 1.x
+
+.. include:: migration.rst
+   :start-after: migrate_pgr_createTopology_start
+   :end-before: migrate_pgr_createTopology_end
 
 Description
 -------------------------------------------------------------------------------

@@ -31,7 +31,22 @@ UPDATE edges2 SET source = NULL, target = NULL;
 
 -- The following should be OK
 
-SELECT pgr_createTopology('edges2',0.00001, id:='id', clean := true);
+SELECT *,
+  NULL::INTEGER AS cnt, NULL::INTEGER AS chk,
+  NULL::INTEGER AS ein, NULL::INTEGER AS eout
+INTO edges2_vertices_pgr
+FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM edges2 ORDER BY id');
+/* -- set the source information */
+UPDATE edges2 AS e
+SET source = v.id
+FROM edges2_vertices_pgr AS v
+WHERE ST_StartPoint(e.the_geom) = v.geom;
+/* -- set the target information */
+UPDATE edges2 AS e
+SET target = v.id
+FROM edges2_vertices_pgr AS v
+WHERE ST_EndPoint(e.the_geom) = v.geom;
+
 PREPARE q1 AS
 SELECT count(*) FROM public.edges2_vertices_pgr;
 SELECT results_eq('q1', ARRAY[17]::BIGINT[]);
