@@ -95,6 +95,8 @@ DECLARE
 
 BEGIN
   fnName = 'pgr_createVerticesTable';
+
+  RAISE WARNING 'pgr_createverticestable(text,text,text,text,text) deprecated function on v3.8.0';
   RAISE NOTICE 'PROCESSING:';
   RAISE NOTICE 'pgr_createVerticesTable(''%'',''%'',''%'',''%'',''%'')',edge_table,the_geom,source,target,rows_where;
   EXECUTE 'show client_min_messages' INTO debuglevel;
@@ -263,14 +265,4 @@ $BODY$
 
 
 COMMENT ON FUNCTION pgr_createverticestable(TEXT, TEXT, TEXT, TEXT, TEXT)
-IS 'pgr_createVerticesTable
-- Parameters
-  - Edge table name
-- Optional parameters
-  - the_geom := ''the_geom''
-  - source := ''source''
-  - target := ''target''
-  - rows_where := ''true''
-- Documentation:
-  - ${PROJECT_DOC_LINK}/pgr_createVerticesTable.html
-';
+IS 'pgr_createVerticesTable deprecated function on v3.8.0';
