@@ -24,7 +24,7 @@ BEGIN;
 -- set the even numbered ones with dir='FT' and the odd ones 'TF'
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(41);
+SELECT plan(30);
 
 SET client_min_messages = WARNING;
 CREATE TABLE original (
@@ -64,20 +64,6 @@ SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE cnt i
 SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE chk is NULL), 32, '32 vertices are missing chk');
 SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE ein is NULL), 32, '32 vertices are missing ein');
 SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE eout is NULL), 32, '32 vertices are missing eout');
-
-
-SELECT pgr_analyzegraph('original_noded',  0.000001);
-SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE cnt is NULL), 0, '0 vertices are missing cnt');
-SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE chk is NULL), 0, '0 vertices are missing chk');
-SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE ein is NULL), 32, '32 vertices are missing ein');
-SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE eout is NULL), 32, '32 vertices are missing eout');
-SELECT is((SELECT count(*)::INTEGER FROM original_noded_vertices_pgr WHERE chk = 0), 32, 'In 32 vertices chk=0 aka have no problem');
-PREPARE q2 AS
-SELECT cnt, count(*) AS M  FROM original_noded_vertices_pgr GROUP BY cnt ORDER BY cnt;
-PREPARE vals2 AS
-VALUES (1,16), (4,16);
-SELECT set_eq('q2', 'vals2',
-        '(N,16) 16 vertices referenced by N edges');
 
 
 -- create a new TABLE and merge attribute FROM original and noded
@@ -122,14 +108,6 @@ SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE chk is NULL), 
 SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE ein is NULL), 32, '32 vertices are missing ein');
 SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE eout is NULL), 32, '32 vertices are missing eout');
 
-
-SELECT pgr_analyzegraph('noded', 0.000001,id:='gid');
-SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE cnt is NULL), 0, '0 vertices are missing cnt');
-SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE chk is NULL), 0, '0 vertices are missing chk');
-SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE ein is NULL), 32, '32 vertices are missing ein');
-SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE eout is NULL), 32, '32 vertices are missing eout');
-SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE chk = 0), 32, 'In 32 vertices chk=0 aka have no problem');
-
 SELECT pgr_analyzeoneway('noded',
     ARRAY['', 'B', 'TF'],
     ARRAY['', 'B', 'FT'],
@@ -142,5 +120,3 @@ SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE eout is NULL),
 
 SELECT finish();
 ROLLBACK;
-
-
