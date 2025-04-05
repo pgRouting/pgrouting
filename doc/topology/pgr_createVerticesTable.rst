@@ -30,6 +30,10 @@ source and target information.
   * Official function.
   * Renamed from version 1.x
 
+.. include:: migration.rst
+   :start-after: migrate_pgr_createVerticesTable_start
+   :end-before: migrate_pgr_createVerticesTable_end
+
 Description
 -------------------------------------------------------------------------------
 
