@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-05 01:34+0000\n"
+"POT-Creation-Date: 2025-04-05 21:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4129,10 +4129,10 @@ msgstr ""
 msgid "Results can be different because of the changes."
 msgstr ""
 
-msgid "All deprecated functions will be removed on next mayor version 4.0.0"
+msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr ""
 
-msgid "Migration of ``pgr_analyzeGraph``"
+msgid "Migration of ``pgr_analyzeOneWay``"
 msgstr ""
 
 msgid ""
@@ -4141,6 +4141,46 @@ msgid ""
 msgstr ""
 
 msgid "**Before Deprecation:** The following was calculated:"
+msgstr ""
+
+msgid "Number of potential problems in directionality"
+msgstr ""
+
+msgid "WHERE"
+msgstr ""
+
+msgid "Directionality problems were calculated based on codes."
+msgstr ""
+
+msgid "Dead ends."
+msgstr ""
+
+msgid ""
+"A routing problem can arise when from a vertex there is only a way on or "
+"a way out but not both:"
+msgstr ""
+
+msgid ""
+"Either saving or using directly :doc:`pgr_extractVertices` get the dead "
+"ends information and determine if the adjacent edge is one way or not."
+msgstr ""
+
+msgid "In this example :doc:`pgr_extractVertices` has already been applied."
+msgstr ""
+
+msgid "Bridges."
+msgstr ""
+
+msgid ""
+"Another routing problem can arise when there is an edge of an undirected "
+"graph whose deletion increases its number of connected components, and "
+"the bridge is only one way."
+msgstr ""
+
+msgid "To determine if the bridges are or not one way."
+msgstr ""
+
+msgid "Migration of ``pgr_analyzeGraph``"
 msgstr ""
 
 msgid "Number of isolated segments."
@@ -4153,9 +4193,6 @@ msgid "Number of potential gaps found near dead ends."
 msgstr ""
 
 msgid "Number of intersections. (between 2 edges)"
-msgstr ""
-
-msgid "WHERE"
 msgstr ""
 
 msgid "Graph component"
@@ -4212,9 +4249,6 @@ msgid ":doc:`pgr_biconnectedComponents`"
 msgstr ""
 
 msgid "For example:"
-msgstr ""
-
-msgid "Dead ends."
 msgstr ""
 
 msgid ""
@@ -8123,7 +8157,7 @@ msgstr ""
 
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this "
-"vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+"vertex as incoming."
 msgstr ""
 
 msgid "eout"
@@ -8131,7 +8165,7 @@ msgstr ""
 
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this "
-"vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+"vertex as outgoing."
 msgstr ""
 
 msgid "``geometry`` Point geometry of the vertex."
@@ -8237,7 +8271,7 @@ msgstr ""
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ""
 
-msgid "``pgr_analyzeOneWay``"
+msgid "``pgr_analyzeOneWay`` - Deprecated since 3.8.0"
 msgstr ""
 
 msgid ""
@@ -8349,16 +8383,6 @@ msgstr ""
 msgid ""
 "The vertices table can be created with :doc:`pgr_createVerticesTable` or "
 ":doc:`pgr_createTopology`"
-msgstr ""
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this "
-"vertex as incoming."
-msgstr ""
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this "
-"vertex as outgoing."
 msgstr ""
 
 msgid "``pgr_articulationPoints``"
@@ -10095,18 +10119,13 @@ msgid "``FAIL`` when the network topology was not built due to an error:"
 msgstr ""
 
 msgid ""
-"The vertices table is a requirement of the :doc:`pgr_analyzeOneWay` "
-"functions."
+"``integer`` Number of vertices in the edge_table that reference this "
+"vertex AS incoming."
 msgstr ""
 
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this "
-"vertex AS incoming. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this "
-"vertex AS outgoing. See :doc:`pgr_analyzeOneWay`."
+"vertex AS outgoing."
 msgstr ""
 
 msgid "The simplest way to use pgr_createTopology is:"
@@ -10254,16 +10273,6 @@ msgstr ""
 msgid "The names of source, target are the same."
 msgstr ""
 
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this "
-"vertex as incoming. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this "
-"vertex as outgoing. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-
 msgid "The simplest way to use pgr_createVerticesTable"
 msgstr ""
 
@@ -10357,9 +10366,6 @@ msgstr ""
 msgid ""
 ":doc:`pgr_createTopology` <pgr_create_topology>` to create a topology "
 "based on the geometry."
-msgstr ""
-
-msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
 msgstr ""
 
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
@@ -13552,8 +13558,7 @@ msgstr ""
 
 msgid ""
 ":doc:`topology-functions` for an overview of a topology for routing "
-"algorithms. :doc:`pgr_analyzeOneWay` to analyze directionality of the "
-"edges. :doc:`pgr_createTopology` to create a topology based on the "
+"algorithms. :doc:`pgr_createTopology` to create a topology based on the "
 "geometry."
 msgstr ""
 
@@ -15529,6 +15534,11 @@ msgid ""
 msgstr ""
 
 msgid "Deprecation of functions."
+msgstr ""
+
+msgid ""
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
+"pgr_analyzeOneWay"
 msgstr ""
 
 msgid ""
