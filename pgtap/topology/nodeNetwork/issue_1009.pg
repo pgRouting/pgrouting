@@ -53,7 +53,23 @@ SELECT set_eq('q1', 'vals1',
 SELECT is((SELECT count(*)::INTEGER FROM test_graph_noded WHERE source is NULL), (SELECT count(*)::INTEGER FROM test_graph_noded), 'all edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM test_graph_noded WHERE target is NULL), (SELECT count(*)::INTEGER FROM test_graph_noded), 'all edges are missing target');
 SELECT hasnt_table('test_graph_noded_vertices_pgr', 'test_graph_noded_vertices_pgr table does not exist');
-SELECT pgr_createtopology('test_graph_noded', 0.000001, 'geom', 'id');
+
+SELECT *,
+  NULL::INTEGER AS cnt, NULL::INTEGER AS chk,
+  NULL::INTEGER AS ein, NULL::INTEGER AS eout
+INTO test_graph_noded_vertices_pgr
+FROM pgr_extractVertices('SELECT id, geom FROM test_graph_noded ORDER BY id');
+/* -- set the source information */
+UPDATE test_graph_noded AS e
+SET source = v.id
+FROM test_graph_noded_vertices_pgr AS v
+WHERE ST_StartPoint(e.geom) = v.geom;
+/* -- set the target information */
+UPDATE test_graph_noded AS e
+SET target = v.id
+FROM test_graph_noded_vertices_pgr AS v
+WHERE ST_EndPoint(e.geom) = v.geom;
+
 SELECT has_table('test_graph_noded_vertices_pgr', 'test_graph_noded_vertices_pgr table now exist');
 SELECT is((SELECT count(*)::INTEGER FROM test_graph_noded WHERE source is NULL), 0, '0 edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM test_graph_noded WHERE target is NULL), 0, '0 edges are missing target');

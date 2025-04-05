@@ -286,8 +286,6 @@ See Also
 * :doc:`sampledata`
 * :doc:`topology-functions` for an overview of a topology for routing
   algorithms.
-* :doc:`pgr_createTopology` <pgr_create_topology>` to create a topology based on
-  the geometry.
 
 .. rubric:: Indices and tables
 

@@ -24,12 +24,27 @@ UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(3);
 
 
-SELECT pgr_createTopology('edges',0.001, 'geom', clean := true);
+SELECT id, geom AS the_geom,
+  NULL::INTEGER AS cnt, NULL::INTEGER AS chk,
+  NULL::INTEGER AS ein, NULL::INTEGER AS eout
+INTO edges_vertices_pgr
+FROM pgr_extractVertices('SELECT id, geom FROM edges ORDER BY id');
+/* -- set the source information */
+UPDATE edges AS e
+SET source = v.id
+FROM edges_vertices_pgr AS v
+WHERE ST_StartPoint(e.geom) = v.the_geom;
+/* -- set the target information */
+UPDATE edges AS e
+SET target = v.id
+FROM edges_vertices_pgr AS v
+WHERE ST_EndPoint(e.geom) = v.the_geom;
+
 SELECT pgr_analyzegraph('edges', 0.000001, 'geom');
 
 
 SELECT is((SELECT count(*)::INTEGER cnt FROM edges_vertices_pgr WHERE chk = 1), 1, '1: One vertex has a problem');
-SELECT is((SELECT id::INTEGER FROM edges_vertices_pgr WHERE chk = 1), 10, '2: vertex #15 has the problem');
+SELECT is((SELECT id::INTEGER FROM edges_vertices_pgr WHERE chk = 1), 4, '2: vertex #15 has the problem');
 
 PREPARE q1 AS
 SELECT cnt, count(*) AS M  FROM edges_vertices_pgr GROUP BY cnt ORDER BY cnt;
