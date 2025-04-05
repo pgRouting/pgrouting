@@ -3,61 +3,58 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 /* --q1 */
-SELECT pgr_createTopology('edges', 0.001, 'geom', clean := TRUE);
-NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edges', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
-NOTICE:  Performing checks, please wait .....
-NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
-NOTICE:  Rows with NULL geometry or NULL id: 0
-NOTICE:  Vertices table for table public.edges is: public.edges_vertices_pgr
-NOTICE:  ----------------------------------------------
- pgr_createtopology
---------------------
- OK
+SELECT e1.id id1, e2.id id2, ST_ASTEXT(ST_Intersection(e1.geom, e2.geom)) AS point
+FROM edges e1, edges e2
+WHERE e1.id < e2.id AND ST_Crosses(e1.geom, e2.geom);
+ id1 | id2 |    point
+-----+-----+--------------
+  13 |  18 | POINT(3.5 3)
 (1 row)
 
-/* --q1.1 */
 /* --q2 */
-SELECT pgr_analyzegraph('edges', 0.001, 'geom');
-WARNING:  pgr_analyzegraph(text,double precision,text,text,text,text,text) deprecated function on v3.8.0
-NOTICE:  PROCESSING:
-NOTICE:  pgr_analyzeGraph('edges',0.001,'geom','id','source','target','true')
-NOTICE:  Performing checks, please wait ...
-NOTICE:  Analyzing for dead ends. Please wait...
-NOTICE:  Analyzing for gaps. Please wait...
-NOTICE:  Analyzing for isolated edges. Please wait...
-NOTICE:  Analyzing for ring geometries. Please wait...
-NOTICE:  Analyzing for intersections. Please wait...
-NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 2
-NOTICE:                            Dead ends: 7
-NOTICE:  Potential gaps found near dead ends: 1
-NOTICE:               Intersections detected: 1
-NOTICE:                      Ring geometries: 0
- pgr_analyzegraph
-------------------
- OK
+WITH
+data AS (
+  SELECT id, geom, (in_edges || out_edges)[1] as inhere
+  FROM vertices where array_length(in_edges || out_edges, 1) = 1
+),
+results AS (
+  SELECT d.id, d.inhere,
+  (pgr_findCloseEdges('SELECT id, geom FROM edges WHERE id != ' || inhere , geom, 0.001)).*
+  FROM data d
+)
+SELECT
+  id, inhere, edge_id, fraction,
+  ST_AsText(geom) AS geom, ST_AsText(edge) AS edge
+FROM results;
+ id | inhere | edge_id | fraction |           geom            |                 edge
+----+--------+---------+----------+---------------------------+--------------------------------------
+  4 |     17 |      14 |      0.5 | POINT(1.999999999999 3.5) | LINESTRING(1.999999999999 3.5,2 3.5)
 (1 row)
 
-/* --q2.1 */
 /* --q3 */
-SELECT pgr_nodeNetwork('edges', 0.001, the_geom => 'geom');
+SELECT e1.id id1, e2.id id2, st_intersection(e1.geom, e2.geom) AS point
+INTO intersections
+FROM edges e1, edges e2
+WHERE e1.id < e2.id AND st_crosses(e1.geom, e2.geom);
+SELECT 1
+/* --q4 */
+SELECT pgr_nodeNetwork('edges', 0.001, the_geom => 'geom', rows_where=>'id in ('||id1||','||id2||')')
+FROM intersections;
 NOTICE:  PROCESSING:
 NOTICE:  id: id
 NOTICE:  the_geom: geom
 NOTICE:  table_ending: noded
-NOTICE:  rows_where:
+NOTICE:  rows_where: id in (13,18)
 NOTICE:  outall: f
-NOTICE:  pgr_nodeNetwork('edges', 0.001, 'id', 'geom', 'noded', '',  f)
+NOTICE:  pgr_nodeNetwork('edges', 0.001, 'id', 'geom', 'noded', 'id in (13,18)',  f)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Processing, please wait .....
-NOTICE:    Split Edges: 3
-NOTICE:   Untouched Edges: 15
-NOTICE:       Total original Edges: 18
-NOTICE:   Edges generated: 6
-NOTICE:   Untouched Edges: 15
-NOTICE:         Total New segments: 21
+NOTICE:    Split Edges: 2
+NOTICE:   Untouched Edges: 0
+NOTICE:       Total original Edges: 2
+NOTICE:   Edges generated: 4
+NOTICE:   Untouched Edges: 0
+NOTICE:         Total New segments: 4
 NOTICE:   New Table: public.edges_noded
 NOTICE:  ----------------------------------
  pgr_nodenetwork
@@ -65,172 +62,164 @@ NOTICE:  ----------------------------------
  OK
 (1 row)
 
-/* --q3.1 */
-/* --q4 */
-SELECT old_id, sub_id FROM edges_noded ORDER BY old_id, sub_id;
- old_id | sub_id
---------+--------
-      1 |      1
-      2 |      1
-      3 |      1
-      4 |      1
-      5 |      1
-      6 |      1
-      7 |      1
-      8 |      1
-      9 |      1
-     10 |      1
-     11 |      1
-     12 |      1
-     13 |      1
-     13 |      2
-     14 |      1
-     14 |      2
-     15 |      1
-     16 |      1
-     17 |      1
-     18 |      1
-     18 |      2
-(21 rows)
-
-/* --q4.1 */
 /* --q5 */
-SELECT pgr_createTopology('edges_noded', 0.001, 'geom');
-NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edges_noded', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
-NOTICE:  Performing checks, please wait .....
-NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  21 edges
-NOTICE:  Rows with NULL geometry or NULL id: 0
-NOTICE:  Vertices table for table public.edges_noded is: public.edges_noded_vertices_pgr
-NOTICE:  ----------------------------------------------
- pgr_createtopology
---------------------
- OK
-(1 row)
+SELECT old_id, ST_AsText(geom) FROM edges_noded ORDER BY old_id, sub_id;
+ old_id |         st_astext
+--------+---------------------------
+     13 | LINESTRING(3 3,3.5 3)
+     13 | LINESTRING(3.5 3,4 3)
+     18 | LINESTRING(3.5 2.3,3.5 3)
+     18 | LINESTRING(3.5 3,3.5 4)
+(4 rows)
 
-/* --q5.1 */
 /* --q6 */
-SELECT pgr_analyzegraph('edges_noded', 0.001, 'geom');
-WARNING:  pgr_analyzegraph(text,double precision,text,text,text,text,text) deprecated function on v3.8.0
-NOTICE:  PROCESSING:
-NOTICE:  pgr_analyzeGraph('edges_noded',0.001,'geom','id','source','target','true')
-NOTICE:  Performing checks, please wait ...
-NOTICE:  Analyzing for dead ends. Please wait...
-NOTICE:  Analyzing for gaps. Please wait...
-NOTICE:  Analyzing for isolated edges. Please wait...
-NOTICE:  Analyzing for ring geometries. Please wait...
-NOTICE:  Analyzing for intersections. Please wait...
-NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 0
-NOTICE:                            Dead ends: 6
-NOTICE:  Potential gaps found near dead ends: 0
-NOTICE:               Intersections detected: 0
-NOTICE:                      Ring geometries: 0
- pgr_analyzegraph
-------------------
- OK
-(1 row)
-
-/* --q6.1 */
+INSERT INTO edges (cost, reverse_cost, geom)
+WITH
+the_fractions AS (
+  SELECT e1.id id, st_lineLocatePoint(e1.geom, point) AS fraction
+  FROM intersections, edges e1, edges e2 WHERE e1.id = id1 AND e2.id = id2
+  UNION
+  SELECT e2.id, st_lineLocatePoint(e2.geom, point)
+  FROM intersections, edges e1, edges e2 WHERE e1.id = id1 AND e2.id = id2
+)
+SELECT
+  CASE WHEN sub_id = 1
+    THEN cost*fraction ELSE cost*(1-fraction) END as cost,
+  CASE WHEN sub_id = 1
+    THEN reverse_cost*(1-fraction) ELSE reverse_cost*(fraction) END AS reverse_cost,
+  segments.geom
+FROM edges as edges
+JOIN edges_noded as segments ON (edges.id = segments.old_id)
+JOIN the_fractions f ON (segments.old_id = f.id);
+INSERT 0 4
 /* --q7 */
-alter table edges drop column if exists old_id;
-NOTICE:  column "old_id" of relation "edges" does not exist, skipping
-ALTER TABLE
-alter table edges add column old_id integer;
-ALTER TABLE
-insert into edges (old_id, cost, reverse_cost, geom)
-   (with
-       segmented as (select old_id,count(*) as i from edges_noded group by old_id)
-   select  segments.old_id, cost, reverse_cost, segments.geom
-       from edges as edges join edges_noded as segments on (edges.id = segments.old_id)
-       where edges.id in (select old_id from segmented where i>1) );
-INSERT 0 6
-/* --q7.1 */
+INSERT INTO vertices (id, geom)
+SELECT row_number() over() + 100, point
+FROM intersections;
+INSERT 0 1
 /* --q8 */
-SELECT pgr_createTopology('edges', 0.001, 'geom');
-NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edges', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
-NOTICE:  Performing checks, please wait .....
-NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  6 edges
-NOTICE:  Rows with NULL geometry or NULL id: 0
-NOTICE:  Vertices table for table public.edges is: public.edges_vertices_pgr
-NOTICE:  ----------------------------------------------
- pgr_createtopology
---------------------
- OK
-(1 row)
-
-/* --q8.1 */
+UPDATE edges e SET source = v.id FROM
+vertices v where source IS NULL AND (st_startPoint(e.geom) = v.geom);
+UPDATE 4
+UPDATE edges e SET target = v.id FROM
+vertices v where target IS NULL AND (st_endPoint(e.geom) = v.geom);
+UPDATE 4
 /* --q9 */
-SELECT pgr_analyzegraph('edges', 0.001, 'geom', rows_where:='id not in (select old_id from edges where old_id is not null)');
-WARNING:  pgr_analyzegraph(text,double precision,text,text,text,text,text) deprecated function on v3.8.0
-NOTICE:  PROCESSING:
-NOTICE:  pgr_analyzeGraph('edges',0.001,'geom','id','source','target','id not in (select old_id from edges where old_id is not null)')
-NOTICE:  Performing checks, please wait ...
-NOTICE:  Analyzing for dead ends. Please wait...
-NOTICE:  Analyzing for gaps. Please wait...
-NOTICE:  Analyzing for isolated edges. Please wait...
-NOTICE:  Analyzing for ring geometries. Please wait...
-NOTICE:  Analyzing for intersections. Please wait...
-NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 0
-NOTICE:                            Dead ends: 6
-NOTICE:  Potential gaps found near dead ends: 0
-NOTICE:               Intersections detected: 0
-NOTICE:                      Ring geometries: 0
- pgr_analyzegraph
-------------------
- OK
-(1 row)
-
-/* --q9.1 */
+DELETE FROM edges
+WHERE id IN (
+  SELECT id1 FROM intersections
+  UNION
+  SELECT id2 FROM intersections);
+DELETE 2
 /* --q10 */
-SELECT pgr_analyzegraph('edges', 0.001, 'geom', rows_where:='old_id is null');
-WARNING:  pgr_analyzegraph(text,double precision,text,text,text,text,text) deprecated function on v3.8.0
-NOTICE:  PROCESSING:
-NOTICE:  pgr_analyzeGraph('edges',0.001,'geom','id','source','target','old_id is null')
-NOTICE:  Performing checks, please wait ...
-NOTICE:  Analyzing for dead ends. Please wait...
-NOTICE:  Analyzing for gaps. Please wait...
-NOTICE:  Analyzing for isolated edges. Please wait...
-NOTICE:  Analyzing for ring geometries. Please wait...
-NOTICE:  Analyzing for intersections. Please wait...
-NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 2
-NOTICE:                            Dead ends: 7
-NOTICE:  Potential gaps found near dead ends: 1
-NOTICE:               Intersections detected: 1
-NOTICE:                      Ring geometries: 0
- pgr_analyzegraph
-------------------
- OK
-(1 row)
-
-/* --q10.1 */
+WITH data AS (
+  select p.id, p.in_edges, p.out_edges
+  FROM pgr_extractVertices('select id, source, target from edges') p)
+UPDATE vertices v
+SET (in_edges,out_edges) = (d.in_edges,d.out_edges)
+FROM data d where d.id = v.id;
+UPDATE 18
 /* --q11 */
-SELECT pgr_analyzegraph('edges', 0.001, 'geom');
-WARNING:  pgr_analyzegraph(text,double precision,text,text,text,text,text) deprecated function on v3.8.0
+SELECT e1.id, e2.id
+FROM edges_noded e1, edges e2
+WHERE e1.id < e2.id AND st_crosses(e1.geom, e2.geom);
+ id | id
+----+----
+(0 rows)
+
+/* --q12 */
+WITH
+data AS (
+  SELECT id, geom, (in_edges || out_edges)[1] as inhere
+  FROM vertices where array_length(in_edges || out_edges, 1) = 1)
+SELECT
+  d.id, d.inhere,
+  (pgr_findCloseEdges('SELECT id, geom FROM edges WHERE id != ' || inhere , geom, 0.001)).*
+INTO deadends
+FROM data d;
+SELECT 1
+/* --q13 */
+SELECT pgr_nodeNetwork('edges', 0.001, the_geom => 'geom', rows_where=>'id in ('||inhere||','||edge_id||')')
+FROM deadends;
 NOTICE:  PROCESSING:
-NOTICE:  pgr_analyzeGraph('edges',0.001,'geom','id','source','target','true')
-NOTICE:  Performing checks, please wait ...
-NOTICE:  Analyzing for dead ends. Please wait...
-NOTICE:  Analyzing for gaps. Please wait...
-NOTICE:  Analyzing for isolated edges. Please wait...
-NOTICE:  Analyzing for ring geometries. Please wait...
-NOTICE:  Analyzing for intersections. Please wait...
-NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 0
-NOTICE:                            Dead ends: 3
-NOTICE:  Potential gaps found near dead ends: 0
-NOTICE:               Intersections detected: 5
-NOTICE:                      Ring geometries: 0
- pgr_analyzegraph
-------------------
+NOTICE:  id: id
+NOTICE:  the_geom: geom
+NOTICE:  table_ending: noded
+NOTICE:  rows_where: id in (17,14)
+NOTICE:  outall: f
+NOTICE:  pgr_nodeNetwork('edges', 0.001, 'id', 'geom', 'noded', 'id in (17,14)',  f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Processing, please wait .....
+NOTICE:    Split Edges: 1
+NOTICE:   Untouched Edges: 1
+NOTICE:       Total original Edges: 2
+NOTICE:   Edges generated: 2
+NOTICE:   Untouched Edges: 1
+NOTICE:         Total New segments: 3
+NOTICE:   New Table: public.edges_noded
+NOTICE:  ----------------------------------
+ pgr_nodenetwork
+-----------------
  OK
 (1 row)
 
-/* --q11.1 */
+/* --q14 */
+SELECT old_id, ST_AsText(geom) FROM edges_noded ORDER BY old_id, sub_id;
+ old_id |               st_astext
+--------+----------------------------------------
+     14 | LINESTRING(2 3,2 3.5)
+     14 | LINESTRING(2 3.5,2 4)
+     17 | LINESTRING(0.5 3.5,1.999999999999 3.5)
+(3 rows)
+
+/* --q15 */
+INSERT INTO edges (cost, reverse_cost, geom)
+SELECT
+  CASE WHEN sub_id = 1 THEN cost*fraction ELSE cost*(1-fraction) END as cost,
+  CASE WHEN sub_id = 1 THEN reverse_cost*(1-fraction) ELSE reverse_cost*(fraction) END as reverse_cost, en.geom
+FROM deadends r JOIN edges_noded en ON (old_id = edge_id) JOIN edges e ON (old_id = e.id)
+UNION
+SELECT 0,0,edge FROM deadends;
+INSERT 0 3
+/* --q16 */
+/* Update the vertices table */
+INSERT INTO vertices (id, geom)
+select row_number() over() + 200, st_endpoint(edge) FROM deadends;
+INSERT 0 1
+/* --q17 */
+UPDATE edges e SET source = v.id FROM
+vertices v where source IS NULL AND (st_startPoint(e.geom) = v.geom);
+UPDATE 3
+UPDATE edges e SET target = v.id FROM
+vertices v where target IS NULL AND (st_endPoint(e.geom) = v.geom);
+UPDATE 3
+/* --q18 */
+DELETE FROM edges WHERE id IN (SELECT edge_id FROM deadends);
+DELETE 1
+/* --q19 */
+WITH data AS (
+  select p.id, p.in_edges, p.out_edges
+  FROM pgr_extractVertices('select id, source, target from edges') p)
+UPDATE vertices v
+SET (in_edges,out_edges) = (d.in_edges,d.out_edges)
+FROM data d where d.id = v.id;
+UPDATE 19
+/* --q20 */
+WITH
+data AS (
+  SELECT id, geom, (in_edges || out_edges)[1] as inhere
+  FROM vertices where array_length(in_edges || out_edges, 1) = 1),
+results AS (
+  SELECT (pgr_findCloseEdges(
+      'SELECT id, geom FROM edges WHERE id != ' || inhere , geom, 0.001)).*,
+  d.id, d.inhere
+  FROM data d
+)
+SELECT * FROM results;
+ edge_id | fraction | side | distance | geom | edge | id | inhere
+---------+----------+------+----------+------+------+----+--------
+(0 rows)
+
+/* --q21 */
 ROLLBACK;
 ROLLBACK
