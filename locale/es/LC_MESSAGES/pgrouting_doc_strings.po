@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-04 04:21+0000\n"
+"POT-Creation-Date: 2025-04-04 16:30+0000\n"
 "PO-Revision-Date: 2025-04-04 14:16+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4577,6 +4577,136 @@ msgstr ""
 "Todas las funciones obsoletas serán removidas en las siguiente versión mayor "
 "4.0.0"
 
+#, fuzzy
+msgid "Migration of ``pgr_analyzeGraph``"
+msgstr "Migración de ``pgr_aStar``"
+
+#, fuzzy
+msgid ""
+"Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
+msgstr ""
+"Comenzando en `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__"
+
+msgid "**Before Deprecation:** The following was calculated:"
+msgstr ""
+
+#, fuzzy
+msgid "Number of isolated segments."
+msgstr "Segmentos no aislados"
+
+#, fuzzy
+msgid "Number of dead ends."
+msgstr "Cantidad de rutas requeridas."
+
+msgid "Number of potential gaps found near dead ends."
+msgstr ""
+
+#, fuzzy
+msgid "Number of intersections. (between 2 edges)"
+msgstr "Número de unidades en la orden"
+
+msgid "WHERE"
+msgstr ""
+
+#, fuzzy
+msgid "Graph component"
+msgstr "Revisando componentes"
+
+#, fuzzy
+msgid "A connected subgraph that is not part of any larger connected subgraph."
+msgstr "Los vértices contraído no forman parte del grafo contraído."
+
+#, fuzzy
+msgid "Isolated segment"
+msgstr "Segmentos aislados"
+
+msgid "A graph component with only one segment."
+msgstr ""
+
+msgid "Dead ends"
+msgstr "Callejones sin salida"
+
+msgid "A vertex that participates in only one edge."
+msgstr ""
+
+msgid "gaps"
+msgstr ""
+
+#, fuzzy
+msgid "Space between two geometries."
+msgstr "Distancia máxima entre geometrías"
+
+#, fuzzy
+msgid "Intersection"
+msgstr "Intersecciones"
+
+msgid "Is a topological relationship between two geometries."
+msgstr ""
+
+#, fuzzy
+msgid "Migration."
+msgstr "Migración"
+
+#, fuzzy
+msgid "Components."
+msgstr "Contenido"
+
+msgid ""
+"Instead of counting only isolated segments, determine all the components of "
+"the graph."
+msgstr ""
+
+msgid "Depending of the final application requirements use:"
+msgstr ""
+
+#, fuzzy
+msgid ":doc:`pgr_connectedComponents`"
+msgstr "Usando :doc:`pgr_connectedComponents`"
+
+#, fuzzy
+msgid ":doc:`pgr_strongComponents`"
+msgstr "``pgr_strongComponents``"
+
+#, fuzzy
+msgid ":doc:`pgr_biconnectedComponents`"
+msgstr "``pgr_biconnectedComponents``"
+
+#, fuzzy
+msgid "For example:"
+msgstr "ejemplo"
+
+#, fuzzy
+msgid "Dead ends."
+msgstr "Callejones sin salida"
+
+msgid ""
+"Instead of counting the dead ends, determine all the dead ends of the graph "
+"using :doc:`pgr_degree`."
+msgstr ""
+
+msgid "Potential gaps near dead ends."
+msgstr ""
+
+msgid ""
+"Instead of counting potential gaps between geometries, determine the "
+"geometric gaps in the graph using :doc:`pgr_findCloseEdges`."
+msgstr ""
+
+msgid "Topological relationships."
+msgstr ""
+
+msgid ""
+"Instead of counting intersections, determine topological relationships "
+"between geometries."
+msgstr ""
+
+msgid ""
+"Several PostGIS functions can be used: `ST_Intersects <https://postgis.net/"
+"docs/ST_Intersects.html>`__, `ST_Crosses <https://postgis.net/docs/"
+"ST_Crosses.html>`__, `ST_Overlaps <https://postgis.net/docs/ST_Overlaps."
+"html>`__, etc."
+msgstr ""
+
 msgid "Migration of ``pgr_aStar``"
 msgstr "Migración de ``pgr_aStar``"
 
@@ -6533,9 +6663,6 @@ msgid ""
 msgstr ""
 "En :doc:`contraction-family` se describe un método completo sobre cómo "
 "contraer y cómo utilizar el grafo contraído"
-
-msgid "Dead ends"
-msgstr "Callejones sin salida"
 
 msgid "To get the dead ends:"
 msgstr "Para obtener los callejones sin salida:"
@@ -8862,11 +8989,19 @@ msgstr ":doc:`pgr_drivingDistance`"
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 msgstr "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 
-msgid "``pgr_analyzeGraph``"
+#, fuzzy
+msgid "``pgr_analyzeGraph`` -- Deprecated since 3.8.0"
 msgstr "``pgr_analyzeGraph``"
 
 msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
 msgstr "``pgr_analyzeGraph`` — analiza la topología de red."
+
+msgid "Version 3.8.0"
+msgstr "Versión 3.8.0"
+
+#, fuzzy
+msgid "Deprecated function."
+msgstr "Funcion Obsoleta"
 
 msgid "The function returns:"
 msgstr "La función devuelve:"
@@ -10544,9 +10679,6 @@ msgid ""
 msgstr ""
 "``pgr_contraction`` — Realiza la contracción del grafo y devuelve los "
 "vértices y aristas contraídos.."
-
-msgid "Version 3.8.0"
-msgstr "Versión 3.8.0"
 
 msgid "New signature:"
 msgstr "Nueva firma:"
@@ -17910,17 +18042,53 @@ msgstr "pgRouting 3.7"
 msgid "pgRouting 3.8.0 Release Notes"
 msgstr "Notas de la versión de pgRouting 3.7.0"
 
+#, fuzzy
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.8.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
+msgstr ""
+"Para ver todos los problemas y solicitudes de extracción cerrados para ésta "
+"versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
+
 msgid "Promotion to official function of pgRouting."
 msgstr "Promoción a función oficial de pgRouting."
 
-msgid "pgr_extractVertices"
-msgstr "pgr_extractVertices"
+#, fuzzy
+msgid ""
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
+"pgr_extractVertices"
+msgstr ""
+"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: "
+"pgr_extractVertices a propuesto"
 
-msgid "pgr_degree"
-msgstr "pgr_degree"
+#, fuzzy
+msgid ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+msgstr ""
+"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
+"pgr_contraction"
 
-msgid "pgr_findCloseEdges"
-msgstr "pgr_findCloseEdges"
+#, fuzzy
+msgid ""
+"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: "
+"pgr_findCloseEdges"
+msgstr ""
+"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: "
+"pgr_extractVertices a propuesto"
+
+#, fuzzy
+msgid "Deprecation of functions."
+msgstr "Funciones obsoletas"
+
+#, fuzzy
+msgid ""
+"`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: "
+"pgr_analyzeGraph"
+msgstr ""
+"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
+"pgr_contraction"
 
 msgid "Official functions changes"
 msgstr "Cambios en las funciones oficiales"
@@ -18402,6 +18570,9 @@ msgstr "Arreglos a la documentación"
 msgid "Changes on the documentation to the following:"
 msgstr ""
 
+msgid "pgr_degree"
+msgstr "pgr_degree"
+
 msgid "pgr_dijkstra"
 msgstr "pgr_dijkstra"
 
@@ -18835,6 +19006,9 @@ msgstr "pgr_dijkstraNearCost(Uno a Muchos)"
 
 msgid "pgr_sequentialVertexColoring"
 msgstr "pgr_sequentialVertexColoring"
+
+msgid "pgr_extractVertices"
+msgstr "pgr_extractVertices"
 
 msgid "Traversal"
 msgstr "Travesía"
@@ -21597,6 +21771,9 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#~ msgid "pgr_findCloseEdges"
+#~ msgstr "pgr_findCloseEdges"
 
 #~ msgid "**options:** ``[directed, max_cycles, forbidden_vertices]``"
 #~ msgstr "**opciones:** ``[directed, forbidden_vertices]``"
