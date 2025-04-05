@@ -19,7 +19,7 @@ replaced by new functions.
 Results can be different because of the changes.
 
 .. warning::
-   All deprecated functions will be removed on next mayor version 4.0.0
+   All deprecated functions will be removed on next major version 4.0.0
 
 .. contents:: Contents
    :depth: 2
@@ -37,7 +37,7 @@ Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
 
 WHERE
 
-Directionality problems where calculated based on codes.
+Directionality problems were calculated based on codes.
 
 .. rubric:: Dead ends.
 
