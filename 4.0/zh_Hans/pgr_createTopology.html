@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=7e05f4e6"></script>
+    <script src="_static/page_history.js?v=2cddd619"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -314,17 +314,18 @@
 </li>
 </ul>
 <p class="rubric">顶点表</p>
-<p>顶点表是 <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph -- Deprecated since 3.8.0</span></a> 和 <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> 函数的必需条件。</p>
+<p>The vertices table is a requirement of the
+<a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> functions.</p>
 <p>顶点表的结构为：</p>
 <dl class="field-list simple">
 <dt class="field-odd">id<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> 顶点的标识符。</p>
 </dd>
 <dt class="field-even">cnt<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> edge_table 中引用该顶点的顶点数。 参见 <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph -- Deprecated since 3.8.0</span></a>。</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> edge_table 中引用该顶点的顶点数。</p>
 </dd>
 <dt class="field-odd">chk<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> 指示顶点可能有问题。 请参阅 <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph -- Deprecated since 3.8.0</span></a>。</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> 指示顶点可能有问题。</p>
 </dd>
 <dt class="field-even">ein<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> 边表中引用此顶点作为入边的顶点数量。请参考 <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>。</p>
@@ -747,7 +748,6 @@
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
 <li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - 函数族</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph -- Deprecated since 3.8.0</span></a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">

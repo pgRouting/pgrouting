@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=7e05f4e6"></script>
+    <script src="_static/page_history.js?v=2cddd619"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -315,17 +315,18 @@
 </li>
 </ul>
 <p class="rubric">La tabla de vértices</p>
-<p>La tabla de vértices es un requerimiento de las funciones <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph – Deprecated since 3.8.0</span></a> y <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
+<p>The vertices table is a requirement of the
+<a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> functions.</p>
 <p>La estructura de la tabla de los vértices es:</p>
 <dl class="field-list simple">
 <dt class="field-odd">id<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> identificador del vértice.</p>
 </dd>
 <dt class="field-even">cnt<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en la edge_table que referencian este vértice. Ver <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph – Deprecated since 3.8.0</span></a>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que hacen referencia a este vértice.</p>
 </dd>
 <dt class="field-odd">chk<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice puede tener un problema. Véase <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph – Deprecated since 3.8.0</span></a>.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice puede tener un problema.</p>
 </dd>
 <dt class="field-even">ein<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que referencian a este vértice como (AS) entrante. Ver <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
@@ -748,7 +749,6 @@
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 <li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph – Deprecated since 3.8.0</span></a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">

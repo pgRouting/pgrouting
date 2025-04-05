@@ -224,7 +224,7 @@ var filesArr = [
     ]),
     new createInfo('pgr_analyzeOneWay', '2.0', [
         { v: '2.1', n: 'src/common/doc/functions/analyze_oneway'},
-        { v: '2.3', n: 'src/topology/doc/pgr_analyzeOneWay'},
+        { v: '2.3', n: 'src/topology/doc/pgr_analyzeOneWay'}, 3.8
     ]),
     new createInfo('pgr_analyzeGraph', '2.0', [
         { v: '2.1', n: 'src/common/doc/functions/analyze_graph'},
