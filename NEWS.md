@@ -40,6 +40,8 @@ milestone for 3.8.0
   pgr_analyzeOneWay
 * [#2753](https://github.com/pgRouting/pgrouting/issues/2753):
   pgr_analyzeGraph
+* [#2826](https://github.com/pgRouting/pgrouting/issues/2826):
+  pgr_createVerticesTable
 
 **Official functions changes**
 
