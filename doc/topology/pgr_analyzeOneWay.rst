@@ -121,9 +121,8 @@ The structure of the vertices table is:
 
 :id: ``bigint`` Identifier of the vertex.
 :cnt: ``integer`` Number of vertices in the edge_table that reference this
-      vertex. See :doc:`pgr_analyzeGgraph <pgr_analyzeGraph>`.
-:chk: ``integer`` Indicator that the vertex might have a problem. See
-      :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`.
+      vertex.
+:chk: ``integer`` Indicator that the vertex might have a problem.
 :ein: ``integer`` Number of vertices in the edge_table that reference this
       vertex as incoming.
 :eout: ``integer`` Number of vertices in the edge_table that reference this
@@ -142,7 +141,6 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`topology-functions`
-* :doc:`pgr_analyzeGraph`
 * :doc:`pgr_createVerticesTable`
 * :doc:`sampledata`
 

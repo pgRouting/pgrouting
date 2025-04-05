@@ -87,135 +87,149 @@ The output table will have for ``edge_table_noded``
 Examples
 -------------------------------------------------------------------------------
 
-Let's create the topology for the data in :doc:`sampledata`
+Create the topology for the data in :doc:`sampledata`
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- q1
+   :end-before: -- q1-1
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+Analyze the network for intersections.
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q1
-   :end-before: --q1.1
+   :end-before: --q2
 
-Now we can analyze the network.
+Analyze the network for gaps.
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q2
-   :end-before: --q2.1
+   :end-before: --q3
 
-The analysis tell us that the network has a gap and an intersection. We try to
-fix the problem using:
+The analysis tell us that the network has a gap and an intersection.
+
+Fixing an intersection
+...............................................................................
+
+Storing the intersections.
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q3
-   :end-before: --q3.1
+   :end-before: --q4
 
-Inspecting the generated table, we can see that edges 13,14 and 18 has been
-segmented
+Calling ``pgr_nodeNetwork``.
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q4
-   :end-before: --q4.1
+   :end-before: --q5
 
-We can create the topology of the new network
+Inspecting the generated table, we can see that edges 13 and 18 has been
+segmented
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q5
-   :end-before: --q5.1
+   :end-before: --q6
 
-Now let's analyze the new topology
+.. rubric:: Update the topology
+
+Add new segmentes to the edges table.
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q6
-   :end-before: --q6.1
+   :end-before: --q7
 
-Images
--------------------------------------------------------------------------------
-
-.. Rubric:: Before Image
-
-.. image:: images/before_node_net.png
-   :scale: 60%
-   :alt: Before image
-   :align: left
-
-
-.. Rubric:: After Image
-
-.. image:: images/after_node_net.png
-   :scale: 60%
-   :alt: After image
-   :align: left
-
-
-Comparing the results
--------------------------------------------------------------------------------
-
-Comparing with the Analysis in the original edge_table, we see that.
-
-+------------------+-----------------------------------------+--------------------------------------------------------------+
-|                  |                Before                   |                        After                                 |
-+==================+=========================================+==============================================================+
-|Table name        | edge_table                              | edge_table_noded                                             |
-+------------------+-----------------------------------------+--------------------------------------------------------------+
-|Fields            | All original fields                     | Has only basic fields to do a topology analysis              |
-+------------------+-----------------------------------------+--------------------------------------------------------------+
-|Dead ends         | - Edges with 1 dead end: 1,6,24         | Edges with 1 dead end: 1-1 ,6-1,14-2, 18-1 17-1 18-2         |
-|                  | - Edges with 2 dead ends: 17,18         |                                                              |
-|                  |                                         |                                                              |
-|                  | Edge 17's right node is a dead end      |                                                              |
-|                  | because there is no other edge sharing  |                                                              |
-|                  | that same node. (cnt=1)                 |                                                              |
-+------------------+-----------------------------------------+--------------------------------------------------------------+
-|Isolated segments | two isolated segments: 17 and 18 both   | No Isolated segments                                         |
-|                  | they have 2 dead ends                   |  - Edge 17 now shares a node with edges 14-1 and 14-2        |
-|                  |                                         |  - Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2 |
-+------------------+-----------------------------------------+--------------------------------------------------------------+
-|Gaps              | There is a gap between edge 17 and 14   | Edge 14 was segmented                                        |
-|                  | because edge 14 is near to the right    | Now edges: 14-1 14-2 17 share the same node                  |
-|                  | node of edge 17                         | The tolerance value was taken in account                     |
-+------------------+-----------------------------------------+--------------------------------------------------------------+
-|Intersections     | Edges 13 and 18 were intersecting       | Edges were segmented, So, now in the interection's           |
-|                  |                                         | point there is a node and the following edges share it:      |
-|                  |                                         | 13-1 13-2 18-1 18-2                                          |
-+------------------+-----------------------------------------+--------------------------------------------------------------+
-
-
-Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and 18-2
-into our edge-table, copying the data for dir,cost,and reverse cost with tho
-following steps:
-
-- Add a column old_id into edge_table, this column is going to keep track the id
-  of the original edge
-- Insert only the segmented edges, that is, the ones whose max(sub_id) >1
+Insert the intersection as new vertices.
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q7
-   :end-before: --q7.1
+   :end-before: --q8
 
-We recreate the topology:
+Update source and target information on the edges table.
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q8
-   :end-before: --q8.1
+   :end-before: --q9
 
-To get the same analysis results as the topology of edge_table_noded, we do the
-following query:
+Delete original edge.
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q9
-   :end-before: --q9.1
+   :end-before: --q10
 
-To get the same analysis results as the original edge_table, we do the following
-query:
+Update the vertex topology
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q10
-   :end-before: --q10.1
+   :end-before: --q11
 
-Or we can analyze everything because, maybe edge 18 is an overpass, edge 14 is
-an under pass and there is also a street level juction, and the same happens
-with edges 17 and 13.
+Analyze the network for intersections.
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q11
-   :end-before: --q11.1
+   :end-before: --q12
+
+Fixing an gap
+...............................................................................
+
+Store the deadends
+
+.. literalinclude:: nodeNetwork.queries
+   :start-after: --q12
+   :end-before: --q13
+
+Calling ``pgr_nodeNetwork``.
+
+.. literalinclude:: nodeNetwork.queries
+   :start-after: --q13
+   :end-before: --q14
+
+Inspecting the generated table, we can see that edges 13 and 18 has been
+segmented
+
+.. literalinclude:: nodeNetwork.queries
+   :start-after: --q14
+   :end-before: --q15
+
+.. rubric:: Update the topology
+
+Add new segmentes to the edges table.
+
+.. literalinclude:: nodeNetwork.queries
+   :start-after: --q15
+   :end-before: --q16
+
+Insert the intersection as new vertices.
+
+.. literalinclude:: nodeNetwork.queries
+   :start-after: --q16
+   :end-before: --q17
+
+Update source and target information on the edges table.
+
+.. literalinclude:: nodeNetwork.queries
+   :start-after: --q17
+   :end-before: --q18
+
+Delete original edge.
+
+.. literalinclude:: nodeNetwork.queries
+   :start-after: --q18
+   :end-before: --q19
+
+Update the vertex topology
+
+.. literalinclude:: nodeNetwork.queries
+   :start-after: --q19
+   :end-before: --q20
+
+Analyze the network for gaps.
+
+.. literalinclude:: nodeNetwork.queries
+   :start-after: --q20
+   :end-before: --q21
 
 See Also
 -------------------------------------------------------------------------------
@@ -223,7 +237,6 @@ See Also
 :doc:`topology-functions` for an overview of a topology for routing algorithms.
 :doc:`pgr_analyzeOneWay` to analyze directionality of the edges.
 :doc:`pgr_createTopology` to create a topology based on the geometry.
-:doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table.
 
 .. rubric:: Indices and tables
 
