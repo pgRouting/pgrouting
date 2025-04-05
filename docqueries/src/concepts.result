@@ -448,5 +448,25 @@ SELECT * FROM pgr_dijkstra($$
 (2 rows)
 
 /* -- performance3 */
+DROP TABLE IF EXISTS vertices;
+DROP TABLE
+/* -- createTopology1 */
+SELECT * INTO vertices
+FROM pgr_extractVertices('SELECT id, geom FROM edges ORDER BY id');
+SELECT 18
+/* -- createTopology2 */
+/* -- set the source information */
+UPDATE edges AS e
+SET source = v.id, x1 = x, y1 = y
+FROM vertices AS v
+WHERE ST_StartPoint(e.geom) = v.geom;
+UPDATE 22
+/* -- set the target information */
+UPDATE edges AS e
+SET target = v.id, x2 = x, y2 = y
+FROM vertices AS v
+WHERE ST_EndPoint(e.geom) = v.geom;
+UPDATE 22
+/* -- createTopology3 */
 ROLLBACK;
 ROLLBACK

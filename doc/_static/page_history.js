@@ -220,7 +220,7 @@ var filesArr = [
     ]),
     new createInfo('pgr_createTopology', '2.0', [
         { v: '2.1', n: 'src/common/doc/functions/create_topology'},
-        { v: '2.3', n: 'src/topology/doc/pgr_createTopology'},
+        { v: '2.3', n: 'src/topology/doc/pgr_createTopology'}, 3.8
     ]),
     new createInfo('pgr_analyzeOneWay', '2.0', [
         { v: '2.1', n: 'src/common/doc/functions/analyze_oneway'},

@@ -78,10 +78,8 @@ The output table will have for ``edge_table_noded``
 :id: ``bigint`` Unique identifier for the table
 :old_id: ``bigint`` Identifier of the edge in original table
 :sub_id: ``integer`` Segment number of the original edge
-:source: ``integer`` Empty source column to be used with
-         :doc:`pgr_createTopology` function
-:target: ``integer`` Empty target column to be used with
-         :doc:`pgr_createTopology` function
+:source: ``integer`` Empty source column
+:target: ``integer`` Empty target column
 :the geom: ``geometry`` Geometry column of the noded network
 
 Examples
@@ -234,7 +232,6 @@ See Also
 -------------------------------------------------------------------------------
 
 :doc:`topology-functions` for an overview of a topology for routing algorithms.
-:doc:`pgr_createTopology` to create a topology based on the geometry.
 
 .. rubric:: Indices and tables
 

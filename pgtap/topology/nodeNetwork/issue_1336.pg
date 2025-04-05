@@ -58,7 +58,23 @@ SELECT set_eq('q1_hard', 'vals1_hard',
 SELECT is((SELECT count(*)::INTEGER FROM original_hard_noded WHERE source is NULL), (SELECT count(*)::INTEGER FROM original_hard_noded), 'all edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM original_hard_noded WHERE target is NULL), (SELECT count(*)::INTEGER FROM original_hard_noded), 'all edges are missing target');
 SELECT hasnt_table('original_hard_noded_vertices_pgr', 'original_hard_noded_vertices_pgr table does not exist');
-SELECT pgr_createtopology('original_hard_noded', 0.000001);
+
+SELECT *,
+  NULL::INTEGER AS cnt, NULL::INTEGER AS chk,
+  NULL::INTEGER AS ein, NULL::INTEGER AS eout
+INTO original_hard_noded_vertices_pgr
+FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM original_hard_noded ORDER BY id');
+/* -- set the source information */
+UPDATE original_hard_noded AS e
+SET source = v.id
+FROM original_hard_noded_vertices_pgr AS v
+WHERE ST_StartPoint(e.the_geom) = v.geom;
+/* -- set the target information */
+UPDATE original_hard_noded AS e
+SET target = v.id
+FROM original_hard_noded_vertices_pgr AS v
+WHERE ST_EndPoint(e.the_geom) = v.geom;
+
 SELECT has_table('original_hard_noded_vertices_pgr', 'original_hard_noded_vertices_pgr table now exist');
 SELECT is((SELECT count(*)::INTEGER FROM original_hard_noded WHERE source is NULL), 0, '0 edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM original_hard_noded WHERE target is NULL), 0, '0 edges are missing target');

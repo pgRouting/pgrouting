@@ -55,7 +55,25 @@ SELECT set_eq('q1', 'vals1',
 SELECT is((SELECT count(*)::INTEGER FROM original_noded WHERE source is NULL), 40, '40 edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM original_noded WHERE target is NULL), 40, '40 edges are missing target');
 SELECT hasnt_table('original_noded_vertices_pgr', 'original_noded_vertices_pgr table does not exist');
-SELECT pgr_createtopology('original_noded', 0.000001);
+
+SELECT *,
+  NULL::INTEGER AS cnt, NULL::INTEGER AS chk,
+  NULL::INTEGER AS ein, NULL::INTEGER AS eout
+INTO original_noded_vertices_pgr
+FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM original_noded ORDER BY id');
+
+-- set the source information
+UPDATE original_noded AS e
+SET source = v.id
+FROM original_noded_vertices_pgr AS v
+WHERE ST_StartPoint(e.the_geom) = v.geom;
+
+-- set the target information
+UPDATE original_noded AS e
+SET target = v.id
+FROM original_noded_vertices_pgr AS v
+WHERE ST_EndPoint(e.the_geom) = v.geom;
+
 SELECT has_table('original_noded_vertices_pgr', 'original_noded_vertices_pgr table now exist');
 SELECT is((SELECT count(*)::INTEGER FROM original_noded WHERE source is NULL), 0, '0 edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM original_noded WHERE target is NULL), 0, '0 edges are missing target');
@@ -98,7 +116,25 @@ SELECT is(
 SELECT is((SELECT count(*)::INTEGER FROM noded WHERE source is NULL), 40, '40 edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM noded WHERE target is NULL), 40, '40 edges are missing target');
 SELECT hasnt_table('noded_vertices_pgr', 'noded_vertices_pgr table does not exist');
-SELECT pgr_createtopology('noded', 0.000001,id:='gid');
+
+SELECT *,
+  NULL::INTEGER AS cnt, NULL::INTEGER AS chk,
+  NULL::INTEGER AS ein, NULL::INTEGER AS eout
+INTO noded_vertices_pgr
+FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM noded ORDER BY id');
+
+-- set the source information
+UPDATE noded AS e
+SET source = v.id
+FROM noded_vertices_pgr AS v
+WHERE ST_StartPoint(e.the_geom) = v.geom;
+
+-- set the target information
+UPDATE noded AS e
+SET target = v.id
+FROM noded_vertices_pgr AS v
+WHERE ST_EndPoint(e.the_geom) = v.geom;
+
 SELECT has_table('noded_vertices_pgr', 'noded_vertices_pgr table now exist');
 SELECT is((SELECT count(*)::INTEGER FROM noded WHERE source is NULL), 0, '0 edges are missing source');
 SELECT is((SELECT count(*)::INTEGER FROM noded WHERE target is NULL), 0, '0 edges are missing target');

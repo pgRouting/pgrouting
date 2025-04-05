@@ -256,3 +256,20 @@ SELECT * FROM pgr_dijkstra($$
     FROM edges WHERE id = 6)$$,
   7, 8);
 /* -- performance3 */
+
+DROP TABLE IF EXISTS vertices;
+/* -- createTopology1 */
+SELECT * INTO vertices
+FROM pgr_extractVertices('SELECT id, geom FROM edges ORDER BY id');
+/* -- createTopology2 */
+/* -- set the source information */
+UPDATE edges AS e
+SET source = v.id, x1 = x, y1 = y
+FROM vertices AS v
+WHERE ST_StartPoint(e.geom) = v.geom;
+/* -- set the target information */
+UPDATE edges AS e
+SET target = v.id, x2 = x, y2 = y
+FROM vertices AS v
+WHERE ST_EndPoint(e.geom) = v.geom;
+/* -- createTopology3 */
