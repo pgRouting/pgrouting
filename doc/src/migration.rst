@@ -24,6 +24,49 @@ Results can be different because of the changes.
 .. contents:: Contents
    :depth: 2
 
+.. migrate_pgr_analyzeOneWay_start
+
+Migration of ``pgr_analyzeOneWay``
+-------------------------------------------------------------------------------
+
+Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
+
+**Before Deprecation:** The following was calculated:
+
+* Number of potential problems in directionality
+
+WHERE
+
+Directionality problems where calculated based on codes.
+
+.. rubric:: Dead ends.
+
+A routing problem can arise when from a vertex there is only a way on or a way
+out but not both:
+
+Either saving or using directly :doc:`pgr_extractVertices` get the dead ends
+information and determine if the adjacent edge is one way or not.
+
+In this example :doc:`pgr_extractVertices` has already been applied.
+
+.. literalinclude:: migration.queries
+   :start-after: --OneWay1
+   :end-before: --OneWay2
+
+.. rubric:: Bridges.
+
+Another routing problem can arise when there is an edge of an undirected graph
+whose deletion increases its number of connected components, and the bridge is
+only one way.
+
+To determine if the bridges are or not one way.
+
+.. literalinclude:: migration.queries
+   :start-after: --OneWay2
+   :end-before: --OneWay3
+
+.. migrate_pgr_analyzeOneWay_end
+
 .. migrate_pgr_analyzeGraph_start
 
 Migration of ``pgr_analyzeGraph``

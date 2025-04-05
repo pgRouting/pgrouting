@@ -234,7 +234,6 @@ See Also
 -------------------------------------------------------------------------------
 
 :doc:`topology-functions` for an overview of a topology for routing algorithms.
-:doc:`pgr_analyzeOneWay` to analyze directionality of the edges.
 :doc:`pgr_createTopology` to create a topology based on the geometry.
 
 .. rubric:: Indices and tables
