@@ -3,20 +3,8 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
-SELECT  pgr_createTopology('edges',0.001, 'geom', clean := true);
-NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edges', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
-NOTICE:  Performing checks, please wait .....
-NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
-NOTICE:  Rows with NULL geometry or NULL id: 0
-NOTICE:  Vertices table for table public.edges is: public.edges_vertices_pgr
-NOTICE:  ----------------------------------------------
- pgr_createtopology
---------------------
- OK
-(1 row)
-
+SELECT id, geom AS the_geom, 0 AS cnt, 0 AS chk INTO edges_vertices_pgr FROM vertices;
+SELECT 17
 SELECT  pgr_analyzeGraph('edges',0.001,'geom');
 WARNING:  pgr_analyzegraph(text,double precision,text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
@@ -211,20 +199,8 @@ NOTICE:                      Ring geometries: 0
 /* -- q12 */
 CREATE TABLE mytable AS (SELECT id AS gid, source AS src ,target AS tgt , geom AS mygeom FROM edges);
 SELECT 18
-SELECT pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt', clean := true);
-NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('mytable', 0.001, 'mygeom', 'gid', 'src', 'tgt', rows_where := 'true', clean := t)
-NOTICE:  Performing checks, please wait .....
-NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
-NOTICE:  Rows with NULL geometry or NULL id: 0
-NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
-NOTICE:  ----------------------------------------------
- pgr_createtopology
---------------------
- OK
-(1 row)
-
+SELECT id, geom AS the_geom, 0 AS cnt, 0 AS chk INTO mytable_vertices_pgr FROM vertices;
+SELECT 17
 /* -- q12.1 */
 /* -- q13 */
 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt');
@@ -456,20 +432,8 @@ NOTICE:                      Ring geometries: 0
 
 /* -- q22.1 */
 /* -- q23 */
-SELECT  pgr_createTopology('edges',0.001, 'geom', clean := true);
-NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edges', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
-NOTICE:  Performing checks, please wait .....
-NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
-NOTICE:  Rows with NULL geometry or NULL id: 0
-NOTICE:  Vertices table for table public.edges is: public.edges_vertices_pgr
-NOTICE:  ----------------------------------------------
- pgr_createtopology
---------------------
- OK
-(1 row)
-
+UPDATE edges_vertices_pgr SET (cnt,chk) = (0,0);
+UPDATE 17
 SELECT pgr_analyzeGraph('edges', 0.001, 'geom');
 WARNING:  pgr_analyzegraph(text,double precision,text,text,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
@@ -562,20 +526,10 @@ NOTICE:                      Ring geometries: 0
 
 /* -- q26.1 */
 /* -- q27 */
-SELECT pgr_createTopology('edges', 0.001,'geom', rows_where:='id <17', clean := true);
-NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edges', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'id <17', clean := t)
-NOTICE:  Performing checks, please wait .....
-NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  16 edges
-NOTICE:  Rows with NULL geometry or NULL id: 0
-NOTICE:  Vertices table for table public.edges is: public.edges_vertices_pgr
-NOTICE:  ----------------------------------------------
- pgr_createtopology
---------------------
- OK
-(1 row)
-
+DELETE FROM edges WHERE id >= 17;
+DELETE 2
+UPDATE edges_vertices_pgr SET (cnt,chk) = (0,0);
+UPDATE 17
 /* -- q27.1 */
 /* -- q28 */
 SELECT pgr_analyzeGraph('edges', 0.001, 'geom');

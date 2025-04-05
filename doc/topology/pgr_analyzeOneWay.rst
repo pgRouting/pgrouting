@@ -64,8 +64,6 @@ The edge table to be analyzed must contain a source column and a target column
 filled with id's of the vertices of the segments and the corresponding vertices
 table <edge_table>_vertices_pgr that stores the vertices information.
 
-- Use :doc:`pgr_createTopology` to create the topology and the vertices table.
-
 |Boost| Boost Graph Inside
 
 Signatures
@@ -96,10 +94,6 @@ Parameters
 :two_way_if_null: ``boolean`` flag to treat oneway NULL values as
                   bi-directional. Default value is ``true``.
 
-.. note::
-   It is strongly recommended to use the named notation. See
-   :doc:`pgr_createTopology` for examples.
-
 The function returns:
 
 - ``OK`` after the analysis has finished.
@@ -119,9 +113,6 @@ value would be counted as ``true`` for the source or target **in** or **out**
 condition.
 
 .. rubric:: The Vertices Table
-
-The vertices table can be created with
-:doc:`pgr_createTopology`
 
 The structure of the vertices table is:
 

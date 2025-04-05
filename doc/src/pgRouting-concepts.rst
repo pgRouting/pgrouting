@@ -489,6 +489,7 @@ The use of indexes on the database design in general:
 Please consult the `PostgreSQL <https://www.postgresql.org/docs/>`__
 documentation and the `PostGIS <https://postgis.net/>`__ documentation.
 
+.. createTopology_start
 
 Build a routing topology
 ...............................................................................
@@ -516,10 +517,18 @@ If the columns do not exist they need to be added to the table in question. (see
 The function :doc:`pgr_extractVertices` is used to create a vertices table
 based on the edge identifier and the geometry of the edge of the graph.
 
+.. literalinclude:: concepts.queries
+   :start-after: -- createTopology1
+   :end-before: -- createTopology2
+
 Finally using the data stored on the vertices tables the ``source`` and
 ``target`` are filled up.
 
-See :doc:`sampledata` for an example for building a topology.
+.. literalinclude:: concepts.queries
+   :start-after: -- createTopology2
+   :end-before: -- createTopology3
+
+.. createTopology_end
 
 Data coming from OSM and using `osm2pgrouting
 <https://github.com/pgRouting/osm2pgrouting>`__ as an import tool, comes with

@@ -105,6 +105,7 @@ DECLARE
 
 BEGIN
     msgKind = 1; -- notice
+    RAISE WARNING 'pgr_createtopology(text,double precision,text,text,text,text,text,boolean) deprecated function on v3.8.0';
     fnName = 'pgr_createTopology';
     RAISE notice 'PROCESSING:';
     RAISE notice 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
@@ -307,17 +308,4 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 COMMENT ON FUNCTION pgr_createTopology(TEXT, FLOAT, TEXT, TEXT, TEXT, TEXT, TEXT, BOOLEAN)
-IS 'pgr_createTopology
- - Parameters
-   - Edge table name
-   - tolerance
- - Optional parameters
-   - the_geom := ''the_geom''
-   - id := ''id''
-   - source := ''source''
-   - target := ''target''
-   - rows_where := ''true''
-   - clean := false
-- Documentation:
-   - ${PROJECT_DOC_LINK}/pgr_createTopology.html
-';
+IS 'pgr_createTopology deprecated function on v3.8.0';

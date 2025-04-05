@@ -24,6 +24,25 @@ Results can be different because of the changes.
 .. contents:: Contents
    :depth: 2
 
+.. migrate_pgr_createTopology_start
+
+Migration of ``pgr_createTopology``
+-------------------------------------------------------------------------------
+
+Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
+
+**Before Deprecation:** The following was calculated:
+
+* A table with `<edges>_vertices_pgr` was created.
+
+**After Deprecation:** The user is responsible to create the complete topology.
+
+.. include:: pgRouting-concepts.rst
+   :start-after: createTopology_start
+   :end-before: createTopology_end
+
+.. migrate_pgr_createTopology_end
+
 .. migrate_pgr_createVerticesTable_start
 
 Migration of ``pgr_createVerticesTable``

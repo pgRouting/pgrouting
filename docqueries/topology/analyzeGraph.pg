@@ -7,7 +7,7 @@
 ------------------------------------------------------------------------------------------------------
 
 /* -- q1 */
-SELECT  pgr_createTopology('edges',0.001, 'geom', clean := true);
+SELECT id, geom AS the_geom, 0 AS cnt, 0 AS chk INTO edges_vertices_pgr FROM vertices;
 SELECT  pgr_analyzeGraph('edges',0.001,'geom');
 /* -- q1.1 */
 
@@ -46,7 +46,7 @@ SELECT  pgr_analyzeGraph('edges',0.001, 'geom', rows_where:='geom && (SELECT st_
 
 /* -- q12 */
 CREATE TABLE mytable AS (SELECT id AS gid, source AS src ,target AS tgt , geom AS mygeom FROM edges);
-SELECT pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt', clean := true);
+SELECT id, geom AS the_geom, 0 AS cnt, 0 AS chk INTO mytable_vertices_pgr FROM vertices;
 /* -- q12.1 */
 
 /* -- q13 */
@@ -96,7 +96,7 @@ SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',t
 /* -- q22.1 */
 
 /* -- q23 */
-SELECT  pgr_createTopology('edges',0.001, 'geom', clean := true);
+UPDATE edges_vertices_pgr SET (cnt,chk) = (0,0);
 SELECT pgr_analyzeGraph('edges', 0.001, 'geom');
 /* -- q23.1 */
 
@@ -114,7 +114,8 @@ SELECT  pgr_analyzeGraph('edges',0.001,'geom', rows_where:='id < 17');
 
 
 /* -- q27 */
-SELECT pgr_createTopology('edges', 0.001,'geom', rows_where:='id <17', clean := true);
+DELETE FROM edges WHERE id >= 17;
+UPDATE edges_vertices_pgr SET (cnt,chk) = (0,0);
 /* -- q27.1 */
 
 /* -- q28 */

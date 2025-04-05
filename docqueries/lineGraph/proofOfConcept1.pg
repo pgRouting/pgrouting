@@ -2,14 +2,15 @@
 -- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 -- TODO move to pgtap
 
--- getting same results using pgr_createTopology
 DROP TABLE IF EXISTS edges1;
-SELECT id, NULL::BIGINT as source, NULL::BIGINT as target, cost, reverse_cost, x1, x2, y1, y2, geom AS the_geom
+SELECT id, source, target, cost, reverse_cost, x1, x2, y1, y2, geom
 INTO edges1
 FROM edges ORDER BY id;
-UPDATE edges1 SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2));
-SELECT pgr_createTopology('edges1',0.001);
 
+DROP TABLE IF EXISTS edges1_vertices_pgr;
+SELECT *
+INTO edges1_vertices_pgr
+FROM vertices ORDER BY id;
 
 -- this is a hand made test
 UPDATE edges1 SET id = id * 100, source = 1000 * source, target = 1000 * target;
@@ -100,20 +101,20 @@ WHERE
 DROP TABLE IF EXISTS q_result_1;
 SELECT * INTO q_result_1
 FROM pgr_dijkstra($$SELECT seq AS id, * FROM result2$$,
-    (SELECT array_agg(id) FROM result2_vertices_pgr where original_id = 2000),
-    (SELECT array_agg(id) FROM result2_vertices_pgr where original_id = 3000)
+    (SELECT array_agg(id) FROM result2_vertices_pgr where original_id = 6000),
+    (SELECT array_agg(id) FROM result2_vertices_pgr where original_id = 10000)
 );
 SELECT * FROM q_result_1;
 -- choosing the best many to many
 SELECT min(agg_cost) FROM q_result_1 WHERE edge = -1;
 SELECT path_seq, start_vid, end_vid FROM q_result_1 WHERE edge = -1 and agg_cost = 5;
-SELECT * FROM q_result_1 WHERE start_vid = -3 AND end_vid = 3000;
+SELECT * FROM q_result_1 WHERE start_vid = -3 AND end_vid = 10000;
 -- not showing the 0 cost edges
-SELECT * FROM q_result_1 WHERE start_vid = -3 AND end_vid = 3000 AND (cost != 0 OR edge = -1);
+SELECT * FROM q_result_1 WHERE start_vid = -3 AND end_vid = 10000 AND (cost != 0 OR edge = -1);
 -- not showing the 0 cost edges and showing the original edges
 WITH a AS (
     SELECT * FROM q_result_1
-    WHERE start_vid = -3 AND end_vid = 3000 AND (cost != 0 OR edge = -1))
+    WHERE start_vid = -3 AND end_vid = 10000 AND (cost != 0 OR edge = -1))
 SELECT
     a.seq, a.path_seq,
     (SELECT original_id FROM result2_vertices_pgr AS b WHERE a.start_vid = b.id) AS start_vid,
@@ -124,4 +125,4 @@ FROM a;
 
 -- A Dijkstra
 SELECT * from pgr_dijkstra($$SELECT id, * FROM edges1$$,
-    ARRAY[2000], ARRAY[3000]);
+    ARRAY[6000], ARRAY[10000]);
