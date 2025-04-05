@@ -24,7 +24,7 @@ BEGIN;
 -- set the even numbered ones with dir='FT' and the odd ones 'TF'
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(30);
+SELECT plan(28);
 
 SET client_min_messages = WARNING;
 CREATE TABLE original (
@@ -107,16 +107,6 @@ SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE cnt is NULL), 
 SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE chk is NULL), 32, '32 vertices are missing chk');
 SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE ein is NULL), 32, '32 vertices are missing ein');
 SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE eout is NULL), 32, '32 vertices are missing eout');
-
-SELECT pgr_analyzeoneway('noded',
-    ARRAY['', 'B', 'TF'],
-    ARRAY['', 'B', 'FT'],
-    ARRAY['', 'B', 'FT'],
-    ARRAY['', 'B', 'TF'],
-    oneway:='dir');
-SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE ein is NULL), 0, '0 vertices are missing ein');
-SELECT is((SELECT count(*)::INTEGER FROM noded_vertices_pgr WHERE eout is NULL), 0, '0 vertices are missing eout');
-
 
 SELECT finish();
 ROLLBACK;

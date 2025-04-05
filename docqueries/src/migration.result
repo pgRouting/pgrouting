@@ -1164,5 +1164,40 @@ FROM edges e1, edges e2 WHERE e1 < e2 AND st_crosses(e1.geom, e2.geom);
 (1 row)
 
 /* --analysis5*/
+/* --OneWay1 */
+WITH
+deadends AS (
+  SELECT (in_edges || out_edges)[1] as id
+  FROM vertices where array_length(in_edges || out_edges, 1) = 1)
+SELECT * FROM edges JOIN deadends  USING (id)
+WHERE cost < 0 OR reverse_cost < 0;
+ id | source | target | cost | reverse_cost | capacity | reverse_capacity | x1 | y1 | x2 | y2 | geom
+----+--------+--------+------+--------------+----------+------------------+----+----+----+----+------
+(0 rows)
+
+/* --OneWay2 */
+SELECT id, cost < 0 OR reverse_cost<0 AS is_OneWway
+FROM pgr_bridges('SELECT id, source, target, cost, reverse_cost FROM edges')
+JOIN edges ON (edge = id);
+ id | is_onewway
+----+------------
+  1 | f
+  6 | f
+  7 | f
+ 14 | f
+ 17 | f
+ 18 | f
+(6 rows)
+
+/* --OneWay3 */
+SELECT id, cost, reverse_cost
+FROM pgr_bridges('SELECT id, source, target, cost, reverse_cost FROM edges')
+JOIN edges ON (edge = id)
+WHERE cost < 0 OR reverse_cost<0;
+ id | cost | reverse_cost
+----+------+--------------
+(0 rows)
+
+/* --OneWay4 */
 ROLLBACK;
 ROLLBACK

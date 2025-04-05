@@ -32,6 +32,7 @@ UPDATE 18
         ARRAY['', 'B', 'FT'],
         ARRAY['', 'B', 'TF'],
         oneway:='dir');
+WARNING:  pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeOneway('edges','{"",B,TF}','{"",B,FT}','{"",B,FT}','{"",B,TF}','dir','source','target',t)
 NOTICE:  Analyzing graph for one way street errors.

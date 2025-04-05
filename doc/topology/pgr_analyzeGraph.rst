@@ -8,8 +8,8 @@
    ****************************************************************************
 
 .. index::
-   single: Topology Family ; pgr_analyzeGraph
-   single: analyzeGraph
+   single: Topology Family ; pgr_analyzeGraph - Deprecated since 3.8.0
+   single: analyzeGraph - Deprecated since 3.8.0
 
 |
 
@@ -106,9 +106,9 @@ The structure of the vertices table is:
       vertex.
 :chk: ``integer`` Indicator that the vertex might have a problem.
 :ein: ``integer`` Number of vertices in the edge_table that reference this
-      vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
+      vertex as incoming.
 :eout: ``integer`` Number of vertices in the edge_table that reference this
-       vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
+       vertex as outgoing.
 :the_geom: ``geometry`` Point geometry of the vertex.
 
 Usage when the edge table's columns MATCH the default values:
