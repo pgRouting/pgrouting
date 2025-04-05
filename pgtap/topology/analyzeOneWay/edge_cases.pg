@@ -27,7 +27,10 @@ SELECT plan(2);
 
 DROP TABLE IF EXISTS edge_table;
 SELECT *, NULL::TEXT AS dir INTO edge_table FROM edges;
-SELECT pgr_createVerticesTable('edge_table', 'geom');
+
+SELECT *, 0 AS ein, 0 AS eout
+INTO edge_table_vertices_pgr
+FROM pgr_extractVertices('SELECT id, geom FROM edge_table');
 
 UPDATE edge_table SET
 dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   -- both ways

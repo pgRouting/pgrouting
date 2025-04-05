@@ -55,7 +55,6 @@ The edge table to be analyzed must contain a source column and a target column
 filled with id's of the vertices of the segments and the corresponding vertices
 table <edge_table>_vertices_pgr that stores the vertices information.
 
-- Use :doc:`pgr_createVerticesTable` to create the vertices table.
 - Use :doc:`pgr_createTopology` to create the topology and the vertices table.
 
 Parameters
@@ -96,8 +95,8 @@ The function returns:
 
 .. rubric:: The Vertices Table
 
-The vertices table can be created with :doc:`pgr_createVerticesTable
-<pgr_createVerticesTable>` or :doc:`pgr_createTopology <pgr_createTopology>`
+The vertices table can be created with
+:doc:`pgr_createTopology <pgr_createTopology>`
 
 The structure of the vertices table is:
 
@@ -291,7 +290,6 @@ See Also
 * :doc:`sampledata`
 * :doc:`topology-functions`
 * :doc:`pgr_analyzeOneWay`
-* :doc:`pgr_createVerticesTable`
 * :doc:`pgr_nodeNetwork` to create nodes to a not noded edge table.
 
 .. rubric:: Indices and tables

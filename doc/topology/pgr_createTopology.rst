@@ -274,7 +274,6 @@ See Also
 
 * :doc:`sampledata`
 * :doc:`topology-functions`
-* :doc:`pgr_createVerticesTable`
 
 .. rubric:: Indices and tables
 

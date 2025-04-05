@@ -8,18 +8,22 @@
    ****************************************************************************
 
 .. index::
-   single: Topology Family ; pgr_createVerticesTable
-   single: createVerticesTable
+   single: Topology Family ; pgr_createVerticesTable - Deprecated since 3.8.0
+   single: createVerticesTable - Deprecated since 3.8.0
 
 |
 
-``pgr_createVerticesTable``
+``pgr_createVerticesTable`` - Deprecated since 3.8.0
 ===============================================================================
 
 ``pgr_createVerticesTable`` — Reconstructs the vertices table based on the
 source and target information.
 
 .. rubric:: Availability
+
+* Version 3.8.0
+
+  * Deprecated function.
 
 * Version 2.0.0
 

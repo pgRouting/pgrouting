@@ -64,7 +64,6 @@ The edge table to be analyzed must contain a source column and a target column
 filled with id's of the vertices of the segments and the corresponding vertices
 table <edge_table>_vertices_pgr that stores the vertices information.
 
-- Use :doc:`pgr_createVerticesTable` to create the vertices table.
 - Use :doc:`pgr_createTopology` to create the topology and the vertices table.
 
 |Boost| Boost Graph Inside
@@ -99,7 +98,7 @@ Parameters
 
 .. note::
    It is strongly recommended to use the named notation. See
-   :doc:`pgr_createVerticesTable` or :doc:`pgr_createTopology` for examples.
+   :doc:`pgr_createTopology` for examples.
 
 The function returns:
 
@@ -121,7 +120,7 @@ condition.
 
 .. rubric:: The Vertices Table
 
-The vertices table can be created with :doc:`pgr_createVerticesTable` or
+The vertices table can be created with
 :doc:`pgr_createTopology`
 
 The structure of the vertices table is:
@@ -148,7 +147,6 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`topology-functions`
-* :doc:`pgr_createVerticesTable`
 * :doc:`sampledata`
 
 .. rubric:: Indices and tables
