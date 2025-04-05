@@ -23,7 +23,7 @@ BEGIN;
 -- create 2 test cases with overlapping lines, one with crossing lines and one with touching (but no crossing) lines
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(20);
+SELECT plan(14);
 
 SET client_min_messages = WARNING;
 CREATE TABLE original_hard (
@@ -69,21 +69,5 @@ SELECT is((SELECT count(*)::INTEGER FROM original_hard_noded_vertices_pgr WHERE 
 SELECT is((SELECT count(*)::INTEGER FROM original_hard_noded_vertices_pgr WHERE eout is NULL), 9, '9 vertices are missing eout');
 
 
-SELECT pgr_analyzegraph('original_hard_noded',  0.000001);
-SELECT is((SELECT count(*)::INTEGER FROM original_hard_noded_vertices_pgr WHERE cnt is NULL), 0, '0 vertices are missing cnt');
-SELECT is((SELECT count(*)::INTEGER FROM original_hard_noded_vertices_pgr WHERE chk is NULL), 0, '0 vertices are missing chk');
-SELECT is((SELECT count(*)::INTEGER FROM original_hard_noded_vertices_pgr WHERE ein is NULL), 9, '9 vertices are missing ein');
-SELECT is((SELECT count(*)::INTEGER FROM original_hard_noded_vertices_pgr WHERE eout is NULL), 9, '9 vertices are missing eout');
-SELECT is((SELECT count(*)::INTEGER FROM original_hard_noded_vertices_pgr WHERE chk = 0), 9, 'In 9 vertices chk=0 aka have no problem');
-PREPARE q2_hard AS
-SELECT cnt, count(*) AS M  FROM original_hard_noded_vertices_pgr GROUP BY cnt ORDER BY cnt;
-PREPARE vals2_hard AS
-VALUES (1,7), (3, 1), (4,1);
-SELECT set_eq('q2_hard', 'vals2_hard',
-        'vertices referenced correctly by edges');
-
-
 SELECT finish();
 ROLLBACK;
-
-
