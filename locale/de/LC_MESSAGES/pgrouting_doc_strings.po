@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-04 16:30+0000\n"
+"POT-Creation-Date: 2025-04-05 01:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -8273,16 +8273,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex. "
-"See :doc:`pgr_analyzeGgraph <pgr_analyzeGraph>`."
-msgstr ""
-
-msgid ""
-"``integer`` Indicator that the vertex might have a problem. See :doc:"
-"`pgr_analyzeGraph <pgr_analyzeGraph>`."
-msgstr ""
-
-msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
 "as incoming."
 msgstr ""
@@ -8290,9 +8280,6 @@ msgstr ""
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
 "as outgoing."
-msgstr ""
-
-msgid ":doc:`pgr_analyzeGraph`"
 msgstr ""
 
 msgid "``pgr_articulationPoints``"
@@ -10005,18 +9992,8 @@ msgid "``FAIL`` when the network topology was not built due to an error:"
 msgstr ""
 
 msgid ""
-"The vertices table is a requirement of the :doc:`pgr_analyzeGraph` and the :"
-"doc:`pgr_analyzeOneWay` functions."
-msgstr ""
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex. "
-"See :doc:`pgr_analyzeGraph`."
-msgstr ""
-
-msgid ""
-"``integer`` Indicator that the vertex might have a problem. See :doc:"
-"`pgr_analyzeGraph`."
+"The vertices table is a requirement of the :doc:`pgr_analyzeOneWay` "
+"functions."
 msgstr ""
 
 msgid ""
@@ -10275,10 +10252,6 @@ msgstr ""
 msgid ""
 ":doc:`pgr_createTopology` <pgr_create_topology>` to create a topology based "
 "on the geometry."
-msgstr ""
-
-msgid ""
-":doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table."
 msgstr ""
 
 msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
@@ -13370,162 +13343,64 @@ msgstr ""
 msgid "Examples"
 msgstr ""
 
-msgid "Let's create the topology for the data in :doc:`sampledata`"
+msgid "Create the topology for the data in :doc:`sampledata`"
 msgstr ""
 
-msgid "Now we can analyze the network."
+msgid "Analyze the network for intersections."
 msgstr ""
 
-msgid ""
-"The analysis tell us that the network has a gap and an intersection. We try "
-"to fix the problem using:"
+msgid "Analyze the network for gaps."
 msgstr ""
 
-msgid ""
-"Inspecting the generated table, we can see that edges 13,14 and 18 has been "
-"segmented"
+msgid "The analysis tell us that the network has a gap and an intersection."
 msgstr ""
 
-msgid "We can create the topology of the new network"
+msgid "Fixing an intersection"
 msgstr ""
 
-msgid "Now let's analyze the new topology"
+msgid "Storing the intersections."
 msgstr ""
 
-msgid "Images"
-msgstr ""
-
-msgid "Before Image"
-msgstr ""
-
-msgid "Before image"
-msgstr ""
-
-msgid "After Image"
-msgstr ""
-
-msgid "After image"
-msgstr ""
-
-msgid "Comparing the results"
-msgstr ""
-
-msgid "Comparing with the Analysis in the original edge_table, we see that."
-msgstr ""
-
-msgid "Before"
-msgstr ""
-
-msgid "After"
-msgstr ""
-
-msgid "Table name"
-msgstr ""
-
-msgid "edge_table_noded"
-msgstr ""
-
-msgid "Fields"
-msgstr ""
-
-msgid "All original fields"
-msgstr ""
-
-msgid "Has only basic fields to do a topology analysis"
-msgstr ""
-
-msgid "Edges with 1 dead end: 1,6,24"
-msgstr ""
-
-msgid "Edges with 2 dead ends: 17,18"
+msgid "Calling ``pgr_nodeNetwork``."
 msgstr ""
 
 msgid ""
-"Edge 17's right node is a dead end because there is no other edge sharing "
-"that same node. (cnt=1)"
+"Inspecting the generated table, we can see that edges 13 and 18 have been "
+"segmented."
 msgstr ""
 
-msgid "Edges with 1 dead end: 1-1 ,6-1,14-2, 18-1 17-1 18-2"
+msgid "Update the topology"
 msgstr ""
 
-msgid "Isolated segments"
+msgid "Add new segments to the edges table."
 msgstr ""
 
-msgid "two isolated segments: 17 and 18 both they have 2 dead ends"
+msgid "Insert the intersection as new vertices."
 msgstr ""
 
-msgid "No Isolated segments"
+msgid "Update source and target information on the edges table."
 msgstr ""
 
-msgid "Edge 17 now shares a node with edges 14-1 and 14-2"
+msgid "Delete original edge."
 msgstr ""
 
-msgid "Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2"
+msgid "Update the vertex topology"
 msgstr ""
 
-msgid "Gaps"
+msgid "Fixing a gap"
 msgstr ""
 
-msgid ""
-"There is a gap between edge 17 and 14 because edge 14 is near to the right "
-"node of edge 17"
-msgstr ""
-
-msgid ""
-"Edge 14 was segmented Now edges: 14-1 14-2 17 share the same node The "
-"tolerance value was taken in account"
-msgstr ""
-
-msgid "Intersections"
-msgstr ""
-
-msgid "Edges 13 and 18 were intersecting"
+msgid "Store the deadends"
 msgstr ""
 
 msgid ""
-"Edges were segmented, So, now in the interection's point there is a node and "
-"the following edges share it: 13-1 13-2 18-1 18-2"
-msgstr ""
-
-msgid ""
-"Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and "
-"18-2 into our edge-table, copying the data for dir,cost,and reverse cost "
-"with tho following steps:"
-msgstr ""
-
-msgid ""
-"Add a column old_id into edge_table, this column is going to keep track the "
-"id of the original edge"
-msgstr ""
-
-msgid "Insert only the segmented edges, that is, the ones whose max(sub_id) >1"
-msgstr ""
-
-msgid "We recreate the topology:"
-msgstr ""
-
-msgid ""
-"To get the same analysis results as the topology of edge_table_noded, we do "
-"the following query:"
-msgstr ""
-
-msgid ""
-"To get the same analysis results as the original edge_table, we do the "
-"following query:"
-msgstr ""
-
-msgid ""
-"Or we can analyze everything because, maybe edge 18 is an overpass, edge 14 "
-"is an under pass and there is also a street level juction, and the same "
-"happens with edges 17 and 13."
+"Inspecting the generated table, we can see that edge 14 has been segmented."
 msgstr ""
 
 msgid ""
 ":doc:`topology-functions` for an overview of a topology for routing "
 "algorithms. :doc:`pgr_analyzeOneWay` to analyze directionality of the "
-"edges. :doc:`pgr_createTopology` to create a topology based on the "
-"geometry. :doc:`pgr_analyzeGraph` to analyze the edges and vertices of the "
-"edge table."
+"edges. :doc:`pgr_createTopology` to create a topology based on the geometry."
 msgstr ""
 
 msgid "``pgr_pickDeliver`` - Experimental"
@@ -18034,6 +17909,9 @@ msgid "Combinations data"
 msgstr ""
 
 msgid "Some functions accept soft restrictions about the segments."
+msgstr ""
+
+msgid "Images"
 msgstr ""
 
 msgid "Red arrows correspond when ``cost`` > 0 in the edge table."
