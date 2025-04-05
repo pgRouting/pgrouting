@@ -126,8 +126,8 @@ Calling ``pgr_nodeNetwork``.
    :start-after: --q4
    :end-before: --q5
 
-Inspecting the generated table, we can see that edges 13 and 18 has been
-segmented
+Inspecting the generated table, we can see that edges 13 and 18 have been
+segmented.
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q5
@@ -135,7 +135,7 @@ segmented
 
 .. rubric:: Update the topology
 
-Add new segmentes to the edges table.
+Add new segments to the edges table.
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q6
@@ -171,7 +171,7 @@ Analyze the network for intersections.
    :start-after: --q11
    :end-before: --q12
 
-Fixing an gap
+Fixing a gap
 ...............................................................................
 
 Store the deadends
@@ -186,8 +186,7 @@ Calling ``pgr_nodeNetwork``.
    :start-after: --q13
    :end-before: --q14
 
-Inspecting the generated table, we can see that edges 13 and 18 has been
-segmented
+Inspecting the generated table, we can see that edge 14 has been segmented.
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q14
@@ -195,7 +194,7 @@ segmented
 
 .. rubric:: Update the topology
 
-Add new segmentes to the edges table.
+Add new segments to the edges table.
 
 .. literalinclude:: nodeNetwork.queries
    :start-after: --q15
