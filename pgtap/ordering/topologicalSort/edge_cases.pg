@@ -1,0 +1,136 @@
+
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2018  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN NOT min_version('3.0.0') THEN plan(1) ELSE plan(8) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.0.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 3.0.0');
+  RETURN;
+END IF;
+
+-- empty graph
+
+PREPARE q1 AS
+  SELECT * FROM pgr_topologicalsort(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id > 18'
+  );
+
+RETURN QUERY
+SELECT lives_ok('q1');
+
+RETURN QUERY
+SELECT is_empty('q1', 'graph with 0 edge and 0 vertex returns empty');
+
+-- non DAG graph
+
+PREPARE q2 AS
+  SELECT * FROM pgr_topologicalsort(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id = 7'
+  );
+
+RETURN QUERY
+SELECT throws_ok('q2', 'Graph is not DAG', 'throws is not DAG error');
+
+-- 1 vertex test
+
+PREPARE q3 AS
+  SELECT * FROM pgr_topologicalsort(
+    'SELECT id, source, 6 AS target, cost, -1 AS reverse_cost
+    FROM edges WHERE id = 2'
+  );
+
+RETURN QUERY
+SELECT is_empty('q3', 'graph with one vertex returns empty');
+
+-- 2 vertices test (connected)
+
+PREPARE q4 AS
+  SELECT * FROM pgr_topologicalsort(
+    'SELECT id, source, target, cost, -1 AS reverse_cost
+    FROM edges WHERE id = 7'
+  );
+
+RETURN QUERY
+SELECT set_eq('q4', $$VALUES (1, 3), (2, 7)$$, 'graph with two connected vertices return correct order');
+
+-- 2 vertices test (isolated)
+
+CREATE TABLE two_isolated_vertices_table (
+  id BIGSERIAL,
+  source BIGINT,
+  target BIGINT,
+  cost FLOAT DEFAULT -1,
+  reverse_cost FLOAT DEFAULT -1
+);
+
+INSERT INTO two_isolated_vertices_table (source, target) VALUES
+  (2, 2),
+  (1, 1);
+
+PREPARE q5 AS
+  SELECT * FROM pgr_topologicalsort(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM two_isolated_vertices_table'
+  );
+
+RETURN QUERY
+SELECT is_empty('q5', 'graph with two isolated vertices returns empty');
+
+-- 3 vertices test (a -> b -> c)
+
+PREPARE q6 AS
+ SELECT * FROM pgr_topologicalsort(
+   'SELECT id, source, target, 1 AS cost, -1 AS reverse_cost
+   FROM edges WHERE id <= 2'
+ );
+
+RETURN QUERY
+SELECT set_eq('q6', $$VALUES (1, 5), (2, 6), (3, 10)$$, 'graph with three vertices returns correct order');
+
+-- 3 vertices test (a -> {b, c})
+
+PREPARE q7 AS
+  SELECT * FROM pgr_topologicalsort(
+    'SELECT id, source, target, 1 AS cost, -1 AS reverse_cost
+    FROM edges WHERE source = 10'
+  );
+
+RETURN QUERY
+SELECT set_eq('q7', $$VALUES (1, 10), (2, 15), (3, 11)$$, 'graph with one source and two targets returns correct order');
+
+
+END
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT * FROM finish();
+ROLLBACK;
