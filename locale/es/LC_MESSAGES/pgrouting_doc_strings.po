@@ -4719,7 +4719,7 @@ msgstr ""
 "puente es solo de un sentido."
 
 msgid "To determine if the bridges are or not one way."
-msgstr ""
+msgstr "Determinar si los puentes son o no unidireccionales."
 
 msgid "Migration of ``pgr_analyzeGraph``"
 msgstr "Migración de ``pgr_analyzeGraph``"
