@@ -5,14 +5,14 @@
 # Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
 # Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024, 2025.
-# DeepL <noreply-mt-deepl@weblate.org>, 2024.
+# DeepL <noreply-mt-deepl@weblate.org>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24 14:17+0000\n"
-"PO-Revision-Date: 2025-03-30 01:13+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
+"POT-Creation-Date: 2025-04-08 20:49+0000\n"
+"PO-Revision-Date: 2025-04-08 21:18+0000\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -4444,6 +4444,9 @@ msgstr "Eliminación de código C/C++ no utilizado"
 msgid "Removal of SQL deprecated functions"
 msgstr "Eliminación de funciones obsoletas"
 
+msgid "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+msgstr "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+
 msgid ""
 "pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean,text)"
@@ -4569,10 +4572,297 @@ msgstr ""
 msgid "Results can be different because of the changes."
 msgstr "Resultados pueden ser diferentes dado los cambios."
 
-msgid "All deprecated functions will be removed on next mayor version 4.0.0"
+msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr ""
 "Todas las funciones obsoletas serán removidas en las siguiente versión mayor "
 "4.0.0"
+
+msgid "Migration of ``pgr_alphaShape``"
+msgstr "Migración de ``pgr_alphaShape``"
+
+msgid ""
+"Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
+msgstr ""
+"Comenzando en `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
+
+msgid "**Before Deprecation:** The following was calculated:"
+msgstr "**Antes de la Depreciación:** Se calculó lo siguiente:"
+
+msgid "An alphaShape was calculated"
+msgstr "Se ha calculado un alphaShape"
+
+#, fuzzy
+msgid "**After Deprecation:**"
+msgstr "Después de la migración"
+
+msgid "PostGIS has two ways of generating alphaShape."
+msgstr ""
+
+msgid "If you have SFCGAL, which you can install using"
+msgstr ""
+
+msgid ""
+"Since PostGIS 3.5+ use `CG_AlphaShape <https://postgis.net/docs/"
+"CG_AlphaShape.html>`__"
+msgstr ""
+
+msgid "For PostGIS 3.5+ use the old name ``ST_AlphaShape``"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Other PostGIS options are * `ST_ConvexHull <https://postgis.net/docs/"
+"ST_ConvexHull.html>`__ * `ST_ConcaveHull <https://postgis.net/docs/"
+"ST_ConcaveHull.html>`__"
+msgstr ""
+"Se pueden utilizar varias funciones de PostGIS: `ST_Intersects <https://"
+"postgis.net/docs/ST_Intersects.html>`__, `ST_Crosses <https://postgis.net/"
+"docs/ST_Crosses.html>`__, `ST_Overlaps <https://postgis.net/docs/ST_Overlaps."
+"html>`__, etc."
+
+msgid "Migration of ``pgr_createTopology``"
+msgstr "Migración de ``pgr_createTopology``"
+
+msgid "A table with `<edges>_vertices_pgr` was created."
+msgstr "Se ha creado una tabla con `<edges>_vertices_pgr`."
+
+msgid ""
+"**After Deprecation:** The user is responsible to create the complete "
+"topology."
+msgstr ""
+"**Después de la depreciación** El usuario es responsable de crear la "
+"topología completa."
+
+msgid "Build a routing topology"
+msgstr "Construir una topología de ruteo"
+
+msgid ""
+"The basic information to use the majority of the pgRouting functions ``id, "
+"source, target, cost, [reverse_cost]`` is what in pgRouting is called the "
+"routing topology."
+msgstr ""
+"La información básica para usar la mayoría de las funciones de pgRouting "
+"``id, source, target, cost, [reverse_cost]`` es lo que en pgRouting se llama "
+"topología de ruteo."
+
+msgid ""
+"``reverse_cost`` is optional but strongly recommended to have in order to "
+"reduce the size of the database due to the size of the geometry columns. "
+"Having said that, in this documentation ``reverse_cost`` is used in this "
+"documentation."
+msgstr ""
+"``reverse_cost`` es opcional pero se recomienda encarecidamente tenerlo para "
+"reducir el tamaño de la base de datos debido al tamaño de las columnas de "
+"geometría. Dicho esto, en esta documentación se utiliza ``reverse_cost``."
+
+msgid ""
+"When the data comes with geometries and there is no routing topology, then "
+"this step is needed."
+msgstr ""
+"Cuando los datos vienen con geometrías y no hay topología de ruteo, entonces "
+"este paso es necesario."
+
+msgid ""
+"All the start and end vertices of the geometries need an identifier that is "
+"to be stored in a ``source`` and ``target`` columns of the table of the "
+"data. Likewise, ``cost`` and ``reverse_cost`` need to have the value of "
+"traversing the edge in both directions."
+msgstr ""
+"Todos los vértices iniciales y finales de las geometrías necesitan un "
+"identificador que se almacenará en las columnas ``source`` y ``target`` de "
+"la tabla de los datos. Del mismo modo, ``cost`` y ``reverse_cost`` necesitan "
+"tener el valor de atravesar la arista en ambas direcciones."
+
+msgid ""
+"If the columns do not exist they need to be added to the table in question. "
+"(see `ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable."
+"html>`__)"
+msgstr ""
+"Si las columnas no existen, hay que añadirlas a la tabla en cuestión. (véase "
+"`ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable."
+"html>`__)"
+
+msgid ""
+"The function :doc:`pgr_extractVertices` is used to create a vertices table "
+"based on the edge identifier and the geometry of the edge of the graph."
+msgstr ""
+"La función :doc:`pgr_extractVertices` se utiliza para crear una tabla de "
+"vértices basada en el identificador de arista y la geometría de la arista "
+"del grafo."
+
+msgid ""
+"Finally using the data stored on the vertices tables the ``source`` and "
+"``target`` are filled up."
+msgstr ""
+"Finalmente, utilizando los datos almacenados en las tablas de vértices, se "
+"rellenan los campos ``source`` y ``target``."
+
+msgid "Migration of ``pgr_createVerticesTable``"
+msgstr "Migracion de ``pgr_createVerticesTable``"
+
+msgid ""
+"**After Deprecation:** The user is responsible to create the vertices table, "
+"indexes, etc. They may use :doc:`pgr_extractVertices` for that purpose."
+msgstr ""
+"**Después de la depreciación:** El usuario es responsable de crear la tabla "
+"de vértices, índices, etc. Para ello puede utilizar :doc:"
+"`pgr_extractVertices`."
+
+msgid "Migration of ``pgr_analyzeOneWay``"
+msgstr "Migración de ``pgr_analyzeOneWay``"
+
+msgid "Number of potential problems in directionality"
+msgstr "Número de problemas potenciales en la dirección"
+
+msgid "WHERE"
+msgstr "Donde"
+
+msgid "Directionality problems were calculated based on codes."
+msgstr "Los problemas de dirección se calcularon a partir de códigos."
+
+msgid "Dead ends."
+msgstr "Callejones sin salida."
+
+msgid ""
+"A routing problem can arise when from a vertex there is only a way on or a "
+"way out but not both:"
+msgstr ""
+"Un problema de ruteo puede surgir cuando desde un vértice sólo hay una "
+"salida o una entrada, pero no ambas:"
+
+msgid ""
+"Either saving or using directly :doc:`pgr_extractVertices` get the dead ends "
+"information and determine if the adjacent edge is one way or not."
+msgstr ""
+"Guardando o usando directamente :doc:`pgr_extractVertices` se obtiene la "
+"información de los callejones sin salida y se determina si la arista "
+"adyacente es unidireccional o no."
+
+msgid "In this example :doc:`pgr_extractVertices` has already been applied."
+msgstr "En este ejemplo :doc:`pgr_extractVertices` ya se ha aplicado."
+
+msgid "Bridges."
+msgstr "Puentes."
+
+msgid ""
+"Another routing problem can arise when there is an edge of an undirected "
+"graph whose deletion increases its number of connected components, and the "
+"bridge is only one way."
+msgstr ""
+"Otro problema para ruteo puede surgir cuando en un grafo no dirigido hay una "
+"arista cuya eliminación aumenta el numero de componentes conectados, y el "
+"puente es solo de un sentido."
+
+msgid "To determine if the bridges are or not one way."
+msgstr "Para determinar si los puentes son o no unidireccionales."
+
+msgid "Migration of ``pgr_analyzeGraph``"
+msgstr "Migración de ``pgr_analyzeGraph``"
+
+msgid "Number of isolated segments."
+msgstr "Número de segmentos aislados."
+
+msgid "Number of dead ends."
+msgstr "Cantidad de callejones sin salida."
+
+msgid "Number of potential gaps found near dead ends."
+msgstr ""
+"Número de huecos potenciales encontrados cerca de callejones sin salida."
+
+msgid "Number of intersections. (between 2 edges)"
+msgstr "Número de intersecciones. (entre 2 aristas)"
+
+msgid "Graph component"
+msgstr "Componente de grafo"
+
+msgid "A connected subgraph that is not part of any larger connected subgraph."
+msgstr "Un sub-grafo conectando no es parte de un grafo conectado mas grande."
+
+msgid "Isolated segment"
+msgstr "Segmento aislado"
+
+msgid "A graph component with only one segment."
+msgstr "Un componente de grafo con un solo segmento."
+
+msgid "Dead ends"
+msgstr "Callejones sin salida"
+
+msgid "A vertex that participates in only one edge."
+msgstr "Un vértice que participa en una sola arista."
+
+msgid "gaps"
+msgstr "Espacios"
+
+msgid "Space between two geometries."
+msgstr "Espacio entre dos geometrías."
+
+msgid "Intersection"
+msgstr "Intersección"
+
+msgid "Is a topological relationship between two geometries."
+msgstr "Es una relación topológica entre dos geometrías."
+
+msgid "Migration."
+msgstr "Migración."
+
+msgid "Components."
+msgstr "Componentes."
+
+msgid ""
+"Instead of counting only isolated segments, determine all the components of "
+"the graph."
+msgstr ""
+"En lugar de contar sólo segmentos aislados, determinar todos los componentes "
+"del grafo."
+
+msgid "Depending of the final application requirements use:"
+msgstr "Dependiendo de los requisitos de la aplicación final utilizar:"
+
+msgid ":doc:`pgr_connectedComponents`"
+msgstr ":doc:`pgr_connectedComponents`"
+
+msgid ":doc:`pgr_strongComponents`"
+msgstr ":doc:`pgr_strongComponents`"
+
+msgid ":doc:`pgr_biconnectedComponents`"
+msgstr ":doc:`pgr_biconnectedComponents`"
+
+msgid "For example:"
+msgstr "Por ejemplo:"
+
+msgid ""
+"Instead of counting the dead ends, determine all the dead ends of the graph "
+"using :doc:`pgr_degree`."
+msgstr ""
+"En lugar de contar los callejones sin salida, determine todos los callejones "
+"sin salida del grafo utilizando :doc:`pgr_degree`."
+
+msgid "Potential gaps near dead ends."
+msgstr ""
+
+msgid ""
+"Instead of counting potential gaps between geometries, determine the "
+"geometric gaps in the graph using :doc:`pgr_findCloseEdges`."
+msgstr ""
+
+msgid "Topological relationships."
+msgstr "Relaciones topológicas."
+
+msgid ""
+"Instead of counting intersections, determine topological relationships "
+"between geometries."
+msgstr ""
+
+msgid ""
+"Several PostGIS functions can be used: `ST_Intersects <https://postgis.net/"
+"docs/ST_Intersects.html>`__, `ST_Crosses <https://postgis.net/docs/"
+"ST_Crosses.html>`__, `ST_Overlaps <https://postgis.net/docs/ST_Overlaps."
+"html>`__, etc."
+msgstr ""
+"Se pueden utilizar varias funciones de PostGIS: `ST_Intersects <https://"
+"postgis.net/docs/ST_Intersects.html>`__, `ST_Crosses <https://postgis.net/"
+"docs/ST_Crosses.html>`__, `ST_Overlaps <https://postgis.net/docs/ST_Overlaps."
+"html>`__, etc."
 
 msgid "Migration of ``pgr_aStar``"
 msgstr "Migración de ``pgr_aStar``"
@@ -6075,75 +6365,6 @@ msgstr ""
 "Consultar la documentación de `PostgreSQL <https://www.postgresql.org/docs/"
 ">`__ y la documentación de `PostGIS <https://postgis.net/>`__."
 
-msgid "Build a routing topology"
-msgstr "Construir una topología de ruteo"
-
-msgid ""
-"The basic information to use the majority of the pgRouting functions ``id, "
-"source, target, cost, [reverse_cost]`` is what in pgRouting is called the "
-"routing topology."
-msgstr ""
-"La información básica para usar la mayoría de las funciones de pgRouting "
-"``id, source, target, cost, [reverse_cost]`` es lo que en pgRouting se llama "
-"topología de ruteo."
-
-msgid ""
-"``reverse_cost`` is optional but strongly recommended to have in order to "
-"reduce the size of the database due to the size of the geometry columns. "
-"Having said that, in this documentation ``reverse_cost`` is used in this "
-"documentation."
-msgstr ""
-"``reverse_cost`` es opcional pero se recomienda encarecidamente tenerlo para "
-"reducir el tamaño de la base de datos debido al tamaño de las columnas de "
-"geometría. Dicho esto, en esta documentación se utiliza ``reverse_cost``."
-
-msgid ""
-"When the data comes with geometries and there is no routing topology, then "
-"this step is needed."
-msgstr ""
-"Cuando los datos vienen con geometrías y no hay topología de ruteo, entonces "
-"este paso es necesario."
-
-msgid ""
-"All the start and end vertices of the geometries need an identifier that is "
-"to be stored in a ``source`` and ``target`` columns of the table of the "
-"data. Likewise, ``cost`` and ``reverse_cost`` need to have the value of "
-"traversing the edge in both directions."
-msgstr ""
-"Todos los vértices iniciales y finales de las geometrías necesitan un "
-"identificador que se almacenará en las columnas ``source`` y ``target`` de "
-"la tabla de los datos. Del mismo modo, ``cost`` y ``reverse_cost`` necesitan "
-"tener el valor de atravesar la arista en ambas direcciones."
-
-msgid ""
-"If the columns do not exist they need to be added to the table in question. "
-"(see `ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable."
-"html>`__)"
-msgstr ""
-"Si las columnas no existen, hay que añadirlas a la tabla en cuestión. (véase "
-"`ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable."
-"html>`__)"
-
-msgid ""
-"The function :doc:`pgr_extractVertices` is used to create a vertices table "
-"based on the edge identifier and the geometry of the edge of the graph."
-msgstr ""
-"La función :doc:`pgr_extractVertices` se utiliza para crear una tabla de "
-"vértices basada en el identificador de arista y la geometría de la arista "
-"del grafo."
-
-msgid ""
-"Finally using the data stored on the vertices tables the ``source`` and "
-"``target`` are filled up."
-msgstr ""
-"Finalmente, utilizando los datos almacenados en las tablas de vértices, se "
-"rellenan los campos ``source`` y ``target``."
-
-msgid "See :doc:`sampledata` for an example for building a topology."
-msgstr ""
-"Consulte :doc:`sampledata` para ver un ejemplo de construcción de una "
-"topología."
-
 msgid ""
 "Data coming from OSM and using `osm2pgrouting <https://github.com/pgRouting/"
 "osm2pgrouting>`__ as an import tool, comes with the routing topology. See an "
@@ -6531,35 +6752,38 @@ msgstr ""
 "En :doc:`contraction-family` se describe un método completo sobre cómo "
 "contraer y cómo utilizar el grafo contraído"
 
-msgid "Dead ends"
-msgstr "Callejones sin salida"
-
 msgid "To get the dead ends:"
 msgstr "Para obtener los callejones sin salida:"
 
 msgid "A dead end happens when"
-msgstr ""
+msgstr "Un callejón sin salida se produce cuando"
 
 msgid ""
 "The vertex is the limit of a cul-de-sac, a no-through road or a no-exit road."
 msgstr ""
+"El vértice es el límite de un callejón sin salida, una vía de no paso o una "
+"vía de no salida."
 
 msgid "The vertex is on the limit of the imported graph."
 msgstr "El vértice esta en el limite del grafo importado."
 
 msgid "If a larger graph is imported then the vertex might not be a dead end"
 msgstr ""
+"Si se importa un grafo más grande, puede que el vértice no sea un callejón "
+"sin salida."
 
 msgid ""
 "Node :math:`4`, is a dead end on the query, even that it visually looks like "
 "an end point of 3 edges."
 msgstr ""
+"El nodo :math:`4`, es un callejón sin salida en la consulta, aunque "
+"visualmente parezca un punto final de 3 aristas."
 
 msgid "Is node :math:`4` a dead end or not?"
-msgstr ""
+msgstr "¿Es el nodo :math:`4` un callejón sin salida o no?"
 
 msgid "The answer to that question will depend on the application."
-msgstr ""
+msgstr "La respuesta a esta pregunta dependerá de la aplicación."
 
 msgid "Is there such a small curb:"
 msgstr "Hay un bordillo tan pequeño:"
@@ -6609,6 +6833,8 @@ msgid ""
 "These linear vertices are correct, for example, when those the vertices are "
 "speed bumps, stop signals and the application is taking them into account."
 msgstr ""
+"Estos vértices lineales son correctos, por ejemplo, cuando esos vértices son "
+"badenes, señales de alto y la aplicación los tiene en cuenta."
 
 msgid ""
 "When there are many linear vertices, that need not to be taken into account, "
@@ -8755,6 +8981,12 @@ msgstr "``pgr_alphaShape``"
 msgid "``pgr_alphaShape`` — Polygon part of an alpha shape."
 msgstr "``pgr_alphaShape`` —Parte poligonal de una forma alfa."
 
+msgid "Version 3.8.0"
+msgstr "Versión 3.8.0"
+
+msgid "Deprecated function."
+msgstr "Función obsoleta."
+
 msgid "Breaking change on signature"
 msgstr "Cambio de ruptura en la firma"
 
@@ -8776,9 +9008,6 @@ msgstr "Soporte para devolver múltiples anillos exteriores/interiores"
 
 msgid "Renamed from version 1.x"
 msgstr "Renombrado desde la versión 1.x"
-
-msgid "Support"
-msgstr "Soporte"
 
 msgid "Returns the polygon part of an alpha shape."
 msgstr "Devuelve la parte poligonal de una forma alfa."
@@ -8859,8 +9088,8 @@ msgstr ":doc:`pgr_drivingDistance`"
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 msgstr "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 
-msgid "``pgr_analyzeGraph``"
-msgstr "``pgr_analyzeGraph``"
+msgid "``pgr_analyzeGraph`` -- Deprecated since 3.8.0"
+msgstr "``pgr_analyzeGraph`` -- Obsoleto desde 3.8.0"
 
 msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
 msgstr "``pgr_analyzeGraph`` — analiza la topología de red."
@@ -8896,13 +9125,6 @@ msgstr ""
 "columna destino rellenas con identificadores de los vértices de los "
 "segmentos y la correspondiente tabla de vértices <edge_table>_vertices_pgr "
 "que almacena la información de los vértices."
-
-msgid "Use :doc:`pgr_createVerticesTable` to create the vertices table."
-msgstr "Use :doc:`pgr_createVerticesTable` para crear la tabla de vértices."
-
-msgid ""
-"Use :doc:`pgr_createTopology` to create the topology and the vertices table."
-msgstr "Use :doc:`pgr_createTopology` para crear la topología y los vértices."
 
 msgid "The analyze graph function accepts the following parameters:"
 msgstr "La función de análisis gráfico acepta los siguientes parámetros:"
@@ -9006,13 +9228,6 @@ msgstr "No pudo determinarse el SRID de la geometría."
 msgid "The Vertices Table"
 msgstr "La tabla de vértices"
 
-msgid ""
-"The vertices table can be created with :doc:`pgr_createVerticesTable "
-"<pgr_createVerticesTable>` or :doc:`pgr_createTopology <pgr_createTopology>`"
-msgstr ""
-"Los vértices pueden ser creados con :doc:`pgr_createVerticesTable "
-"<pgr_createVerticesTable>` o :doc:`pgr_createTopology <pgr_createTopology>`"
-
 msgid "The structure of the vertices table is:"
 msgstr "La estructura de la tabla de los vértices es:"
 
@@ -9039,20 +9254,20 @@ msgstr "ein"
 
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
-"as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+"as incoming."
 msgstr ""
-"``integer`` Número de vértices en edge_table que hacen referencia a este "
-"vértice como entrante. Consulte :doc:`pgr_analyzeOneWay<pgr_analyzeOneWay>`."
+"``integer`` número de vértices en la edge_table que hacen referencia a este "
+"vértice como entrante."
 
 msgid "eout"
 msgstr "eout"
 
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
-"as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+"as outgoing."
 msgstr ""
-"``integer`` Número de vértices en edge_table que hacen referencia a este "
-"vértice como saliente. Consulte :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+"``integer`` número de vértices en la edge_table que hacen referencia a este "
+"vértice como saliente."
 
 msgid "``geometry`` Point geometry of the vertex."
 msgstr "``geometry`` Valor de la geometría POINT del vértice."
@@ -9180,14 +9395,11 @@ msgstr ""
 msgid ":doc:`pgr_analyzeOneWay`"
 msgstr ":doc:`pgr_analyzeOneWay`"
 
-msgid ":doc:`pgr_createVerticesTable`"
-msgstr ":doc:`pgr_createVerticesTable`"
-
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ":doc:`pgr_nodeNetwork` para crear nodos en una tabla sin nodos."
 
-msgid "``pgr_analyzeOneWay``"
-msgstr "``pgr_analyzeOneWay``"
+msgid "``pgr_analyzeOneWay`` - Deprecated since 3.8.0"
+msgstr "``pgr_analyzeOneWay`` - Obsoleto desde 3.8.0"
 
 msgid ""
 "``pgr_analyzeOneWay`` — Analyzes oneway Sstreets and identifies flipped "
@@ -9309,13 +9521,6 @@ msgstr ""
 "bidireccional. Valor predeterminado es``true``."
 
 msgid ""
-"It is strongly recommended to use the named notation. See :doc:"
-"`pgr_createVerticesTable` or :doc:`pgr_createTopology` for examples."
-msgstr ""
-"Es ampliamente recomendable usar la notación nombrada . Ver ejemplos en: :"
-"doc:`pgr_createVerticesTable` o :doc:`pgr_createTopology`."
-
-msgid ""
 "Fills completely the ``ein`` and ``eout`` columns of the vertices table."
 msgstr ""
 "Se llena completamente las columnas de la tabla de vértices ``ein`` y "
@@ -9332,44 +9537,6 @@ msgstr ""
 "Las reglas se definen como un conjunto de textos que si encajan con el valor "
 "de ``oneway`` se contara como ``true`` para las condiciones de el origen o "
 "destino **in** o **out** ."
-
-msgid ""
-"The vertices table can be created with :doc:`pgr_createVerticesTable` or :"
-"doc:`pgr_createTopology`"
-msgstr ""
-"Los vértices pueden ser creados con :doc:`pgr_createVerticesTable` o :doc:"
-"`pgr_createTopology`"
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex. "
-"See :doc:`pgr_analyzeGgraph <pgr_analyzeGraph>`."
-msgstr ""
-"``integer`` Número de vértices en edge_table que hacen referencia a este "
-"vértice. Consulte :doc:`pgr_analyzeGgraph <pgr_analyzeGraph>`."
-
-msgid ""
-"``integer`` Indicator that the vertex might have a problem. See :doc:"
-"`pgr_analyzeGraph <pgr_analyzeGraph>`."
-msgstr ""
-"``integer`` Indicador de que el vértice podría tener un problema. Consulte :"
-"doc:`pgr_analyzeGraph <pgr_analyzeGraph>`."
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as incoming."
-msgstr ""
-"``integer`` número de vértices en la edge_table que hacen referencia a este "
-"vértice como entrante."
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as outgoing."
-msgstr ""
-"``integer`` número de vértices en la edge_table que hacen referencia a este "
-"vértice como saliente."
-
-msgid ":doc:`pgr_analyzeGraph`"
-msgstr ":doc:`pgr_analyzeGraph`"
 
 msgid "``pgr_articulationPoints``"
 msgstr "``pgr_articulationPoints``"
@@ -10542,9 +10709,6 @@ msgstr ""
 "``pgr_contraction`` — Realiza la contracción del grafo y devuelve los "
 "vértices y aristas contraídos.."
 
-msgid "Version 3.8.0"
-msgstr "Versión 3.8.0"
-
 msgid "New signature:"
 msgstr "Nueva firma:"
 
@@ -10552,6 +10716,8 @@ msgid ""
 "Previously compulsory parameter **Contraction order** is now optional with "
 "name ``methods``."
 msgstr ""
+"El parámetro **Orden de contracción**, antes obligatorio, es ahora opcional "
+"con el nombre ``methods``."
 
 msgid "New name and order of optional parameters."
 msgstr "Nuevo nombre y orden de parámetros opcionales."
@@ -10609,7 +10775,7 @@ msgstr ""
 "función:"
 
 msgid "Dead End Contraction. See :doc:`pgr_contractionDeadEnd`."
-msgstr ""
+msgstr "Contracción sin salida. Véase :doc:`pgr_contractionDeadEnd`."
 
 msgid "Linear Contraction. See :doc:`pgr_contractionLinear`."
 msgstr ""
@@ -10980,7 +11146,7 @@ msgstr ""
 msgid "pgr_contractionDeadEnd(`Edges SQL`_, [**options**])"
 msgstr "pgr_contractionDeadEnd(`SQL de aristas`_, [**opciones**])"
 
-msgid "**options:** ``[directed, forbidden_vertices]``"
+msgid "**options:** ``[directed, forbidden]``"
 msgstr "**opciones:** ``[directed, forbidden]``"
 
 msgid "Dead end contraction on an undirected graph."
@@ -10991,11 +11157,8 @@ msgstr "Los nodos verdes son nodos sin salida."
 
 msgid "Node :math:`3` is a dead end node after node :math:`1` is contracted."
 msgstr ""
-"El nodo :math:`3` es sin salida después de haberse contraído el nodo "
-":math:`1`."
-
-msgid "``forbidden_vertices``"
-msgstr "``forbidden_vertices``"
+"El nodo :math:`3` es sin salida después de haberse contraído el nodo :math:"
+"`1`."
 
 msgid "``ARRAY[`` |ANY-INTEGER| ``]``"
 msgstr "``ARRAY[`` |ANY-INTEGER| ``]``"
@@ -11175,27 +11338,19 @@ msgstr ""
 msgid "pgr_contractionLinear(`Edges SQL`_, [**options**])"
 msgstr "pgr_contractionLinear(`SQL de aristas`_, [**opciones**])"
 
-msgid "**options:** ``[directed, max_cycles, forbidden_vertices]``"
-msgstr "**opciones:** ``[directed, forbidden_vertices]``"
-
 msgid "Linear contraction on an undirected graph."
 msgstr "Contracción lineal en un grafo no dirigido."
 
-#, fuzzy
 msgid ""
 "The green nodes are linear nodes and will not be part of the contracted "
 "graph."
-msgstr ""
-"En caso de ''true'' se contrae el vértice, no forma parte del grafo "
-"contraído."
+msgstr "Los nodos verdes son lineales y no forman parte del grafo contraído."
 
-#, fuzzy
 msgid "All edges adjacent will not be part of the contracted graph."
-msgstr "Aristas que pertenecen al grafo contraído."
+msgstr "Aristas adyacentes no forman parte del grafo contraído."
 
-#, fuzzy
 msgid "The red lines will be new edges of the contracted graph."
-msgstr "Vértices que pertenecen al grafo contraído."
+msgstr "Las lineas verdes son aristas que pertenecen al grafo contraído."
 
 msgid "**contraction Order**"
 msgstr "**Orden de contracciones**"
@@ -11219,9 +11374,8 @@ msgstr "En el caso de un grafo dirigido, un nodo se considera `lineal` cuando"
 msgid "Linearity is symmetrical."
 msgstr "La linealidad es simétrica."
 
-#, fuzzy
 msgid "Linearity is not symmetrical"
-msgstr "La linealidad es simétrica"
+msgstr "La linealidad no es simétrica"
 
 msgid "Graph where linearity is not symmetrical."
 msgstr "Grafo cuando la linealidad no es simétrica."
@@ -11245,9 +11399,8 @@ msgstr "Arista :math:`1 - 3`."
 msgid "With cost: :math:`4`."
 msgstr "Con costo: :math:`4`."
 
-#, fuzzy
 msgid "Contracted vertices in the edge: :math:`\\{2\\}`."
-msgstr "Para un grafo dirigido con aristas :math:`\\{1, 2, 3, 4\\}`."
+msgstr "Vértices contraídos en la arista: :math:`\\{2\\}`."
 
 msgid "Linearity is symmetrical"
 msgstr "La linealidad es simétrica"
@@ -11255,9 +11408,8 @@ msgstr "La linealidad es simétrica"
 msgid "Graph where linearity is symmetrical."
 msgstr "Grafo donde la linealidad es simétrica."
 
-#, fuzzy
 msgid "The four edges can be replaced by two directed edges."
-msgstr "El gráfico puede dirigido o no."
+msgstr "Las cuatro aristas pueden ser reemplazadas con dos aristas dirigidas."
 
 msgid "Edge :math:`3 - 1`."
 msgstr "Arista :math:`3 - 1`."
@@ -11265,13 +11417,11 @@ msgstr "Arista :math:`3 - 1`."
 msgid "With cost: :math:`6`."
 msgstr "Con costo: :math:`6`."
 
-#, fuzzy
 msgid "The four edges can be replaced by one undirected edge."
-msgstr "El gráfico puede dirigido o no."
+msgstr "Las cuatro aristas pueden ser reemplazadas con una arista no dirigida."
 
-#, fuzzy
 msgid "Step by step linear contraction"
-msgstr "Sólo contracción lineal"
+msgstr "Contracción lineal, paso a paso"
 
 msgid ""
 "The linear contraction will stop when there are no more linear edges. For "
@@ -11280,65 +11430,56 @@ msgstr ""
 "La contracción lineal se detendrá hasta que no hayan más aristas lineales. "
 "Por ejemplo, en el siguiente grafo hay aristas lineales"
 
-#, fuzzy
 msgid "Contracting vertex :math:`3`,"
-msgstr "Contrayendo :math:`w`,"
+msgstr "Contrayendo el vértice :math:`3`,"
 
-#, fuzzy
 msgid "The vertex :math:`3` is removed from the graph"
-msgstr "El vértice :math:`w` se elimina del grafo"
+msgstr "El vértice :math:`3` se elimina del grafo"
 
-#, fuzzy
 msgid ""
 "The edges :math:`2 \\rightarrow 3` and :math:`w \\rightarrow z` are removed "
 "from the graph."
 msgstr ""
-"Los aristas :math:`v \\rightarrow w` y :math:`w \\rightarrow z` fueron "
+"Los aristas :math:`2 \\rightarrow 3` y :math:`w \\rightarrow z` fueron "
 "eliminados del grafo."
 
-#, fuzzy
 msgid ""
 "A new edge :math:`2 \\rightarrow 4` is inserted represented with red color."
 msgstr ""
-"Se inserta un nuevo arista :math:`v \\rightarrow z` y se representa con "
+"Se inserta una nuevo arista :math:`2 \\rightarrow 4` y se representa con "
 "color rojo."
 
-#, fuzzy
 msgid "Contracting vertex :math:`2`:"
-msgstr "Contrayendo :math:`v`:"
+msgstr "Contrayendo el vértice :math:`2`:"
 
-#, fuzzy
 msgid "The vertex :math:`2` is removed from the graph"
-msgstr "El vértice :math:`w` se elimina del grafo"
+msgstr "El vértice :math:`2` se elimina del grafo"
 
-#, fuzzy
 msgid ""
 "The edges :math:`1 \\rightarrow 2` and :math:`2 \\rightarrow 3` are removed "
 "from the graph."
 msgstr ""
-"Los aristas :math:`v \\rightarrow w` y :math:`w \\rightarrow z` fueron "
+"Los aristas :math:`1 \\rightarrow 2` y :math:`2 \\rightarrow 3` son "
 "eliminados del grafo."
 
-#, fuzzy
 msgid ""
 "A new edge :math:`1 \\rightarrow 3` is inserted represented with red color."
 msgstr ""
-"Se inserta un nuevo arista :math:`v \\rightarrow z` y se representa con "
+"Se inserta una nuevo arista :math:`1 \\rightarrow 3` y se representa con "
 "color rojo."
 
-#, fuzzy
 msgid ""
 "Edge :math:`1 \\rightarrow 3` has the information of cost and the nodes that "
 "were contracted."
 msgstr ""
-"El arista :math:`u \\rightarrow z` tiene la información de los nodos que "
-"fueron contraídos."
+"El arista :math:`1 \\rightarrow 3` tiene la información de los costos y "
+"nodos que fueron contraídos."
 
 msgid "Create the contracted graph."
 msgstr "Crear el grafo contraído."
 
-msgid "``pgr_createTopology``"
-msgstr "``pgr_createTopology``"
+msgid "``pgr_createTopology`` - Deprecated since v3.8.0"
+msgstr "``pgr_createTopology`` - Obsoleto desde 3.8.0"
 
 msgid ""
 "``pgr_createTopology`` — Builds a network topology based on the geometry "
@@ -11424,39 +11565,18 @@ msgid "``FAIL`` when the network topology was not built due to an error:"
 msgstr "``FAIL`` cuando la topología de red no se construyó debido a un error:"
 
 msgid ""
-"The vertices table is a requirement of the :doc:`pgr_analyzeGraph` and the :"
-"doc:`pgr_analyzeOneWay` functions."
+"``integer`` Number of vertices in the edge_table that reference this vertex "
+"AS incoming."
 msgstr ""
-"La tabla de vértices es un requerimiento de las funciones :doc:"
-"`pgr_analyzeGraph` y :doc:`pgr_analyzeOneWay`."
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex. "
-"See :doc:`pgr_analyzeGraph`."
-msgstr ""
-"``integer`` Número de vértices en la edge_table que referencian este "
-"vértice. Ver :doc:`pgr_analyzeGraph`."
-
-msgid ""
-"``integer`` Indicator that the vertex might have a problem. See :doc:"
-"`pgr_analyzeGraph`."
-msgstr ""
-"``integer`` Indicador de que el vértice puede tener un problema. Véase :doc:"
-"`pgr_analyzeGraph`."
+"``integer`` número de vértices en la tabla de aristas que hacen referencia a "
+"este vértice como entrante."
 
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
-"AS incoming. See :doc:`pgr_analyzeOneWay`."
+"AS outgoing."
 msgstr ""
-"``integer`` Número de vértices en edge_table que referencian a este vértice "
-"como (AS) entrante. Ver :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"AS outgoing. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` Número de vértices en edge_table que referencian este vértice "
-"como (AS) saliente. Ver :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+"``integer`` número de vértices en la tabla de aristas que hacen referencia a "
+"este vértice como saliente."
 
 msgid "The simplest way to use pgr_createTopology is:"
 msgstr "La forma más sencilla de utilizar pgr_createTopology es:"
@@ -11592,8 +11712,8 @@ msgstr ""
 "En este ejemplo se inicia una topología limpia, con 5 aristas y, a "
 "continuación, se incrementa al resto de los bordes."
 
-msgid "``pgr_createVerticesTable``"
-msgstr "``pgr_createVerticesTable``"
+msgid "``pgr_createVerticesTable`` - Deprecated since 3.8.0"
+msgstr "``pgr_createVerticesTable`` - Obsoleto desde 3.8.0"
 
 msgid ""
 "``pgr_createVerticesTable`` — Reconstructs the vertices table based on the "
@@ -11639,20 +11759,6 @@ msgstr ""
 
 msgid "The names of source, target are the same."
 msgstr "Los nombres de los campos de origen y destino son las mismos."
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as incoming. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` Número de vértices en edge_table que hacen referencia a este "
-"vértice como entrante. Consulte :doc:`pgr_analyzeOneWay`."
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as outgoing. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` Número de vértices en el edge_table que hacen referencia a este "
-"vértice como saliente. Consulte :doc:`pgr_analyzeOneWay`."
 
 msgid "The simplest way to use pgr_createVerticesTable"
 msgstr "La forma más sencilla de utilizar pgr_createVerticesTable"
@@ -11757,23 +11863,6 @@ msgid ""
 msgstr ""
 ":doc:`topology-functions` para una visión general de una topología para "
 "algoritmos de enrutamiento."
-
-msgid ""
-":doc:`pgr_createTopology` <pgr_create_topology>` to create a topology based "
-"on the geometry."
-msgstr ""
-":doc:`pgr_createTopology` <pgr_create_topology>` para crear una topología "
-"basada en la geometría."
-
-msgid ""
-":doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table."
-msgstr ""
-":doc:`pgr_analyzeGraph` para analizar los bordes y vértices de la tabla de "
-"bordes."
-
-msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
-msgstr ""
-":doc:`pgr_analyzeOneWay` para analizar la direccionalidad de los bordes."
 
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
 msgstr "``pgr_cuthillMckeeOrdering`` - Experimental"
@@ -11964,9 +12053,8 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Topological_sorting"
 msgstr "https://en.wikipedia.org/wiki/Topological_sorting"
 
-#, fuzzy
 msgid "``pgr_degree``"
-msgstr "pgr_degree"
+msgstr "``pgr_degree``"
 
 msgid ""
 "``pgr_degree`` — For each vertex in an undirected graph, return the count of "
@@ -11981,17 +12069,15 @@ msgstr ""
 msgid "New signature with only Edges SQL."
 msgstr ""
 
-#, fuzzy
 msgid "Calculates the degree of the vertices of an undirected graph"
-msgstr "Calcula el grado de los vértices de un grafo **no dirigido**"
+msgstr "Calcula el grado de los vértices de un grafo no dirigido"
 
-#, fuzzy
 msgid ""
 "The degree (or valency) of a vertex of a graph is the number of edges that "
 "are incident to the vertex."
 msgstr ""
-"``pgr_degree`` - Para cada vértice de un grafo no dirigido, devuelve el "
-"número de aristas incidentes en el vértice."
+"El grado (o valencia) de un vértice de un grafo es el número de aristas "
+"incidentes al vértice."
 
 msgid "A loop contributes 2 to a vertex's degree."
 msgstr ""
@@ -11999,21 +12085,18 @@ msgstr ""
 msgid "A vertex with degree 0 is called an isolated vertex."
 msgstr ""
 
-#, fuzzy
 msgid "Isolated vertex is not part of the result"
-msgstr ""
-"Corrige la distancia de conducción cuando el vértice no forma parte del grafo"
+msgstr "Vértice aislado no forma parte del resultado"
 
 msgid ""
 "Vertex not participating on the subgraph is considered and isolated vertex."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "There can be a ``dryrun`` execution and the code used to get the answer will "
 "be shown in a PostgreSQL ``NOTICE``."
 msgstr ""
-"Dado que se trata de una ejecución **dry run**, el código de todos los "
+"Dado que se trata de una ejecución ``dryrun``, el código de todos los "
 "cálculos se muestra en el ``NOTICE`` de PostgreSQL."
 
 msgid ""
@@ -12024,9 +12107,8 @@ msgstr ""
 msgid "No ordering is performed."
 msgstr "No se realiza ningún ordenamiento."
 
-#, fuzzy
 msgid "pgr_degree(`Edges SQL`_ , [``dryrun``])"
-msgstr "pgr_degree(`SQL de aristas`_ , `SQL de vértices`_, [``dryrun``])"
+msgstr "pgr_degree(`Edges SQL`_ , [``dryrun``])"
 
 msgid "pgr_degree(`Edges SQL`_ , `Vertex SQL`_, [``dryrun``])"
 msgstr "pgr_degree(`SQL de aristas`_ , `SQL de vértices`_, [``dryrun``])"
@@ -12037,16 +12119,14 @@ msgstr "REGRESA CONJUNTO DE |result-degree|"
 msgid "Edges"
 msgstr ""
 
-#, fuzzy
 msgid "example"
-msgstr "Ejemplo"
+msgstr "ejemplo"
 
 msgid "Get the degree of the vertices defined on the edges table"
 msgstr "Obtener el grado de los vértices definidos en la tabla de aristas"
 
-#, fuzzy
 msgid "Edges and Vertices"
-msgstr "Añadiendo nuevos vértices"
+msgstr "Aristas y Vértices"
 
 msgid "Extracting the vertex information"
 msgstr "Extraer la información del vértice"
@@ -12075,13 +12155,11 @@ msgid "When true do not process and get in a NOTICE the resulting query."
 msgstr ""
 "Cuando verdadero, no procesar y recibir un AVISO de la consulta resultante."
 
-#, fuzzy
 msgid "For the `Edges and Vertices`_ signature:"
-msgstr "Sobre las firmas obsoletas:"
+msgstr "Para la firma `Aristas y Vértices`_:"
 
-#, fuzzy
 msgid "For the `Edges`_ signature:"
-msgstr "Sobre las firmas obsoletas:"
+msgstr "Para la firma `Aristas`_:"
 
 msgid "Vertex SQL"
 msgstr "SQL de vértices"
@@ -12121,9 +12199,8 @@ msgstr "``degree``"
 msgid "Number of edges that are incident to the vertex ``id``"
 msgstr "Número de aristas incidentes al vértice ``id``"
 
-#, fuzzy
 msgid "Degree of a loop"
-msgstr "Grado de un subgrafo"
+msgstr "Grado de un bucle"
 
 msgid "Using the `Edges`_ signature."
 msgstr "Usando la firma `Aristas`_."
@@ -12152,19 +12229,15 @@ msgstr ""
 msgid "their degree is not shown in the output."
 msgstr ""
 
-#, fuzzy
 msgid "Using a vertex table"
-msgstr "En la tabla de vértices"
+msgstr "Usando una tabla de vértices"
 
-#, fuzzy
 msgid ""
 "For decent size networks, it is best to prepare your vertices table before "
 "hand and use it on ``pgr_degree`` calls."
 msgstr ""
-"pgr_degree puede utilizar la salida de `pgr_extractVertices` o puede tener "
-"`pgr_extractVertices` incrustado en la llamada. Para redes de tamaño "
-"decente, lo mejor es preparar la tabla de vértices de antemano y utilizar "
-"esa tabla de vértices para las llamadas pgr_degree."
+"Para un tamaño de red razonable, es mejor preparar previamente una tabla de "
+"vértices y utilizarla en las llamadas a ``pgr_degree``."
 
 msgid "Extract the vertex information and save into a table:"
 msgstr "Extraer la información del vértice y almacenar en una tabla:"
@@ -12186,11 +12259,9 @@ msgstr ""
 "Los resultados se pueden usar como código base para realizar un refinamiento "
 "basado en las necesidades de desarrollo de back-end."
 
-#, fuzzy
 msgid "Finding dead ends"
-msgstr "Callejones sin salida"
+msgstr "Encontrando callejones sin salida"
 
-#, fuzzy
 msgid ""
 "If there is a vertices table already built using ``pgr_extractVertices`` and "
 "want the degree of the whole graph rather than a subset, it can be forgo "
@@ -12205,19 +12276,16 @@ msgstr ""
 msgid "The degree of a dead end is 1."
 msgstr "El grado de un sin salida es 1."
 
-#, fuzzy
 msgid "Finding linear vertices"
-msgstr "Añadiendo nuevos vértices"
+msgstr "Encontrando vértices lineales"
 
-#, fuzzy
 msgid "The degree of a linear vertex is 2."
-msgstr "El número de vértices adyacentes es 2."
+msgstr "El grado de un vértice lineal es 2."
 
-#, fuzzy
 msgid ""
 "If there is a vertices table already built using the ``pgr_extractVertices``"
 msgstr ""
-"Para obtener la información de los vértices, use :doc:`pgr_extractVertices`"
+"Cuando hay una tabla de vértices construida usando :doc:`pgr_extractVertices`"
 
 msgid ":doc:`pgr_extractVertices`"
 msgstr ":doc:`pgr_extractVertices`"
@@ -13481,12 +13549,11 @@ msgstr "pgr_edmondsKarp(`SQL de aristas`_, **salidas**, **destinos**)"
 msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 msgstr "pgr_edmondsKarp(`SQL de aristas`_, `SQL de combinaciones`_)"
 
-#, fuzzy
 msgid ""
 "`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/"
 "edmonds_karp_max_flow.html>`__"
 msgstr ""
-"`Boost: Flujo máximo Edmonds Karp <https://www.boost.org/libs/graph/doc/"
+"`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/"
 "edmonds_karp_max_flow.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
@@ -13584,9 +13651,8 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 msgstr "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 
-#, fuzzy
 msgid "``pgr_extractVertices``"
-msgstr "pgr_extractVertices"
+msgstr "``pgr_extractVertices``"
 
 msgid "``pgr_extractVertices`` — Extracts the vertices information"
 msgstr "``pgr_extractVertices`` — Extrae la información de los vértices"
@@ -13730,9 +13796,8 @@ msgstr ""
 "El código para realizar los cálculos puede obtenerse para realizar los "
 "ajustes específicos que necesite la aplicación."
 
-#, fuzzy
 msgid "``EMPTY SET`` is returned on dryrun executions"
-msgstr "``EMTPY SET`` se devuelve en ejecuciones en seco"
+msgstr "``EMPTY SET`` se devuelve en ejecuciones en seco"
 
 msgid ""
 "pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])"
@@ -13744,9 +13809,8 @@ msgid ""
 msgstr ""
 "pgr_findCloseEdges(`Edges SQL`_, **puntos**, **tolerancia**, [**options**])"
 
-#, fuzzy
 msgid "**options:** ``[cap, dryrun]``"
-msgstr "**opcionales:** ``[cap, partial, dryrun]``"
+msgstr "**opciones:** ``[cap, dryrun]``"
 
 msgid "Returns set of |result-find|"
 msgstr "Regresa conjunto de |result-find|"
@@ -13806,49 +13870,43 @@ msgstr "La geometría ``LINESTRING`` de la arista."
 msgid "When :math:`cap = 1`, it is the closest edge."
 msgstr "Cuando :math:`cap = 1`, es la arista más cercana."
 
-#, fuzzy
 msgid ""
 "Value in <0,1> that indicates the relative position from the first end-point "
 "of the edge."
 msgstr ""
-"El valor entre <0,1> indica la posición relativa desde el primer punto de la "
+"Valor entre <0,1> indica la posición relativa desde el primer punto de la "
 "arista."
 
 msgid "Value in ``[r, l]`` indicating if the point is:"
 msgstr "Valor en ``[r, l]`` que indica si el punto es:"
 
-#, fuzzy
 msgid "At the right ``r`` of the segment."
-msgstr "En cualquier lado del segmento."
+msgstr "A la derecha ``r`` del segmento."
 
 msgid "When the point is on the line it is considered to be on the right."
 msgstr "Cuando el punto está en la línea se considera que está a la derecha."
 
-#, fuzzy
 msgid "At the left ``l`` of the segment."
-msgstr "En cualquier lado del segmento."
+msgstr "A la izquierda ``l`` del segmento."
 
 msgid "``distance``"
 msgstr "``distancia``"
 
-#, fuzzy
 msgid "Distance from the point to the edge."
 msgstr "Distancia del punto a la arista."
 
 msgid "Original ``POINT`` geometry."
 msgstr "Geometría original ``POINT``."
 
-#, fuzzy
 msgid ""
 "``LINESTRING`` geometry that connects the original **point** to the closest "
 "point of the edge with identifier ``edge_id``"
 msgstr ""
-"Geometría ``LINESTRING`` desde el **punto original** hasta el punto más "
+"Geometría ``LINESTRING`` desde el **punto** original hasta el punto más "
 "cercano de la arista con identificador ``edge_id``"
 
-#, fuzzy
 msgid "One point in an edge"
-msgstr "Ejecución en seco de un punto"
+msgstr "Un punto en la arista"
 
 msgid "The green node is the original point."
 msgstr "El nodo verde es el punto original."
@@ -13856,27 +13914,21 @@ msgstr "El nodo verde es el punto original."
 msgid "``geom`` has the value of the original point."
 msgstr "``geom`` Tiene el valor del punto original."
 
-#, fuzzy
 msgid ""
 "The geometry ``edge`` is a line that connects the original point with the "
 "edge :math:`sp \\rightarrow ep` edge."
 msgstr ""
-"La geometría ``edge``, marcada como **edge1** y **edge2** es una línea que "
-"conecta el **punto original** con el punto más cercano de la arista :math:"
-"`sp \\rightarrow ep`."
+"La geometría ``edge``, es una línea que conecta al punto original con el "
+"punto más cercano de la arista :math:`sp \\rightarrow ep`."
 
-#, fuzzy
 msgid "The point is located at the left of the edge."
-msgstr ""
-"``side``: El **punto original** está situado a la izquierda de la arista :"
-"math:`5`."
+msgstr "El punto original está situado a la izquierda de la arista."
 
 msgid "One point dry run execution"
 msgstr "Ejecución en seco de un punto"
 
-#, fuzzy
 msgid "Using the query from the previous example:"
-msgstr "Usando este diseño de tabla para este ejemplo:"
+msgstr "Usando la consulta del ejemplo anterior:"
 
 msgid "Returns ``EMPTY SET``."
 msgstr "Devuelve ``CONJUNTO VACÍO``."
@@ -13892,9 +13944,8 @@ msgid ""
 "requirements, like taking into consideration the SRID."
 msgstr ""
 
-#, fuzzy
 msgid "Many points in an edge"
-msgstr "Ejemplos de muchos puntos"
+msgstr "Ejemplos de muchos puntos en una arista"
 
 msgid "The green nodes are the **original points**"
 msgstr "Los nodos verdes son los **puntos originales**"
@@ -13968,9 +14019,8 @@ msgstr ""
 msgid "A unique identifier."
 msgstr "Un identificador único."
 
-#, fuzzy
 msgid "Identifier of the nearest segment."
-msgstr "Identificador del vértice."
+msgstr "Identificador del segmento mas próximo."
 
 msgid "Is it on the left, right or both sides of the segment ``edge_id``."
 msgstr ""
@@ -13998,9 +14048,8 @@ msgstr "``newPoint``"
 msgid "A point on segment ``edge_id`` that is the closest to ``geom``."
 msgstr ""
 
-#, fuzzy
 msgid "Points of interest fill up"
-msgstr "LLenado de puntos de interés"
+msgstr "Llenado de puntos de interés"
 
 msgid "Inserting the points of interest."
 msgstr "Insertando los puntos de interés."
@@ -14128,12 +14177,11 @@ msgstr "Hash de Git de pgRouting"
 msgid "``pgr_hawickCircuits`` - Experimental"
 msgstr "``pgr_hawickCircuits`` - Experimental"
 
-#, fuzzy
 msgid ""
 "``pgr_hawickCircuits`` — Returns the list of ciruits using hawick circuits "
 "algorithm."
 msgstr ""
-"``pgr_hawickCircuits`` — Enumeración de los circuitos usando el algoritmo de "
+"``pgr_hawickCircuits`` — Enumeración de circuitos usando el algoritmo de "
 "circutos de Hawick."
 
 msgid ""
@@ -15228,9 +15276,6 @@ msgid ""
 msgstr ""
 "Cuando el flujo máximo es **0**, entonces no hay flujo y se devuelve **0**."
 
-msgid "There is no flow when source has the same vaule as target."
-msgstr "No hay flujo cuando el origen tiene el mismo valor que el destino."
-
 msgid "Uses the :doc:`pgr_pushRelabel <pgr_pushRelabel>` algorithm."
 msgstr "Use el algoritmo :doc:`pgr_pushRelabel <pgr_pushRelabel>` ."
 
@@ -15471,19 +15516,11 @@ msgstr "sub_id"
 msgid "``integer`` Segment number of the original edge"
 msgstr "``integer`` número del segmento del borde original"
 
-msgid ""
-"``integer`` Empty source column to be used with :doc:`pgr_createTopology` "
-"function"
+msgid "``integer`` Empty source column"
 msgstr ""
-"``integer`` Columna de origen vacía que se utilizará con la función :doc:"
-"`pgr_createTopology`"
 
-msgid ""
-"``integer`` Empty target column to be used with :doc:`pgr_createTopology` "
-"function"
+msgid "``integer`` Empty target column"
 msgstr ""
-"``integer`` Columna vacía de destino que se utilizará con la función :doc:"
-"`pgr_createTopology`"
 
 msgid "the geom"
 msgstr "la geom"
@@ -15494,194 +15531,63 @@ msgstr "``geometry`` Columna de geometría de la red discontínua"
 msgid "Examples"
 msgstr "Ejemplos"
 
-msgid "Let's create the topology for the data in :doc:`sampledata`"
-msgstr "Vamos a crear la topología para los datos en :doc:`sampledata`"
+msgid "Create the topology for the data in :doc:`sampledata`"
+msgstr "Crear la topología para los datos en :doc:`sampledata`"
 
-msgid "Now we can analyze the network."
-msgstr "Ahora podemos analizar la red."
+msgid "Analyze the network for intersections."
+msgstr ""
+
+msgid "Analyze the network for gaps."
+msgstr "Analizar la red por espacios."
+
+msgid "The analysis tell us that the network has a gap and an intersection."
+msgstr "El análisis dice que la red tiene un hueco y una intersección."
+
+msgid "Fixing an intersection"
+msgstr "Encontrando una intersección"
+
+msgid "Storing the intersections."
+msgstr "Almacenando las intersecciones."
+
+msgid "Calling ``pgr_nodeNetwork``."
+msgstr "Llamando a ``pgr_nodeNetwork``."
 
 msgid ""
-"The analysis tell us that the network has a gap and an intersection. We try "
-"to fix the problem using:"
+"Inspecting the generated table, we can see that edges 13 and 18 have been "
+"segmented."
 msgstr ""
-"El análisis dice que la red tiene un hueco y una intersección. Trataremos de "
-"solucionar el problema usando:"
+"Inspeccionar la tabla generada, podemos ver que las aristas 13 y 18 ha sido "
+"segmentados."
+
+msgid "Update the topology"
+msgstr "Actualizar la topología"
+
+msgid "Add new segments to the edges table."
+msgstr "Agregar segmentos a la tabla de aristas."
+
+msgid "Insert the intersection as new vertices."
+msgstr "Insertar las intersecciones como nuevos vértices."
+
+msgid "Update source and target information on the edges table."
+msgstr "Actualizar la salida y el destino en la tabla de aristas."
+
+msgid "Delete original edge."
+msgstr "Eliminar la arista original original."
+
+msgid "Update the vertex topology"
+msgstr "Actualizar la topología de vértices"
+
+msgid "Fixing a gap"
+msgstr ""
+
+msgid "Store the deadends"
+msgstr "Almacenar los callejones sin salida"
 
 msgid ""
-"Inspecting the generated table, we can see that edges 13,14 and 18 has been "
-"segmented"
+"Inspecting the generated table, we can see that edge 14 has been segmented."
 msgstr ""
-"Inspeccionar la tabla generada, podemos ver que los bordes 13,14 y 18 ha "
-"sido segmentado"
-
-msgid "We can create the topology of the new network"
-msgstr "Podemos crear la topología de la nueva red"
-
-msgid "Now let's analyze the new topology"
-msgstr "Ahora analicemos la nueva topología"
-
-msgid "Images"
-msgstr "Imágenes"
-
-msgid "Before Image"
-msgstr "Imágen del Antes"
-
-msgid "Before image"
-msgstr "Imágen del antes"
-
-msgid "After Image"
-msgstr "Imágen del Después"
-
-msgid "After image"
-msgstr "Imágen del después"
-
-msgid "Comparing the results"
-msgstr "Comparando los resultados"
-
-msgid "Comparing with the Analysis in the original edge_table, we see that."
-msgstr "Comparando con el análisis del edge_table original, vemos que."
-
-msgid "Before"
-msgstr "Antes de"
-
-msgid "After"
-msgstr "Después de"
-
-msgid "Table name"
-msgstr "Nombre de la tabla"
-
-msgid "edge_table_noded"
-msgstr "edge_table_noded"
-
-msgid "Fields"
-msgstr "Campos"
-
-msgid "All original fields"
-msgstr "Todos los campos originales"
-
-msgid "Has only basic fields to do a topology analysis"
-msgstr "Tiene solamente campos básicos para hacer un análisis de topología"
-
-msgid "Edges with 1 dead end: 1,6,24"
-msgstr "Los bordes con 1 callejón sin salida: 1,6,24"
-
-msgid "Edges with 2 dead ends: 17,18"
-msgstr "Aristas con 2 callejones sin salida: 17,18"
-
-msgid ""
-"Edge 17's right node is a dead end because there is no other edge sharing "
-"that same node. (cnt=1)"
-msgstr ""
-"Nodo derecho borde de 17 es un callejón sin salida porque no hay ningún otro "
-"borde que comparta ese mismo nodo. (cnt = 1)"
-
-msgid "Edges with 1 dead end: 1-1 ,6-1,14-2, 18-1 17-1 18-2"
-msgstr "Los bordes con 1 callejón sin salida: 1-1, 6-1,14-2, 18-1-17-1 18-2"
-
-msgid "Isolated segments"
-msgstr "Segmentos aislados"
-
-msgid "two isolated segments: 17 and 18 both they have 2 dead ends"
-msgstr "dos segmentos aislados: 17 y 18 ambos tienen 2 callejones sin salida"
-
-msgid "No Isolated segments"
-msgstr "Segmentos no aislados"
-
-msgid "Edge 17 now shares a node with edges 14-1 and 14-2"
-msgstr "Borde 17 ahora comparte un nodo con bordes 14-1 y 14-2"
-
-msgid "Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2"
-msgstr "Bordes 18-1 y 18-2 compartir un nodo con bordes 13-1 y 13-2"
-
-msgid "Gaps"
-msgstr "Espacios"
-
-msgid ""
-"There is a gap between edge 17 and 14 because edge 14 is near to the right "
-"node of edge 17"
-msgstr ""
-"Existe un espacio entre la arista 17 y la 14 porque la arista 14 está cerca "
-"del nodo derecho a la arista 17"
-
-msgid ""
-"Edge 14 was segmented Now edges: 14-1 14-2 17 share the same node The "
-"tolerance value was taken in account"
-msgstr ""
-"Borde 14 fue segmentado ahora bordes: 14-1 14-2 17 comparten el mismo nodo, "
-"el valor de tolerancia fue tomado en cuenta"
-
-msgid "Intersections"
-msgstr "Intersecciones"
-
-msgid "Edges 13 and 18 were intersecting"
-msgstr "Bordes 13 y 18 años se intersectan"
-
-msgid ""
-"Edges were segmented, So, now in the interection's point there is a node and "
-"the following edges share it: 13-1 13-2 18-1 18-2"
-msgstr ""
-"Bordes fueron segmentados, ahora en el punto de la interesección hay un nodo "
-"y los bordes siguientes lo comparten: 13-1 13-2-18-1 18-2"
-
-msgid ""
-"Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and "
-"18-2 into our edge-table, copying the data for dir,cost,and reverse cost "
-"with tho following steps:"
-msgstr ""
-"Ahora, vamos a incluir los segmentos 13-1, 13-2-14-1, 14-2, 18-1 y 18-2 en "
-"nuestra tabla de bordes, copiando además los datos para dir, costo y costo "
-"inverso con los siguientes los pasos:"
-
-msgid ""
-"Add a column old_id into edge_table, this column is going to keep track the "
-"id of the original edge"
-msgstr ""
-"Agregar una columna old_id en edge_table, esta columna va a seguir la pista "
-"el id del borde original"
-
-msgid "Insert only the segmented edges, that is, the ones whose max(sub_id) >1"
-msgstr ""
-"Introduzca sólo los bordes segmentados, es decir, aquellos cuyo max(sub_id) "
-"> 1"
-
-msgid "We recreate the topology:"
-msgstr "Recreamos la topología:"
-
-msgid ""
-"To get the same analysis results as the topology of edge_table_noded, we do "
-"the following query:"
-msgstr ""
-"Para obtener los mismos resultados de análisis que la topología de "
-"edge_table_noded, hacemos la siguiente consulta:"
-
-msgid ""
-"To get the same analysis results as the original edge_table, we do the "
-"following query:"
-msgstr ""
-"Para obtener los mismos resultados de análisis como el edge_table original, "
-"hacemos la siguiente consulta:"
-
-msgid ""
-"Or we can analyze everything because, maybe edge 18 is an overpass, edge 14 "
-"is an under pass and there is also a street level juction, and the same "
-"happens with edges 17 and 13."
-msgstr ""
-"O podemos analizar todo porque, tal vez edge 18 es un puente, borde 14 es un "
-"bajo paso y también hay una juntura nivel calle, y lo mismo ocurre con los "
-"bordes 17 y 13."
-
-msgid ""
-":doc:`topology-functions` for an overview of a topology for routing "
-"algorithms. :doc:`pgr_analyzeOneWay` to analyze directionality of the "
-"edges. :doc:`pgr_createTopology` to create a topology based on the "
-"geometry. :doc:`pgr_analyzeGraph` to analyze the edges and vertices of the "
-"edge table."
-msgstr ""
-":doc:`topology-functions` para obtener una visión general de una topología "
-"para algoritmos de enrutamiento. :doc:`pgr_analyzeOneWay` para analizar la "
-"direccionalidad de los bordes. :doc:`pgr_createTopology` para crear una "
-"topología basada en la geometría. :doc:`pgr_analyzeGraph` para analizar los "
-"bordes y vértices de la tabla de bordes."
+"Inspeccionar la tabla generada, podemos ver que la arista 14 ha sido "
+"segmentado."
 
 msgid "``pgr_pickDeliver`` - Experimental"
 msgstr "``pgr_pickDeliver`` - Experimental"
@@ -17596,9 +17502,6 @@ msgstr ""
 "Desde el punto :math:`1` dentro de una distancia de :math:`3.3`, sin "
 "importar el lado de manejo, detallada."
 
-msgid ":doc:`pgr_alphaShape`"
-msgstr ":doc:`pgr_alphaShape`"
-
 msgid "``pgr_withPointsKSP``"
 msgstr "``pgr_withPointsKSP``"
 
@@ -17939,25 +17842,81 @@ msgstr "pgRouting 3"
 msgid "Minors 3.x"
 msgstr ""
 
-#, fuzzy
 msgid "pgRouting 3.8"
-msgstr "pgRouting 3.7"
+msgstr "pgRouting 3.8"
 
-#, fuzzy
 msgid "pgRouting 3.8.0 Release Notes"
-msgstr "Notas de la versión de pgRouting 3.7.0"
+msgstr "Notas de la versión de pgRouting 3.8.0"
+
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.8.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
+msgstr ""
+"Para ver todos los problemas y solicitudes de extracción cerrados para ésta "
+"versión, consulte la `meta cerrada 3.8.0 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`_"
 
 msgid "Promotion to official function of pgRouting."
 msgstr "Promoción a función oficial de pgRouting."
 
-msgid "pgr_extractVertices"
-msgstr "pgr_extractVertices"
+msgid ""
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
+"pgr_extractVertices"
+msgstr ""
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
+"pgr_extractVertices"
 
-msgid "pgr_degree"
-msgstr "pgr_degree"
+msgid ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+msgstr ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
 
-msgid "pgr_findCloseEdges"
-msgstr "pgr_findCloseEdges"
+msgid ""
+"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: "
+"pgr_findCloseEdges"
+msgstr ""
+"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: "
+"pgr_findCloseEdges"
+
+msgid "Deprecation of functions."
+msgstr "Funciones obsoletas."
+
+#, fuzzy
+msgid ""
+"`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: "
+"pgr_alphaShape"
+msgstr ""
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
+"pgr_analyzeOneWay"
+
+msgid ""
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
+"pgr_analyzeOneWay"
+msgstr ""
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
+"pgr_analyzeOneWay"
+
+msgid ""
+"`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: "
+"pgr_analyzeGraph"
+msgstr ""
+"`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: "
+"pgr_analyzeGraph"
+
+msgid ""
+"`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: "
+"pgr_createTopology"
+msgstr ""
+"`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: "
+"pgr_createTopology"
+
+msgid ""
+"`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: "
+"pgr_createVerticesTable"
+msgstr ""
+"`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: "
+"pgr_createVerticesTable"
 
 msgid "Official functions changes"
 msgstr "Cambios en las funciones oficiales"
@@ -17975,13 +17934,12 @@ msgstr "Nuevas funciones propuestas"
 msgid "Contraction"
 msgstr "Contracción"
 
-#, fuzzy
 msgid ""
 "`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: "
 "pgr_contractionDeadEnd"
 msgstr ""
-"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: "
-"pgr_extractVertices a propuesto"
+"`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: "
+"pgr_contractionDeadEnd"
 
 msgid ""
 "`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: "
@@ -18098,6 +18056,9 @@ msgstr ""
 "versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
 "pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
 
+msgid "Support"
+msgstr "Soporte"
+
 msgid ""
 "`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
 "PostgreSQL12 on pgrouting v3.7"
@@ -18120,13 +18081,12 @@ msgstr "Métricas"
 msgid "pgr_betweennessCentrality"
 msgstr "pgr_betweennessCentrality"
 
-#, fuzzy
 msgid ""
 "`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standardize "
 "spanning tree functions output"
 msgstr ""
 "`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Estandarización "
-"de las salida de las funciones de árbol de expansión"
+"de resultados de las funciones de árbol de expansión"
 
 msgid "Functions:"
 msgstr "Funciones:"
@@ -18294,19 +18254,16 @@ msgstr ""
 "versión, consulte la `meta cerrada 3.6.0 <https://github.com/pgRouting/"
 "pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
 
-#, fuzzy
 msgid ""
 "`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standardize "
 "output pgr_aStar"
 msgstr ""
-"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ estandarización "
+"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Estandarización "
 "de resultados de pgr_aStar"
 
-#, fuzzy
 msgid "Standardize output columns to |short-generic-result|"
-msgstr "Estandarización de las columnas de salida a |short-generic-result|"
+msgstr "Estandard de las columnas de salida a |short-generic-result|"
 
-#, fuzzy
 msgid ""
 "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standardize "
 "output pgr_bdAstar"
@@ -18314,7 +18271,6 @@ msgstr ""
 "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Estandarización "
 "de resultados de pgr_bdAstar"
 
-#, fuzzy
 msgid ""
 "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standardize "
 "output and modifying signature pgr_KSP"
@@ -18322,7 +18278,6 @@ msgstr ""
 "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Estandarización "
 "de resultados y modificación de firmas de pgr_KSP"
 
-#, fuzzy
 msgid ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standardize "
 "output pgr_drivingDistance"
@@ -18333,7 +18288,6 @@ msgstr ""
 msgid "Proposed functions changes"
 msgstr "Cambios en funciones propuestas"
 
-#, fuzzy
 msgid ""
 "`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standardize "
 "output and modifying signature pgr_withPointsDD"
@@ -18341,7 +18295,6 @@ msgstr ""
 "`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Estandarización "
 "de resultados y modificación de firmas de pgr_withPointsDD"
 
-#, fuzzy
 msgid ""
 "`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standardize "
 "output and modifying signature pgr_withPointsKSP"
@@ -18406,13 +18359,12 @@ msgstr ""
 msgid "..rubric:: Standardize SQL"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ Standardize "
 "deprecated messages"
 msgstr ""
 "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ Estandarización "
-"de mesajes de depreciación"
+"de mensajes de depreciación"
 
 msgid ""
 "On new internal function: do not use named parameters and default parameters."
@@ -18438,6 +18390,9 @@ msgstr "Arreglos a la documentación"
 
 msgid "Changes on the documentation to the following:"
 msgstr ""
+
+msgid "pgr_degree"
+msgstr "pgr_degree"
 
 msgid "pgr_dijkstra"
 msgstr "pgr_dijkstra"
@@ -18872,6 +18827,9 @@ msgstr "pgr_dijkstraNearCost(Uno a Muchos)"
 
 msgid "pgr_sequentialVertexColoring"
 msgstr "pgr_sequentialVertexColoring"
+
+msgid "pgr_extractVertices"
+msgstr "pgr_extractVertices"
 
 msgid "Traversal"
 msgstr "Travesía"
@@ -20749,7 +20707,6 @@ msgstr "Familias de Funciones"
 msgid "Sample Data"
 msgstr "Datos Muestra"
 
-#, fuzzy
 msgid ""
 "The documentation provides very simple example queries based on a small "
 "sample network that resembles a city. To be able to execute the majority of "
@@ -20928,6 +20885,9 @@ msgstr ""
 
 msgid "Some functions accept soft restrictions about the segments."
 msgstr ""
+
+msgid "Images"
+msgstr "Imágenes"
 
 msgid "Red arrows correspond when ``cost`` > 0 in the edge table."
 msgstr ""
@@ -21203,7 +21163,6 @@ msgstr ""
 msgid "Traversal - Family of functions"
 msgstr "Traversal - Familia de funciones"
 
-#, fuzzy
 msgid "Additionally there are 2 categories under this family"
 msgstr "Adicionalmente, hay dos categorías en esta familia"
 
@@ -21220,7 +21179,6 @@ msgstr ""
 "Dado un grafo y una lista de vértices, encuentra el camino mas corto entre :"
 "math:`vertex_i` and :math:`vertex_{i+1}` para todos los vértices"
 
-#, fuzzy
 msgid ""
 "In other words, find a continuous route that visits all the vertices in the "
 "order given."
@@ -21635,3 +21593,351 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
 
+#~ msgid ":doc:`pgr_alphaShape`"
+#~ msgstr ":doc:`pgr_alphaShape`"
+
+#~ msgid "See :doc:`sampledata` for an example for building a topology."
+#~ msgstr ""
+#~ "Consulte :doc:`sampledata` para ver un ejemplo de construcción de una "
+#~ "topología."
+
+#~ msgid ""
+#~ "Use :doc:`pgr_createTopology` to create the topology and the vertices "
+#~ "table."
+#~ msgstr ""
+#~ "Use :doc:`pgr_createTopology` para crear la topología y los vértices."
+
+#, fuzzy
+#~ msgid ""
+#~ "The vertices table can be created with :doc:`pgr_createTopology "
+#~ "<pgr_createTopology>`"
+#~ msgstr ""
+#~ "Los vértices pueden ser creados con :doc:`pgr_createVerticesTable` o :doc:"
+#~ "`pgr_createTopology`"
+
+#, fuzzy
+#~ msgid ""
+#~ "It is strongly recommended to use the named notation. See :doc:"
+#~ "`pgr_createTopology` for examples."
+#~ msgstr ""
+#~ "Es ampliamente recomendable usar la notación nombrada . Ver ejemplos en: :"
+#~ "doc:`pgr_createVerticesTable` o :doc:`pgr_createTopology`."
+
+#, fuzzy
+#~ msgid "The vertices table can be created with :doc:`pgr_createTopology`"
+#~ msgstr ""
+#~ "Los vértices pueden ser creados con :doc:`pgr_createVerticesTable` o :doc:"
+#~ "`pgr_createTopology`"
+
+#~ msgid "``forbidden_vertices``"
+#~ msgstr "``forbidden_vertices``"
+
+#~ msgid "``pgr_createTopology``"
+#~ msgstr "``pgr_createTopology``"
+
+#~ msgid ""
+#~ ":doc:`pgr_createTopology` <pgr_create_topology>` to create a topology "
+#~ "based on the geometry."
+#~ msgstr ""
+#~ ":doc:`pgr_createTopology` <pgr_create_topology>` para crear una topología "
+#~ "basada en la geometría."
+
+#~ msgid "There is no flow when source has the same vaule as target."
+#~ msgstr "No hay flujo cuando el origen tiene el mismo valor que el destino."
+
+#~ msgid ""
+#~ "``integer`` Empty source column to be used with :doc:`pgr_createTopology` "
+#~ "function"
+#~ msgstr ""
+#~ "``integer`` Columna de origen vacía que se utilizará con la función :doc:"
+#~ "`pgr_createTopology`"
+
+#~ msgid ""
+#~ "``integer`` Empty target column to be used with :doc:`pgr_createTopology` "
+#~ "function"
+#~ msgstr ""
+#~ "``integer`` Columna vacía de destino que se utilizará con la función :doc:"
+#~ "`pgr_createTopology`"
+
+#~ msgid ""
+#~ ":doc:`topology-functions` for an overview of a topology for routing "
+#~ "algorithms. :doc:`pgr_createTopology` to create a topology based on the "
+#~ "geometry."
+#~ msgstr ""
+#~ ":doc:`topology-functions` para obtener una visión general de una "
+#~ "topología para algoritmos de enrutamiento. :doc:`pgr_createTopology` para "
+#~ "crear una topología basada en la geometría."
+
+#~ msgid "Use :doc:`pgr_createVerticesTable` to create the vertices table."
+#~ msgstr "Use :doc:`pgr_createVerticesTable` para crear la tabla de vértices."
+
+#~ msgid ""
+#~ "The vertices table can be created with :doc:`pgr_createVerticesTable "
+#~ "<pgr_createVerticesTable>` or :doc:`pgr_createTopology "
+#~ "<pgr_createTopology>`"
+#~ msgstr ""
+#~ "Los vértices pueden ser creados con :doc:`pgr_createVerticesTable "
+#~ "<pgr_createVerticesTable>` o :doc:`pgr_createTopology "
+#~ "<pgr_createTopology>`"
+
+#~ msgid ":doc:`pgr_createVerticesTable`"
+#~ msgstr ":doc:`pgr_createVerticesTable`"
+
+#~ msgid "``pgr_createVerticesTable``"
+#~ msgstr "``pgr_createVerticesTable``"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en edge_table que hacen referencia a este "
+#~ "vértice como entrante. Consulte :doc:"
+#~ "`pgr_analyzeOneWay<pgr_analyzeOneWay>`."
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en edge_table que hacen referencia a este "
+#~ "vértice como saliente. Consulte :doc:`pgr_analyzeOneWay "
+#~ "<pgr_analyzeOneWay>`."
+
+#~ msgid "``pgr_analyzeOneWay``"
+#~ msgstr "``pgr_analyzeOneWay``"
+
+#, fuzzy
+#~ msgid ""
+#~ "The vertices table is a requirement of the :doc:`pgr_analyzeOneWay` "
+#~ "functions."
+#~ msgstr ""
+#~ "La tabla de vértices es un requerimiento de las funciones :doc:"
+#~ "`pgr_analyzeGraph` y :doc:`pgr_analyzeOneWay`."
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex AS incoming. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en edge_table que referencian a este "
+#~ "vértice como (AS) entrante. Ver :doc:`pgr_analyzeOneWay "
+#~ "<pgr_analyzeOneWay>`."
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex AS outgoing. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en edge_table que referencian este vértice "
+#~ "como (AS) saliente. Ver :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as incoming. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en edge_table que hacen referencia a este "
+#~ "vértice como entrante. Consulte :doc:`pgr_analyzeOneWay`."
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as outgoing. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en el edge_table que hacen referencia a "
+#~ "este vértice como saliente. Consulte :doc:`pgr_analyzeOneWay`."
+
+#~ msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
+#~ msgstr ""
+#~ ":doc:`pgr_analyzeOneWay` para analizar la direccionalidad de los bordes."
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex. See :doc:`pgr_analyzeGgraph <pgr_analyzeGraph>`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en edge_table que hacen referencia a este "
+#~ "vértice. Consulte :doc:`pgr_analyzeGgraph <pgr_analyzeGraph>`."
+
+#~ msgid ""
+#~ "``integer`` Indicator that the vertex might have a problem. See :doc:"
+#~ "`pgr_analyzeGraph <pgr_analyzeGraph>`."
+#~ msgstr ""
+#~ "``integer`` Indicador de que el vértice podría tener un problema. "
+#~ "Consulte :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`."
+
+#~ msgid ":doc:`pgr_analyzeGraph`"
+#~ msgstr ":doc:`pgr_analyzeGraph`"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex. See :doc:`pgr_analyzeGraph`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en la edge_table que referencian este "
+#~ "vértice. Ver :doc:`pgr_analyzeGraph`."
+
+#~ msgid ""
+#~ "``integer`` Indicator that the vertex might have a problem. See :doc:"
+#~ "`pgr_analyzeGraph`."
+#~ msgstr ""
+#~ "``integer`` Indicador de que el vértice puede tener un problema. Véase :"
+#~ "doc:`pgr_analyzeGraph`."
+
+#~ msgid ""
+#~ ":doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge "
+#~ "table."
+#~ msgstr ""
+#~ ":doc:`pgr_analyzeGraph` para analizar los bordes y vértices de la tabla "
+#~ "de bordes."
+
+#~ msgid "We can create the topology of the new network"
+#~ msgstr "Podemos crear la topología de la nueva red"
+
+#~ msgid "Now let's analyze the new topology"
+#~ msgstr "Ahora analicemos la nueva topología"
+
+#~ msgid "Before Image"
+#~ msgstr "Imágen del Antes"
+
+#~ msgid "Before image"
+#~ msgstr "Imágen del antes"
+
+#~ msgid "After Image"
+#~ msgstr "Imágen del Después"
+
+#~ msgid "After image"
+#~ msgstr "Imágen del después"
+
+#~ msgid "Comparing the results"
+#~ msgstr "Comparando los resultados"
+
+#~ msgid "Comparing with the Analysis in the original edge_table, we see that."
+#~ msgstr "Comparando con el análisis del edge_table original, vemos que."
+
+#~ msgid "Before"
+#~ msgstr "Antes de"
+
+#~ msgid "After"
+#~ msgstr "Después de"
+
+#~ msgid "Table name"
+#~ msgstr "Nombre de la tabla"
+
+#~ msgid "edge_table_noded"
+#~ msgstr "edge_table_noded"
+
+#~ msgid "Fields"
+#~ msgstr "Campos"
+
+#~ msgid "Has only basic fields to do a topology analysis"
+#~ msgstr "Tiene solamente campos básicos para hacer un análisis de topología"
+
+#~ msgid "Edges with 1 dead end: 1,6,24"
+#~ msgstr "Los bordes con 1 callejón sin salida: 1,6,24"
+
+#~ msgid "Edges with 2 dead ends: 17,18"
+#~ msgstr "Aristas con 2 callejones sin salida: 17,18"
+
+#~ msgid ""
+#~ "Edge 17's right node is a dead end because there is no other edge sharing "
+#~ "that same node. (cnt=1)"
+#~ msgstr ""
+#~ "Nodo derecho borde de 17 es un callejón sin salida porque no hay ningún "
+#~ "otro borde que comparta ese mismo nodo. (cnt = 1)"
+
+#~ msgid "Edges with 1 dead end: 1-1 ,6-1,14-2, 18-1 17-1 18-2"
+#~ msgstr "Los bordes con 1 callejón sin salida: 1-1, 6-1,14-2, 18-1-17-1 18-2"
+
+#~ msgid "Isolated segments"
+#~ msgstr "Segmentos aislados"
+
+#~ msgid "two isolated segments: 17 and 18 both they have 2 dead ends"
+#~ msgstr ""
+#~ "dos segmentos aislados: 17 y 18 ambos tienen 2 callejones sin salida"
+
+#~ msgid "No Isolated segments"
+#~ msgstr "Segmentos no aislados"
+
+#~ msgid "Edge 17 now shares a node with edges 14-1 and 14-2"
+#~ msgstr "Borde 17 ahora comparte un nodo con bordes 14-1 y 14-2"
+
+#~ msgid "Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2"
+#~ msgstr "Bordes 18-1 y 18-2 compartir un nodo con bordes 13-1 y 13-2"
+
+#~ msgid "Gaps"
+#~ msgstr "Espacios"
+
+#~ msgid ""
+#~ "There is a gap between edge 17 and 14 because edge 14 is near to the "
+#~ "right node of edge 17"
+#~ msgstr ""
+#~ "Existe un espacio entre la arista 17 y la 14 porque la arista 14 está "
+#~ "cerca del nodo derecho a la arista 17"
+
+#~ msgid ""
+#~ "Edge 14 was segmented Now edges: 14-1 14-2 17 share the same node The "
+#~ "tolerance value was taken in account"
+#~ msgstr ""
+#~ "Borde 14 fue segmentado ahora bordes: 14-1 14-2 17 comparten el mismo "
+#~ "nodo, el valor de tolerancia fue tomado en cuenta"
+
+#~ msgid "Intersections"
+#~ msgstr "Intersecciones"
+
+#~ msgid "Edges 13 and 18 were intersecting"
+#~ msgstr "Bordes 13 y 18 años se intersectan"
+
+#~ msgid ""
+#~ "Edges were segmented, So, now in the interection's point there is a node "
+#~ "and the following edges share it: 13-1 13-2 18-1 18-2"
+#~ msgstr ""
+#~ "Bordes fueron segmentados, ahora en el punto de la interesección hay un "
+#~ "nodo y los bordes siguientes lo comparten: 13-1 13-2-18-1 18-2"
+
+#~ msgid ""
+#~ "Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and "
+#~ "18-2 into our edge-table, copying the data for dir,cost,and reverse cost "
+#~ "with tho following steps:"
+#~ msgstr ""
+#~ "Ahora, vamos a incluir los segmentos 13-1, 13-2-14-1, 14-2, 18-1 y 18-2 "
+#~ "en nuestra tabla de bordes, copiando además los datos para dir, costo y "
+#~ "costo inverso con los siguientes los pasos:"
+
+#~ msgid ""
+#~ "Add a column old_id into edge_table, this column is going to keep track "
+#~ "the id of the original edge"
+#~ msgstr ""
+#~ "Agregar una columna old_id en edge_table, esta columna va a seguir la "
+#~ "pista el id del borde original"
+
+#~ msgid ""
+#~ "Insert only the segmented edges, that is, the ones whose max(sub_id) >1"
+#~ msgstr ""
+#~ "Introduzca sólo los bordes segmentados, es decir, aquellos cuyo "
+#~ "max(sub_id) > 1"
+
+#~ msgid "We recreate the topology:"
+#~ msgstr "Recreamos la topología:"
+
+#~ msgid ""
+#~ "To get the same analysis results as the topology of edge_table_noded, we "
+#~ "do the following query:"
+#~ msgstr ""
+#~ "Para obtener los mismos resultados de análisis que la topología de "
+#~ "edge_table_noded, hacemos la siguiente consulta:"
+
+#~ msgid ""
+#~ "To get the same analysis results as the original edge_table, we do the "
+#~ "following query:"
+#~ msgstr ""
+#~ "Para obtener los mismos resultados de análisis como el edge_table "
+#~ "original, hacemos la siguiente consulta:"
+
+#~ msgid ""
+#~ "Or we can analyze everything because, maybe edge 18 is an overpass, edge "
+#~ "14 is an under pass and there is also a street level juction, and the "
+#~ "same happens with edges 17 and 13."
+#~ msgstr ""
+#~ "O podemos analizar todo porque, tal vez edge 18 es un puente, borde 14 es "
+#~ "un bajo paso y también hay una juntura nivel calle, y lo mismo ocurre con "
+#~ "los bordes 17 y 13."
+
+#~ msgid "pgr_findCloseEdges"
+#~ msgstr "pgr_findCloseEdges"
+
+#~ msgid "**options:** ``[directed, max_cycles, forbidden_vertices]``"
+#~ msgstr "**opciones:** ``[directed, forbidden_vertices]``"

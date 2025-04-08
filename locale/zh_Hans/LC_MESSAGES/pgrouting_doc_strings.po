@@ -2,17 +2,17 @@
 # Copyright (C) pgRouting Contributors - Version v3.8
 # This file is distributed under the same license as the pgRouting package.
 # Regina Obe <regina@arrival3d.com>, 2023.
-# Wangdapeng <wangdapeng20191008@gmail.com>, 2023.
+# Wangdapeng <wangdapeng20191008@gmail.com>, 2023, 2025.
 # Zuochenwei <zuochenwei5@gmail.com>, 2023, 2024.
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024.
 # Wang Dapeng <wangdapeng20191008@gmail.com>, 2023.
-# DeepL <noreply-mt-deepl@weblate.org>, 2024.
+# DeepL <noreply-mt-deepl@weblate.org>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24 14:17+0000\n"
-"PO-Revision-Date: 2024-10-10 19:47+0000\n"
+"POT-Creation-Date: 2025-04-08 20:49+0000\n"
+"PO-Revision-Date: 2025-04-03 09:47+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -415,9 +415,8 @@ msgstr "文档（如果有）可能需要重写。"
 msgid "Documentation examples might need to be automatically generated."
 msgstr "可能需要自动生成文档示例。"
 
-#, fuzzy
 msgid "Might need a lot of feedback from the community."
-msgstr "可能需要社区的大量反馈。"
+msgstr "需要从社区获取大量反馈意见。"
 
 msgid "Might depend on a proposed function of pgRouting"
 msgstr "可能取决于 pgRouting 的拟议功能"
@@ -681,12 +680,11 @@ msgstr "当 ``NOT 0`` 且 ``start_id = 0`` 时，它是第一个和最后一个�
 msgid "References"
 msgstr "参考"
 
-#, fuzzy
 msgid ""
 "`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/"
 "metric_tsp_approx.html>`__"
 msgstr ""
-"`Boost 的 metric appro 的 metric 近似 <https://www.boost.org/libs/graph/doc/"
+"`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/"
 "metric_tsp_approx.html>`__"
 
 msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
@@ -701,9 +699,8 @@ msgstr ""
 "`维基百科：旅行商问题 <https://en.wikipedia.org/wiki/"
 "Traveling_salesman_problem>`__"
 
-#, fuzzy
 msgid "Vehicle Routing Functions - Category"
-msgstr "车辆路由功能 - 类别（实验）"
+msgstr "车辆路径规划函数 - 分类"
 
 msgid "Pickup and delivery problem"
 msgstr "取货和送货问题"
@@ -1843,10 +1840,10 @@ msgstr ""
 msgid ":doc:`bdAstar-family`"
 msgstr ":doc:`bdAstar-family`"
 
-#, fuzzy
 msgid ""
 "`Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__"
-msgstr "https://www.boost.org/libs/graph/doc/astar_search.html"
+msgstr ""
+"`Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/A*_search_algorithm"
 msgstr "https://en.wikipedia.org/wiki/A*_search_algorithm"
@@ -2661,9 +2658,8 @@ msgid ""
 "ending vertex:"
 msgstr "对于起始顶点和结束顶点之间存在路径的大型图:"
 
-#, fuzzy
 msgid "It is expected to terminate faster than pgr_aStar"
-msgstr "预计终止速度比 pgr_astar 更快"
+msgstr "预计其执行速度将快于 pgr_aStar 函数"
 
 msgid ":doc:`aStar-family`"
 msgstr ":doc:`aStar-family`"
@@ -2811,10 +2807,10 @@ msgstr "``edge_id``"
 msgid "Identifier of the color of the edge."
 msgstr "边颜色的标识符。"
 
-#, fuzzy
 msgid ""
 "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
-msgstr "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
+msgstr ""
+"`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
 
 msgid "Components - Family of functions"
 msgstr "分量 - 函数族"
@@ -2849,9 +2845,8 @@ msgstr "收缩 - 函数族"
 msgid ":doc:`pgr_contraction`"
 msgstr ":doc:`pgr_contraction`"
 
-#, fuzzy
 msgid ":doc:`pgr_contractionDeadEnd`"
-msgstr ":doc:`pgr_contraction`"
+msgstr ":doc:`pgr_contractionDeadEnd`"
 
 msgid ""
 "In large graphs, like the road graphs, or electric networks, graph "
@@ -3145,9 +3140,8 @@ msgid ""
 "paths."
 msgstr ":doc:`pgr_KSP` - 使用 Yen 算法和 pgr_dijkstra 来获得 K 条最短路径。"
 
-#, fuzzy
 msgid ":doc:`pgr_dijkstraVia` - Get a route of a sequence of vertices."
-msgstr ":doc:`pgr_dijkstraVia` - 获取一系列顶点的路径。"
+msgstr ":doc:`pgr_dijkstraVia` - 获取经过一系列顶点的路径。"
 
 msgid ":doc:`pgr_dijkstraNear` - Get the route to the nearest vertex."
 msgstr ":doc:`pgr_dijkstraNear` - 获取到最近顶点的路线。"
@@ -3267,9 +3261,8 @@ msgstr ""
 msgid "Undirected graph"
 msgstr "无向图"
 
-#, fuzzy
 msgid "The weighted undirected graph, :math:`G_u(V,E)`, is defined by:"
-msgstr "加权无向图， :math:`G_u(V,E)` 的定义如下："
+msgstr "加权无向图 :math:`G_u(V,E)` 的定义如下："
 
 msgid ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
 msgstr ""
@@ -3554,9 +3547,8 @@ msgstr "类别"
 msgid ":doc:`VRP-category`"
 msgstr ":doc:`VRP-category`"
 
-#, fuzzy
 msgid "Shortest Path Category"
-msgstr "K最短路径 - 类别"
+msgstr "最短路径算法分类"
 
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ":doc:`pgr_bellmanFord`"
@@ -3567,15 +3559,14 @@ msgstr ":doc:`pgr_dagShortestPath`"
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ":doc:`pgr_edwardMoore`"
 
-#, fuzzy
 msgid "Planar Family"
-msgstr "aStar族"
+msgstr "平面图算法族"
 
 msgid ":doc:`pgr_isPlanar`"
 msgstr ":doc:`pgr_isPlanar`"
 
 msgid "Miscellaneous Algorithms"
-msgstr ""
+msgstr "其他算法"
 
 msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
@@ -3639,9 +3630,8 @@ msgid ""
 "returned."
 msgstr "当最大流量为0时则没有流量并返回 **EMPTY SET** 。"
 
-#, fuzzy
 msgid "There is no flow when source has the same value as target."
-msgstr "当 source与 target相同时，没有流量。"
+msgstr "源点与目标点相同时无流通过。"
 
 msgid "Any duplicated values in source or target are ignored."
 msgstr "source或target 中的任何重复值都将被忽略。"
@@ -3960,11 +3950,10 @@ msgstr ":doc:`pgr_kruskal`"
 msgid ":doc:`pgr_kruskalDD`"
 msgstr ":doc:`pgr_kruskalDD`"
 
-#, fuzzy
 msgid ""
 ":doc:`pgr_degree` - Returns a set of vertices and corresponding count of "
 "incident edges to the vertex."
-msgstr ":doc:`pgr_degree` -返回一组顶点以及该顶点对应的关联边数。"
+msgstr ":doc:`pgr_degree` - 返回顶点集及其关联边数统计。"
 
 msgid ":doc:`prim-family`"
 msgstr ":doc:`prim-family`"
@@ -4020,9 +4009,8 @@ msgstr ":doc:`pgr_extractVertices` - 根据边表信息提取顶点信息。"
 msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
 msgstr ":doc:`pgr_trsp` - 转弯限制最短路径 (TRSP)"
 
-#, fuzzy
 msgid "Utilities family"
-msgstr "实用程序"
+msgstr "实用工具函数集"
 
 msgid ":doc:`pgr_findCloseEdges`"
 msgstr ":doc:`pgr_findCloseEdges`"
@@ -4042,9 +4030,8 @@ msgstr ":doc:`drivingDistance-category`"
 msgid ":doc:`KSP-category`"
 msgstr ":doc:`KSP-category`"
 
-#, fuzzy
 msgid ":doc:`spanningTree-category`"
-msgstr ":doc:`spanningTree-family`"
+msgstr ":doc:`spanningTree-category`"
 
 msgid ":doc:`BFS-category`"
 msgstr ":doc:`BFS-category`"
@@ -4067,19 +4054,17 @@ msgstr ":doc:`release_notes`"
 msgid "pgRouting 4.0.0 Release Notes"
 msgstr "pgRouting 4.0.0 发布说明"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.0 "
+"查看本版本已关闭的所有议题和拉取请求,请访问：`GitHub 4.0.0版本里程碑关闭列表 "
 "<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
-#, fuzzy
 msgid "Functions promoted to official"
-msgstr "实验性的功能被提升为提议的。"
+msgstr "正式版功能函数"
 
 msgid "pgr_trsp"
 msgstr "pgr_trsp"
@@ -4112,7 +4097,7 @@ msgid "pgr_withPointsVia"
 msgstr "pgr_withPointsVia"
 
 msgid "Signatures promoted to official"
-msgstr ""
+msgstr "正式版函数签名"
 
 msgid "pgr_aStar(Combinations)"
 msgstr "pgr_aStar(组合)"
@@ -4138,9 +4123,8 @@ msgstr "pgr_dijkstra(组合)"
 msgid "pgr_dijkstraCost(Combinations)"
 msgstr "pgr_dijkstraCost(组合)"
 
-#, fuzzy
 msgid "pgr_KSP(All signatures)"
-msgstr "TSP 旧签名"
+msgstr "pgr_KSP（所有函数签名版本）"
 
 msgid "pgr_boykovKolmogorov(Combinations)"
 msgstr "pgr_boykovKolmogorov (组合)"
@@ -4158,11 +4142,14 @@ msgid "code enhancements:"
 msgstr "代码改进："
 
 msgid "Removal of unused C/C++ code"
-msgstr ""
+msgstr "移除未使用的C/C++代码"
+
+msgid "Removal of SQL deprecated functions"
+msgstr "移除已弃用的SQL函数"
 
 #, fuzzy
-msgid "Removal of SQL deprecated functions"
-msgstr "移除已弃用的函数和签名"
+msgid "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+msgstr "_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
 
 msgid ""
 "pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
@@ -4182,9 +4169,8 @@ msgstr ""
 msgid "pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
 msgstr "pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
 
-#, fuzzy
 msgid "Removal of SQL deprecated internal functions"
-msgstr "移除已弃用的函数和签名"
+msgstr "移除已弃用的SQL内部函数"
 
 msgid "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
 msgstr "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
@@ -4244,9 +4230,8 @@ msgstr "_v4trsp(text,text,anyarray,anyarray,boolean)"
 msgid "_v4trsp(text,text,text,boolean)"
 msgstr "_v4trsp(text,text,text,boolean)"
 
-#, fuzzy
 msgid "Deprecation of internal C/C++ functions"
-msgstr "已废弃的函数"
+msgstr "弃用内部C/C++函数"
 
 #, fuzzy
 msgid "Internal C/C++ functions in legacy"
@@ -4289,8 +4274,284 @@ msgstr "多个函数的签名发生了变化，和/或已被新函数取代。"
 msgid "Results can be different because of the changes."
 msgstr "结果可能会因变化而不同。"
 
-msgid "All deprecated functions will be removed on next mayor version 4.0.0"
+#, fuzzy
+msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr "所有已弃用的函数将在下一个主要版本 4.0.0 中被移除"
+
+#, fuzzy
+msgid "Migration of ``pgr_alphaShape``"
+msgstr "``pgr_aStar`` 迁移"
+
+#, fuzzy
+msgid ""
+"Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
+msgstr "开始从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__"
+
+msgid "**Before Deprecation:** The following was calculated:"
+msgstr ""
+
+msgid "An alphaShape was calculated"
+msgstr ""
+
+#, fuzzy
+msgid "**After Deprecation:**"
+msgstr "迁移后"
+
+msgid "PostGIS has two ways of generating alphaShape."
+msgstr ""
+
+msgid "If you have SFCGAL, which you can install using"
+msgstr ""
+
+msgid ""
+"Since PostGIS 3.5+ use `CG_AlphaShape <https://postgis.net/docs/"
+"CG_AlphaShape.html>`__"
+msgstr ""
+
+msgid "For PostGIS 3.5+ use the old name ``ST_AlphaShape``"
+msgstr ""
+
+msgid ""
+"Other PostGIS options are * `ST_ConvexHull <https://postgis.net/docs/"
+"ST_ConvexHull.html>`__ * `ST_ConcaveHull <https://postgis.net/docs/"
+"ST_ConcaveHull.html>`__"
+msgstr ""
+
+#, fuzzy
+msgid "Migration of ``pgr_createTopology``"
+msgstr "迁移 ``pgr_trspViaVertices``"
+
+msgid "A table with `<edges>_vertices_pgr` was created."
+msgstr ""
+
+msgid ""
+"**After Deprecation:** The user is responsible to create the complete "
+"topology."
+msgstr ""
+
+msgid "Build a routing topology"
+msgstr "构建路由拓扑"
+
+msgid ""
+"The basic information to use the majority of the pgRouting functions ``id, "
+"source, target, cost, [reverse_cost]`` is what in pgRouting is called the "
+"routing topology."
+msgstr ""
+"使用大多数 pgRouting 函数的基本信息``id, source, target, cost, "
+"[reverse_cost]`` 在 pgRouting 中被称为路由拓扑。"
+
+msgid ""
+"``reverse_cost`` is optional but strongly recommended to have in order to "
+"reduce the size of the database due to the size of the geometry columns. "
+"Having said that, in this documentation ``reverse_cost`` is used in this "
+"documentation."
+msgstr ""
+"``reverse_cost`` 是可选的，但强烈建议使用，以便由于几何列的大小而减小数据库的"
+"大小。 话虽如此，在本文档中使用了 ``reverse_cost``。"
+
+msgid ""
+"When the data comes with geometries and there is no routing topology, then "
+"this step is needed."
+msgstr "当数据带有几何图形并且没有路由拓扑时，则需要此步骤。"
+
+msgid ""
+"All the start and end vertices of the geometries need an identifier that is "
+"to be stored in a ``source`` and ``target`` columns of the table of the "
+"data. Likewise, ``cost`` and ``reverse_cost`` need to have the value of "
+"traversing the edge in both directions."
+msgstr ""
+"几何图的所有开始和结束顶点都需要一个标识符，该标识符将存储在数据表的"
+"``source``列和``target``列中。 同样，``cost`` 和 ``reverse_cost`` 需要具有在"
+"两个方向上遍历边的值。"
+
+msgid ""
+"If the columns do not exist they need to be added to the table in question. "
+"(see `ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable."
+"html>`__)"
+msgstr ""
+"如果这些列不存在，则需要将它们添加到相关表中。 （参见`ALTER TABLE <https://"
+"www.postgresql.org/docs/current/sql-altertable.html>`__ ）"
+
+msgid ""
+"The function :doc:`pgr_extractVertices` is used to create a vertices table "
+"based on the edge identifier and the geometry of the edge of the graph."
+msgstr ""
+"函数 :doc:`pgr_extractVertices` 用于根据边标识符和图边的几何形状创建顶点表。"
+
+msgid ""
+"Finally using the data stored on the vertices tables the ``source`` and "
+"``target`` are filled up."
+msgstr "最后使用存储在顶点表上的数据填充 ``source`` 和``target``。"
+
+#, fuzzy
+msgid "Migration of ``pgr_createVerticesTable``"
+msgstr "迁移 ``pgr_trspViaVertices``"
+
+msgid ""
+"**After Deprecation:** The user is responsible to create the vertices table, "
+"indexes, etc. They may use :doc:`pgr_extractVertices` for that purpose."
+msgstr ""
+
+#, fuzzy
+msgid "Migration of ``pgr_analyzeOneWay``"
+msgstr "``pgr_aStar`` 迁移"
+
+msgid "Number of potential problems in directionality"
+msgstr ""
+
+msgid "WHERE"
+msgstr ""
+
+msgid "Directionality problems were calculated based on codes."
+msgstr ""
+
+#, fuzzy
+msgid "Dead ends."
+msgstr "死端"
+
+msgid ""
+"A routing problem can arise when from a vertex there is only a way on or a "
+"way out but not both:"
+msgstr ""
+
+msgid ""
+"Either saving or using directly :doc:`pgr_extractVertices` get the dead ends "
+"information and determine if the adjacent edge is one way or not."
+msgstr ""
+
+msgid "In this example :doc:`pgr_extractVertices` has already been applied."
+msgstr ""
+
+#, fuzzy
+msgid "Bridges."
+msgstr "pgr_bridges"
+
+#, fuzzy
+msgid ""
+"Another routing problem can arise when there is an edge of an undirected "
+"graph whose deletion increases its number of connected components, and the "
+"bridge is only one way."
+msgstr ""
+"桥是指一个无向图中的边，如果删除它会增加该图的连通分量数量。此实现仅适用于无"
+"向图。"
+
+msgid "To determine if the bridges are or not one way."
+msgstr ""
+
+#, fuzzy
+msgid "Migration of ``pgr_analyzeGraph``"
+msgstr "``pgr_aStar`` 迁移"
+
+#, fuzzy
+msgid "Number of isolated segments."
+msgstr "无孤立段"
+
+#, fuzzy
+msgid "Number of dead ends."
+msgstr "所需路径的数量。"
+
+msgid "Number of potential gaps found near dead ends."
+msgstr ""
+
+#, fuzzy
+msgid "Number of intersections. (between 2 edges)"
+msgstr "订单中的单位数量"
+
+#, fuzzy
+msgid "Graph component"
+msgstr "检查组件"
+
+#, fuzzy
+msgid "A connected subgraph that is not part of any larger connected subgraph."
+msgstr "当 ``true`` 时，顶点收缩，它不是收缩图的一部分。"
+
+#, fuzzy
+msgid "Isolated segment"
+msgstr "孤立的片段"
+
+msgid "A graph component with only one segment."
+msgstr ""
+
+msgid "Dead ends"
+msgstr "死端"
+
+msgid "A vertex that participates in only one edge."
+msgstr ""
+
+msgid "gaps"
+msgstr ""
+
+#, fuzzy
+msgid "Space between two geometries."
+msgstr "几何图形之间的最大距离"
+
+#, fuzzy
+msgid "Intersection"
+msgstr "交叉口"
+
+msgid "Is a topological relationship between two geometries."
+msgstr ""
+
+#, fuzzy
+msgid "Migration."
+msgstr "迁移"
+
+#, fuzzy
+msgid "Components."
+msgstr "内容"
+
+msgid ""
+"Instead of counting only isolated segments, determine all the components of "
+"the graph."
+msgstr ""
+
+msgid "Depending of the final application requirements use:"
+msgstr ""
+
+#, fuzzy
+msgid ":doc:`pgr_connectedComponents`"
+msgstr "使用 :doc:`pgr_connectedComponents`"
+
+#, fuzzy
+msgid ":doc:`pgr_strongComponents`"
+msgstr "``pgr_strongComponents``"
+
+#, fuzzy
+msgid ":doc:`pgr_biconnectedComponents`"
+msgstr "``pgr_biconnectedComponents``"
+
+#, fuzzy
+msgid "For example:"
+msgstr "示例"
+
+msgid ""
+"Instead of counting the dead ends, determine all the dead ends of the graph "
+"using :doc:`pgr_degree`."
+msgstr ""
+
+msgid "Potential gaps near dead ends."
+msgstr ""
+
+msgid ""
+"Instead of counting potential gaps between geometries, determine the "
+"geometric gaps in the graph using :doc:`pgr_findCloseEdges`."
+msgstr ""
+
+#, fuzzy
+msgid "Topological relationships."
+msgstr "对图进行拓扑排序"
+
+msgid ""
+"Instead of counting intersections, determine topological relationships "
+"between geometries."
+msgstr ""
+
+msgid ""
+"Several PostGIS functions can be used: `ST_Intersects <https://postgis.net/"
+"docs/ST_Intersects.html>`__, `ST_Crosses <https://postgis.net/docs/"
+"ST_Crosses.html>`__, `ST_Overlaps <https://postgis.net/docs/ST_Overlaps."
+"html>`__, etc."
+msgstr ""
 
 msgid "Migration of ``pgr_aStar``"
 msgstr "``pgr_aStar`` 迁移"
@@ -4965,7 +5226,7 @@ msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
 msgstr "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
 
 msgid "Removed"
-msgstr ""
+msgstr "已删除的功能"
 
 msgid "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
 msgstr "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
@@ -5729,63 +5990,6 @@ msgstr ""
 "请查阅`PostgreSQL <https://www.postgresql.org/docs/>`__ 文档和 `PostGIS "
 "<https://postgis.net/>`__ 文档。"
 
-msgid "Build a routing topology"
-msgstr "构建路由拓扑"
-
-msgid ""
-"The basic information to use the majority of the pgRouting functions ``id, "
-"source, target, cost, [reverse_cost]`` is what in pgRouting is called the "
-"routing topology."
-msgstr ""
-"使用大多数 pgRouting 函数的基本信息``id, source, target, cost, "
-"[reverse_cost]`` 在 pgRouting 中被称为路由拓扑。"
-
-msgid ""
-"``reverse_cost`` is optional but strongly recommended to have in order to "
-"reduce the size of the database due to the size of the geometry columns. "
-"Having said that, in this documentation ``reverse_cost`` is used in this "
-"documentation."
-msgstr ""
-"``reverse_cost`` 是可选的，但强烈建议使用，以便由于几何列的大小而减小数据库的"
-"大小。 话虽如此，在本文档中使用了 ``reverse_cost``。"
-
-msgid ""
-"When the data comes with geometries and there is no routing topology, then "
-"this step is needed."
-msgstr "当数据带有几何图形并且没有路由拓扑时，则需要此步骤。"
-
-msgid ""
-"All the start and end vertices of the geometries need an identifier that is "
-"to be stored in a ``source`` and ``target`` columns of the table of the "
-"data. Likewise, ``cost`` and ``reverse_cost`` need to have the value of "
-"traversing the edge in both directions."
-msgstr ""
-"几何图的所有开始和结束顶点都需要一个标识符，该标识符将存储在数据表的"
-"``source``列和``target``列中。 同样，``cost`` 和 ``reverse_cost`` 需要具有在"
-"两个方向上遍历边的值。"
-
-msgid ""
-"If the columns do not exist they need to be added to the table in question. "
-"(see `ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable."
-"html>`__)"
-msgstr ""
-"如果这些列不存在，则需要将它们添加到相关表中。 （参见`ALTER TABLE <https://"
-"www.postgresql.org/docs/current/sql-altertable.html>`__ ）"
-
-msgid ""
-"The function :doc:`pgr_extractVertices` is used to create a vertices table "
-"based on the edge identifier and the geometry of the edge of the graph."
-msgstr ""
-"函数 :doc:`pgr_extractVertices` 用于根据边标识符和图边的几何形状创建顶点表。"
-
-msgid ""
-"Finally using the data stored on the vertices tables the ``source`` and "
-"``target`` are filled up."
-msgstr "最后使用存储在顶点表上的数据填充 ``source`` 和``target``。"
-
-msgid "See :doc:`sampledata` for an example for building a topology."
-msgstr "有关构建拓扑的示例，请参阅 :doc:`sampledata`。"
-
 msgid ""
 "Data coming from OSM and using `osm2pgrouting <https://github.com/pgRouting/"
 "osm2pgrouting>`__ as an import tool, comes with the routing topology. See an "
@@ -6121,36 +6325,33 @@ msgstr ""
 "有关如何收缩以及如何使用收缩图的完整方法在 :doc:`contraction-family` 中进行了"
 "描述"
 
-msgid "Dead ends"
-msgstr "死端"
-
 msgid "To get the dead ends:"
 msgstr "获取死端："
 
 msgid "A dead end happens when"
-msgstr ""
+msgstr "死端（Dead End）的形成条件"
 
 msgid ""
 "The vertex is the limit of a cul-de-sac, a no-through road or a no-exit road."
-msgstr ""
+msgstr "死端顶点（Dead End Vertex）的拓扑定义。"
 
 #, fuzzy
 msgid "The vertex is on the limit of the imported graph."
 msgstr "当 ``true`` 时，顶点收缩，它不是收缩图的一部分。"
 
 msgid "If a larger graph is imported then the vertex might not be a dead end"
-msgstr ""
+msgstr "如果导入了更大的图，则该顶点可能不会是死端"
 
 msgid ""
 "Node :math:`4`, is a dead end on the query, even that it visually looks like "
 "an end point of 3 edges."
-msgstr ""
+msgstr "节点 :math:`4` 在查询中是一个死端，即使从视觉上看它是三条边的终点。"
 
 msgid "Is node :math:`4` a dead end or not?"
-msgstr ""
+msgstr "节点 :math:`4` 是死端还是非死端？"
 
 msgid "The answer to that question will depend on the application."
-msgstr ""
+msgstr "这个问题的答案将取决于应用情况。"
 
 msgid "Is there such a small curb:"
 msgstr "有这么小的路边吗："
@@ -6195,6 +6396,8 @@ msgid ""
 "These linear vertices are correct, for example, when those the vertices are "
 "speed bumps, stop signals and the application is taking them into account."
 msgstr ""
+"当这些顶点表示减速带、停止信号，并且应用程序将其纳入考虑时，这些线性顶点是正"
+"确的。"
 
 #, fuzzy
 msgid ""
@@ -7392,7 +7595,7 @@ msgid "Version 4.0.0"
 msgstr "版本2.0.0"
 
 msgid "All signatures promoted to official."
-msgstr ""
+msgstr "所有签名均已升级为正式版本。"
 
 msgid "Version 3.6.0"
 msgstr "版本3.6.0"
@@ -7935,7 +8138,7 @@ msgid "``pgr_aStar`` — Shortest path using the A* algorithm."
 msgstr "``pgr_aStar`` —使用 A* 算法的最短路径。"
 
 msgid "Combinations signature promoted to official."
-msgstr ""
+msgstr "组合签名已升级为正式版本。"
 
 msgid "Standarizing output columns to |short-generic-result|"
 msgstr "标准输出列|short-generic-result|"
@@ -7958,7 +8161,7 @@ msgid "New proposed signature:"
 msgstr "新拟议的签名："
 
 msgid "Function promoted to official."
-msgstr ""
+msgstr "函数正式发布。"
 
 msgid "Version 2.4.0"
 msgstr "版本2.4.0"
@@ -8166,6 +8369,14 @@ msgstr "``pgr_alphaShape``"
 msgid "``pgr_alphaShape`` — Polygon part of an alpha shape."
 msgstr "``pgr_alphaShape`` — Alpha 形状的多边形部分。"
 
+#, fuzzy
+msgid "Version 3.8.0"
+msgstr "版本3.6.0"
+
+#, fuzzy
+msgid "Deprecated function."
+msgstr "已废弃的功能"
+
 msgid "Breaking change on signature"
 msgstr "签名的重大更改"
 
@@ -8186,9 +8397,6 @@ msgstr "支持返回多个外/内圈"
 
 msgid "Renamed from version 1.x"
 msgstr "从版本1.X重命名"
-
-msgid "Support"
-msgstr "支持"
 
 msgid "Returns the polygon part of an alpha shape."
 msgstr "返回 alpha 形状的多边形部分。"
@@ -8264,7 +8472,8 @@ msgstr ":doc:`pgr_drivingDistance`"
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 msgstr "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 
-msgid "``pgr_analyzeGraph``"
+#, fuzzy
+msgid "``pgr_analyzeGraph`` -- Deprecated since 3.8.0"
 msgstr "``pgr_analyzeGraph``"
 
 msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
@@ -8299,13 +8508,6 @@ msgid ""
 msgstr ""
 "待分析的边表必须包含源列和目标列，其中填充了线段顶点的id以及对应的存储顶点信"
 "息的顶点表<edge_table>_vertices_pgr。"
-
-msgid "Use :doc:`pgr_createVerticesTable` to create the vertices table."
-msgstr "使用 :doc:`pgr_createVerticesTable` 建立顶点表。"
-
-msgid ""
-"Use :doc:`pgr_createTopology` to create the topology and the vertices table."
-msgstr "使用 :doc:`pgr_createTopology` 建立拓扑和顶点表。"
 
 msgid "The analyze graph function accepts the following parameters:"
 msgstr "分析图函数接受以下参数："
@@ -8393,13 +8595,6 @@ msgstr "无法确定几何图形的 SRID。"
 msgid "The Vertices Table"
 msgstr "顶点表"
 
-msgid ""
-"The vertices table can be created with :doc:`pgr_createVerticesTable "
-"<pgr_createVerticesTable>` or :doc:`pgr_createTopology <pgr_createTopology>`"
-msgstr ""
-"顶点表可以使用 :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` 或 :"
-"doc:`pgr_createTopology <pgr_createTopology>` 创建"
-
 msgid "The structure of the vertices table is:"
 msgstr "顶点表的结构为："
 
@@ -8424,20 +8619,16 @@ msgstr "ein"
 
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
-"as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
-msgstr ""
-"``integer`` edge_table 中引用该顶点作为传入的顶点数。 请参阅 :doc:"
-"`pgr_analyzeOneWay <pgr_analyzeOneWay>`。"
+"as incoming."
+msgstr "``integer`` edge_table 中引用该顶点作为传入的顶点数。"
 
 msgid "eout"
 msgstr "eout"
 
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
-"as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
-msgstr ""
-"``integer`` Edge_table 中引用该顶点作为传出的顶点数。 请参阅 :doc:"
-"`pgr_analyzeOneWay <pgr_analyzeOneWay>`。"
+"as outgoing."
+msgstr "``integer`` Edge_table 中引用该顶点作为传出的顶点数。"
 
 msgid "``geometry`` Point geometry of the vertex."
 msgstr "``geometry`` 顶点的点几何。"
@@ -8543,14 +8734,12 @@ msgstr ""
 msgid ":doc:`pgr_analyzeOneWay`"
 msgstr ":doc:`pgr_analyzeOneWay`"
 
-msgid ":doc:`pgr_createVerticesTable`"
-msgstr ":doc:`pgr_createVerticesTable`"
-
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ":doc:`pgr_nodeNetwork` 创建节点到非节点边表。"
 
-msgid "``pgr_analyzeOneWay``"
-msgstr "``pgr_analyzeOneWay``"
+#, fuzzy
+msgid "``pgr_analyzeOneWay`` - Deprecated since 3.8.0"
+msgstr "``pgr_analyzeGraph``"
 
 msgid ""
 "``pgr_analyzeOneWay`` — Analyzes oneway Sstreets and identifies flipped "
@@ -8656,13 +8845,6 @@ msgid ""
 msgstr "``boolean`` 将单向 NULL 值视为双向的标志。 默认值为 ``true``。"
 
 msgid ""
-"It is strongly recommended to use the named notation. See :doc:"
-"`pgr_createVerticesTable` or :doc:`pgr_createTopology` for examples."
-msgstr ""
-"强烈建议使用命名符号。 有关示例，请参阅 :doc:`pgr_createVerticesTable` 或 :"
-"doc:`pgr_createTopology`。"
-
-msgid ""
 "Fills completely the ``ein`` and ``eout`` columns of the vertices table."
 msgstr "完全填充顶点表的 ``ein`` 和 ``eout`` 列。"
 
@@ -8676,40 +8858,6 @@ msgid ""
 msgstr ""
 "这些规则被定义为文本字符串数组，如果与 ``oneway`` 值匹配，则 source或 target "
 "**输入** 或 **输出** 条件将被视为 ``true``。"
-
-msgid ""
-"The vertices table can be created with :doc:`pgr_createVerticesTable` or :"
-"doc:`pgr_createTopology`"
-msgstr ""
-"顶点表可以使用 :doc:`pgr_createVerticesTable` 或 :doc:`pgr_createTopology` 创"
-"建"
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex. "
-"See :doc:`pgr_analyzeGgraph <pgr_analyzeGraph>`."
-msgstr ""
-"``integer`` edge_table 中引用该顶点的顶点数。 请参阅 :doc:`pgr_analyzeGgraph "
-"<pgr_analyzeGraph>`。"
-
-msgid ""
-"``integer`` Indicator that the vertex might have a problem. See :doc:"
-"`pgr_analyzeGraph <pgr_analyzeGraph>`."
-msgstr ""
-"``integer`` 指示顶点可能有问题。 请参阅 :doc:`pgr_analyzeGraph "
-"<pgr_analyzeGraph>`。"
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as incoming."
-msgstr "``integer`` edge_table 中引用该顶点作为传入的顶点数。"
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as outgoing."
-msgstr "``integer`` Edge_table 中引用该顶点作为传出的顶点数。"
-
-msgid ":doc:`pgr_analyzeGraph`"
-msgstr ":doc:`pgr_analyzeGraph`"
 
 msgid "``pgr_articulationPoints``"
 msgstr "``pgr_articulationPoints``"
@@ -9778,10 +9926,6 @@ msgid ""
 msgstr "``pgr_contraction`` — 执行图收缩操作并返回收缩后的顶点和边。"
 
 #, fuzzy
-msgid "Version 3.8.0"
-msgstr "版本3.6.0"
-
-#, fuzzy
 msgid "New signature:"
 msgstr "新签名"
 
@@ -9789,6 +9933,8 @@ msgid ""
 "Previously compulsory parameter **Contraction order** is now optional with "
 "name ``methods``."
 msgstr ""
+"之前必需的参数 **Contraction order** 现在已变为可选参数，并更名为 "
+"``methods``。"
 
 #, fuzzy
 msgid "New name and order of optional parameters."
@@ -9851,10 +9997,10 @@ msgid ""
 msgstr "目前有两种类型的收缩方法"
 
 msgid "Dead End Contraction. See :doc:`pgr_contractionDeadEnd`."
-msgstr ""
+msgstr "死角收缩。参考 :doc:`pgr_contractionDeadEnd`。"
 
 msgid "Linear Contraction. See :doc:`pgr_contractionLinear`."
-msgstr ""
+msgstr "线性收缩。参考 :doc:`pgr_contractionLinear`。"
 
 #, fuzzy
 msgid "pgr_contraction(`Edges SQL`_, [**options**])"
@@ -9875,7 +10021,7 @@ msgid "Contraction optional parameters"
 msgstr "可选收缩参数"
 
 msgid "``methods``"
-msgstr ""
+msgstr "``methods``"
 
 #, fuzzy
 msgid "``INTEGER[]``"
@@ -10146,6 +10292,8 @@ msgid ""
 "vertices in the original graph by using the contracted graph with "
 "``pgr_dijkstraCost``"
 msgstr ""
+"根据最终应用的需求，图需要进行预处理。在本示例中，最终应用是使用收缩图通过 "
+"``pgr_dijkstraCost`` 计算原始图中两个顶点之间的成本"
 
 msgid ""
 "There are three cases when calculating the shortest path between a given "
@@ -10162,7 +10310,7 @@ msgid "Case 3: Source and/or target belong to a vertex."
 msgstr "情况 3：源和/或目标属于一个顶点。"
 
 msgid "The final application should consider all of those cases."
-msgstr ""
+msgstr "最终应用应考虑所有这些情况。"
 
 #, fuzzy
 msgid "Create a view (or table) of the contracted graph:"
@@ -10218,7 +10366,7 @@ msgid "pgr_contractionDeadEnd(`Edges SQL`_, [**options**])"
 msgstr "pgr_contraction(`Edges SQL`_, **contraction order**, [**options**])"
 
 #, fuzzy
-msgid "**options:** ``[directed, forbidden_vertices]``"
+msgid "**options:** ``[directed, forbidden]``"
 msgstr "**options:** ``[directed, details]``"
 
 #, fuzzy
@@ -10232,9 +10380,6 @@ msgstr "绿色节点是 `死端`_ 节点"
 #, fuzzy
 msgid "Node :math:`3` is a dead end node after node :math:`1` is contracted."
 msgstr "节点 :math:`u` 有已收缩节点的信息。"
-
-msgid "``forbidden_vertices``"
-msgstr "``forbidden_vertices``"
 
 #, fuzzy
 msgid "``ARRAY[`` |ANY-INTEGER| ``]``"
@@ -10265,7 +10410,7 @@ msgid "Dead end vertex on undirected graph"
 msgstr "无向图上的死端顶点"
 
 msgid "They have only one adjacent node."
-msgstr ""
+msgstr "它们只有一个相邻节点。"
 
 msgid "Dead end vertex on directed graph"
 msgstr "有向图上的死端顶点"
@@ -10288,7 +10433,7 @@ msgid "Dead end"
 msgstr "死端"
 
 msgid "Reason"
-msgstr ""
+msgstr "Reason"
 
 #, fuzzy
 msgid ":math:`6`"
@@ -10323,7 +10468,7 @@ msgid ":math:`\\{2, 3\\}`"
 msgstr ":math:`\\{v, w\\}`"
 
 msgid "Has more than one adjacent node and all edges are incoming."
-msgstr ""
+msgstr "有一个以上的相邻节点，且所有边都是传入的。"
 
 #, fuzzy
 msgid ":math:`\\{4\\}`"
@@ -10342,7 +10487,7 @@ msgid "No"
 msgstr "节点"
 
 msgid "Has more than one adjacent node and all edges are outgoing."
-msgstr ""
+msgstr "有一个以上的相邻节点，且所有边都是向外的。"
 
 #, fuzzy
 msgid ":math:`1,2,3,4,5`"
@@ -10439,10 +10584,6 @@ msgstr "``pgr_contraction`` — 执行图收缩操作并返回收缩后的顶点
 #, fuzzy
 msgid "pgr_contractionLinear(`Edges SQL`_, [**options**])"
 msgstr "pgr_contraction(`Edges SQL`_, **contraction order**, [**options**])"
-
-#, fuzzy
-msgid "**options:** ``[directed, max_cycles, forbidden_vertices]``"
-msgstr "**options:** ``[ max_cycles, forbidden_vertices, directed]``"
 
 #, fuzzy
 msgid "Linear contraction on an undirected graph."
@@ -10600,8 +10741,9 @@ msgstr "边 :math:`u \\rightarrow z` 有收缩点的信息。"
 msgid "Create the contracted graph."
 msgstr "收缩图"
 
-msgid "``pgr_createTopology``"
-msgstr "``pgr_createTopology``"
+#, fuzzy
+msgid "``pgr_createTopology`` - Deprecated since v3.8.0"
+msgstr "``pgr_analyzeGraph``"
 
 msgid ""
 "``pgr_createTopology`` — Builds a network topology based on the geometry "
@@ -10673,36 +10815,17 @@ msgstr "引用顶点表的 ``id`` 填充边表的 source列和target列。"
 msgid "``FAIL`` when the network topology was not built due to an error:"
 msgstr "``FAIL`` 当由于错误原因未能构建网络拓扑时："
 
-msgid ""
-"The vertices table is a requirement of the :doc:`pgr_analyzeGraph` and the :"
-"doc:`pgr_analyzeOneWay` functions."
-msgstr ""
-"顶点表是 :doc:`pgr_analyzeGraph` 和 :doc:`pgr_analyzeOneWay` 函数的必需条件。"
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex. "
-"See :doc:`pgr_analyzeGraph`."
-msgstr ""
-"``integer`` edge_table 中引用该顶点的顶点数。 参见 :doc:`pgr_analyzeGraph`。"
-
-msgid ""
-"``integer`` Indicator that the vertex might have a problem. See :doc:"
-"`pgr_analyzeGraph`."
-msgstr "``integer`` 指示顶点可能有问题。 请参阅 :doc:`pgr_analyzeGraph`。"
-
+#, fuzzy
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
-"AS incoming. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` 边表中引用此顶点作为入边的顶点数量。请参考 :doc:"
-"`pgr_analyzeOneWay`。"
+"AS incoming."
+msgstr "``integer`` edge_table 中引用该顶点作为传入的顶点数。"
 
+#, fuzzy
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
-"AS outgoing. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` 边表中引用此顶点作为出边的顶点数量。请参考 :doc:"
-"`pgr_analyzeOneWay`。"
+"AS outgoing."
+msgstr "``integer`` Edge_table 中引用该顶点作为传出的顶点数。"
 
 msgid "The simplest way to use pgr_createTopology is:"
 msgstr "使用 pgr_createTopology 最简单的方法是："
@@ -10820,8 +10943,9 @@ msgid ""
 "to the rest of the edges."
 msgstr "该示例以 5 条边的简洁拓扑结构为起点，然后递增到其余的边。"
 
-msgid "``pgr_createVerticesTable``"
-msgstr "``pgr_createVerticesTable``"
+#, fuzzy
+msgid "``pgr_createVerticesTable`` - Deprecated since 3.8.0"
+msgstr "``pgr_analyzeGraph``"
 
 msgid ""
 "``pgr_createVerticesTable`` — Reconstructs the vertices table based on the "
@@ -10860,20 +10984,6 @@ msgstr ""
 
 msgid "The names of source, target are the same."
 msgstr "source, target的名称相同。"
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as incoming. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` edge_table 中引用该顶点作为传入的顶点数。 请参阅 :doc:"
-"`pgr_analyzeOneWay`。"
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as outgoing. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` Edge_table 中引用该顶点作为传出的顶点数。 请参阅 :doc:"
-"`pgr_analyzeOneWay`。"
 
 msgid "The simplest way to use pgr_createVerticesTable"
 msgstr "使用 pgr_createVerticesTable 最简单的方法"
@@ -10969,19 +11079,6 @@ msgid ""
 ":doc:`topology-functions` for an overview of a topology for routing "
 "algorithms."
 msgstr ":doc:`topology-functions` 用于路由算法的拓扑概述。"
-
-msgid ""
-":doc:`pgr_createTopology` <pgr_create_topology>` to create a topology based "
-"on the geometry."
-msgstr ""
-":doc:`pgr_createTopology` <pgr_create_topology>` 根据几何图形创建拓扑。"
-
-msgid ""
-":doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table."
-msgstr ":doc:`pgr_analyzeGraph` 分析边表的边和顶点。"
-
-msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
-msgstr ":doc:`pgr_analyzeOneWay` 分析边缘的方向性。"
 
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
 msgstr "pgr_cuthillMckeeOrdering`` - 试验性的"
@@ -14133,9 +14230,6 @@ msgid ""
 "When the maximum flow is **0** then there is no flow and **0** is returned."
 msgstr "当最大流量为 **0** 时则没有流量，返回 **0** 。"
 
-msgid "There is no flow when source has the same vaule as target."
-msgstr "当 source与 target相同时，没有流量。"
-
 msgid "Uses the :doc:`pgr_pushRelabel <pgr_pushRelabel>` algorithm."
 msgstr "使用 :doc:`pgr_pushRelabel <pgr_pushRelabel>` 算法。"
 
@@ -14352,15 +14446,13 @@ msgstr "sub_id"
 msgid "``integer`` Segment number of the original edge"
 msgstr "``integer`` 原边的段号"
 
-msgid ""
-"``integer`` Empty source column to be used with :doc:`pgr_createTopology` "
-"function"
-msgstr "``integer`` 与 :doc:`pgr_createTopology` 函数一起使用的空source列"
+#, fuzzy
+msgid "``integer`` Empty source column"
+msgstr "在source 列"
 
-msgid ""
-"``integer`` Empty target column to be used with :doc:`pgr_createTopology` "
-"function"
-msgstr "``integer`` 与 :doc:`pgr_createTopology` 函数一起使用的空target列"
+#, fuzzy
+msgid "``integer`` Empty target column"
+msgstr "在target列"
 
 msgid "the geom"
 msgstr "the geom"
@@ -14371,173 +14463,74 @@ msgstr "``geometry`` 节点网络的几何列"
 msgid "Examples"
 msgstr "示例"
 
-msgid "Let's create the topology for the data in :doc:`sampledata`"
+#, fuzzy
+msgid "Create the topology for the data in :doc:`sampledata`"
 msgstr "让我们为 :doc:`sampledata` 中的数据创建拓扑"
 
-msgid "Now we can analyze the network."
+msgid "Analyze the network for intersections."
+msgstr ""
+
+#, fuzzy
+msgid "Analyze the network for gaps."
 msgstr "现在我们可以分析网络了。"
 
-msgid ""
-"The analysis tell us that the network has a gap and an intersection. We try "
-"to fix the problem using:"
+#, fuzzy
+msgid "The analysis tell us that the network has a gap and an intersection."
 msgstr "分析告诉我们，网络存在缺口和交叉点。 我们尝试使用以下方法解决该问题："
 
-msgid ""
-"Inspecting the generated table, we can see that edges 13,14 and 18 has been "
-"segmented"
-msgstr "检查生成的表，我们可以看到边 13,14 和 18 已被分段"
-
-msgid "We can create the topology of the new network"
-msgstr "我们可以创建新网络的拓扑"
-
-msgid "Now let's analyze the new topology"
-msgstr "现在我们来分析一下新的拓扑"
-
-msgid "Images"
-msgstr "图片"
-
-msgid "Before Image"
-msgstr "之前的图像"
-
-msgid "Before image"
-msgstr "图片前"
-
-msgid "After Image"
-msgstr "后面的图像"
-
-msgid "After image"
-msgstr "图像后"
-
-msgid "Comparing the results"
-msgstr "比较结果"
-
-msgid "Comparing with the Analysis in the original edge_table, we see that."
-msgstr "与原始edge_table中的分析相比，我们看到了这一点。"
-
-msgid "Before"
-msgstr "前"
-
-msgid "After"
-msgstr "后"
-
-msgid "Table name"
-msgstr "表名"
-
-msgid "edge_table_noded"
-msgstr "edge_table_noded"
-
-msgid "Fields"
-msgstr "字段"
-
-msgid "All original fields"
-msgstr "所有原始字段"
-
-msgid "Has only basic fields to do a topology analysis"
-msgstr "仅具有进行拓扑分析的基本字段"
-
-msgid "Edges with 1 dead end: 1,6,24"
-msgstr "有 1 个死端的边：1、6、24"
-
-msgid "Edges with 2 dead ends: 17,18"
-msgstr "边缘有 2 个死角：17,18"
-
-msgid ""
-"Edge 17's right node is a dead end because there is no other edge sharing "
-"that same node. (cnt=1)"
-msgstr "边 17 的右侧节点是一个死端，因为没有其他边共享同一节点。 （cnt=1）"
-
-msgid "Edges with 1 dead end: 1-1 ,6-1,14-2, 18-1 17-1 18-2"
-msgstr "有 1 个死端的边：1-1 ,6-1,14-2, 18-1 17-1 18-2"
-
-msgid "Isolated segments"
-msgstr "孤立的片段"
-
-msgid "two isolated segments: 17 and 18 both they have 2 dead ends"
-msgstr "两个孤立的段：17 和 18，它们都有两个死端"
-
-msgid "No Isolated segments"
-msgstr "无孤立段"
-
-msgid "Edge 17 now shares a node with edges 14-1 and 14-2"
-msgstr "边 17 现在与边 14-1 和 14-2 共享一个节点"
-
-msgid "Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2"
-msgstr "边 18-1 和 18-2 与边 13-1 和 13-2 共享一个节点"
-
-msgid "Gaps"
-msgstr "差距"
-
-msgid ""
-"There is a gap between edge 17 and 14 because edge 14 is near to the right "
-"node of edge 17"
-msgstr "边 17 和边 14 之间有间隙，因为边 14 靠近边 17 的右侧节点"
-
-msgid ""
-"Edge 14 was segmented Now edges: 14-1 14-2 17 share the same node The "
-"tolerance value was taken in account"
-msgstr ""
-"边缘14 被分段了，现在边缘14-1、14-2 和 17 共享同一个节点。容差值已被考虑"
-
-msgid "Intersections"
+#, fuzzy
+msgid "Fixing an intersection"
 msgstr "交叉口"
 
-msgid "Edges 13 and 18 were intersecting"
-msgstr "边 13 和 18 相交"
+#, fuzzy
+msgid "Storing the intersections."
+msgstr "添加限制"
 
+#, fuzzy
+msgid "Calling ``pgr_nodeNetwork``."
+msgstr "``pgr_nodeNetwork``"
+
+#, fuzzy
 msgid ""
-"Edges were segmented, So, now in the interection's point there is a node and "
-"the following edges share it: 13-1 13-2 18-1 18-2"
+"Inspecting the generated table, we can see that edges 13 and 18 have been "
+"segmented."
+msgstr "检查生成的表，我们可以看到边 13,14 和 18 已被分段"
+
+#, fuzzy
+msgid "Update the topology"
+msgstr "更新边拓扑"
+
+#, fuzzy
+msgid "Add new segments to the edges table."
+msgstr "在边表上"
+
+#, fuzzy
+msgid "Insert the intersection as new vertices."
+msgstr "兴趣点"
+
+#, fuzzy
+msgid "Update source and target information on the edges table."
+msgstr "红色箭头显示边表上的边 ``(source, target)``"
+
+#, fuzzy
+msgid "Delete original edge."
+msgstr "原始订单"
+
+#, fuzzy
+msgid "Update the vertex topology"
+msgstr "更新顶点拓扑"
+
+msgid "Fixing a gap"
 msgstr ""
-"边被分段，所以，现在在交点处有一个节点，并且以下边共享它： 13-1 13-2 18-1 "
-"18-2"
 
+#, fuzzy
+msgid "Store the deadends"
+msgstr "获取死端："
+
+#, fuzzy
 msgid ""
-"Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and "
-"18-2 into our edge-table, copying the data for dir,cost,and reverse cost "
-"with tho following steps:"
-msgstr ""
-"现在，我们将包括段 13-1、13-2、14-1、14-2、18-1 和 18-2 到我们的边表中，并复"
-"制 dir、cost 和 reverse cost 的数据，按照以下步骤进行："
-
-msgid ""
-"Add a column old_id into edge_table, this column is going to keep track the "
-"id of the original edge"
-msgstr "在边表中添加一列old_id，该列将跟踪原始边的id"
-
-msgid "Insert only the segmented edges, that is, the ones whose max(sub_id) >1"
-msgstr "仅插入分段边，即 max(sub_id) >1 的边"
-
-msgid "We recreate the topology:"
-msgstr "我们重新创建拓扑："
-
-msgid ""
-"To get the same analysis results as the topology of edge_table_noded, we do "
-"the following query:"
-msgstr "为了获得与edge_table_noded的拓扑相同的分析结果，我们执行以下查询："
-
-msgid ""
-"To get the same analysis results as the original edge_table, we do the "
-"following query:"
-msgstr "为了获得与原始edge_table相同的分析结果，我们执行以下查询："
-
-msgid ""
-"Or we can analyze everything because, maybe edge 18 is an overpass, edge 14 "
-"is an under pass and there is also a street level juction, and the same "
-"happens with edges 17 and 13."
-msgstr ""
-"或者我们可以分析所有内容，因为也许边 18 是立交桥，边 14 是地下通道，还有一个"
-"街道水平交汇处，边 17 和 13 也会发生同样的情况。"
-
-msgid ""
-":doc:`topology-functions` for an overview of a topology for routing "
-"algorithms. :doc:`pgr_analyzeOneWay` to analyze directionality of the "
-"edges. :doc:`pgr_createTopology` to create a topology based on the "
-"geometry. :doc:`pgr_analyzeGraph` to analyze the edges and vertices of the "
-"edge table."
-msgstr ""
-":doc:`topology-functions` 用于概述路由算法的拓扑。 :doc:`pgr_analyzeOneWay` "
-"分析边方向性的方法。 :doc:`pgr_createTopology` 根据几何图创建拓扑。 :doc:"
-"`pgr_analyzeGraph` 分析边表的边和顶点。"
+"Inspecting the generated table, we can see that edge 14 has been segmented."
+msgstr "检查生成的表，我们可以看到边 13,14 和 18 已被分段"
 
 msgid "``pgr_pickDeliver`` - Experimental"
 msgstr "``pgr_pickDeliver`` - 实验"
@@ -16368,9 +16361,6 @@ msgstr ""
 "从点 :math:`1` 开始，在距离不超过 :math:`3.3` 的范围内，无论驾驶方向如何，提"
 "供详细信息。"
 
-msgid ":doc:`pgr_alphaShape`"
-msgstr ":doc:`pgr_alphaShape`"
-
 msgid "``pgr_withPointsKSP``"
 msgstr "``pgr_withPointsKSP``"
 
@@ -16697,18 +16687,80 @@ msgid "pgRouting 3.8.0 Release Notes"
 msgstr "pgRouting 3.7.0 发布说明"
 
 #, fuzzy
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.8.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
+msgstr ""
+"查看本版本已关闭的所有议题和拉取请求，请访问：`GitHub 3.7.0版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>>`__"
+
+#, fuzzy
 msgid "Promotion to official function of pgRouting."
 msgstr "pgRouting 中的拟议已升级为正式版本"
 
-msgid "pgr_extractVertices"
-msgstr "pgr_extractVertices"
-
-msgid "pgr_degree"
-msgstr "pgr_degree"
+#, fuzzy
+msgid ""
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
+"pgr_extractVertices"
+msgstr ""
+"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
+"pgr_extractVertices"
 
 #, fuzzy
-msgid "pgr_findCloseEdges"
-msgstr "``pgr_findCloseEdges``"
+msgid ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+
+#, fuzzy
+msgid ""
+"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: "
+"pgr_findCloseEdges"
+msgstr ""
+"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
+"pgr_extractVertices"
+
+#, fuzzy
+msgid "Deprecation of functions."
+msgstr "已废弃的函数"
+
+#, fuzzy
+msgid ""
+"`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: "
+"pgr_alphaShape"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+
+#, fuzzy
+msgid ""
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
+"pgr_analyzeOneWay"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+
+#, fuzzy
+msgid ""
+"`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: "
+"pgr_analyzeGraph"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+
+#, fuzzy
+msgid ""
+"`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: "
+"pgr_createTopology"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+
+#, fuzzy
+msgid ""
+"`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: "
+"pgr_createVerticesTable"
+msgstr ""
+"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
+"pgr_extractVertices"
 
 msgid "Official functions changes"
 msgstr "官方功能变更"
@@ -16770,15 +16822,14 @@ msgstr ""
 msgid "pgRouting 3.7.2 Release Notes"
 msgstr "pgRouting 3.7.2 发布说明"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.1 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+"查看本版本已关闭的所有议题和拉取请求，请访问：`GitHub 3.7.2版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 
 msgid "Build"
 msgstr "构建"
@@ -16819,9 +16870,9 @@ msgid ""
 "milestone for 3.7.1 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.1 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+"查看本版本已关闭的所有议题和拉取请求，请访问：`GitHub 3.7.1版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>>`__"
 
 msgid ""
 "`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ fails to "
@@ -16853,9 +16904,12 @@ msgid ""
 "milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.7.0 <https://github.com/"
-"pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__ 的 Git 关闭里程碑"
+"查看本版本已关闭的所有议题和拉取请求，请访问：`GitHub 3.7.0版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>>`__"
+
+msgid "Support"
+msgstr "支持"
 
 msgid ""
 "`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
@@ -16937,9 +16991,9 @@ msgid ""
 "milestone for 3.6.3 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.6.3 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
+"查看本版本已关闭的所有议题和拉取请求，请访问：`GitHub 3.6.3版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>>`__"
 
 msgid "Explicit minimum requirements:"
 msgstr "最低要求："
@@ -17196,6 +17250,9 @@ msgstr "文档修复"
 
 msgid "Changes on the documentation to the following:"
 msgstr "将文件修改如下："
+
+msgid "pgr_degree"
+msgstr "pgr_degree"
 
 msgid "pgr_dijkstra"
 msgstr "pgr_dijkstra"
@@ -17637,6 +17694,9 @@ msgstr "pgr_dijkstraNearCost(一对多)"
 
 msgid "pgr_sequentialVertexColoring"
 msgstr "pgr_sequentialVertexColoring"
+
+msgid "pgr_extractVertices"
+msgstr "pgr_extractVertices"
 
 msgid "Traversal"
 msgstr "遍历"
@@ -19698,6 +19758,9 @@ msgstr "组合数据"
 msgid "Some functions accept soft restrictions about the segments."
 msgstr "一些函数接受关于段的软约束。"
 
+msgid "Images"
+msgstr "图片"
+
 msgid "Red arrows correspond when ``cost`` > 0 in the edge table."
 msgstr "红色箭头对应边表中 ``cost`` > 0 的情况。"
 
@@ -20343,3 +20406,324 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
 
+#~ msgid ":doc:`pgr_alphaShape`"
+#~ msgstr ":doc:`pgr_alphaShape`"
+
+#~ msgid "See :doc:`sampledata` for an example for building a topology."
+#~ msgstr "有关构建拓扑的示例，请参阅 :doc:`sampledata`。"
+
+#~ msgid ""
+#~ "Use :doc:`pgr_createTopology` to create the topology and the vertices "
+#~ "table."
+#~ msgstr "使用 :doc:`pgr_createTopology` 建立拓扑和顶点表。"
+
+#, fuzzy
+#~ msgid ""
+#~ "The vertices table can be created with :doc:`pgr_createTopology "
+#~ "<pgr_createTopology>`"
+#~ msgstr ""
+#~ "顶点表可以使用 :doc:`pgr_createVerticesTable` 或 :doc:"
+#~ "`pgr_createTopology` 创建"
+
+#, fuzzy
+#~ msgid ""
+#~ "It is strongly recommended to use the named notation. See :doc:"
+#~ "`pgr_createTopology` for examples."
+#~ msgstr ""
+#~ "强烈建议使用命名符号。 有关示例，请参阅 :doc:`pgr_createVerticesTable` "
+#~ "或 :doc:`pgr_createTopology`。"
+
+#, fuzzy
+#~ msgid "The vertices table can be created with :doc:`pgr_createTopology`"
+#~ msgstr ""
+#~ "顶点表可以使用 :doc:`pgr_createVerticesTable` 或 :doc:"
+#~ "`pgr_createTopology` 创建"
+
+#~ msgid "``forbidden_vertices``"
+#~ msgstr "``forbidden_vertices``"
+
+#~ msgid "``pgr_createTopology``"
+#~ msgstr "``pgr_createTopology``"
+
+#~ msgid ""
+#~ ":doc:`pgr_createTopology` <pgr_create_topology>` to create a topology "
+#~ "based on the geometry."
+#~ msgstr ""
+#~ ":doc:`pgr_createTopology` <pgr_create_topology>` 根据几何图形创建拓扑。"
+
+#~ msgid "There is no flow when source has the same vaule as target."
+#~ msgstr "当 source与 target相同时，没有流量。"
+
+#~ msgid ""
+#~ "``integer`` Empty source column to be used with :doc:`pgr_createTopology` "
+#~ "function"
+#~ msgstr "``integer`` 与 :doc:`pgr_createTopology` 函数一起使用的空source列"
+
+#~ msgid ""
+#~ "``integer`` Empty target column to be used with :doc:`pgr_createTopology` "
+#~ "function"
+#~ msgstr "``integer`` 与 :doc:`pgr_createTopology` 函数一起使用的空target列"
+
+#, fuzzy
+#~ msgid ""
+#~ ":doc:`topology-functions` for an overview of a topology for routing "
+#~ "algorithms. :doc:`pgr_createTopology` to create a topology based on the "
+#~ "geometry."
+#~ msgstr ""
+#~ ":doc:`topology-functions` 用于概述路由算法的拓扑。 :doc:"
+#~ "`pgr_analyzeOneWay` 分析边方向性的方法。 :doc:`pgr_createTopology` 根据几"
+#~ "何图创建拓扑。 :doc:`pgr_analyzeGraph` 分析边表的边和顶点。"
+
+#~ msgid "Use :doc:`pgr_createVerticesTable` to create the vertices table."
+#~ msgstr "使用 :doc:`pgr_createVerticesTable` 建立顶点表。"
+
+#~ msgid ""
+#~ "The vertices table can be created with :doc:`pgr_createVerticesTable "
+#~ "<pgr_createVerticesTable>` or :doc:`pgr_createTopology "
+#~ "<pgr_createTopology>`"
+#~ msgstr ""
+#~ "顶点表可以使用 :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` "
+#~ "或 :doc:`pgr_createTopology <pgr_createTopology>` 创建"
+
+#~ msgid ":doc:`pgr_createVerticesTable`"
+#~ msgstr ":doc:`pgr_createVerticesTable`"
+
+#~ msgid "``pgr_createVerticesTable``"
+#~ msgstr "``pgr_createVerticesTable``"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+#~ msgstr ""
+#~ "``integer`` edge_table 中引用该顶点作为传入的顶点数。 请参阅 :doc:"
+#~ "`pgr_analyzeOneWay <pgr_analyzeOneWay>`。"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+#~ msgstr ""
+#~ "``integer`` Edge_table 中引用该顶点作为传出的顶点数。 请参阅 :doc:"
+#~ "`pgr_analyzeOneWay <pgr_analyzeOneWay>`。"
+
+#~ msgid "``pgr_analyzeOneWay``"
+#~ msgstr "``pgr_analyzeOneWay``"
+
+#, fuzzy
+#~ msgid ""
+#~ "The vertices table is a requirement of the :doc:`pgr_analyzeOneWay` "
+#~ "functions."
+#~ msgstr ""
+#~ "顶点表是 :doc:`pgr_analyzeGraph` 和 :doc:`pgr_analyzeOneWay` 函数的必需条"
+#~ "件。"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex AS incoming. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` 边表中引用此顶点作为入边的顶点数量。请参考 :doc:"
+#~ "`pgr_analyzeOneWay`。"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex AS outgoing. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` 边表中引用此顶点作为出边的顶点数量。请参考 :doc:"
+#~ "`pgr_analyzeOneWay`。"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as incoming. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` edge_table 中引用该顶点作为传入的顶点数。 请参阅 :doc:"
+#~ "`pgr_analyzeOneWay`。"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as outgoing. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` Edge_table 中引用该顶点作为传出的顶点数。 请参阅 :doc:"
+#~ "`pgr_analyzeOneWay`。"
+
+#~ msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
+#~ msgstr ":doc:`pgr_analyzeOneWay` 分析边缘的方向性。"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex. See :doc:`pgr_analyzeGgraph <pgr_analyzeGraph>`."
+#~ msgstr ""
+#~ "``integer`` edge_table 中引用该顶点的顶点数。 请参阅 :doc:"
+#~ "`pgr_analyzeGgraph <pgr_analyzeGraph>`。"
+
+#~ msgid ""
+#~ "``integer`` Indicator that the vertex might have a problem. See :doc:"
+#~ "`pgr_analyzeGraph <pgr_analyzeGraph>`."
+#~ msgstr ""
+#~ "``integer`` 指示顶点可能有问题。 请参阅 :doc:`pgr_analyzeGraph "
+#~ "<pgr_analyzeGraph>`。"
+
+#~ msgid ":doc:`pgr_analyzeGraph`"
+#~ msgstr ":doc:`pgr_analyzeGraph`"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex. See :doc:`pgr_analyzeGraph`."
+#~ msgstr ""
+#~ "``integer`` edge_table 中引用该顶点的顶点数。 参见 :doc:"
+#~ "`pgr_analyzeGraph`。"
+
+#~ msgid ""
+#~ "``integer`` Indicator that the vertex might have a problem. See :doc:"
+#~ "`pgr_analyzeGraph`."
+#~ msgstr "``integer`` 指示顶点可能有问题。 请参阅 :doc:`pgr_analyzeGraph`。"
+
+#~ msgid ""
+#~ ":doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge "
+#~ "table."
+#~ msgstr ":doc:`pgr_analyzeGraph` 分析边表的边和顶点。"
+
+#~ msgid "We can create the topology of the new network"
+#~ msgstr "我们可以创建新网络的拓扑"
+
+#~ msgid "Now let's analyze the new topology"
+#~ msgstr "现在我们来分析一下新的拓扑"
+
+#~ msgid "Before Image"
+#~ msgstr "之前的图像"
+
+#~ msgid "Before image"
+#~ msgstr "图片前"
+
+#~ msgid "After Image"
+#~ msgstr "后面的图像"
+
+#~ msgid "After image"
+#~ msgstr "图像后"
+
+#~ msgid "Comparing the results"
+#~ msgstr "比较结果"
+
+#~ msgid "Comparing with the Analysis in the original edge_table, we see that."
+#~ msgstr "与原始edge_table中的分析相比，我们看到了这一点。"
+
+#~ msgid "Before"
+#~ msgstr "前"
+
+#~ msgid "After"
+#~ msgstr "后"
+
+#~ msgid "Table name"
+#~ msgstr "表名"
+
+#~ msgid "edge_table_noded"
+#~ msgstr "edge_table_noded"
+
+#~ msgid "Fields"
+#~ msgstr "字段"
+
+#~ msgid "All original fields"
+#~ msgstr "所有原始字段"
+
+#~ msgid "Has only basic fields to do a topology analysis"
+#~ msgstr "仅具有进行拓扑分析的基本字段"
+
+#~ msgid "Edges with 1 dead end: 1,6,24"
+#~ msgstr "有 1 个死端的边：1、6、24"
+
+#~ msgid "Edges with 2 dead ends: 17,18"
+#~ msgstr "边缘有 2 个死角：17,18"
+
+#~ msgid ""
+#~ "Edge 17's right node is a dead end because there is no other edge sharing "
+#~ "that same node. (cnt=1)"
+#~ msgstr "边 17 的右侧节点是一个死端，因为没有其他边共享同一节点。 （cnt=1）"
+
+#~ msgid "Edges with 1 dead end: 1-1 ,6-1,14-2, 18-1 17-1 18-2"
+#~ msgstr "有 1 个死端的边：1-1 ,6-1,14-2, 18-1 17-1 18-2"
+
+#~ msgid "Isolated segments"
+#~ msgstr "孤立的片段"
+
+#~ msgid "two isolated segments: 17 and 18 both they have 2 dead ends"
+#~ msgstr "两个孤立的段：17 和 18，它们都有两个死端"
+
+#~ msgid "No Isolated segments"
+#~ msgstr "无孤立段"
+
+#~ msgid "Edge 17 now shares a node with edges 14-1 and 14-2"
+#~ msgstr "边 17 现在与边 14-1 和 14-2 共享一个节点"
+
+#~ msgid "Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2"
+#~ msgstr "边 18-1 和 18-2 与边 13-1 和 13-2 共享一个节点"
+
+#~ msgid "Gaps"
+#~ msgstr "差距"
+
+#~ msgid ""
+#~ "There is a gap between edge 17 and 14 because edge 14 is near to the "
+#~ "right node of edge 17"
+#~ msgstr "边 17 和边 14 之间有间隙，因为边 14 靠近边 17 的右侧节点"
+
+#~ msgid ""
+#~ "Edge 14 was segmented Now edges: 14-1 14-2 17 share the same node The "
+#~ "tolerance value was taken in account"
+#~ msgstr ""
+#~ "边缘14 被分段了，现在边缘14-1、14-2 和 17 共享同一个节点。容差值已被考虑"
+
+#~ msgid "Intersections"
+#~ msgstr "交叉口"
+
+#~ msgid "Edges 13 and 18 were intersecting"
+#~ msgstr "边 13 和 18 相交"
+
+#~ msgid ""
+#~ "Edges were segmented, So, now in the interection's point there is a node "
+#~ "and the following edges share it: 13-1 13-2 18-1 18-2"
+#~ msgstr ""
+#~ "边被分段，所以，现在在交点处有一个节点，并且以下边共享它： 13-1 13-2 18-1 "
+#~ "18-2"
+
+#~ msgid ""
+#~ "Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and "
+#~ "18-2 into our edge-table, copying the data for dir,cost,and reverse cost "
+#~ "with tho following steps:"
+#~ msgstr ""
+#~ "现在，我们将包括段 13-1、13-2、14-1、14-2、18-1 和 18-2 到我们的边表中，并"
+#~ "复制 dir、cost 和 reverse cost 的数据，按照以下步骤进行："
+
+#~ msgid ""
+#~ "Add a column old_id into edge_table, this column is going to keep track "
+#~ "the id of the original edge"
+#~ msgstr "在边表中添加一列old_id，该列将跟踪原始边的id"
+
+#~ msgid ""
+#~ "Insert only the segmented edges, that is, the ones whose max(sub_id) >1"
+#~ msgstr "仅插入分段边，即 max(sub_id) >1 的边"
+
+#~ msgid "We recreate the topology:"
+#~ msgstr "我们重新创建拓扑："
+
+#~ msgid ""
+#~ "To get the same analysis results as the topology of edge_table_noded, we "
+#~ "do the following query:"
+#~ msgstr "为了获得与edge_table_noded的拓扑相同的分析结果，我们执行以下查询："
+
+#~ msgid ""
+#~ "To get the same analysis results as the original edge_table, we do the "
+#~ "following query:"
+#~ msgstr "为了获得与原始edge_table相同的分析结果，我们执行以下查询："
+
+#~ msgid ""
+#~ "Or we can analyze everything because, maybe edge 18 is an overpass, edge "
+#~ "14 is an under pass and there is also a street level juction, and the "
+#~ "same happens with edges 17 and 13."
+#~ msgstr ""
+#~ "或者我们可以分析所有内容，因为也许边 18 是立交桥，边 14 是地下通道，还有一"
+#~ "个街道水平交汇处，边 17 和 13 也会发生同样的情况。"
+
+#, fuzzy
+#~ msgid "pgr_findCloseEdges"
+#~ msgstr "``pgr_findCloseEdges``"
+
+#, fuzzy
+#~ msgid "**options:** ``[directed, max_cycles, forbidden_vertices]``"
+#~ msgstr "**options:** ``[ max_cycles, forbidden_vertices, directed]``"
