@@ -177,7 +177,6 @@ Additional Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`pgr_alphaShape` - Alpha shape computation
 * :doc:`sampledata`
 
 .. rubric:: Indices and tables

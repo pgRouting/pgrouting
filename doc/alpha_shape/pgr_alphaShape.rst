@@ -20,6 +20,10 @@
 
 .. rubric:: Availability
 
+* Version 3.8.0
+
+  * Deprecated function.
+
 * Version 3.0.0
 
   * Breaking change on signature
@@ -39,7 +43,10 @@
   * New official function.
   * Renamed from version 1.x
 
-.. rubric:: Support
+
+.. include:: migration.rst
+   :start-after: migrate_pgr_alphaShape_start
+   :end-before: migrate_pgr_alphaShape_end
 
 Description
 -------------------------------------------------------------------------------
