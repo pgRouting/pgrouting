@@ -46,7 +46,7 @@ Description
 - **The cost value of all input edges must be nonnegative.**
 - When the maximum flow is 0 then there is no flow and **0** is returned.
 
-  - There is no flow when source has the same vaule as target.
+  - There is no flow when source has the same value as target.
 
 - Any duplicated values in source or target are ignored.
 - Uses :doc:`pgr_maxFlowMinCost`.
