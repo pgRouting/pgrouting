@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-05 21:44+0000\n"
+"POT-Creation-Date: 2025-04-08 14:07+0000\n"
 "PO-Revision-Date: 2025-04-08 18:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4577,8 +4577,9 @@ msgstr ""
 "Todas las funciones obsoletas serán removidas en las siguiente versión mayor "
 "4.0.0"
 
-msgid "Migration of ``pgr_analyzeOneWay``"
-msgstr "Migración de ``pgr_analyzeOneWay``"
+#, fuzzy
+msgid "Migration of ``pgr_createVerticesTable``"
+msgstr "Migraciones de ``pgr_trspViaVertices``"
 
 msgid ""
 "Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
@@ -4587,6 +4588,17 @@ msgstr ""
 
 msgid "**Before Deprecation:** The following was calculated:"
 msgstr ""
+
+msgid "A table with `<edges>_vertices_pgr` was created."
+msgstr ""
+
+msgid ""
+"**After Deprecation:** The user is responsible to create the vertices table, "
+"indexes, etc. They may use :doc:`pgr_extractVertices` for that purpose."
+msgstr ""
+
+msgid "Migration of ``pgr_analyzeOneWay``"
+msgstr "Migración de ``pgr_analyzeOneWay``"
 
 msgid "Number of potential problems in directionality"
 msgstr ""
@@ -9053,9 +9065,6 @@ msgstr ""
 "segmentos y la correspondiente tabla de vértices <edge_table>_vertices_pgr "
 "que almacena la información de los vértices."
 
-msgid "Use :doc:`pgr_createVerticesTable` to create the vertices table."
-msgstr "Use :doc:`pgr_createVerticesTable` para crear la tabla de vértices."
-
 msgid ""
 "Use :doc:`pgr_createTopology` to create the topology and the vertices table."
 msgstr "Use :doc:`pgr_createTopology` para crear la topología y los vértices."
@@ -9162,12 +9171,13 @@ msgstr "No pudo determinarse el SRID de la geometría."
 msgid "The Vertices Table"
 msgstr "La tabla de vértices"
 
+#, fuzzy
 msgid ""
-"The vertices table can be created with :doc:`pgr_createVerticesTable "
-"<pgr_createVerticesTable>` or :doc:`pgr_createTopology <pgr_createTopology>`"
+"The vertices table can be created with :doc:`pgr_createTopology "
+"<pgr_createTopology>`"
 msgstr ""
-"Los vértices pueden ser creados con :doc:`pgr_createVerticesTable "
-"<pgr_createVerticesTable>` o :doc:`pgr_createTopology <pgr_createTopology>`"
+"Los vértices pueden ser creados con :doc:`pgr_createVerticesTable` o :doc:"
+"`pgr_createTopology`"
 
 msgid "The structure of the vertices table is:"
 msgstr "La estructura de la tabla de los vértices es:"
@@ -9336,9 +9346,6 @@ msgstr ""
 msgid ":doc:`pgr_analyzeOneWay`"
 msgstr ":doc:`pgr_analyzeOneWay`"
 
-msgid ":doc:`pgr_createVerticesTable`"
-msgstr ":doc:`pgr_createVerticesTable`"
-
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ":doc:`pgr_nodeNetwork` para crear nodos en una tabla sin nodos."
 
@@ -9464,9 +9471,10 @@ msgstr ""
 "``boolean`` bandera para tratar los valores NULL de oneway como "
 "bidireccional. Valor predeterminado es``true``."
 
+#, fuzzy
 msgid ""
 "It is strongly recommended to use the named notation. See :doc:"
-"`pgr_createVerticesTable` or :doc:`pgr_createTopology` for examples."
+"`pgr_createTopology` for examples."
 msgstr ""
 "Es ampliamente recomendable usar la notación nombrada . Ver ejemplos en: :"
 "doc:`pgr_createVerticesTable` o :doc:`pgr_createTopology`."
@@ -9489,9 +9497,8 @@ msgstr ""
 "de ``oneway`` se contara como ``true`` para las condiciones de el origen o "
 "destino **in** o **out** ."
 
-msgid ""
-"The vertices table can be created with :doc:`pgr_createVerticesTable` or :"
-"doc:`pgr_createTopology`"
+#, fuzzy
+msgid "The vertices table can be created with :doc:`pgr_createTopology`"
 msgstr ""
 "Los vértices pueden ser creados con :doc:`pgr_createVerticesTable` o :doc:"
 "`pgr_createTopology`"
@@ -11671,8 +11678,9 @@ msgstr ""
 "En este ejemplo se inicia una topología limpia, con 5 aristas y, a "
 "continuación, se incrementa al resto de los bordes."
 
-msgid "``pgr_createVerticesTable``"
-msgstr "``pgr_createVerticesTable``"
+#, fuzzy
+msgid "``pgr_createVerticesTable`` - Deprecated since 3.8.0"
+msgstr "``pgr_analyzeOneWay`` - Obsoleto desde 3.8.0"
 
 msgid ""
 "``pgr_createVerticesTable`` — Reconstructs the vertices table based on the "
@@ -17885,6 +17893,14 @@ msgstr ""
 "`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: "
 "pgr_analyzeGraph"
 
+#, fuzzy
+msgid ""
+"`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: "
+"pgr_createVerticesTable"
+msgstr ""
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
+"pgr_extractVertices"
+
 msgid "Official functions changes"
 msgstr "Cambios en las funciones oficiales"
 
@@ -21556,6 +21572,24 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#~ msgid "Use :doc:`pgr_createVerticesTable` to create the vertices table."
+#~ msgstr "Use :doc:`pgr_createVerticesTable` para crear la tabla de vértices."
+
+#~ msgid ""
+#~ "The vertices table can be created with :doc:`pgr_createVerticesTable "
+#~ "<pgr_createVerticesTable>` or :doc:`pgr_createTopology "
+#~ "<pgr_createTopology>`"
+#~ msgstr ""
+#~ "Los vértices pueden ser creados con :doc:`pgr_createVerticesTable "
+#~ "<pgr_createVerticesTable>` o :doc:`pgr_createTopology "
+#~ "<pgr_createTopology>`"
+
+#~ msgid ":doc:`pgr_createVerticesTable`"
+#~ msgstr ":doc:`pgr_createVerticesTable`"
+
+#~ msgid "``pgr_createVerticesTable``"
+#~ msgstr "``pgr_createVerticesTable``"
 
 #~ msgid ""
 #~ "``integer`` Number of vertices in the edge_table that reference this "

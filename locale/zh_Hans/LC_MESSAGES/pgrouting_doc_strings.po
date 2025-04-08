@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-05 21:44+0000\n"
+"POT-Creation-Date: 2025-04-08 14:07+0000\n"
 "PO-Revision-Date: 2025-04-03 09:47+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -4279,8 +4279,8 @@ msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr "所有已弃用的函数将在下一个主要版本 4.0.0 中被移除"
 
 #, fuzzy
-msgid "Migration of ``pgr_analyzeOneWay``"
-msgstr "``pgr_aStar`` 迁移"
+msgid "Migration of ``pgr_createVerticesTable``"
+msgstr "迁移 ``pgr_trspViaVertices``"
 
 #, fuzzy
 msgid ""
@@ -4289,6 +4289,18 @@ msgstr "开始从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__"
 
 msgid "**Before Deprecation:** The following was calculated:"
 msgstr ""
+
+msgid "A table with `<edges>_vertices_pgr` was created."
+msgstr ""
+
+msgid ""
+"**After Deprecation:** The user is responsible to create the vertices table, "
+"indexes, etc. They may use :doc:`pgr_extractVertices` for that purpose."
+msgstr ""
+
+#, fuzzy
+msgid "Migration of ``pgr_analyzeOneWay``"
+msgstr "``pgr_aStar`` 迁移"
 
 msgid "Number of potential problems in directionality"
 msgstr ""
@@ -8463,9 +8475,6 @@ msgstr ""
 "待分析的边表必须包含源列和目标列，其中填充了线段顶点的id以及对应的存储顶点信"
 "息的顶点表<edge_table>_vertices_pgr。"
 
-msgid "Use :doc:`pgr_createVerticesTable` to create the vertices table."
-msgstr "使用 :doc:`pgr_createVerticesTable` 建立顶点表。"
-
 msgid ""
 "Use :doc:`pgr_createTopology` to create the topology and the vertices table."
 msgstr "使用 :doc:`pgr_createTopology` 建立拓扑和顶点表。"
@@ -8556,12 +8565,13 @@ msgstr "无法确定几何图形的 SRID。"
 msgid "The Vertices Table"
 msgstr "顶点表"
 
+#, fuzzy
 msgid ""
-"The vertices table can be created with :doc:`pgr_createVerticesTable "
-"<pgr_createVerticesTable>` or :doc:`pgr_createTopology <pgr_createTopology>`"
+"The vertices table can be created with :doc:`pgr_createTopology "
+"<pgr_createTopology>`"
 msgstr ""
-"顶点表可以使用 :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` 或 :"
-"doc:`pgr_createTopology <pgr_createTopology>` 创建"
+"顶点表可以使用 :doc:`pgr_createVerticesTable` 或 :doc:`pgr_createTopology` 创"
+"建"
 
 msgid "The structure of the vertices table is:"
 msgstr "顶点表的结构为："
@@ -8702,9 +8712,6 @@ msgstr ""
 msgid ":doc:`pgr_analyzeOneWay`"
 msgstr ":doc:`pgr_analyzeOneWay`"
 
-msgid ":doc:`pgr_createVerticesTable`"
-msgstr ":doc:`pgr_createVerticesTable`"
-
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ":doc:`pgr_nodeNetwork` 创建节点到非节点边表。"
 
@@ -8815,9 +8822,10 @@ msgid ""
 "value is ``true``."
 msgstr "``boolean`` 将单向 NULL 值视为双向的标志。 默认值为 ``true``。"
 
+#, fuzzy
 msgid ""
 "It is strongly recommended to use the named notation. See :doc:"
-"`pgr_createVerticesTable` or :doc:`pgr_createTopology` for examples."
+"`pgr_createTopology` for examples."
 msgstr ""
 "强烈建议使用命名符号。 有关示例，请参阅 :doc:`pgr_createVerticesTable` 或 :"
 "doc:`pgr_createTopology`。"
@@ -8837,9 +8845,8 @@ msgstr ""
 "这些规则被定义为文本字符串数组，如果与 ``oneway`` 值匹配，则 source或 target "
 "**输入** 或 **输出** 条件将被视为 ``true``。"
 
-msgid ""
-"The vertices table can be created with :doc:`pgr_createVerticesTable` or :"
-"doc:`pgr_createTopology`"
+#, fuzzy
+msgid "The vertices table can be created with :doc:`pgr_createTopology`"
 msgstr ""
 "顶点表可以使用 :doc:`pgr_createVerticesTable` 或 :doc:`pgr_createTopology` 创"
 "建"
@@ -10930,8 +10937,9 @@ msgid ""
 "to the rest of the edges."
 msgstr "该示例以 5 条边的简洁拓扑结构为起点，然后递增到其余的边。"
 
-msgid "``pgr_createVerticesTable``"
-msgstr "``pgr_createVerticesTable``"
+#, fuzzy
+msgid "``pgr_createVerticesTable`` - Deprecated since 3.8.0"
+msgstr "``pgr_analyzeGraph``"
 
 msgid ""
 "``pgr_createVerticesTable`` — Reconstructs the vertices table based on the "
@@ -16750,6 +16758,14 @@ msgid ""
 msgstr ""
 "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
 
+#, fuzzy
+msgid ""
+"`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: "
+"pgr_createVerticesTable"
+msgstr ""
+"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
+"pgr_extractVertices"
+
 msgid "Official functions changes"
 msgstr "官方功能变更"
 
@@ -20390,6 +20406,23 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
+
+#~ msgid "Use :doc:`pgr_createVerticesTable` to create the vertices table."
+#~ msgstr "使用 :doc:`pgr_createVerticesTable` 建立顶点表。"
+
+#~ msgid ""
+#~ "The vertices table can be created with :doc:`pgr_createVerticesTable "
+#~ "<pgr_createVerticesTable>` or :doc:`pgr_createTopology "
+#~ "<pgr_createTopology>`"
+#~ msgstr ""
+#~ "顶点表可以使用 :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` "
+#~ "或 :doc:`pgr_createTopology <pgr_createTopology>` 创建"
+
+#~ msgid ":doc:`pgr_createVerticesTable`"
+#~ msgstr ":doc:`pgr_createVerticesTable`"
+
+#~ msgid "``pgr_createVerticesTable``"
+#~ msgstr "``pgr_createVerticesTable``"
 
 #~ msgid ""
 #~ "``integer`` Number of vertices in the edge_table that reference this "
