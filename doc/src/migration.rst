@@ -24,6 +24,36 @@ Results can be different because of the changes.
 .. contents:: Contents
    :depth: 2
 
+.. migrate_pgr_alphaShape_start
+
+Migration of ``pgr_alphaShape``
+-------------------------------------------------------------------------------
+
+Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
+
+**Before Deprecation:** The following was calculated:
+
+* An alphaShape was calculated
+
+**After Deprecation:**
+
+PostGIS has two ways of generating alphaShape.
+
+If you have SFCGAL, which you can install using
+
+::
+
+  CREATE EXTENSION postgis_sfcgal
+
+* Since PostGIS 3.5+ use `CG_AlphaShape <https://postgis.net/docs/CG_AlphaShape.html>`__
+* For PostGIS 3.5+ use the old name ``ST_AlphaShape``
+
+Other PostGIS options are
+* `ST_ConvexHull <https://postgis.net/docs/ST_ConvexHull.html>`__
+* `ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__
+
+.. migrate_pgr_alphaShape_end
+
 .. migrate_pgr_createTopology_start
 
 Migration of ``pgr_createTopology``

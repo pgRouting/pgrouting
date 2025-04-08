@@ -267,7 +267,6 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`pgr_drivingDistance`
-* :doc:`pgr_alphaShape`
 * :doc:`sampledata`
 
 .. rubric:: Indices and tables
