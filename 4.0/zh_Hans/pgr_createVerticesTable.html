@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_createVerticesTable &#8212; pgRouting Manual (4.0-dev)</title>
+    <title>pgr_createVerticesTable - Deprecated since 3.8.0 &#8212; pgRouting Manual (4.0-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=2cddd619"></script>
+    <script src="_static/page_history.js?v=b0b9b03d"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -96,7 +96,8 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code> - Deprecated since 3.8.0</a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-createverticestable">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></li>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a></li>
@@ -151,7 +152,8 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code> - Deprecated since 3.8.0</a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-createverticestable">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></li>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a></li>
@@ -187,11 +189,16 @@
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
-<section id="pgr-createverticestable">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code><a class="headerlink" href="#pgr-createverticestable" title="Link to this heading">¶</a></h1>
+<section id="pgr-createverticestable-deprecated-since-3-8-0">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code> - Deprecated since 3.8.0<a class="headerlink" href="#pgr-createverticestable-deprecated-since-3-8-0" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code> — 根据 source和target信息重建顶点表。</p>
 <p class="rubric">可用性</p>
 <ul class="simple">
+<li><p>Version 3.8.0</p>
+<ul>
+<li><p>Deprecated function.</p></li>
+</ul>
+</li>
 <li><p>版本2.0.0</p>
 <ul>
 <li><p>官方 函数</p></li>
@@ -199,6 +206,21 @@
 </ul>
 </li>
 </ul>
+<section id="migration-of-pgr-createverticestable">
+<h2>Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code><a class="headerlink" href="#migration-of-pgr-createverticestable" title="Link to this heading">¶</a></h2>
+<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<ul class="simple">
+<li><p>A table with <cite>&lt;edges&gt;_vertices_pgr</cite> was created.</p></li>
+</ul>
+<p><strong>After Deprecation:</strong> The user is responsible to create the vertices table,
+indexes, etc. They may use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> for that purpose.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">17</span>
+</pre></div>
+</div>
+</section>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>函数返回：</p>
@@ -296,6 +318,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -322,6 +345,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -344,6 +368,7 @@
 <p class="admonition-title">Warning</p>
 <p>当参数没有按照适当的顺序提供时，将会发生错误：在这个例子中，表 <code class="docutils literal notranslate"><span class="pre">mytable</span></code> 的源列 <code class="docutils literal notranslate"><span class="pre">source</span></code> 被错误地传递给函数作为几何列，而几何列``the_geom`` 被错误地传递给函数作为源列。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -365,6 +390,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -388,6 +414,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;geom&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -411,6 +438,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -435,6 +463,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -459,6 +488,7 @@
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;geom &amp;&amp; (select st_buffer(geom,0.5) FROM edges WHERE id=5)&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;geom &amp;&amp; (select st_buffer(geom,0.5) FROM edges WHERE id=5)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -488,6 +518,7 @@
 <span class="n">SELECT</span> <span class="mi">1</span>
 <span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;geom &amp;&amp; (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;geom &amp;&amp; (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -522,6 +553,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -544,6 +576,7 @@
 <p>当参数没有按照适当的顺序提供时，会发生错误。在这个例子中，表 <code class="docutils literal notranslate"><span class="pre">mytable</span></code> 的``src`` 列被错误地传递给函数作为几何列，而几何列 <code class="docutils literal notranslate"><span class="pre">mygeom</span></code> 被错误地传递给函数作为源列。</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -566,6 +599,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -592,6 +626,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
     <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
     <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -618,6 +653,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
     <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -643,6 +679,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
     <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -668,6 +705,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
     <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -689,6 +727,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
     <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE id=5)&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE id=5)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -716,6 +755,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
     <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -737,6 +777,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
     <span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createverticestable</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>

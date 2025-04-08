@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=2cddd619"></script>
+    <script src="_static/page_history.js?v=b0b9b03d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -257,7 +257,6 @@ only one way.</p>
 <p class="rubric">Pre-requisitos</p>
 <p>La tabla de aristas a analizar debe contener una columna origen y una columna destino rellenas con identificadores de los vértices de los segmentos y la correspondiente tabla de vértices &lt;edge_table&gt;_vertices_pgr que almacena la información de los vértices.</p>
 <ul class="simple">
-<li><p>Use <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> para crear la tabla de vértices.</p></li>
 <li><p>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> para crear la topología y los vértices.</p></li>
 </ul>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
@@ -308,7 +307,8 @@ only one way.</p>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Es ampliamente recomendable usar la notación nombrada . Ver ejemplos en: <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> o <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a>.</p>
+<p>It is strongly recommended to use the named notation. See
+<a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> for examples.</p>
 </div>
 <p>La función devuelve:</p>
 <ul class="simple">
@@ -328,7 +328,8 @@ only one way.</p>
 </ul>
 <p>Las reglas se definen como un conjunto de textos que si encajan con el valor de <code class="docutils literal notranslate"><span class="pre">oneway</span></code> se contara como <code class="docutils literal notranslate"><span class="pre">true</span></code> para las condiciones de el origen o destino <strong>in</strong> o <strong>out</strong> .</p>
 <p class="rubric">La tabla de vértices</p>
-<p>Los vértices pueden ser creados con <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> o <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
+<p>The vertices table can be created with
+<a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
 <p>La estructura de la tabla de los vértices es:</p>
 <dl class="field-list simple">
 <dt class="field-odd">id<span class="colon">:</span></dt>
@@ -403,7 +404,6 @@ only one way.</p>
 <h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
