@@ -216,7 +216,7 @@ var filesArr = [
     ]),
     new createInfo('pgr_createVerticesTable', '2.0', [
         { v: '2.1', n: 'src/common/doc/functions/create_vert_table'},
-        { v: '2.3', n: 'src/topology/doc/pgr_createVerticesTable'},
+        { v: '2.3', n: 'src/topology/doc/pgr_createVerticesTable'}, 3.8
     ]),
     new createInfo('pgr_createTopology', '2.0', [
         { v: '2.1', n: 'src/common/doc/functions/create_topology'},

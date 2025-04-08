@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=b671dda4"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=2cddd619"></script>
+    <script src="_static/page_history.js?v=b0b9b03d"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -256,7 +256,6 @@ only one way.</p>
 <p class="rubric">先决条件</p>
 <p>待分析的边表必须包含源列和目标列，其中填充了线段顶点的id以及对应的存储顶点信息的顶点表&lt;edge_table&gt;_vertices_pgr。</p>
 <ul class="simple">
-<li><p>使用 <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> 建立顶点表。</p></li>
 <li><p>使用 <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> 建立拓扑和顶点表。</p></li>
 </ul>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
@@ -307,7 +306,8 @@ only one way.</p>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>强烈建议使用命名符号。 有关示例，请参阅 <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> 或 <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a>。</p>
+<p>It is strongly recommended to use the named notation. See
+<a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> for examples.</p>
 </div>
 <p>函数返回：</p>
 <ul class="simple">
@@ -327,7 +327,8 @@ only one way.</p>
 </ul>
 <p>这些规则被定义为文本字符串数组，如果与 <code class="docutils literal notranslate"><span class="pre">oneway</span></code> 值匹配，则 source或 target <strong>输入</strong> 或 <strong>输出</strong> 条件将被视为 <code class="docutils literal notranslate"><span class="pre">true</span></code>。</p>
 <p class="rubric">顶点表</p>
-<p>顶点表可以使用 <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> 或 <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> 创建</p>
+<p>The vertices table can be created with
+<a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
 <p>顶点表的结构为：</p>
 <dl class="field-list simple">
 <dt class="field-odd">id<span class="colon">:</span></dt>
@@ -402,7 +403,6 @@ only one way.</p>
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - 函数族</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
@@ -426,7 +426,7 @@ only one way.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 4月 05, 2025.<br/>
+      Last updated on 4月 08, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

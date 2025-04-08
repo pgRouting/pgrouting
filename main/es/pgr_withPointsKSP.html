@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=0610ec03"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=2cddd619"></script>
+    <script src="_static/page_history.js?v=b0b9b03d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -239,7 +239,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> - Proposed<a class="headerlink" href="#pgr-withpointsksp-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> - Encuentra las rutas más cortas de K usando el algoritmo de Yen.</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="03aec216-3710-4992-9993-dc8e4c062980" name="03aec216-3710-4992-9993-dc8e4c062980" type="checkbox"><label class="sphinx_collapse__label" for="03aec216-3710-4992-9993-dc8e4c062980"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="2d4f09ec-9b45-4622-9c4f-86f52638f5cf" name="2d4f09ec-9b45-4622-9c4f-86f52638f5cf" type="checkbox"><label class="sphinx_collapse__label" for="2d4f09ec-9b45-4622-9c4f-86f52638f5cf"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -297,11 +297,11 @@ unnamed compulsory <strong>driving side</strong>.</p></li>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salida</strong>, <strong>destino</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
-<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salida</strong>, <strong>destinos</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
-<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salidas</strong>, <strong>destino</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
-<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salidas</strong>, <strong>destinos</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
-<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
+<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#points-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salida</strong>, <strong>destino</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
+<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#points-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salida</strong>, <strong>destinos</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
+<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#points-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salidas</strong>, <strong>destino</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
+<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#points-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salidas</strong>, <strong>destinos</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
+<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#points-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
 <div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">details]</span></code></div>
 </div>
 <div class="line-block">
@@ -314,7 +314,7 @@ unnamed compulsory <strong>driving side</strong>.</p></li>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salida</strong>, <strong>destino</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
+<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#points-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salida</strong>, <strong>destino</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
 <div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">details]</span></code></div>
 </div>
 <div class="line-block">
@@ -361,7 +361,7 @@ unnamed compulsory <strong>driving side</strong>.</p></li>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salida</strong>, <strong>destinos</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
+<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#points-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salida</strong>, <strong>destinos</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
 <div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">details]</span></code></div>
 </div>
 <div class="line-block">
@@ -410,7 +410,7 @@ unnamed compulsory <strong>driving side</strong>.</p></li>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salidas</strong>, <strong>destino</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
+<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#points-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salidas</strong>, <strong>destino</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
 <div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">details]</span></code></div>
 </div>
 <div class="line-block">
@@ -451,7 +451,7 @@ unnamed compulsory <strong>driving side</strong>.</p></li>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salidas</strong>, <strong>destinos</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
+<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#points-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salidas</strong>, <strong>destinos</strong>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
 <div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">details]</span></code></div>
 </div>
 <div class="line-block">
@@ -498,7 +498,7 @@ unnamed compulsory <strong>driving side</strong>.</p></li>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
+<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#points-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, <strong>K</strong>, <strong>lado de manejo</strong>, [<strong>opciones</strong>])</div>
 <div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">details]</span></code></div>
 </div>
 <div class="line-block">
@@ -1033,7 +1033,7 @@ unnamed compulsory <strong>driving side</strong>.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en abr 05, 2025.<br/>
+      Actualizado por última vez en abr 08, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
