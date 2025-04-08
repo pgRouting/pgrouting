@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-08 17:43+0000\n"
+"POT-Creation-Date: 2025-04-08 19:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3960,6 +3960,11 @@ msgid "Deprecation of functions."
 msgstr ""
 
 msgid ""
+"`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: "
+"pgr_alphaShape"
+msgstr ""
+
+msgid ""
 "`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
 "pgr_analyzeOneWay"
 msgstr ""
@@ -4057,7 +4062,7 @@ msgstr ""
 msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr ""
 
-msgid "Migration of ``pgr_createTopology``"
+msgid "Migration of ``pgr_alphaShape``"
 msgstr ""
 
 msgid ""
@@ -4066,6 +4071,35 @@ msgid ""
 msgstr ""
 
 msgid "**Before Deprecation:** The following was calculated:"
+msgstr ""
+
+msgid "An alphaShape was calculated"
+msgstr ""
+
+msgid "**After Deprecation:**"
+msgstr ""
+
+msgid "PostGIS has two ways of generating alphaShape."
+msgstr ""
+
+msgid "If you have SFCGAL, which you can install using"
+msgstr ""
+
+msgid ""
+"Since PostGIS 3.5+ use `CG_AlphaShape "
+"<https://postgis.net/docs/CG_AlphaShape.html>`__"
+msgstr ""
+
+msgid "For PostGIS 3.5+ use the old name ``ST_AlphaShape``"
+msgstr ""
+
+msgid ""
+"Other PostGIS options are * `ST_ConvexHull "
+"<https://postgis.net/docs/ST_ConvexHull.html>`__ * `ST_ConcaveHull "
+"<https://postgis.net/docs/ST_ConcaveHull.html>`__"
+msgstr ""
+
+msgid "Migration of ``pgr_createTopology``"
 msgstr ""
 
 msgid "A table with `<edges>_vertices_pgr` was created."
@@ -7828,6 +7862,12 @@ msgstr ""
 msgid "``pgr_alphaShape`` — Polygon part of an alpha shape."
 msgstr ""
 
+msgid "Version 3.8.0"
+msgstr ""
+
+msgid "Deprecated function."
+msgstr ""
+
 msgid "Breaking change on signature"
 msgstr ""
 
@@ -7847,9 +7887,6 @@ msgid "Support to return multiple outer/inner ring"
 msgstr ""
 
 msgid "Renamed from version 1.x"
-msgstr ""
-
-msgid "Support"
 msgstr ""
 
 msgid "Returns the polygon part of an alpha shape."
@@ -7926,12 +7963,6 @@ msgid "``pgr_analyzeGraph`` -- Deprecated since 3.8.0"
 msgstr ""
 
 msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
-msgstr ""
-
-msgid "Version 3.8.0"
-msgstr ""
-
-msgid "Deprecated function."
 msgstr ""
 
 msgid "The function returns:"
@@ -15123,9 +15154,6 @@ msgid ""
 "driving side, with details."
 msgstr ""
 
-msgid ":doc:`pgr_alphaShape`"
-msgstr ""
-
 msgid "``pgr_withPointsKSP`` - Proposed"
 msgstr ""
 
@@ -15483,6 +15511,9 @@ msgid ""
 "To see all issues & pull requests closed by this release see the `Git "
 "closed milestone for 3.7.0 "
 "<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+msgstr ""
+
+msgid "Support"
 msgstr ""
 
 msgid ""
