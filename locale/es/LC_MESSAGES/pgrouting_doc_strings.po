@@ -6737,6 +6737,8 @@ msgid ""
 "Node :math:`4`, is a dead end on the query, even that it visually looks like "
 "an end point of 3 edges."
 msgstr ""
+"El nodo :math:`4`, es un callejón sin salida en la consulta, aunque "
+"visualmente parezca un punto final de 3 aristas."
 
 msgid "Is node :math:`4` a dead end or not?"
 msgstr ""
