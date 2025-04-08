@@ -40,6 +40,7 @@ geom      geometry;
 delauny_query   TEXT;
 
 BEGIN
+    RAISE WARNING 'pgr_alphashape(geometry,double precision) deprecated function on v3.8.0';
     delauny_query = format($$
         WITH
         original AS (
@@ -83,11 +84,4 @@ LANGUAGE plpgsql VOLATILE STRICT
 COST 100;
 
 COMMENT ON FUNCTION pgr_alphashape(geometry, FLOAT)
-IS 'pgr_alphaShape
-- Parameters
-	- An SQL with columns: geom
-- Optional Parameters
-	- alpha := 0
-- Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_alphaShape.html
-';
+IS 'pgr_alphaShape deprecated function on v3.8.0';

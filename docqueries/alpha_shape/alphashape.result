@@ -5,6 +5,7 @@ SET
 /* -- q1 */
 SELECT ST_Area(pgr_alphaShape((SELECT ST_Collect(geom)
       FROM vertices), 1.5));
+WARNING:  pgr_alphashape(geometry,double precision) deprecated function on v3.8.0
  st_area
 ---------
     9.75
