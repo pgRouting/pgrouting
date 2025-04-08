@@ -261,7 +261,7 @@ var filesArr = [
     ]),
     new createInfo('pgr_alphaShape', '2.0', [
         { v: '2.1', n: 'src/driving_distance/doc/dd_alphashape'},
-        { v: '2.3', n: 'src/alpha_shape/doc/pgr_alphaShape'}
+        { v: '2.3', n: 'src/alpha_shape/doc/pgr_alphaShape'}, 3.8
     ]),
 
 ];

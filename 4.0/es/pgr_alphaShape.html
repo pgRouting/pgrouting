@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=6d677d2e"></script>
+    <script src="_static/page_history.js?v=1eeba500"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -99,6 +99,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-alphashape">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
@@ -151,6 +152,7 @@
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
 <li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-alphashape">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
@@ -188,6 +190,11 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code> —Parte poligonal de una forma alfa.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
+<li><p>Versión 3.8.0</p>
+<ul>
+<li><p>Deprecated function.</p></li>
+</ul>
+</li>
 <li><p>Versión 3.0.0</p>
 <ul>
 <li><p>Cambio de ruptura en la firma</p></li>
@@ -213,7 +220,27 @@
 </ul>
 </li>
 </ul>
-<p class="rubric">Soporte</p>
+<section id="migration-of-pgr-alphashape">
+<h2>Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code><a class="headerlink" href="#migration-of-pgr-alphashape" title="Link to this heading">¶</a></h2>
+<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<ul class="simple">
+<li><p>An alphaShape was calculated</p></li>
+</ul>
+<p><strong>After Deprecation:</strong></p>
+<p>PostGIS has two ways of generating alphaShape.</p>
+<p>If you have SFCGAL, which you can install using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">EXTENSION</span> <span class="n">postgis_sfcgal</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Since PostGIS 3.5+ use <a class="reference external" href="https://postgis.net/docs/CG_AlphaShape.html">CG_AlphaShape</a></p></li>
+<li><p>For PostGIS 3.5+ use the old name <code class="docutils literal notranslate"><span class="pre">ST_AlphaShape</span></code></p></li>
+</ul>
+<p>Other PostGIS options are
+* <a class="reference external" href="https://postgis.net/docs/ST_ConvexHull.html">ST_ConvexHull</a>
+* <a class="reference external" href="https://postgis.net/docs/ST_ConcaveHull.html">ST_ConcaveHull</a></p>
+</section>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>Devuelve la parte poligonal de una forma alfa.</p>
@@ -250,6 +277,7 @@
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_alphaShape</span><span class="p">((</span><span class="n">SELECT</span> <span class="n">ST_Collect</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
       <span class="n">FROM</span> <span class="n">vertices</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">));</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_alphashape</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">st_area</span>
 <span class="o">---------</span>
     <span class="mf">9.75</span>
