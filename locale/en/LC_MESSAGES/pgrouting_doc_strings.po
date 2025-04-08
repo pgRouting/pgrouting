@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-08 12:57+0000\n"
+"POT-Creation-Date: 2025-04-08 17:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3970,6 +3970,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: "
+"pgr_createTopology"
+msgstr ""
+
+msgid ""
 "`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: "
 "pgr_createVerticesTable"
 msgstr ""
@@ -4052,7 +4057,7 @@ msgstr ""
 msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr ""
 
-msgid "Migration of ``pgr_createVerticesTable``"
+msgid "Migration of ``pgr_createTopology``"
 msgstr ""
 
 msgid ""
@@ -4064,6 +4069,59 @@ msgid "**Before Deprecation:** The following was calculated:"
 msgstr ""
 
 msgid "A table with `<edges>_vertices_pgr` was created."
+msgstr ""
+
+msgid ""
+"**After Deprecation:** The user is responsible to create the complete "
+"topology."
+msgstr ""
+
+msgid "Build a routing topology"
+msgstr ""
+
+msgid ""
+"The basic information to use the majority of the pgRouting functions "
+"``id, source, target, cost, [reverse_cost]`` is what in pgRouting is "
+"called the routing topology."
+msgstr ""
+
+msgid ""
+"``reverse_cost`` is optional but strongly recommended to have in order to"
+" reduce the size of the database due to the size of the geometry columns."
+" Having said that, in this documentation ``reverse_cost`` is used in this"
+" documentation."
+msgstr ""
+
+msgid ""
+"When the data comes with geometries and there is no routing topology, "
+"then this step is needed."
+msgstr ""
+
+msgid ""
+"All the start and end vertices of the geometries need an identifier that "
+"is to be stored in a ``source`` and ``target`` columns of the table of "
+"the data. Likewise, ``cost`` and ``reverse_cost`` need to have the value "
+"of traversing the edge in both directions."
+msgstr ""
+
+msgid ""
+"If the columns do not exist they need to be added to the table in "
+"question. (see `ALTER TABLE <https://www.postgresql.org/docs/current/sql-"
+"altertable.html>`__)"
+msgstr ""
+
+msgid ""
+"The function :doc:`pgr_extractVertices` is used to create a vertices "
+"table based on the edge identifier and the geometry of the edge of the "
+"graph."
+msgstr ""
+
+msgid ""
+"Finally using the data stored on the vertices tables the ``source`` and "
+"``target`` are filled up."
+msgstr ""
+
+msgid "Migration of ``pgr_createVerticesTable``"
 msgstr ""
 
 msgid ""
@@ -5548,54 +5606,6 @@ msgstr ""
 msgid ""
 "Please consult the `PostgreSQL <https://www.postgresql.org/docs/>`__ "
 "documentation and the `PostGIS <https://postgis.net/>`__ documentation."
-msgstr ""
-
-msgid "Build a routing topology"
-msgstr ""
-
-msgid ""
-"The basic information to use the majority of the pgRouting functions "
-"``id, source, target, cost, [reverse_cost]`` is what in pgRouting is "
-"called the routing topology."
-msgstr ""
-
-msgid ""
-"``reverse_cost`` is optional but strongly recommended to have in order to"
-" reduce the size of the database due to the size of the geometry columns."
-" Having said that, in this documentation ``reverse_cost`` is used in this"
-" documentation."
-msgstr ""
-
-msgid ""
-"When the data comes with geometries and there is no routing topology, "
-"then this step is needed."
-msgstr ""
-
-msgid ""
-"All the start and end vertices of the geometries need an identifier that "
-"is to be stored in a ``source`` and ``target`` columns of the table of "
-"the data. Likewise, ``cost`` and ``reverse_cost`` need to have the value "
-"of traversing the edge in both directions."
-msgstr ""
-
-msgid ""
-"If the columns do not exist they need to be added to the table in "
-"question. (see `ALTER TABLE <https://www.postgresql.org/docs/current/sql-"
-"altertable.html>`__)"
-msgstr ""
-
-msgid ""
-"The function :doc:`pgr_extractVertices` is used to create a vertices "
-"table based on the edge identifier and the geometry of the edge of the "
-"graph."
-msgstr ""
-
-msgid ""
-"Finally using the data stored on the vertices tables the ``source`` and "
-"``target`` are filled up."
-msgstr ""
-
-msgid "See :doc:`sampledata` for an example for building a topology."
 msgstr ""
 
 msgid ""
@@ -7952,11 +7962,6 @@ msgid ""
 "vertices information."
 msgstr ""
 
-msgid ""
-"Use :doc:`pgr_createTopology` to create the topology and the vertices "
-"table."
-msgstr ""
-
 msgid "The analyze graph function accepts the following parameters:"
 msgstr ""
 
@@ -8041,11 +8046,6 @@ msgid "The SRID of the geometry could not be determined."
 msgstr ""
 
 msgid "The Vertices Table"
-msgstr ""
-
-msgid ""
-"The vertices table can be created with :doc:`pgr_createTopology "
-"<pgr_createTopology>`"
 msgstr ""
 
 msgid "The structure of the vertices table is:"
@@ -8276,11 +8276,6 @@ msgid ""
 "value is ``true``."
 msgstr ""
 
-msgid ""
-"It is strongly recommended to use the named notation. See "
-":doc:`pgr_createTopology` for examples."
-msgstr ""
-
 msgid "Fills completely the ``ein`` and ``eout`` columns of the vertices table."
 msgstr ""
 
@@ -8291,9 +8286,6 @@ msgid ""
 "The rules are defined as an array of text strings that if match the "
 "``oneway`` value would be counted as ``true`` for the source or target "
 "**in** or **out** condition."
-msgstr ""
-
-msgid "The vertices table can be created with :doc:`pgr_createTopology`"
 msgstr ""
 
 msgid "``pgr_articulationPoints``"
@@ -9657,9 +9649,6 @@ msgstr ""
 msgid "Node :math:`3` is a dead end node after node :math:`1` is contracted."
 msgstr ""
 
-msgid "``forbidden_vertices``"
-msgstr ""
-
 msgid "``ARRAY[`` |ANY-INTEGER| ``]``"
 msgstr ""
 
@@ -9960,7 +9949,7 @@ msgstr ""
 msgid "Create the contracted graph."
 msgstr ""
 
-msgid "``pgr_createTopology``"
+msgid "``pgr_createTopology`` - Deprecated since v3.8.0"
 msgstr ""
 
 msgid ""
@@ -10274,11 +10263,6 @@ msgstr ""
 msgid ""
 ":doc:`topology-functions` for an overview of a topology for routing "
 "algorithms."
-msgstr ""
-
-msgid ""
-":doc:`pgr_createTopology` <pgr_create_topology>` to create a topology "
-"based on the geometry."
 msgstr ""
 
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
@@ -13194,9 +13178,6 @@ msgid ""
 "returned."
 msgstr ""
 
-msgid "There is no flow when source has the same vaule as target."
-msgstr ""
-
 msgid "Uses the :doc:`pgr_pushRelabel <pgr_pushRelabel>` algorithm."
 msgstr ""
 
@@ -13401,14 +13382,10 @@ msgstr ""
 msgid "``integer`` Segment number of the original edge"
 msgstr ""
 
-msgid ""
-"``integer`` Empty source column to be used with :doc:`pgr_createTopology`"
-" function"
+msgid "``integer`` Empty source column"
 msgstr ""
 
-msgid ""
-"``integer`` Empty target column to be used with :doc:`pgr_createTopology`"
-" function"
+msgid "``integer`` Empty target column"
 msgstr ""
 
 msgid "the geom"
@@ -13473,12 +13450,6 @@ msgstr ""
 msgid ""
 "Inspecting the generated table, we can see that edge 14 has been "
 "segmented."
-msgstr ""
-
-msgid ""
-":doc:`topology-functions` for an overview of a topology for routing "
-"algorithms. :doc:`pgr_createTopology` to create a topology based on the "
-"geometry."
 msgstr ""
 
 msgid "``pgr_pickDeliver`` - Experimental"
