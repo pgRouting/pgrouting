@@ -4692,6 +4692,8 @@ msgid ""
 "A routing problem can arise when from a vertex there is only a way on or a "
 "way out but not both:"
 msgstr ""
+"Un problema de enrutamiento puede surgir cuando desde un vértice sólo hay "
+"una salida o una entrada, pero no ambas:"
 
 msgid ""
 "Either saving or using directly :doc:`pgr_extractVertices` get the dead ends "
