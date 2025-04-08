@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=b0b9b03d"></script>
+    <script src="_static/page_history.js?v=6d677d2e"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -256,9 +256,6 @@ only one way.</p>
 <p>Así contando el número de aristas entrantes y salientes de cada nodo podemos identificar los nodos <cite>source</cite> y <cite>sink</cite>, así que usted puede mirar esas áreas de su red para hacer reparaciones o informar del problema a su proveedor de datos.</p>
 <p class="rubric">Pre-requisitos</p>
 <p>La tabla de aristas a analizar debe contener una columna origen y una columna destino rellenas con identificadores de los vértices de los segmentos y la correspondiente tabla de vértices &lt;edge_table&gt;_vertices_pgr que almacena la información de los vértices.</p>
-<ul class="simple">
-<li><p>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> para crear la topología y los vértices.</p></li>
-</ul>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
@@ -305,11 +302,6 @@ only one way.</p>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> bandera para tratar los valores NULL de oneway como bidireccional. Valor predeterminado es``true``.</p>
 </dd>
 </dl>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>It is strongly recommended to use the named notation. See
-<a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> for examples.</p>
-</div>
 <p>La función devuelve:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> Cuando el análisis ha terminado.</p>
@@ -328,8 +320,6 @@ only one way.</p>
 </ul>
 <p>Las reglas se definen como un conjunto de textos que si encajan con el valor de <code class="docutils literal notranslate"><span class="pre">oneway</span></code> se contara como <code class="docutils literal notranslate"><span class="pre">true</span></code> para las condiciones de el origen o destino <strong>in</strong> o <strong>out</strong> .</p>
 <p class="rubric">La tabla de vértices</p>
-<p>The vertices table can be created with
-<a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
 <p>La estructura de la tabla de los vértices es:</p>
 <dl class="field-list simple">
 <dt class="field-odd">id<span class="colon">:</span></dt>
@@ -356,20 +346,8 @@ only one way.</p>
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="nb">dir</span> <span class="n">TEXT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
-<span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">0</span> <span class="n">edges</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edges</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edges_vertices_pgr</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
- <span class="n">pgr_createtopology</span>
-<span class="o">--------------------</span>
- <span class="n">OK</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
-
+<span class="n">SELECT</span> <span class="o">*</span><span class="p">,</span> <span class="n">NULL</span><span class="p">::</span><span class="n">INTEGER</span> <span class="n">ein</span><span class="p">,</span> <span class="n">NULL</span><span class="p">::</span><span class="n">INTEGER</span> <span class="n">eout</span> <span class="n">INTO</span> <span class="n">edges_vertices_pgr</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">;</span>
+<span class="n">SELECT</span> <span class="mi">17</span>
 <span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span>
 <span class="nb">dir</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;B&#39;</span>   <span class="o">/*</span> <span class="n">both</span> <span class="n">ways</span> <span class="o">*/</span>
            <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;FT&#39;</span>  <span class="o">/*</span> <span class="n">direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">LINESSTRING</span> <span class="o">*/</span>

@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=b0b9b03d"></script>
+    <script src="_static/page_history.js?v=6d677d2e"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -907,8 +907,26 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p>Todos los vértices iniciales y finales de las geometrías necesitan un identificador que se almacenará en las columnas <code class="docutils literal notranslate"><span class="pre">source</span></code> y <code class="docutils literal notranslate"><span class="pre">target</span></code> de la tabla de los datos. Del mismo modo, <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> necesitan tener el valor de atravesar la arista en ambas direcciones.</p>
 <p>Si las columnas no existen, hay que añadirlas a la tabla en cuestión. (véase <a class="reference external" href="https://www.postgresql.org/docs/current/sql-altertable.html">ALTER TABLE</a>)</p>
 <p>La función <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> se utiliza para crear una tabla de vértices basada en el identificador de arista y la geometría de la arista del grafo.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">18</span>
+</pre></div>
+</div>
 <p>Finalmente, utilizando los datos almacenados en las tablas de vértices, se rellenan los campos <code class="docutils literal notranslate"><span class="pre">source</span></code> y <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
-<p>Consulte <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> para ver un ejemplo de construcción de una topología.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">22</span>
+<span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">target</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">22</span>
+</pre></div>
+</div>
 <p>Los datos procedentes de OSM y utilizando <code class="docutils literal notranslate"><span class="pre">osm2pgrouting</span> <span class="pre">&lt;https://github.com/pgRouting/osm2pgrouting&gt;`__</span> <span class="pre">como</span> <span class="pre">herramienta</span> <span class="pre">de</span> <span class="pre">importación,</span> <span class="pre">vienen</span> <span class="pre">con</span> <span class="pre">la</span> <span class="pre">topología</span> <span class="pre">de</span> <span class="pre">ruteo.</span> <span class="pre">Ver</span> <span class="pre">un</span> <span class="pre">ejemplo</span> <span class="pre">de</span> <span class="pre">uso</span> <span class="pre">de</span> <span class="pre">``osm2pgrouting</span></code> en el <a class="reference external" href="https://workshop.pgrouting.org/latest/en/basic/data.html">workshop</a>.</p>
 </section>
 <section id="adjust-costs">
