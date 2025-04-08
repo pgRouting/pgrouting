@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-08 14:07+0000\n"
+"POT-Creation-Date: 2025-04-08 20:02+0000\n"
 "PO-Revision-Date: 2025-04-03 09:47+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -4279,7 +4279,7 @@ msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr "所有已弃用的函数将在下一个主要版本 4.0.0 中被移除"
 
 #, fuzzy
-msgid "Migration of ``pgr_createVerticesTable``"
+msgid "Migration of ``pgr_createTopology``"
 msgstr "迁移 ``pgr_trspViaVertices``"
 
 #, fuzzy
@@ -4292,6 +4292,69 @@ msgstr ""
 
 msgid "A table with `<edges>_vertices_pgr` was created."
 msgstr ""
+
+msgid ""
+"**After Deprecation:** The user is responsible to create the complete "
+"topology."
+msgstr ""
+
+msgid "Build a routing topology"
+msgstr "构建路由拓扑"
+
+msgid ""
+"The basic information to use the majority of the pgRouting functions ``id, "
+"source, target, cost, [reverse_cost]`` is what in pgRouting is called the "
+"routing topology."
+msgstr ""
+"使用大多数 pgRouting 函数的基本信息``id, source, target, cost, "
+"[reverse_cost]`` 在 pgRouting 中被称为路由拓扑。"
+
+msgid ""
+"``reverse_cost`` is optional but strongly recommended to have in order to "
+"reduce the size of the database due to the size of the geometry columns. "
+"Having said that, in this documentation ``reverse_cost`` is used in this "
+"documentation."
+msgstr ""
+"``reverse_cost`` 是可选的，但强烈建议使用，以便由于几何列的大小而减小数据库的"
+"大小。 话虽如此，在本文档中使用了 ``reverse_cost``。"
+
+msgid ""
+"When the data comes with geometries and there is no routing topology, then "
+"this step is needed."
+msgstr "当数据带有几何图形并且没有路由拓扑时，则需要此步骤。"
+
+msgid ""
+"All the start and end vertices of the geometries need an identifier that is "
+"to be stored in a ``source`` and ``target`` columns of the table of the "
+"data. Likewise, ``cost`` and ``reverse_cost`` need to have the value of "
+"traversing the edge in both directions."
+msgstr ""
+"几何图的所有开始和结束顶点都需要一个标识符，该标识符将存储在数据表的"
+"``source``列和``target``列中。 同样，``cost`` 和 ``reverse_cost`` 需要具有在"
+"两个方向上遍历边的值。"
+
+msgid ""
+"If the columns do not exist they need to be added to the table in question. "
+"(see `ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable."
+"html>`__)"
+msgstr ""
+"如果这些列不存在，则需要将它们添加到相关表中。 （参见`ALTER TABLE <https://"
+"www.postgresql.org/docs/current/sql-altertable.html>`__ ）"
+
+msgid ""
+"The function :doc:`pgr_extractVertices` is used to create a vertices table "
+"based on the edge identifier and the geometry of the edge of the graph."
+msgstr ""
+"函数 :doc:`pgr_extractVertices` 用于根据边标识符和图边的几何形状创建顶点表。"
+
+msgid ""
+"Finally using the data stored on the vertices tables the ``source`` and "
+"``target`` are filled up."
+msgstr "最后使用存储在顶点表上的数据填充 ``source`` 和``target``。"
+
+#, fuzzy
+msgid "Migration of ``pgr_createVerticesTable``"
+msgstr "迁移 ``pgr_trspViaVertices``"
 
 msgid ""
 "**After Deprecation:** The user is responsible to create the vertices table, "
@@ -5895,63 +5958,6 @@ msgid ""
 msgstr ""
 "请查阅`PostgreSQL <https://www.postgresql.org/docs/>`__ 文档和 `PostGIS "
 "<https://postgis.net/>`__ 文档。"
-
-msgid "Build a routing topology"
-msgstr "构建路由拓扑"
-
-msgid ""
-"The basic information to use the majority of the pgRouting functions ``id, "
-"source, target, cost, [reverse_cost]`` is what in pgRouting is called the "
-"routing topology."
-msgstr ""
-"使用大多数 pgRouting 函数的基本信息``id, source, target, cost, "
-"[reverse_cost]`` 在 pgRouting 中被称为路由拓扑。"
-
-msgid ""
-"``reverse_cost`` is optional but strongly recommended to have in order to "
-"reduce the size of the database due to the size of the geometry columns. "
-"Having said that, in this documentation ``reverse_cost`` is used in this "
-"documentation."
-msgstr ""
-"``reverse_cost`` 是可选的，但强烈建议使用，以便由于几何列的大小而减小数据库的"
-"大小。 话虽如此，在本文档中使用了 ``reverse_cost``。"
-
-msgid ""
-"When the data comes with geometries and there is no routing topology, then "
-"this step is needed."
-msgstr "当数据带有几何图形并且没有路由拓扑时，则需要此步骤。"
-
-msgid ""
-"All the start and end vertices of the geometries need an identifier that is "
-"to be stored in a ``source`` and ``target`` columns of the table of the "
-"data. Likewise, ``cost`` and ``reverse_cost`` need to have the value of "
-"traversing the edge in both directions."
-msgstr ""
-"几何图的所有开始和结束顶点都需要一个标识符，该标识符将存储在数据表的"
-"``source``列和``target``列中。 同样，``cost`` 和 ``reverse_cost`` 需要具有在"
-"两个方向上遍历边的值。"
-
-msgid ""
-"If the columns do not exist they need to be added to the table in question. "
-"(see `ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable."
-"html>`__)"
-msgstr ""
-"如果这些列不存在，则需要将它们添加到相关表中。 （参见`ALTER TABLE <https://"
-"www.postgresql.org/docs/current/sql-altertable.html>`__ ）"
-
-msgid ""
-"The function :doc:`pgr_extractVertices` is used to create a vertices table "
-"based on the edge identifier and the geometry of the edge of the graph."
-msgstr ""
-"函数 :doc:`pgr_extractVertices` 用于根据边标识符和图边的几何形状创建顶点表。"
-
-msgid ""
-"Finally using the data stored on the vertices tables the ``source`` and "
-"``target`` are filled up."
-msgstr "最后使用存储在顶点表上的数据填充 ``source`` 和``target``。"
-
-msgid "See :doc:`sampledata` for an example for building a topology."
-msgstr "有关构建拓扑的示例，请参阅 :doc:`sampledata`。"
 
 msgid ""
 "Data coming from OSM and using `osm2pgrouting <https://github.com/pgRouting/"
@@ -8475,10 +8481,6 @@ msgstr ""
 "待分析的边表必须包含源列和目标列，其中填充了线段顶点的id以及对应的存储顶点信"
 "息的顶点表<edge_table>_vertices_pgr。"
 
-msgid ""
-"Use :doc:`pgr_createTopology` to create the topology and the vertices table."
-msgstr "使用 :doc:`pgr_createTopology` 建立拓扑和顶点表。"
-
 msgid "The analyze graph function accepts the following parameters:"
 msgstr "分析图函数接受以下参数："
 
@@ -8564,14 +8566,6 @@ msgstr "无法确定几何图形的 SRID。"
 
 msgid "The Vertices Table"
 msgstr "顶点表"
-
-#, fuzzy
-msgid ""
-"The vertices table can be created with :doc:`pgr_createTopology "
-"<pgr_createTopology>`"
-msgstr ""
-"顶点表可以使用 :doc:`pgr_createVerticesTable` 或 :doc:`pgr_createTopology` 创"
-"建"
 
 msgid "The structure of the vertices table is:"
 msgstr "顶点表的结构为："
@@ -8822,14 +8816,6 @@ msgid ""
 "value is ``true``."
 msgstr "``boolean`` 将单向 NULL 值视为双向的标志。 默认值为 ``true``。"
 
-#, fuzzy
-msgid ""
-"It is strongly recommended to use the named notation. See :doc:"
-"`pgr_createTopology` for examples."
-msgstr ""
-"强烈建议使用命名符号。 有关示例，请参阅 :doc:`pgr_createVerticesTable` 或 :"
-"doc:`pgr_createTopology`。"
-
 msgid ""
 "Fills completely the ``ein`` and ``eout`` columns of the vertices table."
 msgstr "完全填充顶点表的 ``ein`` 和 ``eout`` 列。"
@@ -8844,12 +8830,6 @@ msgid ""
 msgstr ""
 "这些规则被定义为文本字符串数组，如果与 ``oneway`` 值匹配，则 source或 target "
 "**输入** 或 **输出** 条件将被视为 ``true``。"
-
-#, fuzzy
-msgid "The vertices table can be created with :doc:`pgr_createTopology`"
-msgstr ""
-"顶点表可以使用 :doc:`pgr_createVerticesTable` 或 :doc:`pgr_createTopology` 创"
-"建"
 
 msgid "``pgr_articulationPoints``"
 msgstr "``pgr_articulationPoints``"
@@ -10373,9 +10353,6 @@ msgstr "绿色节点是 `死端`_ 节点"
 msgid "Node :math:`3` is a dead end node after node :math:`1` is contracted."
 msgstr "节点 :math:`u` 有已收缩节点的信息。"
 
-msgid "``forbidden_vertices``"
-msgstr "``forbidden_vertices``"
-
 #, fuzzy
 msgid "``ARRAY[`` |ANY-INTEGER| ``]``"
 msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
@@ -10736,8 +10713,9 @@ msgstr "边 :math:`u \\rightarrow z` 有收缩点的信息。"
 msgid "Create the contracted graph."
 msgstr "收缩图"
 
-msgid "``pgr_createTopology``"
-msgstr "``pgr_createTopology``"
+#, fuzzy
+msgid "``pgr_createTopology`` - Deprecated since v3.8.0"
+msgstr "``pgr_analyzeGraph``"
 
 msgid ""
 "``pgr_createTopology`` — Builds a network topology based on the geometry "
@@ -11073,12 +11051,6 @@ msgid ""
 ":doc:`topology-functions` for an overview of a topology for routing "
 "algorithms."
 msgstr ":doc:`topology-functions` 用于路由算法的拓扑概述。"
-
-msgid ""
-":doc:`pgr_createTopology` <pgr_create_topology>` to create a topology based "
-"on the geometry."
-msgstr ""
-":doc:`pgr_createTopology` <pgr_create_topology>` 根据几何图形创建拓扑。"
 
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
 msgstr "pgr_cuthillMckeeOrdering`` - 试验性的"
@@ -14230,9 +14202,6 @@ msgid ""
 "When the maximum flow is **0** then there is no flow and **0** is returned."
 msgstr "当最大流量为 **0** 时则没有流量，返回 **0** 。"
 
-msgid "There is no flow when source has the same vaule as target."
-msgstr "当 source与 target相同时，没有流量。"
-
 msgid "Uses the :doc:`pgr_pushRelabel <pgr_pushRelabel>` algorithm."
 msgstr "使用 :doc:`pgr_pushRelabel <pgr_pushRelabel>` 算法。"
 
@@ -14449,15 +14418,13 @@ msgstr "sub_id"
 msgid "``integer`` Segment number of the original edge"
 msgstr "``integer`` 原边的段号"
 
-msgid ""
-"``integer`` Empty source column to be used with :doc:`pgr_createTopology` "
-"function"
-msgstr "``integer`` 与 :doc:`pgr_createTopology` 函数一起使用的空source列"
+#, fuzzy
+msgid "``integer`` Empty source column"
+msgstr "在source 列"
 
-msgid ""
-"``integer`` Empty target column to be used with :doc:`pgr_createTopology` "
-"function"
-msgstr "``integer`` 与 :doc:`pgr_createTopology` 函数一起使用的空target列"
+#, fuzzy
+msgid "``integer`` Empty target column"
+msgstr "在target列"
 
 msgid "the geom"
 msgstr "the geom"
@@ -14536,16 +14503,6 @@ msgstr "获取死端："
 msgid ""
 "Inspecting the generated table, we can see that edge 14 has been segmented."
 msgstr "检查生成的表，我们可以看到边 13,14 和 18 已被分段"
-
-#, fuzzy
-msgid ""
-":doc:`topology-functions` for an overview of a topology for routing "
-"algorithms. :doc:`pgr_createTopology` to create a topology based on the "
-"geometry."
-msgstr ""
-":doc:`topology-functions` 用于概述路由算法的拓扑。 :doc:`pgr_analyzeOneWay` "
-"分析边方向性的方法。 :doc:`pgr_createTopology` 根据几何图创建拓扑。 :doc:"
-"`pgr_analyzeGraph` 分析边表的边和顶点。"
 
 msgid "``pgr_pickDeliver`` - Experimental"
 msgstr "``pgr_pickDeliver`` - 实验"
@@ -16755,6 +16712,13 @@ msgstr ""
 msgid ""
 "`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: "
 "pgr_analyzeGraph"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+
+#, fuzzy
+msgid ""
+"`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: "
+"pgr_createTopology"
 msgstr ""
 "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
 
@@ -20406,6 +20370,71 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
+
+#~ msgid "See :doc:`sampledata` for an example for building a topology."
+#~ msgstr "有关构建拓扑的示例，请参阅 :doc:`sampledata`。"
+
+#~ msgid ""
+#~ "Use :doc:`pgr_createTopology` to create the topology and the vertices "
+#~ "table."
+#~ msgstr "使用 :doc:`pgr_createTopology` 建立拓扑和顶点表。"
+
+#, fuzzy
+#~ msgid ""
+#~ "The vertices table can be created with :doc:`pgr_createTopology "
+#~ "<pgr_createTopology>`"
+#~ msgstr ""
+#~ "顶点表可以使用 :doc:`pgr_createVerticesTable` 或 :doc:"
+#~ "`pgr_createTopology` 创建"
+
+#, fuzzy
+#~ msgid ""
+#~ "It is strongly recommended to use the named notation. See :doc:"
+#~ "`pgr_createTopology` for examples."
+#~ msgstr ""
+#~ "强烈建议使用命名符号。 有关示例，请参阅 :doc:`pgr_createVerticesTable` "
+#~ "或 :doc:`pgr_createTopology`。"
+
+#, fuzzy
+#~ msgid "The vertices table can be created with :doc:`pgr_createTopology`"
+#~ msgstr ""
+#~ "顶点表可以使用 :doc:`pgr_createVerticesTable` 或 :doc:"
+#~ "`pgr_createTopology` 创建"
+
+#~ msgid "``forbidden_vertices``"
+#~ msgstr "``forbidden_vertices``"
+
+#~ msgid "``pgr_createTopology``"
+#~ msgstr "``pgr_createTopology``"
+
+#~ msgid ""
+#~ ":doc:`pgr_createTopology` <pgr_create_topology>` to create a topology "
+#~ "based on the geometry."
+#~ msgstr ""
+#~ ":doc:`pgr_createTopology` <pgr_create_topology>` 根据几何图形创建拓扑。"
+
+#~ msgid "There is no flow when source has the same vaule as target."
+#~ msgstr "当 source与 target相同时，没有流量。"
+
+#~ msgid ""
+#~ "``integer`` Empty source column to be used with :doc:`pgr_createTopology` "
+#~ "function"
+#~ msgstr "``integer`` 与 :doc:`pgr_createTopology` 函数一起使用的空source列"
+
+#~ msgid ""
+#~ "``integer`` Empty target column to be used with :doc:`pgr_createTopology` "
+#~ "function"
+#~ msgstr "``integer`` 与 :doc:`pgr_createTopology` 函数一起使用的空target列"
+
+#, fuzzy
+#~ msgid ""
+#~ ":doc:`topology-functions` for an overview of a topology for routing "
+#~ "algorithms. :doc:`pgr_createTopology` to create a topology based on the "
+#~ "geometry."
+#~ msgstr ""
+#~ ":doc:`topology-functions` 用于概述路由算法的拓扑。 :doc:"
+#~ "`pgr_analyzeOneWay` 分析边方向性的方法。 :doc:`pgr_createTopology` 根据几"
+#~ "何图创建拓扑。 :doc:`pgr_analyzeGraph` 分析边表的边和顶点。"
 
 #~ msgid "Use :doc:`pgr_createVerticesTable` to create the vertices table."
 #~ msgstr "使用 :doc:`pgr_createVerticesTable` 建立顶点表。"
