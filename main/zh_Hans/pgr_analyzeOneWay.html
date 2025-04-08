@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=b671dda4"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=b0b9b03d"></script>
+    <script src="_static/page_history.js?v=6d677d2e"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -255,9 +255,6 @@ only one way.</p>
 <p>因此，通过计算进入和退出每个节点的边数，我们可以识别 <cite>source</cite> 节点和 <cite>sink</cite> 节点，以便您可以查看网络的这些区域以进行修复和/或将问题报告给数据供应商。</p>
 <p class="rubric">先决条件</p>
 <p>待分析的边表必须包含源列和目标列，其中填充了线段顶点的id以及对应的存储顶点信息的顶点表&lt;edge_table&gt;_vertices_pgr。</p>
-<ul class="simple">
-<li><p>使用 <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> 建立拓扑和顶点表。</p></li>
-</ul>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
@@ -304,11 +301,6 @@ only one way.</p>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> 将单向 NULL 值视为双向的标志。 默认值为 <code class="docutils literal notranslate"><span class="pre">true</span></code>。</p>
 </dd>
 </dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It is strongly recommended to use the named notation. See
-<a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> for examples.</p>
-</div>
 <p>函数返回：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> 分析完成后。</p>
@@ -327,8 +319,6 @@ only one way.</p>
 </ul>
 <p>这些规则被定义为文本字符串数组，如果与 <code class="docutils literal notranslate"><span class="pre">oneway</span></code> 值匹配，则 source或 target <strong>输入</strong> 或 <strong>输出</strong> 条件将被视为 <code class="docutils literal notranslate"><span class="pre">true</span></code>。</p>
 <p class="rubric">顶点表</p>
-<p>The vertices table can be created with
-<a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
 <p>顶点表的结构为：</p>
 <dl class="field-list simple">
 <dt class="field-odd">id<span class="colon">:</span></dt>
@@ -355,20 +345,8 @@ only one way.</p>
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="nb">dir</span> <span class="n">TEXT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
-<span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">0</span> <span class="n">edges</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edges</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edges_vertices_pgr</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
- <span class="n">pgr_createtopology</span>
-<span class="o">--------------------</span>
- <span class="n">OK</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
-
+<span class="n">SELECT</span> <span class="o">*</span><span class="p">,</span> <span class="n">NULL</span><span class="p">::</span><span class="n">INTEGER</span> <span class="n">ein</span><span class="p">,</span> <span class="n">NULL</span><span class="p">::</span><span class="n">INTEGER</span> <span class="n">eout</span> <span class="n">INTO</span> <span class="n">edges_vertices_pgr</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">;</span>
+<span class="n">SELECT</span> <span class="mi">17</span>
 <span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span>
 <span class="nb">dir</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;B&#39;</span>   <span class="o">/*</span> <span class="n">both</span> <span class="n">ways</span> <span class="o">*/</span>
            <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;FT&#39;</span>  <span class="o">/*</span> <span class="n">direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">LINESSTRING</span> <span class="o">*/</span>

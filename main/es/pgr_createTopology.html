@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_createTopology &#8212; pgRouting Manual (3.8)</title>
+    <title>pgr_createTopology - Deprecated since v3.8.0 &#8212; pgRouting Manual (3.8)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=0610ec03"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=b0b9b03d"></script>
+    <script src="_static/page_history.js?v=6d677d2e"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -97,7 +97,11 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code> - Deprecated since v3.8.0</a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-createtopology">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
+<li><a class="reference internal" href="#build-a-routing-topology">Construir una topología de ruteo</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
@@ -165,7 +169,11 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code> - Deprecated since v3.8.0</a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-createtopology">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
+<li><a class="reference internal" href="#build-a-routing-topology">Construir una topología de ruteo</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
@@ -214,11 +222,16 @@
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
-<section id="pgr-createtopology">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code><a class="headerlink" href="#pgr-createtopology" title="Link to this heading">¶</a></h1>
+<section id="pgr-createtopology-deprecated-since-v3-8-0">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code> - Deprecated since v3.8.0<a class="headerlink" href="#pgr-createtopology-deprecated-since-v3-8-0" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code> — Construye una topología de red basada en la información de geometría.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
+<li><p>Version 3.8.0</p>
+<ul>
+<li><p>Deprecated function.</p></li>
+</ul>
+</li>
 <li><p>Versión 2.0.0</p>
 <ul>
 <li><p>Official function.</p></li>
@@ -226,6 +239,44 @@
 </ul>
 </li>
 </ul>
+<section id="migration-of-pgr-createtopology">
+<h2>Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code><a class="headerlink" href="#migration-of-pgr-createtopology" title="Link to this heading">¶</a></h2>
+<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<ul class="simple">
+<li><p>A table with <cite>&lt;edges&gt;_vertices_pgr</cite> was created.</p></li>
+</ul>
+<p><strong>After Deprecation:</strong> The user is responsible to create the complete topology.</p>
+<section id="build-a-routing-topology">
+<h3>Construir una topología de ruteo<a class="headerlink" href="#build-a-routing-topology" title="Link to this heading">¶</a></h3>
+<p>La información básica para usar la mayoría de las funciones de pgRouting <code class="docutils literal notranslate"><span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">[reverse_cost]</span></code> es lo que en pgRouting se llama topología de ruteo.</p>
+<p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> es opcional pero se recomienda encarecidamente tenerlo para reducir el tamaño de la base de datos debido al tamaño de las columnas de geometría. Dicho esto, en esta documentación se utiliza <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p>
+<p>Cuando los datos vienen con geometrías y no hay topología de ruteo, entonces este paso es necesario.</p>
+<p>Todos los vértices iniciales y finales de las geometrías necesitan un identificador que se almacenará en las columnas <code class="docutils literal notranslate"><span class="pre">source</span></code> y <code class="docutils literal notranslate"><span class="pre">target</span></code> de la tabla de los datos. Del mismo modo, <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> necesitan tener el valor de atravesar la arista en ambas direcciones.</p>
+<p>Si las columnas no existen, hay que añadirlas a la tabla en cuestión. (véase <a class="reference external" href="https://www.postgresql.org/docs/current/sql-altertable.html">ALTER TABLE</a>)</p>
+<p>La función <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> se utiliza para crear una tabla de vértices basada en el identificador de arista y la geometría de la arista del grafo.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<p>Finalmente, utilizando los datos almacenados en las tablas de vértices, se rellenan los campos <code class="docutils literal notranslate"><span class="pre">source</span></code> y <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">22</span>
+<span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">target</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">22</span>
+</pre></div>
+</div>
+</section>
+</section>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>La función devuelve:</p>
@@ -342,6 +393,7 @@ vertex AS outgoing.</p>
 <h3>Uso cuando las columnas de la tabla de borde coinciden con los valores por defecto:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Link to this heading">¶</a></h3>
 <p>La forma más sencilla de utilizar pgr_createTopology es:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -361,6 +413,7 @@ vertex AS outgoing.</p>
 <p>Se obtiene el mismo resultado que la forma más sencilla de utilizar la función.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
     <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -381,6 +434,7 @@ vertex AS outgoing.</p>
 <p>Un error puede ocurrir cuando los argumentos no se dan en el orden adecuado: en este ejemplo, la columna <code class="docutils literal notranslate"><span class="pre">id</span></code> de la tabla <code class="docutils literal notranslate"><span class="pre">egde_table</span></code> se pasa a la función como columna de geometría, y la columna de geometría``the_geom`` se pasa a la función como columna <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
     <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -399,6 +453,7 @@ vertex AS outgoing.</p>
 <p>Los parámetros definidos con un valor predeterminado se pueden omitir, siempre que el valor coincida con el valor predeterminado y el orden de los parámetros no importaría.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
     <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -408,6 +463,7 @@ vertex AS outgoing.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
     <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;geom&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -416,6 +472,7 @@ vertex AS outgoing.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -426,6 +483,7 @@ vertex AS outgoing.</p>
 <p class="rubric">Seleccionar filas utilizando el parámetro rows_where</p>
 <p>La selección de filas basadas en el id.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -436,6 +494,7 @@ vertex AS outgoing.</p>
 <p>Selección de las filas en las que la geometría está cerca de la geometría de la fila con <code class="docutils literal notranslate"><span class="pre">id</span> <span class="pre">=</span> <span class="pre">5</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;geom &amp;&amp; (SELECT st_buffer(geom, 0.05) FROM edges WHERE id=5)&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -448,6 +507,7 @@ vertex AS outgoing.</p>
 <span class="n">SELECT</span> <span class="mi">1</span>
 <span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;geom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -467,6 +527,7 @@ vertex AS outgoing.</p>
 <p>Los argumentos deben darse en el orden descrito en los parámetros.</p>
 <p>Tenga en cuenta que en este ejemplo se utiliza la bandera clean. Así que recrea toda la tabla de vértices.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -479,6 +540,7 @@ vertex AS outgoing.</p>
 <p>Un error puede ocurrir cuando los argumentos no se dan en el orden adecuado: en este ejemplo, la columna <code class="docutils literal notranslate"><span class="pre">gid</span></code> de la tabla <code class="docutils literal notranslate"><span class="pre">mytable</span></code> se pasa a la función como la columna de geometría, y la columna de geometría``mygeom`` se pasa a la función como columna <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -497,6 +559,7 @@ vertex AS outgoing.</p>
 <p class="rubric">Cuando se utiliza la notación por nombre</p>
 <p>En este escenario omitir un parámetro crearía un error porque los valores predeterminados para los nombres de columna no coinciden con los nombres de columna de la tabla. El orden de los parámetros no importa:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -505,6 +568,7 @@ vertex AS outgoing.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -515,12 +579,14 @@ vertex AS outgoing.</p>
 <p class="rubric">Seleccionar filas utilizando el parámetro rows_where</p>
 <p>Basado en id:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 <span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -528,6 +594,7 @@ vertex AS outgoing.</p>
 
 <span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -535,6 +602,7 @@ vertex AS outgoing.</p>
 
 <span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -545,6 +613,7 @@ vertex AS outgoing.</p>
 <p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con``gid`` =100 de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -552,6 +621,7 @@ vertex AS outgoing.</p>
 
 <span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -712,6 +782,7 @@ vertex AS outgoing.</p>
 <h3><a class="toc-backref" href="#id9" role="doc-backlink">Con salida completa</a><a class="headerlink" href="#with-full-output" title="Link to this heading">¶</a></h3>
 <p>En este ejemplo se inicia una topología limpia, con 5 aristas y, a continuación, se incrementa al resto de los bordes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span>  <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 6&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;id &lt; 6&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">t</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -726,6 +797,7 @@ vertex AS outgoing.</p>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 <span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span>  <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_createtopology</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
