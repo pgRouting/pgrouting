@@ -6716,7 +6716,7 @@ msgid "To get the dead ends:"
 msgstr "Para obtener los callejones sin salida:"
 
 msgid "A dead end happens when"
-msgstr ""
+msgstr "Un callejón sin salida se produce cuando"
 
 msgid ""
 "The vertex is the limit of a cul-de-sac, a no-through road or a no-exit road."
