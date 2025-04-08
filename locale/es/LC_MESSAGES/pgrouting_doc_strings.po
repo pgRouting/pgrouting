@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-05 21:44+0000\n"
-"PO-Revision-Date: 2025-04-04 14:16+0000\n"
+"PO-Revision-Date: 2025-04-08 18:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -4572,21 +4572,18 @@ msgstr ""
 msgid "Results can be different because of the changes."
 msgstr "Resultados pueden ser diferentes dado los cambios."
 
-#, fuzzy
 msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr ""
 "Todas las funciones obsoletas serán removidas en las siguiente versión mayor "
 "4.0.0"
 
-#, fuzzy
 msgid "Migration of ``pgr_analyzeOneWay``"
-msgstr "Migración de ``pgr_aStar``"
+msgstr "Migración de ``pgr_analyzeOneWay``"
 
-#, fuzzy
 msgid ""
 "Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
 msgstr ""
-"Comenzando en `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__"
+"Comenzando en `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
 
 msgid "**Before Deprecation:** The following was calculated:"
 msgstr ""
@@ -4595,14 +4592,13 @@ msgid "Number of potential problems in directionality"
 msgstr ""
 
 msgid "WHERE"
-msgstr ""
+msgstr "Donde"
 
 msgid "Directionality problems were calculated based on codes."
 msgstr ""
 
-#, fuzzy
 msgid "Dead ends."
-msgstr "Callejones sin salida"
+msgstr "Callejones sin salida."
 
 msgid ""
 "A routing problem can arise when from a vertex there is only a way on or a "
@@ -4617,53 +4613,44 @@ msgstr ""
 msgid "In this example :doc:`pgr_extractVertices` has already been applied."
 msgstr ""
 
-#, fuzzy
 msgid "Bridges."
-msgstr "pgr_bridges"
+msgstr "Puentes."
 
-#, fuzzy
 msgid ""
 "Another routing problem can arise when there is an edge of an undirected "
 "graph whose deletion increases its number of connected components, and the "
 "bridge is only one way."
 msgstr ""
-"Un puente es un borde de un grafo no dirigido cuya eliminación aumenta su "
-"número de componentes conectados. Esta implementación solo se puede utilizar "
-"con un grafo no dirigido."
+"Otro problema para ruteo puede surgir cuando en un grafo no dirigido hay una "
+"arista cuya eliminación aumenta el numero de componentes conectados, y el "
+"puente es solo de un sentido."
 
 msgid "To determine if the bridges are or not one way."
 msgstr ""
 
-#, fuzzy
 msgid "Migration of ``pgr_analyzeGraph``"
-msgstr "Migración de ``pgr_aStar``"
+msgstr "Migración de ``pgr_analyzeGraph``"
 
-#, fuzzy
 msgid "Number of isolated segments."
-msgstr "Segmentos no aislados"
+msgstr "Número de segmentos aislados."
 
-#, fuzzy
 msgid "Number of dead ends."
-msgstr "Cantidad de rutas requeridas."
+msgstr "Cantidad de callejones sin salida."
 
 msgid "Number of potential gaps found near dead ends."
 msgstr ""
 
-#, fuzzy
 msgid "Number of intersections. (between 2 edges)"
-msgstr "Número de unidades en la orden"
+msgstr "Número de intersecciones. (entre 2 aristas)"
 
-#, fuzzy
 msgid "Graph component"
-msgstr "Revisando componentes"
+msgstr "Componente de grafo"
 
-#, fuzzy
 msgid "A connected subgraph that is not part of any larger connected subgraph."
-msgstr "Los vértices contraído no forman parte del grafo contraído."
+msgstr "Un sub-grafo conectando no es parte de un grafo conectado mas grande."
 
-#, fuzzy
 msgid "Isolated segment"
-msgstr "Segmentos aislados"
+msgstr "Segmento aislado"
 
 msgid "A graph component with only one segment."
 msgstr ""
@@ -4675,26 +4662,22 @@ msgid "A vertex that participates in only one edge."
 msgstr ""
 
 msgid "gaps"
-msgstr ""
+msgstr "Espacios"
 
-#, fuzzy
 msgid "Space between two geometries."
-msgstr "Distancia máxima entre geometrías"
+msgstr "Espacio entre dos geometrías."
 
-#, fuzzy
 msgid "Intersection"
-msgstr "Intersecciones"
+msgstr "Intersección"
 
 msgid "Is a topological relationship between two geometries."
 msgstr ""
 
-#, fuzzy
 msgid "Migration."
-msgstr "Migración"
+msgstr "Migración."
 
-#, fuzzy
 msgid "Components."
-msgstr "Contenido"
+msgstr "Componentes."
 
 msgid ""
 "Instead of counting only isolated segments, determine all the components of "
@@ -4704,21 +4687,17 @@ msgstr ""
 msgid "Depending of the final application requirements use:"
 msgstr ""
 
-#, fuzzy
 msgid ":doc:`pgr_connectedComponents`"
-msgstr "Usando :doc:`pgr_connectedComponents`"
+msgstr ":doc:`pgr_connectedComponents`"
 
-#, fuzzy
 msgid ":doc:`pgr_strongComponents`"
-msgstr "``pgr_strongComponents``"
+msgstr ":doc:`pgr_strongComponents`"
 
-#, fuzzy
 msgid ":doc:`pgr_biconnectedComponents`"
-msgstr "``pgr_biconnectedComponents``"
+msgstr ":doc:`pgr_biconnectedComponents`"
 
-#, fuzzy
 msgid "For example:"
-msgstr "ejemplo"
+msgstr "Por ejemplo:"
 
 msgid ""
 "Instead of counting the dead ends, determine all the dead ends of the graph "
@@ -9030,9 +9009,8 @@ msgstr ":doc:`pgr_drivingDistance`"
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 msgstr "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 
-#, fuzzy
 msgid "``pgr_analyzeGraph`` -- Deprecated since 3.8.0"
-msgstr "``pgr_analyzeGraph``"
+msgstr "``pgr_analyzeGraph`` -- Obsoleto desde 3.8.0"
 
 msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
 msgstr "``pgr_analyzeGraph`` — analiza la topología de red."
@@ -9040,9 +9018,8 @@ msgstr "``pgr_analyzeGraph`` — analiza la topología de red."
 msgid "Version 3.8.0"
 msgstr "Versión 3.8.0"
 
-#, fuzzy
 msgid "Deprecated function."
-msgstr "Funcion Obsoleta"
+msgstr "Función obsoleta."
 
 msgid "The function returns:"
 msgstr "La función devuelve:"
@@ -9365,9 +9342,8 @@ msgstr ":doc:`pgr_createVerticesTable`"
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ":doc:`pgr_nodeNetwork` para crear nodos en una tabla sin nodos."
 
-#, fuzzy
 msgid "``pgr_analyzeOneWay`` - Deprecated since 3.8.0"
-msgstr "``pgr_analyzeGraph``"
+msgstr "``pgr_analyzeOneWay`` - Obsoleto desde 3.8.0"
 
 msgid ""
 "``pgr_analyzeOneWay`` — Analyzes oneway Sstreets and identifies flipped "
@@ -11126,7 +11102,6 @@ msgstr ""
 msgid "pgr_contractionDeadEnd(`Edges SQL`_, [**options**])"
 msgstr "pgr_contractionDeadEnd(`SQL de aristas`_, [**opciones**])"
 
-#, fuzzy
 msgid "**options:** ``[directed, forbidden]``"
 msgstr "**opciones:** ``[directed, forbidden]``"
 
@@ -11548,21 +11523,19 @@ msgstr ""
 msgid "``FAIL`` when the network topology was not built due to an error:"
 msgstr "``FAIL`` cuando la topología de red no se construyó debido a un error:"
 
-#, fuzzy
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
 "AS incoming."
 msgstr ""
-"``integer`` número de vértices en la edge_table que hacen referencia a este "
-"vértice como entrante."
+"``integer`` número de vértices en la tabla de aristas que hacen referencia a "
+"este vértice como entrante."
 
-#, fuzzy
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
 "AS outgoing."
 msgstr ""
-"``integer`` número de vértices en la edge_table que hacen referencia a este "
-"vértice como saliente."
+"``integer`` número de vértices en la tabla de aristas que hacen referencia a "
+"este vértice como saliente."
 
 msgid "The simplest way to use pgr_createTopology is:"
 msgstr "La forma más sencilla de utilizar pgr_createTopology es:"
@@ -12085,12 +12058,11 @@ msgid ""
 "Vertex not participating on the subgraph is considered and isolated vertex."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "There can be a ``dryrun`` execution and the code used to get the answer will "
 "be shown in a PostgreSQL ``NOTICE``."
 msgstr ""
-"Dado que se trata de una ejecución **dry run**, el código de todos los "
+"Dado que se trata de una ejecución ``dryrun``, el código de todos los "
 "cálculos se muestra en el ``NOTICE`` de PostgreSQL."
 
 msgid ""
@@ -12276,11 +12248,10 @@ msgstr "Encontrando vértices lineales"
 msgid "The degree of a linear vertex is 2."
 msgstr "El grado de un vértice lineal es 2."
 
-#, fuzzy
 msgid ""
 "If there is a vertices table already built using the ``pgr_extractVertices``"
 msgstr ""
-"Para obtener la información de los vértices, use :doc:`pgr_extractVertices`"
+"Cuando hay una tabla de vértices construida usando :doc:`pgr_extractVertices`"
 
 msgid ":doc:`pgr_extractVertices`"
 msgstr ":doc:`pgr_extractVertices`"
@@ -13544,12 +13515,11 @@ msgstr "pgr_edmondsKarp(`SQL de aristas`_, **salidas**, **destinos**)"
 msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 msgstr "pgr_edmondsKarp(`SQL de aristas`_, `SQL de combinaciones`_)"
 
-#, fuzzy
 msgid ""
 "`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/"
 "edmonds_karp_max_flow.html>`__"
 msgstr ""
-"`Boost: Flujo máximo Edmonds Karp <https://www.boost.org/libs/graph/doc/"
+"`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/"
 "edmonds_karp_max_flow.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
@@ -13647,9 +13617,8 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 msgstr "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 
-#, fuzzy
 msgid "``pgr_extractVertices``"
-msgstr "pgr_extractVertices"
+msgstr "``pgr_extractVertices``"
 
 msgid "``pgr_extractVertices`` — Extracts the vertices information"
 msgstr "``pgr_extractVertices`` — Extrae la información de los vértices"
@@ -13793,9 +13762,8 @@ msgstr ""
 "El código para realizar los cálculos puede obtenerse para realizar los "
 "ajustes específicos que necesite la aplicación."
 
-#, fuzzy
 msgid "``EMPTY SET`` is returned on dryrun executions"
-msgstr "``EMTPY SET`` se devuelve en ejecuciones en seco"
+msgstr "``EMPTY SET`` se devuelve en ejecuciones en seco"
 
 msgid ""
 "pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])"
@@ -13807,9 +13775,8 @@ msgid ""
 msgstr ""
 "pgr_findCloseEdges(`Edges SQL`_, **puntos**, **tolerancia**, [**options**])"
 
-#, fuzzy
 msgid "**options:** ``[cap, dryrun]``"
-msgstr "**opcionales:** ``[cap, partial, dryrun]``"
+msgstr "**opciones:** ``[cap, dryrun]``"
 
 msgid "Returns set of |result-find|"
 msgstr "Regresa conjunto de |result-find|"
@@ -13869,49 +13836,43 @@ msgstr "La geometría ``LINESTRING`` de la arista."
 msgid "When :math:`cap = 1`, it is the closest edge."
 msgstr "Cuando :math:`cap = 1`, es la arista más cercana."
 
-#, fuzzy
 msgid ""
 "Value in <0,1> that indicates the relative position from the first end-point "
 "of the edge."
 msgstr ""
-"El valor entre <0,1> indica la posición relativa desde el primer punto de la "
+"Valor entre <0,1> indica la posición relativa desde el primer punto de la "
 "arista."
 
 msgid "Value in ``[r, l]`` indicating if the point is:"
 msgstr "Valor en ``[r, l]`` que indica si el punto es:"
 
-#, fuzzy
 msgid "At the right ``r`` of the segment."
-msgstr "En cualquier lado del segmento."
+msgstr "A la derecha ``r`` del segmento."
 
 msgid "When the point is on the line it is considered to be on the right."
 msgstr "Cuando el punto está en la línea se considera que está a la derecha."
 
-#, fuzzy
 msgid "At the left ``l`` of the segment."
-msgstr "En cualquier lado del segmento."
+msgstr "A la izquierda ``l`` del segmento."
 
 msgid "``distance``"
 msgstr "``distancia``"
 
-#, fuzzy
 msgid "Distance from the point to the edge."
 msgstr "Distancia del punto a la arista."
 
 msgid "Original ``POINT`` geometry."
 msgstr "Geometría original ``POINT``."
 
-#, fuzzy
 msgid ""
 "``LINESTRING`` geometry that connects the original **point** to the closest "
 "point of the edge with identifier ``edge_id``"
 msgstr ""
-"Geometría ``LINESTRING`` desde el **punto original** hasta el punto más "
+"Geometría ``LINESTRING`` desde el **punto** original hasta el punto más "
 "cercano de la arista con identificador ``edge_id``"
 
-#, fuzzy
 msgid "One point in an edge"
-msgstr "Ejecución en seco de un punto"
+msgstr "Un punto en la arista"
 
 msgid "The green node is the original point."
 msgstr "El nodo verde es el punto original."
@@ -13919,27 +13880,21 @@ msgstr "El nodo verde es el punto original."
 msgid "``geom`` has the value of the original point."
 msgstr "``geom`` Tiene el valor del punto original."
 
-#, fuzzy
 msgid ""
 "The geometry ``edge`` is a line that connects the original point with the "
 "edge :math:`sp \\rightarrow ep` edge."
 msgstr ""
-"La geometría ``edge``, marcada como **edge1** y **edge2** es una línea que "
-"conecta el **punto original** con el punto más cercano de la arista :math:"
-"`sp \\rightarrow ep`."
+"La geometría ``edge``, es una línea que conecta al punto original con el "
+"punto más cercano de la arista :math:`sp \\rightarrow ep`."
 
-#, fuzzy
 msgid "The point is located at the left of the edge."
-msgstr ""
-"``side``: El **punto original** está situado a la izquierda de la arista :"
-"math:`5`."
+msgstr "El punto original está situado a la izquierda de la arista."
 
 msgid "One point dry run execution"
 msgstr "Ejecución en seco de un punto"
 
-#, fuzzy
 msgid "Using the query from the previous example:"
-msgstr "Usando este diseño de tabla para este ejemplo:"
+msgstr "Usando la consulta del ejemplo anterior:"
 
 msgid "Returns ``EMPTY SET``."
 msgstr "Devuelve ``CONJUNTO VACÍO``."
@@ -13955,9 +13910,8 @@ msgid ""
 "requirements, like taking into consideration the SRID."
 msgstr ""
 
-#, fuzzy
 msgid "Many points in an edge"
-msgstr "Ejemplos de muchos puntos"
+msgstr "Ejemplos de muchos puntos en una arista"
 
 msgid "The green nodes are the **original points**"
 msgstr "Los nodos verdes son los **puntos originales**"
@@ -14031,9 +13985,8 @@ msgstr ""
 msgid "A unique identifier."
 msgstr "Un identificador único."
 
-#, fuzzy
 msgid "Identifier of the nearest segment."
-msgstr "Identificador del vértice."
+msgstr "Identificador del segmento mas próximo."
 
 msgid "Is it on the left, right or both sides of the segment ``edge_id``."
 msgstr ""
@@ -14061,9 +14014,8 @@ msgstr "``newPoint``"
 msgid "A point on segment ``edge_id`` that is the closest to ``geom``."
 msgstr ""
 
-#, fuzzy
 msgid "Points of interest fill up"
-msgstr "LLenado de puntos de interés"
+msgstr "Llenado de puntos de interés"
 
 msgid "Inserting the points of interest."
 msgstr "Insertando los puntos de interés."
@@ -14191,12 +14143,11 @@ msgstr "Hash de Git de pgRouting"
 msgid "``pgr_hawickCircuits`` - Experimental"
 msgstr "``pgr_hawickCircuits`` - Experimental"
 
-#, fuzzy
 msgid ""
 "``pgr_hawickCircuits`` — Returns the list of ciruits using hawick circuits "
 "algorithm."
 msgstr ""
-"``pgr_hawickCircuits`` — Enumeración de los circuitos usando el algoritmo de "
+"``pgr_hawickCircuits`` — Enumeración de circuitos usando el algoritmo de "
 "circutos de Hawick."
 
 msgid ""
@@ -15557,94 +15508,72 @@ msgstr "``geometry`` Columna de geometría de la red discontínua"
 msgid "Examples"
 msgstr "Ejemplos"
 
-#, fuzzy
 msgid "Create the topology for the data in :doc:`sampledata`"
-msgstr "Vamos a crear la topología para los datos en :doc:`sampledata`"
+msgstr "Crear la topología para los datos en :doc:`sampledata`"
 
 msgid "Analyze the network for intersections."
 msgstr ""
 
-#, fuzzy
 msgid "Analyze the network for gaps."
-msgstr "Ahora podemos analizar la red."
+msgstr "Analizar la red por espacios."
 
-#, fuzzy
 msgid "The analysis tell us that the network has a gap and an intersection."
-msgstr ""
-"El análisis dice que la red tiene un hueco y una intersección. Trataremos de "
-"solucionar el problema usando:"
+msgstr "El análisis dice que la red tiene un hueco y una intersección."
 
-#, fuzzy
 msgid "Fixing an intersection"
-msgstr "Intersecciones"
+msgstr "Encontrando una intersección"
 
-#, fuzzy
 msgid "Storing the intersections."
-msgstr "Agregando las restricciones"
+msgstr "Almacenando las intersecciones."
 
-#, fuzzy
 msgid "Calling ``pgr_nodeNetwork``."
-msgstr "``pgr_nodeNetwork``"
+msgstr "Llamando a ``pgr_nodeNetwork``."
 
-#, fuzzy
 msgid ""
 "Inspecting the generated table, we can see that edges 13 and 18 have been "
 "segmented."
 msgstr ""
-"Inspeccionar la tabla generada, podemos ver que los bordes 13,14 y 18 ha "
-"sido segmentado"
+"Inspeccionar la tabla generada, podemos ver que las aristas 13 y 18 ha sido "
+"segmentados."
 
-#, fuzzy
 msgid "Update the topology"
-msgstr "Actualizar la topología de aristas"
+msgstr "Actualizar la topología"
 
-#, fuzzy
 msgid "Add new segments to the edges table."
-msgstr "En la tabla de aristas"
+msgstr "Agregar segmentos a la tabla de aristas."
 
-#, fuzzy
 msgid "Insert the intersection as new vertices."
-msgstr "Insertando los puntos de interés."
+msgstr "Insertar las intersecciones como nuevos vértices."
 
-#, fuzzy
 msgid "Update source and target information on the edges table."
-msgstr ""
-"Las flechas rojas muestran``(source, target)`` de la arista en al tabla de "
-"aristas"
+msgstr "Actualizar la salida y el destino en la tabla de aristas."
 
-#, fuzzy
 msgid "Delete original edge."
-msgstr "Todos los campos originales"
+msgstr "Eliminar la arista original original."
 
-#, fuzzy
 msgid "Update the vertex topology"
-msgstr "Actializar la topología de vértices"
+msgstr "Actualizar la topología de vértices"
 
 msgid "Fixing a gap"
 msgstr ""
 
-#, fuzzy
 msgid "Store the deadends"
-msgstr "Para obtener los callejones sin salida:"
+msgstr "Almacenar los callejones sin salida"
 
-#, fuzzy
 msgid ""
 "Inspecting the generated table, we can see that edge 14 has been segmented."
 msgstr ""
-"Inspeccionar la tabla generada, podemos ver que los bordes 13,14 y 18 ha "
-"sido segmentado"
+"Inspeccionar la tabla generada, podemos ver que la arista 14 ha sido "
+"segmentado."
 
-#, fuzzy
 msgid ""
 ":doc:`topology-functions` for an overview of a topology for routing "
 "algorithms. :doc:`pgr_createTopology` to create a topology based on the "
 "geometry."
 msgstr ""
 ":doc:`topology-functions` para obtener una visión general de una topología "
-"para algoritmos de enrutamiento. :doc:`pgr_analyzeOneWay` para analizar la "
-"direccionalidad de los bordes. :doc:`pgr_createTopology` para crear una "
-"topología basada en la geometría. :doc:`pgr_analyzeGraph` para analizar los "
-"bordes y vértices de la tabla de bordes."
+"para algoritmos de enrutamiento. :doc:`pgr_createTopology` para crear una "
+"topología basada en la geometría."
 
 msgid "``pgr_pickDeliver`` - Experimental"
 msgstr "``pgr_pickDeliver`` - Experimental"
@@ -17902,69 +17831,59 @@ msgstr "pgRouting 3"
 msgid "Minors 3.x"
 msgstr ""
 
-#, fuzzy
 msgid "pgRouting 3.8"
-msgstr "pgRouting 3.7"
+msgstr "pgRouting 3.8"
 
-#, fuzzy
 msgid "pgRouting 3.8.0 Release Notes"
-msgstr "Notas de la versión de pgRouting 3.7.0"
+msgstr "Notas de la versión de pgRouting 3.8.0"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.8.0 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
 msgstr ""
 "Para ver todos los problemas y solicitudes de extracción cerrados para ésta "
-"versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
-"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
+"versión, consulte la `meta cerrada 3.8.0 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`_"
 
 msgid "Promotion to official function of pgRouting."
 msgstr "Promoción a función oficial de pgRouting."
 
-#, fuzzy
 msgid ""
 "`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
 "pgr_extractVertices"
 msgstr ""
-"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: "
-"pgr_extractVertices a propuesto"
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
+"pgr_extractVertices"
 
-#, fuzzy
 msgid ""
 "`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
 msgstr ""
-"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
-"pgr_contraction"
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
 
-#, fuzzy
 msgid ""
 "`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: "
 "pgr_findCloseEdges"
 msgstr ""
-"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: "
-"pgr_extractVertices a propuesto"
+"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: "
+"pgr_findCloseEdges"
 
-#, fuzzy
 msgid "Deprecation of functions."
-msgstr "Funciones obsoletas"
+msgstr "Funciones obsoletas."
 
-#, fuzzy
 msgid ""
 "`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
 "pgr_analyzeOneWay"
 msgstr ""
-"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
-"pgr_contraction"
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
+"pgr_analyzeOneWay"
 
-#, fuzzy
 msgid ""
 "`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: "
 "pgr_analyzeGraph"
 msgstr ""
-"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
-"pgr_contraction"
+"`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: "
+"pgr_analyzeGraph"
 
 msgid "Official functions changes"
 msgstr "Cambios en las funciones oficiales"
@@ -17982,13 +17901,12 @@ msgstr "Nuevas funciones propuestas"
 msgid "Contraction"
 msgstr "Contracción"
 
-#, fuzzy
 msgid ""
 "`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: "
 "pgr_contractionDeadEnd"
 msgstr ""
-"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: "
-"pgr_extractVertices a propuesto"
+"`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: "
+"pgr_contractionDeadEnd"
 
 msgid ""
 "`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: "
@@ -18127,13 +18045,12 @@ msgstr "Métricas"
 msgid "pgr_betweennessCentrality"
 msgstr "pgr_betweennessCentrality"
 
-#, fuzzy
 msgid ""
 "`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standardize "
 "spanning tree functions output"
 msgstr ""
 "`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Estandarización "
-"de las salida de las funciones de árbol de expansión"
+"de resultados de las funciones de árbol de expansión"
 
 msgid "Functions:"
 msgstr "Funciones:"
@@ -18301,19 +18218,16 @@ msgstr ""
 "versión, consulte la `meta cerrada 3.6.0 <https://github.com/pgRouting/"
 "pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
 
-#, fuzzy
 msgid ""
 "`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standardize "
 "output pgr_aStar"
 msgstr ""
-"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ estandarización "
+"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Estandarización "
 "de resultados de pgr_aStar"
 
-#, fuzzy
 msgid "Standardize output columns to |short-generic-result|"
-msgstr "Estandarización de las columnas de salida a |short-generic-result|"
+msgstr "Estandard de las columnas de salida a |short-generic-result|"
 
-#, fuzzy
 msgid ""
 "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standardize "
 "output pgr_bdAstar"
@@ -18321,7 +18235,6 @@ msgstr ""
 "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Estandarización "
 "de resultados de pgr_bdAstar"
 
-#, fuzzy
 msgid ""
 "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standardize "
 "output and modifying signature pgr_KSP"
@@ -18329,7 +18242,6 @@ msgstr ""
 "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Estandarización "
 "de resultados y modificación de firmas de pgr_KSP"
 
-#, fuzzy
 msgid ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standardize "
 "output pgr_drivingDistance"
@@ -18340,7 +18252,6 @@ msgstr ""
 msgid "Proposed functions changes"
 msgstr "Cambios en funciones propuestas"
 
-#, fuzzy
 msgid ""
 "`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standardize "
 "output and modifying signature pgr_withPointsDD"
@@ -18348,7 +18259,6 @@ msgstr ""
 "`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Estandarización "
 "de resultados y modificación de firmas de pgr_withPointsDD"
 
-#, fuzzy
 msgid ""
 "`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standardize "
 "output and modifying signature pgr_withPointsKSP"
@@ -18413,13 +18323,12 @@ msgstr ""
 msgid "..rubric:: Standardize SQL"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ Standardize "
 "deprecated messages"
 msgstr ""
 "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ Estandarización "
-"de mesajes de depreciación"
+"de mensajes de depreciación"
 
 msgid ""
 "On new internal function: do not use named parameters and default parameters."
@@ -20762,7 +20671,6 @@ msgstr "Familias de Funciones"
 msgid "Sample Data"
 msgstr "Datos Muestra"
 
-#, fuzzy
 msgid ""
 "The documentation provides very simple example queries based on a small "
 "sample network that resembles a city. To be able to execute the majority of "
@@ -21219,7 +21127,6 @@ msgstr ""
 msgid "Traversal - Family of functions"
 msgstr "Traversal - Familia de funciones"
 
-#, fuzzy
 msgid "Additionally there are 2 categories under this family"
 msgstr "Adicionalmente, hay dos categorías en esta familia"
 
@@ -21236,7 +21143,6 @@ msgstr ""
 "Dado un grafo y una lista de vértices, encuentra el camino mas corto entre :"
 "math:`vertex_i` and :math:`vertex_{i+1}` para todos los vértices"
 
-#, fuzzy
 msgid ""
 "In other words, find a continuous route that visits all the vertices in the "
 "order given."
