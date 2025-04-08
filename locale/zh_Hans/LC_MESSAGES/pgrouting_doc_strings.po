@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-08 20:02+0000\n"
+"POT-Creation-Date: 2025-04-08 20:49+0000\n"
 "PO-Revision-Date: 2025-04-03 09:47+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -4279,8 +4279,8 @@ msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr "所有已弃用的函数将在下一个主要版本 4.0.0 中被移除"
 
 #, fuzzy
-msgid "Migration of ``pgr_createTopology``"
-msgstr "迁移 ``pgr_trspViaVertices``"
+msgid "Migration of ``pgr_alphaShape``"
+msgstr "``pgr_aStar`` 迁移"
 
 #, fuzzy
 msgid ""
@@ -4289,6 +4289,37 @@ msgstr "开始从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__"
 
 msgid "**Before Deprecation:** The following was calculated:"
 msgstr ""
+
+msgid "An alphaShape was calculated"
+msgstr ""
+
+#, fuzzy
+msgid "**After Deprecation:**"
+msgstr "迁移后"
+
+msgid "PostGIS has two ways of generating alphaShape."
+msgstr ""
+
+msgid "If you have SFCGAL, which you can install using"
+msgstr ""
+
+msgid ""
+"Since PostGIS 3.5+ use `CG_AlphaShape <https://postgis.net/docs/"
+"CG_AlphaShape.html>`__"
+msgstr ""
+
+msgid "For PostGIS 3.5+ use the old name ``ST_AlphaShape``"
+msgstr ""
+
+msgid ""
+"Other PostGIS options are * `ST_ConvexHull <https://postgis.net/docs/"
+"ST_ConvexHull.html>`__ * `ST_ConcaveHull <https://postgis.net/docs/"
+"ST_ConcaveHull.html>`__"
+msgstr ""
+
+#, fuzzy
+msgid "Migration of ``pgr_createTopology``"
+msgstr "迁移 ``pgr_trspViaVertices``"
 
 msgid "A table with `<edges>_vertices_pgr` was created."
 msgstr ""
@@ -8338,6 +8369,14 @@ msgstr "``pgr_alphaShape``"
 msgid "``pgr_alphaShape`` — Polygon part of an alpha shape."
 msgstr "``pgr_alphaShape`` — Alpha 形状的多边形部分。"
 
+#, fuzzy
+msgid "Version 3.8.0"
+msgstr "版本3.6.0"
+
+#, fuzzy
+msgid "Deprecated function."
+msgstr "已废弃的功能"
+
 msgid "Breaking change on signature"
 msgstr "签名的重大更改"
 
@@ -8358,9 +8397,6 @@ msgstr "支持返回多个外/内圈"
 
 msgid "Renamed from version 1.x"
 msgstr "从版本1.X重命名"
-
-msgid "Support"
-msgstr "支持"
 
 msgid "Returns the polygon part of an alpha shape."
 msgstr "返回 alpha 形状的多边形部分。"
@@ -8442,14 +8478,6 @@ msgstr "``pgr_analyzeGraph``"
 
 msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
 msgstr "``pgr_analyzeGraph`` —分析网络拓扑。"
-
-#, fuzzy
-msgid "Version 3.8.0"
-msgstr "版本3.6.0"
-
-#, fuzzy
-msgid "Deprecated function."
-msgstr "已废弃的功能"
 
 msgid "The function returns:"
 msgstr "函数返回："
@@ -16333,9 +16361,6 @@ msgstr ""
 "从点 :math:`1` 开始，在距离不超过 :math:`3.3` 的范围内，无论驾驶方向如何，提"
 "供详细信息。"
 
-msgid ":doc:`pgr_alphaShape`"
-msgstr ":doc:`pgr_alphaShape`"
-
 msgid "``pgr_withPointsKSP``"
 msgstr "``pgr_withPointsKSP``"
 
@@ -16703,6 +16728,13 @@ msgstr "已废弃的函数"
 
 #, fuzzy
 msgid ""
+"`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: "
+"pgr_alphaShape"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+
+#, fuzzy
+msgid ""
 "`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
 "pgr_analyzeOneWay"
 msgstr ""
@@ -16875,6 +16907,9 @@ msgstr ""
 "查看本版本已关闭的所有议题和拉取请求，请访问：`GitHub 3.7.0版本里程碑关闭列"
 "表 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>>`__"
+
+msgid "Support"
+msgstr "支持"
 
 msgid ""
 "`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
@@ -20370,6 +20405,9 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
+
+#~ msgid ":doc:`pgr_alphaShape`"
+#~ msgstr ":doc:`pgr_alphaShape`"
 
 #~ msgid "See :doc:`sampledata` for an example for building a topology."
 #~ msgstr "有关构建拓扑的示例，请参阅 :doc:`sampledata`。"

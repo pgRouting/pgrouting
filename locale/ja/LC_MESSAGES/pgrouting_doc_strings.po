@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-08 20:02+0000\n"
+"POT-Creation-Date: 2025-04-08 20:49+0000\n"
 "PO-Revision-Date: 2024-09-23 01:16+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4190,7 +4190,7 @@ msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr ""
 
 #, fuzzy
-msgid "Migration of ``pgr_createTopology``"
+msgid "Migration of ``pgr_alphaShape``"
 msgstr "ダイクストラ関連機能"
 
 msgid ""
@@ -4199,6 +4199,37 @@ msgstr ""
 
 msgid "**Before Deprecation:** The following was calculated:"
 msgstr ""
+
+msgid "An alphaShape was calculated"
+msgstr ""
+
+#, fuzzy
+msgid "**After Deprecation:**"
+msgstr "もっと詳しく知る"
+
+msgid "PostGIS has two ways of generating alphaShape."
+msgstr ""
+
+msgid "If you have SFCGAL, which you can install using"
+msgstr ""
+
+msgid ""
+"Since PostGIS 3.5+ use `CG_AlphaShape <https://postgis.net/docs/"
+"CG_AlphaShape.html>`__"
+msgstr ""
+
+msgid "For PostGIS 3.5+ use the old name ``ST_AlphaShape``"
+msgstr ""
+
+msgid ""
+"Other PostGIS options are * `ST_ConvexHull <https://postgis.net/docs/"
+"ST_ConvexHull.html>`__ * `ST_ConcaveHull <https://postgis.net/docs/"
+"ST_ConcaveHull.html>`__"
+msgstr ""
+
+#, fuzzy
+msgid "Migration of ``pgr_createTopology``"
+msgstr "ダイクストラ関連機能"
 
 msgid "A table with `<edges>_vertices_pgr` was created."
 msgstr ""
@@ -7970,6 +8001,14 @@ msgstr ""
 msgid "``pgr_alphaShape`` — Polygon part of an alpha shape."
 msgstr ""
 
+#, fuzzy
+msgid "Version 3.8.0"
+msgstr "バージョン 3.0.0"
+
+#, fuzzy
+msgid "Deprecated function."
+msgstr "新しい **公式** 機能"
+
 msgid "Breaking change on signature"
 msgstr ""
 
@@ -7990,9 +8029,6 @@ msgstr ""
 
 msgid "Renamed from version 1.x"
 msgstr ""
-
-msgid "Support"
-msgstr "サポート"
 
 msgid "Returns the polygon part of an alpha shape."
 msgstr ""
@@ -8071,14 +8107,6 @@ msgstr ""
 
 msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
 msgstr ""
-
-#, fuzzy
-msgid "Version 3.8.0"
-msgstr "バージョン 3.0.0"
-
-#, fuzzy
-msgid "Deprecated function."
-msgstr "新しい **公式** 機能"
 
 msgid "The function returns:"
 msgstr ""
@@ -15233,9 +15261,6 @@ msgid ""
 "driving side, with details."
 msgstr ""
 
-msgid ":doc:`pgr_alphaShape`"
-msgstr ""
-
 #, fuzzy
 msgid "``pgr_withPointsKSP``"
 msgstr "pgr_TSP"
@@ -15549,6 +15574,11 @@ msgid "Deprecation of functions."
 msgstr "ダイクストラ関連機能"
 
 msgid ""
+"`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: "
+"pgr_alphaShape"
+msgstr ""
+
+msgid ""
 "`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
 "pgr_analyzeOneWay"
 msgstr ""
@@ -15678,6 +15708,9 @@ msgid ""
 "milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
 msgstr ""
+
+msgid "Support"
+msgstr "サポート"
 
 msgid ""
 "`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "

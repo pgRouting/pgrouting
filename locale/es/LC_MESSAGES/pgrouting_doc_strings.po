@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-08 20:02+0000\n"
+"POT-Creation-Date: 2025-04-08 20:49+0000\n"
 "PO-Revision-Date: 2025-04-08 21:13+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4577,8 +4577,9 @@ msgstr ""
 "Todas las funciones obsoletas serán removidas en las siguiente versión mayor "
 "4.0.0"
 
-msgid "Migration of ``pgr_createTopology``"
-msgstr "Migración de ``pgr_createTopology``"
+#, fuzzy
+msgid "Migration of ``pgr_alphaShape``"
+msgstr "Migración de ``pgr_aStar``"
 
 msgid ""
 "Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
@@ -4587,6 +4588,41 @@ msgstr ""
 
 msgid "**Before Deprecation:** The following was calculated:"
 msgstr "**Antes de la Depreciación:** Se calculó lo siguiente:"
+
+msgid "An alphaShape was calculated"
+msgstr ""
+
+#, fuzzy
+msgid "**After Deprecation:**"
+msgstr "Después de la migración"
+
+msgid "PostGIS has two ways of generating alphaShape."
+msgstr ""
+
+msgid "If you have SFCGAL, which you can install using"
+msgstr ""
+
+msgid ""
+"Since PostGIS 3.5+ use `CG_AlphaShape <https://postgis.net/docs/"
+"CG_AlphaShape.html>`__"
+msgstr ""
+
+msgid "For PostGIS 3.5+ use the old name ``ST_AlphaShape``"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Other PostGIS options are * `ST_ConvexHull <https://postgis.net/docs/"
+"ST_ConvexHull.html>`__ * `ST_ConcaveHull <https://postgis.net/docs/"
+"ST_ConcaveHull.html>`__"
+msgstr ""
+"Se pueden utilizar varias funciones de PostGIS: `ST_Intersects <https://"
+"postgis.net/docs/ST_Intersects.html>`__, `ST_Crosses <https://postgis.net/"
+"docs/ST_Crosses.html>`__, `ST_Overlaps <https://postgis.net/docs/ST_Overlaps."
+"html>`__, etc."
+
+msgid "Migration of ``pgr_createTopology``"
+msgstr "Migración de ``pgr_createTopology``"
 
 msgid "A table with `<edges>_vertices_pgr` was created."
 msgstr "Se ha creado una tabla con `<edges>_vertices_pgr`."
@@ -4670,8 +4706,8 @@ msgid ""
 "indexes, etc. They may use :doc:`pgr_extractVertices` for that purpose."
 msgstr ""
 "**Después de la depreciación:** El usuario es responsable de crear la tabla "
-"de vértices, índices, etc. Para ello puede utilizar "
-":doc:`pgr_extractVertices`."
+"de vértices, índices, etc. Para ello puede utilizar :doc:"
+"`pgr_extractVertices`."
 
 msgid "Migration of ``pgr_analyzeOneWay``"
 msgstr "Migración de ``pgr_analyzeOneWay``"
@@ -4824,10 +4860,10 @@ msgid ""
 "ST_Crosses.html>`__, `ST_Overlaps <https://postgis.net/docs/ST_Overlaps."
 "html>`__, etc."
 msgstr ""
-"Se pueden utilizar varias funciones de PostGIS: `ST_Intersects "
-"<https://postgis.net/docs/ST_Intersects.html>`__, `ST_Crosses "
-"<https://postgis.net/docs/ST_Crosses.html>`__, `ST_Overlaps <https://postgis."
-"net/docs/ST_Overlaps.html>`__, etc."
+"Se pueden utilizar varias funciones de PostGIS: `ST_Intersects <https://"
+"postgis.net/docs/ST_Intersects.html>`__, `ST_Crosses <https://postgis.net/"
+"docs/ST_Crosses.html>`__, `ST_Overlaps <https://postgis.net/docs/ST_Overlaps."
+"html>`__, etc."
 
 msgid "Migration of ``pgr_aStar``"
 msgstr "Migración de ``pgr_aStar``"
@@ -8946,6 +8982,12 @@ msgstr "``pgr_alphaShape``"
 msgid "``pgr_alphaShape`` — Polygon part of an alpha shape."
 msgstr "``pgr_alphaShape`` —Parte poligonal de una forma alfa."
 
+msgid "Version 3.8.0"
+msgstr "Versión 3.8.0"
+
+msgid "Deprecated function."
+msgstr "Función obsoleta."
+
 msgid "Breaking change on signature"
 msgstr "Cambio de ruptura en la firma"
 
@@ -8967,9 +9009,6 @@ msgstr "Soporte para devolver múltiples anillos exteriores/interiores"
 
 msgid "Renamed from version 1.x"
 msgstr "Renombrado desde la versión 1.x"
-
-msgid "Support"
-msgstr "Soporte"
 
 msgid "Returns the polygon part of an alpha shape."
 msgstr "Devuelve la parte poligonal de una forma alfa."
@@ -9055,12 +9094,6 @@ msgstr "``pgr_analyzeGraph`` -- Obsoleto desde 3.8.0"
 
 msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
 msgstr "``pgr_analyzeGraph`` — analiza la topología de red."
-
-msgid "Version 3.8.0"
-msgstr "Versión 3.8.0"
-
-msgid "Deprecated function."
-msgstr "Función obsoleta."
 
 msgid "The function returns:"
 msgstr "La función devuelve:"
@@ -17470,9 +17503,6 @@ msgstr ""
 "Desde el punto :math:`1` dentro de una distancia de :math:`3.3`, sin "
 "importar el lado de manejo, detallada."
 
-msgid ":doc:`pgr_alphaShape`"
-msgstr ":doc:`pgr_alphaShape`"
-
 msgid "``pgr_withPointsKSP``"
 msgstr "``pgr_withPointsKSP``"
 
@@ -17853,6 +17883,14 @@ msgstr ""
 msgid "Deprecation of functions."
 msgstr "Funciones obsoletas."
 
+#, fuzzy
+msgid ""
+"`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: "
+"pgr_alphaShape"
+msgstr ""
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
+"pgr_analyzeOneWay"
+
 msgid ""
 "`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
 "pgr_analyzeOneWay"
@@ -18018,6 +18056,9 @@ msgstr ""
 "Para ver todos los problemas y solicitudes de extracción cerrados para ésta "
 "versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
 "pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
+
+msgid "Support"
+msgstr "Soporte"
 
 msgid ""
 "`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
@@ -21552,6 +21593,9 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#~ msgid ":doc:`pgr_alphaShape`"
+#~ msgstr ":doc:`pgr_alphaShape`"
 
 #~ msgid "See :doc:`sampledata` for an example for building a topology."
 #~ msgstr ""
