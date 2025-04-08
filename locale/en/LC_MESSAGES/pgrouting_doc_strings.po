@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-05 20:44+0000\n"
+"POT-Creation-Date: 2025-04-08 12:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3969,6 +3969,11 @@ msgid ""
 "pgr_analyzeGraph"
 msgstr ""
 
+msgid ""
+"`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: "
+"pgr_createVerticesTable"
+msgstr ""
+
 msgid "Official functions changes"
 msgstr ""
 
@@ -4047,7 +4052,7 @@ msgstr ""
 msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr ""
 
-msgid "Migration of ``pgr_analyzeOneWay``"
+msgid "Migration of ``pgr_createVerticesTable``"
 msgstr ""
 
 msgid ""
@@ -4056,6 +4061,18 @@ msgid ""
 msgstr ""
 
 msgid "**Before Deprecation:** The following was calculated:"
+msgstr ""
+
+msgid "A table with `<edges>_vertices_pgr` was created."
+msgstr ""
+
+msgid ""
+"**After Deprecation:** The user is responsible to create the vertices "
+"table, indexes, etc. They may use :doc:`pgr_extractVertices` for that "
+"purpose."
+msgstr ""
+
+msgid "Migration of ``pgr_analyzeOneWay``"
 msgstr ""
 
 msgid "Number of potential problems in directionality"
@@ -7935,9 +7952,6 @@ msgid ""
 "vertices information."
 msgstr ""
 
-msgid "Use :doc:`pgr_createVerticesTable` to create the vertices table."
-msgstr ""
-
 msgid ""
 "Use :doc:`pgr_createTopology` to create the topology and the vertices "
 "table."
@@ -8030,8 +8044,7 @@ msgid "The Vertices Table"
 msgstr ""
 
 msgid ""
-"The vertices table can be created with :doc:`pgr_createVerticesTable "
-"<pgr_createVerticesTable>` or :doc:`pgr_createTopology "
+"The vertices table can be created with :doc:`pgr_createTopology "
 "<pgr_createTopology>`"
 msgstr ""
 
@@ -8168,9 +8181,6 @@ msgstr ""
 msgid ":doc:`pgr_analyzeOneWay`"
 msgstr ""
 
-msgid ":doc:`pgr_createVerticesTable`"
-msgstr ""
-
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ""
 
@@ -8268,7 +8278,7 @@ msgstr ""
 
 msgid ""
 "It is strongly recommended to use the named notation. See "
-":doc:`pgr_createVerticesTable` or :doc:`pgr_createTopology` for examples."
+":doc:`pgr_createTopology` for examples."
 msgstr ""
 
 msgid "Fills completely the ``ein`` and ``eout`` columns of the vertices table."
@@ -8283,9 +8293,7 @@ msgid ""
 "**in** or **out** condition."
 msgstr ""
 
-msgid ""
-"The vertices table can be created with :doc:`pgr_createVerticesTable` or "
-":doc:`pgr_createTopology`"
+msgid "The vertices table can be created with :doc:`pgr_createTopology`"
 msgstr ""
 
 msgid "``pgr_articulationPoints``"
@@ -10141,7 +10149,7 @@ msgid ""
 "incremented to the rest of the edges."
 msgstr ""
 
-msgid "``pgr_createVerticesTable``"
+msgid "``pgr_createVerticesTable`` - Deprecated since 3.8.0"
 msgstr ""
 
 msgid ""
