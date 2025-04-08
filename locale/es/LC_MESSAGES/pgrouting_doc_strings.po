@@ -10682,6 +10682,8 @@ msgid ""
 "Previously compulsory parameter **Contraction order** is now optional with "
 "name ``methods``."
 msgstr ""
+"El parámetro **Orden de contratación**, antes obligatorio, es ahora opcional "
+"con el nombre ``methods``."
 
 msgid "New name and order of optional parameters."
 msgstr "Nuevo nombre y orden de parámetros opcionales."
