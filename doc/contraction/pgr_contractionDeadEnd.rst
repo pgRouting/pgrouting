@@ -139,7 +139,7 @@ Contraction optional parameters
      - Type
      - Default
      - Description
-   * - ``forbidden_vertices``
+   * - ``forbidden``
      - ``ARRAY[`` |ANY-INTEGER| ``]``
      - **Empty**
      - Identifiers of vertices forbidden for contraction.
