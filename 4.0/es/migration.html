@@ -98,6 +98,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Guía de migración</a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-analyzegraph">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-astar">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-bdastar">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></li>
@@ -207,6 +208,7 @@
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
 <li><a class="reference internal" href="#">Guía de migración</a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-analyzegraph">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-astar">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-bdastar">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></li>
@@ -302,36 +304,85 @@
 <p>Resultados pueden ser diferentes dado los cambios.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Todas las funciones obsoletas serán removidas en las siguiente versión mayor 4.0.0</p>
+<p>All deprecated functions will be removed on next major version 4.0.0</p>
 </div>
 <nav class="contents" id="contents">
 <p class="topic-title">Contenido</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#migration-guide" id="id4">Guía de migración</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migration-of-pgr-analyzegraph" id="id5">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-astar" id="id6">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-bdastar" id="id7">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-dijkstra" id="id8">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-drivingdistance" id="id9">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" id="id10">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-ksp" id="id11">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch" id="id12">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" id="id13">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-withpointsdd" id="id14">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-withpointsksp" id="id15">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trsp-vertices" id="id16">Migración de <cite>pgr_trsp`</cite> (Vértices)</a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trsp-edges" id="id17">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Aristas)</a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trspviavertices" id="id18">Migraciones de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trspviaedges" id="id19">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-restrictions" id="id20">Migración de restricciones</a></p></li>
-<li><p><a class="reference internal" href="#see-also" id="id21">Ver también</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-analyzeoneway" id="id5">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-analyzegraph" id="id6">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-astar" id="id7">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-bdastar" id="id8">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-dijkstra" id="id9">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-drivingdistance" id="id10">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" id="id11">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-ksp" id="id12">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch" id="id13">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" id="id14">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-withpointsdd" id="id15">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-withpointsksp" id="id16">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-trsp-vertices" id="id17">Migración de <cite>pgr_trsp`</cite> (Vértices)</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-trsp-edges" id="id18">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Aristas)</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-trspviavertices" id="id19">Migraciones de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-trspviaedges" id="id20">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-restrictions" id="id21">Migración de restricciones</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id22">Ver también</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
+<section id="migration-of-pgr-analyzeoneway">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzeoneway" title="Link to this heading">¶</a></h2>
+<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<ul class="simple">
+<li><p>Number of potential problems in directionality</p></li>
+</ul>
+<p>WHERE</p>
+<p>Directionality problems were calculated based on codes.</p>
+<p class="rubric">Dead ends.</p>
+<p>A routing problem can arise when from a vertex there is only a way on or a way
+out but not both:</p>
+<p>Either saving or using directly <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> get the dead ends
+information and determine if the adjacent edge is one way or not.</p>
+<p>In this example <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> has already been applied.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">deadends</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="nb">id</span>
+  <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">where</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">edges</span> <span class="n">JOIN</span> <span class="n">deadends</span>  <span class="n">USING</span> <span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">reverse_cost</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span> <span class="o">|</span> <span class="n">capacity</span> <span class="o">|</span> <span class="n">reverse_capacity</span> <span class="o">|</span> <span class="n">x1</span> <span class="o">|</span> <span class="n">y1</span> <span class="o">|</span> <span class="n">x2</span> <span class="o">|</span> <span class="n">y2</span> <span class="o">|</span> <span class="n">geom</span>
+<span class="o">----+--------+--------+------+--------------+----------+------------------+----+----+----+----+------</span>
+<span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p class="rubric">Bridges.</p>
+<p>Another routing problem can arise when there is an edge of an undirected graph
+whose deletion increases its number of connected components, and the bridge is
+only one way.</p>
+<p>To determine if the bridges are or not one way.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">reverse_cost</span><span class="o">&lt;</span><span class="mi">0</span> <span class="n">AS</span> <span class="n">is_OneWway</span>
+<span class="n">FROM</span> <span class="n">pgr_bridges</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">)</span>
+<span class="n">JOIN</span> <span class="n">edges</span> <span class="n">ON</span> <span class="p">(</span><span class="n">edge</span> <span class="o">=</span> <span class="nb">id</span><span class="p">);</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">is_onewway</span>
+<span class="o">----+------------</span>
+  <span class="mi">1</span> <span class="o">|</span> <span class="n">f</span>
+  <span class="mi">6</span> <span class="o">|</span> <span class="n">f</span>
+  <span class="mi">7</span> <span class="o">|</span> <span class="n">f</span>
+ <span class="mi">14</span> <span class="o">|</span> <span class="n">f</span>
+ <span class="mi">17</span> <span class="o">|</span> <span class="n">f</span>
+ <span class="mi">18</span> <span class="o">|</span> <span class="n">f</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
 <section id="migration-of-pgr-analyzegraph">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzegraph" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzegraph" title="Link to this heading">¶</a></h2>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
 <p><strong>Before Deprecation:</strong> The following was calculated:</p>
 <ul class="simple">
@@ -456,7 +507,7 @@ geometries.</p>
 </div>
 </section>
 <section id="migration-of-pgr-astar">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a><a class="headerlink" href="#migration-of-pgr-astar" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a><a class="headerlink" href="#migration-of-pgr-astar" title="Link to this heading">¶</a></h2>
 <p>Comenzando en <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a></p>
 <p>Firmas que serán migradas:</p>
 <ul class="simple">
@@ -587,7 +638,7 @@ geometries.</p>
 </ul>
 </section>
 <section id="migration-of-pgr-bdastar">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a><a class="headerlink" href="#migration-of-pgr-bdastar" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a><a class="headerlink" href="#migration-of-pgr-bdastar" title="Link to this heading">¶</a></h2>
 <p>Comenzando en <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a></p>
 <p>Firmas que serán migradas:</p>
 <ul class="simple">
@@ -721,7 +772,7 @@ geometries.</p>
 </ul>
 </section>
 <section id="migration-of-pgr-dijkstra">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a><a class="headerlink" href="#migration-of-pgr-dijkstra" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a><a class="headerlink" href="#migration-of-pgr-dijkstra" title="Link to this heading">¶</a></h2>
 <p>Comenzando en <a class="reference external" href="https://docs.pgrouting.org/3.5/es/migration.html">v3.5.0</a></p>
 <p>Firmas que serán migradas:</p>
 <ul class="simple">
@@ -855,7 +906,7 @@ geometries.</p>
 </ul>
 </section>
 <section id="migration-of-pgr-drivingdistance">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#migration-of-pgr-drivingdistance" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#migration-of-pgr-drivingdistance" title="Link to this heading">¶</a></h2>
 <p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/es/migration.html">v3.6.0</a>, las columnas resultantes de <a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> son estandarizadas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
@@ -1010,7 +1061,7 @@ FROM pgr_drivingDistance(
 </section>
 </section>
 <section id="migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a><a class="headerlink" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a><a class="headerlink" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" title="Link to this heading">¶</a></h2>
 <p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/es/migration.html">v3.6.0</a>, Las columnas resultantes de <a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a>, <a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a> and <a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a> son estandarizadas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
@@ -1148,7 +1199,7 @@ FROM pgr_drivingDistance(
 </section>
 </section>
 <section id="migration-of-pgr-ksp">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a><a class="headerlink" href="#migration-of-pgr-ksp" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a><a class="headerlink" href="#migration-of-pgr-ksp" title="Link to this heading">¶</a></h2>
 <p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/es/migration.html">v3.6.0</a> En <a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> las columnas de resultados están siendo estandarizadas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
@@ -1233,7 +1284,7 @@ FROM pgr_drivingDistance(
 </section>
 </section>
 <section id="migration-of-pgr-maxcardinalitymatch">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a><a class="headerlink" href="#migration-of-pgr-maxcardinalitymatch" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a><a class="headerlink" href="#migration-of-pgr-maxcardinalitymatch" title="Link to this heading">¶</a></h2>
 <p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> funciona solamente para grafos no dirigidos, entonces la bandera <code class="docutils literal notranslate"><span class="pre">directed</span></code> ha sido removida.</p>
 <p>A partir de v3.4.0 &lt;<a class="reference external" href="https://docs.pgrouting.org/3.4/es/migration.html">https://docs.pgrouting.org/3.4/es/migration.html</a>&gt;`__</p>
 <p>Firma que serán migrada:</p>
@@ -1316,7 +1367,7 @@ WARNING:  pgr_maxCardinalityMatch(text,boolean) deprecated signature on v3.4.0
 </div>
 </section>
 <section id="migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><a class="headerlink" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><a class="headerlink" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" title="Link to this heading">¶</a></h2>
 <p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.7/en/migration.html">v3.7.0</a> se estandarizan las columnas de resultados <a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a>, <a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a> y <a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
@@ -1478,7 +1529,7 @@ WARNING:  pgr_maxCardinalityMatch(text,boolean) deprecated signature on v3.4.0
 </section>
 </section>
 <section id="migration-of-pgr-withpointsdd">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsdd" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsdd" title="Link to this heading">¶</a></h2>
 <p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a> En <a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a> las columnas de resultados están siendo estandarizadas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
@@ -1738,7 +1789,7 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 </section>
 </section>
 <section id="migration-of-pgr-withpointsksp">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsksp" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsksp" title="Link to this heading">¶</a></h2>
 <p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/es/migration.html">v3.6.0</a> en <a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP</span></a> las columnas de resultados están siendo estandarizadas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
@@ -1837,7 +1888,7 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 </section>
 </section>
 <section id="migration-of-pgr-trsp-vertices">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">Migración de <cite>pgr_trsp`</cite> (Vértices)</a><a class="headerlink" href="#migration-of-pgr-trsp-vertices" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Migración de <cite>pgr_trsp`</cite> (Vértices)</a><a class="headerlink" href="#migration-of-pgr-trsp-vertices" title="Link to this heading">¶</a></h2>
 <p>Firma:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="n">Edges</span> <span class="n">SQL</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
         <span class="p">[,</span><span class="n">restrict_sql</span> <span class="n">text</span><span class="p">]);</span>
@@ -1854,8 +1905,8 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 </dl>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-dijkstra-when-there-are-no-restrictions" id="id22">Usar <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> cuando no hay restricciones.</a></p></li>
-<li><p><a class="reference internal" href="#use-pgr-trsp-when-there-are-restrictions" id="id23">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> cuando hay restricciones.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-dijkstra-when-there-are-no-restrictions" id="id23">Usar <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> cuando no hay restricciones.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-trsp-when-there-are-restrictions" id="id24">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> cuando hay restricciones.</a></p></li>
 </ul>
 </nav>
 <p class="rubric">Ver también</p>
@@ -1865,7 +1916,7 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 <li><p><a class="reference internal" href="#migration-of-restrictions">Migración de restricciones</a></p></li>
 </ul>
 <section id="use-pgr-dijkstra-when-there-are-no-restrictions">
-<h3><a class="toc-backref" href="#id22" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> cuando no hay restricciones.</a><a class="headerlink" href="#use-pgr-dijkstra-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> cuando no hay restricciones.</a><a class="headerlink" href="#use-pgr-dijkstra-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
 <p>Usa en vez <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost
@@ -1903,7 +1954,7 @@ FROM pgr_dijkstra(
 </ul>
 </section>
 <section id="use-pgr-trsp-when-there-are-restrictions">
-<h3><a class="toc-backref" href="#id23" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> cuando hay restricciones.</a><a class="headerlink" href="#use-pgr-trsp-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> cuando hay restricciones.</a><a class="headerlink" href="#use-pgr-trsp-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
 <p>Utilice en su lugar <a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> (Uno a Uno).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost
@@ -1948,7 +1999,7 @@ FROM pgr_trsp(
 </section>
 </section>
 <section id="migration-of-pgr-trsp-edges">
-<h2><a class="toc-backref" href="#id17" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Aristas)</a><a class="headerlink" href="#migration-of-pgr-trsp-edges" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Aristas)</a><a class="headerlink" href="#migration-of-pgr-trsp-edges" title="Link to this heading">¶</a></h2>
 <p>Firma:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">source_edge</span> <span class="n">integer</span><span class="p">,</span> <span class="n">source_pos</span> <span class="n">float8</span><span class="p">,</span>
                  <span class="n">target_edge</span> <span class="n">integer</span><span class="p">,</span> <span class="n">target_pos</span> <span class="n">float8</span><span class="p">,</span>
@@ -1967,8 +2018,8 @@ FROM pgr_trsp(
 </dl>
 <nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-withpoints-when-there-are-no-restrictions" id="id24">Usar <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> cuando no hay restricciones.</a></p></li>
-<li><p><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" id="id25">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> cuando hay restricciones.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-withpoints-when-there-are-no-restrictions" id="id25">Usar <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> cuando no hay restricciones.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" id="id26">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> cuando hay restricciones.</a></p></li>
 </ul>
 </nav>
 <p class="rubric">Ver también</p>
@@ -1978,7 +2029,7 @@ FROM pgr_trsp(
 <li><p><a class="reference internal" href="#migration-of-restrictions">Migración de restricciones</a></p></li>
 </ul>
 <section id="use-pgr-withpoints-when-there-are-no-restrictions">
-<h3><a class="toc-backref" href="#id24" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> cuando no hay restricciones.</a><a class="headerlink" href="#use-pgr-withpoints-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> cuando no hay restricciones.</a><a class="headerlink" href="#use-pgr-withpoints-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
 <p>Utilizar en su lugar <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> (Uno a Uno).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2020,7 +2071,7 @@ FROM pgr_withPoints(
 </ul>
 </section>
 <section id="use-pgr-trsp-withpoints-when-there-are-restrictions">
-<h3><a class="toc-backref" href="#id25" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> cuando hay restricciones.</a><a class="headerlink" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id26" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> cuando hay restricciones.</a><a class="headerlink" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
 <p>Utilizar en su lugar <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2077,7 +2128,7 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="migration-of-pgr-trspviavertices">
-<h2><a class="toc-backref" href="#id18" role="doc-backlink">Migraciones de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviavertices" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Migraciones de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviavertices" title="Link to this heading">¶</a></h2>
 <p>Firma:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trspViaVertices</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">vids</span> <span class="n">integer</span><span class="p">[],</span>
                   <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
@@ -2095,8 +2146,8 @@ WHERE edge != -1;
 </dl>
 <nav class="contents local" id="id2">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" id="id26">Usar <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> cuando no hay restricciones</a></p></li>
-<li><p><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions" id="id27">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> cuando hay restricciones</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" id="id27">Usar <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> cuando no hay restricciones</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions" id="id28">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> cuando hay restricciones</a></p></li>
 </ul>
 </nav>
 <p class="rubric">Ver también</p>
@@ -2106,7 +2157,7 @@ WHERE edge != -1;
 <li><p><a class="reference internal" href="#migration-of-restrictions">Migración de restricciones</a></p></li>
 </ul>
 <section id="use-pgr-dijkstravia-when-there-are-no-restrictions">
-<h3><a class="toc-backref" href="#id26" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> cuando no hay restricciones</a><a class="headerlink" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> cuando no hay restricciones</a><a class="headerlink" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
 <p>Usar <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a> en su lugar.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2149,7 +2200,7 @@ WHERE edge != -1;
 </ul>
 </section>
 <section id="use-pgr-trspvia-when-there-are-restrictions">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> cuando hay restricciones</a><a class="headerlink" href="#use-pgr-trspvia-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> cuando hay restricciones</a><a class="headerlink" href="#use-pgr-trspvia-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
 <p>Usar <a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a> en su lugar.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2207,7 +2258,7 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="migration-of-pgr-trspviaedges">
-<h2><a class="toc-backref" href="#id19" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviaedges" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviaedges" title="Link to this heading">¶</a></h2>
 <p>Firma:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trspViaEdges</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">eids</span> <span class="n">integer</span><span class="p">[],</span> <span class="n">pcts</span> <span class="n">float8</span><span class="p">[],</span>
                   <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
@@ -2225,8 +2276,8 @@ WHERE edge != -1;
 </dl>
 <nav class="contents local" id="id3">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" id="id28">Usar <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> cuando no hay restricciones</a></p></li>
-<li><p><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" id="id29">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> cuando hay restricciones</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" id="id29">Usar <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> cuando no hay restricciones</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" id="id30">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> cuando hay restricciones</a></p></li>
 </ul>
 </nav>
 <p class="rubric">Ver también</p>
@@ -2236,7 +2287,7 @@ WHERE edge != -1;
 <li><p><a class="reference internal" href="#migration-of-restrictions">Migración de restricciones</a></p></li>
 </ul>
 <section id="use-pgr-withpointsvia-when-there-are-no-restrictions">
-<h3><a class="toc-backref" href="#id28" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> cuando no hay restricciones</a><a class="headerlink" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> cuando no hay restricciones</a><a class="headerlink" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
 <p>Usar <a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a> en su lugar.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2295,7 +2346,7 @@ FROM pgr_withPointsVia(
 </ul>
 </section>
 <section id="use-pgr-trspvia-withpoints-when-there-are-restrictions">
-<h3><a class="toc-backref" href="#id29" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> cuando hay restricciones</a><a class="headerlink" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> cuando hay restricciones</a><a class="headerlink" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
 <p>Usar <a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a> en su lugar.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2359,7 +2410,7 @@ FROM pgr_trspVia_withPoints(
 </section>
 </section>
 <section id="migration-of-restrictions">
-<h2><a class="toc-backref" href="#id20" role="doc-backlink">Migración de restricciones</a><a class="headerlink" href="#migration-of-restrictions" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id21" role="doc-backlink">Migración de restricciones</a><a class="headerlink" href="#migration-of-restrictions" title="Link to this heading">¶</a></h2>
 <p>A partir de v3.4.0 &lt;<a class="reference external" href="https://docs.pgrouting.org/3.4/es/migration.html">https://docs.pgrouting.org/3.4/es/migration.html</a>&gt;`__</p>
 <p>La estructura de las restricciones ha cambiado:</p>
 <section id="old-restrictions-structure">
@@ -2539,7 +2590,7 @@ FROM pgr_trspVia_withPoints(
 </section>
 </section>
 <section id="see-also">
-<h2><a class="toc-backref" href="#id21" role="doc-backlink">Ver también</a><a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id22" role="doc-backlink">Ver también</a><a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints- Categoría</span></a></p></li>
@@ -2565,7 +2616,7 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en abr 05, 2025.<br/>
+      Actualizado por última vez en abr 08, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
