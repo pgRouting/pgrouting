@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-05 01:34+0000\n"
+"POT-Creation-Date: 2025-04-05 21:44+0000\n"
 "PO-Revision-Date: 2025-04-03 09:47+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -4274,11 +4274,12 @@ msgstr "多个函数的签名发生了变化，和/或已被新函数取代。"
 msgid "Results can be different because of the changes."
 msgstr "结果可能会因变化而不同。"
 
-msgid "All deprecated functions will be removed on next mayor version 4.0.0"
+#, fuzzy
+msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr "所有已弃用的函数将在下一个主要版本 4.0.0 中被移除"
 
 #, fuzzy
-msgid "Migration of ``pgr_analyzeGraph``"
+msgid "Migration of ``pgr_analyzeOneWay``"
 msgstr "``pgr_aStar`` 迁移"
 
 #, fuzzy
@@ -4288,6 +4289,52 @@ msgstr "开始从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__"
 
 msgid "**Before Deprecation:** The following was calculated:"
 msgstr ""
+
+msgid "Number of potential problems in directionality"
+msgstr ""
+
+msgid "WHERE"
+msgstr ""
+
+msgid "Directionality problems were calculated based on codes."
+msgstr ""
+
+#, fuzzy
+msgid "Dead ends."
+msgstr "死端"
+
+msgid ""
+"A routing problem can arise when from a vertex there is only a way on or a "
+"way out but not both:"
+msgstr ""
+
+msgid ""
+"Either saving or using directly :doc:`pgr_extractVertices` get the dead ends "
+"information and determine if the adjacent edge is one way or not."
+msgstr ""
+
+msgid "In this example :doc:`pgr_extractVertices` has already been applied."
+msgstr ""
+
+#, fuzzy
+msgid "Bridges."
+msgstr "pgr_bridges"
+
+#, fuzzy
+msgid ""
+"Another routing problem can arise when there is an edge of an undirected "
+"graph whose deletion increases its number of connected components, and the "
+"bridge is only one way."
+msgstr ""
+"桥是指一个无向图中的边，如果删除它会增加该图的连通分量数量。此实现仅适用于无"
+"向图。"
+
+msgid "To determine if the bridges are or not one way."
+msgstr ""
+
+#, fuzzy
+msgid "Migration of ``pgr_analyzeGraph``"
+msgstr "``pgr_aStar`` 迁移"
 
 #, fuzzy
 msgid "Number of isolated segments."
@@ -4303,9 +4350,6 @@ msgstr ""
 #, fuzzy
 msgid "Number of intersections. (between 2 edges)"
 msgstr "订单中的单位数量"
-
-msgid "WHERE"
-msgstr ""
 
 #, fuzzy
 msgid "Graph component"
@@ -4373,10 +4417,6 @@ msgstr "``pgr_biconnectedComponents``"
 #, fuzzy
 msgid "For example:"
 msgstr "示例"
-
-#, fuzzy
-msgid "Dead ends."
-msgstr "死端"
 
 msgid ""
 "Instead of counting the dead ends, determine all the dead ends of the graph "
@@ -8547,20 +8587,16 @@ msgstr "ein"
 
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
-"as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
-msgstr ""
-"``integer`` edge_table 中引用该顶点作为传入的顶点数。 请参阅 :doc:"
-"`pgr_analyzeOneWay <pgr_analyzeOneWay>`。"
+"as incoming."
+msgstr "``integer`` edge_table 中引用该顶点作为传入的顶点数。"
 
 msgid "eout"
 msgstr "eout"
 
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
-"as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
-msgstr ""
-"``integer`` Edge_table 中引用该顶点作为传出的顶点数。 请参阅 :doc:"
-"`pgr_analyzeOneWay <pgr_analyzeOneWay>`。"
+"as outgoing."
+msgstr "``integer`` Edge_table 中引用该顶点作为传出的顶点数。"
 
 msgid "``geometry`` Point geometry of the vertex."
 msgstr "``geometry`` 顶点的点几何。"
@@ -8672,8 +8708,9 @@ msgstr ":doc:`pgr_createVerticesTable`"
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ":doc:`pgr_nodeNetwork` 创建节点到非节点边表。"
 
-msgid "``pgr_analyzeOneWay``"
-msgstr "``pgr_analyzeOneWay``"
+#, fuzzy
+msgid "``pgr_analyzeOneWay`` - Deprecated since 3.8.0"
+msgstr "``pgr_analyzeGraph``"
 
 msgid ""
 "``pgr_analyzeOneWay`` — Analyzes oneway Sstreets and identifies flipped "
@@ -8806,16 +8843,6 @@ msgid ""
 msgstr ""
 "顶点表可以使用 :doc:`pgr_createVerticesTable` 或 :doc:`pgr_createTopology` 创"
 "建"
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as incoming."
-msgstr "``integer`` edge_table 中引用该顶点作为传入的顶点数。"
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as outgoing."
-msgstr "``integer`` Edge_table 中引用该顶点作为传出的顶点数。"
 
 msgid "``pgr_articulationPoints``"
 msgstr "``pgr_articulationPoints``"
@@ -10777,24 +10804,15 @@ msgstr "``FAIL`` 当由于错误原因未能构建网络拓扑时："
 
 #, fuzzy
 msgid ""
-"The vertices table is a requirement of the :doc:`pgr_analyzeOneWay` "
-"functions."
-msgstr ""
-"顶点表是 :doc:`pgr_analyzeGraph` 和 :doc:`pgr_analyzeOneWay` 函数的必需条件。"
+"``integer`` Number of vertices in the edge_table that reference this vertex "
+"AS incoming."
+msgstr "``integer`` edge_table 中引用该顶点作为传入的顶点数。"
 
+#, fuzzy
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
-"AS incoming. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` 边表中引用此顶点作为入边的顶点数量。请参考 :doc:"
-"`pgr_analyzeOneWay`。"
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"AS outgoing. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` 边表中引用此顶点作为出边的顶点数量。请参考 :doc:"
-"`pgr_analyzeOneWay`。"
+"AS outgoing."
+msgstr "``integer`` Edge_table 中引用该顶点作为传出的顶点数。"
 
 msgid "The simplest way to use pgr_createTopology is:"
 msgstr "使用 pgr_createTopology 最简单的方法是："
@@ -10953,20 +10971,6 @@ msgstr ""
 msgid "The names of source, target are the same."
 msgstr "source, target的名称相同。"
 
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as incoming. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` edge_table 中引用该顶点作为传入的顶点数。 请参阅 :doc:"
-"`pgr_analyzeOneWay`。"
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as outgoing. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` Edge_table 中引用该顶点作为传出的顶点数。 请参阅 :doc:"
-"`pgr_analyzeOneWay`。"
-
 msgid "The simplest way to use pgr_createVerticesTable"
 msgstr "使用 pgr_createVerticesTable 最简单的方法"
 
@@ -11067,9 +11071,6 @@ msgid ""
 "on the geometry."
 msgstr ""
 ":doc:`pgr_createTopology` <pgr_create_topology>` 根据几何图形创建拓扑。"
-
-msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
-msgstr ":doc:`pgr_analyzeOneWay` 分析边缘的方向性。"
 
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
 msgstr "pgr_cuthillMckeeOrdering`` - 试验性的"
@@ -14531,8 +14532,8 @@ msgstr "检查生成的表，我们可以看到边 13,14 和 18 已被分段"
 #, fuzzy
 msgid ""
 ":doc:`topology-functions` for an overview of a topology for routing "
-"algorithms. :doc:`pgr_analyzeOneWay` to analyze directionality of the "
-"edges. :doc:`pgr_createTopology` to create a topology based on the geometry."
+"algorithms. :doc:`pgr_createTopology` to create a topology based on the "
+"geometry."
 msgstr ""
 ":doc:`topology-functions` 用于概述路由算法的拓扑。 :doc:`pgr_analyzeOneWay` "
 "分析边方向性的方法。 :doc:`pgr_createTopology` 根据几何图创建拓扑。 :doc:"
@@ -16734,6 +16735,13 @@ msgstr ""
 #, fuzzy
 msgid "Deprecation of functions."
 msgstr "已废弃的函数"
+
+#, fuzzy
+msgid ""
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
+"pgr_analyzeOneWay"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
 
 #, fuzzy
 msgid ""
@@ -20382,6 +20390,62 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+#~ msgstr ""
+#~ "``integer`` edge_table 中引用该顶点作为传入的顶点数。 请参阅 :doc:"
+#~ "`pgr_analyzeOneWay <pgr_analyzeOneWay>`。"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+#~ msgstr ""
+#~ "``integer`` Edge_table 中引用该顶点作为传出的顶点数。 请参阅 :doc:"
+#~ "`pgr_analyzeOneWay <pgr_analyzeOneWay>`。"
+
+#~ msgid "``pgr_analyzeOneWay``"
+#~ msgstr "``pgr_analyzeOneWay``"
+
+#, fuzzy
+#~ msgid ""
+#~ "The vertices table is a requirement of the :doc:`pgr_analyzeOneWay` "
+#~ "functions."
+#~ msgstr ""
+#~ "顶点表是 :doc:`pgr_analyzeGraph` 和 :doc:`pgr_analyzeOneWay` 函数的必需条"
+#~ "件。"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex AS incoming. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` 边表中引用此顶点作为入边的顶点数量。请参考 :doc:"
+#~ "`pgr_analyzeOneWay`。"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex AS outgoing. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` 边表中引用此顶点作为出边的顶点数量。请参考 :doc:"
+#~ "`pgr_analyzeOneWay`。"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as incoming. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` edge_table 中引用该顶点作为传入的顶点数。 请参阅 :doc:"
+#~ "`pgr_analyzeOneWay`。"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as outgoing. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` Edge_table 中引用该顶点作为传出的顶点数。 请参阅 :doc:"
+#~ "`pgr_analyzeOneWay`。"
+
+#~ msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
+#~ msgstr ":doc:`pgr_analyzeOneWay` 分析边缘的方向性。"
 
 #~ msgid ""
 #~ "``integer`` Number of vertices in the edge_table that reference this "

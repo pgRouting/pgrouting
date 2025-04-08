@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-05 01:34+0000\n"
+"POT-Creation-Date: 2025-04-05 21:44+0000\n"
 "PO-Revision-Date: 2025-04-04 14:16+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4572,13 +4572,14 @@ msgstr ""
 msgid "Results can be different because of the changes."
 msgstr "Resultados pueden ser diferentes dado los cambios."
 
-msgid "All deprecated functions will be removed on next mayor version 4.0.0"
+#, fuzzy
+msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr ""
 "Todas las funciones obsoletas serán removidas en las siguiente versión mayor "
 "4.0.0"
 
 #, fuzzy
-msgid "Migration of ``pgr_analyzeGraph``"
+msgid "Migration of ``pgr_analyzeOneWay``"
 msgstr "Migración de ``pgr_aStar``"
 
 #, fuzzy
@@ -4589,6 +4590,53 @@ msgstr ""
 
 msgid "**Before Deprecation:** The following was calculated:"
 msgstr ""
+
+msgid "Number of potential problems in directionality"
+msgstr ""
+
+msgid "WHERE"
+msgstr ""
+
+msgid "Directionality problems were calculated based on codes."
+msgstr ""
+
+#, fuzzy
+msgid "Dead ends."
+msgstr "Callejones sin salida"
+
+msgid ""
+"A routing problem can arise when from a vertex there is only a way on or a "
+"way out but not both:"
+msgstr ""
+
+msgid ""
+"Either saving or using directly :doc:`pgr_extractVertices` get the dead ends "
+"information and determine if the adjacent edge is one way or not."
+msgstr ""
+
+msgid "In this example :doc:`pgr_extractVertices` has already been applied."
+msgstr ""
+
+#, fuzzy
+msgid "Bridges."
+msgstr "pgr_bridges"
+
+#, fuzzy
+msgid ""
+"Another routing problem can arise when there is an edge of an undirected "
+"graph whose deletion increases its number of connected components, and the "
+"bridge is only one way."
+msgstr ""
+"Un puente es un borde de un grafo no dirigido cuya eliminación aumenta su "
+"número de componentes conectados. Esta implementación solo se puede utilizar "
+"con un grafo no dirigido."
+
+msgid "To determine if the bridges are or not one way."
+msgstr ""
+
+#, fuzzy
+msgid "Migration of ``pgr_analyzeGraph``"
+msgstr "Migración de ``pgr_aStar``"
 
 #, fuzzy
 msgid "Number of isolated segments."
@@ -4604,9 +4652,6 @@ msgstr ""
 #, fuzzy
 msgid "Number of intersections. (between 2 edges)"
 msgstr "Número de unidades en la orden"
-
-msgid "WHERE"
-msgstr ""
 
 #, fuzzy
 msgid "Graph component"
@@ -4674,10 +4719,6 @@ msgstr "``pgr_biconnectedComponents``"
 #, fuzzy
 msgid "For example:"
 msgstr "ejemplo"
-
-#, fuzzy
-msgid "Dead ends."
-msgstr "Callejones sin salida"
 
 msgid ""
 "Instead of counting the dead ends, determine all the dead ends of the graph "
@@ -9177,20 +9218,20 @@ msgstr "ein"
 
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
-"as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+"as incoming."
 msgstr ""
-"``integer`` Número de vértices en edge_table que hacen referencia a este "
-"vértice como entrante. Consulte :doc:`pgr_analyzeOneWay<pgr_analyzeOneWay>`."
+"``integer`` número de vértices en la edge_table que hacen referencia a este "
+"vértice como entrante."
 
 msgid "eout"
 msgstr "eout"
 
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
-"as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+"as outgoing."
 msgstr ""
-"``integer`` Número de vértices en edge_table que hacen referencia a este "
-"vértice como saliente. Consulte :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+"``integer`` número de vértices en la edge_table que hacen referencia a este "
+"vértice como saliente."
 
 msgid "``geometry`` Point geometry of the vertex."
 msgstr "``geometry`` Valor de la geometría POINT del vértice."
@@ -9324,8 +9365,9 @@ msgstr ":doc:`pgr_createVerticesTable`"
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ":doc:`pgr_nodeNetwork` para crear nodos en una tabla sin nodos."
 
-msgid "``pgr_analyzeOneWay``"
-msgstr "``pgr_analyzeOneWay``"
+#, fuzzy
+msgid "``pgr_analyzeOneWay`` - Deprecated since 3.8.0"
+msgstr "``pgr_analyzeGraph``"
 
 msgid ""
 "``pgr_analyzeOneWay`` — Analyzes oneway Sstreets and identifies flipped "
@@ -9477,20 +9519,6 @@ msgid ""
 msgstr ""
 "Los vértices pueden ser creados con :doc:`pgr_createVerticesTable` o :doc:"
 "`pgr_createTopology`"
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as incoming."
-msgstr ""
-"``integer`` número de vértices en la edge_table que hacen referencia a este "
-"vértice como entrante."
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as outgoing."
-msgstr ""
-"``integer`` número de vértices en la edge_table que hacen referencia a este "
-"vértice como saliente."
 
 msgid "``pgr_articulationPoints``"
 msgstr "``pgr_articulationPoints``"
@@ -11522,25 +11550,19 @@ msgstr "``FAIL`` cuando la topología de red no se construyó debido a un error:
 
 #, fuzzy
 msgid ""
-"The vertices table is a requirement of the :doc:`pgr_analyzeOneWay` "
-"functions."
+"``integer`` Number of vertices in the edge_table that reference this vertex "
+"AS incoming."
 msgstr ""
-"La tabla de vértices es un requerimiento de las funciones :doc:"
-"`pgr_analyzeGraph` y :doc:`pgr_analyzeOneWay`."
+"``integer`` número de vértices en la edge_table que hacen referencia a este "
+"vértice como entrante."
 
+#, fuzzy
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
-"AS incoming. See :doc:`pgr_analyzeOneWay`."
+"AS outgoing."
 msgstr ""
-"``integer`` Número de vértices en edge_table que referencian a este vértice "
-"como (AS) entrante. Ver :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"AS outgoing. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` Número de vértices en edge_table que referencian este vértice "
-"como (AS) saliente. Ver :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+"``integer`` número de vértices en la edge_table que hacen referencia a este "
+"vértice como saliente."
 
 msgid "The simplest way to use pgr_createTopology is:"
 msgstr "La forma más sencilla de utilizar pgr_createTopology es:"
@@ -11724,20 +11746,6 @@ msgstr ""
 msgid "The names of source, target are the same."
 msgstr "Los nombres de los campos de origen y destino son las mismos."
 
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as incoming. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` Número de vértices en edge_table que hacen referencia a este "
-"vértice como entrante. Consulte :doc:`pgr_analyzeOneWay`."
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as outgoing. See :doc:`pgr_analyzeOneWay`."
-msgstr ""
-"``integer`` Número de vértices en el edge_table que hacen referencia a este "
-"vértice como saliente. Consulte :doc:`pgr_analyzeOneWay`."
-
 msgid "The simplest way to use pgr_createVerticesTable"
 msgstr "La forma más sencilla de utilizar pgr_createVerticesTable"
 
@@ -11848,10 +11856,6 @@ msgid ""
 msgstr ""
 ":doc:`pgr_createTopology` <pgr_create_topology>` para crear una topología "
 "basada en la geometría."
-
-msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
-msgstr ""
-":doc:`pgr_analyzeOneWay` para analizar la direccionalidad de los bordes."
 
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
 msgstr "``pgr_cuthillMckeeOrdering`` - Experimental"
@@ -15633,8 +15637,8 @@ msgstr ""
 #, fuzzy
 msgid ""
 ":doc:`topology-functions` for an overview of a topology for routing "
-"algorithms. :doc:`pgr_analyzeOneWay` to analyze directionality of the "
-"edges. :doc:`pgr_createTopology` to create a topology based on the geometry."
+"algorithms. :doc:`pgr_createTopology` to create a topology based on the "
+"geometry."
 msgstr ""
 ":doc:`topology-functions` para obtener una visión general de una topología "
 "para algoritmos de enrutamiento. :doc:`pgr_analyzeOneWay` para analizar la "
@@ -17945,6 +17949,14 @@ msgstr ""
 #, fuzzy
 msgid "Deprecation of functions."
 msgstr "Funciones obsoletas"
+
+#, fuzzy
+msgid ""
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
+"pgr_analyzeOneWay"
+msgstr ""
+"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
+"pgr_contraction"
 
 #, fuzzy
 msgid ""
@@ -21638,6 +21650,66 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en edge_table que hacen referencia a este "
+#~ "vértice como entrante. Consulte :doc:"
+#~ "`pgr_analyzeOneWay<pgr_analyzeOneWay>`."
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en edge_table que hacen referencia a este "
+#~ "vértice como saliente. Consulte :doc:`pgr_analyzeOneWay "
+#~ "<pgr_analyzeOneWay>`."
+
+#~ msgid "``pgr_analyzeOneWay``"
+#~ msgstr "``pgr_analyzeOneWay``"
+
+#, fuzzy
+#~ msgid ""
+#~ "The vertices table is a requirement of the :doc:`pgr_analyzeOneWay` "
+#~ "functions."
+#~ msgstr ""
+#~ "La tabla de vértices es un requerimiento de las funciones :doc:"
+#~ "`pgr_analyzeGraph` y :doc:`pgr_analyzeOneWay`."
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex AS incoming. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en edge_table que referencian a este "
+#~ "vértice como (AS) entrante. Ver :doc:`pgr_analyzeOneWay "
+#~ "<pgr_analyzeOneWay>`."
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex AS outgoing. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en edge_table que referencian este vértice "
+#~ "como (AS) saliente. Ver :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as incoming. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en edge_table que hacen referencia a este "
+#~ "vértice como entrante. Consulte :doc:`pgr_analyzeOneWay`."
+
+#~ msgid ""
+#~ "``integer`` Number of vertices in the edge_table that reference this "
+#~ "vertex as outgoing. See :doc:`pgr_analyzeOneWay`."
+#~ msgstr ""
+#~ "``integer`` Número de vértices en el edge_table que hacen referencia a "
+#~ "este vértice como saliente. Consulte :doc:`pgr_analyzeOneWay`."
+
+#~ msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
+#~ msgstr ""
+#~ ":doc:`pgr_analyzeOneWay` para analizar la direccionalidad de los bordes."
 
 #~ msgid ""
 #~ "``integer`` Number of vertices in the edge_table that reference this "
