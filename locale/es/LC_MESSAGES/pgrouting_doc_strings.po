@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-08 20:02+0000\n"
 "PO-Revision-Date: 2025-04-08 20:53+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -4577,9 +4577,8 @@ msgstr ""
 "Todas las funciones obsoletas serán removidas en las siguiente versión mayor "
 "4.0.0"
 
-#, fuzzy
 msgid "Migration of ``pgr_createTopology``"
-msgstr "Migraciones de ``pgr_trspViaVertices``"
+msgstr "Migración de ``pgr_createTopology``"
 
 msgid ""
 "Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
@@ -4661,9 +4660,8 @@ msgstr ""
 "Finalmente, utilizando los datos almacenados en las tablas de vértices, se "
 "rellenan los campos ``source`` y ``target``."
 
-#, fuzzy
 msgid "Migration of ``pgr_createVerticesTable``"
-msgstr "Migraciones de ``pgr_trspViaVertices``"
+msgstr "Migracion de ``pgr_createVerticesTable``"
 
 msgid ""
 "**After Deprecation:** The user is responsible to create the vertices table, "
@@ -11419,9 +11417,8 @@ msgstr ""
 msgid "Create the contracted graph."
 msgstr "Crear el grafo contraído."
 
-#, fuzzy
 msgid "``pgr_createTopology`` - Deprecated since v3.8.0"
-msgstr "``pgr_analyzeOneWay`` - Obsoleto desde 3.8.0"
+msgstr "``pgr_createTopology`` - Obsoleto desde 3.8.0"
 
 msgid ""
 "``pgr_createTopology`` — Builds a network topology based on the geometry "
@@ -11654,9 +11651,8 @@ msgstr ""
 "En este ejemplo se inicia una topología limpia, con 5 aristas y, a "
 "continuación, se incrementa al resto de los bordes."
 
-#, fuzzy
 msgid "``pgr_createVerticesTable`` - Deprecated since 3.8.0"
-msgstr "``pgr_analyzeOneWay`` - Obsoleto desde 3.8.0"
+msgstr "``pgr_createVerticesTable`` - Obsoleto desde 3.8.0"
 
 msgid ""
 "``pgr_createVerticesTable`` — Reconstructs the vertices table based on the "
@@ -17842,20 +17838,19 @@ msgstr ""
 "`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: "
 "pgr_analyzeGraph"
 
-#, fuzzy
 msgid ""
 "`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: "
 "pgr_createTopology"
 msgstr ""
-"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+"`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: "
+"pgr_createTopology"
 
-#, fuzzy
 msgid ""
 "`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: "
 "pgr_createVerticesTable"
 msgstr ""
-"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
-"pgr_extractVertices"
+"`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: "
+"pgr_createVerticesTable"
 
 msgid "Official functions changes"
 msgstr "Cambios en las funciones oficiales"
