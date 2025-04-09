@@ -18579,12 +18579,3 @@ msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
 #, fuzzy
-#~ msgid "``pgr_analyzeGraph`` -- Deprecated since 3.8.0"
-#~ msgstr ":doc:`pgr_analyzeGraph`"
-
-#~ msgid ":doc:`pgr_analyzeOneWay`"
-#~ msgstr ":doc:`pgr_analyzeOneWay`"
-
-#, fuzzy
-#~ msgid "``pgr_analyzeOneWay`` - Deprecated since 3.8.0"
-#~ msgstr ":doc:`pgr_analyzeGraph`"

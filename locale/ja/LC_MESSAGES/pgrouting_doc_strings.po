@@ -18601,5 +18601,3 @@ msgstr ""
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
-#~ msgid "Prerequisites"
-#~ msgstr "前提条件"
