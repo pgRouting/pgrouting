@@ -54,8 +54,6 @@ Other PostGIS options are
 
 .. migrate_pgr_alphaShape_end
 
-.. migrate_pgr_createTopology_start
-
 Migration of ``pgr_createTopology``
 -------------------------------------------------------------------------------
 
@@ -70,8 +68,6 @@ Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
 .. include:: pgRouting-concepts.rst
    :start-after: createTopology_start
    :end-before: createTopology_end
-
-.. migrate_pgr_createTopology_end
 
 .. migrate_pgr_createVerticesTable_start
 

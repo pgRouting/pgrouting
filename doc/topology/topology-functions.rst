@@ -27,7 +27,6 @@ created.
 The following functions modify the database directly therefore the user must
 have special permissions given by the administrators to use them.
 
-- :doc:`pgr_createTopology` - create a topology based on the geometry.
 - :doc:`pgr_nodeNetwork` - to create nodes to a not noded edge table.
 - :doc:`pgr_extractVertices` - Extracts vertex information based on the edge
   table information.
@@ -50,7 +49,6 @@ Additional functions to analyze a graph:
 .. toctree::
   :hidden:
 
-  pgr_createTopology
   pgr_nodeNetwork
   pgr_extractVertices
 
