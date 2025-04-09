@@ -18761,19 +18761,3 @@ msgstr ""
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
-#~ msgid ":doc:`pgr_alphaShape`"
-#~ msgstr ":doc:`pgr_alphaShape`"
-
-#~ msgid ":doc:`pgr_createVerticesTable`"
-#~ msgstr ":doc:`pgr_createVerticesTable`"
-
-#, fuzzy
-#~ msgid "``pgr_analyzeOneWay``"
-#~ msgstr ":doc:`pgr_analyzeOneWay`"
-
-#~ msgid ":doc:`pgr_analyzeGraph`"
-#~ msgstr ":doc:`pgr_analyzeGraph`"
-
-#, fuzzy
-#~ msgid "pgr_findCloseEdges"
-#~ msgstr ":doc:`pgr_findCloseEdges`"
