@@ -18783,12 +18783,3 @@ msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
 #, fuzzy
-#~ msgid "Before image"
-#~ msgstr "もっと詳しく知る"
-
-#, fuzzy
-#~ msgid "After image"
-#~ msgstr "もっと詳しく知る"
-
-#~ msgid "Table name"
-#~ msgstr "テーブル名"
