@@ -76,13 +76,26 @@ milestone for 4.0.0
 
 * Removal of unused C/C++ code
 
+.. rubric:: Removal of SQL deprecated signatures
+
+* `#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__:
+  pgr_contraction
+
+  * pgr_contraction(text,bigint[],integer,bigint[],boolean)
+
+* `#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp
+
+  * pgr_trsp(text,integer,integer,boolean,boolean,text)
+  * pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+
 .. rubric:: Removal of SQL deprecated functions
 
-* pgr_contraction(text,bigint[],integer,bigint[],boolean)
-* pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
-* pgr_trsp(text,integer,integer,boolean,boolean,text)
-* pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
-* pgr_trspviavertices(text,anyarray,boolean,boolean,text)
+* `#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__:
+  pgr_trspviaedges
+* `#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__:
+  pgr_trspviavertices
+* `#2752 <https://github.com/pgRouting/pgrouting/issues/2752>`__:
+  pgr_analyzeGraph
 
 .. rubric:: Removal of SQL deprecated internal functions
 
