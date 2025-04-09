@@ -1,6 +1,5 @@
 
 SET(LOCAL_FILES
-    createtopology.sql
     nodeNetwork.sql
     extractVertices.sql
     )
