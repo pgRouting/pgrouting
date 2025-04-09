@@ -115,14 +115,14 @@
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#one-point-in-an-edge">One point in an edge</a></li>
+<li><a class="reference internal" href="#one-point-in-an-edge">Un punto en la arista</a></li>
 <li><a class="reference internal" href="#one-point-dry-run-execution">Ejecución en seco de un punto</a></li>
-<li><a class="reference internal" href="#many-points-in-an-edge">Many points in an edge</a></li>
+<li><a class="reference internal" href="#many-points-in-an-edge">Ejemplos de muchos puntos en una arista</a></li>
 <li><a class="reference internal" href="#many-points-dry-run-execution">Ejecución en seco de muchos puntos</a></li>
 <li><a class="reference internal" href="#find-at-most-two-routes-to-a-given-point">Encontrar como máximo dos rutas a un punto dado</a></li>
 <li><a class="reference internal" href="#a-point-of-interest-table">Una tabla de puntos de interés</a><ul>
 <li><a class="reference internal" href="#points-of-interest">Puntos de interés</a></li>
-<li><a class="reference internal" href="#points-of-interest-fill-up">Points of interest fill up</a></li>
+<li><a class="reference internal" href="#points-of-interest-fill-up">Llenado de puntos de interés</a></li>
 </ul>
 </li>
 </ul>
@@ -191,14 +191,14 @@
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#one-point-in-an-edge">One point in an edge</a></li>
+<li><a class="reference internal" href="#one-point-in-an-edge">Un punto en la arista</a></li>
 <li><a class="reference internal" href="#one-point-dry-run-execution">Ejecución en seco de un punto</a></li>
-<li><a class="reference internal" href="#many-points-in-an-edge">Many points in an edge</a></li>
+<li><a class="reference internal" href="#many-points-in-an-edge">Ejemplos de muchos puntos en una arista</a></li>
 <li><a class="reference internal" href="#many-points-dry-run-execution">Ejecución en seco de muchos puntos</a></li>
 <li><a class="reference internal" href="#find-at-most-two-routes-to-a-given-point">Encontrar como máximo dos rutas a un punto dado</a></li>
 <li><a class="reference internal" href="#a-point-of-interest-table">Una tabla de puntos de interés</a><ul>
 <li><a class="reference internal" href="#points-of-interest">Puntos de interés</a></li>
-<li><a class="reference internal" href="#points-of-interest-fill-up">Points of interest fill up</a></li>
+<li><a class="reference internal" href="#points-of-interest-fill-up">Llenado de puntos de interés</a></li>
 </ul>
 </li>
 </ul>
@@ -251,7 +251,7 @@
 <ul class="simple">
 <li><p>Las geometrías deben estar en el mismo sistema de coordenadas (tener el mismo SRID).</p></li>
 <li><p>El código para realizar los cálculos puede obtenerse para realizar los ajustes específicos que necesite la aplicación.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code> is returned on dryrun executions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code> se devuelve en ejecuciones en seco</p></li>
 </ul>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
@@ -263,7 +263,7 @@
 <div class="line-block">
 <div class="line">pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>punto</strong>, <strong>tolerancia</strong>, [<strong>options</strong>])</div>
 <div class="line">pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>puntos</strong>, <strong>tolerancia</strong>, [<strong>options</strong>])</div>
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[cap,</span> <span class="pre">dryrun]</span></code></div>
+<div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[cap,</span> <span class="pre">dryrun]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">fraction,</span> <span class="pre">side,</span> <span class="pre">distance,</span> <span class="pre">geom,</span> <span class="pre">edge)</span></code></div>
@@ -276,7 +276,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>punto</strong>, <strong>tolerancia</strong>, [<strong>options</strong>])</div>
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[cap,</span> <span class="pre">dryrun]</span></code></div>
+<div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[cap,</span> <span class="pre">dryrun]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">fraction,</span> <span class="pre">side,</span> <span class="pre">distance,</span> <span class="pre">geom,</span> <span class="pre">edge)</span></code></div>
@@ -313,7 +313,7 @@ FROM pgr_findCloseEdges(
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>puntos</strong>, <strong>tolerancia</strong>, [<strong>options</strong>])</div>
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[cap,</span> <span class="pre">dryrun]</span></code></div>
+<div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[cap,</span> <span class="pre">dryrun]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">fraction,</span> <span class="pre">side,</span> <span class="pre">distance,</span> <span class="pre">geom,</span> <span class="pre">edge)</span></code></div>
@@ -449,25 +449,24 @@ FROM pgr_findCloseEdges(
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Value in &lt;0,1&gt; that indicates the relative position from the first
-end-point of the edge.</p></td>
+<td><p>Valor entre &lt;0,1&gt; indica la posición relativa desde el primer punto de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p>Valor en <code class="docutils literal notranslate"><span class="pre">[r,</span> <span class="pre">l]</span></code> que indica si el punto es:</p>
 <ul class="simple">
-<li><p>At the right <code class="docutils literal notranslate"><span class="pre">r</span></code> of the segment.</p>
+<li><p>A la derecha <code class="docutils literal notranslate"><span class="pre">r</span></code> del segmento.</p>
 <ul>
 <li><p>Cuando el punto está en la línea se considera que está a la derecha.</p></li>
 </ul>
 </li>
-<li><p>At the left <code class="docutils literal notranslate"><span class="pre">l</span></code> of the segment.</p></li>
+<li><p>A la izquierda <code class="docutils literal notranslate"><span class="pre">l</span></code> del segmento.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">distancia</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Distance from the point to the edge.</p></td>
+<td><p>Distancia del punto a la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
@@ -475,8 +474,7 @@ end-point of the edge.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> geometry that connects the original <strong>point</strong> to the
-closest point of the edge with identifier <code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+<td><p>Geometría <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> desde el <strong>punto</strong> original hasta el punto más cercano de la arista con identificador <code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -485,21 +483,21 @@ closest point of the edge with identifier <code class="docutils literal notransl
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#one-point-in-an-edge" id="id1">One point in an edge</a></p></li>
+<li><p><a class="reference internal" href="#one-point-in-an-edge" id="id1">Un punto en la arista</a></p></li>
 <li><p><a class="reference internal" href="#one-point-dry-run-execution" id="id2">Ejecución en seco de un punto</a></p></li>
-<li><p><a class="reference internal" href="#many-points-in-an-edge" id="id3">Many points in an edge</a></p></li>
+<li><p><a class="reference internal" href="#many-points-in-an-edge" id="id3">Ejemplos de muchos puntos en una arista</a></p></li>
 <li><p><a class="reference internal" href="#many-points-dry-run-execution" id="id4">Ejecución en seco de muchos puntos</a></p></li>
 <li><p><a class="reference internal" href="#find-at-most-two-routes-to-a-given-point" id="id5">Encontrar como máximo dos rutas a un punto dado</a></p></li>
 <li><p><a class="reference internal" href="#a-point-of-interest-table" id="id6">Una tabla de puntos de interés</a></p>
 <ul>
 <li><p><a class="reference internal" href="#points-of-interest" id="id7">Puntos de interés</a></p></li>
-<li><p><a class="reference internal" href="#points-of-interest-fill-up" id="id8">Points of interest fill up</a></p></li>
+<li><p><a class="reference internal" href="#points-of-interest-fill-up" id="id8">Llenado de puntos de interés</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="one-point-in-an-edge">
-<h3><a class="toc-backref" href="#id1" role="doc-backlink">One point in an edge</a><a class="headerlink" href="#one-point-in-an-edge" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">Un punto en la arista</a><a class="headerlink" href="#one-point-in-an-edge" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, side, distance, ST_AsText(geom) geom, ST_AsText(edge) edge
 FROM pgr_findCloseEdges(
 $$SELECT 1 AS id, ST_MakeLine(ST_makePoint(2,0), ST_MakePoint(2,3)) AS geom$$,
@@ -544,14 +542,13 @@ ST_MakePoint(0,1.5), 5);
 <ul class="simple">
 <li><p>El nodo verde es el punto original.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">geom</span></code> Tiene el valor del punto original.</p></li>
-<li><p>The geometry <code class="docutils literal notranslate"><span class="pre">edge</span></code> is a line that connects the original point with the edge
-<span class="math notranslate nohighlight">\(sp \rightarrow ep\)</span> edge.</p></li>
-<li><p>The point is located at the left of the edge.</p></li>
+<li><p>La geometría <code class="docutils literal notranslate"><span class="pre">edge</span></code>, es una línea que conecta al punto original con el punto más cercano de la arista <span class="math notranslate nohighlight">\(sp \rightarrow ep\)</span>.</p></li>
+<li><p>El punto original está situado a la izquierda de la arista.</p></li>
 </ul>
 </section>
 <section id="one-point-dry-run-execution">
 <h3><a class="toc-backref" href="#id2" role="doc-backlink">Ejecución en seco de un punto</a><a class="headerlink" href="#one-point-dry-run-execution" title="Link to this heading">¶</a></h3>
-<p>Using the query from the previous example:</p>
+<p>Usando la consulta del ejemplo anterior:</p>
 <ul class="simple">
 <li><p>Devuelve <code class="docutils literal notranslate"><span class="pre">CONJUNTO</span> <span class="pre">VACÍO</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
@@ -598,7 +595,7 @@ WHERE rn &lt;= 1
 </div>
 </section>
 <section id="many-points-in-an-edge">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Many points in an edge</a><a class="headerlink" href="#many-points-in-an-edge" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Ejemplos de muchos puntos en una arista</a><a class="headerlink" href="#many-points-in-an-edge" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Los nodos verdes son los <strong>puntos originales</strong></p></li>
 <li><p>La geometría <code class="docutils literal notranslate"><span class="pre">geom</span></code>, marcada como <strong>g1</strong> y <strong>g2</strong> son los <strong>puntos originales</strong></p></li>
@@ -747,7 +744,7 @@ WHERE rn &lt;= 1
 <td><p>Un identificador único.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
-<td><p>Identifier of the nearest segment.</p></td>
+<td><p>Identificador del segmento mas próximo.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
 <td><p>Está a la izquierda, a la derecha o a ambos lados del segmento <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>.</p></td>
@@ -783,7 +780,7 @@ WHERE rn &lt;= 1
 </div>
 </section>
 <section id="points-of-interest-fill-up">
-<h4><a class="toc-backref" href="#id8" role="doc-backlink">Points of interest fill up</a><a class="headerlink" href="#points-of-interest-fill-up" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Llenado de puntos de interés</a><a class="headerlink" href="#points-of-interest-fill-up" title="Link to this heading">¶</a></h4>
 <p>Insertando los puntos de interés.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">pointsOfInterest</span> <span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)),</span>
@@ -862,7 +859,7 @@ reached from both sides.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en abr 08, 2025.<br/>
+      Actualizado por última vez en abr 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

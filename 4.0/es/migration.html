@@ -98,14 +98,14 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Guía de migración</a><ul>
-<li><a class="reference internal" href="#migration-of-pgr-alphashape">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-createtopology">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-alphashape">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-createtopology">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
 <li><a class="reference internal" href="#build-a-routing-topology">Construir una topología de ruteo</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-createverticestable">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-analyzegraph">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-createverticestable">Migracion de <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-analyzegraph">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-astar">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-bdastar">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-dijkstra">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></li>
@@ -214,14 +214,14 @@
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
 <li><a class="reference internal" href="#">Guía de migración</a><ul>
-<li><a class="reference internal" href="#migration-of-pgr-alphashape">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-createtopology">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-alphashape">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-createtopology">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
 <li><a class="reference internal" href="#build-a-routing-topology">Construir una topología de ruteo</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-createverticestable">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-analyzegraph">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-createverticestable">Migracion de <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-analyzegraph">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-astar">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-bdastar">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-dijkstra">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></li>
@@ -316,18 +316,18 @@
 <p>Resultados pueden ser diferentes dado los cambios.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>All deprecated functions will be removed on next major version 4.0.0</p>
+<p>Todas las funciones obsoletas serán removidas en las siguiente versión mayor 4.0.0</p>
 </div>
 <nav class="contents" id="contents">
 <p class="topic-title">Contenido</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#migration-guide" id="id4">Guía de migración</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migration-of-pgr-alphashape" id="id5">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-createtopology" id="id6">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-createverticestable" id="id7">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-analyzeoneway" id="id8">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-analyzegraph" id="id9">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-alphashape" id="id5">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-createtopology" id="id6">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-createverticestable" id="id7">Migracion de <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-analyzeoneway" id="id8">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-analyzegraph" id="id9">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-astar" id="id10">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-bdastar" id="id11">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-dijkstra" id="id12">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></p></li>
@@ -349,11 +349,11 @@
 </ul>
 </nav>
 <section id="migration-of-pgr-alphashape">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a><a class="headerlink" href="#migration-of-pgr-alphashape" title="Link to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
-<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a><a class="headerlink" href="#migration-of-pgr-alphashape" title="Link to this heading">¶</a></h2>
+<p>Comenzando en <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p><strong>Antes de la Depreciación:</strong> Se calculó lo siguiente:</p>
 <ul class="simple">
-<li><p>An alphaShape was calculated</p></li>
+<li><p>Se ha calculado un alphaShape</p></li>
 </ul>
 <p><strong>After Deprecation:</strong></p>
 <p>PostGIS has two ways of generating alphaShape.</p>
@@ -370,13 +370,13 @@
 * <a class="reference external" href="https://postgis.net/docs/ST_ConcaveHull.html">ST_ConcaveHull</a></p>
 </section>
 <section id="migration-of-pgr-createtopology">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><a class="headerlink" href="#migration-of-pgr-createtopology" title="Link to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
-<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><a class="headerlink" href="#migration-of-pgr-createtopology" title="Link to this heading">¶</a></h2>
+<p>Comenzando en <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p><strong>Antes de la Depreciación:</strong> Se calculó lo siguiente:</p>
 <ul class="simple">
-<li><p>A table with <cite>&lt;edges&gt;_vertices_pgr</cite> was created.</p></li>
+<li><p>Se ha creado una tabla con <cite>&lt;edges&gt;_vertices_pgr</cite>.</p></li>
 </ul>
-<p><strong>After Deprecation:</strong> The user is responsible to create the complete topology.</p>
+<p><strong>Después de la depreciación</strong> El usuario es responsable de crear la topología completa.</p>
 <section id="build-a-routing-topology">
 <h3>Construir una topología de ruteo<a class="headerlink" href="#build-a-routing-topology" title="Link to this heading">¶</a></h3>
 <p>La información básica para usar la mayoría de las funciones de pgRouting <code class="docutils literal notranslate"><span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">[reverse_cost]</span></code> es lo que en pgRouting se llama topología de ruteo.</p>
@@ -408,14 +408,13 @@
 </section>
 </section>
 <section id="migration-of-pgr-createverticestable">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a><a class="headerlink" href="#migration-of-pgr-createverticestable" title="Link to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
-<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Migracion de <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a><a class="headerlink" href="#migration-of-pgr-createverticestable" title="Link to this heading">¶</a></h2>
+<p>Comenzando en <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p><strong>Antes de la Depreciación:</strong> Se calculó lo siguiente:</p>
 <ul class="simple">
-<li><p>A table with <cite>&lt;edges&gt;_vertices_pgr</cite> was created.</p></li>
+<li><p>Se ha creado una tabla con <cite>&lt;edges&gt;_vertices_pgr</cite>.</p></li>
 </ul>
-<p><strong>After Deprecation:</strong> The user is responsible to create the vertices table,
-indexes, etc. They may use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> for that purpose.</p>
+<p><strong>Después de la depreciación:</strong> El usuario es responsable de crear la tabla de vértices, índices, etc. Para ello puede utilizar <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">17</span>
@@ -423,20 +422,18 @@ indexes, etc. They may use <a class="reference internal" href="pgr_extractVertic
 </div>
 </section>
 <section id="migration-of-pgr-analyzeoneway">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzeoneway" title="Link to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
-<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzeoneway" title="Link to this heading">¶</a></h2>
+<p>Comenzando en <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p><strong>Antes de la Depreciación:</strong> Se calculó lo siguiente:</p>
 <ul class="simple">
-<li><p>Number of potential problems in directionality</p></li>
+<li><p>Número de problemas potenciales en la dirección</p></li>
 </ul>
-<p>WHERE</p>
-<p>Directionality problems were calculated based on codes.</p>
-<p class="rubric">Dead ends.</p>
-<p>A routing problem can arise when from a vertex there is only a way on or a way
-out but not both:</p>
-<p>Either saving or using directly <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> get the dead ends
-information and determine if the adjacent edge is one way or not.</p>
-<p>In this example <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> has already been applied.</p>
+<p>Donde</p>
+<p>Los problemas de dirección se calcularon a partir de códigos.</p>
+<p class="rubric">Callejones sin salida.</p>
+<p>Un problema de ruteo puede surgir cuando desde un vértice sólo hay una salida o una entrada, pero no ambas:</p>
+<p>Guardando o usando directamente <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> se obtiene la información de los callejones sin salida y se determina si la arista adyacente es unidireccional o no.</p>
+<p>En este ejemplo <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> ya se ha aplicado.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">deadends</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="nb">id</span>
@@ -449,11 +446,9 @@ information and determine if the adjacent edge is one way or not.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Bridges.</p>
-<p>Another routing problem can arise when there is an edge of an undirected graph
-whose deletion increases its number of connected components, and the bridge is
-only one way.</p>
-<p>To determine if the bridges are or not one way.</p>
+<p class="rubric">Puentes.</p>
+<p>Otro problema para ruteo puede surgir cuando en un grafo no dirigido hay una arista cuya eliminación aumenta el numero de componentes conectados, y el puente es solo de un sentido.</p>
+<p>Para determinar si los puentes son o no unidireccionales.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">reverse_cost</span><span class="o">&lt;</span><span class="mi">0</span> <span class="n">AS</span> <span class="n">is_OneWway</span>
 <span class="n">FROM</span> <span class="n">pgr_bridges</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">)</span>
 <span class="n">JOIN</span> <span class="n">edges</span> <span class="n">ON</span> <span class="p">(</span><span class="n">edge</span> <span class="o">=</span> <span class="nb">id</span><span class="p">);</span>
@@ -471,45 +466,43 @@ only one way.</p>
 </div>
 </section>
 <section id="migration-of-pgr-analyzegraph">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzegraph" title="Link to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
-<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzegraph" title="Link to this heading">¶</a></h2>
+<p>Comenzando en <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p><strong>Antes de la Depreciación:</strong> Se calculó lo siguiente:</p>
 <ul class="simple">
-<li><p>Number of isolated segments.</p></li>
-<li><p>Number of dead ends.</p></li>
-<li><p>Number of potential gaps found near dead ends.</p></li>
-<li><p>Number of intersections. (between 2 edges)</p></li>
+<li><p>Número de segmentos aislados.</p></li>
+<li><p>Cantidad de callejones sin salida.</p></li>
+<li><p>Número de huecos potenciales encontrados cerca de callejones sin salida.</p></li>
+<li><p>Número de intersecciones. (entre 2 aristas)</p></li>
 </ul>
-<p>WHERE</p>
+<p>Donde</p>
 <dl class="field-list simple">
-<dt class="field-odd">Graph component<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A connected subgraph that is not part of any larger connected
-subgraph.</p>
+<dt class="field-odd">Componente de grafo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Un sub-grafo conectando no es parte de un grafo conectado mas grande.</p>
 </dd>
-<dt class="field-even">Isolated segment<span class="colon">:</span></dt>
-<dd class="field-even"><p>A graph component with only one segment.</p>
+<dt class="field-even">Segmento aislado<span class="colon">:</span></dt>
+<dd class="field-even"><p>Un componente de grafo con un solo segmento.</p>
 </dd>
 <dt class="field-odd">Callejones sin salida<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A vertex that participates in only one edge.</p>
+<dd class="field-odd"><p>Un vértice que participa en una sola arista.</p>
 </dd>
-<dt class="field-even">gaps<span class="colon">:</span></dt>
-<dd class="field-even"><p>Space between two geometries.</p>
+<dt class="field-even">Espacios<span class="colon">:</span></dt>
+<dd class="field-even"><p>Espacio entre dos geometrías.</p>
 </dd>
-<dt class="field-odd">Intersection<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Is a topological relationship between two geometries.</p>
+<dt class="field-odd">Intersección<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Es una relación topológica entre dos geometrías.</p>
 </dd>
 </dl>
-<p class="rubric">Migration.</p>
-<p class="rubric">Components.</p>
-<p>Instead of counting only isolated segments, determine all the components of the
-graph.</p>
-<p>Depending of the final application requirements use:</p>
+<p class="rubric">Migración.</p>
+<p class="rubric">Componentes.</p>
+<p>En lugar de contar sólo segmentos aislados, determinar todos los componentes del grafo.</p>
+<p>Dependiendo de los requisitos de la aplicación final utilizar:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_connectedComponents</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_strongComponents.html"><span class="doc">pgr_strongComponents</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents</span></a></p></li>
 </ul>
-<p>For example:</p>
+<p>Por ejemplo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -537,10 +530,9 @@ graph.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Dead ends.</p>
-<p>Instead of counting the dead ends, determine all the dead ends of the graph
-using <a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree</span></a>.</p>
-<p>For example:</p>
+<p class="rubric">Callejones sin salida.</p>
+<p>En lugar de contar los callejones sin salida, determine todos los callejones sin salida del grafo utilizando <a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree</span></a>.</p>
+<p>Por ejemplo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
 FROM pgr_degree($$SELECT id, source, target FROM edges$$)
 WHERE degree = 1;
@@ -560,7 +552,7 @@ WHERE degree = 1;
 <p class="rubric">Potential gaps near dead ends.</p>
 <p>Instead of counting potential gaps between geometries, determine the geometric
 gaps in the graph using <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>.</p>
-<p>For example:</p>
+<p>Por ejemplo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">deadends</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span><span class="n">geom</span><span class="p">,</span> <span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="n">inhere</span>
@@ -577,14 +569,11 @@ gaps in the graph using <a class="reference internal" href="pgr_findCloseEdges.h
 
 </pre></div>
 </div>
-<p class="rubric">Topological relationships.</p>
+<p class="rubric">Relaciones topológicas.</p>
 <p>Instead of counting intersections, determine topological relationships between
 geometries.</p>
-<p>Several PostGIS functions can be used:
-<a class="reference external" href="https://postgis.net/docs/ST_Intersects.html">ST_Intersects</a>,
-<a class="reference external" href="https://postgis.net/docs/ST_Crosses.html">ST_Crosses</a>,
-<a class="reference external" href="https://postgis.net/docs/ST_Overlaps.html">ST_Overlaps</a>, etc.</p>
-<p>For example:</p>
+<p>Se pueden utilizar varias funciones de PostGIS: <a class="reference external" href="https://postgis.net/docs/ST_Intersects.html">ST_Intersects</a>, <a class="reference external" href="https://postgis.net/docs/ST_Crosses.html">ST_Crosses</a>, <a class="reference external" href="https://postgis.net/docs/ST_Overlaps.html">ST_Overlaps</a>, etc.</p>
+<p>Por ejemplo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="n">AS</span> <span class="n">id1</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span> <span class="n">AS</span> <span class="n">id2</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">e1</span><span class="p">,</span> <span class="n">edges</span> <span class="n">e2</span> <span class="n">WHERE</span> <span class="n">e1</span> <span class="o">&lt;</span> <span class="n">e2</span> <span class="n">AND</span> <span class="n">st_crosses</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">);</span>
  <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span>
@@ -2705,7 +2694,7 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en abr 08, 2025.<br/>
+      Actualizado por última vez en abr 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

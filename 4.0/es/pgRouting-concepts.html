@@ -1466,21 +1466,19 @@ INSERT 0 2
 
 </pre></div>
 </div>
-<p>A dead end happens when</p>
+<p>Un callejón sin salida se produce cuando</p>
 <ul class="simple">
-<li><p>The vertex is the limit of a cul-de-sac, a no-through road or a no-exit
-road.</p></li>
+<li><p>El vértice es el límite de un callejón sin salida, una vía de no paso o una vía de no salida.</p></li>
 <li><p>El vértice esta en el limite del grafo importado.</p>
 <ul>
-<li><p>If a larger graph is imported then the vertex might not be a dead end</p></li>
+<li><p>Si se importa un grafo más grande, puede que el vértice no sea un callejón sin salida.</p></li>
 </ul>
 </li>
 </ul>
-<p>Node <span class="math notranslate nohighlight">\(4\)</span>, is a dead end on the query, even that it visually looks like an
-end point of 3 edges.</p>
+<p>El nodo <span class="math notranslate nohighlight">\(4\)</span>, es un callejón sin salida en la consulta, aunque visualmente parezca un punto final de 3 aristas.</p>
 <a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 190.20000000000002px; height: 173.20000000000002px;" />
 </a>
-<p class="rubric">Is node <span class="math notranslate nohighlight">\(4\)</span> a dead end or not?</p>
+<p class="rubric">¿Es el nodo <span class="math notranslate nohighlight">\(4\)</span> un callejón sin salida o no?</p>
 <div class="graphviz"><img src="_images/graphviz-0efc1c6f9c1a1176ac42aaa8de0be1e9186f8539.png" alt="graph G {
   1,2,4,5,9,13,14 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   3,6,7,8,10,11,12,15,16,17 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
@@ -1505,7 +1503,7 @@ end point of 3 edges.</p>
   15 [pos=&quot;4,1!&quot;];     16 [pos=&quot;4,2!&quot;];
   17 [pos=&quot;4,3!&quot;];
 }" class="graphviz" /></div>
-<p>The answer to that question will depend on the application.</p>
+<p>La respuesta a esta pregunta dependerá de la aplicación.</p>
 <ul class="simple">
 <li><p>Hay un bordillo tan pequeño:</p>
 <ul>
@@ -1557,8 +1555,7 @@ end point of 3 edges.</p>
   15 [pos=&quot;4,1!&quot;];     16 [pos=&quot;4,2!&quot;];
   17 [pos=&quot;4,3!&quot;];
 }" class="graphviz" /></div>
-<p>These linear vertices are correct, for example, when those the vertices are speed
-bumps, stop signals and the application is taking them into account.</p>
+<p>Estos vértices lineales son correctos, por ejemplo, cuando esos vértices son badenes, señales de alto y la aplicación los tiene en cuenta.</p>
 <p>Cuando hay muchas aristas lineales, que no necesitan tomarse en cuenta, para acelerar el procesamiento se pueden utilizar las funciones <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a> para contraer el grafo.</p>
 </section>
 </section>
@@ -2923,7 +2920,7 @@ bumps, stop signals and the application is taking them into account.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en abr 08, 2025.<br/>
+      Actualizado por última vez en abr 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

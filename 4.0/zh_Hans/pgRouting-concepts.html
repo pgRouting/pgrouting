@@ -1466,21 +1466,19 @@ INSERT 0 2
 
 </pre></div>
 </div>
-<p>A dead end happens when</p>
+<p>死端（Dead End）的形成条件</p>
 <ul class="simple">
-<li><p>The vertex is the limit of a cul-de-sac, a no-through road or a no-exit
-road.</p></li>
+<li><p>死端顶点（Dead End Vertex）的拓扑定义。</p></li>
 <li><p>The vertex is on the limit of the imported graph.</p>
 <ul>
-<li><p>If a larger graph is imported then the vertex might not be a dead end</p></li>
+<li><p>如果导入了更大的图，则该顶点可能不会是死端</p></li>
 </ul>
 </li>
 </ul>
-<p>Node <span class="math notranslate nohighlight">\(4\)</span>, is a dead end on the query, even that it visually looks like an
-end point of 3 edges.</p>
+<p>节点 <span class="math notranslate nohighlight">\(4\)</span> 在查询中是一个死端，即使从视觉上看它是三条边的终点。</p>
 <a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 190.20000000000002px; height: 173.20000000000002px;" />
 </a>
-<p class="rubric">Is node <span class="math notranslate nohighlight">\(4\)</span> a dead end or not?</p>
+<p class="rubric">节点 <span class="math notranslate nohighlight">\(4\)</span> 是死端还是非死端？</p>
 <div class="graphviz"><img src="_images/graphviz-0efc1c6f9c1a1176ac42aaa8de0be1e9186f8539.png" alt="graph G {
   1,2,4,5,9,13,14 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   3,6,7,8,10,11,12,15,16,17 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
@@ -1505,7 +1503,7 @@ end point of 3 edges.</p>
   15 [pos=&quot;4,1!&quot;];     16 [pos=&quot;4,2!&quot;];
   17 [pos=&quot;4,3!&quot;];
 }" class="graphviz" /></div>
-<p>The answer to that question will depend on the application.</p>
+<p>这个问题的答案将取决于应用情况。</p>
 <ul class="simple">
 <li><p>有这么小的路边吗：</p>
 <ul>
@@ -1558,8 +1556,7 @@ functions can be used to contract the graph.</p>
   15 [pos=&quot;4,1!&quot;];     16 [pos=&quot;4,2!&quot;];
   17 [pos=&quot;4,3!&quot;];
 }" class="graphviz" /></div>
-<p>These linear vertices are correct, for example, when those the vertices are speed
-bumps, stop signals and the application is taking them into account.</p>
+<p>当这些顶点表示减速带、停止信号，并且应用程序将其纳入考虑时，这些线性顶点是正确的。</p>
 <p>When there are many linear vertices, that need not to be taken into account, to
 speed up the processing, the <a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a> functions can be used to
 contract the problem.</p>
@@ -2926,7 +2923,7 @@ contract the problem.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 08, 2025.<br/>
+      Last updated on 4月 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

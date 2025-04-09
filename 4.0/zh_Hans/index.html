@@ -321,8 +321,7 @@
 </ul>
 <p><a class="reference internal" href="metrics-family.html"><span class="doc">度量 - 功能系列</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree</span></a> - Returns a set of vertices and corresponding count of
-incident edges to the vertex.</p></li>
+<li><p><a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree</span></a> - 返回顶点集及其关联边数统计。</p></li>
 </ul>
 <p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - 函数族</span></a></p>
 <ul class="simple">
@@ -352,7 +351,7 @@ incident edges to the vertex.</p></li>
 <li><p><a class="reference internal" href="pgr_TSPeuclidean.html"><span class="doc">pgr_TSPeuclidean</span></a> - 当输入是坐标时。</p></li>
 </ul>
 <p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> - 转弯限制最短路径 (TRSP)</p>
-<p class="rubric">Utilities family</p>
+<p class="rubric">实用工具函数集</p>
 <p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a></p>
 </section>
 <section id="functions-by-categories">
@@ -416,9 +415,8 @@ incident edges to the vertex.</p></li>
 <h2><a class="reference internal" href="release_notes.html"><span class="doc">发行说明</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
 <section id="pgrouting-4-0-0-release-notes">
 <h3>pgRouting 4.0.0 发布说明<a class="headerlink" href="#pgrouting-4-0-0-release-notes" title="Link to this heading">¶</a></h3>
-<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.0%22">Git closed
-milestone for 4.0.0</a></p>
-<p class="rubric">Functions promoted to official</p>
+<p>查看本版本已关闭的所有议题和拉取请求,请访问：<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.0%22">GitHub 4.0.0版本里程碑关闭列表</a></p>
+<p class="rubric">正式版功能函数</p>
 <ul class="simple">
 <li><p>pgr_trsp</p></li>
 <li><p>pgr_trspVia</p></li>
@@ -431,7 +429,7 @@ milestone for 4.0.0</a></p>
 <li><p>pgr_withPointsKSP</p></li>
 <li><p>pgr_withPointsVia</p></li>
 </ul>
-<p class="rubric">Signatures promoted to official</p>
+<p class="rubric">正式版函数签名</p>
 <ul class="simple">
 <li><p>pgr_aStar(组合)</p></li>
 <li><p>pgr_aStarCost(组合)</p></li>
@@ -441,7 +439,7 @@ milestone for 4.0.0</a></p>
 <li><p>pgr_bdDijkstraCost(组合)</p></li>
 <li><p>pgr_dijkstra(组合)</p></li>
 <li><p>pgr_dijkstraCost(组合)</p></li>
-<li><p>pgr_KSP(All signatures)</p></li>
+<li><p>pgr_KSP（所有函数签名版本）</p></li>
 <li><p>pgr_boykovKolmogorov (组合)</p></li>
 <li><p>pgr_edmondsKarp(组合)</p></li>
 <li><p>pgr_maxFlow(组合)</p></li>
@@ -449,9 +447,9 @@ milestone for 4.0.0</a></p>
 </ul>
 <p class="rubric">代码改进：</p>
 <ul class="simple">
-<li><p>Removal of unused C/C++ code</p></li>
+<li><p>移除未使用的C/C++代码</p></li>
 </ul>
-<p class="rubric">Removal of SQL deprecated functions</p>
+<p class="rubric">移除已弃用的SQL函数</p>
 <ul class="simple">
 <li><p>pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
 <li><p>pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
@@ -459,7 +457,7 @@ milestone for 4.0.0</a></p>
 <li><p>pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)</p></li>
 <li><p>pgr_trspviavertices(text,anyarray,boolean,boolean,text)</p></li>
 </ul>
-<p class="rubric">Removal of SQL deprecated internal functions</p>
+<p class="rubric">移除已弃用的SQL内部函数</p>
 <ul class="simple">
 <li><p>_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)</p></li>
 <li><p>_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)</p></li>
@@ -480,7 +478,7 @@ milestone for 4.0.0</a></p>
 <li><p>_v4trsp(text,text,anyarray,anyarray,boolean)</p></li>
 <li><p>_v4trsp(text,text,text,boolean)</p></li>
 </ul>
-<p class="rubric">Deprecation of internal C/C++ functions</p>
+<p class="rubric">弃用内部C/C++函数</p>
 <ul class="simple">
 <li><p>_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)</p></li>
 <li><p>_pgr_kruskal(text,anyarray,text,bigint,double precision)</p></li>
@@ -530,7 +528,7 @@ milestone for 4.0.0</a></p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 08, 2025.<br/>
+      Last updated on 4月 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
