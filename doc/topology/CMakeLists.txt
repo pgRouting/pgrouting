@@ -2,7 +2,6 @@
 SET(LOCAL_FILES
     pgr_createTopology.rst
     pgr_nodeNetwork.rst
-    pgr_analyzeOneWay.rst
     pgr_createVerticesTable.rst
     pgr_extractVertices.rst
     topology-functions.rst
