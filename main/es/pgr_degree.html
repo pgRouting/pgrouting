@@ -102,7 +102,7 @@
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a><ul>
 <li><a class="reference internal" href="#edges">Edges</a></li>
-<li><a class="reference internal" href="#edges-and-vertices">Edges and Vertices</a></li>
+<li><a class="reference internal" href="#edges-and-vertices">Aristas y Vértices</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
@@ -114,12 +114,12 @@
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#degree-of-a-loop">Degree of a loop</a></li>
+<li><a class="reference internal" href="#degree-of-a-loop">Grado de un bucle</a></li>
 <li><a class="reference internal" href="#degree-of-a-sub-graph">Grado de un subgrafo</a></li>
-<li><a class="reference internal" href="#using-a-vertex-table">Using a vertex table</a></li>
+<li><a class="reference internal" href="#using-a-vertex-table">Usando una tabla de vértices</a></li>
 <li><a class="reference internal" href="#dry-run-execution">Ejecución de prueba</a></li>
-<li><a class="reference internal" href="#finding-dead-ends">Finding dead ends</a></li>
-<li><a class="reference internal" href="#finding-linear-vertices">Finding linear vertices</a></li>
+<li><a class="reference internal" href="#finding-dead-ends">Encontrando callejones sin salida</a></li>
+<li><a class="reference internal" href="#finding-linear-vertices">Encontrando vértices lineales</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -173,7 +173,7 @@
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a><ul>
 <li><a class="reference internal" href="#edges">Edges</a></li>
-<li><a class="reference internal" href="#edges-and-vertices">Edges and Vertices</a></li>
+<li><a class="reference internal" href="#edges-and-vertices">Aristas y Vértices</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
@@ -185,12 +185,12 @@
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#degree-of-a-loop">Degree of a loop</a></li>
+<li><a class="reference internal" href="#degree-of-a-loop">Grado de un bucle</a></li>
 <li><a class="reference internal" href="#degree-of-a-sub-graph">Grado de un subgrafo</a></li>
-<li><a class="reference internal" href="#using-a-vertex-table">Using a vertex table</a></li>
+<li><a class="reference internal" href="#using-a-vertex-table">Usando una tabla de vértices</a></li>
 <li><a class="reference internal" href="#dry-run-execution">Ejecución de prueba</a></li>
-<li><a class="reference internal" href="#finding-dead-ends">Finding dead ends</a></li>
-<li><a class="reference internal" href="#finding-linear-vertices">Finding linear vertices</a></li>
+<li><a class="reference internal" href="#finding-dead-ends">Encontrando callejones sin salida</a></li>
+<li><a class="reference internal" href="#finding-linear-vertices">Encontrando vértices lineales</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -225,7 +225,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code><a class="headerlink" href="#pgr-degree" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> - Para cada vértice de un grafo no dirigido, devuelve el número de aristas incidentes en el vértice.</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="d5a670bc-1441-497c-86fd-8e32ad791ee9" name="d5a670bc-1441-497c-86fd-8e32ad791ee9" type="checkbox"><label class="sphinx_collapse__label" for="d5a670bc-1441-497c-86fd-8e32ad791ee9"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="70946db9-9902-40fb-9973-9d597eaaa35f" name="70946db9-9902-40fb-9973-9d597eaaa35f" type="checkbox"><label class="sphinx_collapse__label" for="70946db9-9902-40fb-9973-9d597eaaa35f"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -246,38 +246,36 @@
 </div>
 </div>
 <p class="rubric">Disponibilidad</p>
-<p class="rubric">Version 3.8.0</p>
+<p class="rubric">Versión 3.8.0</p>
 <ul class="simple">
 <li><p>Error messages adjustment.</p></li>
 <li><p>New signature with only Edges SQL.</p></li>
-<li><p>Function promoted to official.</p></li>
+<li><p>Función promovida a oficial.</p></li>
 </ul>
 <p class="rubric">Versión 3.4.0</p>
 <ul class="simple">
-<li><p>New proposed function.</p></li>
+<li><p>Nueva función propuesta.</p></li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>Calculates the degree of the vertices of an undirected graph</p>
-<p>The degree (or valency) of a vertex of a graph is the number of edges that are
-incident to the vertex.</p>
+<p>Calcula el grado de los vértices de un grafo no dirigido</p>
+<p>El grado (o valencia) de un vértice de un grafo es el número de aristas incidentes al vértice.</p>
 <ul class="simple">
 <li><p>Funciona para grafos <strong>no dirigidos</strong>.</p></li>
 <li><p>A loop contributes 2 to a vertex’s degree.</p></li>
 <li><p>A vertex with degree 0 is called an isolated vertex.</p>
 <ul>
-<li><p>Isolated vertex is not part of the result</p></li>
+<li><p>Vértice aislado no forma parte del resultado</p></li>
 </ul>
 </li>
 <li><p>Vertex not participating on the subgraph is considered and isolated vertex.</p></li>
-<li><p>There can be a <code class="docutils literal notranslate"><span class="pre">dryrun</span></code> execution and the code used to get the answer will
-be shown in a PostgreSQL <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code>.</p>
+<li><p>Dado que se trata de una ejecución <code class="docutils literal notranslate"><span class="pre">dryrun</span></code>, el código de todos los cálculos se muestra en el <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> de PostgreSQL.</p>
 <ul>
 <li><p>The code can be used as base code for the particular application
 requirements.</p></li>
 </ul>
 </li>
-<li><p>No ordering is performed.</p></li>
+<li><p>No se realiza ningún ordenamiento.</p></li>
 </ul>
 </section>
 <section id="signatures">
@@ -286,7 +284,7 @@ requirements.</p></li>
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_degree(<a class="reference internal" href="#edges-sql">Edges SQL</a> , [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
-<div class="line">pgr_degree(<a class="reference internal" href="#vertex-sql">SQL de aristas</a> , <a class="reference internal" href="#vertex-sql">SQL de vértices</a>, [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
+<div class="line">pgr_degree(<a class="reference internal" href="#edges-sql">SQL de aristas</a> , <a class="reference internal" href="#vertex-sql">SQL de vértices</a>, [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">REGRESA CONJUNTO DE <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">degree)</span></code></div>
@@ -306,8 +304,8 @@ requirements.</p></li>
 </div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Get the degree of the vertices defined on the edges table</p>
+<dt class="field-odd">ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Obtener el grado de los vértices definidos en la tabla de aristas</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree($$SELECT id, source, target FROM edges$$)
@@ -337,11 +335,11 @@ ORDER BY node;
 </div>
 </section>
 <section id="edges-and-vertices">
-<span id="index-2"></span><h3>Edges and Vertices<a class="headerlink" href="#edges-and-vertices" title="Link to this heading">¶</a></h3>
+<span id="index-2"></span><h3>Aristas y Vértices<a class="headerlink" href="#edges-and-vertices" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_degree(<a class="reference internal" href="#vertex-sql">SQL de aristas</a> , <a class="reference internal" href="#vertex-sql">SQL de vértices</a>, [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
+<div class="line">pgr_degree(<a class="reference internal" href="#edges-sql">SQL de aristas</a> , <a class="reference internal" href="#vertex-sql">SQL de vértices</a>, [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">REGRESA CONJUNTO DE <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">degree)</span></code></div>
@@ -356,7 +354,7 @@ ORDER BY node;
 <p><code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> can use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> embedded in the call.</p>
 <p>For decent size networks, it is best to prepare your vertices table before hand
 and use it on <code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> calls. (See <a class="reference internal" href="#using-a-vertex-table">Using a vertex table</a>)</p>
-<p>Calculate the degree of the nodes:</p>
+<p>Calcula el grado de los vértices:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree(
   $$SELECT id FROM edges$$,
   $$SELECT id, in_edges, out_edges
@@ -439,7 +437,7 @@ and use it on <code class="docutils literal notranslate"><span class="pre">pgr_d
 </nav>
 <section id="edges-sql">
 <h3><a class="toc-backref" href="#id2" role="doc-backlink">SQL aristas</a><a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
-<p class="rubric">For the <a class="reference internal" href="#edges-and-vertices">Edges and Vertices</a> signature:</p>
+<p class="rubric">Para la firma <a class="reference internal" href="#edges-and-vertices">Aristas y Vértices</a>:</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -454,7 +452,7 @@ and use it on <code class="docutils literal notranslate"><span class="pre">pgr_d
 </tr>
 </tbody>
 </table>
-<p>For the <a class="reference internal" href="#edges">Edges</a> signature:</p>
+<p>Para la firma <a class="reference internal" href="#edges">Aristas</a>:</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -480,7 +478,7 @@ and use it on <code class="docutils literal notranslate"><span class="pre">pgr_d
 </section>
 <section id="vertex-sql">
 <h3><a class="toc-backref" href="#id3" role="doc-backlink">SQL de vértices</a><a class="headerlink" href="#vertex-sql" title="Link to this heading">¶</a></h3>
-<p class="rubric">For the <a class="reference internal" href="#edges-and-vertices">Edges and Vertices</a> signature:</p>
+<p class="rubric">Para la firma <a class="reference internal" href="#edges-and-vertices">Aristas y Vértices</a>:</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -538,22 +536,22 @@ and use it on <code class="docutils literal notranslate"><span class="pre">pgr_d
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#degree-of-a-loop" id="id4">Degree of a loop</a></p></li>
+<li><p><a class="reference internal" href="#degree-of-a-loop" id="id4">Grado de un bucle</a></p></li>
 <li><p><a class="reference internal" href="#degree-of-a-sub-graph" id="id5">Grado de un subgrafo</a></p></li>
-<li><p><a class="reference internal" href="#using-a-vertex-table" id="id6">Using a vertex table</a></p></li>
+<li><p><a class="reference internal" href="#using-a-vertex-table" id="id6">Usando una tabla de vértices</a></p></li>
 <li><p><a class="reference internal" href="#dry-run-execution" id="id7">Ejecución de prueba</a></p></li>
-<li><p><a class="reference internal" href="#finding-dead-ends" id="id8">Finding dead ends</a></p></li>
-<li><p><a class="reference internal" href="#finding-linear-vertices" id="id9">Finding linear vertices</a></p></li>
+<li><p><a class="reference internal" href="#finding-dead-ends" id="id8">Encontrando callejones sin salida</a></p></li>
+<li><p><a class="reference internal" href="#finding-linear-vertices" id="id9">Encontrando vértices lineales</a></p></li>
 </ul>
 </nav>
 <section id="degree-of-a-loop">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Degree of a loop</a><a class="headerlink" href="#degree-of-a-loop" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Grado de un bucle</a><a class="headerlink" href="#degree-of-a-loop" title="Link to this heading">¶</a></h3>
 <p>A loop contributes 2 to a vertex’s degree.</p>
 <div class="graphviz"><img src="_images/graphviz-f073d7caa11bc4ba9bfb5b716979fff8d20250cc.png" alt="graph G {
   2 [shape=circle;style=filled;color=green;fontsize=8;width=0.3;fixedsize=true];
   2 -- 2 [label=&quot;1&quot;,fontsize=8];
 }" class="graphviz" /></div>
-<p class="rubric">Using the <a class="reference internal" href="#edges">Edges</a> signature.</p>
+<p class="rubric">Usando la firma <a class="reference internal" href="#edges">Aristas</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="kn">from</span><span class="w"> </span><span class="nn">pgr_degree</span><span class="p">(</span><span class="s1">&#39;SELECT 1 as id, 2 as source, 2 as target&#39;</span><span class="p">);</span>
  <span class="n">node</span> <span class="o">|</span> <span class="n">degree</span>
 <span class="o">------+--------</span>
@@ -577,7 +575,7 @@ and use it on <code class="docutils literal notranslate"><span class="pre">pgr_d
 </section>
 <section id="degree-of-a-sub-graph">
 <h3><a class="toc-backref" href="#id5" role="doc-backlink">Grado de un subgrafo</a><a class="headerlink" href="#degree-of-a-sub-graph" title="Link to this heading">¶</a></h3>
-<p>For the following is a subgraph of the <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>:</p>
+<p>Para el siguiente sub-grafo de <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(E = \{(1, 5 \leftrightarrow 6), (1, 6 \leftrightarrow 10)\}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(V = \{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17\}\)</span></p></li>
@@ -612,7 +610,7 @@ and use it on <code class="docutils literal notranslate"><span class="pre">pgr_d
 <li><p>their degree is 0 in the subgraph and</p></li>
 <li><p>their degree is not shown in the output.</p></li>
 </ul>
-<p class="rubric">Using the <a class="reference internal" href="#edges">Edges</a> signature.</p>
+<p class="rubric">Usando la firma <a class="reference internal" href="#edges">Aristas</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree($$SELECT * FROM edges WHERE id IN (1, 2)$$);
  node | degree
 ------+--------
@@ -638,17 +636,16 @@ and use it on <code class="docutils literal notranslate"><span class="pre">pgr_d
 </div>
 </section>
 <section id="using-a-vertex-table">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Using a vertex table</a><a class="headerlink" href="#using-a-vertex-table" title="Link to this heading">¶</a></h3>
-<p>For decent size networks, it is best to prepare your vertices table before hand
-and use it on <code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> calls.</p>
-<p>Extract the vertex information and save into a table:</p>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Usando una tabla de vértices</a><a class="headerlink" href="#using-a-vertex-table" title="Link to this heading">¶</a></h3>
+<p>Para un tamaño de red razonable, es mejor preparar previamente una tabla de vértices y utilizarla en las llamadas a <code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code>.</p>
+<p>Extraer la información del vértice y almacenar en una tabla:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">AS</span>
 <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">17</span>
 </pre></div>
 </div>
-<p>Calculate the degree of the nodes:</p>
+<p>Calcula el grado de los vértices:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree(
   $$SELECT id FROM edges$$,
   $$SELECT id, in_edges, out_edges FROM vertices$$);
@@ -722,12 +719,9 @@ NOTICE:
 </div>
 </section>
 <section id="finding-dead-ends">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">Finding dead ends</a><a class="headerlink" href="#finding-dead-ends" title="Link to this heading">¶</a></h3>
-<p>If there is a vertices table already built using <code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code>
-and want the degree of the whole graph rather than a subset, it can be forgo using
-<code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> and work with the <code class="docutils literal notranslate"><span class="pre">in_edges</span></code> and <code class="docutils literal notranslate"><span class="pre">out_edges</span></code> columns
-directly.</p>
-<p>The degree of a dead end is 1.</p>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Encontrando callejones sin salida</a><a class="headerlink" href="#finding-dead-ends" title="Link to this heading">¶</a></h3>
+<p>Si se tiene una tabla de vértices ya construida usando <code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code> y se quiere el grado de todo el grafo en lugar de un subconjunto, se puede trabajar con las columnas <code class="docutils literal notranslate"><span class="pre">in_edges</span></code> y <code class="docutils literal notranslate"><span class="pre">out_edges</span></code> directamente.</p>
+<p>El grado de un sin salida es 1.</p>
 <p>Para obtener los callejones sin salida:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span>
 <span class="n">WHERE</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -744,21 +738,19 @@ directly.</p>
 
 </pre></div>
 </div>
-<p>A dead end happens when</p>
+<p>Un callejón sin salida se produce cuando</p>
 <ul class="simple">
-<li><p>The vertex is the limit of a cul-de-sac, a no-through road or a no-exit
-road.</p></li>
-<li><p>The vertex is on the limit of the imported graph.</p>
+<li><p>El vértice es el límite de un callejón sin salida, una vía de no paso o una vía de no salida.</p></li>
+<li><p>El vértice esta en el limite del grafo importado.</p>
 <ul>
-<li><p>If a larger graph is imported then the vertex might not be a dead end</p></li>
+<li><p>Si se importa un grafo más grande, puede que el vértice no sea un callejón sin salida.</p></li>
 </ul>
 </li>
 </ul>
-<p>Node <span class="math notranslate nohighlight">\(4\)</span>, is a dead end on the query, even that it visually looks like an
-end point of 3 edges.</p>
+<p>El nodo <span class="math notranslate nohighlight">\(4\)</span>, es un callejón sin salida en la consulta, aunque visualmente parezca un punto final de 3 aristas.</p>
 <a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 190.20000000000002px; height: 173.20000000000002px;" />
 </a>
-<p class="rubric">Is node <span class="math notranslate nohighlight">\(4\)</span> a dead end or not?</p>
+<p class="rubric">¿Es el nodo <span class="math notranslate nohighlight">\(4\)</span> un callejón sin salida o no?</p>
 <div class="graphviz"><img src="_images/graphviz-4fb3b0c0f783a75e6df1c7b7487897c1a989e67f.png" alt="graph G {
   1,2,4,5,9,13,14 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   3,6,7,8,10,11,12,15,16,17 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
@@ -783,7 +775,7 @@ end point of 3 edges.</p>
   15 [pos=&quot;4,1!&quot;];     16 [pos=&quot;4,2!&quot;];
   17 [pos=&quot;4,3!&quot;];
 }" class="graphviz" /></div>
-<p>The answer to that question will depend on the application.</p>
+<p>La respuesta a esta pregunta dependerá de la aplicación.</p>
 <ul class="simple">
 <li><p>Hay un bordillo tan pequeño:</p>
 <ul>
@@ -794,14 +786,13 @@ end point of 3 edges.</p>
 </li>
 <li><p>¿Hay un gran acantilado y desde la vista de las águilas parece que el callejón sin salida está cerca del segmento?</p></li>
 </ul>
-<p>Depending on the answer, modification of the data might be needed.</p>
-<p>When there are many dead ends, to speed up processing, the <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a>
-functions can be used to contract the graph.</p>
+<p>Dependiendo de la respuesta, será necesario la modificación de datos.</p>
+<p>Cuando hay muchos callejones sin salida, para acelerar el procesamiento, se pueden utilizar las funciones de <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a> para contraer el grafo.</p>
 </section>
 <section id="finding-linear-vertices">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Finding linear vertices</a><a class="headerlink" href="#finding-linear-vertices" title="Link to this heading">¶</a></h3>
-<p>The degree of a linear vertex is 2.</p>
-<p>If there is a vertices table already built using the <code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code></p>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Encontrando vértices lineales</a><a class="headerlink" href="#finding-linear-vertices" title="Link to this heading">¶</a></h3>
+<p>El grado de un vértice lineal es 2.</p>
+<p>Cuando hay una tabla de vértices construida usando <code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code></p>
 <p>Para obtener las aristas lineales:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span>
 <span class="n">WHERE</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
@@ -838,11 +829,8 @@ functions can be used to contract the graph.</p>
   15 [pos=&quot;4,1!&quot;];     16 [pos=&quot;4,2!&quot;];
   17 [pos=&quot;4,3!&quot;];
 }" class="graphviz" /></div>
-<p>These linear vertices are correct, for example, when those the vertices are speed
-bumps, stop signals and the application is taking them into account.</p>
-<p>When there are many linear vertices, that need not to be taken into account, to
-speed up the processing, the <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a> functions can be used to
-contract the problem.</p>
+<p>Estos vértices lineales son correctos, por ejemplo, cuando esos vértices son badenes, señales de alto y la aplicación los tiene en cuenta.</p>
+<p>Cuando hay muchas aristas lineales, que no necesitan tomarse en cuenta, para acelerar el procesamiento se pueden utilizar las funciones <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a> para contraer el grafo.</p>
 </section>
 </section>
 <section id="see-also">
@@ -872,7 +860,7 @@ contract the problem.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en abr 08, 2025.<br/>
+      Actualizado por última vez en abr 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_withPointsCost -拟议 &#8212; pgRouting Manual (3.8)</title>
+    <title>pgr_withPointsCost - Proposed &#8212; pgRouting Manual (3.8)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -21,8 +21,8 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_withPointsCostMatrix - 拟议" href="pgr_withPointsCostMatrix.html" />
-    <link rel="prev" title="pgr_withPoints -拟议" href="pgr_withPoints.html" />
+    <link rel="next" title="pgr_withPointsCostMatrix - proposed" href="pgr_withPointsCostMatrix.html" />
+    <link rel="prev" title="pgr_withPoints - Proposed" href="pgr_withPoints.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -97,7 +97,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code> -拟议</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#one-to-one">一对一</a></li>
@@ -138,11 +138,11 @@
               
                 
   <li>
-    <a href="pgr_withPoints.html" title="Previous Chapter: pgr_withPoints -拟议"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPoints -拟议</span>
+    <a href="pgr_withPoints.html" title="Previous Chapter: pgr_withPoints - Proposed"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPoint...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_withPointsCostMatrix.html" title="Next Chapter: pgr_withPointsCostMatrix - 拟议"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
+    <a href="pgr_withPointsCostMatrix.html" title="Next Chapter: pgr_withPointsCostMatrix - proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
     </a>
   </li>
               
@@ -173,7 +173,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code> -拟议</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#one-to-one">一对一</a></li>
@@ -208,11 +208,11 @@
 </ul>
 
   <li>
-    <a href="pgr_withPoints.html" title="Previous Chapter: pgr_withPoints -拟议"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPoints -拟议</span>
+    <a href="pgr_withPoints.html" title="Previous Chapter: pgr_withPoints - Proposed"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPoint...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_withPointsCostMatrix.html" title="Next Chapter: pgr_withPointsCostMatrix - 拟议"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
+    <a href="pgr_withPointsCostMatrix.html" title="Next Chapter: pgr_withPointsCostMatrix - proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -231,12 +231,10 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-withpointscost-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code> -拟议<a class="headerlink" href="#pgr-withpointscost-proposed" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code> - Calculates the shortest path and returns only the
-aggregate cost of the shortest path found, for the combination of points
-given.</p>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code> - Proposed<a class="headerlink" href="#pgr-withpointscost-proposed" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code> - 计算最短路径，并只返回所给点组合的最短路径的总成本。</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="e539e392-7088-42f5-a560-5cc027c8438a" name="e539e392-7088-42f5-a560-5cc027c8438a" type="checkbox"><label class="sphinx_collapse__label" for="e539e392-7088-42f5-a560-5cc027c8438a"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="f352024b-b70a-4256-ae0e-56e9d5addbff" name="f352024b-b70a-4256-ae0e-56e9d5addbff" type="checkbox"><label class="sphinx_collapse__label" for="f352024b-b70a-4256-ae0e-56e9d5addbff"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>下一版本的拟议功能。</p>
@@ -269,15 +267,13 @@ given.</p>
 </li>
 <li><p>版本 2.2.0</p>
 <ul>
-<li><p>New proposed function.</p></li>
+<li><p>新提议的函数。</p></li>
 </ul>
 </li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>Modify the graph to include points defined by points_sql.
-Using Dijkstra algorithm, return only the aggregate cost of the shortest path
-found.</p>
+<p>修改图形以包含由 points_sql 定义的点。使用 Dijkstra 算法，只返回找到的最短路径的总成本。</p>
 <dl class="simple">
 <dt>主要特点是：</dt><dd><ul class="simple">
 <li><p>它不返回路径。</p></li>
@@ -321,7 +317,7 @@ found.</p>
 </ul>
 </dd>
 </dl>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -926,7 +922,7 @@ found.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 4月 08, 2025.<br/>
+      Last updated on 4月 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

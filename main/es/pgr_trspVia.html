@@ -235,7 +235,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> - Proposed<a class="headerlink" href="#pgr-trspvia-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> Route that goes through a list of vertices with restrictions.</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="3044dc69-fd46-4626-b149-d5b07209836f" name="3044dc69-fd46-4626-b149-d5b07209836f" type="checkbox"><label class="sphinx_collapse__label" for="3044dc69-fd46-4626-b149-d5b07209836f"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="81ca5701-a934-4bc4-a4ab-b69e581be178" name="81ca5701-a934-4bc4-a4ab-b69e581be178" type="checkbox"><label class="sphinx_collapse__label" for="81ca5701-a934-4bc4-a4ab-b69e581be178"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -259,7 +259,7 @@
 <ul class="simple">
 <li><p>Versión 3.4.0</p>
 <ul>
-<li><p>New proposed function.</p></li>
+<li><p>Nueva función propuesta.</p></li>
 </ul>
 </li>
 </ul>
@@ -271,7 +271,7 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 <p>Las trayectorias representan los tramos de la ruta.</p>
 <p>The general algorithm is as follows:</p>
 <ul class="simple">
-<li><p>Execute a <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a>.</p></li>
+<li><p>Ejecutar un <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a>.</p></li>
 <li><p>For the set of sub paths of the solution that pass through a restriction then</p>
 <ul>
 <li><p>Execute the <strong>TRSP</strong> algorithm with restrictions for the paths.</p></li>
@@ -279,7 +279,7 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -288,7 +288,7 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>,**vértices**, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_trsp(<a class="reference internal" href="#restrictions-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de restricciones</a>,**vértices**, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">strict,</span> <span class="pre">U_turn_on_edge]</span></code></div>
 </div>
 <div class="line-block">
@@ -917,7 +917,7 @@ no <code class="docutils literal notranslate"><span class="pre">U_turn_on_edge</
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en abr 08, 2025.<br/>
+      Actualizado por última vez en abr 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

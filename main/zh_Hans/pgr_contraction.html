@@ -242,8 +242,7 @@
 <ul class="simple">
 <li><p>New signature:</p>
 <ul>
-<li><p>Previously compulsory parameter <strong>Contraction order</strong> is now optional with
-name <code class="docutils literal notranslate"><span class="pre">methods</span></code>.</p></li>
+<li><p>之前必需的参数 <strong>Contraction order</strong> 现在已变为可选参数，并更名为 <code class="docutils literal notranslate"><span class="pre">methods</span></code>。</p></li>
 <li><p>New name and order of optional parameters.</p></li>
 </ul>
 </li>
@@ -254,11 +253,11 @@ name <code class="docutils literal notranslate"><span class="pre">methods</span>
 <li><p>结果列更改：删除了 <code class="docutils literal notranslate"><span class="pre">seq</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_contractGraph</span></code> 的名称更改</p></li>
 <li><p>Bug修复</p></li>
-<li><p>Function promoted to official.</p></li>
+<li><p>函数正式发布。</p></li>
 </ul>
 <p class="rubric">版本2.3.0</p>
 <ul class="simple">
-<li><p>New experimental function.</p></li>
+<li><p>新实验功能。</p></li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -288,12 +287,12 @@ name <code class="docutils literal notranslate"><span class="pre">methods</span>
 <li><p>Currently there are two types of contraction methods included in this
 function:</p>
 <ul>
-<li><p>Dead End Contraction. See <a class="reference internal" href="pgr_contractionDeadEnd.html"><span class="doc">pgr_contractionDeadEnd - Proposed</span></a>.</p></li>
-<li><p>Linear Contraction. See <a class="reference internal" href="pgr_contractionLinear.html"><span class="doc">pgr_contractionLinear - Proposed</span></a>.</p></li>
+<li><p>死角收缩。参考 <a class="reference internal" href="pgr_contractionDeadEnd.html"><span class="doc">pgr_contractionDeadEnd - Proposed</span></a>。</p></li>
+<li><p>线性收缩。参考 <a class="reference internal" href="pgr_contractionLinear.html"><span class="doc">pgr_contractionLinear - Proposed</span></a>。</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -780,16 +779,14 @@ to the vertices.</p>
 </section>
 <section id="using-the-contracted-graph">
 <h2>使用收缩图<a class="headerlink" href="#using-the-contracted-graph" title="Link to this heading">¶</a></h2>
-<p>Depending on the final application the graph is to be prepared.
-In this example the final application will be to calculate the cost from two
-vertices in the original graph by using the contracted graph with <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code></p>
+<p>根据最终应用的需求，图需要进行预处理。在本示例中，最终应用是使用收缩图通过 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code> 计算原始图中两个顶点之间的成本</p>
 <p>计算收缩图中给定源和目标之间的最短路径时，存在三种情况：</p>
 <ul class="simple">
 <li><p>情况1：源和目标都属于收缩图。</p></li>
 <li><p>情况 2：源和/或目标属于边缘子图。</p></li>
 <li><p>情况 3：源和/或目标属于一个顶点。</p></li>
 </ul>
-<p>The final application should consider all of those cases.</p>
+<p>最终应用应考虑所有这些情况。</p>
 <p>Create a view (or table) of the contracted graph:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">VIEW</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">contracted_graph</span><span class="p">;</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">view</span> <span class="s2">&quot;contracted_graph&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
@@ -890,7 +887,7 @@ CREATE FUNCTION
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 4月 08, 2025.<br/>
+      Last updated on 4月 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

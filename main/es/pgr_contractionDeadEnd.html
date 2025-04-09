@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_contractionDeadEnd - Proposed &#8212; pgRouting Manual (3.8)</title>
+    <title>pgr_contractionDeadEnd - Propuesto &#8212; pgRouting Manual (3.8)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -22,7 +22,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="pgr_contractionLinear - Proposed" href="pgr_contractionLinear.html" />
+    <link rel="next" title="pgr_contractionLinear - Propuesto" href="pgr_contractionLinear.html" />
     <link rel="prev" title="pgr_contraction" href="pgr_contraction.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -98,7 +98,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionDeadEnd</span></code> - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionDeadEnd</span></code> - Propuesto</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
@@ -114,15 +114,15 @@
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
 <li><a class="reference internal" href="#dead-end-vertex-on-undirected-graph">Vértice sin salida en un grafo sin dirigir</a></li>
 <li><a class="reference internal" href="#dead-end-vertex-on-directed-graph">Vértice sin salida en un grafo dirigido</a></li>
-<li><a class="reference internal" href="#step-by-step-dead-end-contraction">Step by step dead end contraction</a></li>
-<li><a class="reference internal" href="#creating-the-contracted-graph">Creating the contracted graph</a><ul>
-<li><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph">Steps for the creation of the contracted graph</a></li>
+<li><a class="reference internal" href="#step-by-step-dead-end-contraction">Paso a paso contracción sin salida</a></li>
+<li><a class="reference internal" href="#creating-the-contracted-graph">Creando el grafo contraído</a><ul>
+<li><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph">Pasos para la creación del grafo contraído</a></li>
 <li><a class="reference internal" href="#the-contracted-graph">El grafo contraído</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph">Using when departure and destination are in the contracted graph</a></li>
-<li><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph">Using when departure/destination is not in the contracted graph</a></li>
-<li><a class="reference internal" href="#using-when-departure-and-destination-are-not-in-the-contracted-graph">Using when departure and destination are not in the contracted graph</a></li>
+<li><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph">Usando cuando la salida como el destino pertenecen al grafo contraído</a></li>
+<li><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph">Usando cuando la salida /destino no pertenecen al grafo contraído</a></li>
+<li><a class="reference internal" href="#using-when-departure-and-destination-are-not-in-the-contracted-graph">Usando cuando la salida y el destino no están en el grafo contraído</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -141,7 +141,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_contractionLinear.html" title="Next Chapter: pgr_contractionLinear - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
+    <a href="pgr_contractionLinear.html" title="Next Chapter: pgr_contractionLinear - Propuesto"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
     </a>
   </li>
               
@@ -172,7 +172,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionDeadEnd</span></code> - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionDeadEnd</span></code> - Propuesto</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
@@ -188,15 +188,15 @@
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
 <li><a class="reference internal" href="#dead-end-vertex-on-undirected-graph">Vértice sin salida en un grafo sin dirigir</a></li>
 <li><a class="reference internal" href="#dead-end-vertex-on-directed-graph">Vértice sin salida en un grafo dirigido</a></li>
-<li><a class="reference internal" href="#step-by-step-dead-end-contraction">Step by step dead end contraction</a></li>
-<li><a class="reference internal" href="#creating-the-contracted-graph">Creating the contracted graph</a><ul>
-<li><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph">Steps for the creation of the contracted graph</a></li>
+<li><a class="reference internal" href="#step-by-step-dead-end-contraction">Paso a paso contracción sin salida</a></li>
+<li><a class="reference internal" href="#creating-the-contracted-graph">Creando el grafo contraído</a><ul>
+<li><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph">Pasos para la creación del grafo contraído</a></li>
 <li><a class="reference internal" href="#the-contracted-graph">El grafo contraído</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph">Using when departure and destination are in the contracted graph</a></li>
-<li><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph">Using when departure/destination is not in the contracted graph</a></li>
-<li><a class="reference internal" href="#using-when-departure-and-destination-are-not-in-the-contracted-graph">Using when departure and destination are not in the contracted graph</a></li>
+<li><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph">Usando cuando la salida como el destino pertenecen al grafo contraído</a></li>
+<li><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph">Usando cuando la salida /destino no pertenecen al grafo contraído</a></li>
+<li><a class="reference internal" href="#using-when-departure-and-destination-are-not-in-the-contracted-graph">Usando cuando la salida y el destino no están en el grafo contraído</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -209,7 +209,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_contractionLinear.html" title="Next Chapter: pgr_contractionLinear - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
+    <a href="pgr_contractionLinear.html" title="Next Chapter: pgr_contractionLinear - Propuesto"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -228,11 +228,10 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-contractiondeadend-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_contractionDeadEnd</span></code> - Proposed<a class="headerlink" href="#pgr-contractiondeadend-proposed" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_contractionDeadEnd</span></code> — Performs graph contraction and returns the contracted
-vertices and edges.</p>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_contractionDeadEnd</span></code> - Propuesto<a class="headerlink" href="#pgr-contractiondeadend-proposed" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_contractionDeadEnd</span></code> — Realiza la contracción del grafo y devuelve los vértices y aristas contraídos..</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="320841d6-328d-4ec9-9412-a11034eb2f92" name="320841d6-328d-4ec9-9412-a11034eb2f92" type="checkbox"><label class="sphinx_collapse__label" for="320841d6-328d-4ec9-9412-a11034eb2f92"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="13b44f96-3bb1-43e6-b0a3-4cc618b88446" name="13b44f96-3bb1-43e6-b0a3-4cc618b88446" type="checkbox"><label class="sphinx_collapse__label" for="13b44f96-3bb1-43e6-b0a3-4cc618b88446"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -254,9 +253,9 @@ vertices and edges.</p>
 </div>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li><p>Version 3.8.0</p>
+<li><p>Versión 3.8.0</p>
 <ul>
-<li><p>New proposed function.</p></li>
+<li><p>Nueva función propuesta.</p></li>
 </ul>
 </li>
 </ul>
@@ -266,25 +265,25 @@ vertices and edges.</p>
 <p>Las características principales son:</p>
 <ul class="simple">
 <li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
-<li><p>Does not return the full contracted graph.</p>
+<li><p>No devuelve el grafo contraído completo.</p>
 <ul>
-<li><p>Only changes on the graph are returned.</p></li>
+<li><p>Solo se devuelven los cambios en el grafo.</p></li>
 </ul>
 </li>
-<li><p>The returned values include:</p>
+<li><p>Los valores devueltos incluyen:</p>
 <ul>
-<li><p>The new edges generated by linear contraction.</p></li>
-<li><p>The modified vertices generated by dead end contraction.</p></li>
+<li><p>Las nuevas aristas generadas por la contracción lineal.</p></li>
+<li><p>Los vértices modificados por contracción sin salida.</p></li>
 </ul>
 </li>
 <li><p>Los valores devueltos se ordenan de la siguiente manera:</p>
 <ul>
-<li><p>column <code class="docutils literal notranslate"><span class="pre">id</span></code> ascending when its a modified vertex.</p></li>
-<li><p>column <code class="docutils literal notranslate"><span class="pre">id</span></code> with negative numbers descending when its a new edge.</p></li>
+<li><p>columna <code class="docutils literal notranslate"><span class="pre">id</span></code> ascendente cuando es un vértice modificado.</p></li>
+<li><p>columna <code class="docutils literal notranslate"><span class="pre">id</span></code> con números negativos descendentes cuando es una nueva arista.</p></li>
 </ul>
 </li>
 </ul>
-<p>A node is considered a dead end node when:</p>
+<p>Un nodo se considera sin salida cuando:</p>
 <ul class="simple">
 <li><p>En grafos no dirigidos:</p>
 <ul>
@@ -293,28 +292,28 @@ vertices and edges.</p>
 </li>
 <li><p>En grafos dirigidos:</p>
 <ul>
-<li><p>When there is only one adjacent vertex or</p></li>
+<li><p>Cuando hay solo un vértice adyacente o</p></li>
 <li><p>When all edges are incoming regardless of the number of adjacent vertices.</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_contractionDeadEnd(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<strong>options</strong>])</div>
+<div class="line">pgr_contractionDeadEnd(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, [<strong>opciones</strong>])</div>
 </div>
 <div class="line-block">
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">forbidden]</span></code></div>
+<div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">forbidden]</span></code></div>
 <div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Dead end contraction on an undirected graph.</p>
+<dd class="field-odd"><p>Contracción de vértice sin salida en un grafo no dirigido.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractionDeadEnd</span><span class="p">(</span>
@@ -332,9 +331,9 @@ vertices and edges.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>The green nodes are dead end nodes.</p>
+<li><p>Los nodos verdes son nodos sin salida.</p>
 <ul>
-<li><p>Node <span class="math notranslate nohighlight">\(3\)</span> is a dead end node after node <span class="math notranslate nohighlight">\(1\)</span> is contracted.</p></li>
+<li><p>El nodo <span class="math notranslate nohighlight">\(3\)</span> es sin salida después de haberse contraído el nodo <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
 </ul>
 </li>
 </ul>
@@ -508,11 +507,11 @@ vertices and edges.</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>Value = <code class="docutils literal notranslate"><span class="pre">e</span></code> indicating the row is an edge.</p></td>
+<td><p>Valor = <code class="docutils literal notranslate"><span class="pre">e</span></code> cuando la fila es una arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>A pseudo <cite>id</cite> of the edge.</p>
+<td><p>Un pseudo <cite>identificador</cite> de la arista.</p>
 <ul class="simple">
 <li><p>Todos los números de esta columna son “”DISTINTOS””</p></li>
 <li><p>Disminución de la secuencia a partir de <strong>-1</strong>.</p></li>
@@ -533,7 +532,7 @@ vertices and edges.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Weight of the current edge.</p></td>
+<td><p>Peso de la arista actual.</p></td>
 </tr>
 </tbody>
 </table>
@@ -544,21 +543,21 @@ vertices and edges.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#dead-end-vertex-on-undirected-graph" id="id2">Vértice sin salida en un grafo sin dirigir</a></p></li>
 <li><p><a class="reference internal" href="#dead-end-vertex-on-directed-graph" id="id3">Vértice sin salida en un grafo dirigido</a></p></li>
-<li><p><a class="reference internal" href="#step-by-step-dead-end-contraction" id="id4">Step by step dead end contraction</a></p></li>
-<li><p><a class="reference internal" href="#creating-the-contracted-graph" id="id5">Creating the contracted graph</a></p>
+<li><p><a class="reference internal" href="#step-by-step-dead-end-contraction" id="id4">Paso a paso contracción sin salida</a></p></li>
+<li><p><a class="reference internal" href="#creating-the-contracted-graph" id="id5">Creando el grafo contraído</a></p>
 <ul>
-<li><p><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph" id="id6">Steps for the creation of the contracted graph</a></p></li>
+<li><p><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph" id="id6">Pasos para la creación del grafo contraído</a></p></li>
 <li><p><a class="reference internal" href="#the-contracted-graph" id="id7">El grafo contraído</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph" id="id8">Using when departure and destination are in the contracted graph</a></p></li>
-<li><p><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph" id="id9">Using when departure/destination is not in the contracted graph</a></p></li>
-<li><p><a class="reference internal" href="#using-when-departure-and-destination-are-not-in-the-contracted-graph" id="id10">Using when departure and destination are not in the contracted graph</a></p></li>
+<li><p><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph" id="id8">Usando cuando la salida como el destino pertenecen al grafo contraído</a></p></li>
+<li><p><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph" id="id9">Usando cuando la salida /destino no pertenecen al grafo contraído</a></p></li>
+<li><p><a class="reference internal" href="#using-when-departure-and-destination-are-not-in-the-contracted-graph" id="id10">Usando cuando la salida y el destino no están en el grafo contraído</a></p></li>
 </ul>
 </nav>
 <section id="dead-end-vertex-on-undirected-graph">
 <h3><a class="toc-backref" href="#id2" role="doc-backlink">Vértice sin salida en un grafo sin dirigir</a><a class="headerlink" href="#dead-end-vertex-on-undirected-graph" title="Link to this heading">¶</a></h3>
-<p>The green nodes are dead end nodes.</p>
+<p>Los nodos verdes son nodos sin salida.</p>
 <ul class="simple">
 <li><p>They have only one adjacent node.</p></li>
 </ul>
@@ -602,7 +601,7 @@ $$SELECT * FROM (VALUES
 <section id="dead-end-vertex-on-directed-graph">
 <h3><a class="toc-backref" href="#id3" role="doc-backlink">Vértice sin salida en un grafo dirigido</a><a class="headerlink" href="#dead-end-vertex-on-directed-graph" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p>The green nodes are dead end nodes</p></li>
+<li><p>Los nodos verdes son nodos sin salida</p></li>
 <li><p>Los nodos azules tienen un número ilimitado de aristas entrantes y/o salientes.</p></li>
 </ul>
 <div class="graphviz"><img src="_images/graphviz-6960d9a7cc004f22357ed2df4395c81f4453d60d.png" alt="digraph G {
@@ -627,7 +626,7 @@ $$SELECT * FROM (VALUES
 <table class="docutils align-default" style="width: 80">
 <thead>
 <tr class="row-odd"><th class="head"><p>Nodo</p></th>
-<th class="head"><p>Adjacent nodes</p></th>
+<th class="head"><p>Nodos adyacentes</p></th>
 <th class="head"><p>Sin salida</p></th>
 <th class="head"><p>Reason</p></th>
 </tr>
@@ -635,23 +634,23 @@ $$SELECT * FROM (VALUES
 <tbody>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(6\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\{1\}\)</span></p></td>
-<td><p>Yes</p></td>
-<td><p>Has only one adjacent node.</p></td>
+<td><p>Si</p></td>
+<td><p>Solo tiene un nodo adyacente.</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(7\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\{2\}\)</span></p></td>
-<td><p>Yes</p></td>
-<td><p>Has only one adjacent node.</p></td>
+<td><p>Si</p></td>
+<td><p>Solo tiene un nodo adyacente.</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(8\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\{2, 3\}\)</span></p></td>
-<td><p>Yes</p></td>
+<td><p>Si</p></td>
 <td><p>Has more than one adjacent node and all edges are incoming.</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(9\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\{4\}\)</span></p></td>
-<td><p>Yes</p></td>
-<td><p>Has only one adjacent node.</p></td>
+<td><p>Si</p></td>
+<td><p>Solo tiene un nodo adyacente.</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(10\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\{4, 5\}\)</span></p></td>
@@ -659,15 +658,14 @@ $$SELECT * FROM (VALUES
 <td><p>Has more than one adjacent node and all edges are outgoing.</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(1,2,3,4,5\)</span></p></td>
-<td><p>Many adjacent nodes.</p></td>
+<td><p>Muchos nodos adyacentes.</p></td>
 <td><p>No</p></td>
 <td><p>Has more than one adjacent node and some edges are incoming and some are
 outgoing.</p></td>
 </tr>
 </tbody>
 </table>
-<p>From above, nodes <span class="math notranslate nohighlight">\(\{6, 7, 9\}\)</span> are dead ends because the
-total number of adjacent vertices is one.</p>
+<p>De arriba, nodes <span class="math notranslate nohighlight">\(\{6, 7, 9\}\)</span> son sin salida por que el número de vértices adyacentes es 1.</p>
 <p>When there are more than one adjacent vertex, all edges need to be
 all incoming edges otherwise it is not a dead end.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_contractionDeadEnd(
@@ -713,9 +711,8 @@ $$SELECT * FROM (VALUES
  }" class="graphviz" /></div>
 </section>
 <section id="step-by-step-dead-end-contraction">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Step by step dead end contraction</a><a class="headerlink" href="#step-by-step-dead-end-contraction" title="Link to this heading">¶</a></h3>
-<p>The dead end contraction will stop until there are no more dead end nodes.
-For example, from the following graph where <span class="math notranslate nohighlight">\(3\)</span> is the dead end node:</p>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Paso a paso contracción sin salida</a><a class="headerlink" href="#step-by-step-dead-end-contraction" title="Link to this heading">¶</a></h3>
+<p>La contracción sin salida se detendrá hasta que no haya más nodos sin salida. Por ejemplo, del siguiente grafo donde <span class="math notranslate nohighlight">\(3\)</span> es el nodo sin salida:</p>
 <div class="graphviz"><img src="_images/graphviz-da4ed291fcc11b0540b23dbf3a5c9a4335487756.png" alt="digraph G {
  G [shape=record;style=filled;fillcolor=deepskyblue;
   label=&quot;{Rest of the Graph | { | | | | }}&quot;; pos=&quot;2,3!&quot;];
@@ -729,8 +726,7 @@ For example, from the following graph where <span class="math notranslate nohigh
  G [pos=&quot;2.5,3!&quot;];
  1 [pos=&quot;1,1!&quot;]; 2 [pos=&quot;2,1!&quot;]; 3 [pos=&quot;3,1!&quot;];
 }" class="graphviz" /></div>
-<p>After contracting <span class="math notranslate nohighlight">\(3\)</span>, node <span class="math notranslate nohighlight">\(2\)</span> is now a dead end node and is
-contracted:</p>
+<p>Después de contraer <span class="math notranslate nohighlight">\(3\)</span>, el nodo ` <span class="math notranslate nohighlight">\(2\)</span> es ahora un nodo sin salida y es contraído:</p>
 <div class="graphviz"><img src="_images/graphviz-36beb2cf1db17be6d509dfca32d48b88fbdcb45a.png" alt="digraph G {
  G [shape=record;style=filled;fillcolor=deepskyblue;
   label=&quot;{Rest of the Graph | { | | | | }}&quot;; pos=&quot;2,3!&quot;];
@@ -744,8 +740,7 @@ contracted:</p>
  G [pos=&quot;2.5,3!&quot;];
  1 [pos=&quot;1,1!&quot;]; 2 [label=&quot;2, {3}&quot;;pos=&quot;2,1!&quot;];
 }" class="graphviz" /></div>
-<p>After contracting <span class="math notranslate nohighlight">\(2\)</span>, stop. Node <span class="math notranslate nohighlight">\(1\)</span> has the information of nodes
-that were contracted.</p>
+<p>Después de contraer <span class="math notranslate nohighlight">\(2\)</span>, detener. El nodo <span class="math notranslate nohighlight">\(1\)</span> tiene la información de los nodos que se contraen.</p>
 <div class="graphviz"><img src="_images/graphviz-0dc0b6bfc522238b8ea2cedd8edc6126892ab49e.png" alt="digraph G {
  G [shape=record;style=filled;fillcolor=deepskyblue;
   label=&quot;{Rest of the Graph | { | | | | }}&quot;; pos=&quot;2,3!&quot;];
@@ -774,23 +769,23 @@ $$SELECT * FROM (VALUES
 </div>
 </section>
 <section id="creating-the-contracted-graph">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Creating the contracted graph</a><a class="headerlink" href="#creating-the-contracted-graph" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Creando el grafo contraído</a><a class="headerlink" href="#creating-the-contracted-graph" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph" id="id11">Steps for the creation of the contracted graph</a></p></li>
+<li><p><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph" id="id11">Pasos para la creación del grafo contraído</a></p></li>
 <li><p><a class="reference internal" href="#the-contracted-graph" id="id12">El grafo contraído</a></p></li>
 </ul>
 </nav>
 <section id="steps-for-the-creation-of-the-contracted-graph">
-<h4><a class="toc-backref" href="#id11" role="doc-backlink">Steps for the creation of the contracted graph</a><a class="headerlink" href="#steps-for-the-creation-of-the-contracted-graph" title="Link to this heading">¶</a></h4>
-<p>Add additional columns.</p>
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">Pasos para la creación del grafo contraído</a><a class="headerlink" href="#steps-for-the-creation-of-the-contracted-graph" title="Link to this heading">¶</a></h4>
+<p>Añadir columnas adicionales.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ADD</span> <span class="n">is_contracted</span> <span class="n">BOOLEAN</span> <span class="n">DEFAULT</span> <span class="n">false</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ADD</span> <span class="n">contracted_vertices</span> <span class="n">BIGINT</span><span class="p">[];</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
-<p>Save results into a table.</p>
+<p>Almacenar los resultados en una tabla.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
 <span class="n">FROM</span> <span class="n">pgr_contractionDeadEnd</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -805,8 +800,7 @@ $$SELECT * FROM (VALUES
 <span class="n">UPDATE</span> <span class="mi">6</span>
 </pre></div>
 </div>
-<p>Fill <code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code> with the information from the results that belong
-to the vertices.</p>
+<p>Llenar <code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code> con la información de los resultados que pertenecen a los vértices.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
 <span class="n">SET</span> <span class="n">contracted_vertices</span> <span class="o">=</span> <span class="n">contraction_results</span><span class="o">.</span><span class="n">contracted_vertices</span>
 <span class="n">FROM</span> <span class="n">contraction_results</span>
@@ -814,7 +808,7 @@ to the vertices.</p>
 <span class="n">UPDATE</span> <span class="mi">5</span>
 </pre></div>
 </div>
-<p>The contracted vertices are not part of the contracted graph.</p>
+<p>Los vértices contraído no forman parte del grafo contraído.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">is_contracted</span>
 <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">WHERE</span> <span class="n">is_contracted</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">is_contracted</span>
@@ -878,7 +872,7 @@ to the vertices.</p>
 </section>
 </section>
 <section id="using-when-departure-and-destination-are-in-the-contracted-graph">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">Using when departure and destination are in the contracted graph</a><a class="headerlink" href="#using-when-departure-and-destination-are-in-the-contracted-graph" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Usando cuando la salida como el destino pertenecen al grafo contraído</a><a class="headerlink" href="#using-when-departure-and-destination-are-in-the-contracted-graph" title="Link to this heading">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM contracted_graph&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">);</span>
 <span class="w"> </span><span class="n">seq</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">path_seq</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">start_vid</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">end_vid</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">edge</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cost</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">agg_cost</span>
@@ -920,7 +914,7 @@ to the vertices.</p>
 }" class="graphviz" /></div>
 </section>
 <section id="using-when-departure-destination-is-not-in-the-contracted-graph">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Using when departure/destination is not in the contracted graph</a><a class="headerlink" href="#using-when-departure-destination-is-not-in-the-contracted-graph" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Usando cuando la salida /destino no pertenecen al grafo contraído</a><a class="headerlink" href="#using-when-departure-destination-is-not-in-the-contracted-graph" title="Link to this heading">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pgr_dijkstra</span><span class="p">(</span>
 <span class="w">  </span><span class="s1">&#39;WITH cul_de_sac AS (</span>
 <span class="s1">    SELECT contracted_vertices || id as v</span>
@@ -976,7 +970,7 @@ to the vertices.</p>
   }" class="graphviz" /></div>
 </section>
 <section id="using-when-departure-and-destination-are-not-in-the-contracted-graph">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Using when departure and destination are not in the contracted graph</a><a class="headerlink" href="#using-when-departure-and-destination-are-not-in-the-contracted-graph" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Usando cuando la salida y el destino no están en el grafo contraído</a><a class="headerlink" href="#using-when-departure-and-destination-are-not-in-the-contracted-graph" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;WITH cul_de_sac AS (</span>
     <span class="n">SELECT</span> <span class="n">contracted_vertices</span> <span class="o">||</span> <span class="nb">id</span> <span class="k">as</span> <span class="n">v</span>
@@ -1058,7 +1052,7 @@ to the vertices.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en abr 08, 2025.<br/>
+      Actualizado por última vez en abr 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

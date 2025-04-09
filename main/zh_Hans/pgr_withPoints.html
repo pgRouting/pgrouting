@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_withPoints -拟议 &#8212; pgRouting Manual (3.8)</title>
+    <title>pgr_withPoints - Proposed &#8212; pgRouting Manual (3.8)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -21,7 +21,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_withPointsCost -拟议" href="pgr_withPointsCost.html" />
+    <link rel="next" title="pgr_withPointsCost - Proposed" href="pgr_withPointsCost.html" />
     <link rel="prev" title="withPoints - 函数族" href="withPoints-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -97,7 +97,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> -拟议</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#one-to-one">一对一</a></li>
@@ -144,7 +144,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_withPointsCost.html" title="Next Chapter: pgr_withPointsCost -拟议"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
+    <a href="pgr_withPointsCost.html" title="Next Chapter: pgr_withPointsCost - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
     </a>
   </li>
               
@@ -175,7 +175,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> -拟议</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#one-to-one">一对一</a></li>
@@ -216,7 +216,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_withPointsCost.html" title="Next Chapter: pgr_withPointsCost -拟议"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
+    <a href="pgr_withPointsCost.html" title="Next Chapter: pgr_withPointsCost - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -235,10 +235,10 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-withpoints-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> -拟议<a class="headerlink" href="#pgr-withpoints-proposed" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Proposed<a class="headerlink" href="#pgr-withpoints-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - 返回图中带有附加临时顶点的最短路径。</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="ac1eb575-2376-440b-90a8-201b9305b46d" name="ac1eb575-2376-440b-90a8-201b9305b46d" type="checkbox"><label class="sphinx_collapse__label" for="ac1eb575-2376-440b-90a8-201b9305b46d"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="6a11adee-502b-4a34-b64e-779d5f4cc90c" name="6a11adee-502b-4a34-b64e-779d5f4cc90c" type="checkbox"><label class="sphinx_collapse__label" for="6a11adee-502b-4a34-b64e-779d5f4cc90c"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>下一版本的拟议功能。</p>
@@ -271,14 +271,13 @@
 </li>
 <li><p>版本 2.2.0</p>
 <ul>
-<li><p>New proposed function.</p></li>
+<li><p>新提议的函数。</p></li>
 </ul>
 </li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>Modify the graph to include points defined by points_sql.
-Using Dijkstra algorithm, find the shortest path</p>
+<p>修改图形，使其包含由 points_sql 定义的点。使用 Dijkstra 算法找出最短路径</p>
 <p><strong>主要特点是：</strong></p>
 <ul class="simple">
 <li><p>仅在具有正成本的边进行处理。</p></li>
@@ -300,7 +299,7 @@ Using Dijkstra algorithm, find the shortest path</p>
 <ul class="simple">
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(|start\_vids|\times(V \log V + E))\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -1110,7 +1109,7 @@ Using Dijkstra algorithm, find the shortest path</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 4月 08, 2025.<br/>
+      Last updated on 4月 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
