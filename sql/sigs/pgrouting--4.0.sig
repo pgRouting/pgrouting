@@ -1,6 +1,5 @@
 pgr_alphashape(geometry,double precision)
 _pgr_alphashape(text,double precision)
-pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)
 _pgr_array_reverse(anyarray)
 _pgr_articulationpoints(text)
 pgr_articulationpoints(text)
