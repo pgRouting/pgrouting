@@ -600,10 +600,6 @@ sub topology {
         'edge_table,tolerance,id,the_geom,table_ending,rows_where,outall',
         '"","",id,the_geom,table_ending,rows_where,outall');
     push @commands, update_pg_proc(
-        'pgr_createverticestable',
-        'edge_table,the_geom,source,target,rows_where',
-        '"",the_geom,source,target,rows_where');
-    push @commands, update_pg_proc(
         'pgr_createtopology',
         'edge_table,tolerance,the_geom,id,source,target,rows_where,clean',
         '"","",the_geom,id,source,target,rows_where,clean');
