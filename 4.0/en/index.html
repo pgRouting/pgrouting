@@ -364,8 +364,6 @@ have special permissions given by the administrators to use them.</p>
 <li><p><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology - Deprecated since v3.8.0</span></a> - create a topology based on the geometry.</p></li>
 <li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable - Deprecated since 3.8.0</span></a> - reconstruct the vertices table based on
 the source and target information.</p></li>
-<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph – Deprecated since 3.8.0</span></a> - to analyze the edges and vertices of the edge
-table.</p></li>
 <li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay - Deprecated since 3.8.0</span></a> - to analyze directionality of the edges.</p></li>
 <li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> - to create nodes to a not noded edge table.</p></li>
 <li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - Extracts vertex information based on the edge
@@ -476,13 +474,29 @@ milestone for 4.0.0</a></p>
 <ul class="simple">
 <li><p>Removal of unused C/C++ code</p></li>
 </ul>
+<p class="rubric">Removal of SQL deprecated signatures</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2798">#2798</a>:
+pgr_contraction</p>
+<ul>
+<li><p>pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a>: pgr_trsp</p>
+<ul>
+<li><p>pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
+<li><p>pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
+</ul>
+</li>
+</ul>
 <p class="rubric">Removal of SQL deprecated functions</p>
 <ul class="simple">
-<li><p>pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
-<li><p>pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
-<li><p>pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
-<li><p>pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)</p></li>
-<li><p>pgr_trspviavertices(text,anyarray,boolean,boolean,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2681">#2681</a>:
+pgr_trspviaedges</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2682">#2682</a>:
+pgr_trspviavertices</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2752">#2752</a>:
+pgr_analyzeGraph</p></li>
 </ul>
 <p class="rubric">Removal of SQL deprecated internal functions</p>
 <ul class="simple">
