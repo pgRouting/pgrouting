@@ -1,7 +1,6 @@
 # Do not use extensions
 SET(LOCAL_FILES
     createTopology
-    createVerticesTable
     extractVertices
     nodeNetwork
     )
