@@ -34,15 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   2: abort      throw a raise_exception
    Examples:
 
-	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
-                     'Two columns share the same name');
-	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
-                     'Two columns share the same name', 'Idname and gname must be different');
-    *	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
-                     'Two columns share the same name', 'Idname and gname must be different',
-                     'Column names are OK');
-
-
    Author: Vicky Vergara <vicky_vergara@hotmail.com>>
 
   HISTORY
@@ -92,10 +83,6 @@ IS 'pgRouting internal function';
   anything else: report     raise notice
 
    Examples:
-
-	*	preforn _pgr_msg( 1, 'pgr_createToplogy', 'Starting a long process... ');
-	*	preforn _pgr_msg( 1, 'pgr_createToplogy');
-
 
    Author: Vicky Vergara <vicky_vergara@hotmail.com>>
 
@@ -282,7 +269,7 @@ BEGIN
        err = sname is NULL or vname is NULL;
     perform _pgr_onError( err, 2, fnName,
           'Vertex Table: ' || vertname || ' not found',
-          'Please create ' || vertname || ' using  _pgr_createTopology()',
+          'Please create ' || vertname || ' ',
           'Vertex Table: ' || vertname || ' found');
 
 

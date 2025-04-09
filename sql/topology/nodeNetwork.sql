@@ -243,7 +243,6 @@ BEGIN
   -- as there are very few intersection points
 
   --- outab needs to be formally created with id, old_id, subid,the_geom, source,target
-  --- so it can be inmediatly be used with createTopology
 
   P_RET = 'INSERT INTO '||_pgr_quote_ident(outtab)||' (old_id,sub_id,'||quote_ident(n_geom)||') (  WITH cut_locations AS
   (
