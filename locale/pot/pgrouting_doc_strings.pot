@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-09 15:26+0000\n"
+"POT-Creation-Date: 2025-04-11 15:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3457,9 +3457,6 @@ msgstr ""
 msgid ":doc:`pgr_createTopology` - create a topology based on the geometry."
 msgstr ""
 
-msgid ":doc:`pgr_createVerticesTable` - reconstruct the vertices table based on the source and target information."
-msgstr ""
-
 msgid ":doc:`pgr_nodeNetwork` - to create nodes to a not noded edge table."
 msgstr ""
 
@@ -3629,6 +3626,9 @@ msgid "`#2752 <https://github.com/pgRouting/pgrouting/issues/2752>`__: pgr_analy
 msgstr ""
 
 msgid "`#2755 <https://github.com/pgRouting/pgrouting/issues/2755>`__: pgr_analyzeOneWay"
+msgstr ""
+
+msgid "`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__: pgr_createVerticesTable"
 msgstr ""
 
 msgid "Removal of SQL deprecated internal functions"
@@ -8650,129 +8650,6 @@ msgstr ""
 msgid "This example start a clean topology, with 5 edges, and then its incremented to the rest of the edges."
 msgstr ""
 
-msgid "``pgr_createVerticesTable`` - Deprecated since 3.8.0"
-msgstr ""
-
-msgid "``pgr_createVerticesTable`` — Reconstructs the vertices table based on the source and target information."
-msgstr ""
-
-msgid "``OK`` after the vertices table has been reconstructed."
-msgstr ""
-
-msgid "``FAIL`` when the vertices table was not reconstructed due to an error."
-msgstr ""
-
-msgid "pgr_createVerticesTable(edge_table, [``the_geom, source, target, rows_where``])"
-msgstr ""
-
-msgid "The reconstruction of the vertices table function accepts the following parameters:"
-msgstr ""
-
-msgid "``text`` Condition to SELECT a subset or rows. Default value is ``true`` to indicate all rows."
-msgstr ""
-
-msgid "Fills ``id`` and ``the_geom`` columns of the vertices table based on the source and target columns of the edge table."
-msgstr ""
-
-msgid "The names of source, target are the same."
-msgstr ""
-
-msgid "``integer`` Number of vertices in the edge_table that reference this vertex as incoming."
-msgstr ""
-
-msgid "``integer`` Number of vertices in the edge_table that reference this vertex as outgoing."
-msgstr ""
-
-msgid "The simplest way to use pgr_createVerticesTable"
-msgstr ""
-
-msgid "We get the same result as the simplest way to use the function."
-msgstr ""
-
-msgid "An error would occur when the arguments are not given in the appropriate order: In this example, the column source column ``source`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the source column."
-msgstr ""
-
-msgid "The order of the parameters do not matter:"
-msgstr ""
-
-msgid "Example 4"
-msgstr ""
-
-msgid "Using a different ordering"
-msgstr ""
-
-msgid "Example 5"
-msgstr ""
-
-msgid "Parameters defined with a default value can be omitted, as long as the value matches the default:"
-msgstr ""
-
-msgid "Example 6"
-msgstr ""
-
-msgid "Example 7"
-msgstr ""
-
-msgid "Selecting the rows where the geometry is near the geometry of row with ``id`` =5 ."
-msgstr ""
-
-msgid "Example 8"
-msgstr ""
-
-msgid "Using the following table"
-msgstr ""
-
-msgid "Example 9"
-msgstr ""
-
-msgid "The arguments need to be given in the order described in the parameters:"
-msgstr ""
-
-msgid "An error would occur when the arguments are not given in the appropriate order: In this example, the column ``src`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``mygeom`` is passed to the function as the source column."
-msgstr ""
-
-msgid "Example 10"
-msgstr ""
-
-msgid "Example 11"
-msgstr ""
-
-msgid "In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table."
-msgstr ""
-
-msgid "Example 12"
-msgstr ""
-
-msgid "Selecting rows based on the gid. (positional notation)"
-msgstr ""
-
-msgid "Example 13"
-msgstr ""
-
-msgid "Selecting rows based on the gid. (named notation)"
-msgstr ""
-
-msgid "Example 14"
-msgstr ""
-
-msgid "Selecting the rows where the geometry is near the geometry of row with ``gid`` = 5."
-msgstr ""
-
-msgid "Example 15"
-msgstr ""
-
-msgid "TBD"
-msgstr ""
-
-msgid "Example 16"
-msgstr ""
-
-msgid "Example 17"
-msgstr ""
-
-msgid ":doc:`topology-functions` for an overview of a topology for routing algorithms."
-msgstr ""
-
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
 msgstr ""
 
@@ -11407,6 +11284,9 @@ msgstr ""
 msgid "Inspecting the generated table, we can see that edge 14 has been segmented."
 msgstr ""
 
+msgid ":doc:`topology-functions` for an overview of a topology for routing algorithms."
+msgstr ""
+
 msgid "``pgr_pickDeliver`` - Experimental"
 msgstr ""
 
@@ -12076,6 +11956,9 @@ msgstr ""
 msgid "Getting the same result as ``pgr_trspVia``:"
 msgstr ""
 
+msgid "Example 8"
+msgstr ""
+
 msgid "Sometimes ``U_turn_on_edge`` flag is ignored when is set to ``false``."
 msgstr ""
 
@@ -12389,6 +12272,9 @@ msgid "**No documentation available**"
 msgstr ""
 
 msgid "**TBD**"
+msgstr ""
+
+msgid "TBD"
 msgstr ""
 
 msgid "``pgr_withPoints``"
