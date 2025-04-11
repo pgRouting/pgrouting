@@ -98,6 +98,8 @@ milestone for 4.0.0
   pgr_analyzeGraph
 * `#2755 <https://github.com/pgRouting/pgrouting/issues/2755>`__:
   pgr_analyzeOneWay
+* `#2751 <https://github.com/pgRouting/pgrouting/issues/2851>`__:
+  pgr_createTopology
 * `#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__:
   pgr_createVerticesTable
 
