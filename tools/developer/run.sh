@@ -58,6 +58,9 @@ function set_cmake {
     # with developers documentation
     #cmake  -DWITH_DOC=ON -DBUILD_DOXY=ON ..
 
+    # using a particular PostgreSQL configuration
+    #cmake -DPOSTGRESQL_PG_CONFIG="/usr/lib/postgresql/${PGVERSION}/bin/pg_config" ..
+
     # Building using clang
     #CXX=clang++ CC=clang cmake -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_BUILD_TYPE=Debug  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=OFF ..
 
@@ -82,7 +85,7 @@ function tap_test {
     dropdb --if-exists -p $PGPORT ___pgr___test___
     createdb  -p $PGPORT ___pgr___test___
     echo $PGPORT
-    tools/testers/pg_prove_tests.sh vicky $PGPORT
+    tools/testers/pg_prove_tests.sh "$PGUSER" $PGPORT
     dropdb  -p $PGPORT ___pgr___test___
 }
 
