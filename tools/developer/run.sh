@@ -31,7 +31,6 @@ echo "pgRouting VERSION ${VERSION}"
 
 # set up your postgres version, port and compiler (if more than one)
 PGVERSION="15"
-PGPORT="5432"
 PGBIN="/usr/lib/postgresql/${PGVERSION}/bin"
 # When more than one compiler is installed
 GCC=""
@@ -82,7 +81,7 @@ function tap_test {
     dropdb --if-exists -p $PGPORT ___pgr___test___
     createdb  -p $PGPORT ___pgr___test___
     echo $PGPORT
-    tools/testers/pg_prove_tests.sh vicky $PGPORT
+    tools/testers/pg_prove_tests.sh $PGUSER $PGPORT
     dropdb  -p $PGPORT ___pgr___test___
 }
 
@@ -186,7 +185,7 @@ function test_compile {
     echo --------------------------------------------
     for d in ${TAP_DIRS}
     do
-        time bash taptest.sh  "${d}" "-p ${PGPORT}"
+        time bash build/taptest.sh  "${d}" "-p ${PGPORT}"
     done
 
     tap_test
