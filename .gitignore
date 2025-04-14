@@ -11,3 +11,4 @@ notUsed
 *.swp
 
 .vscode
+taptest.sh
