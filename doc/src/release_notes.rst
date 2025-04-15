@@ -245,6 +245,7 @@ milestone for 3.8.0
 
   * `#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: pgr_contractionDeadEnd
   * `#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: pgr_contractionLinear
+  * `#2536 <https://github.com/pgRouting/pgrouting/issues/2536>`__: pgr_contractionHierarchies
 
 * Utilities
 

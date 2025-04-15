@@ -4,6 +4,7 @@ SET(LOCAL_FILES
     pgr_contraction.rst
     pgr_contractionDeadEnd.rst
     pgr_contractionLinear.rst
+    pgr_contractionHierarchies.rst
     )
 
 foreach (f ${LOCAL_FILES})

@@ -380,6 +380,7 @@ rst_epilog="""
 .. |result-component-V| replace:: ``(seq, component, node)``
 .. |result-component-make| replace:: ``(seq, start_vid, end_vid)``
 .. |result-contract| replace:: ``(type, id, contracted_vertices, source, target, cost)``
+.. |result-contraction-hierarchies| replace:: ``(type, id, contracted_vertices, source, target, cost, metric, vertex_order)``
 .. |result-idom| replace:: ``(seq, vertex_id, idom)``
 .. |result-dij-dd| replace:: ``(seq, [from_v,] node, edge, cost, agg_cost)``
 .. |result-dij-dd-m| replace:: ``(seq, from_v, node, edge, cost, agg_cost)``
