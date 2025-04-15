@@ -43,34 +43,34 @@ TAP_DIRS="dijkstra"
 
 function set_cmake {
     # Using all defaults
-    #cmake ..
+    #cmake -DPOSTGRESQL_PG_CONFIG="/usr/lib/postgresql/${PGVERSION}/bin/pg_config" ..
 
     # Options Release RelWithDebInfo MinSizeRel Debug
-    #cmake  -DCMAKE_BUILD_TYPE=Debug ..
+    #cmake  -DCMAKE_BUILD_TYPE=Debug -DPOSTGRESQL_PG_CONFIG="/usr/lib/postgresql/${PGVERSION}/bin/pg_config" ..
 
     # Additional debug information
-    #cmake -DPgRouting_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug ..
+    #cmake -DPgRouting_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug -DPOSTGRESQL_PG_CONFIG="/usr/lib/postgresql/${PGVERSION}/bin/pg_config" ..
 
     # with documentation (like the one the website)
-    #cmake  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON ..
+    #cmake  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DPOSTGRESQL_PG_CONFIG="/usr/lib/postgresql/${PGVERSION}/bin/pg_config" ..
 
     # with developers documentation
-    #cmake  -DWITH_DOC=ON -DBUILD_DOXY=ON ..
+    #cmake  -DWITH_DOC=ON -DBUILD_DOXY=ON -DPOSTGRESQL_PG_CONFIG="/usr/lib/postgresql/${PGVERSION}/bin/pg_config" ..
 
     # Building using clang
-    #CXX=clang++ CC=clang cmake -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_BUILD_TYPE=Debug  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=OFF ..
+    #CXX=clang++ CC=clang cmake -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_BUILD_TYPE=Debug  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=OFF -DPOSTGRESQL_PG_CONFIG="/usr/lib/postgresql/${PGVERSION}/bin/pg_config" ..
 
     # Building with debug on
-    #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DCMAKE_BUILD_TYPE=Debug -DES=ON -DPROJECT_DEBUG=ON ..
+    #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DCMAKE_BUILD_TYPE=Debug -DES=ON -DPROJECT_DEBUG=ON -DPOSTGRESQL_PG_CONFIG="/usr/lib/postgresql/${PGVERSION}/bin/pg_config" ..
 
     # building languages -DES=ON -DJA=ON -DZH_HANS=ON -DDE=ON -DKO=ON and CMAKE_EXPORT_COMPILE_COMMANDS for static analysis tools.
-    #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DES=ON  -DCMAKE_BUILD_TYPE=Debug ..
+    #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DES=ON  -DCMAKE_BUILD_TYPE=Debug -DPOSTGRESQL_PG_CONFIG="/usr/lib/postgresql/${PGVERSION}/bin/pg_config" ..
 
     # check link in documentation
-    #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DES=ON -DLINKCHECK=ON -DCMAKE_BUILD_TYPE=Release ..
+    #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DES=ON -DLINKCHECK=ON -DCMAKE_BUILD_TYPE=Release -DPOSTGRESQL_PG_CONFIG="/usr/lib/postgresql/${PGVERSION}/bin/pg_config" ..
 
     # build only english
-    cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON  -DCMAKE_BUILD_TYPE=Debug ..
+    cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON  -DCMAKE_BUILD_TYPE=Debug -DPOSTGRESQL_PG_CONFIG="/usr/lib/postgresql/${PGVERSION}/bin/pg_config" ..
 }
 
 function tap_test {
