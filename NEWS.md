@@ -43,6 +43,8 @@ milestone for 3.8.0
     pgr_contractionDeadEnd new contraction function
   * [#2791](https://github.com/pgRouting/pgrouting/issues/2791):
     pgr_contractionLinear new contraction function
+  * [#2536](https://github.com/pgRouting/pgrouting/issues/2536):
+    Support for contraction hierarchies (pgr_contractionHierarchies)
 
 * Utilities
 

@@ -3,6 +3,8 @@ SET(LOCAL_FILES
     undirected_sampledata_b.png
     undirected_sampledata_c.png
     newgraph.png
+    sample_graph.png
+    sample_graph_with_shortcuts.png
     )
 
 foreach (f ${LOCAL_FILES})
