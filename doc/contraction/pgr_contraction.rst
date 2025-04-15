@@ -263,13 +263,6 @@ In this section, building and using a contracted graph will be shown by example.
 - The :doc:`sampledata` for an undirected graph is used
 - a dead end operation first followed by a linear operation.
 
-
-.. contents::
-   :local:
-
-Construction of the graph in the database
-...............................................................................
-
 The original graph:
 
 .. image:: /images/Fig6-undirected.png
@@ -296,7 +289,7 @@ After doing the linear contraction operation to the graph above:
 .. image:: images/undirected_sampledata_c.png
    :scale: 25%
 
-The process to create the contraction graph on the database:
+Creating the contraction graph in the database
 -------------------------------------------------------------------------------
 
 .. contents::

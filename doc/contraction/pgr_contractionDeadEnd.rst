@@ -14,7 +14,7 @@
 
 |
 
-``pgr_contractionDeadEnd`` - Proposed
+``pgr_contractionDeadEnd``
 ===============================================================================
 
 ``pgr_contractionDeadEnd`` — Performs graph contraction and returns the contracted
@@ -28,7 +28,7 @@ vertices and edges.
 
 * Version 3.8.0
 
-  * New proposed function.
+  * New **proposed** function.
 
 Description
 -------------------------------------------------------------------------------

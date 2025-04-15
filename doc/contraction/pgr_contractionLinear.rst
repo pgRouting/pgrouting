@@ -14,7 +14,7 @@
 
 |
 
-``pgr_contractionLinear`` - Proposed
+``pgr_contractionLinear``
 ===============================================================================
 
 ``pgr_contractionLinear`` — Performs graph contraction and returns the contracted
@@ -24,7 +24,7 @@ vertices and edges.
 
 * Version 3.8.0
 
-  * New proposed function.
+  * New **proposed** function.
 
 
 Description
@@ -55,7 +55,7 @@ Signatures
 
 - The green nodes are linear nodes and will not be part of the contracted graph.
 
-  - All edges adjacent will not be part of the contracted graph.
+  - All adjacent edges will not be part of the contracted graph.
 
 - The red lines will be new edges of the contracted graph.
 
@@ -104,12 +104,6 @@ Parameters
    * - `Edges SQL`_
      - ``TEXT``
      - `Edges SQL`_ as described below.
-   * - **contraction Order**
-     - ``ARRAY[`` **ANY-INTEGER** ``]``
-     - Ordered contraction operations.
-
-       - 1 = Dead end contraction
-       - 2 = Linear contraction
 
 Optional parameters
 ...............................................................................
@@ -134,11 +128,6 @@ Contraction optional parameters
      - ``ARRAY[`` **ANY-INTEGER** ``]``
      - **Empty**
      - Identifiers of vertices forbidden for contraction.
-   * - ``cycles``
-     - ``INTEGER``
-     - :math:`1`
-     - Number of times the contraction operations on ``contraction_order`` will
-       be performed.
 
 Inner Queries
 -------------------------------------------------------------------------------
