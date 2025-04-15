@@ -60,6 +60,12 @@ Experimental Functions
    :start-after: official-start
    :end-before: official-end
 
+:doc:`contraction-family`
+
+.. include:: contraction-family.rst
+   :start-after: experimental-start
+   :end-before: experimental-end
+
 :doc:`transformation-family`
 
 .. include:: transformation-family.rst
