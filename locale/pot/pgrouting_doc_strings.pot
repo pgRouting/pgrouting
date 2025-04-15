@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-11 20:19+0000\n"
+"POT-Creation-Date: 2025-04-15 16:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7972,9 +7972,6 @@ msgstr ""
 msgid "a dead end operation first followed by a linear operation."
 msgstr ""
 
-msgid "Construction of the graph in the database"
-msgstr ""
-
 msgid "The original graph:"
 msgstr ""
 
@@ -7990,7 +7987,7 @@ msgstr ""
 msgid "After doing the linear contraction operation to the graph above:"
 msgstr ""
 
-msgid "The process to create the contraction graph on the database:"
+msgid "Creating the contraction graph in the database"
 msgstr ""
 
 msgid "Add additional columns"
@@ -8092,10 +8089,13 @@ msgstr ""
 msgid "Case 3: Source and/or target belong to a vertex that has been contracted."
 msgstr ""
 
-msgid "``pgr_contractionDeadEnd`` - Proposed"
+msgid "``pgr_contractionDeadEnd``"
 msgstr ""
 
 msgid "``pgr_contractionDeadEnd`` — Performs graph contraction and returns the contracted vertices and edges."
+msgstr ""
+
+msgid "New **proposed** function."
 msgstr ""
 
 msgid "A node is considered a dead end node when:"
@@ -8272,7 +8272,7 @@ msgstr ""
 msgid "Using when departure and destination are not in the contracted graph"
 msgstr ""
 
-msgid "``pgr_contractionLinear`` - Proposed"
+msgid "``pgr_contractionLinear``"
 msgstr ""
 
 msgid "``pgr_contractionLinear`` — Performs graph contraction and returns the contracted vertices and edges."
@@ -8287,16 +8287,10 @@ msgstr ""
 msgid "The green nodes are linear nodes and will not be part of the contracted graph."
 msgstr ""
 
-msgid "All edges adjacent will not be part of the contracted graph."
+msgid "All adjacent edges will not be part of the contracted graph."
 msgstr ""
 
 msgid "The red lines will be new edges of the contracted graph."
-msgstr ""
-
-msgid "**contraction Order**"
-msgstr ""
-
-msgid "Number of times the contraction operations on ``contraction_order`` will be performed."
 msgstr ""
 
 msgid "A node connects two (or more) `linear` edges when"
