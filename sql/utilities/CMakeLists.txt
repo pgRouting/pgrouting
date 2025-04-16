@@ -1,6 +1,7 @@
 
 SET(LOCAL_FILES
     findCloseEdges.sql
+    separateCrossing.sql
     )
 
 foreach (f ${LOCAL_FILES})
