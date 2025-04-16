@@ -1,0 +1,131 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+/* --q1 */
+SELECT *
+FROM pgr_separateCrossing('SELECT id, geom FROM edges');
+ seq | id | sub_id |                                        geom
+-----+----+--------+------------------------------------------------------------------------------------
+   1 | 18 |      1 | 0102000000020000000000000000000C4066666666666602400000000000000C400000000000000840
+   2 | 18 |      2 | 0102000000020000000000000000000C4000000000000008400000000000000C400000000000001040
+   3 | 13 |      1 | 010200000002000000000000000000084000000000000008400000000000000C400000000000000840
+   4 | 13 |      2 | 0102000000020000000000000000000C40000000000000084000000000000010400000000000000840
+(4 rows)
+
+/* --q2 */
+SELECT *
+FROM pgr_separateCrossing('SELECT id, geom FROM edges', dryrun => true);
+NOTICE:
+    WITH
+        edges_table AS (
+          SELECT id, geom FROM edges
+        ),
+
+    get_crossings AS (
+      SELECT e1.id id1, e2.id id2, e1.geom AS g1, e2.geom AS g2, ST_Intersection(e1.geom, e2.geom) AS point
+      FROM edges_table e1, edges_table e2
+      WHERE e1.id < e2.id AND ST_Crosses(e1.geom, e2.geom)
+    ),
+
+    crossings AS (
+      SELECT id1, g1, point FROM get_crossings
+      UNION
+      SELECT id2, g2, point FROM get_crossings
+    ),
+
+    blades AS (
+      SELECT id1, g1, ST_Union(point) as blade
+      FROM crossings
+      GROUP BY id1, g1
+    ),
+
+    collection AS (
+      SELECT id1, (st_dump(st_split(st_snap(g1, blade, 0.01), blade))).*
+      FROM blades
+    )
+
+    SELECT row_number() over()::INTEGER AS seq, id1::BIGINT, path[1], geom
+    FROM collection;
+    ;
+ seq | id | sub_id | geom
+-----+----+--------+------
+(0 rows)
+
+/* --q3 */
+SELECT *
+FROM pgr_dijkstra('SELECT id, source, target, cost, reverse_cost FROM edges', 1, 18);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+(0 rows)
+
+/* --q4 */
+SELECT
+  e1.id id1, e2.id id2,
+  ST_AsText(ST_Intersection(e1.geom, e2.geom)) AS point
+FROM edges e1, edges e2
+WHERE e1.id < e2.id AND ST_Crosses(e1.geom, e2.geom);
+ id1 | id2 |    point
+-----+-----+--------------
+  13 |  18 | POINT(3.5 3)
+(1 row)
+
+/* --q5 */
+ALTER TABLE edges ADD old_id BIGINT, ADD sub_id BIGINT;
+ALTER TABLE
+/* --q6 */
+INSERT INTO edges (old_id, sub_id, geom)
+SELECT id, sub_id, geom
+FROM pgr_separateCrossing('SELECT id, geom FROM edges');
+INSERT 0 4
+/* --q7 */
+WITH
+costs AS (
+  SELECT e2.id, sign(e1.cost) * ST_Length(e2.geom) AS cost,
+  sign(e1.reverse_cost) * ST_Length(e2.geom) AS reverse_cost
+  FROM edges e1 JOIN edges e2 ON (e1.id = e2.old_id)
+)
+UPDATE edges e
+SET (cost, reverse_cost) = (c.cost, c.reverse_cost)
+FROM costs AS c WHERE e.id = c.id;
+UPDATE 4
+/* --q8 */
+WITH
+new_vertex AS (
+  SELECT ev.*
+  FROM pgr_extractVertices('SELECT id, geom FROM edges WHERE old_id IS NOT NULL') ev
+  LEFT JOIN vertices v using(geom)
+  WHERE v IS NULL)
+INSERT INTO vertices (in_edges, out_edges,x,y,geom)
+SELECT in_edges, out_edges,x,y,geom FROM new_vertex;
+INSERT 0 1
+/* --q9 */
+/* -- set the source information */
+UPDATE edges AS e
+SET source = v.id, x1 = x, y1 = y
+FROM vertices AS v
+WHERE source IS NULL AND ST_StartPoint(e.geom) = v.geom;
+UPDATE 4
+/* -- set the target information */
+UPDATE edges AS e
+SET target = v.id, x2 = x, y2 = y
+FROM vertices AS v
+WHERE target IS NULL AND ST_EndPoint(e.geom) = v.geom;
+UPDATE 4
+/* --q10 */
+SELECT *
+FROM pgr_dijkstra('SELECT id, source, target, cost, reverse_cost FROM edges', 1, 18);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         1 |      18 |    1 |    6 |    1 |        0
+   2 |        2 |         1 |      18 |    3 |    7 |    1 |        1
+   3 |        3 |         1 |      18 |    7 |   10 |    1 |        2
+   4 |        4 |         1 |      18 |    8 |   12 |    1 |        3
+   5 |        5 |         1 |      18 |   12 |   21 |  0.5 |        4
+   6 |        6 |         1 |      18 |   18 |   -1 |    0 |      4.5
+(6 rows)
+
+/* --q11 */
+/* --qend */
+ROLLBACK;
+ROLLBACK
