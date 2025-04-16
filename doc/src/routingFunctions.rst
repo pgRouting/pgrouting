@@ -103,9 +103,11 @@ Function Families
 
 :doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)
 
-.. rubric:: Utilities family
+.. rubric:: Utilities
 
-:doc:`pgr_findCloseEdges`
+.. include:: topology-functions.rst
+   :start-after: utility_official-start
+   :end-before: utility_official-end
 
 Functions by categories
 ===============================================================================
@@ -172,7 +174,6 @@ Functions by categories
     reference
     topology-functions
     TSP-family
-    pgr_findCloseEdges
 
 .. toctree::
     :hidden:
