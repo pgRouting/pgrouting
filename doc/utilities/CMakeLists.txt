@@ -1,5 +1,6 @@
 SET(LOCAL_FILES
     pgr_findCloseEdges.rst
+    pgr_separateCrossing.rst
     )
 
 foreach (f ${LOCAL_FILES})
