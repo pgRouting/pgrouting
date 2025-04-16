@@ -1,3 +1,21 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2025  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
 
 -- checks the minimum version version for C++ code
 CREATE OR REPLACE FUNCTION min_lib_version(min_version TEXT)
@@ -106,3 +124,21 @@ SELECT set_eq(format($$
   SELECT typname from a JOIN pg_type ON(oid = prorettype)$$, $1),
   $$VALUES ('geometry') $$);
 $BODY$ LANGUAGE SQL;
+
+CREATE FUNCTION has_total_edges_vertices(tbl TEXT,ne INTEGER, nv INTEGER)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  CREATE TABLE rv AS
+  SELECT id, geom
+  FROM pgr_extractVertices($$ SELECT * FROM $$ || $1);
+
+  RETURN QUERY EXECUTE format($$
+    SELECT is((SELECT count(*)::INTEGER FROM %1$s),  %2$s, '%1$s has %2$s edges');
+    $$, $1, $2);
+
+  RETURN QUERY EXECUTE format($$
+    SELECT is((SELECT count(*)::INTEGER FROM rv),  %2$s, '%1$s has %2$s vertices');
+    $$, $1, $3);
+END
+$BODY$ LANGUAGE plpgsql;
