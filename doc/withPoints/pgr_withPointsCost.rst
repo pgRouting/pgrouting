@@ -11,7 +11,7 @@
    single: withPoints Family ; pgr_withPointsCost - Proposed
    single: With Points Category ; pgr_withPointsCost - Proposed
    single: Cost Category ; pgr_withPointsCost - Proposed
-   single: withPointsCost
+   single: withPointsCost - Proposed
 
 |
 
