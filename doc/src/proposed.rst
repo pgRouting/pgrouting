@@ -80,6 +80,12 @@ Proposed Functions
    :start-after: official-start
    :end-before: official-end
 
+Utilities
+
+.. include:: topology-family.rst
+   :start-after: utility_proposed-start
+   :end-before: utility_proposed-end
+
 .. toctree::
    :hidden:
 

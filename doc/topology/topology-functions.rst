@@ -34,23 +34,28 @@ have special permissions given by the administrators to use them.
   table.
 - :doc:`pgr_analyzeOneWay` - to analyze directionality of the edges.
 - :doc:`pgr_nodeNetwork` - to create nodes to a not noded edge table.
-- :doc:`pgr_extractVertices` - Extracts vertex information based on the edge
-  table information.
 
 .. official-end
 
-pgRouting supplies some functions to create a routing topology and to analyze the
-topology.
+.. index:: Utilities
 
-Additional functions to create a graph:
+|
 
-* :doc:`contraction-family`
+Utility functions
+===============================================================================
 
-Additional functions to analyze a graph:
+.. utility_official-start
 
-* :doc:`components-family`
+- :doc:`pgr_extractVertices` - Extracts vertex information based on the edge
+  table information.
 
-.. proposed-end
+.. utility_official-end
+
+.. utility_proposed-start
+
+- :doc:`pgr_separateCrossing` - Breaks geometries that cross each other.
+
+.. utility_proposed-end
 
 .. toctree::
   :hidden:
@@ -61,6 +66,7 @@ Additional functions to analyze a graph:
   pgr_analyzeOneWay
   pgr_nodeNetwork
   pgr_extractVertices
+  pgr_separateCrossing
 
 See Also
 -------------------------------------------------------------------------------
