@@ -1,0 +1,56 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2025  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+
+BEGIN;
+
+SELECT CASE WHEN min_version('3.8.0') THEN plan(3) ELSE plan(1) END;
+
+CREATE TABLE i280 (id INTEGER, the_geom geometry(linestring) );
+INSERT INTO i280 VALUES
+(1, 'linestring(0 0, 10 10)'::geometry),
+(2, 'linestring(2 0, 8 10)'::geometry);
+
+CREATE OR REPLACE FUNCTION issue_test()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('3.8.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_separateCrossing new on 3.8.0');
+    RETURN;
+  END IF;
+
+  CREATE TABLE i280_r AS
+  SELECT *
+  FROM pgr_separateCrossing('SELECT id, the_geom AS geom FROM i280', 0.001);
+
+  RETURN QUERY
+  SELECT has_total_edges_vertices('i280_r', 4, 5);
+
+  RETURN QUERY
+  SELECT set_has(
+    $$SELECT ST_AsText(geom) FROM rv$$,
+    $$VALUES ('POINT(5 5)')$$, 'Have (5,5) vertex');
+
+END;
+$BODY$ LANGUAGE plpgsql;
+
+SELECT issue_test();
+SELECT finish();
+ROLLBACK;

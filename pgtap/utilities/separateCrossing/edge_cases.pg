@@ -1,0 +1,104 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2025  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+
+BEGIN;
+
+SELECT CASE WHEN min_version('3.8.0') THEN plan(6) ELSE plan(1) END;
+
+CREATE TABLE grid(
+      id serial NOT NULL primary key,
+      dir text,
+      the_geom geometry
+);
+
+-- creating the grid geometry
+INSERT INTO grid(dir, the_geom)
+SELECT
+  CASE WHEN s1 % 2 = 0 THEN 'FT' ELSE 'TF' END,
+  ST_AsTexT(ST_MakeLine(ST_MakePoint(1,s1), ST_MakePoint(6,s1)))
+FROM (SELECT generate_series(2,5) AS s1) AS foo
+
+UNION ALL
+
+SELECT
+  CASE WHEN s1 % 2 = 0 THEN 'FT' ELSE 'TF' END,
+  ST_AsTexT(ST_MakeLine(ST_MakePoint(s1,1), ST_MakePoint(s1,6)))
+  FROM (SELECT generate_series(2,5) AS s1) AS foo;
+
+
+CREATE OR REPLACE FUNCTION issue_test()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('3.8.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_separateCrossing new on 3.8.0');
+    RETURN;
+  END IF;
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER FROM grid), 8, 'There are 8 original edges');
+
+  CREATE TABLE grid_r AS
+  SELECT *, NULL::INTEGER source, NULL::INTEGER target, NULL::TEXT dir
+  FROM pgr_separateCrossing('SELECT id, the_geom AS geom FROM grid', 0.001);
+
+  RETURN QUERY
+  SELECT has_total_edges_vertices('grid_r', 40, 32);
+
+  RETURN QUERY
+  SELECT set_eq(
+    'SELECT id, count(*) FROM grid_r GROUP BY id ORDER BY id',
+    'VALUES (1,5),(2,5),(3,5),(4,5),(5,5),(6,5),(7,5),(8,5)',
+    'For each original edge there are 5 subedges');
+
+  -- set the source information
+  UPDATE grid_r AS e
+  SET source = rv.id
+  FROM rv
+  WHERE ST_StartPoint(e.geom) = rv.geom;
+
+  -- set the target information
+  UPDATE grid_r AS e
+  SET target = rv.id
+  FROM rv
+  WHERE ST_EndPoint(e.geom) = rv.geom;
+
+  -- se the dir
+  UPDATE grid_r AS e
+  SET dir = grid.dir
+  FROM grid
+  WHERE grid.id = e.id;
+
+  RETURN QUERY
+  SELECT is(
+    (SELECT DISTINCT count(*)::INTEGER FROM grid GROUP BY dir),
+    4, '4 is the count of different TF and FT in grid');
+  RETURN QUERY
+  SELECT is(
+    (SELECT DISTINCT count(*)::INTEGER FROM grid_r GROUP BY dir),
+    20, '20 is the count of different TF and FT in grid_r (4*5)');
+
+END;
+$BODY$ LANGUAGE plpgsql;
+
+SELECT issue_test();
+
+SELECT finish();
+ROLLBACK;
