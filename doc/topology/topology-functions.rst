@@ -42,8 +42,13 @@ Utility functions
 
 - :doc:`pgr_extractVertices` - Extracts vertex information based on the edge
   table information.
+- :doc:`pgr_findCloseEdges` - Finds close edges of points on the fly
 
 .. utility_official-end
+
+.. include:: proposed.rst
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. utility_proposed-start
 
@@ -56,6 +61,7 @@ Utility functions
 
   pgr_nodeNetwork
   pgr_extractVertices
+  pgr_findCloseEdges
   pgr_separateCrossing
 
 See Also

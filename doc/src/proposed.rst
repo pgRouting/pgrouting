@@ -80,9 +80,9 @@ Proposed Functions
    :start-after: official-start
    :end-before: official-end
 
-Utilities
+.. rubric:: Utilities
 
-.. include:: topology-family.rst
+.. include:: topology-functions.rst
    :start-after: utility_proposed-start
    :end-before: utility_proposed-end
 
