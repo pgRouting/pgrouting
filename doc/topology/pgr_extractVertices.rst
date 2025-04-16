@@ -8,7 +8,7 @@
    ****************************************************************************
 
 .. index::
-   single: Topology Family ; pgr_extractVertices
+   single: Utilities ; pgr_extractVertices
    single: extractVertices
 
 |
@@ -49,15 +49,13 @@ of edges of a graph.
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
-
 .. admonition:: \ \
    :class: signatures
 
    | pgr_extractVertices(`Edges SQL`_, [``dryrun``])
 
    | RETURNS SETOF |result-extract|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: Extracting the vertex information
 
@@ -282,21 +280,6 @@ Inspect the routing topology
    **Generated topology**
 
 .. create_routing_topology_end
-
-
-Crossing edges
-...............................................................................
-
-.. include:: pgRouting-concepts.rst
-   :start-after: cross_edges_start
-   :end-before: cross_edges_end
-
-Graphs without geometries
-...............................................................................
-
-.. include:: pgRouting-concepts.rst
-   :start-after: no_geometry_start
-   :end-before: no_geometry_end
 
 See Also
 -------------------------------------------------------------------------------
