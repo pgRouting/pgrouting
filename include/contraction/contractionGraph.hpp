@@ -71,13 +71,14 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
          Identifiers<V> adjacent_vertices;
 
          for (const auto &e : boost::make_iterator_range(
-                 out_edges(v, this->graph)))
+                 out_edges(v, this->graph))) {
             adjacent_vertices += this->adjacent(v, e);
+         }
 
          for (const auto &e : boost::make_iterator_range(
-                 in_edges(v, this->graph)))
+                 in_edges(v, this->graph))) {
             adjacent_vertices += this->adjacent(v, e);
-
+         }
          return adjacent_vertices;
     }
 

@@ -56,11 +56,11 @@ class CH_vertex {
         this->m_metric = other.m_metric;
     }
 
-    const int64_t& vertex_order() const {return m_vertex_order;};
-    int64_t& vertex_order() {return m_vertex_order;};
+    const int64_t& vertex_order() const {return m_vertex_order;}
+    int64_t& vertex_order() {return m_vertex_order;}
 
-    const int64_t& metric() const {return m_metric;};
-    int64_t& metric() {return m_metric;};
+    const int64_t& metric() const {return m_metric;}
+    int64_t& metric() {return m_metric;}
 
     void add_contracted_vertex(CH_vertex& v);
     void add_contracted_vertex(int64_t vid);
@@ -71,6 +71,7 @@ class CH_vertex {
     bool has_contracted_vertices() const;
     void clear_contracted_vertices() {m_contracted_vertices.clear();}
     friend std::ostream& operator << (std::ostream& os, const CH_vertex& v);
+
  private:
     int64_t m_vertex_order;
     int64_t m_metric;
