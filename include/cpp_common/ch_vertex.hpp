@@ -42,26 +42,39 @@ namespace pgrouting {
 class CH_vertex {
  public:
     int64_t id;
-    int64_t vertex_order;
-    int64_t metric;
+
     CH_vertex();
     CH_vertex(const Edge_t &other, bool is_source) :
-      id(is_source? other.source : other.target)
+      id(is_source? other.source : other.target),
+      m_vertex_order(-1),
+      m_metric(-1)
       {}
-    void set_contracted_vertices(Identifiers<int64_t>&);
+    void set_contracted_vertices(const Identifiers<int64_t>&);
     void cp_members(const CH_vertex &other) {
         this->id = other.id;
+        this->m_vertex_order = other.m_vertex_order;
+        this->m_metric = other.m_metric;
     }
+
+    const int64_t& vertex_order() const {return m_vertex_order;}
+    int64_t& vertex_order() {return m_vertex_order;}
+
+    const int64_t& metric() const {return m_metric;}
+    int64_t& metric() {return m_metric;}
+
     void add_contracted_vertex(CH_vertex& v);
-    void add_contracted_vertex_id(int64_t vid);
-    void add_contracted_vertices_id(const Identifiers<int64_t>&);
+    void add_contracted_vertex(int64_t vid);
+    void add_contracted_vertex(const Identifiers<int64_t>&);
     void add_vertex_id(int64_t vid) {m_contracted_vertices += vid;}
     const Identifiers<int64_t>& contracted_vertices() const;
     Identifiers<int64_t>& contracted_vertices();
     bool has_contracted_vertices() const;
     void clear_contracted_vertices() {m_contracted_vertices.clear();}
     friend std::ostream& operator << (std::ostream& os, const CH_vertex& v);
+
  private:
+    int64_t m_vertex_order;
+    int64_t m_metric;
     Identifiers<int64_t> m_contracted_vertices;
 };
 
