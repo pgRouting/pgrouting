@@ -3,8 +3,9 @@
 --                pgr_nodeNetwork
 --------------------------------------------------------------------------------
 /* --q1 */
-SELECT *
-FROM pgr_separateCrossing('SELECT id, geom FROM edges');
+SELECT id, sub_id, ST_AsText(geom)
+FROM pgr_separateCrossing('SELECT id, geom FROM edges')
+ORDER BY id, sub_id;
 /* --q2 */
 SELECT *
 FROM pgr_separateCrossing('SELECT id, geom FROM edges', dryrun => true);
