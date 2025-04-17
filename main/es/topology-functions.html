@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=0610ec03"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=1eeba500"></script>
+    <script src="_static/page_history.js?v=1e711df0"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -97,7 +97,8 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Topología - Familia de Funciones</a><ul>
+<li><a class="reference internal" href="#">Topología - Familia de Funciones</a></li>
+<li><a class="reference internal" href="#utility-functions">Utility functions</a><ul>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -145,7 +146,8 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Topología - Familia de Funciones</a><ul>
+<li><a class="reference internal" href="#">Topología - Familia de Funciones</a></li>
+<li><a class="reference internal" href="#utility-functions">Utility functions</a><ul>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -189,17 +191,40 @@ created.</p>
 <li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph – Obsoleto desde 3.8.0</span></a> - para analizar los bordes y vértices de la tabla de aristas.</p></li>
 <li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay - Obsoleto desde 3.8.0</span></a> - para analizar la direccionalidad de las aristas.</p></li>
 <li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> - para crear nodos a una tabla de aristas sin nodos.</p></li>
+</ul>
+<div class="line-block" id="index-1">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="utility-functions">
+<h1>Utility functions<a class="headerlink" href="#utility-functions" title="Link to this heading">¶</a></h1>
+<ul class="simple">
 <li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - Extrae información de vértices basada en la tabla de aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> - Finds close edges of points on the fly</p></li>
 </ul>
-<p>pgRouting supplies some functions to create a routing topology and to analyze the
-topology.</p>
-<p>Additional functions to create a graph:</p>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="41908102-6366-451a-b745-9d1c97e15c88" name="41908102-6366-451a-b745-9d1c97e15c88" type="checkbox"><label class="sphinx_collapse__label" for="41908102-6366-451a-b745-9d1c97e15c88"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Funciones propuestas para la próxima versión mayor.</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a></p></li>
+<li><p>No están oficialmente en la versión actual.</p></li>
+<li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
+<ul>
+<li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
+<li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
-<p>Additional functions to analyze a graph:</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <ul class="simple">
-<li><p><a class="reference internal" href="components-family.html"><span class="doc">Componentes - Familia de funciones</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> - Breaks geometries that cross each other.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
