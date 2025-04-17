@@ -45,7 +45,7 @@ BEGIN
 
   RETURN QUERY
   SELECT set_has(
-    $$SELECT ST_AsText(geom) FROM rv$$,
+    $$SELECT ST_AsText(geom) FROM tmp_rv$$,
     $$VALUES ('POINT(5 5)')$$, 'Have (5,5) vertex');
 
 END;
