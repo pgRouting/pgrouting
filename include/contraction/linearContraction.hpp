@@ -79,7 +79,7 @@ class Pgr_linear {
 
 
 
-     void doContraction(G &graph, Identifiers<V> forbidden_vertices) {
+     void doContraction(G &graph, const Identifiers<V> &forbidden_vertices) {
          graph.set_forbidden_vertices(forbidden_vertices);
          calculateVertices(graph);
 
