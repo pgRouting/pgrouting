@@ -58,9 +58,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
      /*!
        Prepares the _graph_ to be of type *directed*
        */
-     explicit Pgr_contractionGraph<G, t_directed>()
-         : Pgr_base_graph<G, CH_vertex, CH_edge, t_directed>() {
-        min_edge_id = 0;
+     explicit Pgr_contractionGraph()
+         : Pgr_base_graph<G, CH_vertex, CH_edge, t_directed>(),
+        min_edge_id(0) {
          }
 
      /*! @brief get the vertex descriptors of adjacent vertices of *v*
@@ -71,13 +71,14 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
          Identifiers<V> adjacent_vertices;
 
          for (const auto &e : boost::make_iterator_range(
-                 out_edges(v, this->graph)))
+                 out_edges(v, this->graph))) {
             adjacent_vertices += this->adjacent(v, e);
+         }
 
          for (const auto &e : boost::make_iterator_range(
-                 in_edges(v, this->graph)))
+                 in_edges(v, this->graph))) {
             adjacent_vertices += this->adjacent(v, e);
-
+         }
          return adjacent_vertices;
     }
 
@@ -106,7 +107,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
                  }
              }
 
-            /* 
+            /*
              To follow the principles presented
              for linear contraction in "issue_1002.pg" test 3
             */
@@ -336,7 +337,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
         Identifiers<int64_t> vids;
         for (const auto &v :
                 boost::make_iterator_range(boost::vertices(this->graph))) {
-            if ((this->graph[v].vertex_order > 0)
+            if ((this->graph[v].vertex_order() > 0)
             || ((this->graph[v]).has_contracted_vertices())) {
                 vids += (this->graph[v]).id;
             }

@@ -57,7 +57,7 @@ class Pgr_linear {
      typedef typename G::E E;
 
  public:
-     void operator()(G &graph, Identifiers<V>& forbidden_vertices) {
+     void operator()(G &graph, const Identifiers<V>& forbidden_vertices) {
          doContraction(graph, forbidden_vertices);
      }
 
@@ -79,7 +79,7 @@ class Pgr_linear {
 
 
 
-     void doContraction(G &graph, Identifiers<V> forbidden_vertices) {
+     void doContraction(G &graph, const Identifiers<V> &forbidden_vertices) {
          graph.set_forbidden_vertices(forbidden_vertices);
          calculateVertices(graph);
 
