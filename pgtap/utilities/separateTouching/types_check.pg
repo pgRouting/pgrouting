@@ -1,0 +1,35 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2025  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+BEGIN;
+
+SELECT CASE WHEN min_version('3.8.0') THEN plan(5) ELSE plan(1) END;
+
+SELECT CASE WHEN min_version('3.8.0') THEN
+  collect_tap(
+  has_function('pgr_separatetouching'),
+  has_function('pgr_separatetouching',ARRAY['text','double precision','boolean']),
+  function_returns('pgr_separatetouching',ARRAY['text','double precision','boolean'],'setof record'),
+  function_args_eq('pgr_separatetouching', $$SELECT '{"",tolerance,dryrun,seq,id,sub_id,geom}'::TEXT[]$$),
+  function_types_eq('pgr_separatetouching', $$VALUES ('{text,float8,bool,int4,int8,int4,geometry}'::TEXT[])$$))
+ELSE
+  skip(1, 'pgr_separateTouching new in v3.8.0')
+END;
+
+SELECT  finish();
+ROLLBACK;
