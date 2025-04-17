@@ -59,6 +59,7 @@ Utility functions
 .. utility_proposed-start
 
 - :doc:`pgr_separateCrossing` - Breaks geometries that cross each other.
+- :doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each other.
 
 .. utility_proposed-end
 
@@ -73,6 +74,7 @@ Utility functions
   pgr_extractVertices
   pgr_findCloseEdges
   pgr_separateCrossing
+  pgr_separateTouching
 
 See Also
 -------------------------------------------------------------------------------
