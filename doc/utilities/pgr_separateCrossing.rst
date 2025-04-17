@@ -61,7 +61,7 @@ Optional parameters
 ============= =========== ========= =======================================
 Parameter     Type        Default   Description
 ============= =========== ========= =======================================
-``tolerance`` ``FLOAT``   0.01      Used in ST_Split
+``tolerance`` ``FLOAT``   0.01      Used in ST_Snap before ST_Split
 ``dryrun``    ``BOOLEAN`` ``false`` * When true do not process and get in a
                                       NOTICE the resulting query.
 ============= =========== ========= =======================================
@@ -75,7 +75,7 @@ Edges SQL
 ================= =================== ===================================
 Column            Type                Description
 ================= =================== ===================================
-``id``            ``BIGINT``          (Optional) identifier of the edge.
+``id``            |ANY-INTEGER|       (Optional) identifier of the edge.
 ``geom``          ``LINESTRING``      Geometry of the edge.
 ================= =================== ===================================
 

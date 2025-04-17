@@ -45,6 +45,11 @@ DECLARE
   has_id BOOLEAN;
 BEGIN
 
+  IF tolerance <= 0 THEN
+    RAISE EXCEPTION $$'tolerance' must be a positive number (given %)$$, tolerance
+      USING ERRCODE = '22023'; -- invalid_parameter_value
+  END IF;
+
   BEGIN
     edges_sql := _pgr_checkQuery($1);
     EXCEPTION WHEN OTHERS THEN
@@ -54,6 +59,10 @@ BEGIN
 
   has_id := _pgr_checkColumn(edges_sql, 'id', 'ANY-INTEGER', false, dryrun);
   has_geom := _pgr_checkColumn(edges_sql, 'geom', 'geometry', false, dryrun);
+
+  IF NOT has_id OR NOT has_geom THEN
+    RAISE EXCEPTION $$'id' or 'geom' are missing$$ USING HINT = edges_sql;
+  END IF;
 
   the_query := format(
     $$
@@ -75,7 +84,7 @@ BEGIN
     ),
 
     blades AS (
-      SELECT id1, g1, ST_Union(point) as blade
+      SELECT id1, g1, ST_UnaryUnion(ST_Collect(point)) AS blade
       FROM crossings
       GROUP BY id1, g1
     ),

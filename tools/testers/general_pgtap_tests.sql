@@ -129,7 +129,7 @@ CREATE FUNCTION has_total_edges_vertices(tbl TEXT,ne INTEGER, nv INTEGER)
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
-  CREATE TABLE rv AS
+  CREATE TEMP TABLE tmp_rv ON COMMIT DROP AS
   SELECT id, geom
   FROM pgr_extractVertices($$ SELECT * FROM $$ || $1);
 
@@ -138,7 +138,7 @@ BEGIN
     $$, $1, $2);
 
   RETURN QUERY EXECUTE format($$
-    SELECT is((SELECT count(*)::INTEGER FROM rv),  %2$s, '%1$s has %2$s vertices');
+    SELECT is((SELECT count(*)::INTEGER FROM tmp_rv),  %2$s, '%1$s has %2$s vertices');
     $$, $1, $3);
 END
 $BODY$ LANGUAGE plpgsql;
