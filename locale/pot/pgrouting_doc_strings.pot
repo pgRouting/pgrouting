@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-11 20:19+0000\n"
+"POT-Creation-Date: 2025-04-17 19:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12685,6 +12685,12 @@ msgstr ""
 msgid "`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: pgr_contraction"
 msgstr ""
 
+msgid "C/C++ code enhancements"
+msgstr ""
+
+msgid "`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__: Code factorization on pgr_contraction family"
+msgstr ""
+
 msgid "New proposed functions"
 msgstr ""
 
@@ -12923,9 +12929,6 @@ msgid "`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standardize 
 msgstr ""
 
 msgid "`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standardize output and modifying signature pgr_withPointsKSP"
-msgstr ""
-
-msgid "C/C++ code enhancements"
 msgstr ""
 
 msgid "`#2504 <https://github.com/pgRouting/pgrouting/pull/2504>`__ To C++ pg data get, fetch and check."
