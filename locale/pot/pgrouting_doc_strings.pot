@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-08 19:58+0000\n"
+"POT-Creation-Date: 2025-04-17 14:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3581,6 +3581,12 @@ msgid "New name and order of optional parameters."
 msgstr ""
 
 msgid "Deprecated signature pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+msgstr ""
+
+msgid "C/C++ code enhancement"
+msgstr ""
+
+msgid "`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__: Code factorization on pgr_contraction family"
 msgstr ""
 
 msgid "New proposed functions"
