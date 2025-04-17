@@ -45,43 +45,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace {
 
-/*! @brief vertices with at least one contracted vertex
-
-  @result The vids Identifiers with at least one contracted vertex
-*/
-template <typename G>
-pgrouting::Identifiers<int64_t> get_modified_vertices(const G& graph) {
-    pgrouting::Identifiers<int64_t> vids;
-    for (auto v : boost::make_iterator_range(boost::vertices(graph.graph))) {
-        if (graph[v].has_contracted_vertices()) {
-            vids += graph[v].id;
-        }
-    }
-    return vids;
-}
-
-/*! @brief vertices with at least one contracted vertex
-
-  @result The vids Identifiers with at least one contracted vertex
-*/
-template <typename G>
-std::vector<typename G::E> get_shortcuts(const G& graph) {
-    using E = typename G::E;
-    pgrouting::Identifiers<E> eids;
-    for (auto e : boost::make_iterator_range(boost::edges(graph.graph))) {
-        if (graph[e].id < 0) {
-            eids += e;
-            pgassert(!graph[e].contracted_vertices().empty());
-        } else {
-            pgassert(graph[e].contracted_vertices().empty());
-        }
-    }
-    std::vector<E> o_eids(eids.begin(), eids.end());
-    std::sort(o_eids.begin(), o_eids.end(),
-            [&](E lhs, E rhs) {return -graph[lhs].id < -graph[rhs].id;});
-    return o_eids;
-}
-
 
 template <typename G>
 void process_contraction(
@@ -115,8 +78,8 @@ void get_postgres_result(
         contracted_rt **return_tuples,
         size_t *count) {
     using pgrouting::pgr_alloc;
-    auto modified_vertices(get_modified_vertices(graph));
-    auto shortcut_edges(get_shortcuts(graph));
+    auto modified_vertices(graph.get_modified_vertices());
+    auto shortcut_edges(graph.get_shortcuts());
 
     (*count) = modified_vertices.size() + shortcut_edges.size();
     (*return_tuples) = pgr_alloc((*count), (*return_tuples));
