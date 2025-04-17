@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-11 20:19+0000\n"
+"POT-Creation-Date: 2025-04-17 19:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14996,6 +14996,14 @@ msgid ""
 "pgr_contraction"
 msgstr ""
 
+msgid "C/C++ code enhancements"
+msgstr ""
+
+msgid ""
+"`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__: Code "
+"factorization on pgr_contraction family"
+msgstr ""
+
 msgid "New proposed functions"
 msgstr ""
 
@@ -15311,9 +15319,6 @@ msgstr ""
 msgid ""
 "`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standardize "
 "output and modifying signature pgr_withPointsKSP"
-msgstr ""
-
-msgid "C/C++ code enhancements"
 msgstr ""
 
 msgid ""
