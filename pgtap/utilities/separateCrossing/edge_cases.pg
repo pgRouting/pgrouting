@@ -71,13 +71,13 @@ BEGIN
   -- set the source information
   UPDATE grid_r AS e
   SET source = rv.id
-  FROM rv
+  FROM tmp_rv rv
   WHERE ST_StartPoint(e.geom) = rv.geom;
 
   -- set the target information
   UPDATE grid_r AS e
   SET target = rv.id
-  FROM rv
+  FROM tmp_rv rv
   WHERE ST_EndPoint(e.geom) = rv.geom;
 
   -- se the dir
