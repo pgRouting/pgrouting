@@ -73,6 +73,8 @@ milestone for 3.8.0
 
   * [#2848](https://github.com/pgRouting/pgrouting/issues/2848):
     pgr_separateCrossing
+  * [#2849](https://github.com/pgRouting/pgrouting/issues/2849):
+    pgr_separateCrossing
 
 ## pgRouting 3.7
 
