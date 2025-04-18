@@ -16,8 +16,8 @@
 ``pgr_separateTouching``
 ===============================================================================
 
-``pgr_separateTouching`` - From crossing geometries generates geometries that
-do not cross.
+``pgr_separateTouching`` - From touching geometries generates geometries that
+are properly connected at endpoints
 
 .. rubric:: Availability
 
@@ -28,7 +28,9 @@ do not cross.
 Description
 -------------------------------------------------------------------------------
 
-This is an auxiliary function for separating crossing edges.
+This is an auxiliary function for processing geometries that touch but don't
+share exact endpoints, splitting them at their intersection points to improve
+network connectivity.
 
 Signature
 -------------------------------------------------------------------------------
