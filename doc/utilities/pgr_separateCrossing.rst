@@ -70,7 +70,7 @@ Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
-...............................................................................
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ================= =================== ===================================
 Column            Type                Description
@@ -86,7 +86,7 @@ Examples
    :local:
 
 Get the code for further refinement.
-...............................................................................
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 When there are special details that need to be taken care of because of the
 final application or the quality of the data, the code can be obtained On a
@@ -99,28 +99,20 @@ PostgreSQL ``NOTICE`` using the ``dryrun`` flag.
 .. fix_intersection_start
 
 Fixing an intersection
-...............................................................................
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 In this example the original edge table will be used to store the additional
 geometries.
 
-Create the topology for the data in :doc:`sampledata`
+.. rubric:: An example use without results
 
-.. literalinclude:: sampledata.queries
-   :start-after: -- q1
-   :end-before: -- q1-1
-
-.. literalinclude:: sampledata.queries
-   :start-after: -- q3
-   :end-before: -- q4
-
-Routing from :math:`1` to :math:`2` gives no solution.
+Routing from :math:`1` to :math:`18` gives no solution.
 
 .. literalinclude:: separateCrossing.queries
    :start-after: --q3
    :end-before: --q4
 
-Analyze the network for intersections.
+.. rubric:: Analyze the network for intersections.
 
 .. literalinclude:: separateCrossing.queries
    :start-after: --q4
@@ -128,6 +120,7 @@ Analyze the network for intersections.
 
 The analysis tell us that the network has an intersection.
 
+.. rubric:: Prepare tables
 
 Additional columns to control the origin of the segments.
 
@@ -135,16 +128,20 @@ Additional columns to control the origin of the segments.
    :start-after: --q5
    :end-before: --q6
 
-Calling :doc:`pgr_separateCrossing` and adding the new segments to the edges table.
+.. rubric:: Adding new segments.
+
+Calling :doc:`pgr_separateCrossing` and adding the new segments to the edges
+table.
 
 .. literalinclude:: separateCrossing.queries
    :start-after: --q6
    :end-before: --q7
 
-Update the cost and reverse_cost values.
+.. rubric:: Update other values
 
-In this example the costs are based on the length of the geometry and the
-directionality is kept using the ``sign`` function.
+In this example only ``cost`` and ``reverse_cost`` are updated, where they are
+based on the length of the geometry and the directionality is kept using the
+``sign`` function.
 
 .. literalinclude:: separateCrossing.queries
    :start-after: --q7
@@ -152,7 +149,7 @@ directionality is kept using the ``sign`` function.
 
 .. rubric:: Update the topology
 
-Insert the intersections as new vertices.
+Insert the new vertices if any.
 
 .. literalinclude:: separateCrossing.queries
    :start-after: --q8
@@ -163,6 +160,8 @@ Update source and target information on the edges table.
 .. literalinclude:: separateCrossing.queries
    :start-after: --q9
    :end-before: --q10
+
+.. rubric:: The example has results
 
 Routing from :math:`1` to :math:`18` gives a solution.
 
