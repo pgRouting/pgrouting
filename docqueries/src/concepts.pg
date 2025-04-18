@@ -75,76 +75,44 @@ FROM edges AS a, edges AS b
 WHERE a.id < b.id AND st_crosses(a.geom, b.geom);
 /* -- cross2 */
 
+/* -- touch1 */
+SELECT id, ST_AsText(geom)
+FROM edges where id IN (14,17);
+/* -- touch2 */
+
 
 /* -- connect2 */
 SELECT * FROM pgr_connectedComponents(
   'SELECT id, source, target, cost, reverse_cost FROM edges'
 );
 /* -- connect3 */
-ALTER TABLE vertices ADD COLUMN component BIGINT;
-ALTER TABLE edges ADD COLUMN component BIGINT;
+ALTER TABLE edges ADD old_id BIGINT;
+DROP TABLE vertices;
 /* -- connect4 */
-UPDATE vertices SET component = c.component
-FROM (SELECT * FROM pgr_connectedComponents(
-  'SELECT id, source, target, cost, reverse_cost FROM edges'
-)) AS c
-WHERE id = node;
+INSERT INTO edges (old_id, geom)
+SELECT id, geom FROM pgr_separateCrossing('SELECT * FROM edges')
+UNION
+SELECT id, geom FROM pgr_separateTouching('SELECT * FROM edges');
 /* -- connect5 */
-UPDATE edges SET component = v.component
-FROM (SELECT id, component FROM vertices) AS v
-WHERE source = v.id;
+CREATE TABLE vertices AS
+SELECT * FROM pgr_extractVertices('SELECT id, geom FROM edges');
 /* -- connect6 */
-SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges WHERE component = 1$$,
-  (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-  2) JOIN vertices USING (geom) ORDER BY distance LIMIT 1;
+/* -- set the source information */
+UPDATE edges AS e
+SET source = v.id, x1 = x, y1 = y
+FROM vertices AS v
+WHERE ST_StartPoint(e.geom) = v.geom;
+/* -- set the target information */
+UPDATE edges AS e
+SET target = v.id, x2 = x, y2 = y
+FROM vertices AS v
+WHERE ST_EndPoint(e.geom) = v.geom;
 /* -- connect7 */
-WITH
-info AS (
-  SELECT
-    edge_id, fraction, side, distance, ce.geom, edge, v.id AS closest,
-    source, target, capacity, reverse_capacity, e.geom AS e_geom
-  FROM pgr_findCloseEdges(
-    $$SELECT id, geom FROM edges WHERE component = 1$$,
-    (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-    2) AS ce
-  JOIN vertices AS v USING (geom)
-  JOIN edges AS e ON (edge_id = e.id)
-  ORDER BY distance LIMIT 1),
-three_options AS (
-  SELECT
-    closest AS source, target, 0 AS cost, 0 AS reverse_cost,
-    capacity, reverse_capacity,
-    ST_X(geom) AS x1, ST_Y(geom) AS y1,
-    ST_X(ST_EndPoint(e_geom)) AS x2, ST_Y(ST_EndPoint(e_geom)) AS y2,
-    ST_MakeLine(geom, ST_EndPoint(e_geom)) AS geom
-  FROM info
-  UNION
-  SELECT closest, source, 0, 0, capacity, reverse_capacity,
-    ST_X(geom) AS x1, ST_Y(geom) AS y1,
-    ST_X(ST_StartPoint(e_geom)) AS x2, ST_Y(ST_StartPoint(e_geom)) AS y2,
-    ST_MakeLine(info.geom, ST_StartPoint(e_geom))
-  FROM info
-  /*
-  UNION
-  -- This option requires splitting the edge
-  SELECT closest, NULL, 0, 0, capacity, reverse_capacity,
-    ST_X(geom) AS x1, ST_Y(geom) AS y1,
-    ST_X(ST_EndPoint(edge)) AS x2, ST_Y(ST_EndPoint(edge)) AS y2,
-    edge
-  FROM info */
-  )
-INSERT INTO edges
-  (source, target,
-    cost, reverse_cost,
-    capacity, reverse_capacity,
-    x1, y1, x2, y2,
-    geom)
-(SELECT
-    source, target, cost, reverse_cost, capacity, reverse_capacity,
-    x1, y1, x2, y2, geom
-  FROM three_options);
+UPDATE edges e
+  SET cost          = ST_length(e.geom)*sign(e1.cost),
+      reverse_cost  = ST_length(e.geom)*sign(e1.reverse_cost)
+FROM edges e1
+WHERE e.cost IS NULL AND e1.id = e.old_id;
 /* -- connect8 */
 SELECT * FROM pgr_connectedComponents(
   'SELECT id, source, target, cost, reverse_cost FROM edges'
