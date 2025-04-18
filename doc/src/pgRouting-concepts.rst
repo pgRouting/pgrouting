@@ -680,7 +680,7 @@ Visually the edges seem to be connected, but internally they are not.
 
 .. figure:: images/touching_edges.png
 
-The validity of the information is application dependant.
+The validity of the information is application dependent.
 
 - Maybe there is a small barrier for vehicles but not for pedestrians.
 
@@ -726,7 +726,7 @@ be used.
 .. rubric:: Prepare tables
 
 In this example: the edges table will need an additional column and the vertex
-table will be rebuild completelly.
+table will be rebuilt completely.
 
 .. literalinclude:: concepts.queries
    :start-after: -- connect3
@@ -757,7 +757,7 @@ Using :doc:`pgr_extractVertices` create the table.
 
 .. rubric:: Update other values
 
-In these example only ``cost`` and ``reverse_cost`` are updated, where they are
+In this example only ``cost`` and ``reverse_cost`` are updated, where they are
 based on the length of the geometry and the directionality is kept using the
 ``sign`` function.
 
