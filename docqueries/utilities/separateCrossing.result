@@ -72,11 +72,11 @@ WHERE e1.id < e2.id AND ST_Crosses(e1.geom, e2.geom);
 (1 row)
 
 /* --q5 */
-ALTER TABLE edges ADD old_id BIGINT, ADD sub_id BIGINT;
+ALTER TABLE edges ADD old_id BIGINT;
 ALTER TABLE
 /* --q6 */
-INSERT INTO edges (old_id, sub_id, geom)
-SELECT id, sub_id, geom
+INSERT INTO edges (old_id, geom)
+SELECT id, geom
 FROM pgr_separateCrossing('SELECT id, geom FROM edges');
 INSERT 0 4
 /* --q7 */
