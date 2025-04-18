@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-17 01:18+0000\n"
+"POT-Creation-Date: 2025-04-18 23:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4037,6 +4037,11 @@ msgid ""
 "pgr_separateCrossing"
 msgstr ""
 
+msgid ""
+"`#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__: "
+"pgr_separateTouching"
+msgstr ""
+
 msgid "All releases"
 msgstr ""
 
@@ -5822,10 +5827,10 @@ msgid ""
 "additional geometries."
 msgstr ""
 
-msgid "Create the topology for the data in :doc:`sampledata`"
+msgid "An example use without results"
 msgstr ""
 
-msgid "Routing from :math:`1` to :math:`2` gives no solution."
+msgid "Routing from :math:`1` to :math:`18` gives no solution."
 msgstr ""
 
 msgid "Analyze the network for intersections."
@@ -5834,7 +5839,13 @@ msgstr ""
 msgid "The analysis tell us that the network has an intersection."
 msgstr ""
 
+msgid "Prepare tables"
+msgstr ""
+
 msgid "Additional columns to control the origin of the segments."
+msgstr ""
+
+msgid "Adding new segments."
 msgstr ""
 
 msgid ""
@@ -5842,75 +5853,75 @@ msgid ""
 "edges table."
 msgstr ""
 
-msgid "Update the cost and reverse_cost values."
+msgid "Update other values"
 msgstr ""
 
 msgid ""
-"In this example the costs are based on the length of the geometry and the"
-" directionality is kept using the ``sign`` function."
+"In this example only ``cost`` and ``reverse_cost`` are updated, where "
+"they are based on the length of the geometry and the directionality is "
+"kept using the ``sign`` function."
 msgstr ""
 
 msgid "Update the topology"
 msgstr ""
 
-msgid "Insert the intersections as new vertices."
+msgid "Insert the new vertices if any."
 msgstr ""
 
 msgid "Update source and target information on the edges table."
 msgstr ""
 
+msgid "The example has results"
+msgstr ""
+
 msgid "Routing from :math:`1` to :math:`18` gives a solution."
 msgstr ""
 
-msgid "Disconnected graphs"
+msgid "Touching edges"
 msgstr ""
 
-msgid "To get the graph connectivity:"
+msgid "Visually the edges seem to be connected, but internally they are not."
 msgstr ""
 
-#, python-brace-format
-msgid ""
-"In this example, the component :math:`2` consists of vertices "
-":math:`\\{2, 4\\}` and both vertices are also part of the dead end result"
-" set."
+msgid "The validity of the information is application dependent."
 msgstr ""
 
-msgid "This graph needs to be connected."
+msgid "Maybe there is a small barrier for vehicles but not for pedestrians."
 msgstr ""
 
 msgid ""
-"With the original graph of this documentation, there would be 3 "
-"components as the crossing edge in this graph is a different component."
+"Once analyzed one by one the touchings, for the ones that need a local "
+"fix, the edges need to be `split "
+"<https://postgis.net/docs/ST_Split.html>`__."
 msgstr ""
 
-msgid "Prepare storage for connection information"
+msgid "Fixing a gap"
 msgstr ""
 
-msgid "Save the vertices connection information"
+msgid "Routing from :math:`1` to :math:`2` gives no solution."
 msgstr ""
 
-msgid "Save the edges connection information"
+msgid "Analyze the network for gaps."
 msgstr ""
 
-msgid "Get the closest vertex"
-msgstr ""
-
-msgid ""
-"Using :doc:`pgr_findCloseEdges` the closest vertex to component :math:`1`"
-" is vertex :math:`4`. And the closest edge to vertex :math:`4` is edge "
-":math:`14`."
+msgid "The analysis tell us that the network has a gap."
 msgstr ""
 
 msgid ""
-"The ``edge`` can be used to connect the components, using the "
-"``fraction`` information about the edge :math:`14` to split the "
-"connecting edge."
+"Calling :doc:`pgr_separateTouching` and adding the new segments to the "
+"edges table."
+msgstr ""
+
+msgid "Routing from :math:`1` to :math:`2` gives a solution."
 msgstr ""
 
 msgid "Connecting components"
 msgstr ""
 
-msgid "There are three basic ways to connect the components"
+msgid "To get the graph connectivity:"
+msgstr ""
+
+msgid "There are three basic ways to connect components:"
 msgstr ""
 
 msgid "From the vertex to the starting point of the edge"
@@ -5925,15 +5936,31 @@ msgstr ""
 msgid "This solution requires the edge to be split."
 msgstr ""
 
-msgid "The following query shows the three ways to connect the components:"
+msgid ""
+"In this example :doc:`pgr_separateCrossing` and "
+":doc:`pgr_separateTouching` will be used."
 msgstr ""
 
-msgid "Checking components"
+msgid "Get the connectivity"
 msgstr ""
 
 msgid ""
-"Ignoring the edge that requires further work. The graph is now fully "
-"connected as there is only one component."
+"In this example: the edges table will need an additional column and the "
+"vertex table will be rebuilt completely."
+msgstr ""
+
+msgid "Insert new edges"
+msgstr ""
+
+msgid ""
+"Using :doc:`pgr_separateCrossing` and :doc:`pgr_separateTouching` insert "
+"the results into the edges table."
+msgstr ""
+
+msgid "Create the vertices table"
+msgstr ""
+
+msgid "Using :doc:`pgr_extractVertices` create the table."
 msgstr ""
 
 msgid "Contraction of a graph"
@@ -10124,9 +10151,6 @@ msgstr ""
 msgid "Clean up the columns of the routing topology to be created"
 msgstr ""
 
-msgid "Create the vertices table"
-msgstr ""
-
 msgid ""
 "When the ``LINESTRING`` has a SRID then use ``geom::geometry(POINT, "
 "<SRID>)``"
@@ -13426,7 +13450,7 @@ msgstr ""
 msgid "Examples"
 msgstr ""
 
-msgid "Analyze the network for gaps."
+msgid "Create the topology for the data in :doc:`sampledata`"
 msgstr ""
 
 msgid "The analysis tell us that the network has a gap and an intersection."
@@ -13453,9 +13477,6 @@ msgid "Delete original edge."
 msgstr ""
 
 msgid "Update the vertex topology"
-msgstr ""
-
-msgid "Fixing a gap"
 msgstr ""
 
 msgid "Store the deadends"
@@ -13812,6 +13833,23 @@ msgid ""
 "When there are special details that need to be taken care of because of "
 "the final application or the quality of the data, the code can be "
 "obtained On a PostgreSQL ``NOTICE`` using the ``dryrun`` flag."
+msgstr ""
+
+msgid "``pgr_separateTouching``"
+msgstr ""
+
+msgid ""
+"``pgr_separateTouching`` - From touching geometries generates geometries "
+"that are properly connected at endpoints"
+msgstr ""
+
+msgid ""
+"This is an auxiliary function for processing geometries that touch but "
+"don't share exact endpoints, splitting them at their intersection points "
+"to improve network connectivity."
+msgstr ""
+
+msgid "pgr_separateTouching(`Edges SQL`_, [``tolerance``, ``dryrun``])"
 msgstr ""
 
 msgid "``pgr_sequentialVertexColoring`` - Proposed"
@@ -15418,6 +15456,11 @@ msgid ""
 msgstr ""
 
 msgid ":doc:`pgr_separateCrossing` - Breaks geometries that cross each other."
+msgstr ""
+
+msgid ""
+":doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each "
+"other."
 msgstr ""
 
 msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
