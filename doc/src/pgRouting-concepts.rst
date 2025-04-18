@@ -18,7 +18,7 @@ with pgRouting. This guide covers:
 
 .. contents::
     :local:
-    :depth: 1
+    :depth: 2
 
 Graphs
 -------------------------------------------------------------------------------
@@ -669,12 +669,36 @@ removed and the routing topology needs to be updated.
    :start-after: fix_intersection_start
    :end-before: fix_intersection_end
 
-Disconnected graphs
+Touching edges
+...............................................................................
+
+Visually the edges seem to be connected, but internally they are not.
+
+.. literalinclude:: concepts.queries
+   :start-after: -- touch1
+   :end-before: -- touch2
+
+.. figure:: images/touching_edges.png
+
+The validity of the information is application dependant.
+
+- Maybe there is a small barrier for vehicles but not for pedestrians.
+
+Once analyzed one by one the touchings, for the ones that need a local fix,
+the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__.
+
+The new edges need to be added to the edges table, the rest of the attributes
+need to be updated in the new edges, the old edges need to be
+removed and the routing topology needs to be updated.
+
+.. include:: pgr_separateTouching.rst
+   :start-after: fix_gap-start
+   :end-before: fix_gap-end
+
+Connecting components
 ...............................................................................
 
 .. connecting_graph_start
-
-.. disconnected_graph_start
 
 To get the graph connectivity:
 
@@ -682,55 +706,7 @@ To get the graph connectivity:
    :start-after: -- connect2
    :end-before: -- connect3
 
-In this example, the component :math:`2` consists of vertices :math:`\{2, 4\}`
-and both vertices are also part of the dead end result set.
-
-.. disconnected_graph_end
-
-This graph needs to be connected.
-
-.. Note::
-   With the original graph of this documentation, there would be 3 components as
-   the crossing edge in this graph is a different component.
-
-Prepare storage for connection information
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. literalinclude:: concepts.queries
-   :start-after: -- connect3
-   :end-before: -- connect4
-
-Save the vertices connection information
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. literalinclude:: concepts.queries
-   :start-after: -- connect4
-   :end-before: -- connect5
-
-Save the edges connection information
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. literalinclude:: concepts.queries
-   :start-after: -- connect5
-   :end-before: -- connect6
-
-Get the closest vertex
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Using :doc:`pgr_findCloseEdges` the closest vertex to component :math:`1` is
-vertex :math:`4`. And the closest edge to vertex :math:`4` is edge :math:`14`.
-
-.. literalinclude:: concepts.queries
-   :start-after: -- connect6
-   :end-before: -- connect7
-
-The ``edge`` can be used to connect the components, using the ``fraction``
-information about the edge :math:`14` to split the connecting edge.
-
-Connecting components
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-There are three basic ways to connect the components
+There are three basic ways to connect components:
 
 * From the vertex to the starting point of the edge
 * From the vertex to the ending point of the edge
@@ -738,17 +714,56 @@ There are three basic ways to connect the components
 
   * This solution requires the edge to be split.
 
-The following query shows the three ways to connect the components:
+In this example :doc:`pgr_separateCrossing` and :doc:`pgr_separateTouching` will
+be used.
+
+.. rubric:: Get the connectivity
+
+.. literalinclude:: concepts.queries
+   :start-after: -- connect2
+   :end-before: -- connect3
+
+.. rubric:: Prepare tables
+
+In this example: the edges table will need an additional column and the vertex
+table will be rebuild completelly.
+
+.. literalinclude:: concepts.queries
+   :start-after: -- connect3
+   :end-before: -- connect4
+
+.. rubric:: Insert new edges
+
+Using :doc:`pgr_separateCrossing` and :doc:`pgr_separateTouching` insert the
+results into the edges table.
+
+.. literalinclude:: concepts.queries
+   :start-after: -- connect4
+   :end-before: -- connect5
+
+.. rubric:: Create the vertices table
+
+Using :doc:`pgr_extractVertices` create the table.
+
+.. literalinclude:: concepts.queries
+   :start-after: -- connect5
+   :end-before: -- connect6
+
+.. rubric:: Update the topology
+
+.. literalinclude:: concepts.queries
+   :start-after: -- connect6
+   :end-before: -- connect7
+
+.. rubric:: Update other values
+
+In these example only ``cost`` and ``reverse_cost`` are updated, where they are
+based on the length of the geometry and the directionality is kept using the
+``sign`` function.
 
 .. literalinclude:: concepts.queries
    :start-after: -- connect7
    :end-before: -- connect8
-
-Checking components
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Ignoring the edge that requires further work. The graph is now fully connected
-as there is only one component.
 
 .. literalinclude:: concepts.queries
    :start-after: -- connect8
