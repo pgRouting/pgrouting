@@ -18,7 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN min_version('3.8.0') THEN plan(5) ELSE plan(4) END;
+SET client_min_messages = WARNING;
+SELECT plan(6);
 
 CREATE SCHEMA houses;
 
@@ -118,29 +119,46 @@ WHERE road_id = (
   ORDER BY ST_Distance(ipt.geom, rt.geom)
   limit 1);
 
-SELECT is((SELECT count(*)::INTEGER FROM houses.simplenet), 14+82, '96 rows');
+SELECT is((SELECT count(*)::INTEGER FROM houses.simplenet), 14+82, '82 more edges');
 
-CREATE OR REPLACE FUNCTION issue_test()
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
+SELECT pgr_nodenetwork('houses.simplenet', 0.001, 'id', 'geom');
 
-  IF NOT min_version('3.8.0') THEN
-    RETURN QUERY SELECT skip(1, 'pgr_separateTouching new on 3.8.0');
-    RETURN;
-  END IF;
+DROP TABLE IF EXISTS houses.vertices;
+SELECT *, NULL::BIGINT AS component
+INTO houses.vertices
+FROM pgr_extractVertices('SELECT id, geom AS geom FROM houses.simplenet_noded ORDER BY id');
 
-  CREATE TABLE i623_r AS
-  SELECT *
-  FROM pgr_separateTouching('SELECT id, geom FROM houses.simplenet');
+SELECT is((SELECT count(*)::INTEGER FROM houses.vertices), 188, '188 vertices');
 
+/* -- set the source information */
+UPDATE houses.simplenet_noded AS e
+SET source = v.id
+FROM houses.vertices AS v
+WHERE ST_StartPoint(e.geom) = v.geom;
+/* -- set the target information */
+UPDATE houses.simplenet_noded AS e
+SET target = v.id
+FROM houses.vertices AS v
+WHERE ST_EndPoint(e.geom) = v.geom;
 
-  RETURN QUERY
-  SELECT has_total_edges_vertices('i623_r', 102, 101);
-
+SELECT CASE
+WHEN min_version('3.8.0') THEN
+  is((SELECT count(*)::INTEGER FROM houses.simplenet_noded), 190, '190 edges')
+ELSE
+  is((SELECT count(*)::INTEGER FROM houses.simplenet_noded), 189, '189 edges')
 END;
-$BODY$ LANGUAGE plpgsql;
 
-SELECT issue_test();
+
+UPDATE houses.vertices SET component = c.component FROM (SELECT * FROM pgr_connectedComponents(
+  'SELECT id, source, target, 1 AS cost FROM houses.simplenet_noded'
+)) AS c WHERE id = node;
+
+ALTER TABLE houses.simplenet_noded ADD component BIGINT;
+UPDATE houses.simplenet_noded SET component = v.component
+FROM (SELECT id, component FROM houses.vertices) AS v
+WHERE source = v.id;
+
+SELECT is((SELECT count(DISTINCT component)::INTEGER FROM houses.simplenet_noded), 1, '1 component');
+
 SELECT finish();
 ROLLBACK;

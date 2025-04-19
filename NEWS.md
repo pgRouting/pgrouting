@@ -62,6 +62,11 @@ milestone for 3.8.0
 * [#2802](https://github.com/pgRouting/pgrouting/issues/2802):
   Code factorization on pgr_contraction family
 
+**SQL code enhancements**
+
+* [#2850](https://github.com/pgRouting/pgrouting/issues/2850):
+  Rewrite pgr_nodeNetwork
+
 **New proposed functions**
 
 * Contraction

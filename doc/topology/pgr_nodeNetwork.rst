@@ -36,6 +36,12 @@ edges into a new table.
 
 .. rubric:: Availability
 
+* Version 3.8.0
+
+  * Not checking and not creating indexes.
+  * Using ``pgr_separateTouching`` and ``pgr_separateCrossing``.
+  * Created table with ``BIGINT``.
+
 * Version 2.0.0
 
   * Official function.
@@ -78,8 +84,8 @@ The output table will have for ``edge_table_noded``
 :id: ``bigint`` Unique identifier for the table
 :old_id: ``bigint`` Identifier of the edge in original table
 :sub_id: ``integer`` Segment number of the original edge
-:source: ``integer`` Empty source column
-:target: ``integer`` Empty target column
+:source: ``bigint`` Empty source column
+:target: ``bigint`` Empty target column
 :the geom: ``geometry`` Geometry column of the noded network
 
 Examples
