@@ -21,9 +21,9 @@ NOTICE:
     ),
 
     get_touching AS (
-      SELECT e1.id id1, e2.id id2, st_snap(e1.geom, e2.geom, 0.01) AS geom, e1.geom AS g1, e2.geom AS g2
+      SELECT e1.id id1, e2.id id2, ST_Snap(e1.geom, e2.geom, 0.01) AS geom, e1.geom AS g1, e2.geom AS g2
       FROM edges_table e1, edges_table e2
-      WHERE e1.id != e2.id AND st_distance(e1.geom, e2.geom) < 0.01 AND NOT(
+      WHERE e1.id != e2.id AND ST_DWithin(e1.geom, e2.geom, 0.01) AND NOT(
         ST_StartPoint(e1.geom) = ST_StartPoint(e2.geom) OR ST_StartPoint(e1.geom) = ST_EndPoint(e2.geom)
         OR ST_EndPoint(e1.geom) = ST_StartPoint(e2.geom) OR ST_EndPoint(e1.geom) = ST_EndPoint(e2.geom))
     ),
