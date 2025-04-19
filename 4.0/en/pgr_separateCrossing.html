@@ -1,0 +1,518 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_separateCrossing &#8212; pgRouting Manual (4.0-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=798e95cd"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=1e711df0"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Traveling Sales Person - Family of functions" href="TSP-family.html" />
+    <link rel="prev" title="pgr_findCloseEdges" href="pgr_findCloseEdges.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_separateCrossing</span></code></a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signature">Signature</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#get-the-code-for-further-refinement">Get the code for further refinement.</a></li>
+<li><a class="reference internal" href="#fixing-an-intersection">Fixing an intersection</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_findCloseEdges.html" title="Previous Chapter: pgr_findCloseEdges"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_findCloseEdges</span>
+    </a>
+  </li>
+  <li>
+    <a href="TSP-family.html" title="Next Chapter: Traveling Sales Person - Family of functions"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Traveling Sal... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_separateCrossing</span></code></a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signature">Signature</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#get-the-code-for-further-refinement">Get the code for further refinement.</a></li>
+<li><a class="reference internal" href="#fixing-an-intersection">Fixing an intersection</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_findCloseEdges.html" title="Previous Chapter: pgr_findCloseEdges"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_findCloseEdges</span>
+    </a>
+  </li>
+  <li>
+    <a href="TSP-family.html" title="Next Chapter: Traveling Sales Person - Family of functions"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Traveling Sal... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('pgr_separateCrossing','en'));  </script>
+            
+  <div class="line-block" id="index-0">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-separatecrossing">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_separateCrossing</span></code><a class="headerlink" href="#pgr-separatecrossing" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_separateCrossing</span></code> - From crossing geometries generates geometries that
+do not cross.</p>
+<p class="rubric">Availability</p>
+<p class="rubric">Version 3.8.0</p>
+<ul class="simple">
+<li><p>New proposed function.</p></li>
+</ul>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>This is an auxiliary function for separating crossing edges.</p>
+</section>
+<section id="signature">
+<h2>Signature<a class="headerlink" href="#signature" title="Link to this heading">¶</a></h2>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_separateCrossing(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<code class="docutils literal notranslate"><span class="pre">tolerance</span></code>, <code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS <code class="docutils literal notranslate"><span class="pre">(seq,id,sub_id,geom)</span></code></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Get the segments of the crossing geometries</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">sub_id</span><span class="p">,</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">)</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">,</span> <span class="n">sub_id</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">sub_id</span> <span class="o">|</span>         <span class="n">st_astext</span>
+<span class="o">----+--------+---------------------------</span>
+ <span class="mi">13</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span><span class="mf">3.5</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="mi">13</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mf">3.5</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="mi">18</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mf">3.5</span> <span class="mf">2.3</span><span class="p">,</span><span class="mf">3.5</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="mi">18</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mf">3.5</span> <span class="mi">3</span><span class="p">,</span><span class="mf">3.5</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="optional-parameters">
+<h2>Optional parameters<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tolerance</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>0.01</p></td>
+<td><p>Used in ST_Snap before ST_Split</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dryrun</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><ul class="simple">
+<li><p>When true do not process and get in a
+NOTICE the resulting query.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inner-queries">
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>(Optional) identifier of the edge.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code></p></td>
+<td><p>Geometry of the edge.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#get-the-code-for-further-refinement" id="id1">Get the code for further refinement.</a></p></li>
+<li><p><a class="reference internal" href="#fixing-an-intersection" id="id2">Fixing an intersection</a></p></li>
+</ul>
+</nav>
+<section id="get-the-code-for-further-refinement">
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">Get the code for further refinement.</a><a class="headerlink" href="#get-the-code-for-further-refinement" title="Link to this heading">¶</a></h3>
+<p>When there are special details that need to be taken care of because of the
+final application or the quality of the data, the code can be obtained On a
+PostgreSQL <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> using the <code class="docutils literal notranslate"><span class="pre">dryrun</span></code> flag.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">,</span> <span class="n">dryrun</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>
+    <span class="n">WITH</span>
+        <span class="n">edges_table</span> <span class="n">AS</span> <span class="p">(</span>
+          <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">edges</span>
+        <span class="p">),</span>
+
+    <span class="n">get_crossings</span> <span class="n">AS</span> <span class="p">(</span>
+      <span class="n">SELECT</span> <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="n">id1</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span> <span class="n">id2</span><span class="p">,</span> <span class="n">e1</span><span class="o">.</span><span class="n">geom</span> <span class="n">AS</span> <span class="n">g1</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">geom</span> <span class="n">AS</span> <span class="n">g2</span><span class="p">,</span> <span class="n">ST_Intersection</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">point</span>
+      <span class="n">FROM</span> <span class="n">edges_table</span> <span class="n">e1</span><span class="p">,</span> <span class="n">edges_table</span> <span class="n">e2</span>
+      <span class="n">WHERE</span> <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="o">&lt;</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">ST_Crosses</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span>
+    <span class="p">),</span>
+
+    <span class="n">crossings</span> <span class="n">AS</span> <span class="p">(</span>
+      <span class="n">SELECT</span> <span class="n">id1</span><span class="p">,</span> <span class="n">g1</span><span class="p">,</span> <span class="n">point</span> <span class="n">FROM</span> <span class="n">get_crossings</span>
+      <span class="n">UNION</span>
+      <span class="n">SELECT</span> <span class="n">id2</span><span class="p">,</span> <span class="n">g2</span><span class="p">,</span> <span class="n">point</span> <span class="n">FROM</span> <span class="n">get_crossings</span>
+    <span class="p">),</span>
+
+    <span class="n">blades</span> <span class="n">AS</span> <span class="p">(</span>
+      <span class="n">SELECT</span> <span class="n">id1</span><span class="p">,</span> <span class="n">g1</span><span class="p">,</span> <span class="n">ST_UnaryUnion</span><span class="p">(</span><span class="n">ST_Collect</span><span class="p">(</span><span class="n">point</span><span class="p">))</span> <span class="n">AS</span> <span class="n">blade</span>
+      <span class="n">FROM</span> <span class="n">crossings</span>
+      <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">id1</span><span class="p">,</span> <span class="n">g1</span>
+    <span class="p">),</span>
+
+    <span class="n">collection</span> <span class="n">AS</span> <span class="p">(</span>
+      <span class="n">SELECT</span> <span class="n">id1</span><span class="p">,</span> <span class="p">(</span><span class="n">st_dump</span><span class="p">(</span><span class="n">st_split</span><span class="p">(</span><span class="n">st_snap</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">blade</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">blade</span><span class="p">)))</span><span class="o">.*</span>
+      <span class="n">FROM</span> <span class="n">blades</span>
+    <span class="p">)</span>
+
+    <span class="n">SELECT</span> <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span><span class="p">()::</span><span class="n">INTEGER</span> <span class="n">AS</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span><span class="p">::</span><span class="n">BIGINT</span><span class="p">,</span> <span class="n">path</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">geom</span>
+    <span class="n">FROM</span> <span class="n">collection</span><span class="p">;</span>
+    <span class="p">;</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">sub_id</span> <span class="o">|</span> <span class="n">geom</span>
+<span class="o">-----+----+--------+------</span>
+<span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="fixing-an-intersection">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Fixing an intersection</a><a class="headerlink" href="#fixing-an-intersection" title="Link to this heading">¶</a></h3>
+<p>In this example the original edge table will be used to store the additional
+geometries.</p>
+<p>Create the topology for the data in <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">17</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+<span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">target</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<p>Routing from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(2\)</span> gives no solution.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+<span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Analyze the network for intersections.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
+  <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="n">id1</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span> <span class="n">id2</span><span class="p">,</span>
+  <span class="n">ST_AsText</span><span class="p">(</span><span class="n">ST_Intersection</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">))</span> <span class="n">AS</span> <span class="n">point</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">e1</span><span class="p">,</span> <span class="n">edges</span> <span class="n">e2</span>
+<span class="n">WHERE</span> <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="o">&lt;</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">ST_Crosses</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">);</span>
+ <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span>    <span class="n">point</span>
+<span class="o">-----+-----+--------------</span>
+  <span class="mi">13</span> <span class="o">|</span>  <span class="mi">18</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mf">3.5</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The analysis tell us that the network has an intersection.</p>
+<p>Additional columns to control the origin of the segments.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">old_id</span> <span class="n">BIGINT</span><span class="p">,</span> <span class="n">ADD</span> <span class="n">sub_id</span> <span class="n">BIGINT</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<p>Calling <a class="reference internal" href="#"><span class="doc">pgr_separateCrossing</span></a> and adding the new segments to the edges table.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">sub_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">sub_id</span><span class="p">,</span> <span class="n">geom</span>
+<span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>Update the cost and reverse_cost values.</p>
+<p>In this example the costs are based on the length of the geometry and the
+directionality is kept using the <code class="docutils literal notranslate"><span class="pre">sign</span></code> function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">costs</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">sign</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">cost</span><span class="p">)</span> <span class="o">*</span> <span class="n">ST_Length</span><span class="p">(</span><span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">cost</span><span class="p">,</span>
+  <span class="n">sign</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">reverse_cost</span><span class="p">)</span> <span class="o">*</span> <span class="n">ST_Length</span><span class="p">(</span><span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">reverse_cost</span>
+  <span class="n">FROM</span> <span class="n">edges</span> <span class="n">e1</span> <span class="n">JOIN</span> <span class="n">edges</span> <span class="n">e2</span> <span class="n">ON</span> <span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">e2</span><span class="o">.</span><span class="n">old_id</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">cost</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">reverse_cost</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">costs</span> <span class="n">AS</span> <span class="n">c</span> <span class="n">WHERE</span> <span class="n">e</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p class="rubric">Update the topology</p>
+<p>Insert the intersections as new vertices.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">new_vertex</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="n">ev</span><span class="o">.*</span>
+  <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges WHERE old_id IS NOT NULL&#39;</span><span class="p">)</span> <span class="n">ev</span>
+  <span class="n">LEFT</span> <span class="n">JOIN</span> <span class="n">vertices</span> <span class="n">v</span> <span class="n">using</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+  <span class="n">WHERE</span> <span class="n">v</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">)</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">vertices</span> <span class="p">(</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">geom</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">geom</span> <span class="n">FROM</span> <span class="n">new_vertex</span><span class="p">;</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Update source and target information on the edges table.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">source</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">AND</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">4</span>
+<span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">target</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">target</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">AND</span> <span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>Routing from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(18\)</span> gives a solution.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">18</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">18</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">18</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">18</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">18</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>  <span class="mf">0.5</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">18</span> <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>      <span class="mf">4.5</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a> for an overview of a topology for routing algorithms.</p>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      Last updated on Apr 19, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

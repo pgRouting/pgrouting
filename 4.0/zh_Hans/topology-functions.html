@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=1eeba500"></script>
+    <script src="_static/page_history.js?v=1e711df0"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -96,7 +96,8 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Topology - 函数族</a><ul>
+<li><a class="reference internal" href="#">Topology - 函数族</a></li>
+<li><a class="reference internal" href="#utility-functions">Utility functions</a><ul>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
 </ul>
 </li>
@@ -144,7 +145,8 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Topology - 函数族</a><ul>
+<li><a class="reference internal" href="#">Topology - 函数族</a></li>
+<li><a class="reference internal" href="#utility-functions">Utility functions</a><ul>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
 </ul>
 </li>
@@ -180,17 +182,40 @@
 <p>以下函数直接修改数据库，因此用户必须具有管理员授予的特殊权限才能使用它们。</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> - 为无节点边表创建节点。</p></li>
+</ul>
+<div class="line-block" id="index-1">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="utility-functions">
+<h1>Utility functions<a class="headerlink" href="#utility-functions" title="Link to this heading">¶</a></h1>
+<ul class="simple">
 <li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - 根据边表信息提取顶点信息。</p></li>
+<li><p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> - Finds close edges of points on the fly</p></li>
 </ul>
-<p>pgRouting supplies some functions to create a routing topology and to analyze the
-topology.</p>
-<p>创建图表的附加函数：</p>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="c82c242b-894b-498a-b494-e58d06b8545a" name="c82c242b-894b-498a-b494-e58d06b8545a" type="checkbox"><label class="sphinx_collapse__label" for="c82c242b-894b-498a-b494-e58d06b8545a"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>下一版本的拟议功能。</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a></p></li>
+<li><p>它们并未正式出现在当前版本中。</p></li>
+<li><p>它们可能会正式成为下一个版本的一部分：</p>
+<ul>
+<li><p>这些函数使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
+<li><p>名字可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>签名可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>功能可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>pgTap 测试已经完成。 但可能需要更多。</p></li>
+<li><p>文档可能需要完善。</p></li>
 </ul>
-<p>用于分析图表的附加函数：</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <ul class="simple">
-<li><p><a class="reference internal" href="components-family.html"><span class="doc">分量 - 函数族</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> - Breaks geometries that cross each other.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -217,7 +242,7 @@ topology.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 17, 2025.<br/>
+      Last updated on 4月 19, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

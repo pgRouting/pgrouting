@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=798e95cd"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=1eeba500"></script>
+    <script src="_static/page_history.js?v=1e711df0"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -96,7 +96,8 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Topology - Family of Functions</a><ul>
+<li><a class="reference internal" href="#">Topology - Family of Functions</a></li>
+<li><a class="reference internal" href="#utility-functions">Utility functions</a><ul>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -144,7 +145,8 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Topology - Family of Functions</a><ul>
+<li><a class="reference internal" href="#">Topology - Family of Functions</a></li>
+<li><a class="reference internal" href="#utility-functions">Utility functions</a><ul>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -185,18 +187,41 @@ created.</p>
 have special permissions given by the administrators to use them.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> - to create nodes to a not noded edge table.</p></li>
+</ul>
+<div class="line-block" id="index-1">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="utility-functions">
+<h1>Utility functions<a class="headerlink" href="#utility-functions" title="Link to this heading">¶</a></h1>
+<ul class="simple">
 <li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - Extracts vertex information based on the edge
 table information.</p></li>
+<li><p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> - Finds close edges of points on the fly</p></li>
 </ul>
-<p>pgRouting supplies some functions to create a routing topology and to analyze the
-topology.</p>
-<p>Additional functions to create a graph:</p>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="989e9c3a-858f-4fee-b271-4e842a86d5fc" name="989e9c3a-858f-4fee-b271-4e842a86d5fc" type="checkbox"><label class="sphinx_collapse__label" for="989e9c3a-858f-4fee-b271-4e842a86d5fc"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Proposed functions for next mayor release.</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Family of functions</span></a></p></li>
+<li><p>They are not officially in the current release.</p></li>
+<li><p>They will likely officially be part of the next mayor release:</p>
+<ul>
+<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might not change. (But still can)</p></li>
+<li><p>Signature might not change. (But still can)</p></li>
+<li><p>Functionality might not change. (But still can)</p></li>
+<li><p>pgTap tests have being done. But might need more.</p></li>
+<li><p>Documentation might need refinement.</p></li>
 </ul>
-<p>Additional functions to analyze a graph:</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <ul class="simple">
-<li><p><a class="reference internal" href="components-family.html"><span class="doc">Components - Family of functions</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> - Breaks geometries that cross each other.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -223,7 +248,7 @@ topology.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Apr 17, 2025.<br/>
+      Last updated on Apr 19, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

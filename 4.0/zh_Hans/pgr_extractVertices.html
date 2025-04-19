@@ -16,12 +16,11 @@
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=1eeba500"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/page_history.js?v=1e711df0"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Traveling Sales Person - 函数族" href="TSP-family.html" />
+    <link rel="next" title="pgr_findCloseEdges" href="pgr_findCloseEdges.html" />
     <link rel="prev" title="pgr_nodeNetwork" href="pgr_nodeNetwork.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -123,21 +122,6 @@
 <li><a class="reference internal" href="#inspect-the-routing-topology">检查路由拓扑</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#crossing-edges">交叉边</a><ul>
-<li><a class="reference internal" href="#adding-split-edges">添加分割边</a></li>
-<li><a class="reference internal" href="#adding-new-vertices">添加新的顶点</a></li>
-<li><a class="reference internal" href="#updating-edges-topology">更新边拓扑</a></li>
-<li><a class="reference internal" href="#removing-the-surplus-edges">去除多余的边</a></li>
-<li><a class="reference internal" href="#updating-vertices-topology">更新顶点拓扑</a></li>
-<li><a class="reference internal" href="#checking-for-crossing-edges">检查交叉边</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#graphs-without-geometries">没有几何信息的图</a><ul>
-<li><a class="reference internal" href="#insert-the-data">插入数据</a></li>
-<li><a class="reference internal" href="#find-the-shortest-path">寻找最短路径</a></li>
-<li><a class="reference internal" href="#vertex-information">顶点信息</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
@@ -156,7 +140,7 @@
     </a>
   </li>
   <li>
-    <a href="TSP-family.html" title="Next Chapter: Traveling Sales Person - 函数族"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Traveling Sal... &raquo;</span>
+    <a href="pgr_findCloseEdges.html" title="Next Chapter: pgr_findCloseEdges"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_findCloseEdges &raquo;</span>
     </a>
   </li>
               
@@ -213,21 +197,6 @@
 <li><a class="reference internal" href="#inspect-the-routing-topology">检查路由拓扑</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#crossing-edges">交叉边</a><ul>
-<li><a class="reference internal" href="#adding-split-edges">添加分割边</a></li>
-<li><a class="reference internal" href="#adding-new-vertices">添加新的顶点</a></li>
-<li><a class="reference internal" href="#updating-edges-topology">更新边拓扑</a></li>
-<li><a class="reference internal" href="#removing-the-surplus-edges">去除多余的边</a></li>
-<li><a class="reference internal" href="#updating-vertices-topology">更新顶点拓扑</a></li>
-<li><a class="reference internal" href="#checking-for-crossing-edges">检查交叉边</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#graphs-without-geometries">没有几何信息的图</a><ul>
-<li><a class="reference internal" href="#insert-the-data">插入数据</a></li>
-<li><a class="reference internal" href="#find-the-shortest-path">寻找最短路径</a></li>
-<li><a class="reference internal" href="#vertex-information">顶点信息</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
@@ -240,7 +209,7 @@
     </a>
   </li>
   <li>
-    <a href="TSP-family.html" title="Next Chapter: Traveling Sales Person - 函数族"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Traveling Sal... &raquo;</span>
+    <a href="pgr_findCloseEdges.html" title="Next Chapter: pgr_findCloseEdges"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_findCloseEdges &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -285,7 +254,6 @@
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
-<p class="rubric">总结</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -293,7 +261,7 @@
 </div>
 <div class="line-block">
 <div class="line">RETURNS SETOF <code class="docutils literal notranslate"><span class="pre">(id,</span> <span class="pre">in_edges,</span> <span class="pre">out_edges,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">geom)</span></code></div>
-<div class="line">OR EMTPY SET</div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -548,23 +516,6 @@
 <li><p><a class="reference internal" href="#inspect-the-routing-topology" id="id14">检查路由拓扑</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#crossing-edges" id="id15">交叉边</a></p>
-<ul>
-<li><p><a class="reference internal" href="#adding-split-edges" id="id16">添加分割边</a></p></li>
-<li><p><a class="reference internal" href="#adding-new-vertices" id="id17">添加新的顶点</a></p></li>
-<li><p><a class="reference internal" href="#updating-edges-topology" id="id18">更新边拓扑</a></p></li>
-<li><p><a class="reference internal" href="#removing-the-surplus-edges" id="id19">去除多余的边</a></p></li>
-<li><p><a class="reference internal" href="#updating-vertices-topology" id="id20">更新顶点拓扑</a></p></li>
-<li><p><a class="reference internal" href="#checking-for-crossing-edges" id="id21">检查交叉边</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#graphs-without-geometries" id="id22">没有几何信息的图</a></p>
-<ul>
-<li><p><a class="reference internal" href="#insert-the-data" id="id23">插入数据</a></p></li>
-<li><p><a class="reference internal" href="#find-the-shortest-path" id="id24">寻找最短路径</a></p></li>
-<li><p><a class="reference internal" href="#vertex-information" id="id25">顶点信息</a></p></li>
-</ul>
-</li>
 </ul>
 </nav>
 <section id="dry-run-execution">
@@ -747,254 +698,6 @@
 </figure>
 </section>
 </section>
-<section id="crossing-edges">
-<h3><a class="toc-backref" href="#id15" role="doc-backlink">交叉边</a><a class="headerlink" href="#crossing-edges" title="Link to this heading">¶</a></h3>
-<p>要获取交叉边：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
-<span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">st_crosses</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">);</span>
- <span class="nb">id</span> <span class="o">|</span> <span class="nb">id</span>
-<span class="o">----+----</span>
- <span class="mi">13</span> <span class="o">|</span> <span class="mi">18</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<figure class="align-default">
-<img alt="_images/crossing_edges.png" src="_images/crossing_edges.png" />
-</figure>
-<p>这些信息是正确的，例如，就车辆而言，是隧道还是横跨另一条道路的桥梁。</p>
-<p>它可能是不正确的，例如：</p>
-<ol class="arabic simple">
-<li><p>当它实际上是道路交叉口时，车辆可以转弯。</p></li>
-<li><p>在电力线路方面，电力线能够在隧道或桥梁上甚至切换道路。</p></li>
-</ol>
-<p>当不正确时，需要修复：</p>
-<ol class="arabic simple">
-<li><p>对于车辆和行人</p>
-<ul class="simple">
-<li><p>如果数据来自 OSM 并使用 <code class="docutils literal notranslate"><span class="pre">osm2pgrouting</span></code> 导入到数据库，则需要在 <a class="reference external" href="https://www.openstreetmap.org">OSM portal</a> 中完成修复并再次导入数据。</p></li>
-<li><p>一般来说，当数据来自为车辆路线准备数据的供应商时，并且出现问题时，需要从供应商处修复数据</p></li>
-</ul>
-</li>
-<li><p>对于非常具体的应用</p>
-<ul class="simple">
-<li><p>从路线车辆或行人的角度来看，数据是正确的。</p></li>
-<li><p>数据需要针对特定应用程序进行本地修复。</p></li>
-</ul>
-</li>
-</ol>
-<p>对交叉点进行一一分析后，对于需要局部修复的交叉点，需要 <a class="reference external" href="https://postgis.net/docs/ST_Split.html">分割</a> 边。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_AsText</span><span class="p">((</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
-<span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">13</span> <span class="n">AND</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">18</span>
-<span class="n">UNION</span>
-<span class="n">SELECT</span> <span class="n">ST_AsText</span><span class="p">((</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
-<span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">13</span> <span class="n">AND</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span>
-         <span class="n">st_astext</span>
-<span class="o">---------------------------</span>
- <span class="n">LINESTRING</span><span class="p">(</span><span class="mf">3.5</span> <span class="mf">2.3</span><span class="p">,</span><span class="mf">3.5</span> <span class="mi">3</span><span class="p">)</span>
- <span class="n">LINESTRING</span><span class="p">(</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span><span class="mf">3.5</span> <span class="mi">3</span><span class="p">)</span>
- <span class="n">LINESTRING</span><span class="p">(</span><span class="mf">3.5</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">)</span>
- <span class="n">LINESTRING</span><span class="p">(</span><span class="mf">3.5</span> <span class="mi">3</span><span class="p">,</span><span class="mf">3.5</span> <span class="mi">4</span><span class="p">)</span>
-<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<p>需要将新边添加到边表中，需要更新新边中的其余属性，需要删除旧边并需要更新路由拓扑。</p>
-<section id="adding-split-edges">
-<h4><a class="toc-backref" href="#id16" role="doc-backlink">添加分割边</a><a class="headerlink" href="#adding-split-edges" title="Link to this heading">¶</a></h4>
-<p>对于每一对交叉边，必须执行与此类似的过程。</p>
-<p>插入的列和计算方式取决于应用程序。 例如，如果边具有特征 <strong>名称</strong> ，则将复制该列。</p>
-<p>用于 pgRouting 计算</p>
-<ul class="simple">
-<li><p>基于边相交位置的 <strong>因子</strong> 可用于调整 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 列。</p></li>
-<li><p>分割边时，在 <a class="reference internal" href="flow-family.html"><span class="doc">Flow - 函数族</span></a> 函数中使用的容量信息不需要改变。</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
-<span class="n">first_edge</span> <span class="n">AS</span> <span class="p">(</span>
-  <span class="n">SELECT</span> <span class="p">(</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="p">(</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span>
-    <span class="n">ST_LineLocatePoint</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span><span class="n">ST_Intersection</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span><span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">))</span> <span class="n">AS</span> <span class="n">factor</span>
-  <span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
-  <span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">13</span> <span class="n">AND</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">18</span><span class="p">),</span>
-<span class="n">first_segments</span> <span class="n">AS</span> <span class="p">(</span>
-  <span class="n">SELECT</span> <span class="n">path</span><span class="p">,</span> <span class="n">first_edge</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span>
-    <span class="n">capacity</span><span class="p">,</span> <span class="n">reverse_capacity</span><span class="p">,</span>
-    <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">path</span><span class="o">=</span><span class="mi">1</span> <span class="n">THEN</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">cost</span>
-         <span class="n">ELSE</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">factor</span><span class="p">)</span> <span class="o">*</span> <span class="n">cost</span> <span class="n">END</span> <span class="n">AS</span> <span class="n">cost</span><span class="p">,</span>
-    <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">path</span><span class="o">=</span><span class="mi">1</span> <span class="n">THEN</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">reverse_cost</span>
-         <span class="n">ELSE</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">factor</span><span class="p">)</span> <span class="o">*</span> <span class="n">reverse_cost</span> <span class="n">END</span> <span class="n">AS</span> <span class="n">reverse_cost</span>
-  <span class="n">FROM</span> <span class="n">first_edge</span> <span class="p">,</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">13</span><span class="p">),</span>
-<span class="n">second_edge</span> <span class="n">AS</span> <span class="p">(</span>
-  <span class="n">SELECT</span> <span class="p">(</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="p">(</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span>
-    <span class="n">ST_LineLocatePoint</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span><span class="n">ST_Intersection</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span><span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">))</span> <span class="n">AS</span> <span class="n">factor</span>
-  <span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
-  <span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">13</span> <span class="n">AND</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">18</span><span class="p">),</span>
-<span class="n">second_segments</span> <span class="n">AS</span> <span class="p">(</span>
-  <span class="n">SELECT</span> <span class="n">path</span><span class="p">,</span> <span class="n">second_edge</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span>
-    <span class="n">capacity</span><span class="p">,</span> <span class="n">reverse_capacity</span><span class="p">,</span>
-    <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">path</span><span class="o">=</span><span class="mi">1</span> <span class="n">THEN</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">cost</span>
-         <span class="n">ELSE</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">factor</span><span class="p">)</span> <span class="o">*</span> <span class="n">cost</span> <span class="n">END</span> <span class="n">AS</span> <span class="n">cost</span><span class="p">,</span>
-    <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">path</span><span class="o">=</span><span class="mi">1</span> <span class="n">THEN</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">reverse_cost</span>
-         <span class="n">ELSE</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">factor</span><span class="p">)</span> <span class="o">*</span> <span class="n">reverse_cost</span> <span class="n">END</span> <span class="n">AS</span> <span class="n">reverse_cost</span>
-  <span class="n">FROM</span> <span class="n">second_edge</span> <span class="p">,</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">18</span><span class="p">),</span>
-<span class="n">all_segments</span> <span class="n">AS</span> <span class="p">(</span>
-  <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">first_segments</span>
-  <span class="n">UNION</span>
-  <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">second_segments</span><span class="p">)</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span>
-  <span class="p">(</span><span class="n">capacity</span><span class="p">,</span> <span class="n">reverse_capacity</span><span class="p">,</span>
-    <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span>
-    <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span>
-    <span class="n">geom</span><span class="p">)</span>
-<span class="p">(</span><span class="n">SELECT</span> <span class="n">capacity</span><span class="p">,</span> <span class="n">reverse_capacity</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span>
-  <span class="n">ST_X</span><span class="p">(</span><span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)),</span> <span class="n">ST_Y</span><span class="p">(</span><span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)),</span>
-  <span class="n">ST_X</span><span class="p">(</span><span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)),</span> <span class="n">ST_Y</span><span class="p">(</span><span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)),</span>
-  <span class="n">geom</span>
-  <span class="n">FROM</span> <span class="n">all_segments</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">4</span>
-</pre></div>
-</div>
-</section>
-<section id="adding-new-vertices">
-<h4><a class="toc-backref" href="#id17" role="doc-backlink">添加新的顶点</a><a class="headerlink" href="#adding-new-vertices" title="Link to this heading">¶</a></h4>
-<p>添加应用程序所需的所有分割边后，需要将新创建的顶点添加到顶点表中。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">vertices</span> <span class="p">(</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
-<span class="p">(</span><span class="n">SELECT</span> <span class="n">nv</span><span class="o">.</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">out_edges</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">geom</span>
-<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">)</span> <span class="n">AS</span> <span class="n">nv</span>
-<span class="n">LEFT</span> <span class="n">JOIN</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">USING</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">WHERE</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
-</pre></div>
-</div>
-</section>
-<section id="updating-edges-topology">
-<h4><a class="toc-backref" href="#id18" role="doc-backlink">更新边拓扑</a><a class="headerlink" href="#updating-edges-topology" title="Link to this heading">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
-<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
-<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span>
-<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
-<span class="n">WHERE</span> <span class="n">source</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">AND</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
-<span class="n">UPDATE</span> <span class="mi">4</span>
-<span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">target</span> <span class="n">information</span> <span class="o">*/</span>
-<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
-<span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span>
-<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
-<span class="n">WHERE</span> <span class="n">target</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">AND</span> <span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
-<span class="n">UPDATE</span> <span class="mi">4</span>
-</pre></div>
-</div>
-</section>
-<section id="removing-the-surplus-edges">
-<h4><a class="toc-backref" href="#id19" role="doc-backlink">去除多余的边</a><a class="headerlink" href="#removing-the-surplus-edges" title="Link to this heading">¶</a></h4>
-<p>一旦应用程序所需的所有重要信息都已传输到新边，则可以删除交叉边。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
-<span class="n">DELETE</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<p>还有其他选项可以完成此任务，例如创建视图或物化视图。</p>
-</section>
-<section id="updating-vertices-topology">
-<h4><a class="toc-backref" href="#id20" role="doc-backlink">更新顶点拓扑</a><a class="headerlink" href="#updating-vertices-topology" title="Link to this heading">¶</a></h4>
-<p>为了保持图的一致性，需要更新顶点拓扑</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">SET</span>
-<span class="n">in_edges</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">out_edges</span>
-<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">))</span> <span class="n">AS</span> <span class="n">nv</span>
-<span class="n">WHERE</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
-<span class="n">UPDATE</span> <span class="mi">18</span>
-</pre></div>
-</div>
-</section>
-<section id="checking-for-crossing-edges">
-<h4><a class="toc-backref" href="#id21" role="doc-backlink">检查交叉边</a><a class="headerlink" href="#checking-for-crossing-edges" title="Link to this heading">¶</a></h4>
-<p>图上没有交叉边。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
-<span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">st_crosses</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">);</span>
- <span class="nb">id</span> <span class="o">|</span> <span class="nb">id</span>
-<span class="o">----+----</span>
-<span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
-</div>
-</section>
-</section>
-<section id="graphs-without-geometries">
-<h3><a class="toc-backref" href="#id22" role="doc-backlink">没有几何信息的图</a><a class="headerlink" href="#graphs-without-geometries" title="Link to this heading">¶</a></h3>
-<p>本示例使用此表设计：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wiki</span> <span class="p">(</span>
-  <span class="nb">id</span> <span class="n">SERIAL</span><span class="p">,</span>
-  <span class="n">source</span> <span class="n">INTEGER</span><span class="p">,</span>
-  <span class="n">target</span> <span class="n">INTEGER</span><span class="p">,</span>
-  <span class="n">cost</span> <span class="n">INTEGER</span><span class="p">);</span>
-<span class="n">CREATE</span> <span class="n">TABLE</span>
-</pre></div>
-</div>
-<section id="insert-the-data">
-<h4><a class="toc-backref" href="#id23" role="doc-backlink">插入数据</a><a class="headerlink" href="#insert-the-data" title="Link to this heading">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wiki</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span> <span class="n">VALUES</span>
-<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>  <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">9</span>
-</pre></div>
-</div>
-</section>
-<section id="find-the-shortest-path">
-<h4><a class="toc-backref" href="#id24" role="doc-backlink">寻找最短路径</a><a class="headerlink" href="#find-the-shortest-path" title="Link to this heading">¶</a></h4>
-<p>为了解决这个例子，使用了 <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra`</span></a>：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM wiki&#39;</span><span class="p">,</span>
-  <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>        <span class="mi">9</span>
-   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>       <span class="mi">11</span>
-   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>       <span class="mi">20</span>
-<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<p>从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(5\)</span> 的路径要经过以下顶点： <span class="math notranslate nohighlight">\(1 \rightarrow 3 \rightarrow 6 \rightarrow 5\)</span></p>
-<div class="graphviz"><img src="_images/graphviz-b8d11e7fcbeda9c107d77aca46bd54e9becbfde3.png" alt="graph G {
- rankdir=&quot;LR&quot;;
- 1 [color=&quot;red&quot;];
- 5 [color=&quot;green&quot;];
- 1 -- 2 [label=&quot;(7)&quot;];
- 5 -- 6 [label=&quot;(9)&quot;, color=&quot;blue&quot;];
- 1 -- 3 [label=&quot;(9)&quot;, color=&quot;blue&quot;];
- 1 -- 6 [label=&quot;(14)&quot;];
- 2 -- 3 [label=&quot;(10)&quot;];
- 2 -- 4 [label=&quot;(13)&quot;];
- 3 -- 4 [label=&quot;(11)&quot;];
- 3 -- 6 [label=&quot;(2)&quot;, color=&quot;blue&quot;];
- 4 -- 5 [label=&quot;(6)&quot;];
-}" class="graphviz" /></div>
-</section>
-<section id="vertex-information">
-<h4><a class="toc-backref" href="#id25" role="doc-backlink">顶点信息</a><a class="headerlink" href="#vertex-information" title="Link to this heading">¶</a></h4>
-<p>要获取顶点信息，请使用 <a class="reference internal" href="#"><span class="doc">pgr_extractVertices</span></a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
-<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target FROM wiki&#39;</span><span class="p">);</span>
- <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span>
-<span class="o">----+----------+-----------</span>
-  <span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>
-  <span class="mi">5</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">}</span>
-  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">}</span>
-  <span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">}</span>
-  <span class="mi">1</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>
-  <span class="mi">6</span> <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">}</span>  <span class="o">|</span>
-<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
-</div>
-</section>
-</section>
 </section>
 <section id="see-also">
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
@@ -1022,7 +725,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 17, 2025.<br/>
+      Last updated on 4月 19, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
