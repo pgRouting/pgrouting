@@ -44,29 +44,24 @@ DECLARE
   /*
    * Author: Nicolas Ribot, 2013 ; Adrien Berchet, 2020
   */
-  edge_table TEXT := $1;
-  tolerance TEXT := $2;
-  p_num int := 0;
-  p_ret TEXT := '';
-  pgis_ver_old BOOLEAN := _pgr_versionless(postgis_lib_version(), '2.1.0.0');
-  vst_line_substring TEXT;
-  vst_line_locate_point TEXT;
-  intab TEXT;
-  outtab TEXT;
-  n_pkey TEXT;
-  n_geom TEXT;
-  naming record;
-  sname TEXT;
-  tname TEXT;
-  outname TEXT;
-  srid INTEGER;
+  sname TEXT;  -- schema of tables
+  tname TEXT;  -- in table name
+  oname TEXT;  -- out table name
+
   sridinfo record;
-  splits BIGINT;
-  touched BIGINT;
-  untouched BIGINT;
+  splits BIGINT := 0;
+  touched BIGINT := 0;
+  untouched BIGINT := 0;
   geomtype TEXT;
   debuglevel TEXT;
   rows_where_out TEXT;
+
+  the_query TEXT;
+  the_out_query TEXT;
+  the_table TEXT[];
+  sqlhint TEXT;
+  out_table_exists BOOLEAN;
+
 BEGIN
   RAISE NOTICE 'PROCESSING:';
   RAISE NOTICE 'id: %', id;
@@ -75,121 +70,107 @@ BEGIN
   RAISE NOTICE 'rows_where: %', rows_where;
   RAISE NOTICE 'outall: %', outall;
   RAISE NOTICE 'pgr_nodeNetwork(''%'', %, ''%'', ''%'', ''%'', ''%'',  %)',
-    edge_table, tolerance, id,  the_geom, table_ending, rows_where, outall;
+    $1, $2, id,  the_geom, table_ending, rows_where, outall;
   RAISE NOTICE 'Performing checks, please wait .....';
   EXECUTE 'SHOW client_min_messages' INTO debuglevel;
 
-  BEGIN
-    RAISE DEBUG 'Checking % exists',edge_table;
-    EXECUTE 'SELECT sname, tname FROM _pgr_getTableName('||quote_literal(edge_table)||',0)' INTO naming;
-    sname=naming.sname;
-    tname=naming.tname;
-    IF sname IS NULL OR tname IS NULL THEN
-    RAISE NOTICE '-------> % NOT found',edge_table;
-      RETURN 'FAIL';
-    ELSE
-      RAISE DEBUG '  -----> OK';
-    END IF;
+  the_table := parse_ident($1);
 
-    intab=sname||'.'||tname;
-    outname=tname||'_'||table_ending;
-    outtab= sname||'.'||outname;
-    rows_where_out = CASE WHEN length(rows_where) > 2 AND NOT outall THEN ' AND (' || rows_where || ')' ELSE '' END;
-    rows_where = CASE WHEN length(rows_where) > 2 THEN ' WHERE (' || rows_where || ')' ELSE '' END;
-  END;
-
-  BEGIN
-    RAISE DEBUG 'Checking id column "%" columns IN  % ',id,intab;
-    EXECUTE 'SELECT _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(id)||')' INTO n_pkey;
-    IF n_pkey is NULL THEN
-      RAISE NOTICE  'ERROR: id column "%"  NOT found IN %',id,intab;
-      RETURN 'FAIL';
-    END IF;
-  END;
-
-  BEGIN
-    RAISE DEBUG 'Checking id column "%" columns IN  % ',the_geom,intab;
-    EXECUTE 'SELECT _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(the_geom)||')' INTO n_geom;
-    IF n_geom is NULL THEN
-      RAISE NOTICE  'ERROR: the_geom  column "%"  NOT found IN %',the_geom,intab;
-      RETURN 'FAIL';
-    END IF;
-  END;
-
-  IF n_pkey=n_geom THEN
-    RAISE NOTICE  'ERROR: id AND the_geom columns have the same name "%" IN %',n_pkey,intab;
-    RETURN 'FAIL';
+  IF array_length(the_table,1) = 1 THEN
+    the_table[2] := the_table[1];
+    the_table[1] := (SELECT current_schema);
   END IF;
 
+  sname := the_table[1];
+  tname := the_table[2];
+  oname := the_table[2] || '_' || table_ending;
+
+  rows_where_out = CASE WHEN length(rows_where) > 2 AND NOT outall THEN ' AND (' || rows_where || ')' ELSE '' END;
+  rows_where = CASE WHEN length(rows_where) > 2 THEN rows_where ELSE 'true' END;
+
+  -- building query
   BEGIN
-    RAISE DEBUG 'Checking the SRID of the geometry "%"', n_geom;
-    EXECUTE 'SELECT ST_SRID(' || quote_ident(n_geom) || ') AS srid '
-        || ' FROM ' || _pgr_quote_ident(intab)
-        || ' WHERE ' || quote_ident(n_geom)
-        || ' IS NOT NULL LIMIT 1' INTO sridinfo;
-    IF sridinfo IS NULL OR sridinfo.srid IS NULL THEN
-      RAISE NOTICE 'ERROR: Can NOT determine the srid of the geometry "%" IN table %', n_geom,intab;
+    the_query := format(
+      $$
+      SELECT %s AS id, %s AS the_geom, ST_SRID(%s) AS srid FROM %I.%I WHERE (%s)
+      $$,
+      id, the_geom, the_geom, sname, tname, rows_where);
+    RAISE DEBUG 'Checking: %',the_query;
+    the_query := _pgr_checkQuery(the_query);
+
+    EXECUTE format($$SELECT geometrytype(%s) FROM %I.%I limit 1$$, the_geom, sname, tname) INTO geomtype;
+    IF geomtype IS NULL THEN
+      RAISE WARNING '-------> Table %.% must contain invalid geometries',sname, tname;
       RETURN 'FAIL';
     END IF;
-    srid := sridinfo.srid;
-    RAISE DEBUG '  -----> SRID found %',srid;
+
     EXCEPTION WHEN OTHERS THEN
-      RAISE NOTICE 'ERROR: Can NOT determine the srid of the geometry "%" IN table %', n_geom,intab;
+      GET STACKED DIAGNOSTICS sqlhint = PG_EXCEPTION_HINT;
+      RAISE EXCEPTION '%', SQLERRM USING HINT = sqlhint, ERRCODE = SQLSTATE;
+  END;
+
+  -- checking query columns
+  BEGIN
+    RAISE DEBUG 'Checking %', $1;
+
+    IF NOT _pgr_checkColumn(the_query, 'id', 'ANY-INTEGER', true) THEN
+      RAISE NOTICE  'ERROR: id column "%"  NOT found IN %.%', id, sname, tname;
+      RETURN 'FAIL';
+    END IF;
+
+    IF NOT _pgr_checkColumn(the_query, 'the_geom', 'geometry', true) THEN
+      RAISE NOTICE  'ERROR: the_geom  column "%"  NOT found IN %.%', the_geom, sname, tname;
+      RETURN 'FAIL';
+    END IF;
+
+    EXECUTE the_query || ' LIMIT 1' INTO sridinfo;
+
+    IF sridinfo IS NULL OR sridinfo.srid IS NULL THEN
+      RAISE NOTICE 'ERROR: Can NOT determine the srid of the geometry "%" IN table %.%', the_geom, sname, tname;
+      RETURN 'FAIL';
+    END IF;
+    RAISE DEBUG '  -----> SRID found %', sridinfo.srid;
+    EXCEPTION WHEN OTHERS THEN
+      RAISE NOTICE 'ERROR: Can NOT determine the srid of the geometry "%" IN table %.%', the_geom, sname, tname;
       RETURN 'FAIL';
   END;
 
+---------------
+  -- building query to check if table_noded exists
   BEGIN
-    RAISE DEBUG 'Checking "%" column IN % is indexed',n_pkey,intab;
-    IF (_pgr_isColumnIndexed(intab,n_pkey)) THEN
-      RAISE DEBUG '  ------>OK';
-    ELSE
-      RAISE DEBUG ' ------> Adding  index "%_%_idx".',n_pkey,intab;
+    the_out_query := format(
+      $$
+      SELECT id, old_id, sub_id, source, target, %s FROM %I.%I LIMIT 1
+      $$,
+      the_geom, sname, oname);
 
-      SET client_min_messages TO warning;
-      EXECUTE 'CREATE INDEX '||tname||'_'||n_pkey||'_idx ON '||_pgr_quote_ident(intab)||' USING btree('||quote_ident(n_pkey)||')';
-      EXECUTE 'SET client_min_messages TO '|| debuglevel;
-    END IF;
-  END;
+    the_out_query := _pgr_checkQuery(the_out_query);
+    out_table_exists := true;
 
-  BEGIN
-    RAISE DEBUG 'Checking "%" column IN % is indexed',n_geom,intab;
-    IF (_pgr_iscolumnindexed(intab,n_geom)) THEN
-      RAISE DEBUG '  ------>OK';
-    ELSE
-      RAISE DEBUG ' ------> Adding unique index "%_%_gidx".',intab,n_geom;
-      SET client_min_messages TO warning;
-      EXECUTE 'CREATE INDEX '
-        || quote_ident(tname || '_' || n_geom || '_gidx' )
-        || ' ON ' || _pgr_quote_ident(intab)
-        || ' USING gist (' || quote_ident(n_geom) || ')';
-      EXECUTE 'SET client_min_messages  TO '|| debuglevel;
-    END IF;
+    EXCEPTION WHEN OTHERS THEN
+      out_table_exists := false;
   END;
 
 ---------------
   BEGIN
-    RAISE DEBUG 'initializing %', outtab;
-    EXECUTE 'SELECT sname, tname FROM _pgr_getTableName('||quote_literal(outtab)||',0)' INTO naming;
-    IF sname=naming.sname  AND outname=naming.tname  THEN
-      EXECUTE 'TRUNCATE TABLE '||_pgr_quote_ident(outtab)||' RESTART IDENTITY';
-      EXECUTE 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(outname)||','||quote_literal(n_geom)||')';
+    RAISE DEBUG 'initializing %.%', sname, oname;
+    IF out_table_exists THEN
+      EXECUTE format(
+        $$TRUNCATE TABLE %I.%I RESTART IDENTITY$$,
+        sname, oname);
     ELSE
       SET client_min_messages TO warning;
-      EXECUTE 'CREATE TABLE '||_pgr_quote_ident(outtab)||' (
+      EXECUTE format('CREATE TABLE %I.%I (
         id bigserial PRIMARY KEY,
-        old_id INTEGER,
+        old_id BIGINT,
         sub_id INTEGER,
         source BIGINT,
-        target BIGINT)';
-    END IF;
-    EXECUTE 'SELECT geometrytype('||quote_ident(n_geom)||') FROM '||_pgr_quote_ident(intab)||' limit 1' INTO geomtype;
-    IF geomtype IS NULL THEN
-      RAISE NOTICE '-------> Table %.% must contain invalid geometries',sname, tname;
-      RETURN 'FAIL';
-    ELSE
+        target BIGINT)',
+        sname, oname);
       RAISE DEBUG '  ------> Create geometry column of type %', geomtype;
-      EXECUTE 'SELECT addGeometryColumn('||quote_literal(sname)||','||quote_literal(outname)||','||quote_literal(n_geom)||','|| srid||', '||quote_literal(geomtype)||', 2)';
-      EXECUTE 'CREATE INDEX '||quote_ident(outname||'_'||n_geom||'_idx')||' ON '||_pgr_quote_ident(outtab)||' USING GIST ('||quote_ident(n_geom)||')';
+      EXECUTE format($$
+        SELECT addGeometryColumn('%I', '%I', '%I', %s, %L, 2)$$,
+        sname, oname, the_geom, sridinfo.srid, geomtype);
       EXECUTE 'SET client_min_messages TO '|| debuglevel;
       RAISE DEBUG '  ------>OK';
     END IF;
@@ -198,102 +179,50 @@ BEGIN
 
   RAISE NOTICE 'Processing, please wait .....';
 
-  if pgis_ver_old THEN
-    vst_line_substring    := 'st_line_substring';
-    vst_line_locate_point := 'st_line_locate_point';
-  ELSE
-    vst_line_substring    := 'st_linesubstring';
-    vst_line_locate_point := 'st_linelocatepoint';
-  END IF;
 
-  -- First creates temp table with intersection points
-  p_ret = 'CREATE TEMP TABLE intergeom ON COMMIT DROP AS (
-    SELECT l1.' || quote_ident(n_pkey) || ' AS l1id,
-         l2.' || quote_ident(n_pkey) || ' AS l2id,
-         l1.' || quote_ident(n_geom) || ' AS line,
-         _pgr_startpoint(l2.' || quote_ident(n_geom) || ') AS source,
-         _pgr_endpoint(l2.' || quote_ident(n_geom) || ') AS target,
-         st_closestPoint(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') AS geom
-    FROM (SELECT ' || quote_ident(n_pkey) ||','|| quote_ident(n_geom) || ' FROM ' || _pgr_quote_ident(intab) || rows_where || ') AS l1
-    JOIN (SELECT ' || quote_ident(n_pkey) ||','|| quote_ident(n_geom) || ' FROM ' || _pgr_quote_ident(intab) || rows_where || ') AS l2
-    ON (st_dwithin(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ', ' || tolerance || '))'||
-    'WHERE l1.' || quote_ident(n_pkey) || ' <> l2.' || quote_ident(n_pkey)||' AND
-    st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false AND
-    st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_endpoint(l2.' || quote_ident(n_geom) || '))=false AND
-    st_equals(_pgr_endpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false AND
-    st_equals(_pgr_endpoint(l1.' || quote_ident(n_geom) || '),_pgr_endpoint(l2.' || quote_ident(n_geom) || '))=false )';
-  RAISE DEBUG '%', p_ret;
-  EXECUTE p_ret;
+  EXECUTE format(
+    $$
+      INSERT INTO %2$I.%3$I (old_id, sub_id, %4$I)
+      SELECT id, sub_id, geom FROM pgr_separateCrossing(replace('%1$s', 'AS the_geom', 'AS geom'), %5$s)
+      UNION
+      SELECT id, sub_id, geom FROM pgr_separateTouching(replace('%1$s', 'AS the_geom', 'AS geom'), %5$s)
+    $$,
+    the_query, sname, oname, the_geom, $2);
 
-  -- second temp table with locus (index of intersection point on the line)
-  -- to avoid updating the previous table
-  -- we keep only intersection points occurring onto the line, not at one of its ends
-  -- drop table if exists inter_loc;
-  p_ret= 'CREATE TEMP TABLE inter_loc ON COMMIT DROP AS (
-    SELECT l1id, l2id, ' || vst_line_locate_point || '(line,point) AS locus FROM (
-    SELECT DISTINCT l1id, l2id, line, (ST_DumpPoints(geom)).geom AS point FROM intergeom) AS foo
-    WHERE ' || vst_line_locate_point || '(line,point)<>0 and ' || vst_line_locate_point || '(line,point)<>1)';
-  RAISE DEBUG '%',p_ret;
-  EXECUTE p_ret;
-
-  -- index on l1id
-  CREATE INDEX inter_loc_id_idx ON inter_loc(l1id);
-
-  -- Then computes the intersection on the lines subset, which is much smaller than full set
-  -- as there are very few intersection points
-
-  --- outab needs to be formally created with id, old_id, subid,the_geom, source,target
-
-  P_RET = 'INSERT INTO '||_pgr_quote_ident(outtab)||' (old_id,sub_id,'||quote_ident(n_geom)||') (  WITH cut_locations AS
-  (
-    SELECT l1id AS lid, locus
-    FROM inter_loc
-    -- then generates start AND end locus for each line that have to be cut buy a location point
-    UNION ALL
-    SELECT DISTINCT i.l1id  AS lid, 0 AS locus
-    FROM inter_loc i LEFT JOIN ' || _pgr_quote_ident(intab) || ' b ON (i.l1id = b.' || quote_ident(n_pkey) || ')
-    UNION ALL
-    SELECT DISTINCT i.l1id  AS lid, 1 AS locus
-    FROM inter_loc i LEFT JOIN ' || _pgr_quote_ident(intab) || ' b ON (i.l1id = b.' || quote_ident(n_pkey) || ')
-    ORDER BY lid, locus
-  ),
-  -- we generate a row_number index column for each input line
-  -- to be able to self-join the table to cut a line between two consecutive locations
-  loc_with_idx AS (
-    SELECT lid, locus, row_number() OVER (PARTITION BY lid ORDER BY locus) AS idx
-    FROM cut_locations
-  )
-  -- finally, each original line is cut with consecutive locations using linear referencing functions
-  SELECT l.' || quote_ident(n_pkey) || ', loc1.idx AS sub_id, ' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus) AS ' || quote_ident(n_geom) || '
-  FROM loc_with_idx loc1 JOIN loc_with_idx loc2 USING (lid) JOIN ' || _pgr_quote_ident(intab) || ' l ON (l.' || quote_ident(n_pkey) || ' = loc1.lid)
-  WHERE loc2.idx = loc1.idx+1
-    -- keeps only linestring geometries
-    AND geometryType(' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus)) = ''LINESTRING'') ';
-  RAISE DEBUG  '%',p_ret;
-  EXECUTE p_ret;
   GET DIAGNOSTICS splits = ROW_COUNT;
-    EXECUTE 'WITH diff AS (SELECT DISTINCT old_id FROM '||_pgr_quote_ident(outtab)||' )
-         SELECT count(*) FROM diff' INTO touched;
+
+  EXECUTE format(
+    $$
+    WITH diff AS (SELECT DISTINCT old_id FROM %I.%I)
+    SELECT count(*) FROM diff
+    $$,
+    sname, oname) INTO touched;
+
   -- here, it misses all original line that did not need to be cut by intersection points: these lines
   -- are already clean
   -- inserts them in the final result: all lines which gid is not in the res table.
-  EXECUTE 'INSERT INTO ' || _pgr_quote_ident(outtab) || ' (old_id , sub_id, ' || quote_ident(n_geom) || ')
-    ( WITH used AS (SELECT DISTINCT old_id FROM '|| _pgr_quote_ident(outtab)||')
-    SELECT ' ||  quote_ident(n_pkey) || ', 1 AS sub_id, ' ||  quote_ident(n_geom) ||
-    ' FROM '|| _pgr_quote_ident(intab) ||' WHERE  '||quote_ident(n_pkey)||' NOT IN (SELECT old_id FROM used)' || rows_where_out || ')';
+  EXECUTE format(
+    $$
+      INSERT INTO %2$I.%3$I (old_id , sub_id, %5$I) (
+        WITH
+        original AS (%1$s),
+        used AS (SELECT DISTINCT old_id FROM %2$I.%3$I)
+        SELECT id, 1 AS sub_id, the_geom
+        FROM original
+        WHERE id NOT IN (SELECT old_id FROM used) %4$s)
+    $$,
+  the_query, sname, oname, rows_where_out, the_geom);
   GET DIAGNOSTICS untouched = ROW_COUNT;
 
   RAISE NOTICE '  Split Edges: %', touched;
   RAISE NOTICE ' Untouched Edges: %', untouched;
   RAISE NOTICE '     Total original Edges: %', touched+untouched;
-    RAISE NOTICE ' Edges generated: %', splits;
+  RAISE NOTICE ' Edges generated: %', splits;
   RAISE NOTICE ' Untouched Edges: %',untouched;
   RAISE NOTICE '       Total New segments: %', splits+untouched;
-    RAISE NOTICE ' New Table: %', outtab;
-    RAISE NOTICE '----------------------------------';
+  RAISE NOTICE ' New Table: %.%', sname, oname;
+  RAISE NOTICE '----------------------------------';
 
-  DROP TABLE IF EXISTS intergeom;
-  DROP TABLE IF EXISTS inter_loc;
   RETURN 'OK';
 END;
 $BODY$ LANGUAGE 'plpgsql' VOLATILE STRICT COST 100;
