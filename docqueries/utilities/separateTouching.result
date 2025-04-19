@@ -31,7 +31,10 @@ NOTICE:
     touchings AS (
       SELECT  id1, g1, g2, st_intersection(geom, g2) AS point
       FROM get_touching
-      WHERE  NOT (geom = g1)
+      WHERE  NOT (geom = g1) OR
+         (ST_touches(g1, g2) AND NOT
+            (ST_Intersection(geom, g2) = ST_StartPoint(g1)
+             OR ST_Intersection(geom, g2) = ST_EndPoint(g1)))
     ),
 
     blades AS (
