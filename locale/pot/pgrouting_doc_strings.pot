@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-17 19:59+0000\n"
+"POT-Creation-Date: 2025-04-19 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3457,16 +3457,16 @@ msgstr ""
 msgid ":doc:`pgr_nodeNetwork` - to create nodes to a not noded edge table."
 msgstr ""
 
-msgid ":doc:`pgr_extractVertices` - Extracts vertex information based on the edge table information."
-msgstr ""
-
 msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
 msgstr ""
 
-msgid "Utilities family"
+msgid "Utilities"
 msgstr ""
 
-msgid ":doc:`pgr_findCloseEdges`"
+msgid ":doc:`pgr_extractVertices` - Extracts vertex information based on the edge table information."
+msgstr ""
+
+msgid ":doc:`pgr_findCloseEdges` - Finds close edges of points on the fly"
 msgstr ""
 
 msgid "Functions by categories"
@@ -5188,52 +5188,46 @@ msgstr ""
 msgid "The new edges need to be added to the edges table, the rest of the attributes need to be updated in the new edges, the old edges need to be removed and the routing topology needs to be updated."
 msgstr ""
 
-msgid "Adding split edges"
+msgid "Fixing an intersection"
 msgstr ""
 
-msgid "For each pair of crossing edges a process similar to this one must be performed."
+msgid "In this example the original edge table will be used to store the additional geometries."
 msgstr ""
 
-msgid "The columns inserted and the way are calculated are based on the application. For example, if the edges have a trait **name**, then that column is to be copied."
+msgid "Create the topology for the data in :doc:`sampledata`"
 msgstr ""
 
-msgid "For pgRouting calculations"
+msgid "Routing from :math:`1` to :math:`2` gives no solution."
 msgstr ""
 
-msgid "**factor** based on the position of the intersection of the edges can be used to adjust the ``cost`` and ``reverse_cost`` columns."
+msgid "Analyze the network for intersections."
 msgstr ""
 
-msgid "Capacity information, used in the :doc:`flow-family` functions does not need to change when splitting edges."
+msgid "The analysis tell us that the network has an intersection."
 msgstr ""
 
-msgid "Adding new vertices"
+msgid "Additional columns to control the origin of the segments."
 msgstr ""
 
-msgid "After adding all the split edges required by the application, the newly created vertices need to be added to the vertices table."
+msgid "Calling :doc:`pgr_separateCrossing` and adding the new segments to the edges table."
 msgstr ""
 
-msgid "Updating edges topology"
+msgid "Update the cost and reverse_cost values."
 msgstr ""
 
-msgid "Removing the surplus edges"
+msgid "In this example the costs are based on the length of the geometry and the directionality is kept using the ``sign`` function."
 msgstr ""
 
-msgid "Once all significant information needed by the application has been transported to the new edges, then the crossing edges can be deleted."
+msgid "Update the topology"
 msgstr ""
 
-msgid "There are other options to do this task, like creating a view, or a materialized view."
+msgid "Insert the intersections as new vertices."
 msgstr ""
 
-msgid "Updating vertices topology"
+msgid "Update source and target information on the edges table."
 msgstr ""
 
-msgid "To keep the graph consistent, the vertices topology needs to be updated"
-msgstr ""
-
-msgid "Checking for crossing edges"
-msgstr ""
-
-msgid "There are no crossing edges on the graph."
+msgid "Routing from :math:`1` to :math:`18` gives a solution."
 msgstr ""
 
 msgid "Disconnected graphs"
@@ -11041,19 +11035,10 @@ msgstr ""
 msgid "Examples"
 msgstr ""
 
-msgid "Create the topology for the data in :doc:`sampledata`"
-msgstr ""
-
-msgid "Analyze the network for intersections."
-msgstr ""
-
 msgid "Analyze the network for gaps."
 msgstr ""
 
 msgid "The analysis tell us that the network has a gap and an intersection."
-msgstr ""
-
-msgid "Fixing an intersection"
 msgstr ""
 
 msgid "Storing the intersections."
@@ -11065,16 +11050,10 @@ msgstr ""
 msgid "Inspecting the generated table, we can see that edges 13 and 18 have been segmented."
 msgstr ""
 
-msgid "Update the topology"
-msgstr ""
-
 msgid "Add new segments to the edges table."
 msgstr ""
 
 msgid "Insert the intersection as new vertices."
-msgstr ""
-
-msgid "Update source and target information on the edges table."
 msgstr ""
 
 msgid "Delete original edge."
@@ -11369,6 +11348,39 @@ msgid "pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vids**)"
 msgstr ""
 
 msgid "pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)"
+msgstr ""
+
+msgid "``pgr_separateCrossing``"
+msgstr ""
+
+msgid "``pgr_separateCrossing`` - From crossing geometries generates geometries that do not cross."
+msgstr ""
+
+msgid "This is an auxiliary function for separating crossing edges."
+msgstr ""
+
+msgid "pgr_separateCrossing(`Edges SQL`_, [``tolerance``, ``dryrun``])"
+msgstr ""
+
+msgid "RETURNS |result-separate|"
+msgstr ""
+
+msgid "Get the segments of the crossing geometries"
+msgstr ""
+
+msgid "``tolerance``"
+msgstr ""
+
+msgid "0.01"
+msgstr ""
+
+msgid "Used in ST_Snap before ST_Split"
+msgstr ""
+
+msgid "Get the code for further refinement."
+msgstr ""
+
+msgid "When there are special details that need to be taken care of because of the final application or the quality of the data, the code can be obtained On a PostgreSQL ``NOTICE`` using the ``dryrun`` flag."
 msgstr ""
 
 msgid "``pgr_sequentialVertexColoring`` - Proposed"
@@ -12607,6 +12619,9 @@ msgstr ""
 msgid ":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
 msgstr ""
 
+msgid ":doc:`pgr_separateCrossing` - Breaks geometries that cross each other."
+msgstr ""
+
 msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
 msgstr ""
 
@@ -12701,6 +12716,9 @@ msgid "`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: pgr_contr
 msgstr ""
 
 msgid "`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: pgr_contractionLinear"
+msgstr ""
+
+msgid "`#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__: pgr_separateCrossing"
 msgstr ""
 
 msgid "pgRouting 3.7"
@@ -13103,9 +13121,6 @@ msgid "pgr_trsp_withPoints(Combinations)"
 msgstr ""
 
 msgid "Topology"
-msgstr ""
-
-msgid "Utilities"
 msgstr ""
 
 msgid "pgr_findCloseEdges(One point)"
@@ -14986,13 +15001,7 @@ msgstr ""
 msgid "Attributes associated to the tables help to indicate if the graph is directed or undirected, if an edge is one way on a directed graph, and depending on the final application needs, suitable topology(s) need to be created."
 msgstr ""
 
-msgid "pgRouting supplies some functions to create a routing topology and to analyze the topology."
-msgstr ""
-
-msgid "Additional functions to create a graph:"
-msgstr ""
-
-msgid "Additional functions to analyze a graph:"
+msgid "Utility functions"
 msgstr ""
 
 msgid "Transformation - Family of functions"
