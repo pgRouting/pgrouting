@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN min_version('3.8.0') THEN plan(4) ELSE plan(3) END;
+SELECT CASE WHEN min_version('3.8.0') THEN plan(5) ELSE plan(4) END;
 
 CREATE SCHEMA houses;
 
@@ -118,6 +118,8 @@ WHERE road_id = (
   ORDER BY ST_Distance(ipt.geom, rt.geom)
   limit 1);
 
+SELECT is((SELECT count(*)::INTEGER FROM houses.simplenet), 14+82, '96 rows');
+
 CREATE OR REPLACE FUNCTION issue_test()
 RETURNS SETOF TEXT AS
 $BODY$
@@ -134,7 +136,7 @@ BEGIN
 
 
   RETURN QUERY
-  SELECT has_total_edges_vertices('i623_r', 91, 98);
+  SELECT has_total_edges_vertices('i623_r', 102, 101);
 
 END;
 $BODY$ LANGUAGE plpgsql;
