@@ -343,7 +343,10 @@ PostgreSQL <code class="docutils literal notranslate"><span class="pre">NOTICE</
     <span class="n">touchings</span> <span class="n">AS</span> <span class="p">(</span>
       <span class="n">SELECT</span>  <span class="n">id1</span><span class="p">,</span> <span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">,</span> <span class="n">st_intersection</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">g2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">point</span>
       <span class="n">FROM</span> <span class="n">get_touching</span>
-      <span class="n">WHERE</span>  <span class="n">NOT</span> <span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="n">g1</span><span class="p">)</span>
+      <span class="n">WHERE</span>  <span class="n">NOT</span> <span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="n">g1</span><span class="p">)</span> <span class="n">OR</span>
+         <span class="p">(</span><span class="n">ST_touches</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">)</span> <span class="n">AND</span> <span class="n">NOT</span>
+            <span class="p">(</span><span class="n">ST_Intersection</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">g2</span><span class="p">)</span> <span class="o">=</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">g1</span><span class="p">)</span>
+             <span class="n">OR</span> <span class="n">ST_Intersection</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">g2</span><span class="p">)</span> <span class="o">=</span> <span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">g1</span><span class="p">)))</span>
     <span class="p">),</span>
 
     <span class="n">blades</span> <span class="n">AS</span> <span class="p">(</span>

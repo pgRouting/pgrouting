@@ -205,6 +205,13 @@
 | RETURNS <code class="docutils literal notranslate"><span class="pre">TEXT</span></code></pre>
 <p class="rubric">可用性</p>
 <ul class="simple">
+<li><p>Version 3.8.0</p>
+<ul>
+<li><p>Not checking and not creating indexes.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">pgr_separateTouching</span></code> and <code class="docutils literal notranslate"><span class="pre">pgr_separateCrossing</span></code>.</p></li>
+<li><p>Created table with <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>.</p></li>
+</ul>
+</li>
 <li><p>版本2.0.0</p>
 <ul>
 <li><p>官方 函数</p></li>
@@ -249,10 +256,10 @@
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> 原边的段号</p>
 </dd>
 <dt class="field-even">source<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Empty source column</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Empty source column</p>
 </dd>
 <dt class="field-odd">target<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Empty target column</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Empty target column</p>
 </dd>
 <dt class="field-even">the geom<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> 节点网络的几何列</p>
@@ -480,8 +487,8 @@ segmented.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">old_id</span><span class="p">,</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edges_noded</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">old_id</span><span class="p">,</span> <span class="n">sub_id</span><span class="p">;</span>
  <span class="n">old_id</span> <span class="o">|</span>               <span class="n">st_astext</span>
 <span class="o">--------+----------------------------------------</span>
-     <span class="mi">14</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">,</span><span class="mi">2</span> <span class="mf">3.5</span><span class="p">)</span>
-     <span class="mi">14</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mi">2</span> <span class="mf">3.5</span><span class="p">,</span><span class="mi">2</span> <span class="mi">4</span><span class="p">)</span>
+     <span class="mi">14</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">,</span><span class="mf">1.999999999999</span> <span class="mf">3.5</span><span class="p">)</span>
+     <span class="mi">14</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mf">1.999999999999</span> <span class="mf">3.5</span><span class="p">,</span><span class="mi">2</span> <span class="mi">4</span><span class="p">)</span>
      <span class="mi">17</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mf">0.5</span> <span class="mf">3.5</span><span class="p">,</span><span class="mf">1.999999999999</span> <span class="mf">3.5</span><span class="p">)</span>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 
@@ -542,9 +549,10 @@ segmented.</p>
   <span class="n">FROM</span> <span class="n">data</span> <span class="n">d</span>
 <span class="p">)</span>
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">results</span><span class="p">;</span>
- <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span> <span class="n">side</span> <span class="o">|</span> <span class="n">distance</span> <span class="o">|</span> <span class="n">geom</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">inhere</span>
-<span class="o">---------+----------+------+----------+------+------+----+--------</span>
-<span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
+ <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span> <span class="n">side</span> <span class="o">|</span>       <span class="n">distance</span>        <span class="o">|</span>                    <span class="n">geom</span>                    <span class="o">|</span>                                        <span class="n">edge</span>                                        <span class="o">|</span> <span class="nb">id</span>  <span class="o">|</span> <span class="n">inhere</span>
+<span class="o">---------+----------+------+-----------------------+--------------------------------------------+------------------------------------------------------------------------------------+-----+--------</span>
+      <span class="mi">17</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span> <span class="n">l</span>    <span class="o">|</span> <span class="mf">1.000088900582341e-12</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000000</span><span class="n">C40</span> <span class="o">|</span> <span class="mi">01020000000200000000000000000000400000000000000</span><span class="n">C4068EEFFFFFFFFFF3F0000000000000C40</span> <span class="o">|</span> <span class="mi">201</span> <span class="o">|</span>     <span class="mi">25</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
 </div>
