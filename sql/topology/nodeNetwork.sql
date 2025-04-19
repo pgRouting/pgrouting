@@ -131,7 +131,7 @@ BEGIN
     END IF;
     RAISE DEBUG '  -----> SRID found %', sridinfo.srid;
     EXCEPTION WHEN OTHERS THEN
-      RAISE NOTICE 'ERROR: Can NOT determine the srid of the geometry "%" IN table %.%', th_geom, sname, tname;
+      RAISE NOTICE 'ERROR: Can NOT determine the srid of the geometry "%" IN table %.%', the_geom, sname, tname;
       RETURN 'FAIL';
   END;
 
