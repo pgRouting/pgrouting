@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=0610ec03"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=1e711df0"></script>
+    <script src="_static/page_history.js?v=9a91d2da"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -108,15 +108,7 @@
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#connecting-disconnected-components">Conectando componentes desconectados</a><ul>
-<li><a class="reference internal" href="#prepare-storage-for-connection-information">Preparar el almacenamiento de la información de conexión</a></li>
-<li><a class="reference internal" href="#save-the-vertices-connection-information">Guardar la información de conexión de los vértices</a></li>
-<li><a class="reference internal" href="#save-the-edges-connection-information">Guardar la información de conexión de las aristas</a></li>
-<li><a class="reference internal" href="#get-the-closest-vertex">Obtener el vértice más cercano</a></li>
-<li><a class="reference internal" href="#connecting-components">Conectando componentes</a></li>
-<li><a class="reference internal" href="#checking-components">Revisando componentes</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#connecting-disconnected-components">Conectando componentes desconectados</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -176,15 +168,7 @@
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#connecting-disconnected-components">Conectando componentes desconectados</a><ul>
-<li><a class="reference internal" href="#prepare-storage-for-connection-information">Preparar el almacenamiento de la información de conexión</a></li>
-<li><a class="reference internal" href="#save-the-vertices-connection-information">Guardar la información de conexión de los vértices</a></li>
-<li><a class="reference internal" href="#save-the-edges-connection-information">Guardar la información de conexión de las aristas</a></li>
-<li><a class="reference internal" href="#get-the-closest-vertex">Obtener el vértice más cercano</a></li>
-<li><a class="reference internal" href="#connecting-components">Conectando componentes</a></li>
-<li><a class="reference internal" href="#checking-components">Revisando componentes</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#connecting-disconnected-components">Conectando componentes desconectados</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -441,61 +425,7 @@
 
 </pre></div>
 </div>
-<p>En este ejemplo, el componente <span class="math notranslate nohighlight">\(2\)</span> está formado por vértices <span class="math notranslate nohighlight">\(\{2, 4\}\)</span> y ambos vértices también forman parte del conjunto de resultados sin salida.</p>
-<p>Este grafo debe estar conectado.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Con el grafo original de esta documentación, habría 3 componentes, ya que la arista de cruce en este grafo es un componente diferente.</p>
-</div>
-<section id="prepare-storage-for-connection-information">
-<h4>Preparar el almacenamiento de la información de conexión<a class="headerlink" href="#prepare-storage-for-connection-information" title="Link to this heading">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
-<span class="n">ALTER</span> <span class="n">TABLE</span>
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
-<span class="n">ALTER</span> <span class="n">TABLE</span>
-</pre></div>
-</div>
-</section>
-<section id="save-the-vertices-connection-information">
-<h4>Guardar la información de conexión de los vértices<a class="headerlink" href="#save-the-vertices-connection-information" title="Link to this heading">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">component</span>
-<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
-<span class="p">))</span> <span class="n">AS</span> <span class="n">c</span>
-<span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
-<span class="n">UPDATE</span> <span class="mi">17</span>
-</pre></div>
-</div>
-</section>
-<section id="save-the-edges-connection-information">
-<h4>Guardar la información de conexión de las aristas<a class="headerlink" href="#save-the-edges-connection-information" title="Link to this heading">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">component</span>
-<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">component</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">)</span> <span class="n">AS</span> <span class="n">v</span>
-<span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
-<span class="n">UPDATE</span> <span class="mi">18</span>
-</pre></div>
-</div>
-</section>
-<section id="get-the-closest-vertex">
-<h4>Obtener el vértice más cercano<a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
-<p>Usando <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> el vértice más cercano al componente <span class="math notranslate nohighlight">\(1\)</span> es el vértice <span class="math notranslate nohighlight">\(4\)</span>. Y la arista más cercana al vértice <span class="math notranslate nohighlight">\(4\)</span> es la arista <span class="math notranslate nohighlight">\(14\)</span>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges WHERE component = 1$$,
-  (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-  2) JOIN vertices USING (geom) ORDER BY distance LIMIT 1;
- edge_id | fraction |                 edge                 | closest_vertex
----------+----------+--------------------------------------+----------------
-      14 |      0.5 | LINESTRING(1.999999999999 3.5,2 3.5) |              4
-(1 row)
-
-</pre></div>
-</div>
-<p>La arista <code class="docutils literal notranslate"><span class="pre">edge</span></code> se puede utilizar para conectar los componentes, utilizando la información <code class="docutils literal notranslate"><span class="pre">fraction</span></code> sobre la arista <span class="math notranslate nohighlight">\(14\)</span> para dividir la arista de conexión.</p>
-</section>
-<section id="connecting-components">
-<h4>Conectando componentes<a class="headerlink" href="#connecting-components" title="Link to this heading">¶</a></h4>
-<p>Existen tres formas básicas de conectar los componentes</p>
+<p>There are three basic ways to connect components:</p>
 <ul class="simple">
 <li><p>Del vértice al punto inicial de la arista</p></li>
 <li><p>Desde el vértice hasta el punto final de la arista</p></li>
@@ -505,59 +435,88 @@ FROM pgr_findCloseEdges(
 </ul>
 </li>
 </ul>
-<p>La siguiente consulta muestra las tres formas de conectar los componentes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
-info AS (
-  SELECT
-    edge_id, fraction, side, distance, ce.geom, edge, v.id AS closest,
-    source, target, capacity, reverse_capacity, e.geom AS e_geom
-  FROM pgr_findCloseEdges(
-    $$SELECT id, geom FROM edges WHERE component = 1$$,
-    (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-    2) AS ce
-  JOIN vertices AS v USING (geom)
-  JOIN edges AS e ON (edge_id = e.id)
-  ORDER BY distance LIMIT 1),
-three_options AS (
-  SELECT
-    closest AS source, target, 0 AS cost, 0 AS reverse_cost,
-    capacity, reverse_capacity,
-    ST_X(geom) AS x1, ST_Y(geom) AS y1,
-    ST_X(ST_EndPoint(e_geom)) AS x2, ST_Y(ST_EndPoint(e_geom)) AS y2,
-    ST_MakeLine(geom, ST_EndPoint(e_geom)) AS geom
-  FROM info
-  UNION
-  SELECT closest, source, 0, 0, capacity, reverse_capacity,
-    ST_X(geom) AS x1, ST_Y(geom) AS y1,
-    ST_X(ST_StartPoint(e_geom)) AS x2, ST_Y(ST_StartPoint(e_geom)) AS y2,
-    ST_MakeLine(info.geom, ST_StartPoint(e_geom))
-  FROM info
-  /*
-  UNION
-  -- This option requires splitting the edge
-  SELECT closest, NULL, 0, 0, capacity, reverse_capacity,
-    ST_X(geom) AS x1, ST_Y(geom) AS y1,
-    ST_X(ST_EndPoint(edge)) AS x2, ST_Y(ST_EndPoint(edge)) AS y2,
-    edge
-  FROM info */
-  )
-INSERT INTO edges
-  (source, target,
-    cost, reverse_cost,
-    capacity, reverse_capacity,
-    x1, y1, x2, y2,
-    geom)
-(SELECT
-    source, target, cost, reverse_cost, capacity, reverse_capacity,
-    x1, y1, x2, y2, geom
-  FROM three_options);
-INSERT 0 2
+<p>In this example <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> and <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> will
+be used.</p>
+<p class="rubric">Get the connectivity</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
+<span class="o">-----+-----------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span>
+   <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span>
+   <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span>
+   <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">7</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span>
+   <span class="mi">8</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
+   <span class="mi">9</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span>
+  <span class="mi">10</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span>
+  <span class="mi">11</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span>
+  <span class="mi">12</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span>
+  <span class="mi">13</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span>
+  <span class="mi">14</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">15</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span>
+  <span class="mi">16</span> <span class="o">|</span>        <span class="mi">13</span> <span class="o">|</span>   <span class="mi">13</span>
+  <span class="mi">17</span> <span class="o">|</span>        <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span>
+<span class="p">(</span><span class="mi">17</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
-</section>
-<section id="checking-components">
-<h4>Revisando componentes<a class="headerlink" href="#checking-components" title="Link to this heading">¶</a></h4>
-<p>Ignorando la arista que requiere más trabajo. El grafo está ahora totalmente conectado, ya que sólo hay un componente.</p>
+<p class="rubric">Prepare tables</p>
+<p>In this example: the edges table will need an additional column and the vertex
+table will be rebuilt completely.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">old_id</span> <span class="n">BIGINT</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">vertices</span><span class="p">;</span>
+<span class="n">DROP</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<p class="rubric">Insert new edges</p>
+<p>Using <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> and <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> insert the
+results into the edges table.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM edges&#39;</span><span class="p">)</span>
+<span class="n">UNION</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateTouching</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM edges&#39;</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p class="rubric">Crear la tabla de vértices</p>
+<p>Using <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> create the table.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">AS</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<p class="rubric">Actualizar la topología</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">24</span>
+<span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">target</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">24</span>
+</pre></div>
+</div>
+<p class="rubric">Update other values</p>
+<p>In this example only <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> are updated, where they are
+based on the length of the geometry and the directionality is kept using the
+<code class="docutils literal notranslate"><span class="pre">sign</span></code> function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">e</span>
+  <span class="n">SET</span> <span class="n">cost</span>          <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span><span class="o">*</span><span class="n">sign</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">cost</span><span class="p">),</span>
+      <span class="n">reverse_cost</span>  <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span><span class="o">*</span><span class="n">sign</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">reverse_cost</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">e1</span>
+<span class="n">WHERE</span> <span class="n">e</span><span class="o">.</span><span class="n">cost</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">AND</span> <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">old_id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">6</span>
+</pre></div>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
 <span class="p">);</span>
@@ -575,16 +534,16 @@ INSERT 0 2
   <span class="mi">10</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
   <span class="mi">11</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span>
   <span class="mi">12</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span>
-  <span class="mi">13</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span>
-  <span class="mi">14</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span>
-  <span class="mi">15</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span>
-  <span class="mi">16</span> <span class="o">|</span>        <span class="mi">13</span> <span class="o">|</span>   <span class="mi">13</span>
-  <span class="mi">17</span> <span class="o">|</span>        <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span>
-<span class="p">(</span><span class="mi">17</span> <span class="n">rows</span><span class="p">)</span>
+  <span class="mi">13</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">13</span>
+  <span class="mi">14</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">14</span>
+  <span class="mi">15</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span>
+  <span class="mi">16</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span>
+  <span class="mi">17</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span>
+  <span class="mi">18</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">18</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
-</section>
 </section>
 </section>
 <section id="see-also">
@@ -616,7 +575,7 @@ INSERT 0 2
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en abr 17, 2025.<br/>
+      Actualizado por última vez en abr 19, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
