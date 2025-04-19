@@ -22,8 +22,7 @@ BEGIN;
 -- node the network
 -- create 2 test cases with overlapping lines, one with crossing lines and one with touching (but no crossing) lines
 
-UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(15);
+SELECT plan(16);
 
 SET client_min_messages = WARNING;
 CREATE TABLE original (
@@ -62,6 +61,7 @@ SELECT old_id, sub_id, source, target, the_geom FROM original_roads
 UNION
 SELECT old_id, sub_id, source, target, the_geom FROM original_bridges;
 
+SELECT is((SELECT count(*)::INTEGER FROM original_noded), 9 + 4, '13 total edges');
 
 PREPARE q1 AS
 SELECT old_id, count(*) FROM original_noded GROUP BY old_id ORDER BY old_id;
