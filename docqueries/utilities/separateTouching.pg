@@ -3,46 +3,52 @@
 --                pgr_nodeNetwork
 --------------------------------------------------------------------------------
 /* --q1 */
-SELECT id, sub_id, ST_AsText(geom)
-FROM pgr_separateCrossing('SELECT id, geom FROM edges')
-ORDER BY id, sub_id;
+SELECT *
+FROM pgr_separateTouching('SELECT id, geom FROM edges');
 /* --q2 */
 SELECT *
-FROM pgr_separateCrossing('SELECT id, geom FROM edges', dryrun => true);
+FROM pgr_separateTouching('SELECT id, geom FROM edges', dryrun => true);
 /* --q3 */
 SELECT *
-FROM pgr_dijkstra('SELECT id, source, target, cost, reverse_cost FROM edges', 1, 18);
+FROM pgr_dijkstra( 'SELECT id, source, target, cost, reverse_cost FROM edges', 1, 2);
 /* --q4 */
-SELECT
-  e1.id id1, e2.id id2,
-  ST_AsText(ST_Intersection(e1.geom, e2.geom)) AS point
-FROM edges e1, edges e2
-WHERE e1.id < e2.id AND ST_Crosses(e1.geom, e2.geom);
+WITH
+deadends AS (
+  SELECT id AS vid, (in_edges || out_edges)[1] AS edge, geom AS vgeom
+  FROM vertices
+  WHERE array_length(in_edges || out_edges, 1) = 1
+)
+SELECT id, ST_AsText(geom), vid, ST_AsText(vgeom), ST_Distance(geom, vgeom)
+FROM edges, deadends
+WHERE id != edge AND ST_Distance(geom, vgeom) < 0.1;
 /* --q5 */
 ALTER TABLE edges ADD old_id BIGINT;
 /* --q6 */
 INSERT INTO edges (old_id, geom)
 SELECT id, geom
-FROM pgr_separateCrossing('SELECT id, geom FROM edges');
+FROM pgr_separateTouching('SELECT id, geom FROM edges');
 /* --q7 */
 WITH
 costs AS (
-  SELECT e2.id, sign(e1.cost) * ST_Length(e2.geom) AS cost,
+  SELECT e2.id,
+  sign(e1.cost) * ST_Length(e2.geom) AS cost,
   sign(e1.reverse_cost) * ST_Length(e2.geom) AS reverse_cost
-  FROM edges e1 JOIN edges e2 ON (e1.id = e2.old_id)
+  FROM edges e1
+  JOIN edges e2 ON (e1.id = e2.old_id)
 )
-UPDATE edges e
-SET (cost, reverse_cost) = (c.cost, c.reverse_cost)
-FROM costs AS c WHERE e.id = c.id;
+UPDATE edges e SET (cost, reverse_cost) = (c.cost, c.reverse_cost)
+FROM costs AS c
+WHERE e.id = c.id;
 /* --q8 */
-WITH
-new_vertex AS (
+WITH new_vertex AS (
   SELECT ev.*
   FROM pgr_extractVertices('SELECT id, geom FROM edges WHERE old_id IS NOT NULL') ev
   LEFT JOIN vertices v using(geom)
-  WHERE v IS NULL)
+  WHERE v IS NULL
+)
 INSERT INTO vertices (in_edges, out_edges,x,y,geom)
-SELECT in_edges, out_edges,x,y,geom FROM new_vertex;
+SELECT in_edges, out_edges,x,y,geom
+FROM new_vertex;
 /* --q9 */
 /* -- set the source information */
 UPDATE edges AS e
@@ -56,6 +62,6 @@ FROM vertices AS v
 WHERE target IS NULL AND ST_EndPoint(e.geom) = v.geom;
 /* --q10 */
 SELECT *
-FROM pgr_dijkstra('SELECT id, source, target, cost, reverse_cost FROM edges', 1, 18);
+FROM pgr_dijkstra('SELECT id, source, target, cost, reverse_cost FROM edges', 1, 2);
 /* --q11 */
 /* --qend */

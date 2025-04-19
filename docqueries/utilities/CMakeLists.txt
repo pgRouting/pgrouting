@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     findCloseEdges
     separateCrossing
+    separateTouching
     )
 
 foreach (f ${LOCAL_FILES})

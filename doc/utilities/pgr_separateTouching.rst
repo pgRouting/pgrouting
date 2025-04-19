@@ -8,16 +8,16 @@
    ****************************************************************************
 
 .. index::
-   single: Utilities ; pgr_separateCrossing - proposed on v3.8.0
-   single: separateCrossing - proposed on v3.8.0
+   single: Utilities ; pgr_separateTouching - proposed on v3.8.0
+   single: separateTouching - proposed on v3.8.0
 
 |
 
-``pgr_separateCrossing``
+``pgr_separateTouching``
 ===============================================================================
 
-``pgr_separateCrossing`` - From crossing geometries generates geometries that
-do not cross.
+``pgr_separateTouching`` - From touching geometries generates geometries that
+are properly connected at endpoints
 
 .. rubric:: Availability
 
@@ -28,7 +28,9 @@ do not cross.
 Description
 -------------------------------------------------------------------------------
 
-This is an auxiliary function for separating crossing edges.
+This is an auxiliary function for processing geometries that touch but don't
+share exact endpoints, splitting them at their intersection points to improve
+network connectivity.
 
 Signature
 -------------------------------------------------------------------------------
@@ -36,13 +38,13 @@ Signature
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_separateCrossing(`Edges SQL`_, [``tolerance``, ``dryrun``])
+   | pgr_separateTouching(`Edges SQL`_, [``tolerance``, ``dryrun``])
 
    | RETURNS |result-separate|
 
 :Example: Get the segments of the crossing geometries
 
-.. literalinclude:: separateCrossing.queries
+.. literalinclude:: separateTouching.queries
    :start-after: --q1
    :end-before: --q2
 
@@ -92,13 +94,13 @@ When there are special details that need to be taken care of because of the
 final application or the quality of the data, the code can be obtained On a
 PostgreSQL ``NOTICE`` using the ``dryrun`` flag.
 
-.. literalinclude:: separateCrossing.queries
+.. literalinclude:: separateTouching.queries
    :start-after: --q2
    :end-before: --q3
 
-.. fix_intersection_start
+.. fix_gap-start
 
-Fixing an intersection
+Fixing a gap
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 In this example the original edge table will be used to store the additional
@@ -106,34 +108,33 @@ geometries.
 
 .. rubric:: An example use without results
 
-Routing from :math:`1` to :math:`18` gives no solution.
+Routing from :math:`1` to :math:`2` gives no solution.
 
-.. literalinclude:: separateCrossing.queries
+.. literalinclude:: separateTouching.queries
    :start-after: --q3
    :end-before: --q4
 
-.. rubric:: Analyze the network for intersections.
+.. rubric:: Analyze the network for gaps.
 
-.. literalinclude:: separateCrossing.queries
+.. literalinclude:: separateTouching.queries
    :start-after: --q4
    :end-before: --q5
 
-The analysis tell us that the network has an intersection.
+The analysis tell us that the network has a gap.
 
 .. rubric:: Prepare tables
 
 Additional columns to control the origin of the segments.
 
-.. literalinclude:: separateCrossing.queries
+.. literalinclude:: separateTouching.queries
    :start-after: --q5
    :end-before: --q6
 
 .. rubric:: Adding new segments.
 
-Calling :doc:`pgr_separateCrossing` and adding the new segments to the edges
-table.
+Calling :doc:`pgr_separateTouching` and adding the new segments to the edges table.
 
-.. literalinclude:: separateCrossing.queries
+.. literalinclude:: separateTouching.queries
    :start-after: --q6
    :end-before: --q7
 
@@ -143,7 +144,7 @@ In this example only ``cost`` and ``reverse_cost`` are updated, where they are
 based on the length of the geometry and the directionality is kept using the
 ``sign`` function.
 
-.. literalinclude:: separateCrossing.queries
+.. literalinclude:: separateTouching.queries
    :start-after: --q7
    :end-before: --q8
 
@@ -151,25 +152,25 @@ based on the length of the geometry and the directionality is kept using the
 
 Insert the new vertices if any.
 
-.. literalinclude:: separateCrossing.queries
+.. literalinclude:: separateTouching.queries
    :start-after: --q8
    :end-before: --q9
 
 Update source and target information on the edges table.
 
-.. literalinclude:: separateCrossing.queries
+.. literalinclude:: separateTouching.queries
    :start-after: --q9
    :end-before: --q10
 
 .. rubric:: The example has results
 
-Routing from :math:`1` to :math:`18` gives a solution.
+Routing from :math:`1` to :math:`2` gives a solution.
 
-.. literalinclude:: separateCrossing.queries
+.. literalinclude:: separateTouching.queries
    :start-after: --q10
    :end-before: --q11
 
-.. fix_intersection_end
+.. fix_gap-end
 
 See Also
 -------------------------------------------------------------------------------
