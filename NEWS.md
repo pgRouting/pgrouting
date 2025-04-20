@@ -63,12 +63,14 @@ milestone for 4.0.0
   pgr_trspviaedges
 * [#2682](https://github.com/pgRouting/pgrouting/issues/2682):
   pgr_trspviavertices
+* [#2748](https://github.com/pgRouting/pgrouting/issues/2748):
+  pgr_alphaShape
+* [#2751](https://github.com/pgRouting/pgrouting/issues/2851):
+  pgr_createTopology
 * [#2752](https://github.com/pgRouting/pgrouting/issues/2752):
   pgr_analyzeGraph
 * [#2755](https://github.com/pgRouting/pgrouting/issues/2755):
   pgr_analyzeOneWay
-* [#2751](https://github.com/pgRouting/pgrouting/issues/2851):
-  pgr_createTopology
 * [#2827](https://github.com/pgRouting/pgrouting/issues/2827):
   pgr_createVerticesTable
 
