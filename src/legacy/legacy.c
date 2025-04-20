@@ -54,4 +54,4 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGROUTING_DEPRECATE("4.0.0", _pgr_trsp)
 PGROUTING_DEPRECATE("4.0.0", _v4trsp)
 PGROUTING_DEPRECATE("4.0.0", _trsp)
-
+PGROUTING_DEPRECATE("4.0.0", _pgr_alphashape)

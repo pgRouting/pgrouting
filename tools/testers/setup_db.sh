@@ -39,7 +39,6 @@ psql -p "$1" -U "$3"  -d "$2" -X -q --set client_min_messages=WARNING --set ON_E
     -f "${DIR}/inner_styles.sql" \
     -f "${DIR}/old_inner_styles.sql" \
     -f "${DIR}/no_crash_test.sql" \
-    -f "${DIR}/alphaShapeTester.sql" \
     -f "${DIR}/general_pgtap_tests.sql" \
     -f "${DIR}/no_crash_general.sql" \
     -f "${DIR}/dijkstra_pgtap_tests.sql" \

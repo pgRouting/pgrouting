@@ -24,12 +24,11 @@ Results can be different because of the changes.
 .. contents:: Contents
    :depth: 2
 
-.. migrate_pgr_alphaShape_start
-
 Migration of ``pgr_alphaShape``
 -------------------------------------------------------------------------------
 
-Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
+Deprecated in `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
+Removed from the repostory in `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
 
 **Before Deprecation:** The following was calculated:
 
@@ -51,8 +50,6 @@ If you have SFCGAL, which you can install using
 Other PostGIS options are
 * `ST_ConvexHull <https://postgis.net/docs/ST_ConvexHull.html>`__
 * `ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__
-
-.. migrate_pgr_alphaShape_end
 
 Migration of ``pgr_createTopology``
 -------------------------------------------------------------------------------
