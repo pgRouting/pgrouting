@@ -1,5 +1,3 @@
-pgr_alphashape(geometry,double precision)
-_pgr_alphashape(text,double precision)
 _pgr_array_reverse(anyarray)
 _pgr_articulationpoints(text)
 pgr_articulationpoints(text)

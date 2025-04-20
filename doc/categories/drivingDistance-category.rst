@@ -19,9 +19,6 @@ Driving Distance - Category
 * :doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm
 * :doc:`pgr_primDD` - Driving Distance based on Prim's algorithm
 * :doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm
-* Post processing
-
-  * :doc:`pgr_alphaShape` - Alpha shape computation
 
 .. official-end
 
@@ -34,12 +31,6 @@ Driving Distance - Category
 * :doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints
 
 .. proposed-end
-
-.. toctree::
-    :hidden:
-
-    pgr_alphaShape.rst
-
 
 Calculate nodes that are within a distance.
 
