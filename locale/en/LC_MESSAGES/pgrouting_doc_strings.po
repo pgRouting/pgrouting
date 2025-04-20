@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-19 23:10+0000\n"
+"POT-Creation-Date: 2025-04-20 17:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3294,12 +3294,6 @@ msgstr ""
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
 
-msgid "Post processing"
-msgstr ""
-
-msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
-msgstr ""
-
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ""
 
@@ -4029,6 +4023,16 @@ msgid ""
 msgstr ""
 
 msgid ""
+"`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: "
+"pgr_alphaShape"
+msgstr ""
+
+msgid ""
+"`#2751 <https://github.com/pgRouting/pgrouting/issues/2851>`__: "
+"pgr_createTopology"
+msgstr ""
+
+msgid ""
 "`#2752 <https://github.com/pgRouting/pgrouting/issues/2752>`__: "
 "pgr_analyzeGraph"
 msgstr ""
@@ -4036,11 +4040,6 @@ msgstr ""
 msgid ""
 "`#2755 <https://github.com/pgRouting/pgrouting/issues/2755>`__: "
 "pgr_analyzeOneWay"
-msgstr ""
-
-msgid ""
-"`#2751 <https://github.com/pgRouting/pgrouting/issues/2851>`__: "
-"pgr_createTopology"
 msgstr ""
 
 msgid ""
@@ -4155,7 +4154,9 @@ msgid "Migration of ``pgr_alphaShape``"
 msgstr ""
 
 msgid ""
-"Starting from `v3.8.0 "
+"Deprecated in `v3.8.0 "
+"<https://docs.pgrouting.org/3.8/en/migration.html>`__ Removed from the "
+"repostory in `v3.8.0 "
 "<https://docs.pgrouting.org/3.8/en/migration.html>`__"
 msgstr ""
 
@@ -4189,6 +4190,11 @@ msgid ""
 msgstr ""
 
 msgid "Migration of ``pgr_createTopology``"
+msgstr ""
+
+msgid ""
+"Starting from `v3.8.0 "
+"<https://docs.pgrouting.org/3.8/en/migration.html>`__"
 msgstr ""
 
 msgid "A table with `<edges>_vertices_pgr` was created."
@@ -7964,109 +7970,6 @@ msgstr ""
 msgid "Use with :doc:`pgr_TSP`"
 msgstr ""
 
-msgid "``pgr_alphaShape``"
-msgstr ""
-
-msgid "``pgr_alphaShape`` — Polygon part of an alpha shape."
-msgstr ""
-
-msgid "Version 3.8.0"
-msgstr ""
-
-msgid "Deprecated function."
-msgstr ""
-
-msgid "Breaking change on signature"
-msgstr ""
-
-msgid "**Boost 1.54** & **Boost 1.55** are supported"
-msgstr ""
-
-msgid "**Boost 1.56+** is preferable"
-msgstr ""
-
-msgid "Boost Geometry is stable on Boost 1.56"
-msgstr ""
-
-msgid "Added alpha argument with default 0 (use optimal value)"
-msgstr ""
-
-msgid "Support to return multiple outer/inner ring"
-msgstr ""
-
-msgid "Renamed from version 1.x"
-msgstr ""
-
-msgid "Returns the polygon part of an alpha shape."
-msgstr ""
-
-msgid "Input is a *geometry* and returns a *geometry*"
-msgstr ""
-
-msgid "Uses PostGis ST_DelaunyTriangles"
-msgstr ""
-
-msgid "Instead of using CGAL's definition of `alpha` it use the ``spoon_radius``"
-msgstr ""
-
-msgid ":math:`spoon\\_radius = \\sqrt alpha`"
-msgstr ""
-
-msgid ""
-"A Triangle area is considered part of the alpha shape when "
-":math:`circumcenter\\ radius < spoon\\_radius`"
-msgstr ""
-
-msgid "The ``alpha`` parameter is the **spoon radius**"
-msgstr ""
-
-msgid "When the total number of points is less than 3, returns an EMPTY geometry"
-msgstr ""
-
-msgid "pgr_alphaShape(**geometry**, [alpha])"
-msgstr ""
-
-msgid "RETURNS ``geometry``"
-msgstr ""
-
-msgid ""
-"passing a geometry collection with spoon radius :math:`1.5` using the "
-"return variable ``geom``"
-msgstr ""
-
-msgid "**geometry**"
-msgstr ""
-
-msgid "``geometry``"
-msgstr ""
-
-msgid "Geometry with at least :math:`3` points"
-msgstr ""
-
-msgid "``alpha``"
-msgstr ""
-
-msgid "The radius of the spoon."
-msgstr ""
-
-msgid "Return Value"
-msgstr ""
-
-msgid "Kind of geometry"
-msgstr ""
-
-msgid "GEOMETRY COLLECTION"
-msgstr ""
-
-msgid "A Geometry collection of Polygons"
-msgstr ""
-
-msgid ":doc:`pgr_drivingDistance`"
-msgstr ""
-
-msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
-msgstr ""
-
 msgid "``pgr_articulationPoints``"
 msgstr ""
 
@@ -9022,6 +8925,9 @@ msgstr ""
 msgid ""
 "``pgr_contraction`` — Performs graph contraction and returns the "
 "contracted vertices and edges."
+msgstr ""
+
+msgid "Version 3.8.0"
 msgstr ""
 
 msgid "New signature:"
@@ -11462,6 +11368,9 @@ msgstr ""
 msgid ""
 "When ``true`` calculations are not performed and the query to do the "
 "calculations is exposed in a PostgreSQL ``NOTICE``."
+msgstr ""
+
+msgid "``geometry``"
 msgstr ""
 
 msgid "The ``LINESTRING`` geometry of the edge."
@@ -14702,6 +14611,9 @@ msgstr ""
 msgid ""
 "From point :math:`1` within a distance of :math:`3.3`, does not matter "
 "driving side, with details."
+msgstr ""
+
+msgid ":doc:`pgr_drivingDistance`"
 msgstr ""
 
 msgid "``pgr_withPointsKSP``"
