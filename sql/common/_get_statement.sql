@@ -1,8 +1,9 @@
 /*PGR-GNU*****************************************************************
 
-FILE: _startPoint.sql
+ _get_statement.sql
 
-Copyright (c) 2019 Regina Obe
+ Copyright (c) 2014 Celia Virginia Vergara Castillo
+ mail: vicky at erosion.dev
 
 ------
 
@@ -23,14 +24,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 --v2.6
-CREATE FUNCTION _pgr_startpoint(g geometry)
-RETURNS geometry AS
-$$
-SELECT CASE WHEN geometryType($1) ~ '^MULTI' THEN ST_StartPoint(ST_geometryN($1,1))
-ELSE ST_StartPoint($1)
-END;
-$$
-LANGUAGE sql IMMUTABLE;
+CREATE FUNCTION _pgr_get_statement(o_sql text)
+RETURNS text AS
+$BODY$
+DECLARE
+sql TEXT;
+BEGIN
+    EXECUTE 'SELECT statement FROM pg_prepared_statements WHERE name ='  || quote_literal(o_sql) || ' limit 1 ' INTO sql;
+    IF (sql IS NULL) THEN
+      RETURN   o_sql;
+    ELSE
+      RETURN  regexp_replace(regexp_replace(regexp_replace(sql, '\s(as)\s', '___foo___', 'i'), '^.*___foo___', '','i'), ';$', '');
+    END IF;
+END
+$BODY$
+LANGUAGE plpgsql STABLE STRICT;
 
-COMMENT ON FUNCTION _pgr_startPoint(geometry)
+COMMENT ON FUNCTION _pgr_get_statement(TEXT)
 IS 'pgRouting internal function';
