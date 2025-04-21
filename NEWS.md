@@ -95,6 +95,30 @@ milestone for 4.0.0
 * _v4trsp(text,text,anyarray,anyarray,boolean)
 * _v4trsp(text,text,text,boolean)
 
+
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861):
+  Remove unused internal functions
+
+  - _pgr_checkverttab(text,text[],integer,text)
+  - _pgr_createindex(text,text,text,integer,text)
+  - _pgr_createindex(text,text,text,text,integer,text)
+  - _pgr_endpoint(geometry)
+  - _pgr_getcolumnname(text,text,integer,text)
+  - _pgr_getcolumnname(text,text,text,integer,text)
+  - _pgr_getcolumntype(text,text,integer,text)
+  - _pgr_getcolumntype(text,text,text,integer,text)
+  - _pgr_gettablename(text,integer,text)
+  - _pgr_iscolumnindexed(text,text,integer,text)
+  - _pgr_iscolumnindexed(text,text,text,integer,text)
+  - _pgr_iscolumnintable(text,text)
+  - _pgr_msg(integer,text,text)
+  - _pgr_onerror(boolean,integer,text,text,text,text)
+  - _pgr_pointtoid(geometry,double precision,text,integer)
+  - _pgr_quote_ident(text)
+  - _pgr_startpoint(geometry)
+  - _pgr_versionless(text,text)
+
+
 **Deprecation of internal C/C++ functions**
 
 * _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)
