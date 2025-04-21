@@ -49,6 +49,7 @@ Utility functions
 - :doc:`pgr_extractVertices` - Extracts vertex information based on the edge
   table information.
 - :doc:`pgr_findCloseEdges` - Finds close edges of points on the fly
+- :doc:`pgr_separateCrossing` - Breaks geometries that cross each other.
 
 .. utility_official-end
 
@@ -58,7 +59,6 @@ Utility functions
 
 .. utility_proposed-start
 
-- :doc:`pgr_separateCrossing` - Breaks geometries that cross each other.
 - :doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each other.
 
 .. utility_proposed-end
