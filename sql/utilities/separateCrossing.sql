@@ -112,7 +112,6 @@ $BODY$ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- COMMENTS
 COMMENT ON FUNCTION pgr_separateCrossing(TEXT, FLOAT, BOOLEAN)
 IS 'pgr_separateCrossing
-PROPOSED
 - Parameters
   - Edges SQL with columns: id, geom
 - Optional parameters

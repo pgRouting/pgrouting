@@ -35,6 +35,9 @@ milestone for 3.8.0
   * ``partial`` option is removed.
   * Function promoted to official.
 
+* [#2873](https://github.com/pgRouting/pgrouting/issues/2873):
+  Promoted to official pgr_separateCrossing in version 3.8
+
 **Proposed functions**
 
 * Contraction
