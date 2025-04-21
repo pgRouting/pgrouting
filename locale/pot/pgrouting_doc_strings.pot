@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-20 17:12+0000\n"
+"POT-Creation-Date: 2025-04-21 16:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3683,6 +3683,63 @@ msgid "_v4trsp(text,text,anyarray,anyarray,boolean)"
 msgstr ""
 
 msgid "_v4trsp(text,text,text,boolean)"
+msgstr ""
+
+msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__: Remove unused internal functions"
+msgstr ""
+
+msgid "_pgr_checkverttab(text,text[],integer,text)"
+msgstr ""
+
+msgid "_pgr_createindex(text,text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_createindex(text,text,text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_endpoint(geometry)"
+msgstr ""
+
+msgid "_pgr_getcolumnname(text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_getcolumnname(text,text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_getcolumntype(text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_getcolumntype(text,text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_gettablename(text,integer,text)"
+msgstr ""
+
+msgid "_pgr_iscolumnindexed(text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_iscolumnindexed(text,text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_iscolumnintable(text,text)"
+msgstr ""
+
+msgid "_pgr_msg(integer,text,text)"
+msgstr ""
+
+msgid "_pgr_onerror(boolean,integer,text,text,text,text)"
+msgstr ""
+
+msgid "_pgr_pointtoid(geometry,double precision,text,integer)"
+msgstr ""
+
+msgid "_pgr_quote_ident(text)"
+msgstr ""
+
+msgid "_pgr_startpoint(geometry)"
+msgstr ""
+
+msgid "_pgr_versionless(text,text)"
 msgstr ""
 
 msgid "Deprecation of internal C/C++ functions"
