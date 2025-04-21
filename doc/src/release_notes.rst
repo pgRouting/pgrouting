@@ -208,6 +208,9 @@ milestone for 3.8.0
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
+* `#2873 <https://github.com/pgRouting/pgrouting/issues/2873>`__:
+  Promoted to official pgr_separateCrossing in version 3.8
+
 .. rubric:: Proposed functions
 
 * Contraction
