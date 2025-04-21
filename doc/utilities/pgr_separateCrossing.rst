@@ -8,8 +8,8 @@
    ****************************************************************************
 
 .. index::
-   single: Utilities ; pgr_separateCrossing - proposed on v3.8.0
-   single: separateCrossing - proposed on v3.8.0
+   single: Utilities ; pgr_separateCrossing
+   single: separateCrossing
 
 |
 
@@ -23,6 +23,7 @@ do not cross.
 
 .. rubric:: Version 3.8.0
 
+* Function promoted to official.
 * New proposed function.
 
 Description
