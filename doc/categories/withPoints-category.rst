@@ -237,7 +237,7 @@ Advanced documentation
 About points
 ...............................................................................
 
-For this section the following city (see :doc:`sampledata`) some interesing
+For this section the following city (see :doc:`sampledata`) some interesting
 points such as restaurant, supermarket, post office, etc. will be used as
 example.
 
@@ -264,7 +264,7 @@ for this example:
 Driving side
 ...............................................................................
 
-In the the folowwing images:
+In the the following images:
 
 - The squared vertices are the temporary vertices,
 - The temporary vertices are added according to the driving side,
@@ -301,7 +301,7 @@ Driving side does not matter
 _______________________________________________________________________________
 
 - Like having all points to be considered in both sides ``b``
-- Prefered usage on **undirected** graphs
+- Preferred usage on **undirected** graphs
 - On the :doc:`TRSP-family` this option is not valid
 
 .. image:: images/noMatterDrivingSide.png
@@ -342,14 +342,14 @@ _______________________________________________________________________________
 .. image:: images/rightDrivingSide.png
     :scale: 50%
 
-- Arrival to point ``-2`` can be achived only via vertex **16**.
+- Arrival to point ``-2`` can be achieved only via vertex **16**.
 - Does not affects edge ``(17, 16)``, therefore the edge is kept.
 - It only affects the edge ``(16, 17)``, therefore the edge is removed.
 - Create two new edges:
 
   - Edge ``(16, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1 *
     0.4`)
-  - Edge ``(-2, 17)`` with cost ``0.6`` (the remaing cost)
+  - Edge ``(-2, 17)`` with cost ``0.6`` (the remaining cost)
 
 - The total cost of the additional edges is equal to the original cost.
 - If more points are on the same edge, the process is repeated recursevly.
@@ -362,7 +362,7 @@ _______________________________________________________________________________
 .. image:: images/leftDrivingSide.png
     :scale: 50%
 
-- Arrival to point ``-2`` can be achived only via vertex **17**.
+- Arrival to point ``-2`` can be achieved only via vertex **17**.
 - Does not affects edge ``(16, 17)``, therefore the edge is kept.
 - It only affects the edge ``(17, 16)``, therefore the edge is removed.
 - Create two new edges:
@@ -372,7 +372,7 @@ _______________________________________________________________________________
 
     - Edge ``(16, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1 *
       0.4`)
-    - Edge ``(-2, 17)`` with cost ``0.6`` (the remaing cost)
+    - Edge ``(-2, 17)`` with cost ``0.6`` (the remaining cost)
     - If more points are on the same edge, the process is repeated recursevly.
 
   - Flip the Edges and add them to the graph:
@@ -390,7 +390,7 @@ _______________________________________________________________________________
 .. image:: images/noMatterDrivingSide.png
     :scale: 50%
 
-- Arrival to point ``-2`` can be achived via vertices **16** or **17**.
+- Arrival to point ``-2`` can be achieved via vertices **16** or **17**.
 - Affects the edges ``(16, 17)`` and ``(17, 16)``, therefore the edges are removed.
 - Create four new edges:
 
@@ -399,7 +399,7 @@ _______________________________________________________________________________
 
     - Edge ``(16, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1 *
       0.4`)
-    - Edge ``(-2, 17)`` with cost ``0.6`` (the remaing cost)
+    - Edge ``(-2, 17)`` with cost ``0.6`` (the remaining cost)
     - If more points are on the same edge, the process is repeated recursevly.
 
   - Flip the Edges and add all the edges to the graph:

@@ -44,7 +44,7 @@ The main characteristics are:
     belong to the same connected component. (see :doc:`pgr_connectedComponents`)
 
 * The returned values are not ordered
-* The returned graph is compresed
+* The returned graph is compressed
 * Running time: :math:`O(|V||E|)`
 
 |Boost| Boost Graph Inside

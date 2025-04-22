@@ -26,7 +26,7 @@
 
 .. rubric:: Version 3.6.0
 
-* Standarizing output columns to |nksp-result|
+* Standardizing output columns to |nksp-result|
 * pgr_withPointsKSP(One to One)
 
   * Signature change: ``driving_side`` parameter changed from named optional to
@@ -86,7 +86,7 @@ One to One
    | **options:** ``[directed, heap_paths, details]``
 
    | Returns set of |nksp-result|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: Get 2 paths from Point :math:`1` to point :math:`2` on a directed
           graph with **left** side driving.
@@ -112,7 +112,7 @@ One to Many
    | **options:** ``[directed, heap_paths, details]``
 
    | Returns set of |ksp-result|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: Get 2 paths from point :math:`1` to point :math:`3` and vertex :math:`7` on an
           undirected graph
@@ -134,7 +134,7 @@ Many to One
    | **options:** ``[directed, heap_paths, details]``
 
    | Returns set of |ksp-result|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: Get a path from point :math:`1` and vertex :math:`6` to point :math:`3` on a **directed**
           graph with **right** side driving and **details** set to **True**
@@ -156,7 +156,7 @@ Many to Many
    | **options:** ``[directed, heap_paths, details]``
 
    | Returns set of |nksp-result|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: Get a path from point :math:`1` and vertex :math:`6` to point :math:`3` and vertex :math:`1` on a **directed**
           graph with **left** side driving and **heap_paths** set to **True**
@@ -178,7 +178,7 @@ Combinations
    | **options:** ``[directed, heap_paths, details]``
 
    | Returns set of |ksp-result|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: Using a combinations table on an **directed** graph
 

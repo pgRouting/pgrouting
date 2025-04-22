@@ -34,7 +34,7 @@
   * pgr_withPointsDD(Single vertex)
   * pgr_withPointsDD(Multiple vertices)
 
-* Standarizing output columns to |result-spantree|
+* Standardizing output columns to |result-spantree|
 
   * pgr_withPointsDD(Single vertex)
 
