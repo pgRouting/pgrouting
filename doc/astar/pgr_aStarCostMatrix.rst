@@ -35,7 +35,7 @@ Description
 
 **The main characteristics are:**
 
-* Using internaly the :doc:`pgr_aStar` algorithm
+* Using internally the :doc:`pgr_aStar` algorithm
 * Returns a cost matrix.
 * No ordering is performed
 * let `v` and `u` are nodes on the graph:

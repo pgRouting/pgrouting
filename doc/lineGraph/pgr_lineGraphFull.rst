@@ -272,7 +272,7 @@ Adding a soft restriction
 
 A soft restriction going from vertex 6 to vertex 3 using edges 4 -> 7 is wanted.
 
-Idenifying the restriction
+Identifying the restriction
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Running a :doc:`pgr_dijkstraNear` the edge with cost 0, edge 8, is where the
@@ -283,7 +283,7 @@ cost will be increased
    :end-before: -- q13
 
 The edge to be altered is ``WHERE cost = 0 AND seq != 1 AND edge != -1`` from
-the previus query:
+the previous query:
 
 .. literalinclude:: lineGraphFull.queries
    :start-after: -- q13

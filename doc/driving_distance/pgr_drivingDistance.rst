@@ -22,7 +22,7 @@
 
 .. rubric:: Version 3.6.0
 
-* Standarizing output columns to |result-spantree|
+* Standardizing output columns to |result-spantree|
 
   * pgr_drivingDistance(Single vertex)
 
@@ -53,7 +53,7 @@ Description
 
 Using the Dijkstra algorithm, extracts all the nodes that have costs less than
 or equal to the value ``distance``.
-The edges extracted will conform to the corresponding spaning tree.
+The edges extracted will conform to the corresponding spanning tree.
 
 |Boost| Boost Graph Inside
 

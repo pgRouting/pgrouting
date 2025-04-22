@@ -37,7 +37,7 @@ algorithm.
 Description
 -------------------------------------------------------------------------------
 
-The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path
+The ``pgr_dijkstraCost`` function summarizes of the cost of the shortest path
 using Dijkstra Algorithm.
 
 .. include:: dijkstra-family.rst

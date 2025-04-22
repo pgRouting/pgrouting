@@ -23,7 +23,7 @@
 
 * Version 3.5.0
 
-  * Standarizing output columns to |short-generic-result|
+  * Standardizing output columns to |short-generic-result|
 
     * pgr_dijkstra(One to One) added ``start_vid`` and ``end_vid`` columns.
     * pgr_dijkstra(One to Many) added ``end_vid`` column.
@@ -596,7 +596,7 @@ The following examples find the path for :math:`\{6\}\rightarrow\{10\}`
    :start-after: -- q154
    :end-before: -- q16
 
-e Also
+See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`

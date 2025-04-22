@@ -67,18 +67,18 @@ Description
 
     - When ``start_vid = 0 OR end_vid = 0``
 
-      - The solutions generated is garanteed to be *twice as long as the
+      - The solutions generated is guaranteed to be *twice as long as the
         optimal tour in the worst case*
 
     - When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``
 
-      - It is **not garanteed** that the solution will be, in the worse case,
+      - It is **not guaranteed** that the solution will be, in the worse case,
         twice as long as the optimal tour, due to the fact that `end_vid` is
         forced to be in a fixed position.
 
   - With ``directed => true``
 
-    - It is **not garanteed** that the solution will be, in the worse case,
+    - It is **not guaranteed** that the solution will be, in the worse case,
       twice as long as the optimal tour
     - Will generate a graph that:
 
@@ -118,7 +118,7 @@ Signatures
    | pgr_TSP(`Matrix SQL`_, ``[start_id, end_id]``)
 
    | Returns set of |tsp-result|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information
 
@@ -187,14 +187,14 @@ Start from vertex :math:`1`
    :end-before: -- q3
    :linenos:
 
-Using points of interest to generate an asymetric matrix.
+Using points of interest to generate an asymmetric matrix.
 ...............................................................................
 
 To generate an asymmetric matrix:
 
 * **Line 4** The ``side`` information of ``pointsOfInterset`` is ignored by not
   including it in the query
-* **Line 6** Generating an asymetric matrix with ``directed => true``
+* **Line 6** Generating an asymmetric matrix with ``directed => true``
 
   * :math:`min(agg\_cost(u, v), agg\_cost(v, u))` is going to be considered as
     the ``agg_cost``

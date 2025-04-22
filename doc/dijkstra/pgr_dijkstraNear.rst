@@ -174,7 +174,7 @@ Many to Many
 
 :Example: Find the best pedestrian connection between two lines of buses
 
-* Unsing an **undirected** graph for pedestrian routing
+* Using an **undirected** graph for pedestrian routing
 * The first subway line stations are at :math:`\{15, 16\}`
 * The second subway line stations stops are at :math:`\{1, 10, 11\}`
 * On line `4`: using the named parameter: `directed => false`
@@ -253,7 +253,7 @@ From the results:
 
   * The best connections from all the stations from the second line are:
     :math:`{(15 \rightarrow 10) (16 \rightarrow 11)}`
-  * Both are equaly good as they have the same cost. (lines: `13` and `14` and
+  * Both are equally good as they have the same cost. (lines: `13` and `14` and
     lines: `15` and `16`)
 
 

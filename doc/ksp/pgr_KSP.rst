@@ -22,7 +22,7 @@
 
 .. rubric:: Version 3.6.0
 
-* Result columns standarized to: |nksp-result|
+* Standardizing output columns to |nksp-result|
 * pgr_ksp(One to One)
 
   * Added ``start_vid`` and ``end_vid`` result columns.
