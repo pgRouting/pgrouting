@@ -332,6 +332,7 @@ linkcheck_ignore = [
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
     r'https://github.com/pgRouting/pgrouting/issues/*',    # limit only pgrouting
     r'https://github.com/pgRouting/pgrouting/archive/*',
+    r'https://docs.pgrouting.org/3.8/*',
     r'https://www.overpass-api.de/*'
 ]
 
@@ -396,7 +397,7 @@ rst_epilog="""
 .. |result-pickdrop| replace:: ``(seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo, travel_time, arrival_time, wait_time, service_time, departure_time)``
 .. |boost| image:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph
-   :alt: Boost Graph Inside
+   :alt: Boost Graph inside
    :height: 18
 .. |epilog_end| replace:: just a marker for notes2news
 """
