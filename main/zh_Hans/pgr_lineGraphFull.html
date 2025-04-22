@@ -116,7 +116,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#adding-a-soft-restriction">添加软限制</a><ul>
-<li><a class="reference internal" href="#idenifying-the-restriction">识别限制</a></li>
+<li><a class="reference internal" href="#identifying-the-restriction">识别限制</a></li>
 <li><a class="reference internal" href="#adding-a-value-to-the-restriction">向限制添加值</a></li>
 </ul>
 </li>
@@ -199,7 +199,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#adding-a-soft-restriction">添加软限制</a><ul>
-<li><a class="reference internal" href="#idenifying-the-restriction">识别限制</a></li>
+<li><a class="reference internal" href="#identifying-the-restriction">识别限制</a></li>
 <li><a class="reference internal" href="#adding-a-value-to-the-restriction">向限制添加值</a></li>
 </ul>
 </li>
@@ -248,7 +248,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - 实验<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> —将给定图转换为新图，其中原始图的所有顶点都转换为线图。</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="943b8d8e-fa7f-444f-899e-e11d221ba957" name="943b8d8e-fa7f-444f-899e-e11d221ba957" type="checkbox"><label class="sphinx_collapse__label" for="943b8d8e-fa7f-444f-899e-e11d221ba957"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="cdc07b20-35b8-4314-9fa1-3cc98093ee5e" name="cdc07b20-35b8-4314-9fa1-3cc98093ee5e" type="checkbox"><label class="sphinx_collapse__label" for="cdc07b20-35b8-4314-9fa1-3cc98093ee5e"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -305,7 +305,7 @@
 <li><p>当输入图中使用重复的边 id 时，结果是不确定的。</p></li>
 <li><p>运行时间：TBD（待定）</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -511,7 +511,7 @@
 </li>
 <li><p><a class="reference internal" href="#adding-a-soft-restriction" id="id7">添加软限制</a></p>
 <ul>
-<li><p><a class="reference internal" href="#idenifying-the-restriction" id="id8">识别限制</a></p></li>
+<li><p><a class="reference internal" href="#identifying-the-restriction" id="id8">识别限制</a></p></li>
 <li><p><a class="reference internal" href="#adding-a-value-to-the-restriction" id="id9">向限制添加值</a></p></li>
 </ul>
 </li>
@@ -774,8 +774,8 @@ INSERT 0 11
 <section id="adding-a-soft-restriction">
 <h3><a class="toc-backref" href="#id7" role="doc-backlink">添加软限制</a><a class="headerlink" href="#adding-a-soft-restriction" title="Link to this heading">¶</a></h3>
 <p>需要使用边 4 -&gt; 7 从顶点 6 到顶点 3 的软限制。</p>
-<section id="idenifying-the-restriction">
-<h4><a class="toc-backref" href="#id8" role="doc-backlink">识别限制</a><a class="headerlink" href="#idenifying-the-restriction" title="Link to this heading">¶</a></h4>
+<section id="identifying-the-restriction">
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">识别限制</a><a class="headerlink" href="#identifying-the-restriction" title="Link to this heading">¶</a></h4>
 <p>运行 <a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - 拟议</span></a> 时，成本将会增加的地方是边 8，其成本为 0</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, path_seq, start_vid, end_vid, node, original_id, edge, cost, agg_cost
 FROM (SELECT * FROM pgr_dijkstraNear(
@@ -1058,7 +1058,7 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 4月 19, 2025.<br/>
+      Last updated on 4月 22, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

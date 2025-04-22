@@ -1622,7 +1622,7 @@ being standardized.</p>
 </section>
 <section id="migration-of-pgr-withpointsdd">
 <h2><a class="toc-backref" href="#id19" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsdd" title="Link to this heading">¶</a></h2>
-<p>从 <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a> <a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Proposed</span></a> 结果列开始标准化。</p>
+<p>从 <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a> <a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - 拟议</span></a> 结果列开始标准化。</p>
 <dl class="field-list simple">
 <dt class="field-odd">从<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -1882,7 +1882,7 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 </section>
 <section id="migration-of-pgr-withpointsksp">
 <h2><a class="toc-backref" href="#id20" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsksp" title="Link to this heading">¶</a></h2>
-<p>从 <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a> <a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Proposed</span></a> 开始对结果列进行标准化。</p>
+<p>从 <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a> <a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP- 拟议</span></a> 开始对结果列进行标准化。</p>
 <dl class="field-list simple">
 <dt class="field-odd">从<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -2110,13 +2110,13 @@ FROM pgr_trsp(
 </nav>
 <p class="rubric">另请参阅</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - 拟议</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - 拟议</span></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-restrictions">Migration of restrictions</a></p></li>
 </ul>
 <section id="use-pgr-withpoints-when-there-are-no-restrictions">
 <h3><a class="toc-backref" href="#id29" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> when there are no restrictions.</a><a class="headerlink" href="#use-pgr-withpoints-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
-<p>Use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a> (One to One) instead.</p>
+<p>Use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - 拟议</span></a> (One to One) instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,
@@ -2158,7 +2158,7 @@ FROM pgr_withPoints(
 </section>
 <section id="use-pgr-trsp-withpoints-when-there-are-restrictions">
 <h3><a class="toc-backref" href="#id30" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> when there are restrictions.</a><a class="headerlink" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
-<p>请使用 <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a>。</p>
+<p>请使用 <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - 拟议</span></a>。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM new_restrictions$$,
@@ -2362,13 +2362,13 @@ WHERE edge != -1;
 </nav>
 <p class="rubric">另请参阅</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - 拟议</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-restrictions">Migration of restrictions</a></p></li>
 </ul>
 <section id="use-pgr-withpointsvia-when-there-are-no-restrictions">
 <h3><a class="toc-backref" href="#id33" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> when there are no restrictions</a><a class="headerlink" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
-<p>请使用 <a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a>。</p>
+<p>请使用 <a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - 拟议</span></a>。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
@@ -2696,7 +2696,7 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 4月 19, 2025.<br/>
+      Last updated on 4月 22, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

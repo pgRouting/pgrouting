@@ -101,7 +101,7 @@
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
 <li><a class="reference internal" href="#examples">Ejemplos</a><ul>
-<li><a class="reference internal" href="#fixing-an-intersection">Encontrando una intersección</a></li>
+<li><a class="reference internal" href="#fixing-an-intersection">Arreglando una intersección</a></li>
 <li><a class="reference internal" href="#fixing-a-gap">Fixing a gap</a></li>
 </ul>
 </li>
@@ -156,7 +156,7 @@
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
 <li><a class="reference internal" href="#examples">Ejemplos</a><ul>
-<li><a class="reference internal" href="#fixing-an-intersection">Encontrando una intersección</a></li>
+<li><a class="reference internal" href="#fixing-an-intersection">Arreglando una intersección</a></li>
 <li><a class="reference internal" href="#fixing-a-gap">Fixing a gap</a></li>
 </ul>
 </li>
@@ -324,7 +324,7 @@
 </div>
 <p>El análisis dice que la red tiene un hueco y una intersección.</p>
 <section id="fixing-an-intersection">
-<h3>Encontrando una intersección<a class="headerlink" href="#fixing-an-intersection" title="Link to this heading">¶</a></h3>
+<h3>Arreglando una intersección<a class="headerlink" href="#fixing-an-intersection" title="Link to this heading">¶</a></h3>
 <p>Almacenando las intersecciones.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="n">id1</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span> <span class="n">id2</span><span class="p">,</span> <span class="n">st_intersection</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">point</span>
 <span class="n">INTO</span> <span class="n">intersections</span>
@@ -582,7 +582,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en abr 19, 2025.<br/>
+      Actualizado por última vez en abr 22, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

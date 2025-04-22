@@ -224,7 +224,7 @@ network connectivity.</p>
 <div class="line">pgr_separateTouching(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<code class="docutils literal notranslate"><span class="pre">tolerance</span></code>, <code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS <code class="docutils literal notranslate"><span class="pre">(seq,id,sub_id,geom)</span></code></div>
+<div class="line">REGRESA <code class="docutils literal notranslate"><span class="pre">(seq,id,sub_id,geom)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -402,7 +402,7 @@ geometries.</p>
 </pre></div>
 </div>
 <p>The analysis tell us that the network has a gap.</p>
-<p class="rubric">Prepare tables</p>
+<p class="rubric">Preparar tablas</p>
 <p>Additional columns to control the origin of the segments.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">old_id</span> <span class="n">BIGINT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
@@ -505,7 +505,7 @@ based on the length of the geometry and the directionality is kept using the
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en abr 19, 2025.<br/>
+      Actualizado por última vez en abr 22, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

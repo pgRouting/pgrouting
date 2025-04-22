@@ -109,7 +109,7 @@
 </li>
 <li><a class="reference internal" href="#examples">Ejemplos</a><ul>
 <li><a class="reference internal" href="#get-the-code-for-further-refinement">Get the code for further refinement.</a></li>
-<li><a class="reference internal" href="#fixing-an-intersection">Encontrando una intersección</a></li>
+<li><a class="reference internal" href="#fixing-an-intersection">Arreglando una intersección</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -170,7 +170,7 @@
 </li>
 <li><a class="reference internal" href="#examples">Ejemplos</a><ul>
 <li><a class="reference internal" href="#get-the-code-for-further-refinement">Get the code for further refinement.</a></li>
-<li><a class="reference internal" href="#fixing-an-intersection">Encontrando una intersección</a></li>
+<li><a class="reference internal" href="#fixing-an-intersection">Arreglando una intersección</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -212,7 +212,7 @@ do not cross.</p>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>This is an auxiliary function for separating crossing edges.</p>
+<p>Esta es una función auxiliar para separar aristas que se cruzan.</p>
 </section>
 <section id="signature">
 <h2>Firma<a class="headerlink" href="#signature" title="Link to this heading">¶</a></h2>
@@ -222,7 +222,7 @@ do not cross.</p>
 <div class="line">pgr_separateCrossing(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<code class="docutils literal notranslate"><span class="pre">tolerance</span></code>, <code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS <code class="docutils literal notranslate"><span class="pre">(seq,id,sub_id,geom)</span></code></div>
+<div class="line">REGRESA <code class="docutils literal notranslate"><span class="pre">(seq,id,sub_id,geom)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -317,7 +317,7 @@ do not cross.</p>
 <nav class="contents local" id="contenido">
 <ul class="simple">
 <li><p><a class="reference internal" href="#get-the-code-for-further-refinement" id="id1">Get the code for further refinement.</a></p></li>
-<li><p><a class="reference internal" href="#fixing-an-intersection" id="id2">Encontrando una intersección</a></p></li>
+<li><p><a class="reference internal" href="#fixing-an-intersection" id="id2">Arreglando una intersección</a></p></li>
 </ul>
 </nav>
 <section id="get-the-code-for-further-refinement">
@@ -367,7 +367,7 @@ PostgreSQL <code class="docutils literal notranslate"><span class="pre">NOTICE</
 </div>
 </section>
 <section id="fixing-an-intersection">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Encontrando una intersección</a><a class="headerlink" href="#fixing-an-intersection" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Arreglando una intersección</a><a class="headerlink" href="#fixing-an-intersection" title="Link to this heading">¶</a></h3>
 <p>In this example the original edge table will be used to store the additional
 geometries.</p>
 <p class="rubric">An example use without results</p>
@@ -394,7 +394,7 @@ geometries.</p>
 </pre></div>
 </div>
 <p>The analysis tell us that the network has an intersection.</p>
-<p class="rubric">Prepare tables</p>
+<p class="rubric">Preparar tablas</p>
 <p>Additional columns to control the origin of the segments.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">old_id</span> <span class="n">BIGINT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
@@ -495,7 +495,7 @@ based on the length of the geometry and the directionality is kept using the
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en abr 19, 2025.<br/>
+      Actualizado por última vez en abr 22, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

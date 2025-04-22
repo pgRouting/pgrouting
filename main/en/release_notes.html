@@ -469,14 +469,14 @@ milestone for 3.8.0</a></p>
 <p class="rubric">Promotion to official function of pgRouting.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2772">#2772</a>:
-pgr_extractVertices</p>
+Promoted to official pgr_extractVertices in version 3.8</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
 <li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2760">#2760</a>:
-pgr_degree</p>
+Promoted to official pgr_degree in version 3.8</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
 <li><p>New signature with only Edges SQL.</p></li>
@@ -484,7 +484,7 @@ pgr_degree</p>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2774">#2774</a>:
-pgr_findCloseEdges</p>
+Promoted to official pgr_findCloseEdges in version 3.8</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">partial</span></code> option is removed.</p></li>
@@ -492,22 +492,29 @@ pgr_findCloseEdges</p>
 </ul>
 </li>
 </ul>
-<p class="rubric">Deprecation of functions.</p>
+<p class="rubric">Proposed functions</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2749">#2749</a>:
-pgr_alphaShape</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2754">#2754</a>:
-pgr_analyzeOneWay</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2753">#2753</a>:
-pgr_analyzeGraph</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2750">#2750</a>:
-pgr_createTopology</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2826">#2826</a>:
-pgr_createVerticesTable</p></li>
+<li><p>Contraction</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2790">#2790</a>:
+pgr_contractionDeadEnd new contraction function</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2791">#2791</a>:
+pgr_contractionLinear new contraction function</p></li>
+</ul>
+</li>
+<li><p>Utilities</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2848">#2848</a>:
+Create pgr_separateCrossing new utility function</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2849">#2849</a>:
+Create of pgr_separateTouching new utility function</p></li>
+</ul>
+</li>
 </ul>
 <p class="rubric">Official functions changes</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2786">#2786</a>: pgr_contraction</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2786">#2786</a>:
+pgr_contraction(edges) new signature</p>
 <ul>
 <li><p>New signature:</p>
 <ul>
@@ -523,29 +530,30 @@ name <code class="docutils literal notranslate"><span class="pre">methods</span>
 <p class="rubric">C/C++ code enhancements</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2802">#2802</a>:
-Code factorization on pgr_contraction family</p></li>
+Code reorganization on pgr_contraction</p></li>
 </ul>
 <p class="rubric">SQL code enhancements</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2850">#2850</a>:
 Rewrite pgr_nodeNetwork</p></li>
 </ul>
-<p class="rubric">New proposed functions</p>
+<p class="rubric">Deprecation of SQL functions</p>
 <ul class="simple">
-<li><p>Contraction</p>
-<ul>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2790">#2790</a>: pgr_contractionDeadEnd</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2791">#2791</a>: pgr_contractionLinear</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2749">#2749</a>:
+Deprecate pgr_AlphaShape in 3.8</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2750">#2750</a>:
+Deprecate pgr_CreateTopology in 3.8</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2753">#2753</a>:
+Deprecate pgr_analyzeGraph in 3.8</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2754">#2754</a>:
+Deprecate pgr_analyzeOneWay in 3.8</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2826">#2826</a>:
+Deprecate pgr_createVerticesTable in 3.8</p></li>
 </ul>
-</li>
-<li><p>Utilities</p>
-<ul>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2848">#2848</a>:
-pgr_separateCrossing</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2849">#2849</a>:
-pgr_separateTouching</p></li>
-</ul>
-</li>
+<p>In the deprecated functions:</p>
+<ul class="simple">
+<li><p>Migration section is created.</p></li>
+<li><p>The use of the functions is removed in the documentation.</p></li>
 </ul>
 </section>
 </section>
@@ -636,7 +644,7 @@ spanning tree functions output</p>
 </li>
 </ul>
 <ul class="simple">
-<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<li><p>Standardizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">pred</span></code> result columns.</p></li>
 </ul>
@@ -787,7 +795,7 @@ columns.</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2547">#2547</a> Standardize output
 and modifying signature pgr_KSP</p>
 <ul>
-<li><p>Result columns standarized to: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Standardizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>pgr_ksp(One to One)</p>
 <ul>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> result columns.</p></li>
@@ -806,7 +814,7 @@ and modifying signature pgr_KSP</p>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2548">#2548</a> Standardize output
 pgr_drivingDistance</p>
 <ul>
-<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<li><p>Standardizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
 <li><p>pgr_drivingDistance(Single vertex)</p>
 <ul>
@@ -836,7 +844,7 @@ unnamed compulsory <strong>driving side</strong>.</p>
 <li><p>pgr_withPointsDD(Multiple vertices)</p></li>
 </ul>
 </li>
-<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<li><p>Standardizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
 <li><p>pgr_withPointsDD(Single vertex)</p>
 <ul>
@@ -858,8 +866,8 @@ distance are included</p></li>
 </li>
 <li><p>Deprecated signatures</p>
 <ul>
-<li><p>pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``</p></li>
-<li><p>pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``</p></li>
+<li><p>pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)</p></li>
+<li><p>pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
 </ul>
 </li>
 </ul>
@@ -867,7 +875,7 @@ distance are included</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2546">#2546</a> Standardize output
 and modifying signature pgr_withPointsKSP</p>
 <ul>
-<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Standardizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>pgr_withPointsKSP(One to One)</p>
 <ul>
 <li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
@@ -2597,7 +2605,7 @@ file and are kept as a reference.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on Apr 19, 2025.<br/>
+      Last updated on Apr 22, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

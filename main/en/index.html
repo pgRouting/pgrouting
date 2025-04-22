@@ -448,14 +448,14 @@ milestone for 3.8.0</a></p>
 <p class="rubric">Promotion to official function of pgRouting.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2772">#2772</a>:
-pgr_extractVertices</p>
+Promoted to official pgr_extractVertices in version 3.8</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
 <li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2760">#2760</a>:
-pgr_degree</p>
+Promoted to official pgr_degree in version 3.8</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
 <li><p>New signature with only Edges SQL.</p></li>
@@ -463,7 +463,7 @@ pgr_degree</p>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2774">#2774</a>:
-pgr_findCloseEdges</p>
+Promoted to official pgr_findCloseEdges in version 3.8</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">partial</span></code> option is removed.</p></li>
@@ -471,22 +471,29 @@ pgr_findCloseEdges</p>
 </ul>
 </li>
 </ul>
-<p class="rubric">Deprecation of functions.</p>
+<p class="rubric">Proposed functions</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2749">#2749</a>:
-pgr_alphaShape</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2754">#2754</a>:
-pgr_analyzeOneWay</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2753">#2753</a>:
-pgr_analyzeGraph</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2750">#2750</a>:
-pgr_createTopology</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2826">#2826</a>:
-pgr_createVerticesTable</p></li>
+<li><p>Contraction</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2790">#2790</a>:
+pgr_contractionDeadEnd new contraction function</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2791">#2791</a>:
+pgr_contractionLinear new contraction function</p></li>
+</ul>
+</li>
+<li><p>Utilities</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2848">#2848</a>:
+Create pgr_separateCrossing new utility function</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2849">#2849</a>:
+Create of pgr_separateTouching new utility function</p></li>
+</ul>
+</li>
 </ul>
 <p class="rubric">Official functions changes</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2786">#2786</a>: pgr_contraction</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2786">#2786</a>:
+pgr_contraction(edges) new signature</p>
 <ul>
 <li><p>New signature:</p>
 <ul>
@@ -502,29 +509,30 @@ name <code class="docutils literal notranslate"><span class="pre">methods</span>
 <p class="rubric">C/C++ code enhancements</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2802">#2802</a>:
-Code factorization on pgr_contraction family</p></li>
+Code reorganization on pgr_contraction</p></li>
 </ul>
 <p class="rubric">SQL code enhancements</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2850">#2850</a>:
 Rewrite pgr_nodeNetwork</p></li>
 </ul>
-<p class="rubric">New proposed functions</p>
+<p class="rubric">Deprecation of SQL functions</p>
 <ul class="simple">
-<li><p>Contraction</p>
-<ul>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2790">#2790</a>: pgr_contractionDeadEnd</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2791">#2791</a>: pgr_contractionLinear</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2749">#2749</a>:
+Deprecate pgr_AlphaShape in 3.8</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2750">#2750</a>:
+Deprecate pgr_CreateTopology in 3.8</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2753">#2753</a>:
+Deprecate pgr_analyzeGraph in 3.8</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2754">#2754</a>:
+Deprecate pgr_analyzeOneWay in 3.8</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2826">#2826</a>:
+Deprecate pgr_createVerticesTable in 3.8</p></li>
 </ul>
-</li>
-<li><p>Utilities</p>
-<ul>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2848">#2848</a>:
-pgr_separateCrossing</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2849">#2849</a>:
-pgr_separateTouching</p></li>
-</ul>
-</li>
+<p>In the deprecated functions:</p>
+<ul class="simple">
+<li><p>Migration section is created.</p></li>
+<li><p>The use of the functions is removed in the documentation.</p></li>
 </ul>
 </section>
 <section id="all-releases">
@@ -563,7 +571,7 @@ pgr_separateTouching</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on Apr 19, 2025.<br/>
+      Last updated on Apr 22, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
