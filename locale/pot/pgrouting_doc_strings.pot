@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-22 13:43-0600\n"
+"POT-Creation-Date: 2025-04-22 16:17-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3529,7 +3529,7 @@ msgstr ""
 msgid "Promotion to official function of pgRouting."
 msgstr ""
 
-msgid "`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promote to official pgr_extractVertices in 3.8"
+msgid "`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promoted to official pgr_extractVertices in version 3.8"
 msgstr ""
 
 msgid "Error messages adjustment."
@@ -3538,19 +3538,19 @@ msgstr ""
 msgid "Function promoted to official."
 msgstr ""
 
-msgid "`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promote to official pgr_degree in 3.8"
+msgid "`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promoted to official pgr_degree in version 3.8"
 msgstr ""
 
 msgid "New signature with only Edges SQL."
 msgstr ""
 
-msgid "`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promote to official pgr_findCloseEdges in 3.8"
+msgid "`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promoted to official pgr_findCloseEdges in version 3.8"
 msgstr ""
 
 msgid "``partial`` option is removed."
 msgstr ""
 
-msgid "New proposed functions"
+msgid "Proposed functions"
 msgstr ""
 
 msgid "Contraction"
@@ -3598,7 +3598,7 @@ msgstr ""
 msgid "`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__: Rewrite pgr_nodeNetwork"
 msgstr ""
 
-msgid "Deprecation of functions."
+msgid "Deprecation of SQL functions"
 msgstr ""
 
 msgid "`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: Deprecate pgr_AlphaShape in 3.8"
@@ -3616,13 +3616,13 @@ msgstr ""
 msgid "`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: Deprecate pgr_createVerticesTable in 3.8"
 msgstr ""
 
-msgid "Deprecated functions:"
+msgid "In the deprecated functions:"
 msgstr ""
 
 msgid "Migration section is created."
 msgstr ""
 
-msgid "The use removed."
+msgid "The use of the functions is removed in the documentation."
 msgstr ""
 
 msgid "All releases"
@@ -6451,19 +6451,19 @@ msgstr ""
 msgid "When ``start_vid = 0 OR end_vid = 0``"
 msgstr ""
 
-msgid "The solutions generated is guaranteed to be *twice as long as the optimal tour in the worst case*"
+msgid "The solutions generated are guaranteed to be *twice as long as the optimal tour in the worst case*"
 msgstr ""
 
 msgid "When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
 msgstr ""
 
-msgid "It is **not guaranteed** that the solution will be, in the worse case, twice as long as the optimal tour, due to the fact that `end_vid` is forced to be in a fixed position."
+msgid "It is **not guaranteed** that the solution will be, in the worst case, twice as long as the optimal tour, due to the fact that `end_vid` is forced to be in a fixed position."
 msgstr ""
 
 msgid "With ``directed => true``"
 msgstr ""
 
-msgid "It is **not guaranteed** that the solution will be, in the worse case, twice as long as the optimal tour"
+msgid "It is **not guaranteed** that the solution will be, in the worst case, twice as long as the optimal tour"
 msgstr ""
 
 msgid "is directed"
@@ -13063,6 +13063,27 @@ msgstr ""
 msgid "pgRouting 3.8"
 msgstr ""
 
+msgid "`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promote to official pgr_extractVertices in 3.8"
+msgstr ""
+
+msgid "`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promote to official pgr_degree in 3.8"
+msgstr ""
+
+msgid "`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promote to official pgr_findCloseEdges in 3.8"
+msgstr ""
+
+msgid "New proposed functions"
+msgstr ""
+
+msgid "Deprecation of functions."
+msgstr ""
+
+msgid "Deprecated functions:"
+msgstr ""
+
+msgid "The use removed."
+msgstr ""
+
 msgid "pgRouting 3.7"
 msgstr ""
 
@@ -15523,7 +15544,7 @@ msgstr ""
 msgid "Driving side"
 msgstr ""
 
-msgid "In the the following images:"
+msgid "In the following images:"
 msgstr ""
 
 msgid "The squared vertices are the temporary vertices,"

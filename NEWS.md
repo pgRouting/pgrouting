@@ -16,26 +16,26 @@ milestone for 3.8.0
 **Promotion to official function of pgRouting.**
 
 * [#2772](https://github.com/pgRouting/pgrouting/issues/2772):
-  Promote to official pgr_extractVertices in 3.8
+  Promoted to official pgr_extractVertices in version 3.8
 
   * Error messages adjustment.
   * Function promoted to official.
 
 * [#2760](https://github.com/pgRouting/pgrouting/issues/2760):
-  Promote to official pgr_degree in 3.8
+  Promoted to official pgr_degree in version 3.8
 
   * Error messages adjustment.
   * New signature with only Edges SQL.
   * Function promoted to official.
 
 * [#2774](https://github.com/pgRouting/pgrouting/issues/2774):
-  Promote to official pgr_findCloseEdges in 3.8
+  Promoted to official pgr_findCloseEdges in version 3.8
 
   * Error messages adjustment.
   * ``partial`` option is removed.
   * Function promoted to official.
 
-**New proposed functions**
+**Proposed functions**
 
 * Contraction
 
@@ -72,7 +72,7 @@ milestone for 3.8.0
 * [#2850](https://github.com/pgRouting/pgrouting/issues/2850):
   Rewrite pgr_nodeNetwork
 
-**Deprecation of functions.**
+**Deprecation of SQL functions**
 
 * [#2749](https://github.com/pgRouting/pgrouting/issues/2749):
   Deprecate pgr_AlphaShape in 3.8
@@ -85,10 +85,10 @@ milestone for 3.8.0
 * [#2826](https://github.com/pgRouting/pgrouting/issues/2826):
   Deprecate pgr_createVerticesTable in 3.8
 
-Deprecated functions:
+In the deprecated functions:
 
 - Migration section is created.
-- The use removed.
+- The use of the functions is removed in the documentation.
 
 ## pgRouting 3.7
 
