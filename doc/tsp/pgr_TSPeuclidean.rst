@@ -52,7 +52,7 @@ Description
    :start-after: tsp characteristics start
    :end-before: tsp characteristics end
 
-- Any duplicated identifier will be ignored. The coordinates than will be kept
+- Any duplicated identifier will be ignored. The coordinates that will be kept
   is arbitrarily.
 
   - The coordinates are quite similar for the same identifier, for example

@@ -264,7 +264,7 @@ for this example:
 Driving side
 ...............................................................................
 
-In the the following images:
+In the following images:
 
 - The squared vertices are the temporary vertices,
 - The temporary vertices are added according to the driving side,

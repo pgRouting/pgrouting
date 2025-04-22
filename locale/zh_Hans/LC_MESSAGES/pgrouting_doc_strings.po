@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-22 11:58-0600\n"
+"POT-Creation-Date: 2025-04-22 16:17-0600\n"
 "PO-Revision-Date: 2025-04-09 00:16+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -4074,8 +4074,8 @@ msgstr "pgRouting 中的拟议已升级为正式版本"
 
 #, fuzzy
 msgid ""
-"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promote to "
-"official pgr_extractVertices in 3.8"
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promoted to "
+"official pgr_extractVertices in version 3.8"
 msgstr ""
 "`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
 "pgr_extractVertices"
@@ -4088,8 +4088,8 @@ msgstr "函数正式发布。"
 
 #, fuzzy
 msgid ""
-"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promote to "
-"official pgr_degree in 3.8"
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promoted to "
+"official pgr_degree in version 3.8"
 msgstr ""
 "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
 
@@ -4098,8 +4098,8 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promote to "
-"official pgr_findCloseEdges in 3.8"
+"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promoted to "
+"official pgr_findCloseEdges in version 3.8"
 msgstr ""
 "`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
 "pgr_extractVertices"
@@ -4108,8 +4108,9 @@ msgstr ""
 msgid "``partial`` option is removed."
 msgstr "``n_seq`` 被删除"
 
-msgid "New proposed functions"
-msgstr "新的拟议函数"
+#, fuzzy
+msgid "Proposed functions"
+msgstr "拟议的功能"
 
 #, fuzzy
 msgid "Contraction"
@@ -4197,7 +4198,7 @@ msgstr ""
 "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
 
 #, fuzzy
-msgid "Deprecation of functions."
+msgid "Deprecation of SQL functions"
 msgstr "已废弃的函数"
 
 #, fuzzy
@@ -4237,7 +4238,7 @@ msgstr ""
 "pgr_extractVertices"
 
 #, fuzzy
-msgid "Deprecated functions:"
+msgid "In the deprecated functions:"
 msgstr "已废弃的功能"
 
 #, fuzzy
@@ -4245,8 +4246,8 @@ msgid "Migration section is created."
 msgstr "限制迁移"
 
 #, fuzzy
-msgid "The use removed."
-msgstr "哪些可以删除"
+msgid "The use of the functions is removed in the documentation."
+msgstr "这个问题的答案将取决于应用情况。"
 
 msgid "All releases"
 msgstr "所有版本"
@@ -7860,16 +7861,18 @@ msgstr "所有边上的旅行成本都遵循三角不等式。"
 msgid "When ``start_vid = 0 OR end_vid = 0``"
 msgstr "当 ``start_vid = 0 OR end_vid = 0``"
 
+#, fuzzy
 msgid ""
-"The solutions generated is guaranteed to be *twice as long as the optimal "
+"The solutions generated are guaranteed to be *twice as long as the optimal "
 "tour in the worst case*"
 msgstr "生成的解决方案保证是*最坏情况下最优路径时间的两倍*"
 
 msgid "When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
 msgstr "当 ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
 
+#, fuzzy
 msgid ""
-"It is **not guaranteed** that the solution will be, in the worse case, twice "
+"It is **not guaranteed** that the solution will be, in the worst case, twice "
 "as long as the optimal tour, due to the fact that `end_vid` is forced to be "
 "in a fixed position."
 msgstr ""
@@ -7879,8 +7882,9 @@ msgstr ""
 msgid "With ``directed => true``"
 msgstr "当 ``directed => true``"
 
+#, fuzzy
 msgid ""
-"It is **not guaranteed** that the solution will be, in the worse case, twice "
+"It is **not guaranteed** that the solution will be, in the worst case, twice "
 "as long as the optimal tour"
 msgstr "**不能保证** 在最坏情况下解决方案将是最优路径的两倍长"
 
@@ -16742,6 +16746,44 @@ msgstr "3.x小版本"
 msgid "pgRouting 3.8"
 msgstr "pgRouting 3.7"
 
+#, fuzzy
+msgid ""
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promote to "
+"official pgr_extractVertices in 3.8"
+msgstr ""
+"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
+"pgr_extractVertices"
+
+#, fuzzy
+msgid ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promote to "
+"official pgr_degree in 3.8"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+
+#, fuzzy
+msgid ""
+"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promote to "
+"official pgr_findCloseEdges in 3.8"
+msgstr ""
+"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
+"pgr_extractVertices"
+
+msgid "New proposed functions"
+msgstr "新的拟议函数"
+
+#, fuzzy
+msgid "Deprecation of functions."
+msgstr "已废弃的函数"
+
+#, fuzzy
+msgid "Deprecated functions:"
+msgstr "已废弃的功能"
+
+#, fuzzy
+msgid "The use removed."
+msgstr "哪些可以删除"
+
 msgid "pgRouting 3.7"
 msgstr "pgRouting 3.7"
 
@@ -16817,9 +16859,9 @@ msgid ""
 "milestone for 3.7.1 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 msgstr ""
-"查看本版本已关闭的所有议题和拉取请求，请访问：`GitHub "
-"3.7.1版本里程碑关闭列表 <https://github.com/pgRouting/pgrouting/"
-"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+"查看本版本已关闭的所有议题和拉取请求，请访问：`GitHub 3.7.1版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 
 msgid ""
 "`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ fails to "
@@ -20150,7 +20192,8 @@ msgstr "数据库上的表示遵循 `Points SQL`_ 描述，对于本示例："
 msgid "Driving side"
 msgstr "驾驶侧"
 
-msgid "In the the following images:"
+#, fuzzy
+msgid "In the following images:"
 msgstr "在下面的图片中："
 
 msgid "The squared vertices are the temporary vertices,"
@@ -20350,4 +20393,3 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
-

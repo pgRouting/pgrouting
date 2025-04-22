@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-22 11:58-0600\n"
+"POT-Creation-Date: 2025-04-22 16:17-0600\n"
 "PO-Revision-Date: 2025-04-09 00:16+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4314,8 +4314,8 @@ msgstr ""
 
 msgid ":doc:`pgr_findCloseEdges` - Finds close edges of points on the fly"
 msgstr ""
-"``pgr_findCloseEdges`` - Encuentra las aristas cercanas a una geometría "
-"al vuelo."
+"``pgr_findCloseEdges`` - Encuentra las aristas cercanas a una geometría al "
+"vuelo."
 
 msgid "Functions by categories"
 msgstr "Funciones por categorías"
@@ -4370,8 +4370,8 @@ msgstr "Promoción a función oficial de pgRouting."
 
 #, fuzzy
 msgid ""
-"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promote to "
-"official pgr_extractVertices in 3.8"
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promoted to "
+"official pgr_extractVertices in version 3.8"
 msgstr ""
 "`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
 "pgr_extractVertices"
@@ -4384,8 +4384,8 @@ msgstr "Función promovida a oficial."
 
 #, fuzzy
 msgid ""
-"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promote to "
-"official pgr_degree in 3.8"
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promoted to "
+"official pgr_degree in version 3.8"
 msgstr ""
 "`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
 
@@ -4394,8 +4394,8 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promote to "
-"official pgr_findCloseEdges in 3.8"
+"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promoted to "
+"official pgr_findCloseEdges in version 3.8"
 msgstr ""
 "`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: "
 "pgr_findCloseEdges"
@@ -4403,8 +4403,9 @@ msgstr ""
 msgid "``partial`` option is removed."
 msgstr "Opción ``partial`` se elimina."
 
-msgid "New proposed functions"
-msgstr "Nuevas funciones propuestas"
+#, fuzzy
+msgid "Proposed functions"
+msgstr "Funciones propuestas"
 
 msgid "Contraction"
 msgstr "Contracción"
@@ -4491,7 +4492,8 @@ msgid ""
 msgstr ""
 "`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
 
-msgid "Deprecation of functions."
+#, fuzzy
+msgid "Deprecation of SQL functions"
 msgstr "Funciones obsoletas."
 
 #, fuzzy
@@ -4535,7 +4537,7 @@ msgstr ""
 "pgr_createVerticesTable"
 
 #, fuzzy
-msgid "Deprecated functions:"
+msgid "In the deprecated functions:"
 msgstr "Función obsoleta."
 
 #, fuzzy
@@ -4543,8 +4545,8 @@ msgid "Migration section is created."
 msgstr "Migración de restricciones"
 
 #, fuzzy
-msgid "The use removed."
-msgstr "``n_seq`` se elimina"
+msgid "The use of the functions is removed in the documentation."
+msgstr "La respuesta a esta pregunta dependerá de la aplicación."
 
 msgid "All releases"
 msgstr "Todas las versiones"
@@ -6585,7 +6587,6 @@ msgstr ""
 msgid "The analysis tell us that the network has an intersection."
 msgstr "El análisis dice que la red tiene un hueco y una intersección."
 
-
 msgid "Prepare tables"
 msgstr "Preparar tablas"
 
@@ -8396,8 +8397,9 @@ msgstr ""
 msgid "When ``start_vid = 0 OR end_vid = 0``"
 msgstr "Cuando ``start_vid = 0 Ó end_vid = 0``"
 
+#, fuzzy
 msgid ""
-"The solutions generated is guaranteed to be *twice as long as the optimal "
+"The solutions generated are guaranteed to be *twice as long as the optimal "
 "tour in the worst case*"
 msgstr ""
 "Las soluciones generadas están garantizadas para ser *el doble de largas que "
@@ -8406,8 +8408,9 @@ msgstr ""
 msgid "When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
 msgstr "Cuando ``start_vid != 0 Y end_vid != 0 Y start_vid != end_vid``"
 
+#, fuzzy
 msgid ""
-"It is **not guaranteed** that the solution will be, in the worse case, twice "
+"It is **not guaranteed** that the solution will be, in the worst case, twice "
 "as long as the optimal tour, due to the fact that `end_vid` is forced to be "
 "in a fixed position."
 msgstr ""
@@ -8418,8 +8421,9 @@ msgstr ""
 msgid "With ``directed => true``"
 msgstr "Con ``directed => true``"
 
+#, fuzzy
 msgid ""
-"It is **not guaranteed** that the solution will be, in the worse case, twice "
+"It is **not guaranteed** that the solution will be, in the worst case, twice "
 "as long as the optimal tour"
 msgstr ""
 "**No está garantizado** que la solución sea, en el peor de los casos, el "
@@ -15921,8 +15925,7 @@ msgid ""
 msgstr ""
 
 msgid "This is an auxiliary function for separating crossing edges."
-msgstr ""
-"Esta es una función auxiliar para separar aristas que se cruzan."
+msgstr "Esta es una función auxiliar para separar aristas que se cruzan."
 
 msgid "pgr_separateCrossing(`Edges SQL`_, [``tolerance``, ``dryrun``])"
 msgstr "pgr_separateCrossing(`Edges SQL`_, [``tolerance``, ``dryrun``])"
@@ -17887,6 +17890,43 @@ msgstr ""
 
 msgid "pgRouting 3.8"
 msgstr "pgRouting 3.8"
+
+#, fuzzy
+msgid ""
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promote to "
+"official pgr_extractVertices in 3.8"
+msgstr ""
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
+"pgr_extractVertices"
+
+#, fuzzy
+msgid ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promote to "
+"official pgr_degree in 3.8"
+msgstr ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+
+#, fuzzy
+msgid ""
+"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promote to "
+"official pgr_findCloseEdges in 3.8"
+msgstr ""
+"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: "
+"pgr_findCloseEdges"
+
+msgid "New proposed functions"
+msgstr "Nuevas funciones propuestas"
+
+msgid "Deprecation of functions."
+msgstr "Funciones obsoletas."
+
+#, fuzzy
+msgid "Deprecated functions:"
+msgstr "Función obsoleta."
+
+#, fuzzy
+msgid "The use removed."
+msgstr "``n_seq`` se elimina"
 
 msgid "pgRouting 3.7"
 msgstr "pgRouting 3.7"
@@ -21327,7 +21367,8 @@ msgstr ""
 msgid "Driving side"
 msgstr "Lado de manejo"
 
-msgid "In the the following images:"
+#, fuzzy
+msgid "In the following images:"
 msgstr "En las siguientes imágenes:"
 
 msgid "The squared vertices are the temporary vertices,"
@@ -21408,7 +21449,6 @@ msgstr ""
 
 msgid "On a right hand side driving network"
 msgstr "En una red de conducción del lado derecho"
-
 
 msgid "Arrival to point ``-2`` can be achieved only via vertex **16**."
 msgstr "Llegada al punto ``-2`` se logra solo vía el vértice **16**."
@@ -21531,4 +21571,3 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
-

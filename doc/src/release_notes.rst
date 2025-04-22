@@ -46,27 +46,27 @@ milestone for 3.8.0
 .. rubric:: Promotion to official function of pgRouting.
 
 * `#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__:
-  Promote to official pgr_extractVertices in 3.8
+  Promoted to official pgr_extractVertices in version 3.8
 
   .. include:: pgr_extractVertices.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
 * `#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__:
-  Promote to official pgr_degree in 3.8
+  Promoted to official pgr_degree in version 3.8
 
   .. include:: pgr_degree.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
 * `#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__:
-  Promote to official pgr_findCloseEdges in 3.8
+  Promoted to official pgr_findCloseEdges in version 3.8
 
   .. include:: pgr_findCloseEdges.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
-.. rubric:: New proposed functions
+.. rubric:: Proposed functions
 
 * Contraction
 
@@ -101,7 +101,7 @@ milestone for 3.8.0
 * `#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__:
   Rewrite pgr_nodeNetwork
 
-.. rubric:: Deprecation of functions.
+.. rubric:: Deprecation of SQL functions
 
 * `#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__:
   Deprecate pgr_AlphaShape in 3.8
@@ -114,10 +114,10 @@ milestone for 3.8.0
 * `#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__:
   Deprecate pgr_createVerticesTable in 3.8
 
-Deprecated functions:
+In the deprecated functions:
 
 - Migration section is created.
-- The use removed.
+- The use of the functions is removed in the documentation.
 
 pgRouting 3.7
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
