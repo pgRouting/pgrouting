@@ -46,42 +46,46 @@ milestone for 3.8.0
 .. rubric:: Promotion to official function of pgRouting.
 
 * `#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__:
-  pgr_extractVertices
+  Promote to official pgr_extractVertices in 3.8
 
   .. include:: pgr_extractVertices.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
 * `#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__:
-  pgr_degree
+  Promote to official pgr_degree in 3.8
 
   .. include:: pgr_degree.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
 * `#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__:
-  pgr_findCloseEdges
+  Promote to official pgr_findCloseEdges in 3.8
 
   .. include:: pgr_findCloseEdges.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
-.. rubric:: Deprecation of functions.
+.. rubric:: New proposed functions
 
-* `#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__:
-  pgr_alphaShape
-* `#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__:
-  pgr_analyzeOneWay
-* `#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__:
-  pgr_analyzeGraph
-* `#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__:
-  pgr_createTopology
-* `#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__:
-  pgr_createVerticesTable
+* Contraction
+
+  * `#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__:
+    pgr_contractionDeadEnd new contraction function
+  * `#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__:
+    pgr_contractionLinear new contraction function
+
+* Utilities
+
+  * `#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__:
+    Create pgr_separateCrossing new utility function
+  * `#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__:
+    Create of pgr_separateTouching new utility function
 
 .. rubric:: Official functions changes
 
-* `#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: pgr_contraction
+* `#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__:
+  pgr_contraction(edges) new signature
 
   .. include:: pgr_contraction.rst
      :start-after: Version 3.8.0
@@ -90,26 +94,30 @@ milestone for 3.8.0
 .. rubric:: C/C++ code enhancements
 
 * `#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__:
-  Code factorization on pgr_contraction family
+  Code reorganization on pgr_contraction
 
 .. rubric:: SQL code enhancements
 
 * `#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__:
   Rewrite pgr_nodeNetwork
 
-.. rubric:: New proposed functions
+.. rubric:: Deprecation of functions.
 
-* Contraction
+* `#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__:
+  Deprecate pgr_AlphaShape in 3.8
+* `#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__:
+  Deprecate pgr_CreateTopology in 3.8
+* `#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__:
+  Deprecate pgr_analyzeGraph in 3.8
+* `#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__:
+  Deprecate pgr_analyzeOneWay in 3.8
+* `#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__:
+  Deprecate pgr_createVerticesTable in 3.8
 
-  * `#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: pgr_contractionDeadEnd
-  * `#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: pgr_contractionLinear
+Deprecated functions:
 
-* Utilities
-
-  * `#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__:
-    pgr_separateCrossing
-  * `#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__:
-    pgr_separateTouching
+- Migration section is created.
+- The use removed.
 
 pgRouting 3.7
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

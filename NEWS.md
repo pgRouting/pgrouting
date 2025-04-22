@@ -1,10 +1,11 @@
+To read all history of releases go to the latest [release notes](https://docs.pgrouting.org/latest/en/release_notes.html)
+
 # pgRouting 3
 
 
 ## pgRouting 3.8
 
 
-.. current
 
 ### pgRouting 3.8.0 Release Notes
 
@@ -15,41 +16,45 @@ milestone for 3.8.0
 **Promotion to official function of pgRouting.**
 
 * [#2772](https://github.com/pgRouting/pgrouting/issues/2772):
-  pgr_extractVertices
+  Promote to official pgr_extractVertices in 3.8
 
   * Error messages adjustment.
   * Function promoted to official.
 
 * [#2760](https://github.com/pgRouting/pgrouting/issues/2760):
-  pgr_degree
+  Promote to official pgr_degree in 3.8
 
   * Error messages adjustment.
   * New signature with only Edges SQL.
   * Function promoted to official.
 
 * [#2774](https://github.com/pgRouting/pgrouting/issues/2774):
-  pgr_findCloseEdges
+  Promote to official pgr_findCloseEdges in 3.8
 
   * Error messages adjustment.
   * ``partial`` option is removed.
   * Function promoted to official.
 
-**Deprecation of functions.**
+**New proposed functions**
 
-* [#2749](https://github.com/pgRouting/pgrouting/issues/2749):
-  pgr_alphaShape
-* [#2754](https://github.com/pgRouting/pgrouting/issues/2754):
-  pgr_analyzeOneWay
-* [#2753](https://github.com/pgRouting/pgrouting/issues/2753):
-  pgr_analyzeGraph
-* [#2750](https://github.com/pgRouting/pgrouting/issues/2750):
-  pgr_createTopology
-* [#2826](https://github.com/pgRouting/pgrouting/issues/2826):
-  pgr_createVerticesTable
+* Contraction
+
+  * [#2790](https://github.com/pgRouting/pgrouting/issues/2790):
+    pgr_contractionDeadEnd new contraction function
+  * [#2791](https://github.com/pgRouting/pgrouting/issues/2791):
+    pgr_contractionLinear new contraction function
+
+* Utilities
+
+  * [#2848](https://github.com/pgRouting/pgrouting/issues/2848):
+    Create pgr_separateCrossing new utility function
+  * [#2849](https://github.com/pgRouting/pgrouting/issues/2849):
+    Create of pgr_separateTouching new utility function
 
 **Official functions changes**
 
-* [#2786](https://github.com/pgRouting/pgrouting/issues/2786): pgr_contraction
+* [#2786](https://github.com/pgRouting/pgrouting/issues/2786):
+  pgr_contraction(edges) new signature
 
   * New signature:
     * Previously compulsory parameter **Contraction order** is now optional with
@@ -60,30 +65,34 @@ milestone for 3.8.0
 **C/C++ code enhancements**
 
 * [#2802](https://github.com/pgRouting/pgrouting/issues/2802):
-  Code factorization on pgr_contraction family
+  Code reorganization on pgr_contraction
 
 **SQL code enhancements**
 
 * [#2850](https://github.com/pgRouting/pgrouting/issues/2850):
   Rewrite pgr_nodeNetwork
 
-**New proposed functions**
+**Deprecation of functions.**
 
-* Contraction
+* [#2749](https://github.com/pgRouting/pgrouting/issues/2749):
+  Deprecate pgr_AlphaShape in 3.8
+* [#2750](https://github.com/pgRouting/pgrouting/issues/2750):
+  Deprecate pgr_CreateTopology in 3.8
+* [#2753](https://github.com/pgRouting/pgrouting/issues/2753):
+  Deprecate pgr_analyzeGraph in 3.8
+* [#2754](https://github.com/pgRouting/pgrouting/issues/2754):
+  Deprecate pgr_analyzeOneWay in 3.8
+* [#2826](https://github.com/pgRouting/pgrouting/issues/2826):
+  Deprecate pgr_createVerticesTable in 3.8
 
-  * [#2790](https://github.com/pgRouting/pgrouting/issues/2790): pgr_contractionDeadEnd
-  * [#2791](https://github.com/pgRouting/pgrouting/issues/2791): pgr_contractionLinear
+Deprecated functions:
 
-* Utilities
-
-  * [#2848](https://github.com/pgRouting/pgrouting/issues/2848):
-    pgr_separateCrossing
-  * [#2849](https://github.com/pgRouting/pgrouting/issues/2849):
-    pgr_separateTouching
+- Migration section is created.
+- The use removed.
 
 ## pgRouting 3.7
 
-### pgRouting 3.7.3 Release Notes
+<details> <summary>pgRouting 3.7.3 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.7.3
@@ -91,7 +100,9 @@ milestone for 3.7.3
 
 * [#2731](https://github.com/pgRouting/pgrouting/pull/2731) Build Failure on Ubuntu 22
 
-### pgRouting 3.7.2 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.7.2 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.7.2
@@ -112,7 +123,9 @@ milestone for 3.7.2
 * [#2706](https://github.com/pgRouting/pgrouting/pull/2706) winnie crashing
   on pgr_betweennessCentrality
 
-### pgRouting 3.7.1 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.7.1 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.7.1
@@ -129,7 +142,9 @@ milestone for 3.7.1
 
 * TRSP family
 
-### pgRouting 3.7.0 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.7.0 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.7.0
@@ -163,7 +178,7 @@ milestone for 3.7.0
     * ``pgr_primDFS``
     * ``pgr_primBFS``
 
-  * Standarizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
+  * Standardizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
     * Added ``pred`` result columns.
 
 **Experimental promoted to proposed.**
@@ -185,10 +200,12 @@ milestone for 3.7.0
 * [#2614](https://github.com/pgRouting/pgrouting/pull/2614) Clang tidy does
   not work
 
+</details>
+
 ## pgRouting 3.6
 
 
-### pgRouting 3.6.3 Release Notes
+<details> <summary>pgRouting 3.6.3 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.6.3
@@ -226,7 +243,9 @@ milestone for 3.6.3
 * bug fixes
 
 
-### pgRouting 3.6.2 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.6.2 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.6.2
@@ -246,7 +265,9 @@ milestone for 3.6.2
 
   * Name change to `NEWS.md` for better visualization on GitHub
 
-### pgRouting 3.6.1 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.6.1 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.6.1
@@ -255,7 +276,9 @@ milestone for 3.6.1
 * [#2588](https://github.com/pgRouting/pgrouting/pull/2588) pgrouting 3.6.0
   fails to build on OSX
 
-### pgRouting 3.6.0 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.6.0 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.6.0
@@ -285,7 +308,7 @@ milestone for 3.6.0
 * [#2547](https://github.com/pgRouting/pgrouting/pull/2547) Standardize output
   and modifying signature pgr_KSP
 
-  * Result columns standarized to: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+  * Standardizing output columns to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
   * pgr_ksp(One to One)
     * Added ``start_vid`` and ``end_vid`` result columns.
   * New proposed signatures:
@@ -297,7 +320,7 @@ milestone for 3.6.0
 * [#2548](https://github.com/pgRouting/pgrouting/pull/2548) Standardize output
   pgr_drivingDistance
 
-  * Standarizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
+  * Standardizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
     * pgr_drivingDistance(Single vertex)
       * Added ``depth`` and ``start_vid`` result columns.
     * pgr_drivingDistance(Multiple vertices)
@@ -313,7 +336,7 @@ milestone for 3.6.0
     unnamed compulsory **driving side**.
     * pgr_withPointsDD(Single vertex)
     * pgr_withPointsDD(Multiple vertices)
-  * Standarizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
+  * Standardizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
     * pgr_withPointsDD(Single vertex)
       * Added ``depth``, ``pred`` and ``start_vid`` column.
     * pgr_withPointsDD(Multiple vertices)
@@ -322,13 +345,13 @@ milestone for 3.6.0
     * Only points that are visited are removed, that is, points reached within the
       distance are included
   * Deprecated signatures
-    * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
-    * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``
+    * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
+    * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
 
 * [#2546](https://github.com/pgRouting/pgrouting/pull/2546) Standardize output
   and modifying signature pgr_withPointsKSP
 
-  * Standarizing output columns to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+  * Standardizing output columns to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
   * pgr_withPointsKSP(One to One)
     * Signature change: ``driving_side`` parameter changed from named optional to
       unnamed compulsory **driving side**.
@@ -369,10 +392,12 @@ milestone for 3.6.0
   deprecated messages
 * On new internal function: do not use named parameters and default parameters.
 
+</details>
+
 ## pgRouting 3.5
 
 
-### pgRouting 3.5.1 Release Notes
+<details> <summary>pgRouting 3.5.1 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.5.1
@@ -413,7 +438,9 @@ Changes on the documentation to the following:
 
   * Grouping headers of postgres readers
 
-### pgRouting 3.5.0 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.5.0 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.5.0
@@ -429,10 +456,12 @@ milestone for 3.5.0
     * pgr_dijkstra(One to Many) added ``end_vid`` column.
     * pgr_dijkstra(Many to One) added ``start_vid`` column.
 
+</details>
+
 ## pgRouting 3.4
 
 
-### pgRouting 3.4.2 Release Notes
+<details> <summary>pgRouting 3.4.2 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.4.2
@@ -445,7 +474,9 @@ milestone for 3.4.2
 * [#2427](https://github.com/pgRouting/pgrouting/issues/2427):
   pgr_createVerticesTable & pgr_createTopology, variable should be of type Record.
 
-### pgRouting 3.4.1 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.4.1 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.4.1
@@ -458,7 +489,9 @@ milestone for 3.4.1
 * [#2398](https://github.com/pgRouting/pgrouting/issues/2398):
   v3.4.0 does not upgrade from 3.3.3
 
-### pgRouting 3.4.0 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.4.0 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.4.0
@@ -534,15 +567,19 @@ milestone for 3.4.0
   * pgr_trspViaVertices(text,anyarray,boolean,boolean,text)
   * pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)
 
+</details>
+
 ## pgRouting 3.3
 
 
-### pgRouting 3.3.5 Release Notes
+<details> <summary>pgRouting 3.3.5 Release Notes</summary>
 
 * [#2401](https://github.com/pgRouting/pgrouting/issues/2401):
   pgRouting 3.4.0 do not build docs when sphinx is too low or missing
 
-### pgRouting 3.3.4 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.3.4 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.3.4
@@ -553,7 +590,9 @@ milestone for 3.3.4
 * [#2400](https://github.com/pgRouting/pgrouting/issues/2400):
   pgRouting 3.3.3 does not build in focal
 
-### pgRouting 3.3.3 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.3.3 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.3.3
@@ -574,7 +613,9 @@ milestone for 3.3.3
       undirected graphs.
 
 
-### pgRouting 3.3.2 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.3.2 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.3.2
@@ -610,7 +651,9 @@ milestone for 3.3.2
 * [#2357](https://github.com/pgRouting/pgrouting/issues/2357):
   Apply clang-tidy performance-*
 
-### pgRouting 3.3.1 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.3.1 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.3.1
@@ -623,7 +666,9 @@ on Github.
 * [#2266](https://github.com/pgRouting/pgrouting/issues/2266): Error processing restrictions
 
 
-### pgRouting 3.3.0 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.3.0 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.3.0
@@ -675,10 +720,12 @@ on Github.
   * pgr_depthFirstSearch(Multiple vertices)
   * pgr_depthFirstSearch(Single vertex)
 
+</details>
+
 ## pgRouting 3.2
 
 
-### pgRouting 3.2.2 Release Notes
+<details> <summary>pgRouting 3.2.2 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.2.2
@@ -690,7 +737,9 @@ on Github.
 * [#2093](https://github.com/pgRouting/pgrouting/issues/2093): Compilation on Visual Studio
 * [#2189](https://github.com/pgRouting/pgrouting/issues/2189): Build error on RHEL 7
 
-### pgRouting 3.2.1 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.2.1 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.2.1
@@ -706,7 +755,9 @@ on Github.
   * The function with the annaeling optional parameters is deprecated
 
 
-### pgRouting 3.2.0 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.2.0 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.2.0
@@ -782,10 +833,12 @@ on Github.
 * pgr_withPoints(Combinations)
 * pgr_withPointsCost(Combinations)
 
+</details>
+
 ## pgRouting 3.1
 
 
-### pgRouting 3.1.4 Release Notes
+<details> <summary>pgRouting 3.1.4 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.1.4
@@ -798,7 +851,9 @@ on Github.
   RHEL 7
 
 
-### pgRouting 3.1.3 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.1.3 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.1.3
@@ -815,7 +870,9 @@ on Github.
   crash server
 
 
-### pgRouting 3.1.2 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.1.2 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.1.2
@@ -836,7 +893,9 @@ on Github.
   warnings when using clang compiler
 
 
-### pgRouting 3.1.1 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.1.1 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.1.1
@@ -858,7 +917,9 @@ on Github.
 
 
 
-### pgRouting 3.1.0 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.1.0 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.1.0
@@ -874,10 +935,12 @@ on Github.
 
 * Minimal requirement for Sphinx: version 1.8
 
+</details>
+
 ## pgRouting 3.0
 
 
-### pgRouting 3.0.6 Release Notes
+<details> <summary>pgRouting 3.0.6 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.0.6
@@ -890,7 +953,9 @@ on Github.
   RHEL 7
 
 
-### pgRouting 3.0.5 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.0.5 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.0.5
@@ -907,7 +972,9 @@ on Github.
   crash server
 
 
-### pgRouting 3.0.4 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.0.4 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.0.4
@@ -929,7 +996,9 @@ on Github.
 
 
 
-### pgRouting 3.0.3 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.0.3 Release Notes</summary>
 
 **Backport issue fixes**
 
@@ -946,7 +1015,9 @@ on Github.
 
 
 
-### pgRouting 3.0.2 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.0.2 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.0.2
@@ -959,7 +1030,9 @@ on Github.
   build failing
 
 
-### pgRouting 3.0.1 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.0.1 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.0.1
@@ -972,7 +1045,9 @@ on Github.
   cancel requests in C /C++ code
 
 
-### pgRouting 3.0.0 Release Notes
+</details>
+
+<details> <summary>pgRouting 3.0.0 Release Notes</summary>
 
 
 To see all issues & pull requests closed by this release see the [Git closed
@@ -1133,750 +1208,4 @@ on Github.
 * pgr_pointsAsPolygon
 * pgr_alphaShape old signature
 
-# pgRouting 2
-
-
-## pgRouting 2.6
-
-
-### pgRouting 2.6.3 Release Notes
-
-To see the issues closed by this release see the [Git closed milestone for 2.6.3
-](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20)
-on Github.
-
-**Bug fixes**
-
-* [#1219](https://github.com/pgRouting/pgrouting/pull/1219) Implicit cast for
-  via_path integer to text
-* [#1193](https://github.com/pgRouting/pgrouting/pull/1193) Fixed
-  pgr_pointsAsPolygon breaking when comparing strings in WHERE clause
-* [#1185](https://github.com/pgRouting/pgrouting/pull/1185) Improve
-  FindPostgreSQL.cmake
-
-
-
-### pgRouting 2.6.2 Release Notes
-
-To see the issues closed by this release see the [Git closed milestone for 2.6.2
-](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20)
-on Github.
-
-**Bug fixes**
-
-* [#1152](https://github.com/pgRouting/pgrouting/issues/1152) Fixes driving
-  distance when vertex is not part of the graph
-* [#1098](https://github.com/pgRouting/pgrouting/issues/1098) Fixes windows
-  test
-* [#1165](https://github.com/pgRouting/pgrouting/issues/1165) Fixes build for
-  python3 and perl5
-
-
-### pgRouting 2.6.1 Release Notes
-
-To see the issues closed by this release see the [Git closed milestone for 2.6.1
-](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20)
-on Github.
-
-* Fixes server crash on several functions.
-
-  * pgr_floydWarshall
-  * pgr_johnson
-  * pgr_aStar
-  * pgr_bdAstar
-  * pgr_bdDijstra
-  * pgr_alphashape
-  * pgr_dijkstraCostMatrix
-  * pgr_dijkstra
-  * pgr_dijkstraCost
-  * pgr_drivingDistance
-  * pgr_KSP
-  * pgr_dijkstraVia (proposed)
-  * pgr_boykovKolmogorov (proposed)
-  * pgr_edgeDisjointPaths (proposed)
-  * pgr_edmondsKarp (proposed)
-  * pgr_maxCardinalityMatch (proposed)
-  * pgr_maxFlow (proposed)
-  * pgr_withPoints (proposed)
-  * pgr_withPointsCost (proposed)
-  * pgr_withPointsKSP (proposed)
-  * pgr_withPointsDD (proposed)
-  * pgr_withPointsCostMatrix (proposed)
-  * pgr_contractGraph (experimental)
-  * pgr_pushRelabel (experimental)
-  * pgr_vrpOneDepot (experimental)
-  * pgr_gsoc_vrppdtw (experimental)
-  * Fixes for deprecated functions where also applied but not tested
-
-* Removed compilation warning for g++8
-* Fixed a fallthrugh on Astar and bdAstar.
-
-
-### pgRouting 2.6.0 Release Notes
-
-To see the issues closed by this release see the [Git closed milestone for 2.6.0
-](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20)
-on Github.
-
-
-**New experimental functions**
-
-* pgr_lineGraphFull
-
-**Bug fixes**
-
-* Fix pgr_trsp(text,integer,double precision,integer,double
-  precision,boolean,boolean[,text])
-
-  * without restrictions
-
-    * calls pgr_dijkstra when both end points have a fraction IN (0,1)
-    * calls pgr_withPoints when at least one fraction NOT IN (0,1)
-
-  * with restrictions
-
-    * calls original trsp code
-
-**Internal code**
-
-* Cleaned the internal code of trsp(text,integer,integer,boolean,boolean [,
-  text])
-
-  * Removed the use of pointers
-  * Internal code can accept BIGINT
-
-* Cleaned the internal code of withPoints
-
-## pgRouting 2.5
-
-
-### pgRouting 2.5.5 Release Notes
-
-To see the issues closed by this release see the [Git closed milestone for 2.5.5
-](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20)
-on Github.
-
-**Bug fixes**
-
-* Fixes driving distance when vertex is not part of the graph
-* Fixes windows test
-* Fixes build for python3 and perl5
-
-
-### pgRouting 2.5.4 Release Notes
-
-To see the issues closed by this release see the [Git closed milestone for 2.5.4
-](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20)
-on Github.
-
-* Fixes server crash on several functions.
-
-  * pgr_floydWarshall
-  * pgr_johnson
-  * pgr_aStar
-  * pgr_bdAstar
-  * pgr_bdDijstra
-  * pgr_alphashape
-  * pgr_dijkstraCostMatrix
-  * pgr_dijkstra
-  * pgr_dijkstraCost
-  * pgr_drivingDistance
-  * pgr_KSP
-  * pgr_dijkstraVia (proposed)
-  * pgr_boykovKolmogorov (proposed)
-  * pgr_edgeDisjointPaths (proposed)
-  * pgr_edmondsKarp (proposed)
-  * pgr_maxCardinalityMatch (proposed)
-  * pgr_maxFlow (proposed)
-  * pgr_withPoints (proposed)
-  * pgr_withPointsCost (proposed)
-  * pgr_withPointsKSP (proposed)
-  * pgr_withPointsDD (proposed)
-  * pgr_withPointsCostMatrix (proposed)
-  * pgr_contractGraph (experimental)
-  * pgr_pushRelabel (experimental)
-  * pgr_vrpOneDepot (experimental)
-  * pgr_gsoc_vrppdtw (experimental)
-  * Fixes for deprecated functions where also applied but not tested
-
-* Removed compilation warning for g++8
-* Fixed a fallthrugh on Astar and bdAstar.
-
-
-### pgRouting 2.5.3 Release Notes
-
-To see the issues closed by this release see the [Git closed milestone for 2.5.3
-](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20)
-on Github.
-
-**Bug fixes**
-
-* Fix for postgresql 11: Removed a compilation error when compiling with
-  postgreSQL
-
-
-### pgRouting 2.5.2 Release Notes
-
-To see the issues closed by this release see the [Git closed milestone for 2.5.2](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20) on Github.
-
-**Bug fixes**
-
-* Fix for postgresql 10.1: Removed a compiler condition
-
-
-
-### pgRouting 2.5.1 Release Notes
-
-To see the issues closed by this release see the [Git closed milestone for 2.5.1
-](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20)
-on Github.
-
-**Bug fixes**
-
-* Fixed prerequisite minimum version of: cmake
-
-
-
-### pgRouting 2.5.0 Release Notes
-
-To see the issues closed by this release see the [Git closed issues for 2.5.0
-](https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed)
-on Github.
-
-
-**enhancement:**
-
-* pgr_version is now on SQL language
-
-**Breaking change on:**
-
-* pgr_edgeDisjointPaths:
-
-  * Added path_id, cost and agg_cost columns on the result
-  * Parameter names changed
-  * The many version results are the union of the One to One version
-
-**New Signatures**
-
-* pgr_bdAstar(One to One)
-
-**New proposed functions.**
-
-* pgr_bdAstar(One to Many)
-* pgr_bdAstar(Many to One)
-* pgr_bdAstar(Many to Many)
-* pgr_bdAstarCost(One to One)
-* pgr_bdAstarCost(One to Many)
-* pgr_bdAstarCost(Many to One)
-* pgr_bdAstarCost(Many to Many)
-* pgr_bdAstarCostMatrix
-* pgr_bdDijkstra(One to Many)
-* pgr_bdDijkstra(Many to One)
-* pgr_bdDijkstra(Many to Many)
-* pgr_bdDijkstraCost(One to One)
-* pgr_bdDijkstraCost(One to Many)
-* pgr_bdDijkstraCost(Many to One)
-* pgr_bdDijkstraCost(Many to Many)
-* pgr_bdDijkstraCostMatrix
-* pgr_lineGraph
-* pgr_lineGraphFull
-* pgr_connectedComponents
-* pgr_strongComponents
-* pgr_biconnectedComponents
-* pgr_articulationPoints
-* pgr_bridges
-
-**Deprecated signatures**
-
-* pgr_bdastar - use pgr_bdAstar instead
-
-**Renamed functions**
-
-* pgr_maxFlowPushRelabel - use pgr_pushRelabel instead
-* pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead
-* pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead
-* pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead
-
-**Deprecated Function**
-
-* pgr_pointToEdgeNode
-
-
-## pgRouting 2.4
-
-
-### pgRouting 2.4.2 Release Notes
-
-To see the issues closed by this release see the [Git closed milestone for 2.4.2
-](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20)
-on Github.
-
-**Improvement**
-
-* Works for postgreSQL 10
-
-**Bug fixes**
-
-* Fixed: Unexpected error column "cname"
-* Replace __linux__ with __GLIBC__ for glibc-specific headers and functions
-
-
-
-
-### pgRouting 2.4.1 Release Notes
-
-To see the issues closed by this release see the [Git closed milestone for 2.4.1
-](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20)
-on Github.
-
-**Bug fixes**
-
-* Fixed compiling error on macOS
-* Condition error on pgr_withPoints
-
-
-### pgRouting 2.4.0 Release Notes
-
-To see the issues closed by this release see the [Git closed issues for 2.4.0
-](https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed)
-on Github.
-
-**New Functions**
-
-* pgr_bdDijkstra
-
-
-**New proposed signatures:**
-
-* pgr_maxFlow
-* pgr_aStar(One to Many)
-* pgr_aStar(Many to One)
-* pgr_aStar(Many to Many)
-* pgr_aStarCost(One to One)
-* pgr_aStarCost(One to Many)
-* pgr_aStarCost(Many to One)
-* pgr_aStarCost(Many to Many)
-* pgr_aStarCostMatrix
-
-**Deprecated signatures.**
-
-* pgr_bddijkstra - use pgr_bdDijkstra instead
-
-**Deprecated Functions**
-
-* pgr_pointsToVids
-
-**Bug fixes**
-
-* Bug fixes on proposed functions
-
-  * pgr_withPointsKSP: fixed ordering
-
-* TRSP original code is used with no changes on the compilation warnings
-
-## pgRouting 2.3
-
-### pgRouting 2.3.2 Release Notes
-
-To see the issues closed by this release see the [Git closed issues for 2.3.2
-](https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed)
-on Github.
-
-**Bug Fixes**
-
-* Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck.
-* Fixed pgr_trsp:
-
-  * Alternate code is not executed when the point is in reality a vertex
-  * Fixed ambiguity on seq
-
-
-
-### pgRouting 2.3.1 Release Notes
-
-To see the issues closed by this release see the [Git closed issues for 2.3.1
-](https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed)
-on Github.
-
-**Bug Fixes**
-
-* Leaks on proposed max_flow functions
-* Regression error on pgr_trsp
-* Types discrepancy on pgr_createVerticesTable
-
-
-
-### pgRouting 2.3.0 Release Notes
-
-To see the issues closed by this release see the [Git closed issues for 2.3.0
-](https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed)
-on Github.
-
-**New Signatures**
-
-* pgr_TSP
-* pgr_aStar
-
-**New Functions**
-
-* pgr_eucledianTSP
-
-
-**New proposed functions.**
-
-* pgr_dijkstraCostMatrix
-* pgr_withPointsCostMatrix
-* pgr_maxFlowPushRelabel(One to One)
-* pgr_maxFlowPushRelabel(One to Many)
-* pgr_maxFlowPushRelabel(Many to One)
-* pgr_maxFlowPushRelabel(Many to Many)
-* pgr_maxFlowEdmondsKarp(One to One)
-* pgr_maxFlowEdmondsKarp(One to Many)
-* pgr_maxFlowEdmondsKarp(Many to One)
-* pgr_maxFlowEdmondsKarp(Many to Many)
-* pgr_maxFlowBoykovKolmogorov (One to One)
-* pgr_maxFlowBoykovKolmogorov (One to Many)
-* pgr_maxFlowBoykovKolmogorov (Many to One)
-* pgr_maxFlowBoykovKolmogorov (Many to Many)
-* pgr_maximumCardinalityMatching
-* pgr_edgeDisjointPaths(One to One)
-* pgr_edgeDisjointPaths(One to Many)
-* pgr_edgeDisjointPaths(Many to One)
-* pgr_edgeDisjointPaths(Many to Many)
-* pgr_contractGraph
-
-
-**Deprecated signatures**
-
-* pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead
-* pgr_aStar - use pgr_aStar instead
-
-
-**Deprecated Functions**
-
-* pgr_flip_edges
-* pgr_vidsToDmatrix
-* pgr_pointsToDMatrix
-* pgr_textToPoints
-
-## pgRouting 2.2
-
-
-### pgRouting 2.2.4 Release Notes
-
-To see the issues closed by this release see the [Git closed issues for 2.2.4
-](https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed)
-on Github.
-
-**Bug Fixes**
-
-* Bogus uses of extern "C"
-* Build error on Fedora 24 + GCC 6.0
-* Regression error pgr_nodeNetwork
-
-
-### pgRouting 2.2.3 Release Notes
-
-To see the issues closed by this release see the [Git closed issues for 2.2.3
-](https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed)
-on Github.
-
-**Bug Fixes**
-
-* Fixed compatibility issues with PostgreSQL 9.6.
-
-
-### pgRouting 2.2.2 Release Notes
-
-To see the issues closed by this release see the [Git closed issues for 2.2.2
-](https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed)
-on Github.
-
-**Bug Fixes**
-
-* Fixed regression error on pgr_drivingDistance
-
-
-
-### pgRouting 2.2.1 Release Notes
-
-To see the issues closed by this release see the [Git closed issues for 2.2.1
-](https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed)
-on Github.
-
-**Bug Fixes**
-
-* Server crash fix on pgr_alphaShape
-* Bug fix on With Points family of functions
-
-
-
-### pgRouting 2.2.0 Release Notes
-
-To see the issues closed by this release see the [Git closed issues for 2.2.0
-](https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed)
-on Github.
-
-
-**Improvements**
-
-- pgr_nodeNetwork
-
-  - Adding a row_where and outall optional parameters
-
-- Signature fix
-
-  - pgr_dijkstra -- to match what is documented
-
-
-**New Functions**
-
-- pgr_floydWarshall
-- pgr_Johnson
-- pgr_dijkstraCost(One to One)
-- pgr_dijkstraCost(One to Many)
-- pgr_dijkstraCost(Many to One)
-- pgr_dijkstraCost(Many to Many)
-
-**Proposed Functionality**
-
-- pgr_withPoints(One to One)
-- pgr_withPoints(One to Many)
-- pgr_withPoints(Many to One)
-- pgr_withPoints(Many to Many)
-- pgr_withPointsCost(One to One)
-- pgr_withPointsCost(One to Many)
-- pgr_withPointsCost(Many to One)
-- pgr_withPointsCost(Many to Many)
-- pgr_withPointsDD(single vertex)
-- pgr_withPointsDD(multiple vertices)
-- pgr_withPointsKSP
-- pgr_dijkstraVia
-
-
-**Deprecated Functions**
-
-- pgr_apspWarshall use pgr_floydWarshall instead
-- pgr_apspJohnson use pgr_Johnson instead
-- pgr_kDijkstraCost use pgr_dijkstraCost instead
-- pgr_kDijkstraPath use pgr_dijkstra instead
-
-**Renamed and Deprecated Function**
-
-- pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix
-
-## pgRouting 2.1
-
-
-### pgRouting 2.1.0 Release Notes
-
-To see the issues closed by this release see the [Git closed issues for 2.1.0
-](https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed)
-on Github.
-
-**New Signatures**
-
-- pgr_dijkstra(One to Many)
-- pgr_dijkstra(Many to One)
-- pgr_dijkstra(Many to Many)
-- pgr_drivingDistance(multiple vertices)
-
-**Refactored**
-
-- pgr_dijkstra(One to One)
-- pgr_ksp
-- pgr_drivingDistance(single vertex)
-
-**Improvements**
-
-- pgr_alphaShape function now can generate better (multi)polygon with holes and
-  alpha parameter.
-
-**Proposed Functionality**
-
-- Proposed functions from Steve Woodbridge, (Classified as Convenience by the
-  author.)
-
-  - pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on
-    closest edge.
-  - pgr_flipEdges - flip the edges in an array of geometries so the connect end
-    to end.
-  - pgr_textToPoints - convert a string of x,y;x,y;... locations into point
-    geometries.
-  - pgr_pointsToVids - convert an array of point geometries into vertex ids.
-  - pgr_pointsToDMatrix - Create a distance matrix from an array of points.
-  - pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id.
-  - pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id.
-
-- Added proposed functions from GSoc Projects:
-
-  - pgr_vrppdtw
-  - pgr_vrponedepot
-
-**Deprecated Functions**
-
-- pgr_getColumnName
-- pgr_getTableName
-- pgr_isColumnCndexed
-- pgr_isColumnInTable
-- pgr_quote_ident
-- pgr_versionless
-- pgr_startPoint
-- pgr_endPoint
-- pgr_pointToId
-
-**No longer supported**
-
-- Removed the 1.x legacy functions
-
-**Bug Fixes**
-
-- Some bug fixes in other functions
-
-
-**Refactoring Internal Code**
-
-- A C and C++ library for developer was created
-
-  - encapsulates postgreSQL related functions
-  - encapsulates Boost.Graph graphs
-
-    - Directed Boost.Graph
-    - Undirected Boost.graph.
-
-  - allow any-integer in the id's
-  - allow any-numerical on the cost/reverse_cost columns
-
-- Instead of generating many libraries:
-  - All functions are encapsulated in one library
-  - The library has the prefix 2-1-0
-
-
-## pgRouting 2.0
-
-
-### pgRouting 2.0.1 Release Notes
-
-Minor bug fixes.
-
-**Bug Fixes**
-
-* No track of the bug fixes were kept.
-
-### pgRouting 2.0.0 Release Notes
-
-To see the issues closed by this release see the [Git closed issues for 2.0.0
-](https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed)
-on Github.
-
-With the release of pgRouting 2.0.0 the library has abandoned backwards
-compatibility to `pgRouting 1.0`_ releases.
-The main Goals for this release are:
-
-* Major restructuring of pgRouting.
-* Standardization of the function naming
-* Preparation of the project for future development.
-
-As a result of this effort:
-
-* pgRouting has a simplified structure
-* Significant new functionality has being added
-* Documentation has being integrated
-* Testing has being integrated
-* And made it easier for multiple developers to make contributions.
-
-
-**Important Changes**
-
-* Graph Analytics - tools for detecting and fixing connection some problems in a
-  graph
-* A collection of useful utility functions
-* Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)
-* Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar,
-  pgr_bdDijkstra)
-* One to many nodes search (pgr_kDijkstra)
-* K alternate paths shortest path (pgr_ksp)
-* New TSP solver that simplifies the code and the build process (pgr_tsp),
-  dropped "Gaul Library" dependency
-* Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star
-* Dropped support for Shooting Star
-* Built a test infrastructure that is run before major code changes are checked
-  in
-* Tested and fixed most all of the outstanding bugs reported against 1.x that
-  existing in the 2.0-dev code base.
-* Improved build process for Windows
-* Automated testing on Linux and Windows platforms trigger by every commit
-* Modular library design
-* Compatibility with PostgreSQL 9.1 or newer
-* Compatibility with PostGIS 2.0 or newer
-* Installs as PostgreSQL EXTENSION
-* Return types re factored and unified
-* Support for table SCHEMA in function parameters
-* Support for ``st_`` PostGIS function prefix
-* Added ``pgr_`` prefix to functions and types
-* Better documentation: https://docs.pgrouting.org
-* shooting_star is discontinued
-
-# pgRouting 1
-
-## pgRouting 1.0
-
-
-To see the issues closed by this release see the [Git closed issues for 1.x
-](https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed)
-on Github.
-The following release notes have been copied from the previous ``RELEASE_NOTES``
-file and are kept as a reference.
-
-
-Changes for release 1.05
-
-* Bug fixes
-
-
-Changes for release 1.03
-
-* Much faster topology creation
-* Bug fixes
-
-
-Changes for release 1.02
-
-* Shooting* bug fixes
-* Compilation problems solved
-
-Changes for release 1.01
-
-* Shooting* bug fixes
-
-
-Changes for release 1.0
-
-* Core and extra functions are separated
-* Cmake build process
-* Bug fixes
-
-
-Changes for release 1.0.0b
-
-* Additional SQL file with more simple names for wrapper functions
-* Bug fixes
-
-
-Changes for release 1.0.0a
-
-* Shooting* shortest path algorithm for real road networks
-* Several SQL bugs were fixed
-
-
-Changes for release 0.9.9
-
-* PostgreSQL 8.2 support
-* Shortest path functions return empty result if they could not find any path
-
-
-Changes for release 0.9.8
-
-* Renumbering scheme was added to shortest path functions
-* Directed shortest path functions were added
-* routing_postgis.sql was modified to use dijkstra in TSP search
+</details>
