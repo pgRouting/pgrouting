@@ -114,7 +114,7 @@ The following tests:
  - with AMD 64 CPU
  - 4G memory
  - trusty
- - posgreSQL version 9.3
+ - PostgreSQL version 9.3
 
 Data
 .........................................

@@ -52,8 +52,8 @@ Description
    :start-after: tsp characteristics start
    :end-before: tsp characteristics end
 
-- Any duplicated identifier will be ignored. The coordinates that will be kept
-    is arbitrarly.
+- Any duplicated identifier will be ignored. The coordinates than will be kept
+  is arbitrarily.
 
   - The coordinates are quite similar for the same identifier, for example
     ::
@@ -83,7 +83,7 @@ Signatures
    | pgr_TSPeuclidean(`Coordinates SQL`_, ``[start_id, end_id]``)
 
    | Returns set of |tsp-result|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: With default values
 
@@ -178,7 +178,7 @@ Getting a geometry of the tour
 
 Visual results
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Visualy, The first image is the `optimal solution
+Visually, The first image is the `optimal solution
 <https://www.math.uwaterloo.ca/tsp/world/witour.html>`__ and the second image
 is the solution obtained with ``pgr_TSPeuclidean``.
 

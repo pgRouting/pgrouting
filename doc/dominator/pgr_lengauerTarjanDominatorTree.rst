@@ -32,7 +32,7 @@ vertices.
 
 Description
 -------------------------------------------------------------------------------
-The algorithm calculates the *immidiate dominator* of each vertex called
+The algorithm calculates the *immediate dominator* of each vertex called
 **idom**, once **idom** of each vertex is calculated then by making every
 **idom** of each vertex as its parent, the dominator tree can be built.
 

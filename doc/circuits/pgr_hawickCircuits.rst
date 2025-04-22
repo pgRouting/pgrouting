@@ -16,7 +16,7 @@
 ``pgr_hawickCircuits`` - Experimental
 ===============================================================================
 
-``pgr_hawickCircuits`` — Returns the list of ciruits using hawick circuits algorithm.
+``pgr_hawickCircuits`` — Returns the list of circuits using hawick circuits algorithm.
 
 .. include:: experimental.rst
    :start-after: warning-begin
@@ -53,7 +53,7 @@ implemenent this variation.
 
   - where :math:`|E|` is the number of edges in the graph,
   - :math:`|V|` is the number of vertices in the graph.
-  - :math:`|c|` is the number of circuts in the graph.
+  - :math:`|c|` is the number of circuits in the graph.
 
 |Boost| Boost Graph Inside
 
@@ -117,7 +117,7 @@ Result columns
      - Id of the circuit starting from ``1``
    * - ``path_seq``
      - ``INTEGER``
-     - Relative postion in the path. Has value ``0`` for beginning of the path
+     - Relative position in the path. Has value ``0`` for beginning of the path
    * - ``start_vid``
      - ``BIGINT``
      - Identifier of the starting vertex of the circuit.

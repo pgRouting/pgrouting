@@ -26,7 +26,7 @@
 
 * Version 3.6.0
 
-  * Standarizing output columns to |short-generic-result|
+  * Standardizing output columns to |short-generic-result|
 
     * pgr_aStar(One to One) added ``start_vid`` and ``end_vid`` columns.
     * pgr_aStar(One to Many) added ``end_vid`` column.
