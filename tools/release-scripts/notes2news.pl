@@ -46,28 +46,56 @@ my $skipping = 1;
 my $file = '';
 my $start = '';
 my $end = '';
+my $major = '';
+my $found_micro = 0;
+my $found_minor;
+my $title;
+
+print $ofh "To read all history of releases go to the latest " .
+    "[release notes](https://docs.pgrouting.org/latest/en/release_notes.html)\n\n";
 while (my $line = <$ifh>) {
   next if $skipping and $line !~ /^pgRouting/;
   $skipping = 0;
 
-  next if $line =~ /contents|:local:|:depth:|\*\*\*\*\*\*\*|\=\=\=\=\=\=\=|\-\-\-\-\-\-\-|\+\+\+\+\+\+\+\+/;
+  next if $line =~ /current|contents|:local:|:depth:|\*\*\*\*\*\*\*|\=\=\=\=\=\=\=|\-\-\-\-\-\-\-|\+\+\+\+\+\+\+\+/;
 
   $line =~ s/[\|]+//g;
   $line =~ s/($check)/$conversions{$1}/go;
 
   # Handling the headers
   if ($line =~ m/^pgRouting [0-9]$/i) {
+      if ($major ne '') {
+          print $ofh "</details>\n";
+          last;
+      }
+      if ($found_micro > 1 && $title eq 'micro') {
+          print $ofh "</details>\n\n";
+      }
+      ($major = $line) =~ s/[^\d]//g if $major eq '';
       print $ofh "# $line";
+      $title='major';
       next;
   };
   if ($line =~ m/^pgRouting [0-9].[0-9]$/i) {
+      if ($found_micro > 1 && $title eq 'micro') {
+          print $ofh "</details>\n\n";
+      }
       print $ofh "## $line";
+      $title='minor';
       next;
   };
   if ($line =~ m/^pgRouting [0-9].[0-9].[0-9] Release Notes$/i) {
-      print $ofh "### $line";
+      if ($found_micro != 0 && $title eq 'micro') {
+          print $ofh "</details>\n\n";
+      }
+      print $ofh "### $line" if $found_micro == 0;
+      chomp($line);
+      print $ofh "<details> <summary>$line</summary>\n" if $found_micro;
+      $found_micro += 1;
+      $title='micro';
       next;
   };
+
 
   # get include filename
   if ($line =~ /include/) {
@@ -125,7 +153,6 @@ while (my $line = <$ifh>) {
 
   print $ofh $line;
 }
-
 
 close($ifh);
 close($ofh);
