@@ -67,18 +67,18 @@ Description
 
     - When ``start_vid = 0 OR end_vid = 0``
 
-      - The solutions generated is guaranteed to be *twice as long as the
+      - The solutions generated are guaranteed to be *twice as long as the
         optimal tour in the worst case*
 
     - When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``
 
-      - It is **not guaranteed** that the solution will be, in the worse case,
+      - It is **not guaranteed** that the solution will be, in the worst case,
         twice as long as the optimal tour, due to the fact that `end_vid` is
         forced to be in a fixed position.
 
   - With ``directed => true``
 
-    - It is **not guaranteed** that the solution will be, in the worse case,
+    - It is **not guaranteed** that the solution will be, in the worst case,
       twice as long as the optimal tour
     - Will generate a graph that:
 
