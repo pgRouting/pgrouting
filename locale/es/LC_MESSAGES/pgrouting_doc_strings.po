@@ -4314,7 +4314,7 @@ msgstr ""
 
 msgid ":doc:`pgr_findCloseEdges` - Finds close edges of points on the fly"
 msgstr ""
-"``pgr_findCloseEdges`` - Encuentra las aristas cercanas a una geometría al "
+":doc:`pgr_findCloseEdges` - Encuentra las aristas cercanas a una geometría al "
 "vuelo."
 
 msgid "Functions by categories"
@@ -8142,7 +8142,7 @@ msgid "Version 3.6.0"
 msgstr "Versión 3.6.0"
 
 msgid "Standardizing output columns to |nksp-result|"
-msgstr "Estandarización de columnas de resultados a |rnksp-result|"
+msgstr "Estandarización de columnas de resultados a |nksp-result|"
 
 msgid "pgr_ksp(One to One)"
 msgstr "pgr_ksp(Uno a Uno)"
@@ -14217,7 +14217,7 @@ msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
 msgstr "Complejidad temporal: :math:`O((V + E) (c + 1))`"
 
 msgid ":math:`|c|` is the number of circuits in the graph."
-msgstr ":math:`|c|` es la cantidad de vertices del grafo."
+msgstr ":math:`|c|` es la cantidad de circuitos en el grafo."
 
 msgid "pgr_hawickCircuits(`Edges SQL`_)"
 msgstr "pgr_hawickCircuits(`SQL de aristas`_)"
