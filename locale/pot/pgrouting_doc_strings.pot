@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-18 23:09+0000\n"
+"POT-Creation-Date: 2025-04-22 13:43-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -266,6 +266,9 @@ msgid ":ref:`genindex`"
 msgstr ""
 
 msgid ":ref:`search`"
+msgstr ""
+
+msgid "Boost Graph inside"
 msgstr ""
 
 msgid "DFS - Category"
@@ -1036,7 +1039,7 @@ msgstr ""
 msgid "Current vehicle identifier."
 msgstr ""
 
-msgid "Sumary row has the **total capacity violations**."
+msgid "Summary row has the **total capacity violations**."
 msgstr ""
 
 msgid "A capacity violation happens when overloading or underloading a vehicle."
@@ -1051,7 +1054,7 @@ msgstr ""
 msgid "Sequential value starting from **1** for the stops made by the current vehicle. The :math:`m_{th}` stop of the current vehicle."
 msgstr ""
 
-msgid "Sumary row has the **total time windows violations**."
+msgid "Summary row has the **total time windows violations**."
 msgstr ""
 
 msgid "A time window violation happens when arriving after the location has closed."
@@ -1423,7 +1426,7 @@ msgstr ""
 msgid "For the following equivalences :math:`10m/s \\approx 600m/min \\approx 36 km/hr`"
 msgstr ""
 
-msgid "Working with time units in seconds and the matrix been in meters: For a 1000m lenght value on the matrix:"
+msgid "Working with time units in seconds and the matrix been in meters: For a 1000m length value on the matrix:"
 msgstr ""
 
 msgid "Units"
@@ -1714,7 +1717,7 @@ msgstr ""
 msgid "trusty"
 msgstr ""
 
-msgid "posgreSQL version 9.3"
+msgid "PostgreSQL version 9.3"
 msgstr ""
 
 msgid "Data"
@@ -3526,7 +3529,7 @@ msgstr ""
 msgid "Promotion to official function of pgRouting."
 msgstr ""
 
-msgid "`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: pgr_extractVertices"
+msgid "`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promote to official pgr_extractVertices in 3.8"
 msgstr ""
 
 msgid "Error messages adjustment."
@@ -3535,40 +3538,40 @@ msgstr ""
 msgid "Function promoted to official."
 msgstr ""
 
-msgid "`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+msgid "`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promote to official pgr_degree in 3.8"
 msgstr ""
 
 msgid "New signature with only Edges SQL."
 msgstr ""
 
-msgid "`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: pgr_findCloseEdges"
+msgid "`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promote to official pgr_findCloseEdges in 3.8"
 msgstr ""
 
 msgid "``partial`` option is removed."
 msgstr ""
 
-msgid "Deprecation of functions."
+msgid "New proposed functions"
 msgstr ""
 
-msgid "`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: pgr_alphaShape"
+msgid "Contraction"
 msgstr ""
 
-msgid "`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: pgr_analyzeOneWay"
+msgid "`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: pgr_contractionDeadEnd new contraction function"
 msgstr ""
 
-msgid "`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: pgr_analyzeGraph"
+msgid "`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: pgr_contractionLinear new contraction function"
 msgstr ""
 
-msgid "`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: pgr_createTopology"
+msgid "`#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__: Create pgr_separateCrossing new utility function"
 msgstr ""
 
-msgid "`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: pgr_createVerticesTable"
+msgid "`#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__: Create of pgr_separateTouching new utility function"
 msgstr ""
 
 msgid "Official functions changes"
 msgstr ""
 
-msgid "`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: pgr_contraction"
+msgid "`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: pgr_contraction(edges) new signature"
 msgstr ""
 
 msgid "New signature:"
@@ -3586,25 +3589,40 @@ msgstr ""
 msgid "C/C++ code enhancements"
 msgstr ""
 
-msgid "`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__: Code factorization on pgr_contraction family"
+msgid "`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__: Code reorganization on pgr_contraction"
 msgstr ""
 
-msgid "New proposed functions"
+msgid "SQL code enhancements"
 msgstr ""
 
-msgid "Contraction"
+msgid "`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__: Rewrite pgr_nodeNetwork"
 msgstr ""
 
-msgid "`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: pgr_contractionDeadEnd"
+msgid "Deprecation of functions."
 msgstr ""
 
-msgid "`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: pgr_contractionLinear"
+msgid "`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: Deprecate pgr_AlphaShape in 3.8"
 msgstr ""
 
-msgid "`#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__: pgr_separateCrossing"
+msgid "`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: Deprecate pgr_CreateTopology in 3.8"
 msgstr ""
 
-msgid "`#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__: pgr_separateTouching"
+msgid "`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: Deprecate pgr_analyzeGraph in 3.8"
+msgstr ""
+
+msgid "`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: Deprecate pgr_analyzeOneWay in 3.8"
+msgstr ""
+
+msgid "`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: Deprecate pgr_createVerticesTable in 3.8"
+msgstr ""
+
+msgid "Deprecated functions:"
+msgstr ""
+
+msgid "Migration section is created."
+msgstr ""
+
+msgid "The use removed."
 msgstr ""
 
 msgid "All releases"
@@ -6235,7 +6253,7 @@ msgstr ""
 msgid "Version 3.6.0"
 msgstr ""
 
-msgid "Result columns standarized to: |nksp-result|"
+msgid "Standardizing output columns to |nksp-result|"
 msgstr ""
 
 msgid "pgr_ksp(One to One)"
@@ -6278,9 +6296,6 @@ msgid "The K shortest path routing algorithm based on Yen's algorithm. \"K\" is 
 msgstr ""
 
 msgid "|Boost| Boost Graph Inside"
-msgstr ""
-
-msgid "Boost Graph inside"
 msgstr ""
 
 msgid "Signatures"
@@ -6436,19 +6451,19 @@ msgstr ""
 msgid "When ``start_vid = 0 OR end_vid = 0``"
 msgstr ""
 
-msgid "The solutions generated is garanteed to be *twice as long as the optimal tour in the worst case*"
+msgid "The solutions generated is guaranteed to be *twice as long as the optimal tour in the worst case*"
 msgstr ""
 
 msgid "When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
 msgstr ""
 
-msgid "It is **not garanteed** that the solution will be, in the worse case, twice as long as the optimal tour, due to the fact that `end_vid` is forced to be in a fixed position."
+msgid "It is **not guaranteed** that the solution will be, in the worse case, twice as long as the optimal tour, due to the fact that `end_vid` is forced to be in a fixed position."
 msgstr ""
 
 msgid "With ``directed => true``"
 msgstr ""
 
-msgid "It is **not garanteed** that the solution will be, in the worse case, twice as long as the optimal tour"
+msgid "It is **not guaranteed** that the solution will be, in the worse case, twice as long as the optimal tour"
 msgstr ""
 
 msgid "is directed"
@@ -6482,9 +6497,6 @@ msgid "pgr_TSP(`Matrix SQL`_, ``[start_id, end_id]``)"
 msgstr ""
 
 msgid "Returns set of |tsp-result|"
-msgstr ""
-
-msgid "OR EMTPY SET"
 msgstr ""
 
 msgid "Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information"
@@ -6535,7 +6547,7 @@ msgstr ""
 msgid "**Line 6** ``start_vid => 1``"
 msgstr ""
 
-msgid "Using points of interest to generate an asymetric matrix."
+msgid "Using points of interest to generate an asymmetric matrix."
 msgstr ""
 
 msgid "To generate an asymmetric matrix:"
@@ -6544,7 +6556,7 @@ msgstr ""
 msgid "**Line 4** The ``side`` information of ``pointsOfInterset`` is ignored by not including it in the query"
 msgstr ""
 
-msgid "**Line 6** Generating an asymetric matrix with ``directed => true``"
+msgid "**Line 6** Generating an asymmetric matrix with ``directed => true``"
 msgstr ""
 
 msgid ":math:`min(agg\\_cost(u, v), agg\\_cost(v, u))` is going to be considered as the ``agg_cost``"
@@ -6589,10 +6601,7 @@ msgstr ""
 msgid "New official function."
 msgstr ""
 
-msgid "Any duplicated identifier will be ignored. The coordinates that will be kept"
-msgstr ""
-
-msgid "is arbitrarly."
+msgid "Any duplicated identifier will be ignored. The coordinates than will be kept is arbitrarily."
 msgstr ""
 
 msgid "The coordinates are quite similar for the same identifier, for example ::"
@@ -6652,7 +6661,7 @@ msgstr ""
 msgid "Visual results"
 msgstr ""
 
-msgid "Visualy, The first image is the `optimal solution <https://www.math.uwaterloo.ca/tsp/world/witour.html>`__ and the second image is the solution obtained with ``pgr_TSPeuclidean``."
+msgid "Visually, The first image is the `optimal solution <https://www.math.uwaterloo.ca/tsp/world/witour.html>`__ and the second image is the solution obtained with ``pgr_TSPeuclidean``."
 msgstr ""
 
 msgid "``pgr_aStar``"
@@ -6661,7 +6670,7 @@ msgstr ""
 msgid "``pgr_aStar`` — Shortest path using the A* algorithm."
 msgstr ""
 
-msgid "Standarizing output columns to |short-generic-result|"
+msgid "Standardizing output columns to |short-generic-result|"
 msgstr ""
 
 msgid "pgr_aStar(One to One) added ``start_vid`` and ``end_vid`` columns."
@@ -6769,7 +6778,7 @@ msgstr ""
 msgid "New proposed function."
 msgstr ""
 
-msgid "The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path using the A* algorithm."
+msgid "The ``pgr_aStarCost`` function summarizes of the cost of the shortest path using the A* algorithm."
 msgstr ""
 
 msgid "Let be the case the values returned are stored in a table, so the unique index would be the pair: `(start_vid, end_vid)`"
@@ -6814,7 +6823,7 @@ msgstr ""
 msgid "``pgr_aStarCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_aStar`."
 msgstr ""
 
-msgid "Using internaly the :doc:`pgr_aStar` algorithm"
+msgid "Using internally the :doc:`pgr_aStar` algorithm"
 msgstr ""
 
 msgid "Returns a cost matrix."
@@ -7333,7 +7342,7 @@ msgstr ""
 msgid "pgr_bdAstarCost(Combinations)"
 msgstr ""
 
-msgid "The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest path using the bidirectional A* algorithm."
+msgid "The ``pgr_bdAstarCost`` function summarizes of the cost of the shortest path using the bidirectional A* algorithm."
 msgstr ""
 
 msgid "pgr_bdAstarCost(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
@@ -7357,7 +7366,7 @@ msgstr ""
 msgid "``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_aStar`."
 msgstr ""
 
-msgid "Using internaly the :doc:`pgr_bdAstar` algorithm"
+msgid "Using internally the :doc:`pgr_bdAstar` algorithm"
 msgstr ""
 
 msgid "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
@@ -7438,7 +7447,7 @@ msgstr ""
 msgid "pgr_bdDijkstraCost(Combinations)"
 msgstr ""
 
-msgid "The ``pgr_bdDijkstraCost`` function sumarizes of the cost of the shortest path using the bidirectional Dijkstra Algorithm."
+msgid "The ``pgr_bdDijkstraCost`` function summarizes of the cost of the shortest path using the bidirectional Dijkstra Algorithm."
 msgstr ""
 
 msgid "pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])"
@@ -9424,9 +9433,6 @@ msgstr ""
 msgid "37) Using `Combinations`_"
 msgstr ""
 
-msgid "e Also"
-msgstr ""
-
 msgid "`Boost: Dijkstra shortest paths <https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html>`__"
 msgstr ""
 
@@ -9442,7 +9448,7 @@ msgstr ""
 msgid "pgr_dijkstraCost(Combinations)"
 msgstr ""
 
-msgid "The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path using Dijkstra Algorithm."
+msgid "The ``pgr_dijkstraCost`` function summarizes of the cost of the shortest path using Dijkstra Algorithm."
 msgstr ""
 
 msgid "pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
@@ -9595,7 +9601,7 @@ msgstr ""
 msgid "Find the best pedestrian connection between two lines of buses"
 msgstr ""
 
-msgid "Unsing an **undirected** graph for pedestrian routing"
+msgid "Using an **undirected** graph for pedestrian routing"
 msgstr ""
 
 msgid "The first subway line stations are at :math:`\\{15, 16\\}`"
@@ -9658,7 +9664,7 @@ msgstr ""
 msgid "The best connections from all the stations from the second line are: :math:`{(15 \\rightarrow 10) (16 \\rightarrow 11)}`"
 msgstr ""
 
-msgid "Both are equaly good as they have the same cost. (lines: `13` and `14` and lines: `15` and `16`)"
+msgid "Both are equally good as they have the same cost. (lines: `13` and `14` and lines: `15` and `16`)"
 msgstr ""
 
 msgid "Dijkstra optional parameters"
@@ -9718,13 +9724,10 @@ msgstr ""
 msgid "pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
 
-msgid "lines `3~4` sets the start vertices to be from the fisrt subway line and the ending vertices to be from the second subway line"
-msgstr ""
-
 msgid "The best one is :math:`(11 \\rightarrow 16)` with a cost of :math:`1` (lines: `1`)"
 msgstr ""
 
-msgid "Both are equaly good as they have the same cost. (lines: `12` and `13`)"
+msgid "Both are equally good as they have the same cost. (lines: `12` and `13`)"
 msgstr ""
 
 msgid "``pgr_dijkstraVia`` - Proposed"
@@ -9817,7 +9820,7 @@ msgstr ""
 msgid "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr ""
 
-msgid "Standarizing output columns to |result-spantree|"
+msgid "Standardizing output columns to |result-spantree|"
 msgstr ""
 
 msgid "Added ``depth`` and ``start_vid`` result columns."
@@ -9841,7 +9844,7 @@ msgstr ""
 msgid "pgr_drivingDistance(multiple vertices)"
 msgstr ""
 
-msgid "Using the Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value ``distance``. The edges extracted will conform to the corresponding spaning tree."
+msgid "Using the Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value ``distance``. The edges extracted will conform to the corresponding spanning tree."
 msgstr ""
 
 msgid "pgr_drivingDistance(`Edges SQL`_, **Root vid**, **distance**, [``directed``])"
@@ -10039,7 +10042,7 @@ msgstr ""
 msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 msgstr ""
 
-msgid "`Boost: edmonds_karp_max_flow <https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html>`__"
+msgid "`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html>`__"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
@@ -10501,7 +10504,7 @@ msgstr ""
 msgid "``pgr_hawickCircuits`` - Experimental"
 msgstr ""
 
-msgid "``pgr_hawickCircuits`` — Returns the list of ciruits using hawick circuits algorithm."
+msgid "``pgr_hawickCircuits`` — Returns the list of circuits using hawick circuits algorithm."
 msgstr ""
 
 msgid "Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Health A. James. This algorithm solves the problem of detecting and enumerating circuits in graphs. It is capable of circuit enumeration in graphs with directed-arcs, multiple-arcs and self-arcs with a memory efficient and high-performance im-plementation. It is an extension of Johnson's Algorithm of finding all the elementary circuits of a directed graph."
@@ -10522,7 +10525,7 @@ msgstr ""
 msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
 msgstr ""
 
-msgid ":math:`|c|` is the number of circuts in the graph."
+msgid ":math:`|c|` is the number of circuits in the graph."
 msgstr ""
 
 msgid "pgr_hawickCircuits(`Edges SQL`_)"
@@ -10537,7 +10540,7 @@ msgstr ""
 msgid "Id of the circuit starting from ``1``"
 msgstr ""
 
-msgid "Relative postion in the path. Has value ``0`` for beginning of the path"
+msgid "Relative position in the path. Has value ``0`` for beginning of the path"
 msgstr ""
 
 msgid "Identifier of the starting vertex of the circuit."
@@ -10609,7 +10612,7 @@ msgstr ""
 msgid "``pgr_johnson`` - Returns the sum of the costs of the shortest path for each pair of nodes in the graph using Floyd-Warshall algorithm."
 msgstr ""
 
-msgid "The Johnson algorithm, is a good choice to calculate the sum of the costs of the shortest path for each pair of nodes in the graph, for *sparse graphs*. It usees the Boost's implementation which runs in :math:`O(V E \\log V)` time,"
+msgid "The Johnson algorithm, is a good choice to calculate the sum of the costs of the shortest path for each pair of nodes in the graph, for *sparse graphs*. It uses the Boost's implementation which runs in :math:`O(V E \\log V)` time,"
 msgstr ""
 
 msgid "pgr johnson(`Edges SQL`_, [``directed``])"
@@ -10711,7 +10714,7 @@ msgstr ""
 msgid "``pgr_lengauerTarjanDominatorTree`` — Returns the immediate dominator of all vertices."
 msgstr ""
 
-msgid "The algorithm calculates the *immidiate dominator* of each vertex called **idom**, once **idom** of each vertex is calculated then by making every **idom** of each vertex as its parent, the dominator tree can be built."
+msgid "The algorithm calculates the *immediate dominator* of each vertex called **idom**, once **idom** of each vertex is calculated then by making every **idom** of each vertex as its parent, the dominator tree can be built."
 msgstr ""
 
 msgid "The algorithm works in directed graph only."
@@ -11053,13 +11056,13 @@ msgstr ""
 msgid "A soft restriction going from vertex 6 to vertex 3 using edges 4 -> 7 is wanted."
 msgstr ""
 
-msgid "Idenifying the restriction"
+msgid "Identifying the restriction"
 msgstr ""
 
 msgid "Running a :doc:`pgr_dijkstraNear` the edge with cost 0, edge 8, is where the cost will be increased"
 msgstr ""
 
-msgid "The edge to be altered is ``WHERE cost = 0 AND seq != 1 AND edge != -1`` from the previus query:"
+msgid "The edge to be altered is ``WHERE cost = 0 AND seq != 1 AND edge != -1`` from the previous query:"
 msgstr ""
 
 msgid "Adding a value to the restriction"
@@ -11383,6 +11386,15 @@ msgstr ""
 msgid "The function reads edges from a not \"noded\" network table and writes the \"noded\" edges into a new table."
 msgstr ""
 
+msgid "Not checking and not creating indexes."
+msgstr ""
+
+msgid "Using ``pgr_separateTouching`` and ``pgr_separateCrossing``."
+msgstr ""
+
+msgid "Created table with ``BIGINT``."
+msgstr ""
+
 msgid "A common problem associated with bringing GIS data into pgRouting is the fact that the data is often not \"noded\" correctly. This will create invalid topologies, which will result in routes that are incorrect."
 msgstr ""
 
@@ -11419,10 +11431,10 @@ msgstr ""
 msgid "``integer`` Segment number of the original edge"
 msgstr ""
 
-msgid "``integer`` Empty source column"
+msgid "``bigint`` Empty source column"
 msgstr ""
 
-msgid "``integer`` Empty target column"
+msgid "``bigint`` Empty target column"
 msgstr ""
 
 msgid "the geom"
@@ -12007,7 +12019,7 @@ msgstr ""
 msgid "The returned values are not ordered"
 msgstr ""
 
-msgid "The returned graph is compresed"
+msgid "The returned graph is compressed"
 msgstr ""
 
 msgid "Running time: :math:`O(|V||E|)`"
@@ -12766,10 +12778,10 @@ msgstr ""
 msgid "Only points that are visited are removed, that is, points reached within the distance are included"
 msgstr ""
 
-msgid "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``"
+msgid "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
 msgstr ""
 
-msgid "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``"
+msgid "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
 msgstr ""
 
 msgid "Modify the graph to include points and using Dijkstra algorithm, extracts all the nodes and points that have costs less than or equal to the value ``**distance**`` from the starting point. The edges extracted will conform the corresponding spanning tree."
@@ -12851,9 +12863,6 @@ msgid "``pgr_withPointsKSP`` - Proposed"
 msgstr ""
 
 msgid "``pgr_withPointsKSP`` — Yen's algorithm for K shortest paths using Dijkstra."
-msgstr ""
-
-msgid "Standarizing output columns to |nksp-result|"
 msgstr ""
 
 msgid "pgr_withPointsKSP(One to One)"
@@ -15484,7 +15493,7 @@ msgstr ""
 msgid "About points"
 msgstr ""
 
-msgid "For this section the following city (see :doc:`sampledata`) some interesing points such as restaurant, supermarket, post office, etc. will be used as example."
+msgid "For this section the following city (see :doc:`sampledata`) some interesting points such as restaurant, supermarket, post office, etc. will be used as example."
 msgstr ""
 
 msgid "The graph is **directed**"
@@ -15514,7 +15523,7 @@ msgstr ""
 msgid "Driving side"
 msgstr ""
 
-msgid "In the the folowwing images:"
+msgid "In the the following images:"
 msgstr ""
 
 msgid "The squared vertices are the temporary vertices,"
@@ -15556,7 +15565,7 @@ msgstr ""
 msgid "Like having all points to be considered in both sides ``b``"
 msgstr ""
 
-msgid "Prefered usage on **undirected** graphs"
+msgid "Preferred usage on **undirected** graphs"
 msgstr ""
 
 msgid "On the :doc:`TRSP-family` this option is not valid"
@@ -15589,7 +15598,7 @@ msgstr ""
 msgid "On a right hand side driving network"
 msgstr ""
 
-msgid "Arrival to point ``-2`` can be achived only via vertex **16**."
+msgid "Arrival to point ``-2`` can be achieved only via vertex **16**."
 msgstr ""
 
 msgid "Does not affects edge ``(17, 16)``, therefore the edge is kept."
@@ -15604,7 +15613,7 @@ msgstr ""
 msgid "Edge ``(16, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1 * 0.4`)"
 msgstr ""
 
-msgid "Edge ``(-2, 17)`` with cost ``0.6`` (the remaing cost)"
+msgid "Edge ``(-2, 17)`` with cost ``0.6`` (the remaining cost)"
 msgstr ""
 
 msgid "The total cost of the additional edges is equal to the original cost."
@@ -15616,7 +15625,7 @@ msgstr ""
 msgid "On a left hand side driving network"
 msgstr ""
 
-msgid "Arrival to point ``-2`` can be achived only via vertex **17**."
+msgid "Arrival to point ``-2`` can be achieved only via vertex **17**."
 msgstr ""
 
 msgid "Does not affects edge ``(16, 17)``, therefore the edge is kept."
@@ -15640,7 +15649,7 @@ msgstr ""
 msgid "When driving side does not matter"
 msgstr ""
 
-msgid "Arrival to point ``-2`` can be achived via vertices **16** or **17**."
+msgid "Arrival to point ``-2`` can be achieved via vertices **16** or **17**."
 msgstr ""
 
 msgid "Affects the edges ``(16, 17)`` and ``(17, 16)``, therefore the edges are removed."
