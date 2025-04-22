@@ -86,7 +86,7 @@ Signatures
    | **options:** ``[directed, driving_side, details])``
 
    | Returns set of |old-pid-result|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 .. index::
     single: withPoints ; One to One - Proposed on v2.2
@@ -101,7 +101,7 @@ One to One
    | **options:** [directed, driving_side, details])
 
    | Returns set of |result-1-1|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: From point :math:`1` to vertex :math:`10` with details
 
@@ -122,7 +122,7 @@ One to Many
    | **options:** [directed, driving_side, details])
 
    | Returns set of |pid-1-m|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
           undirected graph
@@ -144,7 +144,7 @@ Many to One
    | **options:** [directed, driving_side, details])
 
    | Returns set of |pid-m-1|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
 
@@ -165,7 +165,7 @@ Many to Many
    | **options:** [directed, driving_side, details])
 
    | Returns set of |pid-m-m|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3` and
           vertex :math:`1`
@@ -187,7 +187,7 @@ Combinations
    | **options:** [directed, driving_side, details])
 
    | Returns set of |pid-m-m|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: Two combinations
 

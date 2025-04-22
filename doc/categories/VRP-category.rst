@@ -467,7 +467,7 @@ Result columns
      - BIGINT
      - Current vehicle identifier.
 
-       * Sumary row has the **total capacity violations**.
+       * Summary row has the **total capacity violations**.
 
          * A capacity violation happens when overloading or underloading a
            vehicle.
@@ -476,7 +476,7 @@ Result columns
      - Sequential value starting from **1** for the stops made by the current
        vehicle. The :math:`m_{th}` stop of the current vehicle.
 
-       * Sumary row has the **total time windows violations**.
+       * Summary row has the **total time windows violations**.
 
          * A time window violation happens when arriving after the location has
            closed.
@@ -735,7 +735,7 @@ For the following equivalences
 :math:`10m/s \approx 600m/min \approx 36 km/hr`
 
 Working with time units in seconds and the matrix been in meters:
-For a 1000m lenght value on the matrix:
+For a 1000m length value on the matrix:
 
 .. list-table::
    :width: 81

@@ -25,7 +25,7 @@ First Search ordering.
 
 :Version 3.7.0:
 
-* Standarizing output columns to |result-spantree|
+* Standardizing output columns to |result-spantree|
 
   * Added ``pred`` result columns.
 
