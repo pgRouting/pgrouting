@@ -32,6 +32,7 @@ psql -p "$1" -U "$3"  -d "$2" -X -q --set client_min_messages=WARNING --set ON_E
 
 psql -p "$1" -U "$3"  -d "$2" -X -q --set client_min_messages=WARNING --set ON_ERROR_STOP=1 --pset pager=off \
     -f "${DIR}/sampledata.sql" \
+    -f "${DIR}/contraction_hierarchies_data.sql" \
     -f "${DIR}/allpairs_tests.sql" \
     -f "${DIR}/solomon_100_rc101.data.sql" \
     -f "${DIR}/innerQuery.sql" \
