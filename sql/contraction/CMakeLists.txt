@@ -2,6 +2,8 @@
 SET(LOCAL_FILES
     _contraction.sql
     contraction.sql
+    _contractionHierarchies.sql
+    contractionHierarchies.sql
     deadEndContraction.sql
     linearContraction.sql
     )
