@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-21 16:50+0000\n"
+"POT-Creation-Date: 2025-04-23 15:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2557,10 +2557,16 @@ msgstr ""
 msgid ":doc:`pgr_contractionDeadEnd`"
 msgstr ""
 
-msgid "In large graphs, like the road graphs, or electric networks, graph contraction can be used to speed up some graph algorithms. Contraction reduces the size of the graph by removing some of the vertices and edges and, for example, might add edges that represent a sequence of original edges decreasing the total time and space used in graph algorithms."
+msgid ":doc:`pgr_contractionLinear`"
 msgstr ""
 
-msgid "This implementation gives a flexible framework for adding contraction algorithms in the future, currently, it supports two algorithms:"
+msgid ":doc:`pgr_contractionHierarchies`"
+msgstr ""
+
+msgid "In large graphs, like road graphs or electric networks, graph contraction can be used to speed up some graph algorithms. Contraction can reduce the size of the graph by removing some of the vertices and edges and adding edges that represent a sequence of original edges (the original ones can be kept in some methods). In this way, it decreases the total time and space used by graph algorithms, particularly those searching for an optimal path."
+msgstr ""
+
+msgid "This implementation gives a flexible framework for adding contraction algorithms in the future. Currently, it supports three algorithms."
 msgstr ""
 
 msgid "Dead end contraction"
@@ -2569,19 +2575,22 @@ msgstr ""
 msgid "Linear contraction"
 msgstr ""
 
-msgid "Allowing the user to:"
+msgid "Contraction hierarchies"
 msgstr ""
 
-msgid "Forbid contraction on a set of nodes."
+msgid "The two first ones can be combined through a iterative procedure, via the ``pgr_contraction`` method. The third one is implemented on its own."
 msgstr ""
 
-msgid "Decide the order of the contraction algorithms and set the maximum number of times they are to be executed."
+msgid "All functions allow the user to forbid contraction on a set of nodes."
 msgstr ""
 
 msgid "https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf"
 msgstr ""
 
-msgid "https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf"
+msgid "https://ae.iti.kit.edu/download/diploma_thesis_geisberger.pdf"
+msgstr ""
+
+msgid "https://jlazarsfeld.github.io/ch.150.project/contents/"
 msgstr ""
 
 msgid "Cost - Category"
@@ -3064,6 +3073,9 @@ msgstr ""
 msgid ":doc:`coloring-family`"
 msgstr ""
 
+msgid ":doc:`contraction-family`"
+msgstr ""
+
 msgid ":doc:`transformation-family`"
 msgstr ""
 
@@ -3404,9 +3416,6 @@ msgid ":doc:`allpairs-family`"
 msgstr ""
 
 msgid ":doc:`bdDijkstra-family`"
-msgstr ""
-
-msgid ":doc:`contraction-family`"
 msgstr ""
 
 msgid ":doc:`dijkstra-family`"
@@ -8251,6 +8260,222 @@ msgstr ""
 msgid "Using when departure and destination are not in the contracted graph"
 msgstr ""
 
+msgid "``pgr_contractionHierarchies``"
+msgstr ""
+
+msgid "``pgr_contractionHierarchies`` — Performs graph contraction according to the contraction hierarchies method and returns the contracted vertices and shortcut edges created."
+msgstr ""
+
+msgid "New **experimental** function"
+msgstr ""
+
+msgid "The contraction hierarchies method builds, from an initial order of the vertices, a hierarchical order, giving priority to some vertices during the processing of label fixing of shortest paths algorithms. Furthermore, the contraction hierarchies algorithm adds shortcut edges in the graph, that helps the shortest paths algorithm to follow the created hierarchical graph structure."
+msgstr ""
+
+msgid "The idea of the hierarchy is to put at a high priority level vertices that belong to the long distance network (highways for example in a road network) and to a low level of priority nodes that belong to the short distance network (arterials or secondary roads for example in road networks)."
+msgstr ""
+
+msgid "The contraction hierarchies algorithm makes the assumption that there is already a valuable vertices order that is used to initialize the contraction process. As in most cases there is no valuable initial node ordering, we use the order given by vertices ID. Then, the contraction process is made on the basis of this first order to give the final hierarchy."
+msgstr ""
+
+msgid "The basic idea is to keep the vertices in a priority queue sorted by some estimate of how attractive is their contraction. The implemented case uses the metric called *edge difference*, which corresponds to the difference between the number of shortcuts produced by a vertex contraction and the number of incident edges in the graph before contraction (``#shortcuts - #incident edges``)."
+msgstr ""
+
+msgid "Finally, the aim is to reduce the explored part of the graph, when using a bidirectional Dijkstra-like algorithm. The vertices order is used to feed the oriented search. The search is made without loosing optimality."
+msgstr ""
+
+msgid "Finding an optimal vertices ordering for contraction is a difficult problem. Nevertheless, very simple local heuristics work quite well, according to Geisberger et al. [2]. The principle here is to a priori estimate the value of the *edge difference* and to contract the node at the top of the queue only if the new value of the metric keeps it at the top of the queue. Otherwise, it is reinserted in the queue, at its right place corresponding to the new metric value."
+msgstr ""
+
+msgid "The process is done on graphs having only edges with positive costs."
+msgstr ""
+
+msgid "It is necessary to remember that there are no deleted vertices with this function. At the end, the graph keeps every vertex it had, but has some added edges, corresponding to shortcuts. The vertices which have been contracted, to build the shortcut edges, are kept and hierarchically ordered."
+msgstr ""
+
+msgid "As for the other contraction methods, it does not return the full contracted graph, only the changes. They are here of two types:"
+msgstr ""
+
+msgid "added shortcut edges, with negative identifiers;"
+msgstr ""
+
+msgid "contracted nodes with an order."
+msgstr ""
+
+msgid "The ``pgr_contractionHierarchies`` function has the following signature:"
+msgstr ""
+
+msgid "pgr_contractionHierarchies(`Edges SQL`_, [**options**])"
+msgstr ""
+
+msgid "**options:** ``[ forbidden_vertices, directed]``"
+msgstr ""
+
+msgid "Returns set of |result-contraction-hierarchies|"
+msgstr ""
+
+msgid "Contraction hierarchies optional parameters"
+msgstr ""
+
+msgid "``forbidden_vertices``"
+msgstr ""
+
+msgid "True if the graph is directed, False otherwise."
+msgstr ""
+
+msgid "The function returns many rows (one per vertex and one per shortcut edge created). The columns of the rows are:"
+msgstr ""
+
+msgid "Type of the ``id``."
+msgstr ""
+
+msgid "Column ``id`` has a positive value"
+msgstr ""
+
+msgid "Column ``id`` has a negative value"
+msgstr ""
+
+msgid "``metric``"
+msgstr ""
+
+msgid "``vertex_order``"
+msgstr ""
+
+msgid "Examples"
+msgstr ""
+
+msgid "On an undirected graph"
+msgstr ""
+
+msgid "The following query shows the original data involved in the contraction operation on an undirected graph."
+msgstr ""
+
+msgid "building contraction hierarchies on the whole graph"
+msgstr ""
+
+msgid "The results do not represent the contracted graph. They represent the changes done to the graph after applying the contraction algorithm and give the vertex order built by the algorithm, by ordering vertices according to the *edge difference* metric. As a consequence, vertices are all represented in the result (except of course forbidden ones). Only shortcut built by the algorithm are represented in the result."
+msgstr ""
+
+msgid "After computing the contraction hierarchies, an order is now given to the vertices,"
+msgstr ""
+
+msgid "in order to be used with a specific Dijkstra algorithm (implementation coming in a future version), which speeds up the search."
+msgstr ""
+
+msgid "We obtain the contracted graph above:"
+msgstr ""
+
+msgid "We can see without surprise that the vertices belonging to the shortcuts have a tendancy to have a high priority level in the resulting vertices order."
+msgstr ""
+
+msgid "On an undirected graph with forbidden vertices"
+msgstr ""
+
+msgid "building contraction with a set of forbidden vertices"
+msgstr ""
+
+msgid "Contraction process steps details"
+msgstr ""
+
+msgid "Shortcut building process"
+msgstr ""
+
+msgid "A vertex ``v`` is contracted by adding shortcuts replacing former paths of the form ``(u, v, w)`` by an edge ``(u, w)``. The shortcut ``(u, w)`` is only needed when ``(u, v, w)`` is the only shortest path between ``u`` and ``w``."
+msgstr ""
+
+msgid "When all shortcuts have been added for a given vertex ``v``, the incident edges of ``v`` are removed and another vertex is contracted with the remaining graph."
+msgstr ""
+
+msgid "The procedure is destructive for the graph and a copy is made to be able to manipulate it again as a whole. The contraction process adds all discovered shortcuts to the edge set ``E`` and attributes a metric to each contracted vertex. This metric is giving what is called the *contraction hierarchy*."
+msgstr ""
+
+msgid "Initialize the queue with a first vertices order"
+msgstr ""
+
+msgid "For each vertex ``v`` of the graph, a contraction of ``v`` is built:"
+msgstr ""
+
+msgid "Adjecent nodes"
+msgstr ""
+
+msgid ":math:`v`"
+msgstr ""
+
+msgid ":math:`\\{p, r, u\\}`"
+msgstr ""
+
+msgid ":math:`p`"
+msgstr ""
+
+msgid ":math:`\\{u, v\\}`"
+msgstr ""
+
+msgid ":math:`u`"
+msgstr ""
+
+msgid ":math:`\\{p, v, w\\}`"
+msgstr ""
+
+msgid ":math:`r`"
+msgstr ""
+
+msgid ":math:`\\{v, w\\}`"
+msgstr ""
+
+msgid ":math:`w`"
+msgstr ""
+
+msgid ":math:`\\{r, u\\}`"
+msgstr ""
+
+msgid "Adjacent edges are removed."
+msgstr ""
+
+msgid "Shortcuts are built from predecessors of ``v`` to successors of ``v`` if and only if the path through ``v`` corresponds to the only shortest path between the predecessor and the successor of ``v`` in the graph. The *edge difference* metric here takes the value of -2."
+msgstr ""
+
+msgid "Then the following vertex is contracted. The process goes on until each node of the graph has been contracted. At the end, there are no more edges in the graph, which has been destroyed by the process."
+msgstr ""
+
+msgid "This first contraction will give a vertices order, given by ordering them in ascending order on the metric (edge difference). A total vertices order is built. If ``u < v``, then ``u`` is less important than ``v``. The algorithm keeps the vertices into a queue in this order."
+msgstr ""
+
+msgid "A hierarchy will now be constructed by contracting again the vertices in this order."
+msgstr ""
+
+msgid "Build the final vertex order"
+msgstr ""
+
+msgid "Once the first order built, the algorithm uses it to browse the graph once again. For each vertex taken in the queue, the algorithm simulates contraction and calculates its edge difference. If the computed value is greater than the one of the next vertex to be contracted, then the algorithm puts it back in the queue (heuristic approach). Otherwise it contracts it permanently."
+msgstr ""
+
+msgid "Add shortcuts to the initial graph"
+msgstr ""
+
+msgid "At the end, the algorithm takes the initial graph (before edges deletions) and adds the shortcut edges to it. It gives you the contracted graph, ready to use with a specialized Dijkstra algorithm, which takes into account the order of the nodes in the hierarchy."
+msgstr ""
+
+msgid "Use the contraction"
+msgstr ""
+
+msgid "Build the contraction"
+msgstr ""
+
+msgid "Add shortcuts and hierarchy in the existing tables"
+msgstr ""
+
+msgid "Add new columns in the `vertices` and `edges` tables to store the results:"
+msgstr ""
+
+msgid "Update and insert the results in the two tables."
+msgstr ""
+
+msgid "Use a Dijkstra shortest path algorithm on it"
+msgstr ""
+
+msgid "Then you can use any Dijkstra-like algorithm, waiting for the adapted one which will take into account the built vertices hierarchy. For example:"
+msgstr ""
+
 msgid "``pgr_contractionLinear`` - Proposed"
 msgstr ""
 
@@ -11026,9 +11251,6 @@ msgstr ""
 msgid "``geometry`` Geometry column of the noded network"
 msgstr ""
 
-msgid "Examples"
-msgstr ""
-
 msgid "Create the topology for the data in :doc:`sampledata`"
 msgstr ""
 
@@ -12731,6 +12953,9 @@ msgid "`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: pgr_contr
 msgstr ""
 
 msgid "`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: pgr_contractionLinear"
+msgstr ""
+
+msgid "`#2536 <https://github.com/pgRouting/pgrouting/issues/2536>`__: pgr_contractionHierarchies"
 msgstr ""
 
 msgid "`#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__: pgr_separateCrossing"
