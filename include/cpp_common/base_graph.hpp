@@ -178,6 +178,7 @@ class Pgr_base_graph;
   Type      |   pgRouting
   :---------: | :---------------------
   UndirectedGraph | Basic undirected graph
+  UndirectedUniqueGraph | Undirected graph with uniqueness of edges
   DirectedGraph | Basic directed graph
   xyUndirectedGraph | X & Y values stored on the vertex
   xyDirectedGraph | X & Y values stored on the vertex
