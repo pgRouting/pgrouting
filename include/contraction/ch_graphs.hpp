@@ -50,6 +50,11 @@ using CHUndirectedGraph =  Pgr_contractionGraph <
     boost::undirectedS,
     CH_vertex, CH_edge>, false>;
 
+using CHUniqueUndirectedGraph =  Pgr_contractionGraph <
+    boost::adjacency_list < boost::setS, boost::vecS,
+    boost::undirectedS,
+    CH_vertex, CH_edge>, false>;
+
 using CHDirectedGraph = Pgr_contractionGraph<
     boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
