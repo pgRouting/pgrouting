@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 16:50+0000\n"
-"PO-Revision-Date: 2025-04-24 09:46+0000\n"
+"PO-Revision-Date: 2025-04-24 09:47+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -18639,9 +18639,8 @@ msgstr "pgr_withPointsCost(一对多)"
 msgid "pgr_withPointsCost(Many to One)"
 msgstr "pgr_withPointsCost(多对一)"
 
-#, fuzzy
 msgid "pgr_withPointsCost(Many to Many)"
-msgstr "pgr_withPointsCost(多对多)"
+msgstr "pgr_withPointsCost(Many to Many)"
 
 msgid "pgr_withPointsDD(single vertex)"
 msgstr "pgr_withPointsDD （单顶点）"
@@ -18689,7 +18688,7 @@ msgid "Refactored"
 msgstr "重构"
 
 msgid "pgr_dijkstra(One to One)"
-msgstr "pgr_dijkstra(One to One)"
+msgstr "pgr_dijkstra（一对一）"
 
 msgid ""
 "pgr_alphaShape function now can generate better (multi)polygon with holes "
