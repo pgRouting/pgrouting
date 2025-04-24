@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 16:50+0000\n"
 "PO-Revision-Date: 2025-04-24 09:18+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -4173,34 +4173,33 @@ msgstr ""
 "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: "
 "pgr_alphaShape"
 
-#, fuzzy
 msgid ""
 "`#2751 <https://github.com/pgRouting/pgrouting/issues/2851>`__: "
 "pgr_createTopology"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2751 <https://github.com/pgRouting/pgrouting/issues/2851>`__: "
+"pgr_createTopology"
 
-#, fuzzy
 msgid ""
 "`#2752 <https://github.com/pgRouting/pgrouting/issues/2752>`__: "
 "pgr_analyzeGraph"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2752 <https://github.com/pgRouting/pgrouting/issues/2752>`__: "
+"pgr_analyzeGraph"
 
-#, fuzzy
 msgid ""
 "`#2755 <https://github.com/pgRouting/pgrouting/issues/2755>`__: "
 "pgr_analyzeOneWay"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2755 <https://github.com/pgRouting/pgrouting/issues/2755>`__: "
+"pgr_analyzeOneWay"
 
-#, fuzzy
 msgid ""
 "`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__: "
 "pgr_createVerticesTable"
 msgstr ""
-"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
-"pgr_extractVertices"
+"`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__: "
+"pgr_createVerticesTable"
 
 msgid "Removal of SQL deprecated internal functions"
 msgstr "移除已弃用的SQL内部函数"
@@ -4277,11 +4276,10 @@ msgid "_pgr_createindex(text,text,text,integer,text)"
 msgstr "_pgr_createindex(text,text,text,integer,text)"
 
 msgid "_pgr_createindex(text,text,text,text,integer,text)"
-msgstr ""
+msgstr "_pgr_createindex(text,text,text,text,text,integer,text)"
 
-#, fuzzy
 msgid "_pgr_endpoint(geometry)"
-msgstr "点几何"
+msgstr "_pgr_endpoint(geometry)"
 
 msgid "_pgr_getcolumnname(text,text,integer,text)"
 msgstr ""
