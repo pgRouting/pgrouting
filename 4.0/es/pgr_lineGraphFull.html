@@ -117,7 +117,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#adding-a-soft-restriction">Adding a soft restriction</a><ul>
-<li><a class="reference internal" href="#idenifying-the-restriction">Idenifying the restriction</a></li>
+<li><a class="reference internal" href="#identifying-the-restriction">Identifying the restriction</a></li>
 <li><a class="reference internal" href="#adding-a-value-to-the-restriction">Adding a value to the restriction</a></li>
 </ul>
 </li>
@@ -200,7 +200,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#adding-a-soft-restriction">Adding a soft restriction</a><ul>
-<li><a class="reference internal" href="#idenifying-the-restriction">Idenifying the restriction</a></li>
+<li><a class="reference internal" href="#identifying-the-restriction">Identifying the restriction</a></li>
 <li><a class="reference internal" href="#adding-a-value-to-the-restriction">Adding a value to the restriction</a></li>
 </ul>
 </li>
@@ -249,7 +249,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - Experimental<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> — Transforma un grafo dado en uno nuevo donde todos los vértices del grafo original se convierten en grafos de líneas.</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="85db84cc-fa6e-4c3d-9170-4b8c72ee9e96" name="85db84cc-fa6e-4c3d-9170-4b8c72ee9e96" type="checkbox"><label class="sphinx_collapse__label" for="85db84cc-fa6e-4c3d-9170-4b8c72ee9e96"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="dfaf61ae-b845-4033-85e4-10feb822a136" name="dfaf61ae-b845-4033-85e4-10feb822a136" type="checkbox"><label class="sphinx_collapse__label" for="dfaf61ae-b845-4033-85e4-10feb822a136"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
@@ -306,7 +306,7 @@
 <li><p>Los resultados son indefinidos cuando se utiliza un identificador de borde duplicado en el grafo de entrada.</p></li>
 <li><p>Tiempo de ejecución: TBD</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -512,7 +512,7 @@
 </li>
 <li><p><a class="reference internal" href="#adding-a-soft-restriction" id="id7">Adding a soft restriction</a></p>
 <ul>
-<li><p><a class="reference internal" href="#idenifying-the-restriction" id="id8">Idenifying the restriction</a></p></li>
+<li><p><a class="reference internal" href="#identifying-the-restriction" id="id8">Identifying the restriction</a></p></li>
 <li><p><a class="reference internal" href="#adding-a-value-to-the-restriction" id="id9">Adding a value to the restriction</a></p></li>
 </ul>
 </li>
@@ -777,8 +777,8 @@ source has an original value.</p>
 <section id="adding-a-soft-restriction">
 <h3><a class="toc-backref" href="#id7" role="doc-backlink">Adding a soft restriction</a><a class="headerlink" href="#adding-a-soft-restriction" title="Link to this heading">¶</a></h3>
 <p>A soft restriction going from vertex 6 to vertex 3 using edges 4 -&gt; 7 is wanted.</p>
-<section id="idenifying-the-restriction">
-<h4><a class="toc-backref" href="#id8" role="doc-backlink">Idenifying the restriction</a><a class="headerlink" href="#idenifying-the-restriction" title="Link to this heading">¶</a></h4>
+<section id="identifying-the-restriction">
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Identifying the restriction</a><a class="headerlink" href="#identifying-the-restriction" title="Link to this heading">¶</a></h4>
 <p>Running a <a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Propuesto</span></a> the edge with cost 0, edge 8, is where the
 cost will be increased</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, path_seq, start_vid, end_vid, node, original_id, edge, cost, agg_cost
@@ -798,7 +798,7 @@ JOIN vertex_map AS v1 ON (node = v1.id);
 </pre></div>
 </div>
 <p>The edge to be altered is <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">cost</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">seq</span> <span class="pre">!=</span> <span class="pre">1</span> <span class="pre">AND</span> <span class="pre">edge</span> <span class="pre">!=</span> <span class="pre">-1</span></code> from
-the previus query:</p>
+the previous query:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge FROM pgr_dijkstraNear(
   $$SELECT * FROM lineGraph_edges$$,
   (SELECT array_agg(id) FROM vertex_map where original_id = 6),
@@ -1064,7 +1064,7 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en abr 21, 2025.<br/>
+      Actualizado por última vez en abr 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

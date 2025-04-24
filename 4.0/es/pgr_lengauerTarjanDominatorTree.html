@@ -197,7 +197,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_lengauerTarjanDominatorTree</span></code> - Experimental<a class="headerlink" href="#pgr-lengauertarjandominatortree-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lengauerTarjanDominatorTree</span></code> — Devuelve el dominador inmediato de todos los vértices.</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="7dd1cd5d-a6bb-475e-93e8-f45b0bc3c6cf" name="7dd1cd5d-a6bb-475e-93e8-f45b0bc3c6cf" type="checkbox"><label class="sphinx_collapse__label" for="7dd1cd5d-a6bb-475e-93e8-f45b0bc3c6cf"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="ef0b01ce-64a7-47f3-abba-8317705f9a42" name="ef0b01ce-64a7-47f3-abba-8317705f9a42" type="checkbox"><label class="sphinx_collapse__label" for="ef0b01ce-64a7-47f3-abba-8317705f9a42"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
@@ -240,7 +240,9 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>El algoritmo calcula el <em>dominador inmediato</em> de cada vértice llamado <strong>idom</strong>, una vez que se calcula la <strong>idom</strong> de cada vértice y, a continuación, haciendo que cada <strong>idom</strong> de cada vértice como su elemento primario, se pueda construir el árbol del dominador.</p>
+<p>The algorithm calculates the <em>immediate dominator</em> of each vertex called
+<strong>idom</strong>, once <strong>idom</strong> of each vertex is calculated then by making every
+<strong>idom</strong> of each vertex as its parent, the dominator tree can be built.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
 <li><p>El algoritmo solo funciona en el grafo dirigido.</p></li>
@@ -249,7 +251,7 @@
 <li><p>Si el <em>vértice raíz</em> no está presente en el grafo, devuelve un conjunto vacío.</p></li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O((V+E)log(V+E))\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -466,7 +468,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en abr 21, 2025.<br/>
+      Actualizado por última vez en abr 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

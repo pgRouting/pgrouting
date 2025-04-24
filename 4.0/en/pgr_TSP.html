@@ -115,7 +115,7 @@
 <li><a class="reference internal" href="#result-columns">Result columns</a></li>
 <li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
 <li><a class="reference internal" href="#start-from-vertex-1">Start from vertex <span class="math notranslate nohighlight">\(1\)</span></a></li>
-<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix">Using points of interest to generate an asymetric matrix.</a></li>
+<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix">Using points of interest to generate an asymmetric matrix.</a></li>
 <li><a class="reference internal" href="#connected-incomplete-data">Connected incomplete data</a></li>
 </ul>
 </li>
@@ -184,7 +184,7 @@
 <li><a class="reference internal" href="#result-columns">Result columns</a></li>
 <li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
 <li><a class="reference internal" href="#start-from-vertex-1">Start from vertex <span class="math notranslate nohighlight">\(1\)</span></a></li>
-<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix">Using points of interest to generate an asymetric matrix.</a></li>
+<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix">Using points of interest to generate an asymmetric matrix.</a></li>
 <li><a class="reference internal" href="#connected-incomplete-data">Connected incomplete data</a></li>
 </ul>
 </li>
@@ -299,13 +299,13 @@ in the worst case</em> when:</p>
 </li>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">OR</span> <span class="pre">end_vid</span> <span class="pre">=</span> <span class="pre">0</span></code></p>
 <ul>
-<li><p>The solutions generated is garanteed to be <em>twice as long as the
+<li><p>The solutions generated are guaranteed to be <em>twice as long as the
 optimal tour in the worst case</em></p></li>
 </ul>
 </li>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">end_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">end_vid</span></code></p>
 <ul>
-<li><p>It is <strong>not garanteed</strong> that the solution will be, in the worse case,
+<li><p>It is <strong>not guaranteed</strong> that the solution will be, in the worst case,
 twice as long as the optimal tour, due to the fact that <cite>end_vid</cite> is
 forced to be in a fixed position.</p></li>
 </ul>
@@ -314,7 +314,7 @@ forced to be in a fixed position.</p></li>
 </li>
 <li><p>With <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
-<li><p>It is <strong>not garanteed</strong> that the solution will be, in the worse case,
+<li><p>It is <strong>not guaranteed</strong> that the solution will be, in the worst case,
 twice as long as the optimal tour</p></li>
 <li><p>Will generate a graph that:</p>
 <ul>
@@ -346,7 +346,7 @@ triangle inequality.</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph Inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 </section>
 <section id="signatures">
@@ -359,7 +359,7 @@ triangle inequality.</p></li>
 </div>
 <div class="line-block">
 <div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMTPY SET</div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -526,7 +526,7 @@ vertex</p></li>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#start-from-vertex-1" id="id1">Start from vertex <span class="math notranslate nohighlight">\(1\)</span></a></p></li>
-<li><p><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix" id="id2">Using points of interest to generate an asymetric matrix.</a></p></li>
+<li><p><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix" id="id2">Using points of interest to generate an asymmetric matrix.</a></p></li>
 <li><p><a class="reference internal" href="#connected-incomplete-data" id="id3">Connected incomplete data</a></p></li>
 </ul>
 </nav>
@@ -562,13 +562,13 @@ vertex</p></li>
 </pre></div>
 </div>
 </section>
-<section id="using-points-of-interest-to-generate-an-asymetric-matrix">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Using points of interest to generate an asymetric matrix.</a><a class="headerlink" href="#using-points-of-interest-to-generate-an-asymetric-matrix" title="Link to this heading">¶</a></h3>
+<section id="using-points-of-interest-to-generate-an-asymmetric-matrix">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Using points of interest to generate an asymmetric matrix.</a><a class="headerlink" href="#using-points-of-interest-to-generate-an-asymmetric-matrix" title="Link to this heading">¶</a></h3>
 <p>To generate an asymmetric matrix:</p>
 <ul class="simple">
 <li><p><strong>Line 4</strong> The <code class="docutils literal notranslate"><span class="pre">side</span></code> information of <code class="docutils literal notranslate"><span class="pre">pointsOfInterset</span></code> is ignored by not
 including it in the query</p></li>
-<li><p><strong>Line 6</strong> Generating an asymetric matrix with <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<li><p><strong>Line 6</strong> Generating an asymmetric matrix with <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(min(agg\_cost(u, v), agg\_cost(v, u))\)</span> is going to be considered as
 the <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
@@ -692,7 +692,7 @@ value used is taken from <span class="math notranslate nohighlight">\(10 \righta
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Apr 21, 2025.<br/>
+      Last updated on Apr 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

@@ -231,7 +231,7 @@
 <section id="vehicle-routing-functions-category">
 <h1><a class="toc-backref" href="#id1" role="doc-backlink">车辆路径规划函数 - 分类</a><a class="headerlink" href="#vehicle-routing-functions-category" title="Link to this heading">¶</a></h1>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="5cb9df40-e991-4df4-bfc1-ed605b45023b" name="5cb9df40-e991-4df4-bfc1-ed605b45023b" type="checkbox"><label class="sphinx_collapse__label" for="5cb9df40-e991-4df4-bfc1-ed605b45023b"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="a7fffb1e-7e32-41f2-891f-44eba850fd4d" name="a7fffb1e-7e32-41f2-891f-44eba850fd4d" type="checkbox"><label class="sphinx_collapse__label" for="a7fffb1e-7e32-41f2-891f-44eba850fd4d"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -780,7 +780,7 @@
 <td><p>BIGINT</p></td>
 <td><p>当前车辆标识符。</p>
 <ul class="simple">
-<li><p>摘要行有 <strong>总容量违规情况</strong>。</p>
+<li><p>Summary row has the <strong>total capacity violations</strong>.</p>
 <ul>
 <li><p>当车辆超载或欠载时，就会发生容量违规。</p></li>
 </ul>
@@ -792,7 +792,7 @@
 <td><p>INTEGER</p></td>
 <td><p>当前车辆停止的顺序值，从 <strong>1</strong> 开始。 当前第 <span class="math notranslate nohighlight">\(m_{th}\)</span> 车辆的停止。</p>
 <ul class="simple">
-<li><p>摘要行包含 <strong>总时间窗口违规情况</strong>。</p>
+<li><p>Summary row has the <strong>total time windows violations</strong>.</p>
 <ul>
 <li><p>在该地点关闭后到达时，会发生时间窗口违规。</p></li>
 </ul>
@@ -1133,7 +1133,8 @@
 </dd>
 </dl>
 <p>对于以下等价 <span class="math notranslate nohighlight">\(10m/s \approx 600m/min \approx 36 km/hr\)</span></p>
-<p>使用以秒为单位的时间单位和以米为单位的矩阵：对于矩阵上的 1000m 长度值：</p>
+<p>Working with time units in seconds and the matrix been in meters:
+For a 1000m length value on the matrix:</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>单位</p></th>
@@ -1193,7 +1194,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 21, 2025.<br/>
+      Last updated on 4月 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

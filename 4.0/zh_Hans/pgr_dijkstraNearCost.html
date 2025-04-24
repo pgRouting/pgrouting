@@ -222,7 +222,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> - 拟议<a class="headerlink" href="#pgr-dijkstranearcost-proposed" title="Link to this heading">¶</a></h1>
 <p><cite>pgr_dijkstraNearCost`</cite> - 使用 dijkstra 算法，找到通往最近顶点的路径。</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="b02c171d-13c8-48d9-911b-255ab41795ba" name="b02c171d-13c8-48d9-911b-255ab41795ba" type="checkbox"><label class="sphinx_collapse__label" for="b02c171d-13c8-48d9-911b-255ab41795ba"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="6186e9fe-12cc-4260-bd88-785a95fa02d3" name="6186e9fe-12cc-4260-bd88-785a95fa02d3" type="checkbox"><label class="sphinx_collapse__label" for="6186e9fe-12cc-4260-bd88-785a95fa02d3"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>下一版本的拟议功能。</p>
@@ -295,7 +295,7 @@
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 </section>
 <section id="signatures">
@@ -414,7 +414,7 @@
 </dd>
 </dl>
 <ul class="simple">
-<li><p>使用 <strong>无向</strong> 图进行行人路线规划</p></li>
+<li><p>Using an <strong>undirected</strong> graph for pedestrian routing</p></li>
 <li><p>第一条地铁线的站点位于 <span class="math notranslate nohighlight">\(\{15, 16\}\)</span></p></li>
 <li><p>地铁二号线的站点是 <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span></p></li>
 <li><p>第 <cite>4</cite> 行：使用命名参数：<cite>directed =&gt; false</cite></p></li>
@@ -488,7 +488,7 @@
 </div>
 <p>查询：</p>
 <ul class="simple">
-<li><p>行 <cite>3~4</cite> 设置地铁三号线的起始顶点和地铁二号线的终点顶点</p></li>
+<li><p>行 <cite>3~4</cite> 将起始顶点设置为第一条地铁线上的顶点，将终点顶点设置为第二条地铁线上的顶点</p></li>
 <li><p>行 <cite>6~7</cite> 将起始顶点设置为第一条地铁线上的顶点，将终点顶点设置为第一条地铁线上的顶点</p></li>
 <li><p>第 <cite>8</cite> 行：使用名为 <cite>global =&gt; false</cite> 的参数</p></li>
 <li><p>使用的默认值：</p>
@@ -528,7 +528,7 @@
 <li><p>将第二条地铁线 <span class="math notranslate nohighlight">\({15, 16\}\)</span> 连接到第一条地铁线 <span class="math notranslate nohighlight">\({1, 10, 11\}\)</span>：</p>
 <ul>
 <li><p>从二号线所有站点出发的最佳连接是： <span class="math notranslate nohighlight">\({(15 ／rightarrow 10) (16 ／rightarrow 11)}\)</span></p></li>
-<li><p>由于成本相同，所以两者同样好。(线路：<cite>12</cite> 和 <cite>13</cite>）</p></li>
+<li><p>Both are equally good as they have the same cost. (lines: <cite>12</cite> and <cite>13</cite>)</p></li>
 </ul>
 </li>
 </ul>
@@ -787,7 +787,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 21, 2025.<br/>
+      Last updated on 4月 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

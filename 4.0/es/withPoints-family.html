@@ -235,7 +235,7 @@
 <h1>withPoints - Familia de funciones<a class="headerlink" href="#withpoints-family-of-functions" title="Link to this heading">¶</a></h1>
 <p>Cuando los puntos también se dan como entrada:</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="9e85e04c-0267-4fd6-af70-f334980095c4" name="9e85e04c-0267-4fd6-af70-f334980095c4" type="checkbox"><label class="sphinx_collapse__label" for="9e85e04c-0267-4fd6-af70-f334980095c4"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="f52f0ad5-b048-4d68-9b69-f89defc2113a" name="f52f0ad5-b048-4d68-9b69-f89defc2113a" type="checkbox"><label class="sphinx_collapse__label" for="f52f0ad5-b048-4d68-9b69-f89defc2113a"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -566,7 +566,9 @@ functions that compose them are based one way or another on dijkstra algorithm.<
 </nav>
 <section id="about-points">
 <h3><a class="toc-backref" href="#id1" role="doc-backlink">Sobre los puntos</a><a class="headerlink" href="#about-points" title="Link to this heading">¶</a></h3>
-<p>Para esta sección de la siguiente ciudad (ver <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>) algunos puntos de interés como restaurantes, supermercado, oficina de correo, etc. seran usadas de ejemplo.</p>
+<p>For this section the following city (see <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>) some interesting
+points such as restaurant, supermarket, post office, etc. will be used as
+example.</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" />
 </a>
@@ -600,7 +602,7 @@ functions that compose them are based one way or another on dijkstra algorithm.<
 </section>
 <section id="driving-side">
 <h3><a class="toc-backref" href="#id2" role="doc-backlink">Lado de manejo</a><a class="headerlink" href="#driving-side" title="Link to this heading">¶</a></h3>
-<p>En las siguientes imágenes:</p>
+<p>In the following images:</p>
 <ul class="simple">
 <li><p>Los vértices cuadrados son vértices temporales,</p></li>
 <li><p>Los vértices temporales se agregan según el lado de conducción,</p></li>
@@ -636,7 +638,7 @@ functions that compose them are based one way or another on dijkstra algorithm.<
 <h4><a class="toc-backref" href="#id5" role="doc-backlink">Lado de manejo no importa</a><a class="headerlink" href="#driving-side-does-not-matter" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Como si se tuvieran todos los puntos en ambos lados considerados como <code class="docutils literal notranslate"><span class="pre">b</span></code></p></li>
-<li><p>Uso preferido en grafos <strong>no dirigidos</strong></p></li>
+<li><p>Preferred usage on <strong>undirected</strong> graphs</p></li>
 <li><p>En <a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Familia de funciones</span></a> esta opción no es válida</p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" />
@@ -682,14 +684,14 @@ the graph.</p>
 <a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" />
 </a>
 <ul class="simple">
-<li><p>Llegada al punto <code class="docutils literal notranslate"><span class="pre">-2</span></code> se logra solo vía el vértice <strong>16</strong>.</p></li>
+<li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achieved only via vertex <strong>16</strong>.</p></li>
 <li><p>Does not affects edge <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>, therefore the edge is kept.</p></li>
 <li><p>Sólo afecta a la arista <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code>, por lo que la arista se elimina.</p></li>
 <li><p>Crear dos aristas nuevas:</p>
 <ul>
 <li><p>Edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.4</span></code> (original cost * fraction == <span class="math notranslate nohighlight">\(1 *
 0.4\)</span>)</p></li>
-<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaing cost)</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaining cost)</p></li>
 </ul>
 </li>
 <li><p>The total cost of the additional edges is equal to the original cost.</p></li>
@@ -702,7 +704,7 @@ the graph.</p>
 <a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" />
 </a>
 <ul class="simple">
-<li><p>Llegada al punto <code class="docutils literal notranslate"><span class="pre">-2</span></code> se logra solo vía el vértice <strong>17</strong>.</p></li>
+<li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achieved only via vertex <strong>17</strong>.</p></li>
 <li><p>Does not affects edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code>, therefore the edge is kept.</p></li>
 <li><p>Sólo afecta a la arista <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>, por lo que la arista se elimina.</p></li>
 <li><p>Crear dos aristas nuevas:</p>
@@ -712,7 +714,7 @@ original:</p>
 <ul>
 <li><p>Edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.4</span></code> (original cost * fraction == <span class="math notranslate nohighlight">\(1 *
 0.4\)</span>)</p></li>
-<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaing cost)</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaining cost)</p></li>
 <li><p>If more points are on the same edge, the process is repeated recursevly.</p></li>
 </ul>
 </li>
@@ -734,7 +736,7 @@ the graph.</p></li>
 <a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" />
 </a>
 <ul class="simple">
-<li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achived via vertices <strong>16</strong> or <strong>17</strong>.</p></li>
+<li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achieved via vertices <strong>16</strong> or <strong>17</strong>.</p></li>
 <li><p>Afecta las aristas <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> y <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code> por lo que esas aristas se eliminan.</p></li>
 <li><p>Crear cuatro nuevas aristas:</p>
 <ul>
@@ -743,7 +745,7 @@ original:</p>
 <ul>
 <li><p>Edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.4</span></code> (original cost * fraction == <span class="math notranslate nohighlight">\(1 *
 0.4\)</span>)</p></li>
-<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaing cost)</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaining cost)</p></li>
 <li><p>If more points are on the same edge, the process is repeated recursevly.</p></li>
 </ul>
 </li>
@@ -789,7 +791,7 @@ the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en abr 21, 2025.<br/>
+      Actualizado por última vez en abr 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

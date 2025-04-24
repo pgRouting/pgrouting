@@ -116,7 +116,7 @@
 <li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
 <li><a class="reference internal" href="#start-from-vertex-1">Inicio en el vértice <span class="math notranslate nohighlight">\(1\)</span></a></li>
-<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix">Uso de puntos de interés para generar una matriz asimétrica.</a></li>
+<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix">Using points of interest to generate an asymmetric matrix.</a></li>
 <li><a class="reference internal" href="#connected-incomplete-data">Datos incompletos conectados</a></li>
 </ul>
 </li>
@@ -185,7 +185,7 @@
 <li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
 <li><a class="reference internal" href="#start-from-vertex-1">Inicio en el vértice <span class="math notranslate nohighlight">\(1\)</span></a></li>
-<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix">Uso de puntos de interés para generar una matriz asimétrica.</a></li>
+<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix">Using points of interest to generate an asymmetric matrix.</a></li>
 <li><a class="reference internal" href="#connected-incomplete-data">Datos incompletos conectados</a></li>
 </ul>
 </li>
@@ -291,19 +291,23 @@
 </li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">Ó</span> <span class="pre">end_vid</span> <span class="pre">=</span> <span class="pre">0</span></code></p>
 <ul>
-<li><p>Las soluciones generadas están garantizadas para ser <em>el doble de largas que el recorrido óptimo en el peor de los casos</em></p></li>
+<li><p>The solutions generated are guaranteed to be <em>twice as long as the
+optimal tour in the worst case</em></p></li>
 </ul>
 </li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">Y</span> <span class="pre">end_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">Y</span> <span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">end_vid</span></code></p>
 <ul>
-<li><p><strong>No está garantizado</strong> que la solución sea, en el peor de los casos, el doble de larga que el recorrido óptimo, debido al hecho de que <cite>end_vid</cite> se ve obligado a estar en una posición fija.</p></li>
+<li><p>It is <strong>not guaranteed</strong> that the solution will be, in the worst case,
+twice as long as the optimal tour, due to the fact that <cite>end_vid</cite> is
+forced to be in a fixed position.</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Con <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
-<li><p><strong>No está garantizado</strong> que la solución sea, en el peor de los casos, el doble de larga que el recorrido óptimo</p></li>
+<li><p>It is <strong>not guaranteed</strong> that the solution will be, in the worst case,
+twice as long as the optimal tour</p></li>
 <li><p>Generará un grafo que:</p>
 <ul>
 <li><p>es dirigido</p></li>
@@ -329,7 +333,7 @@
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 </section>
 <section id="signatures">
@@ -506,7 +510,7 @@
 <nav class="contents local" id="contenido">
 <ul class="simple">
 <li><p><a class="reference internal" href="#start-from-vertex-1" id="id1">Inicio en el vértice <span class="math notranslate nohighlight">\(1\)</span></a></p></li>
-<li><p><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix" id="id2">Uso de puntos de interés para generar una matriz asimétrica.</a></p></li>
+<li><p><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix" id="id2">Using points of interest to generate an asymmetric matrix.</a></p></li>
 <li><p><a class="reference internal" href="#connected-incomplete-data" id="id3">Datos incompletos conectados</a></p></li>
 </ul>
 </nav>
@@ -542,12 +546,12 @@
 </pre></div>
 </div>
 </section>
-<section id="using-points-of-interest-to-generate-an-asymetric-matrix">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Uso de puntos de interés para generar una matriz asimétrica.</a><a class="headerlink" href="#using-points-of-interest-to-generate-an-asymetric-matrix" title="Link to this heading">¶</a></h3>
+<section id="using-points-of-interest-to-generate-an-asymmetric-matrix">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Using points of interest to generate an asymmetric matrix.</a><a class="headerlink" href="#using-points-of-interest-to-generate-an-asymmetric-matrix" title="Link to this heading">¶</a></h3>
 <p>Para generar una matriz asimétrica:</p>
 <ul class="simple">
 <li><p><strong>Línea 4</strong> La información <code class="docutils literal notranslate"><span class="pre">side</span></code> de <code class="docutils literal notranslate"><span class="pre">pointsOfInterset</span></code> se ignora al no incluirla en la consulta</p></li>
-<li><p><strong>Línea 6</strong> Generación de una matriz asimétrica con <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<li><p><strong>Line 6</strong> Generating an asymmetric matrix with <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(min(agg\_cost(u, v), agg\_cost(v, u))\)</span> se considera como el <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
 <li><p>La solución que puede ser mayor que <em>el doble de larga que el tour óptimo</em> porque:</p>
@@ -668,7 +672,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en abr 21, 2025.<br/>
+      Actualizado por última vez en abr 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

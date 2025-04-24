@@ -243,7 +243,7 @@
 </ul>
 <p class="rubric">Version 3.6.0</p>
 <ul class="simple">
-<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Standardizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>pgr_withPointsKSP(One to One)</p>
 <ul>
 <li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
@@ -273,7 +273,7 @@ unnamed compulsory <strong>driving side</strong>.</p></li>
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>Modifies the graph to include the points defined in the <a class="reference internal" href="#points-sql">Points SQL</a> and
 using Yen algorithm, finds the <span class="math notranslate nohighlight">\(K\)</span> shortest paths.</p>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph Inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -302,7 +302,7 @@ using Yen algorithm, finds the <span class="math notranslate nohighlight">\(K\)<
 </div>
 <div class="line-block">
 <div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMTPY SET</div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -350,7 +350,7 @@ graph with <strong>left</strong> side driving.</p>
 </div>
 <div class="line-block">
 <div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMTPY SET</div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -400,7 +400,7 @@ undirected graph</p>
 </div>
 <div class="line-block">
 <div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMTPY SET</div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -442,7 +442,7 @@ graph with <strong>right</strong> side driving and <strong>details</strong> set 
 </div>
 <div class="line-block">
 <div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMTPY SET</div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -490,7 +490,7 @@ graph with <strong>left</strong> side driving and <strong>heap_paths</strong> se
 </div>
 <div class="line-block">
 <div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMTPY SET</div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -1033,7 +1033,7 @@ point <span class="math notranslate nohighlight">\(2\)</span> with heap paths an
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Apr 21, 2025.<br/>
+      Last updated on Apr 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

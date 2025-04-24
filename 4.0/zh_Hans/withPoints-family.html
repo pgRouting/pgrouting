@@ -234,7 +234,7 @@
 <h1>withPoints - 函数族<a class="headerlink" href="#withpoints-family-of-functions" title="Link to this heading">¶</a></h1>
 <p>当点也作为输入给出时：</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="7ea1f215-46aa-41f2-afbd-1adab771878f" name="7ea1f215-46aa-41f2-afbd-1adab771878f" type="checkbox"><label class="sphinx_collapse__label" for="7ea1f215-46aa-41f2-afbd-1adab771878f"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="0b469439-318b-4403-8e6f-adfbe22b0b2f" name="0b469439-318b-4403-8e6f-adfbe22b0b2f" type="checkbox"><label class="sphinx_collapse__label" for="0b469439-318b-4403-8e6f-adfbe22b0b2f"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>下一版本的拟议功能。</p>
@@ -564,7 +564,9 @@
 </nav>
 <section id="about-points">
 <h3><a class="toc-backref" href="#id1" role="doc-backlink">关于积分</a><a class="headerlink" href="#about-points" title="Link to this heading">¶</a></h3>
-<p>对于本节，将使用以下城市（参见 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a>）一些有趣的点（例如餐馆、超市、邮局等）作为示例。</p>
+<p>For this section the following city (see <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a>) some interesting
+points such as restaurant, supermarket, post office, etc. will be used as
+example.</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" />
 </a>
@@ -598,7 +600,7 @@
 </section>
 <section id="driving-side">
 <h3><a class="toc-backref" href="#id2" role="doc-backlink">驾驶侧</a><a class="headerlink" href="#driving-side" title="Link to this heading">¶</a></h3>
-<p>在下面的图片中：</p>
+<p>In the following images:</p>
 <ul class="simple">
 <li><p>平方顶点是临时顶点，</p></li>
 <li><p>根据驾驶侧添加临时顶点，</p></li>
@@ -634,7 +636,7 @@
 <h4><a class="toc-backref" href="#id5" role="doc-backlink">驾驶侧并不重要</a><a class="headerlink" href="#driving-side-does-not-matter" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>就像双方都要考虑所有点 <code class="docutils literal notranslate"><span class="pre">b</span></code></p></li>
-<li><p><strong>无向</strong> 图上的首选用法</p></li>
+<li><p>Preferred usage on <strong>undirected</strong> graphs</p></li>
 <li><p>在 <a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - 函数族</span></a> 上，此选项无效</p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" />
@@ -679,13 +681,13 @@
 <a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" />
 </a>
 <ul class="simple">
-<li><p>只能通过顶点 <strong>16</strong> 才能到达点 <code class="docutils literal notranslate"><span class="pre">-2</span></code>。</p></li>
+<li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achieved only via vertex <strong>16</strong>.</p></li>
 <li><p>不影响边 <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>，因此边被保留。</p></li>
 <li><p>它只影响边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code>，因此边被移除。</p></li>
 <li><p>创建两条新边：</p>
 <ul>
 <li><p>边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> 的成本为``0.4`` （原始成本*分数 == <span class="math notranslate nohighlight">\(1 * 0.4\)</span>）</p></li>
-<li><p>边 <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> 的成本为``0.6`` （剩余成本）</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaining cost)</p></li>
 </ul>
 </li>
 <li><p>附加边的总成本等于原始成本。</p></li>
@@ -698,7 +700,7 @@
 <a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" />
 </a>
 <ul class="simple">
-<li><p>只能通过顶点 <strong>17</strong> 才能到达点 <code class="docutils literal notranslate"><span class="pre">-2</span></code>。</p></li>
+<li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achieved only via vertex <strong>17</strong>.</p></li>
 <li><p>不影响边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> ，因此保留边。</p></li>
 <li><p>它只影响边 <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code> ，因此边被移除。</p></li>
 <li><p>创建两条新边：</p>
@@ -706,7 +708,7 @@
 <li><p>使用原始边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> ，因为分数是原始边的分数：</p>
 <ul>
 <li><p>边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> 的成本为``0.4`` （原始成本*分数 == <span class="math notranslate nohighlight">\(1 * 0.4\)</span>）</p></li>
-<li><p>边 <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> 的成本为``0.6`` （剩余成本）</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaining cost)</p></li>
 <li><p>如果同一条边上有更多点，则递归地重复该过程。</p></li>
 </ul>
 </li>
@@ -726,14 +728,14 @@
 <a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" />
 </a>
 <ul class="simple">
-<li><p>可以通过顶点 <strong>16</strong> 或 <strong>17</strong> 到达点 <code class="docutils literal notranslate"><span class="pre">-2</span></code>。</p></li>
+<li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achieved via vertices <strong>16</strong> or <strong>17</strong>.</p></li>
 <li><p>影响边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code> ，因此边被移除。</p></li>
 <li><p>创建四个新边：</p>
 <ul>
 <li><p>使用原始边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> ，因为分数是原始边的分数：</p>
 <ul>
 <li><p>边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> 的成本为``0.4`` （原始成本*分数 == <span class="math notranslate nohighlight">\(1 * 0.4\)</span>）</p></li>
-<li><p>边 <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> 的成本为``0.6`` （剩余成本）</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaining cost)</p></li>
 <li><p>如果同一条边上有更多点，则递归地重复该过程。</p></li>
 </ul>
 </li>
@@ -777,7 +779,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 21, 2025.<br/>
+      Last updated on 4月 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
