@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 16:50+0000\n"
-"PO-Revision-Date: 2025-04-24 09:38+0000\n"
+"PO-Revision-Date: 2025-04-24 09:46+0000\n"
 "Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -4419,7 +4419,7 @@ msgstr "``pgr_createTopology``迁移说明"
 
 msgid ""
 "Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
-msgstr "从 `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__ 开始"
+msgstr "从 `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__开始"
 
 msgid "A table with `<edges>_vertices_pgr` was created."
 msgstr ""
@@ -4483,9 +4483,8 @@ msgid ""
 "``target`` are filled up."
 msgstr "最后使用存储在顶点表上的数据填充 ``source`` 和``target``。"
 
-#, fuzzy
 msgid "Migration of ``pgr_createVerticesTable``"
-msgstr "迁移 ``pgr_trspViaVertices``"
+msgstr "``pgr_createVerticesTable`` 迁移说明"
 
 msgid ""
 "**After Deprecation:** The user is responsible to create the vertices table, "
@@ -18689,9 +18688,8 @@ msgstr ""
 msgid "Refactored"
 msgstr "重构"
 
-#, fuzzy
 msgid "pgr_dijkstra(One to One)"
-msgstr "pgr_dijkstra（一对一）"
+msgstr "pgr_dijkstra(One to One)"
 
 msgid ""
 "pgr_alphaShape function now can generate better (multi)polygon with holes "
@@ -19147,11 +19145,10 @@ msgid ""
 "``source`` and ``target`` columns indexed to speed up pgRouting queries."
 msgstr "``source`` 和 ``target`` 列建立索引以加快 pgRouting 查询。"
 
-#, fuzzy
 msgid ""
 "``geom`` indexed to speed up geometry processes that might be needed in the "
 "front end."
-msgstr "``geom`` 列建立索引以加快前端可能需要的 gemetry 处理。"
+msgstr "为加速前端可能需要的几何处理操作，已对 ``geom``字段建立空间索引。"
 
 msgid "For this small example the indexes are skipped, except for ``id``"
 msgstr "在这个小例子中，除了 ``id`` 以外，其他索引都被跳过"
@@ -19223,11 +19220,10 @@ msgstr ""
 "当需要从 ``source`` 到 ``target`` 的路由时，许多函数都可以与 ``(source, "
 "target)`` 对组合使用。"
 
-#, fuzzy
 msgid ""
 "For convenience of this documentation, some combinations will be stored on a "
 "table:"
-msgstr "为便于阅读，某些组合将存储在一个表中："
+msgstr "为了方便本文档的说明，部分组合结果将存储在表中："
 
 msgid "Inserting the data:"
 msgstr "插入数据："
@@ -19461,9 +19457,8 @@ msgstr ""
 "与表关联的属性有助于指示图是有向的还是无向的，边是否是有向图上的单向，并且根"
 "据最终应用程序的需要，需要创建合适的拓扑。"
 
-#, fuzzy
 msgid "Utility functions"
-msgstr "流程函数"
+msgstr "实用工具函数集"
 
 msgid "Transformation - Family of functions"
 msgstr "转换 - 函数族"
@@ -19477,9 +19472,8 @@ msgstr ""
 msgid "Traversal - Family of functions"
 msgstr "Traversal - 函数族"
 
-#, fuzzy
 msgid "Additionally there are 2 categories under this family"
-msgstr "此外，该家族下还有 2 个类别"
+msgstr "此外，该功能系列下还包含2个分类"
 
 msgid "Via - Category"
 msgstr "Via - 类别"
@@ -19494,11 +19488,10 @@ msgstr ""
 "给定一个图和一个顶点列表，找到所有相邻顶点对 :math:`vertex_i` 和 :math:"
 "`vertex_{i+1}` 之间的最短路径"
 
-#, fuzzy
 msgid ""
 "In other words, find a continuous route that visits all the vertices in the "
 "order given."
-msgstr "换句话说，找到一条按给定顺序访问所有顶点的连续路线。"
+msgstr "换句话说，寻找一条连续路径，使其按照给定顺序访问所有节点。"
 
 msgid "path"
 msgstr "path"
