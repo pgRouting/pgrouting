@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 16:50+0000\n"
 "PO-Revision-Date: 2025-04-24 09:25+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -4276,66 +4276,58 @@ msgid "_pgr_createindex(text,text,text,integer,text)"
 msgstr "_pgr_createindex(text,text,text,integer,text)"
 
 msgid "_pgr_createindex(text,text,text,text,integer,text)"
-msgstr "_pgr_createindex(text,text,text,text,text,integer,text)"
+msgstr "_pgr_createindex(text,text,text,text,integer,text)"
 
 msgid "_pgr_endpoint(geometry)"
 msgstr "_pgr_endpoint(geometry)"
 
 msgid "_pgr_getcolumnname(text,text,integer,text)"
-msgstr ""
+msgstr "_pgr_getcolumnname(text,text,integer,text)"
 
 msgid "_pgr_getcolumnname(text,text,text,integer,text)"
-msgstr ""
+msgstr "_pgr_getcolumnname(text,text,text,integer,text)"
 
-#, fuzzy
 msgid "_pgr_getcolumntype(text,text,integer,text)"
-msgstr "pgr_trsp(text,integer,integer,boolean,boolean,text)"
+msgstr "_pgr_getcolumntype(text,text,integer,text)"
 
 msgid "_pgr_getcolumntype(text,text,text,integer,text)"
-msgstr ""
+msgstr "_pgr_getcolumntype(text,text,text,integer,text)"
 
-#, fuzzy
 msgid "_pgr_gettablename(text,integer,text)"
-msgstr "_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
+msgstr "_pgr_gettablename(text,integer,text)"
 
 msgid "_pgr_iscolumnindexed(text,text,integer,text)"
-msgstr ""
+msgstr "_pgr_iscolumnindexed(text,text,integer,text)"
 
 msgid "_pgr_iscolumnindexed(text,text,text,integer,text)"
-msgstr ""
+msgstr "_pgr_iscolumnindexed(text,text,text,integer,text)"
 
-#, fuzzy
 msgid "_pgr_iscolumnintable(text,text)"
-msgstr "pgr_isColumnInTable"
+msgstr "_pgr_iscolumnintable(text,text)"
 
 msgid "_pgr_msg(integer,text,text)"
-msgstr ""
+msgstr "_pgr_msg(integer,text,text)"
 
 msgid "_pgr_onerror(boolean,integer,text,text,text,text)"
-msgstr ""
+msgstr "_pgr_onerror(boolean,integer,text,text,text,text)"
 
-#, fuzzy
 msgid "_pgr_pointtoid(geometry,double precision,text,integer)"
-msgstr "_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+msgstr "_pgr_pointtoid(geometry,double precision,text,integer)"
 
-#, fuzzy
 msgid "_pgr_quote_ident(text)"
-msgstr "pgr_quote_ident"
+msgstr "_pgr_quote_ident(text)"
 
-#, fuzzy
 msgid "_pgr_startpoint(geometry)"
-msgstr "pgr_startPoint"
+msgstr "_pgr_startpoint(geometry)"
 
-#, fuzzy
 msgid "_pgr_versionless(text,text)"
-msgstr "pgr_versionless"
+msgstr "_pgr_versionless(text,text)"
 
 msgid "Deprecation of internal C/C++ functions"
 msgstr "弃用内部C/C++函数"
 
-#, fuzzy
 msgid "Internal C/C++ functions in legacy"
-msgstr "已废弃的函数"
+msgstr "遗留代码中内部 C/C++ 函数"
 
 msgid "All releases"
 msgstr "所有版本"
@@ -4374,13 +4366,11 @@ msgstr "多个函数的签名发生了变化，和/或已被新函数取代。"
 msgid "Results can be different because of the changes."
 msgstr "结果可能会因变化而不同。"
 
-#, fuzzy
 msgid "All deprecated functions will be removed on next major version 4.0.0"
-msgstr "所有已弃用的函数将在下一个主要版本 4.0.0 中被移除"
+msgstr "所有已弃用函数将在下一个主版本 4.0.0 中被移除"
 
-#, fuzzy
 msgid "Migration of ``pgr_alphaShape``"
-msgstr "``pgr_aStar`` 迁移"
+msgstr "迁移``pgr_alphaShape``功能"
 
 msgid ""
 "Deprecated in `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__ "
