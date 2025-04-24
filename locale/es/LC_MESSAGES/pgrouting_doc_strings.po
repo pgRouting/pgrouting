@@ -4311,8 +4311,8 @@ msgstr "Utilidades - familia"
 
 msgid ":doc:`pgr_findCloseEdges` - Finds close edges of points on the fly"
 msgstr ""
-":doc:`pgr_findCloseEdges` - Encuentra las aristas cercanas a una geometría al "
-"vuelo."
+":doc:`pgr_findCloseEdges` - Encuentra las aristas cercanas a una geometría "
+"al vuelo."
 
 msgid "Functions by categories"
 msgstr "Funciones por categorías"
@@ -21595,3 +21595,424 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
 
+#, fuzzy
+msgid "Removal of SQL deprecated signatures"
+msgstr "Eliminación de funciones obsoletas"
+
+#, fuzzy
+msgid ""
+"`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
+"pgr_contraction"
+msgstr ""
+"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
+"pgr_contraction"
+
+#, fuzzy
+msgid ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+msgstr ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+
+#, fuzzy
+msgid ""
+"`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
+"pgr_trspviaedges"
+msgstr ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+
+#, fuzzy
+msgid ""
+"`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: "
+"pgr_trspviavertices"
+msgstr ""
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
+"pgr_extractVertices"
+
+#, fuzzy
+msgid ""
+"`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: "
+"pgr_alphaShape"
+msgstr ""
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
+"pgr_analyzeOneWay"
+
+#, fuzzy
+msgid ""
+"`#2751 <https://github.com/pgRouting/pgrouting/issues/2851>`__: "
+"pgr_createTopology"
+msgstr ""
+"`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: "
+"pgr_createTopology"
+
+#, fuzzy
+msgid ""
+"`#2752 <https://github.com/pgRouting/pgrouting/issues/2752>`__: "
+"pgr_analyzeGraph"
+msgstr ""
+"`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: "
+"pgr_analyzeGraph"
+
+#, fuzzy
+msgid ""
+"`#2755 <https://github.com/pgRouting/pgrouting/issues/2755>`__: "
+"pgr_analyzeOneWay"
+msgstr ""
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
+"pgr_analyzeOneWay"
+
+#, fuzzy
+msgid ""
+"`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__: "
+"pgr_createVerticesTable"
+msgstr ""
+"`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: "
+"pgr_createVerticesTable"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__: Remove "
+"unused internal functions"
+msgstr ""
+"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
+"pgr_contraction"
+
+msgid "_pgr_checkverttab(text,text[],integer,text)"
+msgstr ""
+
+msgid "_pgr_createindex(text,text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_createindex(text,text,text,text,integer,text)"
+msgstr ""
+
+#, fuzzy
+msgid "_pgr_endpoint(geometry)"
+msgstr "La geometría del punto"
+
+msgid "_pgr_getcolumnname(text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_getcolumnname(text,text,text,integer,text)"
+msgstr ""
+
+#, fuzzy
+msgid "_pgr_getcolumntype(text,text,integer,text)"
+msgstr "pgr_trsp(text,integer,integer,boolean,boolean,text)"
+
+msgid "_pgr_getcolumntype(text,text,text,integer,text)"
+msgstr ""
+
+#, fuzzy
+msgid "_pgr_gettablename(text,integer,text)"
+msgstr "_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
+
+msgid "_pgr_iscolumnindexed(text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_iscolumnindexed(text,text,text,integer,text)"
+msgstr ""
+
+#, fuzzy
+msgid "_pgr_iscolumnintable(text,text)"
+msgstr "pgr_isColumnInTable"
+
+msgid "_pgr_msg(integer,text,text)"
+msgstr ""
+
+msgid "_pgr_onerror(boolean,integer,text,text,text,text)"
+msgstr ""
+
+#, fuzzy
+msgid "_pgr_pointtoid(geometry,double precision,text,integer)"
+msgstr "_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+
+#, fuzzy
+msgid "_pgr_quote_ident(text)"
+msgstr "pgr_quote_ident"
+
+#, fuzzy
+msgid "_pgr_startpoint(geometry)"
+msgstr "pgr_startPoint"
+
+#, fuzzy
+msgid "_pgr_versionless(text,text)"
+msgstr "pgr_versionless"
+
+#, fuzzy
+msgid ""
+"Deprecated in `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__ "
+"Removed from the repostory in `v3.8.0 <https://docs.pgrouting.org/3.8/en/"
+"migration.html>`__"
+msgstr ""
+"Comenzando en `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
+
+msgid ""
+"In this example the original edge table will be used to store the additional "
+"geometries."
+msgstr ""
+
+msgid "An example use without results"
+msgstr ""
+
+#, fuzzy
+msgid "Routing from :math:`1` to :math:`18` gives no solution."
+msgstr "``agg_cost`` de :math:`v` a :math:`u` es :math:`\\infty`"
+
+#, fuzzy
+msgid "The analysis tell us that the network has an intersection."
+msgstr "El análisis dice que la red tiene un hueco y una intersección."
+
+#, fuzzy
+msgid "Prepare tables"
+msgstr "Crear una tabla"
+
+msgid "Additional columns to control the origin of the segments."
+msgstr ""
+
+#, fuzzy
+msgid "Adding new segments."
+msgstr "Añadiendo nuevos vértices"
+
+msgid ""
+"Calling :doc:`pgr_separateCrossing` and adding the new segments to the edges "
+"table."
+msgstr ""
+
+#, fuzzy
+msgid "Update other values"
+msgstr "Actualizar la topología"
+
+#, fuzzy
+msgid ""
+"In this example only ``cost`` and ``reverse_cost`` are updated, where they "
+"are based on the length of the geometry and the directionality is kept using "
+"the ``sign`` function."
+msgstr ""
+"Para este ejemplo los valores ``coste`` y ``coste_inverso`` van a ser el "
+"doble de la longitud de la geometría."
+
+#, fuzzy
+msgid "Insert the new vertices if any."
+msgstr "Inspeccionar la tabla de vértices"
+
+msgid "The example has results"
+msgstr ""
+
+#, fuzzy
+msgid "Routing from :math:`1` to :math:`18` gives a solution."
+msgstr "``agg_cost`` de :math:`v` a :math:`u` es :math:`\\infty`"
+
+#, fuzzy
+msgid "Touching edges"
+msgstr "Aristas que se cruzan"
+
+msgid "Visually the edges seem to be connected, but internally they are not."
+msgstr ""
+
+msgid "The validity of the information is application dependent."
+msgstr ""
+
+msgid "Maybe there is a small barrier for vehicles but not for pedestrians."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Once analyzed one by one the touchings, for the ones that need a local fix, "
+"the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__."
+msgstr ""
+"Una vez analizados uno a uno los cruces, para los que necesitan un arreglo "
+"local, hay que `dividir las aristas <https://postgis.net/docs/ST_Split."
+"html>`__."
+
+#, fuzzy
+msgid "Routing from :math:`1` to :math:`2` gives no solution."
+msgstr "``agg_cost`` de :math:`v` a :math:`u` es :math:`\\infty`"
+
+#, fuzzy
+msgid "The analysis tell us that the network has a gap."
+msgstr "El análisis dice que la red tiene un hueco y una intersección."
+
+msgid ""
+"Calling :doc:`pgr_separateTouching` and adding the new segments to the edges "
+"table."
+msgstr ""
+
+#, fuzzy
+msgid "Routing from :math:`1` to :math:`2` gives a solution."
+msgstr "``agg_cost`` de :math:`v` a :math:`u` es :math:`\\infty`"
+
+#, fuzzy
+msgid "There are three basic ways to connect components:"
+msgstr "Existen tres formas básicas de conectar los componentes"
+
+msgid ""
+"In this example :doc:`pgr_separateCrossing` and :doc:`pgr_separateTouching` "
+"will be used."
+msgstr ""
+
+#, fuzzy
+msgid "Get the connectivity"
+msgstr "Para obtener la conectividad del grafo:"
+
+msgid ""
+"In this example: the edges table will need an additional column and the "
+"vertex table will be rebuilt completely."
+msgstr ""
+
+#, fuzzy
+msgid "Insert new edges"
+msgstr "Crear dos aristas nuevas:"
+
+msgid ""
+"Using :doc:`pgr_separateCrossing` and :doc:`pgr_separateTouching` insert the "
+"results into the edges table."
+msgstr ""
+
+#, fuzzy
+msgid "Using :doc:`pgr_extractVertices` create the table."
+msgstr ":doc:`pgr_extractVertices`"
+
+msgid "Result columns standarized to: |nksp-result|"
+msgstr "Columnas de resultados estandarizadas a: |nksp-result|"
+
+msgid ":math:`|c|` is the number of circuts in the graph."
+msgstr ":math:`|c|` es la cantidad de vertices del grafo."
+
+msgid "Not checking and not creating indexes."
+msgstr ""
+
+msgid "Using ``pgr_separateTouching`` and ``pgr_separateCrossing``."
+msgstr ""
+
+#, fuzzy
+msgid "Created table with ``BIGINT``."
+msgstr "``seq`` cambió el tipo a ``BIGINT``'"
+
+msgid "``bigint`` Empty source column"
+msgstr ""
+
+msgid "``bigint`` Empty target column"
+msgstr ""
+
+#, fuzzy
+msgid "``pgr_separateCrossing``"
+msgstr "``pgr_version``"
+
+msgid ""
+"``pgr_separateCrossing`` - From crossing geometries generates geometries "
+"that do not cross."
+msgstr ""
+
+#, fuzzy
+msgid "This is an auxiliary function for separating crossing edges."
+msgstr ""
+"Esta es una función auxiliar para extraer la información de vértices del "
+"conjunto de aristas de un grafo."
+
+#, fuzzy
+msgid "pgr_separateCrossing(`Edges SQL`_, [``tolerance``, ``dryrun``])"
+msgstr "pgr_extractVertices(`SQL de aristas`_, [``dryrun``])"
+
+#, fuzzy
+msgid "RETURNS |result-separate|"
+msgstr "REGRESA |result-version|"
+
+#, fuzzy
+msgid "Get the segments of the crossing geometries"
+msgstr "En qué parte del segmento se encuentra el punto."
+
+#, fuzzy
+msgid "``tolerance``"
+msgstr "tolerancia"
+
+#, fuzzy
+msgid "0.01"
+msgstr "0.010"
+
+msgid "Used in ST_Snap before ST_Split"
+msgstr ""
+
+#, fuzzy
+msgid "Get the code for further refinement."
+msgstr "En cualquier lado del segmento."
+
+msgid ""
+"When there are special details that need to be taken care of because of the "
+"final application or the quality of the data, the code can be obtained On a "
+"PostgreSQL ``NOTICE`` using the ``dryrun`` flag."
+msgstr ""
+
+#, fuzzy
+msgid "``pgr_separateTouching``"
+msgstr "``pgr_version``"
+
+msgid ""
+"``pgr_separateTouching`` - From touching geometries generates geometries "
+"that are properly connected at endpoints"
+msgstr ""
+
+msgid ""
+"This is an auxiliary function for processing geometries that touch but don't "
+"share exact endpoints, splitting them at their intersection points to "
+"improve network connectivity."
+msgstr ""
+
+#, fuzzy
+msgid "pgr_separateTouching(`Edges SQL`_, [``tolerance``, ``dryrun``])"
+msgstr "pgr_extractVertices(`SQL de aristas`_, [``dryrun``])"
+
+msgid ":doc:`pgr_separateCrossing` - Breaks geometries that cross each other."
+msgstr ""
+
+msgid ""
+":doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each "
+"other."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__: Code "
+"factorization on pgr_contraction family"
+msgstr ""
+"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
+"pgr_contraction"
+
+#, fuzzy
+msgid "SQL code enhancements"
+msgstr "Mejora del código:"
+
+#, fuzzy
+msgid ""
+"`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__: Rewrite "
+"pgr_nodeNetwork"
+msgstr ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+
+#, fuzzy
+msgid ""
+"`#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__: "
+"pgr_separateCrossing"
+msgstr ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+
+#, fuzzy
+msgid ""
+"`#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__: "
+"pgr_separateTouching"
+msgstr ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+
+#, fuzzy
+msgid "Utility functions"
+msgstr "Funciones de flujo"
+
+#, fuzzy
+#~ msgid "Update the cost and reverse_cost values."
+#~ msgstr "No dirigido, con costo y costo inverso"
+
+#, fuzzy
+#~ msgid "Insert the intersections as new vertices."
+#~ msgstr "Insertar las intersecciones como nuevos vértices."
+
+#~ msgid ":doc:`pgr_findCloseEdges`"
+#~ msgstr ":doc:`pgr_findCloseEdges`"
