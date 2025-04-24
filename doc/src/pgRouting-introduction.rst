@@ -63,11 +63,12 @@ Contributors
 This Release Contributors
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Individuals in this release v3.7.x (in alphabetical order)
+Individuals in this release v3.8.x (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 (Alphabetical order)
 
+Aurélie Bousquet,
 Regina Obe,
 Vicky Vergara
 
@@ -105,6 +106,7 @@ Anton Patrushev,
 Aryan Gupta,
 Ashraf Hossain,
 Ashish Kumar,
+Aurélie Bousquet,
 Cayetano Benavent,
 Christian Gonzalez,
 Daniel Kastl,
