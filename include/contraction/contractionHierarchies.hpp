@@ -178,7 +178,7 @@ void compute_shortcuts(
             .distance_map(&distances[0])
             .distance_inf(std::numeric_limits<double>::infinity())
             .visitor(pgrouting::visitors::dijkstra_max_distance_visitor<typename G::V>(
-                p_max, distances, reached_vertices_ids, log)));
+                p_max, distances, reached_vertices_ids)));
         }
         catch ( pgrouting::found_goals & ) {
             log << "    PgRouting exception during labelling!"

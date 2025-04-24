@@ -13,7 +13,7 @@ SELECT * FROM pgr_contractionHierarchies(
   forbidden => ARRAY[6]);
 /* -- q3 */
 ALTER TABLE edges
-  ADD is_new BOOLEAN default FALSE,
+  ADD is_new BOOLEAN DEFAULT false,
   ADD contracted_vertices BIGINT[];
 /* -- q4 */
 ALTER TABLE vertices
