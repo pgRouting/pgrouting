@@ -56,19 +56,19 @@ Introduction
 
 In large graphs, like road graphs or electric networks, graph contraction
 can be used to speed up some graph algorithms. Contraction can reduce the size
-of the graph by removing some of the vertices and edges and adding edges 
+of the graph by removing some of the vertices and edges and adding edges
 that represent a sequence of original edges (the original ones can be kept
 in some methods). In this way, it decreases the total time and space used
 by graph algorithms, particularly those searching for an optimal path.
 
 This implementation gives a flexible framework for adding contraction algorithms
-in the future. Currently, it supports three algorithms. 
+in the future. Currently, it supports three algorithms.
 
 1. Dead end contraction
 2. Linear contraction
 3. Contraction hierarchies
 
-The two first ones can be combined through a iterative procedure, via the 
+The two first ones can be combined through a iterative procedure, via the
 ``pgr_contraction`` method. The third one is implemented on its own.
 
 All functions allow the user to forbid contraction on a set of nodes.

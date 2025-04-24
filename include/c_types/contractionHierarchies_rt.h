@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
-File: contracted_rt.h
+File: contractionHierarchies_rt.h
 
-Copyright (c) 2017 pgRouting developers
+Copyright (c) 2025 pgRouting developers
 Mail: project@pgrouting.org
 
 ------

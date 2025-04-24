@@ -41,8 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --v3.8
 CREATE FUNCTION pgr_contractionHierarchies(
     TEXT,     -- edges_sql (required)
-    forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
     directed BOOLEAN DEFAULT true,
+    forbidden BIGINT[] DEFAULT ARRAY[]::BIGINT[],
 
     OUT type TEXT,
     OUT id BIGINT,
@@ -55,18 +55,19 @@ CREATE FUNCTION pgr_contractionHierarchies(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT type, id, contracted_vertices, source, target, cost, metric, vertex_order
-    FROM _pgr_contractionhierarchies(_pgr_get_statement($1), $2::BIGINT[],  $3);
+    FROM _pgr_contractionhierarchies(_pgr_get_statement($1), $3::BIGINT[], $2);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_contractionHierarchies(TEXT, BIGINT[], BOOLEAN)
+COMMENT ON FUNCTION pgr_contractionHierarchies(TEXT, BOOLEAN, BIGINT[])
 IS 'pgr_contractionHierarchies
+EXPERIMENTAL
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Optional Parameters
-    - forbidden_vertices := ARRAY[]::BIGINT[]
+    - forbidden := ARRAY[]::BIGINT[]
     - directed := true
 - Documentation:
     - ${PROJECT_DOC_LINK}/pgr_contractionHierarchies.html
