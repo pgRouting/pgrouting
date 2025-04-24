@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: contractGraph.c
+File: contracionHierarchies.c
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2025 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:

@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(5);
+SELECT CASE WHEN min_version('3.8.0') THEN plan(5) ELSE plan(2) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost FROM edges_2;
@@ -35,6 +35,11 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
+    IF NOT min_version('3.8.0') THEN
+      RETURN QUERY SELECT skip(1, 'pgr_contractionHierarchies is new function on 3.8.0');
+      RETURN;
+    END IF;
+
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost FROM edges_2$$'
     ]::TEXT[];

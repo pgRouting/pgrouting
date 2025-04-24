@@ -56,4 +56,3 @@ LANGUAGE C VOLATILE STRICT;
 
 COMMENT ON FUNCTION _pgr_contractionhierarchies(TEXT, BIGINT[], BOOLEAN)
 IS 'pgRouting internal function';
-

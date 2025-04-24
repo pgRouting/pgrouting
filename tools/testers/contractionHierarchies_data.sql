@@ -84,7 +84,7 @@ values
     ( 10, 1.5, 1, st_point(1.5, 1) ),
     ( 11, 1, 2, st_point(1, 2) );
 
-insert into edges_2 (source, target, cost, reverse_cost, geom) 
+insert into edges_2 (source, target, cost, reverse_cost, geom)
 values
     ( 1, 11, 3, 3, ST_MakeLine(ST_Point(0,2), ST_Point(1,2)) ),
     ( 11, 9, 6, 6, ST_MakeLine(ST_Point(1,2), ST_Point(2,2)) ),
