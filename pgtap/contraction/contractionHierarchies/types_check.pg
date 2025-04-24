@@ -25,23 +25,22 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
   IF NOT min_version('3.8.0') THEN
-    RETURN QUERY SELECT skip(1,'pgr_contractiondeadend new on version 3.8.0');
+    RETURN QUERY SELECT skip(1,'pgr_contractionhierarchies is new on version 3.8.0');
     RETURN;
   END IF;
 
   RETURN QUERY SELECT has_function('pgr_contractionhierarchies');
-  RETURN QUERY SELECT has_function('pgr_contractionhierarchies', ARRAY['text','bigint[]','boolean']);
-  RETURN QUERY SELECT function_returns('pgr_contractionhierarchies', ARRAY['text', 'bigint[]','boolean'], 'setof record');
+  RETURN QUERY SELECT has_function('pgr_contractionhierarchies', ARRAY['text','boolean','bigint[]']);
+  RETURN QUERY SELECT function_returns('pgr_contractionhierarchies', ARRAY['text','boolean','bigint[]'], 'setof record');
 
-  RETURN QUERY SELECT set_eq(
-    $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_contractionhierarchies'$$,
+  RETURN QUERY
+  SELECT function_args_eq('pgr_contractionhierarchies',
     $$VALUES
-    ('{"", "forbidden_vertices", "directed", "type", "id", "contracted_vertices", "source", "target", "cost", "metric", "vertex_order"}'::TEXT[])
+    ('{"",directed,forbidden,type,id,contracted_vertices,source,target,cost,metric,vertex_order}'::TEXT[])
     $$);
-  RETURN QUERY SELECT set_eq(
-    $$SELECT proallargtypes from pg_proc where proname = 'pgr_contractionhierarchies'$$,
-    $$SELECT '{25,1016,16,25,20,1016,20,20,701,20,20}'::OID[] $$
-  );
+
+  RETURN QUERY SELECT function_types_eq('pgr_contractionhierarchies',
+    $$VALUES ('{text,bool,_int8,text,int8,_int8,int8,int8,float8,int8,int8}'::TEXT[]) $$);
 
 END;
 $BODY$

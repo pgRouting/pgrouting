@@ -14,11 +14,11 @@
    single: contractionHierarchies - Experimental
 
 
-``pgr_contractionHierarchies``
+``pgr_contractionHierarchies`` - Experimental
 ===============================================================================
 
-``pgr_contractionHierarchies`` — Performs graph contraction according to 
-the contraction hierarchies method and returns the contracted vertices and 
+``pgr_contractionHierarchies`` — Performs graph contraction according to
+the contraction hierarchies method and returns the contracted vertices and
 shortcut edges created.
 
 .. rubric:: Availability
@@ -33,18 +33,18 @@ Description
 
 The contraction hierarchies method builds, from an initial order of the vertices,
 a hierarchical order, giving priority to some vertices during the processing of
-label fixing of shortest paths algorithms. Furthermore, the contraction 
-hierarchies algorithm adds shortcut edges in the graph, that helps the shortest 
+label fixing of shortest paths algorithms. Furthermore, the contraction
+hierarchies algorithm adds shortcut edges in the graph, that helps the shortest
 paths algorithm to follow the created hierarchical graph structure.
 
-The idea of the hierarchy is to put at a high priority level vertices that 
+The idea of the hierarchy is to put at a high priority level vertices that
 belong to the long distance network (highways for example in a road network)
-and to a low level of priority nodes that belong to the short distance network 
+and to a low level of priority nodes that belong to the short distance network
 (arterials or secondary roads for example in road networks).
 
-The contraction hierarchies algorithm makes the assumption that there is already 
-a valuable vertices order that is used to initialize the contraction process. 
-As in most cases there is no valuable initial node ordering, we use the order 
+The contraction hierarchies algorithm makes the assumption that there is already
+a valuable vertices order that is used to initialize the contraction process.
+As in most cases there is no valuable initial node ordering, we use the order
 given by vertices ID. Then, the contraction process is made on the basis of this
 first order to give the final hierarchy.
 
@@ -52,30 +52,30 @@ The basic idea is to keep the vertices in a priority queue sorted by some
 estimate of how attractive is their contraction. The implemented case uses
 the metric called *edge difference*, which corresponds to the difference between
 the number of shortcuts produced by a vertex contraction and the number of incident
-edges in the graph before contraction (``#shortcuts - #incident edges``). 
+edges in the graph before contraction (``#shortcuts - #incident edges``).
 
-Finally, the aim is to reduce the explored part of the graph, when using a 
+Finally, the aim is to reduce the explored part of the graph, when using a
 bidirectional Dijkstra-like algorithm. The vertices order is used to feed the
-oriented search. The search is made without loosing optimality.
+oriented search. The search is made without losing optimality.
 
 Finding an optimal vertices ordering for contraction is a difficult problem.
 Nevertheless, very simple local heuristics work quite well, according to Geisberger
 et al. [2]. The principle here is to a priori estimate the value of the
-*edge difference* and to contract the node at the top of the queue only if the 
-new value of the metric keeps it at the top of the queue. Otherwise, it is 
+*edge difference* and to contract the node at the top of the queue only if the
+new value of the metric keeps it at the top of the queue. Otherwise, it is
 reinserted in the queue, at its right place corresponding to the new metric value.
 
-The process is done on graphs having only edges with positive costs. 
+The process is done on graphs having only edges with positive costs.
 
 It is necessary to remember that there are no deleted vertices with this function.
 At the end, the graph keeps every vertex it had, but has some added edges,
-corresponding to shortcuts. The vertices which have been contracted, to build 
+corresponding to shortcuts. The vertices which have been contracted, to build
 the shortcut edges, are kept and hierarchically ordered.
 
 As for the other contraction methods, it does not return the full
-contracted graph, only the changes. They are here of two types:  
+contracted graph, only the changes. They are here of two types:
 
-* added shortcut edges, with negative identifiers;  
+* added shortcut edges, with negative identifiers;
 * contracted nodes with an order.
 
 |Boost| Boost Graph Inside
@@ -93,7 +93,7 @@ The ``pgr_contractionHierarchies`` function has the following signature:
 
    | pgr_contractionHierarchies(`Edges SQL`_, [**options**])
 
-   | **options:** ``[ forbidden_vertices, directed]``
+   | **options:** ``[directed, forbidden]``
    | Returns set of |result-contraction-hierarchies|
 
 Parameters
@@ -130,7 +130,7 @@ Contraction hierarchies optional parameters
      - Type
      - Default
      - Description
-   * - ``forbidden_vertices``
+   * - ``forbidden``
      - ``ARRAY[`` **ANY-INTEGER** ``]``
      - **Empty**
      - Identifiers of vertices forbidden for contraction.
@@ -220,7 +220,7 @@ The columns of the rows are:
 Examples
 -------------------------------------------------------------------------------
 
-On an undirected graph 
+On an undirected graph
 ...............................................................................
 
 The following query shows the original data involved in the contraction
@@ -257,8 +257,8 @@ We obtain the contracted graph above:
 .. image:: images/sample_graph_with_shortcuts.png
    :scale: 25%
 
-We can see without surprise that the vertices belonging to the shortcuts have a 
-tendancy to have a high priority level in the resulting vertices order.
+We can see without surprise that the vertices belonging to the shortcuts have a
+tendency to have a high priority level in the resulting vertices order.
 
 On an undirected graph with forbidden vertices
 ...............................................................................
@@ -283,8 +283,8 @@ When all shortcuts have been added for a given vertex ``v``, the incident edges
 of ``v`` are removed and another vertex is contracted with the remaining graph.
 
 The procedure is destructive for the graph and a copy is made to be able
-to manipulate it again as a whole. The contraction process adds all discovered 
-shortcuts to the edge set ``E`` and attributes a metric to each contracted 
+to manipulate it again as a whole. The contraction process adds all discovered
+shortcuts to the edge set ``E`` and attributes a metric to each contracted
 vertex. This metric is giving what is called the *contraction hierarchy*.
 
 Initialize the queue with a first vertices order
@@ -315,7 +315,7 @@ For each vertex ``v`` of the graph, a contraction of ``v`` is built:
    :header-rows: 1
 
    * - Node
-     - Adjecent nodes
+     - Adjacent nodes
    * - :math:`v`
      - :math:`\{p, r, u\}`
    * - :math:`p`
@@ -371,7 +371,7 @@ Then the following vertex is contracted. The process goes on until each node of 
 At the end, there are no more edges in the graph, which has been destroyed by the process.
 
 This first contraction will give a vertices order, given by ordering them in ascending order on
-the metric (edge difference). A total vertices order is built. If ``u < v``, then ``u`` 
+the metric (edge difference). A total vertices order is built. If ``u < v``, then ``u``
 is less important than ``v``. The algorithm keeps the vertices into a queue in this order.
 
 A hierarchy will now be constructed by contracting again the vertices in this order.
@@ -379,23 +379,23 @@ A hierarchy will now be constructed by contracting again the vertices in this or
 Build the final vertex order
 ...............................................................................
 
-Once the first order built, the algorithm uses it to browse the graph once again. 
-For each vertex taken in the queue, the algorithm simulates contraction and calculates 
-its edge difference. If the computed value is greater than the one of the next vertex to be 
-contracted, then the algorithm puts it back in the queue (heuristic approach). 
+Once the first order built, the algorithm uses it to browse the graph once again.
+For each vertex taken in the queue, the algorithm simulates contraction and calculates
+its edge difference. If the computed value is greater than the one of the next vertex to be
+contracted, then the algorithm puts it back in the queue (heuristic approach).
 Otherwise it contracts it permanently.
 
 Add shortcuts to the initial graph
 ...............................................................................
 
-At the end, the algorithm takes the initial graph (before edges deletions) and adds the shortcut 
+At the end, the algorithm takes the initial graph (before edges deletions) and adds the shortcut
 edges to it. It gives you the contracted graph, ready to use with a specialized Dijkstra algorithm,
 which takes into account the order of the nodes in the hierarchy.
 
 Use the contraction
 -------------------------------------------------------------------------------
 
-Build the contraction 
+Build the contraction
 ...............................................................................
 
 .. literalinclude:: contractionHierarchies.queries
@@ -445,4 +445,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-
