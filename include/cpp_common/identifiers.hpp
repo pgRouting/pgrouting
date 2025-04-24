@@ -54,7 +54,7 @@ class Identifiers {
     /*!
     \brief define ids
      */
-    void set_ids(const std::set<T> ids) {
+    void set_ids(const std::set<T> &ids) {
         m_ids = ids;
     }
 

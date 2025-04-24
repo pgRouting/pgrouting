@@ -20,13 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.8.0') THEN plan(5) ELSE plan(2) END;
+SELECT CASE WHEN min_version('3.8.0') THEN plan(5) ELSE plan(1) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost FROM edges_2;
-
-SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
-
 
 CREATE OR REPLACE FUNCTION test_function()
 RETURNS SETOF TEXT AS
@@ -39,6 +36,9 @@ BEGIN
       RETURN QUERY SELECT skip(1, 'pgr_contractionHierarchies is new function on 3.8.0');
       RETURN;
     END IF;
+
+    RETURN QUERY
+    SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
 
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost FROM edges_2$$'
