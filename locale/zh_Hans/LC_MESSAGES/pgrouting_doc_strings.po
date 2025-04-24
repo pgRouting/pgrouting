@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 16:50+0000\n"
-"PO-Revision-Date: 2025-04-24 09:47+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2025-04-24 10:23+0000\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -4410,8 +4410,8 @@ msgid ""
 "ST_ConvexHull.html>`__ * `ST_ConcaveHull <https://postgis.net/docs/"
 "ST_ConcaveHull.html>`__"
 msgstr ""
-"其他的 PostGIS 选项包括：* `ST_ConvexHull <https://postgis.net/docs/"
-"ST_ConvexHull.html>`__ *`ST_ConcaveHull <https://postgis.net/docs/"
+"Other PostGIS options are * `ST_ConvexHull <https://postgis.net/docs/"
+"ST_ConvexHull.html>`__ * `ST_ConcaveHull <https://postgis.net/docs/"
 "ST_ConcaveHull.html>`__"
 
 msgid "Migration of ``pgr_createTopology``"
@@ -4496,13 +4496,13 @@ msgid "Migration of ``pgr_analyzeOneWay``"
 msgstr "``pgr_aStar`` 迁移"
 
 msgid "Number of potential problems in directionality"
-msgstr ""
+msgstr "方向性潜在问题数量分析"
 
 msgid "WHERE"
-msgstr ""
+msgstr "WHERE"
 
 msgid "Directionality problems were calculated based on codes."
-msgstr ""
+msgstr "方向性问题已根据预设规则代码完成计算。"
 
 #, fuzzy
 msgid "Dead ends."
@@ -4511,7 +4511,7 @@ msgstr "死端"
 msgid ""
 "A routing problem can arise when from a vertex there is only a way on or a "
 "way out but not both:"
-msgstr ""
+msgstr "当某个节点仅存在单向通行路径（仅有进入或仅有离开的边线）时，将导致路由问题："
 
 msgid ""
 "Either saving or using directly :doc:`pgr_extractVertices` get the dead ends "
@@ -4535,7 +4535,7 @@ msgstr ""
 "向图。"
 
 msgid "To determine if the bridges are or not one way."
-msgstr ""
+msgstr "判断桥梁是否为单行道。"
 
 #, fuzzy
 msgid "Migration of ``pgr_analyzeGraph``"
@@ -4550,7 +4550,7 @@ msgid "Number of dead ends."
 msgstr "所需路径的数量。"
 
 msgid "Number of potential gaps found near dead ends."
-msgstr ""
+msgstr "在断头路附近发现的潜在缺口数量。"
 
 #, fuzzy
 msgid "Number of intersections. (between 2 edges)"
@@ -4569,7 +4569,7 @@ msgid "Isolated segment"
 msgstr "孤立的片段"
 
 msgid "A graph component with only one segment."
-msgstr ""
+msgstr "单一孤立路段组成的网络组件。"
 
 msgid "Dead ends"
 msgstr "死端"
@@ -18619,25 +18619,20 @@ msgstr "pgr_withPointsKSP(一对一)"
 msgid "pgr_withPoints(One to Many)"
 msgstr "pgr_withPointsKSP (一对多)"
 
-#, fuzzy
 msgid "pgr_withPoints(Many to One)"
-msgstr "pgr_withPointsKSP(多对一)"
+msgstr "pgr_withPoints(Many to One)"
 
-#, fuzzy
 msgid "pgr_withPoints(Many to Many)"
-msgstr "pgr_withPointsKSP(多对多)"
+msgstr "pgr_withPoints(Many to Many)"
 
-#, fuzzy
 msgid "pgr_withPointsCost(One to One)"
-msgstr "pgr_withPointsCost(一对一)"
+msgstr "pgr_withPointsCost(One to One)"
 
-#, fuzzy
 msgid "pgr_withPointsCost(One to Many)"
-msgstr "pgr_withPointsCost(一对多)"
+msgstr "pgr_withPointsCost(One to Many)"
 
-#, fuzzy
 msgid "pgr_withPointsCost(Many to One)"
-msgstr "pgr_withPointsCost(多对一)"
+msgstr "pgr_withPointsCost(Many to One)"
 
 msgid "pgr_withPointsCost(Many to Many)"
 msgstr "pgr_withPointsCost(Many to Many)"
@@ -18688,7 +18683,7 @@ msgid "Refactored"
 msgstr "重构"
 
 msgid "pgr_dijkstra(One to One)"
-msgstr "pgr_dijkstra（一对一）"
+msgstr "pgr_dijkstra(One to One)"
 
 msgid ""
 "pgr_alphaShape function now can generate better (multi)polygon with holes "
