@@ -23,11 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-UPDATE edges
-SET
-    cost = sign(cost),
-    reverse_cost = sign(reverse_cost);
-
+-- Test data for these tests is defined in tools/testers/contractionHierarchies_data.sql
 SELECT CASE WHEN NOT min_version('3.8.0') THEN plan(1) ELSE plan(6) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
