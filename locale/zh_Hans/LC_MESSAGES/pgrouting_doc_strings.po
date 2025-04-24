@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-21 16:50+0000\n"
+"POT-Creation-Date: 2025-04-22 23:45+0000\n"
 "PO-Revision-Date: 2025-04-24 14:54+0000\n"
 "Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -1172,7 +1172,8 @@ msgstr "BIGINT"
 msgid "Current vehicle identifier."
 msgstr "当前车辆标识符。"
 
-msgid "Sumary row has the **total capacity violations**."
+#, fuzzy
+msgid "Summary row has the **total capacity violations**."
 msgstr "摘要行有 **总容量违规情况**。"
 
 msgid ""
@@ -1191,7 +1192,8 @@ msgid ""
 msgstr ""
 "当前车辆停止的顺序值，从 **1** 开始。 当前第 :math:`m_{th}` 车辆的停止。"
 
-msgid "Sumary row has the **total time windows violations**."
+#, fuzzy
+msgid "Summary row has the **total time windows violations**."
 msgstr "摘要行包含 **总时间窗口违规情况**。"
 
 msgid ""
@@ -1608,9 +1610,10 @@ msgid ""
 "hr`"
 msgstr "对于以下等价 :math:`10m/s \\approx 600m/min \\approx 36 km/hr`"
 
+#, fuzzy
 msgid ""
 "Working with time units in seconds and the matrix been in meters: For a "
-"1000m lenght value on the matrix:"
+"1000m length value on the matrix:"
 msgstr ""
 "使用以秒为单位的时间单位和以米为单位的矩阵：对于矩阵上的 1000m 长度值："
 
@@ -1936,7 +1939,8 @@ msgstr "4G内存"
 msgid "trusty"
 msgstr "可靠"
 
-msgid "posgreSQL version 9.3"
+#, fuzzy
+msgid "PostgreSQL version 9.3"
 msgstr "postgreSQL 版本 9.3"
 
 msgid "Data"
@@ -4266,8 +4270,8 @@ msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__: Remove "
 "unused internal functions"
 msgstr ""
-"`#2861 <https://github.com/pgRouting/pgrouting/issues/"
-"2861>`__:移除未使用的内部函数"
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__:移除未使用的内"
+"部函数"
 
 msgid "_pgr_checkverttab(text,text[],integer,text)"
 msgstr "_pgr_checkverttab(text,text[],integer,text)"
@@ -4377,8 +4381,8 @@ msgid ""
 "Removed from the repostory in `v3.8.0 <https://docs.pgrouting.org/3.8/en/"
 "migration.html>`__"
 msgstr ""
-"在 `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__ "
-"中已弃用，并在此版本中从代码库移除"
+"在 `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__ 中已弃用，并"
+"在此版本中从代码库移除"
 
 msgid "**Before Deprecation:** The following was calculated:"
 msgstr "** 弃用前：** 原计算方式如下："
@@ -4511,7 +4515,8 @@ msgstr "死端"
 msgid ""
 "A routing problem can arise when from a vertex there is only a way on or a "
 "way out but not both:"
-msgstr "当某个节点仅存在单向通行路径（仅有进入或仅有离开的边线）时，将导致路由问题："
+msgstr ""
+"当某个节点仅存在单向通行路径（仅有进入或仅有离开的边线）时，将导致路由问题："
 
 msgid ""
 "Either saving or using directly :doc:`pgr_extractVertices` get the dead ends "
@@ -7724,8 +7729,9 @@ msgstr "所有签名均已升级为正式版本。"
 msgid "Version 3.6.0"
 msgstr "版本3.6.0"
 
-msgid "Result columns standarized to: |nksp-result|"
-msgstr "结果列标准化为 |nksp-result|"
+#, fuzzy
+msgid "Standardizing output columns to |nksp-result|"
+msgstr "标准化输出列为 |nksp-result|"
 
 msgid "pgr_ksp(One to One)"
 msgstr "pgr_ksp(一对一)"
@@ -7771,7 +7777,8 @@ msgstr "基于Yen算法的K最短路径路由算法。 “K”是所需的最短
 msgid "|Boost| Boost Graph Inside"
 msgstr "|Boost| Boost 图内部"
 
-msgid "Boost Graph Inside"
+#, fuzzy
+msgid "Boost Graph inside"
 msgstr "Boost 图内部"
 
 msgid "Signatures"
@@ -7965,16 +7972,18 @@ msgstr "所有边上的旅行成本都遵循三角不等式。"
 msgid "When ``start_vid = 0 OR end_vid = 0``"
 msgstr "当 ``start_vid = 0 OR end_vid = 0``"
 
+#, fuzzy
 msgid ""
-"The solutions generated is garanteed to be *twice as long as the optimal "
+"The solutions generated are guaranteed to be *twice as long as the optimal "
 "tour in the worst case*"
 msgstr "生成的解决方案保证是*最坏情况下最优路径时间的两倍*"
 
 msgid "When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
 msgstr "当 ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
 
+#, fuzzy
 msgid ""
-"It is **not garanteed** that the solution will be, in the worse case, twice "
+"It is **not guaranteed** that the solution will be, in the worst case, twice "
 "as long as the optimal tour, due to the fact that `end_vid` is forced to be "
 "in a fixed position."
 msgstr ""
@@ -7984,8 +7993,9 @@ msgstr ""
 msgid "With ``directed => true``"
 msgstr "当 ``directed => true``"
 
+#, fuzzy
 msgid ""
-"It is **not garanteed** that the solution will be, in the worse case, twice "
+"It is **not guaranteed** that the solution will be, in the worst case, twice "
 "as long as the optimal tour"
 msgstr "**不能保证** 在最坏情况下解决方案将是最优路径的两倍长"
 
@@ -8033,9 +8043,6 @@ msgstr "pgr_TSP(`Matrix SQL`_, ``[start_id, end_id]``)"
 
 msgid "Returns set of |tsp-result|"
 msgstr "返回 |tsp-result| 的集合"
-
-msgid "OR EMTPY SET"
-msgstr "OR EMTPY SET"
 
 msgid "Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information"
 msgstr "使用 :doc:`pgr_dijkstraCostMatrix` 生成矩阵信息"
@@ -8090,7 +8097,8 @@ msgstr "从顶点 :math:`1` 开始"
 msgid "**Line 6** ``start_vid => 1``"
 msgstr "**Line 6** ``start_vid => 1``"
 
-msgid "Using points of interest to generate an asymetric matrix."
+#, fuzzy
+msgid "Using points of interest to generate an asymmetric matrix."
 msgstr "使用兴趣点生成不对称矩阵。"
 
 msgid "To generate an asymmetric matrix:"
@@ -8102,7 +8110,8 @@ msgid ""
 msgstr ""
 "**Line 4** 通过未在查询中包括 ``pointsOfInterset`` 中的``side`` 信息而被忽略"
 
-msgid "**Line 6** Generating an asymetric matrix with ``directed => true``"
+#, fuzzy
+msgid "**Line 6** Generating an asymmetric matrix with ``directed => true``"
 msgstr "**Line 6** 使用 ``directed => true`` 生成一个非对称矩阵"
 
 msgid ""
@@ -8172,12 +8181,11 @@ msgstr "pgr_eucledianTSP 的名称更改"
 msgid "New official function."
 msgstr "新函数 official。"
 
+#, fuzzy
 msgid ""
-"Any duplicated identifier will be ignored. The coordinates that will be kept"
+"Any duplicated identifier will be ignored. The coordinates that will be kept "
+"is arbitrarily."
 msgstr "任何重复的标识符都将被忽略。 将保留的坐标"
-
-msgid "is arbitrarly."
-msgstr "是任意的。"
 
 msgid ""
 "The coordinates are quite similar for the same identifier, for example ::"
@@ -8247,8 +8255,9 @@ msgstr "获取游览的几何形状"
 msgid "Visual results"
 msgstr "视觉效果"
 
+#, fuzzy
 msgid ""
-"Visualy, The first image is the `optimal solution <https://www.math."
+"Visually, The first image is the `optimal solution <https://www.math."
 "uwaterloo.ca/tsp/world/witour.html>`__ and the second image is the solution "
 "obtained with ``pgr_TSPeuclidean``."
 msgstr ""
@@ -8264,7 +8273,8 @@ msgstr "``pgr_aStar`` —使用 A* 算法的最短路径。"
 msgid "Combinations signature promoted to official."
 msgstr "组合签名已升级为正式版本。"
 
-msgid "Standarizing output columns to |short-generic-result|"
+#, fuzzy
+msgid "Standardizing output columns to |short-generic-result|"
 msgstr "标准输出列|short-generic-result|"
 
 #, fuzzy
@@ -8392,8 +8402,9 @@ msgstr "``pgr_aStarCost`` - 使用 A* 算法计算最短路径的总成本。"
 msgid "New proposed function."
 msgstr "新提议的函数。"
 
+#, fuzzy
 msgid ""
-"The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path "
+"The ``pgr_aStarCost`` function summarizes of the cost of the shortest path "
 "using the A* algorithm."
 msgstr "``pgr_aStarCost`` 函数总结了使用 A* 算法计算最短路径的成本。"
 
@@ -8447,7 +8458,8 @@ msgid ""
 "`pgr_aStar`."
 msgstr "``pgr_aStarCostMatrix`` - 使用 :doc:`pgr_aStar` 计算成本矩阵。"
 
-msgid "Using internaly the :doc:`pgr_aStar` algorithm"
+#, fuzzy
+msgid "Using internally the :doc:`pgr_aStar` algorithm"
 msgstr "内部使用 :doc:`pgr_aStar` 算法"
 
 msgid "Returns a cost matrix."
@@ -8606,8 +8618,9 @@ msgid ""
 "bidirectional A* algorithm."
 msgstr "``pgr_bdAstarCost`` - 使用双向 A* 算法计算的最短路径的总成本。"
 
+#, fuzzy
 msgid ""
-"The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest path "
+"The ``pgr_bdAstarCost`` function summarizes of the cost of the shortest path "
 "using the bidirectional A* algorithm."
 msgstr "``pgr_bdAstarCost`` 函数总结了使用双向 A* 算法计算最短路径的成本。"
 
@@ -8642,7 +8655,8 @@ msgid ""
 "`pgr_aStar`."
 msgstr "``pgr_bdAstarCostMatrix`` - 使用 :doc:`pgr_aStar` 计算成本矩阵。"
 
-msgid "Using internaly the :doc:`pgr_bdAstar` algorithm"
+#, fuzzy
+msgid "Using internally the :doc:`pgr_bdAstar` algorithm"
 msgstr "内部使用 :doc:`pgr_bdAstar` 算法"
 
 msgid "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
@@ -8736,8 +8750,9 @@ msgid ""
 "Bidirectional Dijkstra algorithm."
 msgstr "``pgr_bdDijkstraCost`` —返回使用双向 Dijkstra 算法计算最短路径的成本。"
 
+#, fuzzy
 msgid ""
-"The ``pgr_bdDijkstraCost`` function sumarizes of the cost of the shortest "
+"The ``pgr_bdDijkstraCost`` function summarizes of the cost of the shortest "
 "path using the bidirectional Dijkstra Algorithm."
 msgstr "``pgr_bdDijkstraCost`` 函数使用双向 Dijkstra 算法汇总最短路径的成本。"
 
@@ -8906,6 +8921,9 @@ msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
+
+msgid "Boost Graph Inside"
+msgstr "Boost 图内部"
 
 #, fuzzy
 msgid "``pgr_betweennessCentrality`` - Experimental"
@@ -11127,9 +11145,10 @@ msgid ""
 "algorithm."
 msgstr "`pgr_dijkstraCost`` - 使用 Dijkstra 算法计算最短路径的总成本。"
 
+#, fuzzy
 msgid ""
-"The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path "
-"using Dijkstra Algorithm."
+"The ``pgr_dijkstraCost`` function summarizes of the cost of the shortest "
+"path using Dijkstra Algorithm."
 msgstr "``pgr_dijkstraCost`` 函数总结了使用 Dijkstra 算法计算最短路径的成本。"
 
 msgid ""
@@ -11316,7 +11335,8 @@ msgstr "**选项：** ``[定向、上限、全局]``"
 msgid "Find the best pedestrian connection between two lines of buses"
 msgstr "在两条公交线路之间寻找最佳的行人通道"
 
-msgid "Unsing an **undirected** graph for pedestrian routing"
+#, fuzzy
+msgid "Using an **undirected** graph for pedestrian routing"
 msgstr "使用 **无向** 图进行行人路线规划"
 
 msgid "The first subway line stations are at :math:`\\{15, 16\\}`"
@@ -11411,8 +11431,9 @@ msgstr ""
 "从二号线所有站点出发的最佳连接是： :math:`{(15 ／rightarrow 10) (16 ／"
 "rightarrow 11)}`"
 
+#, fuzzy
 msgid ""
-"Both are equaly good as they have the same cost. (lines: `13` and `14` and "
+"Both are equally good as they have the same cost. (lines: `13` and `14` and "
 "lines: `15` and `16`)"
 msgstr ""
 "它们都一样好，因为它们具有相同的成本（线路：`13` 和`14`以及线路：`15` 和"
@@ -11505,16 +11526,13 @@ msgid "pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr "pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 
 msgid ""
-"lines `3~4` sets the start vertices to be from the fisrt subway line and the "
-"ending vertices to be from the second subway line"
-msgstr "行 `3~4` 设置地铁三号线的起始顶点和地铁二号线的终点顶点"
-
-msgid ""
 "The best one is :math:`(11 \\rightarrow 16)` with a cost of :math:`1` "
 "(lines: `1`)"
 msgstr "最好的方法是 :math:`(11/rightarrow 16)`，成本是 :math:`1` (lines: `1`)"
 
-msgid "Both are equaly good as they have the same cost. (lines: `12` and `13`)"
+#, fuzzy
+msgid ""
+"Both are equally good as they have the same cost. (lines: `12` and `13`)"
 msgstr "由于成本相同，所以两者同样好。(线路：`12` 和 `13`）"
 
 msgid "``pgr_dijkstraVia`` - Proposed"
@@ -11622,7 +11640,8 @@ msgid ""
 "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr "``pgr_drivingDistance`` - 返回起始节点的行驶距离。"
 
-msgid "Standarizing output columns to |result-spantree|"
+#, fuzzy
+msgid "Standardizing output columns to |result-spantree|"
 msgstr "将输出列标准化为 |result-spantree|"
 
 msgid "Added ``depth`` and ``start_vid`` result columns."
@@ -11646,10 +11665,11 @@ msgstr "新签名："
 msgid "pgr_drivingDistance(multiple vertices)"
 msgstr "pgr_drivingDistance （多顶点）"
 
+#, fuzzy
 msgid ""
 "Using the Dijkstra algorithm, extracts all the nodes that have costs less "
 "than or equal to the value ``distance``. The edges extracted will conform to "
-"the corresponding spaning tree."
+"the corresponding spanning tree."
 msgstr ""
 "使用Dijkstra算法，提取所有成本小于或等于值 ``distance`` 的节点。提取的边将符"
 "合相应的生成树。"
@@ -12573,7 +12593,7 @@ msgstr "``pgr_hawickCircuits - 实验``"
 
 #, fuzzy
 msgid ""
-"``pgr_hawickCircuits`` — Returns the list of ciruits using hawick circuits "
+"``pgr_hawickCircuits`` — Returns the list of circuits using hawick circuits "
 "algorithm."
 msgstr "``pgr_hawickCircuits`` — 使用 Hawick 回路算法返回回路列表。"
 
@@ -12615,7 +12635,8 @@ msgstr "该算法输出图中存在的不同电路。"
 msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
 msgstr "时间复杂度： :math:`O((V + E) (c + 1))`"
 
-msgid ":math:`|c|` is the number of circuts in the graph."
+#, fuzzy
+msgid ":math:`|c|` is the number of circuits in the graph."
 msgstr ":math:`|c|` 是图中的电路数量。"
 
 msgid "pgr_hawickCircuits(`Edges SQL`_)"
@@ -12630,7 +12651,9 @@ msgstr "pgRouting :doc:`sampledata` 中存在的电路"
 msgid "Id of the circuit starting from ``1``"
 msgstr "电路id从 ``1`` 开始"
 
-msgid "Relative postion in the path. Has value ``0`` for beginning of the path"
+#, fuzzy
+msgid ""
+"Relative position in the path. Has value ``0`` for beginning of the path"
 msgstr "路径中的相对位置。 路径开头的值为 ``0``"
 
 msgid "Identifier of the starting vertex of the circuit."
@@ -12732,11 +12755,11 @@ msgid ""
 msgstr ""
 "``pgr_johnson`` - 使用 Jhonson 算法返回图中每对节点的最短路径成本之和。."
 
+#, fuzzy
 msgid ""
 "The Johnson algorithm, is a good choice to calculate the sum of the costs of "
 "the shortest path for each pair of nodes in the graph, for *sparse graphs*. "
-"It usees the Boost's implementation which runs in :math:`O(V E \\log V)` "
-"time,"
+"It uses the Boost's implementation which runs in :math:`O(V E \\log V)` time,"
 msgstr ""
 "Johnson算法是计算图中每一对节点的最短路径成本之和的好选择，特别适用于 *稀疏图"
 "*。它使用了Boost的实现，其运行时间为 :math:`O(V E \\log V)`"
@@ -12874,8 +12897,9 @@ msgid ""
 "vertices."
 msgstr "``pgr_lengauerTarjanDominatorTree`` — 返回所有顶点的直接支配者。"
 
+#, fuzzy
 msgid ""
-"The algorithm calculates the *immidiate dominator* of each vertex called "
+"The algorithm calculates the *immediate dominator* of each vertex called "
 "**idom**, once **idom** of each vertex is calculated then by making every "
 "**idom** of each vertex as its parent, the dominator tree can be built."
 msgstr ""
@@ -13335,7 +13359,8 @@ msgid ""
 "wanted."
 msgstr "需要使用边 4 -> 7 从顶点 6 到顶点 3 的软限制。"
 
-msgid "Idenifying the restriction"
+#, fuzzy
+msgid "Identifying the restriction"
 msgstr "识别限制"
 
 msgid ""
@@ -13343,9 +13368,10 @@ msgid ""
 "cost will be increased"
 msgstr "运行 :doc:`pgr_dijkstraNear` 时，成本将会增加的地方是边 8，其成本为 0"
 
+#, fuzzy
 msgid ""
 "The edge to be altered is ``WHERE cost = 0 AND seq != 1 AND edge != -1`` "
-"from the previus query:"
+"from the previous query:"
 msgstr ""
 "要更改的边是上一个查询中的 ``WHERE cost = 0 AND seq != 1 AND edge != -1`` ："
 
@@ -14584,7 +14610,8 @@ msgstr ""
 msgid "The returned values are not ordered"
 msgstr "返回值未排序"
 
-msgid "The returned graph is compresed"
+#, fuzzy
+msgid "The returned graph is compressed"
 msgstr "返回的图被压缩"
 
 msgid "Running time: :math:`O(|V||E|)`"
@@ -15811,9 +15838,6 @@ msgid ""
 "``pgr_withPointsKSP`` — Yen's algorithm for K shortest paths using Dijkstra."
 msgstr "``pgr_withPointsKSP`` — Yen 使用 Dijkstra 计算 K 最短路径的算法。"
 
-msgid "Standarizing output columns to |nksp-result|"
-msgstr "标准化输出列为 |nksp-result|"
-
 msgid "pgr_withPointsKSP(One to One)"
 msgstr "pgr_withPointsKSP(一对一)"
 
@@ -16152,65 +16176,64 @@ msgstr "pgRouting 中的拟议已升级为正式版本"
 
 #, fuzzy
 msgid ""
-"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
-"pgr_extractVertices"
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promoted to "
+"official pgr_extractVertices in version 3.8"
 msgstr ""
 "`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
 "pgr_extractVertices"
 
 #, fuzzy
 msgid ""
-"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promoted to "
+"official pgr_degree in version 3.8"
 msgstr ""
 "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
 
 #, fuzzy
 msgid ""
-"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: "
-"pgr_findCloseEdges"
+"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promoted to "
+"official pgr_findCloseEdges in version 3.8"
 msgstr ""
 "`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
 "pgr_extractVertices"
 
 #, fuzzy
-msgid "Deprecation of functions."
-msgstr "已废弃的函数"
+msgid "Proposed functions"
+msgstr "拟议的功能"
+
+#, fuzzy
+msgid "Contraction"
+msgstr "收缩："
 
 #, fuzzy
 msgid ""
-"`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: "
-"pgr_alphaShape"
-msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
-
-#, fuzzy
-msgid ""
-"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
-"pgr_analyzeOneWay"
-msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
-
-#, fuzzy
-msgid ""
-"`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: "
-"pgr_analyzeGraph"
-msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
-
-#, fuzzy
-msgid ""
-"`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: "
-"pgr_createTopology"
-msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
-
-#, fuzzy
-msgid ""
-"`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: "
-"pgr_createVerticesTable"
+"`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: "
+"pgr_contractionDeadEnd new contraction function"
 msgstr ""
 "`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
 "pgr_extractVertices"
+
+#, fuzzy
+msgid ""
+"`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: "
+"pgr_contractionLinear new contraction function"
+msgstr ""
+"`#1002 <https://github.com/pgRouting/pgrouting/issues/1002>`__：修复收缩问"
+"题："
+
+#, fuzzy
+msgid ""
+"`#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__: Create "
+"pgr_separateCrossing new utility function"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+
+#, fuzzy
+msgid ""
+"`#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__: Create of "
+"pgr_separateTouching new utility function"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
 
 msgid "Official functions changes"
 msgstr "官方功能变更"
@@ -16218,7 +16241,7 @@ msgstr "官方功能变更"
 #, fuzzy
 msgid ""
 "`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
-"pgr_contraction"
+"pgr_contraction(edges) new signature"
 msgstr ""
 "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
 
@@ -16228,7 +16251,7 @@ msgstr "C/C++ 代码增强"
 #, fuzzy
 msgid ""
 "`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__: Code "
-"factorization on pgr_contraction family"
+"reorganization on pgr_contraction"
 msgstr ""
 "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
 
@@ -16243,42 +16266,57 @@ msgid ""
 msgstr ""
 "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
 
-msgid "New proposed functions"
-msgstr "新的拟议函数"
-
 #, fuzzy
-msgid "Contraction"
-msgstr "收缩："
+msgid "Deprecation of SQL functions"
+msgstr "已废弃的函数"
 
 #, fuzzy
 msgid ""
-"`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: "
-"pgr_contractionDeadEnd"
+"`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: Deprecate "
+"pgr_AlphaShape in 3.8"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+
+#, fuzzy
+msgid ""
+"`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: Deprecate "
+"pgr_CreateTopology in 3.8"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+
+#, fuzzy
+msgid ""
+"`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: Deprecate "
+"pgr_analyzeGraph in 3.8"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+
+#, fuzzy
+msgid ""
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: Deprecate "
+"pgr_analyzeOneWay in 3.8"
+msgstr ""
+"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+
+#, fuzzy
+msgid ""
+"`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: Deprecate "
+"pgr_createVerticesTable in 3.8"
 msgstr ""
 "`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
 "pgr_extractVertices"
 
 #, fuzzy
-msgid ""
-"`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: "
-"pgr_contractionLinear"
-msgstr ""
-"`#1002 <https://github.com/pgRouting/pgrouting/issues/1002>`__：修复收缩问"
-"题："
+msgid "In the deprecated functions:"
+msgstr "已废弃的功能"
 
 #, fuzzy
-msgid ""
-"`#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__: "
-"pgr_separateCrossing"
-msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+msgid "Migration section is created."
+msgstr "限制迁移"
 
 #, fuzzy
-msgid ""
-"`#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__: "
-"pgr_separateTouching"
-msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+msgid "The use of the functions is removed in the documentation."
+msgstr "这个问题的答案将取决于应用情况。"
 
 msgid "pgRouting 3.7"
 msgstr "pgRouting 3.7"
@@ -19626,8 +19664,9 @@ msgstr "负号是 `Points SQL`_ 的一个点"
 msgid "About points"
 msgstr "关于积分"
 
+#, fuzzy
 msgid ""
-"For this section the following city (see :doc:`sampledata`) some interesing "
+"For this section the following city (see :doc:`sampledata`) some interesting "
 "points such as restaurant, supermarket, post office, etc. will be used as "
 "example."
 msgstr ""
@@ -19665,7 +19704,8 @@ msgstr "数据库上的表示遵循 `Points SQL`_ 描述，对于本示例："
 msgid "Driving side"
 msgstr "驾驶侧"
 
-msgid "In the the folowwing images:"
+#, fuzzy
+msgid "In the following images:"
 msgstr "在下面的图片中："
 
 msgid "The squared vertices are the temporary vertices,"
@@ -19709,7 +19749,8 @@ msgstr "点 **4** 位于边 ``(3, 1)``"
 msgid "Like having all points to be considered in both sides ``b``"
 msgstr "就像双方都要考虑所有点 ``b``"
 
-msgid "Prefered usage on **undirected** graphs"
+#, fuzzy
+msgid "Preferred usage on **undirected** graphs"
 msgstr "**无向** 图上的首选用法"
 
 msgid "On the :doc:`TRSP-family` this option is not valid"
@@ -19744,7 +19785,8 @@ msgstr "插入点："
 msgid "On a right hand side driving network"
 msgstr "在右侧行驶网络"
 
-msgid "Arrival to point ``-2`` can be achived only via vertex **16**."
+#, fuzzy
+msgid "Arrival to point ``-2`` can be achieved only via vertex **16**."
 msgstr "只能通过顶点 **16** 才能到达点 ``-2``。"
 
 msgid "Does not affects edge ``(17, 16)``, therefore the edge is kept."
@@ -19761,7 +19803,8 @@ msgid ""
 "0.4`)"
 msgstr "边 ``(16, -2)`` 的成本为``0.4`` （原始成本*分数 == :math:`1 * 0.4`）"
 
-msgid "Edge ``(-2, 17)`` with cost ``0.6`` (the remaing cost)"
+#, fuzzy
+msgid "Edge ``(-2, 17)`` with cost ``0.6`` (the remaining cost)"
 msgstr "边 ``(-2, 17)`` 的成本为``0.6`` （剩余成本）"
 
 msgid "The total cost of the additional edges is equal to the original cost."
@@ -19774,7 +19817,8 @@ msgstr "如果同一条边上有更多点，则递归地重复该过程。"
 msgid "On a left hand side driving network"
 msgstr "在左侧驾驶网络上"
 
-msgid "Arrival to point ``-2`` can be achived only via vertex **17**."
+#, fuzzy
+msgid "Arrival to point ``-2`` can be achieved only via vertex **17**."
 msgstr "只能通过顶点 **17** 才能到达点 ``-2``。"
 
 msgid "Does not affects edge ``(16, 17)``, therefore the edge is kept."
@@ -19804,7 +19848,8 @@ msgstr "边 ``(-2, 16)`` 变为 ``(17, -2)``，成本为 ``0.6`` ，并添加到
 msgid "When driving side does not matter"
 msgstr "当驾驶侧无关紧要时"
 
-msgid "Arrival to point ``-2`` can be achived via vertices **16** or **17**."
+#, fuzzy
+msgid "Arrival to point ``-2`` can be achieved via vertices **16** or **17**."
 msgstr "可以通过顶点 **16** 或 **17** 到达点 ``-2``。"
 
 msgid ""
@@ -19866,6 +19911,23 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
 
+#~ msgid "Result columns standarized to: |nksp-result|"
+#~ msgstr "结果列标准化为 |nksp-result|"
+
+#~ msgid "OR EMTPY SET"
+#~ msgstr "OR EMTPY SET"
+
+#~ msgid "is arbitrarly."
+#~ msgstr "是任意的。"
+
+#~ msgid ""
+#~ "lines `3~4` sets the start vertices to be from the fisrt subway line and "
+#~ "the ending vertices to be from the second subway line"
+#~ msgstr "行 `3~4` 设置地铁三号线的起始顶点和地铁二号线的终点顶点"
+
+#~ msgid "New proposed functions"
+#~ msgstr "新的拟议函数"
+
 #, fuzzy
 #~ msgid "Post processing"
 #~ msgstr "后期处理"
@@ -19878,10 +19940,6 @@ msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
 
 #~ msgid "``pgr_alphaShape`` — Polygon part of an alpha shape."
 #~ msgstr "``pgr_alphaShape`` — Alpha 形状的多边形部分。"
-
-#, fuzzy
-#~ msgid "Deprecated function."
-#~ msgstr "已废弃的功能"
 
 #~ msgid "Breaking change on signature"
 #~ msgstr "签名的重大更改"
