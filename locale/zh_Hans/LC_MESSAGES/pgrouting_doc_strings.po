@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 16:50+0000\n"
-"PO-Revision-Date: 2025-04-09 00:24+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
+"PO-Revision-Date: 2025-04-24 09:18+0000\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -3989,9 +3989,8 @@ msgid ""
 "table information."
 msgstr ":doc:`pgr_extractVertices` - 根据边表信息提取顶点信息。"
 
-#, fuzzy
 msgid ":doc:`pgr_findCloseEdges` - Finds close edges of points on the fly"
-msgstr "``pgr_findCloseEdges`` -查找点几何图形的闭合边。"
+msgstr ":doc:`pgr_findCloseEdges` - 动态查找最近道路边线"
 
 msgid "Functions by categories"
 msgstr "按类别划分的函数"
@@ -4122,26 +4121,23 @@ msgstr "代码改进："
 msgid "Removal of unused C/C++ code"
 msgstr "移除未使用的C/C++代码"
 
-#, fuzzy
 msgid "Removal of SQL deprecated signatures"
-msgstr "移除已弃用的SQL函数"
+msgstr "移除已弃用的 SQL 函数签名"
 
-#, fuzzy
 msgid ""
 "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
 "pgr_contraction"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
+"pgr_contraction"
 
-#, fuzzy
 msgid "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
-msgstr "_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+msgstr "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
 
-#, fuzzy
 msgid ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
 msgstr "pgr_trsp(text,integer,integer,boolean,boolean,text)"
@@ -4156,27 +4152,26 @@ msgstr ""
 msgid "Removal of SQL deprecated functions"
 msgstr "移除已弃用的SQL函数"
 
-#, fuzzy
 msgid ""
 "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
 "pgr_trspviaedges"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
+"pgr_trspviaedges"
 
-#, fuzzy
 msgid ""
 "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: "
 "pgr_trspviavertices"
 msgstr ""
-"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
-"pgr_extractVertices"
+"`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: "
+"pgr_trspviavertices"
 
-#, fuzzy
 msgid ""
 "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: "
 "pgr_alphaShape"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: "
+"pgr_alphaShape"
 
 #, fuzzy
 msgid ""
@@ -4268,18 +4263,18 @@ msgstr "_v4trsp(text,text,anyarray,anyarray,boolean)"
 msgid "_v4trsp(text,text,text,boolean)"
 msgstr "_v4trsp(text,text,text,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__: Remove "
 "unused internal functions"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/"
+"2861>`__:移除未使用的内部函数"
 
 msgid "_pgr_checkverttab(text,text[],integer,text)"
-msgstr ""
+msgstr "_pgr_checkverttab(text,text[],integer,text)"
 
 msgid "_pgr_createindex(text,text,text,integer,text)"
-msgstr ""
+msgstr "_pgr_createindex(text,text,text,integer,text)"
 
 msgid "_pgr_createindex(text,text,text,text,integer,text)"
 msgstr ""
