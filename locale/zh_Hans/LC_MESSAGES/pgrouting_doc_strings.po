@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 16:50+0000\n"
 "PO-Revision-Date: 2025-04-24 10:23+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -4519,7 +4519,7 @@ msgid ""
 msgstr ""
 
 msgid "In this example :doc:`pgr_extractVertices` has already been applied."
-msgstr ""
+msgstr "在本例中 :doc:`pgr_extractVertices` 已经应用。"
 
 #, fuzzy
 msgid "Bridges."
