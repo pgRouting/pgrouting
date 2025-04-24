@@ -1,8 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: contractionhierarchies.hpp
 
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2025 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -39,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <utility>
 
-#include <boost/graph/iteration_macros.hpp>
+#include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/filtered_graph.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 

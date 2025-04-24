@@ -24,10 +24,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(54);
+SELECT CASE WHEN min_version('3.8.0') THEN plan(54) ELSE plan(1) END;
 
-SELECT style_dijkstra('pgr_contractionHierarchies(', ', ARRAY[1]::BIGINT[], true)');
+CREATE OR REPLACE FUNCTION inner_query()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
 
+  IF NOT min_version('3.8.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_contractionHierarchies is new function on 3.8.0');
+    RETURN;
+  END IF;
+
+  RETURN QUERY
+  SELECT style_dijkstra('pgr_contractionHierarchies(', ', true, ARRAY[1]::BIGINT[])');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT inner_query();
 
 SELECT finish();
 ROLLBACK;
