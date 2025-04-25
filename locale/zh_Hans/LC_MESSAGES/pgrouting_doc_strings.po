@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
 "PO-Revision-Date: 2025-04-25 05:23+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -1191,9 +1191,8 @@ msgid ""
 msgstr ""
 "当前车辆停止的顺序值，从 **1** 开始。 当前第 :math:`m_{th}` 车辆的停止。"
 
-#, fuzzy
 msgid "Summary row has the **total time windows violations**."
-msgstr "摘要行包含 **总时间窗口违规情况**。"
+msgstr "摘要行有**违规时间窗口总数**。"
 
 msgid ""
 "A time window violation happens when arriving after the location has closed."
@@ -4579,7 +4578,7 @@ msgid "A vertex that participates in only one edge."
 msgstr "仅关联单条边线的顶点。"
 
 msgid "gaps"
-msgstr ""
+msgstr "差距"
 
 msgid "Space between two geometries."
 msgstr "两个几何对象之间的空间。"
@@ -4589,7 +4588,7 @@ msgid "Intersection"
 msgstr "交叉口"
 
 msgid "Is a topological relationship between two geometries."
-msgstr ""
+msgstr "是两个几何体之间的拓扑关系。"
 
 msgid "Migration."
 msgstr "迁移。"
@@ -4639,7 +4638,7 @@ msgstr "拓扑关系。"
 msgid ""
 "Instead of counting intersections, determine topological relationships "
 "between geometries."
-msgstr ""
+msgstr "确定几何图形之间的拓扑关系，而不是计算交叉点。"
 
 msgid ""
 "Several PostGIS functions can be used: `ST_Intersects <https://postgis.net/"
@@ -6293,7 +6292,7 @@ msgstr "添加新线段。"
 msgid ""
 "Calling :doc:`pgr_separateCrossing` and adding the new segments to the edges "
 "table."
-msgstr ""
+msgstr "调用 :doc:`pgr_separateCrossing` 并将新的线段添加到边缘表中。"
 
 #, fuzzy
 msgid "Update other values"
@@ -6318,7 +6317,7 @@ msgid "Update source and target information on the edges table."
 msgstr "红色箭头显示边表上的边 ``(source, target)``"
 
 msgid "The example has results"
-msgstr ""
+msgstr "示例结果"
 
 #, fuzzy
 msgid "Routing from :math:`1` to :math:`18` gives a solution."
@@ -6329,13 +6328,13 @@ msgid "Touching edges"
 msgstr "交叉边"
 
 msgid "Visually the edges seem to be connected, but internally they are not."
-msgstr ""
+msgstr "从视觉上看，这些边缘似乎是相连的，但从内部看却并非如此。"
 
 msgid "The validity of the information is application dependent."
-msgstr ""
+msgstr "信息的有效性取决于应用情况。"
 
 msgid "Maybe there is a small barrier for vehicles but not for pedestrians."
-msgstr ""
+msgstr "也许对车辆有一个小障碍，但对行人却没有。"
 
 #, fuzzy
 msgid ""
@@ -6346,7 +6345,7 @@ msgstr ""
 "postgis.net/docs/ST_Split.html>`__ 边。"
 
 msgid "Fixing a gap"
-msgstr ""
+msgstr "弥补差距"
 
 #, fuzzy
 msgid "Routing from :math:`1` to :math:`2` gives no solution."
@@ -6363,7 +6362,7 @@ msgstr "分析告诉我们，网络存在缺口和交叉点。 我们尝试使�
 msgid ""
 "Calling :doc:`pgr_separateTouching` and adding the new segments to the edges "
 "table."
-msgstr ""
+msgstr "调用 :doc:`pgr_separateTouching` 并将新的线段添加到边缘表中。"
 
 #, fuzzy
 msgid "Routing from :math:`1` to :math:`2` gives a solution."
@@ -6403,7 +6402,7 @@ msgstr "要获取图的连通性："
 msgid ""
 "In this example: the edges table will need an additional column and the "
 "vertex table will be rebuilt completely."
-msgstr ""
+msgstr "在本例中：边表需要增加一列，顶点表将完全重建。"
 
 #, fuzzy
 msgid "Insert new edges"
@@ -6412,7 +6411,8 @@ msgstr "创建两条新边："
 msgid ""
 "Using :doc:`pgr_separateCrossing` and :doc:`pgr_separateTouching` insert the "
 "results into the edges table."
-msgstr ""
+msgstr "使用 :doc:`pgr_separateCrossing` 和 :doc:`pgr_separateTouching` "
+"将结果插入边缘表。"
 
 msgid "Create the vertices table"
 msgstr "创建顶点表"
@@ -9849,7 +9849,7 @@ msgstr "添加附加列"
 msgid ""
 "Adding extra columns to the edges and vertices tables. In this documentation "
 "the following will be used:"
-msgstr ""
+msgstr "在边表和顶点表中添加额外列。在本文档中将使用以下内容："
 
 #, fuzzy
 msgid "Column."
@@ -10002,7 +10002,7 @@ msgstr "当没有路径时："
 
 msgid ""
 "When all edges are incoming regardless of the number of adjacent vertices."
-msgstr ""
+msgstr "无论相邻顶点的数量多少，所有边都是进入的。"
 
 #, fuzzy
 msgid "pgr_contractionDeadEnd(`Edges SQL`_, [**options**])"
@@ -10143,7 +10143,7 @@ msgstr "相邻节点"
 msgid ""
 "Has more than one adjacent node and some edges are incoming and some are "
 "outgoing."
-msgstr ""
+msgstr "有一个以上的相邻节点，有些边是入边，有些是出边。"
 
 #, fuzzy
 msgid ""
@@ -10156,7 +10156,7 @@ msgstr ""
 msgid ""
 "When there are more than one adjacent vertex, all edges need to be all "
 "incoming edges otherwise it is not a dead end."
-msgstr ""
+msgstr "当有多个相邻顶点时，所有的边都必须是所有进入的边，否则就不是死胡同。"
 
 #, fuzzy
 msgid "Step by step dead end contraction"
@@ -10255,7 +10255,7 @@ msgid ""
 msgstr "对 ``contraction_order`` 执行收缩操作的次数。"
 
 msgid "A node connects two (or more) `linear` edges when"
-msgstr ""
+msgstr "节点连接两条（或多条）\"线性 \"边，当"
 
 msgid "The number of adjacent vertices is 2."
 msgstr "相邻顶点的数量为2。"
@@ -10278,12 +10278,12 @@ msgstr "线性是对称的"
 msgid ""
 "When the graph is processed as a directed graph, linearity is not "
 "symmetrical, therefore the graph can not be contracted."
-msgstr ""
+msgstr "当图形作为有向图处理时，线性并不对称，因此图形无法收缩。"
 
 msgid ""
 "When the same graph is processed as an undirected graph, linearity is "
 "symmetrical, therefore the graph can be contracted."
-msgstr ""
+msgstr "当把同一图形作为无向图处理时，线性是对称的，因此图形可以收缩。"
 
 #, fuzzy
 msgid "The three edges can be replaced by one undirected edge"
@@ -10568,10 +10568,10 @@ msgid ""
 msgstr "``pgr_degree`` —对于无向图中的每个顶点，返回与该顶点关联的边的计数。"
 
 msgid "Error messages adjustment."
-msgstr ""
+msgstr "错误信息调整。"
 
 msgid "New signature with only Edges SQL."
-msgstr ""
+msgstr "只有 Edges SQL 的新签名。"
 
 #, fuzzy
 msgid "Calculates the degree of the vertices of an undirected graph"
@@ -10584,10 +10584,10 @@ msgid ""
 msgstr "``pgr_degree`` —对于无向图中的每个顶点，返回与该顶点关联的边的计数。"
 
 msgid "A loop contributes 2 to a vertex's degree."
-msgstr ""
+msgstr "一个循环对一个顶点的度数贡献为 2。"
 
 msgid "A vertex with degree 0 is called an isolated vertex."
-msgstr ""
+msgstr "度数为 0 的顶点称为孤立顶点。"
 
 #, fuzzy
 msgid "Isolated vertex is not part of the result"
@@ -10595,7 +10595,7 @@ msgstr "修复顶点不在图中时的行驶距离问题"
 
 msgid ""
 "Vertex not participating on the subgraph is considered and isolated vertex."
-msgstr ""
+msgstr "未参与子图的顶点被视为孤立顶点。"
 
 #, fuzzy
 msgid ""
@@ -10608,7 +10608,7 @@ msgstr ""
 msgid ""
 "The code can be used as base code for the particular application "
 "requirements."
-msgstr ""
+msgstr "该代码可用作满足特定应用要求的基础代码。"
 
 #, fuzzy
 msgid "No ordering is performed."
@@ -10643,7 +10643,7 @@ msgid "Extracting the vertex information"
 msgstr "提取顶点信息"
 
 msgid "``pgr_degree`` can use :doc:`pgr_extractVertices` embedded in the call."
-msgstr ""
+msgstr "pgr_degree``可以使用 :doc:`pgr_extractVertices` 嵌入调用。"
 
 msgid ""
 "For decent size networks, it is best to prepare your vertices table before "
@@ -10718,7 +10718,7 @@ msgid "Using the `Edges`_ signature."
 msgstr "关于已弃用的签名："
 
 msgid "Using the `Edges and Vertices`_ signature."
-msgstr ""
+msgstr "使用 `Edges and Vertices`_ 签名。"
 
 msgid "Degree of a sub graph"
 msgstr "子图的度数"
@@ -10734,10 +10734,10 @@ msgid ":math:`V = \\{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17\\}`"
 msgstr ":math:`V = \\{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17\\}`"
 
 msgid "The vertices not participating on the edge are considered isolated"
-msgstr ""
+msgstr "未参与边的顶点被视为孤立顶点"
 
 msgid "their degree is 0 in the subgraph and"
-msgstr ""
+msgstr "在子图中的阶数为 0，并且"
 
 msgid "their degree is not shown in the output."
 msgstr "它们的度数不会在输出结果中显示。"
@@ -12220,7 +12220,7 @@ msgid "One point"
 msgstr "一个点"
 
 msgid "Get two close edges to points of interest with :math:`pid = 5`"
-msgstr ""
+msgstr "用 :math:`pid = 5` 获取两条与兴趣点接近的边"
 
 msgid "``cap => 2``"
 msgstr "``cap => 2``"
@@ -16104,7 +16104,7 @@ msgid ""
 msgstr ":doc:`pgr_lineGraph` - 用于生成折线图的转换算法。"
 
 msgid ":doc:`pgr_separateCrossing` - Breaks geometries that cross each other."
-msgstr ""
+msgstr ":doc:`pgr_separateCrossing` - 断开相互交叉的几何图形。"
 
 msgid ""
 ":doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each "
