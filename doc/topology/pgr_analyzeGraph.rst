@@ -285,7 +285,6 @@ See Also
 * :doc:`sampledata`
 * :doc:`topology-functions`
 * :doc:`pgr_analyzeOneWay`
-* :doc:`pgr_nodeNetwork` to create nodes to a not noded edge table.
 
 .. rubric:: Indices and tables
 

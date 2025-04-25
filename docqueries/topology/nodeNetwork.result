@@ -40,6 +40,7 @@ SELECT 1
 /* --q4 */
 SELECT pgr_nodeNetwork('edges', 0.001, the_geom => 'geom', rows_where=>'id in ('||id1||','||id2||')')
 FROM intersections;
+WARNING:  pgr_nodenetwork(text,double precision,text,text,text,text,boolean) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  id: id
 NOTICE:  the_geom: geom
@@ -141,6 +142,7 @@ SELECT 1
 /* --q13 */
 SELECT pgr_nodeNetwork('edges', 0.001, the_geom => 'geom', rows_where=>'id in ('||inhere||','||edge_id||')')
 FROM deadends;
+WARNING:  pgr_nodenetwork(text,double precision,text,text,text,text,boolean) deprecated function on v3.8.0
 NOTICE:  PROCESSING:
 NOTICE:  id: id
 NOTICE:  the_geom: geom
