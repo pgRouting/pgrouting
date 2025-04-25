@@ -80,12 +80,6 @@ Proposed Functions
    :start-after: official-start
    :end-before: official-end
 
-.. rubric:: Utilities
-
-.. include:: topology-functions.rst
-   :start-after: utility_proposed-start
-   :end-before: utility_proposed-end
-
 .. toctree::
    :hidden:
 
