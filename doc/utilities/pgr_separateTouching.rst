@@ -8,8 +8,8 @@
    ****************************************************************************
 
 .. index::
-   single: Utilities ; pgr_separateTouching - proposed on v3.8.0
-   single: separateTouching - proposed on v3.8.0
+   single: Utilities ; pgr_separateTouching
+   single: separateTouching
 
 |
 
@@ -23,6 +23,7 @@ are properly connected at endpoints
 
 .. rubric:: Version 3.8.0
 
+* Function promoted to official.
 * New proposed function.
 
 Description
