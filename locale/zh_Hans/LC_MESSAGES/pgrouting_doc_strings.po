@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-25 01:36+0000\n"
+"PO-Revision-Date: 2025-04-25 02:45+0000\n"
 "Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -4432,7 +4432,7 @@ msgstr "创建了一个包含 `<edges>_vertices_pgr` 的表。"
 msgid ""
 "**After Deprecation:** The user is responsible to create the complete "
 "topology."
-msgstr ""
+msgstr "**弃用后：** 用户需自行构建完整拓扑。"
 
 msgid "Build a routing topology"
 msgstr "构建路由拓扑"
@@ -4509,9 +4509,8 @@ msgstr "WHERE"
 msgid "Directionality problems were calculated based on codes."
 msgstr "方向性问题已根据预设规则代码完成计算。"
 
-#, fuzzy
 msgid "Dead ends."
-msgstr "死端"
+msgstr "死胡同。"
 
 msgid ""
 "A routing problem can arise when from a vertex there is only a way on or a "
@@ -4527,9 +4526,8 @@ msgstr ""
 msgid "In this example :doc:`pgr_extractVertices` has already been applied."
 msgstr "在本例中 :doc:`pgr_extractVertices` 已经应用。"
 
-#, fuzzy
 msgid "Bridges."
-msgstr "pgr_bridges"
+msgstr "桥梁。"
 
 #, fuzzy
 msgid ""
@@ -4586,9 +4584,8 @@ msgstr ""
 msgid "gaps"
 msgstr ""
 
-#, fuzzy
 msgid "Space between two geometries."
-msgstr "几何图形之间的最大距离"
+msgstr "两个几何对象之间的空间。"
 
 #, fuzzy
 msgid "Intersection"
@@ -4597,13 +4594,11 @@ msgstr "交叉口"
 msgid "Is a topological relationship between two geometries."
 msgstr ""
 
-#, fuzzy
 msgid "Migration."
-msgstr "迁移"
+msgstr "迁移。"
 
-#, fuzzy
 msgid "Components."
-msgstr "内容"
+msgstr "组件。"
 
 msgid ""
 "Instead of counting only isolated segments, determine all the components of "
@@ -4625,9 +4620,8 @@ msgstr "``pgr_strongComponents``"
 msgid ":doc:`pgr_biconnectedComponents`"
 msgstr "``pgr_biconnectedComponents``"
 
-#, fuzzy
 msgid "For example:"
-msgstr "示例"
+msgstr "示例："
 
 msgid ""
 "Instead of counting the dead ends, determine all the dead ends of the graph "
@@ -5348,9 +5342,8 @@ msgstr ":doc:`pgr_trsp`"
 msgid "`Migration of restrictions`_"
 msgstr "限制迁移"
 
-#, fuzzy
 msgid "Use ``pgr_dijkstra`` when there are no restrictions."
-msgstr ":doc:`pgr_dijkstra` 当没有限制时，"
+msgstr "在没有限制条件时，使用 ``pgr_dijkstra``。"
 
 msgid "Use :doc:`pgr_dijkstra` instead."
 msgstr "请改用 :doc:`pgr_dijkstra`。"
@@ -6295,9 +6288,8 @@ msgstr "创建表"
 msgid "Additional columns to control the origin of the segments."
 msgstr ""
 
-#, fuzzy
 msgid "Adding new segments."
-msgstr "添加新的顶点"
+msgstr "添加新线段。"
 
 msgid ""
 "Calling :doc:`pgr_separateCrossing` and adding the new segments to the edges "
@@ -6319,9 +6311,8 @@ msgstr "对于本示例， ``cost`` 和 ``reverse_cost`` 值将是几何体长�
 msgid "Update the topology"
 msgstr "更新边拓扑"
 
-#, fuzzy
 msgid "Insert the new vertices if any."
-msgstr "检查顶点表"
+msgstr "如有新顶点，则插入。"
 
 #, fuzzy
 msgid "Update source and target information on the edges table."
