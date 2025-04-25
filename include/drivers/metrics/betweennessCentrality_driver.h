@@ -49,7 +49,7 @@ extern "C" {
 
 void
 pgr_do_betweennessCentrality(
-    char*,
+    const char*,
     bool,
 
     IID_t_rt**,

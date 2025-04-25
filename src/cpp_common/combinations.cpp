@@ -106,7 +106,7 @@ get_combinations(const std::vector<II_t_rt> &combinations) {
  */
 std::map<int64_t , std::set<int64_t>>
 get_combinations(
-        char *combinations_sql,
+        const char *combinations_sql,
         ArrayType* startsArr, ArrayType* endsArr, bool normal) {
     using pgrouting::pgget::get_intSet;
     std::map<int64_t, std::set<int64_t>> result;

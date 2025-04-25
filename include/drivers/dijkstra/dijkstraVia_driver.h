@@ -59,7 +59,7 @@ extern "C" {
 #endif
 
 void pgr_do_dijkstraVia(
-        char*,
+        const char*,
         ArrayType*,
 
         bool, bool, bool,

@@ -46,7 +46,7 @@ extern "C" {
 #endif
 
 void pgr_do_stoerWagner(
-        char*,
+        const char*,
 
         StoerWagner_t**, size_t*,
         char**, char**, char**);

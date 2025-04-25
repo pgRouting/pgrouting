@@ -51,9 +51,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 pgr_do_pickDeliver(
-        char* customers_sql,
-        char *vehicles_sql,
-        char *matrix_sql,
+        const char *customers_sql,
+        const char *vehicles_sql,
+        const char *matrix_sql,
 
         double factor,
         int max_cycles,
@@ -72,7 +72,7 @@ pgr_do_pickDeliver(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

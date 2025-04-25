@@ -45,7 +45,7 @@ extern "C" {
 
 void
 pgr_do_hawickCircuits(
-        char*,
+        const char*,
 
         circuits_rt**, size_t*,
         char**, char**, char**);

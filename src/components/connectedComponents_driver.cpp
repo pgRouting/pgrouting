@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 pgr_do_connectedComponents(
-        char *edges_sql,
+        const char *edges_sql,
 
         II_t_rt **return_tuples,
         size_t *return_count,
@@ -59,7 +59,7 @@ pgr_do_connectedComponents(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

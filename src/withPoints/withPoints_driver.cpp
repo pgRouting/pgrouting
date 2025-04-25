@@ -78,10 +78,10 @@ pgr_dijkstra(
 
 void
 pgr_do_withPoints(
-        char *edges_sql,
-        char *points_sql,
-        char *edges_of_points_sql,
-        char *combinations_sql,
+        const char *edges_sql,
+        const char *points_sql,
+        const char *edges_of_points_sql,
+        const char *combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
 
@@ -105,7 +105,7 @@ pgr_do_withPoints(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

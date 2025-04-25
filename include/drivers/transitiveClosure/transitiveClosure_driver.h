@@ -43,7 +43,7 @@ extern "C" {
 #endif
 
 void pgr_do_transitiveClosure(
-        char*,
+        const char*,
 
         TransitiveClosure_rt**, size_t*,
         char**, char**, char**);

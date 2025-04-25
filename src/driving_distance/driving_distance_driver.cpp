@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 pgr_do_drivingDistance(
-        char *edges_sql,
+        const char *edges_sql,
         ArrayType* starts,
         double distance,
         bool directed,
@@ -64,7 +64,7 @@ pgr_do_drivingDistance(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

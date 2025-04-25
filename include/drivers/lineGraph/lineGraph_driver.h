@@ -47,7 +47,7 @@ extern "C" {
 #endif
 
 void pgr_do_lineGraph(
-        char*,
+        const char*,
 
         bool,
 

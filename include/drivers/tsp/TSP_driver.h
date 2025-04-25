@@ -50,7 +50,7 @@ extern "C" {
 
 void
 pgr_do_tsp(
-        char*,
+        const char*,
 
         int64_t,
         int64_t,

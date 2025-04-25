@@ -46,9 +46,9 @@ extern "C" {
 #endif
 
 void pgr_do_pickDeliver(
-        char*,
-        char*,
-        char*,
+        const char*,
+        const char*,
+        const char*,
 
         double, int, int,
 

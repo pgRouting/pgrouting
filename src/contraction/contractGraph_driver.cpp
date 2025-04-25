@@ -134,7 +134,7 @@ void get_postgres_result(
 
 void
 pgr_do_contractGraph(
-        char *edges_sql,
+        const char *edges_sql,
 
         ArrayType* forbidden,
         ArrayType* order,
@@ -155,7 +155,7 @@ pgr_do_contractGraph(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(max_cycles != 0);

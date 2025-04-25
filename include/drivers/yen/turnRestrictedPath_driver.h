@@ -49,8 +49,8 @@ extern "C" {
 #endif
 
 void pgr_do_turnRestrictedPath(
-        char*,
-        char*,
+        const char*,
+        const char*,
 
         int64_t,
         int64_t,

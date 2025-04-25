@@ -49,7 +49,7 @@ extern "C" {
 
 void
 pgr_do_euclideanTSP(
-        char*,
+        const char*,
 
         int64_t,
         int64_t,

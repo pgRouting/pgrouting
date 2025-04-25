@@ -93,9 +93,9 @@ get_route(
 
 void
 pgr_do_withPointsVia(
-        char *edges_sql,
-        char *points_sql,
-        char *edges_of_points_sql,
+        const char *edges_sql,
+        const char *points_sql,
+        const char *edges_of_points_sql,
         ArrayType* starts,
 
         bool directed,
@@ -118,7 +118,7 @@ pgr_do_withPointsVia(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

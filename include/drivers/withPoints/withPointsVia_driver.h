@@ -60,9 +60,9 @@ extern "C" {
 /** @brief Process pgr_withPointsVia */
 void
 pgr_do_withPointsVia(
-        char*,
-        char*,
-        char*,
+        const char*,
+        const char*,
+        const char*,
         ArrayType*,
 
         bool,

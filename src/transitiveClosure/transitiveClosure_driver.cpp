@@ -95,7 +95,7 @@ void get_postgres_result(
  ***********************************************************/
 void
 pgr_do_transitiveClosure(
-        char *edges_sql,
+        const char *edges_sql,
 
         TransitiveClosure_rt **return_tuples,
         size_t *return_count,
@@ -108,7 +108,7 @@ pgr_do_transitiveClosure(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));
