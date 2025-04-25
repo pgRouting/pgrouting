@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-25 07:46+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2025-04-25 09:07+0000\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -5394,7 +5394,7 @@ msgid "``id3`` is the edge"
 msgstr "``id3`` 是边"
 
 msgid "Use ``pgr_trspVia`` when there are restrictions"
-msgstr "有限制时使用 `pgr_trspVia``."
+msgstr "有限制时使用 `pgr_trspVia``"
 
 msgid "Use :doc:`pgr_trspVia` instead."
 msgstr "使用 :doc:`pgr_trspVia`。"
@@ -5491,7 +5491,7 @@ msgid ":math:`9`"
 msgstr ":math:`9`"
 
 msgid "is on column ``target_id``"
-msgstr "is on column ``target_id``"
+msgstr "位于列 ``target_id``"
 
 msgid "is of type ``INTEGER``"
 msgstr "is of type ``INTEGER``"
@@ -6326,9 +6326,8 @@ msgstr "路由从 :math:`5` 到 :math:`1`"
 msgid "Analyze the network for gaps."
 msgstr "现在我们可以分析网络了。"
 
-#, fuzzy
 msgid "The analysis tell us that the network has a gap."
-msgstr "分析告诉我们，网络存在缺口和交叉点。 我们尝试使用以下方法解决该问题："
+msgstr "分析表明该路网存在断点。"
 
 msgid ""
 "Calling :doc:`pgr_separateTouching` and adding the new segments to the edges "
@@ -8634,9 +8633,8 @@ msgid ""
 "algorithm."
 msgstr "``pgr_bdDijkstra`` — 返回使用双向 Dijkstra 算法计算的最短路径。"
 
-#, fuzzy
 msgid "pgr_bdDijkstra(One to Many)"
-msgstr "pgr_bdDijkstra（一对多）"
+msgstr "pgr_bdDijkstra(One to Many)"
 
 msgid "pgr_bdDijkstra(Many to One)"
 msgstr "pgr_bdDijkstra（多对一）"
@@ -8644,9 +8642,8 @@ msgstr "pgr_bdDijkstra（多对一）"
 msgid "pgr_bdDijkstra(Many to Many)"
 msgstr "pgr_bdDijkstra（多对多）"
 
-#, fuzzy
 msgid "Signature change on pgr_bdDijsktra(One to One)"
-msgstr "``pgr_bdDijsktra`` (`一对一`_)上的签名更改"
+msgstr "函数的签名变更 pgr_bdDijsktra(One to One)"
 
 msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
@@ -8714,11 +8711,10 @@ msgid ""
 "Bidirectional Dijkstra algorithm."
 msgstr "``pgr_bdDijkstraCost`` —返回使用双向 Dijkstra 算法计算最短路径的成本。"
 
-#, fuzzy
 msgid ""
 "The ``pgr_bdDijkstraCost`` function summarizes of the cost of the shortest "
 "path using the bidirectional Dijkstra Algorithm."
-msgstr "``pgr_bdDijkstraCost`` 函数使用双向 Dijkstra 算法汇总最短路径的成本。"
+msgstr "``pgr_bdDijkstraCost`` 函数通过双向 Dijkstra 算法汇总最短路径的成本值。"
 
 msgid ""
 "pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])"
@@ -8889,15 +8885,13 @@ msgstr "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgid "Boost Graph Inside"
 msgstr "Boost 图内部"
 
-#, fuzzy
 msgid "``pgr_betweennessCentrality`` - Experimental"
-msgstr "``pgr_betweennessCentrality``"
+msgstr "``pgr_betweennessCentrality`` - 实验性功能"
 
-#, fuzzy
 msgid ""
 "``pgr_betweennessCentrality`` - Calculates the relative betweenness "
 "centrality using Brandes Algorithm"
-msgstr "``pgr_betweennessCentrality`` - 使用 Brandes 算法计算相对介数中心度"
+msgstr "``pgr_betweennessCentrality` - 使用 Brandes 算法计算相对中介中心度"
 
 msgid "Version 3.7.0"
 msgstr "版本 3.7.0"
@@ -8975,13 +8969,12 @@ msgid ""
 "Relative betweenness centrality score of the vertex (will be in range [0,1])"
 msgstr "该节点的相对介数中心性得分（范围为 [0,1]）"
 
-#, fuzzy
 msgid ""
 "`Boost: betweenness centrality <https://www.boost.org/libs/graph/doc/"
 "betweenness_centrality.html>`_"
 msgstr ""
-"`Boost: betweenness centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
-"graph/doc/betweenness_centrality.html>`_"
+"`Boost: betweenness centrality <https://www.boost.org/libs/graph/doc/"
+"betweenness_centrality.html>`_"
 
 msgid "``pgr_biconnectedComponents``"
 msgstr "``pgr_biconnectedComponents``"
@@ -9139,12 +9132,11 @@ msgid ""
 msgstr ""
 "**注意:** 使用 :doc:`sampledata` 网络，因为所有权重都相同（即为 :math:`1`）"
 
-#, fuzzy
 msgid ""
 "`Boost: Breadth First Search <https://www.boost.org/libs/graph/doc/"
 "breadth_first_search.html>`__"
 msgstr ""
-"`Boost：广度优先搜索算法文档 <https://www.boost.org/libs/graph/doc/"
+"`Boost: Breadth First Search <https://www.boost.org/libs/graph/doc/"
 "breadth_first_search.html>`__"
 
 msgid "https://cp-algorithms.com/graph/01_bfs.html"
@@ -9155,9 +9147,8 @@ msgid ""
 msgstr ""
 "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants"
 
-#, fuzzy
 msgid "``pgr_bipartite`` - Experimental"
-msgstr "pgr_bipartite -实验"
+msgstr "``pgr_bipartite`` - 实验性功能"
 
 msgid ""
 "``pgr_bipartite`` — Disjoint sets of vertices such that no two vertices "
@@ -9243,9 +9234,8 @@ msgstr ""
 msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
 msgstr "从 ``pgr_maxFlowBoykovKolmogorov`` 更名而来"
 
-#, fuzzy
 msgid "Function promoted to proposed."
-msgstr "实验性的功能被提升为提议的。"
+msgstr "函数已升级为正式提案。"
 
 msgid "Running time: Polynomial"
 msgstr "运行时间：多项式时间"
@@ -9288,11 +9278,12 @@ msgstr ""
 "使用组合表，相当于计算从顶点 :math:`\\{5, 6\\}` 到顶点 :math:`{\\10, 15, "
 "14\\}` 的结果。"
 
-#, fuzzy
 msgid ""
 "`Boost: Boykov Kolmogorov max flow <https://www.boost.org/libs/graph/doc/"
 "boykov_kolmogorov_max_flow.html>`__"
-msgstr "https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"
+msgstr ""
+"`Boost: Boykov Kolmogorov max flow <https://www.boost.org/libs/graph/doc/"
+"boykov_kolmogorov_max_flow.html>`__"
 
 msgid "``pgr_breadthFirstSearch`` - Experimental"
 msgstr "``pgr_breadthFirstSearch`` - 实验"
@@ -9412,12 +9403,11 @@ msgstr "作为桥的边的标识符。"
 msgid "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 msgstr "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 
-#, fuzzy
 msgid ""
 "`Boost: Connected components <https://www.boost.org/libs/graph/doc/"
 "connected_components.html>`__"
 msgstr ""
-"Boost: ` 已连接组件 <https://www.boost.org/libs/graph/doc/"
+"`Boost: Connected components <https://www.boost.org/libs/graph/doc/"
 "connected_components.html>`__"
 
 msgid "``pgr_chinesePostman`` - Experimental"
@@ -9535,9 +9525,8 @@ msgid ""
 "vertices and edges."
 msgstr "``pgr_contraction`` — 执行图收缩操作并返回收缩后的顶点和边。"
 
-#, fuzzy
 msgid "Version 3.8.0"
-msgstr "版本3.6.0"
+msgstr "Version 3.8.0"
 
 #, fuzzy
 msgid "New signature:"
@@ -9577,21 +9566,18 @@ msgstr ""
 msgid "Does not return the full contracted graph."
 msgstr "不返回完整的收缩图"
 
-#, fuzzy
 msgid "Only changes on the graph are returned."
-msgstr "仅返回图上的更改"
+msgstr "仅返回图中的变更部分。"
 
-#, fuzzy
 msgid "The returned values include:"
-msgstr "返回值包括"
+msgstr "返回值包括："
 
 #, fuzzy
 msgid "The new edges generated by linear contraction."
 msgstr "插入由 pgr_contraction 生成的新边。"
 
-#, fuzzy
 msgid "The modified vertices generated by dead end contraction."
-msgstr "通过死端收缩修改顶点。"
+msgstr "断头节点收缩生成的修改后顶点集。"
 
 msgid "The returned values are ordered as follows:"
 msgstr "返回值的排序如下："
@@ -9616,20 +9602,17 @@ msgstr "死角收缩。参考 :doc:`pgr_contractionDeadEnd`。"
 msgid "Linear Contraction. See :doc:`pgr_contractionLinear`."
 msgstr "线性收缩。参考 :doc:`pgr_contractionLinear`。"
 
-#, fuzzy
 msgid "pgr_contraction(`Edges SQL`_, [**options**])"
-msgstr "pgr_contraction(`Edges SQL`_, **contraction order**, [**options**])"
+msgstr "pgr_contraction(`Edges SQL`_, [**options**])"
 
-#, fuzzy
 msgid "**options:** ``[directed, methods, cycles, forbidden]``"
-msgstr "**options:** ``[directed, details]``"
+msgstr "**options:** ``[directed, methods, cycles, forbidden]``"
 
 msgid "Returns set of |result-contract|"
 msgstr "Returns set of |result-contract|"
 
-#, fuzzy
 msgid "Dead end and linear contraction in that order on an undirected graph."
-msgstr "在无向图上按顺序进行死端和线性收缩。"
+msgstr "在无向图上依次执行断头节点收缩与线性收缩。"
 
 msgid "Contraction optional parameters"
 msgstr "可选收缩参数"
@@ -9637,13 +9620,11 @@ msgstr "可选收缩参数"
 msgid "``methods``"
 msgstr "``methods``"
 
-#, fuzzy
 msgid "``INTEGER[]``"
-msgstr "``INTEGER``"
+msgstr "``INTEGER[]``"
 
-#, fuzzy
 msgid "``ARRAY[1,2]``"
-msgstr "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[1,2]``"
 
 msgid "Ordered contraction operations."
 msgstr "有序收缩操作。"
@@ -9654,9 +9635,8 @@ msgstr "1 = 死端收缩"
 msgid "2 = Linear contraction"
 msgstr "2 = 线性收缩"
 
-#, fuzzy
 msgid "``cycles``"
-msgstr "``max_cycles``"
+msgstr "``cycles``"
 
 msgid ":math:`1`"
 msgstr ":math:`1`"
@@ -9996,9 +9976,8 @@ msgstr "**Empty**"
 msgid "Value = ``e`` indicating the row is an edge."
 msgstr "当行是边时，则为 ``e``。"
 
-#, fuzzy
 msgid "A pseudo `id` of the edge."
-msgstr "边的几何形状。"
+msgstr "边线的伪 `id`。"
 
 msgid "Identifier of the source vertex of the current edge."
 msgstr "当前边的源顶点的标识符。"
@@ -10006,9 +9985,8 @@ msgstr "当前边的源顶点的标识符。"
 msgid "Identifier of the target vertex of the current edge."
 msgstr "当前边的目标顶点的标识符。"
 
-#, fuzzy
 msgid "Weight of the current edge."
-msgstr "当前边的源顶点的标识符。"
+msgstr "当前边线的权重值。"
 
 msgid "Dead end vertex on undirected graph"
 msgstr "无向图上的死端顶点"
@@ -10019,9 +9997,8 @@ msgstr "它们只有一个相邻节点。"
 msgid "Dead end vertex on directed graph"
 msgstr "有向图上的死端顶点"
 
-#, fuzzy
 msgid "The green nodes are dead end nodes"
-msgstr "绿色节点是 `死端`_ 节点"
+msgstr "绿色节点为断头节点"
 
 msgid ""
 "The blue nodes have an unlimited number of incoming and/or outgoing edges."
@@ -10069,24 +10046,20 @@ msgstr "有一个以上的相邻节点，且所有边都是传入的。"
 msgid ":math:`\\{4\\}`"
 msgstr ":math:`\\{4\\}`"
 
-#, fuzzy
 msgid ":math:`10`"
-msgstr ":math:`1`"
+msgstr ":math:`10`"
 
-#, fuzzy
 msgid ":math:`\\{4, 5\\}`"
-msgstr ":math:`\\{v, w\\}`"
+msgstr ":math:`\\{4, 5\\}`"
 
-#, fuzzy
 msgid "No"
-msgstr "节点"
+msgstr "No"
 
 msgid "Has more than one adjacent node and all edges are outgoing."
 msgstr "有一个以上的相邻节点，且所有边都是向外的。"
 
-#, fuzzy
 msgid ":math:`1,2,3,4,5`"
-msgstr ":math:`1`"
+msgstr ":math:`1,2,3,4,5`"
 
 #, fuzzy
 msgid "Many adjacent nodes."
@@ -10110,17 +10083,14 @@ msgid ""
 "incoming edges otherwise it is not a dead end."
 msgstr "当有多个相邻顶点时，所有的边都必须是所有进入的边，否则就不是死胡同。"
 
-#, fuzzy
 msgid "Step by step dead end contraction"
-msgstr "仅死端收缩"
+msgstr "逐步断头节点收缩"
 
-#, fuzzy
 msgid ""
 "The dead end contraction will stop until there are no more dead end nodes. "
 "For example, from the following graph where :math:`3` is the dead end node:"
-msgstr ""
-"死端收缩将停止，直到不再有死端节点。 例如，从下图中，其中 :math:`w` 是 `死端"
-"`_ 节点："
+msgstr "断头节点收缩将持续执行，直至图中不再存在断头节点。例如下图中 :math:`3` "
+"为断头节点时的处理流程："
 
 #, fuzzy
 msgid ""
