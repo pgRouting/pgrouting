@@ -44,18 +44,13 @@ Utility functions
   table information.
 - :doc:`pgr_findCloseEdges` - Finds close edges of points on the fly
 - :doc:`pgr_separateCrossing` - Breaks geometries that cross each other.
+- :doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each other.
 
 .. utility_official-end
 
 .. include:: proposed.rst
    :start-after: warning-begin
    :end-before: end-warning
-
-.. utility_proposed-start
-
-- :doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each other.
-
-.. utility_proposed-end
 
 .. toctree::
   :hidden:
