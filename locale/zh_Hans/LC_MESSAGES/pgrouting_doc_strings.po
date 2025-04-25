@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
 "PO-Revision-Date: 2025-04-25 09:07+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -6318,9 +6318,8 @@ msgstr ""
 msgid "Fixing a gap"
 msgstr "弥补差距"
 
-#, fuzzy
 msgid "Routing from :math:`1` to :math:`2` gives no solution."
-msgstr "路由从 :math:`5` 到 :math:`1`"
+msgstr "从 :math:`1` 到 :math:`2` 的路由无解。"
 
 #, fuzzy
 msgid "Analyze the network for gaps."
@@ -6334,9 +6333,8 @@ msgid ""
 "table."
 msgstr "调用 :doc:`pgr_separateTouching` 并将新的线段添加到边缘表中。"
 
-#, fuzzy
 msgid "Routing from :math:`1` to :math:`2` gives a solution."
-msgstr "路由从 :math:`5` 到 :math:`1`"
+msgstr "从 :math:`1` 到 :math:`2` 的路径给出了解决方案。"
 
 msgid "Connecting components"
 msgstr "连接组件"
@@ -6344,9 +6342,8 @@ msgstr "连接组件"
 msgid "To get the graph connectivity:"
 msgstr "要获取图的连通性："
 
-#, fuzzy
 msgid "There are three basic ways to connect components:"
-msgstr "连接组件有三种基本方法"
+msgstr "连接组件有三种基本方法："
 
 msgid "From the vertex to the starting point of the edge"
 msgstr "从顶点到边的起点"
@@ -6365,9 +6362,8 @@ msgid ""
 "will be used."
 msgstr ""
 
-#, fuzzy
 msgid "Get the connectivity"
-msgstr "要获取图的连通性："
+msgstr "获取连接性"
 
 msgid ""
 "In this example: the edges table will need an additional column and the "
@@ -8618,7 +8614,6 @@ msgid ""
 "`pgr_aStar`."
 msgstr "``pgr_bdAstarCostMatrix`` - 使用 :doc:`pgr_aStar` 计算成本矩阵。"
 
-#, fuzzy
 msgid "Using internally the :doc:`pgr_bdAstar` algorithm"
 msgstr "内部使用 :doc:`pgr_bdAstar` 算法"
 
@@ -9528,9 +9523,8 @@ msgstr "``pgr_contraction`` — 执行图收缩操作并返回收缩后的顶点
 msgid "Version 3.8.0"
 msgstr "Version 3.8.0"
 
-#, fuzzy
 msgid "New signature:"
-msgstr "新签名"
+msgstr "新签名："
 
 msgid ""
 "Previously compulsory parameter **Contraction order** is now optional with "
@@ -9539,14 +9533,12 @@ msgstr ""
 "之前必需的参数 **Contraction order** 现在已变为可选参数，并更名为 "
 "``methods``。"
 
-#, fuzzy
 msgid "New name and order of optional parameters."
-msgstr "接近可选参数"
+msgstr "可选参数的新名称和顺序。"
 
-#, fuzzy
 msgid ""
 "Deprecated signature pgr_contraction(text,bigint[],integer,bigint[],boolean)"
-msgstr "_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+msgstr "已弃用签名 pgr_contraction(text,bigint[],integer,bigint[],boolean)"
 
 msgid "Name change from ``pgr_contractGraph``"
 msgstr "``pgr_contractGraph`` 的名称更改"
@@ -9562,9 +9554,8 @@ msgstr ""
 "收缩通过移除部分顶点和边来减小图的大小，例如，可以添加代表原始边序列的边，从"
 "而减少图算法所用的总时间和空间。"
 
-#, fuzzy
 msgid "Does not return the full contracted graph."
-msgstr "不返回完整的收缩图"
+msgstr "不返回完整的收缩图。"
 
 msgid "Only changes on the graph are returned."
 msgstr "仅返回图中的变更部分。"
@@ -9582,19 +9573,16 @@ msgstr "断头节点收缩生成的修改后顶点集。"
 msgid "The returned values are ordered as follows:"
 msgstr "返回值的排序如下："
 
-#, fuzzy
 msgid "column ``id`` ascending when its a modified vertex."
-msgstr "当类型为 ``v``时，按列 ``id`` 升序"
+msgstr "列 ``id`` 升序排列。"
 
-#, fuzzy
 msgid "column ``id`` with negative numbers descending when its a new edge."
-msgstr "当类型为 ``e`` 时，按列``id`` 降序"
+msgstr "列 ``id`` 中的负数，当它是一条新边时，负数依次递减。"
 
-#, fuzzy
 msgid ""
 "Currently there are two types of contraction methods included in this "
 "function:"
-msgstr "目前有两种类型的收缩方法"
+msgstr "目前，该功能包含两种收缩方法："
 
 msgid "Dead End Contraction. See :doc:`pgr_contractionDeadEnd`."
 msgstr "死角收缩。参考 :doc:`pgr_contractionDeadEnd`。"
@@ -10061,9 +10049,8 @@ msgstr "有一个以上的相邻节点，且所有边都是向外的。"
 msgid ":math:`1,2,3,4,5`"
 msgstr ":math:`1,2,3,4,5`"
 
-#, fuzzy
 msgid "Many adjacent nodes."
-msgstr "相邻节点"
+msgstr "许多相邻节点。"
 
 msgid ""
 "Has more than one adjacent node and some edges are incoming and some are "
