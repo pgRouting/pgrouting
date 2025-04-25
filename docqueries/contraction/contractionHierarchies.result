@@ -92,7 +92,7 @@ SELECT * FROM pgr_contractionHierarchies(
 
 /* -- q3 */
 ALTER TABLE edges
-  ADD is_new BOOLEAN default FALSE,
+  ADD is_new BOOLEAN DEFAULT false,
   ADD contracted_vertices BIGINT[];
 ALTER TABLE
 /* -- q4 */
