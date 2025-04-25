@@ -8,12 +8,12 @@
    ****************************************************************************
 
 .. index::
-   single: Topology Family ; pgr_nodeNetwork
-   single: nodeNetwork
+   single: Topology Family ; pgr_nodeNetwork - Deprecated since 3.8.0
+   single: nodeNetwork - Deprecated since 3.8.0
 
 |
 
-``pgr_nodeNetwork``
+``pgr_nodeNetwork`` - Deprecated since 3.8.0
 ===============================================================================
 
 ``pgr_nodeNetwork`` - Nodes an network edge table.
@@ -38,6 +38,7 @@ edges into a new table.
 
 * Version 3.8.0
 
+  * Deprecated function.
   * Not checking and not creating indexes.
   * Using ``pgr_separateTouching`` and ``pgr_separateCrossing``.
   * Created table with ``BIGINT``.
@@ -46,6 +47,9 @@ edges into a new table.
 
   * Official function.
 
+.. include:: migration.rst
+   :start-after: migrate_pgr_nodeNetwork_start
+   :end-before: migrate_pgr_nodeNetwork_end
 
 Description
 -------------------------------------------------------------------------------

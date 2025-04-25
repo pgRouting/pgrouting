@@ -135,6 +135,8 @@ milestone for 3.8.0
   Deprecate pgr_analyzeOneWay in 3.8
 * `#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__:
   Deprecate pgr_createVerticesTable in 3.8
+* `#2847 <https://github.com/pgRouting/pgrouting/issues/2847>`__:
+  Deprecate pgr_nodeNetwork in 3.8
 
 In the deprecated functions:
 

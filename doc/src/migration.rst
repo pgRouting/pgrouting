@@ -54,6 +54,22 @@ Other PostGIS options are
 
 .. migrate_pgr_alphaShape_end
 
+.. migrate_pgr_nodeNetwork_start
+
+Migration of ``pgr_nodeNetwork``
+-------------------------------------------------------------------------------
+
+Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
+
+**Before Deprecation:** A table with `<edges>_nodded` was created. with split
+edges.
+
+**Migration**
+
+Use :doc:`pgr_separateTouching` and/or use :doc:`pgr_separateCrossing`
+
+.. migrate_pgr_nodeNetwork_end
+
 .. migrate_pgr_createTopology_start
 
 Migration of ``pgr_createTopology``
