@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-25 01:02+0000\n"
+"PO-Revision-Date: 2025-04-25 01:36+0000\n"
 "Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -4419,11 +4419,12 @@ msgstr ""
 "ST_ConcaveHull.html>`__"
 
 msgid "Migration of ``pgr_createTopology``"
-msgstr "迁移 ``pgr_trspViaVertices``"
+msgstr "Migration of ``pgr_createTopology``"
 
 msgid ""
 "Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
-msgstr "从 `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__开始"
+msgstr ""
+"Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
 
 msgid "A table with `<edges>_vertices_pgr` was created."
 msgstr "创建了一个包含 `<edges>_vertices_pgr` 的表。"
@@ -4488,7 +4489,7 @@ msgid ""
 msgstr "最后使用存储在顶点表上的数据填充 ``source`` 和``target``。"
 
 msgid "Migration of ``pgr_createVerticesTable``"
-msgstr "迁移 ``pgr_createVerticesTable``"
+msgstr "Migration of ``pgr_createVerticesTable``"
 
 msgid ""
 "**After Deprecation:** The user is responsible to create the vertices table, "
@@ -4658,7 +4659,7 @@ msgid ""
 msgstr ""
 
 msgid "Migration of ``pgr_aStar``"
-msgstr "迁移 ``pgr_aStar``"
+msgstr "Migration of ``pgr_aStar``"
 
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__"
@@ -4749,16 +4750,16 @@ msgstr ""
 "``my_dijkstra`` 返回 ``pgr_dijkstra`` 的新附加列。"
 
 msgid "Migration of ``pgr_bdAstar``"
-msgstr "迁移 ``pgr_bdAstar``"
+msgstr "Migration of ``pgr_bdAstar``"
 
 msgid "``pgr_bdAstar`` (`One to One`)"
-msgstr "``pgr_bdAstar`` (`一对一`)"
+msgstr "``pgr_bdAstar`` (`One to One`)"
 
 msgid "``pgr_bdAstar`` (`One to Many`)"
-msgstr "``pgr_bdAstar`` (`一对多`)"
+msgstr "``pgr_bdAstar`` (`One to Many`)"
 
 msgid "``pgr_bdAstar`` (`Many to One`)"
-msgstr "``pgr_bdAstar`` (`多对一`)"
+msgstr "``pgr_bdAstar`` (`Many to One`)"
 
 msgid ""
 "``pgr_bdAstar`` (`One to One`) does not have ``start_vid`` and ``end_vid``."
@@ -4780,12 +4781,12 @@ msgid "In ``pgr_bdAstar`` (`Many to One`)"
 msgstr "在 ``pgr_bdAstar`` (`多对一`)中"
 
 msgid "Migration of ``pgr_dijkstra``"
-msgstr "迁移 ``pgr_dijkstra``"
+msgstr "Migration of ``pgr_dijkstra``"
 
 msgid ""
 "Starting from `v3.5.0 <https://docs.pgrouting.org/3.5/en/migration.html>`__"
 msgstr ""
-"从`v3.5.0 <https://docs.pgrouting.org/3.5/en/migration.html>`__ 版本开始"
+"Starting from `v3.5.0 <https://docs.pgrouting.org/3.5/en/migration.html>`__"
 
 msgid "``pgr_dijkstra`` (`One to One`)"
 msgstr "``pgr_dijkstra`` (`一对一`)"
@@ -4899,7 +4900,8 @@ msgstr "如有需要，可过滤掉列并重新命名列，例如，返回原始
 
 msgid ""
 "Migration of ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``"
-msgstr "`pgr_kruskalDD`` / `pgr_kruskalBFS`` / `pgr_kruskalDFS`` 的迁移"
+msgstr ""
+"Migration of ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``"
 
 msgid ""
 "Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
@@ -4973,7 +4975,7 @@ msgstr ""
 "vertex>`__ 示例比较。"
 
 msgid "Migration of ``pgr_KSP``"
-msgstr "迁移 ``pgr_KSP``"
+msgstr "Migration of ``pgr_KSP``"
 
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
@@ -5023,7 +5025,8 @@ msgstr ""
 
 msgid ""
 "Starting from `v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__"
-msgstr "从`v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__ 开始"
+msgstr ""
+"Starting from `v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__"
 
 msgid "Signature to be migrated:"
 msgstr "待迁移签名："
@@ -5082,7 +5085,7 @@ msgid "In the query returns only ``edge`` column."
 msgstr "查询中仅返回 ``边`` 列。"
 
 msgid "Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``"
-msgstr "`pgr_primDD`` / `pgr_primBFS`` / `pgr_primDFS`` 的迁移"
+msgstr "Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``"
 
 #, fuzzy
 msgid ""
@@ -5517,10 +5520,10 @@ msgid ":math:`9`"
 msgstr ":math:`9`"
 
 msgid "is on column ``target_id``"
-msgstr "位于 ``target_id`` 列上"
+msgstr "is on column ``target_id``"
 
 msgid "is of type ``INTEGER``"
-msgstr "类型为 ``INTEGER``"
+msgstr "is of type ``INTEGER``"
 
 msgid "New restrictions structure"
 msgstr "新的限制结构"
