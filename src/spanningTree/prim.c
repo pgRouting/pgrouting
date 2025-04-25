@@ -43,7 +43,7 @@ PG_FUNCTION_INFO_V1(_pgr_primv4);
 static
 void
 process(
-        char* edges_sql,
+        char *edges_sql,
         ArrayType *roots,
         char * fn_suffix,
         int64_t max_depth,

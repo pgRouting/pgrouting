@@ -44,7 +44,7 @@ extern "C" {
 #endif
 
 void pgr_do_topologicalSort(
-        char*,
+        const char*,
 
         I_rt**, size_t*,
         char**, char**, char**);

@@ -39,7 +39,7 @@ extern "C" {
 #endif
 
 void pgr_do_alphaShape(
-        char*,
+        const char*,
 
         double,
 

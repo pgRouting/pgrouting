@@ -90,7 +90,7 @@ get_route(
 
 void
 pgr_do_dijkstraVia(
-        char *edges_sql,
+        const char *edges_sql,
         ArrayType* viaArr,
 
         bool directed,
@@ -111,7 +111,7 @@ pgr_do_dijkstraVia(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

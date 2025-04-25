@@ -79,8 +79,8 @@ pgr_dijkstraTR(
 
 void
 pgr_do_turnRestrictedPath(
-        char *edges_sql,
-        char *restrictions_sql,
+        const char *edges_sql,
+        const char *restrictions_sql,
 
         int64_t start_vid,
         int64_t end_vid,
@@ -109,7 +109,7 @@ pgr_do_turnRestrictedPath(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));

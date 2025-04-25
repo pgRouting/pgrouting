@@ -56,7 +56,7 @@ std::vector<Edge_t> line_graph(const G& original, bool add_self_loop) {
 
 void
 pgr_do_lineGraph(
-        char *edges_sql,
+        const char *edges_sql,
         bool directed,
 
         Edge_rt **return_tuples,
@@ -71,7 +71,7 @@ pgr_do_lineGraph(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

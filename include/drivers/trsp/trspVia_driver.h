@@ -57,8 +57,8 @@ extern "C" {
 #endif
 
 void pgr_do_trspVia(
-        char*,
-        char*,
+        const char*,
+        const char*,
         ArrayType*,
 
         bool,

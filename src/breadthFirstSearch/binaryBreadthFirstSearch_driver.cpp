@@ -123,8 +123,8 @@ template <class G> std::deque<pgrouting::Path> binaryBreadthFirstSearch(
 
 void
 pgr_do_binaryBreadthFirstSearch(
-        char *edges_sql,
-        char *combinations_sql,
+        const char *edges_sql,
+        const char *combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
         bool directed,
@@ -144,7 +144,7 @@ pgr_do_binaryBreadthFirstSearch(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
     const char c_err_msg[] = "Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs! "
                              "If there are exactly two distinct edge costs, one of them must equal zero!";
 

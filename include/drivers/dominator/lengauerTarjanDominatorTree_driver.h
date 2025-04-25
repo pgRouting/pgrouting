@@ -48,7 +48,7 @@ extern "C" {
 #endif
 
 void pgr_do_LTDTree(
-        char*,
+        const char*,
 
         int64_t,
 

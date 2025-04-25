@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 pgr_do_bridges(
-        char *edges_sql,
+        const char *edges_sql,
         int64_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
@@ -58,7 +58,7 @@ pgr_do_bridges(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

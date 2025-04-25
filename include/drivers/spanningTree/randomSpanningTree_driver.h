@@ -58,7 +58,7 @@ extern "C" {
 #endif
 
 void pgr_do_randomSpanningTree(
-        char*,
+        const char*,
         ArrayType*,
 
         int64_t, double,

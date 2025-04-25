@@ -59,8 +59,8 @@ extern "C" {
 #endif
 
 void pgr_do_astar(
-        char*,
-        char*,
+        const char*,
+        const char*,
         ArrayType*,
         ArrayType*,
 

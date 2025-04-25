@@ -68,7 +68,7 @@ void get_turn_penalty_postgres_result(
 
 void
 pgr_do_lineGraphFull(
-        char *edges_sql,
+        const char *edges_sql,
 
         Line_graph_full_rt **return_tuples,
         size_t *return_count,
@@ -81,7 +81,7 @@ pgr_do_lineGraphFull(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

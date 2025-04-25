@@ -58,7 +58,7 @@ extern "C" {
 #endif
 
 void pgr_contractionHierarchies(
-        char*,
+        const char*,
         ArrayType*,
         bool,
         contractionHierarchies_rt**,

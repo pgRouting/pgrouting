@@ -45,7 +45,7 @@ extern "C" {
 #endif
 
 void pgr_do_sequentialVertexColoring(
-        char*,
+        const char*,
 
         II_t_rt**, size_t*,
         char**, char**, char**);

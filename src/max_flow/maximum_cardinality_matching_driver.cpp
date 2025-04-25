@@ -47,7 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 pgr_do_maximum_cardinality_matching(
-    char *edges_sql,
+    const char *edges_sql,
     /* TODO(v4) flag directed is to be removed */
     bool,
 
@@ -64,7 +64,7 @@ pgr_do_maximum_cardinality_matching(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char* hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         hint = edges_sql;

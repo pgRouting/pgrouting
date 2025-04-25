@@ -48,7 +48,7 @@ extern "C" {
 
 void
 pgr_do_johnson(
-        char*,
+        const char*,
         bool,
 
         IID_t_rt**, size_t*,

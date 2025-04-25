@@ -48,7 +48,7 @@ extern "C" {
 #endif
 
 void pgr_do_articulationPoints(
-        char*,
+        const char*,
         int64_t**, size_t*,
 
         char**, char**, char**);

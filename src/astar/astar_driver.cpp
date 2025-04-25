@@ -46,8 +46,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/ii_t_rt.h"
 
 void pgr_do_astar(
-        char *edges_sql,
-        char *combinations_sql,
+        const char *edges_sql,
+        const char *combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
 
@@ -69,7 +69,7 @@ void pgr_do_astar(
     std::ostringstream notice;
     std::ostringstream err;
 
-    char* hint = nullptr;
+    const char *hint = nullptr;
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));

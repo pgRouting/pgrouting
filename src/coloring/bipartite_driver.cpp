@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 pgr_do_bipartite(
-        char *edges_sql,
+        const char *edges_sql,
 
         II_t_rt **return_tuples,
         size_t *return_count,
@@ -59,7 +59,7 @@ pgr_do_bipartite(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
 
     try {

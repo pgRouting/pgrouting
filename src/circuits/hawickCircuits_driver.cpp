@@ -60,7 +60,7 @@ pgr_hawickCircuits(G &graph) {
 
 void
 pgr_do_hawickCircuits(
-        char *edges_sql,
+        const char *edges_sql,
 
         circuits_rt **return_tuples,
         size_t *return_count,
@@ -76,7 +76,7 @@ pgr_do_hawickCircuits(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));
