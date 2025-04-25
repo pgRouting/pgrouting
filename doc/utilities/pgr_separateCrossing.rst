@@ -24,7 +24,7 @@ do not cross.
 .. rubric:: Version 3.8.0
 
 * Function promoted to official.
-* New proposed function.
+* Proposed function.
 
 Description
 -------------------------------------------------------------------------------
