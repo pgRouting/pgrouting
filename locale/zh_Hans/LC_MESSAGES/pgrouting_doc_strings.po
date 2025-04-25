@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-25 05:23+0000\n"
+"PO-Revision-Date: 2025-04-25 05:24+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -12229,7 +12229,7 @@ msgid "Many points"
 msgstr "多点"
 
 msgid "For each points of interests, find the closest edge."
-msgstr ""
+msgstr "为每个兴趣点找出最近的边。"
 
 msgid "**point**"
 msgstr "**point**"
@@ -12356,7 +12356,7 @@ msgstr "生成一个包含用于计算所有列的代码的 PostgreSQL ``NOTICE`
 msgid ""
 "The generated code can be used as a starting base code for additional "
 "requirements, like taking into consideration the SRID."
-msgstr ""
+msgstr "生成的代码可用作满足其他要求（如考虑 SRID）的起始基础代码。"
 
 #, fuzzy
 msgid "Many points in an edge"
@@ -13747,10 +13747,10 @@ msgid ""
 msgstr "该函数从非\"noded\"网络表中读取边，并将\"noded\"边写入新表中。"
 
 msgid "Not checking and not creating indexes."
-msgstr ""
+msgstr "不检查也不创建索引。"
 
 msgid "Using ``pgr_separateTouching`` and ``pgr_separateCrossing``."
-msgstr ""
+msgstr "使用 `pgr_separateTouching` 和 `pgr_separateCrossing`。"
 
 #, fuzzy
 msgid "Created table with ``BIGINT``."
@@ -14244,7 +14244,7 @@ msgstr "``pgr_version``"
 msgid ""
 "``pgr_separateCrossing`` - From crossing geometries generates geometries "
 "that do not cross."
-msgstr ""
+msgstr "`pgr_separateCrossing` - 从交叉几何图形生成不交叉的几何图形。"
 
 #, fuzzy
 msgid "This is an auxiliary function for separating crossing edges."
