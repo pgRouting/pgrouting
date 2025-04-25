@@ -181,7 +181,7 @@
 <li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
 </ul>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="9d040cc4-8861-4ca1-8cbc-a8b2eddcb29c" name="9d040cc4-8861-4ca1-8cbc-a8b2eddcb29c" type="checkbox"><label class="sphinx_collapse__label" for="9d040cc4-8861-4ca1-8cbc-a8b2eddcb29c"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="76b7cfb3-0b82-416b-abbc-973238c43ab3" name="76b7cfb3-0b82-416b-abbc-973238c43ab3" type="checkbox"><label class="sphinx_collapse__label" for="76b7cfb3-0b82-416b-abbc-973238c43ab3"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>下一版本的拟议功能。</p>
@@ -203,28 +203,72 @@
 </div>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_contractionDeadEnd.html"><span class="doc">pgr_contractionDeadEnd - Proposed</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_contractionLinear.html"><span class="doc">pgr_contractionLinear - Proposed</span></a></p></li>
+</ul>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="7094f633-1e7e-47ec-b171-5b2565ea77e7" name="7094f633-1e7e-47ec-b171-5b2565ea77e7" type="checkbox"><label class="sphinx_collapse__label" for="7094f633-1e7e-47ec-b171-5b2565ea77e7"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>可能服务器崩溃</p>
+<ul class="simple">
+<li><p>这些功能可能会导致服务器崩溃</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>实验功能</p>
+<ul class="simple">
+<li><p>它们不是当前版本的正式版本。</p></li>
+<li><p>它们可能不会正式成为下一个版本的一部分：</p>
+<ul>
+<li><p>这些函数可能不使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
+<li><p>名称可能会改变。</p></li>
+<li><p>签名可能会改变。</p></li>
+<li><p>功能可能会改变。</p></li>
+<li><p>pgTap 测试可能丢失。</p></li>
+<li><p>可能需要 c/c++编码。</p></li>
+<li><p>可能缺乏文档。</p></li>
+<li><p>文档（如果有）可能需要重写。</p></li>
+<li><p>可能需要自动生成文档示例。</p></li>
+<li><p>需要从社区获取大量反馈意见。</p></li>
+<li><p>可能取决于 pgRouting 的拟议功能</p></li>
+<li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_contractionHierarchies.html"><span class="doc">pgr_contractionHierarchies - Experimental</span></a></p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
 <h2>介绍<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
-<p>在大型图中，例如道路图或电网，图收缩可用于加速某些图算法。 收缩通过删除一些顶点和边来减小图的大小，例如，可能会添加表示原始边序列的边，从而减少图算法中使用的总时间和空间。</p>
-<p>该实现为将来添加收缩算法提供了灵活的框架，目前它支持两种算法：</p>
+<p>In large graphs, like road graphs or electric networks, graph contraction
+can be used to speed up some graph algorithms. Contraction can reduce the size
+of the graph by removing some of the vertices and edges and adding edges
+that represent a sequence of original edges (the original ones can be kept
+in some methods). In this way, it decreases the total time and space used
+by graph algorithms, particularly those searching for an optimal path.</p>
+<p>This implementation gives a flexible framework for adding contraction algorithms
+in the future. Currently, it supports three algorithms.</p>
 <ol class="arabic simple">
 <li><p>死端收缩</p></li>
 <li><p>线性收缩</p></li>
+<li><p>Contraction hierarchies</p></li>
 </ol>
-<p>允许用户：</p>
-<ul class="simple">
-<li><p>禁止在一组节点上收缩。</p></li>
-<li><p>决定收缩算法的顺序并设置它们要执行的最大次数。</p></li>
-</ul>
+<p>The two first ones can be combined through a iterative procedure, via the
+<code class="docutils literal notranslate"><span class="pre">pgr_contraction</span></code> method. The third one is implemented on its own.</p>
+<p>All functions allow the user to forbid contraction on a set of nodes.</p>
 </section>
 <section id="see-also">
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf">https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf</a></p></li>
-<li><p><a class="reference external" href="https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf">https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf</a></p></li>
+<li><p><a class="reference external" href="https://ae.iti.kit.edu/download/diploma_thesis_geisberger.pdf">https://ae.iti.kit.edu/download/diploma_thesis_geisberger.pdf</a></p></li>
+<li><p><a class="reference external" href="https://jlazarsfeld.github.io/ch.150.project/contents/">https://jlazarsfeld.github.io/ch.150.project/contents/</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
@@ -247,7 +291,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 4月 22, 2025.<br/>
+      Last updated on 4月 25, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

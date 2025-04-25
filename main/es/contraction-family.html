@@ -182,7 +182,7 @@
 <li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
 </ul>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="ab7179ac-0173-40b1-9023-f2d162ce38a3" name="ab7179ac-0173-40b1-9023-f2d162ce38a3" type="checkbox"><label class="sphinx_collapse__label" for="ab7179ac-0173-40b1-9023-f2d162ce38a3"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="90258ec7-5089-4708-a19b-205dfcf6427f" name="90258ec7-5089-4708-a19b-205dfcf6427f" type="checkbox"><label class="sphinx_collapse__label" for="90258ec7-5089-4708-a19b-205dfcf6427f"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -204,28 +204,72 @@
 </div>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_contractionDeadEnd.html"><span class="doc">pgr_contractionDeadEnd - Propuesto</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_contractionLinear.html"><span class="doc">pgr_contractionLinear - Propuesto</span></a></p></li>
+</ul>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="3717f3e6-aa45-4263-993d-f63eea9ab325" name="3717f3e6-aa45-4263-993d-f63eea9ab325" type="checkbox"><label class="sphinx_collapse__label" for="3717f3e6-aa45-4263-993d-f63eea9ab325"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Posible bloqueo del servidor</p>
+<ul class="simple">
+<li><p>Estas funciones pueden crear una caída del servidor</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Funciones experimentales</p>
+<ul class="simple">
+<li><p>No son oficialmente de la versión actual.</p></li>
+<li><p>Es probable que oficialmente no formen parte de la siguiente versión:</p>
+<ul>
+<li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
+<li><p>El nombre puede cambiar.</p></li>
+<li><p>La firma puede cambiar.</p></li>
+<li><p>La funcionalidad puede cambiar.</p></li>
+<li><p>Las pruebas de pgTap pueden faltar.</p></li>
+<li><p>Posiblemente necesite codificación c/c++.</p></li>
+<li><p>Puede carecer documentación.</p></li>
+<li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
+<li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
+<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting</p></li>
+<li><p>Podría depender de una función obsoleta de pgRouting</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_contractionHierarchies.html"><span class="doc">pgr_contractionHierarchies - Experimental</span></a></p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
 <h2>Introducción<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
-<p>En grafos grandes, como los grafos de carretera o de redes eléctricas, la contracción de grafos se puede utilizar para acelerar algunos algoritmos. La contracción reduce el tamaño del grafo eliminando algunos de los vértices y aristas, por ejemplo, podría agregar aristas que representen una secuencia de las aristas originales disminuyendo el tiempo total y el espacio utilizados en los algoritmos de grafos.</p>
-<p>Esta implementación proporciona un marco flexible para agregar algoritmos de contracción en el futuro, actualmente, admite dos algoritmos:</p>
+<p>In large graphs, like road graphs or electric networks, graph contraction
+can be used to speed up some graph algorithms. Contraction can reduce the size
+of the graph by removing some of the vertices and edges and adding edges
+that represent a sequence of original edges (the original ones can be kept
+in some methods). In this way, it decreases the total time and space used
+by graph algorithms, particularly those searching for an optimal path.</p>
+<p>This implementation gives a flexible framework for adding contraction algorithms
+in the future. Currently, it supports three algorithms.</p>
 <ol class="arabic simple">
 <li><p>Contracción sin salida</p></li>
 <li><p>Contracción lineal</p></li>
+<li><p>Contraction hierarchies</p></li>
 </ol>
-<p>Permitiendo que el usuario:</p>
-<ul class="simple">
-<li><p>Prohíba la contracción en un conjunto de nodos.</p></li>
-<li><p>Decida el orden de los algoritmos de contracción y establezca el número máximo de veces que se van a ejecutar.</p></li>
-</ul>
+<p>The two first ones can be combined through a iterative procedure, via the
+<code class="docutils literal notranslate"><span class="pre">pgr_contraction</span></code> method. The third one is implemented on its own.</p>
+<p>All functions allow the user to forbid contraction on a set of nodes.</p>
 </section>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf">https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf</a></p></li>
-<li><p><a class="reference external" href="https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf">https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf</a></p></li>
+<li><p><a class="reference external" href="https://ae.iti.kit.edu/download/diploma_thesis_geisberger.pdf">https://ae.iti.kit.edu/download/diploma_thesis_geisberger.pdf</a></p></li>
+<li><p><a class="reference external" href="https://jlazarsfeld.github.io/ch.150.project/contents/">https://jlazarsfeld.github.io/ch.150.project/contents/</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -248,7 +292,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en abr 22, 2025.<br/>
+      Actualizado por última vez en abr 25, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
