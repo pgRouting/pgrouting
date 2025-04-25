@@ -380,6 +380,8 @@ table.</p></li>
 <li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - Extracts vertex information based on the edge
 table information.</p></li>
 <li><p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> - Finds close edges of points on the fly</p></li>
+<li><p><a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> - Breaks geometries that cross each other.</p></li>
+<li><p><a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> - Breaks geometries that (almost) touch each other.</p></li>
 </ul>
 </section>
 <section id="functions-by-categories">
@@ -446,19 +448,23 @@ table information.</p></li>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.8.0%22">Git closed
 milestone for 3.8.0</a></p>
 <p class="rubric">Promotion to official function of pgRouting.</p>
+<p class="rubric">Metric</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2772">#2772</a>:
-Promoted to official pgr_extractVertices in version 3.8</p>
-<ul>
-<li><p>Error messages adjustment.</p></li>
-<li><p>Function promoted to official.</p></li>
-</ul>
-</li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2760">#2760</a>:
 Promoted to official pgr_degree in version 3.8</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
 <li><p>New signature with only Edges SQL.</p></li>
+<li><p>Function promoted to official.</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Utilities</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2772">#2772</a>:
+Promoted to official pgr_extractVertices in version 3.8</p>
+<ul>
+<li><p>Error messages adjustment.</p></li>
 <li><p>Function promoted to official.</p></li>
 </ul>
 </li>
@@ -470,11 +476,24 @@ Promoted to official pgr_findCloseEdges in version 3.8</p>
 <li><p>Function promoted to official.</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2873">#2873</a>:
+Promoted to official pgr_separateCrossing in version 3.8</p>
+<ul>
+<li><p>Function promoted to official.</p></li>
+<li><p>Proposed function.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2874">#2874</a>:
+Promoted to official pgr_separateTouching in version 3.8</p>
+<ul>
+<li><p>Function promoted to official.</p></li>
+<li><p>Proposed function.</p></li>
+</ul>
+</li>
 </ul>
 <p class="rubric">Proposed functions</p>
+<p class="rubric">Contraction</p>
 <ul class="simple">
-<li><p>Contraction</p>
-<ul>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2790">#2790</a>:
 pgr_contractionDeadEnd new contraction function</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2791">#2791</a>:
@@ -482,15 +501,12 @@ pgr_contractionLinear new contraction function</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2536">#2536</a>:
 Support for contraction hierarchies (pgr_contractionHierarchies)</p></li>
 </ul>
-</li>
-<li><p>Utilities</p>
-<ul>
+<p class="rubric">Utilities</p>
+<ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2848">#2848</a>:
 Create pgr_separateCrossing new utility function</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2849">#2849</a>:
 Create of pgr_separateTouching new utility function</p></li>
-</ul>
-</li>
 </ul>
 <p class="rubric">Official functions changes</p>
 <ul class="simple">
