@@ -187,17 +187,21 @@ milestone for 3.8.0
 
 .. rubric:: Promotion to official function of pgRouting.
 
-* `#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__:
-  Promoted to official pgr_extractVertices in version 3.8
-
-  .. include:: pgr_extractVertices.rst
-     :start-after: Version 3.8.0
-     :end-before: .. rubric
+.. rubric:: Metric
 
 * `#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__:
   Promoted to official pgr_degree in version 3.8
 
   .. include:: pgr_degree.rst
+     :start-after: Version 3.8.0
+     :end-before: .. rubric
+
+.. rubric:: Utilities
+
+* `#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__:
+  Promoted to official pgr_extractVertices in version 3.8
+
+  .. include:: pgr_extractVertices.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
@@ -211,26 +215,34 @@ milestone for 3.8.0
 * `#2873 <https://github.com/pgRouting/pgrouting/issues/2873>`__:
   Promoted to official pgr_separateCrossing in version 3.8
 
+  .. include:: pgr_separateCrossing.rst
+     :start-after: Version 3.8.0
+     :end-before: Description
+
 * `#2874 <https://github.com/pgRouting/pgrouting/issues/2874>`__:
   Promoted to official pgr_separateTouching in version 3.8
 
+  .. include:: pgr_separateTouching.rst
+     :start-after: Version 3.8.0
+     :end-before: Description
+
 .. rubric:: Proposed functions
 
-* Contraction
+.. rubric:: Contraction
 
-  * `#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__:
-    pgr_contractionDeadEnd new contraction function
-  * `#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__:
-    pgr_contractionLinear new contraction function
-  * `#2536 <https://github.com/pgRouting/pgrouting/issues/2536>`__:
-    Support for contraction hierarchies (pgr_contractionHierarchies)
+* `#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__:
+  pgr_contractionDeadEnd new contraction function
+* `#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__:
+  pgr_contractionLinear new contraction function
+* `#2536 <https://github.com/pgRouting/pgrouting/issues/2536>`__:
+  Support for contraction hierarchies (pgr_contractionHierarchies)
 
-* Utilities
+.. rubric:: Utilities
 
-  * `#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__:
-    Create pgr_separateCrossing new utility function
-  * `#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__:
-    Create of pgr_separateTouching new utility function
+* `#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__:
+  Create pgr_separateCrossing new utility function
+* `#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__:
+  Create of pgr_separateTouching new utility function
 
 .. rubric:: Official functions changes
 
