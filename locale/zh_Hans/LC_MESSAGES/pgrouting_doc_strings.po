@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-25 05:42+0000\n"
+"PO-Revision-Date: 2025-04-25 07:46+0000\n"
 "Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -1608,12 +1608,10 @@ msgid ""
 "hr`"
 msgstr "对于以下等价 :math:`10m/s \\approx 600m/min \\approx 36 km/hr`"
 
-#, fuzzy
 msgid ""
 "Working with time units in seconds and the matrix been in meters: For a "
 "1000m length value on the matrix:"
-msgstr ""
-"使用以秒为单位的时间单位和以米为单位的矩阵：对于矩阵上的 1000m 长度值："
+msgstr "处理时间单位（秒）与距离矩阵（米）的换算：当矩阵中长度为 1000 米时："
 
 msgid "Units"
 msgstr "单位"
@@ -4411,7 +4409,7 @@ msgid ""
 "ST_ConvexHull.html>`__ * `ST_ConcaveHull <https://postgis.net/docs/"
 "ST_ConcaveHull.html>`__"
 msgstr ""
-"Other PostGIS options are * `ST_ConvexHull <https://postgis.net/docs/"
+"其他 PostGIS 可选函数 * `ST_ConvexHull <https://postgis.net/docs/"
 "ST_ConvexHull.html>`__ * `ST_ConcaveHull <https://postgis.net/docs/"
 "ST_ConcaveHull.html>`__"
 
@@ -4420,8 +4418,7 @@ msgstr "Migration of ``pgr_createTopology``"
 
 msgid ""
 "Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
-msgstr ""
-"Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
+msgstr "开始于 `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
 
 msgid "A table with `<edges>_vertices_pgr` was created."
 msgstr "创建了一个包含 `<edges>_vertices_pgr` 的表。"
@@ -4604,17 +4601,14 @@ msgstr "不仅统计孤立线段，还要识别图中的所有连通子图（组
 msgid "Depending of the final application requirements use:"
 msgstr "根据最终应用需求选择："
 
-#, fuzzy
 msgid ":doc:`pgr_connectedComponents`"
-msgstr "使用 :doc:`pgr_connectedComponents`"
+msgstr ":doc:`pgr_connectedComponents`"
 
-#, fuzzy
 msgid ":doc:`pgr_strongComponents`"
-msgstr "``pgr_strongComponents``"
+msgstr ":doc:`pgr_strongComponents`"
 
-#, fuzzy
 msgid ":doc:`pgr_biconnectedComponents`"
-msgstr "``pgr_biconnectedComponents``"
+msgstr ":doc:`pgr_biconnectedComponents`"
 
 msgid "For example:"
 msgstr "示例："
@@ -4777,8 +4771,7 @@ msgstr "Migration of ``pgr_dijkstra``"
 
 msgid ""
 "Starting from `v3.5.0 <https://docs.pgrouting.org/3.5/en/migration.html>`__"
-msgstr ""
-"Starting from `v3.5.0 <https://docs.pgrouting.org/3.5/en/migration.html>`__"
+msgstr "开始于 `v3.5.0 <https://docs.pgrouting.org/3.5/en/migration.html>`__"
 
 msgid "``pgr_dijkstra`` (`One to One`)"
 msgstr "``pgr_dijkstra`` (`一对一`)"
@@ -4834,13 +4827,11 @@ msgstr "到"
 msgid "|result-spantree|"
 msgstr "|result-spantree|"
 
-#, fuzzy
 msgid "pgr_drivingDistance(Single vertex)"
-msgstr "pgr_drivingDistance （单顶点）"
+msgstr "pgr_drivingDistance(Single vertex)"
 
-#, fuzzy
 msgid "pgr_drivingDistance(Multiple vertices)"
-msgstr "pgr_drivingDistance （多顶点）"
+msgstr "pgr_drivingDistance(Multiple vertices)"
 
 msgid "Output columns were |result-dij-dd|"
 msgstr "输出列是 |result-dij-dd|"
@@ -5017,8 +5008,7 @@ msgstr ""
 
 msgid ""
 "Starting from `v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__"
-msgstr ""
-"Starting from `v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__"
+msgstr "开始于 `v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__"
 
 msgid "Signature to be migrated:"
 msgstr "待迁移签名："
@@ -5346,9 +5336,8 @@ msgstr "在没有限制条件时，使用 ``pgr_dijkstra``。"
 msgid "Use :doc:`pgr_dijkstra` instead."
 msgstr "请改用 :doc:`pgr_dijkstra`。"
 
-#, fuzzy
 msgid "To get the original column names:"
-msgstr "要获取图的连通性："
+msgstr "获取原始列名："
 
 msgid "``id1`` is the node"
 msgstr "``id1`` 是节点"
@@ -5372,9 +5361,8 @@ msgstr ":doc:`pgr_withPoints`"
 msgid ":doc:`pgr_trsp_withPoints`"
 msgstr ":doc:`pgr_trsp_withPoints`"
 
-#, fuzzy
 msgid "Use ``pgr_withPoints`` when there are no restrictions."
-msgstr ":doc:`pgr_withPoints` 当没有任何限制的时候，"
+msgstr "当无限制条件时，使用 ``pgr_withPoints``。"
 
 #, fuzzy
 msgid "Use :doc:`pgr_withPoints` (One to One) instead."
@@ -6275,13 +6263,11 @@ msgstr "路由从 :math:`5` 到 :math:`1`"
 msgid "Analyze the network for intersections."
 msgstr "分析路网的相交情况。"
 
-#, fuzzy
 msgid "The analysis tell us that the network has an intersection."
-msgstr "分析告诉我们，网络存在缺口和交叉点。 我们尝试使用以下方法解决该问题："
+msgstr "分析结果表明该路网存在交叉点。"
 
-#, fuzzy
 msgid "Prepare tables"
-msgstr "创建表"
+msgstr "准备数据表"
 
 msgid "Additional columns to control the origin of the segments."
 msgstr "用于控制路段来源的附加列。"
@@ -6294,9 +6280,8 @@ msgid ""
 "table."
 msgstr "调用 :doc:`pgr_separateCrossing` 并将新的线段添加到边缘表中。"
 
-#, fuzzy
 msgid "Update other values"
-msgstr "更新边拓扑"
+msgstr "更新其他数值"
 
 #, fuzzy
 msgid ""
@@ -6323,9 +6308,8 @@ msgstr "示例结果"
 msgid "Routing from :math:`1` to :math:`18` gives a solution."
 msgstr "路由从 :math:`5` 到 :math:`1`"
 
-#, fuzzy
 msgid "Touching edges"
-msgstr "交叉边"
+msgstr "相邻边线"
 
 msgid "Visually the edges seem to be connected, but internally they are not."
 msgstr "从视觉上看，这些边缘似乎是相连的，但从内部看却并非如此。"
@@ -9896,19 +9880,17 @@ msgstr "存储收缩信息"
 msgid "Store the contraction results in a table."
 msgstr "将 `收缩结果`_ 存储在表中"
 
-#, fuzzy
 msgid "Update the edges and vertices tables"
-msgstr "创建顶点表"
+msgstr "更新边线与顶点表"
 
 msgid ""
 "Use ``is_contracted`` column to indicate the vertices that are contracted."
 msgstr "使用 ``is_contracted`` 列来指示收缩的顶点。"
 
-#, fuzzy
 msgid ""
 "Fill ``contracted_vertices`` with the information from the results that "
 "belong to the vertices."
-msgstr "使用属于顶点的结果中的信息填充 ``contracted_vertices``。"
+msgstr "将属于顶点的结果信息填充至 ``contracted_vertices`` 表中。"
 
 msgid "Insert the new edges generated by pgr_contraction."
 msgstr "插入由 pgr_contraction 生成的新边。"
@@ -9922,9 +9904,8 @@ msgstr "属于收缩图的顶点。"
 msgid "Edges that belong to the contracted graph."
 msgstr "属于收缩图的边。"
 
-#, fuzzy
 msgid "Visually:"
-msgstr "视觉效果"
+msgstr "视觉效果："
 
 msgid "Using the contracted graph"
 msgstr "使用收缩图"
@@ -9955,33 +9936,27 @@ msgstr "情况 3：源和/或目标属于一个顶点。"
 msgid "The final application should consider all of those cases."
 msgstr "最终应用应考虑所有这些情况。"
 
-#, fuzzy
 msgid "Create a view (or table) of the contracted graph:"
-msgstr "属于收缩图的顶点。"
+msgstr "创建收缩图的视图（或表）："
 
-#, fuzzy
 msgid "Create the function that will use the contracted graph."
-msgstr "情况1：源和目标都属于收缩图。"
+msgstr "创建使用收缩图的函数。"
 
-#, fuzzy
 msgid ""
 "Case 2: Source and/or target belong to an edge that has contracted vertices."
-msgstr "情况 2：源和/或目标属于边缘子图。"
+msgstr "情况 2：源点和/或目标点位于含收缩顶点的边线上。"
 
-#, fuzzy
 msgid ""
 "Case 3: Source and/or target belong to a vertex that has been contracted."
-msgstr "情况 3：源和/或目标属于一个顶点。"
+msgstr "情况 3：源点和/或目标点属于已被收缩的顶点。"
 
-#, fuzzy
 msgid "``pgr_contractionDeadEnd`` - Proposed"
-msgstr "``pgr_trspVia`` - 拟议"
+msgstr "``pgr_contractionDeadEnd`` - 建议方案"
 
-#, fuzzy
 msgid ""
 "``pgr_contractionDeadEnd`` — Performs graph contraction and returns the "
 "contracted vertices and edges."
-msgstr "``pgr_contraction`` — 执行图收缩操作并返回收缩后的顶点和边。"
+msgstr "``pgr_contractionDeadEnd`` — 执行图收缩操作，并返回收缩后的顶点集与边线集。"
 
 #, fuzzy
 msgid "A node is considered a dead end node when:"
@@ -10078,13 +10053,11 @@ msgstr "死端"
 msgid "Reason"
 msgstr "Reason"
 
-#, fuzzy
 msgid ":math:`6`"
-msgstr ":math:`a`"
+msgstr ":math:`6`"
 
-#, fuzzy
 msgid ":math:`\\{1\\}`"
-msgstr ":math:`\\{u\\}`"
+msgstr ":math:`\\{1\\}`"
 
 #, fuzzy
 msgid "Yes"
@@ -10094,28 +10067,23 @@ msgstr "是"
 msgid "Has only one adjacent node."
 msgstr "相邻节点数"
 
-#, fuzzy
 msgid ":math:`7`"
-msgstr ":math:`a`"
+msgstr ":math:`7`"
 
-#, fuzzy
 msgid ":math:`\\{2\\}`"
-msgstr ":math:`\\{u\\}`"
+msgstr ":math:`\\{2\\}`"
 
-#, fuzzy
 msgid ":math:`8`"
-msgstr ":math:`a`"
+msgstr ":math:`8`"
 
-#, fuzzy
 msgid ":math:`\\{2, 3\\}`"
-msgstr ":math:`\\{v, w\\}`"
+msgstr ":math:`\\{2, 3\\}`"
 
 msgid "Has more than one adjacent node and all edges are incoming."
 msgstr "有一个以上的相邻节点，且所有边都是传入的。"
 
-#, fuzzy
 msgid ":math:`\\{4\\}`"
-msgstr ":math:`\\{u\\}`"
+msgstr ":math:`\\{4\\}`"
 
 #, fuzzy
 msgid ":math:`10`"
@@ -10228,23 +10196,19 @@ msgstr "``pgr_contraction`` — 执行图收缩操作并返回收缩后的顶点
 msgid "pgr_contractionLinear(`Edges SQL`_, [**options**])"
 msgstr "pgr_contraction(`Edges SQL`_, **contraction order**, [**options**])"
 
-#, fuzzy
 msgid "Linear contraction on an undirected graph."
-msgstr "在无向图上使用组合表。"
+msgstr "无向图上的线性收缩。"
 
-#, fuzzy
 msgid ""
 "The green nodes are linear nodes and will not be part of the contracted "
 "graph."
-msgstr "当 ``true`` 时，顶点收缩，它不是收缩图的一部分。"
+msgstr "绿色节点为线性节点，不属于收缩图的一部分。"
 
-#, fuzzy
 msgid "All edges adjacent will not be part of the contracted graph."
-msgstr "属于收缩图的边。"
+msgstr "所有相邻边线均不纳入收缩图。"
 
-#, fuzzy
 msgid "The red lines will be new edges of the contracted graph."
-msgstr "属于收缩图的顶点。"
+msgstr "红线将成为收缩图的新边线。"
 
 msgid "**contraction Order**"
 msgstr "**contraction Order**"
@@ -10289,9 +10253,8 @@ msgstr "当把同一图形作为无向图处理时，线性是对称的，因此
 msgid "The three edges can be replaced by one undirected edge"
 msgstr "图可以是有向或无向的。"
 
-#, fuzzy
 msgid "Edge :math:`1 - 3`."
-msgstr ":math:`1`"
+msgstr "边线 :math:`1 - 3`。"
 
 #, fuzzy
 msgid "With cost: :math:`4`."
@@ -10312,9 +10275,8 @@ msgstr "线性是对称的"
 msgid "The four edges can be replaced by two directed edges."
 msgstr "图可以是有向或无向的。"
 
-#, fuzzy
 msgid "Edge :math:`3 - 1`."
-msgstr ":math:`-1`"
+msgstr "边线 :math:`3 - 1`."
 
 #, fuzzy
 msgid "With cost: :math:`6`."
@@ -10648,8 +10610,8 @@ msgstr "pgr_degree``可以使用 :doc:`pgr_extractVertices` 嵌入调用。"
 msgid ""
 "For decent size networks, it is best to prepare your vertices table before "
 "hand and use it on ``pgr_degree`` calls. (See `Using a vertex table`_)"
-msgstr "对于适当规模的网络，最好事先准备好顶点表，并在调用`pgr_degree``时使用。(请参"
-"阅`使用顶点表`_）"
+msgstr "对于适当规模的网络，最好事先准备好顶点表，并在调用`pgr_degree``时使用。("
+"请参阅 `Using a vertex table`_）"
 
 #, fuzzy
 msgid "Calculate the degree of the nodes:"
@@ -18634,24 +18596,20 @@ msgstr "pgr_dijkstraCost(一对一)"
 msgid "pgr_dijkstraCost(One to Many)"
 msgstr "pgr_dijkstraNearCost(一对多)"
 
-#, fuzzy
 msgid "pgr_dijkstraCost(Many to One)"
-msgstr "pgr_dijkstraNearCost(多对一)"
+msgstr "pgr_dijkstraCost(Many to One)"
 
-#, fuzzy
 msgid "pgr_dijkstraCost(Many to Many)"
-msgstr "pgr_dijkstraNearCost (多对多)"
+msgstr "pgr_dijkstraCost(Many to Many)"
 
 msgid "Proposed Functionality"
 msgstr "建议的功能"
 
-#, fuzzy
 msgid "pgr_withPoints(One to One)"
-msgstr "pgr_withPointsKSP(一对一)"
+msgstr "pgr_withPoints(One to One)"
 
-#, fuzzy
 msgid "pgr_withPoints(One to Many)"
-msgstr "pgr_withPointsKSP (一对多)"
+msgstr "pgr_withPoints(One to Many)"
 
 msgid "pgr_withPoints(Many to One)"
 msgstr "pgr_withPoints(Many to One)"
