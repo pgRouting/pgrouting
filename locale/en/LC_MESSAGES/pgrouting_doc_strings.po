@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-25 02:02+0000\n"
+"POT-Creation-Date: 2025-04-25 15:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3893,6 +3893,14 @@ msgstr ""
 msgid ":doc:`pgr_findCloseEdges` - Finds close edges of points on the fly"
 msgstr ""
 
+msgid ":doc:`pgr_separateCrossing` - Breaks geometries that cross each other."
+msgstr ""
+
+msgid ""
+":doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each "
+"other."
+msgstr ""
+
 msgid "Functions by categories"
 msgstr ""
 
@@ -3942,15 +3950,7 @@ msgstr ""
 msgid "Promotion to official function of pgRouting."
 msgstr ""
 
-msgid ""
-"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promoted "
-"to official pgr_extractVertices in version 3.8"
-msgstr ""
-
-msgid "Error messages adjustment."
-msgstr ""
-
-msgid "Function promoted to official."
+msgid "Metric"
 msgstr ""
 
 msgid ""
@@ -3958,7 +3958,18 @@ msgid ""
 "to official pgr_degree in version 3.8"
 msgstr ""
 
+msgid "Error messages adjustment."
+msgstr ""
+
 msgid "New signature with only Edges SQL."
+msgstr ""
+
+msgid "Function promoted to official."
+msgstr ""
+
+msgid ""
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promoted "
+"to official pgr_extractVertices in version 3.8"
 msgstr ""
 
 msgid ""
@@ -3967,6 +3978,19 @@ msgid ""
 msgstr ""
 
 msgid "``partial`` option is removed."
+msgstr ""
+
+msgid ""
+"`#2873 <https://github.com/pgRouting/pgrouting/issues/2873>`__: Promoted "
+"to official pgr_separateCrossing in version 3.8"
+msgstr ""
+
+msgid "Proposed function."
+msgstr ""
+
+msgid ""
+"`#2874 <https://github.com/pgRouting/pgrouting/issues/2874>`__: Promoted "
+"to official pgr_separateTouching in version 3.8"
 msgstr ""
 
 msgid "Proposed functions"
@@ -15791,14 +15815,6 @@ msgstr ""
 msgid ""
 ":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line "
 "Graph."
-msgstr ""
-
-msgid ":doc:`pgr_separateCrossing` - Breaks geometries that cross each other."
-msgstr ""
-
-msgid ""
-":doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each "
-"other."
 msgstr ""
 
 msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
