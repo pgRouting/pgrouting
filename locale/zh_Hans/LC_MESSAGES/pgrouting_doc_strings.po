@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
 "PO-Revision-Date: 2025-04-25 07:46+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -4542,28 +4542,23 @@ msgstr "``pgr_aStar`` 迁移"
 msgid "Number of isolated segments."
 msgstr "隔离段的数量。"
 
-#, fuzzy
 msgid "Number of dead ends."
-msgstr "所需路径的数量。"
+msgstr "死胡同数量。"
 
 msgid "Number of potential gaps found near dead ends."
 msgstr "在断头路附近发现的潜在缺口数量。"
 
-#, fuzzy
 msgid "Number of intersections. (between 2 edges)"
-msgstr "订单中的单位数量"
+msgstr "交叉点数量。(两条边之间）"
 
-#, fuzzy
 msgid "Graph component"
-msgstr "检查组件"
+msgstr "图形组件"
 
-#, fuzzy
 msgid "A connected subgraph that is not part of any larger connected subgraph."
-msgstr "当 ``true`` 时，顶点收缩，它不是收缩图的一部分。"
+msgstr "不属于任何较大连通子图的连通子图。"
 
-#, fuzzy
 msgid "Isolated segment"
-msgstr "孤立的片段"
+msgstr "隔离段"
 
 msgid "A graph component with only one segment."
 msgstr "单一孤立路段组成的网络组件。"
@@ -4580,9 +4575,8 @@ msgstr "差距"
 msgid "Space between two geometries."
 msgstr "两个几何对象之间的空间。"
 
-#, fuzzy
 msgid "Intersection"
-msgstr "交叉口"
+msgstr "交叉路口"
 
 msgid "Is a topological relationship between two geometries."
 msgstr "是两个几何体之间的拓扑关系。"
@@ -5069,14 +5063,14 @@ msgstr "查询中仅返回 ``边`` 列。"
 msgid "Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``"
 msgstr "Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``"
 
-#, fuzzy
 msgid ""
 "Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
 "doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns "
 "are being standardized."
 msgstr ""
-"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ 开始， :doc:"
-"`pgr_drivingDistance`结果列正在标准化。"
+"从 `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ "
+":doc:`pgr_primDD`, :doc:`pgr_primBFS` 和 :doc:`pgr_primDFS` "
+"结果列开始标准化。"
 
 msgid "``pgr_primDD``"
 msgstr "``pgr_primDD``"
@@ -5307,9 +5301,8 @@ msgstr "迁移 ``pgr_trsp`` （顶点）"
 msgid "Signature:"
 msgstr "标识："
 
-#, fuzzy
 msgid "Deprecated"
-msgstr "已废弃的功能"
+msgstr "已停用"
 
 msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
 msgstr "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
@@ -5400,9 +5393,8 @@ msgstr "``id2`` 是节点"
 msgid "``id3`` is the edge"
 msgstr "``id3`` 是边"
 
-#, fuzzy
 msgid "Use ``pgr_trspVia`` when there are restrictions"
-msgstr ":doc:`pgr_trspVia` 当有限制时。"
+msgstr "有限制时使用 `pgr_trspVia``."
 
 msgid "Use :doc:`pgr_trspVia` instead."
 msgstr "使用 :doc:`pgr_trspVia`。"
@@ -6244,9 +6236,8 @@ msgstr ""
 "需要将新边添加到边表中，需要更新新边中的其余属性，需要删除旧边并需要更新路由"
 "拓扑。"
 
-#, fuzzy
 msgid "Fixing an intersection"
-msgstr "交叉口"
+msgstr "修复交叉路口"
 
 msgid ""
 "In this example the original edge table will be used to store the additional "
@@ -6256,9 +6247,8 @@ msgstr "在此示例中，原始边线表将用于存储新增的几何图形。
 msgid "An example use without results"
 msgstr "使用示例（无结果输出）"
 
-#, fuzzy
 msgid "Routing from :math:`1` to :math:`18` gives no solution."
-msgstr "路由从 :math:`5` 到 :math:`1`"
+msgstr "从 :math:`1` 到 :math:`18` 的路由无解。"
 
 msgid "Analyze the network for intersections."
 msgstr "分析路网的相交情况。"
@@ -6290,23 +6280,20 @@ msgid ""
 "the ``sign`` function."
 msgstr "对于本示例， ``cost`` 和 ``reverse_cost`` 值将是几何体长度的两倍。"
 
-#, fuzzy
 msgid "Update the topology"
-msgstr "更新边拓扑"
+msgstr "更新拓扑结构"
 
 msgid "Insert the new vertices if any."
 msgstr "如有新顶点，则插入。"
 
-#, fuzzy
 msgid "Update source and target information on the edges table."
-msgstr "红色箭头显示边表上的边 ``(source, target)``"
+msgstr "更新边缘表中的源信息和目标信息。"
 
 msgid "The example has results"
 msgstr "示例结果"
 
-#, fuzzy
 msgid "Routing from :math:`1` to :math:`18` gives a solution."
-msgstr "路由从 :math:`5` 到 :math:`1`"
+msgstr "从 :math:`1` 到 :math:`18` 的路径给出了解决方案。"
 
 msgid "Touching edges"
 msgstr "相邻边线"
@@ -9971,9 +9958,8 @@ msgstr "相邻顶点的个数为1。"
 msgid "On directed graphs:"
 msgstr "在有向图上："
 
-#, fuzzy
 msgid "When there is only one adjacent vertex or"
-msgstr "当没有路径时："
+msgstr "当只有一个相邻顶点或"
 
 msgid ""
 "When all edges are incoming regardless of the number of adjacent vertices."
@@ -10059,13 +10045,11 @@ msgstr ":math:`6`"
 msgid ":math:`\\{1\\}`"
 msgstr ":math:`\\{1\\}`"
 
-#, fuzzy
 msgid "Yes"
 msgstr "是"
 
-#, fuzzy
 msgid "Has only one adjacent node."
-msgstr "相邻节点数"
+msgstr "只有一个相邻节点。"
 
 msgid ":math:`7`"
 msgstr ":math:`7`"
@@ -10227,17 +10211,14 @@ msgstr "相邻顶点的数量为2。"
 msgid "In case of a directed graph, a node is considered a `linear` node when"
 msgstr "在有向图的情况下，当满足以下条件时，节点被视为`线性`节点"
 
-#, fuzzy
 msgid "Linearity is symmetrical."
-msgstr "线性是对称的"
+msgstr "线性是对称的。"
 
-#, fuzzy
 msgid "Linearity is not symmetrical"
-msgstr "线性是对称的"
+msgstr "线性不对称"
 
-#, fuzzy
 msgid "Graph where linearity is not symmetrical."
-msgstr "线性是对称的"
+msgstr "线性不对称的图形。"
 
 msgid ""
 "When the graph is processed as a directed graph, linearity is not "
@@ -10249,31 +10230,26 @@ msgid ""
 "symmetrical, therefore the graph can be contracted."
 msgstr "当把同一图形作为无向图处理时，线性是对称的，因此图形可以收缩。"
 
-#, fuzzy
 msgid "The three edges can be replaced by one undirected edge"
-msgstr "图可以是有向或无向的。"
+msgstr "三条边可以用一条无向边代替"
 
 msgid "Edge :math:`1 - 3`."
 msgstr "边线 :math:`1 - 3`。"
 
-#, fuzzy
 msgid "With cost: :math:`4`."
-msgstr "使用 ``cost``"
+msgstr "成本： :math:`4`."
 
-#, fuzzy
 msgid "Contracted vertices in the edge: :math:`\\{2\\}`."
-msgstr "对于带边的directed graph:math:`\\{1, 2, 3, 4\\}`."
+msgstr "边上的收缩顶点: :math:`\\{2\\}`."
 
 msgid "Linearity is symmetrical"
 msgstr "线性是对称的"
 
-#, fuzzy
 msgid "Graph where linearity is symmetrical."
-msgstr "线性是对称的"
+msgstr "线性对称的图形。"
 
-#, fuzzy
 msgid "The four edges can be replaced by two directed edges."
-msgstr "图可以是有向或无向的。"
+msgstr "四条边可以用两条有向边代替。"
 
 msgid "Edge :math:`3 - 1`."
 msgstr "边线 :math:`3 - 1`."
@@ -19803,9 +19779,8 @@ msgstr "边 ``(-2, 16)`` 变为 ``(17, -2)``，成本为 ``0.6`` ，并添加到
 msgid "When driving side does not matter"
 msgstr "当驾驶侧无关紧要时"
 
-#, fuzzy
 msgid "Arrival to point ``-2`` can be achieved via vertices **16** or **17**."
-msgstr "可以通过顶点 **16** 或 **17** 到达点 ``-2``。"
+msgstr "可通过顶点**16**或**17**到达``-2``点。"
 
 msgid ""
 "Affects the edges ``(16, 17)`` and ``(17, 16)``, therefore the edges are "
