@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-25 15:15+0000\n"
+"POT-Creation-Date: 2025-04-25 15:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3646,6 +3646,9 @@ msgstr ""
 msgid "`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: Deprecate pgr_createVerticesTable in 3.8"
 msgstr ""
 
+msgid "`#2847 <https://github.com/pgRouting/pgrouting/issues/2847>`__: Deprecate pgr_nodeNetwork in 3.8"
+msgstr ""
+
 msgid "In the deprecated functions:"
 msgstr ""
 
@@ -3716,6 +3719,18 @@ msgid "For PostGIS 3.5+ use the old name ``ST_AlphaShape``"
 msgstr ""
 
 msgid "Other PostGIS options are * `ST_ConvexHull <https://postgis.net/docs/ST_ConvexHull.html>`__ * `ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
+msgstr ""
+
+msgid "Migration of ``pgr_nodeNetwork``"
+msgstr ""
+
+msgid "**Before Deprecation:** A table with `<edges>_nodded` was created. with split edges."
+msgstr ""
+
+msgid "**Migration**"
+msgstr ""
+
+msgid "Use :doc:`pgr_separateTouching` and/or use :doc:`pgr_separateCrossing`"
 msgstr ""
 
 msgid "Migration of ``pgr_createTopology``"
@@ -7196,9 +7211,6 @@ msgid "Selecting the rows WHERE the geometry is near the place='myhouse' of the 
 msgstr ""
 
 msgid ":doc:`pgr_analyzeOneWay`"
-msgstr ""
-
-msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ""
 
 msgid "``pgr_analyzeOneWay`` - Deprecated since 3.8.0"
@@ -11605,7 +11617,7 @@ msgstr ""
 msgid "Minimum Cost Maximum Flow possible from the source(s) to the target(s)"
 msgstr ""
 
-msgid "``pgr_nodeNetwork``"
+msgid "``pgr_nodeNetwork`` - Deprecated since 3.8.0"
 msgstr ""
 
 msgid "``pgr_nodeNetwork`` - Nodes an network edge table."
