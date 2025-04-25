@@ -46,8 +46,8 @@ extern "C" {
 #endif
 
 void pgr_do_pickDeliverEuclidean(
-        char*,
-        char*,
+        const char*,
+        const char*,
 
         double, int, int,
 

@@ -58,7 +58,7 @@ pgr_topologicalSort(
 // sql text,
 void
 pgr_do_topologicalSort(
-        char *edges_sql,
+        const char *edges_sql,
 
         I_rt **return_tuples,
         size_t *return_count,
@@ -72,7 +72,7 @@ pgr_do_topologicalSort(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

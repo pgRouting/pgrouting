@@ -60,8 +60,8 @@ extern "C" {
 #endif
 
 void pgr_do_binaryBreadthFirstSearch(
-        char*,
-        char*,
+        const char*,
+        const char*,
         ArrayType*, ArrayType*,
         bool,
 

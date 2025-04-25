@@ -58,7 +58,7 @@ extern "C" {
 #endif
 
 void pgr_do_drivingDistance(
-        char*,
+        const char*,
         ArrayType*,
         double, bool, bool,
         MST_rt**, size_t*,

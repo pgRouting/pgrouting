@@ -47,7 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 pgr_do_tsp(
-        char *matrix_sql,
+        const char *matrix_sql,
         int64_t start_vid,
         int64_t end_vid,
         bool max_cycles,
@@ -64,7 +64,7 @@ pgr_do_tsp(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         hint = matrix_sql;

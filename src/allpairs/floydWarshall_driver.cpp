@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 pgr_do_floydWarshall(
-        char *edges_sql,
+        const char *edges_sql,
         bool directed,
 
         IID_t_rt **return_tuples,
@@ -54,7 +54,7 @@ pgr_do_floydWarshall(
 
     std::ostringstream log;
     std::ostringstream err;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

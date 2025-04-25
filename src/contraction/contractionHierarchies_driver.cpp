@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 pgr_contractionHierarchies(
-        char *edges_sql,
+        const char *edges_sql,
         ArrayType* forbidden,
         bool directed,
         contractionHierarchies_rt **return_tuples,
@@ -63,7 +63,7 @@ pgr_contractionHierarchies(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

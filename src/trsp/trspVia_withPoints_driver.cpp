@@ -132,10 +132,10 @@ get_route(
 
 void
 pgr_do_trspVia_withPoints(
-        char *edges_sql,
-        char *restrictions_sql,
-        char *points_sql,
-        char *edges_of_points_sql,
+        const char *edges_sql,
+        const char *restrictions_sql,
+        const char *points_sql,
+        const char *edges_of_points_sql,
         ArrayType* viaArr,
 
         bool directed,
@@ -158,7 +158,7 @@ pgr_do_trspVia_withPoints(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

@@ -60,10 +60,10 @@ extern "C" {
 #endif
 
 void pgr_do_prim(
-        char*,
+        const char*,
         ArrayType*,
 
-        char*, int64_t, double,
+        const char*, int64_t, double,
 
         MST_rt**, size_t*,
         char**, char**, char**);

@@ -52,7 +52,7 @@ pgr_randomSpanningTree(
 
 void
 pgr_do_randomSpanningTree(
-        char *edges_sql,
+        const char *edges_sql,
         int64_t root_vertex,
         bool directed,
         SpanTree_rt **return_tuples,
@@ -67,7 +67,7 @@ pgr_do_randomSpanningTree(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

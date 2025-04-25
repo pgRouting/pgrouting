@@ -59,7 +59,7 @@ extern "C" {
 #endif
 
 void pgr_do_contractGraph(
-        char*,
+        const char*,
         ArrayType*, ArrayType*,
 
         int64_t, bool,

@@ -50,7 +50,7 @@ extern "C" {
 
 void
 pgr_do_cuthillMckeeOrdering(
-        char*,
+        const char*,
 
         II_t_rt**,  size_t*,
         char **, char **, char **);

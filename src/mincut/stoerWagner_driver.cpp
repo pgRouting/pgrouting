@@ -53,7 +53,7 @@ pgr_stoerWagner(
 
 void
 pgr_do_stoerWagner(
-        char *edges_sql,
+        const char *edges_sql,
 
         StoerWagner_t **return_tuples,
         size_t *return_count,
@@ -67,7 +67,7 @@ pgr_do_stoerWagner(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

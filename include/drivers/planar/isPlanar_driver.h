@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
     bool pgr_do_isPlanar(
-                char*,
+                const char*,
                 char**, char**, char**);
 
 

@@ -63,10 +63,10 @@ extern "C" {
 
 
 void pgr_do_withPointsKsp(
-        char*,
-        char*,
-        char*,
-        char*,
+        const char*,
+        const char*,
+        const char*,
+        const char*,
         ArrayType*, ArrayType*,
         int64_t*, int64_t*,
         size_t,

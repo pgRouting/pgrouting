@@ -45,9 +45,9 @@ PG_FUNCTION_INFO_V1(_pgr_pickdeliver);
 static
 void
 process(
-        char* pd_orders_sql,
-        char* vehicles_sql,
-        char* matrix_sql,
+        const char *pd_orders_sql,
+        const char *vehicles_sql,
+        const char *matrix_sql,
         double factor,
         int max_cycles,
         int initial_solution_id,

@@ -239,6 +239,8 @@ milestone for 3.8.0
 
 * `#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__:
   Code reorganization on pgr_contraction
+* Other enhancements:
+  `#2869 <https://github.com/pgRouting/pgrouting/issues/2869>`__
 
 .. rubric:: SQL code enhancements
 
