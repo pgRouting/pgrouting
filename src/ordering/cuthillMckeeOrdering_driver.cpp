@@ -70,7 +70,7 @@ cuthillMckeeOrdering(G &graph) {
 
 
 void pgr_do_cuthillMckeeOrdering(
-    char *edges_sql,
+    const char *edges_sql,
 
     II_t_rt **return_tuples,
     size_t *return_count,
@@ -85,7 +85,7 @@ void pgr_do_cuthillMckeeOrdering(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

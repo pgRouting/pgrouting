@@ -68,6 +68,8 @@ milestone for 3.8.0
 
 * [#2802](https://github.com/pgRouting/pgrouting/issues/2802):
   Code reorganization on pgr_contraction
+* Other enhancements:
+  [#2869](https://github.com/pgRouting/pgrouting/issues/2869)
 
 **SQL code enhancements**
 

@@ -47,7 +47,7 @@ extern "C" {
 
 void
 pgr_do_bipartite(
-        char*,
+        const char*,
 
         II_t_rt**, size_t*,
         char**, char**, char**);

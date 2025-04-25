@@ -62,9 +62,9 @@ extern "C" {
 #endif
 
 void pgr_do_withPointsDD(
-        char*,
-        char*,
-        char*,
+        const char*,
+        const char*,
+        const char*,
         ArrayType*,
 
         double, char, bool, bool, bool,

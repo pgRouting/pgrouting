@@ -46,7 +46,7 @@ extern "C" {
 #endif
 
 void pgr_do_directedChPP(
-        char*,
+        const char*,
 
         bool,
 

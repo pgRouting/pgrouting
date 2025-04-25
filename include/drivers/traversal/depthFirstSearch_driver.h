@@ -61,7 +61,7 @@ extern "C" {
 #endif
 
 void pgr_do_depthFirstSearch(
-        char*,
+        const char*,
         ArrayType*,
 
         bool, int64_t,

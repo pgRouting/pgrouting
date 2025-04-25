@@ -56,7 +56,7 @@ template <class G> std::vector<MST_rt> breadthFirstSearch(
 
 void
 pgr_do_breadthFirstSearch(
-                char *edges_sql,
+                const char *edges_sql,
                 ArrayType* starts,
                 int64_t  max_depth,
                 bool directed,
@@ -74,7 +74,7 @@ pgr_do_breadthFirstSearch(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)

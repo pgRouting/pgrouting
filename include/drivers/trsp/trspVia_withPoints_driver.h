@@ -60,10 +60,10 @@ extern "C" {
 /** @brief Process pgr_trsp_withPointsVia */
 void
 pgr_do_trspVia_withPoints(
-        char*,
-        char*,
-        char*,
-        char*,
+        const char*,
+        const char*,
+        const char*,
+        const char*,
         ArrayType*,
 
         bool,

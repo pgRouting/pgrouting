@@ -65,8 +65,8 @@ bellman_ford(
 
 void
 pgr_do_bellman_ford(
-                char *edges_sql,
-                char *combinations_sql,
+                const char *edges_sql,
+                const char *combinations_sql,
                 ArrayType *starts,
                 ArrayType *ends,
                 bool directed,
@@ -87,7 +87,7 @@ pgr_do_bellman_ford(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

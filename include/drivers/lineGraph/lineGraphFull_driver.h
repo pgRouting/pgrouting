@@ -45,7 +45,7 @@ extern "C" {
 #endif
 
 void pgr_do_lineGraphFull(
-        char*,
+        const char*,
 
         Line_graph_full_rt**, size_t*,
         char**, char**, char**);

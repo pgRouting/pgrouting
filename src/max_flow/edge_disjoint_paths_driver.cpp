@@ -72,8 +72,8 @@ single_execution(
 
 void
 pgr_do_edge_disjoint_paths(
-    char *edges_sql,
-    char *combinations_sql,
+    const char *edges_sql,
+    const char *combinations_sql,
     ArrayType *starts,
     ArrayType *ends,
     bool directed,
@@ -90,7 +90,7 @@ pgr_do_edge_disjoint_paths(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char* hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

@@ -59,10 +59,10 @@ extern "C" {
 #endif
 
 void pgr_do_withPoints(
-        char*,
-        char*,
-        char*,
-        char*,
+        const char*,
+        const char*,
+        const char*,
+        const char*,
         ArrayType*, ArrayType*,
 
         char, bool, bool, bool, bool,

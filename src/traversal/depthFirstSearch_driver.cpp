@@ -81,7 +81,7 @@ pgr_depthFirstSearch(
 
 void
 pgr_do_depthFirstSearch(
-        char *edges_sql,
+        const char *edges_sql,
         ArrayType* starts,
 
         bool directed,
@@ -101,7 +101,7 @@ pgr_do_depthFirstSearch(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

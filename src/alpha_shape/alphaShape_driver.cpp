@@ -63,7 +63,7 @@ data_eq(const Edge_xy_t &lhs, const Edge_xy_t &rhs, int64_t round) {
 
 void
 pgr_do_alphaShape(
-        char* edges_sql,
+        const char *edges_sql,
         double alpha,
 
         GeomText_t **return_tuples,
@@ -79,7 +79,7 @@ pgr_do_alphaShape(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char* hint = nullptr;
+    const char *hint = nullptr;
 
     try {
         pgassert(*return_count == 0);
