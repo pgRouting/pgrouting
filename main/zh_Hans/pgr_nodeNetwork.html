@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_nodeNetwork &#8212; pgRouting Manual (3.8)</title>
+    <title>pgr_nodeNetwork - Deprecated since 3.8.0 &#8212; pgRouting Manual (3.8)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=b671dda4"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=9a91d2da"></script>
+    <script src="_static/page_history.js?v=244940ec"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -96,7 +96,8 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code> - Deprecated since 3.8.0</a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-nodenetwork">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></li>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#parameters">参数</a></li>
 <li><a class="reference internal" href="#examples">示例</a><ul>
@@ -151,7 +152,8 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code> - Deprecated since 3.8.0</a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-nodenetwork">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></li>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#parameters">参数</a></li>
 <li><a class="reference internal" href="#examples">示例</a><ul>
@@ -187,8 +189,8 @@
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
-<section id="pgr-nodenetwork">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code><a class="headerlink" href="#pgr-nodenetwork" title="Link to this heading">¶</a></h1>
+<section id="pgr-nodenetwork-deprecated-since-3-8-0">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code> - Deprecated since 3.8.0<a class="headerlink" href="#pgr-nodenetwork-deprecated-since-3-8-0" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code> - 网络边表的节点。</p>
 <dl class="field-list simple">
 <dt class="field-odd">作者<span class="colon">:</span></dt>
@@ -207,6 +209,7 @@
 <ul class="simple">
 <li><p>Version 3.8.0</p>
 <ul>
+<li><p>Deprecated function.</p></li>
 <li><p>Not checking and not creating indexes.</p></li>
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">pgr_separateTouching</span></code> and <code class="docutils literal notranslate"><span class="pre">pgr_separateCrossing</span></code>.</p></li>
 <li><p>Created table with <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>.</p></li>
@@ -218,6 +221,14 @@
 </ul>
 </li>
 </ul>
+<section id="migration-of-pgr-nodenetwork">
+<h2>Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code><a class="headerlink" href="#migration-of-pgr-nodenetwork" title="Link to this heading">¶</a></h2>
+<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p><strong>Before Deprecation:</strong> A table with <cite>&lt;edges&gt;_nodded</cite> was created. with split
+edges.</p>
+<p><strong>Migration</strong></p>
+<p>Use <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> and/or use <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a></p>
+</section>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p><strong>主要特点是：</strong></p>
@@ -335,6 +346,7 @@
 <p>Calling <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">the_geom</span> <span class="o">=&gt;</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">=&gt;</span><span class="s1">&#39;id in (&#39;</span><span class="o">||</span><span class="n">id1</span><span class="o">||</span><span class="s1">&#39;,&#39;</span><span class="o">||</span><span class="n">id2</span><span class="o">||</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
 <span class="n">FROM</span> <span class="n">intersections</span><span class="p">;</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_nodenetwork</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="nb">id</span><span class="p">:</span> <span class="nb">id</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">the_geom</span><span class="p">:</span> <span class="n">geom</span>
@@ -459,6 +471,7 @@ segmented.</p>
 <p>Calling <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">the_geom</span> <span class="o">=&gt;</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">=&gt;</span><span class="s1">&#39;id in (&#39;</span><span class="o">||</span><span class="n">inhere</span><span class="o">||</span><span class="s1">&#39;,&#39;</span><span class="o">||</span><span class="n">edge_id</span><span class="o">||</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
 <span class="n">FROM</span> <span class="n">deadends</span><span class="p">;</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_nodenetwork</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">double</span> <span class="n">precision</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="n">deprecated</span> <span class="n">function</span> <span class="n">on</span> <span class="n">v3</span><span class="mf">.8.0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="nb">id</span><span class="p">:</span> <span class="nb">id</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">the_geom</span><span class="p">:</span> <span class="n">geom</span>
@@ -582,7 +595,7 @@ segmented.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 4月 25, 2025.<br/>
+      Last updated on 4月 26, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
