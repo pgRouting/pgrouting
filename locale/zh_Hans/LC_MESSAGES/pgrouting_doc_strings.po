@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 05:44+0000\n"
+"PO-Revision-Date: 2025-04-27 05:58+0000\n"
 "Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -6302,8 +6302,9 @@ msgstr "也许对车辆有一个小障碍，但对行人却没有。"
 msgid ""
 "Once analyzed one by one the touchings, for the ones that need a local fix, "
 "the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__."
-msgstr "逐条分析接触边后，需局部修复的边线应通过 `分割<https://postgis.net/docs/"
-"ST_Split.html>`__.。"
+msgstr ""
+"逐条分析接触边后，需局部修复的边线应通过 `split <https://postgis.net/docs/"
+"ST_Split.html>`__。"
 
 msgid "Fixing a gap"
 msgstr "弥补差距"
@@ -8185,7 +8186,8 @@ msgid ""
 "obtained with ``pgr_TSPeuclidean``."
 msgstr ""
 "从视觉上比较，第一个图展示了 `最优解 <https://www.math.uwaterloo.ca/tsp/"
-"world/witour.html>`__，而第二个图展示了使用 ``pgr_TSPeuclidean`` 所得到的解。"
+"world/witour.html>`__ ，而第二个图展示了使用 ``pgr_TSPeuclidean`` "
+"所得到的解。"
 
 msgid "``pgr_aStar``"
 msgstr "``pgr_aStar``"
@@ -8820,7 +8822,6 @@ msgstr ""
 msgid "Using a combinations table on an **undirected** graph."
 msgstr "在 **无向** 图上使用组合表。"
 
-#, fuzzy
 msgid ""
 "`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/"
 "bellman_ford_shortest.html>`__"
@@ -10149,11 +10150,10 @@ msgstr "收缩顶点 :math:`3`,"
 msgid "The vertex :math:`3` is removed from the graph"
 msgstr "顶点 :math:`3` 已从图中移除"
 
-#, fuzzy
 msgid ""
 "The edges :math:`2 \\rightarrow 3` and :math:`w \\rightarrow z` are removed "
 "from the graph."
-msgstr "从图中删除边 :math:`v \\rightarrow w` 和 :math:`w \\rightarrow z`。"
+msgstr "边线 :math:`2 \\rightarrow 3` 和 :math:`w \\rightarrow z` 已从图中移除。"
 
 #, fuzzy
 msgid ""
@@ -10164,9 +10164,8 @@ msgstr "插入一条新边 :math:`v \\rightarrow z`，以红色表示。"
 msgid "Contracting vertex :math:`2`:"
 msgstr "收缩 :math:`v`："
 
-#, fuzzy
 msgid "The vertex :math:`2` is removed from the graph"
-msgstr "顶点 :math:`w` 已从图中移除"
+msgstr "顶点 :math:`2` 已从图形中移除"
 
 #, fuzzy
 msgid ""
