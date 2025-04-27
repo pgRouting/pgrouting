@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 00:42+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2025-04-27 01:02+0000\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -380,7 +380,7 @@ msgid "These functions might create a server crash"
 msgstr "这些功能可能会导致服务器崩溃"
 
 msgid "Experimental functions"
-msgstr "实验功能"
+msgstr "实验性函数"
 
 msgid "They are not officially of the current release."
 msgstr "它们不是当前版本的正式版本。"
@@ -2738,7 +2738,7 @@ msgid "It is expected to terminate faster than pgr_dijkstra"
 msgstr "预计终止速度比 pgr_dijkstra 更快"
 
 msgid "Chinese Postman Problem - Family of functions (Experimental)"
-msgstr "中国邮递员问题 - 函数族（实验）"
+msgstr "中国邮递员问题 - 函数族（实验性）"
 
 msgid ":doc:`pgr_chinesePostman`"
 msgstr ":doc:`pgr_chinesePostman`"
@@ -3465,7 +3465,7 @@ msgid "Identifier of the ``edge`` used to arrive from ``pred`` to ``node``."
 msgstr "从 ``pred`` 到达``node``所使用的 ``edge`` 的标识符。"
 
 msgid "Experimental Functions"
-msgstr "实验函数"
+msgstr "实验性函数"
 
 msgid "Families"
 msgstr "族"
@@ -5338,9 +5338,8 @@ msgstr "``id1`` 是节点"
 msgid "``id2`` is the edge"
 msgstr "``id2`` 是边"
 
-#, fuzzy
 msgid "Use ``pgr_trsp`` when there are restrictions."
-msgstr ":doc:`pgr_trspVia` 当有限制时。"
+msgstr "当存在限制条件时，使用 ``pgr_trsp``。"
 
 msgid "Use :doc:`pgr_trsp` (One to One) instead."
 msgstr "请改用 :doc:`pgr_trsp` (一对一）。"
@@ -5357,13 +5356,11 @@ msgstr ":doc:`pgr_trsp_withPoints`"
 msgid "Use ``pgr_withPoints`` when there are no restrictions."
 msgstr "当无限制条件时，使用 ``pgr_withPoints``。"
 
-#, fuzzy
 msgid "Use :doc:`pgr_withPoints` (One to One) instead."
-msgstr "请改用 :doc:`pgr_trsp` (一对一）。"
+msgstr "改用 :doc:`pgr_withPoints` (One to One) 函数替代。"
 
-#, fuzzy
 msgid "Use ``pgr_trsp_withPoints`` when there are restrictions."
-msgstr ":doc:`pgr_trspVia_withPoints` 当有限制时。"
+msgstr "当存在限制条件时，使用 ``pgr_trsp_withPoints``。"
 
 msgid "Use :doc:`pgr_trsp_withPoints` instead."
 msgstr "请使用 :doc:`pgr_trsp_withPoints`。"
@@ -6273,12 +6270,12 @@ msgstr "调用 :doc:`pgr_separateCrossing` 并将新的线段添加到边缘表�
 msgid "Update other values"
 msgstr "更新其他数值"
 
-#, fuzzy
 msgid ""
 "In this example only ``cost`` and ``reverse_cost`` are updated, where they "
 "are based on the length of the geometry and the directionality is kept using "
 "the ``sign`` function."
-msgstr "对于本示例， ``cost`` 和 ``reverse_cost`` 值将是几何体长度的两倍。"
+msgstr "在此示例中，仅更新了 ``cost`` 和 ``reverse_cost`` 列，其值基于几何长度并通过 "
+"``sign`` 函数保持方向性。"
 
 msgid "Update the topology"
 msgstr "更新拓扑结构"
@@ -8470,7 +8467,7 @@ msgid "Version 2.5.0"
 msgstr "版本2.5.0"
 
 msgid "New experimental function."
-msgstr "新实验功能。"
+msgstr "新实验性功能。"
 
 msgid ""
 "Those vertices that belong to more than one biconnected component are called "
@@ -8760,13 +8757,13 @@ msgid "Use with :doc:`pgr_TSP`."
 msgstr "与 :doc:`pgr_TSP` 一起使用。"
 
 msgid "``pgr_bellmanFord - Experimental``"
-msgstr "``pgr_bellmanFord - 实验``"
+msgstr "``pgr_bellmanFord - 实验性``"
 
 msgid "``pgr_bellmanFord`` — Shortest path using Bellman-Ford algorithm."
 msgstr "``pgr_bellmanFord`` — 使用 Bellman-Ford 算法计算的最短路径。"
 
 msgid "New experimental signature:"
-msgstr "新 实验性*签名："
+msgstr "新实验性签名："
 
 msgid "pgr_bellmanFord(Combinations)"
 msgstr "pgr_bellmanFord(组合)"
@@ -8874,7 +8871,7 @@ msgid "Boost Graph Inside"
 msgstr "Boost 图内部"
 
 msgid "``pgr_betweennessCentrality`` - Experimental"
-msgstr "``pgr_betweennessCentrality`` - 实验性功能"
+msgstr "``pgr_betweennessCentrality`` - 实验性"
 
 msgid ""
 "``pgr_betweennessCentrality`` - Calculates the relative betweenness "
@@ -9024,7 +9021,7 @@ msgid "Identifier of the edge that belongs to the ``component``."
 msgstr "属于该 ``分量`` 的边的标识符。"
 
 msgid "``pgr_binaryBreadthFirstSearch`` - Experimental"
-msgstr "``pgr_binaryBreadthFirstSearch`` - 实验"
+msgstr "``pgr_binaryBreadthFirstSearch`` - 实验性"
 
 msgid ""
 "``pgr_binaryBreadthFirstSearch`` — Returns the shortest path in a binary "
@@ -9136,7 +9133,7 @@ msgstr ""
 "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants"
 
 msgid "``pgr_bipartite`` - Experimental"
-msgstr "``pgr_bipartite`` - 实验性功能"
+msgstr "``pgr_bipartite`` - 实验性"
 
 msgid ""
 "``pgr_bipartite`` — Disjoint sets of vertices such that no two vertices "
@@ -9274,7 +9271,7 @@ msgstr ""
 "boykov_kolmogorov_max_flow.html>`__"
 
 msgid "``pgr_breadthFirstSearch`` - Experimental"
-msgstr "``pgr_breadthFirstSearch`` - 实验"
+msgstr "``pgr_breadthFirstSearch`` - 实验性"
 
 msgid ""
 "``pgr_breadthFirstSearch`` — Returns the traversal order(s) using Breadth "
@@ -9399,7 +9396,7 @@ msgstr ""
 "connected_components.html>`__"
 
 msgid "``pgr_chinesePostman`` - Experimental"
-msgstr "``pgr_chinesePostman`` - 实验"
+msgstr "``pgr_chinesePostman`` - 实验性"
 
 msgid ""
 "``pgr_chinesePostman`` — Calculates the shortest circuit path which contains "
@@ -9434,7 +9431,7 @@ msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr "从 ``start_v`` 到 ``node`` 的总成本。"
 
 msgid "``pgr_chinesePostmanCost`` - Experimental"
-msgstr "``pgr_chinesePostmanCost`` - 实验"
+msgstr "``pgr_chinesePostmanCost`` - 实验性"
 
 msgid ""
 "``pgr_chinesePostmanCost`` — Calculates the minimum costs of a circuit path "
@@ -10253,7 +10250,7 @@ msgid "Create the contracted graph."
 msgstr "收缩图"
 
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
-msgstr "pgr_cuthillMckeeOrdering`` - 试验性的"
+msgstr "pgr_cuthillMckeeOrdering`` - 实验性"
 
 msgid ""
 "``pgr_cuthillMckeeOrdering`` — Returns the reverse Cuthill-Mckee ordering of "
@@ -10329,9 +10326,8 @@ msgstr ""
 "`Wikipedia: Cuthill-McKee 排序 <https://en.wikipedia.org/wiki/"
 "Cuthill%E2%80%93McKee_algorithm>`__"
 
-#, fuzzy
 msgid "``pgr_dagShortestPath`` - Experimental"
-msgstr "pgr_dagShortestPath - 实验"
+msgstr "pgr_dagShortestPath - 实验性"
 
 msgid ""
 "``pgr_dagShortestPath`` — Returns the shortest path for weighted directed "
@@ -11386,7 +11382,7 @@ msgstr "最好的方法是 :math:`(11/rightarrow 16)`，成本是 :math:`1` (lin
 
 msgid ""
 "Both are equally good as they have the same cost. (lines: `12` and `13`)"
-msgstr "由于成本相同，两者同样好。(行：\"12 \"和 \"13\"）。"
+msgstr "由于成本相同，两者同样好。(行：`12` and `13`)"
 
 msgid "``pgr_dijkstraVia`` - Proposed"
 msgstr "``pgr_dijkstraVia`` -拟议"
@@ -11577,9 +11573,8 @@ msgid ""
 "undirected graph"
 msgstr "在无向图上，从顶点 :math:`{11, 16\\}` 开始的距离为 :math:`3.0`"
 
-#, fuzzy
 msgid "``pgr_edgeColoring`` - Experimental"
-msgstr "pgr_edgeColoring - 实验"
+msgstr "``pgr_edgeColoring`` - 实验性"
 
 msgid ""
 "``pgr_edgeColoring`` — Returns the edge coloring of undirected and loop-free "
@@ -11658,12 +11653,11 @@ msgstr "Returns set of |result-edge-color|"
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
 msgstr "pgRouting :doc:`sampledata` 的图形着色"
 
-#, fuzzy
 msgid ""
 "`Boost: Edge Coloring <https://www.boost.org/libs/graph/doc/edge_coloring."
 "html>`__"
 msgstr ""
-"`Boost：边缘着色算法文档 <https://www.boost.org/libs/graph/doc/edge_coloring."
+"`Boost: Edge Coloring <https://www.boost.org/libs/graph/doc/edge_coloring."
 "html>`__"
 
 msgid ""
@@ -11793,18 +11787,18 @@ msgstr "pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vids**)"
 msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 msgstr "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 
-#, fuzzy
 msgid ""
 "`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/"
 "edmonds_karp_max_flow.html>`__"
-msgstr "https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html"
+msgstr ""
+"`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/"
+"edmonds_karp_max_flow.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
 
-#, fuzzy
 msgid "``pgr_edwardMoore`` - Experimental"
-msgstr "``pgr_edwardMoore`` - 实验"
+msgstr "``pgr_edwardMoore`` - 实验性"
 
 msgid ""
 "``pgr_edwardMoore`` — Returns the shortest path using Edward-Moore algorithm."
@@ -12439,7 +12433,7 @@ msgid "Git hash of pgRouting build"
 msgstr "pgRouting 构建的 Git 哈希"
 
 msgid "``pgr_hawickCircuits`` - Experimental"
-msgstr "``pgr_hawickCircuits`` - 实验性功能"
+msgstr "``pgr_hawickCircuits`` - 实验性"
 
 #, fuzzy
 msgid ""
@@ -12523,7 +12517,7 @@ msgstr ""
 "doc/hawick_circuits.html>`__"
 
 msgid "``pgr_isPlanar`` - Experimental"
-msgstr "``pgr_isPlanar`` - 实验"
+msgstr "``pgr_isPlanar`` - 实验性"
 
 msgid ""
 "``pgr_isPlanar`` — Returns a boolean depending upon the planarity of the "
@@ -12738,9 +12732,8 @@ msgstr "pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgid "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 
-#, fuzzy
 msgid "``pgr_lengauerTarjanDominatorTree`` - Experimental"
-msgstr "``pgr_lengauerTarjanDominatorTree`` - 实验"
+msgstr "``pgr_lengauerTarjanDominatorTree`` - 实验性"
 
 msgid ""
 "``pgr_lengauerTarjanDominatorTree`` — Returns the immediate dominator of all "
@@ -13034,7 +13027,7 @@ msgstr ""
 "html>`__"
 
 msgid "``pgr_lineGraphFull`` - Experimental"
-msgstr "``pgr_lineGraphFull`` - 实验"
+msgstr "``pgr_lineGraphFull`` - 实验性"
 
 msgid ""
 "``pgr_lineGraphFull`` — Transforms a given graph into a new graph where all "
@@ -13302,7 +13295,7 @@ msgid "https://en.wikipedia.org/wiki/Complete_graph"
 msgstr "https://en.wikipedia.org/wiki/Complete_graph"
 
 msgid "``pgr_makeConnected`` - Experimental"
-msgstr "``pgr_makeConnected`` - 实验"
+msgstr "``pgr_makeConnected`` - 实验性"
 
 msgid "``pgr_makeConnected`` — Set of edges that will connect the graph."
 msgstr "``pgr_makeConnected`` — 连接图的边集。"
@@ -13482,7 +13475,7 @@ msgstr ""
 "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
 
 msgid "``pgr_maxFlowMinCost`` - Experimental"
-msgstr "``pgr_maxFlowMinCost`` - 实验"
+msgstr "``pgr_maxFlowMinCost`` - 实验性"
 
 msgid ""
 "``pgr_maxFlowMinCost`` — Calculates the edges that minimizes the total cost "
@@ -13539,7 +13532,7 @@ msgid "Returns set of |result-flow-mincost|"
 msgstr "返回 |result-flow-mincost| 的集合"
 
 msgid "``pgr_maxFlowMinCost_Cost`` - Experimental"
-msgstr "``pgr_maxFlowMinCost_Cost`` - 实验"
+msgstr "``pgr_maxFlowMinCost_Cost`` - 实验性"
 
 msgid ""
 "``pgr_maxFlowMinCost_Cost`` — Calculates the minimum total cost of the "
@@ -13770,7 +13763,7 @@ msgid ""
 msgstr ":doc:`topology-functions` 用于路由算法的拓扑概述。"
 
 msgid "``pgr_pickDeliver`` - Experimental"
-msgstr "``pgr_pickDeliver`` - 实验"
+msgstr "``pgr_pickDeliver`` - 实验性"
 
 msgid "``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem"
 msgstr "``pgr_pickDeliver`` - 接送车辆路径问题"
@@ -13887,7 +13880,7 @@ msgid "[end_node_id, end_open, end_close, end_service]"
 msgstr "[end_node_id, end_open, end_close, end_service]"
 
 msgid "``pgr_pickDeliverEuclidean`` - Experimental"
-msgstr "``pgr_pickDeliverEuclidean`` - 实验"
+msgstr "``pgr_pickDeliverEuclidean`` - 实验性"
 
 msgid ""
 "``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem"
@@ -14222,7 +14215,7 @@ msgstr ""
 "sequential_vertex_coloring.html>`__"
 
 msgid "``pgr_stoerWagner`` - Experimental"
-msgstr "``pgr_stoerWagner`` - 实验"
+msgstr "``pgr_stoerWagner`` - 实验性"
 
 msgid "``pgr_stoerWagner`` — The min-cut of graph using stoerWagner algorithm."
 msgstr "``pgr_stoerWagner`` — 使用 stoerWagner 算法对图进行最小分割。"
@@ -14369,7 +14362,7 @@ msgstr ""
 "Strongly_connected_component>`__"
 
 msgid "``pgr_topologicalSort`` - Experimental"
-msgstr "``pgr_topologicalSort`` - 实验"
+msgstr "``pgr_topologicalSort`` - 实验性"
 
 msgid ""
 "``pgr_topologicalSort`` — Linear ordering of the vertices for directed "
@@ -14435,7 +14428,7 @@ msgstr ""
 "html>`__"
 
 msgid "``pgr_transitiveClosure`` - Experimental"
-msgstr "``pgr_transitiveClosure`` - 实验"
+msgstr "``pgr_transitiveClosure`` - 实验性"
 
 msgid ""
 "``pgr_transitiveClosure`` — Transitive closure graph of a directed graph."
@@ -15139,7 +15132,7 @@ msgid "pgRouting Version for this documentation"
 msgstr "本文档的 pgRouting 版本"
 
 msgid "``pgr_vrpOneDepot`` - Experimental"
-msgstr "``pgr_vrpOneDepot`` - 实验"
+msgstr "``pgr_vrpOneDepot`` - 实验性"
 
 msgid "**No documentation available**"
 msgstr "**无可用文档**"
@@ -16299,7 +16292,7 @@ msgid "CI does not test for PostgreSQL 12"
 msgstr "CI 不测试 PostgreSQL 12"
 
 msgid "New experimental functions"
-msgstr "新的实验函数"
+msgstr "新实验性函数"
 
 msgid "Metrics"
 msgstr "Metrics"
@@ -16319,7 +16312,7 @@ msgid "Functions:"
 msgstr "新函数:"
 
 msgid "Experimental promoted to proposed."
-msgstr "实验提升为拟议。"
+msgstr "实验性提升为建议。"
 
 msgid ""
 "`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
@@ -17029,7 +17022,7 @@ msgid "pgr_edgeColoring"
 msgstr "pgr_edgeColoring"
 
 msgid "Experimental promoted to Proposed"
-msgstr "实验提升为拟议"
+msgstr "实验性提升为建议"
 
 msgid "pgr_dijkstraNear"
 msgstr "pgr_dijkstraNear"
@@ -17252,7 +17245,7 @@ msgid ""
 "64-bit crashes on pgr_vrOneDepot tests Experimental Function"
 msgstr ""
 "`#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__：FreeBSD 12 "
-"64 位在 pgr_vrOneDepot 测试实验功能上崩溃"
+"64 位在 pgr_vrOneDepot 测试实验函数中崩溃"
 
 msgid ""
 "`#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__: tools/"
@@ -17938,16 +17931,16 @@ msgid "pgr_withPointsCostMatrix (proposed)"
 msgstr "pgr_withPointsCostMatrix （拟议）"
 
 msgid "pgr_contractGraph (experimental)"
-msgstr "pgr_contractGraph （实验）"
+msgstr "pgr_contractGraph （实验性）"
 
 msgid "pgr_pushRelabel (experimental)"
-msgstr "pgr_pushRelabel （实验）"
+msgstr "pgr_pushRelabel （实验性）"
 
 msgid "pgr_vrpOneDepot (experimental)"
-msgstr "pgr_vrpOneDepot （实验）"
+msgstr "pgr_vrpOneDepot （实验性）"
 
 msgid "pgr_gsoc_vrppdtw (experimental)"
-msgstr "pgr_gsoc_vrppdtw （实验）"
+msgstr "pgr_gsoc_vrppdtw （实验性）"
 
 msgid "Fixes for deprecated functions where also applied but not tested"
 msgstr "修复了已应用但未测试的已弃用函数"
