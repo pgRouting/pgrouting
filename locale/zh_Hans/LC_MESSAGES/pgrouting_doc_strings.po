@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 03:24+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2025-04-27 05:43+0000\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -4491,9 +4491,8 @@ msgid ""
 msgstr "**弃用后：** 用户需自行创建顶点表、索引等结构，可调用 "
 ":doc:`pgr_extractVertices` 函数实现该功能。"
 
-#, fuzzy
 msgid "Migration of ``pgr_analyzeOneWay``"
-msgstr "``pgr_aStar`` 迁移"
+msgstr "迁移 ``pgr_analyzeOneWay``"
 
 msgid "Number of potential problems in directionality"
 msgstr "方向性潜在问题数量分析"
@@ -4535,9 +4534,8 @@ msgstr "另一个路由问题可能出现在以下情况：当无向图中存在
 msgid "To determine if the bridges are or not one way."
 msgstr "判断桥梁是否为单行道。"
 
-#, fuzzy
 msgid "Migration of ``pgr_analyzeGraph``"
-msgstr "``pgr_aStar`` 迁移"
+msgstr "迁移 ``pgr_analyzeGraph``"
 
 msgid "Number of isolated segments."
 msgstr "隔离段的数量。"
@@ -4799,9 +4797,8 @@ msgstr "在 ``pgr_dijkstra`` (`多对一`)中"
 msgid "If needed add the new columns, for example:"
 msgstr "如果需要，过滤掉添加的列，例如："
 
-#, fuzzy
 msgid "Migration of ``pgr_drivingDistance``"
-msgstr "迁移 ``pgr_drivingdistance``"
+msgstr "迁移 ``pgr_drivingDistance``"
 
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
@@ -7044,9 +7041,8 @@ msgstr ""
 "`示例 <https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-parallel-"
 "edges-(KSP)>`__"
 
-#, fuzzy
 msgid "Adding Functionality to pgRouting"
-msgstr "向 pgRouting 添加功能"
+msgstr "为 pgRouting 添加功能"
 
 msgid ""
 "Consult the `developer's documentation <https://docs.pgrouting.org/doxy/2.4/"
@@ -7661,9 +7657,8 @@ msgstr "``pgr_KSP`` — Yen 使用 Dijkstra 计算 K 最短路径的算法。"
 msgid "Availability"
 msgstr "可用性"
 
-#, fuzzy
 msgid "Version 4.0.0"
-msgstr "版本2.0.0"
+msgstr "Version 4.0.0"
 
 msgid "All signatures promoted to official."
 msgstr "所有签名均已升级为正式版本。"
@@ -7719,9 +7714,8 @@ msgstr "基于Yen算法的K最短路径路由算法。 “K”是所需的最短
 msgid "|Boost| Boost Graph Inside"
 msgstr "|Boost| Boost 图内部"
 
-#, fuzzy
 msgid "Boost Graph inside"
-msgstr "Boost 图内部"
+msgstr "内部使用 Boost Graph"
 
 msgid "Signatures"
 msgstr "签名"
@@ -9854,7 +9848,7 @@ msgid ""
 msgstr "情况 3：源点和/或目标点属于已被收缩的顶点。"
 
 msgid "``pgr_contractionDeadEnd`` - Proposed"
-msgstr "``pgr_contractionDeadEnd`` - 建议方案"
+msgstr "``pgr_contractionDeadEnd`` - 提案中"
 
 msgid ""
 "``pgr_contractionDeadEnd`` — Performs graph contraction and returns the "
@@ -10032,47 +10026,38 @@ msgstr "在收缩 :math:`v` 之后，停止。节点 :math:`u` 有已收缩节�
 msgid "Creating the contracted graph"
 msgstr "使用收缩图"
 
-#, fuzzy
 msgid "Steps for the creation of the contracted graph"
-msgstr "属于收缩图的边。"
+msgstr "创建收缩图的步骤"
 
-#, fuzzy
 msgid "Add additional columns."
-msgstr "添加附加列"
+msgstr "添加额外的列。"
 
 #, fuzzy
 msgid "Save results into a table."
 msgstr "将 `收缩结果`_ 存储在表中"
 
-#, fuzzy
 msgid "The contracted vertices are not part of the contracted graph."
-msgstr "当 ``true`` 时，顶点收缩，它不是收缩图的一部分。"
+msgstr "收缩后的顶点不包含在收缩图中。"
 
-#, fuzzy
 msgid "Using when departure and destination are in the contracted graph"
-msgstr "情况1：源和目标都属于收缩图。"
+msgstr "当出发地和目的地位于收缩图中时使用"
 
-#, fuzzy
 msgid "Using when departure/destination is not in the contracted graph"
-msgstr "当 ``true`` 时，顶点收缩，它不是收缩图的一部分。"
+msgstr "当出发地/目的地不在收缩图中时使用"
 
-#, fuzzy
 msgid "Using when departure and destination are not in the contracted graph"
-msgstr "情况1：源和目标都属于收缩图。"
+msgstr "当出发地和目的地均不在收缩图中时使用"
 
-#, fuzzy
 msgid "``pgr_contractionLinear`` - Proposed"
-msgstr "``pgr_dijkstraNear`` - 拟议"
+msgstr "``pgr_contractionLinear`` - 提案中"
 
-#, fuzzy
 msgid ""
 "``pgr_contractionLinear`` — Performs graph contraction and returns the "
 "contracted vertices and edges."
-msgstr "``pgr_contraction`` — 执行图收缩操作并返回收缩后的顶点和边。"
+msgstr "``pgr_contractionLinear`` — 执行图收缩并返回收缩后的顶点和边线。"
 
-#, fuzzy
 msgid "pgr_contractionLinear(`Edges SQL`_, [**options**])"
-msgstr "pgr_contraction(`Edges SQL`_, **contraction order**, [**options**])"
+msgstr "pgr_contractionLinear(`Edges SQL`_, [**options**])"
 
 msgid "Linear contraction on an undirected graph."
 msgstr "无向图上的线性收缩。"
@@ -10148,25 +10133,19 @@ msgstr "四条边可以用两条有向边代替。"
 msgid "Edge :math:`3 - 1`."
 msgstr "边线 :math:`3 - 1`."
 
-#, fuzzy
 msgid "With cost: :math:`6`."
-msgstr "使用 ``cost``"
+msgstr "With cost: :math:`6`."
 
-#, fuzzy
 msgid "The four edges can be replaced by one undirected edge."
-msgstr "图可以是有向或无向的。"
+msgstr "四条边线可替换为一条无向边。"
 
-#, fuzzy
 msgid "Step by step linear contraction"
-msgstr "仅线性收缩"
+msgstr "逐步线性收缩"
 
-#, fuzzy
 msgid ""
 "The linear contraction will stop when there are no more linear edges. For "
 "example from the following graph there are linear edges"
-msgstr ""
-"当不再有线性节点时，线性收缩将停止。 例如，在下图中，其中 :math:`v` 和 :math:"
-"`w` 是 `线性`_ 节点："
+msgstr "线性收缩将在没有更多线性边时停止。例如，在下图中存在线性边"
 
 #, fuzzy
 msgid "Contracting vertex :math:`3`,"
@@ -10632,7 +10611,7 @@ msgid ":doc:`pgr_extractVertices`"
 msgstr ":doc:`pgr_extractVertices`"
 
 msgid "``pgr_depthFirstSearch`` - Proposed"
-msgstr "``pgr_depthFirstSearch`` - 拟议"
+msgstr "``pgr_depthFirstSearch`` - 提案中"
 
 msgid ""
 "``pgr_depthFirstSearch`` — Returns a depth first search traversal of the "
@@ -11003,7 +10982,7 @@ msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 msgstr "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 
 msgid "``pgr_dijkstraNear`` - Proposed"
-msgstr "``pgr_dijkstraNear`` - 拟议"
+msgstr "``pgr_dijkstraNear`` - 提案中"
 
 msgid ""
 "``pgr_dijkstraNear`` — Using Dijkstra's algorithm, finds the route that "
@@ -11274,7 +11253,7 @@ msgid "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr "维基百科：https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 
 msgid "``pgr_dijkstraNearCost`` - Proposed"
-msgstr "``pgr_dijkstraNearCost`` - 拟议"
+msgstr "``pgr_dijkstraNearCost`` - 提案中"
 
 msgid ""
 "``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that "
@@ -11345,7 +11324,7 @@ msgid ""
 msgstr "由于成本相同，两者同样好。(行：`12` and `13`)"
 
 msgid "``pgr_dijkstraVia`` - Proposed"
-msgstr "``pgr_dijkstraVia`` -拟议"
+msgstr "``pgr_dijkstraVia`` - 提案中"
 
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr "`pgr_dijkstraVia` - 经过顶点列表的路径。"
@@ -12762,7 +12741,7 @@ msgstr ""
 "`维基百科:支配树 <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
 
 msgid "``pgr_lineGraph`` - Proposed"
-msgstr "``pgr_lineGraph`` - 提议"
+msgstr "``pgr_lineGraph`` - 提案中"
 
 msgid ""
 "``pgr_lineGraph`` — Transforms the given graph into its corresponding edge-"
@@ -14102,7 +14081,7 @@ msgid "pgr_separateTouching(`Edges SQL`_, [``tolerance``, ``dryrun``])"
 msgstr "pgr_extractVertices(`Edges SQL`_, [``dryrun``])"
 
 msgid "``pgr_sequentialVertexColoring`` - Proposed"
-msgstr "``pgr_sequentialVertexColoring`` - 拟议"
+msgstr "``pgr_sequentialVertexColoring`` - 提案中"
 
 msgid ""
 "``pgr_sequentialVertexColoring`` — Returns the vertex coloring of an "
@@ -15992,40 +15971,39 @@ msgid ""
 "`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: "
 "pgr_contractionDeadEnd new contraction function"
 msgstr ""
-"`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: "
-"pgr_contractionDeadEnd 新收缩函数"
+"`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__："
+"创建新收缩函数 pgr_contractionDeadEnd"
 
-#, fuzzy
 msgid ""
 "`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: "
 "pgr_contractionLinear new contraction function"
 msgstr ""
-"`#1002 <https://github.com/pgRouting/pgrouting/issues/1002>`__：修复收缩问"
-"题："
+"`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__："
+"创建新收缩函数 pgr_contractionLinear"
 
-#, fuzzy
 msgid ""
 "`#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__: Create "
 "pgr_separateCrossing new utility function"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__："
+"创建新工具函数 pgr_separateCrossing"
 
-#, fuzzy
 msgid ""
 "`#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__: Create of "
 "pgr_separateTouching new utility function"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__："
+"创建新工具函数 pgr_separateTouching"
 
 msgid "Official functions changes"
 msgstr "官方功能变更"
 
-#, fuzzy
 msgid ""
 "`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
 "pgr_contraction(edges) new signature"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2786 <https://github.com/pgRouting/pgrouting/issues/"
+"2786>`__：pgr_contraction(edges) 新签名"
 
 msgid "C/C++ code enhancements"
 msgstr "C/C++ 代码增强"
