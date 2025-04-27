@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
 "PO-Revision-Date: 2025-04-27 08:10+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -13602,7 +13602,6 @@ msgstr "将交叉点作为新顶点插入。"
 msgid "Delete original edge."
 msgstr "删除原始边。"
 
-#, fuzzy
 msgid "Update the vertex topology"
 msgstr "更新顶点拓扑"
 
@@ -13801,9 +13800,8 @@ msgstr ""
 "此数据示例 **lc101** 来自 https://www.sintef.no/projectweb/top/pdptw/li-lim-"
 "benchmark/ 上发布的数据"
 
-#, fuzzy
 msgid "There are 25 vehicles in the problem all with the same characteristics."
-msgstr "问题中有 25 辆车都具有相同的特征。"
+msgstr "问题中有 25 辆具有相同特征的汽车。"
 
 msgid "The original orders"
 msgstr "原始订单"
@@ -13813,9 +13811,8 @@ msgid ""
 "order."
 msgstr "对于同一订单的取货和配送，数据位于不同的行中。"
 
-#, fuzzy
 msgid "The original data needs to be converted to an appropriate table:"
-msgstr "需要将原始数据转换为合适的表格："
+msgstr "需要将原始数据转换为适当的表格："
 
 msgid "The query"
 msgstr "查询"
@@ -13959,9 +13956,8 @@ msgstr "pgr_separateCrossing(`Edges SQL`_, [``tolerance``, ``dryrun``])"
 msgid "RETURNS |result-separate|"
 msgstr "返回 |result-separate|"
 
-#, fuzzy
 msgid "Get the segments of the crossing geometries"
-msgstr "该点位于边的哪个位置。"
+msgstr "获取交叉点几何形状的线段"
 
 msgid "``tolerance``"
 msgstr "``tolerance``"
@@ -13972,9 +13968,8 @@ msgstr "0.01"
 msgid "Used in ST_Snap before ST_Split"
 msgstr "在 ST_Split 前使用 ST_Snap"
 
-#, fuzzy
 msgid "Get the code for further refinement."
-msgstr "位于该段的两侧。"
+msgstr "获取进一步完善的代码。"
 
 msgid ""
 "When there are special details that need to be taken care of because of the "
@@ -15931,9 +15926,8 @@ msgstr ""
 "`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__："
 "pgr_contraction 函数进行了代码重构"
 
-#, fuzzy
 msgid "SQL code enhancements"
-msgstr "代码改进："
+msgstr "增强 SQL 代码"
 
 #, fuzzy
 msgid ""
