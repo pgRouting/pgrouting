@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
 "PO-Revision-Date: 2025-04-27 02:23+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -8204,13 +8204,11 @@ msgstr "``pgr_aStar`` —使用 A* 算法的最短路径。"
 msgid "Combinations signature promoted to official."
 msgstr "组合签名已升级为正式版本。"
 
-#, fuzzy
 msgid "Standardizing output columns to |short-generic-result|"
-msgstr "标准输出列|short-generic-result|"
+msgstr "将输出列标准化为 |short-generic-result|"
 
-#, fuzzy
 msgid "pgr_aStar(One to One) added ``start_vid`` and ``end_vid`` columns."
-msgstr "``pgr_aStar`` （`一对一`）增加了 ``start_vid`` 和 ``end_vid`` 列。"
+msgstr "pgr_aStar(One to One) 增加了`start_vid``和`end_vid``列。"
 
 msgid "pgr_aStar(One to Many) added ``end_vid`` column."
 msgstr "pgr_aStar(一对多）添加了 ``end_vid`` 列。"
