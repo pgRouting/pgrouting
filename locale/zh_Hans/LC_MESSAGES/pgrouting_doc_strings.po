@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 08:19+0000\n"
+"PO-Revision-Date: 2025-04-27 08:31+0000\n"
 "Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -10547,17 +10547,15 @@ msgstr "结果可作为基础代码，根据后台开发需要进行改进。"
 msgid "Finding dead ends"
 msgstr "查找断头节点"
 
-#, fuzzy
 msgid ""
 "If there is a vertices table already built using ``pgr_extractVertices`` and "
 "want the degree of the whole graph rather than a subset, it can be forgo "
 "using ``pgr_degree`` and work with the ``in_edges`` and ``out_edges`` "
 "columns directly."
 msgstr ""
-"If there is a vertices table already built using ``pgr_extractVertices`` and "
-"want the degree of the whole graph rather than a subset, it can be forgo "
-"using ``pgr_degree`` and work with the ``in_edges`` and ``out_edges`` "
-"columns directly."
+"如果已经使用 ``pgr_extractVertices`` "
+"构建了顶点表，并且想要获取整个图的度数，而不是子集的度数，则可以跳过使用 "
+"``pgr_degree`` ，直接操作 ``in_edges`` 和 ``out_edges`` 列。"
 
 msgid "The degree of a dead end is 1."
 msgstr "断头节点的度数为 1。"
@@ -16024,8 +16022,8 @@ msgid ""
 "`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cmake missing "
 "some policies and min version"
 msgstr ""
-"`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cmake "
-"缺少某些策略和最小版本"
+"`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cMake "
+"缺少一些策略和最低版本要求"
 
 msgid "Using OLD policies: CMP0148, CMP0144, CMP0167"
 msgstr "使用旧版策略：CMP0148，CMP0144，CMP0167"
@@ -17382,49 +17380,38 @@ msgstr "Flow族"
 msgid "pgr_pushRelabel(One to One)"
 msgstr "pgr_pushRelabel(One to One)"
 
-#, fuzzy
 msgid "pgr_pushRelabel(One to Many)"
-msgstr "pgr_pushRelabel(一对多)"
+msgstr "pgr_pushRelabel(One to Many)"
 
-#, fuzzy
 msgid "pgr_pushRelabel(Many to One)"
-msgstr "pgr_pushRelabel(多对一)"
+msgstr "pgr_pushRelabel(Many to One)"
 
-#, fuzzy
 msgid "pgr_pushRelabel(Many to Many)"
-msgstr "pgr_pushRelabel(多对多)"
+msgstr "pgr_pushRelabel(Many to Many)"
 
-#, fuzzy
 msgid "pgr_edmondsKarp(One to One)"
-msgstr "pgr_edmondsKarp（一对一）"
+msgstr "pgr_edmondsKarp(One to One)"
 
-#, fuzzy
 msgid "pgr_edmondsKarp(One to Many)"
-msgstr "pgr_edmondsKarp（一对多）"
+msgstr "pgr_edmondsKarp(One to Many)"
 
-#, fuzzy
 msgid "pgr_edmondsKarp(Many to One)"
-msgstr "pgr_edmondsKarp（多对一）"
+msgstr "pgr_edmondsKarp(Many to One)"
 
-#, fuzzy
 msgid "pgr_edmondsKarp(Many to Many)"
-msgstr "pgr_edmondsKarp（多对多）"
+msgstr "pgr_edmondsKarp(Many to Many)"
 
-#, fuzzy
 msgid "pgr_boykovKolmogorov (One to One)"
-msgstr "pgr_boykovKolmogorov (一对一)"
+msgstr "pgr_boykovKolmogorov (One to One)"
 
-#, fuzzy
 msgid "pgr_boykovKolmogorov (One to Many)"
-msgstr "pgr_boykovKolmogorov (一对多)"
+msgstr "pgr_boykovKolmogorov (One to Many)"
 
-#, fuzzy
 msgid "pgr_boykovKolmogorov (Many to One)"
-msgstr "pgr_boykovKolmogorov (多对一)"
+msgstr "pgr_boykovKolmogorov (Many to One)"
 
-#, fuzzy
 msgid "pgr_boykovKolmogorov (Many to Many)"
-msgstr "pgr_boykovKolmogorov (多对多)"
+msgstr "pgr_boykovKolmogorov (Many to Many)"
 
 msgid "pgr_maxCardinalityMatching"
 msgstr "pgr_maxCardinalityMatching"
@@ -17432,21 +17419,17 @@ msgstr "pgr_maxCardinalityMatching"
 msgid "pgr_maxFlow"
 msgstr "pgr_maxFlow"
 
-#, fuzzy
 msgid "pgr_edgeDisjointPaths(One to One)"
-msgstr "pgr_edgeDisjointPaths (一对一)"
+msgstr "pgr_edgeDisjointPaths(One to One)"
 
-#, fuzzy
 msgid "pgr_edgeDisjointPaths(One to Many)"
-msgstr "pgr_edgeDisjointPaths （一对多）"
+msgstr "pgr_edgeDisjointPaths(One to Many)"
 
-#, fuzzy
 msgid "pgr_edgeDisjointPaths(Many to One)"
-msgstr "pgr_edgeDisjointPaths (多对一)"
+msgstr "pgr_edgeDisjointPaths(Many to One)"
 
-#, fuzzy
 msgid "pgr_edgeDisjointPaths(Many to Many)"
-msgstr "pgr_edgeDisjointPaths （多对多）"
+msgstr "pgr_edgeDisjointPaths(Many to Many)"
 
 msgid "Components family"
 msgstr "分量族"
@@ -17906,16 +17889,14 @@ msgstr "在结果中添加了 path_id、cost 和 agg_cost 列"
 msgid "Parameter names changed"
 msgstr "更改参数名称"
 
-#, fuzzy
 msgid "The many version results are the union of the One to One version"
 msgstr "多版本结果是一对一版本的并集"
 
 msgid "New Signatures"
 msgstr "新签名"
 
-#, fuzzy
 msgid "pgr_bdAstar(One to One)"
-msgstr "pgr_bdAstar（一对一）"
+msgstr "pgr_bdAstar(One to One)"
 
 msgid "pgr_lineGraph"
 msgstr "pgr_lineGraph"
@@ -18089,25 +18070,20 @@ msgstr "pgr_TSP"
 msgid "pgr_eucledianTSP"
 msgstr "pgr_eucledianTSP"
 
-#, fuzzy
 msgid "pgr_maxFlowPushRelabel(One to One)"
-msgstr "pgr_maxFlowPushRelabel(一对一)"
+msgstr "pgr_maxFlowPushRelabel(One to One)"
 
-#, fuzzy
 msgid "pgr_maxFlowPushRelabel(One to Many)"
-msgstr "pgr_maxFlowPushRelabel(一对多)"
+msgstr "pgr_maxFlowPushRelabel(One to Many)"
 
-#, fuzzy
 msgid "pgr_maxFlowPushRelabel(Many to One)"
-msgstr "pgr_maxFlowPushRelabel(多对一)"
+msgstr "pgr_maxFlowPushRelabel(Many to One)"
 
-#, fuzzy
 msgid "pgr_maxFlowPushRelabel(Many to Many)"
-msgstr "pgr_maxFlowPushRelabel(多对多)"
+msgstr "pgr_maxFlowPushRelabel(Many to Many)"
 
-#, fuzzy
 msgid "pgr_maxFlowEdmondsKarp(One to One)"
-msgstr "pgr_maxFlowEdmondsKarp（一对一）"
+msgstr "pgr_maxFlowEdmondsKarp(One to One)"
 
 #, fuzzy
 msgid "pgr_maxFlowEdmondsKarp(One to Many)"
@@ -19431,7 +19407,6 @@ msgid ""
 "0.4`)"
 msgstr "边 ``(16, -2)`` 的成本为``0.4`` （原始成本*分数 == :math:`1 * 0.4`）"
 
-#, fuzzy
 msgid "Edge ``(-2, 17)`` with cost ``0.6`` (the remaining cost)"
 msgstr "边 ``(-2, 17)`` 的成本为``0.6`` （剩余成本）"
 
