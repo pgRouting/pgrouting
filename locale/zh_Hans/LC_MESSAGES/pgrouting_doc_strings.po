@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 08:10+0000\n"
+"PO-Revision-Date: 2025-04-27 08:11+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -15929,16 +15929,15 @@ msgstr ""
 msgid "SQL code enhancements"
 msgstr "增强 SQL 代码"
 
-#, fuzzy
 msgid ""
 "`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__: Rewrite "
 "pgr_nodeNetwork"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__：重写 "
+"pgr_nodeNetwork"
 
-#, fuzzy
 msgid "Deprecation of SQL functions"
-msgstr "已废弃的函数"
+msgstr "SQL 函数的停用"
 
 #, fuzzy
 msgid ""
