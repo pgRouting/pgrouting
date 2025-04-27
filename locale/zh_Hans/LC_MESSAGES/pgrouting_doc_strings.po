@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 02:19+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2025-04-27 02:23+0000\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -8085,14 +8085,13 @@ msgid "``pgr_TSPeuclidean``"
 msgstr "``pgr_TSPeuclidean``"
 
 msgid "``pgr_TSPeuclidean`` - Approximation using *metric* algorithm."
-msgstr "`pgr_TSPeuclidean`` - 使用 *metric* 算法进行逼近。"
+msgstr "``pgr_TSPeuclidean`` - 使用 *metric* 算法进行近似计算。"
 
-#, fuzzy
 msgid ""
 "Using `Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/"
 "metric_tsp_approx.html>`__"
 msgstr ""
-"`Boost 的 metric appro 的 metric 近似 <https://www.boost.org/libs/graph/doc/"
+"使用 `Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/"
 "metric_tsp_approx.html>`__"
 
 msgid ""
@@ -8112,15 +8111,13 @@ msgstr "版本3.0.0"
 msgid "Name change from pgr_eucledianTSP"
 msgstr "pgr_eucledianTSP 的名称更改"
 
-#, fuzzy
 msgid "New official function."
-msgstr "新函数 official。"
+msgstr "新官方函数说明。"
 
-#, fuzzy
 msgid ""
 "Any duplicated identifier will be ignored. The coordinates that will be kept "
 "is arbitrarily."
-msgstr "任何重复的标识符都将被忽略。 将保留的坐标"
+msgstr "任何重复的标识符都会被忽略，保留的坐标是任意选择的。"
 
 msgid ""
 "The coordinates are quite similar for the same identifier, for example ::"
@@ -8190,14 +8187,13 @@ msgstr "获取游览的几何形状"
 msgid "Visual results"
 msgstr "视觉效果"
 
-#, fuzzy
 msgid ""
 "Visually, The first image is the `optimal solution <https://www.math."
 "uwaterloo.ca/tsp/world/witour.html>`__ and the second image is the solution "
 "obtained with ``pgr_TSPeuclidean``."
 msgstr ""
-"从视觉上看，第一幅图像是 `最优解 <https://www.math.uwaterloo.ca/tsp/world/"
-"witour.html>`__ ，第二幅图像是使用 ``pgr_TSPeuclidean`` 获得的解。"
+"从视觉上比较，第一个图展示了 `最优解 <https://www.math.uwaterloo.ca/tsp/"
+"world/witour.html>`__，而第二个图展示了使用 ``pgr_TSPeuclidean`` 所得到的解。"
 
 msgid "``pgr_aStar``"
 msgstr "``pgr_aStar``"
