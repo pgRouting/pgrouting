@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
 "PO-Revision-Date: 2025-04-27 06:03+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -10421,9 +10421,8 @@ msgstr "example"
 msgid "Get the degree of the vertices defined on the edges table"
 msgstr "获取边线表定义的顶点度数"
 
-#, fuzzy
 msgid "Edges and Vertices"
-msgstr "添加新的顶点"
+msgstr "边和顶点"
 
 msgid "Extracting the vertex information"
 msgstr "提取顶点信息"
@@ -10452,9 +10451,8 @@ msgstr "``dryrun``"
 msgid "When true do not process and get in a NOTICE the resulting query."
 msgstr "当为真时，不要处理查询，而是获取一个通知（NOTICE）来显示查询的结果。"
 
-#, fuzzy
 msgid "For the `Edges and Vertices`_ signature:"
-msgstr "关于已弃用的签名："
+msgstr "对于 \"边和顶点\"_签名："
 
 #, fuzzy
 msgid "For the `Edges`_ signature:"
