@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 01:02+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2025-04-27 02:18+0000\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -5324,10 +5324,10 @@ msgid "`Migration of restrictions`_"
 msgstr "限制迁移"
 
 msgid "Use ``pgr_dijkstra`` when there are no restrictions."
-msgstr "在没有限制条件时，使用 ``pgr_dijkstra``。"
+msgstr "当没有限制条件时，使用 ``pgr_dijkstra``。"
 
 msgid "Use :doc:`pgr_dijkstra` instead."
-msgstr "请改用 :doc:`pgr_dijkstra`。"
+msgstr "使用 :doc:`pgr_dijkstra` 替代。"
 
 msgid "To get the original column names:"
 msgstr "获取原始列名："
@@ -5342,7 +5342,7 @@ msgid "Use ``pgr_trsp`` when there are restrictions."
 msgstr "当存在限制条件时，使用 ``pgr_trsp``。"
 
 msgid "Use :doc:`pgr_trsp` (One to One) instead."
-msgstr "请改用 :doc:`pgr_trsp` (一对一）。"
+msgstr "使用 :doc:`pgr_trsp` (One to One) 替代。"
 
 msgid "Migration of ``pgr_trsp`` (Edges)"
 msgstr "迁移 ``pgr_trsp`` （边）"
@@ -5354,16 +5354,16 @@ msgid ":doc:`pgr_trsp_withPoints`"
 msgstr ":doc:`pgr_trsp_withPoints`"
 
 msgid "Use ``pgr_withPoints`` when there are no restrictions."
-msgstr "当无限制条件时，使用 ``pgr_withPoints``。"
+msgstr "无限制条件时，使用 ``pgr_withPoints``。"
 
 msgid "Use :doc:`pgr_withPoints` (One to One) instead."
-msgstr "改用 :doc:`pgr_withPoints` (One to One) 函数替代。"
+msgstr "使用 :doc:`pgr_withPoints` (One to One) 替代。"
 
 msgid "Use ``pgr_trsp_withPoints`` when there are restrictions."
 msgstr "当存在限制条件时，使用 ``pgr_trsp_withPoints``。"
 
 msgid "Use :doc:`pgr_trsp_withPoints` instead."
-msgstr "请使用 :doc:`pgr_trsp_withPoints`。"
+msgstr "使用 :doc:`pgr_trsp_withPoints` 替代。"
 
 msgid "Migration of ``pgr_trspViaVertices``"
 msgstr "迁移 ``pgr_trspViaVertices``"
@@ -5374,12 +5374,11 @@ msgstr ":doc:`pgr_dijkstraVia`"
 msgid ":doc:`pgr_trspVia`"
 msgstr ":doc:`pgr_trspVia`"
 
-#, fuzzy
 msgid "Use ``pgr_dijkstraVia`` when there are no restrictions"
-msgstr ":doc:`pgr_dijkstraVia` 当无限制时，"
+msgstr "无限制条件时，使用 ``pgr_dijkstraVia``"
 
 msgid "Use :doc:`pgr_dijkstraVia` instead."
-msgstr "请使用 :doc:`pgr_dijkstraVia`。"
+msgstr "使用 :doc:`pgr_dijkstraVia` 替代。"
 
 msgid "``id1`` is the path identifier"
 msgstr "``id1`` 是路径标识符"
@@ -5391,10 +5390,10 @@ msgid "``id3`` is the edge"
 msgstr "``id3`` 是边"
 
 msgid "Use ``pgr_trspVia`` when there are restrictions"
-msgstr "有限制时使用 `pgr_trspVia``"
+msgstr "当存在限制条件时，使用 ``pgr_trspVia``"
 
 msgid "Use :doc:`pgr_trspVia` instead."
-msgstr "使用 :doc:`pgr_trspVia`。"
+msgstr "使用 :doc:`pgr_trspVia` 替代。"
 
 msgid "Migration of ``pgr_trspViaEdges``"
 msgstr "迁移 ``pgr_trspViaEdges``"
@@ -5405,19 +5404,17 @@ msgstr ":doc:`pgr_withPointsVia`"
 msgid ":doc:`pgr_trspVia_withPoints`"
 msgstr ":doc:`pgr_trspVia_withPoints`"
 
-#, fuzzy
 msgid "Use ``pgr_withPointsVia`` when there are no restrictions"
-msgstr ":doc:`pgr_withPointsVia` 当没有限制时，"
+msgstr "无限制条件时，使用 ``pgr_withPointsVia``。"
 
 msgid "Use :doc:`pgr_withPointsVia` instead."
-msgstr "请使用 :doc:`pgr_withPointsVia`。"
+msgstr "使用 :doc:`pgr_withPointsVia` 替代。"
 
-#, fuzzy
 msgid "Use ``pgr_trspVia_withPoints`` when there are restrictions"
-msgstr ":doc:`pgr_trspVia_withPoints` 当有限制时。"
+msgstr "当存在限制条件时，使用 ``pgr_trspVia_withPoints``"
 
 msgid "Use :doc:`pgr_trspVia_withPoints` instead."
-msgstr "使用 :doc:`pgr_trspVia_withPoints` 代替。"
+msgstr "使用 :doc:`pgr_trspVia_withPoints` 替代。"
 
 msgid "Migration of restrictions"
 msgstr "限制迁移"
@@ -6307,9 +6304,8 @@ msgstr "也许对车辆有一个小障碍，但对行人却没有。"
 msgid ""
 "Once analyzed one by one the touchings, for the ones that need a local fix, "
 "the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__."
-msgstr ""
-"逐一分析触边后，对于需要局部修复的触边，需要 \"拆分<https://postgis.net/docs/"
-"ST_Split.html>`__\"。"
+msgstr "逐条分析接触边后，需局部修复的边线应通过 `分割<https://postgis.net/docs/"
+"ST_Split.html>`__.。"
 
 msgid "Fixing a gap"
 msgstr "弥补差距"
@@ -6317,9 +6313,8 @@ msgstr "弥补差距"
 msgid "Routing from :math:`1` to :math:`2` gives no solution."
 msgstr "从 :math:`1` 到 :math:`2` 的路由无解。"
 
-#, fuzzy
 msgid "Analyze the network for gaps."
-msgstr "现在我们可以分析网络了。"
+msgstr "分析路网的断点情况。"
 
 msgid "The analysis tell us that the network has a gap."
 msgstr "分析表明该路网存在断点。"
@@ -6366,9 +6361,8 @@ msgid ""
 "vertex table will be rebuilt completely."
 msgstr "在本例中：边表需要增加一列，顶点表将完全重建。"
 
-#, fuzzy
 msgid "Insert new edges"
-msgstr "创建两条新边："
+msgstr "插入新边线"
 
 msgid ""
 "Using :doc:`pgr_separateCrossing` and :doc:`pgr_separateTouching` insert the "
@@ -6379,9 +6373,8 @@ msgstr "使用 :doc:`pgr_separateCrossing` 和 :doc:`pgr_separateTouching` "
 msgid "Create the vertices table"
 msgstr "创建顶点表"
 
-#, fuzzy
 msgid "Using :doc:`pgr_extractVertices` create the table."
-msgstr "使用 ``pgr_extractVertices`` 创建路由拓扑"
+msgstr "使用 :doc:`pgr_extractVertices` 创建该表。"
 
 msgid "Contraction of a graph"
 msgstr "图的收缩"
@@ -6419,9 +6412,8 @@ msgid ""
 "The vertex is the limit of a cul-de-sac, a no-through road or a no-exit road."
 msgstr "死端顶点（Dead End Vertex）的拓扑定义。"
 
-#, fuzzy
 msgid "The vertex is on the limit of the imported graph."
-msgstr "当 ``true`` 时，顶点收缩，它不是收缩图的一部分。"
+msgstr "该顶点位于导入图形的边界处。"
 
 msgid "If a larger graph is imported then the vertex might not be a dead end"
 msgstr "如果导入了更大的图，则该顶点可能不会是死端"
@@ -6458,17 +6450,14 @@ msgid ""
 "the segment?"
 msgstr "是否有一个大悬崖，从鹰的角度看，死胡同靠近该路段？"
 
-#, fuzzy
 msgid "Depending on the answer, modification of the data might be needed."
-msgstr "根据函数需要一个或多个内部查询。"
+msgstr "根据分析结果，可能需要对数据进行修改。"
 
-#, fuzzy
 msgid ""
 "When there are many dead ends, to speed up processing, the :doc:`contraction-"
 "family` functions can be used to contract the graph."
-msgstr ""
-"当有很多死端时，为了加快速度，可以使用 :doc:`contraction-family` 函数来划分问"
-"题。"
+msgstr "当存在大量断头节点时，可调用 :doc:`contraction-family` "
+"函数族收缩图形结构以加速处理。"
 
 msgid "Linear edges"
 msgstr "线性边"
@@ -6483,14 +6472,12 @@ msgstr ""
 "当这些顶点表示减速带、停止信号，并且应用程序将其纳入考虑时，这些线性顶点是正"
 "确的。"
 
-#, fuzzy
 msgid ""
 "When there are many linear vertices, that need not to be taken into account, "
 "to speed up the processing, the :doc:`contraction-family` functions can be "
 "used to contract the problem."
-msgstr ""
-"当线性边较多时，为了加快速度，可以使用 :doc:`contraction-family` 函数来划分问"
-"题。"
+msgstr "当图中存在许多不需要考虑的线性顶点时，为了加速处理，可以使用 :doc"
+":`contraction-family` 函数来简化问题。"
 
 msgid "Function's structure"
 msgstr "函数的结构"
@@ -7016,13 +7003,11 @@ msgstr ""
 "在此示例中，使用内部查询 SQL，该 SQL 不包括路由函数中的某些边并且位于结果区域"
 "内。"
 
-#, fuzzy
 msgid "Given this area:"
-msgstr "给定车辆："
+msgstr "针对该区域："
 
-#, fuzzy
 msgid "Calculate a route:"
-msgstr "计算所有列"
+msgstr "计算路线："
 
 msgid "How to contribute"
 msgstr "如何贡献"
@@ -7927,32 +7912,28 @@ msgstr "所有边上的旅行成本都遵循三角不等式。"
 msgid "When ``start_vid = 0 OR end_vid = 0``"
 msgstr "当 ``start_vid = 0 OR end_vid = 0``"
 
-#, fuzzy
 msgid ""
 "The solutions generated are guaranteed to be *twice as long as the optimal "
 "tour in the worst case*"
-msgstr "生成的解决方案保证是*最坏情况下最优路径时间的两倍*"
+msgstr "生成的解在最坏情况下保证 *不超过最优路径长度的两倍*"
 
 msgid "When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
 msgstr "当 ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
 
-#, fuzzy
 msgid ""
 "It is **not guaranteed** that the solution will be, in the worst case, twice "
 "as long as the optimal tour, due to the fact that `end_vid` is forced to be "
 "in a fixed position."
-msgstr ""
-"在最坏情况下， **不能保证** 解决方案将是最优路径的两倍长，因为 `end_vid` 被强"
-"制设置在固定位置。"
+msgstr "由于 `end_vid` 被限制在固定位置，因此**无法保证**在最坏情况下，生成的解长度最"
+"多为最优路线长度的两倍。"
 
 msgid "With ``directed => true``"
 msgstr "当 ``directed => true``"
 
-#, fuzzy
 msgid ""
 "It is **not guaranteed** that the solution will be, in the worst case, twice "
 "as long as the optimal tour"
-msgstr "**不能保证** 在最坏情况下解决方案将是最优路径的两倍长"
+msgstr "**无法保证** 该解在最坏情况下不超过最优路径长度的两倍"
 
 msgid "is directed"
 msgstr "有向"
@@ -8052,9 +8033,8 @@ msgstr "从顶点 :math:`1` 开始"
 msgid "**Line 6** ``start_vid => 1``"
 msgstr "**Line 6** ``start_vid => 1``"
 
-#, fuzzy
 msgid "Using points of interest to generate an asymmetric matrix."
-msgstr "使用兴趣点生成不对称矩阵。"
+msgstr "使用兴趣点（POI）生成非对称矩阵的步骤如下。"
 
 msgid "To generate an asymmetric matrix:"
 msgstr "生成非对称矩阵："
@@ -17741,7 +17721,7 @@ msgid "Moved to legacy"
 msgstr "已移至旧版"
 
 msgid "pgr_labelGraph - Use the components family of functions instead."
-msgstr "pgr_labelGraph - 使用组件系列函数。"
+msgstr "使用连通分量函数族替代 pgr_labelGraph。"
 
 msgid "Max flow - functions were renamed on v2.5.0"
 msgstr "Max flow - 2.5.0 版对函数进行了重命名"
