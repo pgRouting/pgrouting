@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 07:16+0000\n"
+"PO-Revision-Date: 2025-04-27 07:26+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -12078,9 +12078,8 @@ msgstr "该点位于边缘的左侧。"
 msgid "One point dry run execution"
 msgstr "单点模拟执行"
 
-#, fuzzy
 msgid "Using the query from the previous example:"
-msgstr "本示例使用此表设计："
+msgstr "使用上一个示例中的查询："
 
 msgid "Returns ``EMPTY SET``."
 msgstr "返回 ``EMPTY SET``。"
@@ -12097,9 +12096,8 @@ msgid ""
 "requirements, like taking into consideration the SRID."
 msgstr "生成的代码可用作满足其他要求（如考虑 SRID）的起始基础代码。"
 
-#, fuzzy
 msgid "Many points in an edge"
-msgstr "多点示例"
+msgstr "一条边上有许多点"
 
 msgid "The green nodes are the **original points**"
 msgstr "绿色节点为 **原始点**"
@@ -16123,9 +16121,8 @@ msgstr ""
 msgid "C/C++ code enhancemet"
 msgstr "C/C++ 代码增强"
 
-#, fuzzy
 msgid "TRSP family"
-msgstr "Prim族"
+msgstr "TRSP 系列"
 
 msgid "pgRouting 3.7.0 Release Notes"
 msgstr "pgRouting 3.7.0 发布说明"
@@ -16358,40 +16355,36 @@ msgstr ""
 "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ 标准化输出 "
 "pgr_bdAstar"
 
-#, fuzzy
 msgid ""
 "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standardize "
 "output and modifying signature pgr_KSP"
 msgstr ""
-"`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ 标准化输出并修改"
-"签名 pgr_KSP"
+"`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ "
+"标准化输出和修改签名 pgr_KSP"
 
-#, fuzzy
 msgid ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standardize "
 "output pgr_drivingDistance"
 msgstr ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ 标准化输出 "
-"pgr_drivingdistance"
+"pgr_drivingDistance"
 
 msgid "Proposed functions changes"
 msgstr "拟议函数改变"
 
-#, fuzzy
 msgid ""
 "`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standardize "
 "output and modifying signature pgr_withPointsDD"
 msgstr ""
-"`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ 标准化输出并修改"
-"签名 pgr_withPointsDD"
+"`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ "
+"标准化输出和修改签名 pgr_withPointsDD"
 
-#, fuzzy
 msgid ""
 "`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standardize "
 "output and modifying signature pgr_withPointsKSP"
 msgstr ""
-"`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ 标准化输出并修改"
-"签名pgr_withPointsKSP"
+"`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ "
+"标准化输出和修改签名 pgr_withPointsKSP"
 
 msgid ""
 "`#2504 <https://github.com/pgRouting/pgrouting/pull/2504>`__ To C++ pg data "
@@ -16446,13 +16439,10 @@ msgstr ""
 msgid "..rubric:: Standardize SQL"
 msgstr "..rubric::SQL 标准化"
 
-#, fuzzy
 msgid ""
 "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ Standardize "
 "deprecated messages"
-msgstr ""
-"`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ 标准化已弃用的消"
-"息"
+msgstr "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ 过时信息标准化"
 
 msgid ""
 "On new internal function: do not use named parameters and default parameters."
@@ -16688,9 +16678,8 @@ msgstr "流程函数"
 msgid "pgr_maxCardinalityMatch(text)"
 msgstr "pgr_maxCardinalityMatch(text)"
 
-#, fuzzy
 msgid "Deprecating: pgr_maxCardinalityMatch(text,boolean)"
-msgstr "弃用 ``pgr_maxCardinalityMatch(text,boolean)``"
+msgstr "已停用： pgr_maxCardinalityMatch(text,boolean)"
 
 msgid "Deprecated Functions"
 msgstr "已废弃的函数"
