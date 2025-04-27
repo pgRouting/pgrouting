@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
 "PO-Revision-Date: 2025-04-27 06:30+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -12049,9 +12049,8 @@ msgstr "``distance``"
 msgid "Distance from the point to the edge."
 msgstr "点到边线的距离。"
 
-#, fuzzy
 msgid "Original ``POINT`` geometry."
-msgstr "``POINT`` 几何"
+msgstr "原始的 ``POINT`` 几何形状。"
 
 #, fuzzy
 msgid ""
@@ -12060,9 +12059,8 @@ msgid ""
 msgstr ""
 "从 **原始点** 到具有标识符 ``edge_id`` 的边的最近点的 ``LINESTRING`` 几何图形"
 
-#, fuzzy
 msgid "One point in an edge"
-msgstr "单点模拟执行"
+msgstr "边上的一个点"
 
 #, fuzzy
 msgid "The green node is the original point."
