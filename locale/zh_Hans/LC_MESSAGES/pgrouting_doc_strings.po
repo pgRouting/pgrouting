@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 08:33+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2025-04-27 08:39+0000\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -12613,14 +12613,13 @@ msgid ""
 "vertices."
 msgstr "``pgr_lengauerTarjanDominatorTree`` — 返回所有顶点的直接支配者。"
 
-#, fuzzy
 msgid ""
 "The algorithm calculates the *immediate dominator* of each vertex called "
 "**idom**, once **idom** of each vertex is calculated then by making every "
 "**idom** of each vertex as its parent, the dominator tree can be built."
 msgstr ""
-"该算法计算每个顶点的 **直接支配者**（称为 **idom**），一旦计算出每个顶点的 "
-"**idom**，然后通过将每个顶点的 **idom** 作为其父节点，可以构建支配树。"
+"该算法计算每个顶点的 *immediate dominator* ，称为 **idom** 。一旦计算出每个顶"
+"点的**idom**，通过将每个顶点的**idom**作为其父节点，就可以构建支配树。"
 
 msgid "The algorithm works in directed graph only."
 msgstr "该算法仅适用于有向图。"
@@ -18084,9 +18083,8 @@ msgstr "pgr_maxFlowPushRelabel(Many to Many)"
 msgid "pgr_maxFlowEdmondsKarp(One to One)"
 msgstr "pgr_maxFlowEdmondsKarp(One to One)"
 
-#, fuzzy
 msgid "pgr_maxFlowEdmondsKarp(One to Many)"
-msgstr "pgr_maxFlowEdmondsKarp（一对多）"
+msgstr "pgr_maxFlowEdmondsKarp(One to Many)"
 
 #, fuzzy
 msgid "pgr_maxFlowEdmondsKarp(Many to One)"
@@ -18104,13 +18102,11 @@ msgstr "pgr_maxFlowBoykovKolmogorov （一对一）"
 msgid "pgr_maxFlowBoykovKolmogorov (One to Many)"
 msgstr "pgr_maxFlowBoykovKolmogorov （一对多）"
 
-#, fuzzy
 msgid "pgr_maxFlowBoykovKolmogorov (Many to One)"
-msgstr "pgr_maxFlowBoykovKolmogorov （多对一）"
+msgstr "pgr_maxFlowBoykovKolmogorov (Many to One)"
 
-#, fuzzy
 msgid "pgr_maxFlowBoykovKolmogorov (Many to Many)"
-msgstr "pgr_maxFlowBoykovKolmogorov （多对多）"
+msgstr "pgr_maxFlowBoykovKolmogorov (Many to Many)"
 
 msgid "pgr_maximumCardinalityMatching"
 msgstr "pgr_maximumCardinalityMatching"
@@ -18238,13 +18234,11 @@ msgstr "pgr_dijkstra -- 与文档中的内容相匹配"
 msgid "pgr_Johnson"
 msgstr "pgr_Johnson"
 
-#, fuzzy
 msgid "pgr_dijkstraCost(One to One)"
-msgstr "pgr_dijkstraCost(一对一)"
+msgstr "pgr_dijkstraCost(One to One)"
 
-#, fuzzy
 msgid "pgr_dijkstraCost(One to Many)"
-msgstr "pgr_dijkstraNearCost(一对多)"
+msgstr "pgr_dijkstraCost(One to Many)"
 
 msgid "pgr_dijkstraCost(Many to One)"
 msgstr "pgr_dijkstraCost(Many to One)"
@@ -18706,16 +18700,15 @@ msgid ""
 "that everything else is calculated."
 msgstr "拓扑结构的工作流程从插入边开始。然后再计算其他所有内容。"
 
-#, fuzzy
 msgid ""
 "The database design for the documentation of pgRouting, keeps in the same "
 "row 2 segments, one in the direction of the geometry and the second in the "
 "opposite direction. Therefore some information has the ``reverse_`` prefix "
 "which corresponds to the segment on the opposite direction of the geometry."
 msgstr ""
-"pgRouting文档的数据库设计将同一行中的两段保留在一个方向上，其中一个是与几何形"
-"状相同方向的，另一个是与几何形状相反方向的。因此，一些信息具有 ``reverse_`` "
-"前缀，对应于几何形状相反方向的段。"
+"pgRouting 文档中的数据库设计将同一行中保留了两个线段，一段是几何方向的边，另"
+"一段是相反方向的边。因此，一些信息带有 ``reverse_`` "
+"前缀，表示与几何体相反方向的边段。"
 
 msgid "Identifier of the starting vertex of the geometry ``geom``."
 msgstr "几何体 ``geom`` 的起始顶点的标识符。"
@@ -18744,13 +18737,10 @@ msgstr "``reverse_category``"
 msgid ":math:`x` coordinate of the starting vertex of the geometry."
 msgstr ":math:`x` 几何图形起始顶点的坐标。"
 
-#, fuzzy
 msgid ""
 "For convenience it is saved on the table but can be calculated as "
 "``ST_X(ST_StartPoint(geom))``."
-msgstr ""
-"为了方便起见，它被保存在表格中，但也可以计算为 "
-"``ST_X(ST_StartPoint(geom))``。"
+msgstr "为了方便起见，它保存在表格中，但也可以计算为 ``ST_X(ST_StartPoint(geom))`` 。"
 
 msgid ":math:`y` coordinate of the ending vertex of the geometry."
 msgstr ":math:`y` 几何图形结束顶点的坐标。"
@@ -18758,7 +18748,7 @@ msgstr ":math:`y` 几何图形结束顶点的坐标。"
 msgid ""
 "For convenience it is saved on the table but can be calculated as "
 "``ST_Y(ST_EndPoint(geom))``."
-msgstr "为方便起见，它保存在表格中，但也可以计算为 ``ST_Y(ST_EndPoint(geom)) ``。"
+msgstr "为方便起见，它保存在表格中，但也可以计算为 ``ST_Y(ST_EndPoint(geom)) `` 。"
 
 msgid "The geometry of the segments."
 msgstr "分段的几何形状。"
