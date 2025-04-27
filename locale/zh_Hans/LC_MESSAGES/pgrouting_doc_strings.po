@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
 "PO-Revision-Date: 2025-04-27 03:18+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -10201,10 +10201,9 @@ msgid ""
 "from the graph."
 msgstr "从图中删除边 :math:`v \\rightarrow w` 和 :math:`w \\rightarrow z`。"
 
-#, fuzzy
 msgid ""
 "A new edge :math:`1 \\rightarrow 3` is inserted represented with red color."
-msgstr "插入一条新边 :math:`v \\rightarrow z`，以红色表示。"
+msgstr "插入一条新边 :math:`1\\rightarrow 3` ，用红色表示。"
 
 msgid ""
 "Edge :math:`1 \\rightarrow 3` has the information of cost and the nodes that "
@@ -13673,9 +13672,8 @@ msgstr "分析显示该网络存在一处断点和一处交叉。"
 msgid "Storing the intersections."
 msgstr "存储交叉点。"
 
-#, fuzzy
 msgid "Calling ``pgr_nodeNetwork``."
-msgstr "``pgr_nodeNetwork``"
+msgstr "调用 ``pgr_nodeNetwork``。"
 
 #, fuzzy
 msgid ""
@@ -15963,20 +15961,19 @@ msgstr ""
 msgid "Promotion to official function of pgRouting."
 msgstr "升级为 pgRouting 的官方函数。"
 
-#, fuzzy
 msgid ""
 "`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promoted to "
 "official pgr_extractVertices in version 3.8"
 msgstr ""
-"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
-"pgr_extractVertices"
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__：在 3.8 "
+"版中提升为 pgr_extractVertices 正式版本"
 
-#, fuzzy
 msgid ""
 "`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promoted to "
 "official pgr_degree in version 3.8"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__：在 3.8 "
+"版中晋升为正式 pgr_degree"
 
 #, fuzzy
 msgid ""
