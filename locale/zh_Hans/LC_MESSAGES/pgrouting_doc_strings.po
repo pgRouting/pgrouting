@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 08:39+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2025-04-27 08:45+0000\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -13973,6 +13973,8 @@ msgid ""
 "final application or the quality of the data, the code can be obtained On a "
 "PostgreSQL ``NOTICE`` using the ``dryrun`` flag."
 msgstr ""
+"当由于最终应用或数据质量需要特别处理时，可以通过在 PostgreSQL 中使用 "
+"``NOTICE`` 和 ``dryrun`` 标志来获取代码。"
 
 msgid "``pgr_separateTouching``"
 msgstr "``pgr_separateTouching``"
@@ -18086,21 +18088,17 @@ msgstr "pgr_maxFlowEdmondsKarp(One to One)"
 msgid "pgr_maxFlowEdmondsKarp(One to Many)"
 msgstr "pgr_maxFlowEdmondsKarp(One to Many)"
 
-#, fuzzy
 msgid "pgr_maxFlowEdmondsKarp(Many to One)"
-msgstr "pgr_maxFlowEdmondsKarp（多对一）"
+msgstr "pgr_maxFlowEdmondsKarp(Many to One)"
 
-#, fuzzy
 msgid "pgr_maxFlowEdmondsKarp(Many to Many)"
-msgstr "pgr_maxFlowEdmondsKarp（多对多）"
+msgstr "pgr_maxFlowEdmondsKarp(Many to Many)"
 
-#, fuzzy
 msgid "pgr_maxFlowBoykovKolmogorov (One to One)"
-msgstr "pgr_maxFlowBoykovKolmogorov （一对一）"
+msgstr "pgr_maxFlowBoykovKolmogorov (One to One)"
 
-#, fuzzy
 msgid "pgr_maxFlowBoykovKolmogorov (One to Many)"
-msgstr "pgr_maxFlowBoykovKolmogorov （一对多）"
+msgstr "pgr_maxFlowBoykovKolmogorov (One to Many)"
 
 msgid "pgr_maxFlowBoykovKolmogorov (Many to One)"
 msgstr "pgr_maxFlowBoykovKolmogorov (Many to One)"
@@ -18735,7 +18733,9 @@ msgstr ":math:`x` 几何图形起始顶点的坐标。"
 msgid ""
 "For convenience it is saved on the table but can be calculated as "
 "``ST_X(ST_StartPoint(geom))``."
-msgstr "为了方便起见，它保存在表格中，但也可以计算为 ``ST_X(ST_StartPoint(geom))`` 。"
+msgstr ""
+"For convenience it is saved on the table but can be calculated as "
+"``ST_X(ST_StartPoint(geom))``."
 
 msgid ":math:`y` coordinate of the ending vertex of the geometry."
 msgstr ":math:`y` 几何图形结束顶点的坐标。"
@@ -19396,9 +19396,8 @@ msgstr "如果同一条边上有更多点，则递归地重复该过程。"
 msgid "On a left hand side driving network"
 msgstr "在左侧驾驶网络上"
 
-#, fuzzy
 msgid "Arrival to point ``-2`` can be achieved only via vertex **17**."
-msgstr "只能通过顶点 **17** 才能到达点 ``-2``。"
+msgstr "只有通过顶点 **17** 才能到达点 ``-2``。"
 
 msgid "Does not affects edge ``(16, 17)``, therefore the edge is kept."
 msgstr "不影响边 ``(16, 17)`` ，因此保留边。"
