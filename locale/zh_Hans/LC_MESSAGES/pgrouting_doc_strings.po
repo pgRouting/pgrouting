@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
 "PO-Revision-Date: 2025-04-27 07:26+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -12073,7 +12073,7 @@ msgid ""
 msgstr "几何图形 ``edge`` 是连接原始点与边线 :math:`sp \\rightarrow ep` 的线段。"
 
 msgid "The point is located at the left of the edge."
-msgstr "该点位于边缘的左侧。"
+msgstr "该点位于边线的左侧。"
 
 msgid "One point dry run execution"
 msgstr "单点模拟执行"
@@ -12087,9 +12087,8 @@ msgstr "返回 ``EMPTY SET``。"
 msgid "``dryrun => true``"
 msgstr "``dryrun => true``"
 
-#, fuzzy
 msgid "Generates a PostgreSQL ``NOTICE`` with the code used."
-msgstr "生成一个包含用于计算所有列的代码的 PostgreSQL ``NOTICE``"
+msgstr "生成一个包含用于计算所有列的代码的 PostgreSQL ``NOTICE`` 。"
 
 msgid ""
 "The generated code can be used as a starting base code for additional "
@@ -12161,9 +12160,8 @@ msgstr "在这份文档中，将有6个固定的兴趣点，并且它们将被�
 msgid "A unique identifier."
 msgstr "唯一标识符。"
 
-#, fuzzy
 msgid "Identifier of the nearest segment."
-msgstr "顶点的标识符。"
+msgstr "最近边线的标识符。"
 
 #, fuzzy
 msgid "Is it on the left, right or both sides of the segment ``edge_id``."
@@ -16084,12 +16082,12 @@ msgstr ""
 "`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ 在 C++ 上读取 "
 "postgresql 数据"
 
-#, fuzzy
 msgid ""
 "`#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie crashing "
 "on pgr_betweennessCentrality"
 msgstr ""
-"`#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ 使用命名空间。"
+"`#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ 修复 "
+"pgr_betweennessCentrality 导致 winnie 崩溃"
 
 msgid "pgRouting 3.7.1 Release Notes"
 msgstr "pgRouting 3.7.1 发布说明"
@@ -16117,9 +16115,8 @@ msgstr ""
 "`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ 当 point 是顶点"
 "时，withPoints 系列不返回结果。"
 
-#, fuzzy
 msgid "C/C++ code enhancemet"
-msgstr "C/C++ 代码增强"
+msgstr "C/C++ 代码优化"
 
 msgid "TRSP family"
 msgstr "TRSP 系列"
@@ -16161,13 +16158,12 @@ msgstr "Metrics"
 msgid "pgr_betweennessCentrality"
 msgstr "pgr_betweennessCentrality"
 
-#, fuzzy
 msgid ""
 "`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standardize "
 "spanning tree functions output"
 msgstr ""
-"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ 将生成树函数输出"
-"标准化"
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ "
+"标准化生成树函数的输出"
 
 msgid "Functions:"
 msgstr "新函数:"
@@ -16335,19 +16331,16 @@ msgstr ""
 "拉取请求 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
 
-#, fuzzy
 msgid ""
 "`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standardize "
 "output pgr_aStar"
 msgstr ""
-"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ 标准化输出"
+"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ 标准化输出 "
 "pgr_aStar"
 
-#, fuzzy
 msgid "Standardize output columns to |short-generic-result|"
-msgstr "标准输出列|short-generic-result|"
+msgstr "将输出列标准化为 |short-generic-result|"
 
-#, fuzzy
 msgid ""
 "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standardize "
 "output pgr_bdAstar"
@@ -16435,9 +16428,8 @@ msgstr ""
 "`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ 自动页面历史链"
 "接。"
 
-#, fuzzy
 msgid "..rubric:: Standardize SQL"
-msgstr "..rubric::SQL 标准化"
+msgstr "..rubric:: Standardize SQL"
 
 msgid ""
 "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ Standardize "
@@ -16619,9 +16611,8 @@ msgstr "新的拟议函数。"
 msgid "With points"
 msgstr "带点"
 
-#, fuzzy
 msgid "pgr_withPointsVia(One Via)"
-msgstr "pgr_withPointsVia (One Via)"
+msgstr "pgr_withPointsVia(One Via)"
 
 msgid "Turn Restrictions"
 msgstr "转弯限制"
@@ -16629,7 +16620,6 @@ msgstr "转弯限制"
 msgid "Via with turn restrictions"
 msgstr "有转弯限制的通道"
 
-#, fuzzy
 msgid "pgr_trspVia(One Via)"
 msgstr "pgr_trspVia(One Via)"
 
