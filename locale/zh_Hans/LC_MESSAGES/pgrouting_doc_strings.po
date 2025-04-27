@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 06:03+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2025-04-27 06:19+0000\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -10452,11 +10452,10 @@ msgid "When true do not process and get in a NOTICE the resulting query."
 msgstr "当为真时，不要处理查询，而是获取一个通知（NOTICE）来显示查询的结果。"
 
 msgid "For the `Edges and Vertices`_ signature:"
-msgstr "对于 \"边和顶点\"_签名："
+msgstr "关于 `Edges and Vertices`_ 签名："
 
-#, fuzzy
 msgid "For the `Edges`_ signature:"
-msgstr "关于已弃用的签名："
+msgstr "关于 `Edges`_ 签名："
 
 msgid "Vertex SQL"
 msgstr "Vertex SQL"
@@ -10529,14 +10528,10 @@ msgstr "它们的度数不会在输出结果中显示。"
 msgid "Using a vertex table"
 msgstr "在顶点表上"
 
-#, fuzzy
 msgid ""
 "For decent size networks, it is best to prepare your vertices table before "
 "hand and use it on ``pgr_degree`` calls."
-msgstr ""
-"`pgr_degree`可以利用 `pgr_extractVertices` 的输出，或者可以在调用中嵌入"
-"`pgr_extractVertices`。对于较大规模的网络，最好提前准备好顶点表并在"
-"`pgr_degree`调用中使用该顶点表。"
+msgstr "对于较大规模的网络，建议预先准备顶点表并在调用 ``pgr_degree`` 时使用。"
 
 #, fuzzy
 msgid "Extract the vertex information and save into a table:"
@@ -10555,9 +10550,8 @@ msgid ""
 "backend development needs."
 msgstr "结果可作为基础代码，根据后台开发需要进行改进。"
 
-#, fuzzy
 msgid "Finding dead ends"
-msgstr "死端"
+msgstr "查找断头节点"
 
 #, fuzzy
 msgid ""
@@ -10570,9 +10564,8 @@ msgstr ""
 "不是子集，则可以放弃使用 pgr_degree 并直接使用 ``in_edges`` 和 ``out_edges`` "
 "列。"
 
-#, fuzzy
 msgid "The degree of a dead end is 1."
-msgstr "绿色节点是 `死端`_ 节点"
+msgstr "断头节点的度数为 1。"
 
 #, fuzzy
 msgid "Finding linear vertices"
@@ -10582,10 +10575,9 @@ msgstr "添加新的顶点"
 msgid "The degree of a linear vertex is 2."
 msgstr "相邻顶点的数量为2。"
 
-#, fuzzy
 msgid ""
 "If there is a vertices table already built using the ``pgr_extractVertices``"
-msgstr "要获取顶点信息，请使用 :doc:`pgr_extractVertices`"
+msgstr "若已使用 ``pgr_extractVertices`` 构建顶点表"
 
 msgid ":doc:`pgr_extractVertices`"
 msgstr ":doc:`pgr_extractVertices`"
@@ -10658,12 +10650,11 @@ msgstr "**options:** ``[directed, max_depth]``"
 msgid "Same as `Single vertex`_ but with edges in descending order of ``id``."
 msgstr "与 `单顶点`_ 相同，但边按 ``id`` 降序排列。"
 
-#, fuzzy
 msgid ""
 "`Boost: Depth First Search <https://www.boost.org/libs/graph/doc/"
 "depth_first_search.html>`__"
 msgstr ""
-"`Boost：深度优先搜索算法文档 <https://www.boost.org/libs/graph/doc/"
+"`Boost: Depth First Search <https://www.boost.org/libs/graph/doc/"
 "depth_first_search.html>`__"
 
 msgid ""
@@ -11794,9 +11785,8 @@ msgstr "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 msgstr "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 
-#, fuzzy
 msgid "``pgr_extractVertices``"
-msgstr "pgr_extractVertices"
+msgstr "``pgr_extractVertices``"
 
 msgid "``pgr_extractVertices`` — Extracts the vertices information"
 msgstr "``pgr_extractVertices`` — 提取顶点信息"
@@ -11946,9 +11936,8 @@ msgstr "``pgr_findCloseEdges``"
 msgid "``pgr_findCloseEdges`` - Finds the close edges to a point geometry."
 msgstr "``pgr_findCloseEdges`` -查找点几何图形的闭合边。"
 
-#, fuzzy
 msgid "``partial`` option is removed."
-msgstr "``n_seq`` 被删除"
+msgstr "``partial`` 选项已被移除。"
 
 msgid ""
 "``pgr_findCloseEdges`` - An utility function that finds the closest edge to "
@@ -11966,9 +11955,8 @@ msgid ""
 "adjustments needed by the application."
 msgstr "可以获取计算代码，以便根据应用需要进行进一步的具体调整。"
 
-#, fuzzy
 msgid "``EMPTY SET`` is returned on dryrun executions"
-msgstr "空运行执行时返回 ``EMTPY SET``"
+msgstr "空结果集 ``EMPTY SET`` 会在试运行中返回"
 
 msgid ""
 "pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])"
@@ -11980,9 +11968,8 @@ msgid ""
 msgstr ""
 "pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])"
 
-#, fuzzy
 msgid "**options:** ``[cap, dryrun]``"
-msgstr "**options:** ``[cap, partial, dryrun]``"
+msgstr "**options:** ``[cap, dryrun]``"
 
 msgid "Returns set of |result-find|"
 msgstr "返回集合 |result-find|"
