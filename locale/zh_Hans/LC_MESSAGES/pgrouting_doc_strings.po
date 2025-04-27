@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
 "PO-Revision-Date: 2025-04-27 02:36+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -12260,17 +12260,16 @@ msgstr "点的几何形状。"
 msgid "The distance between ``geom`` and the segment ``edge_id``."
 msgstr "它位于边 ``edge_id`` 的左侧、右侧还是两侧"
 
-#, fuzzy
 msgid ""
 "A segment that connects the ``geom`` of the point to the closest point on "
 "the segment ``edge_id``."
-msgstr "它位于边 ``edge_id`` 的左侧、右侧还是两侧"
+msgstr "连接点的 ``geom`` 与线段 ``edge_id` 上最近点的线段。"
 
 msgid "``newPoint``"
 msgstr "``newPoint``"
 
 msgid "A point on segment ``edge_id`` that is the closest to ``geom``."
-msgstr ""
+msgstr "线段 ``edge_id`` 上最靠近 ``geom`` 的点。"
 
 msgid "Points of interest fill up"
 msgstr "兴趣点填充"
@@ -12441,9 +12440,8 @@ msgstr "该算法输出图中存在的不同电路。"
 msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
 msgstr "时间复杂度： :math:`O((V + E) (c + 1))`"
 
-#, fuzzy
 msgid ":math:`|c|` is the number of circuits in the graph."
-msgstr ":math:`|c|` 是图中的电路数量。"
+msgstr ":math:`|c|` 是图中电路的数目。"
 
 msgid "pgr_hawickCircuits(`Edges SQL`_)"
 msgstr "pgr_hawickCircuits(`Edges SQL`_)"
@@ -12457,10 +12455,9 @@ msgstr "pgRouting :doc:`sampledata` 中存在的电路"
 msgid "Id of the circuit starting from ``1``"
 msgstr "电路id从 ``1`` 开始"
 
-#, fuzzy
 msgid ""
 "Relative position in the path. Has value ``0`` for beginning of the path"
-msgstr "路径中的相对位置。 路径开头的值为 ``0``"
+msgstr "在路径中的相对位置。数值\"`0```\"表示路径的起点"
 
 msgid "Identifier of the starting vertex of the circuit."
 msgstr "电路起始顶点的标识符。"
