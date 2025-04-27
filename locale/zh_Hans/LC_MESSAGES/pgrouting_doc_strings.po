@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 08:11+0000\n"
+"PO-Revision-Date: 2025-04-27 08:16+0000\n"
 "Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -15937,7 +15937,7 @@ msgstr ""
 "pgr_nodeNetwork"
 
 msgid "Deprecation of SQL functions"
-msgstr "SQL 函数的停用"
+msgstr "SQL 函数的弃用"
 
 #, fuzzy
 msgid ""
@@ -15946,12 +15946,12 @@ msgid ""
 msgstr ""
 "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
 
-#, fuzzy
 msgid ""
 "`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: Deprecate "
 "pgr_CreateTopology in 3.8"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__：在 3.8 "
+"中弃用 pgr_CreateTopology"
 
 #, fuzzy
 msgid ""
@@ -15960,12 +15960,12 @@ msgid ""
 msgstr ""
 "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
 
-#, fuzzy
 msgid ""
 "`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: Deprecate "
 "pgr_analyzeOneWay in 3.8"
 msgstr ""
-"`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__：在 3.8 "
+"中弃用 pgr_analyzeOneWay"
 
 #, fuzzy
 msgid ""
@@ -15975,17 +15975,14 @@ msgstr ""
 "`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
 "pgr_extractVertices"
 
-#, fuzzy
 msgid "In the deprecated functions:"
-msgstr "已废弃的功能"
+msgstr "已弃用的函数中："
 
-#, fuzzy
 msgid "Migration section is created."
-msgstr "限制迁移"
+msgstr "迁移部分已创建。"
 
-#, fuzzy
 msgid "The use of the functions is removed in the documentation."
-msgstr "这个问题的答案将取决于应用情况。"
+msgstr "文档中已移除这些函数的使用说明。"
 
 msgid "pgRouting 3.7"
 msgstr "pgRouting 3.7"
