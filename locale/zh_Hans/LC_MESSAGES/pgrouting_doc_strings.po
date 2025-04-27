@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
 "PO-Revision-Date: 2025-04-27 05:43+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -7666,9 +7666,8 @@ msgstr "所有签名均已升级为正式版本。"
 msgid "Version 3.6.0"
 msgstr "版本3.6.0"
 
-#, fuzzy
 msgid "Standardizing output columns to |nksp-result|"
-msgstr "标准化输出列为 |nksp-result|"
+msgstr "将输出列标准化为 |nksp-result|"
 
 msgid "pgr_ksp(One to One)"
 msgstr "pgr_ksp(一对一)"
@@ -10016,15 +10015,13 @@ msgid ""
 "contracted:"
 msgstr "在收缩 :math:`3` 后，节点 :math:`2` 变成了断头节点，并被继续收缩："
 
-#, fuzzy
 msgid ""
 "After contracting :math:`2`, stop. Node :math:`1` has the information of "
 "nodes that were contracted."
-msgstr "在收缩 :math:`v` 之后，停止。节点 :math:`u` 有已收缩节点的信息。"
+msgstr "收缩 :math:`2` 后，停止。节点 :math:`1` 包含已收缩节点的信息。"
 
-#, fuzzy
 msgid "Creating the contracted graph"
-msgstr "使用收缩图"
+msgstr "创建收缩图"
 
 msgid "Steps for the creation of the contracted graph"
 msgstr "创建收缩图的步骤"
@@ -10032,9 +10029,8 @@ msgstr "创建收缩图的步骤"
 msgid "Add additional columns."
 msgstr "添加额外的列。"
 
-#, fuzzy
 msgid "Save results into a table."
-msgstr "将 `收缩结果`_ 存储在表中"
+msgstr "将结果保存到表格中。"
 
 msgid "The contracted vertices are not part of the contracted graph."
 msgstr "收缩后的顶点不包含在收缩图中。"
@@ -10147,9 +10143,8 @@ msgid ""
 "example from the following graph there are linear edges"
 msgstr "线性收缩将在没有更多线性边时停止。例如，在下图中存在线性边"
 
-#, fuzzy
 msgid "Contracting vertex :math:`3`,"
-msgstr "收缩 :math:`w`，"
+msgstr "收缩顶点 :math:`3`、"
 
 #, fuzzy
 msgid "The vertex :math:`3` is removed from the graph"
