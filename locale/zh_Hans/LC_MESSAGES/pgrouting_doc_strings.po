@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 07:26+0000\n"
+"PO-Revision-Date: 2025-04-27 07:34+0000\n"
 "Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -12051,12 +12051,10 @@ msgstr "点到边线的距离。"
 msgid "Original ``POINT`` geometry."
 msgstr "原始的 ``POINT`` 几何形状。"
 
-#, fuzzy
 msgid ""
 "``LINESTRING`` geometry that connects the original **point** to the closest "
 "point of the edge with identifier ``edge_id``"
-msgstr ""
-"从 **原始点** 到具有标识符 ``edge_id`` 的边的最近点的 ``LINESTRING`` 几何图形"
+msgstr "``LINESTRING`` 几何图形，连接原始 **点** 到标识符为 ``edge_id`` 边线上最近点"
 
 msgid "One point in an edge"
 msgstr "边线上的一个点"
@@ -12163,9 +12161,8 @@ msgstr "唯一标识符。"
 msgid "Identifier of the nearest segment."
 msgstr "最近边线的标识符。"
 
-#, fuzzy
 msgid "Is it on the left, right or both sides of the segment ``edge_id``."
-msgstr "它位于边 ``edge_id`` 的左侧、右侧还是两侧"
+msgstr "位于边线 ``edge_id`` 的左侧、右侧还是两侧。"
 
 msgid "Where in the segment is the point located."
 msgstr "该点位于边的哪个位置。"
@@ -12173,9 +12170,8 @@ msgstr "该点位于边的哪个位置。"
 msgid "The geometry of the points."
 msgstr "点的几何形状。"
 
-#, fuzzy
 msgid "The distance between ``geom`` and the segment ``edge_id``."
-msgstr "它位于边 ``edge_id`` 的左侧、右侧还是两侧"
+msgstr "``geom`` 与边线 ``edge_id`` 之间的距离。"
 
 msgid ""
 "A segment that connects the ``geom`` of the point to the closest point on "
@@ -12969,13 +12965,10 @@ msgstr "返回 |result-linegf| 的集合"
 msgid "Full line graph of subgraph of edges :math:`\\{4, 7, 8, 10\\}`"
 msgstr "边 :math:`\\{4, 7, 8, 10\\}` 子图的全线图"
 
-#, fuzzy
 msgid ""
 "The examples include the subgraph including edges 4, 7, 8, and 10 with "
 "``reverse_cost``."
-msgstr ""
-"本节的示例基于 :doc:`sampledata` 网络。 这些示例包括包含具有 "
-"``reverse_cost`` 的边 4、7、8 和 10 的子图。"
+msgstr "示例包含边线 4、7、8 和 10 构成的子图，且包含 ``reverse_cost`` 。"
 
 msgid "The data"
 msgstr "数据"
@@ -16669,7 +16662,7 @@ msgid "pgr_maxCardinalityMatch(text)"
 msgstr "pgr_maxCardinalityMatch(text)"
 
 msgid "Deprecating: pgr_maxCardinalityMatch(text,boolean)"
-msgstr "已停用： pgr_maxCardinalityMatch(text,boolean)"
+msgstr "已弃用： pgr_maxCardinalityMatch(text,boolean)"
 
 msgid "Deprecated Functions"
 msgstr "已废弃的函数"
@@ -17366,44 +17359,35 @@ msgstr "pgRouting 中的拟议已升级为正式版本"
 msgid "aStar Family"
 msgstr "aStar族"
 
-#, fuzzy
 msgid "pgr_aStarCost(One to One)"
-msgstr "pgr_aStarCost(一对一)"
+msgstr "pgr_aStarCost(One to One)"
 
-#, fuzzy
 msgid "pgr_aStarCost(One to Many)"
-msgstr "pgr_aStarCost(一对多)"
+msgstr "pgr_aStarCost(One to Many)"
 
-#, fuzzy
 msgid "pgr_aStarCost(Many to One)"
-msgstr "pgr_aStarCost(多对一)"
+msgstr "pgr_aStarCost(Many to One)"
 
-#, fuzzy
 msgid "pgr_aStarCost(Many to Many)"
-msgstr "pgr_aStarCost（多对多）"
+msgstr "pgr_aStarCost(Many to Many)"
 
-#, fuzzy
 msgid "pgr_aStarCostMatrix"
-msgstr "pgr_astarCostMatrix"
+msgstr "pgr_aStarCostMatrix"
 
 msgid "bdAstar Family"
 msgstr "bdAstar 族"
 
-#, fuzzy
 msgid "pgr_bdAstarCost(One to One)"
-msgstr "pgr_bdAstarCost(一对一)"
+msgstr "pgr_bdAstarCost(One to One)"
 
-#, fuzzy
 msgid "pgr_bdAstarCost(One to Many)"
-msgstr "pgr_bdAstarCost(一对多)"
+msgstr "pgr_bdAstarCost(One to Many)"
 
-#, fuzzy
 msgid "pgr_bdAstarCost(Many to One)"
-msgstr "pgr_bdAstarCost （多对一）"
+msgstr "pgr_bdAstarCost(Many to One)"
 
-#, fuzzy
 msgid "pgr_bdAstarCost(Many to Many)"
-msgstr "pgr_bdAstarCost (多对多)"
+msgstr "pgr_bdAstarCost(Many to Many)"
 
 msgid "pgr_bdAstarCostMatrix"
 msgstr "pgr_bdAstarCostMatrix"
@@ -17411,21 +17395,17 @@ msgstr "pgr_bdAstarCostMatrix"
 msgid "bdDijkstra Family"
 msgstr "bdDijkstra族"
 
-#, fuzzy
 msgid "pgr_bdDijkstraCost(One to One)"
-msgstr "pgr_bdDijkstraCost (一对一)"
+msgstr "pgr_bdDijkstraCost(One to One)"
 
-#, fuzzy
 msgid "pgr_bdDijkstraCost(One to Many)"
-msgstr "pgr_bdDijkstraCost(一对多)"
+msgstr "pgr_bdDijkstraCost(One to Many)"
 
-#, fuzzy
 msgid "pgr_bdDijkstraCost(Many to One)"
-msgstr "pgr_bdDijkstraCost (多对一)"
+msgstr "pgr_bdDijkstraCost(Many to One)"
 
-#, fuzzy
 msgid "pgr_bdDijkstraCost(Many to Many)"
-msgstr "pgr_bdDijkstraCost（多对多）"
+msgstr "pgr_bdDijkstraCost(Many to Many)"
 
 msgid "pgr_bdDijkstraCostMatrix"
 msgstr "pgr_bdDijkstraCostMatrix"
@@ -17433,9 +17413,8 @@ msgstr "pgr_bdDijkstraCostMatrix"
 msgid "Flow Family"
 msgstr "Flow族"
 
-#, fuzzy
 msgid "pgr_pushRelabel(One to One)"
-msgstr "pgr_pushRelabel(一对一)"
+msgstr "pgr_pushRelabel(One to One)"
 
 #, fuzzy
 msgid "pgr_pushRelabel(One to Many)"
