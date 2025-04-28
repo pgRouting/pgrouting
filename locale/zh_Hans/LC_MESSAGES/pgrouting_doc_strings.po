@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-28 08:28+0000\n"
+"PO-Revision-Date: 2025-04-28 08:41+0000\n"
 "Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -5317,7 +5317,7 @@ msgid ":doc:`pgr_trsp`"
 msgstr ":doc:`pgr_trsp`"
 
 msgid "`Migration of restrictions`_"
-msgstr "`Migration of restrictions`_"
+msgstr "`迁移限制`_"
 
 msgid "Use ``pgr_dijkstra`` when there are no restrictions."
 msgstr "当没有限制条件时，使用 ``pgr_dijkstra`` 。"
@@ -7677,7 +7677,7 @@ msgid "New proposed signatures:"
 msgstr "新提议的签名："
 
 msgid "pgr_ksp(One to Many)"
-msgstr "pgr_ksp(一对多)"
+msgstr "pgr_ksp(One to Many)"
 
 msgid "pgr_ksp(Many to One)"
 msgstr "pgr_ksp(Many to One)"
@@ -7686,7 +7686,7 @@ msgid "pgr_ksp(Many to Many)"
 msgstr "pgr_ksp(Many to Many)"
 
 msgid "pgr_ksp(Combinations)"
-msgstr "pgr_ksp(组合)"
+msgstr "pgr_ksp(Combinations)"
 
 msgid "Version 2.1.0"
 msgstr "版本2.1.0"
@@ -7701,7 +7701,7 @@ msgid "Version 2.0.0"
 msgstr "版本2.0.0"
 
 msgid "Official function."
-msgstr "官方 函数"
+msgstr "官方函数。"
 
 msgid ""
 "The K shortest path routing algorithm based on Yen's algorithm. \"K\" is the "
@@ -8218,7 +8218,7 @@ msgid "Version 2.4.0"
 msgstr "版本2.4.0"
 
 msgid "pgr_aStar(One to Many)"
-msgstr "pgr_aStar(一对多）"
+msgstr "pgr_aStar(One to Many)"
 
 msgid "pgr_aStar(Many to One)"
 msgstr "pgr_aStar(Many to One)"
@@ -8490,7 +8490,7 @@ msgid "pgr_bdAstar(Many to One) added ``start_vid`` column."
 msgstr "pgr_bdAstar(Many to One) 添加了 ``start_vid`` 列。"
 
 msgid "pgr_bdAstar(One to Many)"
-msgstr "pgr_bdAstar（一对多）"
+msgstr "pgr_bdAstar(One to Many)"
 
 msgid "pgr_bdAstar(Many to One)"
 msgstr "pgr_bdAstar(Many to One)"
@@ -9351,7 +9351,7 @@ msgid ""
 "`Boost: Connected components <https://www.boost.org/libs/graph/doc/"
 "connected_components.html>`__"
 msgstr ""
-"`Boost: Connected components <https://www.boost.org/libs/graph/doc/"
+"`Boost: 已连接的组件 <https://www.boost.org/libs/graph/doc/"
 "connected_components.html>`__"
 
 msgid "``pgr_chinesePostman`` - Experimental"
@@ -10251,7 +10251,7 @@ msgstr ""
 "Cuthill%E2%80%93McKee_algorithm>`__"
 
 msgid "``pgr_dagShortestPath`` - Experimental"
-msgstr "pgr_dagShortestPath - 实验性"
+msgstr "``pgr_dagShortestPath`` - 实验性"
 
 msgid ""
 "``pgr_dagShortestPath`` — Returns the shortest path for weighted directed "
@@ -10407,7 +10407,7 @@ msgid "Edges"
 msgstr "边"
 
 msgid "example"
-msgstr "example"
+msgstr "示例"
 
 msgid "Get the degree of the vertices defined on the edges table"
 msgstr "获取边线表定义的顶点度数"
@@ -10680,7 +10680,7 @@ msgid "Version 2.2.0"
 msgstr "版本 2.2.0"
 
 msgid "pgr_dijkstra(One to Many)"
-msgstr "pgr_dijkstra(一对多)"
+msgstr "pgr_dijkstra(One to Many)"
 
 msgid "pgr_dijkstra(Many to One)"
 msgstr "pgr_dijkstra(Many to One)"
@@ -10897,7 +10897,7 @@ msgstr "`pgr_dijkstraCost`` - 使用 Dijkstra 算法计算最短路径的总成�
 msgid ""
 "The ``pgr_dijkstraCost`` function summarizes of the cost of the shortest "
 "path using Dijkstra Algorithm."
-msgstr "``pgr_dijkstraCost`` 函数用于汇总使用 Dijkstra 算法计算出的最短路径的代价。"
+msgstr "``pgr_dijkstraCost`` 使用 Dijkstra 算法计算出的最短路径的代价。"
 
 msgid ""
 "pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
@@ -18714,13 +18714,11 @@ msgstr "该值被直接保存到表中，但实际上可以通过此函数进行
 msgid ":math:`y` coordinate of the ending vertex of the geometry."
 msgstr ":math:`y` 几何图形结束顶点的坐标。"
 
-#, fuzzy
 msgid ""
 "For convenience it is saved on the table but can be calculated as "
 "``ST_Y(ST_EndPoint(geom))``."
-msgstr ""
-"For convenience it is saved on the table but can be calculated as "
-"``ST_Y(ST_EndPoint(geom))``."
+msgstr "该值被直接保存到表中，但实际上可以通过此函数进行动态计算 "
+"``ST_Y(ST_EndPoint(geom))`` 。"
 
 msgid "The geometry of the segments."
 msgstr "分段的几何形状。"
