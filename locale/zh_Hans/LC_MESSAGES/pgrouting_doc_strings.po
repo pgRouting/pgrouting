@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-22 23:45+0000\n"
-"PO-Revision-Date: 2025-04-27 12:05+0000\n"
+"PO-Revision-Date: 2025-04-28 02:03+0000\n"
 "Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -3891,7 +3891,7 @@ msgstr ""
 "postgresql.org>`__ 地理空间数据库，以提供地理空间路由和其他网络分析功能。"
 
 msgid "This is the manual for pgRouting |release|."
-msgstr "这是pgRouting|release|的手册。"
+msgstr "这是pgRouting |release| 手册 。"
 
 msgid "Creative Commons Attribution-Share Alike 3.0 License"
 msgstr "知识共享署名 - 相同方式共享 3.0 许可证"
@@ -3908,7 +3908,7 @@ msgstr ""
 "<https://creativecommons.org/licenses/by-sa/3.0/>`_。 您可以随意使用本材料，"
 "但我们要求您将功劳归功于 pgRouting 项目，并尽可能提供返回 https://"
 "pgrouting.org 的链接。 有关 pgRouting 中使用的其他许可证，请参阅 "
-":ref:`license` page.。"
+":ref:`license` 。"
 
 msgid "General"
 msgstr "常规"
@@ -4649,13 +4649,13 @@ msgid "Signatures to be migrated:"
 msgstr "要迁移的签名："
 
 msgid "``pgr_aStar`` (`One to One`)"
-msgstr "``pgr_aStar`` (`一对一`)"
+msgstr "``pgr_aStar`` (`One to One`)"
 
 msgid "``pgr_aStar`` (`One to Many`)"
 msgstr "``pgr_aStar`` (`一对多`)"
 
 msgid "``pgr_aStar`` (`Many to One`)"
-msgstr "``pgr_aStar`` (`多对一`)"
+msgstr "``pgr_aStar`` (`Many to One`)"
 
 msgid "Before Migration"
 msgstr "迁移前"
@@ -4670,13 +4670,13 @@ msgstr "根据所使用的重载， ``start_vid`` 和``end_vid`` 列可能会丢
 
 msgid ""
 "``pgr_aStar`` (`One to One`) does not have ``start_vid`` and ``end_vid``."
-msgstr "``pgr_aStar`` (`一对一`)没有 ``start_vid`` 和 ``end_vid``。"
+msgstr "``pgr_aStar`` (`One to One`) 没有 ``start_vid`` 和 ``end_vid``。"
 
 msgid "``pgr_aStar`` (`One to Many`) does not have ``start_vid``."
 msgstr "``pgr_aStar`` (`一对多`) 没有 ``start_vid``。"
 
 msgid "``pgr_aStar`` (`Many to One`) does not have ``end_vid``."
-msgstr "``pgr_aStar`` (`多对一`)没有 ``end_vid``。"
+msgstr "``pgr_aStar`` (`Many to One`) 没有 ``end_vid``。"
 
 msgid "Migration"
 msgstr "迁移"
@@ -4685,7 +4685,7 @@ msgid "Be aware of the existence of the additional columns."
 msgstr "注意附加栏的存在。"
 
 msgid "In ``pgr_aStar`` (`One to One`)"
-msgstr "在 ``pgr_aStar`` (`一对一`)中"
+msgstr "在 ``pgr_aStar`` (`One to One`) 中"
 
 msgid "``start_vid`` contains the **start vid** parameter value."
 msgstr "``start_vid`` 包含 **起始 vid** 参数值。"
@@ -4697,7 +4697,7 @@ msgid "In ``pgr_aStar`` (`One to Many`)"
 msgstr "在 ``pgr_aStar`` (`一对多`)中"
 
 msgid "In ``pgr_aStar`` (`Many to One`)"
-msgstr "在 ``pgr_aStar`` (`多对一`)中"
+msgstr "在 ``pgr_aStar`` (`Many to One`) 中"
 
 msgid "If needed filter out the added columns, for example:"
 msgstr "如果需要，过滤掉添加的列，例如："
@@ -4715,9 +4715,9 @@ msgid ""
 "both-source-and-target-belong-to-the-contracted-graph>`__ the function "
 "``my_dijkstra`` uses ``pgr_dijkstra``."
 msgstr ""
-"在`v3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-"
-"both-source-and-target-belong-to-the-contracted-graph>`__ 中，函数"
-"``my_dijkstra`` 使用 ``pgr_dijkstra``。"
+"在 `v3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1"
+"-both-source-and-target-belong-to-the-contracted-graph>`__ "
+"，函数``my_dijkstra`` 使用 ``pgr_dijkstra``。"
 
 msgid ""
 "Starting from `v3.5 <https://docs.pgrouting.org/3.5/en/contraction-family."
@@ -4743,22 +4743,22 @@ msgstr "``pgr_bdAstar`` (`Many to One`)"
 
 msgid ""
 "``pgr_bdAstar`` (`One to One`) does not have ``start_vid`` and ``end_vid``."
-msgstr "``pgr_bdAstar`` (`一对一`)没有 ``start_vid`` 和 ``end_vid``。"
+msgstr "``pgr_bdAstar`` (`One to One`) 没有 ``start_vid`` 和 ``end_vid``。"
 
 msgid "``pgr_bdAstar`` (`One to Many`) does not have ``start_vid``."
 msgstr "``pgr_bdAstar`` (`一对多`) 没有 ``start_vid``。"
 
 msgid "``pgr_bdAstar`` (`Many to One`) does not have ``end_vid``."
-msgstr "``pgr_bdAstar`` (`多对一`) 没有 ``end_vid``。"
+msgstr "``pgr_bdAstar`` (`Many to One`) 没有 ``end_vid``。"
 
 msgid "In ``pgr_bdAstar`` (`One to One`)"
-msgstr "在 ``pgr_bdAstar`` (`一对一`)中"
+msgstr "在 ``pgr_bdAstar`` (`One to One`) 中"
 
 msgid "In ``pgr_bdAstar`` (`One to Many`)"
 msgstr "在 ``pgr_bdAstar`` (`一对多`)中"
 
 msgid "In ``pgr_bdAstar`` (`Many to One`)"
-msgstr "在 ``pgr_bdAstar`` (`多对一`)中"
+msgstr "在 ``pgr_bdAstar`` (`Many to One`) 中"
 
 msgid "Migration of ``pgr_dijkstra``"
 msgstr "Migration of ``pgr_dijkstra``"
@@ -4768,32 +4768,32 @@ msgid ""
 msgstr "开始于 `v3.5.0 <https://docs.pgrouting.org/3.5/en/migration.html>`__"
 
 msgid "``pgr_dijkstra`` (`One to One`)"
-msgstr "``pgr_dijkstra`` (`一对一`)"
+msgstr "``pgr_dijkstra`` (`One to One`)"
 
 msgid "``pgr_dijkstra`` (`One to Many`)"
 msgstr "``pgr_dijkstra`` (`一对多`)"
 
 msgid "``pgr_dijkstra`` (`Many to One`)"
-msgstr "``pgr_dijkstra`` (`多对一`)"
+msgstr "``pgr_dijkstra`` (`Many to One`)"
 
 msgid ""
 "``pgr_dijkstra`` (`One to One`) does not have ``start_vid`` and ``end_vid``."
-msgstr "``pgr_dijkstra`` (`一对一`)没有 ``start_vid`` 和 ``end_vid``。"
+msgstr "``pgr_dijkstra`` (`One to One`) 没有 ``start_vid`` 和 ``end_vid``。"
 
 msgid "``pgr_dijkstra`` (`One to Many`) does not have ``start_vid``."
 msgstr "``pgr_dijkstra`` (`一对多`) 没有 ``start_vid``。"
 
 msgid "``pgr_dijkstra`` (`Many to One`) does not have ``end_vid``."
-msgstr "``pgr_dijkstra`` (`多对一`) 没有 ``end_vid``。"
+msgstr "``pgr_dijkstra`` (`Many to One`) 没有 ``end_vid``。"
 
 msgid "In ``pgr_dijkstra`` (`One to One`)"
-msgstr "在 ``pgr_dijkstra`` (`一对一`)中"
+msgstr "在 ``pgr_dijkstra`` (`One to One`) 中"
 
 msgid "In ``pgr_dijkstra`` (`One to Many`)"
 msgstr "在 ``pgr_dijkstra`` (`一对多`)中"
 
 msgid "In ``pgr_dijkstra`` (`Many to One`)"
-msgstr "在 ``pgr_dijkstra`` (`多对一`)中"
+msgstr "在 ``pgr_dijkstra`` (`Many to One`) 中"
 
 msgid "If needed add the new columns, for example:"
 msgstr "如果需要，过滤掉添加的列，例如："
@@ -4845,8 +4845,8 @@ msgid ""
 "Using `this <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance."
 "html#single-vertex>`__ example."
 msgstr ""
-"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-"
-"vertex>`__ 示例。"
+"使用 `这个 <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html"
+"#single-vertex>`__ 示例。"
 
 msgid "``depth`` contains the depth of the ``node``."
 msgstr "``depth`` 包含 ``node`` 的深度。"
@@ -4876,8 +4876,7 @@ msgstr "如有需要，可过滤掉列并重新命名列，例如，返回原始
 
 msgid ""
 "Migration of ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``"
-msgstr ""
-"Migration of ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``"
+msgstr "迁移 ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``"
 
 msgid ""
 "Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
@@ -4895,7 +4894,7 @@ msgid "``pgr_kruskalDD``"
 msgstr "``pgr_kruskalDD``"
 
 msgid "Single vertex"
-msgstr "单顶点"
+msgstr "单个顶点"
 
 msgid "Multiple vertices"
 msgstr "多个顶点"
@@ -4910,7 +4909,7 @@ msgid "Output columns were |result-bfs|"
 msgstr "输出列为 |result-bfs|"
 
 msgid "Single vertex and Multiple vertices"
-msgstr "单顶点和多顶点"
+msgstr "单个顶点和多个顶点"
 
 msgid "Do not have ``pred`` result column."
 msgstr "没有 ``pred`` 结果列。"
@@ -4922,7 +4921,7 @@ msgid "If needed filter out the added columns"
 msgstr "如果需要，可过滤掉添加的列"
 
 msgid "Kruskal single vertex"
-msgstr "Kruskal 单顶点"
+msgstr "Kruskal 单个顶点"
 
 msgid ""
 "Using ``pgr_KruskalDD`` as example. Migration is similar to al the affected "
@@ -4941,7 +4940,7 @@ msgid ""
 msgstr "现在列 ``pred`` 已经存在，并包含了 ``node`` 的前置节点。"
 
 msgid "Kruskal multiple vertices"
-msgstr "Kruskal 多顶点"
+msgstr "Kruskal 多个顶点"
 
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
@@ -4967,7 +4966,7 @@ msgid "|nksp-result|"
 msgstr "|nksp-result|"
 
 msgid "``pgr_KSP`` (One to One)"
-msgstr "``pgr_KSP`` (一对一)"
+msgstr "``pgr_KSP`` (One to One)"
 
 msgid "Output columns were |ksp-result|"
 msgstr "输出列是 |ksp-result|"
@@ -4976,14 +4975,14 @@ msgid "the columns ``start_vid`` and ``end_vid`` do not exist."
 msgstr "``start_vid`` 和 ``end_vid`` 列不存在。"
 
 msgid "``pgr_KSP`` (One to One) does not have ``start_vid`` and ``end_vid``."
-msgstr "``pgr_KSP`` (一对一) 没有 ``start_vid`` 和``end_vid``。"
+msgstr "``pgr_KSP`` (One to One) 没有 ``start_vid`` 和``end_vid``。"
 
 msgid ""
 "Using `this <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ "
 "example."
 msgstr ""
-"使用 `this <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ 示"
-"例。"
+"使用 `这个 <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ "
+"示例。"
 
 msgid ""
 "If needed filter out the added columns, for example, to return the original "
@@ -5081,7 +5080,7 @@ msgid "``pgr_primBFS``"
 msgstr "``pgr_primBFS``"
 
 msgid "Prim single vertex"
-msgstr "Prim 单一节点"
+msgstr "Prim 单个节点"
 
 msgid ""
 "Using ``pgr_primDD`` as example. Migration is similar to al the affected "
@@ -5217,7 +5216,7 @@ msgid ""
 "Using `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
 "vertex>`__ example."
 msgstr ""
-"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
+"使用 `这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
 "vertex>`__ 示例。"
 
 msgid ""
@@ -5249,7 +5248,7 @@ msgid ""
 "Using `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD."
 "html#multiple-vertices>`__ example."
 msgstr ""
-"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-"
+"使用 `这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-"
 "vertices>`__ 示例。"
 
 msgid "Filter out the additional columns"
@@ -5274,7 +5273,7 @@ msgstr ""
 "有效性对于有向图和无向图有所不同。"
 
 msgid "``pgr_withPointsKSP`` (`One to One`)"
-msgstr "``pgr_withPointsKSP`` (`一对一`)"
+msgstr "``pgr_withPointsKSP`` (`One to One`)"
 
 msgid "Output columns were |old-pid-result|"
 msgstr "输出列是 |old-pid-result|"
@@ -5295,7 +5294,7 @@ msgid ""
 msgstr "如果需要，过滤掉附加列，例如，返回原始列："
 
 msgid "Migration of ``pgr_trsp`` (Vertices)"
-msgstr "迁移 ``pgr_trsp`` （顶点）"
+msgstr "迁移 ``pgr_trsp`` (顶点）"
 
 msgid "Signature:"
 msgstr "签名："
@@ -5343,7 +5342,7 @@ msgid "Use :doc:`pgr_trsp` (One to One) instead."
 msgstr "使用 :doc:`pgr_trsp` (One to One) 替代。"
 
 msgid "Migration of ``pgr_trsp`` (Edges)"
-msgstr "迁移 ``pgr_trsp`` （边）"
+msgstr "迁移 ``pgr_trsp`` (边)"
 
 msgid ":doc:`pgr_withPoints`"
 msgstr ":doc:`pgr_withPoints`"
@@ -6580,16 +6579,16 @@ msgid "A function might have different overloads. The most common are called:"
 msgstr "一个函数可能有不同的重载。 最常见的是："
 
 msgid "`One to One`_"
-msgstr "`一对一`_"
+msgstr "`One to One`_"
 
 msgid "`One to Many`_"
 msgstr "`一对多`_"
 
 msgid "`Many to One`_"
-msgstr "`多对一`_"
+msgstr "`Many to One`_"
 
 msgid "`Many to Many`_"
-msgstr "`多对多`_"
+msgstr "`Many to Many`_"
 
 msgid "`Combinations`_"
 msgstr "`组合`_"
@@ -6609,7 +6608,7 @@ msgid ""
 msgstr "根据函数的不同，重载可能会有所不同。 但参数类型改变的概念保持不变。"
 
 msgid "One to One"
-msgstr "一对一"
+msgstr "One to One"
 
 msgid "When routing from:"
 msgstr "当路由来自："
@@ -6627,13 +6626,13 @@ msgid "to **many** ending vertices"
 msgstr "到 **多** 结束顶点"
 
 msgid "Many to One"
-msgstr "多对一"
+msgstr "Many to One"
 
 msgid "From **many** starting vertices"
 msgstr "从 **多** 起始顶点"
 
 msgid "Many to Many"
-msgstr "多对多"
+msgstr "Many to Many"
 
 msgid "Combinations"
 msgstr "组合"
@@ -6870,7 +6869,7 @@ msgid "When negative is the identifier of the starting point."
 msgstr "当负数时是起点的标识符。"
 
 msgid "Returned on `Many to One`_ and `Many to Many`_"
-msgstr "`多对一`_ 和 `多对多`_ 的返回值"
+msgstr "`Many to One` _ 和 `Many to Many` 的返回值"
 
 msgid "``end_pid``"
 msgstr "``end_pid``"
@@ -6885,7 +6884,7 @@ msgid "When negative is the identifier of the ending point."
 msgstr "当负数时是终点的标识符。"
 
 msgid "Returned on `One to Many`_ and `Many to Many`_"
-msgstr "返回 `一对多`_ 和 `多对多`_"
+msgstr "返回 `One to Many` 和 `Many to Many`_"
 
 msgid "Identifier of the node in the path from ``start_pid`` to ``end_pid``."
 msgstr "从 ``start_pid`` 到 ``end_pid`` 路径中节点的标识符。"
@@ -7107,7 +7106,7 @@ msgid ""
 msgstr "安装 pgRouting 后，需要在您想要使用它的每个数据库中启用它。"
 
 msgid "Get the sources"
-msgstr "获取来源"
+msgstr "获取源码"
 
 msgid ""
 "The pgRouting latest release can be found in https://github.com/pgRouting/"
@@ -7480,8 +7479,8 @@ msgid ""
 "Most features of pgRouting are available under `GNU General Public License "
 "v2.0 or later <https://spdx.org/licenses/GPL-2.0-or-later.html>`_."
 msgstr ""
-"pgRouting 的大多数功能都可以在 `GNU 通用公共许可证 v2.0 或更高版本 "
-"<https://spdx.org/licenses/GPL-2.0-or-later.html>`_下使用。"
+"pgRouting 的大多数功能都可以在 `GNU General Public License v2.0 or later "
+"<https://spdx.org/licenses/GPL-2.0-or-later.html>`_。"
 
 msgid "Boost Software License - Version 1.0"
 msgstr "Boost 软件许可证 - 版本 1.0"
@@ -7533,7 +7532,7 @@ msgid ""
 "osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
 msgstr ""
 "还有所有为我们的产品（osm2pgrouting、pgRouting、pgRoutingLayer、workshop）提"
-"供意见、发现问题、提出拉取请求等的人们。"
+"供意见、发现问题、提出拉取请求等帮助的开发者。"
 
 msgid "Corporate Sponsors in this release (in alphabetical order)"
 msgstr "本次发布中的企业赞助商（按字母顺序排列）"
@@ -7541,8 +7540,7 @@ msgstr "本次发布中的企业赞助商（按字母顺序排列）"
 msgid ""
 "These are corporate entities that have contributed developer time, hosting, "
 "or direct monetary funding to the pgRouting project:"
-msgstr ""
-"这些是为 pgRouting 项目贡献了开发人员时间、托管或直接货币资金的公司实体："
+msgstr "这些是为 pgRouting 项目贡献了开发人员时间、托管或直接提供资金的公司实体："
 
 msgid "`OSGeo <https://www.osgeo.org>`__"
 msgstr "`OSGeo <https://www.osgeo.org>`__"
@@ -7671,7 +7669,7 @@ msgid "Standardizing output columns to |nksp-result|"
 msgstr "将输出列标准化为 |nksp-result|"
 
 msgid "pgr_ksp(One to One)"
-msgstr "pgr_ksp(一对一)"
+msgstr "pgr_ksp(One to One)"
 
 msgid "Added ``start_vid`` and ``end_vid`` result columns."
 msgstr "增加 ``start_vid`` 和 ``end_vid`` 结果列。"
@@ -7683,10 +7681,10 @@ msgid "pgr_ksp(One to Many)"
 msgstr "pgr_ksp(一对多)"
 
 msgid "pgr_ksp(Many to One)"
-msgstr "pgr_ksp(多对一)"
+msgstr "pgr_ksp(Many to One)"
 
 msgid "pgr_ksp(Many to Many)"
-msgstr "pgr_ksp(多对多)"
+msgstr "pgr_ksp(Many to Many)"
 
 msgid "pgr_ksp(Combinations)"
 msgstr "pgr_ksp(组合)"
@@ -8208,7 +8206,7 @@ msgid "pgr_aStar(One to Many) added ``end_vid`` column."
 msgstr "pgr_aStar(一对多）添加了 ``end_vid`` 列。"
 
 msgid "pgr_aStar(Many to One) added ``start_vid`` column."
-msgstr "pgr_aStar(多对一）添加了 ``start_vid`` 列。"
+msgstr "pgr_aStar(Many to One) 添加了 ``start_vid`` 列。"
 
 msgid "Version 3.2.0"
 msgstr "版本3.2.0"
@@ -8226,10 +8224,10 @@ msgid "pgr_aStar(One to Many)"
 msgstr "pgr_aStar(一对多）"
 
 msgid "pgr_aStar(Many to One)"
-msgstr "pgr_aStar(多对一）"
+msgstr "pgr_aStar(Many to One)"
 
 msgid "pgr_aStar(Many to Many)"
-msgstr "pgr_aStar(多对多）"
+msgstr "pgr_aStar(Many to Many)"
 
 msgid "Signature change on pgr_aStar(One to One)"
 msgstr "pgr_aStar(One to One) 函数签名变更"
@@ -8237,7 +8235,7 @@ msgstr "pgr_aStar(One to One) 函数签名变更"
 msgid ""
 "The results are equivalent to the union of the results of the `pgr_aStar(` "
 "`One to One`_ `)` on the:"
-msgstr "结果相当于 `pgr_aStar(` `一对一`_ `)` 结果的并集："
+msgstr "结果相当于 `pgr_aStar(` `One to One`_ `)` 结果的并集："
 
 msgid "pgr_aStar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
 msgstr "pgr_aStar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
@@ -8492,16 +8490,16 @@ msgid "pgr_bdAstar(One to Many) added ``end_vid`` column."
 msgstr "pgr_bdAstar(一对多）添加了``end_vid`` 列。"
 
 msgid "pgr_bdAstar(Many to One) added ``start_vid`` column."
-msgstr "pgr_bdAstar(多对一）添加了``start_vid`` 列。"
+msgstr "pgr_bdAstar(Many to One) 添加了``start_vid`` 列。"
 
 msgid "pgr_bdAstar(One to Many)"
 msgstr "pgr_bdAstar（一对多）"
 
 msgid "pgr_bdAstar(Many to One)"
-msgstr "pgr_bdAstar（多对一）"
+msgstr "pgr_bdAstar(Many to One)"
 
 msgid "pgr_bdAstar(Many to Many)"
-msgstr "pgr_bdAstar（多对多）"
+msgstr "pgr_bdAstar(Many to Many)"
 
 msgid "Signature change on pgr_bdAstar(One to One)"
 msgstr "pgr_bdAstar(One to One) 函数签名变更"
@@ -8588,10 +8586,10 @@ msgid "pgr_bdDijkstra(One to Many)"
 msgstr "pgr_bdDijkstra(One to Many)"
 
 msgid "pgr_bdDijkstra(Many to One)"
-msgstr "pgr_bdDijkstra（多对一）"
+msgstr "pgr_bdDijkstra(Many to One)"
 
 msgid "pgr_bdDijkstra(Many to Many)"
-msgstr "pgr_bdDijkstra（多对多）"
+msgstr "pgr_bdDijkstra(Many to Many)"
 
 msgid "Signature change on pgr_bdDijsktra(One to One)"
 msgstr "函数的签名变更 pgr_bdDijsktra(One to One)"
@@ -10640,7 +10638,7 @@ msgid "**options:** ``[directed, max_depth]``"
 msgstr "**options:** ``[directed, max_depth]``"
 
 msgid "Same as `Single vertex`_ but with edges in descending order of ``id``."
-msgstr "与 `单顶点`_ 相同，但边按 ``id`` 降序排列。"
+msgstr "与 `单个顶点`_ 相同，但边按 ``id`` 降序排列。"
 
 msgid ""
 "`Boost: Depth First Search <https://www.boost.org/libs/graph/doc/"
@@ -10679,7 +10677,7 @@ msgid "pgr_dijkstra(One to Many) added ``end_vid`` column."
 msgstr "pgr_dijkstra（一对多）添加了 ``end_vid`` 列。"
 
 msgid "pgr_dijkstra(Many to One) added ``start_vid`` column."
-msgstr "pgr_dijkstra（多对一）添加了 ``start_vid`` 列。"
+msgstr "pgr_dijkstra(Many to One) 添加了 ``start_vid`` 列。"
 
 msgid "Version 3.1.0"
 msgstr "版本 3.1.0"
@@ -10691,10 +10689,10 @@ msgid "pgr_dijkstra(One to Many)"
 msgstr "pgr_dijkstra(一对多)"
 
 msgid "pgr_dijkstra(Many to One)"
-msgstr "pgr_dijkstra(多对一)"
+msgstr "pgr_dijkstra(Many to One)"
 
 msgid "pgr_dijkstra(Many to Many)"
-msgstr "pgr_dijkstra（多对多）"
+msgstr "pgr_dijkstra(Many to Many)"
 
 msgid "Signature change on pgr_dijkstra(One to One)"
 msgstr "pgr_dijkstra(One to One) 函数签名变更"
@@ -10753,13 +10751,13 @@ msgid "Paths :math:`\\{6\\}\\rightarrow\\{10, 7\\}`"
 msgstr "路径 :math:`\\{6\\}\\rightarrow\\{10, 7\\}`"
 
 msgid "6) Using `Many to One`_ to get the solution of examples 2 and 4"
-msgstr "6) 使用 `多对一`_ 来获取示例2和示例4的解决方案"
+msgstr "6) 使用 `Many to One`_ 来获取示例2和示例4的解决方案"
 
 msgid "Paths :math:`\\{6, 12\\}\\rightarrow\\{7\\}`"
 msgstr "路径 :math:`\\{6, 12\\}\\rightarrow\\{7\\}`"
 
 msgid "7) Using `Many to Many`_ to get the solution of examples 1 to 4"
-msgstr "7) 使用 `多对多`_ 来获取示例1到4的解决方案"
+msgstr "7) 使用 `Many to Many`_ 来获取示例1到4的解决方案"
 
 msgid "Paths :math:`\\{6, 12\\}\\rightarrow\\{10, 7\\}`"
 msgstr "路径 :math:`\\{6, 12\\}\\rightarrow\\{10, 7\\}`"
@@ -10794,10 +10792,10 @@ msgid "13) Using `One to Many`_ to get the solution of examples 9 and 10"
 msgstr "13) 使用 `一对多`_ 来获取示例9和10的解决方案"
 
 msgid "14) Using `Many to One`_ to get the solution of examples 10 and 12"
-msgstr "14) 使用 `多对一`_ 来获取示例10和12的解决方案"
+msgstr "14) 使用 `Many to One`_ 来获取示例10和12的解决方案"
 
 msgid "15) Using `Many to Many`_ to get the solution of examples 9 to 12"
-msgstr "15) 使用 `多对多`_ 来获取示例9到12的解决方案"
+msgstr "15) 使用 `Many to Many`_ 来获取示例9到12的解决方案"
 
 msgid "16) Using `Combinations`_ to get the solution of examples 9 to 11"
 msgstr "16) 使用 `组合`_ 来获取示例9到11的解决方案"
@@ -10824,10 +10822,10 @@ msgid "21) Using `One to Many`_ to get the solution of examples 17 and 18"
 msgstr "21) 使用 `一对多`_ 来获取示例17和18的解决方案"
 
 msgid "22) Using `Many to One`_ to get the solution of examples 18 and 20"
-msgstr "22) 使用 `多对一`_ 来获取示例18和20的解决方案"
+msgstr "22) 使用 `Many to One`_ 来获取示例18和20的解决方案"
 
 msgid "23) Using `Many to Many`_ to get the solution of examples 17 to 20"
-msgstr "23) 使用 `多对多`_ 来获取示例17到20的解决方案"
+msgstr "23) 使用 `Many to Many`_ 来获取示例17到20的解决方案"
 
 msgid "24) Using `Combinations`_ to get the solution of examples 17 to 19"
 msgstr "24) 使用 `组合`_ 来获取示例17到19的解决方案"
@@ -10854,10 +10852,10 @@ msgid "29) Using `One to Many`_ to get the solution of examples 25 and 26"
 msgstr "29) 使用 `一对多`_ 来获取示例25和26的解决方案"
 
 msgid "30) Using `Many to One`_ to get the solution of examples 26 and 28"
-msgstr "30) 使用 `多对一`_ 来获取示例26和28的解决方案"
+msgstr "30) 使用 `Many to One`_ 来获取示例26和28的解决方案"
 
 msgid "31) Using `Many to Many`_ to get the solution of examples 25 to 28"
-msgstr "31) 使用 `多对多`_ 来获取示例25到28的解决方案"
+msgstr "31) 使用 `Many to Many`_ 来获取示例25到28的解决方案"
 
 msgid "32) Using `Combinations`_ to get the solution of examples 25 to 27"
 msgstr "32) 使用 `组合`_ 来获取示例25到27的解决方案"
@@ -10870,16 +10868,16 @@ msgid ""
 msgstr "下面的示例可以找到 :math:`\\{6}\\rightarrow\\{10\\}` 的路径"
 
 msgid "33) Using `One to One`_"
-msgstr "33) 使用 `一对一`_"
+msgstr "33) 使用 `One to One`_"
 
 msgid "34) Using `One to Many`_"
 msgstr "34)使用 `一对多`_"
 
 msgid "35) Using `Many to One`_"
-msgstr "35) 使用 `多对一`_"
+msgstr "35) 使用 `Many to One`_"
 
 msgid "36) Using `Many to Many`_"
-msgstr "36) 使用 `多对多`_"
+msgstr "36) 使用 `Many to Many`_"
 
 msgid "37) Using `Combinations`_"
 msgstr "37) 使用 `组合`_"
@@ -10997,10 +10995,10 @@ msgid "One to Many; :math:`drt`"
 msgstr "一对多； :math:`drt`"
 
 msgid "Many to One: :math:`drt`"
-msgstr "多对一： :math:`drt`"
+msgstr "Many to One: :math:`drt`"
 
 msgid "Many to Many: :math:`drt * |Starting vids|`"
-msgstr "多对多： :math:`drt * |Starting vids|`"
+msgstr "Many to Many: :math:`drt * |Starting vids|`"
 
 msgid "Combinations: :math:`drt * |Starting vids|`"
 msgstr "组合： :math:`drt * |Starting vids|`"
@@ -11385,7 +11383,7 @@ msgid ":doc:`dijkstra-family`."
 msgstr ":doc:`dijkstra-family`。"
 
 msgid "``pgr_drivingDistance``"
-msgstr "驾驶距离"
+msgstr "``pgr_drivingDistance``"
 
 msgid ""
 "``pgr_drivingDistance`` - Returns the driving distance from a start node."
@@ -11407,13 +11405,13 @@ msgid "Signature change:"
 msgstr "签名变更："
 
 msgid "pgr_drivingDistance(single vertex)"
-msgstr "pgr_drivingDistance （单顶点）"
+msgstr "pgr_drivingDistance(单个顶点)"
 
 msgid "New official signature:"
 msgstr "新签名："
 
 msgid "pgr_drivingDistance(multiple vertices)"
-msgstr "pgr_drivingDistance （多顶点）"
+msgstr "pgr_drivingDistance(多个顶点)"
 
 msgid ""
 "Using the Dijkstra algorithm, extracts all the nodes that have costs less "
@@ -11436,13 +11434,13 @@ msgid "**options:** [directed, equicost]"
 msgstr "**options:** [directed, equicost]"
 
 msgid "Single Vertex"
-msgstr "单顶点"
+msgstr "单个顶点"
 
 msgid "From vertex :math:`11` for a distance of :math:`3.0`"
 msgstr "从顶点 :math:`11` 到 :math:`3.0` 的距离"
 
 msgid "Multiple Vertices"
-msgstr "多顶点"
+msgstr "多个顶点"
 
 msgid ""
 "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` with equi-"
@@ -11465,7 +11463,7 @@ msgstr ""
 msgid ""
 "When ``false`` which resembles several calls using the single vertex "
 "signature."
-msgstr "``false`` 时，类似于使用单顶点签名的多次调用。"
+msgstr "``false`` 时，类似于使用单个顶点签名的多次调用。"
 
 msgid ""
 "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` on an "
@@ -14340,16 +14338,16 @@ msgid "``pgr_trsp`` - routing vertices with restrictions."
 msgstr "``pgr_trsp`` -有限制的路由顶点。"
 
 msgid "pgr_trsp(One to One)"
-msgstr "pgr_trsp （一对一）"
+msgstr "pgr_trsp(One to One)"
 
 msgid "pgr_trsp(One to Many)"
 msgstr "pgr_trsp （一对多）"
 
 msgid "pgr_trsp(Many to One)"
-msgstr "pgr_trsp （多对一）"
+msgstr "pgr_trsp(Many to One)"
 
 msgid "pgr_trsp(Many to Many)"
-msgstr "pgr_trsp （多对多）"
+msgstr "pgr_trsp(Many to Many)"
 
 msgid "pgr_trsp(Combinations)"
 msgstr "pgr_trsp （组合）"
@@ -15357,10 +15355,10 @@ msgstr ""
 "**driving side**。"
 
 msgid "pgr_withPointsDD(Single vertex)"
-msgstr "pgr_withPointsDD （单顶点）"
+msgstr "pgr_withPointsDD(单个顶点)"
 
 msgid "pgr_withPointsDD(Multiple vertices)"
-msgstr "pgr_withPointsDD（多顶点）"
+msgstr "pgr_withPointsDD(多个顶点)"
 
 msgid "Added ``depth``, ``pred`` and ``start_vid`` column."
 msgstr "添加了 ``depth``、``pred`` 和 ``start_vid`` 列。"
@@ -15517,16 +15515,16 @@ msgid ""
 msgstr "``pgr_withPointsKSP`` — Yen 使用 Dijkstra 计算 K 最短路径的算法。"
 
 msgid "pgr_withPointsKSP(One to One)"
-msgstr "pgr_withPointsKSP(一对一)"
+msgstr "pgr_withPointsKSP(One to One)"
 
 msgid "pgr_withPointsKSP(One to Many)"
 msgstr "pgr_withPointsKSP (一对多)"
 
 msgid "pgr_withPointsKSP(Many to One)"
-msgstr "pgr_withPointsKSP(多对一)"
+msgstr "pgr_withPointsKSP(Many to One)"
 
 msgid "pgr_withPointsKSP(Many to Many)"
-msgstr "pgr_withPointsKSP(多对多)"
+msgstr "pgr_withPointsKSP(Many to Many)"
 
 msgid "pgr_withPointsKSP(Combinations)"
 msgstr "pgr_withPointsKSP（组合）"
@@ -16571,10 +16569,10 @@ msgid "pgr_withPointsVia(One Via)"
 msgstr "pgr_withPointsVia(One Via)"
 
 msgid "Turn Restrictions"
-msgstr "转弯限制"
+msgstr "转向限制"
 
 msgid "Via with turn restrictions"
-msgstr "有转弯限制的通道"
+msgstr "有转向限制的通道"
 
 msgid "pgr_trspVia(One Via)"
 msgstr "pgr_trspVia(One Via)"
@@ -16583,16 +16581,16 @@ msgid "pgr_trspVia_withPoints(One Via)"
 msgstr "pgr_trspVia_withPoints（一次通过）"
 
 msgid "pgr_trsp_withPoints(One to One)"
-msgstr "pgr_trsp_withPoints（一对一）"
+msgstr "pgr_trsp_withPoints(One to One)"
 
 msgid "pgr_trsp_withPoints(One to Many)"
 msgstr "pgr_trsp_withPoints（一对多）"
 
 msgid "pgr_trsp_withPoints(Many to One)"
-msgstr "pgr_trsp_withPoints（多对一）"
+msgstr "pgr_trsp_withPoints(Many to One)"
 
 msgid "pgr_trsp_withPoints(Many to Many)"
-msgstr "pgr_trsp_withPoints（多对多）"
+msgstr "pgr_trsp_withPoints(Many to Many)"
 
 msgid "pgr_trsp_withPoints(Combinations)"
 msgstr "pgr_trsp_withPoints（组合）"
@@ -16830,10 +16828,10 @@ msgid "pgr_dijkstraNear(Combinations)"
 msgstr "pgr_dijkstraNear(组合)"
 
 msgid "pgr_dijkstraNear(Many to Many)"
-msgstr "pgr_dijkstraNear（多对多）"
+msgstr "pgr_dijkstraNear(Many to Many)"
 
 msgid "pgr_dijkstraNear(Many to One)"
-msgstr "pgr_dijkstraNear(多对一)"
+msgstr "pgr_dijkstraNear(Many to One)"
 
 msgid "pgr_dijkstraNear(One to Many)"
 msgstr "pgr_dijkstraNear(一对多)"
@@ -16845,10 +16843,10 @@ msgid "pgr_dijkstraNearCost(Combinations)"
 msgstr "pgr_dijkstraNearCost(组合)"
 
 msgid "pgr_dijkstraNearCost(Many to Many)"
-msgstr "pgr_dijkstraNearCost (多对多)"
+msgstr "pgr_dijkstraNearCost(Many to Many)"
 
 msgid "pgr_dijkstraNearCost(Many to One)"
-msgstr "pgr_dijkstraNearCost(多对一)"
+msgstr "pgr_dijkstraNearCost(Many to One)"
 
 msgid "pgr_dijkstraNearCost(One to Many)"
 msgstr "pgr_dijkstraNearCost(一对多)"
@@ -16863,10 +16861,10 @@ msgid "Traversal"
 msgstr "遍历"
 
 msgid "pgr_depthFirstSearch(Multiple vertices)"
-msgstr "pgr_depthFirstSearch（多顶点）"
+msgstr "pgr_depthFirstSearch(多个顶点)"
 
 msgid "pgr_depthFirstSearch(Single vertex)"
-msgstr "pgr_depthFirstSearch( 单顶点 )"
+msgstr "pgr_depthFirstSearch(单个顶点 )"
 
 msgid "pgRouting 3.2"
 msgstr "pgRouting 3.2"
@@ -18270,10 +18268,10 @@ msgid "pgr_withPointsCost(Many to Many)"
 msgstr "pgr_withPointsCost(Many to Many)"
 
 msgid "pgr_withPointsDD(single vertex)"
-msgstr "pgr_withPointsDD （单顶点）"
+msgstr "pgr_withPointsDD(单个顶点)"
 
 msgid "pgr_withPointsDD(multiple vertices)"
-msgstr "pgr_withPointsDD（多顶点）"
+msgstr "pgr_withPointsDD(多个顶点)"
 
 msgid "pgr_dijkstraVia"
 msgstr "pgr_dijkstraVia"
@@ -18732,9 +18730,8 @@ msgstr ":math:`x` 几何图形起始顶点的坐标。"
 msgid ""
 "For convenience it is saved on the table but can be calculated as "
 "``ST_X(ST_StartPoint(geom))``."
-msgstr ""
-"For convenience it is saved on the table but can be calculated as "
-"``ST_X(ST_StartPoint(geom))``."
+msgstr "为了使用方便，该值被直接保存到表中，但实际上可以通过此函数进行动态计算 "
+"``ST_X(ST_StartPoint(geom))``。"
 
 msgid ":math:`y` coordinate of the ending vertex of the geometry."
 msgstr ":math:`y` 几何图形结束顶点的坐标。"
@@ -18979,7 +18976,7 @@ msgid ""
 msgstr "建议对问题使用以下包装器来查明导致问题的步骤。"
 
 msgid "Mailing List and GIS StackExchange"
-msgstr "邮件列表和 GIS StackExchange"
+msgstr "邮件列表和GIS StackExchange"
 
 msgid ""
 "There are two mailing lists for pgRouting hosted on OSGeo mailing list "
