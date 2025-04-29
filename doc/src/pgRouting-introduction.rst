@@ -66,8 +66,6 @@ This Release Contributors
 Individuals in this release v3.8.x (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-(Alphabetical order)
-
 Aurélie Bousquet,
 Regina Obe,
 Vicky Vergara
@@ -77,6 +75,10 @@ And all the people that give us a little of their time making comments, finding
 issues, making pull requests etc. in any of our products: osm2pgrouting,
 pgRouting, pgRoutingLayer, workshop.
 
+Translators (in alphabetical order)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Dapeng Wang
 
 Corporate Sponsors in this release (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -110,6 +112,7 @@ Aurélie Bousquet,
 Cayetano Benavent,
 Christian Gonzalez,
 Daniel Kastl,
+Dapeng Wang,
 Dave Potts,
 David Techer,
 Denis Rykov,
