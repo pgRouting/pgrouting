@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-22 23:45+0000\n"
+"POT-Creation-Date: 2025-04-29 15:26+0000\n"
 "PO-Revision-Date: 2025-04-09 00:16+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -3031,12 +3031,22 @@ msgstr ":doc:`pgr_contraction`"
 msgid ":doc:`pgr_contractionDeadEnd`"
 msgstr ":doc:`pgr_contractionDeadEnd`"
 
+#, fuzzy
+msgid ":doc:`pgr_contractionLinear`"
+msgstr ":doc:`pgr_contraction`"
+
+#, fuzzy
+msgid ":doc:`pgr_contractionHierarchies`"
+msgstr ":doc:`pgr_contraction`"
+
+#, fuzzy
 msgid ""
-"In large graphs, like the road graphs, or electric networks, graph "
-"contraction can be used to speed up some graph algorithms. Contraction "
-"reduces the size of the graph by removing some of the vertices and edges "
-"and, for example, might add edges that represent a sequence of original "
-"edges decreasing the total time and space used in graph algorithms."
+"In large graphs, like road graphs or electric networks, graph contraction "
+"can be used to speed up some graph algorithms. Contraction can reduce the "
+"size of the graph by removing some of the vertices and edges and adding "
+"edges that represent a sequence of original edges (the original ones can be "
+"kept in some methods). In this way, it decreases the total time and space "
+"used by graph algorithms, particularly those searching for an optimal path."
 msgstr ""
 "En grafos grandes, como los grafos de carretera o de redes eléctricas, la "
 "contracción de grafos se puede utilizar para acelerar algunos algoritmos. La "
@@ -3045,9 +3055,10 @@ msgstr ""
 "de las aristas originales disminuyendo el tiempo total y el espacio "
 "utilizados en los algoritmos de grafos."
 
+#, fuzzy
 msgid ""
 "This implementation gives a flexible framework for adding contraction "
-"algorithms in the future, currently, it supports two algorithms:"
+"algorithms in the future. Currently, it supports three algorithms."
 msgstr ""
 "Esta implementación proporciona un marco flexible para agregar algoritmos de "
 "contracción en el futuro, actualmente, admite dos algoritmos:"
@@ -3058,28 +3069,32 @@ msgstr "Contracción sin salida"
 msgid "Linear contraction"
 msgstr "Contracción lineal"
 
-msgid "Allowing the user to:"
-msgstr "Permitiendo que el usuario:"
+#, fuzzy
+msgid "Contraction hierarchies"
+msgstr "Contracción de un grafo"
 
-msgid "Forbid contraction on a set of nodes."
+msgid ""
+"The two first ones can be combined through a iterative procedure, via the "
+"``pgr_contraction`` method. The third one is implemented on its own."
+msgstr ""
+
+#, fuzzy
+msgid "All functions allow the user to forbid contraction on a set of nodes."
 msgstr "Prohíba la contracción en un conjunto de nodos."
 
 msgid ""
-"Decide the order of the contraction algorithms and set the maximum number of "
-"times they are to be executed."
-msgstr ""
-"Decida el orden de los algoritmos de contracción y establezca el número "
-"máximo de veces que se van a ejecutar."
-
-msgid ""
 "https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/"
 "lecture16.pdf"
 msgstr ""
 "https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/"
 "lecture16.pdf"
 
-msgid "https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf"
+#, fuzzy
+msgid "https://ae.iti.kit.edu/download/diploma_thesis_geisberger.pdf"
 msgstr "https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf"
+
+msgid "https://jlazarsfeld.github.io/ch.150.project/contents/"
+msgstr ""
 
 msgid "Cost - Category"
 msgstr "Costo - Categoría"
@@ -3735,6 +3750,9 @@ msgstr ":doc:`chinesePostmanProblem-family`"
 msgid ":doc:`coloring-family`"
 msgstr ":doc:`coloring-family`"
 
+msgid ":doc:`contraction-family`"
+msgstr ":doc:`contraction-family`"
+
 msgid ":doc:`transformation-family`"
 msgstr ":doc:`transformation-family`"
 
@@ -4217,9 +4235,6 @@ msgstr ":doc:`allpairs-family`"
 msgid ":doc:`bdDijkstra-family`"
 msgstr ":doc:`bdDijkstra-family`"
 
-msgid ":doc:`contraction-family`"
-msgstr ":doc:`contraction-family`"
-
 msgid ":doc:`dijkstra-family`"
 msgstr ":doc:`dijkstra-family`"
 
@@ -4289,6 +4304,14 @@ msgid ":doc:`pgr_findCloseEdges` - Finds close edges of points on the fly"
 msgstr ""
 ":doc:`pgr_findCloseEdges` - Encuentra las aristas cercanas a una geometría "
 "al vuelo."
+
+msgid ":doc:`pgr_separateCrossing` - Breaks geometries that cross each other."
+msgstr ""
+
+msgid ""
+":doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each "
+"other."
+msgstr ""
 
 msgid "Functions by categories"
 msgstr "Funciones por categorías"
@@ -8105,13 +8128,12 @@ msgstr "Colaboradores"
 msgid "This Release Contributors"
 msgstr "Colaboradores de esta Versión"
 
-msgid "Individuals in this release v3.7.x (in alphabetical order)"
+#, fuzzy
+msgid "Individuals in this release v3.8.x (in alphabetical order)"
 msgstr "Elementos de esta versión v3.7.x (por orden alfabético)"
 
-msgid "(Alphabetical order)"
-msgstr "(Orden alfabético)"
-
-msgid "Regina Obe, Vicky Vergara"
+#, fuzzy
+msgid "Aurélie Bousquet, Regina Obe, Vicky Vergara"
 msgstr "Regina Obe, Vicky Vergara"
 
 msgid ""
@@ -8122,6 +8144,13 @@ msgstr ""
 "Y a toda la gente que nos regala un poco de su tiempo haciendo comentarios, "
 "encontrando problemas, haciendo pull requests etc. en cualquiera de nuestros "
 "productos: osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
+
+#, fuzzy
+msgid "Translators (in alphabetical order)"
+msgstr "Patrocinadores corporativos (en orden alfabético)"
+
+msgid "Dapeng Wang"
+msgstr ""
 
 msgid "Corporate Sponsors in this release (in alphabetical order)"
 msgstr "Patrocinadores corporativos de este lanzamiento (en orden alfabético)"
@@ -8143,6 +8172,10 @@ msgstr "`OSGeo UK <https://uk.osgeo.org>`__"
 msgid "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
 msgstr "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
 
+#, fuzzy
+msgid "`HighGo Software <https://www.highgo.com/>`__"
+msgstr "`OSGeo <https://www.osgeo.org>`__"
+
 msgid "`Paragon Corporation <https://www.paragoncorporation.com/>`__"
 msgstr "`Paragon Corporation <https://www.paragoncorporation.com/>`__"
 
@@ -8152,19 +8185,20 @@ msgstr "Colaboradores, Pasado y Presente:"
 msgid "Individuals (in alphabetical order)"
 msgstr "Personas (en orden alfabético)"
 
+#, fuzzy
 msgid ""
 "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
 "Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
-"Hossain, Ashish Kumar, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, "
-"Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, "
-"Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, "
-"Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, "
-"Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin "
-"Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul "
-"Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith "
-"Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, "
-"Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, "
-"Virginia Vergara, Yige Huang"
+"Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian "
+"Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, "
+"Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald "
+"Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay "
+"Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, "
+"Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang "
+"Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, "
+"Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, "
+"Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain "
+"Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
 "Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
@@ -8193,6 +8227,9 @@ msgstr "Georepublic"
 
 msgid "Google Summer of Code"
 msgstr "Google Summer of Code"
+
+msgid "HighGo Software"
+msgstr ""
 
 msgid "iMaptools"
 msgstr "iMaptools"
@@ -10896,6 +10933,346 @@ msgstr "Usando cuando la salida /destino no pertenecen al grafo contraído"
 
 msgid "Using when departure and destination are not in the contracted graph"
 msgstr "Usando cuando la salida y el destino no están en el grafo contraído"
+
+#, fuzzy
+msgid "``pgr_contractionHierarchies`` - Experimental"
+msgstr "``pgr_breadthFirstSearch`` - Experimental"
+
+#, fuzzy
+msgid ""
+"``pgr_contractionHierarchies`` — Performs graph contraction according to the "
+"contraction hierarchies method and returns the contracted vertices and "
+"shortcut edges created."
+msgstr ""
+"``pgr_contractionLinear`` — Realiza la contracción del grafo y devuelve los "
+"vértices y aristas contraídos.."
+
+#, fuzzy
+msgid "New **experimental** function"
+msgstr "Nueva función experimental."
+
+msgid ""
+"The contraction hierarchies method builds, from an initial order of the "
+"vertices, a hierarchical order, giving priority to some vertices during the "
+"processing of label fixing of shortest paths algorithms. Furthermore, the "
+"contraction hierarchies algorithm adds shortcut edges in the graph, that "
+"helps the shortest paths algorithm to follow the created hierarchical graph "
+"structure."
+msgstr ""
+
+msgid ""
+"The idea of the hierarchy is to put at a high priority level vertices that "
+"belong to the long distance network (highways for example in a road network) "
+"and to a low level of priority nodes that belong to the short distance "
+"network (arterials or secondary roads for example in road networks)."
+msgstr ""
+
+msgid ""
+"The contraction hierarchies algorithm makes the assumption that there is "
+"already a valuable vertices order that is used to initialize the contraction "
+"process. As in most cases there is no valuable initial node ordering, we use "
+"the order given by vertices ID. Then, the contraction process is made on the "
+"basis of this first order to give the final hierarchy."
+msgstr ""
+
+msgid ""
+"The basic idea is to keep the vertices in a priority queue sorted by some "
+"estimate of how attractive is their contraction. The implemented case uses "
+"the metric called *edge difference*, which corresponds to the difference "
+"between the number of shortcuts produced by a vertex contraction and the "
+"number of incident edges in the graph before contraction (``#shortcuts - "
+"#incident edges``)."
+msgstr ""
+
+msgid ""
+"Finally, the aim is to reduce the explored part of the graph, when using a "
+"bidirectional Dijkstra-like algorithm. The vertices order is used to feed "
+"the oriented search. The search is made without losing optimality."
+msgstr ""
+
+msgid ""
+"Finding an optimal vertices ordering for contraction is a difficult problem. "
+"Nevertheless, very simple local heuristics work quite well, according to "
+"Geisberger et al. [2]. The principle here is to a priori estimate the value "
+"of the *edge difference* and to contract the node at the top of the queue "
+"only if the new value of the metric keeps it at the top of the queue. "
+"Otherwise, it is reinserted in the queue, at its right place corresponding "
+"to the new metric value."
+msgstr ""
+
+#, fuzzy
+msgid "The process is done on graphs having only edges with positive costs."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
+
+msgid ""
+"It is necessary to remember that there are no deleted vertices with this "
+"function. At the end, the graph keeps every vertex it had, but has some "
+"added edges, corresponding to shortcuts. The vertices which have been "
+"contracted, to build the shortcut edges, are kept and hierarchically ordered."
+msgstr ""
+
+msgid ""
+"As for the other contraction methods, it does not return the full contracted "
+"graph, only the changes. They are here of two types:"
+msgstr ""
+
+msgid "added shortcut edges, with negative identifiers;"
+msgstr ""
+
+msgid "contracted nodes with an order."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"The ``pgr_contractionHierarchies`` function has the following signature:"
+msgstr "La función pgr_transitiveClosure tiene la siguiente firma:"
+
+#, fuzzy
+msgid "pgr_contractionHierarchies(`Edges SQL`_, [**options**])"
+msgstr "pgr_contractionLinear(`SQL de aristas`_, [**opciones**])"
+
+#, fuzzy
+msgid "Returns set of |result-contraction-hierarchies|"
+msgstr "Regresa conjunto de |result-contract|"
+
+#, fuzzy
+msgid "Contraction hierarchies optional parameters"
+msgstr "Parámetros opcionales de Contracción"
+
+#, fuzzy
+msgid "True if the graph is directed, False otherwise."
+msgstr "Cuando el grafo es dirigido el resultado es dirigido."
+
+#, fuzzy
+msgid ""
+"The function returns many rows (one per vertex and one per shortcut edge "
+"created). The columns of the rows are:"
+msgstr "La función devuelve una sola fila. Las columnas de la fila son:"
+
+#, fuzzy
+msgid "Type of the ``id``."
+msgstr "Tipo de la fila."
+
+#, fuzzy
+msgid "Column ``id`` has a positive value"
+msgstr "Columna ``id`` tiene valor positivo."
+
+#, fuzzy
+msgid "Column ``id`` has a negative value"
+msgstr "Columna ``id`` tiene valor negativo."
+
+#, fuzzy
+msgid "``metric``"
+msgstr "``strict``"
+
+#, fuzzy
+msgid "``vertex_order``"
+msgstr "``vertex_id``"
+
+msgid "Examples"
+msgstr "Ejemplos"
+
+#, fuzzy
+msgid "On an undirected graph"
+msgstr "En un grafo no dirigido:"
+
+msgid ""
+"The following query shows the original data involved in the contraction "
+"operation on an undirected graph."
+msgstr ""
+
+msgid "building contraction hierarchies on the whole graph"
+msgstr ""
+
+msgid ""
+"The results do not represent the contracted graph. They represent the "
+"changes done to the graph after applying the contraction algorithm and give "
+"the vertex order built by the algorithm, by ordering vertices according to "
+"the *edge difference* metric. As a consequence, vertices are all represented "
+"in the result (except of course forbidden ones). Only shortcut built by the "
+"algorithm are represented in the result."
+msgstr ""
+
+msgid ""
+"After computing the contraction hierarchies, an order is now given to the "
+"vertices,"
+msgstr ""
+
+msgid ""
+"in order to be used with a specific Dijkstra algorithm (implementation "
+"coming in a future version), which speeds up the search."
+msgstr ""
+
+#, fuzzy
+msgid "We obtain the contracted graph above:"
+msgstr "Creando el grafo contraído"
+
+msgid ""
+"We can see without surprise that the vertices belonging to the shortcuts "
+"have a tendency to have a high priority level in the resulting vertices "
+"order."
+msgstr ""
+
+#, fuzzy
+msgid "On an undirected graph with forbidden vertices"
+msgstr "Usando un grafo **no dirigido** para el ruteo de peatones"
+
+#, fuzzy
+msgid "building contraction with a set of forbidden vertices"
+msgstr "Prohíba la contracción en un conjunto de nodos."
+
+#, fuzzy
+msgid "Contraction process steps details"
+msgstr "Contracción de los datos de muestra"
+
+#, fuzzy
+msgid "Shortcut building process"
+msgstr "Proceso de compilación con CMake"
+
+msgid ""
+"A vertex ``v`` is contracted by adding shortcuts replacing former paths of "
+"the form ``(u, v, w)`` by an edge ``(u, w)``. The shortcut ``(u, w)`` is "
+"only needed when ``(u, v, w)`` is the only shortest path between ``u`` and "
+"``w``."
+msgstr ""
+
+msgid ""
+"When all shortcuts have been added for a given vertex ``v``, the incident "
+"edges of ``v`` are removed and another vertex is contracted with the "
+"remaining graph."
+msgstr ""
+
+msgid ""
+"The procedure is destructive for the graph and a copy is made to be able to "
+"manipulate it again as a whole. The contraction process adds all discovered "
+"shortcuts to the edge set ``E`` and attributes a metric to each contracted "
+"vertex. This metric is giving what is called the *contraction hierarchy*."
+msgstr ""
+
+msgid "Initialize the queue with a first vertices order"
+msgstr ""
+
+msgid "For each vertex ``v`` of the graph, a contraction of ``v`` is built:"
+msgstr ""
+
+#, fuzzy
+msgid ":math:`v`"
+msgstr ":math:`9`"
+
+#, fuzzy
+msgid ":math:`\\{p, r, u\\}`"
+msgstr ":math:`\\{2, 3\\}`"
+
+#, fuzzy
+msgid ":math:`p`"
+msgstr ":math:`9`"
+
+#, fuzzy
+msgid ":math:`\\{u, v\\}`"
+msgstr ":math:`\\{2, 3\\}`"
+
+#, fuzzy
+msgid ":math:`u`"
+msgstr ":math:`9`"
+
+#, fuzzy
+msgid ":math:`\\{p, v, w\\}`"
+msgstr ":math:`\\{2, 3\\}`"
+
+#, fuzzy
+msgid ":math:`r`"
+msgstr ":math:`9`"
+
+#, fuzzy
+msgid ":math:`\\{v, w\\}`"
+msgstr ":math:`\\{2, 3\\}`"
+
+#, fuzzy
+msgid ":math:`w`"
+msgstr ":math:`9`"
+
+#, fuzzy
+msgid ":math:`\\{r, u\\}`"
+msgstr ":math:`\\{2, 3\\}`"
+
+msgid "Adjacent edges are removed."
+msgstr ""
+
+msgid ""
+"Shortcuts are built from predecessors of ``v`` to successors of ``v`` if and "
+"only if the path through ``v`` corresponds to the only shortest path between "
+"the predecessor and the successor of ``v`` in the graph. The *edge "
+"difference* metric here takes the value of -2."
+msgstr ""
+
+msgid ""
+"Then the following vertex is contracted. The process goes on until each node "
+"of the graph has been contracted. At the end, there are no more edges in the "
+"graph, which has been destroyed by the process."
+msgstr ""
+
+msgid ""
+"This first contraction will give a vertices order, given by ordering them in "
+"ascending order on the metric (edge difference). A total vertices order is "
+"built. If ``u < v``, then ``u`` is less important than ``v``. The algorithm "
+"keeps the vertices into a queue in this order."
+msgstr ""
+
+msgid ""
+"A hierarchy will now be constructed by contracting again the vertices in "
+"this order."
+msgstr ""
+
+#, fuzzy
+msgid "Build the final vertex order"
+msgstr "Debe de estar en orden reverso."
+
+msgid ""
+"Once the first order built, the algorithm uses it to browse the graph once "
+"again. For each vertex taken in the queue, the algorithm simulates "
+"contraction and calculates its edge difference. If the computed value is "
+"greater than the one of the next vertex to be contracted, then the algorithm "
+"puts it back in the queue (heuristic approach). Otherwise it contracts it "
+"permanently."
+msgstr ""
+
+#, fuzzy
+msgid "Add shortcuts to the initial graph"
+msgstr "corte mínimo de el subgrafo principal"
+
+msgid ""
+"At the end, the algorithm takes the initial graph (before edges deletions) "
+"and adds the shortcut edges to it. It gives you the contracted graph, ready "
+"to use with a specialized Dijkstra algorithm, which takes into account the "
+"order of the nodes in the hierarchy."
+msgstr ""
+
+#, fuzzy
+msgid "Use the contraction"
+msgstr "Contracción sin salida"
+
+#, fuzzy
+msgid "Build the contraction"
+msgstr "Contracción sin salida"
+
+msgid "Add shortcuts and hierarchy in the existing tables"
+msgstr ""
+
+msgid ""
+"Add new columns in the `vertices` and `edges` tables to store the results:"
+msgstr ""
+
+msgid "Update and insert the results in the two tables."
+msgstr ""
+
+#, fuzzy
+msgid "Use a Dijkstra shortest path algorithm on it"
+msgstr "Utiliza el algoritmo Dijkstra."
+
+msgid ""
+"Then you can use any Dijkstra-like algorithm, waiting for the adapted one "
+"which will take into account the built vertices hierarchy. For example:"
+msgstr ""
 
 msgid "``pgr_contractionLinear`` - Proposed"
 msgstr "``pgr_contractionLinear`` - Propuesto"
@@ -14809,9 +15186,6 @@ msgstr "la geom"
 msgid "``geometry`` Geometry column of the noded network"
 msgstr "``geometry`` Columna de geometría de la red discontínua"
 
-msgid "Examples"
-msgstr "Ejemplos"
-
 msgid "Create the topology for the data in :doc:`sampledata`"
 msgstr "Crear la topología para los datos en :doc:`sampledata`"
 
@@ -15208,6 +15582,10 @@ msgid ""
 "``pgr_separateCrossing`` - From crossing geometries generates geometries "
 "that do not cross."
 msgstr ""
+
+#, fuzzy
+msgid "Proposed function."
+msgstr "Funciones propuestas"
 
 #, fuzzy
 msgid "This is an auxiliary function for separating crossing edges."
@@ -17157,14 +17535,6 @@ msgstr ""
 ":doc:`pgr_lineGraph` - Algoritmo de transformación para generar un grafo de "
 "líneas."
 
-msgid ":doc:`pgr_separateCrossing` - Breaks geometries that cross each other."
-msgstr ""
-
-msgid ""
-":doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each "
-"other."
-msgstr ""
-
 msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
 msgstr ":doc:`withPoints-family` - Funciones basadas en el algoritmo Dijkstra."
 
@@ -17221,12 +17591,8 @@ msgid "Promotion to official function of pgRouting."
 msgstr "Promoción a función oficial de pgRouting."
 
 #, fuzzy
-msgid ""
-"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promoted to "
-"official pgr_extractVertices in version 3.8"
-msgstr ""
-"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
-"pgr_extractVertices"
+msgid "Metric"
+msgstr "Métricas"
 
 #, fuzzy
 msgid ""
@@ -17237,11 +17603,33 @@ msgstr ""
 
 #, fuzzy
 msgid ""
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promoted to "
+"official pgr_extractVertices in version 3.8"
+msgstr ""
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
+"pgr_extractVertices"
+
+#, fuzzy
+msgid ""
 "`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promoted to "
 "official pgr_findCloseEdges in version 3.8"
 msgstr ""
 "`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: "
 "pgr_findCloseEdges"
+
+#, fuzzy
+msgid ""
+"`#2873 <https://github.com/pgRouting/pgrouting/issues/2873>`__: Promoted to "
+"official pgr_separateCrossing in version 3.8"
+msgstr ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+
+#, fuzzy
+msgid ""
+"`#2874 <https://github.com/pgRouting/pgrouting/issues/2874>`__: Promoted to "
+"official pgr_separateTouching in version 3.8"
+msgstr ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
 
 #, fuzzy
 msgid "Proposed functions"
@@ -17262,6 +17650,14 @@ msgstr ""
 msgid ""
 "`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: "
 "pgr_contractionLinear new contraction function"
+msgstr ""
+"`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: "
+"pgr_contractionLinear"
+
+#, fuzzy
+msgid ""
+"`#2536 <https://github.com/pgRouting/pgrouting/issues/2536>`__: Support for "
+"contraction hierarchies (pgr_contractionHierarchies)"
 msgstr ""
 "`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: "
 "pgr_contractionLinear"
@@ -17301,6 +17697,13 @@ msgid ""
 msgstr ""
 "`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
 "pgr_contraction"
+
+#, fuzzy
+msgid ""
+"Other enhancements: `#2869 <https://github.com/pgRouting/pgrouting/"
+"issues/2869>`__"
+msgstr ""
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
 
 #, fuzzy
 msgid "SQL code enhancements"
@@ -21006,6 +21409,19 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#~ msgid "Allowing the user to:"
+#~ msgstr "Permitiendo que el usuario:"
+
+#~ msgid ""
+#~ "Decide the order of the contraction algorithms and set the maximum number "
+#~ "of times they are to be executed."
+#~ msgstr ""
+#~ "Decida el orden de los algoritmos de contracción y establezca el número "
+#~ "máximo de veces que se van a ejecutar."
+
+#~ msgid "(Alphabetical order)"
+#~ msgstr "(Orden alfabético)"
 
 #~ msgid "Post processing"
 #~ msgstr "Post procesamiento"
