@@ -2409,23 +2409,23 @@ path_id::INTEGER AS id1, node::INTEGER AS id2,
 CASE WHEN edge &gt;= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
 FROM pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
-  $$SELECT * FROM (VALUES (1, 6, 0.3),(2, 12, 0.6),(3, 4, 0.7)) AS t(pid, edge_id, fraction)$$,
-  ARRAY[-1, -2, -3],
-  details=&gt; false);
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
+  ARRAY[-4, -3, -6],
+  details =&gt; false);
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
-   1 |   1 |  -1 |   6 |  0.7
+   1 |   1 |  -4 |   6 |  0.7
    2 |   1 |   3 |   7 |    1
    3 |   1 |   7 |  10 |    1
    4 |   1 |   8 |  12 |  0.6
-   5 |   1 |  -2 |  -1 |    0
-   6 |   2 |  -2 |  12 |  0.4
+   5 |   1 |  -3 |  -1 |    0
+   6 |   2 |  -3 |  12 |  0.4
    7 |   2 |  12 |  13 |    1
    8 |   2 |  17 |  15 |    1
    9 |   2 |  16 |   9 |    1
   10 |   2 |  11 |   8 |    1
   11 |   2 |   7 |   4 |  0.3
-  12 |   2 |  -3 |  -1 |    0
+  12 |   2 |  -6 |  -1 |    0
 (12 rows)
 
 </pre></div>
