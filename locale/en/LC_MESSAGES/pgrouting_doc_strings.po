@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-29 14:18+0000\n"
+"POT-Creation-Date: 2025-04-29 15:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7154,6 +7154,9 @@ msgstr ""
 msgid "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
 msgstr ""
 
+msgid "`HighGo Software <https://www.highgo.com/>`__"
+msgstr ""
+
 msgid "`Paragon Corporation <https://www.paragoncorporation.com/>`__"
 msgstr ""
 
@@ -7192,6 +7195,9 @@ msgid "Georepublic"
 msgstr ""
 
 msgid "Google Summer of Code"
+msgstr ""
+
+msgid "HighGo Software"
 msgstr ""
 
 msgid "iMaptools"
