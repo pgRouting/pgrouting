@@ -268,6 +268,7 @@ IS 'pgr_trsp_withPoints(Many to Many)
 
 COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, TEXT, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgr_trsp_withPoints(Combinations)
+- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: id, path, cost

@@ -106,7 +106,6 @@ BEGIN
   SELECT * FROM pgr_degree('SELECT id FROM edges WHERE id > 20', 'SELECT * FROM vertices') ORDER BY node;
 
   IF min_version('3.8.0') THEN
-     PERFORM todo(1, 'Currently is not empty');
      RETURN QUERY
      SELECT is_empty('empty_graph', 'is empty: Empty edges give 0 count on all vertices so none is in result');
   ELSE

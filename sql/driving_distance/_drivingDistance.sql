@@ -25,10 +25,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-----------------------
--- pgr_drivingDistance
-----------------------
-
 --v3.6
 CREATE FUNCTION _pgr_drivingDistancev4(
     TEXT,     -- edges_sql
@@ -47,8 +43,6 @@ CREATE FUNCTION _pgr_drivingDistancev4(
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE c VOLATILE STRICT;
-
--- COMMENTS
 
 COMMENT ON FUNCTION _pgr_drivingDistancev4(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
