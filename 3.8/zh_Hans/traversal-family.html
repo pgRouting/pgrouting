@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Traversal - 函数族 &#8212; pgRouting Manual (3.8)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=b671dda4"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=244940ec"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgr_depthFirstSearch - 拟议" href="pgr_depthFirstSearch.html" />
+    <link rel="prev" title="pgr_turnRestrictedPath - 实验性" href="pgr_turnRestrictedPath.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.8</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Traversal - 函数族</a><ul>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_turnRestrictedPath.html" title="Previous Chapter: pgr_turnRestrictedPath - 实验性"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_turnRestr...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_depthFirstSearch.html" title="Next Chapter: pgr_depthFirstSearch - 拟议"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_depthFirs... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">Traversal - 函数族</a><ul>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_turnRestrictedPath.html" title="Previous Chapter: pgr_turnRestrictedPath - 实验性"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_turnRestr...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_depthFirstSearch.html" title="Next Chapter: pgr_depthFirstSearch - 拟议"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_depthFirs... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('traversal-family','zh-Hans'));  </script>
+            
+  <div class="line-block" id="index-0">
+<div class="line"><br /></div>
+</div>
+<section id="traversal-family-of-functions">
+<h1>Traversal - 函数族<a class="headerlink" href="#traversal-family-of-functions" title="Link to this heading">¶</a></h1>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="08eb54c9-1390-47c3-83b9-074e869a575e" name="08eb54c9-1390-47c3-83b9-074e869a575e" type="checkbox"><label class="sphinx_collapse__label" for="08eb54c9-1390-47c3-83b9-074e869a575e"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>下一版本的拟议功能。</p>
+<ul class="simple">
+<li><p>它们并未正式出现在当前版本中。</p></li>
+<li><p>它们可能会正式成为下一个版本的一部分：</p>
+<ul>
+<li><p>这些函数使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
+<li><p>名字可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>签名可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>功能可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>pgTap 测试已经完成。 但可能需要更多。</p></li>
+<li><p>文档可能需要完善。</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_depthFirstSearch.html"><span class="doc">pgr_depthFirstSearch - 拟议</span></a> - 图的深度优先搜索遍历。</p></li>
+</ul>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="73778700-ddb8-4759-91fb-89d4a14958f8" name="73778700-ddb8-4759-91fb-89d4a14958f8" type="checkbox"><label class="sphinx_collapse__label" for="73778700-ddb8-4759-91fb-89d4a14958f8"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>可能服务器崩溃</p>
+<ul class="simple">
+<li><p>这些功能可能会导致服务器崩溃</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>实验功能</p>
+<ul class="simple">
+<li><p>它们不是当前版本的正式版本。</p></li>
+<li><p>它们可能不会正式成为下一个版本的一部分：</p>
+<ul>
+<li><p>这些函数可能不使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
+<li><p>名称可能会改变。</p></li>
+<li><p>签名可能会改变。</p></li>
+<li><p>功能可能会改变。</p></li>
+<li><p>pgTap 测试可能丢失。</p></li>
+<li><p>可能需要 c/c++编码。</p></li>
+<li><p>可能缺乏文档。</p></li>
+<li><p>文档（如果有）可能需要重写。</p></li>
+<li><p>可能需要自动生成文档示例。</p></li>
+<li><p>需要从社区获取大量反馈意见。</p></li>
+<li><p>可能取决于 pgRouting 的拟议功能</p></li>
+<li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_breadthFirstSearch.html"><span class="doc">pgr_breadthFirstSearch - 实验</span></a> - 图的广度优先搜索遍历。</p></li>
+<li><p><a class="reference internal" href="pgr_binaryBreadthFirstSearch.html"><span class="doc">pgr_binaryBreadthFirstSearch - 实验</span></a> -图的广度优先搜索遍历。</p></li>
+</ul>
+<p>Additionally there are 2 categories under this family</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="BFS-category.html"><span class="doc">BFS - 类别</span></a></p></li>
+<li><p><a class="reference internal" href="DFS-category.html"><span class="doc">DFS - 类别</span></a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<section id="see-also">
+<h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
+      Last updated on 4月 30, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

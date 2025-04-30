@@ -1,0 +1,892 @@
+
+
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_contraction &#8212; pgRouting Manual (3.8)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=0610ec03"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=244940ec"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="pgr_contractionDeadEnd - Propuesto" href="pgr_contractionDeadEnd.html" />
+    <link rel="prev" title="Contraction - Familia de funciones" href="contraction-family.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.8</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contraction</span></code></a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
+<li><a class="reference internal" href="#contraction-optional-parameters">Parámetros opcionales de Contracción</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
+<li><a class="reference internal" href="#only-dead-end-contraction">Sólo contracción sin salida</a></li>
+<li><a class="reference internal" href="#only-linear-contraction">Sólo contracción lineal</a></li>
+<li><a class="reference internal" href="#the-cycle">El ciclo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contracting-sample-data">Contracción de los datos de muestra</a><ul>
+<li><a class="reference internal" href="#construction-of-the-graph-in-the-database">Construcción del grafo en la base de datos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-process-to-create-the-contraction-graph-on-the-database">El proceso para crear el grafo de contracción en la base de datos:</a><ul>
+<li><a class="reference internal" href="#add-additional-columns">Añadir columnas adicionales</a></li>
+<li><a class="reference internal" href="#store-contraction-information">Almacenar información de contracción</a></li>
+<li><a class="reference internal" href="#update-the-edges-and-vertices-tables">Actualizar las tablas de aristas y vértices</a></li>
+<li><a class="reference internal" href="#the-contracted-graph">El grafo contraído</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-the-contracted-graph">Usando el grafo contraído</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="contraction-family.html" title="Previous Chapter: Contraction - Familia de funciones"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Contraction -...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_contractionDeadEnd.html" title="Next Chapter: pgr_contractionDeadEnd - Propuesto"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contraction</span></code></a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
+<li><a class="reference internal" href="#contraction-optional-parameters">Parámetros opcionales de Contracción</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
+<li><a class="reference internal" href="#only-dead-end-contraction">Sólo contracción sin salida</a></li>
+<li><a class="reference internal" href="#only-linear-contraction">Sólo contracción lineal</a></li>
+<li><a class="reference internal" href="#the-cycle">El ciclo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contracting-sample-data">Contracción de los datos de muestra</a><ul>
+<li><a class="reference internal" href="#construction-of-the-graph-in-the-database">Construcción del grafo en la base de datos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-process-to-create-the-contraction-graph-on-the-database">El proceso para crear el grafo de contracción en la base de datos:</a><ul>
+<li><a class="reference internal" href="#add-additional-columns">Añadir columnas adicionales</a></li>
+<li><a class="reference internal" href="#store-contraction-information">Almacenar información de contracción</a></li>
+<li><a class="reference internal" href="#update-the-edges-and-vertices-tables">Actualizar las tablas de aristas y vértices</a></li>
+<li><a class="reference internal" href="#the-contracted-graph">El grafo contraído</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-the-contracted-graph">Usando el grafo contraído</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="contraction-family.html" title="Previous Chapter: Contraction - Familia de funciones"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Contraction -...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_contractionDeadEnd.html" title="Next Chapter: pgr_contractionDeadEnd - Propuesto"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('pgr_contraction','es'));  </script>
+            
+  <div class="line-block" id="index-0">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-contraction">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_contraction</span></code><a class="headerlink" href="#pgr-contraction" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_contraction</span></code> — Realiza la contracción del grafo y devuelve los vértices y aristas contraídos..</p>
+<p class="rubric">Disponibilidad</p>
+<p class="rubric">Versión 3.8.0</p>
+<ul class="simple">
+<li><p>Nueva firma:</p>
+<ul>
+<li><p>El parámetro <strong>Orden de contracción</strong>, antes obligatorio, es ahora opcional con el nombre <code class="docutils literal notranslate"><span class="pre">methods</span></code>.</p></li>
+<li><p>Nuevo nombre y orden de parámetros opcionales.</p></li>
+</ul>
+</li>
+<li><p>Firma obsoleta pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+</ul>
+<p class="rubric">Versión 3.0.0</p>
+<ul class="simple">
+<li><p>Cambio de columnas de resultados: <code class="docutils literal notranslate"><span class="pre">seq</span></code> se elimina</p></li>
+<li><p>Cambio de nombre de <code class="docutils literal notranslate"><span class="pre">pgr_contractGraph</span></code></p></li>
+<li><p>Correcciones</p></li>
+<li><p>Función promovida a oficial.</p></li>
+</ul>
+<p class="rubric">Versión 2.3.0</p>
+<ul class="simple">
+<li><p>Nueva función experimental.</p></li>
+</ul>
+<section id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>La contracción reduce el tamaño del grafo eliminando algunos de los vértices y aristas, también por ejemplo, podría agregar aristas que representan una secuencia de aristas originales disminuyendo el tiempo total y el espacio utilizados en los algoritmos de grafo.</p>
+<p>Las características principales son:</p>
+<ul class="simple">
+<li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
+<li><p>No devuelve el grafo contraído completo.</p>
+<ul>
+<li><p>Solo se devuelven los cambios en el grafo.</p></li>
+</ul>
+</li>
+<li><p>Los valores devueltos incluyen:</p>
+<ul>
+<li><p>Las nuevas aristas generadas por la contracción lineal.</p></li>
+<li><p>Los vértices modificados por contracción sin salida.</p></li>
+</ul>
+</li>
+<li><p>Los valores devueltos se ordenan de la siguiente manera:</p>
+<ul>
+<li><p>columna <code class="docutils literal notranslate"><span class="pre">id</span></code> ascendente cuando es un vértice modificado.</p></li>
+<li><p>columna <code class="docutils literal notranslate"><span class="pre">id</span></code> con números negativos descendentes cuando es una nueva arista.</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>Actualmente hay dos tipos de métodos de contracción incluidos en esta función:</p>
+<ul>
+<li><p>Contracción sin salida. Véase <a class="reference internal" href="pgr_contractionDeadEnd.html"><span class="doc">pgr_contractionDeadEnd - Propuesto</span></a>.</p></li>
+<li><p>Linear Contraction. See <a class="reference internal" href="pgr_contractionLinear.html"><span class="doc">pgr_contractionLinear - Propuesto</span></a>.</p></li>
+</ul>
+</li>
+</ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+</section>
+<section id="signatures">
+<h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_contraction(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, [<strong>opciones</strong>])</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">methods,</span> <span class="pre">cycles,</span> <span class="pre">forbidden]</span></code></div>
+<div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost)</span></code></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Hacer una contracción de callejón sin salida y una contracción lineal en ese orden en un grafo no dirigido.</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="o">------+----+---------------------+--------+--------+------</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">}</span>                 <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>               <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">14</span> <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">}</span>                <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>               <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">}</span>               <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">15</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span>
+<span class="p">(</span><span class="mi">7</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> descritas más adelante.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="contraction-optional-parameters">
+<h3>Parámetros opcionales de Contracción<a class="headerlink" href="#contraction-optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">methods</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[1,2]</span></code></p></td>
+<td><p>Operaciones de contracción ordenadas.</p>
+<ul class="simple">
+<li><p>1 = Contracción sin salida</p></li>
+<li><p>2 - Contracción lineal</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cycles</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p>Número de veces que se realizarán las operaciones de contracción.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[]::BIGINT[]</span></code></p></td>
+<td><p>Identificadores de vértices prohibidos para contracción.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td><p>-1</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<ul class="simple">
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="result-columns">
+<h2>Columnas de resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost)</span></code></p>
+<p>La función devuelve una sola fila. Las columnas de la fila son:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p>Tipo de la fila.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> cuando la fila es un vértice.</p>
+<ul>
+<li><p>Columna <code class="docutils literal notranslate"><span class="pre">id</span></code> tiene valor positivo.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">e</span></code> cuando la fila es una arista.</p>
+<ul>
+<li><p>Columna <code class="docutils literal notranslate"><span class="pre">id</span></code> tiene valor negativo.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Todos los números de esta columna son “”DISTINTOS””</p>
+<ul class="simple">
+<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>“v”</strong>.</p>
+<ul>
+<li><p>Identificador del vértice modificado.</p></li>
+</ul>
+</li>
+<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>“e”</strong>.</p>
+<ul>
+<li><p>Disminución de la secuencia a partir de <strong>-1</strong>.</p></li>
+<li><p>Representando un pseudo <cite>id</cite> como no incorporado en el conjunto de aristas originales.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Arreglo de identificadores de vértices contraídos.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>“v”</strong>: <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>“e”</strong>: Identificador del vétice de la arista actual (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>“v”</strong>: <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>“e”</strong>: Identificador del vértice objetivo de la arista actual (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><ul class="simple">
+<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>“v”</strong>: <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>“e”</strong>: Peso de la arista actual (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="contenido">
+<ul class="simple">
+<li><p><a class="reference internal" href="#only-dead-end-contraction" id="id3">Sólo contracción sin salida</a></p></li>
+<li><p><a class="reference internal" href="#only-linear-contraction" id="id4">Sólo contracción lineal</a></p></li>
+<li><p><a class="reference internal" href="#the-cycle" id="id5">El ciclo</a></p></li>
+</ul>
+</nav>
+<section id="only-dead-end-contraction">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Sólo contracción sin salida</a><a class="headerlink" href="#only-dead-end-contraction" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">type</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">contracted_vertices</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">methods</span> <span class="o">=&gt;</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span>
+<span class="o">------+----+---------------------</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">}</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">}</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">8</span> <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">}</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">14</span> <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">}</span>
+<span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="only-linear-contraction">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Sólo contracción lineal</a><a class="headerlink" href="#only-linear-contraction" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">methods</span> <span class="o">=&gt;</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="o">------+----+---------------------+--------+--------+------</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">}</span>                 <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">}</span>                 <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span>
+<span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="the-cycle">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">El ciclo</a><a class="headerlink" href="#the-cycle" title="Link to this heading">¶</a></h3>
+<p>Contraer un grafo se puede hacer con más de una operación. El orden de las operaciones afecta al grafo contraído resultante, después de aplicar una operación, el conjunto de vértices que se pueden contraer con otra operación cambia.</p>
+<p>Esta implementación cicla `` cycles`` veces a través de los <code class="docutils literal notranslate"><span class="pre">methods</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nb">input</span><span class="o">&gt;</span>
+<span class="n">do</span> <span class="n">max_cycles</span> <span class="n">times</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">operation</span> <span class="ow">in</span> <span class="n">operations_order</span><span class="p">)</span>
+     <span class="p">{</span> <span class="n">do</span> <span class="n">operation</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">&lt;</span><span class="n">output</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="contracting-sample-data">
+<h2>Contracción de los datos de muestra<a class="headerlink" href="#contracting-sample-data" title="Link to this heading">¶</a></h2>
+<p>En esta sección, la creación y el uso de un grafo contraído se mostrarán en el ejemplo.</p>
+<ul class="simple">
+<li><p>Se usa <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> para un grafo no dirigido</p></li>
+<li><p>una operación sin salida primero seguida de una operación lineal.</p></li>
+</ul>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#construction-of-the-graph-in-the-database" id="id6">Construcción del grafo en la base de datos</a></p></li>
+</ul>
+</nav>
+<section id="construction-of-the-graph-in-the-database">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Construcción del grafo en la base de datos</a><a class="headerlink" href="#construction-of-the-graph-in-the-database" title="Link to this heading">¶</a></h3>
+<p>El grafo original:</p>
+<a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 241.0px; height: 217.5px;" />
+</a>
+<p>Los resultados no representan al grafo contraído. Representan los cambios que necesitan hacerse en el grafo después de aplicar los métodos de contracción.</p>
+<p>Observe que los vértices, por ejemplo, <span class="math notranslate nohighlight">\(6\)</span> , no aparecen en los resultados porque no se vieron afectados por el algoritmo de contracción.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="o">------+----+---------------------+--------+--------+------</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">}</span>                 <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>               <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">14</span> <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">}</span>                <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>               <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">}</span>               <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">15</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span>
+<span class="p">(</span><span class="mi">7</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Después de realizar la operación de contracción sin salida:</p>
+<a class="reference internal image-reference" href="_images/undirected_sampledata_b.png"><img alt="_images/undirected_sampledata_b.png" src="_images/undirected_sampledata_b.png" style="width: 175.75px; height: 198.5px;" />
+</a>
+<p>Después de hacer la operación de contracción lineal al grafo anterior:</p>
+<a class="reference internal image-reference" href="_images/undirected_sampledata_c.png"><img alt="_images/undirected_sampledata_c.png" src="_images/undirected_sampledata_c.png" style="width: 184.25px; height: 193.75px;" />
+</a>
+</section>
+</section>
+<section id="the-process-to-create-the-contraction-graph-on-the-database">
+<h2>El proceso para crear el grafo de contracción en la base de datos:<a class="headerlink" href="#the-process-to-create-the-contraction-graph-on-the-database" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="id2">
+<ul class="simple">
+<li><p><a class="reference internal" href="#add-additional-columns" id="id7">Añadir columnas adicionales</a></p></li>
+<li><p><a class="reference internal" href="#store-contraction-information" id="id8">Almacenar información de contracción</a></p></li>
+<li><p><a class="reference internal" href="#update-the-edges-and-vertices-tables" id="id9">Actualizar las tablas de aristas y vértices</a></p></li>
+<li><p><a class="reference internal" href="#the-contracted-graph" id="id10">El grafo contraído</a></p></li>
+</ul>
+</nav>
+<section id="add-additional-columns">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Añadir columnas adicionales</a><a class="headerlink" href="#add-additional-columns" title="Link to this heading">¶</a></h3>
+<p>Adding extra columns to the edges and vertices tables.
+In this documentation the following will be used:</p>
+<table class="docutils align-default" style="width: 80">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna.</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code></p></td>
+<td><p>El conjunto de vértices que pertenecen al vértice/arista</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">is_contracted</span></code></p></td>
+<td><p>En la tabla de vértices</p>
+<ul class="simple">
+<li><p>En caso de “”true”” se contrae el vértice, no forma parte del grafo contraído.</p></li>
+<li><p>En caso de “”false”” el vértice no se contrae, su parte del grafo contraído.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">is_new</span></code></p></td>
+<td><p>En la tabla de aristas</p>
+<ul class="simple">
+<li><p>En caso de `` true``, la arista se generó por el algoritmo de contracción. Es parte del grafo contraído.</p></li>
+<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">false</span></code> , la arista es una arista original, podría ser o no parte del grafo contraído.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span>
+  <span class="n">ADD</span> <span class="n">is_contracted</span> <span class="n">BOOLEAN</span> <span class="n">DEFAULT</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">ADD</span> <span class="n">contracted_vertices</span> <span class="n">BIGINT</span><span class="p">[];</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span>
+  <span class="n">ADD</span> <span class="n">is_new</span> <span class="n">BOOLEAN</span> <span class="n">DEFAULT</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">ADD</span> <span class="n">contracted_vertices</span> <span class="n">BIGINT</span><span class="p">[];</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+</section>
+<section id="store-contraction-information">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Almacenar información de contracción</a><a class="headerlink" href="#store-contraction-information" title="Link to this heading">¶</a></h3>
+<p>Almacenar los resultados de la contracción en una tabla.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
+<span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">7</span>
+</pre></div>
+</div>
+</section>
+<section id="update-the-edges-and-vertices-tables">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Actualizar las tablas de aristas y vértices</a><a class="headerlink" href="#update-the-edges-and-vertices-tables" title="Link to this heading">¶</a></h3>
+<p>Usar la columna <code class="docutils literal notranslate"><span class="pre">is_contracted</span></code> para indicar los vértices contraídos.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
+<span class="n">SET</span> <span class="n">is_contracted</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span>  <span class="n">unnest</span><span class="p">(</span><span class="n">contracted_vertices</span><span class="p">)</span> <span class="n">FROM</span>  <span class="n">contraction_results</span><span class="p">);</span>
+<span class="n">UPDATE</span> <span class="mi">10</span>
+</pre></div>
+</div>
+<p>Llenar <code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code> con la información de los resultados que pertenecen a los vértices.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
+<span class="n">SET</span> <span class="n">contracted_vertices</span> <span class="o">=</span> <span class="n">contraction_results</span><span class="o">.</span><span class="n">contracted_vertices</span>
+<span class="n">FROM</span> <span class="n">contraction_results</span>
+<span class="n">WHERE</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;v&#39;</span> <span class="n">AND</span> <span class="n">vertices</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">contraction_results</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Inserte las nuevas aristas generadas por pgr_contraction.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">is_new</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">true</span>
+<span class="n">FROM</span> <span class="n">contraction_results</span>
+<span class="n">WHERE</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;e&#39;</span><span class="p">;</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</section>
+<section id="the-contracted-graph">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">El grafo contraído</a><a class="headerlink" href="#the-contracted-graph" title="Link to this heading">¶</a></h3>
+<p>Vértices que pertenecen al grafo contraído.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">WHERE</span> <span class="n">is_contracted</span> <span class="o">=</span> <span class="n">false</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
+ <span class="nb">id</span>
+<span class="o">----</span>
+  <span class="mi">4</span>
+  <span class="mi">7</span>
+ <span class="mi">10</span>
+ <span class="mi">11</span>
+ <span class="mi">12</span>
+ <span class="mi">14</span>
+ <span class="mi">16</span>
+<span class="p">(</span><span class="mi">7</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Aristas que pertenecen al grafo contraído.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">vertices_in_graph</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">WHERE</span> <span class="n">is_contracted</span> <span class="o">=</span> <span class="n">false</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span>
+<span class="n">FROM</span> <span class="n">edges</span>
+<span class="n">WHERE</span>
+  <span class="n">EXISTS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">WHERE</span> <span class="n">NOT</span> <span class="n">is_contracted</span> <span class="n">AND</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+  <span class="n">AND</span>
+  <span class="n">EXISTS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">WHERE</span> <span class="n">NOT</span> <span class="n">is_contracted</span> <span class="n">AND</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span> <span class="o">|</span> <span class="n">contracted_vertices</span>
+<span class="o">----+--------+--------+------+--------------+---------------------</span>
+  <span class="mi">5</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>
+  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span> <span class="o">|</span>
+  <span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span> <span class="o">|</span>
+ <span class="mi">11</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>
+ <span class="mi">19</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>
+ <span class="mi">20</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">}</span>
+ <span class="mi">21</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>
+ <span class="mi">22</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">15</span><span class="p">}</span>
+<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Visualmente:</p>
+<a class="reference internal image-reference" href="_images/newgraph.png"><img alt="_images/newgraph.png" src="_images/newgraph.png" style="width: 184.25px; height: 193.75px;" />
+</a>
+</section>
+</section>
+<section id="using-the-contracted-graph">
+<h2>Usando el grafo contraído<a class="headerlink" href="#using-the-contracted-graph" title="Link to this heading">¶</a></h2>
+<p>Depending on the final application the graph is to be prepared.
+In this example the final application will be to calculate the cost from two
+vertices in the original graph by using the contracted graph with <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code></p>
+<p>Hay tres casos al calcular la ruta más corta entre un origen y un destino determinados en un grafo contraído:</p>
+<ul class="simple">
+<li><p>Caso 1: Tanto el origen como el destino pertenecen al grafo contraído.</p></li>
+<li><p>Caso 2: El origen y/o el destino pertenecen a un subgrafo de aristas.</p></li>
+<li><p>Caso 3: El origen y/o el destino pertenecen a un vértice.</p></li>
+</ul>
+<p>The final application should consider all of those cases.</p>
+<p>Crear una vista (o tabla) del grafo Contraído:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">VIEW</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">contracted_graph</span><span class="p">;</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">view</span> <span class="s2">&quot;contracted_graph&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
+<span class="n">DROP</span> <span class="n">VIEW</span>
+<span class="n">CREATE</span> <span class="n">VIEW</span> <span class="n">contracted_graph</span> <span class="n">AS</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span> <span class="n">FROM</span> <span class="n">edges</span>
+<span class="n">WHERE</span>
+  <span class="n">EXISTS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">WHERE</span> <span class="n">NOT</span> <span class="n">is_contracted</span> <span class="n">AND</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+  <span class="n">AND</span>
+  <span class="n">EXISTS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">WHERE</span> <span class="n">NOT</span> <span class="n">is_contracted</span> <span class="n">AND</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">target</span><span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">VIEW</span>
+</pre></div>
+</div>
+<p>Crear la función que va a utilizar el grafo contraído.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CREATE OR REPLACE FUNCTION path_cost(source BIGINT, target BIGINT)
+RETURNS SETOF FLOAT AS
+$BODY$
+
+SELECT agg_cost FROM pgr_dijkstraCost(
+  /* The inner query */
+  &#39;WITH
+  cul_de_sac AS (
+    SELECT contracted_vertices || id as v
+    FROM vertices WHERE &#39; || $1 ||&#39; = ANY(contracted_vertices)
+    OR &#39; || $2 ||&#39; = ANY(contracted_vertices)),
+  linears_to_expand AS (
+    SELECT id, contracted_vertices
+    FROM edges WHERE is_new AND (&#39; || $1 ||&#39; = ANY(contracted_vertices)
+      OR &#39;|| $2 ||&#39;  = ANY(contracted_vertices))
+  ),
+  additional_vertices AS (
+    SELECT * FROM cul_de_sac UNION SELECT contracted_vertices FROM linears_to_expand)
+  SELECT id, source, target, cost, reverse_cost
+  FROM edges, additional_vertices WHERE source = ANY(v) OR target = ANY(v)
+
+  UNION
+
+  SELECT id, source, target, cost, reverse_cost
+  FROM contracted_graph LEFT JOIN linears_to_expand c USING (id) WHERE c.id IS NULL&#39;,
+
+  source, target, false);
+
+$BODY$ LANGUAGE SQL;
+CREATE FUNCTION
+</pre></div>
+</div>
+<p>Caso 1: Tanto el origen como el destino pertenecen al grafo contraído.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">path_cost</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+ <span class="n">path_cost</span>
+<span class="o">-----------</span>
+         <span class="mi">2</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Caso 2: El origen y/o el destino pertenecen a una arista que ha contraído vertices.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">path_cost</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+ <span class="n">path_cost</span>
+<span class="o">-----------</span>
+         <span class="mi">3</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Caso 3: El origen y/o el destino pertenecen a un vértice que ha sido contraído.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">path_cost</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+ <span class="n">path_cost</span>
+<span class="o">-----------</span>
+         <span class="mi">5</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a></p></li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
+      Actualizado por última vez en abr 30, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

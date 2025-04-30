@@ -1,0 +1,56 @@
+
+abbr {
+    font-size: 80%;
+}
+
+/* Content */
+div.content-wrapper {
+    background-color: blue;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+div.topic {
+    border: none;
+}
+
+p.admonition-title {
+    font-weight: bold;
+    background-color: aqua;
+    border: #000000;
+}
+
+.alert-warning {
+    color: #333;
+}
+
+.alert-info {
+    color: #333;
+}
+
+div.note {
+    background-color: white;
+    background-image: none;
+}
+
+div.warning {
+    background-color: white;
+    background-image: none;
+}
+
+div.signatures {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    background-image: none;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    color: #333;
+    font-size: 13px;
+    word-break: keep-all;
+    hyphens: none;
+}
+
+code.literal {
+    color: #404040;
+    background-color: #e8e8e8;
+    font-size: 100%
+}

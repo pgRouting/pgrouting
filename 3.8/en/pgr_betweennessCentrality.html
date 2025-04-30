@@ -1,0 +1,437 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_betweennessCentrality - Experimental &#8212; pgRouting Manual (3.8)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=79c17324"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=244940ec"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Prim - Family of functions" href="prim-family.html" />
+    <link rel="prev" title="pgr_degree" href="pgr_degree.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.8</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code> - Experimental</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Result columns</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_degree.html" title="Previous Chapter: pgr_degree"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_degree</span>
+    </a>
+  </li>
+  <li>
+    <a href="prim-family.html" title="Next Chapter: Prim - Family of functions"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Prim - Family... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code> - Experimental</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Result columns</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_degree.html" title="Previous Chapter: pgr_degree"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_degree</span>
+    </a>
+  </li>
+  <li>
+    <a href="prim-family.html" title="Next Chapter: Prim - Family of functions"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Prim - Family... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('pgr_betweennessCentrality','en'));  </script>
+            
+  <div class="line-block" id="index-0">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-betweennesscentrality-experimental">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code> - Experimental<a class="headerlink" href="#pgr-betweennesscentrality-experimental" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code> - Calculates the relative betweenness centrality
+using Brandes Algorithm</p>
+<p class="rubric">Availability</p>
+<ul class="simple">
+<li><p>Version 3.7.0</p>
+<ul>
+<li><p>New experimental function.</p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>The Brandes Algorithm takes advantage of the sparse graphs for evaluating the
+betweenness centrality score of all vertices.</p>
+<p>Betweenness centrality measures the extent to which a vertex lies on the
+shortest paths between all other pairs of vertices. Vertices with a high
+betweenness centrality score may have considerable influence in a network by the
+virtue of their control over the shortest paths passing between them.</p>
+<p>The removal of these vertices will affect the network by disrupting the
+it, as most of the shortest paths between vertices pass through them.</p>
+<p>This implementation work for both directed and undirected graphs.</p>
+<ul class="simple">
+<li><p>Running time:  <span class="math notranslate nohighlight">\(\Theta(VE)\)</span></p></li>
+<li><p>Running space: <span class="math notranslate nohighlight">\(\Theta(VE)\)</span></p></li>
+<li><p>Throws when there are no edges in the graph</p></li>
+</ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+</section>
+<section id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<p class="rubric">Summary</p>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<p>pgr_betweennessCentrality(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<div class="line-block">
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(vid,</span> <span class="pre">centrality)</span></code></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p>For a directed graph with edges <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span>.</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_betweennessCentrality</span><span class="p">(</span>
+<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="s1">&#39;</span>
+<span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">vid</span><span class="p">;</span>
+ <span class="n">vid</span> <span class="o">|</span> <span class="n">centrality</span>
+<span class="o">-----+------------</span>
+   <span class="mi">5</span> <span class="o">|</span>          <span class="mi">0</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mf">0.5</span>
+   <span class="mi">7</span> <span class="o">|</span>          <span class="mi">0</span>
+  <span class="mi">10</span> <span class="o">|</span>       <span class="mf">0.25</span>
+  <span class="mi">15</span> <span class="o">|</span>          <span class="mi">0</span>
+<span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p class="rubric">Explanation</p>
+<ul class="simple">
+<li><p>The betweenness centrality are between parenthesis.</p></li>
+<li><p>The leaf vertices have betweenness centrality <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
+<li><p>Betweenness centrality of vertex <span class="math notranslate nohighlight">\(6\)</span> is higher than of vertex <span class="math notranslate nohighlight">\(10\)</span>.</p>
+<ul>
+<li><p>Removing vertex <span class="math notranslate nohighlight">\(6\)</span> will create three graph components.</p></li>
+<li><p>Removing vertex <span class="math notranslate nohighlight">\(10\)</span> will create two graph components.</p></li>
+</ul>
+</li>
+</ul>
+<div class="graphviz"><img src="_images/graphviz-83ddc6fb471fb97a18606f411d2fa5086722f3e5.png" alt="digraph G {
+    5, 7, 15 [shape=circle;style=filled;width=.5;color=deepskyblue;fontsize=8;fixedsize=true;];
+    6, 10 [shape=circle;style=filled;width=.5;color=green;fontsize=8;fixedsize=true;];
+    5 [pos=&quot;0,0!&quot;;label=&quot;5 (0)&quot;];
+    6 [pos=&quot;0,1!&quot;label=&quot;6 (0.5)&quot;];
+    7 [pos=&quot;0,2!&quot;label=&quot;7 (0)&quot;];
+    10 [pos=&quot;1,1!&quot;label=&quot;10 (0.25)&quot;];
+    15 [pos=&quot;2,1!&quot;label=&quot;15 (0)&quot;];
+    5 -&gt; 6 [dir=both;label=&quot;1  &quot;];
+    6-&gt;7 [dir=both;label=&quot;4  &quot;];
+    10-&gt;6 [label=&quot;3&quot;];
+    15-&gt;10 [label=&quot;4&quot;];
+}" class="graphviz" /></div>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifier of the first end point vertex of the edge.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifier of the second end point vertex of the edge.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td></td>
+<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p>-1</p></td>
+<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<ul class="simple">
+<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
+it’s not part of the graph.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="result-columns">
+<h2>Result columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the vertex.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">centrality</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Relative betweenness centrality score of the vertex (will be in range [0,1])</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/betweenness_centrality.html">Boost: betweenness centrality</a></p></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
+      Last updated on Apr 30, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

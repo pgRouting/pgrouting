@@ -1,0 +1,575 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>目录 &#8212; pgRouting Manual (3.8)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=b671dda4"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=244940ec"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="介绍" href="pgRouting-introduction.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="#">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.8</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">目录</a><ul>
+<li><a class="reference internal" href="#general">常规</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#pgrouting-concepts">Pgrouting概念</a></li>
+<li><a class="reference internal" href="#routingfunctions"><span class="xref std std-doc">routingFunctions</span></a></li>
+<li><a class="reference internal" href="#functions-by-categories">按类别划分的函数</a></li>
+<li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">可用函数，但不是官方 pgRouting 函数</a></li>
+<li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
+<li><a class="reference internal" href="#pgrouting-3-8-0-release-notes">pgRouting 3.8.0 发布说明</a></li>
+<li><a class="reference internal" href="#all-releases">所有版本</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgRouting-introduction.html" title="Next Chapter: 介绍"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">介绍 &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">目录</a><ul>
+<li><a class="reference internal" href="#general">常规</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#pgrouting-concepts">Pgrouting概念</a></li>
+<li><a class="reference internal" href="#routingfunctions"><span class="xref std std-doc">routingFunctions</span></a></li>
+<li><a class="reference internal" href="#functions-by-categories">按类别划分的函数</a></li>
+<li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">可用函数，但不是官方 pgRouting 函数</a></li>
+<li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
+<li><a class="reference internal" href="#pgrouting-3-8-0-release-notes">pgRouting 3.8.0 发布说明</a></li>
+<li><a class="reference internal" href="#all-releases">所有版本</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgRouting-introduction.html" title="Next Chapter: 介绍"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">介绍 &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('index','zh-Hans'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="table-of-contents">
+<h1>目录<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h1>
+<p>pgRouting 扩展了 <a class="reference external" href="https://postgis.net">PostGIS</a> /<a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> 地理空间数据库，以提供地理空间路由和其他网络分析功能。</p>
+<p>这是pgRouting|release|的手册。</p>
+<img alt="知识共享署名 - 相同方式共享 3.0 许可证" class="align-left" src="_images/ccbysa.png" />
+<p>pgRouting 手册根据`知识共享署名-相同方式共享3.0许可证 &lt;<a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">https://creativecommons.org/licenses/by-sa/3.0/</a>&gt;`_。 您可以随意使用本材料，但我们要求您将功劳归功于 pgRouting 项目，并尽可能提供返回 <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a> 的链接。 有关 pgRouting 中使用的其他许可证，请参阅 <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">许可</span></a> page.。</p>
+<section id="general">
+<h2>常规<a class="headerlink" href="#general" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-introduction.html#licensing">许可</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-introduction.html#contributors">贡献者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-introduction.html#more-information">更多信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#short-version">简洁版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#get-the-sources">获取来源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#enabling-and-upgrading-in-the-database">在数据库中启用和升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#dependencies">依赖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#configuring">配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#building">构建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#testing">测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#see-also">另请参阅</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="support.html#reporting-problems">报告问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support.html#mailing-list-and-gis-stackexchange">邮件列表和 GIS StackExchange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support.html#commercial-support">商业支持</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>本手册示例中使用的 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a>。</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="pgrouting-concepts">
+<h2>Pgrouting概念<a class="headerlink" href="#pgrouting-concepts" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs">图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs-without-geometries">没有几何信息的图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs-with-geometries">具有几何图形的图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#check-the-routing-topology">检查路由拓扑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#function-s-structure">函数的结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#function-s-overloads">函数的重载</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#inner-queries">内部查询</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#parameters">参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#result-columns">结果列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#performance-tips">性能技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#how-to-contribute">如何贡献</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="routingfunctions">
+<h2><a class="reference internal" href="routingFunctions.html"><span class="doc">函数族</span></a><a class="headerlink" href="#routingfunctions" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<p><a class="reference internal" href="allpairs-family.html"><span class="doc">All Pairs - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Floyd-Warshall 算法。</p></li>
+<li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a> - Johnson算法</p></li>
+</ul>
+<p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a> - A* 最短路径算法。</p></li>
+<li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a> - 获取最短路径的总成本。</p></li>
+<li><p><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a> - 获取最短路径的成本矩阵。</p></li>
+</ul>
+<p><a class="reference internal" href="bdAstar-family.html"><span class="doc">双向A* - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a> - 获取路径的双向A*算法。</p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a> - 双向 A* 算法计算路径成本。</p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a> - 用于计算路径成本矩阵的双向 A* 算法。</p></li>
+</ul>
+<p><a class="reference internal" href="bdDijkstra-family.html"><span class="doc">双向 Dijkstra - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a> - 最短路径的双向 Dijkstra 算法。</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a> - 双向 Dijkstra 计算最短路径的成本</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a> - 创建最短路径成本矩阵的双向 Dijkstra 算法。</p></li>
+</ul>
+<p><a class="reference internal" href="components-family.html"><span class="doc">分量 - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_connectedComponents</span></a> - 无向图的连通分量。</p></li>
+<li><p><a class="reference internal" href="pgr_strongComponents.html"><span class="doc">pgr_strongComponents</span></a> - 有向图的强连通分量。</p></li>
+<li><p><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents</span></a> - 无向图的双连通分量。</p></li>
+<li><p><a class="reference internal" href="pgr_articulationPoints.html"><span class="doc">pgr_articulationPoints</span></a> - 无向图的铰接点。</p></li>
+<li><p><a class="reference internal" href="pgr_bridges.html"><span class="doc">pgr_bridges</span></a> - 无向图的桥。</p></li>
+</ul>
+<p><a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra`</span></a> - Dijkstra 最短路径算法。</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost`</span></a> - 获取最短路径的总成本。</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> - 使用 pgr_dijkstra 创建成本矩阵。</p></li>
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">驾驶距离</span></a> - 使用 pgr_dijkstra 计算流域信息。</p></li>
+<li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - 使用 Yen 算法和 pgr_dijkstra 来获得 K 条最短路径。</p></li>
+</ul>
+<p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - 仅使用 Push 和 Relabel 算法进行最大流量计算。</p></li>
+<li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Boykov 和 Kolmogorov 的边流动细节。</p></li>
+<li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - 带有边流量详细信息的 Edmonds 和 Karp 算法。</p></li>
+<li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - 推送和重新标记算法以及边流量的详细信息。</p></li>
+<li><p>应用</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - 计算两组顶点之间的边不相交路径。</p></li>
+<li><p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - 计算图中的最大基数匹配。</p></li>
+</ul>
+</li>
+</ul>
+<p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_kruskal.html"><span class="doc">pgr_kruskal</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="metrics-family.html"><span class="doc">度量 - 功能系列</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree</span></a> - 返回顶点集及其关联边数统计。</p></li>
+</ul>
+<p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="reference.html"><span class="doc">参考</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_version.html"><span class="doc">pgr_version</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_full_version.html"><span class="doc">pgr_full_version</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - 函数族</span></a></p>
+<p>以下函数直接修改数据库，因此用户必须具有管理员授予的特殊权限才能使用它们。</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology - Deprecated since v3.8.0</span></a> - 根据几何形状创建拓扑。</p></li>
+<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable - Deprecated since 3.8.0</span></a> - 根据源和目标信息重建顶点表。</p></li>
+<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph -- Deprecated since 3.8.0</span></a> - 分析边表的边和顶点。</p></li>
+<li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay - Deprecated since 3.8.0</span></a> - 分析边的方向性。</p></li>
+<li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork - Deprecated since 3.8.0</span></a> - 为无节点边表创建节点。</p></li>
+</ul>
+<p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>- 当输入作为矩阵单元信息给出时。</p></li>
+<li><p><a class="reference internal" href="pgr_TSPeuclidean.html"><span class="doc">pgr_TSPeuclidean</span></a> - 当输入是坐标时。</p></li>
+</ul>
+<p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a> - 转弯限制最短路径 (TRSP)</p>
+<p class="rubric">实用程序</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - 根据边表信息提取顶点信息。</p></li>
+<li><p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> - Finds close edges of points on the fly</p></li>
+<li><p><a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> - Breaks geometries that cross each other.</p></li>
+<li><p><a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> - Breaks geometries that (almost) touch each other.</p></li>
+</ul>
+</section>
+<section id="functions-by-categories">
+<h2>按类别划分的函数<a class="headerlink" href="#functions-by-categories" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="cost-category.html"><span class="doc">成本 - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost`</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - 拟议</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="costMatrix-category.html"><span class="doc">成本矩阵 - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">驾驶距离 - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">驾驶距离</span></a> - 基于 Dijkstra 算法的行驶距离</p></li>
+<li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a> - 基于Prim算法的行驶距离</p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a> - 基于Kruskal算法的行驶距离</p></li>
+<li><p>Post processing</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_alphaShape.html"><span class="doc">pgr_alphaShape</span></a> - Alpha 形状计算</p></li>
+</ul>
+</li>
+</ul>
+<p><a class="reference internal" href="KSP-category.html"><span class="doc">K最短路径 - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - 基于 pgr_dijkstra 的 Yen 算法</p></li>
+</ul>
+<p><a class="reference internal" href="spanningTree-category.html"><span class="doc">生成树 - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - 函数族</span></a></p></li>
+<li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - 函数族</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="BFS-category.html"><span class="doc">BFS - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="DFS-category.html"><span class="doc">DFS - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p></li>
+</ul>
+</section>
+<section id="available-functions-but-not-official-pgrouting-functions">
+<h2>可用函数，但不是官方 pgRouting 函数<a class="headerlink" href="#available-functions-but-not-official-pgrouting-functions" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="proposed.html"><span class="doc">拟议的功能</span></a></p></li>
+<li><p><a class="reference internal" href="experimental.html"><span class="doc">实验函数</span></a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="release-notes">
+<h2><a class="reference internal" href="release_notes.html"><span class="doc">发行说明</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
+<section id="pgrouting-3-8-0-release-notes">
+<h3>pgRouting 3.8.0 发布说明<a class="headerlink" href="#pgrouting-3-8-0-release-notes" title="Link to this heading">¶</a></h3>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.8.0%22">Git closed
+milestone for 3.8.0</a></p>
+<p class="rubric">Promotion to official function of pgRouting.</p>
+<p class="rubric">Metric</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2760">#2760</a>:
+Promoted to official pgr_degree in version 3.8</p>
+<ul>
+<li><p>Error messages adjustment.</p></li>
+<li><p>New signature with only Edges SQL.</p></li>
+<li><p>函数正式发布。</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">实用程序</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2772">#2772</a>:
+Promoted to official pgr_extractVertices in version 3.8</p>
+<ul>
+<li><p>Error messages adjustment.</p></li>
+<li><p>函数正式发布。</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2774">#2774</a>:
+Promoted to official pgr_findCloseEdges in version 3.8</p>
+<ul>
+<li><p>Error messages adjustment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">partial</span></code> option is removed.</p></li>
+<li><p>函数正式发布。</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2873">#2873</a>:
+Promoted to official pgr_separateCrossing in version 3.8</p>
+<ul>
+<li><p>函数正式发布。</p></li>
+<li><p>Proposed function.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2874">#2874</a>:
+Promoted to official pgr_separateTouching in version 3.8</p>
+<ul>
+<li><p>函数正式发布。</p></li>
+<li><p>Proposed function.</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Proposed functions</p>
+<p class="rubric">Contraction</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2790">#2790</a>:
+pgr_contractionDeadEnd new contraction function</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2791">#2791</a>:
+pgr_contractionLinear new contraction function</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2536">#2536</a>:
+Support for contraction hierarchies (pgr_contractionHierarchies)</p></li>
+</ul>
+<p class="rubric">实用程序</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2848">#2848</a>:
+Create pgr_separateCrossing new utility function</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2849">#2849</a>:
+Create of pgr_separateTouching new utility function</p></li>
+</ul>
+<p class="rubric">官方功能变更</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2786">#2786</a>:
+pgr_contraction(edges) new signature</p>
+<ul>
+<li><p>New signature:</p>
+<ul>
+<li><p>之前必需的参数 <strong>Contraction order</strong> 现在已变为可选参数，并更名为 <code class="docutils literal notranslate"><span class="pre">methods</span></code>。</p></li>
+<li><p>New name and order of optional parameters.</p></li>
+</ul>
+</li>
+<li><p>Deprecated signature pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">C/C++ 代码增强</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2802">#2802</a>:
+Code reorganization on pgr_contraction</p></li>
+<li><p>Other enhancements:
+<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2869">#2869</a></p></li>
+</ul>
+<p class="rubric">SQL code enhancements</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2850">#2850</a>:
+Rewrite pgr_nodeNetwork</p></li>
+</ul>
+<p class="rubric">Deprecation of SQL functions</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2749">#2749</a>:
+Deprecate pgr_AlphaShape in 3.8</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2750">#2750</a>:
+Deprecate pgr_CreateTopology in 3.8</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2753">#2753</a>:
+Deprecate pgr_analyzeGraph in 3.8</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2754">#2754</a>:
+Deprecate pgr_analyzeOneWay in 3.8</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2826">#2826</a>:
+Deprecate pgr_createVerticesTable in 3.8</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2847">#2847</a>:
+Deprecate pgr_nodeNetwork in 3.8</p></li>
+</ul>
+<p>In the deprecated functions:</p>
+<ul class="simple">
+<li><p>Migration section is created.</p></li>
+<li><p>The use of the functions is removed in the documentation.</p></li>
+</ul>
+</section>
+<section id="all-releases">
+<h3>所有版本<a class="headerlink" href="#all-releases" title="Link to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#pgrouting-3">pgRouting 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#pgrouting-2">pgRouting 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#pgrouting-1">pgRouting 1</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
+      Last updated on 4月 30, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,1202 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>车辆路径规划函数 - 分类 &#8212; pgRouting Manual (3.8)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=b671dda4"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=244940ec"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgr_pickDeliver - 实验" href="pgr_pickDeliver.html" />
+    <link rel="prev" title="Via - 类别" href="via-category.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.8</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">实验函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">车辆路径规划函数 - 分类</a><ul>
+<li><a class="reference internal" href="#introduction">介绍</a><ul>
+<li><a class="reference internal" href="#characteristics">特征</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pick-delivery">取货 &amp; 送货</a></li>
+<li><a class="reference internal" href="#parameters">参数</a><ul>
+<li><a class="reference internal" href="#pick-deliver">取货 &amp; 送货</a></li>
+<li><a class="reference internal" href="#pick-deliver-optional-parameters">取货-送货可选参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#orders-sql">订单 SQL</a></li>
+<li><a class="reference internal" href="#vehicles-sql">车辆 SQL</a></li>
+<li><a class="reference internal" href="#matrix-sql">矩阵SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">结果列</a><ul>
+<li><a class="reference internal" href="#summary-row">摘要行</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#handling-parameters">处理参数</a><ul>
+<li><a class="reference internal" href="#capacity-and-demand-units-handling">容量和需求单位处理</a></li>
+<li><a class="reference internal" href="#locations">位置</a></li>
+<li><a class="reference internal" href="#time-handling">时间处理</a></li>
+<li><a class="reference internal" href="#factor-handling">因素处理</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="via-category.html" title="Previous Chapter: Via - 类别"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Via - 类别</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_pickDeliver.html" title="Next Chapter: pgr_pickDeliver - 实验"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_pickDeliver - 实验 &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">车辆路径规划函数 - 分类</a><ul>
+<li><a class="reference internal" href="#introduction">介绍</a><ul>
+<li><a class="reference internal" href="#characteristics">特征</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pick-delivery">取货 &amp; 送货</a></li>
+<li><a class="reference internal" href="#parameters">参数</a><ul>
+<li><a class="reference internal" href="#pick-deliver">取货 &amp; 送货</a></li>
+<li><a class="reference internal" href="#pick-deliver-optional-parameters">取货-送货可选参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#orders-sql">订单 SQL</a></li>
+<li><a class="reference internal" href="#vehicles-sql">车辆 SQL</a></li>
+<li><a class="reference internal" href="#matrix-sql">矩阵SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">结果列</a><ul>
+<li><a class="reference internal" href="#summary-row">摘要行</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#handling-parameters">处理参数</a><ul>
+<li><a class="reference internal" href="#capacity-and-demand-units-handling">容量和需求单位处理</a></li>
+<li><a class="reference internal" href="#locations">位置</a></li>
+<li><a class="reference internal" href="#time-handling">时间处理</a></li>
+<li><a class="reference internal" href="#factor-handling">因素处理</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="via-category.html" title="Previous Chapter: Via - 类别"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Via - 类别</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_pickDeliver.html" title="Next Chapter: pgr_pickDeliver - 实验"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_pickDeliver - 实验 &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('VRP-category','zh-Hans'));  </script>
+            
+  <div class="line-block" id="index-0">
+<div class="line"><br /></div>
+</div>
+<section id="vehicle-routing-functions-category">
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">车辆路径规划函数 - 分类</a><a class="headerlink" href="#vehicle-routing-functions-category" title="Link to this heading">¶</a></h1>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="1fb6dfb8-5b63-43e6-ba5b-e53b546622a5" name="1fb6dfb8-5b63-43e6-ba5b-e53b546622a5" type="checkbox"><label class="sphinx_collapse__label" for="1fb6dfb8-5b63-43e6-ba5b-e53b546622a5"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>可能服务器崩溃</p>
+<ul class="simple">
+<li><p>这些功能可能会导致服务器崩溃</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>实验功能</p>
+<ul class="simple">
+<li><p>它们不是当前版本的正式版本。</p></li>
+<li><p>它们可能不会正式成为下一个版本的一部分：</p>
+<ul>
+<li><p>这些函数可能不使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
+<li><p>名称可能会改变。</p></li>
+<li><p>签名可能会改变。</p></li>
+<li><p>功能可能会改变。</p></li>
+<li><p>pgTap 测试可能丢失。</p></li>
+<li><p>可能需要 c/c++编码。</p></li>
+<li><p>可能缺乏文档。</p></li>
+<li><p>文档（如果有）可能需要重写。</p></li>
+<li><p>可能需要自动生成文档示例。</p></li>
+<li><p>需要从社区获取大量反馈意见。</p></li>
+<li><p>可能取决于 pgRouting 的拟议功能</p></li>
+<li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>取货和送货问题</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - 实验</span></a> - 使用成本矩阵的取货&amp;送货</p></li>
+<li><p><a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - 实验</span></a> - 使用欧几里得距离的取货&amp;送货</p></li>
+</ul>
+</li>
+<li><p>分配问题</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_vrpOneDepot.html"><span class="doc">pgr_vrpOneDepot - 实验</span></a> - 从单个仓库分发订单</p></li>
+</ul>
+</li>
+</ul>
+<nav class="contents" id="contents">
+<p class="topic-title">内容</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#vehicle-routing-functions-category" id="id1">车辆路径规划函数 - 分类</a></p>
+<ul>
+<li><p><a class="reference internal" href="#introduction" id="id2">介绍</a></p>
+<ul>
+<li><p><a class="reference internal" href="#characteristics" id="id3">特征</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#pick-delivery" id="id4">取货 &amp; 送货</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id5">参数</a></p>
+<ul>
+<li><p><a class="reference internal" href="#pick-deliver" id="id6">取货 &amp; 送货</a></p></li>
+<li><p><a class="reference internal" href="#pick-deliver-optional-parameters" id="id7">取货-送货可选参数</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#inner-queries" id="id8">内部查询</a></p>
+<ul>
+<li><p><a class="reference internal" href="#orders-sql" id="id9">订单 SQL</a></p></li>
+<li><p><a class="reference internal" href="#vehicles-sql" id="id10">车辆 SQL</a></p></li>
+<li><p><a class="reference internal" href="#matrix-sql" id="id11">矩阵SQL</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#result-columns" id="id12">结果列</a></p>
+<ul>
+<li><p><a class="reference internal" href="#summary-row" id="id13">摘要行</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#handling-parameters" id="id14">处理参数</a></p>
+<ul>
+<li><p><a class="reference internal" href="#capacity-and-demand-units-handling" id="id15">容量和需求单位处理</a></p></li>
+<li><p><a class="reference internal" href="#locations" id="id16">位置</a></p></li>
+<li><p><a class="reference internal" href="#time-handling" id="id17">时间处理</a></p></li>
+<li><p><a class="reference internal" href="#factor-handling" id="id18">因素处理</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#see-also" id="id19">另请参阅</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<div class="toctree-wrapper compound">
+</div>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">介绍</a><a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>车辆路径问题 <cite>VRP</cite> 是 <strong>NP-hard</strong> 优化问题，它推广了旅行商问题 (TSP)。</p>
+<ul class="simple">
+<li><p>VRP 的目标是最小化总路由成本。</p></li>
+<li><p>VRP 问题有多种变体，</p></li>
+</ul>
+<p><strong>pgRouting 并不尝试实现所有变体。</strong></p>
+<section id="characteristics">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">特征</a><a class="headerlink" href="#characteristics" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>容量车辆路径问题 <cite>CVRP</cite> 其中车辆的货物承载能力有限。</p></li>
+<li><p>具有时间窗口的车辆路由问题 <cite>VRPTW</cite>，其中位置具有车辆必须访问的时间窗口。</p></li>
+<li><p>取货和送货的车辆路径问题 <cite>VRPPD</cite> ，其中大量货物需要从某些取货地点移动到其他送货地点。</p></li>
+</ul>
+<p class="rubric">局限性</p>
+<ul class="simple">
+<li><p>一个位置没有多个时间窗口。</p></li>
+<li><p>使用的车辆越少越好。</p></li>
+<li><p>总持续时间越短越好。</p></li>
+<li><p>等待时间越短越好。</p></li>
+</ul>
+</section>
+</section>
+<section id="pick-delivery">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">取货 &amp; 送货</a><a class="headerlink" href="#pick-delivery" title="Link to this heading">¶</a></h2>
+<p>问题： <cite>CVRPPDTW</cite> 具有时间窗口的有能力分拣和送货车辆路径问题</p>
+<ul class="simple">
+<li><p>时间是相对于 <cite>0</cite> 的</p></li>
+<li><p>车辆</p>
+<ul>
+<li><p>有开始和结束服务持续时间。</p></li>
+<li><p>有开始和结束地点的开放和关闭时间。</p></li>
+<li><p>具有容量。</p></li>
+</ul>
+</li>
+<li><p>订单</p>
+<ul>
+<li><p>有提货和送货地点。</p></li>
+<li><p>有提货和送货地点的开放和关闭时间。</p></li>
+<li><p>有取货和送货持续时间的服务时间。</p></li>
+<li><p>有将货物从取货地点移动到交货地点的需求请求。</p></li>
+</ul>
+</li>
+<li><p>基于时间的计算：</p>
+<ul>
+<li><p>客户之间的旅行时间为 <span class="math notranslate nohighlight">\(distance / speed\)</span></p></li>
+<li><p>取货和送货订单对由同一辆车完成。</p></li>
+<li><p>送货前会进行取货。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">参数</a><a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<section id="pick-deliver">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">取货 &amp; 送货</a><a class="headerlink" href="#pick-deliver" title="Link to this heading">¶</a></h3>
+<p>用于 <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - 实验</span></a></p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#orders-sql">Orders SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#orders-sql">Orders SQL</a> 如下所述。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vehicles-sql">Vehicles SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#vehicles-sql">Vehicles SQL</a> 如下所述。</p></td>
+</tr>
+</tbody>
+</table>
+<p>用于 <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - 实验</span></a></p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#orders-sql">Orders SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#orders-sql">Orders SQL</a> 如下所述。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vehicles-sql">Vehicles SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#vehicles-sql">Vehicles SQL</a> 如下所述。</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrix-sql">Matrix SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#matrix-sql">Matrix SQL</a> 如下所述。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pick-deliver-optional-parameters">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">取货-送货可选参数</a><a class="headerlink" href="#pick-deliver-optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">factor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code></p></td>
+<td><p>1</p></td>
+<td><p>旅行时间乘数。 请参阅 <a class="reference internal" href="#pd-factor"><span class="std std-ref">因素处理</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_cycles</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>10</p></td>
+<td><p>执行优化的最大周期数。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">initial_sol</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>4</p></td>
+<td><p>要使用的初始解决方案。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> 每辆卡车一份订单</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code> 提前订单。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> 推迟订单。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span></code> 优化插入。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5</span></code> 推迟订单，允许在后面插入更多订单</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">6</span></code> 提前订单，允许在前面插入更多订单</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">内部查询</a><a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="orders-sql">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">订单 SQL</a><a class="headerlink" href="#orders-sql" title="Link to this heading">¶</a></h3>
+<p>两种实现中订单 SQL 的公共列：</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>提货-交货订单对的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">demand</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>订单中的单位数量</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p_open</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>相对于0的时间，提货地点开放。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">p_close</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>提货地点关闭的时间（相对于 0）。</p></td>
+</tr>
+<tr class="row-even"><td><p>[<code class="docutils literal notranslate"><span class="pre">p_service</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>在取货地点装载的持续时间。</p>
+<ul class="simple">
+<li><p>缺失时：使用 0 个时间单位</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d_open</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>交货地点开放的时间（相对于 0）。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">d_close</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>交货地点关闭的时间（相对于 0）。</p></td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">d_service</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>在交货地点卸货的持续时间。</p>
+<ul class="simple">
+<li><p>缺失时：使用 0 个时间单位</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>其中：</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+<p>对于 <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - 实验</span></a>，需要位置的取货和送货标识符：</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p_node_id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>取货的节点标识符必须与 <a class="reference internal" href="#matrix-sql">Matrix SQL</a> 中的顶点标识符匹配。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d_node_id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>送货的节点标识符必须与 <a class="reference internal" href="#matrix-sql">Matrix SQL</a> 中的顶点标识符匹配。</p></td>
+</tr>
+</tbody>
+</table>
+<p>其中：</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+</dl>
+<p>对于 <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - 实验</span></a>，这需要位置的 <span class="math notranslate nohighlight">\((x, y)\)</span> 值：</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p_x</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>取货地点的 <span class="math notranslate nohighlight">\(x\)</span> 值</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">p_y</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>取货地点的 <span class="math notranslate nohighlight">\(y\)</span> 值</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">d_x</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>送货地点的 <span class="math notranslate nohighlight">\(x\)</span> 值</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d_y</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>送货地点的 <span class="math notranslate nohighlight">\(y\)</span> 值</p></td>
+</tr>
+</tbody>
+</table>
+<p>其中：</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="vehicles-sql">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">车辆 SQL</a><a class="headerlink" href="#vehicles-sql" title="Link to this heading">¶</a></h3>
+<p>两种实现中车辆 SQL 的公共列：</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>车辆的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>最大容量单位</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_open</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>起始位置打开的时间（相对于 0）。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_close</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>起始位置关闭的时间（相对于 0）。</p></td>
+</tr>
+<tr class="row-even"><td><p>[<code class="docutils literal notranslate"><span class="pre">start_service</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>在起始位置加载的持续时间。</p>
+<ul class="simple">
+<li><p>缺失时：使用 <span class="math notranslate nohighlight">\(0\)</span> 个时间单位的持续时间。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_open</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>结束位置打开的时间（相对于 0）。</p>
+<ul class="simple">
+<li><p>缺失时：使用 <code class="docutils literal notranslate"><span class="pre">start_open</span></code> 的值</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_close</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>结束位置关闭的时间（相对于 0）。</p>
+<ul class="simple">
+<li><p>缺失时：使用 <code class="docutils literal notranslate"><span class="pre">start_close</span></code> 的值</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_service</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>在结束位置加载的持续时间。</p>
+<ul class="simple">
+<li><p>缺失时：使用 <code class="docutils literal notranslate"><span class="pre">start_service</span></code> 中的持续时间。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>对于 <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - 实验</span></a>，需要位置的开始和结束标识符：</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_node_id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>起始位置的节点标识符必须与 <a class="reference internal" href="#matrix-sql">Matrix SQL</a> 中的顶点标识符匹配。</p></td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_node_id</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>结束位置的节点标识符必须与 <a class="reference internal" href="#matrix-sql">Matrix SQL</a> 中的顶点标识符匹配。</p>
+<ul class="simple">
+<li><p>缺少时：使用 <code class="docutils literal notranslate"><span class="pre">end_node_id</span></code>。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>其中：</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+</dl>
+<p>对于 <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - 实验</span></a>，这需要位置的 <span class="math notranslate nohighlight">\((x, y)\)</span> 值：</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_x</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>起始位置的 <span class="math notranslate nohighlight">\(x\)</span> 值</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_y</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>起始位置的 <span class="math notranslate nohighlight">\(y\)</span> 值</p></td>
+</tr>
+<tr class="row-even"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_x</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>结束位置的 <span class="math notranslate nohighlight">\(x\)</span> 值</p>
+<ul class="simple">
+<li><p>缺失时：使用 <code class="docutils literal notranslate"><span class="pre">start_x</span></code> 值。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_y</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>结束位置的 <span class="math notranslate nohighlight">\(y\)</span> 值</p>
+<ul class="simple">
+<li><p>缺失时：使用 <code class="docutils literal notranslate"><span class="pre">start_y</span></code> 值。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>其中：</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="matrix-sql">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">矩阵SQL</a><a class="headerlink" href="#matrix-sql" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code> 的集合</p>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>起始顶点的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>结束顶点的标识符。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 的总成本。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="result-columns">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">结果列</a><a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Returns</span> <span class="nb">set</span> <span class="n">of</span>
+ <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
+     <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span> <span class="n">departure_time</span><span class="p">)</span>
+ <span class="n">UNION</span>
+ <span class="p">(</span><span class="n">summary</span> <span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>从 <strong>1</strong> 开始的顺序值。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vehicle_seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>当前车辆从 <strong>1</strong> 开始的顺序值。 解决方案中的第 <span class="math notranslate nohighlight">\(n_{th}\)</span> 辆车。</p>
+<ul class="simple">
+<li><p>值 <span class="math notranslate nohighlight">\(-2\)</span> 表示它是汇总行。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vehicle_id</span></code></p></td>
+<td><p>BIGINT</p></td>
+<td><p>当前车辆标识符。</p>
+<ul class="simple">
+<li><p>摘要行有 <strong>总容量违规情况</strong>。</p>
+<ul>
+<li><p>当车辆超载或欠载时，就会发生容量违规。</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stop_seq</span></code></p></td>
+<td><p>INTEGER</p></td>
+<td><p>当前车辆停止的顺序值，从 <strong>1</strong> 开始。 当前第 <span class="math notranslate nohighlight">\(m_{th}\)</span> 车辆的停止。</p>
+<ul class="simple">
+<li><p>摘要行包含 <strong>总时间窗口违规情况</strong>。</p>
+<ul>
+<li><p>在该地点关闭后到达时，会发生时间窗口违规。</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stop_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><ul class="simple">
+<li><p>车辆所在的停车位置类型</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(-1\)</span>: 在解决方案摘要行</p></li>
+<li><p><span class="math notranslate nohighlight">\(1\)</span>: 起始位置</p></li>
+<li><p><span class="math notranslate nohighlight">\(2\)</span>: 取货位置</p></li>
+<li><p><span class="math notranslate nohighlight">\(3\)</span>: 送货位置</p></li>
+<li><p><span class="math notranslate nohighlight">\(6\)</span>: 结束位置并指示车辆的摘要行</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">order_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>取货-送货订单对标识符。</p>
+<ul class="simple">
+<li><p>值 <span class="math notranslate nohighlight">\(-1\)</span>: 当前停留位置没有订单参与。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cargo</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>车辆离开停车点时的货物单位。</p>
+<ul class="simple">
+<li><p>值 <span class="math notranslate nohighlight">\(-1\)</span> 在解决方案摘要行。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">travel_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>从前一个 <code class="docutils literal notranslate"><span class="pre">stop_seq</span></code> 到当前 <code class="docutils literal notranslate"><span class="pre">stop_seq</span></code> 的行程时间。</p>
+<ul class="simple">
+<li><p>总结一下 <strong>总的行程时间</strong>：</p>
+<ul>
+<li><p>所有 <code class="docutils literal notranslate"><span class="pre">travel_time</span></code> 的总和。</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arrival_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>等待当前位置打开所花费的时间。</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(-1\)</span>: 在解决方案摘要行。</p></li>
+<li><p><span class="math notranslate nohighlight">\(0\)</span>: 在起始位置。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wait_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>等待当前位置打开所花费的时间。</p>
+<ul class="simple">
+<li><p>摘要行包含 <strong>总等待时间</strong>：</p>
+<ul>
+<li><p>所有 <code class="docutils literal notranslate"><span class="pre">wait_time</span></code> 的总和。</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">service_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>当前位置的服务持续时间。</p>
+<ul class="simple">
+<li><p>摘要行包含 <strong>总服务时间</strong>：</p>
+<ul>
+<li><p>所有 <code class="docutils literal notranslate"><span class="pre">service_time</span></code> 的总和。</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">departure_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><ul class="simple">
+<li><p>车辆离开车站的时间。</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(arrival\_time + wait\_time + service\_time\)</span>。</p></li>
+</ul>
+</li>
+<li><p>结束位置有当前车辆使用的 <strong>总时间</strong>。</p></li>
+<li><p>摘要行包含 <strong>总解决问题时间</strong>：</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(total\ traveling\ time + total\ waiting\ time + total\ service\ time\)</span>。</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="summary-row">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">摘要行</a><a class="headerlink" href="#summary-row" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>继续序列</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vehicle_seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>值 <span class="math notranslate nohighlight">\(-2\)</span> 表示它是汇总行。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vehicle_id</span></code></p></td>
+<td><p>BIGINT</p></td>
+<td><p><strong>总容量违规</strong>：</p>
+<ul class="simple">
+<li><p>当车辆超载或欠载时，就会发生容量违规。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stop_seq</span></code></p></td>
+<td><p>INTEGER</p></td>
+<td><p><strong>总时间窗口违规</strong>：</p>
+<ul class="simple">
+<li><p>在该地点关闭后到达时，会发生时间窗口违规。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stop_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">order_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cargo</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">travel_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><strong>总行程时间</strong>：</p>
+<ul class="simple">
+<li><p>所有 <code class="docutils literal notranslate"><span class="pre">travel_time</span></code> 的总和。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arrival_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wait_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><strong>总行程时间</strong>：</p>
+<ul class="simple">
+<li><p>所有 <code class="docutils literal notranslate"><span class="pre">wait_time</span></code> 的总和。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">service_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><strong>总服务时间</strong>：</p>
+<ul class="simple">
+<li><p>所有 <code class="docutils literal notranslate"><span class="pre">service_time</span></code> 的总和。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">departure_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>摘要行包含 <strong>总解决问题时间</strong>：</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(total\ traveling\ time + total\ waiting\ time + total\ service\ time\)</span>。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="handling-parameters">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">处理参数</a><a class="headerlink" href="#handling-parameters" title="Link to this heading">¶</a></h2>
+<p>要定义问题，必须考虑多种因素才能获得一致的结果。 本节深入了解如何考虑参数。</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#capacity-and-demand-units-handling">容量和需求单位处理</a></p></li>
+<li><p><a class="reference internal" href="#locations">位置</a></p></li>
+<li><p><a class="reference internal" href="#time-handling">时间处理</a></p></li>
+<li><p><a class="reference internal" href="#factor-handling">因素处理</a></p></li>
+</ul>
+<section id="capacity-and-demand-units-handling">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">容量和需求单位处理</a><a class="headerlink" href="#capacity-and-demand-units-handling" title="Link to this heading">¶</a></h3>
+<p>车辆的`容量`可以通过以下方式测量：</p>
+<ul class="simple">
+<li><p>体积单位如 <span class="math notranslate nohighlight">\(m^3\)</span>。</p></li>
+<li><p>面积单位如 : math:<cite>m^2</cite> （不允许堆叠时）。</p></li>
+<li><p>重量单位如 <span class="math notranslate nohighlight">\(kg\)</span>。</p></li>
+<li><p>车辆内可容纳的箱子数量。</p></li>
+<li><p>车内座位数</p></li>
+</ul>
+<p>取货-送货订单的 <cite>需求</cite> 请求必须使用与车辆 <cite>容量</cite> 中使用的单位相同的单位。</p>
+<p>处理以下问题：10 箱（尺寸相等）苹果和 5 千克羽毛的运输（不装箱）。</p>
+<ul class="simple">
+<li><p>如果车辆的 <strong>容量</strong> 以 <cite>箱子</cite> 来衡量，则需要将 <cite>羽毛的千克</cite> 换算为 <cite>箱子的数量</cite>。</p></li>
+<li><p>如果车辆的 <strong>容量</strong> 以 <cite>kg</cite> 为单位，则需要将 <cite>一箱苹果</cite> 换算为 <cite>kg</cite>。</p></li>
+</ul>
+<p>显示如何完成两种可能的转换</p>
+<p>设：- <span class="math notranslate nohighlight">\(f\_boxes\)</span>： <cite>1</cite> 公斤羽毛所需的箱子数量。- <span class="math notranslate nohighlight">\(a\_weight\)</span>： <cite>1</cite> 箱子苹果的重量。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>容量单位</p></th>
+<th class="head"><p>苹果</p></th>
+<th class="head"><p>羽毛</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>箱子</p></td>
+<td><p>10</p></td>
+<td><p><span class="math notranslate nohighlight">\(5 * f\_boxes\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>千克</p></td>
+<td><p><span class="math notranslate nohighlight">\(10 * a\_weight\)</span></p></td>
+<td><p>5</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="locations">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">位置</a><a class="headerlink" href="#locations" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>当使用 <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - 实验</span></a>：</p>
+<ul>
+<li><p>车辆有起点和终点 <span class="math notranslate nohighlight">\((x, y)\)</span> 对。</p></li>
+<li><p>订单有取货和送货地点 <span class="math notranslate nohighlight">\((x, y)\)</span> 对。</p></li>
+</ul>
+</li>
+<li><p>当使用 <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - 实验</span></a>:</p>
+<ul>
+<li><p>车辆具有起始位置和结束位置的标识符。</p></li>
+<li><p>订单具有取货和送货地点的标识符。</p></li>
+<li><p>所有标识符都是给定矩阵的索引。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="time-handling">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">时间处理</a><a class="headerlink" href="#time-handling" title="Link to this heading">¶</a></h3>
+<p>时间是相对于 <strong>0</strong> 的。所有时间单位都必须转换为 <strong>0</strong> 参考和相同的时间单位。</p>
+<p>假设车辆驾驶员上午 9:00 开始换班，下午 4:30 结束换班，服务时间为 10 分钟 30 秒。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>0的含义</p></th>
+<th class="head"><p>时间单位</p></th>
+<th class="head"><p>9:00 am</p></th>
+<th class="head"><p>4:30 pm</p></th>
+<th class="head"><p>10 min 30 secs</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0:00 am</p></td>
+<td><p>小时</p></td>
+<td><p>9</p></td>
+<td><p>16.5</p></td>
+<td><p><span class="math notranslate nohighlight">\(10.5 / 60 = 0.175\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>0:00 am</p></td>
+<td><p>分钟</p></td>
+<td><p><span class="math notranslate nohighlight">\(9*60 = 54\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(16.5*60 = 990\)</span></p></td>
+<td><p>10.5</p></td>
+</tr>
+<tr class="row-even"><td><p>9:00 am</p></td>
+<td><p>小时</p></td>
+<td><p>0</p></td>
+<td><p>7.5</p></td>
+<td><p><span class="math notranslate nohighlight">\(10.5 / 60 = 0.175\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>9:00 am</p></td>
+<td><p>分钟</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(7.5*60 = 540\)</span></p></td>
+<td><p>10.5</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="factor-handling">
+<span id="pd-factor"></span><h3><a class="toc-backref" href="#id18" role="doc-backlink">因素处理</a><a class="headerlink" href="#factor-handling" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">因子</span></code> 充当乘数，将距离值转换为时间单位、矩阵值或欧几里得值。</p>
+<ul class="simple">
+<li><p>当值已处于所需时间单位时</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">因数</span></code> 应为 <strong>1</strong></p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">因子</span></code> &gt; 1 时，行程时间更快</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">因子</span></code> &lt; 1 时，行程时间会变慢</p></li>
+</ul>
+</li>
+</ul>
+<p>用于 <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - 实验</span></a>:</p>
+<p>使用以秒为单位的时间单位，以及以纬度/经度为单位的 x/y： 因子：取决于点的位置和平均速度，例如 25m/s 是速度。</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>纬度</p></th>
+<th class="head"><p>转换</p></th>
+<th class="head"><p>因素</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>45</p></td>
+<td><p>1经度为(78846.81m)/(25m/s)</p></td>
+<td><p>3153 s</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1经度为(111319.46 m)/(25m/s)</p></td>
+<td><p>4452 s</p></td>
+</tr>
+</tbody>
+</table>
+<p>用于 <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - 实验</span></a>:</p>
+<p>给定 <span class="math notranslate nohighlight">\(v = d / t\)</span> 因此 <span class="math notranslate nohighlight">\(t = d / v\)</span> 并且 <code class="docutils literal notranslate"><span class="pre">因子</span></code> 变为 <span class="math notranslate nohighlight">\(1 / v\)</span></p>
+<p>其中：</p>
+<dl class="field-list simple">
+<dt class="field-odd">v<span class="colon">:</span></dt>
+<dd class="field-odd"><p>速度</p>
+</dd>
+<dt class="field-even">d<span class="colon">:</span></dt>
+<dd class="field-even"><p>距离</p>
+</dd>
+<dt class="field-odd">t<span class="colon">:</span></dt>
+<dd class="field-odd"><p>时间</p>
+</dd>
+</dl>
+<p>对于以下等价 <span class="math notranslate nohighlight">\(10m/s \approx 600m/min \approx 36 km/hr\)</span></p>
+<p>使用以秒为单位的时间单位和以米为单位的矩阵：对于矩阵上的 1000m 长度值：</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>单位</p></th>
+<th class="head"><p>速度</p></th>
+<th class="head"><p>转换</p></th>
+<th class="head"><p>因素</p></th>
+<th class="head"><p>结果</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>秒</p></td>
+<td><p><span class="math notranslate nohighlight">\(10 m/s\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{10m/s}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.1s/m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1000m * 0.1s/m = 100s\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>分钟</p></td>
+<td><p><span class="math notranslate nohighlight">\(600 m/min\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{600m/min}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.0016min/m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1000m * 0.0016min/m = 1.6min\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>小时</p></td>
+<td><p><span class="math notranslate nohighlight">\(36 km/hr\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{36 km/hr}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.0277hr/km\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1km * 0.0277hr/km = 0.0277hr\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">另请参阅</a><a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">https://en.wikipedia.org/wiki/Vehicle_routing_problem</a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
+</ul>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
+      Last updated on 4月 30, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
