@@ -209,7 +209,7 @@ var filesArr = [
     ]),
     new createInfo('pgr_nodeNetwork', '2.0', [
         { v: '2.1', n: 'src/common/doc/functions/node_network'},
-        { v: '2.3', n: 'src/topology/doc/pgr_nodeNetwork', 3.8},
+        { v: '2.3', n: 'src/topology/doc/pgr_nodeNetwork'}, 3.8,
     ]),
     new createInfo('topology-functions', '2.0', [
         { v: '2.1', n: 'src/common/doc/functions/index'},
