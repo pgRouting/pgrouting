@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-29 15:26+0000\n"
-"PO-Revision-Date: 2025-04-29 16:00+0000\n"
+"PO-Revision-Date: 2025-04-30 07:39+0000\n"
 "Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -2848,13 +2848,11 @@ msgstr ":doc:`pgr_contraction`"
 msgid ":doc:`pgr_contractionDeadEnd`"
 msgstr ":doc:`pgr_contractionDeadEnd`"
 
-#, fuzzy
 msgid ":doc:`pgr_contractionLinear`"
-msgstr ":doc:`pgr_contraction`"
+msgstr ":doc:`pgr_contractionLinear`"
 
-#, fuzzy
 msgid ":doc:`pgr_contractionHierarchies`"
-msgstr ":doc:`pgr_contraction`"
+msgstr ":doc:`pgr_contractionHierarchies`"
 
 #, fuzzy
 msgid ""
