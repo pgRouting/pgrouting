@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-29 15:26+0000\n"
-"PO-Revision-Date: 2025-04-30 08:00+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2025-04-30 08:06+0000\n"
+"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -2854,7 +2854,6 @@ msgstr ":doc:`pgr_contractionLinear`"
 msgid ":doc:`pgr_contractionHierarchies`"
 msgstr ":doc:`pgr_contractionHierarchies`"
 
-#, fuzzy
 msgid ""
 "In large graphs, like road graphs or electric networks, graph contraction "
 "can be used to speed up some graph algorithms. Contraction can reduce the "
@@ -2863,9 +2862,10 @@ msgid ""
 "kept in some methods). In this way, it decreases the total time and space "
 "used by graph algorithms, particularly those searching for an optimal path."
 msgstr ""
-"在大型图中，例如道路图或电网，图收缩可用于加速某些图算法。 收缩通过删除一些顶"
-"点和边来减小图的大小，例如，可能会添加表示原始边序列的边，从而减少图算法中使"
-"用的总时间和空间。"
+"在大型图中，如道路图或电力网络，图收缩可以用来加速一些图算法。收缩通过移除部"
+"分顶点和边，并添加表示原始边序列的边来减小图的大小（在某些方法中可以保留原始"
+"边）。通过这种方式，它减少了图算法使用的总时间和空间，特别是那些寻找最优路径"
+"的算法。"
 
 msgid ""
 "This implementation gives a flexible framework for adding contraction "
@@ -10316,56 +10316,46 @@ msgid ""
 msgstr ""
 "这个过程对图形是破坏性的，我们会制作一个副本，以便再次对其进行整体操作。"
 "收缩过程会将所有发现的捷径添加到边集 ``E`` "
-"中，并为每个收缩顶点赋予一个度量值。这个度量值就是所谓的*收缩层次*。"
+"中，并为每个收缩顶点赋予一个度量值。这个度量值就是所谓的 *收缩层次* 。"
 
 msgid "Initialize the queue with a first vertices order"
-msgstr ""
+msgstr "用初始顶点顺序初始化队列"
 
 msgid "For each vertex ``v`` of the graph, a contraction of ``v`` is built:"
 msgstr ""
 
-#, fuzzy
 msgid ":math:`v`"
-msgstr ":math:`9`"
+msgstr ":math:`v`"
 
-#, fuzzy
 msgid ":math:`\\{p, r, u\\}`"
-msgstr ":math:`\\{2, 3\\}`"
+msgstr ":math:`\\{p, r, u\\}`"
 
-#, fuzzy
 msgid ":math:`p`"
-msgstr ":math:`9`"
+msgstr ":math:`p`"
 
-#, fuzzy
 msgid ":math:`\\{u, v\\}`"
-msgstr ":math:`\\{2, 3\\}`"
+msgstr ":math:`\\{u, v\\}`"
 
-#, fuzzy
 msgid ":math:`u`"
-msgstr ":math:`9`"
+msgstr ":math:`u`"
 
-#, fuzzy
 msgid ":math:`\\{p, v, w\\}`"
-msgstr ":math:`\\{2, 3\\}`"
+msgstr ":math:`\\{p, v, w\\}`"
 
-#, fuzzy
 msgid ":math:`r`"
-msgstr ":math:`9`"
+msgstr ":math:`r`"
 
-#, fuzzy
 msgid ":math:`\\{v, w\\}`"
-msgstr ":math:`\\{2, 3\\}`"
+msgstr ":math:`\\{v, w\\}`"
 
-#, fuzzy
 msgid ":math:`w`"
-msgstr ":math:`9`"
+msgstr ":math:`w`"
 
-#, fuzzy
 msgid ":math:`\\{r, u\\}`"
-msgstr ":math:`\\{2, 3\\}`"
+msgstr ":math:`\\{r, u\\}`"
 
 msgid "Adjacent edges are removed."
-msgstr ""
+msgstr "相邻边被移除。"
 
 msgid ""
 "Shortcuts are built from predecessors of ``v`` to successors of ``v`` if and "
@@ -10373,6 +10363,8 @@ msgid ""
 "the predecessor and the successor of ``v`` in the graph. The *edge "
 "difference* metric here takes the value of -2."
 msgstr ""
+"只有当通过 ``v`` 的路径是 ``v`` 的前驱和后继之间唯一的最短路径时，才会从 "
+"``v`` 的前驱到后继构建快捷边。这里的 *边差* 度量值为-2。"
 
 msgid ""
 "Then the following vertex is contracted. The process goes on until each node "
