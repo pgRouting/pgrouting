@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_contractionLinear - Proposed &#8212; pgRouting Manual (4.0-dev)</title>
+    <title>pgr_contractionLinear - 提议中 &#8212; pgRouting Manual (4.0-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -21,8 +21,8 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_contractionHierarchies - Experimental" href="pgr_contractionHierarchies.html" />
-    <link rel="prev" title="pgr_contractionDeadEnd - Proposed" href="pgr_contractionDeadEnd.html" />
+    <link rel="next" title="pgr_contractionHierarchies - 实验性" href="pgr_contractionHierarchies.html" />
+    <link rel="prev" title="pgr_contractionDeadEnd - 提议中" href="pgr_contractionDeadEnd.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -97,7 +97,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionLinear</span></code> - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionLinear</span></code> - 提议中</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
@@ -112,16 +112,16 @@
 <li><a class="reference internal" href="#result-columns">结果列</a></li>
 <li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
 <li><a class="reference internal" href="#linear-edges">线性边</a></li>
-<li><a class="reference internal" href="#linearity-is-not-symmetrical">Linearity is not symmetrical</a></li>
+<li><a class="reference internal" href="#linearity-is-not-symmetrical">线性不对称</a></li>
 <li><a class="reference internal" href="#linearity-is-symmetrical">线性是对称的</a></li>
-<li><a class="reference internal" href="#step-by-step-linear-contraction">Step by step linear contraction</a></li>
-<li><a class="reference internal" href="#creating-the-contracted-graph">Creating the contracted graph</a><ul>
-<li><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph">Steps for the creation of the contracted graph</a></li>
+<li><a class="reference internal" href="#step-by-step-linear-contraction">逐步线性收缩</a></li>
+<li><a class="reference internal" href="#creating-the-contracted-graph">创建收缩图</a><ul>
+<li><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph">创建收缩图的步骤</a></li>
 <li><a class="reference internal" href="#the-contracted-graph">收缩图</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph">Using when departure and destination are in the contracted graph</a></li>
-<li><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph">Using when departure/destination is not in the contracted graph</a></li>
+<li><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph">当出发地和目的地位于收缩图中时使用</a></li>
+<li><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph">当出发地/目的地不在收缩图中时使用</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
@@ -136,11 +136,11 @@
               
                 
   <li>
-    <a href="pgr_contractionDeadEnd.html" title="Previous Chapter: pgr_contractionDeadEnd - Proposed"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contracti...</span>
+    <a href="pgr_contractionDeadEnd.html" title="Previous Chapter: pgr_contractionDeadEnd - 提议中"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contracti...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_contractionHierarchies.html" title="Next Chapter: pgr_contractionHierarchies - Experimental"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
+    <a href="pgr_contractionHierarchies.html" title="Next Chapter: pgr_contractionHierarchies - 实验性"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
     </a>
   </li>
               
@@ -171,7 +171,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionLinear</span></code> - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionLinear</span></code> - 提议中</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
@@ -186,16 +186,16 @@
 <li><a class="reference internal" href="#result-columns">结果列</a></li>
 <li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
 <li><a class="reference internal" href="#linear-edges">线性边</a></li>
-<li><a class="reference internal" href="#linearity-is-not-symmetrical">Linearity is not symmetrical</a></li>
+<li><a class="reference internal" href="#linearity-is-not-symmetrical">线性不对称</a></li>
 <li><a class="reference internal" href="#linearity-is-symmetrical">线性是对称的</a></li>
-<li><a class="reference internal" href="#step-by-step-linear-contraction">Step by step linear contraction</a></li>
-<li><a class="reference internal" href="#creating-the-contracted-graph">Creating the contracted graph</a><ul>
-<li><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph">Steps for the creation of the contracted graph</a></li>
+<li><a class="reference internal" href="#step-by-step-linear-contraction">逐步线性收缩</a></li>
+<li><a class="reference internal" href="#creating-the-contracted-graph">创建收缩图</a><ul>
+<li><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph">创建收缩图的步骤</a></li>
 <li><a class="reference internal" href="#the-contracted-graph">收缩图</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph">Using when departure and destination are in the contracted graph</a></li>
-<li><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph">Using when departure/destination is not in the contracted graph</a></li>
+<li><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph">当出发地和目的地位于收缩图中时使用</a></li>
+<li><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph">当出发地/目的地不在收缩图中时使用</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
@@ -204,11 +204,11 @@
 </ul>
 
   <li>
-    <a href="pgr_contractionDeadEnd.html" title="Previous Chapter: pgr_contractionDeadEnd - Proposed"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contracti...</span>
+    <a href="pgr_contractionDeadEnd.html" title="Previous Chapter: pgr_contractionDeadEnd - 提议中"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contracti...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_contractionHierarchies.html" title="Next Chapter: pgr_contractionHierarchies - Experimental"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
+    <a href="pgr_contractionHierarchies.html" title="Next Chapter: pgr_contractionHierarchies - 实验性"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -227,9 +227,8 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-contractionlinear-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_contractionLinear</span></code> - Proposed<a class="headerlink" href="#pgr-contractionlinear-proposed" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_contractionLinear</span></code> — Performs graph contraction and returns the contracted
-vertices and edges.</p>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_contractionLinear</span></code> - 提议中<a class="headerlink" href="#pgr-contractionlinear-proposed" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_contractionLinear</span></code> — 执行图收缩并返回收缩后的顶点和边线。</p>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>Version 3.8.0</p>
@@ -244,25 +243,25 @@ vertices and edges.</p>
 <p>主要特点是：</p>
 <ul class="simple">
 <li><p>仅在具有正成本的边进行处理。</p></li>
-<li><p>Does not return the full contracted graph.</p>
+<li><p>不返回完整的收缩图。</p>
 <ul>
-<li><p>Only changes on the graph are returned.</p></li>
+<li><p>仅返回图中的变更部分。</p></li>
 </ul>
 </li>
-<li><p>The returned values include:</p>
+<li><p>返回值包括：</p>
 <ul>
-<li><p>The new edges generated by linear contraction.</p></li>
-<li><p>The modified vertices generated by dead end contraction.</p></li>
+<li><p>线性收缩生成的新边线集。</p></li>
+<li><p>断头节点收缩生成的修改后顶点集。</p></li>
 </ul>
 </li>
 <li><p>返回值的排序如下：</p>
 <ul>
-<li><p>column <code class="docutils literal notranslate"><span class="pre">id</span></code> ascending when its a modified vertex.</p></li>
-<li><p>column <code class="docutils literal notranslate"><span class="pre">id</span></code> with negative numbers descending when its a new edge.</p></li>
+<li><p>列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 升序排列。</p></li>
+<li><p>列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 中的负数，当它是一条新边时，负数依次递减。</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -278,7 +277,7 @@ vertices and edges.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Linear contraction on an undirected graph.</p>
+<dd class="field-odd"><p>无向图上的线性收缩。</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractionLinear</span><span class="p">(</span>
@@ -294,12 +293,12 @@ vertices and edges.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>The green nodes are linear nodes and will not be part of the contracted graph.</p>
+<li><p>绿色节点为线性节点，不属于收缩图的一部分。</p>
 <ul>
-<li><p>All edges adjacent will not be part of the contracted graph.</p></li>
+<li><p>所有相邻边线均不纳入收缩图。</p></li>
 </ul>
 </li>
-<li><p>The red lines will be new edges of the contracted graph.</p></li>
+<li><p>红线将成为收缩图的新边线。</p></li>
 </ul>
 <div class="graphviz"><img src="_images/graphviz-069192ad4349ef79e70153b36d4506142c52a931.png" alt="graph G {
   splines=false;
@@ -371,7 +370,7 @@ vertices and edges.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
-<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite>。</p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -446,14 +445,14 @@ vertices and edges.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -484,11 +483,11 @@ vertices and edges.</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>Value = <code class="docutils literal notranslate"><span class="pre">e</span></code> indicating the row is an edge.</p></td>
+<td><p>值 = <code class="docutils literal notranslate"><span class="pre">e</span></code> 表示该行是一条边。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>A pseudo <cite>id</cite> of the edge.</p>
+<td><p>边线的伪 <cite>id</cite>。</p>
 <ul class="simple">
 <li><p>此列中的所有数字都是 <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code></p></li>
 <li><p>从 <strong>-1</strong> 开始递减序列。</p></li>
@@ -509,7 +508,7 @@ vertices and edges.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Weight of the current edge.</p></td>
+<td><p>当前边线的权重值。</p></td>
 </tr>
 </tbody>
 </table>
@@ -519,23 +518,23 @@ vertices and edges.</p>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#linear-edges" id="id2">线性边</a></p></li>
-<li><p><a class="reference internal" href="#linearity-is-not-symmetrical" id="id3">Linearity is not symmetrical</a></p></li>
+<li><p><a class="reference internal" href="#linearity-is-not-symmetrical" id="id3">线性不对称</a></p></li>
 <li><p><a class="reference internal" href="#linearity-is-symmetrical" id="id4">线性是对称的</a></p></li>
-<li><p><a class="reference internal" href="#step-by-step-linear-contraction" id="id5">Step by step linear contraction</a></p></li>
-<li><p><a class="reference internal" href="#creating-the-contracted-graph" id="id6">Creating the contracted graph</a></p>
+<li><p><a class="reference internal" href="#step-by-step-linear-contraction" id="id5">逐步线性收缩</a></p></li>
+<li><p><a class="reference internal" href="#creating-the-contracted-graph" id="id6">创建收缩图</a></p>
 <ul>
-<li><p><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph" id="id7">Steps for the creation of the contracted graph</a></p></li>
+<li><p><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph" id="id7">创建收缩图的步骤</a></p></li>
 <li><p><a class="reference internal" href="#the-contracted-graph" id="id8">收缩图</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph" id="id9">Using when departure and destination are in the contracted graph</a></p></li>
-<li><p><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph" id="id10">Using when departure/destination is not in the contracted graph</a></p></li>
+<li><p><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph" id="id9">当出发地和目的地位于收缩图中时使用</a></p></li>
+<li><p><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph" id="id10">当出发地/目的地不在收缩图中时使用</a></p></li>
 </ul>
 </nav>
 <section id="linear-edges">
 <h3><a class="toc-backref" href="#id2" role="doc-backlink">线性边</a><a class="headerlink" href="#linear-edges" title="Link to this heading">¶</a></h3>
 <p class="rubric">无向图</p>
-<p>A node connects two (or more) <cite>linear</cite> edges when</p>
+<p>节点连接两条（或多条）&quot;线性 &quot;边，当</p>
 <ul class="simple">
 <li><p>相邻顶点的数量为2。</p></li>
 </ul>
@@ -556,7 +555,7 @@ vertices and edges.</p>
 <p>在有向图的情况下，当满足以下条件时，节点被视为`线性`节点</p>
 <ul class="simple">
 <li><p>相邻顶点的数量为2。</p></li>
-<li><p>Linearity is symmetrical.</p></li>
+<li><p>线性是对称的。</p></li>
 </ul>
 <div class="graphviz"><img src="_images/graphviz-ec0146321e74ae314bab5090db3f7e72f2fa1f65.png" alt="digraph G {
   label = &quot;Linearity is symmetrical.&quot;
@@ -574,9 +573,9 @@ vertices and edges.</p>
 }" class="graphviz" /></div>
 </section>
 <section id="linearity-is-not-symmetrical">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Linearity is not symmetrical</a><a class="headerlink" href="#linearity-is-not-symmetrical" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">线性不对称</a><a class="headerlink" href="#linearity-is-not-symmetrical" title="Link to this heading">¶</a></h3>
 <p class="rubric">有向图</p>
-<p>Graph where linearity is not symmetrical.</p>
+<p>线性不对称的图形。</p>
 <div class="graphviz"><img src="_images/graphviz-2956b8517f0df69088225a55990846dbb9ae75e4.png" alt="digraph G {
   2 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
@@ -587,8 +586,7 @@ vertices and edges.</p>
 
   1 [pos=&quot;0,2!&quot;];   2 [pos=&quot;1,2!&quot;];   3 [pos=&quot;2,2!&quot;];
 }" class="graphviz" /></div>
-<p>When the graph is processed as a directed graph, linearity is not symmetrical,
-therefore the graph can not be contracted.</p>
+<p>当图形作为有向图处理时，线性并不对称，因此图形无法收缩。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_contractionLinear(
 $$SELECT * FROM (VALUES
   (1, 1, 2, 1, -1),
@@ -602,8 +600,7 @@ $$SELECT * FROM (VALUES
 </pre></div>
 </div>
 <p class="rubric">无向图</p>
-<p>When the same graph is processed as an undirected graph, linearity is symmetrical,
-therefore the graph can be contracted.</p>
+<p>当把同一图形作为无向图处理时，线性是对称的，因此图形可以收缩。</p>
 <div class="graphviz"><img src="_images/graphviz-946e80eb77cb0529d96e6199cc314eac3c039ad6.png" alt="graph G {
   2 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
@@ -625,12 +622,12 @@ $$SELECT * FROM (VALUES
 
 </pre></div>
 </div>
-<p>The three edges can be replaced by one undirected edge</p>
+<p>三条边可以用一条无向边代替</p>
 <ul class="simple">
-<li><p>Edge <span class="math notranslate nohighlight">\(1 - 3\)</span>.</p>
+<li><p>边线 <span class="math notranslate nohighlight">\(1 - 3\)</span>。</p>
 <ul>
-<li><p>With cost: <span class="math notranslate nohighlight">\(4\)</span>.</p></li>
-<li><p>Contracted vertices in the edge: <span class="math notranslate nohighlight">\(\{2\}\)</span>.</p></li>
+<li><p>成本： <span class="math notranslate nohighlight">\(4\)</span>.</p></li>
+<li><p>边上的收缩顶点: <span class="math notranslate nohighlight">\(\{2\}\)</span>.</p></li>
 </ul>
 </li>
 </ul>
@@ -643,7 +640,7 @@ $$SELECT * FROM (VALUES
 <section id="linearity-is-symmetrical">
 <h3><a class="toc-backref" href="#id4" role="doc-backlink">线性是对称的</a><a class="headerlink" href="#linearity-is-symmetrical" title="Link to this heading">¶</a></h3>
 <p class="rubric">有向图</p>
-<p>Graph where linearity is symmetrical.</p>
+<p>线性对称的图形。</p>
 <div class="graphviz"><img src="_images/graphviz-49002a1065b9c5bc7564f25175a447b0cccd5c80.png" alt="digraph G {
   2 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
@@ -655,8 +652,7 @@ $$SELECT * FROM (VALUES
 
   1 [pos=&quot;0,2!&quot;];   2 [pos=&quot;1,2!&quot;];   3 [pos=&quot;2,2!&quot;];
 }" class="graphviz" /></div>
-<p>When the graph is processed as a directed graph, linearity is not symmetrical,
-therefore the graph can not be contracted.</p>
+<p>当图形作为有向图处理时，线性并不对称，因此图形无法收缩。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_contractionLinear(
 $$SELECT * FROM (VALUES
   (1, 1, 2, 1, 2),
@@ -671,18 +667,18 @@ $$SELECT * FROM (VALUES
 
 </pre></div>
 </div>
-<p>The four edges can be replaced by two directed edges.</p>
+<p>四条边可以用两条有向边代替。</p>
 <ul class="simple">
-<li><p>Edge <span class="math notranslate nohighlight">\(1 - 3\)</span>.</p>
+<li><p>边线 <span class="math notranslate nohighlight">\(1 - 3\)</span>。</p>
 <ul>
-<li><p>With cost: <span class="math notranslate nohighlight">\(4\)</span>.</p></li>
-<li><p>Contracted vertices in the edge: <span class="math notranslate nohighlight">\(\{2\}\)</span>.</p></li>
+<li><p>成本： <span class="math notranslate nohighlight">\(4\)</span>.</p></li>
+<li><p>边上的收缩顶点: <span class="math notranslate nohighlight">\(\{2\}\)</span>.</p></li>
 </ul>
 </li>
-<li><p>Edge <span class="math notranslate nohighlight">\(3 - 1\)</span>.</p>
+<li><p>边线 <span class="math notranslate nohighlight">\(3 - 1\)</span>.</p>
 <ul>
-<li><p>With cost: <span class="math notranslate nohighlight">\(6\)</span>.</p></li>
-<li><p>Contracted vertices in the edge: <span class="math notranslate nohighlight">\(\{2\}\)</span>.</p></li>
+<li><p>成本： <span class="math notranslate nohighlight">\(6\)</span>.</p></li>
+<li><p>边上的收缩顶点: <span class="math notranslate nohighlight">\(\{2\}\)</span>.</p></li>
 </ul>
 </li>
 </ul>
@@ -695,8 +691,7 @@ $$SELECT * FROM (VALUES
   1 [pos=&quot;0,2!&quot;]; 3 [pos=&quot;2,2!&quot;];
 }" class="graphviz" /></div>
 <p class="rubric">无向图</p>
-<p>When the same graph is processed as an undirected graph, linearity is symmetrical,
-therefore the graph can be contracted.</p>
+<p>当把同一图形作为无向图处理时，线性是对称的，因此图形可以收缩。</p>
 <div class="graphviz"><img src="_images/graphviz-4772c46a98d0df937b2ce4687655644d65810756.png" alt="graph G {
   2 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
@@ -719,12 +714,12 @@ $$SELECT * FROM (VALUES
 
 </pre></div>
 </div>
-<p>The four edges can be replaced by one undirected edge.</p>
+<p>四条边线可替换为一条无向边。</p>
 <ul class="simple">
-<li><p>Edge <span class="math notranslate nohighlight">\(1 - 3\)</span>.</p>
+<li><p>边线 <span class="math notranslate nohighlight">\(1 - 3\)</span>。</p>
 <ul>
-<li><p>With cost: <span class="math notranslate nohighlight">\(4\)</span>.</p></li>
-<li><p>Contracted vertices in the edge: <span class="math notranslate nohighlight">\(\{2\}\)</span>.</p></li>
+<li><p>成本： <span class="math notranslate nohighlight">\(4\)</span>.</p></li>
+<li><p>边上的收缩顶点: <span class="math notranslate nohighlight">\(\{2\}\)</span>.</p></li>
 </ul>
 </li>
 </ul>
@@ -737,9 +732,8 @@ $$SELECT * FROM (VALUES
 }" class="graphviz" /></div>
 </section>
 <section id="step-by-step-linear-contraction">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Step by step linear contraction</a><a class="headerlink" href="#step-by-step-linear-contraction" title="Link to this heading">¶</a></h3>
-<p>The linear contraction will stop when there are no more linear edges.
-For example from the following graph there are linear edges</p>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">逐步线性收缩</a><a class="headerlink" href="#step-by-step-linear-contraction" title="Link to this heading">¶</a></h3>
+<p>线性收缩将在没有更多线性边时停止。例如，在下图中存在线性边</p>
 <div class="graphviz"><img src="_images/graphviz-6567892805665a7ce5981b1a08fc9041d392b59b.png" alt="digraph G {
     1, 2, 3, 4, G [fontsize=8;fixedsize=true;style=filled];
     1, 2, 3, 4 [shape=circle];
@@ -753,12 +747,11 @@ For example from the following graph there are linear edges</p>
     G [pos=&quot;1,1!&quot;];
     1 [pos=&quot;0,0!&quot;]; 2 [pos=&quot;1,0!&quot;]; 3 [pos=&quot;2,0!&quot;]; 4 [pos=&quot;3,0!&quot;];
 }" class="graphviz" /></div>
-<p>Contracting vertex <span class="math notranslate nohighlight">\(3\)</span>,</p>
+<p>收缩顶点 <span class="math notranslate nohighlight">\(3\)</span>,</p>
 <ul class="simple">
-<li><p>The vertex <span class="math notranslate nohighlight">\(3\)</span> is removed from the graph</p></li>
-<li><p>The edges <span class="math notranslate nohighlight">\(2 \rightarrow 3\)</span> and <span class="math notranslate nohighlight">\(w \rightarrow z\)</span> are removed
-from the graph.</p></li>
-<li><p>A new edge <span class="math notranslate nohighlight">\(2 \rightarrow 4\)</span> is inserted represented with red color.</p></li>
+<li><p>顶点 <span class="math notranslate nohighlight">\(3\)</span> 已从图中移除</p></li>
+<li><p>边线 <span class="math notranslate nohighlight">\(2 \rightarrow 3\)</span> 和 <span class="math notranslate nohighlight">\(w \rightarrow z\)</span> 已从图中移除。</p></li>
+<li><p>插入一条新边 <span class="math notranslate nohighlight">\(2 \rightarrow 4\)</span> ，用红色表示。</p></li>
 </ul>
 <div class="graphviz"><img src="_images/graphviz-9979db882d187d41972ef525a3409d772accfd18.png" alt="digraph G {
     1, 2, 4, G [fontsize=8;fixedsize=true;style=filled];
@@ -772,12 +765,11 @@ from the graph.</p></li>
     G [pos=&quot;1,1!&quot;];
     1 [pos=&quot;0,0!&quot;]; 2 [pos=&quot;1,0!&quot;]; 4 [pos=&quot;3,0!&quot;];
 }" class="graphviz" /></div>
-<p>Contracting vertex <span class="math notranslate nohighlight">\(2\)</span>:</p>
+<p>收缩顶点 <span class="math notranslate nohighlight">\(2\)</span>：</p>
 <ul class="simple">
-<li><p>The vertex <span class="math notranslate nohighlight">\(2\)</span> is removed from the graph</p></li>
-<li><p>The edges <span class="math notranslate nohighlight">\(1 \rightarrow 2\)</span> and <span class="math notranslate nohighlight">\(2 \rightarrow 3\)</span> are removed
-from the graph.</p></li>
-<li><p>A new edge <span class="math notranslate nohighlight">\(1 \rightarrow 3\)</span> is inserted represented with red color.</p></li>
+<li><p>顶点 <span class="math notranslate nohighlight">\(2\)</span> 已从图形中移除</p></li>
+<li><p>从图中删除边 <span class="math notranslate nohighlight">\(1 \rightarrow 2\)</span> 和 <span class="math notranslate nohighlight">\(2 \rightarrow 3\)</span> 。</p></li>
+<li><p>插入一条新边 <span class="math notranslate nohighlight">\(1\rightarrow 3\)</span> ，用红色表示。</p></li>
 </ul>
 <div class="graphviz"><img src="_images/graphviz-db2920cace480487d7d9f480027b6e67177e2663.png" alt="digraph G {
     1, 4, G [fontsize=8;fixedsize=true;style=filled];
@@ -789,8 +781,7 @@ from the graph.</p></li>
     G [pos=&quot;1,1!&quot;];
     1 [pos=&quot;0,0!&quot;]; 4 [pos=&quot;3,0!&quot;];
 }" class="graphviz" /></div>
-<p>Edge <span class="math notranslate nohighlight">\(1 \rightarrow 3\)</span> has the information of cost and the nodes that were
-contracted.</p>
+<p>边线 <span class="math notranslate nohighlight">\(1 \rightarrow 3\)</span> 包含成本值及被收缩节点信息。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_contractionLinear(
 $$SELECT * FROM (VALUES
   (1, 1, 2, 1),
@@ -806,16 +797,16 @@ $$SELECT * FROM (VALUES
 </div>
 </section>
 <section id="creating-the-contracted-graph">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Creating the contracted graph</a><a class="headerlink" href="#creating-the-contracted-graph" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">创建收缩图</a><a class="headerlink" href="#creating-the-contracted-graph" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph" id="id11">Steps for the creation of the contracted graph</a></p></li>
+<li><p><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph" id="id11">创建收缩图的步骤</a></p></li>
 <li><p><a class="reference internal" href="#the-contracted-graph" id="id12">收缩图</a></p></li>
 </ul>
 </nav>
 <section id="steps-for-the-creation-of-the-contracted-graph">
-<h4><a class="toc-backref" href="#id11" role="doc-backlink">Steps for the creation of the contracted graph</a><a class="headerlink" href="#steps-for-the-creation-of-the-contracted-graph" title="Link to this heading">¶</a></h4>
-<p>Add additional columns.</p>
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">创建收缩图的步骤</a><a class="headerlink" href="#steps-for-the-creation-of-the-contracted-graph" title="Link to this heading">¶</a></h4>
+<p>添加额外的列。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ADD</span> <span class="n">is_contracted</span> <span class="n">BOOLEAN</span> <span class="n">DEFAULT</span> <span class="n">false</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">is_new</span> <span class="n">BOOLEAN</span> <span class="n">DEFAULT</span> <span class="n">false</span><span class="p">;</span>
@@ -824,7 +815,7 @@ $$SELECT * FROM (VALUES
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
-<p>Save results into a table.</p>
+<p>将结果保存到表格中。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
 <span class="n">FROM</span> <span class="n">pgr_contractionLinear</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -839,7 +830,7 @@ $$SELECT * FROM (VALUES
 <span class="n">UPDATE</span> <span class="mi">3</span>
 </pre></div>
 </div>
-<p>The contracted vertices are not part of the contracted graph.</p>
+<p>收缩后的顶点不包含在收缩图中。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">is_contracted</span>
 <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">WHERE</span> <span class="n">is_contracted</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">is_contracted</span>
@@ -858,7 +849,7 @@ $$SELECT * FROM (VALUES
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">3</span>
 </pre></div>
 </div>
-<p>Create the contracted graph.</p>
+<p>创建收缩图。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">VIEW</span> <span class="n">contracted_graph</span> <span class="n">AS</span>
 <span class="n">WITH</span>
 <span class="n">vertices_in_graph</span> <span class="n">AS</span> <span class="p">(</span>
@@ -925,7 +916,7 @@ $$SELECT * FROM (VALUES
 </section>
 </section>
 <section id="using-when-departure-and-destination-are-in-the-contracted-graph">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Using when departure and destination are in the contracted graph</a><a class="headerlink" href="#using-when-departure-and-destination-are-in-the-contracted-graph" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">当出发地和目的地位于收缩图中时使用</a><a class="headerlink" href="#using-when-departure-and-destination-are-in-the-contracted-graph" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM contracted_graph&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -964,7 +955,7 @@ $$SELECT * FROM (VALUES
 }" class="graphviz" /></div>
 </section>
 <section id="using-when-departure-destination-is-not-in-the-contracted-graph">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Using when departure/destination is not in the contracted graph</a><a class="headerlink" href="#using-when-departure-destination-is-not-in-the-contracted-graph" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">当出发地/目的地不在收缩图中时使用</a><a class="headerlink" href="#using-when-departure-destination-is-not-in-the-contracted-graph" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;WITH in_line AS (SELECT contracted_vertices FROM edges WHERE 17 = ANY(contracted_vertices))</span>
    <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
@@ -1039,7 +1030,7 @@ $$SELECT * FROM (VALUES
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

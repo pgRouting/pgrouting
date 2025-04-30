@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -201,10 +201,10 @@
 <section id="via-category">
 <h1>Via - 类别<a class="headerlink" href="#via-category" title="Link to this heading">¶</a></h1>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="8050f6a7-4f5f-439d-ba59-d373f2069565" name="8050f6a7-4f5f-439d-ba59-d373f2069565" type="checkbox"><label class="sphinx_collapse__label" for="8050f6a7-4f5f-439d-ba59-d373f2069565"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="fd46c2e6-85bc-4ef8-9686-8763eb920b55" name="fd46c2e6-85bc-4ef8-9686-8763eb920b55" type="checkbox"><label class="sphinx_collapse__label" for="fd46c2e6-85bc-4ef8-9686-8763eb920b55"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>下一版本的拟议功能。</p>
+<p>下一版本的提议功能。</p>
 <ul class="simple">
 <li><p>它们并未正式出现在当前版本中。</p></li>
 <li><p>它们可能会正式成为下一个版本的一部分：</p>
@@ -222,7 +222,7 @@
 </div>
 </div>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia -拟议</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - 提议中</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a></p></li>
@@ -233,8 +233,7 @@
 <blockquote>
 <div><p>给定一个图和一个顶点列表，找到所有相邻顶点对 <span class="math notranslate nohighlight">\(vertex_i\)</span> 和 <span class="math notranslate nohighlight">\(vertex_{i+1}\)</span> 之间的最短路径</p>
 </div></blockquote>
-<p>In other words, find a continuous route that visits all the vertices in the order
-given.</p>
+<p>换句话说，寻找一条连续路径，使其按照给定顺序访问所有节点。</p>
 <dl class="field-list simple">
 <dt class="field-odd">path<span class="colon">:</span></dt>
 <dd class="field-odd"><p>代表 <strong>route</strong> 的一部分。</p>
@@ -248,7 +247,7 @@ given.</p>
 <h2>参数<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <p><strong>用于：</strong></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia -拟议</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - 提议中</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a></p></li>
 </ul>
 <table class="docutils align-default" style="width: 81">
@@ -367,7 +366,7 @@ given.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>为 <cite>true</cite> 时，从访问过的顶点出发时不会试图避开</p></li>
+<li><p>为 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，从访问过的顶点出发时不会试图避开</p></li>
 </ul>
 </td>
 </tr>
@@ -414,14 +413,14 @@ given.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -567,7 +566,7 @@ given.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong>。</p></td>
+<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong> 。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -600,19 +599,19 @@ given.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">route_agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>从 <cite>seq = 1</cite> 的 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到当前 <cite>seq</cite> 的 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 的总费用。</p></td>
+<td><p>从 <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> 的 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到当前 <code class="docutils literal notranslate"><span class="pre">seq</span></code> 的 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 的总费用。</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>当 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>、 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">node</span></code> 列具有负值时，该标识符用于Point。</p>
+<p>当 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 、 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">node</span></code> 列具有负值时，该标识符用于Point。</p>
 </div>
 </section>
 <section id="see-also">
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia -拟议</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - 提议中</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a></p></li>
 </ul>
@@ -637,7 +636,7 @@ given.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

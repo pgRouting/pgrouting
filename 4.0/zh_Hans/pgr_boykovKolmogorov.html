@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -100,10 +100,10 @@
 <li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_boykovKolmogorov</span></code></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
-<li><a class="reference internal" href="#one-to-one">一对一</a></li>
+<li><a class="reference internal" href="#one-to-one">One to One</a></li>
 <li><a class="reference internal" href="#one-to-many">一对多</a></li>
-<li><a class="reference internal" href="#many-to-one">多对一</a></li>
-<li><a class="reference internal" href="#many-to-many">多对多</a></li>
+<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
+<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 <li><a class="reference internal" href="#combinations">组合</a></li>
 </ul>
 </li>
@@ -165,10 +165,10 @@
 <li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_boykovKolmogorov</span></code></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
-<li><a class="reference internal" href="#one-to-one">一对一</a></li>
+<li><a class="reference internal" href="#one-to-one">One to One</a></li>
 <li><a class="reference internal" href="#one-to-many">一对多</a></li>
-<li><a class="reference internal" href="#many-to-one">多对一</a></li>
-<li><a class="reference internal" href="#many-to-many">多对多</a></li>
+<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
+<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 <li><a class="reference internal" href="#combinations">组合</a></li>
 </ul>
 </li>
@@ -220,7 +220,7 @@
 </li>
 <li><p>版本3.2.0</p>
 <ul>
-<li><p>New proposed signature:</p>
+<li><p>新提议的签名：</p>
 <ul>
 <li><p>pgr_boykovKolmogorov (组合)</p></li>
 </ul>
@@ -235,12 +235,12 @@
 <li><p>版本2.5.0</p>
 <ul>
 <li><p>从 <code class="docutils literal notranslate"><span class="pre">pgr_maxFlowBoykovKolmogorov</span></code> 更名而来</p></li>
-<li><p>Function promoted to proposed.</p></li>
+<li><p>函数已升级为提议。</p></li>
 </ul>
 </li>
 <li><p>版本2.3.0</p>
 <ul>
-<li><p>新实验功能。</p></li>
+<li><p>新实验性功能。</p></li>
 </ul>
 </li>
 </ul>
@@ -263,8 +263,8 @@
 </li>
 <li><p>创建</p>
 <ul>
-<li><p>一个**超级源**和从它到所有源的边，</p></li>
-<li><p>一个**超级目标**和从它到所有目标的边。</p></li>
+<li><p>一个 <strong>超级源</strong> 和从它到所有源的边，</p></li>
+<li><p>一个 <strong>超级目标</strong> 和从它到所有目标的边。</p></li>
 </ul>
 </li>
 <li><p>当使用相同参数执行时，通过图表的最大流量保证是 <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> 返回的值，并且可以计算：</p>
@@ -277,7 +277,7 @@
 <ul class="simple">
 <li><p>运行时间：多项式时间</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -292,19 +292,19 @@
 <div class="line">pgr_boykovKolmogorov(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>)</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <section id="one-to-one">
-<span id="index-1"></span><h3>一对一<a class="headerlink" href="#one-to-one" title="Link to this heading">¶</a></h3>
+<span id="index-1"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_boykovKolmogorov(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>)</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -336,7 +336,7 @@
 <div class="line">pgr_boykovKolmogorov(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>)</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -366,14 +366,14 @@
 </div>
 </section>
 <section id="many-to-one">
-<span id="index-3"></span><h3>多对一<a class="headerlink" href="#many-to-one" title="Link to this heading">¶</a></h3>
+<span id="index-3"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_boykovKolmogorov(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>)</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -399,14 +399,14 @@
 </div>
 </section>
 <section id="many-to-many">
-<span id="index-4"></span><h3>多对多<a class="headerlink" href="#many-to-many" title="Link to this heading">¶</a></h3>
+<span id="index-4"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_boykovKolmogorov(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>)</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -444,7 +444,7 @@
 <div class="line">pgr_boykovKolmogorov(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>)</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -561,14 +561,14 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -685,7 +685,7 @@
 <li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html">Boost: Boykov Kolmogorov max flow</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html">Boost: Boykov-Kolmogorov 最大流算法</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
@@ -708,7 +708,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

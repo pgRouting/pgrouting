@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -203,7 +203,7 @@
 </li>
 <li><p>版本2.5.0</p>
 <ul>
-<li><p>新实验功能。</p></li>
+<li><p>新实验性功能。</p></li>
 </ul>
 </li>
 </ul>
@@ -220,7 +220,7 @@
 </li>
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -230,7 +230,7 @@
 <div class="line">pgr_articulationPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>)</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(node)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(node)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -312,14 +312,14 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -338,7 +338,7 @@
 </section>
 <section id="result-columns">
 <h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(node)</span></code></p>
+<p>返回集合 <code class="docutils literal notranslate"><span class="pre">(node)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>列</p></th>
@@ -359,7 +359,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="components-family.html"><span class="doc">分量 - 函数族</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/biconnected_components.html">Boost: Biconnected components &amp; articulation points</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/biconnected_components.html">Boost: 双连通分量与割点</a></p></li>
 <li><p>维基百科: <a class="reference external" href="https://en.wikipedia.org/wiki/Biconnected_component">双连通分量</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
@@ -383,7 +383,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

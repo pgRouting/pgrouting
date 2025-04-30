@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -100,10 +100,10 @@
 <li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
-<li><a class="reference internal" href="#one-to-one">一对一</a></li>
+<li><a class="reference internal" href="#one-to-one">One to One</a></li>
 <li><a class="reference internal" href="#one-to-many">一对多</a></li>
-<li><a class="reference internal" href="#many-to-one">多对一</a></li>
-<li><a class="reference internal" href="#many-to-many">多对多</a></li>
+<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
+<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 <li><a class="reference internal" href="#combinations">组合</a></li>
 </ul>
 </li>
@@ -123,7 +123,7 @@
 </li>
 <li><a class="reference internal" href="#result-columns">结果列</a></li>
 <li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
-<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">在 Points SQL 中使用 <span class="xref std std-doc">pgr_findCloseEdges</span>。</a></li>
+<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">在 Points SQL 中使用 <span class="xref std std-doc">pgr_findCloseEdges</span> 。</a></li>
 <li><a class="reference internal" href="#left-driving-side">左驾驶侧</a></li>
 <li><a class="reference internal" href="#right-driving-side">右驾驶侧</a></li>
 </ul>
@@ -178,10 +178,10 @@
 <li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
-<li><a class="reference internal" href="#one-to-one">一对一</a></li>
+<li><a class="reference internal" href="#one-to-one">One to One</a></li>
 <li><a class="reference internal" href="#one-to-many">一对多</a></li>
-<li><a class="reference internal" href="#many-to-one">多对一</a></li>
-<li><a class="reference internal" href="#many-to-many">多对多</a></li>
+<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
+<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 <li><a class="reference internal" href="#combinations">组合</a></li>
 </ul>
 </li>
@@ -201,7 +201,7 @@
 </li>
 <li><a class="reference internal" href="#result-columns">结果列</a></li>
 <li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
-<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">在 Points SQL 中使用 <span class="xref std std-doc">pgr_findCloseEdges</span>。</a></li>
+<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">在 Points SQL 中使用 <span class="xref std std-doc">pgr_findCloseEdges</span> 。</a></li>
 <li><a class="reference internal" href="#left-driving-side">左驾驶侧</a></li>
 <li><a class="reference internal" href="#right-driving-side">右驾驶侧</a></li>
 </ul>
@@ -243,19 +243,19 @@
 </ul>
 <p class="rubric">版本3.6.0</p>
 <ul class="simple">
-<li><p>Standardizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>pgr_withPointsKSP(一对一)</p>
+<li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>pgr_withPointsKSP(One to One)</p>
 <ul>
-<li><p>签名更改： <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> 参数从已命名的可选参数改为未命名的必选参数 <strong>driving side</strong>。</p></li>
+<li><p>签名更改： <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> 参数从已命名的可选参数改为未命名的必选参数 <strong>driving side</strong> 。</p></li>
 <li><p>增加 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 结果列。</p></li>
 </ul>
 </li>
-<li><p>新拟议的签名：</p>
+<li><p>新提议的签名：</p>
 <ul>
-<li><p>pgr_withPointsKSP (一对多)</p></li>
-<li><p>pgr_withPointsKSP(多对一)</p></li>
-<li><p>pgr_withPointsKSP(多对多)</p></li>
-<li><p>pgr_withPointsKSP（组合）</p></li>
+<li><p>pgr_withPointsKSP(One to Many)</p></li>
+<li><p>pgr_withPointsKSP(Many to One)</p></li>
+<li><p>pgr_withPointsKSP(Many to Many)</p></li>
+<li><p>pgr_withPointsKSP(Combinations)</p></li>
 </ul>
 </li>
 <li><p>已弃用的签名</p>
@@ -271,7 +271,7 @@
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>修改图以包括 <a class="reference internal" href="#points-sql">Points SQL</a> 中定义的点并使用 Yen 算法查找 <span class="math notranslate nohighlight">\(K\)</span> 最短路径。</p>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -291,7 +291,7 @@
 </div>
 </div>
 <section id="one-to-one">
-<span id="index-1"></span><h3>一对一<a class="headerlink" href="#one-to-one" title="Link to this heading">¶</a></h3>
+<span id="index-1"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -387,7 +387,7 @@
 </div>
 </section>
 <section id="many-to-one">
-<span id="index-3"></span><h3>多对一<a class="headerlink" href="#many-to-one" title="Link to this heading">¶</a></h3>
+<span id="index-3"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -428,7 +428,7 @@
 </div>
 </section>
 <section id="many-to-many">
-<span id="index-4"></span><h3>多对多<a class="headerlink" href="#many-to-many" title="Link to this heading">¶</a></h3>
+<span id="index-4"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -607,7 +607,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
-<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite>。</p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -632,7 +632,7 @@
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">false</span></code> 时返回最多 K 条路径。</p></li>
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，返回处理时的所有计算路径。</p></li>
-<li><p>粗略地说，当最短路径有 <code class="docutils literal notranslate"><span class="pre">N</span></code> 个边时，对于``K``值较小且``K &gt; 5`` ，堆将包含大约 <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">*</span> <span class="pre">K</span></code> 条路径。</p></li>
+<li><p>粗略地说，当最短路径有 <code class="docutils literal notranslate"><span class="pre">N</span></code> 个边时，对于 <code class="docutils literal notranslate"><span class="pre">K</span></code> 值较小且 <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">&gt;</span> <span class="pre">5</span></code> ，堆将包含大约 <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">*</span> <span class="pre">K</span></code> 条路径。</p></li>
 </ul>
 </td>
 </tr>
@@ -705,14 +705,14 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -847,7 +847,7 @@
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong>。</p></td>
+<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong> 。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -861,7 +861,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>从使用 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 的 <code class="docutils literal notranslate"><span class="pre">node</span></code> 遍历到路径序列中的下一个节点的成本。</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(0\)</span> 为路径的最后一个 <code class="docutils literal notranslate"><span class="pre">node</span></code>。</p></li>
+<li><p><span class="math notranslate nohighlight">\(0\)</span> 为路径的最后一个 <code class="docutils literal notranslate"><span class="pre">node</span></code> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -876,13 +876,13 @@
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> 。</a></p></li>
 <li><p><a class="reference internal" href="#left-driving-side" id="id2">左驾驶侧</a></p></li>
 <li><p><a class="reference internal" href="#right-driving-side" id="id3">右驾驶侧</a></p></li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
+<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> 。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
 <p>使用左侧驾驶拓扑，从顶点 <span class="math notranslate nohighlight">\(1\)</span> 到离点 <cite>(2.9, 1.8)</cite> 最近的位置获取 <span class="math notranslate nohighlight">\(2\)</span> 条路径。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsKSP(
   $e$ SELECT * FROM edges $e$,
@@ -1014,7 +1014,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

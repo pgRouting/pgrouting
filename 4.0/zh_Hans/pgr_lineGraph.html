@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_lineGraph - 提议 &#8212; pgRouting Manual (4.0-dev)</title>
+    <title>pgr_lineGraph - 提议中 &#8212; pgRouting Manual (4.0-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -21,7 +21,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_lineGraphFull - 实验" href="pgr_lineGraphFull.html" />
+    <link rel="next" title="pgr_lineGraphFull - 实验性" href="pgr_lineGraphFull.html" />
     <link rel="prev" title="转换 - 函数族" href="transformation-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -97,7 +97,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - 提议</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - 提议中</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
@@ -136,7 +136,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_lineGraphFull.html" title="Next Chapter: pgr_lineGraphFull - 实验"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_lineGraph... &raquo;</span>
+    <a href="pgr_lineGraphFull.html" title="Next Chapter: pgr_lineGraphFull - 实验性"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_lineGraph... &raquo;</span>
     </a>
   </li>
               
@@ -167,7 +167,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - 提议</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - 提议中</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
@@ -200,7 +200,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_lineGraphFull.html" title="Next Chapter: pgr_lineGraphFull - 实验"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_lineGraph... &raquo;</span>
+    <a href="pgr_lineGraphFull.html" title="Next Chapter: pgr_lineGraphFull - 实验性"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_lineGraph... &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -219,13 +219,13 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-linegraph-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - 提议<a class="headerlink" href="#pgr-linegraph-proposed" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - 提议中<a class="headerlink" href="#pgr-linegraph-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> — 将给定图转换为其相应的基于边的图。</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="37c581b2-57de-4f61-b0cf-66da9fbda3fb" name="37c581b2-57de-4f61-b0cf-66da9fbda3fb" type="checkbox"><label class="sphinx_collapse__label" for="37c581b2-57de-4f61-b0cf-66da9fbda3fb"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="897a51c4-3dcd-4301-bc68-19eebc170181" name="897a51c4-3dcd-4301-bc68-19eebc170181" type="checkbox"><label class="sphinx_collapse__label" for="897a51c4-3dcd-4301-bc68-19eebc170181"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>下一版本的拟议功能。</p>
+<p>下一版本的提议功能。</p>
 <ul class="simple">
 <li><p>它们并未正式出现在当前版本中。</p></li>
 <li><p>它们可能会正式成为下一个版本的一部分：</p>
@@ -246,13 +246,13 @@
 <ul class="simple">
 <li><p>版本 3.7.0</p>
 <ul>
-<li><p>Function promoted to proposed.</p></li>
+<li><p>函数已升级为提议。</p></li>
 <li><p>适用于有向和无向图。</p></li>
 </ul>
 </li>
 <li><p>版本2.5.0</p>
 <ul>
-<li><p>新实验功能。</p></li>
+<li><p>新实验性功能。</p></li>
 </ul>
 </li>
 </ul>
@@ -274,11 +274,11 @@
 </li>
 <li><p>当图无向时，成本矩阵是对称的。</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 始终为 <span class="math notranslate nohighlight">\(-1\)</span>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 始终为 <span class="math notranslate nohighlight">\(-1\)</span> 。</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -288,7 +288,7 @@
 <div class="line">pgr_lineGraph(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">reverse_cost)</span></code></div>
+<div class="line">返回结果 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">reverse_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -366,7 +366,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
-<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite>。</p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -411,14 +411,14 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -437,7 +437,7 @@
 </section>
 <section id="result-columns">
 <h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">reverse_cost)</span></code></p>
+<p>返回结果 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">reverse_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>列</p></th>
@@ -472,7 +472,7 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重。</p>
+<td><p>边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) 的权重。</p>
 <ul class="simple">
 <li><p>当为负时：边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)不存在，因此它不是图的一部分。</p></li>
 </ul>
@@ -852,7 +852,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

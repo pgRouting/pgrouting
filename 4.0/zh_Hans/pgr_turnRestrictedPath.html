@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -206,10 +206,9 @@
 </div>
 <section id="pgr-turnrestrictedpath-experimental">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_turnRestrictedPath</span></code> - 实验性<a class="headerlink" href="#pgr-turnrestrictedpath-experimental" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_turnRestrictedPath</span></code> Using Yen's algorithm Vertex - Vertex routing with
-restrictions</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_turnRestrictedPath</span></code> 使用 Yen 算法进行带有限制的顶点到顶点路径规划</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="880b29c8-be70-48f2-9287-65d2d416667e" name="880b29c8-be70-48f2-9287-65d2d416667e" type="checkbox"><label class="sphinx_collapse__label" for="880b29c8-be70-48f2-9287-65d2d416667e"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="ff8f04b9-a882-4ba0-bb5e-e15d6739c1ee" name="ff8f04b9-a882-4ba0-bb5e-e15d6739c1ee" type="checkbox"><label class="sphinx_collapse__label" for="ff8f04b9-a882-4ba0-bb5e-e15d6739c1ee"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -219,7 +218,7 @@ restrictions</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>实验功能</p>
+<p>实验性函数</p>
 <ul class="simple">
 <li><p>它们不是当前版本的正式版本。</p></li>
 <li><p>它们可能不会正式成为下一个版本的一部分：</p>
@@ -234,7 +233,7 @@ restrictions</p>
 <li><p>文档（如果有）可能需要重写。</p></li>
 <li><p>可能需要自动生成文档示例。</p></li>
 <li><p>需要从社区获取大量反馈意见。</p></li>
-<li><p>可能取决于 pgRouting 的拟议功能</p></li>
+<li><p>可能取决于 pgRouting 的提议功能</p></li>
 <li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
 </ul>
 </li>
@@ -246,14 +245,14 @@ restrictions</p>
 <ul class="simple">
 <li><p>版本3.0.0</p>
 <ul>
-<li><p>新实验功能。</p></li>
+<li><p>新实验性功能。</p></li>
 </ul>
 </li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>利用Yen算法获得K条最短路径并对路径进行分析以选择不使用限制的路径</p>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -342,7 +341,7 @@ restrictions</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
-<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite>。</p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -367,7 +366,7 @@ restrictions</p>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">false</span></code> 时返回最多 K 条路径。</p></li>
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，返回处理时的所有计算路径。</p></li>
-<li><p>粗略地说，当最短路径有 <code class="docutils literal notranslate"><span class="pre">N</span></code> 个边时，对于``K``值较小且``K &gt; 5`` ，堆将包含大约 <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">*</span> <span class="pre">K</span></code> 条路径。</p></li>
+<li><p>粗略地说，当最短路径有 <code class="docutils literal notranslate"><span class="pre">N</span></code> 个边时，对于 <code class="docutils literal notranslate"><span class="pre">K</span></code> 值较小且 <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">&gt;</span> <span class="pre">5</span></code> ，堆将包含大约 <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">*</span> <span class="pre">K</span></code> 条路径。</p></li>
 </ul>
 </td>
 </tr>
@@ -443,14 +442,14 @@ restrictions</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -504,7 +503,7 @@ restrictions</p>
 </section>
 <section id="result-columns">
 <h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>返回集合``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``</p>
+<p>返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -532,7 +531,7 @@ restrictions</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong>。</p></td>
+<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong> 。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -663,7 +662,7 @@ restrictions</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

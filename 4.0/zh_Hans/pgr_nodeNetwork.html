@@ -69,17 +69,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -100,8 +100,8 @@
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#parameters">参数</a></li>
 <li><a class="reference internal" href="#examples">示例</a><ul>
-<li><a class="reference internal" href="#fixing-an-intersection">Fixing an intersection</a></li>
-<li><a class="reference internal" href="#fixing-a-gap">Fixing a gap</a></li>
+<li><a class="reference internal" href="#fixing-an-intersection">修复交叉路口</a></li>
+<li><a class="reference internal" href="#fixing-a-gap">弥补差距</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
@@ -155,8 +155,8 @@
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#parameters">参数</a></li>
 <li><a class="reference internal" href="#examples">示例</a><ul>
-<li><a class="reference internal" href="#fixing-an-intersection">Fixing an intersection</a></li>
-<li><a class="reference internal" href="#fixing-a-gap">Fixing a gap</a></li>
+<li><a class="reference internal" href="#fixing-an-intersection">修复交叉路口</a></li>
+<li><a class="reference internal" href="#fixing-a-gap">弥补差距</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
@@ -207,14 +207,14 @@
 <ul class="simple">
 <li><p>Version 3.8.0</p>
 <ul>
-<li><p>Not checking and not creating indexes.</p></li>
-<li><p>Using <code class="docutils literal notranslate"><span class="pre">pgr_separateTouching</span></code> and <code class="docutils literal notranslate"><span class="pre">pgr_separateCrossing</span></code>.</p></li>
-<li><p>Created table with <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>.</p></li>
+<li><p>不检查也不创建索引。</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">pgr_separateTouching</span></code> 和 <code class="docutils literal notranslate"><span class="pre">pgr_separateCrossing</span></code> 。</p></li>
+<li><p>创建包含 <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code> 类型的表。</p></li>
 </ul>
 </li>
 <li><p>版本2.0.0</p>
 <ul>
-<li><p>官方 函数</p></li>
+<li><p>官方函数。</p></li>
 </ul>
 </li>
 </ul>
@@ -223,7 +223,7 @@
 <p><strong>主要特点是：</strong></p>
 <p>将 GIS 数据引入 pgRouting 的一个常见问题是数据通常没有正确“节点化”。 这将创建无效的拓扑，从而导致路由不正确。</p>
 <p>我们所说的 &quot;noded&quot;是指在道路网络的每个交叉口，所有边缘都将被分成单独的路段。 在某些情况下，例如天桥和地下通道交叉口，您无法从天桥穿越到地下通道，但此功能无法检测和适应这些情况。</p>
-<p>该函数读取 <code class="docutils literal notranslate"><span class="pre">edge_table``表，该表具有主键列</span> <span class="pre">``id</span></code> 和名为``the_geom`` 的几何列，并将其中的所有段与所有其他段相交，然后创建表 <code class="docutils literal notranslate"><span class="pre">edge_table_noded</span></code>。 它使用``tolerance`` 来决定容差内的多个节点被视为同一节点。</p>
+<p>该函数读取 <code class="docutils literal notranslate"><span class="pre">edge_table</span></code> 表，该表具有主键列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 和名为 <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> 的几何列，并将其中的所有段与所有其他段相交，然后创建表 <code class="docutils literal notranslate"><span class="pre">edge_table_noded</span></code> 。 它使用 <code class="docutils literal notranslate"><span class="pre">tolerance</span></code> 来决定容差内的多个节点被视为同一节点。</p>
 </section>
 <section id="parameters">
 <h2>参数<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
@@ -235,13 +235,13 @@
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> 重合点公差（以投影单位表示）dd</p>
 </dd>
 <dt class="field-odd">id<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> 网络表的主键列名称。 默认值为``id``。</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> 网络表的主键列名称。 默认值为 <code class="docutils literal notranslate"><span class="pre">id</span></code> 。</p>
 </dd>
 <dt class="field-even">the_geom<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text``网络表的几何列名称。</span> <span class="pre">默认值为``the_geom</span></code>。</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> 网络表的几何列名称。 默认值为 <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> 。</p>
 </dd>
 <dt class="field-odd">table_ending<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text``新表的后缀。</span> <span class="pre">默认值是``noded</span></code>。</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> 新表的后缀。 默认值是 <code class="docutils literal notranslate"><span class="pre">noded</span></code> 。</p>
 </dd>
 </dl>
 <p>输出表中将包含 <code class="docutils literal notranslate"><span class="pre">edge_table_noded</span></code> 内容</p>
@@ -256,10 +256,10 @@
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> 原边的段号</p>
 </dd>
 <dt class="field-even">source<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Empty source column</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> 类型的空源列</p>
 </dd>
 <dt class="field-odd">target<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Empty target column</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> 类型的空目标列</p>
 </dd>
 <dt class="field-even">the geom<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> 节点网络的几何列</p>
@@ -268,7 +268,7 @@
 </section>
 <section id="examples">
 <h2>示例<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
-<p>Create the topology for the data in <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p>
+<p>为 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a> 中的数据创建拓扑结构</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">17</span>
@@ -288,7 +288,7 @@
 <span class="n">UPDATE</span> <span class="mi">18</span>
 </pre></div>
 </div>
-<p>Analyze the network for intersections.</p>
+<p>分析路网的相交情况。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="n">id1</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span> <span class="n">id2</span><span class="p">,</span> <span class="n">ST_ASTEXT</span><span class="p">(</span><span class="n">ST_Intersection</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">))</span> <span class="n">AS</span> <span class="n">point</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">e1</span><span class="p">,</span> <span class="n">edges</span> <span class="n">e2</span>
 <span class="n">WHERE</span> <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="o">&lt;</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">ST_Crosses</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">);</span>
@@ -299,7 +299,7 @@
 
 </pre></div>
 </div>
-<p>Analyze the network for gaps.</p>
+<p>分析路网的断点情况。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">data</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="n">inhere</span>
@@ -321,10 +321,10 @@
 
 </pre></div>
 </div>
-<p>The analysis tell us that the network has a gap and an intersection.</p>
+<p>分析显示该网络存在一处断点和一处交叉。</p>
 <section id="fixing-an-intersection">
-<h3>Fixing an intersection<a class="headerlink" href="#fixing-an-intersection" title="Link to this heading">¶</a></h3>
-<p>Storing the intersections.</p>
+<h3>修复交叉路口<a class="headerlink" href="#fixing-an-intersection" title="Link to this heading">¶</a></h3>
+<p>存储交叉点。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="n">id1</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span> <span class="n">id2</span><span class="p">,</span> <span class="n">st_intersection</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">point</span>
 <span class="n">INTO</span> <span class="n">intersections</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">e1</span><span class="p">,</span> <span class="n">edges</span> <span class="n">e2</span>
@@ -332,7 +332,7 @@
 <span class="n">SELECT</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>Calling <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code>.</p>
+<p>调用 <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code> 。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">the_geom</span> <span class="o">=&gt;</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">=&gt;</span><span class="s1">&#39;id in (&#39;</span><span class="o">||</span><span class="n">id1</span><span class="o">||</span><span class="s1">&#39;,&#39;</span><span class="o">||</span><span class="n">id2</span><span class="o">||</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
 <span class="n">FROM</span> <span class="n">intersections</span><span class="p">;</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -359,8 +359,7 @@
 
 </pre></div>
 </div>
-<p>Inspecting the generated table, we can see that edges 13 and 18 have been
-segmented.</p>
+<p>检查生成的表，可以看到边线 13 和 18 已被分割。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">old_id</span><span class="p">,</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edges_noded</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">old_id</span><span class="p">,</span> <span class="n">sub_id</span><span class="p">;</span>
  <span class="n">old_id</span> <span class="o">|</span>         <span class="n">st_astext</span>
 <span class="o">--------+---------------------------</span>
@@ -372,8 +371,8 @@ segmented.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Update the topology</p>
-<p>Add new segments to the edges table.</p>
+<p class="rubric">更新拓扑结构</p>
+<p>将新边线添加至边线表。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
 <span class="n">WITH</span>
 <span class="n">the_fractions</span> <span class="n">AS</span> <span class="p">(</span>
@@ -395,14 +394,14 @@ segmented.</p>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">4</span>
 </pre></div>
 </div>
-<p>Insert the intersection as new vertices.</p>
+<p>将交叉点作为新顶点插入。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">vertices</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span><span class="p">()</span> <span class="o">+</span> <span class="mi">100</span><span class="p">,</span> <span class="n">point</span>
 <span class="n">FROM</span> <span class="n">intersections</span><span class="p">;</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>Update source and target information on the edges table.</p>
+<p>更新边缘表中的源信息和目标信息。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">e</span> <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span> <span class="n">FROM</span>
 <span class="n">vertices</span> <span class="n">v</span> <span class="n">where</span> <span class="n">source</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">AND</span> <span class="p">(</span><span class="n">st_startPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">);</span>
 <span class="n">UPDATE</span> <span class="mi">4</span>
@@ -411,7 +410,7 @@ segmented.</p>
 <span class="n">UPDATE</span> <span class="mi">4</span>
 </pre></div>
 </div>
-<p>Delete original edge.</p>
+<p>删除原始边。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">FROM</span> <span class="n">edges</span>
 <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="n">id1</span> <span class="n">FROM</span> <span class="n">intersections</span>
@@ -420,7 +419,7 @@ segmented.</p>
 <span class="n">DELETE</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p>Update the vertex topology</p>
+<p>更新顶点拓扑</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">data</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">select</span> <span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">out_edges</span>
   <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;select id, source, target from edges&#39;</span><span class="p">)</span> <span class="n">p</span><span class="p">)</span>
@@ -430,7 +429,7 @@ segmented.</p>
 <span class="n">UPDATE</span> <span class="mi">18</span>
 </pre></div>
 </div>
-<p>Analyze the network for intersections.</p>
+<p>分析路网的相交情况。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">e1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span>
 <span class="n">FROM</span> <span class="n">edges_noded</span> <span class="n">e1</span><span class="p">,</span> <span class="n">edges</span> <span class="n">e2</span>
 <span class="n">WHERE</span> <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="o">&lt;</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">st_crosses</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">);</span>
@@ -442,8 +441,8 @@ segmented.</p>
 </div>
 </section>
 <section id="fixing-a-gap">
-<h3>Fixing a gap<a class="headerlink" href="#fixing-a-gap" title="Link to this heading">¶</a></h3>
-<p>Store the deadends</p>
+<h3>弥补差距<a class="headerlink" href="#fixing-a-gap" title="Link to this heading">¶</a></h3>
+<p>存储断头节点</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">data</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="n">inhere</span>
@@ -456,7 +455,7 @@ segmented.</p>
 <span class="n">SELECT</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>Calling <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code>.</p>
+<p>调用 <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code> 。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">the_geom</span> <span class="o">=&gt;</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">=&gt;</span><span class="s1">&#39;id in (&#39;</span><span class="o">||</span><span class="n">inhere</span><span class="o">||</span><span class="s1">&#39;,&#39;</span><span class="o">||</span><span class="n">edge_id</span><span class="o">||</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
 <span class="n">FROM</span> <span class="n">deadends</span><span class="p">;</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -483,7 +482,7 @@ segmented.</p>
 
 </pre></div>
 </div>
-<p>Inspecting the generated table, we can see that edge 14 has been segmented.</p>
+<p>检查生成的表，可见边线 14 已被分割。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">old_id</span><span class="p">,</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edges_noded</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">old_id</span><span class="p">,</span> <span class="n">sub_id</span><span class="p">;</span>
  <span class="n">old_id</span> <span class="o">|</span>               <span class="n">st_astext</span>
 <span class="o">--------+----------------------------------------</span>
@@ -494,8 +493,8 @@ segmented.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Update the topology</p>
-<p>Add new segments to the edges table.</p>
+<p class="rubric">更新拓扑结构</p>
+<p>将新边线添加至边线表。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
 <span class="n">SELECT</span>
   <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">sub_id</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">cost</span><span class="o">*</span><span class="n">fraction</span> <span class="n">ELSE</span> <span class="n">cost</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">fraction</span><span class="p">)</span> <span class="n">END</span> <span class="k">as</span> <span class="n">cost</span><span class="p">,</span>
@@ -506,14 +505,14 @@ segmented.</p>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">3</span>
 </pre></div>
 </div>
-<p>Insert the intersection as new vertices.</p>
+<p>将交叉点作为新顶点插入。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Update</span> <span class="n">the</span> <span class="n">vertices</span> <span class="n">table</span> <span class="o">*/</span>
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">vertices</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
 <span class="n">select</span> <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span><span class="p">()</span> <span class="o">+</span> <span class="mi">200</span><span class="p">,</span> <span class="n">st_endpoint</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">deadends</span><span class="p">;</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>Update source and target information on the edges table.</p>
+<p>更新边缘表中的源信息和目标信息。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">e</span> <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span> <span class="n">FROM</span>
 <span class="n">vertices</span> <span class="n">v</span> <span class="n">where</span> <span class="n">source</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">AND</span> <span class="p">(</span><span class="n">st_startPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">);</span>
 <span class="n">UPDATE</span> <span class="mi">3</span>
@@ -522,12 +521,12 @@ segmented.</p>
 <span class="n">UPDATE</span> <span class="mi">3</span>
 </pre></div>
 </div>
-<p>Delete original edge.</p>
+<p>删除原始边。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">edge_id</span> <span class="n">FROM</span> <span class="n">deadends</span><span class="p">);</span>
 <span class="n">DELETE</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>Update the vertex topology</p>
+<p>更新顶点拓扑</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">data</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">select</span> <span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">out_edges</span>
   <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;select id, source, target from edges&#39;</span><span class="p">)</span> <span class="n">p</span><span class="p">)</span>
@@ -537,7 +536,7 @@ segmented.</p>
 <span class="n">UPDATE</span> <span class="mi">19</span>
 </pre></div>
 </div>
-<p>Analyze the network for gaps.</p>
+<p>分析路网的断点情况。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">data</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="n">inhere</span>
@@ -582,7 +581,7 @@ segmented.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

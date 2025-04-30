@@ -21,7 +21,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_contractionDeadEnd - Proposed" href="pgr_contractionDeadEnd.html" />
+    <link rel="next" title="pgr_contractionDeadEnd - 提议中" href="pgr_contractionDeadEnd.html" />
     <link rel="prev" title="收缩 - 函数族" href="contraction-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -123,7 +123,7 @@
 <li><a class="reference internal" href="#the-process-to-create-the-contraction-graph-on-the-database">在数据库上创建收缩图的过程：</a><ul>
 <li><a class="reference internal" href="#add-additional-columns">添加附加列</a></li>
 <li><a class="reference internal" href="#store-contraction-information">存储收缩信息</a></li>
-<li><a class="reference internal" href="#update-the-edges-and-vertices-tables">Update the edges and vertices tables</a></li>
+<li><a class="reference internal" href="#update-the-edges-and-vertices-tables">更新边线与顶点表</a></li>
 <li><a class="reference internal" href="#the-contracted-graph">收缩图</a></li>
 </ul>
 </li>
@@ -144,7 +144,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_contractionDeadEnd.html" title="Next Chapter: pgr_contractionDeadEnd - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
+    <a href="pgr_contractionDeadEnd.html" title="Next Chapter: pgr_contractionDeadEnd - 提议中"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
     </a>
   </li>
               
@@ -201,7 +201,7 @@
 <li><a class="reference internal" href="#the-process-to-create-the-contraction-graph-on-the-database">在数据库上创建收缩图的过程：</a><ul>
 <li><a class="reference internal" href="#add-additional-columns">添加附加列</a></li>
 <li><a class="reference internal" href="#store-contraction-information">存储收缩信息</a></li>
-<li><a class="reference internal" href="#update-the-edges-and-vertices-tables">Update the edges and vertices tables</a></li>
+<li><a class="reference internal" href="#update-the-edges-and-vertices-tables">更新边线与顶点表</a></li>
 <li><a class="reference internal" href="#the-contracted-graph">收缩图</a></li>
 </ul>
 </li>
@@ -216,7 +216,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_contractionDeadEnd.html" title="Next Chapter: pgr_contractionDeadEnd - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
+    <a href="pgr_contractionDeadEnd.html" title="Next Chapter: pgr_contractionDeadEnd - 提议中"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -240,13 +240,13 @@
 <p class="rubric">可用性</p>
 <p class="rubric">Version 3.8.0</p>
 <ul class="simple">
-<li><p>New signature:</p>
+<li><p>新签名：</p>
 <ul>
-<li><p>之前必需的参数 <strong>Contraction order</strong> 现在已变为可选参数，并更名为 <code class="docutils literal notranslate"><span class="pre">methods</span></code>。</p></li>
-<li><p>New name and order of optional parameters.</p></li>
+<li><p>之前必需的参数 <strong>Contraction order</strong> 现在已变为可选参数，并更名为 <code class="docutils literal notranslate"><span class="pre">methods</span></code> 。</p></li>
+<li><p>可选参数的新名称和顺序。</p></li>
 </ul>
 </li>
-<li><p>Deprecated signature pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+<li><p>已弃用签名 pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
 </ul>
 <p class="rubric">版本3.0.0</p>
 <ul class="simple">
@@ -257,7 +257,7 @@
 </ul>
 <p class="rubric">版本2.3.0</p>
 <ul class="simple">
-<li><p>新实验功能。</p></li>
+<li><p>新实验性功能。</p></li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -265,34 +265,33 @@
 <p>主要特点是：</p>
 <ul class="simple">
 <li><p>仅在具有正成本的边进行处理。</p></li>
-<li><p>Does not return the full contracted graph.</p>
+<li><p>不返回完整的收缩图。</p>
 <ul>
-<li><p>Only changes on the graph are returned.</p></li>
+<li><p>仅返回图中的变更部分。</p></li>
 </ul>
 </li>
-<li><p>The returned values include:</p>
+<li><p>返回值包括：</p>
 <ul>
-<li><p>The new edges generated by linear contraction.</p></li>
-<li><p>The modified vertices generated by dead end contraction.</p></li>
+<li><p>线性收缩生成的新边线集。</p></li>
+<li><p>断头节点收缩生成的修改后顶点集。</p></li>
 </ul>
 </li>
 <li><p>返回值的排序如下：</p>
 <ul>
-<li><p>column <code class="docutils literal notranslate"><span class="pre">id</span></code> ascending when its a modified vertex.</p></li>
-<li><p>column <code class="docutils literal notranslate"><span class="pre">id</span></code> with negative numbers descending when its a new edge.</p></li>
+<li><p>列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 升序排列。</p></li>
+<li><p>列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 中的负数，当它是一条新边时，负数依次递减。</p></li>
 </ul>
 </li>
 </ul>
 <ul class="simple">
-<li><p>Currently there are two types of contraction methods included in this
-function:</p>
+<li><p>目前，该功能包含两种收缩方法：</p>
 <ul>
-<li><p>死角收缩。参考 <a class="reference internal" href="pgr_contractionDeadEnd.html"><span class="doc">pgr_contractionDeadEnd - Proposed</span></a>。</p></li>
-<li><p>线性收缩。参考 <a class="reference internal" href="pgr_contractionLinear.html"><span class="doc">pgr_contractionLinear - Proposed</span></a>。</p></li>
+<li><p>死角收缩。参考 <a class="reference internal" href="pgr_contractionDeadEnd.html"><span class="doc">pgr_contractionDeadEnd - 提议中</span></a>。</p></li>
+<li><p>线性收缩。参考 <a class="reference internal" href="pgr_contractionLinear.html"><span class="doc">pgr_contractionLinear - 提议中</span></a>。</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -308,7 +307,7 @@ function:</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Dead end and linear contraction in that order on an undirected graph.</p>
+<dd class="field-odd"><p>在无向图上依次执行断头节点收缩与线性收缩。</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
@@ -359,7 +358,7 @@ function:</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
-<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite>。</p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -390,7 +389,7 @@ function:</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cycles</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
-<td><p>Number of times the contraction methods will be performed.</p></td>
+<td><p>收缩方法的执行次数。</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
@@ -438,14 +437,14 @@ function:</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -476,16 +475,16 @@ function:</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>Type of the row.</p>
+<td><p>行的类型。</p>
 <ul class="simple">
-<li><p>当该行表示一个顶点时，列为 <code class="docutils literal notranslate"><span class="pre">v</span></code>。</p>
+<li><p>当该行表示一个顶点时，列为 <code class="docutils literal notranslate"><span class="pre">v</span></code> 。</p>
 <ul>
-<li><p>Column <code class="docutils literal notranslate"><span class="pre">id</span></code> has a positive value.</p></li>
+<li><p>列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 为正值。</p></li>
 </ul>
 </li>
-<li><p>当行是边时，则为 <code class="docutils literal notranslate"><span class="pre">e</span></code>。</p>
+<li><p>当行是边时，则为 <code class="docutils literal notranslate"><span class="pre">e</span></code> 。</p>
 <ul>
-<li><p>Column <code class="docutils literal notranslate"><span class="pre">id</span></code> has a negative value.</p></li>
+<li><p>列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 的值为负数。</p></li>
 </ul>
 </li>
 </ul>
@@ -517,7 +516,7 @@ function:</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'v'</strong>: <span class="math notranslate nohighlight">\(-1\)</span> 时</p></li>
-<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边（<code class="docutils literal notranslate"><span class="pre">source</span></code>，<code class="docutils literal notranslate"><span class="pre">target</span></code> ）的source顶点标识符。</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) 的source顶点标识符。</p></li>
 </ul>
 </td>
 </tr>
@@ -525,7 +524,7 @@ function:</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'v'</strong>: <span class="math notranslate nohighlight">\(-1\)</span> 时</p></li>
-<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的target 顶点标识符。</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) 的target 顶点标识符。</p></li>
 </ul>
 </td>
 </tr>
@@ -533,7 +532,7 @@ function:</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'v'</strong>: <span class="math notranslate nohighlight">\(-1\)</span> 时</p></li>
-<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重。</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) 的权重。</p></li>
 </ul>
 </td>
 </tr>
@@ -582,11 +581,8 @@ function:</p>
 </section>
 <section id="the-cycle">
 <h3><a class="toc-backref" href="#id5" role="doc-backlink">循环</a><a class="headerlink" href="#the-cycle" title="Link to this heading">¶</a></h3>
-<p>Contracting a graph can be done with more than one operation.
-The order of the operations affect the resulting contracted graph, after
-applying one operation, the set of vertices that can be contracted
-by another operation changes.</p>
-<p>This implementation cycles <code class="docutils literal notranslate"><span class="pre">cycles</span></code> times through the <code class="docutils literal notranslate"><span class="pre">methods</span></code> .</p>
+<p>对图进行收缩可通过多次操作实现，操作顺序会影响最终收缩图的结果——每执行一次操作后，可被后续操作收缩的顶点集合将发生变化。</p>
+<p>这种实现方式在 <code class="docutils literal notranslate"><span class="pre">methods</span></code> 中循环 <code class="docutils literal notranslate"><span class="pre">cycles</span></code> 次。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nb">input</span><span class="o">&gt;</span>
 <span class="n">do</span> <span class="n">max_cycles</span> <span class="n">times</span> <span class="p">{</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">operation</span> <span class="ow">in</span> <span class="n">operations_order</span><span class="p">)</span>
@@ -614,9 +610,7 @@ by another operation changes.</p>
 <p>原始图：</p>
 <a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 241.0px; height: 217.5px;" />
 </a>
-<p>The results do not represent the contracted graph.
-They represent the changes that need to be done to the graph after applying the
-contraction methods.</p>
+<p>结果数据并非表示收缩后的图，而是反映应用收缩方法后需对原图执行的变更操作。</p>
 <p>例如，观察到顶点 <span class="math notranslate nohighlight">\(6\)</span> 没有出现在结果中，因为它不受收缩算法的影响。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
@@ -647,14 +641,13 @@ contraction methods.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#add-additional-columns" id="id7">添加附加列</a></p></li>
 <li><p><a class="reference internal" href="#store-contraction-information" id="id8">存储收缩信息</a></p></li>
-<li><p><a class="reference internal" href="#update-the-edges-and-vertices-tables" id="id9">Update the edges and vertices tables</a></p></li>
+<li><p><a class="reference internal" href="#update-the-edges-and-vertices-tables" id="id9">更新边线与顶点表</a></p></li>
 <li><p><a class="reference internal" href="#the-contracted-graph" id="id10">收缩图</a></p></li>
 </ul>
 </nav>
 <section id="add-additional-columns">
 <h3><a class="toc-backref" href="#id7" role="doc-backlink">添加附加列</a><a class="headerlink" href="#add-additional-columns" title="Link to this heading">¶</a></h3>
-<p>Adding extra columns to the edges and vertices tables.
-In this documentation the following will be used:</p>
+<p>在边表和顶点表中添加额外列。在本文档中将使用以下内容：</p>
 <table class="docutils align-default" style="width: 80">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column.</p></th>
@@ -696,7 +689,7 @@ In this documentation the following will be used:</p>
 </section>
 <section id="store-contraction-information">
 <h3><a class="toc-backref" href="#id8" role="doc-backlink">存储收缩信息</a><a class="headerlink" href="#store-contraction-information" title="Link to this heading">¶</a></h3>
-<p>Store the contraction results in a table.</p>
+<p>将收缩结果存储至数据表。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
 <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
@@ -705,7 +698,7 @@ In this documentation the following will be used:</p>
 </div>
 </section>
 <section id="update-the-edges-and-vertices-tables">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Update the edges and vertices tables</a><a class="headerlink" href="#update-the-edges-and-vertices-tables" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">更新边线与顶点表</a><a class="headerlink" href="#update-the-edges-and-vertices-tables" title="Link to this heading">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">is_contracted</span></code> 列来指示收缩的顶点。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
 <span class="n">SET</span> <span class="n">is_contracted</span> <span class="o">=</span> <span class="n">true</span>
@@ -713,8 +706,7 @@ In this documentation the following will be used:</p>
 <span class="n">UPDATE</span> <span class="mi">10</span>
 </pre></div>
 </div>
-<p>Fill <code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code> with the information from the results that belong
-to the vertices.</p>
+<p>将属于顶点的结果信息填充至 <code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code> 表中。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
 <span class="n">SET</span> <span class="n">contracted_vertices</span> <span class="o">=</span> <span class="n">contraction_results</span><span class="o">.</span><span class="n">contracted_vertices</span>
 <span class="n">FROM</span> <span class="n">contraction_results</span>
@@ -772,7 +764,7 @@ to the vertices.</p>
 
 </pre></div>
 </div>
-<p>Visually:</p>
+<p>视觉效果：</p>
 <a class="reference internal image-reference" href="_images/newgraph.png"><img alt="_images/newgraph.png" src="_images/newgraph.png" style="width: 184.25px; height: 193.75px;" />
 </a>
 </section>
@@ -787,7 +779,7 @@ to the vertices.</p>
 <li><p>情况 3：源和/或目标属于一个顶点。</p></li>
 </ul>
 <p>最终应用应考虑所有这些情况。</p>
-<p>Create a view (or table) of the contracted graph:</p>
+<p>创建收缩图的视图（或表）：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">VIEW</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">contracted_graph</span><span class="p">;</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">view</span> <span class="s2">&quot;contracted_graph&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
 <span class="n">DROP</span> <span class="n">VIEW</span>
@@ -800,7 +792,7 @@ to the vertices.</p>
 <span class="n">CREATE</span> <span class="n">VIEW</span>
 </pre></div>
 </div>
-<p>Create the function that will use the contracted graph.</p>
+<p>创建使用收缩图的函数。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CREATE OR REPLACE FUNCTION path_cost(source BIGINT, target BIGINT)
 RETURNS SETOF FLOAT AS
 $BODY$
@@ -842,7 +834,7 @@ CREATE FUNCTION
 
 </pre></div>
 </div>
-<p>Case 2: Source and/or target belong to an edge that has contracted vertices.</p>
+<p>情况 2：源点和/或目标点位于含收缩顶点的边线上。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">path_cost</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
  <span class="n">path_cost</span>
 <span class="o">-----------</span>
@@ -851,7 +843,7 @@ CREATE FUNCTION
 
 </pre></div>
 </div>
-<p>Case 3: Source and/or target belong to a vertex that has been contracted.</p>
+<p>情况 3：源点和/或目标点属于已被收缩的顶点。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">path_cost</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
  <span class="n">path_cost</span>
 <span class="o">-----------</span>
@@ -887,7 +879,7 @@ CREATE FUNCTION
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -115,7 +115,7 @@
 <li><a class="reference internal" href="#result-columns">结果列</a></li>
 <li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
 <li><a class="reference internal" href="#start-from-vertex-1">从顶点 <span class="math notranslate nohighlight">\(1\)</span> 开始</a></li>
-<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix">Using points of interest to generate an asymmetric matrix.</a></li>
+<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix">使用兴趣点（POI）生成非对称矩阵的步骤如下。</a></li>
 <li><a class="reference internal" href="#connected-incomplete-data">连接不完整数据</a></li>
 </ul>
 </li>
@@ -184,7 +184,7 @@
 <li><a class="reference internal" href="#result-columns">结果列</a></li>
 <li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
 <li><a class="reference internal" href="#start-from-vertex-1">从顶点 <span class="math notranslate nohighlight">\(1\)</span> 开始</a></li>
-<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix">Using points of interest to generate an asymmetric matrix.</a></li>
+<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix">使用兴趣点（POI）生成非对称矩阵的步骤如下。</a></li>
 <li><a class="reference internal" href="#connected-incomplete-data">连接不完整数据</a></li>
 </ul>
 </li>
@@ -219,7 +219,7 @@
 <section id="pgr-tsp">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code><a class="headerlink" href="#pgr-tsp" title="Link to this heading">¶</a></h1>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - Approximation using <em>metric</em> algorithm.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - 使用 <em>metric</em> 算法的近似计算。</p></li>
 </ul>
 <p class="rubric">可用性：</p>
 <ul class="simple">
@@ -244,7 +244,7 @@
 </li>
 <li><p>版本2.0.0</p>
 <ul>
-<li><p>官方 函数</p></li>
+<li><p>官方函数。</p></li>
 </ul>
 </li>
 </ul>
@@ -262,7 +262,7 @@
 <ul class="simple">
 <li><p>该问题是一个NP-hard优化问题。</p></li>
 <li><p>使用度量算法</p></li>
-<li><p><em>在最坏的情况下，实施产生的解决方案的时间是最佳旅行的两倍</em>：</p>
+<li><p><em>在最坏的情况下，实施产生的解决方案的时间是最佳旅行的两倍</em> ：</p>
 <ul>
 <li><p>图是无向的</p></li>
 <li><p>图是全连通的</p></li>
@@ -290,23 +290,19 @@
 </li>
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">OR</span> <span class="pre">end_vid</span> <span class="pre">=</span> <span class="pre">0</span></code></p>
 <ul>
-<li><p>The solutions generated are guaranteed to be <em>twice as long as the
-optimal tour in the worst case</em></p></li>
+<li><p>生成的解在最坏情况下保证 <em>不超过最优路径长度的两倍</em></p></li>
 </ul>
 </li>
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">end_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">end_vid</span></code></p>
 <ul>
-<li><p>It is <strong>not guaranteed</strong> that the solution will be, in the worst case,
-twice as long as the optimal tour, due to the fact that <cite>end_vid</cite> is
-forced to be in a fixed position.</p></li>
+<li><p>由于 <cite>end_vid</cite> 被限制在固定位置，因此**无法保证**在最坏情况下，生成的解长度最多为最优路线长度的两倍。</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
-<li><p>It is <strong>not guaranteed</strong> that the solution will be, in the worst case,
-twice as long as the optimal tour</p></li>
+<li><p><strong>无法保证</strong> 该解在最坏情况下不超过最优路径长度的两倍</p></li>
 <li><p>将生成一个图：</p>
 <ul>
 <li><p>有向</p></li>
@@ -317,7 +313,7 @@ twice as long as the optimal tour</p></li>
 <li><p>由于需要无向图，有向图变换如下：</p>
 <ul>
 <li><p>边 <cite>(u, v)</cite> 和 <cite>(v, u)`被认为是相同的边（表示为 `(u, v)</cite></p></li>
-<li><p>如果 <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> 在边`(u, v)` 的一个或多个实例之间不同</p></li>
+<li><p>如果 <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> 在边 <cite>(u, v)</cite> 的一个或多个实例之间不同</p></li>
 <li><p>边 <cite>(u, v)</cite> 的所有实例的 <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> 最小值将被视为边 <cite>(u, v)</cite> 的 <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
 <li><p>边上的一些（或全部）旅行成本仍然可能不遵守三角不等式。</p></li>
 </ul>
@@ -332,7 +328,7 @@ twice as long as the optimal tour</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 </section>
 <section id="signatures">
@@ -487,7 +483,7 @@ twice as long as the optimal tour</p></li>
 </tr>
 <tr class="row-even"><td><p><strong>cost</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>从路径序列中的当前 <code class="docutils literal notranslate"><span class="pre">node``遍历到下一个``node</span></code> 的成本。</p>
+<td><p>从路径序列中的当前 <code class="docutils literal notranslate"><span class="pre">node</span></code> 遍历到下一个 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的成本。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> 表示游览序列中的最后一行。</p></li>
 </ul>
@@ -509,7 +505,7 @@ twice as long as the optimal tour</p></li>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#start-from-vertex-1" id="id1">从顶点 <span class="math notranslate nohighlight">\(1\)</span> 开始</a></p></li>
-<li><p><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix" id="id2">Using points of interest to generate an asymmetric matrix.</a></p></li>
+<li><p><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix" id="id2">使用兴趣点（POI）生成非对称矩阵的步骤如下。</a></p></li>
 <li><p><a class="reference internal" href="#connected-incomplete-data" id="id3">连接不完整数据</a></p></li>
 </ul>
 </nav>
@@ -546,11 +542,11 @@ twice as long as the optimal tour</p></li>
 </div>
 </section>
 <section id="using-points-of-interest-to-generate-an-asymmetric-matrix">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Using points of interest to generate an asymmetric matrix.</a><a class="headerlink" href="#using-points-of-interest-to-generate-an-asymmetric-matrix" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">使用兴趣点（POI）生成非对称矩阵的步骤如下。</a><a class="headerlink" href="#using-points-of-interest-to-generate-an-asymmetric-matrix" title="Link to this heading">¶</a></h3>
 <p>生成非对称矩阵：</p>
 <ul class="simple">
-<li><p><strong>Line 4</strong> 通过未在查询中包括 <code class="docutils literal notranslate"><span class="pre">pointsOfInterset</span></code> 中的``side`` 信息而被忽略</p></li>
-<li><p><strong>Line 6</strong> Generating an asymmetric matrix with <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<li><p><strong>Line 4</strong> 通过未在查询中包括 <code class="docutils literal notranslate"><span class="pre">pointsOfInterset</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">side</span></code> 信息而被忽略</p></li>
+<li><p><strong>Line 6</strong> 行 生成非对称矩阵， <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(min(agg\_cost(u, v), agg\_cost(v, u))\)</span> 将被视为 <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
 <li><p>该解决方案的长度可能是*最佳行程的两倍以上*，因为：</p>
@@ -647,7 +643,7 @@ twice as long as the optimal tour</p></li>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - 函数族</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: metric TSP approx</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: 度量旅行商问题近似算法</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">维基百科：旅行商问题</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
@@ -671,7 +667,7 @@ twice as long as the optimal tour</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

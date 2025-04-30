@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -114,14 +114,14 @@
 </li>
 <li><a class="reference internal" href="#result-columns">结果列</a></li>
 <li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
-<li><a class="reference internal" href="#one-point-in-an-edge">One point in an edge</a></li>
+<li><a class="reference internal" href="#one-point-in-an-edge">边线上的一个点</a></li>
 <li><a class="reference internal" href="#one-point-dry-run-execution">单点模拟执行</a></li>
-<li><a class="reference internal" href="#many-points-in-an-edge">Many points in an edge</a></li>
+<li><a class="reference internal" href="#many-points-in-an-edge">一条边上有许多点</a></li>
 <li><a class="reference internal" href="#many-points-dry-run-execution">多点模拟执行</a></li>
 <li><a class="reference internal" href="#find-at-most-two-routes-to-a-given-point">最多找到两条到达给定点的路线</a></li>
 <li><a class="reference internal" href="#a-point-of-interest-table">兴趣点表</a><ul>
 <li><a class="reference internal" href="#points-of-interest">兴趣点</a></li>
-<li><a class="reference internal" href="#points-of-interest-fill-up">Points of interest fill up</a></li>
+<li><a class="reference internal" href="#points-of-interest-fill-up">兴趣点填充</a></li>
 </ul>
 </li>
 </ul>
@@ -190,14 +190,14 @@
 </li>
 <li><a class="reference internal" href="#result-columns">结果列</a></li>
 <li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
-<li><a class="reference internal" href="#one-point-in-an-edge">One point in an edge</a></li>
+<li><a class="reference internal" href="#one-point-in-an-edge">边线上的一个点</a></li>
 <li><a class="reference internal" href="#one-point-dry-run-execution">单点模拟执行</a></li>
-<li><a class="reference internal" href="#many-points-in-an-edge">Many points in an edge</a></li>
+<li><a class="reference internal" href="#many-points-in-an-edge">一条边上有许多点</a></li>
 <li><a class="reference internal" href="#many-points-dry-run-execution">多点模拟执行</a></li>
 <li><a class="reference internal" href="#find-at-most-two-routes-to-a-given-point">最多找到两条到达给定点的路线</a></li>
 <li><a class="reference internal" href="#a-point-of-interest-table">兴趣点表</a><ul>
 <li><a class="reference internal" href="#points-of-interest">兴趣点</a></li>
-<li><a class="reference internal" href="#points-of-interest-fill-up">Points of interest fill up</a></li>
+<li><a class="reference internal" href="#points-of-interest-fill-up">兴趣点填充</a></li>
 </ul>
 </li>
 </ul>
@@ -232,12 +232,12 @@
 </div>
 <section id="pgr-findcloseedges">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code><a class="headerlink" href="#pgr-findcloseedges" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> -查找点几何图形的闭合边。</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> - 查找点几何图形的闭合边。</p>
 <p class="rubric">可用性</p>
 <p class="rubric">Version 3.8.0</p>
 <ul class="simple">
-<li><p>Error messages adjustment.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">partial</span></code> option is removed.</p></li>
+<li><p>错误信息调整。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">partial</span></code> 选项已被移除。</p></li>
 <li><p>函数正式发布。</p></li>
 </ul>
 <p class="rubric">版本 3.4.0</p>
@@ -246,13 +246,13 @@
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> - 一个用于找到离点几何最近的边的实用函数。</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> - 一个用于查找距离点状geometry最近边的工具函数。</p>
 <ul class="simple">
 <li><p>几何图形必须位于同一坐标系中（具有相同的 SRID）。</p></li>
 <li><p>可以获取计算代码，以便根据应用需要进行进一步的具体调整。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code> is returned on dryrun executions</p></li>
+<li><p>空结果集 <code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code> 会在试运行中返回</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -284,7 +284,7 @@
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Get two close edges to points of interest with <span class="math notranslate nohighlight">\(pid = 5\)</span></p>
+<dd class="field-odd"><p>用 <span class="math notranslate nohighlight">\(pid = 5\)</span> 获取两条与兴趣点接近的边</p>
 </dd>
 </dl>
 <ul class="simple">
@@ -321,7 +321,7 @@ FROM pgr_findCloseEdges(
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>For each points of interests, find the closest edge.</p>
+<dd class="field-odd"><p>为每个兴趣点找出最近的边。</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT
@@ -448,34 +448,32 @@ FROM pgr_findCloseEdges(
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Value in &lt;0,1&gt; that indicates the relative position from the first
-end-point of the edge.</p></td>
+<td><p>以 &lt;0,1&gt; 范围内的值，表示相对于边线第一个端点的相对位置。</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[r,</span> <span class="pre">l]</span></code> 中的值指示该点是否为：</p>
 <ul class="simple">
-<li><p>At the right <code class="docutils literal notranslate"><span class="pre">r</span></code> of the segment.</p>
+<li><p>位于线段右侧 <code class="docutils literal notranslate"><span class="pre">r</span></code> 。</p>
 <ul>
 <li><p>当点在直线上时，它被认为是在右边。</p></li>
 </ul>
 </li>
-<li><p>At the left <code class="docutils literal notranslate"><span class="pre">l</span></code> of the segment.</p></li>
+<li><p>位于线段左侧 <code class="docutils literal notranslate"><span class="pre">l</span></code> 。</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">distance</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Distance from the point to the edge.</p></td>
+<td><p>点到边线的距离。</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
-<td><p>Original <code class="docutils literal notranslate"><span class="pre">POINT</span></code> geometry.</p></td>
+<td><p>原始的 <code class="docutils literal notranslate"><span class="pre">POINT</span></code> 几何形状。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> geometry that connects the original <strong>point</strong> to the
-closest point of the edge with identifier <code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+<td><p>连接原始 <strong>point</strong> 和具有标识符 <code class="docutils literal notranslate"><span class="pre">edge_id</span></code> 的边的最近点的 <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> 几何体</p></td>
 </tr>
 </tbody>
 </table>
@@ -484,21 +482,21 @@ closest point of the edge with identifier <code class="docutils literal notransl
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#one-point-in-an-edge" id="id1">One point in an edge</a></p></li>
+<li><p><a class="reference internal" href="#one-point-in-an-edge" id="id1">边线上的一个点</a></p></li>
 <li><p><a class="reference internal" href="#one-point-dry-run-execution" id="id2">单点模拟执行</a></p></li>
-<li><p><a class="reference internal" href="#many-points-in-an-edge" id="id3">Many points in an edge</a></p></li>
+<li><p><a class="reference internal" href="#many-points-in-an-edge" id="id3">一条边上有许多点</a></p></li>
 <li><p><a class="reference internal" href="#many-points-dry-run-execution" id="id4">多点模拟执行</a></p></li>
 <li><p><a class="reference internal" href="#find-at-most-two-routes-to-a-given-point" id="id5">最多找到两条到达给定点的路线</a></p></li>
 <li><p><a class="reference internal" href="#a-point-of-interest-table" id="id6">兴趣点表</a></p>
 <ul>
 <li><p><a class="reference internal" href="#points-of-interest" id="id7">兴趣点</a></p></li>
-<li><p><a class="reference internal" href="#points-of-interest-fill-up" id="id8">Points of interest fill up</a></p></li>
+<li><p><a class="reference internal" href="#points-of-interest-fill-up" id="id8">兴趣点填充</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="one-point-in-an-edge">
-<h3><a class="toc-backref" href="#id1" role="doc-backlink">One point in an edge</a><a class="headerlink" href="#one-point-in-an-edge" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">边线上的一个点</a><a class="headerlink" href="#one-point-in-an-edge" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, side, distance, ST_AsText(geom) geom, ST_AsText(edge) edge
 FROM pgr_findCloseEdges(
 $$SELECT 1 AS id, ST_MakeLine(ST_makePoint(2,0), ST_MakePoint(2,3)) AS geom$$,
@@ -541,23 +539,21 @@ ST_MakePoint(0,1.5), 5);
   }
 }" class="graphviz" /></div>
 <ul class="simple">
-<li><p>The green node is the original point.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">geom</span></code> has the value of the original point.</p></li>
-<li><p>The geometry <code class="docutils literal notranslate"><span class="pre">edge</span></code> is a line that connects the original point with the edge
-<span class="math notranslate nohighlight">\(sp \rightarrow ep\)</span> edge.</p></li>
-<li><p>The point is located at the left of the edge.</p></li>
+<li><p>绿色节点为原始点。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom</span></code> 包含原始点的坐标值。</p></li>
+<li><p>几何图形 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 是连接原始点与边线 <span class="math notranslate nohighlight">\(sp \rightarrow ep\)</span> 的线段。</p></li>
+<li><p>该点位于边线的左侧。</p></li>
 </ul>
 </section>
 <section id="one-point-dry-run-execution">
 <h3><a class="toc-backref" href="#id2" role="doc-backlink">单点模拟执行</a><a class="headerlink" href="#one-point-dry-run-execution" title="Link to this heading">¶</a></h3>
-<p>Using the query from the previous example:</p>
+<p>使用上一个示例中的查询：</p>
 <ul class="simple">
-<li><p>返回 <code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code>。</p></li>
+<li><p>返回 <code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code> 。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
-<li><p>Generates a PostgreSQL <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> with the code used.</p></li>
-<li><p>The generated code can be used as a starting base code for additional
-requirements, like taking into consideration the SRID.</p></li>
+<li><p>生成一个包含用于计算所有列的代码的 PostgreSQL <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> 。</p></li>
+<li><p>生成的代码可用作满足其他要求（如考虑 SRID）的起始基础代码。</p></li>
 </ul>
 </li>
 </ul>
@@ -597,7 +593,7 @@ WHERE rn &lt;= 1
 </div>
 </section>
 <section id="many-points-in-an-edge">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Many points in an edge</a><a class="headerlink" href="#many-points-in-an-edge" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">一条边上有许多点</a><a class="headerlink" href="#many-points-in-an-edge" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>绿色节点为 <strong>原始点</strong></p></li>
 <li><p>标为 <strong>g1</strong> 和 <strong>g2</strong> 的几何体 <code class="docutils literal notranslate"><span class="pre">geom</span></code> 是 <strong>原始点</strong></p></li>
@@ -653,7 +649,7 @@ ARRAY[ST_MakePoint(0,2), ST_MakePoint(3,1)]::GEOMETRY[], 5);
 <section id="many-points-dry-run-execution">
 <h3><a class="toc-backref" href="#id4" role="doc-backlink">多点模拟执行</a><a class="headerlink" href="#many-points-dry-run-execution" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p>返回 <code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code>。</p></li>
+<li><p>返回 <code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code> 。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
 <li><p>不处理查询</p></li>
@@ -733,7 +729,7 @@ WHERE rn &lt;= 1
 <section id="points-of-interest">
 <h4><a class="toc-backref" href="#id7" role="doc-backlink">兴趣点</a><a class="headerlink" href="#points-of-interest" title="Link to this heading">¶</a></h4>
 <p>有时应用程序会“即时执行”，从不是图中顶点的位置开始。在pgRouting中，这些位置被称为兴趣点。</p>
-<p>兴趣点所需的信息包括 <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>, <code class="docutils literal notranslate"><span class="pre">side</span></code>, <code class="docutils literal notranslate"><span class="pre">fraction</span></code>。</p>
+<p>兴趣点所需的信息包括 <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>, <code class="docutils literal notranslate"><span class="pre">side</span></code>, <code class="docutils literal notranslate"><span class="pre">fraction</span></code> 。</p>
 <p>在这份文档中，将有6个固定的兴趣点，并且它们将被存储在一个表中。</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -746,10 +742,10 @@ WHERE rn &lt;= 1
 <td><p>唯一标识符。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
-<td><p>Identifier of the nearest segment.</p></td>
+<td><p>最近边线的标识符。</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
-<td><p>Is it on the left, right or both sides of the segment <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>.</p></td>
+<td><p>位于边线 <code class="docutils literal notranslate"><span class="pre">edge_id</span></code> 的左侧、右侧还是两侧。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
 <td><p>该点位于边的哪个位置。</p></td>
@@ -758,14 +754,13 @@ WHERE rn &lt;= 1
 <td><p>点的几何形状。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">distance</span></code></p></td>
-<td><p>The distance between <code class="docutils literal notranslate"><span class="pre">geom</span></code> and the segment <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code> 与边线 <code class="docutils literal notranslate"><span class="pre">edge_id</span></code> 之间的距离。</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
-<td><p>A segment that connects the <code class="docutils literal notranslate"><span class="pre">geom</span></code> of the point to the closest point
-on the segment <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>.</p></td>
+<td><p>一个连接点的 <code class="docutils literal notranslate"><span class="pre">geom</span></code> 到边 <code class="docutils literal notranslate"><span class="pre">edge_id</span></code> 上最近点的线段。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newPoint</span></code></p></td>
-<td><p>A point on segment <code class="docutils literal notranslate"><span class="pre">edge_id</span></code> that is the closest to <code class="docutils literal notranslate"><span class="pre">geom</span></code>.</p></td>
+<td><p>边 <code class="docutils literal notranslate"><span class="pre">edge_id</span></code> 上距离 <code class="docutils literal notranslate"><span class="pre">geom</span></code> 最近的一个点。</p></td>
 </tr>
 </tbody>
 </table>
@@ -783,8 +778,8 @@ on the segment <code class="docutils literal notranslate"><span class="pre">edge
 </div>
 </section>
 <section id="points-of-interest-fill-up">
-<h4><a class="toc-backref" href="#id8" role="doc-backlink">Points of interest fill up</a><a class="headerlink" href="#points-of-interest-fill-up" title="Link to this heading">¶</a></h4>
-<p>Inserting the points of interest.</p>
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">兴趣点填充</a><a class="headerlink" href="#points-of-interest-fill-up" title="Link to this heading">¶</a></h4>
+<p>插入兴趣点。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">pointsOfInterest</span> <span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)),</span>
 <span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="mf">4.2</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">)),</span>
@@ -794,7 +789,7 @@ on the segment <code class="docutils literal notranslate"><span class="pre">edge
 <span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">));</span>
 </pre></div>
 </div>
-<p>Filling the rest of the table.</p>
+<p>填充表格的其余部分。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UPDATE pointsofinterest SET
   edge_id = poi.edge_id,
   side =  poi.side,
@@ -809,12 +804,11 @@ FROM (
 WHERE pointsOfInterest.geom = poi.geom;
 </pre></div>
 </div>
-<p>Any other additional modification: In this manual, point <span class="math notranslate nohighlight">\(6\)</span> can be
-reached from both sides.</p>
+<p>任何其他额外的修改：在本手册中，可从两侧到达点 <span class="math notranslate nohighlight">\(6\)</span>。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>The points of interest:</p>
+<p>兴趣点：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
   <span class="n">pid</span><span class="p">,</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">geom</span><span class="p">,</span>
   <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span> <span class="n">AS</span> <span class="n">frac</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">distance</span> <span class="n">AS</span> <span class="n">dist</span><span class="p">,</span>
@@ -862,7 +856,7 @@ reached from both sides.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

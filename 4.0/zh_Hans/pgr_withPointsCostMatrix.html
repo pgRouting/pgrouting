@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -112,7 +112,7 @@
 </li>
 <li><a class="reference internal" href="#result-columns">结果列</a></li>
 <li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
-<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">在 Points SQL 中使用 <span class="xref std std-doc">pgr_findCloseEdges</span>。</a></li>
+<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">在 Points SQL 中使用 <span class="xref std std-doc">pgr_findCloseEdges</span> 。</a></li>
 <li><a class="reference internal" href="#use-with-pgr-tsp">与 <span class="xref std std-doc">pgr_TSP</span> 一起使用。</a></li>
 </ul>
 </li>
@@ -178,7 +178,7 @@
 </li>
 <li><a class="reference internal" href="#result-columns">结果列</a></li>
 <li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
-<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">在 Points SQL 中使用 <span class="xref std std-doc">pgr_findCloseEdges</span>。</a></li>
+<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">在 Points SQL 中使用 <span class="xref std std-doc">pgr_findCloseEdges</span> 。</a></li>
 <li><a class="reference internal" href="#use-with-pgr-tsp">与 <span class="xref std std-doc">pgr_TSP</span> 一起使用。</a></li>
 </ul>
 </li>
@@ -212,7 +212,7 @@
 </div>
 <section id="pgr-withpointscostmatrix">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code><a class="headerlink" href="#pgr-withpointscostmatrix" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - 使用 <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> 计算成本矩阵.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - 使用 <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> 计算成本矩阵。</p>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>Version 4.0.0</p>
@@ -254,7 +254,7 @@
 <ul>
 <li><p>当起始顶点和结束顶点相同时，就没有路径。</p>
 <ul>
-<li><p>未包含值 <cite>(v, v)</cite> 中的总成本为 <cite>0</cite>。</p></li>
+<li><p>未包含值 <cite>(v, v)</cite> 中的总成本为 <cite>0</cite> 。</p></li>
 </ul>
 </li>
 <li><p>当起始顶点和结束顶点不同且不存在路径时。</p>
@@ -266,7 +266,7 @@
 </li>
 <li><p>假设返回的值存储在表中：</p>
 <ul>
-<li><p>唯一索引将是一对： <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid)</span></code>。</p></li>
+<li><p>唯一索引将是一对： <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid)</span></code> 。</p></li>
 </ul>
 </li>
 <li><p>根据函数及其参数，结果可能是对称的。</p>
@@ -282,7 +282,7 @@
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -374,7 +374,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
-<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite>。</p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -444,14 +444,14 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -568,12 +568,12 @@
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> 。</a></p></li>
 <li><p><a class="reference internal" href="#use-with-pgr-tsp" id="id2">与 <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> 一起使用。</a></p></li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
+<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> 。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
 <p>求从顶点 <span class="math notranslate nohighlight">\(1\)</span> 到图上点 <cite>(2.9, 1.8)</cite> 的两个最近位置的路线的矩阵成本。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsCostMatrix(
   $e$ SELECT * FROM edges $e$,
@@ -659,7 +659,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

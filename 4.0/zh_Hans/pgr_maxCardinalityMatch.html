@@ -21,7 +21,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_maxFlowMinCost - 实验" href="pgr_maxFlowMinCost.html" />
+    <link rel="next" title="pgr_maxFlowMinCost - 实验性" href="pgr_maxFlowMinCost.html" />
     <link rel="prev" title="pgr_edgeDisjointPaths" href="pgr_edgeDisjointPaths.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -122,7 +122,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_maxFlowMinCost.html" title="Next Chapter: pgr_maxFlowMinCost - 实验"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_maxFlowMi... &raquo;</span>
+    <a href="pgr_maxFlowMinCost.html" title="Next Chapter: pgr_maxFlowMinCost - 实验性"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_maxFlowMi... &raquo;</span>
     </a>
   </li>
               
@@ -172,7 +172,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_maxFlowMinCost.html" title="Next Chapter: pgr_maxFlowMinCost - 实验"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_maxFlowMi... &raquo;</span>
+    <a href="pgr_maxFlowMinCost.html" title="Next Chapter: pgr_maxFlowMinCost - 实验性"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_maxFlowMi... &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -202,14 +202,14 @@
 <li><p>适用于无向图。</p></li>
 <li><p>新签名</p>
 <ul>
-<li><p>pgr_maxCardinalityMatch(text) returns only <code class="docutils literal notranslate"><span class="pre">edge</span></code> column.</p></li>
+<li><p>pgr_maxCardinalityMatch(text) 只返回 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 列。</p></li>
 </ul>
 </li>
 <li><p>已弃用的签名</p>
 <ul>
 <li><p>pgr_maxCardinalityMatch(text,boolean)</p>
 <ul>
-<li><p>使用时 directed =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code>。</p></li>
+<li><p>使用时 directed =&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code> 。</p></li>
 </ul>
 </li>
 </ul>
@@ -224,12 +224,12 @@
 <li><p>版本2.5.0</p>
 <ul>
 <li><p>从 <code class="docutils literal notranslate"><span class="pre">pgr_maximumCardinalityMatching</span></code> 重命名</p></li>
-<li><p>Function promoted to proposed.</p></li>
+<li><p>函数已升级为提议。</p></li>
 </ul>
 </li>
 <li><p>版本2.3.0</p>
 <ul>
-<li><p>新实验功能。</p></li>
+<li><p>新实验性功能。</p></li>
 </ul>
 </li>
 </ul>
@@ -251,7 +251,7 @@
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -342,12 +342,12 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>正值表示存在边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)。</p></td>
+<td><p>正值表示存在边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) 。</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
-<td><p>正值表示存在边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p></td>
+<td><p>正值表示存在边 (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -384,7 +384,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - 函数族</span></a></p></li>
 <li><p><a class="reference internal" href="migration.html"><span class="doc">迁移指南</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/maximum_matching.html">Boost: maximum_matching</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/maximum_matching.html">Boost: 最大匹配</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Matching_%28graph_theory%29">https://en.wikipedia.org/wiki/Matching_%28graph_theory%29</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Ackermann_function">https://en.wikipedia.org/wiki/Ackermann_function</a></p></li>
 </ul>
@@ -409,7 +409,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

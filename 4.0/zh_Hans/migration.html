@@ -21,7 +21,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="发行说明" href="release_notes.html" />
+    <link rel="prev" title="发布说明" href="release_notes.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -69,17 +69,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">迁移指南</a></li>
@@ -97,34 +97,34 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">迁移指南</a><ul>
-<li><a class="reference internal" href="#migration-of-pgr-alphashape">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-createtopology">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-alphashape">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-createtopology">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
 <li><a class="reference internal" href="#build-a-routing-topology">构建路由拓扑</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-createverticestable">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-analyzegraph">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-astar"><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> 迁移</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-createverticestable">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-analyzegraph">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-astar">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-bdastar">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-dijkstra">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-drivingdistance">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-drivingdistance">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><ul>
 <li><a class="reference internal" href="#pgr-drivingdistance-single-vertex">pgr_drivingDistance(Single vertex)</a></li>
 <li><a class="reference internal" href="#pgr-drivingdistance-multiple-vertices">pgr_drivingDistance(Multiple vertices)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs"><cite>pgr_kruskalDD`</cite> / <cite>pgr_kruskalBFS`</cite> / <cite>pgr_kruskalDFS`</cite> 的迁移</a><ul>
-<li><a class="reference internal" href="#kruskal-single-vertex">Kruskal 单顶点</a></li>
-<li><a class="reference internal" href="#kruskal-multiple-vertices">Kruskal 多顶点</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a><ul>
+<li><a class="reference internal" href="#kruskal-single-vertex">Kruskal 单个顶点</a></li>
+<li><a class="reference internal" href="#kruskal-multiple-vertices">Kruskal 多个顶点</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-ksp">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a><ul>
-<li><a class="reference internal" href="#pgr-ksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (一对一)</a></li>
+<li><a class="reference internal" href="#pgr-ksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (One to One)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs"><cite>pgr_primDD`</cite> / <cite>pgr_primBFS`</cite> / <cite>pgr_primDFS`</cite> 的迁移</a><ul>
-<li><a class="reference internal" href="#prim-single-vertex">Prim 单一节点</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><ul>
+<li><a class="reference internal" href="#prim-single-vertex">Prim 单个节点</a></li>
 <li><a class="reference internal" href="#prim-multiple-vertices">Prim 多个顶点</a></li>
 </ul>
 </li>
@@ -134,27 +134,27 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-withpointsksp">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><ul>
-<li><a class="reference internal" href="#pgr-withpointsksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>一对一</cite>)</a></li>
+<li><a class="reference internal" href="#pgr-withpointsksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to One</cite>)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-trsp-vertices">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> （顶点）</a><ul>
-<li><a class="reference internal" href="#use-pgr-dijkstra-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> when there are no restrictions.</a></li>
-<li><a class="reference internal" href="#use-pgr-trsp-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> when there are restrictions.</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-trsp-vertices">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (顶点）</a><ul>
+<li><a class="reference internal" href="#use-pgr-dijkstra-when-there-are-no-restrictions">当没有限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> 。</a></li>
+<li><a class="reference internal" href="#use-pgr-trsp-when-there-are-restrictions">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> 。</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-trsp-edges">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> （边）</a><ul>
-<li><a class="reference internal" href="#use-pgr-withpoints-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> when there are no restrictions.</a></li>
-<li><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> when there are restrictions.</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-trsp-edges">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (边)</a><ul>
+<li><a class="reference internal" href="#use-pgr-withpoints-when-there-are-no-restrictions">无限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> 。</a></li>
+<li><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> 。</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-trspviavertices">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><ul>
-<li><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> when there are no restrictions</a></li>
-<li><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> when there are restrictions</a></li>
+<li><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions">无限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code></a></li>
+<li><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-trspviaedges">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><ul>
-<li><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> when there are no restrictions</a></li>
-<li><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> when there are restrictions</a></li>
+<li><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions">无限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a></li>
+<li><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-restrictions">限制迁移</a><ul>
@@ -181,7 +181,7 @@
               
                 
   <li>
-    <a href="release_notes.html" title="Previous Chapter: 发行说明"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 发行说明</span>
+    <a href="release_notes.html" title="Previous Chapter: 发布说明"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 发布说明</span>
     </a>
   </li>
               
@@ -213,34 +213,34 @@
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
 <li><a class="reference internal" href="#">迁移指南</a><ul>
-<li><a class="reference internal" href="#migration-of-pgr-alphashape">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-createtopology">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-alphashape">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-createtopology">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
 <li><a class="reference internal" href="#build-a-routing-topology">构建路由拓扑</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-createverticestable">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-analyzegraph">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-astar"><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> 迁移</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-createverticestable">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-analyzegraph">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-astar">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-bdastar">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-dijkstra">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-drivingdistance">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-drivingdistance">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><ul>
 <li><a class="reference internal" href="#pgr-drivingdistance-single-vertex">pgr_drivingDistance(Single vertex)</a></li>
 <li><a class="reference internal" href="#pgr-drivingdistance-multiple-vertices">pgr_drivingDistance(Multiple vertices)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs"><cite>pgr_kruskalDD`</cite> / <cite>pgr_kruskalBFS`</cite> / <cite>pgr_kruskalDFS`</cite> 的迁移</a><ul>
-<li><a class="reference internal" href="#kruskal-single-vertex">Kruskal 单顶点</a></li>
-<li><a class="reference internal" href="#kruskal-multiple-vertices">Kruskal 多顶点</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a><ul>
+<li><a class="reference internal" href="#kruskal-single-vertex">Kruskal 单个顶点</a></li>
+<li><a class="reference internal" href="#kruskal-multiple-vertices">Kruskal 多个顶点</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-ksp">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a><ul>
-<li><a class="reference internal" href="#pgr-ksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (一对一)</a></li>
+<li><a class="reference internal" href="#pgr-ksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (One to One)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs"><cite>pgr_primDD`</cite> / <cite>pgr_primBFS`</cite> / <cite>pgr_primDFS`</cite> 的迁移</a><ul>
-<li><a class="reference internal" href="#prim-single-vertex">Prim 单一节点</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><ul>
+<li><a class="reference internal" href="#prim-single-vertex">Prim 单个节点</a></li>
 <li><a class="reference internal" href="#prim-multiple-vertices">Prim 多个顶点</a></li>
 </ul>
 </li>
@@ -250,27 +250,27 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-withpointsksp">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><ul>
-<li><a class="reference internal" href="#pgr-withpointsksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>一对一</cite>)</a></li>
+<li><a class="reference internal" href="#pgr-withpointsksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to One</cite>)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-trsp-vertices">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> （顶点）</a><ul>
-<li><a class="reference internal" href="#use-pgr-dijkstra-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> when there are no restrictions.</a></li>
-<li><a class="reference internal" href="#use-pgr-trsp-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> when there are restrictions.</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-trsp-vertices">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (顶点）</a><ul>
+<li><a class="reference internal" href="#use-pgr-dijkstra-when-there-are-no-restrictions">当没有限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> 。</a></li>
+<li><a class="reference internal" href="#use-pgr-trsp-when-there-are-restrictions">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> 。</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-trsp-edges">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> （边）</a><ul>
-<li><a class="reference internal" href="#use-pgr-withpoints-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> when there are no restrictions.</a></li>
-<li><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> when there are restrictions.</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-trsp-edges">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (边)</a><ul>
+<li><a class="reference internal" href="#use-pgr-withpoints-when-there-are-no-restrictions">无限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> 。</a></li>
+<li><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> 。</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-trspviavertices">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><ul>
-<li><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> when there are no restrictions</a></li>
-<li><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> when there are restrictions</a></li>
+<li><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions">无限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code></a></li>
+<li><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-trspviaedges">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><ul>
-<li><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> when there are no restrictions</a></li>
-<li><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> when there are restrictions</a></li>
+<li><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions">无限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a></li>
+<li><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-restrictions">限制迁移</a><ul>
@@ -291,7 +291,7 @@
 </ul>
 
   <li>
-    <a href="release_notes.html" title="Previous Chapter: 发行说明"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 发行说明</span>
+    <a href="release_notes.html" title="Previous Chapter: 发布说明"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 发布说明</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -315,30 +315,30 @@
 <p>结果可能会因变化而不同。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>All deprecated functions will be removed on next major version 4.0.0</p>
+<p>所有已弃用函数将在下一个主版本 4.0.0 中被移除</p>
 </div>
 <nav class="contents" id="contents">
 <p class="topic-title">内容</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#migration-guide" id="id5">迁移指南</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migration-of-pgr-alphashape" id="id6">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-createtopology" id="id7">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-createverticestable" id="id8">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-analyzeoneway" id="id9">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-analyzegraph" id="id10">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-astar" id="id11"><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> 迁移</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-alphashape" id="id6">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-createtopology" id="id7">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-createverticestable" id="id8">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-analyzeoneway" id="id9">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-analyzegraph" id="id10">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-astar" id="id11">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-bdastar" id="id12">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-dijkstra" id="id13">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-drivingdistance" id="id14">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" id="id15"><cite>pgr_kruskalDD`</cite> / <cite>pgr_kruskalBFS`</cite> / <cite>pgr_kruskalDFS`</cite> 的迁移</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-drivingdistance" id="id14">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" id="id15">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-ksp" id="id16">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch" id="id17">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" id="id18"><cite>pgr_primDD`</cite> / <cite>pgr_primBFS`</cite> / <cite>pgr_primDFS`</cite> 的迁移</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" id="id18">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-withpointsdd" id="id19">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-withpointsksp" id="id20">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trsp-vertices" id="id21">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> （顶点）</a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trsp-edges" id="id22">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> （边）</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-trsp-vertices" id="id21">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (顶点）</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-trsp-edges" id="id22">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (边)</a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-trspviavertices" id="id23">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-trspviaedges" id="id24">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-restrictions" id="id25">限制迁移</a></p></li>
@@ -348,49 +348,46 @@
 </ul>
 </nav>
 <section id="migration-of-pgr-alphashape">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a><a class="headerlink" href="#migration-of-pgr-alphashape" title="Link to this heading">¶</a></h2>
-<p>Deprecated in <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a>
-Removed from the repostory in <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
-<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a><a class="headerlink" href="#migration-of-pgr-alphashape" title="Link to this heading">¶</a></h2>
+<p>在 <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a> 中已弃用，并在此版本中从代码库移除</p>
+<p>** 弃用前：** 原计算方式如下：</p>
 <ul class="simple">
-<li><p>An alphaShape was calculated</p></li>
+<li><p>已计算 alphaShape</p></li>
 </ul>
-<p><strong>After Deprecation:</strong></p>
-<p>PostGIS has two ways of generating alphaShape.</p>
-<p>If you have SFCGAL, which you can install using</p>
+<p><strong>停用后：</strong></p>
+<p>PostGIS 提供两种生成 alphaShape 的方法。</p>
+<p>如果你有 SFCGAL，可以通过以下方式安装</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">EXTENSION</span> <span class="n">postgis_sfcgal</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Since PostGIS 3.5+ use <a class="reference external" href="https://postgis.net/docs/CG_AlphaShape.html">CG_AlphaShape</a></p></li>
-<li><p>For PostGIS 3.5+ use the old name <code class="docutils literal notranslate"><span class="pre">ST_AlphaShape</span></code></p></li>
+<li><p>自 PostGIS 3.5 起，请使用 <a class="reference external" href="https://postgis.net/docs/CG_AlphaShape.html">CG_AlphaShape</a> 函数</p></li>
+<li><p>对于 PostGIS 3.5+ 版本，请继续使用旧函数名 <code class="docutils literal notranslate"><span class="pre">ST_AlphaShape</span></code></p></li>
 </ul>
-<p>Other PostGIS options are
-* <a class="reference external" href="https://postgis.net/docs/ST_ConvexHull.html">ST_ConvexHull</a>
-* <a class="reference external" href="https://postgis.net/docs/ST_ConcaveHull.html">ST_ConcaveHull</a></p>
+<p>其他 PostGIS 可选函数 * <a class="reference external" href="https://postgis.net/docs/ST_ConvexHull.html">ST_ConvexHull</a> * <a class="reference external" href="https://postgis.net/docs/ST_ConcaveHull.html">ST_ConcaveHull</a></p>
 </section>
 <section id="migration-of-pgr-createtopology">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><a class="headerlink" href="#migration-of-pgr-createtopology" title="Link to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
-<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><a class="headerlink" href="#migration-of-pgr-createtopology" title="Link to this heading">¶</a></h2>
+<p>开始于 <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p>** 弃用前：** 原计算方式如下：</p>
 <ul class="simple">
-<li><p>A table with <cite>&lt;edges&gt;_vertices_pgr</cite> was created.</p></li>
+<li><p>创建了一个包含 <cite>&lt;edges&gt;_vertices_pgr</cite> 的表。</p></li>
 </ul>
-<p><strong>After Deprecation:</strong> The user is responsible to create the complete topology.</p>
+<p><strong>弃用后：</strong> 用户需自行构建完整拓扑。</p>
 <section id="build-a-routing-topology">
 <h3>构建路由拓扑<a class="headerlink" href="#build-a-routing-topology" title="Link to this heading">¶</a></h3>
-<p>使用大多数 pgRouting 函数的基本信息``id, source, target, cost, [reverse_cost]`` 在 pgRouting 中被称为路由拓扑。</p>
-<p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 是可选的，但强烈建议使用，以便由于几何列的大小而减小数据库的大小。 话虽如此，在本文档中使用了 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>。</p>
+<p>使用大多数 pgRouting 函数的基本信息 <code class="docutils literal notranslate"><span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">[reverse_cost]</span></code> 在 pgRouting 中被称为路由拓扑。</p>
+<p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 是可选的，但强烈建议使用，以便由于几何列的大小而减小数据库的大小。 话虽如此，在本文档中使用了 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 。</p>
 <p>当数据带有几何图形并且没有路由拓扑时，则需要此步骤。</p>
-<p>几何图的所有开始和结束顶点都需要一个标识符，该标识符将存储在数据表的``source``列和``target``列中。 同样，<code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 需要具有在两个方向上遍历边的值。</p>
-<p>如果这些列不存在，则需要将它们添加到相关表中。 （参见`ALTER TABLE &lt;<a class="reference external" href="https://www.postgresql.org/docs/current/sql-altertable.html">https://www.postgresql.org/docs/current/sql-altertable.html</a>&gt;`__ ）</p>
+<p>几何图的所有开始和结束顶点都需要一个标识符，该标识符将存储在数据表的 <code class="docutils literal notranslate"><span class="pre">source</span></code> 列和 <code class="docutils literal notranslate"><span class="pre">target</span></code> 列中。 同样， <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 需要具有在两个方向上遍历边的值。</p>
+<p>如果这些列不存在，则需要将它们添加到相关表中。 （参见 <a class="reference external" href="https://www.postgresql.org/docs/current/sql-altertable.html">ALTER TABLE</a> ）</p>
 <p>函数 <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> 用于根据边标识符和图边的几何形状创建顶点表。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">18</span>
 </pre></div>
 </div>
-<p>最后使用存储在顶点表上的数据填充 <code class="docutils literal notranslate"><span class="pre">source</span></code> 和``target``。</p>
+<p>最后使用存储在顶点表上的数据填充 <code class="docutils literal notranslate"><span class="pre">source</span></code> 和 <code class="docutils literal notranslate"><span class="pre">target</span></code> 。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
 <span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
@@ -408,14 +405,13 @@ Removed from the repostory in <a class="reference external" href="https://docs.p
 </section>
 </section>
 <section id="migration-of-pgr-createverticestable">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a><a class="headerlink" href="#migration-of-pgr-createverticestable" title="Link to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
-<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a><a class="headerlink" href="#migration-of-pgr-createverticestable" title="Link to this heading">¶</a></h2>
+<p>开始于 <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p>** 弃用前：** 原计算方式如下：</p>
 <ul class="simple">
-<li><p>A table with <cite>&lt;edges&gt;_vertices_pgr</cite> was created.</p></li>
+<li><p>创建了一个包含 <cite>&lt;edges&gt;_vertices_pgr</cite> 的表。</p></li>
 </ul>
-<p><strong>After Deprecation:</strong> The user is responsible to create the vertices table,
-indexes, etc. They may use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> for that purpose.</p>
+<p><strong>弃用后：</strong> 用户需自行创建顶点表、索引等结构，可调用 <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> 函数实现该功能。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">17</span>
@@ -423,20 +419,18 @@ indexes, etc. They may use <a class="reference internal" href="pgr_extractVertic
 </div>
 </section>
 <section id="migration-of-pgr-analyzeoneway">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzeoneway" title="Link to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
-<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzeoneway" title="Link to this heading">¶</a></h2>
+<p>开始于 <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p>** 弃用前：** 原计算方式如下：</p>
 <ul class="simple">
-<li><p>Number of potential problems in directionality</p></li>
+<li><p>方向性潜在问题数量分析</p></li>
 </ul>
 <p>WHERE</p>
-<p>Directionality problems were calculated based on codes.</p>
-<p class="rubric">Dead ends.</p>
-<p>A routing problem can arise when from a vertex there is only a way on or a way
-out but not both:</p>
-<p>Either saving or using directly <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> get the dead ends
-information and determine if the adjacent edge is one way or not.</p>
-<p>In this example <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> has already been applied.</p>
+<p>方向性问题已根据预设规则代码完成计算。</p>
+<p class="rubric">死胡同。</p>
+<p>当某个节点仅存在单向通行路径（仅有进入或仅有离开的边线）时，将导致路由问题：</p>
+<p>通过保存或直接调用 <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> 获取断头路信息，并判断相邻边线是否为单行道。</p>
+<p>在本例中 <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> 已经应用。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">deadends</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="nb">id</span>
@@ -449,11 +443,9 @@ information and determine if the adjacent edge is one way or not.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Bridges.</p>
-<p>Another routing problem can arise when there is an edge of an undirected graph
-whose deletion increases its number of connected components, and the bridge is
-only one way.</p>
-<p>To determine if the bridges are or not one way.</p>
+<p class="rubric">桥梁。</p>
+<p>另一个路由问题可能出现在以下情况：当无向图中存在这样一条边——删除该边会增加图的连通分量数量（即该边是桥接边），而该桥接边却是单向通行的。</p>
+<p>判断桥梁是否为单行道。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">reverse_cost</span><span class="o">&lt;</span><span class="mi">0</span> <span class="n">AS</span> <span class="n">is_OneWway</span>
 <span class="n">FROM</span> <span class="n">pgr_bridges</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">)</span>
 <span class="n">JOIN</span> <span class="n">edges</span> <span class="n">ON</span> <span class="p">(</span><span class="n">edge</span> <span class="o">=</span> <span class="nb">id</span><span class="p">);</span>
@@ -471,45 +463,43 @@ only one way.</p>
 </div>
 </section>
 <section id="migration-of-pgr-analyzegraph">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzegraph" title="Link to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
-<p><strong>Before Deprecation:</strong> The following was calculated:</p>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzegraph" title="Link to this heading">¶</a></h2>
+<p>开始于 <a class="reference external" href="https://docs.pgrouting.org/3.8/en/migration.html">v3.8.0</a></p>
+<p>** 弃用前：** 原计算方式如下：</p>
 <ul class="simple">
-<li><p>Number of isolated segments.</p></li>
-<li><p>Number of dead ends.</p></li>
-<li><p>Number of potential gaps found near dead ends.</p></li>
-<li><p>Number of intersections. (between 2 edges)</p></li>
+<li><p>隔离段的数量。</p></li>
+<li><p>死胡同数量。</p></li>
+<li><p>在断头路附近发现的潜在缺口数量。</p></li>
+<li><p>交叉点数量。(两条边之间）</p></li>
 </ul>
 <p>WHERE</p>
 <dl class="field-list simple">
-<dt class="field-odd">Graph component<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A connected subgraph that is not part of any larger connected
-subgraph.</p>
+<dt class="field-odd">图形组件<span class="colon">:</span></dt>
+<dd class="field-odd"><p>不属于任何较大连通子图的连通子图。</p>
 </dd>
-<dt class="field-even">Isolated segment<span class="colon">:</span></dt>
-<dd class="field-even"><p>A graph component with only one segment.</p>
+<dt class="field-even">隔离段<span class="colon">:</span></dt>
+<dd class="field-even"><p>单一孤立路段组成的网络组件。</p>
 </dd>
 <dt class="field-odd">死端<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A vertex that participates in only one edge.</p>
+<dd class="field-odd"><p>仅关联单条边线的顶点。</p>
 </dd>
-<dt class="field-even">gaps<span class="colon">:</span></dt>
-<dd class="field-even"><p>Space between two geometries.</p>
+<dt class="field-even">差距<span class="colon">:</span></dt>
+<dd class="field-even"><p>两个几何对象之间的空间。</p>
 </dd>
-<dt class="field-odd">Intersection<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Is a topological relationship between two geometries.</p>
+<dt class="field-odd">交叉路口<span class="colon">:</span></dt>
+<dd class="field-odd"><p>是两个几何体之间的拓扑关系。</p>
 </dd>
 </dl>
-<p class="rubric">Migration.</p>
-<p class="rubric">Components.</p>
-<p>Instead of counting only isolated segments, determine all the components of the
-graph.</p>
-<p>Depending of the final application requirements use:</p>
+<p class="rubric">迁移。</p>
+<p class="rubric">组件。</p>
+<p>不仅统计孤立线段，还要识别图中的所有连通子图（组件）。</p>
+<p>根据最终应用需求选择：</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_connectedComponents</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_strongComponents.html"><span class="doc">pgr_strongComponents</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents</span></a></p></li>
 </ul>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -537,10 +527,9 @@ graph.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Dead ends.</p>
-<p>Instead of counting the dead ends, determine all the dead ends of the graph
-using <a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree</span></a>.</p>
-<p>For example:</p>
+<p class="rubric">死胡同。</p>
+<p>使用 <a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree</span></a> 确定图形的所有死角，而不是计算死角。</p>
+<p>示例：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
 FROM pgr_degree($$SELECT id, source, target FROM edges$$)
 WHERE degree = 1;
@@ -557,10 +546,9 @@ WHERE degree = 1;
 
 </pre></div>
 </div>
-<p class="rubric">Potential gaps near dead ends.</p>
-<p>Instead of counting potential gaps between geometries, determine the geometric
-gaps in the graph using <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>.</p>
-<p>For example:</p>
+<p class="rubric">断头路附近的潜在缺口。</p>
+<p>使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> 来确定图形中的几何间隙，而不是计算几何图形之间的潜在间隙。</p>
+<p>示例：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">deadends</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span><span class="n">geom</span><span class="p">,</span> <span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="n">inhere</span>
@@ -577,14 +565,10 @@ gaps in the graph using <a class="reference internal" href="pgr_findCloseEdges.h
 
 </pre></div>
 </div>
-<p class="rubric">Topological relationships.</p>
-<p>Instead of counting intersections, determine topological relationships between
-geometries.</p>
-<p>Several PostGIS functions can be used:
-<a class="reference external" href="https://postgis.net/docs/ST_Intersects.html">ST_Intersects</a>,
-<a class="reference external" href="https://postgis.net/docs/ST_Crosses.html">ST_Crosses</a>,
-<a class="reference external" href="https://postgis.net/docs/ST_Overlaps.html">ST_Overlaps</a>, etc.</p>
-<p>For example:</p>
+<p class="rubric">拓扑关系。</p>
+<p>确定几何图形之间的拓扑关系，而不是计算交叉点。</p>
+<p>可以使用几个 PostGIS 函数： <a class="reference external" href="https://postgis.net/docs/ST_Intersects.html">ST_Intersects</a>, <a class="reference external" href="https://postgis.net/docs/ST_Crosses.html">ST_Crosses</a>, <a class="reference external" href="https://postgis.net/docs/ST_Overlaps.html">ST_Overlaps</a>, 等。</p>
+<p>示例：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="n">AS</span> <span class="n">id1</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span> <span class="n">AS</span> <span class="n">id2</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">e1</span><span class="p">,</span> <span class="n">edges</span> <span class="n">e2</span> <span class="n">WHERE</span> <span class="n">e1</span> <span class="o">&lt;</span> <span class="n">e2</span> <span class="n">AND</span> <span class="n">st_crosses</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">);</span>
  <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span>
@@ -596,23 +580,23 @@ geometries.</p>
 </div>
 </section>
 <section id="migration-of-pgr-astar">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> 迁移</a><a class="headerlink" href="#migration-of-pgr-astar" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a><a class="headerlink" href="#migration-of-pgr-astar" title="Link to this heading">¶</a></h2>
 <p>开始从 <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a></p>
 <p>要迁移的签名：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>一对一</cite>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>一对多</cite>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>多对一</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to One</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to Many</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>Many to One</cite>)</p></li>
 </ul>
 <p class="rubric">迁移前</p>
 <ul class="simple">
 <li><p>输出列是 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p>根据所使用的重载， <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和``end_vid`` 列可能会丢失：</p>
+<li><p>根据所使用的重载， <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 列可能会丢失：</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>一对一</cite>)没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>一对多</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>多对一</cite>)没有 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to One</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to Many</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>Many to One</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 。</p></li>
 </ul>
 </li>
 </ul>
@@ -624,7 +608,7 @@ geometries.</p>
 </dl>
 <ul class="simple">
 <li><p>注意附加栏的存在。</p></li>
-<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>一对一</cite>)中</p>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to One</cite>) 中</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 包含 <strong>起始 vid</strong> 参数值。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 包含 <strong>结束 vid</strong> 参数值。</p></li>
@@ -647,7 +631,7 @@ geometries.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>一对多</cite>)中</p>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to Many</cite>)中</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 包含 <strong>起始 vid</strong> 参数值。</p></li>
 </ul>
@@ -672,7 +656,7 @@ geometries.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>多对一</cite>)中</p>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>Many to One</cite>) 中</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 包含 <strong>结束 vid</strong> 参数值。</p></li>
 </ul>
@@ -720,7 +704,7 @@ geometries.</p>
 <ul class="simple">
 <li><p>如果需要添加新列，类似于以下使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> 的示例，并且必须修改该函数才能返回新列：</p>
 <ul>
-<li><p>在`v3.0 &lt;<a class="reference external" href="https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph">https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph</a>&gt;`__ 中，函数``my_dijkstra`` 使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code>。</p></li>
+<li><p>在 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph">v3.0</a> ，函数 <code class="docutils literal notranslate"><span class="pre">my_dijkstra</span></code> 使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> 。</p></li>
 <li><p>从 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph">v3.5</a> 开始，函数 <code class="docutils literal notranslate"><span class="pre">my_dijkstra</span></code> 返回 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> 的新附加列。</p></li>
 </ul>
 </li>
@@ -731,9 +715,9 @@ geometries.</p>
 <p>开始从 <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a></p>
 <p>要迁移的签名：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>一对一</cite>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>一对多</cite>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>多对一</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to One</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to Many</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>Many to One</cite>)</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">迁移前<span class="colon">:</span></dt>
@@ -742,11 +726,11 @@ geometries.</p>
 <ul class="simple">
 <li><p>输出列是 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p>根据所使用的重载， <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和``end_vid`` 列可能会丢失：</p>
+<li><p>根据所使用的重载， <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 列可能会丢失：</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>一对一</cite>)没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>一对多</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>多对一</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to One</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to Many</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>Many to One</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 。</p></li>
 </ul>
 </li>
 </ul>
@@ -758,7 +742,7 @@ geometries.</p>
 </dl>
 <ul class="simple">
 <li><p>注意附加栏的存在。</p></li>
-<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>一对一</cite>)中</p>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to One</cite>) 中</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 包含 <strong>起始 vid</strong> 参数值。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 包含 <strong>结束 vid</strong> 参数值。</p></li>
@@ -781,7 +765,7 @@ geometries.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>一对多</cite>)中</p>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to Many</cite>)中</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 包含 <strong>起始 vid</strong> 参数值。</p></li>
 </ul>
@@ -806,7 +790,7 @@ geometries.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>多对一</cite>)中</p>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>Many to One</cite>) 中</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 包含 <strong>结束 vid</strong> 参数值。</p></li>
 </ul>
@@ -854,7 +838,7 @@ geometries.</p>
 <ul class="simple">
 <li><p>如果需要添加新列，类似于以下使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> 的示例，并且必须修改该函数才能返回新列：</p>
 <ul>
-<li><p>在`v3.0 &lt;<a class="reference external" href="https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph">https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph</a>&gt;`__ 中，函数``my_dijkstra`` 使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code>。</p></li>
+<li><p>在 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph">v3.0</a> ，函数 <code class="docutils literal notranslate"><span class="pre">my_dijkstra</span></code> 使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> 。</p></li>
 <li><p>从 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph">v3.5</a> 开始，函数 <code class="docutils literal notranslate"><span class="pre">my_dijkstra</span></code> 返回 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> 的新附加列。</p></li>
 </ul>
 </li>
@@ -862,12 +846,12 @@ geometries.</p>
 </section>
 <section id="migration-of-pgr-dijkstra">
 <h2><a class="toc-backref" href="#id13" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a><a class="headerlink" href="#migration-of-pgr-dijkstra" title="Link to this heading">¶</a></h2>
-<p>从`v3.5.0 &lt;<a class="reference external" href="https://docs.pgrouting.org/3.5/en/migration.html">https://docs.pgrouting.org/3.5/en/migration.html</a>&gt;`__ 版本开始</p>
+<p>开始于 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/migration.html">v3.5.0</a></p>
 <p>要迁移的签名：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>一对一</cite>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>一对多</cite>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>多对一</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to One</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to Many</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>Many to One</cite>)</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">迁移前<span class="colon">:</span></dt>
@@ -876,11 +860,11 @@ geometries.</p>
 <ul class="simple">
 <li><p>输出列是 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p>根据所使用的重载， <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和``end_vid`` 列可能会丢失：</p>
+<li><p>根据所使用的重载， <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 列可能会丢失：</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>一对一</cite>)没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>一对多</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>多对一</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to One</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to Many</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>Many to One</cite>) 没有 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 。</p></li>
 </ul>
 </li>
 </ul>
@@ -892,7 +876,7 @@ geometries.</p>
 </dl>
 <ul class="simple">
 <li><p>注意附加栏的存在。</p></li>
-<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>一对一</cite>)中</p>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to One</cite>) 中</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 包含 <strong>起始 vid</strong> 参数值。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 包含 <strong>结束 vid</strong> 参数值。</p></li>
@@ -915,7 +899,7 @@ geometries.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>一对多</cite>)中</p>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to Many</cite>)中</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 包含 <strong>起始 vid</strong> 参数值。</p></li>
 </ul>
@@ -940,7 +924,7 @@ geometries.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>多对一</cite>)中</p>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>Many to One</cite>) 中</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 包含 <strong>结束 vid</strong> 参数值。</p></li>
 </ul>
@@ -988,15 +972,15 @@ geometries.</p>
 <ul class="simple">
 <li><p>如果需要，过滤掉添加的列，例如：</p>
 <ul>
-<li><p>在`v3.0 &lt;<a class="reference external" href="https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph">https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph</a>&gt;`__ 中，函数``my_dijkstra`` 使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code>。</p></li>
+<li><p>在 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph">v3.0</a> ，函数 <code class="docutils literal notranslate"><span class="pre">my_dijkstra</span></code> 使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> 。</p></li>
 <li><p>从 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph">v3.5</a> 开始，函数 <code class="docutils literal notranslate"><span class="pre">my_dijkstra</span></code> 返回 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> 的新附加列。</p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="migration-of-pgr-drivingdistance">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#migration-of-pgr-drivingdistance" title="Link to this heading">¶</a></h2>
-<p>从 <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a> 开始， <a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">驾驶距离</span></a> 结果列正在标准化。</p>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#migration-of-pgr-drivingdistance" title="Link to this heading">¶</a></h2>
+<p>从 <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a> 开始， <a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> 结果列正在标准化。</p>
 <dl class="field-list simple">
 <dt class="field-odd">从<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -1037,7 +1021,7 @@ geometries.</p>
 </ul>
 <section id="pgr-drivingdistance-single-vertex">
 <h3>pgr_drivingDistance(Single vertex)<a class="headerlink" href="#pgr-drivingdistance-single-vertex" title="Link to this heading">¶</a></h3>
-<p>使用`这个 &lt;<a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-vertex">https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-vertex</a>&gt;`__ 示例。</p>
+<p>使用 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-vertex">这个</a> 示例。</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 包含 <strong>起始 vid</strong> 参数值。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> 包含 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的深度。</p></li>
@@ -1095,7 +1079,7 @@ FROM pgr_drivingDistance(
 <h3>pgr_drivingDistance(Multiple vertices)<a class="headerlink" href="#pgr-drivingdistance-multiple-vertices" title="Link to this heading">¶</a></h3>
 <p>使用 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#multiple-vertices">这个</a> 示例。</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">from_v`结果列名称更改为</span> <span class="pre">``start_vid</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from_v</span></code> 结果列名称更改为 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> 包含 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的深度。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pred</span></code> 包含 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的前驱。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
@@ -1150,10 +1134,8 @@ FROM pgr_drivingDistance(
 </section>
 </section>
 <section id="migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink"><cite>pgr_kruskalDD`</cite> / <cite>pgr_kruskalBFS`</cite> / <cite>pgr_kruskalDFS`</cite> 的迁移</a><a class="headerlink" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" title="Link to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.7/en/migration.html">v3.7.0</a>
-<a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a>, <a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a> and
-<a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a> result columns are being standardized.</p>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a><a class="headerlink" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" title="Link to this heading">¶</a></h2>
+<p>从 <a class="reference external" href="https://docs.pgrouting.org/3.7/en/migration.html">v3.7.0</a> <a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a>, <a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a> and <a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a> 结果列正在标准化。</p>
 <dl class="field-list simple">
 <dt class="field-odd">从<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -1165,19 +1147,19 @@ FROM pgr_drivingDistance(
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code></p>
 <ul>
-<li><p>单顶点</p></li>
+<li><p>单个顶点</p></li>
 <li><p>多个顶点</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></p>
 <ul>
-<li><p>单顶点</p></li>
+<li><p>单个顶点</p></li>
 <li><p>多个顶点</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code></p>
 <ul>
-<li><p>单顶点</p></li>
+<li><p>单个顶点</p></li>
 <li><p>多个顶点</p></li>
 </ul>
 </li>
@@ -1188,7 +1170,7 @@ FROM pgr_drivingDistance(
 </dl>
 <p>输出列为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul class="simple">
-<li><p>单顶点和多顶点</p>
+<li><p>单个顶点和多个顶点</p>
 <ul>
 <li><p>没有 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 结果列。</p></li>
 </ul>
@@ -1203,7 +1185,7 @@ FROM pgr_drivingDistance(
 <li><p>如果需要，可过滤掉添加的列</p></li>
 </ul>
 <section id="kruskal-single-vertex">
-<h3>Kruskal 单顶点<a class="headerlink" href="#kruskal-single-vertex" title="Link to this heading">¶</a></h3>
+<h3>Kruskal 单个顶点<a class="headerlink" href="#kruskal-single-vertex" title="Link to this heading">¶</a></h3>
 <p>以 <code class="docutils literal notranslate"><span class="pre">pgr_KruskalDD</span></code> 为例。迁移与所有受影响的函数类似。</p>
 <p>与 <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#single-vertex">this</a> 示例比较。</p>
 <p>现在列 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 已经存在，并包含了 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的前置节点。</p>
@@ -1239,7 +1221,7 @@ FROM pgr_drivingDistance(
 </div>
 </section>
 <section id="kruskal-multiple-vertices">
-<h3>Kruskal 多顶点<a class="headerlink" href="#kruskal-multiple-vertices" title="Link to this heading">¶</a></h3>
+<h3>Kruskal 多个顶点<a class="headerlink" href="#kruskal-multiple-vertices" title="Link to this heading">¶</a></h3>
 <p>以 <code class="docutils literal notranslate"><span class="pre">pgr_KruskalDD</span></code> 为例。迁移与所有受影响的函数类似。</p>
 <p>与 <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#multiple-vertex">this</a> 示例比较。</p>
 <p>现在列 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 已经存在，并包含了 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的前置节点。</p>
@@ -1302,7 +1284,7 @@ FROM pgr_drivingDistance(
 </dl>
 <p>要迁移的签名：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (一对一)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (One to One)</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">迁移前<span class="colon">:</span></dt>
@@ -1313,7 +1295,7 @@ FROM pgr_drivingDistance(
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 列不存在。</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (一对一) 没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和``end_vid``。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (One to One) 没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和``end_vid`` 。</p></li>
 </ul>
 </li>
 </ul>
@@ -1327,8 +1309,8 @@ FROM pgr_drivingDistance(
 <li><p>注意附加栏的存在。</p></li>
 </ul>
 <section id="pgr-ksp-one-to-one">
-<h3><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (一对一)<a class="headerlink" href="#pgr-ksp-one-to-one" title="Link to this heading">¶</a></h3>
-<p>使用 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures">this</a> 示例。</p>
+<h3><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (One to One)<a class="headerlink" href="#pgr-ksp-one-to-one" title="Link to this heading">¶</a></h3>
+<p>使用 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures">这个</a> 示例。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 包含 <strong>起始 vid</strong> 参数值。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 包含 <strong>结束 vid</strong> 参数值。</p></li>
@@ -1377,7 +1359,7 @@ FROM pgr_drivingDistance(
 <section id="migration-of-pgr-maxcardinalitymatch">
 <h2><a class="toc-backref" href="#id17" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a><a class="headerlink" href="#migration-of-pgr-maxcardinalitymatch" title="Link to this heading">¶</a></h2>
 <p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> 仅适用于无向图，因此 <code class="docutils literal notranslate"><span class="pre">有向</span></code> 标志已被删除。</p>
-<p>从`v3.4.0 &lt;<a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">https://docs.pgrouting.org/3.4/en/migration.html</a>&gt;`__ 开始</p>
+<p>开始于 <a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">v3.4.0</a></p>
 <p>待迁移签名：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_maxCardinalityMatch</span><span class="p">(</span><span class="n">Edges</span> <span class="n">SQL</span><span class="p">,</span> <span class="p">[</span><span class="n">directed</span><span class="p">])</span>
  <span class="n">RETURNS</span> <span class="n">SETOF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
@@ -1390,7 +1372,7 @@ FROM pgr_drivingDistance(
 <li><p>适用于无向图。</p></li>
 <li><p>新签名</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text)</span></code> 仅仅返回``边`` 列.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text)</span></code> 仅仅返回 <code class="docutils literal notranslate"><span class="pre">边</span></code> 列.</p></li>
 <li><p>可选的 <code class="docutils literal notranslate"><span class="pre">directed</span></code> 标志被删除。</p></li>
 </ul>
 </li>
@@ -1419,7 +1401,7 @@ WARNING:  pgr_maxCardinalityMatch(text,boolean) deprecated signature on v3.4.0
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>所使用的列是 <code class="docutils literal notranslate"><span class="pre">going</span></code> 和 <code class="docutils literal notranslate"><span class="pre">coming</span></code>，用于表示边的存在。</p></li>
+<li><p>所使用的列是 <code class="docutils literal notranslate"><span class="pre">going</span></code> 和 <code class="docutils literal notranslate"><span class="pre">coming</span></code> ，用于表示边的存在。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">directed</span></code> 标志用于指示是 <strong>有向</strong> 图还是 <strong>无向</strong> 图。</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">directed</span></code> 标志被忽略。</p>
@@ -1437,7 +1419,7 @@ WARNING:  pgr_maxCardinalityMatch(text,boolean) deprecated signature on v3.4.0
 <ul class="simple">
 <li><p>使用 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 列来表示边的存在。</p></li>
 <li><p>不要使用 <code class="docutils literal notranslate"><span class="pre">directed</span></code> 标志。</p></li>
-<li><p>查询中仅返回 <code class="docutils literal notranslate"><span class="pre">边</span></code> 列。</p></li>
+<li><p>查询中仅返回 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 列。</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_maxCardinalityMatch(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$
@@ -1458,10 +1440,8 @@ WARNING:  pgr_maxCardinalityMatch(text,boolean) deprecated signature on v3.4.0
 </div>
 </section>
 <section id="migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs">
-<h2><a class="toc-backref" href="#id18" role="doc-backlink"><cite>pgr_primDD`</cite> / <cite>pgr_primBFS`</cite> / <cite>pgr_primDFS`</cite> 的迁移</a><a class="headerlink" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" title="Link to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.7/en/migration.html">v3.7.0</a>
-<a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a>, <a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a> and <a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a> result columns are
-being standardized.</p>
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><a class="headerlink" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" title="Link to this heading">¶</a></h2>
+<p>从 <a class="reference external" href="https://docs.pgrouting.org/3.7/en/migration.html">v3.7.0</a> <a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a>, <a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a> 和 <a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a> 结果列开始标准化。</p>
 <dl class="field-list simple">
 <dt class="field-odd">从<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -1473,19 +1453,19 @@ being standardized.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code></p>
 <ul>
-<li><p>单顶点</p></li>
+<li><p>单个顶点</p></li>
 <li><p>多个顶点</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></p>
 <ul>
-<li><p>单顶点</p></li>
+<li><p>单个顶点</p></li>
 <li><p>多个顶点</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code></p>
 <ul>
-<li><p>单顶点</p></li>
+<li><p>单个顶点</p></li>
 <li><p>多个顶点</p></li>
 </ul>
 </li>
@@ -1496,7 +1476,7 @@ being standardized.</p>
 </dl>
 <p>输出列为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul class="simple">
-<li><p>单顶点和多顶点</p>
+<li><p>单个顶点和多个顶点</p>
 <ul>
 <li><p>没有 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 结果列。</p></li>
 </ul>
@@ -1511,7 +1491,7 @@ being standardized.</p>
 <li><p>如果需要，可过滤掉添加的列</p></li>
 </ul>
 <section id="prim-single-vertex">
-<h3>Prim 单一节点<a class="headerlink" href="#prim-single-vertex" title="Link to this heading">¶</a></h3>
+<h3>Prim 单个节点<a class="headerlink" href="#prim-single-vertex" title="Link to this heading">¶</a></h3>
 <p>以 <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> 为例。迁移与所有受影响的函数类似。</p>
 <p>与 <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_primDD.html#single-vertex">this</a> 例子比较。</p>
 <p>现在列 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 已经存在，并包含了 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的前置节点。</p>
@@ -1646,14 +1626,14 @@ being standardized.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (单个顶点)</p>
 <ul>
 <li><p>输出列为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>，<code class="docutils literal notranslate"><span class="pre">pred</span></code> 和``depth`` 结果列。</p></li>
+<li><p>没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ， <code class="docutils literal notranslate"><span class="pre">pred</span></code> 和 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 结果列。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code> 参数以前被命名为可选，现在是强制性的未命名参数。</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>多个顶点</cite>)</p>
 <ul>
 <li><p>输出列为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>没有 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 和``pred`` 结果列。</p></li>
+<li><p>没有 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 和 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 结果列。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code> 参数以前被命名为可选，现在是强制性的未命名参数。</p></li>
 </ul>
 </li>
@@ -1771,20 +1751,20 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 <li><p>没有默认值。</p></li>
 <li><p>在有向图中：有效值为 [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p></li>
 <li><p>在无向图中：有效值为 [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p></li>
-<li><p>使用无效值会引发 <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>。</p></li>
+<li><p>使用无效值会引发 <code class="docutils literal notranslate"><span class="pre">ERROR</span></code> 。</p></li>
 </ul>
 </li>
 </ul>
 <section id="pgr-withpointsdd-single-vertex">
 <h3><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (单个顶点)<a class="headerlink" href="#pgr-withpointsdd-single-vertex" title="Link to this heading">¶</a></h3>
-<p>使用`这个 &lt;<a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-vertex">https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-vertex</a>&gt;`__ 示例。</p>
+<p>使用 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-vertex">这个</a> 示例。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 包含 <strong>起始 vid</strong> 参数值。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> 包含从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 顶点到 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的 <strong>深度</strong>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pred</span></code> 包含 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的前驱。</p></li>
 </ul>
-<p>要进行迁移，请在 <strong>distance</strong> 参数之后使用一个未命名的有效值作为 <strong>行驶方向</strong>：</p>
+<p>要进行迁移，请在 <strong>distance</strong> 参数之后使用一个未命名的有效值作为 <strong>行驶方向</strong> ：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
@@ -1801,7 +1781,7 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 </div>
 <p>要获取以前版本的结果：</p>
 <ul class="simple">
-<li><p>过滤掉额外的列，例如；</p></li>
+<li><p>过滤掉额外的列，例如;</p></li>
 <li><p>当设置 <code class="docutils literal notranslate"><span class="pre">details</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code> 以移除点时，请使用 <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">node</span> <span class="pre">&gt;=</span> <span class="pre">0</span> <span class="pre">OR</span> <span class="pre">cost</span> <span class="pre">=</span> <span class="pre">0</span></code></p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, node, edge, cost, agg_cost FROM pgr_withPointsDD(
@@ -1822,7 +1802,7 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 </section>
 <section id="pgr-withpointsdd-multiple-vertices">
 <h3><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (多个顶点)<a class="headerlink" href="#pgr-withpointsdd-multiple-vertices" title="Link to this heading">¶</a></h3>
-<p>使用`这个 &lt;<a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-vertices">https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-vertices</a>&gt;`__ 示例。</p>
+<p>使用 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-vertices">这个</a> 示例。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> 包含从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 顶点到 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的 <strong>深度</strong>。</p></li>
@@ -1892,10 +1872,10 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 </dd>
 </dl>
-<p>而且 <cite>driving side</cite> 参数从命名的可选参数变为未命名的必选参数 <strong>行驶方向</strong>，其有效性对于有向图和无向图有所不同。</p>
+<p>而且 <code class="docutils literal notranslate"><span class="pre">driving</span> <span class="pre">side</span></code> 参数从命名的可选参数变为未命名的必选参数 <strong>行驶方向</strong>，其有效性对于有向图和无向图有所不同。</p>
 <p>要迁移的签名：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>一对一</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to One</cite>)</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">迁移前<span class="colon">:</span></dt>
@@ -1920,12 +1900,12 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 <li><p>没有默认值。</p></li>
 <li><p>在有向图中：有效值为 [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p></li>
 <li><p>在无向图中：有效值为 [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p></li>
-<li><p>使用无效值会引发 <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>。</p></li>
+<li><p>使用无效值会引发 <code class="docutils literal notranslate"><span class="pre">ERROR</span></code> 。</p></li>
 </ul>
 </li>
 </ul>
 <section id="pgr-withpointsksp-one-to-one">
-<h3><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>一对一</cite>)<a class="headerlink" href="#pgr-withpointsksp-one-to-one" title="Link to this heading">¶</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to One</cite>)<a class="headerlink" href="#pgr-withpointsksp-one-to-one" title="Link to this heading">¶</a></h3>
 <p>使用 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP.html#signatures">这个</a> 示例。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 包含 <strong>起始 vid</strong> 参数值。</p></li>
@@ -1981,15 +1961,15 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 </section>
 </section>
 <section id="migration-of-pgr-trsp-vertices">
-<h2><a class="toc-backref" href="#id21" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> （顶点）</a><a class="headerlink" href="#migration-of-pgr-trsp-vertices" title="Link to this heading">¶</a></h2>
-<p>标识：</p>
+<h2><a class="toc-backref" href="#id21" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (顶点）</a><a class="headerlink" href="#migration-of-pgr-trsp-vertices" title="Link to this heading">¶</a></h2>
+<p>签名：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="n">Edges</span> <span class="n">SQL</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
         <span class="p">[,</span><span class="n">restrict_sql</span> <span class="n">text</span><span class="p">]);</span>
 <span class="n">RETURNS</span> <span class="n">SETOF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">id1</span><span class="p">,</span> <span class="n">id2</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Deprecated<span class="colon">:</span></dt>
+<dt class="field-odd">已停用<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.4">v3.4.0</a></p>
 </dd>
 <dt class="field-even">已删除的功能<span class="colon">:</span></dt>
@@ -1998,19 +1978,19 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 </dl>
 <nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-dijkstra-when-there-are-no-restrictions" id="id27">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> when there are no restrictions.</a></p></li>
-<li><p><a class="reference internal" href="#use-pgr-trsp-when-there-are-restrictions" id="id28">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> when there are restrictions.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-dijkstra-when-there-are-no-restrictions" id="id27">当没有限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> 。</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-trsp-when-there-are-restrictions" id="id28">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> 。</a></p></li>
 </ul>
 </nav>
 <p class="rubric">另请参阅</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra`</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-restrictions">Migration of restrictions</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-restrictions">迁移限制</a></p></li>
 </ul>
 <section id="use-pgr-dijkstra-when-there-are-no-restrictions">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> when there are no restrictions.</a><a class="headerlink" href="#use-pgr-dijkstra-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
-<p>请改用 <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra`</span></a>。</p>
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">当没有限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> 。</a><a class="headerlink" href="#use-pgr-dijkstra-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
+<p>使用 <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra`</span></a> 替代。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost
     FROM edges WHERE id != 16$$,
@@ -2025,7 +2005,7 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 
 </pre></div>
 </div>
-<p>To get the original column names:</p>
+<p>获取原始列名：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
 FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost
@@ -2047,8 +2027,8 @@ FROM pgr_dijkstra(
 </ul>
 </section>
 <section id="use-pgr-trsp-when-there-are-restrictions">
-<h3><a class="toc-backref" href="#id28" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> when there are restrictions.</a><a class="headerlink" href="#use-pgr-trsp-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
-<p>请改用 <a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> (一对一）。</p>
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> 。</a><a class="headerlink" href="#use-pgr-trsp-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
+<p>使用 <a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> (One to One) 替代。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost
     FROM edges WHERE id != 16$$,
@@ -2066,7 +2046,7 @@ FROM pgr_dijkstra(
 
 </pre></div>
 </div>
-<p>To get the original column names:</p>
+<p>获取原始列名：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
 FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost
@@ -2092,8 +2072,8 @@ FROM pgr_trsp(
 </section>
 </section>
 <section id="migration-of-pgr-trsp-edges">
-<h2><a class="toc-backref" href="#id22" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> （边）</a><a class="headerlink" href="#migration-of-pgr-trsp-edges" title="Link to this heading">¶</a></h2>
-<p>标识：</p>
+<h2><a class="toc-backref" href="#id22" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (边)</a><a class="headerlink" href="#migration-of-pgr-trsp-edges" title="Link to this heading">¶</a></h2>
+<p>签名：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">source_edge</span> <span class="n">integer</span><span class="p">,</span> <span class="n">source_pos</span> <span class="n">float8</span><span class="p">,</span>
                  <span class="n">target_edge</span> <span class="n">integer</span><span class="p">,</span> <span class="n">target_pos</span> <span class="n">float8</span><span class="p">,</span>
                  <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
@@ -2102,7 +2082,7 @@ FROM pgr_trsp(
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Deprecated<span class="colon">:</span></dt>
+<dt class="field-odd">已停用<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.4">v3.4.0</a></p>
 </dd>
 <dt class="field-even">已删除的功能<span class="colon">:</span></dt>
@@ -2111,19 +2091,19 @@ FROM pgr_trsp(
 </dl>
 <nav class="contents local" id="id2">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-withpoints-when-there-are-no-restrictions" id="id29">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> when there are no restrictions.</a></p></li>
-<li><p><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" id="id30">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> when there are restrictions.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-withpoints-when-there-are-no-restrictions" id="id29">无限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> 。</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" id="id30">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> 。</a></p></li>
 </ul>
 </nav>
 <p class="rubric">另请参阅</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-restrictions">Migration of restrictions</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-restrictions">迁移限制</a></p></li>
 </ul>
 <section id="use-pgr-withpoints-when-there-are-no-restrictions">
-<h3><a class="toc-backref" href="#id29" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> when there are no restrictions.</a><a class="headerlink" href="#use-pgr-withpoints-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
-<p>Use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> (One to One) instead.</p>
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">无限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> 。</a><a class="headerlink" href="#use-pgr-withpoints-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
+<p>使用 <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> (One to One) 替代。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,
@@ -2140,7 +2120,7 @@ FROM pgr_trsp(
 
 </pre></div>
 </div>
-<p>To get the original column names:</p>
+<p>获取原始列名：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
 FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2164,8 +2144,8 @@ FROM pgr_withPoints(
 </ul>
 </section>
 <section id="use-pgr-trsp-withpoints-when-there-are-restrictions">
-<h3><a class="toc-backref" href="#id30" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> when there are restrictions.</a><a class="headerlink" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
-<p>请使用 <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a>。</p>
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> 。</a><a class="headerlink" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
+<p>使用 <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a> 替代。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM new_restrictions$$,
@@ -2189,7 +2169,7 @@ FROM pgr_withPoints(
 
 </pre></div>
 </div>
-<p>To get the original column names:</p>
+<p>获取原始列名：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
 FROM pgr_trsp_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2222,7 +2202,7 @@ WHERE edge != -1;
 </section>
 <section id="migration-of-pgr-trspviavertices">
 <h2><a class="toc-backref" href="#id23" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviavertices" title="Link to this heading">¶</a></h2>
-<p>标识：</p>
+<p>签名：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trspViaVertices</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">vids</span> <span class="n">integer</span><span class="p">[],</span>
                   <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
                   <span class="p">[,</span> <span class="n">turn_restrict_sql</span> <span class="n">text</span><span class="p">]);</span>
@@ -2230,7 +2210,7 @@ WHERE edge != -1;
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Deprecated<span class="colon">:</span></dt>
+<dt class="field-odd">已停用<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.4">v3.4.0</a></p>
 </dd>
 <dt class="field-even">已删除的功能<span class="colon">:</span></dt>
@@ -2239,19 +2219,19 @@ WHERE edge != -1;
 </dl>
 <nav class="contents local" id="id3">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" id="id31">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> when there are no restrictions</a></p></li>
-<li><p><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions" id="id32">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> when there are restrictions</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" id="id31">无限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code></a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions" id="id32">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code></a></p></li>
 </ul>
 </nav>
 <p class="rubric">另请参阅</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia -拟议</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - 提议中</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-restrictions">Migration of restrictions</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-restrictions">迁移限制</a></p></li>
 </ul>
 <section id="use-pgr-dijkstravia-when-there-are-no-restrictions">
-<h3><a class="toc-backref" href="#id31" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> when there are no restrictions</a><a class="headerlink" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
-<p>请使用 <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia -拟议</span></a>。</p>
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">无限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code></a><a class="headerlink" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
+<p>使用 <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - 提议中</span></a> 替代。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   ARRAY[6, 3, 6]);
@@ -2267,7 +2247,7 @@ WHERE edge != -1;
 
 </pre></div>
 </div>
-<p>To get the original column names:</p>
+<p>获取原始列名：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT row_number() over(ORDER BY seq) AS seq,
   path_id::INTEGER AS id1, node::INTEGER AS id2,
   CASE WHEN edge &gt;= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
@@ -2293,8 +2273,8 @@ WHERE edge != -1;
 </ul>
 </section>
 <section id="use-pgr-trspvia-when-there-are-restrictions">
-<h3><a class="toc-backref" href="#id32" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> when there are restrictions</a><a class="headerlink" href="#use-pgr-trspvia-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
-<p>使用 <a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a>。</p>
+<h3><a class="toc-backref" href="#id32" role="doc-backlink">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code></a><a class="headerlink" href="#use-pgr-trspvia-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
+<p>使用 <a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a> 替代。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM new_restrictions$$,
@@ -2317,7 +2297,7 @@ WHERE edge != -1;
 
 </pre></div>
 </div>
-<p>To get the original column names:</p>
+<p>获取原始列名：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT row_number() over(ORDER BY seq) AS seq,
   path_id::INTEGER AS id1, node::INTEGER AS id2,
   CASE WHEN edge &gt;= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
@@ -2352,7 +2332,7 @@ WHERE edge != -1;
 </section>
 <section id="migration-of-pgr-trspviaedges">
 <h2><a class="toc-backref" href="#id24" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviaedges" title="Link to this heading">¶</a></h2>
-<p>标识：</p>
+<p>签名：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trspViaEdges</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">eids</span> <span class="n">integer</span><span class="p">[],</span> <span class="n">pcts</span> <span class="n">float8</span><span class="p">[],</span>
                   <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
                   <span class="p">[,</span> <span class="n">turn_restrict_sql</span> <span class="n">text</span><span class="p">]);</span>
@@ -2360,7 +2340,7 @@ WHERE edge != -1;
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Deprecated<span class="colon">:</span></dt>
+<dt class="field-odd">已停用<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.4">v3.4.0</a></p>
 </dd>
 <dt class="field-even">已删除的功能<span class="colon">:</span></dt>
@@ -2369,19 +2349,19 @@ WHERE edge != -1;
 </dl>
 <nav class="contents local" id="id4">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" id="id33">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> when there are no restrictions</a></p></li>
-<li><p><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" id="id34">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> when there are restrictions</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" id="id33">无限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" id="id34">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a></p></li>
 </ul>
 </nav>
 <p class="rubric">另请参阅</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-restrictions">Migration of restrictions</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-restrictions">迁移限制</a></p></li>
 </ul>
 <section id="use-pgr-withpointsvia-when-there-are-no-restrictions">
-<h3><a class="toc-backref" href="#id33" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> when there are no restrictions</a><a class="headerlink" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
-<p>请使用 <a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a>。</p>
+<h3><a class="toc-backref" href="#id33" role="doc-backlink">无限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a><a class="headerlink" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
+<p>使用 <a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a> 替代。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
@@ -2405,7 +2385,7 @@ WHERE edge != -1;
 
 </pre></div>
 </div>
-<p>To get the original column names:</p>
+<p>获取原始列名：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT row_number() over(ORDER BY seq) AS seq,
 path_id::INTEGER AS id1, node::INTEGER AS id2,
 CASE WHEN edge &gt;= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
@@ -2439,8 +2419,8 @@ FROM pgr_withPointsVia(
 </ul>
 </section>
 <section id="use-pgr-trspvia-withpoints-when-there-are-restrictions">
-<h3><a class="toc-backref" href="#id34" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> when there are restrictions</a><a class="headerlink" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
-<p>使用 <a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a> 代替。</p>
+<h3><a class="toc-backref" href="#id34" role="doc-backlink">当存在限制条件时，使用 <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a><a class="headerlink" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
+<p>使用 <a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a> 替代。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM new_restrictions$$,
@@ -2466,7 +2446,7 @@ FROM pgr_withPointsVia(
 
 </pre></div>
 </div>
-<p>To get the original column names:</p>
+<p>获取原始列名：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT row_number() over(ORDER BY seq) AS seq,
 path_id::INTEGER AS id1, node::INTEGER AS id2,
 CASE WHEN edge &gt;= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
@@ -2504,7 +2484,7 @@ FROM pgr_trspVia_withPoints(
 </section>
 <section id="migration-of-restrictions">
 <h2><a class="toc-backref" href="#id25" role="doc-backlink">限制迁移</a><a class="headerlink" href="#migration-of-restrictions" title="Link to this heading">¶</a></h2>
-<p>从`v3.4.0 &lt;<a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">https://docs.pgrouting.org/3.4/en/migration.html</a>&gt;`__ 开始</p>
+<p>开始于 <a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">v3.4.0</a></p>
 <p>限制的结构发生了变化：</p>
 <section id="old-restrictions-structure">
 <h3>旧的限制结构<a class="headerlink" href="#old-restrictions-structure" title="Link to this heading">¶</a></h3>
@@ -2521,12 +2501,12 @@ FROM pgr_trspVia_withPoints(
 <li><p><code class="docutils literal notranslate"><span class="pre">target_id</span></code></p>
 <ul>
 <li><p>是禁止路径的最后一条边。</p></li>
-<li><p>类型为 <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>。</p></li>
+<li><p>类型为 <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> 。</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">to_cost</span></code></p>
 <ul>
-<li><p>类型为 <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code>。</p></li>
+<li><p>类型为 <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code> 。</p></li>
 </ul>
 </li>
 </ul>
@@ -2574,7 +2554,7 @@ FROM pgr_trspVia_withPoints(
 </li>
 <li><p><span class="math notranslate nohighlight">\(9\)</span></p>
 <ul>
-<li><p>位于 <code class="docutils literal notranslate"><span class="pre">target_id</span></code> 列上</p></li>
+<li><p>位于列 <code class="docutils literal notranslate"><span class="pre">target_id</span></code></p></li>
 <li><p>类型为 <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></li>
 </ul>
 </li>
@@ -2587,7 +2567,7 @@ FROM pgr_trspVia_withPoints(
 <li><p>列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 被忽略</p></li>
 <li><p>列 <code class="docutils literal notranslate"><span class="pre">path</span></code></p>
 <ul>
-<li><p>类型为 <code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code>。</p></li>
+<li><p>类型为 <code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code> 。</p></li>
 <li><p>包含限制所涉及的所有边。</p></li>
 <li><p>该数组具有限制的有序边。</p></li>
 </ul>
@@ -2631,7 +2611,7 @@ FROM pgr_trspVia_withPoints(
 
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">rid</span> <span class="pre">=</span> <span class="pre">2</span></code> 的限制表示的是路径 <span class="math notranslate nohighlight">\(3 \rightarrow5 \rightarrow9\)</span>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">rid</span> <span class="pre">=</span> <span class="pre">2</span></code> 的限制表示的是路径 <span class="math notranslate nohighlight">\(3 \rightarrow5 \rightarrow9\)</span> 。</p>
 <ul class="simple">
 <li><p>通过检查，路径是清晰的。</p></li>
 </ul>
@@ -2643,7 +2623,7 @@ FROM pgr_trspVia_withPoints(
 <ul class="simple">
 <li><p>使用新的限制结构创建一个新表。</p>
 <ul>
-<li><p>在此迁移指南中使用了 <code class="docutils literal notranslate"><span class="pre">new_restrictions</span></code>。</p></li>
+<li><p>在此迁移指南中使用了 <code class="docutils literal notranslate"><span class="pre">new_restrictions</span></code> 。</p></li>
 </ul>
 </li>
 <li><p>为了进行这次迁移，pgRouting 提供了一个用于反转数组的辅助函数 <code class="docutils literal notranslate"><span class="pre">_</span> <span class="pre">pgr_array_reverse</span></code> ，这在迁移过程中是必需的。</p>
@@ -2709,7 +2689,7 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

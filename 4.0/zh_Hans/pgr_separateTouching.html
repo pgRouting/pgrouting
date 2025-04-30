@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -107,8 +107,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#examples">示例</a><ul>
-<li><a class="reference internal" href="#get-the-code-for-further-refinement">Get the code for further refinement.</a></li>
-<li><a class="reference internal" href="#fixing-a-gap">Fixing a gap</a></li>
+<li><a class="reference internal" href="#get-the-code-for-further-refinement">获取进一步完善的代码。</a></li>
+<li><a class="reference internal" href="#fixing-a-gap">弥补差距</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
@@ -168,8 +168,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#examples">示例</a><ul>
-<li><a class="reference internal" href="#get-the-code-for-further-refinement">Get the code for further refinement.</a></li>
-<li><a class="reference internal" href="#fixing-a-gap">Fixing a gap</a></li>
+<li><a class="reference internal" href="#get-the-code-for-further-refinement">获取进一步完善的代码。</a></li>
+<li><a class="reference internal" href="#fixing-a-gap">弥补差距</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
@@ -202,19 +202,16 @@
 </div>
 <section id="pgr-separatetouching">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_separateTouching</span></code><a class="headerlink" href="#pgr-separatetouching" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_separateTouching</span></code> - From touching geometries generates geometries that
-are properly connected at endpoints</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_separateTouching</span></code> - 将相互接触的几何图形转换为端点正确连接的几何图形</p>
 <p class="rubric">可用性</p>
 <p class="rubric">Version 3.8.0</p>
 <ul class="simple">
 <li><p>函数正式发布。</p></li>
-<li><p>Proposed function.</p></li>
+<li><p>提议的函数。</p></li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>This is an auxiliary function for processing geometries that touch but don't
-share exact endpoints, splitting them at their intersection points to improve
-network connectivity.</p>
+<p>此辅助函数用于处理几何图形相互接触但未共享端点的情况，通过在相交点处分割图形来增强网络连通性。</p>
 </section>
 <section id="signature">
 <h2>标识<a class="headerlink" href="#signature" title="Link to this heading">¶</a></h2>
@@ -224,12 +221,12 @@ network connectivity.</p>
 <div class="line">pgr_separateTouching(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<code class="docutils literal notranslate"><span class="pre">tolerance</span></code>, <code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS <code class="docutils literal notranslate"><span class="pre">(seq,id,sub_id,geom)</span></code></div>
+<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(seq,id,sub_id,geom)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Get the segments of the crossing geometries</p>
+<dd class="field-odd"><p>获取交叉点几何形状的线段</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
@@ -274,7 +271,7 @@ network connectivity.</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tolerance</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>0.01</p></td>
-<td><p>Used in ST_Snap before ST_Split</p></td>
+<td><p>在 ST_Split 前使用 ST_Snap</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dryrun</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
@@ -315,15 +312,13 @@ network connectivity.</p>
 <h2>示例<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#get-the-code-for-further-refinement" id="id1">Get the code for further refinement.</a></p></li>
-<li><p><a class="reference internal" href="#fixing-a-gap" id="id2">Fixing a gap</a></p></li>
+<li><p><a class="reference internal" href="#get-the-code-for-further-refinement" id="id1">获取进一步完善的代码。</a></p></li>
+<li><p><a class="reference internal" href="#fixing-a-gap" id="id2">弥补差距</a></p></li>
 </ul>
 </nav>
 <section id="get-the-code-for-further-refinement">
-<h3><a class="toc-backref" href="#id1" role="doc-backlink">Get the code for further refinement.</a><a class="headerlink" href="#get-the-code-for-further-refinement" title="Link to this heading">¶</a></h3>
-<p>When there are special details that need to be taken care of because of the
-final application or the quality of the data, the code can be obtained On a
-PostgreSQL <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> using the <code class="docutils literal notranslate"><span class="pre">dryrun</span></code> flag.</p>
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">获取进一步完善的代码。</a><a class="headerlink" href="#get-the-code-for-further-refinement" title="Link to this heading">¶</a></h3>
+<p>当由于最终应用或数据质量需要特别处理时，可以通过在 PostgreSQL 中使用 <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> 和 <code class="docutils literal notranslate"><span class="pre">dryrun</span></code> 标志来获取代码。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_separateTouching</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">,</span> <span class="n">dryrun</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>
@@ -371,11 +366,10 @@ PostgreSQL <code class="docutils literal notranslate"><span class="pre">NOTICE</
 </div>
 </section>
 <section id="fixing-a-gap">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Fixing a gap</a><a class="headerlink" href="#fixing-a-gap" title="Link to this heading">¶</a></h3>
-<p>In this example the original edge table will be used to store the additional
-geometries.</p>
-<p class="rubric">An example use without results</p>
-<p>Routing from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(2\)</span> gives no solution.</p>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">弥补差距</a><a class="headerlink" href="#fixing-a-gap" title="Link to this heading">¶</a></h3>
+<p>在此示例中，原始边线表将用于存储新增的几何图形。</p>
+<p class="rubric">使用示例（无结果输出）</p>
+<p>从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(2\)</span> 的路由无解。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span> <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -384,7 +378,7 @@ geometries.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Analyze the network for gaps.</p>
+<p class="rubric">分析路网的断点情况。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">deadends</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="n">AS</span> <span class="n">edge</span><span class="p">,</span> <span class="n">geom</span> <span class="n">AS</span> <span class="n">vgeom</span>
@@ -401,25 +395,23 @@ geometries.</p>
 
 </pre></div>
 </div>
-<p>The analysis tell us that the network has a gap.</p>
-<p class="rubric">Prepare tables</p>
-<p>Additional columns to control the origin of the segments.</p>
+<p>分析表明该路网存在断点。</p>
+<p class="rubric">准备数据表</p>
+<p>用于控制路段来源的附加列。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">old_id</span> <span class="n">BIGINT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
-<p class="rubric">Adding new segments.</p>
-<p>Calling <a class="reference internal" href="#"><span class="doc">pgr_separateTouching</span></a> and adding the new segments to the edges table.</p>
+<p class="rubric">添加新线段。</p>
+<p>调用 <a class="reference internal" href="#"><span class="doc">pgr_separateTouching</span></a> 并将新的线段添加到边缘表中。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span>
 <span class="n">FROM</span> <span class="n">pgr_separateTouching</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p class="rubric">Update other values</p>
-<p>In this example only <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> are updated, where they are
-based on the length of the geometry and the directionality is kept using the
-<code class="docutils literal notranslate"><span class="pre">sign</span></code> function.</p>
+<p class="rubric">更新其他数值</p>
+<p>在此示例中，仅更新了 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 列，其值基于几何长度并通过 <code class="docutils literal notranslate"><span class="pre">sign</span></code> 函数保持方向性。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">costs</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
@@ -434,8 +426,8 @@ based on the length of the geometry and the directionality is kept using the
 <span class="n">UPDATE</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p class="rubric">Update the topology</p>
-<p>Insert the new vertices if any.</p>
+<p class="rubric">更新拓扑结构</p>
+<p>如有新顶点，则插入。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">new_vertex</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="n">ev</span><span class="o">.*</span>
   <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges WHERE old_id IS NOT NULL&#39;</span><span class="p">)</span> <span class="n">ev</span>
@@ -448,7 +440,7 @@ based on the length of the geometry and the directionality is kept using the
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<p>Update source and target information on the edges table.</p>
+<p>更新边缘表中的源信息和目标信息。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
 <span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
@@ -463,8 +455,8 @@ based on the length of the geometry and the directionality is kept using the
 <span class="n">UPDATE</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p class="rubric">The example has results</p>
-<p>Routing from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(2\)</span> gives a solution.</p>
+<p class="rubric">示例结果</p>
+<p>从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(2\)</span> 的路径给出了解决方案。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -505,7 +497,7 @@ based on the length of the geometry and the directionality is kept using the
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

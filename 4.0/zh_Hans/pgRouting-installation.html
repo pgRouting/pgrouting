@@ -69,17 +69,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -98,7 +98,7 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">安装</a><ul>
 <li><a class="reference internal" href="#short-version">简洁版本</a></li>
-<li><a class="reference internal" href="#get-the-sources">获取来源</a></li>
+<li><a class="reference internal" href="#get-the-sources">获取源码</a></li>
 <li><a class="reference internal" href="#enabling-and-upgrading-in-the-database">在数据库中启用和升级</a></li>
 <li><a class="reference internal" href="#dependencies">依赖</a></li>
 <li><a class="reference internal" href="#configuring">配置</a><ul>
@@ -156,7 +156,7 @@
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
 <li><a class="reference internal" href="#">安装</a><ul>
 <li><a class="reference internal" href="#short-version">简洁版本</a></li>
-<li><a class="reference internal" href="#get-the-sources">获取来源</a></li>
+<li><a class="reference internal" href="#get-the-sources">获取源码</a></li>
 <li><a class="reference internal" href="#enabling-and-upgrading-in-the-database">在数据库中启用和升级</a></li>
 <li><a class="reference internal" href="#dependencies">依赖</a></li>
 <li><a class="reference internal" href="#configuring">配置</a><ul>
@@ -198,7 +198,7 @@
 <p class="rubric">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#install-short"><span class="std std-ref">简洁版本</span></a></p></li>
-<li><p><a class="reference internal" href="#install-get-sources"><span class="std std-ref">获取来源</span></a></p></li>
+<li><p><a class="reference internal" href="#install-get-sources"><span class="std std-ref">获取源码</span></a></p></li>
 <li><p><a class="reference internal" href="#install-enable-db"><span class="std std-ref">在数据库中启用和升级</span></a></p></li>
 <li><p><a class="reference internal" href="#install-dependencies"><span class="std std-ref">依赖</span></a></p></li>
 <li><p><a class="reference internal" href="#install-configuring"><span class="std std-ref">配置</span></a></p></li>
@@ -230,7 +230,7 @@
 </div>
 </section>
 <section id="get-the-sources">
-<span id="install-get-sources"></span><h2>获取来源<a class="headerlink" href="#get-the-sources" title="Link to this heading">¶</a></h2>
+<span id="install-get-sources"></span><h2>获取源码<a class="headerlink" href="#get-the-sources" title="Link to this heading">¶</a></h2>
 <p>pgRouting 最新版本可以在 <a class="reference external" href="https://github.com/pgRouting/pgrouting/releases/latest">https://github.com/pgRouting/pgrouting/releases/latest</a> 中找到</p>
 <p>要下载此版本：</p>
 <pre class="literal-block">wget -O pgrouting-4.0.0.tar.gz    <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v4.0.0.tar.gz">https://github.com/pgRouting/pgrouting/archive/v4.0.0.tar.gz</a></pre>
@@ -479,7 +479,7 @@ $ make install
 </section>
 <section id="testing">
 <span id="install-testing"></span><h2>测试<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h2>
-<p>目前没有 <code class="code docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code>，测试如下</p>
+<p>目前没有 <code class="code docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> ，测试如下</p>
 <p>以下指令从 <em>path/to/pgrouting/</em> 开始</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tools</span><span class="o">/</span><span class="n">testers</span><span class="o">/</span><span class="n">doc_queries_generator</span><span class="o">.</span><span class="n">pl</span>
 <span class="n">createdb</span> <span class="o">-</span><span class="n">U</span> <span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span> <span class="n">___pgr___test___</span>
@@ -511,7 +511,7 @@ $ make install
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

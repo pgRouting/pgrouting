@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_chinesePostmanCost - 实验 &#8212; pgRouting Manual (4.0-dev)</title>
+    <title>pgr_chinesePostmanCost - 实验性 &#8212; pgRouting Manual (4.0-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="转换 - 函数族" href="transformation-family.html" />
-    <link rel="prev" title="pgr_chinesePostman - 实验" href="pgr_chinesePostman.html" />
+    <link rel="prev" title="pgr_chinesePostman - 实验性" href="pgr_chinesePostman.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -97,7 +97,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_chinesePostmanCost</span></code> - 实验</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_chinesePostmanCost</span></code> - 实验性</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a></li>
@@ -118,7 +118,7 @@
               
                 
   <li>
-    <a href="pgr_chinesePostman.html" title="Previous Chapter: pgr_chinesePostman - 实验"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_chinesePo...</span>
+    <a href="pgr_chinesePostman.html" title="Previous Chapter: pgr_chinesePostman - 实验性"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_chinesePo...</span>
     </a>
   </li>
   <li>
@@ -153,7 +153,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_chinesePostmanCost</span></code> - 实验</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_chinesePostmanCost</span></code> - 实验性</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a></li>
@@ -168,7 +168,7 @@
 </ul>
 
   <li>
-    <a href="pgr_chinesePostman.html" title="Previous Chapter: pgr_chinesePostman - 实验"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_chinesePo...</span>
+    <a href="pgr_chinesePostman.html" title="Previous Chapter: pgr_chinesePostman - 实验性"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_chinesePo...</span>
     </a>
   </li>
   <li>
@@ -191,10 +191,10 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-chinesepostmancost-experimental">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_chinesePostmanCost</span></code> - 实验<a class="headerlink" href="#pgr-chinesepostmancost-experimental" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_chinesePostmanCost</span></code> - 实验性<a class="headerlink" href="#pgr-chinesepostmancost-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_chinesePostmanCost</span></code> — 计算一个包含有向图中的每条边、以同一顶点为起点和终点的最短成本的回路路径。</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="eb426ff7-286e-45b2-b937-c128e60950b3" name="eb426ff7-286e-45b2-b937-c128e60950b3" type="checkbox"><label class="sphinx_collapse__label" for="eb426ff7-286e-45b2-b937-c128e60950b3"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="979167b9-a4b2-4d02-bf9c-d7a88154737b" name="979167b9-a4b2-4d02-bf9c-d7a88154737b" type="checkbox"><label class="sphinx_collapse__label" for="979167b9-a4b2-4d02-bf9c-d7a88154737b"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -204,7 +204,7 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>实验功能</p>
+<p>实验性函数</p>
 <ul class="simple">
 <li><p>它们不是当前版本的正式版本。</p></li>
 <li><p>它们可能不会正式成为下一个版本的一部分：</p>
@@ -219,7 +219,7 @@
 <li><p>文档（如果有）可能需要重写。</p></li>
 <li><p>可能需要自动生成文档示例。</p></li>
 <li><p>需要从社区获取大量反馈意见。</p></li>
-<li><p>可能取决于 pgRouting 的拟议功能</p></li>
+<li><p>可能取决于 pgRouting 的提议功能</p></li>
 <li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
 </ul>
 </li>
@@ -231,7 +231,7 @@
 <ul class="simple">
 <li><p>版本3.0.0</p>
 <ul>
-<li><p>新实验功能。</p></li>
+<li><p>新实验性功能。</p></li>
 </ul>
 </li>
 </ul>
@@ -246,7 +246,7 @@
 <ul class="simple">
 <li><p>当图是不连通的时候返回的数值</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -329,14 +329,14 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -373,7 +373,7 @@
 <section id="see-also">
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="chinesePostmanProblem-family.html"><span class="doc">中国邮递员问题 - 函数族（实验）</span></a></p></li>
+<li><p><a class="reference internal" href="chinesePostmanProblem-family.html"><span class="doc">中国邮递员问题 - 函数族（实验性）</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
@@ -397,7 +397,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

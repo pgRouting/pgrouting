@@ -21,7 +21,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="实验函数" href="experimental.html" />
+    <link rel="next" title="实验性函数" href="experimental.html" />
     <link rel="prev" title="pgr_withPointsDD" href="pgr_withPointsDD.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -143,7 +143,7 @@
     </a>
   </li>
   <li>
-    <a href="experimental.html" title="Next Chapter: 实验函数"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">实验函数 &raquo;</span>
+    <a href="experimental.html" title="Next Chapter: 实验性函数"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">实验性函数 &raquo;</span>
     </a>
   </li>
               
@@ -214,7 +214,7 @@
     </a>
   </li>
   <li>
-    <a href="experimental.html" title="Next Chapter: 实验函数"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">实验函数 &raquo;</span>
+    <a href="experimental.html" title="Next Chapter: 实验性函数"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">实验性函数 &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -250,7 +250,7 @@
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>给定一个图、图上边缘的一组点以及一个顶点列表，此函数相当于找到 <span class="math notranslate nohighlight">\(vertex_i\)</span> 和 <span class="math notranslate nohighlight">\(vertex_{i+1}\)</span> 之间的最短路径（其中 <span class="math notranslate nohighlight">\(vertex\)</span> 可以是一个顶点或图上的一个点），对于所有的 <span class="math notranslate nohighlight">\(i\)</span>，满足 <span class="math notranslate nohighlight">\(i &lt; size\_of(via\;vertices)\)</span>。</p>
+<p>给定一个图、图上边缘的一组点以及一个顶点列表，此函数相当于找到 <span class="math notranslate nohighlight">\(vertex_i\)</span> 和 <span class="math notranslate nohighlight">\(vertex_{i+1}\)</span> 之间的最短路径（其中 <span class="math notranslate nohighlight">\(vertex\)</span> 可以是一个顶点或图上的一个点），对于所有的 <span class="math notranslate nohighlight">\(i\)</span> ，满足 <span class="math notranslate nohighlight">\(i &lt; size\_of(via\;vertices)\)</span> 。</p>
 <dl class="field-list simple">
 <dt class="field-odd">路线<span class="colon">:</span></dt>
 <dd class="field-odd"><p>是一个路径序列。</p>
@@ -267,9 +267,9 @@
 <li><p>顶点标识符将保持正值。</p></li>
 </ul>
 </li>
-<li><p>执行 <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia -拟议</span></a>。</p></li>
+<li><p>执行 <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - 提议中</span></a>。</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -279,7 +279,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_withPointsVia(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>via vertices</strong>, [<strong>options</strong>])</div>
-<div class="line"><strong>选项：</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">strict,</span> <span class="pre">U_turn_on_edge]</span></code></div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">strict,</span> <span class="pre">U_turn_on_edge]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost,</span> <span class="pre">route_agg_cost)</span></code> 的集合</div>
@@ -376,7 +376,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
-<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite>。</p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -413,7 +413,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>为 <cite>true</cite> 时，从访问过的顶点出发时不会试图避开</p></li>
+<li><p>为 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，从访问过的顶点出发时不会试图避开</p></li>
 </ul>
 </td>
 </tr>
@@ -498,14 +498,14 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -608,7 +608,7 @@
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong>。</p></td>
+<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong> 。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -641,13 +641,13 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">route_agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>从 <cite>seq = 1</cite> 的 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到当前 <cite>seq</cite> 的 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 的总费用。</p></td>
+<td><p>从 <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> 的 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到当前 <code class="docutils literal notranslate"><span class="pre">seq</span></code> 的 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 的总费用。</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>当 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>、 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">node</span></code> 列具有负值时，该标识符用于Point。</p>
+<p>当 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 、 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">node</span></code> 列具有负值时，该标识符用于Point。</p>
 </div>
 </section>
 <section id="additional-examples">
@@ -858,7 +858,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

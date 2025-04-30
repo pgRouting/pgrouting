@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -269,7 +269,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
-<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite>。</p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -309,14 +309,14 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -368,10 +368,10 @@
 <h2>表现<a class="headerlink" href="#performance" title="Link to this heading">¶</a></h2>
 <dl class="simple">
 <dt>以下测试：</dt><dd><ul class="simple">
-<li><p>非服务式计算机</p></li>
-<li><p>配备 AMD 64 CPU</p></li>
+<li><p>非服务器</p></li>
+<li><p>AMD 64 CPU</p></li>
 <li><p>4G内存</p></li>
-<li><p>可靠</p></li>
+<li><p>Ubuntu Trusty</p></li>
 <li><p>PostgreSQL version 9.3</p></li>
 </ul>
 </dd>
@@ -393,7 +393,7 @@ wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="refe
 <h3>结果<a class="headerlink" href="#results" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">测试<span class="colon">:</span></dt>
-<dd class="field-odd"><p>一</p>
+<dd class="field-odd"><p>1</p>
 </dd>
 </dl>
 <p>该测试没有使用边界框，通过的图形密度极低。 对于每个 &lt;SIZE&gt; 执行 30 次测试以获得平均值， 测试的查询是：</p>
@@ -582,7 +582,7 @@ wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="refe
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">测试<span class="colon">:</span></dt>
-<dd class="field-odd"><p>二</p>
+<dd class="field-odd"><p>2</p>
 </dd>
 </dl>
 <p>该测试带有边界框。通过的图形的密度高于测试一的密度。 对于每个 &lt;SIZE&gt; 执行 30 次测试以获得平均值，测试的边缘查询为：</p>
@@ -760,7 +760,7 @@ wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="refe
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a></p></li>
-<li><p>Boost <a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">floyd-Warshall</a></p></li>
+<li><p>Boost <a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">弗洛伊德算法</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
@@ -784,7 +784,7 @@ wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="refe
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

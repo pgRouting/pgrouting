@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -208,7 +208,7 @@
 <li><p>结果列发生变化：</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">n_seq</span></code> 被删除</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">seq</span></code> 将类型更改为``BIGINT``</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seq</span></code> 将类型更改为 <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></li>
 </ul>
 </li>
 <li><p>函数正式发布。</p></li>
@@ -216,7 +216,7 @@
 </li>
 <li><p>版本2.5.0</p>
 <ul>
-<li><p>新实验功能。</p></li>
+<li><p>新实验性功能。</p></li>
 </ul>
 </li>
 </ul>
@@ -235,7 +235,7 @@
 </li>
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -339,14 +339,14 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -424,7 +424,7 @@
 
 </pre></div>
 </div>
-<p>There are three basic ways to connect components:</p>
+<p>连接组件有三种基本方法：</p>
 <ul class="simple">
 <li><p>从顶点到边的起点</p></li>
 <li><p>从顶点到边的终点</p></li>
@@ -434,9 +434,8 @@
 </ul>
 </li>
 </ul>
-<p>In this example <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> and <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> will
-be used.</p>
-<p class="rubric">Get the connectivity</p>
+<p>在这个例子中，将使用 <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> 和 <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> 。</p>
+<p class="rubric">获取连接性</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
 <span class="p">);</span>
@@ -463,18 +462,16 @@ be used.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Prepare tables</p>
-<p>In this example: the edges table will need an additional column and the vertex
-table will be rebuilt completely.</p>
+<p class="rubric">准备数据表</p>
+<p>在本例中：边表需要增加一列，顶点表将完全重建。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">old_id</span> <span class="n">BIGINT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">vertices</span><span class="p">;</span>
 <span class="n">DROP</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
-<p class="rubric">Insert new edges</p>
-<p>Using <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> and <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> insert the
-results into the edges table.</p>
+<p class="rubric">插入新边线</p>
+<p>使用 <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> 和 <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> 将结果插入边缘表。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM edges&#39;</span><span class="p">)</span>
 <span class="n">UNION</span>
@@ -483,13 +480,13 @@ results into the edges table.</p>
 </pre></div>
 </div>
 <p class="rubric">创建顶点表</p>
-<p>Using <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> create the table.</p>
+<p>使用 <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> 创建该表。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">AS</span>
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">18</span>
 </pre></div>
 </div>
-<p class="rubric">Update the topology</p>
+<p class="rubric">更新拓扑结构</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
 <span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
@@ -504,10 +501,8 @@ results into the edges table.</p>
 <span class="n">UPDATE</span> <span class="mi">24</span>
 </pre></div>
 </div>
-<p class="rubric">Update other values</p>
-<p>In this example only <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> are updated, where they are
-based on the length of the geometry and the directionality is kept using the
-<code class="docutils literal notranslate"><span class="pre">sign</span></code> function.</p>
+<p class="rubric">更新其他数值</p>
+<p>在此示例中，仅更新了 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 列，其值基于几何长度并通过 <code class="docutils literal notranslate"><span class="pre">sign</span></code> 函数保持方向性。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">e</span>
   <span class="n">SET</span> <span class="n">cost</span>          <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span><span class="o">*</span><span class="n">sign</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">cost</span><span class="p">),</span>
       <span class="n">reverse_cost</span>  <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span><span class="o">*</span><span class="n">sign</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">reverse_cost</span><span class="p">)</span>
@@ -550,7 +545,7 @@ based on the length of the geometry and the directionality is kept using the
 <ul class="simple">
 <li><p><a class="reference internal" href="components-family.html"><span class="doc">分量 - 函数族</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/connected_components.html">Boost: Connected components</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/connected_components.html">Boost: 已连接的组件</a></p></li>
 <li><p>维基百科: <a class="reference external" href="https://en.wikipedia.org/wiki/Connected_component_(graph_theory)">连通分量</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
@@ -574,7 +569,7 @@ based on the length of the geometry and the directionality is kept using the
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

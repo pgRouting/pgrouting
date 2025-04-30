@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>驾驶距离 &#8212; pgRouting Manual (4.0-dev)</title>
+    <title>pgr_drivingDistance &#8212; pgRouting Manual (4.0-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -97,11 +97,11 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">驾驶距离</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
-<li><a class="reference internal" href="#single-vertex">单顶点</a></li>
-<li><a class="reference internal" href="#multiple-vertices">多顶点</a></li>
+<li><a class="reference internal" href="#single-vertex">单个顶点</a></li>
+<li><a class="reference internal" href="#multiple-vertices">多个顶点</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
@@ -162,11 +162,11 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">驾驶距离</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
-<li><a class="reference internal" href="#single-vertex">单顶点</a></li>
-<li><a class="reference internal" href="#multiple-vertices">多顶点</a></li>
+<li><a class="reference internal" href="#single-vertex">单个顶点</a></li>
+<li><a class="reference internal" href="#multiple-vertices">多个顶点</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
@@ -209,12 +209,12 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-drivingdistance">
-<h1>驾驶距离<a class="headerlink" href="#pgr-drivingdistance" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code><a class="headerlink" href="#pgr-drivingdistance" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> - 返回起始节点的行驶距离。</p>
 <p class="rubric">可用性</p>
 <p class="rubric">版本3.6.0</p>
 <ul class="simple">
-<li><p>Standardizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
 <li><p>pgr_drivingDistance(Single vertex)</p>
 <ul>
@@ -223,7 +223,7 @@
 </li>
 <li><p>pgr_drivingDistance(Multiple vertices)</p>
 <ul>
-<li><p>结果列名称更改： <code class="docutils literal notranslate"><span class="pre">from_v``改为</span> <span class="pre">``start_vid</span></code>。</p></li>
+<li><p>结果列名称更改： <code class="docutils literal notranslate"><span class="pre">from_v</span></code> 改为 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 。</p></li>
 <li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 和``pred`` 结果列。</p></li>
 </ul>
 </li>
@@ -234,25 +234,23 @@
 <ul class="simple">
 <li><p>签名变更：</p>
 <ul>
-<li><p>pgr_drivingDistance （单顶点）</p></li>
+<li><p>pgr_drivingDistance(单个顶点)</p></li>
 </ul>
 </li>
 <li><p>新签名：</p>
 <ul>
-<li><p>pgr_drivingDistance （多顶点）</p></li>
+<li><p>pgr_drivingDistance(多个顶点)</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">版本2.0.0</p>
 <ul class="simple">
-<li><p>官方 函数</p></li>
+<li><p>官方函数。</p></li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>Using the Dijkstra algorithm, extracts all the nodes that have costs less than
-or equal to the value <code class="docutils literal notranslate"><span class="pre">distance</span></code>.
-The edges extracted will conform to the corresponding spanning tree.</p>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p>使用 Dijkstra 算法，提取成本小于或等于 <code class="docutils literal notranslate"><span class="pre">distance</span></code> 值的所有节点。提取的边将符合相应的生成树。</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -264,18 +262,18 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 <div class="line"><strong>options:</strong> [directed, equicost]</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 </div>
 </div>
 <section id="single-vertex">
-<span id="index-1"></span><h3>单顶点<a class="headerlink" href="#single-vertex" title="Link to this heading">¶</a></h3>
+<span id="index-1"></span><h3>单个顶点<a class="headerlink" href="#single-vertex" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>, <strong>distance</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -307,7 +305,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 </div>
 </section>
 <section id="multiple-vertices">
-<span id="index-2"></span><h3>多顶点<a class="headerlink" href="#multiple-vertices" title="Link to this heading">¶</a></h3>
+<span id="index-2"></span><h3>多个顶点<a class="headerlink" href="#multiple-vertices" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -315,7 +313,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 <div class="line"><strong>options:</strong> [directed, equicost]</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -407,7 +405,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
-<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite>。</p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -435,8 +433,8 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">true``时，节点只会出现在最近的</span> <span class="pre">``start_vid</span></code> 列表中。绑定制动是任意的。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">false</span></code> 时，类似于使用单顶点签名的多次调用。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">true</span></code> 时，节点只会出现在最近的 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 列表中。绑定制动是任意的。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">false</span></code> 时，类似于使用单个顶点签名的多次调用。</p></li>
 </ul>
 </td>
 </tr>
@@ -481,14 +479,14 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -507,7 +505,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 </section>
 <section id="result-columns">
 <h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>参数</p></th>
@@ -524,7 +522,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">node</span></code> 的深度。</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(0\)</span> 当 <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>。</p></li>
+<li><p><span class="math notranslate nohighlight">\(0\)</span> 当 <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 。</p></li>
 <li><p><span class="math notranslate nohighlight">\(depth-1\)</span> is the depth of <code class="docutils literal notranslate"><span class="pre">pred</span></code></p></li>
 </ul>
 </td>
@@ -537,7 +535,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">node</span></code> 的前驱。</p>
 <ul class="simple">
-<li><p>当 <cite>node</cite> 等于 <cite>start_vid</cite> 时，它的值就是 <cite>node</cite>。</p></li>
+<li><p>当 <cite>node</cite> 等于 <cite>start_vid</cite> 时，它的值就是 <cite>node</cite> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -547,9 +545,9 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>从 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 到达``node``所使用的 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 的标识符。</p>
+<td><p>从 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 到达 <code class="docutils literal notranslate"><span class="pre">node</span></code> 所使用的 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 的标识符。</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(-1\)</span> 当 <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>。</p></li>
+<li><p><span class="math notranslate nohighlight">\(-1\)</span> 当 <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -630,7 +628,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

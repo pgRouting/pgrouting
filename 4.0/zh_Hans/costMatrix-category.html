@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -213,10 +213,10 @@
 <li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a></p></li>
 </ul>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="65b7ab9f-5e70-4e3c-aeb9-591c113c4e8e" name="65b7ab9f-5e70-4e3c-aeb9-591c113c4e8e" type="checkbox"><label class="sphinx_collapse__label" for="65b7ab9f-5e70-4e3c-aeb9-591c113c4e8e"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="2e3bd5c8-8824-4383-8d6f-4f957f1d139b" name="2e3bd5c8-8824-4383-8d6f-4f957f1d139b" type="checkbox"><label class="sphinx_collapse__label" for="2e3bd5c8-8824-4383-8d6f-4f957f1d139b"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>下一版本的拟议功能。</p>
+<p>下一版本的提议功能。</p>
 <ul class="simple">
 <li><p>它们并未正式出现在当前版本中。</p></li>
 <li><p>它们可能会正式成为下一个版本的一部分：</p>
@@ -269,7 +269,7 @@
 <ul>
 <li><p>当起始顶点和结束顶点相同时，就没有路径。</p>
 <ul>
-<li><p>未包含值 <cite>(v, v)</cite> 中的总成本为 <cite>0</cite>。</p></li>
+<li><p>未包含值 <cite>(v, v)</cite> 中的总成本为 <cite>0</cite> 。</p></li>
 </ul>
 </li>
 <li><p>当起始顶点和结束顶点不同且不存在路径时。</p>
@@ -281,7 +281,7 @@
 </li>
 <li><p>假设返回的值存储在表中：</p>
 <ul>
-<li><p>唯一索引将是一对： <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid)</span></code>。</p></li>
+<li><p>唯一索引将是一对： <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid)</span></code> 。</p></li>
 </ul>
 </li>
 <li><p>根据函数及其参数，结果可能是对称的。</p>
@@ -366,7 +366,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
-<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite>。</p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -416,14 +416,14 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -558,7 +558,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

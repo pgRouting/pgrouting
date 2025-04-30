@@ -69,17 +69,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -233,16 +233,16 @@
 <p class="rubric">可用性</p>
 <p class="rubric">Version 3.8.0</p>
 <ul class="simple">
-<li><p>Error messages adjustment.</p></li>
+<li><p>错误信息调整。</p></li>
 <li><p>函数正式发布。</p></li>
 </ul>
 <p class="rubric">版本 3.3.0</p>
 <ul class="simple">
-<li><p>Function promoted to proposed.</p></li>
+<li><p>函数已升级为提议。</p></li>
 </ul>
 <p class="rubric">版本3.0.0</p>
 <ul class="simple">
-<li><p>新实验功能。</p></li>
+<li><p>新实验性功能。</p></li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -250,7 +250,7 @@
 <ul class="simple">
 <li><p>当给出边标识符时，它也会计算出入边</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -418,7 +418,7 @@
 </section>
 <section id="when-identifiers-of-vertices-are-known">
 <h4><a class="toc-backref" href="#id6" role="doc-backlink">当顶点的标识符已知时</a><a class="headerlink" href="#when-identifiers-of-vertices-are-known" title="Link to this heading">¶</a></h4>
-<p>要使用此内部查询，列 <code class="docutils literal notranslate"><span class="pre">geom</span></code>、<code class="docutils literal notranslate"><span class="pre">startpoint</span></code> 和``endpoint`` 不应成为列集的一部分。</p>
+<p>要使用此内部查询，列 <code class="docutils literal notranslate"><span class="pre">geom</span></code> 、 <code class="docutils literal notranslate"><span class="pre">startpoint</span></code> 和 <code class="docutils literal notranslate"><span class="pre">endpoint</span></code> 不应成为列集的一部分。</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>列</p></th>
@@ -460,7 +460,7 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">in_edges</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
-<td><p>以顶点 <code class="docutils literal notranslate"><span class="pre">id</span></code> 作为*第一个端点*的边的标识符数组。</p>
+<td><p>以顶点 <code class="docutils literal notranslate"><span class="pre">id</span></code> 作为 <em>第一个端点</em> 的边的标识符数组。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> 当 <code class="docutils literal notranslate"><span class="pre">id</span></code> 不是内部查询的一部分时</p></li>
 </ul>
@@ -468,7 +468,7 @@
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">out_edges</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
-<td><p>以顶点 <code class="docutils literal notranslate"><span class="pre">id</span></code> 作为*第二个端点*的边的标识符数组。</p>
+<td><p>以顶点 <code class="docutils literal notranslate"><span class="pre">id</span></code> 作为 <em>第二个端点</em> 的边的标识符数组。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> 当 <code class="docutils literal notranslate"><span class="pre">id</span></code> 不是内部查询的一部分时</p></li>
 </ul>
@@ -520,7 +520,7 @@
 </nav>
 <section id="dry-run-execution">
 <h3><a class="toc-backref" href="#id7" role="doc-backlink">模拟执行</a><a class="headerlink" href="#dry-run-execution" title="Link to this heading">¶</a></h3>
-<p>要获取用于生成顶点信息的查询，请使用 <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">:=</span> <span class="pre">true</span></code>。</p>
+<p>要获取用于生成顶点信息的查询，请使用 <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">:=</span> <span class="pre">true</span></code> 。</p>
 <p>结果可作为基础代码，根据后台开发需要进行改进。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">,</span>
@@ -592,7 +592,7 @@
 <section id="create-the-vertices-table">
 <h4><a class="toc-backref" href="#id11" role="doc-backlink">创建顶点表</a><a class="headerlink" href="#create-the-vertices-table" title="Link to this heading">¶</a></h4>
 <ul class="simple">
-<li><p>当 <code class="docutils literal notranslate"><span class="pre">LINESTRING``具有</span> <span class="pre">SRID</span> <span class="pre">时，请使用</span> <span class="pre">``geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> 具有 SRID 时，请使用 <code class="docutils literal notranslate"><span class="pre">geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
 <li><p>对于已经准备好的大型边表，</p>
 <ul>
 <li><p>将其创建为 <code class="docutils literal notranslate"><span class="pre">UNLOGGED</span></code> 并</p></li>
@@ -725,7 +725,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

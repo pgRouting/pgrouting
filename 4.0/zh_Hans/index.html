@@ -68,17 +68,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -99,7 +99,7 @@
 <li><a class="reference internal" href="#general">常规</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#pgrouting-concepts">Pgrouting概念</a></li>
+<li><a class="reference internal" href="#pgrouting-concepts">Pgrouting 概念</a></li>
 <li><a class="reference internal" href="#routingfunctions"><span class="xref std std-doc">routingFunctions</span></a></li>
 <li><a class="reference internal" href="#functions-by-categories">按类别划分的函数</a></li>
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">可用函数，但不是官方 pgRouting 函数</a></li>
@@ -156,7 +156,7 @@
 <li><a class="reference internal" href="#general">常规</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#pgrouting-concepts">Pgrouting概念</a></li>
+<li><a class="reference internal" href="#pgrouting-concepts">Pgrouting 概念</a></li>
 <li><a class="reference internal" href="#routingfunctions"><span class="xref std std-doc">routingFunctions</span></a></li>
 <li><a class="reference internal" href="#functions-by-categories">按类别划分的函数</a></li>
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">可用函数，但不是官方 pgRouting 函数</a></li>
@@ -192,10 +192,10 @@
 </div>
 <section id="table-of-contents">
 <h1>目录<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h1>
-<p>pgRouting 扩展了 <a class="reference external" href="https://postgis.net">PostGIS</a> /<a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> 地理空间数据库，以提供地理空间路由和其他网络分析功能。</p>
-<p>这是pgRouting|release|的手册。</p>
+<p>pgRouting 扩展了 <a class="reference external" href="https://postgis.net">PostGIS</a>/<a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> 地理空间数据库，以提供地理空间路由和其他网络分析功能。</p>
+<p>这是pgRouting v4.0.0-dev 手册 。</p>
 <img alt="知识共享署名 - 相同方式共享 3.0 许可证" class="align-left" src="_images/ccbysa.png" />
-<p>pgRouting 手册根据`知识共享署名-相同方式共享3.0许可证 &lt;<a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">https://creativecommons.org/licenses/by-sa/3.0/</a>&gt;`_。 您可以随意使用本材料，但我们要求您将功劳归功于 pgRouting 项目，并尽可能提供返回 <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a> 的链接。 有关 pgRouting 中使用的其他许可证，请参阅 <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">许可</span></a> page.。</p>
+<p>pgRouting 手册根据 <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a> 。 您可以随意使用本材料，但我们要求您将功劳归功于 pgRouting 项目，并尽可能提供返回 <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a> 的链接。 有关 pgRouting 中使用的其他许可证，请参阅 <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">许可</span></a> 。</p>
 <section id="general">
 <h2>常规<a class="headerlink" href="#general" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -208,7 +208,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#short-version">简洁版本</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#get-the-sources">获取来源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#get-the-sources">获取源码</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#enabling-and-upgrading-in-the-database">在数据库中启用和升级</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#dependencies">依赖</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#configuring">配置</a></li>
@@ -219,23 +219,23 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">支持</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="support.html#reporting-problems">报告问题</a></li>
-<li class="toctree-l2"><a class="reference internal" href="support.html#mailing-list-and-gis-stackexchange">邮件列表和 GIS StackExchange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support.html#mailing-list-and-gis-stackexchange">邮件列表和GIS StackExchange</a></li>
 <li class="toctree-l2"><a class="reference internal" href="support.html#commercial-support">商业支持</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <ul class="simple">
-<li><p>本手册示例中使用的 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a>。</p></li>
+<li><p>本手册示例中使用的 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a> 。</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 </section>
 <section id="pgrouting-concepts">
-<h2>Pgrouting概念<a class="headerlink" href="#pgrouting-concepts" title="Link to this heading">¶</a></h2>
+<h2>Pgrouting 概念<a class="headerlink" href="#pgrouting-concepts" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs">图</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs-without-geometries">没有几何信息的图</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs-with-geometries">具有几何图形的图</a></li>
@@ -296,7 +296,7 @@
 <li><p><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra`</span></a> - Dijkstra 最短路径算法。</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost`</span></a> - 获取最短路径的总成本。</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> - 使用 pgr_dijkstra 创建成本矩阵。</p></li>
-<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">驾驶距离</span></a> - 使用 pgr_dijkstra 计算流域信息。</p></li>
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - 使用 pgr_dijkstra 计算流域信息。</p></li>
 <li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - 使用 Yen 算法和 pgr_dijkstra 来获得 K 条最短路径。</p></li>
 </ul>
 <p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - 函数族</span></a></p>
@@ -305,7 +305,7 @@
 <li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Boykov 和 Kolmogorov 的边流动细节。</p></li>
 <li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - 带有边流量详细信息的 Edmonds 和 Karp 算法。</p></li>
 <li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - 推送和重新标记算法以及边流量的详细信息。</p></li>
-<li><p>应用</p>
+<li><p>Applications</p>
 <ul>
 <li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - 计算两组顶点之间的边不相交路径。</p></li>
 <li><p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - 计算图中的最大基数匹配。</p></li>
@@ -349,9 +349,9 @@
 <p class="rubric">实用程序</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - 根据边表信息提取顶点信息。</p></li>
-<li><p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> - Finds close edges of points on the fly</p></li>
-<li><p><a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> - Breaks geometries that cross each other.</p></li>
-<li><p><a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> - Breaks geometries that (almost) touch each other.</p></li>
+<li><p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> - 动态查找最近道路边线</p></li>
+<li><p><a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> - 断开相互交叉的几何图形。</p></li>
+<li><p><a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> - 断开相互（接近）接触的几何图形。</p></li>
 </ul>
 </section>
 <section id="functions-by-categories">
@@ -362,7 +362,7 @@
 <li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost`</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - 拟议</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - 提议中</span></a></p></li>
 </ul>
 <p><a class="reference internal" href="costMatrix-category.html"><span class="doc">成本矩阵 - 类别</span></a></p>
 <ul class="simple">
@@ -373,7 +373,7 @@
 </ul>
 <p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">驾驶距离 - 类别</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">驾驶距离</span></a> - 基于 Dijkstra 算法的行驶距离</p></li>
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - 基于 Dijkstra 算法的行驶距离</p></li>
 <li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a> - 基于Prim算法的行驶距离</p></li>
 <li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a> - 基于Kruskal算法的行驶距离</p></li>
 </ul>
@@ -400,17 +400,17 @@
 <section id="available-functions-but-not-official-pgrouting-functions">
 <h2>可用函数，但不是官方 pgRouting 函数<a class="headerlink" href="#available-functions-but-not-official-pgrouting-functions" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="proposed.html"><span class="doc">拟议的功能</span></a></p></li>
-<li><p><a class="reference internal" href="experimental.html"><span class="doc">实验函数</span></a></p></li>
+<li><p><a class="reference internal" href="proposed.html"><span class="doc">提议的功能</span></a></p></li>
+<li><p><a class="reference internal" href="experimental.html"><span class="doc">实验性函数</span></a></p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 </section>
 <section id="release-notes">
-<h2><a class="reference internal" href="release_notes.html"><span class="doc">发行说明</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
+<h2><a class="reference internal" href="release_notes.html"><span class="doc">发布说明</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
 <section id="pgrouting-4-0-0-release-notes">
 <h3>pgRouting 4.0.0 发布说明<a class="headerlink" href="#pgrouting-4-0-0-release-notes" title="Link to this heading">¶</a></h3>
-<p>查看本版本已关闭的所有议题和拉取请求,请访问：<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.0%22">GitHub 4.0.0版本里程碑关闭列表</a></p>
+<p>查看本版本已关闭的所有议题和拉取请求,请访问： <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.0%22">GitHub 4.0.0版本里程碑关闭列表</a></p>
 <p class="rubric">正式版功能函数</p>
 <ul class="simple">
 <li><p>pgr_trsp</p></li>
@@ -432,8 +432,8 @@
 <li><p>pgr_bdAstarCost(组合)</p></li>
 <li><p>pgr_bdDijkstra(组合)</p></li>
 <li><p>pgr_bdDijkstraCost(组合)</p></li>
-<li><p>pgr_dijkstra(组合)</p></li>
-<li><p>pgr_dijkstraCost(组合)</p></li>
+<li><p>pgr_dijkstra(Combinations)</p></li>
+<li><p>pgr_dijkstraCost(Combinations)</p></li>
 <li><p>pgr_KSP（所有函数签名版本）</p></li>
 <li><p>pgr_boykovKolmogorov (组合)</p></li>
 <li><p>pgr_edmondsKarp(组合)</p></li>
@@ -444,7 +444,7 @@
 <ul class="simple">
 <li><p>移除未使用的C/C++代码</p></li>
 </ul>
-<p class="rubric">Removal of SQL deprecated signatures</p>
+<p class="rubric">移除已弃用的 SQL 函数签名</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2798">#2798</a>:
 pgr_contraction</p>
@@ -496,8 +496,7 @@ pgr_createVerticesTable</p></li>
 <li><p>_trsp(text,text,anyarray,anyarray,boolean)</p></li>
 <li><p>_v4trsp(text,text,anyarray,anyarray,boolean)</p></li>
 <li><p>_v4trsp(text,text,text,boolean)</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a>:
-Remove unused internal functions</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a>:移除未使用的内部函数</p>
 <ul>
 <li><p>_pgr_checkverttab(text,text[],integer,text)</p></li>
 <li><p>_pgr_createindex(text,text,text,integer,text)</p></li>
@@ -526,7 +525,7 @@ Remove unused internal functions</p>
 <li><p>_pgr_kruskal(text,anyarray,text,bigint,double precision)</p></li>
 <li><p>_pgr_prim(text,anyarray,text,bigint,double precision)</p></li>
 </ul>
-<p class="rubric">Internal C/C++ functions in legacy</p>
+<p class="rubric">遗留代码中内部 C/C++ 函数</p>
 <ul class="simple">
 <li><p>_trsp(text,text,anyarray,anyarray,boolean)</p></li>
 <li><p>_v4trsp(text,text,anyarray,anyarray,boolean)</p></li>
@@ -537,7 +536,7 @@ Remove unused internal functions</p>
 <h3>所有版本<a class="headerlink" href="#all-releases" title="Link to this heading">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="release_notes.html#pgrouting-4">pgRouting 4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release_notes.html#pgrouting-3">pgRouting 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release_notes.html#pgrouting-2">pgRouting 2</a></li>
@@ -570,7 +569,7 @@ Remove unused internal functions</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

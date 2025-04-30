@@ -70,17 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -100,10 +100,10 @@
 <li><a class="reference internal" href="#"><cite>pgr_dijkstra`</cite></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
-<li><a class="reference internal" href="#one-to-one">一对一</a></li>
+<li><a class="reference internal" href="#one-to-one">One to One</a></li>
 <li><a class="reference internal" href="#one-to-many">一对多</a></li>
-<li><a class="reference internal" href="#many-to-one">多对一</a></li>
-<li><a class="reference internal" href="#many-to-many">多对多</a></li>
+<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
+<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 <li><a class="reference internal" href="#combinations">组合</a></li>
 </ul>
 </li>
@@ -123,9 +123,9 @@
 <li><a class="reference internal" href="#path-from-6-to-7">2) 从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#path-from-12-to-10">3) 从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(10\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#path-from-12-to-7">4) 从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
-<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2">5) 使用 一对多 来获取示例1和示例2的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4">6) 使用 多对一 来获取示例2和示例4的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4">7) 使用 多对多 来获取示例1到4的解决方案</a></li>
+<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2">5) 使用 One to Many 来获取示例1和示例2的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4">6) 使用 Many to One 来获取示例2和示例4的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4">7) 使用 Many to Many 来获取示例1到4的解决方案</a></li>
 <li><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-1-to-3">8) 使用 组合 来获取示例1到3的解决方案</a></li>
 </ul>
 </li>
@@ -134,9 +134,9 @@
 <li><a class="reference internal" href="#id2">10) 从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#id3">11)从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(10\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#id4">12)从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
-<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10">13) 使用 一对多 来获取示例9和10的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12">14) 使用 多对一 来获取示例10和12的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12">15) 使用 多对多 来获取示例9到12的解决方案</a></li>
+<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10">13) 使用 One to Many 来获取示例9和10的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12">14) 使用 Many to One 来获取示例10和12的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12">15) 使用 Many to Many 来获取示例9到12的解决方案</a></li>
 <li><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-9-to-11">16) 使用 组合 来获取示例9到11的解决方案</a></li>
 </ul>
 </li>
@@ -145,9 +145,9 @@
 <li><a class="reference internal" href="#id6">18) 从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#id7">19)从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(10\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#id8">20) 从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
-<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18">21) 使用 一对多 来获取示例17和18的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20">22) 使用 多对一 来获取示例18和20的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20">23) 使用 多对多 来获取示例17到20的解决方案</a></li>
+<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18">21) 使用 One to Many 来获取示例17和18的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20">22) 使用 Many to One 来获取示例18和20的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20">23) 使用 Many to Many 来获取示例17到20的解决方案</a></li>
 <li><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-17-to-19">24) 使用 组合 来获取示例17到19的解决方案</a></li>
 </ul>
 </li>
@@ -156,17 +156,17 @@
 <li><a class="reference internal" href="#id10">26) 从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#id11">27)从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(10\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#id12">28) 从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
-<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26">29) 使用 一对多 来获取示例25和26的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28">30) 使用 多对一 来获取示例26和28的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28">31) 使用 多对多 来获取示例25到28的解决方案</a></li>
+<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26">29) 使用 One to Many 来获取示例25和26的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28">30) 使用 Many to One 来获取示例26和28的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28">31) 使用 Many to Many 来获取示例25到28的解决方案</a></li>
 <li><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-25-to-27">32) 使用 组合 来获取示例25到27的解决方案</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#equvalences-between-signatures">签名之间的等价性</a><ul>
-<li><a class="reference internal" href="#using-one-to-one">33) 使用 一对一</a></li>
-<li><a class="reference internal" href="#using-one-to-many">34)使用 一对多</a></li>
-<li><a class="reference internal" href="#using-many-to-one">35) 使用 多对一</a></li>
-<li><a class="reference internal" href="#using-many-to-many">36) 使用 多对多</a></li>
+<li><a class="reference internal" href="#using-one-to-one">33) 使用 One to One</a></li>
+<li><a class="reference internal" href="#using-one-to-many">34)使用 One to Many</a></li>
+<li><a class="reference internal" href="#using-many-to-one">35) 使用 Many to One</a></li>
+<li><a class="reference internal" href="#using-many-to-many">36) 使用 Many to Many</a></li>
 <li><a class="reference internal" href="#using-combinations">37) 使用 组合</a></li>
 </ul>
 </li>
@@ -222,10 +222,10 @@
 <li><a class="reference internal" href="#"><cite>pgr_dijkstra`</cite></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
-<li><a class="reference internal" href="#one-to-one">一对一</a></li>
+<li><a class="reference internal" href="#one-to-one">One to One</a></li>
 <li><a class="reference internal" href="#one-to-many">一对多</a></li>
-<li><a class="reference internal" href="#many-to-one">多对一</a></li>
-<li><a class="reference internal" href="#many-to-many">多对多</a></li>
+<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
+<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 <li><a class="reference internal" href="#combinations">组合</a></li>
 </ul>
 </li>
@@ -245,9 +245,9 @@
 <li><a class="reference internal" href="#path-from-6-to-7">2) 从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#path-from-12-to-10">3) 从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(10\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#path-from-12-to-7">4) 从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
-<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2">5) 使用 一对多 来获取示例1和示例2的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4">6) 使用 多对一 来获取示例2和示例4的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4">7) 使用 多对多 来获取示例1到4的解决方案</a></li>
+<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2">5) 使用 One to Many 来获取示例1和示例2的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4">6) 使用 Many to One 来获取示例2和示例4的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4">7) 使用 Many to Many 来获取示例1到4的解决方案</a></li>
 <li><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-1-to-3">8) 使用 组合 来获取示例1到3的解决方案</a></li>
 </ul>
 </li>
@@ -256,9 +256,9 @@
 <li><a class="reference internal" href="#id2">10) 从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#id3">11)从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(10\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#id4">12)从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
-<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10">13) 使用 一对多 来获取示例9和10的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12">14) 使用 多对一 来获取示例10和12的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12">15) 使用 多对多 来获取示例9到12的解决方案</a></li>
+<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10">13) 使用 One to Many 来获取示例9和10的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12">14) 使用 Many to One 来获取示例10和12的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12">15) 使用 Many to Many 来获取示例9到12的解决方案</a></li>
 <li><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-9-to-11">16) 使用 组合 来获取示例9到11的解决方案</a></li>
 </ul>
 </li>
@@ -267,9 +267,9 @@
 <li><a class="reference internal" href="#id6">18) 从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#id7">19)从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(10\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#id8">20) 从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
-<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18">21) 使用 一对多 来获取示例17和18的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20">22) 使用 多对一 来获取示例18和20的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20">23) 使用 多对多 来获取示例17到20的解决方案</a></li>
+<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18">21) 使用 One to Many 来获取示例17和18的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20">22) 使用 Many to One 来获取示例18和20的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20">23) 使用 Many to Many 来获取示例17到20的解决方案</a></li>
 <li><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-17-to-19">24) 使用 组合 来获取示例17到19的解决方案</a></li>
 </ul>
 </li>
@@ -278,17 +278,17 @@
 <li><a class="reference internal" href="#id10">26) 从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#id11">27)从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(10\)</span> 的路径</a></li>
 <li><a class="reference internal" href="#id12">28) 从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></li>
-<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26">29) 使用 一对多 来获取示例25和26的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28">30) 使用 多对一 来获取示例26和28的解决方案</a></li>
-<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28">31) 使用 多对多 来获取示例25到28的解决方案</a></li>
+<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26">29) 使用 One to Many 来获取示例25和26的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28">30) 使用 Many to One 来获取示例26和28的解决方案</a></li>
+<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28">31) 使用 Many to Many 来获取示例25到28的解决方案</a></li>
 <li><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-25-to-27">32) 使用 组合 来获取示例25到27的解决方案</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#equvalences-between-signatures">签名之间的等价性</a><ul>
-<li><a class="reference internal" href="#using-one-to-one">33) 使用 一对一</a></li>
-<li><a class="reference internal" href="#using-one-to-many">34)使用 一对多</a></li>
-<li><a class="reference internal" href="#using-many-to-one">35) 使用 多对一</a></li>
-<li><a class="reference internal" href="#using-many-to-many">36) 使用 多对多</a></li>
+<li><a class="reference internal" href="#using-one-to-one">33) 使用 One to One</a></li>
+<li><a class="reference internal" href="#using-one-to-many">34)使用 One to Many</a></li>
+<li><a class="reference internal" href="#using-many-to-one">35) 使用 Many to One</a></li>
+<li><a class="reference internal" href="#using-many-to-many">36) 使用 Many to Many</a></li>
 <li><a class="reference internal" href="#using-combinations">37) 使用 组合</a></li>
 </ul>
 </li>
@@ -334,20 +334,20 @@
 </li>
 <li><p>版本 3.5.0</p>
 <ul>
-<li><p>Standardizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p>pgr_dijkstra（一对一）增加了``start_vid`` 和``end_vid`` 列。</p></li>
-<li><p>pgr_dijkstra（一对多）添加了 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 列。</p></li>
-<li><p>pgr_dijkstra（多对一）添加了 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 列。</p></li>
+<li><p>pgr_dijkstra(One to One) 增加了 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 列。</p></li>
+<li><p>pgr_dijkstra(One to Many) 添加了 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 列。</p></li>
+<li><p>pgr_dijkstra(Many to One) 添加了 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 列。</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>版本 3.1.0</p>
 <ul>
-<li><p>New proposed signature:</p>
+<li><p>新提议的签名：</p>
 <ul>
-<li><p>pgr_dijkstra(组合)</p></li>
+<li><p>pgr_dijkstra(Combinations)</p></li>
 </ul>
 </li>
 </ul>
@@ -359,23 +359,23 @@
 </li>
 <li><p>版本 2.2.0</p>
 <ul>
-<li><p>新拟议的签名：</p>
+<li><p>新提议的签名：</p>
 <ul>
-<li><p>pgr_dijkstra(一对多)</p></li>
-<li><p>pgr_dijkstra(多对一)</p></li>
-<li><p>pgr_dijkstra（多对多）</p></li>
+<li><p>pgr_dijkstra(One to Many)</p></li>
+<li><p>pgr_dijkstra(Many to One)</p></li>
+<li><p>pgr_dijkstra(Many to Many)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>版本2.1.0</p>
 <ul>
-<li><p>Signature change on pgr_dijkstra(One to One)</p></li>
+<li><p>pgr_dijkstra(One to One) 函数签名变更</p></li>
 </ul>
 </li>
 <li><p>版本2.0.0</p>
 <ul>
-<li><p>官方 函数</p></li>
+<li><p>官方函数。</p></li>
 </ul>
 </li>
 </ul>
@@ -406,7 +406,7 @@
 <li><p>出于优化目的，起始顶点或结束顶点中的任何重复值都将被忽略。</p></li>
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(| start\ vids | * (V \log V + E))\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -421,7 +421,7 @@
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -431,14 +431,14 @@
 <p>请阅读 <a class="reference internal" href="migration.html"><span class="doc">迁移指南</span></a> 关于如何从旧的结果列迁移到新的结果列。</p>
 </div>
 <section id="one-to-one">
-<span id="index-1"></span><h3>一对一<a class="headerlink" href="#one-to-one" title="Link to this heading">¶</a></h3>
+<span id="index-1"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -471,7 +471,7 @@
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -502,14 +502,14 @@
 </div>
 </section>
 <section id="many-to-one">
-<span id="index-3"></span><h3>多对一<a class="headerlink" href="#many-to-one" title="Link to this heading">¶</a></h3>
+<span id="index-3"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -540,14 +540,14 @@
 </div>
 </section>
 <section id="many-to-many">
-<span id="index-4"></span><h3>多对多<a class="headerlink" href="#many-to-many" title="Link to this heading">¶</a></h3>
+<span id="index-4"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -593,7 +593,7 @@
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -695,7 +695,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
-<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite>。</p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -740,14 +740,14 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -818,14 +818,14 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong>。</p></td>
+<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong> 。</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>起始顶点的标识符。 当查询中有多个起始向量时返回。</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#many-to-one">多对一</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">多对多</a></p></li>
+<li><p><a class="reference internal" href="#many-to-one">Many to One</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 </ul>
 </td>
 </tr>
@@ -833,8 +833,8 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>结束顶点的标识符。 当查询中有多个结束顶点时返回。</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#one-to-many">一对多</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">多对多</a></p></li>
+<li><p><a class="reference internal" href="#one-to-many">One to Many</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 </ul>
 </td>
 </tr>
@@ -967,9 +967,9 @@
 <li><p><a class="reference internal" href="#path-from-6-to-7" id="id19">2) 从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></p></li>
 <li><p><a class="reference internal" href="#path-from-12-to-10" id="id20">3) 从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(10\)</span> 的路径</a></p></li>
 <li><p><a class="reference internal" href="#path-from-12-to-7" id="id21">4) 从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></p></li>
-<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2" id="id22">5) 使用 一对多 来获取示例1和示例2的解决方案</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4" id="id23">6) 使用 多对一 来获取示例2和示例4的解决方案</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4" id="id24">7) 使用 多对多 来获取示例1到4的解决方案</a></p></li>
+<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2" id="id22">5) 使用 One to Many 来获取示例1和示例2的解决方案</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4" id="id23">6) 使用 Many to One 来获取示例2和示例4的解决方案</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4" id="id24">7) 使用 Many to Many 来获取示例1到4的解决方案</a></p></li>
 <li><p><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-1-to-3" id="id25">8) 使用 组合 来获取示例1到3的解决方案</a></p></li>
 </ul>
 </li>
@@ -979,9 +979,9 @@
 <li><p><a class="reference internal" href="#id2" id="id28">10) 从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></p></li>
 <li><p><a class="reference internal" href="#id3" id="id29">11)从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(10\)</span> 的路径</a></p></li>
 <li><p><a class="reference internal" href="#id4" id="id30">12)从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></p></li>
-<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10" id="id31">13) 使用 一对多 来获取示例9和10的解决方案</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12" id="id32">14) 使用 多对一 来获取示例10和12的解决方案</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12" id="id33">15) 使用 多对多 来获取示例9到12的解决方案</a></p></li>
+<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10" id="id31">13) 使用 One to Many 来获取示例9和10的解决方案</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12" id="id32">14) 使用 Many to One 来获取示例10和12的解决方案</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12" id="id33">15) 使用 Many to Many 来获取示例9到12的解决方案</a></p></li>
 <li><p><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-9-to-11" id="id34">16) 使用 组合 来获取示例9到11的解决方案</a></p></li>
 </ul>
 </li>
@@ -991,9 +991,9 @@
 <li><p><a class="reference internal" href="#id6" id="id37">18) 从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></p></li>
 <li><p><a class="reference internal" href="#id7" id="id38">19)从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(10\)</span> 的路径</a></p></li>
 <li><p><a class="reference internal" href="#id8" id="id39">20) 从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></p></li>
-<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18" id="id40">21) 使用 一对多 来获取示例17和18的解决方案</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20" id="id41">22) 使用 多对一 来获取示例18和20的解决方案</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20" id="id42">23) 使用 多对多 来获取示例17到20的解决方案</a></p></li>
+<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18" id="id40">21) 使用 One to Many 来获取示例17和18的解决方案</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20" id="id41">22) 使用 Many to One 来获取示例18和20的解决方案</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20" id="id42">23) 使用 Many to Many 来获取示例17到20的解决方案</a></p></li>
 <li><p><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-17-to-19" id="id43">24) 使用 组合 来获取示例17到19的解决方案</a></p></li>
 </ul>
 </li>
@@ -1003,18 +1003,18 @@
 <li><p><a class="reference internal" href="#id10" id="id46">26) 从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></p></li>
 <li><p><a class="reference internal" href="#id11" id="id47">27)从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(10\)</span> 的路径</a></p></li>
 <li><p><a class="reference internal" href="#id12" id="id48">28) 从 <span class="math notranslate nohighlight">\(12\)</span> 到 <span class="math notranslate nohighlight">\(7\)</span> 的路径</a></p></li>
-<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26" id="id49">29) 使用 一对多 来获取示例25和26的解决方案</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28" id="id50">30) 使用 多对一 来获取示例26和28的解决方案</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28" id="id51">31) 使用 多对多 来获取示例25到28的解决方案</a></p></li>
+<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26" id="id49">29) 使用 One to Many 来获取示例25和26的解决方案</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28" id="id50">30) 使用 Many to One 来获取示例26和28的解决方案</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28" id="id51">31) 使用 Many to Many 来获取示例25到28的解决方案</a></p></li>
 <li><p><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-25-to-27" id="id52">32) 使用 组合 来获取示例25到27的解决方案</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#equvalences-between-signatures" id="id53">签名之间的等价性</a></p>
 <ul>
-<li><p><a class="reference internal" href="#using-one-to-one" id="id54">33) 使用 一对一</a></p></li>
-<li><p><a class="reference internal" href="#using-one-to-many" id="id55">34)使用 一对多</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-one" id="id56">35) 使用 多对一</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-many" id="id57">36) 使用 多对多</a></p></li>
+<li><p><a class="reference internal" href="#using-one-to-one" id="id54">33) 使用 One to One</a></p></li>
+<li><p><a class="reference internal" href="#using-one-to-many" id="id55">34)使用 One to Many</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-one" id="id56">35) 使用 Many to One</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-many" id="id57">36) 使用 Many to Many</a></p></li>
 <li><p><a class="reference internal" href="#using-combinations" id="id58">37) 使用 组合</a></p></li>
 </ul>
 </li>
@@ -1100,7 +1100,7 @@
 </div>
 </section>
 <section id="using-one-to-many-to-get-the-solution-of-examples-1-and-2">
-<h4>5) 使用 <a class="reference internal" href="#one-to-many">一对多</a> 来获取示例1和示例2的解决方案<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2" title="Link to this heading">¶</a></h4>
+<h4>5) 使用 <a class="reference internal" href="#one-to-many">One to Many</a> 来获取示例1和示例2的解决方案<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2" title="Link to this heading">¶</a></h4>
 <p>路径 <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1122,7 +1122,7 @@
 </div>
 </section>
 <section id="using-many-to-one-to-get-the-solution-of-examples-2-and-4">
-<h4>6) 使用 <a class="reference internal" href="#many-to-one">多对一</a> 来获取示例2和示例4的解决方案<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4" title="Link to this heading">¶</a></h4>
+<h4>6) 使用 <a class="reference internal" href="#many-to-one">Many to One</a> 来获取示例2和示例4的解决方案<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4" title="Link to this heading">¶</a></h4>
 <p>路径 <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1143,7 +1143,7 @@
 </div>
 </section>
 <section id="using-many-to-many-to-get-the-solution-of-examples-1-to-4">
-<h4>7) 使用 <a class="reference internal" href="#many-to-many">多对多</a> 来获取示例1到4的解决方案<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4" title="Link to this heading">¶</a></h4>
+<h4>7) 使用 <a class="reference internal" href="#many-to-many">Many to Many</a> 来获取示例1到4的解决方案<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4" title="Link to this heading">¶</a></h4>
 <p>路径 <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1278,7 +1278,7 @@
 </div>
 </section>
 <section id="using-one-to-many-to-get-the-solution-of-examples-9-and-10">
-<h4>13) 使用 <a class="reference internal" href="#one-to-many">一对多</a> 来获取示例9和10的解决方案<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10" title="Link to this heading">¶</a></h4>
+<h4>13) 使用 <a class="reference internal" href="#one-to-many">One to Many</a> 来获取示例9和10的解决方案<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10" title="Link to this heading">¶</a></h4>
 <p>路径 <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1297,7 +1297,7 @@
 </div>
 </section>
 <section id="using-many-to-one-to-get-the-solution-of-examples-10-and-12">
-<h4>14) 使用 <a class="reference internal" href="#many-to-one">多对一</a> 来获取示例10和12的解决方案<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12" title="Link to this heading">¶</a></h4>
+<h4>14) 使用 <a class="reference internal" href="#many-to-one">Many to One</a> 来获取示例10和12的解决方案<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12" title="Link to this heading">¶</a></h4>
 <p>路径 <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1317,7 +1317,7 @@
 </div>
 </section>
 <section id="using-many-to-many-to-get-the-solution-of-examples-9-to-12">
-<h4>15) 使用 <a class="reference internal" href="#many-to-many">多对多</a> 来获取示例9到12的解决方案<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12" title="Link to this heading">¶</a></h4>
+<h4>15) 使用 <a class="reference internal" href="#many-to-many">Many to Many</a> 来获取示例9到12的解决方案<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12" title="Link to this heading">¶</a></h4>
 <p>路径 <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1428,7 +1428,7 @@
 </div>
 </section>
 <section id="using-one-to-many-to-get-the-solution-of-examples-17-and-18">
-<h4>21) 使用 <a class="reference internal" href="#one-to-many">一对多</a> 来获取示例17和18的解决方案<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18" title="Link to this heading">¶</a></h4>
+<h4>21) 使用 <a class="reference internal" href="#one-to-many">One to Many</a> 来获取示例17和18的解决方案<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18" title="Link to this heading">¶</a></h4>
 <p>路径 <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1444,7 +1444,7 @@
 </div>
 </section>
 <section id="using-many-to-one-to-get-the-solution-of-examples-18-and-20">
-<h4>22) 使用 <a class="reference internal" href="#many-to-one">多对一</a> 来获取示例18和20的解决方案<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20" title="Link to this heading">¶</a></h4>
+<h4>22) 使用 <a class="reference internal" href="#many-to-one">Many to One</a> 来获取示例18和20的解决方案<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20" title="Link to this heading">¶</a></h4>
 <p>路径 <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1460,7 +1460,7 @@
 </div>
 </section>
 <section id="using-many-to-many-to-get-the-solution-of-examples-17-to-20">
-<h4>23) 使用 <a class="reference internal" href="#many-to-many">多对多</a> 来获取示例17到20的解决方案<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20" title="Link to this heading">¶</a></h4>
+<h4>23) 使用 <a class="reference internal" href="#many-to-many">Many to Many</a> 来获取示例17到20的解决方案<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20" title="Link to this heading">¶</a></h4>
 <p>路径 <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1570,7 +1570,7 @@
 </div>
 </section>
 <section id="using-one-to-many-to-get-the-solution-of-examples-25-and-26">
-<h4>29) 使用 <a class="reference internal" href="#one-to-many">一对多</a> 来获取示例25和26的解决方案<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26" title="Link to this heading">¶</a></h4>
+<h4>29) 使用 <a class="reference internal" href="#one-to-many">One to Many</a> 来获取示例25和26的解决方案<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26" title="Link to this heading">¶</a></h4>
 <p>路径 <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1591,7 +1591,7 @@
 </div>
 </section>
 <section id="using-many-to-one-to-get-the-solution-of-examples-26-and-28">
-<h4>30) 使用 <a class="reference internal" href="#many-to-one">多对一</a> 来获取示例26和28的解决方案<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28" title="Link to this heading">¶</a></h4>
+<h4>30) 使用 <a class="reference internal" href="#many-to-one">Many to One</a> 来获取示例26和28的解决方案<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28" title="Link to this heading">¶</a></h4>
 <p>路径 <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1611,7 +1611,7 @@
 </div>
 </section>
 <section id="using-many-to-many-to-get-the-solution-of-examples-25-to-28">
-<h4>31) 使用 <a class="reference internal" href="#many-to-many">多对多</a> 来获取示例25到28的解决方案<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28" title="Link to this heading">¶</a></h4>
+<h4>31) 使用 <a class="reference internal" href="#many-to-many">Many to Many</a> 来获取示例25到28的解决方案<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28" title="Link to this heading">¶</a></h4>
 <p>路径 <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1666,7 +1666,7 @@
 <h3><a class="toc-backref" href="#id53" role="doc-backlink">签名之间的等价性</a><a class="headerlink" href="#equvalences-between-signatures" title="Link to this heading">¶</a></h3>
 <p>下面的示例可以找到 <span class="math notranslate nohighlight">\(\{6}\rightarrow\{10\}\)</span> 的路径</p>
 <section id="using-one-to-one">
-<h4>33) 使用 <a class="reference internal" href="#one-to-one">一对一</a><a class="headerlink" href="#using-one-to-one" title="Link to this heading">¶</a></h4>
+<h4>33) 使用 <a class="reference internal" href="#one-to-one">One to One</a><a class="headerlink" href="#using-one-to-one" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span>
@@ -1685,7 +1685,7 @@
 </div>
 </section>
 <section id="using-one-to-many">
-<h4>34)使用 <a class="reference internal" href="#one-to-many">一对多</a><a class="headerlink" href="#using-one-to-many" title="Link to this heading">¶</a></h4>
+<h4>34)使用 <a class="reference internal" href="#one-to-many">One to Many</a><a class="headerlink" href="#using-one-to-many" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
@@ -1704,7 +1704,7 @@
 </div>
 </section>
 <section id="using-many-to-one">
-<h4>35) 使用 <a class="reference internal" href="#many-to-one">多对一</a><a class="headerlink" href="#using-many-to-one" title="Link to this heading">¶</a></h4>
+<h4>35) 使用 <a class="reference internal" href="#many-to-one">Many to One</a><a class="headerlink" href="#using-many-to-one" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="mi">10</span>
@@ -1723,7 +1723,7 @@
 </div>
 </section>
 <section id="using-many-to-many">
-<h4>36) 使用 <a class="reference internal" href="#many-to-many">多对多</a><a class="headerlink" href="#using-many-to-many" title="Link to this heading">¶</a></h4>
+<h4>36) 使用 <a class="reference internal" href="#many-to-many">Many to Many</a><a class="headerlink" href="#using-many-to-many" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
@@ -1766,7 +1766,7 @@
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html">Boost: Dijkstra shortest paths</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html">Boost: Dijkstra最短路径Dijkstra 最短路径</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
@@ -1790,7 +1790,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 29, 2025.<br/>
+      Last updated on 4月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
