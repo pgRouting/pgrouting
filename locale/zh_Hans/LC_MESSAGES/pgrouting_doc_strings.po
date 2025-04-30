@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-29 15:26+0000\n"
-"PO-Revision-Date: 2025-04-30 07:42+0000\n"
+"PO-Revision-Date: 2025-04-30 07:46+0000\n"
 "Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -7549,7 +7549,7 @@ msgid "This Release Contributors"
 msgstr "此版本贡献者"
 
 msgid "Individuals in this release v3.8.x (in alphabetical order)"
-msgstr "此版本 v3.8.x 中的个体（按字母顺序排列）"
+msgstr "本次 v3.8.x 版本发布的个人贡献者（按字母顺序排列）"
 
 msgid "Aurélie Bousquet, Regina Obe, Vicky Vergara"
 msgstr "Aurélie Bousquet, Regina Obe, Vicky Vergara"
@@ -7586,9 +7586,8 @@ msgstr "`OSGeo UK <https://uk.osgeo.org>`__"
 msgid "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
 msgstr "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
 
-#, fuzzy
 msgid "`HighGo Software <https://www.highgo.com/>`__"
-msgstr "`OSGeo <https://www.osgeo.org>`__"
+msgstr "`HighGo Software <https://www.highgo.com/>`__"
 
 msgid "`Paragon Corporation <https://www.paragoncorporation.com/>`__"
 msgstr "`Paragon Corporation <https://www.paragoncorporation.com/>`__"
@@ -7599,7 +7598,6 @@ msgstr "过去与现在的贡献者："
 msgid "Individuals (in alphabetical order)"
 msgstr "个人贡献者（按字母排序）"
 
-#, fuzzy
 msgid ""
 "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
 "Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
@@ -7643,7 +7641,7 @@ msgid "Google Summer of Code"
 msgstr "Google Summer of Code"
 
 msgid "HighGo Software"
-msgstr ""
+msgstr "HighGo Software"
 
 msgid "iMaptools"
 msgstr "iMaptools"
@@ -10095,20 +10093,18 @@ msgstr "当出发地/目的地不在收缩图中时使用"
 msgid "Using when departure and destination are not in the contracted graph"
 msgstr "当出发地和目的地均不在收缩图中时使用"
 
-#, fuzzy
 msgid "``pgr_contractionHierarchies`` - Experimental"
-msgstr "``pgr_breadthFirstSearch`` - 实验性"
+msgstr "``pgr_contractionHierarchies`` - 实验性"
 
-#, fuzzy
 msgid ""
 "``pgr_contractionHierarchies`` — Performs graph contraction according to the "
 "contraction hierarchies method and returns the contracted vertices and "
 "shortcut edges created."
-msgstr "``pgr_contractionLinear`` — 执行图收缩并返回收缩后的顶点和边线。"
+msgstr "``pgr_contractionHierarchies`` — "
+"根据收缩层级方法执行图收缩，并返回收缩后的顶点和生成的快捷边。"
 
-#, fuzzy
 msgid "New **experimental** function"
-msgstr "新实验性功能。"
+msgstr "新 **实验性** 函数"
 
 msgid ""
 "The contraction hierarchies method builds, from an initial order of the "
