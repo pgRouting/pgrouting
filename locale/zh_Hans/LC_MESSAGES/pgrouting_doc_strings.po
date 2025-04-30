@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-29 15:26+0000\n"
-"PO-Revision-Date: 2025-04-30 07:52+0000\n"
+"PO-Revision-Date: 2025-04-30 07:53+0000\n"
 "Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -10216,34 +10216,29 @@ msgstr "如果图是有向的，则为 True，否则为 False。"
 msgid ""
 "The function returns many rows (one per vertex and one per shortcut edge "
 "created). The columns of the rows are:"
-msgstr "该函数返回多行（每个顶点一行，每创建一条快捷边一行）。行的列数为"
+msgstr "该函数返回多行（每个顶点一行，每创建一条快捷边一行）。行的列数为："
 
 #, fuzzy
 msgid "Type of the ``id``."
 msgstr "行的类型。"
 
-#, fuzzy
 msgid "Column ``id`` has a positive value"
-msgstr "列 ``id`` 为正值。"
+msgstr "列 ``id`` 为正值"
 
-#, fuzzy
 msgid "Column ``id`` has a negative value"
-msgstr "列 ``id`` 的值为负数。"
+msgstr "列 ``id`` 的值为负数"
 
-#, fuzzy
 msgid "``metric``"
-msgstr "``strict``"
+msgstr "``metric``"
 
-#, fuzzy
 msgid "``vertex_order``"
-msgstr "``vertex_id``"
+msgstr "``vertex_order``"
 
 msgid "Examples"
 msgstr "示例"
 
-#, fuzzy
 msgid "On an undirected graph"
-msgstr "在无向图上："
+msgstr "在无向图上"
 
 msgid ""
 "The following query shows the original data involved in the contraction "
