@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-29 15:26+0000\n"
-"PO-Revision-Date: 2025-04-30 07:39+0000\n"
+"PO-Revision-Date: 2025-04-30 07:42+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -2888,9 +2888,8 @@ msgid ""
 msgstr "前两项可以通过 \"pgr_contraction \"方法"
 "，通过迭代程序进行组合。第三种方法是独立实现的。"
 
-#, fuzzy
 msgid "All functions allow the user to forbid contraction on a set of nodes."
-msgstr "禁止在一组节点上收缩。"
+msgstr "所有函数都允许用户禁止对一组节点进行收缩。"
 
 msgid ""
 "https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/"
@@ -7550,9 +7549,8 @@ msgstr "贡献者"
 msgid "This Release Contributors"
 msgstr "此版本贡献者"
 
-#, fuzzy
 msgid "Individuals in this release v3.8.x (in alphabetical order)"
-msgstr "在此版本 v3.7.x 中的个人贡献者（按字母顺序排列）"
+msgstr "此版本 v3.8.x 中的个体（按字母顺序排列）"
 
 #, fuzzy
 msgid "Aurélie Bousquet, Regina Obe, Vicky Vergara"
@@ -7566,9 +7564,8 @@ msgstr ""
 "还有所有为我们的产品（osm2pgrouting、pgRouting、pgRoutingLayer、workshop）提"
 "供意见、发现问题、提出拉取请求等帮助的开发者。"
 
-#, fuzzy
 msgid "Translators (in alphabetical order)"
-msgstr "企业赞助商（按字母顺序排列）"
+msgstr "翻译（按字母顺序排列）"
 
 msgid "Dapeng Wang"
 msgstr ""
