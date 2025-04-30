@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-29 15:26+0000\n"
-"PO-Revision-Date: 2025-04-30 07:47+0000\n"
-"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
+"PO-Revision-Date: 2025-04-30 07:52+0000\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -10172,9 +10172,8 @@ msgstr ""
 "的值，只有当新的度量值使位于队列顶端的节点保持在队列顶端时，才对其进行收缩。"
 "否则，它就会被重新插入队列，位于与新度量值相对应的正确位置。"
 
-#, fuzzy
 msgid "The process is done on graphs having only edges with positive costs."
-msgstr "仅在具有正成本的边进行处理。"
+msgstr "这个过程是在只有边的成本为正值的图形上完成的。"
 
 msgid ""
 "It is necessary to remember that there are no deleted vertices with this "
@@ -10186,10 +10185,10 @@ msgstr ""
 msgid ""
 "As for the other contraction methods, it does not return the full contracted "
 "graph, only the changes. They are here of two types:"
-msgstr ""
+msgstr "至于其他收缩方法，它不会返回完整的收缩图，只会返回变化。它们有两种类型："
 
 msgid "added shortcut edges, with negative identifiers;"
-msgstr ""
+msgstr "增加了带有负标识符的快捷边；"
 
 msgid "contracted nodes with an order."
 msgstr ""
@@ -10211,15 +10210,13 @@ msgstr "Returns set of |result-contract|"
 msgid "Contraction hierarchies optional parameters"
 msgstr "可选收缩参数"
 
-#, fuzzy
 msgid "True if the graph is directed, False otherwise."
-msgstr "当图形是有向的，结果也是有向的。"
+msgstr "如果图是有向的，则为 True，否则为 False。"
 
-#, fuzzy
 msgid ""
 "The function returns many rows (one per vertex and one per shortcut edge "
 "created). The columns of the rows are:"
-msgstr "该函数返回一行数据。该行的列包括："
+msgstr "该函数返回多行（每个顶点一行，每创建一条快捷边一行）。行的列数为"
 
 #, fuzzy
 msgid "Type of the ``id``."
