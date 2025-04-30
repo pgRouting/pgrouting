@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-08 20:49+0000\n"
+"POT-Creation-Date: 2025-04-29 15:26+0000\n"
 "PO-Revision-Date: 2022-12-13 12:30+0000\n"
 "Last-Translator: Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>\n"
 "Language-Team: Korean <https://weblate.osgeo.org/projects/pgrouting/"
@@ -1133,7 +1133,7 @@ msgstr ""
 msgid "Current vehicle identifier."
 msgstr ""
 
-msgid "Sumary row has the **total capacity violations**."
+msgid "Summary row has the **total capacity violations**."
 msgstr ""
 
 msgid ""
@@ -1151,7 +1151,7 @@ msgid ""
 "vehicle. The :math:`m_{th}` stop of the current vehicle."
 msgstr ""
 
-msgid "Sumary row has the **total time windows violations**."
+msgid "Summary row has the **total time windows violations**."
 msgstr ""
 
 msgid ""
@@ -1555,7 +1555,7 @@ msgstr ""
 
 msgid ""
 "Working with time units in seconds and the matrix been in meters: For a "
-"1000m lenght value on the matrix:"
+"1000m length value on the matrix:"
 msgstr ""
 
 msgid "Units"
@@ -1867,7 +1867,7 @@ msgstr ""
 msgid "trusty"
 msgstr ""
 
-msgid "posgreSQL version 9.3"
+msgid "PostgreSQL version 9.3"
 msgstr ""
 
 msgid "Data"
@@ -2774,17 +2774,26 @@ msgstr ":doc:`pgr_contraction`"
 msgid ":doc:`pgr_contractionDeadEnd`"
 msgstr ":doc:`pgr_contraction`"
 
+#, fuzzy
+msgid ":doc:`pgr_contractionLinear`"
+msgstr ":doc:`pgr_contraction`"
+
+#, fuzzy
+msgid ":doc:`pgr_contractionHierarchies`"
+msgstr ":doc:`pgr_contraction`"
+
 msgid ""
-"In large graphs, like the road graphs, or electric networks, graph "
-"contraction can be used to speed up some graph algorithms. Contraction "
-"reduces the size of the graph by removing some of the vertices and edges "
-"and, for example, might add edges that represent a sequence of original "
-"edges decreasing the total time and space used in graph algorithms."
+"In large graphs, like road graphs or electric networks, graph contraction "
+"can be used to speed up some graph algorithms. Contraction can reduce the "
+"size of the graph by removing some of the vertices and edges and adding "
+"edges that represent a sequence of original edges (the original ones can be "
+"kept in some methods). In this way, it decreases the total time and space "
+"used by graph algorithms, particularly those searching for an optimal path."
 msgstr ""
 
 msgid ""
 "This implementation gives a flexible framework for adding contraction "
-"algorithms in the future, currently, it supports two algorithms:"
+"algorithms in the future. Currently, it supports three algorithms."
 msgstr ""
 
 msgid "Dead end contraction"
@@ -2793,15 +2802,16 @@ msgstr ""
 msgid "Linear contraction"
 msgstr ""
 
-msgid "Allowing the user to:"
-msgstr ""
-
-msgid "Forbid contraction on a set of nodes."
-msgstr ""
+#, fuzzy
+msgid "Contraction hierarchies"
+msgstr "소개"
 
 msgid ""
-"Decide the order of the contraction algorithms and set the maximum number of "
-"times they are to be executed."
+"The two first ones can be combined through a iterative procedure, via the "
+"``pgr_contraction`` method. The third one is implemented on its own."
+msgstr ""
+
+msgid "All functions allow the user to forbid contraction on a set of nodes."
 msgstr ""
 
 msgid ""
@@ -2809,7 +2819,10 @@ msgid ""
 "lecture16.pdf"
 msgstr ""
 
-msgid "https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf"
+msgid "https://ae.iti.kit.edu/download/diploma_thesis_geisberger.pdf"
+msgstr ""
+
+msgid "https://jlazarsfeld.github.io/ch.150.project/contents/"
 msgstr ""
 
 msgid "Cost - Category"
@@ -3284,13 +3297,6 @@ msgstr ""
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
 
-#, fuzzy
-msgid "Post processing"
-msgstr "포스트 프로세싱"
-
-msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
-msgstr ":doc:`pgr_alphaShape` - 알파 셰이프 계산"
-
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ""
 
@@ -3375,6 +3381,9 @@ msgstr ":doc:`chinesePostmanProblem-family`"
 
 msgid ":doc:`coloring-family`"
 msgstr ":doc:`coloring-family`"
+
+msgid ":doc:`contraction-family`"
+msgstr ":doc:`contraction-family`"
 
 msgid ":doc:`transformation-family`"
 msgstr ":doc:`transformation-family`"
@@ -3792,9 +3801,6 @@ msgstr ":doc:`allpairs-family`"
 msgid ":doc:`bdDijkstra-family`"
 msgstr ":doc:`bdDijkstra-family`"
 
-msgid ":doc:`contraction-family`"
-msgstr ":doc:`contraction-family`"
-
 msgid ":doc:`dijkstra-family`"
 msgstr ":doc:`dijkstra-family`"
 
@@ -3840,23 +3846,13 @@ msgstr ""
 "다음 함수는 데이터베이스를 직접 수정하므로 사용하려면 관리자가 부여한 특별한 "
 "권한이 있어야 합니다."
 
-msgid ":doc:`pgr_createTopology` - create a topology based on the geometry."
-msgstr ""
-
-msgid ""
-":doc:`pgr_createVerticesTable` - reconstruct the vertices table based on the "
-"source and target information."
-msgstr ""
-
-msgid ""
-":doc:`pgr_analyzeGraph` - to analyze the edges and vertices of the edge "
-"table."
-msgstr ""
-
-msgid ":doc:`pgr_analyzeOneWay` - to analyze directionality of the edges."
-msgstr ""
-
 msgid ":doc:`pgr_nodeNetwork` - to create nodes to a not noded edge table."
+msgstr ""
+
+msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
+msgstr ""
+
+msgid "Utilities"
 msgstr ""
 
 msgid ""
@@ -3864,14 +3860,16 @@ msgid ""
 "table information."
 msgstr ""
 
-msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
+msgid ":doc:`pgr_findCloseEdges` - Finds close edges of points on the fly"
 msgstr ""
 
-msgid "Utilities family"
+msgid ":doc:`pgr_separateCrossing` - Breaks geometries that cross each other."
 msgstr ""
 
-msgid ":doc:`pgr_findCloseEdges`"
-msgstr ":doc:`pgr_findCloseEdges`"
+msgid ""
+":doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each "
+"other."
+msgstr ""
 
 msgid "Functions by categories"
 msgstr "카테고리별 함수"
@@ -4010,10 +4008,22 @@ msgstr ""
 msgid "Removal of unused C/C++ code"
 msgstr ""
 
-msgid "Removal of SQL deprecated functions"
+msgid "Removal of SQL deprecated signatures"
+msgstr ""
+
+msgid ""
+"`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
+"pgr_contraction"
 msgstr ""
 
 msgid "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+msgstr ""
+
+msgid ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+msgstr ""
+
+msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
 msgstr ""
 
 msgid ""
@@ -4021,14 +4031,42 @@ msgid ""
 "boolean,text)"
 msgstr ""
 
-msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
+msgid "Removal of SQL deprecated functions"
 msgstr ""
 
 msgid ""
-"pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
+"`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
+"pgr_trspviaedges"
 msgstr ""
 
-msgid "pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
+msgid ""
+"`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: "
+"pgr_trspviavertices"
+msgstr ""
+
+msgid ""
+"`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: "
+"pgr_alphaShape"
+msgstr ""
+
+msgid ""
+"`#2751 <https://github.com/pgRouting/pgrouting/issues/2851>`__: "
+"pgr_createTopology"
+msgstr ""
+
+msgid ""
+"`#2752 <https://github.com/pgRouting/pgrouting/issues/2752>`__: "
+"pgr_analyzeGraph"
+msgstr ""
+
+msgid ""
+"`#2755 <https://github.com/pgRouting/pgrouting/issues/2755>`__: "
+"pgr_analyzeOneWay"
+msgstr ""
+
+msgid ""
+"`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__: "
+"pgr_createVerticesTable"
 msgstr ""
 
 msgid "Removal of SQL deprecated internal functions"
@@ -4090,6 +4128,65 @@ msgstr ""
 msgid "_v4trsp(text,text,text,boolean)"
 msgstr ""
 
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__: Remove "
+"unused internal functions"
+msgstr ""
+
+msgid "_pgr_checkverttab(text,text[],integer,text)"
+msgstr ""
+
+msgid "_pgr_createindex(text,text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_createindex(text,text,text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_endpoint(geometry)"
+msgstr ""
+
+msgid "_pgr_getcolumnname(text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_getcolumnname(text,text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_getcolumntype(text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_getcolumntype(text,text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_gettablename(text,integer,text)"
+msgstr ""
+
+msgid "_pgr_iscolumnindexed(text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_iscolumnindexed(text,text,text,integer,text)"
+msgstr ""
+
+msgid "_pgr_iscolumnintable(text,text)"
+msgstr ""
+
+msgid "_pgr_msg(integer,text,text)"
+msgstr ""
+
+msgid "_pgr_onerror(boolean,integer,text,text,text,text)"
+msgstr ""
+
+msgid "_pgr_pointtoid(geometry,double precision,text,integer)"
+msgstr ""
+
+msgid "_pgr_quote_ident(text)"
+msgstr ""
+
+msgid "_pgr_startpoint(geometry)"
+msgstr ""
+
+msgid "_pgr_versionless(text,text)"
+msgstr ""
+
 msgid "Deprecation of internal C/C++ functions"
 msgstr ""
 
@@ -4140,7 +4237,9 @@ msgid "Migration of ``pgr_alphaShape``"
 msgstr ":doc:`pgr_withPoints`"
 
 msgid ""
-"Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
+"Deprecated in `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__ "
+"Removed from the repostory in `v3.8.0 <https://docs.pgrouting.org/3.8/en/"
+"migration.html>`__"
 msgstr ""
 
 msgid "**Before Deprecation:** The following was calculated:"
@@ -4175,6 +4274,10 @@ msgstr ""
 #, fuzzy
 msgid "Migration of ``pgr_createTopology``"
 msgstr ":doc:`pgr_createVerticesTable`"
+
+msgid ""
+"Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__"
+msgstr ""
 
 msgid "A table with `<edges>_vertices_pgr` was created."
 msgstr ""
@@ -5873,115 +5976,109 @@ msgid ""
 "removed and the routing topology needs to be updated."
 msgstr ""
 
-msgid "Adding split edges"
+#, fuzzy
+msgid "Fixing an intersection"
+msgstr "소개"
+
+msgid ""
+"In this example the original edge table will be used to store the additional "
+"geometries."
+msgstr ""
+
+msgid "An example use without results"
+msgstr ""
+
+msgid "Routing from :math:`1` to :math:`18` gives no solution."
+msgstr ""
+
+msgid "Analyze the network for intersections."
+msgstr ""
+
+msgid "The analysis tell us that the network has an intersection."
+msgstr ""
+
+msgid "Prepare tables"
+msgstr ""
+
+msgid "Additional columns to control the origin of the segments."
+msgstr ""
+
+msgid "Adding new segments."
 msgstr ""
 
 msgid ""
-"For each pair of crossing edges a process similar to this one must be "
-"performed."
+"Calling :doc:`pgr_separateCrossing` and adding the new segments to the edges "
+"table."
+msgstr ""
+
+msgid "Update other values"
 msgstr ""
 
 msgid ""
-"The columns inserted and the way are calculated are based on the "
-"application. For example, if the edges have a trait **name**, then that "
-"column is to be copied."
+"In this example only ``cost`` and ``reverse_cost`` are updated, where they "
+"are based on the length of the geometry and the directionality is kept using "
+"the ``sign`` function."
 msgstr ""
 
-msgid "For pgRouting calculations"
+msgid "Update the topology"
 msgstr ""
 
-msgid ""
-"**factor** based on the position of the intersection of the edges can be "
-"used to adjust the ``cost`` and ``reverse_cost`` columns."
+msgid "Insert the new vertices if any."
 msgstr ""
 
-msgid ""
-"Capacity information, used in the :doc:`flow-family` functions does not need "
-"to change when splitting edges."
+msgid "Update source and target information on the edges table."
 msgstr ""
 
-msgid "Adding new vertices"
+msgid "The example has results"
 msgstr ""
 
-msgid ""
-"After adding all the split edges required by the application, the newly "
-"created vertices need to be added to the vertices table."
+msgid "Routing from :math:`1` to :math:`18` gives a solution."
 msgstr ""
 
-msgid "Updating edges topology"
+msgid "Touching edges"
 msgstr ""
 
-msgid "Removing the surplus edges"
+msgid "Visually the edges seem to be connected, but internally they are not."
 msgstr ""
 
-msgid ""
-"Once all significant information needed by the application has been "
-"transported to the new edges, then the crossing edges can be deleted."
+msgid "The validity of the information is application dependent."
+msgstr ""
+
+msgid "Maybe there is a small barrier for vehicles but not for pedestrians."
 msgstr ""
 
 msgid ""
-"There are other options to do this task, like creating a view, or a "
-"materialized view."
+"Once analyzed one by one the touchings, for the ones that need a local fix, "
+"the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__."
 msgstr ""
 
-msgid "Updating vertices topology"
+msgid "Fixing a gap"
 msgstr ""
 
-msgid "To keep the graph consistent, the vertices topology needs to be updated"
+msgid "Routing from :math:`1` to :math:`2` gives no solution."
 msgstr ""
 
-msgid "Checking for crossing edges"
+msgid "Analyze the network for gaps."
 msgstr ""
 
-msgid "There are no crossing edges on the graph."
-msgstr ""
-
-msgid "Disconnected graphs"
-msgstr ""
-
-msgid "To get the graph connectivity:"
+msgid "The analysis tell us that the network has a gap."
 msgstr ""
 
 msgid ""
-"In this example, the component :math:`2` consists of vertices :math:`\\{2, "
-"4\\}` and both vertices are also part of the dead end result set."
+"Calling :doc:`pgr_separateTouching` and adding the new segments to the edges "
+"table."
 msgstr ""
 
-msgid "This graph needs to be connected."
-msgstr ""
-
-msgid ""
-"With the original graph of this documentation, there would be 3 components "
-"as the crossing edge in this graph is a different component."
-msgstr ""
-
-msgid "Prepare storage for connection information"
-msgstr ""
-
-msgid "Save the vertices connection information"
-msgstr ""
-
-msgid "Save the edges connection information"
-msgstr ""
-
-msgid "Get the closest vertex"
-msgstr ""
-
-msgid ""
-"Using :doc:`pgr_findCloseEdges` the closest vertex to component :math:`1` is "
-"vertex :math:`4`. And the closest edge to vertex :math:`4` is edge :math:"
-"`14`."
-msgstr ""
-
-msgid ""
-"The ``edge`` can be used to connect the components, using the ``fraction`` "
-"information about the edge :math:`14` to split the connecting edge."
+msgid "Routing from :math:`1` to :math:`2` gives a solution."
 msgstr ""
 
 msgid "Connecting components"
 msgstr ""
 
-msgid "There are three basic ways to connect the components"
+msgid "To get the graph connectivity:"
+msgstr ""
+
+msgid "There are three basic ways to connect components:"
 msgstr ""
 
 msgid "From the vertex to the starting point of the edge"
@@ -5996,16 +6093,33 @@ msgstr ""
 msgid "This solution requires the edge to be split."
 msgstr ""
 
-msgid "The following query shows the three ways to connect the components:"
+msgid ""
+"In this example :doc:`pgr_separateCrossing` and :doc:`pgr_separateTouching` "
+"will be used."
 msgstr ""
 
-msgid "Checking components"
+msgid "Get the connectivity"
 msgstr ""
 
 msgid ""
-"Ignoring the edge that requires further work. The graph is now fully "
-"connected as there is only one component."
+"In this example: the edges table will need an additional column and the "
+"vertex table will be rebuilt completely."
 msgstr ""
+
+msgid "Insert new edges"
+msgstr ""
+
+msgid ""
+"Using :doc:`pgr_separateCrossing` and :doc:`pgr_separateTouching` insert the "
+"results into the edges table."
+msgstr ""
+
+msgid "Create the vertices table"
+msgstr ""
+
+#, fuzzy
+msgid "Using :doc:`pgr_extractVertices` create the table."
+msgstr ":doc:`pgr_extractVertices`"
 
 msgid "Contraction of a graph"
 msgstr ""
@@ -7077,19 +7191,22 @@ msgstr ""
 msgid "This Release Contributors"
 msgstr ""
 
-msgid "Individuals in this release v3.7.x (in alphabetical order)"
+msgid "Individuals in this release v3.8.x (in alphabetical order)"
 msgstr ""
 
-msgid "(Alphabetical order)"
-msgstr ""
-
-msgid "Regina Obe, Vicky Vergara"
+msgid "Aurélie Bousquet, Regina Obe, Vicky Vergara"
 msgstr ""
 
 msgid ""
 "And all the people that give us a little of their time making comments, "
 "finding issues, making pull requests etc. in any of our products: "
 "osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
+msgstr ""
+
+msgid "Translators (in alphabetical order)"
+msgstr ""
+
+msgid "Dapeng Wang"
 msgstr ""
 
 msgid "Corporate Sponsors in this release (in alphabetical order)"
@@ -7109,6 +7226,9 @@ msgstr ""
 msgid "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
 msgstr ""
 
+msgid "`HighGo Software <https://www.highgo.com/>`__"
+msgstr ""
+
 msgid "`Paragon Corporation <https://www.paragoncorporation.com/>`__"
 msgstr ""
 
@@ -7121,16 +7241,16 @@ msgstr ""
 msgid ""
 "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
 "Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
-"Hossain, Ashish Kumar, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, "
-"Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, "
-"Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, "
-"Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, "
-"Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin "
-"Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul "
-"Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith "
-"Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, "
-"Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, "
-"Virginia Vergara, Yige Huang"
+"Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian "
+"Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, "
+"Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald "
+"Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay "
+"Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, "
+"Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang "
+"Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, "
+"Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, "
+"Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain "
+"Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -7146,6 +7266,9 @@ msgid "Georepublic"
 msgstr ""
 
 msgid "Google Summer of Code"
+msgstr ""
+
+msgid "HighGo Software"
 msgstr ""
 
 msgid "iMaptools"
@@ -7210,7 +7333,7 @@ msgstr ""
 msgid "Version 3.6.0"
 msgstr ""
 
-msgid "Result columns standarized to: |nksp-result|"
+msgid "Standardizing output columns to |nksp-result|"
 msgstr ""
 
 #, fuzzy
@@ -7262,7 +7385,7 @@ msgstr ""
 msgid "|Boost| Boost Graph Inside"
 msgstr ""
 
-msgid "Boost Graph Inside"
+msgid "Boost Graph inside"
 msgstr ""
 
 msgid "Signatures"
@@ -7441,7 +7564,7 @@ msgid "When ``start_vid = 0 OR end_vid = 0``"
 msgstr ""
 
 msgid ""
-"The solutions generated is garanteed to be *twice as long as the optimal "
+"The solutions generated are guaranteed to be *twice as long as the optimal "
 "tour in the worst case*"
 msgstr ""
 
@@ -7449,7 +7572,7 @@ msgid "When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
 msgstr ""
 
 msgid ""
-"It is **not garanteed** that the solution will be, in the worse case, twice "
+"It is **not guaranteed** that the solution will be, in the worst case, twice "
 "as long as the optimal tour, due to the fact that `end_vid` is forced to be "
 "in a fixed position."
 msgstr ""
@@ -7458,7 +7581,7 @@ msgid "With ``directed => true``"
 msgstr ""
 
 msgid ""
-"It is **not garanteed** that the solution will be, in the worse case, twice "
+"It is **not guaranteed** that the solution will be, in the worst case, twice "
 "as long as the optimal tour"
 msgstr ""
 
@@ -7503,9 +7626,6 @@ msgid "pgr_TSP(`Matrix SQL`_, ``[start_id, end_id]``)"
 msgstr ""
 
 msgid "Returns set of |tsp-result|"
-msgstr ""
-
-msgid "OR EMTPY SET"
 msgstr ""
 
 msgid "Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information"
@@ -7560,7 +7680,7 @@ msgstr ""
 msgid "**Line 6** ``start_vid => 1``"
 msgstr ""
 
-msgid "Using points of interest to generate an asymetric matrix."
+msgid "Using points of interest to generate an asymmetric matrix."
 msgstr ""
 
 msgid "To generate an asymmetric matrix:"
@@ -7571,7 +7691,7 @@ msgid ""
 "not including it in the query"
 msgstr ""
 
-msgid "**Line 6** Generating an asymetric matrix with ``directed => true``"
+msgid "**Line 6** Generating an asymmetric matrix with ``directed => true``"
 msgstr ""
 
 msgid ""
@@ -7631,10 +7751,8 @@ msgid "New official function."
 msgstr ""
 
 msgid ""
-"Any duplicated identifier will be ignored. The coordinates that will be kept"
-msgstr ""
-
-msgid "is arbitrarly."
+"Any duplicated identifier will be ignored. The coordinates that will be kept "
+"is arbitrarily."
 msgstr ""
 
 msgid ""
@@ -7703,7 +7821,7 @@ msgid "Visual results"
 msgstr ""
 
 msgid ""
-"Visualy, The first image is the `optimal solution <https://www.math."
+"Visually, The first image is the `optimal solution <https://www.math."
 "uwaterloo.ca/tsp/world/witour.html>`__ and the second image is the solution "
 "obtained with ``pgr_TSPeuclidean``."
 msgstr ""
@@ -7717,7 +7835,7 @@ msgstr ""
 msgid "Combinations signature promoted to official."
 msgstr ""
 
-msgid "Standarizing output columns to |short-generic-result|"
+msgid "Standardizing output columns to |short-generic-result|"
 msgstr ""
 
 msgid "pgr_aStar(One to One) added ``start_vid`` and ``end_vid`` columns."
@@ -7842,7 +7960,7 @@ msgstr ":doc:`routingFunctions`"
 
 #, fuzzy
 msgid ""
-"The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path "
+"The ``pgr_aStarCost`` function summarizes of the cost of the shortest path "
 "using the A* algorithm."
 msgstr ":doc:`pgr_aStarCost` - 최단 경로의 집계 비용 반환."
 
@@ -7893,7 +8011,7 @@ msgid ""
 "`pgr_aStar`."
 msgstr ""
 
-msgid "Using internaly the :doc:`pgr_aStar` algorithm"
+msgid "Using internally the :doc:`pgr_aStar` algorithm"
 msgstr ""
 
 msgid "Returns a cost matrix."
@@ -7929,475 +8047,6 @@ msgid ""
 msgstr ""
 
 msgid "Use with :doc:`pgr_TSP`"
-msgstr ""
-
-msgid "``pgr_alphaShape``"
-msgstr ""
-
-msgid "``pgr_alphaShape`` — Polygon part of an alpha shape."
-msgstr ""
-
-msgid "Version 3.8.0"
-msgstr ""
-
-#, fuzzy
-msgid "Deprecated function."
-msgstr ":doc:`routingFunctions`"
-
-msgid "Breaking change on signature"
-msgstr ""
-
-msgid "**Boost 1.54** & **Boost 1.55** are supported"
-msgstr ""
-
-msgid "**Boost 1.56+** is preferable"
-msgstr ""
-
-msgid "Boost Geometry is stable on Boost 1.56"
-msgstr ""
-
-msgid "Added alpha argument with default 0 (use optimal value)"
-msgstr ""
-
-msgid "Support to return multiple outer/inner ring"
-msgstr ""
-
-msgid "Renamed from version 1.x"
-msgstr ""
-
-msgid "Returns the polygon part of an alpha shape."
-msgstr ""
-
-msgid "Input is a *geometry* and returns a *geometry*"
-msgstr ""
-
-msgid "Uses PostGis ST_DelaunyTriangles"
-msgstr ""
-
-msgid ""
-"Instead of using CGAL's definition of `alpha` it use the ``spoon_radius``"
-msgstr ""
-
-msgid ":math:`spoon\\_radius = \\sqrt alpha`"
-msgstr ""
-
-msgid ""
-"A Triangle area is considered part of the alpha shape when :math:"
-"`circumcenter\\ radius < spoon\\_radius`"
-msgstr ""
-
-msgid "The ``alpha`` parameter is the **spoon radius**"
-msgstr ""
-
-msgid ""
-"When the total number of points is less than 3, returns an EMPTY geometry"
-msgstr ""
-
-msgid "pgr_alphaShape(**geometry**, [alpha])"
-msgstr ""
-
-msgid "RETURNS ``geometry``"
-msgstr ""
-
-msgid ""
-"passing a geometry collection with spoon radius :math:`1.5` using the return "
-"variable ``geom``"
-msgstr ""
-
-msgid "**geometry**"
-msgstr ""
-
-msgid "``geometry``"
-msgstr ""
-
-msgid "Geometry with at least :math:`3` points"
-msgstr ""
-
-msgid "``alpha``"
-msgstr ""
-
-msgid "The radius of the spoon."
-msgstr ""
-
-msgid "Return Value"
-msgstr ""
-
-msgid "Kind of geometry"
-msgstr ""
-
-msgid "GEOMETRY COLLECTION"
-msgstr ""
-
-msgid "A Geometry collection of Polygons"
-msgstr ""
-
-msgid ":doc:`pgr_drivingDistance`"
-msgstr ":doc:`pgr_drivingDistance`"
-
-msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
-msgstr ""
-
-#, fuzzy
-msgid "``pgr_analyzeGraph`` -- Deprecated since 3.8.0"
-msgstr ":doc:`pgr_analyzeGraph`"
-
-msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
-msgstr ""
-
-msgid "The function returns:"
-msgstr ""
-
-msgid "``OK`` after the analysis has finished."
-msgstr ""
-
-msgid "``FAIL`` when the analysis was not completed due to an error."
-msgstr ""
-
-msgid "pgr_analyzeGraph(**edge_table**, **tolerance**, [**options**])"
-msgstr ""
-
-msgid "**options:** ``[the_geom, id, source, target, rows_where]``"
-msgstr ""
-
-msgid "RETURNS ``VARCHAR``"
-msgstr ""
-
-msgid "Prerequisites"
-msgstr ""
-
-msgid ""
-"The edge table to be analyzed must contain a source column and a target "
-"column filled with id's of the vertices of the segments and the "
-"corresponding vertices table <edge_table>_vertices_pgr that stores the "
-"vertices information."
-msgstr ""
-
-msgid "The analyze graph function accepts the following parameters:"
-msgstr ""
-
-msgid "edge_table"
-msgstr ""
-
-msgid "``text`` Network table name. (may contain the schema name as well)"
-msgstr ""
-
-msgid "tolerance"
-msgstr ""
-
-msgid ""
-"``float8`` Snapping tolerance of disconnected edges. (in projection unit)"
-msgstr ""
-
-msgid "the_geom"
-msgstr ""
-
-msgid ""
-"``text`` Geometry column name of the network table. Default value is "
-"``the_geom``."
-msgstr ""
-
-msgid "id"
-msgstr ""
-
-msgid ""
-"``text`` Primary key column name of the network table. Default value is "
-"``id``."
-msgstr ""
-
-msgid "source"
-msgstr ""
-
-msgid ""
-"``text`` Source column name of the network table. Default value is "
-"``source``."
-msgstr ""
-
-msgid "target"
-msgstr ""
-
-msgid ""
-"``text`` Target column name of the network table. Default value is "
-"``target``."
-msgstr ""
-
-msgid "rows_where"
-msgstr ""
-
-msgid ""
-"``text`` Condition to select a subset or rows. Default value is ``true`` to "
-"indicate all rows."
-msgstr ""
-
-msgid "Uses the vertices table: <edge_table>_vertices_pgr."
-msgstr ""
-
-msgid "Fills completely the ``cnt`` and ``chk`` columns of the vertices table."
-msgstr ""
-
-msgid ""
-"Returns the analysis of the section of the network defined by ``rows_where``"
-msgstr ""
-
-msgid "The vertices table is not found."
-msgstr ""
-
-msgid ""
-"A required column of the Network table is not found or is not of the "
-"appropriate type."
-msgstr ""
-
-msgid "The condition is not well formed."
-msgstr ""
-
-msgid "The names of source , target or id are the same."
-msgstr ""
-
-msgid "The SRID of the geometry could not be determined."
-msgstr ""
-
-msgid "The Vertices Table"
-msgstr ""
-
-msgid "The structure of the vertices table is:"
-msgstr ""
-
-msgid "``bigint`` Identifier of the vertex."
-msgstr ""
-
-msgid "cnt"
-msgstr ""
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex."
-msgstr ""
-
-msgid "chk"
-msgstr ""
-
-msgid "``integer`` Indicator that the vertex might have a problem."
-msgstr ""
-
-msgid "ein"
-msgstr ""
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as incoming."
-msgstr ""
-
-msgid "eout"
-msgstr ""
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"as outgoing."
-msgstr ""
-
-msgid "``geometry`` Point geometry of the vertex."
-msgstr ""
-
-msgid "Usage when the edge table's columns MATCH the default values:"
-msgstr ""
-
-msgid "The simplest way to use pgr_analyzeGraph is:"
-msgstr ""
-
-msgid "Arguments are given in the order described in the parameters:"
-msgstr ""
-
-msgid "We get the same result as the simplest way to use the function."
-msgstr ""
-
-msgid "An error would occur when"
-msgstr ""
-
-msgid "the arguments are not given in the appropriate order:"
-msgstr ""
-
-msgid ""
-"In this example, the column ``id`` of the table ``mytable`` is passed to the "
-"function as the geometry column, and the geometry column ``the_geom`` is "
-"passed to the function as the id column."
-msgstr ""
-
-msgid "When using the named notation"
-msgstr ""
-
-msgid "The order of the parameters do not matter:"
-msgstr ""
-
-msgid ""
-"Parameters defined with a default value can be omitted, as long as the value "
-"matches the default:"
-msgstr ""
-
-msgid "Selecting rows using rows_where parameter"
-msgstr ""
-
-msgid ""
-"Selecting rows based on the id. Displays the analysis a the section of the "
-"network."
-msgstr ""
-
-msgid ""
-"Selecting the rows where the geometry is near the geometry of row with "
-"``id`` = 5"
-msgstr ""
-
-msgid ""
-"Selecting the rows where the geometry is near the geometry of the row with "
-"``gid`` =100 of the table ``othertable``."
-msgstr ""
-
-msgid "Usage when the edge table's columns DO NOT MATCH the default values:"
-msgstr ""
-
-msgid "For the following table"
-msgstr ""
-
-msgid "Using positional notation:"
-msgstr ""
-
-msgid ""
-"The arguments need to be given in the order described in the parameters:"
-msgstr ""
-
-msgid ""
-"An error would occur when the arguments are not given in the appropriate "
-"order: In this example, the column ``gid`` of the table ``mytable`` is "
-"passed to the function as the geometry column, and the geometry column "
-"``mygeom`` is passed to the function as the id column."
-msgstr ""
-
-msgid ""
-"In this scenario omitting a parameter would create an error because the "
-"default values for the column names do not match the column names of the "
-"table."
-msgstr ""
-
-msgid "Selecting rows based on the id."
-msgstr ""
-
-msgid ""
-"Selecting the rows WHERE the geometry is near the geometry of row with "
-"``id`` =5 ."
-msgstr ""
-
-msgid ""
-"Selecting the rows WHERE the geometry is near the place='myhouse' of the "
-"table ``othertable``. (note the use of quote_literal)"
-msgstr ""
-
-msgid ":doc:`pgr_analyzeOneWay`"
-msgstr ":doc:`pgr_analyzeOneWay`"
-
-msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
-msgstr ""
-
-#, fuzzy
-msgid "``pgr_analyzeOneWay`` - Deprecated since 3.8.0"
-msgstr ":doc:`pgr_analyzeGraph`"
-
-msgid ""
-"``pgr_analyzeOneWay`` — Analyzes oneway Sstreets and identifies flipped "
-"segments."
-msgstr ""
-
-msgid ""
-"This function analyzes oneway streets in a graph and identifies any flipped "
-"segments."
-msgstr ""
-
-msgid ""
-"The analyses of one way segments is pretty simple but can be a powerful "
-"tools to identifying some the potential problems created by setting the "
-"direction of a segment the wrong way. A node is a `source` if it has edges "
-"the exit from that node and no edges enter that node. Conversely, a node is "
-"a `sink` if all edges enter the node but none exit that node. For a `source` "
-"type node it is logically impossible to exist because no vehicle can exit "
-"the node if no vehicle and enter the node. Likewise, if you had a `sink` "
-"node you would have an infinite number of vehicle piling up on this node "
-"because you can enter it but not leave it."
-msgstr ""
-
-msgid ""
-"So why do we care if the are not feasible? Well if the direction of an edge "
-"was reversed by mistake we could generate exactly these conditions. Think "
-"about a divided highway and on the north bound lane one segment got entered "
-"wrong or maybe a sequence of multiple segments got entered wrong or maybe "
-"this happened on a round-about. The result would be potentially a `source` "
-"and/or a `sink` node."
-msgstr ""
-
-msgid ""
-"So by counting the number of edges entering and exiting each node we can "
-"identify both `source` and `sink` nodes so that you can look at those areas "
-"of your network to make repairs and/or report the problem back to your data "
-"vendor."
-msgstr ""
-
-msgid ""
-"pgr_analyzeOneWay(**geom_table**, **s_in_rules**, **s_out_rules**, "
-"**t_in_rules**, **t_out_rules**, [**options**])"
-msgstr ""
-
-msgid "**options:** ``[oneway, source, target, two_way_if_null]``"
-msgstr ""
-
-msgid "RETURNS ``TEXT``"
-msgstr ""
-
-msgid "s_in_rules"
-msgstr ""
-
-msgid "``text[]`` source node **in** rules"
-msgstr ""
-
-msgid "s_out_rules"
-msgstr ""
-
-msgid "``text[]`` source node **out** rules"
-msgstr ""
-
-msgid "t_in_rules"
-msgstr ""
-
-msgid "``text[]`` target node **in** rules"
-msgstr ""
-
-msgid "t_out_rules"
-msgstr ""
-
-msgid "``text[]`` target node **out** rules"
-msgstr ""
-
-msgid "oneway"
-msgstr ""
-
-msgid ""
-"``text`` oneway column name name of the network table. Default value is "
-"``oneway``."
-msgstr ""
-
-msgid "two_way_if_null"
-msgstr ""
-
-msgid ""
-"``boolean`` flag to treat oneway NULL values as bi-directional. Default "
-"value is ``true``."
-msgstr ""
-
-msgid ""
-"Fills completely the ``ein`` and ``eout`` columns of the vertices table."
-msgstr ""
-
-msgid "The names of source , target or oneway are the same."
-msgstr ""
-
-msgid ""
-"The rules are defined as an array of text strings that if match the "
-"``oneway`` value would be counted as ``true`` for the source or target "
-"**in** or **out** condition."
 msgstr ""
 
 msgid "``pgr_articulationPoints``"
@@ -8514,10 +8163,11 @@ msgid ""
 "bidirectional A* algorithm."
 msgstr ""
 
+#, fuzzy
 msgid ""
-"The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest path "
+"The ``pgr_bdAstarCost`` function summarizes of the cost of the shortest path "
 "using the bidirectional A* algorithm."
-msgstr ""
+msgstr ":doc:`pgr_aStarCost` - 최단 경로의 집계 비용 반환."
 
 msgid ""
 "pgr_bdAstarCost(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
@@ -8546,7 +8196,7 @@ msgid ""
 "`pgr_aStar`."
 msgstr ""
 
-msgid "Using internaly the :doc:`pgr_bdAstar` algorithm"
+msgid "Using internally the :doc:`pgr_bdAstar` algorithm"
 msgstr ""
 
 msgid "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
@@ -8638,10 +8288,13 @@ msgid ""
 "Bidirectional Dijkstra algorithm."
 msgstr ""
 
+#, fuzzy
 msgid ""
-"The ``pgr_bdDijkstraCost`` function sumarizes of the cost of the shortest "
+"The ``pgr_bdDijkstraCost`` function summarizes of the cost of the shortest "
 "path using the bidirectional Dijkstra Algorithm."
 msgstr ""
+":doc:`pgr_bdDijkstraCost` - 최단 경로의 비용을 계산하기 위한 양방향 다익스트"
+"라 알고리즘"
 
 msgid ""
 "pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])"
@@ -8780,6 +8433,9 @@ msgid ""
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
+msgstr ""
+
+msgid "Boost Graph Inside"
 msgstr ""
 
 msgid "``pgr_betweennessCentrality`` - Experimental"
@@ -9354,6 +9010,9 @@ msgid ""
 "vertices and edges."
 msgstr ""
 
+msgid "Version 3.8.0"
+msgstr ""
+
 msgid "New signature:"
 msgstr ""
 
@@ -9917,6 +9576,323 @@ msgid "Using when departure and destination are not in the contracted graph"
 msgstr ""
 
 #, fuzzy
+msgid "``pgr_contractionHierarchies`` - Experimental"
+msgstr ":doc:`pgr_stoerWagner`"
+
+msgid ""
+"``pgr_contractionHierarchies`` — Performs graph contraction according to the "
+"contraction hierarchies method and returns the contracted vertices and "
+"shortcut edges created."
+msgstr ""
+
+#, fuzzy
+msgid "New **experimental** function"
+msgstr ":doc:`routingFunctions`"
+
+msgid ""
+"The contraction hierarchies method builds, from an initial order of the "
+"vertices, a hierarchical order, giving priority to some vertices during the "
+"processing of label fixing of shortest paths algorithms. Furthermore, the "
+"contraction hierarchies algorithm adds shortcut edges in the graph, that "
+"helps the shortest paths algorithm to follow the created hierarchical graph "
+"structure."
+msgstr ""
+
+msgid ""
+"The idea of the hierarchy is to put at a high priority level vertices that "
+"belong to the long distance network (highways for example in a road network) "
+"and to a low level of priority nodes that belong to the short distance "
+"network (arterials or secondary roads for example in road networks)."
+msgstr ""
+
+msgid ""
+"The contraction hierarchies algorithm makes the assumption that there is "
+"already a valuable vertices order that is used to initialize the contraction "
+"process. As in most cases there is no valuable initial node ordering, we use "
+"the order given by vertices ID. Then, the contraction process is made on the "
+"basis of this first order to give the final hierarchy."
+msgstr ""
+
+msgid ""
+"The basic idea is to keep the vertices in a priority queue sorted by some "
+"estimate of how attractive is their contraction. The implemented case uses "
+"the metric called *edge difference*, which corresponds to the difference "
+"between the number of shortcuts produced by a vertex contraction and the "
+"number of incident edges in the graph before contraction (``#shortcuts - "
+"#incident edges``)."
+msgstr ""
+
+msgid ""
+"Finally, the aim is to reduce the explored part of the graph, when using a "
+"bidirectional Dijkstra-like algorithm. The vertices order is used to feed "
+"the oriented search. The search is made without losing optimality."
+msgstr ""
+
+msgid ""
+"Finding an optimal vertices ordering for contraction is a difficult problem. "
+"Nevertheless, very simple local heuristics work quite well, according to "
+"Geisberger et al. [2]. The principle here is to a priori estimate the value "
+"of the *edge difference* and to contract the node at the top of the queue "
+"only if the new value of the metric keeps it at the top of the queue. "
+"Otherwise, it is reinserted in the queue, at its right place corresponding "
+"to the new metric value."
+msgstr ""
+
+msgid "The process is done on graphs having only edges with positive costs."
+msgstr ""
+
+msgid ""
+"It is necessary to remember that there are no deleted vertices with this "
+"function. At the end, the graph keeps every vertex it had, but has some "
+"added edges, corresponding to shortcuts. The vertices which have been "
+"contracted, to build the shortcut edges, are kept and hierarchically ordered."
+msgstr ""
+
+msgid ""
+"As for the other contraction methods, it does not return the full contracted "
+"graph, only the changes. They are here of two types:"
+msgstr ""
+
+msgid "added shortcut edges, with negative identifiers;"
+msgstr ""
+
+msgid "contracted nodes with an order."
+msgstr ""
+
+msgid ""
+"The ``pgr_contractionHierarchies`` function has the following signature:"
+msgstr ""
+
+msgid "pgr_contractionHierarchies(`Edges SQL`_, [**options**])"
+msgstr ""
+
+msgid "Returns set of |result-contraction-hierarchies|"
+msgstr ""
+
+msgid "Contraction hierarchies optional parameters"
+msgstr ""
+
+msgid "True if the graph is directed, False otherwise."
+msgstr ""
+
+msgid ""
+"The function returns many rows (one per vertex and one per shortcut edge "
+"created). The columns of the rows are:"
+msgstr ""
+
+msgid "Type of the ``id``."
+msgstr ""
+
+msgid "Column ``id`` has a positive value"
+msgstr ""
+
+msgid "Column ``id`` has a negative value"
+msgstr ""
+
+msgid "``metric``"
+msgstr ""
+
+msgid "``vertex_order``"
+msgstr ""
+
+msgid "Examples"
+msgstr ""
+
+#, fuzzy
+msgid "On an undirected graph"
+msgstr ":doc:`pgr_bridges` - 무방향 그래프의 브릿지."
+
+msgid ""
+"The following query shows the original data involved in the contraction "
+"operation on an undirected graph."
+msgstr ""
+
+msgid "building contraction hierarchies on the whole graph"
+msgstr ""
+
+msgid ""
+"The results do not represent the contracted graph. They represent the "
+"changes done to the graph after applying the contraction algorithm and give "
+"the vertex order built by the algorithm, by ordering vertices according to "
+"the *edge difference* metric. As a consequence, vertices are all represented "
+"in the result (except of course forbidden ones). Only shortcut built by the "
+"algorithm are represented in the result."
+msgstr ""
+
+msgid ""
+"After computing the contraction hierarchies, an order is now given to the "
+"vertices,"
+msgstr ""
+
+msgid ""
+"in order to be used with a specific Dijkstra algorithm (implementation "
+"coming in a future version), which speeds up the search."
+msgstr ""
+
+msgid "We obtain the contracted graph above:"
+msgstr ""
+
+msgid ""
+"We can see without surprise that the vertices belonging to the shortcuts "
+"have a tendency to have a high priority level in the resulting vertices "
+"order."
+msgstr ""
+
+msgid "On an undirected graph with forbidden vertices"
+msgstr ""
+
+msgid "building contraction with a set of forbidden vertices"
+msgstr ""
+
+msgid "Contraction process steps details"
+msgstr ""
+
+msgid "Shortcut building process"
+msgstr ""
+
+msgid ""
+"A vertex ``v`` is contracted by adding shortcuts replacing former paths of "
+"the form ``(u, v, w)`` by an edge ``(u, w)``. The shortcut ``(u, w)`` is "
+"only needed when ``(u, v, w)`` is the only shortest path between ``u`` and "
+"``w``."
+msgstr ""
+
+msgid ""
+"When all shortcuts have been added for a given vertex ``v``, the incident "
+"edges of ``v`` are removed and another vertex is contracted with the "
+"remaining graph."
+msgstr ""
+
+msgid ""
+"The procedure is destructive for the graph and a copy is made to be able to "
+"manipulate it again as a whole. The contraction process adds all discovered "
+"shortcuts to the edge set ``E`` and attributes a metric to each contracted "
+"vertex. This metric is giving what is called the *contraction hierarchy*."
+msgstr ""
+
+msgid "Initialize the queue with a first vertices order"
+msgstr ""
+
+msgid "For each vertex ``v`` of the graph, a contraction of ``v`` is built:"
+msgstr ""
+
+#, fuzzy
+msgid ":math:`v`"
+msgstr ":math:`G(V,E)`"
+
+#, fuzzy
+msgid ":math:`\\{p, r, u\\}`"
+msgstr ":math:`G(V,E)`"
+
+#, fuzzy
+msgid ":math:`p`"
+msgstr ":math:`G(V,E)`"
+
+#, fuzzy
+msgid ":math:`\\{u, v\\}`"
+msgstr ":math:`G(V,E)`"
+
+#, fuzzy
+msgid ":math:`u`"
+msgstr ":math:`G(V,E)`"
+
+#, fuzzy
+msgid ":math:`\\{p, v, w\\}`"
+msgstr ":math:`G(V,E)`"
+
+#, fuzzy
+msgid ":math:`r`"
+msgstr ":math:`G(V,E)`"
+
+#, fuzzy
+msgid ":math:`\\{v, w\\}`"
+msgstr ":math:`G(V,E)`"
+
+#, fuzzy
+msgid ":math:`w`"
+msgstr ":math:`G(V,E)`"
+
+#, fuzzy
+msgid ":math:`\\{r, u\\}`"
+msgstr ":math:`G(V,E)`"
+
+msgid "Adjacent edges are removed."
+msgstr ""
+
+msgid ""
+"Shortcuts are built from predecessors of ``v`` to successors of ``v`` if and "
+"only if the path through ``v`` corresponds to the only shortest path between "
+"the predecessor and the successor of ``v`` in the graph. The *edge "
+"difference* metric here takes the value of -2."
+msgstr ""
+
+msgid ""
+"Then the following vertex is contracted. The process goes on until each node "
+"of the graph has been contracted. At the end, there are no more edges in the "
+"graph, which has been destroyed by the process."
+msgstr ""
+
+msgid ""
+"This first contraction will give a vertices order, given by ordering them in "
+"ascending order on the metric (edge difference). A total vertices order is "
+"built. If ``u < v``, then ``u`` is less important than ``v``. The algorithm "
+"keeps the vertices into a queue in this order."
+msgstr ""
+
+msgid ""
+"A hierarchy will now be constructed by contracting again the vertices in "
+"this order."
+msgstr ""
+
+msgid "Build the final vertex order"
+msgstr ""
+
+msgid ""
+"Once the first order built, the algorithm uses it to browse the graph once "
+"again. For each vertex taken in the queue, the algorithm simulates "
+"contraction and calculates its edge difference. If the computed value is "
+"greater than the one of the next vertex to be contracted, then the algorithm "
+"puts it back in the queue (heuristic approach). Otherwise it contracts it "
+"permanently."
+msgstr ""
+
+msgid "Add shortcuts to the initial graph"
+msgstr ""
+
+msgid ""
+"At the end, the algorithm takes the initial graph (before edges deletions) "
+"and adds the shortcut edges to it. It gives you the contracted graph, ready "
+"to use with a specialized Dijkstra algorithm, which takes into account the "
+"order of the nodes in the hierarchy."
+msgstr ""
+
+#, fuzzy
+msgid "Use the contraction"
+msgstr "소개"
+
+#, fuzzy
+msgid "Build the contraction"
+msgstr "소개"
+
+msgid "Add shortcuts and hierarchy in the existing tables"
+msgstr ""
+
+msgid ""
+"Add new columns in the `vertices` and `edges` tables to store the results:"
+msgstr ""
+
+msgid "Update and insert the results in the two tables."
+msgstr ""
+
+msgid "Use a Dijkstra shortest path algorithm on it"
+msgstr ""
+
+msgid ""
+"Then you can use any Dijkstra-like algorithm, waiting for the adapted one "
+"which will take into account the built vertices hierarchy. For example:"
+msgstr ""
+
+#, fuzzy
 msgid "``pgr_contractionLinear`` - Proposed"
 msgstr ":doc:`pgr_extractVertices`"
 
@@ -10053,322 +10029,6 @@ msgid ""
 msgstr ""
 
 msgid "Create the contracted graph."
-msgstr ""
-
-#, fuzzy
-msgid "``pgr_createTopology`` - Deprecated since v3.8.0"
-msgstr ":doc:`pgr_analyzeGraph`"
-
-msgid ""
-"``pgr_createTopology`` — Builds a network topology based on the geometry "
-"information."
-msgstr ""
-
-msgid ""
-"``OK`` after the network topology has been built and the vertices table "
-"created."
-msgstr ""
-
-msgid "``FAIL`` when the network topology was not built due to an error."
-msgstr ""
-
-msgid "pgr_createTopology(edge_table, tolerance, [**options**])"
-msgstr ""
-
-msgid "**options:** ``[the_geom, id, source, target, rows_where, clean]``"
-msgstr ""
-
-msgid "The topology creation function accepts the following parameters:"
-msgstr ""
-
-msgid ""
-"``text`` Condition to SELECT a subset or rows. Default value is ``true`` to "
-"indicate all rows that where ``source`` or ``target`` have a null value, "
-"otherwise the condition is used."
-msgstr ""
-
-msgid "clean"
-msgstr ""
-
-msgid "``boolean`` Clean any previous topology. Default value is ``false``."
-msgstr ""
-
-msgid "The ``edge_table`` will be affected"
-msgstr ""
-
-msgid "The ``source`` column values will change."
-msgstr ""
-
-msgid "The ``target`` column values will change."
-msgstr ""
-
-msgid ""
-"An index will be created, if it doesn't exists, to speed up the process to "
-"the following columns:"
-msgstr ""
-
-msgid "``the_geom``"
-msgstr ""
-
-msgid "``OK`` after the network topology has been built."
-msgstr ""
-
-msgid "Creates a vertices table: <edge_table>_vertices_pgr."
-msgstr ""
-
-msgid "Fills ``id`` and ``the_geom`` columns of the vertices table."
-msgstr ""
-
-msgid ""
-"Fills the source and target columns of the edge table referencing the ``id`` "
-"of the vertices table."
-msgstr ""
-
-msgid "``FAIL`` when the network topology was not built due to an error:"
-msgstr ""
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"AS incoming."
-msgstr ""
-
-msgid ""
-"``integer`` Number of vertices in the edge_table that reference this vertex "
-"AS outgoing."
-msgstr ""
-
-msgid "The simplest way to use pgr_createTopology is:"
-msgstr ""
-
-msgid "When the arguments are given in the order described in the parameters:"
-msgstr ""
-
-msgid "We get the sameresult as the simplest way to use the function."
-msgstr ""
-
-msgid ""
-"An error would occur when the arguments are not given in the appropriate "
-"order: In this example, the column ``id`` of the table ``ege_table`` is "
-"passed to the function as the geometry column, and the geometry column "
-"``the_geom`` is passed to the function as the id column."
-msgstr ""
-
-msgid ""
-"Parameters defined with a default value can be omitted, as long as the value "
-"matches the default And The order of the parameters would not matter."
-msgstr ""
-
-msgid ""
-"Selecting the rows where the geometry is near the geometry of row with ``id "
-"= 5``."
-msgstr ""
-
-msgid ""
-"The arguments need to be given in the order described in the parameters."
-msgstr ""
-
-msgid ""
-"Note that this example uses clean flag. So it recreates the whole vertices "
-"table."
-msgstr ""
-
-msgid ""
-"An error would occur when the arguments are not given in the appropiriate "
-"order: In this example, the column ``gid`` of the table ``mytable`` is "
-"passed to the function AS the geometry column, and the geometry column "
-"``mygeom`` is passed to the function AS the id column."
-msgstr ""
-
-msgid ""
-"In this scenario omitting a parameter would create an error because the "
-"default values for the column names do not match the column names of the "
-"table. The order of the parameters do not matter:"
-msgstr ""
-
-msgid "Based on id:"
-msgstr ""
-
-msgid "Create a routing topology"
-msgstr ""
-
-msgid ""
-"An alternate method to create a routing topology use :doc:"
-"`pgr_extractVertices`"
-msgstr ""
-
-msgid "Make sure the database does not have the ``vertices_table``"
-msgstr ""
-
-msgid "Clean up the columns of the routing topology to be created"
-msgstr ""
-
-msgid "Create the vertices table"
-msgstr ""
-
-msgid ""
-"When the ``LINESTRING`` has a SRID then use ``geom::geometry(POINT, <SRID>)``"
-msgstr ""
-
-msgid "For big edge tables that are been prepared,"
-msgstr ""
-
-msgid "Create it as ``UNLOGGED`` and"
-msgstr ""
-
-msgid "After the table is created ``ALTER TABLE .. SET LOGGED``"
-msgstr ""
-
-msgid "Inspect the vertices table"
-msgstr ""
-
-msgid "Create the routing topology on the edge table"
-msgstr ""
-
-msgid "Updating the ``source`` information"
-msgstr ""
-
-msgid "Updating the ``target`` information"
-msgstr ""
-
-msgid "Inspect the routing topology"
-msgstr ""
-
-msgid "**Generated topology**"
-msgstr ""
-
-msgid "With full output"
-msgstr ""
-
-msgid ""
-"This example start a clean topology, with 5 edges, and then its incremented "
-"to the rest of the edges."
-msgstr ""
-
-#, fuzzy
-msgid "``pgr_createVerticesTable`` - Deprecated since 3.8.0"
-msgstr ":doc:`pgr_analyzeGraph`"
-
-msgid ""
-"``pgr_createVerticesTable`` — Reconstructs the vertices table based on the "
-"source and target information."
-msgstr ""
-
-msgid "``OK`` after the vertices table has been reconstructed."
-msgstr ""
-
-msgid "``FAIL`` when the vertices table was not reconstructed due to an error."
-msgstr ""
-
-msgid ""
-"pgr_createVerticesTable(edge_table, [``the_geom, source, target, "
-"rows_where``])"
-msgstr ""
-
-msgid ""
-"The reconstruction of the vertices table function accepts the following "
-"parameters:"
-msgstr ""
-
-msgid ""
-"``text`` Condition to SELECT a subset or rows. Default value is ``true`` to "
-"indicate all rows."
-msgstr ""
-
-msgid ""
-"Fills ``id`` and ``the_geom`` columns of the vertices table based on the "
-"source and target columns of the edge table."
-msgstr ""
-
-msgid "The names of source, target are the same."
-msgstr ""
-
-msgid "The simplest way to use pgr_createVerticesTable"
-msgstr ""
-
-msgid ""
-"An error would occur when the arguments are not given in the appropriate "
-"order: In this example, the column source column ``source`` of the table "
-"``mytable`` is passed to the function as the geometry column, and the "
-"geometry column ``the_geom`` is passed to the function as the source column."
-msgstr ""
-
-msgid "Example 4"
-msgstr ""
-
-msgid "Using a different ordering"
-msgstr ""
-
-msgid "Example 5"
-msgstr ""
-
-msgid "Example 6"
-msgstr ""
-
-msgid "Example 7"
-msgstr ""
-
-msgid ""
-"Selecting the rows where the geometry is near the geometry of row with "
-"``id`` =5 ."
-msgstr ""
-
-msgid "Example 8"
-msgstr ""
-
-msgid "Using the following table"
-msgstr ""
-
-msgid "Example 9"
-msgstr ""
-
-msgid ""
-"An error would occur when the arguments are not given in the appropriate "
-"order: In this example, the column ``src`` of the table ``mytable`` is "
-"passed to the function as the geometry column, and the geometry column "
-"``mygeom`` is passed to the function as the source column."
-msgstr ""
-
-msgid "Example 10"
-msgstr ""
-
-msgid "Example 11"
-msgstr ""
-
-msgid "Example 12"
-msgstr ""
-
-msgid "Selecting rows based on the gid. (positional notation)"
-msgstr ""
-
-msgid "Example 13"
-msgstr ""
-
-msgid "Selecting rows based on the gid. (named notation)"
-msgstr ""
-
-msgid "Example 14"
-msgstr ""
-
-msgid ""
-"Selecting the rows where the geometry is near the geometry of row with "
-"``gid`` = 5."
-msgstr ""
-
-msgid "Example 15"
-msgstr ""
-
-msgid "TBD"
-msgstr ""
-
-msgid "Example 16"
-msgstr ""
-
-msgid "Example 17"
-msgstr ""
-
-msgid ""
-":doc:`topology-functions` for an overview of a topology for routing "
-"algorithms."
 msgstr ""
 
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
@@ -11065,8 +10725,8 @@ msgstr ":doc:`pgr_aStarCost` - 최단 경로의 집계 비용 반환."
 
 #, fuzzy
 msgid ""
-"The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path "
-"using Dijkstra Algorithm."
+"The ``pgr_dijkstraCost`` function summarizes of the cost of the shortest "
+"path using Dijkstra Algorithm."
 msgstr ""
 ":doc:`pgr_bdDijkstraCost` - 최단 경로의 비용을 계산하기 위한 양방향 다익스트"
 "라 알고리즘"
@@ -11243,7 +10903,7 @@ msgstr ""
 msgid "Find the best pedestrian connection between two lines of buses"
 msgstr ""
 
-msgid "Unsing an **undirected** graph for pedestrian routing"
+msgid "Using an **undirected** graph for pedestrian routing"
 msgstr ""
 
 msgid "The first subway line stations are at :math:`\\{15, 16\\}`"
@@ -11326,7 +10986,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Both are equaly good as they have the same cost. (lines: `13` and `14` and "
+"Both are equally good as they have the same cost. (lines: `13` and `14` and "
 "lines: `15` and `16`)"
 msgstr ""
 
@@ -11405,16 +11065,12 @@ msgid "pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
 
 msgid ""
-"lines `3~4` sets the start vertices to be from the fisrt subway line and the "
-"ending vertices to be from the second subway line"
-msgstr ""
-
-msgid ""
 "The best one is :math:`(11 \\rightarrow 16)` with a cost of :math:`1` "
 "(lines: `1`)"
 msgstr ""
 
-msgid "Both are equaly good as they have the same cost. (lines: `12` and `13`)"
+msgid ""
+"Both are equally good as they have the same cost. (lines: `12` and `13`)"
 msgstr ""
 
 msgid "``pgr_dijkstraVia`` - Proposed"
@@ -11517,7 +11173,7 @@ msgid ""
 "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr ""
 
-msgid "Standarizing output columns to |result-spantree|"
+msgid "Standardizing output columns to |result-spantree|"
 msgstr ""
 
 msgid "Added ``depth`` and ``start_vid`` result columns."
@@ -11544,7 +11200,7 @@ msgstr ""
 msgid ""
 "Using the Dijkstra algorithm, extracts all the nodes that have costs less "
 "than or equal to the value ``distance``. The edges extracted will conform to "
-"the corresponding spaning tree."
+"the corresponding spanning tree."
 msgstr ""
 
 msgid ""
@@ -11963,6 +11619,46 @@ msgid ""
 "= true``."
 msgstr ""
 
+msgid "Create a routing topology"
+msgstr ""
+
+msgid "Make sure the database does not have the ``vertices_table``"
+msgstr ""
+
+msgid "Clean up the columns of the routing topology to be created"
+msgstr ""
+
+msgid ""
+"When the ``LINESTRING`` has a SRID then use ``geom::geometry(POINT, <SRID>)``"
+msgstr ""
+
+msgid "For big edge tables that are been prepared,"
+msgstr ""
+
+msgid "Create it as ``UNLOGGED`` and"
+msgstr ""
+
+msgid "After the table is created ``ALTER TABLE .. SET LOGGED``"
+msgstr ""
+
+msgid "Inspect the vertices table"
+msgstr ""
+
+msgid "Create the routing topology on the edge table"
+msgstr ""
+
+msgid "Updating the ``source`` information"
+msgstr ""
+
+msgid "Updating the ``target`` information"
+msgstr ""
+
+msgid "Inspect the routing topology"
+msgstr ""
+
+msgid "**Generated topology**"
+msgstr ""
+
 #, fuzzy
 msgid "``pgr_findCloseEdges``"
 msgstr ":doc:`pgr_findCloseEdges`"
@@ -12049,6 +11745,9 @@ msgstr ""
 msgid ""
 "When ``true`` calculations are not performed and the query to do the "
 "calculations is exposed in a PostgreSQL ``NOTICE``."
+msgstr ""
+
+msgid "``geometry``"
 msgstr ""
 
 msgid "The ``LINESTRING`` geometry of the edge."
@@ -12334,7 +12033,7 @@ msgstr ":doc:`pgr_hawickCircuits`"
 
 #, fuzzy
 msgid ""
-"``pgr_hawickCircuits`` — Returns the list of ciruits using hawick circuits "
+"``pgr_hawickCircuits`` — Returns the list of circuits using hawick circuits "
 "algorithm."
 msgstr ":doc:`pgr_bdDijkstra` - 최단 경로를 위한 양방향 다익스트라 알고리즘."
 
@@ -12368,7 +12067,7 @@ msgstr ""
 msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
 msgstr ""
 
-msgid ":math:`|c|` is the number of circuts in the graph."
+msgid ":math:`|c|` is the number of circuits in the graph."
 msgstr ""
 
 msgid "pgr_hawickCircuits(`Edges SQL`_)"
@@ -12383,7 +12082,8 @@ msgstr ""
 msgid "Id of the circuit starting from ``1``"
 msgstr ""
 
-msgid "Relative postion in the path. Has value ``0`` for beginning of the path"
+msgid ""
+"Relative position in the path. Has value ``0`` for beginning of the path"
 msgstr ""
 
 msgid "Identifier of the starting vertex of the circuit."
@@ -12476,8 +12176,7 @@ msgstr ""
 msgid ""
 "The Johnson algorithm, is a good choice to calculate the sum of the costs of "
 "the shortest path for each pair of nodes in the graph, for *sparse graphs*. "
-"It usees the Boost's implementation which runs in :math:`O(V E \\log V)` "
-"time,"
+"It uses the Boost's implementation which runs in :math:`O(V E \\log V)` time,"
 msgstr ""
 
 msgid "pgr johnson(`Edges SQL`_, [``directed``])"
@@ -12605,7 +12304,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"The algorithm calculates the *immidiate dominator* of each vertex called "
+"The algorithm calculates the *immediate dominator* of each vertex called "
 "**idom**, once **idom** of each vertex is calculated then by making every "
 "**idom** of each vertex as its parent, the dominator tree can be built."
 msgstr ""
@@ -13030,7 +12729,7 @@ msgid ""
 "wanted."
 msgstr ""
 
-msgid "Idenifying the restriction"
+msgid "Identifying the restriction"
 msgstr ""
 
 msgid ""
@@ -13040,7 +12739,7 @@ msgstr ""
 
 msgid ""
 "The edge to be altered is ``WHERE cost = 0 AND seq != 1 AND edge != -1`` "
-"from the previus query:"
+"from the previous query:"
 msgstr ""
 
 msgid "Adding a value to the restriction"
@@ -13408,6 +13107,15 @@ msgid ""
 "\"noded\" edges into a new table."
 msgstr ""
 
+msgid "Not checking and not creating indexes."
+msgstr ""
+
+msgid "Using ``pgr_separateTouching`` and ``pgr_separateCrossing``."
+msgstr ""
+
+msgid "Created table with ``BIGINT``."
+msgstr ""
+
 msgid ""
 "A common problem associated with bringing GIS data into pgRouting is the "
 "fact that the data is often not \"noded\" correctly. This will create "
@@ -13430,7 +13138,32 @@ msgid ""
 "nodes within the tolerance are considered the same node."
 msgstr ""
 
+msgid "edge_table"
+msgstr ""
+
+msgid "``text`` Network table name. (may contain the schema name as well)"
+msgstr ""
+
+msgid "tolerance"
+msgstr ""
+
 msgid "``float8`` tolerance for coincident points (in projection unit)dd"
+msgstr ""
+
+msgid "id"
+msgstr ""
+
+msgid ""
+"``text`` Primary key column name of the network table. Default value is "
+"``id``."
+msgstr ""
+
+msgid "the_geom"
+msgstr ""
+
+msgid ""
+"``text`` Geometry column name of the network table. Default value is "
+"``the_geom``."
 msgstr ""
 
 msgid "table_ending"
@@ -13457,10 +13190,16 @@ msgstr ""
 msgid "``integer`` Segment number of the original edge"
 msgstr ""
 
-msgid "``integer`` Empty source column"
+msgid "source"
 msgstr ""
 
-msgid "``integer`` Empty target column"
+msgid "``bigint`` Empty source column"
+msgstr ""
+
+msgid "target"
+msgstr ""
+
+msgid "``bigint`` Empty target column"
 msgstr ""
 
 msgid "the geom"
@@ -13469,24 +13208,11 @@ msgstr ""
 msgid "``geometry`` Geometry column of the noded network"
 msgstr ""
 
-msgid "Examples"
-msgstr ""
-
 msgid "Create the topology for the data in :doc:`sampledata`"
-msgstr ""
-
-msgid "Analyze the network for intersections."
-msgstr ""
-
-msgid "Analyze the network for gaps."
 msgstr ""
 
 msgid "The analysis tell us that the network has a gap and an intersection."
 msgstr ""
-
-#, fuzzy
-msgid "Fixing an intersection"
-msgstr "소개"
 
 msgid "Storing the intersections."
 msgstr ""
@@ -13500,16 +13226,10 @@ msgid ""
 "segmented."
 msgstr ""
 
-msgid "Update the topology"
-msgstr ""
-
 msgid "Add new segments to the edges table."
 msgstr ""
 
 msgid "Insert the intersection as new vertices."
-msgstr ""
-
-msgid "Update source and target information on the edges table."
 msgstr ""
 
 msgid "Delete original edge."
@@ -13518,14 +13238,16 @@ msgstr ""
 msgid "Update the vertex topology"
 msgstr ""
 
-msgid "Fixing a gap"
-msgstr ""
-
 msgid "Store the deadends"
 msgstr ""
 
 msgid ""
 "Inspecting the generated table, we can see that edge 14 has been segmented."
+msgstr ""
+
+msgid ""
+":doc:`topology-functions` for an overview of a topology for routing "
+"algorithms."
 msgstr ""
 
 msgid "``pgr_pickDeliver`` - Experimental"
@@ -13835,6 +13557,67 @@ msgstr ""
 msgid "pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)"
 msgstr ""
 
+#, fuzzy
+msgid "``pgr_separateCrossing``"
+msgstr ":doc:`pgr_bdAstarCost`"
+
+msgid ""
+"``pgr_separateCrossing`` - From crossing geometries generates geometries "
+"that do not cross."
+msgstr ""
+
+#, fuzzy
+msgid "Proposed function."
+msgstr ":doc:`routingFunctions`"
+
+msgid "This is an auxiliary function for separating crossing edges."
+msgstr ""
+
+msgid "pgr_separateCrossing(`Edges SQL`_, [``tolerance``, ``dryrun``])"
+msgstr ""
+
+msgid "RETURNS |result-separate|"
+msgstr ""
+
+msgid "Get the segments of the crossing geometries"
+msgstr ""
+
+msgid "``tolerance``"
+msgstr ""
+
+msgid "0.01"
+msgstr ""
+
+msgid "Used in ST_Snap before ST_Split"
+msgstr ""
+
+msgid "Get the code for further refinement."
+msgstr ""
+
+msgid ""
+"When there are special details that need to be taken care of because of the "
+"final application or the quality of the data, the code can be obtained On a "
+"PostgreSQL ``NOTICE`` using the ``dryrun`` flag."
+msgstr ""
+
+#, fuzzy
+msgid "``pgr_separateTouching``"
+msgstr ":doc:`pgr_bdAstarCost`"
+
+msgid ""
+"``pgr_separateTouching`` - From touching geometries generates geometries "
+"that are properly connected at endpoints"
+msgstr ""
+
+msgid ""
+"This is an auxiliary function for processing geometries that touch but don't "
+"share exact endpoints, splitting them at their intersection points to "
+"improve network connectivity."
+msgstr ""
+
+msgid "pgr_separateTouching(`Edges SQL`_, [``tolerance``, ``dryrun``])"
+msgstr ""
+
 msgid "``pgr_sequentialVertexColoring`` - Proposed"
 msgstr ""
 
@@ -14104,7 +13887,7 @@ msgstr ""
 msgid "The returned values are not ordered"
 msgstr ""
 
-msgid "The returned graph is compresed"
+msgid "The returned graph is compressed"
 msgstr ""
 
 msgid "Running time: :math:`O(|V||E|)`"
@@ -14176,6 +13959,10 @@ msgid "pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)"
 msgstr ""
 
 msgid "pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
+msgstr ""
+
+msgid ""
+"pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
 msgstr ""
 
 msgid "New prototypes"
@@ -14320,6 +14107,9 @@ msgid ""
 msgstr ""
 
 msgid "Getting the same result as ``pgr_trspVia``:"
+msgstr ""
+
+msgid "Example 8"
 msgstr ""
 
 msgid "Sometimes ``U_turn_on_edge`` flag is ignored when is set to ``false``."
@@ -14702,6 +14492,9 @@ msgstr ""
 msgid "pgr_version()"
 msgstr ""
 
+msgid "RETURNS ``TEXT``"
+msgstr ""
+
 msgid "pgRouting Version for this documentation"
 msgstr ""
 
@@ -14712,6 +14505,9 @@ msgid "**No documentation available**"
 msgstr ""
 
 msgid "**TBD**"
+msgstr ""
+
+msgid "TBD"
 msgstr ""
 
 #, fuzzy
@@ -15182,15 +14978,15 @@ msgid ""
 "driving side, with details."
 msgstr ""
 
+msgid ":doc:`pgr_drivingDistance`"
+msgstr ":doc:`pgr_drivingDistance`"
+
 #, fuzzy
 msgid "``pgr_withPointsKSP``"
 msgstr ":doc:`pgr_withPointsCostMatrix`"
 
 msgid ""
 "``pgr_withPointsKSP`` — Yen's algorithm for K shortest paths using Dijkstra."
-msgstr ""
-
-msgid "Standarizing output columns to |nksp-result|"
 msgstr ""
 
 #, fuzzy
@@ -15475,59 +15271,36 @@ msgstr ""
 msgid "Promotion to official function of pgRouting."
 msgstr ""
 
-msgid ""
-"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: "
-"pgr_extractVertices"
+msgid "Metric"
 msgstr ""
 
 msgid ""
-"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+"`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promoted to "
+"official pgr_degree in version 3.8"
 msgstr ""
 
 msgid ""
-"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: "
-"pgr_findCloseEdges"
+"`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promoted to "
+"official pgr_extractVertices in version 3.8"
+msgstr ""
+
+msgid ""
+"`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promoted to "
+"official pgr_findCloseEdges in version 3.8"
+msgstr ""
+
+msgid ""
+"`#2873 <https://github.com/pgRouting/pgrouting/issues/2873>`__: Promoted to "
+"official pgr_separateCrossing in version 3.8"
+msgstr ""
+
+msgid ""
+"`#2874 <https://github.com/pgRouting/pgrouting/issues/2874>`__: Promoted to "
+"official pgr_separateTouching in version 3.8"
 msgstr ""
 
 #, fuzzy
-msgid "Deprecation of functions."
-msgstr ":doc:`pgr_withPoints`"
-
-msgid ""
-"`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: "
-"pgr_alphaShape"
-msgstr ""
-
-msgid ""
-"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: "
-"pgr_analyzeOneWay"
-msgstr ""
-
-msgid ""
-"`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: "
-"pgr_analyzeGraph"
-msgstr ""
-
-msgid ""
-"`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: "
-"pgr_createTopology"
-msgstr ""
-
-msgid ""
-"`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: "
-"pgr_createVerticesTable"
-msgstr ""
-
-msgid "Official functions changes"
-msgstr ""
-
-msgid ""
-"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
-"pgr_contraction"
-msgstr ""
-
-#, fuzzy
-msgid "New proposed functions"
+msgid "Proposed functions"
 msgstr ":doc:`routingFunctions`"
 
 #, fuzzy
@@ -15536,12 +15309,95 @@ msgstr "소개"
 
 msgid ""
 "`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: "
-"pgr_contractionDeadEnd"
+"pgr_contractionDeadEnd new contraction function"
 msgstr ""
 
 msgid ""
 "`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: "
-"pgr_contractionLinear"
+"pgr_contractionLinear new contraction function"
+msgstr ""
+
+msgid ""
+"`#2536 <https://github.com/pgRouting/pgrouting/issues/2536>`__: Support for "
+"contraction hierarchies (pgr_contractionHierarchies)"
+msgstr ""
+
+msgid ""
+"`#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__: Create "
+"pgr_separateCrossing new utility function"
+msgstr ""
+
+msgid ""
+"`#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__: Create of "
+"pgr_separateTouching new utility function"
+msgstr ""
+
+msgid "Official functions changes"
+msgstr ""
+
+msgid ""
+"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: "
+"pgr_contraction(edges) new signature"
+msgstr ""
+
+msgid "C/C++ code enhancements"
+msgstr ""
+
+msgid ""
+"`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__: Code "
+"reorganization on pgr_contraction"
+msgstr ""
+
+msgid ""
+"Other enhancements: `#2869 <https://github.com/pgRouting/pgrouting/"
+"issues/2869>`__"
+msgstr ""
+
+msgid "SQL code enhancements"
+msgstr ""
+
+msgid ""
+"`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__: Rewrite "
+"pgr_nodeNetwork"
+msgstr ""
+
+#, fuzzy
+msgid "Deprecation of SQL functions"
+msgstr ":doc:`pgr_withPoints`"
+
+msgid ""
+"`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: Deprecate "
+"pgr_AlphaShape in 3.8"
+msgstr ""
+
+msgid ""
+"`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: Deprecate "
+"pgr_CreateTopology in 3.8"
+msgstr ""
+
+msgid ""
+"`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: Deprecate "
+"pgr_analyzeGraph in 3.8"
+msgstr ""
+
+msgid ""
+"`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: Deprecate "
+"pgr_analyzeOneWay in 3.8"
+msgstr ""
+
+msgid ""
+"`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: Deprecate "
+"pgr_createVerticesTable in 3.8"
+msgstr ""
+
+#, fuzzy
+msgid "In the deprecated functions:"
+msgstr ":doc:`routingFunctions`"
+
+msgid "Migration section is created."
+msgstr ""
+
+msgid "The use of the functions is removed in the documentation."
 msgstr ""
 
 msgid "pgRouting 3.7"
@@ -15841,9 +15697,6 @@ msgid ""
 "output and modifying signature pgr_withPointsKSP"
 msgstr ""
 
-msgid "C/C++ code enhancements"
-msgstr ""
-
 msgid ""
 "`#2504 <https://github.com/pgRouting/pgrouting/pull/2504>`__ To C++ pg data "
 "get, fetch and check."
@@ -16073,9 +15926,6 @@ msgid "pgr_trsp_withPoints(Combinations)"
 msgstr ":doc:`pgr_withPointsCostMatrix`"
 
 msgid "Topology"
-msgstr ""
-
-msgid "Utilities"
 msgstr ""
 
 #, fuzzy
@@ -18351,16 +18201,9 @@ msgid ""
 "created."
 msgstr ""
 
-msgid ""
-"pgRouting supplies some functions to create a routing topology and to "
-"analyze the topology."
-msgstr ""
-
-msgid "Additional functions to create a graph:"
-msgstr ""
-
-msgid "Additional functions to analyze a graph:"
-msgstr ""
+#, fuzzy
+msgid "Utility functions"
+msgstr ":doc:`pgr_withPoints`"
 
 #, fuzzy
 msgid "Transformation - Family of functions"
@@ -18526,7 +18369,7 @@ msgid "About points"
 msgstr ""
 
 msgid ""
-"For this section the following city (see :doc:`sampledata`) some interesing "
+"For this section the following city (see :doc:`sampledata`) some interesting "
 "points such as restaurant, supermarket, post office, etc. will be used as "
 "example."
 msgstr ""
@@ -18562,7 +18405,7 @@ msgstr ""
 msgid "Driving side"
 msgstr ""
 
-msgid "In the the folowwing images:"
+msgid "In the following images:"
 msgstr ""
 
 msgid "The squared vertices are the temporary vertices,"
@@ -18606,8 +18449,9 @@ msgstr ""
 msgid "Like having all points to be considered in both sides ``b``"
 msgstr ""
 
-msgid "Prefered usage on **undirected** graphs"
-msgstr ""
+#, fuzzy
+msgid "Preferred usage on **undirected** graphs"
+msgstr ":doc:`pgr_bridges` - 무방향 그래프의 브릿지."
 
 msgid "On the :doc:`TRSP-family` this option is not valid"
 msgstr ""
@@ -18641,7 +18485,7 @@ msgstr ""
 msgid "On a right hand side driving network"
 msgstr ""
 
-msgid "Arrival to point ``-2`` can be achived only via vertex **16**."
+msgid "Arrival to point ``-2`` can be achieved only via vertex **16**."
 msgstr ""
 
 msgid "Does not affects edge ``(17, 16)``, therefore the edge is kept."
@@ -18658,7 +18502,7 @@ msgid ""
 "0.4`)"
 msgstr ""
 
-msgid "Edge ``(-2, 17)`` with cost ``0.6`` (the remaing cost)"
+msgid "Edge ``(-2, 17)`` with cost ``0.6`` (the remaining cost)"
 msgstr ""
 
 msgid "The total cost of the additional edges is equal to the original cost."
@@ -18671,7 +18515,7 @@ msgstr ""
 msgid "On a left hand side driving network"
 msgstr ""
 
-msgid "Arrival to point ``-2`` can be achived only via vertex **17**."
+msgid "Arrival to point ``-2`` can be achieved only via vertex **17**."
 msgstr ""
 
 msgid "Does not affects edge ``(16, 17)``, therefore the edge is kept."
@@ -18701,7 +18545,7 @@ msgstr ""
 msgid "When driving side does not matter"
 msgstr ""
 
-msgid "Arrival to point ``-2`` can be achived via vertices **16** or **17**."
+msgid "Arrival to point ``-2`` can be achieved via vertices **16** or **17**."
 msgstr ""
 
 msgid ""
@@ -18761,3 +18605,31 @@ msgstr ""
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
+#, fuzzy
+#~ msgid "Post processing"
+#~ msgstr "포스트 프로세싱"
+
+#~ msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
+#~ msgstr ":doc:`pgr_alphaShape` - 알파 셰이프 계산"
+
+#~ msgid ":doc:`pgr_findCloseEdges`"
+#~ msgstr ":doc:`pgr_findCloseEdges`"
+
+#, fuzzy
+#~ msgid "``pgr_createTopology`` - Deprecated since v3.8.0"
+#~ msgstr ":doc:`pgr_analyzeGraph`"
+
+#, fuzzy
+#~ msgid "``pgr_createVerticesTable`` - Deprecated since 3.8.0"
+#~ msgstr ":doc:`pgr_analyzeGraph`"
+
+#, fuzzy
+#~ msgid "``pgr_analyzeGraph`` -- Deprecated since 3.8.0"
+#~ msgstr ":doc:`pgr_analyzeGraph`"
+
+#~ msgid ":doc:`pgr_analyzeOneWay`"
+#~ msgstr ":doc:`pgr_analyzeOneWay`"
+
+#, fuzzy
+#~ msgid "``pgr_analyzeOneWay`` - Deprecated since 3.8.0"
+#~ msgstr ":doc:`pgr_analyzeGraph`"
