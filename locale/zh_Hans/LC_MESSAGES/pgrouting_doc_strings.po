@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-29 15:26+0000\n"
 "PO-Revision-Date: 2025-04-30 08:14+0000\n"
-"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -10426,14 +10426,13 @@ msgstr "在现有表中添加快捷边和层级"
 
 msgid ""
 "Add new columns in the `vertices` and `edges` tables to store the results:"
-msgstr ""
+msgstr "在 `vertices` 和 `edges` 表中添加新列来存储结果："
 
 msgid "Update and insert the results in the two tables."
 msgstr "更新并插入结果到两个表中。"
 
-#, fuzzy
 msgid "Use a Dijkstra shortest path algorithm on it"
-msgstr "使用 Dijkstra 算法。"
+msgstr "对其使用 Dijkstra 最短路径算法"
 
 msgid ""
 "Then you can use any Dijkstra-like algorithm, waiting for the adapted one "
@@ -16346,12 +16345,10 @@ msgstr ""
 "`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__:"
 "pgr_contraction 函数进行了代码重构"
 
-#, fuzzy
 msgid ""
 "Other enhancements: `#2869 <https://github.com/pgRouting/pgrouting/"
 "issues/2869>`__"
-msgstr ""
-"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+msgstr "其他改进：`#2869 <https://github.com/pgRouting/pgrouting/issues/2869>`__"
 
 msgid "SQL code enhancements"
 msgstr "SQL 代码优化"
