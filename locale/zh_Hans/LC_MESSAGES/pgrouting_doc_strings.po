@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-29 15:26+0000\n"
 "PO-Revision-Date: 2025-04-30 07:39+0000\n"
-"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -2867,11 +2867,11 @@ msgstr ""
 "点和边来减小图的大小，例如，可能会添加表示原始边序列的边，从而减少图算法中使"
 "用的总时间和空间。"
 
-#, fuzzy
 msgid ""
 "This implementation gives a flexible framework for adding contraction "
 "algorithms in the future. Currently, it supports three algorithms."
-msgstr "该实现为将来添加收缩算法提供了灵活的框架，目前它支持两种算法："
+msgstr "这种实现方式提供了一个灵活的框架，以便将来添加收缩算法。目前，它支持三种算法"
+"。"
 
 msgid "Dead end contraction"
 msgstr "死端收缩"
@@ -2879,14 +2879,14 @@ msgstr "死端收缩"
 msgid "Linear contraction"
 msgstr "线性收缩"
 
-#, fuzzy
 msgid "Contraction hierarchies"
-msgstr "图的收缩"
+msgstr "收缩等级"
 
 msgid ""
 "The two first ones can be combined through a iterative procedure, via the "
 "``pgr_contraction`` method. The third one is implemented on its own."
-msgstr ""
+msgstr "前两项可以通过 \"pgr_contraction \"方法"
+"，通过迭代程序进行组合。第三种方法是独立实现的。"
 
 #, fuzzy
 msgid "All functions allow the user to forbid contraction on a set of nodes."
