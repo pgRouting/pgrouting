@@ -46,6 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
+#include "cpp_common/to_postgres.hpp"
 
 // TODO(vicky) don't keep it here
 #include "cpp_common/alloc.hpp"
@@ -156,7 +157,7 @@ class Pgr_allpairs {
              const std::vector< std::vector<double> > &matrix,
              size_t &result_tuple_count,
              IID_t_rt **postgres_rows) const {
-         result_tuple_count = count_rows(graph, matrix);
+         result_tuple_count = detail::count_rows(graph, matrix);
          *postgres_rows = pgr_alloc(result_tuple_count, (*postgres_rows));
 
 
@@ -174,21 +175,6 @@ class Pgr_allpairs {
          }  // for i
      }
 
-
-     size_t count_rows(
-             const G &graph,
-             const std::vector< std::vector<double> > &matrix) const {
-         size_t result_tuple_count = 0;
-         for (size_t i = 0; i < graph.num_vertices(); i++) {
-             for (size_t j = 0; j < graph.num_vertices(); j++) {
-                 if (i == j) continue;
-                 if (matrix[i][j] != (std::numeric_limits<double>::max)()) {
-                     result_tuple_count++;
-                 }  // if
-             }  // for j
-         }  // for i
-         return result_tuple_count;
-     }
 
 };
 

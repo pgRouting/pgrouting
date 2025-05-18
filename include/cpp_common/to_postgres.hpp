@@ -38,6 +38,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 namespace pgrouting {
+namespace detail {
+
+/** @brief Count results that are going to be passed to postgres
+ *
+ * @param[in] graph Created graph with the base Graph
+ * @param[in] matrix matrix[i,j] -> the i,j element contains result
+ * @returns total number of valid results
+ *
+ * a result is not valid when:
+ * - is in the diagonal: matrix[i,i]
+ * - has "infinity" as value
+ */
+template <class G>
+size_t
+count_rows(
+        const G &graph,
+        const std::vector<std::vector<double>> &matrix) {
+    long count = 0;
+    for (size_t i = 0; i < graph.num_vertices(); i++) {
+        count += std::count_if(
+                matrix[i].begin(), matrix[i].end(),
+                [](double value) {
+                return value != (std::numeric_limits<double>::max)();
+                });
+    }
+    return static_cast<size_t>(count) - graph.num_vertices();
+}
+
+}  // namespace detail
+
 namespace to_postgres {
 
 /** @brief Stored results on a vector are saved on a C array
