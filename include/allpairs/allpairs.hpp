@@ -190,6 +190,7 @@ class Pgr_allpairs {
          return result_tuple_count;
      }
 
+#if 0
      void make_result(
              G &graph,
              std::vector< std::vector<double> > &matrix,
@@ -208,7 +209,7 @@ class Pgr_allpairs {
              }  // for j
          }  // for i
      }
-
+#endif
 };
 
 }  // namespace pgrouting
