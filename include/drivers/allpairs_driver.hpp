@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: floydWarshall_driver.h
+File: allpairs_driver.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

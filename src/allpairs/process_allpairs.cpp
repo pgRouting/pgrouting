@@ -37,7 +37,7 @@ extern "C" {
 #include "c_common/debug_macro.h"
 #include "cpp_common/assert.hpp"
 
-#include "drivers/allpairs/allpairs_driver.h"
+#include "drivers/allpairs_driver.hpp"
 
 /**
  which = 0 -> johnson
