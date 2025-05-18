@@ -88,7 +88,6 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
         values = palloc(3 * sizeof(Datum));
         nulls = palloc(3 * sizeof(bool));
 
-        // postgres starts counting from 1
         values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_vid);
         nulls[0] = false;
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].to_vid);

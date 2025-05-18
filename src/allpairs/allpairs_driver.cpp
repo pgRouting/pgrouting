@@ -5,9 +5,8 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2025 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -76,7 +75,6 @@ do_allpairs(
 
             pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
-            pgr_floydWarshall(digraph, *return_count, return_tuples);
 
             if (which == 0) {
                 pgr_johnson(digraph, *return_count, return_tuples);

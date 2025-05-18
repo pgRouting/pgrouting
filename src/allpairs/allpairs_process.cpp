@@ -2,7 +2,7 @@
 File: process_allpairs.cpp
 
 Function's developer:
-Copyright (c) 2023 Celia Virginia Vergara Castillo
+Copyright (c) 2025 Celia Virginia Vergara Castillo
 Mail: vicky_vergara at erosion.dev
 
 ------
@@ -34,9 +34,7 @@ extern "C" {
 }
 
 #include "c_types/iid_t_rt.h"
-#include "c_common/debug_macro.h"
 #include "cpp_common/assert.hpp"
-
 #include "drivers/allpairs_driver.hpp"
 
 /**
@@ -60,13 +58,10 @@ void pgr_process_allpairs(
 
     clock_t start_t = clock();
     do_allpairs(
-            edges_sql,
-            directed,
+            edges_sql, directed,
             which,
-            result_tuples,
-            result_count,
-            &log_msg,
-            &err_msg);
+            result_tuples, result_count,
+            &log_msg, &err_msg);
 
     if (which == 0) {
         time_msg(std::string(" processing pgr_johnson").c_str(), start_t, clock());

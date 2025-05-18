@@ -7,8 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
-
+Mail: vicky_vergara at erosion.dev
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -88,7 +87,6 @@ _pgr_floydwarshall(PG_FUNCTION_ARGS) {
         values = palloc(3 * sizeof(Datum));
         nulls = palloc(3 * sizeof(bool));
 
-        // postgres starts counting from 1
         values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_vid);
         nulls[0] = false;
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].to_vid);
