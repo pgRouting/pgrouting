@@ -67,6 +67,7 @@ struct inf_plus {
 
 template < class G > class Pgr_allpairs;
 
+#if 0
 // user's functions
 template < class G >
 void
@@ -81,6 +82,7 @@ pgr_floydWarshall(G &graph, std::vector< IID_t_rt> &rows) {
     Pgr_allpairs< G > fn_floydWarshall;
     fn_floydWarshall.floydWarshall(graph, rows);
 }
+#endif
 
 // for postgres
 template < class G >
@@ -131,6 +133,7 @@ class Pgr_allpairs {
          make_result(graph, matrix, result_tuple_count, postgres_rows);
      }
 
+#if 0
      void floydWarshall(
              G &graph,
              std::vector< IID_t_rt> &rows) {
@@ -151,6 +154,7 @@ class Pgr_allpairs {
 
          make_result(graph, matrix, rows);
      }
+#endif
 
      void johnson(
              G &graph,
@@ -174,7 +178,7 @@ class Pgr_allpairs {
          make_result(graph, matrix, result_tuple_count, postgres_rows);
      }
 
-
+#if 0
      void johnson(
              G &graph,
              std::vector< IID_t_rt> &rows) {
@@ -195,6 +199,7 @@ class Pgr_allpairs {
 
          make_result(graph, matrix, rows);
      }
+#endif
 
  private:
      void make_matrix(
