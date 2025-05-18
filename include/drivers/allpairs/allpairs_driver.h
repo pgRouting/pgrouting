@@ -37,20 +37,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 using IID_t_rt = struct IID_t_rt;
 
-
 void
-pgr_do_allpairs(
+do_allpairs(
     std::string,
-    bool,
-    int,
+    bool, int,
 
-    IID_t_rt**,
-    size_t*,
-    char**,
-    char**);
-
-#ifdef __cplusplus
-}
-#endif
+    IID_t_rt**, size_t*,
+    char**, char**);
 
 #endif  // INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_

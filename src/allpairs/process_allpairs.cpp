@@ -35,8 +35,7 @@ extern "C" {
 
 #include "c_types/iid_t_rt.h"
 #include "c_common/debug_macro.h"
-#include "cpp_common/pggetdata.hpp"
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/assert.hpp"
 
 #include "drivers/allpairs/allpairs_driver.h"
 
@@ -46,8 +45,8 @@ extern "C" {
 
  This is c++ code, linked as C code, because process_allpairs is called from C code
  */
-void process_allpairs(
-        char* edges_sql,
+void pgr_process_allpairs(
+        const char* edges_sql,
         bool directed,
         int which,
         IID_t_rt **result_tuples,

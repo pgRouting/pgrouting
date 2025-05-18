@@ -80,8 +80,7 @@ _pgr_floydwarshall(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-
-    IID_t_rt  *result_tuples = NULL;
+    IID_t_rt *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -90,7 +89,7 @@ _pgr_floydwarshall(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        process(
+        pgr_process_allpairs(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_BOOL(1),
                 1, /* Floyd Warshall */

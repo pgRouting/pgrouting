@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void
-pgr_do_allpairs(
+do_allpairs(
         std::string edges_sql,
         bool directed,
         int which,
@@ -55,7 +55,7 @@ pgr_do_allpairs(
 
     std::ostringstream log;
     std::ostringstream err;
-    const char *hint = nullptr;
+    std::string hint;
 
     try {
         pgassert(!(*log_msg));
@@ -69,7 +69,8 @@ pgr_do_allpairs(
         if (edges.empty()) {
             throw std::string("No edges found");
         }
-        hint = nullptr;
+
+        hint = "";
         if (directed) {
             log << "Processing Directed graph\n";
 
@@ -113,7 +114,7 @@ pgr_do_allpairs(
         *log_msg = to_pg_msg(log);
     } catch (const std::string &ex) {
         *err_msg = to_pg_msg(ex);
-        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log);
+        *log_msg = hint.empty()? to_pg_msg(hint) : to_pg_msg(log);
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

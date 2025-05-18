@@ -40,7 +40,7 @@ typedef struct IID_t_rt IID_t_rt;
 extern "C" {
 #endif
 
-void process_allpairs(char*, bool, int, IID_t_rt **, size_t *);
+void pgr_process_allpairs(const char*, bool, int, IID_t_rt **, size_t *);
 
 #ifdef __cplusplus
 }
