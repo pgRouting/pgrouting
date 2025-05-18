@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_
-#define INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_
+#define INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_
 #pragma once
 
 
@@ -45,4 +45,4 @@ do_allpairs(
     IID_t_rt**, size_t*,
     char**, char**);
 
-#endif  // INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_

@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_ALLPAIRS_PROCESS_ALLPAIRS_H_
-#define INCLUDE_ALLPAIRS_PROCESS_ALLPAIRS_H_
+#ifndef INCLUDE_PROCESS_ALLPAIRS_PROCESS_H_
+#define INCLUDE_PROCESS_ALLPAIRS_PROCESS_H_
 #pragma once
 
 #ifdef __cplusplus
@@ -46,4 +46,4 @@ void pgr_process_allpairs(const char*, bool, int, IID_t_rt **, size_t *);
 }
 #endif
 
-#endif  // INCLUDE_ALLPAIRS_PROCESS_ALLPAIRS_H_
+#endif  // INCLUDE_PROCESS_ALLPAIRS_PROCESS_H_
