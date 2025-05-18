@@ -55,7 +55,7 @@ size_t
 count_rows(
         const G &graph,
         const std::vector<std::vector<double>> &matrix) {
-    long count = 0;
+    int64_t count = 0;
     for (size_t i = 0; i < graph.num_vertices(); i++) {
         count += std::count_if(
                 matrix[i].begin(), matrix[i].end(),

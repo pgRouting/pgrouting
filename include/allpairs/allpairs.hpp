@@ -25,15 +25,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-// http://www.cs.rpi.edu/~musser/archive/2005/gsd/restricted/FloydWarshall/FloydWarshall.pdf
-
 #ifndef INCLUDE_ALLPAIRS_ALLPAIRS_HPP_
 #define INCLUDE_ALLPAIRS_ALLPAIRS_HPP_
 #pragma once
 
-#include <deque>
 #include <vector>
-#include <set>
 #include <limits>
 
 #include <boost/config.hpp>
@@ -42,11 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/johnson_all_pairs_shortest.hpp>
 #include <boost/graph/floyd_warshall_shortest.hpp>
 
-#include "c_types/iid_t_rt.h"
-#include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
-#include "cpp_common/to_postgres.hpp"
 
 
 namespace pgrouting  {
@@ -65,44 +58,44 @@ struct inf_plus {
 }  // namespace detail
 
 
-     template <class G>
-     std::vector<std::vector<double>>
-     floydWarshall(G &graph) {
-         std::vector<std::vector<double>> matrix(graph.num_vertices(), std::vector<double>(graph.num_vertices(), 0));
-         detail::inf_plus<double> combine;
+template <class G>
+std::vector<std::vector<double>>
+floydWarshall(G &graph) {
+    std::vector<std::vector<double>> matrix(graph.num_vertices(), std::vector<double>(graph.num_vertices(), 0));
+    detail::inf_plus<double> combine;
 
-         CHECK_FOR_INTERRUPTS();
+    CHECK_FOR_INTERRUPTS();
 
-         boost::floyd_warshall_all_pairs_shortest_paths(
-                 graph.graph,
-                 matrix,
-                 weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
-                 distance_combine(combine).
-                 distance_inf((std::numeric_limits<double>::max)()).
-                 distance_zero(0));
+    boost::floyd_warshall_all_pairs_shortest_paths(
+            graph.graph,
+            matrix,
+            weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
+            distance_combine(combine).
+            distance_inf((std::numeric_limits<double>::max)()).
+            distance_zero(0));
 
-         return matrix;
-     }
+    return matrix;
+}
 
 
-     template <class G>
-     std::vector<std::vector<double>>
-     johnson(G &graph) {
-         std::vector<std::vector<double>> matrix(graph.num_vertices(), std::vector<double>(graph.num_vertices(), 0));
-         detail::inf_plus<double> combine;
+template <class G>
+std::vector<std::vector<double>>
+johnson(G &graph) {
+    std::vector<std::vector<double>> matrix(graph.num_vertices(), std::vector<double>(graph.num_vertices(), 0));
+    detail::inf_plus<double> combine;
 
-         CHECK_FOR_INTERRUPTS();
+    CHECK_FOR_INTERRUPTS();
 
-         boost::johnson_all_pairs_shortest_paths(
-                 graph.graph,
-                 matrix,
-                 weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
-                 distance_combine(combine).
-                 distance_inf((std::numeric_limits<double>::max)()).
-                 distance_zero(0));
+    boost::johnson_all_pairs_shortest_paths(
+            graph.graph,
+            matrix,
+            weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
+            distance_combine(combine).
+            distance_inf((std::numeric_limits<double>::max)()).
+            distance_zero(0));
 
-         return matrix;
-     }
+    return matrix;
+}
 
 }  // namespace pgrouting
 
