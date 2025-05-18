@@ -33,7 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include <cstddef>
-#include <vector>
 #include <string>
 using IID_t_rt = struct IID_t_rt;
 

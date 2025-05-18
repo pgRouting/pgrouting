@@ -49,8 +49,7 @@ template <typename T>
 struct inf_plus {
     T operator()(const T& a, const T& b) const {
         T inf = (std::numeric_limits<T>::max)();
-        if (a == inf || b == inf)
-            return inf;
+        if (a == inf || b == inf) return inf;
         return a + b;
     }
 };
