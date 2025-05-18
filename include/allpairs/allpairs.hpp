@@ -64,28 +64,6 @@ struct inf_plus {
 
 }  // namespace detail
 
-// for postgres
-template < class G >
-void
-pgr_johnson(
-        G &graph,
-        size_t &result_tuple_count,
-        IID_t_rt **postgres_rows) {
-    auto matrix = johnson(graph);
-    to_postgres::matrix_to_tuple(graph, matrix, result_tuple_count, postgres_rows);
-}
-
-
-template < class G >
-void
-pgr_floydWarshall(
-        G &graph,
-        size_t &result_tuple_count,
-        IID_t_rt **postgres_rows) {
-    auto matrix = floydWarshall(graph);
-    to_postgres::matrix_to_tuple(graph, matrix, result_tuple_count, postgres_rows);
-}
-
 
      template <class G>
      std::vector<std::vector<double>>

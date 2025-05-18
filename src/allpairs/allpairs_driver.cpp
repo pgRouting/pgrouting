@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "allpairs/allpairs.hpp"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/assert.hpp"
+#include "cpp_common/to_postgres.hpp"
 
 
 void
@@ -62,6 +63,10 @@ do_allpairs(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
+        using pgrouting::johnson;
+        using pgrouting::floydWarshall;
+        using pgrouting::to_postgres::matrix_to_tuple;
+
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, true);
 
@@ -77,9 +82,11 @@ do_allpairs(
             digraph.insert_edges(edges);
 
             if (which == 0) {
-                pgr_johnson(digraph, *return_count, return_tuples);
+                auto matrix = johnson(digraph);
+                matrix_to_tuple(digraph, matrix, *return_count, return_tuples);
             } else {
-                pgr_floydWarshall(digraph, *return_count, return_tuples);
+                auto matrix = floydWarshall(digraph);
+                matrix_to_tuple(digraph, matrix, *return_count, return_tuples);
             }
         } else {
             log << "Processing Undirected graph\n";
@@ -88,9 +95,11 @@ do_allpairs(
             undigraph.insert_edges(edges);
 
             if (which == 0) {
-                pgr_johnson(undigraph, *return_count, return_tuples);
+                auto matrix = johnson(undigraph);
+                matrix_to_tuple(undigraph, matrix, *return_count, return_tuples);
             } else {
-                pgr_floydWarshall(undigraph, *return_count, return_tuples);
+                auto matrix = floydWarshall(undigraph);
+                matrix_to_tuple(undigraph, matrix, *return_count, return_tuples);
             }
         }
 
