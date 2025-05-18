@@ -67,22 +67,6 @@ struct inf_plus {
 
 template < class G > class Pgr_allpairs;
 
-#if 0
-// user's functions
-template < class G >
-void
-pgr_johnson(G &graph, std::vector< IID_t_rt> &rows) {
-    Pgr_allpairs< G > fn_johnson;
-    fn_johnson.johnson(graph, rows);
-}
-
-template < class G >
-void
-pgr_floydWarshall(G &graph, std::vector< IID_t_rt> &rows) {
-    Pgr_allpairs< G > fn_floydWarshall;
-    fn_floydWarshall.floydWarshall(graph, rows);
-}
-#endif
 
 // for postgres
 template < class G >
@@ -133,28 +117,6 @@ class Pgr_allpairs {
          make_result(graph, matrix, result_tuple_count, postgres_rows);
      }
 
-#if 0
-     void floydWarshall(
-             G &graph,
-             std::vector< IID_t_rt> &rows) {
-         std::vector< std::vector<double>> matrix;
-         make_matrix(graph.num_vertices(), matrix);
-         detail::inf_plus<double> combine;
-
-         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-         CHECK_FOR_INTERRUPTS();
-
-         boost::floyd_warshall_all_pairs_shortest_paths(
-                 graph.graph,
-                 matrix,
-                 weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
-                 distance_combine(combine).
-                 distance_inf((std::numeric_limits<double>::max)()).
-                 distance_zero(0));
-
-         make_result(graph, matrix, rows);
-     }
-#endif
 
      void johnson(
              G &graph,
@@ -178,28 +140,6 @@ class Pgr_allpairs {
          make_result(graph, matrix, result_tuple_count, postgres_rows);
      }
 
-#if 0
-     void johnson(
-             G &graph,
-             std::vector< IID_t_rt> &rows) {
-         std::vector< std::vector<double>> matrix;
-         make_matrix(graph.num_vertices(), matrix);
-         detail::inf_plus<double> combine;
-
-         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-         CHECK_FOR_INTERRUPTS();
-
-         boost::johnson_all_pairs_shortest_paths(
-                 graph.graph,
-                 matrix,
-                 weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
-                 distance_combine(combine).
-                 distance_inf((std::numeric_limits<double>::max)()).
-                 distance_zero(0));
-
-         make_result(graph, matrix, rows);
-     }
-#endif
 
  private:
      void make_matrix(
