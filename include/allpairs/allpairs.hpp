@@ -48,8 +48,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/interruption.hpp"
 #include "cpp_common/to_postgres.hpp"
 
-// TODO(vicky) don't keep it here
-#include "cpp_common/alloc.hpp"
 
 namespace pgrouting  {
 namespace detail {
@@ -115,7 +113,7 @@ class Pgr_allpairs {
                  distance_inf((std::numeric_limits<double>::max)()).
                  distance_zero(0));
 
-         make_result(graph, matrix, result_tuple_count, postgres_rows);
+         to_postgres::matrix_to_tuple(graph, matrix, result_tuple_count, postgres_rows);
      }
 
 
@@ -138,7 +136,7 @@ class Pgr_allpairs {
                  distance_inf((std::numeric_limits<double>::max)()).
                  distance_zero(0));
 
-         make_result(graph, matrix, result_tuple_count, postgres_rows);
+         to_postgres::matrix_to_tuple(graph, matrix, result_tuple_count, postgres_rows);
      }
 
 
@@ -150,29 +148,6 @@ class Pgr_allpairs {
          matrix.resize(v_size);
          for (size_t i=0; i < v_size; i++)
              matrix[i].resize(v_size);
-     }
-
-     void make_result(
-             const G &graph,
-             const std::vector< std::vector<double> > &matrix,
-             size_t &result_tuple_count,
-             IID_t_rt **postgres_rows) const {
-         result_tuple_count = detail::count_rows(graph, matrix);
-         *postgres_rows = pgr_alloc(result_tuple_count, (*postgres_rows));
-
-
-         size_t seq = 0;
-         for (typename G::V v_i = 0; v_i < graph.num_vertices(); v_i++) {
-             for (typename G::V v_j = 0; v_j < graph.num_vertices(); v_j++) {
-                 if (v_i == v_j) continue;
-                 if (matrix[v_i][v_j] != (std::numeric_limits<double>::max)()) {
-                     (*postgres_rows)[seq].from_vid = graph[v_i].id;
-                     (*postgres_rows)[seq].to_vid = graph[v_j].id;
-                     (*postgres_rows)[seq].cost =  matrix[v_i][v_j];
-                     seq++;
-                 }  // if
-             }  // for j
-         }  // for i
      }
 
 

@@ -102,6 +102,41 @@ void vector_to_tuple(
     }
 }
 
+/** @brief Stored results on a vector are saved on a C array
+ *
+ * @param[in] graph Created graph with the base Graph
+ * @param[in] matrix matrix[i,j] -> the i,j element contains the results
+ * @param[out] result_count the size of the C array
+ * @param[out] result_tuples The C array of <bigint, bigint, float>
+ *
+ * <bigint, bigint, float> =  <i , j, results[i,j]>
+ *
+ * Currently works for
+ * - pgr_johnson
+ * - pgr_floydWarshall
+ */
+template <class G>
+void matrix_to_tuple(
+        const G &graph,
+        const std::vector<std::vector<double>> &matrix,
+        size_t &result_tuple_count,
+        IID_t_rt **postgres_rows) {
+    result_tuple_count = detail::count_rows(graph, matrix);
+    *postgres_rows = pgr_alloc(result_tuple_count, (*postgres_rows));
+
+    size_t seq = 0;
+    for (typename G::V v_i = 0; v_i < graph.num_vertices(); v_i++) {
+        for (typename G::V v_j = 0; v_j < graph.num_vertices(); v_j++) {
+            if (v_i == v_j) continue;
+            if (matrix[v_i][v_j] != (std::numeric_limits<double>::max)()) {
+                (*postgres_rows)[seq].from_vid = graph[v_i].id;
+                (*postgres_rows)[seq].to_vid = graph[v_j].id;
+                (*postgres_rows)[seq].cost =  matrix[v_i][v_j];
+                seq++;
+            }
+        }
+    }
+}
 
 /** @brief returns results to the SQL function
     @param [in] graph created graph
