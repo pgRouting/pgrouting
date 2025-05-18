@@ -67,7 +67,7 @@ pgr_global_report(
     }
 
     if (*notice) {
-        if (log) {
+        if (*log) {
             ereport(NOTICE,
                     (errmsg_internal("%s", *notice),
                      errhint("%s", *log)));
