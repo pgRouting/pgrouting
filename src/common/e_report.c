@@ -53,7 +53,7 @@ pgr_throw_error(const char *err, const char *hint) {
  *  ~~~~
  *
  * - When there is ERROR then postgreSQL takes over control
- *   - The char* messages are cleared automaticalyy with pfree.
+ *   - The char* messages are cleared automatically with pfree.
  * - When there is no error this will free the log & notice
  */
 void
