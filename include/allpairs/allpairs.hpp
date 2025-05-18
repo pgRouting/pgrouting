@@ -190,26 +190,6 @@ class Pgr_allpairs {
          return result_tuple_count;
      }
 
-#if 0
-     void make_result(
-             G &graph,
-             std::vector< std::vector<double> > &matrix,
-             std::vector< IID_t_rt> &rows) {
-         size_t count = count_rows(graph, matrix);
-         rows.resize(count);
-         size_t seq = 0;
-
-         for (typename G::V v_i = 0; v_i < graph.num_vertices(); v_i++) {
-             for (typename G::V v_j = 0; v_j < graph.num_vertices(); v_j++) {
-                 if (matrix[v_i][v_j] != (std::numeric_limits<double>::max)()) {
-                     rows[seq] =
-                     {graph[v_i].id, graph[v_j].id, matrix[v_i][v_j]};
-                     seq++;
-                 }  // if
-             }  // for j
-         }  // for i
-     }
-#endif
 };
 
 }  // namespace pgrouting
