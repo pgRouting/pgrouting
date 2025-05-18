@@ -98,8 +98,7 @@ class Pgr_allpairs {
              G &graph,
              size_t &result_tuple_count,
              IID_t_rt **postgres_rows) {
-         std::vector< std::vector<double>> matrix;
-         make_matrix(graph.num_vertices(), matrix);
+         std::vector<std::vector<double>> matrix(graph.num_vertices(), std::vector<double>(graph.num_vertices(), 0));
          detail::inf_plus<double> combine;
 
          /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
@@ -121,8 +120,7 @@ class Pgr_allpairs {
              G &graph,
              size_t &result_tuple_count,
              IID_t_rt **postgres_rows) {
-         std::vector< std::vector<double>> matrix;
-         make_matrix(graph.num_vertices(), matrix);
+         std::vector<std::vector<double>> matrix(graph.num_vertices(), std::vector<double>(graph.num_vertices(), 0));
          detail::inf_plus<double> combine;
 
          /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
@@ -139,16 +137,6 @@ class Pgr_allpairs {
          to_postgres::matrix_to_tuple(graph, matrix, result_tuple_count, postgres_rows);
      }
 
-
- private:
-     void make_matrix(
-             size_t v_size,
-             std::vector< std::vector<double>> &matrix) const {
-         // TODO(vicky) in one step
-         matrix.resize(v_size);
-         for (size_t i=0; i < v_size; i++)
-             matrix[i].resize(v_size);
-     }
 
 
 };
