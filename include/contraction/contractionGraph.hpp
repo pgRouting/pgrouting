@@ -375,8 +375,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
         auto e2 = get_min_cost_edge(v, w);
 
         double cost = std::numeric_limits<double>::max();
-        if (std::get<1>(e1) && std::get<1>(e2))
+        if (std::get<1>(e1) && std::get<1>(e2)) {
             cost = std::get<0>(e1).cost + std::get<0>(e2).cost;
+        }
 
         // Create shortcut
         CH_edge shortcut(
@@ -410,8 +411,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
             auto e2 = get_min_cost_edge(v, w);
 
             double cost = std::numeric_limits<double>::max();
-            if (std::get<1>(e1) && std::get<1>(e2))
+            if (std::get<1>(e1) && std::get<1>(e2)) {
                 cost = std::get<0>(e1).cost + std::get<0>(e2).cost;
+            }
             log << "cost = " << cost << std::endl;
 
             // Create shortcut
@@ -448,8 +450,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
                 bool found_f;
                 boost::tie(f, found_f) = boost::edge(v, w, this->graph);
                 if ((found_f) && (u != w)) {
-                    if ((this->graph[e].cost + this->graph[f].cost) > p_max)
+                    if ((this->graph[e].cost + this->graph[f].cost) > p_max) {
                         p_max = this->graph[e].cost + this->graph[f].cost;
+                    }
                 }
             }
         }
@@ -528,9 +531,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
     Identifiers<V> find_adjacent_out_vertices(V v) const {
         Identifiers<V> adjacent_vertices;
 
-        for (const auto &out :
-                boost::make_iterator_range(out_edges(v, this->graph)))
+        for (const auto &out : boost::make_iterator_range(out_edges(v, this->graph))) {
             adjacent_vertices += this->adjacent(v, out);
+        }
 
         return adjacent_vertices;
     }
@@ -543,9 +546,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
     Identifiers<V> find_adjacent_in_vertices(V v) const {
         Identifiers<V> adjacent_vertices;
 
-        for (const auto &in :
-                boost::make_iterator_range(in_edges(v, this->graph)))
+        for (const auto &in : boost::make_iterator_range(in_edges(v, this->graph))) {
             adjacent_vertices += this->adjacent(v, in);
+        }
 
         return adjacent_vertices;
     }

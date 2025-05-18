@@ -36,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/identifiers.hpp"
 
-#include "contraction/contractionHierarchies.hpp"
 
 namespace pgrouting {
 namespace to_postgres {
@@ -73,54 +72,16 @@ void vector_to_tuple(
     }
 }
 
-}  // namespace to_postgres
-}  // namespace pgrouting
 
-namespace detail {
-
-/*! @brief execute the contraction hierarchies, after having forbidden the needed vertices
-    @param [in] graph created graph with base Graph
-    @param [in] forbidden_vertices vector of forbidden vertices
-    @param [in/out] log string stream containing log information
-    @param [in/out] err string stream containing err information
- */
-template <class G>
-void perform_contractionHierarchies(
-        G &graph,
-        bool directed,
-        const std::vector< Edge_t > &edges,
-        const std::vector< int64_t > &forbidden_vertices,
-        std::ostringstream &log,
-        std::ostringstream &err) {
-    // Create the graph
-    graph.insert_edges(edges);
-
-    // Transform the forbidden vertices IDs vector to a collection of vertices
-    pgrouting::Identifiers<typename G::V> forbid_vertices;
-    for (const auto &vertex : forbidden_vertices) {
-        if (graph.has_vertex(vertex)) {
-            forbid_vertices += graph.get_V(vertex);
-        }
-    }
-    graph.set_forbidden_vertices(forbid_vertices);
-
-    // Execute the contraction
-    try {
-        pgrouting::functions::contractionHierarchies(graph, directed, log, err);
-    }
-    catch ( ... ) {
-        err << "Contractions hierarchy failed" << std::endl;
-        throw;
-    }
-}
-
-/*! @brief returns results to the SQL function
+/** @brief returns results to the SQL function
     @param [in] graph created graph
     @param [out] return_tuples tuples containing the results to pass to the SQL function
     @param [out] count string stream containing log information
+
+  Currently works for pgr_contractionHierarchies
 */
 template <class G>
-void get_postgres_result_contractionHierarchies(
+void graph_to_tuple(
         G &graph,
         contractionHierarchies_rt **return_tuples,
         size_t *count) {
@@ -177,6 +138,7 @@ void get_postgres_result_contractionHierarchies(
     }
 }
 
-}  // namespace detail
+}  // namespace to_postgres
+}  // namespace pgrouting
 
 #endif  // INCLUDE_CPP_COMMON_TO_POSTGRES_HPP_
