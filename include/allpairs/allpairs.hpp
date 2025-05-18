@@ -75,7 +75,8 @@ pgr_johnson(
         size_t &result_tuple_count,
         IID_t_rt **postgres_rows) {
     Pgr_allpairs< G > fn_johnson;
-    fn_johnson.johnson(graph, result_tuple_count, postgres_rows);
+    auto matrix = fn_johnson.johnson(graph);
+    to_postgres::matrix_to_tuple(graph, matrix, result_tuple_count, postgres_rows);
 }
 
 
@@ -86,7 +87,8 @@ pgr_floydWarshall(
         size_t &result_tuple_count,
         IID_t_rt **postgres_rows) {
     Pgr_allpairs< G > fn_floydWarshall;
-    fn_floydWarshall.floydWarshall(graph, result_tuple_count, postgres_rows);
+    auto matrix = fn_floydWarshall.floydWarshall(graph);
+    to_postgres::matrix_to_tuple(graph, matrix, result_tuple_count, postgres_rows);
 }
 
 
@@ -94,14 +96,11 @@ pgr_floydWarshall(
 template < class G >
 class Pgr_allpairs {
  public:
-     void floydWarshall(
-             G &graph,
-             size_t &result_tuple_count,
-             IID_t_rt **postgres_rows) {
+     std::vector<std::vector<double>>
+     floydWarshall(G &graph) {
          std::vector<std::vector<double>> matrix(graph.num_vertices(), std::vector<double>(graph.num_vertices(), 0));
          detail::inf_plus<double> combine;
 
-         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
          CHECK_FOR_INTERRUPTS();
 
          boost::floyd_warshall_all_pairs_shortest_paths(
@@ -112,18 +111,15 @@ class Pgr_allpairs {
                  distance_inf((std::numeric_limits<double>::max)()).
                  distance_zero(0));
 
-         to_postgres::matrix_to_tuple(graph, matrix, result_tuple_count, postgres_rows);
+         return matrix;
      }
 
 
-     void johnson(
-             G &graph,
-             size_t &result_tuple_count,
-             IID_t_rt **postgres_rows) {
+     std::vector<std::vector<double>>
+     johnson(G &graph) {
          std::vector<std::vector<double>> matrix(graph.num_vertices(), std::vector<double>(graph.num_vertices(), 0));
          detail::inf_plus<double> combine;
 
-         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
          CHECK_FOR_INTERRUPTS();
 
          boost::johnson_all_pairs_shortest_paths(
@@ -134,7 +130,7 @@ class Pgr_allpairs {
                  distance_inf((std::numeric_limits<double>::max)()).
                  distance_zero(0));
 
-         to_postgres::matrix_to_tuple(graph, matrix, result_tuple_count, postgres_rows);
+         return matrix;
      }
 
 
