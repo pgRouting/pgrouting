@@ -64,9 +64,6 @@ struct inf_plus {
 
 }  // namespace detail
 
-template < class G > class Pgr_allpairs;
-
-
 // for postgres
 template < class G >
 void
@@ -74,8 +71,7 @@ pgr_johnson(
         G &graph,
         size_t &result_tuple_count,
         IID_t_rt **postgres_rows) {
-    Pgr_allpairs< G > fn_johnson;
-    auto matrix = fn_johnson.johnson(graph);
+    auto matrix = johnson(graph);
     to_postgres::matrix_to_tuple(graph, matrix, result_tuple_count, postgres_rows);
 }
 
@@ -86,16 +82,12 @@ pgr_floydWarshall(
         G &graph,
         size_t &result_tuple_count,
         IID_t_rt **postgres_rows) {
-    Pgr_allpairs< G > fn_floydWarshall;
-    auto matrix = fn_floydWarshall.floydWarshall(graph);
+    auto matrix = floydWarshall(graph);
     to_postgres::matrix_to_tuple(graph, matrix, result_tuple_count, postgres_rows);
 }
 
 
-// template class
-template < class G >
-class Pgr_allpairs {
- public:
+     template <class G>
      std::vector<std::vector<double>>
      floydWarshall(G &graph) {
          std::vector<std::vector<double>> matrix(graph.num_vertices(), std::vector<double>(graph.num_vertices(), 0));
@@ -115,6 +107,7 @@ class Pgr_allpairs {
      }
 
 
+     template <class G>
      std::vector<std::vector<double>>
      johnson(G &graph) {
          std::vector<std::vector<double>> matrix(graph.num_vertices(), std::vector<double>(graph.num_vertices(), 0));
@@ -132,10 +125,6 @@ class Pgr_allpairs {
 
          return matrix;
      }
-
-
-
-};
 
 }  // namespace pgrouting
 
