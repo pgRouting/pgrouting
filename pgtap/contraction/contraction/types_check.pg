@@ -18,16 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 BEGIN;
-SELECT CASE WHEN min_version('3.8.0') THEN plan(5) ELSE plan(2) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(5) ELSE plan(2) END;
 
 CREATE OR REPLACE FUNCTION types_check()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF NOT min_version('3.8.0') THEN
+  IF NOT min_version('4.0.0') THEN
     RETURN QUERY
-    SELECT skip(1, 'pgr_contraction new signature added on 3.8.0');
+    SELECT skip(1, 'pgr_contraction old signature removed on 4.0.0');
     RETURN;
   END IF;
 
