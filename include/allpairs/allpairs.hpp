@@ -51,6 +51,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/alloc.hpp"
 
 namespace pgrouting  {
+namespace detail {
+
+template <typename T>
+struct inf_plus {
+    T operator()(const T& a, const T& b) const {
+        T inf = (std::numeric_limits<T>::max)();
+        if (a == inf || b == inf)
+            return inf;
+        return a + b;
+    }
+};
+
+}  // namespace detail
+
 template < class G > class Pgr_allpairs;
 
 // user's functions
@@ -101,7 +115,7 @@ class Pgr_allpairs {
              IID_t_rt **postgres_rows) {
          std::vector< std::vector<double>> matrix;
          make_matrix(graph.num_vertices(), matrix);
-         inf_plus<double> combine;
+         detail::inf_plus<double> combine;
 
          /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
          CHECK_FOR_INTERRUPTS();
@@ -122,7 +136,7 @@ class Pgr_allpairs {
              std::vector< IID_t_rt> &rows) {
          std::vector< std::vector<double>> matrix;
          make_matrix(graph.num_vertices(), matrix);
-         inf_plus<double> combine;
+         detail::inf_plus<double> combine;
 
          /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
          CHECK_FOR_INTERRUPTS();
@@ -144,7 +158,7 @@ class Pgr_allpairs {
              IID_t_rt **postgres_rows) {
          std::vector< std::vector<double>> matrix;
          make_matrix(graph.num_vertices(), matrix);
-         inf_plus<double> combine;
+         detail::inf_plus<double> combine;
 
          /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
          CHECK_FOR_INTERRUPTS();
@@ -166,7 +180,7 @@ class Pgr_allpairs {
              std::vector< IID_t_rt> &rows) {
          std::vector< std::vector<double>> matrix;
          make_matrix(graph.num_vertices(), matrix);
-         inf_plus<double> combine;
+         detail::inf_plus<double> combine;
 
          /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
          CHECK_FOR_INTERRUPTS();
@@ -250,15 +264,6 @@ class Pgr_allpairs {
          }  // for i
      }
 
-     template <typename T>
-     struct inf_plus {
-         T operator()(const T& a, const T& b) const {
-             T inf = (std::numeric_limits<T>::max)();
-             if (a == inf || b == inf)
-                 return inf;
-             return a + b;
-         }
-     };
 };
 
 }  // namespace pgrouting
