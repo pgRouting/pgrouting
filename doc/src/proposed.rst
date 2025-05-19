@@ -45,17 +45,6 @@ Proposed Functions
    :start-after: proposed-start
    :end-before: proposed-end
 
-:doc:`TRSP-family`
-
-.. include:: TRSP-family.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
-.. toctree::
-   :hidden:
-
-   TRSP-family
-
 :doc:`transformation-family`
 
 .. include:: transformation-family.rst
