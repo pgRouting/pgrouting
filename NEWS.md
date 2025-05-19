@@ -74,6 +74,8 @@ milestone for 4.0.0
   pgr_analyzeOneWay
 * [#2827](https://github.com/pgRouting/pgrouting/issues/2827):
   pgr_createVerticesTable
+* [#2886](https://github.com/pgRouting/pgrouting/issues/2886):
+  pgr_nodeNetwork
 
 **Removal of SQL deprecated internal functions**
 
