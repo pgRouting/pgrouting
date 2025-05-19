@@ -378,7 +378,7 @@ If there is a vertices table already built using the ``pgr_extractVertices``
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`topology-functions`
+* :doc:`utilities-family`
 * :doc:`pgr_extractVertices`
 
 .. rubric:: Indices and tables
