@@ -62,31 +62,3 @@ LANGUAGE C VOLATILE STRICT;
 
 COMMENT ON FUNCTION _pgr_withPointsDDv4(TEXT, TEXT, ANYARRAY, FLOAT, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
-
-/* TODO remove on v4 */
---v3.0
-CREATE FUNCTION _pgr_withPointsDD(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pid ANYARRAY,
-    distance FLOAT,
-
-    directed BOOLEAN DEFAULT true,
-    driving_side CHAR DEFAULT 'b',
-    details BOOLEAN DEFAULT false,
-    equicost BOOLEAN DEFAULT false,
-
-    OUT seq INTEGER,
-    OUT start_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
-
--- COMMENTS
-
-COMMENT ON FUNCTION _pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
-IS 'pgRouting internal function deprecated on v3.6.0';
