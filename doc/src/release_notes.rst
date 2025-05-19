@@ -88,6 +88,12 @@ milestone for 4.0.0
   * pgr_trsp(text,integer,integer,boolean,boolean,text)
   * pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
 
+* `#2888 <https://github.com/pgRouting/pgrouting/issues/2888>`__:
+  pgr_findCloseEdges
+
+  * pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)
+  * pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)
+
 .. rubric:: Removal of SQL deprecated functions
 
 * `#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__:
