@@ -18606,30 +18606,3 @@ msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
 #, fuzzy
-#~ msgid "Post processing"
-#~ msgstr "포스트 프로세싱"
-
-#~ msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
-#~ msgstr ":doc:`pgr_alphaShape` - 알파 셰이프 계산"
-
-#~ msgid ":doc:`pgr_findCloseEdges`"
-#~ msgstr ":doc:`pgr_findCloseEdges`"
-
-#, fuzzy
-#~ msgid "``pgr_createTopology`` - Deprecated since v3.8.0"
-#~ msgstr ":doc:`pgr_analyzeGraph`"
-
-#, fuzzy
-#~ msgid "``pgr_createVerticesTable`` - Deprecated since 3.8.0"
-#~ msgstr ":doc:`pgr_analyzeGraph`"
-
-#, fuzzy
-#~ msgid "``pgr_analyzeGraph`` -- Deprecated since 3.8.0"
-#~ msgstr ":doc:`pgr_analyzeGraph`"
-
-#~ msgid ":doc:`pgr_analyzeOneWay`"
-#~ msgstr ":doc:`pgr_analyzeOneWay`"
-
-#, fuzzy
-#~ msgid "``pgr_analyzeOneWay`` - Deprecated since 3.8.0"
-#~ msgstr ":doc:`pgr_analyzeGraph`"

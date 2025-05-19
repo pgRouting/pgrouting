@@ -18637,8 +18637,3 @@ msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
 #, fuzzy
-#~ msgid "(Alphabetical order)"
-#~ msgstr "個人(アルファベット順)"
-
-#~ msgid "Prerequisites"
-#~ msgstr "前提条件"
