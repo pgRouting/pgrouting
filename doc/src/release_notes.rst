@@ -104,6 +104,8 @@ milestone for 4.0.0
   pgr_analyzeOneWay
 * `#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__:
   pgr_createVerticesTable
+* `#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__:
+  pgr_nodeNetwork
 
 .. rubric:: Removal of SQL deprecated internal functions
 
@@ -175,8 +177,6 @@ pgRouting 3.8
 .. contents:: Contents
    :local:
    :depth: 1
-
-.. current
 
 pgRouting 3.8.0 Release Notes
 -------------------------------------------------------------------------------
