@@ -1,4 +1,5 @@
 SET(LOCAL_FILES
+    pgr_extractVertices.rst
     pgr_findCloseEdges.rst
     pgr_separateCrossing.rst
     pgr_separateTouching.rst

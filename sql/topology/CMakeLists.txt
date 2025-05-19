@@ -1,7 +1,6 @@
 
 SET(LOCAL_FILES
     nodeNetwork.sql
-    extractVertices.sql
     )
 
 foreach (f ${LOCAL_FILES})

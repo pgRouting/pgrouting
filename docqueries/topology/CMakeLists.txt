@@ -1,6 +1,5 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    extractVertices
     nodeNetwork
     )
 

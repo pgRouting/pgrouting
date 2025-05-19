@@ -1,7 +1,6 @@
 
 SET(LOCAL_FILES
     pgr_nodeNetwork.rst
-    pgr_extractVertices.rst
     topology-functions.rst
     )
 
