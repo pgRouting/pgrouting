@@ -19,66 +19,42 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN min_version('3.4.0') THEN plan(7) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(7) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION types_check() RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
-  IF NOT min_version('3.4.0') THEN
-    RETURN QUERY SELECT skip(1, 'Function added on 3.4.0');
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_findcloseedges some signatures removed on 4.0.0');
     RETURN;
   END IF;
 
   RETURN QUERY
   SELECT has_function('pgr_findcloseedges');
   RETURN QUERY
-  SELECT has_function('pgr_findcloseedges', ARRAY['text', 'geometry','double precision','integer','boolean','boolean']);
+  SELECT has_function('pgr_findcloseedges', ARRAY['text', 'geometry','double precision','integer','boolean']);
   RETURN QUERY
-  SELECT has_function('pgr_findcloseedges', ARRAY['text', 'geometry[]','double precision','integer','boolean','boolean']);
-  RETURN QUERY
-  SELECT function_returns('pgr_findcloseedges',
-    ARRAY['text', 'geometry','double precision','integer','boolean','boolean'],'setof record');
+  SELECT has_function('pgr_findcloseedges', ARRAY['text', 'geometry[]','double precision','integer','boolean']);
   RETURN QUERY
   SELECT function_returns('pgr_findcloseedges',
-    ARRAY['text', 'geometry[]','double precision','integer','boolean','boolean'],'setof record');
+    ARRAY['text', 'geometry','double precision','integer','boolean'],'setof record');
+  RETURN QUERY
+  SELECT function_returns('pgr_findcloseedges',
+    ARRAY['text', 'geometry[]','double precision','integer','boolean'],'setof record');
 
-  IF min_version('3.8.0') THEN
+  RETURN QUERY
+  SELECT function_args_eq('pgr_findcloseedges',
+    $$VALUES
+    ('{"","","",cap,dryrun,edge_id,fraction,side,distance,geom,edge}'::TEXT[]),
+    ('{"","","",cap,dryrun,edge_id,fraction,side,distance,geom,edge}')
+    $$);
 
-    RETURN QUERY
-    SELECT function_args_eq('pgr_findcloseedges',
-      $$VALUES
-      ('{"","","","cap","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
-      ('{"","","","cap","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
-      ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
-      ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[])
-      $$);
-
-    RETURN QUERY
-    SELECT function_types_eq('pgr_findcloseedges',
-      $$ VALUES
-      ('{text,_geometry,float8,int4,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[]),
-      ('{text,geometry,float8,int4,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[]),
-      ('{text,geometry,float8,int4,bool,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[]),
-      ('{text,_geometry,float8,int4,bool,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[])
-      $$);
-
-  ELSE
-
-    RETURN QUERY
-    SELECT function_args_eq('pgr_findcloseedges',
-      $$VALUES
-      ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
-      ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[])
-      $$);
-
-    RETURN QUERY
-    SELECT function_types_eq('pgr_findcloseedges',
-      $$ VALUES
-      ('{text,geometry,float8,int4,bool,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[]),
-      ('{text,_geometry,float8,int4,bool,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[])
-      $$);
-
-  END IF;
+  RETURN QUERY
+  SELECT function_types_eq('pgr_findcloseedges',
+    $$ VALUES
+    ('{text,geometry,float8,int4,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[]),
+    ('{text,_geometry,float8,int4,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[])
+    $$);
 
 END
 $BODY$
