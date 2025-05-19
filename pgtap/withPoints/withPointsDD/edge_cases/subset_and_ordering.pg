@@ -28,7 +28,7 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
   IF NOT min_version('3.6.0') THEN
-    RETURN QUERY SELECT skip(1, 'new signature on 3.6.0');
+    RETURN QUERY SELECT skip(1, 'pgr_withPointsDD testing only valid signatures on 4.0.0');
     RETURN;
   END IF;
 

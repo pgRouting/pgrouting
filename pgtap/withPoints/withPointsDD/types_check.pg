@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN min_version('3.6.0') THEN plan(11) ELSE plan(7) END;
+SELECT CASE WHEN min_version('3.6.0') THEN plan(7) ELSE plan(2) END;
 
 SELECT has_function('pgr_withpointsdd');
 
@@ -28,7 +28,10 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-IF min_version('3.6.0') THEN
+    IF NOT min_version('3.6.0') THEN
+      RETURN QUERY SELECT skip(1, 'pgr_withPointsDD testing only valid signatures on 4.0.0');
+      RETURN;
+    END IF;
 
 RETURN QUERY
 SELECT has_function('pgr_withpointsdd', ARRAY['text','text','bigint','double precision','character','boolean','boolean']);
@@ -40,55 +43,37 @@ SELECT function_returns('pgr_withpointsdd', ARRAY['text','text','bigint','double
 RETURN QUERY
 SELECT function_returns('pgr_withpointsdd', ARRAY['text','text','anyarray','double precision','character','boolean','boolean','boolean'],'setof record');
 
-END IF;
-
-/* TODO remove last 2 rows on v4 */
+IF min_version('4.0.0') THEN
 RETURN QUERY
-SELECT CASE WHEN min_version('3.6.0')
-THEN collect_tap (
-
-  function_args_eq('pgr_withpointsdd',
+SELECT function_args_eq('pgr_withpointsdd',
     $$VALUES
     ('{"","","","","","directed","details","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[]),
-    ('{"","","","","","directed","details","equicost","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[]),
-    ('{"","","","","directed","driving_side","details","seq","node","edge","cost","agg_cost"}'::TEXT[]),
-    ('{"","","","","directed","driving_side","details","equicost","seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
-    $$),
+    ('{"","","","","","directed","details","equicost","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}')
+    $$);
 
-  function_types_eq('pgr_withpointsdd',
+RETURN QUERY
+SELECT function_types_eq('pgr_withpointsdd',
     $$VALUES
     ('{text,text,anyarray,float8,bpchar,bool,bool,bool,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-    ('{text,text,int8,float8,bpchar,bool,bool,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-    ('{text,text,int8,float8,bool,bpchar,bool,int4,int8,int8,float8,float8}'::TEXT[]),
-    ('{text,text,anyarray,float8,bool,bpchar,bool,bool,int4,int8,int8,int8,float8,float8}'::TEXT[])
-    $$)
-)
-ELSE collect_tap(
+    ('{text,text,int8,float8,bpchar,bool,bool,int8,int8,int8,int8,int8,int8,float8,float8}')
+    $$);
 
-  function_args_eq('pgr_withpointsdd',
+ELSE
+
+RETURN QUERY
+SELECT function_args_has('pgr_withpointsdd',
     $$VALUES
-    ('{"","","","","directed","driving_side","details","seq","node","edge","cost","agg_cost"}'::TEXT[]),
-    ('{"","","","","directed","driving_side","details","equicost","seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
-    $$),
+    ('{"","","","","","directed","details","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","","directed","details","equicost","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}')
+    $$);
 
-  function_types_eq('pgr_withpointsdd',
+RETURN QUERY
+SELECT function_types_has('pgr_withpointsdd',
     $$VALUES
-    ('{text,text,anyarray,float8,bool,bpchar,bool,bool,int4,int8,int8,int8,float8,float8}'::TEXT[]),
-    ('{text,text,int8,float8,bool,bpchar,bool,int4,int8,int8,float8,float8}'::TEXT[])
-    $$)
-)
-END;
-
-/* TODO remove on v4 this are the old signatures */
-RETURN QUERY
-SELECT has_function('pgr_withpointsdd', ARRAY['text','text','bigint','double precision','boolean','character','boolean']);
-RETURN QUERY
-SELECT has_function('pgr_withpointsdd', ARRAY['text','text','anyarray','double precision','boolean','character','boolean','boolean']);
-
-RETURN QUERY
-SELECT function_returns('pgr_withpointsdd', ARRAY['text','text','bigint','double precision','boolean','character','boolean'],'setof record');
-RETURN QUERY
-SELECT function_returns('pgr_withpointsdd', ARRAY['text','text','anyarray','double precision','boolean','character','boolean','boolean'],'setof record');
+    ('{text,text,anyarray,float8,bpchar,bool,bool,bool,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+    ('{text,text,int8,float8,bpchar,bool,bool,int8,int8,int8,int8,int8,int8,float8,float8}')
+    $$);
+END IF;
 
 END;
 $BODY$

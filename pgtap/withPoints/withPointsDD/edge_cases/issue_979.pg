@@ -20,169 +20,111 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 SET extra_float_digits = -3;
--- UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
-SELECT CASE WHEN min_version('3.6.0') THEN plan(6) ELSE plan(3) END;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+SELECT CASE WHEN min_version('3.6.0') THEN plan(3) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION test_new()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
+  IF NOT min_version('3.6.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_withPointsDD testing only valid signatures on 4.0.0');
+    RETURN;
+  END IF;
+
   -- queries
-  IF min_version('3.6.0') THEN
-    PREPARE q1 AS
-    SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
-      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-      'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-      -1, 6.8, 'r', details := false);
-
-    PREPARE q2 AS
-    SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
-      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-      'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-      -1, 6.8, 'l', details := false);
-
-    PREPARE q3 AS
-    SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
-      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-      'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-      -1, 6.8, 'b', details := false, directed:=false);
-
-
-  END IF;
-
-  /* TODO remove old on v4 */
-  PREPARE q1old AS
-  SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
+  PREPARE q1 AS
+  SELECT seq, node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, 6.8, driving_side => 'r', details := false);
+    -1, 6.8, 'r', details := false);
 
-  PREPARE q2old AS
-  SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
+  PREPARE q2 AS
+  SELECT seq, node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, 6.8, driving_side => 'l', details := false);
+    -1, 6.8, 'l', details := false);
 
-  PREPARE q3old AS
-  SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
+  PREPARE q3 AS
+  SELECT seq, node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, 6.8, driving_side => 'b', details := false, directed:=false);
+    -1, 6.8, 'b', details := false, directed:=false);
 
-  -- expected results
-  IF min_version('3.6.0') THEN
-    PREPARE e2 AS
-    SELECT
-    node::BIGINT, edge::BIGINT, cost::FLOAT, agg_cost::FLOAT
-    FROM
-    (VALUES
-      (-1, -1,   0,         0),
-      ( 6,  1, 0.6,    0.6),
-      ( 5,  1,   1,    1.6),
-      ( 7,  4,   1,    1.6),
-      ( 3,  7,   1,    2.6),
-      (11,  8,   1,    2.6),
-      ( 1,  6,   1,    3.6),
-      ( 8, 10,   1,    2.6),
-      (16,  9,   1,    3.6),
-      (12, 11,   1,    3.6),
-      ( 9, 14,   1,    3.6),
-      (17, 15,   1,    4.6),
-      (15, 16,   1,    4.6),
-      (10,  3,   1,    5.6)
-    ) AS t (node, edge, cost, agg_cost);
-  END IF;
 
   PREPARE e1 AS
   SELECT
-  node::BIGINT, edge::BIGINT, cost::FLOAT, agg_cost::FLOAT
+  seq, node::BIGINT, edge::BIGINT, cost::FLOAT, agg_cost::FLOAT
   FROM
   (VALUES
-    ( -1,  -1,   0,   0),
-    (  5,   1,   0.4, 0.4),
-    (  6,   1,   1,   1.4),
-    (  7,   4,   1,   2.4),
-    (  3,   7,   1,   3.4),
-    ( 11,   8,   1,   3.4),
-    (  8,  10,   1,   3.4),
-    (  1,   6,   1,   4.4),
-    ( 16,   9,   1,   4.4),
-    ( 12,  11,   1,   4.4),
-    (  9,  14,   1,   4.4),
-    ( 17,  13,   1,   5.4),
-    ( 15,  16,   1,   5.4),
-    ( 10,   3,   1,   6.4)
-  ) AS t (node, edge, cost, agg_cost);
+    (1,  -1,  -1, 0,      0),
+    (2,   5,   1, 0.4004, 0.4004),
+    (3,   6,   1, 1.001,  1.4014),
+    (4,   7,   4, 1.016,  2.4174),
+    (5,   3,   7, 1.049,  3.4664),
+    (6,  11,   8, 1.064,  3.4814),
+    (7,   8,  10, 1.1,    3.5174),
+    (8,   1,   6, 1.036,  4.5024),
+    (9,  16,   9, 1.081,  4.5624),
+    (10, 12,  11, 1.121,  4.6024),
+    (11,  9,  14, 1.196,  4.7134),
+    (12, 17,  13, 1.169,  5.7714),
+    (13, 15,  16, 1.256,  5.8184)
+  ) AS t (seq, node, edge, cost, agg_cost);
 
-  PREPARE e2old AS
+  PREPARE e2 AS
   SELECT
-  node::BIGINT, edge::BIGINT, cost::FLOAT, agg_cost::FLOAT
+  seq, node::BIGINT, edge::BIGINT, cost::FLOAT, agg_cost::FLOAT
   FROM
   (VALUES
-    ( -1,  -1,  0,   0),
-    (  6,   1,  0.6, 0.6),
-    (  5,   1,  1,  1.6),
-    (  7,   4,  1,  1.6),
-    (  3,   7,  1,  2.6),
-    (  8,  10,  1,  2.6),
-    ( 11,   8,  1,  2.6),
-    (  1,   6,  1,  3.6),
-    ( 16,   9,  1,  3.6),
-    ( 12,  11,  1,  3.6),
-    (  9,  14,  1,  3.6),
-    ( 17,  15,  1,  4.6),
-    ( 15,  16,  1,  4.6),
-    ( 10,   3,  1,  5.6)
-  ) AS t (node, edge, cost, agg_cost);
-
+    (1,  -1, -1, 0,      0),
+    (2,   6,  1, 0.6006, 0.6006),
+    (3,   5,  1, 1.001,  1.6016),
+    (4,   7,  4, 1.016,  1.6166),
+    (5,   3,  7, 1.049,  2.6656),
+    (6,  11,  8, 1.064,  2.6806),
+    (7,   8, 10, 1.1,    2.7166),
+    (8,   1,  6, 1.036,  3.7016),
+    (9,  16,  9, 1.081,  3.7616),
+    (10, 12, 11, 1.121,  3.8016),
+    (11,  9, 14, 1.196,  3.9126),
+    (12, 17, 13, 1.169,  4.9706),
+    (13, 15, 16, 1.256,  5.0176),
+    (14, 10,  3, 1.009,  6.0266)
+  ) AS t (seq, node, edge, cost, agg_cost);
   PREPARE e3 AS
   SELECT
-  node::BIGINT, edge::BIGINT, cost::FLOAT, agg_cost::FLOAT
+  seq, node::BIGINT, edge::BIGINT, cost::FLOAT, agg_cost::FLOAT
   FROM
   (VALUES
-    ( -1, -1,  0,   0),
-    (  6,  1,  0.6, 0.6),
-    (  5,  1,  0.4, 0.4),
-    ( 10,  2,  1,  1.6),
-    (  7,  4,  1,  1.6),
-    ( 15,  3,  1,  2.6),
-    (  3,  7,  1,  2.6),
-    ( 11,  8,  1,  2.6),
-    (  8, 10,  1,  2.6),
-    (  1,  6,  1,  3.6),
-    ( 16,  9,  1,  3.6),
-    ( 12, 11,  1,  3.6),
-    (  9, 14,  1,  3.6),
-    ( 17, 13,  1,  4.6)
-  ) AS t (node, edge, cost, agg_cost);
+    (1,  -1, -1, 0,      0),
+    (2,   5,  1, 0.4004, 0.4004),
+    (3,   6,  1, 0.6006, 0.6006),
+    (4,  10,  2, 1.004,  1.6046),
+    (5,   7,  4, 1.016,  1.6166),
+    (6,  15,  3, 1.009,  2.6136),
+    (7,  11,  5, 1.025,  2.6296),
+    (8,   3,  7, 1.049,  2.6656),
+    (9,   8, 10, 1.1,    2.7166),
+    (10,  1,  6, 1.036,  3.7016),
+    (11, 16,  9, 1.081,  3.7106),
+    (12, 12, 11, 1.121,  3.7506),
+    (13,  9, 14, 1.196,  3.9126),
+    (14, 17, 13, 1.169,  4.9196)
+
+  ) AS t (seq, node, edge, cost, agg_cost);
 
 
-  IF min_version('3.6.0') THEN
-    RETURN QUERY
-    SELECT set_eq('q1', 'e1', 'right driving side, DIR');
-
-    PERFORM todo(1, 'Fails on postgres 16');
-    RETURN QUERY
-    SELECT set_eq('q2', 'e2', 'left driving side, DIR');
-
-    RETURN QUERY
-    SELECT set_eq('q3', 'e3', 'both driving sides, UNDI');
-  END IF;
-
-  SET client_min_messages TO ERROR;
-  /* TODO remove old tests on v4 */
   RETURN QUERY
-  SELECT set_eq('q1old', 'e1', 'old: right driving side, DIR');
+  SELECT set_eq('q1', 'e1', 'right driving side, DIR');
 
   PERFORM todo(1, 'Fails on postgres 16');
   RETURN QUERY
-  SELECT set_eq('q2old', 'e2old', 'old: left driving side, DIR');
+  SELECT set_eq('q2', 'e2', 'left driving side, DIR');
 
   RETURN QUERY
-  SELECT set_eq('q3old', 'e3', 'old: both driving sides, UNDI');
-  SET client_min_messages TO WARNING;
-
+  SELECT set_eq('q3', 'e3', 'both driving sides, UNDI');
 
 END;
 $BODY$

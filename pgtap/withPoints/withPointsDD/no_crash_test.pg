@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.6.0') THEN plan(50) ELSE plan(42) END;
+SELECT CASE WHEN min_version('3.6.0') THEN plan(48) ELSE plan(1) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edges;
@@ -31,10 +31,6 @@ SELECT pid, edge_id, fraction from pointsOfInterest;
 PREPARE null_ret AS
 SELECT array_agg(id) FROM vertices WHERE id IN (-1);
 
-SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
-SELECT set_eq('null_ret', 'SELECT NULL::BIGINT[]', 'Should be empty to tests be meaningful');
-
-
 CREATE OR REPLACE FUNCTION test_function()
 RETURNS SETOF TEXT AS
 $BODY$
@@ -42,7 +38,11 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-IF min_version('3.6.0') THEN
+
+    IF NOT min_version('3.6.0') THEN
+      RETURN QUERY SELECT skip(1, 'pgr_withPointsDD testing only valid signatures on 4.0.0');
+      RETURN;
+    END IF;
 
     -- 1 to distance
     params = ARRAY[
@@ -97,60 +97,6 @@ IF min_version('3.6.0') THEN
 	'NULL'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsDD', params, subs);
-
-ELSE
-
-/* TODO remove tests on v4 of the old signatures */
-SET client_min_messages TO ERROR;
-    -- 1 to distance
-    params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
-    '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
-    '1',
-    '1.3::FLOAT'
-    ]::TEXT[];
-    subs = ARRAY[
-    'NULL',
-    'NULL',
-    '(SELECT id FROM vertices WHERE id IN (-1))',
-    'NULL'
-    ]::TEXT[];
-
-    RETURN query SELECT * FROM no_crash_test('pgr_withPointsDD', params, subs);
-
-    subs = ARRAY[
-    'NULL',
-    'NULL',
-    'NULL::BIGINT',
-    'NULL'
-    ]::TEXT[];
-    RETURN query SELECT * FROM no_crash_test('pgr_withPointsDD', params, subs);
-
-    -- many to distance
-    params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
-    '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
-    'ARRAY[1]',
-    '1.3::FLOAT'
-    ]::TEXT[];
-    subs = ARRAY[
-    'NULL',
-    'NULL',
-    '(SELECT array_agg(id) FROM vertices WHERE id IN (-1))',
-    'NULL'
-    ]::TEXT[];
-
-    RETURN query SELECT * FROM no_crash_test('pgr_withPointsDD', params, subs);
-
-    subs = ARRAY[
-    'NULL',
-    'NULL',
-    'NULL::BIGINT[]',
-    'NULL'
-    ]::TEXT[];
-    RETURN query SELECT * FROM no_crash_test('pgr_withPointsDD', params, subs);
-
-END IF;
 
 END
 $BODY$
