@@ -1,4 +1,3 @@
-
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
@@ -20,13 +19,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.4.0') THEN plan(33) ELSE plan(2) END;
+SELECT CASE WHEN min_version('3.8.0') THEN plan(32) ELSE plan(1) END;
 
 PREPARE edges AS
 SELECT id, geom FROM edges;
-
-SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
-
 
 CREATE OR REPLACE FUNCTION no_crash()
 RETURNS SETOF TEXT AS
@@ -35,8 +31,9 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-  IF NOT min_version('3.4.0') THEN
-    RETURN QUERY SELECT skip(1, 'Function added on 3.4.0');
+
+  IF NOT min_version('3.8.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_findcloseedges testing only valid signatures from 4.0.0');
     RETURN;
   END IF;
 
@@ -67,7 +64,6 @@ BEGIN
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;
-
 
 SELECT * FROM no_crash();
 

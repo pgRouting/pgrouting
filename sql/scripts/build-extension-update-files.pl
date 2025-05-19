@@ -269,13 +269,6 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_kruskaldd(text,anyarray,numeric)");
             push @commands, drop_special_case_function("pgr_kruskaldd(text,anyarray,double precision)");
         }
-
-        # updating to 3.7+
-        if ($old_minor >= 3.4 && $old_minor < 3.8) {
-            push @commands, drop_special_case_function("pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)");
-            push @commands, drop_special_case_function("pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)");
-        }
-
     }
 
     #------------------------------------

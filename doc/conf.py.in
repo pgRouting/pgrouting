@@ -333,6 +333,8 @@ linkcheck_ignore = [
     r'https://github.com/pgRouting/pgrouting/issues/*',    # limit only pgrouting
     r'https://github.com/pgRouting/pgrouting/archive/*',
     r'https://docs.pgrouting.org/3.8/*',
+    # Currently has a problem
+    'https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html'
     r'https://www.overpass-api.de/*'
 ]
 
