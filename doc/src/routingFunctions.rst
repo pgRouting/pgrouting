@@ -89,12 +89,6 @@ Function Families
    :start-after: official-start
    :end-before: official-end
 
-:doc:`topology-functions`
-
-.. include:: topology-functions.rst
-   :start-after: official-start
-   :end-before: official-end
-
 :doc:`TSP-family`
 
 .. include:: TSP-family.rst
@@ -103,9 +97,9 @@ Function Families
 
 :doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)
 
-.. rubric:: Utilities
+:doc:`utilities-family`
 
-.. include:: topology-functions.rst
+.. include:: utilities-family.rst
    :start-after: utility_official-start
    :end-before: utility_official-end
 
@@ -172,7 +166,7 @@ Functions by categories
     metrics-family
     prim-family
     reference
-    topology-functions
+    utilities-family
     TSP-family
 
 .. toctree::

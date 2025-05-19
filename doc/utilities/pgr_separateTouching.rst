@@ -176,7 +176,7 @@ Routing from :math:`1` to :math:`2` gives a solution.
 See Also
 -------------------------------------------------------------------------------
 
-:doc:`topology-functions` for an overview of a topology for routing algorithms.
+:doc:`utilities-family`
 
 .. rubric:: Indices and tables
 

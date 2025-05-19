@@ -284,7 +284,7 @@ Inspect the routing topology
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`topology-functions`
+* :doc:`utilities-family`
 
 .. rubric:: Indices and tables
 

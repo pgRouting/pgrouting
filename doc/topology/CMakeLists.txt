@@ -1,7 +1,6 @@
 
 SET(LOCAL_FILES
     pgr_nodeNetwork.rst
-    topology-functions.rst
     )
 
 foreach (f ${LOCAL_FILES})
