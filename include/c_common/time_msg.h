@@ -29,6 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <time.h>
 #include <stdio.h>
 
-void time_msg(char *msg, clock_t start_t, clock_t end_t);
+void time_msg(const char *msg, clock_t start_t, clock_t end_t);
 
 #endif  // INCLUDE_C_COMMON_TIME_MSG_H_

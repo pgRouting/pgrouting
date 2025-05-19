@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: floydWarshall_driver.h
+File: allpairs_driver.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,38 +27,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_
-#define INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_
+#define INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_
 #pragma once
 
-/* for size-t */
-#ifdef __cplusplus
-#   include <cstddef>
+
+#include <cstddef>
+#include <string>
 using IID_t_rt = struct IID_t_rt;
-#else
-#   include <stddef.h>
-#include <stdbool.h>
-typedef struct IID_t_rt IID_t_rt;
-#endif
-
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 void
-pgr_do_floydWarshall(
-    const char*,
-    bool,
+do_allpairs(
+    std::string,
+    bool, int,
 
-    IID_t_rt**,
-    size_t*,
-    char**,
-    char**);
+    IID_t_rt**, size_t*,
+    char**, char**);
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif  // INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_

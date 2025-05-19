@@ -1,13 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: floydWarshall_driver.cpp
+File: allpairs_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2025 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -27,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/allpairs/floydWarshall_driver.h"
+#include "drivers/allpairs_driver.hpp"
 
 #include <sstream>
 #include <deque>
@@ -36,14 +35,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "allpairs/allpairs.hpp"
 #include "cpp_common/pgdata_getters.hpp"
-
 #include "cpp_common/assert.hpp"
+#include "cpp_common/to_postgres.hpp"
 
 
 void
-pgr_do_floydWarshall(
-        const char *edges_sql,
+do_allpairs(
+        std::string edges_sql,
         bool directed,
+        int which,
+        /* IDEA: have as a parameter the function name*/
 
         IID_t_rt **return_tuples,
         size_t *return_count,
@@ -54,7 +55,7 @@ pgr_do_floydWarshall(
 
     std::ostringstream log;
     std::ostringstream err;
-    const char *hint = nullptr;
+    std::string hint;
 
     try {
         pgassert(!(*log_msg));
@@ -62,24 +63,44 @@ pgr_do_floydWarshall(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
+        using pgrouting::johnson;
+        using pgrouting::floydWarshall;
+        using pgrouting::to_postgres::matrix_to_tuple;
+
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, true);
 
         if (edges.empty()) {
             throw std::string("No edges found");
         }
-        hint = nullptr;
 
+        hint = "";
         if (directed) {
             log << "Processing Directed graph\n";
+
             pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
-            pgr_floydWarshall(digraph, *return_count, return_tuples);
+
+            if (which == 0) {
+                auto matrix = johnson(digraph);
+                matrix_to_tuple(digraph, matrix, *return_count, return_tuples);
+            } else {
+                auto matrix = floydWarshall(digraph);
+                matrix_to_tuple(digraph, matrix, *return_count, return_tuples);
+            }
         } else {
             log << "Processing Undirected graph\n";
+
             pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
-            pgr_floydWarshall(undigraph, *return_count, return_tuples);
+
+            if (which == 0) {
+                auto matrix = johnson(undigraph);
+                matrix_to_tuple(undigraph, matrix, *return_count, return_tuples);
+            } else {
+                auto matrix = floydWarshall(undigraph);
+                matrix_to_tuple(undigraph, matrix, *return_count, return_tuples);
+            }
         }
 
 
@@ -100,7 +121,7 @@ pgr_do_floydWarshall(
         *log_msg = to_pg_msg(log);
     } catch (const std::string &ex) {
         *err_msg = to_pg_msg(ex);
-        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log);
+        *log_msg = hint.empty()? to_pg_msg(hint) : to_pg_msg(log);
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

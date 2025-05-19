@@ -1,13 +1,9 @@
 /*PGR-GNU*****************************************************************
-File: johnson_driver.h
-
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
+File: allpairs_process.h
 
 Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2025 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -26,37 +22,28 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-#ifndef INCLUDE_DRIVERS_ALLPAIRS_JOHNSON_DRIVER_H_
-#define INCLUDE_DRIVERS_ALLPAIRS_JOHNSON_DRIVER_H_
+
+#ifndef INCLUDE_PROCESS_ALLPAIRS_PROCESS_H_
+#define INCLUDE_PROCESS_ALLPAIRS_PROCESS_H_
 #pragma once
 
-/* for size-t */
 #ifdef __cplusplus
-#   include <cstddef>
+#include <cstddef>
 using IID_t_rt = struct IID_t_rt;
 #else
-#   include <stddef.h>
+#include <stddef.h>
 #include <stdbool.h>
 typedef struct IID_t_rt IID_t_rt;
 #endif
-
-
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void
-pgr_do_johnson(
-        const char*,
-        bool,
-
-        IID_t_rt**, size_t*,
-        char**,
-        char**);
+void pgr_process_allpairs(const char*, bool, int, IID_t_rt **, size_t *);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_ALLPAIRS_JOHNSON_DRIVER_H_
+#endif  // INCLUDE_PROCESS_ALLPAIRS_PROCESS_H_

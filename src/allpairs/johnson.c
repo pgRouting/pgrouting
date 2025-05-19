@@ -35,43 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "drivers/allpairs/johnson_driver.h"
+#include "process/allpairs_process.h"
 
 PGDLLEXPORT Datum _pgr_johnson(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_johnson);
 
-static
-void process(
-        char* edges_sql,
-        bool directed,
-        IID_t_rt **result_tuples,
-        size_t *result_count) {
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-
-
-    clock_t start_t = clock();
-    pgr_do_johnson(
-            edges_sql,
-            directed,
-            result_tuples,
-            result_count,
-            &log_msg,
-            &err_msg);
-    time_msg(" processing Johnson", start_t, clock());
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
 
 PGDLLEXPORT Datum
 _pgr_johnson(PG_FUNCTION_ARGS) {
@@ -87,20 +55,21 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        process(
+        pgr_process_allpairs(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_BOOL(1),
+                0,  /* johnson */
                 &result_tuples,
                 &result_count);
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-                != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
                          "that cannot accept type record")));
+        }
 
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
@@ -119,7 +88,6 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
         values = palloc(3 * sizeof(Datum));
         nulls = palloc(3 * sizeof(bool));
 
-        // postgres starts counting from 1
         values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_vid);
         nulls[0] = false;
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].to_vid);
