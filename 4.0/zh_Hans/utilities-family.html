@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Topology - 函数族 &#8212; pgRouting Manual (4.0-dev)</title>
+    <title>实用工具函数集 &#8212; pgRouting Manual (4.0-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -16,12 +16,12 @@
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=9a91d2da"></script>
+    <script src="_static/page_history.js?v=a458cb6c"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_nodeNetwork" href="pgr_nodeNetwork.html" />
-    <link rel="prev" title="pgr_full_version" href="pgr_full_version.html" />
+    <link rel="next" title="pgr_extractVertices" href="pgr_extractVertices.html" />
+    <link rel="prev" title="pgr_TSPeuclidean" href="pgr_TSPeuclidean.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -96,8 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Topology - 函数族</a></li>
-<li><a class="reference internal" href="#utility-functions">实用工具函数集</a><ul>
+<li><a class="reference internal" href="#">实用工具函数集</a><ul>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
 </ul>
 </li>
@@ -110,11 +109,11 @@
               
                 
   <li>
-    <a href="pgr_full_version.html" title="Previous Chapter: pgr_full_version"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_full_version</span>
+    <a href="pgr_TSPeuclidean.html" title="Previous Chapter: pgr_TSPeuclidean"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_TSPeuclidean</span>
     </a>
   </li>
   <li>
-    <a href="pgr_nodeNetwork.html" title="Next Chapter: pgr_nodeNetwork"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_nodeNetwork &raquo;</span>
+    <a href="pgr_extractVertices.html" title="Next Chapter: pgr_extractVertices"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_extractVertices &raquo;</span>
     </a>
   </li>
               
@@ -145,19 +144,18 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Topology - 函数族</a></li>
-<li><a class="reference internal" href="#utility-functions">实用工具函数集</a><ul>
+<li><a class="reference internal" href="#">实用工具函数集</a><ul>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
 </ul>
 </li>
 </ul>
 
   <li>
-    <a href="pgr_full_version.html" title="Previous Chapter: pgr_full_version"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_full_version</span>
+    <a href="pgr_TSPeuclidean.html" title="Previous Chapter: pgr_TSPeuclidean"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_TSPeuclidean</span>
     </a>
   </li>
   <li>
-    <a href="pgr_nodeNetwork.html" title="Next Chapter: pgr_nodeNetwork"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_nodeNetwork &raquo;</span>
+    <a href="pgr_extractVertices.html" title="Next Chapter: pgr_extractVertices"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_extractVertices &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -170,23 +168,11 @@
         </div>
       </div>
         <div class="body span9 content" role="main">
-            <script> document.write(get_history('topology-functions','zh-Hans'));  </script>
+            <script> document.write(get_history('utilities-family','zh-Hans'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
-<section id="topology-family-of-functions">
-<h1>Topology - 函数族<a class="headerlink" href="#topology-family-of-functions" title="Link to this heading">¶</a></h1>
-<p>pgRouting 的网络拓扑以两个表形式的图表示：边表和顶点表。</p>
-<p>与表关联的属性有助于指示图是有向的还是无向的，边是否是有向图上的单向，并且根据最终应用程序的需要，需要创建合适的拓扑。</p>
-<p>以下函数直接修改数据库，因此用户必须具有管理员授予的特殊权限才能使用它们。</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> - 为无节点边表创建节点。</p></li>
-</ul>
-<div class="line-block" id="index-1">
-<div class="line"><br /></div>
-</div>
-</section>
 <section id="utility-functions">
 <h1>实用工具函数集<a class="headerlink" href="#utility-functions" title="Link to this heading">¶</a></h1>
 <ul class="simple">
@@ -195,27 +181,6 @@
 <li><p><a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> - 断开相互交叉的几何图形。</p></li>
 <li><p><a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> - 断开相互（接近）接触的几何图形。</p></li>
 </ul>
-<div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="96dd21b5-960c-4749-a59b-7c4515f0a228" name="96dd21b5-960c-4749-a59b-7c4515f0a228" type="checkbox"><label class="sphinx_collapse__label" for="96dd21b5-960c-4749-a59b-7c4515f0a228"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>下一版本的提议功能。</p>
-<ul class="simple">
-<li><p>它们并未正式出现在当前版本中。</p></li>
-<li><p>它们可能会正式成为下一个版本的一部分：</p>
-<ul>
-<li><p>这些函数使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
-<li><p>名字可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>签名可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>功能可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>pgTap 测试已经完成。 但可能需要更多。</p></li>
-<li><p>文档可能需要完善。</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
 <div class="toctree-wrapper compound">
 </div>
 <section id="see-also">
@@ -241,7 +206,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 30, 2025.<br/>
+      Last updated on 5月 19, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

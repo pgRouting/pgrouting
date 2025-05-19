@@ -16,12 +16,12 @@
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=9a91d2da"></script>
+    <script src="_static/page_history.js?v=a458cb6c"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_trsp" href="pgr_trsp.html" />
-    <link rel="prev" title="提议的功能" href="proposed.html" />
+    <link rel="prev" title="pgr_full_version" href="pgr_full_version.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -71,11 +71,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
@@ -119,7 +119,7 @@
               
                 
   <li>
-    <a href="proposed.html" title="Previous Chapter: 提议的功能"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 提议的功能</span>
+    <a href="pgr_full_version.html" title="Previous Chapter: pgr_full_version"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_full_version</span>
     </a>
   </li>
   <li>
@@ -171,7 +171,7 @@
 </ul>
 
   <li>
-    <a href="proposed.html" title="Previous Chapter: 提议的功能"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 提议的功能</span>
+    <a href="pgr_full_version.html" title="Previous Chapter: pgr_full_version"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_full_version</span>
     </a>
   </li>
   <li>
@@ -196,39 +196,14 @@
 <section id="trsp-family-of-functions">
 <h1>TRSP - 函数族<a class="headerlink" href="#trsp-family-of-functions" title="Link to this heading">¶</a></h1>
 <p>当点也作为输入给出时：</p>
-<div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="6d401fb0-ebd0-4f3a-94a0-98633bca5e67" name="6d401fb0-ebd0-4f3a-94a0-98633bca5e67" type="checkbox"><label class="sphinx_collapse__label" for="6d401fb0-ebd0-4f3a-94a0-98633bca5e67"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>下一版本的提议功能。</p>
 <ul class="simple">
-<li><p>它们并未正式出现在当前版本中。</p></li>
-<li><p>它们可能会正式成为下一个版本的一部分：</p>
-<ul>
-<li><p>这些函数使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
-<li><p>名字可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>签名可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>功能可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>pgTap 测试已经完成。 但可能需要更多。</p></li>
-<li><p>文档可能需要完善。</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> - Vertex - 有限制的顶点路由。</p></li>
+<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> - Routing with restrictions.</p></li>
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a> - 有限制的通过顶点路由。</p></li>
 <li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a> - 有限制的顶点/点路由。</p></li>
 <li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a> - 通过有限制的顶点/点路由。</p></li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>阅读 <a class="reference internal" href="migration.html"><span class="doc">迁移指南</span></a> 了解如何从已弃用的 TRSP 功能迁移到新的签名或替换功能。</p>
-</div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="20aab77b-2e67-46a4-a9a9-2ec2c1b7ae45" name="20aab77b-2e67-46a4-a9a9-2ec2c1b7ae45" type="checkbox"><label class="sphinx_collapse__label" for="20aab77b-2e67-46a4-a9a9-2ec2c1b7ae45"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="f8839815-9d91-4d65-8dd2-c7a33f9d3c3b" name="f8839815-9d91-4d65-8dd2-c7a33f9d3c3b" type="checkbox"><label class="sphinx_collapse__label" for="f8839815-9d91-4d65-8dd2-c7a33f9d3c3b"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -462,7 +437,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 4月 30, 2025.<br/>
+      Last updated on 5月 19, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

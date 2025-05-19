@@ -207,29 +207,10 @@ var filesArr = [
         { v: '2.1', n: 'src/apsp_johnson/doc/index'},
         { v: '2.3', n: 'src/allpairs/doc/pgr_johnson'}
     ]),
-    new createInfo('pgr_nodeNetwork', '2.0', [
-        { v: '2.1', n: 'src/common/doc/functions/node_network'},
-        { v: '2.3', n: 'src/topology/doc/pgr_nodeNetwork'},
-    ]),
-    new createInfo('topology-functions', '2.0', [
+    new createInfo('utilities-family', '2.0', [
         { v: '2.1', n: 'src/common/doc/functions/index'},
         { v: '2.3', n: 'src/topology/doc/topology'},
-    ]),
-    new createInfo('pgr_createVerticesTable', '2.0', [
-        { v: '2.1', n: 'src/common/doc/functions/create_vert_table'},
-        { v: '2.3', n: 'src/topology/doc/pgr_createVerticesTable'}, 3.8
-    ]),
-    new createInfo('pgr_createTopology', '2.0', [
-        { v: '2.1', n: 'src/common/doc/functions/create_topology'},
-        { v: '2.3', n: 'src/topology/doc/pgr_createTopology'}, 3.8
-    ]),
-    new createInfo('pgr_analyzeOneWay', '2.0', [
-        { v: '2.1', n: 'src/common/doc/functions/analyze_oneway'},
-        { v: '2.3', n: 'src/topology/doc/pgr_analyzeOneWay'}, 3.8
-    ]),
-    new createInfo('pgr_analyzeGraph', '2.0', [
-        { v: '2.1', n: 'src/common/doc/functions/analyze_graph'},
-        { v: '2.3', n: 'src/topology/doc/pgr_analyzeGraph'},
+        { v: '3.8', n: 'topology-functions'},
     ]),
     new createInfo('pgRouting-concepts', '2.0', [
         { v: '2.3', n: 'doc/src/tutorial/tutorial'},
@@ -259,6 +240,27 @@ var filesArr = [
         { v: '2.0', n: 'src/driving_distance/doc/dd_driving_distance'},
         { v: '2.1', n: 'src/driving_distance/doc/dd_driving_distance_v3'},
         { v: '2.3', n: 'src/driving_distance/doc/pgr_drivingDistance'}
+    ]),
+
+    new createInfo('pgr_nodeNetwork', '2.0', [
+        { v: '2.1', n: 'src/common/doc/functions/node_network'},
+        { v: '2.3', n: 'src/topology/doc/pgr_nodeNetwork'}, 3.8
+    ]),
+    new createInfo('pgr_createVerticesTable', '2.0', [
+        { v: '2.1', n: 'src/common/doc/functions/create_vert_table'},
+        { v: '2.3', n: 'src/topology/doc/pgr_createVerticesTable'}, 3.8
+    ]),
+    new createInfo('pgr_createTopology', '2.0', [
+        { v: '2.1', n: 'src/common/doc/functions/create_topology'},
+        { v: '2.3', n: 'src/topology/doc/pgr_createTopology'}, 3.8
+    ]),
+    new createInfo('pgr_analyzeOneWay', '2.0', [
+        { v: '2.1', n: 'src/common/doc/functions/analyze_oneway'},
+        { v: '2.3', n: 'src/topology/doc/pgr_analyzeOneWay'}, 3.8
+    ]),
+    new createInfo('pgr_analyzeGraph', '2.0', [
+        { v: '2.1', n: 'src/common/doc/functions/analyze_graph'},
+        { v: '2.3', n: 'src/topology/doc/pgr_analyzeGraph'}, 3.8
     ]),
     new createInfo('pgr_alphaShape', '2.0', [
         { v: '2.1', n: 'src/driving_distance/doc/dd_alphashape'},
