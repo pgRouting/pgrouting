@@ -27,8 +27,8 @@ Results can be different because of the changes.
 Migration of ``pgr_alphaShape``
 -------------------------------------------------------------------------------
 
-Deprecated in `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
-Removed from the repostory in `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
+:Deprecated: `v3.8.0 <https://docs.pgrouting.org/3.8>`__
+:Removed: `v4.0.0 <https://docs.pgrouting.org/4.0>`__
 
 **Before Deprecation:** The following was calculated:
 
@@ -51,10 +51,24 @@ Other PostGIS options are
 * `ST_ConvexHull <https://postgis.net/docs/ST_ConvexHull.html>`__
 * `ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__
 
+Migration of ``pgr_nodeNetwork``
+-------------------------------------------------------------------------------
+
+:Deprecated: `v3.8.0 <https://docs.pgrouting.org/3.8>`__
+:Removed: `v4.0.0 <https://docs.pgrouting.org/4.0>`__
+
+**Before Deprecation:** A table with `<edges>_nodded` was created. with split
+edges.
+
+**Migration**
+
+Use :doc:`pgr_separateTouching` and/or use :doc:`pgr_separateCrossing`
+
 Migration of ``pgr_createTopology``
 -------------------------------------------------------------------------------
 
-Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
+:Deprecated: `v3.8.0 <https://docs.pgrouting.org/3.8>`__
+:Removed: `v4.0.0 <https://docs.pgrouting.org/4.0>`__
 
 **Before Deprecation:** The following was calculated:
 
@@ -66,12 +80,11 @@ Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
    :start-after: createTopology_start
    :end-before: createTopology_end
 
-.. migrate_pgr_createVerticesTable_start
-
 Migration of ``pgr_createVerticesTable``
 -------------------------------------------------------------------------------
 
-Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
+:Deprecated: `v3.8.0 <https://docs.pgrouting.org/3.8>`__
+:Removed: `v4.0.0 <https://docs.pgrouting.org/4.0>`__
 
 **Before Deprecation:** The following was calculated:
 
@@ -84,14 +97,11 @@ indexes, etc. They may use :doc:`pgr_extractVertices` for that purpose.
    :start-after: -- q1
    :end-before: -- q1-1
 
-.. migrate_pgr_createVerticesTable_end
-
-.. migrate_pgr_analyzeOneWay_start
-
 Migration of ``pgr_analyzeOneWay``
 -------------------------------------------------------------------------------
 
-Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
+:Deprecated: `v3.8.0 <https://docs.pgrouting.org/3.8>`__
+:Removed: `v4.0.0 <https://docs.pgrouting.org/4.0>`__
 
 **Before Deprecation:** The following was calculated:
 
@@ -127,14 +137,11 @@ To determine if the bridges are or not one way.
    :start-after: --OneWay2
    :end-before: --OneWay3
 
-.. migrate_pgr_analyzeOneWay_end
-
-.. migrate_pgr_analyzeGraph_start
-
 Migration of ``pgr_analyzeGraph``
 -------------------------------------------------------------------------------
 
-Starting from `v3.8.0 <https://docs.pgrouting.org/3.8/en/migration.html>`__
+:Deprecated: `v3.8.0 <https://docs.pgrouting.org/3.8>`__
+:Removed: `v4.0.0 <https://docs.pgrouting.org/4.0>`__
 
 **Before Deprecation:** The following was calculated:
 
@@ -208,8 +215,6 @@ For example:
 .. literalinclude:: migration.queries
    :start-after: --analysis4
    :end-before: --analysis5
-
-.. migrate_pgr_analyzeGraph_end
 
 Migration of ``pgr_aStar``
 -------------------------------------------------------------------------------

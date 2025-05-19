@@ -16,21 +16,14 @@ TRSP - Family of functions
 
 When points are also given as input:
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
+.. official-start
 
-.. proposed-start
-
-- :doc:`pgr_trsp` - Vertex - Vertex routing with restrictions.
+- :doc:`pgr_trsp` - Routing with restrictions.
 - :doc:`pgr_trspVia` - Via Vertices routing with restrictions.
 - :doc:`pgr_trsp_withPoints` - Vertex/Point routing with restrictions.
 - :doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictions.
 
-.. proposed-end
-
-.. Warning:: Read the :doc:`migration` about how to migrate from the
-   deprecated TRSP functionality to the new signatures or replacement functions.
+.. official-end
 
 .. include:: experimental.rst
    :start-after: warning-begin

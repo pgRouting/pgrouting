@@ -89,13 +89,17 @@ Function Families
    :start-after: official-start
    :end-before: official-end
 
+:doc:`TRSP-family`
+
+.. include:: TRSP-family.rst
+   :start-after: official-start
+   :end-before: official-end
+
 :doc:`TSP-family`
 
 .. include:: TSP-family.rst
    :start-after: official-start
    :end-before: official-end
-
-:doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)
 
 :doc:`utilities-family`
 
@@ -166,8 +170,9 @@ Functions by categories
     metrics-family
     prim-family
     reference
-    utilities-family
+    TRSP-family
     TSP-family
+    utilities-family
 
 .. toctree::
     :hidden:
