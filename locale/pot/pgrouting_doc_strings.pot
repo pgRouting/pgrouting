@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-21 14:59+0000\n"
+"POT-Creation-Date: 2025-05-21 22:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3613,6 +3613,15 @@ msgstr ""
 msgid "pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)"
 msgstr ""
 
+msgid "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__: pgr_withPointsDD"
+msgstr ""
+
+msgid "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
+msgstr ""
+
+msgid "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
+msgstr ""
+
 msgid "Removal of SQL deprecated functions"
 msgstr ""
 
@@ -3686,6 +3695,9 @@ msgid "_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
 msgstr ""
 
 msgid "_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+msgstr ""
+
+msgid "_pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
 msgstr ""
 
 msgid "_trsp(text,text,anyarray,anyarray,boolean)"
@@ -4408,40 +4420,13 @@ msgstr ""
 msgid "Does not have ``depth`` and ``pred`` result columns."
 msgstr ""
 
-msgid "Driving side was optional"
-msgstr ""
-
-msgid "The default values on this query are:"
-msgstr ""
-
-msgid "directed"
-msgstr ""
-
-msgid "true"
-msgstr ""
-
-msgid "driving_side"
-msgstr ""
-
-msgid "'b'"
-msgstr ""
-
-msgid "details"
-msgstr ""
-
-msgid "false"
-msgstr ""
-
-msgid "Driving side was named optional"
+msgid "Validity of driving_side:"
 msgstr ""
 
 msgid "On directed graph ``b`` could be used as **driving side**"
 msgstr ""
 
-msgid "On undirected graph ``r`` could be used as **driving side**"
-msgstr ""
-
-msgid "Also ``l`` could be used as **driving side**"
+msgid "On undirected graph ``r``, ``l`` could be used as **driving side**"
 msgstr ""
 
 msgid "After Migration"
@@ -4450,7 +4435,7 @@ msgstr ""
 msgid "Be aware of the existence of the additional result Columns."
 msgstr ""
 
-msgid "New output columns are |result-spantree|"
+msgid "Output columns are |result-spantree|"
 msgstr ""
 
 msgid "**driving side** parameter is unnamed compulsory, and valid values differ for directed and undirected graphs."
@@ -4471,25 +4456,19 @@ msgstr ""
 msgid "Using `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-vertex>`__ example."
 msgstr ""
 
-msgid "``depth`` contains the **depth** from the ``start_vid`` vertex to the ``node``."
-msgstr ""
-
 msgid "To migrate, use an unnamed valid value for **driving side** after the **distance** parameter:"
 msgstr ""
 
 msgid "To get results from previous versions:"
 msgstr ""
 
-msgid "filter out the additional columns, for example;"
-msgstr ""
-
-msgid "When ``details => false`` to remove the points use ``WHERE node >= 0 OR cost = 0``"
+msgid "Filter out the additional columns"
 msgstr ""
 
 msgid "Using `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-vertices>`__ example."
 msgstr ""
 
-msgid "Filter out the additional columns"
+msgid "When ``details => false``, the default, remove the points by using ``WHERE node >= 0 OR cost = 0``"
 msgstr ""
 
 msgid "Migration of ``pgr_withPointsKSP``"
@@ -12455,12 +12434,6 @@ msgid "When ``details`` is ``false``:"
 msgstr ""
 
 msgid "Only points that are visited are removed, that is, points reached within the distance are included"
-msgstr ""
-
-msgid "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
-msgstr ""
-
-msgid "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
 msgstr ""
 
 msgid "Modify the graph to include points and using Dijkstra algorithm, extracts all the nodes and points that have costs less than or equal to the value ``**distance**`` from the starting point. The edges extracted will conform the corresponding spanning tree."
