@@ -64,6 +64,12 @@ milestone for 4.0.0
   * pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)
   * pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)
 
+* [#2890](https://github.com/pgRouting/pgrouting/issues/2890):
+  pgr_withPointsDD
+
+  * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
+  * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
+
 **Removal of SQL deprecated functions**
 
 * [#2681](https://github.com/pgRouting/pgrouting/issues/2681):
@@ -100,6 +106,7 @@ milestone for 4.0.0
 * _pgr_trsp(text,text,bigint,bigint,boolean)
 * _pgr_trspviavertices(text,integer[],boolean,boolean,text)
 * _pgr_withpointsvia(text,bigint[],double precision[],boolean)
+* _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
 * _trsp(text,text,anyarray,anyarray,boolean)
 * _v4trsp(text,text,anyarray,anyarray,boolean)
 * _v4trsp(text,text,text,boolean)
@@ -139,5 +146,6 @@ milestone for 4.0.0
 * _trsp(text,text,anyarray,anyarray,boolean)
 * _v4trsp(text,text,anyarray,anyarray,boolean)
 * _v4trsp(text,text,text,boolean)
+* _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
 
 </details>
