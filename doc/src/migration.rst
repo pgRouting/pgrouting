@@ -776,7 +776,7 @@ Signatures to be migrated:
 * ``pgr_withPointsDD`` (Single vertex)
 * ``pgr_withPointsDD`` (Multiple vertices)
 
-:Before Migration:
+.. rubric:: Before Migration
 
 * ``pgr_withPointsDD`` (Single vertex)
 
@@ -790,51 +790,18 @@ Signatures to be migrated:
   * Does not have ``depth`` and ``pred`` result columns.
   * ``driving_side`` parameter was named optional now it is compulsory unnamed.
 
-.. rubric:: Driving side was optional
+* Validity of driving_side:
 
-The default values on this query are:
+  * On directed graph ``b`` could be used as **driving side**
+  * On undirected graph ``r``, ``l`` could be used as **driving side**
 
-:directed: true
-:driving_side: 'b'
-:details: false
 
-.. literalinclude:: migration.queries
-   :start-after: --withpointsdd1
-   :end-before: --withpointsdd2
-
-.. rubric:: Driving side was named optional
-
-The default values on this query are:
-
-:directed: true
-:details: false
-
-.. literalinclude:: migration.queries
-   :start-after: --withpointsdd2
-   :end-before: --withpointsdd3
-
-.. rubric:: On directed graph ``b`` could be used as **driving side**
-
-The default values on this query are:
-
-:details: false
-
-.. literalinclude:: migration.queries
-   :start-after: --withpointsdd3
-   :end-before: --withpointsdd4
-
-.. rubric:: On undirected graph ``r`` could be used as **driving side**
-
-Also ``l`` could be used as **driving side**
-
-.. literalinclude:: migration.queries
-   :start-after: --withpointsdd4
-   :end-before: --withpointsdd5
-
-:After Migration:
+.. rubric:: After Migration
 
 * Be aware of the existence of the additional result Columns.
-* New output columns are |result-spantree|
+
+  * Output columns are |result-spantree|
+
 * **driving side** parameter is unnamed compulsory, and valid values differ for
   directed and undirected graphs.
 
@@ -850,13 +817,6 @@ Using
 `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-vertex>`__
 example.
 
-* |result-spantree|
-* ``start_vid`` contains the **start vid** parameter value.
-* ``depth`` contains the **depth** from the ``start_vid`` vertex to the
-  ``node``.
-* ``pred`` contains the predecessor of the ``node``.
-
-
 To migrate, use an unnamed valid value for **driving side** after the
 **distance** parameter:
 
@@ -866,9 +826,7 @@ To migrate, use an unnamed valid value for **driving side** after the
 
 To get results from previous versions:
 
-* filter out the additional columns, for example;
-* When ``details => false`` to remove the points use ``WHERE node >= 0 OR cost =
-  0``
+* Filter out the additional columns
 
 .. literalinclude:: migration.queries
    :start-after: --withpointsdd5
@@ -881,10 +839,8 @@ Using
 `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-vertices>`__
 example.
 
-* |result-spantree|
-* ``depth`` contains the **depth** from the ``start_vid`` vertex to the
-  ``node``.
-* ``pred`` contains the predecessor of the ``node``.
+To migrate, use an unnamed valid value for **driving side** after the
+**distance** parameter:
 
 .. literalinclude:: migration.queries
    :start-after: --withpointsdd6
@@ -893,8 +849,8 @@ example.
 To get results from previous versions:
 
 * Filter out the additional columns
-* When ``details => false`` to remove the points use ``WHERE node >= 0 OR cost =
-  0``
+* When ``details => false``, the default, remove the points by using
+  ``WHERE node >= 0 OR cost = 0``
 
 .. literalinclude:: migration.queries
    :start-after: --withpointsdd7
