@@ -222,11 +222,6 @@ sub generate_upgrade_script {
             push @commands, "DROP FUNCTION IF EXISTS $old_function;\n\n";
         }
 
-        # updating to 3.4+
-        if ($old_minor < 3.4) {
-            push @commands, drop_special_case_function("pgr_maxcardinalitymatch(text,boolean)");
-        }
-
         # updating to 3.5+
         if ($old_minor < 3.5) {
             push @commands, drop_special_case_function("pgr_dijkstra(text,anyarray,bigint,boolean)");

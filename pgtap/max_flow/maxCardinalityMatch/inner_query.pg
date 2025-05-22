@@ -1,4 +1,3 @@
-
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
@@ -21,22 +20,20 @@ BEGIN;
 SET client_min_messages TO ERROR;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_lib_version('3.4.0') THEN plan(324) ELSE PLAN(163) END;
+SELECT CASE WHEN min_lib_version('3.4.0') THEN plan(108) ELSE PLAN(55) END;
 
 
 CREATE OR REPLACE FUNCTION test_function()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
+
   IF NOT min_lib_version('3.4.0') THEN
     RETURN QUERY SELECT skip(1, 'cost & reverse cost used on 3.4');
     RETURN;
   END IF;
 
   RETURN QUERY SELECT style_dijkstra('pgr_maxcardinalitymatch(', ')');
-  -- TODO v4 directed/undirected are to be removed, remove these tests
-  RETURN QUERY SELECT style_dijkstra('pgr_maxcardinalitymatch(', ', true)');
-  RETURN QUERY SELECT style_dijkstra('pgr_maxcardinalitymatch(', ', false)');
 
 END
 $BODY$
@@ -44,10 +41,7 @@ LANGUAGE plpgsql VOLATILE;
 
 SELECT test_function();
 
--- TODO v4 going & coming are to be removed, remove these tests
 SELECT style_cardinalitymatch('pgr_maxcardinalitymatch(', ')');
-SELECT style_cardinalitymatch('pgr_maxcardinalitymatch(', ', true)');
-SELECT style_cardinalitymatch('pgr_maxcardinalitymatch(', ', false)');
 
 SELECT finish();
 ROLLBACK;

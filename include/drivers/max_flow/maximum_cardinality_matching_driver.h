@@ -47,8 +47,6 @@ extern "C" {
 void pgr_do_maximum_cardinality_matching(
             const char*,
 
-            bool,
-
             Only_int_rt **, size_t *,
             char**, char**, char **);
 

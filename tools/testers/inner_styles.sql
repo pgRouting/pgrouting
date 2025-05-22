@@ -261,7 +261,6 @@ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION style_cardinalitymatch(fn TEXT, rest_sql TEXT)
 RETURNS SETOF TEXT AS
--- TODO v4 going & coming are to be removed, remove this function
 $BODY$
 BEGIN
 

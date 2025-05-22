@@ -30,20 +30,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------------------
 
 
---v3.0
-CREATE FUNCTION _pgr_maxCardinalityMatch(
+--v4.0
+CREATE FUNCTION _pgr_maxCardinalityMatch_v4(
     edges_sql TEXT,
-    directed BOOLEAN,
 
     OUT seq INTEGER,
-    OUT edge BIGINT,
-    OUT source BIGINT,
-    OUT target BIGINT)
+    OUT edge BIGINT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE c VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_maxCardinalityMatch(TEXT, BOOLEAN)
+COMMENT ON FUNCTION _pgr_maxCardinalityMatch_v4(TEXT)
 IS 'pgRouting internal function';

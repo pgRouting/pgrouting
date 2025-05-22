@@ -1,4 +1,3 @@
-
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
@@ -20,23 +19,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_lib_version('3.4.0') THEN plan(36) ELSE PLAN(5) END;
+SELECT CASE WHEN min_lib_version('3.4.0') THEN plan(32) ELSE PLAN(1) END;
 
 PREPARE edges1 AS
 SELECT id, source, target, cost FROM edges;
 PREPARE edges2 AS
 SELECT id, source, target, cost, reverse_cost FROM edges;
 
-SELECT isnt_empty('edges1', 'Should not be empty true to tests be meaningful');
-SELECT isnt_empty('edges2', 'Should not be empty true to tests be meaningful');
-
--- TODO v4 going & coming are to be removed, remove these prepares
 PREPARE edges_1 AS
 SELECT id, source, target, cost AS going FROM edges;
 PREPARE edges_2 AS
 SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edges;
-SELECT isnt_empty('edges_1', 'Should not be empty true to tests be meaningful');
-SELECT isnt_empty('edges_2', 'Should not be empty true to tests be meaningful');
 
 
 CREATE OR REPLACE FUNCTION test_function()
@@ -68,7 +61,6 @@ BEGIN
     RETURN;
   END IF;
 
-    -- TODO v4 going & coming are to be removed, remove these tests
     params[1] := '$$SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edges$$';
     RETURN query SELECT * FROM no_crash_test('pgr_maxCardinalityMatch', params, subs);
     params[1] := '$$SELECT id, source, target, cost AS going FROM edges$$';
