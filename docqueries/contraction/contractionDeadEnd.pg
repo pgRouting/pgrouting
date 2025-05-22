@@ -78,7 +78,7 @@ FROM pgr_dijkstra('SELECT * FROM contracted_graph', 6, 17);
 /* -- cg8 */
 SELECT * FROM pgr_dijkstra(
   'WITH cul_de_sac AS (
-    SELECT contracted_vertices || id as v
+    SELECT contracted_vertices || id::INTEGER as v
     FROM vertices WHERE 1 = ANY(contracted_vertices))
   SELECT id, source, target, cost, reverse_cost FROM edges, cul_de_sac
   WHERE source = ANY(v) AND target = ANY(v)
@@ -90,7 +90,7 @@ SELECT * FROM pgr_dijkstra(
 /* -- cg9 */
 SELECT * FROM pgr_dijkstra(
   'WITH cul_de_sac AS (
-    SELECT contracted_vertices || id as v
+    SELECT contracted_vertices || id::INTEGER as v
     FROM vertices WHERE 1 = ANY(contracted_vertices) OR 9 = ANY(contracted_vertices))
   SELECT id, source, target, cost, reverse_cost FROM edges, cul_de_sac WHERE source = ANY(v) AND target = ANY(v)
 

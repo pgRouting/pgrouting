@@ -86,7 +86,7 @@ BEGIN
     RETURN QUERY
       SELECT round(agg_cost::numeric, 3)::TEXT FROM pgr_dijkstra(
       'WITH cul_de_sac AS (
-        SELECT contracted_vertices || id as v
+        SELECT contracted_vertices || id::INTEGER as v
         FROM vertices WHERE ' || $1 ||' = ANY(contracted_vertices) OR ' || $2 ||' = ANY(contracted_vertices)),
       linears_to_expand AS (
         SELECT id, contracted_vertices
