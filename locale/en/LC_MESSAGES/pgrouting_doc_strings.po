@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-21 22:35+0000\n"
+"POT-Creation-Date: 2025-05-22 03:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4037,6 +4037,14 @@ msgid ""
 "precision,boolean,character,boolean)"
 msgstr ""
 
+msgid ""
+"`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__: "
+"pgr_withPointsKSP"
+msgstr ""
+
+msgid "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+msgstr ""
+
 msgid "Removal of SQL deprecated functions"
 msgstr ""
 
@@ -4127,12 +4135,21 @@ msgstr ""
 msgid "_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
 msgstr ""
 
-msgid "_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
-msgstr ""
-
 msgid ""
 "_pgr_withpointsdd(text,text,anyarray,double "
 "precision,boolean,character,boolean,boolean)"
+msgstr ""
+
+msgid "_pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)"
+msgstr ""
+
+msgid "_pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+msgstr ""
+
+msgid "_pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)"
+msgstr ""
+
+msgid "_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
 msgstr ""
 
 msgid "_trsp(text,text,anyarray,anyarray,boolean)"
