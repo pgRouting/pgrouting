@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.6.0') THEN plan(164) ELSE plan(26) END;
+SELECT CASE WHEN min_version('3.6.0') THEN plan(137) ELSE plan(1) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost FROM edges;
@@ -33,9 +33,6 @@ SELECT array_agg(id) FROM vertices WHERE id IN (-1);
 PREPARE null_ret_arr AS
 SELECT array_agg(id) FROM vertices WHERE id IN (-1);
 
-SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
-SELECT set_eq('null_ret', 'SELECT NULL::BIGINT[]', 'Should be empty to tests be meaningful');
-
 CREATE OR REPLACE FUNCTION test_function()
 RETURNS SETOF TEXT AS
 $BODY$
@@ -43,7 +40,13 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-IF min_version('3.6.0') THEN
+
+    IF NOT min_version('3.6.0') THEN
+      RETURN QUERY SELECT skip(1, 'pgr_withPointsKSP testing only valid signatures on 4.0.0');
+      RETURN;
+    END IF;
+
+    RETURN QUERY SELECT has_function('pgr_withpointsksp',ARRAY['text','text','bigint','bigint','integer','character','boolean','boolean','boolean']);
     -- one to one
     params = ARRAY[
     '$$edges$$',
@@ -168,11 +171,6 @@ IF min_version('3.6.0') THEN
     PREPARE combinations AS
     SELECT source, target FROM combinations;
 
-    RETURN QUERY
-    SELECT isnt_empty('combinations', 'Should be not empty to tests be meaningful');
-    RETURN QUERY
-    SELECT is_empty('null_combinations', 'Should be empty to tests be meaningful');
-
     params = ARRAY['$$edges$$',
     '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
     '$$combinations$$',
@@ -194,35 +192,6 @@ IF min_version('3.6.0') THEN
     'NULL',
     'NULL::TEXT',
     'NULL',
-    'NULL'
-    ]::TEXT[];
-    RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
-END IF;
-
-/* TODO remove tests on v4*/
-    -- 1 to distance
-    params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost FROM edges$$',
-    '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
-    '5',
-    '6',
-    '2'
-    ]::TEXT[];
-    subs = ARRAY[
-    'NULL',
-    'NULL',
-    '(SELECT id FROM vertices WHERE id IN (-1))',
-    '(SELECT id FROM vertices WHERE id IN (-1))',
-    'NULL'
-    ]::TEXT[];
-
-    RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
-
-    subs = ARRAY[
-    'NULL',
-    'NULL',
-    'NULL::BIGINT',
-    'NULL::BIGINT',
     'NULL'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
