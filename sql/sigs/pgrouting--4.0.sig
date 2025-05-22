@@ -286,7 +286,7 @@ pgr_withpointsksp(text,text,anyarray,bigint,integer,character,boolean,boolean,bo
 pgr_withpointsksp(text,text,bigint,anyarray,integer,character,boolean,boolean,boolean)
 pgr_withpointsksp(text,text,bigint,bigint,integer,character,boolean,boolean,boolean)
 pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)
-_pgr_withpointsksp_v4(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)
+_pgr_withpointsksp_v4(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean)
 _pgr_withpointsksp_v4(text,text,text,integer,character,boolean,boolean,boolean)
 pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)
 _pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean,boolean,boolean)
