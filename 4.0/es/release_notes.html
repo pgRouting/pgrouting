@@ -534,6 +534,12 @@ pgr_withPointsDD</p>
 <li><p>pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2895">#2895</a>:
+pgr_withPointsKSP</p>
+<ul>
+<li><p>pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)</p></li>
+</ul>
+</li>
 </ul>
 <p class="rubric">Eliminación de funciones obsoletas</p>
 <ul class="simple">
@@ -570,8 +576,11 @@ pgr_nodeNetwork</p></li>
 <li><p>_pgr_trsp(text,text,bigint,anyarray,boolean)</p></li>
 <li><p>_pgr_trsp(text,text,bigint,bigint,boolean)</p></li>
 <li><p>_pgr_trspviavertices(text,integer[],boolean,boolean,text)</p></li>
-<li><p>_pgr_withpointsvia(text,bigint[],double precision[],boolean)</p></li>
 <li><p>_pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
+<li><p>_pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)</p></li>
+<li><p>_pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)</p></li>
+<li><p>_pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)</p></li>
+<li><p>_pgr_withpointsvia(text,bigint[],double precision[],boolean)</p></li>
 <li><p>_trsp(text,text,anyarray,anyarray,boolean)</p></li>
 <li><p>_v4trsp(text,text,anyarray,anyarray,boolean)</p></li>
 <li><p>_v4trsp(text,text,text,boolean)</p></li>
@@ -2641,7 +2650,7 @@ FindPostgreSQL.cmake</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en may 21, 2025.<br/>
+      Actualizado por última vez en may 22, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
