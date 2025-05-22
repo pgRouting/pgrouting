@@ -20,12 +20,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.6.0') THEN plan(684) ELSE plan(252) END;
+SELECT CASE WHEN min_version('3.6.0') THEN plan(432) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION withPointsKSP_inner_query() RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
-  IF min_version('3.6.0') THEN
+
+    IF NOT min_version('3.6.0') THEN
+      RETURN QUERY SELECT skip(1, 'pgr_withPointsKSP testing only valid signatures on 4.0.0');
+      RETURN;
+    END IF;
+
     -- ONE TO ONE
     RETURN QUERY SELECT style_dijkstra('pgr_withPointsKSP(', ', $$SELECT * from pointsOfInterest$$, 6, 10, 1, $$r$$,true)');
     RETURN QUERY SELECT innerquery_points('pgr_withPointsKSP($$SELECT * FROM edges$$,', ', 6, 10, 1, $$l$$, true)');
@@ -42,17 +47,7 @@ BEGIN
     RETURN QUERY SELECT style_dijkstra('pgr_withPointsKSP(', ', $$SELECT * from pointsOfInterest$$, $$SELECT * FROM combinations$$, 2, $$r$$, true)');
     RETURN QUERY SELECT innerquery_points('pgr_withPointsKSP($$SELECT * FROM edges$$,', ', $$SELECT * FROM combinations$$, 2, $$r$$, true)');
     RETURN QUERY SELECT innerquery_combinations('pgr_withPointsKSP($$SELECT * FROM edges$$, $$SELECT * from pointsOfInterest$$,',', 2, $$r$$, true)');
-  END IF;
-  /* TODO Remove on v4*/
-  -- ONE TO ONE
-  SET client_min_messages TO ERROR;
-  RETURN QUERY SELECT style_dijkstra('pgr_withPointsKSP(', ', $$SELECT * from pointsOfInterest$$, 5, 10, 2, driving_side => $$r$$, directed => true)');
-  RETURN QUERY SELECT innerquery_points('pgr_withPointsKSP($$SELECT * FROM edges$$,', ', 6, 10, 2, driving_side => $$r$$, directed => true)');
-  RETURN QUERY SELECT style_dijkstra('pgr_withPointsKSP(', ', $$SELECT * from pointsOfInterest$$, 5, 10, 2, true, true, $$r$$)');
-  RETURN QUERY SELECT innerquery_points('pgr_withPointsKSP($$SELECT * FROM edges$$,', ', 6, 10, 2, true, true, $$r$$)');
-  RETURN QUERY SELECT style_dijkstra('pgr_withPointsKSP(', ', $$SELECT * from pointsOfInterest$$, 5, 10, 2, true)');
-  RETURN QUERY SELECT innerquery_points('pgr_withPointsKSP($$SELECT * FROM edges$$,', ', 6, 10, 2, true)');
-  SET client_min_messages TO NOTICE;
+
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;

@@ -17,7 +17,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
-SELECT CASE WHEN min_version('3.6.0') THEN plan(15) ELSE plan(5) END;
+SELECT CASE WHEN min_version('3.6.0') THEN plan(13) ELSE plan(2) END;
 
 SELECT has_function('pgr_withpointsksp');
 
@@ -25,7 +25,12 @@ CREATE FUNCTION withPointsKSP_types_check()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
-  IF min_version('3.6.0') THEN
+
+    IF NOT min_version('3.6.0') THEN
+      RETURN QUERY SELECT skip(1, 'pgr_withPointsKSP testing only valid signatures on 4.0.0');
+      RETURN;
+    END IF;
+
     RETURN QUERY SELECT has_function('pgr_withpointsksp',ARRAY['text','text','bigint','bigint','integer','character','boolean','boolean','boolean']);
     RETURN QUERY SELECT has_function('pgr_withpointsksp',ARRAY['text','text','bigint','anyarray','integer','character','boolean','boolean','boolean']);
     RETURN QUERY SELECT has_function('pgr_withpointsksp',ARRAY['text','text','anyarray','bigint','integer','character','boolean','boolean','boolean']);
@@ -37,42 +42,42 @@ BEGIN
     RETURN QUERY SELECT function_returns('pgr_withpointsksp',ARRAY['text','text','anyarray','bigint','integer','character','boolean','boolean','boolean'],'setof record');
     RETURN QUERY SELECT function_returns('pgr_withpointsksp',ARRAY['text','text','anyarray','anyarray','integer','character','boolean','boolean','boolean'],'setof record');
     RETURN QUERY SELECT function_returns('pgr_withpointsksp',ARRAY['text','text','text','integer','character','boolean','boolean','boolean'],'setof record');
-  END IF;
-  /*Remove last 1 row on v4*/
-  RETURN QUERY SELECT CASE WHEN min_version('3.6.0')
-    THEN collect_tap(
 
-      function_args_eq('pgr_withpointsksp',
-        $$VALUES
-        ('{"","","","","","","directed","heap_paths","details","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","","","","directed","heap_paths","details","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","","","","directed","heap_paths","driving_side","details","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[])
-        $$),
+    IF min_version('4.0.0') THEN
 
-      function_types_eq('pgr_withpointsksp',
-        $$VALUES
-        ('{text,text,int8,int8,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,text,int8,anyarray,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,text,anyarray,int8,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,text,anyarray,anyarray,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,text,text,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,text,int8,int8,int4,bool,bool,bpchar,bool,int4,int4,int4,int8,int8,float8,float8}'::TEXT[])
-        $$)
-    )
-    ELSE collect_tap(
+      RETURN QUERY SELECT function_args_eq('pgr_withpointsksp',
+          $$VALUES
+          ('{"","","","","","",directed,heap_paths,details,seq,path_id,path_seq,start_vid,end_vid,node,edge,cost,agg_cost}'::TEXT[]),
+          ('{"","","","","",directed,heap_paths,details,seq,path_id,path_seq,start_vid,end_vid,node,edge,cost,agg_cost}'::TEXT[])
+          $$);
 
-      function_args_eq('pgr_withpointsksp',
-        $$SELECT '{"","","","","","directed","heap_paths","driving_side","details","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
-      ),
+      RETURN QUERY SELECT function_types_eq('pgr_withpointsksp',
+          $$VALUES
+          ('{text,text,int8,int8,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+          ('{text,text,int8,anyarray,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+          ('{text,text,anyarray,int8,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+          ('{text,text,anyarray,anyarray,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+          ('{text,text,text,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
+          $$);
 
-      function_types_eq('pgr_withpointsksp',
-        $$VALUES ('{text,text,int8,int8,int4,bool,bool,bpchar,bool,int4,int4,int4,int8,int8,float8,float8}'::TEXT[])$$
-      )
-    )END;
+    ELSE
 
-  /* TODO remove on v4*/
-  RETURN QUERY SELECT has_function('pgr_withpointsksp',ARRAY['text','text','bigint','bigint','integer','boolean','boolean','character','boolean']);
-  RETURN QUERY SELECT function_returns('pgr_withpointsksp',ARRAY['text','text','bigint','bigint','integer','boolean','boolean','character','boolean'],'setof record');
+      RETURN QUERY SELECT function_args_has('pgr_withpointsksp',
+          $$VALUES
+          ('{"","","","","","",directed,heap_paths,details,seq,path_id,path_seq,start_vid,end_vid,node,edge,cost,agg_cost}'::TEXT[]),
+          ('{"","","","","",directed,heap_paths,details,seq,path_id,path_seq,start_vid,end_vid,node,edge,cost,agg_cost}'::TEXT[])
+          $$);
+
+      RETURN QUERY SELECT function_types_has('pgr_withpointsksp',
+          $$VALUES
+          ('{text,text,int8,int8,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+          ('{text,text,int8,anyarray,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+          ('{text,text,anyarray,int8,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+          ('{text,text,anyarray,anyarray,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+          ('{text,text,text,int4,bpchar,bool,bool,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
+          $$);
+
+    END IF;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;

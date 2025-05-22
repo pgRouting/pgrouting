@@ -26,11 +26,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 --------------------
--- pgr_withPointsKSP
+-- pgr_withPointsKSP:
 --------------------
 
---v3.6
-CREATE FUNCTION _pgr_withPointsKSP(
+--v4.0
+CREATE FUNCTION _pgr_withPointsKSP_v4(
   TEXT, -- edges
   TEXT, -- points
   ANYARRAY, -- departures
@@ -41,7 +41,6 @@ CREATE FUNCTION _pgr_withPointsKSP(
   BOOLEAN, -- directed
   BOOLEAN, -- heaps
   BOOLEAN, -- details
-  BOOLEAN, -- new ksp
 
   OUT seq INTEGER,
   OUT path_id INTEGER,
@@ -56,8 +55,8 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE c STABLE STRICT;
 
---v3.6
-CREATE FUNCTION _pgr_withPointsKSP(
+--v4.0
+CREATE FUNCTION _pgr_withPointsKSP_v4(
   TEXT, -- edges
   TEXT, -- points
   TEXT, -- combinations
@@ -81,34 +80,8 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE c STABLE STRICT;
 
-COMMENT ON FUNCTION _pgr_withPointsKSP(TEXT, TEXT, ANYARRAY, ANYARRAY, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_withPointsKSP_v4(TEXT, TEXT, ANYARRAY, ANYARRAY, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
 
-COMMENT ON FUNCTION _pgr_withPointsKSP(TEXT, TEXT, TEXT, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_withPointsKSP_v4(TEXT, TEXT, TEXT, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
-
-/*TODO remove on v4*/
---v3.0
-CREATE FUNCTION _pgr_withPointsKSP(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pid BIGINT,
-    end_pid BIGINT,
-    k INTEGER,
-
-    directed BOOLEAN,
-    heap_paths BOOLEAN,
-    driving_side CHAR,
-    details BOOLEAN,
-
-    OUT seq INTEGER, OUT path_id INTEGER, OUT path_seq INTEGER,
-    OUT node BIGINT, OUT edge BIGINT,
-    OUT cost FLOAT, OUT agg_cost FLOAT)
-  RETURNS SETOF RECORD AS
-    'MODULE_PATHNAME'
-    LANGUAGE c STABLE STRICT;
-
--- COMMENTS
-
-COMMENT ON FUNCTION _pgr_withPointsKSP(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
-IS 'pgRouting internal function deprecated on v3.6.0';

@@ -113,7 +113,7 @@ RETURNS TEXT AS
 $BODY$
     SELECT set_has(format($$
       SELECT proargnames from pg_catalog.pg_proc where proname = '%1$s'
-      $$, $1), $2, $1 || ': Function args names');
+      $$, $1), $2, $1 || ': Function has args names');
 $BODY$ LANGUAGE SQL;
 
 CREATE OR REPLACE FUNCTION function_returns_geom(TEXT)
