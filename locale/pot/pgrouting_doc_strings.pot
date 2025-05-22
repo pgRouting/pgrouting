@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-22 03:51+0000\n"
+"POT-Creation-Date: 2025-05-22 18:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3658,6 +3658,9 @@ msgstr ""
 msgid "Removal of SQL deprecated internal functions"
 msgstr ""
 
+msgid "Related issues: `#2897 <https://github.com/pgRouting/pgrouting/issues/2897>`__"
+msgstr ""
+
 msgid "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
 msgstr ""
 
@@ -3674,6 +3677,15 @@ msgid "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
 msgstr ""
 
 msgid "_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
+msgstr ""
+
+msgid "_pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)"
+msgstr ""
+
+msgid "_pgr_ksp(text,bigint,bigint,integer,boolean,boolean)"
+msgstr ""
+
+msgid "_pgr_ksp(text,text,integer,boolean,boolean)"
 msgstr ""
 
 msgid "_pgr_kruskal(text,anyarray,text,bigint,double precision)"
