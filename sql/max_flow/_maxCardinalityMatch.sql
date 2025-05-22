@@ -25,27 +25,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---------------------------
--- pgr_maxCardinalityMatch
----------------------------
-
-
---v3.0
-CREATE FUNCTION _pgr_maxCardinalityMatch(
-    edges_sql TEXT,
-    directed BOOLEAN,
-
-    OUT seq INTEGER,
-    OUT edge BIGINT,
-    OUT source BIGINT,
-    OUT target BIGINT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE c VOLATILE STRICT;
-
-COMMENT ON FUNCTION _pgr_maxCardinalityMatch(TEXT, BOOLEAN)
-IS 'Deprecated pgRouting internal function';
-
 --v4.0
 CREATE FUNCTION _pgr_maxCardinalityMatch_v4(
     edges_sql TEXT,

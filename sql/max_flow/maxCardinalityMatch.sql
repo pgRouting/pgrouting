@@ -39,33 +39,6 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
---v3.4
-CREATE FUNCTION pgr_maxCardinalityMatch(
-  TEXT, -- edges_sql (required)
-
-  directed BOOLEAN,
-
-  OUT seq INTEGER,
-  OUT edge BIGINT,
-  OUT source BIGINT,
-  OUT target BIGINT)
-RETURNS SETOF RECORD AS
-$BODY$
-BEGIN
-RAISE WARNING 'pgr_maxCardinalityMatch(text,boolean) deprecated signature on v3.4.0';
-RETURN QUERY SELECT a.seq, a.edge, a.source, a.target
-FROM _pgr_maxCardinalityMatch(_pgr_get_statement($1), $2) AS a;
-END
-$BODY$
-LANGUAGE plpgsql VOLATILE STRICT
-COST 100
-ROWS 1000;
-
--- COMMENTS
-COMMENT ON FUNCTION pgr_maxCardinalityMatch(TEXT, BOOLEAN)
-IS 'pgr_maxCardinalityMatch deprecated signature on v3.4.0
-- Documentation: ${PROJECT_DOC_LINK}/pgr_maxCardinalityMatch.html';
-
 COMMENT ON FUNCTION pgr_maxCardinalityMatch(TEXT)
 IS 'pgr_maxCardinalityMatch
 - Parameters:
