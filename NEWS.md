@@ -70,6 +70,11 @@ milestone for 4.0.0
   * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
   * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
 
+* [#2895](https://github.com/pgRouting/pgrouting/issues/2895):
+  pgr_withPointsKSP
+
+  * pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
+
 **Removal of SQL deprecated functions**
 
 * [#2681](https://github.com/pgRouting/pgrouting/issues/2681):
@@ -105,8 +110,11 @@ milestone for 4.0.0
 * _pgr_trsp(text,text,bigint,anyarray,boolean)
 * _pgr_trsp(text,text,bigint,bigint,boolean)
 * _pgr_trspviavertices(text,integer[],boolean,boolean,text)
-* _pgr_withpointsvia(text,bigint[],double precision[],boolean)
 * _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
+* _pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)
+* _pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
+* _pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)
+* _pgr_withpointsvia(text,bigint[],double precision[],boolean)
 * _trsp(text,text,anyarray,anyarray,boolean)
 * _v4trsp(text,text,anyarray,anyarray,boolean)
 * _v4trsp(text,text,text,boolean)
