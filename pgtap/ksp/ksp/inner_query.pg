@@ -27,7 +27,7 @@ $BODY$
 BEGIN
 
     IF NOT min_version('3.6.0') THEN
-      RETURN QUERY SELECT skip(1, 'pgr_withPointsKSP testing only valid signatures on 4.0.0');
+      RETURN QUERY SELECT skip(1, 'pgr_KSP testing only valid signatures on 4.0.0');
       RETURN;
     END IF;
 
