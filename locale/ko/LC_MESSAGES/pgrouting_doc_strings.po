@@ -18447,16 +18447,3 @@ msgstr ""
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
-#~ msgid ":doc:`topology-functions`"
-#~ msgstr ":doc:`topology-functions`"
-
-#~ msgid ""
-#~ "The following functions modify the database directly therefore the user "
-#~ "must have special permissions given by the administrators to use them."
-#~ msgstr ""
-#~ "다음 함수는 데이터베이스를 직접 수정하므로 사용하려면 관리자가 부여한 특별"
-#~ "한 권한이 있어야 합니다."
-
-#, fuzzy
-#~ msgid "``pgr_nodeNetwork``"
-#~ msgstr ":doc:`pgr_analyzeGraph`"

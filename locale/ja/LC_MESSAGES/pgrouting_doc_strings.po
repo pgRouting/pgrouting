@@ -18478,16 +18478,3 @@ msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
 #, fuzzy
-#~ msgid "directed"
-#~ msgstr "導かれないグラフ"
-
-#, fuzzy
-#~ msgid ""
-#~ "``depth`` contains the **depth** from the ``start_vid`` vertex to the "
-#~ "``node``."
-#~ msgstr ""
-#~ ":math:'agg\\_cost' は、:math:'start_{vid}' からノードまでのコストです。"
-
-#, fuzzy
-#~ msgid "``bigint`` Identifier of the edge in original table"
-#~ msgstr "終了ノードの識別子。"
