@@ -805,7 +805,7 @@ SELECT agg_cost FROM pgr_dijkstraCost(
   /* The inner query */
   &#39;WITH
   cul_de_sac AS (
-    SELECT contracted_vertices || id as v
+    SELECT contracted_vertices || id::INTEGER as v
     FROM vertices WHERE &#39; || $1 ||&#39; = ANY(contracted_vertices)
     OR &#39; || $2 ||&#39; = ANY(contracted_vertices)),
   linears_to_expand AS (
@@ -883,7 +883,7 @@ CREATE FUNCTION
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en may 22, 2025.<br/>
+      Actualizado por última vez en may 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
