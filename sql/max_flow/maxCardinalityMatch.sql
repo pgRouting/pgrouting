@@ -5,7 +5,7 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2016 Andrea Nardelli
-mail: nrd.nardelli@gmail.com
+mail: nrd.nardelli at gmail.com
 
 ------
 
@@ -33,7 +33,7 @@ CREATE FUNCTION pgr_maxCardinalityMatch(
 RETURNS SETOF BIGINT AS
 $BODY$
 SELECT edge
-FROM _pgr_maxCardinalityMatch(_pgr_get_statement($1), false)
+FROM _pgr_maxCardinalityMatch_v4(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100

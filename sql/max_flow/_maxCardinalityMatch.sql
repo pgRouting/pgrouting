@@ -5,7 +5,7 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2016 Andrea Nardelli
-mail: nrd.nardelli@gmail.com
+mail: nrd.nardelli at gmail.com
 
 ------
 
@@ -43,7 +43,16 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE c VOLATILE STRICT;
 
--- COMMENTS
-
 COMMENT ON FUNCTION _pgr_maxCardinalityMatch(TEXT, BOOLEAN)
+IS 'Deprecated pgRouting internal function';
+
+--v4.0
+CREATE FUNCTION _pgr_maxCardinalityMatch_v4(
+    edges_sql TEXT,
+    OUT edge BIGINT)
+RETURNS SETOF BIGINT AS
+'MODULE_PATHNAME'
+LANGUAGE c VOLATILE STRICT;
+
+COMMENT ON FUNCTION _pgr_maxCardinalityMatch_v4(TEXT)
 IS 'pgRouting internal function';
