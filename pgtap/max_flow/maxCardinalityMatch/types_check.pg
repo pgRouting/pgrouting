@@ -19,44 +19,44 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN min_version('3.4.0') THEN plan(7) ELSE plan(5) END;
+SELECT CASE WHEN min_version('3.4.0') THEN plan(5) ELSE plan(2) END;
 
--- TODO v4 to be removed: directed
 SELECT has_function('pgr_maxcardinalitymatch');
 
-SELECT has_function('pgr_maxcardinalitymatch', ARRAY['text', 'boolean']);
-SELECT function_returns('pgr_maxcardinalitymatch', ARRAY['text', 'boolean'], 'setof record');
+CREATE FUNCTION types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
 
-SELECT CASE
-WHEN min_version('3.4.0') THEN
-  collect_tap(
-    has_function('pgr_maxcardinalitymatch', ARRAY['text']),
-    function_returns('pgr_maxcardinalitymatch', ARRAY['text'], 'setof bigint'),
+    IF NOT min_version('3.4.0') THEN
+      RETURN QUERY SELECT skip(1, 'pgr_maxCardinalityMatch testing only valid signatures on 4.0.0');
+      RETURN;
+    END IF;
 
-    function_args_eq('pgr_maxcardinalitymatch',
-      $$VALUES
-      ('{"","directed","seq","edge","source","target"}'::TEXT[]),
-      ('{"","edge"}'::TEXT[])
-      $$
-    ),
+    RETURN QUERY SELECT has_function('pgr_maxcardinalitymatch', ARRAY['text']);
+    RETURN QUERY SELECT function_returns('pgr_maxcardinalitymatch', ARRAY['text'], 'setof bigint');
 
-    function_types_eq('pgr_maxcardinalitymatch',
-      $$VALUES
-      ('{text,bool,int4,int8,int8,int8}'::TEXT[]),
-      ('{text,int8}'::TEXT[])
-      $$
-  ))
-ELSE
-  collect_tap(
+    IF min_version('4.0.0') THEN
+      RETURN QUERY SELECT function_args_eq('pgr_maxcardinalitymatch',
+        $$VALUES ('{"","edge"}'::TEXT[]) $$);
 
-    function_args_eq('pgr_maxcardinalitymatch',
-      $$SELECT '{"","directed","seq","edge","source","target"}'::TEXT[]$$
-    ),
+      RETURN QUERY SELECT function_types_eq('pgr_maxcardinalitymatch',
+        $$VALUES ('{text,int8}'::TEXT[]) $$);
 
-    function_types_eq('pgr_maxcardinalitymatch',
-      $$VALUES ('{text,bool,int4,int8,int8,int8}'::TEXT[])$$
-  ))
-END;
+    ELSE
 
+      RETURN QUERY SELECT function_args_has('pgr_maxcardinalitymatch',
+        $$VALUES ('{"","edge"}'::TEXT[]) $$);
+
+      RETURN QUERY SELECT function_types_has('pgr_maxcardinalitymatch',
+        $$VALUES ('{text,int8}'::TEXT[]) $$);
+
+    END IF;
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+SELECT types_check();
 SELECT finish();
 ROLLBACK;

@@ -5,13 +5,13 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Ignroing directed flag & works only for undirected graph
+Ignoring directed flag & works only for undirected graph
 Copyright (c) 2022 Celia Vriginia Vergara Castillo
-Mail: vicky at georepublic.mail
+Mail: vicky at erosion.dev
 
 Function's developer:
 Copyright (c) 2016 Andrea Nardelli
-Mail: nrd.nardelli@gmail.com
+Mail: nrd.nardelli at gmail.com
 
 ------
 
@@ -48,8 +48,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 void
 pgr_do_maximum_cardinality_matching(
     const char *edges_sql,
-    /* TODO(v4) flag directed is to be removed */
-    bool,
 
     Only_int_rt **return_tuples,
     size_t *return_count,

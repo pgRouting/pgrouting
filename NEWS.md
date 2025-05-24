@@ -75,6 +75,11 @@ milestone for 4.0.0
 
   * pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
 
+* [#2899](https://github.com/pgRouting/pgrouting/issues/2899):
+  pgr_maxCardinalityMatch
+
+  * pgr_maxcardinalitymatch(text,boolean)
+
 **Removal of SQL deprecated functions**
 
 * [#2681](https://github.com/pgRouting/pgrouting/issues/2681):
@@ -108,6 +113,7 @@ Related issues: [#2897](https://github.com/pgRouting/pgrouting/issues/2897)
 * _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)
 * _pgr_ksp(text,text,integer,boolean,boolean)
 * _pgr_kruskal(text,anyarray,text,bigint,double precision)
+* _pgr_maxcardinalitymatch(text,boolean)
 * _pgr_prim(text,anyarray,text,bigint,double precision)
 * _pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
 * _pgr_trsp(text,text,anyarray,anyarray,boolean)
