@@ -6,11 +6,11 @@ Mail: project@pgrouting.org
 
 Refactoring
 Copyright (c) 2022 Celia Vriginia Vergara Castillo
-Mail: vicky_vergara at hotmail.com
+Mail: vicky at erosion.dev
 
 Function's developer:
 Copyright (c) 2016 Andrea Nardelli
-Mail: nrd.nardelli@gmail.com
+Mail: nrd.nardelli at gmail.com
 
 ------
 
