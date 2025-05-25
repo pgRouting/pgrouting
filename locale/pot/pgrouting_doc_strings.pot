@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-22 18:51+0000\n"
+"POT-Creation-Date: 2025-05-25 00:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3628,6 +3628,12 @@ msgstr ""
 msgid "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
 msgstr ""
 
+msgid "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__: pgr_maxCardinalityMatch"
+msgstr ""
+
+msgid "pgr_maxcardinalitymatch(text,boolean)"
+msgstr ""
+
 msgid "Removal of SQL deprecated functions"
 msgstr ""
 
@@ -3689,6 +3695,9 @@ msgid "_pgr_ksp(text,text,integer,boolean,boolean)"
 msgstr ""
 
 msgid "_pgr_kruskal(text,anyarray,text,bigint,double precision)"
+msgstr ""
+
+msgid "_pgr_maxcardinalitymatch(text,boolean)"
 msgstr ""
 
 msgid "_pgr_prim(text,anyarray,text,bigint,double precision)"
