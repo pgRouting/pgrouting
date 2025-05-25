@@ -1,11 +1,11 @@
 /*PGR-GNU*****************************************************************
-File: edge_bool_t_rt.h
+File: edge_bool_t.h
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Mail: vicky_vergara at erosion.com
 
 ------
 
@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_EDGE_BOOL_T_RT_H_
-#define INCLUDE_C_TYPES_EDGE_BOOL_T_RT_H_
+#ifndef INCLUDE_C_TYPES_EDGE_BOOL_T_H_
+#define INCLUDE_C_TYPES_EDGE_BOOL_T_H_
 #pragma once
 
 /* for int64_t */
@@ -45,12 +45,4 @@ struct Edge_bool_t {
   bool going;
 };
 
-/* TODO on v4, only the edge_id is returned
- * source and target are kept for backward compatability */
-struct Only_int_rt {
-  int64_t source;
-  int64_t target;
-  int64_t edge_id;
-};
-
-#endif  // INCLUDE_C_TYPES_EDGE_BOOL_T_RT_H_
+#endif  // INCLUDE_C_TYPES_EDGE_BOOL_T_H_
