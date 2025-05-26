@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_EDGE_BOOL_T_H_
-#define INCLUDE_C_TYPES_EDGE_BOOL_T_H_
+#ifndef INCLUDE_C_TYPES_EDGE_BOOL_T_RT_H_
+#define INCLUDE_C_TYPES_EDGE_BOOL_T_RT_H_
 #pragma once
 
 /* for int64_t */
@@ -45,4 +45,4 @@ struct Edge_bool_t {
   bool going;
 };
 
-#endif  // INCLUDE_C_TYPES_EDGE_BOOL_T_H_
+#endif  // INCLUDE_C_TYPES_EDGE_BOOL_T_RT_H_
