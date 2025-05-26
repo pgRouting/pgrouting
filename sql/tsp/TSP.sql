@@ -4,7 +4,7 @@ Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2016 Celia Virginia Vergara Castillo
-mail: vicky_vergara@hotmail.com
+mail: vicky at erosion.dev
 
 ------
 
@@ -24,29 +24,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
--------------
--- pgr_TSP
--------------
-
-
---v2.6
+--v4.0
 CREATE FUNCTION pgr_TSP(
     TEXT, -- matrix_row_sql (required)
 
     start_id BIGINT DEFAULT 0,
     end_id BIGINT DEFAULT 0,
-
-    max_processing_time FLOAT DEFAULT '+infinity'::FLOAT,
-
-    tries_per_temperature INTEGER DEFAULT 500,
-    max_changes_per_temperature INTEGER DEFAULT 60,
-    max_consecutive_non_changes INTEGER DEFAULT 100,
-
-    initial_temperature FLOAT DEFAULT 100,
-    final_temperature FLOAT DEFAULT 0.1,
-    cooling_factor FLOAT DEFAULT 0.9,
-
-    randomize BOOLEAN DEFAULT true,
 
     OUT seq INTEGER,
     OUT node BIGINT,
@@ -55,35 +38,19 @@ CREATE FUNCTION pgr_TSP(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, node, cost, agg_cost
-    FROM _pgr_TSP(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
+    FROM _pgr_TSP_v4(_pgr_get_statement($1), $2, $3);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-
--- COMMENTS
-
-
-COMMENT ON FUNCTION pgr_TSP(TEXT, BIGINT, BIGINT, FLOAT, INTEGER, INTEGER, INTEGER, FLOAT, FLOAT, FLOAT, BOOLEAN)
+COMMENT ON FUNCTION pgr_TSP(TEXT, BIGINT, BIGINT)
 IS 'pgr_TSP
 - Parameters
-   - matrix SQL with columns: start_vid, end_vid, agg_cost
+  - matrix SQL with columns: start_vid, end_vid, agg_cost
 - Optional parameters
     - start_id := 0
     - end_id := 0
-
-    - max_processing_time := ''+infinity''::FLOAT
-
-    - tries_per_temperature := 500
-    - max_changes_per_temperature :=  60
-    - max_consecutive_non_changes :=  100
-
-    - initial_temperature FLOAT := 100
-    - final_temperature := 0.1
-    - cooling_factor := 0.9
-
-    - randomize := true
 - Documentation:
     - ${PROJECT_DOC_LINK}/pgr_TSP.html
 ';
