@@ -1439,25 +1439,6 @@ FROM pgr_drivingDistance(
 <dt class="field-odd">Antes de migración<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_maxCardinalityMatch(
-  $$SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edges$$,
-  directed =&gt; true
-);
-WARNING:  pgr_maxCardinalityMatch(text,boolean) deprecated signature on v3.4.0
- seq | edge | source | target
------+------+--------+--------
-   1 |    1 |      5 |      6
-   2 |    5 |     10 |     11
-   3 |    6 |      1 |      3
-   4 |   13 |     12 |     17
-   5 |   14 |      8 |      9
-   6 |   16 |     15 |     16
-   7 |   17 |      2 |      4
-   8 |   18 |     13 |     14
-(8 rows)
-
-</pre></div>
-</div>
 <ul class="simple">
 <li><p>Las columnas usadas son <code class="docutils literal notranslate"><span class="pre">going</span></code> y <code class="docutils literal notranslate"><span class="pre">coming</span></code> para representar la existencia de la arista.</p></li>
 <li><p>La flag <code class="docutils literal notranslate"><span class="pre">directed</span></code> es usada para indicar si fue para un grafo <strong>dirigido</strong> or <strong>no dirigido</strong>.</p>
@@ -2640,7 +2621,7 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en may 24, 2025.<br/>
+      Actualizado por última vez en may 26, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
