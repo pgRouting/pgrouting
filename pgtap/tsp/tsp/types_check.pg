@@ -1,4 +1,3 @@
-
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
@@ -18,9 +17,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
-SET client_min_messages TO WARNING;
 
-SELECT plan(5);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(5) ELSE plan(2) END;
+
+SELECT has_function('pgr_tsp');
 SELECT tsp_types_check('pgr_tsp');
 
 SELECT finish();

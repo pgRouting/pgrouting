@@ -152,7 +152,6 @@ BEGIN
     5::BIGINT,
     'start_id => 5, end_id => 3: SHOULD PASS: last node should be 5');
 
-  --todo
   RETURN QUERY
   SELECT is(
     (SELECT node FROM pgr_TSPeuclidean(format('SELECT * FROM %1$I',tbl), start_id => 5, end_id => 3) WHERE seq = 17),

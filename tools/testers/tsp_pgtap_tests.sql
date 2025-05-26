@@ -1,5 +1,3 @@
-SET client_min_messages TO WARNING;
-
 CREATE OR REPLACE FUNCTION tsp_performance(
     tbl REGCLASS,
     loop_limit INTEGER,
@@ -39,10 +37,7 @@ start_sql TEXT;
 end_sql TEXT;
 query TEXT;
 p TEXT;
-randomize TEXT := ', randomize := false)';
 BEGIN
-
-  IF min_version('4.0.1') THEN randomize :=')'; END IF;
 
   start_sql = 'SELECT * from ' || fn || '($$ SELECT ';
   FOREACH  p IN ARRAY params
@@ -51,7 +46,7 @@ BEGIN
     END IF;
     start_sql = start_sql || p || ', ';
   END LOOP;
-  end_sql = ' FROM data $$' || randomize;
+  end_sql = ' FROM data $$)';
 
   query := start_sql || parameter || '::SMALLINT ' || end_sql;
   RETURN query SELECT lives_ok(query, parameter || '::SMALLINT ');
@@ -81,10 +76,7 @@ start_sql TEXT;
 end_sql TEXT;
 query TEXT;
 p TEXT;
-randomize TEXT := ', randomize := false)';
 BEGIN
-
-  IF min_version('4.0.1') THEN randomize :=')'; END IF;
 
   start_sql = 'select * from ' || fn || '($$ SELECT ';
   FOREACH  p IN ARRAY params
@@ -93,7 +85,7 @@ BEGIN
     END IF;
     start_sql = start_sql || p || ', ';
   END LOOP;
-  end_sql = ' FROM data $$' || randomize;
+  end_sql = ' FROM data $$)';
 
   query := start_sql || parameter || '::SMALLINT ' || end_sql;
   RETURN query SELECT lives_ok(query, parameter || '::SMALLINT');
@@ -125,16 +117,12 @@ subs TEXT[];
 BEGIN
   params = ARRAY[
   '$fn$SELECT * FROM data$fn$',
-  '5::BIGINT',
-  '6::BIGINT'
+  '5::BIGINT', '6::BIGINT'
   ]::TEXT[];
 
-  subs = ARRAY[
-  'NULL',
-  'NULL',
-  'NULL'
-  ]::TEXT[];
+  subs = ARRAY['NULL', 'NULL', 'NULL']::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_TSP', params, subs);
+
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;
@@ -152,10 +140,7 @@ BEGIN
   '2::BIGINT'
   ]::TEXT[];
 
-  subs = ARRAY[
-  'NULL',
-  'NULL',
-  'NULL'
+  subs = ARRAY['NULL', 'NULL', 'NULL'
   ]::TEXT[];
 
   RETURN query SELECT * FROM no_crash_test('pgr_TSPeuclidean', params, subs);
@@ -164,10 +149,15 @@ END
 $BODY$
 LANGUAGE plpgsql VOLATILE;
 
-CREATE OR REPLACE FUNCTION tsp_types_check_4(fn TEXT)
+CREATE OR REPLACE FUNCTION tsp_types_check(fn TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
+
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, fn || ' some signatures removed on 4.0.0');
+    RETURN;
+  END IF;
 
   RETURN QUERY
   SELECT has_function(fn, ARRAY['text', 'bigint', 'bigint']);
@@ -175,242 +165,16 @@ BEGIN
   RETURN QUERY
   SELECT function_returns(fn, ARRAY['text', 'bigint', 'bigint'], 'setof record');
 
-  PREPARE parameters AS
-  SELECT array['','start_id','end_id','seq','node','cost','agg_cost'];
-
   RETURN QUERY
-  SELECT function_args_eq(fn, 'parameters');
+  SELECT function_args_eq(fn,
+  $$VALUES ('{"",start_id,end_id,seq,node,cost,agg_cost}'::TEXT[]) $$
+  );
 
   RETURN QUERY
   SELECT function_types_eq(fn,
     $$VALUES ('{text,int8,int8,int4,int8,float8,float8}'::TEXT[]) $$
   );
-END;
-$BODY$
-LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION tsp_types_check_3(fn TEXT)
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-  RETURN QUERY
-  SELECT has_function(fn, ARRAY[
-    'text', 'bigint', 'bigint',
-    'double precision',
-    'integer', 'integer', 'integer',
-    'double precision',
-    'double precision',
-    'double precision',
-    'boolean'
-    ]);
-  RETURN QUERY
-  SELECT function_returns(fn, ARRAY[
-    'text', 'bigint', 'bigint',
-    'double precision',
-    'integer', 'integer', 'integer',
-    'double precision',
-    'double precision',
-    'double precision',
-    'boolean'
-    ], 'setof record');
-
-  -- parameter names
-  RETURN QUERY
-  SELECT function_args_eq(fn,
-    $$SELECT '{
-    "","start_id","end_id",
-    "max_processing_time",
-    "tries_per_temperature", "max_changes_per_temperature",
-    "max_consecutive_non_changes", "initial_temperature",
-    "final_temperature", "cooling_factor",
-    "randomize", "seq", "node", "cost", "agg_cost"}'::TEXT[]$$
-  );
-
-  -- parameter types
-  RETURN QUERY
-  SELECT function_types_eq(fn,
-    $$VALUES ('{text,int8,int8,float8,int4,int4,int4,float8,float8,float8,bool,int4,int8,float8,float8}'::TEXT[])$$
-  );
-
-END;
-$BODY$
-LANGUAGE plpgsql;
-
-CREATE OR REPLACE FUNCTION tsp_types_check(fn TEXT)
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-  RETURN QUERY
-  SELECT has_function(fn);
-
-  IF min_version('4.0.1') THEN
-    RETURN QUERY
-    SELECT tsp_types_check_4(fn);
-  ELSE
-    RETURN QUERY
-    SELECT tsp_types_check_3(fn);
-  END IF;
-END;
-$BODY$
-LANGUAGE plpgsql;
-
-
-CREATE OR REPLACE FUNCTION annaeling_parameters(fn TEXT)
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-
-  IF min_version('4.0.1') THEN
-
-    RETURN QUERY
-    SELECT skip(1, fn || ' should not have annaeling parameters');
-
-  ELSIF min_lib_version('3.2.1') THEN
-
-    RETURN QUERY
-    SELECT lives_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        max_processing_time := -4,
-        randomize := false)$$, fn),
-      'SHOULD live annaeling parameters are ignored');
-
-    RETURN QUERY
-    SELECT lives_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        tries_per_temperature := -4,
-        randomize := false)$$, fn),
-      'SHOULD live annaeling parameters are ignored');
-
-    RETURN QUERY
-    SELECT lives_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        max_changes_per_temperature := -4,
-        randomize := false)$$, fn),
-      'SHOULD live annaeling parameters are ignored');
-
-    RETURN QUERY
-    SELECT lives_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        max_consecutive_non_changes := -4,
-        randomize := false)$$, fn),
-      'SHOULD live annaeling parameters are ignored');
-
-    RETURN QUERY
-    SELECT lives_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        cooling_factor := 0,
-        randomize := false)$$, fn),
-      'SHOULD live annaeling parameters are ignored');
-    RETURN QUERY
-    SELECT lives_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        cooling_factor := 1,
-        randomize := false)$$, fn),
-      'SHOULD live annaeling parameters are ignored');
-
-    RETURN QUERY
-    SELECT lives_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        initial_temperature := 0,
-        randomize := false)$$, fn),
-      'SHOULD live annaeling parameters are ignored');
-
-    RETURN QUERY
-    SELECT lives_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        final_temperature := 101,
-        randomize := false)$$, fn),
-      'SHOULD live annaeling parameters are ignored');
-
-    RETURN QUERY
-    SELECT lives_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        final_temperature := 0,
-        randomize := false)$$, fn),
-      'SHOULD live annaeling parameters are ignored');
-ELSE
-
-    RETURN QUERY
-    SELECT throws_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        max_processing_time := -4,
-        randomize := false)$$, fn),
-      'XX000',
-      'Condition not met: max_processing_time >= 0',
-      '1 SHOULD throw because max_processing_time has illegal value');
-
-    RETURN QUERY
-    SELECT throws_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        tries_per_temperature := -4,
-        randomize := false)$$, fn),
-      'XX000',
-      'Condition not met: tries_per_temperature >= 0',
-      '2 SHOULD throw because tries_per_temperature has illegal value');
-
-    RETURN QUERY
-    SELECT throws_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        max_changes_per_temperature := -4,
-        randomize := false)$$, fn),
-      'XX000',
-      'Condition not met: max_changes_per_temperature > 0',
-      '3 SHOULD throw because max_changes_per_temperature has illegal value');
-
-    RETURN QUERY
-    SELECT throws_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        max_consecutive_non_changes := -4,
-        randomize := false)$$, fn),
-      'XX000',
-      'Condition not met: max_consecutive_non_changes > 0',
-      '4 SHOULD throw because max_consecutive_non_changes has illegal value');
-
-    RETURN QUERY
-    SELECT throws_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        cooling_factor := 0,
-        randomize := false)$$, fn),
-      'XX000',
-      'Condition not met: 0 < cooling_factor < 1',
-      '5 SHOULD throw because cooling_factor has illegal value');
-    RETURN QUERY
-    SELECT throws_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        cooling_factor := 1,
-        randomize := false)$$, fn),
-      'XX000',
-      'Condition not met: 0 < cooling_factor < 1',
-      '6 SHOULD throw because cooling_factor has illegal value');
-
-    RETURN QUERY
-    SELECT throws_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        initial_temperature := 0,
-        randomize := false)$$, fn),
-      'XX000',
-      'Condition not met: initial_temperature > final_temperature',
-      '7 SHOULD throw because initial_temperature has illegal value');
-
-    RETURN QUERY
-    SELECT throws_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        final_temperature := 101,
-        randomize := false)$$, fn),
-      'XX000',
-      'Condition not met: initial_temperature > final_temperature',
-      '8 SHOULD throw because final_temperature has illegal value');
-
-    RETURN QUERY
-    SELECT throws_ok(format($$
-      SELECT * FROM %1$s('SELECT * FROM data',
-        final_temperature := 0,
-        randomize := false)$$, fn),
-      'XX000',
-      'Condition not met: final_temperature > 0',
-      'SHOULD throw because final_temperature has illegal value');
-
-  END IF;
 END;
 $BODY$
 LANGUAGE plpgsql;
