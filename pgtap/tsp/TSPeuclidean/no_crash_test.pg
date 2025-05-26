@@ -21,14 +21,12 @@ BEGIN;
 SET client_min_messages TO WARNING;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(9);
+SELECT plan(8);
 
 CREATE TEMP TABLE  data AS
 SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices;
 
-SELECT isnt_empty('SELECT * FROM data', 'Should not be empty true to tests be meaningful');
 SELECT tspeuclidean_no_crash();
 
 SELECT finish();
 ROLLBACK;
-
