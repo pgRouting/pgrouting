@@ -50,7 +50,6 @@ pgr_do_tsp(
         const char *matrix_sql,
         int64_t start_vid,
         int64_t end_vid,
-        bool max_cycles,
 
         TSP_tour_rt **return_tuples,
         size_t *return_count,
@@ -60,6 +59,9 @@ pgr_do_tsp(
     using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
+    using pgrouting::tsp;
+    using pgrouting::pgget::get_matrixRows;
+    using TSP_graph = pgrouting::graph::UndirectedHasCostBG;
 
     std::ostringstream log;
     std::ostringstream notice;
@@ -68,7 +70,7 @@ pgr_do_tsp(
 
     try {
         hint = matrix_sql;
-        auto distances = pgrouting::pgget::get_matrixRows(std::string(matrix_sql));
+        auto distances = get_matrixRows(std::string(matrix_sql));
 
         if (distances.size() == 0) {
             *notice_msg = to_pg_msg("Insufficient data found on inner query");
@@ -77,21 +79,21 @@ pgr_do_tsp(
         }
         hint = nullptr;
 
-        pgrouting::algorithm::TSP fn_tsp{distances};
+        TSP_graph graph{distances};
 
-        if (start_vid != 0 && !fn_tsp.has_vertex(start_vid)) {
+        if (start_vid != 0 && !graph.has_vertex(start_vid)) {
             err << "Parameter 'start_id' do not exist on the data";
             *err_msg = to_pg_msg(err);
             return;
         }
 
-        if (end_vid != 0 && !fn_tsp.has_vertex(end_vid)) {
+        if (end_vid != 0 && !graph.has_vertex(end_vid)) {
             err << "Parameter 'end_id' do not exist on the data";
             *err_msg = to_pg_msg(err);
             return;
         }
 
-        auto tsp_path = fn_tsp.tsp(start_vid, end_vid, max_cycles);
+        auto tsp_path = tsp(graph, start_vid, end_vid);
 
         if (!tsp_path.empty()) {
             *return_count = tsp_path.size();

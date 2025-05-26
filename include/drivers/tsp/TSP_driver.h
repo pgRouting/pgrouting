@@ -51,10 +51,7 @@ extern "C" {
 void
 pgr_do_tsp(
         const char*,
-
-        int64_t,
-        int64_t,
-        bool,
+        int64_t, int64_t,
 
         TSP_tour_rt**, size_t*,
         char**, char**, char**);

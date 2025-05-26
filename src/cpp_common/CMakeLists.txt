@@ -10,4 +10,5 @@ ADD_LIBRARY(cpp_common OBJECT
     pgdata_fetchers.cpp
     pgdata_getters.cpp
     undirectedNoCostBG.cpp
+    undirectedHasCostBG.cpp
     )
