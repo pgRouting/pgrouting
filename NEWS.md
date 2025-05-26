@@ -80,6 +80,11 @@ milestone for 4.0.0
 
   * pgr_maxcardinalitymatch(text,boolean)
 
+* [#2901](https://github.com/pgRouting/pgrouting/issues/2901): TSP family
+
+  * pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+  * pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+
 **Removal of SQL deprecated functions**
 
 * [#2681](https://github.com/pgRouting/pgrouting/issues/2681):
@@ -129,6 +134,8 @@ Related issues: [#2897](https://github.com/pgRouting/pgrouting/issues/2897)
 * _trsp(text,text,anyarray,anyarray,boolean)
 * _v4trsp(text,text,anyarray,anyarray,boolean)
 * _v4trsp(text,text,text,boolean)
+* _pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+* _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
 
 
 * [#2861](https://github.com/pgRouting/pgrouting/issues/2861):
