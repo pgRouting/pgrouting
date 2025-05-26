@@ -6,11 +6,11 @@ SET client_min_messages TO WARNING;
 /* -- q1 */
 SELECT * FROM pgr_TSPeuclidean(
   $$
-  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices
+  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices ORDER BY id
   $$);
 /* -- q2 */
 SELECT *
-FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
+FROM pgr_TSPeuclidean($$SELECT * FROM wi29 ORDER BY id$$)
 WHERE seq = 30;
 /* -- q3 */
 WITH
