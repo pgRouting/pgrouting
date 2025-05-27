@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-25 00:09+0000\n"
+"POT-Creation-Date: 2025-05-27 04:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -535,7 +535,10 @@ msgstr ""
 msgid "Metric Algorithm is used"
 msgstr ""
 
-msgid "Implementation generates solutions that *are twice as long as the optimal tour in the worst case* when:"
+msgid "Implementation generates solutions that *are twice as long as the optimal tour in the worst case*:"
+msgstr ""
+
+msgid "Graph characteristics for best performance:"
 msgstr ""
 
 msgid "Graph is undirected"
@@ -545,9 +548,6 @@ msgid "Graph is fully connected"
 msgstr ""
 
 msgid "Graph where traveling costs on edges obey the triangle inequality."
-msgstr ""
-
-msgid "On an undirected graph:"
 msgstr ""
 
 msgid "The traveling costs are symmetric:"
@@ -3634,6 +3634,15 @@ msgstr ""
 msgid "pgr_maxcardinalitymatch(text,boolean)"
 msgstr ""
 
+msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: TSP family"
+msgstr ""
+
+msgid "pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgstr ""
+
+msgid "pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgstr ""
+
 msgid "Removal of SQL deprecated functions"
 msgstr ""
 
@@ -3743,6 +3752,12 @@ msgid "_v4trsp(text,text,anyarray,anyarray,boolean)"
 msgstr ""
 
 msgid "_v4trsp(text,text,text,boolean)"
+msgstr ""
+
+msgid "_pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgstr ""
+
+msgid "_pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
 msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__: Remove unused internal functions"
@@ -6601,6 +6616,15 @@ msgstr ""
 msgid "Availability:"
 msgstr ""
 
+msgid "Simulated Annealing signature removed"
+msgstr ""
+
+msgid "Results change depending on input order"
+msgstr ""
+
+msgid "Only for undirected graphs"
+msgstr ""
+
 msgid "Version 3.2.1"
 msgstr ""
 
@@ -6610,10 +6634,16 @@ msgstr ""
 msgid "Simulated Annealing Algorithm no longer supported"
 msgstr ""
 
-msgid "The Simulated Annealing Algorithm related parameters are ignored: max_processing_time, tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes, initial_temperature, final_temperature, cooling_factor, randomize"
+msgid "The Simulated Annealing Algorithm related parameters are ignored: `max_processing_time`, `tries_per_temperature`, `max_changes_per_temperature`, `max_consecutive_non_changes`, `initial_temperature`, `final_temperature`, `cooling_factor`, `randomize`"
 msgstr ""
 
 msgid "Version 2.3.0"
+msgstr ""
+
+msgid "Results change depending on input order of the `Matrix SQL`_"
+msgstr ""
+
+msgid "Negative costs are ignored."
 msgstr ""
 
 msgid "Can be Used with :doc:`costMatrix-category` functions preferably with `directed => false`."
@@ -6673,10 +6703,25 @@ msgstr ""
 msgid "Some (or all) traveling costs on edges will still might not obey the triangle inequality."
 msgstr ""
 
-msgid "When the data is incomplete, but it is a connected graph:"
+msgid "When the data does not come from an undirected graph or its not fully connected:"
 msgstr ""
 
-msgid "the missing values will be calculated with dijkstra algorithm."
+msgid "Missing values will be calculated with dijkstra algorithm."
+msgstr ""
+
+msgid "When the graph has more than one component:"
+msgstr ""
+
+msgid "``start_vid`` or ``end_vid`` are defined and are on the same component: the TSP tour will happen on that component."
+msgstr ""
+
+msgid "``start_vid`` or ``end_vid`` are defined and are not on the same component: the TSP tour will propose a toor that has both components where connecting costs are estimated."
+msgstr ""
+
+msgid "``start_vid`` or ``end_vid`` are not defined: the starting point could be on any component and will include data only from that component."
+msgstr ""
+
+msgid "One cycle attempt to remove crossing edges is done to the TSP results."
 msgstr ""
 
 msgid "pgr_TSP(`Matrix SQL`_, ``[start_id, end_id]``)"
@@ -6775,9 +6820,6 @@ msgstr ""
 msgid "Using `Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
 msgstr ""
 
-msgid "The Simulated Annealing Algorithm related parameters are ignored: `max_processing_time`, `tries_per_temperature`, `max_changes_per_temperature`, `max_consecutive_non_changes`, `initial_temperature`, `final_temperature`, `cooling_factor`, `randomize`"
-msgstr ""
-
 msgid "Version 3.0.0"
 msgstr ""
 
@@ -6785,6 +6827,9 @@ msgid "Name change from pgr_eucledianTSP"
 msgstr ""
 
 msgid "New official function."
+msgstr ""
+
+msgid "Results change depending on input order of the `Coordinates SQL`_"
 msgstr ""
 
 msgid "Any duplicated identifier will be ignored. The coordinates that will be kept is arbitrarily."
