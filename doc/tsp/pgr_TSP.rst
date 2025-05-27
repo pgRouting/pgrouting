@@ -114,7 +114,7 @@ Description
     - ``start_vid`` or ``end_vid`` are defined and are on the same component:
       the TSP tour will happen on that component.
     - ``start_vid`` or ``end_vid`` are defined and are not on the same
-      component: the TSP tour will propose a toor that has both components
+      component: the TSP tour will propose a tour that has both components
       where connecting costs are estimated.
     - ``start_vid`` or ``end_vid`` are not defined: the starting point could be
       on any component and will include data only from that component.
