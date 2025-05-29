@@ -248,17 +248,18 @@
 <ul class="simple">
 <li><p>Este problema es un problema de optimización NP-duro.</p></li>
 <li><p>Se utiliza el algoritmo métrico</p></li>
-<li><p>La implementación genera soluciones que <em>son el doble de largas que el recorrido óptimo en el peor de los casos</em> cuando:</p>
+<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour
+in the worst case</em>:</p></li>
+<li><p>Graph characteristics for best performance:</p>
 <ul>
 <li><p>El grafo es no dirigido</p></li>
 <li><p>El grafo está completamente conectado</p></li>
 <li><p>Grafo donde los costos de viaje en los segmentos cumplen con la desigualdad del triángulo.</p></li>
+<li><p>Los costos del viaje son simétricos:</p>
+<ul>
+<li><p>Los costos del viaje de <code class="docutils literal notranslate"><span class="pre">u</span></code> a <code class="docutils literal notranslate"><span class="pre">v</span></code> son tanto como viajar de <code class="docutils literal notranslate"><span class="pre">v</span></code> a <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
 </ul>
 </li>
-<li><p>En un grafo no dirigido:</p>
-<ul>
-<li><p>Los costos del viaje son simétricos:</p></li>
-<li><p>Los costos del viaje de <code class="docutils literal notranslate"><span class="pre">u</span></code> a <code class="docutils literal notranslate"><span class="pre">v</span></code> son tanto como viajar de <code class="docutils literal notranslate"><span class="pre">v</span></code> a <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -332,7 +333,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en may 26, 2025.<br/>
+      Actualizado por última vez en may 29, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

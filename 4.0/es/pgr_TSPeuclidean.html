@@ -232,9 +232,13 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Aproximación usando el algoritmo <em>métrico</em>.</p></li>
 </ul>
 <p class="rubric">Disponibilidad:</p>
+<p class="rubric">Versión 4.0.0</p>
 <ul class="simple">
-<li><p>Versión 3.2.1</p>
-<ul>
+<li><p>Simulated Annealing signature removed</p></li>
+<li><p>Results change depending on input order</p></li>
+</ul>
+<p class="rubric">Versión 3.2.1</p>
+<ul class="simple">
 <li><p>Usando <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: Algoritmo de aproximación Métrica de TSP</a></p></li>
 <li><p>El algoritmo de recocido simulado ya no es utilizado</p>
 <ul>
@@ -242,17 +246,13 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Versión 3.0.0</p>
-<ul>
+<p class="rubric">Versión 3.0.0</p>
+<ul class="simple">
 <li><p>Cambio de nombre de pgr_eucledianTSP</p></li>
 </ul>
-</li>
-<li><p>Versión 2.3.0</p>
-<ul>
+<p class="rubric">Versión 2.3.0</p>
+<ul class="simple">
 <li><p>Nueva función oficial.</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -268,21 +268,23 @@
 <ul class="simple">
 <li><p>Este problema es un problema de optimización NP-duro.</p></li>
 <li><p>Se utiliza el algoritmo métrico</p></li>
-<li><p>La implementación genera soluciones que <em>son el doble de largas que el recorrido óptimo en el peor de los casos</em> cuando:</p>
+<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour
+in the worst case</em>:</p></li>
+<li><p>Graph characteristics for best performance:</p>
 <ul>
 <li><p>El grafo es no dirigido</p></li>
 <li><p>El grafo está completamente conectado</p></li>
 <li><p>Grafo donde los costos de viaje en los segmentos cumplen con la desigualdad del triángulo.</p></li>
-</ul>
-</li>
-<li><p>En un grafo no dirigido:</p>
+<li><p>Los costos del viaje son simétricos:</p>
 <ul>
-<li><p>Los costos del viaje son simétricos:</p></li>
 <li><p>Los costos del viaje de <code class="docutils literal notranslate"><span class="pre">u</span></code> a <code class="docutils literal notranslate"><span class="pre">v</span></code> son tanto como viajar de <code class="docutils literal notranslate"><span class="pre">v</span></code> a <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 <ul>
+<li><p>Results change depending on input order of the <a class="reference internal" href="#coordinates-sql">Coordinates SQL</a></p></li>
 <li><p>Any duplicated identifier will be ignored. The coordinates that will be kept
 is arbitrarily.</p>
 <ul>
@@ -324,7 +326,7 @@ is arbitrarily.</p>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSPeuclidean(
   $$
-  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices
+  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices ORDER BY id
   $$);
  seq | node |      cost      |   agg_cost
 -----+------+----------------+---------------
@@ -537,7 +539,7 @@ is arbitrarily.</p>
 <h4><a class="toc-backref" href="#id4" role="doc-backlink">Costo total del tour</a><a class="headerlink" href="#total-tour-cost" title="Link to this heading">¶</a></h4>
 <p>Al obtener un costo total del recorrido, comparar el valor con la duración de un recorrido óptimo, que es 27603, dado en el conjunto de datos</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
-FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
+FROM pgr_TSPeuclidean($$SELECT * FROM wi29 ORDER BY id$$)
 WHERE seq = 30;
  seq | node |     cost      |   agg_cost
 -----+------+---------------+---------------
@@ -601,7 +603,7 @@ is the solution obtained with <code class="docutils literal notranslate"><span c
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en may 26, 2025.<br/>
+      Actualizado por última vez en may 29, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

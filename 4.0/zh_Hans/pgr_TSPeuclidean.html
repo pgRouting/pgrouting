@@ -231,9 +231,13 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - 使用 <em>metric</em> 算法进行近似计算。</p></li>
 </ul>
 <p class="rubric">可用性：</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>版本3.2.1</p>
-<ul>
+<li><p>Simulated Annealing signature removed</p></li>
+<li><p>Results change depending on input order</p></li>
+</ul>
+<p class="rubric">版本3.2.1</p>
+<ul class="simple">
 <li><p>使用 <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: metric TSP approx</a></p></li>
 <li><p>Simulated Annealing算法不再受支持</p>
 <ul>
@@ -241,17 +245,13 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>版本3.0.0</p>
-<ul>
+<p class="rubric">版本3.0.0</p>
+<ul class="simple">
 <li><p>pgr_eucledianTSP 的名称更改</p></li>
 </ul>
-</li>
-<li><p>版本2.3.0</p>
-<ul>
+<p class="rubric">版本2.3.0</p>
+<ul class="simple">
 <li><p>新官方函数说明。</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -267,21 +267,23 @@
 <ul class="simple">
 <li><p>该问题是一个NP-hard优化问题。</p></li>
 <li><p>使用度量算法</p></li>
-<li><p><em>在最坏的情况下，实施产生的解决方案的时间是最佳旅行的两倍</em> ：</p>
+<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour
+in the worst case</em>:</p></li>
+<li><p>Graph characteristics for best performance:</p>
 <ul>
 <li><p>图是无向的</p></li>
 <li><p>图是全连通的</p></li>
 <li><p>图中，边上的旅行成本服从三角不等式。</p></li>
-</ul>
-</li>
-<li><p>在无向图上：</p>
+<li><p>旅行费用是对称的：</p>
 <ul>
-<li><p>旅行费用是对称的：</p></li>
 <li><p>从 <code class="docutils literal notranslate"><span class="pre">u</span></code> 到 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的旅行费用与从 <code class="docutils literal notranslate"><span class="pre">v</span></code> 到 <code class="docutils literal notranslate"><span class="pre">u</span></code> 的旅行费用相同</p></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 <ul>
+<li><p>Results change depending on input order of the <a class="reference internal" href="#coordinates-sql">Coordinates SQL</a></p></li>
 <li><p>任何重复的标识符都会被忽略，保留的坐标是任意选择的。</p>
 <ul>
 <li><p>对于相同的标识符，坐标非常相似，例如</p>
@@ -322,7 +324,7 @@
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSPeuclidean(
   $$
-  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices
+  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices ORDER BY id
   $$);
  seq | node |      cost      |   agg_cost
 -----+------+----------------+---------------
@@ -535,7 +537,7 @@
 <h4><a class="toc-backref" href="#id4" role="doc-backlink">旅游总费用</a><a class="headerlink" href="#total-tour-cost" title="Link to this heading">¶</a></h4>
 <p>获取旅行的总成本，将该值与数据集上给出的最佳旅行长度 27603 进行比较</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
-FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
+FROM pgr_TSPeuclidean($$SELECT * FROM wi29 ORDER BY id$$)
 WHERE seq = 30;
  seq | node |     cost      |   agg_cost
 -----+------+---------------+---------------
@@ -598,7 +600,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 5月 26, 2025.<br/>
+      Last updated on 5月 29, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

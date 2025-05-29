@@ -222,31 +222,33 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - 使用 <em>metric</em> 算法的近似计算。</p></li>
 </ul>
 <p class="rubric">可用性：</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>版本3.2.1</p>
-<ul>
+<li><p>Simulated Annealing signature removed</p></li>
+<li><p>Results change depending on input order</p></li>
+<li><p>Only for undirected graphs</p></li>
+</ul>
+<p class="rubric">版本3.2.1</p>
+<ul class="simple">
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost库</a> 中的度量算法</p></li>
 <li><p>Simulated Annealing算法不再受支持</p>
 <ul>
-<li><p>Simulated Annealing算法相关参数被忽略：max_processing_time、tries_per_temper、max_changes_per_tempere、max_consecutive_non_changes、initial_temper、final_temper、cooling_factor、randomize</p></li>
+<li><p>Simulated Annealing 算法相关参数被忽略： <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>版本2.3.0</p>
-<ul>
-<li><p>签名变更</p>
-<ul>
+<p class="rubric">版本2.3.0</p>
+<ul class="simple">
+<li><p>签名变更</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
 <li><p>不再支持旧签名</p></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>版本2.0.0</p>
-<ul>
+</div></blockquote>
+<p class="rubric">版本2.0.0</p>
+<ul class="simple">
 <li><p>官方函数。</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -262,21 +264,24 @@
 <ul class="simple">
 <li><p>该问题是一个NP-hard优化问题。</p></li>
 <li><p>使用度量算法</p></li>
-<li><p><em>在最坏的情况下，实施产生的解决方案的时间是最佳旅行的两倍</em> ：</p>
+<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour
+in the worst case</em>:</p></li>
+<li><p>Graph characteristics for best performance:</p>
 <ul>
 <li><p>图是无向的</p></li>
 <li><p>图是全连通的</p></li>
 <li><p>图中，边上的旅行成本服从三角不等式。</p></li>
-</ul>
-</li>
-<li><p>在无向图上：</p>
+<li><p>旅行费用是对称的：</p>
 <ul>
-<li><p>旅行费用是对称的：</p></li>
 <li><p>从 <code class="docutils literal notranslate"><span class="pre">u</span></code> 到 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的旅行费用与从 <code class="docutils literal notranslate"><span class="pre">v</span></code> 到 <code class="docutils literal notranslate"><span class="pre">u</span></code> 的旅行费用相同</p></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 <ul class="simple">
+<li><p>Results change depending on input order of the <a class="reference internal" href="#matrix-sql">Matrix SQL</a></p></li>
+<li><p>Negative costs are ignored.</p></li>
 <li><p>可以与 <a class="reference internal" href="costMatrix-category.html"><span class="doc">成本矩阵 - 类别</span></a> 函数一起使用，最好使用 <cite>directed =&gt; false</cite>。</p>
 <ul>
 <li><p>使用 <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
@@ -322,11 +327,24 @@
 </li>
 </ul>
 </li>
-<li><p>当数据不完整，但是是连通图时：</p>
+<li><p>When the data does not come from an undirected graph or its not fully
+connected:</p>
 <ul>
-<li><p>缺失值将使用 dijkstra 算法计算。</p></li>
+<li><p>Missing values will be calculated with dijkstra algorithm.</p></li>
+<li><p>When the graph has more than one component:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> are defined and are on the same component:
+the TSP tour will happen on that component.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> are defined and are not on the same
+component: the TSP tour will propose a tour that has both components
+where connecting costs are estimated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> are not defined: the starting point could be
+on any component and will include data only from that component.</p></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p>One cycle attempt to remove crossing edges is done to the TSP results.</p></li>
 </ul>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
@@ -667,7 +685,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 5月 26, 2025.<br/>
+      Last updated on 5月 29, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

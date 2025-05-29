@@ -247,17 +247,18 @@
 <ul class="simple">
 <li><p>该问题是一个NP-hard优化问题。</p></li>
 <li><p>使用度量算法</p></li>
-<li><p><em>在最坏的情况下，实施产生的解决方案的时间是最佳旅行的两倍</em> ：</p>
+<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour
+in the worst case</em>:</p></li>
+<li><p>Graph characteristics for best performance:</p>
 <ul>
 <li><p>图是无向的</p></li>
 <li><p>图是全连通的</p></li>
 <li><p>图中，边上的旅行成本服从三角不等式。</p></li>
+<li><p>旅行费用是对称的：</p>
+<ul>
+<li><p>从 <code class="docutils literal notranslate"><span class="pre">u</span></code> 到 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的旅行费用与从 <code class="docutils literal notranslate"><span class="pre">v</span></code> 到 <code class="docutils literal notranslate"><span class="pre">u</span></code> 的旅行费用相同</p></li>
 </ul>
 </li>
-<li><p>在无向图上：</p>
-<ul>
-<li><p>旅行费用是对称的：</p></li>
-<li><p>从 <code class="docutils literal notranslate"><span class="pre">u</span></code> 到 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的旅行费用与从 <code class="docutils literal notranslate"><span class="pre">v</span></code> 到 <code class="docutils literal notranslate"><span class="pre">u</span></code> 的旅行费用相同</p></li>
 </ul>
 </li>
 </ul>
@@ -331,7 +332,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 5月 26, 2025.<br/>
+      Last updated on 5月 29, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

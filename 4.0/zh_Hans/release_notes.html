@@ -545,6 +545,12 @@ pgr_maxCardinalityMatch</p>
 <li><p>pgr_maxcardinalitymatch(text,boolean)</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2901">#2901</a>: TSP family</p>
+<ul>
+<li><p>pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
+<li><p>pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
+</ul>
+</li>
 </ul>
 <p class="rubric">移除已弃用的SQL函数</p>
 <ul class="simple">
@@ -594,6 +600,8 @@ pgr_nodeNetwork</p></li>
 <li><p>_trsp(text,text,anyarray,anyarray,boolean)</p></li>
 <li><p>_v4trsp(text,text,anyarray,anyarray,boolean)</p></li>
 <li><p>_v4trsp(text,text,text,boolean)</p></li>
+<li><p>_pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
+<li><p>_pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a>:移除未使用的内部函数</p>
 <ul>
 <li><p>_pgr_checkverttab(text,text[],integer,text)</p></li>
@@ -2629,7 +2637,7 @@ pgr_nodeNetwork</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 5月 26, 2025.<br/>
+      Last updated on 5月 29, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

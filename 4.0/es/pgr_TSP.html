@@ -223,31 +223,33 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - Aproximación usando el algoritmo <em>métrico</em>.</p></li>
 </ul>
 <p class="rubric">Disponibilidad:</p>
+<p class="rubric">Versión 4.0.0</p>
 <ul class="simple">
-<li><p>Versión 3.2.1</p>
-<ul>
+<li><p>Simulated Annealing signature removed</p></li>
+<li><p>Results change depending on input order</p></li>
+<li><p>Only for undirected graphs</p></li>
+</ul>
+<p class="rubric">Versión 3.2.1</p>
+<ul class="simple">
 <li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
 <li><p>El algoritmo de recocido simulado ya no es utilizado</p>
 <ul>
-<li><p>Se ignoran los parámetros relacionados con el algoritmo de recocido simulado: max_processing_time, tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes, initial_temperature, final_temperature, cooling_factor, randomize</p></li>
+<li><p>Se ignoran los parámetros relacionados con el algoritmo de recocido simulado: <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Versión 2.3.0</p>
-<ul>
-<li><p>Cambio de firma</p>
-<ul>
+<p class="rubric">Versión 2.3.0</p>
+<ul class="simple">
+<li><p>Cambio de firma</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
 <li><p>Firma antigua ya no soportada</p></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>Versión 2.0.0</p>
-<ul>
+</div></blockquote>
+<p class="rubric">Versión 2.0.0</p>
+<ul class="simple">
 <li><p>Función oficial.</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -263,21 +265,24 @@
 <ul class="simple">
 <li><p>Este problema es un problema de optimización NP-duro.</p></li>
 <li><p>Se utiliza el algoritmo métrico</p></li>
-<li><p>La implementación genera soluciones que <em>son el doble de largas que el recorrido óptimo en el peor de los casos</em> cuando:</p>
+<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour
+in the worst case</em>:</p></li>
+<li><p>Graph characteristics for best performance:</p>
 <ul>
 <li><p>El grafo es no dirigido</p></li>
 <li><p>El grafo está completamente conectado</p></li>
 <li><p>Grafo donde los costos de viaje en los segmentos cumplen con la desigualdad del triángulo.</p></li>
-</ul>
-</li>
-<li><p>En un grafo no dirigido:</p>
+<li><p>Los costos del viaje son simétricos:</p>
 <ul>
-<li><p>Los costos del viaje son simétricos:</p></li>
 <li><p>Los costos del viaje de <code class="docutils literal notranslate"><span class="pre">u</span></code> a <code class="docutils literal notranslate"><span class="pre">v</span></code> son tanto como viajar de <code class="docutils literal notranslate"><span class="pre">v</span></code> a <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 <ul class="simple">
+<li><p>Results change depending on input order of the <a class="reference internal" href="#matrix-sql">Matrix SQL</a></p></li>
+<li><p>Negative costs are ignored.</p></li>
 <li><p>Se puede utilizar con funciones <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Categoría</span></a> preferiblemente con <cite>directed =&gt; false</cite>.</p>
 <ul>
 <li><p>Con <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
@@ -327,11 +332,24 @@ twice as long as the optimal tour</p></li>
 </li>
 </ul>
 </li>
-<li><p>Cuando los datos están incompletos, pero es un grafo conectado:</p>
+<li><p>When the data does not come from an undirected graph or its not fully
+connected:</p>
 <ul>
-<li><p>los datos están incompletos se calcularán con el algoritmo de Dijkstra.</p></li>
+<li><p>Missing values will be calculated with dijkstra algorithm.</p></li>
+<li><p>When the graph has more than one component:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> are defined and are on the same component:
+the TSP tour will happen on that component.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> are defined and are not on the same
+component: the TSP tour will propose a tour that has both components
+where connecting costs are estimated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> are not defined: the starting point could be
+on any component and will include data only from that component.</p></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p>One cycle attempt to remove crossing edges is done to the TSP results.</p></li>
 </ul>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
@@ -672,7 +690,7 @@ twice as long as the optimal tour</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en may 26, 2025.<br/>
+      Actualizado por última vez en may 29, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

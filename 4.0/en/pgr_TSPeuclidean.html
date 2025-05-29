@@ -231,31 +231,30 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Approximation using <em>metric</em> algorithm.</p></li>
 </ul>
 <p class="rubric">Availability:</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>Version 3.2.1</p>
-<ul>
+<li><p>Simulated Annealing signature removed</p></li>
+<li><p>Results change depending on input order</p></li>
+</ul>
+<p class="rubric">Version 3.2.1</p>
+<ul class="simple">
 <li><p>Using <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: metric TSP approx</a></p></li>
 <li><p>Simulated Annealing Algorithm no longer supported</p>
 <ul>
 <li><p>The Simulated Annealing Algorithm related parameters are ignored:
 <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>,
 <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>,
-<cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>,
-<cite>randomize</cite></p></li>
+<cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Version 3.0.0</p>
-<ul>
+<p class="rubric">Version 3.0.0</p>
+<ul class="simple">
 <li><p>Name change from pgr_eucledianTSP</p></li>
 </ul>
-</li>
-<li><p>Version 2.3.0</p>
-<ul>
+<p class="rubric">Version 2.3.0</p>
+<ul class="simple">
 <li><p>New official function.</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -274,22 +273,23 @@ to the origin city?</em></p>
 <li><p>This problem is an NP-hard optimization problem.</p></li>
 <li><p>Metric Algorithm is used</p></li>
 <li><p>Implementation generates solutions that <em>are twice as long as the optimal tour
-in the worst case</em> when:</p>
+in the worst case</em>:</p></li>
+<li><p>Graph characteristics for best performance:</p>
 <ul>
 <li><p>Graph is undirected</p></li>
 <li><p>Graph is fully connected</p></li>
 <li><p>Graph where traveling costs on edges obey the triangle inequality.</p></li>
-</ul>
-</li>
-<li><p>On an undirected graph:</p>
+<li><p>The traveling costs are symmetric:</p>
 <ul>
-<li><p>The traveling costs are symmetric:</p></li>
 <li><p>Traveling costs from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> are just as much as traveling from
 <code class="docutils literal notranslate"><span class="pre">v</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 <ul>
+<li><p>Results change depending on input order of the <a class="reference internal" href="#coordinates-sql">Coordinates SQL</a></p></li>
 <li><p>Any duplicated identifier will be ignored. The coordinates that will be kept
 is arbitrarily.</p>
 <ul>
@@ -331,7 +331,7 @@ is arbitrarily.</p>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSPeuclidean(
   $$
-  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices
+  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices ORDER BY id
   $$);
  seq | node |      cost      |   agg_cost
 -----+------+----------------+---------------
@@ -549,7 +549,7 @@ the 29 cities of <a class="reference external" href="https://www.math.uwaterloo.
 <p>Getting a total cost of the tour, compare the value with the length of an
 optimal tour is 27603, given on the dataset</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
-FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
+FROM pgr_TSPeuclidean($$SELECT * FROM wi29 ORDER BY id$$)
 WHERE seq = 30;
  seq | node |     cost      |   agg_cost
 -----+------+---------------+---------------
@@ -613,7 +613,7 @@ is the solution obtained with <code class="docutils literal notranslate"><span c
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on May 26, 2025.<br/>
+      Last updated on May 29, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
