@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-27 15:13+0000\n"
+"POT-Creation-Date: 2025-05-29 20:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3584,6 +3584,9 @@ msgid "code enhancements:"
 msgstr ""
 
 msgid "Removal of unused C/C++ code"
+msgstr ""
+
+msgid "Refactor the Script to build the update PostgreSQL file."
 msgstr ""
 
 msgid "Removal of SQL deprecated signatures"
