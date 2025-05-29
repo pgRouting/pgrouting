@@ -75,6 +75,7 @@ milestone for 4.0.0
 .. rubric:: code enhancements:
 
 * Removal of unused C/C++ code
+* Refactor the Script to build the update PostgreSQL file.
 
 .. rubric:: Removal of SQL deprecated signatures
 

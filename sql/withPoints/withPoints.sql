@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- ONE TO ONE
---v2.6
+--v3.0
 CREATE FUNCTION pgr_withPoints(
     TEXT, -- edges_sql (required)
     TEXT, -- points_sql (required)
@@ -63,7 +63,7 @@ ROWS 1000;
 
 
 -- ONE TO MANY
---v2.6
+--v3.0
 CREATE FUNCTION pgr_withPoints(
     TEXT, -- edges_sql (required)
     TEXT, -- points_sql (required)
@@ -92,7 +92,7 @@ ROWS 1000;
 
 
 -- MANY TO ONE
---v2.6
+--v3.0
 CREATE FUNCTION pgr_withPoints(
     TEXT, -- edges_sql (required)
     TEXT, -- points_sql (required)
@@ -121,7 +121,7 @@ ROWS 1000;
 
 
 -- MANY TO MANY
---v2.6
+--v3.0
 CREATE FUNCTION pgr_withPoints(
     TEXT, -- edges_sql (required)
     TEXT, -- points_sql (required)

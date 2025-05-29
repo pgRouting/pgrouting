@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------------------
 
 
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdAstarCostMatrix(
     TEXT,     -- edges sql (required)
     ANYARRAY, -- vids (required)

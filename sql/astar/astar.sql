@@ -123,7 +123,7 @@ COST 100
 ROWS 1000;
 
 
---v2.6
+--v3.0
 CREATE FUNCTION pgr_aStar(
     TEXT,       -- edges sql (required)
     ANYARRAY,   -- from_vids (required)
