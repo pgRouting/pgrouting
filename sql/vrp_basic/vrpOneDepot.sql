@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------
 
 
---v2.6
+--v3.0
 CREATE FUNCTION pgr_vrpOneDepot(
 	text,  -- order_sql
 	text, -- vehicle_sql

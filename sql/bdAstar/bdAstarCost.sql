@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------
 
 -- one to one
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdAstarCost(
     TEXT,   -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -54,7 +54,7 @@ ROWS 1000;
 
 
 -- one to many
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdAstarCost(
     TEXT,     -- edges_sql (required)
     BIGINT,   -- from_vid (required)
@@ -79,7 +79,7 @@ ROWS 1000;
 
 
 -- many to one
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdAstarCost(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -105,7 +105,7 @@ ROWS 1000;
 
 
 -- many to many
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdAstarCost(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
