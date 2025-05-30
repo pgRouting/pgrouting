@@ -24,20 +24,20 @@ given.
 
 .. rubric:: Availability
 
-* Version 4.0.0
+.. rubric:: Version 4.0.0
 
-  * Function promoted to official.
+* Output columns standardized to |matrix-result|
+* Function promoted to official.
 
-* Version 3.2.0
+.. rubric:: Version 3.2.0
 
-  * New proposed signature:
+* New proposed signature:
 
-    * pgr_withPointsCost(Combinations)
+ * pgr_withPointsCost(Combinations)
 
-* Version 2.2.0
+.. rubric:: Version 2.2.0
 
-  * New proposed function.
-
+* New proposed function.
 
 Description
 -------------------------------------------------------------------------------
@@ -47,28 +47,29 @@ Using Dijkstra algorithm, return only the aggregate cost of the shortest path
 found.
 
 The main characteristics are:
-  - It does not return a path.
-  - Returns the sum of the costs of the shortest path for pair combination of
-    vertices in the modified graph.
-  - Vertices of the graph are:
 
-    - **positive** when it belongs to the edges_sql
-    - **negative** when it belongs to the points_sql
+- Process is done only on edges with positive costs.
+- It does not return a path.
+- Returns the sum of the costs of the shortest path for pair combination of
+  vertices in the modified graph.
 
-  - Process is done only on edges with positive costs.
-  - Values are returned when there is a path.
+  - The returned values are in the form of a set of |matrix-result|.
 
-    - The returned values are in the form of a set of `(start_vid, end_vid,
-      agg_cost)`.
+- Vertices of the graph are:
 
-    - When the starting vertex and ending vertex are the same, there is no path.
+  - **positive** when it belongs to the edges_sql
+  - **negative** when it belongs to the points_sql
 
-      - The `agg_cost` in the non included values `(v, v)` is `0`
+- Values are returned when there is a path.
 
-    - When the starting vertex and ending vertex are the different and there is
-      no path.
+  - When the starting vertex and ending vertex are the same, there is no path.
 
-      - The `agg_cost` in the non included values `(u, v)` is :math:`\infty`
+    - The `agg_cost` in the non included values `(v, v)` is `0`
+
+  - When the starting vertex and ending vertex are the different and there is no
+    path:
+
+    - The `agg_cost` in the non included values `(u, v)` is :math:`\infty`
 
   - If the values returned are stored in a table, the unique index would be the
     pair: `(start_vid, end_vid)`.
@@ -77,15 +78,15 @@ The main characteristics are:
 
     - The `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
-  - For optimization purposes, any duplicated value in the `start_vids` or
-    `end_vids` is ignored.
+- For optimization purposes, any duplicated value in the input arrays of **start vids** or
+  **end vids** or are ignored.
 
-  - The returned values are ordered:
+- The returned values are ordered:
 
-    - `start_vid` ascending
-    - `end_vid` ascending
+  - `start_vid` ascending
+  - `end_vid` ascending
 
-  - Running time: :math:`O(|start\_vids|\times(V \log V + E))`
+- Running time: :math:`O(|start\_vids|\times(V \log V + E))`
 
 |Boost| Boost Graph Inside
 
@@ -97,14 +98,14 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vid**, [**options**])
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vids**, [**options**])
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vid**, [**options**])
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vids**, [**options**])
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, `Combinations SQL`_, [**options**])
+   | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, [**options**])
+   | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])
+   | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])
+   | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])
+   | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, driving_side]``
 
-   | Returns set of |matrix-pid|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 .. note:: There is no **details** flag, unlike the other members of the
@@ -119,13 +120,13 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vid**, [**options**])
+   | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, [**options**])
    | **options:** ``[directed, driving_side]``
 
-   | Returns set of |matrix-pid|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
-:Example: From point :math:`1` to vertex :math:`10` with defaults
+:Example: From point :math:`1` to vertex :math:`10` with default options.
 
 .. literalinclude:: withPointsCost.queries
    :start-after: -- q1
@@ -143,7 +144,7 @@ One to Many
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])
    | **options:** ``[directed, driving_side]``
 
-   | Returns set of |matrix-pid|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
@@ -165,7 +166,7 @@ Many to One
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])
    | **options:** ``[directed, driving_side]``
 
-   | Returns set of |matrix-pid|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
@@ -186,10 +187,10 @@ Many to Many
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])
    | **options:** ``[directed, driving_side]``
 
-   | Returns set of |matrix-pid|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
-:Example: From point :math:`15` and vertex :math:`6` to point :math:`3` and
+:Example: From point :math:`1` and vertex :math:`6` to point :math:`3` and
           vertex :math:`1`
 
 .. literalinclude:: withPointsCost.queries
@@ -208,7 +209,7 @@ Combinations
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, driving_side]``
 
-   | Returns set of |matrix-pid|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: Two combinations
@@ -237,27 +238,9 @@ Optional parameters
 With points optional parameters
 ...............................................................................
 
-.. withpoints_short_optionals_start
-
-.. list-table::
-   :width: 35
-   :widths: auto
-   :header-rows: 1
-
-   * - Parameter
-     - Type
-     - Default
-     - Description
-   * - ``driving_side``
-     - ``CHAR``
-     - ``b``
-     - Value in [``r``, ``l``, ``b``] indicating if the driving side is:
-
-       - ``r`` for right driving side.
-       - ``l`` for left driving side.
-       - ``b`` for both.
-
-.. withpoints_short_optionals_end
+.. include:: withPoints-family.rst
+    :start-after: withPoints_optionals_start
+    :end-before: * - ``details
 
 Inner Queries
 -------------------------------------------------------------------------------

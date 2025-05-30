@@ -23,27 +23,28 @@ temporary vertices.
 
 .. rubric:: Availability
 
-* Version 4.0.0
+.. rubric:: Version 4.0.0
 
-  * Function promoted to official.
+* Output columns standardized to |short-generic-result|
+* Function promoted to official.
 
-* Version 3.2.0
+.. rubric:: Version 3.2.0
 
-  * New proposed signature:
+* New proposed signature:
 
-    * pgr_withPoints(Combinations)
+ * pgr_withPoints(Combinations)
 
-* Version 2.2.0
+.. rubric:: Version 2.2.0
 
-  * New proposed function.
+* New proposed function.
 
 Description
 -------------------------------------------------------------------------------
 
 Modify the graph to include points defined by points_sql.
-Using Dijkstra algorithm, find the shortest path
+Using Dijkstra algorithm, find the shortest path.
 
-**The main characteristics are:**
+The main characteristics are:
 
 - Process is done only on edges with positive costs.
 - Vertices of the graph are:
@@ -54,19 +55,32 @@ Using Dijkstra algorithm, find the shortest path
 - Values are returned when there is a path.
 
   - When the starting vertex and ending vertex are the same, there is no path.
-    - The agg_cost the non included values (v, v) is 0
+
+    - The `agg_cost` in the non included values `(v, v)` is `0`
 
   - When the starting vertex and ending vertex are the different and there is no
     path:
-    - The agg_cost the non included values (u, v) is ∞
 
-- For optimization purposes, any duplicated value in the start_vids or end_vids
-  are ignored.
+    - The `agg_cost` in the non included values `(u, v)` is :math:`\infty`
+
+  - If the values returned are stored in a table, the unique index would be the
+    pair: `(start_vid, end_vid)`.
+
+  - For **undirected** graphs, the results are **symmetric**.
+
+    - The sequence of nodes from `u` to `v` is the reverse sequence of nodes
+      from `v` to `u`
+    - The `agg_cost` of `(u, v)` is the same as for `(v, u)`.
+
+- For optimization purposes, any duplicated value in the input arrays of `start vids` or
+  `end vids` or are ignored.
+
 - The returned values are ordered:
-  - start_vid ascending
-  - end_vid ascending
 
-* Running time: :math:`O(|start\_vids|\times(V \log V + E))`
+  - `start_vid` ascending
+  - `end_vid` ascending
+
+- Running time: :math:`O(|start\_vids|\times(V \log V + E))`
 
 |Boost| Boost Graph Inside
 
@@ -85,7 +99,7 @@ Signatures
    | pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, driving_side, details])``
 
-   | Returns set of |old-pid-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 .. index::
@@ -98,9 +112,9 @@ One to One
    :class: signatures
 
    | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, [**options**])
-   | **options:** [directed, driving_side, details])
+   | **options:** ``[directed, driving_side, details]``
 
-   | Returns set of |result-1-1|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From point :math:`1` to vertex :math:`10` with details
@@ -119,9 +133,9 @@ One to Many
    :class: signatures
 
    | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])
-   | **options:** [directed, driving_side, details])
+   | **options:** ``[directed, driving_side, details]``
 
-   | Returns set of |pid-1-m|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
@@ -141,9 +155,9 @@ Many to One
    :class: signatures
 
    | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])
-   | **options:** [directed, driving_side, details])
+   | **options:** ``[directed, driving_side, details]``
 
-   | Returns set of |pid-m-1|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
@@ -162,9 +176,9 @@ Many to Many
    :class: signatures
 
    | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])
-   | **options:** [directed, driving_side, details])
+   | **options:** ``[directed, driving_side, details]``
 
-   | Returns set of |pid-m-m|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3` and
@@ -184,9 +198,9 @@ Combinations
    :class: signatures
 
    | pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])
-   | **options:** [directed, driving_side, details])
+   | **options:** ``[directed, driving_side, details]``
 
-   | Returns set of |pid-m-m|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: Two combinations
@@ -247,8 +261,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_withpoint_path_short_start
-    :end-before: return_withpoint_path_short_end
+    :start-after: return_path_complete_start
+    :end-before: return_path_complete_end
 
 Additional Examples
 -------------------------------------------------------------------------------
