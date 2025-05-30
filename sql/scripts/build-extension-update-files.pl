@@ -278,6 +278,11 @@ sub generate_upgrade_script {
                 push @commands, drop_special_case_function("pgr_withpointscost(text,text,text,boolean,character)");
             }
 
+            # Row type defined by OUT parameters is different.
+            push @commands, drop_special_case_function("pgr_bddijkstra(text,bigint,bigint,boolean)");
+            push @commands, drop_special_case_function("pgr_bddijkstra(text,anyarray,bigint,boolean)");
+            push @commands, drop_special_case_function("pgr_bddijkstra(text,bigint,anyarray,boolean)");
+
             # Out parameters changed names on v4.0.0
             push @commands, drop_special_case_function("pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)");
             push @commands, drop_special_case_function("pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)");
