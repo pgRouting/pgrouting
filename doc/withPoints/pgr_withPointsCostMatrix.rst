@@ -89,9 +89,9 @@ Optional parameters
 With points optional parameters
 ...............................................................................
 
-.. include:: pgr_withPointsCost.rst
-    :start-after: withpoints_short_optionals_start
-    :end-before: withpoints_short_optionals_end
+.. include:: withPoints-family.rst
+    :start-after: withPoints_optionals_start
+    :end-before: * - ``details
 
 Inner Queries
 -------------------------------------------------------------------------------

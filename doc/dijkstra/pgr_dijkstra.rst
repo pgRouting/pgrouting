@@ -90,12 +90,6 @@ Signatures
    | Returns set of |short-generic-result|
    | OR EMPTY SET
 
-
-.. Warning:: Breaking change on 3.5.0
-
-   Read the :doc:`migration` about how to migrate from the old result columns to
-   the new result columns.
-
 .. index::
     single: dijkstra ; One to One
 
@@ -241,8 +235,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_short_start
-    :end-before: return_path_short_end
+    :start-after: return_path_complete_start
+    :end-before: return_path_complete_end
 
 Additional Examples
 -------------------------------------------------------------------------------
