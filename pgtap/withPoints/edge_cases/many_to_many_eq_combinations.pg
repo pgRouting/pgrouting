@@ -1,4 +1,3 @@
-
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
@@ -24,7 +23,7 @@ SELECT plan(2);
 
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-CREATE OR REPLACE FUNCTION test_function(sql_TestFunction TEXT, cant INTEGER default 18)
+CREATE OR REPLACE FUNCTION test_function(sql_TestFunction TEXT, INTEGER default 18)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -37,18 +36,21 @@ BEGIN
     RETURN;
   END IF;
 
+  IF min_version('4.0.0') THEN
+    sql_TestFunction = replace(sql_TestFunction, 'pid', 'vid');
+  END IF;
 
     sql_Combinations := '';
     sql_Many := '';
-    FOR i IN 1.. cant LOOP
+    FOR i IN 1.. $2 LOOP
         IF (i > 1) THEN
             sql_Many := sql_Many ||', ';
         END IF;
         sql_Many := sql_Many || i ;
     END LOOP;
 
-    FOR i IN 1.. cant LOOP
-        FOR j IN 1..cant LOOP
+    FOR i IN 1.. $2 LOOP
+        FOR j IN 1.. $2 LOOP
             IF NOT (i =  j) THEN
                 sql_Combinations := sql_Combinations || '(' || i || ',' || j || '),' ;
             END IF;
@@ -81,4 +83,3 @@ select * from test_function('SELECT start_pid, end_pid, agg_cost FROM pgr_withPo
 -- Finish the tests and clean up.
 SELECT * FROM finish();
 ROLLBACK;
-
