@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-29 20:04+0000\n"
+"POT-Creation-Date: 2025-05-30 20:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3921,10 +3921,23 @@ msgstr ""
 msgid "pgr_trsp_withPoints"
 msgstr ""
 
-msgid "pgr_withPoints"
+msgid ""
+"`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ "
+"pgr_withPoints"
 msgstr ""
 
-msgid "pgr_withPointsCost"
+msgid "Output columns standardized to |short-generic-result|"
+msgstr ""
+
+msgid "Function promoted to official."
+msgstr ""
+
+msgid ""
+"`#TBD <https://github.com/pgRouting/pgrouting/issues/2798>`__ "
+"pgr_withPointsCost"
+msgstr ""
+
+msgid "Output columns standardized to |matrix-result|"
 msgstr ""
 
 msgid "pgr_withPointsCostMatrix"
@@ -3979,15 +3992,6 @@ msgid "pgr_maxFlow(Combinations)"
 msgstr ""
 
 msgid "pgr_pushRelabel(Combinations)"
-msgstr ""
-
-msgid "code enhancements:"
-msgstr ""
-
-msgid "Removal of unused C/C++ code"
-msgstr ""
-
-msgid "Refactor the Script to build the update PostgreSQL file."
 msgstr ""
 
 msgid "Removal of SQL deprecated signatures"
@@ -4114,7 +4118,7 @@ msgid ""
 "pgr_nodeNetwork"
 msgstr ""
 
-msgid "Removal of SQL deprecated internal functions"
+msgid "rubric:: Removal of SQL deprecated internal functions"
 msgstr ""
 
 msgid ""
@@ -4273,6 +4277,24 @@ msgid "_pgr_startpoint(geometry)"
 msgstr ""
 
 msgid "_pgr_versionless(text,text)"
+msgstr ""
+
+msgid "Code enhancements"
+msgstr ""
+
+msgid "Removal of unused C/C++ code"
+msgstr ""
+
+msgid "Refactor the Script to build the update PostgreSQL file."
+msgstr ""
+
+msgid "One driver for:"
+msgstr ""
+
+msgid "allpairs: johnson and Flowy-Warshall"
+msgstr ""
+
+msgid "Shortest path: Dijkstra and withPoints using Dijkstra"
 msgstr ""
 
 msgid "Deprecation of internal C/C++ functions"
@@ -4888,7 +4910,7 @@ msgstr ""
 msgid "|ksp-result|"
 msgstr ""
 
-msgid "|nksp-result|"
+msgid "|generic-result|"
 msgstr ""
 
 msgid "``pgr_KSP`` (One to One)"
@@ -4901,6 +4923,11 @@ msgid "the columns ``start_vid`` and ``end_vid`` do not exist."
 msgstr ""
 
 msgid "``pgr_KSP`` (One to One) does not have ``start_vid`` and ``end_vid``."
+msgstr ""
+
+msgid ""
+"If needed filter out the added columns, for example, to return the "
+"original columns."
 msgstr ""
 
 msgid ""
@@ -5020,6 +5047,184 @@ msgstr ""
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD.html"
 "#multiple-vertex>`__ example."
+msgstr ""
+
+msgid "Migration of ``pgr_withPoints``"
+msgstr ""
+
+msgid ""
+"Starting from `v4.0.0 "
+"<https://docs.pgrouting.org/4.0/en/migration.html>`__ "
+":doc:`pgr_withPoints` result columns are being standardized."
+msgstr ""
+
+msgid "|old-pid-result|"
+msgstr ""
+
+msgid "|short-generic-result|"
+msgstr ""
+
+msgid "``pgr_withPoints`` (all signatures)"
+msgstr ""
+
+msgid "Output columns were |old-pid-result|"
+msgstr ""
+
+msgid "Output columns are |short-generic-result|"
+msgstr ""
+
+msgid "To get the old version column names, depending on the signature:"
+msgstr ""
+
+msgid "Filter out the columns: ``start_vid`` and/or ``end_vid``"
+msgstr ""
+
+msgid "Rename the columns:"
+msgstr ""
+
+msgid "``start_vid`` to ``start_pid``"
+msgstr ""
+
+msgid "``end_vid`` to ``end_pid``"
+msgstr ""
+
+msgid "``pgr_withPoints`` (`One to One`)"
+msgstr ""
+
+msgid ""
+"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#one-"
+"to-one>`__ example."
+msgstr ""
+
+msgid "|result-1-1|"
+msgstr ""
+
+msgid "Get the old signature columns by filtering out the extra columns."
+msgstr ""
+
+msgid "``pgr_withPoints`` (`One to Many`)"
+msgstr ""
+
+msgid ""
+"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#one-"
+"to-many>`__ example."
+msgstr ""
+
+msgid "|pid-1-m|"
+msgstr ""
+
+msgid ""
+"Get the old signature columns by filtering out the extra column and "
+"renaming ``end_vid`` to ``end_pid``."
+msgstr ""
+
+msgid "``pgr_withPoints`` (`Many to One`)"
+msgstr ""
+
+msgid ""
+"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#many-"
+"to-one>`__ example."
+msgstr ""
+
+msgid "|pid-m-1|"
+msgstr ""
+
+msgid ""
+"Get the old signature columns by filtering out the extra column and "
+"renaming ``start_vid`` to ``start_pid``."
+msgstr ""
+
+msgid "``pgr_withPoints`` (`Many to Many`)"
+msgstr ""
+
+msgid ""
+"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#many-"
+"to-many>`__ example."
+msgstr ""
+
+msgid "|pid-m-m|"
+msgstr ""
+
+msgid ""
+"Get the old signature columns by renaming ``start_vid`` to ``start_pid`` "
+"and ``end_vid`` to ``end_pid``."
+msgstr ""
+
+msgid "``pgr_withPoints`` (`Combinations`)"
+msgstr ""
+
+msgid ""
+"Using `this "
+"<https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#combinations>`__ "
+"example."
+msgstr ""
+
+msgid "Migration of ``pgr_withPointsCost``"
+msgstr ""
+
+msgid ""
+"Starting from `v4.0.0 "
+"<https://docs.pgrouting.org/4.0/en/migration.html>`__ "
+":doc:`pgr_withPointsCost` result columns are being standardized."
+msgstr ""
+
+msgid "|matrix-pid|"
+msgstr ""
+
+msgid "|matrix-result|"
+msgstr ""
+
+msgid "``pgr_withPointsCost`` (all signatures)"
+msgstr ""
+
+msgid "Output columns were |matrix-pid|"
+msgstr ""
+
+msgid "Output columns are |matrix-result|"
+msgstr ""
+
+msgid "To get the old version column names:"
+msgstr ""
+
+msgid "``pgr_withPointsCost`` (`One to One`)"
+msgstr ""
+
+msgid ""
+"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html"
+"#one-to-one>`__ example."
+msgstr ""
+
+msgid "``pgr_withPointsCost`` (`One to Many`)"
+msgstr ""
+
+msgid ""
+"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html"
+"#one-to-many>`__ example."
+msgstr ""
+
+msgid "``pgr_withPointsCost`` (`Many to One`)"
+msgstr ""
+
+msgid ""
+"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html"
+"#many-to-one>`__ example."
+msgstr ""
+
+msgid "``pgr_withPointsCost`` (`Many to Many`)"
+msgstr ""
+
+msgid ""
+"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html"
+"#many-to-many>`__ example."
+msgstr ""
+
+msgid "``pgr_withPointsCost`` (`Combinations`)"
+msgstr ""
+
+msgid ""
+"Using `this "
+"<https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#combinations>`__"
+" example."
 msgstr ""
 
 msgid "Migration of ``pgr_withPointsDD``"
@@ -5145,10 +5350,7 @@ msgstr ""
 msgid "``pgr_withPointsKSP`` (`One to One`)"
 msgstr ""
 
-msgid "Output columns were |old-pid-result|"
-msgstr ""
-
-msgid "New output columns are |nksp-result|"
+msgid "New output columns are |generic-result|"
 msgstr ""
 
 msgid ""
@@ -6590,9 +6792,7 @@ msgstr ""
 msgid "Used in functions that return one path solution"
 msgstr ""
 
-msgid ""
-"Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, "
-"cost, agg_cost)``"
+msgid "Returns set of |old-generic-result|"
 msgstr ""
 
 msgid "``path_seq``"
@@ -6629,73 +6829,13 @@ msgstr ""
 msgid "Used in functions the following:"
 msgstr ""
 
-msgid ""
-"Returns set of ``(seq, path_seq [, start_pid] [, end_pid], node, edge, "
-"cost, agg_cost)``"
-msgstr ""
-
-msgid "Relative position in the path."
-msgstr ""
-
-msgid "**1** For the first row of the path."
-msgstr ""
-
-msgid "``start_pid``"
-msgstr ""
-
-msgid "Identifier of a starting vertex/point of the path."
-msgstr ""
-
-msgid "When positive is the identifier of the starting vertex."
-msgstr ""
-
-msgid "When negative is the identifier of the starting point."
-msgstr ""
-
-msgid "Returned on `Many to One`_ and `Many to Many`_"
-msgstr ""
-
-msgid "``end_pid``"
-msgstr ""
-
-msgid "Identifier of an ending vertex/point of the path."
-msgstr ""
-
-msgid "When positive is the identifier of the ending vertex."
-msgstr ""
-
-msgid "When negative is the identifier of the ending point."
-msgstr ""
-
-msgid "Returned on `One to Many`_ and `Many to Many`_"
-msgstr ""
-
-msgid "Identifier of the node in the path from ``start_pid`` to ``end_pid``."
-msgstr ""
-
-msgid "When positive is the identifier of the a vertex."
-msgstr ""
-
-msgid "When negative is the identifier of the a point."
-msgstr ""
-
-msgid ""
-"Identifier of the edge used to go from ``node`` to the next node in the "
-"path sequence."
-msgstr ""
-
-msgid "**-1** for the last row of the path."
-msgstr ""
-
-msgid "**0** For the first row of the path."
-msgstr ""
-
 msgid ":doc:`pgr_dijkstraNear`"
 msgstr ""
 
-msgid ""
-"Returns ``(seq, path_seq, start_vid, end_vid, node, edge, cost, "
-"agg_cost)``"
+msgid ":doc:`pgr_binaryBreadthFirstSearch`"
+msgstr ""
+
+msgid "Returns |short-generic-result|"
 msgstr ""
 
 msgid "Identifier of the starting vertex of the current path."
@@ -6713,9 +6853,7 @@ msgstr ""
 msgid "The columns depend on the function call."
 msgstr ""
 
-msgid ""
-"Set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, edge, "
-"cost, agg_cost)``"
+msgid "Set of |result-disjoint|"
 msgstr ""
 
 msgid "``path_id``"
@@ -6733,9 +6871,7 @@ msgstr ""
 msgid "Regardless of the call, al the columns are returned."
 msgstr ""
 
-msgid ""
-"Returns set of ``(seq, path_id, path_seq, start_vid, end_vid, node, edge,"
-" cost, agg_cost)``"
+msgid "Returns set of |generic-result|"
 msgstr ""
 
 msgid "Result columns for cost functions"
@@ -7953,9 +8089,6 @@ msgstr ""
 msgid "New proposed signature:"
 msgstr ""
 
-msgid "Function promoted to official."
-msgstr ""
-
 msgid "Version 2.4.0"
 msgstr ""
 
@@ -8325,9 +8458,6 @@ msgid "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``]
 msgstr ""
 
 msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr ""
-
-msgid "Returns set of |old-generic-result|"
 msgstr ""
 
 msgid "Returns set of |result-1-1|"
@@ -10625,14 +10755,6 @@ msgstr ""
 msgid "pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
-msgid "Breaking change on 3.5.0"
-msgstr ""
-
-msgid ""
-"Read the :doc:`migration` about how to migrate from the old result "
-"columns to the new result columns."
-msgstr ""
-
 #, python-brace-format
 msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed**"
 msgstr ""
@@ -11227,6 +11349,11 @@ msgid "When ``true`` departing from a visited vertex will not try to avoid"
 msgstr ""
 
 msgid "Identifier of a path. Has value **1** for the first path."
+msgstr ""
+
+msgid ""
+"Identifier of the edge used to go from ``node`` to the next node in the "
+"path sequence."
 msgstr ""
 
 msgid "-1 for the last node of the path."
@@ -12177,9 +12304,6 @@ msgid ":math:`|c|` is the number of circuits in the graph."
 msgstr ""
 
 msgid "pgr_hawickCircuits(`Edges SQL`_)"
-msgstr ""
-
-msgid "Returns set of |generic-result|"
 msgstr ""
 
 msgid "Circuits present in the pgRouting :doc:`sampledata`"
@@ -14475,20 +14599,39 @@ msgstr ""
 msgid "pgr_withPoints(Combinations)"
 msgstr ""
 
+msgid ""
+"Modify the graph to include points defined by points_sql. Using Dijkstra "
+"algorithm, find the shortest path."
+msgstr ""
+
 msgid "**positive** when it belongs to the edges_sql"
 msgstr ""
 
 msgid "**negative** when it belongs to the points_sql"
 msgstr ""
 
-msgid ""
-"When the starting vertex and ending vertex are the same, there is no "
-"path. - The agg_cost the non included values (v, v) is 0"
+msgid "The `agg_cost` in the non included values `(v, v)` is `0`"
+msgstr ""
+
+msgid "The `agg_cost` in the non included values `(u, v)` is :math:`\\infty`"
 msgstr ""
 
 msgid ""
-"When the starting vertex and ending vertex are the different and there is"
-" no path: - The agg_cost the non included values (u, v) is ∞"
+"If the values returned are stored in a table, the unique index would be "
+"the pair: `(start_vid, end_vid)`."
+msgstr ""
+
+msgid "For **undirected** graphs, the results are **symmetric**."
+msgstr ""
+
+msgid ""
+"The sequence of nodes from `u` to `v` is the reverse sequence of nodes "
+"from `v` to `u`"
+msgstr ""
+
+msgid ""
+"For optimization purposes, any duplicated value in the input arrays of "
+"`start vids` or `end vids` or are ignored."
 msgstr ""
 
 msgid ""
@@ -14519,16 +14662,7 @@ msgstr ""
 msgid "**options:** ``[directed, driving_side, details])``"
 msgstr ""
 
-msgid "Returns set of |old-pid-result|"
-msgstr ""
-
-msgid "**options:** [directed, driving_side, details])"
-msgstr ""
-
 msgid "From point :math:`1` to vertex :math:`10` with details"
-msgstr ""
-
-msgid "Returns set of |pid-1-m|"
 msgstr ""
 
 msgid ""
@@ -14536,13 +14670,7 @@ msgid ""
 "undirected graph"
 msgstr ""
 
-msgid "Returns set of |pid-m-1|"
-msgstr ""
-
 msgid "From point :math:`1` and vertex :math:`6` to point :math:`3`"
-msgstr ""
-
-msgid "Returns set of |pid-m-m|"
 msgstr ""
 
 msgid ""
@@ -14631,67 +14759,17 @@ msgid ""
 " vertices in the modified graph."
 msgstr ""
 
-msgid ""
-"The returned values are in the form of a set of `(start_vid, end_vid, "
-"agg_cost)`."
-msgstr ""
-
-msgid "The `agg_cost` in the non included values `(v, v)` is `0`"
-msgstr ""
-
-msgid "The `agg_cost` in the non included values `(u, v)` is :math:`\\infty`"
+msgid "The returned values are in the form of a set of |matrix-result|."
 msgstr ""
 
 msgid ""
-"If the values returned are stored in a table, the unique index would be "
-"the pair: `(start_vid, end_vid)`."
-msgstr ""
-
-msgid "For **undirected** graphs, the results are **symmetric**."
+"For optimization purposes, any duplicated value in the input arrays of "
+"**start vids** or **end vids** or are ignored."
 msgstr ""
 
 msgid ""
-"For optimization purposes, any duplicated value in the `start_vids` or "
-"`end_vids` is ignored."
-msgstr ""
-
-msgid ""
-"pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end "
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end "
 "vid**, [**options**])"
-msgstr ""
-
-msgid ""
-"pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end "
-"vids**, [**options**])"
-msgstr ""
-
-msgid ""
-"pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end "
-"vid**, [**options**])"
-msgstr ""
-
-msgid ""
-"pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end "
-"vids**, [**options**])"
-msgstr ""
-
-msgid ""
-"pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, `Combinations SQL`_, "
-"[**options**])"
-msgstr ""
-
-msgid "**options:** ``[directed, driving_side]``"
-msgstr ""
-
-msgid "Returns set of |matrix-pid|"
-msgstr ""
-
-msgid ""
-"There is no **details** flag, unlike the other members of the withPoints "
-"family of functions."
-msgstr ""
-
-msgid "From point :math:`1` to vertex :math:`10` with defaults"
 msgstr ""
 
 msgid ""
@@ -14710,13 +14788,22 @@ msgid ""
 msgstr ""
 
 msgid ""
-"From point :math:`15` and vertex :math:`6` to point :math:`3` and vertex "
-":math:`1`"
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
+"[**options**])"
+msgstr ""
+
+msgid "**options:** ``[directed, driving_side]``"
 msgstr ""
 
 msgid ""
-"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
-"[**options**])"
+"There is no **details** flag, unlike the other members of the withPoints "
+"family of functions."
+msgstr ""
+
+msgid "From point :math:`1` to vertex :math:`10` with default options."
+msgstr ""
+
+msgid "``start_pid``"
 msgstr ""
 
 msgid "Identifier of the starting vertex or point."
@@ -14726,6 +14813,9 @@ msgid "When positive: is a vertex’s identifier."
 msgstr ""
 
 msgid "When negative: is a point’s identifier."
+msgstr ""
+
+msgid "``end_pid``"
 msgstr ""
 
 msgid "Identifier of the ending vertex or point."
