@@ -49,7 +49,7 @@ CREATE FUNCTION pgr_dijkstraNear(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, false, true, cap, false);
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, false, true, cap, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -76,7 +76,7 @@ CREATE FUNCTION pgr_dijkstraNear(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, false, false, cap, false);
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, false, false, cap, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -104,7 +104,7 @@ CREATE FUNCTION pgr_dijkstraNear(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, false, true, cap, global);
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, false, true, cap, global);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -131,7 +131,7 @@ CREATE FUNCTION pgr_dijkstraNear(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), directed, false, cap, global);
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), _pgr_get_statement($2), directed, false, cap, global);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
