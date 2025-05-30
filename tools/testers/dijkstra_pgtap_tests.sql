@@ -148,7 +148,8 @@ BEGIN
   RETURN QUERY SELECT function_returns(fn, ARRAY['text','anyarray','anyarray','boolean'],'setof record');
 
   -- pgr_dijkstra standarized output on 3.5.0
-  IF (min_version('3.5.0') AND fn = 'pgr_dijkstra') THEN
+  IF ((min_version('3.5.0') AND fn = 'pgr_dijkstra') OR
+    (min_version('4.0.0') AND fn = 'pgr_bddijkstra')) THEN
     RETURN QUERY SELECT has_function(fn, ARRAY['text','text','boolean']);
     RETURN QUERY SELECT function_returns(fn, ARRAY['text','text','boolean'],'setof record');
     RETURN QUERY SELECT function_args_eq(fn,
