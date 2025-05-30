@@ -37,7 +37,7 @@ FROM pgr_withPoints(
   ARRAY[5, -1], ARRAY[-2, -3, -6, 10, 11],
   driving_side => 'r', details => true);
 /* -- q7 */
-SELECT (start_pid || ' -> ' || end_pid ||' at ' || path_seq || 'th step')::TEXT AS path_at,
+SELECT (start_vid || ' -> ' || end_vid ||' at ' || path_seq || 'th step')::TEXT AS path_at,
   CASE WHEN edge = -1 THEN ' visits'
       ELSE ' passes in front of'
   END as status,
@@ -52,7 +52,7 @@ FROM pgr_withPoints(
   driving_side => 'r', details => true)
 WHERE node IN (-6, 11);
 /* -- q8 */
-SELECT (start_pid || ' => ' || end_pid ||' at ' || path_seq || 'th step')::TEXT AS path_at,
+SELECT (start_vid || ' => ' || end_vid ||' at ' || path_seq || 'th step')::TEXT AS path_at,
   CASE WHEN edge = -1 THEN ' visits'
       ELSE ' passes in front of'
   END as status,
