@@ -4,7 +4,7 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-mail: vicky_vergara@hotmail.com
+mail: vicky at erosion.dev
 
 ------
 
@@ -24,11 +24,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
------------------------------
--- dijkstraCostMatrix
------------------------------
-
-
 --v3.0
 CREATE FUNCTION pgr_dijkstraCostMatrix(
     TEXT,     -- edges_sql (required)
@@ -42,13 +37,11 @@ CREATE FUNCTION pgr_dijkstraCostMatrix(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, $2, $3, true, true, 0, false) a;
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), $2::BIGINT[], '{}'::BIGINT[], $3, true, true, 0, false) a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
-
--- COMMENT
 
 COMMENT ON FUNCTION pgr_dijkstraCostMatrix(TEXT, ANYARRAY, BOOLEAN)
 IS 'pgr_dijkstraCostMatrix
