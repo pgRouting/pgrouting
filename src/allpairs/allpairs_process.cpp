@@ -1,9 +1,18 @@
 /*PGR-GNU*****************************************************************
-File: process_allpairs.cpp
+File: allpairs_process.cpp
 
-Function's developer:
+Copyright (c) 2025 pgRouting developers
+Mail: project@pgrouting.org
+
+Design of one process & driver file by
 Copyright (c) 2025 Celia Virginia Vergara Castillo
 Mail: vicky_vergara at erosion.dev
+
+Copying this file (or a derivative) within pgRouting code add the following:
+
+Generated with Template by:
+Copyright (c) 2025 pgRouting developers
+Mail: project@pgrouting.org
 
 ------
 
@@ -41,7 +50,7 @@ extern "C" {
  which = 0 -> johnson
  which = 1 -> floydWarshall
 
- This is c++ code, linked as C code, because process_allpairs is called from C code
+ This is c++ code, linked as C code, because pgr_process_allpairs is called from C code
  */
 void pgr_process_allpairs(
         const char* edges_sql,
@@ -49,6 +58,7 @@ void pgr_process_allpairs(
         int which,
         IID_t_rt **result_tuples,
         size_t *result_count) {
+    pgassert(edges_sql);
     pgassert(!(*result_tuples));
     pgassert(*result_count == 0);
     pgr_SPI_connect();
@@ -68,7 +78,6 @@ void pgr_process_allpairs(
     } else {
         time_msg(std::string(" processing pgr_floydWarshall").c_str(), start_t, clock());
     }
-
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);

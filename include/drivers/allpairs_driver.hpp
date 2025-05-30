@@ -1,13 +1,18 @@
 /*PGR-GNU*****************************************************************
 File: allpairs_driver.hpp
 
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2025 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Design of one process & driver file by
+Copyright (c) 2025 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
+
+Copying this file (or a derivative) within pgRouting code add the following:
+
+Generated with Template by:
+Copyright (c) 2025 pgRouting developers
+Mail: project@pgrouting.org
 
 ------
 
