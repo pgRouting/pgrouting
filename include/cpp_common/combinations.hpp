@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <deque>
 #include <vector>
+#include <string>
 
 
 #include "c_types/ii_t_rt.h"
@@ -41,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/rule.hpp"
 
 
-typedef struct ArrayType ArrayType;
+using ArrayType = struct ArrayType;
 
 namespace pgrouting {
 
@@ -58,6 +59,8 @@ get_combinations(
 std::map<int64_t, std::set<int64_t>>
 get_combinations(const std::vector<II_t_rt>&);
 
+std::map<int64_t, std::set<int64_t>>
+get_combinations(const std::string&, ArrayType*, ArrayType*, bool, bool&);
 
 std::map<int64_t, std::set<int64_t>>
 get_combinations(const char*, ArrayType*, ArrayType*, bool);

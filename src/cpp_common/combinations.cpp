@@ -57,7 +57,7 @@ get_combinations(
             auto ptr = std::find(edgesList.begin(), edgesList.end(), r.precedences().front());
             if (ptr == edgesList.end()) continue;
             /*
-             * And edge on the begining of a rule list was found
+             * And edge on the beginning of a rule list was found
              * Checking if the complete rule applies
              */
 
@@ -123,6 +123,52 @@ get_combinations(
     /* queries are stored in vectors */
     auto combinations = combinations_sql?
         pgrouting::pgget::get_combinations(std::string(combinations_sql)) : std::vector<II_t_rt>();
+
+    /* data comes from a combinations */
+    for (const auto &row : combinations) {
+        result[row.d1.source].insert(row.d2.target);
+    }
+
+    /* data comes from many to many */
+    for (const auto &s : starts) {
+        result[s] = ends;
+    }
+    return result;
+}
+
+/** @brief gets all the departures and destinations
+ * @param[in] combinations_sql from the @b combinations signatures
+ * @param[in] startsArr PostgreSQL array with the departures
+ * @param[in] endsArr PostgreSQL array with the destinations
+ * @param[in] normal the graph is reversed so reverse starts & ends
+ * @returns[out] map: for each departure a set of destinations
+ *
+ * When: combinations_sql comes from a combinations signature
+ * When: startsArr && endsArr comes from a Cost signature
+ * When: startsArr && !endsArr comes from a CostMatrix signature
+ *
+ * The resulting std::map can be empty
+ */
+std::map<int64_t , std::set<int64_t>>
+get_combinations(
+        const std::string &combinations_sql,
+        ArrayType* startsArr, ArrayType* endsArr, bool normal, bool &is_matrix) {
+    using pgrouting::pgget::get_intSet;
+    using pgrouting::pgget::get_combinations;
+    std::map<int64_t, std::set<int64_t>> result;
+
+    auto starts = normal? get_intSet(startsArr) : get_intSet(endsArr);
+    auto ends = endsArr? (normal? get_intSet(endsArr) : get_intSet(startsArr)) : std::set<int64_t>();
+
+    /* TODO Read query storing like std::map<int64_t , std::set<int64_t>> */
+    /* queries are stored in vectors */
+    auto combinations = !combinations_sql.empty()? get_combinations(combinations_sql) : std::vector<II_t_rt>();
+
+    /* data comes from CostMatrix */
+    if (combinations.empty() && !starts.empty() && ends.empty()) {
+        is_matrix = true;
+        ends = starts;
+    }
 
     /* data comes from a combinations */
     for (const auto &row : combinations) {
