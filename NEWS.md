@@ -13,14 +13,23 @@ To see all issues & pull requests closed by this release see the [Git closed
 milestone for 4.0.0
 ](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22)
 
-**Functions promoted to official**
+Functions promoted to official
+...............................................................................
 
 * pgr_trsp
 * pgr_trspVia
 * pgr_trspVia_withPoints
 * pgr_trsp_withPoints
-* pgr_withPoints
-* pgr_withPointsCost
+* [#2905](https://github.com/pgRouting/pgrouting/issues/2905) pgr_withPoints
+
+  * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+  * Function promoted to official.
+
+* [#TBD](https://github.com/pgRouting/pgrouting/issues/2798) pgr_withPointsCost
+
+  * Output columns standardized to ``(start_vid, end_vid, agg_cost)``
+  * Function promoted to official.
+
 * pgr_withPointsCostMatrix
 * pgr_withPointsDD
 * pgr_withPointsKSP
@@ -42,12 +51,9 @@ milestone for 4.0.0
 * pgr_maxFlow(Combinations)
 * pgr_pushRelabel(Combinations)
 
-**code enhancements:**
 
-* Removal of unused C/C++ code
-* Refactor the Script to build the update PostgreSQL file.
-
-**Removal of SQL deprecated signatures**
+Removal of SQL deprecated signatures
+...............................................................................
 
 * [#2798](https://github.com/pgRouting/pgrouting/issues/2798):
   pgr_contraction
@@ -86,7 +92,8 @@ milestone for 4.0.0
   * pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
   * pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
 
-**Removal of SQL deprecated functions**
+Removal of SQL deprecated functions
+...............................................................................
 
 * [#2681](https://github.com/pgRouting/pgrouting/issues/2681):
   pgr_trspviaedges
@@ -105,7 +112,8 @@ milestone for 4.0.0
 * [#2886](https://github.com/pgRouting/pgrouting/issues/2886):
   pgr_nodeNetwork
 
-**Removal of SQL deprecated internal functions**
+rubric:: Removal of SQL deprecated internal functions
+...............................................................................
 
 Related issues: [#2897](https://github.com/pgRouting/pgrouting/issues/2897)
 
@@ -161,6 +169,15 @@ Related issues: [#2897](https://github.com/pgRouting/pgrouting/issues/2897)
   - _pgr_startpoint(geometry)
   - _pgr_versionless(text,text)
 
+Code enhancements
+...............................................................................
+
+* Removal of unused C/C++ code
+* Refactor the Script to build the update PostgreSQL file.
+* One driver for:
+
+  * allpairs: johnson and Flowy-Warshall
+  * Shortest path: Dijkstra and withPoints using Dijkstra
 
 **Deprecation of internal C/C++ functions**
 
