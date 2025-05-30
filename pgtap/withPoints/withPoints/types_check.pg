@@ -1,4 +1,3 @@
-
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
@@ -48,6 +47,23 @@ ELSE
 END;
 
 SELECT CASE
+WHEN min_version('4.0.0') THEN
+  collect_tap(
+    function_args_eq('pgr_withpoints',
+      $$VALUES
+      ('{"","","",   directed,driving_side,details,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost}'::TEXT[]),
+      ('{"","","","",directed,driving_side,details,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost}')
+      $$),
+
+    function_types_eq('pgr_withpoints',
+      $$VALUES
+      ('{text,text,anyarray,int8,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,text,int8,int8,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
+      ('{text,text,int8,anyarray,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
+      ('{text,text,anyarray,anyarray,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
+      ('{text,text,text,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}')
+      $$)
+  )
 WHEN min_version('3.2.0') THEN
   collect_tap(
 
