@@ -1537,8 +1537,7 @@ Result columns for a path
 
 .. return_path_short_start
 
-Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost,
-agg_cost)``
+Returns set of |old-generic-result|
 
 .. list-table::
    :width: 81
@@ -1588,78 +1587,17 @@ agg_cost)``
 
 .. rubric:: Used in functions the following:
 
+* :doc:`pgr_dijkstra`
+* :doc:`pgr_dijkstraNear`
+* :doc:`pgr_binaryBreadthFirstSearch`
+* :doc:`pgr_trsp`
+* :doc:`pgr_trsp_withPoints`
 * :doc:`pgr_withPoints`
 
 
-.. return_withpoint_path_short_start
-
-Returns set of ``(seq, path_seq [, start_pid] [, end_pid], node, edge, cost,
-agg_cost)``
-
-.. list-table::
-   :width: 81
-   :widths: 12 14 60
-   :header-rows: 1
-
-   * - Column
-     - Type
-     - Description
-   * - ``seq``
-     - ``INTEGER``
-     - Sequential value starting from **1**.
-   * - ``path_seq``
-     - ``INTEGER``
-     - Relative position in the path.
-
-       * **1** For the first row of the path.
-   * - ``start_pid``
-     - ``BIGINT``
-     - Identifier of a starting vertex/point of the path.
-
-       * When positive is the identifier of the starting vertex.
-       * When negative is the identifier of the starting point.
-       * Returned on `Many to One`_ and `Many to Many`_
-   * - ``end_pid``
-     - ``BIGINT``
-     - Identifier of an ending vertex/point of the path.
-
-       * When positive is the identifier of the ending vertex.
-       * When negative is the identifier of the ending point.
-       * Returned on `One to Many`_ and `Many to Many`_
-   * - ``node``
-     - ``BIGINT``
-     - Identifier of the node in the path from ``start_pid`` to ``end_pid``.
-
-       * When positive is the identifier of the a vertex.
-       * When negative is the identifier of the a point.
-   * - ``edge``
-     - ``BIGINT``
-     - Identifier of the edge used to go from ``node`` to the next node in the
-       path sequence.
-
-       * **-1** for the last row of the path.
-   * - ``cost``
-     - ``FLOAT``
-     - Cost to traverse from ``node`` using ``edge`` to the next node in the
-       path sequence.
-
-       * **0** For the first row of the path.
-   * - ``agg_cost``
-     - ``FLOAT``
-     - Aggregate cost from ``start_vid`` to ``node``.
-
-       * **0** For the first row of the path.
-
-.. return_withpoint_path_short_end
-
-
-.. rubric:: Used in functions the following:
-
-* :doc:`pgr_dijkstraNear`
-
 .. return_path_complete_start
 
-Returns ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+Returns |short-generic-result|
 
 .. list-table::
    :width: 81
@@ -1709,8 +1647,7 @@ The columns depend on the function call.
 
 .. return_path_start
 
-Set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, edge, cost,
-agg_cost)``
+Set of |result-disjoint|
 
 .. list-table::
    :width: 81
@@ -1775,8 +1712,7 @@ Regardless of the call, al the columns are returned.
 
 .. return_path_all_columns_start
 
-Returns set of ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost,
-agg_cost)``
+Returns set of |generic-result|
 
 .. list-table::
    :width: 81
