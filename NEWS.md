@@ -25,7 +25,7 @@ Functions promoted to official
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
   * Function promoted to official.
 
-* [#TBD](https://github.com/pgRouting/pgrouting/issues/2798) pgr_withPointsCost
+* [#2905](https://github.com/pgRouting/pgrouting/issues/2905) pgr_withPointsCost
 
   * Output columns standardized to ``(start_vid, end_vid, agg_cost)``
   * Function promoted to official.
@@ -50,6 +50,14 @@ Functions promoted to official
 * pgr_edmondsKarp(Combinations)
 * pgr_maxFlow(Combinations)
 * pgr_pushRelabel(Combinations)
+
+SQL signatures modification on functions
+...............................................................................
+
+* [#2906](https://github.com/pgRouting/pgrouting/issues/2906) pgr_bdDijkstra
+
+  * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+  * Combinations signature promoted to official.
 
 
 Removal of SQL deprecated signatures
