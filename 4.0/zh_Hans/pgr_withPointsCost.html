@@ -234,54 +234,52 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code><a class="headerlink" href="#pgr-withpointscost" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code> - 计算最短路径，并只返回所给点组合的最短路径的总成本。</p>
 <p class="rubric">可用性</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>Version 4.0.0</p>
-<ul>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>函数正式发布。</p></li>
 </ul>
-</li>
-<li><p>版本3.2.0</p>
-<ul>
-<li><p>新提议的签名：</p>
-<ul>
+<p class="rubric">版本3.2.0</p>
+<ul class="simple">
+<li><p>新提议的签名：</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
 <li><p>pgr_withPointsCost（组合）</p></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>版本 2.2.0</p>
-<ul>
+</div></blockquote>
+<p class="rubric">版本 2.2.0</p>
+<ul class="simple">
 <li><p>新提议的函数。</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>修改图形以包含由 points_sql 定义的点。使用 Dijkstra 算法，只返回找到的最短路径的总成本。</p>
-<dl class="simple">
-<dt>主要特点是：</dt><dd><ul class="simple">
+<p>主要特点是：</p>
+<ul class="simple">
+<li><p>仅在具有正成本的边进行处理。</p></li>
 <li><p>它不返回路径。</p></li>
-<li><p>返回修改图中顶点对组合的最短路径成本之和。</p></li>
+<li><p>返回修改图中顶点对组合的最短路径成本之和。</p>
+<ul>
+<li><p>The returned values are in the form of a set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code>.</p></li>
+</ul>
+</li>
 <li><p>图的顶点是：</p>
 <ul>
 <li><p>当它属于edges_sql时为 <strong>正</strong></p></li>
 <li><p>当它属于 points_sql时为 <strong>负</strong></p></li>
 </ul>
 </li>
-<li><p>仅在具有正成本的边进行处理。</p></li>
 <li><p>当存在路径时返回值。</p>
 <ul>
-<li><p>返回值的形式为一组`(start_vid, end_vid, agg_cost)` 。</p></li>
 <li><p>当起始顶点和结束顶点相同时，就没有路径。</p>
 <ul>
 <li><p>非包含值 <cite>(v, v)</cite> 中的 <cite>agg_cost</cite> 为 <cite>0</cite></p></li>
 </ul>
 </li>
-<li><p>当起始顶点和结束顶点不同且不存在路径时。</p>
+<li><p>当起始顶点和结束顶点不同且不存在路径时：</p>
 <ul>
 <li><p>非包含值 <cite>(u, v)</cite> 中的 <cite>agg_cost</cite> 为 <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><p>如果返回的值存储在表中，则唯一索引将是这一对： <cite>(start_vid, end_vid)</cite> 。</p></li>
@@ -290,7 +288,10 @@
 <li><p><cite>(u, v)</cite> 的 <cite>agg_cost</cite> 与 <cite>(v, u)</cite> 相同。</p></li>
 </ul>
 </li>
-<li><p>出于优化目的， <cite>start_vids`或 `end_vids</cite> 中的任何重复值都将被忽略。</p></li>
+</ul>
+</li>
+<li><p>For optimization purposes, any duplicated value in the input arrays of <strong>start vids</strong> or
+<strong>end vids</strong> or are ignored.</p></li>
 <li><p>返回值是有序的：</p>
 <ul>
 <li><p><cite>start_vid</cite> 升序</p></li>
@@ -299,8 +300,6 @@
 </li>
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(|start\_vids|\times(V \log V + E))\)</span></p></li>
 </ul>
-</dd>
-</dl>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
@@ -309,15 +308,15 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, 'Points SQL`_, <strong>start vid</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, 'Points SQL`_, <strong>start vid</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, 'Points SQL`_, <strong>start vids</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, 'Points SQL`_, <strong>start vids</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, 'Points SQL`_, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
+<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -330,24 +329,24 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, 'Points SQL`_, <strong>start vid</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
+<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>使用默认值从点 <span class="math notranslate nohighlight">\(1\)</span> 到顶点 <span class="math notranslate nohighlight">\(10\)</span></p>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span> with default options.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">5.6</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
@@ -364,7 +363,7 @@
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
+<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -378,7 +377,7 @@
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
   <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>      <span class="mf">1.6</span>
@@ -396,7 +395,7 @@
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
+<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -409,7 +408,7 @@
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
          <span class="mi">6</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">2.6</span>
@@ -427,20 +426,20 @@
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
+<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>从点 <span class="math notranslate nohighlight">\(15\)</span> 和顶点 <span class="math notranslate nohighlight">\(6\)</span> 到点 <span class="math notranslate nohighlight">\(3\)</span> 和顶点 <span class="math notranslate nohighlight">\(1\)</span></p>
+<dd class="field-odd"><p>从点 <span class="math notranslate nohighlight">\(1\)</span> 和顶点 <span class="math notranslate nohighlight">\(6\)</span> 到点 <span class="math notranslate nohighlight">\(3\)</span> 和顶点 <span class="math notranslate nohighlight">\(1\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
@@ -460,7 +459,7 @@
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
+<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -475,7 +474,7 @@
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)&#39;</span><span class="p">,</span>
   <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">6.4</span>
          <span class="mi">6</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">2.6</span>
@@ -555,7 +554,13 @@
 </section>
 <section id="with-points-optional-parameters">
 <h3>带点可选参数<a class="headerlink" href="#with-points-optional-parameters" title="Link to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 35">
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 15.9%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
+<col style="width: 68.2%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>参数</p></th>
 <th class="head"><p>类型</p></th>
@@ -790,7 +795,7 @@
         0.5, cap =&gt; 2)
   $p$,
   1, ARRAY[-1, -2]);
- start_pid | end_pid | agg_cost
+ start_vid | end_vid | agg_cost
 -----------+---------+----------
          1 |      -2 |      2.9
          1 |      -1 |      6.8
@@ -812,7 +817,7 @@
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
   <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">2.1</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span>
@@ -837,7 +842,7 @@
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
   <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;l&#39;</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
@@ -861,7 +866,7 @@
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
@@ -906,7 +911,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 5月 30, 2025.<br/>
+      Last updated on 5月 31, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

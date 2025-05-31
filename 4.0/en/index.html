@@ -104,7 +104,14 @@
 <li><a class="reference internal" href="#functions-by-categories">Functions by categories</a></li>
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Available Functions but not official pgRouting functions</a></li>
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
-<li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 Release Notes</a><ul>
+<li><a class="reference internal" href="#functions-promoted-to-official">Functions promoted to official</a></li>
+<li><a class="reference internal" href="#removal-of-sql-deprecated-signatures">Removal of SQL deprecated signatures</a></li>
+<li><a class="reference internal" href="#removal-of-sql-deprecated-functions">Removal of SQL deprecated functions</a></li>
+<li><a class="reference internal" href="#rubric-removal-of-sql-deprecated-internal-functions">rubric:: Removal of SQL deprecated internal functions</a></li>
+<li><a class="reference internal" href="#code-enhancements">Code enhancements</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#all-releases">All releases</a><ul>
 </ul>
 </li>
@@ -161,7 +168,14 @@
 <li><a class="reference internal" href="#functions-by-categories">Functions by categories</a></li>
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Available Functions but not official pgRouting functions</a></li>
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
-<li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 Release Notes</a><ul>
+<li><a class="reference internal" href="#functions-promoted-to-official">Functions promoted to official</a></li>
+<li><a class="reference internal" href="#removal-of-sql-deprecated-signatures">Removal of SQL deprecated signatures</a></li>
+<li><a class="reference internal" href="#removal-of-sql-deprecated-functions">Removal of SQL deprecated functions</a></li>
+<li><a class="reference internal" href="#rubric-removal-of-sql-deprecated-internal-functions">rubric:: Removal of SQL deprecated internal functions</a></li>
+<li><a class="reference internal" href="#code-enhancements">Code enhancements</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#all-releases">All releases</a><ul>
 </ul>
 </li>
@@ -436,14 +450,25 @@ table information.</p></li>
 <h3>pgRouting 4.0.0 Release Notes<a class="headerlink" href="#pgrouting-4-0-0-release-notes" title="Link to this heading">¶</a></h3>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.0%22">Git closed
 milestone for 4.0.0</a></p>
-<p class="rubric">Functions promoted to official</p>
+<section id="functions-promoted-to-official">
+<h4>Functions promoted to official<a class="headerlink" href="#functions-promoted-to-official" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>pgr_trsp</p></li>
 <li><p>pgr_trspVia</p></li>
 <li><p>pgr_trspVia_withPoints</p></li>
 <li><p>pgr_trsp_withPoints</p></li>
-<li><p>pgr_withPoints</p></li>
-<li><p>pgr_withPointsCost</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a> pgr_withPoints</p>
+<ul>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Function promoted to official.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2798">#TBD</a> pgr_withPointsCost</p>
+<ul>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Function promoted to official.</p></li>
+</ul>
+</li>
 <li><p>pgr_withPointsCostMatrix</p></li>
 <li><p>pgr_withPointsDD</p></li>
 <li><p>pgr_withPointsKSP</p></li>
@@ -465,12 +490,9 @@ milestone for 4.0.0</a></p>
 <li><p>pgr_maxFlow(Combinations)</p></li>
 <li><p>pgr_pushRelabel(Combinations)</p></li>
 </ul>
-<p class="rubric">code enhancements:</p>
-<ul class="simple">
-<li><p>Removal of unused C/C++ code</p></li>
-<li><p>Refactor the Script to build the update PostgreSQL file.</p></li>
-</ul>
-<p class="rubric">Removal of SQL deprecated signatures</p>
+</section>
+<section id="removal-of-sql-deprecated-signatures">
+<h4>Removal of SQL deprecated signatures<a class="headerlink" href="#removal-of-sql-deprecated-signatures" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2798">#2798</a>:
 pgr_contraction</p>
@@ -517,7 +539,9 @@ pgr_maxCardinalityMatch</p>
 </ul>
 </li>
 </ul>
-<p class="rubric">Removal of SQL deprecated functions</p>
+</section>
+<section id="removal-of-sql-deprecated-functions">
+<h4>Removal of SQL deprecated functions<a class="headerlink" href="#removal-of-sql-deprecated-functions" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2681">#2681</a>:
 pgr_trspviaedges</p></li>
@@ -536,7 +560,9 @@ pgr_createVerticesTable</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2886">#2886</a>:
 pgr_nodeNetwork</p></li>
 </ul>
-<p class="rubric">Removal of SQL deprecated internal functions</p>
+</section>
+<section id="rubric-removal-of-sql-deprecated-internal-functions">
+<h4>rubric:: Removal of SQL deprecated internal functions<a class="headerlink" href="#rubric-removal-of-sql-deprecated-internal-functions" title="Link to this heading">¶</a></h4>
 <p>Related issues: <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2897">#2897</a></p>
 <ul class="simple">
 <li><p>_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)</p></li>
@@ -591,6 +617,19 @@ Remove unused internal functions</p>
 </ul>
 </li>
 </ul>
+</section>
+<section id="code-enhancements">
+<h4>Code enhancements<a class="headerlink" href="#code-enhancements" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Removal of unused C/C++ code</p></li>
+<li><p>Refactor the Script to build the update PostgreSQL file.</p></li>
+<li><p>One driver for:</p>
+<ul>
+<li><p>allpairs: johnson and Flowy-Warshall</p></li>
+<li><p>Shortest path: Dijkstra and withPoints using Dijkstra</p></li>
+</ul>
+</li>
+</ul>
 <p class="rubric">Deprecation of internal C/C++ functions</p>
 <ul class="simple">
 <li><p>_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)</p></li>
@@ -604,6 +643,7 @@ Remove unused internal functions</p>
 <li><p>_v4trsp(text,text,text,boolean)</p></li>
 <li><p>_pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
 </ul>
+</section>
 </section>
 <section id="all-releases">
 <h3>All releases<a class="headerlink" href="#all-releases" title="Link to this heading">¶</a></h3>
@@ -642,7 +682,7 @@ Remove unused internal functions</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on May 30, 2025.<br/>
+      Last updated on May 31, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

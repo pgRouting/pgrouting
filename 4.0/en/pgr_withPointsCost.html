@@ -236,59 +236,56 @@
 aggregate cost of the shortest path found, for the combination of points
 given.</p>
 <p class="rubric">Availability</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>Version 4.0.0</p>
-<ul>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>Function promoted to official.</p></li>
 </ul>
-</li>
-<li><p>Version 3.2.0</p>
-<ul>
-<li><p>New proposed signature:</p>
-<ul>
+<p class="rubric">Version 3.2.0</p>
+<ul class="simple">
+<li><p>New proposed signature:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
 <li><p>pgr_withPointsCost(Combinations)</p></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>Version 2.2.0</p>
-<ul>
+</div></blockquote>
+<p class="rubric">Version 2.2.0</p>
+<ul class="simple">
 <li><p>New proposed function.</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>Modify the graph to include points defined by points_sql.
 Using Dijkstra algorithm, return only the aggregate cost of the shortest path
 found.</p>
-<dl class="simple">
-<dt>The main characteristics are:</dt><dd><ul class="simple">
+<p>The main characteristics are:</p>
+<ul class="simple">
+<li><p>Process is done only on edges with positive costs.</p></li>
 <li><p>It does not return a path.</p></li>
 <li><p>Returns the sum of the costs of the shortest path for pair combination of
-vertices in the modified graph.</p></li>
+vertices in the modified graph.</p>
+<ul>
+<li><p>The returned values are in the form of a set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code>.</p></li>
+</ul>
+</li>
 <li><p>Vertices of the graph are:</p>
 <ul>
 <li><p><strong>positive</strong> when it belongs to the edges_sql</p></li>
 <li><p><strong>negative</strong> when it belongs to the points_sql</p></li>
 </ul>
 </li>
-<li><p>Process is done only on edges with positive costs.</p></li>
 <li><p>Values are returned when there is a path.</p>
 <ul>
-<li><p>The returned values are in the form of a set of <cite>(start_vid, end_vid,
-agg_cost)</cite>.</p></li>
 <li><p>When the starting vertex and ending vertex are the same, there is no path.</p>
 <ul>
 <li><p>The <cite>agg_cost</cite> in the non included values <cite>(v, v)</cite> is <cite>0</cite></p></li>
 </ul>
 </li>
-<li><p>When the starting vertex and ending vertex are the different and there is
-no path.</p>
+<li><p>When the starting vertex and ending vertex are the different and there is no
+path:</p>
 <ul>
 <li><p>The <cite>agg_cost</cite> in the non included values <cite>(u, v)</cite> is <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><p>If the values returned are stored in a table, the unique index would be the
@@ -298,8 +295,10 @@ pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 <li><p>The <cite>agg_cost</cite> of <cite>(u, v)</cite> is the same as for <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
-<li><p>For optimization purposes, any duplicated value in the <cite>start_vids</cite> or
-<cite>end_vids</cite> is ignored.</p></li>
+</ul>
+</li>
+<li><p>For optimization purposes, any duplicated value in the input arrays of <strong>start vids</strong> or
+<strong>end vids</strong> or are ignored.</p></li>
 <li><p>The returned values are ordered:</p>
 <ul>
 <li><p><cite>start_vid</cite> ascending</p></li>
@@ -308,8 +307,6 @@ pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 </li>
 <li><p>Running time: <span class="math notranslate nohighlight">\(O(|start\_vids|\times(V \log V + E))\)</span></p></li>
 </ul>
-</dd>
-</dl>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
@@ -318,15 +315,15 @@ pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <strong>start vid</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <strong>start vid</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <strong>start vids</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <strong>start vids</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -340,24 +337,24 @@ withPoints family of functions.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <strong>start vid</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span> with defaults</p>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span> with default options.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">5.6</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
@@ -374,7 +371,7 @@ withPoints family of functions.</p>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -389,7 +386,7 @@ undirected graph</p>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
   <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>      <span class="mf">1.6</span>
@@ -407,7 +404,7 @@ undirected graph</p>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -420,7 +417,7 @@ undirected graph</p>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
          <span class="mi">6</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">2.6</span>
@@ -438,13 +435,13 @@ undirected graph</p>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(15\)</span> and vertex <span class="math notranslate nohighlight">\(6\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> and
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(6\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> and
 vertex <span class="math notranslate nohighlight">\(1\)</span></p>
 </dd>
 </dl>
@@ -452,7 +449,7 @@ vertex <span class="math notranslate nohighlight">\(1\)</span></p>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
@@ -472,7 +469,7 @@ vertex <span class="math notranslate nohighlight">\(1\)</span></p>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -488,7 +485,7 @@ vertex <span class="math notranslate nohighlight">\(1\)</span></p>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)&#39;</span><span class="p">,</span>
   <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">6.4</span>
          <span class="mi">6</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">2.6</span>
@@ -572,7 +569,13 @@ identifiers.</p></td>
 </section>
 <section id="with-points-optional-parameters">
 <h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Link to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 35">
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 15.9%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
+<col style="width: 68.2%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
@@ -812,7 +815,7 @@ on the graph of point <cite>(2.9, 1.8)</cite>.</p>
         0.5, cap =&gt; 2)
   $p$,
   1, ARRAY[-1, -2]);
- start_pid | end_pid | agg_cost
+ start_vid | end_vid | agg_cost
 -----------+---------+----------
          1 |      -2 |      2.9
          1 |      -1 |      6.8
@@ -835,7 +838,7 @@ on the graph of point <cite>(2.9, 1.8)</cite>.</p>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
   <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">2.1</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span>
@@ -861,7 +864,7 @@ on the graph of point <cite>(2.9, 1.8)</cite>.</p>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
   <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;l&#39;</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
@@ -886,7 +889,7 @@ on the graph of point <cite>(2.9, 1.8)</cite>.</p>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
@@ -931,7 +934,7 @@ on the graph of point <cite>(2.9, 1.8)</cite>.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on May 30, 2025.<br/>
+      Last updated on May 31, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
