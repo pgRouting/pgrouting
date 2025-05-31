@@ -56,7 +56,7 @@ Functions promoted to official
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
-* `#TBD <https://github.com/pgRouting/pgrouting/issues/2798>`__ pgr_withPointsCost
+* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCost
 
   .. include:: pgr_withPointsCost.rst
      :start-after: Version 4.0.0
@@ -82,6 +82,15 @@ Functions promoted to official
 * pgr_edmondsKarp(Combinations)
 * pgr_maxFlow(Combinations)
 * pgr_pushRelabel(Combinations)
+
+SQL signatures modification on functions
+...............................................................................
+
+* `#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__ pgr_bdDijkstra
+
+  .. include:: pgr_bdDijkstra.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
 
 
 Removal of SQL deprecated signatures
