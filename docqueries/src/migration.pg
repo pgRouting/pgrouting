@@ -490,3 +490,35 @@ FROM pgr_withPointsCost(
   'SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)',
   driving_side => 'r');
 /* --withPointsCost-END */
+
+-- bdDijkstra
+/* --bdDijkstra-1-to-1  */
+SELECT * FROM pgr_bdDijkstra(
+  'select id, source, target, cost, reverse_cost from edges',
+  6, 10, true);
+/* --bdDijkstra-1-to-1-filter  */
+SELECT seq, path_seq, node, edge, cost, agg_cost
+FROM pgr_bdDijkstra(
+  'select id, source, target, cost, reverse_cost from edges',
+  6, 10, true);
+/* --bdDijkstra-1-to-m  */
+SELECT * FROM pgr_bdDijkstra(
+  'select id, source, target, cost, reverse_cost from edges',
+  6, ARRAY[10, 17]);
+/* --bdDijkstra-1-to-m-filter  */
+SELECT seq, path_seq, end_vid AS end_pid, node, edge, cost, agg_cost
+FROM pgr_bdDijkstra(
+  'select id, source, target, cost, reverse_cost from edges',
+  6, ARRAY[10, 17]);
+/* --bdDijkstra-m-to-1  */
+SELECT * FROM pgr_bdDijkstra(
+    'select id, source, target, cost, reverse_cost from edges',
+      ARRAY[6, 1], 17);
+/* --bdDijkstra-m-to-1-filter  */
+SELECT seq, path_seq, start_vid AS start_pid, node, edge, cost, agg_cost
+FROM pgr_bdDijkstra(
+    'select id, source, target, cost, reverse_cost from edges',
+      ARRAY[6, 1], 17);
+/* --bdDijkstra-END  */
+
+
