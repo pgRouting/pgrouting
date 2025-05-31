@@ -48,8 +48,96 @@ If you have SFCGAL, which you can install using
 * For PostGIS 3.5+ use the old name ``ST_AlphaShape``
 
 Other PostGIS options are
+
 * `ST_ConvexHull <https://postgis.net/docs/ST_ConvexHull.html>`__
 * `ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__
+
+Migration of ``pgr_bdDijkstra``
+-------------------------------------------------------------------------------
+
+Starting from `v4.0.0 <https://docs.pgrouting.org/4.0/en/migration.html>`__
+:doc:`pgr_bdDijkstra` result columns are being standardized.
+
+:from: |old-generic-result|
+:to: |short-generic-result|
+
+Signatures to be migrated:
+
+* ``pgr_bdDijkstra`` (One to One)
+* ``pgr_bdDijkstra`` (One to Many)
+* ``pgr_bdDijkstra`` (Many to One)
+
+.. rubric:: Before Migration
+
+Output columns were |old-generic-result|
+
+.. rubric:: Migration
+
+Output columns are |short-generic-result|
+
+To get the old version column names, depending on the signature:
+
+* Filter out the columns: ``start_vid`` and/or ``end_vid``
+
+``pgr_bdDijkstra`` (`One to One`)
+...............................................................................
+
+Using
+`this <https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#one-to-one>`__
+example.
+
+:from: |result-1-1|
+:to: |short-generic-result|
+
+.. literalinclude:: migration.queries
+   :start-after: --bdDijkstra-1-to-1
+   :end-before: --bdDijkstra-1-to-1-filter
+
+Get the old signature columns by filtering out the extra columns.
+
+.. literalinclude:: migration.queries
+   :start-after: --bdDijkstra-1-to-1-filter
+   :end-before: --bdDijkstra-1-to-m
+
+``pgr_bdDijkstra`` (`One to Many`)
+...............................................................................
+
+Using
+`this <https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#one-to-many>`__
+example.
+
+:from: |result-1-m|
+:to: |short-generic-result|
+
+.. literalinclude:: migration.queries
+   :start-after: --bdDijkstra-1-to-m
+   :end-before: --bdDijkstra-1-to-m-filter
+
+Get the old signature columns by filtering out the extra columns.
+
+.. literalinclude:: migration.queries
+   :start-after: --bdDijkstra-1-to-m-filter
+   :end-before: --bdDijkstra-m-to-1
+
+``pgr_bdDijkstra`` (`Many to One`)
+...............................................................................
+
+Using
+`this <https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#many-to-one>`__
+example.
+
+:from: |result-m-1|
+:to: |generic-result|
+
+.. literalinclude:: migration.queries
+   :start-after: --bdDijkstra-m-to-1
+   :end-before: --bdDijkstra-m-to-1-filter
+
+Get the old signature columns by filtering out the extra columns.
+
+.. literalinclude:: migration.queries
+   :start-after: --bdDijkstra-m-to-1-filter
+   :end-before: --bdDijkstra-END
 
 Migration of ``pgr_nodeNetwork``
 -------------------------------------------------------------------------------
