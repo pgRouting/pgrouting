@@ -106,6 +106,7 @@
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
 <li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 Release Notes</a><ul>
 <li><a class="reference internal" href="#functions-promoted-to-official">Functions promoted to official</a></li>
+<li><a class="reference internal" href="#sql-signatures-modification-on-functions">SQL signatures modification on functions</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-signatures">Removal of SQL deprecated signatures</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-functions">Removal of SQL deprecated functions</a></li>
 <li><a class="reference internal" href="#rubric-removal-of-sql-deprecated-internal-functions">rubric:: Removal of SQL deprecated internal functions</a></li>
@@ -170,6 +171,7 @@
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
 <li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 Release Notes</a><ul>
 <li><a class="reference internal" href="#functions-promoted-to-official">Functions promoted to official</a></li>
+<li><a class="reference internal" href="#sql-signatures-modification-on-functions">SQL signatures modification on functions</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-signatures">Removal of SQL deprecated signatures</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-functions">Removal of SQL deprecated functions</a></li>
 <li><a class="reference internal" href="#rubric-removal-of-sql-deprecated-internal-functions">rubric:: Removal of SQL deprecated internal functions</a></li>
@@ -463,7 +465,7 @@ milestone for 4.0.0</a></p>
 <li><p>Function promoted to official.</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2798">#TBD</a> pgr_withPointsCost</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a> pgr_withPointsCost</p>
 <ul>
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>Function promoted to official.</p></li>
@@ -489,6 +491,17 @@ milestone for 4.0.0</a></p>
 <li><p>pgr_edmondsKarp(Combinations)</p></li>
 <li><p>pgr_maxFlow(Combinations)</p></li>
 <li><p>pgr_pushRelabel(Combinations)</p></li>
+</ul>
+</section>
+<section id="sql-signatures-modification-on-functions">
+<h4>SQL signatures modification on functions<a class="headerlink" href="#sql-signatures-modification-on-functions" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2906">#2906</a> pgr_bdDijkstra</p>
+<ul>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Combinations signature promoted to official.</p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="removal-of-sql-deprecated-signatures">
@@ -682,7 +695,7 @@ Remove unused internal functions</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on May 31, 2025.<br/>
+      Last updated on Jun 02, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

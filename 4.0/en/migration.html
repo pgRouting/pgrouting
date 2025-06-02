@@ -98,6 +98,12 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Migration guide</a><ul>
 <li><a class="reference internal" href="#migration-of-pgr-alphashape">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-bddijkstra">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code></a><ul>
+<li><a class="reference internal" href="#pgr-bddijkstra-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<cite>One to One</cite>)</a></li>
+<li><a class="reference internal" href="#pgr-bddijkstra-one-to-many"><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<cite>One to Many</cite>)</a></li>
+<li><a class="reference internal" href="#pgr-bddijkstra-many-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<cite>Many to One</cite>)</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#migration-of-pgr-nodenetwork">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-createtopology">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
 <li><a class="reference internal" href="#build-a-routing-topology">Build a routing topology</a></li>
@@ -231,6 +237,12 @@
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
 <li><a class="reference internal" href="#">Migration guide</a><ul>
 <li><a class="reference internal" href="#migration-of-pgr-alphashape">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-bddijkstra">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code></a><ul>
+<li><a class="reference internal" href="#pgr-bddijkstra-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<cite>One to One</cite>)</a></li>
+<li><a class="reference internal" href="#pgr-bddijkstra-one-to-many"><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<cite>One to Many</cite>)</a></li>
+<li><a class="reference internal" href="#pgr-bddijkstra-many-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<cite>Many to One</cite>)</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#migration-of-pgr-nodenetwork">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-createtopology">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
 <li><a class="reference internal" href="#build-a-routing-topology">Build a routing topology</a></li>
@@ -358,29 +370,30 @@ replaced by new functions.</p>
 <li><p><a class="reference internal" href="#migration-guide" id="id5">Migration guide</a></p>
 <ul>
 <li><p><a class="reference internal" href="#migration-of-pgr-alphashape" id="id6">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-nodenetwork" id="id7">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-createtopology" id="id8">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-createverticestable" id="id9">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-analyzeoneway" id="id10">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-analyzegraph" id="id11">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-astar" id="id12">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-bdastar" id="id13">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-dijkstra" id="id14">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-drivingdistance" id="id15">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" id="id16">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-ksp" id="id17">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch" id="id18">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" id="id19">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-withpoints" id="id20">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-withpointscost" id="id21">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-withpointsdd" id="id22">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-withpointsksp" id="id23">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trsp-vertices" id="id24">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices)</a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trsp-edges" id="id25">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trspviavertices" id="id26">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trspviaedges" id="id27">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-restrictions" id="id28">Migration of restrictions</a></p></li>
-<li><p><a class="reference internal" href="#see-also" id="id29">See Also</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-bddijkstra" id="id7">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-nodenetwork" id="id8">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-createtopology" id="id9">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-createverticestable" id="id10">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-analyzeoneway" id="id11">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-analyzegraph" id="id12">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-astar" id="id13">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-bdastar" id="id14">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-dijkstra" id="id15">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-drivingdistance" id="id16">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" id="id17">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-ksp" id="id18">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch" id="id19">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" id="id20">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-withpoints" id="id21">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-withpointscost" id="id22">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-withpointsdd" id="id23">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-withpointsksp" id="id24">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-trsp-vertices" id="id25">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices)</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-trsp-edges" id="id26">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-trspviavertices" id="id27">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-trspviaedges" id="id28">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-restrictions" id="id29">Migration of restrictions</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id30">See Also</a></p></li>
 </ul>
 </li>
 </ul>
@@ -409,12 +422,199 @@ replaced by new functions.</p>
 <li><p>Since PostGIS 3.5+ use <a class="reference external" href="https://postgis.net/docs/CG_AlphaShape.html">CG_AlphaShape</a></p></li>
 <li><p>For PostGIS 3.5+ use the old name <code class="docutils literal notranslate"><span class="pre">ST_AlphaShape</span></code></p></li>
 </ul>
-<p>Other PostGIS options are
-* <a class="reference external" href="https://postgis.net/docs/ST_ConvexHull.html">ST_ConvexHull</a>
-* <a class="reference external" href="https://postgis.net/docs/ST_ConcaveHull.html">ST_ConcaveHull</a></p>
+<p>Other PostGIS options are</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://postgis.net/docs/ST_ConvexHull.html">ST_ConvexHull</a></p></li>
+<li><p><a class="reference external" href="https://postgis.net/docs/ST_ConcaveHull.html">ST_ConcaveHull</a></p></li>
+</ul>
+</section>
+<section id="migration-of-pgr-bddijkstra">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code></a><a class="headerlink" href="#migration-of-pgr-bddijkstra" title="Link to this heading">¶</a></h2>
+<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/4.0/en/migration.html">v4.0.0</a>
+<a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a> result columns are being standardized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">from<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+</dd>
+<dt class="field-even">to<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+</dd>
+</dl>
+<p>Signatures to be migrated:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (One to One)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (One to Many)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (Many to One)</p></li>
+</ul>
+<p class="rubric">Before Migration</p>
+<p>Output columns were <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p class="rubric">Migration</p>
+<p>Output columns are <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>To get the old version column names, depending on the signature:</p>
+<ul class="simple">
+<li><p>Filter out the columns: <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and/or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
+</ul>
+<section id="pgr-bddijkstra-one-to-one">
+<h3><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<cite>One to One</cite>)<a class="headerlink" href="#pgr-bddijkstra-one-to-one" title="Link to this heading">¶</a></h3>
+<p>Using
+<a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#one-to-one">this</a>
+example.</p>
+<dl class="field-list simple">
+<dt class="field-odd">from<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+</dd>
+<dt class="field-even">to<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
+  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+  <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Get the old signature columns by filtering out the extra columns.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span>
+<span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
+  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+  <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="pgr-bddijkstra-one-to-many">
+<h3><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<cite>One to Many</cite>)<a class="headerlink" href="#pgr-bddijkstra-one-to-many" title="Link to this heading">¶</a></h3>
+<p>Using
+<a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#one-to-many">this</a>
+example.</p>
+<dl class="field-list simple">
+<dt class="field-odd">from<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+</dd>
+<dt class="field-even">to<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
+  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+  <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">]);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
+   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">9</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+  <span class="mi">10</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+  <span class="mi">11</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">4</span>
+<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Get the old signature columns by filtering out the extra columns.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">end_vid</span> <span class="n">AS</span> <span class="n">end_pid</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span>
+<span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
+  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+  <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">]);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
+   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">9</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+  <span class="mi">10</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+  <span class="mi">11</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">4</span>
+<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="pgr-bddijkstra-many-to-one">
+<h3><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<cite>Many to One</cite>)<a class="headerlink" href="#pgr-bddijkstra-many-to-one" title="Link to this heading">¶</a></h3>
+<p>Using
+<a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#many-to-one">this</a>
+example.</p>
+<dl class="field-list simple">
+<dt class="field-odd">from<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+</dd>
+<dt class="field-even">to<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
+    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+      <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">17</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
+   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">9</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+  <span class="mi">10</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+  <span class="mi">11</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">4</span>
+<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Get the old signature columns by filtering out the extra columns.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">start_vid</span> <span class="n">AS</span> <span class="n">start_pid</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span>
+<span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
+    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+      <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">17</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
+   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">9</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+  <span class="mi">10</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+  <span class="mi">11</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">4</span>
+<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
 </section>
 <section id="migration-of-pgr-nodenetwork">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a><a class="headerlink" href="#migration-of-pgr-nodenetwork" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a><a class="headerlink" href="#migration-of-pgr-nodenetwork" title="Link to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Deprecated<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.8">v3.8.0</a></p>
@@ -429,7 +629,7 @@ edges.</p>
 <p>Use <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> and/or use <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a></p>
 </section>
 <section id="migration-of-pgr-createtopology">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><a class="headerlink" href="#migration-of-pgr-createtopology" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><a class="headerlink" href="#migration-of-pgr-createtopology" title="Link to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Deprecated<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.8">v3.8.0</a></p>
@@ -486,7 +686,7 @@ based on the edge identifier and the geometry of the edge of the graph.</p>
 </section>
 </section>
 <section id="migration-of-pgr-createverticestable">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a><a class="headerlink" href="#migration-of-pgr-createverticestable" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a><a class="headerlink" href="#migration-of-pgr-createverticestable" title="Link to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Deprecated<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.8">v3.8.0</a></p>
@@ -508,7 +708,7 @@ indexes, etc. They may use <a class="reference internal" href="pgr_extractVertic
 </div>
 </section>
 <section id="migration-of-pgr-analyzeoneway">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzeoneway" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzeoneway" title="Link to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Deprecated<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.8">v3.8.0</a></p>
@@ -563,7 +763,7 @@ only one way.</p>
 </div>
 </section>
 <section id="migration-of-pgr-analyzegraph">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzegraph" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzegraph" title="Link to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Deprecated<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.8">v3.8.0</a></p>
@@ -695,7 +895,7 @@ geometries.</p>
 </div>
 </section>
 <section id="migration-of-pgr-astar">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a><a class="headerlink" href="#migration-of-pgr-astar" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a><a class="headerlink" href="#migration-of-pgr-astar" title="Link to this heading">¶</a></h2>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a></p>
 <p>Signatures to be migrated:</p>
 <ul class="simple">
@@ -832,7 +1032,7 @@ the function <code class="docutils literal notranslate"><span class="pre">my_dij
 </ul>
 </section>
 <section id="migration-of-pgr-bdastar">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a><a class="headerlink" href="#migration-of-pgr-bdastar" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a><a class="headerlink" href="#migration-of-pgr-bdastar" title="Link to this heading">¶</a></h2>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a></p>
 <p>Signatures to be migrated:</p>
 <ul class="simple">
@@ -972,7 +1172,7 @@ the function <code class="docutils literal notranslate"><span class="pre">my_dij
 </ul>
 </section>
 <section id="migration-of-pgr-dijkstra">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a><a class="headerlink" href="#migration-of-pgr-dijkstra" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a><a class="headerlink" href="#migration-of-pgr-dijkstra" title="Link to this heading">¶</a></h2>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.5/en/migration.html">v3.5.0</a></p>
 <p>Signatures to be migrated:</p>
 <ul class="simple">
@@ -1111,7 +1311,7 @@ the function <code class="docutils literal notranslate"><span class="pre">my_dij
 </ul>
 </section>
 <section id="migration-of-pgr-drivingdistance">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#migration-of-pgr-drivingdistance" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#migration-of-pgr-drivingdistance" title="Link to this heading">¶</a></h2>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a>
 <a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> result columns are being standardized.</p>
 <dl class="field-list simple">
@@ -1270,7 +1470,7 @@ FROM pgr_drivingDistance(
 </section>
 </section>
 <section id="migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a><a class="headerlink" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a><a class="headerlink" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" title="Link to this heading">¶</a></h2>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.7/en/migration.html">v3.7.0</a>
 <a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a>, <a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a> and
 <a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a> result columns are being standardized.</p>
@@ -1415,7 +1615,7 @@ columns</p>
 </section>
 </section>
 <section id="migration-of-pgr-ksp">
-<h2><a class="toc-backref" href="#id17" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a><a class="headerlink" href="#migration-of-pgr-ksp" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a><a class="headerlink" href="#migration-of-pgr-ksp" title="Link to this heading">¶</a></h2>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a>
 <a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> result columns are being standardized.</p>
 <dl class="field-list simple">
@@ -1506,7 +1706,7 @@ columns:</p>
 </section>
 </section>
 <section id="migration-of-pgr-maxcardinalitymatch">
-<h2><a class="toc-backref" href="#id18" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a><a class="headerlink" href="#migration-of-pgr-maxcardinalitymatch" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a><a class="headerlink" href="#migration-of-pgr-maxcardinalitymatch" title="Link to this heading">¶</a></h2>
 <p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> works only for undirected graphs, therefore the
 <code class="docutils literal notranslate"><span class="pre">directed</span></code> flag has been removed.</p>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">v3.4.0</a></p>
@@ -1575,7 +1775,7 @@ edge.</p></li>
 </div>
 </section>
 <section id="migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs">
-<h2><a class="toc-backref" href="#id19" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><a class="headerlink" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><a class="headerlink" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" title="Link to this heading">¶</a></h2>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.7/en/migration.html">v3.7.0</a>
 <a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a>, <a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a> and <a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a> result columns are
 being standardized.</p>
@@ -1744,7 +1944,7 @@ columns</p>
 </section>
 </section>
 <section id="migration-of-pgr-withpoints">
-<h2><a class="toc-backref" href="#id20" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></a><a class="headerlink" href="#migration-of-pgr-withpoints" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id21" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></a><a class="headerlink" href="#migration-of-pgr-withpoints" title="Link to this heading">¶</a></h2>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/4.0/en/migration.html">v4.0.0</a>
 <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> result columns are being standardized.</p>
 <dl class="field-list simple">
@@ -2079,7 +2279,7 @@ example.</p>
 </section>
 </section>
 <section id="migration-of-pgr-withpointscost">
-<h2><a class="toc-backref" href="#id21" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointscost" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id22" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointscost" title="Link to this heading">¶</a></h2>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/4.0/en/migration.html">v4.0.0</a>
 <a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost</span></a> result columns are being standardized.</p>
 <dl class="field-list simple">
@@ -2320,7 +2520,7 @@ example.</p>
 </section>
 </section>
 <section id="migration-of-pgr-withpointsdd">
-<h2><a class="toc-backref" href="#id22" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsdd" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id23" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsdd" title="Link to this heading">¶</a></h2>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a>
 <a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a> result columns are being standardized.</p>
 <dl class="field-list simple">
@@ -2482,7 +2682,7 @@ example.</p>
 </section>
 </section>
 <section id="migration-of-pgr-withpointsksp">
-<h2><a class="toc-backref" href="#id23" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsksp" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsksp" title="Link to this heading">¶</a></h2>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a>
 <a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP</span></a> result columns are being standardized.</p>
 <dl class="field-list simple">
@@ -2587,7 +2787,7 @@ columns:</p>
 </section>
 </section>
 <section id="migration-of-pgr-trsp-vertices">
-<h2><a class="toc-backref" href="#id24" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices)</a><a class="headerlink" href="#migration-of-pgr-trsp-vertices" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices)</a><a class="headerlink" href="#migration-of-pgr-trsp-vertices" title="Link to this heading">¶</a></h2>
 <p>Signature:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="n">Edges</span> <span class="n">SQL</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
         <span class="p">[,</span><span class="n">restrict_sql</span> <span class="n">text</span><span class="p">]);</span>
@@ -2604,8 +2804,8 @@ columns:</p>
 </dl>
 <nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-dijkstra-when-there-are-no-restrictions" id="id30">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> when there are no restrictions.</a></p></li>
-<li><p><a class="reference internal" href="#use-pgr-trsp-when-there-are-restrictions" id="id31">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> when there are restrictions.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-dijkstra-when-there-are-no-restrictions" id="id31">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> when there are no restrictions.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-trsp-when-there-are-restrictions" id="id32">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> when there are restrictions.</a></p></li>
 </ul>
 </nav>
 <p class="rubric">See Also</p>
@@ -2615,7 +2815,7 @@ columns:</p>
 <li><p><a class="reference internal" href="#migration-of-restrictions">Migration of restrictions</a></p></li>
 </ul>
 <section id="use-pgr-dijkstra-when-there-are-no-restrictions">
-<h3><a class="toc-backref" href="#id30" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> when there are no restrictions.</a><a class="headerlink" href="#use-pgr-dijkstra-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> when there are no restrictions.</a><a class="headerlink" href="#use-pgr-dijkstra-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
 <p>Use <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost
@@ -2653,7 +2853,7 @@ FROM pgr_dijkstra(
 </ul>
 </section>
 <section id="use-pgr-trsp-when-there-are-restrictions">
-<h3><a class="toc-backref" href="#id31" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> when there are restrictions.</a><a class="headerlink" href="#use-pgr-trsp-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id32" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> when there are restrictions.</a><a class="headerlink" href="#use-pgr-trsp-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
 <p>Use <a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> (One to One) instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost
@@ -2698,7 +2898,7 @@ FROM pgr_trsp(
 </section>
 </section>
 <section id="migration-of-pgr-trsp-edges">
-<h2><a class="toc-backref" href="#id25" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a><a class="headerlink" href="#migration-of-pgr-trsp-edges" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a><a class="headerlink" href="#migration-of-pgr-trsp-edges" title="Link to this heading">¶</a></h2>
 <p>Signature:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">source_edge</span> <span class="n">integer</span><span class="p">,</span> <span class="n">source_pos</span> <span class="n">float8</span><span class="p">,</span>
                  <span class="n">target_edge</span> <span class="n">integer</span><span class="p">,</span> <span class="n">target_pos</span> <span class="n">float8</span><span class="p">,</span>
@@ -2717,8 +2917,8 @@ FROM pgr_trsp(
 </dl>
 <nav class="contents local" id="id2">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-withpoints-when-there-are-no-restrictions" id="id32">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> when there are no restrictions.</a></p></li>
-<li><p><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" id="id33">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> when there are restrictions.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-withpoints-when-there-are-no-restrictions" id="id33">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> when there are no restrictions.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" id="id34">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> when there are restrictions.</a></p></li>
 </ul>
 </nav>
 <p class="rubric">See Also</p>
@@ -2728,7 +2928,7 @@ FROM pgr_trsp(
 <li><p><a class="reference internal" href="#migration-of-restrictions">Migration of restrictions</a></p></li>
 </ul>
 <section id="use-pgr-withpoints-when-there-are-no-restrictions">
-<h3><a class="toc-backref" href="#id32" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> when there are no restrictions.</a><a class="headerlink" href="#use-pgr-withpoints-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id33" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> when there are no restrictions.</a><a class="headerlink" href="#use-pgr-withpoints-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
 <p>Use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> (One to One) instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2770,7 +2970,7 @@ FROM pgr_withPoints(
 </ul>
 </section>
 <section id="use-pgr-trsp-withpoints-when-there-are-restrictions">
-<h3><a class="toc-backref" href="#id33" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> when there are restrictions.</a><a class="headerlink" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id34" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> when there are restrictions.</a><a class="headerlink" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
 <p>Use <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a> instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2827,7 +3027,7 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="migration-of-pgr-trspviavertices">
-<h2><a class="toc-backref" href="#id26" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviavertices" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id27" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviavertices" title="Link to this heading">¶</a></h2>
 <p>Signature:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trspViaVertices</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">vids</span> <span class="n">integer</span><span class="p">[],</span>
                   <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
@@ -2845,8 +3045,8 @@ WHERE edge != -1;
 </dl>
 <nav class="contents local" id="id3">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" id="id34">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> when there are no restrictions</a></p></li>
-<li><p><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions" id="id35">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> when there are restrictions</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" id="id35">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> when there are no restrictions</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions" id="id36">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> when there are restrictions</a></p></li>
 </ul>
 </nav>
 <p class="rubric">See Also</p>
@@ -2856,7 +3056,7 @@ WHERE edge != -1;
 <li><p><a class="reference internal" href="#migration-of-restrictions">Migration of restrictions</a></p></li>
 </ul>
 <section id="use-pgr-dijkstravia-when-there-are-no-restrictions">
-<h3><a class="toc-backref" href="#id34" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> when there are no restrictions</a><a class="headerlink" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id35" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> when there are no restrictions</a><a class="headerlink" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
 <p>Use <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2899,7 +3099,7 @@ WHERE edge != -1;
 </ul>
 </section>
 <section id="use-pgr-trspvia-when-there-are-restrictions">
-<h3><a class="toc-backref" href="#id35" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> when there are restrictions</a><a class="headerlink" href="#use-pgr-trspvia-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id36" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> when there are restrictions</a><a class="headerlink" href="#use-pgr-trspvia-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
 <p>Use <a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a> instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2957,7 +3157,7 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="migration-of-pgr-trspviaedges">
-<h2><a class="toc-backref" href="#id27" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviaedges" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id28" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviaedges" title="Link to this heading">¶</a></h2>
 <p>Signature:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trspViaEdges</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">eids</span> <span class="n">integer</span><span class="p">[],</span> <span class="n">pcts</span> <span class="n">float8</span><span class="p">[],</span>
                   <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
@@ -2975,8 +3175,8 @@ WHERE edge != -1;
 </dl>
 <nav class="contents local" id="id4">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" id="id36">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> when there are no restrictions</a></p></li>
-<li><p><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" id="id37">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> when there are restrictions</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" id="id37">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> when there are no restrictions</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" id="id38">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> when there are restrictions</a></p></li>
 </ul>
 </nav>
 <p class="rubric">See Also</p>
@@ -2986,7 +3186,7 @@ WHERE edge != -1;
 <li><p><a class="reference internal" href="#migration-of-restrictions">Migration of restrictions</a></p></li>
 </ul>
 <section id="use-pgr-withpointsvia-when-there-are-no-restrictions">
-<h3><a class="toc-backref" href="#id36" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> when there are no restrictions</a><a class="headerlink" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id37" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> when there are no restrictions</a><a class="headerlink" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
 <p>Use <a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a> instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -3045,7 +3245,7 @@ FROM pgr_withPointsVia(
 </ul>
 </section>
 <section id="use-pgr-trspvia-withpoints-when-there-are-restrictions">
-<h3><a class="toc-backref" href="#id37" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> when there are restrictions</a><a class="headerlink" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id38" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> when there are restrictions</a><a class="headerlink" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h3>
 <p>Use <a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a> instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -3109,7 +3309,7 @@ FROM pgr_trspVia_withPoints(
 </section>
 </section>
 <section id="migration-of-restrictions">
-<h2><a class="toc-backref" href="#id28" role="doc-backlink">Migration of restrictions</a><a class="headerlink" href="#migration-of-restrictions" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id29" role="doc-backlink">Migration of restrictions</a><a class="headerlink" href="#migration-of-restrictions" title="Link to this heading">¶</a></h2>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">v3.4.0</a></p>
 <p>The structure of the restrictions have changed:</p>
 <section id="old-restrictions-structure">
@@ -3292,7 +3492,7 @@ array <code class="docutils literal notranslate"><span class="pre">_pgr_array_re
 </section>
 </section>
 <section id="see-also">
-<h2><a class="toc-backref" href="#id29" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id30" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Family of functions</span></a></p></li>
 <li><p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints - Category</span></a></p></li>
@@ -3318,7 +3518,7 @@ array <code class="docutils literal notranslate"><span class="pre">_pgr_array_re
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on May 31, 2025.<br/>
+      Last updated on Jun 02, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
