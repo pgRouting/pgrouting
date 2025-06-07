@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(19);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(23) ELSE plan(19) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edges;
@@ -43,6 +43,28 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
+  IF min_version('4.0.0') THEN
+    params = ARRAY[
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
+    '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
+    'ARRAY[5,6]','$$r$$']::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
+    'NULL'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsCostMatrix', params, subs);
+
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    'NULL::BIGINT[]',
+    'NULL'
+    ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsCostMatrix', params, subs);
+  ELSE
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
     '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
@@ -61,6 +83,7 @@ BEGIN
     'NULL::BIGINT[]'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsCostMatrix', params, subs);
+  END IF;
 
 END
 $BODY$
