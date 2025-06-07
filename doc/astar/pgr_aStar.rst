@@ -20,45 +20,45 @@
 
 .. rubric:: Availability
 
-* Version 4.0.0
+.. rubric:: Version 4.0.0
 
-  * Combinations signature promoted to official.
+* Combinations signature promoted to official.
 
-* Version 3.6.0
+.. rubric:: Version 3.6.0
 
-  * Standardizing output columns to |short-generic-result|
+* Standardizing output columns to |short-generic-result|
 
-    * pgr_aStar(One to One) added ``start_vid`` and ``end_vid`` columns.
-    * pgr_aStar(One to Many) added ``end_vid`` column.
-    * pgr_aStar(Many to One) added ``start_vid`` column.
+  * pgr_aStar(One to One) added ``start_vid`` and ``end_vid`` columns.
+  * pgr_aStar(One to Many) added ``end_vid`` column.
+  * pgr_aStar(Many to One) added ``start_vid`` column.
 
-* Version 3.2.0
+.. rubric:: Version 3.2.0
 
-  * New proposed signature:
+* New proposed signature:
 
-    * pgr_aStar(Combinations)
+  * pgr_aStar(Combinations)
 
-* Version 3.0.0
+.. rubric:: Version 3.0.0
 
-  * Function promoted to official.
+* Function promoted to official.
 
-* Version 2.4.0
+.. rubric:: Version 2.4.0
 
-  * New proposed signatures:
+* New proposed signatures:
 
-    * pgr_aStar(One to Many)
-    * pgr_aStar(Many to One)
-    * pgr_aStar(Many to Many)
+  * pgr_aStar(One to Many)
+  * pgr_aStar(Many to One)
+  * pgr_aStar(Many to Many)
 
-* Version 2.3.0
+.. rubric:: Version 2.3.0
 
-  * Signature change on pgr_aStar(One to One)
+* Signature change on pgr_aStar(One to One)
 
-    * Old signature no longer supported
+  * Old signature no longer supported
 
-* Version 2.0.0
+.. rubric:: Version 2.0.0
 
-  * New official function.
+* New official function.
 
 Description
 -------------------------------------------------------------------------------
@@ -259,8 +259,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_short_start
-    :end-before: return_path_short_end
+    :start-after: return_path_complete_start
+    :end-before: return_path_complete_end
 
 Additional Examples
 -------------------------------------------------------------------------------
