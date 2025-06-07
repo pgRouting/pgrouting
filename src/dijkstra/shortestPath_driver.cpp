@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <map>
 #include <set>
+#include <utility>
 
 #include "withPoints/withPoints.hpp"
 #include "cpp_common/pgdata_getters.hpp"
@@ -55,10 +56,27 @@ namespace {
 
 // TODO(vicky) This should be in its own file
 char
-estimate_drivingSide(char driving_side) {
+estimate_drivingSide(char driving_side, bool directed, int32_t which) {
     char d_side = static_cast<char>(tolower(driving_side));
     if (!((d_side == 'r') || (d_side == 'l') || (d_side == 'b'))) {
         d_side = ' ';
+    }
+    if (which == 0) {
+        return ' ';
+    } else if (which == 1) {
+        if (d_side == ' ') {
+            throw std::make_pair(std::string("Invalid value of 'driving side'"),
+                    std::string("Valid value are 'r', 'l', 'b'"));
+        } else if (directed && !(d_side == 'r' || d_side == 'l')) {
+            throw std::make_pair(std::string("Invalid value of 'driving side'"),
+                    std::string("Valid values are for directed graph are: 'r', 'l'"));
+        } else if (!directed && !(d_side == 'b')) {
+            throw std::make_pair(std::string("Invalid value of 'driving side'"),
+                    std::string("Valid value are for iundirected graph is: 'b'"));
+        }
+    } else {
+        /* For the moment its old signature of pgr_withPoints */
+        if (!((d_side == 'r') || (d_side == 'l'))) d_side = 'b';
     }
     return d_side;
 }
@@ -222,7 +240,7 @@ do_shortestPath(
          */
         pgrouting::Pg_points_graph pg_graph(points, edges_of_points,
                 normal,
-                estimate_drivingSide(driving_side),
+                estimate_drivingSide(driving_side, directed, which),
                 directed);
 
         if (pg_graph.has_error()) {
@@ -249,6 +267,7 @@ do_shortestPath(
 
             switch (which) {
                 case 0:
+                case 101:
                 case 1: {
                             paths =  dijkstra(graph, combinations, only_cost, n);
                         }
@@ -259,6 +278,7 @@ do_shortestPath(
 
             switch (which) {
                 case 0:
+                case 101:
                 case 1: {
                             paths =  dijkstra(graph, combinations, only_cost, n);
                         }
@@ -291,6 +311,10 @@ do_shortestPath(
         err << except.what();
         *err_msg = to_pg_msg(err);
         *log_msg = to_pg_msg(log);
+    } catch (const std::pair<std::string, std::string>& ex) {
+        (*return_count) = 0;
+        *err_msg = to_pg_msg(ex.first.c_str());
+        *log_msg = to_pg_msg(ex.second.c_str());
     } catch (const std::string &ex) {
         *err_msg = to_pg_msg(ex);
         *log_msg = !hint.empty()? to_pg_msg(hint) : to_pg_msg(log);
