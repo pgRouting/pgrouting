@@ -31,13 +31,26 @@ BEGIN
     RETURN;
   END IF;
 
+  IF min_version('4.0.0') THEN
 
-  RETURN query SELECT is_empty(
-    'SELECT agg_cost FROM pgr_withPointsCost(
-      ''SELECT id, source, target, cost, reverse_cost FROM edges'',
-      ''SELECT pid, edge_id, fraction, side from pointsOfInterest'',
-      ''SELECT * FROM combinations WHERE source IN (-1)'' ) '
-  );
+    RETURN query SELECT is_empty( $$
+      SELECT agg_cost FROM pgr_withPointsCost(
+        'SELECT id, source, target, cost, reverse_cost FROM edges',
+        'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+        'SELECT * FROM combinations WHERE source IN (-1)', 'r' )
+      $$);
+
+  ELSE
+
+    RETURN query SELECT is_empty( $$
+      SELECT agg_cost FROM pgr_withPointsCost(
+        'SELECT id, source, target, cost, reverse_cost FROM edges',
+        'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+        'SELECT * FROM combinations WHERE source IN (-1)')
+      $$);
+
+  END IF;
+
 END
 $BODY$
 language plpgsql;
