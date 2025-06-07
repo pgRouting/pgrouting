@@ -59,7 +59,7 @@ SELECT * FROM pgr_withPoints(
         (SELECT geom FROM pointsOfInterest WHERE pid = 5),
         0.5, cap => 2)
   $p$,
-  1, ARRAY[-1, -2]);
+  1, ARRAY[-1, -2], 'r');
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         1 |      -2 |    1 |    6 |    1 |        0
