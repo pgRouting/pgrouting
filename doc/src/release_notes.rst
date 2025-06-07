@@ -62,7 +62,13 @@ Functions promoted to official
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
-* pgr_withPointsCostMatrix
+* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+  pgr_withPointsCostMatrix
+
+  .. include:: pgr_withPointsCostMatrix.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_withPointsDD
 * pgr_withPointsKSP
 * pgr_withPointsVia
