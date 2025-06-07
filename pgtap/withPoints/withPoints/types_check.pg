@@ -1,3 +1,4 @@
+
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
@@ -19,92 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-SET client_min_messages TO WARNING;
 
-SELECT plan(13);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(13) WHEN min_version('3.2.0') THEN plan(12) ELSE PLAN(10) END;
 
-SELECT has_function('pgr_withpoints');
-
-
-SELECT has_function('pgr_withpoints', ARRAY['text','text','bigint','bigint','boolean','character','boolean']);
-SELECT has_function('pgr_withpoints', ARRAY['text','text','bigint','anyarray','boolean','character','boolean']);
-SELECT has_function('pgr_withpoints', ARRAY['text','text','anyarray','bigint','boolean','character','boolean']);
-SELECT has_function('pgr_withpoints', ARRAY['text','text','anyarray','anyarray','boolean','character','boolean']);
-
-SELECT function_returns('pgr_withpoints', ARRAY['text','text','bigint','bigint','boolean','character','boolean'],'setof record');
-SELECT function_returns('pgr_withpoints', ARRAY['text','text','bigint','anyarray','boolean','character','boolean'],'setof record');
-SELECT function_returns('pgr_withpoints', ARRAY['text','text','anyarray','bigint','boolean','character','boolean'],'setof record');
-SELECT function_returns('pgr_withpoints', ARRAY['text','text','anyarray','anyarray','boolean','character','boolean'],'setof record');
-
-SELECT CASE
-WHEN min_version('3.2.0') THEN
-  collect_tap(
-    has_function('pgr_withpoints', ARRAY['text','text','text','boolean','character','boolean']),
-    function_returns('pgr_withpoints', ARRAY['text','text','text','boolean','character','boolean'],'setof record')
-  )
-ELSE
-  skip(2, 'Combinations signature added on 3.2.0')
-END;
-
-SELECT CASE
-WHEN min_version('4.0.0') THEN
-  collect_tap(
-    function_args_eq('pgr_withpoints',
-      $$VALUES
-      ('{"","","",   directed,driving_side,details,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost}'::TEXT[]),
-      ('{"","","","",directed,driving_side,details,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost}')
-      $$),
-
-    function_types_eq('pgr_withpoints',
-      $$VALUES
-      ('{text,text,anyarray,int8,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,text,int8,int8,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
-      ('{text,text,int8,anyarray,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
-      ('{text,text,anyarray,anyarray,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
-      ('{text,text,text,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}')
-      $$)
-  )
-WHEN min_version('3.2.0') THEN
-  collect_tap(
-
-    function_args_eq('pgr_withpoints',
-      $$VALUES
-      ('{"","","","","directed","driving_side","details","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","","directed","driving_side","details","seq","path_seq","end_pid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","","directed","driving_side","details","seq","path_seq","start_pid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","","directed","driving_side","details","seq","path_seq","start_pid","end_pid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","driving_side","details","seq","path_seq","start_pid","end_pid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$),
-
-    function_types_eq('pgr_withpoints',
-      $$VALUES
-      ('{text,text,int8,int8,bool,bpchar,bool,int4,int4,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,text,anyarray,anyarray,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}'),
-      ('{text,text,anyarray,int8,bool,bpchar,bool,int4,int4,int8,int8,int8,float8,float8}'),
-      ('{text,text,int8,anyarray,bool,bpchar,bool,int4,int4,int8,int8,int8,float8,float8}'),
-      ('{text,text,text,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}')
-      $$)
-  )
-ELSE
-  collect_tap(
-
-    function_args_eq('pgr_withpoints',
-      $$VALUES
-      ('{"","","","","directed","driving_side","details","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","","directed","driving_side","details","seq","path_seq","end_pid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","","directed","driving_side","details","seq","path_seq","start_pid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","","directed","driving_side","details","seq","path_seq","start_pid","end_pid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$),
-
-    function_types_eq('pgr_withpoints',
-      $$VALUES
-      ('{text,text,int8,int8,bool,bpchar,bool,int4,int4,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,text,int8,anyarray,bool,bpchar,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,text,anyarray,int8,bool,bpchar,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,text,anyarray,anyarray,bool,bpchar,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
-      $$)
-  )
-END;
+SELECT single_path_types_check('pgr_withpoints', '{"",directed,details}'::TEXT[], '{bpchar,bool,bool}'::TEXT[], standard_v => '4.0.0');
 
 SELECT finish();
 ROLLBACK;

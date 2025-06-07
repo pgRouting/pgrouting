@@ -26,34 +26,49 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-IF NOT min_version('3.2.0') THEN
-  RETURN QUERY SELECT skip(1,'Issue fixed on 3.2.0');
-  RETURN;
-END IF;
+  IF NOT min_version('3.2.0') THEN
+    RETURN QUERY SELECT skip(1,'Issue fixed on 3.2.0');
+    RETURN;
+  END IF;
 
-PREPARE q1 AS
-SELECT * FROM pgr_withPoints (
-    'SELECT id, source, target, cost, reverse_cost FROM edges',
-    'SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (-1)',
-    1, -2
-);
+  IF min_version('4.0.0') THEN
 
-RETURN QUERY
-SELECT * FROM lives_ok('q1');
-RETURN QUERY
-SELECT * FROM is_empty('q1');
+    PREPARE q1 AS
+    SELECT * FROM pgr_withPoints (
+      'SELECT id, source, target, cost, reverse_cost FROM edges',
+      'SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (-1)',
+      1, -2, 'r'
+    );
 
-PREPARE q2 AS
-SELECT * FROM pgr_withPoints (
-    'SELECT id, source, target, cost, reverse_cost FROM edges',
-    'SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (-1)',
-    5, 6
-);
+    PREPARE q2 AS
+    SELECT * FROM pgr_withPoints (
+      'SELECT id, source, target, cost, reverse_cost FROM edges',
+      'SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (-1)',
+      5, 6, 'r'
+    );
 
-RETURN QUERY
-SELECT * FROM lives_ok('q2');
-RETURN QUERY
-SELECT * FROM isnt_empty('q2');
+  ELSE
+
+    PREPARE q1 AS
+    SELECT * FROM pgr_withPoints (
+      'SELECT id, source, target, cost, reverse_cost FROM edges',
+      'SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (-1)',
+      1, -2
+    );
+
+    PREPARE q2 AS
+    SELECT * FROM pgr_withPoints (
+      'SELECT id, source, target, cost, reverse_cost FROM edges',
+      'SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (-1)',
+      5, 6
+    );
+
+  END IF;
+
+  RETURN QUERY SELECT * FROM lives_ok('q1');
+  RETURN QUERY SELECT * FROM is_empty('q1');
+  RETURN QUERY SELECT * FROM lives_ok('q2');
+  RETURN QUERY SELECT * FROM isnt_empty('q2');
 
 END;
 $BODY$

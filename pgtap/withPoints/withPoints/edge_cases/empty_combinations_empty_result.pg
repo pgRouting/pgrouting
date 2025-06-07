@@ -32,12 +32,26 @@ BEGIN
   END IF;
 
 
-  RETURN query SELECT is_empty(
-    'SELECT seq FROM pgr_withPoints(
-      ''SELECT id, source, target, cost, reverse_cost FROM edges'',
-      ''SELECT pid, edge_id, fraction, side from pointsOfInterest'',
-      ''SELECT * FROM combinations WHERE source IN (-1)'' ) '
-  );
+  IF min_version('4.0.0') THEN
+
+    RETURN query SELECT is_empty(
+      'SELECT seq FROM pgr_withPoints(
+        ''SELECT id, source, target, cost, reverse_cost FROM edges'',
+        ''SELECT pid, edge_id, fraction, side from pointsOfInterest'',
+        ''SELECT * FROM combinations WHERE source IN (-1)'', ''r'' ) '
+    );
+
+  ELSE
+
+    RETURN query SELECT is_empty(
+      'SELECT seq FROM pgr_withPoints(
+        ''SELECT id, source, target, cost, reverse_cost FROM edges'',
+        ''SELECT pid, edge_id, fraction, side from pointsOfInterest'',
+        ''SELECT * FROM combinations WHERE source IN (-1)'' ) '
+    );
+  END IF;
+
+
 END
 $BODY$
 language plpgsql;

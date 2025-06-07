@@ -26,31 +26,119 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-IF min_version('4.0.0') THEN
+  IF min_version('4.0.0') THEN
 
-  PREPARE q1 AS
-  WITH the_union AS (
+    PREPARE q1 AS
+    WITH the_union AS (
       (SELECT path_seq, -2 AS end_vid, node, agg_cost FROM pgr_withPoints(
-              'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-              'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-              -1, ARRAY[-2],
-              driving_side := 'r',
-              directed := true,
-              details := true))
+          'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+          'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+          -1, ARRAY[-2],
+          'r',
+          directed := true,
+          details := true))
       UNION ALL
       (SELECT path_seq, -5 AS end_vid, node, agg_cost FROM pgr_withPoints(
-              'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-              'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-              -1, ARRAY[-5],
-              driving_side := 'r',
-              directed := true,
-              details := true))
-  ),
-  the_ordered AS (SELECT * FROM the_union ORDER BY end_vid, path_seq)
-  select row_number() OVER() AS seq, * FROM the_ordered;
+          'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+          'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+          -1, ARRAY[-5],
+          'r',
+          directed := true,
+          details := true))
+    ),
+    the_ordered AS (SELECT * FROM the_union ORDER BY end_vid, path_seq)
+    select row_number() OVER() AS seq, * FROM the_ordered;
 
-  PREPARE q2 AS
-  SELECT seq, path_seq, end_vid, node, agg_cost FROM pgr_withPoints(
+    PREPARE q2 AS
+    SELECT seq, path_seq, end_vid, node, agg_cost FROM pgr_withPoints(
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+      'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+      -1, ARRAY[-2, -5],
+      'r',
+      directed := true,
+      details := true);
+
+    PREPARE q3 AS
+    SELECT seq, path_seq, end_vid, node, agg_cost FROM pgr_withPoints(
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+      'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+      -1, ARRAY[-5, -2],
+      'r',
+      directed := true,
+      details := true);
+
+    PREPARE q4 AS
+    SELECT seq, path_seq, end_vid, node, agg_cost FROM pgr_withPoints(
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+      'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+      -1, ARRAY[-5, -2, -2, -2, -5, -5, -2],
+      'r',
+      directed := true,
+      details := true);
+
+
+
+    PREPARE q5 AS
+    SELECT seq, path_seq, -end_vid, node, agg_cost FROM pgr_withPoints(
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+      '(SELECT pid, edge_id, fraction, side from pointsOfInterest) UNION ALL (SELECT pid, edge_id, fraction, side from pointsOfInterest)',
+      3, ARRAY[5, 1, 1, 5, 5, 1],
+      'r',
+      directed := true,
+      details := true);
+
+
+    PREPARE q6 AS
+    SELECT seq, path_seq, -end_vid, node, agg_cost FROM pgr_withPoints(
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+      '(SELECT pid, edge_id, fraction, side from pointsOfInterest) UNION ALL (SELECT 1 as pid, edge_id, fraction, side from pointsOfInterest)',
+      3, ARRAY[5, 1, 1, 5, 5, 1],
+      'r',
+      directed := true,
+      details := true);
+
+    RETURN QUERY SELECT throws_ok('q6', 'XX000',
+      'Unexpected point(s) with same pid but different edge/fraction/side combination found.',
+      'Same id with different data throws');
+
+    PREPARE q7 AS
+    SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+      '(SELECT pid, edge_id, fraction, side from pointsOfInterest) UNION ALL (SELECT 1 as pid, edge_id, fraction, side from pointsOfInterest)',
+      3, 5,
+      'r',
+      directed := true,
+      details := true);
+
+    RETURN QUERY SELECT throws_ok('q7', 'XX000',
+      'Unexpected point(s) with same pid but different edge/fraction/side combination found.',
+      'Same id with different data throws');
+
+  ELSE
+
+    PREPARE q1 AS
+    WITH the_union AS (
+      (SELECT path_seq, -2 AS end_pid, node, agg_cost FROM pgr_withPoints(
+          'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+          'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+          -1, ARRAY[-2],
+          driving_side := 'r',
+          directed := true,
+          details := true))
+      UNION ALL
+      (SELECT path_seq, -5 AS end_pid, node, agg_cost FROM pgr_withPoints(
+          'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+          'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+          -1, ARRAY[-5],
+          driving_side := 'r',
+          directed := true,
+          details := true))
+    ),
+    the_ordered AS (SELECT * FROM the_union ORDER BY end_pid, path_seq)
+    select row_number() OVER() AS seq, * FROM the_ordered;
+
+    PREPARE q2 AS
+    SELECT seq, path_seq, end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
       'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       'SELECT pid, edge_id, fraction, side from pointsOfInterest',
       -1, ARRAY[-2, -5],
@@ -58,8 +146,8 @@ IF min_version('4.0.0') THEN
       directed := true,
       details := true);
 
-  PREPARE q3 AS
-  SELECT seq, path_seq, end_vid, node, agg_cost FROM pgr_withPoints(
+    PREPARE q3 AS
+    SELECT seq, path_seq, end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
       'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       'SELECT pid, edge_id, fraction, side from pointsOfInterest',
       -1, ARRAY[-5, -2],
@@ -67,8 +155,8 @@ IF min_version('4.0.0') THEN
       directed := true,
       details := true);
 
-  PREPARE q4 AS
-  SELECT seq, path_seq, end_vid, node, agg_cost FROM pgr_withPoints(
+    PREPARE q4 AS
+    SELECT seq, path_seq, end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
       'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       'SELECT pid, edge_id, fraction, side from pointsOfInterest',
       -1, ARRAY[-5, -2, -2, -2, -5, -5, -2],
@@ -77,15 +165,9 @@ IF min_version('4.0.0') THEN
       details := true);
 
 
-  RETURN QUERY SELECT set_eq('q2', 'q1', '1: From point 1 to 2 and 5 the union vs 2,5 order');
-  RETURN QUERY SELECT set_eq('q3', 'q1', '2: From point 1 to 2 and 5 the union vs 5,2 order');
-  RETURN QUERY SELECT set_eq('q4', 'q1', '3: From point 1 to 2 and 5 the union vs 5,2 eliminate repetitions');
-  RETURN QUERY SELECT set_eq('q2', 'q3', '4: From point 1 to 2 and 5 the 2,5 vs 5,2 order');
-  RETURN QUERY SELECT set_eq('q2', 'q4', '5: From point 1 to 2 and 5 the 2,5 vs 5,2 eliminate repetitions');
 
-
-  PREPARE q5 AS
-  SELECT seq, path_seq, -end_vid, node, agg_cost FROM pgr_withPoints(
+    PREPARE q5 AS
+    SELECT seq, path_seq, -end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
       'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       '(SELECT pid, edge_id, fraction, side from pointsOfInterest) UNION ALL (SELECT pid, edge_id, fraction, side from pointsOfInterest)',
       3, ARRAY[5, 1, 1, 5, 5, 1],
@@ -93,10 +175,8 @@ IF min_version('4.0.0') THEN
       directed := true,
       details := true);
 
-  RETURN QUERY SELECT lives_ok('q5');
-
-  PREPARE q6 AS
-  SELECT seq, path_seq, -end_vid, node, agg_cost FROM pgr_withPoints(
+    PREPARE q6 AS
+    SELECT seq, path_seq, -end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
       'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       '(SELECT pid, edge_id, fraction, side from pointsOfInterest) UNION ALL (SELECT 1 as pid, edge_id, fraction, side from pointsOfInterest)',
       3, ARRAY[5, 1, 1, 5, 5, 1],
@@ -104,12 +184,12 @@ IF min_version('4.0.0') THEN
       directed := true,
       details := true);
 
-  RETURN QUERY SELECT throws_ok('q6', 'XX000',
+    RETURN QUERY SELECT throws_ok('q6', 'XX000',
       'Unexpected point(s) with same pid but different edge/fraction/side combination found.',
       'Same id with different data throws');
 
-  PREPARE q7 AS
-  SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
+    PREPARE q7 AS
+    SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
       'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       '(SELECT pid, edge_id, fraction, side from pointsOfInterest) UNION ALL (SELECT 1 as pid, edge_id, fraction, side from pointsOfInterest)',
       3, 5,
@@ -117,105 +197,19 @@ IF min_version('4.0.0') THEN
       directed := true,
       details := true);
 
-  RETURN QUERY SELECT throws_ok('q7', 'XX000',
+    RETURN QUERY SELECT throws_ok('q7', 'XX000',
       'Unexpected point(s) with same pid but different edge/fraction/side combination found.',
       'Same id with different data throws');
 
-ELSE
-PREPARE q1 AS
-WITH the_union AS (
-    (SELECT path_seq, -2 AS end_pid, node, agg_cost FROM pgr_withPoints(
-            'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-            'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-            -1, ARRAY[-2],
-            driving_side := 'r',
-            directed := true,
-            details := true))
-    UNION ALL
-    (SELECT path_seq, -5 AS end_pid, node, agg_cost FROM pgr_withPoints(
-            'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-            'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-            -1, ARRAY[-5],
-            driving_side := 'r',
-            directed := true,
-            details := true))
-),
-the_ordered AS (SELECT * FROM the_union ORDER BY end_pid, path_seq)
-select row_number() OVER() AS seq, * FROM the_ordered;
+  END IF;
 
-PREPARE q2 AS
-SELECT seq, path_seq, end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, ARRAY[-2, -5],
-    driving_side := 'r',
-    directed := true,
-    details := true);
+  RETURN QUERY SELECT set_eq('q2', 'q1', '1: From point 1 to 2 and 5 the union vs 2,5 order');
+  RETURN QUERY SELECT set_eq('q3', 'q1', '2: From point 1 to 2 and 5 the union vs 5,2 order');
+  RETURN QUERY SELECT set_eq('q4', 'q1', '3: From point 1 to 2 and 5 the union vs 5,2 eliminate repetitions');
+  RETURN QUERY SELECT set_eq('q2', 'q3', '4: From point 1 to 2 and 5 the 2,5 vs 5,2 order');
+  RETURN QUERY SELECT set_eq('q2', 'q4', '5: From point 1 to 2 and 5 the 2,5 vs 5,2 eliminate repetitions');
+  RETURN QUERY SELECT lives_ok('q5');
 
-PREPARE q3 AS
-SELECT seq, path_seq, end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, ARRAY[-5, -2],
-    driving_side := 'r',
-    directed := true,
-    details := true);
-
-PREPARE q4 AS
-SELECT seq, path_seq, end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, ARRAY[-5, -2, -2, -2, -5, -5, -2],
-    driving_side := 'r',
-    directed := true,
-    details := true);
-
-
-RETURN QUERY SELECT set_eq('q2', 'q1', '1: From point 1 to 2 and 5 the union vs 2,5 order');
-RETURN QUERY SELECT set_eq('q3', 'q1', '2: From point 1 to 2 and 5 the union vs 5,2 order');
-RETURN QUERY SELECT set_eq('q4', 'q1', '3: From point 1 to 2 and 5 the union vs 5,2 eliminate repetitions');
-RETURN QUERY SELECT set_eq('q2', 'q3', '4: From point 1 to 2 and 5 the 2,5 vs 5,2 order');
-RETURN QUERY SELECT set_eq('q2', 'q4', '5: From point 1 to 2 and 5 the 2,5 vs 5,2 eliminate repetitions');
-
-
-PREPARE q5 AS
-SELECT seq, path_seq, -end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-    '(SELECT pid, edge_id, fraction, side from pointsOfInterest) UNION ALL (SELECT pid, edge_id, fraction, side from pointsOfInterest)',
-    3, ARRAY[5, 1, 1, 5, 5, 1],
-    driving_side := 'r',
-    directed := true,
-    details := true);
-
-RETURN QUERY SELECT lives_ok('q5');
-
-PREPARE q6 AS
-SELECT seq, path_seq, -end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-    '(SELECT pid, edge_id, fraction, side from pointsOfInterest) UNION ALL (SELECT 1 as pid, edge_id, fraction, side from pointsOfInterest)',
-    3, ARRAY[5, 1, 1, 5, 5, 1],
-    driving_side := 'r',
-    directed := true,
-    details := true);
-
-RETURN QUERY SELECT throws_ok('q6', 'XX000',
-    'Unexpected point(s) with same pid but different edge/fraction/side combination found.',
-    'Same id with different data throws');
-
-PREPARE q7 AS
-SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-    '(SELECT pid, edge_id, fraction, side from pointsOfInterest) UNION ALL (SELECT 1 as pid, edge_id, fraction, side from pointsOfInterest)',
-    3, 5,
-    driving_side := 'r',
-    directed := true,
-    details := true);
-
-RETURN QUERY SELECT throws_ok('q7', 'XX000',
-    'Unexpected point(s) with same pid but different edge/fraction/side combination found.',
-    'Same id with different data throws');
-
-END IF;
 END;
 $BODY$
 language plpgsql;
