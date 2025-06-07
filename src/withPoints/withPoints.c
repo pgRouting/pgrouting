@@ -160,9 +160,15 @@ _pgr_withpoints_v4(PG_FUNCTION_ARGS) {
     }
 }
 
+/* Deprecated code starts here
+ * This code is used on v3.8 and under
+ *
+ * TODO(v4.2) define SHOWMSG
+ * TODO(v4.3) change to WARNING
+ * TODO(v5) Move to legacy
+ */
 PGDLLEXPORT Datum _pgr_withpoints(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_withpoints);
-
 PGDLLEXPORT Datum
 _pgr_withpoints(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -170,6 +176,14 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
 
     Path_rt  *result_tuples = NULL;
     size_t result_count = 0;
+
+#ifdef SHOWMSG
+    ereport(NOTICE, (
+                errcode(ERRCODE_WARNING_DEPRECATED_FEATURE),
+                errmsg("A stored procedure is using deprecated C internal function '%s'", __func__),
+                errdetail("Library function '%s' was deprecated in pgRouting %s", __func__, "4.0.0"),
+                errhint("Consider upgrade pgRouting")));
+#endif
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -190,16 +204,16 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_ARRAYTYPE_P(3),
 
-                PG_GETARG_BOOL(4),
-                PG_GETARG_BOOL(7),
-                PG_GETARG_BOOL(8),
+                PG_GETARG_BOOL(4),  // directed
+                PG_GETARG_BOOL(7),  // only cost
+                PG_GETARG_BOOL(8),  // normal
 
-                0, true,
+                0, true,  // n-goals, normal
 
-                text_to_cstring(PG_GETARG_TEXT_P(5)),
-                PG_GETARG_BOOL(6),
+                text_to_cstring(PG_GETARG_TEXT_P(5)),  // driving side
+                PG_GETARG_BOOL(6),  // details
 
-                1,  // which
+                101,  // which
                 &result_tuples,
                 &result_count);
 
@@ -222,7 +236,7 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
 
                 text_to_cstring(PG_GETARG_TEXT_P(4)),
                 PG_GETARG_BOOL(5),
-                1,  // which
+                101,  // which
                 &result_tuples,
                 &result_count);
         }
