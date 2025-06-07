@@ -23,9 +23,24 @@ UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(84);
 
 
--- ONE MATRIX
-SELECT style_dijkstra('pgr_withPointsCostMatrix(', ', $$SELECT * from pointsOfInterest$$, ARRAY[1,2,3,4], true)');
-SELECT innerquery_points('pgr_withPointsCostMatrix($$SELECT * FROM edges$$,', ', ARRAY[1,2,3,4], true)');
+CREATE OR REPLACE FUNCTION inner_query()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF min_version('4.0.0') THEN
+    RETURN QUERY SELECT style_dijkstra('pgr_withPointsCostMatrix(', ', $$SELECT * from pointsOfInterest$$, ARRAY[1,2,3,4], $$r$$, true)');
+    RETURN QUERY SELECT  innerquery_points('pgr_withPointsCostMatrix($$SELECT * FROM edges$$,', ', ARRAY[1,2,3,4], $$r$$, true)');
+  ELSE
+    RETURN QUERY SELECT   style_dijkstra('pgr_withPointsCostMatrix(', ', $$SELECT * from pointsOfInterest$$, ARRAY[1,2,3,4], true)');
+    RETURN QUERY SELECT  innerquery_points('pgr_withPointsCostMatrix($$SELECT * FROM edges$$,', ', ARRAY[1,2,3,4], true)');
+  END IF;
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+SELECT inner_query();
 
 SELECT finish();
 ROLLBACK;
