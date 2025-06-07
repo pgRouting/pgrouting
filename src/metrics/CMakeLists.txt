@@ -3,4 +3,5 @@ ADD_LIBRARY(metrics OBJECT
 		betweennessCentrality_driver.cpp
         bandwidth.c
         bandwidth_driver.cpp
+        bandwidth_process.cpp
     )
