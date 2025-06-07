@@ -22,17 +22,17 @@
    :start-after: warning-begin
    :end-before: end-warning
 
-.. rubric:: Availability
+.. rubric:: Availability:
 
-* Version 3.2.0
+.. rubric:: Version 3.2.0
 
-  * New experimental signature:
+* New experimental signature:
 
-    * pgr_bellmanFord(Combinations)
+  * pgr_bellmanFord(Combinations)
 
-* Version 3.0.0
+.. rubric:: Version 3.0.0
 
-  * New experimental function.
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -124,8 +124,8 @@ One to Many
    | Returns set of |result-1-m|
    | OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertices :math:`\{ 10, 17\}` on a
-          **directed** graph
+:Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
+          graph
 
 .. literalinclude:: bellmanFord.queries
    :start-after: -- q3
@@ -266,9 +266,6 @@ See Also
 * :doc:`sampledata`
 * `Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__
 * https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
-
-   Boost Graph Inside
-
 
 .. rubric:: Indices and tables
 

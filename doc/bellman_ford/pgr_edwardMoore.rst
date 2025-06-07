@@ -25,15 +25,15 @@
 
 .. rubric:: Availability
 
-* Version 3.2.0
+.. rubric:: Version 3.2.0
 
-  * New experimental signature:
+* New experimental signature:
 
-    * pgr_edwardMoore(Combinations)
+  * pgr_edwardMoore(Combinations)
 
-* Version 3.0.0
+.. rubric:: Version 3.0.0
 
-  * New experimental function.
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
