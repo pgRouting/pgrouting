@@ -35,7 +35,11 @@ points_sql TEXT;
 trsp_sql TEXT;
 result_columns TEXT;
 result_columns_vid TEXT;
-arr TEXT;
+drv_right TEXT := $$, 'r'$$;
+drv_both TEXT := $$, 'b'$$;
+tdrv_right TEXT := $$,  driving_side => 'r'$$;
+tdrv_both TEXT := $$,  driving_side => 'b'$$;
+arr TEXT := 'ARRAY[1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,16,17,18]';
 BEGIN
   IF NOT min_version('3.4.0') THEN
     RETURN QUERY SELECT skip(1, 'Signature added on 3.4.0');
@@ -47,40 +51,41 @@ BEGIN
 
   IF min_version('4.0.0') THEN
     result_columns_vid = replace(result_columns_vid, 'pid', 'vid');
+  ELSE
+    drv_right := $$, driving_side => 'r'$$;
+    drv_both := $$, driving_side => 'b'$$;
   END IF;
-
-  points := 'SELECT * FROM pointsofinterest';
+  points := 'SELECT * FROM pointsofinterest WHERE pid IN (-1)';
   empty_restrictions := 'SELECT * FROM restrictions WHERE id > 10';
   with_reverse := 'SELECT * FROM edges';
   no_reverse := 'SELECT id, source, target, cost FROM edges';
-  arr := 'ARRAY[1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,16,17,18]';
 
   points_sql := 'SELECT ' || result_columns_vid || ' FROM pgr_withpoints($$' || with_reverse || '$$, $$' || points || '$$, '
-    || arr || ', ' || arr || ', directed => true)';
+    || arr || ', ' || arr ||  drv_right || ', directed => true)';
   trsp_sql := 'SELECT ' || result_columns || ' FROM pgr_trsp_withPoints($$' || with_reverse || '$$, $$'
     || empty_restrictions || '$$, $$' || points || '$$, '
-    || arr || ', ' || arr || ', directed => true)';
+    || arr || ', ' || arr ||  tdrv_right || ', directed => true)';
   RETURN query SELECT set_eq(trsp_sql, points_sql, trsp_sql);
 
   points_sql := 'SELECT ' || result_columns_vid || ' FROM pgr_withpoints($$' || with_reverse || '$$, $$' || points || '$$, '
-    || arr || ', ' || arr || ', directed => false)';
+    || arr || ', ' || arr || drv_both || ', directed => false)';
   trsp_sql := 'SELECT ' || result_columns || ' FROM pgr_trsp_withPoints($$' || with_reverse || '$$, $$'
     || empty_restrictions || '$$, $$' || points || '$$, '
-    || arr || ', ' || arr || ', directed => false)';
+    || arr || ', ' || arr || tdrv_both || ', directed => false)';
   RETURN query SELECT set_eq(trsp_sql, points_sql, trsp_sql);
 
   points_sql := 'SELECT ' || result_columns_vid || ' FROM pgr_withpoints($$' || no_reverse || '$$, $$' || points || '$$, '
-    || arr || ', ' || arr || ', directed => true)';
+    || arr || ', ' || arr || drv_right || ', directed => true)';
   trsp_sql := 'SELECT ' || result_columns || ' FROM pgr_trsp_withPoints($$' || no_reverse || '$$, $$'
     || empty_restrictions || '$$, $$' || points || '$$, '
-    || arr || ', ' || arr || ', directed => true)';
+    || arr || ', ' || arr || tdrv_right || ', directed => true)';
   RETURN query SELECT set_eq(trsp_sql, points_sql, trsp_sql);
 
   points_sql := 'SELECT ' || result_columns_vid || ' FROM pgr_withpoints($$' || no_reverse || '$$, $$' || points || '$$, '
-    || arr || ', ' || arr || ', directed => false)';
+    || arr || ', ' || arr || drv_both || ', directed => false)';
   trsp_sql := 'SELECT ' || result_columns || ' FROM pgr_trsp_withPoints($$' || no_reverse || '$$, $$'
     || empty_restrictions || '$$, $$' || points || '$$, '
-    || arr || ', ' || arr || ', directed => false)';
+    || arr || ', ' || arr || tdrv_both || ', directed => false)';
   RETURN query SELECT set_eq(trsp_sql, points_sql, trsp_sql);
 
 RETURN;
