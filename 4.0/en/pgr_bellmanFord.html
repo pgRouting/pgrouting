@@ -214,7 +214,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span> <span class="pre">-</span> <span class="pre">Experimental</span></code><a class="headerlink" href="#pgr-bellmanford-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> — Shortest path using Bellman-Ford algorithm.</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="1e36a114-8235-4c56-b94e-a804935a0721" name="1e36a114-8235-4c56-b94e-a804935a0721" type="checkbox"><label class="sphinx_collapse__label" for="1e36a114-8235-4c56-b94e-a804935a0721"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="8fef59c1-c847-422e-a80e-b8497a3ed0bc" name="8fef59c1-c847-422e-a80e-b8497a3ed0bc" type="checkbox"><label class="sphinx_collapse__label" for="8fef59c1-c847-422e-a80e-b8497a3ed0bc"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Possible server crash</p>
@@ -247,22 +247,18 @@
 </div>
 </div>
 </div>
-<p class="rubric">Availability</p>
+<p class="rubric">Availability:</p>
+<p class="rubric">Version 3.2.0</p>
 <ul class="simple">
-<li><p>Version 3.2.0</p>
-<ul>
 <li><p>New experimental signature:</p>
 <ul>
 <li><p>pgr_bellmanFord(Combinations)</p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Version 3.0.0</p>
-<ul>
+<p class="rubric">Version 3.0.0</p>
+<ul class="simple">
 <li><p>New experimental function.</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -369,8 +365,8 @@ The agg_cost is <span class="math notranslate nohighlight">\(\infty\)</span>.</p
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(6\)</span> to vertices <span class="math notranslate nohighlight">\(\{ 10, 17\}\)</span> on a
-<strong>directed</strong> graph</p>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(6\)</span> to vertices <span class="math notranslate nohighlight">\(\{10, 17\}\)</span> on a <strong>directed</strong>
+graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
@@ -862,14 +858,10 @@ path sequence.</p></td>
 </section>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html">Boost: Bellman Ford</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm">https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm</a></p>
-<blockquote>
-<div><p>Boost Graph Inside</p>
-</div></blockquote>
-</li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm">https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm</a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -892,7 +884,7 @@ path sequence.</p></td>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Jun 02, 2025.<br/>
+      Last updated on Jun 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

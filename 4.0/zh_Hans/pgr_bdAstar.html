@@ -220,14 +220,12 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code><a class="headerlink" href="#pgr-bdastar" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> — 使用双向 A* 算法的最短路径。</p>
 <p class="rubric">可用性</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>Version 4.0.0</p>
-<ul>
 <li><p>组合签名已升级为正式版本。</p></li>
 </ul>
-</li>
-<li><p>版本3.6.0</p>
-<ul>
+<p class="rubric">版本3.6.0</p>
+<ul class="simple">
 <li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
 <li><p>pgr_bdAstar(One to One) 增加了 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 列。</p></li>
@@ -236,23 +234,20 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>版本3.2.0</p>
-<ul>
+<p class="rubric">版本3.2.0</p>
+<ul class="simple">
 <li><p>新提议的签名：</p>
 <ul>
 <li><p>pgr_bdAstar(组合)</p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>版本3.0.0</p>
-<ul>
+<p class="rubric">版本3.0.0</p>
+<ul class="simple">
 <li><p>函数正式发布。</p></li>
 </ul>
-</li>
-<li><p>版本2.5.0</p>
-<ul>
+<p class="rubric">版本2.5.0</p>
+<ul class="simple">
 <li><p>新提议的签名：</p>
 <ul>
 <li><p>pgr_bdAstar(One to Many)</p></li>
@@ -266,12 +261,9 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>版本2.0.0</p>
-<ul>
+<p class="rubric">版本2.0.0</p>
+<ul class="simple">
 <li><p>新官方函数说明。</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -786,7 +778,7 @@
 </section>
 <section id="result-columns">
 <h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -810,21 +802,11 @@
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>起始顶点的标识符。 当查询中有多个起始向量时返回。</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#many-to-one">Many to One</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
-</ul>
-</td>
+<td><p>当前路径起始顶点的标识符。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>结束顶点的标识符。 当查询中有多个结束顶点时返回。</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#one-to-many">One to Many</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
-</ul>
-</td>
+<td><p>当前路径结束顶点的标识符。</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -980,7 +962,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 02, 2025.<br/>
+      Last updated on 6月 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

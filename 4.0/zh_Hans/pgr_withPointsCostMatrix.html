@@ -214,21 +214,71 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code><a class="headerlink" href="#pgr-withpointscostmatrix" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - 使用 <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> 计算成本矩阵。</p>
 <p class="rubric">可用性</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>Version 4.0.0</p>
-<ul>
 <li><p>函数正式发布。</p></li>
-</ul>
-</li>
-<li><p>版本 2.2.0</p>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
+unnamed positional.</p>
 <ul>
-<li><p>新提议的函数。</p></li>
+<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
+<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
 </ul>
 </li>
+</ul>
+<p class="rubric">版本 2.2.0</p>
+<ul class="simple">
+<li><p>新提议的函数。</p></li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>使用 Dijkstra 算法，计算并返回成本矩阵。</p>
+<p>Modify the graph to include points defined by points_sql.
+Using Dijkstra algorithm, return calculate and return a cost matrix.</p>
+<p>主要特点是：</p>
+<ul class="simple">
+<li><p>仅在具有正成本的边进行处理。</p></li>
+<li><p>它不返回路径。</p></li>
+<li><p>返回修改图中顶点对组合的最短路径成本之和。</p>
+<ul>
+<li><p>The returned values are in the form of a set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code>.</p></li>
+</ul>
+</li>
+<li><p>图的顶点是：</p>
+<ul>
+<li><p><strong>positive</strong> when it belongs to the edges sql</p></li>
+<li><p><strong>negative</strong> when it belongs to the points sql</p></li>
+</ul>
+</li>
+<li><p>当存在路径时返回值。</p>
+<ul>
+<li><p>当起始顶点和结束顶点相同时，就没有路径。</p>
+<ul>
+<li><p>非包含值 <cite>(v, v)</cite> 中的 <cite>agg_cost</cite> 为 <cite>0</cite></p></li>
+</ul>
+</li>
+<li><p>当起始顶点和结束顶点不同且不存在路径时：</p>
+<ul>
+<li><p>非包含值 <cite>(u, v)</cite> 中的 <cite>agg_cost</cite> 为 <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
+</ul>
+</li>
+<li><p>如果返回的值存储在表中，则唯一索引将是这一对： <cite>(start_vid, end_vid)</cite> 。</p></li>
+<li><p>对于 <strong>无向</strong> 图，结果是 <strong>对称</strong> 的。</p>
+<ul>
+<li><p><cite>(u, v)</cite> 的 <cite>agg_cost</cite> 与 <cite>(v, u)</cite> 相同。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>For optimization purposes, any duplicated value in the input arrays of <strong>start vids</strong> or
+<strong>end vids</strong> or are ignored.</p></li>
+<li><p>返回值是有序的：</p>
+<ul>
+<li><p><cite>start_vid</cite> 升序</p></li>
+<li><p><cite>end_vid</cite> 升序</p></li>
+</ul>
+</li>
+<li><p>运行时间： <span class="math notranslate nohighlight">\(O(|start\_vids|\times(V \log V + E))\)</span></p></li>
+</ul>
 <p>Dijkstra算法，由荷兰计算机科学家Edsger Dijkstra于1956年提出。它是一种图搜索算法，解决具有非负边路径成本的图的最短路径问题，产生从起始顶点到结束顶点的最短路径。 该实现可以与有向图和无向图一起使用。</p>
 <p>主要特点是：</p>
 <ul class="simple">
@@ -289,8 +339,8 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, [<strong>options</strong>])</div>
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
+<div class="line">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>driving side</strong>  [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
@@ -314,21 +364,21 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCostMatrix</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="n">array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">],</span> <span class="n">directed</span> <span class="o">:=</span> <span class="n">false</span><span class="p">);</span>
+  <span class="n">array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">],</span> <span class="s1">&#39;R&#39;</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.3</span>
-        <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">1.7</span>
+        <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">4.3</span>
         <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>      <span class="mf">1.3</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
-        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">1.6</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">5.6</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>      <span class="mf">2.6</span>
         <span class="mi">10</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.7</span>
         <span class="mi">10</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.6</span>
         <span class="mi">10</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">1</span>
         <span class="mi">11</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
         <span class="mi">11</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
-        <span class="mi">11</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>        <span class="mi">1</span>
+        <span class="mi">11</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>        <span class="mi">3</span>
 <span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -589,18 +639,18 @@
         (SELECT ST_POINT(2.9, 1.8)),
         0.5, cap =&gt; 2)
   $p$,
-  ARRAY[5, 10, -1, -2]);
+  ARRAY[5, 10, -1, -2], &#39;B&#39;, false);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
-        -2 |      -1 |      3.9
+        -2 |      -1 |      0.3
         -2 |       5 |      2.9
-        -2 |      10 |      3.1
+        -2 |      10 |      1.1
         -1 |      -2 |      0.3
-        -1 |       5 |      3.2
-        -1 |      10 |      3.2
+        -1 |       5 |      2.8
+        -1 |      10 |      0.8
          5 |      -2 |      2.9
-         5 |      -1 |      6.8
-         5 |      10 |        6
+         5 |      -1 |      2.8
+         5 |      10 |        2
         10 |      -2 |      1.1
         10 |      -1 |      0.8
         10 |       5 |        2
@@ -620,7 +670,7 @@
   SELECT * FROM pgr_withPointsCostMatrix(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;,
     &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
-    array[-1, 10, 11, -6], directed := false);
+    array[-1, 10, 11, -6], &#39;b&#39;, directed =&gt; false);
   $$
 );
  seq | node | cost | agg_cost
@@ -665,7 +715,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 02, 2025.<br/>
+      Last updated on 6月 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

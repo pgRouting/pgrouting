@@ -214,7 +214,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span> <span class="pre">-</span> <span class="pre">实验性</span></code><a class="headerlink" href="#pgr-bellmanford-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> — 使用 Bellman-Ford 算法计算的最短路径。</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="41fbe973-c278-4839-956f-ab4c2f8a0f98" name="41fbe973-c278-4839-956f-ab4c2f8a0f98" type="checkbox"><label class="sphinx_collapse__label" for="41fbe973-c278-4839-956f-ab4c2f8a0f98"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="7b652b55-45a0-423a-859d-e18ad76beb4a" name="7b652b55-45a0-423a-859d-e18ad76beb4a" type="checkbox"><label class="sphinx_collapse__label" for="7b652b55-45a0-423a-859d-e18ad76beb4a"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -247,22 +247,18 @@
 </div>
 </div>
 </div>
-<p class="rubric">可用性</p>
+<p class="rubric">可用性：</p>
+<p class="rubric">版本3.2.0</p>
 <ul class="simple">
-<li><p>版本3.2.0</p>
-<ul>
 <li><p>新实验性签名：</p>
 <ul>
 <li><p>pgr_bellmanFord(组合)</p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>版本3.0.0</p>
-<ul>
+<p class="rubric">版本3.0.0</p>
+<ul class="simple">
 <li><p>新实验性功能。</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -355,7 +351,7 @@
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>从节点 <span class="math notranslate nohighlight">\(6`到节点:math:\)</span>{ 10, 17}`的最短路径，基于一个**directed**图</p>
+<dd class="field-odd"><p>在 <strong>有向</strong> 图上从顶点 <span class="math notranslate nohighlight">\(6\)</span> 到顶点 <span class="math notranslate nohighlight">\(\{10, 17\}\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
@@ -839,14 +835,10 @@
 </section>
 <section id="see-also">
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html">Boost: Belman Ford</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm">https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm</a></p>
-<blockquote>
-<div><p>Boost 图内部</p>
-</div></blockquote>
-</li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm">https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
@@ -869,7 +861,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 02, 2025.<br/>
+      Last updated on 6月 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

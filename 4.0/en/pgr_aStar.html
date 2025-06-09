@@ -220,14 +220,12 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code><a class="headerlink" href="#pgr-astar" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> — Shortest path using the A* algorithm.</p>
 <p class="rubric">Availability</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>Version 4.0.0</p>
-<ul>
 <li><p>Combinations signature promoted to official.</p></li>
 </ul>
-</li>
-<li><p>Version 3.6.0</p>
-<ul>
+<p class="rubric">Version 3.6.0</p>
+<ul class="simple">
 <li><p>Standardizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
 <li><p>pgr_aStar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
@@ -236,23 +234,20 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Version 3.2.0</p>
-<ul>
+<p class="rubric">Version 3.2.0</p>
+<ul class="simple">
 <li><p>New proposed signature:</p>
 <ul>
 <li><p>pgr_aStar(Combinations)</p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Version 3.0.0</p>
-<ul>
+<p class="rubric">Version 3.0.0</p>
+<ul class="simple">
 <li><p>Function promoted to official.</p></li>
 </ul>
-</li>
-<li><p>Version 2.4.0</p>
-<ul>
+<p class="rubric">Version 2.4.0</p>
+<ul class="simple">
 <li><p>New proposed signatures:</p>
 <ul>
 <li><p>pgr_aStar(One to Many)</p></li>
@@ -261,21 +256,17 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Version 2.3.0</p>
-<ul>
+<p class="rubric">Version 2.3.0</p>
+<ul class="simple">
 <li><p>Signature change on pgr_aStar(One to One)</p>
 <ul>
 <li><p>Old signature no longer supported</p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Version 2.0.0</p>
-<ul>
+<p class="rubric">Version 2.0.0</p>
+<ul class="simple">
 <li><p>New official function.</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -793,7 +784,7 @@ it’s not part of the graph.</p></li>
 </section>
 <section id="result-columns">
 <h2>Result columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -818,23 +809,11 @@ path.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex.
-Returned when multiple starting vetrices are in the query.</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#many-to-one">Many to One</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
-</ul>
-</td>
+<td><p>Identifier of the starting vertex of the current path.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex.
-Returned when multiple ending vertices are in the query.</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#one-to-many">One to Many</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
-</ul>
-</td>
+<td><p>Identifier of the ending vertex of the current path.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -992,7 +971,7 @@ path sequence.</p></td>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Jun 02, 2025.<br/>
+      Last updated on Jun 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

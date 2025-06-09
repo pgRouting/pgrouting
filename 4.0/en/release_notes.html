@@ -500,15 +500,42 @@ milestone for 4.0.0</a></p>
 <ul>
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>Function promoted to official.</p></li>
+<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
+unnamed positional.</p>
+<ul>
+<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
+<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a> pgr_withPointsCost</p>
 <ul>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>Function promoted to official.</p></li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
+unnamed positional.</p>
+<ul>
+<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
+<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
 </ul>
 </li>
-<li><p>pgr_withPointsCostMatrix</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
+pgr_withPointsCostMatrix</p>
+<ul>
+<li><p>Function promoted to official.</p></li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
+unnamed positional.</p>
+<ul>
+<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
+<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>pgr_withPointsDD</p></li>
 <li><p>pgr_withPointsKSP</p></li>
 <li><p>pgr_withPointsVia</p></li>
@@ -2891,7 +2918,7 @@ file and are kept as a reference.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Jun 02, 2025.<br/>
+      Last updated on Jun 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

@@ -676,7 +676,7 @@
 </section>
 <section id="result-columns">
 <h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -700,21 +700,11 @@
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>起始顶点的标识符。 当查询中有多个起始向量时返回。</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#many-to-one">Many to One</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
-</ul>
-</td>
+<td><p>当前路径起始顶点的标识符。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>结束顶点的标识符。 当查询中有多个结束顶点时返回。</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#one-to-many">One to Many</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
-</ul>
-</td>
+<td><p>当前路径结束顶点的标识符。</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -865,7 +855,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 02, 2025.<br/>
+      Last updated on 6月 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

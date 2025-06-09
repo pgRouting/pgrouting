@@ -120,14 +120,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#support-tables">Tablas de apoyo</a><ul>
-<li><a class="reference internal" href="#combinations">Combinaciones</a><ul>
-<li><a class="reference internal" href="#combinations-data">Combinations data</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#restrictions">Restricciones</a><ul>
-<li><a class="reference internal" href="#restrictions-data">Datos de restricciones</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#combinations">Combinaciones</a></li>
+<li><a class="reference internal" href="#restrictions">Restricciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#images">Imágenes</a><ul>
@@ -211,14 +205,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#support-tables">Tablas de apoyo</a><ul>
-<li><a class="reference internal" href="#combinations">Combinaciones</a><ul>
-<li><a class="reference internal" href="#combinations-data">Combinations data</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#restrictions">Restricciones</a><ul>
-<li><a class="reference internal" href="#restrictions-data">Datos de restricciones</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#combinations">Combinaciones</a></li>
+<li><a class="reference internal" href="#restrictions">Restricciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#images">Imágenes</a><ul>
@@ -293,31 +281,23 @@
 </li>
 <li><p><a class="reference internal" href="#support-tables" id="id15">Tablas de apoyo</a></p>
 <ul>
-<li><p><a class="reference internal" href="#combinations" id="id16">Combinaciones</a></p>
-<ul>
-<li><p><a class="reference internal" href="#combinations-data" id="id17">Combinations data</a></p></li>
+<li><p><a class="reference internal" href="#combinations" id="id16">Combinaciones</a></p></li>
+<li><p><a class="reference internal" href="#restrictions" id="id17">Restricciones</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#restrictions" id="id18">Restricciones</a></p>
+<li><p><a class="reference internal" href="#images" id="id18">Imágenes</a></p>
 <ul>
-<li><p><a class="reference internal" href="#restrictions-data" id="id19">Datos de restricciones</a></p></li>
+<li><p><a class="reference internal" href="#directed-graph-with-cost-and-reverse-cost" id="id19">Grafo dirigido con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p></li>
+<li><p><a class="reference internal" href="#undirected-graph-with-cost-and-reverse-cost" id="id20">Grafo no dirigido con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p></li>
+<li><p><a class="reference internal" href="#directed-graph-with-cost" id="id21">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></p></li>
+<li><p><a class="reference internal" href="#undirected-graph-with-cost" id="id22">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></p></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#images" id="id20">Imágenes</a></p>
+<li><p><a class="reference internal" href="#pick-deliver-data" id="id23">Datos de Recogida y Entrega</a></p>
 <ul>
-<li><p><a class="reference internal" href="#directed-graph-with-cost-and-reverse-cost" id="id21">Grafo dirigido con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p></li>
-<li><p><a class="reference internal" href="#undirected-graph-with-cost-and-reverse-cost" id="id22">Grafo no dirigido con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p></li>
-<li><p><a class="reference internal" href="#directed-graph-with-cost" id="id23">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></p></li>
-<li><p><a class="reference internal" href="#undirected-graph-with-cost" id="id24">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#pick-deliver-data" id="id25">Datos de Recogida y Entrega</a></p>
-<ul>
-<li><p><a class="reference internal" href="#the-vehicles" id="id26">Los vehículos</a></p></li>
-<li><p><a class="reference internal" href="#the-original-orders" id="id27">The original orders</a></p></li>
-<li><p><a class="reference internal" href="#the-orders" id="id28">Las órdenes</a></p></li>
+<li><p><a class="reference internal" href="#the-vehicles" id="id24">Los vehículos</a></p></li>
+<li><p><a class="reference internal" href="#the-original-orders" id="id25">The original orders</a></p></li>
+<li><p><a class="reference internal" href="#the-orders" id="id26">Las órdenes</a></p></li>
 </ul>
 </li>
 </ul>
@@ -710,8 +690,7 @@ when wanting a route from <code class="docutils literal notranslate"><span class
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">5</span>
 </pre></div>
 </div>
-<section id="combinations-data">
-<h4><a class="toc-backref" href="#id17" role="doc-backlink">Combinations data</a><a class="headerlink" href="#combinations-data" title="Link to this heading">¶</a></h4>
+<p class="rubric">Combinations data</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">combinations</span><span class="p">;</span>
  <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
 <span class="o">--------+--------</span>
@@ -725,9 +704,8 @@ when wanting a route from <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </section>
-</section>
 <section id="restrictions">
-<h3><a class="toc-backref" href="#id18" role="doc-backlink">Restricciones</a><a class="headerlink" href="#restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Restricciones</a><a class="headerlink" href="#restrictions" title="Link to this heading">¶</a></h3>
 <p>Some functions accept soft restrictions about the segments.</p>
 <p>La creación de la tabla de restricciones</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">restrictions</span> <span class="p">(</span>
@@ -748,8 +726,7 @@ when wanting a route from <code class="docutils literal notranslate"><span class
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">5</span>
 </pre></div>
 </div>
-<section id="restrictions-data">
-<h4><a class="toc-backref" href="#id19" role="doc-backlink">Datos de restricciones</a><a class="headerlink" href="#restrictions-data" title="Link to this heading">¶</a></h4>
+<p class="rubric">Datos de restricciones</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">restrictions</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span>  <span class="n">path</span>   <span class="o">|</span> <span class="n">cost</span>
 <span class="o">----+---------+------</span>
@@ -764,9 +741,8 @@ when wanting a route from <code class="docutils literal notranslate"><span class
 </div>
 </section>
 </section>
-</section>
 <section id="images">
-<h2><a class="toc-backref" href="#id20" role="doc-backlink">Imágenes</a><a class="headerlink" href="#images" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Imágenes</a><a class="headerlink" href="#images" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Las flechas rojas corresponden cuando <code class="docutils literal notranslate"><span class="pre">cost</span></code> &gt; 0 en la tabla de aristas.</p></li>
 <li><p>Las flechas azules corresponden cuando <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> &gt; 0 en la tabla de aristas.</p></li>
@@ -774,7 +750,7 @@ when wanting a route from <code class="docutils literal notranslate"><span class
 <li><p>Haga clic en el grafo para ampliarlo.</p></li>
 </ul>
 <section id="directed-graph-with-cost-and-reverse-cost">
-<span id="fig1"></span><h3><a class="toc-backref" href="#id21" role="doc-backlink">Grafo dirigido con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#directed-graph-with-cost-and-reverse-cost" title="Link to this heading">¶</a></h3>
+<span id="fig1"></span><h3><a class="toc-backref" href="#id19" role="doc-backlink">Grafo dirigido con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#directed-graph-with-cost-and-reverse-cost" title="Link to this heading">¶</a></h3>
 <p>Cuando se trabaja con redes de ciudades, esto se recomienda para el punto de vista de los vehículos.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" />
@@ -785,7 +761,7 @@ when wanting a route from <code class="docutils literal notranslate"><span class
 </figure>
 </section>
 <section id="undirected-graph-with-cost-and-reverse-cost">
-<span id="fig2"></span><h3><a class="toc-backref" href="#id22" role="doc-backlink">Grafo no dirigido con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#undirected-graph-with-cost-and-reverse-cost" title="Link to this heading">¶</a></h3>
+<span id="fig2"></span><h3><a class="toc-backref" href="#id20" role="doc-backlink">Grafo no dirigido con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#undirected-graph-with-cost-and-reverse-cost" title="Link to this heading">¶</a></h3>
 <p>Cuando se trabaja con redes de ciudades, esto se recomienda para el punto de vista de los peatones.</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 482.0px; height: 435.0px;" />
@@ -796,7 +772,7 @@ when wanting a route from <code class="docutils literal notranslate"><span class
 </figure>
 </section>
 <section id="directed-graph-with-cost">
-<span id="fig3"></span><h3><a class="toc-backref" href="#id23" role="doc-backlink">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#directed-graph-with-cost" title="Link to this heading">¶</a></h3>
+<span id="fig3"></span><h3><a class="toc-backref" href="#id21" role="doc-backlink">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#directed-graph-with-cost" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="_images/Fig2-cost.png"><img alt="_images/Fig2-cost.png" src="_images/Fig2-cost.png" style="width: 193.8px; height: 173.60000000000002px;" />
 </a>
@@ -806,7 +782,7 @@ when wanting a route from <code class="docutils literal notranslate"><span class
 </figure>
 </section>
 <section id="undirected-graph-with-cost">
-<span id="fig4"></span><h3><a class="toc-backref" href="#id24" role="doc-backlink">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#undirected-graph-with-cost" title="Link to this heading">¶</a></h3>
+<span id="fig4"></span><h3><a class="toc-backref" href="#id22" role="doc-backlink">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#undirected-graph-with-cost" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 195.0px; height: 175.20000000000002px;" />
 </a>
@@ -817,11 +793,11 @@ when wanting a route from <code class="docutils literal notranslate"><span class
 </section>
 </section>
 <section id="pick-deliver-data">
-<span id="pickdeliverdata"></span><h2><a class="toc-backref" href="#id25" role="doc-backlink">Datos de Recogida y Entrega</a><a class="headerlink" href="#pick-deliver-data" title="Link to this heading">¶</a></h2>
+<span id="pickdeliverdata"></span><h2><a class="toc-backref" href="#id23" role="doc-backlink">Datos de Recogida y Entrega</a><a class="headerlink" href="#pick-deliver-data" title="Link to this heading">¶</a></h2>
 <p>This data example <strong>lc101</strong> is from data published at
 <a class="reference external" href="https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/">https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/</a></p>
 <section id="the-vehicles">
-<h3><a class="toc-backref" href="#id26" role="doc-backlink">Los vehículos</a><a class="headerlink" href="#the-vehicles" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">Los vehículos</a><a class="headerlink" href="#the-vehicles" title="Link to this heading">¶</a></h3>
 <p>There are 25 vehicles in the problem all with the same characteristics.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">v_lc101</span><span class="p">(</span>
   <span class="nb">id</span> <span class="n">BIGINT</span> <span class="n">NOT</span> <span class="n">NULL</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
@@ -839,7 +815,7 @@ when wanting a route from <code class="docutils literal notranslate"><span class
 </div>
 </section>
 <section id="the-original-orders">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">The original orders</a><a class="headerlink" href="#the-original-orders" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">The original orders</a><a class="headerlink" href="#the-original-orders" title="Link to this heading">¶</a></h3>
 <p>The data comes in different rows for the pickup and the delivery of the same
 order.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">table</span> <span class="n">lc101_c</span><span class="p">(</span>
@@ -968,7 +944,7 @@ order.</p>
 </div>
 </section>
 <section id="the-orders">
-<h3><a class="toc-backref" href="#id28" role="doc-backlink">Las órdenes</a><a class="headerlink" href="#the-orders" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id26" role="doc-backlink">Las órdenes</a><a class="headerlink" href="#the-orders" title="Link to this heading">¶</a></h3>
 <p>The original data needs to be converted to an appropriate table:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">deliveries</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">lc101_c</span> <span class="n">WHERE</span> <span class="n">dindex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">SELECT</span>
@@ -1003,7 +979,7 @@ order.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en jun 02, 2025.<br/>
+      Actualizado por última vez en jun 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

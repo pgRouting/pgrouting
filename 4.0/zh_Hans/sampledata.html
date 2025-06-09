@@ -119,14 +119,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#support-tables">支持表</a><ul>
-<li><a class="reference internal" href="#combinations">组合</a><ul>
-<li><a class="reference internal" href="#combinations-data">组合数据</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#restrictions">限制</a><ul>
-<li><a class="reference internal" href="#restrictions-data">限制数据</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#combinations">组合</a></li>
+<li><a class="reference internal" href="#restrictions">限制</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#images">图片</a><ul>
@@ -210,14 +204,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#support-tables">支持表</a><ul>
-<li><a class="reference internal" href="#combinations">组合</a><ul>
-<li><a class="reference internal" href="#combinations-data">组合数据</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#restrictions">限制</a><ul>
-<li><a class="reference internal" href="#restrictions-data">限制数据</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#combinations">组合</a></li>
+<li><a class="reference internal" href="#restrictions">限制</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#images">图片</a><ul>
@@ -292,31 +280,23 @@
 </li>
 <li><p><a class="reference internal" href="#support-tables" id="id15">支持表</a></p>
 <ul>
-<li><p><a class="reference internal" href="#combinations" id="id16">组合</a></p>
-<ul>
-<li><p><a class="reference internal" href="#combinations-data" id="id17">组合数据</a></p></li>
+<li><p><a class="reference internal" href="#combinations" id="id16">组合</a></p></li>
+<li><p><a class="reference internal" href="#restrictions" id="id17">限制</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#restrictions" id="id18">限制</a></p>
+<li><p><a class="reference internal" href="#images" id="id18">图片</a></p>
 <ul>
-<li><p><a class="reference internal" href="#restrictions-data" id="id19">限制数据</a></p></li>
+<li><p><a class="reference internal" href="#directed-graph-with-cost-and-reverse-cost" id="id19">带 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的有向图</a></p></li>
+<li><p><a class="reference internal" href="#undirected-graph-with-cost-and-reverse-cost" id="id20">具有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的无向图</a></p></li>
+<li><p><a class="reference internal" href="#directed-graph-with-cost" id="id21">有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的有向图</a></p></li>
+<li><p><a class="reference internal" href="#undirected-graph-with-cost" id="id22">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的无向图</a></p></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#images" id="id20">图片</a></p>
+<li><p><a class="reference internal" href="#pick-deliver-data" id="id23">取货和送货数据</a></p>
 <ul>
-<li><p><a class="reference internal" href="#directed-graph-with-cost-and-reverse-cost" id="id21">带 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的有向图</a></p></li>
-<li><p><a class="reference internal" href="#undirected-graph-with-cost-and-reverse-cost" id="id22">具有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的无向图</a></p></li>
-<li><p><a class="reference internal" href="#directed-graph-with-cost" id="id23">有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的有向图</a></p></li>
-<li><p><a class="reference internal" href="#undirected-graph-with-cost" id="id24">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的无向图</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#pick-deliver-data" id="id25">取货和送货数据</a></p>
-<ul>
-<li><p><a class="reference internal" href="#the-vehicles" id="id26">车辆</a></p></li>
-<li><p><a class="reference internal" href="#the-original-orders" id="id27">原始订单</a></p></li>
-<li><p><a class="reference internal" href="#the-orders" id="id28">订单</a></p></li>
+<li><p><a class="reference internal" href="#the-vehicles" id="id24">车辆</a></p></li>
+<li><p><a class="reference internal" href="#the-original-orders" id="id25">原始订单</a></p></li>
+<li><p><a class="reference internal" href="#the-orders" id="id26">订单</a></p></li>
 </ul>
 </li>
 </ul>
@@ -692,8 +672,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">5</span>
 </pre></div>
 </div>
-<section id="combinations-data">
-<h4><a class="toc-backref" href="#id17" role="doc-backlink">组合数据</a><a class="headerlink" href="#combinations-data" title="Link to this heading">¶</a></h4>
+<p class="rubric">组合数据</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">combinations</span><span class="p">;</span>
  <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
 <span class="o">--------+--------</span>
@@ -707,9 +686,8 @@ WHERE pointsOfInterest.geom = poi.geom;
 </pre></div>
 </div>
 </section>
-</section>
 <section id="restrictions">
-<h3><a class="toc-backref" href="#id18" role="doc-backlink">限制</a><a class="headerlink" href="#restrictions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">限制</a><a class="headerlink" href="#restrictions" title="Link to this heading">¶</a></h3>
 <p>一些函数接受关于段的软约束。</p>
 <p>限制表的创建</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">restrictions</span> <span class="p">(</span>
@@ -730,8 +708,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">5</span>
 </pre></div>
 </div>
-<section id="restrictions-data">
-<h4><a class="toc-backref" href="#id19" role="doc-backlink">限制数据</a><a class="headerlink" href="#restrictions-data" title="Link to this heading">¶</a></h4>
+<p class="rubric">限制数据</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">restrictions</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span>  <span class="n">path</span>   <span class="o">|</span> <span class="n">cost</span>
 <span class="o">----+---------+------</span>
@@ -746,9 +723,8 @@ WHERE pointsOfInterest.geom = poi.geom;
 </div>
 </section>
 </section>
-</section>
 <section id="images">
-<h2><a class="toc-backref" href="#id20" role="doc-backlink">图片</a><a class="headerlink" href="#images" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">图片</a><a class="headerlink" href="#images" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>红色箭头对应边表中 <code class="docutils literal notranslate"><span class="pre">cost</span></code> &gt; 0 的情况。</p></li>
 <li><p>蓝色箭头对应边表中的 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> &gt; 0 的情况。</p></li>
@@ -756,7 +732,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 <li><p>点击图可放大。</p></li>
 </ul>
 <section id="directed-graph-with-cost-and-reverse-cost">
-<span id="fig1"></span><h3><a class="toc-backref" href="#id21" role="doc-backlink">带 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的有向图</a><a class="headerlink" href="#directed-graph-with-cost-and-reverse-cost" title="Link to this heading">¶</a></h3>
+<span id="fig1"></span><h3><a class="toc-backref" href="#id19" role="doc-backlink">带 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的有向图</a><a class="headerlink" href="#directed-graph-with-cost-and-reverse-cost" title="Link to this heading">¶</a></h3>
 <p>在使用城市网络时，建议从车辆的角度考虑。</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" />
@@ -767,7 +743,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 </figure>
 </section>
 <section id="undirected-graph-with-cost-and-reverse-cost">
-<span id="fig2"></span><h3><a class="toc-backref" href="#id22" role="doc-backlink">具有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的无向图</a><a class="headerlink" href="#undirected-graph-with-cost-and-reverse-cost" title="Link to this heading">¶</a></h3>
+<span id="fig2"></span><h3><a class="toc-backref" href="#id20" role="doc-backlink">具有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的无向图</a><a class="headerlink" href="#undirected-graph-with-cost-and-reverse-cost" title="Link to this heading">¶</a></h3>
 <p>在使用城市网络时，建议从行人的角度考虑。</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 482.0px; height: 435.0px;" />
@@ -778,7 +754,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 </figure>
 </section>
 <section id="directed-graph-with-cost">
-<span id="fig3"></span><h3><a class="toc-backref" href="#id23" role="doc-backlink">有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的有向图</a><a class="headerlink" href="#directed-graph-with-cost" title="Link to this heading">¶</a></h3>
+<span id="fig3"></span><h3><a class="toc-backref" href="#id21" role="doc-backlink">有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的有向图</a><a class="headerlink" href="#directed-graph-with-cost" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="_images/Fig2-cost.png"><img alt="_images/Fig2-cost.png" src="_images/Fig2-cost.png" style="width: 193.8px; height: 173.60000000000002px;" />
 </a>
@@ -788,7 +764,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 </figure>
 </section>
 <section id="undirected-graph-with-cost">
-<span id="fig4"></span><h3><a class="toc-backref" href="#id24" role="doc-backlink">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的无向图</a><a class="headerlink" href="#undirected-graph-with-cost" title="Link to this heading">¶</a></h3>
+<span id="fig4"></span><h3><a class="toc-backref" href="#id22" role="doc-backlink">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的无向图</a><a class="headerlink" href="#undirected-graph-with-cost" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 195.0px; height: 175.20000000000002px;" />
 </a>
@@ -799,10 +775,10 @@ WHERE pointsOfInterest.geom = poi.geom;
 </section>
 </section>
 <section id="pick-deliver-data">
-<span id="pickdeliverdata"></span><h2><a class="toc-backref" href="#id25" role="doc-backlink">取货和送货数据</a><a class="headerlink" href="#pick-deliver-data" title="Link to this heading">¶</a></h2>
+<span id="pickdeliverdata"></span><h2><a class="toc-backref" href="#id23" role="doc-backlink">取货和送货数据</a><a class="headerlink" href="#pick-deliver-data" title="Link to this heading">¶</a></h2>
 <p>此数据示例 <strong>lc101</strong> 来自 <a class="reference external" href="https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/">https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/</a> 上发布的数据</p>
 <section id="the-vehicles">
-<h3><a class="toc-backref" href="#id26" role="doc-backlink">车辆</a><a class="headerlink" href="#the-vehicles" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">车辆</a><a class="headerlink" href="#the-vehicles" title="Link to this heading">¶</a></h3>
 <p>问题中有 25 辆具有相同特征的汽车。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">v_lc101</span><span class="p">(</span>
   <span class="nb">id</span> <span class="n">BIGINT</span> <span class="n">NOT</span> <span class="n">NULL</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
@@ -820,7 +796,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 </div>
 </section>
 <section id="the-original-orders">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">原始订单</a><a class="headerlink" href="#the-original-orders" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">原始订单</a><a class="headerlink" href="#the-original-orders" title="Link to this heading">¶</a></h3>
 <p>对于同一订单的取货和配送，数据位于不同的行中。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">table</span> <span class="n">lc101_c</span><span class="p">(</span>
   <span class="nb">id</span> <span class="n">BIGINT</span> <span class="ow">not</span> <span class="n">null</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
@@ -948,7 +924,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 </div>
 </section>
 <section id="the-orders">
-<h3><a class="toc-backref" href="#id28" role="doc-backlink">订单</a><a class="headerlink" href="#the-orders" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id26" role="doc-backlink">订单</a><a class="headerlink" href="#the-orders" title="Link to this heading">¶</a></h3>
 <p>需要将原始数据转换为适当的表格：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">deliveries</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">lc101_c</span> <span class="n">WHERE</span> <span class="n">dindex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">SELECT</span>
@@ -983,7 +959,7 @@ WHERE pointsOfInterest.geom = poi.geom;
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 02, 2025.<br/>
+      Last updated on 6月 09, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
