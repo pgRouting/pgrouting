@@ -23,30 +23,54 @@ UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.2.0') THEN plan(432) ELSE plan(338) END;
 
 
--- ONE TO ONE
-SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, 2, 3, true)');
-SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', 2, 3, true)');
--- ONE TO MANY
-SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, 2, ARRAY[3], true)');
-SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', 2, ARRAY[3], true)');
--- MANY TO ONE
-SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, ARRAY[2], 3, true)');
-SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', ARRAY[2], 3, true)');
--- MANY TO MANY
-SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, ARRAY[2], ARRAY[3], true)');
-SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', ARRAY[2], ARRAY[3], true)');
-
--- COMBINATIONS
 CREATE OR REPLACE FUNCTION inner_query() RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
-  IF min_version('3.2.0') THEN
-    RETURN QUERY SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, $$SELECT * FROM combinations$$, true)');
-    RETURN QUERY SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', $$SELECT * FROM combinations$$, true)');
-    RETURN QUERY SELECT innerquery_combinations('pgr_withPointsCost($$SELECT * FROM edges$$, $$SELECT * from pointsOfInterest$$,',', true)');
+
+  IF min_version('4.0.0') THEN
+
+    -- ONE TO ONE
+    RETURN QUERY SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, 2, 3, $$r$$, true)');
+    RETURN QUERY SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', 2, 3, $$r$$, true)');
+    -- ONE TO MANY
+    RETURN QUERY SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, 2, ARRAY[3], $$r$$, true)');
+    RETURN QUERY SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', 2, ARRAY[3], $$r$$, true)');
+    -- MANY TO ONE
+    RETURN QUERY SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, ARRAY[2], 3, $$r$$, true)');
+    RETURN QUERY SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', ARRAY[2], 3, $$r$$, true)');
+    -- MANY TO MANY
+    RETURN QUERY SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, ARRAY[2], ARRAY[3], $$r$$, true)');
+    RETURN QUERY SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', ARRAY[2], ARRAY[3], $$r$$, true)');
+    -- COMBINATIONS
+    RETURN QUERY SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, $$SELECT * FROM combinations$$, $$r$$, true)');
+    RETURN QUERY SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', $$SELECT * FROM combinations$$, $$r$$, true)');
+    RETURN QUERY SELECT innerquery_combinations('pgr_withPointsCost($$SELECT * FROM edges$$, $$SELECT * from pointsOfInterest$$,',', $$r$$, true)');
+
   ELSE
-    RETURN QUERY SELECT skip(2, 'Combinations signature added on 3.2.0');
+
+    -- ONE TO ONE
+    RETURN QUERY SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, 2, 3, true)');
+    RETURN QUERY SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', 2, 3, true)');
+    -- ONE TO MANY
+    RETURN QUERY SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, 2, ARRAY[3], true)');
+    RETURN QUERY SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', 2, ARRAY[3], true)');
+    -- MANY TO ONE
+    RETURN QUERY SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, ARRAY[2], 3, true)');
+    RETURN QUERY SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', ARRAY[2], 3, true)');
+    -- MANY TO MANY
+    RETURN QUERY SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, ARRAY[2], ARRAY[3], true)');
+    RETURN QUERY SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', ARRAY[2], ARRAY[3], true)');
+    -- COMBINATIONS
+    IF min_version('3.2.0') THEN
+      RETURN QUERY SELECT style_dijkstra('pgr_withPointsCost(', ', $$SELECT * from pointsOfInterest$$, $$SELECT * FROM combinations$$, true)');
+      RETURN QUERY SELECT innerquery_points('pgr_withPointsCost($$SELECT * FROM edges$$,', ', $$SELECT * FROM combinations$$, true)');
+      RETURN QUERY SELECT innerquery_combinations('pgr_withPointsCost($$SELECT * FROM edges$$, $$SELECT * from pointsOfInterest$$,',', true)');
+    ELSE
+      RETURN QUERY SELECT skip(2, 'Combinations signature added on 3.2.0');
+   END IF;
+
   END IF;
+
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;

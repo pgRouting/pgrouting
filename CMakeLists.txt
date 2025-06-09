@@ -43,6 +43,9 @@ set(PROJECT_LIB_NAME "${PROJECT_NAME_LOWER}-${PROJECT_LIB_VERSION}")
 
 string(TIMESTAMP COMPILATION_DATE "%Y/%m/%d" UTC)
 
+# uncomment to show the NOTICE/WARNING of deprecated internal C functions
+# add_compile_definitions(SHOWMSG=1)
+
 set(MINORS 4.0 3.8 3.7 3.6 3.5 3.4 3.3 3.2 3.1 3.0 2.6)
 set(OLD_SIGNATURES
     3.8.0
@@ -196,7 +199,7 @@ find_package(PostgreSQL "${POSTGRESQL_MINIMUM_VERSION}")
 string(REGEX REPLACE "([0-9]+)[beta|alpha|rc|devel].*" "\\1.0" POSTGRESQL_VERSION_STRING ${POSTGRESQL_VERSION_STRING})
 message(STATUS "POSTGRESQL_VERSION_STRING=${POSTGRESQL_VERSION_STRING}")
 
-# calcualte mayor.micro
+# calculate mayor.micro
 STRING(REGEX MATCH "([0-9]+)\.([0-9]+)" POSTGRESQL_VERSION "${POSTGRESQL_VERSION_STRING}")
 message(STATUS "POSTGRESQL_VERSION=${POSTGRESQL_VERSION}")
 
@@ -345,7 +348,6 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
         set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
     endif()
 endif()
-
 
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

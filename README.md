@@ -5,6 +5,22 @@ https://gitter.im/pgRouting/pgrouting](https://badges.gitter.im/Join%20Chat.svg)
 [Join discourse](https://discourse.osgeo.org/c/pgrouting/15)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15004469.svg)](https://doi.org/10.5281/zenodo.15004469)
 
+# Installation via Package Manager
+
+If you want to install via some [package manager](https://alternativeto.net/software/yellowdog-updater-modified/?license=opensource),
+you can run
+
+    $ PACKAGE_TOOL install git-filter-repo
+
+The following package managers have packaged pgRouting:
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/pgrouting.svg)](https://repology.org/project/pgrouting/versions)
+
+This list covers at least Windows (Scoop), Mac OS X (Homebrew), and
+Linux (most the rest).  Note that pgRouting do not curate this list (and have
+no interest in doing so); https://repology.org tracks who packages
+these versions.
+
 
 ## Branches
 

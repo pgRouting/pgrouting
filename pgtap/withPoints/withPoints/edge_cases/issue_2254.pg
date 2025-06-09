@@ -19,17 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN NOT min_version('3.4.0') THEN plan(1) ELSE plan(5) END;
-
-CREATE OR REPLACE FUNCTION issue_check()
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-
-IF NOT min_version('3.4.0') THEN
-  RETURN QUERY SELECT skip(1,'Issue fixed on 3.4.0');
-  RETURN;
-END IF;
+SELECT CASE WHEN min_version('3.4.0') THEN plan(5) ELSE plan(1) END;
 
 CREATE TABLE e_table (id integer, source integer, target integer, cost float);
 INSERT INTO e_table VALUES (1, 10, 11, 10.0);
@@ -37,35 +27,62 @@ INSERT INTO e_table VALUES (1, 10, 11, 10.0);
 CREATE TABLE poi_table (pid integer, edge_id integer, fraction float);
 INSERT INTO poi_table VALUES (20, 1, 0.6);
 
-PREPARE q1 AS
-SELECT * FROM   pgr_withPoints(
-'SELECT id, source, target, cost FROM e_table',
-'SELECT pid, edge_id, fraction FROM poi_table',
-    10,
-    11,
-    false);
+CREATE OR REPLACE FUNCTION issue_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
 
-RETURN QUERY
-SELECT * FROM lives_ok('q1');
-RETURN QUERY
-SELECT * FROM isnt_empty('q1');
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1,'Issue fixed on 3.4.0');
+    RETURN;
+  END IF;
 
-PREPARE q2 AS
-SELECT *
-FROM   pgr_withPoints(
-'SELECT id, source, target, cost FROM e_table',
-'SELECT pid, edge_id, fraction FROM poi_table WHERE pid != 20',
-    10,
-    11,
-    false);
+  IF min_version('4.0.0') THEN
 
-RETURN QUERY
-SELECT * FROM lives_ok('q2');
-RETURN QUERY
-SELECT * FROM isnt_empty('q2');
+    PREPARE q1 AS
+    SELECT * FROM   pgr_withPoints(
+      'SELECT id, source, target, cost FROM e_table',
+      'SELECT pid, edge_id, fraction FROM poi_table',
+      10,
+      11, 'b',
+      false);
 
-RETURN QUERY
-SELECT * FROM set_eq('q1','q2');
+    PREPARE q2 AS
+    SELECT *
+    FROM   pgr_withPoints(
+      'SELECT id, source, target, cost FROM e_table',
+      'SELECT pid, edge_id, fraction FROM poi_table WHERE pid != 20',
+      10,
+      11, 'b',
+      false);
+
+  ELSE
+
+    PREPARE q1 AS
+    SELECT * FROM   pgr_withPoints(
+      'SELECT id, source, target, cost FROM e_table',
+      'SELECT pid, edge_id, fraction FROM poi_table',
+      10,
+      11,
+      false);
+
+
+    PREPARE q2 AS
+    SELECT *
+    FROM   pgr_withPoints(
+      'SELECT id, source, target, cost FROM e_table',
+      'SELECT pid, edge_id, fraction FROM poi_table WHERE pid != 20',
+      10,
+      11,
+      false);
+
+  END IF;
+
+  RETURN QUERY SELECT * FROM lives_ok('q1');
+  RETURN QUERY SELECT * FROM isnt_empty('q1');
+  RETURN QUERY SELECT * FROM lives_ok('q2');
+  RETURN QUERY SELECT * FROM isnt_empty('q2');
+  RETURN QUERY SELECT * FROM set_eq('q1','q2');
 
 END;
 $BODY$

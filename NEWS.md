@@ -24,13 +24,30 @@ Functions promoted to official
 
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
   * Function promoted to official.
+  * Signature change: ``driving_side`` parameter changed from named optional to
+    unnamed positional.
+    - Directed graph valid values: ``l`` or ``L`` and ``r``, ``R``
+    - Undirected graph valid values: ``b`` or ``B``
 
 * [#2905](https://github.com/pgRouting/pgrouting/issues/2905) pgr_withPointsCost
 
-  * Output columns standardized to ``(start_vid, end_vid, agg_cost)``
   * Function promoted to official.
+  * Output columns standardized to ``(start_vid, end_vid, agg_cost)``
+  * Signature change: ``driving_side`` parameter changed from named optional to
+    unnamed positional.
+    - Directed graph valid values: ``l`` or ``L`` and ``r``, ``R``
+    - Undirected graph valid values: ``b`` or ``B``
 
-* pgr_withPointsCostMatrix
+* [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
+  pgr_withPointsCostMatrix
+
+  * Function promoted to official.
+  * Output columns standardized to ``(start_vid, end_vid, agg_cost)``
+  * Signature change: ``driving_side`` parameter changed from named optional to
+    unnamed positional.
+    - Directed graph valid values: ``l`` or ``L`` and ``r``, ``R``
+    - Undirected graph valid values: ``b`` or ``B``
+
 * pgr_withPointsDD
 * pgr_withPointsKSP
 * pgr_withPointsVia

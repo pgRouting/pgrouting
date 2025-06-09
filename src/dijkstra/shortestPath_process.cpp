@@ -53,7 +53,7 @@ get_name(int32_t which, bool is_only_cost, bool is_near, bool is_withPoints, boo
     std::string base;
     switch  (which) {
         case 0 : { base = "pgr_dijkstra"; break;}
-        case 1 : { base = "pgr_withPoints"; break;}
+        case 1 : case 101: { base = "pgr_withPoints"; break;}
         default : base = "unknown";
     }
   base = which > 1 && is_withPoints? base + "_withPoints" : base;
@@ -63,7 +63,11 @@ get_name(int32_t which, bool is_only_cost, bool is_near, bool is_withPoints, boo
 }  // namespace
 
 /**
- which function is determined by the parameters
+ which
+
+ 0 = dijkstra
+ 1 = withPoints
+ 101 = old withPoints
 
  This is c++ code, linked as C code, because pgr_process_shortestPath is called from C code
  */
