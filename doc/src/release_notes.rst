@@ -92,12 +92,22 @@ Functions promoted to official
 SQL signatures modification on functions
 ...............................................................................
 
+.. rubric:: Official functions
+
 * `#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__ pgr_bdDijkstra
 
   .. include:: pgr_bdDijkstra.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+.. rubric:: Experimental functions
+
+* `#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__
+  pgr_edwardMoore
+
+  .. include:: pgr_edwardMoore.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
 
 Removal of SQL deprecated signatures
 ...............................................................................

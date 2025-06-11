@@ -71,11 +71,19 @@ Functions promoted to official
 SQL signatures modification on functions
 ...............................................................................
 
+**Official functions**
+
 * [#2906](https://github.com/pgRouting/pgrouting/issues/2906) pgr_bdDijkstra
 
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
   * Combinations signature promoted to official.
 
+**Experimental functions**
+
+* [#2910](https://github.com/pgRouting/pgrouting/issues/2910)
+  pgr_edwardMoore
+
+  * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 
 Removal of SQL deprecated signatures
 ...............................................................................
