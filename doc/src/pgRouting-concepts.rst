@@ -1530,70 +1530,22 @@ Result columns
 
 There are several kinds of columns returned are depending of the function.
 
-Result columns for a path
+Result columns for single path functions
 ...............................................................................
 
-.. rubric:: Used in functions that return one path solution
+Used in functions that return one path solution per departure and destination.
 
-.. return_path_short_start
-
-Returns set of |old-generic-result|
-
-.. list-table::
-   :width: 81
-   :widths: 12 14 60
-   :header-rows: 1
-
-   * - Column
-     - Type
-     - Description
-   * - ``seq``
-     - ``INTEGER``
-     - Sequential value starting from **1**.
-   * - ``path_seq``
-     - ``INTEGER``
-     - Relative position in the path. Has value **1** for the beginning of a
-       path.
-   * - ``start_vid``
-     - ``BIGINT``
-     - Identifier of the starting vertex.
-       Returned when multiple starting vetrices are in the query.
-
-       * `Many to One`_
-       * `Many to Many`_
-   * - ``end_vid``
-     - ``BIGINT``
-     - Identifier of the ending vertex.
-       Returned when multiple ending vertices are in the query.
-
-       * `One to Many`_
-       * `Many to Many`_
-   * - ``node``
-     - ``BIGINT``
-     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-   * - ``edge``
-     - ``BIGINT``
-     - Identifier of the edge used to go from ``node`` to the next node in the
-       path sequence. **-1** for the last node of the path.
-   * - ``cost``
-     - ``FLOAT``
-     - Cost to traverse from ``node`` using ``edge`` to the next node in the
-       path sequence.
-   * - ``agg_cost``
-     - ``FLOAT``
-     - Aggregate cost from ``start_vid`` to ``node``.
-
-.. return_path_short_end
-
-.. rubric:: Used in functions the following:
-
+* :doc:`pgr_aStar`
+* :doc:`pgr_bdAstar`
+* :doc:`pgr_bdDijkstra`
+* :doc:`pgr_bellmanFord`
+* :doc:`pgr_binaryBreadthFirstSearch`
 * :doc:`pgr_dijkstra`
 * :doc:`pgr_dijkstraNear`
-* :doc:`pgr_binaryBreadthFirstSearch`
+* :doc:`pgr_edwardMoore`
 * :doc:`pgr_trsp`
 * :doc:`pgr_trsp_withPoints`
 * :doc:`pgr_withPoints`
-
 
 .. return_path_complete_start
 
@@ -1636,6 +1588,12 @@ Returns |short-generic-result|
      - Aggregate cost from ``start_vid`` to ``node``.
 
 .. return_path_complete_end
+
+.. Note::
+   When ``start_vid`` or ``end_vid`` columns have negative values, the identifier is for
+   a Point.
+
+.. return_path_withPoints_end
 
 Multiple paths
 ...............................................................................
@@ -1821,6 +1779,57 @@ Result columns for flow functions
 Result columns for spanning tree functions
 ...............................................................................
 
+.. spantree-result-columns-start
+
+Returns set of |result-spantree|
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Description
+   * - ``seq``
+     - ``BIGINT``
+     - Sequential value starting from :math:`1`.
+   * - ``depth``
+     - ``BIGINT``
+     - Depth of the ``node``.
+
+       - :math:`0` when ``node`` = ``start_vid``.
+       - :math:`depth-1` is the depth of ``pred``
+
+   * - ``start_vid``
+     - ``BIGINT``
+     - Identifier of the root vertex.
+   * - ``pred``
+     - ``BIGINT``
+     - Predecessor of ``node``.
+
+       - When ``node`` = ``start_vid`` then has the value ``node``.
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of ``node`` reached using ``edge``.
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the ``edge`` used to arrive from ``pred`` to ``node``.
+
+       - :math:`-1` when ``node`` = ``start_vid``.
+
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse ``edge``.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``start_vid`` to ``node``.
+
+.. spantree-result-columns-end
+
+Result columns for simple spanning tree functions
+...............................................................................
+
 .. rubric:: Edges SQL for the following
 
 * :doc:`pgr_prim`
@@ -1896,7 +1905,58 @@ How to contribute
 Consult the `developer's documentation
 <https://docs.pgrouting.org/doxy/2.4/index.html>`__
 
+Others
+----------------------------------------------------------------------
 
+.. return_path_short_start
+
+Returns set of |old-generic-result|
+
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``seq``
+     - ``INTEGER``
+     - Sequential value starting from **1**.
+   * - ``path_seq``
+     - ``INTEGER``
+     - Relative position in the path. Has value **1** for the beginning of a
+       path.
+   * - ``start_vid``
+     - ``BIGINT``
+     - Identifier of the starting vertex.
+       Returned when multiple starting vetrices are in the query.
+
+       * `Many to One`_
+       * `Many to Many`_
+   * - ``end_vid``
+     - ``BIGINT``
+     - Identifier of the ending vertex.
+       Returned when multiple ending vertices are in the query.
+
+       * `One to Many`_
+       * `Many to Many`_
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the edge used to go from ``node`` to the next node in the
+       path sequence. **-1** for the last node of the path.
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse from ``node`` using ``edge`` to the next node in the
+       path sequence.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``start_vid`` to ``node``.
+
+.. return_path_short_end
 
 .. rubric:: Indices and tables
 

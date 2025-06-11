@@ -163,6 +163,13 @@ _pgr_dijkstra_v4(PG_FUNCTION_ARGS) {
     }
 }
 
+/* Deprecated code starts here
+ * This code is used on v3.8 and under
+ *
+ * TODO(v4.2) define SHOWMSG
+ * TODO(v4.3) change to WARNING
+ * TODO(v5) Move to legacy
+ */
 PGDLLEXPORT Datum _pgr_dijkstra(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_dijkstra);
 
@@ -173,6 +180,14 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
 
     Path_rt  *result_tuples = NULL;
     size_t result_count = 0;
+
+#ifdef SHOWMSG
+    ereport(NOTICE, (
+                errcode(ERRCODE_WARNING_DEPRECATED_FEATURE),
+                errmsg("A stored procedure is using deprecated C internal function '%s'", __func__),
+                errdetail("Library function '%s' was deprecated in pgRouting %s", __func__, "4.0.0"),
+                errhint("Consider upgrade pgRouting")));
+#endif
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -185,23 +200,17 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     text_to_cstring(PG_GETARG_TEXT_P(0)),
                     NULL,
                     NULL,
-
                     PG_GETARG_ARRAYTYPE_P(1),
                     PG_GETARG_ARRAYTYPE_P(2),
-
                     PG_GETARG_BOOL(3),
                     PG_GETARG_BOOL(4),
                     PG_GETARG_BOOL(5),
-
                     PG_GETARG_INT64(6),
                     true,
-
                     driving_side, true,
-
                     0,  // which
                     &result_tuples,
                     &result_count);
-
         } else if (PG_NARGS() == 5) {
             pgr_process_shortestPath(
                     text_to_cstring(PG_GETARG_TEXT_P(0)),
@@ -212,7 +221,6 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     PG_GETARG_BOOL(3),
                     true, 0, true,
                     driving_side, true,
-
                     0,  // which
                     &result_tuples,
                     &result_count);
@@ -242,7 +250,6 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     NULL,
                     text_to_cstring(PG_GETARG_TEXT_P(1)),
                     NULL, NULL,
-
                     PG_GETARG_BOOL(2),
                     PG_GETARG_BOOL(3),
                     true,

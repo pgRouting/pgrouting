@@ -1,13 +1,12 @@
 /*PGR-GNU*****************************************************************
 File: withPointsCost.sql
 
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
 
 ------
 
@@ -27,11 +26,47 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+--v4.0
+CREATE FUNCTION pgr_withPointsCostMatrix(
+  TEXT,     -- edges
+  TEXT,     -- points
+  ANYARRAY, -- vids
+  CHAR,     -- driving side
+
+  directed BOOLEAN DEFAULT true,
+
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT agg_cost float)
+RETURNS SETOF RECORD AS
+$BODY$
+  SELECT start_vid, end_vid, agg_cost
+  FROM _pgr_withPoints_v4(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], '{}'::BIGINT[],
+    directed, $4, true, true, true, 0, true);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST 100
+ROWS 1000;
+
+COMMENT ON FUNCTION pgr_withPointsCostMatrix(TEXT, TEXT, ANYARRAY, CHAR, BOOLEAN)
+IS'pgr_withPointsCostMatrix
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Points SQL with columns: [pid], edge_id, fraction [,side]
+  - ARRAY [vertex/points identifiers],
+  - driving side: directed graph [r,l], undirected graph [b]
+- Optional Parameters
+  - directed => true
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_withPointsCostMatrix.html
+';
+
+/* TODO remove in v5.0 */
 ---------------------------
 -- pgr_withPointsCostMatrix
 ---------------------------
 
---v3.0
+--v2.6
 CREATE FUNCTION pgr_withPointsCostMatrix(
     TEXT,     -- edges_sql (required)
     TEXT,     -- points_sql (required)
@@ -45,9 +80,8 @@ CREATE FUNCTION pgr_withPointsCostMatrix(
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_withPoints_v4(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], '{}'::BIGINT[],
-      $4, $5, true, true, true, 0, true);
+    SELECT a.start_pid, a.end_pid, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), _pgr_get_statement($2), $3, $3, $4,  $5, TRUE, TRUE) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -56,14 +90,4 @@ ROWS 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_withPointsCostMatrix(TEXT, TEXT, ANYARRAY, BOOLEAN, CHAR)
-IS'pgr_withPointsCostMatrix
-- Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - Points SQL with columns: [pid], edge_id, fraction[,side]
-    - ARRAY [points identifiers],
-- Optional Parameters
-    - directed := true
-    - driving_side := ''b''
-- Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_withPointsCostMatrix.html
-';
+IS 'pgr_withPointsCostMatrix deprecated signature on v4.0.0';

@@ -19,21 +19,50 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(5);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(9) ELSE plan(5) END;
 
 SELECT has_function('pgr_withpointscostmatrix');
-SELECT has_function('pgr_withpointscostmatrix', ARRAY['text','text','anyarray','boolean','character']);
-SELECT function_returns('pgr_withpointscostmatrix', ARRAY['text','text','anyarray','boolean','character'],'setof record');
 
-SELECT function_args_eq('pgr_withpointscostmatrix',
-  $$VALUES
-  ('{"","","","directed","driving_side","start_vid","end_vid","agg_cost"}'::TEXT[])
-  $$);
+CREATE OR REPLACE FUNCTION check_types()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
 
-SELECT function_types_eq('pgr_withpointscostmatrix',
-  $$VALUES
-  ('{text,text,anyarray,bool,bpchar,int8,int8,float8}'::TEXT[])
-  $$);
+  IF min_version('4.0.0') THEN
+
+    RETURN QUERY SELECT has_function('pgr_withpointscostmatrix', ARRAY['text','text','anyarray','character','boolean']);
+    RETURN QUERY SELECT function_returns('pgr_withpointscostmatrix', ARRAY['text','text','anyarray','character','boolean'],'setof record');
+
+    RETURN QUERY SELECT function_args_has('pgr_withpointscostmatrix',
+      $$VALUES
+      ('{"","","","",directed,start_vid,end_vid,agg_cost}'::TEXT[])
+      $$);
+
+    RETURN QUERY SELECT function_types_has('pgr_withpointscostmatrix',
+      $$VALUES
+      ('{text,text,anyarray,bpchar,bool,int8,int8,float8}'::TEXT[])
+      $$);
+
+  END IF;
+
+  RETURN QUERY SELECT has_function('pgr_withpointscostmatrix', ARRAY['text','text','anyarray','boolean','character']);
+  RETURN QUERY SELECT function_returns('pgr_withpointscostmatrix', ARRAY['text','text','anyarray','boolean','character'],'setof record');
+
+  RETURN QUERY SELECT function_args_has('pgr_withpointscostmatrix',
+    $$VALUES
+    ('{"","","",directed,driving_side,start_vid,end_vid,agg_cost}'::TEXT[])
+    $$);
+
+  RETURN QUERY SELECT function_types_has('pgr_withpointscostmatrix',
+    $$VALUES
+    ('{text,text,anyarray,bool,bpchar,int8,int8,float8}'::TEXT[])
+    $$);
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+SELECT check_types();
 
 SELECT finish();
 ROLLBACK;

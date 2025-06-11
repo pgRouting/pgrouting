@@ -35,7 +35,7 @@ SELECT * FROM pgr_withPoints(
         (SELECT geom FROM pointsOfInterest WHERE pid = 5),
         0.5, cap => 2)
   $p$,
-  1, ARRAY[-1, -2]);
+  1, ARRAY[-1, -2], 'r');
 /* -- o5 */
 SELECT edge_id, fraction, side, distance, ST_AsText(geom) geom, ST_AsText(edge) edge
 FROM pgr_findCloseEdges(

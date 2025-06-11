@@ -5,46 +5,46 @@ SET extra_float_digits=-3;
 SELECT * FROM pgr_withPointsCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  -1, 10);
+  -1, 10,'r');
 /* -- q2 */
 SELECT * FROM pgr_withPointsCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  -1, ARRAY[-3, 7],
+  -1, ARRAY[-3, 7], 'B',
   directed => false);
 /* -- q3 */
 SELECT * FROM pgr_withPointsCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[-1, 6], -3);
+  ARRAY[-1, 6], -3, 'R');
 /* -- q4 */
 SELECT * FROM pgr_withPointsCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[-1, 6], ARRAY[-3, 1]);
+  ARRAY[-1, 6], ARRAY[-3, 1], 'L');
 /* -- q5 */
 SELECT * FROM pgr_withPointsCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   'SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)',
-  driving_side => 'r');
+  'r');
 /* -- q6 */
 SELECT * FROM pgr_withPointsCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   ARRAY[5, -1], ARRAY[-2, -3, -6, 10, 11],
-  driving_side => 'r');
+  'r');
 /* -- q7 */
 SELECT * FROM pgr_withPointsCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   ARRAY[5, -1], ARRAY[-2, -3, -6, 10, 11],
-  driving_side => 'l');
+  'l');
 /* -- q8 */
 SELECT * FROM pgr_withPointsCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[5, -1], ARRAY[-2, -3, -6, 10, 11]);
+  ARRAY[5, -1], ARRAY[-2, -3, -6, 10, 11], 'R');
 /* -- q9 */
 SELECT * FROM pgr_withPointsCost(
   $e$ SELECT * FROM edges $e$,
@@ -54,5 +54,5 @@ SELECT * FROM pgr_withPointsCost(
         (SELECT ST_POINT(2.9, 1.8)),
         0.5, cap => 2)
   $p$,
-  1, ARRAY[-1, -2]);
+  1, ARRAY[-1, -2],'B', false);
 /* -- q10 */
