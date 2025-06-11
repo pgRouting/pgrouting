@@ -39,9 +39,10 @@ extern "C" {
 #include "c_common/time_msg.h"
 }
 
+#include "cpp_common/edge_t.hpp"
 #include "c_types/graph_bandwidth_rt.h"
 #include "cpp_common/assert.hpp"
-#include "drivers/metrics/bandwidth_driver.hpp"
+#include "drivers/metrics/bandwidth_driver.h"
 
 void pgr_process_bandwidth(
         const Edge_t* edges,

@@ -4,4 +4,6 @@ ADD_LIBRARY(metrics OBJECT
         bandwidth.c
         bandwidth_driver.cpp
         bandwidth_process.cpp
+        metrics_driver.cpp
+        metrics_process.cpp
     )
