@@ -79,6 +79,8 @@ types.
      - `Migration of spanning tree functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_bdDijkstra` [1]_
      - `Migration of single path functions`_
+   * - .. versionchanged:: 4.0.0 ``pgr_edwardMoore`` [3]_
+     - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_withPoints` [2]_
      - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_withPointsCost` [2]_
@@ -92,11 +94,10 @@ types.
      - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_binaryBreadthFirstSearch`
      - `Migration of single path functions`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_edwardMoore` [1]_
-     - `Migration of single path functions`_
 
 .. [1] Official function before v4.0.0
 .. [2] Official function in v4.0.0
+.. [3] Experimental or proposed in v4.0.0
 
 .. contents:: Contents
    :local:
@@ -317,15 +318,15 @@ application.
    * - ``pgr_withPoints``
      - v < 4.0
      - |old-pid-result|
+   * - ``pgr_edwardMoore``
+     - v < 4.0
+     - |old-generic-result|
 
 ..
    * - ``pgr_bellmanFord``
      - v < 4.0
      - |old-generic-result|
    * - ``pgr_BinaryBreadthFirstSearch``
-     - v < 4.0
-     - |old-generic-result|
-   * - ``pgr_edwardMoore``
      - v < 4.0
      - |old-generic-result|
 

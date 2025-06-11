@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 .. index::
@@ -24,6 +24,10 @@
    :end-before: end-warning
 
 .. rubric:: Availability
+
+.. rubric:: Version 4.0.0
+
+* Output columns standardized to |short-generic-result|
 
 .. rubric:: Version 3.2.0
 
@@ -95,7 +99,7 @@ Signatures
    | pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
    | pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
-   | Returns set of |old-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 .. index::
@@ -109,7 +113,7 @@ One to One
 
    | pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid**, [``directed``])
 
-   | Returns set of |result-1-1|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
@@ -129,11 +133,11 @@ One to Many
 
    | pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
 
-   | Returns set of |result-1-m|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertices :math:`\{ 10, 17\}` on a
-          **directed** graph
+:Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
+          graph
 
 .. literalinclude:: edwardMoore.queries
    :start-after: -- q3
@@ -150,7 +154,7 @@ Many to One
 
    | pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
 
-   | Returns set of |result-m-1|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
@@ -244,8 +248,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_short_start
-    :end-before: return_path_short_end
+    :start-after: return_path_complete_start
+    :end-before: return_path_complete_end
 
 Additional Examples
 -------------------------------------------------------------------------------
