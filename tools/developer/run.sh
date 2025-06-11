@@ -170,7 +170,7 @@ function build {
     sudo make install
 
     # Use this one only for macOS Homebrew
-    make install
+    # make install
 
     popd > /dev/null || exit 1
 
