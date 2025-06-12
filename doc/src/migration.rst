@@ -81,6 +81,8 @@ types.
      - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_bellmanFord` [3]_
      - `Migration of single path functions`_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_dagShortestPath` [3]_
+     - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_edwardMoore` [3]_
      - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_withPoints` [2]_
@@ -313,6 +315,9 @@ application.
    * - ``pgr_bellmanFord``
      - v < 4.0
      - |old-generic-result|
+   * - ``pgr_dagShortestPath``
+     - v < 4.0
+     - |result-1-1|
    * - ``pgr_edwardMoore``
      - v < 4.0
      - |old-generic-result|
@@ -409,6 +414,24 @@ Before updating pgRouting enumerate the columns: |result-1-1|
 .. literalinclude:: migration.queries
    :start-after: --bdDijkstra-1-to-1-filter
    :end-before: --bdDijkstra-1-to-m
+
+.. rubric:: Using ``pgr_DAGshortestPath``
+
+Migrating `this v3.8
+<https://docs.pgrouting.org/3.8/en/pgr_dagShortestPath.html#one-to-one>`__
+example.
+
+.. literalinclude:: migration.queries
+   :start-after: --DAGshortestPath-1-to-1
+   :end-before: --DAGshortestPath-1-to-1-filter
+
+Before updating pgRouting enumerate the columns: |result-1-1|
+
+.. literalinclude:: migration.queries
+   :start-after: --DAGshortestPath-1-to-1-filter
+   :end-before: --DAGshortestPath-END
+
+.. note:: This applies to all signatures of ``pgr_DAGshortestPath``
 
 Examples for One to Many with one route result
 ...............................................................................
