@@ -79,7 +79,9 @@ types.
      - `Migration of spanning tree functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_bdDijkstra` [1]_
      - `Migration of single path functions`_
-   * - .. versionchanged:: 4.0.0 ``pgr_edwardMoore`` [3]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_bellmanFord` [3]_
+     - `Migration of single path functions`_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_edwardMoore` [3]_
      - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_withPoints` [2]_
      - `Migration of single path functions`_
@@ -87,13 +89,6 @@ types.
      - `Migration of cost functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_withPointsCostMatrix` [2]_
      - `Migration of cost functions`_
-
-
-..
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_bellmanFord`
-     - `Migration of single path functions`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_binaryBreadthFirstSearch`
-     - `Migration of single path functions`_
 
 .. [1] Official function before v4.0.0
 .. [2] Official function in v4.0.0
@@ -306,29 +301,24 @@ application.
    * - Function
      - Version
      - From
-   * - ``pgr_aStar``
-     - v < 3.6
-     - |old-generic-result|
    * - ``pgr_dijkstra``
      - v < 3.5
      - |old-generic-result|
+   * - ``pgr_aStar``
+     - v < 3.6
+     - |old-generic-result|
    * - ``pgr_bdDijkstra``
+     - v < 4.0
+     - |old-generic-result|
+   * - ``pgr_bellmanFord``
+     - v < 4.0
+     - |old-generic-result|
+   * - ``pgr_edwardMoore``
      - v < 4.0
      - |old-generic-result|
    * - ``pgr_withPoints``
      - v < 4.0
      - |old-pid-result|
-   * - ``pgr_edwardMoore``
-     - v < 4.0
-     - |old-generic-result|
-
-..
-   * - ``pgr_bellmanFord``
-     - v < 4.0
-     - |old-generic-result|
-   * - ``pgr_BinaryBreadthFirstSearch``
-     - v < 4.0
-     - |old-generic-result|
 
 :to: |short-generic-result|
 
