@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-11 19:19+0000\n"
+"POT-Creation-Date: 2025-06-12 15:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4007,7 +4007,13 @@ msgstr ""
 msgid "pgr_pushRelabel(Combinations)"
 msgstr ""
 
-msgid "SQL signatures modification on functions"
+msgid "SQL signatures and output standardization"
+msgstr ""
+
+msgid ""
+"`#2904 <https://github.com/pgRouting/pgrouting/issues/2904>`__ "
+"Standardize output columns of functions with different output columns "
+"within overloads"
 msgstr ""
 
 msgid "Official functions"
@@ -4019,6 +4025,17 @@ msgid ""
 msgstr ""
 
 msgid "Combinations signature promoted to official."
+msgstr ""
+
+msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__"
+msgstr ""
+
+msgid "pgr_withPoints"
+msgstr ""
+
+msgid ""
+"`#2907 <https://github.com/pgRouting/pgrouting/issues/2907>`__ "
+"pgr_bellmanFord"
 msgstr ""
 
 msgid ""
@@ -4444,7 +4461,10 @@ msgstr ""
 msgid ":doc:`pgr_bdDijkstra` [1]_"
 msgstr ""
 
-msgid "``pgr_edwardMoore`` [3]_"
+msgid ":doc:`pgr_bellmanFord` [3]_"
+msgstr ""
+
+msgid ":doc:`pgr_edwardMoore` [3]_"
 msgstr ""
 
 msgid ":doc:`pgr_withPoints` [2]_"
@@ -4604,31 +4624,34 @@ msgid ""
 "functions` are |short-generic-result|"
 msgstr ""
 
-msgid "``pgr_aStar``"
-msgstr ""
-
-msgid "v < 3.6"
-msgstr ""
-
-msgid "|old-generic-result|"
-msgstr ""
-
 msgid "``pgr_dijkstra``"
 msgstr ""
 
 msgid "v < 3.5"
 msgstr ""
 
+msgid "|old-generic-result|"
+msgstr ""
+
+msgid "``pgr_aStar``"
+msgstr ""
+
+msgid "v < 3.6"
+msgstr ""
+
 msgid "``pgr_bdDijkstra``"
+msgstr ""
+
+msgid "``pgr_bellmanFord``"
+msgstr ""
+
+msgid "``pgr_edwardMoore``"
 msgstr ""
 
 msgid "``pgr_withPoints``"
 msgstr ""
 
 msgid "|old-pid-result|"
-msgstr ""
-
-msgid "``pgr_edwardMoore``"
 msgstr ""
 
 msgid "Migration of |old-generic-result|"
@@ -8707,18 +8730,6 @@ msgstr ""
 msgid "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
-msgid "Returns set of |result-1-1|"
-msgstr ""
-
-msgid "Returns set of |result-1-m|"
-msgstr ""
-
-msgid "Returns set of |result-m-1|"
-msgstr ""
-
-msgid "Using a combinations table on an **undirected** graph."
-msgstr ""
-
 msgid ""
 "`Boost: Bellman Ford "
 "<https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__"
@@ -8947,6 +8958,15 @@ msgstr ""
 msgid ""
 "**Note:** Using the :doc:`sampledata` Network as all weights are same "
 "(i.e :math:`1``)"
+msgstr ""
+
+msgid "Returns set of |result-1-1|"
+msgstr ""
+
+msgid "Returns set of |result-1-m|"
+msgstr ""
+
+msgid "Returns set of |result-m-1|"
 msgstr ""
 
 msgid ""
@@ -11823,6 +11843,9 @@ msgid ""
 msgstr ""
 
 msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr ""
+
+msgid "Using a combinations table on an **undirected** graph."
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
