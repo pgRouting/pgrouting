@@ -67,11 +67,10 @@ pgr_do_dagShortestPath(
         ArrayType *starts,
         ArrayType *ends,
 
-        bool directed,
         bool only_cost,
+        bool normal,
 
-        Path_rt **return_tuples,
-        size_t *return_count,
+        Path_rt **return_tuples, size_t *return_count,
         char **log_msg,
         char **notice_msg,
         char **err_msg) {
@@ -84,8 +83,8 @@ pgr_do_dagShortestPath(
 
 
     std::ostringstream log;
-    std::ostringstream err;
     std::ostringstream notice;
+    std::ostringstream err;
     const char *hint = nullptr;
 
     try {
@@ -96,7 +95,7 @@ pgr_do_dagShortestPath(
         pgassert(*return_count == 0);
 
         hint = combinations_sql;
-        auto combinations = get_combinations(combinations_sql, starts, ends, true);
+        auto combinations = get_combinations(combinations_sql, starts, ends, normal);
         hint = nullptr;
 
         if (combinations.empty() && combinations_sql) {
@@ -108,7 +107,7 @@ pgr_do_dagShortestPath(
 
 
         hint = edges_sql;
-        auto edges = get_edges(std::string(edges_sql), true, false);
+        auto edges = get_edges(std::string(edges_sql), normal, false);
 
         if (edges.empty()) {
             *notice_msg = to_pg_msg("No edges found");
@@ -118,23 +117,16 @@ pgr_do_dagShortestPath(
         hint = nullptr;
 
         std::deque<Path> paths;
-        if (directed) {
-            pgrouting::DirectedGraph graph;
-            graph.insert_edges(edges);
-            paths = pgr_dagShortestPath(graph, combinations, only_cost);
-        } else {
-            pgrouting::UndirectedGraph graph;
-            graph.insert_edges(edges);
-            paths = pgr_dagShortestPath(graph, combinations, only_cost);
-        }
+        pgrouting::DirectedGraph graph;
+        graph.insert_edges(edges);
+        paths = pgr_dagShortestPath(graph, combinations, only_cost);
 
         auto count = count_tuples(paths);
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice << "No paths found";
-            *log_msg = to_pg_msg(notice);
+            *log_msg = to_pg_msg("No paths found");
             return;
         }
 

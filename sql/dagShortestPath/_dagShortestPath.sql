@@ -27,57 +27,51 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
----------------------
----------------------
--- dagShortestPath
----------------------
----------------------
+--v4.0
+CREATE FUNCTION _pgr_dagShortestPath_v4(
+    TEXT, -- edges
 
----------------------------
---_pgr_dagShortestPath
----------------------------
+    ANYARRAY, -- departures
+    ANYARRAY, -- arrivals
 
---v3.0
-CREATE FUNCTION _pgr_dagShortestPath(
-    TEXT,
-    ANYARRAY,
-    ANYARRAY,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
+    BOOLEAN, -- only_cost
+    BOOLEAN, -- normal
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
-
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE c IMMUTABLE STRICT;
+LANGUAGE C VOLATILE STRICT;
 
---v3.2
-CREATE FUNCTION _pgr_dagShortestPath(
-    TEXT,
-    TEXT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
+--v4.0
+CREATE FUNCTION _pgr_dagShortestPath_v4(
+    TEXT, -- edges
+    TEXT, -- combinations
+
+    BOOLEAN, -- only_cost
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
-
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE C IMMUTABLE STRICT;
+LANGUAGE C VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_dagShortestPath(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_dagShortestPath_v4(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
 
-COMMENT ON FUNCTION _pgr_dagShortestPath(TEXT, TEXT, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_dagShortestPath_v4(TEXT, TEXT, BOOLEAN)
 IS 'pgRouting internal function';

@@ -19,6 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
+UPDATE edges SET cost = sign(cost), reverse_cost = -1 * sign(cost);
 SELECT plan(1);
 
 CREATE OR REPLACE FUNCTION empty_combinations()
@@ -26,18 +27,19 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF NOT min_version('3.2.0') THEN
-    RETURN QUERY
-    SELECT skip(1, 'Combinations signature is new on 3.2.0');
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_DAGshortestPath return columns are standardized on v4.0.0');
     RETURN;
   END IF;
 
-    RETURN query SELECT is_empty(
-      'SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_dagShortestPath(
-        ''SELECT id, source, target, cost FROM edges'',
-        ''SELECT * FROM combinations WHERE source IN (-1)'' ) '
-    );
-    RETURN;
+  RETURN query SELECT is_empty(
+    $$
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM pgr_dagShortestPath(
+      'SELECT id, source, target, cost FROM edges',
+      'SELECT * FROM combinations WHERE source IN (-1)')
+    $$
+  );
+
 END
 $BODY$
 language plpgsql;

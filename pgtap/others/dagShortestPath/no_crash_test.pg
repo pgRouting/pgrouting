@@ -19,8 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.2.0') THEN plan(81) ELSE plan(68) END;
+UPDATE edges SET cost = sign(cost), reverse_cost = -sign(cost);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(81) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION no_crash()
 RETURNS SETOF TEXT AS
@@ -29,6 +29,12 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
+
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_DAGshortestPath return columns are standardized on v4.0.0');
+    RETURN;
+  END IF;
+
   PREPARE edges AS
   SELECT id, source, target, cost  FROM edges;
 
@@ -117,12 +123,6 @@ BEGIN
   'NULL::BIGINT[]'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_dagShortestPath', params, subs);
-
-  IF NOT min_version('3.2.0') THEN
-    RETURN QUERY
-    SELECT skip(1, 'Combinations signature is new on 3.2.0');
-    RETURN;
-  END IF;
 
   PREPARE combinations AS
   SELECT source, target  FROM combinations;
