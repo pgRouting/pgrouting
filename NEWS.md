@@ -68,8 +68,12 @@ Functions promoted to official
 * pgr_maxFlow(Combinations)
 * pgr_pushRelabel(Combinations)
 
-SQL signatures modification on functions
+SQL signatures and output standardization
 ...............................................................................
+
+[#2904](https://github.com/pgRouting/pgrouting/issues/2904)
+Standardize output columns of functions with different output columns within overloads
+
 
 **Official functions**
 
@@ -78,7 +82,32 @@ SQL signatures modification on functions
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
   * Combinations signature promoted to official.
 
+* [#2905](https://github.com/pgRouting/pgrouting/issues/2905) 
+   pgr_withPoints
+
+  * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+  * Function promoted to official.
+  * Signature change: ``driving_side`` parameter changed from named optional to
+    unnamed positional.
+    - Directed graph valid values: ``l`` or ``L`` and ``r``, ``R``
+    - Undirected graph valid values: ``b`` or ``B``
+
+* [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
+  pgr_withPointsCost
+
+  * Function promoted to official.
+  * Output columns standardized to ``(start_vid, end_vid, agg_cost)``
+  * Signature change: ``driving_side`` parameter changed from named optional to
+    unnamed positional.
+    - Directed graph valid values: ``l`` or ``L`` and ``r``, ``R``
+    - Undirected graph valid values: ``b`` or ``B``
+
 **Experimental functions**
+
+* [#2907](https://github.com/pgRouting/pgrouting/issues/2907)
+  pgr_bellmanFord
+
+  * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 
 * [#2910](https://github.com/pgRouting/pgrouting/issues/2910)
   pgr_edwardMoore
