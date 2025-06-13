@@ -75,6 +75,9 @@ Functions promoted to official
 
 .. rubric:: Signatures promoted to official
 
+`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  Make official the Combinations signature on the official functions
+
 * pgr_aStar(Combinations)
 * pgr_aStarCost(Combinations)
 * pgr_bdAstar(Combinations)
@@ -95,14 +98,7 @@ SQL signatures and output standardization
 `#2904 <https://github.com/pgRouting/pgrouting/issues/2904>`__
 Standardize output columns of functions with different output columns within overloads
 
-
 .. rubric:: Official functions
-
-* `#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__ pgr_bdDijkstra
-
-  .. include:: pgr_bdDijkstra.rst
-     :start-after: Version 4.0.0
-     :end-before: .. rubric
 
 * `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ 
    pgr_withPoints
@@ -111,10 +107,9 @@ Standardize output columns of functions with different output columns within ove
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
-* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
-  pgr_withPointsCost
+* `#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__ pgr_bdDijkstra
 
-  .. include:: pgr_withPointsCost.rst
+  .. include:: pgr_bdDijkstra.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
@@ -131,6 +126,13 @@ Standardize output columns of functions with different output columns within ove
   pgr_edwardMoore
 
   .. include:: pgr_edwardMoore.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* `#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__
+  pgr_DAGshortestPath
+
+  .. include:: pgr_dagShortestPath.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
@@ -227,6 +229,10 @@ Related issues: `#2897 <https://github.com/pgRouting/pgrouting/issues/2897>`__
 * _v4trsp(text,text,text,boolean)
 * _pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
 * _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+* `#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__
+  _pgr_dagshortestpath(text,text,boolean,boolean)
+* `#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__
+  _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)
 
 
 * `#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__:
@@ -273,6 +279,8 @@ Code enhancements
 * _v4trsp(text,text,anyarray,anyarray,boolean)
 * _v4trsp(text,text,text,boolean)
 * _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
+* `#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__
+  _pgr_dagshortestpath
 
 pgRouting 3
 *******************************************************************************
