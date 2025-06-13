@@ -54,6 +54,9 @@ Functions promoted to official
 
 **Signatures promoted to official**
 
+[#2718](https://github.com/pgRouting/pgrouting/issues/2918)
+  Make official the Combinations signature on the official functions
+
 * pgr_aStar(Combinations)
 * pgr_aStarCost(Combinations)
 * pgr_bdAstar(Combinations)
@@ -74,13 +77,7 @@ SQL signatures and output standardization
 [#2904](https://github.com/pgRouting/pgrouting/issues/2904)
 Standardize output columns of functions with different output columns within overloads
 
-
 **Official functions**
-
-* [#2906](https://github.com/pgRouting/pgrouting/issues/2906) pgr_bdDijkstra
-
-  * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
-  * Combinations signature promoted to official.
 
 * [#2905](https://github.com/pgRouting/pgrouting/issues/2905) 
    pgr_withPoints
@@ -92,15 +89,10 @@ Standardize output columns of functions with different output columns within ove
     - Directed graph valid values: ``l`` or ``L`` and ``r``, ``R``
     - Undirected graph valid values: ``b`` or ``B``
 
-* [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
-  pgr_withPointsCost
+* [#2906](https://github.com/pgRouting/pgrouting/issues/2906) pgr_bdDijkstra
 
-  * Function promoted to official.
-  * Output columns standardized to ``(start_vid, end_vid, agg_cost)``
-  * Signature change: ``driving_side`` parameter changed from named optional to
-    unnamed positional.
-    - Directed graph valid values: ``l`` or ``L`` and ``r``, ``R``
-    - Undirected graph valid values: ``b`` or ``B``
+  * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+  * Combinations signature promoted to official.
 
 **Experimental functions**
 
@@ -111,6 +103,11 @@ Standardize output columns of functions with different output columns within ove
 
 * [#2910](https://github.com/pgRouting/pgrouting/issues/2910)
   pgr_edwardMoore
+
+  * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+
+* [#2913](https://github.com/pgRouting/pgrouting/issues/2913)
+  pgr_DAGshortestPath
 
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 
@@ -207,6 +204,10 @@ Related issues: [#2897](https://github.com/pgRouting/pgrouting/issues/2897)
 * _v4trsp(text,text,text,boolean)
 * _pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
 * _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+* [#2913](https://github.com/pgRouting/pgrouting/issues/2913)
+  _pgr_dagshortestpath(text,text,boolean,boolean)
+* [#2913](https://github.com/pgRouting/pgrouting/issues/2913)
+  _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)
 
 
 * [#2861](https://github.com/pgRouting/pgrouting/issues/2861):
@@ -253,5 +254,7 @@ Code enhancements
 * _v4trsp(text,text,anyarray,anyarray,boolean)
 * _v4trsp(text,text,text,boolean)
 * _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
+* [#2913](https://github.com/pgRouting/pgrouting/issues/2913)
+  _pgr_dagshortestpath
 
 </details>
