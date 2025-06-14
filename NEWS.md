@@ -101,6 +101,11 @@ Standardize output columns of functions with different output columns within ove
 
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 
+* [#2908](https://github.com/pgRouting/pgrouting/issues/2908)
+  pgr_binaryBreadthFirstSearch
+
+  * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+
 * [#2910](https://github.com/pgRouting/pgrouting/issues/2910)
   pgr_edwardMoore
 
