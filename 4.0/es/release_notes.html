@@ -102,7 +102,7 @@
 <li><a class="reference internal" href="#pgrouting-4-0">pgRouting 4.0</a><ul>
 <li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">Notas de la versión de pgRouting 4.0.0</a><ul>
 <li><a class="reference internal" href="#functions-promoted-to-official">Funciones promovidas a oficial</a></li>
-<li><a class="reference internal" href="#sql-signatures-modification-on-functions">SQL signatures modification on functions</a></li>
+<li><a class="reference internal" href="#sql-signatures-and-output-standardization">SQL signatures and output standardization</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-signatures">Removal of SQL deprecated signatures</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-functions">Eliminación de funciones obsoletas</a></li>
 <li><a class="reference internal" href="#rubric-removal-of-sql-deprecated-internal-functions">rubric:: Removal of SQL deprecated internal functions</a></li>
@@ -292,7 +292,7 @@
 <li><a class="reference internal" href="#pgrouting-4-0">pgRouting 4.0</a><ul>
 <li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">Notas de la versión de pgRouting 4.0.0</a><ul>
 <li><a class="reference internal" href="#functions-promoted-to-official">Funciones promovidas a oficial</a></li>
-<li><a class="reference internal" href="#sql-signatures-modification-on-functions">SQL signatures modification on functions</a></li>
+<li><a class="reference internal" href="#sql-signatures-and-output-standardization">SQL signatures and output standardization</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-signatures">Removal of SQL deprecated signatures</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-functions">Eliminación de funciones obsoletas</a></li>
 <li><a class="reference internal" href="#rubric-removal-of-sql-deprecated-internal-functions">rubric:: Removal of SQL deprecated internal functions</a></li>
@@ -557,19 +557,57 @@ unnamed positional.</p>
 <li><p>pgr_pushRelabel(Combinaciones)</p></li>
 </ul>
 </section>
-<section id="sql-signatures-modification-on-functions">
-<h5>SQL signatures modification on functions<a class="headerlink" href="#sql-signatures-modification-on-functions" title="Link to this heading">¶</a></h5>
+<section id="sql-signatures-and-output-standardization">
+<h5>SQL signatures and output standardization<a class="headerlink" href="#sql-signatures-and-output-standardization" title="Link to this heading">¶</a></h5>
+<p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2904">#2904</a>
+Standardize output columns of functions with different output columns within overloads</p>
 <p class="rubric">Official functions</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2906">#2906</a> pgr_bdDijkstra</p>
 <ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2906">#2906</a> pgr_bdDijkstra</p>
+<ul class="simple">
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a></dt><dd><p>pgr_withPoints</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Función promovida a oficial.</p></li>
+<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
+unnamed positional.</p>
+<ul>
+<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
+<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
+pgr_withPointsCost</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
+unnamed positional.</p>
+<ul>
+<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
+<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Funciones experimentales</p>
 <ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2907">#2907</a>
+pgr_bellmanFord</p>
+<ul>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2910">#2910</a>
 pgr_edwardMoore</p>
 <ul>
@@ -2760,7 +2798,7 @@ FindPostgreSQL.cmake</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en jun 12, 2025.<br/>
+      Actualizado por última vez en jun 14, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

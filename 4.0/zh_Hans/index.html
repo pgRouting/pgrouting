@@ -106,7 +106,7 @@
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
 <li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 发布说明</a><ul>
 <li><a class="reference internal" href="#functions-promoted-to-official">正式版功能函数</a></li>
-<li><a class="reference internal" href="#sql-signatures-modification-on-functions">SQL signatures modification on functions</a></li>
+<li><a class="reference internal" href="#sql-signatures-and-output-standardization">SQL signatures and output standardization</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-signatures">移除已弃用的 SQL 函数签名</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-functions">移除已弃用的SQL函数</a></li>
 <li><a class="reference internal" href="#rubric-removal-of-sql-deprecated-internal-functions">rubric:: Removal of SQL deprecated internal functions</a></li>
@@ -171,7 +171,7 @@
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
 <li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 发布说明</a><ul>
 <li><a class="reference internal" href="#functions-promoted-to-official">正式版功能函数</a></li>
-<li><a class="reference internal" href="#sql-signatures-modification-on-functions">SQL signatures modification on functions</a></li>
+<li><a class="reference internal" href="#sql-signatures-and-output-standardization">SQL signatures and output standardization</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-signatures">移除已弃用的 SQL 函数签名</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-functions">移除已弃用的SQL函数</a></li>
 <li><a class="reference internal" href="#rubric-removal-of-sql-deprecated-internal-functions">rubric:: Removal of SQL deprecated internal functions</a></li>
@@ -497,19 +497,57 @@ unnamed positional.</p>
 <li><p>pgr_pushRelabel(组合)</p></li>
 </ul>
 </section>
-<section id="sql-signatures-modification-on-functions">
-<h4>SQL signatures modification on functions<a class="headerlink" href="#sql-signatures-modification-on-functions" title="Link to this heading">¶</a></h4>
+<section id="sql-signatures-and-output-standardization">
+<h4>SQL signatures and output standardization<a class="headerlink" href="#sql-signatures-and-output-standardization" title="Link to this heading">¶</a></h4>
+<p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2904">#2904</a>
+Standardize output columns of functions with different output columns within overloads</p>
 <p class="rubric">Official functions</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2906">#2906</a> pgr_bdDijkstra</p>
 <ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2906">#2906</a> pgr_bdDijkstra</p>
+<ul class="simple">
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>组合签名已升级为正式版本。</p></li>
+</ul>
+</li>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a></dt><dd><p>pgr_withPoints</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>函数正式发布。</p></li>
+<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
+unnamed positional.</p>
+<ul>
+<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
+<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
+pgr_withPointsCost</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
+unnamed positional.</p>
+<ul>
+<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
+<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <p class="rubric">实验性函数</p>
 <ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2907">#2907</a>
+pgr_bellmanFord</p>
+<ul>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2910">#2910</a>
 pgr_edwardMoore</p>
 <ul>
@@ -708,7 +746,7 @@ pgr_nodeNetwork</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 12, 2025.<br/>
+      Last updated on 6月 14, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
