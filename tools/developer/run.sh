@@ -27,17 +27,24 @@ pushd "${DIR}" > /dev/null || exit 1
 
 # This run.sh is intended for 3.x.x
 VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
+# For macOS Homebrew
+# VERSION=$(ggrep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
 echo "pgRouting VERSION ${VERSION}"
 
 # set up your postgres version, port and compiler (if more than one)
+# For macOS Homebrew comment the line
 PGVERSION="15"
-PGPORT="5432"
+
 PGBIN="/usr/lib/postgresql/${PGVERSION}/bin"
+# For macOS Homebrew
+# PGBIN="/opt/homebrew/bin"
+
+PGPORT="5432"
 # When more than one compiler is installed
 GCC=""
 
-QUERIES_DIRS=$(ls docqueries -1)
-TAP_DIRS=$(ls pgtap -1)
+QUERIES_DIRS=$(ls -1 docqueries)
+TAP_DIRS=$(ls -1 pgtap)
 
 QUERIES_DIRS="dijkstra"
 TAP_DIRS="dijkstra"
@@ -161,6 +168,10 @@ function build {
     make -j 16
     #make
     sudo make install
+
+    # Use this one only for macOS Homebrew
+    # make install
+
     popd > /dev/null || exit 1
 
 }

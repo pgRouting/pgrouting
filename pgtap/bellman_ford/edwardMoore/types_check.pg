@@ -1,4 +1,3 @@
-
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
@@ -19,90 +18,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(13);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(13) WHEN min_version('3.2.0') THEN plan(12) ELSE PLAN(10) END;
 
-CREATE OR REPLACE FUNCTION types_check()
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-
-  RETURN QUERY SELECT has_function('pgr_edwardmoore');
-
-  RETURN QUERY SELECT has_function('pgr_edwardmoore', ARRAY['text','bigint','bigint','boolean']);
-  RETURN QUERY SELECT has_function('pgr_edwardmoore', ARRAY['text','bigint','anyarray','boolean']);
-  RETURN QUERY SELECT has_function('pgr_edwardmoore', ARRAY['text','anyarray','bigint','boolean']);
-  RETURN QUERY SELECT has_function('pgr_edwardmoore', ARRAY['text','anyarray','anyarray','boolean']);
-
-  RETURN QUERY SELECT function_returns('pgr_edwardmoore', ARRAY['text','bigint','bigint','boolean'], 'setof record');
-  RETURN QUERY SELECT function_returns('pgr_edwardmoore', ARRAY['text','bigint','anyarray','boolean'], 'setof record');
-  RETURN QUERY SELECT function_returns('pgr_edwardmoore', ARRAY['text','anyarray','bigint','boolean'], 'setof record');
-  RETURN QUERY SELECT function_returns('pgr_edwardmoore', ARRAY['text','anyarray','anyarray','boolean'], 'setof record');
-
-  RETURN QUERY
-  SELECT CASE
-  WHEN min_version('3.2.0') THEN
-    collect_tap(
-      has_function('pgr_edwardmoore', ARRAY['text','text','boolean']),
-      function_returns('pgr_edwardmoore', ARRAY['text','text','boolean'], 'setof record')
-    )
-  ELSE
-    skip(2, 'Combinations signature added on version 3.2.0')
-  END;
-
-  RETURN QUERY
-  SELECT CASE
-  WHEN min_version('3.2.0') THEN
-    collect_tap(
-
-      function_args_eq('pgr_edwardmoore',
-        $$VALUES
-        ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","","directed","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","",directed,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost}'::TEXT[])
-        $$
-      ),
-
-      function_types_eq('pgr_edwardmoore',
-        $$VALUES
-        ('{text,int8,int8,bool,int4,int4,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,int8,anyarray,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,anyarray,int8,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,anyarray,anyarray,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,text,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
-        $$
-      )
-    )
-  ELSE
-    collect_tap(
-
-      function_args_eq('pgr_edwardmoore',
-        $$VALUES
-        ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","","directed","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-        $$
-      ),
-
-      function_types_eq('pgr_edwardmoore',
-        $$VALUES
-        ('{text,int8,int8,bool,int4,int4,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,int8,anyarray,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,anyarray,int8,bool,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,anyarray,anyarray,bool,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
-        $$
-      )
-    )
-  END;
-
-END;
-$BODY$
-LANGUAGE plpgsql;
-
-SELECT types_check();
-
+SELECT single_path_types_check('pgr_edwardmoore', standard_v => '4.0.0');
 
 SELECT finish();
 ROLLBACK;

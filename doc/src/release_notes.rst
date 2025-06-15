@@ -89,8 +89,14 @@ Functions promoted to official
 * pgr_maxFlow(Combinations)
 * pgr_pushRelabel(Combinations)
 
-SQL signatures modification on functions
+SQL signatures and output standardization
 ...............................................................................
+
+`#2904 <https://github.com/pgRouting/pgrouting/issues/2904>`__
+Standardize output columns of functions with different output columns within overloads
+
+
+.. rubric:: Official functions
 
 * `#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__ pgr_bdDijkstra
 
@@ -98,6 +104,35 @@ SQL signatures modification on functions
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ 
+   pgr_withPoints
+
+  .. include:: pgr_withPoints.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+  pgr_withPointsCost
+
+  .. include:: pgr_withPointsCost.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+.. rubric:: Experimental functions
+
+* `#2907 <https://github.com/pgRouting/pgrouting/issues/2907>`__
+  pgr_bellmanFord
+
+  .. include:: pgr_bellmanFord.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* `#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__
+  pgr_edwardMoore
+
+  .. include:: pgr_edwardMoore.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
 
 Removal of SQL deprecated signatures
 ...............................................................................
