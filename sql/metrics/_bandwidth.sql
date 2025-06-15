@@ -8,7 +8,7 @@ Mail: project@pgrouting.org
 
 Function developer:
 Copyright (c) 2025 Saloni Kumari
-Mail: chaudharysaloni2510@gmail.com
+Mail: chaudharysaloni2510 at gmail.com
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

@@ -3,7 +3,7 @@ File: bandwidth_process.h
 
 Function's developer:
 Copyright (c) 2025 Saloni kumari
-Mail: chaudharysaloni2510@gmail.com
+Mail: chaudharysaloni2510 at gmail.com
 
 ------
 
