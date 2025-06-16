@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2025 Saloni Kumari
-Mail: chaudharysaloni2510@gmail.com
+Mail: chaudharysaloni2510 at gmail.com
 
 ------
 
@@ -26,10 +26,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
+#if 0
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
-#include "c_types/graph_bandwidth_rt.h"
+#include "c_types/bandwidth_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -53,8 +54,8 @@ process(
     char* err_msg = NULL;
 
     clock_t start_t = clock();
-    pgr_bandwidth(
-        edges_sql,
+    _pgr_bandwidth(
+        edges,
         directed,
         result_tuples,
         result_count,
@@ -130,3 +131,5 @@ _pgr_bandwidth(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
+
+#endif

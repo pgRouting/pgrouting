@@ -3,7 +3,7 @@ File: bandwidth_process.h
 
 Function's developer:
 Copyright (c) 2025 Saloni kumari
-Mail: chaudharysaloni2510@gmail.com
+Mail: chaudharysaloni2510 at gmail.com
 
 ------
 
@@ -29,19 +29,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifdef __cplusplus
 #include <cstddef>
-using GraphBandwidth_rt = struct GraphBandwidth_rt;
+#include <cstdint>
+
 #else
 #include <stddef.h>
 #include <stdbool.h>
-typedef struct GraphBandwidth_rt GraphBandwidth_rt;
 #endif
+
+#include "c_types/graph_bandwidth_rt.h"
+
+#include "cpp_common/edge_t.hpp"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 void pgr_process_bandwidth(
-    const char* edges_sql,
+    const Edge_t* edges_sql,
     GraphBandwidth_rt** result_tuples,
     size_t* result_count,
     char** log_msg,

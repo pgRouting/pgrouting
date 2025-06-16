@@ -272,38 +272,50 @@ sub generate_upgrade_script {
                 push @commands, drop_special_case_function("pgr_kruskaldd(text,anyarray,numeric)");
                 push @commands, drop_special_case_function("pgr_kruskaldd(text,anyarray,double precision)");
             }
+
             if ($old_minor >= "3.2") {
                 # Out parameters changed names on v4.0.0
+                # Official functions
                 push @commands, drop_special_case_function("pgr_withpoints(text,text,text,boolean,character,boolean)");
                 push @commands, drop_special_case_function("pgr_withpointscost(text,text,text,boolean,character)");
             }
 
             # Row type defined by OUT parameters is different.
+            # Out parameters changed names on v4.0.0
+            # Experimental functions
+
+            push @commands, drop_special_case_function("pgr_bellmanford(text,bigint,bigint,boolean)");
+            push @commands, drop_special_case_function("pgr_bellmanford(text,anyarray,bigint,boolean)");
+            push @commands, drop_special_case_function("pgr_bellmanford(text,bigint,anyarray,boolean)");
+
+            push @commands, drop_special_case_function("pgr_edwardmoore(text,bigint,bigint,boolean)");
+            push @commands, drop_special_case_function("pgr_edwardmoore(text,anyarray,bigint,boolean)");
+            push @commands, drop_special_case_function("pgr_edwardmoore(text,bigint,anyarray,boolean)");
+
+            # Official functions
             push @commands, drop_special_case_function("pgr_bddijkstra(text,bigint,bigint,boolean)");
             push @commands, drop_special_case_function("pgr_bddijkstra(text,anyarray,bigint,boolean)");
             push @commands, drop_special_case_function("pgr_bddijkstra(text,bigint,anyarray,boolean)");
 
-            # Out parameters changed names on v4.0.0
             push @commands, drop_special_case_function("pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)");
             push @commands, drop_special_case_function("pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)");
             push @commands, drop_special_case_function("pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)");
             push @commands, drop_special_case_function("pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)");
 
-            # Out parameters changed names on v4.0.0
             push @commands, drop_special_case_function("pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)");
             push @commands, drop_special_case_function("pgr_withpointscost(text,text,anyarray,bigint,boolean,character)");
             push @commands, drop_special_case_function("pgr_withpointscost(text,text,bigint,anyarray,boolean,character)");
             push @commands, drop_special_case_function("pgr_withpointscost(text,text,bigint,bigint,boolean,character)");
 
-            # Out parameters changed names on v4.0.0
+
             push @commands, drop_special_case_function("pgr_withpointscostmatrix(text,text,anyarray,boolean,character)");
         }
     }
 
     if ($old_mayor == 2) {
-        push @commands, "ALTER EXTENSION pgrouting DROP TYPE pgr_costresult;  DROP TYPE pgr_costresult CASCADE;\n";
-        push @commands, "ALTER EXTENSION pgrouting DROP TYPE pgr_costresult3; DROP TYPE pgr_costresult3 CASCADE;\n";
-        push @commands, "ALTER EXTENSION pgrouting DROP TYPE pgr_geomresult;  DROP TYPE pgr_geomresult CASCADE;\n";
+        push @commands, "ALTER EXTENSION pgrouting DROP TYPE pgr_costresult;  DROP TYPE pgr_costresult;\n";
+        push @commands, "ALTER EXTENSION pgrouting DROP TYPE pgr_costresult3; DROP TYPE pgr_costresult3;\n";
+        push @commands, "ALTER EXTENSION pgrouting DROP TYPE pgr_geomresult;  DROP TYPE pgr_geomresult;\n";
     }
 
     write_script(join('', @commands));

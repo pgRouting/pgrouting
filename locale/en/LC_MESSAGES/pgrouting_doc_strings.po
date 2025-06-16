@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-07 22:16+0000\n"
+"POT-Creation-Date: 2025-06-12 15:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3936,6 +3936,17 @@ msgid "Function promoted to official."
 msgstr ""
 
 msgid ""
+"Signature change: ``driving_side`` parameter changed from named optional "
+"to unnamed positional."
+msgstr ""
+
+msgid "Directed graph valid values: ``l`` or ``L`` and ``r``, ``R``"
+msgstr ""
+
+msgid "Undirected graph valid values: ``b`` or ``B``"
+msgstr ""
+
+msgid ""
 "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ "
 "pgr_withPointsCost"
 msgstr ""
@@ -3943,7 +3954,9 @@ msgstr ""
 msgid "Output columns standardized to |matrix-result|"
 msgstr ""
 
-msgid "pgr_withPointsCostMatrix"
+msgid ""
+"`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ "
+"pgr_withPointsCostMatrix"
 msgstr ""
 
 msgid "pgr_withPointsDD"
@@ -3997,7 +4010,16 @@ msgstr ""
 msgid "pgr_pushRelabel(Combinations)"
 msgstr ""
 
-msgid "SQL signatures modification on functions"
+msgid "SQL signatures and output standardization"
+msgstr ""
+
+msgid ""
+"`#2904 <https://github.com/pgRouting/pgrouting/issues/2904>`__ "
+"Standardize output columns of functions with different output columns "
+"within overloads"
+msgstr ""
+
+msgid "Official functions"
 msgstr ""
 
 msgid ""
@@ -4006,6 +4028,22 @@ msgid ""
 msgstr ""
 
 msgid "Combinations signature promoted to official."
+msgstr ""
+
+msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__"
+msgstr ""
+
+msgid "pgr_withPoints"
+msgstr ""
+
+msgid ""
+"`#2907 <https://github.com/pgRouting/pgrouting/issues/2907>`__ "
+"pgr_bellmanFord"
+msgstr ""
+
+msgid ""
+"`#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__ "
+"pgr_edwardMoore"
 msgstr ""
 
 msgid "Removal of SQL deprecated signatures"
@@ -4355,6 +4393,686 @@ msgstr ""
 msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr ""
 
+msgid "Migration to standardized columns"
+msgstr ""
+
+msgid ""
+"There has been an effort to standardize function output columns names and"
+" types."
+msgstr ""
+
+msgid ":ref:`pgRouting-concepts:Result columns for cost functions`"
+msgstr ""
+
+msgid "|matrix-result|"
+msgstr ""
+
+msgid ":ref:`pgRouting-concepts:Result columns for single path functions`"
+msgstr ""
+
+msgid "|short-generic-result|"
+msgstr ""
+
+msgid ":ref:`pgRouting-concepts:Result columns for spanning tree functions`"
+msgstr ""
+
+msgid "|result-spantree|"
+msgstr ""
+
+msgid "Function"
+msgstr ""
+
+msgid ":doc:`pgr_dijkstra` [1]_"
+msgstr ""
+
+msgid "`Migration of single path functions`_"
+msgstr ""
+
+msgid ":doc:`pgr_aStar` [1]_"
+msgstr ""
+
+msgid ":doc:`pgr_bdAstar` [1]_"
+msgstr ""
+
+msgid ":doc:`pgr_drivingDistance` [1]_"
+msgstr ""
+
+msgid "`Migration of spanning tree functions`_"
+msgstr ""
+
+msgid ":doc:`pgr_withPointsDD` [2]_"
+msgstr ""
+
+msgid ":doc:`pgr_kruskalBFS` [1]_"
+msgstr ""
+
+msgid ":doc:`pgr_kruskalDD` [1]_"
+msgstr ""
+
+msgid ":doc:`pgr_kruskalDFS` [1]_"
+msgstr ""
+
+msgid ":doc:`pgr_primBFS` [1]_"
+msgstr ""
+
+msgid ":doc:`pgr_primDD` [1]_"
+msgstr ""
+
+msgid ":doc:`pgr_primDFS` [1]_"
+msgstr ""
+
+msgid ":doc:`pgr_bdDijkstra` [1]_"
+msgstr ""
+
+<<<<<<< HEAD
+=======
+msgid ":doc:`pgr_bellmanFord` [3]_"
+msgstr ""
+
+msgid ":doc:`pgr_edwardMoore` [3]_"
+msgstr ""
+
+>>>>>>> pgr/develop
+msgid ":doc:`pgr_withPoints` [2]_"
+msgstr ""
+
+msgid ":doc:`pgr_withPointsCost` [2]_"
+msgstr ""
+
+msgid "`Migration of cost functions`_"
+msgstr ""
+
+msgid ":doc:`pgr_withPointsCostMatrix` [2]_"
+msgstr ""
+
+msgid "Official function before v4.0.0"
+msgstr ""
+
+msgid "Official function in v4.0.0"
+msgstr ""
+
+<<<<<<< HEAD
+=======
+msgid "Experimental or proposed in v4.0.0"
+msgstr ""
+
+>>>>>>> pgr/develop
+msgid "Migration of cost functions"
+msgstr ""
+
+msgid ""
+"The standardized :ref:`pgRouting-concepts:Result columns for cost "
+"functions` are |matrix-result|"
+msgstr ""
+
+msgid ""
+"The following functions need to be migrated when they are being used in "
+"an application."
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "From"
+msgstr ""
+
+msgid "``pgr_withPointsCost``"
+msgstr ""
+
+msgid "v < 4.0"
+msgstr ""
+
+msgid "|matrix-pid|"
+msgstr ""
+
+msgid "``pgr_withPointsCostMatrix``"
+msgstr ""
+
+msgid "**to** |matrix-result|"
+msgstr ""
+
+msgid "Migration of |matrix-pid|"
+msgstr ""
+
+msgid "Signatures to be migrated:"
+msgstr ""
+
+msgid "One to One"
+msgstr ""
+
+msgid "One to Many"
+msgstr ""
+
+msgid "Many to One"
+msgstr ""
+
+msgid "Many to Many"
+msgstr ""
+
+msgid "Combinations"
+msgstr ""
+
+msgid "Breaking change"
+msgstr ""
+
+msgid ""
+"If using ``pgr_withPointsCost``: column names must be changed after "
+"updating pgRouting"
+msgstr ""
+
+msgid "New output columns are |matrix-result|"
+msgstr ""
+
+msgid ""
+"To get the old version column names: rename ``start_vid`` to "
+"``start_pid`` and ``end_vid`` to ``end_pid``."
+msgstr ""
+
+msgid "Examples"
+msgstr ""
+
+msgid "Examples for One to One for cost functions"
+msgstr ""
+
+msgid "Using ``pgr_withPointsCost``"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.8 "
+"<https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#one-to-one>`__"
+" example."
+msgstr ""
+
+msgid "from"
+msgstr ""
+
+msgid "to"
+msgstr ""
+
+msgid "Examples for One to Many for cost functions"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.8 "
+"<https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#one-to-"
+"many>`__ example."
+msgstr ""
+
+msgid "Examples for Many to One for cost functions"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.8 "
+"<https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#many-to-"
+"one>`__ example."
+msgstr ""
+
+msgid "Examples for Many to Many for cost functions"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.8 "
+"<https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#many-to-"
+"many>`__ example."
+msgstr ""
+
+msgid "Examples for Combinations for cost functions"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.8 "
+"<https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#combinations>`__"
+" example."
+msgstr ""
+
+msgid "Migration of single path functions"
+msgstr ""
+
+msgid ""
+"THe standardized :ref:`pgRouting-concepts:Result columns for single path "
+"functions` are |short-generic-result|"
+msgstr ""
+
+<<<<<<< HEAD
+msgid "``pgr_aStar``"
+msgstr ""
+
+msgid "v < 3.6"
+msgstr ""
+
+msgid "|old-generic-result|"
+msgstr ""
+
+=======
+>>>>>>> pgr/develop
+msgid "``pgr_dijkstra``"
+msgstr ""
+
+msgid "v < 3.5"
+msgstr ""
+
+<<<<<<< HEAD
+msgid "``pgr_bdDijkstra``"
+msgstr ""
+
+=======
+msgid "|old-generic-result|"
+msgstr ""
+
+msgid "``pgr_aStar``"
+msgstr ""
+
+msgid "v < 3.6"
+msgstr ""
+
+msgid "``pgr_bdDijkstra``"
+msgstr ""
+
+msgid "``pgr_bellmanFord``"
+msgstr ""
+
+msgid "``pgr_edwardMoore``"
+msgstr ""
+
+>>>>>>> pgr/develop
+msgid "``pgr_withPoints``"
+msgstr ""
+
+msgid "|old-pid-result|"
+msgstr ""
+
+msgid "Migration of |old-generic-result|"
+msgstr ""
+
+msgid ""
+"Before updating pgRouting, enumerate the corresponding columns of the "
+"signature"
+msgstr ""
+
+msgid "Skip when applicable, ``start_vid``"
+msgstr ""
+
+msgid "Skip when applicable, ``end_vid``"
+msgstr ""
+
+msgid "Migration of |old-pid-result|"
+msgstr ""
+
+msgid "To get the old version column names, depending on the signature:"
+msgstr ""
+
+msgid "Filter out the columns: ``start_vid`` and/or ``end_vid``"
+msgstr ""
+
+msgid "Rename the columns:"
+msgstr ""
+
+msgid "``start_vid`` to ``start_pid``"
+msgstr ""
+
+msgid "``end_vid`` to ``end_pid``"
+msgstr ""
+
+msgid ""
+"If using ``pgr_withPoints``: column names must be changed after updating "
+"pgRouting"
+msgstr ""
+
+msgid "Migration of |result-1-1|"
+msgstr ""
+
+msgid "To get the old version column names:"
+msgstr ""
+
+msgid "Filter out the columns: ``start_vid`` and ``end_vid``"
+msgstr ""
+
+msgid "Examples with One to One with one route result"
+msgstr ""
+
+msgid "Using ``pgr_aStar``"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_aStar.html"
+"#one-to-one>`__ example."
+msgstr ""
+
+msgid "Before updating pgRouting enumerate the columns: |result-1-1|"
+msgstr ""
+
+msgid "Using ``pgr_bdDijkstra``"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.8 "
+"<https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#one-to-one>`__ "
+"example."
+msgstr ""
+
+msgid "Examples for One to Many with one route result"
+msgstr ""
+
+msgid "Using ``pgr_bdAstar``"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_bdAstar.html"
+"#one-to-many>`__ example."
+msgstr ""
+
+msgid "Before updating pgRouting enumerate the columns: |result-1-m|"
+msgstr ""
+
+msgid "Using ``pgr_withPoints``"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.8 "
+"<https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#one-to-many>`__ "
+"example."
+msgstr ""
+
+msgid "|pid-1-m|"
+msgstr ""
+
+msgid ""
+"To get the old signature column names: filter out the column "
+"``start_vid`` and rename ``end_vid`` to ``end_pid``."
+msgstr ""
+
+msgid "Examples for Many to One with one route result"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.8 "
+"<https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#many-to-one>`__ "
+"example."
+msgstr ""
+
+msgid "Before updating pgRouting enumerate the columns: |result-m-1|"
+msgstr ""
+
+msgid "Using ``pgr_dijkstra``"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstra.html"
+"#many-to-one>`__ example."
+msgstr ""
+
+msgid "Examples for Many to Many with one route result"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.8 "
+"<https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#many-to-many>`__ "
+"example."
+msgstr ""
+
+msgid "|pid-m-m|"
+msgstr ""
+
+msgid "Examples for combinations with one route result"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.8 `this "
+"<https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#combinations>`__ "
+"example."
+msgstr ""
+
+msgid "Migration of spanning tree functions"
+msgstr ""
+
+msgid ""
+"The standardized :ref:`pgRouting-concepts:Result columns for spanning "
+"tree functions` are |result-spantree|"
+msgstr ""
+
+msgid "``pgr_kruskalDD``"
+msgstr ""
+
+msgid "v < 3.7"
+msgstr ""
+
+msgid "|result-bfs|"
+msgstr ""
+
+msgid "``pgr_kruskalBFS``"
+msgstr ""
+
+msgid "``pgr_kruskalDFS``"
+msgstr ""
+
+msgid "``pgr_primDD``"
+msgstr ""
+
+msgid "``pgr_primBFS``"
+msgstr ""
+
+msgid "``pgr_primDFS``"
+msgstr ""
+
+msgid "``pgr_drivingDistance``"
+msgstr ""
+
+msgid "|result-dij-dd|"
+msgstr ""
+
+msgid "``pgr_withPointsDD``"
+msgstr ""
+
+msgid "|result-generic-no-seq|"
+msgstr ""
+
+msgid "to |result-spantree|"
+msgstr ""
+
+msgid "Migration of |result-bfs|"
+msgstr ""
+
+msgid "Single vertex"
+msgstr ""
+
+msgid "Multiple vertices"
+msgstr ""
+
+msgid "Before updating pgRouting enumerate the columns: |result-bfs|"
+msgstr ""
+
+msgid "Migration of |result-dij-dd|"
+msgstr ""
+
+msgid "Migration depends on the signature."
+msgstr ""
+
+msgid "For single vertex:"
+msgstr ""
+
+msgid "Before updating pgRouting, enumerate |result-1-1| columns"
+msgstr ""
+
+msgid "For multiple vertices:"
+msgstr ""
+
+msgid ""
+"If using ``pgr_drivingDistance`` with multiple vertices: column names "
+"must be changed after updating pgRouting."
+msgstr ""
+
+msgid "To get the old version column names |result-dij-dd-m|"
+msgstr ""
+
+msgid "Enumerate |result-dij-dd-m|"
+msgstr ""
+
+msgid "Rename ``start_vid`` to ``from_v``."
+msgstr ""
+
+msgid "Migration of |result-generic-no-seq|"
+msgstr ""
+
+msgid ""
+"If using ``pgr_withPointsDD``: function call must be changed after "
+"updating pgRouting."
+msgstr ""
+
+msgid ""
+"``pgr_withPointsDD``'s parameter ``driving_side`` changed from named "
+"optional to unnamed positional parameter (position 5 in the function "
+"call) and its validity differ for directed and undirected graphs."
+msgstr ""
+
+msgid "For ``pgr_withPointsDD`` Single vertex"
+msgstr ""
+
+msgid ""
+"To get the * Output columns were |result-1-1-no-seq| * Does not have "
+"``start_vid``, ``pred`` and ``depth`` result columns. * ``driving_side`` "
+"parameter was named optional now it is compulsory unnamed."
+msgstr ""
+
+msgid "For ``pgr_withPointsDD`` (Multiple vertices)"
+msgstr ""
+
+msgid "Output columns were |result-m-1-no-seq|"
+msgstr ""
+
+msgid "Does not have ``depth`` and ``pred`` result columns."
+msgstr ""
+
+msgid ""
+"``driving_side`` parameter was named optional now it is compulsory "
+"unnamed."
+msgstr ""
+
+msgid "Validity of driving_side:"
+msgstr ""
+
+msgid "On directed graph ``b`` could be used as **driving side**"
+msgstr ""
+
+msgid "On undirected graph ``r``, ``l`` could be used as **driving side**"
+msgstr ""
+
+msgid "After Migration"
+msgstr ""
+
+msgid "Be aware of the existence of the additional result Columns."
+msgstr ""
+
+msgid "Output columns are |result-spantree|"
+msgstr ""
+
+msgid ""
+"**driving side** parameter is unnamed compulsory, and valid values differ"
+" for directed and undirected graphs."
+msgstr ""
+
+msgid "Does not have a default value."
+msgstr ""
+
+msgid "In directed graph: valid values are [``r``, ``R``, ``l``, ``L``]"
+msgstr ""
+
+msgid "In undirected graph: valid values are [``b``, ``B``]"
+msgstr ""
+
+msgid "Using an invalid value throws an ``ERROR``."
+msgstr ""
+
+msgid "Examples for single vertex"
+msgstr ""
+
+msgid "Using ``pgr_kruskalDD``"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.6 "
+"<https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#single-vertex>`__ "
+"example."
+msgstr ""
+
+msgid "Before updating pgRouting enumerate the columns: |result-bfs|."
+msgstr ""
+
+msgid "Using ``pgr_primBFS``"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.6 <https://docs.pgrouting.org/3.6/en/pgr_primBFS.html"
+"#single-vertex>`__ example."
+msgstr ""
+
+msgid "Using ``pgr_drivingDistance``"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.5 "
+"<https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-"
+"vertex>`__ example."
+msgstr ""
+
+msgid "Before updating pgRouting, enumerate |result-1-1-no-seq| columns"
+msgstr ""
+
+msgid "Using ``pgr_withPointsDD``"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.5 "
+"<https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
+"vertex>`__ example."
+msgstr ""
+
+msgid ""
+"After updating pgROuting use an unnamed valid value for **driving side** "
+"after the **distance** parameter."
+msgstr ""
+
+msgid "Examples for multiple vertices"
+msgstr ""
+
+msgid "Using ``pgr_kruskalDFS``"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.6 "
+"<https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#multiple-"
+"vertices>`__ example."
+msgstr ""
+
+msgid "Using ``pgr_primDD``"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.6 <https://docs.pgrouting.org/3.6/en/pgr_primDD.html"
+"#multiple-vertices>`__ example."
+msgstr ""
+
+msgid ""
+"Migrating `this v3.5 "
+"<https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#multiple-"
+"vertices>`__ example."
+msgstr ""
+
+msgid ""
+"If using ``pgr_drivingDistance`` with multiple vertices: column names "
+"must be changed after updating pgRouting"
+msgstr ""
+
+msgid ""
+"To get the old version column names |result-dij-dd-m|: filter out the "
+"column ``pred`` and ``depth`` and rename ``start_vid`` to ``from_v``."
+msgstr ""
+
+msgid "Migration of deleted functions"
+msgstr ""
+
+msgid "Functions no longer on pgRouting"
+msgstr ""
+
 msgid "Migration of ``pgr_alphaShape``"
 msgstr ""
 
@@ -4400,96 +5118,6 @@ msgid "`ST_ConvexHull <https://postgis.net/docs/ST_ConvexHull.html>`__"
 msgstr ""
 
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
-msgstr ""
-
-msgid "Migration of ``pgr_bdDijkstra``"
-msgstr ""
-
-msgid ""
-"Starting from `v4.0.0 "
-"<https://docs.pgrouting.org/4.0/en/migration.html>`__ "
-":doc:`pgr_bdDijkstra` result columns are being standardized."
-msgstr ""
-
-msgid "from"
-msgstr ""
-
-msgid "|old-generic-result|"
-msgstr ""
-
-msgid "to"
-msgstr ""
-
-msgid "|short-generic-result|"
-msgstr ""
-
-msgid "Signatures to be migrated:"
-msgstr ""
-
-msgid "``pgr_bdDijkstra`` (One to One)"
-msgstr ""
-
-msgid "``pgr_bdDijkstra`` (One to Many)"
-msgstr ""
-
-msgid "``pgr_bdDijkstra`` (Many to One)"
-msgstr ""
-
-msgid "Before Migration"
-msgstr ""
-
-msgid "Output columns were |old-generic-result|"
-msgstr ""
-
-msgid "Migration"
-msgstr ""
-
-msgid "Output columns are |short-generic-result|"
-msgstr ""
-
-msgid "To get the old version column names, depending on the signature:"
-msgstr ""
-
-msgid "Filter out the columns: ``start_vid`` and/or ``end_vid``"
-msgstr ""
-
-msgid "``pgr_bdDijkstra`` (`One to One`)"
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#one-"
-"to-one>`__ example."
-msgstr ""
-
-msgid "|result-1-1|"
-msgstr ""
-
-msgid "Get the old signature columns by filtering out the extra columns."
-msgstr ""
-
-msgid "``pgr_bdDijkstra`` (`One to Many`)"
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#one-"
-"to-many>`__ example."
-msgstr ""
-
-msgid "|result-1-m|"
-msgstr ""
-
-msgid "``pgr_bdDijkstra`` (`Many to One`)"
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#many-"
-"to-one>`__ example."
-msgstr ""
-
-msgid "|result-m-1|"
-msgstr ""
-
-msgid "|generic-result|"
 msgstr ""
 
 msgid "Migration of ``pgr_nodeNetwork``"
@@ -4710,281 +5338,106 @@ msgid ""
 "<https://postgis.net/docs/ST_Overlaps.html>`__, etc."
 msgstr ""
 
-msgid "Migration of ``pgr_aStar``"
+msgid "Migration of ``pgr_trsp`` (Vertices)"
 msgstr ""
 
-msgid ""
-"Starting from `v3.6.0 "
-"<https://docs.pgrouting.org/3.6/en/migration.html>`__"
+msgid "Signature:"
 msgstr ""
 
-msgid "``pgr_aStar`` (`One to One`)"
+msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
 msgstr ""
 
-msgid "``pgr_aStar`` (`One to Many`)"
+msgid ":doc:`pgr_dijkstra`"
 msgstr ""
 
-msgid "``pgr_aStar`` (`Many to One`)"
+msgid ":doc:`pgr_trsp`"
 msgstr ""
 
-msgid ""
-"Depending on the overload used, the columns ``start_vid`` and ``end_vid``"
-" might be missing:"
+msgid "`Migration of restrictions`_"
 msgstr ""
 
-msgid "``pgr_aStar`` (`One to One`) does not have ``start_vid`` and ``end_vid``."
+msgid "Use ``pgr_dijkstra`` when there are no restrictions."
 msgstr ""
 
-msgid "``pgr_aStar`` (`One to Many`) does not have ``start_vid``."
+msgid "Use :doc:`pgr_dijkstra` instead."
 msgstr ""
 
-msgid "``pgr_aStar`` (`Many to One`) does not have ``end_vid``."
+msgid "To get the original column names:"
 msgstr ""
 
-msgid "Be aware of the existence of the additional columns."
+msgid "``id1`` is the node"
 msgstr ""
 
-msgid "In ``pgr_aStar`` (`One to One`)"
+msgid "``id2`` is the edge"
 msgstr ""
 
-msgid "``start_vid`` contains the **start vid** parameter value."
+msgid "Use ``pgr_trsp`` when there are restrictions."
 msgstr ""
 
-msgid "``end_vid`` contains the **end vid** parameter value."
+msgid "Use :doc:`pgr_trsp` (One to One) instead."
 msgstr ""
 
-msgid "In ``pgr_aStar`` (`One to Many`)"
+msgid "Migration of ``pgr_trsp`` (Edges)"
 msgstr ""
 
-msgid "In ``pgr_aStar`` (`Many to One`)"
+msgid ":doc:`pgr_withPoints`"
 msgstr ""
 
-msgid "If needed filter out the added columns, for example:"
+msgid ":doc:`pgr_trsp_withPoints`"
 msgstr ""
 
-msgid ""
-"If needed add the new columns, similar to the following example where "
-"``pgr_dijkstra`` is used, and the function had to be modified to be able "
-"to return the new columns:"
+msgid "Migration of ``pgr_trspViaVertices``"
 msgstr ""
 
-msgid ""
-"In `v3.0 <https://docs.pgrouting.org/3.0/en/contraction-"
-"family.html#case-1-both-source-and-target-belong-to-the-contracted-"
-"graph>`__ the function ``my_dijkstra`` uses ``pgr_dijkstra``."
+msgid ":doc:`pgr_dijkstraVia`"
 msgstr ""
 
-msgid ""
-"Starting from `v3.5 <https://docs.pgrouting.org/3.5/en/contraction-"
-"family.html#case-1-both-source-and-target-belong-to-the-contracted-"
-"graph>`__ the function ``my_dijkstra`` returns the new additional columns"
-" of ``pgr_dijkstra``."
+msgid ":doc:`pgr_trspVia`"
 msgstr ""
 
-msgid "Migration of ``pgr_bdAstar``"
+msgid "Use ``pgr_dijkstraVia`` when there are no restrictions"
 msgstr ""
 
-msgid "``pgr_bdAstar`` (`One to One`)"
+msgid "Use :doc:`pgr_dijkstraVia` instead."
 msgstr ""
 
-msgid "``pgr_bdAstar`` (`One to Many`)"
+msgid "``id1`` is the path identifier"
 msgstr ""
 
-msgid "``pgr_bdAstar`` (`Many to One`)"
+msgid "``id2`` is the node"
 msgstr ""
 
-msgid ""
-"``pgr_bdAstar`` (`One to One`) does not have ``start_vid`` and "
-"``end_vid``."
+msgid "``id3`` is the edge"
 msgstr ""
 
-msgid "``pgr_bdAstar`` (`One to Many`) does not have ``start_vid``."
+msgid "Use ``pgr_trspVia`` when there are restrictions"
 msgstr ""
 
-msgid "``pgr_bdAstar`` (`Many to One`) does not have ``end_vid``."
+msgid "Use :doc:`pgr_trspVia` instead."
 msgstr ""
 
-msgid "In ``pgr_bdAstar`` (`One to One`)"
+msgid "Migration of ``pgr_trspViaEdges``"
 msgstr ""
 
-msgid "In ``pgr_bdAstar`` (`One to Many`)"
+msgid ":doc:`pgr_withPointsVia`"
 msgstr ""
 
-msgid "In ``pgr_bdAstar`` (`Many to One`)"
+msgid ":doc:`pgr_trspVia_withPoints`"
 msgstr ""
 
-msgid "Migration of ``pgr_dijkstra``"
+msgid "Use ``pgr_withPointsVia`` when there are no restrictions"
 msgstr ""
 
-msgid ""
-"Starting from `v3.5.0 "
-"<https://docs.pgrouting.org/3.5/en/migration.html>`__"
+msgid "Use :doc:`pgr_withPointsVia` instead."
 msgstr ""
 
-msgid "``pgr_dijkstra`` (`One to One`)"
+msgid "Use ``pgr_trspVia_withPoints`` when there are restrictions"
 msgstr ""
 
-msgid "``pgr_dijkstra`` (`One to Many`)"
+msgid "Use :doc:`pgr_trspVia_withPoints` instead."
 msgstr ""
 
-msgid "``pgr_dijkstra`` (`Many to One`)"
-msgstr ""
-
-msgid ""
-"``pgr_dijkstra`` (`One to One`) does not have ``start_vid`` and "
-"``end_vid``."
-msgstr ""
-
-msgid "``pgr_dijkstra`` (`One to Many`) does not have ``start_vid``."
-msgstr ""
-
-msgid "``pgr_dijkstra`` (`Many to One`) does not have ``end_vid``."
-msgstr ""
-
-msgid "In ``pgr_dijkstra`` (`One to One`)"
-msgstr ""
-
-msgid "In ``pgr_dijkstra`` (`One to Many`)"
-msgstr ""
-
-msgid "In ``pgr_dijkstra`` (`Many to One`)"
-msgstr ""
-
-msgid "If needed add the new columns, for example:"
-msgstr ""
-
-msgid "Migration of ``pgr_drivingDistance``"
-msgstr ""
-
-msgid ""
-"Starting from `v3.6.0 "
-"<https://docs.pgrouting.org/3.6/en/migration.html>`__ "
-":doc:`pgr_drivingDistance` result columns are being standardized."
-msgstr ""
-
-msgid "|result-dij-dd|"
-msgstr ""
-
-msgid "|result-spantree|"
-msgstr ""
-
-msgid "pgr_drivingDistance(Single vertex)"
-msgstr ""
-
-msgid "pgr_drivingDistance(Multiple vertices)"
-msgstr ""
-
-msgid "Output columns were |result-dij-dd|"
-msgstr ""
-
-msgid "Does not have ``start_vid`` and ``depth`` result columns."
-msgstr ""
-
-msgid "Has ``from_v`` instead of ``start_vid`` result column."
-msgstr ""
-
-msgid "does not have ``depth`` result column."
-msgstr ""
-
-msgid "Be aware of the existence and name change of the result columns."
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html"
-"#single-vertex>`__ example."
-msgstr ""
-
-msgid "``depth`` contains the depth of the ``node``."
-msgstr ""
-
-msgid "``pred`` contains the predecessor of the ``node``."
-msgstr ""
-
-msgid ""
-"If needed filter out the added columns, for example, to return the "
-"original columns"
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html"
-"#multiple-vertices>`__ example."
-msgstr ""
-
-msgid "The ``from_v`` result column name changes to ``start_vid``."
-msgstr ""
-
-msgid ""
-"If needed filter out and rename columns, for example, to return the "
-"original columns:"
-msgstr ""
-
-msgid "Migration of ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``"
-msgstr ""
-
-msgid ""
-"Starting from `v3.7.0 "
-"<https://docs.pgrouting.org/3.7/en/migration.html>`__ "
-":doc:`pgr_kruskalDD`, :doc:`pgr_kruskalBFS` and :doc:`pgr_kruskalDFS` "
-"result columns are being standardized."
-msgstr ""
-
-msgid "|result-bfs|"
-msgstr ""
-
-msgid "``pgr_kruskalDD``"
-msgstr ""
-
-msgid "Single vertex"
-msgstr ""
-
-msgid "Multiple vertices"
-msgstr ""
-
-msgid "``pgr_kruskalDFS``"
-msgstr ""
-
-msgid "``pgr_kruskalBFS``"
-msgstr ""
-
-msgid "Output columns were |result-bfs|"
-msgstr ""
-
-msgid "Single vertex and Multiple vertices"
-msgstr ""
-
-msgid "Do not have ``pred`` result column."
-msgstr ""
-
-msgid "Be aware of the existence of `pred` result columns."
-msgstr ""
-
-msgid "If needed filter out the added columns"
-msgstr ""
-
-msgid "Kruskal single vertex"
-msgstr ""
-
-msgid ""
-"Using ``pgr_KruskalDD`` as example. Migration is similar to al the "
-"affected functions."
-msgstr ""
-
-msgid ""
-"Comparing with `this "
-"<https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#single-vertex>`__ "
-"example."
-msgstr ""
-
-msgid "Now column ``pred`` exists and contains the predecessor of the ``node``."
-msgstr ""
-
-msgid "Kruskal multiple vertices"
-msgstr ""
-
-msgid ""
-"Comparing with `this "
-"<https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#multiple-vertex>`__"
-" example."
+msgid "Not yet classified migrations"
 msgstr ""
 
 msgid "Migration of ``pgr_KSP``"
@@ -4999,7 +5452,13 @@ msgstr ""
 msgid "|ksp-result|"
 msgstr ""
 
+msgid "|generic-result|"
+msgstr ""
+
 msgid "``pgr_KSP`` (One to One)"
+msgstr ""
+
+msgid "Before Migration"
 msgstr ""
 
 msgid "Output columns were |ksp-result|"
@@ -5009,6 +5468,12 @@ msgid "the columns ``start_vid`` and ``end_vid`` do not exist."
 msgstr ""
 
 msgid "``pgr_KSP`` (One to One) does not have ``start_vid`` and ``end_vid``."
+msgstr ""
+
+msgid "Migration"
+msgstr ""
+
+msgid "Be aware of the existence of the additional columns."
 msgstr ""
 
 msgid ""
@@ -5021,9 +5486,62 @@ msgid ""
 "<https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ example."
 msgstr ""
 
+msgid "``start_vid`` contains the **start vid** parameter value."
+msgstr ""
+
+msgid "``end_vid`` contains the **end vid** parameter value."
+msgstr ""
+
 msgid ""
 "If needed filter out the added columns, for example, to return the "
 "original columns:"
+msgstr ""
+
+msgid "Migration of ``pgr_withPointsKSP``"
+msgstr ""
+
+msgid ""
+"Starting from `v3.6.0 "
+"<https://docs.pgrouting.org/3.6/en/migration.html>`__ "
+":doc:`pgr_withPointsKSP` result columns are being standardized."
+msgstr ""
+
+msgid ""
+"And ``driving side`` parameter changed from named optional to unnamed "
+"compulsory **driving side** and its validity differ for directed and "
+"undirected graphs."
+msgstr ""
+
+msgid "``pgr_withPointsKSP`` (`One to One`)"
+msgstr ""
+
+msgid "Output columns were |old-pid-result|"
+msgstr ""
+
+msgid "New output columns are |generic-result|"
+msgstr ""
+
+msgid ""
+"Using `this "
+"<https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP.html#signatures>`__ "
+"example."
+msgstr ""
+
+msgid ""
+"If needed filter out the additional columns, for example, to return the "
+"original columns:"
+msgstr ""
+
+msgid "Use ``pgr_withPoints`` when there are no restrictions."
+msgstr ""
+
+msgid "Use :doc:`pgr_withPoints` (One to One) instead."
+msgstr ""
+
+msgid "Use ``pgr_trsp_withPoints`` when there are restrictions."
+msgstr ""
+
+msgid "Use :doc:`pgr_trsp_withPoints` instead."
 msgstr ""
 
 msgid "Migration of ``pgr_maxCardinalityMatch``"
@@ -5093,454 +5611,6 @@ msgid "Do not use the flag ``directed``."
 msgstr ""
 
 msgid "In the query returns only ``edge`` column."
-msgstr ""
-
-msgid "Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``"
-msgstr ""
-
-msgid ""
-"Starting from `v3.7.0 "
-"<https://docs.pgrouting.org/3.7/en/migration.html>`__ :doc:`pgr_primDD`, "
-":doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns are being "
-"standardized."
-msgstr ""
-
-msgid "``pgr_primDD``"
-msgstr ""
-
-msgid "``pgr_primDFS``"
-msgstr ""
-
-msgid "``pgr_primBFS``"
-msgstr ""
-
-msgid "Prim single vertex"
-msgstr ""
-
-msgid ""
-"Using ``pgr_primDD`` as example. Migration is similar to al the affected "
-"functions."
-msgstr ""
-
-msgid ""
-"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD.html"
-"#single-vertex>`__ example."
-msgstr ""
-
-msgid "Prim multiple vertices"
-msgstr ""
-
-msgid ""
-"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD.html"
-"#multiple-vertex>`__ example."
-msgstr ""
-
-msgid "Migration of ``pgr_withPoints``"
-msgstr ""
-
-msgid ""
-"Starting from `v4.0.0 "
-"<https://docs.pgrouting.org/4.0/en/migration.html>`__ "
-":doc:`pgr_withPoints` result columns are being standardized."
-msgstr ""
-
-msgid "|old-pid-result|"
-msgstr ""
-
-msgid "``pgr_withPoints`` (all signatures)"
-msgstr ""
-
-msgid "Output columns were |old-pid-result|"
-msgstr ""
-
-msgid "Rename the columns:"
-msgstr ""
-
-msgid "``start_vid`` to ``start_pid``"
-msgstr ""
-
-msgid "``end_vid`` to ``end_pid``"
-msgstr ""
-
-msgid "``pgr_withPoints`` (`One to One`)"
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#one-"
-"to-one>`__ example."
-msgstr ""
-
-msgid "``pgr_withPoints`` (`One to Many`)"
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#one-"
-"to-many>`__ example."
-msgstr ""
-
-msgid "|pid-1-m|"
-msgstr ""
-
-msgid ""
-"Get the old signature columns by filtering out the extra column and "
-"renaming ``end_vid`` to ``end_pid``."
-msgstr ""
-
-msgid "``pgr_withPoints`` (`Many to One`)"
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#many-"
-"to-one>`__ example."
-msgstr ""
-
-msgid "|pid-m-1|"
-msgstr ""
-
-msgid ""
-"Get the old signature columns by filtering out the extra column and "
-"renaming ``start_vid`` to ``start_pid``."
-msgstr ""
-
-msgid "``pgr_withPoints`` (`Many to Many`)"
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#many-"
-"to-many>`__ example."
-msgstr ""
-
-msgid "|pid-m-m|"
-msgstr ""
-
-msgid ""
-"Get the old signature columns by renaming ``start_vid`` to ``start_pid`` "
-"and ``end_vid`` to ``end_pid``."
-msgstr ""
-
-msgid "``pgr_withPoints`` (`Combinations`)"
-msgstr ""
-
-msgid ""
-"Using `this "
-"<https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#combinations>`__ "
-"example."
-msgstr ""
-
-msgid "Migration of ``pgr_withPointsCost``"
-msgstr ""
-
-msgid ""
-"Starting from `v4.0.0 "
-"<https://docs.pgrouting.org/4.0/en/migration.html>`__ "
-":doc:`pgr_withPointsCost` result columns are being standardized."
-msgstr ""
-
-msgid "|matrix-pid|"
-msgstr ""
-
-msgid "|matrix-result|"
-msgstr ""
-
-msgid "``pgr_withPointsCost`` (all signatures)"
-msgstr ""
-
-msgid "Output columns were |matrix-pid|"
-msgstr ""
-
-msgid "Output columns are |matrix-result|"
-msgstr ""
-
-msgid "To get the old version column names:"
-msgstr ""
-
-msgid "``pgr_withPointsCost`` (`One to One`)"
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html"
-"#one-to-one>`__ example."
-msgstr ""
-
-msgid "``pgr_withPointsCost`` (`One to Many`)"
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html"
-"#one-to-many>`__ example."
-msgstr ""
-
-msgid "``pgr_withPointsCost`` (`Many to One`)"
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html"
-"#many-to-one>`__ example."
-msgstr ""
-
-msgid "``pgr_withPointsCost`` (`Many to Many`)"
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html"
-"#many-to-many>`__ example."
-msgstr ""
-
-msgid "``pgr_withPointsCost`` (`Combinations`)"
-msgstr ""
-
-msgid ""
-"Using `this "
-"<https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#combinations>`__"
-" example."
-msgstr ""
-
-msgid "Migration of ``pgr_withPointsDD``"
-msgstr ""
-
-msgid ""
-"Starting from `v3.6.0 "
-"<https://docs.pgrouting.org/3.6/en/migration.html>`__ "
-":doc:`pgr_withPointsDD` result columns are being standardized."
-msgstr ""
-
-msgid "|result-generic-no-seq|"
-msgstr ""
-
-msgid ""
-"And ``driving_side`` parameter changed from named optional to unnamed "
-"compulsory **driving side** and its validity differ for directed and "
-"undirected graphs."
-msgstr ""
-
-msgid "``pgr_withPointsDD`` (Single vertex)"
-msgstr ""
-
-msgid "``pgr_withPointsDD`` (Multiple vertices)"
-msgstr ""
-
-msgid "Output columns were |result-1-1-no-seq|"
-msgstr ""
-
-msgid "Does not have ``start_vid``, ``pred`` and ``depth`` result columns."
-msgstr ""
-
-msgid ""
-"``driving_side`` parameter was named optional now it is compulsory "
-"unnamed."
-msgstr ""
-
-msgid "``pgr_withPointsDD`` (`Multiple vertices`)"
-msgstr ""
-
-msgid "Output columns were |result-m-1-no-seq|"
-msgstr ""
-
-msgid "Does not have ``depth`` and ``pred`` result columns."
-msgstr ""
-
-msgid "Validity of driving_side:"
-msgstr ""
-
-msgid "On directed graph ``b`` could be used as **driving side**"
-msgstr ""
-
-msgid "On undirected graph ``r``, ``l`` could be used as **driving side**"
-msgstr ""
-
-msgid "After Migration"
-msgstr ""
-
-msgid "Be aware of the existence of the additional result Columns."
-msgstr ""
-
-msgid "Output columns are |result-spantree|"
-msgstr ""
-
-msgid ""
-"**driving side** parameter is unnamed compulsory, and valid values differ"
-" for directed and undirected graphs."
-msgstr ""
-
-msgid "Does not have a default value."
-msgstr ""
-
-msgid "In directed graph: valid values are [``r``, ``R``, ``l``, ``L``]"
-msgstr ""
-
-msgid "In undirected graph: valid values are [``b``, ``B``]"
-msgstr ""
-
-msgid "Using an invalid value throws an ``ERROR``."
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html"
-"#single-vertex>`__ example."
-msgstr ""
-
-msgid ""
-"To migrate, use an unnamed valid value for **driving side** after the "
-"**distance** parameter:"
-msgstr ""
-
-msgid "To get results from previous versions:"
-msgstr ""
-
-msgid "Filter out the additional columns"
-msgstr ""
-
-msgid ""
-"Using `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html"
-"#multiple-vertices>`__ example."
-msgstr ""
-
-msgid ""
-"When ``details => false``, the default, remove the points by using "
-"``WHERE node >= 0 OR cost = 0``"
-msgstr ""
-
-msgid "Migration of ``pgr_withPointsKSP``"
-msgstr ""
-
-msgid ""
-"Starting from `v3.6.0 "
-"<https://docs.pgrouting.org/3.6/en/migration.html>`__ "
-":doc:`pgr_withPointsKSP` result columns are being standardized."
-msgstr ""
-
-msgid ""
-"And ``driving side`` parameter changed from named optional to unnamed "
-"compulsory **driving side** and its validity differ for directed and "
-"undirected graphs."
-msgstr ""
-
-msgid "``pgr_withPointsKSP`` (`One to One`)"
-msgstr ""
-
-msgid "New output columns are |generic-result|"
-msgstr ""
-
-msgid ""
-"Using `this "
-"<https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP.html#signatures>`__ "
-"example."
-msgstr ""
-
-msgid ""
-"If needed filter out the additional columns, for example, to return the "
-"original columns:"
-msgstr ""
-
-msgid "Migration of ``pgr_trsp`` (Vertices)"
-msgstr ""
-
-msgid "Signature:"
-msgstr ""
-
-msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
-msgstr ""
-
-msgid ":doc:`pgr_dijkstra`"
-msgstr ""
-
-msgid ":doc:`pgr_trsp`"
-msgstr ""
-
-msgid "`Migration of restrictions`_"
-msgstr ""
-
-msgid "Use ``pgr_dijkstra`` when there are no restrictions."
-msgstr ""
-
-msgid "Use :doc:`pgr_dijkstra` instead."
-msgstr ""
-
-msgid "To get the original column names:"
-msgstr ""
-
-msgid "``id1`` is the node"
-msgstr ""
-
-msgid "``id2`` is the edge"
-msgstr ""
-
-msgid "Use ``pgr_trsp`` when there are restrictions."
-msgstr ""
-
-msgid "Use :doc:`pgr_trsp` (One to One) instead."
-msgstr ""
-
-msgid "Migration of ``pgr_trsp`` (Edges)"
-msgstr ""
-
-msgid ":doc:`pgr_withPoints`"
-msgstr ""
-
-msgid ":doc:`pgr_trsp_withPoints`"
-msgstr ""
-
-msgid "Use ``pgr_withPoints`` when there are no restrictions."
-msgstr ""
-
-msgid "Use :doc:`pgr_withPoints` (One to One) instead."
-msgstr ""
-
-msgid "Use ``pgr_trsp_withPoints`` when there are restrictions."
-msgstr ""
-
-msgid "Use :doc:`pgr_trsp_withPoints` instead."
-msgstr ""
-
-msgid "Migration of ``pgr_trspViaVertices``"
-msgstr ""
-
-msgid ":doc:`pgr_dijkstraVia`"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia`"
-msgstr ""
-
-msgid "Use ``pgr_dijkstraVia`` when there are no restrictions"
-msgstr ""
-
-msgid "Use :doc:`pgr_dijkstraVia` instead."
-msgstr ""
-
-msgid "``id1`` is the path identifier"
-msgstr ""
-
-msgid "``id2`` is the node"
-msgstr ""
-
-msgid "``id3`` is the edge"
-msgstr ""
-
-msgid "Use ``pgr_trspVia`` when there are restrictions"
-msgstr ""
-
-msgid "Use :doc:`pgr_trspVia` instead."
-msgstr ""
-
-msgid "Migration of ``pgr_trspViaEdges``"
-msgstr ""
-
-msgid ":doc:`pgr_withPointsVia`"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia_withPoints`"
-msgstr ""
-
-msgid "Use ``pgr_withPointsVia`` when there are no restrictions"
-msgstr ""
-
-msgid "Use :doc:`pgr_withPointsVia` instead."
-msgstr ""
-
-msgid "Use ``pgr_trspVia_withPoints`` when there are restrictions"
-msgstr ""
-
-msgid "Use :doc:`pgr_trspVia_withPoints` instead."
 msgstr ""
 
 msgid "Migration of restrictions"
@@ -5687,7 +5757,7 @@ msgstr ""
 msgid "The migrated table contents:"
 msgstr ""
 
-msgid ":doc:`withPoints-category`"
+msgid ":doc:`pgRouting-concepts`"
 msgstr ""
 
 msgid "Ordering - Family of functions"
@@ -6676,9 +6746,6 @@ msgid ""
 "parameter type change remains the same."
 msgstr ""
 
-msgid "One to One"
-msgstr ""
-
 msgid "When routing from:"
 msgstr ""
 
@@ -6688,22 +6755,10 @@ msgstr ""
 msgid "to **one** ending vertex"
 msgstr ""
 
-msgid "One to Many"
-msgstr ""
-
 msgid "to **many** ending vertices"
 msgstr ""
 
-msgid "Many to One"
-msgstr ""
-
 msgid "From **many** starting vertices"
-msgstr ""
-
-msgid "Many to Many"
-msgstr ""
-
-msgid "Combinations"
 msgstr ""
 
 msgid "From **many** different starting vertices"
@@ -6854,13 +6909,30 @@ msgstr ""
 msgid "There are several kinds of columns returned are depending of the function."
 msgstr ""
 
-msgid "Result columns for a path"
+msgid "Result columns for single path functions"
 msgstr ""
 
-msgid "Used in functions that return one path solution"
+msgid ""
+"Used in functions that return one path solution per departure and "
+"destination."
 msgstr ""
 
-msgid "Returns set of |old-generic-result|"
+msgid ":doc:`pgr_aStar`"
+msgstr ""
+
+msgid ":doc:`pgr_bdAstar`"
+msgstr ""
+
+msgid ":doc:`pgr_bdDijkstra`"
+msgstr ""
+
+msgid ":doc:`pgr_binaryBreadthFirstSearch`"
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraNear`"
+msgstr ""
+
+msgid "Returns |short-generic-result|"
 msgstr ""
 
 msgid "``path_seq``"
@@ -6871,14 +6943,10 @@ msgid ""
 "path."
 msgstr ""
 
-msgid ""
-"Identifier of the starting vertex. Returned when multiple starting "
-"vetrices are in the query."
+msgid "Identifier of the starting vertex of the current path."
 msgstr ""
 
-msgid ""
-"Identifier of the ending vertex. Returned when multiple ending vertices "
-"are in the query."
+msgid "Identifier of the ending vertex of the current path."
 msgstr ""
 
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
@@ -6894,22 +6962,9 @@ msgid ""
 "path sequence."
 msgstr ""
 
-msgid "Used in functions the following:"
-msgstr ""
-
-msgid ":doc:`pgr_dijkstraNear`"
-msgstr ""
-
-msgid ":doc:`pgr_binaryBreadthFirstSearch`"
-msgstr ""
-
-msgid "Returns |short-generic-result|"
-msgstr ""
-
-msgid "Identifier of the starting vertex of the current path."
-msgstr ""
-
-msgid "Identifier of the ending vertex of the current path."
+msgid ""
+"When ``start_vid`` or ``end_vid`` columns have negative values, the "
+"identifier is for a Point."
 msgstr ""
 
 msgid "Multiple paths"
@@ -6931,6 +6986,16 @@ msgid "Path identifier."
 msgstr ""
 
 msgid "Has value **1** for the first of a path from ``start_vid`` to ``end_vid``."
+msgstr ""
+
+msgid ""
+"Identifier of the starting vertex. Returned when multiple starting "
+"vetrices are in the query."
+msgstr ""
+
+msgid ""
+"Identifier of the ending vertex. Returned when multiple ending vertices "
+"are in the query."
 msgstr ""
 
 msgid "Non selective for multiple paths"
@@ -6960,6 +7025,9 @@ msgid "Edges SQL for the following"
 msgstr ""
 
 msgid "Result columns for spanning tree functions"
+msgstr ""
+
+msgid "Result columns for simple spanning tree functions"
 msgstr ""
 
 msgid "Returns set of ``(edge, cost)``"
@@ -7021,6 +7089,12 @@ msgstr ""
 msgid ""
 "Consult the `developer's documentation "
 "<https://docs.pgrouting.org/doxy/2.4/index.html>`__"
+msgstr ""
+
+msgid "Others"
+msgstr ""
+
+msgid "Returns set of |old-generic-result|"
 msgstr ""
 
 msgid "Installation"
@@ -8130,9 +8204,6 @@ msgid ""
 "image is the solution obtained with ``pgr_TSPeuclidean``."
 msgstr ""
 
-msgid "``pgr_aStar``"
-msgstr ""
-
 msgid "``pgr_aStar`` — Shortest path using the A* algorithm."
 msgstr ""
 
@@ -8490,9 +8561,6 @@ msgstr ""
 msgid "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
 msgstr ""
 
-msgid "``pgr_bdDijkstra``"
-msgstr ""
-
 msgid ""
 "``pgr_bdDijkstra`` — Returns the shortest path using Bidirectional "
 "Dijkstra algorithm."
@@ -8689,16 +8757,11 @@ msgstr ""
 msgid "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
+<<<<<<< HEAD
 msgid "Returns set of |result-1-1|"
 msgstr ""
 
 msgid "Returns set of |result-1-m|"
-msgstr ""
-
-#, python-brace-format
-msgid ""
-"From vertex :math:`6` to vertices :math:`\\{ 10, 17\\}` on a **directed**"
-" graph"
 msgstr ""
 
 msgid "Returns set of |result-m-1|"
@@ -8707,6 +8770,8 @@ msgstr ""
 msgid "Using a combinations table on an **undirected** graph."
 msgstr ""
 
+=======
+>>>>>>> pgr/develop
 msgid ""
 "`Boost: Bellman Ford "
 "<https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__"
@@ -8714,9 +8779,6 @@ msgstr ""
 
 #, python-format
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
-msgstr ""
-
-msgid "Boost Graph Inside"
 msgstr ""
 
 msgid "``pgr_betweennessCentrality`` - Experimental"
@@ -8938,6 +9000,15 @@ msgstr ""
 msgid ""
 "**Note:** Using the :doc:`sampledata` Network as all weights are same "
 "(i.e :math:`1``)"
+msgstr ""
+
+msgid "Returns set of |result-1-1|"
+msgstr ""
+
+msgid "Returns set of |result-1-m|"
+msgstr ""
+
+msgid "Returns set of |result-m-1|"
 msgstr ""
 
 msgid ""
@@ -9987,9 +10058,6 @@ msgstr ""
 msgid "``vertex_order``"
 msgstr ""
 
-msgid "Examples"
-msgstr ""
-
 msgid "On an undirected graph"
 msgstr ""
 
@@ -10772,9 +10840,6 @@ msgid ""
 "/Depth-first_search>`__"
 msgstr ""
 
-msgid "``pgr_dijkstra``"
-msgstr ""
-
 msgid "``pgr_dijkstra`` — Shortest path using Dijkstra algorithm."
 msgstr ""
 
@@ -11465,16 +11530,19 @@ msgstr ""
 msgid ":doc:`dijkstra-family`."
 msgstr ""
 
-msgid "``pgr_drivingDistance``"
-msgstr ""
-
 msgid "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr ""
 
 msgid "Standardizing output columns to |result-spantree|"
 msgstr ""
 
+msgid "pgr_drivingDistance(Single vertex)"
+msgstr ""
+
 msgid "Added ``depth`` and ``start_vid`` result columns."
+msgstr ""
+
+msgid "pgr_drivingDistance(Multiple vertices)"
 msgstr ""
 
 msgid "Result column name change: ``from_v`` to ``start_vid``."
@@ -11817,6 +11885,16 @@ msgid ""
 msgstr ""
 
 msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr ""
+
+<<<<<<< HEAD
+#, python-brace-format
+msgid ""
+"From vertex :math:`6` to vertices :math:`\\{ 10, 17\\}` on a **directed**"
+" graph"
+=======
+msgid "Using a combinations table on an **undirected** graph."
+>>>>>>> pgr/develop
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
@@ -12226,6 +12304,9 @@ msgid ""
 msgstr ""
 
 msgid "The points of interest:"
+msgstr ""
+
+msgid ":doc:`withPoints-category`"
 msgstr ""
 
 msgid "``pgr_floydWarshall``"
@@ -14653,9 +14734,6 @@ msgstr ""
 msgid "TBD"
 msgstr ""
 
-msgid "``pgr_withPoints``"
-msgstr ""
-
 msgid ""
 "``pgr_withPoints`` - Returns the shortest path in a graph with additional"
 " temporary vertices."
@@ -14701,22 +14779,22 @@ msgstr ""
 
 msgid ""
 "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
-"[**options**])"
+"**driving side** [**options**])"
 msgstr ""
 
 msgid ""
 "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
-"[**options**])"
+"**driving side** [**options**])"
 msgstr ""
 
 msgid ""
 "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
-"[**options**])"
+"**driving side** [**options**])"
 msgstr ""
 
 msgid ""
 "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**,"
-" [**options**])"
+" **driving side** [**options**])"
 msgstr ""
 
 msgid ""
@@ -14724,10 +14802,13 @@ msgid ""
 "[**options**])"
 msgstr ""
 
-msgid "**options:** ``[directed, driving_side, details])``"
+msgid "**options:** ``[directed, details]``"
 msgstr ""
 
 msgid "From point :math:`1` to vertex :math:`10` with details"
+msgstr ""
+
+msgid "\\ \\  :class: signatures"
 msgstr ""
 
 msgid ""
@@ -14741,6 +14822,11 @@ msgstr ""
 msgid ""
 "From point :math:`1` and vertex :math:`6` to point :math:`3` and vertex "
 ":math:`1`"
+msgstr ""
+
+msgid ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
+"**driving side** [**options**])"
 msgstr ""
 
 msgid "Two combinations"
@@ -14802,9 +14888,6 @@ msgstr ""
 msgid "Passes in front or visits with left side driving."
 msgstr ""
 
-msgid "``pgr_withPointsCost``"
-msgstr ""
-
 msgid ""
 "``pgr_withPointsCost`` - Calculates the shortest path and returns only "
 "the aggregate cost of the shortest path found, for the combination of "
@@ -14827,6 +14910,12 @@ msgstr ""
 msgid "The returned values are in the form of a set of |matrix-result|."
 msgstr ""
 
+msgid "**positive** when it belongs to the edges sql"
+msgstr ""
+
+msgid "**negative** when it belongs to the points sql"
+msgstr ""
+
 msgid ""
 "For optimization purposes, any duplicated value in the input arrays of "
 "**start vids** or **end vids** or are ignored."
@@ -14834,22 +14923,22 @@ msgstr ""
 
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end "
-"vid**, [**options**])"
+"vid**, **driving side** [**options**])"
 msgstr ""
 
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end "
-"vids**, [**options**])"
+"vids**, **driving side** [**options**])"
 msgstr ""
 
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
-"vid**, [**options**])"
+"vid**, **driving side** [**options**])"
 msgstr ""
 
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
-"vids**, [**options**])"
+"vids**, **driving side** [**options**])"
 msgstr ""
 
 msgid ""
@@ -14857,7 +14946,7 @@ msgid ""
 "[**options**])"
 msgstr ""
 
-msgid "**options:** ``[directed, driving_side]``"
+msgid "**options:** ``[directed]``"
 msgstr ""
 
 msgid ""
@@ -14868,22 +14957,9 @@ msgstr ""
 msgid "From point :math:`1` to vertex :math:`10` with default options."
 msgstr ""
 
-msgid "``start_pid``"
-msgstr ""
-
-msgid "Identifier of the starting vertex or point."
-msgstr ""
-
-msgid "When positive: is a vertex’s identifier."
-msgstr ""
-
-msgid "When negative: is a point’s identifier."
-msgstr ""
-
-msgid "``end_pid``"
-msgstr ""
-
-msgid "Identifier of the ending vertex or point."
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
+"**driving side** [**options**])"
 msgstr ""
 
 msgid ""
@@ -14909,17 +14985,19 @@ msgstr ""
 msgid "Does not matter driving side driving topology"
 msgstr ""
 
-msgid "``pgr_withPointsCostMatrix``"
-msgstr ""
-
 msgid ""
 "``pgr_withPointsCostMatrix`` - Calculates a cost matrix using "
 ":doc:`pgr_withPoints`."
 msgstr ""
 
 msgid ""
+"Modify the graph to include points defined by points_sql. Using Dijkstra "
+"algorithm, return calculate and return a cost matrix."
+msgstr ""
+
+msgid ""
 "pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, "
-"[**options**])"
+"**driving side**  [**options**])"
 msgstr ""
 
 #, python-brace-format
@@ -14940,9 +15018,6 @@ msgstr ""
 msgid ""
 "Find the matrix cost of the routes from vertex :math:`1` and the two "
 "closest locations on the graph of point `(2.9, 1.8)`."
-msgstr ""
-
-msgid "``pgr_withPointsDD``"
 msgstr ""
 
 msgid ""
@@ -15001,9 +15076,6 @@ msgstr ""
 msgid ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**,"
 " **driving side**, [**options**])"
-msgstr ""
-
-msgid "**options:** ``[directed, details]``"
 msgstr ""
 
 msgid ""
@@ -15726,9 +15798,6 @@ msgid "The upgrade was failing for same minor"
 msgstr ""
 
 msgid "Fix warnings from cpplint"
-msgstr ""
-
-msgid "Others"
 msgstr ""
 
 msgid "Adjust NEWS generator"
@@ -17367,6 +17436,9 @@ msgid "pgr_TSP"
 msgstr ""
 
 msgid "pgr_eucledianTSP"
+msgstr ""
+
+msgid "pgr_withPointsCostMatrix"
 msgstr ""
 
 msgid "pgr_maxFlowPushRelabel(One to One)"

@@ -5,7 +5,7 @@ Copyright (c) 2025 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2025 Saloni Kumari
-Mail: chaudharysaloni2510@gmail.com
+Mail: chaudharysaloni2510 at gmail.com
 
 ------
 
