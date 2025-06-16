@@ -275,6 +275,9 @@ sub generate_upgrade_script {
 
             if ($old_minor >= "3.2") {
                 # Out parameters changed names on v4.0.0
+                # Experimental functions
+                push @commands, drop_special_case_function("pgr_dagshortestpath(text,text)");
+
                 # Official functions
                 push @commands, drop_special_case_function("pgr_withpoints(text,text,text,boolean,character,boolean)");
                 push @commands, drop_special_case_function("pgr_withpointscost(text,text,text,boolean,character)");
@@ -287,6 +290,11 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_bellmanford(text,bigint,bigint,boolean)");
             push @commands, drop_special_case_function("pgr_bellmanford(text,anyarray,bigint,boolean)");
             push @commands, drop_special_case_function("pgr_bellmanford(text,bigint,anyarray,boolean)");
+
+            push @commands, drop_special_case_function("pgr_dagshortestpath(text,bigint,bigint)");
+            push @commands, drop_special_case_function("pgr_dagshortestpath(text,bigint,anyarray)");
+            push @commands, drop_special_case_function("pgr_dagshortestpath(text,anyarray,bigint)");
+            push @commands, drop_special_case_function("pgr_dagshortestpath(text,anyarray,anyarray)");
 
             push @commands, drop_special_case_function("pgr_edwardmoore(text,bigint,bigint,boolean)");
             push @commands, drop_special_case_function("pgr_edwardmoore(text,anyarray,bigint,boolean)");

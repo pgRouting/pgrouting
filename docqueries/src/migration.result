@@ -1593,12 +1593,12 @@ FROM pgr_bdDijkstra(
 SELECT * FROM pgr_DAGshortestPath(
   'select id, source, target, cost from edges',
   5, 11);
- seq | path_seq | node | edge | cost | agg_cost
------+----------+------+------+------+----------
-   1 |        1 |    5 |    1 |    1 |        0
-   2 |        2 |    6 |    4 |    1 |        1
-   3 |        3 |    7 |    8 |    1 |        2
-   4 |        4 |   11 |   -1 |    0 |        3
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         5 |      11 |    5 |    1 |    1 |        0
+   2 |        2 |         5 |      11 |    6 |    4 |    1 |        1
+   3 |        3 |         5 |      11 |    7 |    8 |    1 |        2
+   4 |        4 |         5 |      11 |   11 |   -1 |    0 |        3
 (4 rows)
 
 /* --DAGshortestPath-1-to-1-filter  */

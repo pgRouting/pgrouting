@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-12 15:41+0000\n"
+"POT-Creation-Date: 2025-06-14 12:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3971,6 +3971,12 @@ msgstr ""
 msgid "Signatures promoted to official"
 msgstr ""
 
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__"
+msgstr ""
+
+msgid "Make official the Combinations signature on the official functions"
+msgstr ""
+
 msgid "pgr_aStar(Combinations)"
 msgstr ""
 
@@ -4022,18 +4028,18 @@ msgstr ""
 msgid "Official functions"
 msgstr ""
 
+msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__"
+msgstr ""
+
+msgid "pgr_withPoints"
+msgstr ""
+
 msgid ""
 "`#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__ "
 "pgr_bdDijkstra"
 msgstr ""
 
 msgid "Combinations signature promoted to official."
-msgstr ""
-
-msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__"
-msgstr ""
-
-msgid "pgr_withPoints"
 msgstr ""
 
 msgid ""
@@ -4044,6 +4050,11 @@ msgstr ""
 msgid ""
 "`#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__ "
 "pgr_edwardMoore"
+msgstr ""
+
+msgid ""
+"`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
+"pgr_DAGshortestPath"
 msgstr ""
 
 msgid "Removal of SQL deprecated signatures"
@@ -4273,6 +4284,16 @@ msgid ""
 msgstr ""
 
 msgid ""
+"`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
+"_pgr_dagshortestpath(text,text,boolean,boolean)"
+msgstr ""
+
+msgid ""
+"`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
+"_pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)"
+msgstr ""
+
+msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__: Remove "
 "unused internal functions"
 msgstr ""
@@ -4353,6 +4374,11 @@ msgid "Deprecation of internal C/C++ functions"
 msgstr ""
 
 msgid "Internal C/C++ functions in legacy"
+msgstr ""
+
+msgid ""
+"`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
+"_pgr_dagshortestpath"
 msgstr ""
 
 msgid "All releases"
@@ -4467,6 +4493,9 @@ msgstr ""
 <<<<<<< HEAD
 =======
 msgid ":doc:`pgr_bellmanFord` [3]_"
+msgstr ""
+
+msgid ":doc:`pgr_dagShortestPath` [3]_"
 msgstr ""
 
 msgid ":doc:`pgr_edwardMoore` [3]_"
@@ -4671,6 +4700,12 @@ msgstr ""
 msgid "``pgr_bellmanFord``"
 msgstr ""
 
+msgid "``pgr_dagShortestPath``"
+msgstr ""
+
+msgid "|result-1-1|"
+msgstr ""
+
 msgid "``pgr_edwardMoore``"
 msgstr ""
 
@@ -4748,6 +4783,18 @@ msgid ""
 "Migrating `this v3.8 "
 "<https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#one-to-one>`__ "
 "example."
+msgstr ""
+
+msgid "Using ``pgr_DAGshortestPath``"
+msgstr ""
+
+msgid ""
+"Migrating `this v3.8 "
+"<https://docs.pgrouting.org/3.8/en/pgr_dagShortestPath.html#one-to-"
+"one>`__ example."
+msgstr ""
+
+msgid "This applies to all signatures of ``pgr_DAGshortestPath``"
 msgstr ""
 
 msgid "Examples for One to Many with one route result"
@@ -10462,6 +10509,9 @@ msgid ""
 msgstr ""
 
 msgid "pgr_dagShortestPath(Combinations)"
+msgstr ""
+
+msgid "..rubric:: Version 3.0.0"
 msgstr ""
 
 msgid ""

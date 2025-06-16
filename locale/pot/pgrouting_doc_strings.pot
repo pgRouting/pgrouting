@@ -8,11 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2025-06-09 15:35+0000\n"
-=======
-"POT-Creation-Date: 2025-06-12 15:41+0000\n"
->>>>>>> pgr/develop
+"POT-Creation-Date: 2025-06-14 12:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3110,9 +3106,6 @@ msgstr ""
 msgid ":doc:`pgr_betweennessCentrality` - Calculates relative betweenness centrality using Brandes Algorithm"
 msgstr ""
 
-msgid ":doc:`pgr_bandwidth` - Computes the bandwidth of a graph."
-msgstr ""
-
 msgid ":doc:`TRSP-family`"
 msgstr ""
 
@@ -3566,6 +3559,12 @@ msgstr ""
 msgid "Signatures promoted to official"
 msgstr ""
 
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__"
+msgstr ""
+
+msgid "Make official the Combinations signature on the official functions"
+msgstr ""
+
 msgid "pgr_aStar(Combinations)"
 msgstr ""
 
@@ -3614,22 +3613,25 @@ msgstr ""
 msgid "Official functions"
 msgstr ""
 
-msgid "`#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__ pgr_bdDijkstra"
-msgstr ""
-
-msgid "Combinations signature promoted to official."
-msgstr ""
-
 msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__"
 msgstr ""
 
 msgid "pgr_withPoints"
 msgstr ""
 
+msgid "`#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__ pgr_bdDijkstra"
+msgstr ""
+
+msgid "Combinations signature promoted to official."
+msgstr ""
+
 msgid "`#2907 <https://github.com/pgRouting/pgrouting/issues/2907>`__ pgr_bellmanFord"
 msgstr ""
 
 msgid "`#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__ pgr_edwardMoore"
+msgstr ""
+
+msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ pgr_DAGshortestPath"
 msgstr ""
 
 msgid "Removal of SQL deprecated signatures"
@@ -3806,6 +3808,12 @@ msgstr ""
 msgid "_pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
+msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ _pgr_dagshortestpath(text,text,boolean,boolean)"
+msgstr ""
+
+msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)"
+msgstr ""
+
 msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__: Remove unused internal functions"
 msgstr ""
 
@@ -3885,6 +3893,9 @@ msgid "Deprecation of internal C/C++ functions"
 msgstr ""
 
 msgid "Internal C/C++ functions in legacy"
+msgstr ""
+
+msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ _pgr_dagshortestpath"
 msgstr ""
 
 msgid "All releases"
@@ -3989,15 +4000,15 @@ msgstr ""
 msgid ":doc:`pgr_bdDijkstra` [1]_"
 msgstr ""
 
-<<<<<<< HEAD
-=======
 msgid ":doc:`pgr_bellmanFord` [3]_"
+msgstr ""
+
+msgid ":doc:`pgr_dagShortestPath` [3]_"
 msgstr ""
 
 msgid ":doc:`pgr_edwardMoore` [3]_"
 msgstr ""
 
->>>>>>> pgr/develop
 msgid ":doc:`pgr_withPoints` [2]_"
 msgstr ""
 
@@ -4016,12 +4027,9 @@ msgstr ""
 msgid "Official function in v4.0.0"
 msgstr ""
 
-<<<<<<< HEAD
-=======
 msgid "Experimental or proposed in v4.0.0"
 msgstr ""
 
->>>>>>> pgr/develop
 msgid "Migration of cost functions"
 msgstr ""
 
@@ -4133,29 +4141,12 @@ msgstr ""
 msgid "THe standardized :ref:`pgRouting-concepts:Result columns for single path functions` are |short-generic-result|"
 msgstr ""
 
-<<<<<<< HEAD
-msgid "``pgr_aStar``"
-msgstr ""
-
-msgid "v < 3.6"
-msgstr ""
-
-msgid "|old-generic-result|"
-msgstr ""
-
-=======
->>>>>>> pgr/develop
 msgid "``pgr_dijkstra``"
 msgstr ""
 
 msgid "v < 3.5"
 msgstr ""
 
-<<<<<<< HEAD
-msgid "``pgr_bdDijkstra``"
-msgstr ""
-
-=======
 msgid "|old-generic-result|"
 msgstr ""
 
@@ -4171,10 +4162,15 @@ msgstr ""
 msgid "``pgr_bellmanFord``"
 msgstr ""
 
+msgid "``pgr_dagShortestPath``"
+msgstr ""
+
+msgid "|result-1-1|"
+msgstr ""
+
 msgid "``pgr_edwardMoore``"
 msgstr ""
 
->>>>>>> pgr/develop
 msgid "``pgr_withPoints``"
 msgstr ""
 
@@ -4239,6 +4235,15 @@ msgid "Using ``pgr_bdDijkstra``"
 msgstr ""
 
 msgid "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#one-to-one>`__ example."
+msgstr ""
+
+msgid "Using ``pgr_DAGshortestPath``"
+msgstr ""
+
+msgid "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_dagShortestPath.html#one-to-one>`__ example."
+msgstr ""
+
+msgid "This applies to all signatures of ``pgr_DAGshortestPath``"
 msgstr ""
 
 msgid "Examples for One to Many with one route result"
@@ -6626,7 +6631,7 @@ msgstr ""
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
-msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -7604,21 +7609,6 @@ msgstr ""
 msgid "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
-<<<<<<< HEAD
-msgid "Returns set of |result-1-1|"
-msgstr ""
-
-msgid "Returns set of |result-1-m|"
-msgstr ""
-
-msgid "Returns set of |result-m-1|"
-msgstr ""
-
-msgid "Using a combinations table on an **undirected** graph."
-msgstr ""
-
-=======
->>>>>>> pgr/develop
 msgid "`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__"
 msgstr ""
 
@@ -8966,6 +8956,9 @@ msgstr ""
 msgid "pgr_dagShortestPath(Combinations)"
 msgstr ""
 
+msgid "..rubric:: Version 3.0.0"
+msgstr ""
+
 msgid "Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm that solves the shortest path problem for weighted directed acyclic graph, producing a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``)."
 msgstr ""
 
@@ -10139,11 +10132,7 @@ msgstr ""
 msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
-<<<<<<< HEAD
-msgid "From vertex :math:`6` to vertices :math:`\\{ 10, 17\\}` on a **directed** graph"
-=======
 msgid "Using a combinations table on an **undirected** graph."
->>>>>>> pgr/develop
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
