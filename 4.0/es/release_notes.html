@@ -541,6 +541,10 @@ unnamed positional.</p>
 <li><p>pgr_withPointsVia</p></li>
 </ul>
 <p class="rubric">Firmas promovidas a oficial</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a></dt><dd><p>Make official the Combinations signature on the official functions</p>
+</dd>
+</dl>
 <ul class="simple">
 <li><p>pgr_aStar(Combinaciones)</p></li>
 <li><p>pgr_aStarCost(Combinaciones)</p></li>
@@ -563,12 +567,6 @@ unnamed positional.</p>
 Standardize output columns of functions with different output columns within overloads</p>
 <p class="rubric">Official functions</p>
 <ul>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2906">#2906</a> pgr_bdDijkstra</p>
-<ul class="simple">
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
-</ul>
-</li>
 <li><dl class="simple">
 <dt><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a></dt><dd><p>pgr_withPoints</p>
 </dd>
@@ -585,18 +583,10 @@ unnamed positional.</p>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
-pgr_withPointsCost</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2906">#2906</a> pgr_bdDijkstra</p>
 <ul class="simple">
-<li><p>Función promovida a oficial.</p></li>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
-unnamed positional.</p>
-<ul>
-<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
-<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
-</ul>
-</li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
 </ul>
 </li>
 </ul>
@@ -610,6 +600,12 @@ pgr_bellmanFord</p>
 </li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2910">#2910</a>
 pgr_edwardMoore</p>
+<ul>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2913">#2913</a>
+pgr_DAGshortestPath</p>
 <ul>
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 </ul>
@@ -718,6 +714,10 @@ pgr_nodeNetwork</p></li>
 <li><p>_v4trsp(text,text,text,boolean)</p></li>
 <li><p>_pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
 <li><p>_pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2913">#2913</a>
+_pgr_dagshortestpath(text,text,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2913">#2913</a>
+_pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a>:
 Remove unused internal functions</p>
 <ul>
@@ -767,6 +767,8 @@ Remove unused internal functions</p>
 <li><p>_v4trsp(text,text,anyarray,anyarray,boolean)</p></li>
 <li><p>_v4trsp(text,text,text,boolean)</p></li>
 <li><p>_pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2913">#2913</a>
+_pgr_dagshortestpath</p></li>
 </ul>
 </section>
 </section>
@@ -2798,7 +2800,7 @@ FindPostgreSQL.cmake</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en jun 14, 2025.<br/>
+      Actualizado por última vez en jun 16, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
