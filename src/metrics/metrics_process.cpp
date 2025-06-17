@@ -41,13 +41,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/get_data.hpp"
 #include "cpp_common/to_postgres.hpp"
 
+#include "process/metrics_process.h"
+
 struct Metrics_rt {
     int64_t node;
     double metric_value;
 };
 
 std::vector<Metrics_rt>
-process_metrics(std::string edges_sql, bool directed, int max_nodes) {
+pgr_process_metrics(std::string edges_sql, bool directed, int max_nodes) {
     std::vector<Metrics_rt> result;
 
     if (directed) {
