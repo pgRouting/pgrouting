@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 #endif
 
-#include "c_types/graph_bandwidth_rt.h"
+#include "c_types/bandwidth_rt.h"
 
 #include "cpp_common/edge_t.hpp"
 
