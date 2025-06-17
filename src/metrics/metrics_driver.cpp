@@ -60,7 +60,7 @@ run_metric(G& graph) {
 
 
 void
-pgr_do_metric(
+do_metrics(
     GraphBandwidth_rt **return_tuples,
     size_t *return_count,
     char **log_msg,
