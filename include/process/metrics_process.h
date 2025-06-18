@@ -38,18 +38,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/bandwidth_rt.h"
 
-#include "cpp_common/edge_t.hpp"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 void pgr_process_bandwidth(
-    const Edge_t* edges_sql,
+    const char* edges_sql,
     GraphBandwidth_rt** result_tuples,
-    size_t* result_count,
-    char** log_msg,
-    char** notice_msg);
+    size_t* result_count
+);
 
 #ifdef __cplusplus
 }
