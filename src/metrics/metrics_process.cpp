@@ -54,10 +54,7 @@ extern "C" {
 #include "drivers/metrics_driver.hpp"
 #include "c_types/bandwidth_rt.h"
 
-struct Metrics_rt {
-    int64_t node;
-    double metric_value;
-};
+#include "c_types/metrics_rt.h"
 
 void
 pgr_process_metrics(
