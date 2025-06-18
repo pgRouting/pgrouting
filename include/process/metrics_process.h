@@ -42,10 +42,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-void pgr_process_bandwidth(
+void pgr_process_metrics(
     const char* edges_sql,
     GraphBandwidth_rt** result_tuples,
-    size_t* result_count
+    size_t* result_count,
+    char** log_msg,
+    char** notice_msg
 );
 
 #ifdef __cplusplus

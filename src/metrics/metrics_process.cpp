@@ -60,7 +60,7 @@ struct Metrics_rt {
 };
 
 void
-pgr_process_bandwidth(
+pgr_process_metrics(
     const char* edges_sql,
     GraphBandwidth_rt** result_tuples,
     size_t* result_count,
