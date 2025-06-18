@@ -80,7 +80,7 @@ pgr_process_metrics(
 
     if (!results.empty()) {
         *result_count = results.size();
-        (*result_tuples) = pgr_alloc(*result_count, GraphBandwidth_rt);
+        (*result_tuples) = pgrouting::pgr_alloc(*result_count, GraphBandwidth_rt);
 
         for (size_t i = 0; i < *result_count; ++i) {
             (*result_tuples)[i] = results[i];
