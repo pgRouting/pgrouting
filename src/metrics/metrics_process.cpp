@@ -75,6 +75,8 @@ pgr_process_metrics(
 
     clock_t start_t = clock();
 
+#if 0
+
     std::vector<GraphBandwidth_rt> results =
         pgrouting::bandwidth::compute_bandwidth(std::string(edges_sql));
 
@@ -91,6 +93,8 @@ pgr_process_metrics(
         *result_count = 0;
         *result_tuples = nullptr;
     }
+
+#endif
 
     pgr_global_report(log_msg, notice_msg, &err_msg);
     pgr_SPI_finish();
