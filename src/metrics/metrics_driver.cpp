@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/base_graph.hpp"
 
 #include "metrics/bandwidth.hpp"
-#include "c_types/graph_bandwidth_rt.h"  // <- Your actual result type
+#include "c_types/bandwidth_rt.h"  
 
 namespace pgrouting::graph {
 
