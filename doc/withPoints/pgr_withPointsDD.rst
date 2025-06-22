@@ -26,30 +26,25 @@
 
 * Function promoted to official.
 
+.. Breaking change
+
+* Breaking change, signatures no longer available:
+
+  * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
+  * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
+
 .. rubric:: Version 3.6.0
 
-* Signature change: ``driving_side`` parameter changed from named optional to
-  unnamed compulsory **driving side**.
+* Output columns standardized to |result-spantree|
+* **Driving side** parameter is positional unnamed and compulsory.
 
-  * pgr_withPointsDD(Single vertex)
-  * pgr_withPointsDD(Multiple vertices)
-
-* Standardizing output columns to |result-spantree|
-
-  * pgr_withPointsDD(Single vertex)
-
-    * Added ``depth``, ``pred`` and ``start_vid`` column.
-
-  * pgr_withPointsDD(Multiple vertices)
-
-    * Added ``depth``, ``pred`` columns.
+  * Valid values depend on kind of graph
 
 * When ``details`` is ``false``:
 
-  * Only points that are visited are removed, that is, points reached within the
-    distance are included
+  * Points reached within the distance are not included.
 
-* Deprecated signatures
+* Deprecated signatures:
 
   * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
   * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
@@ -229,7 +224,7 @@ Points SQL
 Result columns
 -------------------------------------------------------------------------------
 
-.. include:: drivingDistance-category.rst
+.. include:: pgRouting-concepts.rst
    :start-after: spantree-result-columns-start
    :end-before: spantree-result-columns-end
 
