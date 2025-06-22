@@ -1,8 +1,11 @@
 /*PGR-GNU*****************************************************************
 File: _withPointsKSP.sql
 
+Copyright (c) 2015 pgRouting developers
+Mail: project at pgrouting.org
+
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky at erosion.dev
 
 Copyright (c) 2023 Abhinav Jain
 Mail: this.abhinav at gmail.com
@@ -24,10 +27,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-
---------------------
--- pgr_withPointsKSP:
---------------------
 
 --v4.0
 CREATE FUNCTION _pgr_withPointsKSP_v4(
@@ -53,7 +52,7 @@ CREATE FUNCTION _pgr_withPointsKSP_v4(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE c STABLE STRICT;
+LANGUAGE C VOLATILE STRICT;
 
 --v4.0
 CREATE FUNCTION _pgr_withPointsKSP_v4(
@@ -78,7 +77,7 @@ CREATE FUNCTION _pgr_withPointsKSP_v4(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE c STABLE STRICT;
+LANGUAGE C VOLATILE STRICT;
 
 COMMENT ON FUNCTION _pgr_withPointsKSP_v4(TEXT, TEXT, ANYARRAY, ANYARRAY, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
