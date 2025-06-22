@@ -22,37 +22,44 @@
 
 .. rubric:: Availability
 
-* Version 4.0.0
+.. rubric:: Version 4.0.0
 
-  * Function promoted to official.
+* Function promoted to official.
 
-* Version 3.4.0
+.. Breaking change
 
-  * New proposed signatures:
+* Breaking change, signatures no longer available:
 
-    * pgr_trsp(One to One)
-    * pgr_trsp(One to Many)
-    * pgr_trsp(Many to One)
-    * pgr_trsp(Many to Many)
-    * pgr_trsp(Combinations)
+  * pgr_trsp(text,integer,integer,boolean,boolean,text)
+  * pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
 
-  * Deprecated signatures
+.. rubric:: Version 3.4.0
 
-    * pgr_trsp(text,integer,integer,boolean,boolean,text)
-    * pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)
-    * pgr_trspViaVertices(text,anyarray,boolean,boolean,text)
-    * pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
+* New proposed signatures:
 
-* Version 2.1.0
+  * pgr_trsp(One to One)
+  * pgr_trsp(One to Many)
+  * pgr_trsp(Many to One)
+  * pgr_trsp(Many to Many)
+  * pgr_trsp(Combinations)
 
-  * New prototypes
+* Deprecated signatures
 
-    * pgr_trspViaVertices
-    * pgr_trspViaEdges
+  * pgr_trsp(text,integer,integer,boolean,boolean,text)
+  * pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+  * pgr_trspViaVertices(text,anyarray,boolean,boolean,text)
+  * pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
 
-* Version 2.0.0
+.. rubric:: Version 2.1.0
 
-  * Official function.
+* New prototypes
+
+  * pgr_trspViaVertices
+  * pgr_trspViaEdges
+
+.. rubric:: Version 2.0.0
+
+* Official function.
 
 Description
 -------------------------------------------------------------------------------

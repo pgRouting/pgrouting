@@ -22,8 +22,14 @@
 
 .. rubric:: Version 4.0.0
 
-* Simulated Annealing signature removed
 * Results change depending on input order
+
+.. Breaking change
+
+* Breaking change, signatures no longer available:
+
+  * pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,
+    integer,double precision,double precision,double precision,boolean)
 
 .. rubric:: Version 3.2.1
 
