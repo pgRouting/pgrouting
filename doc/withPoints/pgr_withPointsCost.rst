@@ -27,12 +27,19 @@ given.
 .. rubric:: Version 4.0.0
 
 * Function promoted to official.
-* Output columns standardized to |matrix-result|
-* Signature change: ``driving_side`` parameter changed from named optional to
-  unnamed positional.
+* **Driving side** parameter is unnamed and compulsory.
 
-  - Directed graph valid values: ``l`` or ``L`` and ``r``, ``R``
-  - Undirected graph valid values: ``b`` or ``B``
+  * Valid values depend on kind of graph
+
+* Output columns standardized to |matrix-result|
+* Breaking change, signatures no longer available:
+
+  * pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)
+  * pgr_withpointscost(text,text,anyarray,bigint,boolean,character)
+  * pgr_withpointscost(text,text,bigint,anyarray,boolean,character)
+  * pgr_withpointscost(text,text,bigint,bigint,boolean,character)
+  * pgr_withpointscost(text,text,text,boolean,character)
+
 
 .. rubric:: Version 3.2.0
 
@@ -62,8 +69,8 @@ The main characteristics are:
 
 - Vertices of the graph are:
 
-  - **positive** when it belongs to the edges sql
-  - **negative** when it belongs to the points sql
+  - **positive** when it belongs to the edges_sql
+  - **negative** when it belongs to the points_sql
 
 - Values are returned when there is a path.
 
@@ -98,6 +105,8 @@ The main characteristics are:
 Signatures
 -------------------------------------------------------------------------------
 
+.. rubric:: Summary
+
 .. admonition:: \ \
    :class: signatures
 
@@ -105,7 +114,7 @@ Signatures
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **driving side** [**options**])
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **driving side** [**options**])
-   | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])
+   | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **driving side** [**options**])
    | **options:** ``[directed]``
 
    | Returns set of |matrix-result|
@@ -129,7 +138,7 @@ One to One
    | Returns set of |matrix-result|
    | OR EMPTY SET
 
-:Example: From point :math:`1` to vertex :math:`10` with default options.
+.. rubric:: From point :math:`1` to vertex :math:`10` with right driving side in directed graph.
 
 .. literalinclude:: withPointsCost.queries
    :start-after: -- q1
@@ -144,14 +153,14 @@ One to Many
 .. admonition:: \ \
    :class: signatures
 
-  pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])
+   | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])
    | **options:** ``[directed]``
 
    | Returns set of |matrix-result|
    | OR EMPTY SET
 
-:Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
-          undirected graph
+.. rubric:: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
+   undirected graph
 
 .. literalinclude:: withPointsCost.queries
    :start-after: -- q2
@@ -172,7 +181,7 @@ Many to One
    | Returns set of |matrix-result|
    | OR EMPTY SET
 
-:Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
+:Example: From point :math:`1` and vertex :math:`6` to point :math:`3` with right driving side in directed graph.
 
 .. literalinclude:: withPointsCost.queries
    :start-after: -- q3
@@ -194,7 +203,7 @@ Many to Many
    | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3` and
-          vertex :math:`1`
+          vertex :math:`1` with left side driving.
 
 .. literalinclude:: withPointsCost.queries
    :start-after: -- q4
@@ -218,7 +227,7 @@ Combinations
 :Example: Two combinations
 
 From point :math:`1` to vertex :math:`10`, and from vertex :math:`6` to point
-:math:`3` with **right** side driving.
+:math:`3` with right side driving.
 
 .. literalinclude:: withPointsCost.queries
    :start-after: -- q5
@@ -237,13 +246,6 @@ Optional parameters
 .. include:: dijkstra-family.rst
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
-
-With points optional parameters
-...............................................................................
-
-.. include:: withPoints-family.rst
-    :start-after: withPoints_optionals_start
-    :end-before: * - ``details
 
 Inner Queries
 -------------------------------------------------------------------------------
@@ -326,12 +328,13 @@ Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3,
    :start-after: -- q8
    :end-before: -- q9
 
-:doc:`sampledata`
 
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`withPoints-family`
+* :doc:`cost-category`
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 
