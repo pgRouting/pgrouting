@@ -15,11 +15,9 @@ milestone for 4.0.0
 
 
 Summary of changes by function
-...............................................................................
 
 * pgr_contraction
 
-  .. Breaking change
   * Breaking change, signatures no longer available:
     * pgr_contraction(text,bigint[],integer,bigint[],boolean)
 
@@ -140,7 +138,6 @@ Summary of changes by function
     * pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
 
 Functions promoted to official
-...............................................................................
 
 * [#2701](https://github.com/pgRouting/pgrouting/issues/2701)
   pgr_trsp
@@ -164,7 +161,6 @@ Functions promoted to official
   pgr_withPointsVia
 
 Signatures promoted to official
-...............................................................................
 
 * [#2718](https://github.com/pgRouting/pgrouting/issues/2918)
   pgr_aStar(Combinations)
@@ -194,7 +190,6 @@ Signatures promoted to official
   pgr_pushRelabel(Combinations)
 
 SQL signatures and output standardization
-...............................................................................
 
 [#2904](https://github.com/pgRouting/pgrouting/issues/2904)
 Standardize output columns of functions with different output columns within overloads
@@ -222,7 +217,6 @@ Standardize output columns of functions with different output columns within ove
   pgr_withPointsCostMatrix
 
 Removal of SQL deprecated signatures
-...............................................................................
 
 * [#2798](https://github.com/pgRouting/pgrouting/issues/2798):
   pgr_contraction
@@ -275,7 +269,6 @@ Removal of SQL deprecated signatures
 
 
 Removal of SQL deprecated functions
-...............................................................................
 
 * [#2681](https://github.com/pgRouting/pgrouting/issues/2681):
   pgr_trspviaedges
@@ -295,7 +288,6 @@ Removal of SQL deprecated functions
   pgr_nodeNetwork
 
 Removal of SQL deprecated internal functions
-...............................................................................
 
 * #2748 _pgr_alphashape(text,double precision)
 * #2861 _pgr_checkverttab(text,text[],integer,text)
@@ -354,7 +346,6 @@ Removal of SQL deprecated internal functions
 * #2683 _v4trsp(text,text,text,boolean)
 
 Summary of functions and signatures no longer on pgrouting
-...............................................................................
 
 * #2748 pgr_alphashape(geometry,double precision)
 * #2752 pgr_analyzegraph(text,double precision,text,text,text,text,text)
@@ -398,7 +389,6 @@ Summary of functions and signatures no longer on pgrouting
 
 
 Code enhancements
-...............................................................................
 
 * Removal of unused C/C++ code
 * Refactor the Script to build the update PostgreSQL file.
