@@ -39,12 +39,6 @@ Proposed Functions
    :start-after: proposed-start
    :end-before: proposed-end
 
-:doc:`withPoints-family`
-
-.. include:: withPoints-family.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
 :doc:`transformation-family`
 
 .. include:: transformation-family.rst
@@ -66,14 +60,8 @@ Proposed Functions
 :doc:`traversal-family`
 
 .. include:: traversal-family.rst
-   :start-after: official-start
-   :end-before: official-end
-
-.. toctree::
-   :hidden:
-
-   traversal-family
-   coloring-family
+   :start-after: proposed-start
+   :end-before: proposed-end
 
 .. rubric:: categories
 
@@ -83,43 +71,11 @@ Proposed Functions
    :start-after: proposed-start
    :end-before: proposed-end
 
-:doc:`costMatrix-category`
-
-.. include:: costMatrix-category.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
-:doc:`drivingDistance-category`
-
-.. include:: drivingDistance-category.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
-:doc:`KSP-category`
-
-.. include:: KSP-category.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
 :doc:`via-category`
 
 .. include:: via-category.rst
-   :start-after: proposed start
-   :end-before: proposed end
-
-:doc:`withPoints-category`
-
-.. include:: withPoints-category.rst
-   :start-after: proposed start
-   :end-before: proposed end
-
-.. toctree::
-    :hidden:
-
-    withPoints-family
-    KSP-category
-    via-category
-    withPoints-category
+   :start-after: proposed-start
+   :end-before: proposed-end
 
 See Also
 -------------------------------------------------------------------------------
