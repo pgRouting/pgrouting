@@ -4,53 +4,49 @@ SET client_min_messages TO NOTICE;
 SET
 SET extra_float_digits=-3;
 SET
-/* --e1 */
+/* -- q1 */
 SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
-  $$SELECT id, path, cost FROM restrictions$$,
-  $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-  -1, 10,
-  details => true);
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  'SELECT id, path, cost FROM restrictions',
+  'SELECT pid, edge_id, fraction, side FROM pointsOfInterest',
+  -1, 10, 'r');
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
-   1 |        1 |        -1 |      10 |   -1 |    1 |  0.4 |        0
-   2 |        2 |        -1 |      10 |    5 |    1 |    1 |      0.4
-   3 |        3 |        -1 |      10 |    6 |    4 |  0.7 |      1.4
-   4 |        4 |        -1 |      10 |   -6 |    4 |  0.3 |      2.1
-   5 |        5 |        -1 |      10 |    7 |   10 |    1 |      2.4
-   6 |        6 |        -1 |      10 |    8 |   12 |  0.6 |      3.4
-   7 |        7 |        -1 |      10 |   -3 |   12 |  0.4 |        4
-   8 |        8 |        -1 |      10 |   12 |   13 |    1 |      4.4
-   9 |        9 |        -1 |      10 |   17 |   15 |    1 |      5.4
-  10 |       10 |        -1 |      10 |   16 |   16 |    1 |      6.4
-  11 |       11 |        -1 |      10 |   15 |    3 |    1 |      7.4
-  12 |       12 |        -1 |      10 |   10 |   -1 |    0 |      8.4
-(12 rows)
+   1 |        1 |        -1 |      10 |   -1 |    1 |  1.4 |        0
+   2 |        2 |        -1 |      10 |    6 |    4 |    1 |      1.4
+   3 |        3 |        -1 |      10 |    7 |   10 |    1 |      2.4
+   4 |        4 |        -1 |      10 |    8 |   12 |    1 |      3.4
+   5 |        5 |        -1 |      10 |   12 |   13 |    1 |      4.4
+   6 |        6 |        -1 |      10 |   17 |   15 |    1 |      5.4
+   7 |        7 |        -1 |      10 |   16 |   16 |    1 |      6.4
+   8 |        8 |        -1 |      10 |   15 |    3 |    1 |      7.4
+   9 |        9 |        -1 |      10 |   10 |   -1 |    0 |      8.4
+(9 rows)
 
-/* --e2 */
+/* -- q2 */
 SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
-  $$SELECT id, path, cost FROM restrictions$$,
-  $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-  -1, ARRAY[-3, 7]);
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  'SELECT id, path, cost FROM restrictions',
+  'SELECT pid, edge_id, fraction, side FROM pointsOfInterest',
+  -1, ARRAY[-3, 7], 'B', directed => false);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
-   1 |        1 |        -1 |      -3 |   -1 |    1 |  1.4 |        0
-   2 |        2 |        -1 |      -3 |    6 |    4 |    1 |      1.4
-   3 |        3 |        -1 |      -3 |    7 |   10 |    1 |      2.4
-   4 |        4 |        -1 |      -3 |    8 |   12 |  0.6 |      3.4
-   5 |        5 |        -1 |      -3 |   -3 |   -1 |    0 |        4
-   6 |        1 |        -1 |       7 |   -1 |    1 |  1.4 |        0
-   7 |        2 |        -1 |       7 |    6 |    4 |    1 |      1.4
-   8 |        3 |        -1 |       7 |    7 |   -1 |    0 |      2.4
+   1 |        1 |        -1 |      -3 |   -1 |    1 |  0.6 |        0
+   2 |        2 |        -1 |      -3 |    6 |    4 |    1 |      0.6
+   3 |        3 |        -1 |      -3 |    7 |   10 |    1 |      1.6
+   4 |        4 |        -1 |      -3 |    8 |   12 |  0.6 |      2.6
+   5 |        5 |        -1 |      -3 |   -3 |   -1 |    0 |      3.2
+   6 |        1 |        -1 |       7 |   -1 |    1 |  0.6 |        0
+   7 |        2 |        -1 |       7 |    6 |    4 |    1 |      0.6
+   8 |        3 |        -1 |       7 |    7 |   -1 |    0 |      1.6
 (8 rows)
 
-/* --e3 */
+/* -- q3 */
 SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
-  $$SELECT id, path, cost FROM restrictions$$,
-  $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-  ARRAY[-1, 6], -3);
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  'SELECT id, path, cost FROM restrictions',
+  'SELECT pid, edge_id, fraction, side FROM pointsOfInterest',
+  ARRAY[-1, 6], -3, 'R');
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |        -1 |      -3 |   -1 |    1 |  1.4 |        0
@@ -64,30 +60,30 @@ SELECT * FROM pgr_trsp_withPoints(
    9 |        4 |         6 |      -3 |   -3 |   -1 |    0 |      2.6
 (9 rows)
 
-/* --e4 */
+/* -- q4 */
 SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
-  $$SELECT id, path, cost FROM restrictions$$,
-  $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-  ARRAY[-1, 6], ARRAY[-3, 1]);
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  'SELECT id, path, cost FROM restrictions',
+  'SELECT pid, edge_id, fraction, side FROM pointsOfInterest',
+  ARRAY[-1, 6], ARRAY[-3, 1], 'L');
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
-   1 |        1 |        -1 |      -3 |   -1 |    1 |  1.4 |        0
-   2 |        2 |        -1 |      -3 |    6 |    4 |    1 |      1.4
-   3 |        3 |        -1 |      -3 |    7 |   10 |    1 |      2.4
-   4 |        4 |        -1 |      -3 |    8 |   12 |  0.6 |      3.4
-   5 |        5 |        -1 |      -3 |   -3 |   -1 |    0 |        4
-   6 |        1 |        -1 |       1 |   -1 |    1 |  1.4 |        0
-   7 |        2 |        -1 |       1 |    6 |    4 |    1 |      1.4
-   8 |        3 |        -1 |       1 |    7 |   10 |    1 |      2.4
-   9 |        4 |        -1 |       1 |    8 |   12 |    1 |      3.4
-  10 |        5 |        -1 |       1 |   12 |   13 |    1 |      4.4
-  11 |        6 |        -1 |       1 |   17 |   15 |    1 |      5.4
-  12 |        7 |        -1 |       1 |   16 |    9 |    1 |      6.4
-  13 |        8 |        -1 |       1 |   11 |    8 |    1 |      7.4
-  14 |        9 |        -1 |       1 |    7 |    7 |    1 |      8.4
-  15 |       10 |        -1 |       1 |    3 |    6 |    1 |      9.4
-  16 |       11 |        -1 |       1 |    1 |   -1 |    0 |     10.4
+   1 |        1 |        -1 |      -3 |   -1 |    1 |  0.6 |        0
+   2 |        2 |        -1 |      -3 |    6 |    4 |    1 |      0.6
+   3 |        3 |        -1 |      -3 |    7 |   10 |    1 |      1.6
+   4 |        4 |        -1 |      -3 |    8 |   12 |  0.6 |      2.6
+   5 |        5 |        -1 |      -3 |   -3 |   -1 |    0 |      3.2
+   6 |        1 |        -1 |       1 |   -1 |    1 |  0.6 |        0
+   7 |        2 |        -1 |       1 |    6 |    4 |    1 |      0.6
+   8 |        3 |        -1 |       1 |    7 |   10 |    1 |      1.6
+   9 |        4 |        -1 |       1 |    8 |   12 |    1 |      2.6
+  10 |        5 |        -1 |       1 |   12 |   13 |    1 |      3.6
+  11 |        6 |        -1 |       1 |   17 |   15 |    1 |      4.6
+  12 |        7 |        -1 |       1 |   16 |    9 |    1 |      5.6
+  13 |        8 |        -1 |       1 |   11 |    8 |    1 |      6.6
+  14 |        9 |        -1 |       1 |    7 |    7 |    1 |      7.6
+  15 |       10 |        -1 |       1 |    3 |    6 |    1 |      8.6
+  16 |       11 |        -1 |       1 |    1 |   -1 |    0 |      9.6
   17 |        1 |         6 |      -3 |    6 |    4 |    1 |        0
   18 |        2 |         6 |      -3 |    7 |   10 |    1 |        1
   19 |        3 |         6 |      -3 |    8 |   12 |  0.6 |        2
@@ -104,14 +100,13 @@ SELECT * FROM pgr_trsp_withPoints(
   30 |       10 |         6 |       1 |    1 |   -1 |    0 |        9
 (30 rows)
 
-/* --e5 */
+/* -- q5 */
 SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
-  $$SELECT id, path, cost FROM restrictions$$,
-  $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-  $$SELECT * FROM (VALUES (-1, 10), (6, -3)) AS t(source, target)$$,
-  driving_side => 'r',
-  details => true);
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  'SELECT id, path, cost FROM restrictions',
+  'SELECT pid, edge_id, fraction, side FROM pointsOfInterest',
+  'SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)',
+  'r', details => true);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |        -1 |      10 |   -1 |    1 |  0.4 |        0
@@ -133,85 +128,159 @@ SELECT * FROM pgr_trsp_withPoints(
   17 |        5 |         6 |      -3 |   -3 |   -1 |    0 |      2.6
 (17 rows)
 
-/* --q1 */
-SELECT ('(' || start_vid || ' => ' || end_vid ||') at ' || path_seq || 'th step:')::TEXT AS path_at,
-CASE WHEN edge = -1 THEN ' visits'
-ELSE ' passes in front of'
-  END as status,
-  CASE WHEN node < 0 THEN 'Point'
-  ELSE 'Vertex'
-  END as is_a,
-  abs(node) as id
-  FROM pgr_trsp_withPoints(
-    $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
-    $$SELECT id, path, cost FROM restrictions$$,
-    $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-    ARRAY[5, -1], ARRAY[-6, -3, -6, 10, 11],
-    driving_side => 'r',
-    details => true)
-  WHERE node IN (-6, 11);
-         path_at         |       status        |  is_a  | id
--------------------------+---------------------+--------+----
- (-1 => -6) at 4th step: |  visits             | Point  |  6
- (-1 => -3) at 4th step: |  passes in front of | Point  |  6
- (-1 => 10) at 4th step: |  passes in front of | Point  |  6
- (-1 => 11) at 4th step: |  passes in front of | Point  |  6
- (-1 => 11) at 6th step: |  visits             | Vertex | 11
- (5 => -6) at 3th step:  |  visits             | Point  |  6
- (5 => -3) at 3th step:  |  passes in front of | Point  |  6
- (5 => 10) at 3th step:  |  passes in front of | Point  |  6
- (5 => 11) at 3th step:  |  passes in front of | Point  |  6
- (5 => 11) at 5th step:  |  visits             | Vertex | 11
-(10 rows)
-
-/* --q2 */
+/* -- q6 */
 SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
-  $$SELECT id, path, cost FROM restrictions$$,
-  $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-  ARRAY[-1, 6], ARRAY[-3, 1],
-  directed => false,
-  details => true);
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  'SELECT id, path, cost FROM restrictions',
+  'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+  ARRAY[5, -1], ARRAY[-2, -3, -6, 10, 11],
+  'r', details => true);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
-   1 |        1 |        -1 |      -3 |   -1 |    1 |  0.6 |        0
-   2 |        2 |        -1 |      -3 |    6 |    4 |  0.7 |      0.6
-   3 |        3 |        -1 |      -3 |   -6 |    4 |  0.3 |      1.3
-   4 |        4 |        -1 |      -3 |    7 |   10 |    1 |      1.6
-   5 |        5 |        -1 |      -3 |    8 |   12 |  0.6 |      2.6
-   6 |        6 |        -1 |      -3 |   -3 |   -1 |    0 |      3.2
-   7 |        1 |        -1 |       1 |   -1 |    1 |  0.6 |        0
-   8 |        2 |        -1 |       1 |    6 |    4 |  0.7 |      0.6
-   9 |        3 |        -1 |       1 |   -6 |    4 |  0.3 |      1.3
-  10 |        4 |        -1 |       1 |    7 |    7 |    1 |      1.6
-  11 |        5 |        -1 |       1 |    3 |    6 |  0.7 |      2.6
-  12 |        6 |        -1 |       1 |   -4 |    6 |  0.3 |      3.3
-  13 |        7 |        -1 |       1 |    1 |   -1 |    0 |      3.6
-  14 |        1 |         6 |      -3 |    6 |    4 |  0.7 |        0
-  15 |        2 |         6 |      -3 |   -6 |    4 |  0.3 |      0.7
-  16 |        3 |         6 |      -3 |    7 |   10 |    1 |        1
-  17 |        4 |         6 |      -3 |    8 |   12 |  0.6 |        2
-  18 |        5 |         6 |      -3 |   -3 |   -1 |    0 |      2.6
-  19 |        1 |         6 |       1 |    6 |    4 |  0.7 |        0
-  20 |        2 |         6 |       1 |   -6 |    4 |  0.3 |      0.7
-  21 |        3 |         6 |       1 |    7 |    7 |    1 |        1
-  22 |        4 |         6 |       1 |    3 |    6 |  0.7 |        2
-  23 |        5 |         6 |       1 |   -4 |    6 |  0.3 |      2.7
-  24 |        6 |         6 |       1 |    1 |   -1 |    0 |        3
-(24 rows)
+   1 |        1 |        -1 |      -6 |   -1 |    1 |  0.4 |        0
+   2 |        2 |        -1 |      -6 |    5 |    1 |    1 |      0.4
+   3 |        3 |        -1 |      -6 |    6 |    4 |  0.7 |      1.4
+   4 |        4 |        -1 |      -6 |   -6 |   -1 |    0 |      2.1
+   5 |        1 |        -1 |      -3 |   -1 |    1 |  0.4 |        0
+   6 |        2 |        -1 |      -3 |    5 |    1 |    1 |      0.4
+   7 |        3 |        -1 |      -3 |    6 |    4 |  0.7 |      1.4
+   8 |        4 |        -1 |      -3 |   -6 |    4 |  0.3 |      2.1
+   9 |        5 |        -1 |      -3 |    7 |   10 |    1 |      2.4
+  10 |        6 |        -1 |      -3 |    8 |   12 |  0.6 |      3.4
+  11 |        7 |        -1 |      -3 |   -3 |   -1 |    0 |        4
+  12 |        1 |        -1 |      -2 |   -1 |    1 |  0.4 |        0
+  13 |        2 |        -1 |      -2 |    5 |    1 |    1 |      0.4
+  14 |        3 |        -1 |      -2 |    6 |    4 |  0.7 |      1.4
+  15 |        4 |        -1 |      -2 |   -6 |    4 |  0.3 |      2.1
+  16 |        5 |        -1 |      -2 |    7 |    8 |    1 |      2.4
+  17 |        6 |        -1 |      -2 |   11 |    9 |    1 |      3.4
+  18 |        7 |        -1 |      -2 |   16 |   15 |  0.4 |      4.4
+  19 |        8 |        -1 |      -2 |   -2 |   -1 |    0 |      4.8
+  20 |        1 |        -1 |      10 |   -1 |    1 |  0.4 |        0
+  21 |        2 |        -1 |      10 |    5 |    1 |    1 |      0.4
+  22 |        3 |        -1 |      10 |    6 |    4 |  0.7 |      1.4
+  23 |        4 |        -1 |      10 |   -6 |    4 |  0.3 |      2.1
+  24 |        5 |        -1 |      10 |    7 |   10 |    1 |      2.4
+  25 |        6 |        -1 |      10 |    8 |   12 |  0.6 |      3.4
+  26 |        7 |        -1 |      10 |   -3 |   12 |  0.4 |        4
+  27 |        8 |        -1 |      10 |   12 |   13 |    1 |      4.4
+  28 |        9 |        -1 |      10 |   17 |   15 |    1 |      5.4
+  29 |       10 |        -1 |      10 |   16 |   16 |    1 |      6.4
+  30 |       11 |        -1 |      10 |   15 |    3 |    1 |      7.4
+  31 |       12 |        -1 |      10 |   10 |   -1 |    0 |      8.4
+  32 |        1 |        -1 |      11 |   -1 |    1 |  0.4 |        0
+  33 |        2 |        -1 |      11 |    5 |    1 |    1 |      0.4
+  34 |        3 |        -1 |      11 |    6 |    4 |  0.7 |      1.4
+  35 |        4 |        -1 |      11 |   -6 |    4 |  0.3 |      2.1
+  36 |        5 |        -1 |      11 |    7 |    8 |    1 |      2.4
+  37 |        6 |        -1 |      11 |   11 |   -1 |    0 |      3.4
+  38 |        1 |         5 |      -6 |    5 |    1 |    1 |        0
+  39 |        2 |         5 |      -6 |    6 |    4 |  0.7 |        1
+  40 |        3 |         5 |      -6 |   -6 |   -1 |    0 |      1.7
+  41 |        1 |         5 |      -3 |    5 |    1 |    1 |        0
+  42 |        2 |         5 |      -3 |    6 |    4 |  0.7 |        1
+  43 |        3 |         5 |      -3 |   -6 |    4 |  0.3 |      1.7
+  44 |        4 |         5 |      -3 |    7 |   10 |    1 |        2
+  45 |        5 |         5 |      -3 |    8 |   12 |  0.6 |        3
+  46 |        6 |         5 |      -3 |   -3 |   -1 |    0 |      3.6
+  47 |        1 |         5 |      -2 |    5 |    1 |    1 |        0
+  48 |        2 |         5 |      -2 |    6 |    4 |  0.7 |        1
+  49 |        3 |         5 |      -2 |   -6 |    4 |  0.3 |      1.7
+  50 |        4 |         5 |      -2 |    7 |    8 |    1 |        2
+  51 |        5 |         5 |      -2 |   11 |    9 |    1 |        3
+  52 |        6 |         5 |      -2 |   16 |   15 |  0.4 |        4
+  53 |        7 |         5 |      -2 |   -2 |   -1 |    0 |      4.4
+  54 |        1 |         5 |      10 |    5 |    1 |    1 |        0
+  55 |        2 |         5 |      10 |    6 |    4 |  0.7 |        1
+  56 |        3 |         5 |      10 |   -6 |    4 |  0.3 |      1.7
+  57 |        4 |         5 |      10 |    7 |   10 |    1 |        2
+  58 |        5 |         5 |      10 |    8 |   12 |  0.6 |        3
+  59 |        6 |         5 |      10 |   -3 |   12 |  0.4 |      3.6
+  60 |        7 |         5 |      10 |   12 |   13 |    1 |        4
+  61 |        8 |         5 |      10 |   17 |   15 |    1 |        5
+  62 |        9 |         5 |      10 |   16 |   16 |    1 |        6
+  63 |       10 |         5 |      10 |   15 |    3 |    1 |        7
+  64 |       11 |         5 |      10 |   10 |   -1 |    0 |        8
+  65 |        1 |         5 |      11 |    5 |    1 |    1 |        0
+  66 |        2 |         5 |      11 |    6 |    4 |  0.7 |        1
+  67 |        3 |         5 |      11 |   -6 |    4 |  0.3 |      1.7
+  68 |        4 |         5 |      11 |    7 |    8 |    1 |        2
+  69 |        5 |         5 |      11 |   11 |   -1 |    0 |        3
+(69 rows)
 
-/* --q3 */
+/* -- q7 */
+SELECT (start_vid || ' -> ' || end_vid ||' at ' || path_seq || 'th step:')::TEXT AS path_at,
+  CASE WHEN edge = -1 THEN ' visits'
+      ELSE ' passes in front of'
+  END as status,
+  CASE WHEN node < 0 THEN 'Point'
+       ELSE 'Vertex'
+  END as is_a,
+  abs(node) as id
+FROM pgr_trsp_withPoints(
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  'SELECT id, path, cost FROM restrictions',
+  'SELECT pid, edge_id, fraction, side FROM pointsOfInterest',
+  ARRAY[5, -1], ARRAY[-6, -3, -6, 10, 11], 'r', details => true)
+WHERE node IN (-6, 11);
+        path_at        |       status        |  is_a  | id
+-----------------------+---------------------+--------+----
+ -1 -> -6 at 4th step: |  visits             | Point  |  6
+ -1 -> -3 at 4th step: |  passes in front of | Point  |  6
+ -1 -> 10 at 4th step: |  passes in front of | Point  |  6
+ -1 -> 11 at 4th step: |  passes in front of | Point  |  6
+ -1 -> 11 at 6th step: |  visits             | Vertex | 11
+ 5 -> -6 at 3th step:  |  visits             | Point  |  6
+ 5 -> -3 at 3th step:  |  passes in front of | Point  |  6
+ 5 -> 10 at 3th step:  |  passes in front of | Point  |  6
+ 5 -> 11 at 3th step:  |  passes in front of | Point  |  6
+ 5 -> 11 at 5th step:  |  visits             | Vertex | 11
+(10 rows)
+
+/* -- q8 */
+SELECT (start_vid || ' => ' || end_vid ||' at ' || path_seq || 'th step')::TEXT AS path_at,
+  CASE WHEN edge = -1 THEN ' visits'
+      ELSE ' passes in front of'
+  END as status,
+  CASE WHEN node < 0 THEN 'Point'
+        ELSE 'Vertex'
+    END as is_a,
+    abs(node) as id
+FROM pgr_trsp_withPoints(
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  'SELECT id, path, cost FROM restrictions',
+  'SELECT pid, edge_id, fraction, side FROM pointsOfInterest',
+  ARRAY[5, -1], ARRAY[-2, -3, -6, 10, 11], 'l', details => true)
+WHERE node IN (-6, 11);
+       path_at        |       status        |  is_a  | id
+----------------------+---------------------+--------+----
+ -1 => -6 at 3th step |  visits             | Point  |  6
+ -1 => -3 at 3th step |  passes in front of | Point  |  6
+ -1 => -2 at 3th step |  passes in front of | Point  |  6
+ -1 => -2 at 5th step |  passes in front of | Vertex | 11
+ -1 => 10 at 3th step |  passes in front of | Point  |  6
+ -1 => 11 at 3th step |  passes in front of | Point  |  6
+ -1 => 11 at 5th step |  visits             | Vertex | 11
+ 5 => -6 at 4th step  |  visits             | Point  |  6
+ 5 => -3 at 4th step  |  passes in front of | Point  |  6
+ 5 => -2 at 4th step  |  passes in front of | Point  |  6
+ 5 => -2 at 6th step  |  passes in front of | Vertex | 11
+ 5 => 10 at 4th step  |  passes in front of | Point  |  6
+ 5 => 11 at 4th step  |  passes in front of | Point  |  6
+ 5 => 11 at 6th step  |  visits             | Vertex | 11
+(14 rows)
+
+/* -- q9 */
 SELECT * FROM pgr_trsp_withPoints(
   $e$ SELECT * FROM edges $e$,
   $r$ SELECT id, path, cost FROM restrictions $r$,
   $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
       FROM pgr_findCloseEdges(
-        $$SELECT id, geom FROM edges$$,
+        'SELECT id, geom FROM edges',
         (SELECT ST_POINT(2.9, 1.8)),
         0.5, cap => 2)
   $p$,
-  1, ARRAY[-1, -2],
-  driving_side => 'r');
+  1, ARRAY[-1, -2], 'B', false);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         1 |      -2 |    1 |    6 |    1 |        0
@@ -220,17 +289,11 @@ SELECT * FROM pgr_trsp_withPoints(
    4 |        4 |         1 |      -2 |   -2 |   -1 |    0 |      2.9
    5 |        1 |         1 |      -1 |    1 |    6 |    1 |        0
    6 |        2 |         1 |      -1 |    3 |    7 |    1 |        1
-   7 |        3 |         1 |      -1 |    7 |    8 |    2 |        2
-   8 |        4 |         1 |      -1 |    7 |   10 |    1 |        4
-   9 |        5 |         1 |      -1 |    8 |   12 |    1 |        5
-  10 |        6 |         1 |      -1 |   12 |   13 |    1 |        6
-  11 |        7 |         1 |      -1 |   17 |   15 |    1 |        7
-  12 |        8 |         1 |      -1 |   16 |   16 |    1 |        8
-  13 |        9 |         1 |      -1 |   15 |    3 |    1 |        9
-  14 |       10 |         1 |      -1 |   10 |    5 |  0.8 |       10
-  15 |       11 |         1 |      -1 |   -1 |   -1 |    0 |     10.8
-(15 rows)
+   7 |        3 |         1 |      -1 |    7 |    8 |    1 |        2
+   8 |        4 |         1 |      -1 |   11 |    5 |  0.2 |        3
+   9 |        5 |         1 |      -1 |   -1 |   -1 |    0 |      3.2
+(9 rows)
 
-/* -- q4 */
+/* -- q10 */
 ROLLBACK;
 ROLLBACK
