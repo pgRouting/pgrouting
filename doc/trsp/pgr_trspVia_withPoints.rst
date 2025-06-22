@@ -24,13 +24,25 @@ points with restrictions.
 
 .. rubric:: Availability
 
-* Version 4.0.0
+.. rubric:: Version 4.0.0
 
-  * Function promoted to official.
+* Function promoted to official.
+* **Driving side** parameter is positional unnamed and compulsory.
 
-* Version 3.4.0
+  * Valid values depend on kind of graph
 
-  * New proposed function.
+* Breaking change, signatures no longer available:
+
+  * pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)
+  * pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
+
+
+.. rubric:: Version 3.4.0
+
+* New proposed function.
+* Deprecated signatures
+
+  * pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
 
 Description
 -------------------------------------------------------------------------------
@@ -73,8 +85,8 @@ One Via
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **via vertices**, [**options**])
-   | **options:** ``[directed, strict, U_turn_on_edge]``
+   | pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **via vertices**, **driving side** [**options**])
+   | **options:** ``[directed, strict, U_turn_on_edge, details]``
 
    | Returns set of |via-result|
    | OR EMPTY SET
@@ -110,9 +122,9 @@ Via optional parameters
 With points optional parameters
 ...............................................................................
 
-.. include:: pgr_trsp_withPoints.rst
-    :start-after: withPoints_parameters_start
-    :end-before: withPoints_parameters_end
+.. include:: withPoints-category.rst
+   :start-after: withPoints_optionals_start
+   :end-before: withPoints_optionals_end
 
 Inner Queries
 -------------------------------------------------------------------------------
