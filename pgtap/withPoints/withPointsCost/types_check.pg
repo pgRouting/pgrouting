@@ -19,9 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-SET client_min_messages TO WARNING;
-
-SELECT CASE WHEN min_version('4.0.0') THEN plan(25) ELSE plan(13) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(13) ELSE plan(2) END;
 
 SELECT has_function('pgr_withpointscost');
 
@@ -30,92 +28,38 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF min_version('4.0.0') THEN
-
-    RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','bigint','bigint','character','boolean']);
-    RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','bigint','anyarray','character','boolean']);
-    RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','anyarray','bigint','character','boolean']);
-    RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','anyarray','anyarray','character','boolean']);
-    RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','text','character','boolean']);
-
-    RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','bigint','bigint','character','boolean'],'setof record');
-    RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','bigint','anyarray','character','boolean'],'setof record');
-    RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','anyarray','bigint','character','boolean'],'setof record');
-    RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','anyarray','anyarray','character','boolean'],'setof record');
-    RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','text','character','boolean'],'setof record');
-
-    RETURN QUERY SELECT function_args_has('pgr_withpointscost',
-      $$VALUES
-      ('{"","","","",   directed,start_vid,end_vid,agg_cost}'::TEXT[]),
-      ('{"","","","","",directed,start_vid,end_vid,agg_cost}')
-      $$);
-
-    RETURN QUERY SELECT function_types_has('pgr_withpointscost',
-      $$VALUES
-      ('{text,text,anyarray,int8,    bpchar,bool,int8,int8,float8}'::TEXT[]),
-      ('{text,text,int8,int8,        bpchar,bool,int8,int8,float8}'),
-      ('{text,text,int8,anyarray,    bpchar,bool,int8,int8,float8}'),
-      ('{text,text,anyarray,anyarray,bpchar,bool,int8,int8,float8}'),
-      ('{text,text,text,             bpchar,bool,int8,int8,float8}')
-      $$);
-
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_withpointscost: New signatures on 4.0.0');
+    RETURN;
   END IF;
 
-  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','bigint','bigint','boolean','character']);
-  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','bigint','anyarray','boolean','character']);
-  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','anyarray','bigint','boolean','character']);
-  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','anyarray','anyarray','boolean','character']);
+  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','bigint','bigint','character','boolean']);
+  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','bigint','anyarray','character','boolean']);
+  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','anyarray','bigint','character','boolean']);
+  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','anyarray','anyarray','character','boolean']);
+  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','text','character','boolean']);
 
-  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','bigint','bigint','boolean','character'],'setof record');
-  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','bigint','anyarray','boolean','character'],'setof record');
-  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','anyarray','bigint','boolean','character'],'setof record');
-  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','anyarray','anyarray','boolean','character'],'setof record');
+  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','bigint','bigint','character','boolean'],'setof record');
+  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','bigint','anyarray','character','boolean'],'setof record');
+  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','anyarray','bigint','character','boolean'],'setof record');
+  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','anyarray','anyarray','character','boolean'],'setof record');
+  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','text','character','boolean'],'setof record');
 
+  RETURN QUERY SELECT function_args_has('pgr_withpointscost',
+    $$VALUES
+    ('{"","","","",   directed,start_vid,end_vid,agg_cost}'::TEXT[]),
+    ('{"","","","","",directed,start_vid,end_vid,agg_cost}')
+    $$);
 
-  RETURN QUERY SELECT CASE WHEN min_version('3.2.0') THEN
-  collect_tap(
-    has_function('pgr_withpointscost', ARRAY['text','text','text','boolean','character']),
-    function_returns('pgr_withpointscost', ARRAY['text','text','text','boolean','character'],'setof record')
-  ) ELSE skip(2, 'Combinations signature added on 3.1.0') END;
+  RETURN QUERY SELECT function_types_has('pgr_withpointscost',
+    $$VALUES
+    ('{text,text,anyarray,int8,    bpchar,bool,int8,int8,float8}'::TEXT[]),
+    ('{text,text,int8,int8,        bpchar,bool,int8,int8,float8}'),
+    ('{text,text,int8,anyarray,    bpchar,bool,int8,int8,float8}'),
+    ('{text,text,anyarray,anyarray,bpchar,bool,int8,int8,float8}'),
+    ('{text,text,text,             bpchar,bool,int8,int8,float8}')
+    $$);
 
-  RETURN QUERY SELECT
-  CASE WHEN min_version('3.2.0') THEN
-  collect_tap(
-    function_args_has('pgr_withpointscost',
-      $$VALUES
-      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
-      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
-      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
-      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[])
-      $$),
-
-    function_types_has('pgr_withpointscost',
-      $$VALUES
-      ('{text,text,text,bool,bpchar,int8,int8,float8}'::TEXT[]),
-      ('{text,text,int8,int8,bool,bpchar,int8,int8,float8}'::TEXT[]),
-      ('{text,text,int8,anyarray,bool,bpchar,int8,int8,float8}'::TEXT[]),
-      ('{text,text,anyarray,int8,bool,bpchar,int8,int8,float8}'::TEXT[]),
-      ('{text,text,anyarray,anyarray,bool,bpchar,int8,int8,float8}'::TEXT[])
-      $$)
-  ) ELSE
-  collect_tap(
-    function_args_eq('pgr_withpointscost',
-      $$VALUES
-      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
-      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
-      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
-      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[])
-      $$),
-
-    function_types_eq('pgr_withpointscost',
-      $$VALUES
-      ('{text,text,int8,int8,bool,bpchar,int8,int8,float8}'::TEXT[]),
-      ('{text,text,int8,anyarray,bool,bpchar,int8,int8,float8}'::TEXT[]),
-      ('{text,text,anyarray,int8,bool,bpchar,int8,int8,float8}'::TEXT[]),
-      ('{text,text,anyarray,anyarray,bool,bpchar,int8,int8,float8}'::TEXT[])
-      $$)
-  ) END;
 
 END
 $BODY$
