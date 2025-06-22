@@ -181,19 +181,19 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
     Path_rt  *result_tuples = NULL;
     size_t result_count = 0;
 
-#ifdef SHOWMSG
-    ereport(NOTICE, (
-                errcode(ERRCODE_WARNING_DEPRECATED_FEATURE),
-                errmsg("A stored procedure is using deprecated C internal function '%s'", __func__),
-                errdetail("Library function '%s' was deprecated in pgRouting %s", __func__, "4.0.0"),
-                errhint("Consider upgrade pgRouting")));
-#endif
-
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
         char *driving_side = " ";
+
+#ifdef SHOWMSG
+        ereport(NOTICE, (
+                    errcode(ERRCODE_WARNING_DEPRECATED_FEATURE),
+                    errmsg("A stored procedure is using deprecated C internal function '%s'", __func__),
+                    errdetail("Library function '%s' was deprecated in pgRouting %s", __func__, "4.0.0"),
+                    errhint("Consider upgrade pgRouting")));
+#endif
 
         if (PG_NARGS() == 7) {
             pgr_process_shortestPath(
