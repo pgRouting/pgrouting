@@ -22,13 +22,19 @@
 
 .. rubric:: Availability
 
-* Version 4.0.0
+.. rubric:: Version 4.0.0
 
-  * Function promoted to official.
+* Function promoted to official.
+* Breaking change, signatures no longer available:
 
-* Version 3.4.0
+  * pgr_trspviavertices(text,anyarray,boolean,boolean,text)
 
-  * New proposed function.
+.. rubric:: Version 3.4.0
+
+* New proposed function.
+* Deprecated signatures
+
+  * pgr_trspviavertices(text,anyarray,boolean,boolean,text)
 
 Description
 -------------------------------------------------------------------------------
