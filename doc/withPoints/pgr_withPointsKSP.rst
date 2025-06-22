@@ -20,18 +20,24 @@
 
 ``pgr_withPointsKSP`` — Yen's algorithm for K shortest paths using Dijkstra.
 
+.. rubric:: Availability
+
 .. rubric:: Version 4.0.0
 
 * Function promoted to official.
 
+.. Breaking change
+
+* Breaking change, signatures no longer available:
+
+  * pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
+
 .. rubric:: Version 3.6.0
 
-* Standardizing output columns to |nksp-result|
-* pgr_withPointsKSP(One to One)
+* Output columns standardized to |nksp-result|
+* **Driving side** parameter is positional unnamed and compulsory.
 
-  * Signature change: ``driving_side`` parameter changed from named optional to
-    unnamed compulsory **driving side**.
-  * Added ``start_vid`` and ``end_vid`` result columns.
+  * Valid values depend on kind of graph
 
 * New proposed signatures:
 
@@ -40,9 +46,9 @@
   * pgr_withPointsKSP(Many to Many)
   * pgr_withPointsKSP(Combinations)
 
-* Deprecated signature
+* Deprecated signatures:
 
-  * pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolean)``
+  * pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
 
 .. rubric:: Version 2.2.0
 
@@ -191,7 +197,7 @@ Parameters
 
 .. list-table::
    :width: 81
-   :widths: 17 22 44
+   :widths: 14 14 44
    :header-rows: 1
 
    * - Column
@@ -199,25 +205,34 @@ Parameters
      - Description
    * - `Edges SQL`_
      - ``TEXT``
-     - `Edges SQL`_ query as described.
+     - `Edges SQL`_ as described below
    * - `Points SQL`_
      - ``TEXT``
-     - `Points SQL`_ query as described.
+     - `Points SQL`_ as described below
+   * - `Combinations SQL`_
+     - ``TEXT``
+     - `Combinations SQL`_ as described below
    * - **start vid**
-     - **ANY-INTEGER**
-     - Identifier of the departure vertex.
-
-       - Negative values represent a point
+     - ``BIGINT``
+     - Identifier of the starting vertex of the path. Negative value is for
+       point’s identifier.
+   * - **start vids**
+     - ``ARRAY[BIGINT]``
+     - Array of identifiers of starting vertices. Negative values are for
+       point’s identifiers.
    * - **end vid**
-     - **ANY-INTEGER**
-     - Identifier of the destination vertex.
-
-       - Negative values represent a point
+     - ``BIGINT``
+     - Identifier of the ending vertex of the path. Negative value is for
+       point’s identifier.
+   * - **end vids**
+     - ``ARRAY[BIGINT]``
+     - Array of identifiers of ending vertices. Negative values are for point’s
+       identifiers.
    * - **K**
      - **ANY-INTEGER**
      - Number of required paths
-   * - **driving_side**
-     - **CHAR**
+   * - **driving side**
+     - ``CHAR``
      - Value in [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] indicating if the driving side is:
 
        - [``r``, ``R``] for right driving side (for directed graph only)
