@@ -18,77 +18,63 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN min_version('3.4.0') THEN plan(68) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(68) ELSE plan(1) END;
 SET extra_float_digits = -3;
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+
+PREPARE empty_points AS
+SELECT * FROM pointsofinterest WHERE pid IN (-1);
+
+PREPARE empty_restrictions AS
+SELECT * FROM restrictions WHERE id > 10;
+
+PREPARE with_reverse AS
+SELECT id, source, target, cost, reverse_cost FROM edges;
+
+PREPARE no_reverse AS
+SELECT id, source, target, cost FROM edges;
 
 CREATE or REPLACE FUNCTION compareDijkstra(INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
-inner_sql TEXT;
-points TEXT;
-empty_restrictions TEXT;
-with_reverse TEXT;
-no_reverse TEXT;
-points_sql TEXT;
+other_sql TEXT;
 trsp_sql TEXT;
-result_columns TEXT;
-result_columns_vid TEXT;
+result_columns TEXT := 'seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost';
 drv_right TEXT := $$, 'r'$$;
 drv_both TEXT := $$, 'b'$$;
-tdrv_right TEXT := $$,  driving_side => 'r'$$;
-tdrv_both TEXT := $$,  driving_side => 'b'$$;
-arr TEXT := 'ARRAY[1,2,3,4,5,6,7,8]';
+j TEXT := 'ARRAY[1,2,3,4,5,6,7,8]';
 BEGIN
-  IF NOT min_version('3.4.0') THEN
-    RETURN QUERY SELECT skip(1, 'Signature added on 3.4.0');
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_trsp_withPoints: official signatures on 4.0.0');
     RETURN;
   END IF;
 
-  result_columns := 'seq, end_vid, node, edge, cost, agg_cost';
-  result_columns_vid := 'seq, end_pid AS end_vid, node, edge, cost, agg_cost';
-
-  IF min_version('4.0.0') THEN
-    result_columns_vid = replace(result_columns_vid, 'pid', 'vid');
-  ELSE
-    drv_right := $$, driving_side => 'r'$$;
-    drv_both := $$, driving_side => 'b'$$;
-  END IF;
-
-  points := 'SELECT * FROM pointsofinterest WHERE pid IN (-1)';
-  empty_restrictions := 'SELECT * FROM restrictions WHERE id > 10';
-  with_reverse := 'SELECT * FROM edges';
-  no_reverse := 'SELECT id, source, target, cost FROM edges';
-
   FOR i IN 1.. $1 LOOP
-    points_sql := 'SELECT ' || result_columns_vid || ' FROM pgr_withpoints($$' || with_reverse || '$$, $$' || points || '$$, '
-      || i || ', ' || arr || drv_right || ', directed => true)';
-    trsp_sql := 'SELECT ' || result_columns || ' FROM pgr_trsp_withPoints($$' || with_reverse || '$$, $$'
-      || empty_restrictions || '$$, $$' || points || '$$, '
-      || i || ', ' || arr || tdrv_right || ', directed => true)';
-    RETURN query SELECT set_eq(trsp_sql, points_sql, trsp_sql);
 
-    points_sql := 'SELECT ' || result_columns_vid || ' FROM pgr_withpoints($$' || with_reverse || '$$, $$' || points || '$$, '
-      || i || ', ' || arr || drv_both || ', directed => false)';
-    trsp_sql := 'SELECT ' || result_columns || ' FROM pgr_trsp_withPoints($$' || with_reverse || '$$, $$'
-      || empty_restrictions || '$$, $$' || points || '$$, '
-      || i || ', ' || arr || tdrv_both || ', directed => false)';
-    RETURN query SELECT set_eq(trsp_sql, points_sql, trsp_sql);
+    other_sql := 'SELECT ' || result_columns || ' FROM pgr_withpoints($$with_reverse$$, $$empty_points$$, '
+      || i || ', ' || j || drv_right || ', directed => true)';
+    trsp_sql := 'SELECT ' || result_columns || ' FROM pgr_trsp_withPoints($$with_reverse$$, $$empty_restrictions$$, $$empty_points$$, '
+      || i || ', ' || j || drv_right || ', directed => true)';
+    RETURN query SELECT set_eq(trsp_sql, other_sql, trsp_sql);
 
-    points_sql := 'SELECT ' || result_columns_vid || ' FROM pgr_withpoints($$' || no_reverse || '$$, $$' || points || '$$, '
-      || i || ', ' || arr || drv_right || ', directed => true)';
-    trsp_sql := 'SELECT ' || result_columns || ' FROM pgr_trsp_withPoints($$' || no_reverse || '$$, $$'
-      || empty_restrictions || '$$, $$' || points || '$$, '
-      || i || ', ' || arr || tdrv_right || ', directed => true)';
-    RETURN query SELECT set_eq(trsp_sql, points_sql, trsp_sql);
+    other_sql := 'SELECT ' || result_columns || ' FROM pgr_withpoints($$with_reverse$$, $$empty_points$$, '
+      || i || ', ' || j || drv_both || ', directed => false)';
+    trsp_sql := 'SELECT ' || result_columns || ' FROM pgr_trsp_withPoints($$with_reverse$$, $$empty_restrictions$$, $$empty_points$$, '
+      || i || ', ' || j || drv_both || ', directed => false)';
+    RETURN query SELECT set_eq(trsp_sql, other_sql, trsp_sql);
 
-    points_sql := 'SELECT ' || result_columns_vid || ' FROM pgr_withpoints($$' || no_reverse || '$$, $$' || points || '$$, '
-      || i || ', ' || arr || drv_both || ', directed => false)';
-    trsp_sql := 'SELECT ' || result_columns || ' FROM pgr_trsp_withPoints($$' || no_reverse || '$$, $$'
-      || empty_restrictions || '$$, $$' || points || '$$, '
-      || i || ', ' || arr || tdrv_both || ', directed => false)';
-    RETURN query SELECT set_eq(trsp_sql, points_sql, trsp_sql);
+    other_sql := 'SELECT ' || result_columns || ' FROM pgr_withpoints($$no_reverse$$, $$empty_points$$, '
+      || i || ', ' || j || drv_right || ', directed => true)';
+    trsp_sql := 'SELECT ' || result_columns || ' FROM pgr_trsp_withPoints($$no_reverse$$, $$empty_restrictions$$, $$empty_points$$, '
+      || i || ', ' || j || drv_right || ', directed => true)';
+    RETURN query SELECT set_eq(trsp_sql, other_sql, trsp_sql);
+
+    other_sql := 'SELECT ' || result_columns || ' FROM pgr_withpoints($$no_reverse$$, $$empty_points$$, '
+      || i || ', ' || j || drv_both || ', directed => false)';
+    trsp_sql := 'SELECT ' || result_columns || ' FROM pgr_trsp_withPoints($$no_reverse$$, $$empty_restrictions$$, $$empty_points$$, '
+      || i || ', ' || j || drv_both || ', directed => false)';
+    RETURN query SELECT set_eq(trsp_sql, other_sql, trsp_sql);
 
   END LOOP;
 
@@ -98,8 +84,5 @@ $BODY$
 language plpgsql;
 
 SELECT * from compareDijkstra();
-
-
 SELECT * FROM finish();
 ROLLBACK;
-
