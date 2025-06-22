@@ -1,8 +1,12 @@
 /*PGR-GNU*****************************************************************
 File: trspVia_withPoints.sql
 
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
 Function's developer:
 Copyright (c) 2022 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -22,12 +26,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---v3.4
+--v4.0
 CREATE FUNCTION pgr_trspVia_withPoints(
-  TEXT,     -- edges sql
-  TEXT,     -- restrictions sql
+  TEXT,     -- edges
+  TEXT,     -- restrictions
   TEXT,     -- points
   ANYARRAY, -- via vids
+  CHAR,     -- driving side
 
   directed BOOLEAN DEFAULT true,
 
@@ -36,7 +41,6 @@ CREATE FUNCTION pgr_trspVia_withPoints(
   U_turn_on_edge BOOLEAN DEFAULT true,
 
   -- withPoints parameters
-  driving_side CHAR DEFAULT 'r', -- 'r'/'l'
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
@@ -51,32 +55,28 @@ CREATE FUNCTION pgr_trspVia_withPoints(
   OUT route_agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost
-FROM _pgr_trspVia_withPoints(
-  _pgr_get_statement($1),
-  _pgr_get_statement($2),
-  _pgr_get_statement($3),
-  $4, $5, $6, $7, $8, $9);
+  SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost
+  FROM _pgr_trspVia_withPoints_v4(
+    _pgr_get_statement($1), _pgr_get_statement($2), _pgr_get_statement($3), $4,
+    directed, strict, u_turn_on_edge, $5, details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
--- COMMENTS
-
-COMMENT ON FUNCTION pgr_trspVia_withPoints(TEXT, TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
+COMMENT ON FUNCTION pgr_trspVia_withPoints(TEXT, TEXT, TEXT, ANYARRAY, CHAR, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_trspVia_withPoints
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: cost, path
   - Points SQL with columns: [pid], edge_id, fraction [,side]
   - ARRAY[via vertices identifiers]
+  - driving side: directed graph [r,l], undirected graph [b]
 - Optional Parameters
-  - directed := true
-  - strict := false
-  - U_turn_on_edge := true
-  - driving_side := ''r''
-  - details := ''false''
+  - directed => true
+  - strict => false
+  - U_turn_on_edge => true
+  - details => false
 - Documentation:
   - ${PROJECT_DOC_LINK}/pgr_trspVia_withPoints.html
 ';
