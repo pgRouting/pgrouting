@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(84);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(84) ELSE plan(1) END;
 
 
 CREATE OR REPLACE FUNCTION inner_query()
@@ -28,13 +28,13 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF min_version('4.0.0') THEN
-    RETURN QUERY SELECT style_dijkstra('pgr_withPointsCostMatrix(', ', $$SELECT * from pointsOfInterest$$, ARRAY[1,2,3,4], $$r$$, true)');
-    RETURN QUERY SELECT  innerquery_points('pgr_withPointsCostMatrix($$SELECT * FROM edges$$,', ', ARRAY[1,2,3,4], $$r$$, true)');
-  ELSE
-    RETURN QUERY SELECT   style_dijkstra('pgr_withPointsCostMatrix(', ', $$SELECT * from pointsOfInterest$$, ARRAY[1,2,3,4], true)');
-    RETURN QUERY SELECT  innerquery_points('pgr_withPointsCostMatrix($$SELECT * FROM edges$$,', ', ARRAY[1,2,3,4], true)');
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_withPoints: New signatures on 4.0.0');
+    RETURN;
   END IF;
+
+  RETURN QUERY SELECT style_dijkstra('pgr_withPointsCostMatrix(', ', $$SELECT * from pointsOfInterest$$, ARRAY[1,2,3,4], $$r$$, true)');
+  RETURN QUERY SELECT  innerquery_points('pgr_withPointsCostMatrix($$SELECT * FROM edges$$,', ', ARRAY[1,2,3,4], $$r$$, true)');
 
 END
 $BODY$
