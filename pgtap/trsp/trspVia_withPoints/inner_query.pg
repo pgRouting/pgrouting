@@ -20,24 +20,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.4.0') THEN plan(96) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(96) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION inner_query()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
-   IF NOT min_version('3.4.0') THEN
-    RETURN QUERY SELECT skip(1, 'Signature added on 3.4.0');
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_trspVia_withPoints: official signatures on 4.0.0');
     RETURN;
   END IF;
 
-  -- ONE VIA
   RETURN QUERY SELECT style_dijkstra(
-    'pgr_trspVia_withPoints(', ', $$SELECT * from restrictions$$, $$SELECT * FROM pointsOfInterest$$, ARRAY[2,9,12])');
+    'pgr_trspVia_withPoints(', ', $$SELECT * from restrictions$$, $$SELECT * FROM pointsOfInterest$$, ARRAY[2,9,12], $$r$$)');
   RETURN QUERY SELECT innerquery_restrictions(
-    'pgr_trspVia_withPoints($$SELECT * FROM edges$$,', ', $$SELECT * FROM pointsOfInterest$$, ARRAY[2,9,12])');
+    'pgr_trspVia_withPoints($$SELECT * FROM edges$$,', ', $$SELECT * FROM pointsOfInterest$$, ARRAY[2,9,12], $$r$$)');
   RETURN QUERY SELECT innerquery_points(
-    'pgr_trspVia_withPoints($$SELECT * FROM edges$$, $$SELECT * from restrictions$$,', ', ARRAY[2,9,12])');
+    'pgr_trspVia_withPoints($$SELECT * FROM edges$$, $$SELECT * from restrictions$$,', ', ARRAY[2,9,12], $$r$$)');
 
 END;
 $BODY$
