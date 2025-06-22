@@ -20,19 +20,9 @@ Cost Matrix - Category
 * :doc:`pgr_dijkstraCostMatrix`
 * :doc:`pgr_bdAstarCostMatrix`
 * :doc:`pgr_bdDijkstraCostMatrix`
-
-.. official-end
-
-
-.. include:: proposed.rst
-    :start-after: warning-begin
-    :end-before: end-warning
-
-.. proposed-start
-
 * :doc:`pgr_withPointsCostMatrix`
 
-.. proposed-end
+.. official-end
 
 General Information
 -------------------------------------------------------------------------------

@@ -14,7 +14,7 @@
 Utility functions
 ===============================================================================
 
-.. utility_official-start
+.. official-start
 
 - :doc:`pgr_extractVertices` - Extracts vertex information based on the edge
   table information.
@@ -22,7 +22,7 @@ Utility functions
 - :doc:`pgr_separateCrossing` - Breaks geometries that cross each other.
 - :doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each other.
 
-.. utility_official-end
+.. official-end
 
 .. toctree::
   :hidden:

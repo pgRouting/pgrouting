@@ -19,18 +19,9 @@ Driving Distance - Category
 * :doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm
 * :doc:`pgr_primDD` - Driving Distance based on Prim's algorithm
 * :doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm
-
-.. official-end
-
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
-.. proposed-start
-
 * :doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints
 
-.. proposed-end
+.. official-end
 
 Calculate nodes that are within a distance.
 
