@@ -163,6 +163,8 @@ _pgr_drivingdistancev4(PG_FUNCTION_ARGS) {
 /* Deprecated code starts here
  * This code is used on v3.5 and under
  *
+ * TODO(v4.2) define SHOWMSG
+ * TODO(v4.3) change to WARNING
  * TODO(v5) Move to legacy
  */
 
@@ -177,20 +179,20 @@ _pgr_drivingdistance(PG_FUNCTION_ARGS) {
     MST_rt  *result_tuples = 0;
     size_t result_count = 0;
 
-    ereport(NOTICE, (
-            errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-            errmsg("A stored procedure is using deprecated C internal function '%s'", __func__),
-            errdetail("Library function '%s' was deprecated in pgRouting %s", __func__, "3.6.0"),
-            errhint("Consider upgrade pgRouting")));
-
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
 
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
+#ifdef SHOWMSG
+        ereport(NOTICE, (
+                    errcode(ERRCODE_WARNING_DEPRECATED_FEATURE),
+                    errmsg("A stored procedure is using deprecated C internal function '%s'", __func__),
+                    errdetail("Library function '%s' was deprecated in pgRouting %s", __func__, "3.6.0"),
+                    errhint("Consider upgrade pgRouting")));
+#endif
 
-        PGR_DBG("Calling driving_many_to_dist_driver");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
