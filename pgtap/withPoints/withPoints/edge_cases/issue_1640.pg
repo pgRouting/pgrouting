@@ -19,51 +19,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(4) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(4) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION issue_check()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF NOT min_version('3.2.0') THEN
-    RETURN QUERY SELECT skip(1,'Issue fixed on 3.2.0');
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_withPoints: New signatures on 4.0.0');
     RETURN;
   END IF;
 
-  IF min_version('4.0.0') THEN
+  PREPARE q1 AS
+  SELECT * FROM pgr_withPoints (
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
+    'SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (-1)',
+    1, -2, 'r'
+  );
 
-    PREPARE q1 AS
-    SELECT * FROM pgr_withPoints (
-      'SELECT id, source, target, cost, reverse_cost FROM edges',
-      'SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (-1)',
-      1, -2, 'r'
-    );
+  PREPARE q2 AS
+  SELECT * FROM pgr_withPoints (
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
+    'SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (-1)',
+    5, 6, 'r'
+  );
 
-    PREPARE q2 AS
-    SELECT * FROM pgr_withPoints (
-      'SELECT id, source, target, cost, reverse_cost FROM edges',
-      'SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (-1)',
-      5, 6, 'r'
-    );
-
-  ELSE
-
-    PREPARE q1 AS
-    SELECT * FROM pgr_withPoints (
-      'SELECT id, source, target, cost, reverse_cost FROM edges',
-      'SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (-1)',
-      1, -2
-    );
-
-    PREPARE q2 AS
-    SELECT * FROM pgr_withPoints (
-      'SELECT id, source, target, cost, reverse_cost FROM edges',
-      'SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (-1)',
-      5, 6
-    );
-
-  END IF;
 
   RETURN QUERY SELECT * FROM lives_ok('q1');
   RETURN QUERY SELECT * FROM is_empty('q1');
