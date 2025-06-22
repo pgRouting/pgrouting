@@ -43,54 +43,162 @@ To see all issues & pull requests closed by this release see the `Git closed
 milestone for 4.0.0
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__
 
-Functions promoted to official
+.. contents:: Contents
+   :local:
+   :depth: 1
+
+Summary of changes by function
 ...............................................................................
 
+* pgr_contraction
+
+  .. include:: pgr_contraction.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_bdDijkstra
+
+  .. include:: pgr_bdDijkstra.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_bellmanFord
+
+  .. include:: pgr_bellmanFord.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_binaryBreadthFirstSearch
+
+  .. include:: pgr_binaryBreadthFirstSearch.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_edwardMoore
+
+  .. include:: pgr_edwardMoore.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_DAGshortestPath
+
+  .. include:: pgr_dagShortestPath.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_trsp
+
+  .. include:: pgr_trsp.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_trspVia
+
+  .. include:: pgr_trspVia.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_trspVia_withPoints
+
+  .. include:: pgr_trspVia_withPoints.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_trsp_withPoints
-* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPoints
+
+  .. include:: pgr_trsp_withPoints.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_withPoints
 
   .. include:: pgr_withPoints.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
-* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCost
+* pgr_withPointsCost
 
   .. include:: pgr_withPointsCost.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
-* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
-  pgr_withPointsCostMatrix
+* pgr_withPointsCostMatrix
 
   .. include:: pgr_withPointsCostMatrix.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
 * pgr_withPointsDD
+
+  .. include:: pgr_withPointsDD.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_withPointsKSP
+
+  .. include:: pgr_withPointsKSP.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_withPointsVia
 
-.. rubric:: Signatures promoted to official
+  .. include:: pgr_withPointsVia.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
 
-`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
-  Make official the Combinations signature on the official functions
+Functions promoted to official
+...............................................................................
 
-* pgr_aStar(Combinations)
-* pgr_aStarCost(Combinations)
-* pgr_bdAstar(Combinations)
-* pgr_bdAstarCost(Combinations)
-* pgr_bdDijkstra(Combinations)
-* pgr_bdDijkstraCost(Combinations)
-* pgr_dijkstra(Combinations)
-* pgr_dijkstraCost(Combinations)
-* pgr_KSP(All signatures)
-* pgr_boykovKolmogorov(Combinations)
-* pgr_edmondsKarp(Combinations)
-* pgr_maxFlow(Combinations)
-* pgr_pushRelabel(Combinations)
+* `#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__
+  pgr_trsp
+* `#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__
+  pgr_trspVia
+* `#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__
+  pgr_trspVia_withPoints
+* `#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__
+  pgr_trsp_withPoints
+* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+  pgr_withPoints
+* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+  pgr_withPointsCost
+* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+  pgr_withPointsCostMatrix
+* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+  pgr_withPointsDD
+* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+  pgr_withPointsKSP
+* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+  pgr_withPointsVia
+
+Signatures promoted to official
+...............................................................................
+
+* `#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  pgr_aStar(Combinations)
+* `#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  pgr_aStarCost(Combinations)
+* `#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  pgr_bdAstar(Combinations)
+* `#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  pgr_bdAstarCost(Combinations)
+* `#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  pgr_bdDijkstra(Combinations)
+* `#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  pgr_bdDijkstraCost(Combinations)
+* `#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  pgr_dijkstra(Combinations)
+* `#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  pgr_dijkstraCost(Combinations)
+* `#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  pgr_KSP(All signatures)
+* `#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  pgr_boykovKolmogorov(Combinations)
+* `#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  pgr_edmondsKarp(Combinations)
+* `#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  pgr_maxFlow(Combinations)
+* `#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__
+  pgr_pushRelabel(Combinations)
 
 SQL signatures and output standardization
 ...............................................................................
@@ -98,50 +206,27 @@ SQL signatures and output standardization
 `#2904 <https://github.com/pgRouting/pgrouting/issues/2904>`__
 Standardize output columns of functions with different output columns within overloads
 
-.. rubric:: Official functions
+.. rubric:: Standardized to |short-generic-result|
 
-* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ 
-   pgr_withPoints
-
-  .. include:: pgr_withPoints.rst
-     :start-after: Version 4.0.0
-     :end-before: .. rubric
-
-* `#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__ pgr_bdDijkstra
-
-  .. include:: pgr_bdDijkstra.rst
-     :start-after: Version 4.0.0
-     :end-before: .. rubric
-
-.. rubric:: Experimental functions
-
+* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+  pgr_withPoints
+* `#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__
+  pgr_bdDijkstra
 * `#2907 <https://github.com/pgRouting/pgrouting/issues/2907>`__
   pgr_bellmanFord
-
-  .. include:: pgr_bellmanFord.rst
-     :start-after: Version 4.0.0
-     :end-before: .. rubric
-
 * `#2908 <https://github.com/pgRouting/pgrouting/issues/2908>`__
   pgr_binaryBreadthFirstSearch
-
-  .. include:: pgr_binaryBreadthFirstSearch.rst
-     :start-after: Version 4.0.0
-     :end-before: .. rubric
-
 * `#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__
   pgr_edwardMoore
-
-  .. include:: pgr_edwardMoore.rst
-     :start-after: Version 4.0.0
-     :end-before: .. rubric
-
 * `#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__
   pgr_DAGshortestPath
 
-  .. include:: pgr_dagShortestPath.rst
-     :start-after: Version 4.0.0
-     :end-before: .. rubric
+.. rubric:: Standardized to |matrix-result|
+
+* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+  pgr_withPointsCost
+* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+  pgr_withPointsCostMatrix
 
 Removal of SQL deprecated signatures
 ...............................................................................
@@ -149,12 +234,22 @@ Removal of SQL deprecated signatures
 * `#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__:
   pgr_contraction
 
-  * pgr_contraction(text,bigint[],integer,bigint[],boolean)
+  .. include:: pgr_contraction.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
 
 * `#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp
 
-  * pgr_trsp(text,integer,integer,boolean,boolean,text)
-  * pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+  .. include:: pgr_trsp.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
+
+* `#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__:
+  pgr_withPointsVia
+
+  .. include:: pgr_withPointsVia.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
 
 * `#2888 <https://github.com/pgRouting/pgrouting/issues/2888>`__:
   pgr_findCloseEdges
@@ -165,23 +260,38 @@ Removal of SQL deprecated signatures
 * `#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__:
   pgr_withPointsDD
 
-  * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
-  * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
+  .. include:: pgr_withPointsDD.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
 
 * `#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__:
   pgr_withPointsKSP
 
-  * pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
+  .. include:: pgr_withPointsKSP.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
 
 * `#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__:
   pgr_maxCardinalityMatch
 
-  * pgr_maxcardinalitymatch(text,boolean)
+  .. include:: pgr_maxCardinalityMatch.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
 
-* `#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: TSP family
+* `#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__:
+  pgr_TSP
 
-  * pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
-  * pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+  .. include:: pgr_TSP.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
+
+* `#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__:
+  pgr_TSPeuclidean
+
+  .. include:: pgr_TSPeuclidean.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
+
 
 Removal of SQL deprecated functions
 ...............................................................................
@@ -203,91 +313,140 @@ Removal of SQL deprecated functions
 * `#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__:
   pgr_nodeNetwork
 
-rubric:: Removal of SQL deprecated internal functions
+Removal of SQL deprecated internal functions
 ...............................................................................
 
-Related issues: `#2897 <https://github.com/pgRouting/pgrouting/issues/2897>`__
+* #2748 _pgr_alphashape(text,double precision)
+* #2861 _pgr_checkverttab(text,text[],integer,text)
+* #2861 _pgr_createindex(text,text,text,integer,text)
+* #2861 _pgr_createindex(text,text,text,text,integer,text)
+* #2913 _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)
+* #2913 _pgr_dagshortestpath(text,text,boolean,boolean)
+* #2730 _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)
+* #2730 _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)
+* #2730 _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)
+* #2730 _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)
+* #2730 _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)
+* #2730 _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)
+* #2730 _pgr_dijkstra(text,text,boolean,boolean,boolean)
+* #2735 _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)
+* #2861 _pgr_endpoint(geometry)
+* #2861 _pgr_getcolumnname(text,text,integer,text)
+* #2861 _pgr_getcolumnname(text,text,text,integer,text)
+* #2861 _pgr_getcolumntype(text,text,integer,text)
+* #2861 _pgr_getcolumntype(text,text,text,integer,text)
+* #2861 _pgr_gettablename(text,integer,text)
+* #2861 _pgr_iscolumnindexed(text,text,integer,text)
+* #2861 _pgr_iscolumnindexed(text,text,text,integer,text)
+* #2861 _pgr_iscolumnintable(text,text)
+* #2745 _pgr_kruskal(text,anyarray,text,bigint,double precision)
+* #2897 _pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)
+* #2897 _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)
+* #2897 _pgr_ksp(text,text,integer,boolean,boolean)
+* #2899 _pgr_maxcardinalitymatch(text,boolean)
+* #2861 _pgr_msg(integer,text,text)
+* #2861 _pgr_onerror(boolean,integer,text,text,text,text)
+* #2861 _pgr_pointtoid(geometry,double precision,text,integer)
+* #2743 _pgr_prim(text,anyarray,text,bigint,double precision)
+* #2861 _pgr_quote_ident(text)
+* #2861 _pgr_startpoint(geometry)
+* #2683 _pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+* #2683 _pgr_trsp(text,text,anyarray,anyarray,boolean)
+* #2683 _pgr_trsp(text,text,anyarray,bigint,boolean)
+* #2683 _pgr_trsp(text,text,bigint,anyarray,boolean)
+* #2683 _pgr_trsp(text,text,bigint,bigint,boolean)
+* #2682 _pgr_trspviavertices(text,integer[],boolean,boolean,text)
+* #2919 _pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)
+* #2919 _pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)
+* #2919 _pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)
+* #2901 _pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+* #2901 _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+* #2861 _pgr_versionless(text,text)
+* #2890 _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
+* #2895 _pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)
+* #2895 _pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
+* #2895 _pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)
+* #2741 _pgr_withpointsvia(text,bigint[],double precision[],boolean)
+* #2741 _pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
+* #2683 _trsp(text,text,anyarray,anyarray,boolean)
+* #2683 _v4trsp(text,text,anyarray,anyarray,boolean)
+* #2683 _v4trsp(text,text,text,boolean)
 
-* _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)
-* _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)
-* _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)
-* _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)
-* _pgr_dijkstra(text,text,boolean,boolean,boolean)
-* _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)
-* _pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)
-* _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)
-* _pgr_ksp(text,text,integer,boolean,boolean)
-* _pgr_kruskal(text,anyarray,text,bigint,double precision)
-* _pgr_maxcardinalitymatch(text,boolean)
-* _pgr_prim(text,anyarray,text,bigint,double precision)
-* _pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
-* _pgr_trsp(text,text,anyarray,anyarray,boolean)
-* _pgr_trsp(text,text,anyarray,bigint,boolean)
-* _pgr_trsp(text,text,bigint,anyarray,boolean)
-* _pgr_trsp(text,text,bigint,bigint,boolean)
-* _pgr_trspviavertices(text,integer[],boolean,boolean,text)
-* _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
-* _pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)
-* _pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
-* _pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)
-* _pgr_withpointsvia(text,bigint[],double precision[],boolean)
-* _trsp(text,text,anyarray,anyarray,boolean)
-* _v4trsp(text,text,anyarray,anyarray,boolean)
-* _v4trsp(text,text,text,boolean)
-* _pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
-* _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
-* `#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__
-  _pgr_dagshortestpath(text,text,boolean,boolean)
-* `#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__
-  _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)
+Summary of functions and signatures no longer on pgrouting
+...............................................................................
 
+* #2748 pgr_alphashape(geometry,double precision)
+* #2752 pgr_analyzegraph(text,double precision,text,text,text,text,text)
+* #2755 pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)
+* #2798 pgr_contraction(text,bigint[],integer,bigint[],boolean)
+* #2751 pgr_createtopology(text,double precision,text,text,text,text,text,boolean)
+* #2827 pgr_createverticestable(text,text,text,text,text)
+* #2888 pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)
+* #2888 pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)
+* #2899 pgr_maxcardinalitymatch(text,boolean)
+* #2886 pgr_nodenetwork(text,double precision,text,text,text,text,boolean)
+* #2683 pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+* #2683 pgr_trsp(text,integer,integer,boolean,boolean,text)
+* #2681 pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
+* #2682 pgr_trspviavertices(text,anyarray,boolean,boolean,text)
+* #2919 pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)
+* #2919 pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)
+* #2919 pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)
+* #2919 pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)
+* #2919 pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)
+* #2919 pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)
+* #2901 pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+* #2901 pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+* #2919 pgr_withpointscostmatrix(text,text,anyarray,boolean,character)
+* #2919 pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)
+* #2919 pgr_withpointscost(text,text,anyarray,bigint,boolean,character)
+* #2919 pgr_withpointscost(text,text,bigint,anyarray,boolean,character)
+* #2919 pgr_withpointscost(text,text,bigint,bigint,boolean,character)
+* #2919 pgr_withpointscost(text,text,text,boolean,character)
+* #2890 pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
+* #2890 pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
+* #2895 pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
+* #2919 pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)
+* #2919 pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)
+* #2919 pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)
+* #2919 pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)
+* #2919 pgr_withpoints(text,text,text,boolean,character,boolean)
+* #2919 pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
 
-* `#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__:
-  Remove unused internal functions
+.. rubric:: Internal functions
 
-  - _pgr_checkverttab(text,text[],integer,text)
-  - _pgr_createindex(text,text,text,integer,text)
-  - _pgr_createindex(text,text,text,text,integer,text)
-  - _pgr_endpoint(geometry)
-  - _pgr_getcolumnname(text,text,integer,text)
-  - _pgr_getcolumnname(text,text,text,integer,text)
-  - _pgr_getcolumntype(text,text,integer,text)
-  - _pgr_getcolumntype(text,text,text,integer,text)
-  - _pgr_gettablename(text,integer,text)
-  - _pgr_iscolumnindexed(text,text,integer,text)
-  - _pgr_iscolumnindexed(text,text,text,integer,text)
-  - _pgr_iscolumnintable(text,text)
-  - _pgr_msg(integer,text,text)
-  - _pgr_onerror(boolean,integer,text,text,text,text)
-  - _pgr_pointtoid(geometry,double precision,text,integer)
-  - _pgr_quote_ident(text)
-  - _pgr_startpoint(geometry)
-  - _pgr_versionless(text,text)
 
 Code enhancements
 ...............................................................................
 
 * Removal of unused C/C++ code
 * Refactor the Script to build the update PostgreSQL file.
-* One driver for:
+* One process & driver for:
 
-  * allpairs: johnson and Flowy-Warshall
+  * allpairs: johnson and Floyd-Warshall
   * Shortest path: Dijkstra and withPoints using Dijkstra
 
 .. rubric:: Deprecation of internal C/C++ functions
 
-* _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)
-* _pgr_kruskal(text,anyarray,text,bigint,double precision)
-* _pgr_prim(text,anyarray,text,bigint,double precision)
+Deprecated functions are substitued by new function.
+
+* _pgr_drivingdistance => _pgr_drivingdistancev4
+* _pgr_withpointsdd => _pgr_withpointsddv4
+* _pgr_kruskal => _pgr_kruskalv4
+* _pgr_prim => _pgr_primv4
+* _pgr_dijkstra => _pgr_dijkstra_v4
+* _pgr_withpointsksp => _pgr_withpointsksp_v4
+* _pgr_trspvia_withpoints => _pgr_trspvia_withpoints_v4
+* _pgr_trsp_withpoints => _pgr_trsp_withpoints_v4
+* _pgr_withpointsvia => _pgr_withpointsvia_v4
 
 .. rubric:: Internal C/C++ functions in legacy
 
-* _trsp(text,text,anyarray,anyarray,boolean)
-* _v4trsp(text,text,anyarray,anyarray,boolean)
-* _v4trsp(text,text,text,boolean)
-* _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
-* `#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__
-  _pgr_dagshortestpath
+* #2683 _trsp
+* #2683 _v4trsp
+* #2683 _v4trsp
+* #2748 _pgr_alphashape
+* #2913 _pgr_dagshortestpath
 
 pgRouting 3
 *******************************************************************************
