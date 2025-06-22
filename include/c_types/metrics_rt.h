@@ -1,16 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: metrics_driver.hpp
+File: metrics_rt.h
 
 Copyright (c) 2025 pgRouting developers
 Mail: project@pgrouting.org
 
-Developer:
+Function's developer:
 Copyright (c) 2025 Saloni Kumari
 Mail: chaudharysaloni2510 at gmail.com
-
-Generated with Template by:
-Copyright (c) 2025 pgRouting developers
-Mail: project@pgrouting.org
 
 ------
 
@@ -28,23 +24,24 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
- ********************************************************************PGR-GNU*/
-
-#ifndef INCLUDE_DRIVERS_METRICS_DRIVER_HPP_
-#define INCLUDE_DRIVERS_METRICS_DRIVER_HPP_
+********************************************************************PGR-GNU*/
+#ifndef INCLUDE_C_TYPES_METRICS_RT_H_
+#define INCLUDE_C_TYPES_METRICS_RT_H_
 #pragma once
 
-#include <cstddef>
-#include <string>
-#include <cstdint>
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#include "c_types/metrics_rt.h"
-void
-do_metrics(
-    std::string,
-    bool, int,
+#include <stdint.h>
 
-    Metrics_rt**, size_t*,
-    char**, char**);
+typedef struct {
+    int64_t node;
+    double metric_value;
+} Metrics_rt;
 
-#endif  // INCLUDE_DRIVERS_METRICS_DRIVER_HPP_
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // INCLUDE_C_TYPES_METRICS_RT_H_

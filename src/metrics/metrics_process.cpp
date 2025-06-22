@@ -35,40 +35,67 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <unordered_map>
 #include <cstdint>
 #include "cpp_common/assert.hpp"
+#include "cpp_common/alloc.hpp"
+#if 0
 #include "cpp_common/base_graph.hpp"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgdata_fetchers.hpp"
+#endif
 #include "cpp_common/get_data.hpp"
 #include "cpp_common/to_postgres.hpp"
 
-struct Metrics_rt {
-    int64_t node;
-    double metric_value;
-};
-
-std::vector<Metrics_rt>
-process_metrics(std::string edges_sql, bool directed, int max_nodes) {
-    std::vector<Metrics_rt> result;
-
-    if (directed) {
-    pgrouting::DirectedGraph graph;
-    auto edges = pgrouting::pgget::get_edges(edges_sql, directed, false);
-    graph.insert_edges(edges);
-} else {
-    pgrouting::UndirectedGraph graph;
-    auto edges = pgrouting::pgget::get_edges(edges_sql, directed, false);
-    graph.insert_edges(edges);
+extern "C" {
+#include "c_common/postgres_connection.h"
+#include "c_common/e_report.h"
+#include "c_common/time_msg.h"
 }
 
+#include "process/metrics_process.h"
+#include "drivers/metrics_driver.hpp"
+#include "c_types/bandwidth_rt.h"
 
-    auto graph_map = pgrouting::graph::get_graph();
+#include "c_types/metrics_rt.h"
 
-    for (const auto& node_pair : graph_map) {
-        Metrics_rt record;
-        record.node = node_pair.first;
-        record.metric_value = static_cast<double>(node_pair.second.size());  
-        result.push_back(record);
+void
+pgr_process_metrics(
+    const char* edges_sql,
+    GraphBandwidth_rt** result_tuples,
+    size_t* result_count,
+    char** log_msg,
+    char** notice_msg) {
+
+    pgassert(!(*result_tuples));
+    pgassert(*result_count == 0);
+
+
+    pgr_SPI_connect();
+
+    *log_msg = *notice_msg = nullptr;
+    char* err_msg = nullptr;
+
+    clock_t start_t = clock();
+
+#if 0
+
+    std::vector<GraphBandwidth_rt> results =
+        pgrouting::bandwidth::compute_bandwidth(std::string(edges_sql));
+
+    if (!results.empty()) {
+        *result_count = results.size();
+        (*result_tuples) = pgrouting::pgr_alloc(*result_count, GraphBandwidth_rt);
+
+        for (size_t i = 0; i < *result_count; ++i) {
+            (*result_tuples)[i] = results[i];
+        }
+
+        time_msg(" processing pgr_bandwidth", start_t, clock());
+    } else {
+        *result_count = 0;
+        *result_tuples = nullptr;
     }
 
-    return result;
+#endif
+
+    pgr_global_report(log_msg, notice_msg, &err_msg);
+    pgr_SPI_finish();
 }

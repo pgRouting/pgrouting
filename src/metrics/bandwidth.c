@@ -26,7 +26,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
-#if 0
+
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "drivers/metrics/bandwidth_driver.h"
+#include "process/metrics_process.h"
 
 PGDLLEXPORT Datum _pgr_bandwidth(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_bandwidth);
@@ -44,7 +44,6 @@ static
 void
 process(
     char* edges_sql,
-    bool directed,
     GraphBandwidth_rt **result_tuples,
     size_t *result_count) {
 
@@ -54,9 +53,8 @@ process(
     char* err_msg = NULL;
 
     clock_t start_t = clock();
-    _pgr_bandwidth(
-        edges,
-        directed,
+    _pgr_process_metrics(
+        edges_sql,
         result_tuples,
         result_count,
         &log_msg,
@@ -132,4 +130,3 @@ _pgr_bandwidth(PG_FUNCTION_ARGS) {
     }
 }
 
-#endif
