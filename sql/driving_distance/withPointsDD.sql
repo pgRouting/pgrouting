@@ -90,8 +90,6 @@ COST 100
 ROWS 1000;
 
 
--- COMMENTS
-
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, BIGINT, FLOAT, CHAR, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsDD(Single Vertex)
 - Parameters:
