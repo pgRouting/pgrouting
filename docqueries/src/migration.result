@@ -174,7 +174,7 @@ SELECT * FROM pgr_trsp_withPoints(
   $$SELECT * FROM new_restrictions$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,
   -4, -3,
-  driving_side => 'r', details => false);
+  'r', details => false);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |        -4 |      -3 |   -4 |    6 |  0.7 |        0
@@ -197,7 +197,7 @@ FROM pgr_trsp_withPoints(
   $$SELECT * FROM new_restrictions$$,
   $$SELECT * FROM (VALUES (1, 6, 0.3),(2, 12, 0.6)) AS t(pid, edge_id, fraction)$$,
   -1, -2,
-  driving_side => 'r', details => false)
+  'r', details => false)
 WHERE edge != -1;
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -315,7 +315,7 @@ SELECT * FROM pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
   ARRAY[-4, -3, -6],
-  driving_side => 'r', details => false);
+  'r', details => false);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
    1 |       1 |        1 |        -4 |      -3 |   -4 |    6 |  0.7 |        0 |              0
@@ -340,7 +340,7 @@ FROM pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
   ARRAY[-4, -3, -6],
-  driving_side => 'r', details => false);
+  'r', details => false);
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -4 |   6 |  0.7
@@ -364,7 +364,7 @@ SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT * FROM new_restrictions$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
   ARRAY[-4, -3, -6],
-  driving_side => 'r', details => false);
+  'r', details => false);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
    1 |       1 |        1 |        -4 |      -3 |   -4 |    6 |  0.7 |        0 |              0
@@ -391,7 +391,7 @@ FROM pgr_trspVia_withPoints(
   $$SELECT * FROM new_restrictions$$,
   $$SELECT * FROM (VALUES (1, 6, 0.3),(2, 12, 0.6),(3, 4, 0.7)) AS t(pid, edge_id, fraction)$$,
   ARRAY[-1, -2, -3],
-  driving_side => 'r', details => false);
+  'r', details => false);
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   6 |  0.7
