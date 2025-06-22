@@ -57,7 +57,7 @@ while (my $line = <$ifh>) {
   next if $skipping and $line !~ /^pgRouting/;
   $skipping = 0;
 
-  next if $line =~ /current|contents|:local:|:depth:|\*\*\*\*\*\*\*|\=\=\=\=\=\=\=|\-\-\-\-\-\-\-|\+\+\+\+\+\+\+\+/;
+  next if $line =~ /current|contents|:local:|:depth:|\*\*\*\*\*\*\*|\=\=\=\=\=\=\=|\-\-\-\-\-\-\-|\+\+\+\+\+\+\+\+|\.\.\.\.\.\.\.\.\./;
 
   $line =~ s/[\|]+//g;
   $line =~ s/($check)/$conversions{$1}/go;
