@@ -34,7 +34,7 @@ SELECT * FROM pgr_withPoints(
   ARRAY[5, -1], ARRAY[-2, -3, -6, 10, 11],
   'r', details => true);
 /* -- q7 */
-SELECT (start_vid || ' -> ' || end_vid ||' at ' || path_seq || 'th step')::TEXT AS path_at,
+SELECT (start_vid || ' -> ' || end_vid ||' at ' || path_seq || 'th step:')::TEXT AS path_at,
   CASE WHEN edge = -1 THEN ' visits'
       ELSE ' passes in front of'
   END as status,
