@@ -63,31 +63,23 @@ process(
 
         Path_rt **result_tuples,
         size_t *result_count) {
-    if (p_k < 0) {
-        /* TODO add error message */
+    char d_side = estimate_drivingSide(driving_side[0]);
+    if (d_side == ' ') {
+        pgr_throw_error("Invalid value of 'driving side'", "Valid value are 'r', 'l', 'b'");
+        return;
+    } else if (directed && !(d_side == 'r' || d_side == 'l')) {
+        pgr_throw_error("Invalid value of 'driving side'", "Valid values are for directed graph are: 'r', 'l'");
+        return;
+    } else if (!directed && !(d_side == 'b')) {
+        pgr_throw_error("Invalid value of 'driving side'", "Valid values are for undirected graph is: 'b'");
         return;
     }
 
-    size_t k = (size_t)p_k;
-
-    if (start_vid) {
-        driving_side[0] = (char) tolower(driving_side[0]);
-        if (!((driving_side[0] == 'r')
-                    || (driving_side[0] == 'l'))) {
-            driving_side[0] = 'b';
-        }
-    } else {
-        driving_side[0] = (char) tolower(driving_side[0]);
-        if (directed) {
-            if (!((driving_side[0] == 'r') || (driving_side[0] == 'l'))) {
-                pgr_throw_error("Invalid value of 'driving side'", "Valid values are for directed graph are: 'r', 'l'");
-                return;
-            }
-        } else if (!(driving_side[0] == 'b')) {
-            pgr_throw_error("Invalid value of 'driving side'", "Valid values are for undirected graph is: 'b'");
-            return;
-        }
+    if (p_k < 0) {
+        pgr_throw_error("Invalid value of 'K'", "Valid value are greater than 0");
     }
+
+    size_t k = (size_t)p_k;
 
     pgr_SPI_connect();
 
@@ -117,7 +109,7 @@ process(
 
             directed,
             heap_paths,
-            driving_side[0],
+            d_side,
             details,
 
             result_tuples,
@@ -246,9 +238,12 @@ PGDLLEXPORT Datum _pgr_withpointsksp_v4(PG_FUNCTION_ARGS) {
     }
 }
 
-/*
- * TODO (v5) v5 remove deprecated code
- * TODO (v4 last micro) warn about deprecated code
+/* Deprecated code starts here
+ * This code is used on v3.8 and under
+ *
+ * TODO(v4.2) define SHOWMSG
+ * TODO(v4.3) change to WARNING
+ * TODO(v5) Move to legacy
  */
 PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_withpointsksp);
@@ -264,6 +259,14 @@ PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+
+#ifdef SHOWMSG
+        ereport(NOTICE, (
+                    errcode(ERRCODE_WARNING_DEPRECATED_FEATURE),
+                    errmsg("A stored procedure is using deprecated C internal function '%s'", __func__),
+                    errdetail("Library function '%s' was deprecated in pgRouting %s", __func__, "4.0.0"),
+                    errhint("Consider upgrade pgRouting")));
+#endif
 
         if (PG_NARGS() == 10) {
             process(
