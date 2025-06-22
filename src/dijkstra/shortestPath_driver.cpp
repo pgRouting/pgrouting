@@ -69,10 +69,10 @@ estimate_drivingSide(char driving_side, bool directed, int32_t which) {
                     std::string("Valid value are 'r', 'l', 'b'"));
         } else if (directed && !(d_side == 'r' || d_side == 'l')) {
             throw std::make_pair(std::string("Invalid value of 'driving side'"),
-                    std::string("Valid values are for directed graph are: 'r', 'l'"));
+                    std::string("Valid values for directed graph are: 'r', 'l'"));
         } else if (!directed && !(d_side == 'b')) {
             throw std::make_pair(std::string("Invalid value of 'driving side'"),
-                    std::string("Valid value are for iundirected graph is: 'b'"));
+                    std::string("Valid value for undirected graph is: 'b'"));
         }
     } else {
         /* For the moment its old signature of pgr_withPoints */
