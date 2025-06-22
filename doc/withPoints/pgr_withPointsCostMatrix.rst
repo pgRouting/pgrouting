@@ -26,12 +26,13 @@
 .. rubric:: Version 4.0.0
 
 * Function promoted to official.
-* Output columns standardized to |matrix-result|
-* Signature change: ``driving_side`` parameter changed from named optional to
-  unnamed positional.
+* **Driving side** parameter is positional unnamed and compulsory.
 
-  - Directed graph valid values: ``l`` or ``L`` and ``r``, ``R``
-  - Undirected graph valid values: ``b`` or ``B``
+  * Valid values depend on kind of graph
+* Output columns standardized to |matrix-result|
+* Breaking change, signatures no longer available:
+
+  * pgr_withpointscostmatrix(text,text,anyarray,boolean,character)
 
 .. rubric:: Version 2.2.0
 
@@ -40,50 +41,7 @@
 Description
 -------------------------------------------------------------------------------
 
-Modify the graph to include points defined by points_sql.
-Using Dijkstra algorithm, return calculate and return a cost matrix.
-
-The main characteristics are:
-
-- Process is done only on edges with positive costs.
-- It does not return a path.
-- Returns the sum of the costs of the shortest path for pair combination of
-  vertices in the modified graph.
-
-  - The returned values are in the form of a set of |matrix-result|.
-
-- Vertices of the graph are:
-
-  - **positive** when it belongs to the edges sql
-  - **negative** when it belongs to the points sql
-
-- Values are returned when there is a path.
-
-  - When the starting vertex and ending vertex are the same, there is no path.
-
-    - The `agg_cost` in the non included values `(v, v)` is `0`
-
-  - When the starting vertex and ending vertex are the different and there is no
-    path:
-
-    - The `agg_cost` in the non included values `(u, v)` is :math:`\infty`
-
-  - If the values returned are stored in a table, the unique index would be the
-    pair: `(start_vid, end_vid)`.
-
-  - For **undirected** graphs, the results are **symmetric**.
-
-    - The `agg_cost` of `(u, v)` is the same as for `(v, u)`.
-
-- For optimization purposes, any duplicated value in the input arrays of **start vids** or
-  **end vids** or are ignored.
-
-- The returned values are ordered:
-
-  - `start_vid` ascending
-  - `end_vid` ascending
-
-- Running time: :math:`O(|start\_vids|\times(V \log V + E))`
+Using Dijkstra algorithm, calculate and return a cost matrix.
 
 .. include:: dijkstra-family.rst
     :start-after: dijkstra_description_start
@@ -101,7 +59,7 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, **driving side**  [**options**])
+   | pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, **driving side** [**options**])
    | **options:** ``[directed]``
 
    | Returns set of |matrix-result|
@@ -134,13 +92,6 @@ Optional parameters
 .. include:: dijkstra-family.rst
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
-
-With points optional parameters
-...............................................................................
-
-.. include:: withPoints-family.rst
-    :start-after: withPoints_optionals_start
-    :end-before: * - ``details
 
 Inner Queries
 -------------------------------------------------------------------------------
@@ -184,6 +135,7 @@ locations on the graph of point `(2.9, 1.8)`.
 
 * Point :math:`-1` corresponds to the closest edge from point `(2.9, 1.8)`.
 * Point :math:`-2` corresponds to the next close edge from point `(2.9, 1.8)`.
+* Being close to the graph does not mean have a shorter route.
 
 Use with :doc:`pgr_TSP`.
 ...............................................................................
