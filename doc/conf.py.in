@@ -365,7 +365,7 @@ rst_epilog="""
 .. |result-1-1-no-seq| replace:: ``(seq, node, edge, cost, agg_cost)``
 .. |result-m-1-no-seq| replace:: ``(seq, start_vid, node, edge, cost, agg_cost)``
 .. |result-node-color| replace:: ``(vertex_id, color_id)``
-.. |result-edge-color| replace:: ``(edge, color)``
+.. |result_edge_color| replace:: ``(edge, color)``
 .. |result-node| replace:: ``(node)``
 .. |result-edge| replace:: ``(edge)``
 .. |result-separate| replace:: ``(seq,id,sub_id,geom)``

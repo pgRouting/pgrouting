@@ -27,7 +27,7 @@ graphs
 
 .. rubric:: Version 4.0.0
 
-* Output columns standardized to |result-edge-color|
+* Output columns standardized to |result_edge_color|
 
 .. rubric:: Version 3.3.0
 
@@ -81,7 +81,7 @@ Signatures
 
    | pgr_edgeColoring(`Edges SQL`_)
 
-   | Returns set of |result-edge-color|
+   | Returns set of |result_edge_color|
    | OR EMPTY SET
 
 :Example: Graph coloring of pgRouting :doc:`sampledata`

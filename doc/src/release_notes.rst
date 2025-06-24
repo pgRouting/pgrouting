@@ -294,7 +294,7 @@ Standardize output columns of functions with different output columns within ove
 * `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
   pgr_withPointsCostMatrix
 
-.. rubric:: Standardized to |result-edge-color|
+.. rubric:: Standardized to |result_edge_color|
 
 * `#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__
   pgr_edgeColoring
