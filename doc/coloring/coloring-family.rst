@@ -65,6 +65,22 @@ Column           Type        Description
 
 .. result-edge-color-end
 
+.. result-node-color-start
+
+Returns set of |result_node_color|
+
+============  =========== =====================================
+Column           Type        Description
+============  =========== =====================================
+``node``      ``BIGINT``  Identifier of the node.
+``color``     ``BIGINT``  Color of the node.
+
+                          - The minimum value of color is 1.
+
+============  =========== =====================================
+
+.. result-node-color-end
+
 .. result columns start
 
 Returns set of ``(vertex_id, color_id)``

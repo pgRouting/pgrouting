@@ -34,6 +34,7 @@ Migration to standardized columns
 .. |pid-m-m| replace:: ``(seq, path_seq, start_pid, end_pid, node, edge, cost, agg_cost)``
 .. |matrix-pid| replace:: ``(start_pid, end_pid, agg_cost)``
 .. |old-edge-color| replace:: ``(edge_id, color_id)``
+.. |old-node-color| replace:: ``(vertex_id, color_id)``
 
 There has been an effort to standardize function output columns names and
 types.
@@ -84,6 +85,8 @@ types.
      - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_binaryBreadthFirstSearch` [3]_
      - `Migration of single path functions`_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_bipartite` [3]_
+     - `Migration of output column name change`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_dagShortestPath` [3]_
      - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_edgeColoring` [3]_
@@ -853,6 +856,17 @@ Before update:
 * Rename ``edge_id`` to ``edge`` and ``color_id`` to ``color``.
 * To get the old version column names: in the ``SELECT`` clause use ``edge AS
   edge_id`` and ``color AS color_id``
+
+.. rubric:: :doc:`pgr_bipartite`
+
+From: |old-node-color|
+To: |result-node-color|
+
+Before update:
+
+* Rename ``vertex_id`` to ``node`` and ``color_id`` to ``color``.
+* To get the old version column names: in the ``SELECT`` clause use ``node AS
+  vertex_id`` and ``color AS color_id``
 
 Migration of deleted functions
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

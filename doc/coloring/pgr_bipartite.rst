@@ -25,9 +25,13 @@ the same set are adjacent.
 
 .. rubric:: Availability
 
-* Version 3.2.0
+.. rubric:: Version 4.0.0
 
-  * New experimental function.
+* Output columns standardized to |result-node-color|
+
+.. rubric:: Version 3.2.0
+
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -86,8 +90,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: coloring-family.rst
-    :start-after: result columns start
-    :end-before: result columns end
+    :start-after: result-node-color-start
+    :end-before: result-node-color-end
 
 Additional Example
 --------------------------------------------------------------------------------
