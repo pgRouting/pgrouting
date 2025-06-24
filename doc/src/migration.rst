@@ -93,6 +93,8 @@ types.
      - `Migration of output column name change`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_edwardMoore` [3]_
      - `Migration of single path functions`_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_sequentialVertexColoring` [3]_
+     - `Migration of output column name change`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_withPoints` [2]_
      - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_withPointsCost` [2]_
@@ -857,10 +859,10 @@ Before update:
 * To get the old version column names: in the ``SELECT`` clause use ``edge AS
   edge_id`` and ``color AS color_id``
 
-.. rubric:: :doc:`pgr_bipartite`
+.. rubric:: :doc:`pgr_bipartite` and :doc:`pgr_sequentialVertexColoring`
 
 From: |old-node-color|
-To: |result-node-color|
+To: |result_node_color|
 
 Before update:
 
