@@ -25,9 +25,13 @@ graphs
 
 .. rubric:: Availability
 
-* Version 3.3.0
+.. rubric:: Version 4.0.0
 
-  * New experimental function.
+* Output columns standardized to |result-edge-color|
+
+.. rubric:: Version 3.3.0
+
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
