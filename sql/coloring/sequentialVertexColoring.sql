@@ -27,26 +27,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-----------------------------------
--- pgr_sequentialVertexColoring
-----------------------------------
-
-
---v3.2
+--3.2
 CREATE FUNCTION pgr_sequentialVertexColoring(
     TEXT,    -- edges_sql (required)
 
-    OUT vertex_id BIGINT,
-    OUT color_id BIGINT)
+    OUT node BIGINT,
+    OUT color BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN QUERY
-    SELECT a.vertex_id, a.color_id
-    FROM _pgr_sequentialVertexColoring(_pgr_get_statement($1)) AS a;
-END;
+    SELECT vertex_id, color_id
+    FROM _pgr_sequentialVertexColoring(_pgr_get_statement($1));
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 
