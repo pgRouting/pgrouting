@@ -34,6 +34,10 @@ Summary of changes by function
 
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 
+* pgr_edgeColoring
+
+  * Output columns standardized to ``(edge, color)``
+
 * pgr_edwardMoore
 
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
@@ -214,7 +218,11 @@ Standardize output columns of functions with different output columns within ove
 * [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
   pgr_withPointsCost
 * [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
-  pgr_withPointsCostMatrix
+
+**Standardized to ``(edge, color)``**
+
+* [#2924](https://github.com/pgRouting/pgrouting/issues/2924)
+  pgr_edgeColoring
 
 Removal of SQL deprecated signatures
 

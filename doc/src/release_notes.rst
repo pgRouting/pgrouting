@@ -74,6 +74,12 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* pgr_edgeColoring
+
+  .. include:: pgr_edgeColoring.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_edwardMoore
 
   .. include:: pgr_edwardMoore.rst
@@ -226,7 +232,11 @@ Standardize output columns of functions with different output columns within ove
 * `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
   pgr_withPointsCost
 * `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
-  pgr_withPointsCostMatrix
+
+.. rubric:: Standardized to |result-edge-color|
+
+* `#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__
+  pgr_edgeColoring
 
 Removal of SQL deprecated signatures
 ...............................................................................
