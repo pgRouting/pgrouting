@@ -43,10 +43,9 @@ BEGIN
 
   RETURN QUERY
   SELECT function_types_eq('pgr_bipartite',
-    $$VALUES
-    ('{text,int8,int8}'::TEXT[])
-    $$
+    $$SELECT '{text,int8,int8}'::TEXT[] $$
   );
+
 END;
 $BODY$
 LANGUAGE plpgsql;

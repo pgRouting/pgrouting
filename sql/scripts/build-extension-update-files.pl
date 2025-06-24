@@ -277,6 +277,7 @@ sub generate_upgrade_script {
                 # Out parameters changed names on v4.0.0
                 # Experimental functions
                 push @commands, drop_special_case_function("pgr_dagshortestpath(text,text)");
+                push @commands, drop_special_case_function("pgr_bipartite(text)");
             }
 
             if ($old_minor >= "3.3") {
