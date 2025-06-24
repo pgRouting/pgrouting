@@ -43,8 +43,9 @@ BEGIN
 
   RETURN QUERY
   SELECT function_types_eq('pgr_bipartite',
-    $$SELECT '{text,int8,int8}'::TEXT[] $$
-  );
+    $$VALUES
+    ('{text,int8,int8}'::TEXT[])
+    $$);
 
 END;
 $BODY$
