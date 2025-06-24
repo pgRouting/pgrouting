@@ -846,7 +846,7 @@ Migration of output column name change
 .. rubric:: :doc:`pgr_edgeColoring`
 
 From: |old-edge-color|
-To: |result-edge-color|
+To: |result_edge_color|
 
 Before update:
 

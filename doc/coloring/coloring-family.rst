@@ -51,7 +51,7 @@ Result columns
 
 .. result-edge-color-start
 
-Returns set of ``(node, color)``
+Returns set of |result_edge_color|
 
 ===============  =========== ======================================
 Column           Type        Description
@@ -64,7 +64,6 @@ Column           Type        Description
 ===============  =========== ======================================
 
 .. result-edge-color-end
-
 
 .. result columns start
 
@@ -81,22 +80,6 @@ Column           Type        Description
 ===============  =========== ======================================
 
 .. result columns end
-
-.. result columns start edgeColoring
-
-Returns set of ``(edge_id, color_id)``
-
-===============  =========== =====================================
-Column           Type        Description
-===============  =========== =====================================
-``edge_id``      ``BIGINT``  Identifier of the edge.
-``color_id``     ``BIGINT``  Identifier of the color of the edge.
-
-                             - The minimum value of color is 1.
-
-===============  =========== =====================================
-
-.. result columns end edgeColoring
 
 See Also
 -------------------------------------------------------------------------------
