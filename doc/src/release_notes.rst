@@ -50,15 +50,39 @@ milestone for 4.0.0
 Summary of changes by function
 ...............................................................................
 
-* pgr_contraction
+* pgr_aStar
 
-  .. include:: pgr_contraction.rst
+  .. include:: pgr_aStar.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_aStarCost
+
+  .. include:: pgr_aStarCost.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_bdAstar
+
+  .. include:: pgr_bdAstar.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_bdAstarCost
+
+  .. include:: pgr_bdAstarCost.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
 * pgr_bdDijkstra
 
   .. include:: pgr_bdDijkstra.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_bdDijkstraCost
+
+  .. include:: pgr_bdDijkstraCost.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
@@ -74,6 +98,30 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* pgr_contraction
+
+  .. include:: pgr_contraction.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_dagShortestPath
+
+  .. include:: pgr_dagShortestPath.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_dijkstra
+
+  .. include:: pgr_dijkstra.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_dijkstraCost
+
+  .. include:: pgr_dijkstraCost.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_edgeColoring
 
   .. include:: pgr_edgeColoring.rst
@@ -86,9 +134,21 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
-* pgr_DAGshortestPath
+* pgr_KSP
 
-  .. include:: pgr_dagShortestPath.rst
+  .. include:: pgr_KSP.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_maxFlow
+
+  .. include:: pgr_maxFlow.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_pushRelabel
+
+  .. include:: pgr_pushRelabel.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
@@ -163,17 +223,17 @@ Functions promoted to official
   pgr_trspVia_withPoints
 * `#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__
   pgr_trsp_withPoints
-* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+* `#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__
   pgr_withPoints
-* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+* `#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__
   pgr_withPointsCost
-* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+* `#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__
   pgr_withPointsCostMatrix
-* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+* `#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__
   pgr_withPointsDD
-* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+* `#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__
   pgr_withPointsKSP
-* `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+* `#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__
   pgr_withPointsVia
 
 Signatures promoted to official
@@ -232,6 +292,7 @@ Standardize output columns of functions with different output columns within ove
 * `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
   pgr_withPointsCost
 * `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
+  pgr_withPointsCostMatrix
 
 .. rubric:: Standardized to |result-edge-color|
 
@@ -251,6 +312,12 @@ Removal of SQL deprecated signatures
 * `#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp
 
   .. include:: pgr_trsp.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
+
+* `#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trspVia
+
+  .. include:: pgr_trspVia.rst
      :start-after: Breaking change
      :end-before: .. rubric
 
@@ -422,9 +489,6 @@ Summary of functions and signatures no longer on pgrouting
 * #2919 pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)
 * #2919 pgr_withpoints(text,text,text,boolean,character,boolean)
 * #2919 pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
-
-.. rubric:: Internal functions
-
 
 Code enhancements
 ...............................................................................

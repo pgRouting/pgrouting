@@ -16,14 +16,29 @@ milestone for 4.0.0
 
 Summary of changes by function
 
-* pgr_contraction
+* pgr_aStar
 
-  * Breaking change, signatures no longer available:
-    * pgr_contraction(text,bigint[],integer,bigint[],boolean)
+  * Combinations signature promoted to official.
+
+* pgr_aStarCost
+
+  * Combinations signature promoted to official.
+
+* pgr_bdAstar
+
+  * Combinations signature promoted to official.
+
+* pgr_bdAstarCost
+
+  * Combinations signature promoted to official.
 
 * pgr_bdDijkstra
 
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+  * Combinations signature promoted to official.
+
+* pgr_bdDijkstraCost
+
   * Combinations signature promoted to official.
 
 * pgr_bellmanFord
@@ -34,17 +49,43 @@ Summary of changes by function
 
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 
+* pgr_contraction
+
+  .. Breaking change
+  * Breaking change, signatures no longer available:
+    * pgr_contraction(text,bigint[],integer,bigint[],boolean)
+
+* pgr_dagShortestPath
+
+  * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+
+* pgr_dijkstra
+
+  * Combinations signature promoted to official.
+
+* pgr_dijkstraCost
+
+  * Combinations signature promoted to official.
+
 * pgr_edgeColoring
 
-  * Output columns standardized to ``(edge, color)``
+  * Output columns standardized to ``(edge)``-color
 
 * pgr_edwardMoore
 
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 
-* pgr_DAGshortestPath
+* pgr_KSP
 
-  * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+  * All signatures promoted to official.
+
+* pgr_maxFlow
+
+  * Combinations signature promoted to official.
+
+* pgr_pushRelabel
+
+  * Combinations signature promoted to official.
 
 * pgr_trsp
 
@@ -57,6 +98,7 @@ Summary of changes by function
 * pgr_trspVia
 
   * Function promoted to official.
+  .. Breaking change
   * Breaking change, signatures no longer available:
     * pgr_trspviavertices(text,anyarray,boolean,boolean,text)
 
@@ -151,17 +193,17 @@ Functions promoted to official
   pgr_trspVia_withPoints
 * [#2701](https://github.com/pgRouting/pgrouting/issues/2701)
   pgr_trsp_withPoints
-* [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
+* [#2700](https://github.com/pgRouting/pgrouting/issues/2700)
   pgr_withPoints
-* [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
+* [#2700](https://github.com/pgRouting/pgrouting/issues/2700)
   pgr_withPointsCost
-* [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
+* [#2700](https://github.com/pgRouting/pgrouting/issues/2700)
   pgr_withPointsCostMatrix
-* [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
+* [#2700](https://github.com/pgRouting/pgrouting/issues/2700)
   pgr_withPointsDD
-* [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
+* [#2700](https://github.com/pgRouting/pgrouting/issues/2700)
   pgr_withPointsKSP
-* [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
+* [#2700](https://github.com/pgRouting/pgrouting/issues/2700)
   pgr_withPointsVia
 
 Signatures promoted to official
@@ -218,8 +260,9 @@ Standardize output columns of functions with different output columns within ove
 * [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
   pgr_withPointsCost
 * [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
+  pgr_withPointsCostMatrix
 
-**Standardized to ``(edge, color)``**
+**Standardized to ``(edge)``-color**
 
 * [#2924](https://github.com/pgRouting/pgrouting/issues/2924)
   pgr_edgeColoring
@@ -235,6 +278,10 @@ Removal of SQL deprecated signatures
 
     * pgr_trsp(text,integer,integer,boolean,boolean,text)
     * pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+
+* [#2683](https://github.com/pgRouting/pgrouting/issues/2683): pgr_trspVia
+
+    * pgr_trspviavertices(text,anyarray,boolean,boolean,text)
 
 * [#2700](https://github.com/pgRouting/pgrouting/issues/2700):
   pgr_withPointsVia
@@ -392,9 +439,6 @@ Summary of functions and signatures no longer on pgrouting
 * #2919 pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)
 * #2919 pgr_withpoints(text,text,text,boolean,character,boolean)
 * #2919 pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
-
-**Internal functions**
-
 
 Code enhancements
 

@@ -21,43 +21,43 @@
 
 .. rubric:: Availability
 
-* Version 4.0.0
+.. rubric:: Version 4.0.0
 
-  * Combinations signature promoted to official.
+* Combinations signature promoted to official.
 
-* Version 3.5.0
+.. rubric:: Version 3.5.0
 
-  * Standardizing output columns to |short-generic-result|
+* Standardizing output columns to |short-generic-result|
 
-    * pgr_dijkstra(One to One) added ``start_vid`` and ``end_vid`` columns.
-    * pgr_dijkstra(One to Many) added ``end_vid`` column.
-    * pgr_dijkstra(Many to One) added ``start_vid`` column.
+  * pgr_dijkstra(One to One) added ``start_vid`` and ``end_vid`` columns.
+  * pgr_dijkstra(One to Many) added ``end_vid`` column.
+  * pgr_dijkstra(Many to One) added ``start_vid`` column.
 
-* Version 3.1.0
+.. rubric:: Version 3.1.0
 
-  * New proposed signature:
+* New proposed signature:
 
-    * pgr_dijkstra(Combinations)
+  * pgr_dijkstra(Combinations)
 
-* Version 3.0.0
+.. rubric:: Version 3.0.0
 
-  * Function promoted to official.
+* Function promoted to official.
 
-* Version 2.2.0
+.. rubric:: Version 2.2.0
 
-  * New proposed signatures:
+* New proposed signatures:
 
-    * pgr_dijkstra(One to Many)
-    * pgr_dijkstra(Many to One)
-    * pgr_dijkstra(Many to Many)
+  * pgr_dijkstra(One to Many)
+  * pgr_dijkstra(Many to One)
+  * pgr_dijkstra(Many to Many)
 
-* Version 2.1.0
+.. rubric:: Version 2.1.0
 
-  * Signature change on pgr_dijkstra(One to One)
+* Signature change on pgr_dijkstra(One to One)
 
-* Version 2.0.0
+.. rubric:: Version 2.0.0
 
-  * Official function.
+* Official function.
 
 
 Description
