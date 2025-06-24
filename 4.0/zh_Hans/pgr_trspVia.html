@@ -234,15 +234,21 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code><a class="headerlink" href="#pgr-trspvia" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> 穿过有限制的顶点列表的路线。</p>
 <p class="rubric">可用性</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>Version 4.0.0</p>
-<ul>
 <li><p>函数正式发布。</p></li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_trspviavertices(text,anyarray,boolean,boolean,text)</p></li>
 </ul>
 </li>
-<li><p>版本 3.4.0</p>
-<ul>
+</ul>
+<p class="rubric">版本 3.4.0</p>
+<ul class="simple">
 <li><p>新提议的函数。</p></li>
+<li><p>弃用签名</p>
+<ul>
+<li><p>pgr_trspviavertices(text,anyarray,boolean,boolean,text)</p></li>
 </ul>
 </li>
 </ul>
@@ -891,7 +897,7 @@ FROM with_seq LEFT JOIN aggregation ON (with_seq.seq = aggregation.seq + 1);
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 16, 2025.<br/>
+      Last updated on 6月 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

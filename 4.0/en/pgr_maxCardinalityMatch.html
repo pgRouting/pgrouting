@@ -195,9 +195,16 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code> — Calculates a maximum cardinality matching in a
 graph.</p>
 <p class="rubric">Availability</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>Version 3.4.0</p>
+<li><p>Breaking change, signatures no longer available:</p>
 <ul>
+<li><p>pgr_maxCardinalityMatch(text,boolean)</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Version 3.4.0</p>
+<ul class="simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> on the inner query</p></li>
 <li><p>Results are ordered</p></li>
 <li><p>Works for undirected graphs.</p></li>
@@ -216,23 +223,18 @@ graph.</p>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Version 3.0.0</p>
-<ul>
+<p class="rubric">Version 3.0.0</p>
+<ul class="simple">
 <li><p>Function promoted to official.</p></li>
 </ul>
-</li>
-<li><p>Version 2.5.0</p>
-<ul>
+<p class="rubric">Version 2.5.0</p>
+<ul class="simple">
 <li><p>Renamed from <code class="docutils literal notranslate"><span class="pre">pgr_maximumCardinalityMatching</span></code></p></li>
 <li><p>Function promoted to proposed.</p></li>
 </ul>
-</li>
-<li><p>Version 2.3.0</p>
-<ul>
+<p class="rubric">Version 2.3.0</p>
+<ul class="simple">
 <li><p>New experimental function.</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -414,7 +416,7 @@ edges.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Jun 16, 2025.<br/>
+      Last updated on Jun 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

@@ -195,9 +195,16 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code><a class="headerlink" href="#pgr-maxcardinalitymatch" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code> — Calcula una coincidencia de cardinalidad máxima en un grafo.</p>
 <p class="rubric">Disponibilidad</p>
+<p class="rubric">Versión 4.0.0</p>
 <ul class="simple">
-<li><p>Versión 3.4.0</p>
+<li><p>Breaking change, signatures no longer available:</p>
 <ul>
+<li><p>pgr_maxCardinalityMatch(text,boolean)</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Versión 3.4.0</p>
+<ul class="simple">
 <li><p>Usa <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> en la consulta interna</p></li>
 <li><p>Los resultados son ordenados</p></li>
 <li><p>Funciona para grafos no dirigidos.</p></li>
@@ -216,23 +223,18 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Versión 3.0.0</p>
-<ul>
+<p class="rubric">Versión 3.0.0</p>
+<ul class="simple">
 <li><p>Función promovida a oficial.</p></li>
 </ul>
-</li>
-<li><p>Versión 2.5.0</p>
-<ul>
+<p class="rubric">Versión 2.5.0</p>
+<ul class="simple">
 <li><p>Renombrado de <code class="docutils literal notranslate"><span class="pre">pgr_maximumCardinalityMatching</span></code></p></li>
 <li><p>Función promovida a propuesta.</p></li>
 </ul>
-</li>
-<li><p>Versión 2.3.0</p>
-<ul>
+<p class="rubric">Versión 2.3.0</p>
+<ul class="simple">
 <li><p>Nueva función experimental.</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -410,7 +412,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en jun 16, 2025.<br/>
+      Actualizado por última vez en jun 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

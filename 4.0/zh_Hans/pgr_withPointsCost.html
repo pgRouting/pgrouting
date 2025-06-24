@@ -72,11 +72,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
@@ -109,7 +109,6 @@
 </li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
 <li><a class="reference internal" href="#optional-parameters">可选参数</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">带点可选参数</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
@@ -185,7 +184,6 @@
 </li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
 <li><a class="reference internal" href="#optional-parameters">可选参数</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">带点可选参数</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
@@ -237,12 +235,19 @@
 <p class="rubric">Version 4.0.0</p>
 <ul class="simple">
 <li><p>函数正式发布。</p></li>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
-unnamed positional.</p>
+<li><p><strong>Driving side</strong> parameter is unnamed and compulsory.</p>
 <ul>
-<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
-<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
+<li><p>Valid values depend on kind of graph</p></li>
+</ul>
+</li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,anyarray,bigint,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,bigint,anyarray,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,bigint,bigint,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,text,boolean,character)</p></li>
 </ul>
 </li>
 </ul>
@@ -272,8 +277,8 @@ unnamed positional.</p>
 </li>
 <li><p>图的顶点是：</p>
 <ul>
-<li><p><strong>positive</strong> when it belongs to the edges sql</p></li>
-<li><p><strong>negative</strong> when it belongs to the points sql</p></li>
+<li><p>当它属于edges_sql时为 <strong>正</strong></p></li>
+<li><p>当它属于 points_sql时为 <strong>负</strong></p></li>
 </ul>
 </li>
 <li><p>当存在路径时返回值。</p>
@@ -310,6 +315,7 @@ unnamed positional.</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<p class="rubric">总结</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -317,7 +323,7 @@ unnamed positional.</p>
 <div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, <strong>driving side</strong> [<strong>options</strong>])</div>
 <div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, <strong>driving side</strong> [<strong>options</strong>])</div>
 <div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, <strong>driving side</strong> [<strong>options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, <strong>driving side</strong> [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed]</span></code></div>
 </div>
 <div class="line-block">
@@ -342,11 +348,7 @@ unnamed positional.</p>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span> with default options.</p>
-</dd>
-</dl>
+<p class="rubric">From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span> with right driving side in directed graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -361,24 +363,18 @@ unnamed positional.</p>
 </section>
 <section id="one-to-many">
 <span id="index-2"></span><h3>一对多<a class="headerlink" href="#one-to-many" title="Link to this heading">¶</a></h3>
-<div class="admonition-class-signatures admonition">
-<p class="admonition-title"> :class: signatures</p>
-<dl>
-<dt>pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, <strong>driving side</strong> [<strong>options</strong>])</dt><dd><div class="line-block">
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, <strong>driving side</strong> [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
 <div class="line">OR EMPTY SET</div>
 </div>
-</dd>
-</dl>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>无向图上的点 <span class="math notranslate nohighlight">\(1\)</span> 到点 <span class="math notranslate nohighlight">\(3\)</span> 和顶点 <span class="math notranslate nohighlight">\(7\)</span></p>
-</dd>
-</dl>
+<p class="rubric">无向图上的点 <span class="math notranslate nohighlight">\(1\)</span> 到点 <span class="math notranslate nohighlight">\(3\)</span> 和顶点 <span class="math notranslate nohighlight">\(7\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -408,7 +404,7 @@ unnamed positional.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>从点 <span class="math notranslate nohighlight">\(1\)</span> 和顶点 <span class="math notranslate nohighlight">\(6\)</span> 到点 <span class="math notranslate nohighlight">\(3\)</span></p>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(6\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> with right driving side in directed graph.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
@@ -439,7 +435,8 @@ unnamed positional.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>从点 <span class="math notranslate nohighlight">\(1\)</span> 和顶点 <span class="math notranslate nohighlight">\(6\)</span> 到点 <span class="math notranslate nohighlight">\(3\)</span> 和顶点 <span class="math notranslate nohighlight">\(1\)</span></p>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(6\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> and
+vertex <span class="math notranslate nohighlight">\(1\)</span> with left side driving.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
@@ -475,7 +472,8 @@ unnamed positional.</p>
 <dd class="field-odd"><p>两种组合</p>
 </dd>
 </dl>
-<p>从点 <span class="math notranslate nohighlight">\(1\)</span> 到顶点 <span class="math notranslate nohighlight">\(10\)</span>，以及从顶点 <span class="math notranslate nohighlight">\(6\)</span> 到点 <span class="math notranslate nohighlight">\(3\)</span> ，<strong>右侧</strong> 行驶。</p>
+<p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span>, and from vertex <span class="math notranslate nohighlight">\(6\)</span> to point
+<span class="math notranslate nohighlight">\(3\)</span> with right side driving.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -534,6 +532,16 @@ unnamed positional.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>结束顶点的标识符数组。 负值用于点的标识符。</p></td>
 </tr>
+<tr class="row-odd"><td><p><strong>driving side</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p>值在 [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] 中表示驾驶的一侧是：</p>
+<ul class="simple">
+<li><p>[<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>] 表示右侧驾驶（仅适用于有向图）</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]表示左侧驾驶（仅适用有向图）</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] 表示两侧通行（仅适用于无向图）</p></li>
+</ul>
+</td>
+</tr>
 </tbody>
 </table>
 <section id="optional-parameters">
@@ -553,37 +561,6 @@ unnamed positional.</p>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
 <li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="with-points-optional-parameters">
-<h3>带点可选参数<a class="headerlink" href="#with-points-optional-parameters" title="Link to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 15.9%" />
-<col style="width: 8.0%" />
-<col style="width: 8.0%" />
-<col style="width: 68.2%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>参数</p></th>
-<th class="head"><p>类型</p></th>
-<th class="head"><p>默认</p></th>
-<th class="head"><p>描述</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>[<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] 中的值指示驱动侧是否为：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> 代表右驾驶侧。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> 代表左驾驶侧。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> 对于两者。</p></li>
 </ul>
 </td>
 </tr>
@@ -889,13 +866,14 @@ unnamed positional.</p>
 
 </pre></div>
 </div>
-<p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p>
 </section>
 </section>
 <section id="see-also">
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - 函数族</span></a></p></li>
+<li><p><a class="reference internal" href="cost-category.html"><span class="doc">成本 - 类别</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
@@ -918,7 +896,7 @@ unnamed positional.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 16, 2025.<br/>
+      Last updated on 6月 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

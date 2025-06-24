@@ -76,8 +76,8 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
 </ul>
 <ul>
@@ -232,27 +232,6 @@
 <section id="withpoints-category">
 <h1>withPoints- Categoría<a class="headerlink" href="#withpoints-category" title="Link to this heading">¶</a></h1>
 <p>Cuando los puntos se agregan al grafo.</p>
-<div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="e8521ba8-8ca1-411b-85e1-b38b5bb8d7c7" name="e8521ba8-8ca1-411b-85e1-b38b5bb8d7c7" type="checkbox"><label class="sphinx_collapse__label" for="e8521ba8-8ca1-411b-85e1-b38b5bb8d7c7"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
-<div class="admonition warning">
-<p class="admonition-title">Advertencia</p>
-<p>Funciones propuestas para la próxima versión mayor.</p>
-<ul class="simple">
-<li><p>No están oficialmente en la versión actual.</p></li>
-<li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
-<ul>
-<li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
-<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
-<li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
-<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
-<li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
-<li><p>Es posible que la documentación necesite un refinamiento.</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a> - Funciones basadas en el algoritmo Dijkstra.</p></li>
 <li><p>Desde <a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Familia de funciones</span></a> :</p>
@@ -361,6 +340,16 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Arreglo de identificadores de vértices finales. Valores negativos son para identificadores de puntos.</p></td>
 </tr>
+<tr class="row-odd"><td><p><strong>Lado de manejo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] indicando si el lado de manejo es:</p>
+<ul class="simple">
+<li><p>[<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>] para el manejo del lado derecho (solamente grafo dirigido)</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>] para manejo por lad izquierdo (solo gráfos dirigidos)</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] for both (only for undirected graph)</p></li>
+</ul>
+</td>
+</tr>
 </tbody>
 </table>
 <section id="optional-parameters">
@@ -380,21 +369,11 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
-<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>] indicando si el lado de manejo es:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> para el manejo del lado derecho</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> para el manejo del lado izquierdo</p></li>
-<li><p>Cualquier otro valor se considera como <code class="docutils literal notranslate"><span class="pre">r</span></code></p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">details</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">details</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><ul class="simple">
+<td><p>For showing points stops.</p>
+<ul class="simple">
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> los resultados incluyen los puntos que están en el camino.</p></li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> los resultados no incluyen los puntos que están en el camino.</p></li>
 </ul>
@@ -807,7 +786,7 @@ the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en jun 16, 2025.<br/>
+      Actualizado por última vez en jun 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

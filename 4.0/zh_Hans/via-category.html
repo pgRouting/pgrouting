@@ -75,8 +75,8 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
@@ -200,8 +200,13 @@
 </div>
 <section id="via-category">
 <h1>Via - 类别<a class="headerlink" href="#via-category" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a></p></li>
+</ul>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="469097c8-1dee-4af0-9294-19f37f856199" name="469097c8-1dee-4af0-9294-19f37f856199" type="checkbox"><label class="sphinx_collapse__label" for="469097c8-1dee-4af0-9294-19f37f856199"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="327ac0d0-ca58-4393-946e-cae6cf242c90" name="327ac0d0-ca58-4393-946e-cae6cf242c90" type="checkbox"><label class="sphinx_collapse__label" for="327ac0d0-ca58-4393-946e-cae6cf242c90"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>下一版本的提议功能。</p>
@@ -223,9 +228,6 @@
 </div>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - 提议中</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a></p></li>
 </ul>
 <section id="general-information">
 <h2>一般信息<a class="headerlink" href="#general-information" title="Link to this heading">¶</a></h2>
@@ -289,37 +291,37 @@
 <li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a></p></li>
 </ul>
 <table class="docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 17.3%" />
-<col style="width: 24.7%" />
-<col style="width: 8.6%" />
-<col style="width: 49.4%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>参数</p></th>
 <th class="head"><p>类型</p></th>
-<th class="head"><p>默认</p></th>
 <th class="head"><p>描述</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
 <td><p>如所述的 SQL 查询。</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
 <td><p>如所述的 SQL 查询。</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>via vertices</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [ <strong>ANY-INTEGER</strong> ]</p></td>
-<td></td>
 <td><p>将要访问的有序顶点标识符数组。</p>
 <ul class="simple">
 <li><p>当为正时，它被视为顶点标识符</p></li>
 <li><p>当负数时，它被认为是一个点标识符</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>driving side</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p>值在 [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] 中表示驾驶的一侧是：</p>
+<ul class="simple">
+<li><p>[<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>] 表示右侧驾驶（仅适用于有向图）</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]表示左侧驾驶（仅适用有向图）</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] 表示两侧通行（仅适用于无向图）</p></li>
 </ul>
 </td>
 </tr>
@@ -636,7 +638,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 16, 2025.<br/>
+      Last updated on 6月 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

@@ -224,9 +224,16 @@
 <p class="rubric">Availability:</p>
 <p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>Simulated Annealing signature removed</p></li>
 <li><p>Results change depending on input order</p></li>
 <li><p>Only for undirected graphs</p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double
+precision,double precision,double precision,boolean)</p></li>
+</ul>
+</li>
 </ul>
 <p class="rubric">Version 3.2.1</p>
 <ul class="simple">
@@ -602,7 +609,7 @@ because:</p>
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_withPointsCostMatrix(
 <span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;,
 <span class="linenos"> 4</span>    &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
-<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6],
+<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6], &#39;r&#39;,
 <span class="linenos"> 6</span>    directed =&gt; true) $$,
 <span class="linenos"> 7</span>  start_id =&gt; 7,
 <span class="linenos"> 8</span>  end_id =&gt; 11);
@@ -708,7 +715,7 @@ value used is taken from <span class="math notranslate nohighlight">\(10 \righta
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Jun 16, 2025.<br/>
+      Last updated on Jun 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

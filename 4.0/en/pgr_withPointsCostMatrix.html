@@ -72,11 +72,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
@@ -102,7 +102,6 @@
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
@@ -168,7 +167,6 @@
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
@@ -218,12 +216,15 @@
 <p class="rubric">Version 4.0.0</p>
 <ul class="simple">
 <li><p>Function promoted to official.</p></li>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
-unnamed positional.</p>
+<li><p><strong>Driving side</strong> parameter is positional unnamed and compulsory.</p>
 <ul>
-<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
-<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
+<li><p>Valid values depend on kind of graph</p></li>
+</ul>
+</li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointscostmatrix(text,text,anyarray,boolean,character)</p></li>
 </ul>
 </li>
 </ul>
@@ -233,56 +234,7 @@ unnamed positional.</p>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>Modify the graph to include points defined by points_sql.
-Using Dijkstra algorithm, return calculate and return a cost matrix.</p>
-<p>The main characteristics are:</p>
-<ul class="simple">
-<li><p>Process is done only on edges with positive costs.</p></li>
-<li><p>It does not return a path.</p></li>
-<li><p>Returns the sum of the costs of the shortest path for pair combination of
-vertices in the modified graph.</p>
-<ul>
-<li><p>The returned values are in the form of a set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code>.</p></li>
-</ul>
-</li>
-<li><p>Vertices of the graph are:</p>
-<ul>
-<li><p><strong>positive</strong> when it belongs to the edges sql</p></li>
-<li><p><strong>negative</strong> when it belongs to the points sql</p></li>
-</ul>
-</li>
-<li><p>Values are returned when there is a path.</p>
-<ul>
-<li><p>When the starting vertex and ending vertex are the same, there is no path.</p>
-<ul>
-<li><p>The <cite>agg_cost</cite> in the non included values <cite>(v, v)</cite> is <cite>0</cite></p></li>
-</ul>
-</li>
-<li><p>When the starting vertex and ending vertex are the different and there is no
-path:</p>
-<ul>
-<li><p>The <cite>agg_cost</cite> in the non included values <cite>(u, v)</cite> is <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
-</ul>
-</li>
-<li><p>If the values returned are stored in a table, the unique index would be the
-pair: <cite>(start_vid, end_vid)</cite>.</p></li>
-<li><p>For <strong>undirected</strong> graphs, the results are <strong>symmetric</strong>.</p>
-<ul>
-<li><p>The <cite>agg_cost</cite> of <cite>(u, v)</cite> is the same as for <cite>(v, u)</cite>.</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>For optimization purposes, any duplicated value in the input arrays of <strong>start vids</strong> or
-<strong>end vids</strong> or are ignored.</p></li>
-<li><p>The returned values are ordered:</p>
-<ul>
-<li><p><cite>start_vid</cite> ascending</p></li>
-<li><p><cite>end_vid</cite> ascending</p></li>
-</ul>
-</li>
-<li><p>Running time: <span class="math notranslate nohighlight">\(O(|start\_vids|\times(V \log V + E))\)</span></p></li>
-</ul>
+<p>Using Dijkstra algorithm, calculate and return a cost matrix.</p>
 <p>Dijkstra’s algorithm, conceived by Dutch computer scientist Edsger Dijkstra in
 1956.
 It is a graph search algorithm that solves the shortest path problem for a graph
@@ -353,7 +305,7 @@ path.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>driving side</strong>  [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>driving side</strong> [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed]</span></code></div>
 </div>
 <div class="line-block">
@@ -441,37 +393,6 @@ withPoints family of functions.</p>
 <td><ul class="simple">
 <li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="with-points-optional-parameters">
-<h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Link to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 15.9%" />
-<col style="width: 8.0%" />
-<col style="width: 8.0%" />
-<col style="width: 68.2%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indicating if the driving side is:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> for right driving side.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> for left driving side.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for both.</p></li>
 </ul>
 </td>
 </tr>
@@ -683,6 +604,7 @@ locations on the graph of point <cite>(2.9, 1.8)</cite>.</p>
 <ul class="simple">
 <li><p>Point <span class="math notranslate nohighlight">\(-1\)</span> corresponds to the closest edge from point <cite>(2.9, 1.8)</cite>.</p></li>
 <li><p>Point <span class="math notranslate nohighlight">\(-2\)</span> corresponds to the next close edge from point <cite>(2.9, 1.8)</cite>.</p></li>
+<li><p>Being close to the graph does not mean have a shorter route.</p></li>
 </ul>
 </section>
 <section id="use-with-pgr-tsp">
@@ -737,7 +659,7 @@ locations on the graph of point <cite>(2.9, 1.8)</cite>.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Jun 16, 2025.<br/>
+      Last updated on Jun 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

@@ -72,11 +72,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
@@ -228,36 +228,28 @@
 <ul class="simple">
 <li><p>Function promoted to official.</p></li>
 </ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)</p></li>
+<li><p>pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
+</ul>
+</li>
+</ul>
 <p class="rubric">Version 3.6.0</p>
 <ul class="simple">
-<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
-unnamed compulsory <strong>driving side</strong>.</p>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p><strong>Driving side</strong> parameter is positional unnamed and compulsory.</p>
 <ul>
-<li><p>pgr_withPointsDD(Single vertex)</p></li>
-<li><p>pgr_withPointsDD(Multiple vertices)</p></li>
-</ul>
-</li>
-<li><p>Standardizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<ul>
-<li><p>pgr_withPointsDD(Single vertex)</p>
-<ul>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code>, <code class="docutils literal notranslate"><span class="pre">pred</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
-</ul>
-</li>
-<li><p>pgr_withPointsDD(Multiple vertices)</p>
-<ul>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code>, <code class="docutils literal notranslate"><span class="pre">pred</span></code> columns.</p></li>
-</ul>
-</li>
+<li><p>Valid values depend on kind of graph</p></li>
 </ul>
 </li>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">details</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>:</p>
 <ul>
-<li><p>Only points that are visited are removed, that is, points reached within the
-distance are included</p></li>
+<li><p>Points reached within the distance are not included.</p></li>
 </ul>
 </li>
-<li><p>Deprecated signatures</p>
+<li><p>Deprecated signatures:</p>
 <ul>
 <li><p>pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)</p></li>
 <li><p>pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
@@ -827,7 +819,7 @@ side, with details.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Jun 16, 2025.<br/>
+      Last updated on Jun 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

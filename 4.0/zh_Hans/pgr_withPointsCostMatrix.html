@@ -72,11 +72,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
@@ -102,7 +102,6 @@
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
 <li><a class="reference internal" href="#optional-parameters">可选参数</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">带点可选参数</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
@@ -168,7 +167,6 @@
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
 <li><a class="reference internal" href="#optional-parameters">可选参数</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">带点可选参数</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
@@ -217,12 +215,15 @@
 <p class="rubric">Version 4.0.0</p>
 <ul class="simple">
 <li><p>函数正式发布。</p></li>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
-unnamed positional.</p>
+<li><p><strong>Driving side</strong> parameter is positional unnamed and compulsory.</p>
 <ul>
-<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
-<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
+<li><p>Valid values depend on kind of graph</p></li>
+</ul>
+</li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointscostmatrix(text,text,anyarray,boolean,character)</p></li>
 </ul>
 </li>
 </ul>
@@ -232,53 +233,7 @@ unnamed positional.</p>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>Modify the graph to include points defined by points_sql.
-Using Dijkstra algorithm, return calculate and return a cost matrix.</p>
-<p>主要特点是：</p>
-<ul class="simple">
-<li><p>仅在具有正成本的边进行处理。</p></li>
-<li><p>它不返回路径。</p></li>
-<li><p>返回修改图中顶点对组合的最短路径成本之和。</p>
-<ul>
-<li><p>The returned values are in the form of a set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code>.</p></li>
-</ul>
-</li>
-<li><p>图的顶点是：</p>
-<ul>
-<li><p><strong>positive</strong> when it belongs to the edges sql</p></li>
-<li><p><strong>negative</strong> when it belongs to the points sql</p></li>
-</ul>
-</li>
-<li><p>当存在路径时返回值。</p>
-<ul>
-<li><p>当起始顶点和结束顶点相同时，就没有路径。</p>
-<ul>
-<li><p>非包含值 <cite>(v, v)</cite> 中的 <cite>agg_cost</cite> 为 <cite>0</cite></p></li>
-</ul>
-</li>
-<li><p>当起始顶点和结束顶点不同且不存在路径时：</p>
-<ul>
-<li><p>非包含值 <cite>(u, v)</cite> 中的 <cite>agg_cost</cite> 为 <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
-</ul>
-</li>
-<li><p>如果返回的值存储在表中，则唯一索引将是这一对： <cite>(start_vid, end_vid)</cite> 。</p></li>
-<li><p>对于 <strong>无向</strong> 图，结果是 <strong>对称</strong> 的。</p>
-<ul>
-<li><p><cite>(u, v)</cite> 的 <cite>agg_cost</cite> 与 <cite>(v, u)</cite> 相同。</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>For optimization purposes, any duplicated value in the input arrays of <strong>start vids</strong> or
-<strong>end vids</strong> or are ignored.</p></li>
-<li><p>返回值是有序的：</p>
-<ul>
-<li><p><cite>start_vid</cite> 升序</p></li>
-<li><p><cite>end_vid</cite> 升序</p></li>
-</ul>
-</li>
-<li><p>运行时间： <span class="math notranslate nohighlight">\(O(|start\_vids|\times(V \log V + E))\)</span></p></li>
-</ul>
+<p>使用 Dijkstra 算法，计算并返回成本矩阵。</p>
 <p>Dijkstra算法，由荷兰计算机科学家Edsger Dijkstra于1956年提出。它是一种图搜索算法，解决具有非负边路径成本的图的最短路径问题，产生从起始顶点到结束顶点的最短路径。 该实现可以与有向图和无向图一起使用。</p>
 <p>主要特点是：</p>
 <ul class="simple">
@@ -339,7 +294,7 @@ Using Dijkstra algorithm, return calculate and return a cost matrix.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>driving side</strong>  [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>driving side</strong> [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed]</span></code></div>
 </div>
 <div class="line-block">
@@ -425,37 +380,6 @@ Using Dijkstra algorithm, return calculate and return a cost matrix.</p>
 <td><ul class="simple">
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
 <li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="with-points-optional-parameters">
-<h3>带点可选参数<a class="headerlink" href="#with-points-optional-parameters" title="Link to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 15.9%" />
-<col style="width: 8.0%" />
-<col style="width: 8.0%" />
-<col style="width: 68.2%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>参数</p></th>
-<th class="head"><p>类型</p></th>
-<th class="head"><p>默认</p></th>
-<th class="head"><p>描述</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>[<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] 中的值指示驱动侧是否为：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> 代表右驾驶侧。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> 代表左驾驶侧。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> 对于两者。</p></li>
 </ul>
 </td>
 </tr>
@@ -661,6 +585,7 @@ Using Dijkstra algorithm, return calculate and return a cost matrix.</p>
 <ul class="simple">
 <li><p>点 <span class="math notranslate nohighlight">\(-1`对应于距离点`(2.9, 1.8)\)</span> 最近的边。</p></li>
 <li><p>点 <span class="math notranslate nohighlight">\(-2`对应于点`(2.9, 1.8)\)</span> 的下一个闭合边。</p></li>
+<li><p>靠近图表并不意味着路线更短。</p></li>
 </ul>
 </section>
 <section id="use-with-pgr-tsp">
@@ -715,7 +640,7 @@ Using Dijkstra algorithm, return calculate and return a cost matrix.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 16, 2025.<br/>
+      Last updated on 6月 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

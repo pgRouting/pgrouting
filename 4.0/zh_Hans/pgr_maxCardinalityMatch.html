@@ -194,9 +194,16 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code><a class="headerlink" href="#pgr-maxcardinalitymatch" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code> — 计算图中的最大基数匹配。.</p>
 <p class="rubric">可用性</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>版本 3.4.0</p>
+<li><p>Breaking change, signatures no longer available:</p>
 <ul>
+<li><p>pgr_maxCardinalityMatch(text,boolean)</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">版本 3.4.0</p>
+<ul class="simple">
 <li><p>在内部查询上使用 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></li>
 <li><p>结果已排序</p></li>
 <li><p>适用于无向图。</p></li>
@@ -215,23 +222,18 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>版本3.0.0</p>
-<ul>
+<p class="rubric">版本3.0.0</p>
+<ul class="simple">
 <li><p>函数正式发布。</p></li>
 </ul>
-</li>
-<li><p>版本2.5.0</p>
-<ul>
+<p class="rubric">版本2.5.0</p>
+<ul class="simple">
 <li><p>从 <code class="docutils literal notranslate"><span class="pre">pgr_maximumCardinalityMatching</span></code> 重命名</p></li>
 <li><p>函数已升级为提议。</p></li>
 </ul>
-</li>
-<li><p>版本2.3.0</p>
-<ul>
+<p class="rubric">版本2.3.0</p>
+<ul class="simple">
 <li><p>新实验性功能。</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -409,7 +411,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 16, 2025.<br/>
+      Last updated on 6月 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

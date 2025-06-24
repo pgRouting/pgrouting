@@ -293,6 +293,15 @@ table information.</p></li>
 <li><p><a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> - Breaks geometries that cross each other.</p></li>
 <li><p><a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> - Breaks geometries that (almost) touch each other.</p></li>
 </ul>
+<p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Family of functions</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> - Route from/to points anywhere on the graph.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost</span></a> - Costs of the shortest paths.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a> - Costs of the shortest paths.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP</span></a> - K shortest paths.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a> - Driving distance.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a> - Via routing</p></li>
+</ul>
 <section id="functions-by-categories">
 <h2>Functions by categories<a class="headerlink" href="#functions-by-categories" title="Link to this heading">¶</a></h2>
 <p><a class="reference internal" href="cost-category.html"><span class="doc">Cost - Category</span></a></p>
@@ -301,7 +310,7 @@ table information.</p></li>
 <li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Proposed</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost</span></a></p></li>
 </ul>
 <p><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a></p>
 <ul class="simple">
@@ -309,16 +318,19 @@ table information.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a></p></li>
 </ul>
 <p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">Driving Distance - Category</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Driving Distance based on Dijkstra’s algorithm</p></li>
 <li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a> - Driving Distance based on Prim’s algorithm</p></li>
 <li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a> - Driving Distance based on Kruskal’s algorithm</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a> - Driving Distance based on pgr_withPoints</p></li>
 </ul>
 <p><a class="reference internal" href="KSP-category.html"><span class="doc">K shortest paths - Category</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Yen’s algorithm based on pgr_dijkstra</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP</span></a> - Yen’s algorithm based on pgr_withPoints</p></li>
 </ul>
 <p><a class="reference internal" href="spanningTree-category.html"><span class="doc">Spanning Tree - Category</span></a></p>
 <ul class="simple">
@@ -334,6 +346,16 @@ table information.</p></li>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints - Category</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Family of functions</span></a> - Functions based on Dijkstra algorithm.</p></li>
+<li><p>From the <a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Family of functions</span></a>:</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a> - Vertex/Point routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a> - Via Vertex/point routing with restrictions.</p></li>
+</ul>
+</li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -363,7 +385,7 @@ table information.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Jun 16, 2025.<br/>
+      Last updated on Jun 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

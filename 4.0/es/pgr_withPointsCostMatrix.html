@@ -73,11 +73,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
 </ul>
 <ul>
@@ -103,7 +103,6 @@
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">Parámetros opcionales para Con puntos</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
@@ -169,7 +168,6 @@
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">Parámetros opcionales para Con puntos</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
@@ -218,12 +216,15 @@
 <p class="rubric">Versión 4.0.0</p>
 <ul class="simple">
 <li><p>Función promovida a oficial.</p></li>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
-unnamed positional.</p>
+<li><p><strong>Driving side</strong> parameter is positional unnamed and compulsory.</p>
 <ul>
-<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
-<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
+<li><p>Valid values depend on kind of graph</p></li>
+</ul>
+</li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointscostmatrix(text,text,anyarray,boolean,character)</p></li>
 </ul>
 </li>
 </ul>
@@ -233,53 +234,7 @@ unnamed positional.</p>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>Modify the graph to include points defined by points_sql.
-Using Dijkstra algorithm, return calculate and return a cost matrix.</p>
-<p>Las principales características son:</p>
-<ul class="simple">
-<li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
-<li><p>No devuelve una ruta.</p></li>
-<li><p>Devuelve la suma de los costes de la ruta más corta para la combinación de pares de vértices en el grafo modificado.</p>
-<ul>
-<li><p>The returned values are in the form of a set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code>.</p></li>
-</ul>
-</li>
-<li><p>Los vértices del grafo son:</p>
-<ul>
-<li><p><strong>positive</strong> when it belongs to the edges sql</p></li>
-<li><p><strong>negative</strong> when it belongs to the points sql</p></li>
-</ul>
-</li>
-<li><p>Los valores se devuelven cuando hay una ruta.</p>
-<ul>
-<li><p>Cuando el vértice inicial y el vértice final son iguales, no hay camino.</p>
-<ul>
-<li><p>El <cite>agg_cost</cite> en los valores no incluidos <cite>(v, v)</cite> es <cite>0</cite></p></li>
-</ul>
-</li>
-<li><p>Cuando el vértice de salida y el vértice destino son diferentes y no hay ninguna ruta:</p>
-<ul>
-<li><p>El <cite>agg_cost</cite> en los valores no incluidos <cite>(u, v)</cite> es <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
-</ul>
-</li>
-<li><p>Si los valores devueltos se almacenan en una tabla, el índice único sería el par: <cite>(start_vid, end_vid)</cite>.</p></li>
-<li><p>Para los grafos <strong>no dirigidos</strong>, los resultados son <strong>simétricos</strong>.</p>
-<ul>
-<li><p>El <cite>agg_cost</cite> de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>For optimization purposes, any duplicated value in the input arrays of <strong>start vids</strong> or
-<strong>end vids</strong> or are ignored.</p></li>
-<li><p>Los valores regresados se ordenan:</p>
-<ul>
-<li><p><cite>start_vid</cite> ascendente</p></li>
-<li><p><cite>end_vid</cite> ascendente</p></li>
-</ul>
-</li>
-<li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(|start\_vids|\times(V \log V + E))\)</span></p></li>
-</ul>
+<p>Utilizando el algoritmo Dijkstra, calcula y devuelve una matriz de costes.</p>
 <p>Algoritmo de Dijkstra, concebido por el informático holandés Edsger Dijkstra en 1956. Es un algoritmo de búsqueda en grafos que resuelve el problema de ruta más corta para un grafo con costos de aristas no negativos, produciendo la ruta más corta desde un vértice inicial a un vértice final . Esta implementación se puede utilizar con un grafos dirigidos y no dirigidos.</p>
 <p>Las características principales son:</p>
 <ul class="simple">
@@ -340,7 +295,7 @@ Using Dijkstra algorithm, return calculate and return a cost matrix.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>driving side</strong>  [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>driving side</strong> [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed]</span></code></div>
 </div>
 <div class="line-block">
@@ -426,37 +381,6 @@ Using Dijkstra algorithm, return calculate and return a cost matrix.</p>
 <td><ul class="simple">
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite>.</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="with-points-optional-parameters">
-<h3>Parámetros opcionales para Con puntos<a class="headerlink" href="#with-points-optional-parameters" title="Link to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 15.9%" />
-<col style="width: 8.0%" />
-<col style="width: 8.0%" />
-<col style="width: 68.2%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
-<th class="head"><p>Tipo</p></th>
-<th class="head"><p>x Defecto</p></th>
-<th class="head"><p>Descripción</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indica si el lado de manejo es:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> para manejo del lado derecho.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> para lado de manejo izquierdo.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for ambos.</p></li>
 </ul>
 </td>
 </tr>
@@ -662,6 +586,7 @@ Using Dijkstra algorithm, return calculate and return a cost matrix.</p>
 <ul class="simple">
 <li><p>Punto <span class="math notranslate nohighlight">\(-1\)</span> corresponde a la arista más cercana al punto <cite>(2.9, 1.8)</cite>.</p></li>
 <li><p>Punto <span class="math notranslate nohighlight">\(-2\)</span> corresponde a la segunda arista más cercana al punto <cite>(2.9, 1.8)</cite>.</p></li>
+<li><p>Estar cercano al grafo no significa tener la ruta más corta.</p></li>
 </ul>
 </section>
 <section id="use-with-pgr-tsp">
@@ -716,7 +641,7 @@ Using Dijkstra algorithm, return calculate and return a cost matrix.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en jun 16, 2025.<br/>
+      Actualizado por última vez en jun 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

@@ -72,11 +72,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
@@ -109,7 +109,6 @@
 </li>
 <li><a class="reference internal" href="#parameters">Parameters</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
@@ -185,7 +184,6 @@
 </li>
 <li><a class="reference internal" href="#parameters">Parameters</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
@@ -239,12 +237,19 @@ given.</p>
 <p class="rubric">Version 4.0.0</p>
 <ul class="simple">
 <li><p>Function promoted to official.</p></li>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
-unnamed positional.</p>
+<li><p><strong>Driving side</strong> parameter is unnamed and compulsory.</p>
 <ul>
-<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
-<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
+<li><p>Valid values depend on kind of graph</p></li>
+</ul>
+</li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,anyarray,bigint,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,bigint,anyarray,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,bigint,bigint,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,text,boolean,character)</p></li>
 </ul>
 </li>
 </ul>
@@ -277,8 +282,8 @@ vertices in the modified graph.</p>
 </li>
 <li><p>Vertices of the graph are:</p>
 <ul>
-<li><p><strong>positive</strong> when it belongs to the edges sql</p></li>
-<li><p><strong>negative</strong> when it belongs to the points sql</p></li>
+<li><p><strong>positive</strong> when it belongs to the edges_sql</p></li>
+<li><p><strong>negative</strong> when it belongs to the points_sql</p></li>
 </ul>
 </li>
 <li><p>Values are returned when there is a path.</p>
@@ -317,6 +322,7 @@ pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<p class="rubric">Summary</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -324,7 +330,7 @@ pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 <div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, <strong>driving side</strong> [<strong>options</strong>])</div>
 <div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, <strong>driving side</strong> [<strong>options</strong>])</div>
 <div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, <strong>driving side</strong> [<strong>options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, <strong>driving side</strong> [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed]</span></code></div>
 </div>
 <div class="line-block">
@@ -350,11 +356,7 @@ withPoints family of functions.</p>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span> with default options.</p>
-</dd>
-</dl>
+<p class="rubric">From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span> with right driving side in directed graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -369,25 +371,19 @@ withPoints family of functions.</p>
 </section>
 <section id="one-to-many">
 <span id="index-2"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Link to this heading">¶</a></h3>
-<div class="admonition-class-signatures admonition">
-<p class="admonition-title"> :class: signatures</p>
-<dl>
-<dt>pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, <strong>driving side</strong> [<strong>options</strong>])</dt><dd><div class="line-block">
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, <strong>driving side</strong> [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
-</dd>
-</dl>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> and vertex <span class="math notranslate nohighlight">\(7\)</span> on an
+<p class="rubric">From point <span class="math notranslate nohighlight">\(1\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> and vertex <span class="math notranslate nohighlight">\(7\)</span> on an
 undirected graph</p>
-</dd>
-</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -417,7 +413,7 @@ undirected graph</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(6\)</span> to point <span class="math notranslate nohighlight">\(3\)</span></p>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(6\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> with right driving side in directed graph.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
@@ -449,7 +445,7 @@ undirected graph</p>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(6\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> and
-vertex <span class="math notranslate nohighlight">\(1\)</span></p>
+vertex <span class="math notranslate nohighlight">\(1\)</span> with left side driving.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
@@ -486,7 +482,7 @@ vertex <span class="math notranslate nohighlight">\(1\)</span></p>
 </dd>
 </dl>
 <p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span>, and from vertex <span class="math notranslate nohighlight">\(6\)</span> to point
-<span class="math notranslate nohighlight">\(3\)</span> with <strong>right</strong> side driving.</p>
+<span class="math notranslate nohighlight">\(3\)</span> with right side driving.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -549,6 +545,16 @@ point’s identifier.</p></td>
 <td><p>Array of identifiers of ending vertices. Negative values are for point’s
 identifiers.</p></td>
 </tr>
+<tr class="row-odd"><td><p><strong>driving side</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] indicating if the driving side is:</p>
+<ul class="simple">
+<li><p>[<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>] for right driving side (for directed graph only)</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>] for left driving side (for directed graph only)</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] for both (only for undirected graph)</p></li>
+</ul>
+</td>
+</tr>
 </tbody>
 </table>
 <section id="optional-parameters">
@@ -568,37 +574,6 @@ identifiers.</p></td>
 <td><ul class="simple">
 <li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="with-points-optional-parameters">
-<h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Link to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 15.9%" />
-<col style="width: 8.0%" />
-<col style="width: 8.0%" />
-<col style="width: 68.2%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indicating if the driving side is:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> for right driving side.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> for left driving side.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for both.</p></li>
 </ul>
 </td>
 </tr>
@@ -913,13 +888,14 @@ on the graph of point <cite>(2.9, 1.8)</cite>.</p>
 
 </pre></div>
 </div>
-<p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p>
 </section>
 </section>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Family of functions</span></a></p></li>
+<li><p><a class="reference internal" href="cost-category.html"><span class="doc">Cost - Category</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -942,7 +918,7 @@ on the graph of point <cite>(2.9, 1.8)</cite>.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Jun 16, 2025.<br/>
+      Last updated on Jun 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

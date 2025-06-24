@@ -100,11 +100,14 @@
 <li><a class="reference internal" href="#pgrouting-4">pgRouting 4</a><ul>
 <li><a class="reference internal" href="#pgrouting-4-0">pgRouting 4.0</a><ul>
 <li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 发布说明</a><ul>
+<li><a class="reference internal" href="#summary-of-changes-by-function">Summary of changes by function</a></li>
 <li><a class="reference internal" href="#functions-promoted-to-official">正式版功能函数</a></li>
+<li><a class="reference internal" href="#signatures-promoted-to-official">正式版函数签名</a></li>
 <li><a class="reference internal" href="#sql-signatures-and-output-standardization">SQL signatures and output standardization</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-signatures">移除已弃用的 SQL 函数签名</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-functions">移除已弃用的SQL函数</a></li>
-<li><a class="reference internal" href="#rubric-removal-of-sql-deprecated-internal-functions">rubric:: Removal of SQL deprecated internal functions</a></li>
+<li><a class="reference internal" href="#removal-of-sql-deprecated-internal-functions">移除已弃用的SQL内部函数</a></li>
+<li><a class="reference internal" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting">Summary of functions and signatures no longer on pgrouting</a></li>
 <li><a class="reference internal" href="#code-enhancements">Code enhancements</a></li>
 </ul>
 </li>
@@ -290,11 +293,14 @@
 <li><a class="reference internal" href="#pgrouting-4">pgRouting 4</a><ul>
 <li><a class="reference internal" href="#pgrouting-4-0">pgRouting 4.0</a><ul>
 <li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 发布说明</a><ul>
+<li><a class="reference internal" href="#summary-of-changes-by-function">Summary of changes by function</a></li>
 <li><a class="reference internal" href="#functions-promoted-to-official">正式版功能函数</a></li>
+<li><a class="reference internal" href="#signatures-promoted-to-official">正式版函数签名</a></li>
 <li><a class="reference internal" href="#sql-signatures-and-output-standardization">SQL signatures and output standardization</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-signatures">移除已弃用的 SQL 函数签名</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-functions">移除已弃用的SQL函数</a></li>
-<li><a class="reference internal" href="#rubric-removal-of-sql-deprecated-internal-functions">rubric:: Removal of SQL deprecated internal functions</a></li>
+<li><a class="reference internal" href="#removal-of-sql-deprecated-internal-functions">移除已弃用的SQL内部函数</a></li>
+<li><a class="reference internal" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting">Summary of functions and signatures no longer on pgrouting</a></li>
 <li><a class="reference internal" href="#code-enhancements">Code enhancements</a></li>
 </ul>
 </li>
@@ -463,211 +469,422 @@
 <nav class="contents local" id="mayors">
 <p class="topic-title">主要版本</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-4" id="id18">pgRouting 4</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3" id="id19">pgRouting 3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2" id="id20">pgRouting 2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-1" id="id21">pgRouting 1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-4" id="id19">pgRouting 4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3" id="id20">pgRouting 3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2" id="id21">pgRouting 2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-1" id="id22">pgRouting 1</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-4">
-<h2><a class="toc-backref" href="#id18" role="doc-backlink">pgRouting 4</a><a class="headerlink" href="#pgrouting-4" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">pgRouting 4</a><a class="headerlink" href="#pgrouting-4" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="minors-4-x">
 <p class="topic-title">Minors 4.x</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-4-0" id="id22">pgRouting 4.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-4-0" id="id23">pgRouting 4.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-4-0">
-<h3><a class="toc-backref" href="#id22" role="doc-backlink">pgRouting 4.0</a><a class="headerlink" href="#pgrouting-4-0" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">pgRouting 4.0</a><a class="headerlink" href="#pgrouting-4-0" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="contents">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-4-0-0-release-notes" id="id23">pgRouting 4.0.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-4-0-0-release-notes" id="id24">pgRouting 4.0.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-4-0-0-release-notes">
-<h4><a class="toc-backref" href="#id23" role="doc-backlink">pgRouting 4.0.0 发布说明</a><a class="headerlink" href="#pgrouting-4-0-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id24" role="doc-backlink">pgRouting 4.0.0 发布说明</a><a class="headerlink" href="#pgrouting-4-0-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>查看本版本已关闭的所有议题和拉取请求,请访问： <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.0%22">GitHub 4.0.0版本里程碑关闭列表</a></p>
-<section id="functions-promoted-to-official">
-<h5>正式版功能函数<a class="headerlink" href="#functions-promoted-to-official" title="Link to this heading">¶</a></h5>
+<nav class="contents local" id="id1">
+<p class="topic-title">内容</p>
 <ul class="simple">
-<li><p>pgr_trsp</p></li>
-<li><p>pgr_trspVia</p></li>
-<li><p>pgr_trspVia_withPoints</p></li>
-<li><p>pgr_trsp_withPoints</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a> pgr_withPoints</p>
+<li><p><a class="reference internal" href="#summary-of-changes-by-function" id="id25">Summary of changes by function</a></p></li>
+<li><p><a class="reference internal" href="#functions-promoted-to-official" id="id26">正式版功能函数</a></p></li>
+<li><p><a class="reference internal" href="#signatures-promoted-to-official" id="id27">正式版函数签名</a></p></li>
+<li><p><a class="reference internal" href="#sql-signatures-and-output-standardization" id="id28">SQL signatures and output standardization</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-signatures" id="id29">移除已弃用的 SQL 函数签名</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-functions" id="id30">移除已弃用的SQL函数</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-internal-functions" id="id31">移除已弃用的SQL内部函数</a></p></li>
+<li><p><a class="reference internal" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" id="id32">Summary of functions and signatures no longer on pgrouting</a></p></li>
+<li><p><a class="reference internal" href="#code-enhancements" id="id33">Code enhancements</a></p></li>
+</ul>
+</nav>
+<section id="summary-of-changes-by-function">
+<h5><a class="toc-backref" href="#id25" role="doc-backlink">Summary of changes by function</a><a class="headerlink" href="#summary-of-changes-by-function" title="Link to this heading">¶</a></h5>
 <ul>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>函数正式发布。</p></li>
-<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
-unnamed positional.</p>
-<ul>
-<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
-<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a> pgr_withPointsCost</p>
-<ul>
-<li><p>函数正式发布。</p></li>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
-unnamed positional.</p>
-<ul>
-<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
-<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
-pgr_withPointsCostMatrix</p>
-<ul>
-<li><p>函数正式发布。</p></li>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
-unnamed positional.</p>
-<ul>
-<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
-<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>pgr_withPointsDD</p></li>
-<li><p>pgr_withPointsKSP</p></li>
-<li><p>pgr_withPointsVia</p></li>
-</ul>
-<p class="rubric">正式版函数签名</p>
-<dl class="simple">
-<dt><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a></dt><dd><p>Make official the Combinations signature on the official functions</p>
-</dd>
-</dl>
+<li><p>pgr_contraction</p>
 <ul class="simple">
-<li><p>pgr_aStar(组合)</p></li>
-<li><p>pgr_aStarCost(组合)</p></li>
-<li><p>pgr_bdAstar(组合)</p></li>
-<li><p>pgr_bdAstarCost(组合)</p></li>
-<li><p>pgr_bdDijkstra(组合)</p></li>
-<li><p>pgr_bdDijkstraCost(组合)</p></li>
-<li><p>pgr_dijkstra(Combinations)</p></li>
-<li><p>pgr_dijkstraCost(Combinations)</p></li>
-<li><p>pgr_KSP（所有函数签名版本）</p></li>
-<li><p>pgr_boykovKolmogorov (组合)</p></li>
-<li><p>pgr_edmondsKarp(组合)</p></li>
-<li><p>pgr_maxFlow(组合)</p></li>
-<li><p>pgr_pushRelabel(组合)</p></li>
-</ul>
-</section>
-<section id="sql-signatures-and-output-standardization">
-<h5>SQL signatures and output standardization<a class="headerlink" href="#sql-signatures-and-output-standardization" title="Link to this heading">¶</a></h5>
-<p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2904">#2904</a>
-Standardize output columns of functions with different output columns within overloads</p>
-<p class="rubric">Official functions</p>
+<li><p>Breaking change, signatures no longer available:</p>
 <ul>
-<li><dl class="simple">
-<dt><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a></dt><dd><p>pgr_withPoints</p>
-</dd>
-</dl>
-<ul class="simple">
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>函数正式发布。</p></li>
-<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
-unnamed positional.</p>
-<ul>
-<li><p>Directed graph valid values: <code class="docutils literal notranslate"><span class="pre">l</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
-<li><p>Undirected graph valid values: <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
+<li><p>pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2906">#2906</a> pgr_bdDijkstra</p>
+<li><p>pgr_bdDijkstra</p>
 <ul class="simple">
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>组合签名已升级为正式版本。</p></li>
 </ul>
 </li>
-</ul>
-<p class="rubric">实验性函数</p>
+<li><p>pgr_bellmanFord</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2907">#2907</a>
-pgr_bellmanFord</p>
-<ul>
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2908">#2908</a>
-pgr_binaryBreadthFirstSearch</p>
-<ul>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2910">#2910</a>
-pgr_edwardMoore</p>
-<ul>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2913">#2913</a>
-pgr_DAGshortestPath</p>
-<ul>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="removal-of-sql-deprecated-signatures">
-<h5>移除已弃用的 SQL 函数签名<a class="headerlink" href="#removal-of-sql-deprecated-signatures" title="Link to this heading">¶</a></h5>
+<li><p>pgr_binaryBreadthFirstSearch</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2798">#2798</a>:
-pgr_contraction</p>
-<ul>
-<li><p>pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a>: pgr_trsp</p>
+<li><p>pgr_edwardMoore</p>
+<ul class="simple">
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_DAGshortestPath</p>
+<ul class="simple">
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_trsp</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
 <ul>
 <li><p>pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
 <li><p>pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p>pgr_trspVia</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_trspviavertices(text,anyarray,boolean,boolean,text)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_trspVia_withPoints</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+<li><p><strong>Driving side</strong> parameter is positional unnamed and compulsory.</p>
+<ul>
+<li><p>Valid values depend on kind of graph</p></li>
+</ul>
+</li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+<li><p>pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_trsp_withPoints</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+<li><p><strong>Driving side</strong> parameter is positional unnamed and compulsory.</p>
+<ul>
+<li><p>Valid values depend on kind of graph</p></li>
+</ul>
+</li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)</p></li>
+<li><p>pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)</p></li>
+<li><p>pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)</p></li>
+<li><p>pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)</p></li>
+<li><p>pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_withPoints</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+<li><p><strong>Driving side</strong> parameter is positional unnamed and compulsory.</p>
+<ul>
+<li><p>Valid values depend on kind of graph</p></li>
+</ul>
+</li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)</p></li>
+<li><p>pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)</p></li>
+<li><p>pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)</p></li>
+<li><p>pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)</p></li>
+<li><p>pgr_withpoints(text,text,text,boolean,character,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_withPointsCost</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+<li><p><strong>Driving side</strong> parameter is unnamed and compulsory.</p>
+<ul>
+<li><p>Valid values depend on kind of graph</p></li>
+</ul>
+</li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,anyarray,bigint,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,bigint,anyarray,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,bigint,bigint,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,text,boolean,character)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_withPointsCostMatrix</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+<li><p><strong>Driving side</strong> parameter is positional unnamed and compulsory.</p>
+<ul>
+<li><p>Valid values depend on kind of graph</p></li>
+</ul>
+</li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointscostmatrix(text,text,anyarray,boolean,character)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_withPointsDD</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)</p></li>
+<li><p>pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_withPointsKSP</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_withPointsVia</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+<li><p><strong>Driving side</strong> parameter is positional unnamed and compulsory.</p>
+<ul>
+<li><p>Valid values depend on kind of graph</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="functions-promoted-to-official">
+<h5><a class="toc-backref" href="#id26" role="doc-backlink">正式版功能函数</a><a class="headerlink" href="#functions-promoted-to-official" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>
+pgr_trsp</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>
+pgr_trspVia</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>
+pgr_trspVia_withPoints</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>
+pgr_trsp_withPoints</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
+pgr_withPoints</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
+pgr_withPointsCost</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
+pgr_withPointsCostMatrix</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
+pgr_withPointsDD</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
+pgr_withPointsKSP</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
+pgr_withPointsVia</p></li>
+</ul>
+</section>
+<section id="signatures-promoted-to-official">
+<h5><a class="toc-backref" href="#id27" role="doc-backlink">正式版函数签名</a><a class="headerlink" href="#signatures-promoted-to-official" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a>
+pgr_aStar(Combinations)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a>
+pgr_aStarCost(Combinations)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a>
+pgr_bdAstar(Combinations)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a>
+pgr_bdAstarCost(Combinations)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a>
+pgr_bdDijkstra(Combinations)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a>
+pgr_bdDijkstraCost(Combinations)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a>
+pgr_dijkstra(Combinations)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a>
+pgr_dijkstraCost(Combinations)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a>
+pgr_KSP(All signatures)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a>
+pgr_boykovKolmogorov(Combinations)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a>
+pgr_edmondsKarp(Combinations)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a>
+pgr_maxFlow(Combinations)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2918">#2718</a>
+pgr_pushRelabel(Combinations)</p></li>
+</ul>
+</section>
+<section id="sql-signatures-and-output-standardization">
+<h5><a class="toc-backref" href="#id28" role="doc-backlink">SQL signatures and output standardization</a><a class="headerlink" href="#sql-signatures-and-output-standardization" title="Link to this heading">¶</a></h5>
+<p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2904">#2904</a>
+Standardize output columns of functions with different output columns within overloads</p>
+<p class="rubric">Standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
+pgr_withPoints</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2906">#2906</a>
+pgr_bdDijkstra</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2907">#2907</a>
+pgr_bellmanFord</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2908">#2908</a>
+pgr_binaryBreadthFirstSearch</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2910">#2910</a>
+pgr_edwardMoore</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2913">#2913</a>
+pgr_DAGshortestPath</p></li>
+</ul>
+<p class="rubric">Standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
+pgr_withPointsCost</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>
+pgr_withPointsCostMatrix</p></li>
+</ul>
+</section>
+<section id="removal-of-sql-deprecated-signatures">
+<h5><a class="toc-backref" href="#id29" role="doc-backlink">移除已弃用的 SQL 函数签名</a><a class="headerlink" href="#removal-of-sql-deprecated-signatures" title="Link to this heading">¶</a></h5>
+<ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2798">#2798</a>:
+pgr_contraction</p>
+<p>, signatures no longer available:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a>: pgr_trsp</p>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
+<li><p>pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2700">#2700</a>:
+pgr_withPointsVia</p>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2888">#2888</a>:
 pgr_findCloseEdges</p>
-<ul>
+<ul class="simple">
 <li><p>pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)</p></li>
 <li><p>pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2890">#2890</a>:
 pgr_withPointsDD</p>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
 <ul>
-<li><p>pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
 <li><p>pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)</p></li>
+<li><p>pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2895">#2895</a>:
 pgr_withPointsKSP</p>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
 <ul>
 <li><p>pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2899">#2899</a>:
-pgr_maxCardinalityMatch</p>
-<ul>
-<li><p>pgr_maxcardinalitymatch(text,boolean)</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2901">#2901</a>: TSP family</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2899">#2899</a>:
+pgr_maxCardinalityMatch</p>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
 <ul>
-<li><p>pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
-<li><p>pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
+<li><p>pgr_maxCardinalityMatch(text,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2901">#2901</a>:
+pgr_TSP</p>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double
+precision,double precision,double precision,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2901">#2901</a>:
+pgr_TSPeuclidean</p>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,
+integer,double precision,double precision,double precision,boolean)</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="removal-of-sql-deprecated-functions">
-<h5>移除已弃用的SQL函数<a class="headerlink" href="#removal-of-sql-deprecated-functions" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id30" role="doc-backlink">移除已弃用的SQL函数</a><a class="headerlink" href="#removal-of-sql-deprecated-functions" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2681">#2681</a>:
 pgr_trspviaedges</p></li>
@@ -687,123 +904,172 @@ pgr_createVerticesTable</p></li>
 pgr_nodeNetwork</p></li>
 </ul>
 </section>
-<section id="rubric-removal-of-sql-deprecated-internal-functions">
-<h5>rubric:: Removal of SQL deprecated internal functions<a class="headerlink" href="#rubric-removal-of-sql-deprecated-internal-functions" title="Link to this heading">¶</a></h5>
-<p>Related issues: <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2897">#2897</a></p>
+<section id="removal-of-sql-deprecated-internal-functions">
+<h5><a class="toc-backref" href="#id31" role="doc-backlink">移除已弃用的SQL内部函数</a><a class="headerlink" href="#removal-of-sql-deprecated-internal-functions" title="Link to this heading">¶</a></h5>
 <ul class="simple">
-<li><p>_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)</p></li>
-<li><p>_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)</p></li>
-<li><p>_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)</p></li>
-<li><p>_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)</p></li>
-<li><p>_pgr_dijkstra(text,text,boolean,boolean,boolean)</p></li>
-<li><p>_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)</p></li>
-<li><p>_pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)</p></li>
-<li><p>_pgr_ksp(text,bigint,bigint,integer,boolean,boolean)</p></li>
-<li><p>_pgr_ksp(text,text,integer,boolean,boolean)</p></li>
-<li><p>_pgr_kruskal(text,anyarray,text,bigint,double precision)</p></li>
-<li><p>_pgr_maxcardinalitymatch(text,boolean)</p></li>
-<li><p>_pgr_prim(text,anyarray,text,bigint,double precision)</p></li>
-<li><p>_pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
-<li><p>_pgr_trsp(text,text,anyarray,anyarray,boolean)</p></li>
-<li><p>_pgr_trsp(text,text,anyarray,bigint,boolean)</p></li>
-<li><p>_pgr_trsp(text,text,bigint,anyarray,boolean)</p></li>
-<li><p>_pgr_trsp(text,text,bigint,bigint,boolean)</p></li>
-<li><p>_pgr_trspviavertices(text,integer[],boolean,boolean,text)</p></li>
-<li><p>_pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
-<li><p>_pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)</p></li>
-<li><p>_pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)</p></li>
-<li><p>_pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)</p></li>
-<li><p>_pgr_withpointsvia(text,bigint[],double precision[],boolean)</p></li>
-<li><p>_trsp(text,text,anyarray,anyarray,boolean)</p></li>
-<li><p>_v4trsp(text,text,anyarray,anyarray,boolean)</p></li>
-<li><p>_v4trsp(text,text,text,boolean)</p></li>
-<li><p>_pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
-<li><p>_pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2913">#2913</a>
-_pgr_dagshortestpath(text,text,boolean,boolean)</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2913">#2913</a>
-_pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a>:移除未使用的内部函数</p>
-<ul>
-<li><p>_pgr_checkverttab(text,text[],integer,text)</p></li>
-<li><p>_pgr_createindex(text,text,text,integer,text)</p></li>
-<li><p>_pgr_createindex(text,text,text,text,integer,text)</p></li>
-<li><p>_pgr_endpoint(geometry)</p></li>
-<li><p>_pgr_getcolumnname(text,text,integer,text)</p></li>
-<li><p>_pgr_getcolumnname(text,text,text,integer,text)</p></li>
-<li><p>_pgr_getcolumntype(text,text,integer,text)</p></li>
-<li><p>_pgr_getcolumntype(text,text,text,integer,text)</p></li>
-<li><p>_pgr_gettablename(text,integer,text)</p></li>
-<li><p>_pgr_iscolumnindexed(text,text,integer,text)</p></li>
-<li><p>_pgr_iscolumnindexed(text,text,text,integer,text)</p></li>
-<li><p>_pgr_iscolumnintable(text,text)</p></li>
-<li><p>_pgr_msg(integer,text,text)</p></li>
-<li><p>_pgr_onerror(boolean,integer,text,text,text,text)</p></li>
-<li><p>_pgr_pointtoid(geometry,double precision,text,integer)</p></li>
-<li><p>_pgr_quote_ident(text)</p></li>
-<li><p>_pgr_startpoint(geometry)</p></li>
-<li><p>_pgr_versionless(text,text)</p></li>
-</ul>
-</li>
+<li><p>#2748 _pgr_alphashape(text,double precision)</p></li>
+<li><p>#2861 _pgr_checkverttab(text,text[],integer,text)</p></li>
+<li><p>#2861 _pgr_createindex(text,text,text,integer,text)</p></li>
+<li><p>#2861 _pgr_createindex(text,text,text,text,integer,text)</p></li>
+<li><p>#2913 _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)</p></li>
+<li><p>#2913 _pgr_dagshortestpath(text,text,boolean,boolean)</p></li>
+<li><p>#2730 _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)</p></li>
+<li><p>#2730 _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)</p></li>
+<li><p>#2730 _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)</p></li>
+<li><p>#2730 _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)</p></li>
+<li><p>#2730 _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)</p></li>
+<li><p>#2730 _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)</p></li>
+<li><p>#2730 _pgr_dijkstra(text,text,boolean,boolean,boolean)</p></li>
+<li><p>#2735 _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)</p></li>
+<li><p>#2861 _pgr_endpoint(geometry)</p></li>
+<li><p>#2861 _pgr_getcolumnname(text,text,integer,text)</p></li>
+<li><p>#2861 _pgr_getcolumnname(text,text,text,integer,text)</p></li>
+<li><p>#2861 _pgr_getcolumntype(text,text,integer,text)</p></li>
+<li><p>#2861 _pgr_getcolumntype(text,text,text,integer,text)</p></li>
+<li><p>#2861 _pgr_gettablename(text,integer,text)</p></li>
+<li><p>#2861 _pgr_iscolumnindexed(text,text,integer,text)</p></li>
+<li><p>#2861 _pgr_iscolumnindexed(text,text,text,integer,text)</p></li>
+<li><p>#2861 _pgr_iscolumnintable(text,text)</p></li>
+<li><p>#2745 _pgr_kruskal(text,anyarray,text,bigint,double precision)</p></li>
+<li><p>#2897 _pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)</p></li>
+<li><p>#2897 _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)</p></li>
+<li><p>#2897 _pgr_ksp(text,text,integer,boolean,boolean)</p></li>
+<li><p>#2899 _pgr_maxcardinalitymatch(text,boolean)</p></li>
+<li><p>#2861 _pgr_msg(integer,text,text)</p></li>
+<li><p>#2861 _pgr_onerror(boolean,integer,text,text,text,text)</p></li>
+<li><p>#2861 _pgr_pointtoid(geometry,double precision,text,integer)</p></li>
+<li><p>#2743 _pgr_prim(text,anyarray,text,bigint,double precision)</p></li>
+<li><p>#2861 _pgr_quote_ident(text)</p></li>
+<li><p>#2861 _pgr_startpoint(geometry)</p></li>
+<li><p>#2683 _pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
+<li><p>#2683 _pgr_trsp(text,text,anyarray,anyarray,boolean)</p></li>
+<li><p>#2683 _pgr_trsp(text,text,anyarray,bigint,boolean)</p></li>
+<li><p>#2683 _pgr_trsp(text,text,bigint,anyarray,boolean)</p></li>
+<li><p>#2683 _pgr_trsp(text,text,bigint,bigint,boolean)</p></li>
+<li><p>#2682 _pgr_trspviavertices(text,integer[],boolean,boolean,text)</p></li>
+<li><p>#2919 _pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+<li><p>#2919 _pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)</p></li>
+<li><p>#2919 _pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)</p></li>
+<li><p>#2901 _pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
+<li><p>#2901 _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
+<li><p>#2861 _pgr_versionless(text,text)</p></li>
+<li><p>#2890 _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
+<li><p>#2895 _pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)</p></li>
+<li><p>#2895 _pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)</p></li>
+<li><p>#2895 _pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)</p></li>
+<li><p>#2741 _pgr_withpointsvia(text,bigint[],double precision[],boolean)</p></li>
+<li><p>#2741 _pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+<li><p>#2683 _trsp(text,text,anyarray,anyarray,boolean)</p></li>
+<li><p>#2683 _v4trsp(text,text,anyarray,anyarray,boolean)</p></li>
+<li><p>#2683 _v4trsp(text,text,text,boolean)</p></li>
 </ul>
 </section>
+<section id="summary-of-functions-and-signatures-no-longer-on-pgrouting">
+<h5><a class="toc-backref" href="#id32" role="doc-backlink">Summary of functions and signatures no longer on pgrouting</a><a class="headerlink" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>#2748 pgr_alphashape(geometry,double precision)</p></li>
+<li><p>#2752 pgr_analyzegraph(text,double precision,text,text,text,text,text)</p></li>
+<li><p>#2755 pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)</p></li>
+<li><p>#2798 pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+<li><p>#2751 pgr_createtopology(text,double precision,text,text,text,text,text,boolean)</p></li>
+<li><p>#2827 pgr_createverticestable(text,text,text,text,text)</p></li>
+<li><p>#2888 pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)</p></li>
+<li><p>#2888 pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)</p></li>
+<li><p>#2899 pgr_maxcardinalitymatch(text,boolean)</p></li>
+<li><p>#2886 pgr_nodenetwork(text,double precision,text,text,text,text,boolean)</p></li>
+<li><p>#2683 pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
+<li><p>#2683 pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
+<li><p>#2681 pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)</p></li>
+<li><p>#2682 pgr_trspviavertices(text,anyarray,boolean,boolean,text)</p></li>
+<li><p>#2919 pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+<li><p>#2919 pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)</p></li>
+<li><p>#2919 pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)</p></li>
+<li><p>#2919 pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)</p></li>
+<li><p>#2919 pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)</p></li>
+<li><p>#2919 pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)</p></li>
+<li><p>#2901 pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
+<li><p>#2901 pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
+<li><p>#2919 pgr_withpointscostmatrix(text,text,anyarray,boolean,character)</p></li>
+<li><p>#2919 pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)</p></li>
+<li><p>#2919 pgr_withpointscost(text,text,anyarray,bigint,boolean,character)</p></li>
+<li><p>#2919 pgr_withpointscost(text,text,bigint,anyarray,boolean,character)</p></li>
+<li><p>#2919 pgr_withpointscost(text,text,bigint,bigint,boolean,character)</p></li>
+<li><p>#2919 pgr_withpointscost(text,text,text,boolean,character)</p></li>
+<li><p>#2890 pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
+<li><p>#2890 pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)</p></li>
+<li><p>#2895 pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)</p></li>
+<li><p>#2919 pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)</p></li>
+<li><p>#2919 pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)</p></li>
+<li><p>#2919 pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)</p></li>
+<li><p>#2919 pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)</p></li>
+<li><p>#2919 pgr_withpoints(text,text,text,boolean,character,boolean)</p></li>
+<li><p>#2919 pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+</ul>
+<p class="rubric">Internal functions</p>
+</section>
 <section id="code-enhancements">
-<h5>Code enhancements<a class="headerlink" href="#code-enhancements" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id33" role="doc-backlink">Code enhancements</a><a class="headerlink" href="#code-enhancements" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>移除未使用的C/C++代码</p></li>
 <li><p>Refactor the Script to build the update PostgreSQL file.</p></li>
-<li><p>One driver for:</p>
+<li><p>One process &amp; driver for:</p>
 <ul>
-<li><p>allpairs: johnson and Flowy-Warshall</p></li>
+<li><p>allpairs: johnson and Floyd-Warshall</p></li>
 <li><p>Shortest path: Dijkstra and withPoints using Dijkstra</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">弃用内部C/C++函数</p>
+<p>Deprecated functions are substitued by new function.</p>
 <ul class="simple">
-<li><p>_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)</p></li>
-<li><p>_pgr_kruskal(text,anyarray,text,bigint,double precision)</p></li>
-<li><p>_pgr_prim(text,anyarray,text,bigint,double precision)</p></li>
+<li><p>_pgr_drivingdistance =&gt; _pgr_drivingdistancev4</p></li>
+<li><p>_pgr_withpointsdd =&gt; _pgr_withpointsddv4</p></li>
+<li><p>_pgr_kruskal =&gt; _pgr_kruskalv4</p></li>
+<li><p>_pgr_prim =&gt; _pgr_primv4</p></li>
+<li><p>_pgr_dijkstra =&gt; _pgr_dijkstra_v4</p></li>
+<li><p>_pgr_withpointsksp =&gt; _pgr_withpointsksp_v4</p></li>
+<li><p>_pgr_trspvia_withpoints =&gt; _pgr_trspvia_withpoints_v4</p></li>
+<li><p>_pgr_trsp_withpoints =&gt; _pgr_trsp_withpoints_v4</p></li>
+<li><p>_pgr_withpointsvia =&gt; _pgr_withpointsvia_v4</p></li>
 </ul>
 <p class="rubric">遗留代码中内部 C/C++ 函数</p>
 <ul class="simple">
-<li><p>_trsp(text,text,anyarray,anyarray,boolean)</p></li>
-<li><p>_v4trsp(text,text,anyarray,anyarray,boolean)</p></li>
-<li><p>_v4trsp(text,text,text,boolean)</p></li>
-<li><p>_pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2913">#2913</a>
-_pgr_dagshortestpath</p></li>
+<li><p>#2683 _trsp</p></li>
+<li><p>#2683 _v4trsp</p></li>
+<li><p>#2683 _v4trsp</p></li>
+<li><p>#2748 _pgr_alphashape</p></li>
+<li><p>#2913 _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 </section>
 </section>
 </section>
 <section id="pgrouting-3">
-<h2><a class="toc-backref" href="#id19" role="doc-backlink">pgRouting 3</a><a class="headerlink" href="#pgrouting-3" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">pgRouting 3</a><a class="headerlink" href="#pgrouting-3" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="minors-3-x">
 <p class="topic-title">3.x小版本</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-8" id="id24">pgRouting 3.8</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-7" id="id25">pgRouting 3.7</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6" id="id26">pgRouting 3.6</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-5" id="id27">pgRouting 3.5</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-4" id="id28">pgRouting 3.4</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3" id="id29">pgRouting 3.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-2" id="id30">pgRouting 3.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1" id="id31">pgRouting 3.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0" id="id32">pgRouting 3.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-8" id="id34">pgRouting 3.8</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7" id="id35">pgRouting 3.7</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6" id="id36">pgRouting 3.6</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-5" id="id37">pgRouting 3.5</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4" id="id38">pgRouting 3.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3" id="id39">pgRouting 3.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2" id="id40">pgRouting 3.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1" id="id41">pgRouting 3.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0" id="id42">pgRouting 3.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-8">
-<h3><a class="toc-backref" href="#id24" role="doc-backlink">pgRouting 3.8</a><a class="headerlink" href="#pgrouting-3-8" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id1">
+<h3><a class="toc-backref" href="#id34" role="doc-backlink">pgRouting 3.8</a><a class="headerlink" href="#pgrouting-3-8" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id2">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-8-0-release-notes" id="id33">pgRouting 3.8.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-8-0-release-notes" id="id43">pgRouting 3.8.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-8-0-release-notes">
-<h4><a class="toc-backref" href="#id33" role="doc-backlink">pgRouting 3.8.0 发布说明</a><a class="headerlink" href="#pgrouting-3-8-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id43" role="doc-backlink">pgRouting 3.8.0 发布说明</a><a class="headerlink" href="#pgrouting-3-8-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>查看本版本已关闭的所有议题和拉取请求，请访问： <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.8.0%22">GitHub 3.8.0版本里程碑关闭列表</a></p>
 <p class="rubric">升级为 pgRouting 的官方函数。</p>
 <p class="rubric">度量</p>
@@ -895,25 +1161,25 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-3-7">
-<h3><a class="toc-backref" href="#id25" role="doc-backlink">pgRouting 3.7</a><a class="headerlink" href="#pgrouting-3-7" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id2">
+<h3><a class="toc-backref" href="#id35" role="doc-backlink">pgRouting 3.7</a><a class="headerlink" href="#pgrouting-3-7" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id3">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-7-3-release-notes" id="id34">pgRouting 3.7.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-7-2-release-notes" id="id35">pgRouting 3.7.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-7-1-release-notes" id="id36">pgRouting 3.7.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-7-0-release-notes" id="id37">pgRouting 3.7.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-3-release-notes" id="id44">pgRouting 3.7.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-2-release-notes" id="id45">pgRouting 3.7.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-1-release-notes" id="id46">pgRouting 3.7.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-0-release-notes" id="id47">pgRouting 3.7.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-7-3-release-notes">
-<h4><a class="toc-backref" href="#id34" role="doc-backlink">pgRouting 3.7.3 发布说明</a><a class="headerlink" href="#pgrouting-3-7-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id44" role="doc-backlink">pgRouting 3.7.3 发布说明</a><a class="headerlink" href="#pgrouting-3-7-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.3%22">Git closed milestone for 3.7.3</a></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2731">#2731</a> Ubuntu 22 上的构建失败</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-7-2-release-notes">
-<h4><a class="toc-backref" href="#id35" role="doc-backlink">pgRouting 3.7.2 发布说明</a><a class="headerlink" href="#pgrouting-3-7-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id45" role="doc-backlink">pgRouting 3.7.2 发布说明</a><a class="headerlink" href="#pgrouting-3-7-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>查看本版本已关闭的所有议题和拉取请求，请访问： <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.2%22">GitHub 3.7.2版本里程碑关闭列表</a></p>
 <p class="rubric">构建</p>
 <ul class="simple">
@@ -931,7 +1197,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-7-1-release-notes">
-<h4><a class="toc-backref" href="#id36" role="doc-backlink">pgRouting 3.7.1 发布说明</a><a class="headerlink" href="#pgrouting-3-7-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id46" role="doc-backlink">pgRouting 3.7.1 发布说明</a><a class="headerlink" href="#pgrouting-3-7-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>查看本版本已关闭的所有议题和拉取请求，请访问： <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.1%22">GitHub 3.7.1版本里程碑关闭列表</a></p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -944,7 +1210,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-7-0-release-notes">
-<h4><a class="toc-backref" href="#id37" role="doc-backlink">pgRouting 3.7.0 发布说明</a><a class="headerlink" href="#pgrouting-3-7-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id47" role="doc-backlink">pgRouting 3.7.0 发布说明</a><a class="headerlink" href="#pgrouting-3-7-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>查看本版本已关闭的所有议题和拉取请求，请访问： <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.0%22">GitHub 3.7.0版本里程碑关闭列表</a></p>
 <p class="rubric">支持</p>
 <ul class="simple">
@@ -1013,18 +1279,18 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-3-6">
-<h3><a class="toc-backref" href="#id26" role="doc-backlink">pgRouting 3.6</a><a class="headerlink" href="#pgrouting-3-6" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id3">
+<h3><a class="toc-backref" href="#id36" role="doc-backlink">pgRouting 3.6</a><a class="headerlink" href="#pgrouting-3-6" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id4">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-6-3-release-notes" id="id38">pgRouting 3.6.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6-2-release-notes" id="id39">pgRouting 3.6.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6-1-release-notes" id="id40">pgRouting 3.6.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6-0-release-notes" id="id41">pgRouting 3.6.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-3-release-notes" id="id48">pgRouting 3.6.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-2-release-notes" id="id49">pgRouting 3.6.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-1-release-notes" id="id50">pgRouting 3.6.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-0-release-notes" id="id51">pgRouting 3.6.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-6-3-release-notes">
-<h4><a class="toc-backref" href="#id38" role="doc-backlink">pgRouting 3.6.3 发布说明</a><a class="headerlink" href="#pgrouting-3-6-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id48" role="doc-backlink">pgRouting 3.6.3 发布说明</a><a class="headerlink" href="#pgrouting-3-6-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>查看本版本已关闭的所有议题和拉取请求，请访问： <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.3%22">GitHub 3.6.3版本里程碑关闭列表</a></p>
 <p class="rubric">构建</p>
 <ul class="simple">
@@ -1061,7 +1327,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-6-2-release-notes">
-<h4><a class="toc-backref" href="#id39" role="doc-backlink">pgRouting 3.6.2 发布说明</a><a class="headerlink" href="#pgrouting-3-6-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id49" role="doc-backlink">pgRouting 3.6.2 发布说明</a><a class="headerlink" href="#pgrouting-3-6-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.2%22">Git closed milestone for 3.6.2</a></p>
 <p class="rubric">升级修复</p>
 <ul class="simple">
@@ -1081,14 +1347,14 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-6-1-release-notes">
-<h4><a class="toc-backref" href="#id40" role="doc-backlink">pgRouting 3.6.1 发布说明</a><a class="headerlink" href="#pgrouting-3-6-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id50" role="doc-backlink">pgRouting 3.6.1 发布说明</a><a class="headerlink" href="#pgrouting-3-6-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.1%22">3.6.1Git 关闭里程碑</a></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2588">#2588</a> pgrouting 3.6.0 在 OSX 上构建失败</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-6-0-release-notes">
-<h4><a class="toc-backref" href="#id41" role="doc-backlink">pgRouting 3.6.0 发布说明</a><a class="headerlink" href="#pgrouting-3-6-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id51" role="doc-backlink">pgRouting 3.6.0 发布说明</a><a class="headerlink" href="#pgrouting-3-6-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请访问 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.0%22">Git 3.6.0 里程碑的已关闭问题和拉取请求</a></p>
 <p class="rubric">官方功能变更</p>
 <ul class="simple">
@@ -1156,32 +1422,18 @@ _pgr_dagshortestpath</p></li>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2544">#2544</a> 标准化输出和修改签名 pgr_withPointsDD</p>
 <ul>
-<li><p>签名更改： <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> 参数从已命名的可选参数改为未命名的必选参数 <strong>driving side</strong> 。</p>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p><strong>Driving side</strong> parameter is positional unnamed and compulsory.</p>
 <ul>
-<li><p>pgr_withPointsDD(单个顶点)</p></li>
-<li><p>pgr_withPointsDD(多个顶点)</p></li>
-</ul>
-</li>
-<li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<ul>
-<li><p>pgr_withPointsDD(单个顶点)</p>
-<ul>
-<li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 、 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 和 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 列。</p></li>
-</ul>
-</li>
-<li><p>pgr_withPointsDD(多个顶点)</p>
-<ul>
-<li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code> ， <code class="docutils literal notranslate"><span class="pre">pred</span></code> 列。</p></li>
-</ul>
-</li>
+<li><p>Valid values depend on kind of graph</p></li>
 </ul>
 </li>
 <li><p>当 <code class="docutils literal notranslate"><span class="pre">details</span></code> 为 <code class="docutils literal notranslate"><span class="pre">false</span></code> 时：</p>
 <ul>
-<li><p>只有那些被访问的兴趣点会被移除，也就是说，位于一定距离范围内被到达的兴趣点会被包含在内</p></li>
+<li><p>Points reached within the distance are not included.</p></li>
 </ul>
 </li>
-<li><p>弃用签名</p>
+<li><p>Deprecated signatures:</p>
 <ul>
 <li><p>pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)</p></li>
 <li><p>pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
@@ -1191,11 +1443,10 @@ _pgr_dagshortestpath</p></li>
 </li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2546">#2546</a> 标准化输出和修改签名 pgr_withPointsKSP</p>
 <ul>
-<li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>pgr_withPointsKSP(One to One)</p>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p><strong>Driving side</strong> parameter is positional unnamed and compulsory.</p>
 <ul>
-<li><p>签名更改： <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> 参数从已命名的可选参数改为未命名的必选参数 <strong>driving side</strong> 。</p></li>
-<li><p>增加 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 结果列。</p></li>
+<li><p>Valid values depend on kind of graph</p></li>
 </ul>
 </li>
 <li><p>新提议的签名：</p>
@@ -1206,9 +1457,9 @@ _pgr_dagshortestpath</p></li>
 <li><p>pgr_withPointsKSP(Combinations)</p></li>
 </ul>
 </li>
-<li><p>已弃用的签名</p>
+<li><p>Deprecated signatures:</p>
 <ul>
-<li><p>pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolean)``</p></li>
+<li><p>pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)</p></li>
 </ul>
 </li>
 </ul>
@@ -1237,16 +1488,16 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-3-5">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">pgRouting 3.5</a><a class="headerlink" href="#pgrouting-3-5" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id4">
+<h3><a class="toc-backref" href="#id37" role="doc-backlink">pgRouting 3.5</a><a class="headerlink" href="#pgrouting-3-5" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id5">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-5-1-release-notes" id="id42">pgRouting 3.5.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-5-0-release-notes" id="id43">pgRouting 3.5.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-5-1-release-notes" id="id52">pgRouting 3.5.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-5-0-release-notes" id="id53">pgRouting 3.5.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-5-1-release-notes">
-<h4><a class="toc-backref" href="#id42" role="doc-backlink">pgRouting 3.5.1 发布说明</a><a class="headerlink" href="#pgrouting-3-5-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id52" role="doc-backlink">pgRouting 3.5.1 发布说明</a><a class="headerlink" href="#pgrouting-3-5-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.5.1%22">3.5.1 Git 关闭里程碑</a></p>
 <p class="rubric">文档修复</p>
 <p>将文件修改如下：</p>
@@ -1286,7 +1537,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-5-0-release-notes">
-<h4><a class="toc-backref" href="#id43" role="doc-backlink">pgRouting 3.5.0 发布说明</a><a class="headerlink" href="#pgrouting-3-5-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id53" role="doc-backlink">pgRouting 3.5.0 发布说明</a><a class="headerlink" href="#pgrouting-3-5-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.5.0%22">3.5.0 Git 关闭里程碑</a></p>
 <p class="rubric">官方功能变更</p>
 <ul class="simple">
@@ -1305,17 +1556,17 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-3-4">
-<h3><a class="toc-backref" href="#id28" role="doc-backlink">pgRouting 3.4</a><a class="headerlink" href="#pgrouting-3-4" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id5">
+<h3><a class="toc-backref" href="#id38" role="doc-backlink">pgRouting 3.4</a><a class="headerlink" href="#pgrouting-3-4" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id6">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-4-2-release-notes" id="id44">pgRouting 3.4.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-4-1-release-notes" id="id45">pgRouting 3.4.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-4-0-release-notes" id="id46">pgRouting 3.4.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4-2-release-notes" id="id54">pgRouting 3.4.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4-1-release-notes" id="id55">pgRouting 3.4.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4-0-release-notes" id="id56">pgRouting 3.4.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-4-2-release-notes">
-<h4><a class="toc-backref" href="#id44" role="doc-backlink">pgRouting 3.4.2 发布说明</a><a class="headerlink" href="#pgrouting-3-4-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id54" role="doc-backlink">pgRouting 3.4.2 发布说明</a><a class="headerlink" href="#pgrouting-3-4-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.4.2%22">3.4.2Git 关闭里程碑</a></p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1324,7 +1575,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-4-1-release-notes">
-<h4><a class="toc-backref" href="#id45" role="doc-backlink">pgRouting 3.4.1 发布说明</a><a class="headerlink" href="#pgrouting-3-4-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id55" role="doc-backlink">pgRouting 3.4.1 发布说明</a><a class="headerlink" href="#pgrouting-3-4-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.4.1%22">3.4.1Git 关闭里程碑</a></p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1333,7 +1584,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-4-0-release-notes">
-<h4><a class="toc-backref" href="#id46" role="doc-backlink">pgRouting 3.4.0 发布说明</a><a class="headerlink" href="#pgrouting-3-4-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id56" role="doc-backlink">pgRouting 3.4.0 发布说明</a><a class="headerlink" href="#pgrouting-3-4-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.4.0%22">3.4.0 Git 关闭里程碑</a></p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1425,26 +1676,26 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-3-3">
-<h3><a class="toc-backref" href="#id29" role="doc-backlink">pgRouting 3.3</a><a class="headerlink" href="#pgrouting-3-3" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id6">
+<h3><a class="toc-backref" href="#id39" role="doc-backlink">pgRouting 3.3</a><a class="headerlink" href="#pgrouting-3-3" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id7">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-3-5-release-notes" id="id47">pgRouting 3.3.5 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-4-release-notes" id="id48">pgRouting 3.3.4 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-3-release-notes" id="id49">pgRouting 3.3.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-2-release-notes" id="id50">pgRouting 3.3.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-1-release-notes" id="id51">pgRouting 3.3.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-0-release-notes" id="id52">pgRouting 3.3.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-5-release-notes" id="id57">pgRouting 3.3.5 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-4-release-notes" id="id58">pgRouting 3.3.4 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-3-release-notes" id="id59">pgRouting 3.3.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-2-release-notes" id="id60">pgRouting 3.3.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-1-release-notes" id="id61">pgRouting 3.3.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-0-release-notes" id="id62">pgRouting 3.3.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-3-5-release-notes">
-<h4><a class="toc-backref" href="#id47" role="doc-backlink">pgRouting 3.3.5 发布说明</a><a class="headerlink" href="#pgrouting-3-3-5-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id57" role="doc-backlink">pgRouting 3.3.5 发布说明</a><a class="headerlink" href="#pgrouting-3-3-5-release-notes" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2401">#2401</a>: pgRouting 3.4.0 在 sphinx 过低或丢失时不构建文档</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-4-release-notes">
-<h4><a class="toc-backref" href="#id48" role="doc-backlink">pgRouting 3.3.4 发布说明</a><a class="headerlink" href="#pgrouting-3-3-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id58" role="doc-backlink">pgRouting 3.3.4 发布说明</a><a class="headerlink" href="#pgrouting-3-3-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.4%22">3.3.4Git 关闭里程碑</a></p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1452,7 +1703,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-3-release-notes">
-<h4><a class="toc-backref" href="#id49" role="doc-backlink">pgRouting 3.3.3 发布说明</a><a class="headerlink" href="#pgrouting-3-3-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id59" role="doc-backlink">pgRouting 3.3.3 发布说明</a><a class="headerlink" href="#pgrouting-3-3-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.3%22">3.3.3Git 关闭里程碑</a></p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1472,7 +1723,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-2-release-notes">
-<h4><a class="toc-backref" href="#id50" role="doc-backlink">pgRouting 3.3.2 发布说明</a><a class="headerlink" href="#pgrouting-3-3-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id60" role="doc-backlink">pgRouting 3.3.2 发布说明</a><a class="headerlink" href="#pgrouting-3-3-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.2%22">3.3.2Git 关闭里程碑</a></p>
 <ul>
 <li><p>修订文档</p>
@@ -1513,7 +1764,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-1-release-notes">
-<h4><a class="toc-backref" href="#id51" role="doc-backlink">pgRouting 3.3.1 发布说明</a><a class="headerlink" href="#pgrouting-3-3-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id61" role="doc-backlink">pgRouting 3.3.1 发布说明</a><a class="headerlink" href="#pgrouting-3-3-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.1%22">3.3.1Git关闭里程碑</a>。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1522,7 +1773,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-0-release-notes">
-<h4><a class="toc-backref" href="#id52" role="doc-backlink">pgRouting 3.3.0 发布说明</a><a class="headerlink" href="#pgrouting-3-3-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id62" role="doc-backlink">pgRouting 3.3.0 发布说明</a><a class="headerlink" href="#pgrouting-3-3-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.0%22">3.3.0 Git关闭里程碑</a> 。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1582,17 +1833,17 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-3-2">
-<h3><a class="toc-backref" href="#id30" role="doc-backlink">pgRouting 3.2</a><a class="headerlink" href="#pgrouting-3-2" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id7">
+<h3><a class="toc-backref" href="#id40" role="doc-backlink">pgRouting 3.2</a><a class="headerlink" href="#pgrouting-3-2" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id8">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-2-2-release-notes" id="id53">pgRouting 3.2.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-2-1-release-notes" id="id54">pgRouting 3.2.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-2-0-release-notes" id="id55">pgRouting 3.2.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2-2-release-notes" id="id63">pgRouting 3.2.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2-1-release-notes" id="id64">pgRouting 3.2.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2-0-release-notes" id="id65">pgRouting 3.2.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-2-2-release-notes">
-<h4><a class="toc-backref" href="#id53" role="doc-backlink">pgRouting 3.2.2 发布说明</a><a class="headerlink" href="#pgrouting-3-2-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id63" role="doc-backlink">pgRouting 3.2.2 发布说明</a><a class="headerlink" href="#pgrouting-3-2-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.2%22">3.2.2 Git关闭里程碑</a> 。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1601,7 +1852,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-2-1-release-notes">
-<h4><a class="toc-backref" href="#id54" role="doc-backlink">pgRouting 3.2.1 发布说明</a><a class="headerlink" href="#pgrouting-3-2-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id64" role="doc-backlink">pgRouting 3.2.1 发布说明</a><a class="headerlink" href="#pgrouting-3-2-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.1%22">3.2.1Git关闭里程碑</a> 。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1615,7 +1866,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-2-0-release-notes">
-<h4><a class="toc-backref" href="#id55" role="doc-backlink">pgRouting 3.2.0 发布说明</a><a class="headerlink" href="#pgrouting-3-2-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id65" role="doc-backlink">pgRouting 3.2.0 发布说明</a><a class="headerlink" href="#pgrouting-3-2-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.0%22">3.2.0Git关闭里程碑</a> 。</p>
 <p class="rubric">构建</p>
 <ul class="simple">
@@ -1699,19 +1950,19 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-3-1">
-<h3><a class="toc-backref" href="#id31" role="doc-backlink">pgRouting 3.1</a><a class="headerlink" href="#pgrouting-3-1" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id8">
+<h3><a class="toc-backref" href="#id41" role="doc-backlink">pgRouting 3.1</a><a class="headerlink" href="#pgrouting-3-1" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id9">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-1-4-release-notes" id="id56">pgRouting 3.1.4 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-3-release-notes" id="id57">pgRouting 3.1.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-2-release-notes" id="id58">pgRouting 3.1.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-1-release-notes" id="id59">pgRouting 3.1.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-0-release-notes" id="id60">pgRouting 3.1.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-4-release-notes" id="id66">pgRouting 3.1.4 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-3-release-notes" id="id67">pgRouting 3.1.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-2-release-notes" id="id68">pgRouting 3.1.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-1-release-notes" id="id69">pgRouting 3.1.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-0-release-notes" id="id70">pgRouting 3.1.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-1-4-release-notes">
-<h4><a class="toc-backref" href="#id56" role="doc-backlink">pgRouting 3.1.4 发布说明</a><a class="headerlink" href="#pgrouting-3-1-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id66" role="doc-backlink">pgRouting 3.1.4 发布说明</a><a class="headerlink" href="#pgrouting-3-1-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.4%22">3.1.4Git关闭里程碑</a> 。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1719,7 +1970,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-3-release-notes">
-<h4><a class="toc-backref" href="#id57" role="doc-backlink">pgRouting 3.1.3 发布说明</a><a class="headerlink" href="#pgrouting-3-1-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id67" role="doc-backlink">pgRouting 3.1.3 发布说明</a><a class="headerlink" href="#pgrouting-3-1-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.3%22">3.1.3 Git关闭里程碑</a> 。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1729,7 +1980,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-2-release-notes">
-<h4><a class="toc-backref" href="#id58" role="doc-backlink">pgRouting 3.1.2 发布说明</a><a class="headerlink" href="#pgrouting-3-1-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id68" role="doc-backlink">pgRouting 3.1.2 发布说明</a><a class="headerlink" href="#pgrouting-3-1-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.2%22">3.1.2Git关闭里程碑</a> 。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1741,7 +1992,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-1-release-notes">
-<h4><a class="toc-backref" href="#id59" role="doc-backlink">pgRouting 3.1.1 发布说明</a><a class="headerlink" href="#pgrouting-3-1-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id69" role="doc-backlink">pgRouting 3.1.1 发布说明</a><a class="headerlink" href="#pgrouting-3-1-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.1%22">3.1.1 Git关闭里程碑</a> 。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1753,7 +2004,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-0-release-notes">
-<h4><a class="toc-backref" href="#id60" role="doc-backlink">pgRouting 3.1.0 发布说明</a><a class="headerlink" href="#pgrouting-3-1-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id70" role="doc-backlink">pgRouting 3.1.0 发布说明</a><a class="headerlink" href="#pgrouting-3-1-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.0%22">3.1.0 Git关闭里程碑</a>。</p>
 <p class="rubric">新提议函数。</p>
 <ul class="simple">
@@ -1767,21 +2018,21 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-3-0">
-<h3><a class="toc-backref" href="#id32" role="doc-backlink">pgRouting 3.0</a><a class="headerlink" href="#pgrouting-3-0" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id9">
+<h3><a class="toc-backref" href="#id42" role="doc-backlink">pgRouting 3.0</a><a class="headerlink" href="#pgrouting-3-0" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id10">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-0-6-release-notes" id="id61">pgRouting 3.0.6 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-5-release-notes" id="id62">pgRouting 3.0.5 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-4-release-notes" id="id63">pgRouting 3.0.4 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-3-release-notes" id="id64">pgRouting 3.0.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-2-release-notes" id="id65">pgRouting 3.0.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-1-release-notes" id="id66">pgRouting 3.0.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-0-release-notes" id="id67">pgRouting 3.0.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-6-release-notes" id="id71">pgRouting 3.0.6 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-5-release-notes" id="id72">pgRouting 3.0.5 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-4-release-notes" id="id73">pgRouting 3.0.4 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-3-release-notes" id="id74">pgRouting 3.0.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-2-release-notes" id="id75">pgRouting 3.0.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-1-release-notes" id="id76">pgRouting 3.0.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-0-release-notes" id="id77">pgRouting 3.0.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-0-6-release-notes">
-<h4><a class="toc-backref" href="#id61" role="doc-backlink">pgRouting 3.0.6 发布说明</a><a class="headerlink" href="#pgrouting-3-0-6-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id71" role="doc-backlink">pgRouting 3.0.6 发布说明</a><a class="headerlink" href="#pgrouting-3-0-6-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.6%22">3.0.6Git关闭里程碑</a>。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1789,7 +2040,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-5-release-notes">
-<h4><a class="toc-backref" href="#id62" role="doc-backlink">pgRouting 3.0.5 发布说明</a><a class="headerlink" href="#pgrouting-3-0-5-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id72" role="doc-backlink">pgRouting 3.0.5 发布说明</a><a class="headerlink" href="#pgrouting-3-0-5-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.5%22">3.0.5Git关闭里程碑</a>。</p>
 <p class="rubric">回溯问题修复</p>
 <ul class="simple">
@@ -1799,7 +2050,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-4-release-notes">
-<h4><a class="toc-backref" href="#id63" role="doc-backlink">pgRouting 3.0.4 发布说明</a><a class="headerlink" href="#pgrouting-3-0-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id73" role="doc-backlink">pgRouting 3.0.4 发布说明</a><a class="headerlink" href="#pgrouting-3-0-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.4%22">3.0.4Git关闭里程碑</a>。</p>
 <p class="rubric">回溯问题修复</p>
 <ul class="simple">
@@ -1811,7 +2062,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-3-release-notes">
-<h4><a class="toc-backref" href="#id64" role="doc-backlink">pgRouting 3.0.3 发布说明</a><a class="headerlink" href="#pgrouting-3-0-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id74" role="doc-backlink">pgRouting 3.0.3 发布说明</a><a class="headerlink" href="#pgrouting-3-0-3-release-notes" title="Link to this heading">¶</a></h4>
 <p class="rubric">回溯问题修复</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1733">#1733</a>: 当图中不存在源顶点或目标顶点时，pgr_bdAstar 失败</p></li>
@@ -1822,7 +2073,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-2-release-notes">
-<h4><a class="toc-backref" href="#id65" role="doc-backlink">pgRouting 3.0.2 发布说明</a><a class="headerlink" href="#pgrouting-3-0-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id75" role="doc-backlink">pgRouting 3.0.2 发布说明</a><a class="headerlink" href="#pgrouting-3-0-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.2%22">3.0.2Git关闭里程碑</a>。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1830,7 +2081,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-1-release-notes">
-<h4><a class="toc-backref" href="#id66" role="doc-backlink">pgRouting 3.0.1 发布说明</a><a class="headerlink" href="#pgrouting-3-0-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id76" role="doc-backlink">pgRouting 3.0.1 发布说明</a><a class="headerlink" href="#pgrouting-3-0-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.1%22">3.0.1Git关闭里程碑</a>。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1838,7 +2089,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-0-release-notes">
-<h4><a class="toc-backref" href="#id67" role="doc-backlink">pgRouting 3.0.0 发布说明</a><a class="headerlink" href="#pgrouting-3-0-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id77" role="doc-backlink">pgRouting 3.0.0 发布说明</a><a class="headerlink" href="#pgrouting-3-0-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.0%22">3.0.0Git关闭里程碑</a>。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -2010,32 +2261,32 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-2">
-<h2><a class="toc-backref" href="#id20" role="doc-backlink">pgRouting 2</a><a class="headerlink" href="#pgrouting-2" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id21" role="doc-backlink">pgRouting 2</a><a class="headerlink" href="#pgrouting-2" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="minors-2-x">
 <p class="topic-title">2.x小版本</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-6" id="id68">pgRouting 2.6</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5" id="id69">pgRouting 2.5</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-4" id="id70">pgRouting 2.4</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-3" id="id71">pgRouting 2.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2" id="id72">pgRouting 2.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-1" id="id73">pgRouting 2.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-0" id="id74">pgRouting 2.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6" id="id78">pgRouting 2.6</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5" id="id79">pgRouting 2.5</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4" id="id80">pgRouting 2.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-3" id="id81">pgRouting 2.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2" id="id82">pgRouting 2.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-1" id="id83">pgRouting 2.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0" id="id84">pgRouting 2.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-6">
-<h3><a class="toc-backref" href="#id68" role="doc-backlink">pgRouting 2.6</a><a class="headerlink" href="#pgrouting-2-6" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id11">
+<h3><a class="toc-backref" href="#id78" role="doc-backlink">pgRouting 2.6</a><a class="headerlink" href="#pgrouting-2-6" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id12">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-6-3-release-notes" id="id75">pgRouting 2.6.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-6-2-release-notes" id="id76">pgRouting 2.6.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-6-1-release-notes" id="id77">pgRouting 2.6.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-6-0-release-notes" id="id78">pgRouting 2.6.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-3-release-notes" id="id85">pgRouting 2.6.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-2-release-notes" id="id86">pgRouting 2.6.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-1-release-notes" id="id87">pgRouting 2.6.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-0-release-notes" id="id88">pgRouting 2.6.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-6-3-release-notes">
-<h4><a class="toc-backref" href="#id75" role="doc-backlink">pgRouting 2.6.3 发布说明</a><a class="headerlink" href="#pgrouting-2-6-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id85" role="doc-backlink">pgRouting 2.6.3 发布说明</a><a class="headerlink" href="#pgrouting-2-6-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.3%22%20">2.6.3Git关闭里程碑</a>。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2045,7 +2296,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-6-2-release-notes">
-<h4><a class="toc-backref" href="#id76" role="doc-backlink">pgRouting 2.6.2 发布说明</a><a class="headerlink" href="#pgrouting-2-6-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id86" role="doc-backlink">pgRouting 2.6.2 发布说明</a><a class="headerlink" href="#pgrouting-2-6-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.2%22%20">2.6.2Git关闭里程碑</a>。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2055,7 +2306,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-6-1-release-notes">
-<h4><a class="toc-backref" href="#id77" role="doc-backlink">pgRouting 2.6.1 发布说明</a><a class="headerlink" href="#pgrouting-2-6-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id87" role="doc-backlink">pgRouting 2.6.1 发布说明</a><a class="headerlink" href="#pgrouting-2-6-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.1%22%20">2.6.1Git关闭里程碑</a>。</p>
 <ul class="simple">
 <li><p>修复了多个函数导致服务器崩溃的问题。</p>
@@ -2094,7 +2345,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-6-0-release-notes">
-<h4><a class="toc-backref" href="#id78" role="doc-backlink">pgRouting 2.6.0 发布说明</a><a class="headerlink" href="#pgrouting-2-6-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id88" role="doc-backlink">pgRouting 2.6.0 发布说明</a><a class="headerlink" href="#pgrouting-2-6-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.0%22%20">2.6.0Git关闭里程碑</a>。</p>
 <p class="rubric">新实验性函数</p>
 <ul class="simple">
@@ -2131,20 +2382,20 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-2-5">
-<h3><a class="toc-backref" href="#id69" role="doc-backlink">pgRouting 2.5</a><a class="headerlink" href="#pgrouting-2-5" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id12">
+<h3><a class="toc-backref" href="#id79" role="doc-backlink">pgRouting 2.5</a><a class="headerlink" href="#pgrouting-2-5" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id13">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-5-5-release-notes" id="id79">pgRouting 2.5.5 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-4-release-notes" id="id80">pgRouting 2.5.4 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-3-release-notes" id="id81">pgRouting 2.5.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-2-release-notes" id="id82">pgRouting 2.5.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-1-release-notes" id="id83">pgRouting 2.5.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-0-release-notes" id="id84">pgRouting 2.5.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-5-release-notes" id="id89">pgRouting 2.5.5 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-4-release-notes" id="id90">pgRouting 2.5.4 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-3-release-notes" id="id91">pgRouting 2.5.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-2-release-notes" id="id92">pgRouting 2.5.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-1-release-notes" id="id93">pgRouting 2.5.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-0-release-notes" id="id94">pgRouting 2.5.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-5-5-release-notes">
-<h4><a class="toc-backref" href="#id79" role="doc-backlink">pgRouting 2.5.5 发布说明</a><a class="headerlink" href="#pgrouting-2-5-5-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id89" role="doc-backlink">pgRouting 2.5.5 发布说明</a><a class="headerlink" href="#pgrouting-2-5-5-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.5%22%20">2.5.5Git关闭里程碑</a>。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2154,7 +2405,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-4-release-notes">
-<h4><a class="toc-backref" href="#id80" role="doc-backlink">pgRouting 2.5.4 发布说明</a><a class="headerlink" href="#pgrouting-2-5-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id90" role="doc-backlink">pgRouting 2.5.4 发布说明</a><a class="headerlink" href="#pgrouting-2-5-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.4%22%20">2.5.4 Git关闭里程碑</a>。</p>
 <ul class="simple">
 <li><p>修复了多个函数导致服务器崩溃的问题。</p>
@@ -2193,7 +2444,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-3-release-notes">
-<h4><a class="toc-backref" href="#id81" role="doc-backlink">pgRouting 2.5.3 发布说明</a><a class="headerlink" href="#pgrouting-2-5-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id91" role="doc-backlink">pgRouting 2.5.3 发布说明</a><a class="headerlink" href="#pgrouting-2-5-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.3%22%20">2.5.3Git关闭里程碑</a>。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2201,7 +2452,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-2-release-notes">
-<h4><a class="toc-backref" href="#id82" role="doc-backlink">pgRouting 2.5.2 发布说明</a><a class="headerlink" href="#pgrouting-2-5-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id92" role="doc-backlink">pgRouting 2.5.2 发布说明</a><a class="headerlink" href="#pgrouting-2-5-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.2%22%20">2.5.2Git关闭里程碑</a>。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2209,7 +2460,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-1-release-notes">
-<h4><a class="toc-backref" href="#id83" role="doc-backlink">pgRouting 2.5.1 发布说明</a><a class="headerlink" href="#pgrouting-2-5-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id93" role="doc-backlink">pgRouting 2.5.1 发布说明</a><a class="headerlink" href="#pgrouting-2-5-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.1%22%20">2.5.1Git关闭里程碑</a>。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2217,7 +2468,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-0-release-notes">
-<h4><a class="toc-backref" href="#id84" role="doc-backlink">pgRouting 2.5.0 发布说明</a><a class="headerlink" href="#pgrouting-2-5-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id94" role="doc-backlink">pgRouting 2.5.0 发布说明</a><a class="headerlink" href="#pgrouting-2-5-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed">2.5.0Git关闭里程碑</a> 。</p>
 <p class="rubric">增强：</p>
 <ul class="simple">
@@ -2281,17 +2532,17 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-2-4">
-<h3><a class="toc-backref" href="#id70" role="doc-backlink">pgRouting 2.4</a><a class="headerlink" href="#pgrouting-2-4" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id13">
+<h3><a class="toc-backref" href="#id80" role="doc-backlink">pgRouting 2.4</a><a class="headerlink" href="#pgrouting-2-4" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id14">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-4-2-release-notes" id="id85">pgRouting 2.4.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-4-1-release-notes" id="id86">pgRouting 2.4.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-4-0-release-notes" id="id87">pgRouting 2.4.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-2-release-notes" id="id95">pgRouting 2.4.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-1-release-notes" id="id96">pgRouting 2.4.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-0-release-notes" id="id97">pgRouting 2.4.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-4-2-release-notes">
-<h4><a class="toc-backref" href="#id85" role="doc-backlink">pgRouting 2.4.2 发布说明</a><a class="headerlink" href="#pgrouting-2-4-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id95" role="doc-backlink">pgRouting 2.4.2 发布说明</a><a class="headerlink" href="#pgrouting-2-4-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.2%22%20">2.4.2Git关闭里程碑</a>。</p>
 <p class="rubric">改进</p>
 <ul class="simple">
@@ -2304,7 +2555,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-4-1-release-notes">
-<h4><a class="toc-backref" href="#id86" role="doc-backlink">pgRouting 2.4.1 发布说明</a><a class="headerlink" href="#pgrouting-2-4-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id96" role="doc-backlink">pgRouting 2.4.1 发布说明</a><a class="headerlink" href="#pgrouting-2-4-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.1%22%20">2.4.1Git关闭里程碑</a>。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2313,7 +2564,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-4-0-release-notes">
-<h4><a class="toc-backref" href="#id87" role="doc-backlink">pgRouting 2.4.0 发布说明</a><a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id97" role="doc-backlink">pgRouting 2.4.0 发布说明</a><a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed">2.4.0Git关闭里程碑</a> 。</p>
 <p class="rubric">新函数</p>
 <ul class="simple">
@@ -2351,7 +2602,7 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-2-3">
-<h3><a class="toc-backref" href="#id71" role="doc-backlink">pgRouting 2.3</a><a class="headerlink" href="#pgrouting-2-3" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id81" role="doc-backlink">pgRouting 2.3</a><a class="headerlink" href="#pgrouting-2-3" title="Link to this heading">¶</a></h3>
 <section id="pgrouting-2-3-2-release-notes">
 <h4>pgRouting 2.3.2 发布说明<a class="headerlink" href="#pgrouting-2-3-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed">2.3.2 Git关闭里程碑</a> 。</p>
@@ -2426,19 +2677,19 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-2-2">
-<h3><a class="toc-backref" href="#id72" role="doc-backlink">pgRouting 2.2</a><a class="headerlink" href="#pgrouting-2-2" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id14">
+<h3><a class="toc-backref" href="#id82" role="doc-backlink">pgRouting 2.2</a><a class="headerlink" href="#pgrouting-2-2" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id15">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-2-4-release-notes" id="id88">pgRouting 2.2.4 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-3-release-notes" id="id89">pgRouting 2.2.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-2-release-notes" id="id90">pgRouting 2.2.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-1-release-notes" id="id91">pgRouting 2.2.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-0-release-notes" id="id92">pgRouting 2.2.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-4-release-notes" id="id98">pgRouting 2.2.4 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-3-release-notes" id="id99">pgRouting 2.2.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-2-release-notes" id="id100">pgRouting 2.2.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-1-release-notes" id="id101">pgRouting 2.2.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-0-release-notes" id="id102">pgRouting 2.2.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-2-4-release-notes">
-<h4><a class="toc-backref" href="#id88" role="doc-backlink">pgRouting 2.2.4 发布说明</a><a class="headerlink" href="#pgrouting-2-2-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id98" role="doc-backlink">pgRouting 2.2.4 发布说明</a><a class="headerlink" href="#pgrouting-2-2-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed">2.2.4Git关闭里程碑</a> 。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2448,7 +2699,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-2-3-release-notes">
-<h4><a class="toc-backref" href="#id89" role="doc-backlink">pgRouting 2.2.3 发布说明</a><a class="headerlink" href="#pgrouting-2-2-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id99" role="doc-backlink">pgRouting 2.2.3 发布说明</a><a class="headerlink" href="#pgrouting-2-2-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed">2.2.3Git关闭里程碑</a> 。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2456,7 +2707,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-2-2-release-notes">
-<h4><a class="toc-backref" href="#id90" role="doc-backlink">pgRouting 2.2.2 发布说明</a><a class="headerlink" href="#pgrouting-2-2-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id100" role="doc-backlink">pgRouting 2.2.2 发布说明</a><a class="headerlink" href="#pgrouting-2-2-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed">2.2.2 Git关闭里程碑</a> 。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2464,7 +2715,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-2-1-release-notes">
-<h4><a class="toc-backref" href="#id91" role="doc-backlink">pgRouting 2.2.1 发布说明</a><a class="headerlink" href="#pgrouting-2-2-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id101" role="doc-backlink">pgRouting 2.2.1 发布说明</a><a class="headerlink" href="#pgrouting-2-2-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed">2.2.1Git关闭里程碑</a> 。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2473,7 +2724,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-2-0-release-notes">
-<h4><a class="toc-backref" href="#id92" role="doc-backlink">pgRouting 2.2.0 发布说明</a><a class="headerlink" href="#pgrouting-2-2-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id102" role="doc-backlink">pgRouting 2.2.0 发布说明</a><a class="headerlink" href="#pgrouting-2-2-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed">2.2.0Git关闭里程碑</a> 。</p>
 <p class="rubric">改进</p>
 <ul class="simple">
@@ -2526,15 +2777,15 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-2-1">
-<h3><a class="toc-backref" href="#id73" role="doc-backlink">pgRouting 2.1</a><a class="headerlink" href="#pgrouting-2-1" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id15">
+<h3><a class="toc-backref" href="#id83" role="doc-backlink">pgRouting 2.1</a><a class="headerlink" href="#pgrouting-2-1" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id16">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-1-0-release-notes" id="id93">pgRouting 2.1.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-1-0-release-notes" id="id103">pgRouting 2.1.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-1-0-release-notes">
-<h4><a class="toc-backref" href="#id93" role="doc-backlink">pgRouting 2.1.0 发布说明</a><a class="headerlink" href="#pgrouting-2-1-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id103" role="doc-backlink">pgRouting 2.1.0 发布说明</a><a class="headerlink" href="#pgrouting-2-1-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed">2.1.0Git关闭里程碑</a> 。</p>
 <p class="rubric">新签名</p>
 <ul class="simple">
@@ -2613,16 +2864,16 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-2-0">
-<h3><a class="toc-backref" href="#id74" role="doc-backlink">pgRouting 2.0</a><a class="headerlink" href="#pgrouting-2-0" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id16">
+<h3><a class="toc-backref" href="#id84" role="doc-backlink">pgRouting 2.0</a><a class="headerlink" href="#pgrouting-2-0" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="id17">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-0-1-release-notes" id="id94">pgRouting 2.0.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-0-0-release-notes" id="id95">pgRouting 2.0.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0-1-release-notes" id="id104">pgRouting 2.0.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0-0-release-notes" id="id105">pgRouting 2.0.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-0-1-release-notes">
-<h4><a class="toc-backref" href="#id94" role="doc-backlink">pgRouting 2.0.1 发布说明</a><a class="headerlink" href="#pgrouting-2-0-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id104" role="doc-backlink">pgRouting 2.0.1 发布说明</a><a class="headerlink" href="#pgrouting-2-0-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>小bug修复。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2630,7 +2881,7 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-0-0-release-notes">
-<h4><a class="toc-backref" href="#id95" role="doc-backlink">pgRouting 2.0.0 发布说明</a><a class="headerlink" href="#pgrouting-2-0-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id105" role="doc-backlink">pgRouting 2.0.0 发布说明</a><a class="headerlink" href="#pgrouting-2-0-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed">2.0.0Git关闭里程碑</a> 。</p>
 <p>随着 pgRouting 2.0.0 的发布，该库已放弃向后兼容 <a class="reference internal" href="#pgrouting-1-0">pgRouting 1.0</a> 版本。此版本的主要目标是：</p>
 <ul class="simple">
@@ -2676,52 +2927,52 @@ _pgr_dagshortestpath</p></li>
 </section>
 </section>
 <section id="pgrouting-1">
-<h2><a class="toc-backref" href="#id21" role="doc-backlink">pgRouting 1</a><a class="headerlink" href="#pgrouting-1" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id22" role="doc-backlink">pgRouting 1</a><a class="headerlink" href="#pgrouting-1" title="Link to this heading">¶</a></h2>
 <section id="pgrouting-1-0">
 <h3>pgRouting 1.0<a class="headerlink" href="#pgrouting-1-0" title="Link to this heading">¶</a></h3>
-<nav class="contents local" id="id17">
+<nav class="contents local" id="id18">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#changes-for-release-1-05" id="id96">1.05 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-03" id="id97">1.03 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-02" id="id98">1.02 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-01" id="id99">1.01 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-0" id="id100">1.0 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-0-0b" id="id101">1.0.0b 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-0-0a" id="id102">1.0.0a 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-0-9-9" id="id103">0.9.9 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-0-9-8" id="id104">0.9.8 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-05" id="id106">1.05 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-03" id="id107">1.03 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-02" id="id108">1.02 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-01" id="id109">1.01 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0" id="id110">1.0 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0-0b" id="id111">1.0.0b 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0-0a" id="id112">1.0.0a 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-0-9-9" id="id113">0.9.9 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-0-9-8" id="id114">0.9.8 版的更改</a></p></li>
 </ul>
 </nav>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed">1.x Git 已关闭问题</a> 。以下的发布说明已从之前的 <code class="docutils literal notranslate"><span class="pre">RELEASE_NOTES</span></code> 文件中复制，并作为参考保留。</p>
 <section id="changes-for-release-1-05">
-<h4><a class="toc-backref" href="#id96" role="doc-backlink">1.05 版的更改</a><a class="headerlink" href="#changes-for-release-1-05" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id106" role="doc-backlink">1.05 版的更改</a><a class="headerlink" href="#changes-for-release-1-05" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Bug修复</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-03">
-<h4><a class="toc-backref" href="#id97" role="doc-backlink">1.03 版的更改</a><a class="headerlink" href="#changes-for-release-1-03" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id107" role="doc-backlink">1.03 版的更改</a><a class="headerlink" href="#changes-for-release-1-03" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>拓扑创建速度更快</p></li>
 <li><p>Bug修复</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-02">
-<h4><a class="toc-backref" href="#id98" role="doc-backlink">1.02 版的更改</a><a class="headerlink" href="#changes-for-release-1-02" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id108" role="doc-backlink">1.02 版的更改</a><a class="headerlink" href="#changes-for-release-1-02" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Shooting*错误修复</p></li>
 <li><p>编译问题已解决</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-01">
-<h4><a class="toc-backref" href="#id99" role="doc-backlink">1.01 版的更改</a><a class="headerlink" href="#changes-for-release-1-01" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id109" role="doc-backlink">1.01 版的更改</a><a class="headerlink" href="#changes-for-release-1-01" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Shooting*错误修复</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-0">
-<h4><a class="toc-backref" href="#id100" role="doc-backlink">1.0 版的更改</a><a class="headerlink" href="#changes-for-release-1-0" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id110" role="doc-backlink">1.0 版的更改</a><a class="headerlink" href="#changes-for-release-1-0" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>核心函数和附加函数分开</p></li>
 <li><p>Cmake 构建过程</p></li>
@@ -2729,28 +2980,28 @@ _pgr_dagshortestpath</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-0-0b">
-<h4><a class="toc-backref" href="#id101" role="doc-backlink">1.0.0b 版的更改</a><a class="headerlink" href="#changes-for-release-1-0-0b" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id111" role="doc-backlink">1.0.0b 版的更改</a><a class="headerlink" href="#changes-for-release-1-0-0b" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>带有更简单的包装函数名称的附加 SQL 文件</p></li>
 <li><p>Bug修复</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-0-0a">
-<h4><a class="toc-backref" href="#id102" role="doc-backlink">1.0.0a 版的更改</a><a class="headerlink" href="#changes-for-release-1-0-0a" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id112" role="doc-backlink">1.0.0a 版的更改</a><a class="headerlink" href="#changes-for-release-1-0-0a" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Shooting* 真实道路网络的最短路径算法</p></li>
 <li><p>修复了多个 SQL 错误</p></li>
 </ul>
 </section>
 <section id="changes-for-release-0-9-9">
-<h4><a class="toc-backref" href="#id103" role="doc-backlink">0.9.9 版的更改</a><a class="headerlink" href="#changes-for-release-0-9-9" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id113" role="doc-backlink">0.9.9 版的更改</a><a class="headerlink" href="#changes-for-release-0-9-9" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>支持 PostgreSQL 8.2</p></li>
 <li><p>如果找不到任何路径，最短路径函数会返回空结果</p></li>
 </ul>
 </section>
 <section id="changes-for-release-0-9-8">
-<h4><a class="toc-backref" href="#id104" role="doc-backlink">0.9.8 版的更改</a><a class="headerlink" href="#changes-for-release-0-9-8" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id114" role="doc-backlink">0.9.8 版的更改</a><a class="headerlink" href="#changes-for-release-0-9-8" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>为最短路径函数添加了重新编号方案</p></li>
 <li><p>增加了有向最短路径函数</p></li>
@@ -2774,7 +3025,7 @@ _pgr_dagshortestpath</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 16, 2025.<br/>
+      Last updated on 6月 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

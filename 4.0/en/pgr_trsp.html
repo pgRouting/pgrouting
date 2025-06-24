@@ -218,14 +218,20 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code><a class="headerlink" href="#pgr-trsp" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - routing vertices with restrictions.</p>
 <p class="rubric">Availability</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>Version 4.0.0</p>
-<ul>
 <li><p>Function promoted to official.</p></li>
 </ul>
-</li>
-<li><p>Version 3.4.0</p>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
 <ul>
+<li><p>pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
+<li><p>pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Version 3.4.0</p>
+<ul class="simple">
 <li><p>New proposed signatures:</p>
 <ul>
 <li><p>pgr_trsp(One to One)</p></li>
@@ -238,15 +244,14 @@
 <li><p>Deprecated signatures</p>
 <ul>
 <li><p>pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
-<li><p>pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)</p></li>
+<li><p>pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
 <li><p>pgr_trspViaVertices(text,anyarray,boolean,boolean,text)</p></li>
 <li><p>pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)</p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Version 2.1.0</p>
-<ul>
+<p class="rubric">Version 2.1.0</p>
+<ul class="simple">
 <li><p>New prototypes</p>
 <ul>
 <li><p>pgr_trspViaVertices</p></li>
@@ -254,12 +259,9 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Version 2.0.0</p>
-<ul>
+<p class="rubric">Version 2.0.0</p>
+<ul class="simple">
 <li><p>Official function.</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -799,7 +801,7 @@ path sequence.</p></td>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Jun 16, 2025.<br/>
+      Last updated on Jun 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
