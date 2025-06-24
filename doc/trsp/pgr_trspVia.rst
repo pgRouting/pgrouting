@@ -25,6 +25,9 @@
 .. rubric:: Version 4.0.0
 
 * Function promoted to official.
+
+.. Breaking change
+
 * Breaking change, signatures no longer available:
 
   * pgr_trspviavertices(text,anyarray,boolean,boolean,text)

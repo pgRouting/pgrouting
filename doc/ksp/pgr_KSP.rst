@@ -20,9 +20,9 @@
 
 .. rubric:: Availability
 
-* Version 4.0.0
+.. rubric:: Version 4.0.0
 
-  * All signatures promoted to official.
+* All signatures promoted to official.
 
 .. rubric:: Version 3.6.0
 

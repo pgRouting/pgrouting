@@ -23,19 +23,19 @@ algorithm.
 
 .. rubric:: Availability
 
-* Version 4.0.0
+.. rubric:: Version 4.0.0
 
-  * Combinations signature promoted to official.
+* Combinations signature promoted to official.
 
-* Version 3.1.0
+.. rubric:: Version 3.1.0
 
-  * New proposed signature:
+* New proposed signature:
 
-    * pgr_dijkstraCost(Combinations)
+  * pgr_dijkstraCost(Combinations)
 
-* Version 2.2.0
+.. rubric:: Version 2.2.0
 
-  * Official function.
+* Official function.
 
 
 Description

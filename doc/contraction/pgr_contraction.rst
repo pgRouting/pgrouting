@@ -24,6 +24,8 @@ vertices and edges.
 
 .. rubric:: Version 4.0.0
 
+.. Breaking change
+
 * Breaking change, signatures no longer available:
 
   * pgr_contraction(text,bigint[],integer,bigint[],boolean)
