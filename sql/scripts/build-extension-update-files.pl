@@ -279,6 +279,10 @@ sub generate_upgrade_script {
                 push @commands, drop_special_case_function("pgr_dagshortestpath(text,text)");
             }
 
+            if ($old_minor >= "3.3") {
+                push @commands, drop_special_case_function("pgr_edgecoloring(text)");
+            }
+
             # Row type defined by OUT parameters is different.
             # Out parameters changed names on v4.0.0
             # Experimental functions

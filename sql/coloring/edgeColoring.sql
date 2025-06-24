@@ -34,17 +34,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE FUNCTION pgr_edgeColoring(
     TEXT, -- edges_sql (required)
 
-    OUT edge_id BIGINT,
-    OUT color_id BIGINT)
+    OUT edge BIGINT,
+    OUT color BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN QUERY
-    SELECT a.edge_id, a.color_id
-    FROM _pgr_edgeColoring(_pgr_get_statement($1)) AS a;
-END;
+    SELECT edge_id, color_id
+    FROM _pgr_edgeColoring(_pgr_get_statement($1));
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 
