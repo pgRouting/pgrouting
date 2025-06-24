@@ -26,25 +26,19 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
----------------
--- pgr_bipartite
----------------
 
 --v3.2
 CREATE FUNCTION pgr_bipartite(
     TEXT, -- edges_sql (required)
 
-    OUT vertex_id BIGINT,
-    OUT color_id BIGINT)
+    OUT node BIGINT,
+    OUT color BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN QUERY
     SELECT node, color
     FROM _pgr_bipartite(_pgr_get_statement($1));
-END;
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 
