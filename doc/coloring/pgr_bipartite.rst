@@ -27,7 +27,7 @@ the same set are adjacent.
 
 .. rubric:: Version 4.0.0
 
-* Output columns standardized to |result-node-color|
+* Output columns standardized to |result_node_color|
 
 .. rubric:: Version 3.2.0
 
@@ -60,7 +60,7 @@ Signatures
 
    | pgr_bipartite(`Edges SQL`_)
 
-   | Returns set of |result-node-color|
+   | Returns set of |result_node_color|
    | OR EMPTY SET
 
 :Example: When the graph is bipartite

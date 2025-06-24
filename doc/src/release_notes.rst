@@ -98,6 +98,12 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* pgr_bipartite
+
+  .. include:: pgr_bipartite.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_contraction
 
   .. include:: pgr_contraction.rst
@@ -298,6 +304,11 @@ Standardize output columns of functions with different output columns within ove
 
 * `#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__
   pgr_edgeColoring
+
+.. rubric:: Standardized to |result_node_color|
+
+* `#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__
+  pgr_bipartite
 
 Removal of SQL deprecated signatures
 ...............................................................................
