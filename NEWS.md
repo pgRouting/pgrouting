@@ -91,6 +91,10 @@ Summary of changes by function
 
   * Combinations signature promoted to official.
 
+* pgr_sequentialVertexColoring
+
+  * Output columns standardized to ``(node, color)``
+
 * pgr_trsp
 
   * Function promoted to official.
@@ -275,6 +279,8 @@ Standardize output columns of functions with different output columns within ove
 
 * [#2924](https://github.com/pgRouting/pgrouting/issues/2924)
   pgr_bipartite
+* [#2927](https://github.com/pgRouting/pgrouting/issues/2927)
+  pgr_sequentialVertexColoring
 
 Removal of SQL deprecated signatures
 
