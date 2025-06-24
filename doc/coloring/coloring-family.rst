@@ -81,22 +81,6 @@ Column           Type        Description
 
 .. result-node-color-end
 
-.. result columns start
-
-Returns set of ``(vertex_id, color_id)``
-
-===============  =========== ======================================
-Column           Type        Description
-===============  =========== ======================================
-``vertex_id``    ``BIGINT``  Identifier of the vertex.
-``color_id``     ``BIGINT``  Identifier of the color of the vertex.
-
-                             - The minimum value of color is 1.
-
-===============  =========== ======================================
-
-.. result columns end
-
 See Also
 -------------------------------------------------------------------------------
 
