@@ -69,7 +69,7 @@ Summary of changes by function
 
 * pgr_edgeColoring
 
-  * Output columns standardized to ``(edge)``-color
+  * Output columns standardized to ``(edge, color)``
 
 * pgr_edwardMoore
 
@@ -262,7 +262,7 @@ Standardize output columns of functions with different output columns within ove
 * [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
   pgr_withPointsCostMatrix
 
-**Standardized to ``(edge)``-color**
+**Standardized to ``(edge, color)``**
 
 * [#2924](https://github.com/pgRouting/pgrouting/issues/2924)
   pgr_edgeColoring
