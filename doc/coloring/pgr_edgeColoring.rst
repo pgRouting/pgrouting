@@ -113,8 +113,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: coloring-family.rst
-    :start-after: result columns start edgeColoring
-    :end-before: result columns end edgeColoring
+    :start-after: result-edge-color-start
+    :end-before: result-edge-color-end
 
 
 See Also
