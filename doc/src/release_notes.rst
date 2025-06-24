@@ -158,6 +158,12 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* pgr_sequentialVertexColoring
+
+  .. include:: pgr_sequentialVertexColoring.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_trsp
 
   .. include:: pgr_trsp.rst
@@ -309,6 +315,8 @@ Standardize output columns of functions with different output columns within ove
 
 * `#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__
   pgr_bipartite
+* `#2927 <https://github.com/pgRouting/pgrouting/issues/2927>`__
+  pgr_sequentialVertexColoring
 
 Removal of SQL deprecated signatures
 ...............................................................................
