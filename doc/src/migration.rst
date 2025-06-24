@@ -33,6 +33,7 @@ Migration to standardized columns
 .. |pid-m-1| replace:: ``(seq, path_seq, start_pid, node, edge, cost, agg_cost)``
 .. |pid-m-m| replace:: ``(seq, path_seq, start_pid, end_pid, node, edge, cost, agg_cost)``
 .. |matrix-pid| replace:: ``(start_pid, end_pid, agg_cost)``
+.. |old-edge-color| replace:: ``(edge_id, color_id)``
 
 There has been an effort to standardize function output columns names and
 types.
@@ -85,6 +86,8 @@ types.
      - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_dagShortestPath` [3]_
      - `Migration of single path functions`_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_edgeColoring` [3]_
+     - `Migration of output column name change`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_edwardMoore` [3]_
      - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_withPoints` [2]_
@@ -836,6 +839,20 @@ To get the old version column names |result-dij-dd-m|: filter out the column
 .. literalinclude:: migration.queries
    :start-after: --drivingdistance4
    :end-before: --drivingdistance5
+
+Migration of output column name change
+-------------------------------------------------------------------------------
+
+.. rubric:: :doc:`pgr_edgeColoring`
+
+From: |old-edge-color|
+To: |result-edge-color|
+
+Before update:
+
+* Rename ``edge_id`` to ``edge`` and ``color_id`` to ``color``.
+* To get the old version column names: in the ``SELECT`` clause use ``edge AS
+  edge_id`` and ``color AS color_id``
 
 Migration of deleted functions
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
