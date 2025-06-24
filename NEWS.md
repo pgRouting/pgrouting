@@ -49,6 +49,10 @@ Summary of changes by function
 
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 
+* pgr_bipartite
+
+  * Output columns standardized to ``(node, color)``
+
 * pgr_contraction
 
   .. Breaking change
@@ -266,6 +270,11 @@ Standardize output columns of functions with different output columns within ove
 
 * [#2924](https://github.com/pgRouting/pgrouting/issues/2924)
   pgr_edgeColoring
+
+**Standardized to ``(node, color)``**
+
+* [#2924](https://github.com/pgRouting/pgrouting/issues/2924)
+  pgr_bipartite
 
 Removal of SQL deprecated signatures
 
