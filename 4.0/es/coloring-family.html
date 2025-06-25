@@ -161,7 +161,7 @@
 <section id="coloring-family-of-functions">
 <h1>Coloración - Familia de funciones<a class="headerlink" href="#coloring-family-of-functions" title="Link to this heading">¶</a></h1>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="ca1f4a98-2992-4cb6-b969-d84fbcdbd583" name="ca1f4a98-2992-4cb6-b969-d84fbcdbd583" type="checkbox"><label class="sphinx_collapse__label" for="ca1f4a98-2992-4cb6-b969-d84fbcdbd583"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="2f245685-24eb-4aaf-b6f6-bf3ee7cee843" name="2f245685-24eb-4aaf-b6f6-bf3ee7cee843" type="checkbox"><label class="sphinx_collapse__label" for="2f245685-24eb-4aaf-b6f6-bf3ee7cee843"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -185,7 +185,7 @@
 <li><p><a class="reference internal" href="pgr_sequentialVertexColoring.html"><span class="doc">pgr_sequentialVertexColoring - Propuesto</span></a>- Algoritmo de coloración de vértices mediante un enfoque codicioso.</p></li>
 </ul>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="b84812eb-6c67-4e39-9417-55abd5cee002" name="b84812eb-6c67-4e39-9417-55abd5cee002" type="checkbox"><label class="sphinx_collapse__label" for="b84812eb-6c67-4e39-9417-55abd5cee002"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="bdea656c-941f-44c2-9227-9f763dfdc6f6" name="bdea656c-941f-44c2-9227-9f763dfdc6f6" type="checkbox"><label class="sphinx_collapse__label" for="bdea656c-941f-44c2-9227-9f763dfdc6f6"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
@@ -226,6 +226,29 @@
 </div>
 <section id="result-columns">
 <h2>Columnas de resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">color)</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Color of the edge.</p>
+<ul class="simple">
+<li><p>El valor mínimo de color es 1.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <p>Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></p>
 <table class="docutils align-default">
 <thead>
@@ -242,29 +265,6 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del color del vértice.</p>
-<ul class="simple">
-<li><p>El valor mínimo de color es 1.</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p>Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Columna</p></th>
-<th class="head"><p>Tipo</p></th>
-<th class="head"><p>Descripción</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador de la arista.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color_id</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del color del segmento.</p>
 <ul class="simple">
 <li><p>El valor mínimo de color es 1.</p></li>
 </ul>
@@ -299,7 +299,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en jun 24, 2025.<br/>
+      Actualizado por última vez en jun 25, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

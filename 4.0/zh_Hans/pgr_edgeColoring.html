@@ -176,7 +176,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_edgeColoring</span></code> - 实验性<a class="headerlink" href="#pgr-edgecoloring-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_edgeColoring</span></code> - 返回无向图和无环图的边着色</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="f242cd4e-334a-43c8-a71c-06fed245ec10" name="f242cd4e-334a-43c8-a71c-06fed245ec10" type="checkbox"><label class="sphinx_collapse__label" for="f242cd4e-334a-43c8-a71c-06fed245ec10"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="8ffea44e-a1c3-485e-81f0-f799d74d3c44" name="8ffea44e-a1c3-485e-81f0-f799d74d3c44" type="checkbox"><label class="sphinx_collapse__label" for="8ffea44e-a1c3-485e-81f0-f799d74d3c44"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -210,12 +210,13 @@
 </div>
 </div>
 <p class="rubric">可用性</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>版本 3.3.0</p>
-<ul>
-<li><p>新实验性功能。</p></li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">color)</span></code></p></li>
 </ul>
-</li>
+<p class="rubric">版本 3.3.0</p>
+<ul class="simple">
+<li><p>新实验性功能。</p></li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -270,7 +271,7 @@
 <div class="line">pgr_edgeColoring(<a class="reference internal" href="#edges-sql">Edges SQL</a>)</div>
 </div>
 <div class="line-block">
-<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">color)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -279,30 +280,30 @@
 <dd class="field-odd"><p>pgRouting <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a> 的图形着色</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeColoring</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">edge</span><span class="p">,</span> <span class="n">color</span> <span class="n">FROM</span> <span class="n">pgr_edgeColoring</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges</span>
     <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="s1">&#39;</span>
 <span class="p">);</span>
- <span class="n">edge_id</span> <span class="o">|</span> <span class="n">color_id</span>
-<span class="o">---------+----------</span>
-       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span>
-       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span>
-       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span>
-       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">4</span>
-       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
-       <span class="mi">7</span> <span class="o">|</span>        <span class="mi">2</span>
-       <span class="mi">8</span> <span class="o">|</span>        <span class="mi">1</span>
-       <span class="mi">9</span> <span class="o">|</span>        <span class="mi">2</span>
-      <span class="mi">10</span> <span class="o">|</span>        <span class="mi">5</span>
-      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">5</span>
-      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">3</span>
-      <span class="mi">13</span> <span class="o">|</span>        <span class="mi">2</span>
-      <span class="mi">14</span> <span class="o">|</span>        <span class="mi">1</span>
-      <span class="mi">15</span> <span class="o">|</span>        <span class="mi">3</span>
-      <span class="mi">16</span> <span class="o">|</span>        <span class="mi">1</span>
-      <span class="mi">17</span> <span class="o">|</span>        <span class="mi">1</span>
-      <span class="mi">18</span> <span class="o">|</span>        <span class="mi">1</span>
+ <span class="n">edge</span> <span class="o">|</span> <span class="n">color</span>
+<span class="o">------+-------</span>
+    <span class="mi">1</span> <span class="o">|</span>     <span class="mi">3</span>
+    <span class="mi">2</span> <span class="o">|</span>     <span class="mi">2</span>
+    <span class="mi">3</span> <span class="o">|</span>     <span class="mi">3</span>
+    <span class="mi">4</span> <span class="o">|</span>     <span class="mi">4</span>
+    <span class="mi">5</span> <span class="o">|</span>     <span class="mi">4</span>
+    <span class="mi">6</span> <span class="o">|</span>     <span class="mi">1</span>
+    <span class="mi">7</span> <span class="o">|</span>     <span class="mi">2</span>
+    <span class="mi">8</span> <span class="o">|</span>     <span class="mi">1</span>
+    <span class="mi">9</span> <span class="o">|</span>     <span class="mi">2</span>
+   <span class="mi">10</span> <span class="o">|</span>     <span class="mi">5</span>
+   <span class="mi">11</span> <span class="o">|</span>     <span class="mi">5</span>
+   <span class="mi">12</span> <span class="o">|</span>     <span class="mi">3</span>
+   <span class="mi">13</span> <span class="o">|</span>     <span class="mi">2</span>
+   <span class="mi">14</span> <span class="o">|</span>     <span class="mi">1</span>
+   <span class="mi">15</span> <span class="o">|</span>     <span class="mi">3</span>
+   <span class="mi">16</span> <span class="o">|</span>     <span class="mi">1</span>
+   <span class="mi">17</span> <span class="o">|</span>     <span class="mi">1</span>
+   <span class="mi">18</span> <span class="o">|</span>     <span class="mi">1</span>
 <span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -388,7 +389,7 @@
 </section>
 <section id="result-columns">
 <h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>返回 <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code> 的集合</p>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">color)</span></code></p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>列</p></th>
@@ -397,13 +398,13 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>边的标识符。</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color_id</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>边颜色的标识符。</p>
+<td><p>Color of the edge.</p>
 <ul class="simple">
 <li><p>颜色的最小值为 1。</p></li>
 </ul>
@@ -440,7 +441,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 24, 2025.<br/>
+      Last updated on 6月 25, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

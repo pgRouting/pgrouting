@@ -160,7 +160,7 @@
 <section id="coloring-family-of-functions">
 <h1>着色 - 函数族<a class="headerlink" href="#coloring-family-of-functions" title="Link to this heading">¶</a></h1>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="bd3ca023-022d-4600-95db-978740a97e7c" name="bd3ca023-022d-4600-95db-978740a97e7c" type="checkbox"><label class="sphinx_collapse__label" for="bd3ca023-022d-4600-95db-978740a97e7c"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="a37cffc3-3140-46d2-ae1b-3a4247e16cbc" name="a37cffc3-3140-46d2-ae1b-3a4247e16cbc" type="checkbox"><label class="sphinx_collapse__label" for="a37cffc3-3140-46d2-ae1b-3a4247e16cbc"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>下一版本的提议功能。</p>
@@ -184,7 +184,7 @@
 <li><p><a class="reference internal" href="pgr_sequentialVertexColoring.html"><span class="doc">pgr_sequentialVertexColoring - 提议中</span></a> - 顶点着色算法采用贪心法。</p></li>
 </ul>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="a0e1e040-320b-488e-be42-4f6d3c359b46" name="a0e1e040-320b-488e-be42-4f6d3c359b46" type="checkbox"><label class="sphinx_collapse__label" for="a0e1e040-320b-488e-be42-4f6d3c359b46"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="ad08733e-06c6-471b-ae4c-4f7fdcd1afbf" name="ad08733e-06c6-471b-ae4c-4f7fdcd1afbf" type="checkbox"><label class="sphinx_collapse__label" for="ad08733e-06c6-471b-ae4c-4f7fdcd1afbf"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -225,6 +225,29 @@
 </div>
 <section id="result-columns">
 <h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">color)</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>边的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Color of the edge.</p>
+<ul class="simple">
+<li><p>颜色的最小值为 1。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <p>返回集合 <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></p>
 <table class="docutils align-default">
 <thead>
@@ -241,29 +264,6 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>顶点颜色的标识符。</p>
-<ul class="simple">
-<li><p>颜色的最小值为 1。</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p>返回 <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code> 的集合</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>列</p></th>
-<th class="head"><p>类型</p></th>
-<th class="head"><p>描述</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>边的标识符。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color_id</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>边颜色的标识符。</p>
 <ul class="simple">
 <li><p>颜色的最小值为 1。</p></li>
 </ul>
@@ -298,7 +298,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 24, 2025.<br/>
+      Last updated on 6月 25, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
