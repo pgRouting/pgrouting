@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 
-SELECT CASE WHEN min_version('4.0.0') THEN plan(13) WHEN min_version('3.4.0') THEN plan(2) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(13) WHEN min_version('3.4.0') THEN plan(12) ELSE plan(1) END;
 
 SELECT single_path_types_check(
   'pgr_trsp_withpoints', '{"",directed,details}'::TEXT[], '{bpchar,bool,bool}'::TEXT[],
