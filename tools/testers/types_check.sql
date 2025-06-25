@@ -22,13 +22,6 @@ BEGIN
     RETURN;
   END IF;
 
-  RETURN QUERY SELECT has_function(fn);
-
-  IF NOT min_version(standard_v) THEN
-    RETURN QUERY SELECT skip(1, fn || ': Standardized on ' || standard_v || ', skipping non standardized signatures');
-    RETURN;
-  END IF;
-
   IF fn ilike '%trsp%' THEN
     extra_name := '{""}'::TEXT[];
     extra_type := '{text}'::TEXT[];
@@ -37,16 +30,26 @@ BEGIN
   IF fn ilike '%withPoints%' THEN
     extra_name := extra_name || '{""}'::TEXT[];
     extra_type := extra_type || '{text}'::TEXT[];
+
+    IF NOT min_version('4.0.0') THEN
+      opt_names := '{directed,driving_side,details}'::TEXT[];
+      opt_types := '{bool,bpchar,bool}'::TEXT[];
+    END IF;
   END IF;
 
   IF fn ilike '%near%' THEN
     bounds := bounds - 1;
   END IF;
 
-  taptypes := array_replace(array_replace(array_replace(opt_types,
+  taptypes := array_replace(array_replace(array_replace
+             (array_replace(array_replace(opt_types,
       'bool', 'boolean'),
       'int8', 'bigint'),
+      'int4', 'integer'),
+      'float8', 'double precision'),
     'bpchar', 'character');
+
+  RETURN QUERY SELECT has_function(fn);
 
   IF NOT fn ilike '%near%' THEN
     RETURN QUERY SELECT has_function(fn, extra_type || '{text,bigint,bigint}' || taptypes);
@@ -58,13 +61,18 @@ BEGIN
   IF min_version('3.2.0') THEN RETURN QUERY SELECT has_function(fn, extra_type || '{text,text}' || taptypes); END IF;
 
   IF NOT fn ilike '%near%' THEN
-    RETURN QUERY SELECT function_returns(fn, extra_type || '{text,bigint,bigint}' || taptypes, 'setof record');
+    RETURN QUERY SELECT function_returns(fn, extra_type || '{text,bigint,bigint}' || taptypes[1:bounds], 'setof record');
   END IF;
   RETURN QUERY SELECT function_returns(fn, extra_type || '{text,bigint,anyarray}' || taptypes[1:bounds], 'setof record');
   RETURN QUERY SELECT function_returns(fn, extra_type || '{text,anyarray,bigint}' || taptypes[1:bounds], 'setof record');
   RETURN QUERY SELECT function_returns(fn, extra_type || '{text,anyarray,anyarray}' || taptypes, 'setof record');
   IF min_version('3.2.0') THEN RETURN QUERY SELECT function_returns(fn, extra_type || '{text,text}' || taptypes, 'setof record'); END IF;
 
+
+  IF NOT min_version(standard_v) THEN
+    RETURN QUERY SELECT skip(1, fn || ': Standardized on ' || standard_v || ', skipping non standardized signatures');
+    RETURN;
+  END IF;
 
   IF fn ilike '%near%' THEN
 
