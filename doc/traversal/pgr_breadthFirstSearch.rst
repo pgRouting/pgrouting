@@ -26,9 +26,13 @@ Search algorithm.
 
 .. rubric:: Availability
 
-* Version 3.0.0
+.. rubric:: Version 4.0.0:
 
-  * New experimental function.
+* Standardizing output columns to |result-spantree|
+
+.. rubric:: Version 3.0.0
+
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -57,7 +61,7 @@ Signatures
    | pgr_breadthFirstSearch(`Edges SQL`_, **root vids**, [**options**])
    | **options:** ``[max_depth, directed]``
 
-   | Returns set of |result-bfs|
+   | Returns set of |result-spantree|
 
 .. index::
     single: breadthFirstSearch - Experimental ; Single vertex - Experimental on v3.0
@@ -71,7 +75,7 @@ Single vertex
    | pgr_breadthFirstSearch(`Edges SQL`_, **root vid**, [**options**])
    | **options:** ``[max_depth, directed]``
 
-   | Returns set of |result-bfs|
+   | Returns set of |result-spantree|
 
 :Example: From root vertex :math:`6` on a **directed** graph with edges in
           ascending order of ``id``
@@ -92,7 +96,7 @@ Multiple vertices
    | pgr_breadthFirstSearch(`Edges SQL`_, **root vids**, [**options**])
    | **options:** ``[max_depth, directed]``
 
-   | Returns set of |result-bfs|
+   | Returns set of |result-spantree|
 
 :Example: From root vertices :math:`\{12, 6\}` on an **undirected** graph with
           **depth** :math:`<= 2` and edges in ascending order of ``id``

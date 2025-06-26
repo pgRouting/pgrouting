@@ -354,11 +354,6 @@ rst_epilog="""
 .. |ksp-result| replace:: ``(seq, path_id, path_seq, node, edge, cost, agg_cost)``
 .. |tsp-result| replace:: ``(seq, node, cost, agg_cost)``
 .. |nksp-result| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
-.. |old-generic-result| replace:: ``(seq, path_seq, [start_vid], [end_vid], node, edge, cost, agg_cost)``
-.. |result-1-1| replace:: ``(seq, path_seq, node, edge, cost, agg_cost)``
-.. |result-1-m| replace:: ``(seq, path_seq, end_vid, node, edge, cost, agg_cost)``
-.. |result-m-1| replace:: ``(seq, path_seq, start_vid, node, edge, cost, agg_cost)``
-.. |result-bfs| replace:: ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
 .. |result-spantree| replace:: ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
 .. |result-mst| replace:: ``(edge, cost)``
 .. |result-generic-no-seq| replace:: ``(seq, [start_vid], node, edge, cost, agg_cost)``
@@ -382,8 +377,6 @@ rst_epilog="""
 .. |result-contract| replace:: ``(type, id, contracted_vertices, source, target, cost)``
 .. |result-contraction-hierarchies| replace:: ``(type, id, contracted_vertices, source, target, cost, metric, vertex_order)``
 .. |result-idom| replace:: ``(seq, vertex_id, idom)``
-.. |result-dij-dd| replace:: ``(seq, [from_v,] node, edge, cost, agg_cost)``
-.. |result-dij-dd-m| replace:: ``(seq, from_v, node, edge, cost, agg_cost)``
 .. |result-linegf| replace:: ``(seq, source, target, cost, edge)``
 .. |result-lineg| replace:: ``(seq, source, target, cost, reverse_cost)``
 .. |result-flow| replace:: ``(seq, edge, start_vid, end_vid, flow, residual_capacity)``
