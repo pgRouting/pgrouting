@@ -46,7 +46,6 @@ psql -p "$1" -U "$3"  -d "$2" -X -q --set client_min_messages=WARNING --set ON_E
     -f "${DIR}/flow_pgtap_tests.sql" \
     -f "${DIR}/trsp_tests.sql" \
     -f "${DIR}/tsp_pgtap_tests.sql" \
-    -f "${DIR}/astar_pgtap_tests.sql" \
     -f "${DIR}/types_check.sql" \
     -f "${DIR}/via_compare.sql" \
     -f "${DIR}/compare_dijkstra.sql" \
