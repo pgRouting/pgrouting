@@ -16,7 +16,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- ********************************************************************PGR-GNU*/
+*******************************************************************PGR-GNU*/
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
@@ -55,10 +55,7 @@ ORDER BY id;
 -- Query 1 (Directed)
 
 PREPARE q1 AS
-SELECT * FROM pgr_depthFirstSearch (
-    'q0',
-    3
-);
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost FROM pgr_depthFirstSearch ( 'q0', 3);
 
 RETURN QUERY
 SELECT set_eq('q1',
@@ -74,10 +71,7 @@ SELECT set_eq('q1',
 -- Query 2 (Directed)
 
 PREPARE q2 AS
-SELECT * FROM pgr_depthFirstSearch (
-    'q0',
-    6
-);
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost FROM pgr_depthFirstSearch ( 'q0', 6);
 
 RETURN QUERY
 SELECT set_eq('q2',
@@ -93,10 +87,7 @@ SELECT set_eq('q2',
 -- Query 3 (Directed with max_depth)
 
 PREPARE q3 AS
-SELECT * FROM pgr_depthFirstSearch (
-    'q0',
-    6, max_depth => 1
-);
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost FROM pgr_depthFirstSearch ( 'q0', 6, max_depth => 1);
 
 RETURN QUERY
 SELECT set_eq('q3',
@@ -111,10 +102,7 @@ SELECT set_eq('q3',
 -- Query 4 (Vertex does not exist)
 
 PREPARE q4 AS
-SELECT * FROM pgr_depthFirstSearch (
-    'q0',
-    2
-);
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost FROM pgr_depthFirstSearch ( 'q0', 2);
 
 RETURN QUERY
 SELECT set_eq('q4',
@@ -126,10 +114,7 @@ SELECT set_eq('q4',
 -- Query 5 (Undirected)
 
 PREPARE q5 AS
-SELECT * FROM pgr_depthFirstSearch (
-    'q0',
-    3, directed => false
-);
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost FROM pgr_depthFirstSearch ( 'q0', 3, directed => false);
 
 RETURN QUERY
 SELECT set_eq('q5',
@@ -145,10 +130,7 @@ SELECT set_eq('q5',
 -- Query 6 (Undirected)
 
 PREPARE q6 AS
-SELECT * FROM pgr_depthFirstSearch (
-    'q0',
-    6, directed => false
-);
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost FROM pgr_depthFirstSearch ( 'q0', 6, directed => false);
 
 RETURN QUERY
 SELECT set_eq('q6',
@@ -164,10 +146,7 @@ SELECT set_eq('q6',
 -- Query 7 (Undirected with max_depth)
 
 PREPARE q7 AS
-SELECT * FROM pgr_depthFirstSearch (
-    'q0',
-    6, directed => false, max_depth => 1
-);
+SELECT  seq, depth, start_vid, node, edge, cost, agg_cost FROM pgr_depthFirstSearch ( 'q0', 6, directed => false, max_depth => 1);
 
 RETURN QUERY
 SELECT set_eq('q7',
@@ -183,10 +162,7 @@ SELECT set_eq('q7',
 -- Query 8 (Multiple Vertices)
 
 PREPARE q8 AS
-SELECT * FROM pgr_depthFirstSearch (
-    'q0',
-    ARRAY[6, 3, 6]
-);
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost FROM pgr_depthFirstSearch ( 'q0', ARRAY[6, 3, 6]);
 
 RETURN QUERY
 SELECT set_eq('q8',
@@ -208,5 +184,5 @@ LANGUAGE plpgsql;
 SELECT issue();
 
 
-SELECT * FROM finish();
+SELECT finish();
 ROLLBACK;

@@ -199,8 +199,7 @@ class Pgr_depthFirstSearch {
                  results.push_back({
                      root,
                      depth[v],
-                     /* TODO(cvvc) get predecessor */
-                     0,
+                     graph[u].id,
                      graph[v].id,
                      graph[edge].id,
                      graph[edge].cost,

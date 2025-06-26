@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2020 Ashish Kumar
-Mail: ashishkr23438@gmail.com
+Mail: ashishkr23438 at gmail.com
 
 ------
 
@@ -27,16 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---------------------------
--- pgr_depthFirstSearch
---------------------------
-
-
 -- SINGLE VERTEX
 --v3.2
 CREATE FUNCTION pgr_depthFirstSearch(
-    TEXT,   -- edges_sql (required)
-    BIGINT, -- root_vid (required)
+    TEXT,   -- edges sql (required)
+    BIGINT, -- root vid (required)
 
     directed BOOLEAN DEFAULT true,
     max_depth BIGINT DEFAULT 9223372036854775807,
@@ -44,32 +39,24 @@ CREATE FUNCTION pgr_depthFirstSearch(
     OUT seq BIGINT,
     OUT depth BIGINT,
     OUT start_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    IF $4 < 0 THEN
-        RAISE EXCEPTION 'Negative value found on ''max_depth'''
-        USING HINT = format('Value found: %s', $4);
-    END IF;
-
-
-    RETURN QUERY
-    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], directed, max_depth) AS a;
-END;
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], directed, max_depth);
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 -- MULTIPLE VERTICES
 --v3.2
 CREATE FUNCTION pgr_depthFirstSearch(
-    TEXT,     -- edges_sql (required)
-    ANYARRAY, -- root_vids (required)
+    TEXT,     -- edges sql (required)
+    ANYARRAY, -- root vids (required)
 
     directed BOOLEAN DEFAULT true,
     max_depth BIGINT DEFAULT 9223372036854775807,
@@ -77,52 +64,40 @@ CREATE FUNCTION pgr_depthFirstSearch(
     OUT seq BIGINT,
     OUT depth BIGINT,
     OUT start_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    IF $4 < 0 THEN
-        RAISE EXCEPTION 'Negative value found on ''max_depth'''
-        USING HINT = format('Value found: %s', $4);
-    END IF;
-
-
-    RETURN QUERY
-    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), $2, directed, max_depth) AS a;
-END;
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), $2, directed, max_depth);
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
-
-
--- COMMENTS
-
+LANGUAGE SQL VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, BIGINT, BOOLEAN, BIGINT)
 IS 'pgr_depthFirstSearch(Single Vertex)
 - PROPOSED
 - Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - From root vertex identifier
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From root vertex identifier
 - Optional parameters
-    - directed := true
-    - max_depth := 9223372036854775807
+  - directed := true
+  - max_depth := 9223372036854775807
 - Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_depthFirstSearch.html
+  - ${PROJECT_DOC_LINK}/pgr_depthFirstSearch.html
 ';
 
 COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, ANYARRAY, BOOLEAN, BIGINT)
 IS 'pgr_depthFirstSearch(Multiple Vertices)
 - PROPOSED
 - Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - From ARRAY[root vertices identifiers]
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - From ARRAY[root vertices identifiers]
 - Optional parameters
-    - directed := true
-    - max_depth := 9223372036854775807
+   - directed := true
+   - max_depth := 9223372036854775807
 - Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_depthFirstSearch.html
+  - ${PROJECT_DOC_LINK}/pgr_depthFirstSearch.html
 ';
