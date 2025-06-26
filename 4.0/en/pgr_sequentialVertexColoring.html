@@ -177,7 +177,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_sequentialVertexColoring</span></code> — Returns the vertex coloring of an undirected
 graph, using greedy approach.</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="f7217621-2307-492a-9777-63c4891a00fe" name="f7217621-2307-492a-9777-63c4891a00fe" type="checkbox"><label class="sphinx_collapse__label" for="f7217621-2307-492a-9777-63c4891a00fe"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="574b2745-380d-4197-8488-9ac82c9e2b06" name="574b2745-380d-4197-8488-9ac82c9e2b06" type="checkbox"><label class="sphinx_collapse__label" for="574b2745-380d-4197-8488-9ac82c9e2b06"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Proposed functions for next mayor release.</p>
@@ -198,17 +198,17 @@ graph, using greedy approach.</p>
 </div>
 </div>
 <p class="rubric">Availability</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>Version 3.3.0</p>
-<ul>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">color)</span></code></p></li>
+</ul>
+<p class="rubric">Version 3.3.0</p>
+<ul class="simple">
 <li><p>Function promoted to proposed.</p></li>
 </ul>
-</li>
-<li><p>Version 3.2.0</p>
-<ul>
+<p class="rubric">Version 3.2.0</p>
+<ul class="simple">
 <li><p>New experimental function.</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -244,7 +244,7 @@ possible color that is not used by its neighbors, to each vertex.</p></li>
 <div class="line">pgr_sequentialVertexColoring(<a class="reference internal" href="#edges-sql">Edges SQL</a>)</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">color)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -257,25 +257,25 @@ possible color that is not used by its neighbors, to each vertex.</p></li>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges</span>
     <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="s1">&#39;</span>
 <span class="p">);</span>
- <span class="n">vertex_id</span> <span class="o">|</span> <span class="n">color_id</span>
-<span class="o">-----------+----------</span>
-         <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">3</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">4</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">5</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">6</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">8</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">9</span> <span class="o">|</span>        <span class="mi">1</span>
-        <span class="mi">10</span> <span class="o">|</span>        <span class="mi">1</span>
-        <span class="mi">11</span> <span class="o">|</span>        <span class="mi">2</span>
-        <span class="mi">12</span> <span class="o">|</span>        <span class="mi">1</span>
-        <span class="mi">13</span> <span class="o">|</span>        <span class="mi">1</span>
-        <span class="mi">14</span> <span class="o">|</span>        <span class="mi">2</span>
-        <span class="mi">15</span> <span class="o">|</span>        <span class="mi">2</span>
-        <span class="mi">16</span> <span class="o">|</span>        <span class="mi">1</span>
-        <span class="mi">17</span> <span class="o">|</span>        <span class="mi">2</span>
+ <span class="n">node</span> <span class="o">|</span> <span class="n">color</span>
+<span class="o">------+-------</span>
+    <span class="mi">1</span> <span class="o">|</span>     <span class="mi">1</span>
+    <span class="mi">2</span> <span class="o">|</span>     <span class="mi">1</span>
+    <span class="mi">3</span> <span class="o">|</span>     <span class="mi">2</span>
+    <span class="mi">4</span> <span class="o">|</span>     <span class="mi">2</span>
+    <span class="mi">5</span> <span class="o">|</span>     <span class="mi">1</span>
+    <span class="mi">6</span> <span class="o">|</span>     <span class="mi">2</span>
+    <span class="mi">7</span> <span class="o">|</span>     <span class="mi">1</span>
+    <span class="mi">8</span> <span class="o">|</span>     <span class="mi">2</span>
+    <span class="mi">9</span> <span class="o">|</span>     <span class="mi">1</span>
+   <span class="mi">10</span> <span class="o">|</span>     <span class="mi">1</span>
+   <span class="mi">11</span> <span class="o">|</span>     <span class="mi">2</span>
+   <span class="mi">12</span> <span class="o">|</span>     <span class="mi">1</span>
+   <span class="mi">13</span> <span class="o">|</span>     <span class="mi">1</span>
+   <span class="mi">14</span> <span class="o">|</span>     <span class="mi">2</span>
+   <span class="mi">15</span> <span class="o">|</span>     <span class="mi">2</span>
+   <span class="mi">16</span> <span class="o">|</span>     <span class="mi">1</span>
+   <span class="mi">17</span> <span class="o">|</span>     <span class="mi">2</span>
 <span class="p">(</span><span class="mi">17</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -362,7 +362,7 @@ it’s not part of the graph.</p></li>
 </section>
 <section id="result-columns">
 <h2>Result columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></p>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">color)</span></code></p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -371,13 +371,13 @@ it’s not part of the graph.</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vertex_id</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the vertex.</p></td>
+<td><p>Identifier of the node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color_id</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the color of the vertex.</p>
+<td><p>Color of the node.</p>
 <ul class="simple">
 <li><p>The minimum value of color is 1.</p></li>
 </ul>
@@ -414,7 +414,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Jun 25, 2025.<br/>
+      Last updated on Jun 26, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
