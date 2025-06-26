@@ -19,40 +19,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN min_version('4.0.0') THEN plan(5) ELSE plan(2) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(5) ELSE plan(4) END;
 
-SELECT has_function('pgr_withpointscostmatrix');
-
-CREATE OR REPLACE FUNCTION check_types()
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-
-  IF NOT min_version('4.0.0') THEN
-    RETURN QUERY SELECT skip(1, 'pgr_withpointscostmatrix: New signatures on 4.0.0');
-    RETURN;
-  END IF;
-
-
-  RETURN QUERY SELECT has_function('pgr_withpointscostmatrix', ARRAY['text','text','anyarray','character','boolean']);
-  RETURN QUERY SELECT function_returns('pgr_withpointscostmatrix', ARRAY['text','text','anyarray','character','boolean'],'setof record');
-
-  RETURN QUERY SELECT function_args_has('pgr_withpointscostmatrix',
-    $$VALUES
-    ('{"","","","",directed,start_vid,end_vid,agg_cost}'::TEXT[])
-    $$);
-
-  RETURN QUERY SELECT function_types_has('pgr_withpointscostmatrix',
-    $$VALUES
-    ('{text,text,anyarray,bpchar,bool,int8,int8,float8}'::TEXT[])
-    $$);
-
-
-END
-$BODY$
-LANGUAGE plpgsql VOLATILE;
-
-SELECT check_types();
+SELECT cost_types_check(
+  'pgr_withpointscostmatrix',
+  '{"",directed}'::TEXT[], '{bpchar,bool}'::TEXT[],
+  standard_v => '4.0.0');
 
 SELECT finish();
 ROLLBACK;
