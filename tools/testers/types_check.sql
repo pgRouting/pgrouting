@@ -1,3 +1,122 @@
+CREATE OR REPLACE FUNCTION traversal_types_check(
+  fn TEXT,
+  opt_names TEXT[] DEFAULT '{directed,max_depth}'::TEXT[],
+  opt_types TEXT[] DEFAULT '{bool,int8}'::TEXT[],
+  created_v TEXT DEFAULT '3.0.0',
+  standard_v TEXT default '3.0.0')
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+  out_names TEXT[] := '{seq,depth,start_vid,pred,node,edge,cost,agg_cost}'::TEXT[];
+  out_types TEXT[] := '{int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[];
+  extra_name TEXT[] := '{}'::TEXT[];
+  extra_type TEXT[] := '{}'::TEXT[];
+  taptypes TEXT[];
+  args TEXT;
+  types TEXT;
+BEGIN
+
+  IF NOT min_version(created_v) THEN
+    RETURN QUERY SELECT skip(1, fn || ': Created on version ' || created_v);
+    RETURN;
+  END IF;
+
+  RETURN QUERY SELECT has_function(fn);
+
+  IF fn ilike '%breadth%' AND NOT min_version(standard_v)THEN
+    opt_names := '{max_depth,directed}'::TEXT[];
+    opt_types := '{int8,bool}'::TEXT[];
+  END IF;
+
+  IF fn ilike '%withpoints%' THEN
+    extra_name := extra_name || '{""}'::TEXT[];
+    extra_type := extra_type || '{text}'::TEXT[];
+
+    IF NOT min_version('3.6.0') THEN
+
+      RETURN QUERY SELECT skip(1, fn || ': All signatures on version ' || created_v);
+      RETURN;
+
+    ELSIF NOT min_version('4.0.0') THEN
+
+      opt_names := '{"",directed,driving_side,details}'::TEXT[];
+      opt_types := '{float8,bool,bpchar,bool}'::TEXT[];
+
+    END IF;
+
+  END IF;
+
+  taptypes := array_replace(array_replace(array_replace
+             (array_replace(array_replace(opt_types,
+      'bool', 'boolean'),
+      'int8', 'bigint'),
+      'int4', 'integer'),
+      'float8', 'double precision'),
+    'bpchar', 'character');
+
+  RETURN QUERY SELECT has_function(fn, extra_type || '{text,bigint}' || taptypes);
+  RETURN QUERY SELECT function_returns(fn, extra_type || '{text,bigint}' || taptypes, 'setof record');
+
+  IF fn = 'pgr_withpointsdd' OR fn = 'pgr_drivingdistance' THEN
+    -- equicost
+    RETURN QUERY SELECT has_function(fn, extra_type || '{text,anyarray}' || taptypes || '{boolean}'::TEXT[]);
+    RETURN QUERY SELECT function_returns(fn, extra_type || '{text,anyarray}' || taptypes || '{boolean}'::TEXT[], 'setof record');
+  ELSE
+    RETURN QUERY SELECT has_function(fn, extra_type || '{text,anyarray}' || taptypes);
+    RETURN QUERY SELECT function_returns(fn, extra_type || '{text,anyarray}' || taptypes, 'setof record');
+  END IF;
+
+  IF NOT min_version(standard_v) THEN
+    RETURN QUERY SELECT skip(1, fn || ': Standardized on ' || standard_v || ', skipping non standardized signatures');
+    RETURN;
+  END IF;
+
+  if fn = 'pgr_withpointsdd' OR fn = 'pgr_drivingdistance' THEN
+
+    args :=  format($$VALUES
+      ('%1$s'::TEXT[] || '{"",""}'::TEXT[] || '%2$s'::TEXT[] || '%3$s'::TEXT[]),
+      ('%1$s'::TEXT[] || '{"",""}'::TEXT[] || '%2$s'::TEXT[] || '{equicost}'::TEXT[] || '%3$s'::TEXT[])
+      $$,extra_name, opt_names, out_names, opt_names);
+
+    types :=  format($$VALUES
+      ('%1$s'::TEXT[] || '{text,int8}'::TEXT[] || '%4$s'::TEXT[] || '%3$s'::TEXT[]),
+      ('%1$s'::TEXT[] || '{text,anyarray}'::TEXT[] || '%2$s'::TEXT[] || '{bool}'::TEXT[] || '%3$s'::TEXT[])
+      $$, extra_type, opt_types, out_types, opt_types);
+
+  ELSE
+    args :=  format($$VALUES
+      ('%1$s'::TEXT[] || '{"",""}'::TEXT[] || '%2$s'::TEXT[] || '%3$s'::TEXT[])
+      $$,extra_name, opt_names, out_names, opt_names);
+
+    types :=  format($$VALUES
+      ('%1$s'::TEXT[] || '{text,int8}'::TEXT[] || '%4$s'::TEXT[] || '%3$s'::TEXT[]),
+      ('%1$s'::TEXT[] || '{text,anyarray}'::TEXT[] || '%2$s'::TEXT[] || '%3$s'::TEXT[])
+      $$, extra_type, opt_types, out_types, opt_types);
+
+  END IF;
+
+  IF fn ilike '%dd%' THEN
+
+    RETURN QUERY SELECT function_args_has(fn, args);
+    RETURN QUERY SELECT function_types_has(fn, types);
+
+  ELSIF min_version('4.0.0') THEN
+
+    RETURN QUERY SELECT function_args_eq(fn, args);
+    RETURN QUERY SELECT function_types_eq(fn, types);
+
+  ELSE
+
+    RETURN QUERY SELECT function_args_has(fn, args);
+    RETURN QUERY SELECT function_types_has(fn, types);
+
+  END IF;
+
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+
 CREATE OR REPLACE FUNCTION single_path_types_check(
   fn TEXT,
   opt_names TEXT[] DEFAULT '{directed}'::TEXT[],
@@ -168,7 +287,6 @@ BEGIN
 
   IF fn ilike '%matrix%' THEN
 
-    RAISE warning 'fn: %', fn;
     RETURN QUERY SELECT has_function(fn, extra_type || '{text,anyarray}' || taptypes[1:bounds]);
     RETURN QUERY SELECT function_returns(fn, extra_type || '{text,anyarray}' || taptypes[1:bounds], 'setof record');
 
