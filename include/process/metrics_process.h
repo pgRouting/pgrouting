@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 #endif
 
-#include "c_types/bandwidth_rt.h"
+#include "c_types/iid_t_rt.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -44,7 +44,7 @@ extern "C" {
 
 void pgr_process_metrics(
     const char* edges_sql,
-    GraphBandwidth_rt** result_tuples,
+    IID_t_rt** result_tuples,
     size_t* result_count,
     char** log_msg,
     char** notice_msg
