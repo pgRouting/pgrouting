@@ -28,6 +28,7 @@ Results can be different because of the changes.
 Migration to standardized columns
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+.. |old-generic-result| replace:: ``(seq, path_seq, [start_vid], [end_vid], node, edge, cost, agg_cost)``
 .. |old-pid-result| replace:: ``(seq, path_seq, [start_pid], [end_pid], node, edge, cost, agg_cost)``
 .. |pid-1-m| replace:: ``(seq, path_seq, end_pid, node, edge, cost, agg_cost)``
 .. |pid-m-1| replace:: ``(seq, path_seq, start_pid, node, edge, cost, agg_cost)``
@@ -35,6 +36,12 @@ Migration to standardized columns
 .. |matrix-pid| replace:: ``(start_pid, end_pid, agg_cost)``
 .. |old-edge-color| replace:: ``(edge_id, color_id)``
 .. |old-node-color| replace:: ``(vertex_id, color_id)``
+.. |result-bfs| replace:: ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
+.. |result-1-1| replace:: ``(seq, path_seq, node, edge, cost, agg_cost)``
+.. |result-1-m| replace:: ``(seq, path_seq, end_vid, node, edge, cost, agg_cost)``
+.. |result-m-1| replace:: ``(seq, path_seq, start_vid, node, edge, cost, agg_cost)``
+.. |result-dij-dd| replace:: ``(seq, [from_v,] node, edge, cost, agg_cost)``
+.. |result-dij-dd-m| replace:: ``(seq, from_v, node, edge, cost, agg_cost)``
 
 There has been an effort to standardize function output columns names and
 types.
