@@ -19,9 +19,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(11);
+SELECT CASE WHEN min_version('3.7.0') THEN plan(14) ELSE plan(12) END;
 
-SELECT spanntree_dd_types_check('pgr_primdd');
+SELECT traversal_types_check('pgr_primdd',
+  opt_names => '{""}'::TEXT[], opt_types => '{float8}'::TEXT[],
+  standard_v => '3.7.0');
+
+SELECT traversal_types_check('pgr_primdd',
+  opt_names => '{""}'::TEXT[], opt_types => '{numeric}'::TEXT[],
+  standard_v => '3.7.0');
 
 SELECT finish();
 ROLLBACK;

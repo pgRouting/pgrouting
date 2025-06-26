@@ -19,46 +19,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(7);
+SELECT CASE WHEN min_version('3.6.0') THEN plan(7) ELSE plan(6) END;
 
-SELECT has_function('pgr_drivingdistance');
-
-SELECT has_function('pgr_drivingdistance', ARRAY['text','bigint','double precision','boolean']);
-SELECT has_function('pgr_drivingdistance', ARRAY['text','anyarray','double precision','boolean','boolean']);
-
-SELECT function_returns('pgr_drivingdistance', ARRAY['text','bigint','double precision','boolean'],'setof record');
-SELECT function_returns('pgr_drivingdistance', ARRAY['text','anyarray','double precision','boolean','boolean'],'setof record');
-
-SELECT CASE
-WHEN (min_version('3.6.0')) THEN
-  collect_tap(
-
-    function_args_eq('pgr_drivingdistance',
-      $$VALUES
-      ('{"","","","directed","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","equicost","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[])
-      $$),
-
-    function_types_eq('pgr_drivingdistance',
-      $$VALUES
-      ('{text,int8,float8,bool,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,anyarray,float8,bool,bool,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[])
-      $$))
-
-  ELSE
-    collect_tap(
-      function_args_eq('pgr_drivingdistance',
-        $$VALUES
-        ('{"","","","directed","seq","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}'::TEXT[])
-        $$),
-
-      function_types_eq('pgr_drivingdistance',
-        $$VALUES
-        ('{text,int8,float8,bool,int4,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,anyarray,float8,bool,bool,int4,int8,int8,int8,float8,float8}'::TEXT[])
-        $$))
-END;
+SELECT traversal_types_check('pgr_drivingdistance',
+  opt_names => '{"",directed}'::TEXT[], opt_types => '{float8,bool}'::TEXT[],
+  standard_v => '3.6.0');
 
 SELECT finish();
 ROLLBACK;
