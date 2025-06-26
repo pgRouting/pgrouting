@@ -19,52 +19,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-SELECT CASE WHEN min_version('4.0.0') THEN plan(13) ELSE plan(2) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(13) WHEN min_version('3.2.0') THEN plan(12) ELSE PLAN(10) END;
 
-SELECT has_function('pgr_withpointscost');
+SELECT cost_types_check(
+  'pgr_withpointscost',
+  '{"",directed}'::TEXT[], '{bpchar,bool}'::TEXT[],
+  standard_v => '4.0.0');
 
-CREATE OR REPLACE FUNCTION check_types()
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-
-  IF NOT min_version('4.0.0') THEN
-    RETURN QUERY SELECT skip(1, 'pgr_withpointscost: New signatures on 4.0.0');
-    RETURN;
-  END IF;
-
-  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','bigint','bigint','character','boolean']);
-  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','bigint','anyarray','character','boolean']);
-  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','anyarray','bigint','character','boolean']);
-  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','anyarray','anyarray','character','boolean']);
-  RETURN QUERY SELECT has_function('pgr_withpointscost', ARRAY['text','text','text','character','boolean']);
-
-  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','bigint','bigint','character','boolean'],'setof record');
-  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','bigint','anyarray','character','boolean'],'setof record');
-  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','anyarray','bigint','character','boolean'],'setof record');
-  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','anyarray','anyarray','character','boolean'],'setof record');
-  RETURN QUERY SELECT function_returns('pgr_withpointscost', ARRAY['text','text','text','character','boolean'],'setof record');
-
-  RETURN QUERY SELECT function_args_has('pgr_withpointscost',
-    $$VALUES
-    ('{"","","","",   directed,start_vid,end_vid,agg_cost}'::TEXT[]),
-    ('{"","","","","",directed,start_vid,end_vid,agg_cost}')
-    $$);
-
-  RETURN QUERY SELECT function_types_has('pgr_withpointscost',
-    $$VALUES
-    ('{text,text,anyarray,int8,    bpchar,bool,int8,int8,float8}'::TEXT[]),
-    ('{text,text,int8,int8,        bpchar,bool,int8,int8,float8}'),
-    ('{text,text,int8,anyarray,    bpchar,bool,int8,int8,float8}'),
-    ('{text,text,anyarray,anyarray,bpchar,bool,int8,int8,float8}'),
-    ('{text,text,text,             bpchar,bool,int8,int8,float8}')
-    $$);
-
-
-END
-$BODY$
-LANGUAGE plpgsql VOLATILE;
-
-SELECT check_types();
 SELECT finish();
 ROLLBACK;
