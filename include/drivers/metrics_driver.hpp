@@ -38,13 +38,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <cstdint>
 
-#include "c_types/metrics_rt.h"
+#include "c_types/iid_t_rt.h"
 void
 do_metrics(
     std::string,
     bool, int,
 
-    Metrics_rt**, size_t*,
+    IID_t_rt**, size_t*,
     char**, char**);
 
 #endif  // INCLUDE_DRIVERS_METRICS_DRIVER_HPP_
