@@ -5,7 +5,7 @@ Copyright (c) 2019 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2019 Gudesa Venkata Sai Akhil
-Mail: gvs.akhil1997@gmail.com
+Mail: gvs.akhil1997 at gmail.com
 
 ------
 
@@ -24,18 +24,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
--------------------------
--------------------------
--- _breadthFirstSearch
--------------------------
--------------------------
 
 --v3.0
 CREATE FUNCTION _pgr_breadthFirstSearch(
-    edges_sql TEXT,
-    from_vids ANYARRAY,
-    max_depth BIGINT,
-    directed  BOOLEAN,
+    TEXT,     --edges
+    ANYARRAY, -- roots
+    BIGINT,   -- max depth
+    BOOLEAN,  --directed
 
     OUT seq BIGINT,
     OUT depth BIGINT,
@@ -43,14 +38,11 @@ CREATE FUNCTION _pgr_breadthFirstSearch(
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-
+    OUT agg_cost FLOAT,
+    OUT pred BIGINT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE c IMMUTABLE STRICT;
-
-
--- COMMENTS
+LANGUAGE C VOLATILE STRICT;
 
 COMMENT ON FUNCTION _pgr_breadthFirstSearch(TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgRouting internal function';
