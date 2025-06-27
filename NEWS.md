@@ -53,6 +53,10 @@ Summary of changes by function
 
   * Output columns standardized to ``(node, color)``
 
+* pgr_breadthFirstSearch
+
+  * Standardizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
+
 * pgr_contraction
 
   .. Breaking change
@@ -62,6 +66,10 @@ Summary of changes by function
 * pgr_dagShortestPath
 
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+
+* pgr_depthFirstSearch
+
+  * Standardizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
 
 * pgr_dijkstra
 
@@ -281,6 +289,13 @@ Standardize output columns of functions with different output columns within ove
   pgr_bipartite
 * [#2927](https://github.com/pgRouting/pgrouting/issues/2927)
   pgr_sequentialVertexColoring
+
+**Standardized to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``**
+
+* [#2931](https://github.com/pgRouting/pgrouting/issues/2931)
+  pgr_breadthFirstSearch
+* [#2931](https://github.com/pgRouting/pgrouting/issues/2931)
+  pgr_depthFirstSearch
 
 Removal of SQL deprecated signatures
 
