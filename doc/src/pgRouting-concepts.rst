@@ -1779,6 +1779,19 @@ Result columns for flow functions
 Result columns for spanning tree functions
 ...............................................................................
 
+Used by:
+
+* :doc:`pgr_breadthFirstSearch`
+* :doc:`pgr_depthFirstSearch`
+* :doc:`pgr_drivingDistance`
+* :doc:`pgr_kruskalBFS`
+* :doc:`pgr_kruskalDD`
+* :doc:`pgr_kruskalDFS`
+* :doc:`pgr_primBFS`
+* :doc:`pgr_primDD`
+* :doc:`pgr_primDFS`
+* :doc:`pgr_withPointsDD`
+
 .. spantree-result-columns-start
 
 Returns set of |result-spantree|
