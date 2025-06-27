@@ -278,6 +278,10 @@ sub generate_upgrade_script {
                 push @commands, drop_special_case_function("pgr_dagshortestpath(text,text)");
                 push @commands, drop_special_case_function("pgr_sequentialvertexcoloring(text)");
                 push @commands, drop_special_case_function("pgr_bipartite(text)");
+
+                push @commands, drop_special_case_function("_pgr_depthfirstsearch(text,anyarray,boolean,bigint)");
+                push @commands, drop_special_case_function("pgr_depthfirstsearch(text,anyarray,boolean,bigint)");
+                push @commands, drop_special_case_function("pgr_depthfirstsearch(text,bigint,boolean,bigint)");
             }
 
             if ($old_minor >= "3.3") {
@@ -285,7 +289,6 @@ sub generate_upgrade_script {
             }
 
             push @commands, drop_special_case_function("_pgr_breadthfirstsearch(text,anyarray,bigint,boolean)");
-            push @commands, drop_special_case_function("_pgr_depthfirstsearch(text,anyarray,boolean,bigint)");
 
             # Row type defined by OUT parameters is different.
             # Out parameters changed names on v4.0.0
@@ -303,9 +306,6 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_dagshortestpath(text,bigint,anyarray)");
             push @commands, drop_special_case_function("pgr_dagshortestpath(text,anyarray,bigint)");
             push @commands, drop_special_case_function("pgr_dagshortestpath(text,anyarray,anyarray)");
-
-            push @commands, drop_special_case_function("pgr_depthfirstsearch(text,anyarray,boolean,bigint)");
-            push @commands, drop_special_case_function("pgr_depthfirstsearch(text,bigint,boolean,bigint)");
 
             push @commands, drop_special_case_function("pgr_edwardmoore(text,bigint,bigint,boolean)");
             push @commands, drop_special_case_function("pgr_edwardmoore(text,anyarray,bigint,boolean)");
