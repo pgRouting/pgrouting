@@ -104,6 +104,12 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* pgr_breadthFirstSearch
+
+  .. include:: pgr_breadthFirstSearch.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_contraction
 
   .. include:: pgr_contraction.rst
@@ -113,6 +119,12 @@ Summary of changes by function
 * pgr_dagShortestPath
 
   .. include:: pgr_dagShortestPath.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_depthFirstSearch
+
+  .. include:: pgr_depthFirstSearch.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
@@ -317,6 +329,13 @@ Standardize output columns of functions with different output columns within ove
   pgr_bipartite
 * `#2927 <https://github.com/pgRouting/pgrouting/issues/2927>`__
   pgr_sequentialVertexColoring
+
+.. rubric:: Standardized to |result-spantree|
+
+* `#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__
+  pgr_breadthFirstSearch
+* `#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__
+  pgr_depthFirstSearch
 
 Removal of SQL deprecated signatures
 ...............................................................................
