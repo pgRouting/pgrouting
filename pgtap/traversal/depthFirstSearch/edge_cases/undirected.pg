@@ -264,7 +264,7 @@ SELECT set_eq('depthFirstSearch14',
 PREPARE q15 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edges
-WHERE id IN (8,10,11,12);
+WHERE id IN (8,10,11,12) ORDER BY id;
 
 RETURN QUERY
 SELECT set_eq('q15',
@@ -288,8 +288,6 @@ FROM pgr_depthFirstSearch( 'q15', ARRAY[7, 8, 11, 12], directed => false, max_de
 PREPARE depthFirstSearch18 AS
 SELECT seq,depth,start_vid,node,edge,cost,agg_cost
 FROM pgr_depthFirstSearch( 'q15', ARRAY[7, 8, 11, 12], directed => false, max_depth => 2);
-
-PERFORM todo_start('sometimes this tests fails');
 
 RETURN QUERY
 SELECT set_eq('depthFirstSearch16',
@@ -356,7 +354,6 @@ SELECT set_eq('depthFirstSearch18',
     '18: 4 vertices tests'
   );
 
-PERFORM todo_end();
 END;
 $BODY$
 LANGUAGE plpgsql;

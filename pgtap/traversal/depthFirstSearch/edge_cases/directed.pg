@@ -90,7 +90,7 @@ SELECT seq,depth,start_vid,node,edge,cost,agg_cost
 FROM pgr_depthFirstSearch('q3', 4, max_depth => -3);
 
 RETURN QUERY
-SELECT 
+SELECT
   CASE WHEN min_version('4.0.0') THEN
     throws_ok('depthFirstSearch5',
       'XX000', 'Negative value found on ''max_depth''',
@@ -260,7 +260,7 @@ SELECT set_eq('depthFirstSearch14',
 PREPARE q15 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edges
-WHERE id IN (8,10,11,12);
+WHERE id IN (8,10,11,12) ORDER BY id;
 
 RETURN QUERY
 SELECT set_eq('q15',
