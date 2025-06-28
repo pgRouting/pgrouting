@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2018 vicky Vergara
-Mail: vicky@georepublic.de
+Mail: vicky at erosion.dev
 
 ------
 
@@ -27,31 +27,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/** @file turnRestrictedPath.c */
-
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
-
 #include "c_types/path_rt.h"
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-
-
+#include "c_common/e_report.h"
 #include "drivers/yen/turnRestrictedPath_driver.h"
 
-PGDLLEXPORT Datum _pgr_turnrestrictedpath(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_turnrestrictedpath);
+PGDLLEXPORT Datum _pgr_turnrestrictedpath_v4(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_turnrestrictedpath_v4);
 
 
 static
 void
 process(
         char* edges_sql,
-        char *restrictions_sql,
-        int64_t start_vid,
-        int64_t end_vid,
+        char* restrictions_sql,
+        char* combinations_sql,
+        ArrayType *starts,
+        ArrayType *ends,
 
         int p_k,
         bool directed,
@@ -59,23 +54,17 @@ process(
         bool stop_on_first,
         bool strict,
 
-        Path_rt **path,
+        Path_rt **result_tuples,
         size_t *result_count) {
-    (*path) = NULL;
+    (*result_tuples) = NULL;
     (*result_count) = 0;
 
     if (p_k < 0) {
-        return;
-    }
-
-    size_t k = (size_t)p_k;
-
-    if (start_vid == end_vid) {
-        PGR_DBG("Source and target are the same");
-        return;
+        pgr_throw_error("Invalid value of 'K'", "Valid value are greater than 0");
     }
 
     pgr_SPI_connect();
+
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
@@ -84,37 +73,39 @@ process(
     pgr_do_turnRestrictedPath(
             edges_sql,
             restrictions_sql,
+            combinations_sql,
+            starts, ends,
+            (size_t) p_k,
 
-            start_vid,
-            end_vid,
-            k,
             directed,
             heap_paths,
             stop_on_first,
             strict,
 
-            path,
+            result_tuples,
             result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg(" processing pgr_turnRestrictedPath", start_t, clock());
 
-    if (err_msg) {
-        if (*path) pfree(*path);
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
     }
+
     pgr_global_report(&log_msg, &notice_msg, &err_msg);
 
     pgr_SPI_finish();
 }
 
 PGDLLEXPORT Datum
-_pgr_turnrestrictedpath(PG_FUNCTION_ARGS) {
+_pgr_turnrestrictedpath_v4(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    TupleDesc           tuple_desc;
+    TupleDesc            tuple_desc;
 
-    Path_rt  *path = NULL;
+    Path_rt  *result_tuples = 0;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -122,24 +113,23 @@ _pgr_turnrestrictedpath(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
-                PG_GETARG_INT64(2),
-                PG_GETARG_INT64(3),
+                NULL,
+                PG_GETARG_ARRAYTYPE_P(2),
+                PG_GETARG_ARRAYTYPE_P(3),
                 PG_GETARG_INT32(4),
                 PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
                 PG_GETARG_BOOL(8),
-                &path,
+                &result_tuples,
                 &result_count);
 
         funcctx->max_calls = result_count;
 
-        funcctx->user_fctx = path;
+        funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
@@ -154,7 +144,7 @@ _pgr_turnrestrictedpath(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    path = (Path_rt*) funcctx->user_fctx;
+    result_tuples = (Path_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -162,28 +152,39 @@ _pgr_turnrestrictedpath(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        size_t v_count = 7;
-
-        values = palloc(v_count * sizeof(Datum));
-        nulls = palloc(v_count * sizeof(bool));
-
+        size_t n = 9;
+        values = palloc(n * sizeof(Datum));
+        nulls = palloc(n * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < v_count; ++i) {
+        for (i = 0; i < n; ++i) {
             nulls[i] = false;
         }
 
-        int64_t seq = funcctx->call_cntr == 0?  1 : path[funcctx->call_cntr - 1].start_id;
+        Path_rt data = result_tuples[funcctx->call_cntr];
+
+        int64_t path_id = 1;
+        if (funcctx->call_cntr != 0) {
+            if (result_tuples[funcctx->call_cntr - 1].edge == -1) {
+                path_id = result_tuples[funcctx->call_cntr - 1].start_id + 1;
+            } else {
+                path_id = result_tuples[funcctx->call_cntr - 1].start_id;
+            }
+        }
+        int64_t seq = funcctx->call_cntr == 0?  1 : result_tuples[funcctx->call_cntr - 1].end_id;
 
         values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum((int32_t)path[funcctx->call_cntr].start_id + 1);
+        values[1] = Int32GetDatum((int32_t)path_id);
         values[2] = Int32GetDatum((int32_t)seq);
-        values[3] = Int64GetDatum(path[funcctx->call_cntr].node);
-        values[4] = Int64GetDatum(path[funcctx->call_cntr].edge);
-        values[5] = Float8GetDatum(path[funcctx->call_cntr].cost);
-        values[6] = Float8GetDatum(path[funcctx->call_cntr].agg_cost);
+        values[3] = Int64GetDatum(data.start_id);
+        values[4] = Int64GetDatum(data.end_id);
+        values[5] = Int64GetDatum(data.node);
+        values[6] = Int64GetDatum(data.edge);
+        values[7] = Float8GetDatum(data.cost);
+        values[8] = Float8GetDatum(data.agg_cost);
 
-        path[funcctx->call_cntr].start_id = path[funcctx->call_cntr].edge < 0? 1 : seq + 1;
+        result_tuples[funcctx->call_cntr].start_id = path_id;
+        result_tuples[funcctx->call_cntr].end_id = data.edge < 0? 1 : seq + 1;
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

@@ -1,13 +1,11 @@
 /*PGR-GNU*****************************************************************
 File: turnRestrictedPath.sql
 
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2017 Vidhan Jain
-Mail: vidhanj1307@gmail.com
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+vicky at erosion.dev
 
 ------
 
@@ -27,52 +25,56 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---v3.0
+-- ONE to ONE
+--v4.0
 CREATE FUNCTION pgr_turnRestrictedPath(
-    TEXT,   -- edges_sql (required)
-    TEXT,   -- restrictions_sql (required)
-    BIGINT, -- start_vertex (required)
-    BIGINT, -- end_vertex (required)
-    INTEGER,-- K cycles (required)
+  TEXT,   -- edges_sql (required)
+  TEXT,   -- restrictions_sql (required)
+  BIGINT, -- start_vertex (required)
+  BIGINT, -- end_vertex (required)
+  INTEGER,-- K cycles (required)
 
-    directed BOOLEAN DEFAULT true,
-    heap_paths BOOLEAN DEFAULT false,
-    stop_on_first BOOLEAN DEFAULT true,
-    strict BOOLEAN DEFAULT false,
+  directed BOOLEAN DEFAULT true,
+  heap_paths BOOLEAN DEFAULT false,
+  stop_on_first BOOLEAN DEFAULT true,
+  strict BOOLEAN DEFAULT false,
 
-    OUT seq INTEGER,
-    OUT path_id INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
+  OUT seq INTEGER,
+  OUT path_id INTEGER,
+  OUT path_seq INTEGER,
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT node BIGINT,
+  OUT edge BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, path_id, path_seq, node, edge, cost, agg_cost
-    FROM _pgr_turnRestrictedPath(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5, $6, $7, $8, $9);
+  SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+  FROM _pgr_turnRestrictedPath_v4(
+    _pgr_get_statement($1),
+    _pgr_get_statement($2),
+    ARRAY[$3]::BIGINT[], ARRAY[$4]::BIGINT[],
+    $5, directed, heap_paths, stop_on_first, strict);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-
--- COMMENTS
-
 COMMENT ON FUNCTION pgr_turnRestrictedPath(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_turnRestrictedPath
 - EXPERIMENTAL
 - Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - Restrictions SQL with columns: id, cost, path
-    - From vertex identifier
-    - To vertex identifier
-    - K
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Restrictions SQL with columns: id, cost, path
+  - From vertex identifier
+  - To vertex identifier
+  - K
 - Optional Parameters
-    - directed := true
-    - heap paths := false
-    - stop on first := true
-    - strict := false
+  - directed := true
+  - heap_paths := false
+  - stop_on_first := true
+  - strict := false
 - Documentation:
     - ${PROJECT_DOC_LINK}/pgr_turnRestrictedPath.html
 ';

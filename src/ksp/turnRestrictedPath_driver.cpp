@@ -6,8 +6,8 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2017 Vidhan Jain
-Mail: vidhanj1307@gmail.com
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -35,15 +35,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/alloc.hpp"
-#include "cpp_common/assert.hpp"
-
 #include "cpp_common/rule.hpp"
-
-#include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/assert.hpp"
+#include "cpp_common/alloc.hpp"
+#include "cpp_common/combinations.hpp"
 #include "cpp_common/restriction_t.hpp"
+#include "cpp_common/basePath_SSEC.hpp"
 #include "yen/turnRestrictedPath.hpp"
-
 
 namespace {
 
@@ -81,9 +79,9 @@ void
 pgr_do_turnRestrictedPath(
         const char *edges_sql,
         const char *restrictions_sql,
-
-        int64_t start_vid,
-        int64_t end_vid,
+        const char *combinations_sql,
+        ArrayType *starts,
+        ArrayType *ends,
 
         size_t k,
         bool directed,
@@ -93,7 +91,6 @@ pgr_do_turnRestrictedPath(
 
         Path_rt **return_tuples,
         size_t *return_count,
-
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
@@ -101,6 +98,7 @@ pgr_do_turnRestrictedPath(
     using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
+    using pgrouting::utilities::get_combinations;
     using pgrouting::yen::Pgr_turnRestrictedPath;
     using pgrouting::trsp::Rule;
     using pgrouting::pgget::get_restrictions;
@@ -110,6 +108,7 @@ pgr_do_turnRestrictedPath(
     std::ostringstream err;
     std::ostringstream notice;
     const char *hint = nullptr;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
@@ -118,6 +117,16 @@ pgr_do_turnRestrictedPath(
         pgassert(*return_count == 0);
 
 
+
+        hint = combinations_sql;
+        auto combinations = get_combinations(combinations_sql, starts, ends, true);
+        hint = nullptr;
+
+        if (combinations.empty() && combinations_sql) {
+            *notice_msg = to_pg_msg("No (source, target) pairs found");
+            *log_msg = to_pg_msg(combinations_sql);
+            return;
+        }
 
         hint = edges_sql;
         auto edges = get_edges(std::string(edges_sql), true, false);
@@ -141,7 +150,6 @@ pgr_do_turnRestrictedPath(
         }
 
         std::deque<Path> paths;
-
         std::string logstr;
         if (directed) {
             log << "Working with directed Graph\n";
@@ -152,8 +160,8 @@ pgr_do_turnRestrictedPath(
             paths = pgr_dijkstraTR(digraph,
                     ruleList,
 
-                    start_vid,
-                    end_vid,
+                    combinations.begin()->first,
+                    *(combinations.begin()->second.begin()),
 
                     logstr,
                     k,
@@ -168,8 +176,8 @@ pgr_do_turnRestrictedPath(
             paths = pgr_dijkstraTR(undigraph,
                     ruleList,
 
-                    start_vid,
-                    end_vid,
+                    combinations.begin()->first,
+                    *(combinations.begin()->second.begin()),
 
                     logstr,
 
