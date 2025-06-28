@@ -28,14 +28,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---v3.4.0
+--v4.0
 CREATE FUNCTION pgr_bandwidth(
-    edges_sql TEXT
+    TEXT,    -- edges_sql (required)
+
+    OUT bandwidth BIGINT   
 )
-RETURNS SETOF RECORD
+RETURNS BIGINT
 AS
 $BODY$
-    SELECT * FROM _pgr_bandwidth(_pgr_get_statement($1));
+    SELECT bandwidth FROM _pgr_bandwidth(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
@@ -48,7 +50,7 @@ IS 'pgr_bandwidth
 - Parameters:
     - edges SQL with columns: id, source, target, cost [, reverse_cost]
 - Returns:
-    - SETOF (graph_id INTEGER, bandwidth INTEGER)
+    - bandwidth BIGINT
 - Documentation:
     - ${PROJECT_DOC_LINK}/pgr_bandwidth.html
 ';
