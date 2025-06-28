@@ -20,11 +20,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(66);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(66) ELSE plan(1) END;
 
--- ONE TO ONE
-SELECT style_dijkstra('pgr_turnRestrictedPath(', ', $$SELECT * FROM restrictions$$, 6, 10, 2, true)');
-SELECT innerquery_restrictions('pgr_turnRestrictedPath($$SELECT * FROM edges$$, ', ', 6, 10, 2, true)');
+CREATE or REPLACE FUNCTION inner_query()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
 
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_turnrestrictedpath: testing only signatures standardaized in v4.0.0.');
+    RETURN;
+  END IF;
+
+  -- ONE TO ONE
+  RETURN QUERY SELECT style_dijkstra('pgr_turnRestrictedPath(', ', $$SELECT * FROM restrictions$$, 6, 10, 2, true)');
+  RETURN QUERY SELECT innerquery_restrictions('pgr_turnRestrictedPath($$SELECT * FROM edges$$, ', ', 6, 10, 2, true)');
+
+END;
+$BODY$
+language plpgsql;
+
+SELECT inner_query();
 SELECT finish();
 ROLLBACK;
