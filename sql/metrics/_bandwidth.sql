@@ -29,18 +29,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------------------
 -- _pgr_bandwidth
 --------------------------------
---v3.4.0
+--v4.0
 CREATE FUNCTION _pgr_bandwidth(
-    edges_sql TEXT,
-    directed BOOLEAN,
-  
-    OUT graph_id INTEGER,
-    OUT bandwidth INTEGER
+    TEXT
 )
-RETURNS SETOF RECORD AS
+RETURNS BIGINT AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
 
--- Comment
-COMMENT ON FUNCTION _pgr_bandwidth(TEXT, BOOLEAN)
+-- COMMENTS
+COMMENT ON FUNCTION _pgr_bandwidth(TEXT)
 IS 'pgRouting internal function';
