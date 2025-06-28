@@ -19,73 +19,56 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(13);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(13) ELSE plan(12) END;
 
-SELECT has_function('pgr_edgedisjointpaths');
+CREATE or REPLACE FUNCTION types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
 
+  RETURN QUERY SELECT has_function('pgr_edgedisjointpaths');
 
-SELECT has_function('pgr_edgedisjointpaths', ARRAY['text','bigint','bigint','boolean']);
-SELECT has_function('pgr_edgedisjointpaths', ARRAY['text','bigint','anyarray','boolean']);
-SELECT has_function('pgr_edgedisjointpaths', ARRAY['text','anyarray','bigint','boolean']);
-SELECT has_function('pgr_edgedisjointpaths', ARRAY['text','anyarray','anyarray','boolean']);
+  RETURN QUERY SELECT has_function('pgr_edgedisjointpaths', ARRAY['text','bigint','bigint','boolean']);
+  RETURN QUERY SELECT has_function('pgr_edgedisjointpaths', ARRAY['text','bigint','anyarray','boolean']);
+  RETURN QUERY SELECT has_function('pgr_edgedisjointpaths', ARRAY['text','anyarray','bigint','boolean']);
+  RETURN QUERY SELECT has_function('pgr_edgedisjointpaths', ARRAY['text','anyarray','anyarray','boolean']);
 
-SELECT function_returns('pgr_edgedisjointpaths', ARRAY['text','bigint','bigint','boolean'],'setof record');
-SELECT function_returns('pgr_edgedisjointpaths', ARRAY['text','bigint','anyarray','boolean'],'setof record');
-SELECT function_returns('pgr_edgedisjointpaths', ARRAY['text','anyarray','bigint','boolean'],'setof record');
-SELECT function_returns('pgr_edgedisjointpaths', ARRAY['text','anyarray','anyarray','boolean'],'setof record');
+  RETURN QUERY SELECT function_returns('pgr_edgedisjointpaths', ARRAY['text','bigint','bigint','boolean'],'setof record');
+  RETURN QUERY SELECT function_returns('pgr_edgedisjointpaths', ARRAY['text','bigint','anyarray','boolean'],'setof record');
+  RETURN QUERY SELECT function_returns('pgr_edgedisjointpaths', ARRAY['text','anyarray','bigint','boolean'],'setof record');
+  RETURN QUERY SELECT function_returns('pgr_edgedisjointpaths', ARRAY['text','anyarray','anyarray','boolean'],'setof record');
 
-SELECT CASE
-WHEN min_version('3.2.0') THEN
-  collect_tap(
-    has_function('pgr_edgedisjointpaths', ARRAY['text','text','boolean']),
-    function_returns('pgr_edgedisjointpaths', ARRAY['text','text','boolean'],'setof record')
-  )
-ELSE
-  skip(2, 'Combinations signature added on 3.2.0')
-END;
+  IF min_version('3.2.0') THEN
+    RETURN QUERY SELECT has_function('pgr_edgedisjointpaths', ARRAY['text','text','boolean']);
+    RETURN QUERY SELECT function_returns('pgr_edgedisjointpaths', ARRAY['text','text','boolean'],'setof record');
+  ELSE
+    RETURN QUERY SELECT skip(2, 'Combinations signature added on 3.2.0');
+  END IF;
 
-SELECT CASE
-WHEN min_version('3.2.0') THEN
-  collect_tap(
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_edgedisjointpaths: testing only signatures standardaized in v4.0.0.');
+    RETURN;
+  END IF;
 
-    function_args_eq('pgr_edgedisjointpaths',
-      $$VALUES
-      ('{"","","","directed","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_id","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_id","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","directed","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$),
+  RETURN QUERY SELECT function_args_eq('pgr_edgedisjointpaths',
+    $$VALUES
+    ('{"","","",directed,seq,path_id,path_seq,start_vid,end_vid,node,edge,cost,agg_cost}'::TEXT[]),
+    ('{"","",   directed,seq,path_id,path_seq,start_vid,end_vid,node,edge,cost,agg_cost}'::TEXT[])
+    $$);
 
-    function_types_eq('pgr_edgedisjointpaths',
-      $$VALUES
-      ('{text,int8,int8,bool,int4,int4,int4,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,int8,anyarray,bool,int4,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,anyarray,int8,bool,int4,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,anyarray,anyarray,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,text,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
-      $$)
-  )
-ELSE
-  collect_tap(
-
-    function_args_eq('pgr_edgedisjointpaths',
-      $$VALUES
-      ('{"","","","directed","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_id","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_id","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$),
-
-    function_types_eq('pgr_edgedisjointpaths',
-      $$VALUES
-      ('{text,int8,int8,bool,int4,int4,int4,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,int8,anyarray,bool,int4,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
-      ('{text,anyarray,int8,bool,int4,int4,int4,int8,int8,int8,float8,float8}'::TEXT[]),
+  RETURN QUERY SELECT function_types_eq('pgr_edgedisjointpaths',
+    $$VALUES
+      ('{text,text,             bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,int8,int8,        bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,int8,anyarray,    bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,int8,    bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[]),
       ('{text,anyarray,anyarray,bool,int4,int4,int4,int8,int8,int8,int8,float8,float8}'::TEXT[])
-      $$)
-  )
-END;
+    $$);
 
+END;
+$BODY$
+language plpgsql;
+
+SELECT types_check();
 SELECT finish();
 ROLLBACK;
