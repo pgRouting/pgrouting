@@ -293,6 +293,8 @@ sub generate_upgrade_script {
             # Row type defined by OUT parameters is different.
             # Out parameters changed names on v4.0.0
 
+            push @commands, drop_special_case_function("pgr_turnrestrictedpath(text,text,bigint,bigint,integer,boolean,boolean,boolean,boolean)");
+
             push @commands, drop_special_case_function("pgr_bellmanford(text,bigint,bigint,boolean)");
             push @commands, drop_special_case_function("pgr_bellmanford(text,anyarray,bigint,boolean)");
             push @commands, drop_special_case_function("pgr_bellmanford(text,bigint,anyarray,boolean)");
@@ -306,6 +308,10 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_dagshortestpath(text,bigint,anyarray)");
             push @commands, drop_special_case_function("pgr_dagshortestpath(text,anyarray,bigint)");
             push @commands, drop_special_case_function("pgr_dagshortestpath(text,anyarray,anyarray)");
+
+            push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,bigint,boolean)");
+            push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,bigint,boolean)");
+            push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,anyarray,boolean)");
 
             push @commands, drop_special_case_function("pgr_edwardmoore(text,bigint,bigint,boolean)");
             push @commands, drop_special_case_function("pgr_edwardmoore(text,anyarray,bigint,boolean)");
