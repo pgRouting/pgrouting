@@ -34,13 +34,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "process/shortestPath_process.h"
 
-#include <string>
-
 extern "C" {
 #include "c_common/postgres_connection.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 }
+
+#include <string>
 
 #include "c_types/path_rt.h"
 #include "cpp_common/assert.hpp"
