@@ -36,7 +36,7 @@ And with the additional characteristics:
 
 @subsection contraction_skeleton The contraction skeleton
 
-In general we have an initial set up that may involve analizing the graph given as input and setting the
+In general we have an initial set up that may involve analyzing the graph given as input and setting the
 non contractable nodes or edges. We have a cycle that will go and perform a contraction operation
 until while possible, and then move to the next contraction operation.
 Adding a new operation then becomes an "easy" task but more things might be involved, because the
@@ -282,7 +282,7 @@ digraph G {
 @subsection contraction_examples_Sample  Contraction of Sample Data
 
 - A weight different than 1 will be expressed explicitly.
-* Perform dead end operation follwed with a linear operation.
+* Perform dead end operation followed with a linear operation.
 * 1 cycle of contraction.
 
 
