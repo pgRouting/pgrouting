@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-29 15:49+0000\n"
+"POT-Creation-Date: 2025-06-29 18:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3005,7 +3005,7 @@ msgid "``fraction``"
 msgstr ""
 
 msgid ""
-"Value in <0,1> that indicates the relative postition from the first end "
+"Value in <0,1> that indicates the relative position from the first end "
 "point of the edge."
 msgstr ""
 
@@ -4038,6 +4038,18 @@ msgstr ""
 msgid "pgr_sequentialVertexColoring"
 msgstr ""
 
+msgid "pgr_topologicalSort"
+msgstr ""
+
+msgid "Standardize output to |result-node-order|"
+msgstr ""
+
+msgid "pgr_transitiveClosure"
+msgstr ""
+
+msgid "Standardized output to |result-closure|"
+msgstr ""
+
 msgid "pgr_trsp"
 msgstr ""
 
@@ -4342,6 +4354,19 @@ msgid ""
 "pgr_withPointsCostMatrix"
 msgstr ""
 
+msgid "Standardized to |generic-result|"
+msgstr ""
+
+msgid ""
+"`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ "
+"pgr_edgeDisjointPaths"
+msgstr ""
+
+msgid ""
+"`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ "
+"pgr_turnRestrictedPaths"
+msgstr ""
+
 msgid "Standardized to |result_edge_color|"
 msgstr ""
 
@@ -4376,17 +4401,20 @@ msgid ""
 "pgr_depthFirstSearch"
 msgstr ""
 
-msgid "Standardized to |generic-result|"
+msgid "Standardized to |result-node-order|"
 msgstr ""
 
 msgid ""
-"`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ "
-"pgr_edgeDisjointPaths"
+"`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__ "
+"pgr_topologicalSort"
+msgstr ""
+
+msgid "Standardized to |result-closure|"
 msgstr ""
 
 msgid ""
-"`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ "
-"pgr_turnRestrictedPaths"
+"`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__ "
+"pgr_transitiveClosure"
 msgstr ""
 
 msgid "Removal of SQL deprecated signatures"
@@ -5028,6 +5056,9 @@ msgstr ""
 msgid ":doc:`pgr_sequentialVertexColoring`"
 msgstr ""
 
+msgid ":doc:`pgr_topologicalSort`"
+msgstr ""
+
 msgid ":doc:`pgr_withPoints`"
 msgstr ""
 
@@ -5614,13 +5645,19 @@ msgstr ""
 msgid "Migration of output column name change"
 msgstr ""
 
-msgid "The standardized result columns for color functions are"
+msgid "The standardized result columns:"
 msgstr ""
 
 msgid "|result_edge_color|"
 msgstr ""
 
 msgid "|result_node_color|"
+msgstr ""
+
+msgid "|result-node-order|"
+msgstr ""
+
+msgid "Changes on column names must be done after updating pgRouting."
 msgstr ""
 
 msgid "``pgr_edgeColoring``"
@@ -5638,13 +5675,46 @@ msgstr ""
 msgid "``pgr_sequentialVertexColoring``"
 msgstr ""
 
+msgid "``pgr_topologicalSort``"
+msgstr ""
+
+msgid ":ref:`from_toposort`"
+msgstr ""
+
+msgid "``pgr_transitiveClosure``"
+msgstr ""
+
+msgid ":ref:`from_old_closure`"
+msgstr ""
+
+msgid "Migration from |result-old-closure|"
+msgstr ""
+
+msgid "Migration to: |result-old-closure|"
+msgstr ""
+
+msgid "After update:"
+msgstr ""
+
+msgid "Remove column ``seq``"
+msgstr ""
+
+msgid "Rename ``vid`` to ``node`` and ``target_array`` to ``targets``"
+msgstr ""
+
+msgid "Migration from |result-toposort|"
+msgstr ""
+
+msgid "Migration to: |result-node-order|"
+msgstr ""
+
+msgid "Rename ``sorted_v`` to ``node``"
+msgstr ""
+
 msgid "Migration from |old-edge-color|"
 msgstr ""
 
 msgid "Migration to: |result_edge_color|"
-msgstr ""
-
-msgid "After update:"
 msgstr ""
 
 msgid "Rename ``edge_id`` to ``edge`` and ``color_id`` to ``color``."
@@ -14537,16 +14607,10 @@ msgstr ""
 msgid "pgr_topologicalSort(`Edges SQL`_)"
 msgstr ""
 
-msgid "Returns set of |result-toposort|"
-msgstr ""
-
 msgid "Topologically sorting the graph"
 msgstr ""
 
 msgid "Sequential value starting from :math:`1`"
-msgstr ""
-
-msgid "``sorted_v``"
 msgstr ""
 
 msgid "Linear topological ordering of the vertices"
@@ -17193,12 +17257,6 @@ msgid "pgr_maxFlowMinCost_Cost"
 msgstr ""
 
 msgid "pgr_dagShortestpath"
-msgstr ""
-
-msgid "pgr_topologicalSort"
-msgstr ""
-
-msgid "pgr_transitiveClosure"
 msgstr ""
 
 msgid "VRP category"
