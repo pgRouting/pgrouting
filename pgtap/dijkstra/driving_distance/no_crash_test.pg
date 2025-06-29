@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN NOT min_version('3.6.0') AND min_lib_version('5.0.0') THEN plan(1) ELSE plan(34) END;
+SELECT CASE WHEN min_version('3.6.0') THEN plan(34) ELSE plan(3) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edges;
@@ -39,9 +39,13 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-    IF NOT min_version('3.6.0') AND min_lib_version('5.0.0') THEN
-      RETURN NEXT skip(1, 'Internal function deprecated on 3.6.0 and removed on 5.0.0');
+    IF NOT min_version('3.6.0') THEN
+      RETURN NEXT skip(1, 'Function standardized on 3.6.0');
       RETURN;
+    END IF;
+
+    IF min_lib_version('4.0.0') AND NOT min_version('4.0.0') THEN
+      SET client_min_messages TO WARNING;
     END IF;
 
     -- 1 to distance
