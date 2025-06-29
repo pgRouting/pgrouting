@@ -115,6 +115,14 @@ Summary of changes by function
 
   * Output columns standardized to ``(node, color)``
 
+* pgr_topologicalSort
+
+  * Standardize output to ``(seq, node)``
+
+* pgr_transitiveClosure
+
+  * Standardized output to ``(node,targets)``
+
 * pgr_trsp
 
   * Function promoted to official.
@@ -294,6 +302,13 @@ Standardize output columns of functions with different output columns within ove
 * [#2905](https://github.com/pgRouting/pgrouting/issues/2905)
   pgr_withPointsCostMatrix
 
+**Standardized to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``**
+
+* [#2909](https://github.com/pgRouting/pgrouting/issues/2909)
+  pgr_edgeDisjointPaths
+* [#2909](https://github.com/pgRouting/pgrouting/issues/2909)
+  pgr_turnRestrictedPaths
+
 **Standardized to ``(edge, color)``**
 
 * [#2924](https://github.com/pgRouting/pgrouting/issues/2924)
@@ -313,12 +328,15 @@ Standardize output columns of functions with different output columns within ove
 * [#2931](https://github.com/pgRouting/pgrouting/issues/2931)
   pgr_depthFirstSearch
 
-**Standardized to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``**
+**Standardized to ``(seq, node)``**
 
-* [#2909](https://github.com/pgRouting/pgrouting/issues/2909)
-  pgr_edgeDisjointPaths
-* [#2909](https://github.com/pgRouting/pgrouting/issues/2909)
-  pgr_turnRestrictedPaths
+* [#2934](https://github.com/pgRouting/pgrouting/issues/2934)
+  pgr_topologicalSort
+
+**Standardized to ``(node,targets)``**
+
+* [#2934](https://github.com/pgRouting/pgrouting/issues/2934)
+  pgr_transitiveClosure
 
 Removal of SQL deprecated signatures
 

@@ -194,6 +194,18 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* pgr_topologicalSort
+
+  .. include:: pgr_topologicalSort.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_transitiveClosure
+
+  .. include:: pgr_transitiveClosure.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_trsp
 
   .. include:: pgr_trsp.rst
@@ -342,6 +354,13 @@ Standardize output columns of functions with different output columns within ove
 * `#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__
   pgr_withPointsCostMatrix
 
+.. rubric:: Standardized to |generic-result|
+
+* `#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__
+  pgr_edgeDisjointPaths
+* `#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__
+  pgr_turnRestrictedPaths
+
 .. rubric:: Standardized to |result_edge_color|
 
 * `#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__
@@ -361,12 +380,15 @@ Standardize output columns of functions with different output columns within ove
 * `#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__
   pgr_depthFirstSearch
 
-.. rubric:: Standardized to |generic-result|
+.. rubric:: Standardized to |result-node-order|
 
-* `#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__
-  pgr_edgeDisjointPaths
-* `#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__
-  pgr_turnRestrictedPaths
+* `#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__
+  pgr_topologicalSort
+
+.. rubric:: Standardized to |result-closure|
+
+* `#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__
+  pgr_transitiveClosure
 
 Removal of SQL deprecated signatures
 ...............................................................................
