@@ -50,7 +50,7 @@ SELECT  'integer'::text AS t1,'integer'::text AS path_id, 'integer'::text AS t2,
 SELECT set_eq('v21q30', 'v21q31','many to many: Expected returning, columns names & types');
 
 
--- CHECKING WORKS WITH & WITOUT REVERSE COST
+-- CHECKING WORKS WITH & WITHOUT REVERSE COST
 
 PREPARE v20q1 AS
 SELECT * FROM pgr_dijkstravia(

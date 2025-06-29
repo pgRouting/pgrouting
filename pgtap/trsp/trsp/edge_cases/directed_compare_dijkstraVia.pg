@@ -62,7 +62,7 @@ BEGIN
   SELECT seq, node, edge, cost from pgr_dijkstra(
     'select id, source, target, cost, reverse_cost from edges',
     10, 15);
-  RETURN QUERY SELECT set_eq('q2','q2_expected','2: without retrictions returns the same as pgr_dijkstra');
+  RETURN QUERY SELECT set_eq('q2','q2_expected','2: without restrictions, returns the same as pgr_dijkstra');
 
   PREPARE q3 AS
   SELECT seq-1, node, edge, cost::TEXT from pgr_trsp(
@@ -78,7 +78,7 @@ BEGIN
     ARRAY[10, 6, 15],
     true) where edge != -1;
 
-  RETURN QUERY SELECT set_eq('q3','q3_expected','2: without retrictions returns the same as pgr_dijkstraVia');
+  RETURN QUERY SELECT set_eq('q3','q3_expected','2: without restrictions, returns the same as pgr_dijkstraVia');
 
 END;
 $BODY$

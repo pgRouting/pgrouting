@@ -23,7 +23,7 @@ SELECT CASE WHEN min_version('3.1.1') THEN plan(1300) ELSE plan(1) END;
 
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-CREATE or REPLACE FUNCTION edwardMoore_compare_dijkstra(cant INTEGER default 17)
+CREATE or REPLACE FUNCTION edwardMoore_compare_dijkstra(lim INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -40,7 +40,7 @@ BEGIN
   IF min_version('3.5.0') THEN
 
     -- v3.5.0+
-    -- pgr_edwardMoore has out put is not standarized
+    -- pgr_edwardMoore has out put is not standardized
     RETURN QUERY SELECT compare_dijkstra_one_one('pgr_edwardMoore', true, 'seq, path_seq, node, edge, cost, agg_cost');
     RETURN QUERY SELECT compare_dijkstra_one_one('pgr_edwardMoore', false, 'seq, path_seq, node, edge, cost, agg_cost');
     RETURN QUERY SELECT compare_dijkstra_one_many('pgr_edwardMoore', true, 'seq, path_seq, end_vid, node, edge, cost, agg_cost');
@@ -55,7 +55,7 @@ BEGIN
 
   END IF;
 
-  -- All These tests should work when pgr_edwardMoore 's output is standarized
+  -- All These tests should work when pgr_edwardMoore 's output is standardized
   RETURN QUERY SELECT compare_dijkstra_one_one('pgr_edwardMoore', true);
   RETURN QUERY SELECT compare_dijkstra_one_one('pgr_edwardMoore', false);
   RETURN QUERY SELECT compare_dijkstra_one_many('pgr_edwardMoore', true);

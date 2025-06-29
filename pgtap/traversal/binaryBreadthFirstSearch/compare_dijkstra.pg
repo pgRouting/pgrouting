@@ -22,7 +22,7 @@ BEGIN;
 SELECT plan(1300);
 
 -- Compare final row of result (Only final row due to existence of multiple valid paths)
-CREATE or REPLACE FUNCTION binaryBreadthFirstSearch_compare_dijkstra(cant INTEGER default 17)
+CREATE or REPLACE FUNCTION binaryBreadthFirstSearch_compare_dijkstra(lim INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -32,7 +32,7 @@ binaryBreadthFirstSearch TEXT;
 BEGIN
 
   IF NOT min_version('3.5.0') THEN
-  -- All These tests should work when binaryBreadthFirstSearch 's output is standarized
+  -- All These tests should work when binaryBreadthFirstSearch 's output is standardized
 
     RETURN QUERY SELECT compare_dijkstra_one_one('pgr_binaryBreadthFirstSearch', true, '*', 'WHERE edge = -1');
     RETURN QUERY SELECT compare_dijkstra_one_one('pgr_binaryBreadthFirstSearch', false, '*', 'WHERE edge = -1');
