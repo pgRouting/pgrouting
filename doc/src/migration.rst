@@ -30,20 +30,28 @@ Results can be different because of the changes.
 Migration to standardized columns
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. |old-generic-result| replace:: ``(seq, path_seq, [start_vid], [end_vid], node, edge, cost, agg_cost)``
 .. |old-pid-result| replace:: ``(seq, path_seq, [start_pid], [end_pid], node, edge, cost, agg_cost)``
 .. |pid-1-m| replace:: ``(seq, path_seq, end_pid, node, edge, cost, agg_cost)``
 .. |pid-m-1| replace:: ``(seq, path_seq, start_pid, node, edge, cost, agg_cost)``
 .. |pid-m-m| replace:: ``(seq, path_seq, start_pid, end_pid, node, edge, cost, agg_cost)``
-.. |matrix-pid| replace:: ``(start_pid, end_pid, agg_cost)``
-.. |old-edge-color| replace:: ``(edge_id, color_id)``
-.. |old-node-color| replace:: ``(vertex_id, color_id)``
-.. |result-bfs| replace:: ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
+
+.. |old-generic-result| replace:: ``(seq, path_seq, [start_vid], [end_vid], node, edge, cost, agg_cost)``
 .. |result-1-1| replace:: ``(seq, path_seq, node, edge, cost, agg_cost)``
 .. |result-1-m| replace:: ``(seq, path_seq, end_vid, node, edge, cost, agg_cost)``
 .. |result-m-1| replace:: ``(seq, path_seq, start_vid, node, edge, cost, agg_cost)``
+
+.. |matrix-pid| replace:: ``(start_pid, end_pid, agg_cost)``
+.. |old-edge-color| replace:: ``(edge_id, color_id)``
+.. |old-node-color| replace:: ``(vertex_id, color_id)``
+
+.. |result-bfs| replace:: ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
+
 .. |result-dij-dd| replace:: ``(seq, [from_v,] node, edge, cost, agg_cost)``
 .. |result-dij-dd-m| replace:: ``(seq, from_v, node, edge, cost, agg_cost)``
+
+.. |result-disjoint| replace::    ``(seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)``
+.. |result-disjoint-1-m| replace:: ``(seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)``
+.. |result-disjoint-m-1| replace:: ``(seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)``
 
 There has been an effort to standardize function output columns names and
 types.
@@ -66,58 +74,56 @@ types.
 
    * - Function
      - Migration guide
-   * - .. versionchanged:: 3.5.0 :doc:`pgr_dijkstra` [1]_
+   * - .. versionchanged:: 3.5.0 :doc:`pgr_dijkstra`
      - `Migration of single path functions`_
-   * - .. versionchanged:: 3.6.0 :doc:`pgr_aStar` [1]_
+   * - .. versionchanged:: 3.6.0 :doc:`pgr_aStar`
      - `Migration of single path functions`_
-   * - .. versionchanged:: 3.6.0 :doc:`pgr_bdAstar` [1]_
+   * - .. versionchanged:: 3.6.0 :doc:`pgr_bdAstar`
      - `Migration of single path functions`_
-   * - .. versionchanged:: 3.6.0 :doc:`pgr_drivingDistance` [1]_
+   * - .. versionchanged:: 3.6.0 :doc:`pgr_drivingDistance`
      - `Migration of spanning tree functions`_
-   * - .. versionchanged:: 3.6.0 :doc:`pgr_withPointsDD` [2]_
+   * - .. versionchanged:: 3.6.0 :doc:`pgr_withPointsDD`
      - `Migration of spanning tree functions`_
-   * - .. versionchanged:: 3.7.0 :doc:`pgr_kruskalBFS` [1]_
+   * - .. versionchanged:: 3.7.0 :doc:`pgr_kruskalBFS`
      - `Migration of spanning tree functions`_
-   * - .. versionchanged:: 3.7.0 :doc:`pgr_kruskalDD` [1]_
+   * - .. versionchanged:: 3.7.0 :doc:`pgr_kruskalDD`
      - `Migration of spanning tree functions`_
-   * - .. versionchanged:: 3.7.0 :doc:`pgr_kruskalDFS` [1]_
+   * - .. versionchanged:: 3.7.0 :doc:`pgr_kruskalDFS`
      - `Migration of spanning tree functions`_
-   * - .. versionchanged:: 3.7.0 :doc:`pgr_primBFS` [1]_
+   * - .. versionchanged:: 3.7.0 :doc:`pgr_primBFS`
      - `Migration of spanning tree functions`_
-   * - .. versionchanged:: 3.7.0 :doc:`pgr_primDD` [1]_
+   * - .. versionchanged:: 3.7.0 :doc:`pgr_primDD`
      - `Migration of spanning tree functions`_
-   * - .. versionchanged:: 3.7.0 :doc:`pgr_primDFS` [1]_
+   * - .. versionchanged:: 3.7.0 :doc:`pgr_primDFS`
      - `Migration of spanning tree functions`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_bdDijkstra` [1]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_bdDijkstra`
      - `Migration of single path functions`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_bellmanFord` [3]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_bellmanFord`
      - `Migration of single path functions`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_binaryBreadthFirstSearch` [3]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_binaryBreadthFirstSearch`
      - `Migration of single path functions`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_bipartite` [3]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_bipartite`
      - `Migration of output column name change`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_breadthFirstSearch` [3]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_breadthFirstSearch`
      - `Migration of spanning tree functions`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_dagShortestPath` [3]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_dagShortestPath`
      - `Migration of single path functions`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_depthFirstSearch` [3]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_depthFirstSearch`
      - `Migration of spanning tree functions`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_edgeColoring` [3]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_edgeColoring`
      - `Migration of output column name change`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_edwardMoore` [3]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_edwardMoore`
      - `Migration of single path functions`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_sequentialVertexColoring` [3]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_edgeDisjointPaths`
+     - `Migration of multiple paths functions`_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_sequentialVertexColoring`
      - `Migration of output column name change`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_withPoints` [2]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_withPoints`
      - `Migration of single path functions`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_withPointsCost` [2]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_withPointsCost`
      - `Migration of cost functions`_
-   * - .. versionchanged:: 4.0.0 :doc:`pgr_withPointsCostMatrix` [2]_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_withPointsCostMatrix`
      - `Migration of cost functions`_
-
-.. [1] Official function before v4.0.0
-.. [2] Official function in v4.0.0
-.. [3] Experimental or proposed in v4.0.0
 
 .. contents:: Contents
    :local:
@@ -310,6 +316,90 @@ To get the old version column names: rename ``start_vid`` to ``start_pid`` and
 
    If using ``pgr_withPointsCost``: column names must be changed after updating
    pgRouting
+
+Migration of multiple paths functions
+-------------------------------------------------------------------------------
+
+The standardized :ref:`pgRouting-concepts:Result columns for single path
+functions` are |nksp-result|
+
+The following functions need to be migrated when they are being used in an
+application.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Function
+     - Version
+     - From
+   * - ``pgr_KSP``
+     - v < 3.6
+     - :ref:`from_ksp_result`
+   * - ``pgr_edgeDisjointPaths``
+     - v < 4.0
+     - :ref:`from_result_disjoint`
+
+.. _from_ksp_result:
+
+Migration of |ksp-result|
+...............................................................................
+
+:to: |nksp-result|
+
+Signatures to be migrated:
+
+* One to One
+
+Before updating pgRouting, enumerate the |ksp-result|
+
+One to One example using ``pgr_KSP``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using
+`this <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__
+example.
+
+.. literalinclude:: migration.queries
+   :start-after: --ksp1
+   :end-before: --ksp2
+
+Before updating pgRouting, enumerate the |ksp-result|
+
+.. literalinclude:: migration.queries
+   :start-after: --ksp2
+   :end-before: --ksp3
+
+.. _from_result_disjoint:
+
+Migration of |result-disjoint|
+...............................................................................
+
+Signatures to be migrated:
+
+* One to One
+* One to Many
+* Many to One
+
+Before updating pgRouting, enumerate the |result-disjoint|
+
+* Skip when applicable, ``start_vid``
+* Skip when applicable, ``end_vid``
+
+One to One example using ``pgr_edgeDisjointPaths``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Migrating `this v3.8
+<https://docs.pgrouting.org/3.6/en/pgr_edgeDisjointPaths.html#one-to-one>`__ example.
+
+.. literalinclude:: migration.queries
+   :start-after: --EdgeDisjoint1
+   :end-before: --EdgeDisjoint2
+
+Before updating pgRouting enumerate the columns: |ksp-result|
+
+.. literalinclude:: migration.queries
+   :start-after: --EdgeDisjoint2
+   :end-before: --EdgeDisjoint3
 
 Migration of single path functions
 -------------------------------------------------------------------------------
@@ -684,6 +774,7 @@ Before updating pgRouting enumerate the columns: |result-bfs|.
 .. literalinclude:: migration.queries
    :start-after: --kruskalDD4
    :end-before: --kruskalDD5
+
 .. _from_result_dij_dd:
 
 Migration from |result-dij-dd|
@@ -1303,54 +1394,6 @@ To get the original column names:
 
 Not yet classified migrations
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Migration of ``pgr_KSP``
--------------------------------------------------------------------------------
-
-Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
-:doc:`pgr_KSP` result columns are being standardized.
-
-:from: |ksp-result|
-:to: |generic-result|
-
-Signatures to be migrated:
-
-* ``pgr_KSP`` (One to One)
-
-:Before Migration:
-
-* Output columns were |ksp-result|
-
-  * the columns ``start_vid`` and ``end_vid`` do not exist.
-
-    * ``pgr_KSP`` (One to One) does not have ``start_vid`` and ``end_vid``.
-
-:Migration:
-
-* Be aware of the existence of the additional columns.
-* If needed filter out the added columns, for example, to return the original
-  columns.
-
-``pgr_KSP`` (One to One)
-...............................................................................
-
-Using
-`this <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__
-example.
-
-* ``start_vid`` contains the **start vid** parameter value.
-* ``end_vid`` contains the **end vid** parameter value.
-
-.. literalinclude:: migration.queries
-   :start-after: --ksp1
-   :end-before: --ksp2
-
-If needed filter out the added columns, for example, to return the original
-columns:
-
-.. literalinclude:: migration.queries
-   :start-after: --ksp2
-   :end-before: --ksp3
 
 Migration of ``pgr_withPointsKSP``
 -------------------------------------------------------------------------------

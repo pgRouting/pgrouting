@@ -76,7 +76,7 @@ Signatures
    | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, **driving_side**, [**options**])
    | **options:** ``[directed, heap_paths, details]``
 
-   | Returns set of |ksp-result|
+   | Returns set of |nksp-result|
    | OR EMPTY SET
 
 .. index::
@@ -117,7 +117,7 @@ One to Many
    | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **K**, **driving_side**, [**options**])
    | **options:** ``[directed, heap_paths, details]``
 
-   | Returns set of |ksp-result|
+   | Returns set of |nksp-result|
    | OR EMPTY SET
 
 :Example: Get 2 paths from point :math:`1` to point :math:`3` and vertex :math:`7` on an
@@ -139,7 +139,7 @@ Many to One
    | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **K**, **driving_side**, [**options**])
    | **options:** ``[directed, heap_paths, details]``
 
-   | Returns set of |ksp-result|
+   | Returns set of |nksp-result|
    | OR EMPTY SET
 
 :Example: Get a path from point :math:`1` and vertex :math:`6` to point :math:`3` on a **directed**
@@ -183,7 +183,7 @@ Combinations
    | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, **driving_side**, [**options**])
    | **options:** ``[directed, heap_paths, details]``
 
-   | Returns set of |ksp-result|
+   | Returns set of |nksp-result|
    | OR EMPTY SET
 
 :Example: Using a combinations table on an **directed** graph
@@ -303,9 +303,9 @@ Combinations SQL
 Result columns
 -------------------------------------------------------------------------------
 
-.. include:: pgr_KSP.rst
-    :start-after: ksp_returns_start
-    :end-before: ksp_returns_end
+.. include:: pgRouting-concepts.rst
+    :start-after: return_path_all_columns_start
+    :end-before: return_path_all_columns_withPoints_end
 
 Additional Examples
 -------------------------------------------------------------------------------
