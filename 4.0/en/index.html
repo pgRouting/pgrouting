@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=798e95cd"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
@@ -275,7 +275,7 @@ For other licenses used in pgRouting see the <a class="reference internal" href=
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#result-columns">Result columns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#performance-tips">Performance Tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#how-to-contribute">How to contribute</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#see-also">See also</a></li>
 </ul>
 </li>
 </ul>
@@ -544,6 +544,12 @@ milestone for 4.0.0</a></p>
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">color)</span></code></p></li>
 </ul>
 </li>
+<li><p>pgr_breadthFirstSearch</p>
+<p>:</p>
+<ul class="simple">
+<li><p>Standardizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
 <li><p>pgr_contraction</p>
 <ul class="simple">
 <li><p>Breaking change, signatures no longer available:</p>
@@ -556,6 +562,12 @@ milestone for 4.0.0</a></p>
 <li><p>pgr_dagShortestPath</p>
 <ul class="simple">
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_depthFirstSearch</p>
+<p>:</p>
+<ul class="simple">
+<li><p>Standardizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 </ul>
 </li>
 <li><p>pgr_dijkstra</p>
@@ -853,6 +865,13 @@ pgr_edgeColoring</p></li>
 pgr_bipartite</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2927">#2927</a>
 pgr_sequentialVertexColoring</p></li>
+</ul>
+<p class="rubric">Standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2931">#2931</a>
+pgr_breadthFirstSearch</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2931">#2931</a>
+pgr_depthFirstSearch</p></li>
 </ul>
 </section>
 <section id="removal-of-sql-deprecated-signatures">
@@ -1154,7 +1173,7 @@ pgr_nodeNetwork</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Jun 26, 2025.<br/>
+      Last updated on Jun 29, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
