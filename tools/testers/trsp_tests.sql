@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION compare_trsp_dijkstra_new(cant INTEGER, flag boolean, restrictions_sql TEXT)
+CREATE OR REPLACE FUNCTION compare_trsp_dijkstra_new(lim INTEGER, flag boolean, restrictions_sql TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -23,8 +23,8 @@ BEGIN
   directed = 'Undirected';
   IF flag THEN directed = 'Directed'; END IF;
 
-  FOR i IN 1..cant BY 2 LOOP
-    FOR j IN 1..cant LOOP
+  FOR i IN 1..lim BY 2 LOOP
+    FOR j IN 1..lim LOOP
 
       params = ' ' || i || ', ' || j || ', ' || flag;
 
