@@ -142,8 +142,6 @@ _pgr_contractionhierarchies(PG_FUNCTION_ARGS) {
                 (size_t)contracted_vertices_size);
 
         for (i = 0; i < contracted_vertices_size; ++i) {
-            PGR_DBG("Storing contracted vertex %ld",
-                    result_tuples[call_cntr].contracted_vertices[i]);
             contracted_vertices_array[i] =
                 Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
         }
