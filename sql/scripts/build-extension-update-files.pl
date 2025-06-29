@@ -303,6 +303,8 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_binarybreadthfirstsearch(text,anyarray,bigint,boolean)");
             push @commands, drop_special_case_function("pgr_binarybreadthfirstsearch(text,bigint,anyarray,boolean)");
 
+            push @commands, drop_special_case_function("pgr_topologicalsort(text)");
+            push @commands, drop_special_case_function("pgr_transitiveclosure(text)");
 
             push @commands, drop_special_case_function("pgr_dagshortestpath(text,bigint,bigint)");
             push @commands, drop_special_case_function("pgr_dagshortestpath(text,bigint,anyarray)");

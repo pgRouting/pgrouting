@@ -34,7 +34,7 @@ CREATE FUNCTION pgr_topologicalSort(
     TEXT, -- edges_sql (required)
 
     OUT seq INTEGER,
-    OUT sorted_v BIGINT)
+    OUT node BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, sorted_v
