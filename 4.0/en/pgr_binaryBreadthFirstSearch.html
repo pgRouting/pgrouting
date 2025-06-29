@@ -199,7 +199,7 @@ graph.</p>
 <p>Any graph whose edge-weights belongs to the set {0,X}, where ‘X’ is any
 non-negative integer, is termed as a ‘binary graph’.</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="8465cc02-54fb-4e47-90f2-7a0d721e2aa4" name="8465cc02-54fb-4e47-90f2-7a0d721e2aa4" type="checkbox"><label class="sphinx_collapse__label" for="8465cc02-54fb-4e47-90f2-7a0d721e2aa4"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="cea09052-9cd3-427b-9a0a-6ca705a5dd2c" name="cea09052-9cd3-427b-9a0a-6ca705a5dd2c" type="checkbox"><label class="sphinx_collapse__label" for="cea09052-9cd3-427b-9a0a-6ca705a5dd2c"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Possible server crash</p>
@@ -671,7 +671,7 @@ it’s not part of the graph.</p></li>
 </section>
 <section id="result-columns">
 <h2>Result columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>Set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -689,57 +689,34 @@ it’s not part of the graph.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Sequential value starting from <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_id</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Path identifier.</p>
-<ul class="simple">
-<li><p>Has value <strong>1</strong> for the first of a path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to
-<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Relative position in the path. Has value <strong>1</strong> for the beginning of a
 path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex.
-Returned when multiple starting vetrices are in the query.</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#many-to-one">Many to One</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
-<li><p><a class="reference internal" href="#combinations">Combinations</a></p></li>
-</ul>
-</td>
+<td><p>Identifier of the starting vertex of the current path.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex.
-Returned when multiple ending vertices are in the query.</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#one-to-many">One to Many</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
-<li><p><a class="reference internal" href="#combinations">Combinations</a></p></li>
-</ul>
-</td>
+<td><p>Identifier of the ending vertex of the current path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the
 path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the
 path sequence.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>

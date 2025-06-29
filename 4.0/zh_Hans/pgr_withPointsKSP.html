@@ -293,7 +293,7 @@
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">details]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -353,7 +353,7 @@
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">details]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -402,7 +402,7 @@
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">details]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -490,7 +490,7 @@
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">details]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -835,8 +835,13 @@
 </section>
 <section id="result-columns">
 <h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</p>
 <table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>列</p></th>
 <th class="head"><p>类型</p></th>
@@ -852,7 +857,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>路径标识符。</p>
 <ul class="simple">
-<li><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 的第一个路径的值为 <strong>1</strong></p></li>
+<li><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 的第一个路径的值为 <strong>1</strong> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -860,9 +865,17 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong> 。</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>起始顶点的标识符。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>结束顶点的标识符。</p></td>
+</tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 路径中节点的标识符</p></td>
+<td><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 路径中节点的标识符。</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -870,18 +883,19 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>从使用 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 的 <code class="docutils literal notranslate"><span class="pre">node</span></code> 遍历到路径序列中的下一个节点的成本。</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(0\)</span> 为路径的最后一个 <code class="docutils literal notranslate"><span class="pre">node</span></code> 。</p></li>
-</ul>
-</td>
+<td><p>从使用 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 的 <code class="docutils literal notranslate"><span class="pre">node</span></code> 遍历到路径序列中的下一个节点的成本。</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>从 <strong>start vid</strong> 到 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的总成本。</p></td>
+<td><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的总成本。</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns have negative values, the identifier is for
+a Point.</p>
+</div>
 </section>
 <section id="additional-examples">
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>

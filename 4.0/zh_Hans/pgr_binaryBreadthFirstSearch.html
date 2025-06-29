@@ -197,7 +197,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_binaryBreadthFirstSearch</span></code> — 返回二进制图中的最短路径。</p>
 <p>任何边权属于集合 {0,X} 的图（其中“X”是任何非负整数）都被称为“二元图”。</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="a6128e4c-fc11-4099-8b0e-ffcff7badb65" name="a6128e4c-fc11-4099-8b0e-ffcff7badb65" type="checkbox"><label class="sphinx_collapse__label" for="a6128e4c-fc11-4099-8b0e-ffcff7badb65"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="f47f7586-e781-43d4-933e-d387e31e1329" name="f47f7586-e781-43d4-933e-d387e31e1329" type="checkbox"><label class="sphinx_collapse__label" for="f47f7586-e781-43d4-933e-d387e31e1329"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -657,7 +657,7 @@ algorithm, like Dijkstra's Algorithm which runs in <span class="math notranslate
 </section>
 <section id="result-columns">
 <h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>Set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -675,51 +675,31 @@ algorithm, like Dijkstra's Algorithm which runs in <span class="math notranslate
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>从 <strong>1</strong> 开始的顺序值。</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_id</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>路径标识符。</p>
-<ul class="simple">
-<li><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 的第一个路径的值为 <strong>1</strong> 。</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong> 。</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>起始顶点的标识符。 当查询中有多个起始向量时返回。</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#many-to-one">Many to One</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
-<li><p><a class="reference internal" href="#combinations">组合</a></p></li>
-</ul>
-</td>
+<td><p>当前路径起始顶点的标识符。</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>结束顶点的标识符。 当查询中有多个结束顶点时返回。</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#one-to-many">One to Many</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
-<li><p><a class="reference internal" href="#combinations">组合</a></p></li>
-</ul>
-</td>
+<td><p>当前路径结束顶点的标识符。</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 路径中节点的标识符。</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>用于从路径序列中的 <code class="docutils literal notranslate"><span class="pre">node</span></code> 到下一个节点的边的标识符。 <strong>-1</strong> 表示路径的最后一个节点。</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>从使用 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 的 <code class="docutils literal notranslate"><span class="pre">node</span></code> 遍历到路径序列中的下一个节点的成本。</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的总成本。</p></td>
 </tr>

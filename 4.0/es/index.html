@@ -521,6 +521,11 @@
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">color)</span></code></p></li>
 </ul>
 </li>
+<li><p>pgr_boykovKolmogorov</p>
+<ul class="simple">
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
 <li><p>pgr_breadthFirstSearch</p>
 <p>:</p>
 <ul class="simple">
@@ -560,6 +565,16 @@
 <li><p>pgr_edgeColoring</p>
 <ul class="simple">
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">color)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_edgeDisjointPaths</p>
+<ul class="simple">
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_edmondsKarp</p>
+<ul class="simple">
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
 </ul>
 </li>
 <li><p>pgr_edwardMoore</p>
@@ -645,6 +660,11 @@
 <li><p>pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)</p></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p>pgr_turnRestrictedPath</p>
+<ul class="simple">
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 </ul>
 </li>
 <li><p>pgr_withPoints</p>
@@ -849,6 +869,13 @@ pgr_sequentialVertexColoring</p></li>
 pgr_breadthFirstSearch</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2931">#2931</a>
 pgr_depthFirstSearch</p></li>
+</ul>
+<p class="rubric">Standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2909">#2909</a>
+pgr_edgeDisjointPaths</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2909">#2909</a>
+pgr_turnRestrictedPaths</p></li>
 </ul>
 </section>
 <section id="removal-of-sql-deprecated-signatures">
@@ -1091,7 +1118,7 @@ pgr_nodeNetwork</p></li>
 </li>
 </ul>
 <p class="rubric">Obsolescencia de funciones internas C/C++</p>
-<p>Deprecated functions are substitued by new function.</p>
+<p>Deprecated functions are substituted by new function.</p>
 <ul class="simple">
 <li><p>_pgr_drivingdistance =&gt; _pgr_drivingdistancev4</p></li>
 <li><p>_pgr_withpointsdd =&gt; _pgr_withpointsddv4</p></li>

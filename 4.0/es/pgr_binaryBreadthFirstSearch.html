@@ -198,7 +198,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_binaryBreadthFirstSearch</span></code> - Devuelve el camino más corto en un grafo binario.</p>
 <p>Un grafo cuyos pesos de las aristas pertenece al conjunto {0, X}, donde “X” es un entero no negativo, se le llama “grafo binario”.</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="1e6b3c2d-87ed-496a-9bb7-99fa480d79b9" name="1e6b3c2d-87ed-496a-9bb7-99fa480d79b9" type="checkbox"><label class="sphinx_collapse__label" for="1e6b3c2d-87ed-496a-9bb7-99fa480d79b9"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="f8211098-81c5-490b-84c0-75f4a1bdd339" name="f8211098-81c5-490b-84c0-75f4a1bdd339" type="checkbox"><label class="sphinx_collapse__label" for="f8211098-81c5-490b-84c0-75f4a1bdd339"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
@@ -282,7 +282,7 @@ algorithm, like Dijkstra’s Algorithm which runs in <span class="math notransla
 <div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -450,7 +450,7 @@ algorithm, like Dijkstra’s Algorithm which runs in <span class="math notransla
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -658,7 +658,7 @@ algorithm, like Dijkstra’s Algorithm which runs in <span class="math notransla
 </section>
 <section id="result-columns">
 <h2>Columnas de resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>Set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -676,51 +676,31 @@ algorithm, like Dijkstra’s Algorithm which runs in <span class="math notransla
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_id</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Identificador del camino.</p>
-<ul class="simple">
-<li><p>Tiene valor <strong>1</strong> para el primero de la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el inicio de una ruta.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del vértice inicial. Se devuelve cuando hay varias vetrices iniciales en la consulta.</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#many-to-one">Muchos a Uno</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#combinations">Combinaciones</a></p></li>
-</ul>
-</td>
+<td><p>Identificador del vértice inicial de la ruta actual.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del vértice final. Se devuelve cuando hay varios vértices finales en la consulta.</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#one-to-many">Uno a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#combinations">Combinaciones</a></p></li>
-</ul>
-</td>
+<td><p>Identificador del vértice final de la ruta actual.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del nodo en la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador de la arista utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta. <code class="docutils literal notranslate"><span class="pre">-1</span></code> para el último nodo de la ruta.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Costo para atravesar desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando <code class="docutils literal notranslate"><span class="pre">edge</span></code> hasta el siguiente nodo en la secuencia de la ruta.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>

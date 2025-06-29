@@ -209,7 +209,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_turnRestrictedPath</span></code> - Experimental<a class="headerlink" href="#pgr-turnrestrictedpath-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_turnRestrictedPath</span></code> Usando el algoritmo vértice -vértice de Yen para ruteo con restricciones</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="8cbb10fd-7659-4a50-8c11-38bff814f465" name="8cbb10fd-7659-4a50-8c11-38bff814f465" type="checkbox"><label class="sphinx_collapse__label" for="8cbb10fd-7659-4a50-8c11-38bff814f465"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="016e86c5-71f7-4063-a4df-ed0cfe9b4866" name="016e86c5-71f7-4063-a4df-ed0cfe9b4866" type="checkbox"><label class="sphinx_collapse__label" for="016e86c5-71f7-4063-a4df-ed0cfe9b4866"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
@@ -243,12 +243,13 @@
 </div>
 </div>
 <p class="rubric">Disponibilidad</p>
+<p class="rubric">Versión 4.0.0</p>
 <ul class="simple">
-<li><p>Versión 3.0.0</p>
-<ul>
-<li><p>Nueva función experimental.</p></li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 </ul>
-</li>
+<p class="rubric">Versión 3.0.0</p>
+<ul class="simple">
+<li><p>Nueva función experimental.</p></li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -261,11 +262,11 @@ the paths that do not use the restrictions</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_turnRestrictedPath(<a class="reference internal" href="#restrictions-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de restricciones</a>, <strong>salida</strong>, <strong>destino</strong>, <strong>K</strong>, [<strong>opciones</strong>])</div>
+<div class="line">pgr_turnRestrictedPath(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salida</strong>, <strong>destino</strong>, <strong>K</strong>, [<strong>opciones</strong>])</div>
 <div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">stop_on_first,</span> <span class="pre">strict]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
@@ -278,11 +279,11 @@ the paths that do not use the restrictions</p>
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   3, 8, 3);
- seq | path_id | path_seq | node | edge | cost | agg_cost
------+---------+----------+------+------+------+----------
-   1 |       1 |        1 |    3 |    7 |    1 | Infinity
-   2 |       1 |        2 |    7 |   10 |    1 |        1
-   3 |       1 |        3 |    8 |   -1 |    0 |        2
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+---------+----------+-----------+---------+------+------+------+----------
+   1 |       1 |        1 |         0 |       8 |    3 |    7 |    1 | Infinity
+   2 |       1 |        2 |         0 |       8 |    7 |   10 |    1 |        1
+   3 |       1 |        3 |         0 |       8 |    8 |   -1 |    0 |        2
 (3 rows)
 
 </pre></div>
@@ -576,8 +577,8 @@ restrictions</p></li>
   $$SELECT path, cost FROM restrictions$$,
   3, 8, 3,
   strict =&gt; true);
- seq | path_id | path_seq | node | edge | cost | agg_cost
------+---------+----------+------+------+------+----------
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+---------+----------+-----------+---------+------+------+------+----------
 (0 rows)
 
 </pre></div>
@@ -592,15 +593,15 @@ restrictions</p></li>
   $$SELECT path, cost FROM restrictions$$,
   3, 8, 3,
   directed =&gt; false);
- seq | path_id | path_seq | node | edge | cost | agg_cost
------+---------+----------+------+------+------+----------
-   1 |       1 |        1 |    3 |    7 |    1 |        0
-   2 |       1 |        2 |    7 |    4 |    1 |        1
-   3 |       1 |        3 |    6 |    2 |    1 |        2
-   4 |       1 |        4 |   10 |    5 |    1 |        3
-   5 |       1 |        5 |   11 |   11 |    1 |        4
-   6 |       1 |        6 |   12 |   12 |    1 |        5
-   7 |       1 |        7 |    8 |   -1 |    0 |        6
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+---------+----------+-----------+---------+------+------+------+----------
+   1 |       1 |        1 |         0 |       8 |    3 |    7 |    1 |        0
+   2 |       1 |        2 |         0 |       8 |    7 |    4 |    1 |        1
+   3 |       1 |        3 |         0 |       8 |    6 |    2 |    1 |        2
+   4 |       1 |        4 |         0 |       8 |   10 |    5 |    1 |        3
+   5 |       1 |        5 |         0 |       8 |   11 |   11 |    1 |        4
+   6 |       1 |        6 |         0 |       8 |   12 |   12 |    1 |        5
+   7 |       1 |        7 |         0 |       8 |    8 |   -1 |    0 |        6
 (7 rows)
 
 </pre></div>
@@ -617,22 +618,22 @@ restrictions</p></li>
   directed =&gt; false,
   heap_paths =&gt; true,
   stop_on_first =&gt; false);
- seq | path_id | path_seq | node | edge | cost | agg_cost
------+---------+----------+------+------+------+----------
-   1 |       1 |        1 |    3 |    7 |    1 |        0
-   2 |       1 |        2 |    7 |    4 |    1 |        1
-   3 |       1 |        3 |    6 |    2 |    1 |        2
-   4 |       1 |        4 |   10 |    5 |    1 |        3
-   5 |       1 |        5 |   11 |   11 |    1 |        4
-   6 |       1 |        6 |   12 |   12 |    1 |        5
-   7 |       1 |        7 |    8 |   -1 |    0 |        6
-   8 |       2 |        1 |    3 |    7 |    1 |        0
-   9 |       2 |        2 |    7 |    8 |    1 |        1
-  10 |       2 |        3 |   11 |    9 |    1 |        2
-  11 |       2 |        4 |   16 |   15 |    1 |        3
-  12 |       2 |        5 |   17 |   13 |    1 |        4
-  13 |       2 |        6 |   12 |   12 |    1 |        5
-  14 |       2 |        7 |    8 |   -1 |    0 |        6
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+---------+----------+-----------+---------+------+------+------+----------
+   1 |       1 |        1 |         0 |       8 |    3 |    7 |    1 |        0
+   2 |       1 |        2 |         0 |       8 |    7 |    4 |    1 |        1
+   3 |       1 |        3 |         0 |       8 |    6 |    2 |    1 |        2
+   4 |       1 |        4 |         0 |       8 |   10 |    5 |    1 |        3
+   5 |       1 |        5 |         0 |       8 |   11 |   11 |    1 |        4
+   6 |       1 |        6 |         0 |       8 |   12 |   12 |    1 |        5
+   7 |       1 |        7 |         0 |       8 |    8 |   -1 |    0 |        6
+   8 |       2 |        1 |         1 |       8 |    3 |    7 |    1 |        0
+   9 |       2 |        2 |         1 |       8 |    7 |    8 |    1 |        1
+  10 |       2 |        3 |         1 |       8 |   11 |    9 |    1 |        2
+  11 |       2 |        4 |         1 |       8 |   16 |   15 |    1 |        3
+  12 |       2 |        5 |         1 |       8 |   17 |   13 |    1 |        4
+  13 |       2 |        6 |         1 |       8 |   12 |   12 |    1 |        5
+  14 |       2 |        7 |         1 |       8 |    8 |   -1 |    0 |        6
 (14 rows)
 
 </pre></div>

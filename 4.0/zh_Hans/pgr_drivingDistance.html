@@ -505,62 +505,12 @@
 </section>
 <section id="result-columns">
 <h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="docutils align-default" style="width: 81">
-<thead>
-<tr class="row-odd"><th class="head"><p>参数</p></th>
-<th class="head"><p>类型</p></th>
-<th class="head"><p>描述</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>从 <span class="math notranslate nohighlight">\(1\)</span> 开始的顺序值。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">depth</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">node</span></code> 的深度。</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(0\)</span> 当 <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 。</p></li>
-<li><p><span class="math notranslate nohighlight">\(depth-1\)</span> is the depth of <code class="docutils literal notranslate"><span class="pre">pred</span></code></p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>根顶点的标识符。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pred</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">node</span></code> 的前驱。</p>
-<ul class="simple">
-<li><p>当 <cite>node</cite> 等于 <cite>start_vid</cite> 时，它的值就是 <cite>node</cite> 。</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>使用 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 到达的``node`` 的标识符。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>从 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 到达 <code class="docutils literal notranslate"><span class="pre">node</span></code> 所使用的 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 的标识符。</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(-1\)</span> 当 <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 。</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>遍历 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 的成本。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的总成本。</p></td>
-</tr>
-</tbody>
-</table>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">end-before<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</div></blockquote>
 </section>
 <section id="additional-examples">
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
