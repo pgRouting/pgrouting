@@ -26,7 +26,7 @@ SELECT plan(544);
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 
-CREATE or REPLACE FUNCTION bdastar_compare_dijkstra(cant INTEGER default 17)
+CREATE or REPLACE FUNCTION bdastar_compare_dijkstra(lim INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -34,8 +34,8 @@ inner_sql TEXT;
 dijkstra_sql TEXT;
 bdastar_sql TEXT;
 BEGIN
-    FOR i IN 1.. cant  LOOP
-        FOR j IN 2.. cant BY 2 LOOP
+    FOR i IN 1.. lim  LOOP
+        FOR j IN 2.. lim BY 2 LOOP
 
             -- DIRECTED
             -- with reverse_cost

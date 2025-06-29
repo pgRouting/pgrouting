@@ -145,7 +145,7 @@ SELECT set_eq('bipartite5', $$VALUES (5, 0), (6, 1), (10, 0), (15, 1)$$, '10: Bi
 
 
 
--- even lenght cycle test
+-- even length cycle test
 
 -- 4 vertices length
 PREPARE q6 AS
@@ -213,7 +213,7 @@ FROM pgr_bipartite(
 
 
 RETURN QUERY
-SELECT is_empty('bipartite7', '14: Graph with odd lenght cycle -> Empty row is returned');
+SELECT is_empty('bipartite7', '14: Graph with odd length cycle -> Empty row is returned');
 
 
 -- 5 vertices cyclic
@@ -257,7 +257,7 @@ FROM pgr_bipartite(
 
 
 RETURN QUERY
-SELECT is_empty('bipartite8', '16: Graph with odd lenght cycle -> Empty row is returned');
+SELECT is_empty('bipartite8', '16: Graph with odd length cycle -> Empty row is returned');
 
 
 END;

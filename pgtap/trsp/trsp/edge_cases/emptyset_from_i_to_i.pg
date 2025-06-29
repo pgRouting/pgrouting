@@ -28,7 +28,7 @@ PREPARE restriction AS SELECT * FROM restrictions;
 PREPARE with_reverse AS SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id;
 PREPARE no_reverse AS SELECT id, source, target, cost FROM edges ORDER BY id;
 
-CREATE OR REPLACE FUNCTION edge_cases(cant INTEGER DEFAULT 18, flag BOOLEAN DEFAULT true )
+CREATE OR REPLACE FUNCTION edge_cases(lim INTEGER DEFAULT 18, flag BOOLEAN DEFAULT true )
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -60,7 +60,7 @@ BEGIN
   no_reverse_cost = quote_literal('no_reverse');
   restrictions_sql = quote_literal('restriction');
 
-  FOR i IN 1.. cant LOOP
+  FOR i IN 1.. lim LOOP
 
     parameters = restrictions_sql || ', ' || i || ', ' || i || ', ' || flag;
 

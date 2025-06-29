@@ -63,7 +63,7 @@ BEGIN
     'SELECT  id, source, target, cost, reverse_cost from edges',
     5, 10, true);
 
-  RETURN QUERY SELECT set_eq('q21','q21_expected','Directed: without retrictions expected the same as pgr_dijkstra');
+  RETURN QUERY SELECT set_eq('q21','q21_expected','Directed: without restrictions, expected the same as pgr_dijkstra');
 
   PREPARE q31 AS
   SELECT seq-1, node, edge, cost::TEXT FROM pgr_trsp(
@@ -79,7 +79,7 @@ BEGIN
     true) WHERE edge != -1;
 
 
-  RETURN QUERY SELECT set_eq('q31','q31_expected','Directed: with retrictions expected the same as pgr_dijkstraVia');
+  RETURN QUERY SELECT set_eq('q31','q31_expected','Directed: with restrictions, expected the same as pgr_dijkstraVia');
 
   /* Undirected */
   PREPARE q41 AS
@@ -100,7 +100,7 @@ BEGIN
     'SELECT  id, source, target, cost, reverse_cost from edges',
     5, 10, false);
 
-  RETURN QUERY SELECT set_eq('q51','q51_expected','6: Undirected: without retrictions returns the same as pgr_dijkstra');
+  RETURN QUERY SELECT set_eq('q51','q51_expected','6: Undirected: without restrictions, returns the same as pgr_dijkstra');
 
   PREPARE q61 AS
   SELECT seq-1, node, edge, cost::TEXT from pgr_trsp(
@@ -116,7 +116,7 @@ BEGIN
     ARRAY[5, 6, 10],
     false) WHERE edge != -1;
 
-  RETURN QUERY SELECT set_eq('q61','q61_expected','7: Undirected: with retrictions returns expected path');
+  RETURN QUERY SELECT set_eq('q61','q61_expected','7: Undirected: with restrictions, returns expected path');
 END;
 $BODY$
 LANGUAGE plpgsql;

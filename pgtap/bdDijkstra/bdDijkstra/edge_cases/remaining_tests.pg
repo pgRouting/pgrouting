@@ -44,7 +44,7 @@ SELECT  'integer'::text AS t1,'integer'::text AS t2,
 SELECT set_eq('v21q00', 'v21q01','Expected columns names & types in version 2.4');
 
 
--- CHECKING WORKS WITH & WITOUT REVERSE COST
+-- CHECKING WORKS WITH & WITHOUT REVERSE COST
 
 PREPARE v20q1 AS
 SELECT * FROM pgr_bddijkstra(
