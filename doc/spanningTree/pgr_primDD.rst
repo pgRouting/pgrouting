@@ -125,7 +125,7 @@ Edges SQL
 Result columns
 -------------------------------------------------------------------------------
 
-.. include:: drivingDistance-category.rst
+.. include:: pgRouting-concepts.rst
    :start-after: spantree-result-columns-start
    :end-before: spantree-result-columns-end
 

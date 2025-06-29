@@ -53,6 +53,10 @@ Summary of changes by function
 
   * Output columns standardized to ``(node, color)``
 
+* pgr_boykovKolmogorov
+
+  * Combinations signature promoted to official.
+
 * pgr_breadthFirstSearch
 
   * Standardizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
@@ -86,6 +90,10 @@ Summary of changes by function
 * pgr_edgeDisjointPaths
 
   * Output columns standardized to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+
+* pgr_edmondsKarp
+
+  * Combinations signature promoted to official.
 
 * pgr_edwardMoore
 

@@ -104,6 +104,12 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* pgr_boykovKolmogorov
+
+  .. include:: pgr_boykovKolmogorov.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_breadthFirstSearch
 
   .. include:: pgr_breadthFirstSearch.rst
@@ -149,6 +155,12 @@ Summary of changes by function
 * pgr_edgeDisjointPaths
 
   .. include:: pgr_edgeDisjointPaths.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_edmondsKarp
+
+  .. include:: pgr_edmondsKarp.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
