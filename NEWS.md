@@ -83,6 +83,10 @@ Summary of changes by function
 
   * Output columns standardized to ``(edge, color)``
 
+* pgr_edgeDisjointPaths
+
+  * Output columns standardized to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+
 * pgr_edwardMoore
 
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
@@ -138,6 +142,10 @@ Summary of changes by function
     * pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)
     * pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)
     * pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)
+
+* pgr_turnRestrictedPath
+
+  * Output columns standardized to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 
 * pgr_withPoints
 
@@ -296,6 +304,13 @@ Standardize output columns of functions with different output columns within ove
   pgr_breadthFirstSearch
 * [#2931](https://github.com/pgRouting/pgrouting/issues/2931)
   pgr_depthFirstSearch
+
+**Standardized to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``**
+
+* [#2909](https://github.com/pgRouting/pgrouting/issues/2909)
+  pgr_edgeDisjointPaths
+* [#2909](https://github.com/pgRouting/pgrouting/issues/2909)
+  pgr_turnRestrictedPaths
 
 Removal of SQL deprecated signatures
 
@@ -481,7 +496,7 @@ Code enhancements
 
 **Deprecation of internal C/C++ functions**
 
-Deprecated functions are substitued by new function.
+Deprecated functions are substituted by new function.
 
 * _pgr_drivingdistance => _pgr_drivingdistancev4
 * _pgr_withpointsdd => _pgr_withpointsddv4
