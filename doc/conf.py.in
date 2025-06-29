@@ -369,8 +369,7 @@ rst_epilog="""
 .. |result-extract| replace:: ``(id, in_edges, out_edges, x, y, geom)``
 .. |result-find| replace:: ``(edge_id, fraction, side, distance, geom, edge)``
 .. |result-version| replace:: ``(version, build_type, compile_date, library, system, PostgreSQL, compiler, boost, hash)``
-.. |result-toposort| replace:: ``(seq, sorted_v)``
-.. |result-closure| replace:: ``(seq, vid, target_array)``
+.. |result-closure| replace:: ``(node,targets)``
 .. |result-component-E| replace:: ``(seq, component, edge)``
 .. |result-component-V| replace:: ``(seq, component, node)``
 .. |result-component-make| replace:: ``(seq, start_vid, end_vid)``

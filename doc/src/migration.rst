@@ -53,6 +53,9 @@ Migration to standardized columns
 .. |result-disjoint-1-m| replace:: ``(seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)``
 .. |result-disjoint-m-1| replace:: ``(seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)``
 
+.. |result-toposort| replace:: ``(seq, sorted_v)``
+.. |result-old-closure| replace:: ``(seq, vid, target_array)``
+
 There has been an effort to standardize function output columns names and
 types.
 
@@ -117,6 +120,8 @@ types.
    * - .. versionchanged:: 4.0.0 :doc:`pgr_edgeDisjointPaths`
      - `Migration of multiple paths functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_sequentialVertexColoring`
+     - `Migration of output column name change`_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_topologicalSort`
      - `Migration of output column name change`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_withPoints`
      - `Migration of single path functions`_
@@ -922,14 +927,15 @@ After updating pgRouting:
 Migration of output column name change
 -------------------------------------------------------------------------------
 
-The standardized result columns for color functions are
+The standardized result columns:
 
 * |result_edge_color|
 * |result_node_color|
+* |result-node-order|
 
 .. warning:: Breaking change
 
-   Changes must be done after updating pgRouting.
+   Changes on column names must be done after updating pgRouting.
 
 .. list-table::
    :header-rows: 1
@@ -946,6 +952,43 @@ The standardized result columns for color functions are
    * - ``pgr_sequentialVertexColoring``
      - v < 4.0.0
      - :ref:`from_old_node_color`
+   * - ``pgr_topologicalSort``
+     - v < 4.0.0
+     - :ref:`from_toposort`
+   * - ``pgr_transitiveClosure``
+     - v < 4.0.0
+     - :ref:`from_old_closure`
+
+.. _from_old_closure:
+
+Migration from |result-old-closure|
+.................................................................................
+
+Migration to: |result-old-closure|
+
+.. warning:: Breaking change
+
+   Changes must be done after updating pgRouting.
+
+After update:
+
+* Remove column ``seq``
+* Rename ``vid`` to ``node`` and ``target_array`` to ``targets``
+
+.. _from_toposort:
+
+Migration from |result-toposort|
+.................................................................................
+
+Migration to: |result-node-order|
+
+.. warning:: Breaking change
+
+   Changes must be done after updating pgRouting.
+
+After update:
+
+* Rename ``sorted_v`` to ``node``
 
 .. _from_old_edge_color:
 
@@ -962,8 +1005,6 @@ After update:
 
 * Rename ``edge_id`` to ``edge`` and ``color_id`` to ``color``.
 
-.. TODO examples
-
 .. _from_old_node_color:
 
 Migration from |old-node-color|
@@ -978,8 +1019,6 @@ Migration to: |result_node_color|
 After update:
 
 * Rename ``vertex_id`` to ``node`` and ``color_id`` to ``color``.
-
-.. TODO examples
 
 Migration of deleted functions
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
