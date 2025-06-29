@@ -198,7 +198,7 @@ Points SQL
    * - ``fraction``
      - **ANY-NUMERICAL**
      -
-     - Value in <0,1> that indicates the relative postition from the first end
+     - Value in <0,1> that indicates the relative position from the first end
        point of the edge.
    * - ``side``
      - ``CHAR``
