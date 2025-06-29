@@ -202,8 +202,7 @@ class Pgr_ksp :  public Pgr_messages {
  protected:
      //! stores in subPath the first i elements of path
      void removeVertices(G &graph, const Path &subpath) {
-         for (const auto &e : subpath)
-             graph.disconnect_vertex(e.node);
+         for (const auto &e : subpath) graph.disconnect_vertex(e.node);
      }
 
      std::deque<Path> get_results() {
@@ -258,12 +257,10 @@ namespace algorithms {
         pgrouting::yen::Pgr_ksp<G> fn_yen;
 
         for (const auto &c : combinations) {
-            if (!graph.has_vertex(c.first))
-                continue;
+            if (!graph.has_vertex(c.first)) continue;
 
             for (const auto &destination : c.second) {
-                if (!graph.has_vertex(destination))
-                    continue;
+                if (!graph.has_vertex(destination)) continue;
 
                 fn_yen.clear();
                 auto result_path = fn_yen.Yen(graph, c.first, destination, k, heap_paths);
