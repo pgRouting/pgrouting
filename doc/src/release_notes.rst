@@ -146,6 +146,12 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* pgr_edgeDisjointPaths
+
+  .. include:: pgr_edgeDisjointPaths.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_edwardMoore
 
   .. include:: pgr_edwardMoore.rst
@@ -197,6 +203,12 @@ Summary of changes by function
 * pgr_trsp_withPoints
 
   .. include:: pgr_trsp_withPoints.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_turnRestrictedPath
+
+  .. include:: pgr_turnRestrictedPath.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
@@ -336,6 +348,13 @@ Standardize output columns of functions with different output columns within ove
   pgr_breadthFirstSearch
 * `#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__
   pgr_depthFirstSearch
+
+.. rubric:: Standardized to |generic-result|
+
+* `#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__
+  pgr_edgeDisjointPaths
+* `#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__
+  pgr_turnRestrictedPaths
 
 Removal of SQL deprecated signatures
 ...............................................................................
@@ -540,7 +559,7 @@ Code enhancements
 
 .. rubric:: Deprecation of internal C/C++ functions
 
-Deprecated functions are substitued by new function.
+Deprecated functions are substituted by new function.
 
 * _pgr_drivingdistance => _pgr_drivingdistancev4
 * _pgr_withpointsdd => _pgr_withpointsddv4
