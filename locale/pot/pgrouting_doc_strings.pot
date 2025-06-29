@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-29 15:29+0000\n"
+"POT-Creation-Date: 2025-06-29 15:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3571,6 +3571,9 @@ msgstr ""
 msgid "Output columns standardized to |result_node_color|"
 msgstr ""
 
+msgid "pgr_boykovKolmogorov"
+msgstr ""
+
 msgid "pgr_breadthFirstSearch"
 msgstr ""
 
@@ -3611,6 +3614,9 @@ msgid "pgr_edgeDisjointPaths"
 msgstr ""
 
 msgid "Output columns standardized to |generic-result|"
+msgstr ""
+
+msgid "pgr_edmondsKarp"
 msgstr ""
 
 msgid "pgr_edwardMoore"
@@ -10322,6 +10328,9 @@ msgid "When ``true`` the node will only appear in the closest ``start_vid`` list
 msgstr ""
 
 msgid "When ``false`` which resembles several calls using the single vertex signature."
+msgstr ""
+
+msgid "end-before"
 msgstr ""
 
 msgid "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` on an undirected graph"
