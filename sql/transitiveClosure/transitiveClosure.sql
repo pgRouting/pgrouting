@@ -5,7 +5,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2019 Hang Wu
-mail: nike0good@gmail.com
+mail: nike0good at gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -24,27 +24,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
----------------
--- pgr_transitiveClosure
----------------
-
-
 --v3.0
 CREATE FUNCTION pgr_transitiveClosure(
     TEXT, -- edges_sql (required)
 
-    OUT seq INTEGER,
-    OUT vid BIGINT,
-    OUT target_array BIGINT[])
+    OUT node BIGINT,
+    OUT targets BIGINT[])
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, vid, target_array
+    SELECT vid, target_array
     FROM _pgr_transitiveClosure(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
-
-
--- COMMENTS
 
 
 COMMENT ON FUNCTION pgr_transitiveClosure(TEXT)
@@ -52,7 +43,7 @@ IS 'pgr_transitiveClosure
 - EXPERIMENTAL
 - Directed graph
 - Parameters:
-  - edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
   - ${PROJECT_DOC_LINK}/pgr_transitiveClosure.html
 ';
