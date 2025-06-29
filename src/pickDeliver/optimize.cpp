@@ -222,7 +222,7 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
                         estimated_delta < 0 ||
                         estimated_duration < best_solution.duration()) {
                     /*
-                     * this acctually makes the swapping
+                     * this actually makes the swapping
                      */
                     to = to_truck;
                     from = from_truck;
@@ -429,7 +429,7 @@ Optimize::move_order(
  * Optimize decreasing truck
  *
  * - Objective: try to remove truck with less duration
- * - Secundary objective, acts like a shake operation
+ * - Secondary objective, acts like a shake operation
  *
  */
 void

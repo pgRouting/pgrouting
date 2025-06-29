@@ -239,7 +239,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
 
      /*! sets an inf value on agg_cost on the vertex/edge where the restriction begins
       *
-      * @param[in] paths that is being analized
+      * @param[in] paths that is being analyzed
       */
      std::deque<Path> inf_cost_on_restriction(std::deque<Path> &paths) {
          if (paths.empty()) return paths;
