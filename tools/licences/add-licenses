@@ -87,7 +87,7 @@ sub loadLicense {
     return @file_storage;
 }
 
-# When the first line is not equal it doesnt have the
+# When the first line is not equal it does not, have the
 # generated license.
 # The generated license has to be added
 # And Manually fixed.
