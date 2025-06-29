@@ -22,23 +22,27 @@ vertices.
 
 .. Rubric:: Availability
 
-* Version 3.2.0
+.. rubric:: Version 4.0.0
 
-  * New proposed signature:
+* Output columns standardized to |generic-result|
 
-    * pgr_edgeDisjointPaths(Combinations)
+.. rubric:: Version 3.2.0
 
-* Version 3.0.0
+* New proposed signature:
 
-  * Function promoted to official.
+  * pgr_edgeDisjointPaths(Combinations)
 
-* Version 2.5.0
+.. rubric:: Version 3.0.0
 
-  * Function promoted to proposed.
+* Function promoted to official.
 
-* Version 2.3.0
+.. rubric:: Version 2.5.0
 
-  * New experimental function.
+* Function promoted to proposed.
+
+.. rubric:: Version 2.3.0
+
+* New experimental function.
 
 
 Description
@@ -69,7 +73,7 @@ Signatures
    | pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
    | pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
-   | Returns set of |result-disjoint|
+   | Returns set of |generic-result|
    | OR EMPTY SET
 
 .. index::
@@ -83,7 +87,7 @@ One to One
 
    | pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vid**, [``directed``])
 
-   | Returns set of |result-disjoint-1-1|
+   | Returns set of |generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`11` to vertex :math:`12`
@@ -103,7 +107,7 @@ One to Many
 
    | pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
 
-   | Returns set of |result-disjoint-1-m|
+   | Returns set of |generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`11` to vertices :math:`\{5, 10, 12\}`
@@ -124,7 +128,7 @@ Many to One
 
    | pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
 
-   | Returns set of |result-disjoint-m-1|
+   | Returns set of |generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{11, 3, 17\}` to vertex :math:`12`
@@ -144,7 +148,7 @@ Many to Many
 
    | pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
 
-   | Returns set of |result-disjoint-m-m|
+   | Returns set of |generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{11, 3, 17\}` to vertices :math:`\{5, 10, 12\}`
@@ -164,7 +168,7 @@ Combinations
 
    | pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
-   | Returns set of |result-disjoint-m-m|
+   | Returns set of |generic-result|
    | OR EMPTY SET
 
 :Example: Using a combinations table, equivalent to calculating result from
@@ -218,8 +222,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
+    :start-after: return_path_all_columns_start
+    :end-before: return_path_all_columns_end
 
 Additional Examples
 -------------------------------------------------------------------------------

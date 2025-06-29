@@ -381,11 +381,6 @@ rst_epilog="""
 .. |result-lineg| replace:: ``(seq, source, target, cost, reverse_cost)``
 .. |result-flow| replace:: ``(seq, edge, start_vid, end_vid, flow, residual_capacity)``
 .. |result-flow-mincost| replace:: ``(seq, edge, source, target, flow, residual_capacity, cost, agg_cost)``
-.. |result-disjoint| replace:: ``(seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)``
-.. |result-disjoint-1-1| replace:: ``(seq, path_id, path_seq, node, edge, cost, agg_cost)``
-.. |result-disjoint-1-m| replace:: ``(seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)``
-.. |result-disjoint-m-1| replace:: ``(seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)``
-.. |result-disjoint-m-m| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 .. |result-mincut| replace:: ``(seq, edge, cost, mincut)``
 .. |result-pickdrop| replace:: ``(seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo, travel_time, arrival_time, wait_time, service_time, departure_time)``
 .. |boost| image:: images/boost-inside.jpeg

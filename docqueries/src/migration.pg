@@ -535,3 +535,14 @@ FROM pgr_DAGshortestPath(
   'select id, source, target, cost from edges',
   5, 11);
 /* --DAGshortestPath-END */
+
+/* --EdgeDisjoint1 */
+SELECT * FROM pgr_edgeDisjointPaths(
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
+  11, 12);
+/* --EdgeDisjoint2 */
+SELECT seq, path_id, path_seq, node, edge, cost, agg_cost
+FROM pgr_edgeDisjointPaths(
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
+  11, 12);
+/* --EdgeDisjoint3 */
