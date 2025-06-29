@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 -----------------------------------------------------------------------
--- Core function for vrp with sigle depot computation
+-- Core function for vrp with single depot computation
 -- See README for description
 -----------------------------------------------------------------------
 
