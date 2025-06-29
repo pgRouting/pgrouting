@@ -318,7 +318,7 @@ class Path {
          */
         while (target != v_source) {
             /*
-             * done when the predecesor of the target is the target
+             * done when the predecessor of the target is the target
              */
             if (target == predecessors[target]) break;
 

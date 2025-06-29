@@ -117,7 +117,7 @@ boost::vecS,
 ~~~~
 Initializing the graph
 ------------------------------
-Graph initialization is for seting the Vertices of the graph.
+Graph initialization is for setting the Vertices of the graph.
 //TODO discuss if also the edges
 Vector of unique vertices of the graph
 ~~~~{.c}
@@ -149,7 +149,7 @@ pgrouting::DirectedGraph digraph(
 2. Initializes a graph based on the vertices:
   - vertices vector size is vertices.size()
   - the vertices are inserted
-  - vertices container can be clared to free memory
+  - vertices container can be cleared to free memory
 3. Initializes a graph based on the vertices extracted
   - from edges stored on a C array
   - the vertices are inserted
@@ -384,7 +384,7 @@ class Pgr_base_graph {
 
      /** @brief out degree of a vertex
       *
-      * regardles of undirected or directed graph
+      * regardless of undirected or directed graph
       * - out degree is returned
       */
      degree_size_type out_degree(V &v) const {
@@ -397,7 +397,7 @@ class Pgr_base_graph {
      /**@{*/
      /** @brief get the vertex descriptor of the vertex
        When the vertex does not exist
-       - creates a new vetex
+       - creates a new vertex
        @return V: The vertex descriptor of the vertex
        */
      V get_V(const T_V &vertex) {
@@ -600,7 +600,7 @@ class Pgr_base_graph {
      size_t num_edges() const { return boost::num_edges(graph);}
      /**@}*/
 
-     /** @name edge disconection/reconnection */
+     /** @name edge disconnection/reconnection */
      /**@{*/
      /** @brief Disconnects all edges from p_from to p_to
        - No edge is disconnected if the vertices id's do not exist in the graph

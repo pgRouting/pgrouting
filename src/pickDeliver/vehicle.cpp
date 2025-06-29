@@ -311,7 +311,7 @@ Vehicle::drop_position_limits(const Vehicle_node node) const {
 }
 
 /*
- * start searching from postition low = pos(E)
+ * start searching from position low = pos(E)
  *
  * S 1 2 3 4 5 6 7 ..... E
  * node -> E
@@ -344,7 +344,7 @@ Vehicle::getDropPosLowLimit(const Vehicle_node &nodeI) const {
 }
 
 /*
- * start searching from postition low = pos(E)
+ * start searching from position low = pos(E)
  *
  * S 1 2 3 4 5 6 7 ..... E
  * node -> E
@@ -377,7 +377,7 @@ Vehicle::getPosLowLimit(const Vehicle_node &nodeI) const {
 
 
 /*
- * start searching from postition low = pos(S)
+ * start searching from position low = pos(S)
  *
  * S 1 2 3 4 5 6 7 ..... E
  * S -> node

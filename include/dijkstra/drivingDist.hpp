@@ -202,7 +202,7 @@ void remove_details(const G &graph,
             u = predecessors[v];
         }
 
-        /* the vertex (or initial point) that is a predecesor of p */
+        /* the vertex (or initial point) that is a predecessor of p */
         predecessors[node] = u;
     }
 }

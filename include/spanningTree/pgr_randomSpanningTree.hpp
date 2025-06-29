@@ -92,8 +92,8 @@ class Pgr_randomSpanningTree {
              log << "Unknown exception caught";
          }
 
-         std::vector< SpanTree_rt > resul;
-         return resul;
+         std::vector< SpanTree_rt > result;
+         return result;
 #if 0
          std::vector< SpanTree_rt > results;
          double totalcost = 0;
