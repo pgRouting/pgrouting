@@ -70,7 +70,7 @@ CREATE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean default fals
             WHEN OTHERS THEN
                 RAISE EXCEPTION 'An expected column was not found in the query'
                   USING ERRCODE = 'XX000',
-                   HINT = 'Please veryfy the column names: id, source, target, cost';
+                   HINT = 'Please verify the column names: id, source, target, cost';
         END;
         execute 'select pg_typeof(id)::text as id_type, pg_typeof(source)::text as source_type, pg_typeof(target)::text as target_type, pg_typeof(cost)::text as cost_type'
             || ' from ('||safesql||') AS __b__ ' into rec;
@@ -92,7 +92,7 @@ CREATE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean default fals
             WHEN OTHERS THEN
                 RAISE EXCEPTION 'An expected column was not found in the query'
                   USING ERRCODE = 'XX000',
-                   HINT = 'Please veryfy the column names: x1,y1, x2,y2';
+                   HINT = 'Please verify the column names: x1,y1, x2,y2';
         END;
         execute 'select pg_typeof(x1)::text as x1_type, pg_typeof(y1)::text as y1_type, pg_typeof(x2)::text as x2_type, pg_typeof(y2)::text as y2_type'
             || ' from ('||safesql||') AS __b__ ' into rec;
@@ -113,7 +113,7 @@ CREATE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean default fals
           EXCEPTION
             WHEN OTHERS THEN
                 RAISE EXCEPTION 'An expected column was not found in the query'
-                  USING HINT = 'Please veryfy the column names: id, source, target, cost',
+                  USING HINT = 'Please verify the column names: id, source, target, cost',
                          ERRCODE = 'XX000';
         END;
 

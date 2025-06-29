@@ -57,7 +57,7 @@ ROWS 1000;
 --v3.6
 CREATE FUNCTION pgr_drivingDistance(
     TEXT,   -- edges_sql (required)
-    BIGINT, -- from_vid (requierd)
+    BIGINT, -- from_vid (required)
     FLOAT,  -- distance (required)
 
     directed BOOLEAN DEFAULT TRUE,
