@@ -194,7 +194,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_transitiveClosure</span></code> - 实验性<a class="headerlink" href="#pgr-transitiveclosure-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_transitiveClosure</span></code> — 有向图的传递闭包图。</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="d426d67f-6ff6-4db6-a813-6ad0c1578d8b" name="d426d67f-6ff6-4db6-a813-6ad0c1578d8b" type="checkbox"><label class="sphinx_collapse__label" for="d426d67f-6ff6-4db6-a813-6ad0c1578d8b"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="01843401-3fa1-4abf-81d2-4413f8895ce9" name="01843401-3fa1-4abf-81d2-4413f8895ce9" type="checkbox"><label class="sphinx_collapse__label" for="01843401-3fa1-4abf-81d2-4413f8895ce9"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -228,12 +228,13 @@
 </div>
 </div>
 <p class="rubric">可用性</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>版本3.0.0</p>
-<ul>
-<li><p>新实验性功能。</p></li>
+<li><p>Standardized output to <code class="docutils literal notranslate"><span class="pre">(node,targets)</span></code></p></li>
 </ul>
-</li>
+<p class="rubric">版本3.0.0</p>
+<ul class="simple">
+<li><p>新实验性功能。</p></li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -262,7 +263,7 @@
 <div class="line">pgr_transitiveClosure(<a class="reference internal" href="#edges-sql">Edges SQL</a>)</div>
 </div>
 <div class="line-block">
-<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(node,targets)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -273,17 +274,17 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_transitiveclosure</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
   <span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span><span class="s1">&#39;)</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">vid</span><span class="p">;</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">vid</span> <span class="o">|</span>    <span class="n">target_array</span>
-<span class="o">-----+-----+--------------------</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span> <span class="p">{}</span>
-   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>
-   <span class="mi">2</span> <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>
-   <span class="mi">4</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>
-   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>
-   <span class="mi">3</span> <span class="o">|</span>  <span class="mi">15</span> <span class="o">|</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>
-   <span class="mi">8</span> <span class="o">|</span>  <span class="mi">16</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>
-   <span class="mi">7</span> <span class="o">|</span>  <span class="mi">17</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
+ <span class="n">node</span> <span class="o">|</span>      <span class="n">targets</span>
+<span class="o">------+--------------------</span>
+    <span class="mi">6</span> <span class="o">|</span> <span class="p">{}</span>
+    <span class="mi">8</span> <span class="o">|</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>
+   <span class="mi">10</span> <span class="o">|</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>
+   <span class="mi">11</span> <span class="o">|</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>
+   <span class="mi">12</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>
+   <span class="mi">15</span> <span class="o">|</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>
+   <span class="mi">16</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>
+   <span class="mi">17</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>
 <span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -369,7 +370,7 @@
 </section>
 <section id="result-columns">
 <h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></p>
+<p>返回集合 <code class="docutils literal notranslate"><span class="pre">(node,targets)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>列</p></th>
@@ -425,7 +426,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 29, 2025.<br/>
+      Last updated on 6月 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

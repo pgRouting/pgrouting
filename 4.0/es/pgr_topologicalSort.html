@@ -197,7 +197,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_topologicalSort</span></code> - Experimental<a class="headerlink" href="#pgr-topologicalsort-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_topologicalSort</span></code> — Devuelve el orden lineal de los vértices para los grafos acíclicos dirigidos ponderados (DAG).</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="50c76c3b-b4db-46c3-af55-55ac8fee4d73" name="50c76c3b-b4db-46c3-af55-55ac8fee4d73" type="checkbox"><label class="sphinx_collapse__label" for="50c76c3b-b4db-46c3-af55-55ac8fee4d73"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="7599022a-a887-4769-a71b-77e94a13c97e" name="7599022a-a887-4769-a71b-77e94a13c97e" type="checkbox"><label class="sphinx_collapse__label" for="7599022a-a887-4769-a71b-77e94a13c97e"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
@@ -231,12 +231,13 @@
 </div>
 </div>
 <p class="rubric">Disponibilidad</p>
+<p class="rubric">Versión 4.0.0</p>
 <ul class="simple">
-<li><p>Versión 3.0.0</p>
-<ul>
-<li><p>Nueva función experimental.</p></li>
+<li><p>Standardize output to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node)</span></code></p></li>
 </ul>
-</li>
+<p class="rubric">Versión 3.0.0</p>
+<ul class="simple">
+<li><p>Nueva función experimental.</p></li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -263,7 +264,7 @@
 <div class="line">pgr_topologicalSort(<a class="reference internal" href="#edges-sql">SQL de aristas</a>)</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">sorted_v)</span></code></div>
+<div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node)</span></code></div>
 <div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
@@ -278,25 +279,25 @@
   UNION
   SELECT id, target, source, reverse_cost
   FROM edges WHERE cost &lt; 0$$);
- seq | sorted_v
------+----------
-   1 |        1
-   2 |        5
-   3 |        2
-   4 |        4
-   5 |        3
-   6 |       13
-   7 |       14
-   8 |       15
-   9 |       10
-  10 |        6
-  11 |        7
-  12 |        8
-  13 |        9
-  14 |       11
-  15 |       16
-  16 |       12
-  17 |       17
+ seq | node
+-----+------
+   1 |    1
+   2 |    5
+   3 |    2
+   4 |    4
+   5 |    3
+   6 |   13
+   7 |   14
+   8 |   15
+   9 |   10
+  10 |    6
+  11 |    7
+  12 |    8
+  13 |    9
+  14 |   11
+  15 |   16
+  16 |   12
+  17 |   17
 (17 rows)
 
 </pre></div>
@@ -382,7 +383,7 @@
 </section>
 <section id="result-columns">
 <h2>Columnas de resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">sorted_v)</span></code></p>
+<p>Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -395,7 +396,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Valor secuencial a partir de <span class="math notranslate nohighlight">\(1\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sorted_v</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Linear topological ordering of the vertices</p></td>
 </tr>
@@ -415,25 +416,25 @@
   UNION
   SELECT id, source, target, -1, reverse_cost
   FROM edges WHERE cost &lt; 0$$);
- seq | sorted_v
------+----------
-   1 |        5
-   2 |        2
-   3 |        4
-   4 |       13
-   5 |       14
-   6 |        1
-   7 |        3
-   8 |       15
-   9 |       10
-  10 |        6
-  11 |        7
-  12 |        8
-  13 |        9
-  14 |       11
-  15 |       12
-  16 |       16
-  17 |       17
+ seq | node
+-----+------
+   1 |    5
+   2 |    2
+   3 |    4
+   4 |   13
+   5 |   14
+   6 |    1
+   7 |    3
+   8 |   15
+   9 |   10
+  10 |    6
+  11 |    7
+  12 |    8
+  13 |    9
+  14 |   11
+  15 |   12
+  16 |   16
+  17 |   17
 (17 rows)
 
 </pre></div>
@@ -478,7 +479,7 @@ CONTEXT:  SQL function &quot;pgr_topologicalsort&quot; statement 1
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en jun 29, 2025.<br/>
+      Actualizado por última vez en jun 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
