@@ -37,13 +37,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #ifdef __cplusplus
-#   include <cstddef>
-#   include <cstdint>
+#include <cstddef>
+#include <cstdint>
 using Path_rt = struct Path_rt;
 using ArrayType = struct ArrayType;
 #else
-#   include <stddef.h>
-#   include <stdint.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
 typedef struct Path_rt Path_rt;
 typedef struct ArrayType ArrayType;
 #endif
