@@ -117,7 +117,7 @@ Summary of changes by function
 
 * pgr_topologicalSort
 
-  * Standardize output to ``(node)``-order
+  * Standardize output to ``(seq, node)``
 
 * pgr_transitiveClosure
 
@@ -328,7 +328,7 @@ Standardize output columns of functions with different output columns within ove
 * [#2931](https://github.com/pgRouting/pgrouting/issues/2931)
   pgr_depthFirstSearch
 
-**Standardized to ``(node)``-order**
+**Standardized to ``(seq, node)``**
 
 * [#2934](https://github.com/pgRouting/pgrouting/issues/2934)
   pgr_topologicalSort
