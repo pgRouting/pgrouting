@@ -122,6 +122,13 @@ Standardize output columns of functions with different output columns within ove
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* `#2908 <https://github.com/pgRouting/pgrouting/issues/2908>`__
+  pgr_binaryBreadthFirstSearch
+
+  .. include:: pgr_binaryBreadthFirstSearch.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * `#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__
   pgr_edwardMoore
 

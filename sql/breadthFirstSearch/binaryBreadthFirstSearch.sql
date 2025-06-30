@@ -5,7 +5,7 @@ Copyright (c) 2019 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2019 Gudesa Venkata Sai Akhil
-Mail: gvs.akhil1997@gmail.com
+Mail: gvs.akhil1997 at gmail.com
 
 ------
 
@@ -24,9 +24,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
----------------
--- pgr_binaryBreadthFirstSearch
----------------
 
 -- ONE to ONE
 --v3.0
@@ -39,14 +36,16 @@ CREATE FUNCTION pgr_binaryBreadthFirstSearch(
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_binaryBreadthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4) AS a;
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_binaryBreadthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4);
 $BODY$
 LANGUAGE sql VOLATILE STRICT;
 
@@ -62,6 +61,7 @@ CREATE FUNCTION pgr_binaryBreadthFirstSearch(
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -69,8 +69,8 @@ CREATE FUNCTION pgr_binaryBreadthFirstSearch(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_binaryBreadthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4) AS a;
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_binaryBreadthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4);
 $BODY$
 LANGUAGE sql VOLATILE STRICT;
 
@@ -87,14 +87,15 @@ CREATE FUNCTION pgr_binaryBreadthFirstSearch(
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_binaryBreadthFirstSearch(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4) AS a;
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_binaryBreadthFirstSearch(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4);
 $BODY$
 LANGUAGE sql VOLATILE STRICT;
 
@@ -118,8 +119,8 @@ CREATE FUNCTION pgr_binaryBreadthFirstSearch(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_binaryBreadthFirstSearch(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4) AS a;
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_binaryBreadthFirstSearch(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4);
 $BODY$
 LANGUAGE sql VOLATILE STRICT;
 
@@ -142,12 +143,11 @@ CREATE FUNCTION pgr_binaryBreadthFirstSearch(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_binaryBreadthFirstSearch(_pgr_get_statement($1), _pgr_get_statement($2), $3) AS a;
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_binaryBreadthFirstSearch(_pgr_get_statement($1), _pgr_get_statement($2), directed);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_binaryBreadthFirstSearch(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_binaryBreadthFirstSearch(One to One)

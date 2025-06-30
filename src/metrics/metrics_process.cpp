@@ -36,11 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cstdint>
 #include "cpp_common/assert.hpp"
 #include "cpp_common/alloc.hpp"
-#if 0
-#include "cpp_common/base_graph.hpp"
-#include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/pgdata_fetchers.hpp"
-#endif
 #include "cpp_common/get_data.hpp"
 #include "cpp_common/to_postgres.hpp"
 
@@ -52,14 +47,13 @@ extern "C" {
 
 #include "process/metrics_process.h"
 #include "drivers/metrics_driver.hpp"
-#include "c_types/bandwidth_rt.h"
 
-#include "c_types/metrics_rt.h"
+#include "c_types/iid_t_rt.h"
 
 void
 pgr_process_metrics(
     const char* edges_sql,
-    GraphBandwidth_rt** result_tuples,
+    IID_t_rt** result_tuples,
     size_t* result_count,
     char** log_msg,
     char** notice_msg) {
@@ -77,7 +71,7 @@ pgr_process_metrics(
 
 #if 0
 
-    std::vector<GraphBandwidth_rt> results =
+    std::vector<IID_t_rt> results =
         pgrouting::bandwidth::compute_bandwidth(std::string(edges_sql));
 
     if (!results.empty()) {

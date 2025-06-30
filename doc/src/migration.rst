@@ -81,6 +81,8 @@ types.
      - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_bellmanFord` [3]_
      - `Migration of single path functions`_
+   * - .. versionchanged:: 4.0.0 :doc:`pgr_binaryBreadthFirstSearch` [3]_
+     - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_dagShortestPath` [3]_
      - `Migration of single path functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_edwardMoore` [3]_
