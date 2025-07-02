@@ -380,7 +380,7 @@ Standardize output columns of functions with different output columns within ove
 * `#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__
   pgr_depthFirstSearch
 
-.. rubric:: Standardized to |result-node-order|
+.. rubric:: Standardized to |result_node_order|
 
 * `#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__
   pgr_topologicalSort

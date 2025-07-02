@@ -364,7 +364,7 @@ rst_epilog="""
 .. |result-node| replace:: ``(node)``
 .. |result-edge| replace:: ``(edge)``
 .. |result-separate| replace:: ``(seq,id,sub_id,geom)``
-.. |result-node-order| replace:: ``(seq, node)``
+.. |result_node_order| replace:: ``(seq, node)``
 .. |result-degree| replace:: ``(node, degree)``
 .. |result-extract| replace:: ``(id, in_edges, out_edges, x, y, geom)``
 .. |result-find| replace:: ``(edge_id, fraction, side, distance, geom, edge)``

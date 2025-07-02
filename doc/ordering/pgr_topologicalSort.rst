@@ -27,7 +27,7 @@ graphs (DAG).
 
 .. rubric:: Version 4.0.0
 
-* Standardize output to |result-node-order|
+* Standardize output to |result_node_order|
 
 .. rubric:: Version 3.0.0
 
@@ -64,7 +64,7 @@ Signatures
 
    | pgr_topologicalSort(`Edges SQL`_)
 
-   | Returns set of |result-node-order|
+   | Returns set of |result_node_order|
    | OR EMPTY SET
 
 :Example: Topologically sorting the graph
@@ -93,7 +93,7 @@ Edges SQL
 Result columns
 -------------------------------------------------------------------------------
 
-Returns set of |result-node-order|
+Returns set of |result_node_order|
 
 .. list-table::
    :width: 81
