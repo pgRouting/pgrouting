@@ -4041,7 +4041,7 @@ msgstr ""
 msgid "pgr_topologicalSort"
 msgstr ""
 
-msgid "Standardize output to |result-node-order|"
+msgid "Standardize output to |result_node_order|"
 msgstr ""
 
 msgid "pgr_transitiveClosure"
@@ -4401,7 +4401,7 @@ msgid ""
 "pgr_depthFirstSearch"
 msgstr ""
 
-msgid "Standardized to |result-node-order|"
+msgid "Standardized to |result_node_order|"
 msgstr ""
 
 msgid ""
@@ -5654,7 +5654,7 @@ msgstr ""
 msgid "|result_node_color|"
 msgstr ""
 
-msgid "|result-node-order|"
+msgid "|result_node_order|"
 msgstr ""
 
 msgid "Changes on column names must be done after updating pgRouting."
@@ -5705,7 +5705,7 @@ msgstr ""
 msgid "Migration from |result-toposort|"
 msgstr ""
 
-msgid "Migration to: |result-node-order|"
+msgid "Migration to: |result_node_order|"
 msgstr ""
 
 msgid "Rename ``sorted_v`` to ``node``"
@@ -10993,7 +10993,7 @@ msgstr ""
 msgid "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
 msgstr ""
 
-msgid "Returns set of |result-node-order|"
+msgid "Returns set of |result_node_order|"
 msgstr ""
 
 msgid "Graph ordering of pgRouting :doc:`sampledata`"

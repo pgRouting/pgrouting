@@ -10884,7 +10884,7 @@ msgstr ""
 msgid "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
 msgstr ""
 
-msgid "Returns set of |result-node-order|"
+msgid "Returns set of |result_node_order|"
 msgstr ""
 
 msgid "Graph ordering of pgRouting :doc:`sampledata`"

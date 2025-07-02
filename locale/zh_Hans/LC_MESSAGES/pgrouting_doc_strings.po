@@ -12089,8 +12089,8 @@ msgstr ":math:`m` 是图中顶点的最大度数。"
 msgid "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
 msgstr "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
 
-msgid "Returns set of |result-node-order|"
-msgstr "返回集合 |result-node-order|"
+msgid "Returns set of |result_node_order|"
+msgstr "返回集合 |result_node_order|"
 
 msgid "Graph ordering of pgRouting :doc:`sampledata`"
 msgstr "pgRouting :doc:`sampledata` 的图形排序"

@@ -63,7 +63,7 @@ Signatures
 
    | pgr_cuthillMckeeOrdering(`Edges SQL`_)
 
-   | Returns set of |result-node-order|
+   | Returns set of |result_node_order|
    | OR EMPTY SET
 
 :Example: Graph ordering of pgRouting :doc:`sampledata`

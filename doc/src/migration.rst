@@ -931,7 +931,7 @@ The standardized result columns:
 
 * |result_edge_color|
 * |result_node_color|
-* |result-node-order|
+* |result_node_order|
 
 .. warning:: Breaking change
 
@@ -980,7 +980,7 @@ After update:
 Migration from |result-toposort|
 .................................................................................
 
-Migration to: |result-node-order|
+Migration to: |result_node_order|
 
 .. warning:: Breaking change
 

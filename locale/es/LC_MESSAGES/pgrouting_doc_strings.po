@@ -12880,8 +12880,8 @@ msgstr ":math:`m` es el grado máximo de los vértices en el grafo."
 msgid "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
 msgstr "pgr_cuthillMckeeOrdering(`SQL de aristas`_)"
 
-msgid "Returns set of |result-node-order|"
-msgstr "Regresa el conjunto de |result-node-order|"
+msgid "Returns set of |result_node_order|"
+msgstr "Regresa el conjunto de |result_node_order|"
 
 msgid "Graph ordering of pgRouting :doc:`sampledata`"
 msgstr "Ordenamiento del grafo de los :doc:`sampledata` de pgRouting"
