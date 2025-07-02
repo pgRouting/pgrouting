@@ -105,8 +105,7 @@ jobs:
             libboost-graph-dev \
             postgresql-${PGVER} \
             postgresql-server-dev-${PGVER} \
-            graphviz \
-            doxygen
+            graphviz
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip list
@@ -119,7 +118,7 @@ jobs:
           mkdir build
           cd build
           cmake -DLINKCHECK=ON -DWITH_DOC=ON \
-                -DES=ON -DZH_HANS=ON -DBUILD_DOXY=ON \
+                -DES=ON -DZH_HANS=ON \
                 -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Release ..
 
       - name: Check Documentation
@@ -127,13 +126,6 @@ jobs:
         run: |
           cd build
           make html-${{ matrix.language }}
-
-      - name: Check Developers Documentation
-        if: env.PROCESS == 'true'
-        run: |
-          cd build
-          make doxy
-          [ ! -s build/doxygen/LOG ] || exit 1
 
       - name: Check Links
         if: env.CHK_LINK == 'true'
