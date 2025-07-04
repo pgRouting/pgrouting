@@ -23,13 +23,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_PROCESS_METRICS_BANDWIDTH_PROCESS_H_
-#define INCLUDE_PROCESS_METRICS_BANDWIDTH_PROCESS_H_
+#ifndef INCLUDE_PROCESS_METRICS_PROCESS_H_
+#define INCLUDE_PROCESS_METRICS_PROCESS_H_
 #pragma once
 
 #ifdef __cplusplus
 #include <cstddef>
-#include <cstdint>
 
 #else
 #include <stddef.h>
@@ -37,21 +36,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/iid_t_rt.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void pgr_process_metrics(
-    const char* edges_sql,
-    IID_t_rt** result_tuples,
-    size_t* result_count,
-    char** log_msg,
-    char** notice_msg
-);
+void pgr_process_allpairs(const char*, int, IID_t_rt **, size_t *);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // INCLUDE_PROCESS_METRICS_BANDWIDTH_PROCESS_H_
+#endif  // INCLUDE_PROCESS_METRICS_PROCESS_H_
