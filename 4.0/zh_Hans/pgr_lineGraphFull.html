@@ -248,7 +248,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - 实验性<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> — 将给定图转换为新图，其中原始图的所有顶点都转换为线图。</p>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="1ba4d9db-89cf-45ab-8d84-2979fe1ee9cd" name="1ba4d9db-89cf-45ab-8d84-2979fe1ee9cd" type="checkbox"><label class="sphinx_collapse__label" for="1ba4d9db-89cf-45ab-8d84-2979fe1ee9cd"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="3d6795ca-af49-4c09-962b-0781231375c4" name="3d6795ca-af49-4c09-962b-0781231375c4" type="checkbox"><label class="sphinx_collapse__label" for="3d6795ca-af49-4c09-962b-0781231375c4"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -270,7 +270,7 @@
 <li><p>pgTap 测试可能丢失。</p></li>
 <li><p>可能需要 c/c++编码。</p></li>
 <li><p>可能缺乏文档。</p></li>
-<li><p>文档（如果有）可能需要重写。</p></li>
+<li><p>文档可能需要重写。</p></li>
 <li><p>可能需要自动生成文档示例。</p></li>
 <li><p>需要从社区获取大量反馈意见。</p></li>
 <li><p>可能取决于 pgRouting 的提议功能</p></li>
@@ -912,7 +912,7 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
 <dd class="field-odd"><p>路由从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(3\)</span></p>
 </dd>
 </dl>
-<p>现在可以使用 <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra`</span></a> 使用原始顶点 id 来完成路由</p>
+<p>现在可以使用 <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> 使用原始顶点 id 来完成路由</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
 results AS (
   SELECT * FROM pgr_dijkstra(
@@ -1057,7 +1057,7 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 6月 30, 2025.<br/>
+      Last updated on 7月 04, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
