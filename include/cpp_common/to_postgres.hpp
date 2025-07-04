@@ -106,8 +106,8 @@ void vector_to_tuple(
  *
  * @param[in] graph Created graph with the base Graph
  * @param[in] matrix matrix[i,j] -> the i,j element contains the results
- * @param[out] result_count the size of the C array
- * @param[out] result_tuples The C array of <bigint, bigint, float>
+ * @param[out] result_tuple_count the size of the C array
+ * @param[out] postgres_rows The C array of <bigint, bigint, float>
  *
  * <bigint, bigint, float> =  <i , j, results[i,j]>
  *

@@ -231,9 +231,9 @@ crossover_optimize(TSP_graph& graph, std::deque<std::pair<int64_t, double>> resu
 
 
 /**
+ * @param [in] graph The graph
  * @param [in] start_vid user's start vertex identifier, 0 when not set
  * @param [in] end_vid user's end vertex identifier, 0 when not set
- * @param [in] max_cycles Upper limit of ccycles
  */
 std::deque<std::pair<int64_t, double>>
 do_tsp(
