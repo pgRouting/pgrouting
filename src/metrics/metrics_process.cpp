@@ -30,14 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include <vector>
+#include "process/metrics_process.h"
+
 #include <string>
-#include <unordered_map>
-#include <cstdint>
-#include "cpp_common/assert.hpp"
-#include "cpp_common/alloc.hpp"
-#include "cpp_common/get_data.hpp"
-#include "cpp_common/to_postgres.hpp"
 
 extern "C" {
 #include "c_common/postgres_connection.h"
@@ -45,51 +40,46 @@ extern "C" {
 #include "c_common/time_msg.h"
 }
 
-#include "process/metrics_process.h"
+#include "c_types/iid_t_rt.h"
+#include "cpp_common/assert.hpp"
 #include "drivers/metrics_driver.hpp"
 
-#include "c_types/iid_t_rt.h"
+#if 0
+ which = 0 -> bandwidth
 
-void
-pgr_process_metrics(
-    const char* edges_sql,
-    IID_t_rt** result_tuples,
-    size_t* result_count,
-    char** log_msg,
-    char** notice_msg) {
-
+ This is c++ code, linked as C code, because pgr_process_metrics is called from C code
+#endif
+void pgr_process_metrics(
+        const char* edges_sql,
+        int which,
+        IID_t_rt **result_tuples,
+        size_t *result_count) {
+    pgassert(edges_sql);
     pgassert(!(*result_tuples));
     pgassert(*result_count == 0);
-
-
     pgr_SPI_connect();
-
-    *log_msg = *notice_msg = nullptr;
-    char* err_msg = nullptr;
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     clock_t start_t = clock();
+    do_metrics(
+            edges_sql,
+            which,
+            result_tuples, result_count,
+            &log_msg, &err_msg);
 
-#if 0
-
-    std::vector<IID_t_rt> results =
-        pgrouting::bandwidth::compute_bandwidth(std::string(edges_sql));
-
-    if (!results.empty()) {
-        *result_count = results.size();
-        (*result_tuples) = pgrouting::pgr_alloc(*result_count, GraphBandwidth_rt);
-
-        for (size_t i = 0; i < *result_count; ++i) {
-            (*result_tuples)[i] = results[i];
-        }
-
-        time_msg(" processing pgr_bandwidth", start_t, clock());
-    } else {
-        *result_count = 0;
-        *result_tuples = nullptr;
+    if (which == 0) {
+        time_msg(std::string(" processing pgr_bandwidth").c_str(), start_t, clock());
     }
 
-#endif
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
+    }
 
-    pgr_global_report(log_msg, notice_msg, &err_msg);
+    pgr_global_report(&log_msg, &notice_msg, &err_msg);
+
     pgr_SPI_finish();
 }
