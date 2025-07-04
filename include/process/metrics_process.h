@@ -29,18 +29,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifdef __cplusplus
 #include <cstddef>
-
+using IID_t_rt = struct IID_t_rt;
 #else
 #include <stddef.h>
 #include <stdbool.h>
+typedef struct IID_t_rt IID_t_rt;
 #endif
 
-#include "c_types/iid_t_rt.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void pgr_process_allpairs(const char*, int, IID_t_rt **, size_t *);
+void pgr_process_metrics(const char*, int, IID_t_rt **, size_t *);
 
 #ifdef __cplusplus
 }
