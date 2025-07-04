@@ -24,8 +24,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- ********************************************************************PGR-GNU*/
 
+ ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
@@ -38,39 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "process/metrics_process.h"
 
 PGDLLEXPORT Datum _pgr_bandwidth(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_bandwidth);
-
-static
-void
-process(
-    char* edges_sql,
-    GraphBandwidth_rt **result_tuples,
-    size_t *result_count) {
-
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-
-    clock_t start_t = clock();
-    _pgr_process_metrics(
-        edges_sql,
-        result_tuples,
-        result_count,
-        &log_msg,
-        &notice_msg);
-    time_msg("Processing _pgr_bandwidth", start_t, clock());
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
+PG_FUNCTION_INFO_V1(_pgr_baandwidth);
 
 
 PGDLLEXPORT Datum
@@ -78,7 +46,7 @@ _pgr_bandwidth(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    GraphBandwidth_rt  *result_tuples = NULL;
+    IID_t_rt *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -86,21 +54,21 @@ _pgr_bandwidth(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        process(
-            text_to_cstring(PG_GETARG_TEXT_P(0)),
-            PG_GETARG_BOOL(1),
-            &result_tuples,
-            &result_count);
+
+        pgr_process_metrics(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_BOOL(1),
+                0,  /* bandwidth */
+                &result_tuples,
+                &result_count);
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
-
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-            != TYPEFUNC_COMPOSITE) {
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
-                (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-                 errmsg("function returning record called in context "
-                        "that cannot accept type record")));
+                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     errmsg("function returning record called in context "
+                         "that cannot accept type record")));
         }
 
         funcctx->tuple_desc = tuple_desc;
@@ -109,18 +77,23 @@ _pgr_bandwidth(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (GraphBandwidth_rt*) funcctx->user_fctx;
+    result_tuples = (IID_t_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple tuple;
-        Datum result;
-        Datum *values = palloc(2 * sizeof(Datum));
-        bool *nulls = palloc(2 * sizeof(bool));
+        HeapTuple    tuple;
+        Datum        result;
+        Datum        *values;
+        bool         *nulls;
 
-        values[0] = Int32GetDatum(result_tuples[funcctx->call_cntr].id);
+        values = palloc(3 * sizeof(Datum));
+        nulls = palloc(3 * sizeof(bool));
+
+        values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_vid);
         nulls[0] = false;
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].bandwidth);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].to_vid);
         nulls[1] = false;
+        values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        nulls[2] = false;
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
