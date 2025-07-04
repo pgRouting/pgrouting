@@ -57,7 +57,6 @@ _pgr_bandwidth(PG_FUNCTION_ARGS) {
 
         pgr_process_metrics(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_BOOL(1),
                 0,  /* bandwidth */
                 &result_tuples,
                 &result_count);
