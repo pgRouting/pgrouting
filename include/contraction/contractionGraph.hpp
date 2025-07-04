@@ -280,23 +280,19 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
 
     /*!
         @brief Accessor to the vertices on which contraction is forbidden
-        @param [in] Identifiers<V>: The set of forbidden vertex descriptors
+        @param [in] p_forbidden_vertices The set of forbidden vertex descriptors
     */
-    void set_forbidden_vertices(
-            Identifiers<V> m_forbidden_vertices) {
-        forbiddenVertices = m_forbidden_vertices;
+    void set_forbidden_vertices(Identifiers<V> p_forbidden_vertices) {
+        forbiddenVertices = p_forbidden_vertices;
     }
 
     /*!
         @brief Checks if a vertex is forbidden to the contraction process
         @param [in] v vertex to test
-        @return true if the vertex is forbiddent to the contraction process, false else
+        @return true if the vertex is forbidden to the contraction process, false else
     */
     bool is_forbidden(V v) {
-        if (forbiddenVertices.has(v)) {
-            return true;
-        }
-        return false;
+        return forbiddenVertices.has(v);
     }
 
     /*!
@@ -461,7 +457,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
 
     /*!
         @brief copies shortcuts and modified vertices from another graph
-        @result void
     */
     void copy_shortcuts(
         std::vector<pgrouting::CH_edge> &shortcuts,
@@ -478,8 +473,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
 
     /*!
         @brief for C calls: to get the metric of a node, directly from the graph
-        @param [in] v vertex_descriptor
-        @return int64_t: the value of the metric for node v
+        @param [in] vertex_id vertex identifier
+        @return the value of the metric of vertex_id
     */
     double get_vertex_metric(int64_t vertex_id) {
         return (this->graph[this->vertices_map[vertex_id]]).metric();
@@ -487,8 +482,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
 
     /*!
         @brief for C calls: to get the order of a node, directly from the graph
-        @param [in] v vertex_descriptor
-        @return int64_t: the order of node v
+        @param [in] vertex_id vertex identifier
+        @return the order of vertex_id
     */
     int64_t get_vertex_order(int64_t vertex_id) {
         return (this->graph[this->vertices_map[vertex_id]]).vertex_order();
@@ -496,8 +491,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
 
     /*!
         @brief defines the metric and hierarchy at the level of the nodes, from a given priority queue
-        @param [in] PQ priority_queue
-        @return void
+        @param [in] priority_queue
+        @param [out] log used for debugging
     */
     void set_vertices_metric_and_hierarchy(
         PQ priority_queue,
