@@ -45,15 +45,12 @@ extern "C" {
 #include "drivers/metrics_driver.hpp"
 
 #if 0
- which = 0 -> bandwidth
+which = 0 -> bandwidth
 
- This is c++ code, linked as C code, because pgr_process_metrics is called from C code
+This is c++ code, linked as C code, because pgr_process_metrics is called from C code
 #endif
-void pgr_process_metrics(
-        const char* edges_sql,
-        int which,
-        IID_t_rt **result_tuples,
-        size_t *result_count) {
+void pgr_process_metrics(const char* edges_sql , int which , IID_t_rt **result_tuples , size_t *result_count) {
+    
     pgassert(edges_sql);
     pgassert(!(*result_tuples));
     pgassert(*result_count == 0);
