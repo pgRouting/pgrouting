@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 void
 do_metrics(
     std::string edges_sql,
+    int which,
 
     IID_t_rt **return_tuples,
     size_t *return_count,
