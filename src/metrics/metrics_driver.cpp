@@ -75,7 +75,7 @@ do_metrics(
         log << "Processing Undirected graph\n";
         pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
-
+#if 0
         if (*return_count == 0) {
             err <<  "No result generated, report this error\n";
             *err_msg = to_pg_msg(err);
@@ -83,7 +83,7 @@ do_metrics(
             *return_count = 0;
             return;
         }
-
+#endif
         *log_msg = to_pg_msg(log);
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
