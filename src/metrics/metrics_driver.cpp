@@ -37,12 +37,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/assert.hpp"
 #include "cpp_common/to_postgres.hpp"
-#include "c_types/iid_t_rt.h"  
-
+#include "c_types/iid_t_rt.h"
 
 void
 do_metrics(
     std::string edges_sql,
+    int which,
 
     IID_t_rt **return_tuples,
     size_t *return_count,
@@ -72,12 +72,9 @@ do_metrics(
 
         hint = "";
 
-
         log << "Processing Undirected graph\n";
         pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
-
-
 
         if (*return_count == 0) {
             err <<  "No result generated, report this error\n";

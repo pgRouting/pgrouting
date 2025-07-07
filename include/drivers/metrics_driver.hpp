@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 void
 do_metrics(
     std::string,
-    bool, int,
+    int,
 
     IID_t_rt**, size_t*,
     char**, char**);
