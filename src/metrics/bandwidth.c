@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "process/metrics_process.h"
 
 PGDLLEXPORT Datum _pgr_bandwidth(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_baandwidth);
+PG_FUNCTION_INFO_V1(_pgr_bandwidth);
 
 
 PGDLLEXPORT Datum
