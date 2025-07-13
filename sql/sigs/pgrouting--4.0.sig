@@ -14,6 +14,8 @@ pgr_astar(text,bigint,anyarray,boolean,integer,double precision,double precision
 pgr_astar(text,bigint,bigint,boolean,integer,double precision,double precision)
 pgr_astar(text,text,boolean,integer,double precision,double precision)
 _pgr_astar(text,text,boolean,integer,double precision,double precision,boolean)
+_pgr_bandwidth(text)
+pgr_bandwidth(text)
 pgr_bdastarcostmatrix(text,anyarray,boolean,integer,numeric,numeric)
 pgr_bdastarcost(text,anyarray,anyarray,boolean,integer,numeric,numeric)
 pgr_bdastarcost(text,anyarray,bigint,boolean,integer,numeric,numeric)
