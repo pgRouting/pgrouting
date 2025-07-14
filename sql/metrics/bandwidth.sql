@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE FUNCTION pgr_bandwidth(
     TEXT,    -- edges_sql (required)
 
-    OUT bandwidth BIGINT   
+    OUT bandwidth BIGINT
 )
 RETURNS BIGINT
 AS

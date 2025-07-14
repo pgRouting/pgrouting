@@ -19,21 +19,39 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(5);
+SELECT CASE WHEN NOT min_version('4.0.0') THEN plan(1) ELSE plan(5) END;
 
-SELECT has_function('pgr_bandwidth');
-SELECT has_function('pgr_bandwidth', ARRAY['text']);
-SELECT function_returns('pgr_bandwidth', ARRAY['text'],'BIGINT');
+CREATE OR REPLACE FUNCTION types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
 
-SELECT function_args_eq('pgr_bandwidth',
-  $$VALUES
-  ('{"", bandwidth}'::TEXT[])
-  $$);
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_bandwidth:Function is new on 4.0.0');
+    RETURN;
+  END IF;
 
-SELECT function_types_eq('pgr_bandwidth',
-  $$VALUES
-  ('{text,bool,int8,int8,float8}'::TEXT[])
-  $$);
+  RETURN QUERY SELECT has_function('pgr_bandwidth');
+  RETURN QUERY SELECT has_function('pgr_bandwidth', ARRAY['text']);
+  RETURN QUERY SELECT function_returns('pgr_bandwidth', ARRAY['text'],  'BIGINT');
 
-SELECT finish();
+  RETURN QUERY
+  SELECT function_args_eq('pgr_bandwidth',
+    $$SELECT  '{""}'::TEXT[] $$
+  );
+
+  RETURN QUERY
+  SELECT function_types_eq('pgr_cuthillmckeeordering',
+    $$VALUES
+    ('{text}'::TEXT[])
+    $$
+  );
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT types_check();
+
+SELECT * FROM finish();
 ROLLBACK;
