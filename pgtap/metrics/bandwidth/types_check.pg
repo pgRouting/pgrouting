@@ -1,7 +1,7 @@
 
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2018  pgRouting developers
+Copyright (c) 2025  pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN NOT min_version('4.0.0') THEN plan(1) ELSE plan(5) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(5) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION types_check()
 RETURNS SETOF TEXT AS
@@ -27,24 +27,23 @@ $BODY$
 BEGIN
 
   IF NOT min_version('4.0.0') THEN
-    RETURN QUERY
-    SELECT skip(1, 'pgr_bandwidth:Function is new on 4.0.0');
+    RETURN QUERY SELECT skip(1, 'pgr_bandwidth:Function is new on 4.0.0');
     RETURN;
   END IF;
 
   RETURN QUERY SELECT has_function('pgr_bandwidth');
   RETURN QUERY SELECT has_function('pgr_bandwidth', ARRAY['text']);
-  RETURN QUERY SELECT function_returns('pgr_bandwidth', ARRAY['text'],  'BIGINT');
+  RETURN QUERY SELECT function_returns('pgr_bandwidth', ARRAY['text'],  'bigint');
 
   RETURN QUERY
   SELECT function_args_eq('pgr_bandwidth',
-    $$SELECT  '{""}'::TEXT[] $$
+    $$SELECT  ('{"",bandwidth}'::TEXT[]) $$
   );
 
   RETURN QUERY
-  SELECT function_types_eq('pgr_cuthillmckeeordering',
+  SELECT function_types_eq('pgr_bandwidth',
     $$VALUES
-    ('{text}'::TEXT[])
+    ('{text, int8}'::TEXT[])
     $$
   );
 END;
