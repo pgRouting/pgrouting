@@ -43,7 +43,7 @@ namespace pgrouting {
 namespace metrics {
 
 template <class G>
-int bandwidth(const G &graph) {
+uint64_t bandwidth(const G &graph) {
     CHECK_FOR_INTERRUPTS();
 
     using GraphType = typename std::remove_reference<decltype(graph.graph)>::type;
