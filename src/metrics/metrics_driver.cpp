@@ -79,7 +79,7 @@ do_metrics(
 
         if (which == 0) {
             log << "call the function which calculates the bandwidth";
-	    result = bandwidth(undigraph);
+            result = bandwidth(undigraph);
         }
 
         log << "result = " << result;
