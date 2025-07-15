@@ -70,7 +70,7 @@ uint64_t bandwidth(const G &graph) {
     if (bandwidth == std::numeric_limits<int>::max()) {
         bandwidth = 0;
     }
-    return <uint64_t>bandwidth;
+    return bandwidth;
 }
 
 }  // namespace metrics
