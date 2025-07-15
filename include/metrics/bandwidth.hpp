@@ -49,7 +49,7 @@ uint64_t bandwidth(const G &graph) {
     using GraphType = typename std::remove_reference<decltype(graph.graph)>::type;
     using Vertex = typename boost::graph_traits<GraphType>::vertex_descriptor;
 
-    int bw = std::numeric_limits<int>::max();
+    int bandwidth = std::numeric_limits<int>::max();
 
     // We need a vertex index map for consistent ordering
     auto index_map = boost::get(boost::vertex_index, graph.graph);
@@ -61,16 +61,16 @@ uint64_t bandwidth(const G &graph) {
         Vertex v = boost::target(*ei, graph.graph);
 
         int diff = std::abs(static_cast<int>(index_map[u]) - static_cast<int>(index_map[v]));
-        if (diff < bw) {
-            bw = diff;
+        if (diff < bandwidth) {
+            bandwidth = diff;
         }
     }
 
     // If graph has no edges, bandwidth is zero
-    if (bw == std::numeric_limits<int>::max()) {
-        bw = 0;
+    if (bandwidth == std::numeric_limits<int>::max()) {
+        bandwidth = 0;
     }
-    return bw;
+    return bandwidth;
 }
 
 }  // namespace metrics
