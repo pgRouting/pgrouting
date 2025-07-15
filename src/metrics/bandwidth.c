@@ -55,7 +55,7 @@ _pgr_bandwidth(PG_FUNCTION_ARGS) {
      if (result_count == 0) {
              PG_RETURN_UINT64(0);
      } else {
-             PG_RETURN_UINT64(result_tuples[0].from_vid);
+             PG_RETURN_UINT64((uint64_t)result_tuples[0].from_vid);
      }
 }
 
