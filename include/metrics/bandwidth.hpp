@@ -46,9 +46,9 @@ template <class G>
 uint64_t bandwidth(const G &graph) {
         CHECK_FOR_INTERRUPTS();
 
-	std::size_t n = boost::num_vertices(graph);
-	std::vector<std::size_t> vertex_ordering(n);
-	std::iota(vertex_ordering.begin(), vertex_ordering.end(), 0);
+        std::size_t n = boost::num_vertices(graph);
+        std::vector<std::size_t> vertex_ordering(n);
+        std::iota(vertex_ordering.begin(), vertex_ordering.end(), 0);
 
         try {
         return boost::bandwidth(graph, vertex_ordering.begin());
