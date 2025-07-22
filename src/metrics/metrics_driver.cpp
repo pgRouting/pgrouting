@@ -61,8 +61,6 @@ do_metrics(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        using pgrouting::metrics::bandwidth;
-
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, true);
 
@@ -79,7 +77,7 @@ do_metrics(
 
         if (which == 0) {
             log << "call the function which calculates the bandwidth";
-            result = bandwidth(undigraph);
+            result = pgrouting::metrics::bandwidth(undigraph);
         }
 
         log << "result = " << result;
