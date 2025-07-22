@@ -30,12 +30,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <vector>
-#include <limits>
+#include <numeric>
+#include <cstdint>
 
-#include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/bandwidth.hpp>
 
-#include "c_types/iid_t_rt.h"
 #include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 
@@ -43,34 +43,22 @@ namespace pgrouting {
 namespace metrics {
 
 template <class G>
-int bandwidth(const G &graph) {
-    CHECK_FOR_INTERRUPTS();
+uint64_t bandwidth(const G &graph) {
+        CHECK_FOR_INTERRUPTS();
 
-    using GraphType = typename std::remove_reference<decltype(graph.graph)>::type;
-    using Vertex = typename boost::graph_traits<GraphType>::vertex_descriptor;
+        try {
+        const auto& boost_graph = graph.graph;
 
-    int bw = std::numeric_limits<int>::max();
-
-    // We need a vertex index map for consistent ordering
-    auto index_map = boost::get(boost::vertex_index, graph.graph);
-
-    // Loop over all edges to compute max absolute difference of vertex indices
-    typename boost::graph_traits<GraphType>::edge_iterator ei, ei_end;
-    for (boost::tie(ei, ei_end) = boost::edges(graph.graph); ei != ei_end; ++ei) {
-        Vertex u = boost::source(*ei, graph.graph);
-        Vertex v = boost::target(*ei, graph.graph);
-
-        int diff = std::abs(static_cast<int>(index_map[u]) - static_cast<int>(index_map[v]));
-        if (diff < bw) {
-            bw = diff;
-        }
+        return static_cast<uint64_t>(boost::bandwidth(boost_graph));
+    } catch (boost::exception const& ex) {
+        (void)ex;
+        throw;
+    } catch (std::exception &e) {
+        (void)e;
+        throw;
+    } catch (...) {
+        throw;
     }
-
-    // If graph has no edges, bandwidth is zero
-    if (bw == std::numeric_limits<int>::max()) {
-        bw = 0;
-    }
-    return bw;
 }
 
 }  // namespace metrics

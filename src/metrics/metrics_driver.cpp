@@ -75,9 +75,14 @@ do_metrics(
         pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
 
+        uint64_t result;
+
         if (which == 0) {
             log << "call the function which calculates the bandwidth";
+            result = bandwidth(undigraph);
         }
+
+        log << "result = " << result;
 #if 0
         if (*return_count == 0) {
             err <<  "No result generated, report this error\n";
