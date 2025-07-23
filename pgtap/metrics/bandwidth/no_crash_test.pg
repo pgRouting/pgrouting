@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('4.0.0') THEN plan(4) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(7) ELSE plan(1) END;
 
 PREPARE edges_q AS
 SELECT id, source, target, cost, reverse_cost  FROM edges;
@@ -44,6 +44,13 @@ BEGIN
     RETURN;
   END IF;
 
+  RETURN QUERY
+  SELECT isnt_empty('edges_q', 'Should be not empty to tests be meaningful');
+  RETURN QUERY
+  SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
+  RETURN QUERY
+  SELECT set_eq('null_ret_arr', 'SELECT NULL::BIGINT[]', 'Should be empty to tests be meaningful');
+
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$'
     ]::TEXT[];
@@ -58,7 +65,7 @@ $BODY$
 LANGUAGE plpgsql VOLATILE;
 
 
-SELECT no_crash();
+SELECT * FROM no_crash();
 
 SELECT finish();
 ROLLBACK;
