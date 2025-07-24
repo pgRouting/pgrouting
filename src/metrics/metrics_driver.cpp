@@ -81,15 +81,11 @@ do_metrics(
         }
 
         log << "result = " << result;
-#if 0
-        if (*return_count == 0) {
-            err <<  "No result generated, report this error\n";
-            *err_msg = to_pg_msg(err);
-            *return_tuples = NULL;
-            *return_count = 0;
-            return;
-        }
-#endif
+
+        *return_tuples = new IID_t_rt[1];
+        (*return_tuples)[0].from_vid = static_cast<int64_t>(result);
+        *return_count = 1;
+
         *log_msg = to_pg_msg(log);
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
