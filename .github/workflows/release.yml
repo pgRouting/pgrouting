@@ -79,7 +79,7 @@ jobs:
             graphviz \
             doxygen
 
-      - name: Configure and build 
+      - name: Configure and build
         run: |
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
