@@ -50,7 +50,6 @@ foreach(opt BUILD_HTML BUILD_LATEX BUILD_MAN BUILD_SINGLEHTML BUILD_EPUB BUILD_D
   endif()
 endforeach()
 
-message(STATUS "PROJECT_DOC_TARGETS = ${PROJECT_DOC_TARGETS}")
 if("${PROJECT_DOC_TARGETS}" STREQUAL "")
   message(WARNING "No documentation targets found
   Building without documentation")
@@ -145,7 +144,7 @@ message(STATUS "PGR_DOCUMENTATION_SOURCE_DIR = ${PGR_DOCUMENTATION_SOURCE_DIR}")
 foreach (subdir ${PROJECT_DOC_DIRECTORIES} "src")
   add_subdirectory("${subdir}")
   if (EXISTS "${CMAKE_SOURCE_DIR}/docqueries/${subdir}")
-    add_subdirectory("${CMAKE_SOURCE_DIR}/docqueries/${subdir}" "build/doc/${subdir}")
+    add_subdirectory("${CMAKE_SOURCE_DIR}/docqueries/${subdir}" "docqueries/${subdir}")
   endif()
 endforeach()
 
@@ -158,10 +157,7 @@ configure_file("../tools/testers/sampledata.sql" "${PGR_DOCUMENTATION_SOURCE_DIR
 add_subdirectory("_static")
 add_subdirectory("_templates")
 
-configure_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
-  "${PGR_DOCUMENTATION_SOURCE_DIR}/conf.py"
-  @ONLY)
+configure_file("conf.py.in" "${PGR_DOCUMENTATION_SOURCE_DIR}/conf.py" @ONLY)
 
 foreach (format ${PROJECT_DOC_TARGETS})
 
