@@ -127,4 +127,6 @@ jobs:
         run: |
           cd build
           make doxy
-          [ ! -s DOXYLOG ] || echo "There are Doxygen warnings" && exit 1
+          more DOXYLOG
+          [ ! -s DOXYLOG ] || echo "There are Doxygen warnings"
+          [ ! -s DOXYLOG ] || exit 1

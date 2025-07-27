@@ -66,26 +66,23 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             libboost-graph-dev \
+            python3-sphinx \
+            python3-sphinx-bootstrap-theme \
             postgresql-${PGVER} \
             postgresql-${PGVER}-postgis-${PGIS} \
             postgresql-${PGVER}-postgis-${PGIS}-scripts \
             postgresql-server-dev-${PGVER} \
             graphviz \
             doxygen
-          python -m pip install --upgrade pip
-          pip install Sphinx
-          pip install sphinx-bootstrap-theme
-          pip install sphinx-intl[transifex]
-          pip install sphinx-collapse
-          pip list
 
       - name: Configure and build documentation
         run: |
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_VERSION=${PGVER} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON \
-            -DCMAKE_BUILD_TYPE=Release -DES=ON -DZH_HANS=ON ..
+          cmake -DPOSTGRESQL_VERSION=${PGVER} \
+                -DDOC_USE_BOOTSTRAP=ON \
+                -DCMAKE_BUILD_TYPE=Release ..
           make doc
 
       - name: Initialize mandatory git config
@@ -102,7 +99,7 @@ jobs:
           git checkout -b gh-pages
           DIRECTORY="${PROJECT_VERSION%.*}"
           rm -rf ${DIRECTORY}
-          cp -r build/doc/html ${DIRECTORY}
+          cp -r build/doc/_build/html ${DIRECTORY}
           git add ${DIRECTORY}
           git diff-index --quiet HEAD || git commit -m "Update users documentation for ${PROJECT_VERSION} for develop branch: commit ${{ env.GIT_HASH }}"
           git fetch origin
@@ -120,7 +117,7 @@ jobs:
           git checkout -b gh-pages
           DIRECTORY="main"
           rm -rf ${DIRECTORY}
-          cp -r build/doc/html ${DIRECTORY}
+          cp -r build/doc/_build/html ${DIRECTORY}
           git add ${DIRECTORY}
           git diff-index --quiet HEAD || git commit -m "Update users documentation for ${PROJECT_VERSION} for main branch: commit ${{ env.GIT_HASH }}"
           git fetch origin
