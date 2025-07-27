@@ -454,6 +454,21 @@ Summary of functions and signatures no longer on pgrouting
 * [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpoints(text,text,text,boolean,character,boolean)
 * [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
 
+Documentation build
+
+WITH-DOC is not used anymore
+
+* The HTML documentation is build by default
+* The translated languages (en, es, zh_Hans) HTML documentation is build by default
+
+Documentation is not build when
+
+* Sphinx is not found
+* When all Sphinx formats are OFF
+* When all languages are OFF
+
+Output is on build/doc/_build/<format> directory
+
 Code enhancements
 
 * Removal of unused C/C++ code
