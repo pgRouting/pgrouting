@@ -529,16 +529,20 @@ Documentation build
 
 WITH-DOC is not used anymore
 
+* The doxygen documentation is build by default
 * The HTML documentation is build by default
 * The translated languages (en, es, zh_Hans) HTML documentation is build by default
 
-Documentation is not build when
+User's Documentation is not build when
 
 * Sphinx is not found
 * When all Sphinx formats are OFF
 * When all languages are OFF
+* Output is on build/doc/_build/<format> directory
 
-Output is on build/doc/_build/<format> directory
+Developers's Documentation is not build when
+
+* Doxygen is not found
 
 Code enhancements
 ...............................................................................
