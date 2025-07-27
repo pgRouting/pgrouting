@@ -103,13 +103,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             libboost-graph-dev \
+            python3-sphinx \
+            python3-sphinx-bootstrap-theme \
             postgresql-${PGVER} \
             postgresql-server-dev-${PGVER} \
             graphviz
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip list
-
 
       - name: Configure
         if: env.PROCESS == 'true'
@@ -117,9 +115,8 @@ jobs:
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
-          cmake -DLINKCHECK=ON -DWITH_DOC=ON \
-                -DES=ON -DZH_HANS=ON \
-                -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DBUILD_LINKCHECK=ON \
+                -DPOSTGRESQL_VERSION=${PGVER} ..
 
       - name: Check Documentation
         if: env.PROCESS == 'true'
