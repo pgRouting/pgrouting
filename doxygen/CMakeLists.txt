@@ -1,8 +1,7 @@
-#
+# Main changes
+# developers is build by default unless other wise stated
 
-
-option(BUILD_DOXY
-    "Set ON|OFF (default=OFF) to build Developers Documentation" OFF)
+option(BUILD_DOXY "Set ON|OFF (default=ON) to build Developers Documentation" ON)
 
 if (BUILD_DOXY)
     find_package(Doxygen ${DOXYGEN_MINIMUM_VERSION})
