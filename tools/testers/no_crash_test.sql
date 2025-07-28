@@ -33,7 +33,7 @@ BEGIN
         ELSE
             IF func='pgr_isplanar' THEN
                 RETURN query SELECT * FROM isnt_empty(q1, 'isnt_empty' || q1);
-            ELSIF func='pgr_maxFlow' OR func='pgr_maxFlowMinCost_Cost' THEN
+            ELSIF func='pgr_maxFlow' OR func='pgr_maxFlowMinCost_Cost' OR func = 'pgr_bandwidth' THEN
                 RETURN query SELECT * FROM set_eq(q1, 'SELECT NULL::BIGINT', 'set_eq' || q1);
             ELSE
                 RETURN query SELECT * FROM is_empty(q1, 'is_empty' || q1);
