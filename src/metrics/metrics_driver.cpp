@@ -61,8 +61,6 @@ do_metrics(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        using pgrouting::metrics::bandwidth;
-
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, true);
 
@@ -79,19 +77,15 @@ do_metrics(
 
         if (which == 0) {
             log << "call the function which calculates the bandwidth";
-            result = bandwidth(undigraph);
+            result = pgrouting::metrics::bandwidth(undigraph);
         }
 
         log << "result = " << result;
-#if 0
-        if (*return_count == 0) {
-            err <<  "No result generated, report this error\n";
-            *err_msg = to_pg_msg(err);
-            *return_tuples = NULL;
-            *return_count = 0;
-            return;
-        }
-#endif
+
+        *return_tuples = new IID_t_rt[1];
+        (*return_tuples)[0].from_vid = static_cast<int64_t>(result);
+        *return_count = 1;
+
         *log_msg = to_pg_msg(log);
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
