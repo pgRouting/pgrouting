@@ -8,19 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>示例数据 &#8212; pgRouting Manual (4.0-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=a458cb6c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
     <link rel="next" title="pgRouting 概念" href="pgRouting-concepts.html" />
     <link rel="prev" title="支持" href="support.html" />
 <meta charset='utf-8'>
@@ -180,69 +179,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">示例数据</a><ul>
-<li><a class="reference internal" href="#main-graph">主图</a><ul>
-<li><a class="reference internal" href="#edges">边</a><ul>
-<li><a class="reference internal" href="#edges-data">边数据</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#vertices">顶点</a><ul>
-<li><a class="reference internal" href="#vertices-data">顶点数据</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#the-topology">拓扑结构</a><ul>
-<li><a class="reference internal" href="#topology-data">拓扑数据</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#points-outside-the-graph">图之外的点</a><ul>
-<li><a class="reference internal" href="#points-of-interest">兴趣点</a></li>
-<li><a class="reference internal" href="#points-of-interest-fill-up">兴趣点填充</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#support-tables">支持表</a><ul>
-<li><a class="reference internal" href="#combinations">组合</a></li>
-<li><a class="reference internal" href="#restrictions">限制</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#images">图片</a><ul>
-<li><a class="reference internal" href="#directed-graph-with-cost-and-reverse-cost">带 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的有向图</a></li>
-<li><a class="reference internal" href="#undirected-graph-with-cost-and-reverse-cost">具有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的无向图</a></li>
-<li><a class="reference internal" href="#directed-graph-with-cost">有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的有向图</a></li>
-<li><a class="reference internal" href="#undirected-graph-with-cost">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的无向图</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#pick-deliver-data">取货和送货数据</a><ul>
-<li><a class="reference internal" href="#the-vehicles">车辆</a></li>
-<li><a class="reference internal" href="#the-original-orders">原始订单</a></li>
-<li><a class="reference internal" href="#the-orders">订单</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="support.html" title="Previous Chapter: 支持"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 支持</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgRouting-concepts.html" title="Next Chapter: pgRouting 概念"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgRouting 概念 &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('sampledata','zh-Hans'));  </script>
             
   <div class="line-block">
@@ -735,8 +672,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 <span id="fig1"></span><h3><a class="toc-backref" href="#id19" role="doc-backlink">带 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的有向图</a><a class="headerlink" href="#directed-graph-with-cost-and-reverse-cost" title="Link to this heading">¶</a></h3>
 <p>在使用城市网络时，建议从车辆的角度考虑。</p>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" />
-</a>
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
 <figcaption>
 <p><span class="caption-text">具有cost和reverse_cost的有向图</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
@@ -746,8 +682,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 <span id="fig2"></span><h3><a class="toc-backref" href="#id20" role="doc-backlink">具有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的无向图</a><a class="headerlink" href="#undirected-graph-with-cost-and-reverse-cost" title="Link to this heading">¶</a></h3>
 <p>在使用城市网络时，建议从行人的角度考虑。</p>
 <figure class="align-default" id="id2">
-<a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 482.0px; height: 435.0px;" />
-</a>
+<a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 482.0px; height: 435.0px;" /></a>
 <figcaption>
 <p><span class="caption-text">带有cost和 reverse cost的无向图</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
@@ -756,8 +691,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 <section id="directed-graph-with-cost">
 <span id="fig3"></span><h3><a class="toc-backref" href="#id21" role="doc-backlink">有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的有向图</a><a class="headerlink" href="#directed-graph-with-cost" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="id3">
-<a class="reference internal image-reference" href="_images/Fig2-cost.png"><img alt="_images/Fig2-cost.png" src="_images/Fig2-cost.png" style="width: 193.8px; height: 173.60000000000002px;" />
-</a>
+<a class="reference internal image-reference" href="_images/Fig2-cost.png"><img alt="_images/Fig2-cost.png" src="_images/Fig2-cost.png" style="width: 193.8px; height: 173.60000000000002px;" /></a>
 <figcaption>
 <p><span class="caption-text">有向，有成本</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
@@ -766,8 +700,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 <section id="undirected-graph-with-cost">
 <span id="fig4"></span><h3><a class="toc-backref" href="#id22" role="doc-backlink">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的无向图</a><a class="headerlink" href="#undirected-graph-with-cost" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="id4">
-<a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 195.0px; height: 175.20000000000002px;" />
-</a>
+<a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 195.0px; height: 175.20000000000002px;" /></a>
 <figcaption>
 <p><span class="caption-text">无向，有成本</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
@@ -959,8 +892,8 @@ WHERE pointsOfInterest.geom = poi.geom;
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 7月 04, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      最后更新于 7月 28, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

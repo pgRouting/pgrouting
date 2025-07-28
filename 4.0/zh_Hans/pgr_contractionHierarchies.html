@@ -8,19 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_contractionHierarchies - 实验性 &#8212; pgRouting Manual (4.0-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=a458cb6c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
     <link rel="next" title="Dijkstra - 函数族" href="dijkstra-family.html" />
     <link rel="prev" title="pgr_contractionLinear - 提议中" href="pgr_contractionLinear.html" />
 <meta charset='utf-8'>
@@ -173,62 +172,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> - 实验性</a><ul>
-<li><a class="reference internal" href="#description">描述</a></li>
-<li><a class="reference internal" href="#signatures">签名</a></li>
-<li><a class="reference internal" href="#parameters">参数</a><ul>
-<li><a class="reference internal" href="#optional-parameters">可选参数</a></li>
-<li><a class="reference internal" href="#contraction-hierarchies-optional-parameters">收缩层级的可选参数</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">结果列</a></li>
-<li><a class="reference internal" href="#examples">示例</a><ul>
-<li><a class="reference internal" href="#on-an-undirected-graph">在无向图上</a></li>
-<li><a class="reference internal" href="#on-an-undirected-graph-with-forbidden-vertices">在有禁止顶点的无向图上</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#contraction-process-steps-details">收缩过程步骤详情</a><ul>
-<li><a class="reference internal" href="#shortcut-building-process">快捷构建过程</a></li>
-<li><a class="reference internal" href="#initialize-the-queue-with-a-first-vertices-order">用初始顶点顺序初始化队列</a></li>
-<li><a class="reference internal" href="#build-the-final-vertex-order">构建最终顶点顺序</a></li>
-<li><a class="reference internal" href="#add-shortcuts-to-the-initial-graph">向初始图形添加快捷边</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#use-the-contraction">使用缩略语</a><ul>
-<li><a class="reference internal" href="#build-the-contraction">构建收缩</a></li>
-<li><a class="reference internal" href="#add-shortcuts-and-hierarchy-in-the-existing-tables">在现有表中添加快捷边和层级</a></li>
-<li><a class="reference internal" href="#use-a-dijkstra-shortest-path-algorithm-on-it">对其使用 Dijkstra 最短路径算法</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">另请参阅</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_contractionLinear.html" title="Previous Chapter: pgr_contractionLinear - 提议中"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contracti...</span>
-    </a>
-  </li>
-  <li>
-    <a href="dijkstra-family.html" title="Next Chapter: Dijkstra - 函数族"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Dijkstra - 函数族 &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_contractionHierarchies','zh-Hans'));  </script>
             
   <div class="line-block">
@@ -533,8 +477,7 @@
 </pre></div>
 </div>
 <p>原始图：</p>
-<a class="reference internal image-reference" href="_images/sample_graph.png"><img alt="_images/sample_graph.png" src="_images/sample_graph.png" style="width: 241.0px; height: 217.5px;" />
-</a>
+<a class="reference internal image-reference" href="_images/sample_graph.png"><img alt="_images/sample_graph.png" src="_images/sample_graph.png" style="width: 241.0px; height: 217.5px;" /></a>
 <dl class="field-list simple">
 <dt class="field-odd">示例<span class="colon">:</span></dt>
 <dd class="field-odd"><p>在整个图形上建立收缩层次结构</p>
@@ -576,8 +519,7 @@
 </dd>
 </dl>
 <p>我们得到了上面的收缩图：</p>
-<a class="reference internal image-reference" href="_images/sample_graph_with_shortcuts.png"><img alt="_images/sample_graph_with_shortcuts.png" src="_images/sample_graph_with_shortcuts.png" style="width: 241.0px; height: 217.5px;" />
-</a>
+<a class="reference internal image-reference" href="_images/sample_graph_with_shortcuts.png"><img alt="_images/sample_graph_with_shortcuts.png" src="_images/sample_graph_with_shortcuts.png" style="width: 241.0px; height: 217.5px;" /></a>
 <p>我们可以毫不意外地看到，属于捷径的顶点在结果顶点顺序中往往具有较高的优先级。</p>
 </section>
 <section id="on-an-undirected-graph-with-forbidden-vertices">
@@ -636,7 +578,7 @@
 <section id="initialize-the-queue-with-a-first-vertices-order">
 <h3>用初始顶点顺序初始化队列<a class="headerlink" href="#initialize-the-queue-with-a-first-vertices-order" title="Link to this heading">¶</a></h3>
 <p>对于图中的每个顶点 <code class="docutils literal notranslate"><span class="pre">v</span></code> ，都会建立一个 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的收缩：</p>
-<div class="graphviz"><img src="_images/graphviz-0f5a834e273029f3b3f5483ea9147ac4fca9e7b8.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-9fd9ee1aab9a22f28f605a75718cd929ec0e6c97.png" alt="graph G {
     p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green];
 
@@ -675,7 +617,7 @@
 </tbody>
 </table>
 <p>相邻边被移除。</p>
-<div class="graphviz"><img src="_images/graphviz-5141a13c76a88605bcca254fd57645d54d33539a.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-298ea1ea03dc93c82430c5562f4a507c0ae4bcc1.png" alt="graph G {
     p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green];
 
@@ -690,7 +632,7 @@
     u -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
 }" class="graphviz" /></div>
 <p>只有当通过 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的路径是 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的前驱和后继之间唯一的最短路径时，才会从 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的前驱到后继构建快捷边。这里的 <em>边差</em> 度量值为-2。</p>
-<div class="graphviz"><img src="_images/graphviz-3e2092dfbdc3e5f4f3b11b67f7623d0c4a660c82.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-779d4ae5a962482f9d4175387305d21e406cb3c6.png" alt="graph G {
     p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green];
 
@@ -788,8 +730,8 @@
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -807,8 +749,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 7月 04, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      最后更新于 7月 28, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

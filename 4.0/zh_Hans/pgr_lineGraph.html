@@ -8,19 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_lineGraph - 提议中 &#8212; pgRouting Manual (4.0-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=a458cb6c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
     <link rel="next" title="pgr_lineGraphFull - 实验性" href="pgr_lineGraphFull.html" />
     <link rel="prev" title="转换 - 函数族" href="transformation-family.html" />
 <meta charset='utf-8'>
@@ -165,54 +164,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - 提议中</a><ul>
-<li><a class="reference internal" href="#description">描述</a></li>
-<li><a class="reference internal" href="#signatures">签名</a></li>
-<li><a class="reference internal" href="#parameters">参数</a><ul>
-<li><a class="reference internal" href="#optional-parameters">可选参数</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">结果列</a></li>
-<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
-<li><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers">用共享边标识符定向表示</a><ul>
-<li><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-shared-edges">用共享边表示的有向图的线图</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers">作为有向图表示，并使用唯一的边标识符</a><ul>
-<li><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-unique-edges">用唯一边表示的有向图的线图</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">另请参阅</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="transformation-family.html" title="Previous Chapter: 转换 - 函数族"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 转换 - 函数族</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_lineGraphFull.html" title="Next Chapter: pgr_lineGraphFull - 实验性"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_lineGraph... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_lineGraph','zh-Hans'));  </script>
             
   <div class="line-block" id="index-0">
@@ -221,25 +173,21 @@
 <section id="pgr-linegraph-proposed">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - 提议中<a class="headerlink" href="#pgr-linegraph-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> — 将给定图转换为其相应的基于边的图。</p>
-<div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="1edd01b2-d498-4d74-850a-df15f479913b" name="1edd01b2-d498-4d74-850a-df15f479913b" type="checkbox"><label class="sphinx_collapse__label" for="1edd01b2-d498-4d74-850a-df15f479913b"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<div class="admonition-proposed admonition">
+<p class="admonition-title">Proposed</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">警告</p>
 <p>下一版本的提议功能。</p>
 <ul class="simple">
-<li><p>它们并未正式出现在当前版本中。</p></li>
-<li><p>它们可能会正式成为下一个版本的一部分：</p>
+<li><p>它们并未正式出现在当前版本中。</p>
 <ul>
-<li><p>这些函数使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
-<li><p>名字可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>签名可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>功能可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>Code has been reviewed therefore is not experimental.</p></li>
+<li><p>Name, signature and functionality might not change.</p></li>
 <li><p>pgTap 测试已经完成。 但可能需要更多。</p></li>
 <li><p>文档可能需要完善。</p></li>
 </ul>
 </li>
 </ul>
-</div>
 </div>
 </div>
 <p class="rubric">可用性</p>
@@ -311,7 +259,7 @@
 
 </pre></div>
 </div>
-<div class="graphviz"><img src="_images/graphviz-2d647442544f69a8251a350bcf0e898f77dc708e.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-53d9009d1e470c965b50bfd5e57a48b4cb4b7819.png" alt="graph G {
 
    v6 [label=6,shape=circle;style=filled;fixedsize=true;width=.4;color=deepskyblue,pos=&quot;0,0!&quot;];
    v7 [label=7,shape=circle;style=filled;fixedsize=true;width=.4;color=deepskyblue,pos=&quot;0,2!&quot;];
@@ -514,7 +462,7 @@
 3 \rightarrow 2,
 3 \rightarrow 4,
 4 \rightarrow 3\})\)</span></p>
-<div class="graphviz"><img src="_images/graphviz-358aa5e398a3f4d95057c15b3ae081a734ae145f.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-a659b08ba803646bf67ee2958aeaf33ae0c046d2.png" alt="digraph G {
 
    subgraph clusterA {
       style=invis;
@@ -549,7 +497,7 @@
 <li><p>单向或双向箭头表示边表中的一条边（行）。</p></li>
 <li><p>黄色阴影中的数字是边缘标识符。</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-e1b2d45ae29cb73345ab363287f37803993ba22a.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-c510169c496a30324c1d92dcb1e14cd7d0e704ce.png" alt="digraph G {
 
    subgraph clusterA {
       style=invis;
@@ -632,7 +580,7 @@
 </ul>
 </li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-8871f84775132c06186fc3b89349db1bace86032.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-3ebafb2311cbea90d6daa3bd00c3f7dbe695b0a5.png" alt="digraph G {
 
    subgraph clusterA {
       style=invis;
@@ -692,7 +640,7 @@
 <li><p>没有双向头箭</p></li>
 <li><p>黄色阴影中的数字是边缘标识符。</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-110ac728bda4a00c04efbf70f0d389012b88db48.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-5ea4f6dbbf67e07106ed6260658525135c83f6aa.png" alt="digraph G {
 
    subgraph clusterA {
      style=invis;
@@ -780,7 +728,7 @@
 </ul>
 </li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-73c3b8c0d638d4e5fe3d5be88e7b1c8b496f9693.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-e3338ff473677aa10122478b38ad71566b1d6f15.png" alt="digraph G {
 
    subgraph clusterA {
      style=invis;
@@ -833,8 +781,8 @@
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -852,8 +800,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 7月 04, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      最后更新于 7月 28, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

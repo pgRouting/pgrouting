@@ -8,19 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Dijkstra - 函数族 &#8212; pgRouting Manual (4.0-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=a458cb6c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
     <link rel="next" title="pgr_dijkstra" href="pgr_dijkstra.html" />
     <link rel="prev" title="pgr_contractionHierarchies - 实验性" href="pgr_contractionHierarchies.html" />
 <meta charset='utf-8'>
@@ -157,46 +156,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Dijkstra - 函数族</a><ul>
-<li><a class="reference internal" href="#introduction">介绍</a></li>
-<li><a class="reference internal" href="#parameters">参数</a><ul>
-<li><a class="reference internal" href="#optional-parameters">可选参数</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-<li><a class="reference internal" href="#combinations-sql">分量 SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#advanced-documentation">高级文档</a><ul>
-<li><a class="reference internal" href="#the-problem-definition-advanced-documentation">问题定义（高级文档）</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">另请参阅</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_contractionHierarchies.html" title="Previous Chapter: pgr_contractionHierarchies - 实验性"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contracti...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_dijkstra.html" title="Next Chapter: pgr_dijkstra"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_dijkstra &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('dijkstra-family','zh-Hans'));  </script>
             
   <div class="line-block" id="index-0">
@@ -211,25 +171,21 @@
 <li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - 使用 pgr_dijkstra 计算流域信息。</p></li>
 <li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - 使用 Yen 算法和 pgr_dijkstra 来获得 K 条最短路径。</p></li>
 </ul>
-<div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="30bcd3b2-3081-4c73-9659-10034a10435f" name="30bcd3b2-3081-4c73-9659-10034a10435f" type="checkbox"><label class="sphinx_collapse__label" for="30bcd3b2-3081-4c73-9659-10034a10435f"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<div class="admonition-proposed admonition">
+<p class="admonition-title">Proposed</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">警告</p>
 <p>下一版本的提议功能。</p>
 <ul class="simple">
-<li><p>它们并未正式出现在当前版本中。</p></li>
-<li><p>它们可能会正式成为下一个版本的一部分：</p>
+<li><p>它们并未正式出现在当前版本中。</p>
 <ul>
-<li><p>这些函数使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
-<li><p>名字可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>签名可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>功能可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>Code has been reviewed therefore is not experimental.</p></li>
+<li><p>Name, signature and functionality might not change.</p></li>
 <li><p>pgTap 测试已经完成。 但可能需要更多。</p></li>
 <li><p>文档可能需要完善。</p></li>
 </ul>
 </li>
 </ul>
-</div>
 </div>
 </div>
 <ul class="simple">
@@ -509,8 +465,8 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -528,8 +484,8 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 7月 04, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      最后更新于 7月 28, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

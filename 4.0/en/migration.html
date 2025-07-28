@@ -8,13 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Migration guide &#8212; pgRouting Manual (4.0-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=798e95cd"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=a458cb6c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -242,132 +241,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Migration guide</a><ul>
-<li><a class="reference internal" href="#migration-to-standardized-columns">Migration to standardized columns</a><ul>
-<li><a class="reference internal" href="#migration-of-cost-functions">Migration of cost functions</a><ul>
-<li><a class="reference internal" href="#examples-for-one-to-one-for-cost-functions">Examples for One to One for cost functions</a></li>
-<li><a class="reference internal" href="#examples-for-one-to-many-for-cost-functions">Examples for One to Many for cost functions</a></li>
-<li><a class="reference internal" href="#examples-for-many-to-one-for-cost-functions">Examples for Many to One for cost functions</a></li>
-<li><a class="reference internal" href="#examples-for-many-to-many-for-cost-functions">Examples for Many to Many for cost functions</a></li>
-<li><a class="reference internal" href="#examples-for-combinations-for-cost-functions">Examples for Combinations for cost functions</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-multiple-paths-functions">Migration of multiple paths functions</a><ul>
-<li><a class="reference internal" href="#migration-of-ksp-result">Migration of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
-<li><a class="reference internal" href="#one-to-one-example-using-pgr-ksp">One to One example using <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-result-disjoint">Migration of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
-<li><a class="reference internal" href="#one-to-one-example-using-pgr-edgedisjointpaths">One to One example using <code class="docutils literal notranslate"><span class="pre">pgr_edgeDisjointPaths</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-single-path-functions">Migration of single path functions</a><ul>
-<li><a class="reference internal" href="#examples-with-one-to-one-with-one-route-result">Examples with One to One with one route result</a></li>
-<li><a class="reference internal" href="#examples-for-one-to-many-with-one-route-result">Examples for One to Many with one route result</a></li>
-<li><a class="reference internal" href="#examples-for-many-to-one-with-one-route-result">Examples for Many to One with one route result</a></li>
-<li><a class="reference internal" href="#examples-for-many-to-many-with-one-route-result">Examples for Many to Many with one route result</a></li>
-<li><a class="reference internal" href="#examples-for-combinations-with-one-route-result">Examples for combinations with one route result</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration of spanning tree functions</a><ul>
-<li><a class="reference internal" href="#migration-from-result-bfs">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code>.</a><ul>
-<li><a class="reference internal" href="#single-vertex-example-using-pgr-kruskaldd">Single vertex example using <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code></a></li>
-<li><a class="reference internal" href="#multiple-vertices-example-using-pgr-kruskaldfs">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-from-result-dij-dd">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
-<li><a class="reference internal" href="#single-vertex-example-using-pgr-drivingdistance">Single vertex example using <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></li>
-<li><a class="reference internal" href="#multiple-vertices-example-using-pgr-drivingdistance">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-result-generic-no-seq">Migration of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
-<li><a class="reference internal" href="#single-vertex-example-using-pgr-withpointsdd">Single vertex example using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></li>
-<li><a class="reference internal" href="#multiple-vertices-example-using-pgr-withpointsdd">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-output-column-name-change">Migration of output column name change</a><ul>
-<li><a class="reference internal" href="#migration-from-result-old-closure">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></a></li>
-<li><a class="reference internal" href="#migration-from-result-toposort">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">sorted_v)</span></code></a></li>
-<li><a class="reference internal" href="#migration-from-old-edge-color">Migration from <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></a></li>
-<li><a class="reference internal" href="#migration-from-old-node-color">Migration from <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-deleted-functions">Migration of deleted functions</a><ul>
-<li><a class="reference internal" href="#migration-of-pgr-alphashape">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-nodenetwork">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-createtopology">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
-<li><a class="reference internal" href="#build-a-routing-topology">Build a routing topology</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-pgr-createverticestable">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-analyzegraph">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-trsp-vertices">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices)</a><ul>
-<li><a class="reference internal" href="#use-pgr-dijkstra-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> when there are no restrictions.</a></li>
-<li><a class="reference internal" href="#use-pgr-trsp-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> when there are restrictions.</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-pgr-trsp-edges">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a></li>
-<li><a class="reference internal" href="#migration-of-pgr-trspviavertices">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><ul>
-<li><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> when there are no restrictions</a></li>
-<li><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> when there are restrictions</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-pgr-trspviaedges">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><ul>
-<li><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> when there are no restrictions</a></li>
-<li><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> when there are restrictions</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#not-yet-classified-migrations">Not yet classified migrations</a><ul>
-<li><a class="reference internal" href="#migration-of-pgr-withpointsksp">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><ul>
-<li><a class="reference internal" href="#pgr-withpointsksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to One</cite>)</a></li>
-<li><a class="reference internal" href="#use-pgr-withpoints-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> when there are no restrictions.</a></li>
-<li><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> when there are restrictions.</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-restrictions">Migration of restrictions</a><ul>
-<li><a class="reference internal" href="#old-restrictions-structure">Old restrictions structure</a><ul>
-<li><a class="reference internal" href="#old-restrictions-contents">Old restrictions contents</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#new-restrictions-structure">New restrictions structure</a><ul>
-<li><a class="reference internal" href="#migration">Migration</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="release_notes.html" title="Previous Chapter: Release Notes"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Release Notes</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('migration','en'));  </script>
             
   <div class="line-block">
@@ -3456,8 +3330,8 @@ array <code class="docutils literal notranslate"><span class="pre">_pgr_array_re
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Jul 04, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on Jul 28, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>
