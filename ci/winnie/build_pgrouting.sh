@@ -73,7 +73,7 @@ if [ $JENKINS_DEBUG -eq 1 ]
 then
     echo
     echo "***************************"
-    echo Recived variables used in this script
+    echo Received variables used in this script
     echo "**************************"
 
     echo "OS_BUILD ${OS_BUILD}"

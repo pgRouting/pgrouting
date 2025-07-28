@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(86);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(98) ELSE plan(3) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edges;
@@ -40,6 +40,12 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_breadthFirstSearch: testing only signatures standardaized in v4.0.0.');
+    RETURN;
+  END IF;
+
     -- breadthFirstSearch
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
@@ -62,11 +68,13 @@ BEGIN
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
     '5',
+    'true',
     '3'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
     '(SELECT id FROM vertices  WHERE id IN (-1))',
+    'NULL::BOOLEAN',
     'NULL::INTEGER'
     ]::TEXT[];
 
@@ -100,11 +108,13 @@ BEGIN
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
     'ARRAY[5,3]',
+    'true',
     '3'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
     '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
+    'NULL::BOOLEAN',
     'NULL::INTEGER'
     ]::TEXT[];
 

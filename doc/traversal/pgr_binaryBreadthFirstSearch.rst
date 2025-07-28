@@ -243,8 +243,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
+    :start-after: return_path_complete_start
+    :end-before: return_path_complete_end
 
 
 Additional Examples

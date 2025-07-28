@@ -14,11 +14,7 @@ Experimental Functions
 
 .. warning-begin
 
-.. collapse:: Experimental
-
-   .. warning:: Possible server crash
-
-     - These functions might create a server crash
+.. admonition:: Experimental
 
    .. warning:: Experimental functions
 
@@ -30,13 +26,9 @@ Experimental Functions
        - Signature might change.
        - Functionality might change.
        - pgTap tests might be missing.
-       - Might need c/c++ coding.
-       - May lack documentation.
+       - Might need c/c++ review.
        - Documentation if any might need to be rewritten.
-       - Documentation examples might need to be automatically generated.
        - Might need a lot of feedback from the community.
-       - Might depend on a proposed function of pgRouting
-       - Might depend on a deprecated function of pgRouting
 
 .. end-warning
 

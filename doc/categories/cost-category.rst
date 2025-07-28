@@ -22,7 +22,7 @@ Cost - Category
 * :doc:`pgr_bdAstarCost`
 * :doc:`pgr_dijkstraCost`
 * :doc:`pgr_bdDijkstraCost`
-* :doc:`pgr_dijkstraNearCost`
+* :doc:`pgr_withPointsCost`
 
 .. official-end
 
@@ -32,7 +32,7 @@ Cost - Category
 
 .. proposed-start
 
-* :doc:`pgr_withPointsCost`
+* :doc:`pgr_dijkstraNearCost`
 
 .. proposed-end
 

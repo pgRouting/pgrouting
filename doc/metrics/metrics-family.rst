@@ -22,11 +22,9 @@ Metrics - Family of functions
 
 .. official-end
 
-.. collapse:: Experimental
-
-  .. include:: experimental.rst
-     :start-after: warning-begin
-     :end-before: end-warning
+.. include:: experimental.rst
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. experimental-start
 

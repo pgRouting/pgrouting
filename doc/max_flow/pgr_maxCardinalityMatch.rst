@@ -19,35 +19,43 @@
 ``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a
 graph.
 
-.. Rubric:: Availability
+.. rubric:: Availability
 
-* Version 3.4.0
+.. rubric:: Version 4.0.0
 
-  * Use ``cost`` and ``reverse_cost`` on the inner query
-  * Results are ordered
-  * Works for undirected graphs.
-  * New signature
+.. Breaking change
 
-    * pgr_maxCardinalityMatch(text) returns only ``edge`` column.
+* Breaking change, signatures no longer available:
 
-  * Deprecated signature
+  * pgr_maxCardinalityMatch(text,boolean)
 
-    * pgr_maxCardinalityMatch(text,boolean)
+.. rubric:: Version 3.4.0
 
-      * directed => ``false`` when used.
+* Use ``cost`` and ``reverse_cost`` on the inner query
+* Results are ordered
+* Works for undirected graphs.
+* New signature
 
-* Version 3.0.0
+  * pgr_maxCardinalityMatch(text) returns only ``edge`` column.
 
-  * Function promoted to official.
+* Deprecated signature
 
-* Version 2.5.0
+  * pgr_maxCardinalityMatch(text,boolean)
 
-  * Renamed from ``pgr_maximumCardinalityMatching``
-  * Function promoted to proposed.
+    * directed => ``false`` when used.
 
-* Version 2.3.0
+.. rubric:: Version 3.0.0
 
-  * New experimental function.
+* Function promoted to official.
+
+.. rubric:: Version 2.5.0
+
+* Renamed from ``pgr_maximumCardinalityMatching``
+* Function promoted to proposed.
+
+.. rubric:: Version 2.3.0
+
+* New experimental function.
 
 
 Description

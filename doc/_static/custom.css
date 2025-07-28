@@ -36,6 +36,7 @@ div.note {
 div.warning {
     background-color: white;
     background-image: none;
+    border: 2px solid orange;
 }
 
 div.signatures {

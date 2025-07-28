@@ -23,7 +23,7 @@ SELECT plan(1300);
 
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-CREATE or REPLACE FUNCTION bellman_ford_compare_dijkstra(cant INTEGER default 17)
+CREATE or REPLACE FUNCTION bellman_ford_compare_dijkstra(lim INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -48,7 +48,7 @@ BEGIN
 
   END IF;
 
-  -- All These tests should work when pgr_bellmanFord 's output is standarized
+  -- All These tests should work when pgr_bellmanFord 's output is standardized
 
   RETURN QUERY SELECT compare_dijkstra_one_one('pgr_bellmanFord', true);
   RETURN QUERY SELECT compare_dijkstra_one_one('pgr_bellmanFord', false);

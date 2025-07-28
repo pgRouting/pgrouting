@@ -141,6 +141,7 @@ get_combinations(
  * @param[in] startsArr PostgreSQL array with the departures
  * @param[in] endsArr PostgreSQL array with the destinations
  * @param[in] normal the graph is reversed so reverse starts & ends
+ * @param[in] is_matrix set to @b true when data comes from costMatrix
  * @returns[out] map: for each departure a set of destinations
  *
  * When: combinations_sql comes from a combinations signature

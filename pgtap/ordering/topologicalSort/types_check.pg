@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(5);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(5) ELSE plan(4) END;
 
 CREATE OR REPLACE FUNCTION types_check()
 RETURNS SETOF TEXT AS
@@ -30,9 +30,15 @@ BEGIN
   RETURN QUERY SELECT has_function('pgr_topologicalsort', ARRAY['text']);
   RETURN QUERY SELECT function_returns('pgr_topologicalsort', ARRAY['text'],  'setof record');
 
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_topologicalsort: testing only signatures standardaized in v4.0.0.');
+    RETURN;
+  END IF;
+
   RETURN QUERY
   SELECT function_args_eq('pgr_topologicalsort',
-    $$SELECT  '{"","seq","sorted_v"}'::TEXT[] $$
+    $$SELECT  '{"",seq,node}'::TEXT[] $$
   );
 
   RETURN QUERY

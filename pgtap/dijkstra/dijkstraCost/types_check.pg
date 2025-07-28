@@ -20,74 +20,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-SET client_min_messages TO WARNING;
+SELECT CASE WHEN min_version('3.2.0') THEN plan(13) ELSE PLAN(11) END;
 
-SELECT plan(13);
-
-SELECT has_function('pgr_dijkstracost');
-
-
-SELECT has_function('pgr_dijkstracost', ARRAY['text','bigint','bigint','boolean']);
-SELECT has_function('pgr_dijkstracost', ARRAY['text','bigint','anyarray','boolean']);
-SELECT has_function('pgr_dijkstracost', ARRAY['text','anyarray','bigint','boolean']);
-SELECT has_function('pgr_dijkstracost', ARRAY['text','anyarray','anyarray','boolean']);
-
-SELECT function_returns('pgr_dijkstracost', ARRAY['text','bigint','bigint','boolean'],'setof record');
-SELECT function_returns('pgr_dijkstracost', ARRAY['text','bigint','anyarray','boolean'],'setof record');
-SELECT function_returns('pgr_dijkstracost', ARRAY['text','anyarray','bigint','boolean'],'setof record');
-SELECT function_returns('pgr_dijkstracost', ARRAY['text','anyarray','anyarray','boolean'],'setof record');
-
-SELECT CASE
-WHEN min_version('3.1.0') THEN
-  collect_tap(
-    has_function('pgr_dijkstracost', ARRAY['text','text','boolean']),
-    function_returns('pgr_dijkstracost', ARRAY['text','text','boolean'],'setof record')
-  )
-ELSE
-  skip(2, 'Combinations signature added on 3.1.0')
-END;
-
-
-SELECT CASE
-WHEN min_version('3.1.0') THEN
-  collect_tap(
-
-    function_args_eq('pgr_dijkstracost',
-      $$VALUES
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","directed","start_vid","end_vid","agg_cost"}'::TEXT[])
-      $$),
-    function_types_eq('pgr_dijkstracost',
-      $$VALUES
-      ('{text,text,bool,int8,int8,float8}'::TEXT[]),
-      ('{text,int8,int8,bool,int8,int8,float8}'::TEXT[]),
-      ('{text,int8,anyarray,bool,int8,int8,float8}'::TEXT[]),
-      ('{text,anyarray,int8,bool,int8,int8,float8}'::TEXT[]),
-      ('{text,anyarray,anyarray,bool,int8,int8,float8}'::TEXT[])
-      $$)
-  )
-ELSE
-  collect_tap(
-
-    function_args_eq('pgr_dijkstracost',
-      $$VALUES
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[])
-      $$),
-    function_types_eq('pgr_dijkstracost',
-      $$VALUES
-      ('{text,int8,int8,bool,int8,int8,float8}'::TEXT[]),
-      ('{text,int8,anyarray,bool,int8,int8,float8}'::TEXT[]),
-      ('{text,anyarray,int8,bool,int8,int8,float8}'::TEXT[]),
-      ('{text,anyarray,anyarray,bool,int8,int8,float8}'::TEXT[])
-      $$)
-  )
-END;
+SELECT cost_types_check('pgr_dijkstracost');
 
 SELECT finish();
 ROLLBACK;

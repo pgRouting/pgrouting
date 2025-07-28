@@ -104,8 +104,14 @@ Function Families
 :doc:`utilities-family`
 
 .. include:: utilities-family.rst
-   :start-after: utility_official-start
-   :end-before: utility_official-end
+   :start-after: official-start
+   :end-before: official-end
+
+:doc:`withPoints-family`
+
+.. include:: withPoints-family.rst
+   :start-after: official-start
+   :end-before: official-end
 
 Functions by categories
 ===============================================================================
@@ -153,6 +159,12 @@ Functions by categories
    :start-after: official-start
    :end-before: official-end
 
+:doc:`withPoints-category`
+
+.. include:: withPoints-category.rst
+   :start-after: official-start
+   :end-before: official-end
+
 .. to-here
 
 .. toctree::
@@ -173,6 +185,7 @@ Functions by categories
     TRSP-family
     TSP-family
     utilities-family
+    withPoints-family
 
 .. toctree::
     :hidden:

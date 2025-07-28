@@ -50,7 +50,7 @@ permissions:
 
 jobs:
   build:
-    name: Check queries
+    name: Build
     runs-on: ubuntu-latest
 
     strategy:
@@ -78,6 +78,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
+            doxygen graphviz \
             libboost-graph-dev \
             libtap-parser-sourcehandler-pgtap-perl \
             postgresql-${PGVER} \
@@ -91,7 +92,7 @@ jobs:
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Debug ..
+          cmake -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Debug -DBUILD_DOXY=ON ..
 
       - name: Build
         run: |
@@ -121,3 +122,11 @@ jobs:
           done
 
           ./tools/testers/doc_queries_generator.pl -pgver "${PGVER}"
+
+      - name: Check Developers Documentation
+        run: |
+          cd build
+          make doxy
+          more DOXYLOG
+          [ ! -s DOXYLOG ] || echo "There are Doxygen warnings"
+          [ ! -s DOXYLOG ] || exit 1

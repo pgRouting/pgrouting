@@ -23,7 +23,7 @@ BEGIN;
 SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(119) END;
 
 
-CREATE OR REPLACE FUNCTION flow_combinations_eq_test(TestFunction TEXT, sql_EdgesQuery TEXT, cant INTEGER default 18 )
+CREATE OR REPLACE FUNCTION flow_combinations_eq_test(TestFunction TEXT, sql_EdgesQuery TEXT, lim INTEGER default 18 )
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -32,7 +32,7 @@ sql_ManySource TEXT;
 sql_ManyTarget TEXT;
 sql_Many TEXT;
 BEGIN
-    FOR id IN 1.. (cant - 1) LOOP
+    FOR id IN 1.. (lim - 1) LOOP
         sql_Combinations := '';
         sql_ManySource := '';
         sql_ManyTarget := '';
@@ -44,7 +44,7 @@ BEGIN
             sql_ManySource := sql_ManySource || i ;
         END LOOP;
 
-        FOR i IN (id + 1).. cant LOOP
+        FOR i IN (id + 1).. lim LOOP
             IF (i > id + 1) THEN
                 sql_ManyTarget := sql_ManyTarget ||', ';
             END IF;
@@ -52,7 +52,7 @@ BEGIN
         END LOOP;
 
         FOR i IN 1.. id LOOP
-            FOR j IN (id + 1).. cant LOOP
+            FOR j IN (id + 1).. lim LOOP
                 sql_Combinations := sql_Combinations || '(' || i || ',' || j || '),' ;
             END LOOP;
         END LOOP;

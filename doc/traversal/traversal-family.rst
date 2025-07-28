@@ -18,11 +18,11 @@ Traversal - Family of functions
    :start-after: warning-begin
    :end-before: end-warning
 
-.. official-start
+.. proposed-start
 
 * :doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph.
 
-.. official-end
+.. proposed-end
 
 .. include:: experimental.rst
    :start-after: warning-begin

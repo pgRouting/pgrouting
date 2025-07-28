@@ -20,16 +20,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(18) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(18) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-IF NOT min_version('3.2.0') THEN
+IF NOT min_version('4.0.0') THEN
   RETURN QUERY
-  SELECT skip(1, 'Function is new on 3.2.0');
+  SELECT skip(1, 'pgr_sequentialVertexColoring: testing only signatures standardaized in v4.0.0.');
   RETURN;
 END IF;
 
@@ -81,8 +81,8 @@ RETURN QUERY
 SELECT set_eq('q5', $$VALUES (7, 3, 7, 1, 1)$$, 'q5: Graph with two connected vertices');
 
 PREPARE sequentialVertexColoring6 AS
-SELECT color_id, count(DISTINCT color_id)
-FROM pgr_sequentialVertexColoring('q5') GROUP BY color_id;
+SELECT color, count(DISTINCT color)
+FROM pgr_sequentialVertexColoring('q5') GROUP BY color;
 
 RETURN QUERY
 SELECT set_eq('sequentialVertexColoring6', $$VALUES (1,1), (2, 1)$$, '6: Both vertices have different color');
@@ -130,7 +130,7 @@ RETURN QUERY
 SELECT set_eq('q9', $$VALUES (1, 5, 6, 1, 1), (2, 6, 10, -1, 1)$$, 'q9: Graph with three vertices');
 
 PREPARE sequentialVertexColoring10 AS
-SELECT count(DISTINCT color_id) FROM pgr_sequentialVertexColoring('q9');
+SELECT count(DISTINCT color) FROM pgr_sequentialVertexColoring('q9');
 
 RETURN QUERY
 SELECT set_eq('sequentialVertexColoring10', $$VALUES (2)$$, '10: Two colors are required');
@@ -166,7 +166,7 @@ SELECT set_eq('q11',
 );
 
 PREPARE sequentialVertexColoring12 AS
-SELECT count(DISTINCT color_id)
+SELECT count(DISTINCT color)
 FROM pgr_sequentialVertexColoring('q11');
 
 RETURN QUERY
@@ -191,7 +191,7 @@ SELECT set_eq('q13',
 );
 
 PREPARE sequentialVertexColoring14 AS
-SELECT count(DISTINCT color_id) FROM pgr_sequentialVertexColoring('q13');
+SELECT count(DISTINCT color) FROM pgr_sequentialVertexColoring('q13');
 
 RETURN QUERY
 SELECT set_eq('sequentialVertexColoring14', $$VALUES (2)$$, '14: Two colors are required');
@@ -216,7 +216,7 @@ SELECT set_eq('q15',
   );
 
 PREPARE sequentialVertexColoring16 AS
-SELECT count(DISTINCT color_id) FROM pgr_sequentialVertexColoring('q15');
+SELECT count(DISTINCT color) FROM pgr_sequentialVertexColoring('q15');
 
 RETURN QUERY
 SELECT set_eq('sequentialVertexColoring16', $$VALUES (2)$$, '16: Two colors are required');

@@ -10,7 +10,7 @@ Spell checker
 sh tools/scripts/fix_typos.sh
 
 - creates a directory fix_typos:
-  - contains the code and dictonaries
+  - contains the code and dictionaries
 - checks the spelling of the:
   - src
   - doc
@@ -21,7 +21,7 @@ sh tools/scripts/fix_typos.sh
 Code linter
 ...........
 
-Requierements
+Requirements
 - python
 
 sh tools/scripts/code_checker.sh <directory>

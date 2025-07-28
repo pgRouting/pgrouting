@@ -20,20 +20,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.4.0') THEN plan(5) ELSE plan(1) END;
-SET client_min_messages TO ERROR;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(5) ELSE plan(1) END;
+
+PREPARE edges_sql AS
+SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id;
+
+PREPARE restrictions_sql AS
+SELECT path, cost FROM restrictions;
+
+PREPARE points_sql AS
+SELECT pid, edge_id, side, fraction FROM pointsOfInterest;
+
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
 $BODY$
-DECLARE
-  restriction TEXT;
-  unrelated_restriction TEXT;
-  empty_restriction TEXT;
 BEGIN
 
-  IF NOT min_version('3.4.0') THEN
-    RETURN QUERY SELECT skip(1, 'New function on 3.4');
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_trspVia_withPoints: New signatures on 4.0.0');
     RETURN;
   END IF;
 
@@ -42,35 +47,35 @@ BEGIN
   $$SELECT * FROM edges$$,
   $$SELECT 100::FLOAT AS cost, ARRAY[]::BIGINT[] AS path$$,
   $$SELECT * FROM pointsOfInterest$$,
-  ARRAY[6,10])$q$, $q$empty restriction path lives$q$);
+  ARRAY[6,10],'r')$q$, $q$empty restriction path lives$q$);
 
   RETURN QUERY SELECT isnt_empty($q$
   SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT * FROM edges$$,
   $$SELECT 100::FLOAT AS cost, ARRAY[]::BIGINT[] AS path$$,
   $$SELECT * FROM pointsOfInterest$$,
-  ARRAY[6,10])$q$, $q$empty restriction path gives non empty result$q$);
+  ARRAY[6,10],'r')$q$, $q$empty restriction path gives non empty result$q$);
 
   RETURN QUERY SELECT lives_ok($q$
   SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT * FROM edges$$,
   $$SELECT 100::FLOAT AS cost, NULL::BIGINT[] AS path$$,
   $$SELECT * FROM pointsOfInterest$$,
-  ARRAY[6,10])$q$, $q$null restriction path lives$q$);
+  ARRAY[6,10],'r')$q$, $q$null restriction path lives$q$);
 
   RETURN QUERY SELECT isnt_empty($q$
   SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT * FROM edges$$,
   $$SELECT 100::FLOAT AS cost, NULL::BIGINT[] AS path$$,
   $$SELECT * FROM pointsOfInterest$$,
-  ARRAY[6,10])$q$, $q$null restriction path gives non empty result$q$);
+  ARRAY[6,10],'r')$q$, $q$null restriction path gives non empty result$q$);
 
   RETURN QUERY SELECT throws_ok($q$
   SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT * FROM edges$$,
   $$SELECT 100::FLOAT AS cost, ARRAY[NULL]::BIGINT[] AS path$$,
   $$SELECT * FROM pointsOfInterest$$,
-  ARRAY[6,10])$q$,
+  ARRAY[6,10],'r')$q$,
   $$XX000$$,$$NULL value found in Array!$$,
 $q$array containing a null path throws$q$);
 
@@ -79,7 +84,5 @@ $BODY$
 LANGUAGE plpgsql;
 
 SELECT edge_cases();
-
-
 SELECT finish();
 ROLLBACK;

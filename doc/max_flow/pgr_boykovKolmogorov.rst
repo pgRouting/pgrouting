@@ -21,28 +21,28 @@ the flow from the sources to the targets using Boykov Kolmogorov algorithm.
 
 .. Rubric:: Availability
 
-* Version 4.0.0
+.. rubric:: Version 4.0.0
 
-  * Combinations signature promoted to official.
+* Combinations signature promoted to official.
 
-* Version 3.2.0
+.. rubric:: Version 3.2.0
 
-  * New proposed signature:
+* New proposed signature:
 
-    * pgr_boykovKolmogorov(Combinations)
+  * pgr_boykovKolmogorov(Combinations)
 
-* Version 3.0.0
+.. rubric:: Version 3.0.0
 
-  * Function promoted to official.
+* Function promoted to official.
 
-* Version 2.5.0
+.. rubric:: Version 2.5.0
 
-  * Renamed from ``pgr_maxFlowBoykovKolmogorov``
-  * Function promoted to proposed.
+* Renamed from ``pgr_maxFlowBoykovKolmogorov``
+* Function promoted to proposed.
 
-* Version 2.3.0
+.. rubric:: Version 2.3.0
 
-  * New experimental function.
+* New experimental function.
 
 
 Description

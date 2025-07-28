@@ -1,8 +1,12 @@
 /*PGR-GNU*****************************************************************
 File: _withPointsVia.sql
 
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
 Function's developer:
 Copyright (c) 2022 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -22,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---v3.4
-CREATE FUNCTION _pgr_withPointsVia(
+--v4.0
+CREATE FUNCTION _pgr_withPointsVia_v4(
   TEXT,     -- edges_sql
   TEXT,     -- points_sql
   ANYARRAY, -- via vids
@@ -45,7 +49,7 @@ CREATE FUNCTION _pgr_withPointsVia(
   OUT route_agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE c VOLATILE STRICT;
+LANGUAGE C VOLATILE STRICT;
 
-COMMENT ON FUNCTION _pgr_withPointsVia(TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
+COMMENT ON FUNCTION _pgr_withPointsVia_v4(TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgRouting internal function';

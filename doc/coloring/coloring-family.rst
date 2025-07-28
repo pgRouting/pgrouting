@@ -49,37 +49,37 @@ Coloring - Family of functions
 Result columns
 -------------------------------------------------------------------------------
 
-.. result columns start
+.. result-edge-color-start
 
-Returns set of ``(vertex_id, color_id)``
+Returns set of |result_edge_color|
 
 ===============  =========== ======================================
 Column           Type        Description
 ===============  =========== ======================================
-``vertex_id``    ``BIGINT``  Identifier of the vertex.
-``color_id``     ``BIGINT``  Identifier of the color of the vertex.
+``edge``         ``BIGINT``  Identifier of the edge.
+``color``        ``BIGINT``  Color of the edge.
 
                              - The minimum value of color is 1.
 
 ===============  =========== ======================================
 
-.. result columns end
+.. result-edge-color-end
 
-.. result columns start edgeColoring
+.. result-node-color-start
 
-Returns set of ``(edge_id, color_id)``
+Returns set of |result_node_color|
 
-===============  =========== =====================================
+============  =========== =====================================
 Column           Type        Description
-===============  =========== =====================================
-``edge_id``      ``BIGINT``  Identifier of the edge.
-``color_id``     ``BIGINT``  Identifier of the color of the edge.
+============  =========== =====================================
+``node``      ``BIGINT``  Identifier of the node.
+``color``     ``BIGINT``  Color of the node.
 
-                             - The minimum value of color is 1.
+                          - The minimum value of color is 1.
 
-===============  =========== =====================================
+============  =========== =====================================
 
-.. result columns end edgeColoring
+.. result-node-color-end
 
 See Also
 -------------------------------------------------------------------------------

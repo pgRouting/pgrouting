@@ -24,7 +24,7 @@ CREATE OR REPLACE FUNCTION compare_dijkstra_one_one(
   ret_c TEXT default '*',
   where_c TEXT default '',
   restricted BOOLEAN default false,
-  cant INTEGER default 17)
+  lim INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -41,8 +41,8 @@ BEGIN
   END IF;
 
 
-  FOR i IN 1.. cant LOOP
-    FOR j IN 1.. cant LOOP
+  FOR i IN 1.. lim LOOP
+    FOR j IN 1.. lim LOOP
 
       -- with reverse cost
       inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edges';
@@ -74,7 +74,7 @@ CREATE OR REPLACE FUNCTION compare_dijkstra_many_one(
   fn TEXT, directed BOOLEAN,
   ret_c TEXT default '*',
   where_c TEXT default '',
-  cant INTEGER default 17)
+  lim INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -84,7 +84,7 @@ DECLARE
   arr TEXT;
 BEGIN
 
-  FOR j IN 1.. cant LOOP
+  FOR j IN 1.. lim LOOP
     arr := 'ARRAY[1,2,3,4,5,6,7,8]';
 
     -- with reverse cost
@@ -108,7 +108,7 @@ CREATE OR REPLACE FUNCTION compare_dijkstra_one_many(
   fn TEXT, directed BOOLEAN,
   ret_c TEXT default '*',
   where_c TEXT default '',
-  cant INTEGER default 17)
+  lim INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -118,7 +118,7 @@ DECLARE
   arr TEXT;
 BEGIN
 
-  FOR j IN 1.. cant LOOP
+  FOR j IN 1.. lim LOOP
     arr := 'ARRAY[1,2,3,4,5,6,7,8]';
 
     -- with reverse cost

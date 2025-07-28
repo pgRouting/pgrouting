@@ -26,13 +26,17 @@ The graph can be directed or undirected.
 
 .. rubric:: Availability
 
-* Version 3.3.0
+.. rubric:: Version 4.0.0:
 
-  * Function promoted to proposed.
+* Standardizing output columns to |result-spantree|
 
-* Version 3.2.0
+.. rubric:: Version 3.3.0
 
-  * New experimental function.
+* Function promoted to proposed.
+
+.. rubric:: Version 3.2.0
+
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -70,7 +74,7 @@ Signatures
    | pgr_depthFirstSearch(`Edges SQL`_, **root vids**, [**options**])
    | **options:** ``[directed, max_depth]``
 
-   | Returns set of |result-bfs|
+   | Returns set of |result-spantree|
 
 .. index::
     single: depthFirstSearch - Proposed ; Single vertex - Proposed on v3.3
@@ -84,7 +88,7 @@ Single vertex
    | pgr_depthFirstSearch(`Edges SQL`_, **root vid**, [**options**])
    | **options:** ``[directed, max_depth]``
 
-   | Returns set of |result-bfs|
+   | Returns set of |result-spantree|
 
 :Example: From root vertex :math:`6` on a **directed** graph with edges in
           ascending order of ``id``
@@ -105,7 +109,7 @@ Multiple vertices
    | pgr_depthFirstSearch(`Edges SQL`_, **root vids**, [**options**])
    | **options:** ``[directed, max_depth]``
 
-   | Returns set of |result-bfs|
+   | Returns set of |result-spantree|
 
 :Example: From root vertices :math:`\{12, 6\}` on an **undirected** graph with
           **depth** :math:`<= 2` and edges in ascending order of ``id``

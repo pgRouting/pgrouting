@@ -1595,78 +1595,14 @@ Returns |short-generic-result|
 
 .. return_path_withPoints_end
 
-Multiple paths
+Result columns for multiple paths functions
 ...............................................................................
 
-Selective for multiple paths.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Used in functions that return many paths solutions per departure and destination.
 
-The columns depend on the function call.
-
-.. return_path_start
-
-Set of |result-disjoint|
-
-.. list-table::
-   :width: 81
-   :widths: 12 14 60
-   :header-rows: 1
-
-   * - Column
-     - Type
-     - Description
-   * - ``seq``
-     - ``INTEGER``
-     - Sequential value starting from **1**.
-   * - ``path_id``
-     - ``INTEGER``
-     - Path identifier.
-
-       * Has value **1** for the first of a path from ``start_vid`` to
-         ``end_vid``.
-   * - ``path_seq``
-     - ``INTEGER``
-     - Relative position in the path. Has value **1** for the beginning of a
-       path.
-   * - ``start_vid``
-     - ``BIGINT``
-     - Identifier of the starting vertex.
-       Returned when multiple starting vetrices are in the query.
-
-       * `Many to One`_
-       * `Many to Many`_
-       * `Combinations`_
-   * - ``end_vid``
-     - ``BIGINT``
-     - Identifier of the ending vertex.
-       Returned when multiple ending vertices are in the query.
-
-       * `One to Many`_
-       * `Many to Many`_
-       * `Combinations`_
-   * - ``node``
-     - ``BIGINT``
-     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-   * - ``edge``
-     - ``BIGINT``
-     - Identifier of the edge used to go from ``node`` to the next node in the
-       path sequence. **-1** for the last node of the path.
-   * - ``cost``
-     - ``FLOAT``
-     - Cost to traverse from ``node`` using ``edge`` to the next node in the
-       path sequence.
-   * - ``agg_cost``
-     - ``FLOAT``
-     - Aggregate cost from ``start_vid`` to ``node``.
-
-.. return_path_end
-
-Non selective for multiple paths
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Regardless of the call, al the columns are returned.
-
-* :doc:`pgr_trsp`
+* :doc:`pgr_KSP`
+* :doc:`pgr_withPointsKSP`
+* :doc:`pgr_edgeDisjointPaths`
 
 .. return_path_all_columns_start
 
@@ -1716,10 +1652,16 @@ Returns set of |generic-result|
 
 .. return_path_all_columns_end
 
+.. Note::
+   When ``start_vid`` or ``end_vid`` columns have negative values, the identifier is for
+   a Point.
+
+.. return_path_all_columns_withPoints_end
+
 Result columns for cost functions
 ...............................................................................
 
-.. rubric:: Used in the following
+Used by:
 
 * :doc:`cost-category`
 * :doc:`costMatrix-category`
@@ -1760,7 +1702,7 @@ Set of |matrix-result|
 Result columns for flow functions
 ...............................................................................
 
-.. rubric:: Edges SQL for the following
+Used by:
 
 * :doc:`flow-family`
 
@@ -1778,6 +1720,19 @@ Result columns for flow functions
 
 Result columns for spanning tree functions
 ...............................................................................
+
+Used in functions that return a tree solution per departure.
+
+* :doc:`pgr_breadthFirstSearch`
+* :doc:`pgr_depthFirstSearch`
+* :doc:`pgr_drivingDistance`
+* :doc:`pgr_kruskalBFS`
+* :doc:`pgr_kruskalDD`
+* :doc:`pgr_kruskalDFS`
+* :doc:`pgr_primBFS`
+* :doc:`pgr_primDD`
+* :doc:`pgr_primDFS`
+* :doc:`pgr_withPointsDD`
 
 .. spantree-result-columns-start
 
@@ -1830,7 +1785,7 @@ Returns set of |result-spantree|
 Result columns for simple spanning tree functions
 ...............................................................................
 
-.. rubric:: Edges SQL for the following
+Used by:
 
 * :doc:`pgr_prim`
 * :doc:`pgr_kruskal`
@@ -1905,58 +1860,8 @@ How to contribute
 Consult the `developer's documentation
 <https://docs.pgrouting.org/doxy/2.4/index.html>`__
 
-Others
+See also
 ----------------------------------------------------------------------
-
-.. return_path_short_start
-
-Returns set of |old-generic-result|
-
-.. list-table::
-   :width: 81
-   :widths: 12 14 60
-   :header-rows: 1
-
-   * - Column
-     - Type
-     - Description
-   * - ``seq``
-     - ``INTEGER``
-     - Sequential value starting from **1**.
-   * - ``path_seq``
-     - ``INTEGER``
-     - Relative position in the path. Has value **1** for the beginning of a
-       path.
-   * - ``start_vid``
-     - ``BIGINT``
-     - Identifier of the starting vertex.
-       Returned when multiple starting vetrices are in the query.
-
-       * `Many to One`_
-       * `Many to Many`_
-   * - ``end_vid``
-     - ``BIGINT``
-     - Identifier of the ending vertex.
-       Returned when multiple ending vertices are in the query.
-
-       * `One to Many`_
-       * `Many to Many`_
-   * - ``node``
-     - ``BIGINT``
-     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-   * - ``edge``
-     - ``BIGINT``
-     - Identifier of the edge used to go from ``node`` to the next node in the
-       path sequence. **-1** for the last node of the path.
-   * - ``cost``
-     - ``FLOAT``
-     - Cost to traverse from ``node`` using ``edge`` to the next node in the
-       path sequence.
-   * - ``agg_cost``
-     - ``FLOAT``
-     - Aggregate cost from ``start_vid`` to ``node``.
-
-.. return_path_short_end
 
 .. rubric:: Indices and tables
 

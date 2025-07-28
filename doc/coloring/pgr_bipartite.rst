@@ -25,9 +25,13 @@ the same set are adjacent.
 
 .. rubric:: Availability
 
-* Version 3.2.0
+.. rubric:: Version 4.0.0
 
-  * New experimental function.
+* Output columns standardized to |result_node_color|
+
+.. rubric:: Version 3.2.0
+
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -56,7 +60,7 @@ Signatures
 
    | pgr_bipartite(`Edges SQL`_)
 
-   | Returns set of |result-node-color|
+   | Returns set of |result_node_color|
    | OR EMPTY SET
 
 :Example: When the graph is bipartite
@@ -86,8 +90,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: coloring-family.rst
-    :start-after: result columns start
-    :end-before: result columns end
+    :start-after: result-node-color-start
+    :end-before: result-node-color-end
 
 Additional Example
 --------------------------------------------------------------------------------

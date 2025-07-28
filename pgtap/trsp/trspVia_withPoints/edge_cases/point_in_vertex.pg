@@ -20,7 +20,7 @@ BEGIN;
 
 SET extra_float_digits=-3;
 
-SELECT CASE WHEN min_version('3.4.0') THEN plan(38) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(38) ELSE plan(1) END;
 
 CREATE VIEW four_edges AS
 SELECT * FROM edges WHERE id IN (1,4,10,14);
@@ -29,8 +29,8 @@ CREATE OR REPLACE FUNCTION test_vertex_points() RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF NOT min_version('3.4.0') THEN
-    RETURN QUERY SELECT skip(1, 'Signature added on 3.4.0');
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'Not testing deprecated signatures on v < 4.0.0');
     RETURN;
   END IF;
 
@@ -40,7 +40,7 @@ SELECT agg_cost::TEXT FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
   ARRAY[$1, $2], true) WHERE node = $2 and edge < 0;
 
--- its a straigh line and one extreme are reachable
+-- its a straight line and one extreme are reachable
 RETURN QUERY SELECT results_eq($$dijkstra1(5,9)$$, ARRAY[4]::TEXT[]);
 RETURN QUERY SELECT results_eq($$dijkstra1(9,5)$$, ARRAY[4]::TEXT[]);
 
@@ -53,7 +53,7 @@ SELECT agg_cost::TEXT FROM pgr_trspVia_withPoints(
   $$ SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
   $$ SELECT path, cost FROM restrictions$$,
   $$ SELECT 1 AS edge_id, 0.5::float AS fraction$$,
-  ARRAY[-1, $1], true) WHERE node = $1 and edge < 0;
+  ARRAY[-1, $1], 'r', true) WHERE node = $1 and edge < 0;
 
 RETURN QUERY SELECT results_eq($$expectedCost1(6)$$, ARRAY[0.5]::TEXT[], 'Cost from midpoint on 1 (-1 default) to 6');
 RETURN QUERY SELECT results_eq($$expectedCost1(7)$$, ARRAY[1.5]::TEXT[] , 'Cost from midpoint on 1 to 7');
@@ -68,7 +68,7 @@ SELECT agg_cost::TEXT FROM pgr_trspVia_withPoints(
   $$ SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
   $$ SELECT path, cost FROM restrictions$$,
   $$ SELECT 2 AS pid, 1 AS edge_id, 0.5::float AS fraction$$,
-  ARRAY[-2, $1], true) WHERE node = $1 and edge < 0;
+  ARRAY[-2, $1], 'r', true) WHERE node = $1 and edge < 0;
 
 RETURN QUERY SELECT results_eq($$expectedCost2(6)$$, $$expectedCost1(6)$$, 'Cost from midpoint on 1 (-2 assigned) to 6');
 RETURN QUERY SELECT results_eq($$expectedCost2(7)$$, $$expectedCost1(7)$$, 'Cost from midpoint on 1 to 7');
@@ -84,22 +84,16 @@ SELECT agg_cost::TEXT FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
   $$ SELECT path, cost FROM restrictions$$,
   $$SELECT 10 AS edge_id, 0::float AS fraction UNION ALL SELECT 1, 0.5 $$,
-  ARRAY[$1, $2], true) WHERE node = $2 and edge < 0;
+  ARRAY[$1, $2], 'r', true) WHERE node = $2 and edge < 0;
 
 RETURN QUERY SELECT results_eq($$expectedCost3(-2,6)$$, $$expectedCost1(6)$$, '(UNION ALL) Cost from midpoint on 1 (-2 default) to 6');
 RETURN QUERY SELECT results_eq($$expectedCost3(-2,7)$$, $$expectedCost1(7)$$, 'Cost from midpoint on 1 to 7');
 RETURN QUERY SELECT results_eq($$expectedCost3(-2,8)$$, $$expectedCost1(8)$$, 'Cost from midpoint on 1 to 8');
 RETURN QUERY SELECT results_eq($$expectedCost3(-2,9)$$, $$expectedCost1(9)$$, 'Cost from midpoint on 1 to 9');
 
-RETURN QUERY SELECT CASE WHEN min_version('3.7.1')
-THEN
-  collect_tap(
-    set_eq($$expectedCost3(-1,9)$$, $$dijkstra1(7,9)$$, 'Cost from target on 10 (-1 default, aka 7) to 9'),
-    set_eq($$expectedCost3(-1,8)$$, $$dijkstra1(7,8)$$, 'Cost from target on 10 to 8'),
-    set_eq($$expectedCost3(-1,7)$$, ARRAY[0]::TEXT[], 'Cost from target on 10 to 7')
-  )
-ELSE skip('Fix implemented on 3.7.1',3)
-END;
+RETURN QUERY SELECT set_eq($$expectedCost3(-1,9)$$, $$dijkstra1(7,9)$$, 'Cost from target on 10 (-1 default, aka 7) to 9');
+RETURN QUERY SELECT set_eq($$expectedCost3(-1,8)$$, $$dijkstra1(7,8)$$, 'Cost from target on 10 to 8');
+RETURN QUERY SELECT set_eq($$expectedCost3(-1,7)$$, ARRAY[0]::TEXT[], 'Cost from target on 10 to 7');
 
 /* UNION data is sorted
   midpoint of edge 1 (-1 by default)
@@ -111,7 +105,7 @@ SELECT agg_cost::TEXT FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
   $$ SELECT path, cost FROM restrictions$$,
   $$SELECT 10 AS edge_id, 0::float AS fraction UNION SELECT 1, 0.5 $$,
-  ARRAY[$1, $2], true) WHERE node = $2 and edge < 0;
+  ARRAY[$1, $2], 'r', true) WHERE node = $2 and edge < 0;
 
 RETURN QUERY SELECT results_eq($$expectedCost3(-1,6)$$, $$expectedCost1(6)$$, '(UNION) Cost from midpoint on 1 (-2 default) to 6');
 RETURN QUERY SELECT results_eq($$expectedCost3(-1,7)$$, $$expectedCost1(7)$$, 'Cost from midpoint on 1 to 7');
@@ -138,22 +132,16 @@ SELECT agg_cost::TEXT FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
   $$ SELECT path, cost FROM restrictions$$,
   $$SELECT * FROM (VALUES (1,0.5), (10, 0)) AS t (edge_id, fraction)$$,
-  ARRAY[$1, $2], true) WHERE node = $2 and edge < 0;
+  ARRAY[$1, $2], 'r', true) WHERE node = $2 and edge < 0;
 
 RETURN QUERY SELECT results_eq($$expectedCost3(-1,6)$$, $$expectedCost1(6)$$, '(VALUES) Cost from midpoint on 1 (-1 default) to 6');
 RETURN QUERY SELECT results_eq($$expectedCost3(-1,7)$$, $$expectedCost1(7)$$, 'Cost from midpoint on 1 to 7');
 RETURN QUERY SELECT results_eq($$expectedCost3(-1,8)$$, $$expectedCost1(8)$$, 'Cost from midpoint on 1 to 8');
 RETURN QUERY SELECT results_eq($$expectedCost3(-1,9)$$, $$expectedCost1(9)$$, 'Cost from midpoint on 1 to 9');
 
-RETURN QUERY SELECT CASE WHEN min_version('3.7.1')
-THEN
-  collect_tap(
-    set_eq($$expectedCost3(-2,9)$$, $$dijkstra1(7,9)$$, 'Cost from target on 10 (-1 default, aka 7) to 9'),
-    set_eq($$expectedCost3(-2,8)$$, $$dijkstra1(7,8)$$, 'Cost from target on 10 to 8'),
-    set_eq($$expectedCost3(-2,7)$$, ARRAY[0]::TEXT[], 'Cost from target on 10 to 7')
-  )
-ELSE skip('Fix implemented on 3.7.1',3)
-END;
+RETURN QUERY SELECT set_eq($$expectedCost3(-2,9)$$, $$dijkstra1(7,9)$$, 'Cost from target on 10 (-1 default, aka 7) to 9');
+RETURN QUERY SELECT set_eq($$expectedCost3(-2,8)$$, $$dijkstra1(7,8)$$, 'Cost from target on 10 to 8');
+RETURN QUERY SELECT set_eq($$expectedCost3(-2,7)$$, ARRAY[0]::TEXT[], 'Cost from target on 10 to 7');
 
 /* Points
   midpoint of edge 1 (-2 assigned)
@@ -165,22 +153,16 @@ SELECT agg_cost::TEXT FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
   $$ SELECT path, cost FROM restrictions$$,
   $$SELECT 2 AS pid, 1 AS edge_id, 0.5::float AS fraction UNION SELECT 1, 10, 0 $$,
-  ARRAY[$1, $2], true) WHERE node = $2 and edge < 0;
+  ARRAY[$1, $2], 'r', true) WHERE node = $2 and edge < 0;
 
 RETURN QUERY SELECT results_eq($$expectedCost3(-2,6)$$, $$expectedCost1(6)$$, '(ASSIGNED) Cost from midpoint on 1 (-2 default) to 6');
 RETURN QUERY SELECT results_eq($$expectedCost3(-2,7)$$, $$expectedCost1(7)$$, 'Cost from midpoint on 1 to 7');
 RETURN QUERY SELECT results_eq($$expectedCost3(-2,8)$$, $$expectedCost1(8)$$, 'Cost from midpoint on 1 to 8');
 RETURN QUERY SELECT results_eq($$expectedCost3(-2,9)$$, $$expectedCost1(9)$$, 'Cost from midpoint on 1 to 9');
 
-RETURN QUERY SELECT CASE WHEN min_version('3.7.1')
-THEN
-  collect_tap(
-    set_eq($$expectedCost3(-1,9)$$, $$dijkstra1(7,9)$$, 'Cost from target on 10 (-1 default, aka 7) to 9'),
-    set_eq($$expectedCost3(-1,8)$$, $$dijkstra1(7,8)$$, 'Cost from target on 10 to 8'),
-    set_eq($$expectedCost3(-1,7)$$, ARRAY[0]::TEXT[], 'Cost from target on 10 to 7')
-  )
-ELSE skip('Fix implemented on 3.7.1',3)
-END;
+RETURN QUERY SELECT set_eq($$expectedCost3(-1,9)$$, $$dijkstra1(7,9)$$, 'Cost from target on 10 (-1 default, aka 7) to 9');
+RETURN QUERY SELECT set_eq($$expectedCost3(-1,8)$$, $$dijkstra1(7,8)$$, 'Cost from target on 10 to 8');
+RETURN QUERY SELECT set_eq($$expectedCost3(-1,7)$$, ARRAY[0]::TEXT[], 'Cost from target on 10 to 7');
 
 END
 $BODY$

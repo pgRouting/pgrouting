@@ -60,14 +60,11 @@ namespace detail {
 
 /*!
     @brief builds shortcuts inside the graph to contract it
-    @param [in] G graph
+    @param [in] graph the graph being contracted
     @param [in] u vertex_descriptor
     @param [in] v vertex_descriptor
     @param [in] out_vertices out vertices from v
     @param [out] shortcuts list of built shortcuts
-    @param [out] n_shortcuts number of built shortcuts
-    @param [out] simulation true if the graph is not modified by the process,
-    false otherwise
     @param [in] log log output
     @param [in] err err output
 */
@@ -150,12 +147,15 @@ void compute_shortcuts(
     }
 }
 
-/*!
-    @brief contracts vertex *v*
-    @param [in] G graph
-    @param [in] v vertex_descriptor
-    @param [in] log log output
-    @param [in] err err output
+/** @brief contracts vertex *v*
+
+    @param[in] graph
+    @param[in] directed set to @b true when the graph is directed
+    @param[in] v vertex_descriptor
+    @param[in] simulation set to true when graph is not modified
+    @param[in,out] shortcuts edge shurtcuts
+    @param[out] log log output
+    @param[out] err err output
     @return contraction metric: the node-contraction associated metrics
 */
 template <class G>
@@ -306,15 +306,17 @@ void contractionHierarchies(
 
 namespace functions {
 
-/*! @brief execute the contraction hierarchies, after having forbidden the needed vertices
-    @param [in/out] graph in: original graph out: contracted graph
-    @param [in] forbidden_vertices vector of forbidden vertices
-    @param [in/out] log string stream containing log information
-    @param [in/out] err string stream containing err information
+/** @brief execute the contraction hierarchies, after having forbidden the needed vertices
+
+    @param[in,out] graph in original graph out contracted graph
+    @param[in]     directed when true then the graph is directed
+    @param[in]     forbidden_vertices vector of forbidden vertices
+    @param[in,out] log string stream containing log information
+    @param[in,out] err string stream containing err information
  */
 template <class G>
 void contractionHierarchies(
-        G &graph,
+        G& graph,
         bool directed,
         const std::vector<int64_t> &forbidden_vertices,
         std::ostringstream &log,

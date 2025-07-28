@@ -17,23 +17,12 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
+
 BEGIN;
 
-SELECT plan(5);
+SELECT PLAN(5) END;
 
-SELECT has_function('pgr_dijkstracostmatrix');
-SELECT has_function('pgr_dijkstracostmatrix', ARRAY['text','anyarray','boolean']);
-SELECT function_returns('pgr_dijkstracostmatrix', ARRAY['text','anyarray','boolean'],'setof record');
-
-SELECT function_args_eq('pgr_dijkstracostmatrix',
-  $$VALUES
-  ('{"","","directed","start_vid","end_vid","agg_cost"}'::TEXT[])
-  $$);
-
-SELECT function_types_eq('pgr_dijkstracostmatrix',
-  $$VALUES
-  ('{text,anyarray,bool,int8,int8,float8}'::TEXT[])
-  $$);
+SELECT cost_types_check('pgr_dijkstracostmatrix');
 
 SELECT finish();
 ROLLBACK;

@@ -54,7 +54,6 @@ extensions = [
         'sphinx.ext.mathjax',
         'sphinx.ext.graphviz',
         'sphinx.ext.autosectionlabel',
-        'sphinx_collapse',
         ]
 autosectionlabel_prefix_document = True
 
@@ -354,45 +353,32 @@ rst_epilog="""
 .. |ksp-result| replace:: ``(seq, path_id, path_seq, node, edge, cost, agg_cost)``
 .. |tsp-result| replace:: ``(seq, node, cost, agg_cost)``
 .. |nksp-result| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
-.. |old-generic-result| replace:: ``(seq, path_seq, [start_vid], [end_vid], node, edge, cost, agg_cost)``
-.. |result-1-1| replace:: ``(seq, path_seq, node, edge, cost, agg_cost)``
-.. |result-1-m| replace:: ``(seq, path_seq, end_vid, node, edge, cost, agg_cost)``
-.. |result-m-1| replace:: ``(seq, path_seq, start_vid, node, edge, cost, agg_cost)``
-.. |result-bfs| replace:: ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
 .. |result-spantree| replace:: ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
 .. |result-mst| replace:: ``(edge, cost)``
 .. |result-generic-no-seq| replace:: ``(seq, [start_vid], node, edge, cost, agg_cost)``
 .. |result-1-1-no-seq| replace:: ``(seq, node, edge, cost, agg_cost)``
 .. |result-m-1-no-seq| replace:: ``(seq, start_vid, node, edge, cost, agg_cost)``
-.. |result-node-color| replace:: ``(vertex_id, color_id)``
-.. |result-edge-color| replace:: ``(edge_id, color_id)``
+.. |result_node_color| replace:: ``(node, color)``
+.. |result_edge_color| replace:: ``(edge, color)``
 .. |result-node| replace:: ``(node)``
 .. |result-edge| replace:: ``(edge)``
 .. |result-separate| replace:: ``(seq,id,sub_id,geom)``
-.. |result-node-order| replace:: ``(seq, node)``
+.. |result_node_order| replace:: ``(seq, node)``
 .. |result-degree| replace:: ``(node, degree)``
 .. |result-extract| replace:: ``(id, in_edges, out_edges, x, y, geom)``
 .. |result-find| replace:: ``(edge_id, fraction, side, distance, geom, edge)``
 .. |result-version| replace:: ``(version, build_type, compile_date, library, system, PostgreSQL, compiler, boost, hash)``
-.. |result-toposort| replace:: ``(seq, sorted_v)``
-.. |result-closure| replace:: ``(seq, vid, target_array)``
+.. |result-closure| replace:: ``(node,targets)``
 .. |result-component-E| replace:: ``(seq, component, edge)``
 .. |result-component-V| replace:: ``(seq, component, node)``
 .. |result-component-make| replace:: ``(seq, start_vid, end_vid)``
 .. |result-contract| replace:: ``(type, id, contracted_vertices, source, target, cost)``
 .. |result-contraction-hierarchies| replace:: ``(type, id, contracted_vertices, source, target, cost, metric, vertex_order)``
 .. |result-idom| replace:: ``(seq, vertex_id, idom)``
-.. |result-dij-dd| replace:: ``(seq, [from_v,] node, edge, cost, agg_cost)``
-.. |result-dij-dd-m| replace:: ``(seq, from_v, node, edge, cost, agg_cost)``
 .. |result-linegf| replace:: ``(seq, source, target, cost, edge)``
 .. |result-lineg| replace:: ``(seq, source, target, cost, reverse_cost)``
 .. |result-flow| replace:: ``(seq, edge, start_vid, end_vid, flow, residual_capacity)``
 .. |result-flow-mincost| replace:: ``(seq, edge, source, target, flow, residual_capacity, cost, agg_cost)``
-.. |result-disjoint| replace:: ``(seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)``
-.. |result-disjoint-1-1| replace:: ``(seq, path_id, path_seq, node, edge, cost, agg_cost)``
-.. |result-disjoint-1-m| replace:: ``(seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)``
-.. |result-disjoint-m-1| replace:: ``(seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)``
-.. |result-disjoint-m-m| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 .. |result-mincut| replace:: ``(seq, edge, cost, mincut)``
 .. |result-pickdrop| replace:: ``(seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo, travel_time, arrival_time, wait_time, service_time, departure_time)``
 .. |boost| image:: images/boost-inside.jpeg

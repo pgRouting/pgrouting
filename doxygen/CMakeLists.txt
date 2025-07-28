@@ -1,22 +1,19 @@
-#
-# Based on:
-# https://majewsky.wordpress.com/2010/08/14/tip-of-the-day-cmake-and-doxygen/
-#
+# Main changes
+# developers is build by default unless other wise stated
 
-option(BUILD_DOXY
-    "Set ON|OFF (default=OFF) to build Developers Documentation" ON)
+option(BUILD_DOXY "Set ON|OFF (default=ON) to build Developers Documentation" ON)
 
-if (BUILD_DOXY AND WITH_DOC)
-    message(STATUS "Developers documentation.")
+if (BUILD_DOXY)
     find_package(Doxygen ${DOXYGEN_MINIMUM_VERSION})
 
-    if(DOXYGEN_FOUND)
+    if(Doxygen_FOUND)
+        message(STATUS "DOXYGEN_VERSION=${DOXYGEN_VERSION}")
         configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
-        add_custom_target(doxy
-            ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+        doxygen_add_docs(doxy ALL USE_STAMP_FILE
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-            COMMENT "Generating API documentation with Doxygen" VERBATIM
-            )
+            COMMENT "Generating API documentation with Doxygen"
+            CONFIG_FILE ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+        )
     endif()
 
 endif()

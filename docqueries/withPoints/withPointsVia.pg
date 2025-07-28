@@ -3,48 +3,48 @@
 SET extra_float_digits=-3;
 /* -- q0 */
 SELECT * FROM pgr_withPointsVia(
-  'SELECT id, source, target, cost, reverse_cost FROM edges order by id',
-  'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[-6, 15, -1]);
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
+  ARRAY[-6, 15, -5], 'R');
 /* -- q1 */
 SELECT * FROM pgr_withPointsVia(
-  'SELECT id, source, target, cost, reverse_cost FROM edges order by id',
-  'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[-1, 7, -3, 16, 15]);
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
+  ARRAY[-6, 7, -4, 8, -2], 'L', directed => true);
 /* -- q2 */
 SELECT agg_cost FROM  pgr_withPointsVia(
-  'SELECT id, source, target, cost, reverse_cost FROM edges order by id',
-  'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[-1, 7, -3, 16, 15])
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
+  ARRAY[-6, 7, -4, 8, -2], 'B', false)
 WHERE path_id = 3 AND edge < 0;
 /* -- q3 */
 SELECT route_agg_cost FROM  pgr_withPointsVia(
-  'SELECT id, source, target, cost, reverse_cost FROM edges order by id',
-  'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[-1, 7, -3, 16, 15])
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
+  ARRAY[-6, 7, -4, 8, -2], 'r')
 WHERE path_id = 3 AND edge < 0;
 /* -- q4 */
 SELECT row_number() over () as node_seq, node
 FROM  pgr_withPointsVia(
-  'SELECT id, source, target, cost, reverse_cost FROM edges order by id',
-  'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[-1, 7, -3, 16, 15])
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
+  ARRAY[-6, 7, -4, 8, -2], 'r')
 WHERE edge <> -1 ORDER BY seq;
 /* -- q5 */
 SELECT path_id, route_agg_cost FROM  pgr_withPointsVia(
-  'SELECT id, source, target, cost, reverse_cost FROM edges order by id',
-  'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[-1, 7, -3, 16, 15])
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
+  ARRAY[-6, 7, -4, 8, -2], 'r')
 WHERE edge < 0;
 /* -- q6 */
 SELECT seq, node,
-CASE WHEN edge = -1 THEN 'visits'
-ELSE 'passes in front'
+CASE WHEN edge = -1 THEN $$visits$$
+ELSE $$passes in front$$
 END as status
 FROM  pgr_withPointsVia(
-  'SELECT id, source, target, cost, reverse_cost FROM edges order by id',
-  'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[-1, 7, -3, 16, 15], details => true)
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
+  ARRAY[-6, 7, -4, 8, -2], 'r', details => true)
 WHERE agg_cost <> 0 or seq = 1;
 /* -- q7 */
 SELECT * FROM pgr_withPointsVia(
@@ -55,5 +55,5 @@ SELECT * FROM pgr_withPointsVia(
         (SELECT ST_POINT(2.9, 1.8)),
         0.5, cap => 2)
   $p$,
-  ARRAY[1, -1, -2], details => true);
+  ARRAY[1, -1, -2], 'r', details => true);
 /* -- q8 */

@@ -25,7 +25,7 @@ This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
-
+ArrayType
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -37,26 +37,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <postgres.h>
-#include <utils/array.h>
-
-#ifdef __cplusplus
-}
-#endif
-
-#include "cpp_common/undefPostgresDefine.hpp"
-
-#ifdef __cplusplus
-#   include <cstddef>
-#   include <cstdint>
+#include <cstddef>
+#include <cstdint>
 using Path_rt = struct Path_rt;
+using ArrayType = struct ArrayType;
 #else
-#   include <stddef.h>
-#   include <stdint.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
 typedef struct Path_rt Path_rt;
+typedef struct ArrayType ArrayType;
 #endif
 
 #ifdef __cplusplus

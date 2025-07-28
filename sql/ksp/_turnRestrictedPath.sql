@@ -1,13 +1,11 @@
 /*PGR-GNU*****************************************************************
 File: _turnRestrictedPath.sql
 
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2017 Vidhan Jain
-Mail: vidhanj1307@gmail.com
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+vicky at erosion.dev
 
 ------
 
@@ -27,33 +25,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---v3.0
-CREATE FUNCTION _pgr_turnRestrictedPath(
-    TEXT,   -- edges_sql
-    TEXT,   -- restrictions_sql
-    BIGINT, -- start_vertex
-    BIGINT, -- end_vertex
-    INTEGER,-- K cycles
+--v4.0
+CREATE FUNCTION _pgr_turnRestrictedPath_v4(
+  TEXT,   -- edges_sql
+  TEXT,   -- restrictions_sql
+  ANYARRAY, -- start_vertex
+  ANYARRAY, -- end_vertex
+  INTEGER,  -- K cycles
 
-    directed BOOLEAN,
-    heap_paths BOOLEAN,
-    stop_on_first BOOLEAN,
-    strict BOOLEAN,
+  BOOLEAN,  -- directed
+  BOOLEAN,  -- heap_paths
+  BOOLEAN,
+  BOOLEAN,
 
-    OUT seq INTEGER,
-    OUT path_id INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-
+  OUT seq INTEGER,
+  OUT path_id INTEGER,
+  OUT path_seq INTEGER,
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT node BIGINT,
+  OUT edge BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE c IMMUTABLE STRICT;
+LANGUAGE C VOLATILE STRICT;
 
-
--- COMMENTS
-
-COMMENT ON FUNCTION _pgr_turnRestrictedPath(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_turnRestrictedPath_v4(TEXT, TEXT, ANYARRAY, ANYARRAY, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';

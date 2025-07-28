@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 16:56+0000\n"
+"POT-Creation-Date: 2025-06-29 18:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2494,31 +2494,25 @@ msgstr ""
 msgid ":doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem."
 msgstr ""
 
-msgid "Returns set of ``(vertex_id, color_id)``"
+msgid "Returns set of |result_edge_color|"
 msgstr ""
 
-msgid "``vertex_id``"
+msgid "``color``"
 msgstr ""
 
-msgid "Identifier of the vertex."
-msgstr ""
-
-msgid "``color_id``"
-msgstr ""
-
-msgid "Identifier of the color of the vertex."
+msgid "Color of the edge."
 msgstr ""
 
 msgid "The minimum value of color is 1."
 msgstr ""
 
-msgid "Returns set of ``(edge_id, color_id)``"
+msgid "Returns set of |result_node_color|"
 msgstr ""
 
-msgid "``edge_id``"
+msgid "Identifier of the node."
 msgstr ""
 
-msgid "Identifier of the color of the edge."
+msgid "Color of the node."
 msgstr ""
 
 msgid "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
@@ -2605,10 +2599,10 @@ msgstr ""
 msgid ":doc:`pgr_bdDijkstraCost`"
 msgstr ""
 
-msgid ":doc:`pgr_dijkstraNearCost`"
+msgid ":doc:`pgr_withPointsCost`"
 msgstr ""
 
-msgid ":doc:`pgr_withPointsCost`"
+msgid ":doc:`pgr_dijkstraNearCost`"
 msgstr ""
 
 msgid "Each function works as part of the family it belongs to."
@@ -2755,13 +2749,16 @@ msgstr ""
 msgid "If column is not present, a sequential negative **value** will be given automatically."
 msgstr ""
 
+msgid "``edge_id``"
+msgstr ""
+
 msgid "Identifier of the \"closest\" edge to the point."
 msgstr ""
 
 msgid "``fraction``"
 msgstr ""
 
-msgid "Value in <0,1> that indicates the relative postition from the first end point of the edge."
+msgid "Value in <0,1> that indicates the relative position from the first end point of the edge."
 msgstr ""
 
 msgid "``side``"
@@ -3463,6 +3460,27 @@ msgstr ""
 msgid ":doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each other."
 msgstr ""
 
+msgid ":doc:`withPoints-family`"
+msgstr ""
+
+msgid ":doc:`pgr_withPoints` - Route from/to points anywhere on the graph."
+msgstr ""
+
+msgid ":doc:`pgr_withPointsCost` - Costs of the shortest paths."
+msgstr ""
+
+msgid ":doc:`pgr_withPointsCostMatrix` - Costs of the shortest paths."
+msgstr ""
+
+msgid ":doc:`pgr_withPointsKSP` - K shortest paths."
+msgstr ""
+
+msgid ":doc:`pgr_withPointsDD` - Driving distance."
+msgstr ""
+
+msgid ":doc:`pgr_withPointsVia` - Via routing"
+msgstr ""
+
 msgid "Functions by categories"
 msgstr ""
 
@@ -3487,6 +3505,15 @@ msgstr ""
 msgid ":doc:`DFS-category`"
 msgstr ""
 
+msgid ":doc:`withPoints-category`"
+msgstr ""
+
+msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
+msgstr ""
+
+msgid "From the :doc:`TRSP-family`:"
+msgstr ""
+
 msgid "Available Functions but not official pgRouting functions"
 msgstr ""
 
@@ -3505,103 +3532,322 @@ msgstr ""
 msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 msgstr ""
 
-msgid "Functions promoted to official"
+msgid "Summary of changes by function"
 msgstr ""
 
-msgid "pgr_trsp"
+msgid "pgr_aStar"
 msgstr ""
 
-msgid "pgr_trspVia"
+msgid "Combinations signature promoted to official."
 msgstr ""
 
-msgid "pgr_trspVia_withPoints"
+msgid "pgr_aStarCost"
 msgstr ""
 
-msgid "pgr_trsp_withPoints"
+msgid "pgr_bdAstar"
 msgstr ""
 
-msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPoints"
+msgid "pgr_bdAstarCost"
+msgstr ""
+
+msgid "pgr_bdDijkstra"
 msgstr ""
 
 msgid "Output columns standardized to |short-generic-result|"
 msgstr ""
 
+msgid "pgr_bdDijkstraCost"
+msgstr ""
+
+msgid "pgr_bellmanFord"
+msgstr ""
+
+msgid "pgr_binaryBreadthFirstSearch"
+msgstr ""
+
+msgid "pgr_bipartite"
+msgstr ""
+
+msgid "Output columns standardized to |result_node_color|"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov"
+msgstr ""
+
+msgid "pgr_breadthFirstSearch"
+msgstr ""
+
+msgid ":"
+msgstr ""
+
+msgid "Standardizing output columns to |result-spantree|"
+msgstr ""
+
+msgid "pgr_contraction"
+msgstr ""
+
+msgid "Breaking change, signatures no longer available:"
+msgstr ""
+
+msgid "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+msgstr ""
+
+msgid "pgr_dagShortestPath"
+msgstr ""
+
+msgid "pgr_depthFirstSearch"
+msgstr ""
+
+msgid "pgr_dijkstra"
+msgstr ""
+
+msgid "pgr_dijkstraCost"
+msgstr ""
+
+msgid "pgr_edgeColoring"
+msgstr ""
+
+msgid "Output columns standardized to |result_edge_color|"
+msgstr ""
+
+msgid "pgr_edgeDisjointPaths"
+msgstr ""
+
+msgid "Output columns standardized to |generic-result|"
+msgstr ""
+
+msgid "pgr_edmondsKarp"
+msgstr ""
+
+msgid "pgr_edwardMoore"
+msgstr ""
+
+msgid "pgr_KSP"
+msgstr ""
+
+msgid "All signatures promoted to official."
+msgstr ""
+
+msgid "pgr_maxFlow"
+msgstr ""
+
+msgid "pgr_pushRelabel"
+msgstr ""
+
+msgid "pgr_sequentialVertexColoring"
+msgstr ""
+
+msgid "pgr_topologicalSort"
+msgstr ""
+
+msgid "Standardize output to |result_node_order|"
+msgstr ""
+
+msgid "pgr_transitiveClosure"
+msgstr ""
+
+msgid "Standardized output to |result-closure|"
+msgstr ""
+
+msgid "pgr_trsp"
+msgstr ""
+
 msgid "Function promoted to official."
 msgstr ""
 
-msgid "Signature change: ``driving_side`` parameter changed from named optional to unnamed positional."
+msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
 msgstr ""
 
-msgid "Directed graph valid values: ``l`` or ``L`` and ``r``, ``R``"
+msgid "pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)"
 msgstr ""
 
-msgid "Undirected graph valid values: ``b`` or ``B``"
+msgid "pgr_trspVia"
 msgstr ""
 
-msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCost"
+msgid "pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
+msgstr ""
+
+msgid "pgr_trspVia_withPoints"
+msgstr ""
+
+msgid "**Driving side** parameter is positional unnamed and compulsory."
+msgstr ""
+
+msgid "Valid values depend on kind of graph"
+msgstr ""
+
+msgid "pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
+msgstr ""
+
+msgid "pgr_trsp_withPoints"
+msgstr ""
+
+msgid "pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_turnRestrictedPath"
+msgstr ""
+
+msgid "Output columns standardized to |nksp-result|"
+msgstr ""
+
+msgid "pgr_withPoints"
+msgstr ""
+
+msgid "pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_withpoints(text,text,text,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_withPointsCost"
+msgstr ""
+
+msgid "**Driving side** parameter is unnamed and compulsory."
 msgstr ""
 
 msgid "Output columns standardized to |matrix-result|"
 msgstr ""
 
-msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCostMatrix"
+msgid "pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)"
+msgstr ""
+
+msgid "pgr_withpointscost(text,text,anyarray,bigint,boolean,character)"
+msgstr ""
+
+msgid "pgr_withpointscost(text,text,bigint,anyarray,boolean,character)"
+msgstr ""
+
+msgid "pgr_withpointscost(text,text,bigint,bigint,boolean,character)"
+msgstr ""
+
+msgid "pgr_withpointscost(text,text,text,boolean,character)"
+msgstr ""
+
+msgid "pgr_withPointsCostMatrix"
+msgstr ""
+
+msgid "pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
 msgstr ""
 
 msgid "pgr_withPointsDD"
 msgstr ""
 
+msgid "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
+msgstr ""
+
 msgid "pgr_withPointsKSP"
+msgstr ""
+
+msgid "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
 msgstr ""
 
 msgid "pgr_withPointsVia"
 msgstr ""
 
+msgid "pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+msgstr ""
+
+msgid "Functions promoted to official"
+msgstr ""
+
+msgid "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trsp"
+msgstr ""
+
+msgid "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trspVia"
+msgstr ""
+
+msgid "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trspVia_withPoints"
+msgstr ""
+
+msgid "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trsp_withPoints"
+msgstr ""
+
+msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPoints"
+msgstr ""
+
+msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsCost"
+msgstr ""
+
+msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsCostMatrix"
+msgstr ""
+
+msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsDD"
+msgstr ""
+
+msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsKSP"
+msgstr ""
+
+msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsVia"
+msgstr ""
+
 msgid "Signatures promoted to official"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__"
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_aStar(Combinations)"
 msgstr ""
 
-msgid "Make official the Combinations signature on the official functions"
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_aStarCost(Combinations)"
 msgstr ""
 
-msgid "pgr_aStar(Combinations)"
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_bdAstar(Combinations)"
 msgstr ""
 
-msgid "pgr_aStarCost(Combinations)"
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_bdAstarCost(Combinations)"
 msgstr ""
 
-msgid "pgr_bdAstar(Combinations)"
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_bdDijkstra(Combinations)"
 msgstr ""
 
-msgid "pgr_bdAstarCost(Combinations)"
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_bdDijkstraCost(Combinations)"
 msgstr ""
 
-msgid "pgr_bdDijkstra(Combinations)"
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_dijkstra(Combinations)"
 msgstr ""
 
-msgid "pgr_bdDijkstraCost(Combinations)"
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_dijkstraCost(Combinations)"
 msgstr ""
 
-msgid "pgr_dijkstra(Combinations)"
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_KSP(All signatures)"
 msgstr ""
 
-msgid "pgr_dijkstraCost(Combinations)"
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_boykovKolmogorov(Combinations)"
 msgstr ""
 
-msgid "pgr_KSP(All signatures)"
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_edmondsKarp(Combinations)"
 msgstr ""
 
-msgid "pgr_boykovKolmogorov(Combinations)"
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_maxFlow(Combinations)"
 msgstr ""
 
-msgid "pgr_edmondsKarp(Combinations)"
-msgstr ""
-
-msgid "pgr_maxFlow(Combinations)"
-msgstr ""
-
-msgid "pgr_pushRelabel(Combinations)"
+msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_pushRelabel(Combinations)"
 msgstr ""
 
 msgid "SQL signatures and output standardization"
@@ -3610,19 +3856,13 @@ msgstr ""
 msgid "`#2904 <https://github.com/pgRouting/pgrouting/issues/2904>`__ Standardize output columns of functions with different output columns within overloads"
 msgstr ""
 
-msgid "Official functions"
+msgid "Standardized to |short-generic-result|"
 msgstr ""
 
-msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__"
-msgstr ""
-
-msgid "pgr_withPoints"
+msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPoints"
 msgstr ""
 
 msgid "`#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__ pgr_bdDijkstra"
-msgstr ""
-
-msgid "Combinations signature promoted to official."
 msgstr ""
 
 msgid "`#2907 <https://github.com/pgRouting/pgrouting/issues/2907>`__ pgr_bellmanFord"
@@ -3637,22 +3877,73 @@ msgstr ""
 msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ pgr_DAGshortestPath"
 msgstr ""
 
+msgid "Standardized to |matrix-result|"
+msgstr ""
+
+msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCost"
+msgstr ""
+
+msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCostMatrix"
+msgstr ""
+
+msgid "Standardized to |generic-result|"
+msgstr ""
+
+msgid "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ pgr_edgeDisjointPaths"
+msgstr ""
+
+msgid "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ pgr_turnRestrictedPaths"
+msgstr ""
+
+msgid "Standardized to |result_edge_color|"
+msgstr ""
+
+msgid "`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__ pgr_edgeColoring"
+msgstr ""
+
+msgid "Standardized to |result_node_color|"
+msgstr ""
+
+msgid "`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__ pgr_bipartite"
+msgstr ""
+
+msgid "`#2927 <https://github.com/pgRouting/pgrouting/issues/2927>`__ pgr_sequentialVertexColoring"
+msgstr ""
+
+msgid "Standardized to |result-spantree|"
+msgstr ""
+
+msgid "`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__ pgr_breadthFirstSearch"
+msgstr ""
+
+msgid "`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__ pgr_depthFirstSearch"
+msgstr ""
+
+msgid "Standardized to |result_node_order|"
+msgstr ""
+
+msgid "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__ pgr_topologicalSort"
+msgstr ""
+
+msgid "Standardized to |result-closure|"
+msgstr ""
+
+msgid "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__ pgr_transitiveClosure"
+msgstr ""
+
 msgid "Removal of SQL deprecated signatures"
 msgstr ""
 
 msgid "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: pgr_contraction"
 msgstr ""
 
-msgid "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
-msgstr ""
-
 msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 msgstr ""
 
-msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
+msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trspVia"
 msgstr ""
 
-msgid "pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)"
+msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: pgr_withPointsVia"
 msgstr ""
 
 msgid "`#2888 <https://github.com/pgRouting/pgrouting/issues/2888>`__: pgr_findCloseEdges"
@@ -3667,31 +3958,25 @@ msgstr ""
 msgid "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__: pgr_withPointsDD"
 msgstr ""
 
-msgid "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
-msgstr ""
-
-msgid "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
-msgstr ""
-
 msgid "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__: pgr_withPointsKSP"
-msgstr ""
-
-msgid "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
 msgstr ""
 
 msgid "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__: pgr_maxCardinalityMatch"
 msgstr ""
 
-msgid "pgr_maxcardinalitymatch(text,boolean)"
+msgid "pgr_maxCardinalityMatch(text,boolean)"
 msgstr ""
 
-msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: TSP family"
+msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: pgr_TSP"
 msgstr ""
 
 msgid "pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
-msgid "pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: pgr_TSPeuclidean"
+msgstr ""
+
+msgid "pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
 msgid "Removal of SQL deprecated functions"
@@ -3721,157 +4006,286 @@ msgstr ""
 msgid "`#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__: pgr_nodeNetwork"
 msgstr ""
 
-msgid "rubric:: Removal of SQL deprecated internal functions"
+msgid "Removal of SQL deprecated internal functions"
 msgstr ""
 
-msgid "Related issues: `#2897 <https://github.com/pgRouting/pgrouting/issues/2897>`__"
+msgid "#2748 _pgr_alphashape(text,double precision)"
 msgstr ""
 
-msgid "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
+msgid "#2861 _pgr_checkverttab(text,text[],integer,text)"
 msgstr ""
 
-msgid "_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
+msgid "#2861 _pgr_createindex(text,text,text,integer,text)"
 msgstr ""
 
-msgid "_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+msgid "#2861 _pgr_createindex(text,text,text,text,integer,text)"
 msgstr ""
 
-msgid "_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
+msgid "#2913 _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)"
 msgstr ""
 
-msgid "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
+msgid "#2913 _pgr_dagshortestpath(text,text,boolean,boolean)"
 msgstr ""
 
-msgid "_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
+msgid "#2730 _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
 msgstr ""
 
-msgid "_pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)"
+msgid "#2730 _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
 msgstr ""
 
-msgid "_pgr_ksp(text,bigint,bigint,integer,boolean,boolean)"
+msgid "#2730 _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
 msgstr ""
 
-msgid "_pgr_ksp(text,text,integer,boolean,boolean)"
+msgid "#2730 _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
 msgstr ""
 
-msgid "_pgr_kruskal(text,anyarray,text,bigint,double precision)"
+msgid "#2730 _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)"
 msgstr ""
 
-msgid "_pgr_maxcardinalitymatch(text,boolean)"
+msgid "#2730 _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)"
 msgstr ""
 
-msgid "_pgr_prim(text,anyarray,text,bigint,double precision)"
+msgid "#2730 _pgr_dijkstra(text,text,boolean,boolean,boolean)"
 msgstr ""
 
-msgid "_pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)"
+msgid "#2735 _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
 msgstr ""
 
-msgid "_pgr_trsp(text,text,anyarray,anyarray,boolean)"
+msgid "#2861 _pgr_endpoint(geometry)"
 msgstr ""
 
-msgid "_pgr_trsp(text,text,anyarray,bigint,boolean)"
+msgid "#2861 _pgr_getcolumnname(text,text,integer,text)"
 msgstr ""
 
-msgid "_pgr_trsp(text,text,bigint,anyarray,boolean)"
+msgid "#2861 _pgr_getcolumnname(text,text,text,integer,text)"
 msgstr ""
 
-msgid "_pgr_trsp(text,text,bigint,bigint,boolean)"
+msgid "#2861 _pgr_getcolumntype(text,text,integer,text)"
 msgstr ""
 
-msgid "_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
+msgid "#2861 _pgr_getcolumntype(text,text,text,integer,text)"
 msgstr ""
 
-msgid "_pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
+msgid "#2861 _pgr_gettablename(text,integer,text)"
 msgstr ""
 
-msgid "_pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)"
+msgid "#2861 _pgr_iscolumnindexed(text,text,integer,text)"
 msgstr ""
 
-msgid "_pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+msgid "#2861 _pgr_iscolumnindexed(text,text,text,integer,text)"
 msgstr ""
 
-msgid "_pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)"
+msgid "#2861 _pgr_iscolumnintable(text,text)"
 msgstr ""
 
-msgid "_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+msgid "#2745 _pgr_kruskal(text,anyarray,text,bigint,double precision)"
 msgstr ""
 
-msgid "_trsp(text,text,anyarray,anyarray,boolean)"
+msgid "#2897 _pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)"
 msgstr ""
 
-msgid "_v4trsp(text,text,anyarray,anyarray,boolean)"
+msgid "#2897 _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)"
 msgstr ""
 
-msgid "_v4trsp(text,text,text,boolean)"
+msgid "#2897 _pgr_ksp(text,text,integer,boolean,boolean)"
 msgstr ""
 
-msgid "_pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgid "#2899 _pgr_maxcardinalitymatch(text,boolean)"
 msgstr ""
 
-msgid "_pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgid "#2861 _pgr_msg(integer,text,text)"
 msgstr ""
 
-msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ _pgr_dagshortestpath(text,text,boolean,boolean)"
+msgid "#2861 _pgr_onerror(boolean,integer,text,text,text,text)"
 msgstr ""
 
-msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)"
+msgid "#2861 _pgr_pointtoid(geometry,double precision,text,integer)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__: Remove unused internal functions"
+msgid "#2743 _pgr_prim(text,anyarray,text,bigint,double precision)"
 msgstr ""
 
-msgid "_pgr_checkverttab(text,text[],integer,text)"
+msgid "#2861 _pgr_quote_ident(text)"
 msgstr ""
 
-msgid "_pgr_createindex(text,text,text,integer,text)"
+msgid "#2861 _pgr_startpoint(geometry)"
 msgstr ""
 
-msgid "_pgr_createindex(text,text,text,text,integer,text)"
+msgid "#2683 _pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)"
 msgstr ""
 
-msgid "_pgr_endpoint(geometry)"
+msgid "#2683 _pgr_trsp(text,text,anyarray,anyarray,boolean)"
 msgstr ""
 
-msgid "_pgr_getcolumnname(text,text,integer,text)"
+msgid "#2683 _pgr_trsp(text,text,anyarray,bigint,boolean)"
 msgstr ""
 
-msgid "_pgr_getcolumnname(text,text,text,integer,text)"
+msgid "#2683 _pgr_trsp(text,text,bigint,anyarray,boolean)"
 msgstr ""
 
-msgid "_pgr_getcolumntype(text,text,integer,text)"
+msgid "#2683 _pgr_trsp(text,text,bigint,bigint,boolean)"
 msgstr ""
 
-msgid "_pgr_getcolumntype(text,text,text,integer,text)"
+msgid "#2682 _pgr_trspviavertices(text,integer[],boolean,boolean,text)"
 msgstr ""
 
-msgid "_pgr_gettablename(text,integer,text)"
+msgid "#2919 _pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
 msgstr ""
 
-msgid "_pgr_iscolumnindexed(text,text,integer,text)"
+msgid "#2919 _pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
 msgstr ""
 
-msgid "_pgr_iscolumnindexed(text,text,text,integer,text)"
+msgid "#2919 _pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
 msgstr ""
 
-msgid "_pgr_iscolumnintable(text,text)"
+msgid "#2901 _pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
-msgid "_pgr_msg(integer,text,text)"
+msgid "#2901 _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
-msgid "_pgr_onerror(boolean,integer,text,text,text,text)"
+msgid "#2861 _pgr_versionless(text,text)"
 msgstr ""
 
-msgid "_pgr_pointtoid(geometry,double precision,text,integer)"
+msgid "#2890 _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
 msgstr ""
 
-msgid "_pgr_quote_ident(text)"
+msgid "#2895 _pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)"
 msgstr ""
 
-msgid "_pgr_startpoint(geometry)"
+msgid "#2895 _pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
 msgstr ""
 
-msgid "_pgr_versionless(text,text)"
+msgid "#2895 _pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)"
+msgstr ""
+
+msgid "#2741 _pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+msgstr ""
+
+msgid "#2741 _pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2683 _trsp(text,text,anyarray,anyarray,boolean)"
+msgstr ""
+
+msgid "#2683 _v4trsp(text,text,anyarray,anyarray,boolean)"
+msgstr ""
+
+msgid "#2683 _v4trsp(text,text,text,boolean)"
+msgstr ""
+
+msgid "Summary of functions and signatures no longer on pgrouting"
+msgstr ""
+
+msgid "#2748 pgr_alphashape(geometry,double precision)"
+msgstr ""
+
+msgid "#2752 pgr_analyzegraph(text,double precision,text,text,text,text,text)"
+msgstr ""
+
+msgid "#2755 pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)"
+msgstr ""
+
+msgid "#2798 pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+msgstr ""
+
+msgid "#2751 pgr_createtopology(text,double precision,text,text,text,text,text,boolean)"
+msgstr ""
+
+msgid "#2827 pgr_createverticestable(text,text,text,text,text)"
+msgstr ""
+
+msgid "#2888 pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)"
+msgstr ""
+
+msgid "#2888 pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)"
+msgstr ""
+
+msgid "#2899 pgr_maxcardinalitymatch(text,boolean)"
+msgstr ""
+
+msgid "#2886 pgr_nodenetwork(text,double precision,text,text,text,text,boolean)"
+msgstr ""
+
+msgid "#2683 pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)"
+msgstr ""
+
+msgid "#2683 pgr_trsp(text,integer,integer,boolean,boolean,text)"
+msgstr ""
+
+msgid "#2681 pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
+msgstr ""
+
+msgid "#2682 pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
+msgstr ""
+
+msgid "#2919 pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2919 pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2919 pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2919 pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2919 pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2919 pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2901 pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgstr ""
+
+msgid "#2901 pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgstr ""
+
+msgid "#2919 pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
+msgstr ""
+
+msgid "#2919 pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)"
+msgstr ""
+
+msgid "#2919 pgr_withpointscost(text,text,anyarray,bigint,boolean,character)"
+msgstr ""
+
+msgid "#2919 pgr_withpointscost(text,text,bigint,anyarray,boolean,character)"
+msgstr ""
+
+msgid "#2919 pgr_withpointscost(text,text,bigint,bigint,boolean,character)"
+msgstr ""
+
+msgid "#2919 pgr_withpointscost(text,text,text,boolean,character)"
+msgstr ""
+
+msgid "#2890 pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
+msgstr ""
+
+msgid "#2890 pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2895 pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2919 pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2919 pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2919 pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2919 pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2919 pgr_withpoints(text,text,text,boolean,character,boolean)"
+msgstr ""
+
+msgid "#2919 pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
 msgstr ""
 
 msgid "Code enhancements"
@@ -3883,10 +4297,10 @@ msgstr ""
 msgid "Refactor the Script to build the update PostgreSQL file."
 msgstr ""
 
-msgid "One driver for:"
+msgid "One process & driver for:"
 msgstr ""
 
-msgid "allpairs: johnson and Flowy-Warshall"
+msgid "allpairs: johnson and Floyd-Warshall"
 msgstr ""
 
 msgid "Shortest path: Dijkstra and withPoints using Dijkstra"
@@ -3895,10 +4309,49 @@ msgstr ""
 msgid "Deprecation of internal C/C++ functions"
 msgstr ""
 
+msgid "Deprecated functions are substituted by new function."
+msgstr ""
+
+msgid "_pgr_drivingdistance => _pgr_drivingdistancev4"
+msgstr ""
+
+msgid "_pgr_withpointsdd => _pgr_withpointsddv4"
+msgstr ""
+
+msgid "_pgr_kruskal => _pgr_kruskalv4"
+msgstr ""
+
+msgid "_pgr_prim => _pgr_primv4"
+msgstr ""
+
+msgid "_pgr_dijkstra => _pgr_dijkstra_v4"
+msgstr ""
+
+msgid "_pgr_withpointsksp => _pgr_withpointsksp_v4"
+msgstr ""
+
+msgid "_pgr_trspvia_withpoints => _pgr_trspvia_withpoints_v4"
+msgstr ""
+
+msgid "_pgr_trsp_withpoints => _pgr_trsp_withpoints_v4"
+msgstr ""
+
+msgid "_pgr_withpointsvia => _pgr_withpointsvia_v4"
+msgstr ""
+
 msgid "Internal C/C++ functions in legacy"
 msgstr ""
 
-msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ _pgr_dagshortestpath"
+msgid "#2683 _trsp"
+msgstr ""
+
+msgid "#2683 _v4trsp"
+msgstr ""
+
+msgid "#2748 _pgr_alphashape"
+msgstr ""
+
+msgid "#2913 _pgr_dagshortestpath"
 msgstr ""
 
 msgid "All releases"
@@ -3961,79 +4414,61 @@ msgstr ""
 msgid "Function"
 msgstr ""
 
-msgid ":doc:`pgr_dijkstra` [1]_"
+msgid ":doc:`pgr_dijkstra`"
 msgstr ""
 
 msgid "`Migration of single path functions`_"
 msgstr ""
 
-msgid ":doc:`pgr_aStar` [1]_"
+msgid ":doc:`pgr_aStar`"
 msgstr ""
 
-msgid ":doc:`pgr_bdAstar` [1]_"
+msgid ":doc:`pgr_bdAstar`"
 msgstr ""
 
-msgid ":doc:`pgr_drivingDistance` [1]_"
+msgid ":doc:`pgr_drivingDistance`"
 msgstr ""
 
 msgid "`Migration of spanning tree functions`_"
 msgstr ""
 
-msgid ":doc:`pgr_withPointsDD` [2]_"
+msgid ":doc:`pgr_withPointsDD`"
 msgstr ""
 
-msgid ":doc:`pgr_kruskalBFS` [1]_"
+msgid ":doc:`pgr_bdDijkstra`"
 msgstr ""
 
-msgid ":doc:`pgr_kruskalDD` [1]_"
+msgid ":doc:`pgr_binaryBreadthFirstSearch`"
 msgstr ""
 
-msgid ":doc:`pgr_kruskalDFS` [1]_"
+msgid ":doc:`pgr_bipartite`"
 msgstr ""
 
-msgid ":doc:`pgr_primBFS` [1]_"
+msgid "`Migration of output column name change`_"
 msgstr ""
 
-msgid ":doc:`pgr_primDD` [1]_"
+msgid ":doc:`pgr_breadthFirstSearch`"
 msgstr ""
 
-msgid ":doc:`pgr_primDFS` [1]_"
+msgid ":doc:`pgr_depthFirstSearch`"
 msgstr ""
 
-msgid ":doc:`pgr_bdDijkstra` [1]_"
+msgid ":doc:`pgr_edgeColoring`"
 msgstr ""
 
-msgid ":doc:`pgr_bellmanFord` [3]_"
+msgid "`Migration of multiple paths functions`_"
 msgstr ""
 
-msgid ":doc:`pgr_binaryBreadthFirstSearch` [3]_"
+msgid ":doc:`pgr_sequentialVertexColoring`"
 msgstr ""
 
-msgid ":doc:`pgr_dagShortestPath` [3]_"
+msgid ":doc:`pgr_topologicalSort`"
 msgstr ""
 
-msgid ":doc:`pgr_edwardMoore` [3]_"
-msgstr ""
-
-msgid ":doc:`pgr_withPoints` [2]_"
-msgstr ""
-
-msgid ":doc:`pgr_withPointsCost` [2]_"
+msgid ":doc:`pgr_withPoints`"
 msgstr ""
 
 msgid "`Migration of cost functions`_"
-msgstr ""
-
-msgid ":doc:`pgr_withPointsCostMatrix` [2]_"
-msgstr ""
-
-msgid "Official function before v4.0.0"
-msgstr ""
-
-msgid "Official function in v4.0.0"
-msgstr ""
-
-msgid "Experimental or proposed in v4.0.0"
 msgstr ""
 
 msgid "Migration of cost functions"
@@ -4141,10 +4576,67 @@ msgstr ""
 msgid "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#combinations>`__ example."
 msgstr ""
 
+msgid "Migration of multiple paths functions"
+msgstr ""
+
+msgid "The standardized :ref:`pgRouting-concepts:Result columns for single path functions` are |nksp-result|"
+msgstr ""
+
+msgid "``pgr_KSP``"
+msgstr ""
+
+msgid "v < 3.6"
+msgstr ""
+
+msgid ":ref:`from_ksp_result`"
+msgstr ""
+
+msgid "``pgr_edgeDisjointPaths``"
+msgstr ""
+
+msgid ":ref:`from_result_disjoint`"
+msgstr ""
+
+msgid "Migration of |ksp-result|"
+msgstr ""
+
+msgid "|nksp-result|"
+msgstr ""
+
+msgid "Before updating pgRouting, enumerate the |ksp-result|"
+msgstr ""
+
+msgid "One to One example using ``pgr_KSP``"
+msgstr ""
+
+msgid "Using `this <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ example."
+msgstr ""
+
+msgid "Migration of |result-disjoint|"
+msgstr ""
+
+msgid "Before updating pgRouting, enumerate the |result-disjoint|"
+msgstr ""
+
+msgid "Skip when applicable, ``start_vid``"
+msgstr ""
+
+msgid "Skip when applicable, ``end_vid``"
+msgstr ""
+
+msgid "One to One example using ``pgr_edgeDisjointPaths``"
+msgstr ""
+
+msgid "Migrating `this v3.8 <https://docs.pgrouting.org/3.6/en/pgr_edgeDisjointPaths.html#one-to-one>`__ example."
+msgstr ""
+
+msgid "Before updating pgRouting enumerate the columns: |ksp-result|"
+msgstr ""
+
 msgid "Migration of single path functions"
 msgstr ""
 
-msgid "THe standardized :ref:`pgRouting-concepts:Result columns for single path functions` are |short-generic-result|"
+msgid "The standardized :ref:`pgRouting-concepts:Result columns for single path functions` are |short-generic-result|"
 msgstr ""
 
 msgid "``pgr_dijkstra``"
@@ -4157,9 +4649,6 @@ msgid "|old-generic-result|"
 msgstr ""
 
 msgid "``pgr_aStar``"
-msgstr ""
-
-msgid "v < 3.6"
 msgstr ""
 
 msgid "``pgr_bdDijkstra``"
@@ -4187,12 +4676,6 @@ msgid "Migration of |old-generic-result|"
 msgstr ""
 
 msgid "Before updating pgRouting, enumerate the corresponding columns of the signature"
-msgstr ""
-
-msgid "Skip when applicable, ``start_vid``"
-msgstr ""
-
-msgid "Skip when applicable, ``end_vid``"
 msgstr ""
 
 msgid "Migration of |old-pid-result|"
@@ -4312,13 +4795,25 @@ msgstr ""
 msgid "The standardized :ref:`pgRouting-concepts:Result columns for spanning tree functions` are |result-spantree|"
 msgstr ""
 
+msgid "``pgr_drivingDistance``"
+msgstr ""
+
+msgid ":ref:`from_result_dij_dd`"
+msgstr ""
+
+msgid "``pgr_withPointsDD``"
+msgstr ""
+
+msgid ":ref:`from_result_generic_no_seq`"
+msgstr ""
+
 msgid "``pgr_kruskalDD``"
 msgstr ""
 
 msgid "v < 3.7"
 msgstr ""
 
-msgid "|result-bfs|"
+msgid ":ref:`from_result_bfs`"
 msgstr ""
 
 msgid "``pgr_kruskalBFS``"
@@ -4336,22 +4831,19 @@ msgstr ""
 msgid "``pgr_primDFS``"
 msgstr ""
 
-msgid "``pgr_drivingDistance``"
+msgid "``pgr_breadthFisrtSearch``"
 msgstr ""
 
-msgid "|result-dij-dd|"
+msgid "v < 4.0.0"
 msgstr ""
 
-msgid "``pgr_withPointsDD``"
-msgstr ""
-
-msgid "|result-generic-no-seq|"
+msgid "``pgr_depthFisrtSearch``"
 msgstr ""
 
 msgid "to |result-spantree|"
 msgstr ""
 
-msgid "Migration of |result-bfs|"
+msgid "Migration from |result-bfs|."
 msgstr ""
 
 msgid "Single vertex"
@@ -4363,7 +4855,22 @@ msgstr ""
 msgid "Before updating pgRouting enumerate the columns: |result-bfs|"
 msgstr ""
 
-msgid "Migration of |result-dij-dd|"
+msgid "Single vertex example using ``pgr_kruskalDD``"
+msgstr ""
+
+msgid "Migrating `this v3.6 <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#single-vertex>`__ example."
+msgstr ""
+
+msgid "Before updating pgRouting enumerate the columns: |result-bfs|."
+msgstr ""
+
+msgid "Multiple vertices example using ``pgr_kruskalDFS``"
+msgstr ""
+
+msgid "Migrating `this v3.6 <https://docs.pgrouting.org/3.6/en/pgr_kruskalDFS.html#multiple-vertices>`__ example."
+msgstr ""
+
+msgid "Migration from |result-dij-dd|"
 msgstr ""
 
 msgid "Migration depends on the signature."
@@ -4378,61 +4885,52 @@ msgstr ""
 msgid "For multiple vertices:"
 msgstr ""
 
-msgid "If using ``pgr_drivingDistance`` with multiple vertices: column names must be changed after updating pgRouting."
+msgid "Changes must be done after updating pgRouting."
 msgstr ""
 
-msgid "To get the old version column names |result-dij-dd-m|"
+msgid "To get the old version column names |result-dij-dd-m|:"
 msgstr ""
 
-msgid "Enumerate |result-dij-dd-m|"
+msgid "filter out the column ``pred`` and ``depth`` and"
 msgstr ""
 
-msgid "Rename ``start_vid`` to ``from_v``."
+msgid "rename ``start_vid`` to ``from_v``."
+msgstr ""
+
+msgid "Single vertex example using ``pgr_drivingDistance``"
+msgstr ""
+
+msgid "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-vertex>`__ example."
+msgstr ""
+
+msgid "Before updating pgRouting, enumerate |result-1-1-no-seq| columns"
+msgstr ""
+
+msgid "Multiple vertices example using ``pgr_drivingDistance``"
+msgstr ""
+
+msgid "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#multiple-vertices>`__ example."
+msgstr ""
+
+msgid "To get the old version column names |result-dij-dd-m|: filter out the column ``pred`` and ``depth`` and rename ``start_vid`` to ``from_v``."
 msgstr ""
 
 msgid "Migration of |result-generic-no-seq|"
 msgstr ""
 
-msgid "If using ``pgr_withPointsDD``: function call must be changed after updating pgRouting."
+msgid "After updating pgRouting:"
 msgstr ""
 
-msgid "``pgr_withPointsDD``'s parameter ``driving_side`` changed from named optional to unnamed positional parameter (position 5 in the function call) and its validity differ for directed and undirected graphs."
+msgid "Enumerate |result-1-1-no-seq| columns"
 msgstr ""
 
-msgid "For ``pgr_withPointsDD`` Single vertex"
+msgid "Use an unnamed valid value for **driving side** after the **distance** parameter."
 msgstr ""
 
-msgid "To get the * Output columns were |result-1-1-no-seq| * Does not have ``start_vid``, ``pred`` and ``depth`` result columns. * ``driving_side`` parameter was named optional now it is compulsory unnamed."
+msgid "Enumerate |result-m-1-no-seq| columns"
 msgstr ""
 
-msgid "For ``pgr_withPointsDD`` (Multiple vertices)"
-msgstr ""
-
-msgid "Output columns were |result-m-1-no-seq|"
-msgstr ""
-
-msgid "Does not have ``depth`` and ``pred`` result columns."
-msgstr ""
-
-msgid "``driving_side`` parameter was named optional now it is compulsory unnamed."
-msgstr ""
-
-msgid "Validity of driving_side:"
-msgstr ""
-
-msgid "On directed graph ``b`` could be used as **driving side**"
-msgstr ""
-
-msgid "On undirected graph ``r``, ``l`` could be used as **driving side**"
-msgstr ""
-
-msgid "After Migration"
-msgstr ""
-
-msgid "Be aware of the existence of the additional result Columns."
-msgstr ""
-
-msgid "Output columns are |result-spantree|"
+msgid "Validity of **driving side** parameter"
 msgstr ""
 
 msgid "**driving side** parameter is unnamed compulsory, and valid values differ for directed and undirected graphs."
@@ -4450,64 +4948,103 @@ msgstr ""
 msgid "Using an invalid value throws an ``ERROR``."
 msgstr ""
 
-msgid "Examples for single vertex"
-msgstr ""
-
-msgid "Using ``pgr_kruskalDD``"
-msgstr ""
-
-msgid "Migrating `this v3.6 <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#single-vertex>`__ example."
-msgstr ""
-
-msgid "Before updating pgRouting enumerate the columns: |result-bfs|."
-msgstr ""
-
-msgid "Using ``pgr_primBFS``"
-msgstr ""
-
-msgid "Migrating `this v3.6 <https://docs.pgrouting.org/3.6/en/pgr_primBFS.html#single-vertex>`__ example."
-msgstr ""
-
-msgid "Using ``pgr_drivingDistance``"
-msgstr ""
-
-msgid "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-vertex>`__ example."
-msgstr ""
-
-msgid "Before updating pgRouting, enumerate |result-1-1-no-seq| columns"
-msgstr ""
-
-msgid "Using ``pgr_withPointsDD``"
+msgid "Single vertex example using ``pgr_withPointsDD``"
 msgstr ""
 
 msgid "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-vertex>`__ example."
 msgstr ""
 
-msgid "After updating pgROuting use an unnamed valid value for **driving side** after the **distance** parameter."
+msgid "Multiple vertices example using ``pgr_withPointsDD``"
 msgstr ""
 
-msgid "Examples for multiple vertices"
+msgid "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-vertex>`__ example."
 msgstr ""
 
-msgid "Using ``pgr_kruskalDFS``"
+msgid "Migration of output column name change"
 msgstr ""
 
-msgid "Migrating `this v3.6 <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#multiple-vertices>`__ example."
+msgid "The standardized result columns:"
 msgstr ""
 
-msgid "Using ``pgr_primDD``"
+msgid "|result_edge_color|"
 msgstr ""
 
-msgid "Migrating `this v3.6 <https://docs.pgrouting.org/3.6/en/pgr_primDD.html#multiple-vertices>`__ example."
+msgid "|result_node_color|"
 msgstr ""
 
-msgid "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#multiple-vertices>`__ example."
+msgid "|result_node_order|"
 msgstr ""
 
-msgid "If using ``pgr_drivingDistance`` with multiple vertices: column names must be changed after updating pgRouting"
+msgid "Changes on column names must be done after updating pgRouting."
 msgstr ""
 
-msgid "To get the old version column names |result-dij-dd-m|: filter out the column ``pred`` and ``depth`` and rename ``start_vid`` to ``from_v``."
+msgid "``pgr_edgeColoring``"
+msgstr ""
+
+msgid ":ref:`from_old_edge_color`"
+msgstr ""
+
+msgid "``pgr_bipartite``"
+msgstr ""
+
+msgid ":ref:`from_old_node_color`"
+msgstr ""
+
+msgid "``pgr_sequentialVertexColoring``"
+msgstr ""
+
+msgid "``pgr_topologicalSort``"
+msgstr ""
+
+msgid ":ref:`from_toposort`"
+msgstr ""
+
+msgid "``pgr_transitiveClosure``"
+msgstr ""
+
+msgid ":ref:`from_old_closure`"
+msgstr ""
+
+msgid "Migration from |result-old-closure|"
+msgstr ""
+
+msgid "Migration to: |result-old-closure|"
+msgstr ""
+
+msgid "After update:"
+msgstr ""
+
+msgid "Remove column ``seq``"
+msgstr ""
+
+msgid "Rename ``vid`` to ``node`` and ``target_array`` to ``targets``"
+msgstr ""
+
+msgid "Migration from |result-toposort|"
+msgstr ""
+
+msgid "Migration to: |result_node_order|"
+msgstr ""
+
+msgid "Rename ``sorted_v`` to ``node``"
+msgstr ""
+
+msgid "Migration from |old-edge-color|"
+msgstr ""
+
+msgid "Migration to: |result_edge_color|"
+msgstr ""
+
+msgid "Rename ``edge_id`` to ``edge`` and ``color_id`` to ``color``."
+msgstr ""
+
+msgid "Migration from |old-node-color|"
+msgstr ""
+
+msgid "Migration to: |result_node_color|"
+msgstr ""
+
+msgid "Rename ``vertex_id`` to ``node`` and ``color_id`` to ``color``."
 msgstr ""
 
 msgid "Migration of deleted functions"
@@ -4741,9 +5278,6 @@ msgstr ""
 msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
 msgstr ""
 
-msgid ":doc:`pgr_dijkstra`"
-msgstr ""
-
 msgid ":doc:`pgr_trsp`"
 msgstr ""
 
@@ -4772,9 +5306,6 @@ msgid "Use :doc:`pgr_trsp` (One to One) instead."
 msgstr ""
 
 msgid "Migration of ``pgr_trsp`` (Edges)"
-msgstr ""
-
-msgid ":doc:`pgr_withPoints`"
 msgstr ""
 
 msgid ":doc:`pgr_trsp_withPoints`"
@@ -4834,10 +5365,10 @@ msgstr ""
 msgid "Not yet classified migrations"
 msgstr ""
 
-msgid "Migration of ``pgr_KSP``"
+msgid "Migration of ``pgr_withPointsKSP``"
 msgstr ""
 
-msgid "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :doc:`pgr_KSP` result columns are being standardized."
+msgid "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :doc:`pgr_withPointsKSP` result columns are being standardized."
 msgstr ""
 
 msgid "|ksp-result|"
@@ -4846,61 +5377,37 @@ msgstr ""
 msgid "|generic-result|"
 msgstr ""
 
-msgid "``pgr_KSP`` (One to One)"
-msgstr ""
-
-msgid "Before Migration"
-msgstr ""
-
-msgid "Output columns were |ksp-result|"
-msgstr ""
-
-msgid "the columns ``start_vid`` and ``end_vid`` do not exist."
-msgstr ""
-
-msgid "``pgr_KSP`` (One to One) does not have ``start_vid`` and ``end_vid``."
-msgstr ""
-
-msgid "Migration"
-msgstr ""
-
-msgid "Be aware of the existence of the additional columns."
-msgstr ""
-
-msgid "If needed filter out the added columns, for example, to return the original columns."
-msgstr ""
-
-msgid "Using `this <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ example."
-msgstr ""
-
-msgid "``start_vid`` contains the **start vid** parameter value."
-msgstr ""
-
-msgid "``end_vid`` contains the **end vid** parameter value."
-msgstr ""
-
-msgid "If needed filter out the added columns, for example, to return the original columns:"
-msgstr ""
-
-msgid "Migration of ``pgr_withPointsKSP``"
-msgstr ""
-
-msgid "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :doc:`pgr_withPointsKSP` result columns are being standardized."
-msgstr ""
-
 msgid "And ``driving side`` parameter changed from named optional to unnamed compulsory **driving side** and its validity differ for directed and undirected graphs."
 msgstr ""
 
 msgid "``pgr_withPointsKSP`` (`One to One`)"
 msgstr ""
 
+msgid "Before Migration"
+msgstr ""
+
 msgid "Output columns were |old-pid-result|"
+msgstr ""
+
+msgid "the columns ``start_vid`` and ``end_vid`` do not exist."
+msgstr ""
+
+msgid "Migration"
+msgstr ""
+
+msgid "Be aware of the existence of the additional result Columns."
 msgstr ""
 
 msgid "New output columns are |generic-result|"
 msgstr ""
 
 msgid "Using `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP.html#signatures>`__ example."
+msgstr ""
+
+msgid "``start_vid`` contains the **start vid** parameter value."
+msgstr ""
+
+msgid "``end_vid`` contains the **end vid** parameter value."
 msgstr ""
 
 msgid "If needed filter out the additional columns, for example, to return the original columns:"
@@ -5956,9 +6463,6 @@ msgstr ""
 msgid "Edges SQL for"
 msgstr ""
 
-msgid ":doc:`withPoints-family`"
-msgstr ""
-
 msgid "Some uncategorised functions"
 msgstr ""
 
@@ -6070,18 +6574,6 @@ msgstr ""
 msgid "Used in functions that return one path solution per departure and destination."
 msgstr ""
 
-msgid ":doc:`pgr_aStar`"
-msgstr ""
-
-msgid ":doc:`pgr_bdAstar`"
-msgstr ""
-
-msgid ":doc:`pgr_bdDijkstra`"
-msgstr ""
-
-msgid ":doc:`pgr_binaryBreadthFirstSearch`"
-msgstr ""
-
 msgid ":doc:`pgr_dijkstraNear`"
 msgstr ""
 
@@ -6112,16 +6604,19 @@ msgstr ""
 msgid "When ``start_vid`` or ``end_vid`` columns have negative values, the identifier is for a Point."
 msgstr ""
 
-msgid "Multiple paths"
+msgid "Result columns for multiple paths functions"
 msgstr ""
 
-msgid "Selective for multiple paths."
+msgid "Used in functions that return many paths solutions per departure and destination."
 msgstr ""
 
-msgid "The columns depend on the function call."
+msgid ":doc:`pgr_KSP`"
 msgstr ""
 
-msgid "Set of |result-disjoint|"
+msgid ":doc:`pgr_withPointsKSP`"
+msgstr ""
+
+msgid "Returns set of |generic-result|"
 msgstr ""
 
 msgid "``path_id``"
@@ -6133,25 +6628,10 @@ msgstr ""
 msgid "Has value **1** for the first of a path from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-msgid "Identifier of the starting vertex. Returned when multiple starting vetrices are in the query."
-msgstr ""
-
-msgid "Identifier of the ending vertex. Returned when multiple ending vertices are in the query."
-msgstr ""
-
-msgid "Non selective for multiple paths"
-msgstr ""
-
-msgid "Regardless of the call, al the columns are returned."
-msgstr ""
-
-msgid "Returns set of |generic-result|"
-msgstr ""
-
 msgid "Result columns for cost functions"
 msgstr ""
 
-msgid "Used in the following"
+msgid "Used by:"
 msgstr ""
 
 msgid "When start_vid or end_vid columns have negative values, the identifier is for a Point."
@@ -6160,10 +6640,10 @@ msgstr ""
 msgid "Result columns for flow functions"
 msgstr ""
 
-msgid "Edges SQL for the following"
+msgid "Result columns for spanning tree functions"
 msgstr ""
 
-msgid "Result columns for spanning tree functions"
+msgid "Used in functions that return a tree solution per departure."
 msgstr ""
 
 msgid "Result columns for simple spanning tree functions"
@@ -6220,10 +6700,7 @@ msgstr ""
 msgid "Consult the `developer's documentation <https://docs.pgrouting.org/doxy/2.4/index.html>`__"
 msgstr ""
 
-msgid "Others"
-msgstr ""
-
-msgid "Returns set of |old-generic-result|"
+msgid "See also"
 msgstr ""
 
 msgid "Installation"
@@ -6697,9 +7174,6 @@ msgstr ""
 msgid ":doc:`migration`"
 msgstr ""
 
-msgid "``pgr_KSP``"
-msgstr ""
-
 msgid "``pgr_KSP`` — Yen's algorithm for K shortest paths using Dijkstra."
 msgstr ""
 
@@ -6707,9 +7181,6 @@ msgid "Availability"
 msgstr ""
 
 msgid "Version 4.0.0"
-msgstr ""
-
-msgid "All signatures promoted to official."
 msgstr ""
 
 msgid "Version 3.6.0"
@@ -6841,18 +7312,6 @@ msgstr ""
 msgid "Roughly, when the shortest path has ``N`` edges, the heap will contain about than ``N * K`` paths for small value of ``K`` and ``K > 5``."
 msgstr ""
 
-msgid "Has value **1** for the first of a path from ``start_vid`` to ``end_vid``"
-msgstr ""
-
-msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``"
-msgstr ""
-
-msgid ":math:`0` for the last ``node`` of the path."
-msgstr ""
-
-msgid "Aggregate cost from **start vid** to ``node``."
-msgstr ""
-
 msgid "Additional Examples"
 msgstr ""
 
@@ -6878,9 +7337,6 @@ msgid "``pgr_TSP`` - Approximation using *metric* algorithm."
 msgstr ""
 
 msgid "Availability:"
-msgstr ""
-
-msgid "Simulated Annealing signature removed"
 msgstr ""
 
 msgid "Results change depending on input order"
@@ -7180,6 +7636,9 @@ msgstr ""
 msgid "New proposed signature:"
 msgstr ""
 
+msgid "pgr_aStar(Combinations)"
+msgstr ""
+
 msgid "Version 2.4.0"
 msgstr ""
 
@@ -7259,6 +7718,9 @@ msgid "``pgr_aStarCost``"
 msgstr ""
 
 msgid "``pgr_aStarCost`` - Total cost of the shortest path using the A* algorithm."
+msgstr ""
+
+msgid "pgr_aStarCost(Combinations)"
 msgstr ""
 
 msgid "New proposed function."
@@ -7384,6 +7846,9 @@ msgstr ""
 msgid "Nodes in red are the articulation points."
 msgstr ""
 
+msgid "Identifier of the vertex."
+msgstr ""
+
 msgid "`Boost: Biconnected components & articulation points <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__"
 msgstr ""
 
@@ -7403,6 +7868,9 @@ msgid "pgr_bdAstar(One to Many) added ``end_vid`` column."
 msgstr ""
 
 msgid "pgr_bdAstar(Many to One) added ``start_vid`` column."
+msgstr ""
+
+msgid "pgr_bdAstar(Combinations)"
 msgstr ""
 
 msgid "pgr_bdAstar(One to Many)"
@@ -7441,6 +7909,9 @@ msgstr ""
 msgid "``pgr_bdAstarCost`` - Total cost of the shortest path using the bidirectional A* algorithm."
 msgstr ""
 
+msgid "pgr_bdAstarCost(Combinations)"
+msgstr ""
+
 msgid "The ``pgr_bdAstarCost`` function summarizes of the cost of the shortest path using the bidirectional A* algorithm."
 msgstr ""
 
@@ -7472,6 +7943,9 @@ msgid "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
 msgstr ""
 
 msgid "``pgr_bdDijkstra`` — Returns the shortest path using Bidirectional Dijkstra algorithm."
+msgstr ""
+
+msgid "pgr_bdDijkstra(Combinations)"
 msgstr ""
 
 msgid "pgr_bdDijkstra(One to Many)"
@@ -7523,6 +7997,9 @@ msgid "``pgr_bdDijkstraCost``"
 msgstr ""
 
 msgid "``pgr_bdDijkstraCost`` — Returns the shortest path's cost using Bidirectional Dijkstra algorithm."
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(Combinations)"
 msgstr ""
 
 msgid "The ``pgr_bdDijkstraCost`` function summarizes of the cost of the shortest path using the bidirectional Dijkstra Algorithm."
@@ -7813,9 +8290,6 @@ msgstr ""
 msgid "pgr_bipartite(`Edges SQL`_)"
 msgstr ""
 
-msgid "Returns set of |result-node-color|"
-msgstr ""
-
 msgid "When the graph is bipartite"
 msgstr ""
 
@@ -7841,6 +8315,9 @@ msgid "``pgr_boykovKolmogorov``"
 msgstr ""
 
 msgid "``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Boykov Kolmogorov algorithm."
+msgstr ""
+
+msgid "pgr_boykovKolmogorov(Combinations)"
 msgstr ""
 
 msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
@@ -7894,6 +8371,9 @@ msgstr ""
 msgid "``pgr_breadthFirstSearch`` — Returns the traversal order(s) using Breadth First Search algorithm."
 msgstr ""
 
+msgid "Version 4.0.0:"
+msgstr ""
+
 msgid "Provides the Breadth First Search traversal order from a root vertex to a particular depth."
 msgstr ""
 
@@ -7913,9 +8393,6 @@ msgid "pgr_breadthFirstSearch(`Edges SQL`_, **root vids**, [**options**])"
 msgstr ""
 
 msgid "**options:** ``[max_depth, directed]``"
-msgstr ""
-
-msgid "Returns set of |result-bfs|"
 msgstr ""
 
 msgid "From root vertex :math:`6` on a **directed** graph with edges in ascending order of ``id``"
@@ -8923,7 +9400,7 @@ msgstr ""
 msgid "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
 msgstr ""
 
-msgid "Returns set of |result-node-order|"
+msgid "Returns set of |result_node_order|"
 msgstr ""
 
 msgid "Graph ordering of pgRouting :doc:`sampledata`"
@@ -9280,6 +9757,9 @@ msgstr ""
 msgid "Version 3.1.0"
 msgstr ""
 
+msgid "pgr_dijkstra(Combinations)"
+msgstr ""
+
 msgid "Version 2.2.0"
 msgstr ""
 
@@ -9476,6 +9956,9 @@ msgid "``pgr_dijkstraCost``"
 msgstr ""
 
 msgid "``pgr_dijkstraCost`` - Total cost of the shortest path using Dijkstra algorithm."
+msgstr ""
+
+msgid "pgr_dijkstraCost(Combinations)"
 msgstr ""
 
 msgid "The ``pgr_dijkstraCost`` function summarizes of the cost of the shortest path using Dijkstra Algorithm."
@@ -9850,9 +10333,6 @@ msgstr ""
 msgid "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr ""
 
-msgid "Standardizing output columns to |result-spantree|"
-msgstr ""
-
 msgid "pgr_drivingDistance(Single vertex)"
 msgstr ""
 
@@ -9916,6 +10396,9 @@ msgstr ""
 msgid "When ``false`` which resembles several calls using the single vertex signature."
 msgstr ""
 
+msgid "end-before"
+msgstr ""
+
 msgid "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` on an undirected graph"
 msgstr ""
 
@@ -9973,9 +10456,6 @@ msgstr ""
 msgid "pgr_edgeColoring(`Edges SQL`_)"
 msgstr ""
 
-msgid "Returns set of |result-edge-color|"
-msgstr ""
-
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
 msgstr ""
 
@@ -9983,9 +10463,6 @@ msgid "`Boost: Edge Coloring <https://www.boost.org/libs/graph/doc/edge_coloring
 msgstr ""
 
 msgid "`Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
-msgstr ""
-
-msgid "``pgr_edgeDisjointPaths``"
 msgstr ""
 
 msgid "``pgr_edgeDisjointPaths`` — Calculates edge disjoint paths between two groups of vertices."
@@ -10027,21 +10504,6 @@ msgstr ""
 msgid "pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
-msgid "Returns set of |result-disjoint|"
-msgstr ""
-
-msgid "Returns set of |result-disjoint-1-1|"
-msgstr ""
-
-msgid "Returns set of |result-disjoint-1-m|"
-msgstr ""
-
-msgid "Returns set of |result-disjoint-m-1|"
-msgstr ""
-
-msgid "Returns set of |result-disjoint-m-m|"
-msgstr ""
-
 msgid "Using a combinations table, equivalent to calculating result from vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}` on an undirected graph."
 msgstr ""
 
@@ -10052,6 +10514,9 @@ msgid "``pgr_edmondsKarp``"
 msgstr ""
 
 msgid "``pgr_edmondsKarp`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Edmonds Karp Algorithm."
+msgstr ""
+
+msgid "pgr_edmondsKarp(Combinations)"
 msgstr ""
 
 msgid "Renamed from ``pgr_maxFlowEdmondsKarp``"
@@ -10492,9 +10957,6 @@ msgstr ""
 msgid "The points of interest:"
 msgstr ""
 
-msgid ":doc:`withPoints-category`"
-msgstr ""
-
 msgid "``pgr_floydWarshall``"
 msgstr ""
 
@@ -10826,6 +11288,9 @@ msgid "**root vertex**"
 msgstr ""
 
 msgid "Returns set of ``(seq, vertex_id, idom)``"
+msgstr ""
+
+msgid "``vertex_id``"
 msgstr ""
 
 msgid "Identifier of vertex ."
@@ -11254,9 +11719,6 @@ msgstr ""
 msgid "Deprecated signature"
 msgstr ""
 
-msgid "pgr_maxCardinalityMatch(text,boolean)"
-msgstr ""
-
 msgid "directed => ``false`` when used."
 msgstr ""
 
@@ -11312,6 +11774,9 @@ msgid "``pgr_maxFlow``"
 msgstr ""
 
 msgid "``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the source(s) to the targets(s) using the Push Relabel algorithm."
+msgstr ""
+
+msgid "pgr_maxFlow(Combinations)"
 msgstr ""
 
 msgid "Calculates the maximum flow from the sources to the targets."
@@ -11701,6 +12166,9 @@ msgstr ""
 msgid "``pgr_pushRelabel`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Push Relabel Algorithm."
 msgstr ""
 
+msgid "pgr_pushRelabel(Combinations)"
+msgstr ""
+
 msgid "Renamed from ``pgr_maxFlowPushRelabel``"
 msgstr ""
 
@@ -11935,16 +12403,10 @@ msgstr ""
 msgid "pgr_topologicalSort(`Edges SQL`_)"
 msgstr ""
 
-msgid "Returns set of |result-toposort|"
-msgstr ""
-
 msgid "Topologically sorting the graph"
 msgstr ""
 
 msgid "Sequential value starting from :math:`1`"
-msgstr ""
-
-msgid "``sorted_v``"
 msgstr ""
 
 msgid "Linear topological ordering of the vertices"
@@ -12043,13 +12505,7 @@ msgstr ""
 msgid "Deprecated signatures"
 msgstr ""
 
-msgid "pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)"
-msgstr ""
-
 msgid "pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
-msgstr ""
-
-msgid "pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
 msgstr ""
 
 msgid "New prototypes"
@@ -12211,7 +12667,10 @@ msgstr ""
 msgid "Do not use negative values on identifiers of the inner queries."
 msgstr ""
 
-msgid "pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **via vertices**, [**options**])"
+msgid "pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **via vertices**, **driving side** [**options**])"
+msgstr ""
+
+msgid "**options:** ``[directed, strict, U_turn_on_edge, details]``"
 msgstr ""
 
 msgid "Find the route that visits the vertices :math:`\\{-6, 15, -5\\}` in that order on an directed graph."
@@ -12223,28 +12682,28 @@ msgstr ""
 msgid "When negative it is considered a point identifier"
 msgstr ""
 
+msgid "**driving side**"
+msgstr ""
+
+msgid "Value in [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] indicating if the driving side is:"
+msgstr ""
+
+msgid "[``r``, ``R``] for right driving side (for directed graph only)"
+msgstr ""
+
+msgid "[``l``, ``L``] for left driving side (for directed graph only)"
+msgstr ""
+
+msgid "[``b``, ``B``] for both (only for undirected graph)"
+msgstr ""
+
 msgid "With points optional parameters"
 msgstr ""
 
-msgid "``driving_side``"
-msgstr ""
-
-msgid "``r``"
-msgstr ""
-
-msgid "Value in [``r``, ``l``] indicating if the driving side is:"
-msgstr ""
-
-msgid "``r`` for right driving side"
-msgstr ""
-
-msgid "``l`` for left driving side"
-msgstr ""
-
-msgid "Any other value will be considered as ``r``"
-msgstr ""
-
 msgid "``details``"
+msgstr ""
+
+msgid "For showing points stops."
 msgstr ""
 
 msgid "When ``true`` the results will include the points that are in the path."
@@ -12313,10 +12772,7 @@ msgstr ""
 msgid "``pgr_trsp_withPoints`` Routing Vertex/Point with restrictions."
 msgstr ""
 
-msgid "Modify the graph to include points defined by points_sql. Using Dijkstra algorithm, find the shortest path"
-msgstr ""
-
-msgid "Characteristics:"
+msgid "Modify the graph to include points defined by `Points SQL`_. Consider the invalid paths on `Restrictions SQL`_. Using Dijkstra algorithm, find the shortest path."
 msgstr ""
 
 msgid "Vertices of the graph are:"
@@ -12328,19 +12784,13 @@ msgstr ""
 msgid "**negative** when it belongs to the `Points SQL`_"
 msgstr ""
 
-msgid "Driving side can not be ``b``"
+msgid "The `agg_cost` in the non included values `(v, v)` is `0`"
 msgstr ""
 
-msgid "The agg_cost the non included values (v, v) is 0"
+msgid "The `agg_cost` in the non included values `(u, v)` is :math:`\\infty`"
 msgstr ""
 
-msgid "The agg_cost the non included values (u, v) is ∞"
-msgstr ""
-
-msgid "For optimization purposes, any duplicated value in the start_vids or end_vids are ignored."
-msgstr ""
-
-msgid "The returned values are ordered: - start_vid ascending - end_vid ascending"
+msgid "For optimization purposes, any duplicated value in the input arrays of **start vids** or **end vids** or are ignored."
 msgstr ""
 
 msgid "Running time: :math:`O(|start\\_vids|\\times(V \\log V + E))`"
@@ -12364,34 +12814,46 @@ msgstr ""
 msgid "**options:** ``[directed, driving_side, details]``"
 msgstr ""
 
-msgid "From point :math:`1` to vertex :math:`10` with details on a left driving side configuration on a directed graph with details."
+msgid "From point :math:`1` to vertex :math:`10` with right driving side in directed graph. (with details)"
 msgstr ""
 
-msgid "From point :math:`1` to point :math:`3` and vertex :math:`7`."
+msgid "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])"
 msgstr ""
 
-msgid "From point :math:`1` and vertex :math:`6` to point :math:`3`."
+msgid "**options:** ``[directed, details]``"
 msgstr ""
 
-msgid "From point :math:`1` and vertex :math:`6` to point :math:`3` and vertex :math:`1`."
+msgid "From point :math:`1` to point :math:`3` and vertex :math:`7` on an undirected graph"
 msgstr ""
 
-msgid "From point :math:`1` to vertex :math:`10` and from vertex :math:`6` to point :math:`3` with right side driving configuration."
+msgid "From point :math:`1` and vertex :math:`6` to point :math:`3` with right driving side in directed graph. (without details)"
+msgstr ""
+
+msgid "From point :math:`1` and vertex :math:`6` to point :math:`3` and vertex :math:`1` with left side driving."
+msgstr ""
+
+msgid "Two combinations"
+msgstr ""
+
+msgid "From point :math:`1` to vertex :math:`10`, and from vertex :math:`6` to point :math:`3` with right side driving. (with details)"
+msgstr ""
+
+msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
 msgstr ""
 
 msgid "Find the routes from vertex :math:`1` to the two closest locations on the graph of point `(2.9, 1.8)`."
 msgstr ""
 
-msgid "Pass in front or visits."
+msgid "All the examples are about traveling from point :math:`1` and vertex :math:`5` to points :math:`\\{2, 3, 6\\}` and vertices :math:`\\{10, 11\\}` with restrictions"
 msgstr ""
 
-msgid "Which path (if any) passes in front of point :math:`6` or vertex :math:`11` with right side driving topology."
+msgid "Passes in front or visits with right side driving."
 msgstr ""
 
-msgid "Show details on undirected graph."
+msgid "For point :math:`6` and vertex :math:`11`."
 msgstr ""
 
-msgid "From point :math:`1` and vertex :math:`6` to point :math:`3` to vertex :math:`1` on an undirected graph, with details."
+msgid "Passes in front or visits with left side driving."
 msgstr ""
 
 msgid "``pgr_turnRestrictedPath`` - Experimental"
@@ -12407,9 +12869,6 @@ msgid "pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, **start vid**, 
 msgstr ""
 
 msgid "**options:** ``[directed, heap_paths, stop_on_first, strict]``"
-msgstr ""
-
-msgid "Returns set of |ksp-result|"
 msgstr ""
 
 msgid "From vertex :math:`3` to vertex :math:`8` on a directed graph"
@@ -12487,31 +12946,7 @@ msgstr ""
 msgid "pgr_withPoints(Combinations)"
 msgstr ""
 
-msgid "Modify the graph to include points defined by points_sql. Using Dijkstra algorithm, find the shortest path."
-msgstr ""
-
-msgid "**positive** when it belongs to the edges_sql"
-msgstr ""
-
-msgid "**negative** when it belongs to the points_sql"
-msgstr ""
-
-msgid "The `agg_cost` in the non included values `(v, v)` is `0`"
-msgstr ""
-
-msgid "The `agg_cost` in the non included values `(u, v)` is :math:`\\infty`"
-msgstr ""
-
-msgid "If the values returned are stored in a table, the unique index would be the pair: `(start_vid, end_vid)`."
-msgstr ""
-
-msgid "For **undirected** graphs, the results are **symmetric**."
-msgstr ""
-
-msgid "The sequence of nodes from `u` to `v` is the reverse sequence of nodes from `v` to `u`"
-msgstr ""
-
-msgid "For optimization purposes, any duplicated value in the input arrays of `start vids` or `end vids` or are ignored."
+msgid "Modify the graph to include points defined by `Points SQL`_. Using Dijkstra algorithm, find the shortest path."
 msgstr ""
 
 msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **driving side** [**options**])"
@@ -12526,34 +12961,13 @@ msgstr ""
 msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **driving side** [**options**])"
 msgstr ""
 
-msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])"
-msgstr ""
-
-msgid "**options:** ``[directed, details]``"
-msgstr ""
-
-msgid "From point :math:`1` to vertex :math:`10` with details"
-msgstr ""
-
-msgid "\\ \\  :class: signatures"
-msgstr ""
-
-msgid "From point :math:`1` to point :math:`3` and vertex :math:`7` on an undirected graph"
-msgstr ""
-
-msgid "From point :math:`1` and vertex :math:`6` to point :math:`3`"
-msgstr ""
-
-msgid "From point :math:`1` and vertex :math:`6` to point :math:`3` and vertex :math:`1`"
-msgstr ""
-
 msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **driving side** [**options**])"
 msgstr ""
 
-msgid "Two combinations"
+msgid "**options:** ``[directed, details])``"
 msgstr ""
 
-msgid "From point :math:`1` to vertex :math:`10`, and from vertex :math:`6` to point :math:`3` with **right** side driving."
+msgid "From point :math:`1` to vertex :math:`10` with right driving side in directed graph. (without details)"
 msgstr ""
 
 msgid "Identifier of the starting vertex of the path. Negative value is for point’s identifier."
@@ -12568,31 +12982,7 @@ msgstr ""
 msgid "Array of identifiers of ending vertices. Negative values are for point’s identifiers."
 msgstr ""
 
-msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
-msgstr ""
-
-msgid "``r`` for right driving side."
-msgstr ""
-
-msgid "``l`` for left driving side."
-msgstr ""
-
-msgid "``b`` for both."
-msgstr ""
-
-msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
-msgstr ""
-
 msgid "All the examples are about traveling from point :math:`1` and vertex :math:`5` to points :math:`\\{2, 3, 6\\}` and vertices :math:`\\{10, 11\\}`"
-msgstr ""
-
-msgid "Passes in front or visits with right side driving."
-msgstr ""
-
-msgid "For point :math:`6` and vertex :math:`11`."
-msgstr ""
-
-msgid "Passes in front or visits with left side driving."
 msgstr ""
 
 msgid "``pgr_withPointsCost`` - Calculates the shortest path and returns only the aggregate cost of the shortest path found, for the combination of points given."
@@ -12610,13 +13000,16 @@ msgstr ""
 msgid "The returned values are in the form of a set of |matrix-result|."
 msgstr ""
 
-msgid "**positive** when it belongs to the edges sql"
+msgid "**positive** when it belongs to the edges_sql"
 msgstr ""
 
-msgid "**negative** when it belongs to the points sql"
+msgid "**negative** when it belongs to the points_sql"
 msgstr ""
 
-msgid "For optimization purposes, any duplicated value in the input arrays of **start vids** or **end vids** or are ignored."
+msgid "If the values returned are stored in a table, the unique index would be the pair: `(start_vid, end_vid)`."
+msgstr ""
+
+msgid "For **undirected** graphs, the results are **symmetric**."
 msgstr ""
 
 msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **driving side** [**options**])"
@@ -12631,7 +13024,7 @@ msgstr ""
 msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **driving side** [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **driving side** [**options**])"
 msgstr ""
 
 msgid "**options:** ``[directed]``"
@@ -12640,10 +13033,13 @@ msgstr ""
 msgid "There is no **details** flag, unlike the other members of the withPoints family of functions."
 msgstr ""
 
-msgid "From point :math:`1` to vertex :math:`10` with default options."
+msgid "From point :math:`1` to vertex :math:`10` with right driving side in directed graph."
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **driving side** [**options**])"
+msgid "From point :math:`1` and vertex :math:`6` to point :math:`3` with right driving side in directed graph."
+msgstr ""
+
+msgid "From point :math:`1` to vertex :math:`10`, and from vertex :math:`6` to point :math:`3` with right side driving."
 msgstr ""
 
 msgid "Find the cost of the routes from vertex :math:`1` to the two closest locations on the graph of point `(2.9, 1.8)`."
@@ -12667,10 +13063,7 @@ msgstr ""
 msgid "``pgr_withPointsCostMatrix`` - Calculates a cost matrix using :doc:`pgr_withPoints`."
 msgstr ""
 
-msgid "Modify the graph to include points defined by points_sql. Using Dijkstra algorithm, return calculate and return a cost matrix."
-msgstr ""
-
-msgid "pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, **driving side**  [**options**])"
+msgid "pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, **driving side** [**options**])"
 msgstr ""
 
 msgid "Cost matrix for points :math:`\\{1, 6\\}` and vertices :math:`\\{10, 11\\}` on an **undirected** graph"
@@ -12691,25 +13084,16 @@ msgstr ""
 msgid "``pgr_withPointsDD`` - Returns the driving **distance** from a starting point."
 msgstr ""
 
-msgid "Signature change: ``driving_side`` parameter changed from named optional to unnamed compulsory **driving side**."
-msgstr ""
-
-msgid "pgr_withPointsDD(Single vertex)"
-msgstr ""
-
-msgid "pgr_withPointsDD(Multiple vertices)"
-msgstr ""
-
-msgid "Added ``depth``, ``pred`` and ``start_vid`` column."
-msgstr ""
-
-msgid "Added ``depth``, ``pred`` columns."
+msgid "Output columns standardized to |result-spantree|"
 msgstr ""
 
 msgid "When ``details`` is ``false``:"
 msgstr ""
 
-msgid "Only points that are visited are removed, that is, points reached within the distance are included"
+msgid "Points reached within the distance are not included."
+msgstr ""
+
+msgid "Deprecated signatures:"
 msgstr ""
 
 msgid "Modify the graph to include points and using Dijkstra algorithm, extracts all the nodes and points that have costs less than or equal to the value ``**distance**`` from the starting point. The edges extracted will conform the corresponding spanning tree."
@@ -12745,12 +13129,6 @@ msgstr ""
 msgid "Negative values represent a point"
 msgstr ""
 
-msgid "**driving side**"
-msgstr ""
-
-msgid "Value in [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] indicating if the driving side is:"
-msgstr ""
-
 msgid "``r``, ``R`` for right driving side,"
 msgstr ""
 
@@ -12784,16 +13162,10 @@ msgstr ""
 msgid "From point :math:`1` within a distance of :math:`3.3`, does not matter driving side, with details."
 msgstr ""
 
-msgid ":doc:`pgr_drivingDistance`"
-msgstr ""
-
 msgid "``pgr_withPointsKSP``"
 msgstr ""
 
 msgid "``pgr_withPointsKSP`` — Yen's algorithm for K shortest paths using Dijkstra."
-msgstr ""
-
-msgid "pgr_withPointsKSP(One to One)"
 msgstr ""
 
 msgid "pgr_withPointsKSP(One to Many)"
@@ -12806,9 +13178,6 @@ msgid "pgr_withPointsKSP(Many to Many)"
 msgstr ""
 
 msgid "pgr_withPointsKSP(Combinations)"
-msgstr ""
-
-msgid "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolean)``"
 msgstr ""
 
 msgid "Modifies the graph to include the points defined in the `Points SQL`_ and using Yen algorithm, finds the :math:`K` shortest paths."
@@ -12856,25 +13225,7 @@ msgstr ""
 msgid "Using a combinations table on an **directed** graph"
 msgstr ""
 
-msgid "`Points SQL`_ query as described."
-msgstr ""
-
 msgid "Number of required paths"
-msgstr ""
-
-msgid "**driving_side**"
-msgstr ""
-
-msgid "**CHAR**"
-msgstr ""
-
-msgid "[``r``, ``R``] for right driving side (for directed graph only)"
-msgstr ""
-
-msgid "[``l``, ``L``] for left driving side (for directed graph only)"
-msgstr ""
-
-msgid "[``b``, ``B``] for both (only for undirected graph)"
 msgstr ""
 
 msgid "withPointsKSP optional parameters"
@@ -12904,10 +13255,10 @@ msgstr ""
 msgid "Given a graph, a set of points on the graphs edges and a list of vertices, this function is equivalent to finding the shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` (where :math:`vertex` can be a vertex or a point on the graph) for all :math:`i < size\\_of(via\\;vertices)`."
 msgstr ""
 
-msgid "pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, [**options**])"
+msgid "pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, **driving side** [**options**])"
 msgstr ""
 
-msgid "Find the route that visits the vertices :math:`\\{ -6, 15, -1\\}` in that order on a **directed** graph."
+msgid "Find the route that visits the vertices :math:`\\{ -6, 15, -1\\}` in that order with right driving side in directed graph.."
 msgstr ""
 
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_"
@@ -12937,31 +13288,7 @@ msgstr ""
 msgid "Proposed Functions"
 msgstr ""
 
-msgid ":doc:`pgr_withPoints` - Route from/to points anywhere on the graph."
-msgstr ""
-
-msgid ":doc:`pgr_withPointsCost` - Costs of the shortest paths."
-msgstr ""
-
-msgid ":doc:`pgr_withPointsCostMatrix` - Costs of the shortest paths."
-msgstr ""
-
-msgid ":doc:`pgr_withPointsKSP` - K shortest paths."
-msgstr ""
-
-msgid ":doc:`pgr_withPointsDD` - Driving distance."
-msgstr ""
-
-msgid ":doc:`pgr_withPointsVia` - Via routing"
-msgstr ""
-
 msgid ":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
-msgstr ""
-
-msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
-msgstr ""
-
-msgid "From the :doc:`TRSP-family`:"
 msgstr ""
 
 msgid "Reference"
@@ -13246,9 +13573,6 @@ msgstr ""
 msgid "Results of documentation queries adujsted to boost 1.83.0 version:"
 msgstr ""
 
-msgid "pgr_edgeDisjointPaths"
-msgstr ""
-
 msgid "pgr_stoerWagner"
 msgstr ""
 
@@ -13271,6 +13595,9 @@ msgid "The upgrade was failing for same minor"
 msgstr ""
 
 msgid "Fix warnings from cpplint"
+msgstr ""
+
+msgid "Others"
 msgstr ""
 
 msgid "Adjust NEWS generator"
@@ -13367,9 +13694,6 @@ msgid "Changes on the documentation to the following:"
 msgstr ""
 
 msgid "pgr_degree"
-msgstr ""
-
-msgid "pgr_dijkstra"
 msgstr ""
 
 msgid "pgr_ksp"
@@ -13633,9 +13957,6 @@ msgstr ""
 msgid "Coloring"
 msgstr ""
 
-msgid "pgr_edgeColoring"
-msgstr ""
-
 msgid "Experimental promoted to Proposed"
 msgstr ""
 
@@ -13667,9 +13988,6 @@ msgid "pgr_dijkstraNearCost(Many to One)"
 msgstr ""
 
 msgid "pgr_dijkstraNearCost(One to Many)"
-msgstr ""
-
-msgid "pgr_sequentialVertexColoring"
 msgstr ""
 
 msgid "pgr_extractVertices"
@@ -13727,12 +14045,6 @@ msgid "`#1850 <https://github.com/pgRouting/pgrouting/issues/1850>`__: Change Bo
 msgstr ""
 
 msgid "Removing support for Boost v1.53, v1.54 & v1.55"
-msgstr ""
-
-msgid "pgr_bipartite"
-msgstr ""
-
-msgid "pgr_depthFirstSearch"
 msgstr ""
 
 msgid "Dijkstra Near"
@@ -14047,9 +14359,6 @@ msgstr ""
 msgid "pgr_maxCardinalityMatching"
 msgstr ""
 
-msgid "pgr_maxFlow"
-msgstr ""
-
 msgid "pgr_edgeDisjointPaths(One to One)"
 msgstr ""
 
@@ -14095,16 +14404,7 @@ msgstr ""
 msgid "pgr_maxFlowMinCost_Cost"
 msgstr ""
 
-msgid "pgr_turnRestrictedPath"
-msgstr ""
-
 msgid "pgr_dagShortestpath"
-msgstr ""
-
-msgid "pgr_topologicalSort"
-msgstr ""
-
-msgid "pgr_transitiveClosure"
 msgstr ""
 
 msgid "VRP category"
@@ -14128,19 +14428,7 @@ msgstr ""
 msgid "Breadth First Search family"
 msgstr ""
 
-msgid "pgr_breadthFirstSearch"
-msgstr ""
-
-msgid "pgr_binaryBreadthFirstSearch"
-msgstr ""
-
 msgid "Bellman Ford family"
-msgstr ""
-
-msgid "pgr_bellmanFord"
-msgstr ""
-
-msgid "pgr_edwardMoore"
 msgstr ""
 
 msgid "Moved to legacy"
@@ -14233,12 +14521,6 @@ msgstr ""
 msgid "pgr_johnson"
 msgstr ""
 
-msgid "pgr_aStar"
-msgstr ""
-
-msgid "pgr_bdAstar"
-msgstr ""
-
 msgid "pgr_bdDijstra"
 msgstr ""
 
@@ -14248,13 +14530,7 @@ msgstr ""
 msgid "pgr_dijkstraCostMatrix"
 msgstr ""
 
-msgid "pgr_dijkstraCost"
-msgstr ""
-
 msgid "pgr_drivingDistance"
-msgstr ""
-
-msgid "pgr_KSP"
 msgstr ""
 
 msgid "pgr_dijkstraVia (proposed)"
@@ -14503,9 +14779,6 @@ msgstr ""
 msgid "To see the issues closed by this release see the `Git closed issues for 2.4.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
-msgid "pgr_bdDijkstra"
-msgstr ""
-
 msgid "Deprecated signatures."
 msgstr ""
 
@@ -14570,9 +14843,6 @@ msgid "pgr_TSP"
 msgstr ""
 
 msgid "pgr_eucledianTSP"
-msgstr ""
-
-msgid "pgr_withPointsCostMatrix"
 msgstr ""
 
 msgid "pgr_maxFlowPushRelabel(One to One)"
@@ -15278,6 +15548,9 @@ msgid "A spanning tree of an undirected graph is a tree that includes all the ve
 msgstr ""
 
 msgid "For a disconnected graph, there there is no single tree, but a spanning forest, consisting of a spanning tree of each connected component."
+msgstr ""
+
+msgid "Characteristics:"
 msgstr ""
 
 msgid "pgRouting community support is available through the `pgRouting website <https://pgrouting.org/support.html>`_, `documentation <https://docs.pgrouting.org>`_, tutorials, mailing lists and others. If you’re looking for :ref:`commercial support <support_commercial>`, find below a list of companies providing pgRouting development and consulting services."

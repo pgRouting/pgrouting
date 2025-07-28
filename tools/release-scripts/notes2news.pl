@@ -57,7 +57,7 @@ while (my $line = <$ifh>) {
   next if $skipping and $line !~ /^pgRouting/;
   $skipping = 0;
 
-  next if $line =~ /current|contents|:local:|:depth:|\*\*\*\*\*\*\*|\=\=\=\=\=\=\=|\-\-\-\-\-\-\-|\+\+\+\+\+\+\+\+/;
+  next if $line =~ /current|contents|:local:|:depth:|\*\*\*\*\*\*\*|\=\=\=\=\=\=\=|\-\-\-\-\-\-\-|\+\+\+\+\+\+\+\+|\.\.\.\.\.\.\.\.\./;
 
   $line =~ s/[\|]+//g;
   $line =~ s/($check)/$conversions{$1}/go;
@@ -139,6 +139,10 @@ while (my $line = <$ifh>) {
   }
 
 
+  # Convert :pr: & issue to markdown
+  $line =~ s/:pr:`([^<]+?)`/\[#$1\](https:\/\/github.com\/pgRouting\/pgrouting\/pull\/$1)/g;
+  $line =~ s/:issue:`([^<]+?)`/\[#$1\](https:\/\/github.com\/pgRouting\/pgrouting\/issues\/$1)/g;
+  $line =~ s/:milestone:`([^<]+?)`/\[#$1\](https:\/\/github.com\/pgRouting\/pgrouting\/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%20$1%22)/g;
 
   # convert urls to markdown
   $line =~ s/`([^<]+?)\s*<([^>]+)>`_*/\[$1\]($2)/g;

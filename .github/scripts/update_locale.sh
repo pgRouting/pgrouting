@@ -20,14 +20,13 @@
 # ------------------------------------------------------------------------------
 
 
-
 DIR=$(git rev-parse --show-toplevel)
 
 pushd "${DIR}" > /dev/null || exit 1
 
 mkdir -p build
 pushd build > /dev/null || exit 1
-cmake -DWITH_DOC=ON -DCMAKE_BUILD_TYPE=Release -DLOCALE=ON ..
+cmake -DBUILD_LOCALE=ON ..
 
 make locale
 popd > /dev/null || exit 1
@@ -39,7 +38,12 @@ perl -ne '/\/en\// && print' build/doc/locale_changes_po.txt | \
     perl -pe 's/(.*)en\/LC_MESSAGES(.*)/$1pot$2t/' >> build/doc/locale_changes_po_pot.txt  # .pot files
 
 # Remove obsolete entries #~ from .po files
-bash tools/transifex/remove_obsolete_entries.sh
+find locale -type f -name '*.po' -exec sh -c '
+    if grep -q "#~" "$1"; then
+        perl -pi -0777 -e "s/#~.*//s" "$1"
+        git add "$1"
+    fi
+  ' sh {} \;
 
 while read -r f; do git add "$f"; done < build/doc/locale_changes_po_pot.txt
 

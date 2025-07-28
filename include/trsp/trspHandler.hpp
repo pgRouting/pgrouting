@@ -57,7 +57,7 @@ class TrspHandler : public pgrouting::Pgr_messages {
      */
     typedef std::pair<double, std::pair<int64_t, bool>> PDP;
 
-    /** @brief predecesor edge
+    /** @brief predecessor edge
      *
      * because each row represents 2 edges, this enumeration
      * is needed for the predecessors
@@ -155,7 +155,7 @@ class TrspHandler : public pgrouting::Pgr_messages {
     std::vector<EdgeInfo> m_edges;
 
     /**
-     * Used only to veryfy that there are no reppetitions inserted
+     * Used only to verify that there are no reppetitions inserted
      * the way it works, repeating edges id is not allowed
      * TODO when using points edges id are repeated
      */
