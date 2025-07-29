@@ -4,6 +4,6 @@
 /* -- q1 */
 SELECT * FROM pgr_bandwidth(
 'SELECT id, source, target, cost, reverse_cost
-FROM edges where id < 5'
+FROM edges'
 );
 /* -- q2 */
