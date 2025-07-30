@@ -99,9 +99,7 @@ if(WIN32 AND MSVC)
 endif()
 
 #---------------------------------------------
-#---------------------------------------------
 # Boost
-#---------------------------------------------
 #---------------------------------------------
 
 find_package(Boost ${BOOST_MINIMUM_VERSION} REQUIRED)
@@ -113,10 +111,23 @@ add_definitions(-DBOOST_ALLOW_DEPRECATED_HEADERS)
 
 include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
-#-----------------------------------------------------------------------------
+#---------------------------------------------
+# Clang tidy
+#---------------------------------------------
+
+option(USE_CLANG_TIDY "Use clang-tidy." OFF)
+
+if(USE_CLANG_TIDY)
+    find_program(CLANG_TIDY_COMMAND NAMES clang-tidy NO_CACHE)
+    if (CLANG_TIDY_COMMAND)
+        set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND};--config-file=${CMAKE_SOURCE_DIR}/.clang-tidy")
+    else()
+        message(WARNING "Set to use clang_tidy, but not found.")
+    endif()
+endif()
+
 #-----------------------------------------------------------------------------
 # C/C++ Compiler requirements
-#-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 
 include(CheckCCompilerFlag)
@@ -207,16 +218,6 @@ endif()
 
 add_definitions(-DPGSQL_VERSION=${PGSQL_VERSION})
 message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
-
-
-#---------------------------------------------
-#---------------------------------------------
-# Boost
-#---------------------------------------------
-#---------------------------------------------
-
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
-
 
 #---------------------------------------------
 if (PROJECT_DEBUG)
