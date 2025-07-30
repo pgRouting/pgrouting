@@ -1,0 +1,15 @@
+Checks: >
+    google-*,
+    -google-readability-braces-around-statements,
+    -google-readability-casting,
+    clang-analyzer-*,
+    clang-diagnostic-*,
+    cppcoreguidelines-avoid-capturing-lambda-coroutines,
+    cppcoreguidelines-avoid-goto,
+    cppcoreguidelines-avoid-non-const-global-variables,
+    cppcoreguidelines-avoid-reference-coroutine-parameters
+
+WarningsAsErrors: ''
+HeaderFilterRegex: './include'
+FormatStyle:     none
+InheritParentConfig: true
