@@ -153,7 +153,7 @@ get_combinations(
 std::map<int64_t , std::set<int64_t>>
 get_combinations(
         const std::string &combinations_sql,
-        ArrayType* startsArr, ArrayType* endsArr, bool normal, bool is_matrix) {
+        ArrayType* startsArr, ArrayType* endsArr, bool normal, bool &is_matrix) {
     using pgrouting::pgget::get_intSet;
     using pgrouting::pgget::get_combinations;
     std::map<int64_t, std::set<int64_t>> result;
