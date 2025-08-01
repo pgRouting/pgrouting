@@ -65,10 +65,6 @@ Signatures
    :start-after: -- q1
    :end-before: -- q2
 
-.. rubric:: Explanation
-
-TBD
-
 Parameters
 -------------------------------------------------------------------------------
 
