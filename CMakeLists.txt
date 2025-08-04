@@ -98,48 +98,55 @@ if(WIN32 AND MSVC)
     set(CMAKE_CXX_FLAGS "")
 endif()
 
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-# C/C++ Compiler requirements
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
+#---------------------------------------------
+# Boost
+#---------------------------------------------
 
 find_package(Boost ${BOOST_MINIMUM_VERSION} REQUIRED)
 if (NOT Boost_VERSION_MACRO)
     set(Boost_VERSION_MACRO ${Boost_VERSION})
 endif()
 set(BOOST_VERSION "${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
+add_definitions(-DBOOST_ALLOW_DEPRECATED_HEADERS)
+
+include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
+
+#---------------------------------------------
+# Clang tidy
+#---------------------------------------------
+
+option(USE_CLANG_TIDY "Use clang-tidy." OFF)
+
+if(USE_CLANG_TIDY)
+    find_program(CLANG_TIDY_COMMAND NAMES clang-tidy NO_CACHE)
+    if (CLANG_TIDY_COMMAND)
+        set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND};--config-file=${CMAKE_SOURCE_DIR}/.clang-tidy")
+    else()
+        message(WARNING "Set to use clang_tidy, but not found.")
+    endif()
+endif()
+
+#-----------------------------------------------------------------------------
+# C/C++ Compiler requirements
+#-----------------------------------------------------------------------------
 
 include(CheckCCompilerFlag)
 include(CheckCXXCompilerFlag)
-if (BOOST_VERSION VERSION_LESS "1.75.0")
-    CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-    if(COMPILER_SUPPORTS_CXX11)
-        set(CMAKE_CXX_STANDARD 11)
-        set(CMAKE_CXX_STANDARD_REQUIRED ON)
-        set(CMAKE_CXX_EXTENSIONS OFF)
-    else()
-        CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
-        if(COMPILER_SUPPORTS_CXX0X)
-            add_compile_options("-std=c++0x")
-            message(STATUS "Using  -std=c++0x.")
-        else()
-        message(WARNING "The compiler ${CMAKE_CXX_COMPILER} has no C++0x or C++11 flags support.
-            Using: callback compiler's standard")
-        endif()
-    endif()
-else()
-    set(CMAKE_CXX_STANDARD 14)
-endif()
 
-add_definitions(-DBOOST_ALLOW_DEPRECATED_HEADERS)
+set(CMAKE_CXX_STANDARD 17 CACHE STRING "C++ standard version to use (minimum requirement is c++17)")
+
 set(COMPILER_VERSION "${CMAKE_CXX_COMPILER_ID}-${CMAKE_CXX_COMPILER_VERSION}")
 
+#-----------------------------------------------------------------------------
+# C++ language version and compilation flags
+#-----------------------------------------------------------------------------
+message(STATUS "pgRouting: Require C++${CMAKE_CXX_STANDARD}")
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 #---------------------------------------------
 # Windows compiler flags
 #---------------------------------------------
-
 
 if(WIN32 AND NOT MSVC)
     set(OS_BUILD  $ENV{OS_BUILD})
@@ -170,22 +177,10 @@ if(WIN32 AND MSVC)
 endif()
 
 #-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
 # Finding prerequisites
 #-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
 
-#---------------------------------------------
-#---------------------------------------------
-# Perl
-#---------------------------------------------
-#---------------------------------------------
-include(FindPerl)
-if(NOT PERL_EXECUTABLE)
-    message(FATAL_ERROR "perl NOT FOUND - Please check your Perl installation.")
-endif()
+find_package(Perl REQUIRED)
 
 #---------------------------------------------
 #---------------------------------------------
@@ -223,16 +218,6 @@ endif()
 
 add_definitions(-DPGSQL_VERSION=${PGSQL_VERSION})
 message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
-
-
-#---------------------------------------------
-#---------------------------------------------
-# Boost
-#---------------------------------------------
-#---------------------------------------------
-
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
-
 
 #---------------------------------------------
 if (PROJECT_DEBUG)

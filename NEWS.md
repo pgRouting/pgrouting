@@ -13,6 +13,43 @@ To see all issues & pull requests closed by this release see the
 [#4.0.0](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22)
 
 
+Build
+
+* C++ standard is std17
+
+  * Using this standard all versions of  will work
+  * The code is not yet modified to use std17:
+
+    * If needed: ``-DCMAKE_CXX_STANDARD=14`` to lower the standard.
+
+* The user's documentation is build by default
+* The doxygen documentation is build by default
+
+For developers:
+
+* Set `-DUSE_CLANG_TIDY=ON` for clang tidy checks.
+* Tidy checks are done on CI.
+
+Documentation build
+
+* The doxygen documentation is build by default
+* The HTML documentation is build by default
+* The translated languages (en, es, zh_Hans) HTML documentation is build by default
+* `WITH-DOC` is not used anymore
+
+User's Documentation is not build when
+
+* Sphinx is not found
+* When all Sphinx formats are OFF
+* When all languages are OFF
+* Documentation output changed location to [build/doc/_build/](format) directory
+
+  * For example: for HTML output is on `build/doc/_build/html` directory
+
+Developers's Documentation is not build when
+
+* Doxygen is not found
+
 Summary of changes by function
 
 * pgr_aStar
@@ -453,25 +490,6 @@ Summary of functions and signatures no longer on pgrouting
 * [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)
 * [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpoints(text,text,text,boolean,character,boolean)
 * [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
-
-Documentation build
-
-WITH-DOC is not used anymore
-
-* The doxygen documentation is build by default
-* The HTML documentation is build by default
-* The translated languages (en, es, zh_Hans) HTML documentation is build by default
-
-User's Documentation is not build when
-
-* Sphinx is not found
-* When all Sphinx formats are OFF
-* When all languages are OFF
-* Output is on build/doc/_build/<format> directory
-
-Developers's Documentation is not build when
-
-* Doxygen is not found
 
 Code enhancements
 

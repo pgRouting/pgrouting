@@ -89,7 +89,9 @@ jobs:
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
-          CXX=clang++ CC=clang cmake -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Debug -DWITH_DOC=OFF ..
+          CXX=clang++ CC=clang cmake -DPOSTGRESQL_VERSION=${PGVER} \
+             -DCMAKE_BUILD_TYPE=Debug -DBUILD_HTML=OFF -DBUILD_DOXY=OFF \
+             -DUSE_CLANG_TIDY=ON ..
 
       - name: Build
         run: |
