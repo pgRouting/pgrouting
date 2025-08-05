@@ -11,6 +11,7 @@ FROM edges'
 -----------
         13
 (1 row)
+
 /* -- q2 */
 CREATE TABLE my_edges (
      id SERIAL PRIMARY KEY,
@@ -53,5 +54,6 @@ SELECT * FROM pgr_bandwidth(
 -----------
          3
 (1 row)
+
 ROLLBACK;
 ROLLBACK
