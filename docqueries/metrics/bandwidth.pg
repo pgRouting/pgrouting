@@ -80,3 +80,5 @@ INSERT INTO my_edges2 (source, target, cost, reverse_cost) VALUES
 SELECT * FROM pgr_bandwidth(
     'SELECT id, source, target, cost, reverse_cost FROM my_edges2'
 );
+
+/* -- q8 */
