@@ -33,17 +33,8 @@ Description
 
 Bandwidth measures how "spread out" the connections are in a graph when vertices are arranged in a linear order (like numbering them 1, 2, 3, etc.).
 
-  * For each edge in the graph, calculate the distance between the vertex numbers it connects
-  * The bandwidth is the maximum of all these distances
-
-* Example:
-If you have vertices numbered 1, 2, 3, 4, 5 and these edges:
-
-Edge from vertex 1 to vertex 3 → distance = |1-3| = 2
-Edge from vertex 2 to vertex 5 → distance = |2-5| = 3
-Edge from vertex 3 to vertex 4 → distance = |3-4| = 1
-
-The bandwidth would be 3 (the largest distance).
+* For each edge in the graph, calculate the distance between the vertex numbers it connects
+* The bandwidth is the maximum of all these distances
 
 |Boost| Boost Graph Inside
 
@@ -55,7 +46,7 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   pgr_bandwidth(`Edges SQL`_,)
+   pgr_bandwidth(`Edges SQL`_)
 
    | Returns ``BIGINT``
 
@@ -92,6 +83,21 @@ Column             Type        Description
 =================  =========== ==========================================
 ``pgr_bandwidth``   ``BIGINT`` - gives the bandwidth of the graph.
 =================  =========== ==========================================
+
+Additional Examples
+-------------------------------------------------------------------------------
+
+:Example: Undirected graph with edges before optimization.
+
+.. literalinclude:: bandwidth.queries
+   :start-after: -- q2
+   :end-before: -- q5
+
+:Example: Undirected graph with edges after optimization.
+
+.. literalinclude:: bandwidth.queries
+   :start-after: -- q5
+   :end-before: -- q8
 
 See Also
 -------------------------------------------------------------------------------
