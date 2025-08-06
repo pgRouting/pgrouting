@@ -89,11 +89,60 @@ Additional Examples
 
 :Example: Undirected graph with edges before optimization.
 
+.. graphviz::
+
+   graph G {
+    node [shape=circle, style=filled, fillcolor=white, color=black, fontcolor=black, fontsize=10];
+    edge [color=black, penwidth=1];
+
+    4 -- 7;
+    7 -- 9;
+    7 -- 0;
+    0 -- 2;
+    2 -- 5;
+    5 -- 9;
+    9 -- 8;
+    9 -- 1;
+    5 -- 1;
+    9 -- 6;
+    6 -- 3;
+    1 -- 3;
+
+    {rank=same; 4; 8; 6;}
+    {rank=same; 7; 9; 3;}
+    {rank=same; 0; 2; 5; 1;}
+  }
+
 .. literalinclude:: bandwidth.queries
    :start-after: -- q2
    :end-before: -- q5
 
 :Example: Undirected graph with edges after optimization.
+
+.. graphviz::
+
+   graph G {
+    node [shape=circle, style=filled, fillcolor=white, color=black, fontcolor=black, fontsize=12];
+    edge [color=black, penwidth=1];
+
+    0 -- 1;
+    1 -- 3;
+    1 -- 2;
+    2 -- 4;
+    4 -- 8;
+    8 -- 3;
+    3 -- 5;
+    3 -- 6;
+    3 -- 7;
+    8 -- 7;
+    6 -- 9;
+    7 -- 9;
+
+    {rank=same; 0; 5; 6;}
+    {rank=same; 1; 3; 9;}
+    {rank=same; 2; 4; 8; 7;}
+
+  }
 
 .. literalinclude:: bandwidth.queries
    :start-after: -- q5
