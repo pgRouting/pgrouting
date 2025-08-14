@@ -71,7 +71,7 @@ do_metrics(
         hint = "";
 
         auto vertices(pgrouting::extract_vertices(edges));
-	pgrouting::UndirectedGraph undigraph(vertices);
+        pgrouting::UndirectedGraph undigraph(vertices);
 
         undigraph.insert_edges(edges);
 
