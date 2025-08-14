@@ -9,7 +9,7 @@ FROM edges'
 );
  bandwidth
 -----------
-        13
+         5
 (1 row)
 
 /* -- q2 */
@@ -54,7 +54,7 @@ SELECT * FROM pgr_bandwidth(
 );
  bandwidth
 -----------
-         6
+         8
 (1 row)
 
 /* -- q5 */
@@ -99,7 +99,7 @@ SELECT * FROM pgr_bandwidth(
 );
  bandwidth
 -----------
-         6
+         5
 (1 row)
 
 /* -- q8 */
