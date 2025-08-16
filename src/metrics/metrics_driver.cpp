@@ -70,7 +70,9 @@ do_metrics(
 
         hint = "";
 
-        pgrouting::UndirectedGraph undigraph;
+        auto vertices(pgrouting::extract_vertices(edges));
+        pgrouting::UndirectedGraph undigraph(vertices);
+
         undigraph.insert_edges(edges);
 
         uint64_t result = 0;
