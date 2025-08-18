@@ -63,10 +63,9 @@ Contributors
 This Release Contributors
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Individuals in this release v3.8.x (in alphabetical order)
+Individuals in this release v4.0.0 (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Aurélie Bousquet,
 Regina Obe,
 Vicky Vergara
 
