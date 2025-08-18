@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-18 15:44+0000\n"
+"POT-Creation-Date: 2025-08-18 16:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15550,13 +15550,13 @@ msgstr ""
 msgid "It is recommended to use the following wrapper on the problem to pin point the step that is causing the problem."
 msgstr ""
 
-msgid "Mailing List and GIS StackExchange"
+msgid "Mailing List, Matrix, GIS StackExchange"
 msgstr ""
 
-msgid "There are two mailing lists for pgRouting hosted on OSGeo mailing list server:"
+msgid "There are two mailing lists for pgRouting hosted on OSGeo discourse server:"
 msgstr ""
 
-msgid "User mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
+msgid "User mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-users/"
 msgstr ""
 
 msgid "Developer mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-dev/"
@@ -15566,6 +15566,9 @@ msgid "Subscribe: https://discourse.osgeo.org/g/pgrouting-dev"
 msgstr ""
 
 msgid "For general questions and topics about how to use pgRouting, please write to the user mailing list."
+msgstr ""
+
+msgid "If you want to chat with fellow pgRouting users and contributors, you can join our matrix channel: `pgRouting matrix channel <https://matrix.to/#/#pgrouting:osgeo.org>`_."
 msgstr ""
 
 msgid "You can also ask at `GIS StackExchange <https://gis.stackexchange.com/>`_ and tag the question with ``pgrouting``. Find all questions tagged with ``pgrouting`` under https://gis.stackexchange.com/questions/tagged/pgrouting or subscribe to the `pgRouting questions feed <https://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
