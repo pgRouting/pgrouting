@@ -46,9 +46,8 @@ SELECT start_vid, end_vid, agg_cost
 FROM _pgr_withPoints_v4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], ARRAY[$4]::BIGINT[],
   directed, $5, true, true, true, 0, true);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 --v4.0
@@ -70,9 +69,8 @@ SELECT start_vid, end_vid, agg_cost
 FROM _pgr_withPoints_v4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4::BIGINT[],
   directed, $5, true, true, true, 0, true);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 --v4.0
@@ -94,9 +92,8 @@ SELECT start_vid, end_vid, agg_cost
 FROM _pgr_withPoints_v4(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], ARRAY[$4]::BIGINT[],
   directed, $5, true, true, false, 0, true);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 --v4.0
@@ -118,9 +115,8 @@ SELECT start_vid, end_vid, agg_cost
 FROM _pgr_withPoints_v4(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], $4::BIGINT[],
   directed, $5, true, true, true, 0, true);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 --v4.0
@@ -141,9 +137,8 @@ SELECT start_vid, end_vid, agg_cost
 FROM _pgr_withPoints_v4(_pgr_get_statement($1), _pgr_get_statement($2), _pgr_get_statement($3),
   directed, $4, true, true, 0, true);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 COMMENT ON FUNCTION pgr_withPointsCost(TEXT, TEXT, BIGINT, BIGINT, CHAR, BOOLEAN)

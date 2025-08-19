@@ -46,9 +46,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- ONE TO MANY
@@ -73,9 +72,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- MANY TO ONE
@@ -100,9 +98,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 
@@ -129,8 +126,7 @@ $BODY$
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- COMBINATIONS
@@ -155,11 +151,9 @@ $BODY$
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), _pgr_get_statement($2), directed, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_bdDijkstra(One to One)

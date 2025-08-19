@@ -42,11 +42,9 @@ $BODY$
     FROM _pgr_lineGraphFull(_pgr_get_statement($1))
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_lineGraphFull(TEXT)
 IS 'pgr_lineGraphFull

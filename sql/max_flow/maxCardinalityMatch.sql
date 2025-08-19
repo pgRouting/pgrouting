@@ -36,8 +36,7 @@ SELECT edge
 FROM _pgr_maxCardinalityMatch_v4(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 COMMENT ON FUNCTION pgr_maxCardinalityMatch(TEXT)
 IS 'pgr_maxCardinalityMatch

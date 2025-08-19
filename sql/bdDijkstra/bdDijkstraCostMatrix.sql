@@ -43,9 +43,8 @@ $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), $2::BIGINT[], $2::BIGINT[], $3, true) a;
 $BODY$
-LANGUAGE SQL VOLATILE
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- COMMENT
 

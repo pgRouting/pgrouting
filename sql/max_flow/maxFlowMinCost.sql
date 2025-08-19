@@ -52,7 +52,8 @@ $BODY$
     SELECT seq, edge, source, target, flow, residual_capacity, cost, agg_cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 --    ONE TO MANY
@@ -75,7 +76,8 @@ $BODY$
     SELECT seq, edge, source, target, flow, residual_capacity, cost, agg_cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], only_cost := false);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 --    MANY TO ONE
@@ -98,7 +100,8 @@ $BODY$
     SELECT seq, edge, source, target, flow, residual_capacity, cost, agg_cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 --    MANY TO MANY
 --v3.0
@@ -120,7 +123,8 @@ $BODY$
     SELECT seq, edge, source, target, flow, residual_capacity, cost, agg_cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], only_cost := false);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 -- COMBINATIONS
@@ -142,10 +146,10 @@ $BODY$
     SELECT seq, edge, source, target, flow, residual_capacity, cost, agg_cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), _pgr_get_statement($2), only_cost := false);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_maxFlowMinCost(TEXT, BIGINT, BIGINT)
 IS 'pgr_maxFlowMinCost(One to One)

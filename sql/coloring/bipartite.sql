@@ -38,9 +38,9 @@ $BODY$
     SELECT node, color
     FROM _pgr_bipartite(_pgr_get_statement($1));
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_bipartite(TEXT)
 IS 'pgr_bipartite

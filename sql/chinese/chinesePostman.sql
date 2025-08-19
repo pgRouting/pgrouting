@@ -49,9 +49,9 @@ $BODY$
     SELECT seq, node, edge, cost, agg_cost
     FROM _pgr_chinesePostman(_pgr_get_statement($1), only_cost := false);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_chinesePostman(TEXT)
 IS 'pgr_chinesePostman

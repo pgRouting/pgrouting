@@ -41,8 +41,7 @@ SELECT seq, node, cost, agg_cost
 FROM _pgr_TSPeuclidean_v4(_pgr_get_statement($1), $2, $3);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 COMMENT ON FUNCTION pgr_TSPeuclidean(TEXT, BIGINT, BIGINT)
 IS 'pgr_TSPeuclidean

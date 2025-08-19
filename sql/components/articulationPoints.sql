@@ -37,9 +37,9 @@ $BODY$
     SELECT node
     FROM _pgr_articulationPoints(_pgr_get_statement($1));
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_articulationPoints(TEXT)
 IS'pgr_articulationPoints

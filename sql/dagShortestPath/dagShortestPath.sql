@@ -48,7 +48,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_dagShortestPath_v4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], false, true);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- ONE to MANY
@@ -72,7 +73,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_dagShortestPath_v4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], false, true);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- MANY to ONE
@@ -96,7 +98,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_dagShortestPath_v4(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], false, true);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- MANY to MANY
@@ -120,7 +123,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_dagShortestPath_v4(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], false, true);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- COMBINATIONS
@@ -143,9 +147,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_dagShortestPath_v4(_pgr_get_statement($1), _pgr_get_statement($2), false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, BIGINT, BIGINT)

@@ -1,5 +1,12 @@
 add_subdirectory(sigs)
 
+SET(COST_HIGH 10000)
+SET(COST_MED   5000)
+SET(COST_LOW    100)
+
+SET(ROWS_HIGH 10000)
+SET(ROWS_MED   5000)
+SET(ROWS_LOW    100)
 
 #-------------------
 # From the parent get the subdirectories that have the SQL files

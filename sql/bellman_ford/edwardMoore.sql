@@ -48,7 +48,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_edwardMoore(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4);
 $BODY$
-LANGUAGE sql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- ONE to MANY
@@ -73,7 +74,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_edwardMoore(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4);
 $BODY$
-LANGUAGE sql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- MANY to ONE
@@ -98,7 +100,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_edwardMoore(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4);
 $BODY$
-LANGUAGE sql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- MANY to MANY
@@ -123,7 +126,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_edwardMoore(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4);
 $BODY$
-LANGUAGE sql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- COMBINATIONS
@@ -147,7 +151,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_edwardMoore(_pgr_get_statement($1), _pgr_get_statement($2), $3);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 COMMENT ON FUNCTION pgr_edwardMoore(TEXT, BIGINT, BIGINT, BOOLEAN)

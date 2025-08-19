@@ -40,8 +40,7 @@ $BODY$
     FROM _pgr_dijkstra_v4(_pgr_get_statement($1), $2::BIGINT[], '{}'::BIGINT[], $3, true, true, 0, false) a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 COMMENT ON FUNCTION pgr_dijkstraCostMatrix(TEXT, ANYARRAY, BOOLEAN)
 IS 'pgr_dijkstraCostMatrix

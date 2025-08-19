@@ -35,7 +35,8 @@ $BODY$
     SELECT vid, target_array
     FROM _pgr_transitiveClosure(_pgr_get_statement($1));
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 COMMENT ON FUNCTION pgr_transitiveClosure(TEXT)

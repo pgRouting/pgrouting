@@ -57,8 +57,7 @@ FROM _pgr_trsp_withPoints_v4(
   ARRAY[$4]::BIGINT[], ARRAY[$5]::BIGINT[],  directed, $6, details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 --v4.0
 CREATE FUNCTION pgr_trsp_withPoints(
@@ -90,8 +89,7 @@ FROM _pgr_trsp_withPoints_v4(
   ARRAY[$4]::BIGINT[], $5::BIGINT[], directed, $6, details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 --v4.0
 CREATE FUNCTION pgr_trsp_withPoints(
@@ -123,8 +121,7 @@ FROM _pgr_trsp_withPoints_v4(
   $4::BIGINT[], ARRAY[$5]::BIGINT[], directed, $6, details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 --v4.0
 CREATE FUNCTION pgr_trsp_withPoints(
@@ -156,8 +153,7 @@ FROM _pgr_trsp_withPoints_v4(
   $4::BIGINT[], $5::BIGINT[], directed, $6, details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 --v4.0
 CREATE FUNCTION pgr_trsp_withPoints(
@@ -189,8 +185,7 @@ FROM _pgr_trsp_withPoints_v4(
   directed, $5, details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, BIGINT, BIGINT, CHAR, BOOLEAN, BOOLEAN)
 IS 'pgr_trsp_withPoints (One to One)

@@ -49,7 +49,8 @@ $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
     FROM _pgr_depthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], directed, max_depth);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- MULTIPLE VERTICES
@@ -74,7 +75,8 @@ $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
     FROM _pgr_depthFirstSearch(_pgr_get_statement($1), $2, directed, max_depth);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, BIGINT, BOOLEAN, BIGINT)
 IS 'pgr_depthFirstSearch(Single Vertex)

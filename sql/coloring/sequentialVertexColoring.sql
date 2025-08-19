@@ -38,9 +38,9 @@ $BODY$
     SELECT vertex_id, color_id
     FROM _pgr_sequentialVertexColoring(_pgr_get_statement($1));
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_sequentialVertexColoring(TEXT)
 IS 'pgr_sequentialVertexColoring

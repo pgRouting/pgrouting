@@ -43,9 +43,9 @@ $BODY$
     SELECT seq, source, target, cost
     FROM _pgr_boyerMyrvold(_pgr_get_statement($1)) AS a;
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_boyerMyrvold(TEXT)
 IS 'pgr_boyerMyrvold

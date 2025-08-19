@@ -56,8 +56,7 @@ $BODY$
     FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4, $5, $6, $7, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- MULTIPLE
 --v3.6
@@ -86,8 +85,7 @@ $BODY$
     FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5, $6, $7, $8);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, BIGINT, FLOAT, CHAR, BOOLEAN, BOOLEAN)

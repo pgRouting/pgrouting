@@ -32,7 +32,6 @@ SELECT ARRAY(
 $$ LANGUAGE 'sql' STRICT IMMUTABLE;
 
 
--- COMMENTS
 
 COMMENT ON FUNCTION _pgr_array_reverse(ANYARRAY)
 IS 'pgRouting internal function';

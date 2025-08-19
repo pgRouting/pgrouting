@@ -41,9 +41,9 @@ $BODY$
     SELECT edge_id, color_id
     FROM _pgr_edgeColoring(_pgr_get_statement($1));
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_edgeColoring(TEXT)
 IS 'pgr_edgeColoring

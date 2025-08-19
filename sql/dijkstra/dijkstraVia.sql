@@ -51,10 +51,8 @@ $BODY$
     FROM _pgr_dijkstraVia(_pgr_get_statement($1), $2, $3 , $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_dijkstraVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_dijkstraVia

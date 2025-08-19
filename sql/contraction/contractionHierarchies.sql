@@ -57,9 +57,9 @@ $BODY$
     SELECT type, id, contracted_vertices, source, target, cost, metric, vertex_order
     FROM _pgr_contractionhierarchies(_pgr_get_statement($1), $3::BIGINT[], $2);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_contractionHierarchies(TEXT, BOOLEAN, BIGINT[])
 IS 'pgr_contractionHierarchies
