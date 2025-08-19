@@ -19,11 +19,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN min_version('4.0.0') THEN plan(5) ELSE plan(4) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(10) ELSE plan(4) END;
 
 SELECT cost_types_check(
   'pgr_withpointscostmatrix',
   '{"",directed}'::TEXT[], '{bpchar,bool}'::TEXT[],
+  standard_v => '4.0.0');
+
+SELECT cost_types_check(
+  'pgr_withpointscostmatrix',
+  '{directed}'::TEXT[], '{bool}'::TEXT[],
   standard_v => '4.0.0');
 
 SELECT finish();

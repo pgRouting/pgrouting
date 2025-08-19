@@ -59,19 +59,19 @@ SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     -1, 4.8, 'L', directed => true)$$, 'lives: directed Left');
 
 -- directed b, B
-RETURN QUERY SELECT throws_ok($$
+RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'b', directed => true)$$,
-  'XX000',$$Invalid value of 'driving side'$$, 'throws: directed both');
+  'lives: directed both');
 
-RETURN QUERY SELECT throws_ok($$
+RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'B', directed => true)$$,
-    'XX000',$$Invalid value of 'driving side'$$, 'throws: directed Both');
+    'lives: directed Both');
 
 -- directed Invalid
 RETURN QUERY SELECT throws_ok($$
@@ -90,34 +90,34 @@ SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
 
 -- undirected lives with b,B throws with and any other value
 -- undirected r, R
-RETURN QUERY SELECT throws_ok($$
+RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'r', directed => false)$$,
-    'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected right');
+    'lives: undirected right');
 
-RETURN QUERY SELECT throws_ok($$
+RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'R', directed => false)$$,
-    'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected Right');
+    'lives: undirected Right');
 
 -- undirected l, L
-RETURN QUERY SELECT throws_ok($$
+RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'l', directed => false)$$,
-    'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected left');
+    'lives: undirected left');
 
-RETURN QUERY SELECT throws_ok($$
+RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'L', directed => false)$$,
-    'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected Left');
+    'lives: undirected Left');
 
 -- undirected b, B
 RETURN QUERY SELECT lives_ok($$
@@ -176,19 +176,19 @@ SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     ARRAY[-1,9], 4.8, 'L', directed => true)$$, 'lives: directed Left');
 
 -- directed b, B
-RETURN QUERY SELECT throws_ok($$
+RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'b', directed => true)$$,
-  'XX000',$$Invalid value of 'driving side'$$, 'throws: directed both');
+  'lives: directed both');
 
-RETURN QUERY SELECT throws_ok($$
+RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'B', directed => true)$$,
-    'XX000',$$Invalid value of 'driving side'$$, 'throws: directed Both');
+    'lives: directed Both');
 
 -- directed Invalid
 RETURN QUERY SELECT throws_ok($$
@@ -207,34 +207,34 @@ SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
 
 -- undirected lives with b,B throws with and any other value
 -- undirected r, R
-RETURN QUERY SELECT throws_ok($$
+RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'r', directed => false)$$,
-    'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected right');
+    'lives: undirected right');
 
-RETURN QUERY SELECT throws_ok($$
+RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'R', directed => false)$$,
-    'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected Right');
+    'lives: undirected Right');
 
 -- undirected l, L
-RETURN QUERY SELECT throws_ok($$
+RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'l', directed => false)$$,
-    'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected left');
+    'lives: undirected left');
 
-RETURN QUERY SELECT throws_ok($$
+RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'L', directed => false)$$,
-    'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected Left');
+    'lives: undirected Left');
 
 -- undirected b, B
 RETURN QUERY SELECT lives_ok($$

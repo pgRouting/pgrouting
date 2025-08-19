@@ -150,9 +150,9 @@ BEGIN
     extra_name := extra_name || '{""}'::TEXT[];
     extra_type := extra_type || '{text}'::TEXT[];
 
-    IF NOT min_version('4.0.0') THEN
-      opt_names := '{directed,driving_side,details}'::TEXT[];
-      opt_types := '{bool,bpchar,bool}'::TEXT[];
+    IF NOT min_version(standard_v) THEN
+      RETURN QUERY SELECT skip(1, fn || ': Standardized on version ' || standard_v);
+      RETURN;
     END IF;
   END IF;
 
@@ -285,6 +285,11 @@ BEGIN
 
   RETURN QUERY SELECT has_function(fn);
 
+  IF NOT min_version(standard_v) THEN
+    RETURN QUERY SELECT skip(1, fn || ': Standarized on version ' || standard_v);
+    RETURN;
+  END IF;
+
   IF fn ilike '%matrix%' THEN
 
     RETURN QUERY SELECT has_function(fn, extra_type || '{text,anyarray}' || taptypes[1:bounds]);
@@ -398,6 +403,10 @@ DECLARE
   return_params_names TEXT[] = ARRAY['seq','path_id','path_seq','start_vid','end_vid','node','edge','cost','agg_cost','route_agg_cost'];
   return_params_types TEXT[] = '{int4,int4,int4,int8,int8,int8,int8,float8,float8,float8}'::TEXT[];
 
+  ds_params_names TEXT[];
+  ds_params_types_words TEXT[];
+  ds_params_types TEXT[];
+
   names TEXT;
   typs TEXT;
 BEGIN
@@ -437,9 +446,12 @@ BEGIN
 
   IF fn LIKE '%withpoints%' THEN
     -- driving side
-    params_names := params_names || ARRAY[''];
-    params_types_words := params_types_words || 'character'::TEXT;
-    params_types := params_types || 'bpchar'::TEXT;
+    ds_params_names := params_names || ARRAY[''];
+    ds_params_types_words := params_types_words || 'character'::TEXT;
+    ds_params_types := params_types || 'bpchar'::TEXT;
+
+    RETURN QUERY SELECT has_function(fn, ds_params_types_words || optional_params_types_words);
+    RETURN QUERY SELECT function_returns(fn, ds_params_types_words || optional_params_types_words,'setof record');
   END IF;
 
   RETURN QUERY SELECT has_function(fn);
@@ -447,23 +459,36 @@ BEGIN
   RETURN QUERY SELECT function_returns(fn, params_types_words || optional_params_types_words,'setof record');
 
 
-  RETURN QUERY SELECT function_args_eq(fn,
-    format(
-      $$VALUES (%1$L::TEXT[])$$,
-      -- one via
-      '{"' || array_to_string(
-        params_names || optional_params_names || return_params_names,'","')
-      || '"}'));
+  IF fn LIKE '%withpoints%' THEN
 
-  RETURN QUERY SELECT function_types_eq(fn,
-    format(
-      $$VALUES (%1$L::TEXT[])$$,
-      -- one via
-      '{"' || array_to_string(
-        params_types || optional_params_types || return_params_types,'","')
-      || '"}'));
+    RETURN QUERY SELECT function_args_eq(fn,
+      format($$VALUES ('%1$s'::TEXT[]), ('%2$s') $$,
+          params_names || optional_params_names || return_params_names,
+          ds_params_names || optional_params_names || return_params_names
+      ));
+
+    RETURN QUERY SELECT function_types_eq(fn,
+      format($$VALUES ('%1$s'::TEXT[]), ('%2$s') $$,
+          params_types || optional_params_types || return_params_types,
+          ds_params_types || optional_params_types || return_params_types
+      ));
 
 
-END;
-$BODY$
-LANGUAGE plpgsql;
+  ELSE
+
+    RETURN QUERY SELECT function_args_eq(fn,
+      format($$VALUES ('%1$s'::TEXT[]) $$,
+          params_names || optional_params_names || return_params_names
+      ));
+
+    RETURN QUERY SELECT function_types_eq(fn,
+      format($$VALUES ('%1$s'::TEXT[]) $$,
+          params_types || optional_params_types || return_params_types
+      ));
+
+  END IF;
+
+
+  END;
+  $BODY$
+  LANGUAGE plpgsql;
