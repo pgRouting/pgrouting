@@ -42,7 +42,6 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE C IMMUTABLE STRICT;
 
--- COMMENTS
 
 COMMENT ON FUNCTION _pgr_cuthillMckeeOrdering(TEXT)
 IS 'pgRouting internal function';

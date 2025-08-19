@@ -42,9 +42,8 @@ $BODY$
     SELECT start_vid, end_vid, agg_cost
     FROM _pgr_dijkstra_v4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, true, true, cap, true);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 -- MANY to ONE
 --v3.2
@@ -64,9 +63,8 @@ $BODY$
     SELECT start_vid, end_vid, agg_cost
     FROM _pgr_dijkstra_v4(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, true, false, cap, true);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 -- MANY to MANY
 --v3.2
@@ -87,9 +85,8 @@ $BODY$
     SELECT start_vid, end_vid, agg_cost
     FROM _pgr_dijkstra_v4(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, true, true, cap, global);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 -- Combinations
 --v3.2
@@ -109,9 +106,8 @@ $BODY$
     SELECT start_vid, end_vid, agg_cost
     FROM _pgr_dijkstra_v4(_pgr_get_statement($1), _pgr_get_statement($2), directed, true, cap, global);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 COMMENT ON FUNCTION pgr_dijkstraNearCost(TEXT, BIGINT, ANYARRAY, BOOLEAN, BIGINT)
 IS 'pgr_dijkstraNearCost(One to Many)

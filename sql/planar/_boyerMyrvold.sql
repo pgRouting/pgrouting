@@ -44,7 +44,6 @@ RETURNS SETOF RECORD AS
 LANGUAGE c IMMUTABLE STRICT;
 
 
--- COMMENTS
 
 COMMENT ON FUNCTION _pgr_boyerMyrvold(TEXT)
 IS 'pgRouting internal function';

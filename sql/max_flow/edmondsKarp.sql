@@ -46,7 +46,8 @@ CREATE FUNCTION pgr_edmondsKarp(
         SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 3);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- ONE to MANY
@@ -67,7 +68,8 @@ CREATE FUNCTION pgr_edmondsKarp(
         SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 3);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- MANY to ONE
@@ -88,7 +90,8 @@ CREATE FUNCTION pgr_edmondsKarp(
         SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 3);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- MANY to MANY
@@ -109,7 +112,8 @@ CREATE FUNCTION pgr_edmondsKarp(
         SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 3);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- COMBINATIONS
 --v3.2
@@ -128,10 +132,10 @@ CREATE FUNCTION pgr_edmondsKarp(
         SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), _pgr_get_statement($2), 3);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
--- COMMENTS
 
 
 COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, BIGINT, BIGINT)

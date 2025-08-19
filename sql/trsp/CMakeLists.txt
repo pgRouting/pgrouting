@@ -1,17 +1,18 @@
 
 SET(LOCAL_FILES
-    _trsp.sql
-    trsp.sql
     _array_reverse.sql
 
-    trsp_withPoints.sql
+    _trsp.sql
+    trsp.sql
+
     _trsp_withPoints.sql
+    trsp_withPoints.sql
 
-    trspVia.sql
     _trspVia.sql
+    trspVia.sql
 
-    trspVia_withPoints.sql
     _trspVia_withPoints.sql
+    trspVia_withPoints.sql
     )
 
 foreach (f ${LOCAL_FILES})

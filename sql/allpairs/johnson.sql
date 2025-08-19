@@ -43,9 +43,9 @@ $BODY$
     FROM _pgr_johnson(_pgr_get_statement($1), $2);
 
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_johnson(TEXT, BOOLEAN)
 IS 'pgr_johnson

@@ -50,9 +50,9 @@ CREATE FUNCTION _pgr_contractionhierarchies(
     OUT vertex_order BIGINT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
+LANGUAGE C VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION _pgr_contractionhierarchies(TEXT, BIGINT[], BOOLEAN)
 IS 'pgRouting internal function';

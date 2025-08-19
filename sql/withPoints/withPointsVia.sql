@@ -61,8 +61,7 @@ $BODY$
     directed, strict, u_turn_on_edge, $4, details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 COMMENT ON FUNCTION pgr_withPointsVia(TEXT, TEXT, ANYARRAY, CHAR, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsVia

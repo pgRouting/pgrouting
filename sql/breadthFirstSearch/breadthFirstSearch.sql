@@ -48,7 +48,8 @@ $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
     FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], max_depth, directed);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 --MANY TO DEPTH
@@ -73,7 +74,8 @@ $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
     FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), $2::BIGINT[], max_depth, directed);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 COMMENT ON FUNCTION pgr_breadthFirstSearch(TEXT, BIGINT, BOOLEAN, BIGINT)

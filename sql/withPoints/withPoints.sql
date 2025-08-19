@@ -54,8 +54,7 @@ $BODY$
     directed, $5, details, false, true, 0, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 --v4.0
@@ -86,8 +85,7 @@ $BODY$
     directed, $5, details, false, true, 0, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 --v4.0
@@ -118,8 +116,7 @@ $BODY$
     directed, $5, details, false, false, 0, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 --v4.0
@@ -150,8 +147,7 @@ $BODY$
     directed, $5, details, false, false, 0, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 --v4.0
@@ -180,8 +176,7 @@ $BODY$
     directed, $4, details, false, 0, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 

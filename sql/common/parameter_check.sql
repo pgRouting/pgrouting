@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 --v3.0
 CREATE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean default false)
-  RETURNS bool AS
+  RETURNS BOOLEAN AS
   $BODY$
 
   DECLARE

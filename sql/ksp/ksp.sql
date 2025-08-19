@@ -51,8 +51,7 @@ $BODY$
     FROM _pgr_ksp_v4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- one-to-many
@@ -80,8 +79,7 @@ $BODY$
     FROM  _pgr_ksp_v4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, $5, $6);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- many-to-one
 --v3.6
@@ -108,8 +106,7 @@ $BODY$
     FROM  _pgr_ksp_v4(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- many-to-many
 --v3.6
@@ -136,8 +133,7 @@ $BODY$
     FROM  _pgr_ksp_v4(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, $5, $6);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- combinations
 --v3.6
@@ -163,10 +159,8 @@ $BODY$
     FROM  _pgr_ksp_v4(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_ksp(TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN)
 IS 'pgr_KSP
