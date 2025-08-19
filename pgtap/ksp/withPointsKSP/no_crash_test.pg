@@ -68,7 +68,7 @@ BEGIN
     '(SELECT id FROM vertices WHERE id IN (-1))',
     '(SELECT id FROM vertices WHERE id IN (-1))',
     'NULL',
-    'NULL'
+    'NULL::CHAR'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
@@ -79,7 +79,7 @@ BEGIN
     'NULL::BIGINT',
     'NULL::BIGINT',
     'NULL',
-    'NULL'
+    'NULL::CHAR'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
 
@@ -97,7 +97,7 @@ BEGIN
     '(SELECT id FROM vertices WHERE id IN (-1))',
     '(SELECT array_agg(id) FROM vertices WHERE id IN (-1))',
     'NULL',
-    'NULL'
+    'NULL::CHAR'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
@@ -108,7 +108,7 @@ BEGIN
     'NULL::BIGINT',
     'NULL::BIGINT[]',
     'NULL',
-    'NULL'
+    'NULL::CHAR'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
 
@@ -126,7 +126,7 @@ BEGIN
     '(SELECT array_agg(id) FROM vertices WHERE id IN (-1))',
     '(SELECT id FROM vertices WHERE id IN (-1))',
     'NULL',
-    'NULL'
+    'NULL::CHAR'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
@@ -137,7 +137,7 @@ BEGIN
     'NULL::BIGINT[]',
     'NULL::BIGINT',
     'NULL',
-    'NULL'
+    'NULL::CHAR'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
 
@@ -154,7 +154,7 @@ BEGIN
     '(SELECT array_agg(id) FROM vertices WHERE id IN (-1))',
     '(SELECT array_agg(id) FROM vertices WHERE id IN (-1))',
     'NULL',
-    'NULL'
+    'NULL::CHAR'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
@@ -165,7 +165,7 @@ BEGIN
     'NULL::BIGINT[]',
     'NULL::BIGINT[]',
     'NULL',
-    'NULL'
+    'NULL::CHAR'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
 
@@ -181,8 +181,8 @@ BEGIN
     'NULL',
     'NULL',
     '$$(SELECT source, target FROM combinations WHERE source IN (-1))$$',
-    'NULL',
-    'NULL'
+    'NULL::INTEGER',
+    'NULL::CHAR'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
@@ -191,8 +191,8 @@ BEGIN
     'NULL',
     'NULL',
     'NULL::TEXT',
-    'NULL',
-    'NULL'
+    'NULL::INTEGER',
+    'NULL::CHAR'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
 

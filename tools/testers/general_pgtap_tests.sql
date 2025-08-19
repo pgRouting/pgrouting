@@ -205,15 +205,13 @@ BEGIN
     query_sql || $$'points_sql', $$ || data || $$, 'L', true)$$,
     fn || ': Left driving side on directed graph');
 
-  RETURN QUERY SELECT throws_ok(
+  RETURN QUERY SELECT lives_ok(
     query_sql || $$'points_sql', $$ || data || $$, 'b')$$,
-    'XX000', $$Invalid value of 'driving side'$$,
-    fn || ': both driving side not allowed on default directed graph');
+    fn || ': both driving side allowed on default directed graph');
 
-  RETURN QUERY SELECT throws_ok(
+  RETURN QUERY SELECT lives_ok(
     query_sql || $$'points_sql', $$ || data || $$, 'B')$$,
-    'XX000', $$Invalid value of 'driving side'$$,
-    fn || ': Both driving side not allowed on default directed graph');
+    fn || ': Both driving side allowed on default directed graph');
 
   RETURN QUERY SELECT throws_ok(
     query_sql || $$'points_sql', $$ || data || $$, 'w')$$,
@@ -239,25 +237,21 @@ BEGIN
     query_sql || $$'points_sql', $$ || data || $$, 'B', false)$$,
     fn || ': Both driving side on undirected graph');
 
-  RETURN QUERY SELECT throws_ok(
+  RETURN QUERY SELECT lives_ok(
     query_sql || $$'points_sql', $$ || data || $$, 'r', false)$$,
-    'XX000', $$Invalid value of 'driving side'$$,
-    fn || ': right driving side not allowed on undirected graph');
+    fn || ': right driving side allowed on undirected graph');
 
-  RETURN QUERY SELECT throws_ok(
+  RETURN QUERY SELECT lives_ok(
     query_sql || $$'points_sql', $$ || data || $$, 'R', false)$$,
-    'XX000', $$Invalid value of 'driving side'$$,
-    fn || ': Right driving side not allowed on undirected graph');
+    fn || ': Right driving side allowed on undirected graph');
 
-  RETURN QUERY SELECT throws_ok(
+  RETURN QUERY SELECT lives_ok(
     query_sql || $$'points_sql', $$ || data || $$, 'l', false)$$,
-    'XX000', $$Invalid value of 'driving side'$$,
-    fn || ': left driving side not allowed on undirected graph');
+    fn || ': left driving side allowed on undirected graph');
 
-  RETURN QUERY SELECT throws_ok(
+  RETURN QUERY SELECT lives_ok(
     query_sql || $$'points_sql', $$ || data || $$, 'L', false)$$,
-    'XX000', $$Invalid value of 'driving side'$$,
-    fn || ': Left driving side not allowed on undirected graph');
+    fn || ': Left driving side allowed on undirected graph');
 
   RETURN QUERY SELECT throws_ok(
     query_sql || $$'points_sql', $$ || data || $$, 'w', false)$$,

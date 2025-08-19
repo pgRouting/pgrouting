@@ -136,7 +136,7 @@ BEGIN
     -1, 1, 'r', details := false, directed:=false)
   ORDER BY seq;
 
-  RETURN QUERY SELECT throws_ok('q2');
+  RETURN QUERY SELECT lives_ok('q2');
 
   -------- left driving side
 
@@ -147,7 +147,7 @@ BEGIN
     -1, 1, 'l', details := false, directed:=false)
   ORDER BY seq;
 
-  RETURN QUERY SELECT throws_ok('q3');
+  RETURN QUERY SELECT lives_ok('q3');
 
   ------------------
   ---- FROM 12 to -1
@@ -176,7 +176,7 @@ BEGIN
   ORDER BY seq;
 
 
-  RETURN QUERY SELECT throws_ok('q5');
+  RETURN QUERY SELECT lives_ok('q5');
 
   -------- left driving side
 
@@ -187,7 +187,7 @@ BEGIN
     17, -1, 'l', details := false, directed:=false)
   ORDER BY seq;
 
-  RETURN QUERY SELECT throws_ok('q6');
+  RETURN QUERY SELECT lives_ok('q6');
 
 
   ------------------
@@ -216,7 +216,7 @@ BEGIN
     5, 1, 'r', details := true, directed:=false)
   ORDER BY seq;
 
-  RETURN QUERY SELECT throws_ok('q8');
+  RETURN QUERY SELECT lives_ok('q8');
 
   -------- left driving side
 
@@ -227,7 +227,7 @@ BEGIN
     5, 1, 'l', details := true, directed:=false)
   ORDER BY seq;
 
-  RETURN QUERY SELECT throws_ok('q9');
+  RETURN QUERY SELECT lives_ok('q9');
 
   ------------------
   -- with details
@@ -253,7 +253,7 @@ BEGIN
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     17, -1, 'r', details := true, directed:=false);
-  RETURN QUERY SELECT throws_ok('q9');
+  RETURN QUERY SELECT lives_ok('q9');
 
   -------- left driving side
 
@@ -263,7 +263,7 @@ BEGIN
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     17, -1, 'l', details := true, directed:=false);
 
-  RETURN QUERY SELECT throws_ok('q9');
+  RETURN QUERY SELECT lives_ok('q9');
 
 END;
 $BODY$
