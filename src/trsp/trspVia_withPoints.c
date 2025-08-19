@@ -58,12 +58,6 @@ process(
     if (d_side == ' ') {
         pgr_throw_error("Invalid value of 'driving side'", "Valid value are 'r', 'l', 'b'");
         return;
-    } else if (directed && !(d_side == 'r' || d_side == 'l')) {
-        pgr_throw_error("Invalid value of 'driving side'", "Valid values are for directed graph are: 'r', 'l'");
-        return;
-    } else if (!directed && !(d_side == 'b')) {
-        pgr_throw_error("Invalid value of 'driving side'", "Valid values are for undirected graph is: 'b'");
-        return;
     }
 
     pgr_SPI_connect();
