@@ -56,7 +56,7 @@ namespace {
 
 // TODO(vicky) This should be in its own file
 char
-estimate_drivingSide(char driving_side, bool directed, int32_t which) {
+estimate_drivingSide(char driving_side, int32_t which) {
     char d_side = static_cast<char>(tolower(driving_side));
     if (!((d_side == 'r') || (d_side == 'l') || (d_side == 'b'))) {
         d_side = ' ';
@@ -67,12 +67,6 @@ estimate_drivingSide(char driving_side, bool directed, int32_t which) {
         if (d_side == ' ') {
             throw std::make_pair(std::string("Invalid value of 'driving side'"),
                     std::string("Valid value are 'r', 'l', 'b'"));
-        } else if (directed && !(d_side == 'r' || d_side == 'l')) {
-            throw std::make_pair(std::string("Invalid value of 'driving side'"),
-                    std::string("Valid values for directed graph are: 'r', 'l'"));
-        } else if (!directed && !(d_side == 'b')) {
-            throw std::make_pair(std::string("Invalid value of 'driving side'"),
-                    std::string("Valid value for undirected graph is: 'b'"));
         }
     } else {
         /* For the moment its old signature of pgr_withPoints */
@@ -240,7 +234,7 @@ do_shortestPath(
          */
         pgrouting::Pg_points_graph pg_graph(points, edges_of_points,
                 normal,
-                estimate_drivingSide(driving_side, directed, which),
+                estimate_drivingSide(driving_side, which),
                 directed);
 
         if (pg_graph.has_error()) {
