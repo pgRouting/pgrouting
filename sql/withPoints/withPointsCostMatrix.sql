@@ -5,7 +5,7 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
+Copyright (c) 2025 Celia Virginia Vergara Castillo
 Mail: vicky at erosion.dev
 
 ------
@@ -54,6 +54,38 @@ IS'pgr_withPointsCostMatrix
   - Points SQL with columns: [pid], edge_id, fraction [,side]
   - ARRAY [vertex/points identifiers],
   - Driving side: directed graph [r,l], undirected graph [b]
+- Optional Parameters:
+  - directed => true
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_withPointsCostMatrix.html
+';
+
+--v4.0
+CREATE FUNCTION pgr_withPointsCostMatrix(
+  TEXT,     -- edges
+  TEXT,     -- points
+  ANYARRAY, -- vids
+
+  directed BOOLEAN DEFAULT true,
+
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT agg_cost float)
+RETURNS SETOF RECORD AS
+$BODY$
+  SELECT start_vid, end_vid, agg_cost
+  FROM _pgr_withPoints_v4(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], '{}'::BIGINT[],
+    directed, (CASE WHEN directed THEN 'r' ELSE 'b' END), true, true, true, 0, true);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
+
+COMMENT ON FUNCTION pgr_withPointsCostMatrix(TEXT, TEXT, ANYARRAY, CHAR, BOOLEAN)
+IS'pgr_withPointsCostMatrix
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Points SQL with columns: [pid], edge_id, fraction [,side]
+  - ARRAY [vertex/points identifiers],
 - Optional Parameters:
   - directed => true
 - Documentation:

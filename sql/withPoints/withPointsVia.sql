@@ -78,3 +78,53 @@ IS 'pgr_withPointsVia
 - Documentation:
   -{PROJECT_DOC_LINK}/pgr_withPointsVia.html
 ';
+
+--v4.0
+CREATE FUNCTION pgr_withPointsVia(
+  TEXT,     -- edges SQL
+  TEXT,     -- points SQL
+  ANYARRAY, -- via vids
+
+  directed BOOLEAN DEFAULT true,
+
+  -- via parameters
+  strict BOOLEAN DEFAULT false,
+  U_turn_on_edge BOOLEAN DEFAULT true,
+
+  -- withPoints parameters
+  details BOOLEAN DEFAULT false,
+
+  OUT seq INTEGER,
+  OUT path_id INTEGER,
+  OUT path_seq INTEGER,
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT node BIGINT,
+  OUT edge BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT,
+  OUT route_agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+  SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost
+  FROM _pgr_withPointsVia_v4(
+    _pgr_get_statement($1), _pgr_get_statement($2), $3,
+    directed, strict, u_turn_on_edge, (CASE WHEN directed THEN 'r' ELSE 'b' END), details);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+COMMENT ON FUNCTION pgr_withPointsVia(TEXT, TEXT, ANYARRAY, CHAR, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgr_withPointsVia
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Points SQL with columns: [pid], edge_id, fraction [,side]
+  - ARRAY[via vertices identifiers]
+- Optional Parameters
+  - directed => true
+  - strict => false
+  - U_turn_on_edge => true
+  - details => false
+- Documentation:
+  -{PROJECT_DOC_LINK}/pgr_withPointsVia.html
+';

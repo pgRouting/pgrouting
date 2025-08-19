@@ -53,7 +53,8 @@ CREATE FUNCTION pgr_withPointsDD(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
-    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4, $5, $6, $7, false);
+    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4,
+      $5, directed, details, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST ${COST_HIGH} ROWS ${ROWS_HIGH};
@@ -82,7 +83,8 @@ CREATE FUNCTION pgr_withPointsDD(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
-    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5, $6, $7, $8);
+    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4,
+      $5, directed, details, equicost);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST ${COST_HIGH} ROWS ${ROWS_HIGH};
@@ -95,7 +97,7 @@ IS 'pgr_withPointsDD(Single Vertex)
     - Points SQL with columns: [pid], edge_id, fraction[,side]
     - From vertex identifier
     - Distance
-    - Driving_side
+    - Driving side
 - Optional Parameters
     - directed := true
     - details := false
@@ -111,7 +113,96 @@ IS 'pgr_withPointsDD(Multiple Vertices)
     - Points SQL with columns: [pid], edge_id, fraction[,side]
     - From ARRAY[vertices identifiers]
     - Distance
-    - Driving_side
+    - Driving side
+- Optional Parameters
+    - directed := true
+    - details := false
+    - equicost := false
+- Documentation:
+    - ${PROJECT_DOC_LINK}/pgr_withPointsDD.html
+';
+
+
+-- SINGLE
+--v4.0
+CREATE FUNCTION pgr_withPointsDD(
+    TEXT,   --edges_sql (required)
+    TEXT,   -- points_sql (required)
+    BIGINT, -- from_vid (required)
+    FLOAT,  -- distance (required)
+
+    directed BOOLEAN DEFAULT true,
+    details BOOLEAN DEFAULT false,
+
+    OUT seq BIGINT,
+    OUT depth BIGINT,
+    OUT start_vid BIGINT,
+    OUT pred BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4,
+      (CASE WHEN directed THEN 'r' ELSE 'b' END), directed, details, false);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+-- MULTIPLE
+--v4.0
+CREATE FUNCTION pgr_withPointsDD(
+    TEXT,     --edges_sql (required)
+    TEXT,     -- points_sql (required)
+    ANYARRAY, -- from_vid (required)
+    FLOAT,    -- distance (required)
+
+    directed BOOLEAN DEFAULT true,
+    details BOOLEAN DEFAULT false,
+    equicost BOOLEAN DEFAULT false,
+
+    OUT seq BIGINT,
+    OUT depth BIGINT,
+    OUT start_vid BIGINT,
+    OUT pred BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4,
+      (CASE WHEN directed THEN 'r' ELSE 'b' END), directed, details, equicost);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+
+COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, BIGINT, FLOAT, BOOLEAN, BOOLEAN)
+IS 'pgr_withPointsDD(Single Vertex)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From vertex identifier
+    - Distance
+- Optional Parameters
+    - directed := true
+    - details := false
+- Documentation:
+    - ${PROJECT_DOC_LINK}/pgr_withPointsDD.html
+';
+
+
+COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgr_withPointsDD(Multiple Vertices)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From ARRAY[vertices identifiers]
+    - Distance
 - Optional Parameters
     - directed := true
     - details := false
