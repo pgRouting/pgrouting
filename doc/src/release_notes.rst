@@ -100,6 +100,12 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* pgr_bandwidth
+
+  .. include:: pgr_bandwidth.rst
+     :start-after: Version 4.0.0
+     :end-before: Description
+
 * pgr_bdAstar
 
   .. include:: pgr_bdAstar.rst
@@ -340,6 +346,13 @@ Signatures promoted to official
 * :issue:`2718`: pgr_edmondsKarp(Combinations)
 * :issue:`2718`: pgr_maxFlow(Combinations)
 * :issue:`2718`: pgr_pushRelabel(Combinations)
+
+New experimental functions
+...............................................................................
+
+* Metrics
+
+  * :issue:`2951`: pgr_bandwidth
 
 SQL signatures and output standardization
 ...............................................................................

@@ -60,6 +60,10 @@ Summary of changes by function
 
   * Combinations signature promoted to official.
 
+* pgr_bandwidth
+
+  * New experimental function.
+
 * pgr_bdAstar
 
   * Combinations signature promoted to official.
@@ -287,6 +291,12 @@ Signatures promoted to official
 * [#2718](https://github.com/pgRouting/pgrouting/issues/2718): pgr_edmondsKarp(Combinations)
 * [#2718](https://github.com/pgRouting/pgrouting/issues/2718): pgr_maxFlow(Combinations)
 * [#2718](https://github.com/pgRouting/pgrouting/issues/2718): pgr_pushRelabel(Combinations)
+
+New experimental functions
+
+* Metrics
+
+  * [#2951](https://github.com/pgRouting/pgrouting/issues/2951): pgr_bandwidth
 
 SQL signatures and output standardization
 
