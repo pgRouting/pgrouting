@@ -1,0 +1,88 @@
+-- CopyRight(c) pgRouting developers
+-- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
+
+/* -- q1 */
+SELECT * FROM pgr_bandwidth(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges'
+);
+
+/* -- q2 */
+CREATE TABLE my_edges1 (
+    id SERIAL PRIMARY KEY,
+    source INTEGER,
+    target INTEGER,
+    cost DOUBLE PRECISION,
+    reverse_cost DOUBLE PRECISION
+);
+/* -- q3 */
+INSERT INTO my_edges1 (source, target, cost, reverse_cost) VALUES
+(4, 7, 1, 1),
+(7, 4, 1, 1),
+(7, 9, 1, 1),
+(9, 7, 1, 1),
+(7, 0, 1, 1),
+(0, 7, 1, 1),
+(0, 2, 1, 1),
+(2, 0, 1, 1),
+(2, 5, 1, 1),
+(5, 2, 1, 1),
+(5, 9, 1, 1),
+(9, 5, 1, 1),
+(9, 8, 1, 1),
+(8, 9, 1, 1),
+(9, 1, 1, 1),
+(1, 9, 1, 1),
+(5, 1, 1, 1),
+(1, 5, 1, 1),
+(9, 6, 1, 1),
+(6, 9, 1, 1),
+(6, 3, 1, 1),
+(3, 6, 1, 1),
+(1, 3, 1, 1),
+(3, 1, 1, 1);
+/* -- q4 */
+SELECT * FROM pgr_bandwidth(
+    'SELECT id, source, target, cost, reverse_cost FROM my_edges1'
+);
+
+/* -- q5 */
+CREATE TABLE my_edges2 (
+    id SERIAL PRIMARY KEY,
+    source INTEGER,
+    target INTEGER,
+    cost DOUBLE PRECISION,
+    reverse_cost DOUBLE PRECISION
+);
+/* -- q6 */
+INSERT INTO my_edges2 (source, target, cost, reverse_cost) VALUES
+(0, 1, 1, 1),
+(1, 0, 1, 1),
+(1, 3, 1, 1),
+(3, 1, 1, 1),
+(1, 2, 1, 1),
+(2, 1, 1, 1),
+(2, 4, 1, 1),
+(4, 2, 1, 1),
+(4, 8, 1, 1),
+(8, 4, 1, 1),
+(8, 3, 1, 1),
+(3, 8, 1, 1),
+(3, 5, 1, 1),
+(5, 3, 1, 1),
+(3, 6, 1, 1),
+(6, 3, 1, 1),
+(3, 7, 1, 1),
+(7, 3, 1, 1),
+(8, 7, 1, 1),
+(7, 8, 1, 1),
+(6, 9, 1, 1),
+(9, 6, 1, 1),
+(7, 9, 1, 1),
+(9, 7, 1, 1);
+/* -- q7 */
+SELECT * FROM pgr_bandwidth(
+    'SELECT id, source, target, cost, reverse_cost FROM my_edges2'
+);
+
+/* -- q8 */
