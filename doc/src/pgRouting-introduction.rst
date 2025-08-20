@@ -67,6 +67,7 @@ Individuals in this release v4.0.0 (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Regina Obe,
+Saloni kumari,
 Vicky Vergara
 
 
@@ -144,6 +145,7 @@ Rajat Shinde,
 Razequl Islam,
 Regina Obe,
 Rohith Reddy,
+Saloni Kumari,
 Sarthak Agarwal,
 Shobhit Chaurasia,
 Sourabh Garg,

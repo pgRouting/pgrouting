@@ -31,6 +31,8 @@ Metrics - Family of functions
 * :doc:`pgr_betweennessCentrality` - Calculates relative betweenness centrality
   using Brandes Algorithm
 
+* :doc:`pgr_bandwidth` - Computes the bandwidth of a graph.
+
 .. experimental-end
 
 .. toctree::
@@ -38,6 +40,7 @@ Metrics - Family of functions
 
     pgr_degree
     pgr_betweennessCentrality
+    pgr_bandwidth
 
 See Also
 -------------------------------------------------------------------------------
