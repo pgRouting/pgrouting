@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-18 16:23+0000\n"
+"POT-Creation-Date: 2025-08-20 17:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3082,6 +3082,9 @@ msgstr ""
 msgid ":doc:`pgr_betweennessCentrality` - Calculates relative betweenness centrality using Brandes Algorithm"
 msgstr ""
 
+msgid ":doc:`pgr_bandwidth` - Computes the bandwidth of a graph."
+msgstr ""
+
 msgid ":doc:`TRSP-family`"
 msgstr ""
 
@@ -3589,6 +3592,12 @@ msgstr ""
 msgid "pgr_aStarCost"
 msgstr ""
 
+msgid "pgr_bandwidth"
+msgstr ""
+
+msgid "New experimental function."
+msgstr ""
+
 msgid "pgr_bdAstar"
 msgstr ""
 
@@ -3893,6 +3902,15 @@ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_maxFl
 msgstr ""
 
 msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_pushRelabel(Combinations)"
+msgstr ""
+
+msgid "New experimental functions"
+msgstr ""
+
+msgid "Metrics"
+msgstr ""
+
+msgid "`#2951 <https://github.com/pgRouting/pgrouting/issues/2951>`__: pgr_bandwidth"
 msgstr ""
 
 msgid "SQL signatures and output standardization"
@@ -7036,7 +7054,7 @@ msgstr ""
 msgid "Individuals in this release v4.0.0 (in alphabetical order)"
 msgstr ""
 
-msgid "Regina Obe, Vicky Vergara"
+msgid "Regina Obe, Saloni kumari, Vicky Vergara"
 msgstr ""
 
 msgid "And all the people that give us a little of their time making comments, finding issues, making pull requests etc. in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
@@ -7075,7 +7093,7 @@ msgstr ""
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
-msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -7780,9 +7798,6 @@ msgstr ""
 msgid "Version 2.5.0"
 msgstr ""
 
-msgid "New experimental function."
-msgstr ""
-
 msgid "Those vertices that belong to more than one biconnected component are called articulation points or, equivalently, cut vertices. Articulation points are vertices whose removal would increase the number of connected components in the graph. This implementation can only be used with an undirected graph."
 msgstr ""
 
@@ -7814,6 +7829,54 @@ msgid "`Boost: Biconnected components & articulation points <https://www.boost.o
 msgstr ""
 
 msgid "wikipedia: `Biconnected component <https://en.wikipedia.org/wiki/Biconnected_component>`__"
+msgstr ""
+
+msgid "``pgr_bandwidth`` - Experimental"
+msgstr ""
+
+msgid "``pgr_bandwidth`` - Calculates the bandwidth of the graph"
+msgstr ""
+
+msgid "Bandwidth measures how \"spread out\" the connections are in a graph when vertices are arranged in a linear order (like numbering them 1, 2, 3, etc.)."
+msgstr ""
+
+msgid "For each edge in the graph, calculate the distance between the vertex numbers it connects"
+msgstr ""
+
+msgid "The bandwidth is the maximum of all these distances"
+msgstr ""
+
+msgid "The implementation is for undirected graphs"
+msgstr ""
+
+msgid "Run time is 0.160789 seconds"
+msgstr ""
+
+msgid "pgr_bandwidth(`Edges SQL`_)"
+msgstr ""
+
+msgid "Returns ``BIGINT``"
+msgstr ""
+
+msgid "For an undirected graph with edges."
+msgstr ""
+
+msgid "Returns a bigint ``(pgr_bandwidth)``"
+msgstr ""
+
+msgid "``pgr_bandwidth``"
+msgstr ""
+
+msgid "gives the bandwidth of the graph."
+msgstr ""
+
+msgid "Undirected graph with edges before optimization."
+msgstr ""
+
+msgid "Undirected graph with edges after optimization."
+msgstr ""
+
+msgid "`Boost: bandwidth <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
 msgstr ""
 
 msgid "``pgr_bdAstar``"
@@ -9013,7 +9076,7 @@ msgstr ""
 msgid "``pgr_contractionHierarchies`` — Performs graph contraction according to the contraction hierarchies method and returns the contracted vertices and shortcut edges created."
 msgstr ""
 
-msgid "New **experimental** function"
+msgid "New experimental function"
 msgstr ""
 
 msgid "The contraction hierarchies method builds, from an initial order of the vertices, a hierarchical order, giving priority to some vertices during the processing of label fixing of shortest paths algorithms. Furthermore, the contraction hierarchies algorithm adds shortcut edges in the graph, that helps the shortest paths algorithm to follow the created hierarchical graph structure."
@@ -13451,12 +13514,6 @@ msgid "Stopping support of PostgreSQL 12"
 msgstr ""
 
 msgid "CI does not test for PostgreSQL 12"
-msgstr ""
-
-msgid "New experimental functions"
-msgstr ""
-
-msgid "Metrics"
 msgstr ""
 
 msgid "pgr_betweennessCentrality"

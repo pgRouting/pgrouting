@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-18 16:23+0000\n"
+"POT-Creation-Date: 2025-08-20 17:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3409,6 +3409,9 @@ msgid ""
 "centrality using Brandes Algorithm"
 msgstr ""
 
+msgid ":doc:`pgr_bandwidth` - Computes the bandwidth of a graph."
+msgstr ""
+
 msgid ":doc:`TRSP-family`"
 msgstr ""
 
@@ -3994,6 +3997,12 @@ msgstr ""
 msgid "pgr_aStarCost"
 msgstr ""
 
+msgid "pgr_bandwidth"
+msgstr ""
+
+msgid "New experimental function."
+msgstr ""
+
 msgid "pgr_bdAstar"
 msgstr ""
 
@@ -4348,6 +4357,17 @@ msgstr ""
 msgid ""
 "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_pushRelabel(Combinations)"
+msgstr ""
+
+msgid "New experimental functions"
+msgstr ""
+
+msgid "Metrics"
+msgstr ""
+
+msgid ""
+"`#2951 <https://github.com/pgRouting/pgrouting/issues/2951>`__: "
+"pgr_bandwidth"
 msgstr ""
 
 msgid "SQL signatures and output standardization"
@@ -8226,7 +8246,7 @@ msgstr ""
 msgid "Individuals in this release v4.0.0 (in alphabetical order)"
 msgstr ""
 
-msgid "Regina Obe, Vicky Vergara"
+msgid "Regina Obe, Saloni kumari, Vicky Vergara"
 msgstr ""
 
 msgid ""
@@ -8281,9 +8301,9 @@ msgid ""
 "Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, "
 "Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, "
 "Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, "
-"Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, "
-"Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan "
-"Jain, Virginia Vergara, Yige Huang"
+"Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen "
+"Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit "
+"Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -9102,9 +9122,6 @@ msgstr ""
 msgid "Version 2.5.0"
 msgstr ""
 
-msgid "New experimental function."
-msgstr ""
-
 msgid ""
 "Those vertices that belong to more than one biconnected component are "
 "called articulation points or, equivalently, cut vertices. Articulation "
@@ -9145,6 +9162,59 @@ msgstr ""
 msgid ""
 "wikipedia: `Biconnected component "
 "<https://en.wikipedia.org/wiki/Biconnected_component>`__"
+msgstr ""
+
+msgid "``pgr_bandwidth`` - Experimental"
+msgstr ""
+
+msgid "``pgr_bandwidth`` - Calculates the bandwidth of the graph"
+msgstr ""
+
+msgid ""
+"Bandwidth measures how \"spread out\" the connections are in a graph when"
+" vertices are arranged in a linear order (like numbering them 1, 2, 3, "
+"etc.)."
+msgstr ""
+
+msgid ""
+"For each edge in the graph, calculate the distance between the vertex "
+"numbers it connects"
+msgstr ""
+
+msgid "The bandwidth is the maximum of all these distances"
+msgstr ""
+
+msgid "The implementation is for undirected graphs"
+msgstr ""
+
+msgid "Run time is 0.160789 seconds"
+msgstr ""
+
+msgid "pgr_bandwidth(`Edges SQL`_)"
+msgstr ""
+
+msgid "Returns ``BIGINT``"
+msgstr ""
+
+msgid "For an undirected graph with edges."
+msgstr ""
+
+msgid "Returns a bigint ``(pgr_bandwidth)``"
+msgstr ""
+
+msgid "``pgr_bandwidth``"
+msgstr ""
+
+msgid "gives the bandwidth of the graph."
+msgstr ""
+
+msgid "Undirected graph with edges before optimization."
+msgstr ""
+
+msgid "Undirected graph with edges after optimization."
+msgstr ""
+
+msgid "`Boost: bandwidth <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
 msgstr ""
 
 msgid "``pgr_bdAstar``"
@@ -10610,7 +10680,7 @@ msgid ""
 "and shortcut edges created."
 msgstr ""
 
-msgid "New **experimental** function"
+msgid "New experimental function"
 msgstr ""
 
 msgid ""
@@ -16169,12 +16239,6 @@ msgid "Stopping support of PostgreSQL 12"
 msgstr ""
 
 msgid "CI does not test for PostgreSQL 12"
-msgstr ""
-
-msgid "New experimental functions"
-msgstr ""
-
-msgid "Metrics"
 msgstr ""
 
 msgid "pgr_betweennessCentrality"
