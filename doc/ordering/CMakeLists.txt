@@ -2,6 +2,7 @@ SET(LOCAL_FILES
     ordering-family.rst
     pgr_cuthillMckeeOrdering.rst
     pgr_topologicalSort.rst
+    pgr_kingOrdering.rst
     )
 
 foreach (f ${LOCAL_FILES})

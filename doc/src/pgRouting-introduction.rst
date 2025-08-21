@@ -66,6 +66,7 @@ This Release Contributors
 Individuals in this release v4.0.0 (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Fan Wu
 Regina Obe,
 Saloni kumari,
 Vicky Vergara
@@ -119,6 +120,7 @@ David Techer,
 Denis Rykov,
 Ema Miyawaki,
 Esteban Zimanyi,
+Fan Wu,
 Florian Thurkow,
 Frederic Junod,
 Gerald Fenoy,
