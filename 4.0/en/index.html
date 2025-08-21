@@ -15,7 +15,7 @@
     <script src="_static/documentation_options.js?v=798e95cd"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=a458cb6c"></script>
+    <script src="_static/page_history.js?v=394ba200"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -109,6 +109,7 @@
 <li><a class="reference internal" href="#summary-of-changes-by-function">Summary of changes by function</a></li>
 <li><a class="reference internal" href="#functions-promoted-to-official">Functions promoted to official</a></li>
 <li><a class="reference internal" href="#signatures-promoted-to-official">Signatures promoted to official</a></li>
+<li><a class="reference internal" href="#new-experimental-functions">New experimental functions</a></li>
 <li><a class="reference internal" href="#sql-signatures-and-output-standardization">SQL signatures and output standardization</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-signatures">Removal of SQL deprecated signatures</a></li>
 <li><a class="reference internal" href="#removal-of-sql-deprecated-functions">Removal of SQL deprecated functions</a></li>
@@ -445,12 +446,13 @@ table information.</p></li>
 <li><p><a class="reference internal" href="#summary-of-changes-by-function" id="id3">Summary of changes by function</a></p></li>
 <li><p><a class="reference internal" href="#functions-promoted-to-official" id="id4">Functions promoted to official</a></p></li>
 <li><p><a class="reference internal" href="#signatures-promoted-to-official" id="id5">Signatures promoted to official</a></p></li>
-<li><p><a class="reference internal" href="#sql-signatures-and-output-standardization" id="id6">SQL signatures and output standardization</a></p></li>
-<li><p><a class="reference internal" href="#removal-of-sql-deprecated-signatures" id="id7">Removal of SQL deprecated signatures</a></p></li>
-<li><p><a class="reference internal" href="#removal-of-sql-deprecated-functions" id="id8">Removal of SQL deprecated functions</a></p></li>
-<li><p><a class="reference internal" href="#removal-of-sql-deprecated-internal-functions" id="id9">Removal of SQL deprecated internal functions</a></p></li>
-<li><p><a class="reference internal" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" id="id10">Summary of functions and signatures no longer on pgrouting</a></p></li>
-<li><p><a class="reference internal" href="#code-enhancements" id="id11">Code enhancements</a></p></li>
+<li><p><a class="reference internal" href="#new-experimental-functions" id="id6">New experimental functions</a></p></li>
+<li><p><a class="reference internal" href="#sql-signatures-and-output-standardization" id="id7">SQL signatures and output standardization</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-signatures" id="id8">Removal of SQL deprecated signatures</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-functions" id="id9">Removal of SQL deprecated functions</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-internal-functions" id="id10">Removal of SQL deprecated internal functions</a></p></li>
+<li><p><a class="reference internal" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" id="id11">Summary of functions and signatures no longer on pgrouting</a></p></li>
+<li><p><a class="reference internal" href="#code-enhancements" id="id12">Code enhancements</a></p></li>
 </ul>
 </nav>
 <section id="build">
@@ -510,6 +512,11 @@ table information.</p></li>
 <li><p>pgr_aStarCost</p>
 <ul class="simple">
 <li><p>Combinations signature promoted to official.</p></li>
+</ul>
+</li>
+<li><p>pgr_bandwidth</p>
+<ul class="simple">
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 <li><p>pgr_bdAstar</p>
@@ -839,8 +846,18 @@ table information.</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_pushRelabel(Combinations)</p></li>
 </ul>
 </section>
+<section id="new-experimental-functions">
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">New experimental functions</a><a class="headerlink" href="#new-experimental-functions" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Metrics</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2951">#2951</a>: pgr_bandwidth</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="sql-signatures-and-output-standardization">
-<h4><a class="toc-backref" href="#id6" role="doc-backlink">SQL signatures and output standardization</a><a class="headerlink" href="#sql-signatures-and-output-standardization" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">SQL signatures and output standardization</a><a class="headerlink" href="#sql-signatures-and-output-standardization" title="Link to this heading">¶</a></h4>
 <dl class="simple">
 <dt><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2904">#2904</a>: Standardize output columns of functions with different output</dt><dd><p>columns within overloads</p>
 </dd>
@@ -888,7 +905,7 @@ table information.</p></li>
 </ul>
 </section>
 <section id="removal-of-sql-deprecated-signatures">
-<h4><a class="toc-backref" href="#id7" role="doc-backlink">Removal of SQL deprecated signatures</a><a class="headerlink" href="#removal-of-sql-deprecated-signatures" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Removal of SQL deprecated signatures</a><a class="headerlink" href="#removal-of-sql-deprecated-signatures" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2798">#2798</a>: pgr_contraction</p>
 <ul>
@@ -984,7 +1001,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="removal-of-sql-deprecated-functions">
-<h4><a class="toc-backref" href="#id8" role="doc-backlink">Removal of SQL deprecated functions</a><a class="headerlink" href="#removal-of-sql-deprecated-functions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Removal of SQL deprecated functions</a><a class="headerlink" href="#removal-of-sql-deprecated-functions" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2681">#2681</a>: pgr_trspviaedges</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2682">#2682</a>: pgr_trspviavertices</p></li>
@@ -997,7 +1014,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="removal-of-sql-deprecated-internal-functions">
-<h4><a class="toc-backref" href="#id9" role="doc-backlink">Removal of SQL deprecated internal functions</a><a class="headerlink" href="#removal-of-sql-deprecated-internal-functions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id10" role="doc-backlink">Removal of SQL deprecated internal functions</a><a class="headerlink" href="#removal-of-sql-deprecated-internal-functions" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2748">#2748</a> _pgr_alphashape(text,double precision)</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_checkverttab(text,text[],integer,text)</p></li>
@@ -1057,7 +1074,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="summary-of-functions-and-signatures-no-longer-on-pgrouting">
-<h4><a class="toc-backref" href="#id10" role="doc-backlink">Summary of functions and signatures no longer on pgrouting</a><a class="headerlink" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">Summary of functions and signatures no longer on pgrouting</a><a class="headerlink" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2748">#2748</a> pgr_alphashape(geometry,double precision)</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2752">#2752</a> pgr_analyzegraph(text,double precision,text,text,text,text,text)</p></li>
@@ -1099,7 +1116,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="code-enhancements">
-<h4><a class="toc-backref" href="#id11" role="doc-backlink">Code enhancements</a><a class="headerlink" href="#code-enhancements" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id12" role="doc-backlink">Code enhancements</a><a class="headerlink" href="#code-enhancements" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Removal of unused C/C++ code</p></li>
 <li><p>Refactor the Script to build the update PostgreSQL file.</p></li>
@@ -1170,7 +1187,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Aug 19, 2025.<br/>
+      Last updated on Aug 21, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
