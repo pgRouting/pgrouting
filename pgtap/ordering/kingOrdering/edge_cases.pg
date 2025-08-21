@@ -1,0 +1,153 @@
+
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2018  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN NOT min_version('4.0.0') THEN plan(1) ELSE plan(7) END;
+
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('4.0.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 4.0.0');
+  RETURN;
+END IF;
+
+-- 0 edge, 0 vertex test
+
+PREPARE q1 AS
+SELECT * FROM pgr_kingOrdering(
+'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id > 18'
+);
+
+RETURN QUERY
+SELECT is_empty('q1', 'Graph with 0 edge and 0 vertex -> Empty row is returned');
+
+-- 1 vertex test: 6 -- 6
+
+PREPARE q2 AS
+SELECT *
+FROM pgr_kingOrdering('SELECT id, source, source AS target, cost, reverse_cost FROM edges WHERE id = 2');
+
+RETURN QUERY
+SELECT set_eq('q2', $$VALUES (1, 6)$$, '6 -- 6: Same node returned');
+
+-- 2 vertices test (connected): 3 -- 7; 7 -- 3
+
+PREPARE q3 AS
+SELECT *
+FROM pgr_kingOrdering('SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 7'
+);
+
+RETURN QUERY
+SELECT set_eq('q3', $$VALUES (1,3), (2,7)$$, '3 --7; 7 -- 3: Natural order of edges');
+
+-- 2 vertices test (connected): 7 -- 3; 3 -- 7
+
+PREPARE q4 AS
+SELECT *
+FROM pgr_kingOrdering('SELECT id, target AS source, source AS target, cost, reverse_cost FROM edges WHERE id = 7'
+);
+
+RETURN QUERY
+SELECT set_eq('q4', $$VALUES (1,3), (2,7)$$, '7 --3; 3 -- 7: Does not matter if 3 comes first or second');
+
+-- 2 vertices test (isolated)
+
+CREATE TABLE isolated_vertices_table (
+  id BIGSERIAL,
+  source BIGINT,
+  target BIGINT,
+  cost FLOAT,
+  reverse_cost FLOAT
+);
+
+INSERT INTO isolated_vertices_table
+(source, target, cost, reverse_cost) VALUES
+(2, 2, -1, 1),
+(1, 1, 1, -1);
+
+PREPARE q5 AS
+SELECT node
+FROM pgr_kingOrdering('SELECT id, source, target, cost, reverse_cost FROM isolated_vertices_table'
+);
+
+RETURN QUERY
+SELECT set_eq('q5', $$VALUES (1), (2)$$, 'Both isolated vertices are returned for a disconnected graph');
+
+DROP TABLE IF EXISTS isolated_vertices_table;
+
+-- 3 vertices test
+
+PREPARE q6 AS
+SELECT *
+FROM pgr_kingOrdering('SELECT id, source, target, cost, reverse_cost FROM edges WHERE id <= 2'
+);
+
+RETURN QUERY
+SELECT set_eq('q6', $$VALUES (1, 5), (2, 6), (3, 10)$$, 'Three connected vertices are ordered as expected');
+
+-- pgRouting sample data
+
+CREATE TABLE expected_result (
+seq BIGINT,
+node BIGINT);
+
+INSERT INTO expected_result (seq, node) VALUES
+(1, 13),
+(2, 14),
+(3, 2),
+(4, 4),
+(5, 1),
+(6, 9),
+(7, 3),
+(8, 8),
+(9, 5),
+(10, 7),
+(11, 12),
+(12, 6),
+(13, 11),
+(14, 17),
+(15, 10),
+(16, 16),
+(17, 15);
+
+PREPARE q7 AS
+SELECT * FROM pgr_kingOrdering('SELECT id, source, target, cost, reverse_cost FROM edges'
+);
+
+PREPARE r7 AS
+SELECT * FROM expected_result;
+
+RETURN QUERY SELECT set_eq('q7','r7','King ordering result matches expected sequence for pgRouting sample data');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+
+SELECT * FROM finish();
+ROLLBACK;
