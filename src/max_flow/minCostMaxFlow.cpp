@@ -130,10 +130,9 @@ PgrCostFlowGraph::GetMaxFlow() const {
     int64_t maxFlow = 0;
     E_it e, eEnd;
     for (boost::tie(e, eEnd) = boost::edges(graph); e != eEnd; ++e) {
-        if (((capacity[*e] - residual_capacity[*e]) > 0) &&
-                ((*e).m_source == supersource))
-            maxFlow +=
-                static_cast<int64_t>(capacity[*e] - residual_capacity[*e]);
+        if (((capacity[*e] - residual_capacity[*e]) > 0) && ((*e).m_source == supersource)) {
+            maxFlow += static_cast<int64_t>(capacity[*e] - residual_capacity[*e]);
+        }
     }
     return maxFlow;
 }
@@ -155,10 +154,11 @@ PgrCostFlowGraph::GetFlowEdges() const {
             edge.residual_capacity =
                 static_cast<int64_t>(residual_capacity[*e]);
             edge.cost = weight[*e] * static_cast<double>(edge.flow);
-            if (flowEdges.size() == 0)
+            if (flowEdges.size() == 0) {
                 edge.agg_cost = edge.cost;
-            else
+            } else {
                 edge.agg_cost = (flowEdges.back()).agg_cost + edge.cost;
+            }
             flowEdges.push_back(edge);
         }
     }

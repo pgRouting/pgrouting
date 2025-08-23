@@ -68,8 +68,9 @@ class Dfs_visitor : public boost::default_dfs_visitor {
          void examine_edge(E e, const B_G&) {
              auto source = m_graph.source(e), target = m_graph.target(e);
              // If the target has not been visited before
-             if (m_depth[target] == 0 && target != m_roots)
+             if (m_depth[target] == 0 && target != m_roots) {
                  m_depth[target] = m_depth[source] + 1;
+             }
 
              // If the max_depth is reached, mark the target as visited, and push the corresponding edge
              if (m_depth[target] == m_max_depth && m_colors[target] != 4) {

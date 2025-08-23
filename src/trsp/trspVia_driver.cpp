@@ -124,8 +124,9 @@ get_route(
         p.recalculate_agg_cost();
     }
     for (const auto &path : paths) {
-        if (path.size() > 0)
+        if (path.size() > 0) {
             get_path(route_id, path_id, path, ret_path, route_cost, sequence);
+        }
         ++path_id;
     }
     return sequence;

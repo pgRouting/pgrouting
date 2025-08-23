@@ -168,10 +168,9 @@ bool Path::isEqual(const Path &subpath) const {
     if (subpath.empty()) return true;
     if (subpath.size() >= path.size()) return false;
     std::deque< Path_t >::const_iterator i, j;
-    for (i = path.begin(),  j = subpath.begin();
-            j != subpath.end();
-            ++i, ++j)
+    for (i = path.begin(),  j = subpath.begin(); j != subpath.end(); ++i, ++j) {
         if ((*i).node != (*j).node) return false;
+    }
     return true;
 }
 
@@ -319,8 +318,9 @@ collapse_paths(
         const std::deque< Path > &paths) {
     size_t sequence = 0;
     for (const Path &path : paths) {
-        if (path.path.size() > 0)
+        if (path.path.size() > 0) {
             path.generate_postgres_data(ret_path, sequence);
+        }
     }
     return sequence;
 }
