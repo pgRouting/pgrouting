@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-29 18:06+0000\n"
+"POT-Creation-Date: 2025-08-23 02:38+0000\n"
 "PO-Revision-Date: 2025-05-19 15:24+0000\n"
 "Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -306,26 +306,22 @@ msgstr ":doc:`pgr_kruskalDFS`"
 msgid ":doc:`pgr_primDFS`"
 msgstr ":doc:`pgr_primDFS`"
 
+#, fuzzy
+msgid "Proposed"
+msgstr "提议的函数。"
+
 msgid "Proposed functions for next mayor release."
 msgstr "下一版本的提议功能。"
 
 msgid "They are not officially in the current release."
 msgstr "它们并未正式出现在当前版本中。"
 
-msgid "They will likely officially be part of the next mayor release:"
-msgstr "它们可能会正式成为下一个版本的一部分："
+msgid "Code has been reviewed therefore is not experimental."
+msgstr ""
 
-msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr "这些函数使用 ANY-INTEGER 和 ANY-NUMERICAL"
-
-msgid "Name might not change. (But still can)"
-msgstr "名字可能不会改变。（但仍然有可能改变）"
-
-msgid "Signature might not change. (But still can)"
-msgstr "签名可能不会改变。（但仍然有可能改变）"
-
-msgid "Functionality might not change. (But still can)"
-msgstr "功能可能不会改变。（但仍然有可能改变）"
+#, fuzzy
+msgid "Name, signature and functionality might not change."
+msgstr "功能可能会改变。"
 
 msgid "pgTap tests have being done. But might need more."
 msgstr "pgTap 测试已经完成。 但可能需要更多。"
@@ -369,11 +365,9 @@ msgid ""
 ":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictions."
 msgstr ":doc:`pgr_trspVia_withPoints` - 通过有限制的顶点/点路由。"
 
-msgid "Possible server crash"
-msgstr "可能服务器崩溃"
-
-msgid "These functions might create a server crash"
-msgstr "这些功能可能会导致服务器崩溃"
+#, fuzzy
+msgid "Experimental"
+msgstr ":doc:`experimental`"
 
 msgid "Experimental functions"
 msgstr "实验性函数"
@@ -399,26 +393,15 @@ msgstr "功能可能会改变。"
 msgid "pgTap tests might be missing."
 msgstr "pgTap 测试可能丢失。"
 
-msgid "Might need c/c++ coding."
+#, fuzzy
+msgid "Might need c/c++ review."
 msgstr "可能需要 c/c++编码。"
-
-msgid "May lack documentation."
-msgstr "可能缺乏文档。"
 
 msgid "Documentation if any might need to be rewritten."
 msgstr "文档可能需要重写。"
 
-msgid "Documentation examples might need to be automatically generated."
-msgstr "可能需要自动生成文档示例。"
-
 msgid "Might need a lot of feedback from the community."
 msgstr "需要从社区获取大量反馈意见。"
-
-msgid "Might depend on a proposed function of pgRouting"
-msgstr "可能取决于 pgRouting 的提议功能"
-
-msgid "Might depend on a deprecated function of pgRouting"
-msgstr "可能依赖于 pgRouting 的已弃用函数"
 
 msgid ":doc:`pgr_turnRestrictedPath` - Routing with restrictions."
 msgstr ":doc:`pgr_turnRestrictedPath` - 有限制的路由。"
@@ -3542,6 +3525,13 @@ msgid ""
 "acyclic graph."
 msgstr ":doc:`pgr_topologicalSort` - 有向无环图的顶点线性排序。"
 
+#, fuzzy
+msgid ""
+":doc:`pgr_kingOrdering` - Returns the King ordering of an undirected graphs "
+"acyclic graph."
+msgstr ""
+":doc:`pgr_cuthillMckeeOrdering` - 返回无向图的反向 Cuthill-McKee 排序。"
+
 msgid ":doc:`metrics-family`"
 msgstr ":doc:`metrics-family`"
 
@@ -3549,6 +3539,10 @@ msgid ""
 ":doc:`pgr_betweennessCentrality` - Calculates relative betweenness "
 "centrality using Brandes Algorithm"
 msgstr ":doc:`pgr_betweennessCentrality` - 使用布兰德斯算法计算相对介度中心性"
+
+#, fuzzy
+msgid ":doc:`pgr_bandwidth` - Computes the bandwidth of a graph."
+msgstr ":doc:`pgr_withPoints` - 从/到图表上任意点的路线。"
 
 msgid ":doc:`TRSP-family`"
 msgstr ":doc:`TRSP-family`"
@@ -4071,14 +4065,89 @@ msgstr ":doc:`release_notes`"
 msgid "pgRouting 4.0.0 Release Notes"
 msgstr "pgRouting 4.0.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 msgstr ""
 "查看本版本已关闭的所有议题和拉取请求,请访问： `GitHub 4.0.0版本里程碑关闭列"
 "表 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
+
+msgid "Build"
+msgstr "构建"
+
+msgid "C++ standard is std17"
+msgstr ""
+
+msgid "Using this standard all versions of boost will work"
+msgstr ""
+
+msgid "The code is not yet modified to use std17:"
+msgstr ""
+
+msgid "If needed: ``-DCMAKE_CXX_STANDARD=14`` to lower the standard."
+msgstr ""
+
+#, fuzzy
+msgid "The user's documentation is build by default"
+msgstr "用于用户文档"
+
+msgid "The doxygen documentation is build by default"
+msgstr ""
+
+#, fuzzy
+msgid "For developers:"
+msgstr "对于开发者文档"
+
+msgid "Set `-DUSE_CLANG_TIDY=ON` for clang tidy checks."
+msgstr ""
+
+msgid "Tidy checks are done on CI."
+msgstr ""
+
+#, fuzzy
+msgid "Documentation build"
+msgstr "文档"
+
+msgid "The HTML documentation is build by default"
+msgstr ""
+
+msgid ""
+"The translated languages (en, es, zh_Hans) HTML documentation is build by "
+"default"
+msgstr ""
+
+msgid "`WITH-DOC` is not used anymore"
+msgstr ""
+
+msgid "User's Documentation is not build when"
+msgstr ""
+
+msgid "Sphinx is not found"
+msgstr ""
+
+msgid "When all Sphinx formats are OFF"
+msgstr ""
+
+msgid "When all languages are OFF"
+msgstr ""
+
+msgid ""
+"Documentation output changed location to `build/doc/_build/<format>` "
+"directory"
+msgstr ""
+
+msgid "For example: for HTML output is on `build/doc/_build/html` directory"
+msgstr ""
+
+#, fuzzy
+msgid "Developers's Documentation is not build when"
+msgstr "对于开发者文档"
+
+msgid "Doxygen is not found"
+msgstr ""
 
 msgid "Summary of changes by function"
 msgstr ""
@@ -4092,6 +4161,13 @@ msgstr "组合签名已升级为正式版本。"
 #, fuzzy
 msgid "pgr_aStarCost"
 msgstr "``pgr_aStarCost``"
+
+#, fuzzy
+msgid "pgr_bandwidth"
+msgstr "pgr_endPoint"
+
+msgid "New experimental function."
+msgstr "新实验性功能。"
 
 msgid "pgr_bdAstar"
 msgstr "pgr_bdAstar"
@@ -4181,6 +4257,22 @@ msgstr "``pgr_edmondsKarp``"
 msgid "pgr_edwardMoore"
 msgstr "pgr_edwardMoore"
 
+msgid "Version 3.2.0"
+msgstr "版本3.2.0"
+
+msgid "New experimental signature:"
+msgstr "新实验性签名："
+
+msgid "pgr_edwardMoore(Combinations)"
+msgstr "pgr_edwardMoore(组合)"
+
+msgid "Version 3.0.0"
+msgstr "版本3.0.0"
+
+#, fuzzy
+msgid "pgr_kingOrdering"
+msgstr "排序"
+
 msgid "pgr_KSP"
 msgstr "pgr_KSP"
 
@@ -4201,7 +4293,7 @@ msgid "pgr_topologicalSort"
 msgstr "pgr_topologicalSort"
 
 #, fuzzy
-msgid "Standardize output to |result-node-order|"
+msgid "Standardize output to |result_node_order|"
 msgstr "返回集合 |result-node-color|"
 
 msgid "pgr_transitiveClosure"
@@ -4415,68 +4507,70 @@ msgid "Functions promoted to official"
 msgstr "正式版功能函数"
 
 #, fuzzy
-msgid "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trsp"
+msgid ""
+"`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__: pgr_trsp"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trspVia"
+"`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__: pgr_trspVia"
 msgstr ""
 "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
 "pgr_trspviaedges"
 
 #, fuzzy
 msgid ""
-"`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ "
+"`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__: "
 "pgr_trspVia_withPoints"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ "
+"`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__: "
 "pgr_trsp_withPoints"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPoints"
+"`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: "
+"pgr_withPoints"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ "
+"`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: "
 "pgr_withPointsCost"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ "
+"`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: "
 "pgr_withPointsCostMatrix"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ "
+"`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: "
 "pgr_withPointsDD"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ "
+"`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: "
 "pgr_withPointsKSP"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ "
+"`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: "
 "pgr_withPointsVia"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
@@ -4486,7 +4580,7 @@ msgstr "正式版函数签名"
 
 #, fuzzy
 msgid ""
-"`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ "
+"`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_aStar(Combinations)"
 msgstr ""
 "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
@@ -4494,7 +4588,7 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ "
+"`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_aStarCost(Combinations)"
 msgstr ""
 "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
@@ -4502,7 +4596,7 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ "
+"`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_bdAstar(Combinations)"
 msgstr ""
 "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
@@ -4510,7 +4604,7 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ "
+"`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_bdAstarCost(Combinations)"
 msgstr ""
 "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
@@ -4518,21 +4612,21 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ "
+"`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_bdDijkstra(Combinations)"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ "
+"`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_bdDijkstraCost(Combinations)"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ "
+"`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_dijkstra(Combinations)"
 msgstr ""
 "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
@@ -4540,7 +4634,7 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ "
+"`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_dijkstraCost(Combinations)"
 msgstr ""
 "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
@@ -4548,14 +4642,14 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_KSP(All "
+"`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_KSP(All "
 "signatures)"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ "
+"`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_boykovKolmogorov(Combinations)"
 msgstr ""
 "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
@@ -4563,7 +4657,7 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ "
+"`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_edmondsKarp(Combinations)"
 msgstr ""
 "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
@@ -4571,7 +4665,7 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ "
+"`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_maxFlow(Combinations)"
 msgstr ""
 "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
@@ -4579,22 +4673,48 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ "
+"`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_pushRelabel(Combinations)"
 msgstr ""
 "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
 "pgr_contraction"
+
+msgid "New experimental functions"
+msgstr "新实验性函数"
+
+msgid "Metrics"
+msgstr "Metrics"
+
+#, fuzzy
+msgid ""
+"`#2951 <https://github.com/pgRouting/pgrouting/issues/2951>`__: pgr_bandwidth"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+msgid "Ordering"
+msgstr "排序"
+
+#, fuzzy
+msgid ""
+"`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: "
+"pgr_kingOrdering"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 msgid "SQL signatures and output standardization"
 msgstr ""
 
 #, fuzzy
 msgid ""
-"`#2904 <https://github.com/pgRouting/pgrouting/issues/2904>`__ Standardize "
-"output columns of functions with different output columns within overloads"
+"`#2904 <https://github.com/pgRouting/pgrouting/issues/2904>`__: Standardize "
+"output columns of functions with different output"
 msgstr ""
 "`#2057 <https://github.com/pgRouting/pgrouting/issues/2057>`__: trspViaEdges "
 "列的顺序不同"
+
+#, fuzzy
+msgid "columns within overloads"
+msgstr "函数的重载"
 
 #, fuzzy
 msgid "Standardized to |short-generic-result|"
@@ -4602,40 +4722,42 @@ msgstr "将输出列标准化为 |short-generic-result|"
 
 #, fuzzy
 msgid ""
-"`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPoints"
+"`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__: "
+"pgr_withPoints"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__ pgr_bdDijkstra"
+"`#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__: "
+"pgr_bdDijkstra"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2907 <https://github.com/pgRouting/pgrouting/issues/2907>`__ "
+"`#2907 <https://github.com/pgRouting/pgrouting/issues/2907>`__: "
 "pgr_bellmanFord"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2908 <https://github.com/pgRouting/pgrouting/issues/2908>`__ "
+"`#2908 <https://github.com/pgRouting/pgrouting/issues/2908>`__: "
 "pgr_binaryBreadthFirstSearch"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__ "
+"`#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__: "
 "pgr_edwardMoore"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
+"`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__: "
 "pgr_DAGshortestPath"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
@@ -4646,14 +4768,14 @@ msgstr "输出列是 |ksp-result|"
 
 #, fuzzy
 msgid ""
-"`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ "
+"`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__: "
 "pgr_withPointsCost"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ "
+"`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__: "
 "pgr_withPointsCostMatrix"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
@@ -4664,14 +4786,14 @@ msgstr "将输出列标准化为 |short-generic-result|"
 
 #, fuzzy
 msgid ""
-"`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ "
+"`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__: "
 "pgr_edgeDisjointPaths"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ "
+"`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__: "
 "pgr_turnRestrictedPaths"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
@@ -4682,7 +4804,7 @@ msgstr "返回集合 |result-edge-color|"
 
 #, fuzzy
 msgid ""
-"`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__ "
+"`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__: "
 "pgr_edgeColoring"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
@@ -4693,13 +4815,13 @@ msgstr "返回集合 |result-node-color|"
 
 #, fuzzy
 msgid ""
-"`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__ pgr_bipartite"
+"`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__: pgr_bipartite"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2927 <https://github.com/pgRouting/pgrouting/issues/2927>`__ "
+"`#2927 <https://github.com/pgRouting/pgrouting/issues/2927>`__: "
 "pgr_sequentialVertexColoring"
 msgstr ""
 "`#2202 <https://github.com/pgRouting/pgrouting/issues/2202>`__: "
@@ -4711,25 +4833,25 @@ msgstr "将输出列标准化为 |result-spantree|"
 
 #, fuzzy
 msgid ""
-"`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__ "
+"`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__: "
 "pgr_breadthFirstSearch"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__ "
+"`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__: "
 "pgr_depthFirstSearch"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
-msgid "Standardized to |result-node-order|"
+msgid "Standardized to |result_node_order|"
 msgstr "返回集合 |result-node-color|"
 
 #, fuzzy
 msgid ""
-"`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__ "
+"`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__: "
 "pgr_topologicalSort"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
@@ -4740,7 +4862,7 @@ msgstr "将输出列标准化为 |result-spantree|"
 
 #, fuzzy
 msgid ""
-"`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__ "
+"`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__: "
 "pgr_transitiveClosure"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
@@ -4763,13 +4885,6 @@ msgstr ""
 #, fuzzy
 msgid ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trspVia"
-msgstr ""
-"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
-
-#, fuzzy
-msgid ""
-"`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: "
-"pgr_withPointsVia"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
@@ -4869,8 +4984,9 @@ msgstr ""
 "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: "
 "pgr_alphaShape"
 
+#, fuzzy
 msgid ""
-"`#2751 <https://github.com/pgRouting/pgrouting/issues/2851>`__: "
+"`#2751 <https://github.com/pgRouting/pgrouting/issues/2751>`__: "
 "pgr_createTopology"
 msgstr ""
 "`#2751 <https://github.com/pgRouting/pgrouting/issues/2851>`__: "
@@ -4910,199 +5026,340 @@ msgid "Removal of SQL deprecated internal functions"
 msgstr "移除已弃用的SQL内部函数"
 
 #, fuzzy
-msgid "#2748 _pgr_alphashape(text,double precision)"
-msgstr "_pgr_kruskal(text,anyarray,text,bigint,double precision)"
-
-#, fuzzy
-msgid "#2861 _pgr_checkverttab(text,text[],integer,text)"
-msgstr "_pgr_checkverttab(text,text[],integer,text)"
-
-#, fuzzy
-msgid "#2861 _pgr_createindex(text,text,text,integer,text)"
-msgstr "_pgr_createindex(text,text,text,integer,text)"
-
-#, fuzzy
-msgid "#2861 _pgr_createindex(text,text,text,text,integer,text)"
-msgstr "_pgr_createindex(text,text,text,text,integer,text)"
-
-#, fuzzy
-msgid "#2913 _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)"
-msgstr "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
-
-#, fuzzy
-msgid "#2913 _pgr_dagshortestpath(text,text,boolean,boolean)"
-msgstr "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
-
-#, fuzzy
-msgid "#2730 _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
-msgstr "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
-
-#, fuzzy
-msgid "#2730 _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
-msgstr "_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
-
-#, fuzzy
-msgid "#2730 _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
-msgstr "_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+msgid ""
+"`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ "
+"_pgr_alphashape(text,double precision)"
+msgstr ""
+"`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: "
+"pgr_alphaShape"
 
 #, fuzzy
 msgid ""
-"#2730 _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_checkverttab(text,text[],integer,text)"
+msgstr ""
+"`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__: "
+"pgr_createVerticesTable"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_createindex(text,text,text,integer,text)"
+msgstr ""
+"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__:"
+"pgr_contraction(edges) 新签名"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_createindex(text,text,text,text,integer,text)"
+msgstr ""
+"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__:"
+"pgr_contraction(edges) 新签名"
+
+#, fuzzy
+msgid ""
+"`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
+"_pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
+"_pgr_dagshortestpath(text,text,boolean,boolean)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
+"_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
+msgstr ""
+"`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
+"pgr_contraction"
+
+#, fuzzy
+msgid ""
+"`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
+"_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
+msgstr ""
+"`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
+"pgr_contraction"
+
+#, fuzzy
+msgid ""
+"`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
+"_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+msgstr ""
+"`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
+"pgr_contraction"
+
+#, fuzzy
+msgid ""
+"`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
+"_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
 msgstr "_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
 
 #, fuzzy
 msgid ""
-"#2730 _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,"
-"boolean)"
+"`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
+"_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)"
 msgstr "_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
 
 #, fuzzy
-msgid "#2730 _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)"
-msgstr "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
-
-#, fuzzy
-msgid "#2730 _pgr_dijkstra(text,text,boolean,boolean,boolean)"
-msgstr "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
+msgid ""
+"`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
+"_pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)"
+msgstr ""
+"`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
+"pgr_contraction"
 
 #, fuzzy
 msgid ""
-"#2735 _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
+"`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
+"_pgr_dijkstra(text,text,boolean,boolean,boolean)"
+msgstr ""
+"`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
+"pgr_contraction"
+
+#, fuzzy
+msgid ""
+"`#2735 <https://github.com/pgRouting/pgrouting/issues/2735>`__ "
+"_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
 msgstr "_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
 
 #, fuzzy
-msgid "#2861 _pgr_endpoint(geometry)"
-msgstr "_pgr_endpoint(geometry)"
-
-#, fuzzy
-msgid "#2861 _pgr_getcolumnname(text,text,integer,text)"
-msgstr "_pgr_getcolumnname(text,text,integer,text)"
-
-#, fuzzy
-msgid "#2861 _pgr_getcolumnname(text,text,text,integer,text)"
-msgstr "_pgr_getcolumnname(text,text,text,integer,text)"
-
-#, fuzzy
-msgid "#2861 _pgr_getcolumntype(text,text,integer,text)"
-msgstr "_pgr_getcolumntype(text,text,integer,text)"
-
-#, fuzzy
-msgid "#2861 _pgr_getcolumntype(text,text,text,integer,text)"
-msgstr "_pgr_getcolumntype(text,text,text,integer,text)"
-
-#, fuzzy
-msgid "#2861 _pgr_gettablename(text,integer,text)"
-msgstr "_pgr_gettablename(text,integer,text)"
-
-#, fuzzy
-msgid "#2861 _pgr_iscolumnindexed(text,text,integer,text)"
-msgstr "_pgr_iscolumnindexed(text,text,integer,text)"
-
-#, fuzzy
-msgid "#2861 _pgr_iscolumnindexed(text,text,text,integer,text)"
-msgstr "_pgr_iscolumnindexed(text,text,text,integer,text)"
-
-#, fuzzy
-msgid "#2861 _pgr_iscolumnintable(text,text)"
-msgstr "_pgr_iscolumnintable(text,text)"
-
-#, fuzzy
-msgid "#2745 _pgr_kruskal(text,anyarray,text,bigint,double precision)"
-msgstr "_pgr_kruskal(text,anyarray,text,bigint,double precision)"
-
-#, fuzzy
-msgid "#2897 _pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)"
-msgstr "_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
-
-#, fuzzy
-msgid "#2897 _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)"
-msgstr "pgr_trsp(text,integer,integer,boolean,boolean,text)"
-
-#, fuzzy
-msgid "#2897 _pgr_ksp(text,text,integer,boolean,boolean)"
-msgstr "pgr_trsp(text,integer,integer,boolean,boolean,text)"
-
-#, fuzzy
-msgid "#2899 _pgr_maxcardinalitymatch(text,boolean)"
-msgstr "pgr_maxCardinalityMatch(text,boolean)"
-
-#, fuzzy
-msgid "#2861 _pgr_msg(integer,text,text)"
-msgstr "_pgr_msg(integer,text,text)"
-
-#, fuzzy
-msgid "#2861 _pgr_onerror(boolean,integer,text,text,text,text)"
-msgstr "_pgr_onerror(boolean,integer,text,text,text,text)"
-
-#, fuzzy
-msgid "#2861 _pgr_pointtoid(geometry,double precision,text,integer)"
-msgstr "_pgr_pointtoid(geometry,double precision,text,integer)"
-
-#, fuzzy
-msgid "#2743 _pgr_prim(text,anyarray,text,bigint,double precision)"
-msgstr "_pgr_prim(text,anyarray,text,bigint,double precision)"
-
-#, fuzzy
-msgid "#2861 _pgr_quote_ident(text)"
-msgstr "_pgr_quote_ident(text)"
-
-#, fuzzy
-msgid "#2861 _pgr_startpoint(geometry)"
-msgstr "_pgr_startpoint(geometry)"
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_endpoint(geometry)"
+msgstr ""
+"`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__:重写 "
+"pgr_nodeNetwork"
 
 #, fuzzy
 msgid ""
-"#2683 _pgr_trsp(text,integer,double precision,integer,double precision,"
-"boolean,boolean,text)"
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_getcolumnname(text,text,integer,text)"
+msgstr ""
+"`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__:重写 "
+"pgr_nodeNetwork"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_getcolumnname(text,text,text,integer,text)"
+msgstr ""
+"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__:"
+"pgr_contraction(edges) 新签名"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_getcolumntype(text,text,integer,text)"
+msgstr ""
+"`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
+"pgr_trspviaedges"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_getcolumntype(text,text,text,integer,text)"
+msgstr ""
+"`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
+"pgr_trspviaedges"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_gettablename(text,integer,text)"
+msgstr ""
+"`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__:重写 "
+"pgr_nodeNetwork"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_iscolumnindexed(text,text,integer,text)"
+msgstr ""
+"`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__:重写 "
+"pgr_nodeNetwork"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_iscolumnindexed(text,text,text,integer,text)"
+msgstr ""
+"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__:"
+"pgr_contraction(edges) 新签名"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_iscolumnintable(text,text)"
+msgstr ""
+"`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
+"pgr_trspviaedges"
+
+#, fuzzy
+msgid ""
+"`#2745 <https://github.com/pgRouting/pgrouting/issues/2745>`__ "
+"_pgr_kruskal(text,anyarray,text,bigint,double precision)"
+msgstr ""
+"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: "
+"pgr_extractVertices 变为提议状态"
+
+#, fuzzy
+msgid ""
+"`#2897 <https://github.com/pgRouting/pgrouting/issues/2897>`__ _pgr_ksp(text,"
+"anyarray,anyarray,integer,boolean,boolean,boolean)"
+msgstr "_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
+
+#, fuzzy
+msgid ""
+"`#2897 <https://github.com/pgRouting/pgrouting/issues/2897>`__ _pgr_ksp(text,"
+"bigint,bigint,integer,boolean,boolean)"
+msgstr ""
+"`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__: "
+"pgr_createVerticesTable"
+
+#, fuzzy
+msgid ""
+"`#2897 <https://github.com/pgRouting/pgrouting/issues/2897>`__ _pgr_ksp(text,"
+"text,integer,boolean,boolean)"
+msgstr ""
+"`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__: "
+"pgr_createVerticesTable"
+
+#, fuzzy
+msgid ""
+"`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__ "
+"_pgr_maxcardinalitymatch(text,boolean)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_msg(integer,text,text)"
+msgstr ""
+"`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
+"pgr_trspviaedges"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_onerror(boolean,integer,text,text,text,text)"
+msgstr ""
+"`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__: "
+"pgr_createVerticesTable"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_pointtoid(geometry,double precision,text,integer)"
+msgstr ""
+"`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__:"
+"pgr_contraction(edges) 新签名"
+
+#, fuzzy
+msgid ""
+"`#2743 <https://github.com/pgRouting/pgrouting/issues/2743>`__ "
+"_pgr_prim(text,anyarray,text,bigint,double precision)"
+msgstr ""
+"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: "
+"pgr_extractVertices 变为提议状态"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_quote_ident(text)"
+msgstr ""
+"`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__:重写 "
+"pgr_nodeNetwork"
+
+#, fuzzy
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_startpoint(geometry)"
+msgstr ""
+"`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
+"pgr_trspviaedges"
+
+#, fuzzy
+msgid ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ "
+"_pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean,text)"
 msgstr ""
 "_pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean,text)"
 
 #, fuzzy
-msgid "#2683 _pgr_trsp(text,text,anyarray,anyarray,boolean)"
-msgstr "_pgr_trsp(text,text,anyarray,anyarray,boolean)"
-
-#, fuzzy
-msgid "#2683 _pgr_trsp(text,text,anyarray,bigint,boolean)"
-msgstr "_pgr_trsp(text,text,anyarray,bigint,boolean)"
-
-#, fuzzy
-msgid "#2683 _pgr_trsp(text,text,bigint,anyarray,boolean)"
-msgstr "_pgr_trsp(text,text,bigint,anyarray,boolean)"
-
-#, fuzzy
-msgid "#2683 _pgr_trsp(text,text,bigint,bigint,boolean)"
-msgstr "_pgr_trsp(text,text,bigint,bigint,boolean)"
-
-#, fuzzy
-msgid "#2682 _pgr_trspviavertices(text,integer[],boolean,boolean,text)"
-msgstr "_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
+msgid ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ "
+"_pgr_trsp(text,text,anyarray,anyarray,boolean)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"#2919 _pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,"
-"boolean,character,boolean)"
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ "
+"_pgr_trsp(text,text,anyarray,bigint,boolean)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ "
+"_pgr_trsp(text,text,bigint,anyarray,boolean)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ "
+"_pgr_trsp(text,text,bigint,bigint,boolean)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__ "
+"_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
+msgstr ""
+"`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: "
+"pgr_trspviavertices"
+
+#, fuzzy
+msgid ""
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"_pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,"
+"character,boolean)"
 msgstr ""
 "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
 "boolean)``"
 
 #, fuzzy
 msgid ""
-"#2919 _pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,"
-"character,boolean)"
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"_pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,"
+"boolean)"
 msgstr ""
 "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 
 #, fuzzy
 msgid ""
-"#2919 _pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"_pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
 msgstr ""
-"pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
-"boolean)``"
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"#2901 _pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,"
+"`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ "
+"_pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,"
 "integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 "_pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
@@ -5110,154 +5367,205 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"#2901 _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,"
-"double precision,double precision,double precision,boolean)"
+"`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ _pgr_tsp(text,"
+"bigint,bigint,double precision,integer,integer,integer,double precision,"
+"double precision,double precision,boolean)"
 msgstr ""
 "_pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean,text)"
 
 #, fuzzy
-msgid "#2861 _pgr_versionless(text,text)"
-msgstr "_pgr_versionless(text,text)"
+msgid ""
+"`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
+"_pgr_versionless(text,text)"
+msgstr ""
+"`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
+"pgr_trspviaedges"
 
 #, fuzzy
 msgid ""
-"#2890 _pgr_withpointsdd(text,text,anyarray,double precision,boolean,"
-"character,boolean,boolean)"
+"`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ "
+"_pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+"boolean,boolean)"
 msgstr ""
 "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 
 #, fuzzy
 msgid ""
-"#2895 _pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,"
-"boolean,boolean,boolean,boolean)"
+"`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
+"_pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,"
+"boolean,boolean,boolean)"
 msgstr ""
 "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
 "boolean)``"
 
 #, fuzzy
 msgid ""
-"#2895 _pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,"
-"character,boolean)"
-msgstr ""
-"pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
-"boolean)``"
-
-#, fuzzy
-msgid ""
-"#2895 _pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,"
+"`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
+"_pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,"
 "boolean)"
 msgstr ""
 "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
 "boolean)``"
 
 #, fuzzy
-msgid "#2741 _pgr_withpointsvia(text,bigint[],double precision[],boolean)"
-msgstr "_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+msgid ""
+"`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
+"_pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)"
+msgstr ""
+"pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
+"boolean)``"
 
 #, fuzzy
 msgid ""
-"#2741 _pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,"
-"character,boolean)"
+"`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__ "
+"_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__ "
+"_pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,"
+"boolean)"
 msgstr ""
 "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 
 #, fuzzy
-msgid "#2683 _trsp(text,text,anyarray,anyarray,boolean)"
-msgstr "_trsp(text,text,anyarray,anyarray,boolean)"
+msgid ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _trsp(text,"
+"text,anyarray,anyarray,boolean)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
-msgid "#2683 _v4trsp(text,text,anyarray,anyarray,boolean)"
-msgstr "_v4trsp(text,text,anyarray,anyarray,boolean)"
+msgid ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _v4trsp(text,"
+"text,anyarray,anyarray,boolean)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
-msgid "#2683 _v4trsp(text,text,text,boolean)"
-msgstr "_v4trsp(text,text,text,boolean)"
+msgid ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _v4trsp(text,"
+"text,text,boolean)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid "Summary of functions and signatures no longer on pgrouting"
 msgstr "为 pgRouting 添加功能"
 
 #, fuzzy
-msgid "#2748 pgr_alphashape(geometry,double precision)"
-msgstr "_pgr_pointtoid(geometry,double precision,text,integer)"
-
-#, fuzzy
-msgid "#2752 pgr_analyzegraph(text,double precision,text,text,text,text,text)"
-msgstr "_pgr_onerror(boolean,integer,text,text,text,text)"
+msgid ""
+"`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ "
+"pgr_alphashape(geometry,double precision)"
+msgstr ""
+"`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: "
+"pgr_alphaShape"
 
 #, fuzzy
 msgid ""
-"#2755 pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,"
-"text)"
-msgstr "_pgr_createindex(text,text,text,text,integer,text)"
-
-#, fuzzy
-msgid "#2798 pgr_contraction(text,bigint[],integer,bigint[],boolean)"
-msgstr "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+"`#2752 <https://github.com/pgRouting/pgrouting/issues/2752>`__ "
+"pgr_analyzegraph(text,double precision,text,text,text,text,text)"
+msgstr ""
+"`#2752 <https://github.com/pgRouting/pgrouting/issues/2752>`__: "
+"pgr_analyzeGraph"
 
 #, fuzzy
 msgid ""
-"#2751 pgr_createtopology(text,double precision,text,text,text,text,text,"
-"boolean)"
-msgstr "_pgr_createindex(text,text,text,text,integer,text)"
-
-#, fuzzy
-msgid "#2827 pgr_createverticestable(text,text,text,text,text)"
+"`#2755 <https://github.com/pgRouting/pgrouting/issues/2755>`__ "
+"pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)"
 msgstr "_pgr_createindex(text,text,text,text,integer,text)"
 
 #, fuzzy
 msgid ""
-"#2888 pgr_findcloseedges(text,geometry,double precision,integer,boolean,"
-"boolean)"
+"`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__ "
+"pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+msgstr ""
+"`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: "
+"pgr_contraction"
+
+#, fuzzy
+msgid ""
+"`#2751 <https://github.com/pgRouting/pgrouting/issues/2751>`__ "
+"pgr_createtopology(text,double precision,text,text,text,text,text,boolean)"
+msgstr "_pgr_createindex(text,text,text,text,integer,text)"
+
+#, fuzzy
+msgid ""
+"`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__ "
+"pgr_createverticestable(text,text,text,text,text)"
+msgstr ""
+"`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__: "
+"pgr_createVerticesTable"
+
+#, fuzzy
+msgid ""
+"`#2888 <https://github.com/pgRouting/pgrouting/issues/2888>`__ "
+"pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)"
 msgstr ""
 "pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
 
 #, fuzzy
 msgid ""
-"#2888 pgr_findcloseedges(text,geometry[],double precision,integer,boolean,"
-"boolean)"
-msgstr ""
-"pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
-
-#, fuzzy
-msgid "#2899 pgr_maxcardinalitymatch(text,boolean)"
-msgstr "pgr_maxCardinalityMatch(text,boolean)"
-
-#, fuzzy
-msgid ""
-"#2886 pgr_nodenetwork(text,double precision,text,text,text,text,boolean)"
+"`#2888 <https://github.com/pgRouting/pgrouting/issues/2888>`__ "
+"pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)"
 msgstr ""
 "pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
 
 #, fuzzy
 msgid ""
-"#2683 pgr_trsp(text,integer,double precision,integer,double precision,"
-"boolean,boolean,text)"
+"`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__ "
+"pgr_maxcardinalitymatch(text,boolean)"
 msgstr ""
-"pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__ "
+"pgr_nodenetwork(text,double precision,text,text,text,text,boolean)"
+msgstr ""
+"`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__:重写 "
+"pgr_nodeNetwork"
+
+#, fuzzy
+msgid ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ pgr_trsp(text,"
+"integer,double precision,integer,double precision,boolean,boolean,text)"
+msgstr ""
+"_pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean,text)"
 
 #, fuzzy
-msgid "#2683 pgr_trsp(text,integer,integer,boolean,boolean,text)"
-msgstr "pgr_trsp(text,integer,integer,boolean,boolean,text)"
-
-#, fuzzy
 msgid ""
-"#2681 pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,"
-"text)"
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ pgr_trsp(text,"
+"integer,integer,boolean,boolean,text)"
 msgstr ""
-"pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
-
-#, fuzzy
-msgid "#2682 pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
-msgstr "pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"#2919 pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,"
+"`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__ "
+"pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
+msgstr ""
+"`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
+"pgr_trspviaedges"
+
+#, fuzzy
+msgid ""
+"`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__ "
+"pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
+msgstr ""
+"`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: "
+"pgr_trspviavertices"
+
+#, fuzzy
+msgid ""
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,"
 "character,boolean)"
 msgstr ""
 "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
@@ -5265,7 +5573,8 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"#2919 pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,"
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,"
 "boolean)"
 msgstr ""
 "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
@@ -5273,136 +5582,160 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"#2919 pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,"
-"boolean)"
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
 msgstr ""
 "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 
 #, fuzzy
 msgid ""
-"#2919 pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,"
-"boolean)"
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
 msgstr ""
 "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
 "boolean)``"
 
 #, fuzzy
 msgid ""
-"#2919 pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,"
-"boolean)"
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)"
 msgstr ""
 "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
 
 #, fuzzy
 msgid ""
-"#2919 pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
 msgstr ""
-"pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid ""
-"#2901 pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,"
-"integer,double precision,double precision,double precision,boolean)"
-msgstr ""
-"pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
-"boolean,text)"
-
-#, fuzzy
-msgid ""
-"#2901 pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,"
+"`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ "
+"pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,"
 "double precision,double precision,double precision,boolean)"
 msgstr ""
-"pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"_pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean,text)"
 
 #, fuzzy
-msgid "#2919 pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
+msgid ""
+"`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ pgr_tsp(text,"
+"bigint,bigint,double precision,integer,integer,integer,double precision,"
+"double precision,double precision,boolean)"
+msgstr ""
+"_pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean,text)"
+
+#, fuzzy
+msgid ""
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_withpointscost(text,text,anyarray,bigint,boolean,character)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_withpointscost(text,text,bigint,anyarray,boolean,character)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_withpointscost(text,text,bigint,bigint,boolean,character)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_withpointscost(text,text,text,boolean,character)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ "
+"pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+"boolean,boolean)"
 msgstr ""
 "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 
 #, fuzzy
-msgid "#2919 pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)"
-msgstr "_pgr_trsp(text,text,anyarray,anyarray,boolean)"
-
-#, fuzzy
-msgid "#2919 pgr_withpointscost(text,text,anyarray,bigint,boolean,character)"
-msgstr ""
-"pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
-"boolean,boolean)"
-
-#, fuzzy
-msgid "#2919 pgr_withpointscost(text,text,bigint,anyarray,boolean,character)"
-msgstr "_pgr_trsp(text,text,bigint,anyarray,boolean)"
-
-#, fuzzy
-msgid "#2919 pgr_withpointscost(text,text,bigint,bigint,boolean,character)"
-msgstr ""
-"pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
-"boolean)``"
-
-#, fuzzy
-msgid "#2919 pgr_withpointscost(text,text,text,boolean,character)"
+msgid ""
+"`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ "
+"pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
 msgstr ""
 "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
 
 #, fuzzy
 msgid ""
-"#2890 pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
-"boolean,boolean)"
-msgstr ""
-"pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
-"boolean,boolean)"
-
-#, fuzzy
-msgid ""
-"#2890 pgr_withpointsdd(text,text,bigint,double precision,boolean,character,"
+"`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
+"pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,"
 "boolean)"
 msgstr ""
-"pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
-
-#, fuzzy
-msgid ""
-"#2895 pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,"
-"character,boolean)"
-msgstr ""
 "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
 "boolean)``"
 
 #, fuzzy
 msgid ""
-"#2919 pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)"
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)"
 msgstr ""
 "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 
 #, fuzzy
 msgid ""
-"#2919 pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)"
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)"
 msgstr ""
 "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 
 #, fuzzy
 msgid ""
-"#2919 pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)"
-msgstr ""
-"pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
-
-#, fuzzy
-msgid "#2919 pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)"
-msgstr ""
-"pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
-
-#, fuzzy
-msgid "#2919 pgr_withpoints(text,text,text,boolean,character,boolean)"
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)"
 msgstr ""
 "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
 
 #, fuzzy
 msgid ""
-"#2919 pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,"
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)"
+msgstr ""
+"pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
+
+#, fuzzy
+msgid ""
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_withpoints(text,text,text,boolean,character,boolean)"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
+"pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,"
 "boolean)"
 msgstr ""
 "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
@@ -5470,19 +5803,30 @@ msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
 msgid "Internal C/C++ functions in legacy"
 msgstr "遗留代码中内部 C/C++ 函数"
 
-msgid "#2683 _trsp"
+#, fuzzy
+msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _trsp"
 msgstr ""
-
-msgid "#2683 _v4trsp"
-msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
-msgid "#2748 _pgr_alphashape"
-msgstr "pgr_alphashape"
+msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _v4trsp"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
-msgid "#2913 _pgr_dagshortestpath"
-msgstr "pgr_dagShortestpath"
+msgid ""
+"`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ "
+"_pgr_alphashape"
+msgstr ""
+"`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: "
+"pgr_alphaShape"
+
+#, fuzzy
+msgid ""
+"`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
+"_pgr_dagshortestpath"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 msgid "All releases"
 msgstr "所有版本"
@@ -6352,7 +6696,7 @@ msgid "|result_node_color|"
 msgstr "返回集合 |result-node-color|"
 
 #, fuzzy
-msgid "|result-node-order|"
+msgid "|result_node_order|"
 msgstr "返回集合 |result-node-color|"
 
 msgid "Changes on column names must be done after updating pgRouting."
@@ -6415,7 +6759,7 @@ msgid "Migration from |result-toposort|"
 msgstr "限制迁移"
 
 #, fuzzy
-msgid "Migration to: |result-node-order|"
+msgid "Migration to: |result_node_order|"
 msgstr "|result-generic-no-seq|"
 
 #, fuzzy
@@ -8541,27 +8885,6 @@ msgstr "另请参阅"
 msgid "Installation"
 msgstr "安装"
 
-msgid ":ref:`install-short`"
-msgstr ":ref:`install-short`"
-
-msgid ":ref:`install_get_sources`"
-msgstr ":ref:`install_get_sources`"
-
-msgid ":ref:`install_enable_db`"
-msgstr ":ref:`install_enable_db`"
-
-msgid ":ref:`install_dependencies`"
-msgstr ":ref:`install_dependencies`"
-
-msgid ":ref:`install_configuring`"
-msgstr ":ref:`install_configuring`"
-
-msgid ":ref:`install_build`"
-msgstr ":ref:`install_build`"
-
-msgid ":ref:`install_testing`"
-msgstr ":ref:`install_testing`"
-
 msgid ""
 "Instructions for downloading and installing binaries for different operating "
 "systems, additional notes and corrections not included in this documentation "
@@ -8572,8 +8895,9 @@ msgstr ""
 "和更正，可以在 `安装维基 <https://github.com/pgRouting/pgrouting/wiki/Notes-"
 "on-Download%2C-Installation-and-building-pgRouting>`__ 中找到"
 
+#, fuzzy
 msgid ""
-"To use pgRouting PostGIS needs to be installed, please read the information "
+"To use pgRouting, PostGIS needs to be installed, please read the information "
 "about installation in this `Install Guide <https://www.postgis.us/"
 "presentations/postgis_install_guide_22.html>`__"
 msgstr ""
@@ -8685,26 +9009,24 @@ msgid ""
 "Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support"
 msgstr "使用 Boost 1.75 进行编译需要具有 C++ 14 标准支持的 C++ 编译器"
 
-msgid "Postgresql version = Supported versions by PostgreSQL"
-msgstr "Postgresql 版本 = PostgreSQL 支持的版本"
+#, fuzzy
+msgid "Postgresql version >= 13"
+msgstr "PostgreSQL version 9.3"
 
-msgid "The Boost Graph Library (BGL). Version >= 1.56"
+#, fuzzy
+msgid "The Boost Graph Library (BGL) >= 1.56.0"
 msgstr "Boost 图库 (BGL)。 版本 >= 1.56"
 
-msgid "CMake >= 3.2"
+#, fuzzy
+msgid "CMake >= 3.12"
 msgstr "CMake >= 3.2"
-
-msgid "optional dependencies"
-msgstr "可选的依赖项"
 
 msgid "For user's documentation"
 msgstr "用于用户文档"
 
-msgid "Sphinx >= 1.1"
+#, fuzzy
+msgid "Sphinx >= 4.0"
 msgstr "Sphinx >= 1.1"
-
-msgid "Latex"
-msgstr "Latex"
 
 msgid "For developer's documentation"
 msgstr "对于开发者文档"
@@ -8724,7 +9046,8 @@ msgstr "pg_prove"
 msgid "For using:"
 msgstr "用于使用："
 
-msgid "PostGIS version >= 2.2"
+#, fuzzy
+msgid "PostGIS version >= 3.0.0"
 msgstr "PostGIS版本 >= 2.2"
 
 msgid "Example: Installing dependencies on linux"
@@ -8733,76 +9056,15 @@ msgstr "示例：在 Linux 上安装依赖项"
 msgid "Installing the compilation dependencies"
 msgstr "安装编译依赖项"
 
-msgid "Database dependencies"
-msgstr "数据库依赖"
-
-msgid "Configuring PostgreSQL"
-msgstr "配置 PostgreSQL"
-
-msgid "Entering psql console"
-msgstr "进入psql控制台"
-
-msgid "To exit psql console"
-msgstr "退出 psql 控制台"
-
-msgid ""
-"Entering psql console directly without switching roles can be done by the "
-"following commands"
-msgstr "直接进入psql控制台，无需切换角色，可以通过以下命令完成"
-
-msgid "Then use the above given method to exit out of the psql console"
-msgstr "然后使用上面给出的方法退出psql控制台"
-
-msgid "Checking PostgreSQL version"
-msgstr "检查 PostgreSQL 版本"
-
-msgid "or"
-msgstr "或者"
-
-msgid "Enter the psql console using above given method and then enter"
-msgstr "使用上面给定的方法进入psql控制台，然后输入"
-
-msgid "Creating PostgreSQL role"
-msgstr "创建 PostgreSQL 角色"
-
-msgid ""
-"Default role provided by PostgreSQL is postgres. To create new roles you can "
-"use the above provided commands. The prompt will ask the user to type name "
-"of the role and then provide affirmation. Proceed with the steps and you "
-"will succeed in creating PostgreSQL role successfully."
-msgstr ""
-"PostgreSQL 提供的默认角色是 postgres。 要创建新角色，您可以使用上面提供的命"
-"令。 提示将要求用户输入角色名称，然后提供确认。 继续执行这些步骤，您将成功创"
-"建 PostgreSQL 角色。"
-
-msgid ""
-"To add password to the role or change previously created password of the "
-"role use the following commands"
-msgstr "要向角色添加密码或更改之前创建的角色密码，请使用以下命令"
-
-msgid ""
-"To get additional details on the flags associated with ``createuser`` below "
-"given command can be used"
-msgstr ""
-"要获取与下面的 ``createuser`` 相关的标志的更多详细信息，可以使用给定的命令"
-
-msgid "Creating Database in PostgreSQL"
-msgstr "在 PostgreSQL 中创建数据库"
-
-msgid "Connecting to a PostgreSQL Database"
-msgstr "连接到 PostgreSQL 数据库"
-
-msgid "Enter the psql console and type the following commands"
-msgstr "进入psql控制台，输入以下命令"
-
 msgid "Build dependencies"
 msgstr "构建依赖关系"
 
 msgid "Optional dependencies"
 msgstr "可选依赖项"
 
-msgid "For documentation and testing"
-msgstr "用于文档和测试"
+#, fuzzy
+msgid "For documentation"
+msgstr "用于用户文档"
 
 msgid "Configuring"
 msgstr "配置"
@@ -8810,20 +9072,22 @@ msgstr "配置"
 msgid "pgRouting uses the `cmake` system to do the configuration."
 msgstr "pgRouting 使用 `cmake` 系统进行配置。"
 
-msgid "The build directory is different from the source directory"
-msgstr "构建目录与源目录不同"
-
-msgid "Create the build directory"
-msgstr "创建构建目录"
-
 msgid "Configurable variables"
 msgstr "可配置变量"
 
 msgid "To see the variables that can be configured"
 msgstr "查看可以配置的变量"
 
+msgid "The build directory is different from the source directory"
+msgstr "构建目录与源目录不同"
+
 msgid "Configuring The Documentation"
 msgstr "配置文档"
+
+msgid ""
+"User and developers documentation are not build if prerequisites are not "
+"found."
+msgstr ""
 
 msgid ""
 "Most of the effort of the documentation has been on the HTML files. Some "
@@ -8835,15 +9099,6 @@ msgstr "变量"
 
 msgid "Comment"
 msgstr "解释"
-
-msgid "WITH_DOC"
-msgstr "WITH_DOC"
-
-msgid "BOOL=OFF"
-msgstr "BOOL=OFF"
-
-msgid "Turn on/off building the documentation"
-msgstr "打开/关闭构建文档"
 
 msgid "BUILD_HTML"
 msgstr "BUILD_HTML"
@@ -8863,6 +9118,9 @@ msgstr "如果打开，则打开/关闭为开发人员文档构建 HTML"
 msgid "BUILD_LATEX"
 msgstr "BUILD_LATEX"
 
+msgid "BOOL=OFF"
+msgstr "BOOL=OFF"
+
 msgid "If ON, turn on/off building PDF"
 msgstr "如果打开，则打开/关闭构建 PDF"
 
@@ -8878,11 +9136,25 @@ msgstr "DOC_USE_BOOTSTRAP"
 msgid "If ON, use sphinx-bootstrap for HTML pages of the users documentation"
 msgstr "如果打开，则对用户文档的 HTML 页面使用 sphinx-bootstrap"
 
-msgid "Configuring cmake to create documentation before building pgRouting"
-msgstr "在构建 pgRouting 之前配置 cmake 创建文档"
+msgid "EN"
+msgstr ""
 
-msgid "Most of the effort of the documentation has been on the html files."
-msgstr "文档的大部分工作都集中在 html 文件上。"
+#, fuzzy
+msgid "if OFF the English documentation will no be built"
+msgstr "有关此文档何时构建的信息"
+
+msgid "ES"
+msgstr ""
+
+#, fuzzy
+msgid "if OFF the Spaish documentation will no be built"
+msgstr "有关此文档何时构建的信息"
+
+msgid "ZH_HANS"
+msgstr ""
+
+msgid "if OFF the Chinese simplified documentation will no be built"
+msgstr ""
 
 msgid "Building"
 msgstr "构建"
@@ -8890,7 +9162,8 @@ msgstr "构建"
 msgid "Using ``make`` to build the code and the documentation"
 msgstr "使用 ``make`` 构建代码和文档"
 
-msgid "The following instructions start from *path/to/pgrouting/build*"
+#, fuzzy
+msgid "The following instructions start from ``path/to/pgrouting/build``"
 msgstr "以下说明从 *path/to/pgrouting/build* 开始"
 
 msgid ""
@@ -8898,33 +9171,18 @@ msgid ""
 "steps are needed."
 msgstr "我们已经在多个平台上进行了测试，安装或重新安装需要所有步骤。"
 
-msgid "The sql signatures are configured and build in the ``cmake`` command."
-msgstr "SQL签名是在 ``cmake`` 命令中配置和构建的。"
-
-msgid "MinGW on Windows"
-msgstr "Windows 上的 MinGW"
-
 msgid "Linux"
 msgstr "Linux"
 
-msgid "The following instructions start from *path/to/pgrouting*"
+#, fuzzy
+msgid "The following instructions start from ``path/to/pgrouting``"
 msgstr "以下说明从 *path/to/pgrouting* 开始"
-
-msgid ""
-"To remove the build when the configuration changes, use the following code:"
-msgstr "要在配置更改时删除构建，请使用以下代码："
-
-msgid "and start the build process as mentioned previously."
-msgstr "并开始前面提到的构建过程。"
 
 msgid "Testing"
 msgstr "测试"
 
 msgid "Currently there is no :code:`make test` and testing is done as follows"
 msgstr "目前没有 :code:`make test` ，测试如下"
-
-msgid "The following instructions start from *path/to/pgrouting/*"
-msgstr "以下指令从 *path/to/pgrouting/* 开始"
 
 msgid ""
 "pgRouting is an extension of `PostGIS <https://postgis.net>`__ and "
@@ -9006,10 +9264,12 @@ msgstr "贡献者"
 msgid "This Release Contributors"
 msgstr "此版本贡献者"
 
-msgid "Individuals in this release v3.8.x (in alphabetical order)"
+#, fuzzy
+msgid "Individuals in this release v4.0.0 (in alphabetical order)"
 msgstr "本次 v3.8.x 版本发布的个人贡献者（按字母顺序排列）"
 
-msgid "Aurélie Bousquet, Regina Obe, Vicky Vergara"
+#, fuzzy
+msgid "Fan Wu Regina Obe, Saloni kumari, Vicky Vergara"
 msgstr "Aurélie Bousquet, Regina Obe, Vicky Vergara"
 
 msgid ""
@@ -9056,19 +9316,21 @@ msgstr "过去与现在的贡献者："
 msgid "Individuals (in alphabetical order)"
 msgstr "个人贡献者（按字母排序）"
 
+#, fuzzy
 msgid ""
 "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
 "Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
 "Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian "
 "Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, "
-"Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald "
-"Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay "
-"Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, "
-"Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang "
-"Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, "
-"Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, "
-"Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain "
-"Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+"Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, "
+"Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, "
+"Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud "
+"Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, "
+"Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, "
+"Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, "
+"Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, "
+"Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, "
+"Virginia Vergara, Yige Huang"
 msgstr ""
 "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
 "Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
@@ -9608,9 +9870,6 @@ msgstr ""
 "使用 `Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/"
 "metric_tsp_approx.html>`__"
 
-msgid "Version 3.0.0"
-msgstr "版本3.0.0"
-
 msgid "Name change from pgr_eucledianTSP"
 msgstr "pgr_eucledianTSP 的名称更改"
 
@@ -9716,9 +9975,6 @@ msgstr "pgr_aStar(One to Many) 添加了 ``end_vid`` 列。"
 
 msgid "pgr_aStar(Many to One) added ``start_vid`` column."
 msgstr "pgr_aStar(Many to One) 添加了 ``start_vid`` 列。"
-
-msgid "Version 3.2.0"
-msgstr "版本3.2.0"
 
 msgid "New proposed signature:"
 msgstr "新提议的签名："
@@ -9942,9 +10198,6 @@ msgstr "结果列更改：删除了 ``seq``"
 msgid "Version 2.5.0"
 msgstr "版本2.5.0"
 
-msgid "New experimental function."
-msgstr "新实验性功能。"
-
 msgid ""
 "Those vertices that belong to more than one biconnected component are called "
 "articulation points or, equivalently, cut vertices. Articulation points are "
@@ -9991,6 +10244,72 @@ msgid ""
 msgstr ""
 "维基百科: `双连通分量 <https://en.wikipedia.org/wiki/"
 "Biconnected_component>`__"
+
+#, fuzzy
+msgid "``pgr_bandwidth`` - Experimental"
+msgstr "``pgr_bipartite`` - 实验性"
+
+msgid "``pgr_bandwidth`` - Calculates the bandwidth of the graph"
+msgstr ""
+
+msgid ""
+"Bandwidth measures how \"spread out\" the connections are in a graph when "
+"vertices are arranged in a linear order (like numbering them 1, 2, 3, etc.)."
+msgstr ""
+
+msgid ""
+"For each edge in the graph, calculate the distance between the vertex "
+"numbers it connects"
+msgstr ""
+
+msgid "The bandwidth is the maximum of all these distances"
+msgstr ""
+
+#, fuzzy
+msgid "The implementation is for undirected graphs"
+msgstr "该实现适用于 **无向** 图。"
+
+msgid "Run time is 0.160789 seconds"
+msgstr ""
+
+#, fuzzy
+msgid "pgr_bandwidth(`Edges SQL`_)"
+msgstr "pgr_bipartite(`Edges SQL`_)"
+
+#, fuzzy
+msgid "Returns ``BIGINT``"
+msgstr "``BIGINT``"
+
+#, fuzzy
+msgid "For an undirected graph with edges."
+msgstr "对于一个undirected graph(无向图)，其边为 :math:'{2,4,5,8}'"
+
+#, fuzzy
+msgid "Returns a bigint ``(pgr_bandwidth)``"
+msgstr "返回一个布尔值 ``(pgr_isplanar)``"
+
+#, fuzzy
+msgid "``pgr_bandwidth``"
+msgstr "pgr_bipartite"
+
+#, fuzzy
+msgid "gives the bandwidth of the graph."
+msgstr "边不是图的一部分："
+
+#, fuzzy
+msgid "Undirected graph with edges before optimization."
+msgstr "在有向图中，两条边都有方向性"
+
+#, fuzzy
+msgid "Undirected graph with edges after optimization."
+msgstr "在有向图中，两条边都有方向性"
+
+#, fuzzy
+msgid ""
+"`Boost: bandwidth <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
+msgstr ""
+"`Boost: 是否为二分图 <https://www.boost.org/libs/graph/doc/is_bipartite."
+"html>`__"
 
 msgid "``pgr_bdAstar``"
 msgstr "``pgr_bdAstar``"
@@ -10239,9 +10558,6 @@ msgstr "``pgr_bellmanFord - 实验性``"
 
 msgid "``pgr_bellmanFord`` — Shortest path using Bellman-Ford algorithm."
 msgstr "``pgr_bellmanFord`` — 使用 Bellman-Ford 算法计算的最短路径。"
-
-msgid "New experimental signature:"
-msgstr "新实验性签名："
 
 msgid "pgr_bellmanFord(Combinations)"
 msgstr "pgr_bellmanFord(组合)"
@@ -11564,8 +11880,9 @@ msgstr ""
 "``pgr_contractionHierarchies`` — 根据收缩层级方法执行图收缩，并返回收缩后的顶"
 "点和生成的快捷边。"
 
-msgid "New **experimental** function"
-msgstr "新 **实验性** 函数"
+#, fuzzy
+msgid "New experimental function"
+msgstr "新实验性功能。"
 
 msgid ""
 "The contraction hierarchies method builds, from an initial order of the "
@@ -13555,9 +13872,6 @@ msgid ""
 "``pgr_edwardMoore`` — Returns the shortest path using Edward-Moore algorithm."
 msgstr "`pgr_edwardMoore`` - 使用 Edward-Moore 算法返回最短路径。"
 
-msgid "pgr_edwardMoore(Combinations)"
-msgstr "pgr_edwardMoore(组合)"
-
 msgid ""
 "Edward Moore’s Algorithm is an improvement of the Bellman-Ford Algorithm. It "
 "can compute the shortest paths from a single source vertex to all other "
@@ -14319,9 +14633,10 @@ msgstr ""
 msgid "``pgr_johnson``"
 msgstr "``pgr_johnson``"
 
+#, fuzzy
 msgid ""
 "``pgr_johnson`` - Returns the sum of the costs of the shortest path for each "
-"pair of nodes in the graph using Floyd-Warshall algorithm."
+"pair of nodes in the graph using Johnson algorithm."
 msgstr ""
 "``pgr_johnson`` - 使用 Jhonson 算法返回图中每对节点的最短路径成本之和。"
 
@@ -14342,6 +14657,62 @@ msgid ""
 msgstr ""
 "Boost `Johnson 算法 <https://www.boost.org/libs/graph/doc/"
 "johnson_all_pairs_shortest.html>`_"
+
+#, fuzzy
+msgid "``pgr_kingOrdering`` - Experimental"
+msgstr "``pgr_edgeColoring`` - 实验性"
+
+#, fuzzy
+msgid ""
+"``pgr_kingOrdering`` — Returns the King ordering of an undirected graphs"
+msgstr "``pgr_cuthillMckeeOrdering`` — 返回无向图的反向 Cuthill-Mckee 排序"
+
+msgid ""
+"In numerical linear algebra and graph theory, the King ordering algorithm is "
+"a heuristic designed to reorder the vertices of a graph so as to reduce its "
+"bandwidth."
+msgstr ""
+
+msgid ""
+"The method follows a breadth-first search (BFS) traversal,but with a "
+"refinement: at each step, the unvisited neighbors of the current vertex are "
+"inserted into the queue in ascending order of their pseudo-degree, where the "
+"pseudo-degree of a vertex is the number of edges connecting it to yet-"
+"unvisited vertices. This prioritization often yields a smaller bandwidth "
+"compared to simpler BFS orderings."
+msgstr ""
+
+#, fuzzy
+msgid "The implementation targets undirected graphs."
+msgstr "该实现适用于 **无向** 图。"
+
+msgid ""
+"Bandwidth minimization is an NP-complete problem; King ordering provides a "
+"practical local minimization approach."
+msgstr ""
+
+#, fuzzy
+msgid "The time complexity is: :math:`O(m^2 \\log(m)|E|)`"
+msgstr "运行时间复杂度为： :math:`O(m log(m)|V|)`"
+
+#, fuzzy
+msgid "where :math:`|E|` is the number of edges,"
+msgstr "其中 :math:`|V|` 是顶点数，"
+
+#, fuzzy
+msgid ":math:`m` is the maximum degree among all vertices."
+msgstr ":math:`m` 是图中顶点的最大度数。"
+
+#, fuzzy
+msgid "pgr_kingOrdering(`Edges SQL`_)"
+msgstr "pgr_edgeColoring(`Edges SQL`_)"
+
+#, fuzzy
+msgid ""
+"`Boost: King Ordering <https://www.boost.org/libs/graph/doc/king_ordering."
+"html>`__"
+msgstr ""
+"`Boost: 边着色 <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
 
 msgid "``pgr_kruskal``"
 msgstr "``pgr_kruskal``"
@@ -17338,8 +17709,9 @@ msgstr "pgRouting 3.8"
 msgid "pgRouting 3.8.0 Release Notes"
 msgstr "pgRouting 3.8.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.8.0 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
 msgstr ""
@@ -17452,11 +17824,14 @@ msgstr ""
 "`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__:"
 "pgr_contraction 函数进行了代码重构"
 
-msgid ""
-"Other enhancements: `#2869 <https://github.com/pgRouting/pgrouting/"
-"issues/2869>`__"
+#, fuzzy
+msgid "Other enhancements:"
+msgstr "代码改进"
+
+#, fuzzy
+msgid "`#2869 <https://github.com/pgRouting/pgrouting/issues/2869>`__:"
 msgstr ""
-"其他改进： `#2869 <https://github.com/pgRouting/pgrouting/issues/2869>`__"
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 msgid "SQL code enhancements"
 msgstr "SQL 代码优化"
@@ -17521,8 +17896,9 @@ msgstr "pgRouting 3.7"
 msgid "pgRouting 3.7.3 Release Notes"
 msgstr "pgRouting 3.7.3 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.7.3 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
 msgstr ""
@@ -17530,9 +17906,10 @@ msgstr ""
 "<https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
 
+#, fuzzy
 msgid ""
-"`#2731 <https://github.com/pgRouting/pgrouting/pull/2731>`__ Build Failure "
-"on Ubuntu 22"
+"`#2731 <https://github.com/pgRouting/pgrouting/issues/2731>`__: Build "
+"Failure on Ubuntu 22"
 msgstr ""
 "`#2731 <https://github.com/pgRouting/pgrouting/pull/2731>`__ Ubuntu 22 上的构"
 "建失败"
@@ -17540,8 +17917,9 @@ msgstr ""
 msgid "pgRouting 3.7.2 Release Notes"
 msgstr "pgRouting 3.7.2 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 msgstr ""
@@ -17549,12 +17927,10 @@ msgstr ""
 "表 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 
-msgid "Build"
-msgstr "构建"
-
+#, fuzzy
 msgid ""
-"`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cmake missing "
-"some policies and min version"
+"`#2713 <https://github.com/pgRouting/pgrouting/issues/2713>`__: cmake "
+"missing some policies and min version"
 msgstr ""
 "`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cMake 缺少一些策"
 "略和最低版本要求"
@@ -17565,16 +17941,18 @@ msgstr "使用旧版策略：CMP0148，CMP0144，CMP0167"
 msgid "Minimum cmake version 3.12"
 msgstr "CMake最低版本要求 3.12"
 
+#, fuzzy
 msgid ""
-"`#2707 <https://github.com/pgRouting/pgrouting/pull/2707>`__ Build failure "
-"in pgRouting 3.7.1 on Alpine"
+"`#2707 <https://github.com/pgRouting/pgrouting/issues/2707>`__: Build "
+"failure in pgRouting 3.7.1 on Alpine"
 msgstr ""
 "`#2707 <https://github.com/pgRouting/pgrouting/pull/2707>`__ pgRouting 3.7.1 "
 "在 Alpine 上的构建失败"
 
+#, fuzzy
 msgid ""
-"`#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie crashing "
-"on pgr_betweennessCentrality"
+"`#2706 <https://github.com/pgRouting/pgrouting/issues/2706>`__: winnie "
+"crashing on pgr_betweennessCentrality"
 msgstr ""
 "`#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ 修复 "
 "pgr_betweennessCentrality 导致 winnie 崩溃"
@@ -17582,8 +17960,9 @@ msgstr ""
 msgid "pgRouting 3.7.1 Release Notes"
 msgstr "pgRouting 3.7.1 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.7.1 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 msgstr ""
@@ -17591,16 +17970,18 @@ msgstr ""
 "表 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 
+#, fuzzy
 msgid ""
-"`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ fails to "
+"`#2680 <https://github.com/pgRouting/pgrouting/issues/2680>`__: fails to "
 "compile under mingw64 gcc 13.2"
 msgstr ""
 "`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ 在 mingw64 gcc "
 "13.2 下编译失败"
 
+#, fuzzy
 msgid ""
-"`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ When point is a "
-"vertex, the withPoints family do not return results."
+"`#2689 <https://github.com/pgRouting/pgrouting/issues/2689>`__: When point "
+"is a vertex, the withPoints family do not return results."
 msgstr ""
 "`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ 当 point 是顶点"
 "时，withPoints 系列不返回结果。"
@@ -17614,8 +17995,9 @@ msgstr "TRSP 系列"
 msgid "pgRouting 3.7.0 Release Notes"
 msgstr "pgRouting 3.7.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
 msgstr ""
@@ -17626,9 +18008,10 @@ msgstr ""
 msgid "Support"
 msgstr "支持"
 
+#, fuzzy
 msgid ""
-"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
-"PostgreSQL12 on pgrouting v3.7"
+"`#2656 <https://github.com/pgRouting/pgrouting/issues/2656>`__: Stop support "
+"of PostgreSQL12 on pgrouting v3.7"
 msgstr ""
 "`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ 在 pgrouting "
 "v3.7 上停止支持 PostgreSQL12"
@@ -17639,17 +18022,12 @@ msgstr "停止支持 PostgreSQL 12"
 msgid "CI does not test for PostgreSQL 12"
 msgstr "CI 不测试 PostgreSQL 12"
 
-msgid "New experimental functions"
-msgstr "新实验性函数"
-
-msgid "Metrics"
-msgstr "Metrics"
-
 msgid "pgr_betweennessCentrality"
 msgstr "pgr_betweennessCentrality"
 
+#, fuzzy
 msgid ""
-"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standardize "
+"`#2605 <https://github.com/pgRouting/pgrouting/issues/2605>`__: Standardize "
 "spanning tree functions output"
 msgstr ""
 "`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ 标准化生成树函数"
@@ -17661,9 +18039,10 @@ msgstr "新函数:"
 msgid "Experimental promoted to proposed."
 msgstr "实验性提升为提议。"
 
+#, fuzzy
 msgid ""
-"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
-"ignores directed flag and use negative values for identifiers."
+"`#2635 <https://github.com/pgRouting/pgrouting/issues/2635>`__: "
+"pgr_LineGraph ignores directed flag and use negative values for identifiers."
 msgstr ""
 "`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph 忽"
 "略了有向标志，并使用负值作为标识符。"
@@ -17674,22 +18053,25 @@ msgstr "``pgr_lineGraph``"
 msgid "Code enhancement"
 msgstr "代码改进"
 
+#, fuzzy
 msgid ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
+"`#2599 <https://github.com/pgRouting/pgrouting/issues/2599>`__: Driving "
 "distance cleanup"
 msgstr ""
 "`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ 行车距离清理"
 
+#, fuzzy
 msgid ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
-"data on C++"
+"`#2607 <https://github.com/pgRouting/pgrouting/issues/2607>`__: Read "
+"postgresql data on C++"
 msgstr ""
 "`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ 在 C++ 上读取 "
 "postgresql 数据"
 
+#, fuzzy
 msgid ""
-"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
-"not work"
+"`#2614 <https://github.com/pgRouting/pgrouting/issues/2614>`__: Clang tidy "
+"does not work"
 msgstr ""
 "`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy 不工"
 "作"
@@ -17700,8 +18082,9 @@ msgstr "pgRouting 3.6"
 msgid "pgRouting 3.6.3 Release Notes"
 msgstr "pgRouting 3.6.3 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.6.3 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
 msgstr ""
@@ -17760,8 +18143,9 @@ msgstr "bug fixes"
 msgid "pgRouting 3.6.2 Release Notes"
 msgstr "pgRouting 3.6.2 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.6.2 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
 msgstr ""
@@ -17790,18 +18174,20 @@ msgstr "更名为 `NEWS.md` ，以便在 GitHub 上更好地可视化"
 msgid "pgRouting 3.6.1 Release Notes"
 msgstr "pgRouting 3.6.1 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.6.1 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`_"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`__"
 msgstr ""
 "要查看此版本关闭的所有问题和拉取请求，请参阅 `3.6.1Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`_"
 
+#, fuzzy
 msgid ""
-"`#2588 <https://github.com/pgRouting/pgrouting/pull/2588>`__ pgrouting 3.6.0 "
-"fails to build on OSX"
+"`#2588 <https://github.com/pgRouting/pgrouting/issues/2588>`__: pgrouting "
+"3.6.0 fails to build on OSX"
 msgstr ""
 "`#2588 <https://github.com/pgRouting/pgrouting/pull/2588>`__ pgrouting 3.6.0 "
 "在 OSX 上构建失败"
@@ -17809,17 +18195,19 @@ msgstr ""
 msgid "pgRouting 3.6.0 Release Notes"
 msgstr "pgRouting 3.6.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.6.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`__"
 msgstr ""
 "要查看此版本关闭的所有问题和拉取请求，请访问 `Git 3.6.0 里程碑的已关闭问题和"
 "拉取请求 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
 
+#, fuzzy
 msgid ""
-"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standardize "
+"`#2516 <https://github.com/pgRouting/pgrouting/issues/2516>`__: Standardize "
 "output pgr_aStar"
 msgstr ""
 "`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ 标准化输出 "
@@ -17828,22 +18216,25 @@ msgstr ""
 msgid "Standardize output columns to |short-generic-result|"
 msgstr "将输出列标准化为 |short-generic-result|"
 
+#, fuzzy
 msgid ""
-"`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standardize "
+"`#2523 <https://github.com/pgRouting/pgrouting/issues/2523>`__: Standardize "
 "output pgr_bdAstar"
 msgstr ""
 "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ 标准化输出 "
 "pgr_bdAstar"
 
+#, fuzzy
 msgid ""
-"`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standardize "
+"`#2547 <https://github.com/pgRouting/pgrouting/issues/2547>`__: Standardize "
 "output and modifying signature pgr_KSP"
 msgstr ""
 "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ 标准化输出和修改"
 "签名 pgr_KSP"
 
+#, fuzzy
 msgid ""
-"`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standardize "
+"`#2548 <https://github.com/pgRouting/pgrouting/issues/2548>`__: Standardize "
 "output pgr_drivingDistance"
 msgstr ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ 标准化输出 "
@@ -17852,23 +18243,26 @@ msgstr ""
 msgid "Proposed functions changes"
 msgstr "提议函数改变"
 
+#, fuzzy
 msgid ""
-"`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standardize "
+"`#2544 <https://github.com/pgRouting/pgrouting/issues/2544>`__: Standardize "
 "output and modifying signature pgr_withPointsDD"
 msgstr ""
 "`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ 标准化输出和修改"
 "签名 pgr_withPointsDD"
 
+#, fuzzy
 msgid ""
-"`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standardize "
+"`#2546 <https://github.com/pgRouting/pgrouting/issues/2546>`__: Standardize "
 "output and modifying signature pgr_withPointsKSP"
 msgstr ""
 "`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ 标准化输出和修改"
 "签名 pgr_withPointsKSP"
 
+#, fuzzy
 msgid ""
-"`#2504 <https://github.com/pgRouting/pgrouting/pull/2504>`__ To C++ pg data "
-"get, fetch and check."
+"`#2504 <https://github.com/pgRouting/pgrouting/issues/2504>`__: To C++ pg "
+"data get, fetch and check."
 msgstr ""
 "`#2504 <https://github.com/pgRouting/pgrouting/pull/2504>`__ 获取、提取和检查"
 "C++ pg数据。"
@@ -17876,41 +18270,48 @@ msgstr ""
 msgid "Stopping support for compilation with MSVC."
 msgstr "停止支持使用 MSVC 进行编译。"
 
+#, fuzzy
 msgid ""
-"`#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ Using namespace."
+"`#2505 <https://github.com/pgRouting/pgrouting/issues/2505>`__: Using "
+"namespace."
 msgstr ""
 "`#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ 使用命名空间。"
 
+#, fuzzy
 msgid ""
-"`#2512 <https://github.com/pgRouting/pgrouting/pull/2512>`__ [Dijkstra] "
+"`#2512 <https://github.com/pgRouting/pgrouting/issues/2512>`__: [Dijkstra] "
 "Removing duplicate code on Dijkstra."
 msgstr ""
 "`#2512 <https://github.com/pgRouting/pgrouting/pull/2512>`__ [Dijkstra] 删除 "
 "Dijkstra 上的重复代码。"
 
+#, fuzzy
 msgid ""
-"`#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Astar code "
+"`#2517 <https://github.com/pgRouting/pgrouting/issues/2517>`__: Astar code "
 "simplification."
 msgstr ""
 "`#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Astar 代码简化。"
 
+#, fuzzy
 msgid ""
-"`#2521 <https://github.com/pgRouting/pgrouting/pull/2521>`__ Dijkstra code "
-"simplification."
+"`#2521 <https://github.com/pgRouting/pgrouting/issues/2521>`__: Dijkstra "
+"code simplification."
 msgstr ""
 "`#2521 <https://github.com/pgRouting/pgrouting/pull/2521>`__ Dijkstra 代码简"
 "化。"
 
+#, fuzzy
 msgid ""
-"`#2522 <https://github.com/pgRouting/pgrouting/pull/2522>`__ bdAstar code "
+"`#2522 <https://github.com/pgRouting/pgrouting/issues/2522>`__: bdAstar code "
 "simplification."
 msgstr ""
 "`#2522 <https://github.com/pgRouting/pgrouting/pull/2522>`__ bdAstar 代码简"
 "化。"
 
+#, fuzzy
 msgid ""
-"`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatic page "
-"history links."
+"`#2490 <https://github.com/pgRouting/pgrouting/issues/2490>`__: Automatic "
+"page history links."
 msgstr ""
 "`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ 自动页面历史链"
 "接。"
@@ -17918,8 +18319,9 @@ msgstr ""
 msgid "..rubric:: Standardize SQL"
 msgstr "..rubric:: 标准化 SQL"
 
+#, fuzzy
 msgid ""
-"`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ Standardize "
+"`#2555 <https://github.com/pgRouting/pgrouting/issues/2555>`__: Standardize "
 "deprecated messages"
 msgstr ""
 "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ 过时信息标准化"
@@ -17934,10 +18336,11 @@ msgstr "pgRouting 3.5"
 msgid "pgRouting 3.5.1 Release Notes"
 msgstr "pgRouting 3.5.1 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.5.1 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`_"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`__"
 msgstr ""
 "要查看此版本关闭的所有问题和拉取请求，请参阅 `3.5.1 Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
@@ -17964,8 +18367,9 @@ msgstr "使用 bootstrap_version 2，因为 3+ 不支持下拉菜单"
 msgid "Issue fixes"
 msgstr "问题修复"
 
+#, fuzzy
 msgid ""
-"`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
+"`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__: "
 "pgr_lengauerTarjanDominatorTree triggers an assertion"
 msgstr ""
 "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
@@ -17974,15 +18378,17 @@ msgstr ""
 msgid "SQL enhancements"
 msgstr "SQL 增强功能"
 
+#, fuzzy
 msgid ""
-"`#2561 <https://github.com/pgRouting/pgrouting/issues/2561>`__ Not use "
+"`#2561 <https://github.com/pgRouting/pgrouting/issues/2561>`__: Not use "
 "wildcards on SQL"
 msgstr ""
 "`#2561 <https://github.com/pgRouting/pgrouting/issues/2561>`__ 在 SQL 中不使"
 "用通配符"
 
+#, fuzzy
 msgid ""
-"`#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__ pgtap test "
+"`#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__: pgtap test "
 "using sampledata"
 msgstr ""
 "`#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__ pgtap 测试使"
@@ -18003,10 +18409,11 @@ msgstr "将postgres读取器的头部进行分组"
 msgid "pgRouting 3.5.0 Release Notes"
 msgstr "pgRouting 3.5.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.5.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`_"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`__"
 msgstr ""
 "要查看此版本关闭的所有问题和拉取请求，请参阅 `3.5.0 Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
@@ -18021,10 +18428,11 @@ msgstr "pgRouting 3.4"
 msgid "pgRouting 3.4.2 Release Notes"
 msgstr "pgRouting 3.4.2 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.4.2 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`_"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`__"
 msgstr ""
 "要查看此版本关闭的所有问题和拉取请求，请参阅 `3.4.2Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
@@ -18048,10 +18456,11 @@ msgstr ""
 msgid "pgRouting 3.4.1 Release Notes"
 msgstr "pgRouting 3.4.1 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.4.1 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`_"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`__"
 msgstr ""
 "要查看此版本关闭的所有问题和拉取请求，请参阅 `3.4.1Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
@@ -18074,10 +18483,11 @@ msgstr ""
 msgid "pgRouting 3.4.0 Release Notes"
 msgstr "pgRouting 3.4.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.4.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`_"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`__"
 msgstr ""
 "要查看此版本关闭的所有问题和拉取请求，请参阅 `3.4.0 Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
@@ -18135,9 +18545,6 @@ msgstr "pgr_findCloseEdges(One point)"
 msgid "pgr_findCloseEdges(Many points)"
 msgstr "pgr_findCloseEdges(Many points)"
 
-msgid "Ordering"
-msgstr "排序"
-
 msgid "pgr_cuthillMckeeOrdering"
 msgstr "pgr_cuthillMckeeOrdering"
 
@@ -18171,13 +18578,24 @@ msgstr "pgRouting 3.3"
 msgid "pgRouting 3.3.5 Release Notes"
 msgstr "pgRouting 3.3.5 发布说明"
 
+#, fuzzy
+msgid ""
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 3.3.5 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.5%22>`__"
+msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.3.4Git 关闭里程碑 <https://"
+"github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
+
 msgid "pgRouting 3.3.4 Release Notes"
 msgstr "pgRouting 3.3.4 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.3.4 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`__"
 msgstr ""
 "要查看此版本关闭的所有问题和拉取请求，请参阅 `3.3.4Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
@@ -18193,10 +18611,11 @@ msgstr ""
 msgid "pgRouting 3.3.3 Release Notes"
 msgstr "pgRouting 3.3.3 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.3.3 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`_"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`__"
 msgstr ""
 "要查看此版本关闭的所有问题和拉取请求，请参阅 `3.3.3Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
@@ -18210,10 +18629,11 @@ msgstr "忽略可选的布尔参数，因为该算法只适用于无向图。"
 msgid "pgRouting 3.3.2 Release Notes"
 msgstr "pgRouting 3.3.2 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.3.2 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`__"
 msgstr ""
 "要查看此版本关闭的所有问题和拉取请求，请参阅 `3.3.2Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
@@ -18273,14 +18693,15 @@ msgstr ""
 msgid "pgRouting 3.3.1 Release Notes"
 msgstr "pgRouting 3.3.1 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.3.1 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.3.1Git关闭里程碑 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.7.1版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 
 msgid ""
 "`#2216 <https://github.com/pgRouting/pgrouting/issues/2216>`__: Warnings "
@@ -18299,14 +18720,15 @@ msgstr ""
 msgid "pgRouting 3.3.0 Release Notes"
 msgstr "pgRouting 3.3.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.3.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.3.0 Git关闭里程"
-"碑 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ 。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.8.0版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
 
 msgid ""
 "`#2057 <https://github.com/pgRouting/pgrouting/issues/2057>`__: trspViaEdges "
@@ -18397,14 +18819,15 @@ msgstr "pgRouting 3.2"
 msgid "pgRouting 3.2.2 Release Notes"
 msgstr "pgRouting 3.2.2 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.2.2 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.2.2 Git关闭里程"
-"碑 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_ 。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.7.2版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 
 msgid ""
 "`#2093 <https://github.com/pgRouting/pgrouting/issues/2093>`__: Compilation "
@@ -18423,14 +18846,15 @@ msgstr ""
 msgid "pgRouting 3.2.1 Release Notes"
 msgstr "pgRouting 3.2.1 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.2.1 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.2.1Git关闭里程碑 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_ 。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.7.1版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 
 msgid ""
 "`#1883 <https://github.com/pgRouting/pgrouting/issues/1883>`__: "
@@ -18453,14 +18877,15 @@ msgstr "带有 annaeling 可选参数的函数已被弃用"
 msgid "pgRouting 3.2.0 Release Notes"
 msgstr "pgRouting 3.2.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.2.0Git关闭里程碑 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ 。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.8.0版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
 
 msgid ""
 "`#1850 <https://github.com/pgRouting/pgrouting/issues/1850>`__: Change Boost "
@@ -18499,14 +18924,15 @@ msgstr "pgRouting 3.1"
 msgid "pgRouting 3.1.4 Release Notes"
 msgstr "pgRouting 3.1.4 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.1.4 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.4Git关闭里程碑 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_ 。"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.3.4Git 关闭里程碑 <https://"
+"github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
 
 msgid "Issues fixes"
 msgstr "问题修复"
@@ -18514,14 +18940,15 @@ msgstr "问题修复"
 msgid "pgRouting 3.1.3 Release Notes"
 msgstr "pgRouting 3.1.3 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.1.3 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.3 Git关闭里程"
-"碑 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ 。"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.3 "
+"<https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
 
 msgid ""
 "`#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost "
@@ -18547,14 +18974,15 @@ msgstr ""
 msgid "pgRouting 3.1.2 Release Notes"
 msgstr "pgRouting 3.1.2 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.1.2 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.2Git关闭里程碑 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ 。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.7.2版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 
 msgid ""
 "`#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__: FreeBSD 12 "
@@ -18594,14 +19022,15 @@ msgstr ""
 msgid "pgRouting 3.1.1 Release Notes"
 msgstr "pgRouting 3.1.1 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.1.1 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.1 Git关闭里程"
-"碑 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ 。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.7.1版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 
 msgid ""
 "`#1733 <https://github.com/pgRouting/pgrouting/issues/1733>`__: pgr_bdAstar "
@@ -18641,14 +19070,15 @@ msgstr ""
 msgid "pgRouting 3.1.0 Release Notes"
 msgstr "pgRouting 3.1.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.1.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.0 Git关闭里程"
-"碑 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.8.0版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
 
 msgid "pgr_dijkstra(combinations)"
 msgstr "pgr_dijkstra(组合)"
@@ -18668,26 +19098,28 @@ msgstr "pgRouting 3.0"
 msgid "pgRouting 3.0.6 Release Notes"
 msgstr "pgRouting 3.0.6 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.0.6 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.6Git关闭里程碑 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.8.0版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
 
 msgid "pgRouting 3.0.5 Release Notes"
 msgstr "pgRouting 3.0.5 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.0.5 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.5Git关闭里程碑 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.8.0版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
 
 msgid "Backport issue fixes"
 msgstr "回溯问题修复"
@@ -18695,29 +19127,41 @@ msgstr "回溯问题修复"
 msgid "pgRouting 3.0.4 Release Notes"
 msgstr "pgRouting 3.0.4 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.0.4 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.4Git关闭里程碑 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_。"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.3.4Git 关闭里程碑 <https://"
+"github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
 
 msgid "pgRouting 3.0.3 Release Notes"
 msgstr "pgRouting 3.0.3 发布说明"
 
+#, fuzzy
+msgid ""
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 3.0.3 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.3%22>`__"
+msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.3 "
+"<https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
+
 msgid "pgRouting 3.0.2 Release Notes"
 msgstr "pgRouting 3.0.2 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.0.2 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.2Git关闭里程碑 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.7.2版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 
 msgid ""
 "`#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__: Visual "
@@ -18729,14 +19173,15 @@ msgstr ""
 msgid "pgRouting 3.0.1 Release Notes"
 msgstr "pgRouting 3.0.1 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.0.1 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.1Git关闭里程碑 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.7.1版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 
 msgid ""
 "`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__: Honor client "
@@ -18748,14 +19193,15 @@ msgstr ""
 msgid "pgRouting 3.0.0 Release Notes"
 msgstr "pgRouting 3.0.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
+"To see all issues & pull requests closed by this release see the `Github "
 "milestone for 3.0.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ on Github."
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.0Git关闭里程碑 "
-"<https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_。"
+"查看本版本已关闭的所有议题和拉取请求,请访问： `GitHub 4.0.0版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
 msgid "Fixed Issues"
 msgstr "问题修复"
@@ -19052,31 +19498,35 @@ msgstr "pgRouting 2.6"
 msgid "pgRouting 2.6.3 Release Notes"
 msgstr "pgRouting 2.6.3 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.6.3 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.6.3 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.6.3Git关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20>`_。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.6.3版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
 
+#, fuzzy
 msgid ""
-"`#1219 <https://github.com/pgRouting/pgrouting/pull/1219>`__ Implicit cast "
-"for via_path integer to text"
+"`#1219 <https://github.com/pgRouting/pgrouting/issues/1219>`__: Implicit "
+"cast for via_path integer to text"
 msgstr ""
 "`#1219 <https://github.com/pgRouting/pgrouting/pull/1219>`__ via_path 整数到"
 "文本的隐式转换"
 
+#, fuzzy
 msgid ""
-"`#1193 <https://github.com/pgRouting/pgrouting/pull/1193>`__ Fixed "
+"`#1193 <https://github.com/pgRouting/pgrouting/issues/1193>`__: Fixed "
 "pgr_pointsAsPolygon breaking when comparing strings in WHERE clause"
 msgstr ""
 "`#1193 <https://github.com/pgRouting/pgrouting/pull/1193>`__ 修复了比较 "
 "WHERE 子句中的字符串时 pgr_pointsAsPolygon 中断的问题"
 
+#, fuzzy
 msgid ""
-"`#1185 <https://github.com/pgRouting/pgrouting/pull/1185>`__ Improve "
+"`#1185 <https://github.com/pgRouting/pgrouting/issues/1185>`__: Improve "
 "FindPostgreSQL.cmake"
 msgstr ""
 "`#1185 <https://github.com/pgRouting/pgrouting/pull/1185>`__ 改进 "
@@ -19085,31 +19535,35 @@ msgstr ""
 msgid "pgRouting 2.6.2 Release Notes"
 msgstr "pgRouting 2.6.2 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.6.2 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.6.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.6.2Git关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_。"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.6.2 "
+"<https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
 
+#, fuzzy
 msgid ""
-"`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Fixes driving "
-"distance when vertex is not part of the graph"
+"`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__: Fixes "
+"driving distance when vertex is not part of the graph"
 msgstr ""
 "`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ 修复了顶点不属"
 "于图时的行驶距离问题"
 
+#, fuzzy
 msgid ""
-"`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Fixes windows "
-"test"
+"`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__: Fixes "
+"windows test"
 msgstr ""
 "`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ 修复 Windows "
 "测试"
 
+#, fuzzy
 msgid ""
-"`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ Fixes build "
+"`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__: Fixes build "
 "for python3 and perl5"
 msgstr ""
 "`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ 修复了 "
@@ -19118,14 +19572,15 @@ msgstr ""
 msgid "pgRouting 2.6.1 Release Notes"
 msgstr "pgRouting 2.6.1 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.6.1 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.6.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.6.1Git关闭里程碑 <https://"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.6.1Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_。"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`_"
 
 msgid "Fixes server crash on several functions."
 msgstr "修复了多个函数导致服务器崩溃的问题。"
@@ -19205,14 +19660,15 @@ msgstr "修复了 Astar 和 bdAstar 上的一个故障。"
 msgid "pgRouting 2.6.0 Release Notes"
 msgstr "pgRouting 2.6.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.6.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.6.0Git关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_。"
+"要查看此版本关闭的所有问题和拉取请求，请访问 `Git 3.6.0 里程碑的已关闭问题和"
+"拉取请求 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
 
 msgid "pgr_lineGraphFull"
 msgstr "pgr_lineGraphFull"
@@ -19262,14 +19718,15 @@ msgstr "pgRouting 2.5"
 msgid "pgRouting 2.5.5 Release Notes"
 msgstr "pgRouting 2.5.5 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.5.5 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.5.5Git关闭里程碑 <https://"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.5.1 Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_。"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`_"
 
 msgid "Fixes driving distance when vertex is not part of the graph"
 msgstr "修复顶点不在图中时的行驶距离问题"
@@ -19283,26 +19740,28 @@ msgstr "修复了 python3 和 perl5 的构建问题"
 msgid "pgRouting 2.5.4 Release Notes"
 msgstr "pgRouting 2.5.4 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.5.4 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.5.4 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.5.4 Git关闭里程碑 <https://"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.3.4Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_。"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
 
 msgid "pgRouting 2.5.3 Release Notes"
 msgstr "pgRouting 2.5.3 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.5.3 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.5.3 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.5.3Git关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_。"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.3 "
+"<https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
 
 msgid ""
 "Fix for postgresql 11: Removed a compilation error when compiling with "
@@ -19312,14 +19771,15 @@ msgstr "postgresql 11 的修复：删除了与 postgreSQL 一起编译时出现�
 msgid "pgRouting 2.5.2 Release Notes"
 msgstr "pgRouting 2.5.2 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.5.2 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.5.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.5.2Git关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.7.2版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 
 msgid "Fix for postgresql 10.1: Removed a compiler condition"
 msgstr "postgresql 10.1 的修复：删除了一个编译器条件"
@@ -19327,14 +19787,15 @@ msgstr "postgresql 10.1 的修复：删除了一个编译器条件"
 msgid "pgRouting 2.5.1 Release Notes"
 msgstr "pgRouting 2.5.1 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.5.1 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.5.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.5.1Git关闭里程碑 <https://"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.5.1 Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_。"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`_"
 
 msgid "Fixed prerequisite minimum version of: cmake"
 msgstr "修正了 cmake 的最低版本要求"
@@ -19342,14 +19803,15 @@ msgstr "修正了 cmake 的最低版本要求"
 msgid "pgRouting 2.5.0 Release Notes"
 msgstr "pgRouting 2.5.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for "
-"2.5.0 <https://github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.0%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.5.0Git关闭里程碑 <https://"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.5.0 Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ 。"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`_"
 
 msgid "enhancement:"
 msgstr "增强："
@@ -19411,14 +19873,15 @@ msgstr "pgRouting 2.4"
 msgid "pgRouting 2.4.2 Release Notes"
 msgstr "pgRouting 2.4.2 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.4.2 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.4.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.4.2Git关闭里程碑 <https://"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.4.2Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_。"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`_"
 
 msgid "Improvement"
 msgstr "改进"
@@ -19436,14 +19899,15 @@ msgstr "将 __linux__ 替换为 __GLIBC__ 以获取 glibc 特定的标头和函�
 msgid "pgRouting 2.4.1 Release Notes"
 msgstr "pgRouting 2.4.1 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.4.1 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.4.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.4.1Git关闭里程碑 <https://"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.4.1Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_。"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`_"
 
 msgid "Fixed compiling error on macOS"
 msgstr "修正了 macOS 上的编译错误"
@@ -19454,14 +19918,15 @@ msgstr "pgr_withPoints 上的条件错误"
 msgid "pgRouting 2.4.0 Release Notes"
 msgstr "pgRouting 2.4.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for "
-"2.4.0 <https://github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.4.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.0%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.4.0Git关闭里程碑 <https://"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.4.0 Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ 。"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`_"
 
 msgid "Deprecated signatures."
 msgstr "已废弃的签名。"
@@ -19487,14 +19952,15 @@ msgstr "pgRouting 2.3"
 msgid "pgRouting 2.3.2 Release Notes"
 msgstr "pgRouting 2.3.2 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for "
-"2.3.2 <https://github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.3.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.2%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.3.2 Git关闭里程碑 <https://"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.3.2Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ 。"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_"
 
 msgid "Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck."
 msgstr "修正了当所有订单都装在一辆卡车上时 pgr_gsoc_vrppdtw 崩溃的问题。"
@@ -19511,14 +19977,15 @@ msgstr "修正了 seq 上的歧义"
 msgid "pgRouting 2.3.1 Release Notes"
 msgstr "pgRouting 2.3.1 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for "
-"2.3.1 <https://github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.1%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.3.1Git关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ 。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.7.1版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 
 msgid "Leaks on proposed max_flow functions"
 msgstr "提议 max_flow 函数的泄漏问题"
@@ -19532,14 +19999,15 @@ msgstr "pgr_createVerticesTable 上的类型差异"
 msgid "pgRouting 2.3.0 Release Notes"
 msgstr "pgRouting 2.3.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for "
-"2.3.0 <https://github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.3.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.0%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.3.0Git关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ 。"
+"查看本版本已关闭的所有议题和拉取请求,请访问： `GitHub 4.0.0版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
 msgid "pgr_TSP"
 msgstr "pgr_TSP"
@@ -19613,14 +20081,15 @@ msgstr "pgRouting 2.2"
 msgid "pgRouting 2.2.4 Release Notes"
 msgstr "pgRouting 2.2.4 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for "
-"2.2.4 <https://github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.2.4 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.4%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.2.4Git关闭里程碑 <https://"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.3.4Git 关闭里程碑 <https://"
 "github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ 。"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
 
 msgid "Bogus uses of extern \"C\""
 msgstr "无效的extern \"C\""
@@ -19634,14 +20103,15 @@ msgstr "pgr_nodeNetwork的回归错误"
 msgid "pgRouting 2.2.3 Release Notes"
 msgstr "pgRouting 2.2.3 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for "
-"2.2.3 <https://github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.2.3 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.3%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.2.3Git关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_ 。"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.3 "
+"<https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
 
 msgid "Fixed compatibility issues with PostgreSQL 9.6."
 msgstr "修复了 PostgreSQL 9.6 的兼容性问题。"
@@ -19649,14 +20119,15 @@ msgstr "修复了 PostgreSQL 9.6 的兼容性问题。"
 msgid "pgRouting 2.2.2 Release Notes"
 msgstr "pgRouting 2.2.2 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for "
-"2.2.2 <https://github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.2.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.2%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.2.2 Git关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ 。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.7.2版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 
 msgid "Fixed regression error on pgr_drivingDistance"
 msgstr "修正了 pgr_drivingDistance 的回归错误"
@@ -19664,13 +20135,15 @@ msgstr "修正了 pgr_drivingDistance 的回归错误"
 msgid "pgRouting 2.2.1 Release Notes"
 msgstr "pgRouting 2.2.1 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for "
-"2.2.1 <https://github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A2.2.1+is%3Aclosed>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.2.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.1%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.2.1Git关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_ 。"
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.7.1版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 
 msgid "Server crash fix on pgr_alphaShape"
 msgstr "修复 pgr_alphaShape 使服务器崩溃问题"
@@ -19681,14 +20154,15 @@ msgstr "在 With Points 函数族中的Bug修复"
 msgid "pgRouting 2.2.0 Release Notes"
 msgstr "pgRouting 2.2.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for "
-"2.2.0 <https://github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.2.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.0%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.2.0Git关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ 。"
+"查看本版本已关闭的所有议题和拉取请求,请访问： `GitHub 4.0.0版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
 msgid "Improvements"
 msgstr "改进"
@@ -19780,14 +20254,15 @@ msgstr "pgRouting 2.1"
 msgid "pgRouting 2.1.0 Release Notes"
 msgstr "pgRouting 2.1.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for "
-"2.1.0 <https://github.com/pgRouting/pgrouting/issues?"
-"q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.1.0%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.1.0Git关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ 。"
+"查看本版本已关闭的所有议题和拉取请求,请访问： `GitHub 4.0.0版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
 msgid "Refactored"
 msgstr "重构"
@@ -19914,6 +20389,16 @@ msgstr "pgRouting 2.0"
 msgid "pgRouting 2.0.1 Release Notes"
 msgstr "pgRouting 2.0.1 发布说明"
 
+#, fuzzy
+msgid ""
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.0.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.0.1%22>`__"
+msgstr ""
+"查看本版本已关闭的所有议题和拉取请求，请访问： `GitHub 3.7.1版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+
 msgid "Minor bug fixes."
 msgstr "小bug修复。"
 
@@ -19923,14 +20408,15 @@ msgstr "没有记录错误修复情况。"
 msgid "pgRouting 2.0.0 Release Notes"
 msgstr "pgRouting 2.0.0 发布说明"
 
+#, fuzzy
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for "
-"2.0.0 <https://github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 2.0.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.0.0%22>`__"
 msgstr ""
-"要查看此版本关闭的问题，请参阅 Github 上的 `2.0.0Git关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_ 。"
+"查看本版本已关闭的所有议题和拉取请求,请访问： `GitHub 4.0.0版本里程碑关闭列"
+"表 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
 msgid ""
 "With the release of pgRouting 2.0.0 the library has abandoned backwards "
@@ -20463,17 +20949,20 @@ msgid ""
 "the step that is causing the problem."
 msgstr "建议对问题使用以下包装器来查明导致问题的步骤。"
 
-msgid "Mailing List and GIS StackExchange"
+#, fuzzy
+msgid "Mailing List, Matrix, GIS StackExchange"
 msgstr "邮件列表和GIS StackExchange"
 
+#, fuzzy
 msgid ""
-"There are two mailing lists for pgRouting hosted on OSGeo mailing list "
-"server:"
+"There are two mailing lists for pgRouting hosted on OSGeo discourse server:"
 msgstr "OSGeo 邮件列表服务器上托管有两个 pgRouting 邮件列表："
 
+#, fuzzy
 msgid ""
-"User mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
-msgstr "用户邮件列表：https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
+"User mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-users/"
+msgstr ""
+"开发人员邮件列表： https://discourse.osgeo.org/c/pgrouting/pgrouting-dev/"
 
 msgid ""
 "Developer mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-"
@@ -20488,6 +20977,12 @@ msgid ""
 "For general questions and topics about how to use pgRouting, please write to "
 "the user mailing list."
 msgstr "有关如何使用 pgRouting 的一般问题和主题，请写信给用户邮件列表。"
+
+msgid ""
+"If you want to chat with fellow pgRouting users and contributors, you can "
+"join our matrix channel: `pgRouting matrix channel <https://matrix.to/#/"
+"#pgrouting:osgeo.org>`_."
+msgstr ""
 
 msgid ""
 "You can also ask at `GIS StackExchange <https://gis.stackexchange.com/>`_ "
@@ -20957,3 +21452,851 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
 
+#~ msgid "New **experimental** function"
+#~ msgstr "新 **实验性** 函数"
+
+#~ msgid ""
+#~ "User mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-"
+#~ "users"
+#~ msgstr ""
+#~ "用户邮件列表：https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
+
+#~ msgid "They will likely officially be part of the next mayor release:"
+#~ msgstr "它们可能会正式成为下一个版本的一部分："
+
+#~ msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+#~ msgstr "这些函数使用 ANY-INTEGER 和 ANY-NUMERICAL"
+
+#~ msgid "Name might not change. (But still can)"
+#~ msgstr "名字可能不会改变。（但仍然有可能改变）"
+
+#~ msgid "Signature might not change. (But still can)"
+#~ msgstr "签名可能不会改变。（但仍然有可能改变）"
+
+#~ msgid "Functionality might not change. (But still can)"
+#~ msgstr "功能可能不会改变。（但仍然有可能改变）"
+
+#~ msgid "Possible server crash"
+#~ msgstr "可能服务器崩溃"
+
+#~ msgid "These functions might create a server crash"
+#~ msgstr "这些功能可能会导致服务器崩溃"
+
+#~ msgid "May lack documentation."
+#~ msgstr "可能缺乏文档。"
+
+#~ msgid "Documentation examples might need to be automatically generated."
+#~ msgstr "可能需要自动生成文档示例。"
+
+#~ msgid "Might depend on a proposed function of pgRouting"
+#~ msgstr "可能取决于 pgRouting 的提议功能"
+
+#~ msgid "Might depend on a deprecated function of pgRouting"
+#~ msgstr "可能依赖于 pgRouting 的已弃用函数"
+
+#, fuzzy
+#~ msgid "#2748 _pgr_alphashape(text,double precision)"
+#~ msgstr "_pgr_kruskal(text,anyarray,text,bigint,double precision)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_checkverttab(text,text[],integer,text)"
+#~ msgstr "_pgr_checkverttab(text,text[],integer,text)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_createindex(text,text,text,integer,text)"
+#~ msgstr "_pgr_createindex(text,text,text,integer,text)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_createindex(text,text,text,text,integer,text)"
+#~ msgstr "_pgr_createindex(text,text,text,text,integer,text)"
+
+#, fuzzy
+#~ msgid "#2913 _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)"
+#~ msgstr "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
+
+#, fuzzy
+#~ msgid "#2913 _pgr_dagshortestpath(text,text,boolean,boolean)"
+#~ msgstr "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
+
+#, fuzzy
+#~ msgid "#2730 _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
+#~ msgstr "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
+
+#, fuzzy
+#~ msgid "#2730 _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
+#~ msgstr "_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
+
+#, fuzzy
+#~ msgid "#2730 _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+#~ msgstr "_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+
+#, fuzzy
+#~ msgid "#2730 _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)"
+#~ msgstr "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
+
+#, fuzzy
+#~ msgid "#2730 _pgr_dijkstra(text,text,boolean,boolean,boolean)"
+#~ msgstr "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_endpoint(geometry)"
+#~ msgstr "_pgr_endpoint(geometry)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_getcolumnname(text,text,integer,text)"
+#~ msgstr "_pgr_getcolumnname(text,text,integer,text)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_getcolumnname(text,text,text,integer,text)"
+#~ msgstr "_pgr_getcolumnname(text,text,text,integer,text)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_getcolumntype(text,text,integer,text)"
+#~ msgstr "_pgr_getcolumntype(text,text,integer,text)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_getcolumntype(text,text,text,integer,text)"
+#~ msgstr "_pgr_getcolumntype(text,text,text,integer,text)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_gettablename(text,integer,text)"
+#~ msgstr "_pgr_gettablename(text,integer,text)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_iscolumnindexed(text,text,integer,text)"
+#~ msgstr "_pgr_iscolumnindexed(text,text,integer,text)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_iscolumnindexed(text,text,text,integer,text)"
+#~ msgstr "_pgr_iscolumnindexed(text,text,text,integer,text)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_iscolumnintable(text,text)"
+#~ msgstr "_pgr_iscolumnintable(text,text)"
+
+#, fuzzy
+#~ msgid "#2745 _pgr_kruskal(text,anyarray,text,bigint,double precision)"
+#~ msgstr "_pgr_kruskal(text,anyarray,text,bigint,double precision)"
+
+#, fuzzy
+#~ msgid "#2897 _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)"
+#~ msgstr "pgr_trsp(text,integer,integer,boolean,boolean,text)"
+
+#, fuzzy
+#~ msgid "#2897 _pgr_ksp(text,text,integer,boolean,boolean)"
+#~ msgstr "pgr_trsp(text,integer,integer,boolean,boolean,text)"
+
+#, fuzzy
+#~ msgid "#2899 _pgr_maxcardinalitymatch(text,boolean)"
+#~ msgstr "pgr_maxCardinalityMatch(text,boolean)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_msg(integer,text,text)"
+#~ msgstr "_pgr_msg(integer,text,text)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_onerror(boolean,integer,text,text,text,text)"
+#~ msgstr "_pgr_onerror(boolean,integer,text,text,text,text)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_pointtoid(geometry,double precision,text,integer)"
+#~ msgstr "_pgr_pointtoid(geometry,double precision,text,integer)"
+
+#, fuzzy
+#~ msgid "#2743 _pgr_prim(text,anyarray,text,bigint,double precision)"
+#~ msgstr "_pgr_prim(text,anyarray,text,bigint,double precision)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_quote_ident(text)"
+#~ msgstr "_pgr_quote_ident(text)"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_startpoint(geometry)"
+#~ msgstr "_pgr_startpoint(geometry)"
+
+#, fuzzy
+#~ msgid "#2683 _pgr_trsp(text,text,anyarray,anyarray,boolean)"
+#~ msgstr "_pgr_trsp(text,text,anyarray,anyarray,boolean)"
+
+#, fuzzy
+#~ msgid "#2683 _pgr_trsp(text,text,anyarray,bigint,boolean)"
+#~ msgstr "_pgr_trsp(text,text,anyarray,bigint,boolean)"
+
+#, fuzzy
+#~ msgid "#2683 _pgr_trsp(text,text,bigint,anyarray,boolean)"
+#~ msgstr "_pgr_trsp(text,text,bigint,anyarray,boolean)"
+
+#, fuzzy
+#~ msgid "#2683 _pgr_trsp(text,text,bigint,bigint,boolean)"
+#~ msgstr "_pgr_trsp(text,text,bigint,bigint,boolean)"
+
+#, fuzzy
+#~ msgid "#2682 _pgr_trspviavertices(text,integer[],boolean,boolean,text)"
+#~ msgstr "_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2919 _pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+#~ msgstr ""
+#~ "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
+#~ "boolean)``"
+
+#, fuzzy
+#~ msgid "#2861 _pgr_versionless(text,text)"
+#~ msgstr "_pgr_versionless(text,text)"
+
+#, fuzzy
+#~ msgid "#2741 _pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+#~ msgstr "_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+
+#, fuzzy
+#~ msgid "#2683 _trsp(text,text,anyarray,anyarray,boolean)"
+#~ msgstr "_trsp(text,text,anyarray,anyarray,boolean)"
+
+#, fuzzy
+#~ msgid "#2683 _v4trsp(text,text,anyarray,anyarray,boolean)"
+#~ msgstr "_v4trsp(text,text,anyarray,anyarray,boolean)"
+
+#, fuzzy
+#~ msgid "#2683 _v4trsp(text,text,text,boolean)"
+#~ msgstr "_v4trsp(text,text,text,boolean)"
+
+#, fuzzy
+#~ msgid "#2748 pgr_alphashape(geometry,double precision)"
+#~ msgstr "_pgr_pointtoid(geometry,double precision,text,integer)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2752 pgr_analyzegraph(text,double precision,text,text,text,text,text)"
+#~ msgstr "_pgr_onerror(boolean,integer,text,text,text,text)"
+
+#, fuzzy
+#~ msgid "#2798 pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+#~ msgstr "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+
+#, fuzzy
+#~ msgid "#2827 pgr_createverticestable(text,text,text,text,text)"
+#~ msgstr "_pgr_createindex(text,text,text,text,integer,text)"
+
+#, fuzzy
+#~ msgid "#2899 pgr_maxcardinalitymatch(text,boolean)"
+#~ msgstr "pgr_maxCardinalityMatch(text,boolean)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2886 pgr_nodenetwork(text,double precision,text,text,text,text,boolean)"
+#~ msgstr ""
+#~ "pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2683 pgr_trsp(text,integer,double precision,integer,double precision,"
+#~ "boolean,boolean,text)"
+#~ msgstr ""
+#~ "pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+#~ "boolean,text)"
+
+#, fuzzy
+#~ msgid "#2683 pgr_trsp(text,integer,integer,boolean,boolean,text)"
+#~ msgstr "pgr_trsp(text,integer,integer,boolean,boolean,text)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2681 pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,"
+#~ "text)"
+#~ msgstr ""
+#~ "pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
+
+#, fuzzy
+#~ msgid "#2682 pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
+#~ msgstr "pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2919 pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,"
+#~ "boolean,character,boolean)"
+#~ msgstr ""
+#~ "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
+#~ "boolean)``"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2919 pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,"
+#~ "character,boolean)"
+#~ msgstr ""
+#~ "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+#~ "boolean,boolean)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2919 pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+#~ msgstr ""
+#~ "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,"
+#~ "boolean)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2901 pgr_tspeuclidean(text,bigint,bigint,double precision,integer,"
+#~ "integer,integer,double precision,double precision,double precision,"
+#~ "boolean)"
+#~ msgstr ""
+#~ "pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+#~ "boolean,text)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2901 pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,"
+#~ "double precision,double precision,double precision,boolean)"
+#~ msgstr ""
+#~ "pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+#~ "boolean,text)"
+
+#, fuzzy
+#~ msgid "#2919 pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
+#~ msgstr ""
+#~ "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+#~ "boolean,boolean)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2919 pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)"
+#~ msgstr "_pgr_trsp(text,text,anyarray,anyarray,boolean)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2919 pgr_withpointscost(text,text,anyarray,bigint,boolean,character)"
+#~ msgstr ""
+#~ "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+#~ "boolean,boolean)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2919 pgr_withpointscost(text,text,bigint,anyarray,boolean,character)"
+#~ msgstr "_pgr_trsp(text,text,bigint,anyarray,boolean)"
+
+#, fuzzy
+#~ msgid "#2919 pgr_withpointscost(text,text,bigint,bigint,boolean,character)"
+#~ msgstr ""
+#~ "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
+#~ "boolean)``"
+
+#, fuzzy
+#~ msgid "#2919 pgr_withpointscost(text,text,text,boolean,character)"
+#~ msgstr ""
+#~ "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,"
+#~ "boolean)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2890 pgr_withpointsdd(text,text,anyarray,double precision,boolean,"
+#~ "character,boolean,boolean)"
+#~ msgstr ""
+#~ "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+#~ "boolean,boolean)"
+
+#, fuzzy
+#~ msgid ""
+#~ "#2895 pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,"
+#~ "character,boolean)"
+#~ msgstr ""
+#~ "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
+#~ "boolean)``"
+
+#, fuzzy
+#~ msgid "#2919 pgr_withpoints(text,text,text,boolean,character,boolean)"
+#~ msgstr ""
+#~ "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,"
+#~ "boolean)"
+
+#, fuzzy
+#~ msgid "#2748 _pgr_alphashape"
+#~ msgstr "pgr_alphashape"
+
+#, fuzzy
+#~ msgid "#2913 _pgr_dagshortestpath"
+#~ msgstr "pgr_dagShortestpath"
+
+#~ msgid ":ref:`install-short`"
+#~ msgstr ":ref:`install-short`"
+
+#~ msgid ":ref:`install_get_sources`"
+#~ msgstr ":ref:`install_get_sources`"
+
+#~ msgid ":ref:`install_enable_db`"
+#~ msgstr ":ref:`install_enable_db`"
+
+#~ msgid ":ref:`install_dependencies`"
+#~ msgstr ":ref:`install_dependencies`"
+
+#~ msgid ":ref:`install_configuring`"
+#~ msgstr ":ref:`install_configuring`"
+
+#~ msgid ":ref:`install_build`"
+#~ msgstr ":ref:`install_build`"
+
+#~ msgid ":ref:`install_testing`"
+#~ msgstr ":ref:`install_testing`"
+
+#~ msgid "Postgresql version = Supported versions by PostgreSQL"
+#~ msgstr "Postgresql 版本 = PostgreSQL 支持的版本"
+
+#~ msgid "optional dependencies"
+#~ msgstr "可选的依赖项"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "Database dependencies"
+#~ msgstr "数据库依赖"
+
+#~ msgid "Configuring PostgreSQL"
+#~ msgstr "配置 PostgreSQL"
+
+#~ msgid "Entering psql console"
+#~ msgstr "进入psql控制台"
+
+#~ msgid "To exit psql console"
+#~ msgstr "退出 psql 控制台"
+
+#~ msgid ""
+#~ "Entering psql console directly without switching roles can be done by the "
+#~ "following commands"
+#~ msgstr "直接进入psql控制台，无需切换角色，可以通过以下命令完成"
+
+#~ msgid "Then use the above given method to exit out of the psql console"
+#~ msgstr "然后使用上面给出的方法退出psql控制台"
+
+#~ msgid "Checking PostgreSQL version"
+#~ msgstr "检查 PostgreSQL 版本"
+
+#~ msgid "or"
+#~ msgstr "或者"
+
+#~ msgid "Enter the psql console using above given method and then enter"
+#~ msgstr "使用上面给定的方法进入psql控制台，然后输入"
+
+#~ msgid "Creating PostgreSQL role"
+#~ msgstr "创建 PostgreSQL 角色"
+
+#~ msgid ""
+#~ "Default role provided by PostgreSQL is postgres. To create new roles you "
+#~ "can use the above provided commands. The prompt will ask the user to type "
+#~ "name of the role and then provide affirmation. Proceed with the steps and "
+#~ "you will succeed in creating PostgreSQL role successfully."
+#~ msgstr ""
+#~ "PostgreSQL 提供的默认角色是 postgres。 要创建新角色，您可以使用上面提供的"
+#~ "命令。 提示将要求用户输入角色名称，然后提供确认。 继续执行这些步骤，您将成"
+#~ "功创建 PostgreSQL 角色。"
+
+#~ msgid ""
+#~ "To add password to the role or change previously created password of the "
+#~ "role use the following commands"
+#~ msgstr "要向角色添加密码或更改之前创建的角色密码，请使用以下命令"
+
+#~ msgid ""
+#~ "To get additional details on the flags associated with ``createuser`` "
+#~ "below given command can be used"
+#~ msgstr ""
+#~ "要获取与下面的 ``createuser`` 相关的标志的更多详细信息，可以使用给定的命令"
+
+#~ msgid "Creating Database in PostgreSQL"
+#~ msgstr "在 PostgreSQL 中创建数据库"
+
+#~ msgid "Connecting to a PostgreSQL Database"
+#~ msgstr "连接到 PostgreSQL 数据库"
+
+#~ msgid "Enter the psql console and type the following commands"
+#~ msgstr "进入psql控制台，输入以下命令"
+
+#~ msgid "For documentation and testing"
+#~ msgstr "用于文档和测试"
+
+#~ msgid "Create the build directory"
+#~ msgstr "创建构建目录"
+
+#~ msgid "WITH_DOC"
+#~ msgstr "WITH_DOC"
+
+#~ msgid "Turn on/off building the documentation"
+#~ msgstr "打开/关闭构建文档"
+
+#~ msgid "Configuring cmake to create documentation before building pgRouting"
+#~ msgstr "在构建 pgRouting 之前配置 cmake 创建文档"
+
+#~ msgid "Most of the effort of the documentation has been on the html files."
+#~ msgstr "文档的大部分工作都集中在 html 文件上。"
+
+#~ msgid ""
+#~ "The sql signatures are configured and build in the ``cmake`` command."
+#~ msgstr "SQL签名是在 ``cmake`` 命令中配置和构建的。"
+
+#~ msgid "MinGW on Windows"
+#~ msgstr "Windows 上的 MinGW"
+
+#~ msgid ""
+#~ "To remove the build when the configuration changes, use the following "
+#~ "code:"
+#~ msgstr "要在配置更改时删除构建，请使用以下代码："
+
+#~ msgid "and start the build process as mentioned previously."
+#~ msgstr "并开始前面提到的构建过程。"
+
+#~ msgid "The following instructions start from *path/to/pgrouting/*"
+#~ msgstr "以下指令从 *path/to/pgrouting/* 开始"
+
+#~ msgid ""
+#~ "Other enhancements: `#2869 <https://github.com/pgRouting/pgrouting/"
+#~ "issues/2869>`__"
+#~ msgstr ""
+#~ "其他改进： `#2869 <https://github.com/pgRouting/pgrouting/issues/2869>`__"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.3.1 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.3.1Git关闭里程"
+#~ "碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.3.0 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.3.0 Git关闭里"
+#~ "程碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ 。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.2.2 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.2.2 Git关闭里"
+#~ "程碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_ 。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.2.1 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.2.1Git关闭里程"
+#~ "碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_ 。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.2.0Git关闭里程"
+#~ "碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ 。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.1.4 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.4Git关闭里程"
+#~ "碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_ 。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.1.3 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.3 Git关闭里"
+#~ "程碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ 。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.1.2 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.2Git关闭里程"
+#~ "碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ 。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.1.1 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.1 Git关闭里"
+#~ "程碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ 。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.1.0 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.0 Git关闭里"
+#~ "程碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.0.6 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.6Git关闭里程"
+#~ "碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.0.5 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.5Git关闭里程"
+#~ "碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.0.4 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.4Git关闭里程"
+#~ "碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.0.2 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.2Git关闭里程"
+#~ "碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.0.1 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.1Git关闭里程"
+#~ "碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_。"
+
+#~ msgid ""
+#~ "To see all issues & pull requests closed by this release see the `Git "
+#~ "closed milestone for 3.0.0 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.0Git关闭里程"
+#~ "碑 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed milestone "
+#~ "for 2.6.3 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.6.3Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20>`_。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed milestone "
+#~ "for 2.6.2 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.6.2Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed milestone "
+#~ "for 2.6.1 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.6.1Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed milestone "
+#~ "for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.6.0Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed milestone "
+#~ "for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.5.5Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed milestone "
+#~ "for 2.5.4 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.5.4 Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed milestone "
+#~ "for 2.5.3 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.5.3Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed milestone "
+#~ "for 2.5.2 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.5.2Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed milestone "
+#~ "for 2.5.1 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.5.1Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed issues for "
+#~ "2.5.0 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.5.0Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ 。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed milestone "
+#~ "for 2.4.2 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.4.2Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed milestone "
+#~ "for 2.4.1 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.4.1Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed issues for "
+#~ "2.4.0 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.4.0Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ 。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed issues for "
+#~ "2.3.2 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.3.2 Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ 。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed issues for "
+#~ "2.3.1 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.3.1Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ 。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed issues for "
+#~ "2.3.0 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.3.0Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ 。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed issues for "
+#~ "2.2.4 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.2.4Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ 。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed issues for "
+#~ "2.2.3 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.2.3Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_ 。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed issues for "
+#~ "2.2.2 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.2.2 Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ 。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed issues for "
+#~ "2.2.1 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A2.2.1+is%3Aclosed>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.2.1Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A2.2.1+is%3Aclosed>`_ 。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed issues for "
+#~ "2.2.0 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.2.0Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ 。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed issues for "
+#~ "2.1.0 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.1.0Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ 。"
+
+#~ msgid ""
+#~ "To see the issues closed by this release see the `Git closed issues for "
+#~ "2.0.0 <https://github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_ on Github."
+#~ msgstr ""
+#~ "要查看此版本关闭的问题，请参阅 Github 上的 `2.0.0Git关闭里程碑 <https://"
+#~ "github.com/pgRouting/pgrouting/issues?"
+#~ "q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_ 。"
