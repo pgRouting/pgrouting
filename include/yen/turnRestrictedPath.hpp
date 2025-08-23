@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "yen/ksp.hpp"
 #include "cpp_common/assert.hpp"
-#include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/path.hpp"
 #include "cpp_common/compPaths.hpp"
 #include "cpp_common/messages.hpp"
 #include "cpp_common/rule.hpp"
