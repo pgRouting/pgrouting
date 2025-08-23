@@ -94,6 +94,8 @@ Edges SQL
 Result columns
 -------------------------------------------------------------------------------
 
+.. node_ordering_start
+
 Returns set of ``(seq, node)``
 
 ===============  =========== ======================================
@@ -102,6 +104,8 @@ Column           Type        Description
 ``seq``           ``BIGINT``  Sequence of the order starting from 1.
 ``node``          ``BIGINT``  New ordering in reverse order.
 ===============  =========== ======================================
+
+.. node_ordering_end
 
 See Also
 -------------------------------------------------------------------------------

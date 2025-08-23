@@ -1,0 +1,47 @@
+-- CopyRight(c) pgRouting developers
+-- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
+/* -- q1 */
+SELECT * FROM pgr_kingOrdering(
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
+  );
+
+/* -- q2 */
+CREATE TABLE additional_sample_1(
+    id SERIAL PRIMARY KEY,
+    source INTEGER,
+    target INTEGER,
+    cost DOUBLE PRECISION,
+    reverse_cost DOUBLE PRECISION
+);
+
+INSERT INTO additional_sample_1 (source, target, cost, reverse_cost) VALUES
+(4, 7, 1, 1),
+(7, 4, 1, 1),
+(7, 9, 1, 1),
+(9, 7, 1, 1),
+(7, 0, 1, 1),
+(0, 7, 1, 1),
+(0, 2, 1, 1),
+(2, 0, 1, 1),
+(2, 5, 1, 1),
+(5, 2, 1, 1),
+(5, 9, 1, 1),
+(9, 5, 1, 1),
+(9, 8, 1, 1),
+(8, 9, 1, 1),
+(9, 1, 1, 1),
+(1, 9, 1, 1),
+(5, 1, 1, 1),
+(1, 5, 1, 1),
+(9, 6, 1, 1),
+(6, 9, 1, 1),
+(6, 3, 1, 1),
+(3, 6, 1, 1),
+(1, 3, 1, 1),
+(3, 1, 1, 1);
+
+SELECT * FROM pgr_kingOrdering(
+    'SELECT id, source, target, cost, reverse_cost FROM additional_sample_1'
+);
+
+/* -- q3 */

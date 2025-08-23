@@ -212,7 +212,13 @@ Summary of changes by function
 
   .. include:: pgr_edwardMoore.rst
      :start-after: Version 4.0.0
-     :end-before: .. rubric
+     :end-before: Description
+
+* pgr_kingOrdering
+
+  .. include:: pgr_kingOrdering.rst
+     :start-after: Version 4.0.0
+     :end-before: Description
 
 * pgr_KSP
 
@@ -353,6 +359,10 @@ New experimental functions
 * Metrics
 
   * :issue:`2951`: pgr_bandwidth
+
+* Ordering
+
+  * :issue:`2954`: pgr_kingOrdering
 
 SQL signatures and output standardization
 ...............................................................................

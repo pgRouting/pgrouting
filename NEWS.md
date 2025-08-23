@@ -138,6 +138,15 @@ Summary of changes by function
 * pgr_edwardMoore
 
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+  .. rubric:: Version 3.2.0
+  * New experimental signature:
+    * pgr_edwardMoore(Combinations)
+  .. rubric:: Version 3.0.0
+  * New experimental function.
+
+* pgr_kingOrdering
+
+    * New experimental function.
 
 * pgr_KSP
 
@@ -297,6 +306,10 @@ New experimental functions
 * Metrics
 
   * [#2951](https://github.com/pgRouting/pgrouting/issues/2951): pgr_bandwidth
+
+* Ordering
+
+  * [#2954](https://github.com/pgRouting/pgrouting/issues/2954): pgr_kingOrdering
 
 SQL signatures and output standardization
 

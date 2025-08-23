@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-20 17:25+0000\n"
+"POT-Creation-Date: 2025-08-23 02:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3076,6 +3076,9 @@ msgstr ""
 msgid ":doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed acyclic graph."
 msgstr ""
 
+msgid ":doc:`pgr_kingOrdering` - Returns the King ordering of an undirected graphs acyclic graph."
+msgstr ""
+
 msgid ":doc:`metrics-family`"
 msgstr ""
 
@@ -3676,6 +3679,21 @@ msgstr ""
 msgid "pgr_edwardMoore"
 msgstr ""
 
+msgid "Version 3.2.0"
+msgstr ""
+
+msgid "New experimental signature:"
+msgstr ""
+
+msgid "pgr_edwardMoore(Combinations)"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr ""
+
+msgid "pgr_kingOrdering"
+msgstr ""
+
 msgid "pgr_KSP"
 msgstr ""
 
@@ -3911,6 +3929,12 @@ msgid "Metrics"
 msgstr ""
 
 msgid "`#2951 <https://github.com/pgRouting/pgrouting/issues/2951>`__: pgr_bandwidth"
+msgstr ""
+
+msgid "Ordering"
+msgstr ""
+
+msgid "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_kingOrdering"
 msgstr ""
 
 msgid "SQL signatures and output standardization"
@@ -7054,7 +7078,7 @@ msgstr ""
 msgid "Individuals in this release v4.0.0 (in alphabetical order)"
 msgstr ""
 
-msgid "Regina Obe, Saloni kumari, Vicky Vergara"
+msgid "Fan Wu Regina Obe, Saloni kumari, Vicky Vergara"
 msgstr ""
 
 msgid "And all the people that give us a little of their time making comments, finding issues, making pull requests etc. in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
@@ -7093,7 +7117,7 @@ msgstr ""
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
-msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -7519,9 +7543,6 @@ msgstr ""
 msgid "Using `Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
 msgstr ""
 
-msgid "Version 3.0.0"
-msgstr ""
-
 msgid "Name change from pgr_eucledianTSP"
 msgstr ""
 
@@ -7607,9 +7628,6 @@ msgid "pgr_aStar(One to Many) added ``end_vid`` column."
 msgstr ""
 
 msgid "pgr_aStar(Many to One) added ``start_vid`` column."
-msgstr ""
-
-msgid "Version 3.2.0"
 msgstr ""
 
 msgid "New proposed signature:"
@@ -8069,9 +8087,6 @@ msgid "``pgr_bellmanFord - Experimental``"
 msgstr ""
 
 msgid "``pgr_bellmanFord`` — Shortest path using Bellman-Ford algorithm."
-msgstr ""
-
-msgid "New experimental signature:"
 msgstr ""
 
 msgid "pgr_bellmanFord(Combinations)"
@@ -10576,9 +10591,6 @@ msgstr ""
 msgid "``pgr_edwardMoore`` — Returns the shortest path using Edward-Moore algorithm."
 msgstr ""
 
-msgid "pgr_edwardMoore(Combinations)"
-msgstr ""
-
 msgid "Edward Moore’s Algorithm is an improvement of the Bellman-Ford Algorithm. It can compute the shortest paths from a single source vertex to all other vertices in a weighted directed graph. The main difference between Edward Moore's Algorithm and Bellman Ford's Algorithm lies in the run time."
 msgstr ""
 
@@ -11186,6 +11198,39 @@ msgid "pgr johnson(`Edges SQL`_, [``directed``])"
 msgstr ""
 
 msgid "Boost `Johnson <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_"
+msgstr ""
+
+msgid "``pgr_kingOrdering`` - Experimental"
+msgstr ""
+
+msgid "``pgr_kingOrdering`` — Returns the King ordering of an undirected graphs"
+msgstr ""
+
+msgid "In numerical linear algebra and graph theory, the King ordering algorithm is a heuristic designed to reorder the vertices of a graph so as to reduce its bandwidth."
+msgstr ""
+
+msgid "The method follows a breadth-first search (BFS) traversal,but with a refinement: at each step, the unvisited neighbors of the current vertex are inserted into the queue in ascending order of their pseudo-degree, where the pseudo-degree of a vertex is the number of edges connecting it to yet-unvisited vertices. This prioritization often yields a smaller bandwidth compared to simpler BFS orderings."
+msgstr ""
+
+msgid "The implementation targets undirected graphs."
+msgstr ""
+
+msgid "Bandwidth minimization is an NP-complete problem; King ordering provides a practical local minimization approach."
+msgstr ""
+
+msgid "The time complexity is: :math:`O(m^2 \\log(m)|E|)`"
+msgstr ""
+
+msgid "where :math:`|E|` is the number of edges,"
+msgstr ""
+
+msgid ":math:`m` is the maximum degree among all vertices."
+msgstr ""
+
+msgid "pgr_kingOrdering(`Edges SQL`_)"
+msgstr ""
+
+msgid "`Boost: King Ordering <https://www.boost.org/libs/graph/doc/king_ordering.html>`__"
 msgstr ""
 
 msgid "``pgr_kruskal``"
@@ -13838,9 +13883,6 @@ msgid "pgr_findCloseEdges(One point)"
 msgstr ""
 
 msgid "pgr_findCloseEdges(Many points)"
-msgstr ""
-
-msgid "Ordering"
 msgstr ""
 
 msgid "pgr_cuthillMckeeOrdering"
