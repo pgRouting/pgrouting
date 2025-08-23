@@ -99,42 +99,32 @@ Vehicle::cost_compare(const Cost &lhs, const Cost &rhs) const {
     /*
      * capacity violations
      */
-    if (std::get<1>(lhs) < std::get<1>(rhs))
-        return true;
-    if (std::get<1>(lhs) > std::get<1>(rhs))
-        return false;
+    if (std::get<1>(lhs) < std::get<1>(rhs)) return true;
+    if (std::get<1>(lhs) > std::get<1>(rhs)) return false;
 
     /*
      * time window violations
      */
-    if (std::get<0>(lhs) < std::get<0>(rhs))
-        return true;
-    if (std::get<0>(lhs) > std::get<0>(rhs))
-        return false;
+    if (std::get<0>(lhs) < std::get<0>(rhs)) return true;
+    if (std::get<0>(lhs) > std::get<0>(rhs)) return false;
 
     /*
      * waiting time
      */
-    if (std::get<3>(lhs) < std::get<3>(rhs))
-        return true;
-    if (std::get<3>(lhs) > std::get<3>(rhs))
-        return false;
+    if (std::get<3>(lhs) < std::get<3>(rhs)) return true;
+    if (std::get<3>(lhs) > std::get<3>(rhs)) return false;
 
     /*
      * duration
      */
-    if (std::get<4>(lhs) < std::get<4>(rhs))
-        return true;
-    if (std::get<4>(lhs) > std::get<4>(rhs))
-        return false;
+    if (std::get<4>(lhs) < std::get<4>(rhs)) return true;
+    if (std::get<4>(lhs) > std::get<4>(rhs)) return false;
 
     /*
      * truck size
      */
-    if (std::get<2>(lhs) < std::get<2>(rhs))
-        return true;
-    if (std::get<2>(lhs) > std::get<2>(rhs))
-        return false;
+    if (std::get<2>(lhs) < std::get<2>(rhs)) return true;
+    if (std::get<2>(lhs) > std::get<2>(rhs)) return false;
 
     return false;
 }
@@ -201,8 +191,7 @@ Vehicle::erase(const Vehicle_node &node) {
 
     POS pos = 0;
     for ( ; pos < m_path.size() ; ++pos) {
-        if (node.idx() == m_path[pos].idx())
-            break;
+        if (node.idx() == m_path[pos].idx()) break;
     }
 
     erase(pos);
@@ -451,8 +440,7 @@ Vehicle::tau() const {
     log << "Truck " << id() << "(" << idx() << ")"
         << " (";
     for (const auto &p_stop : m_path) {
-        if (!(p_stop == m_path.front()))
-            log << ", ";
+        if (!(p_stop == m_path.front())) log << ", ";
         log << p_stop.id();
     }
     log << ")" << " \t(cv, twv, wait_time, duration) = ("

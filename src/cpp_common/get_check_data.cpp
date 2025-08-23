@@ -560,8 +560,9 @@ int64_t getBigInt(
     bool isnull;
     int64_t value = 0;
     binval = SPI_getbinval(tuple, tupdesc, info.colNumber, &isnull);
-    if (isnull)
+    if (isnull) {
         throw std::string("Unexpected Null value in column ") + info.name;
+    }
     switch (info.type) {
         case INT2OID:
             value = static_cast<int64_t>(DatumGetInt16(binval));
@@ -591,8 +592,9 @@ double getFloat8(
     Datum binval;
     bool isnull = false;
     binval = SPI_getbinval(tuple, tupdesc, info.colNumber, &isnull);
-    if (isnull)
+    if (isnull) {
         throw std::string("Unexpected Null value in column ") + info.name;
+    }
 
     switch (info.type) {
         case INT2OID:

@@ -208,8 +208,7 @@ double TrspHandler::getRestrictionCost(
             v_pos = m_parent[static_cast<size_t>(edge_ind)].v_pos[static_cast<size_t>(v_pos)];
             edge_ind = static_cast<int64_t>(m_parent_ind);
         }
-        if (flag)
-            cost += rule.cost();
+        cost += flag? rule.cost() : 0;
     }
     return cost;
 }

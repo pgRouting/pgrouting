@@ -405,8 +405,9 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
      */
     for (const auto &root : roots) {
         for (auto &p : pred) {
-            if (!p.empty() && graph.has_vertex(root))
+            if (!p.empty() && graph.has_vertex(root)) {
                 p[graph.get_V(root)] = graph.get_V(root);
+            }
         }
     }
 

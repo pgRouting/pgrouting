@@ -187,10 +187,12 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(const std::vector<Edge_t> &dataEdges)
         edge.cost = 0.0;
         edge.capacity = std::abs(d);
         edge.edge_id = 0;
-        if (d > 0)
+        if (d > 0) {
             edge.source = p, edge.target = superTarget;
-        if (d < 0)
+        }
+        if (d < 0) {
             edge.source = superSource, edge.target = p;
+        }
         edges.push_back(edge);
     }
 
