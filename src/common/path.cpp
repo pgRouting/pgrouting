@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: basePath_SSEC.cpp
+File: path.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/path.hpp"
 
 #include <cmath>
 #include <limits>
