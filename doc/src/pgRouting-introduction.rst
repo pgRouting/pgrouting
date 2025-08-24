@@ -66,7 +66,8 @@ This Release Contributors
 Individuals in this release v4.0.0 (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Fan Wu
+Bipasha Gayary,
+Fan Wu,
 Regina Obe,
 Saloni kumari,
 Vicky Vergara
@@ -111,6 +112,7 @@ Aryan Gupta,
 Ashraf Hossain,
 Ashish Kumar,
 Aurélie Bousquet,
+Bipasha Gayary,
 Cayetano Benavent,
 Christian Gonzalez,
 Daniel Kastl,
