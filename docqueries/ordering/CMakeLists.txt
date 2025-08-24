@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     cuthillMckeeOrdering
     topologicalSort
+    sloanOrdering
     kingOrdering
     )
 
