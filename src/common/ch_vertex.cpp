@@ -55,7 +55,7 @@ Identifiers<int64_t>&
 
 
 bool CH_vertex::has_contracted_vertices() const {
-    return (m_contracted_vertices.size() == 0);
+    return !m_contracted_vertices.empty();
 }
 
 void CH_vertex::add_contracted_vertex(CH_vertex& v) {
