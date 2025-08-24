@@ -31,13 +31,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/contractionHierarchies_rt.h"
 #include "c_types/iid_t_rt.h"
+#include "c_types/routes_t.h"
 
+#include "cpp_common/path.hpp"
 #include "cpp_common/base_graph.hpp"
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/identifiers.hpp"
 
 
 namespace pgrouting {
+namespace to_postgres {
 namespace detail {
 
 /** @brief Count results that are going to be passed to postgres
@@ -67,8 +70,6 @@ count_rows(
 }
 
 }  // namespace detail
-
-namespace to_postgres {
 
 /** @brief Stored results on a vector are saved on a C array
  *
@@ -202,6 +203,11 @@ void graph_to_tuple(
         ++sequence;
     }
 }
+
+/*
+ * @brief Via Routes save on a C array
+ */
+size_t get_viaRoute(std::deque<pgrouting::Path>&, Routes_t**);
 
 }  // namespace to_postgres
 }  // namespace pgrouting
