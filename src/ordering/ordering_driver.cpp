@@ -4,9 +4,14 @@ Generated with Template by:
 Copyright (c) 2025 pgRouting developers
 Mail: project@pgrouting.org
 
-Developer:
+Developers:
+
+Copyright (c) 2025 Bipasha Gayary
+Mail: bipashagayary at gmail.com
+
 Copyright (c) 2025 Fan Wu
 Mail: wifiblack0131 at gmail.com
+
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -38,9 +43,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
 
+#include "ordering/sloanOrdering.hpp"
 #include "ordering/kingOrdering.hpp"
 
-
+namespace {
+template <class G>
+std::vector <int64_t>
+sloanOrdering(G &graph) {
+        pgrouting::functions::SloanOrdering <G> fn_sloanOrdering;
+        auto results = fn_sloanOrdering.sloanOrdering(graph);
+        return results;
+}
+}
 
 void
 do_ordering(
@@ -77,32 +91,38 @@ do_ordering(
         auto edges = get_edges(std::string(edges_sql), true, false);
         if (edges.empty()) {
             *notice_msg = to_pg_msg("No edges found");
-            *return_tuples = NULL;
+            *return_tuples = nullptr;
             *return_count = 0;
             return;
         }
         hint = "";
 
         std::vector<int64_t> results;
+
         auto vertices(pgrouting::extract_vertices(edges));
         UndirectedGraph undigraph(vertices);
         undigraph.insert_edges(edges);
 
-        if (which == 2) {
+        if (which == 0) {
+            results = sloanOrdering(undigraph);
+        } else if (which == 2) {
             results = kingOrdering(undigraph);
         }
+
         auto count = results.size();
 
         if (count == 0) {
             *notice_msg = to_pg_msg("No results found \n");
-            *return_tuples = NULL;
+            *err_msg = to_pg_msg(err);
+            *return_tuples = nullptr;
             *return_count = 0;
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        for (size_t i = 0; i < count; i++) {
-            *((*return_tuples) + i) = results[i];
+
+        for (size_t i = 0; i < count; ++i) {
+              (*return_tuples)[i] = results[i];
         }
 
         (*return_count) = count;
