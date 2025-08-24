@@ -238,6 +238,12 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* pgr_sloanOrdering
+
+  .. include:: pgr_sloanOrdering.rst
+     :start-after: Version 4.0.0
+     :end-before: Description
+
 * pgr_sequentialVertexColoring
 
   .. include:: pgr_sequentialVertexColoring.rst
@@ -363,6 +369,7 @@ New experimental functions
 * Ordering
 
   * :issue:`2954`: pgr_kingOrdering
+  * :issue:`2955`: pgr_sloanOrdering
 
 SQL signatures and output standardization
 ...............................................................................

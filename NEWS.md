@@ -160,6 +160,10 @@ Summary of changes by function
 
   * Combinations signature promoted to official.
 
+* pgr_sloanOrdering
+
+  * New experimental function.
+
 * pgr_sequentialVertexColoring
 
   * Output columns standardized to ``(node, color)``
@@ -310,6 +314,7 @@ New experimental functions
 * Ordering
 
   * [#2954](https://github.com/pgRouting/pgrouting/issues/2954): pgr_kingOrdering
+  * [#2955](https://github.com/pgRouting/pgrouting/issues/2955): pgr_sloanOrdering
 
 SQL signatures and output standardization
 
