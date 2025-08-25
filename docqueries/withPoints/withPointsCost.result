@@ -8,7 +8,7 @@ SET
 SELECT * FROM pgr_withPointsCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  -1, 10,'r');
+  -1, 10);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
         -1 |      10 |      6.4
@@ -18,7 +18,7 @@ SELECT * FROM pgr_withPointsCost(
 SELECT * FROM pgr_withPointsCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  -1, ARRAY[-3, 7], 'B',
+  -1, ARRAY[-3, 7],
   directed => false);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
@@ -30,7 +30,7 @@ SELECT * FROM pgr_withPointsCost(
 SELECT * FROM pgr_withPointsCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[-1, 6], -3, 'R');
+  ARRAY[-1, 6], -3);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
         -1 |      -3 |        4
@@ -106,7 +106,7 @@ SELECT * FROM pgr_withPointsCost(
 SELECT * FROM pgr_withPointsCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[5, -1], ARRAY[-2, -3, -6, 10, 11], 'R');
+  ARRAY[5, -1], ARRAY[-2, -3, -6, 10, 11]);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
         -1 |      -6 |      2.1
@@ -130,11 +130,11 @@ SELECT * FROM pgr_withPointsCost(
         (SELECT ST_POINT(2.9, 1.8)),
         0.5, cap => 2)
   $p$,
-  1, ARRAY[-1, -2],'B', false);
+  1, ARRAY[-1, -2]);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
          1 |      -2 |      2.9
-         1 |      -1 |      3.2
+         1 |      -1 |      6.8
 (2 rows)
 
 /* -- q10 */
