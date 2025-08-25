@@ -24,14 +24,14 @@
 
 .. rubric:: Version 4.0.0
 
-  * New experimental function.
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
 
 In numerical linear algebra and graph theory, the King ordering algorithm
 is a heuristic designed to reorder the vertices of a graph so as to reduce
-its bandwidth. 
+its bandwidth.
 
 The method follows a breadth-first search (BFS) traversal,but with a refinement:
 at each step, the unvisited neighbors of the current vertex are inserted into

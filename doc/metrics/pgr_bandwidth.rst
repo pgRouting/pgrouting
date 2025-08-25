@@ -24,16 +24,18 @@
 
 .. rubric:: Availability
 
-.. rubic:: Version 4.0.0
+.. rubric:: Version 4.0.0
 
 * New experimental function.
 
 Description
 -------------------------------------------------------------------------------
 
-Bandwidth measures how "spread out" the connections are in a graph when vertices are arranged in a linear order (like numbering them 1, 2, 3, etc.).
+Bandwidth measures how "spread out" the connections are in a graph when vertices
+are arranged in a linear order (like numbering them 1, 2, 3, etc.).
 
-* For each edge in the graph, calculate the distance between the vertex numbers it connects
+* For each edge in the graph, calculate the distance between the vertex numbers
+  it connects
 * The bandwidth is the maximum of all these distances
 * The implementation is for undirected graphs
 * Run time is 0.160789 seconds
@@ -61,9 +63,9 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: pgRouting-concepts.rst
-    :start-after: edges_start
-    :end-before: edges_end
+.. include:: allpairs-family.rst
+   :start-after: edges_start
+   :end-before: edges_end
 
 Inner Queries
 -------------------------------------------------------------------------------

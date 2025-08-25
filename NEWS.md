@@ -146,7 +146,7 @@ Summary of changes by function
 
 * pgr_kingOrdering
 
-    * New experimental function.
+  * New experimental function.
 
 * pgr_KSP
 
@@ -194,7 +194,7 @@ Summary of changes by function
 * pgr_trspVia_withPoints
 
   * Function promoted to official.
-  * **Driving side** parameter is positional unnamed and compulsory.
+  * **Driving side** parameter is positional unnamed.
     * Valid values depend on kind of graph
   * Breaking change, signatures no longer available:
     * pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)
