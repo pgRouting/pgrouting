@@ -105,31 +105,31 @@ Additional Examples
 
 ..graphviz::
 
-graph G{
-node[shape=circle, style=filled, fillcolor=lightblue, color=black, fontcolor=black, fontsize=12];
-edge[color=black, penwidth=1.5];
+   graph G{
+   node[shape=circle, style=filled, fillcolor=lightblue, color=black, fontcolor=black, fontsize=12];
+   edge[color=black, penwidth=1.5];
 
-0 -- 3;
-0 -- 5;
-1 -- 2;
-1 -- 4;
-1 -- 6;
-1 -- 9;
-2 -- 3;
-2 -- 4;
-3 -- 5;
-3 -- 8;
-4 -- 6;
-5 -- 6;
-5 -- 7;
-6 -- 7;
+   0 -- 3;
+   0 -- 5;
+   1 -- 2;
+   1 -- 4;
+   1 -- 6;
+   1 -- 9;
+   2 -- 3;
+   2 -- 4;
+   3 -- 5;
+   3 -- 8;
+   4 -- 6;
+   5 -- 6;
+   5 -- 7;
+   6 -- 7;
 
-{rank=same; 0; 8;}
-{rank=same; 3; 5; 7;}
-{rank=same; 2; 4; 6;}
-{rank=same; 1; 9;}
+   {rank=same; 0; 8;}
+   {rank=same; 3; 5; 7;}
+   {rank=same; 2; 4; 6;}
+   {rank=same; 1; 9;}
 
-}
+   }
 
 ..literalinclude::sloanOrdering.queries
   :start-after: --q3
@@ -141,7 +141,7 @@ See Also
 
 * :doc:`sampledata`
 * `Boost: Sloan Ordering
-  <https://www.boost.org/libs/graph/doc/sloan_ordering.html>`__
+  <https://www.boost.org/doc/libs/latest/libs/graph/doc/sloan_ordering.htm>`__
 
 .. rubric:: Indices and tables
 

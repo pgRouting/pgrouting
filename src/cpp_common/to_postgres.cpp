@@ -56,7 +56,7 @@ get_path(
             e.cost,
             e.agg_cost,
             route_agg_cost};
-        route_agg_cost += path[path_seq].cost;
+        route_agg_cost += path[static_cast<uint32_t>(path_seq)].cost;
         path_seq++;
         ++sequence;
     }
