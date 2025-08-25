@@ -52,6 +52,9 @@ jobs:
 
     strategy:
         fail-fast: false
+        matrix:
+          release: [Debug, Release]
+          os: [ubuntu-latest, ubuntu-22.04]
 
     steps:
       - uses: actions/checkout@v5
@@ -64,12 +67,21 @@ jobs:
           echo "PGIS=3" >> $GITHUB_ENV
           echo "PGPORT=5432" >> $GITHUB_ENV
 
+      - name: 'Raise Priority for apt.postgresql.org'
+        run: |
+          cat << EOF >> ./pgdg.pref
+          Package: *
+          Pin: release o=apt.postgresql.org
+          Pin-Priority: 600
+          EOF
+          sudo mv ./pgdg.pref /etc/apt/preferences.d/
+          sudo apt update
+        
       - name: Add PostgreSQL APT repository
         run: |
-          sudo apt-get install curl ca-certificates gnupg
-          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
-            $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+          sudo apt-get purge postgresql-*
+          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg-testing main ${PGVER}" > /etc/apt/sources.list.d/pgdg.list'
+          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
 
       - name: Install dependencies
         run: |
@@ -84,13 +96,13 @@ jobs:
             postgresql-${PGVER}-postgis-${PGIS}-scripts \
             postgresql-server-dev-${PGVER}
 
-      - name: Configure
+      - name: Configure for clang
         run: |
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
           CXX=clang++ CC=clang cmake -DPOSTGRESQL_VERSION=${PGVER} \
-             -DCMAKE_BUILD_TYPE=Debug -DBUILD_HTML=OFF -DBUILD_DOXY=OFF \
+             -DCMAKE_BUILD_TYPE=${{ matrix.release }} -DBUILD_HTML=OFF -DBUILD_DOXY=OFF \
              -DUSE_CLANG_TIDY=ON ..
 
       - name: Build
