@@ -8,13 +8,13 @@
    ****************************************************************************
 
 .. index::
-   single: Dijkstra Family ; pgr_dijkstraVia - Proposed
-   single: Via Category ; pgr_dijkstraVia - Proposed
+   single: Dijkstra Family ; pgr_dijkstraVia
+   single: Via Category ; pgr_dijkstraVia
    single: dijkstraVia - Proposed
 
 |
 
-``pgr_dijkstraVia`` - Proposed
+``pgr_dijkstraVia``
 ===============================================================================
 
 ``pgr_dijkstraVia`` — Route that goes through a list of vertices.
@@ -45,7 +45,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: dijkstraVia - Proposed ; One Via - Proposed on 2.2
+    single: dijkstraVia ; One Via
 
 One Via
 ...............................................................................
@@ -69,9 +69,31 @@ One Via
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: via-category.rst
-    :start-after: via_parameters_start
-    :end-before: via_parameters_end
+.. via_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: 14 20 7 40
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     -
+     - SQL query as described.
+   * - **via vertices**
+     - ``ARRAY`` [ **ANY-INTEGER** ]
+     -
+     - Array of ordered vertices identifiers that are going to be visited.
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+
+.. via_parameters_end
 
 Optional parameters
 ...............................................................................

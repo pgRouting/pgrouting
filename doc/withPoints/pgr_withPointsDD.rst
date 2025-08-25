@@ -70,8 +70,8 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options A**])
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options B**])
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, [**driving side**], [**options A**])
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, [**driving side**], [**options B**])
    | **options A:** ``[directed, details]``
    | **options B:** ``[directed, details, equicost]``
 
@@ -87,7 +87,7 @@ Single vertex
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options**])
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, [**driving side**], [**options**])
    | **options:** ``[directed, details]``
 
    | Returns set of |result-spantree|
@@ -109,7 +109,7 @@ Multiple vertices
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options**])
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, [**driving side**], [**options**])
    | **options:** ``[directed, details, equicost]``
 
    | Returns set of |result-spantree|
@@ -154,18 +154,10 @@ Parameters
    * - **distance**
      - ``FLOAT``
      - Upper limit for the inclusion of a node in the result.
-   * - **driving side**
-     - ``CHAR``
-     - - Value in [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] indicating if the driving side is:
 
-         - ``r``, ``R`` for right driving side,
-         - ``l``, ``L`` for left driving side.
-         - ``b``, ``B`` for both.
-
-       - Valid values differ for directed and undirected graphs:
-
-         - In directed graphs: [``r``, ``R``, ``l``, ``L``].
-         - In undirected graphs: [``b``, ``B``].
+.. include:: withPoints-category.rst
+    :start-after: driving_side_start
+    :end-before: driving_side_end
 
 Where:
 

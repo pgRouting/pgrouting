@@ -122,15 +122,34 @@ Parameters
      - ``ARRAY[BIGINT]``
      - Array of identifiers of ending vertices. Negative values are for point’s
        identifiers.
-   * - **driving side**
+
+.. withPoints_parameters_end
+
+.. driving_side_start
+
+.. list-table::
+   :width: 81
+   :widths: 14 14 44
+
+   * - [**driving side**]
      - ``CHAR``
      - Value in [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] indicating if the driving side is:
 
-       - [``r``, ``R``] for right driving side (for directed graph only)
-       - [``l``, ``L``] for left driving side (for directed graph only)
-       - [``b``, ``B``] for both (only for undirected graph)
+       - For directed graph:
 
-.. withPoints_parameters_end
+         - [``r``, ``R``] for right driving side
+         - [``l``, ``L``] for left driving side
+
+       - For undirected graph:
+
+         - [``b``, ``B``] for both driving sides
+
+       - Default values when parameter is missing:
+
+         - [``r``, ``R``] for directed graph
+         - [``l``, ``L``] for undirected graph
+
+.. driving_side_end
 
 Optional parameters
 ...............................................................................

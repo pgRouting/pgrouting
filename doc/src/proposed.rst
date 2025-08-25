@@ -30,12 +30,6 @@ Proposed Functions
 
 .. rubric:: Families
 
-:doc:`dijkstra-family`
-
-.. include:: dijkstra-family.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
 :doc:`transformation-family`
 
 .. include:: transformation-family.rst
@@ -65,12 +59,6 @@ Proposed Functions
 :doc:`cost-category`
 
 .. include:: cost-category.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
-:doc:`via-category`
-
-.. include:: via-category.rst
    :start-after: proposed-start
    :end-before: proposed-end
 
