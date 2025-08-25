@@ -69,11 +69,11 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **K**, **driving_side**, [**options**])
-   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **K**, **driving_side**, [**options**])
-   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **K**, **driving_side**, [**options**])
-   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **K**, **driving_side**, [**options**])
-   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, **driving_side**, [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **K**, [**driving side**], [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **K**, [**driving side**], [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **K**, [**driving side**], [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **K**, [**driving side**], [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, [**driving side**], [**options**])
    | **options:** ``[directed, heap_paths, details]``
 
    | Returns set of |nksp-result|
@@ -88,7 +88,7 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **K**, **driving_side**, [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **K**, [**driving side**], [**options**])
    | **options:** ``[directed, heap_paths, details]``
 
    | Returns set of |nksp-result|
@@ -114,7 +114,7 @@ One to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **K**, **driving_side**, [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **K**, [**driving side**], [**options**])
    | **options:** ``[directed, heap_paths, details]``
 
    | Returns set of |nksp-result|
@@ -136,7 +136,7 @@ Many to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **K**, **driving_side**, [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **K**, [**driving side**], [**options**])
    | **options:** ``[directed, heap_paths, details]``
 
    | Returns set of |nksp-result|
@@ -158,7 +158,7 @@ Many to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **K**, **driving_side**, [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **K**, [**driving side**], [**options**])
    | **options:** ``[directed, heap_paths, details]``
 
    | Returns set of |nksp-result|
@@ -180,7 +180,7 @@ Combinations
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, **driving_side**, [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, [**driving side**], [**options**])
    | **options:** ``[directed, heap_paths, details]``
 
    | Returns set of |nksp-result|
@@ -231,13 +231,10 @@ Parameters
    * - **K**
      - **ANY-INTEGER**
      - Number of required paths
-   * - **driving side**
-     - ``CHAR``
-     - Value in [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] indicating if the driving side is:
 
-       - [``r``, ``R``] for right driving side (for directed graph only)
-       - [``l``, ``L``] for left driving side (for directed graph only)
-       - [``b``, ``B``] for both (only for undirected graph)
+.. include:: withPoints-category.rst
+    :start-after: driving_side_start
+    :end-before: driving_side_end
 
 Where:
 

@@ -59,7 +59,7 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, **driving side** [**options**])
+   | pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, [**driving side**] [**options**])
    | **options:** ``[directed]``
 
    | Returns set of |matrix-result|
@@ -73,7 +73,7 @@ Signatures
 
 * Returning a **symmetrical** cost matrix
 * Using the default ``side`` value on the **points_sql** query
-* Using the default ``driving_side`` value
+* Using the default ``driving side`` value
 
 .. literalinclude:: withPointsCostMatrix.queries
    :start-after: -- q1
@@ -85,6 +85,10 @@ Parameters
 .. include:: costMatrix-category.rst
     :start-after: costMatrix_withPoints_parameters_start
     :end-before: costMatrix_withPoints_parameters_end
+
+.. include:: withPoints-category.rst
+    :start-after: driving_side_start
+    :end-before: driving_side_end
 
 Optional parameters
 ...............................................................................

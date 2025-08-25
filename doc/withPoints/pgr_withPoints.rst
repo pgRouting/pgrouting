@@ -97,11 +97,11 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **driving side** [**options**])
-   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])
-   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **driving side** [**options**])
-   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **driving side** [**options**])
-   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **driving side** [**options**])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, [**driving side**] [**options**])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, [**driving side**] [**options**])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, [**driving side**] [**options**])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, [**driving side**] [**options**])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**driving side**] [**options**])
    | **options:** ``[directed, details])``
 
    | Returns set of |short-generic-result|
@@ -116,7 +116,7 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **driving side** [**options**])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, [**driving side**] [**options**])
    | **options:** ``[directed, details]``
 
    | Returns set of |short-generic-result|
@@ -138,7 +138,7 @@ One to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, [**driving side**] [**options**])
    | **options:** ``[directed, details]``
 
    | Returns set of |short-generic-result|
@@ -160,7 +160,7 @@ Many to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **driving side** [**options**])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, [**driving side**] [**options**])
    | **options:** ``[directed, details]``
 
    | Returns set of |short-generic-result|
@@ -182,7 +182,7 @@ Many to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **driving side** [**options**])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, [**driving side**] [**options**])
    | **options:** ``[directed, details]``
 
    | Returns set of |short-generic-result|
@@ -204,7 +204,7 @@ Combinations
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **driving side** [**options**])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**driving side**] [**options**])
    | **options:** ``[directed, details]``
 
    | Returns set of |short-generic-result|
@@ -226,6 +226,10 @@ Parameters
 .. include:: withPoints-category.rst
     :start-after: withPoints_parameters_start
     :end-before: withPoints_parameters_end
+
+.. include:: withPoints-category.rst
+    :start-after: driving_side_start
+    :end-before: driving_side_end
 
 Optional parameters
 ...............................................................................

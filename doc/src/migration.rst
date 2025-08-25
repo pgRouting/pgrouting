@@ -872,15 +872,18 @@ After updating pgRouting:
 * Use an unnamed valid value for **driving side** after the **distance**
   parameter.
 
-.. note:: Validity of **driving side** parameter
+.. note:: Default value of **driving side** parameter
 
-  **driving side** parameter is unnamed compulsory, and valid values differ for
+  **driving side** parameter is unnamed, and valid values differ for
   directed and undirected graphs.
 
-  * Does not have a default value.
   * In directed graph: valid values are [``r``, ``R``, ``l``, ``L``]
+
+    * Default value = 'r';
+
   * In undirected graph: valid values are [``b``, ``B``]
-  * Using an invalid value throws an ``ERROR``.
+
+    * Default value = 'b';
 
 Single vertex example using ``pgr_withPointsDD``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1443,7 +1446,7 @@ Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
 :from: |ksp-result|
 :to: |generic-result|
 
-And ``driving side`` parameter changed from named optional to unnamed compulsory
+And ``driving side`` parameter changed from named optional to unnamed
 **driving side** and its validity differ for directed and undirected graphs.
 
 Signatures to be migrated:
@@ -1461,13 +1464,19 @@ Signatures to be migrated:
 
 * Be aware of the existence of the additional result Columns.
 * New output columns are |generic-result|
-* **driving side** parameter is unnamed compulsory, and valid values differ for
+
+.. note:: Default value of **driving side** parameter
+
+  **driving side** parameter is unnamed, and valid values differ for
   directed and undirected graphs.
 
-  * Does not have a default value.
   * In directed graph: valid values are [``r``, ``R``, ``l``, ``L``]
+
+    * Default value = 'r';
+
   * In undirected graph: valid values are [``b``, ``B``]
-  * Using an invalid value throws an ``ERROR``.
+
+    * Default value = 'b';
 
 ``pgr_withPointsKSP`` (`One to One`)
 ...............................................................................

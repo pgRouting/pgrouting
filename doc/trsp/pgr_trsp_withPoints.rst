@@ -88,12 +88,12 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vid**, [**options**])
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, `Points SQL`_, [**options**])
-   | **options:** ``[directed, driving_side, details]``
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vid**, [**driving side**,] [**options**])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, [**driving side**,] [**options**])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vid**, [**driving side**,] [**options**])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vids**, [**driving side**,] [**options**])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, `Combinations SQL`_, [**driving side**,] [**options**])
+   | **options:** ``[directed, details]``
 
    | Returns set of |short-generic-result|
    | OR EMPTY SET
@@ -107,8 +107,8 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vid**, [**options**])
-   | **options:** ``[directed, driving_side, details]``
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vid**, [**driving side**,] [**options**])
+   | **options:** ``[directed, details]``
 
    | Returns set of |short-generic-result|
    | OR EMPTY SET
@@ -129,7 +129,7 @@ One to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, [**driving side**,] [**options**])
    | **options:** ``[directed, details]``
 
    | Returns set of |short-generic-result|
@@ -151,8 +151,8 @@ Many to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])
-   | **options:** ``[directed, driving_side, details]``
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vid**, [**driving side**,] [**options**])
+   | **options:** ``[directed, details]``
 
    | Returns set of |short-generic-result|
    | OR EMPTY SET
@@ -173,8 +173,8 @@ Many to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])
-   | **options:** ``[directed, driving_side, details]``
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vids**, [**driving side**,] [**options**])
+   | **options:** ``[directed, details]``
 
    | Returns set of |short-generic-result|
    | OR EMPTY SET
@@ -195,8 +195,8 @@ Combinations
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, `Points SQL`_, [**options**])
-   | **options:** ``[directed, driving_side, details]``
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, `Combinations SQL`_, [**driving side**,] [**options**])
+   | **options:** ``[directed, details]``
 
    | Returns set of |short-generic-result|
    | OR EMPTY SET
@@ -214,9 +214,48 @@ From point :math:`1` to vertex :math:`10`, and from vertex :math:`6` to point
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: pgRouting-concepts.rst
-    :start-after: restriction_parameters_start
-    :end-before: restriction_parameters_end
+.. restriction_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: 17 22 44
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     - SQL query as described.
+   * - `Restrictions SQL`_
+     - ``TEXT``
+     - SQL query as described.
+   * - `Points SQL`_
+     - ``TEXT``
+     - SQL query as described.
+   * - `Combinations SQL`_
+     - ``TEXT``
+     - `Combinations SQL`_ as described below
+   * - **start vid**
+     - **ANY-INTEGER**
+     - Identifier of the departure vertex.
+   * - **start vids**
+     - ``ARRAY`` [**ANY-INTEGER**]
+     - Array of identifiers of destination vertices.
+   * - **end vid**
+     - **ANY-INTEGER**
+     - Identifier of the departure vertex.
+   * - **end vids**
+     - ``ARRAY`` [**ANY-INTEGER**]
+     - Array of identifiers of destination vertices.
+
+.. include:: withPoints-category.rst
+    :start-after: driving_side_start
+    :end-before: driving_side_end
+
+Where:
+
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
 
 Optional parameters
 ...............................................................................
