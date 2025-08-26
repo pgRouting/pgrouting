@@ -1,0 +1,32 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+/* -- q1 */
+SELECT * FROM pgr_minDegreeOrdering(
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
+  );
+ seq | node
+-----+------
+   1 |    8
+   2 |   12
+   3 |    1
+   4 |    9
+   5 |   16
+   6 |    1
+   7 |   15
+   8 |    1
+   9 |    4
+  10 |   10
+  11 |    8
+  12 |   14
+  13 |    3
+  14 |    4
+  15 |    1
+  16 |    2
+  17 |    6
+(17 rows)
+
+/* -- q2 */
+ROLLBACK;
+ROLLBACK
