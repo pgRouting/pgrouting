@@ -107,6 +107,8 @@ do_ordering(
             results = sloanOrdering(undigraph);
         } else if (which == 2) {
             results = kingOrdering(undigraph);
+        } else if (which == 3) {
+            results = minDegreeOrdering(undigraph);
         }
 
         auto count = results.size();

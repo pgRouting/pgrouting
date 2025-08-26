@@ -1,0 +1,99 @@
+
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2018  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN NOT min_version('4.0.0') THEN plan(1) ELSE plan(3) END;
+
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('4.0.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 4.0.0');
+  RETURN;
+END IF;
+
+-- 0 edge, 0 vertex test
+
+PREPARE q1 AS
+SELECT * FROM pgr_minDegreeOrdering(
+'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id > 18'
+);
+
+RETURN QUERY
+SELECT is_empty('q1', 'Graph with 0 edge and 0 vertex -> Empty row is returned');
+
+-- 3 vertices test
+
+PREPARE q6 AS
+SELECT *
+FROM pgr_minDegreeOrdering('SELECT id, source, target, cost, reverse_cost FROM edges WHERE id <= 2'
+);
+
+RETURN QUERY
+SELECT set_eq('q6', $$VALUES (1, 6), (2, 10), (3, 5)$$, 'Three connected vertices are ordered as expected');
+
+-- pgRouting sample data
+
+CREATE TABLE expected_result (
+seq BIGINT,
+node BIGINT);
+
+INSERT INTO expected_result (seq, node) VALUES
+(1, 8),
+(2, 12),
+(3, 1),
+(4, 9),
+(5, 16),
+(6, 1),
+(7, 15),
+(8, 1),
+(9, 4),
+(10, 10),
+(11, 8),
+(12, 14),
+(13, 3),
+(14, 4),
+(15, 1),
+(16, 2),
+(17, 6);
+
+PREPARE q7 AS
+SELECT * FROM pgr_minDegreeOrdering('SELECT id, source, target, cost, reverse_cost FROM edges'
+);
+
+PREPARE r7 AS
+SELECT * FROM expected_result;
+
+RETURN QUERY SELECT set_eq('q7','r7','Minimum Degree Ordering result matches expected sequence for pgRouting sample data');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+
+SELECT * FROM finish();
+ROLLBACK;

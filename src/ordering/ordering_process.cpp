@@ -44,6 +44,7 @@ extern "C" {
  which = 0 -> sloan
  which = 1 -> cuthillmckee
  which = 2 -> king
+ which = 3 -> mindegree
 
  This is c++ code, linked as C code, because pgr_process_foo is called from C code
  */
@@ -73,6 +74,8 @@ void pgr_process_ordering(
         time_msg(std::string("processing pgr_cuthillMckeeOrdering").c_str(), start_t, clock());
     } else if (which == 2) {
         time_msg(std::string("processing pgr_kingOrdering").c_str(), start_t, clock());
+    } else if (which == 3) {
+        time_msg(std::string("processing pgr_minDegreeOrdering").c_str(), start_t, clock());
     }
 
     if (err_msg && (*result_tuples)) {
