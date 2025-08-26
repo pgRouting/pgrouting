@@ -22,12 +22,9 @@
    :start-after: warning-begin
    :end-before: end-warning
 
-.. rubric:: Availability
-
-* Version 4.0.0
+.. rubric:: Version 4.0.0 
 
   * New experimental function.
-
 
 Description
 -------------------------------------------------------------------------------

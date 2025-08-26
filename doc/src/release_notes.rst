@@ -232,6 +232,12 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* pgr_minDegreeOrdering
+
+  .. include:: pgr_minDegreeOrdering.rst
+     :start-after: Version 4.0.0
+     :end-before: Description
+
 * pgr_pushRelabel
 
   .. include:: pgr_pushRelabel.rst

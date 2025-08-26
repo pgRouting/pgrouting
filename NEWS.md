@@ -156,6 +156,10 @@ Summary of changes by function
 
   * Combinations signature promoted to official.
 
+* pgr_minDegreeOrdering
+
+    * New experimental function.
+
 * pgr_pushRelabel
 
   * Combinations signature promoted to official.
