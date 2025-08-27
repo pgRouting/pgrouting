@@ -61,7 +61,7 @@ add_custom_target(doc ALL COMMENT "Building documentation with Sphinx")
 #---------------------------------------------
 # LANGUAGES SETTINGS
 #---------------------------------------------
-list(APPEND PROJECT_LANGUAGES_TRANSLATED "EN" "ES" "ZH_HANS")
+list(APPEND PROJECT_LANGUAGES_TRANSLATED "EN" "ES" "SV" "ZH_HANS")
 list(APPEND PROJECT_LANGUAGES "de" "en" "es" "ja" "ko" "sv" "zh_Hans")
 
 foreach(lang ${PROJECT_LANGUAGES})

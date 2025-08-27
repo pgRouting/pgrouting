@@ -230,7 +230,8 @@ BUILD_MAN          BOOL=OFF  If ON, turn on/off building MAN pages
 DOC_USE_BOOTSTRAP  BOOL=OFF  If ON, use sphinx-bootstrap for HTML pages of the
                              users documentation
 EN                 BOOL=ON   if OFF the English documentation will no be built
-ES                 BOOL=ON   if OFF the Spaish documentation will no be built
+ES                 BOOL=ON   if OFF the Spanish documentation will no be built
+SV                 BOOL=ON   if OFF the Swedish documentation will no be built
 ZH_HANS            BOOL=ON   if OFF the Chinese simplified documentation will no
                              be built
 ================== ========= ============================
