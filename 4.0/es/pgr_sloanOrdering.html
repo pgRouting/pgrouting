@@ -349,28 +349,33 @@ sparse matrix computations and finite element analysis.</p>
 </dd>
 </dl>
 <p>..graphviz:</p>
-<p>graph G{
-node[shape=circle, style=filled, fillcolor=lightblue, color=black, fontcolor=black, fontsize=12];
-edge[color=black, penwidth=1.5];</p>
-<p>0 – 3;
-0 – 5;
-1 – 2;
-1 – 4;
-1 – 6;
-1 – 9;
-2 – 3;
-2 – 4;
-3 – 5;
-3 – 8;
-4 – 6;
-5 – 6;
-5 – 7;
-6 – 7;</p>
-<p>{rank=same; 0; 8;}
-{rank=same; 3; 5; 7;}
-{rank=same; 2; 4; 6;}
-{rank=same; 1; 9;}</p>
-<p>}</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">graph</span> <span class="n">G</span><span class="p">{</span>
+<span class="n">node</span><span class="p">[</span><span class="n">shape</span><span class="o">=</span><span class="n">circle</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">filled</span><span class="p">,</span> <span class="n">fillcolor</span><span class="o">=</span><span class="n">lightblue</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">black</span><span class="p">,</span> <span class="n">fontcolor</span><span class="o">=</span><span class="n">black</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">];</span>
+<span class="n">edge</span><span class="p">[</span><span class="n">color</span><span class="o">=</span><span class="n">black</span><span class="p">,</span> <span class="n">penwidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">];</span>
+
+<span class="mi">0</span> <span class="o">--</span> <span class="mi">3</span><span class="p">;</span>
+<span class="mi">0</span> <span class="o">--</span> <span class="mi">5</span><span class="p">;</span>
+<span class="mi">1</span> <span class="o">--</span> <span class="mi">2</span><span class="p">;</span>
+<span class="mi">1</span> <span class="o">--</span> <span class="mi">4</span><span class="p">;</span>
+<span class="mi">1</span> <span class="o">--</span> <span class="mi">6</span><span class="p">;</span>
+<span class="mi">1</span> <span class="o">--</span> <span class="mi">9</span><span class="p">;</span>
+<span class="mi">2</span> <span class="o">--</span> <span class="mi">3</span><span class="p">;</span>
+<span class="mi">2</span> <span class="o">--</span> <span class="mi">4</span><span class="p">;</span>
+<span class="mi">3</span> <span class="o">--</span> <span class="mi">5</span><span class="p">;</span>
+<span class="mi">3</span> <span class="o">--</span> <span class="mi">8</span><span class="p">;</span>
+<span class="mi">4</span> <span class="o">--</span> <span class="mi">6</span><span class="p">;</span>
+<span class="mi">5</span> <span class="o">--</span> <span class="mi">6</span><span class="p">;</span>
+<span class="mi">5</span> <span class="o">--</span> <span class="mi">7</span><span class="p">;</span>
+<span class="mi">6</span> <span class="o">--</span> <span class="mi">7</span><span class="p">;</span>
+
+<span class="p">{</span><span class="n">rank</span><span class="o">=</span><span class="n">same</span><span class="p">;</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">8</span><span class="p">;}</span>
+<span class="p">{</span><span class="n">rank</span><span class="o">=</span><span class="n">same</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">7</span><span class="p">;}</span>
+<span class="p">{</span><span class="n">rank</span><span class="o">=</span><span class="n">same</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">6</span><span class="p">;}</span>
+<span class="p">{</span><span class="n">rank</span><span class="o">=</span><span class="n">same</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">9</span><span class="p">;}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
 <dl class="simple">
 <dt>..literalinclude::sloanOrdering.queries</dt><dd><dl class="field-list simple">
 <dt class="field-odd">start-after<span class="colon">:</span></dt>
@@ -387,7 +392,7 @@ edge[color=black, penwidth=1.5];</p>
 <h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/sloan_ordering.html">Boost: Sloan Ordering</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/sloan_ordering.htm">Boost: Sloan Ordering</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -410,7 +415,7 @@ edge[color=black, penwidth=1.5];</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en ago 25, 2025.<br/>
+      Actualizado por última vez en ago 27, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

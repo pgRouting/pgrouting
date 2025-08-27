@@ -1871,13 +1871,20 @@ parameter.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Validity of <strong>driving side</strong> parameter</p>
-<p>El parámetro <strong>lado de manjeo</strong> es obligatorio sin nombre, y los valores válidos difieren para grafos dirigidos y no dirigidos.</p>
+<p>Default value of <strong>driving side</strong> parameter</p>
+<p><strong>driving side</strong> parameter is unnamed, and valid values differ for
+directed and undirected graphs.</p>
 <ul class="simple">
-<li><p>No tiene un valor de facto.</p></li>
-<li><p>En grafos dirigidos: Los valores válidos son [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p></li>
-<li><p>En grafos no dirigidos: Los valores válidos son [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p></li>
-<li><p>El uso de un valor inválido lanza un <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>.</p></li>
+<li><p>En grafos dirigidos: Los valores válidos son [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p>
+<ul>
+<li><p>Default value = “r”;</p></li>
+</ul>
+</li>
+<li><p>En grafos no dirigidos: Los valores válidos son [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p>
+<ul>
+<li><p>Default value = “b”;</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <section id="single-vertex-example-using-pgr-withpointsdd">
@@ -2564,13 +2571,13 @@ FROM pgr_trsp(
 </nav>
 <p class="rubric">Ver también</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-restrictions">Migración de restricciones</a></p></li>
 </ul>
 <section id="use-pgr-dijkstravia-when-there-are-no-restrictions">
 <h4><a class="toc-backref" href="#id103" role="doc-backlink">Usar <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> cuando no hay restricciones</a><a class="headerlink" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h4>
-<p>Usar <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a> en su lugar.</p>
+<p>Usar <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia</span></a> en su lugar.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   ARRAY[6, 3, 6]);
@@ -2835,7 +2842,8 @@ FROM pgr_trspVia_withPoints(
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 </dd>
 </dl>
-<p>Y el parámetro «driving side» ha cambiado de opcional con nombre a obligatorio sin nombre <strong>driving side</strong> y su validez difiere para grafos dirigidos y no dirigidos.</p>
+<p>And <code class="docutils literal notranslate"><span class="pre">driving</span> <span class="pre">side</span></code> parameter changed from named optional to unnamed
+<strong>driving side</strong> and its validity differ for directed and undirected graphs.</p>
 <p>Firmas que serán migradas:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>Uno a Uno</cite>)</p></li>
@@ -2858,15 +2866,25 @@ FROM pgr_trspVia_withPoints(
 <ul class="simple">
 <li><p>Tener en cuenta la existencia de las columnas adicionales de resultados.</p></li>
 <li><p>New output columns are <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>El parámetro <strong>lado de manjeo</strong> es obligatorio sin nombre, y los valores válidos difieren para grafos dirigidos y no dirigidos.</p>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Default value of <strong>driving side</strong> parameter</p>
+<p><strong>driving side</strong> parameter is unnamed, and valid values differ for
+directed and undirected graphs.</p>
+<ul class="simple">
+<li><p>En grafos dirigidos: Los valores válidos son [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p>
 <ul>
-<li><p>No tiene un valor de facto.</p></li>
-<li><p>En grafos dirigidos: Los valores válidos son [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p></li>
-<li><p>En grafos no dirigidos: Los valores válidos son [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p></li>
-<li><p>El uso de un valor inválido lanza un <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>.</p></li>
+<li><p>Default value = “r”;</p></li>
+</ul>
+</li>
+<li><p>En grafos no dirigidos: Los valores válidos son [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p>
+<ul>
+<li><p>Default value = “b”;</p></li>
 </ul>
 </li>
 </ul>
+</div>
 <section id="pgr-withpointsksp-one-to-one">
 <h4><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>Uno a Uno</cite>)<a class="headerlink" href="#pgr-withpointsksp-one-to-one" title="Link to this heading">¶</a></h4>
 <p>Usando <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP.html#signatures">este</a> ejemplo.</p>
@@ -3290,7 +3308,7 @@ WHERE edge != -1;
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en ago 25, 2025.<br/>
+      Actualizado por última vez en ago 27, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

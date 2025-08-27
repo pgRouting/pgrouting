@@ -1873,14 +1873,20 @@ parameter.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Validity of <strong>driving side</strong> parameter</p>
-<p><strong>driving side</strong> parameter is unnamed compulsory, and valid values differ for
+<p>Default value of <strong>driving side</strong> parameter</p>
+<p><strong>driving side</strong> parameter is unnamed, and valid values differ for
 directed and undirected graphs.</p>
 <ul class="simple">
-<li><p>Does not have a default value.</p></li>
-<li><p>In directed graph: valid values are [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p></li>
-<li><p>In undirected graph: valid values are [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p></li>
-<li><p>Using an invalid value throws an <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>.</p></li>
+<li><p>In directed graph: valid values are [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p>
+<ul>
+<li><p>Default value = ‘r’;</p></li>
+</ul>
+</li>
+<li><p>In undirected graph: valid values are [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p>
+<ul>
+<li><p>Default value = ‘b’;</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <section id="single-vertex-example-using-pgr-withpointsdd">
@@ -2590,13 +2596,13 @@ FROM pgr_trsp(
 </nav>
 <p class="rubric">See Also</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-restrictions">Migration of restrictions</a></p></li>
 </ul>
 <section id="use-pgr-dijkstravia-when-there-are-no-restrictions">
 <h4><a class="toc-backref" href="#id104" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> when there are no restrictions</a><a class="headerlink" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h4>
-<p>Use <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> instead.</p>
+<p>Use <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia</span></a> instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   ARRAY[6, 3, 6]);
@@ -2862,7 +2868,7 @@ FROM pgr_trspVia_withPoints(
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 </dd>
 </dl>
-<p>And <code class="docutils literal notranslate"><span class="pre">driving</span> <span class="pre">side</span></code> parameter changed from named optional to unnamed compulsory
+<p>And <code class="docutils literal notranslate"><span class="pre">driving</span> <span class="pre">side</span></code> parameter changed from named optional to unnamed
 <strong>driving side</strong> and its validity differ for directed and undirected graphs.</p>
 <p>Signatures to be migrated:</p>
 <ul class="simple">
@@ -2886,16 +2892,25 @@ FROM pgr_trspVia_withPoints(
 <ul class="simple">
 <li><p>Be aware of the existence of the additional result Columns.</p></li>
 <li><p>New output columns are <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p><strong>driving side</strong> parameter is unnamed compulsory, and valid values differ for
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Default value of <strong>driving side</strong> parameter</p>
+<p><strong>driving side</strong> parameter is unnamed, and valid values differ for
 directed and undirected graphs.</p>
+<ul class="simple">
+<li><p>In directed graph: valid values are [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p>
 <ul>
-<li><p>Does not have a default value.</p></li>
-<li><p>In directed graph: valid values are [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p></li>
-<li><p>In undirected graph: valid values are [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p></li>
-<li><p>Using an invalid value throws an <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>.</p></li>
+<li><p>Default value = ‘r’;</p></li>
+</ul>
+</li>
+<li><p>In undirected graph: valid values are [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p>
+<ul>
+<li><p>Default value = ‘b’;</p></li>
 </ul>
 </li>
 </ul>
+</div>
 <section id="pgr-withpointsksp-one-to-one">
 <h4><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to One</cite>)<a class="headerlink" href="#pgr-withpointsksp-one-to-one" title="Link to this heading">¶</a></h4>
 <p>Using
@@ -3330,7 +3345,7 @@ array <code class="docutils literal notranslate"><span class="pre">_pgr_array_re
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Aug 25, 2025.<br/>
+      Last updated on Aug 27, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

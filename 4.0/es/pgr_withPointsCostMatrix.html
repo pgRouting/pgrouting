@@ -252,7 +252,7 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>driving side</strong> [<strong>options</strong>])</div>
+<div class="line">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, [<strong>driving side</strong>] [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed]</span></code></div>
 </div>
 <div class="line-block">
@@ -272,26 +272,26 @@
 <ul class="simple">
 <li><p>Devolver una matriz de costes <strong>simétrica</strong></p></li>
 <li><p>Uso del valor predeterminado <code class="docutils literal notranslate"><span class="pre">side</span></code> en la consulta <strong>SQL de puntos</strong></p></li>
-<li><p>Usando el valor predeterminado <code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></li>
+<li><p>Using the default <code class="docutils literal notranslate"><span class="pre">driving</span> <span class="pre">side</span></code> value</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCostMatrix</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="n">array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">],</span> <span class="s1">&#39;R&#39;</span><span class="p">);</span>
+  <span class="n">array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">],</span> <span class="n">directed</span> <span class="o">:=</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.3</span>
-        <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">4.3</span>
+        <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">1.7</span>
         <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>      <span class="mf">1.3</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
-        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">5.6</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">1.6</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>      <span class="mf">2.6</span>
         <span class="mi">10</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.7</span>
         <span class="mi">10</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.6</span>
         <span class="mi">10</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">1</span>
         <span class="mi">11</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
         <span class="mi">11</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
-        <span class="mi">11</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>        <span class="mi">3</span>
+        <span class="mi">11</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>        <span class="mi">1</span>
 <span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -318,6 +318,39 @@
 <tr class="row-even"><td><p><strong>salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Arreglo de identificadores de vértices iniciales.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 19.4%" />
+<col style="width: 19.4%" />
+<col style="width: 61.1%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>[<strong>driving side</strong>]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] indicando si el lado de manejo es:</p>
+<ul class="simple">
+<li><p>For directed graph:</p>
+<ul>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>] for right driving side</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>] for left driving side</p></li>
+</ul>
+</li>
+<li><p>For undirected graph:</p>
+<ul>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] for both driving sides</p></li>
+</ul>
+</li>
+<li><p>Default values when parameter is missing:</p>
+<ul>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>] for directed graph</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>] for undirected graph</p></li>
+</ul>
+</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
@@ -522,19 +555,19 @@ point of the edge.</p></td>
         (SELECT ST_POINT(2.9, 1.8)),
         0.5, cap =&gt; 2)
   $p$,
-  ARRAY[5, 10, -1, -2], &#39;B&#39;, false);
+  ARRAY[5, 10, -1, -2]);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
-        -2 |      -1 |      0.3
-        -2 |       5 |      2.9
-        -2 |      10 |      1.1
-        -1 |      -2 |      0.3
-        -1 |       5 |      2.8
-        -1 |      10 |      0.8
+        -2 |      -1 |      3.9
+        -2 |       5 |      3.1
+        -2 |      10 |      3.1
+        -1 |      -2 |      2.1
+        -1 |       5 |      3.2
+        -1 |      10 |      3.2
          5 |      -2 |      2.9
-         5 |      -1 |      2.8
-         5 |      10 |        2
-        10 |      -2 |      1.1
+         5 |      -1 |      6.8
+         5 |      10 |        6
+        10 |      -2 |      2.9
         10 |      -1 |      0.8
         10 |       5 |        2
 (12 rows)
@@ -554,7 +587,7 @@ point of the edge.</p></td>
   SELECT * FROM pgr_withPointsCostMatrix(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;,
     &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
-    array[-1, 10, 11, -6], &#39;b&#39;, directed =&gt; false);
+    array[-1, 10, 11, -6], directed =&gt; false);
   $$
 );
  seq | node | cost | agg_cost
@@ -599,7 +632,7 @@ point of the edge.</p></td>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en ago 25, 2025.<br/>
+      Actualizado por última vez en ago 27, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
