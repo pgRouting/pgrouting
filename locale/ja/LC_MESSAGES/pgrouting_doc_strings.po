@@ -19487,23 +19487,3 @@ msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
 #, fuzzy
-#~ msgid "New **experimental** function"
-#~ msgstr "新しい **公式** 機能"
-
-#~ msgid "They will likely officially be part of the next mayor release:"
-#~ msgstr "これらの機能は次期リリースで公式に含まれます:"
-
-#~ msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-#~ msgstr "関数は、ANY-INTEGERとANY-NUMERICALを使用します"
-
-#~ msgid "Name might not change. (But still can)"
-#~ msgstr ""
-#~ "名前は変更されない場合があります。(しかし、まだ変更することもできます)"
-
-#~ msgid "Signature might not change. (But still can)"
-#~ msgstr ""
-#~ "署名は変更されない場合があります。(しかし、まだ変更することもできます)"
-
-#, fuzzy
-#~ msgid "#2913 _pgr_dagshortestpath"
-#~ msgstr "pgr_TSP"
