@@ -34,7 +34,8 @@ Documentation build
 
 * The doxygen documentation is build by default
 * The HTML documentation is build by default
-* The translated languages (en, es, zh_Hans) HTML documentation is build by default
+* The translated languages (en, es, sv, zh_Hans) HTML documentation is build by
+  default
 * `WITH-DOC` is not used anymore
 
 User's Documentation is not build when
