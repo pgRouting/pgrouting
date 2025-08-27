@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-23 02:38+0000\n"
+"POT-Creation-Date: 2025-08-27 16:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3076,7 +3076,10 @@ msgstr ""
 msgid ":doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed acyclic graph."
 msgstr ""
 
-msgid ":doc:`pgr_kingOrdering` - Returns the King ordering of an undirected graphs acyclic graph."
+msgid ":doc:`pgr_sloanOrdering` - Returns the sloan ordering of an undirected graph."
+msgstr ""
+
+msgid ":doc:`pgr_kingOrdering` - Returns the King ordering of an undirected graph."
 msgstr ""
 
 msgid ":doc:`metrics-family`"
@@ -3706,6 +3709,9 @@ msgstr ""
 msgid "pgr_pushRelabel"
 msgstr ""
 
+msgid "pgr_sloanOrdering"
+msgstr ""
+
 msgid "pgr_sequentialVertexColoring"
 msgstr ""
 
@@ -3742,7 +3748,7 @@ msgstr ""
 msgid "pgr_trspVia_withPoints"
 msgstr ""
 
-msgid "**Driving side** parameter is positional unnamed and compulsory."
+msgid "**Driving side** parameter is positional unnamed."
 msgstr ""
 
 msgid "Valid values depend on kind of graph"
@@ -3755,6 +3761,9 @@ msgid "pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
 msgstr ""
 
 msgid "pgr_trsp_withPoints"
+msgstr ""
+
+msgid "**Driving side** parameter is positional unnamed and compulsory."
 msgstr ""
 
 msgid "pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
@@ -3935,6 +3944,9 @@ msgid "Ordering"
 msgstr ""
 
 msgid "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_kingOrdering"
+msgstr ""
+
+msgid "`#2955 <https://github.com/pgRouting/pgrouting/issues/2955>`__: pgr_sloanOrdering"
 msgstr ""
 
 msgid "SQL signatures and output standardization"
@@ -5017,22 +5029,22 @@ msgstr ""
 msgid "Enumerate |result-m-1-no-seq| columns"
 msgstr ""
 
-msgid "Validity of **driving side** parameter"
+msgid "Default value of **driving side** parameter"
 msgstr ""
 
-msgid "**driving side** parameter is unnamed compulsory, and valid values differ for directed and undirected graphs."
-msgstr ""
-
-msgid "Does not have a default value."
+msgid "**driving side** parameter is unnamed, and valid values differ for directed and undirected graphs."
 msgstr ""
 
 msgid "In directed graph: valid values are [``r``, ``R``, ``l``, ``L``]"
 msgstr ""
 
+msgid "Default value = 'r';"
+msgstr ""
+
 msgid "In undirected graph: valid values are [``b``, ``B``]"
 msgstr ""
 
-msgid "Using an invalid value throws an ``ERROR``."
+msgid "Default value = 'b';"
 msgstr ""
 
 msgid "Single vertex example using ``pgr_withPointsDD``"
@@ -5464,7 +5476,7 @@ msgstr ""
 msgid "|generic-result|"
 msgstr ""
 
-msgid "And ``driving side`` parameter changed from named optional to unnamed compulsory **driving side** and its validity differ for directed and undirected graphs."
+msgid "And ``driving side`` parameter changed from named optional to unnamed **driving side** and its validity differ for directed and undirected graphs."
 msgstr ""
 
 msgid "``pgr_withPointsKSP`` (`One to One`)"
@@ -7078,7 +7090,7 @@ msgstr ""
 msgid "Individuals in this release v4.0.0 (in alphabetical order)"
 msgstr ""
 
-msgid "Fan Wu Regina Obe, Saloni kumari, Vicky Vergara"
+msgid "Bipasha Gayary, Fan Wu, Regina Obe, Saloni kumari, Vicky Vergara"
 msgstr ""
 
 msgid "And all the people that give us a little of their time making comments, finding issues, making pull requests etc. in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
@@ -7117,7 +7129,7 @@ msgstr ""
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
-msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -10282,7 +10294,7 @@ msgstr ""
 msgid "Both are equally good as they have the same cost. (lines: `12` and `13`)"
 msgstr ""
 
-msgid "``pgr_dijkstraVia`` - Proposed"
+msgid "``pgr_dijkstraVia``"
 msgstr ""
 
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
@@ -12346,6 +12358,66 @@ msgstr ""
 msgid "`Boost: Sequential Vertex Coloring <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
 msgstr ""
 
+msgid "``pgr_sloanOrdering`` - Experimental"
+msgstr ""
+
+msgid "``pgr_sloanOrdering`` — Returns the sloan ordering of an undirected graph"
+msgstr ""
+
+msgid "The Sloan ordering algorithm reorders the vertices of a graph to reduce bandwidth, profile, and wavefront properties, which is particularly useful for sparse matrix computations and finite element analysis."
+msgstr ""
+
+msgid "Finds a pseudoperipheral vertex pair to determine good starting points"
+msgstr ""
+
+msgid "Uses a priority-based algorithm that balances vertex degree and distance from the start vertex."
+msgstr ""
+
+msgid "Aims to mininimize bandwidth (maximum difference between connected vertex indices."
+msgstr ""
+
+msgid "Typically produces better orderings than simple breadth-first approaches."
+msgstr ""
+
+msgid "Run time is 0.115846 seconds."
+msgstr ""
+
+msgid "|Boost| Boost Graph inside"
+msgstr ""
+
+msgid "..rubric::Summary"
+msgstr ""
+
+msgid "pgr_sloanOrdering(`Edges SQL`_)"
+msgstr ""
+
+msgid ":Example : Sloan ordering without specifying start vertex"
+msgstr ""
+
+msgid "New sloan ordering order."
+msgstr ""
+
+msgid "Sloan ordering of Original graph from Boost example (vertices 0-9)."
+msgstr ""
+
+msgid "..graphviz::"
+msgstr ""
+
+msgid "..literalinclude::sloanOrdering.queries"
+msgstr ""
+
+msgid "start-after"
+msgstr ""
+
+msgid "--q3"
+msgstr ""
+
+msgid "--q4"
+msgstr ""
+
+msgid "`Boost: Sloan Ordering <https://www.boost.org/doc/libs/latest/libs/graph/doc/sloan_ordering.htm>`__"
+msgstr ""
+
 msgid "``pgr_stoerWagner`` - Experimental"
 msgstr ""
 
@@ -12736,7 +12808,7 @@ msgstr ""
 msgid "Do not use negative values on identifiers of the inner queries."
 msgstr ""
 
-msgid "pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **via vertices**, **driving side** [**options**])"
+msgid "pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **via vertices**, [**driving side**,] [**options**])"
 msgstr ""
 
 msgid "**options:** ``[directed, strict, U_turn_on_edge, details]``"
@@ -12751,19 +12823,34 @@ msgstr ""
 msgid "When negative it is considered a point identifier"
 msgstr ""
 
-msgid "**driving side**"
+msgid "[**driving side**]"
 msgstr ""
 
 msgid "Value in [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] indicating if the driving side is:"
 msgstr ""
 
-msgid "[``r``, ``R``] for right driving side (for directed graph only)"
+msgid "For directed graph:"
 msgstr ""
 
-msgid "[``l``, ``L``] for left driving side (for directed graph only)"
+msgid "[``r``, ``R``] for right driving side"
 msgstr ""
 
-msgid "[``b``, ``B``] for both (only for undirected graph)"
+msgid "[``l``, ``L``] for left driving side"
+msgstr ""
+
+msgid "For undirected graph:"
+msgstr ""
+
+msgid "[``b``, ``B``] for both driving sides"
+msgstr ""
+
+msgid "Default values when parameter is missing:"
+msgstr ""
+
+msgid "[``r``, ``R``] for directed graph"
+msgstr ""
+
+msgid "[``l``, ``L``] for undirected graph"
 msgstr ""
 
 msgid "With points optional parameters"
@@ -12865,31 +12952,25 @@ msgstr ""
 msgid "Running time: :math:`O(|start\\_vids|\\times(V \\log V + E))`"
 msgstr ""
 
-msgid "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vid**, [**options**])"
+msgid "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vid**, [**driving side**,] [**options**])"
 msgstr ""
 
-msgid "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])"
+msgid "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, [**driving side**,] [**options**])"
 msgstr ""
 
-msgid "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])"
+msgid "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vid**, [**driving side**,] [**options**])"
 msgstr ""
 
-msgid "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])"
+msgid "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vids**, [**driving side**,] [**options**])"
 msgstr ""
 
-msgid "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, `Points SQL`_, [**options**])"
-msgstr ""
-
-msgid "**options:** ``[directed, driving_side, details]``"
-msgstr ""
-
-msgid "From point :math:`1` to vertex :math:`10` with right driving side in directed graph. (with details)"
-msgstr ""
-
-msgid "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])"
+msgid "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, `Combinations SQL`_, [**driving side**,] [**options**])"
 msgstr ""
 
 msgid "**options:** ``[directed, details]``"
+msgstr ""
+
+msgid "From point :math:`1` to vertex :math:`10` with right driving side in directed graph. (with details)"
 msgstr ""
 
 msgid "From point :math:`1` to point :math:`3` and vertex :math:`7` on an undirected graph"
@@ -13018,19 +13099,19 @@ msgstr ""
 msgid "Modify the graph to include points defined by `Points SQL`_. Using Dijkstra algorithm, find the shortest path."
 msgstr ""
 
-msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **driving side** [**options**])"
+msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, [**driving side**] [**options**])"
 msgstr ""
 
-msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])"
+msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, [**driving side**] [**options**])"
 msgstr ""
 
-msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **driving side** [**options**])"
+msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, [**driving side**] [**options**])"
 msgstr ""
 
-msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **driving side** [**options**])"
+msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, [**driving side**] [**options**])"
 msgstr ""
 
-msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **driving side** [**options**])"
+msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**driving side**] [**options**])"
 msgstr ""
 
 msgid "**options:** ``[directed, details])``"
@@ -13081,19 +13162,19 @@ msgstr ""
 msgid "For **undirected** graphs, the results are **symmetric**."
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **driving side** [**options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, [**driving side**] [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, [**driving side**] [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **driving side** [**options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, [**driving side**] [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **driving side** [**options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, [**driving side**] [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **driving side** [**options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**driving side**] [**options**])"
 msgstr ""
 
 msgid "**options:** ``[directed]``"
@@ -13132,7 +13213,7 @@ msgstr ""
 msgid "``pgr_withPointsCostMatrix`` - Calculates a cost matrix using :doc:`pgr_withPoints`."
 msgstr ""
 
-msgid "pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, **driving side** [**options**])"
+msgid "pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, [**driving side**] [**options**])"
 msgstr ""
 
 msgid "Cost matrix for points :math:`\\{1, 6\\}` and vertices :math:`\\{10, 11\\}` on an **undirected** graph"
@@ -13144,7 +13225,7 @@ msgstr ""
 msgid "Using the default ``side`` value on the **points_sql** query"
 msgstr ""
 
-msgid "Using the default ``driving_side`` value"
+msgid "Using the default ``driving side`` value"
 msgstr ""
 
 msgid "Find the matrix cost of the routes from vertex :math:`1` and the two closest locations on the graph of point `(2.9, 1.8)`."
@@ -13168,10 +13249,10 @@ msgstr ""
 msgid "Modify the graph to include points and using Dijkstra algorithm, extracts all the nodes and points that have costs less than or equal to the value ``**distance**`` from the starting point. The edges extracted will conform the corresponding spanning tree."
 msgstr ""
 
-msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options A**])"
+msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, [**driving side**], [**options A**])"
 msgstr ""
 
-msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options B**])"
+msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, [**driving side**], [**options B**])"
 msgstr ""
 
 msgid "**options A:** ``[directed, details]``"
@@ -13180,13 +13261,13 @@ msgstr ""
 msgid "**options B:** ``[directed, details, equicost]``"
 msgstr ""
 
-msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options**])"
+msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, [**driving side**], [**options**])"
 msgstr ""
 
 msgid "Right side driving topology, from point :math:`1` within a distance of :math:`3.3` with details."
 msgstr ""
 
-msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options**])"
+msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, [**driving side**], [**options**])"
 msgstr ""
 
 msgid "**options:** ``[directed, details, equicost]``"
@@ -13196,24 +13277,6 @@ msgid "From point :math:`1` and vertex :math:`16` within a distance of :math:`3.
 msgstr ""
 
 msgid "Negative values represent a point"
-msgstr ""
-
-msgid "``r``, ``R`` for right driving side,"
-msgstr ""
-
-msgid "``l``, ``L`` for left driving side."
-msgstr ""
-
-msgid "``b``, ``B`` for both."
-msgstr ""
-
-msgid "Valid values differ for directed and undirected graphs:"
-msgstr ""
-
-msgid "In directed graphs: [``r``, ``R``, ``l``, ``L``]."
-msgstr ""
-
-msgid "In undirected graphs: [``b``, ``B``]."
 msgstr ""
 
 msgid "Find the driving distance from the two closest locations on the graph of point `(2.9, 1.8)`."
@@ -13252,19 +13315,19 @@ msgstr ""
 msgid "Modifies the graph to include the points defined in the `Points SQL`_ and using Yen algorithm, finds the :math:`K` shortest paths."
 msgstr ""
 
-msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **K**, **driving_side**, [**options**])"
+msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **K**, [**driving side**], [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **K**, **driving_side**, [**options**])"
+msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **K**, [**driving side**], [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **K**, **driving_side**, [**options**])"
+msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **K**, [**driving side**], [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **K**, **driving_side**, [**options**])"
+msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **K**, [**driving side**], [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, **driving_side**, [**options**])"
+msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, [**driving side**], [**options**])"
 msgstr ""
 
 msgid "**options:** ``[directed, heap_paths, details]``"
@@ -13324,7 +13387,7 @@ msgstr ""
 msgid "Given a graph, a set of points on the graphs edges and a list of vertices, this function is equivalent to finding the shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` (where :math:`vertex` can be a vertex or a point on the graph) for all :math:`i < size\\_of(via\\;vertices)`."
 msgstr ""
 
-msgid "pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, **driving side** [**options**])"
+msgid "pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, [**driving side**] [**options**])"
 msgstr ""
 
 msgid "Find the route that visits the vertices :math:`\\{ -6, 15, -1\\}` in that order with right driving side in directed graph.."
