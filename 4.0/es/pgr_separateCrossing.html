@@ -170,7 +170,7 @@ do not cross.</p>
 <p class="rubric">Versión 3.8.0</p>
 <ul class="simple">
 <li><p>Función promovida a oficial.</p></li>
-<li><p>Proposed function.</p></li>
+<li><p>Función propuesta.</p></li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -189,7 +189,7 @@ do not cross.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Get the segments of the crossing geometries</p>
+<dd class="field-odd"><p>Obtener los segmentos de las geometrías que se cruzan</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">sub_id</span><span class="p">,</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
@@ -333,7 +333,7 @@ PostgreSQL <code class="docutils literal notranslate"><span class="pre">NOTICE</
 <p>In this example the original edge table will be used to store the additional
 geometries.</p>
 <p class="rubric">An example use without results</p>
-<p>Routing from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(18\)</span> gives no solution.</p>
+<p>La ruta de <span class="math notranslate nohighlight">\(1\)</span> a <span class="math notranslate nohighlight">\(18\)</span> no da ninguna solución.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -362,7 +362,7 @@ geometries.</p>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
-<p class="rubric">Adding new segments.</p>
+<p class="rubric">Añadiendo nuevos segmentos.</p>
 <p>Calling <a class="reference internal" href="#"><span class="doc">pgr_separateCrossing</span></a> and adding the new segments to the edges
 table.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
@@ -388,7 +388,7 @@ based on the length of the geometry and the directionality is kept using the
 </pre></div>
 </div>
 <p class="rubric">Actualizar la topología</p>
-<p>Insert the new vertices if any.</p>
+<p>Insertar nuevos vértices si existen.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">new_vertex</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="n">ev</span><span class="o">.*</span>
@@ -416,7 +416,7 @@ based on the length of the geometry and the directionality is kept using the
 </pre></div>
 </div>
 <p class="rubric">The example has results</p>
-<p>Routing from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(18\)</span> gives a solution.</p>
+<p>La ruta de <span class="math notranslate nohighlight">\(1\)</span> a <span class="math notranslate nohighlight">\(18\)</span> da una solución.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>

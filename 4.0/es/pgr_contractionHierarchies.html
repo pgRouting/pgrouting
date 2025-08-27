@@ -111,21 +111,21 @@
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#examples">Ejemplos</a><ul>
-<li><a class="reference internal" href="#on-an-undirected-graph">On an undirected graph</a></li>
+<li><a class="reference internal" href="#on-an-undirected-graph">En un grafo no dirigido</a></li>
 <li><a class="reference internal" href="#on-an-undirected-graph-with-forbidden-vertices">On an undirected graph with forbidden vertices</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#contraction-process-steps-details">Contraction process steps details</a><ul>
 <li><a class="reference internal" href="#shortcut-building-process">Shortcut building process</a></li>
 <li><a class="reference internal" href="#initialize-the-queue-with-a-first-vertices-order">Initialize the queue with a first vertices order</a></li>
-<li><a class="reference internal" href="#build-the-final-vertex-order">Build the final vertex order</a></li>
+<li><a class="reference internal" href="#build-the-final-vertex-order">Construir el orden final de los vértices</a></li>
 <li><a class="reference internal" href="#add-shortcuts-to-the-initial-graph">Add shortcuts to the initial graph</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#use-the-contraction">Use the contraction</a><ul>
 <li><a class="reference internal" href="#build-the-contraction">Build the contraction</a></li>
 <li><a class="reference internal" href="#add-shortcuts-and-hierarchy-in-the-existing-tables">Add shortcuts and hierarchy in the existing tables</a></li>
-<li><a class="reference internal" href="#use-a-dijkstra-shortest-path-algorithm-on-it">Use a Dijkstra shortest path algorithm on it</a></li>
+<li><a class="reference internal" href="#use-a-dijkstra-shortest-path-algorithm-on-it">Aplicarle el algoritmo Dijkstra del camino más corto</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -397,12 +397,12 @@ The columns of the rows are:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> cuando la fila es un vértice.</p>
 <ul>
-<li><p>Column <code class="docutils literal notranslate"><span class="pre">id</span></code> has a positive value</p></li>
+<li><p>Columna <code class="docutils literal notranslate"><span class="pre">id</span></code> tiene valor positivo</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">e</span></code> cuando la fila es una arista.</p>
 <ul>
-<li><p>Column <code class="docutils literal notranslate"><span class="pre">id</span></code> has a negative value</p></li>
+<li><p>Columna <code class="docutils literal notranslate"><span class="pre">id</span></code> tiene valor negativo</p></li>
 </ul>
 </li>
 </ul>
@@ -476,7 +476,7 @@ The columns of the rows are:</p>
 <section id="examples">
 <h2>Ejemplos<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
 <section id="on-an-undirected-graph">
-<h3>On an undirected graph<a class="headerlink" href="#on-an-undirected-graph" title="Link to this heading">¶</a></h3>
+<h3>En un grafo no dirigido<a class="headerlink" href="#on-an-undirected-graph" title="Link to this heading">¶</a></h3>
 <p>The following query shows the original data involved in the contraction
 operation on an undirected graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="n">FROM</span> <span class="n">edges</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
@@ -552,7 +552,7 @@ represented in the result.</p>
 in a future version), which speeds up the search.</p>
 </dd>
 </dl>
-<p>We obtain the contracted graph above:</p>
+<p>Se obtiene el grafo contraído anterior:</p>
 <a class="reference internal image-reference" href="_images/sample_graph_with_shortcuts.png"><img alt="_images/sample_graph_with_shortcuts.png" src="_images/sample_graph_with_shortcuts.png" style="width: 241.0px; height: 217.5px;" /></a>
 <p>We can see without surprise that the vertices belonging to the shortcuts have a
 tendency to have a high priority level in the resulting vertices order.</p>
@@ -561,7 +561,7 @@ tendency to have a high priority level in the resulting vertices order.</p>
 <h3>On an undirected graph with forbidden vertices<a class="headerlink" href="#on-an-undirected-graph-with-forbidden-vertices" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>building contraction with a set of forbidden vertices</p>
+<dd class="field-odd"><p>construir la contracción en un conjunto de nodos prohibidos</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractionHierarchies</span><span class="p">(</span>
@@ -697,7 +697,7 @@ is less important than <code class="docutils literal notranslate"><span class="p
 <p>A hierarchy will now be constructed by contracting again the vertices in this order.</p>
 </section>
 <section id="build-the-final-vertex-order">
-<h3>Build the final vertex order<a class="headerlink" href="#build-the-final-vertex-order" title="Link to this heading">¶</a></h3>
+<h3>Construir el orden final de los vértices<a class="headerlink" href="#build-the-final-vertex-order" title="Link to this heading">¶</a></h3>
 <p>Once the first order built, the algorithm uses it to browse the graph once again.
 For each vertex taken in the queue, the algorithm simulates contraction and calculates
 its edge difference. If the computed value is greater than the one of the next vertex to be
@@ -755,7 +755,7 @@ which takes into account the order of the nodes in the hierarchy.</p>
 </div>
 </section>
 <section id="use-a-dijkstra-shortest-path-algorithm-on-it">
-<h3>Use a Dijkstra shortest path algorithm on it<a class="headerlink" href="#use-a-dijkstra-shortest-path-algorithm-on-it" title="Link to this heading">¶</a></h3>
+<h3>Aplicarle el algoritmo Dijkstra del camino más corto<a class="headerlink" href="#use-a-dijkstra-shortest-path-algorithm-on-it" title="Link to this heading">¶</a></h3>
 <p>Then you can use any Dijkstra-like algorithm, waiting for the adapted one which
 will take into account the built vertices hierarchy. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>

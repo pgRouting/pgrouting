@@ -186,12 +186,12 @@
 <p class="rubric">Versión 4.0.0</p>
 <ul class="simple">
 <li><p>Función promovida a oficial.</p></li>
-<li><p><strong>Driving side</strong> parameter is positional unnamed and compulsory.</p>
+<li><p>El parámetro <strong>driving_side</strong> era opcional ahora es obligatorio sin nombre.</p>
 <ul>
-<li><p>Valid values depend on kind of graph</p></li>
+<li><p>Valores válidos dependen del tipo de grafo</p></li>
 </ul>
 </li>
-<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Las columnas de resultados estandarizadas a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 </ul>
 <ul class="simple">
 <li><p>Breaking change, signatures no longer available:</p>
@@ -218,8 +218,7 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>Modify the graph to include points defined by <a class="reference internal" href="#points-sql">Points SQL</a>.
-Using Dijkstra algorithm, find the shortest path.</p>
+<p>Modificar el grafo para incluir los puntos definidos por <a class="reference internal" href="#points-sql">Points SQL</a>. Utilizar el algoritmo de Dijkstra, encontrar el camino más corto.</p>
 <p>Las principales características son:</p>
 <ul class="simple">
 <li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
@@ -288,8 +287,7 @@ Using Dijkstra algorithm, find the shortest path.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span> with right driving side in directed graph.
-(without details)</p>
+<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> al vértice <span class="math notranslate nohighlight">\(10\)</span> manjando del lado derecho en un grafo dirigido, (sin detalles)</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
@@ -364,8 +362,7 @@ Using Dijkstra algorithm, find the shortest path.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(6\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> with right driving side in directed graph.
-(without details)</p>
+<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y el vértice <span class="math notranslate nohighlight">\(6\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span> y el vértice <span class="math notranslate nohighlight">\(1\)</span> en un grafo no dirigido. (sin detalles)</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
@@ -454,9 +451,7 @@ vertex <span class="math notranslate nohighlight">\(1\)</span> with left side dr
 <dd class="field-odd"><p>Dos combinaciones</p>
 </dd>
 </dl>
-<p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span>, and from vertex <span class="math notranslate nohighlight">\(6\)</span> to point
-<span class="math notranslate nohighlight">\(3\)</span> with right side driving.
-(with details)</p>
+<p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> hasta el vértice <span class="math notranslate nohighlight">\(10\)</span>, y desde el vértice <span class="math notranslate nohighlight">\(6\)</span> hasta el punto <span class="math notranslate nohighlight">\(3\)</span> con najando del lado derecho (con detalles)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side FROM pointsOfInterest&#39;</span><span class="p">,</span>
@@ -712,8 +707,7 @@ vertex <span class="math notranslate nohighlight">\(1\)</span> with left side dr
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>Value in &lt;0,1&gt; that indicates the relative position from the first end
-point of the edge.</p></td>
+<td><p>El valor en &lt;0,1&gt; que indica la posición relativa desde el primer punto final de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>

@@ -178,8 +178,8 @@
 <p class="rubric">Disponibilidad:</p>
 <p class="rubric">Versión 4.0.0</p>
 <ul class="simple">
-<li><p>Results change depending on input order</p></li>
-<li><p>Only for undirected graphs</p></li>
+<li><p>Los resultados cambian dependiendo el orden de entrada</p></li>
+<li><p>Solo para grafos no dirigidos</p></li>
 </ul>
 <ul class="simple">
 <li><p>Breaking change, signatures no longer available:</p>
@@ -225,8 +225,7 @@ precision,double precision,double precision,boolean)</p></li>
 <ul class="simple">
 <li><p>Este problema es un problema de optimización NP-duro.</p></li>
 <li><p>Se utiliza el algoritmo métrico</p></li>
-<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour
-in the worst case</em>:</p></li>
+<li><p>La implementación genera soluciones que <em>son el doble de largas que el recorrido óptimo en el peor de los casos</em>:</p></li>
 <li><p>Graph characteristics for best performance:</p>
 <ul>
 <li><p>El grafo es no dirigido</p></li>
@@ -242,7 +241,7 @@ in the worst case</em>:</p></li>
 </ul>
 <ul class="simple">
 <li><p>Results change depending on input order of the <a class="reference internal" href="#matrix-sql">Matrix SQL</a></p></li>
-<li><p>Negative costs are ignored.</p></li>
+<li><p>Costos negativos son ignorados.</p></li>
 <li><p>Se puede utilizar con funciones <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Categoría</span></a> preferiblemente con <cite>directed =&gt; false</cite>.</p>
 <ul>
 <li><p>Con <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
@@ -296,7 +295,7 @@ twice as long as the optimal tour</p></li>
 connected:</p>
 <ul>
 <li><p>Missing values will be calculated with dijkstra algorithm.</p></li>
-<li><p>When the graph has more than one component:</p>
+<li><p>Cuando el grafo tiene más de un componente:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> are defined and are on the same component:
 the TSP tour will happen on that component.</p></li>

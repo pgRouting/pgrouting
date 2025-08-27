@@ -386,7 +386,7 @@
 
 </pre></div>
 </div>
-<p>There are three basic ways to connect components:</p>
+<p>Existen tres formas básicas de conectar los componentes:</p>
 <ul class="simple">
 <li><p>Del vértice al punto inicial de la arista</p></li>
 <li><p>Desde el vértice hasta el punto final de la arista</p></li>
@@ -398,7 +398,7 @@
 </ul>
 <p>In this example <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> and <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> will
 be used.</p>
-<p class="rubric">Get the connectivity</p>
+<p class="rubric">Obtener la conectividad</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
 <span class="p">);</span>
@@ -434,7 +434,7 @@ table will be rebuilt completely.</p>
 <span class="n">DROP</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
-<p class="rubric">Insert new edges</p>
+<p class="rubric">Insertar nuevas aristas</p>
 <p>Using <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> and <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> insert the
 results into the edges table.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
@@ -445,7 +445,7 @@ results into the edges table.</p>
 </pre></div>
 </div>
 <p class="rubric">Crear la tabla de vértices</p>
-<p>Using <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> create the table.</p>
+<p>Usar <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> para crear la tabla.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">AS</span>
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">18</span>
