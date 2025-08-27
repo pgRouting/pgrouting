@@ -52,7 +52,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          language: [en,es,zh_Hans]
+          language: [en,es,zh_Hans,sv]
 
     steps:
       - uses: actions/checkout@v5
@@ -62,7 +62,7 @@ jobs:
       - name: check modified files
         id: check_files
         run: |
-          # allways processing english, no matter what the change was
+          # always processing english, no matter what the change was
           if [[ "${{ matrix.language }}" == "en" ]]; then echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
 
           # when this file changes  all languages are tested
@@ -116,6 +116,7 @@ jobs:
           mkdir build
           cd build
           cmake -DBUILD_LINKCHECK=ON \
+                -DSPHINX_FLAGS='-W -v -j auto --keep-going' \
                 -DPOSTGRESQL_VERSION=${PGVER} ..
 
       - name: Check Documentation
