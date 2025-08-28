@@ -8393,7 +8393,7 @@ msgid "Fixing a gap"
 msgstr ""
 
 msgid "Routing from :math:`1` to :math:`2` gives no solution."
-msgstr "La ruta de :math:`1` a :math:`2`no da ninguna solución."
+msgstr "La ruta de :math:`1` a :math:`2` no da ninguna solución."
 
 msgid "Analyze the network for gaps."
 msgstr "Analizar la red por espacios."
