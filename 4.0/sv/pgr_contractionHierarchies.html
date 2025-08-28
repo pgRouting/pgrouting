@@ -1,0 +1,756 @@
+
+
+<!DOCTYPE html>
+
+<html lang="sv" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_contractionHierarchies - Experimentell &#8212; pgRouting Manual (4.0-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=32e15c7b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
+    <script src="_static/translations.js?v=92a62177"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Sök" href="search.html" />
+    <link rel="next" title="Dijkstra - Familj av funktioner" href="dijkstra-family.html" />
+    <link rel="prev" title="pgr_contractionLinear - Föreslagen" href="pgr_contractionLinear.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduktion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Exempeldata</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting-koncept</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Funktionsfamiljer</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Föreslagna funktioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Anteckningar för release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migrationsguide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> - Experimentell</a><ul>
+<li><a class="reference internal" href="#description">Beskrivning</a></li>
+<li><a class="reference internal" href="#signatures">Underskrifter</a></li>
+<li><a class="reference internal" href="#parameters">Parametrar</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Valfria parametrar</a></li>
+<li><a class="reference internal" href="#contraction-hierarchies-optional-parameters">Sammandragningshierarkier valfria parametrar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
+<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
+<li><a class="reference internal" href="#examples">Exempel</a><ul>
+<li><a class="reference internal" href="#on-an-undirected-graph">På en odelad graf</a></li>
+<li><a class="reference internal" href="#on-an-undirected-graph-with-forbidden-vertices">På en odelad graf med förbjudna toppar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contraction-process-steps-details">Detaljer för sammandragningsprocessens steg</a><ul>
+<li><a class="reference internal" href="#shortcut-building-process">Genväg till byggprocessen</a></li>
+<li><a class="reference internal" href="#initialize-the-queue-with-a-first-vertices-order">Initiera kön med en ordning för första toppar</a></li>
+<li><a class="reference internal" href="#build-the-final-vertex-order">Bygg den slutliga toppunktsordningen</a></li>
+<li><a class="reference internal" href="#add-shortcuts-to-the-initial-graph">Lägga till genvägar till den initiala grafen</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#use-the-contraction">Använd sammandragning</a><ul>
+<li><a class="reference internal" href="#build-the-contraction">Bygg sammandragningen</a></li>
+<li><a class="reference internal" href="#add-shortcuts-and-hierarchy-in-the-existing-tables">Lägg till genvägar och hierarki i befintliga tabeller</a></li>
+<li><a class="reference internal" href="#use-a-dijkstra-shortest-path-algorithm-on-it">Använd en Dijkstra-algoritm för kortaste vägen på den</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Se även</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_contractionLinear.html" title="Previous Chapter: pgr_contractionLinear - Föreslagen"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contracti...</span>
+    </a>
+  </li>
+  <li>
+    <a href="dijkstra-family.html" title="Next Chapter: Dijkstra - Familj av funktioner"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Dijkstra - Fa... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_contractionHierarchies','sv'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-contractionhierarchies-experimental">
+<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> - Experimentell<a class="headerlink" href="#pgr-contractionhierarchies-experimental" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> - Utför grafkontraktion enligt metoden contraction hierarchies och returnerar de kontraherade topparna och de skapade genvägskanterna.</p>
+<p class="rubric">Tillgänglighet</p>
+<p class="rubric">Version 3.8.0</p>
+<ul class="simple">
+<li><p>New experimental function</p></li>
+</ul>
+<section id="description">
+<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Contraction Hierarchies-metoden bygger, från en initial ordning av topparna, en hierarkisk ordning som prioriterar vissa toppar under bearbetningen av kortaste vägar-algoritmernas etikettfixering. Dessutom lägger algoritmen för sammandragningshierarkier till genvägskanter i grafen, vilket hjälper algoritmen för kortaste vägar att följa den skapade hierarkiska grafstrukturen.</p>
+<p>Tanken med hierarkin är att ge hög prioritet åt toppar som tillhör det långväga nätet (t.ex. motorvägar i ett vägnät) och låg prioritet åt noder som tillhör det kortväga nätet (t.ex. artärer eller sekundära vägar i ett vägnät).</p>
+<p>Algoritmen för sammandragningshierarkier förutsätter att det redan finns en värdefull nodordning som används för att initiera sammandragningsprocessen. Eftersom det i de flesta fall inte finns någon värdefull initial nodordning använder vi den ordning som ges av vertices ID. Sedan görs sammandragningsprocessen på grundval av denna första ordning för att ge den slutliga hierarkin.</p>
+<p>Grundidén är att hålla topparna i en prioritetskö sorterade efter någon uppskattning av hur attraktiv deras sammandragning är. I det implementerade fallet används ett mått som kallas <em>edge difference</em>, vilket motsvarar skillnaden mellan antalet genvägar som produceras av en vertexkontraktion och antalet infallande kanter i grafen före kontraktionen (<code class="docutils literal notranslate"><span class="pre">#shortcuts</span> <span class="pre">-</span> <span class="pre">#incident</span> <span class="pre">edges</span></code>).</p>
+<p>Slutligen är målet att minska den utforskade delen av grafen när man använder en dubbelriktad Dijkstra-liknande algoritm. Topparnas ordning används för att mata den orienterade sökningen. Sökningen görs utan att förlora optimalitet.</p>
+<p>Det är ett svårt problem att hitta en optimal ordning på topparna för sammandragning. Ändå fungerar mycket enkla lokala heuristiker ganska bra, enligt Geisberger et al [2]. Principen här är att på förhand uppskatta värdet på <em>kantskillnaden</em> och att dra ihop noden högst upp i kön endast om det nya värdet på metriken håller den kvar högst upp i kön. I annat fall återinsätts den i kön på sin rätta plats som motsvarar det nya metriska värdet.</p>
+<p>Processen görs på grafer som bara har kanter med positiva kostnader.</p>
+<p>Det är nödvändigt att komma ihåg att det inte finns några borttagna toppar med denna funktion. I slutet behåller grafen alla toppar den hade, men har några extra kanter som motsvarar genvägar. De toppar som har dragits ihop för att bygga upp genvägskanterna behålls och ordnas hierarkiskt.</p>
+<p>När det gäller de andra kontraktionsmetoderna returneras inte hela den kontraherade grafen, utan endast förändringarna. De är här av två typer:</p>
+<ul class="simple">
+<li><p>lagt till genvägskanter, med negativa identifierare;</p></li>
+<li><p>kontrakterade noder med en order.</p></li>
+</ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost-graf inuti</p>
+</section>
+<section id="signatures">
+<h2>Underskrifter<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<p class="rubric">Sammanfattning</p>
+<p>Funktionen <code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> har följande signatur:</p>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_contractionHierarchies(<a class="reference internal" href="#edges-sql">Kanter SQL</a>, [<strong>options</strong>])</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">forbidden]</span></code></div>
+<div class="line">Returnerar uppsättning av <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">metric,</span> <span class="pre">vertex_order)</span></code></div>
+</div>
+</div>
+</section>
+<section id="parameters">
+<h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Kanter SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Kanter SQL</a> enligt beskrivningen nedan.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Valfria parametrar<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Standard</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">riktad</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>När <code class="docutils literal notranslate"><span class="pre">true</span></code> anses grafen vara <cite>Directed`</cite></p></li>
+<li><p>När den är <code class="docutils literal notranslate"><span class="pre">falsk</span></code> betraktas grafen som <cite>Ondirected`</cite>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="contraction-hierarchies-optional-parameters">
+<h3>Sammandragningshierarkier valfria parametrar<a class="headerlink" href="#contraction-hierarchies-optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 21.6%" />
+<col style="width: 25.0%" />
+<col style="width: 8.0%" />
+<col style="width: 45.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Standard</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">förbjudet</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-TAL</strong> <code class="docutils literal notranslate"><span class="pre">]`</span></code></p></td>
+<td><p><strong>Tomt</strong></p></td>
+<td><p>Identifierare av hörn som är förbjudna för sammandragning.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">riktad</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p>True om grafen är riktad, False annars.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Standard</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifierare av kanten.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Källa</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifierare för den första slutpunktsvertexen på kanten.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mål</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td></td>
+<td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">omvända_kostnader</span></code></p></td>
+<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p>-1</p></td>
+<td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">mål</span></code>, <code class="docutils literal notranslate"><span class="pre">källa</span></code>)</p>
+<ul class="simple">
+<li><p>När negativ: kanten (<code class="docutils literal notranslate"><span class="pre">mål</span></code>, <code class="docutils literal notranslate"><span class="pre">källa</span></code>) existerar inte, därför är den inte en del av grafen.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Var:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-TAL<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="result-columns">
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>Returnerar uppsättning av <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">metric,</span> <span class="pre">vertex_order)</span></code></p>
+<p>Funktionen returnerar många rader (en per toppunkt och en per skapad genvägskant). Kolumnerna i raderna är:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">typ</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p>Typ av <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> när raden är en vertex.</p>
+<ul>
+<li><p>Kolumnen <code class="docutils literal notranslate"><span class="pre">id</span></code> har ett positivt värde</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">e</span></code> när raden är en kant.</p>
+<ul>
+<li><p>Kolumnen <code class="docutils literal notranslate"><span class="pre">id</span></code> har ett negativt värde</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Alla siffror i denna kolumn är <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code></p>
+<ul class="simple">
+<li><p>När <code class="docutils literal notranslate"><span class="pre">typ</span></code> = <strong>’v’</strong>.</p>
+<ul>
+<li><p>Identifierare för det modifierade toppunktet.</p></li>
+</ul>
+</li>
+<li><p>När <code class="docutils literal notranslate"><span class="pre">typ</span></code> = <strong>’e’</strong>.</p>
+<ul>
+<li><p>Minskande sekvens med början från <strong>-1</strong>.</p></li>
+<li><p>Representerar ett pseudo-id som inte ingår i uppsättningen av ursprungliga kanter.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>”kontrakterade vertikaler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Array med identifierare för kontrakterade vertex.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Källa</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>När <code class="docutils literal notranslate"><span class="pre">typ</span></code> = <strong>’v’</strong>: <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p>När <code class="docutils literal notranslate"><span class="pre">typ</span></code> = <strong>’e’</strong>: Identifierare av källvertexen för den aktuella kanten (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mål</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>När <code class="docutils literal notranslate"><span class="pre">typ</span></code> = <strong>’v’</strong>: <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p>När <code class="docutils literal notranslate"><span class="pre">typ</span></code> = <strong>’e’</strong>: Identifierare av målvertexen för den aktuella kanten (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><ul class="simple">
+<li><p>När <code class="docutils literal notranslate"><span class="pre">typ</span></code> = <strong>’v’</strong>: <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p>När <code class="docutils literal notranslate"><span class="pre">typ</span></code> = <strong>’e’</strong>: Vikt för den aktuella kanten (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">metrisk</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>När <code class="docutils literal notranslate"><span class="pre">typ</span></code> = <strong>’v’</strong>: <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p>När <code class="docutils literal notranslate"><span class="pre">typ</span></code> = <strong>’e’</strong>: Vikt för den aktuella kanten (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vertex_order</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>När <code class="docutils literal notranslate"><span class="pre">typ</span></code> = <strong>’v’</strong>: <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p>När <code class="docutils literal notranslate"><span class="pre">typ</span></code> = <strong>’e’</strong>: Vikt för den aktuella kanten (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples">
+<h2>Exempel<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<section id="on-an-undirected-graph">
+<h3>På en odelad graf<a class="headerlink" href="#on-an-undirected-graph" title="Link to this heading">¶</a></h3>
+<p>Följande fråga visar de ursprungliga data som är involverade i sammandragningsoperationen på en oriktad graf.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="n">FROM</span> <span class="n">edges</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="o">----+--------+--------+------</span>
+  <span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+  <span class="mi">3</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">5</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">6</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">11</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">12</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">13</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">14</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">16</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">17</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Den ursprungliga grafen:</p>
+<a class="reference internal image-reference" href="_images/sample_graph.png"><img alt="_images/sample_graph.png" src="_images/sample_graph.png" style="width: 241.0px; height: 217.5px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Exempel<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bygga sammandragningshierarkier på hela grafen</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractionHierarchies</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">metric</span> <span class="o">|</span> <span class="n">vertex_order</span>
+<span class="o">------+----+---------------------+--------+--------+------+--------+--------------</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">3</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">10</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">4</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">15</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">14</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">6</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">5</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">8</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">9</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">9</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>            <span class="mi">2</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">10</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">7</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">11</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">8</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">12</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>            <span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">13</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">11</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">14</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">16</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">15</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">13</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">16</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">12</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">17</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">17</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>                 <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span>               <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">}</span>                 <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">11</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">21</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Resultaten representerar inte den sammandragna grafen. De representerar de ändringar som gjorts i grafen efter tillämpning av sammandragningsalgoritmen och ger den vertexordning som algoritmen bygger upp genom att ordna vertex enligt <em>edge difference</em>-metriken. Som en följd av detta finns alla toppar representerade i resultatet (utom naturligtvis förbjudna). Endast genvägar som byggts av algoritmen finns representerade i resultatet.</p>
+<dl class="simple">
+<dt>Efter att ha beräknat sammandragningshierarkierna ges nu en ordning till topparna,</dt><dd><p>för att kunna användas med en specifik Dijkstra-algoritm (implementering kommer i en framtida version), som snabbar upp sökningen.</p>
+</dd>
+</dl>
+<p>Vi får den kontraherade grafen ovan:</p>
+<a class="reference internal image-reference" href="_images/sample_graph_with_shortcuts.png"><img alt="_images/sample_graph_with_shortcuts.png" src="_images/sample_graph_with_shortcuts.png" style="width: 241.0px; height: 217.5px;" /></a>
+<p>Vi kan utan överraskning se att de toppar som tillhör genvägarna har en tendens att ha en hög prioritetsnivå i den resulterande topparnas ordning.</p>
+</section>
+<section id="on-an-undirected-graph-with-forbidden-vertices">
+<h3>På en odelad graf med förbjudna toppar<a class="headerlink" href="#on-an-undirected-graph-with-forbidden-vertices" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Exempel<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bygga sammandragning med en uppsättning förbjudna toppar</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractionHierarchies</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">forbidden</span> <span class="o">=&gt;</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">]);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span>  <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">metric</span> <span class="o">|</span> <span class="n">vertex_order</span>
+<span class="o">------+-----+---------------------+--------+--------+------+--------+--------------</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">4</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">8</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">5</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">15</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">12</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">13</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">7</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>            <span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">6</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">14</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>            <span class="mi">2</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">13</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">9</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">14</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">16</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">15</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">11</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">16</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>            <span class="mi">3</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">17</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">10</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>                 <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>                 <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>                 <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span>               <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">5</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span>               <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">6</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">}</span>                 <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">7</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">}</span>              <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">8</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">}</span>              <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">9</span> <span class="o">|</span> <span class="p">{</span><span class="mi">11</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">10</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">}</span>           <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">26</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="contraction-process-steps-details">
+<h2>Detaljer för sammandragningsprocessens steg<a class="headerlink" href="#contraction-process-steps-details" title="Link to this heading">¶</a></h2>
+<section id="shortcut-building-process">
+<h3>Genväg till byggprocessen<a class="headerlink" href="#shortcut-building-process" title="Link to this heading">¶</a></h3>
+<p>En topp <code class="docutils literal notranslate"><span class="pre">v</span></code> dras samman genom att lägga till genvägar som ersätter tidigare vägar av formen <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">v,</span> <span class="pre">w)</span></code> med en kant <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">w)</span></code>. Genvägen <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">w)</span></code> behövs bara när <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">v,</span> <span class="pre">w)</span></code> är den enda kortaste vägen mellan <code class="docutils literal notranslate"><span class="pre">u</span></code> och <code class="docutils literal notranslate"><span class="pre">w</span></code>.</p>
+<p>När alla genvägar har lagts till för ett givet toppunkt <code class="docutils literal notranslate"><span class="pre">v</span></code> tas de infallande kanterna för <code class="docutils literal notranslate"><span class="pre">v</span></code> bort och ett nytt toppunkt dras samman med den återstående grafen.</p>
+<p>Förfarandet är destruktivt för grafen och en kopia görs för att kunna manipulera den igen som en helhet. Kontraktionsprocessen lägger till alla upptäckta genvägar till kantuppsättningen <code class="docutils literal notranslate"><span class="pre">E</span></code> och tilldelar en metrik till varje kontraherad vertex. Denna metrik ger det som kallas <em>kontraktionshierarkin</em>.</p>
+</section>
+<section id="initialize-the-queue-with-a-first-vertices-order">
+<h3>Initiera kön med en ordning för första toppar<a class="headerlink" href="#initialize-the-queue-with-a-first-vertices-order" title="Link to this heading">¶</a></h3>
+<p>För varje topp <code class="docutils literal notranslate"><span class="pre">v</span></code> i grafen byggs en sammandragning av <code class="docutils literal notranslate"><span class="pre">v</span></code>:</p>
+<div class="graphviz"><img src="_images/graphviz-9fd9ee1aab9a22f28f605a75718cd929ec0e6c97.png" alt="graph G {
+    p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
+    v [style=filled; color=green];
+
+    rankdir=LR;
+    v -- p [dir=both, weight=10, arrowhead=vee, arrowtail=vee, label=&quot;  10&quot;];
+    v -- r [dir=both, weight=3, arrowhead=vee, arrowtail=vee, label=&quot;  3&quot;];
+    v -- u [dir=both, weight=6, arrowhead=vee, arrowtail=vee, label=&quot;  6&quot;];
+    p -- u [dir=both, weight=16, arrowhead=vee, arrowtail=vee, label=&quot;  12&quot;];
+    r -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+    u -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+    p -- r [dir=both, weight=13, arrowhead=vee, arrowtail=vee, label=&quot;  13&quot;, style=&quot;invis&quot;];
+    u -- r [dir=both, weight=9, arrowhead=vee, arrowtail=vee, label=&quot;  9&quot;, style=&quot;invis&quot;];
+}" class="graphviz" /></div>
+<table class="docutils align-default" style="width: 80">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nod</p></th>
+<th class="head"><p>Angränsande noder</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(v\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{p, r, u\}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{u, v\}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(u\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{p, v, w\}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(r\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{v, w\}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(w\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{r, u\}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Intilliggande kanter tas bort.</p>
+<div class="graphviz"><img src="_images/graphviz-298ea1ea03dc93c82430c5562f4a507c0ae4bcc1.png" alt="graph G {
+    p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
+    v [style=filled; color=green];
+
+    rankdir=LR;
+    v -- p [dir=both, weight=10, arrowhead=vee, arrowtail=vee, label=&quot;  10&quot;, style=&quot;invis&quot;];
+    v -- r [dir=both, weight=3, arrowhead=vee, arrowtail=vee, label=&quot;  3&quot;, style=&quot;invis&quot;];
+    v -- u [dir=both, weight=6, arrowhead=vee, arrowtail=vee, label=&quot;  6&quot;, style=&quot;invis&quot;];
+    p -- r [dir=both, weight=13, arrowhead=vee, arrowtail=vee, label=&quot;  13&quot;, color=red, style=&quot;invis&quot;];
+    u -- r [dir=both, weight=9, arrowhead=vee, arrowtail=vee, label=&quot;  9&quot;, color=red, style=&quot;invis&quot;];
+    p -- u [dir=both, weight=16, arrowhead=vee, arrowtail=vee, label=&quot;  12&quot;];
+    r -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+    u -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+}" class="graphviz" /></div>
+<p>Genvägar byggs från föregångare till <code class="docutils literal notranslate"><span class="pre">v</span></code> till efterföljare till <code class="docutils literal notranslate"><span class="pre">v</span></code> om och endast om vägen genom <code class="docutils literal notranslate"><span class="pre">v</span></code> motsvarar den enda kortaste vägen mellan föregångaren och efterföljaren till <code class="docutils literal notranslate"><span class="pre">v</span></code> i grafen. Måttet <em>kantskillnad</em> antar här värdet -2.</p>
+<div class="graphviz"><img src="_images/graphviz-779d4ae5a962482f9d4175387305d21e406cb3c6.png" alt="graph G {
+    p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
+    v [style=filled; color=green];
+
+    rankdir=LR;
+    v -- p [dir=both, weight=10, arrowhead=vee, arrowtail=vee, label=&quot;  10&quot;, style=&quot;invis&quot;];
+    v -- r [dir=both, weight=3, arrowhead=vee, arrowtail=vee, label=&quot;  3&quot;, style=&quot;invis&quot;];
+    v -- u [dir=both, weight=6, arrowhead=vee, arrowtail=vee, label=&quot;  6&quot;, style=&quot;invis&quot;];
+    p -- r [dir=both, weight=13, arrowhead=vee, arrowtail=vee, label=&quot;  13&quot;, color=red];
+    u -- r [dir=both, weight=9, arrowhead=vee, arrowtail=vee, label=&quot;  9&quot;, color=red];
+    p -- u [dir=both, weight=16, arrowhead=vee, arrowtail=vee, label=&quot;  12&quot;];
+    r -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+    u -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+}" class="graphviz" /></div>
+<p>Därefter kontraheras följande toppunkt. Processen fortsätter tills varje nod i grafen har dragits samman. I slutet finns det inte längre några kanter i grafen, som har förstörts av processen.</p>
+<p>Denna första sammandragning ger en vertices-ordning, som ges genom att ordna dem i stigande ordning på metriken (kantskillnaden). En total vertices-ordning byggs upp. Om <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">&lt;</span> <span class="pre">v</span></code>, så är <code class="docutils literal notranslate"><span class="pre">u</span></code> mindre viktig än <code class="docutils literal notranslate"><span class="pre">v</span></code>. Algoritmen håller topparna i en kö i denna ordning.</p>
+<p>En hierarki kommer nu att konstrueras genom att åter kontrahera topparna i denna ordning.</p>
+</section>
+<section id="build-the-final-vertex-order">
+<h3>Bygg den slutliga toppunktsordningen<a class="headerlink" href="#build-the-final-vertex-order" title="Link to this heading">¶</a></h3>
+<p>När den första ordern har byggts använder algoritmen den för att bläddra igenom grafen igen. För varje toppunkt som tas upp i kön simulerar algoritmen sammandragning och beräknar dess kantskillnad. Om det beräknade värdet är större än värdet för nästa toppunkt som ska dras ihop, lägger algoritmen tillbaka den i kön (heuristisk metod). I annat fall dras den in permanent.</p>
+</section>
+<section id="add-shortcuts-to-the-initial-graph">
+<h3>Lägga till genvägar till den initiala grafen<a class="headerlink" href="#add-shortcuts-to-the-initial-graph" title="Link to this heading">¶</a></h3>
+<p>I slutet tar algoritmen den ursprungliga grafen (före borttagning av kanter) och lägger till genvägskanterna till den. På så sätt får man en sammandragen graf, redo att användas med en specialiserad Dijkstra-algoritm, som tar hänsyn till nodernas ordning i hierarkin.</p>
+</section>
+</section>
+<section id="use-the-contraction">
+<h2>Använd sammandragning<a class="headerlink" href="#use-the-contraction" title="Link to this heading">¶</a></h2>
+<section id="build-the-contraction">
+<h3>Bygg sammandragningen<a class="headerlink" href="#build-the-contraction" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
+<span class="n">FROM</span> <span class="n">pgr_contractionHierarchies</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">21</span>
+</pre></div>
+</div>
+</section>
+<section id="add-shortcuts-and-hierarchy-in-the-existing-tables">
+<h3>Lägg till genvägar och hierarki i befintliga tabeller<a class="headerlink" href="#add-shortcuts-and-hierarchy-in-the-existing-tables" title="Link to this heading">¶</a></h3>
+<p>Lägg till nya kolumner i tabellerna <cite>vertices</cite> och <cite>edges</cite> för att lagra resultaten:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span>
+  <span class="n">ADD</span> <span class="n">is_new</span> <span class="n">BOOLEAN</span> <span class="n">DEFAULT</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">ADD</span> <span class="n">contracted_vertices</span> <span class="n">BIGINT</span><span class="p">[];</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span>
+  <span class="n">ADD</span> <span class="n">metric</span> <span class="n">INTEGER</span><span class="p">,</span>
+  <span class="n">ADD</span> <span class="n">vertex_order</span> <span class="n">INTEGER</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<p>Uppdatera och infoga resultaten i de två tabellerna.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">is_new</span><span class="p">)</span>
+  <span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">true</span>
+  <span class="n">FROM</span> <span class="n">contraction_results</span>
+  <span class="n">WHERE</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;e&#39;</span><span class="p">;</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
+  <span class="n">SET</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">vertex_order</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">vertex_order</span>
+  <span class="n">FROM</span> <span class="n">contraction_results</span> <span class="n">c</span>
+  <span class="n">WHERE</span> <span class="n">c</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;v&#39;</span> <span class="n">AND</span> <span class="n">c</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">vertices</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">17</span>
+</pre></div>
+</div>
+</section>
+<section id="use-a-dijkstra-shortest-path-algorithm-on-it">
+<h3>Använd en Dijkstra-algoritm för kortaste vägen på den<a class="headerlink" href="#use-a-dijkstra-shortest-path-algorithm-on-it" title="Link to this heading">¶</a></h3>
+<p>Sedan kan du använda vilken Dijkstra-liknande algoritm som helst och vänta på den anpassade algoritmen som tar hänsyn till den uppbyggda toppunktshierarkin. Till exempel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="mi">1</span><span class="p">,</span> <span class="mi">17</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="contraction-family.html"><span class="doc">Sammandragning - Familj av funktioner</span></a></p></li>
+</ul>
+<p class="rubric">Index och tabeller</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Söksida</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      Senast uppdaterad aug. 28, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

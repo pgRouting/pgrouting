@@ -1,0 +1,1138 @@
+
+
+<!DOCTYPE html>
+
+<html lang="sv" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Funktioner för fordonsdirigering - Kategori &#8212; pgRouting Manual (4.0-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=32e15c7b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
+    <script src="_static/translations.js?v=92a62177"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Sök" href="search.html" />
+    <link rel="next" title="pgr_pickDeliver - Experimentell" href="pgr_pickDeliver.html" />
+    <link rel="prev" title="Via - Kategori" href="via-category.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduktion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Exempeldata</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting-koncept</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Funktionsfamiljer</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Föreslagna funktioner</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Anteckningar för release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migrationsguide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Funktioner för fordonsdirigering - Kategori</a><ul>
+<li><a class="reference internal" href="#introduction">Introduktion</a><ul>
+<li><a class="reference internal" href="#characteristics">Egenskaper</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pick-delivery">Pick &amp; Delivery</a></li>
+<li><a class="reference internal" href="#parameters">Parametrar</a><ul>
+<li><a class="reference internal" href="#pick-deliver">Hämta och leverera</a></li>
+<li><a class="reference internal" href="#pick-deliver-optional-parameters">Pick-Deliver valfria parametrar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
+<li><a class="reference internal" href="#orders-sql">beställningar SQL</a></li>
+<li><a class="reference internal" href="#vehicles-sql">Fordon SQL</a></li>
+<li><a class="reference internal" href="#matrix-sql">Matrix SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Resultat kolumner</a><ul>
+<li><a class="reference internal" href="#summary-row">Sammanfattande rad</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#handling-parameters">Parametrar för hantering</a><ul>
+<li><a class="reference internal" href="#capacity-and-demand-units-handling">Hantering av kapacitets- och efterfrågeenheter</a></li>
+<li><a class="reference internal" href="#locations">Platser</a></li>
+<li><a class="reference internal" href="#time-handling">Tidshantering</a></li>
+<li><a class="reference internal" href="#factor-handling">Faktorhantering</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Se även</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="via-category.html" title="Previous Chapter: Via - Kategori"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Via - Kategori</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_pickDeliver.html" title="Next Chapter: pgr_pickDeliver - Experimentell"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_pickDeliv... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('VRP-category','sv'));  </script>
+            
+  <div class="line-block" id="index-0">
+<div class="line"><br /></div>
+</div>
+<section id="vehicle-routing-functions-category">
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">Funktioner för fordonsdirigering - Kategori</a><a class="headerlink" href="#vehicle-routing-functions-category" title="Link to this heading">¶</a></h1>
+<div class="admonition-experimental admonition">
+<p class="admonition-title">Experimental</p>
+<div class="admonition warning">
+<p class="admonition-title">Varning</p>
+<p>Experimentella funktioner</p>
+<ul class="simple">
+<li><p>De är inte officiellt i den aktuella versionen.</p></li>
+<li><p>De kommer troligen inte att officiellt vara en del av nästa utgåva:</p>
+<ul>
+<li><p>Funktionerna får inte använda sig av ANY-INTEGER och ANY-NUMERICAL</p></li>
+<li><p>Namnet kan komma att ändras.</p></li>
+<li><p>Signaturen kan komma att ändras.</p></li>
+<li><p>Funktionaliteten kan komma att ändras.</p></li>
+<li><p>pgTap-tester kan saknas.</p></li>
+<li><p>Might need c/c++ review.</p></li>
+<li><p>Eventuell dokumentation kan behöva skrivas om.</p></li>
+<li><p>Det kan behövas mycket feedback från samhället.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<ul class="simple">
+<li><p>Problem med upphämtning och leverans</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimentell</span></a> - Pickup &amp; Delivery using a Cost Matrix</p></li>
+<li><p><a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimentell</span></a> - Pickup &amp; Delivery with Euclidean distances</p></li>
+</ul>
+</li>
+<li><p>Distributionsproblem</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_vrpOneDepot.html"><span class="doc">pgr_vrpOneDepot - Experimentell</span></a> - From a single depot, distributes orders</p></li>
+</ul>
+</li>
+</ul>
+<nav class="contents" id="innehall">
+<p class="topic-title">Innehåll</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#vehicle-routing-functions-category" id="id1">Funktioner för fordonsdirigering - Kategori</a></p>
+<ul>
+<li><p><a class="reference internal" href="#introduction" id="id2">Introduktion</a></p>
+<ul>
+<li><p><a class="reference internal" href="#characteristics" id="id3">Egenskaper</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#pick-delivery" id="id4">Pick &amp; Delivery</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id5">Parametrar</a></p>
+<ul>
+<li><p><a class="reference internal" href="#pick-deliver" id="id6">Hämta och leverera</a></p></li>
+<li><p><a class="reference internal" href="#pick-deliver-optional-parameters" id="id7">Pick-Deliver valfria parametrar</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#inner-queries" id="id8">Inre frågor</a></p>
+<ul>
+<li><p><a class="reference internal" href="#orders-sql" id="id9">beställningar SQL</a></p></li>
+<li><p><a class="reference internal" href="#vehicles-sql" id="id10">Fordon SQL</a></p></li>
+<li><p><a class="reference internal" href="#matrix-sql" id="id11">Matrix SQL</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#result-columns" id="id12">Resultat kolumner</a></p>
+<ul>
+<li><p><a class="reference internal" href="#summary-row" id="id13">Sammanfattande rad</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#handling-parameters" id="id14">Parametrar för hantering</a></p>
+<ul>
+<li><p><a class="reference internal" href="#capacity-and-demand-units-handling" id="id15">Hantering av kapacitets- och efterfrågeenheter</a></p></li>
+<li><p><a class="reference internal" href="#locations" id="id16">Platser</a></p></li>
+<li><p><a class="reference internal" href="#time-handling" id="id17">Tidshantering</a></p></li>
+<li><p><a class="reference internal" href="#factor-handling" id="id18">Faktorhantering</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#see-also" id="id19">Se även</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<div class="toctree-wrapper compound">
+</div>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Introduktion</a><a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>Vehicle Routing Problems <cite>VRP</cite> är <strong>NP-hårda</strong> optimeringsproblem och är en generalisering av Travelling Salesman Problem (TSP).</p>
+<ul class="simple">
+<li><p>VRP:s mål är att minimera den totala ruttkostnaden.</p></li>
+<li><p>Det finns flera varianter av VRP-problemet,</p></li>
+</ul>
+<p><strong>pgRouting försöker inte implementera alla varianter.</strong></p>
+<section id="characteristics">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Egenskaper</a><a class="headerlink" href="#characteristics" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Capacitated Vehicle Routing Problem <cite>CVRP</cite> där fordonen har begränsad lastkapacitet för godset.</p></li>
+<li><p>Vehicle Routing Problem with Time Windows <cite>VRPTW</cite> där platserna har tidsfönster inom vilka fordonets besök måste göras.</p></li>
+<li><p>Vehicle Routing Problem with Pickup and Delivery <cite>VRPPD</cite> där ett antal varor måste flyttas från vissa upphämtningsplatser till andra leveransplatser.</p></li>
+</ul>
+<p class="rubric">Begränsningar</p>
+<ul class="simple">
+<li><p>Inga flera tidsfönster för en plats.</p></li>
+<li><p>Mindre fordon som används anses vara bättre.</p></li>
+<li><p>Kortare total varaktighet är bättre.</p></li>
+<li><p>Kortare väntetid är bättre.</p></li>
+</ul>
+</section>
+</section>
+<section id="pick-delivery">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Pick &amp; Delivery</a><a class="headerlink" href="#pick-delivery" title="Link to this heading">¶</a></h2>
+<p>Problem: <cite>CVRPPDTW</cite> Kapaciterade plock- och leveransfordons ruttproblem med tidsfönster</p>
+<ul class="simple">
+<li><p>Tiden är relativ till <cite>0</cite></p></li>
+<li><p>Fordonen</p>
+<ul>
+<li><p>har start- och sluttider för tjänstens varaktighet.</p></li>
+<li><p>ha öppnings- och stängningstider för start- och slutplatserna.</p></li>
+<li><p>har en kapacitet.</p></li>
+</ul>
+</li>
+<li><p>Beställningarna</p>
+<ul>
+<li><p>Har upphämtnings- och leveransplatser.</p></li>
+<li><p>Ha öppet- och stängningstider för upphämtnings- och leveransplatserna.</p></li>
+<li><p>Har servicetider för upphämtning och leveranstid.</p></li>
+<li><p>har en begäran om att få flytta varor från upphämtningsplatsen till leveransplatsen.</p></li>
+</ul>
+</li>
+<li><p>Tidsbaserade beräkningar:</p>
+<ul>
+<li><p>Restiden mellan kunder är <span class="math notranslate nohighlight">\(avstånd / hastighet\)</span></p></li>
+<li><p>Hämtning och leverans av orderparet sker med samma fordon.</p></li>
+<li><p>En upphämtning görs före leveransen.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Parametrar</a><a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<section id="pick-deliver">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Hämta och leverera</a><a class="headerlink" href="#pick-deliver" title="Link to this heading">¶</a></h3>
+<p>Används i <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimentell</span></a></p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#orders-sql">beställningar SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#orders-sql">beställningar SQL</a> enligt beskrivningen nedan.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vehicles-sql">Fordon SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#vehicles-sql">Fordon SQL</a> enligt beskrivningen nedan.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Används i <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimentell</span></a></p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#orders-sql">beställningar SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#orders-sql">beställningar SQL</a> enligt beskrivningen nedan.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vehicles-sql">Fordon SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#vehicles-sql">Fordon SQL</a> enligt beskrivningen nedan.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrix-sql">Matrix SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#matrix-sql">Matrix SQL</a> enligt beskrivningen nedan.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pick-deliver-optional-parameters">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Pick-Deliver valfria parametrar</a><a class="headerlink" href="#pick-deliver-optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Standard</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">faktor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Multiplikator för restid. Se <a class="reference internal" href="#pd-factor"><span class="std std-ref">Faktorhantering</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_cykler</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>10</p></td>
+<td><p>Maximalt antal cykler som ska utföras på optimeringen.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">initial_sol</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Initial lösning som ska användas.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> En order per lastbil</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code> Tryck på främre order.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> Tryck tillbaka order.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span></code> Optimera insättning.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5</span></code> Push back-order som gör det möjligt att lägga in fler order på baksidan</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">6</span></code> Push front order som gör det möjligt att lägga in fler order längst fram</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Inre frågor</a><a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="orders-sql">
+<h3><a class="reference internal" href="#orders-sql">beställningar SQL</a><a class="headerlink" href="#orders-sql" title="Link to this heading">¶</a></h3>
+<p>Gemensamma kolumner för order SQL i båda implementationerna:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>Identifierare för orderparet plockning-leverans.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">efterfrågan</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Antal enheter i ordern</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p_open</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Tidpunkten, relativt till 0, när upphämtningsplatsen öppnas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">p_close</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Tidpunkten, relativt till 0, när upphämtningsplatsen stängs.</p></td>
+</tr>
+<tr class="row-even"><td><p>[<code class="docutils literal notranslate"><span class="pre">p_service</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Varaktigheten av lastningen på upphämtningsplatsen.</p>
+<ul class="simple">
+<li><p>När den saknas: 0 tidsenheter används</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d_open</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Tidpunkten, relativt till 0, när leveransplatsen öppnas.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">d_close</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Tidpunkten, relativt till 0, när leveransplatsen stängs.</p></td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">d_service</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Varaktigheten av lossningen på leveransplatsen.</p>
+<ul class="simple">
+<li><p>När den saknas: 0 tidsenheter används</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Var:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-TAL<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+<p>För <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimentell</span></a> behövs identifierarna för upphämtning och leverans av platserna:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p_node_id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>Pickupens nodidentifierare måste matcha en vertexidentifierare i <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d_node_id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>Leveransens nodidentifierare måste matcha en vertexidentifierare i <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Var:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-TAL<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+</dl>
+<p>För <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimentell</span></a> behövs <span class="math notranslate nohighlight">\((x, y)\)</span>-värdena för platserna:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p_x</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> value of the pick up location</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">p_y</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span> value of the pick up location</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">d_x</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> value of the delivery location</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d_y</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span> value of the delivery location</p></td>
+</tr>
+</tbody>
+</table>
+<p>Var:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="vehicles-sql">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Fordon SQL</a><a class="headerlink" href="#vehicles-sql" title="Link to this heading">¶</a></h3>
+<p>Gemensamma kolumner för fordon SQL i båda implementationerna:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Identifierare av fordonet.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Kapacitet</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Enheter med maximal kapacitet</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_öppna</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Tidpunkten, relativt 0, när startplatsen öppnas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_close</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Tidpunkten, relativt 0, när startplatsen stängs.</p></td>
+</tr>
+<tr class="row-even"><td><p>[<code class="docutils literal notranslate"><span class="pre">start_service</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Längden på lastningen vid startplatsen.</p>
+<ul class="simple">
+<li><p>När den saknas: En varaktighet på <span class="math notranslate nohighlight">\(0\)</span> tidsenheter används.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_open</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Tidpunkten, relativt 0, då slutplatsen öppnas.</p>
+<ul class="simple">
+<li><p>När den saknas: Värdet på <code class="docutils literal notranslate"><span class="pre">start_open</span></code> används</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_close</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Tidpunkten, relativt till 0, när slutplatsen stängs.</p>
+<ul class="simple">
+<li><p>När den saknas: Värdet på <code class="docutils literal notranslate"><span class="pre">start_close</span></code> används</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_service</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Längden på lastningen vid slutplatsen.</p>
+<ul class="simple">
+<li><p>När den saknas: En varaktighet i <code class="docutils literal notranslate"><span class="pre">start_service</span></code> används.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>För <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimentell</span></a> behövs start- och slutidentifierare för platserna:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_node_id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>Startplatsens nodidentifierare måste matcha en vertexidentifierare i <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_node_id</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>Nodeidentifieraren för slutpositionen måste matcha en vertexidentifierare i <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p>
+<ul class="simple">
+<li><p>När den saknas: <code class="docutils literal notranslate"><span class="pre">end_node_id</span></code> används.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Var:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-TAL<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+</dl>
+<p>För <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimentell</span></a> behövs <span class="math notranslate nohighlight">\((x, y)\)</span>-värdena för platserna:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_x</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> value of the starting location</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_y</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span> value of the starting location</p></td>
+</tr>
+<tr class="row-even"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_x</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> value of the ending location</p>
+<ul class="simple">
+<li><p>När den saknas: <code class="docutils literal notranslate"><span class="pre">start_x</span></code> används.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_y</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span> value of the ending location</p>
+<ul class="simple">
+<li><p>När den saknas: <code class="docutils literal notranslate"><span class="pre">start_y</span></code> används.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Var:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="matrix-sql">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Matrix SQL</a><a class="headerlink" href="#matrix-sql" title="Link to this heading">¶</a></h3>
+<p>Uppsättning av <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifierare för startvertexen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">slut_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifierare för det avslutande toppunktet.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Sammanlagd kostnad från <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">slut_vid</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="result-columns">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Resultat kolumner</a><a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Returns</span> <span class="nb">set</span> <span class="n">of</span>
+ <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
+     <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span> <span class="n">departure_time</span><span class="p">)</span>
+ <span class="n">UNION</span>
+ <span class="p">(</span><span class="n">summary</span> <span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Sekventiellt värde med början från <strong>1</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fordon_seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Sekventiellt värde med början från <strong>1</strong> för aktuella fordon. Fordonet <span class="math notranslate nohighlight">\(n_{th}\)</span> i lösningen.</p>
+<ul class="simple">
+<li><p>Värdet <span class="math notranslate nohighlight">\(-2\)</span> anger att det är den sammanfattande raden.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fordon_id</span></code></p></td>
+<td><p>BIGINT</p></td>
+<td><p>Aktuell fordonsidentifiering.</p>
+<ul class="simple">
+<li><p>Sammanfattningsraden har <strong>totala kapacitetsöverträdelser</strong>.</p>
+<ul>
+<li><p>En kapacitetsöverträdelse inträffar när ett fordon överlastas eller underlastas.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stopp_seq</span></code></p></td>
+<td><p>INTEGER</p></td>
+<td><p>Sekventiellt värde med början från <strong>1</strong> för de stopp som görs av det aktuella fordonet. Stoppet <span class="math notranslate nohighlight">\(m_{th}\)</span> för det aktuella fordonet.</p>
+<ul class="simple">
+<li><p>Sammanfattning rad har <strong>total tid fönster överträdelser</strong>.</p>
+<ul>
+<li><p>En överträdelse av tidsfönstret inträffar när man anländer efter att platsen har stängt.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stopp_typ</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><ul class="simple">
+<li><p>Typ av stopplats som fordonet befinner sig på</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(-1\)</span>: at the solution summary row</p></li>
+<li><p><span class="math notranslate nohighlight">\(1\)</span>: Starting location</p></li>
+<li><p><span class="math notranslate nohighlight">\(2\)</span>: Pickup location</p></li>
+<li><p><span class="math notranslate nohighlight">\(3\)</span>: Delivery location</p></li>
+<li><p><span class="math notranslate nohighlight">\(6\)</span>: Ending location and indicates the vehicle’s summary row</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>beställning_id</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifierare för orderparet hämtning-leverans.</p>
+<ul class="simple">
+<li><p>Värde <span class="math notranslate nohighlight">\(-1\)</span>: När ingen order är involverad på den aktuella stoppositionen.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>”last</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Fordonets lastenheter när det lämnar hållplatsen.</p>
+<ul class="simple">
+<li><p>Värde <span class="math notranslate nohighlight">\(-1\)</span> på raden för lösningssammanfattning.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">resetid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Restid från föregående <code class="docutils literal notranslate"><span class="pre">stop_seq</span></code> till aktuell <code class="docutils literal notranslate"><span class="pre">stop_seq</span></code>.</p>
+<ul class="simple">
+<li><p>Sammanfattning har <strong>total restid</strong>:</p>
+<ul>
+<li><p>Summan av alla <code class="docutils literal notranslate"><span class="pre">travel_time</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>ankomsttid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Tidsåtgång för att vänta på att den aktuella platsen ska öppnas.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(-1\)</span>: at the solution summary row.</p></li>
+<li><p><span class="math notranslate nohighlight">\(0\)</span>: at the starting location.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Vänta_tid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Tidsåtgång för att vänta på att den aktuella platsen ska öppnas.</p>
+<ul class="simple">
+<li><p>Sammanfattning rad har <strong>total väntetid</strong>:</p>
+<ul>
+<li><p>Summan av alla <code class="docutils literal notranslate"><span class="pre">wait_time</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">service_tid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Servicens varaktighet på den aktuella platsen.</p>
+<ul class="simple">
+<li><p>Sammanfattningsraden har <strong>total servicetid</strong>:</p>
+<ul>
+<li><p>Summan av alla <code class="docutils literal notranslate"><span class="pre">service_time</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>tidpunkt för avresa</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><ul class="simple">
+<li><p>Den tidpunkt då fordonet avgår från hållplatsen.</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(arrival\_time + wait\_time + service\_time\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Slutplatsen har den <strong>totala tid</strong> som använts av det aktuella fordonet.</p></li>
+<li><p>Sammanfattningsraden har den <strong>totala lösningstiden</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(total\ traveling\ time + total\ waiting\ time + total\ service\ time\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="summary-row">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Sammanfattande rad</a><a class="headerlink" href="#summary-row" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Fortsätter sekvensen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fordon_seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Värdet <span class="math notranslate nohighlight">\(-2\)</span> anger att det är den sammanfattande raden.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fordon_id</span></code></p></td>
+<td><p>BIGINT</p></td>
+<td><p><strong>överträdelser av total kapacitet</strong>:</p>
+<ul class="simple">
+<li><p>En kapacitetsöverträdelse inträffar när ett fordon överlastas eller underlastas.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stopp_seq</span></code></p></td>
+<td><p>INTEGER</p></td>
+<td><p><strong>Totalt antal överträdelser av tidsfönster</strong>:</p>
+<ul class="simple">
+<li><p>En överträdelse av tidsfönstret inträffar när man anländer efter att platsen har stängt.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stopp_typ</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>beställning_id</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>”last</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">resetid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><strong>total restid</strong>:</p>
+<ul class="simple">
+<li><p>Summan av alla <code class="docutils literal notranslate"><span class="pre">travel_time</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>ankomsttid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Vänta_tid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><strong>total väntetid</strong>:</p>
+<ul class="simple">
+<li><p>Summan av alla <code class="docutils literal notranslate"><span class="pre">wait_time</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">service_tid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><strong>total servicetid</strong>:</p>
+<ul class="simple">
+<li><p>Summan av alla <code class="docutils literal notranslate"><span class="pre">service_time</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>tidpunkt för avresa</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Sammanfattningsraden har den <strong>totala lösningstiden</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(total\ traveling\ time + total\ waiting\ time + total\ service\ time\)</span>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="handling-parameters">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Parametrar för hantering</a><a class="headerlink" href="#handling-parameters" title="Link to this heading">¶</a></h2>
+<p>För att definiera ett problem måste flera överväganden göras för att få konsekventa resultat. Detta avsnitt ger en inblick i hur parametrar ska beaktas.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#capacity-and-demand-units-handling">Hantering av kapacitets- och efterfrågeenheter</a></p></li>
+<li><p><a class="reference internal" href="#locations">Lokaliseringar</a></p></li>
+<li><p><a class="reference internal" href="#time-handling">Tidshantering</a></p></li>
+<li><p><a class="reference internal" href="#factor-handling">Faktorhantering</a></p></li>
+</ul>
+<section id="capacity-and-demand-units-handling">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Hantering av kapacitets- och efterfrågeenheter</a><a class="headerlink" href="#capacity-and-demand-units-handling" title="Link to this heading">¶</a></h3>
+<p>Ett fordons ”kapacitet” kan mätas i:</p>
+<ul class="simple">
+<li><p>Volymenheter som <span class="math notranslate nohighlight">\(m^3\)</span>.</p></li>
+<li><p>Areaenheter som <span class="math notranslate nohighlight">\(m^2\)</span> (när ingen stapling är tillåten).</p></li>
+<li><p>Viktenheter som <span class="math notranslate nohighlight">\(kg\)</span>.</p></li>
+<li><p>Antal lådor som får plats i fordonet.</p></li>
+<li><p>Antal sittplatser i fordonet</p></li>
+</ul>
+<p>Begäran om hämtnings- och leveransorder måste använda samma enheter som de enheter som används i fordonets ”kapacitet”.</p>
+<p>För att hantera problem som t.ex: 10 (lika stora) lådor med äpplen och 5 kg fjädrar som ska transporteras (inte packas i lådor).</p>
+<ul class="simple">
+<li><p>Om fordonets <strong>kapacitet</strong> mäts i <cite>lådor</cite>, behövs en omvandling av <cite>kg fjädrar</cite> till <cite>antal lådor</cite>.</p></li>
+<li><p>Om fordonets <strong>kapacitet</strong> mäts i <cite>kg</cite>, krävs en omvandling av <cite>låda äpplen</cite> till <cite>kg</cite>.</p></li>
+</ul>
+<p>Visar hur de 2 möjliga konverteringarna kan göras</p>
+<p>Låt: - <span class="math notranslate nohighlight">\(f\_boxes\)</span>: antal boxar som behövs för <cite>1</cite> kg fjädrar. - <span class="math notranslate nohighlight">\(a\_weight\)</span>: vikten på <cite>1</cite> låda med äpplen.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kapacitetsenheter</p></th>
+<th class="head"><p>äpplen</p></th>
+<th class="head"><p>fjädrar</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>lådor</p></td>
+<td><p>10</p></td>
+<td><p><span class="math notranslate nohighlight">\(5 * f\_boxes\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>kg</p></td>
+<td><p><span class="math notranslate nohighlight">\(10 * a\_weight\)</span></p></td>
+<td><p>5</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="locations">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Platser</a><a class="headerlink" href="#locations" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>När du använder <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimentell</span></a>:</p>
+<ul>
+<li><p>Fordonen har <span class="math notranslate nohighlight">\((x, y)\)</span>-par för start- och slutplatser.</p></li>
+<li><p>Beställningarna har <span class="math notranslate nohighlight">\((x, y)\)</span>-par för upphämtnings- och leveransplatser.</p></li>
+</ul>
+</li>
+<li><p>När du använder <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimentell</span></a>:</p>
+<ul>
+<li><p>Fordonen har identifierare för start- och slutplatserna.</p></li>
+<li><p>Beställningarna har identifierare för upphämtnings- och leveransplatserna.</p></li>
+<li><p>Alla identifierare är index till den givna matrisen.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="time-handling">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Tidshantering</a><a class="headerlink" href="#time-handling" title="Link to this heading">¶</a></h3>
+<p>Tiderna är relativa till <strong>0</strong>. Alla tidsenheter måste konverteras till en referens på <strong>0</strong> och samma tidsenheter.</p>
+<p>Anta att en fordonsförare börjar sitt skift kl. 9.00 och slutar kl. 16.30 och att servicetiden är 10 minuter och 30 sekunder.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Betydelsen av 0</p></th>
+<th class="head"><p>tidsenheter</p></th>
+<th class="head"><p>9:00</p></th>
+<th class="head"><p>16:30</p></th>
+<th class="head"><p>10 min 30 sek</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0:00 am</p></td>
+<td><p>timmar</p></td>
+<td><p>9</p></td>
+<td><p>16.5</p></td>
+<td><p><span class="math notranslate nohighlight">\(10.5 / 60 = 0.175\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>0:00 am</p></td>
+<td><p>minuter</p></td>
+<td><p><span class="math notranslate nohighlight">\(9*60 = 54\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(16.5*60 = 990\)</span></p></td>
+<td><p>10.5</p></td>
+</tr>
+<tr class="row-even"><td><p>9:00</p></td>
+<td><p>timmar</p></td>
+<td><p>0</p></td>
+<td><p>7.5</p></td>
+<td><p><span class="math notranslate nohighlight">\(10.5 / 60 = 0.175\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>9:00</p></td>
+<td><p>minuter</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(7.5*60 = 540\)</span></p></td>
+<td><p>10.5</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="factor-handling">
+<span id="pd-factor"></span><h3><a class="toc-backref" href="#id18" role="doc-backlink">Faktorhantering</a><a class="headerlink" href="#factor-handling" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">factor</span></code> fungerar som en multiplikator för att konvertera matrisvärden eller euklidiska värden från avståndsvärden till tidsenheter.</p>
+<ul class="simple">
+<li><p>När värdena redan är i önskad tidsenhet</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">faktor</span></code> bör vara <strong>1</strong></p></li>
+<li><p>När <code class="docutils literal notranslate"><span class="pre">faktor</span></code> &gt; 1 är restiderna snabbare</p></li>
+<li><p>När <code class="docutils literal notranslate"><span class="pre">faktor</span></code> &lt; 1 är restiderna långsammare</p></li>
+</ul>
+</li>
+</ul>
+<p>För <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimentell</span></a>:</p>
+<p>Arbeta med tidsenheter i sekunder och x/y i lat/lon: Faktor: skulle bero på punkternas läge och på medelhastigheten, säg att 25 m/s är hastigheten.</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Latitud</p></th>
+<th class="head"><p>Konvertering</p></th>
+<th class="head"><p>Faktor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>45</p></td>
+<td><p>1 longitudgrad är (78846,81m)/(25m/s)</p></td>
+<td><p>3153 s</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1 longitudgrad är (111319,46 m)/(25m/s)</p></td>
+<td><p>4452 s</p></td>
+</tr>
+</tbody>
+</table>
+<p>För <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimentell</span></a>:</p>
+<p>Med tanke på <span class="math notranslate nohighlight">\(v = d / t\)</span> därför <span class="math notranslate nohighlight">\(t = d / v\)</span> Och <code class="docutils literal notranslate"><span class="pre">faktorn</span></code> blir <span class="math notranslate nohighlight">\(1 / v\)</span></p>
+<p>Var:</p>
+<dl class="field-list simple">
+<dt class="field-odd">v<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Hastighet</p>
+</dd>
+<dt class="field-even">d<span class="colon">:</span></dt>
+<dd class="field-even"><p>Avstånd</p>
+</dd>
+<dt class="field-odd">t<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tid</p>
+</dd>
+</dl>
+<p>För följande ekvivalenser <span class="math notranslate nohighlight">\(10m/s \approx 600m/min \approx 36 km/tim\)</span></p>
+<p>Arbeta med tidsenheter i sekunder och matrisen i meter: För ett 1000m längdvärde på matrisen:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Enheter</p></th>
+<th class="head"><p>hastighet</p></th>
+<th class="head"><p>Konvertering</p></th>
+<th class="head"><p>Faktor</p></th>
+<th class="head"><p>Resultat</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sekunder</p></td>
+<td><p><span class="math notranslate nohighlight">\(10 m/s\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{10m/s}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.1s/m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1000m * 0.1s/m = 100s\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>minuter</p></td>
+<td><p><span class="math notranslate nohighlight">\(600 m/min\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{600m/min}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.0016min/m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1000m * 0.0016min/m = 1.6min\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Timmar</p></td>
+<td><p><span class="math notranslate nohighlight">\(36 km/hr\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{36 km/hr}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.0277hr/km\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1km * 0.0277hr/km = 0.0277hr\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Se även</a><a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">https://en.wikipedia.org/wiki/Vehicle_routing_problem</a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a></p></li>
+</ul>
+<p class="rubric">Index och tabeller</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Söksida</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      Senast uppdaterad aug. 28, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -5,11 +5,12 @@ function createInfo(file, newat, altnames = '', removedat = '') {
     this.removedat = removedat;
 }
 
-const versionsArr = ['4.0', '3.8','3.7', '3.6', '3.5', '3.4', '3.3', '3.2', '3.1', '3.0'];
-var unsuportedArr = ['2.6', '2.5', '2.4', '2.3', '2.2', '2.1', '2.0'];
+const versionsArr = ['4.0'];
+var unsuportedArr = ['3.8','3.7', '3.6', '3.5', '3.4', '3.3', '3.2', '3.1', '3.0','2.6', '2.5', '2.4', '2.3', '2.2', '2.1', '2.0'];
 var titles = [
     {k: 'en', v: ['Supported versions', 'Unsupported versions']},
     {k: 'es', v: ['Versiones soportadas', 'Versiones no soportadas']},
+    {k: 'sv', v: ['understödda versioner', 'Viversioner som inte stöds']},
     {k: 'zh-Hans', v: ['Supported versions', 'Unsupported versions']},
 ];
 
@@ -323,9 +324,6 @@ function get_history(name, lang) {
         if (versionsArr[i] < data.newat) break;
         if (data.removedat != '' && versionsArr[i] > data.newat) break;
 
-        /* for zh-Hans non translated versions use english */
-        validlang = (lang == 'zh-Hans' && versionsArr[i] >= '3.7')? 'zh_Hans' : 'en';
-
         let link = `${home}${versionsArr[i]}/`
         link += get_vdata(data.altnames, versionsArr[i], data.file, validlang);
         if (versionsArr[i] == latest) result += '(' + link + ') ';
@@ -342,6 +340,10 @@ function get_history(name, lang) {
 
             /* for spanish non translated versions use english */
             validlang = (lang == 'es' && unsuportedArr[i] == '2.0')? 'es' : validlang;
+            /* for zh-Hans non translated versions use english */
+            validlang = (lang == 'zh-Hans' && versionsArr[i] >= '3.7')? 'zh_Hans' : 'en';
+            /* for swedish non translated versions use english */
+            validlang = (lang == 'sv' && versionsArr[i] >= '4.0')? 'sv' : 'en';
 
             if (data.newat > unsuportedArr[i]) break;
             var link = home + unsuportedArr[i] + '/';
@@ -351,4 +353,3 @@ function get_history(name, lang) {
     }
     return result;
 }
-

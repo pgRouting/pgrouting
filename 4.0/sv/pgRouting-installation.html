@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+
+<html lang="sv" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Installation &#8212; pgRouting Manual (4.0-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=32e15c7b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
+    <script src="_static/translations.js?v=92a62177"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Sök" href="search.html" />
+    <link rel="next" title="Support" href="support.html" />
+    <link rel="prev" title="Introduktion" href="pgRouting-introduction.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduktion</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Exempeldata</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting-koncept</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Funktionsfamiljer</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Föreslagna funktioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Anteckningar för release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migrationsguide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#short-version">Kort version</a></li>
+<li><a class="reference internal" href="#get-the-sources">Hämta källorna</a></li>
+<li><a class="reference internal" href="#enabling-and-upgrading-in-the-database">Aktivering och uppgradering i databasen</a></li>
+<li><a class="reference internal" href="#dependencies">Beroenden</a></li>
+<li><a class="reference internal" href="#configuring">Konfigurering</a><ul>
+<li><a class="reference internal" href="#configurable-variables">Konfigurerbara variabler</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#building">Byggnad</a></li>
+<li><a class="reference internal" href="#testing">Testar</a></li>
+<li><a class="reference internal" href="#see-also">Se även</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgRouting-introduction.html" title="Previous Chapter: Introduktion"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Introduktion</span>
+    </a>
+  </li>
+  <li>
+    <a href="support.html" title="Next Chapter: Support"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Support &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgRouting-installation','sv'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h1>
+<p class="rubric">Innehåll</p>
+<p>Instruktioner för nedladdning och installation av binärfiler för olika operativsystem, ytterligare anmärkningar och korrigeringar som inte ingår i denna dokumentation finns i <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting">Installation wiki</a></p>
+<p>To use pgRouting, PostGIS needs to be installed, please read the information
+about installation in this <a class="reference external" href="https://www.postgis.us/presentations/postgis_install_guide_22.html">Install Guide</a></p>
+<section id="short-version">
+<span id="install-short"></span><h2>Kort version<a class="headerlink" href="#short-version" title="Link to this heading">¶</a></h2>
+<p>Extrahera tar-bollen</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>tar<span class="w"> </span>xvfz<span class="w"> </span>pgrouting-4.0.0.tar.gz
+<span class="nb">cd</span><span class="w"> </span>pgrouting-4.0.0
+</pre></div>
+</div>
+<p>För att kompilera förutsatt att du har alla beroenden i din sökväg:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w">  </span>..
+make
+sudo<span class="w"> </span>make<span class="w"> </span>install
+</pre></div>
+</div>
+<p>När pgRouting har installerats måste det aktiveras i varje enskild databas som du vill använda det i.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>createdb<span class="w"> </span>routing
+psql<span class="w"> </span>routing<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;CREATE EXTENSION pgRouting CASCADE&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="get-the-sources">
+<h2>Hämta källorna<a class="headerlink" href="#get-the-sources" title="Link to this heading">¶</a></h2>
+<p>Den senaste versionen av pgRouting finns på <a class="reference external" href="https://github.com/pgRouting/pgrouting/releases/latest">https://github.com/pgRouting/pgrouting/releases/latest</a></p>
+<p>För att ladda ner denna release:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-O<span class="w"> </span>pgrouting-4.0.0.tar.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>https://github.com/pgRouting/pgrouting/archive/v4.0.0.tar.gz
+</pre></div>
+</div>
+<p>Gå till <a class="reference internal" href="#install-short"><span class="std std-ref">Kort version</span></a> för mer instruktioner om hur du extraherar tar ball och kompilerar pgRouting.</p>
+<p class="rubric">git</p>
+<p>Så här laddar du ner arkivet</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git://github.com/pgRouting/pgrouting.git
+<span class="nb">cd</span><span class="w"> </span>pgrouting
+git<span class="w"> </span>checkout<span class="w"> </span>v4.0.0
+</pre></div>
+</div>
+<p>Gå till <a class="reference internal" href="#install-short"><span class="std std-ref">Kort version</span></a> för mer instruktioner om hur du kompilerar pgRouting (det finns ingen tarball inblandad när du laddar ner pgRouting-arkivet från GitHub).</p>
+</section>
+<section id="enabling-and-upgrading-in-the-database">
+<h2>Aktivering och uppgradering i databasen<a class="headerlink" href="#enabling-and-upgrading-in-the-database" title="Link to this heading">¶</a></h2>
+<p class="rubric">Aktivering av databasen</p>
+<p>pgRouting är en PostgreSQL-förlängning och beror på PostGIS för att tillhandahålla funktioner till slutanvändaren. Nedanstående kod demonstrerar aktivering av PostGIS och pgRouting i databasen.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">postgis</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">pgrouting</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Kontroll av PostGIS- och pgRouting-version efter att de har aktiverats i databasen.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">PostGIS_full_version</span><span class="p">();</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pgr_version</span><span class="p">();</span>
+</pre></div>
+</div>
+<p class="rubric">Uppgradering av databasen</p>
+<p>Använd följande kommando för att uppgradera pgRouting i databasen till version 4.0.0:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">&quot;4.0.0&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Mer information finns på <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createextension.html">https://www.postgresql.org/docs/current/sql-createextension.html</a></p>
+</section>
+<section id="dependencies">
+<h2>Beroenden<a class="headerlink" href="#dependencies" title="Link to this heading">¶</a></h2>
+<p class="rubric">Beroenden för kompilering</p>
+<p>För att kunna kompilera pgRouting måste du se till att följande beroenden är uppfyllda:</p>
+<ul class="simple">
+<li><p>C- och C++0x-kompilatorer</p>
+<ul>
+<li><p>Kompilering med Boost 1.56 upp till Boost 1.74 kräver C++-kompilator med standardstöd för C++03 eller C++11</p></li>
+<li><p>Kompilering med Boost 1.75 kräver C++-kompilator med stöd för C++14-standarden</p></li>
+</ul>
+</li>
+<li><p>Postgresql version &gt;= 13</p></li>
+<li><p>The Boost Graph Library (BGL) &gt;= 1.56.0</p></li>
+<li><p>CMake &gt;= 3.12</p></li>
+</ul>
+<p>För användardokumentation</p>
+<ul class="simple">
+<li><p>Sphinx &gt;= 4.0</p></li>
+</ul>
+<p>För dokumentation för utvecklare</p>
+<ul class="simple">
+<li><p>Doxygen &gt;= 1.7</p></li>
+</ul>
+<p>För testning</p>
+<ul class="simple">
+<li><p>pgtap</p></li>
+<li><p>pg_prove</p></li>
+</ul>
+<p>För användning:</p>
+<ul class="simple">
+<li><p>PostGIS version &gt;= 3.0.0</p></li>
+</ul>
+<p class="rubric">Exempel: Installera beroenden på Linux</p>
+<p>Installera kompileringsberoendena</p>
+<p class="rubric">Bygg beroenden</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>build-essential<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>libboost-graph-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>postgresql-13<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>postgresql-server-dev-13<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>postgresql-13-postgis
+</pre></div>
+</div>
+<p class="rubric">Valfria beroenden</p>
+<p>For documentation</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w">  </span><span class="se">\</span>
+<span class="w">   </span>python3-sphinx<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>python3-sphinx-bootstrap-theme<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>texlive<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>doxygen
+</pre></div>
+</div>
+<p>För testning</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>libtap-parser-sourcehandler-pgtap-perl
+<span class="w">   </span>postgresql-13-pgtap
+</pre></div>
+</div>
+</section>
+<section id="configuring">
+<h2>Konfigurering<a class="headerlink" href="#configuring" title="Link to this heading">¶</a></h2>
+<p>pgRouting använder <cite>cmake</cite>-systemet för att göra konfigurationen.</p>
+<section id="configurable-variables">
+<h3>Konfigurerbara variabler<a class="headerlink" href="#configurable-variables" title="Link to this heading">¶</a></h3>
+<p class="rubric">För att se vilka variabler som kan konfigureras</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>-L<span class="w"> </span>..
+</pre></div>
+</div>
+<p>Byggkatalogen skiljer sig från källkatalogen</p>
+<p class="rubric">Konfigurera dokumentationen</p>
+<p>User and developers documentation are not build if prerequisites are not found.</p>
+<p>Det mesta av arbetet med dokumentationen har lagts på HTML-filerna. Några variabler för att bygga dokumentation:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variabel</p></th>
+<th class="head"><p>Standard</p></th>
+<th class="head"><p>Kommentar</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>BUILD_HTML</p></td>
+<td><p>BOOL=ON</p></td>
+<td><p>Om ON, aktivera/avaktivera HTML-skapande för användardokumentation</p></td>
+</tr>
+<tr class="row-odd"><td><p>BYGG_DOXY</p></td>
+<td><p>BOOL=ON</p></td>
+<td><p>Om ON, aktivera/avaktivera HTML-skapande för utvecklarens dokumentation</p></td>
+</tr>
+<tr class="row-even"><td><p>BUILD_LATEX</p></td>
+<td><p>BOOL=OFF</p></td>
+<td><p>Om ON, slå på/av byggnad PDF</p></td>
+</tr>
+<tr class="row-odd"><td><p>BYGGHANDLARE</p></td>
+<td><p>BOOL=OFF</p></td>
+<td><p>Om ON, aktivera/avaktivera byggnadens MAN-sidor</p></td>
+</tr>
+<tr class="row-even"><td><p>DOC_ANVÄNDA_BOOTSTRAP</p></td>
+<td><p>BOOL=OFF</p></td>
+<td><p>Om PÅ, använd sphinx-bootstrap för HTML-sidor i användardokumentationen</p></td>
+</tr>
+<tr class="row-odd"><td><p>EN</p></td>
+<td><p>BOOL=ON</p></td>
+<td><p>if OFF the English documentation will no be built</p></td>
+</tr>
+<tr class="row-even"><td><p>ES</p></td>
+<td><p>BOOL=ON</p></td>
+<td><p>if OFF the Spanish documentation will no be built</p></td>
+</tr>
+<tr class="row-odd"><td><p>SV</p></td>
+<td><p>BOOL=ON</p></td>
+<td><p>if OFF the Swedish documentation will no be built</p></td>
+</tr>
+<tr class="row-even"><td><p>ZH_HANS</p></td>
+<td><p>BOOL=ON</p></td>
+<td><p>if OFF the Chinese simplified documentation will no
+be built</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="building">
+<h2>Byggnad<a class="headerlink" href="#building" title="Link to this heading">¶</a></h2>
+<p>Använda <code class="docutils literal notranslate"><span class="pre">make</span></code> för att bygga koden och dokumentationen</p>
+<p>The following instructions start from <code class="docutils literal notranslate"><span class="pre">path/to/pgrouting/build</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make          # default build
+$ make doc      # build only the user&#39;s documentation
+$ make doxy     # build only the developer&#39;s documentation
+$ make all      # build both the code and the user&#39;s documentation
+</pre></div>
+</div>
+<p>Vi har testat på flera plattformar, För installation eller ominstallation behövs alla steg.</p>
+<p class="rubric">Linux</p>
+<p>The following instructions start from <code class="docutils literal notranslate"><span class="pre">path/to/pgrouting</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span>  <span class="o">..</span>
+<span class="n">make</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+</section>
+<section id="testing">
+<h2>Testar<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h2>
+<p>För närvarande finns det ingen <code class="code docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> och testning görs på följande sätt</p>
+<p>The following instructions start from <code class="docutils literal notranslate"><span class="pre">path/to/pgrouting</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tools/testers/doc_queries_generator.pl
+createdb<span class="w"> </span>-U<span class="w"> </span>&lt;user&gt;<span class="w"> </span>___pgr___test___
+sh<span class="w"> </span>./tools/testers/pg_prove_tests.sh<span class="w"> </span>&lt;user&gt;
+dropdb<span class="w"> </span>-U<span class="w"> </span>&lt;user&gt;<span class="w"> </span>___pgr___test___
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<p class="rubric">Index och tabeller</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Söksida</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      Senast uppdaterad aug. 28, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

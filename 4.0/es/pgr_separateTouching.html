@@ -15,7 +15,7 @@
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=2a1119b3"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
     <script src="_static/translations.js?v=efdbd0b9"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -337,7 +337,7 @@ PostgreSQL <code class="docutils literal notranslate"><span class="pre">NOTICE</
 <p>In this example the original edge table will be used to store the additional
 geometries.</p>
 <p class="rubric">An example use without results</p>
-<p>La ruta de <span class="math notranslate nohighlight">\(1\)</span> a :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>2`no da ninguna solución.</p>
+<p>La ruta de <span class="math notranslate nohighlight">\(1\)</span> a <span class="math notranslate nohighlight">\(2\)</span> no da ninguna solución.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span> <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -467,7 +467,7 @@ based on the length of the geometry and the directionality is kept using the
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en ago 27, 2025.<br/>
+      Actualizado por última vez en ago 28, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

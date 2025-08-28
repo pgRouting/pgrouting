@@ -1,0 +1,215 @@
+
+
+<!DOCTYPE html>
+
+<html lang="sv" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Metrics - Familj av funktioner &#8212; pgRouting Manual (4.0-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=32e15c7b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
+    <script src="_static/translations.js?v=92a62177"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Sök" href="search.html" />
+    <link rel="next" title="pgr_grad" href="pgr_degree.html" />
+    <link rel="prev" title="pgr_kruskalDFS" href="pgr_kruskalDFS.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduktion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Exempeldata</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting-koncept</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Funktionsfamiljer</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Föreslagna funktioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Anteckningar för release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migrationsguide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Metrics - Familj av funktioner</a><ul>
+<li><a class="reference internal" href="#see-also">Se även</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_kruskalDFS.html" title="Previous Chapter: pgr_kruskalDFS"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_kruskalDFS</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_degree.html" title="Next Chapter: pgr_grad"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_grad &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('metrics-family','sv'));  </script>
+            
+  <div class="line-block" id="index-0">
+<div class="line"><br /></div>
+</div>
+<section id="metrics-family-of-functions">
+<h1>Metrics - Familj av funktioner<a class="headerlink" href="#metrics-family-of-functions" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_grad</span></a> - Returns a set of vertices and corresponding count of
+incident edges to the vertex.</p></li>
+</ul>
+<div class="admonition-experimental admonition">
+<p class="admonition-title">Experimental</p>
+<div class="admonition warning">
+<p class="admonition-title">Varning</p>
+<p>Experimentella funktioner</p>
+<ul class="simple">
+<li><p>De är inte officiellt i den aktuella versionen.</p></li>
+<li><p>De kommer troligen inte att officiellt vara en del av nästa utgåva:</p>
+<ul>
+<li><p>Funktionerna får inte använda sig av ANY-INTEGER och ANY-NUMERICAL</p></li>
+<li><p>Namnet kan komma att ändras.</p></li>
+<li><p>Signaturen kan komma att ändras.</p></li>
+<li><p>Funktionaliteten kan komma att ändras.</p></li>
+<li><p>pgTap-tester kan saknas.</p></li>
+<li><p>Might need c/c++ review.</p></li>
+<li><p>Eventuell dokumentation kan behöva skrivas om.</p></li>
+<li><p>Det kan behövas mycket feedback från samhället.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_betweennessCentrality.html"><span class="doc">pgr_betweennessCentrality - Experimentell</span></a> - Calculates relative betweenness centrality
+using Brandes Algorithm</p></li>
+<li><p><a class="reference internal" href="pgr_bandwidth.html"><span class="doc">pgr_bandwidth - Experimental</span></a> - Computes the bandwidth of a graph.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<section id="see-also">
+<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<p class="rubric">Index och tabeller</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Söksida</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      Senast uppdaterad aug. 28, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
