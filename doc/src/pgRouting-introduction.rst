@@ -80,7 +80,18 @@ pgRouting, pgRoutingLayer, workshop.
 Translators (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Dapeng Wang
+Chinese:
+
+- Dapeng Wang
+
+Spanish:
+
+- Vicky Vergara
+
+Swedish:
+
+- Daniel Nylander
+
 
 Corporate Sponsors in this release (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
