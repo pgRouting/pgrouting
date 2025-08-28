@@ -65,13 +65,13 @@ msgid "Description"
 msgstr "Beskrivning"
 
 msgid "`Edges SQL`_"
-msgstr "`Edges SQL`_"
+msgstr "`Kanter SQL`_"
 
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
 msgid "`Edges SQL`_ as described below."
-msgstr "`Edges SQL`_ enligt beskrivningen nedan."
+msgstr "`Kanter SQL`_ enligt beskrivningen nedan."
 
 msgid "**root vid**"
 msgstr "**root vid**"
@@ -108,16 +108,16 @@ msgid "Where:"
 msgstr "Var:"
 
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ANY-TAL"
 
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "SMALLINT, HELTAL, BIGINT"
+msgstr "SMALLINT, INTEGER, BIGINT"
 
 msgid "ANY-NUMERIC"
 msgstr "VALFRI NUMERISK"
 
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
-msgstr "SMALLINT, HELTAL, BIGINT, REAL, FLOAT, NUMERISK"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 
 msgid "BFS optional parameters"
 msgstr "Valfria parametrar för BFS"
@@ -457,13 +457,13 @@ msgstr ""
 "algoritmen kan passera två gånger på samma vertex."
 
 msgid "`Edges SQL`_ query as described."
-msgstr "`Edges SQL`_-fråga enligt beskrivningen."
+msgstr "`Kanter SQL`_-fråga enligt beskrivningen."
 
 msgid "`Restrictions SQL`_"
-msgstr "\"Begränsningar SQL"
+msgstr "`Begränsningar SQL`_"
 
 msgid "`Restrictions SQL`_ query as described."
-msgstr "`Restrictions SQL`_-fråga enligt beskrivningen."
+msgstr "`Begränsningar SQL`_-fråga enligt beskrivningen."
 
 msgid "**via vertices**"
 msgstr "**via toppar**"
@@ -858,16 +858,16 @@ msgid "Used in :doc:`pgr_pickDeliverEuclidean`"
 msgstr "Används i :doc:`pgr_pickDeliverEuclidean`"
 
 msgid "`Orders SQL`_"
-msgstr "beställningar SQL"
+msgstr "`beställningar SQL`_"
 
 msgid "`Orders SQL`_ as described below."
-msgstr "`Orders SQL`_ enligt beskrivningen nedan."
+msgstr "`beställningar SQL`_ enligt beskrivningen nedan."
 
 msgid "`Vehicles SQL`_"
-msgstr "fordon SQL"
+msgstr "`Fordon SQL`_"
 
 msgid "`Vehicles SQL`_ as described below."
-msgstr "`Vehicles SQL`_ enligt beskrivningen nedan."
+msgstr "`Fordon SQL`_ enligt beskrivningen nedan."
 
 msgid "Used in :doc:`pgr_pickDeliver`"
 msgstr "Används i :doc:`pgr_pickDeliver`"
@@ -938,13 +938,13 @@ msgstr ""
 "fram"
 
 msgid "Orders SQL"
-msgstr "Beställningar SQL"
+msgstr "`beställningar SQL`_"
 
 msgid "Common columns for the orders SQL in both implementations:"
 msgstr "Gemensamma kolumner för order SQL i båda implementationerna:"
 
 msgid "|ANY-INTEGER|"
-msgstr "|ANY-INTEGER"
+msgstr "|ANY-INTEGER|"
 
 msgid "Identifier of the pick-delivery order pair."
 msgstr "Identifierare för orderparet plockning-leverans."
@@ -953,7 +953,7 @@ msgid "``demand``"
 msgstr "``efterfrågan``"
 
 msgid "|ANY-NUMERICAL|"
-msgstr "|ANY-NUMERISK|"
+msgstr "|ANY-NUMERICAL|"
 
 msgid "Number of units in the order"
 msgstr "Antal enheter i ordern"
@@ -1181,7 +1181,7 @@ msgid "Matrix SQL"
 msgstr "Matrix SQL"
 
 msgid "Set of |matrix-result|"
-msgstr "Uppsättning av |matris-resultat|"
+msgstr "Uppsättning av |matrix-result|"
 
 msgid "Identifier of the starting vertex."
 msgstr "Identifierare för startvertexen."
@@ -1398,16 +1398,16 @@ msgstr ""
 "beaktas."
 
 msgid "`Capacity and Demand Units Handling`_"
-msgstr "\"Hantering av enheter för kapacitet och efterfrågan"
+msgstr "`Hantering av kapacitets- och efterfrågeenheter`_"
 
 msgid "`Locations`_"
 msgstr "`Lokaliseringar`_"
 
 msgid "`Time Handling`_"
-msgstr "tidshantering"
+msgstr "`Tidshantering`_"
 
 msgid "`Factor Handling`_"
-msgstr "\"Faktorhantering"
+msgstr "`Faktorhantering`_"
 
 msgid "Capacity and Demand Units Handling"
 msgstr "Hantering av kapacitets- och efterfrågeenheter"
@@ -1587,7 +1587,7 @@ msgid ":math:`7.5*60 = 540`"
 msgstr ":math:`7.5*60 = 540`"
 
 msgid "Factor handling"
-msgstr "Hantering av faktorer"
+msgstr "Faktorhantering"
 
 msgid ""
 "``factor`` acts as a multiplier to convert from distance values to time "
@@ -1983,7 +1983,7 @@ msgid "When `start_vid` = `end_vid`, the `agg_cost` = 0."
 msgstr "När `start_vid` = `slut_vid` är `agg_cost` = 0."
 
 msgid "**Recommended, use a bounding box of no more than 3500 edges.**"
-msgstr "**Rekommendation: använd en avgränsande box med högst 3500 kanter"
+msgstr "**Rekommendation: använd en avgränsande box med högst 3500 kanter**"
 
 msgid "Optional parameters"
 msgstr "Valfria parametrar"
@@ -2920,7 +2920,7 @@ msgstr "Färg på noden."
 msgid ""
 "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
 msgstr ""
-"`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`____"
+"`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
 
 msgid "Components - Family of functions"
 msgstr "Komponenter - Familj av funktioner"
@@ -3200,7 +3200,7 @@ msgid "Used in:"
 msgstr "Används i:"
 
 msgid "`Edges SQL`_ as described below"
-msgstr "`Edges SQL`_ enligt beskrivningen nedan"
+msgstr "`Kanter SQL`_ enligt beskrivningen nedan"
 
 msgid "**start vids**"
 msgstr "**starta videor**"
@@ -3624,7 +3624,7 @@ msgid "**Root vids**"
 msgstr "**Root vids**"
 
 msgid "``ARRAY[ANY-INTEGER]``"
-msgstr "``ARRAY[VALFRITT HELTAL]``"
+msgstr "``ARRAY[ANY-TAL]``"
 
 msgid "**distance**"
 msgstr "**Distans**"
@@ -3633,7 +3633,7 @@ msgid "Upper limit for the inclusion of a node in the result."
 msgstr "Övre gräns för när en nod ska inkluderas i resultatet."
 
 msgid "Returns set of |result-spantree|"
-msgstr "Returnerar uppsättning av |resultat-spantree|"
+msgstr "Returnerar uppsättning av |result-spantree|"
 
 msgid ":math:`depth-1` is the depth of ``pred``"
 msgstr ":math:`depth-1` is the depth of ``pred``"
@@ -4266,7 +4266,7 @@ msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
 msgstr ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
 
 msgid "From the :doc:`TRSP-family`:"
-msgstr "Från :doc:`TRSP-familjen`:"
+msgstr "Från :doc:`TRSP-familjen <TRSP-family>`:"
 
 msgid "Available Functions but not official pgRouting functions"
 msgstr "Tillgängliga funktioner men inte officiella pgRouting-funktioner"
@@ -4314,7 +4314,7 @@ msgid "pgr_bdDijkstra"
 msgstr "pgr_bdDijkstra"
 
 msgid "Output columns standardized to |short-generic-result|"
-msgstr "Utdatakolumner standardiserade till |kort-generiskt-resultat|"
+msgstr "Utdatakolumner standardiserade till |short-generic-result|"
 
 msgid "pgr_bdDijkstraCost"
 msgstr "pgr_bdDijkstraCost"
@@ -4341,7 +4341,7 @@ msgid ":"
 msgstr ":"
 
 msgid "Standardizing output columns to |result-spantree|"
-msgstr "Standardisering av utdatakolumner till |resultat-spantree|"
+msgstr "Standardisering av utdatakolumner till |result-spantree|"
 
 msgid "pgr_contraction"
 msgstr "pgr_contraction"
@@ -4374,7 +4374,7 @@ msgid "pgr_edgeDisjointPaths"
 msgstr "pgr_edgeDisjointPaths"
 
 msgid "Output columns standardized to |generic-result|"
-msgstr "Utdatakolumner standardiserade till |generiskt resultat"
+msgstr "Utdatakolumner standardiserade till |generic-result|"
 
 msgid "pgr_edmondsKarp"
 msgstr "pgr_edmondsKarp"
@@ -4484,7 +4484,7 @@ msgid "pgr_turnRestrictedPath"
 msgstr "pgr_turnRestrictedPath"
 
 msgid "Output columns standardized to |nksp-result|"
-msgstr "Utdatakolumner standardiserade till |nksp-resultat|"
+msgstr "Utdatakolumner standardiserade till |nksp-result|"
 
 msgid "pgr_withPoints"
 msgstr "pgr_withPoints"
@@ -4511,7 +4511,7 @@ msgid "**Driving side** parameter is unnamed and compulsory."
 msgstr "*parametern *Driving side** är inte namngiven och är obligatorisk."
 
 msgid "Output columns standardized to |matrix-result|"
-msgstr "Utmatningskolumner standardiserade till |matris-resultat"
+msgstr "Utmatningskolumner standardiserade till |matrix-result|"
 
 msgid "pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)"
 msgstr "pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)"
@@ -4781,7 +4781,7 @@ msgstr ""
 "pgr_DAGshortestPath"
 
 msgid "Standardized to |matrix-result|"
-msgstr "Standardiserat till |matris-resultat"
+msgstr "Standardiserat till |matrix-result|"
 
 msgid ""
 "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ "
@@ -4798,7 +4798,7 @@ msgstr ""
 "pgr_withPointsCostMatrix"
 
 msgid "Standardized to |generic-result|"
-msgstr "Standardiserat till |generiskt-resultat|"
+msgstr "Standardiserat till |generic-result|"
 
 msgid ""
 "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ "
@@ -4840,7 +4840,7 @@ msgstr ""
 "pgr_sequentialVertexColoring"
 
 msgid "Standardized to |result-spantree|"
-msgstr "Standardiserad till |resultat-spantree|"
+msgstr "Standardiserad till |result-spantree|"
 
 msgid ""
 "`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__ "
@@ -5567,19 +5567,19 @@ msgid ":ref:`pgRouting-concepts:Result columns for cost functions`"
 msgstr ":ref:`pgRouting-concepts:Result columns for cost functions`"
 
 msgid "|matrix-result|"
-msgstr "|matris-resultat"
+msgstr "|matrix-result|"
 
 msgid ":ref:`pgRouting-concepts:Result columns for single path functions`"
 msgstr ":ref:`pgRouting-concepts:Result columns for single path functions`"
 
 msgid "|short-generic-result|"
-msgstr "|kort-generiskt-resultat|"
+msgstr "|short-generic-result|"
 
 msgid ":ref:`pgRouting-concepts:Result columns for spanning tree functions`"
 msgstr ":ref:`pgRouting-concepts:Result columns for spanning tree functions`"
 
 msgid "|result-spantree|"
-msgstr "|resultat-spantree|"
+msgstr "|result-spantree|"
 
 msgid "Function"
 msgstr "Funktion"
@@ -5600,7 +5600,7 @@ msgid ":doc:`pgr_drivingDistance`"
 msgstr ":doc:`pgr_drivingDistance`"
 
 msgid "`Migration of spanning tree functions`_"
-msgstr "`Migration av funktioner för spänningsträd"
+msgstr "`Migration av funktioner för spänningsträd`_"
 
 msgid ":doc:`pgr_withPointsDD`"
 msgstr ":doc:`pgr_withPointsDD`"
@@ -5615,7 +5615,7 @@ msgid ":doc:`pgr_bipartite`"
 msgstr ":doc:`pgr_bipartite`"
 
 msgid "`Migration of output column name change`_"
-msgstr "`Migrering av namnändring för utdatakolumn`"
+msgstr "`Migrering av namnändring för utdatakolumn`_"
 
 msgid ":doc:`pgr_breadthFirstSearch`"
 msgstr ":doc:`pgr_breadthFirstSearch`"
@@ -5627,7 +5627,7 @@ msgid ":doc:`pgr_edgeColoring`"
 msgstr ":doc:`pgr_edgeColoring`"
 
 msgid "`Migration of multiple paths functions`_"
-msgstr "`Migrering av funktioner för flera sökvägar`"
+msgstr "`Migrering av funktioner för flera sökvägar`_"
 
 msgid ":doc:`pgr_sequentialVertexColoring`"
 msgstr ":doc:`pgr_sequentialVertexColoring`"
@@ -5669,13 +5669,13 @@ msgid "v < 4.0"
 msgstr "v < 4.0"
 
 msgid "|matrix-pid|"
-msgstr "|matris-pid|"
+msgstr "|matrix-pid|"
 
 msgid "``pgr_withPointsCostMatrix``"
 msgstr "``pgr_medPunkterKostnadsmatris``"
 
 msgid "**to** |matrix-result|"
-msgstr "**till** |matris-resultat|"
+msgstr "**till** |matrix-result|"
 
 msgid "Migration of |matrix-pid|"
 msgstr "Migrering av |matrix-pid|"
@@ -5709,7 +5709,7 @@ msgstr ""
 "uppdatering av pgRouting"
 
 msgid "New output columns are |matrix-result|"
-msgstr "Nya utdatakolumner är |matris-resultat|"
+msgstr "Nya utdatakolumner är |matrix-result|"
 
 msgid ""
 "To get the old version column names: rename ``start_vid`` to ``start_pid`` "
@@ -5806,13 +5806,13 @@ msgid ":ref:`from_result_disjoint`"
 msgstr ":ref:`from_result_disjoint`"
 
 msgid "Migration of |ksp-result|"
-msgstr "Migrering av |ksp-resultat|"
+msgstr "Migrering av |ksp-result|"
 
 msgid "|nksp-result|"
-msgstr "|nksp-resultat|"
+msgstr "|nksp-result|"
 
 msgid "Before updating pgRouting, enumerate the |ksp-result|"
-msgstr "Innan du uppdaterar pgRouting, räkna upp |ksp-resultatet"
+msgstr "Innan du uppdaterar pgRouting, räkna upp |ksp-result|"
 
 msgid "One to One example using ``pgr_KSP``"
 msgstr "Ett till ett exempel med hjälp av ``pgr_KSP``"
@@ -5825,10 +5825,10 @@ msgstr ""
 "html#signatures>`__ exemplet."
 
 msgid "Migration of |result-disjoint|"
-msgstr "Migrering av |resultat-disjoint|"
+msgstr "Migrering av |result-disjoint|"
 
 msgid "Before updating pgRouting, enumerate the |result-disjoint|"
-msgstr "Innan du uppdaterar pgRouting, räkna upp |resultat-disjunkta|"
+msgstr "Innan du uppdaterar pgRouting, räkna upp |result-disjoint|"
 
 msgid "Skip when applicable, ``start_vid``"
 msgstr "Hoppa över när det är tillämpligt, ``start_vid``"
@@ -5847,7 +5847,7 @@ msgstr ""
 "pgr_edgeDisjointPaths.html#one-to-one>`__ exempel."
 
 msgid "Before updating pgRouting enumerate the columns: |ksp-result|"
-msgstr "Innan du uppdaterar pgRouting räkna upp kolumnerna: |ksp-resultat|"
+msgstr "Innan du uppdaterar pgRouting räkna upp kolumnerna: |ksp-result|"
 
 msgid "Migration of single path functions"
 msgstr "Migrering av funktioner med en enda sökväg"
@@ -5866,7 +5866,7 @@ msgid "v < 3.5"
 msgstr "v < 3.5"
 
 msgid "|old-generic-result|"
-msgstr "|old-generiskt-resultat|"
+msgstr "|old-generic-result|"
 
 msgid "``pgr_aStar``"
 msgstr "``pgr_aStar``"
@@ -5881,7 +5881,7 @@ msgid "``pgr_dagShortestPath``"
 msgstr "``pgr_dagShortestPath``"
 
 msgid "|result-1-1|"
-msgstr "|resultat-1-1|"
+msgstr "|result-1-1|"
 
 msgid "``pgr_edwardMoore``"
 msgstr "``pgr_edwardMoore``"
@@ -5890,7 +5890,7 @@ msgid "``pgr_withPoints``"
 msgstr "``pgr_medPunkter``"
 
 msgid "|old-pid-result|"
-msgstr "|old-pid-resultat|"
+msgstr "|old-pid-result|"
 
 msgid "Migration of |old-generic-result|"
 msgstr "Migrering av |old-generic-result|"
@@ -5902,7 +5902,7 @@ msgstr ""
 "Innan du uppdaterar pgRouting, räkna upp motsvarande kolumner i signaturen"
 
 msgid "Migration of |old-pid-result|"
-msgstr "Migrering av |old-pid-resultat|"
+msgstr "Migrering av |old-pid-result|"
 
 msgid "To get the old version column names, depending on the signature:"
 msgstr "För att få den gamla versionen kolumnnamn, beroende på signaturen:"
@@ -5927,7 +5927,7 @@ msgstr ""
 "av pgRouting"
 
 msgid "Migration of |result-1-1|"
-msgstr "Migrering av |resultat-1-1|"
+msgstr "Migrering av |result-1-1|"
 
 msgid "To get the old version column names:"
 msgstr "För att få kolumnnamnen i den gamla versionen:"
@@ -5949,7 +5949,7 @@ msgstr ""
 "html#one-to-one>`__ exempel."
 
 msgid "Before updating pgRouting enumerate the columns: |result-1-1|"
-msgstr "Innan du uppdaterar pgRouting räkna upp kolumnerna: |resultat-1-1|"
+msgstr "Innan du uppdaterar pgRouting räkna upp kolumnerna: |result-1-1|"
 
 msgid "Using ``pgr_bdDijkstra``"
 msgstr "Använda ``pgr_bdDijkstra``"
@@ -5988,7 +5988,7 @@ msgstr ""
 "html#one-to-many>`__ exempel."
 
 msgid "Before updating pgRouting enumerate the columns: |result-1-m|"
-msgstr "Innan uppdatering av pgRouting räknas kolumnerna upp: |resultat-1-m|"
+msgstr "Innan uppdatering av pgRouting räknas kolumnerna upp: |result-1-m|"
 
 msgid "Using ``pgr_withPoints``"
 msgstr "Använda ``pgr_withPoints``"
@@ -6021,7 +6021,7 @@ msgstr ""
 "html#many-to-one>`__ exempel."
 
 msgid "Before updating pgRouting enumerate the columns: |result-m-1|"
-msgstr "Innan uppdatering av pgRouting räknas kolumnerna upp: |resultat-m-1|"
+msgstr "Innan uppdatering av pgRouting räknas kolumnerna upp: |result-m-1|"
 
 msgid "Using ``pgr_dijkstra``"
 msgstr "Använda ``pgr_dijkstra``"
@@ -6112,7 +6112,7 @@ msgid "``pgr_depthFisrtSearch``"
 msgstr "``pgr_djupFisrtSearch``"
 
 msgid "to |result-spantree|"
-msgstr "till |resultat-spantree|"
+msgstr "till |result-spantree|"
 
 msgid "Migration from |result-bfs|."
 msgstr "Migrering från |result-bfs|."
@@ -6124,7 +6124,7 @@ msgid "Multiple vertices"
 msgstr "Flera hörn"
 
 msgid "Before updating pgRouting enumerate the columns: |result-bfs|"
-msgstr "Innan uppdatering av pgRouting räknas kolumnerna upp: |resultat-bfs|"
+msgstr "Innan uppdatering av pgRouting räknas kolumnerna upp: |result-bfs|"
 
 msgid "Single vertex example using ``pgr_kruskalDD``"
 msgstr "Exempel på enstaka toppar med ``pgr_kruskalDD``"
@@ -6137,7 +6137,7 @@ msgstr ""
 "html#single-vertex>`__ exempel."
 
 msgid "Before updating pgRouting enumerate the columns: |result-bfs|."
-msgstr "Innan uppdatering av pgRouting räknas kolumnerna upp: |resultat-bfs|."
+msgstr "Innan uppdatering av pgRouting räknas kolumnerna upp: |result-bfs|."
 
 msgid "Multiple vertices example using ``pgr_kruskalDFS``"
 msgstr "Exempel på flera vertikaler med hjälp av ``pgr_kruskalDFS``"
@@ -6150,7 +6150,7 @@ msgstr ""
 "html#multiple-vertices>`__ exempel."
 
 msgid "Migration from |result-dij-dd|"
-msgstr "Migrering från |resultat-dij-dd|"
+msgstr "Migrering från |result-dij-dd|"
 
 msgid "Migration depends on the signature."
 msgstr "Migrationen beror på signaturen."
@@ -6168,7 +6168,7 @@ msgid "Changes must be done after updating pgRouting."
 msgstr "Ändringar måste göras efter uppdatering av pgRouting."
 
 msgid "To get the old version column names |result-dij-dd-m|:"
-msgstr "För att få den gamla versionens kolumnnamn |resultat-dij-dd-m|:"
+msgstr "För att få den gamla versionens kolumnnamn |result-dij-dd-m|:"
 
 msgid "filter out the column ``pred`` and ``depth`` and"
 msgstr "filtrera bort kolumnen ``pred`` och ``depth`` och"
@@ -6187,7 +6187,7 @@ msgstr ""
 "pgr_drivingDistance.html#single-vertex>`__ exempel."
 
 msgid "Before updating pgRouting, enumerate |result-1-1-no-seq| columns"
-msgstr "Innan du uppdaterar pgRouting, räkna upp kolumnerna |result-1-1-no-seq"
+msgstr "Innan du uppdaterar pgRouting, räkna upp kolumnerna |result-1-1-no-seq|"
 
 msgid "Multiple vertices example using ``pgr_drivingDistance``"
 msgstr "Exempel på flera toppar med hjälp av ``pgr_drivingDistance``"
@@ -6224,7 +6224,7 @@ msgstr ""
 "**avstånd**."
 
 msgid "Enumerate |result-m-1-no-seq| columns"
-msgstr "Räkna upp |resultat-m-1-no-seq|-kolumner"
+msgstr "Räkna upp |result-m-1-no-seq|-kolumner"
 
 msgid "Validity of **driving side** parameter"
 msgstr "Giltighet för parametern **förarsida**"
@@ -6275,10 +6275,10 @@ msgid "The standardized result columns:"
 msgstr "De standardiserade resultatkolumnerna:"
 
 msgid "|result_edge_color|"
-msgstr "|resultat_kant_färg|"
+msgstr "|result_edge_color|"
 
 msgid "|result_node_color|"
-msgstr "|resultat_node_färg|"
+msgstr "|result_node_color|"
 
 msgid "|result_node_order|"
 msgstr "|result_node_order|"
@@ -6342,7 +6342,7 @@ msgid "Migration from |old-edge-color|"
 msgstr "Migrering från |old-edge-color|"
 
 msgid "Migration to: |result_edge_color|"
-msgstr "Migration till: |resultat_kant_färg|"
+msgstr "Migration till: |result_edge_color|"
 
 msgid "Rename ``edge_id`` to ``edge`` and ``color_id`` to ``color``."
 msgstr "Byt namn på ``edge_id`` till ``edge`` och ``color_id`` till ``color``."
@@ -6351,7 +6351,7 @@ msgid "Migration from |old-node-color|"
 msgstr "Migrering från |old-node-color|"
 
 msgid "Migration to: |result_node_color|"
-msgstr "Migration till: |resultat_node_färg|"
+msgstr "Migration till: |result_node_color|"
 
 msgid "Rename ``vertex_id`` to ``node`` and ``color_id`` to ``color``."
 msgstr ""
@@ -6690,7 +6690,7 @@ msgid ":doc:`pgr_trsp`"
 msgstr ":doc:`pgr_trsp`"
 
 msgid "`Migration of restrictions`_"
-msgstr "\"Flyttning av restriktioner"
+msgstr "`Flyttning av restriktioner`_"
 
 msgid "Use ``pgr_dijkstra`` when there are no restrictions."
 msgstr "Använd ``pgr_dijkstra`` när det inte finns några begränsningar."
@@ -6784,10 +6784,10 @@ msgstr ""
 "doc:`pgr_withPointsKSP` standardiseras resultatkolumnerna."
 
 msgid "|ksp-result|"
-msgstr "|ksp-resultat|"
+msgstr "|ksp-result|"
 
 msgid "|generic-result|"
-msgstr "|generiskt resultat|"
+msgstr "|generic-result|"
 
 msgid ""
 "And ``driving side`` parameter changed from named optional to unnamed "
@@ -6799,13 +6799,13 @@ msgstr ""
 "för riktade och oriktade grafer."
 
 msgid "``pgr_withPointsKSP`` (`One to One`)"
-msgstr "``pgr_withPointsKSP`` (`One to One`)"
+msgstr "``pgr_withPointsKSP`` (`En till en`)"
 
 msgid "Before Migration"
 msgstr "Före migration"
 
 msgid "Output columns were |old-pid-result|"
-msgstr "Utgångskolumnerna var |old-pid-resultat|"
+msgstr "Utgångskolumnerna var |old-pid-result|"
 
 msgid "the columns ``start_vid`` and ``end_vid`` do not exist."
 msgstr "kolumnerna ``start_vid`` och ``end_vid`` finns inte."
@@ -6817,7 +6817,7 @@ msgid "Be aware of the existence of the additional result Columns."
 msgstr "Var medveten om att det finns ytterligare resultat Kolumner."
 
 msgid "New output columns are |generic-result|"
-msgstr "Nya utdatakolumner är |generiskt-resultat|"
+msgstr "Nya utdatakolumner är |generic-result|"
 
 msgid ""
 "Using `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP."
@@ -7430,7 +7430,7 @@ msgstr ""
 "en odelad graf är:"
 
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr "SMALLINT, HELTAL, BIGINT, REAL, FLOAT"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
 msgid "Using this table design for this example:"
 msgstr "Använd denna bordsdesign för detta exempel:"
@@ -7488,7 +7488,7 @@ msgid "Manually creating a database."
 msgstr "Skapa en databas manuellt."
 
 msgid "`Graphs without geometries`_"
-msgstr "\"Grafer utan geometrier"
+msgstr "`Grafer utan geometrier`_"
 
 msgid ":doc:`sampledata`: a small graph used in the documentation examples"
 msgstr ":doc:`sampledata`: a small graph used in the documentation examples"
@@ -8121,12 +8121,12 @@ msgid "For example, for this :doc:`pgr_dijkstra` signature:"
 msgstr "Till exempel, för denna :doc:`pgr_dijkstra` signatur:"
 
 msgid ""
-"pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
+"pgr_dijkstra(`Kanter SQL`_, **start vids**, **end vids**, [``directed``])"
 msgstr ""
-"pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
+"pgr_dijkstra(`Kanter SQL`_, **start vids**, **end vids**, [``directed``])"
 
 msgid "`Edges SQL`_:"
-msgstr "`Edges SQL`_:"
+msgstr "`Kanter SQL`_:"
 
 msgid "Is the first parameter."
 msgstr "Är den första parametern."
@@ -8190,13 +8190,13 @@ msgid "A function might have different overloads. The most common are called:"
 msgstr "En funktion kan ha olika överbelastningar. De vanligaste kallas:"
 
 msgid "`One to One`_"
-msgstr "\"En till en"
+msgstr "`En till en`_"
 
 msgid "`One to Many`_"
-msgstr "\"En till många"
+msgstr "`En till många`_"
 
 msgid "`Many to One`_"
-msgstr "\"Många till en"
+msgstr "`Många till en`_"
 
 msgid "`Many to Many`_"
 msgstr "`Många till många`_"
@@ -8415,7 +8415,7 @@ msgid ":doc:`pgr_dijkstraNear`"
 msgstr ":doc:`pgr_dijkstraNear`"
 
 msgid "Returns |short-generic-result|"
-msgstr "Returnerar |kort-generiskt-resultat|"
+msgstr "Returnerar |short-generic-result|"
 
 msgid "``path_seq``"
 msgstr "``väg_seq``"
@@ -8473,7 +8473,7 @@ msgid ":doc:`pgr_withPointsKSP`"
 msgstr ":doc:`pgr_withPointsKSP`"
 
 msgid "Returns set of |generic-result|"
-msgstr "Returnerar uppsättning av |generiskt-resultat|"
+msgstr "Returnerar uppsättning av |generic-result|"
 
 msgid "``path_id``"
 msgstr "``Sökväg_id``"
@@ -9296,7 +9296,7 @@ msgstr ""
 "önskade kortaste vägar."
 
 msgid "|Boost| Boost Graph Inside"
-msgstr "|Boost-graf inuti"
+msgstr "|Boost| Boost-graf inuti"
 
 msgid "Boost Graph inside"
 msgstr "Öka grafen inuti"
@@ -9309,31 +9309,31 @@ msgstr "Sammanfattning"
 
 msgid "pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**, [**options**])"
 msgstr ""
-"pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**, [**options**])"
+"pgr_KSP(`Kanter SQL`_, **start vid**, **end vid**, **K**, [**options**])"
 
 msgid ""
 "pgr_KSP(`Edges SQL`_, **start vid**, **end vids**, **K**, [**options**])"
 msgstr ""
-"pgr_KSP(`Edges SQL`_, **start vid**, **end vids**, **K**, [**options**])"
+"pgr_KSP(`Kanter SQL`_, **start vid**, **end vids**, **K**, [**options**])"
 
 msgid ""
 "pgr_KSP(`Edges SQL`_, **start vids**, **end vid**, **K**, [**options**])"
 msgstr ""
-"pgr_KSP(`Edges SQL`_, **start vids**, **end vid**, **K**, [**options**])"
+"pgr_KSP(`Kanter SQL`_, **start vids**, **end vid**, **K**, [**options**])"
 
 msgid ""
 "pgr_KSP(`Edges SQL`_, **start vids**, **end vids**, **K**, [**options**])"
 msgstr ""
-"pgr_KSP(`Edges SQL`_, **start vids**, **end vids**, **K**, [**options**])"
+"pgr_KSP(`Kanter SQL`_, **start vids**, **end vids**, **K**, [**options**])"
 
 msgid "pgr_KSP(`Edges SQL`_, `Combinations SQL`_, **K**, [**options**])"
-msgstr "pgr_KSP(`Edges SQL`_, `Combinations SQL`_, **K**, [**options**])"
+msgstr "pgr_KSP(`Kanter SQL`_, `Combinations SQL`_, **K**, [**options**])"
 
 msgid "**options:** ``[directed, heap_paths]``"
 msgstr "**options:** ``[directed, heap_paths]``"
 
 msgid "Returns set of |nksp-result|"
-msgstr "Returnerar uppsättning av |nksp-resultat|"
+msgstr "Returnerar uppsättning av |nksp-result|"
 
 msgid "OR EMPTY SET"
 msgstr "ELLER TOM UPPSÄTTNING"
@@ -9612,7 +9612,7 @@ msgid "pgr_TSP(`Matrix SQL`_, ``[start_id, end_id]``)"
 msgstr "pgr_TSP(`Matrix SQL`_, ``[start_id, end_id]``)"
 
 msgid "Returns set of |tsp-result|"
-msgstr "Returnerar uppsättning av |tsp-resultat|"
+msgstr "Returnerar uppsättning av |tsp-result|"
 
 msgid "Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information"
 msgstr ""
@@ -9629,7 +9629,7 @@ msgid "`Matrix SQL`_ as described below"
 msgstr "`Matrix SQL`_ enligt beskrivningen nedan"
 
 msgid "``ANY-INTEGER``"
-msgstr "``ETT HELTAL``"
+msgstr "``ANY-TAL``"
 
 msgid "``ANY-NUMERICAL``"
 msgstr "``ANY-NUMERISK``"
@@ -9750,7 +9750,7 @@ msgstr "Ny officiell funktion."
 
 msgid "Results change depending on input order of the `Coordinates SQL`_"
 msgstr ""
-"Resultaten ändras beroende på inmatningsordningen för `Coordinates SQL`_"
+"Resultaten ändras beroende på inmatningsordningen för `Koordinater SQL`_"
 
 msgid ""
 "Any duplicated identifier will be ignored. The coordinates that will be kept "
@@ -9768,19 +9768,19 @@ msgid ""
 msgstr "Koordinaterna är helt olika för samma identifierare, till exempel ::"
 
 msgid "pgr_TSPeuclidean(`Coordinates SQL`_, ``[start_id, end_id]``)"
-msgstr "pgr_TSPeuclidean(`Coordinates SQL`_, ``[start_id, end_id]``)"
+msgstr "pgr_TSPeuclidean(`koordinater SQL`_, ``[start_id, end_id]``)"
 
 msgid "With default values"
 msgstr "Med standardvärden"
 
 msgid "`Coordinates SQL`_"
-msgstr "koordinater SQL"
+msgstr "`Koordinater SQL`_"
 
 msgid "`Coordinates SQL`_ as described below"
-msgstr "`Coordinates SQL`_ enligt beskrivningen nedan"
+msgstr "`Koordinater SQL`_ enligt beskrivningen nedan"
 
 msgid "Coordinates SQL"
-msgstr "Koordinerar SQL"
+msgstr "Koordinater SQL"
 
 msgid "``x``"
 msgstr "``x``"
@@ -9886,25 +9886,25 @@ msgstr ""
 "`pgr_aStar(` `One to One`_ `)` på :"
 
 msgid "pgr_aStar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
-msgstr "pgr_aStar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
+msgstr "pgr_aStar(`Kanter SQL`_, **start vid**, **end vid**, [**options**])"
 
 msgid "pgr_aStar(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
-msgstr "pgr_aStar(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
+msgstr "pgr_aStar(`Kanter SQL`_, **start vid**, **end vids**, [**options**])"
 
 msgid "pgr_aStar(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
-msgstr "pgr_aStar(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
+msgstr "pgr_aStar(`Kanter SQL`_, **start vids**, **end vid**, [**options**])"
 
 msgid "pgr_aStar(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
-msgstr "pgr_aStar(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
+msgstr "pgr_aStar(`Kanter SQL`_, **start vids**, **end vids**, [**options**])"
 
 msgid "pgr_aStar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr "pgr_aStar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
+msgstr "pgr_aStar(`Kanter SQL`_, `Combinations SQL`_, [**options**])"
 
 msgid "**options:** ``[directed, heuristic, factor, epsilon]``"
 msgstr "**options:** ``[directed, heuristic, factor, epsilon]``"
 
 msgid "Returns set of |short-generic-result|"
-msgstr "Returnerar uppsättning av |kort-generiska-resultat|"
+msgstr "Returnerar uppsättning av |short-generic-result|"
 
 msgid "Optional parameters are `named parameters` and have a default value."
 msgstr ""
@@ -10002,29 +10002,29 @@ msgid "`end_vid` ascending"
 msgstr "`end_vid` stigande"
 
 msgid "pgr_aStarCost(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
-msgstr "pgr_aStarCost(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
+msgstr "pgr_aStarCost(`Kanter SQL`_, **start vid**, **end vid**, [**options**])"
 
 msgid "pgr_aStarCost(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
 msgstr ""
-"pgr_aStarCost(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
+"pgr_aStarCost(`Kanter SQL`_, **start vid**, **end vids**, [**options**])"
 
 msgid "pgr_aStarCost(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
 msgstr ""
-"pgr_aStarCost(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
+"pgr_aStarCost(`Kanter SQL`_, **start vids**, **end vid**, [**options**])"
 
 msgid ""
 "pgr_aStarCost(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
 msgstr ""
-"pgr_aStarCost(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
+"pgr_aStarCost(`Kanter SQL`_, **start vids**, **end vids**, [**options**])"
 
 msgid "pgr_aStarCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr "pgr_aStarCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
+msgstr "pgr_aStarCost(`Kanter SQL`_, `Combinations SQL`_, [**options**])"
 
 msgid "Returns set of |matrix-result|"
-msgstr "Returnerar uppsättning av |matris-resultat|"
+msgstr "Returnerar uppsättning av |matrix-result|"
 
 msgid "pgr_aStarCost(`Edges SQL`_, **start vids**, **end vids**, [options])"
-msgstr "pgr_aStarCost(`Edges SQL`_, **start vids**, **end vids**, [options])"
+msgstr "pgr_aStarCost(`Kanter SQL`_, **start vids**, **end vids**, [options])"
 
 msgid "``pgr_aStarCostMatrix``"
 msgstr "``pgr_aStarCostMatrix``"
@@ -10064,7 +10064,7 @@ msgid "When the graph is **undirected** the cost matrix is symmetric"
 msgstr "När grafen är **icke-riktad** är kostnadsmatrisen symmetrisk"
 
 msgid "pgr_aStarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
-msgstr "pgr_aStarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
+msgstr "pgr_aStarCostMatrix(`Kanter SQL`_, **start vids**, [**options**])"
 
 msgid ""
 "Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an "
@@ -10117,7 +10117,7 @@ msgid "Running time: :math:`O(V + E)`"
 msgstr "Speltid: :math:`O(V + E)`"
 
 msgid "pgr_articulationPoints(`Edges SQL`_)"
-msgstr "pgr_articulationPoints(`Edges SQL`_)"
+msgstr "pgr_articulationPoints(`Kanter SQL`_)"
 
 msgid "Returns set of |result-node|"
 msgstr "Returnerar uppsättning av |result-node|"
@@ -10185,19 +10185,19 @@ msgstr ""
 "One) på:"
 
 msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
-msgstr "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
+msgstr "pgr_bdAstar(`Kanter SQL`_, **start vid**, **end vid**, [**options**])"
 
 msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
-msgstr "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
+msgstr "pgr_bdAstar(`Kanter SQL`_, **start vid**, **end vids**, [**options**])"
 
 msgid "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
-msgstr "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
+msgstr "pgr_bdAstar(`Kanter SQL`_, **start vids**, **end vid**, [**options**])"
 
 msgid "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
-msgstr "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
+msgstr "pgr_bdAstar(`Kanter SQL`_, **start vids**, **end vids**, [**options**])"
 
 msgid "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
+msgstr "pgr_bdAstar(`Kanter SQL`_, `Combinations SQL`_, [**options**])"
 
 msgid "``pgr_bdAstarCost``"
 msgstr "``pgr_bdAstarCost``"
@@ -10222,25 +10222,25 @@ msgstr ""
 msgid ""
 "pgr_bdAstarCost(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
 msgstr ""
-"pgr_bdAstarCost(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
+"pgr_bdAstarCost(`Kanter SQL`_, **start vid**, **end vid**, [**options**])"
 
 msgid ""
 "pgr_bdAstarCost(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
 msgstr ""
-"pgr_bdAstarCost(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
+"pgr_bdAstarCost(`Kanter SQL`_, **start vid**, **end vids**, [**options**])"
 
 msgid ""
 "pgr_bdAstarCost(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
 msgstr ""
-"pgr_bdAstarCost(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
+"pgr_bdAstarCost(`Kanter SQL`_, **start vids**, **end vid**, [**options**])"
 
 msgid ""
 "pgr_bdAstarCost(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
 msgstr ""
-"pgr_bdAstarCost(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
+"pgr_bdAstarCost(`Kanter SQL`_, **start vids**, **end vids**, [**options**])"
 
 msgid "pgr_bdAstarCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr "pgr_bdAstarCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
+msgstr "pgr_bdAstarCost(`Kanter SQL`_, `Combinations SQL`_, [**options**])"
 
 msgid "``pgr_bdAstarCostMatrix``"
 msgstr "``pgr_bdAstarCostMatrix``"
@@ -10256,7 +10256,7 @@ msgid "Using internally the :doc:`pgr_bdAstar` algorithm"
 msgstr "Intern användning av :doc:`pgr_bdAstar`-algoritmen"
 
 msgid "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
-msgstr "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
+msgstr "pgr_bdAstarCostMatrix(`Kanter SQL`_, **start vids**, [**options**])"
 
 msgid ""
 "``pgr_bdDijkstra`` — Returns the shortest path using Bidirectional Dijkstra "
@@ -10283,25 +10283,25 @@ msgstr "Ändring av signatur på pgr_bdDijsktra(One to One)"
 msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
 msgstr ""
-"pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
+"pgr_bdDijkstra(`Kanter SQL`_, **start vid**, **end vid**, [``directed``])"
 
 msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
 msgstr ""
-"pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
+"pgr_bdDijkstra(`Kanter SQL`_, **start vid**, **end vids**, [``directed``])"
 
 msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
 msgstr ""
-"pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
+"pgr_bdDijkstra(`Kanter SQL`_, **start vids**, **end vid**, [``directed``])"
 
 msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
 msgstr ""
-"pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
+"pgr_bdDijkstra(`Kanter SQL`_, **start vids**, **end vids**, [``directed``])"
 
 msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr "pgr_bdDijkstra(`Kanter SQL`_, `Combinations SQL`_, [``directed``])"
 
 msgid "From vertex :math:`6` to vertex :math:`10` on a **directed** graph"
 msgstr ""
@@ -10355,32 +10355,32 @@ msgstr ""
 msgid ""
 "pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])"
 msgstr ""
-"pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])"
+"pgr_bdDijkstraCost(`Kanter SQL`_, **start vid**, **end vid** , [``directed``])"
 
 msgid ""
 "pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
 msgstr ""
-"pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
+"pgr_bdDijkstraCost(`Kanter SQL`_, **start vid**, **end vids**, [``directed``])"
 
 msgid ""
 "pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vid** , "
 "[``directed``])"
 msgstr ""
-"pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vid** , "
+"pgr_bdDijkstraCost(`Kanter SQL`_, **start vids**, **end vid** , "
 "[``directed``])"
 
 msgid ""
 "pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vids**, "
 "[``directed``])"
 msgstr ""
-"pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vids**, "
+"pgr_bdDijkstraCost(`Kanter SQL`_, **start vids**, **end vids**, "
 "[``directed``])"
 
 msgid "pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [ ``directed``])"
-msgstr "pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [ ``directed``])"
+msgstr "pgr_bdDijkstraCost(`Kanter SQL`_, `Combinations SQL`_, [ ``directed``])"
 
 msgid "pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr "pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr "pgr_bdDijkstraCost(`Kanter SQL`_, `Combinations SQL`_, [``directed``])"
 
 msgid "``pgr_bdDijkstraCostMatrix``"
 msgstr "``pgr_bdDijkstraCostMatrix``"
@@ -10399,7 +10399,7 @@ msgstr ""
 "Dijkstra-algoritmen."
 
 msgid "pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
-msgstr "pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
+msgstr "pgr_bdDijkstraCostMatrix(`Kanter SQL`_, **start vids**, [``directed``])"
 
 msgid ""
 "Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an "
@@ -10491,25 +10491,25 @@ msgstr "Speltid: :math:`O(| start\\_vids | * ( V * E))`"
 msgid ""
 "pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
 msgstr ""
-"pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
+"pgr_bellmanFord(`Kanter SQL`_, **start vid**, **end vid**, [``directed``])"
 
 msgid ""
 "pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
 msgstr ""
-"pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
+"pgr_bellmanFord(`Kanter SQL`_, **start vid**, **end vids**, [``directed``])"
 
 msgid ""
 "pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
 msgstr ""
-"pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
+"pgr_bellmanFord(`Kanter SQL`_, **start vids**, **end vid**, [``directed``])"
 
 msgid ""
 "pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
 msgstr ""
-"pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
+"pgr_bellmanFord(`Kanter SQL`_, **start vids**, **end vids**, [``directed``])"
 
 msgid "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr "pgr_bellmanFord(`Kanter SQL`_, `Combinations SQL`_, [``directed``])"
 
 msgid ""
 "`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/"
@@ -10572,7 +10572,7 @@ msgid "Throws when there are no edges in the graph"
 msgstr "Kastar när det inte finns några kanter i grafen"
 
 msgid "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
-msgstr "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
+msgstr "pgr_betweennessCentrality(`Kanter SQL`_, [``directed``])"
 
 msgid "Returns set of ``(vid, centrality)``"
 msgstr "Returnerar uppsättning av ``(vid, centralitet)``"
@@ -10664,10 +10664,10 @@ msgid "``edge`` ascending."
 msgstr "``kant`` stigande."
 
 msgid "pgr_biconnectedComponents(`Edges SQL`_)"
-msgstr "pgr_biconnectedComponents(`Edges SQL`_)"
+msgstr "pgr_biconnectedComponents(`Kanter SQL`_)"
 
 msgid "Returns set of |result-component-E|"
-msgstr "Returnerar uppsättning av |resultat-komponent-E|"
+msgstr "Returnerar uppsättning av |result-component-E|"
 
 msgid "The biconnected components of the graph"
 msgstr "De biconnected komponenterna i grafen"
@@ -10750,38 +10750,38 @@ msgid "Running time: :math:`O(| start\\_vids | * |E|)`"
 msgstr "Speltid: :math:`O(| start\\_vids | * |E|)``"
 
 msgid ""
-"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vid**, "
+"pgr_binaryBreadthFirstSearch(`Kanter SQL`_, **start vid**, **end vid**, "
 "[``directed``])"
 msgstr ""
-"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vid**, "
+"pgr_binaryBreadthFirstSearch(`Kanter SQL`_, **start vid**, **end vid**, "
 "[``directed``])"
 
 msgid ""
-"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vids**, "
+"pgr_binaryBreadthFirstSearch(`Kanter SQL`_, **start vid**, **end vids**, "
 "[``directed``])"
 msgstr ""
-"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vids**, "
+"pgr_binaryBreadthFirstSearch(`Kanter SQL`_, **start vid**, **end vids**, "
 "[``directed``])"
 
 msgid ""
-"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid**, "
+"pgr_binaryBreadthFirstSearch(`Kanter SQL`_, **start vids**, **end vid**, "
 "[``directed``])"
 msgstr ""
-"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid**, "
+"pgr_binaryBreadthFirstSearch(`Kanter SQL`_, **start vids**, **end vid**, "
 "[``directed``])"
 
 msgid ""
-"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**, "
+"pgr_binaryBreadthFirstSearch(`Kanter SQL`_, **start vids**, **end vids**, "
 "[``directed``])"
 msgstr ""
-"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**, "
+"pgr_binaryBreadthFirstSearch(`Kanter SQL`_, **start vids**, **end vids**, "
 "[``directed``])"
 
 msgid ""
-"pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, "
+"pgr_binaryBreadthFirstSearch(`Kanter SQL`_, `Combinations SQL`_, "
 "[``directed``])"
 msgstr ""
-"pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, "
+"pgr_binaryBreadthFirstSearch(`Kanter SQL`_, `Combinations SQL`_, "
 "[``directed``])"
 
 msgid ""
@@ -10847,7 +10847,7 @@ msgstr ""
 "Om grafen inte är bipartitisk returnerar algoritmen en tom uppsättning."
 
 msgid "pgr_bipartite(`Edges SQL`_)"
-msgstr "pgr_bipartite(`Edges SQL`_)"
+msgstr "pgr_bipartite(`Kanter SQL`_)"
 
 msgid "When the graph is bipartite"
 msgstr "När grafen är tvådelad"
@@ -10907,19 +10907,19 @@ msgid "Running time: Polynomial"
 msgstr "Drifttid: Polynom"
 
 msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**)"
-msgstr "pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr "pgr_boykovKolmogorov(`Kanter SQL`_, **start vid**, **end vid**)"
 
 msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**)"
-msgstr "pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr "pgr_boykovKolmogorov(`Kanter SQL`_, **start vid**, **end vids**)"
 
 msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**)"
-msgstr "pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr "pgr_boykovKolmogorov(`Kanter SQL`_, **start vids**, **end vid**)"
 
 msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**)"
-msgstr "pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr "pgr_boykovKolmogorov(`Kanter SQL`_, **start vids**, **end vids**)"
 
 msgid "pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_)"
-msgstr "pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "pgr_boykovKolmogorov(`Kanter SQL`_, `Combinations SQL`_)"
 
 msgid "Returns set of |result-flow|"
 msgstr "Returnerar uppsättning av |result-flow|"
@@ -10986,10 +10986,10 @@ msgid "Running time: :math:`O(E + V)`"
 msgstr "Speltid: :math:`O(E + V)`"
 
 msgid "pgr_breadthFirstSearch(`Edges SQL`_, **root vid**, [**options**])"
-msgstr "pgr_breadthFirstSearch(`Edges SQL`_, **root vid**, [**options**])"
+msgstr "pgr_breadthFirstSearch(`Kanter SQL`_, **root vid**, [**options**])"
 
 msgid "pgr_breadthFirstSearch(`Edges SQL`_, **root vids**, [**options**])"
-msgstr "pgr_breadthFirstSearch(`Edges SQL`_, **root vids**, [**options**])"
+msgstr "pgr_breadthFirstSearch(`Kanter SQL`_, **root vids**, [**options**])"
 
 msgid "**options:** ``[max_depth, directed]``"
 msgstr "**options:** ``[max_depth, directed]``"
@@ -11064,7 +11064,7 @@ msgid "Running time: :math:`O(E * (V + E))`"
 msgstr "Speltid: :math:`O(E * (V + E))`"
 
 msgid "pgr_bridges(`Edges SQL`_)"
-msgstr "pgr_bridges(`Edges SQL`_)"
+msgstr "pgr_bridges(`Kanter SQL`_)"
 
 msgid "Returns set of |result-edge|"
 msgstr "Returnerar uppsättning av |result-edge|"
@@ -11099,10 +11099,10 @@ msgid "Returns ``EMPTY SET`` on a disconnected graph"
 msgstr "Returnerar ``EMPTY SET`` på en frånkopplad graf"
 
 msgid "pgr_chinesePostman(`Edges SQL`_)"
-msgstr "pgr_chinesePostman(`Edges SQL`_)"
+msgstr "pgr_chinesePostman(`Kanter SQL`_)"
 
 msgid "Returns set of |result-1-1-no-seq|"
-msgstr "Returnerar uppsättning av |resultat-1-1-no-seq|"
+msgstr "Returnerar uppsättning av |result-1-1-no-seq|"
 
 msgid "Returns set of ``(seq, node, edge, cost, agg_cost)``"
 msgstr "Returnerar uppsättning av ``(seq, nod, kant, kostnad, agg_cost)``"
@@ -11136,7 +11136,7 @@ msgid "Return value when the graph if disconnected"
 msgstr "Returvärde när grafen är frånkopplad"
 
 msgid "pgr_chinesePostmanCost(`Edges SQL`_)"
-msgstr "pgr_chinesePostmanCost(`Edges SQL`_)"
+msgstr "pgr_chinesePostmanCost(`Kanter SQL`_)"
 
 msgid "RETURNS ``FLOAT``"
 msgstr "RETURNERAR ``FLÖDE``"
@@ -11171,10 +11171,10 @@ msgid "``component`` ascending"
 msgstr "``komponent`` stigande"
 
 msgid "pgr_connectedComponents(`Edges SQL`_)"
-msgstr "pgr_connectedComponents(`Edges SQL`_)"
+msgstr "pgr_connectedComponents(`Kanter SQL`_)"
 
 msgid "Returns set of |result-component-V|"
-msgstr "Returnerar uppsättning av |resultat-komponent-V|"
+msgstr "Returnerar uppsättning av |result-component-V|"
 
 msgid "The connected components of the graph"
 msgstr "De anslutna komponenterna i grafen"
@@ -11281,13 +11281,13 @@ msgid "Linear Contraction. See :doc:`pgr_contractionLinear`."
 msgstr "Linjär sammandragning. Se :doc:`pgr_contractionLinear`."
 
 msgid "pgr_contraction(`Edges SQL`_, [**options**])"
-msgstr "pgr_contraction(`Edges SQL`_, [**options**])"
+msgstr "pgr_contraction(`Kanter SQL`_, [**options**])"
 
 msgid "**options:** ``[directed, methods, cycles, forbidden]``"
 msgstr "**options:** ``[directed, methods, cycles, forbidden]``"
 
 msgid "Returns set of |result-contract|"
-msgstr "Returnerar uppsättning av |resultat-kontrakt|"
+msgstr "Returnerar uppsättning av |result-contract|"
 
 msgid "Dead end and linear contraction in that order on an undirected graph."
 msgstr "Dead end och linjär sammandragning i den ordningen på en odelad graf."
@@ -11646,7 +11646,7 @@ msgid ""
 msgstr "När alla kanter är inkommande oavsett antalet angränsande toppar."
 
 msgid "pgr_contractionDeadEnd(`Edges SQL`_, [**options**])"
-msgstr "pgr_contractionDeadEnd(`Edges SQL`_, [**options**])"
+msgstr "pgr_contractionDeadEnd(`Kanter SQL`_, [**options**])"
 
 msgid "**options:** ``[directed, forbidden]``"
 msgstr "**options:** ``[directed, forbidden]``"
@@ -11959,10 +11959,10 @@ msgid ""
 msgstr "Funktionen ``pgr_contractionHierarchies`` har följande signatur:"
 
 msgid "pgr_contractionHierarchies(`Edges SQL`_, [**options**])"
-msgstr "pgr_contractionHierarchies(`Edges SQL`_, [**options**])"
+msgstr "pgr_contractionHierarchies(`Kanter SQL`_, [**options**])"
 
 msgid "Returns set of |result-contraction-hierarchies|"
-msgstr "Returnerar uppsättning av |resultat-kontraktion-hierarkier|"
+msgstr "Returnerar uppsättning av |result-contraction-hierarchies|"
 
 msgid "Contraction hierarchies optional parameters"
 msgstr "Sammandragningshierarkier valfria parametrar"
@@ -12238,7 +12238,7 @@ msgstr ""
 "kontraherade topparna och kanterna."
 
 msgid "pgr_contractionLinear(`Edges SQL`_, [**options**])"
-msgstr "pgr_contractionLinear(`Edges SQL`_, [**options**])"
+msgstr "pgr_contractionLinear(`Kanter SQL`_, [**options**])"
 
 msgid "Linear contraction on an undirected graph."
 msgstr "Linjär sammandragning på en odelad graf."
@@ -12436,7 +12436,7 @@ msgid ":math:`m` is the maximum degree of the vertices in the graph."
 msgstr ":math:`m` is the maximum degree of the vertices in the graph."
 
 msgid "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
-msgstr "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
+msgstr "pgr_cuthillMckeeOrdering(`Kanter SQL`_)"
 
 msgid "Returns set of |result_node_order|"
 msgstr "Returnerar uppsättning av |result_node_order|"
@@ -12529,19 +12529,19 @@ msgid "Running time: :math:`O(| start\\_vids | * (V + E))`"
 msgstr "Drifttid: :math:`O(| start\\_vids | * (V + E))`"
 
 msgid "pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vid**)"
-msgstr "pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr "pgr_dagShortestPath(`Kanter SQL`_, **start vid**, **end vid**)"
 
 msgid "pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vids**)"
-msgstr "pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr "pgr_dagShortestPath(`Kanter SQL`_, **start vid**, **end vids**)"
 
 msgid "pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vid**)"
-msgstr "pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr "pgr_dagShortestPath(`Kanter SQL`_, **start vids**, **end vid**)"
 
 msgid "pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vids**)"
-msgstr "pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr "pgr_dagShortestPath(`Kanter SQL`_, **start vids**, **end vids**)"
 
 msgid "pgr_dagShortestPath(`Edges SQL`_, `Combinations SQL`_)"
-msgstr "pgr_dagShortestPath(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "pgr_dagShortestPath(`Kanter SQL`_, `Combinations SQL`_)"
 
 msgid "From vertex :math:`5` to vertex :math:`11` on a **directed** graph"
 msgstr ""
@@ -12631,13 +12631,13 @@ msgid "No ordering is performed."
 msgstr "Ingen beställning utförs."
 
 msgid "pgr_degree(`Edges SQL`_ , [``dryrun``])"
-msgstr "pgr_degree(`Edges SQL`_ , [``dryrun``])"
+msgstr "pgr_degree(`Kanter SQL`_ , [``dryrun``])"
 
 msgid "pgr_degree(`Edges SQL`_ , `Vertex SQL`_, [``dryrun``])"
-msgstr "pgr_degree(`Edges SQL`_ , `Vertex SQL`_, [``dryrun``])"
+msgstr "pgr_degree(`Kanter SQL`_ , `Vertex SQL`_, [``dryrun``])"
 
 msgid "RETURNS SETOF |result-degree|"
-msgstr "RETURNERAR SETOF |resultat-grad|"
+msgstr "RETURNERAR SETOF |result-degree|"
 
 msgid "Edges"
 msgstr "Kanter"
@@ -12888,10 +12888,10 @@ msgid "Depth First Search Running time: :math:`O(E + V)`"
 msgstr "Djup Första sökning Löptid: :math:`O(E + V)`"
 
 msgid "pgr_depthFirstSearch(`Edges SQL`_, **root vid**, [**options**])"
-msgstr "pgr_depthFirstSearch(`Edges SQL`_, **root vid**, [**options**])"
+msgstr "pgr_depthFirstSearch(`Kanter SQL`_, **root vid**, [**options**])"
 
 msgid "pgr_depthFirstSearch(`Edges SQL`_, **root vids**, [**options**])"
-msgstr "pgr_depthFirstSearch(`Edges SQL`_, **root vids**, [**options**])"
+msgstr "pgr_depthFirstSearch(`Kanter SQL`_, **root vids**, [**options**])"
 
 msgid "**options:** ``[directed, max_depth]``"
 msgstr "**options:** ``[directed, max_depth]``"
@@ -12958,18 +12958,18 @@ msgid "Signature change on pgr_dijkstra(One to One)"
 msgstr "Ändring av signatur på pgr_dijkstra(One to One)"
 
 msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
-msgstr "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
+msgstr "pgr_dijkstra(`Kanter SQL`_, **start vid**, **end vid**, [``directed``])"
 
 msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
 msgstr ""
-"pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
+"pgr_dijkstra(`Kanter SQL`_, **start vid**, **end vids**, [``directed``])"
 
 msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
 msgstr ""
-"pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
+"pgr_dijkstra(`Kanter SQL`_, **start vids**, **end vid**, [``directed``])"
 
 msgid "pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr "pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr "pgr_dijkstra(`Kanter SQL`_, `Combinations SQL`_, [``directed``])"
 
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed**"
@@ -13001,19 +13001,19 @@ msgid "4) Path from :math:`12` to :math:`7`"
 msgstr "4) Väg från :math:`12` till :math:`7`"
 
 msgid "5) Using `One to Many`_ to get the solution of examples 1 and 2"
-msgstr "5) Använda `One to Many`_ för att få lösningen på exempel 1 och 2"
+msgstr "5) Använda `En till många`_ för att få lösningen på exempel 1 och 2"
 
 msgid "Paths :math:`\\{6\\}\\rightarrow\\{10, 7\\}`"
 msgstr "Banor :math:`\\{6\\}\\rightarrow\\{10, 7\\}`"
 
 msgid "6) Using `Many to One`_ to get the solution of examples 2 and 4"
-msgstr "6) Använda `Many to One`_ för att få lösningen på exempel 2 och 4"
+msgstr "6) Använda `Många till en`_ för att få lösningen på exempel 2 och 4"
 
 msgid "Paths :math:`\\{6, 12\\}\\rightarrow\\{7\\}`"
 msgstr "Banor :math:`\\{6, 12\\}\\rightarrow\\{7\\}` `"
 
 msgid "7) Using `Many to Many`_ to get the solution of examples 1 to 4"
-msgstr "7) Använda `Many to Many`_ för att få lösningen på exempel 1 till 4"
+msgstr "7) Använda `Många till många`_ för att få lösningen på exempel 1 till 4"
 
 msgid "Paths :math:`\\{6, 12\\}\\rightarrow\\{10, 7\\}`"
 msgstr "Banor :math:`\\{6, 12\\}\\rightarrow\\{10, 7\\}`"
@@ -13047,13 +13047,13 @@ msgid "12) Path from :math:`12` to :math:`7`"
 msgstr "12) Väg från :math:`12` till :math:`7`"
 
 msgid "13) Using `One to Many`_ to get the solution of examples 9 and 10"
-msgstr "13) Använda `One to Many`_ för att få lösningen till exempel 9 och 10"
+msgstr "13) Använda `En till många`_ för att få lösningen till exempel 9 och 10"
 
 msgid "14) Using `Many to One`_ to get the solution of examples 10 and 12"
-msgstr "14) Använda `Many to One`_ för att få lösningen på exempel 10 och 12"
+msgstr "14) Använda `Många till en`_ för att få lösningen på exempel 10 och 12"
 
 msgid "15) Using `Many to Many`_ to get the solution of examples 9 to 12"
-msgstr "15) Använda `Many to Many`_ för att få lösningen på exempel 9 till 12"
+msgstr "15) Använda `Många till många`_ för att få lösningen på exempel 9 till 12"
 
 msgid "16) Using `Combinations`_ to get the solution of examples 9 to 11"
 msgstr "16) Använda `Kombinationer`_ för att få lösningen på exempel 9 till 11"
@@ -13077,13 +13077,13 @@ msgid "20) Path from :math:`12` to :math:`7`"
 msgstr "20) Väg från :math:`12` till :math:`7`"
 
 msgid "21) Using `One to Many`_ to get the solution of examples 17 and 18"
-msgstr "21) Använda `One to Many`_ för att få lösningen på exempel 17 och 18"
+msgstr "21) Använda `En till många`_ för att få lösningen på exempel 17 och 18"
 
 msgid "22) Using `Many to One`_ to get the solution of examples 18 and 20"
-msgstr "22) Använda `Many to One`_ för att få lösningen på exempel 18 och 20"
+msgstr "22) Använda `Många till en`_ för att få lösningen på exempel 18 och 20"
 
 msgid "23) Using `Many to Many`_ to get the solution of examples 17 to 20"
-msgstr "23) Använda `Many to Many`_ för att få lösningen på exempel 17 till 20"
+msgstr "23) Använda `Många till många`_ för att få lösningen på exempel 17 till 20"
 
 msgid "24) Using `Combinations`_ to get the solution of examples 17 to 19"
 msgstr ""
@@ -13108,13 +13108,13 @@ msgid "28) Path from :math:`12` to :math:`7`"
 msgstr "28) Väg från :math:`12` till :math:`7`"
 
 msgid "29) Using `One to Many`_ to get the solution of examples 25 and 26"
-msgstr "29) Använda `One to Many`_ för att få lösningen på exempel 25 och 26"
+msgstr "29) Använda `En till många`_ för att få lösningen på exempel 25 och 26"
 
 msgid "30) Using `Many to One`_ to get the solution of examples 26 and 28"
-msgstr "30) Använda `Many to One`_ för att få lösningen på exempel 26 och 28"
+msgstr "30) Använda `Många till en`_ för att få lösningen på exempel 26 och 28"
 
 msgid "31) Using `Many to Many`_ to get the solution of examples 25 to 28"
-msgstr "31) Använda `Many to Many`_ för att få lösningen på exempel 25 till 28"
+msgstr "31) Använda `Många till många`_ för att få lösningen på exempel 25 till 28"
 
 msgid "32) Using `Combinations`_ to get the solution of examples 25 to 27"
 msgstr ""
@@ -13129,16 +13129,16 @@ msgstr ""
 "Följande exempel visar sökvägen för :math:`\\{6\\}\\rightarrow\\{10\\}`"
 
 msgid "33) Using `One to One`_"
-msgstr "33) Använda \"en till en"
+msgstr "33) Använda `En till en`_"
 
 msgid "34) Using `One to Many`_"
-msgstr "34) Använda `One to Many`_"
+msgstr "34) Använda `En till många`_"
 
 msgid "35) Using `Many to One`_"
-msgstr "35) Använda `Många till ett`__"
+msgstr "35) Använda `Många till en`_"
 
 msgid "36) Using `Many to Many`_"
-msgstr "36) Använda `Many to Many`_"
+msgstr "36) Använda `Många till många`_"
 
 msgid "37) Using `Combinations`_"
 msgstr "37) Använda `Kombinationer`_"
@@ -13176,25 +13176,25 @@ msgstr ""
 msgid ""
 "pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
 msgstr ""
-"pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
+"pgr_dijkstraCost(`Kanter SQL`_, **start vid**, **end vid**, [``directed``])"
 
 msgid ""
 "pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
 msgstr ""
-"pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
+"pgr_dijkstraCost(`Kanter SQL`_, **start vid**, **end vids**, [``directed``])"
 
 msgid ""
 "pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
 msgstr ""
-"pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
+"pgr_dijkstraCost(`Kanter SQL`_, **start vids**, **end vid**, [``directed``])"
 
 msgid ""
 "pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
 msgstr ""
-"pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
+"pgr_dijkstraCost(`Kanter SQL`_, **start vids**, **end vids**, [``directed``])"
 
 msgid "pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr "pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr "pgr_dijkstraCost(`Kanter SQL`_, `Combinations SQL`_, [``directed``])"
 
 msgid "``pgr_dijkstraCostMatrix``"
 msgstr "``pgr_dijkstraCostMatrix``"
@@ -13211,7 +13211,7 @@ msgstr ""
 "Beräkna och returnera en kostnadsmatris med hjälp av Dijkstra-algoritmen."
 
 msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
-msgstr "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
+msgstr "pgr_dijkstraCostMatrix(`Kanter SQL`_, **start vids**, [``directed``])"
 
 msgid "``pgr_dijkstraNear`` - Proposed"
 msgstr "``pgr_dijkstraNear`` - Förslag"
@@ -13279,20 +13279,20 @@ msgstr "Kombinationer: :math:`drt * |Starting vids|`"
 msgid ""
 "pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options A**])"
 msgstr ""
-"pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options A**])"
+"pgr_dijkstraNear(`Kanter SQL`_, **start vid**, **end vids**, [**options A**])"
 
 msgid ""
 "pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options A**])"
 msgstr ""
-"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options A**])"
+"pgr_dijkstraNear(`Kanter SQL`_, **start vids**, **end vid**, [**options A**])"
 
 msgid ""
 "pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, [**options B**])"
 msgstr ""
-"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, [**options B**])"
+"pgr_dijkstraNear(`Kanter SQL`_, **start vids**, **end vids**, [**options B**])"
 
 msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options B**])"
-msgstr "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options B**])"
+msgstr "pgr_dijkstraNear(`Kanter SQL`_, `Combinations SQL`_, [**options B**])"
 
 msgid "**options A:** ``[directed, cap]``"
 msgstr "**options A:** ``[directed, cap]``"
@@ -13303,7 +13303,7 @@ msgstr "**options B:** ``[directed, cap, global]``"
 msgid ""
 "pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
 msgstr ""
-"pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
+"pgr_dijkstraNear(`Kanter SQL`_, **start vid**, **end vids**, [**options**])"
 
 msgid "**options:** ``[directed, cap]``"
 msgstr "**options:** ``[directed, cap]``"
@@ -13333,9 +13333,9 @@ msgstr ""
 "Resultatet visar att stationen vid toppunktet :math:`11` är den närmaste."
 
 msgid ""
-"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
+"pgr_dijkstraNear(`Kanter SQL`_, **start vids**, **end vid**, [**options**])"
 msgstr ""
-"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
+"pgr_dijkstraNear(`Kanter SQL`_, **start vids**, **end vid**, [**options**])"
 
 msgid ""
 "Departing on a car from a subway station find the nearest **two** stations "
@@ -13360,9 +13360,9 @@ msgstr ""
 "den näst bästa är :math:`11`."
 
 msgid ""
-"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
+"pgr_dijkstraNear(`Kanter SQL`_, **start vids**, **end vids**, [**options**])"
 msgstr ""
-"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
+"pgr_dijkstraNear(`Kanter SQL`_, **start vids**, **end vids**, [**options**])"
 
 msgid "**options:** ``[directed, cap, global]``"
 msgstr "**options:** ``[directed, cap, global]``"
@@ -13400,7 +13400,7 @@ msgstr ""
 "Endast `en` rutt returneras eftersom `global` är ``true`` och `cap` är ``1``"
 
 msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options**])"
+msgstr "pgr_dijkstraNear(`Kanter SQL`_, `Combinations SQL`_, [**options**])"
 
 msgid ""
 "Find the best car connection between all the stations of two subway lines"
@@ -13518,40 +13518,40 @@ msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**, [**options "
 "A**])"
 msgstr ""
-"pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**, [**options "
+"pgr_dijkstraNearCost(`Kanter SQL`_, **start vid**, **end vids**, [**options "
 "A**])"
 
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**, [**options "
 "A**])"
 msgstr ""
-"pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**, [**options "
+"pgr_dijkstraNearCost(`Kanter SQL`_, **start vids**, **end vid**, [**options "
 "A**])"
 
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**, [**options "
 "B**])"
 msgstr ""
-"pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**, [**options "
+"pgr_dijkstraNearCost(`Kanter SQL`_, **start vids**, **end vids**, [**options "
 "B**])"
 
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options B**])"
 msgstr ""
-"pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options B**])"
+"pgr_dijkstraNearCost(`Kanter SQL`_, `Combinations SQL`_, [**options B**])"
 
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**, "
 "[**options**])"
 msgstr ""
-"pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**, "
+"pgr_dijkstraNearCost(`Kanter SQL`_, **start vid**, **end vids**, "
 "[**options**])"
 
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**, "
 "[**options**])"
 msgstr ""
-"pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**, "
+"pgr_dijkstraNearCost(`Kanter SQL`_, **start vids**, **end vid**, "
 "[**options**])"
 
 msgid ""
@@ -13565,11 +13565,11 @@ msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**, "
 "[**options**])"
 msgstr ""
-"pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**, "
+"pgr_dijkstraNearCost(`Kanter SQL`_, **start vids**, **end vids**, "
 "[**options**])"
 
 msgid "pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr "pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
+msgstr "pgr_dijkstraNearCost(`Kanter SQL`_, `Combinations SQL`_, [**options**])"
 
 msgid ""
 "The best one is :math:`(11 \\rightarrow 16)` with a cost of :math:`1` "
@@ -13613,13 +13613,13 @@ msgid "One Via"
 msgstr "En Via"
 
 msgid "pgr_dijkstraVia(`Edges SQL`_, **via vertices**, [**options**])"
-msgstr "pgr_dijkstraVia(`Edges SQL`_, **via vertices**, [**options**])"
+msgstr "pgr_dijkstraVia(`Kanter SQL`_, **via vertices**, [**options**])"
 
 msgid "**options:** ``[directed, strict, U_turn_on_edge]``"
 msgstr "**options:** ``[directed, strict, U_turn_on_edge]``"
 
 msgid "Returns set of |via-result|"
-msgstr "Returnerar uppsättning av |via-resultat|"
+msgstr "Returnerar uppsättning av |via-result|"
 
 msgid ""
 "Find the route that visits the vertices :math:`\\{5, 1, 8\\}` in that order "
@@ -13733,14 +13733,14 @@ msgstr ""
 "kommer att överensstämma med motsvarande spännträd."
 
 msgid ""
-"pgr_drivingDistance(`Edges SQL`_, **Root vid**, **distance**, [``directed``])"
+"pgr_drivingDistance(`Kanter SQL`_, **Root vid**, **distance**, [``directed``])"
 msgstr ""
-"pgr_drivingDistance(`Edges SQL`_, **Root vid**, **distance**, [``directed``])"
+"pgr_drivingDistance(`Kanter SQL`_, **Root vid**, **distance**, [``directed``])"
 
 msgid ""
-"pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**, [**options**])"
+"pgr_drivingDistance(`Kanter SQL`_, **Root vids**, **distance**, [**options**])"
 msgstr ""
-"pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**, [**options**])"
+"pgr_drivingDistance(`Kanter SQL`_, **Root vids**, **distance**, [**options**])"
 
 msgid "**options:** [directed, equicost]"
 msgstr "**options:** [directed, equicost]"
@@ -13870,7 +13870,7 @@ msgid ":math:`|V|` is the number of vertices in the graph."
 msgstr ":math:`|V|` is the number of vertices in the graph."
 
 msgid "pgr_edgeColoring(`Edges SQL`_)"
-msgstr "pgr_edgeColoring(`Edges SQL`_)"
+msgstr "pgr_edgeColoring(`Kanter SQL`_)"
 
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
 msgstr "Grafisk färgläggning av pgRouting :doc:`sampledata`"
@@ -13926,37 +13926,37 @@ msgid "Uses :doc:`pgr_boykovKolmogorov` to calculate the paths."
 msgstr "Använder :doc:`pgr_boykovKolmogorov` för att beräkna banorna."
 
 msgid ""
-"pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vid**, "
+"pgr_edgeDisjointPaths(`Kanter SQL`_, **start vid**, **end vid**, "
 "[``directed``])"
 msgstr ""
-"pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vid**, "
+"pgr_edgeDisjointPaths(`Kanter SQL`_, **start vid**, **end vid**, "
 "[``directed``])"
 
 msgid ""
-"pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vids**, "
+"pgr_edgeDisjointPaths(`Kanter SQL`_, **start vid**, **end vids**, "
 "[``directed``])"
 msgstr ""
-"pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vids**, "
+"pgr_edgeDisjointPaths(`Kanter SQL`_, **start vid**, **end vids**, "
 "[``directed``])"
 
 msgid ""
-"pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vid**, "
+"pgr_edgeDisjointPaths(`Kanter SQL`_, **start vids**, **end vid**, "
 "[``directed``])"
 msgstr ""
-"pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vid**, "
+"pgr_edgeDisjointPaths(`Kanter SQL`_, **start vids**, **end vid**, "
 "[``directed``])"
 
 msgid ""
-"pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vids**, "
+"pgr_edgeDisjointPaths(`Kanter SQL`_, **start vids**, **end vids**, "
 "[``directed``])"
 msgstr ""
-"pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vids**, "
+"pgr_edgeDisjointPaths(`Kanter SQL`_, **start vids**, **end vids**, "
 "[``directed``])"
 
 msgid ""
-"pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+"pgr_edgeDisjointPaths(`Kanter SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
-"pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+"pgr_edgeDisjointPaths(`Kanter SQL`_, `Combinations SQL`_, [``directed``])"
 
 msgid ""
 "Using a combinations table, equivalent to calculating result from vertices :"
@@ -13990,19 +13990,19 @@ msgid "Running time: :math:`O( V * E ^ 2)`"
 msgstr "Speltid: :math:`O( V * E ^ 2)`"
 
 msgid "pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vid**)"
-msgstr "pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr "pgr_edmondsKarp(`Kanter SQL`_, **start vid**, **end vid**)"
 
 msgid "pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vids**)"
-msgstr "pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr "pgr_edmondsKarp(`Kanter SQL`_, **start vid**, **end vids**)"
 
 msgid "pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vid**)"
-msgstr "pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr "pgr_edmondsKarp(`Kanter SQL`_, **start vids**, **end vid**)"
 
 msgid "pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vids**)"
-msgstr "pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr "pgr_edmondsKarp(`Kanter SQL`_, **start vids**, **end vids**)"
 
 msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
-msgstr "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "pgr_edmondsKarp(`Kanter SQL`_, `Combinations SQL`_)"
 
 msgid ""
 "`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/"
@@ -14079,25 +14079,25 @@ msgstr "Genomsnittligt fall: :math:`O( | E | )`"
 msgid ""
 "pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
 msgstr ""
-"pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
+"pgr_edwardMoore(`Kanter SQL`_, **start vid**, **end vid**, [``directed``])"
 
 msgid ""
 "pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
 msgstr ""
-"pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
+"pgr_edwardMoore(`Kanter SQL`_, **start vid**, **end vids**, [``directed``])"
 
 msgid ""
 "pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
 msgstr ""
-"pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
+"pgr_edwardMoore(`Kanter SQL`_, **start vids**, **end vid**, [``directed``])"
 
 msgid ""
 "pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
 msgstr ""
-"pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
+"pgr_edwardMoore(`Kanter SQL`_, **start vids**, **end vids**, [``directed``])"
 
 msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr "pgr_edwardMoore(`Kanter SQL`_, `Combinations SQL`_, [``directed``])"
 
 msgid "Using a combinations table on an **undirected** graph."
 msgstr "Använda en kombinationstabell i en **icke-riktad** graf."
@@ -14125,10 +14125,10 @@ msgstr ""
 "När kantidentifieraren anges kommer den också att beräkna in- och utkanterna"
 
 msgid "pgr_extractVertices(`Edges SQL`_, [``dryrun``])"
-msgstr "pgr_extractVertices(`Edges SQL`_, [``dryrun``])"
+msgstr "pgr_extractVertices(`Kanter SQL`_, [``dryrun``])"
 
 msgid "RETURNS SETOF |result-extract|"
-msgstr "RETURNS SETOF |resultat-extrahera|"
+msgstr "RETURNS SETOF |result-extract|"
 
 msgid "When line geometry is known"
 msgstr "När linjegeometrin är känd"
@@ -14290,14 +14290,14 @@ msgid "``EMPTY SET`` is returned on dryrun executions"
 msgstr "``EMPTY SET`` returneras vid dryrun-körningar"
 
 msgid ""
-"pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])"
+"pgr_findCloseEdges(`Kanter SQL`_, **point**, **tolerance**, [**options**])"
 msgstr ""
-"pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])"
+"pgr_findCloseEdges(`Kanter SQL`_, **point**, **tolerance**, [**options**])"
 
 msgid ""
-"pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])"
+"pgr_findCloseEdges(`Kanter SQL`_, **points**, **tolerance**, [**options**])"
 msgstr ""
-"pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])"
+"pgr_findCloseEdges(`Kanter SQL`_, **points**, **tolerance**, [**options**])"
 
 msgid "**options:** ``[cap, dryrun]``"
 msgstr "**options:** ``[cap, dryrun]``"
@@ -14582,7 +14582,7 @@ msgstr ""
 "math:`\\Theta(V^3)`-tid,"
 
 msgid "pgr_floydWarshall(`Edges SQL`_, [``directed``])"
-msgstr "pgr_floydWarshall(`Edges SQL`_, [``directed``])"
+msgstr "pgr_floydWarshall(`Kanter SQL`_, [``directed``])"
 
 msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr "För en riktad delgraf med kanter :math:`\\{1, 2, 3, 4\\}`."
@@ -14610,7 +14610,7 @@ msgid "pgr_full_version()"
 msgstr "pgr_full_version()"
 
 msgid "RETURNS |result-version|"
-msgstr "RETURNS |resultat-version|"
+msgstr "RETURNS |result-version|"
 
 msgid "Information about when this documentation was built"
 msgstr "Information om när denna dokumentation skapades"
@@ -14725,7 +14725,7 @@ msgid ":math:`|c|` is the number of circuits in the graph."
 msgstr ":math:`|c|` is the number of circuits in the graph."
 
 msgid "pgr_hawickCircuits(`Edges SQL`_)"
-msgstr "pgr_hawickCircuits(`Edges SQL`_)"
+msgstr "pgr_hawickCircuits(`Kanter SQL`_)"
 
 msgid "Circuits present in the pgRouting :doc:`sampledata`"
 msgstr "Kretsar som finns i pgRouting :doc:`sampledata`"
@@ -14792,7 +14792,7 @@ msgid "Running time: :math:`O(|V|)`"
 msgstr "Speltid: :math:`O(|V|)`"
 
 msgid "pgr_isPlanar(`Edges SQL`)"
-msgstr "pgr_isPlanar(`Edges SQL`)"
+msgstr "pgr_isPlanar(`Kanter SQL`)"
 
 msgid "RETURNS ``BOOLEAN``"
 msgstr "RETURNERAR ``BOOLEAN``"
@@ -14850,7 +14850,7 @@ msgstr ""
 "använder Boosts implementation som körs på :math:`O(V E \\log V)` tid,"
 
 msgid "pgr johnson(`Edges SQL`_, [``directed``])"
-msgstr "pgr johnson(`Edges SQL`_, [``directed``])"
+msgstr "pgr johnson(`Kanter SQL`_, [``directed``])"
 
 msgid ""
 "Boost `Johnson <https://www.boost.org/libs/graph/doc/"
@@ -14878,7 +14878,7 @@ msgid "EMPTY SET is returned when there are no edges in the graph."
 msgstr "EMPTY SET returneras när det inte finns några kanter i grafen."
 
 msgid "pgr_kruskal(`Edges SQL`_)"
-msgstr "pgr_kruskal(`Edges SQL`_)"
+msgstr "pgr_kruskal(`Kanter SQL`_)"
 
 msgid "Returns set of |result-mst|"
 msgstr "Returnerar uppsättning av |result-mst|"
@@ -14911,10 +14911,10 @@ msgid "Breath First Search Running time: :math:`O(E + V)`"
 msgstr "Breath First Search Speltid: :math:`O(E + V)`"
 
 msgid "pgr_kruskalBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
-msgstr "pgr_kruskalBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
+msgstr "pgr_kruskalBFS(`Kanter SQL`_, **root vid**, [``max_depth``])"
 
 msgid "pgr_kruskalBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
-msgstr "pgr_kruskalBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
+msgstr "pgr_kruskalBFS(`Kanter SQL`_, **root vids**, [``max_depth``])"
 
 msgid "The Minimum Spanning Tree having as root vertex :math:`6`"
 msgstr "Det minsta spännviddsträdet som har som rotvertex :math:`6``"
@@ -14945,10 +14945,10 @@ msgid "Depth First Search running time: :math:`O(E + V)`"
 msgstr "Djup Första sökning Löptid: :math:`O(E + V)`"
 
 msgid "pgr_kruskalDD(`Edges SQL`_, **root vid**, **distance**)"
-msgstr "pgr_kruskalDD(`Edges SQL`_, **root vid**, **distance**)"
+msgstr "pgr_kruskalDD(`Kanter SQL`_, **root vid**, **distance**)"
 
 msgid "pgr_kruskalDD(`Edges SQL`_, **root vids**, **distance**)"
-msgstr "pgr_kruskalDD(`Edges SQL`_, **root vids**, **distance**)"
+msgstr "pgr_kruskalDD(`Kanter SQL`_, **root vids**, **distance**)"
 
 msgid ""
 "The Minimum Spanning Tree starting on vertex :math:`6` with :math:`distance "
@@ -14982,10 +14982,10 @@ msgid "Returned tree nodes from a root vertex are on Depth First Search order"
 msgstr "Returnerade trädnoder från en rotvertex är på djupet först sökordning"
 
 msgid "pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
-msgstr "pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
+msgstr "pgr_kruskalDFS(`Kanter SQL`_, **root vid**, [``max_depth``])"
 
 msgid "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
-msgstr "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
+msgstr "pgr_kruskalDFS(`Kanter SQL`_, **root vids**, [``max_depth``])"
 
 msgid "``pgr_lengauerTarjanDominatorTree`` - Experimental"
 msgstr "``pgr_lengauerTarjanDominatorTree`` - Experimentell"
@@ -15003,8 +15003,8 @@ msgid ""
 "**idom** of each vertex as its parent, the dominator tree can be built."
 msgstr ""
 "Algoritmen beräknar den * omedelbara dominatorn * för varje toppunkt som "
-"kallas **idom **, när **idom ** för varje toppunkt har beräknats genom att "
-"göra varje **idom ** för varje toppunkt som dess förälder, kan "
+"kallas **idom**, när **idom** för varje toppunkt har beräknats genom att "
+"göra varje **idom** för varje toppunkt som dess förälder, kan "
 "dominatorträdet byggas."
 
 msgid "The algorithm works in directed graph only."
@@ -15021,10 +15021,10 @@ msgid "Running time: :math:`O((V+E)log(V+E))`"
 msgstr "Drifttid: :math:`O((V+E)log(V+E))`"
 
 msgid "pgr_lengauerTarjanDominatorTree(`Edges SQL`_, **root vertex**)"
-msgstr "pgr_lengauerTarjanDominatorTree(`Edges SQL`_, **root vertex**)"
+msgstr "pgr_lengauerTarjanDominatorTree(`Kanter SQL`_, **root vertex**)"
 
 msgid "Returns set of |result-idom|"
-msgstr "Returnerar uppsättning av |resultat-idom|"
+msgstr "Returnerar uppsättning av |result-idom|"
 
 msgid "The dominator tree with root vertex :math:`5`"
 msgstr "Dominatorträdet med rotvertex :math:`5`"
@@ -15110,7 +15110,7 @@ msgid ""
 "edges (See `Additional Examples`_)."
 msgstr ""
 "För att få en komplett linjediagram används unika identifierare på "
-"dubbelvägskanterna (se \"Ytterligare exempel\")."
+"dubbelvägskanterna (se `Ytterligare exempel`_)."
 
 msgid "When the graph is undirected the result is undirected."
 msgstr "När grafen är odränerad är resultatet odränerat."
@@ -15119,7 +15119,7 @@ msgid "The ``reverse_cost`` is always :math:`-1`."
 msgstr "Den ``omvända_kostnaden`` är alltid :math:`-1`."
 
 msgid "pgr_lineGraph(`Edges SQL`_, [``directed``])"
-msgstr "pgr_lineGraph(`Edges SQL`_, [``directed``])"
+msgstr "pgr_lineGraph(`Kanter SQL`_, [``directed``])"
 
 msgid "Returns set of |result-lineg|"
 msgstr "Returnerar uppsättning av |result-lineg|"
@@ -15380,7 +15380,7 @@ msgid "Running time: TBD"
 msgstr "Löptid: TBD"
 
 msgid "pgr_lineGraphFull(`Edges SQL`_)"
-msgstr "pgr_lineGraphFull(`Edges SQL`_)"
+msgstr "pgr_lineGraphFull(`Kanter SQL`_)"
 
 msgid "Returns set of |result-linegf|"
 msgstr "Returnerar uppsättning av |result-linegf|"
@@ -15406,7 +15406,7 @@ msgstr ""
 "ytterligare kanter för varje möjlig vändning i en graf."
 
 msgid "|first|"
-msgstr "|första|"
+msgstr "|first|"
 
 msgid "first"
 msgstr "första"
@@ -15415,7 +15415,7 @@ msgid "The transformation"
 msgstr "Omvandlingen"
 
 msgid "|second|"
-msgstr "|sekund|"
+msgstr "|second|"
 
 msgid "second"
 msgstr "sekund"
@@ -15648,10 +15648,10 @@ msgid ""
 msgstr "Algoritmen tar inte hänsyn till geometrisk topologi i beräkningarna."
 
 msgid "pgr_makeConnected(`Edges SQL`_)"
-msgstr "pgr_makeConnected(`Edges SQL`_)"
+msgstr "pgr_makeConnected(`Kanter SQL`_)"
 
 msgid "Returns set of |result-component-make|"
-msgstr "Returnerar uppsättning av |resultat-komponent-make|"
+msgstr "Returnerar uppsättning av |result-component-make|"
 
 msgid "List of edges that are needed to connect the graph."
 msgstr "Lista över kanter som behövs för att koppla ihop grafen."
@@ -15712,7 +15712,7 @@ msgid ":math:`\\alpha(E,V)` is the inverse of the `Ackermann function`_."
 msgstr ":math:`\\alpha(E,V)` is the inverse of the `Ackermann function`_."
 
 msgid "pgr_maxCardinalityMatch(`Edges SQL`_)"
-msgstr "pgr_maxCardinalityMatch(`Edges SQL`_)"
+msgstr "pgr_maxCardinalityMatch(`Kanter SQL`_)"
 
 msgid "Using all edges."
 msgstr "Använd alla kanter."
@@ -15779,19 +15779,19 @@ msgid "Running time: :math:`O( V ^ 3)`"
 msgstr "Speltid: :math:`O( V ^ 3)`"
 
 msgid "pgr_maxFlow(`Edges SQL`_, **start vid**, **end vid**)"
-msgstr "pgr_maxFlow(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr "pgr_maxFlow(`Kanter SQL`_, **start vid**, **end vid**)"
 
 msgid "pgr_maxFlow(`Edges SQL`_, **start vid**, **end vids**)"
-msgstr "pgr_maxFlow(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr "pgr_maxFlow(`Kanter SQL`_, **start vid**, **end vids**)"
 
 msgid "pgr_maxFlow(`Edges SQL`_, **start vids**, **end vid**)"
-msgstr "pgr_maxFlow(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr "pgr_maxFlow(`Kanter SQL`_, **start vids**, **end vid**)"
 
 msgid "pgr_maxFlow(`Edges SQL`_, **start vids**, **end vids**)"
-msgstr "pgr_maxFlow(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr "pgr_maxFlow(`Kanter SQL`_, **start vids**, **end vids**)"
 
 msgid "pgr_maxFlow(`Edges SQL`_, `Combinations SQL`_)"
-msgstr "pgr_maxFlow(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "pgr_maxFlow(`Kanter SQL`_, `Combinations SQL`_)"
 
 msgid "RETURNS ``BIGINT``"
 msgstr "RETURNERAR ``BIGINT``"
@@ -15855,22 +15855,22 @@ msgstr ""
 "number of iterations is much smaller than :math:`U`."
 
 msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vid**)"
-msgstr "pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr "pgr_maxFlowMinCost(`Kanter SQL`_, **start vid**, **end vid**)"
 
 msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vids**)"
-msgstr "pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr "pgr_maxFlowMinCost(`Kanter SQL`_, **start vid**, **end vids**)"
 
 msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vid**)"
-msgstr "pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr "pgr_maxFlowMinCost(`Kanter SQL`_, **start vids**, **end vid**)"
 
 msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vids**)"
-msgstr "pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr "pgr_maxFlowMinCost(`Kanter SQL`_, **start vids**, **end vids**)"
 
 msgid "pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_)"
-msgstr "pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "pgr_maxFlowMinCost(`Kanter SQL`_, `Combinations SQL`_)"
 
 msgid "Returns set of |result-flow-mincost|"
-msgstr "Returnerar uppsättning av |resultat-flöde-minkostnad|"
+msgstr "Returnerar uppsättning av |result-flow-mincost|"
 
 msgid "``pgr_maxFlowMinCost_Cost`` - Experimental"
 msgstr "``pgr_maxFlowMinCost_Cost`` - Experimentell"
@@ -15886,7 +15886,7 @@ msgid "pgr_maxFlowMinCost_Cost(Combinations)"
 msgstr "pgr_maxFlowMinCost_Cost(Combinations)"
 
 msgid "**The cost value of all input edges must be nonnegative.**"
-msgstr "**Kostnadsvärdet för alla inmatade kanter måste vara icke-negativt"
+msgstr "**Kostnadsvärdet för alla inmatade kanter måste vara icke-negativt.**"
 
 msgid "When the maximum flow is 0 then there is no flow and **0** is returned."
 msgstr ""
@@ -15896,19 +15896,19 @@ msgid "Uses :doc:`pgr_maxFlowMinCost`."
 msgstr "Använder :doc:`pgr_maxFlowMinCost`."
 
 msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vid**)"
-msgstr "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr "pgr_maxFlowMinCost_Cost(`Kanter SQL`_, **start vid**, **end vid**)"
 
 msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vids**)"
-msgstr "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr "pgr_maxFlowMinCost_Cost(`Kanter SQL`_, **start vid**, **end vids**)"
 
 msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vid**)"
-msgstr "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr "pgr_maxFlowMinCost_Cost(`Kanter SQL`_, **start vids**, **end vid**)"
 
 msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vids**)"
-msgstr "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr "pgr_maxFlowMinCost_Cost(`Kanter SQL`_, **start vids**, **end vids**)"
 
 msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, `Combinations SQL`_)"
-msgstr "pgr_maxFlowMinCost_Cost(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "pgr_maxFlowMinCost_Cost(`Kanter SQL`_, `Combinations SQL`_)"
 
 msgid "RETURNS FLOAT"
 msgstr "RETURNS FLOAT"
@@ -15996,15 +15996,15 @@ msgid "Signature"
 msgstr "Underskrift"
 
 msgid ""
-"pgr_pickDeliver(`Orders SQL`_, `Vehicles SQL`_, `Matrix SQL`_, [**options**])"
+"pgr_pickDeliver(`beställningar SQL`_, `Vehicles SQL`_, `Matrix SQL`_, [**options**])"
 msgstr ""
-"pgr_pickDeliver(`Orders SQL`_, `Vehicles SQL`_, `Matrix SQL`_, [**options**])"
+"pgr_pickDeliver(`beställningar SQL`_, `Fordon SQL`_, `Matrix SQL`_, [**options**])"
 
 msgid "**options:** ``[factor, max_cycles, initial_sol]``"
 msgstr "**options:** ``[factor, max_cycles, initial_sol]``"
 
 msgid "Returns set of |result-pickdrop|"
-msgstr "Returnerar uppsättning av |resultat-pickdrop|"
+msgstr "Returnerar uppsättning av |result-pickdrop|"
 
 msgid "Solve the following problem"
 msgstr "Lös följande problem"
@@ -16087,7 +16087,7 @@ msgstr "den bästa lösningen som hittas blir resultatet"
 
 msgid "pgr_pickDeliverEuclidean(`Orders SQL`_, `Vehicles SQL`_, [**options**])"
 msgstr ""
-"pgr_pickDeliverEuclidean(`Orders SQL`_, `Vehicles SQL`_, [**options**])"
+"pgr_pickDeliverEuclidean(`Orders SQL`_, `Fordon SQL`_, [**options**])"
 
 msgid "p_x, p_y, p_open, p_close, [p_service,]"
 msgstr "p_x, p_y, p_open, p_close, [p_service,]"
@@ -16159,7 +16159,7 @@ msgid "Prim's running time: :math:`O(E * log V)`"
 msgstr "Prims körtid: :math:`O(E * log V)`"
 
 msgid "pgr_prim(`Edges SQL`_)"
-msgstr "pgr_prim(`Edges SQL`_)"
+msgstr "pgr_prim(`Kanter SQL`_)"
 
 msgid "Minimum spanning forest of a subgraph"
 msgstr "Minsta skog som spänner över en delgraf"
@@ -16186,10 +16186,10 @@ msgstr ""
 "det minsta spännviddsträdet som skapats med Prims algoritm."
 
 msgid "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
-msgstr "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
+msgstr "pgr_primBFS(`Kanter SQL`_, **root vid**, [``max_depth``])"
 
 msgid "pgr_primBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
-msgstr "pgr_primBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
+msgstr "pgr_primBFS(`Kanter SQL`_, **root vids**, [``max_depth``])"
 
 msgid "``pgr_primDD`` — Catchament nodes using Prim's algorithm."
 msgstr "``pgr_primDD`` - Fångar upp noder med Prims algoritm."
@@ -16204,10 +16204,10 @@ msgstr ""
 "(eller vertex) inom det beräknade minsta spännträd."
 
 msgid "pgr_primDD(`Edges SQL`_, **root vid**, **distance**)"
-msgstr "pgr_primDD(`Edges SQL`_, **root vid**, **distance**)"
+msgstr "pgr_primDD(`Kanter SQL`_, **root vid**, **distance**)"
 
 msgid "pgr_primDD(`Edges SQL`_, **root vids**, **distance**)"
-msgstr "pgr_primDD(`Edges SQL`_, **root vids**, **distance**)"
+msgstr "pgr_primDD(`Kanter SQL`_, **root vids**, **distance**)"
 
 msgid ""
 "``pgr_primDFS`` — Prim algorithm for Minimum Spanning Tree with Depth First "
@@ -16224,10 +16224,10 @@ msgstr ""
 "för det minsta spännviddsträdet som skapats med Prims algoritm."
 
 msgid "pgr_primDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
-msgstr "pgr_primDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
+msgstr "pgr_primDFS(`Kanter SQL`_, **root vid**, [``max_depth``])"
 
 msgid "pgr_primDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
-msgstr "pgr_primDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
+msgstr "pgr_primDFS(`Kanter SQL`_, **root vids**, [``max_depth``])"
 
 msgid "``pgr_pushRelabel``"
 msgstr "``pgr_pushRelabel``"
@@ -16246,19 +16246,19 @@ msgid "Renamed from ``pgr_maxFlowPushRelabel``"
 msgstr "Borttagen från ``pgr_maxFlowPushRelabel``"
 
 msgid "pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vid**)"
-msgstr "pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr "pgr_pushRelabel(`Kanter SQL`_, **start vid**, **end vid**)"
 
 msgid "pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vids**)"
-msgstr "pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr "pgr_pushRelabel(`Kanter SQL`_, **start vid**, **end vids**)"
 
 msgid "pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vid**)"
-msgstr "pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr "pgr_pushRelabel(`Kanter SQL`_, **start vids**, **end vid**)"
 
 msgid "pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vids**)"
-msgstr "pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr "pgr_pushRelabel(`Kanter SQL`_, **start vids**, **end vids**)"
 
 msgid "pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)"
-msgstr "pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "pgr_pushRelabel(`Kanter SQL`_, `Combinations SQL`_)"
 
 msgid "``pgr_separateCrossing``"
 msgstr "``pgr_separeraKorsning``"
@@ -16277,10 +16277,10 @@ msgid "This is an auxiliary function for separating crossing edges."
 msgstr "Detta är en hjälpfunktion för att separera korsande kanter."
 
 msgid "pgr_separateCrossing(`Edges SQL`_, [``tolerance``, ``dryrun``])"
-msgstr "pgr_separateCrossing(`Edges SQL`_, [``tolerance``, ``dryrun``])"
+msgstr "pgr_separateCrossing(`Kanter SQL`_, [``tolerance``, ``dryrun``])"
 
 msgid "RETURNS |result-separate|"
-msgstr "RETURNS |resultat-separat|"
+msgstr "RETURNS |result-separate|"
 
 msgid "Get the segments of the crossing geometries"
 msgstr "Hämta segmenten för korsningsgeometrierna"
@@ -16326,7 +16326,7 @@ msgstr ""
 "för att förbättra nätverksanslutningen."
 
 msgid "pgr_separateTouching(`Edges SQL`_, [``tolerance``, ``dryrun``])"
-msgstr "pgr_separateTouching(`Edges SQL`_, [``tolerance``, ``dryrun``])"
+msgstr "pgr_separateTouching(`Kanter SQL`_, [``tolerance``, ``dryrun``])"
 
 msgid "``pgr_sequentialVertexColoring`` - Proposed"
 msgstr "```pgr_sequentialVertexColoring`` - Föreslagen"
@@ -16386,7 +16386,7 @@ msgid ":math:`k` is the number of colors used."
 msgstr ":math:`k` is the number of colors used."
 
 msgid "pgr_sequentialVertexColoring(`Edges SQL`_)"
-msgstr "pgr_sequentialVertexColoring(`Edges SQL`_)"
+msgstr "pgr_sequentialVertexColoring(`Kanter SQL`_)"
 
 msgid ""
 "`Boost: Sequential Vertex Coloring <https://www.boost.org/libs/graph/doc/"
@@ -16465,10 +16465,10 @@ msgid "Running time: :math:`O(V*E + V^2*log V)`."
 msgstr "Drifttid: :math:`O(V*E + V^2*log V)`."
 
 msgid "pgr_stoerWagner(`Edges SQL`_)"
-msgstr "pgr_stoerWagner(`Edges SQL`_)"
+msgstr "pgr_stoerWagner(`Kanter SQL`_)"
 
 msgid "Returns set of |result-mincut|"
-msgstr "Returnerar uppsättning av |resultat-mincut|"
+msgstr "Returnerar uppsättning av |result-mincut|"
 
 msgid "min cut of the main subgraph"
 msgstr "min-klippning av huvudundergrafen"
@@ -16531,7 +16531,7 @@ msgid "Components are described by vertices identifiers."
 msgstr "Komponenterna beskrivs med hjälp av identifierare för vertikalerna."
 
 msgid "pgr_strongComponents(`Edges SQL`_)"
-msgstr "pgr_strongComponents(`Edges SQL`_)"
+msgstr "pgr_strongComponents(`Kanter SQL`_)"
 
 msgid "The strong components of the graph"
 msgstr "De starka komponenterna i grafen"
@@ -16587,7 +16587,7 @@ msgid "The returned values are ordered in topological order:"
 msgstr "De returnerade värdena är ordnade i topologisk ordning:"
 
 msgid "pgr_topologicalSort(`Edges SQL`_)"
-msgstr "pgr_topologicalSort(`Edges SQL`_)"
+msgstr "pgr_topologicalSort(`Kanter SQL`_)"
 
 msgid "Topologically sorting the graph"
 msgstr "Topologisk sortering av grafen"
@@ -16653,7 +16653,7 @@ msgid "The pgr_transitiveClosure function has the following signature:"
 msgstr "Funktionen pgr_transitiveClosure har följande signatur:"
 
 msgid "pgr_transitiveClosure(`Edges SQL`_)"
-msgstr "pgr_transitiveClosure(`Edges SQL`_)"
+msgstr "pgr_transitiveClosure(`Kanter SQL`_)"
 
 msgid "Returns set of |result-closure|"
 msgstr "Returnerar uppsättning av |result-closure|"
@@ -16747,38 +16747,38 @@ msgid "Execute the **TRSP** algorithm with restrictions."
 msgstr "Utför **TRSP**-algoritmen med begränsningar."
 
 msgid ""
-"pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, "
+"pgr_trsp(`Kanter SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, "
 "[``directed``])"
 msgstr ""
-"pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, "
+"pgr_trsp(`Kanter SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, "
 "[``directed``])"
 
 msgid ""
-"pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vids**, "
+"pgr_trsp(`Kanter SQL`_, `Restrictions SQL`_, **start vid**, **end vids**, "
 "[``directed``])"
 msgstr ""
-"pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vids**, "
+"pgr_trsp(`Kanter SQL`_, `Restrictions SQL`_, **start vid**, **end vids**, "
 "[``directed``])"
 
 msgid ""
-"pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vid**, "
+"pgr_trsp(`Kanter SQL`_, `Restrictions SQL`_, **start vids**, **end vid**, "
 "[``directed``])"
 msgstr ""
-"pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vid**, "
+"pgr_trsp(`Kanter SQL`_, `Restrictions SQL`_, **start vids**, **end vid**, "
 "[``directed``])"
 
 msgid ""
-"pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vids**, "
+"pgr_trsp(`Kanter SQL`_, `Restrictions SQL`_, **start vids**, **end vids**, "
 "[``directed``])"
 msgstr ""
-"pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vids**, "
+"pgr_trsp(`Kanter SQL`_, `Restrictions SQL`_, **start vids**, **end vids**, "
 "[``directed``])"
 
 msgid ""
-"pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, "
+"pgr_trsp(`Kanter SQL`_, `Restrictions SQL`_, `Combinations SQL`_, "
 "[``directed``])"
 msgstr ""
-"pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, "
+"pgr_trsp(`Kanter SQL`_, `Restrictions SQL`_, `Combinations SQL`_, "
 "[``directed``])"
 
 msgid "From vertex :math:`6` to vertex :math:`10` on an undirected graph."
@@ -16846,10 +16846,10 @@ msgid "**NOTE** when this is done, ``U_turn_on_edge`` flag is ignored."
 msgstr "**NOTE** när detta görs ignoreras flaggan ``U_turn_on_edge``."
 
 msgid ""
-"pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**, "
+"pgr_trspVia(`Kanter SQL`_, `Restrictions SQL`_, **via vertices**, "
 "[**options**])"
 msgstr ""
-"pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**, "
+"pgr_trspVia(`Kanter SQL`_, `Restrictions SQL`_, **via vertices**, "
 "[**options**])"
 
 msgid ""
@@ -16875,7 +16875,7 @@ msgstr ""
 "\\rightarrow 1` är begränsad."
 
 msgid "Executes the :doc:`pgr_trsp` algorithm for the conflicting paths."
-msgstr "Exekverar :doc:`pgr_trsp`-algoritmen för de motstridiga vägarna."
+msgstr "Exekverar :doc:`pgr_trsp` -algoritmen för de motstridiga vägarna."
 
 msgid ""
 "From the :doc:`pgr_dijkstraVia` result it removes the conflicting paths and "
@@ -16972,10 +16972,10 @@ msgid "Do not use negative values on identifiers of the inner queries."
 msgstr "Använd inte negativa värden på identifierare för de inre frågorna."
 
 msgid ""
-"pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"pgr_trspVia_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**via vertices**, **driving side** [**options**])"
 msgstr ""
-"pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"pgr_trspVia_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**via vertices**, **driving side** [**options**])"
 
 msgid "**options:** ``[directed, strict, U_turn_on_edge, details]``"
@@ -17099,7 +17099,7 @@ msgstr ""
 msgid ""
 "Executes the :ref:`TRSP-family:TRSP algorithm` for the conflicting paths."
 msgstr ""
-"Exekverar :ref:`TRSP-family:TRSP-algoritmen` för de motstridiga sökvägarna."
+"Exekverar :ref:`TRSP-family:TRSP algorithm` för de motstridiga sökvägarna."
 
 msgid ""
 "From the :doc:`pgr_withPointsVia` result it removes the conflicting paths "
@@ -17157,13 +17157,13 @@ msgid "Vertices of the graph are:"
 msgstr "Grafens hörn är:"
 
 msgid "**positive** when it belongs to the `Edges SQL`_"
-msgstr "**positiv** när den tillhör `Edges SQL`__"
+msgstr "**positiv** när den tillhör `Kanter SQL`_"
 
 msgid "**negative** when it belongs to the `Points SQL`_"
 msgstr "**negativ** när den tillhör `Points SQL`_"
 
 msgid "The `agg_cost` in the non included values `(v, v)` is `0`"
-msgstr "\"Agg_cost\" i de icke inkluderade värdena \"v, v\" är \"0\""
+msgstr "`Agg_cost` i de icke inkluderade värdena \"v, v\" är \"0\""
 
 msgid "The `agg_cost` in the non included values `(u, v)` is :math:`\\infty`"
 msgstr "Agg_cost i de icke inkluderade värdena `(u, v)` är :math:`\\infty`"
@@ -17179,38 +17179,38 @@ msgid "Running time: :math:`O(|start\\_vids|\\times(V \\log V + E))`"
 msgstr "Drifttid: :math:`O(|start\\_vids|\\times(V \\log V + E))`"
 
 msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**start vid**, **end vid**, [**options**])"
 msgstr ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**start vid**, **end vid**, [**options**])"
 
 msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**start vid**, **end vids**, [**options**])"
 msgstr ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**start vid**, **end vids**, [**options**])"
 
 msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**start vids**, **end vid**, [**options**])"
 msgstr ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**start vids**, **end vid**, [**options**])"
 
 msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**start vids**, **end vids**, [**options**])"
 msgstr ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**start vids**, **end vids**, [**options**])"
 
 msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, "
+"pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Combinations SQL`_, "
 "`Points SQL`_, [**options**])"
 msgstr ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, "
+"pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Combinations SQL`_, "
 "`Points SQL`_, [**options**])"
 
 msgid "**options:** ``[directed, driving_side, details]``"
@@ -17224,10 +17224,10 @@ msgstr ""
 "graf. (med detaljer)"
 
 msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**start vid**, **end vids**, **driving side** [**options**])"
 msgstr ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**start vid**, **end vids**, **driving side** [**options**])"
 
 msgid "**options:** ``[directed, details]``"
@@ -17310,10 +17310,10 @@ msgstr ""
 "att välja de vägar som inte använder begränsningarna"
 
 msgid ""
-"pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, **start vid**, "
+"pgr_turnRestrictedPath(`Kanter SQL`_, `Restrictions SQL`_, **start vid**, "
 "**end vid**, **K**, [**options**])"
 msgstr ""
-"pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, **start vid**, "
+"pgr_turnRestrictedPath(`Kanter SQL`_, `Restrictions SQL`_, **start vid**, "
 "**end vid**, **K**, [**options**])"
 
 msgid "**options:** ``[directed, heap_paths, stop_on_first, strict]``"
@@ -17410,38 +17410,38 @@ msgstr ""
 "Använd Dijkstra-algoritmen för att hitta den kortaste vägen."
 
 msgid ""
-"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
+"pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vid**, "
 "**driving side** [**options**])"
 msgstr ""
-"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
+"pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vid**, "
 "**driving side** [**options**])"
 
 msgid ""
-"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
+"pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vids**, "
 "**driving side** [**options**])"
 msgstr ""
-"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
+"pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vids**, "
 "**driving side** [**options**])"
 
 msgid ""
-"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
+"pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vid**, "
 "**driving side** [**options**])"
 msgstr ""
-"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
+"pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vid**, "
 "**driving side** [**options**])"
 
 msgid ""
-"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, "
+"pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vids**, "
 "**driving side** [**options**])"
 msgstr ""
-"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, "
+"pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vids**, "
 "**driving side** [**options**])"
 
 msgid ""
-"pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **driving "
+"pgr_withPoints(`Kanter SQL`_, `Points SQL`_, `Combinations SQL`_, **driving "
 "side** [**options**])"
 msgstr ""
-"pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **driving "
+"pgr_withPoints(`Kanter SQL`_, `Points SQL`_, `Combinations SQL`_, **driving "
 "side** [**options**])"
 
 msgid "**options:** ``[directed, details])``"
@@ -17537,38 +17537,38 @@ msgid "For **undirected** graphs, the results are **symmetric**."
 msgstr "För **ej riktade** grafer är resultaten **symmetriska**."
 
 msgid ""
-"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
+"pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vid**, "
 "**driving side** [**options**])"
 msgstr ""
-"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
+"pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vid**, "
 "**driving side** [**options**])"
 
 msgid ""
-"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
+"pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vids**, "
 "**driving side** [**options**])"
 msgstr ""
-"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
+"pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vids**, "
 "**driving side** [**options**])"
 
 msgid ""
-"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
+"pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vid**, "
 "**driving side** [**options**])"
 msgstr ""
-"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
+"pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vid**, "
 "**driving side** [**options**])"
 
 msgid ""
-"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
+"pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vids**, **end "
 "vids**, **driving side** [**options**])"
 msgstr ""
-"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
+"pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vids**, **end "
 "vids**, **driving side** [**options**])"
 
 msgid ""
-"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
+"pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, `Combinations SQL`_, "
 "**driving side** [**options**])"
 msgstr ""
-"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
+"pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, `Combinations SQL`_, "
 "**driving side** [**options**])"
 
 msgid "**options:** ``[directed]``"
@@ -17636,10 +17636,10 @@ msgstr ""
 "`pgr_withPoints`."
 
 msgid ""
-"pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, "
+"pgr_withPointsCostMatrix(`Kanter SQL`_, `Points SQL`_, **start vids**, "
 "**driving side** [**options**])"
 msgstr ""
-"pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, "
+"pgr_withPointsCostMatrix(`Kanter SQL`_, `Points SQL`_, **start vids**, "
 "**driving side** [**options**])"
 
 msgid ""
@@ -17668,7 +17668,7 @@ msgstr ""
 msgid ""
 "``pgr_withPointsDD`` - Returns the driving **distance** from a starting "
 "point."
-msgstr "``pgr_withPointsDD`` - Returnerar köravståndet **från en startpunkt."
+msgstr "``pgr_withPointsDD`` - Returnerar köravståndet **från** en startpunkt."
 
 msgid "Output columns standardized to |result-spantree|"
 msgstr "Utgångskolumner standardiserade till |result-spantree|"
@@ -17694,17 +17694,17 @@ msgstr ""
 "extraherade kanterna kommer att överensstämma med motsvarande spännträd."
 
 msgid ""
-"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
+"pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vid**, **distance**, "
 "**driving side**, [**options A**])"
 msgstr ""
-"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
+"pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vid**, **distance**, "
 "**driving side**, [**options A**])"
 
 msgid ""
-"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, "
+"pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vids**, **distance**, "
 "**driving side**, [**options B**])"
 msgstr ""
-"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, "
+"pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vids**, **distance**, "
 "**driving side**, [**options B**])"
 
 msgid "**options A:** ``[directed, details]``"
@@ -17714,10 +17714,10 @@ msgid "**options B:** ``[directed, details, equicost]``"
 msgstr "**options B:** ``[directed, details, equicost]``"
 
 msgid ""
-"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
+"pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vid**, **distance**, "
 "**driving side**, [**options**])"
 msgstr ""
-"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
+"pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vid**, **distance**, "
 "**driving side**, [**options**])"
 
 msgid ""
@@ -17728,10 +17728,10 @@ msgstr ""
 "med detaljer."
 
 msgid ""
-"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, "
+"pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vids**, **distance**, "
 "**driving side**, [**options**])"
 msgstr ""
-"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, "
+"pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vids**, **distance**, "
 "**driving side**, [**options**])"
 
 msgid "**options:** ``[directed, details, equicost]``"
@@ -17824,38 +17824,38 @@ msgstr ""
 "vägarna."
 
 msgid ""
-"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
+"pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vid**, "
 "**K**, **driving_side**, [**options**])"
 msgstr ""
-"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
+"pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vid**, "
 "**K**, **driving_side**, [**options**])"
 
 msgid ""
-"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
+"pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vids**, "
 "**K**, **driving_side**, [**options**])"
 msgstr ""
-"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
+"pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vids**, "
 "**K**, **driving_side**, [**options**])"
 
 msgid ""
-"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
+"pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vid**, "
 "**K**, **driving_side**, [**options**])"
 msgstr ""
-"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
+"pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vid**, "
 "**K**, **driving_side**, [**options**])"
 
 msgid ""
-"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, "
+"pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vids**, "
 "**K**, **driving_side**, [**options**])"
 msgstr ""
-"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, "
+"pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vids**, "
 "**K**, **driving_side**, [**options**])"
 
 msgid ""
-"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, "
+"pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, "
 "**driving_side**, [**options**])"
 msgstr ""
-"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, "
+"pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, "
 "**driving_side**, [**options**])"
 
 msgid "**options:** ``[directed, heap_paths, details]``"
@@ -17961,10 +17961,10 @@ msgstr ""
 "size\\_of(via\\;vertices)`."
 
 msgid ""
-"pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, **driving "
+"pgr_withPointsVia(`Kanter SQL`_, `Points SQL`_, **via vertices**, **driving "
 "side** [**options**])"
 msgstr ""
-"pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, **driving "
+"pgr_withPointsVia(`Kanter SQL`_, `Points SQL`_, **via vertices**, **driving "
 "side** [**options**])"
 
 msgid ""
@@ -24095,7 +24095,7 @@ msgstr ""
 
 #, fuzzy
 msgid "pgr_bandwidth(`Edges SQL`_)"
-msgstr "pgr_bipartite(`Edges SQL`_)"
+msgstr "pgr_bipartite(`Kanter SQL`_)"
 
 #, fuzzy
 msgid "Returns ``BIGINT``"
@@ -24238,7 +24238,7 @@ msgstr ":math:`m` is the maximum degree of the vertices in the graph."
 
 #, fuzzy
 msgid "pgr_kingOrdering(`Edges SQL`_)"
-msgstr "pgr_edgeColoring(`Edges SQL`_)"
+msgstr "pgr_edgeColoring(`Kanter SQL`_)"
 
 #, fuzzy
 msgid ""
