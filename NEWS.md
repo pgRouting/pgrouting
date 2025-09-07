@@ -7,7 +7,7 @@ To read all history of releases go to the latest [release notes](https://docs.pg
 
 
 
-### pgRouting 4.0.0 Release Notes
+pgRouting 4.0.0-alpha1 Release Notes
 
 To see all issues & pull requests closed by this release see the
 [#4.0.0](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22)
@@ -42,7 +42,13 @@ User's Documentation is not build when
 
 * Sphinx is not found
 * When all Sphinx formats are OFF
+
+  * To not build HTML default format: `-DBUILD_HTML=OFF`
+
 * When all languages are OFF
+
+  * To build only English: `-DES=ON -DSV=OFF -DZH_HANS=OFF`
+
 * Documentation output changed location to [build/doc/_build/](format) directory
 
   * For example: for HTML output is on `build/doc/_build/html` directory
@@ -50,6 +56,7 @@ User's Documentation is not build when
 Developers's Documentation is not build when
 
 * Doxygen is not found
+* To not build Doxygen documentation: `-DBUILD_DOXY=OFF`
 
 Summary of changes by function
 
