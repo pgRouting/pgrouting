@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-27 16:54+0000\n"
+"POT-Creation-Date: 2025-09-08 17:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3962,8 +3962,8 @@ msgid "The HTML documentation is build by default"
 msgstr ""
 
 msgid ""
-"The translated languages (en, es, zh_Hans) HTML documentation is build by"
-" default"
+"The translated languages (en, es, sv, zh_Hans) HTML documentation is "
+"build by default"
 msgstr ""
 
 msgid "`WITH-DOC` is not used anymore"
@@ -8185,7 +8185,13 @@ msgstr ""
 msgid "ES"
 msgstr ""
 
-msgid "if OFF the Spaish documentation will no be built"
+msgid "if OFF the Spanish documentation will no be built"
+msgstr ""
+
+msgid "SV"
+msgstr ""
+
+msgid "if OFF the Swedish documentation will no be built"
 msgstr ""
 
 msgid "ZH_HANS"
@@ -8302,7 +8308,22 @@ msgstr ""
 msgid "Translators (in alphabetical order)"
 msgstr ""
 
+msgid "Chinese:"
+msgstr ""
+
 msgid "Dapeng Wang"
+msgstr ""
+
+msgid "Spanish:"
+msgstr ""
+
+msgid "Vicky Vergara"
+msgstr ""
+
+msgid "Swedish:"
+msgstr ""
+
+msgid "Daniel Nylander"
 msgstr ""
 
 msgid "Corporate Sponsors in this release (in alphabetical order)"
