@@ -51,7 +51,7 @@ jobs:
           EOF
           sudo mv ./pgdg.pref /etc/apt/preferences.d/
           sudo apt update
-        
+
       - name: Add PostgreSQL APT repository
         run: |
           sudo apt-get purge postgresql-*
