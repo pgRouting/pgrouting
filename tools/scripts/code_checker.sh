@@ -47,6 +47,8 @@ INCLUDE_ORDER="
 -build/include_order:src/cpp_common/pgdata_getters.cpp,
 -build/include_order:include/cpp_common/get_data.hpp,
 -build/include_order:src/dijkstra/shortestPath_process.cpp,
+-build/include_order:src/metrics/metrics_process.cpp,
+-build/include_order:src/ordering/ordering_process.cpp,
 -build/include_order:src/allpairs/allpairs_process.cpp"
 
 if test -z "$DIRECTORY"; then

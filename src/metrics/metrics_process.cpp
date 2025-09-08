@@ -32,23 +32,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "process/metrics_process.h"
 
-#include <string>
-
 extern "C" {
 #include "c_common/postgres_connection.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 }
 
+#include <string>
+
 #include "c_types/iid_t_rt.h"
 #include "cpp_common/assert.hpp"
 #include "drivers/metrics_driver.hpp"
 
-#if 0
-which = 0 -> bandwidth
+/**
+ which = 0 -> bandwidth
 
-This is c++ code, linked as C code, because pgr_process_metrics is called from C code
-#endif
+ This is c++ code, linked as C code, because pgr_process_metrics is called from C code
+ */
 void pgr_process_metrics(const char* edges_sql, int which, IID_t_rt **result_tuples, size_t *result_count) {
     pgassert(edges_sql);
     pgassert(!(*result_tuples));
