@@ -14,11 +14,11 @@ FROM edges'
 
 /* -- q2 */
 CREATE TABLE my_edges1 (
-     id SERIAL PRIMARY KEY,
-     source INTEGER,
-     target INTEGER,
-     cost DOUBLE PRECISION,
-     reverse_cost DOUBLE PRECISION
+    id SERIAL PRIMARY KEY,
+    source INTEGER,
+    target INTEGER,
+    cost DOUBLE PRECISION,
+    reverse_cost DOUBLE PRECISION
 );
 CREATE TABLE
 /* -- q3 */
@@ -46,7 +46,7 @@ INSERT INTO my_edges1 (source, target, cost, reverse_cost) VALUES
 (6, 3, 1, 1),
 (3, 6, 1, 1),
 (1, 3, 1, 1),
-(3, 1, 1, 1); 
+(3, 1, 1, 1);
 INSERT 0 24
 /* -- q4 */
 SELECT * FROM pgr_bandwidth(
@@ -59,11 +59,11 @@ SELECT * FROM pgr_bandwidth(
 
 /* -- q5 */
 CREATE TABLE my_edges2 (
-     id SERIAL PRIMARY KEY,
-     source INTEGER,
-     target INTEGER,
-     cost DOUBLE PRECISION,
-     reverse_cost DOUBLE PRECISION
+    id SERIAL PRIMARY KEY,
+    source INTEGER,
+    target INTEGER,
+    cost DOUBLE PRECISION,
+    reverse_cost DOUBLE PRECISION
 );
 CREATE TABLE
 /* -- q6 */

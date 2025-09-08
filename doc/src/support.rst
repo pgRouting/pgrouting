@@ -61,7 +61,7 @@ There are two mailing lists for pgRouting hosted on OSGeo discourse server:
 For general questions and topics about how to use pgRouting, please write to the
 user mailing list.
 
-If you want to chat with fellow pgRouting users and contributors, you 
+If you want to chat with fellow pgRouting users and contributors, you
 can join our matrix channel: `pgRouting matrix channel <https://matrix.to/#/#pgrouting:osgeo.org>`_.
 
 You can also ask at `GIS StackExchange <https://gis.stackexchange.com/>`_ and
