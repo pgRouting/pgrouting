@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-08 17:37+0000\n"
+"POT-Creation-Date: 2025-09-11 17:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3915,7 +3915,7 @@ msgstr ""
 msgid ":doc:`release_notes`"
 msgstr ""
 
-msgid "pgRouting 4.0.0 Release Notes"
+msgid "pgRouting 4.0.0-alpha1 Release Notes"
 msgstr ""
 
 #, python-format
@@ -3978,7 +3978,13 @@ msgstr ""
 msgid "When all Sphinx formats are OFF"
 msgstr ""
 
+msgid "To not build HTML default format: `-DBUILD_HTML=OFF`"
+msgstr ""
+
 msgid "When all languages are OFF"
+msgstr ""
+
+msgid "To build only English: `-DES=ON -DSV=OFF -DZH_HANS=OFF`"
 msgstr ""
 
 msgid ""
@@ -3993,6 +3999,9 @@ msgid "Developers's Documentation is not build when"
 msgstr ""
 
 msgid "Doxygen is not found"
+msgstr ""
+
+msgid "To not build Doxygen documentation: `-DBUILD_DOXY=OFF`"
 msgstr ""
 
 msgid "Summary of changes by function"
