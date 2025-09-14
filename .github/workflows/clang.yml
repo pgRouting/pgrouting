@@ -24,8 +24,6 @@ on:
     branches-ignore:
       - 'gh-pages'
 
-    tags: []
-
   pull_request:
     paths:
       - '.github/workflows/clang.yml'

@@ -41,8 +41,6 @@ on:
     branches-ignore:
       - 'gh-pages'
 
-    tags: []
-
   pull_request:
     paths:
       - '.github/workflows/boost_version.yml'

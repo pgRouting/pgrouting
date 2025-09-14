@@ -26,8 +26,6 @@ on:
     branches-ignore:
       - 'gh-pages'
 
-    tags: []
-
   pull_request:
     paths:
       - '.github/workflows/check-queries.yml'
