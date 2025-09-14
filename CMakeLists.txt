@@ -178,7 +178,7 @@ find_package(Perl REQUIRED)
 # PostgreSQL
 #---------------------------------------------
 #---------------------------------------------
-find_package(PostgreSQL "${POSTGRESQL_MINIMUM_VERSION}")
+find_package(PostgreSQL "${POSTGRESQL_MINIMUM_VERSION}" REQUIRED)
 
 # removing type of release on postgres version
 # for XbetaY XalphaY XrcY -> X.Y
