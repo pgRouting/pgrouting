@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     extractVertices.sql
     findCloseEdges.sql
     separateCrossing.sql

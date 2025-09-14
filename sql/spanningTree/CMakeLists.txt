@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     _prim.sql
     _kruskal.sql
     #_randomSpanTree.sql

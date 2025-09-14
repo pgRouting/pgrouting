@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     _bdDijkstra.sql
     bdDijkstra.sql
     bdDijkstraCost.sql

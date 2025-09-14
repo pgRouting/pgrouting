@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     _lineGraphFull.sql
     lineGraphFull.sql
     _lineGraph.sql

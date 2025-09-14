@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
 	_bellman_ford.sql
     bellman_ford.sql
     #_bellman_ford_neg.sql

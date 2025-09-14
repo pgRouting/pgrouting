@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     _sequentialVertexColoring.sql
     sequentialVertexColoring.sql
     _bipartite.sql

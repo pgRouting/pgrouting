@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
 	_breadthFirstSearch.sql
 	_binaryBreadthFirstSearch.sql
     breadthFirstSearch.sql

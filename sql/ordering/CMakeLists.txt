@@ -1,4 +1,4 @@
-SET(LOCAL_FILES
+set(LOCAL_FILES
     _cuthillMckeeOrdering.sql
     cuthillMckeeOrdering.sql
     _sloanOrdering.sql

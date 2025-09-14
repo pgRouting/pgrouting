@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     _ksp.sql
     ksp.sql
     _withPointsKSP.sql

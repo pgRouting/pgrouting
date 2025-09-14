@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     pgRouting-header.sql
     parameter_check.sql
     _checkquery.sql

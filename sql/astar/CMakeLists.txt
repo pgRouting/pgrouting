@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     _astar.sql
     astar.sql
     astarCost.sql

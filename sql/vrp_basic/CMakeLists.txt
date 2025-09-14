@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     #routing_vrp.sql
     _pgr_vrpOneDepot.sql
     vrpOneDepot.sql

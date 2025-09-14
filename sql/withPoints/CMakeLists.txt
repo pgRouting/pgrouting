@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     _withPoints.sql
     withPoints.sql
     withPointsCost.sql
