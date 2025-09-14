@@ -93,7 +93,6 @@ jobs:
             postgresql-server-dev-${PGVER}
 
           wget -q https://sourceforge.net/projects/boost/files/boost/1.${{ matrix.boost_minor }}.0/boost_1_${{ matrix.boost_minor }}_0.tar.bz2
-          echo "<sha256> boost_1_${{ matrix.boost_minor }}_0.tar.bz2" | sha256sum -c -
           sudo tar --bzip2 -xf boost_1_${{ matrix.boost_minor }}_0.tar.bz2
           sudo mv boost_1_${{ matrix.boost_minor }}_0/boost /usr/include/
 

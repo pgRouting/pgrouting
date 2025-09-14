@@ -113,7 +113,7 @@ if(USE_CLANG_TIDY)
     if (CLANG_TIDY_COMMAND)
         set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND};--config-file=${CMAKE_SOURCE_DIR}/.clang-tidy")
     else()
-        message(WARNING "Set to use clang_tidy, but not found.")
+        message(WARNING "Set to use clang-tidy, but not found.")
     endif()
 endif()
 
