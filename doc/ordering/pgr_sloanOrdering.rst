@@ -17,8 +17,7 @@
 ``pgr_sloanOrdering`` - Experimental
 ===============================================================================
 
-``pgr_sloanOrdering`` — Returns the sloan ordering of an undirected
-graph
+``pgr_sloanOrdering`` — Returns the Sloan ordering of an undirected graph
 
 .. include:: experimental.rst
    :start-after: warning-begin
@@ -40,16 +39,14 @@ sparse matrix computations and finite element analysis.
 
 * Finds a pseudoperipheral vertex pair to determine good starting points
 * Uses a priority-based algorithm that balances vertex degree and distance from the start vertex.
-* Aims to mininimize bandwidth (maximum difference between connected vertex indices.
+* Aims to minimize bandwidth (maximum difference between connected vertex indices.
 * The implementation is for undirected graphs
 * Typically produces better orderings than simple breadth-first approaches.
-* Run time is 0.115846 seconds.
 
-|Boost| Boost Graph inside
+|Boost| Boost Graph Inside
 
 Signatures
 ------------------------------------------------------------------------------
-..rubric::Summary
 
 .. index::
     single: sloanOrdering - Experimental on v4.0
@@ -103,7 +100,7 @@ Additional Examples
 
 :Example: Sloan ordering of Original graph from Boost example (vertices 0-9).
 
-..graphviz::
+.. graphviz::
 
    graph G{
    node[shape=circle, style=filled, fillcolor=lightblue, color=black, fontcolor=black, fontsize=12];
@@ -131,7 +128,11 @@ Additional Examples
 
    }
 
-..literalinclude::sloanOrdering.queries
+.. literalinclude:: sloanOrdering.queries
+  :start-after: -- q2
+  :end-before: --q3
+
+.. literalinclude:: sloanOrdering.queries
   :start-after: --q3
   :end-before: --q4
 
