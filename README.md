@@ -59,7 +59,7 @@ The latest documentation: https://docs.pgrouting.org/latest
   * Not supporting v12 & under
 * The Boost Graph Library (BGL) >= 1.56
 * CMake >= 3.12
-* 7.0 > Sphinx >= 4.0.0
+* 4.0.0 <= Sphinx < 7.0
 
 ### User's requirements
 
@@ -105,13 +105,13 @@ To cite pgRouting in publications use:
 **BibTeX entry**:
 
 ```bibtex
-@Manual{,
-  title = {{pgRouting: Routing on PostgreSQL}},
-  author = {{pgRouting contributors}},
-  year = {2025},
-  doi = {10.5281/zenodo.15004469},
-  url = {https://pgrouting.org/},
-}
+    @Manual{,
+      title = {{pgRouting: Routing on PostgreSQL}},
+      author = {{pgRouting contributors}},
+      year = {2025},
+      doi = {10.5281/zenodo.15004469},
+      url = {https://pgrouting.org/},
+    }
 ```
 
 ## LICENSE

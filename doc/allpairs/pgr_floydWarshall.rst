@@ -100,7 +100,7 @@ See Also
 
 * :doc:`pgr_johnson`
 * :doc:`sampledata`
-* Boost `floyd-Warshall
+* Boost `Floyd-Warshall
   <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_
 
 .. rubric:: Indices and tables

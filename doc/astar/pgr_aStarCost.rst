@@ -42,7 +42,7 @@
 Description
 -------------------------------------------------------------------------------
 
-The ``pgr_aStarCost`` function summarizes of the cost of the shortest path
+The ``pgr_aStarCost`` function summarizes the cost of the shortest path
 using the A* algorithm.
 
 **The main characteristics are:**

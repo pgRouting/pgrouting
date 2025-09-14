@@ -46,7 +46,7 @@ algorithm.
 
 .. rubric:: Version 2.4.0
 
-* Signature change on pgr_bdDijsktra(One to One)
+* Signature change on pgr_bdDijkstra(One to One)
 
   * Old signature no longer supported
 

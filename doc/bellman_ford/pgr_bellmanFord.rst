@@ -128,7 +128,7 @@ One to Many
    | Returns set of |short-generic-result|
    | OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
+:Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a directed
           graph
 
 .. literalinclude:: bellmanFord.queries
@@ -149,7 +149,7 @@ Many to One
    | Returns set of |short-generic-result|
    | OR EMPTY SET
 
-:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a directed
           graph
 
 .. literalinclude:: bellmanFord.queries
@@ -171,7 +171,7 @@ Many to Many
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
-          **undirected** graph
+          undirected graph
 
 .. literalinclude:: bellmanFord.queries
    :start-after: -- q5
@@ -191,7 +191,7 @@ Combinations
    | Returns set of |short-generic-result|
    | OR EMPTY SET
 
-:Example: Using a combinations table on an **undirected** graph
+:Example: Using a combinations table on an undirected graph
 
 The combinations table:
 

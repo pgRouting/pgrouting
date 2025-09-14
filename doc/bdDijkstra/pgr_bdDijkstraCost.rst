@@ -43,7 +43,7 @@ Dijkstra algorithm.
 Description
 -------------------------------------------------------------------------------
 
-The ``pgr_bdDijkstraCost`` function summarizes of the cost of the shortest path
+The ``pgr_bdDijkstraCost`` function summarizes the cost of the shortest path
 using the bidirectional Dijkstra Algorithm.
 
 .. include:: bdDijkstra-family.rst

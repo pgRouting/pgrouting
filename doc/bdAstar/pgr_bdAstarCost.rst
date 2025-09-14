@@ -42,7 +42,7 @@ A* algorithm.
 Description
 -------------------------------------------------------------------------------
 
-The ``pgr_bdAstarCost`` function summarizes of the cost of the shortest path
+The ``pgr_bdAstarCost`` function summarizes the cost of the shortest path
 using the bidirectional A* algorithm.
 
 **The main characteristics are:**

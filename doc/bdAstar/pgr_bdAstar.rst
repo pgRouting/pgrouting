@@ -67,8 +67,8 @@ Description
    :start-after: astar general info start
    :end-before: astar general info end
 
-* The results are equivalent to the union of the results of the
-  pgr_bdAStar(One to One) on the:
+* The results are equivalent to the union of the results of pgr_bdAStar(One to
+  One) on the:
 
   * pgr_bdAstar(One to Many)
   * pgr_bdAstar(Many to One)
