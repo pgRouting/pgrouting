@@ -25,7 +25,7 @@ shortcut edges created.
 
 .. rubric:: Version 3.8.0
 
-* New experimental function
+* New experimental function.
 
 
 Description

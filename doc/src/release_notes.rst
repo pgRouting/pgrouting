@@ -367,7 +367,7 @@ Signatures promoted to official
 * :issue:`2718`: pgr_maxFlow(Combinations)
 * :issue:`2718`: pgr_pushRelabel(Combinations)
 
-New experimental functions
+New experimental functions.
 ...............................................................................
 
 * Metrics
@@ -797,7 +797,7 @@ To see all issues & pull requests closed by this release see the
   * Stopping support of PostgreSQL 12
   * CI does not test for PostgreSQL 12
 
-.. rubric:: New experimental functions
+.. rubric:: New experimental functions.
 
 * Metrics
 
@@ -1127,7 +1127,7 @@ To see all issues & pull requests closed by this release see the
   * pgr_findCloseEdges(One point)
   * pgr_findCloseEdges(Many points)
 
-.. rubric:: New experimental functions
+.. rubric:: New experimental functions.
 
 * Ordering
 
@@ -1261,7 +1261,7 @@ To see all issues & pull requests closed by this release see the
 * :issue:`2202`: pgr_sequentialVertexColoring to proposed
 * :issue:`2203`: pgr_dijkstraNear and pgr_dijkstraNearCost to proposed
 
-.. rubric:: New experimental functions
+.. rubric:: New experimental functions.
 
 * Coloring
 
@@ -1345,7 +1345,7 @@ To see all issues & pull requests closed by this release see the
 
   * Removing support for Boost v1.53, v1.54 & v1.55
 
-.. rubric:: New experimental functions
+.. rubric:: New experimental functions.
 
 * pgr_bellmanFord(Combinations)
 * pgr_binaryBreadthFirstSearch(Combinations)
@@ -1678,7 +1678,7 @@ To see all issues & pull requests closed by this release see the
   * Bug Fixes
 
 
-.. rubric:: New experimental functions
+.. rubric:: New experimental functions.
 
 * pgr_maxFlowMinCost
 * pgr_maxFlowMinCost_Cost
@@ -1814,7 +1814,7 @@ pgRouting 2.6.0 Release Notes
 To see all issues & pull requests closed by this release see the
 :milestone:`2.6.0`
 
-.. rubric:: New experimental functions
+.. rubric:: New experimental functions.
 
 * pgr_lineGraphFull
 
