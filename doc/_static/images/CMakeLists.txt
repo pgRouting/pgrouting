@@ -1,14 +1,12 @@
 SET(LOCAL_FILES
     ccbysa.png
-    favicon.ico
     pgrouting.png
-    ccbysa.png
     favicon.ico
 )
 
 foreach (f ${LOCAL_FILES})
-    configure_file(${f} ${f})
-    list(APPEND LOCAL_IMG_FILES "${CMAKE_CURRENT_BINAYR_DIR}/${f}")
+    configure_file(${f} ${f} COPYONLY)
+    list(APPEND LOCAL_IMG_FILES "${CMAKE_CURRENT_BINARY_DIR}/${f}")
 endforeach()
 
 add_subdirectory(developers)

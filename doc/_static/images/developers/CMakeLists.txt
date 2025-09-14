@@ -1,8 +1,8 @@
-SET(LOCAL_FILES
-    disconnectEdgeDirected.png
-    disconnectEdgeUndirected.png
-    disconnectVertexDirected.png
-    disconnectVertexUndirected.png
+set(LOCAL_FILES
+    "disconnectEdgeDirected.png"
+    "disconnectEdgeUndirected.png"
+    "disconnectVertexDirected.png"
+    "disconnectVertexUndirected.png"
 )
 
 foreach (f ${LOCAL_FILES})
