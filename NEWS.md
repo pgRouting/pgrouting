@@ -420,8 +420,8 @@ Removal of SQL deprecated signatures
 
 Removal of SQL deprecated functions
 
-* [#2681](https://github.com/pgRouting/pgrouting/issues/2681): pgr_trspviaedges
-* [#2682](https://github.com/pgRouting/pgrouting/issues/2682): pgr_trspviavertices
+* [#2681](https://github.com/pgRouting/pgrouting/issues/2681): pgr_trspViaedges
+* [#2682](https://github.com/pgRouting/pgrouting/issues/2682): pgr_trspViaVertices
 * [#2748](https://github.com/pgRouting/pgrouting/issues/2748): pgr_alphaShape
 * [#2751](https://github.com/pgRouting/pgrouting/issues/2751): pgr_createTopology
 * [#2752](https://github.com/pgRouting/pgrouting/issues/2752): pgr_analyzeGraph
@@ -431,58 +431,58 @@ Removal of SQL deprecated functions
 
 Removal of SQL deprecated internal functions
 
-* [#2748](https://github.com/pgRouting/pgrouting/issues/2748) _pgr_alphashape(text,double precision)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_checkverttab(text,text[],integer,text)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_createindex(text,text,text,integer,text)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_createindex(text,text,text,text,integer,text)
-* [#2913](https://github.com/pgRouting/pgrouting/issues/2913) _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)
-* [#2913](https://github.com/pgRouting/pgrouting/issues/2913) _pgr_dagshortestpath(text,text,boolean,boolean)
-* [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)
-* [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)
-* [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)
+* [#2748](https://github.com/pgRouting/pgrouting/issues/2748) _pgr_alphaShape(text,double precision)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_checkVertTab(text,text[],integer,text)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_createIndex(text,text,text,integer,text)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_createIndex(text,text,text,text,integer,text)
+* [#2913](https://github.com/pgRouting/pgrouting/issues/2913) _pgr_dagShortestPath(text,anyarray,anyarray,boolean,boolean)
+* [#2913](https://github.com/pgRouting/pgrouting/issues/2913) _pgr_dagShortestPath(text,text,boolean,boolean)
+* [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstraNear(text,anyarray,anyarray,bigint,boolean)
+* [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstraNear(text,anyarray,bigint,bigint,boolean)
+* [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstraNear(text,bigint,anyarray,bigint,boolean)
 * [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)
 * [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)
 * [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)
 * [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstra(text,text,boolean,boolean,boolean)
-* [#2735](https://github.com/pgRouting/pgrouting/issues/2735) _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_endpoint(geometry)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_getcolumnname(text,text,integer,text)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_getcolumnname(text,text,text,integer,text)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_getcolumntype(text,text,integer,text)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_getcolumntype(text,text,text,integer,text)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_gettablename(text,integer,text)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_iscolumnindexed(text,text,integer,text)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_iscolumnindexed(text,text,text,integer,text)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_iscolumnintable(text,text)
+* [#2735](https://github.com/pgRouting/pgrouting/issues/2735) _pgr_drivingDistance(text,anyarray,double precision,boolean,boolean)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_endPoint(geometry)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) __pgr_getColumnName(text,text,integer,text)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) __pgr_getColumnName(text,text,text,integer,text)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) __pgr_getColumnType(text,text,integer,text)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) __pgr_getColumnType(text,text,text,integer,text)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) __pgr_getTableName(text,integer,text)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_isColumnIndexed(text,text,integer,text)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_isColumnIndexed(text,text,text,integer,text)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_isColumnIntable(text,text)
 * [#2745](https://github.com/pgRouting/pgrouting/issues/2745) _pgr_kruskal(text,anyarray,text,bigint,double precision)
 * [#2897](https://github.com/pgRouting/pgrouting/issues/2897) _pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)
 * [#2897](https://github.com/pgRouting/pgrouting/issues/2897) _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)
 * [#2897](https://github.com/pgRouting/pgrouting/issues/2897) _pgr_ksp(text,text,integer,boolean,boolean)
-* [#2899](https://github.com/pgRouting/pgrouting/issues/2899) _pgr_maxcardinalitymatch(text,boolean)
+* [#2899](https://github.com/pgRouting/pgrouting/issues/2899) _pgr_maxCardinalityMatch(text,boolean)
 * [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_msg(integer,text,text)
 * [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_onerror(boolean,integer,text,text,text,text)
 * [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_pointtoid(geometry,double precision,text,integer)
 * [#2743](https://github.com/pgRouting/pgrouting/issues/2743) _pgr_prim(text,anyarray,text,bigint,double precision)
 * [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_quote_ident(text)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_startpoint(geometry)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_startPoint(geometry)
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683) _pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683) _pgr_trsp(text,text,anyarray,anyarray,boolean)
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683) _pgr_trsp(text,text,anyarray,bigint,boolean)
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683) _pgr_trsp(text,text,bigint,anyarray,boolean)
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683) _pgr_trsp(text,text,bigint,bigint,boolean)
-* [#2682](https://github.com/pgRouting/pgrouting/issues/2682) _pgr_trspviavertices(text,integer[],boolean,boolean,text)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) _pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) _pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) _pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)
-* [#2901](https://github.com/pgRouting/pgrouting/issues/2901) _pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+* [#2682](https://github.com/pgRouting/pgrouting/issues/2682) _pgr_trspViaVertices(text,integer[],boolean,boolean,text)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) _pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) _pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) _pgr_trsp_withPoints(text,text,text,text,boolean,character,boolean)
+* [#2901](https://github.com/pgRouting/pgrouting/issues/2901) _pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
 * [#2901](https://github.com/pgRouting/pgrouting/issues/2901) _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
-* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_versionless(text,text)
-* [#2890](https://github.com/pgRouting/pgrouting/issues/2890) _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
-* [#2895](https://github.com/pgRouting/pgrouting/issues/2895) _pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)
-* [#2895](https://github.com/pgRouting/pgrouting/issues/2895) _pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
-* [#2895](https://github.com/pgRouting/pgrouting/issues/2895) _pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)
-* [#2741](https://github.com/pgRouting/pgrouting/issues/2741) _pgr_withpointsvia(text,bigint[],double precision[],boolean)
-* [#2741](https://github.com/pgRouting/pgrouting/issues/2741) _pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
+* [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_versionLess(text,text)
+* [#2890](https://github.com/pgRouting/pgrouting/issues/2890) _pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,boolean,boolean)
+* [#2895](https://github.com/pgRouting/pgrouting/issues/2895) _pgr_withPointsKSP(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)
+* [#2895](https://github.com/pgRouting/pgrouting/issues/2895) _pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
+* [#2895](https://github.com/pgRouting/pgrouting/issues/2895) _pgr_withPointsKSP(text,text,text,integer,character,boolean,boolean,boolean)
+* [#2741](https://github.com/pgRouting/pgrouting/issues/2741) _pgr_withPointsVia(text,bigint[],double precision[],boolean)
+* [#2741](https://github.com/pgRouting/pgrouting/issues/2741) _pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683) _trsp(text,text,anyarray,anyarray,boolean)
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683) _v4trsp(text,text,anyarray,anyarray,boolean)
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683) _v4trsp(text,text,text,boolean)
@@ -497,35 +497,35 @@ Summary of functions and signatures no longer on pgrouting
 * [#2827](https://github.com/pgRouting/pgrouting/issues/2827) pgr_createverticestable(text,text,text,text,text)
 * [#2888](https://github.com/pgRouting/pgrouting/issues/2888) pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)
 * [#2888](https://github.com/pgRouting/pgrouting/issues/2888) pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)
-* [#2899](https://github.com/pgRouting/pgrouting/issues/2899) pgr_maxcardinalitymatch(text,boolean)
+* [#2899](https://github.com/pgRouting/pgrouting/issues/2899) pgr_maxCardinalityMatch(text,boolean)
 * [#2886](https://github.com/pgRouting/pgrouting/issues/2886) pgr_nodenetwork(text,double precision,text,text,text,text,boolean)
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683) pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683) pgr_trsp(text,integer,integer,boolean,boolean,text)
-* [#2681](https://github.com/pgRouting/pgrouting/issues/2681) pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
-* [#2682](https://github.com/pgRouting/pgrouting/issues/2682) pgr_trspviavertices(text,anyarray,boolean,boolean,text)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)
-* [#2901](https://github.com/pgRouting/pgrouting/issues/2901) pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+* [#2681](https://github.com/pgRouting/pgrouting/issues/2681) pgr_trspViaedges(text,integer[],double precision[],boolean,boolean,text)
+* [#2682](https://github.com/pgRouting/pgrouting/issues/2682) pgr_trspViaVertices(text,anyarray,boolean,boolean,text)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_trsp_withPoints(text,text,text,anyarray,bigint,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_trsp_withPoints(text,text,text,bigint,anyarray,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_trsp_withPoints(text,text,text,bigint,bigint,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_trsp_withPoints(text,text,text,text,boolean,character,boolean)
+* [#2901](https://github.com/pgRouting/pgrouting/issues/2901) pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
 * [#2901](https://github.com/pgRouting/pgrouting/issues/2901) pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpointscostmatrix(text,text,anyarray,boolean,character)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpointscost(text,text,anyarray,bigint,boolean,character)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpointscost(text,text,bigint,anyarray,boolean,character)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpointscost(text,text,bigint,bigint,boolean,character)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpointscost(text,text,text,boolean,character)
-* [#2890](https://github.com/pgRouting/pgrouting/issues/2890) pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
-* [#2890](https://github.com/pgRouting/pgrouting/issues/2890) pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
-* [#2895](https://github.com/pgRouting/pgrouting/issues/2895) pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpoints(text,text,text,boolean,character,boolean)
-* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withPointsCostMatrix(text,text,anyarray,boolean,character)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withPointsCost(text,text,anyarray,anyarray,boolean,character)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withPointsCost(text,text,anyarray,bigint,boolean,character)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withPointsCost(text,text,bigint,anyarray,boolean,character)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withPointsCost(text,text,bigint,bigint,boolean,character)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withPointsCost(text,text,text,boolean,character)
+* [#2890](https://github.com/pgRouting/pgrouting/issues/2890) pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,boolean,boolean)
+* [#2890](https://github.com/pgRouting/pgrouting/issues/2890) pgr_withPointsDD(text,text,bigint,double precision,boolean,character,boolean)
+* [#2895](https://github.com/pgRouting/pgrouting/issues/2895) pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withPoints(text,text,anyarray,anyarray,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withPoints(text,text,anyarray,bigint,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withPoints(text,text,bigint,anyarray,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withPoints(text,text,bigint,bigint,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withPoints(text,text,text,boolean,character,boolean)
+* [#2919](https://github.com/pgRouting/pgrouting/issues/2919) pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
 
 Code enhancements
 
@@ -540,22 +540,21 @@ Code enhancements
 
 Deprecated functions are substituted by new function.
 
-* _pgr_drivingdistance => _pgr_drivingdistancev4
-* _pgr_withpointsdd => _pgr_withpointsddv4
+* _pgr_drivingDistance => _pgr_drivingDistancev4
+* _pgr_withPointsDD => _pgr_withPointsddv4
 * _pgr_kruskal => _pgr_kruskalv4
 * _pgr_prim => _pgr_primv4
 * _pgr_dijkstra => _pgr_dijkstra_v4
-* _pgr_withpointsksp => _pgr_withpointsksp_v4
-* _pgr_trspvia_withpoints => _pgr_trspvia_withpoints_v4
-* _pgr_trsp_withpoints => _pgr_trsp_withpoints_v4
-* _pgr_withpointsvia => _pgr_withpointsvia_v4
+* _pgr_withPointsKSP => _pgr_withPointsKSP_v4
+* _pgr_trspVia_withPoints => _pgr_trspVia_withPoints_v4
+* _pgr_trsp_withPoints => _pgr_trsp_withPoints_v4
+* _pgr_withPointsVia => _pgr_withPointsvia_v4
 
 **Internal C/C++ functions in legacy**
 
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683) _trsp
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683) _v4trsp
-* [#2683](https://github.com/pgRouting/pgrouting/issues/2683) _v4trsp
-* [#2748](https://github.com/pgRouting/pgrouting/issues/2748) _pgr_alphashape
-* [#2913](https://github.com/pgRouting/pgrouting/issues/2913) _pgr_dagshortestpath
+* [#2748](https://github.com/pgRouting/pgrouting/issues/2748) _pgr_alphaShape
+* [#2913](https://github.com/pgRouting/pgrouting/issues/2913) _pgr_dagShortestPath
 
 </details>
