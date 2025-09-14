@@ -65,7 +65,7 @@ Characteristics
   locations.
 
 
-.. Rubric:: Limitations
+.. rubric:: Limitations
 
 - No multiple time windows for a location.
 - Less vehicle used is considered better.

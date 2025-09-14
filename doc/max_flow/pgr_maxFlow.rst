@@ -19,7 +19,7 @@
 ``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the
 source(s) to the targets(s) using the Push Relabel algorithm.
 
-.. Rubric:: Availability
+.. rubric:: Availability
 
 .. rubric:: Version 4.0.0
 

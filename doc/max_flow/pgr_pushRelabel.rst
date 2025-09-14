@@ -19,7 +19,7 @@
 ``pgr_pushRelabel`` — Calculates the flow on the graph edges that maximizes the
 flow from the sources to the targets using Push Relabel Algorithm.
 
-.. Rubric:: Availability
+.. rubric:: Availability
 
 .. rubric:: Version 4.0.0
 

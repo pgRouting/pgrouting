@@ -19,7 +19,7 @@
 ``pgr_edmondsKarp`` — Calculates the flow on the graph edges that maximizes the
 flow from the sources to the targets using Edmonds Karp Algorithm.
 
-.. Rubric:: Availability
+.. rubric:: Availability
 
 .. rubric:: Version 4.0.0
 

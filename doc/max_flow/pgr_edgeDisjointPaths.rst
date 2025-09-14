@@ -20,7 +20,7 @@
 vertices.
 
 
-.. Rubric:: Availability
+.. rubric:: Availability
 
 .. rubric:: Version 4.0.0
 
