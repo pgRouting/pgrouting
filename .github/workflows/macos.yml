@@ -12,7 +12,7 @@ on:
       - 'include/**'
       - 'pgtap/**'
       - 'tools/testers/**'
-      - './CMakeLists.txt'
+      - 'CMakeLists.txt'
 
     branches-ignore:
       - 'gh-pages'
@@ -26,7 +26,7 @@ on:
       - 'include/**'
       - 'pgtap/**'
       - 'tools/testers/**'
-      - './CMakeLists.txt'
+      - 'CMakeLists.txt'
 
     branches-ignore:
       - 'gh-pages'

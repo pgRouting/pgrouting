@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-11 17:12+0000\n"
+"POT-Creation-Date: 2025-09-14 10:27-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -266,6 +266,9 @@ msgid ":ref:`genindex`"
 msgstr ""
 
 msgid ":ref:`search`"
+msgstr ""
+
+msgid "Boost Graph inside"
 msgstr ""
 
 msgid "DFS - Category"
@@ -7274,9 +7277,6 @@ msgid "The K shortest path routing algorithm based on Yen's algorithm. \"K\" is 
 msgstr ""
 
 msgid "|Boost| Boost Graph Inside"
-msgstr ""
-
-msgid "Boost Graph inside"
 msgstr ""
 
 msgid "Signatures"

@@ -52,7 +52,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          language: [en,es,zh_Hans,sv]
+          language: [en, es, zh_Hans, sv]
 
     steps:
       - uses: actions/checkout@v5

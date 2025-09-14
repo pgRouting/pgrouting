@@ -26,7 +26,7 @@ pushd "${DIR}" > /dev/null || exit 1
 
 mkdir -p build
 pushd build > /dev/null || exit 1
-cmake -DBUILD_LOCALE=ON ..
+cmake -DBUILD_HTML=OFF -DBUILD_LOCALE=ON ..
 
 make locale
 popd > /dev/null || exit 1
@@ -39,10 +39,7 @@ perl -ne '/\/en\// && print' build/doc/locale_changes_po.txt | \
 
 # Remove obsolete entries #~ from .po files
 find locale -type f -name '*.po' -exec sh -c '
-    if grep -q "#~" "$1"; then
-        perl -pi -0777 -e "s/#~.*//s" "$1"
-        git add "$1"
-    fi
+    msgattrib --no-obsolete -o "$f" "$f"
   ' sh {} \;
 
 while read -r f; do git add "$f"; done < build/doc/locale_changes_po_pot.txt

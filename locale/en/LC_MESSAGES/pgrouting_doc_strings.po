@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-11 17:12+0000\n"
+"POT-Creation-Date: 2025-09-14 10:27-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.16.0\n"
 
 msgid "BFS - Category"
 msgstr ""
@@ -280,6 +280,9 @@ msgid ":ref:`genindex`"
 msgstr ""
 
 msgid ":ref:`search`"
+msgstr ""
+
+msgid "Boost Graph inside"
 msgstr ""
 
 msgid "DFS - Category"
@@ -8498,9 +8501,6 @@ msgid ""
 msgstr ""
 
 msgid "|Boost| Boost Graph Inside"
-msgstr ""
-
-msgid "Boost Graph inside"
 msgstr ""
 
 msgid "Signatures"
@@ -19447,4 +19447,7 @@ msgstr ""
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
+
+#~ msgid "pgRouting 4.0.0 Release Notes"
+#~ msgstr ""
 
