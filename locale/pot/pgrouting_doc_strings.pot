@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-14 18:15+0000\n"
+"POT-Creation-Date: 2025-09-14 18:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3946,7 +3946,7 @@ msgstr ""
 msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_pushRelabel(Combinations)"
 msgstr ""
 
-msgid "New experimental functions"
+msgid "New experimental functions."
 msgstr ""
 
 msgid "Metrics"
@@ -9149,9 +9149,6 @@ msgid "``pgr_contractionHierarchies`` - Experimental"
 msgstr ""
 
 msgid "``pgr_contractionHierarchies`` — Performs graph contraction according to the contraction hierarchies method and returns the contracted vertices and shortcut edges created."
-msgstr ""
-
-msgid "New experimental function"
 msgstr ""
 
 msgid "The contraction hierarchies method builds, from an initial order of the vertices, a hierarchical order, giving priority to some vertices during the processing of label fixing of shortest paths algorithms. Furthermore, the contraction hierarchies algorithm adds shortcut edges in the graph, that helps the shortest paths algorithm to follow the created hierarchical graph structure."
