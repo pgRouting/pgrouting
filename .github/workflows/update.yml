@@ -8,7 +8,28 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - '.github/workflows/update.yml'
+      - '.github/workflows/ubuntu.yml'
+      - 'src/**'
+      - 'include/**'
+      - 'sql/**'
+      - 'pgtap/**'
+      - 'tools/testers/**'
+      - 'CMakeLists.txt'
+
+    branches-ignore:
+      - 'gh-pages'
+
+    tags: []
+
+  pull_request:
+    paths:
+      - '.github/workflows/check-queries.yml'
+      - 'src/**'
+      - 'include/**'
+      - 'sql/**'
+      - 'pgtap/**'
+      - 'tools/testers/**'
+      - 'CMakeLists.txt'
 
     branches-ignore:
       - 'gh-pages'
@@ -71,11 +92,9 @@ jobs:
             postgresql-${PGVER}-postgis-${PGIS}-scripts \
             postgresql-server-dev-${PGVER}
 
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-          wget https://sourceforge.net/projects/boost/files/boost/1.${{ matrix.boost_minor }}.0/boost_1_${{ matrix.boost_minor }}_0.tar.bz2
-          sudo tar --bzip2 -xf  boost_1_${{ matrix.boost_minor }}_0.tar.bz2
+          wget -q https://sourceforge.net/projects/boost/files/boost/1.${{ matrix.boost_minor }}.0/boost_1_${{ matrix.boost_minor }}_0.tar.bz2
+          echo "<sha256> boost_1_${{ matrix.boost_minor }}_0.tar.bz2" | sha256sum -c -
+          sudo tar --bzip2 -xf boost_1_${{ matrix.boost_minor }}_0.tar.bz2
           sudo mv boost_1_${{ matrix.boost_minor }}_0/boost /usr/include/
 
       - name: get old version
@@ -111,7 +130,7 @@ jobs:
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
+          cmake -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Release ..
           make -j 4
           sudo make install
 
