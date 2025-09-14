@@ -16,11 +16,7 @@ withPoints - Category
 
 When points are added to the graph.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
-.. proposed start
+.. official-start
 
 - :doc:`withPoints-family` - Functions based on Dijkstra algorithm.
 - From the :doc:`TRSP-family`:
@@ -28,7 +24,7 @@ When points are added to the graph.
   - :doc:`pgr_trsp_withPoints` - Vertex/Point routing with restrictions.
   - :doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictions.
 
-.. proposed end
+.. official-end
 
 Introduction
 -------------------------------------------------------------------------------
@@ -129,6 +125,32 @@ Parameters
 
 .. withPoints_parameters_end
 
+.. driving_side_start
+
+.. list-table::
+   :width: 81
+   :widths: 14 14 44
+
+   * - [**driving side**]
+     - ``CHAR``
+     - Value in [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] indicating if the driving side is:
+
+       - For directed graph:
+
+         - [``r``, ``R``] for right driving side
+         - [``l``, ``L``] for left driving side
+
+       - For undirected graph:
+
+         - [``b``, ``B``] for both driving sides
+
+       - Default values when parameter is missing:
+
+         - [``r``, ``R``] for directed graph
+         - [``l``, ``L``] for undirected graph
+
+.. driving_side_end
+
 Optional parameters
 ...............................................................................
 
@@ -143,18 +165,12 @@ Optional parameters
      - Type
      - Default
      - Description
-   * - ``driving_side``
-     - ``CHAR``
-     - ``r``
-     - Value in [``r``, ``l``] indicating if the driving side is:
-
-       - ``r`` for right driving side
-       - ``l`` for left driving side
-       - Any other value will be considered as ``r``
    * - ``details``
      - ``BOOLEAN``
      - ``false``
-     - - When ``true`` the results will include the points that are in the path.
+     - For showing points stops.
+
+       - When ``true`` the results will include the points that are in the path.
        - When ``false`` the results will not include the points that are in the
          path.
 
@@ -201,7 +217,7 @@ Points SQL
    * - ``fraction``
      - **ANY-NUMERICAL**
      -
-     - Value in <0,1> that indicates the relative postition from the first end
+     - Value in <0,1> that indicates the relative position from the first end
        point of the edge.
    * - ``side``
      - ``CHAR``

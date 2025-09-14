@@ -112,7 +112,7 @@ WHERE rn <= %2$s
 END;
 $BODY$
 LANGUAGE PLPGSQL VOLATILE STRICT
-COST 5;
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 COMMENT ON FUNCTION pgr_findCloseEdges(TEXT, GEOMETRY[], FLOAT, INTEGER, BOOLEAN)
 IS 'pgr_findCloseEdges(Many Points)
@@ -145,7 +145,8 @@ $BODY$
   SELECT edge_id, fraction, side, distance, geom, edge
   FROM pgr_findCloseEdges($1, ARRAY[$2]::GEOMETRY[], $3, cap, dryrun);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT COST 5;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 COMMENT ON FUNCTION pgr_findCloseEdges(TEXT, GEOMETRY, FLOAT, INTEGER, BOOLEAN)
 IS 'pgr_findCloseEdges(One Point)
@@ -159,53 +160,3 @@ IS 'pgr_findCloseEdges(One Point)
 - Documentation:
    - ${PROJECT_DOC_LINK}/pgr_findCloseEdges.html
 ';
-
---v3.4
-CREATE FUNCTION pgr_findCloseEdges(
-  TEXT,
-  geometry,
-  FLOAT,
-  cap INTEGER,
-  partial BOOLEAN,
-  dryrun BOOLEAN,
-
-  OUT edge_id BIGINT,
-  OUT fraction FLOAT,
-  OUT side CHAR,
-  OUT distance FLOAT,
-  OUT geom geometry,
-  OUT edge geometry)
-returns SETOF RECORD AS
-$BODY$
-  SELECT edge_id, fraction, side, distance, geom, edge
-  FROM pgr_findCloseEdges($1, ARRAY[$2]::GEOMETRY[], $3, cap, dryrun);
-$BODY$
-LANGUAGE SQL VOLATILE STRICT COST 5;
-
-COMMENT ON FUNCTION pgr_findCloseEdges(TEXT, GEOMETRY, FLOAT, INTEGER, BOOLEAN, BOOLEAN)
-IS 'pgr_findCloseEdges deprecated signature on v3.8.0';
-
---v3.4
-CREATE FUNCTION pgr_findCloseEdges(
-  TEXT,
-  geometry[],
-  FLOAT,
-  cap INTEGER,
-  partial BOOLEAN,
-  dryrun BOOLEAN,
-
-  OUT edge_id BIGINT,
-  OUT fraction FLOAT,
-  OUT side CHAR,
-  OUT distance FLOAT,
-  OUT geom geometry,
-  OUT edge geometry)
-returns SETOF RECORD AS
-$BODY$
-  SELECT edge_id, fraction, side, distance, geom, edge
-  FROM pgr_findCloseEdges($1, $2, $3, cap, dryrun);
-$BODY$
-LANGUAGE SQL VOLATILE STRICT COST 5;
-
-COMMENT ON FUNCTION pgr_findCloseEdges(TEXT, GEOMETRY[], FLOAT, INTEGER, BOOLEAN, BOOLEAN)
-IS 'pgr_findCloseEdges deprecated signature on v3.8.0';

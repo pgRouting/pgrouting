@@ -37,15 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/interruption.hpp"
 #include "c_types/mst_rt.h"
 
-
-/** @file pgr_depthFirstSearch.hpp
- * @brief The main file which calls the respective boost function.
- *
- * Contains actual implementation of the function and the calling
- * of the respective boost function.
- */
-
-
 namespace pgrouting {
 namespace functions {
 
@@ -199,8 +190,7 @@ class Pgr_depthFirstSearch {
                  results.push_back({
                      root,
                      depth[v],
-                     /* TODO(cvvc) get predecessor */
-                     0,
+                     graph[u].id,
                      graph[v].id,
                      graph[edge].id,
                      graph[edge].cost,

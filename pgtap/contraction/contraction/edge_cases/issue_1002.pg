@@ -1,4 +1,3 @@
-
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
@@ -20,9 +19,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(3);
+SELECT CASE WHEN min_version('3.8.0') THEN plan(3) ELSE plan(1) END;
 
-SET client_min_messages TO WARNING;
+CREATE OR REPLACE FUNCTION issues_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('3.8.0') THEN
+    RETURN QUERY SELECT skip(1,'pgr_contractionlinear new on version 3.8.0');
+    RETURN;
+  END IF;
+
 
 -- TESTING queries on issues related to https://github.com/pgRouting/pgrouting/issues/1002
 
@@ -38,8 +46,9 @@ FROM (VALUES
 PREPARE issue1004_q AS
 SELECT * FROM pgr_contraction(
     $$SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 2 or id = 3 ORDER BY id$$,
-    ARRAY[1]::integer[], 1, ARRAY[1]::BIGINT[], true);
+    true, ARRAY[1]);
 
+RETURN QUERY
 SELECT set_eq('issue1004_q', 'issue1004_r', 'Contraction any one of the forbidden vertices do not belong to graph');
 
 ------ https://github.com/pgRouting/pgrouting/issues/1005
@@ -53,8 +62,9 @@ PREPARE issue1005_q AS
 SELECT * FROM pgr_contraction(
     $$SELECT id, source, target, cost, reverse_cost FROM edges
     WHERE id = 5 OR id = 11 OR id = 13$$,
-    ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
+    true, ARRAY[2]);
 
+RETURN QUERY
 SELECT set_eq('issue1005_q', 'issue1005_r', 'Contraction any one of the forbidden vertices do not belong to graph');
 
 ------ https://github.com/pgRouting/pgrouting/issues/1006
@@ -71,10 +81,16 @@ SELECT * FROM pgr_contraction(
     UNION
     SELECT id, target, source, reverse_cost FROM edges WHERE id IN (15, 16) AND reverse_cost > 0;
     $$,
-    ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
+    true, ARRAY[2]);
 
+RETURN QUERY
 SELECT set_eq('issue1006_q', 'issue1006_r', 'Contraction any one of the forbidden vertices do not belong to graph');
 
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT issues_check();
 
 SELECT finish();
 ROLLBACK;

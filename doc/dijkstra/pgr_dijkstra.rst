@@ -21,39 +21,43 @@
 
 .. rubric:: Availability
 
-* Version 3.5.0
+.. rubric:: Version 4.0.0
 
-  * Standardizing output columns to |short-generic-result|
+* Combinations signature promoted to official.
 
-    * pgr_dijkstra(One to One) added ``start_vid`` and ``end_vid`` columns.
-    * pgr_dijkstra(One to Many) added ``end_vid`` column.
-    * pgr_dijkstra(Many to One) added ``start_vid`` column.
+.. rubric:: Version 3.5.0
 
-* Version 3.1.0
+* Standardizing output columns to |short-generic-result|
 
-  * New proposed signature:
+  * pgr_dijkstra(One to One) added ``start_vid`` and ``end_vid`` columns.
+  * pgr_dijkstra(One to Many) added ``end_vid`` column.
+  * pgr_dijkstra(Many to One) added ``start_vid`` column.
 
-    * pgr_dijkstra(Combinations)
+.. rubric:: Version 3.1.0
 
-* Version 3.0.0
+* New proposed signature:
 
-  * Function promoted to official.
+  * pgr_dijkstra(Combinations)
 
-* Version 2.2.0
+.. rubric:: Version 3.0.0
 
-  * New proposed signatures:
+* Function promoted to official.
 
-    * pgr_dijkstra(One to Many)
-    * pgr_dijkstra(Many to One)
-    * pgr_dijkstra(Many to Many)
+.. rubric:: Version 2.2.0
 
-* Version 2.1.0
+* New proposed signatures:
 
-  * Signature change on pgr_dijkstra(One to One)
+  * pgr_dijkstra(One to Many)
+  * pgr_dijkstra(Many to One)
+  * pgr_dijkstra(Many to Many)
 
-* Version 2.0.0
+.. rubric:: Version 2.1.0
 
-  * Official function.
+* Signature change on pgr_dijkstra(One to One)
+
+.. rubric:: Version 2.0.0
+
+* Official function.
 
 
 Description
@@ -85,12 +89,6 @@ Signatures
 
    | Returns set of |short-generic-result|
    | OR EMPTY SET
-
-
-.. Warning:: Breaking change on 3.5.0
-
-   Read the :doc:`migration` about how to migrate from the old result columns to
-   the new result columns.
 
 .. index::
     single: dijkstra ; One to One
@@ -175,7 +173,7 @@ Many to Many
    :end-before: -- q51
 
 .. index::
-    single: dijkstra ; Combinations - Proposed on v3.1
+    single: dijkstra ; Combinations
 
 Combinations
 ...............................................................................
@@ -237,8 +235,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_short_start
-    :end-before: return_path_short_end
+    :start-after: return_path_complete_start
+    :end-before: return_path_complete_end
 
 Additional Examples
 -------------------------------------------------------------------------------

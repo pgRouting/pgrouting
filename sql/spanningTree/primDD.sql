@@ -47,7 +47,8 @@ $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
     FROM _pgr_primv4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DD', -1, $3::FLOAT);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 --v3.7
 CREATE FUNCTION pgr_primDD (
@@ -68,7 +69,8 @@ $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
     FROM _pgr_primv4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DD', -1, $3::FLOAT);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 --v3.7
@@ -91,7 +93,8 @@ $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
     FROM _pgr_primv4(_pgr_get_statement($1), $2, 'DD', -1, $3);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 --v3.7
@@ -114,10 +117,10 @@ $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
     FROM _pgr_primv4(_pgr_get_statement($1), $2, 'DD', -1, $3::FLOAT);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
--- COMMENTS
 
 
 COMMENT ON FUNCTION pgr_primDD(TEXT, BIGINT, NUMERIC)

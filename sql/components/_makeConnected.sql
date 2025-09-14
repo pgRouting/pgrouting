@@ -43,7 +43,6 @@ RETURNS SETOF RECORD AS
 LANGUAGE c IMMUTABLE STRICT;
 
 
--- COMMENTS
 
 COMMENT ON FUNCTION _pgr_makeConnected(TEXT)
 IS 'pgRouting internal function';

@@ -35,8 +35,8 @@ namespace vrp {
 enum Initials_code {
     OneTruck,    /*! All orders in one truck */
     OnePerTruck, /*! One Order per truck */
-    FrontTruck,  /*! Insetion at the front of the truck */
-    BackTruck,   /*! Insetion at the back of the truck */
+    FrontTruck,  /*! Insertion, at the front of the truck */
+    BackTruck,   /*! Insertion, at the back of the truck */
     BestInsert,  /*! Best place to insert Order */
     BestBack,    /*! Push back order that allows more orders to be inserted at the back */
     BestFront,   /*! Push front order that allows more orders to be inserted at the front */

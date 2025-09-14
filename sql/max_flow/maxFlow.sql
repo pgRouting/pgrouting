@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- ONE to ONE
---v2.6
+--v3.0
 CREATE FUNCTION pgr_maxFlow(
     TEXT, -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -40,11 +40,12 @@ CREATE FUNCTION pgr_maxFlow(
         SELECT flow
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], algorithm := 1, only_flow := true);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH};
 
 
 -- ONE to MANY
---v2.6
+--v3.0
 CREATE FUNCTION pgr_maxFlow(
     TEXT, -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -54,11 +55,12 @@ CREATE FUNCTION pgr_maxFlow(
         SELECT flow
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], algorithm := 1, only_flow := true);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH};
 
 
 -- MANY to ONE
---v2.6
+--v3.0
 CREATE FUNCTION pgr_maxFlow(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -68,11 +70,12 @@ CREATE FUNCTION pgr_maxFlow(
         SELECT flow
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], algorithm := 1, only_flow := true);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH};
 
 
 -- MANY to MANY
---v2.6
+--v3.0
 CREATE FUNCTION pgr_maxFlow(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -82,7 +85,8 @@ CREATE FUNCTION pgr_maxFlow(
         SELECT flow
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], algorithm := 1, only_flow := true);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH};
 
 
 -- COMBINATIONS
@@ -95,10 +99,10 @@ CREATE FUNCTION pgr_maxFlow(
         SELECT flow
         FROM _pgr_maxflow(_pgr_get_statement($1), _pgr_get_statement($2), algorithm := 1, only_flow := true);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH};
 
 
--- COMMENTS
 
 
 COMMENT ON FUNCTION pgr_maxFlow(TEXT, BIGINT, BIGINT)

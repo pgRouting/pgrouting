@@ -2,10 +2,10 @@
 File: withPointsKSP.sql
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky AT erosion.dev
+vicky at erosion.dev
 
 Copyright (c) 2023 Abhinav Jain
-this.abhinav AT gmail.com
+this.abhinav at gmail.com
 
 ------
 
@@ -51,11 +51,11 @@ CREATE FUNCTION pgr_withPointsKSP(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_withPointsKSP(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6, $7, $8, $9, true);
+    FROM _pgr_withPointsKSP_v4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6,
+      directed, heap_paths, details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- ONE to MANY
 --v3.6
@@ -83,11 +83,11 @@ CREATE FUNCTION pgr_withPointsKSP(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_withPointsKSP(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4::BIGINT[], $5, $6, $7, $8, $9, true);
+    FROM _pgr_withPointsKSP_v4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4::BIGINT[], $5, $6,
+      directed, heap_paths, details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- MANY to ONE
 --v3.6
@@ -115,11 +115,11 @@ CREATE FUNCTION pgr_withPointsKSP(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_withPointsKSP(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6, $7, $8, $9, true);
+    FROM _pgr_withPointsKSP_v4(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6,
+      directed, heap_paths, details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- MANY to MANY
 --v3.6
@@ -147,11 +147,11 @@ CREATE FUNCTION pgr_withPointsKSP(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_withPointsKSP(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], $4::BIGINT[], $5, $6, $7, $8, $9, true);
+    FROM _pgr_withPointsKSP_v4(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], $4::BIGINT[], $5, $6,
+      directed, heap_paths, details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- Combinations SQL signature
 --v3.6
@@ -178,17 +178,15 @@ CREATE FUNCTION pgr_withPointsKSP(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_withPointsKSP(_pgr_get_statement($1), _pgr_get_statement($2), _pgr_get_statement($3), $4, $5, $6, $7, $8);
+    FROM _pgr_withPointsKSP_v4(_pgr_get_statement($1), _pgr_get_statement($2), _pgr_get_statement($3), $4, $5,
+      directed, heap_paths, details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, BIGINT, BIGINT, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsKSP
-- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
@@ -205,7 +203,6 @@ IS 'pgr_withPointsKSP
 
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, BIGINT, ANYARRAY, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsKSP
-- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
@@ -222,7 +219,6 @@ IS 'pgr_withPointsKSP
 
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, ANYARRAY, BIGINT, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsKSP
-- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
@@ -239,7 +235,6 @@ IS 'pgr_withPointsKSP
 
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, ANYARRAY, ANYARRAY, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsKSP
-- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
@@ -256,7 +251,6 @@ IS 'pgr_withPointsKSP
 
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, TEXT, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsKSP
-- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
@@ -270,7 +264,8 @@ IS 'pgr_withPointsKSP
 - Documentation:
     - ${PROJECT_DOC_LINK}/pgr_withPointsKSP.html';
 
---v2.6
+-- ONE to ONE
+--v4.0
 CREATE FUNCTION pgr_withPointsKSP(
     TEXT,    -- edges_sql (required)
     TEXT,    -- points_sql (required)
@@ -280,27 +275,219 @@ CREATE FUNCTION pgr_withPointsKSP(
 
     directed BOOLEAN DEFAULT true,
     heap_paths BOOLEAN DEFAULT false,
-    driving_side CHAR DEFAULT 'b',
     details BOOLEAN DEFAULT false,
 
-    OUT seq INTEGER, OUT path_id INTEGER, OUT path_seq INTEGER,
-    OUT node BIGINT, OUT edge BIGINT,
-    OUT cost FLOAT, OUT agg_cost FLOAT)
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RAISE WARNING 'pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,char,boolean) deprecated signature on v3.6.0';
-    RETURN QUERY
-    SELECT a.seq, a.path_id, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_withPointsKSP(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5, $6, $7, $8, $9) AS a;
-END
+    SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_withPointsKSP_v4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], ARRAY[$4]::BIGINT[], $5,
+      (CASE WHEN directed THEN 'r' ELSE 'b' END), directed, heap_paths, details);
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
+-- ONE to MANY
+--v4.0
+CREATE FUNCTION pgr_withPointsKSP(
+    TEXT,    -- edges_sql (required)
+    TEXT,    -- points_sql (required)
+    BIGINT,  -- from_vid (required)
+    ANYARRAY,-- to_vids (required)
+    INTEGER, -- K (required)
 
-COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
-IS 'pgr_withPointsKSP deprecated signature on v3.6.0
-- Documentation: ${PROJECT_DOC_LINK}/pgr_withPointsKSP.html';
+    directed BOOLEAN DEFAULT true,
+    heap_paths BOOLEAN DEFAULT false,
+    details BOOLEAN DEFAULT false,
+
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_withPointsKSP_v4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4::BIGINT[], $5,
+      (CASE WHEN directed THEN 'r' ELSE 'b' END), directed, heap_paths, details);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+-- MANY to ONE
+--v4.0
+CREATE FUNCTION pgr_withPointsKSP(
+    TEXT,    -- edges_sql (required)
+    TEXT,    -- points_sql (required)
+    ANYARRAY,-- from_vid (required)
+    BIGINT,  -- to_vids (required)
+    INTEGER, -- K (required)
+
+    directed BOOLEAN DEFAULT true,
+    heap_paths BOOLEAN DEFAULT false,
+    details BOOLEAN DEFAULT false,
+
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_withPointsKSP_v4(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], ARRAY[$4]::BIGINT[], $5,
+      (CASE WHEN directed THEN 'r' ELSE 'b' END), directed, heap_paths, details);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+-- MANY to MANY
+--v4.0
+CREATE FUNCTION pgr_withPointsKSP(
+    TEXT,    -- edges_sql (required)
+    TEXT,    -- points_sql (required)
+    ANYARRAY,-- from_vid (required)
+    ANYARRAY,-- to_vids (required)
+    INTEGER, -- K (required)
+
+    directed BOOLEAN DEFAULT true,
+    heap_paths BOOLEAN DEFAULT false,
+    details BOOLEAN DEFAULT false,
+
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_withPointsKSP_v4(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], $4::BIGINT[], $5,
+      (CASE WHEN directed THEN 'r' ELSE 'b' END), directed, heap_paths, details);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+-- Combinations SQL signature
+--v4.0
+CREATE FUNCTION pgr_withPointsKSP(
+    TEXT,    -- edges_sql (required)
+    TEXT,    -- points_sql (required)
+    TEXT,    -- combinations_sql(required)
+    INTEGER, -- K (required)
+
+    directed BOOLEAN DEFAULT true,
+    heap_paths BOOLEAN DEFAULT false,
+    details BOOLEAN DEFAULT false,
+
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_withPointsKSP_v4(_pgr_get_statement($1), _pgr_get_statement($2), _pgr_get_statement($3), $4,
+      (CASE WHEN directed THEN 'r' ELSE 'b' END), directed, heap_paths, details);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgr_withPointsKSP
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From vertex identifier
+    - To vertex identifier
+    - K
+- Optional Parameters
+    - directed := true
+    - heap paths := false
+    - details := false
+- Documentation:
+    - ${PROJECT_DOC_LINK}/pgr_withPointsKSP.html';
+
+COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, BIGINT, ANYARRAY, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgr_withPointsKSP
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From vertex identifier
+    - To ARRAY[vertices identifiers]
+    - K
+- Optional Parameters
+    - directed := true
+    - heap paths := false
+    - details := false
+- Documentation:
+    - ${PROJECT_DOC_LINK}/pgr_withPointsKSP.html';
+
+COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, ANYARRAY, BIGINT, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgr_withPointsKSP
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From ARRAY[vertices identifier]
+    - To vertex identifier
+    - K
+- Optional Parameters
+    - directed := true
+    - heap paths := false
+    - details := false
+- Documentation:
+    - ${PROJECT_DOC_LINK}/pgr_withPointsKSP.html';
+
+COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, ANYARRAY, ANYARRAY, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgr_withPointsKSP
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From ARRAY[vertices identifier]
+    - To ARRAY[vertices identifiers]
+    - K
+- Optional Parameters
+    - directed := true
+    - heap paths := false
+    - details := false
+- Documentation:
+    - ${PROJECT_DOC_LINK}/pgr_withPointsKSP.html';
+
+COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, TEXT, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgr_withPointsKSP
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - Combinations SQL with columns: source, target
+    - K
+- Optional Parameters
+    - directed := true
+    - heap paths := false
+    - details := false
+- Documentation:
+    - ${PROJECT_DOC_LINK}/pgr_withPointsKSP.html';

@@ -25,9 +25,13 @@ graphs
 
 .. rubric:: Availability
 
-* Version 3.3.0
+.. rubric:: Version 4.0.0
 
-  * New experimental function.
+* Output columns standardized to |result_edge_color|
+
+.. rubric:: Version 3.3.0
+
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -77,7 +81,7 @@ Signatures
 
    | pgr_edgeColoring(`Edges SQL`_)
 
-   | Returns set of |result-edge-color|
+   | Returns set of |result_edge_color|
    | OR EMPTY SET
 
 :Example: Graph coloring of pgRouting :doc:`sampledata`
@@ -109,8 +113,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: coloring-family.rst
-    :start-after: result columns start edgeColoring
-    :end-before: result columns end edgeColoring
+    :start-after: result-edge-color-start
+    :end-before: result-edge-color-end
 
 
 See Also

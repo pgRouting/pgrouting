@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---v2.6
+--v3.0
 CREATE FUNCTION _pgr_pickDeliverEuclidean (
     TEXT, -- orders_sql
     TEXT, -- vehicles_sql
@@ -50,9 +50,9 @@ CREATE FUNCTION _pgr_pickDeliverEuclidean (
     OUT departure_time FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE c VOLATILE STRICT;
+LANGUAGE C VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION _pgr_pickDeliverEuclidean(TEXT, TEXT, FLOAT, INTEGER, INTEGER)
 IS 'pgRouting internal function';

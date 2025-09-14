@@ -30,9 +30,9 @@ include(pgr/BuildType)
 #---------------------------------------------
 #---------------------------------------------
 
-project(PGROUTING VERSION 3.8.0
+project(PGROUTING VERSION 4.0.0
     LANGUAGES C CXX )
-set(PROJECT_VERSION_DEV "")
+set(PROJECT_VERSION_DEV "-alpha1")
 string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
 
 include(pgr/GitInfo)
@@ -43,21 +43,16 @@ set(PROJECT_LIB_NAME "${PROJECT_NAME_LOWER}-${PROJECT_LIB_VERSION}")
 
 string(TIMESTAMP COMPILATION_DATE "%Y/%m/%d" UTC)
 
-set(MINORS 3.8 3.7 3.6 3.5 3.4 3.3 3.2 3.1 3.0 2.6)
+# uncomment to show the NOTICE/WARNING of deprecated internal C functions
+# add_compile_definitions(SHOWMSG=1)
+
+set(MINORS 4.0 3.8 3.7 3.6 3.5 3.4 3.3 3.2 3.1 3.0 2.6)
 set(OLD_SIGNATURES
-    3.7.3
-    3.7.2
-    3.7.1
-    3.7.0
-    3.6.3
-    3.6.2
-    3.6.1
-    3.6.0
-    3.5.1
-    3.5.0
-    3.4.2
-    3.4.1
-    3.4.0
+    3.8.0
+    3.7.3 3.7.2 3.7.1 3.7.0
+    3.6.3 3.6.2 3.6.1 3.6.0
+    3.5.1 3.5.0
+    3.4.2 3.4.1 3.4.0
     3.3.5 3.3.4 3.3.3 3.3.2 3.3.1 3.3.0
     3.2.2 3.2.1 3.2.0
     3.1.4 3.1.3 3.1.2 3.1.1 3.1.0
@@ -78,7 +73,7 @@ include(pgr/Configure)
 #---------------------------------------------
 set(DOXYGEN_MINIMUM_VERSION "1.7")
 set(SPHINX_MINIMUM_VERSION "4.0")
-set(POSTGRESQL_MINIMUM_VERSION "13.0.0")
+set(POSTGRESQL_MINIMUM_VERSION "13")
 set(BOOST_MINIMUM_VERSION "1.56.0")
 set(POSTGIS_MINIMUM_VERSION "3.0.0")
 
@@ -94,48 +89,55 @@ if(WIN32 AND MSVC)
     set(CMAKE_CXX_FLAGS "")
 endif()
 
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-# C/C++ Compiler requirements
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
+#---------------------------------------------
+# Boost
+#---------------------------------------------
 
 find_package(Boost ${BOOST_MINIMUM_VERSION} REQUIRED)
 if (NOT Boost_VERSION_MACRO)
     set(Boost_VERSION_MACRO ${Boost_VERSION})
 endif()
 set(BOOST_VERSION "${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
+add_definitions(-DBOOST_ALLOW_DEPRECATED_HEADERS)
+
+include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
+
+#---------------------------------------------
+# Clang tidy
+#---------------------------------------------
+
+option(USE_CLANG_TIDY "Use clang-tidy." OFF)
+
+if(USE_CLANG_TIDY)
+    find_program(CLANG_TIDY_COMMAND NAMES clang-tidy NO_CACHE)
+    if (CLANG_TIDY_COMMAND)
+        set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND};--config-file=${CMAKE_SOURCE_DIR}/.clang-tidy")
+    else()
+        message(WARNING "Set to use clang_tidy, but not found.")
+    endif()
+endif()
+
+#-----------------------------------------------------------------------------
+# C/C++ Compiler requirements
+#-----------------------------------------------------------------------------
 
 include(CheckCCompilerFlag)
 include(CheckCXXCompilerFlag)
-if (BOOST_VERSION VERSION_LESS "1.75.0")
-    CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-    if(COMPILER_SUPPORTS_CXX11)
-        set(CMAKE_CXX_STANDARD 11)
-        set(CMAKE_CXX_STANDARD_REQUIRED ON)
-        set(CMAKE_CXX_EXTENSIONS OFF)
-    else()
-        CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
-        if(COMPILER_SUPPORTS_CXX0X)
-            add_compile_options("-std=c++0x")
-            message(STATUS "Using  -std=c++0x.")
-        else()
-        message(WARNING "The compiler ${CMAKE_CXX_COMPILER} has no C++0x or C++11 flags support.
-            Using: callback compiler's standard")
-        endif()
-    endif()
-else()
-    set(CMAKE_CXX_STANDARD 14)
-endif()
 
-add_definitions(-DBOOST_ALLOW_DEPRECATED_HEADERS)
+set(CMAKE_CXX_STANDARD 17 CACHE STRING "C++ standard version to use (minimum requirement is c++17)")
+
 set(COMPILER_VERSION "${CMAKE_CXX_COMPILER_ID}-${CMAKE_CXX_COMPILER_VERSION}")
 
+#-----------------------------------------------------------------------------
+# C++ language version and compilation flags
+#-----------------------------------------------------------------------------
+message(STATUS "pgRouting: Require C++${CMAKE_CXX_STANDARD}")
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 #---------------------------------------------
 # Windows compiler flags
 #---------------------------------------------
-
 
 if(WIN32 AND NOT MSVC)
     set(OS_BUILD  $ENV{OS_BUILD})
@@ -166,22 +168,10 @@ if(WIN32 AND MSVC)
 endif()
 
 #-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
 # Finding prerequisites
 #-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
 
-#---------------------------------------------
-#---------------------------------------------
-# Perl
-#---------------------------------------------
-#---------------------------------------------
-include(FindPerl)
-if(NOT PERL_EXECUTABLE)
-    message(FATAL_ERROR "perl NOT FOUND - Please check your Perl installation.")
-endif()
+find_package(Perl REQUIRED)
 
 #---------------------------------------------
 #---------------------------------------------
@@ -195,7 +185,7 @@ find_package(PostgreSQL "${POSTGRESQL_MINIMUM_VERSION}")
 string(REGEX REPLACE "([0-9]+)[beta|alpha|rc|devel].*" "\\1.0" POSTGRESQL_VERSION_STRING ${POSTGRESQL_VERSION_STRING})
 message(STATUS "POSTGRESQL_VERSION_STRING=${POSTGRESQL_VERSION_STRING}")
 
-# calcualte mayor.micro
+# calculate mayor.micro
 STRING(REGEX MATCH "([0-9]+)\.([0-9]+)" POSTGRESQL_VERSION "${POSTGRESQL_VERSION_STRING}")
 message(STATUS "POSTGRESQL_VERSION=${POSTGRESQL_VERSION}")
 
@@ -219,16 +209,6 @@ endif()
 
 add_definitions(-DPGSQL_VERSION=${PGSQL_VERSION})
 message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
-
-
-#---------------------------------------------
-#---------------------------------------------
-# Boost
-#---------------------------------------------
-#---------------------------------------------
-
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
-
 
 #---------------------------------------------
 if (PROJECT_DEBUG)
@@ -344,7 +324,6 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
         set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
     endif()
 endif()
-
 
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

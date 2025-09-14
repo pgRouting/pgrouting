@@ -23,15 +23,19 @@ algorithm.
 
 .. rubric:: Availability
 
-* Version 3.1.0
+.. rubric:: Version 4.0.0
 
-  * New proposed signature:
+* Combinations signature promoted to official.
 
-    * pgr_dijkstraCost(Combinations)
+.. rubric:: Version 3.1.0
 
-* Version 2.2.0
+* New proposed signature:
 
-  * Official function.
+  * pgr_dijkstraCost(Combinations)
+
+.. rubric:: Version 2.2.0
+
+* Official function.
 
 
 Description
@@ -155,7 +159,7 @@ Many to Many
     :end-before: -- q51
 
 .. index::
-    single: dijkstraCost ; Combinations - Proposed on v3.1
+    single: dijkstraCost ; Combinations
 
 Combinations
 ...............................................................................

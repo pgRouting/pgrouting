@@ -5,26 +5,26 @@ SET
 /* --q1 */
 SELECT * FROM pgr_bipartite(
     $$SELECT id, source, target, cost, reverse_cost FROM edges$$
-) ORDER BY vertex_id;
- vertex_id | color_id
------------+----------
-         1 |        0
-         2 |        0
-         3 |        1
-         4 |        1
-         5 |        0
-         6 |        1
-         7 |        0
-         8 |        1
-         9 |        0
-        10 |        0
-        11 |        1
-        12 |        0
-        13 |        0
-        14 |        1
-        15 |        1
-        16 |        0
-        17 |        1
+) ORDER BY node;
+ node | color
+------+-------
+    1 |     0
+    2 |     0
+    3 |     1
+    4 |     1
+    5 |     0
+    6 |     1
+    7 |     0
+    8 |     1
+    9 |     0
+   10 |     0
+   11 |     1
+   12 |     0
+   13 |     0
+   14 |     1
+   15 |     1
+   16 |     0
+   17 |     1
 (17 rows)
 
 /* --q2 */
@@ -35,8 +35,8 @@ INSERT 0 1
 SELECT * FROM pgr_bipartite(
     $$SELECT id, source, target, cost, reverse_cost FROM edges$$
 );
- vertex_id | color_id
------------+----------
+ node | color
+------+-------
 (0 rows)
 
 /* --q4 */

@@ -1,0 +1,86 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+/* -- q1 */
+SELECT * FROM pgr_sloanOrdering(
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
+  );
+ seq | node
+-----+------
+   1 |    1
+   2 |    3
+   3 |    8
+   4 |    9
+   5 |   12
+   6 |    7
+   7 |    5
+   8 |   17
+   9 |    6
+  10 |   11
+  11 |   16
+  12 |   10
+  13 |   15
+  14 |    1
+  15 |    1
+  16 |    1
+  17 |    1
+(17 rows)
+
+/* -- q2 */
+CREATE TABLE example_edges1 (
+    id SERIAL PRIMARY KEY,
+    source INTEGER,
+    target INTEGER,
+    cost DOUBLE PRECISION,
+    reverse_cost DOUBLE PRECISION
+);
+CREATE TABLE
+/* --q3 */
+INSERT INTO example_edges1 (source, target, cost, reverse_cost) VALUES
+(4, 7, 1, 1),
+(7, 4, 1, 1),
+(7, 9, 1, 1),
+(9, 7, 1, 1),
+(7, 0, 1, 1),
+(0, 7, 1, 1),
+(0, 2, 1, 1),
+(2, 0, 1, 1),
+(2, 5, 1, 1),
+(5, 2, 1, 1),
+(5, 9, 1, 1),
+(9, 5, 1, 1),
+(9, 8, 1, 1),
+(8, 9, 1, 1),
+(9, 1, 1, 1),
+(1, 9, 1, 1),
+(5, 1, 1, 1),
+(1, 5, 1, 1),
+(9, 6, 1, 1),
+(6, 9, 1, 1),
+(6, 3, 1, 1),
+(3, 6, 1, 1),
+(1, 3, 1, 1),
+(3, 1, 1, 1);
+INSERT 0 24
+/* --q4 */
+SELECT * FROM pgr_sloanOrdering(
+    'SELECT id, source, target, cost, reverse_cost FROM example_edges1'
+);
+ seq | node
+-----+------
+   1 |    4
+   2 |    0
+   3 |    2
+   4 |    7
+   5 |    8
+   6 |    5
+   7 |    9
+   8 |    3
+   9 |    1
+  10 |    6
+(10 rows)
+
+/* --q5 */
+ROLLBACK;
+ROLLBACK

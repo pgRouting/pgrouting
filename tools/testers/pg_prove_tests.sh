@@ -37,9 +37,9 @@ echo "$PGPORT"
 
 pushd ./tools/testers/ || exit 1
 
-bash setup_db.sh "${PGPORT}" "${PGDATABASE}" "${PGUSER}" "3.8.0"
+bash setup_db.sh "${PGPORT}" "${PGDATABASE}" "${PGUSER}" "4.0.0"
 
-PGOPTIONS="-c client_min_messages=WARNING" pg_prove --failures --Q --recurse \
+PGOPTIONS="-c client_min_messages=WARNING" pg_prove --failures --q --recurse \
     -S on_error_rollback=off \
     -S on_error_stop=true \
     -P format=unaligned \

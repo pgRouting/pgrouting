@@ -39,9 +39,9 @@ $BODY$
     SELECT seq, component, node
     FROM _pgr_strongComponents(_pgr_get_statement($1));
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_strongComponents(TEXT)
 IS'pgr_strongComponents

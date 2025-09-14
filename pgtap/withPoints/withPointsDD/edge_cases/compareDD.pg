@@ -20,32 +20,37 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
-SELECT plan(1);
+SELECT CASE WHEN min_version('3.6.0') THEN plan(18) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION test_cases()
 RETURNS SETOF TEXT AS
 $BODY$
+DECLARE i INTEGER;
 BEGIN
   IF NOT min_version('3.6.0') THEN
-    RETURN QUERY SELECT skip(1, 'new signature on 3.6.0');
+    RETURN QUERY SELECT skip(1, 'pgr_withPointsDD testing only valid signatures on 4.0.0');
     RETURN;
   END IF;
 
-/* withPoinstsDD starting from a vertex NO details*/
-prepare nodetails1 AS
-SELECT seq, depth, start_vid,  node, edge, round(cost::numeric, 3) AS cost, round(agg_cost::numeric, 3)  AS agg_cost FROM pgr_withPointsDD(
-      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-      'SELECT pid, edge_id, fraction, side from pointsOfInterest where pid > 100',
-      1, 4.8, 'r', directed => true, details => false)
-WHERE node > 0;
+  /* withPoinstsDD starting from a vertex NO details*/
+  prepare nodetails(INTEGER) AS
+  SELECT seq, depth, start_vid,  node, edge, round(cost::numeric, 3) AS cost, round(agg_cost::numeric, 3)  AS agg_cost FROM pgr_withPointsDD(
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest where pid > 100',
+    $1, 4.8, 'r', directed => true, details => false)
+  WHERE node > 0;
 
-prepare expected1 AS
-SELECT seq, depth, start_vid,  node, edge, round(cost::numeric, 3) AS cost, round(agg_cost::numeric, 3)  AS agg_cost FROM pgr_drivingDistance(
-      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
-      1, 4.8, directed => true);
+  prepare expected(INTEGER) AS
+  SELECT seq, depth, start_vid,  node, edge, round(cost::numeric, 3) AS cost, round(agg_cost::numeric, 3)  AS agg_cost FROM pgr_drivingDistance(
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+    $1, 4.8, directed => true);
 
-RETURN QUERY
-SELECT set_eq('nodetails1', 'expected1');
+  FOR i IN 1..18 LOOP
+
+    RETURN QUERY
+    SELECT set_eq(format($$"nodetails" (%1$s)$$,i), format($$"expected" (%1$s)$$,i), 'Expected driving distance from ' || i);
+
+  END LOOP;
 
 END;
 $BODY$

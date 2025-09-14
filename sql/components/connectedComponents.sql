@@ -49,10 +49,10 @@ $BODY$
     SELECT seq, component, node
     FROM _pgr_connectedComponents(_pgr_get_statement($1));
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_connectedComponents(TEXT)
 IS'pgr_connectedComponents

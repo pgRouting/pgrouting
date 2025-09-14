@@ -50,10 +50,10 @@ The main Characteristics are:
     :start-after: astar general info start
     :end-before: astar general info end
 
-* For large graphs where there is a path bewtween the starting vertex and ending
+* For large graphs where there is a path between the starting vertex and ending
   vertex:
 
-  * It is expected to terminate faster than pgr_aStar
+  * It is expected to terminate faster than doc:`pgr_aStar`
 
 See :ref:`heuristics <astar_heuristics>` available and :ref:`factor
 <astar_factor>` handling.

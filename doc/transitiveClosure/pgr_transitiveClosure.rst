@@ -24,9 +24,13 @@
 
 .. rubric:: Availability
 
-* Version 3.0.0
+.. rubric:: Version 4.0.0
 
-  * New experimental function.
+* Standardized output to |result-closure|
+
+.. rubric:: Version 3.0.0
+
+* New experimental function.
 
 
 Description

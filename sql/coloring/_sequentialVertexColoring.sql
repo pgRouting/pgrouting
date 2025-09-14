@@ -43,7 +43,6 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE C IMMUTABLE STRICT;
 
--- COMMENTS
 
 COMMENT ON FUNCTION _pgr_sequentialVertexColoring(TEXT)
 IS 'pgRouting internal function';

@@ -21,25 +21,29 @@ Dijkstra algorithm.
 
 .. rubric:: Availability
 
-* Version 3.2.0
+.. rubric:: Version 4.0.0
 
-  * New proposed signature:
+* Combinations signature promoted to official.
 
-    * pgr_bdDijkstraCost(Combinations)
+.. rubric:: Version 3.2.0
 
-* Version 3.0.0
+* New proposed signature:
 
-  * Function promoted to official.
+  * pgr_bdDijkstraCost(Combinations)
 
-* Version 2.5.0
+.. rubric:: Version 3.0.0
 
-  * New proposed function.
+* Function promoted to official.
+
+.. rubric:: Version 2.5.0
+
+* New proposed function.
 
 
 Description
 -------------------------------------------------------------------------------
 
-The ``pgr_bdDijkstraCost`` function summarizes of the cost of the shortest path
+The ``pgr_bdDijkstraCost`` function summarizes the cost of the shortest path
 using the bidirectional Dijkstra Algorithm.
 
 .. include:: bdDijkstra-family.rst
@@ -153,7 +157,7 @@ Many to Many
     :end-before: -- q51
 
 .. index::
-    single: bdDijkstraCost ; Combinations - Proposed on v3.2
+    single: bdDijkstraCost ; Combinations
 
 Combinations
 ...............................................................................

@@ -88,9 +88,7 @@ class PgrCostFlowGraph {
      }
 
      int64_t GetEdgeId(E e) const {
-         if (eToId.find(e) == eToId.end())
-             return -1;
-         return eToId.at(e);
+         return eToId.find(e) == eToId.end()? -1 : eToId.at(e);
      }
 
      void SetSupersource(

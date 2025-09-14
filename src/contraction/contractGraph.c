@@ -116,12 +116,12 @@ _pgr_contraction(PG_FUNCTION_ARGS) {
         funcctx->max_calls = result_count;
 
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-                != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
                          "that cannot accept type record")));
+        }
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
     }
@@ -150,12 +150,9 @@ _pgr_contraction(PG_FUNCTION_ARGS) {
             (size_t)result_tuples[call_cntr].contracted_vertices_size;
 
         Datum* contracted_vertices_array;
-        contracted_vertices_array = (Datum*) palloc(sizeof(Datum) *
-                (size_t)contracted_vertices_size);
+        contracted_vertices_array = (Datum*) palloc(sizeof(Datum) * contracted_vertices_size);
 
         for (i = 0; i < contracted_vertices_size; ++i) {
-            PGR_DBG("Storing contracted vertex %ld",
-                    result_tuples[call_cntr].contracted_vertices[i]);
             contracted_vertices_array[i] =
                 Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
         }

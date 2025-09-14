@@ -22,44 +22,40 @@ BEGIN;
 SELECT plan(1);
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
--- should be a procedure
 CREATE OR REPLACE FUNCTION edge_cases()
-RETURNS void AS
+RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
-  IF min_version('3.4.0') THEN
-    PREPARE q1 AS
-      SELECT seq, node, edge, cost::text FROM pgr_trsp(
-        $$SELECT id, source, target, cost FROM edges$$,
-        $$SELECT * FROM restrictions WHERE id > 10$$,
-        7, 12, false);
-    PREPARE q2 AS
-      (SELECT seq, node, edge, cost::text
-      FROM pgr_dijkstra('SELECT id, source, target, cost FROM edges order by id',7, 12, FALSE))
-      UNION
-      (SELECT seq, node, edge, cost::text
-      FROM pgr_dijkstra('SELECT id, source, target, cost FROM edges order by source',7, 12, FALSE));
 
-  ELSE
-
-    PREPARE q1 AS
-      SELECT seq, id1, id2, cost::text
-      FROM pgr_trsp($$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edges$$, 7, 12, FALSE, false);
-    PREPARE q2 AS
-      (SELECT seq-1, node::INTEGER, edge::INTEGER, cost::text
-        FROM pgr_dijkstra('SELECT id, source, target, cost FROM edges order by id',7, 12, FALSE))
-      UNION ALL
-      (SELECT seq-1, node::INTEGER, edge::INTEGER, cost::text
-        FROM pgr_dijkstra('SELECT id, source, target, cost FROM edges order by source',7, 12, FALSE));
-
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'New signatures added on 3.4.0');
+    RETURN;
   END IF;
+
+  IF min_lib_version('4.0.0') and NOT min_version('3.6.0') THEN
+    RETURN QUERY SELECT skip(1, 'Internal function __v4trsp deprecated on 3.6.0 deleted on 4.0.0');
+    RETURN;
+  END IF;
+
+  PREPARE q1 AS
+  SELECT seq, node, edge, cost::text FROM pgr_trsp(
+    $$SELECT id, source, target, cost FROM edges$$,
+    $$SELECT * FROM restrictions WHERE id > 10$$,
+    7, 12, false);
+  PREPARE q2 AS
+  (SELECT seq, node, edge, cost::text
+    FROM pgr_dijkstra('SELECT id, source, target, cost FROM edges order by id',7, 12, FALSE))
+  UNION
+  (SELECT seq, node, edge, cost::text
+    FROM pgr_dijkstra('SELECT id, source, target, cost FROM edges order by source',7, 12, FALSE));
+
+  RETURN QUERY SELECT set_eq('q2', 'q1', 'path found');
 END;
 $BODY$
 LANGUAGE plpgsql;
 
 
 SELECT edge_cases();
-SELECT set_eq('q2', 'q1', 'path found');
 
 SELECT finish();
 ROLLBACK;

@@ -24,23 +24,14 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
--------------------------
--------------------------
--- _isPlanar
--------------------------
--------------------------
 
 --v3.2
 CREATE FUNCTION _pgr_isPlanar(
   TEXT   -- edges_sql (required)
-     )
-
+)
 RETURNS BOOLEAN AS
 'MODULE_PATHNAME'
-LANGUAGE c IMMUTABLE STRICT;
-
-
--- COMMENTS
+LANGUAGE C VOLATILE STRICT;
 
 COMMENT ON FUNCTION _pgr_isPlanar(TEXT)
 IS 'pgRouting internal function';

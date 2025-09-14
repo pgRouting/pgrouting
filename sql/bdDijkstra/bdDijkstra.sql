@@ -24,14 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
--------------------
--- pgr_bdDijkstra
--------------------
-
-
 -- ONE TO ONE
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdDijkstra(
     TEXT,   -- edges_sql (required)
     BIGINT, -- from_vid
@@ -41,22 +35,23 @@ CREATE FUNCTION pgr_bdDijkstra(
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, path_seq, node, edge, cost, agg_cost
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- ONE TO MANY
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdDijkstra(
     TEXT,    -- edges_sql (required)
     BIGINT,   -- from_vid (required)
@@ -66,6 +61,7 @@ CREATE FUNCTION pgr_bdDijkstra(
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -73,16 +69,15 @@ CREATE FUNCTION pgr_bdDijkstra(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, path_seq, end_vid, node, edge, cost, agg_cost
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- MANY TO ONE
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdDijkstra(
     TEXT,    -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -93,23 +88,23 @@ CREATE FUNCTION pgr_bdDijkstra(
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, path_seq, start_vid, node, edge, cost, agg_cost
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 
 -- MANY TO MANY
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdDijkstra(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -131,8 +126,7 @@ $BODY$
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- COMBINATIONS
@@ -157,11 +151,9 @@ $BODY$
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), _pgr_get_statement($2), directed, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_bdDijkstra(One to One)

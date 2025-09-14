@@ -20,6 +20,619 @@ To see the full list of changes check the list of `Git commits
    :local:
    :depth: 1
 
+pgRouting 4
+*******************************************************************************
+
+.. contents:: Minors 4.x
+   :local:
+   :depth: 1
+
+pgRouting 4.0
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
+
+.. current
+
+pgRouting 4.0.0-alpha1 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the
+:milestone:`4.0.0`
+
+.. contents:: Contents
+   :local:
+   :depth: 1
+
+Build
+...............................................................................
+
+* C++ standard is std17
+
+  * Using this standard all versions of boost will work
+  * The code is not yet modified to use std17:
+
+    * If needed: ``-DCMAKE_CXX_STANDARD=14`` to lower the standard.
+
+* The user's documentation is build by default
+* The doxygen documentation is build by default
+
+For developers:
+
+* Set `-DUSE_CLANG_TIDY=ON` for clang tidy checks.
+* Tidy checks are done on CI.
+
+Documentation build
+...............................................................................
+
+* The doxygen documentation is build by default
+* The HTML documentation is build by default
+* The translated languages (en, es, sv, zh_Hans) HTML documentation is build by
+  default
+* `WITH-DOC` is not used anymore
+
+User's Documentation is not build when
+
+* Sphinx is not found
+* When all Sphinx formats are OFF
+
+  * To not build HTML default format: `-DBUILD_HTML=OFF`
+
+* When all languages are OFF
+
+  * To build only English: `-DES=ON -DSV=OFF -DZH_HANS=OFF`
+
+* Documentation output changed location to `build/doc/_build/<format>` directory
+
+  * For example: for HTML output is on `build/doc/_build/html` directory
+
+Developers's Documentation is not build when
+
+* Doxygen is not found
+* To not build Doxygen documentation: `-DBUILD_DOXY=OFF`
+
+Summary of changes by function
+...............................................................................
+
+* pgr_aStar
+
+  .. include:: pgr_aStar.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_aStarCost
+
+  .. include:: pgr_aStarCost.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_bandwidth
+
+  .. include:: pgr_bandwidth.rst
+     :start-after: Version 4.0.0
+     :end-before: Description
+
+* pgr_bdAstar
+
+  .. include:: pgr_bdAstar.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_bdAstarCost
+
+  .. include:: pgr_bdAstarCost.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_bdDijkstra
+
+  .. include:: pgr_bdDijkstra.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_bdDijkstraCost
+
+  .. include:: pgr_bdDijkstraCost.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_bellmanFord
+
+  .. include:: pgr_bellmanFord.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_binaryBreadthFirstSearch
+
+  .. include:: pgr_binaryBreadthFirstSearch.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_bipartite
+
+  .. include:: pgr_bipartite.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_boykovKolmogorov
+
+  .. include:: pgr_boykovKolmogorov.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_breadthFirstSearch
+
+  .. include:: pgr_breadthFirstSearch.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_contraction
+
+  .. include:: pgr_contraction.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_dagShortestPath
+
+  .. include:: pgr_dagShortestPath.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_depthFirstSearch
+
+  .. include:: pgr_depthFirstSearch.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_dijkstra
+
+  .. include:: pgr_dijkstra.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_dijkstraCost
+
+  .. include:: pgr_dijkstraCost.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_edgeColoring
+
+  .. include:: pgr_edgeColoring.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_edgeDisjointPaths
+
+  .. include:: pgr_edgeDisjointPaths.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_edmondsKarp
+
+  .. include:: pgr_edmondsKarp.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_edwardMoore
+
+  .. include:: pgr_edwardMoore.rst
+     :start-after: Version 4.0.0
+     :end-before: Description
+
+* pgr_kingOrdering
+
+  .. include:: pgr_kingOrdering.rst
+     :start-after: Version 4.0.0
+     :end-before: Description
+
+* pgr_KSP
+
+  .. include:: pgr_KSP.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_maxFlow
+
+  .. include:: pgr_maxFlow.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_pushRelabel
+
+  .. include:: pgr_pushRelabel.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_sloanOrdering
+
+  .. include:: pgr_sloanOrdering.rst
+     :start-after: Version 4.0.0
+     :end-before: Description
+
+* pgr_sequentialVertexColoring
+
+  .. include:: pgr_sequentialVertexColoring.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_topologicalSort
+
+  .. include:: pgr_topologicalSort.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_transitiveClosure
+
+  .. include:: pgr_transitiveClosure.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_trsp
+
+  .. include:: pgr_trsp.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_trspVia
+
+  .. include:: pgr_trspVia.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_trspVia_withPoints
+
+  .. include:: pgr_trspVia_withPoints.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_trsp_withPoints
+
+  .. include:: pgr_trsp_withPoints.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_turnRestrictedPath
+
+  .. include:: pgr_turnRestrictedPath.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_withPoints
+
+  .. include:: pgr_withPoints.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_withPointsCost
+
+  .. include:: pgr_withPointsCost.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_withPointsCostMatrix
+
+  .. include:: pgr_withPointsCostMatrix.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_withPointsDD
+
+  .. include:: pgr_withPointsDD.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_withPointsKSP
+
+  .. include:: pgr_withPointsKSP.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_withPointsVia
+
+  .. include:: pgr_withPointsVia.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+Functions promoted to official
+...............................................................................
+
+* :issue:`2701`: pgr_trsp
+* :issue:`2701`: pgr_trspVia
+* :issue:`2701`: pgr_trspVia_withPoints
+* :issue:`2701`: pgr_trsp_withPoints
+* :issue:`2700`: pgr_withPoints
+* :issue:`2700`: pgr_withPointsCost
+* :issue:`2700`: pgr_withPointsCostMatrix
+* :issue:`2700`: pgr_withPointsDD
+* :issue:`2700`: pgr_withPointsKSP
+* :issue:`2700`: pgr_withPointsVia
+
+Signatures promoted to official
+...............................................................................
+
+* :issue:`2718`: pgr_aStar(Combinations)
+* :issue:`2718`: pgr_aStarCost(Combinations)
+* :issue:`2718`: pgr_bdAstar(Combinations)
+* :issue:`2718`: pgr_bdAstarCost(Combinations)
+* :issue:`2718`: pgr_bdDijkstra(Combinations)
+* :issue:`2718`: pgr_bdDijkstraCost(Combinations)
+* :issue:`2718`: pgr_dijkstra(Combinations)
+* :issue:`2718`: pgr_dijkstraCost(Combinations)
+* :issue:`2718`: pgr_KSP(All signatures)
+* :issue:`2718`: pgr_boykovKolmogorov(Combinations)
+* :issue:`2718`: pgr_edmondsKarp(Combinations)
+* :issue:`2718`: pgr_maxFlow(Combinations)
+* :issue:`2718`: pgr_pushRelabel(Combinations)
+
+New experimental functions.
+...............................................................................
+
+* Metrics
+
+  * :issue:`2951`: pgr_bandwidth
+
+* Ordering
+
+  * :issue:`2954`: pgr_kingOrdering
+  * :issue:`2955`: pgr_sloanOrdering
+
+SQL signatures and output standardization
+...............................................................................
+
+:issue:`2904`: Standardize output columns of functions with different output
+               columns within overloads
+
+.. rubric:: Standardized to |short-generic-result|
+
+* :issue:`2905`: pgr_withPoints
+* :issue:`2906`: pgr_bdDijkstra
+* :issue:`2907`: pgr_bellmanFord
+* :issue:`2908`: pgr_binaryBreadthFirstSearch
+* :issue:`2910`: pgr_edwardMoore
+* :issue:`2913`: pgr_DAGshortestPath
+
+.. rubric:: Standardized to |matrix-result|
+
+* :issue:`2905`: pgr_withPointsCost
+* :issue:`2905`: pgr_withPointsCostMatrix
+
+.. rubric:: Standardized to |generic-result|
+
+* :issue:`2909`: pgr_edgeDisjointPaths
+* :issue:`2909`: pgr_turnRestrictedPaths
+
+.. rubric:: Standardized to |result_edge_color|
+
+* :issue:`2924`: pgr_edgeColoring
+
+.. rubric:: Standardized to |result_node_color|
+
+* :issue:`2924`: pgr_bipartite
+* :issue:`2927`: pgr_sequentialVertexColoring
+
+.. rubric:: Standardized to |result-spantree|
+
+* :issue:`2931`: pgr_breadthFirstSearch
+* :issue:`2931`: pgr_depthFirstSearch
+
+.. rubric:: Standardized to |result_node_order|
+
+* :issue:`2934`: pgr_topologicalSort
+
+.. rubric:: Standardized to |result-closure|
+
+* :issue:`2934`: pgr_transitiveClosure
+
+Removal of SQL deprecated signatures
+...............................................................................
+
+* :issue:`2798`: pgr_contraction
+
+  .. include:: pgr_contraction.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
+
+* :issue:`2683`: pgr_trsp
+
+  .. include:: pgr_trsp.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
+
+* :issue:`2683`: pgr_trspVia
+
+  .. include:: pgr_trspVia.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
+
+* :issue:`2700`: pgr_withPointsVia
+
+  .. include:: pgr_withPointsVia.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
+
+* :issue:`2888`: pgr_findCloseEdges
+
+  * pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)
+  * pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)
+
+* :issue:`2890`: pgr_withPointsDD
+
+  .. include:: pgr_withPointsDD.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
+
+* :issue:`2895`: pgr_withPointsKSP
+
+  .. include:: pgr_withPointsKSP.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
+
+* :issue:`2899`: pgr_maxCardinalityMatch
+
+  .. include:: pgr_maxCardinalityMatch.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
+
+* :issue:`2901`: pgr_TSP
+
+  .. include:: pgr_TSP.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
+
+* :issue:`2901`: pgr_TSPeuclidean
+
+  .. include:: pgr_TSPeuclidean.rst
+     :start-after: Breaking change
+     :end-before: .. rubric
+
+
+Removal of SQL deprecated functions
+...............................................................................
+
+* :issue:`2681`: pgr_trspviaedges
+* :issue:`2682`: pgr_trspviavertices
+* :issue:`2748`: pgr_alphaShape
+* :issue:`2751`: pgr_createTopology
+* :issue:`2752`: pgr_analyzeGraph
+* :issue:`2755`: pgr_analyzeOneWay
+* :issue:`2827`: pgr_createVerticesTable
+* :issue:`2886`: pgr_nodeNetwork
+
+Removal of SQL deprecated internal functions
+...............................................................................
+
+* :issue:`2748` _pgr_alphashape(text,double precision)
+* :issue:`2861` _pgr_checkverttab(text,text[],integer,text)
+* :issue:`2861` _pgr_createindex(text,text,text,integer,text)
+* :issue:`2861` _pgr_createindex(text,text,text,text,integer,text)
+* :issue:`2913` _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)
+* :issue:`2913` _pgr_dagshortestpath(text,text,boolean,boolean)
+* :issue:`2730` _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)
+* :issue:`2730` _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)
+* :issue:`2730` _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)
+* :issue:`2730` _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)
+* :issue:`2730` _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)
+* :issue:`2730` _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)
+* :issue:`2730` _pgr_dijkstra(text,text,boolean,boolean,boolean)
+* :issue:`2735` _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)
+* :issue:`2861` _pgr_endpoint(geometry)
+* :issue:`2861` _pgr_getcolumnname(text,text,integer,text)
+* :issue:`2861` _pgr_getcolumnname(text,text,text,integer,text)
+* :issue:`2861` _pgr_getcolumntype(text,text,integer,text)
+* :issue:`2861` _pgr_getcolumntype(text,text,text,integer,text)
+* :issue:`2861` _pgr_gettablename(text,integer,text)
+* :issue:`2861` _pgr_iscolumnindexed(text,text,integer,text)
+* :issue:`2861` _pgr_iscolumnindexed(text,text,text,integer,text)
+* :issue:`2861` _pgr_iscolumnintable(text,text)
+* :issue:`2745` _pgr_kruskal(text,anyarray,text,bigint,double precision)
+* :issue:`2897` _pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)
+* :issue:`2897` _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)
+* :issue:`2897` _pgr_ksp(text,text,integer,boolean,boolean)
+* :issue:`2899` _pgr_maxcardinalitymatch(text,boolean)
+* :issue:`2861` _pgr_msg(integer,text,text)
+* :issue:`2861` _pgr_onerror(boolean,integer,text,text,text,text)
+* :issue:`2861` _pgr_pointtoid(geometry,double precision,text,integer)
+* :issue:`2743` _pgr_prim(text,anyarray,text,bigint,double precision)
+* :issue:`2861` _pgr_quote_ident(text)
+* :issue:`2861` _pgr_startpoint(geometry)
+* :issue:`2683` _pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+* :issue:`2683` _pgr_trsp(text,text,anyarray,anyarray,boolean)
+* :issue:`2683` _pgr_trsp(text,text,anyarray,bigint,boolean)
+* :issue:`2683` _pgr_trsp(text,text,bigint,anyarray,boolean)
+* :issue:`2683` _pgr_trsp(text,text,bigint,bigint,boolean)
+* :issue:`2682` _pgr_trspviavertices(text,integer[],boolean,boolean,text)
+* :issue:`2919` _pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)
+* :issue:`2919` _pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)
+* :issue:`2919` _pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)
+* :issue:`2901` _pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+* :issue:`2901` _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+* :issue:`2861` _pgr_versionless(text,text)
+* :issue:`2890` _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
+* :issue:`2895` _pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)
+* :issue:`2895` _pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
+* :issue:`2895` _pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)
+* :issue:`2741` _pgr_withpointsvia(text,bigint[],double precision[],boolean)
+* :issue:`2741` _pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
+* :issue:`2683` _trsp(text,text,anyarray,anyarray,boolean)
+* :issue:`2683` _v4trsp(text,text,anyarray,anyarray,boolean)
+* :issue:`2683` _v4trsp(text,text,text,boolean)
+
+Summary of functions and signatures no longer on pgrouting
+...............................................................................
+
+* :issue:`2748` pgr_alphashape(geometry,double precision)
+* :issue:`2752` pgr_analyzegraph(text,double precision,text,text,text,text,text)
+* :issue:`2755` pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)
+* :issue:`2798` pgr_contraction(text,bigint[],integer,bigint[],boolean)
+* :issue:`2751` pgr_createtopology(text,double precision,text,text,text,text,text,boolean)
+* :issue:`2827` pgr_createverticestable(text,text,text,text,text)
+* :issue:`2888` pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)
+* :issue:`2888` pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)
+* :issue:`2899` pgr_maxcardinalitymatch(text,boolean)
+* :issue:`2886` pgr_nodenetwork(text,double precision,text,text,text,text,boolean)
+* :issue:`2683` pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+* :issue:`2683` pgr_trsp(text,integer,integer,boolean,boolean,text)
+* :issue:`2681` pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
+* :issue:`2682` pgr_trspviavertices(text,anyarray,boolean,boolean,text)
+* :issue:`2919` pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)
+* :issue:`2919` pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)
+* :issue:`2919` pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)
+* :issue:`2919` pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)
+* :issue:`2919` pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)
+* :issue:`2919` pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)
+* :issue:`2901` pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+* :issue:`2901` pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
+* :issue:`2919` pgr_withpointscostmatrix(text,text,anyarray,boolean,character)
+* :issue:`2919` pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)
+* :issue:`2919` pgr_withpointscost(text,text,anyarray,bigint,boolean,character)
+* :issue:`2919` pgr_withpointscost(text,text,bigint,anyarray,boolean,character)
+* :issue:`2919` pgr_withpointscost(text,text,bigint,bigint,boolean,character)
+* :issue:`2919` pgr_withpointscost(text,text,text,boolean,character)
+* :issue:`2890` pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
+* :issue:`2890` pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
+* :issue:`2895` pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
+* :issue:`2919` pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)
+* :issue:`2919` pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)
+* :issue:`2919` pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)
+* :issue:`2919` pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)
+* :issue:`2919` pgr_withpoints(text,text,text,boolean,character,boolean)
+* :issue:`2919` pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
+
+Code enhancements
+...............................................................................
+
+* Removal of unused C/C++ code
+* Refactor the Script to build the update PostgreSQL file.
+* One process & driver for:
+
+  * allpairs: johnson and Floyd-Warshall
+  * Shortest path: Dijkstra and withPoints using Dijkstra
+
+.. rubric:: Deprecation of internal C/C++ functions
+
+Deprecated functions are substituted by new function.
+
+* _pgr_drivingdistance => _pgr_drivingdistancev4
+* _pgr_withpointsdd => _pgr_withpointsddv4
+* _pgr_kruskal => _pgr_kruskalv4
+* _pgr_prim => _pgr_primv4
+* _pgr_dijkstra => _pgr_dijkstra_v4
+* _pgr_withpointsksp => _pgr_withpointsksp_v4
+* _pgr_trspvia_withpoints => _pgr_trspvia_withpoints_v4
+* _pgr_trsp_withpoints => _pgr_trsp_withpoints_v4
+* _pgr_withpointsvia => _pgr_withpointsvia_v4
+
+.. rubric:: Internal C/C++ functions in legacy
+
+* :issue:`2683` _trsp
+* :issue:`2683` _v4trsp
+* :issue:`2683` _v4trsp
+* :issue:`2748` _pgr_alphashape
+* :issue:`2913` _pgr_dagshortestpath
+
 pgRouting 3
 *******************************************************************************
 
@@ -34,21 +647,17 @@ pgRouting 3.8
    :local:
    :depth: 1
 
-.. current
-
 pgRouting 3.8.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.8.0
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__
+To see all issues & pull requests closed by this release see the
+:milestone:`3.8.0`
 
 .. rubric:: Promotion to official function of pgRouting.
 
 .. rubric:: Metric
 
-* `#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__:
-  Promoted to official pgr_degree in version 3.8
+* :issue:`2760`: Promoted to official pgr_degree in version 3.8
 
   .. include:: pgr_degree.rst
      :start-after: Version 3.8.0
@@ -56,29 +665,25 @@ milestone for 3.8.0
 
 .. rubric:: Utilities
 
-* `#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__:
-  Promoted to official pgr_extractVertices in version 3.8
+* :issue:`2772`: Promoted to official pgr_extractVertices in version 3.8
 
   .. include:: pgr_extractVertices.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
-* `#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__:
-  Promoted to official pgr_findCloseEdges in version 3.8
+* :issue:`2774`: Promoted to official pgr_findCloseEdges in version 3.8
 
   .. include:: pgr_findCloseEdges.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
-* `#2873 <https://github.com/pgRouting/pgrouting/issues/2873>`__:
-  Promoted to official pgr_separateCrossing in version 3.8
+* :issue:`2873`: Promoted to official pgr_separateCrossing in version 3.8
 
   .. include:: pgr_separateCrossing.rst
      :start-after: Version 3.8.0
      :end-before: Description
 
-* `#2874 <https://github.com/pgRouting/pgrouting/issues/2874>`__:
-  Promoted to official pgr_separateTouching in version 3.8
+* :issue:`2874`: Promoted to official pgr_separateTouching in version 3.8
 
   .. include:: pgr_separateTouching.rst
      :start-after: Version 3.8.0
@@ -88,24 +693,18 @@ milestone for 3.8.0
 
 .. rubric:: Contraction
 
-* `#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__:
-  pgr_contractionDeadEnd new contraction function
-* `#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__:
-  pgr_contractionLinear new contraction function
-* `#2536 <https://github.com/pgRouting/pgrouting/issues/2536>`__:
-  Support for contraction hierarchies (pgr_contractionHierarchies)
+* :issue:`2790`: pgr_contractionDeadEnd new contraction function
+* :issue:`2791`: pgr_contractionLinear new contraction function
+* :issue:`2536`: Support for contraction hierarchies (pgr_contractionHierarchies)
 
 .. rubric:: Utilities
 
-* `#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__:
-  Create pgr_separateCrossing new utility function
-* `#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__:
-  Create of pgr_separateTouching new utility function
+* :issue:`2848`: Create pgr_separateCrossing new utility function
+* :issue:`2849`: Create of pgr_separateTouching new utility function
 
 .. rubric:: Official functions changes
 
-* `#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__:
-  pgr_contraction(edges) new signature
+* :issue:`2786`: pgr_contraction(edges) new signature
 
   .. include:: pgr_contraction.rst
      :start-after: Version 3.8.0
@@ -113,30 +712,22 @@ milestone for 3.8.0
 
 .. rubric:: C/C++ code enhancements
 
-* `#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__:
-  Code reorganization on pgr_contraction
+* :issue:`2802`: Code reorganization on pgr_contraction
 * Other enhancements:
-  `#2869 <https://github.com/pgRouting/pgrouting/issues/2869>`__
+
+  * :issue:`2869`:
 
 .. rubric:: SQL code enhancements
 
-* `#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__:
-  Rewrite pgr_nodeNetwork
+* :issue:`2850`: Rewrite pgr_nodeNetwork
 
 .. rubric:: Deprecation of SQL functions
 
-* `#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__:
-  Deprecate pgr_AlphaShape in 3.8
-* `#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__:
-  Deprecate pgr_CreateTopology in 3.8
-* `#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__:
-  Deprecate pgr_analyzeGraph in 3.8
-* `#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__:
-  Deprecate pgr_analyzeOneWay in 3.8
-* `#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__:
-  Deprecate pgr_createVerticesTable in 3.8
-* `#2847 <https://github.com/pgRouting/pgrouting/issues/2847>`__:
-  Deprecate pgr_nodeNetwork in 3.8
+* :issue:`2749`: Deprecate pgr_AlphaShape in 3.8
+* :issue:`2750`: Deprecate pgr_CreateTopology in 3.8
+* :issue:`2753`: Deprecate pgr_analyzeGraph in 3.8
+* :issue:`2754`: Deprecate pgr_analyzeOneWay in 3.8
+* :issue:`2826`: Deprecate pgr_createVerticesTable in 3.8
 
 In the deprecated functions:
 
@@ -153,22 +744,20 @@ pgRouting 3.7
 pgRouting 3.7.3 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.7.3
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__
+To see all issues & pull requests closed by this release see the
+:milestone:`3.7.3`
 
-* `#2731 <https://github.com/pgRouting/pgrouting/pull/2731>`__ Build Failure on Ubuntu 22
+* :issue:`2731`: Build Failure on Ubuntu 22
 
 pgRouting 3.7.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.7.2
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__
+To see all issues & pull requests closed by this release see the
+:milestone:`3.7.2`
 
 .. rubric:: Build
 
-* `#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cmake missing
+* :issue:`2713`: cmake missing
   some policies and min version
 
   - Using OLD policies: CMP0148, CMP0144, CMP0167
@@ -176,24 +765,20 @@ milestone for 3.7.2
 
 .. rubric:: Bug fixes
 
-* `#2707 <https://github.com/pgRouting/pgrouting/pull/2707>`__ Build failure in
-  pgRouting 3.7.1 on Alpine
-* `#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie crashing
-  on pgr_betweennessCentrality
+* :issue:`2707`: Build failure in pgRouting 3.7.1 on Alpine
+* :issue:`2706`: winnie crashing on pgr_betweennessCentrality
 
 pgRouting 3.7.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.7.1
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__
+To see all issues & pull requests closed by this release see the
+:milestone:`3.7.1`
 
 .. rubric:: Bug fixes
 
-* `#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ fails to compile
-  under mingw64 gcc 13.2
-* `#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ When point is a
-  vertex, the withPoints family do not return results.
+* :issue:`2680`: fails to compile under mingw64 gcc 13.2
+* :issue:`2689`: When point is a vertex, the withPoints family do not return
+  results.
 
 .. rubric:: C/C++ code enhancemet
 
@@ -202,19 +787,17 @@ milestone for 3.7.1
 pgRouting 3.7.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.7.0
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__
+To see all issues & pull requests closed by this release see the
+:milestone:`3.7.0`
 
 .. rubric:: Support
 
-* `#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of
-  PostgreSQL12 on pgrouting v3.7
+* :issue:`2656`: Stop support of PostgreSQL12 on pgrouting v3.7
 
   * Stopping support of PostgreSQL 12
   * CI does not test for PostgreSQL 12
 
-.. rubric:: New experimental functions
+.. rubric:: New experimental functions.
 
 * Metrics
 
@@ -222,8 +805,7 @@ milestone for 3.7.0
 
 .. rubric:: Official functions changes
 
-* `#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standardize
-  spanning tree functions output
+* :issue:`2605`: Standardize spanning tree functions output
 
   * Functions:
 
@@ -240,8 +822,8 @@ milestone for 3.7.0
 
 .. rubric:: Experimental promoted to proposed.
 
-* `#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph
-  ignores directed flag and use negative values for identifiers.
+* :issue:`2635`: pgr_LineGraph ignores directed flag and use negative values for
+  identifiers.
 
   * ``pgr_lineGraph``
 
@@ -251,11 +833,11 @@ milestone for 3.7.0
 
 .. rubric:: Code enhancement
 
-* `#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving distance
+* :issue:`2599`: Driving distance
   cleanup
-* `#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql
+* :issue:`2607`: Read postgresql
   data on C++
-* `#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does
+* :issue:`2614`: Clang tidy does
   not work
 
 pgRouting 3.6
@@ -268,9 +850,8 @@ pgRouting 3.6
 pgRouting 3.6.3 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.6.3
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__
+To see all issues & pull requests closed by this release see the
+:milestone:`3.6.3`
 
 .. rubric:: Build
 
@@ -307,9 +888,8 @@ milestone for 3.6.3
 pgRouting 3.6.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.6.2
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__
+To see all issues & pull requests closed by this release see the
+:milestone:`3.6.2`
 
 .. rubric:: Upgrade fix
 
@@ -328,24 +908,21 @@ milestone for 3.6.2
 pgRouting 3.6.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.6.1
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`_
+To see all issues & pull requests closed by this release see the
+:milestone:`3.6.1`
 
-* `#2588 <https://github.com/pgRouting/pgrouting/pull/2588>`__ pgrouting 3.6.0
+* :issue:`2588`: pgrouting 3.6.0
   fails to build on OSX
 
 pgRouting 3.6.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.6.0
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_
+To see all issues & pull requests closed by this release see the
+:milestone:`3.6.0`
 
 .. rubric:: Official functions changes
 
-* `#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standardize output
-  pgr_aStar
+* :issue:`2516`: Standardize output pgr_aStar
 
   * Standardize output columns to |short-generic-result|
 
@@ -353,25 +930,21 @@ milestone for 3.6.0
     * pgr_aStar(One to Many) added ``end_vid`` column.
     * pgr_aStar(Many to One) added ``start_vid`` column.
 
-* `#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standardize output
-  pgr_bdAstar
+* :issue:`2523`: Standardize output pgr_bdAstar
 
   * Standardize output columns to |short-generic-result|
 
-    * pgr_bdAstar(One to One) added ``start_vid`` and ``end_vid``
-      columns.
+    * pgr_bdAstar(One to One) added ``start_vid`` and ``end_vid`` columns.
     * pgr_bdAstar(One to Many) added ``end_vid`` column.
     * pgr_bdAstar(Many to One) added ``start_vid`` column.
 
-* `#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standardize output
-  and modifying signature pgr_KSP
+* :issue:`2547`: Standardize output and modifying signature pgr_KSP
 
   .. include:: pgr_KSP.rst
      :start-after: Version 3.6.0
      :end-before: .. rubric
 
-* `#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standardize output
-  pgr_drivingDistance
+* :issue:`2548`: Standardize output pgr_drivingDistance
 
   .. include:: pgr_drivingDistance.rst
      :start-after: Version 3.6.0
@@ -379,15 +952,13 @@ milestone for 3.6.0
 
 .. rubric:: Proposed functions changes
 
-* `#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standardize output
-  and modifying signature pgr_withPointsDD
+* :issue:`2544`: Standardize output and modifying signature pgr_withPointsDD
 
   .. include:: pgr_withPointsDD.rst
      :start-after: Version 3.6.0
      :end-before: .. rubric
 
-* `#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standardize output
-  and modifying signature pgr_withPointsKSP
+* :issue:`2546`: Standardize output and modifying signature pgr_withPointsKSP
 
   .. include:: pgr_withPointsKSP.rst
      :start-after: Version 3.6.0
@@ -395,29 +966,25 @@ milestone for 3.6.0
 
 .. rubric:: C/C++ code enhancements
 
-* `#2504 <https://github.com/pgRouting/pgrouting/pull/2504>`__ To C++ pg data get,
+* :issue:`2504`: To C++ pg data get,
   fetch and check.
 
   * Stopping support for compilation with MSVC.
 
-* `#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ Using namespace.
-* `#2512 <https://github.com/pgRouting/pgrouting/pull/2512>`__ [Dijkstra] Removing
-  duplicate code on Dijkstra.
-* `#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Astar code
-  simplification.
-* `#2521 <https://github.com/pgRouting/pgrouting/pull/2521>`__ Dijkstra code
-  simplification.
-* `#2522 <https://github.com/pgRouting/pgrouting/pull/2522>`__ bdAstar code
-  simplification.
+* :issue:`2505`: Using namespace.
+* :issue:`2512`: [Dijkstra] Removing duplicate code on Dijkstra.
+* :issue:`2517`: Astar code simplification.
+* :issue:`2521`: Dijkstra code simplification.
+* :issue:`2522`: bdAstar code simplification.
 
 .. rubric:: Documentation
 
-* `#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatic page
+* :issue:`2490`: Automatic page
   history links.
 
 * ..rubric:: Standardize SQL
 
-* `#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ Standardize
+* :issue:`2555`: Standardize
   deprecated messages
 * On new internal function: do not use named parameters and default parameters.
 
@@ -431,9 +998,8 @@ pgRouting 3.5
 pgRouting 3.5.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.5.1
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`_
+To see all issues & pull requests closed by this release see the
+:milestone:`3.5.1`
 
 .. rubric:: Documentation fixes
 
@@ -448,17 +1014,15 @@ Changes on the documentation to the following:
 
 .. rubric:: Issue fixes
 
-* `#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__
-  pgr_lengauerTarjanDominatorTree triggers an assertion
+* :issue:`2565`: pgr_lengauerTarjanDominatorTree triggers an assertion
 
 .. rubric:: SQL enhancements
 
-* `#2561 <https://github.com/pgRouting/pgrouting/issues/2561>`__ Not use
-  wildcards on SQL
+* :issue:`2561`: Not use wildcards on SQL
 
 .. rubric:: pgtap tests
 
-* `#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__ pgtap test using sampledata
+* :issue:`2559`: pgtap test using sampledata
 
 .. rubric:: Build fixes
 
@@ -473,9 +1037,8 @@ Changes on the documentation to the following:
 pgRouting 3.5.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.5.0
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`_
+To see all issues & pull requests closed by this release see the
+:milestone:`3.5.0`
 
 .. rubric:: Official functions changes
 
@@ -497,42 +1060,34 @@ pgRouting 3.4
 pgRouting 3.4.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.4.2
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`_
+To see all issues & pull requests closed by this release see the
+:milestone:`3.4.2`
 
 .. rubric:: Issue fixes
 
-* `#2394 <https://github.com/pgRouting/pgrouting/issues/2394>`__:
-  pgr_bdAstar accumulates heuristic cost in visited node cost.
-* `#2427 <https://github.com/pgRouting/pgrouting/issues/2427>`__:
-  pgr_createVerticesTable & pgr_createTopology, variable should be of type Record.
+* :issue:`2394`: pgr_bdAstar accumulates heuristic cost in visited node cost.
+* :issue:`2427`: pgr_createVerticesTable & pgr_createTopology, variable should be of type Record.
 
 pgRouting 3.4.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.4.1
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`_
+To see all issues & pull requests closed by this release see the
+:milestone:`3.4.1`
 
 .. rubric:: Issue fixes
 
-* `#2401 <https://github.com/pgRouting/pgrouting/issues/2401>`__:
-  pgRouting 3.4.0 do not build docs when sphinx is too low or missing
-* `#2398 <https://github.com/pgRouting/pgrouting/issues/2398>`__:
-  v3.4.0 does not upgrade from 3.3.3
+* :issue:`2401`: pgRouting 3.4.0 do not build docs when sphinx is too low or missing
+* :issue:`2398`: v3.4.0 does not upgrade from 3.3.3
 
 pgRouting 3.4.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.4.0
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`_
+To see all issues & pull requests closed by this release see the
+:milestone:`3.4.0`
 
 .. rubric:: Issue fixes
 
-* `#1891 <https://github.com/pgRouting/pgrouting/issues/1891>`__:
-  pgr_ksp doesn't give all correct shortest path
+* :issue:`1891`: pgr_ksp doesn't give all correct shortest path
 
 .. rubric:: New proposed functions.
 
@@ -572,7 +1127,7 @@ milestone for 3.4.0
   * pgr_findCloseEdges(One point)
   * pgr_findCloseEdges(Many points)
 
-.. rubric:: New experimental functions
+.. rubric:: New experimental functions.
 
 * Ordering
 
@@ -609,32 +1164,33 @@ pgRouting 3.3
 pgRouting 3.3.5 Release Notes
 -------------------------------------------------------------------------------
 
-* `#2401 <https://github.com/pgRouting/pgrouting/issues/2401>`__:
-  pgRouting 3.4.0 do not build docs when sphinx is too low or missing
+To see all issues & pull requests closed by this release see the
+:milestone:`3.3.5`
+
+.. rubric:: Documentation
+
+* :issue:`2401`: pgRouting 3.4.0 do not build docs when sphinx is too low or
+  missing
 
 pgRouting 3.3.4 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.3.4
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_
+To see all issues & pull requests closed by this release see the
+:milestone:`3.3.4`
 
 .. rubric:: Issue fixes
 
-* `#2400 <https://github.com/pgRouting/pgrouting/issues/2400>`__:
-  pgRouting 3.3.3 does not build in focal
+* :issue:`2400`: pgRouting 3.3.3 does not build in focal
 
 pgRouting 3.3.3 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.3.3
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`_
+To see all issues & pull requests closed by this release see the
+:milestone:`3.3.3`
 
 .. rubric:: Issue fixes
 
-* `#1891 <https://github.com/pgRouting/pgrouting/issues/1891>`__:
-  pgr_ksp doesn't give all correct shortest path
+* :issue:`1891`: pgr_ksp doesn't give all correct shortest path
 
 .. rubric:: Official functions changes
 
@@ -649,9 +1205,8 @@ milestone for 3.3.3
 pgRouting 3.3.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.3.2
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_
+To see all issues & pull requests closed by this release see the
+:milestone:`3.3.2`
 
 * Revised documentation
 
@@ -676,44 +1231,37 @@ milestone for 3.3.2
 
 .. rubric:: Issue fixes
 
-* `#2276 <https://github.com/pgRouting/pgrouting/issues/2276>`__:
-  edgeDisjointPaths issues with start_vid and combinations
-* `#2312 <https://github.com/pgRouting/pgrouting/issues/2312>`__:
-  pgr_extractVertices error when target is not BIGINT
-* `#2357 <https://github.com/pgRouting/pgrouting/issues/2357>`__:
-  Apply clang-tidy performance-*
+* :issue:`2276`: edgeDisjointPaths issues with start_vid and combinations
+* :issue:`2312`: pgr_extractVertices error when target is not BIGINT
+* :issue:`2357`: Apply clang-tidy performance-*
 
 pgRouting 3.3.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.3.1
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.3.1`
 
 .. rubric:: Issue fixes
 
-* `#2216 <https://github.com/pgRouting/pgrouting/issues/2216>`__: Warnings when using clang
-* `#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__: Error processing restrictions
+* :issue:`2216`: Warnings when using clang
+* :issue:`2266`: Error processing restrictions
 
 
 pgRouting 3.3.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.3.0
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.3.0`
 
 .. rubric:: Issue fixes
 
-* `#2057 <https://github.com/pgRouting/pgrouting/issues/2057>`__: trspViaEdges columns in different order
-* `#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: pgr_extractVertices to proposed
-* `#2201 <https://github.com/pgRouting/pgrouting/issues/2201>`__: pgr_depthFirstSearch to proposed
-* `#2202 <https://github.com/pgRouting/pgrouting/issues/2202>`__: pgr_sequentialVertexColoring to proposed
-* `#2203 <https://github.com/pgRouting/pgrouting/issues/2203>`__: pgr_dijkstraNear and pgr_dijkstraNearCost to proposed
+* :issue:`2057`: trspViaEdges columns in different order
+* :issue:`2087`: pgr_extractVertices to proposed
+* :issue:`2201`: pgr_depthFirstSearch to proposed
+* :issue:`2202`: pgr_sequentialVertexColoring to proposed
+* :issue:`2203`: pgr_dijkstraNear and pgr_dijkstraNearCost to proposed
 
-.. rubric:: New experimental functions
+.. rubric:: New experimental functions.
 
 * Coloring
 
@@ -760,49 +1308,44 @@ pgRouting 3.2
 pgRouting 3.2.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.2.2
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.2.2`
 
 .. rubric:: Issue fixes
 
-* `#2093 <https://github.com/pgRouting/pgrouting/issues/2093>`__: Compilation on Visual Studio
-* `#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error on RHEL 7
+* :issue:`2093`: Compilation on Visual Studio
+* :issue:`2189`: Build error on RHEL 7
 
 pgRouting 3.2.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.2.1
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.2.1`
 
 .. rubric:: Issue fixes
 
-* `#1883 <https://github.com/pgRouting/pgrouting/issues/1883>`__: pgr_TSPEuclidean crashes connection on Windows
+* :issue:`1883`: pgr_TSPEuclidean crashes connection on Windows
 
   * The solution is to use Boost::graph::metric_tsp_approx
-  * To not break user's code the optional parameters related to the TSP Annaeling are ignored
+  * To not break user's code the optional parameters related to the TSP
+    Annaeling are ignored
   * The function with the annaeling optional parameters is deprecated
 
 
 pgRouting 3.2.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.2.0
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.2.0`
 
 .. rubric:: Build
 
-* `#1850 <https://github.com/pgRouting/pgrouting/issues/1850>`__: Change Boost
+* :issue:`1850`: Change Boost
   min version to 1.56
 
   * Removing support for Boost v1.53, v1.54 & v1.55
 
-.. rubric:: New experimental functions
+.. rubric:: New experimental functions.
 
 * pgr_bellmanFord(Combinations)
 * pgr_binaryBreadthFirstSearch(Combinations)
@@ -874,87 +1417,67 @@ pgRouting 3.1
 pgRouting 3.1.4 Release Notes
 --------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.1.4
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.1.4`
 
 .. rubric:: Issues fixes
 
-* `#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error on
+* :issue:`2189`: Build error on
   RHEL 7
 
 
 pgRouting 3.1.3 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.1.3
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.1.3`
 
 .. rubric:: Issues fixes
 
-* `#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions
-  are not honored
-* `#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0
-  geometry "point_xy.hpp" build error on macOS environment
-* `#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp functions
-  crash server
+* :issue:`1825`: Boost versions are not honored
+* :issue:`1849`: Boost 1.75.0 geometry "point_xy.hpp" build error on macOS
+  environment
+* :issue:`1861`: vrp functions crash server
 
 
 pgRouting 3.1.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.1.2
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.1.2`
 
 .. rubric:: Issues fixes
 
-* `#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__: FreeBSD 12
+* :issue:`1304`: FreeBSD 12
   64-bit crashes on pgr_vrOneDepot tests Experimental Function
-* `#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__:
-  tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
-* `#1725 <https://github.com/pgRouting/pgrouting/issues/1725>`__: Server crash
+* :issue:`1356`: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
+* :issue:`1725`: Server crash
   on pgr_pickDeliver and pgr_vrpOneDepot on openbsd
-* `#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__: TSP server
+* :issue:`1760`: TSP server
   crash on ubuntu 20.04 #1760
-* `#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove
+* :issue:`1770`: Remove
   warnings when using clang compiler
 
 
 pgRouting 3.1.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.1.1
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.1.1`
 
 .. rubric:: Issues fixes
 
-* `#1733 <https://github.com/pgRouting/pgrouting/issues/1733>`__: pgr_bdAstar
-  fails when source or target vertex does not exist in the graph
-* `#1647 <https://github.com/pgRouting/pgrouting/issues/1647>`__: Linear
-  Contraction contracts self loops
-* `#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: pgr_withPoints
-  fails when points_sql is empty
-* `#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path
-  evaluation on C++ not updated before the results go back to C
-* `#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__:
-  pgr_chinesePostman crash on test data
-
-
+* :issue:`1733`: pgr_bdAstar fails when source or target vertex does not exist in the graph
+* :issue:`1647`: Linear Contraction contracts self loops
+* :issue:`1640`: pgr_withPoints fails when points_sql is empty
+* :issue:`1616`: Path evaluation on C++ not updated before the results go back to C
+* :issue:`1300`: pgr_chinesePostman crash on test data
 
 pgRouting 3.1.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.1.0
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.1.0`
 
 .. rubric:: New proposed functions.
 
@@ -975,131 +1498,98 @@ pgRouting 3.0
 pgRouting 3.0.6 Release Notes
 --------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.0.6
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.0.6`
 
 .. rubric:: Issues fixes
 
-* `#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error on
-  RHEL 7
+* :issue:`2189`: Build error on RHEL 7
 
 
 pgRouting 3.0.5 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.0.5
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.0.5`
 
 .. rubric:: Backport issue fixes
 
-* `#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions
-  are not honored
-* `#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0
-  geometry "point_xy.hpp" build error on macOS environment
-* `#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp functions
-  crash server
+* :issue:`1825`: Boost versions are not honored
+* :issue:`1849`: Boost 1.75.0 geometry "point_xy.hpp" build error on macOS environment
+* :issue:`1861`: vrp functions crash server
 
 
 pgRouting 3.0.4 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.0.4
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.0.4`
 
 .. rubric:: Backport issue fixes
 
-* `#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__: FreeBSD 12
-  64-bit crashes on pgr_vrOneDepot tests Experimental Function
-* `#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__:
-  tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
-* `#1725 <https://github.com/pgRouting/pgrouting/issues/1725>`__: Server crash
-  on pgr_pickDeliver and pgr_vrpOneDepot on openbsd
-* `#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__: TSP server
-  crash on ubuntu 20.04 #1760
-* `#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove
-  warnings when using clang compiler
+* :issue:`1304`: FreeBSD 12 64-bit crashes on pgr_vrOneDepot tests Experimental Function
+* :issue:`1356`: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
+* :issue:`1725`: Server crash on pgr_pickDeliver and pgr_vrpOneDepot on openbsd
+* :issue:`1760`: TSP server crash on ubuntu 20.04 #1760
+* :issue:`1770`: Remove warnings when using clang compiler
 
 
 
 pgRouting 3.0.3 Release Notes
 -------------------------------------------------------------------------------
 
+To see all issues & pull requests closed by this release see the
+:milestone:`3.0.3`
+
 .. rubric:: Backport issue fixes
 
-* `#1733 <https://github.com/pgRouting/pgrouting/issues/1733>`__: pgr_bdAstar
-  fails when source or target vertex does not exist in the graph
-* `#1647 <https://github.com/pgRouting/pgrouting/issues/1647>`__: Linear
-  Contraction contracts self loops
-* `#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: pgr_withPoints
-  fails when points_sql is empty
-* `#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path
-  evaluation on C++ not updated before the results go back to C
-* `#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__:
-  pgr_chinesePostman crash on test data
+* :issue:`1733`: pgr_bdAstar fails when source or target vertex does not exist in the graph
+* :issue:`1647`: Linear Contraction contracts self loops
+* :issue:`1640`: pgr_withPoints fails when points_sql is empty
+* :issue:`1616`: Path evaluation on C++ not updated before the results go back to C
+* :issue:`1300`: pgr_chinesePostman crash on test data
 
 
 
 pgRouting 3.0.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.0.2
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.0.2`
 
 .. rubric:: Issues fixes
 
-* `#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__: Visual Studio
+* :issue:`1378`: Visual Studio
   build failing
 
 
 pgRouting 3.0.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.0.1
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.0.1`
 
 .. rubric:: Issues fixes
 
-* `#232 <https://github.com/pgRouting/pgrouting/issues/232>`__: Honor client
+* :issue:`232`: Honor client
   cancel requests in C /C++ code
 
 
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
 
-.. contents:: Contents
-   :local:
-   :depth: 1
-
-To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.0.0
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`3.0.0`
 
 .. rubric:: Fixed Issues
 
-* `#1153 <https://github.com/pgRouting/pgrouting/issues/1153>`__: Renamed
-  pgr_eucledianTSP to pgr_TSPeuclidean
-* `#1188 <https://github.com/pgRouting/pgrouting/issues/1188>`__: Removed CGAL
-  dependency
-* `#1002 <https://github.com/pgRouting/pgrouting/issues/1002>`__: Fixed
-  contraction issues:
+* :issue:`1153`: Renamed pgr_eucledianTSP to pgr_TSPeuclidean
+* :issue:`1188`: Removed CGAL dependency
+* :issue:`1002`: Fixed contraction issues:
 
-  * `#1004 <https://github.com/pgRouting/pgrouting/issues/1004>`__: Contracts
-    when forbidden vertices do not belong to graph
-  * `#1005 <https://github.com/pgRouting/pgrouting/issues/1005>`__: Intermideate
-    results eliminated
-  * `#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__: No loss of
-    information
+  * :issue:`1004`: Contracts when forbidden vertices do not belong to graph
+  * :issue:`1005`: Intermideate results eliminated
+  * :issue:`1006`: No loss of information
 
 .. rubric:: New Functions
 
@@ -1188,7 +1678,7 @@ on Github.
   * Bug Fixes
 
 
-.. rubric:: New experimental functions
+.. rubric:: New experimental functions.
 
 * pgr_maxFlowMinCost
 * pgr_maxFlowMinCost_Cost
@@ -1255,44 +1745,34 @@ pgRouting 2.6
 pgRouting 2.6.3 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.6.3
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.6.3`
 
 .. rubric:: Bug fixes
 
-* `#1219 <https://github.com/pgRouting/pgrouting/pull/1219>`__ Implicit cast for
-  via_path integer to text
-* `#1193 <https://github.com/pgRouting/pgrouting/pull/1193>`__ Fixed
-  pgr_pointsAsPolygon breaking when comparing strings in WHERE clause
-* `#1185 <https://github.com/pgRouting/pgrouting/pull/1185>`__ Improve
-  FindPostgreSQL.cmake
-
-
+* :issue:`1219`: Implicit cast for via_path integer to text
+* :issue:`1193`: Fixed pgr_pointsAsPolygon breaking when comparing strings in
+  WHERE clause
+* :issue:`1185`: Improve FindPostgreSQL.cmake
 
 pgRouting 2.6.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.6.2
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.6.2`
 
 .. rubric:: Bug fixes
 
-* `#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Fixes driving
-  distance when vertex is not part of the graph
-* `#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Fixes windows
-  test
-* `#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ Fixes build for
-  python3 and perl5
+* :issue:`1152`: Fixes driving distance when vertex is not part of the graph
+* :issue:`1098`: Fixes windows test
+* :issue:`1165`: Fixes build for python3 and perl5
 
 
 pgRouting 2.6.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.6.1
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.6.1`
 
 * Fixes server crash on several functions.
 
@@ -1331,12 +1811,10 @@ on Github.
 pgRouting 2.6.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.6.0
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.6.0`
 
-
-.. rubric:: New experimental functions
+.. rubric:: New experimental functions.
 
 * pgr_lineGraphFull
 
@@ -1374,9 +1852,8 @@ pgRouting 2.5
 pgRouting 2.5.5 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.5.5
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.5.5`
 
 .. rubric:: Bug fixes
 
@@ -1388,9 +1865,8 @@ on Github.
 pgRouting 2.5.4 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.5.4
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.5.4`
 
 * Fixes server crash on several functions.
 
@@ -1429,9 +1905,8 @@ on Github.
 pgRouting 2.5.3 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.5.3
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.5.3`
 
 .. rubric:: Bug fixes
 
@@ -1442,34 +1917,28 @@ on Github.
 pgRouting 2.5.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_ on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.5.2`
 
 .. rubric:: Bug fixes
 
 * Fix for postgresql 10.1: Removed a compiler condition
 
-
-
 pgRouting 2.5.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.5.1
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.5.1`
 
 .. rubric:: Bug fixes
 
 * Fixed prerequisite minimum version of: cmake
 
-
-
 pgRouting 2.5.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.5.0
-<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_
-on Github.
-
+To see all issues & pull requests closed by this release see the
+:milestone:`2.5.0`
 
 .. rubric:: enhancement:
 
@@ -1539,9 +2008,8 @@ pgRouting 2.4
 pgRouting 2.4.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.4.2
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.4.2`
 
 .. rubric:: Improvement
 
@@ -1558,9 +2026,8 @@ on Github.
 pgRouting 2.4.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.4.1
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.4.1`
 
 .. rubric:: Bug fixes
 
@@ -1571,9 +2038,8 @@ on Github.
 pgRouting 2.4.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.4.0
-<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.4.0`
 
 .. rubric:: New Functions
 
@@ -1614,9 +2080,8 @@ pgRouting 2.3
 pgRouting 2.3.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.3.2
-<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.3.2`
 
 .. rubric:: Bug Fixes
 
@@ -1631,9 +2096,8 @@ on Github.
 pgRouting 2.3.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.3.1
-<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.3.1`
 
 .. rubric:: Bug Fixes
 
@@ -1646,9 +2110,8 @@ on Github.
 pgRouting 2.3.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.3.0
-<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.3.0`
 
 .. rubric:: New Signatures
 
@@ -1707,9 +2170,8 @@ pgRouting 2.2
 pgRouting 2.2.4 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.2.4
-<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.2.4`
 
 .. rubric:: Bug Fixes
 
@@ -1721,9 +2183,8 @@ on Github.
 pgRouting 2.2.3 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.2.3
-<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.2.3`
 
 .. rubric:: Bug Fixes
 
@@ -1733,9 +2194,8 @@ on Github.
 pgRouting 2.2.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.2.2
-<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.2.2`
 
 .. rubric:: Bug Fixes
 
@@ -1746,24 +2206,19 @@ on Github.
 pgRouting 2.2.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.2.1
-<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.2.1`
 
 .. rubric:: Bug Fixes
 
 * Server crash fix on pgr_alphaShape
 * Bug fix on With Points family of functions
 
-
-
 pgRouting 2.2.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.2.0
-<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_
-on Github.
-
+To see all issues & pull requests closed by this release see the
+:milestone:`2.2.0`
 
 .. rubric:: Improvements
 
@@ -1822,9 +2277,8 @@ pgRouting 2.1
 pgRouting 2.1.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.1.0
-<https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.1.0`
 
 .. rubric:: New Signatures
 
@@ -1914,6 +2368,9 @@ pgRouting 2.0
 pgRouting 2.0.1 Release Notes
 -------------------------------------------------------------------------------
 
+To see all issues & pull requests closed by this release see the
+:milestone:`2.0.1`
+
 Minor bug fixes.
 
 .. rubric:: Bug Fixes
@@ -1923,9 +2380,8 @@ Minor bug fixes.
 pgRouting 2.0.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.0.0
-<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_
-on Github.
+To see all issues & pull requests closed by this release see the
+:milestone:`2.0.0`
 
 With the release of pgRouting 2.0.0 the library has abandoned backwards
 compatibility to `pgRouting 1.0`_ releases.

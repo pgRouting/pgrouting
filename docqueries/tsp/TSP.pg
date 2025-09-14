@@ -21,7 +21,7 @@ SELECT * FROM pgr_TSP(
   $$SELECT * FROM pgr_withPointsCostMatrix(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction from pointsOfInterest',
-    array[-1, 10, 7, 11, -6],
+    array[-1, 10, 7, 11, -6], 'r',
     directed => true) $$,
   start_id => 7,
   end_id => 11);

@@ -22,17 +22,21 @@
    :start-after: warning-begin
    :end-before: end-warning
 
-.. rubric:: Availability
+.. rubric:: Availability:
 
-* Version 3.2.0
+.. rubric:: Version 4.0.0
 
-  * New experimental signature:
+* Output columns standardized to |short-generic-result|
 
-    * pgr_bellmanFord(Combinations)
+.. rubric:: Version 3.2.0
 
-* Version 3.0.0
+* New experimental signature:
 
-  * New experimental function.
+  * pgr_bellmanFord(Combinations)
+
+.. rubric:: Version 3.0.0
+
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -87,7 +91,7 @@ Signatures
    | pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
    | pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
-   | Returns set of |old-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 .. index::
@@ -101,7 +105,7 @@ One to One
 
    | pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vid**, [``directed``])
 
-   | Returns set of |result-1-1|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
@@ -121,11 +125,11 @@ One to Many
 
    | pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
 
-   | Returns set of |result-1-m|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertices :math:`\{ 10, 17\}` on a
-          **directed** graph
+:Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a directed
+          graph
 
 .. literalinclude:: bellmanFord.queries
    :start-after: -- q3
@@ -142,10 +146,10 @@ Many to One
 
    | pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
 
-   | Returns set of |result-m-1|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
-:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a directed
           graph
 
 .. literalinclude:: bellmanFord.queries
@@ -167,7 +171,7 @@ Many to Many
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
-          **undirected** graph
+          undirected graph
 
 .. literalinclude:: bellmanFord.queries
    :start-after: -- q5
@@ -187,7 +191,7 @@ Combinations
    | Returns set of |short-generic-result|
    | OR EMPTY SET
 
-:Example: Using a combinations table on an **undirected** graph.
+:Example: Using a combinations table on an undirected graph
 
 The combinations table:
 
@@ -236,8 +240,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_short_start
-    :end-before: return_path_short_end
+    :start-after: return_path_complete_start
+    :end-before: return_path_complete_end
 
 Additional Examples
 -------------------------------------------------------------------------------
@@ -266,9 +270,6 @@ See Also
 * :doc:`sampledata`
 * `Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__
 * https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
-
-   Boost Graph Inside
-
 
 .. rubric:: Indices and tables
 

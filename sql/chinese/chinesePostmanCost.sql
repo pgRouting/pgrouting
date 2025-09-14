@@ -28,12 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
---------------------
--- pgr_chinesePostmanCost
---------------------
-
-
-
 --v3.0
 CREATE FUNCTION pgr_chinesePostmanCost(
     TEXT -- edges_sql (required)
@@ -43,9 +37,9 @@ $BODY$
     SELECT cost
     FROM _pgr_chinesePostman(_pgr_get_statement($1), only_cost := true);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_chinesePostmanCost(TEXT)
 IS 'pgr_chinesePostmanCost

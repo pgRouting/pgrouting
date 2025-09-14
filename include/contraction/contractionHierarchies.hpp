@@ -55,96 +55,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 namespace pgrouting {
+namespace detail {
 
-/*!
-    @brief contracts vertex *v*
-    @param [in] G graph
-    @param [in] v vertex_descriptor
-    @param [in] log log output
-    @param [in] err err output
-    @return contraction metric: the node-contraction associated metrics
-*/
-template < class G >
-int64_t vertex_contraction(
-    G &graph,
-    bool directed,
-    typename G::V v,
-    bool simulation,
-    std::vector<CH_edge> &shortcuts,
-    std::ostringstream &log,
-    std::ostringstream &err
-) {
-    Identifiers<typename G::V> adjacent_in_vertices;
-    Identifiers<typename G::V> adjacent_out_vertices;
-    int64_t n_old_edges;
-    std::vector<typename G::E> shortcut_edges;
-
-    if (directed) {
-        adjacent_in_vertices = graph.find_adjacent_in_vertices(v);
-        adjacent_out_vertices = graph.find_adjacent_out_vertices(v);
-        n_old_edges =
-            static_cast<int64_t>(adjacent_in_vertices.size()
-            + adjacent_out_vertices.size());
-    } else {
-        adjacent_in_vertices = graph.find_adjacent_vertices(v);
-        adjacent_out_vertices = adjacent_in_vertices;
-        n_old_edges = static_cast<int64_t>(adjacent_in_vertices.size());
-    }
-
-    log << ">> Contraction of node " << graph[v].id << std::endl
-        << num_vertices(graph.graph) << " vertices and "
-        << num_edges(graph.graph) << " edges " << std::endl;
-
-    for (auto &u : adjacent_in_vertices) {
-        log << "  >> from " << graph[u].id << std::endl;
-        compute_shortcuts(
-            graph,
-            u,
-            v,
-            adjacent_out_vertices,
-            shortcut_edges,
-            log,
-            err);
-    }
-    if (!simulation) {
-        for (auto &w : adjacent_out_vertices)
-            boost::remove_edge(v, w, graph.graph);
-        for (auto &u : graph.find_adjacent_in_vertices(v))
-            boost::remove_edge(u, v, graph.graph);
-        graph[v].clear_contracted_vertices();
-        for (auto &e : shortcut_edges)
-            shortcuts.push_back(graph.graph[e]);
-    } else {
-        for (auto &e : shortcut_edges)
-            boost::remove_edge(e, graph.graph);
-    }
-
-    log << "  Size of the graph after contraction: "
-        << num_vertices(graph.graph)
-        << " vertices and " << num_edges(graph.graph)
-        << " edges" << std::endl
-        << "  " << shortcut_edges.size()
-        << " shortcuts created, " << n_old_edges
-        << " old edges" << std::endl;
-
-    int64_t m;
-    m = static_cast<int64_t>(shortcut_edges.size())
-      - static_cast<int64_t>(n_old_edges);
-    log << "  Metric: edge difference = " << shortcut_edges.size()
-        << " - " << n_old_edges << " = " << m << std::endl;
-    return m;
-}
 
 /*!
     @brief builds shortcuts inside the graph to contract it
-    @param [in] G graph
+    @param [in] graph the graph being contracted
     @param [in] u vertex_descriptor
     @param [in] v vertex_descriptor
     @param [in] out_vertices out vertices from v
     @param [out] shortcuts list of built shortcuts
-    @param [out] n_shortcuts number of built shortcuts
-    @param [out] simulation true if the graph is not modified by the process,
-    false otherwise
     @param [in] log log output
     @param [in] err err output
 */
@@ -227,7 +147,91 @@ void compute_shortcuts(
     }
 }
 
-namespace functions {
+/** @brief contracts vertex *v*
+
+    @param[in] graph
+    @param[in] directed set to @b true when the graph is directed
+    @param[in] v vertex_descriptor
+    @param[in] simulation set to true when graph is not modified
+    @param[in,out] shortcuts edge shurtcuts
+    @param[out] log log output
+    @param[out] err err output
+    @return contraction metric: the node-contraction associated metrics
+*/
+template <class G>
+int64_t vertex_contraction(
+    G &graph,
+    bool directed,
+    typename G::V v,
+    bool simulation,
+    std::vector<CH_edge> &shortcuts,
+    std::ostringstream &log,
+    std::ostringstream &err
+) {
+    Identifiers<typename G::V> adjacent_in_vertices;
+    Identifiers<typename G::V> adjacent_out_vertices;
+    int64_t n_old_edges;
+    std::vector<typename G::E> shortcut_edges;
+
+    if (directed) {
+        adjacent_in_vertices = graph.find_adjacent_in_vertices(v);
+        adjacent_out_vertices = graph.find_adjacent_out_vertices(v);
+        n_old_edges =
+            static_cast<int64_t>(adjacent_in_vertices.size()
+            + adjacent_out_vertices.size());
+    } else {
+        adjacent_in_vertices = graph.find_adjacent_vertices(v);
+        adjacent_out_vertices = adjacent_in_vertices;
+        n_old_edges = static_cast<int64_t>(adjacent_in_vertices.size());
+    }
+
+    log << ">> Contraction of node " << graph[v].id << std::endl
+        << num_vertices(graph.graph) << " vertices and "
+        << num_edges(graph.graph) << " edges " << std::endl;
+
+    for (auto &u : adjacent_in_vertices) {
+        log << "  >> from " << graph[u].id << std::endl;
+        compute_shortcuts(
+            graph,
+            u,
+            v,
+            adjacent_out_vertices,
+            shortcut_edges,
+            log,
+            err);
+    }
+    if (!simulation) {
+        for (auto &w : adjacent_out_vertices) {
+            boost::remove_edge(v, w, graph.graph);
+        }
+        for (auto &u : graph.find_adjacent_in_vertices(v)) {
+            boost::remove_edge(u, v, graph.graph);
+        }
+        graph[v].clear_contracted_vertices();
+        for (auto &e : shortcut_edges) {
+            shortcuts.push_back(graph.graph[e]);
+        }
+    } else {
+        for (auto &e : shortcut_edges) {
+            boost::remove_edge(e, graph.graph);
+        }
+    }
+
+    log << "  Size of the graph after contraction: "
+        << num_vertices(graph.graph)
+        << " vertices and " << num_edges(graph.graph)
+        << " edges" << std::endl
+        << "  " << shortcut_edges.size()
+        << " shortcuts created, " << n_old_edges
+        << " old edges" << std::endl;
+
+    int64_t m;
+    m = static_cast<int64_t>(shortcut_edges.size())
+      - static_cast<int64_t>(n_old_edges);
+    log << "  Metric: edge difference = " << shortcut_edges.size()
+        << " - " << n_old_edges << " = " << m << std::endl;
+    return m;
+}
 
 template < class G >
 void contractionHierarchies(
@@ -256,7 +260,7 @@ void contractionHierarchies(
         std::pair< int64_t, typename G::V > ordered_vertex = minPQ.top();
         minPQ.pop();
         int64_t corrected_metric =
-            vertex_contraction(
+            detail::vertex_contraction(
                 graph_copy,
                 directed,
                 ordered_vertex.second,
@@ -279,7 +283,7 @@ void contractionHierarchies(
             std::pair< int64_t, typename G::V > contracted_vertex;
             typename G::V u =
                 graph.vertices_map[graph[ordered_vertex.second].id];
-            contracted_vertex.first = vertex_contraction(
+            contracted_vertex.first = detail::vertex_contraction(
                 graph_copy,
                 directed,
                 u,
@@ -296,6 +300,44 @@ void contractionHierarchies(
     graph.copy_shortcuts(shortcuts, log);
     log << std::endl << "Priority queue: " << std::endl;
     graph.set_vertices_metric_and_hierarchy(priority_queue, log);
+}
+
+}  // namespace detail
+
+namespace functions {
+
+/** @brief execute the contraction hierarchies, after having forbidden the needed vertices
+
+    @param[in,out] graph in original graph out contracted graph
+    @param[in]     directed when true then the graph is directed
+    @param[in]     forbidden_vertices vector of forbidden vertices
+    @param[in,out] log string stream containing log information
+    @param[in,out] err string stream containing err information
+ */
+template <class G>
+void contractionHierarchies(
+        G& graph,
+        bool directed,
+        const std::vector<int64_t> &forbidden_vertices,
+        std::ostringstream &log,
+        std::ostringstream &err) {
+    // Transform the forbidden vertices IDs vector to a collection of vertices
+    pgrouting::Identifiers<typename G::V> forbid_vertices;
+    for (const auto &vertex : forbidden_vertices) {
+        if (graph.has_vertex(vertex)) {
+            forbid_vertices += graph.get_V(vertex);
+        }
+    }
+    graph.set_forbidden_vertices(forbid_vertices);
+
+    // Execute the contraction
+    try {
+        detail::contractionHierarchies(graph, directed, log, err);
+    }
+    catch ( ... ) {
+        err << "Contractions hierarchy failed" << std::endl;
+        throw;
+    }
 }
 
 }  // namespace functions

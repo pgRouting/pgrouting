@@ -1,4 +1,3 @@
-
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
@@ -20,15 +19,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.4.0') THEN plan(12) ELSE plan(2) END;
+SELECT CASE WHEN min_version('3.8.0') THEN plan(12) ELSE plan(2) END;
 
 
-CREATE OR REPLACE FUNCTION chk_edges_sql(fn TEXT, rest_sql TEXT)
+CREATE OR REPLACE FUNCTION inner_query(fn TEXT, rest_sql TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
-  IF NOT min_version('3.4.0') THEN
-    RETURN QUERY SELECT skip(1, 'Function added on 3.4.0');
+
+  IF NOT min_version('3.8.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_findcloseedges testing only valid signatures from 4.0.0');
     RETURN;
   END IF;
 
@@ -41,8 +41,8 @@ $BODY$
 LANGUAGE plpgsql;
 
 
-SELECT chk_edges_sql('pgr_findCloseEdges(', ', (SELECT geom FROM pointsOfInterest limit 1), 3);');
-SELECT chk_edges_sql('pgr_findCloseEdges(', ', (SELECT array_agg(geom) FROM pointsOfInterest), 3);');
+SELECT inner_query('pgr_findCloseEdges(', ', (SELECT geom FROM pointsOfInterest limit 1), 3);');
+SELECT inner_query('pgr_findCloseEdges(', ', (SELECT array_agg(geom) FROM pointsOfInterest), 3);');
 
 SELECT finish();
 ROLLBACK;

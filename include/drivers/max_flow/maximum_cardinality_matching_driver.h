@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2016 Andrea Nardelli
-Mail: nrd.nardelli@gmail.com
+Mail: nrd.nardelli at gmail.com
 
 ------
 
@@ -33,11 +33,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifdef __cplusplus
 #include <cstddef>
-using Only_int_rt = struct Only_int_rt;
+#include <cstdint>
 #else
 #include <stddef.h>
-#include <stdbool.h>
-typedef struct Only_int_rt Only_int_rt;
+#include <stdint.h>
 #endif
 
 #ifdef __cplusplus
@@ -47,9 +46,7 @@ extern "C" {
 void pgr_do_maximum_cardinality_matching(
             const char*,
 
-            bool,
-
-            Only_int_rt **, size_t *,
+            int64_t **, size_t *,
             char**, char**, char **);
 
 

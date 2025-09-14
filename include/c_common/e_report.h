@@ -47,7 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  *
  *  when there is ERROR then postgreSQL takes over control
- *    The char* messages are cleared automaticalyy with pfree.
+ *    The char* messages are cleared automatically with pfree.
  *
  *  @warning When error: Free all data not created with palloc before calling
  *
@@ -71,6 +71,6 @@ pgr_global_report(
         char** error_msg);
 
 /* @brief throws postgres error when first string is not null */
-void pgr_throw_error(char*, char*);
+void pgr_throw_error(const char*, const char*);
 
 #endif  // INCLUDE_C_COMMON_E_REPORT_H_

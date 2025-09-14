@@ -19,7 +19,7 @@ And needs to be 3.3:
   ...
 ```
 
-To achive the change: from the root of the repository:
+To achieve, the change: from the root of the repository:
 ```bash
 ./tools/developer/addNewVersionLink.sh "3\.2" "3\.3"'
 ```

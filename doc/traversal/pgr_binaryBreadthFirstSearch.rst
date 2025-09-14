@@ -29,15 +29,19 @@ non-negative integer, is termed as a 'binary graph'.
 
 .. rubric:: Availability
 
-* Version 3.2.0
+.. rubric:: Version 4.0.0
 
-  * New experimental signature:
+* Output columns standardized to |short-generic-result|
 
-    * pgr_binaryBreadthFirstSearch(Combinations)
+.. rubric:: Version 3.2.0
 
-* Version 3.0.0
+* New experimental signature:
 
-  * New experimental function.
+  * pgr_binaryBreadthFirstSearch(Combinations)
+
+.. rubric:: Version 3.0.0
+
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -47,7 +51,7 @@ vertices can be found using Breadth First Search in :math:`O(|E|)` in an
 unweighted graph, i.e. the distance is the minimal number of edges that you
 need to traverse from the source to another vertex. We can interpret such a
 graph also as a weighted graph, where every edge has the weight :math:`1`.
-If not alledges in graph have the same weight, that we need a more general
+If not all edges in graph have the same weight, that we need a more general
 algorithm, like Dijkstra's Algorithm which runs in :math:`O(|E|log|V|)` time.
 
 However if the weights are more constrained, we can use a faster algorithm.
@@ -87,7 +91,7 @@ Signatures
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
-   | Returns set of |old-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 **Note:** Using the :doc:`sampledata` Network as all weights are same (i.e
@@ -104,7 +108,7 @@ One to One
 
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vid**, [``directed``])
 
-   | Returns set of |result-1-1|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
@@ -124,7 +128,7 @@ One to Many
 
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
 
-   | Returns set of |result-1-m|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
@@ -145,7 +149,7 @@ Many to One
 
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
 
-   | Returns set of |result-m-1|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
@@ -239,8 +243,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
+    :start-after: return_path_complete_start
+    :end-before: return_path_complete_end
 
 
 Additional Examples

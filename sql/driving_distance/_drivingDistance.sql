@@ -42,31 +42,8 @@ CREATE FUNCTION _pgr_drivingDistancev4(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE c VOLATILE STRICT;
+LANGUAGE C VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 COMMENT ON FUNCTION _pgr_drivingDistancev4(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
-
-/* Below functions are for backward compatibility to be removed on v4*/
-
---v3.0
-CREATE FUNCTION _pgr_drivingDistance(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    distance FLOAT,
-    directed BOOLEAN DEFAULT TRUE,
-    equicost BOOLEAN DEFAULT FALSE,
-    OUT seq INTEGER,
-    OUT from_v  BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE c VOLATILE STRICT;
-
--- COMMENTS
-
-COMMENT ON FUNCTION _pgr_drivingDistance(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
-IS 'pgRouting internal function deprecated on v3.6.0';

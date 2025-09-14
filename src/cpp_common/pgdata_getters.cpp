@@ -215,7 +215,7 @@ std::vector<CostFlow_t> get_costFlow_edges(const std::string &sql) {
   SELECT id, source, target, cost, [reverse_cost] FROM edge_table;
   ~~~~
 
-  For backward compatability it also accepts:
+  For backward compatibility it also accepts:
   ~~~~{.c}
   SELECT id, source, target, going, [coming] FROM edge_table;
   ~~~~
@@ -321,7 +321,7 @@ std::vector<IID_t_rt> get_matrixRows(const std::string &sql) {
   ~~~~
 
   @param[in] sql The orders query
-  @param[in] with_id flag that idicates if id is to be used
+  @param[in] with_id flag that indicates if id is to be used
   @returns vector of `Orders_t`
   */
 std::vector<Orders_t> get_orders(
@@ -413,7 +413,7 @@ std::vector<Restriction_t> get_restrictions(const std::string &sql) {
   ~~~~
 
   @param[in] sql The vehicles query
-  @param[in] with_id flag that idicates if id is to be used
+  @param[in] with_id flag that indicates if id is to be used
   @returns vector of `Vehicle_t`
   */
 std::vector<Vehicle_t> get_vehicles(const std::string &sql, bool with_id) {

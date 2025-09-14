@@ -70,8 +70,9 @@ CH_edge::add_contracted_vertex(CH_vertex& v) {
 
 void
 CH_edge::add_contracted_edge_vertices(CH_edge &e) {
-    if (e.has_contracted_vertices())
+    if (e.has_contracted_vertices()) {
         m_contracted_vertices += e.contracted_vertices();
+    }
 }
 
 void CH_edge::add_contracted_vertices(Identifiers<int64_t>& ids) {

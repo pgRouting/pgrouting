@@ -25,14 +25,17 @@ graph, using greedy approach.
 
 .. rubric:: Availability
 
-* Version 3.3.0
+.. rubric:: Version 4.0.0
 
-  * Function promoted to proposed.
+* Output columns standardized to |result_node_color|
 
-* Version 3.2.0
+.. rubric:: Version 3.3.0
 
-  * New experimental function.
+* Function promoted to proposed.
 
+.. rubric:: Version 3.2.0
+
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -68,7 +71,7 @@ Signatures
 
    | pgr_sequentialVertexColoring(`Edges SQL`_)
 
-   | Returns set of |result-node-color|
+   | Returns set of |result_node_color|
    | OR EMPTY SET
 
 :Example: Graph coloring of pgRouting :doc:`sampledata`
@@ -100,8 +103,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: coloring-family.rst
-    :start-after: result columns start
-    :end-before: result columns end
+    :start-after: result-node-color-start
+    :end-before: result-node-color-end
 
 
 See Also

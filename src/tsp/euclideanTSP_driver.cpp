@@ -47,7 +47,6 @@ pgr_do_euclideanTSP(
         const char *coordinates_sql,
         int64_t start_vid,
         int64_t end_vid,
-        bool max_cycles,
 
         TSP_tour_rt **return_tuples,
         size_t *return_count,
@@ -57,6 +56,9 @@ pgr_do_euclideanTSP(
     using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
+    using pgrouting::tsp;
+    using pgrouting::pgget::get_coordinates;
+    using TSP_graph = pgrouting::graph::UndirectedHasCostBG;
 
     std::ostringstream log;
     std::ostringstream notice;
@@ -65,7 +67,7 @@ pgr_do_euclideanTSP(
 
     try {
         hint = coordinates_sql;
-        auto coordinates = pgrouting::pgget::get_coordinates(std::string(coordinates_sql));
+        auto coordinates = get_coordinates(std::string(coordinates_sql));
 
         if (coordinates.size() == 0) {
             *notice_msg = to_pg_msg("No coordinates found");
@@ -74,21 +76,22 @@ pgr_do_euclideanTSP(
         }
         hint = nullptr;
 
-        pgrouting::algorithm::TSP fn_tsp{coordinates};
+        TSP_graph graph{coordinates};
 
-        if (start_vid != 0 && !fn_tsp.has_vertex(start_vid)) {
+        if (start_vid != 0 && !graph.has_vertex(start_vid)) {
             err << "Parameter 'start_id' do not exist on the data";
             *err_msg = to_pg_msg(err);
             return;
         }
 
-        if (end_vid != 0 && !fn_tsp.has_vertex(end_vid)) {
+        if (end_vid != 0 && !graph.has_vertex(end_vid)) {
             err << "Parameter 'end_id' do not exist on the data";
             *err_msg = to_pg_msg(err);
             return;
         }
 
-        auto tsp_path = fn_tsp.tsp(start_vid, end_vid, max_cycles);
+
+        auto tsp_path = tsp(graph, start_vid, end_vid);
 
         if (!tsp_path.empty()) {
             *return_count = tsp_path.size();

@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * Generates an ERROR on postgres when err in not null
  */
 void
-pgr_throw_error(char *err, char *hint) {
+pgr_throw_error(const char *err, const char *hint) {
     if (err) {
         ereport(ERROR, (errmsg("%s", err), errhint("%s", hint)));
     }
@@ -53,7 +53,7 @@ pgr_throw_error(char *err, char *hint) {
  *  ~~~~
  *
  * - When there is ERROR then postgreSQL takes over control
- *   - The char* messages are cleared automaticalyy with pfree.
+ *   - The char* messages are cleared automatically with pfree.
  * - When there is no error this will free the log & notice
  */
 void
@@ -67,7 +67,7 @@ pgr_global_report(
     }
 
     if (*notice) {
-        if (log) {
+        if (*log) {
             ereport(NOTICE,
                     (errmsg_internal("%s", *notice),
                      errhint("%s", *log)));

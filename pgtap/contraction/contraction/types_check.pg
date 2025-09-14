@@ -18,49 +18,35 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 BEGIN;
-SELECT CASE WHEN min_version('3.8.0') THEN plan(7) ELSE plan(5) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(5) ELSE plan(2) END;
 
 CREATE OR REPLACE FUNCTION types_check()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF min_version('3.8.0') THEN
-    RETURN QUERY SELECT has_function('pgr_contraction', ARRAY['text','boolean','integer[]','integer','bigint[]']);
-    RETURN QUERY SELECT function_returns('pgr_contraction', ARRAY['text','boolean','integer[]','integer','bigint[]'], 'setof record');
-
+  IF NOT min_version('4.0.0') THEN
     RETURN QUERY
-    SELECT function_args_eq('pgr_contraction',
-      $$VALUES
-      ('{"","",max_cycles,forbidden_vertices,directed,type,id,contracted_vertices,source,target,cost}'::TEXT[]),
-      ('{"",directed,methods,cycles,forbidden,type,id,contracted_vertices,source,target,cost}'::TEXT[])
-      $$);
+    SELECT skip(1, 'pgr_contraction old signature removed on 4.0.0');
+    RETURN;
+  END IF;
 
-    RETURN QUERY SELECT function_types_eq('pgr_contraction',
-      $$VALUES ('{text,bool,_int4,int4,_int8,text,int8,_int8,int8,int8,float8}'::TEXT[]),
-        ('{text,_int8,int4,_int8,bool,text,int8,_int8,int8,int8,float8}'::TEXT[]) $$);
+  RETURN QUERY SELECT has_function('pgr_contraction', ARRAY['text','boolean','integer[]','integer','bigint[]']);
+  RETURN QUERY SELECT function_returns('pgr_contraction', ARRAY['text','boolean','integer[]','integer','bigint[]'], 'setof record');
 
-  ELSE
+  RETURN QUERY SELECT function_args_eq('pgr_contraction',
+    $$VALUES
+    ('{"",directed,methods,cycles,forbidden,type,id,contracted_vertices,source,target,cost}'::TEXT[])
+    $$);
 
-    RETURN QUERY
-    SELECT function_args_eq('pgr_contraction',
-      $$VALUES
-      ('{"", "", "max_cycles", "forbidden_vertices", "directed", "type", "id", "contracted_vertices", "source", "target", "cost"}'::TEXT[])
-      $$);
-
-    RETURN QUERY SELECT function_types_eq('pgr_contraction',
-      $$VALUES ('{text,_int8,int4,_int8,bool,text,int8,_int8,int8,int8,float8}'::TEXT[])$$
-    );
-
-END IF;
+  RETURN QUERY SELECT function_types_eq('pgr_contraction',
+    $$VALUES ('{text,bool,_int4,int4,_int8,text,int8,_int8,int8,int8,float8}'::TEXT[]) $$);
 
 END;
 $BODY$
 LANGUAGE plpgsql;
 
 SELECT has_function('pgr_contraction');
-SELECT has_function('pgr_contraction', ARRAY['text','bigint[]','integer','bigint[]','boolean']);
-SELECT function_returns('pgr_contraction', ARRAY['text', 'bigint[]','integer','bigint[]','boolean'], 'setof record');
 SELECT types_check();
 
 SELECT finish();

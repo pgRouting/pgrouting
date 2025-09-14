@@ -40,7 +40,8 @@ $BODY$
     SELECT type, id, contracted_vertices, source, target, cost
     FROM _pgr_contraction(_pgr_get_statement($1), ARRAY[2]::BIGINT[], 1, $3, $2);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 COMMENT ON FUNCTION pgr_contractionLinear(TEXT, BOOLEAN, BIGINT[])
 IS 'pgr_contractionLinear

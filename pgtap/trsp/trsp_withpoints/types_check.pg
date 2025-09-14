@@ -20,9 +20,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 
-SELECT CASE WHEN min_version('3.4.0') THEN plan(13) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(26) ELSE plan(2) END;
 
-SELECT types_check_general('pgr_trsp_withpoints');
+SELECT single_path_types_check(
+  'pgr_trsp_withpoints', '{"",directed,details}'::TEXT[], '{bpchar,bool,bool}'::TEXT[],
+  created_v => '3.4.0', standard_v => '4.0.0');
+
+SELECT single_path_types_check(
+  'pgr_trsp_withpoints', '{directed,details}'::TEXT[], '{bool,bool}'::TEXT[],
+  created_v => '3.4.0', standard_v => '4.0.0');
 
 SELECT finish();
 ROLLBACK;

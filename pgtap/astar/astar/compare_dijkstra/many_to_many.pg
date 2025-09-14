@@ -27,7 +27,7 @@ SELECT plan(4);
 
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-CREATE or REPLACE FUNCTION astarCompareDijkstra(cant INTEGER default 17)
+CREATE or REPLACE FUNCTION astarCompareDijkstra(lim INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE

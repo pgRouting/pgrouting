@@ -39,7 +39,7 @@ CREATE TABLE result2_vertices_pgr(
   id bigint,
   original_id bigint);
 
-CREATE or REPLACE FUNCTION lineGraphFullOriginalVertexMapping(cant INTEGER default 17)
+CREATE or REPLACE FUNCTION lineGraphFullOriginalVertexMapping(lim INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE

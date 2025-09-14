@@ -19,30 +19,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(7);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(7) ELSE plan(6) END;
 
+SELECT traversal_types_check('pgr_breadthfirstsearch', standard_v => '4.0.0');
 
-SELECT has_function('pgr_breadthfirstsearch');
-
-SELECT has_function('pgr_breadthfirstsearch', ARRAY['text','bigint','bigint','boolean']);
-SELECT has_function('pgr_breadthfirstsearch', ARRAY['text','anyarray','bigint','boolean']);
-
-SELECT function_returns('pgr_breadthfirstsearch', ARRAY['text','bigint','bigint','boolean'],  'setof record');
-SELECT function_returns('pgr_breadthfirstsearch', ARRAY['text','anyarray','bigint','boolean'],  'setof record');
-
-SELECT function_args_eq('pgr_breadthfirstsearch',
-    $$VALUES
-        ('{"","","max_depth","directed","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-        ('{"","","max_depth","directed","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
-    $$
-);
-
-SELECT function_types_eq('pgr_breadthfirstsearch',
-    $$VALUES
-        ('{text,int8,int8,bool,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-        ('{text,anyarray,int8,bool,int8,int8,int8,int8,int8,float8,float8}'::TEXT[])
-    $$
-);
-
-SELECT * FROM finish();
+SELECT finish();
 ROLLBACK;

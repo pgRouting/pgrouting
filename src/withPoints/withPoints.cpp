@@ -175,7 +175,7 @@ Pg_points_graph::get_edge_data(int64_t eid) const {
 /**
 data gets here as follows
  - all nodes are within the distance
- - some points show up that shouldnt
+ - some points show up that shouldn't
 
 Before:
   seq   node    edge    cost    agg_cost

@@ -20,11 +20,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(20);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(20) ELSE plan(1) END;
 
 ----------------------------------------------------------------------------------------------------------------
 -- testing from an existing starting vertex to a non-existing destination
 ----------------------------------------------------------------------------------------------------------------
+
+CREATE or REPLACE FUNCTION custom_tap()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_turnrestrictedpath: testing only signatures standardaized in v4.0.0.');
+    RETURN;
+  END IF;
 
 -- in directed graph
 -- with restrictions
@@ -73,10 +84,10 @@ SELECT * FROM pgr_turnRestrictedPath(
     strict := false
 );
 
-SELECT is_empty('q1');
-SELECT is_empty('q2');
-SELECT is_empty('q3');
-SELECT is_empty('q4');
+RETURN QUERY SELECT is_empty('q1');
+RETURN QUERY SELECT is_empty('q2');
+RETURN QUERY SELECT is_empty('q3');
+RETURN QUERY SELECT is_empty('q4');
 
 ----------------------------------------------------------------------------------------------------------------
 -- testing from an non-existing starting vertex to an existing destination
@@ -128,10 +139,10 @@ SELECT * FROM pgr_turnRestrictedPath(
     strict := false
 );
 
-SELECT is_empty('q5');
-SELECT is_empty('q6');
-SELECT is_empty('q7');
-SELECT is_empty('q8');
+RETURN QUERY SELECT is_empty('q5');
+RETURN QUERY SELECT is_empty('q6');
+RETURN QUERY SELECT is_empty('q7');
+RETURN QUERY SELECT is_empty('q8');
 
 ----------------------------------------------------------------------------------------------------------------
 -- testing from a non-existing starting vertex to a non-existing destination
@@ -183,10 +194,10 @@ SELECT * FROM pgr_turnRestrictedPath(
     strict := false
 );
 
-SELECT is_empty('q9');
-SELECT is_empty('q10');
-SELECT is_empty('q11');
-SELECT is_empty('q12');
+RETURN QUERY SELECT is_empty('q9');
+RETURN QUERY SELECT is_empty('q10');
+RETURN QUERY SELECT is_empty('q11');
+RETURN QUERY SELECT is_empty('q12');
 
 ----------------------------------------------------------------------------------------------------------------
 -- testing from an existing starting vertex to the same destination
@@ -238,10 +249,10 @@ SELECT * FROM pgr_turnRestrictedPath(
     strict := false
 );
 
-SELECT is_empty('q13');
-SELECT is_empty('q14');
-SELECT is_empty('q15');
-SELECT is_empty('q16');
+RETURN QUERY SELECT is_empty('q13');
+RETURN QUERY SELECT is_empty('q14');
+RETURN QUERY SELECT is_empty('q15');
+RETURN QUERY SELECT is_empty('q16');
 
 ----------------------------------------------------------------------------------------------------------------
 -- testing from an existing starting vertex in one component to an existing destination in another component
@@ -293,10 +304,15 @@ SELECT * FROM pgr_turnRestrictedPath(
 );
 
 
-SELECT is_empty('q17');
-SELECT is_empty('q18');
-SELECT is_empty('q19');
-SELECT is_empty('q20');
+RETURN QUERY SELECT is_empty('q17');
+RETURN QUERY SELECT is_empty('q18');
+RETURN QUERY SELECT is_empty('q19');
+RETURN QUERY SELECT is_empty('q20');
 
+END;
+$BODY$
+language plpgsql;
+
+SELECT * FROM custom_tap();
 SELECT * FROM finish();
 ROLLBACK;

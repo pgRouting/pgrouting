@@ -49,7 +49,6 @@ $BODY$
 LANGUAGE  plpgsql VOLATILE STRICT;
 
 
--- COMMENTS
 
 
 COMMENT ON FUNCTION pgr_lengauerTarjanDominatorTree(TEXT,BIGINT)

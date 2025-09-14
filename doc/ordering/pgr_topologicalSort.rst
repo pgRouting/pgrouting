@@ -25,9 +25,13 @@ graphs (DAG).
 
 .. rubric:: Availability
 
-* Version 3.0.0
+.. rubric:: Version 4.0.0
 
-  * New experimental function.
+* Standardize output to |result_node_order|
+
+.. rubric:: Version 3.0.0
+
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -60,7 +64,7 @@ Signatures
 
    | pgr_topologicalSort(`Edges SQL`_)
 
-   | Returns set of |result-toposort|
+   | Returns set of |result_node_order|
    | OR EMPTY SET
 
 :Example: Topologically sorting the graph
@@ -89,7 +93,7 @@ Edges SQL
 Result columns
 -------------------------------------------------------------------------------
 
-Returns set of |result-toposort|
+Returns set of |result_node_order|
 
 .. list-table::
    :width: 81
@@ -102,7 +106,7 @@ Returns set of |result-toposort|
    * - ``seq``
      - ``INTEGER``
      - Sequential value starting from :math:`1`
-   * - ``sorted_v``
+   * - ``node``
      - ``BIGINT``
      - Linear topological ordering of the vertices
 

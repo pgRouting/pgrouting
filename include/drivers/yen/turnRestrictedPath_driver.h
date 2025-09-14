@@ -1,13 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraTR_driver.h
+File: turnRestrictedPath_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2017 Vidhan Jain
-Mail: vidhanj1307@gmail.com
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -31,7 +31,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_YEN_TURNRESTRICTEDPATH_DRIVER_H_
 #pragma once
 
-/* for size_t and int64_t */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
+
 #ifdef __cplusplus
 #   include <cstdint>
 #   include <cstddef>
@@ -43,7 +55,6 @@ using Path_rt = struct Path_rt;
 typedef struct Path_rt Path_rt;
 #endif
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -51,9 +62,8 @@ extern "C" {
 void pgr_do_turnRestrictedPath(
         const char*,
         const char*,
-
-        int64_t,
-        int64_t,
+        const char*,
+        ArrayType*, ArrayType*,
 
         size_t,
         bool,
@@ -61,9 +71,8 @@ void pgr_do_turnRestrictedPath(
         bool,
         bool,
 
-        Path_rt **, size_t *,
+        Path_rt**, size_t*,
         char**, char**, char**);
-
 
 #ifdef __cplusplus
 }

@@ -36,7 +36,7 @@ on:
       - 'include/**'
       - 'pgtap/**'
       - 'tools/testers/**'
-      - './CMakeLists.txt'
+      - 'CMakeLists.txt'
 
     branches-ignore:
       - 'gh-pages'
@@ -50,7 +50,7 @@ on:
       - 'include/**'
       - 'pgtap/**'
       - 'tools/testers/**'
-      - './CMakeLists.txt'
+      - 'CMakeLists.txt'
 
     branches-ignore:
       - 'gh-pages'
@@ -131,5 +131,5 @@ jobs:
           sudo service postgresql start
           psql -c "CREATE DATABASE ___pgr___test___;"
           DIR=$(git rev-parse --show-toplevel)
-          bash "${DIR}/tools/testers/setup_db.sh" "${PGPORT}" ___pgr___test___ "${PG_RUNNER_USER}" "3.8.0"
+          bash "${DIR}/tools/testers/setup_db.sh" "${PGPORT}" ___pgr___test___ "${PG_RUNNER_USER}" "4.0.0"
           pg_prove  -Q -f --normalize --directives --recurse -U "${PG_RUNNER_USER}" -d ___pgr___test___ "pgtap"

@@ -57,8 +57,7 @@ $BODY$
 
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- ONE to MANY
 --v3.4
@@ -89,8 +88,7 @@ $BODY$
     directed) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- MANY to ONE
 --v3.4
@@ -121,8 +119,7 @@ $BODY$
     $5) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- MANY to MANY
 --v3.4
@@ -153,8 +150,7 @@ $BODY$
     $5) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- COMBINATIONS
 --v3.4
@@ -183,15 +179,12 @@ $BODY$
     $4) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_trsp(one to one)
-- PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: cost, path
@@ -205,7 +198,6 @@ IS 'pgr_trsp(one to one)
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN)
 IS 'pgr_trsp(one to many)
-- PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: cost, path
@@ -219,7 +211,6 @@ IS 'pgr_trsp(one to many)
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgr_trsp(many to one)
-- PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: cost, path
@@ -233,7 +224,6 @@ IS 'pgr_trsp(many to one)
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
 IS 'pgr_trsp(many to many)
-- PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: cost, path
@@ -247,7 +237,6 @@ IS 'pgr_trsp(many to many)
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, TEXT, BOOLEAN)
 IS 'pgr_trsp(combinations)
-- PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: cost, path
@@ -257,140 +246,3 @@ IS 'pgr_trsp(combinations)
 - Documentation:
   - ${PROJECT_DOC_LINK}/pgr_trsp.html
 ';
-
-
--- ONE to ONE
---v2.6
-CREATE FUNCTION _pgr_trsp(
-    TEXT, -- edges_sql
-    TEXT, -- restrictions_sql
-    BIGINT, -- start_vid
-    BIGINT, -- end_vid
-    directed BOOLEAN DEFAULT true,
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
-        FROM _trsp(
-            _pgr_get_statement($1),
-            _pgr_get_statement($2),
-            ARRAY[$3]::BIGINT[],
-            ARRAY[$4]::BIGINT[],
-            directed) AS a;
-$BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
-
-
--- ONE to MANY
---v2.6
-CREATE FUNCTION _pgr_trsp(
-    TEXT, -- edges_sql
-    TEXT, -- restrictions_sql
-    BIGINT, -- start_vid
-    ANYARRAY, -- end_vids
-    directed BOOLEAN DEFAULT true,
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT end_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-        FROM _trsp(
-            _pgr_get_statement($1),
-            _pgr_get_statement($2),
-            ARRAY[$3]::BIGINT[],
-            $4::bigint[],
-            directed) AS a;
-$BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
-
-
--- MANY to ONE
---v2.6
-CREATE FUNCTION _pgr_trsp(
-    TEXT, -- edges_sql
-    TEXT, -- restrictions_sql
-    ANYARRAY, -- start_vids
-    BIGINT, -- end_vid
-    directed BOOLEAN DEFAULT true,
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT start_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-        FROM _trsp(
-            _pgr_get_statement($1),
-            _pgr_get_statement($2),
-            $3::bigint[],
-            ARRAY[$4]::BIGINT[],
-            $5) AS a;
-$BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
-
-
--- MANY to MANY
---v2.6
-CREATE FUNCTION _pgr_trsp(
-    TEXT, -- edges_sql
-    TEXT, -- restrictions_sql
-    ANYARRAY, -- start_vids
-    ANYARRAY, -- end_vids
-    directed BOOLEAN DEFAULT true,
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT start_vid BIGINT,
-    OUT end_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-        FROM _trsp(
-            _pgr_get_statement($1),
-            _pgr_get_statement($2),
-            $3::bigint[],
-            $4::bigint[],
-            $5) AS a;
-$BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
-
-
--- COMMENTS
-
-COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN) IS 'pgRouting internal function deprecated on v3.4.0';
-COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN) IS 'pgRouting internal function deprecated on v3.4.0';
-COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN) IS 'pgRouting internal function deprecated on v3.4.0';
-COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN) IS 'pgRouting internal function deprecated on v3.4.0';
-

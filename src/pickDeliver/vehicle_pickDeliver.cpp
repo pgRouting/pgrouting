@@ -88,14 +88,14 @@ Vehicle_pickDeliver::insert(const Order &order) {
 
     if (pick_pos.second < pick_pos.first) {
         /*
-         *  pickup generates twv evrywhere
+         *  pickup generates twv everywhere
          */
         return false;
     }
 
     if (deliver_pos.second < deliver_pos.first) {
         /*
-         *  delivery generates twv evrywhere
+         *  delivery generates twv everywhere
          */
         return false;
     }

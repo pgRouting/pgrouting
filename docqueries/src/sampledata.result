@@ -206,13 +206,13 @@ SELECT
   pid, ST_AsText(geom) geom,
   edge_id, fraction AS frac, side, distance AS dist,
   ST_AsText(edge) edge, ST_AsText(newPoint) newPoint
-FROM pointsOfInterest;
+FROM pointsOfInterest ORDER BY pid;
  pid |      geom      | edge_id | frac | side | dist |           edge            |   newpoint
 -----+----------------+---------+------+------+------+---------------------------+--------------
    1 | POINT(1.8 0.4) |       1 |  0.4 | l    |  0.2 | LINESTRING(1.8 0.4,2 0.4) | POINT(2 0.4)
-   4 | POINT(0.3 1.8) |       6 |  0.3 | r    |  0.2 | LINESTRING(0.3 1.8,0.3 2) | POINT(0.3 2)
-   3 | POINT(2.6 3.2) |      12 |  0.6 | l    |  0.2 | LINESTRING(2.6 3.2,2.6 3) | POINT(2.6 3)
    2 | POINT(4.2 2.4) |      15 |  0.4 | r    |  0.2 | LINESTRING(4.2 2.4,4 2.4) | POINT(4 2.4)
+   3 | POINT(2.6 3.2) |      12 |  0.6 | l    |  0.2 | LINESTRING(2.6 3.2,2.6 3) | POINT(2.6 3)
+   4 | POINT(0.3 1.8) |       6 |  0.3 | r    |  0.2 | LINESTRING(0.3 1.8,0.3 2) | POINT(0.3 2)
    5 | POINT(2.9 1.8) |       5 |  0.8 | l    |  0.1 | LINESTRING(2.9 1.8,3 1.8) | POINT(3 1.8)
    6 | POINT(2.2 1.7) |       4 |  0.7 | b    |  0.2 | LINESTRING(2.2 1.7,2 1.7) | POINT(2 1.7)
 (6 rows)

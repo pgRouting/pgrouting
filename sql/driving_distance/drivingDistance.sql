@@ -49,15 +49,14 @@ $BODY$
     FROM _pgr_drivingDistancev4(_pgr_get_statement($1), $2, $3, $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- SINGLE
 --v3.6
 CREATE FUNCTION pgr_drivingDistance(
     TEXT,   -- edges_sql (required)
-    BIGINT, -- from_vid (requierd)
+    BIGINT, -- from_vid (required)
     FLOAT,  -- distance (required)
 
     directed BOOLEAN DEFAULT TRUE,
@@ -76,10 +75,8 @@ $BODY$
     FROM _pgr_drivingDistancev4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3, $4, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_drivingDistance(TEXT, BIGINT, FLOAT, BOOLEAN)
 IS 'pgr_drivingDistance(Single_vertex)

@@ -42,9 +42,9 @@ $BODY$
     FROM _pgr_betweennesscentrality(_pgr_get_statement($1), $2);
 
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_betweennessCentrality(TEXT, BOOLEAN)
 IS 'pgr_betweennessCentrality

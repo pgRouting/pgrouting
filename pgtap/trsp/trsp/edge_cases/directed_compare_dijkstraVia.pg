@@ -19,88 +19,72 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(3);
-
 SET extra_float_digits = -3;
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
+SELECT CASE WHEN min_lib_version('4.0.0') AND min_version('3.6.0') THEN plan(3)
+            WHEN NOT min_lib_version('4.0.0') AND min_version('3.4.0') THEN plan(3)
+            ELSE plan(1) END;
 
-CREATE OR REPLACE FUNCTION edge_case() RETURNS SETOF TEXT AS
+PREPARE related_restriction AS SELECT 100.2 AS cost, ARRAY[5,9] AS path;
+PREPARE unrelated_restriction AS SELECT 100 AS cost, ARRAY[33, 32, 25] AS path;
+
+CREATE OR REPLACE FUNCTION edge_cases() RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF min_version('3.4.0') THEN
-    PREPARE q1 AS
-    SELECT * from pgr_trsp(
-      'select id, source, target,cost, reverse_cost from edges',
-      $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
-      5, 5,
-      true);
-
-    PREPARE q2 AS
-    SELECT seq, node, edge, round(cost::numeric, 12) from pgr_trsp(
-      'select id, source, target,cost, reverse_cost from edges',
-      $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
-      10, 15,
-      true);
-
-    PREPARE e2 AS
-    SELECT seq, node, edge, round(cost::numeric, 12) from pgr_dijkstra(
-      'select id, source, target, cost, reverse_cost from edges',
-      10, 15);
-
-    PREPARE q3 AS
-    SELECT seq-1::INTEGER, node::INTEGER, edge::INTEGER, round(cost::numeric, 12) from pgr_trsp(
-      'select id, source, target, cost, reverse_cost from edges',
-      $$SELECT 1 AS id, 100.2::float AS cost, ARRAY[5,9] AS path$$,
-      10, 15,
-      true);
-
-  ELSE
-
-    PREPARE q1 AS
-    SELECT * from pgr_trsp(
-      'select id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost from edges',
-      5, 5,
-      true, true);
-
-    PREPARE q2 AS
-    SELECT seq, id1, id2, round(cost::numeric, 12) from pgr_trsp(
-      'select id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost from edges',
-      10, 15,
-      true, true);
-
-    PREPARE e2 AS
-    SELECT seq-1, node::INTEGER, edge::INTEGER, round(cost::numeric, 12) from pgr_dijkstra(
-      'select id, source, target, cost, reverse_cost from edges',
-      10, 15, true);
-
-    PREPARE q3 AS
-    SELECT seq, id1, id2, round(cost::numeric, 12) from pgr_trsp(
-      'select id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edges',
-      10, 15,
-      true, true,
-      'select 9::INTEGER as target_id, ''5''::TEXT as via_path,  100.2::FLOAT to_cost');
-
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'New signatures added on 3.4.0');
+    RETURN;
   END IF;
 
-  PREPARE e3 AS
-  SELECT (row_number() over() -1)::INTEGER, node::INTEGER,
-  (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, round(cost::numeric, 12)
+  IF min_lib_version('4.0.0') and NOT min_version('3.6.0') THEN
+    RETURN QUERY SELECT skip(1, 'Internal function __v4trsp deprecated on 3.6.0 deleted on 4.0.0');
+    RETURN;
+  END IF;
+
+  PREPARE q1 AS
+  SELECT * from pgr_trsp(
+    'select id, source, target,cost, reverse_cost from edges',
+    'unrelated_restriction',
+    5, 5,
+    true);
+  RETURN QUERY SELECT is_empty('q1', '1: No path from 1 to 1');
+
+  PREPARE q2 AS
+  SELECT seq, node, edge, cost from pgr_trsp(
+    'select id, source, target,cost, reverse_cost from edges',
+    'unrelated_restriction',
+    10, 15,
+    true);
+
+  PREPARE q2_expected AS
+  SELECT seq, node, edge, cost from pgr_dijkstra(
+    'select id, source, target, cost, reverse_cost from edges',
+    10, 15);
+  RETURN QUERY SELECT set_eq('q2','q2_expected','2: without restrictions, returns the same as pgr_dijkstra');
+
+  PREPARE q3 AS
+  SELECT seq-1, node, edge, cost::TEXT from pgr_trsp(
+    'select id, source, target, cost, reverse_cost from edges',
+    'related_restriction',
+    10, 15,
+    true);
+
+  PREPARE q3_expected AS
+  SELECT (row_number() over() -1), node, (CASE WHEN edge = -2 THEN -1 ELSE edge END), cost::TEXT
   FROM pgr_dijkstraVia(
     'select id, source, target, cost, reverse_cost from edges',
     ARRAY[10, 6, 15],
     true) where edge != -1;
 
-  RETURN QUERY SELECT is_empty('q1', '1: No path from 1 to 1');
-  RETURN QUERY SELECT set_eq('q2','e2','2: without retrictions returns the same as pgr_dijkstra');
-  RETURN QUERY SELECT set_eq('q3','e3','3: with retrictions returns expected path');
+  RETURN QUERY SELECT set_eq('q3','q3_expected','2: without restrictions, returns the same as pgr_dijkstraVia');
 
 END;
 $BODY$
 LANGUAGE plpgsql;
 
-SELECT edge_case();
+SELECT edge_cases();
 
 SELECT finish();
 ROLLBACK;

@@ -51,7 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 
-#include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/path.hpp"
 #include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 #include "visitors/dijkstra_visitors.hpp"
@@ -202,7 +202,7 @@ void remove_details(const G &graph,
             u = predecessors[v];
         }
 
-        /* the vertex (or initial point) that is a predecesor of p */
+        /* the vertex (or initial point) that is a predecessor of p */
         predecessors[node] = u;
     }
 }
@@ -405,8 +405,9 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
      */
     for (const auto &root : roots) {
         for (auto &p : pred) {
-            if (!p.empty() && graph.has_vertex(root))
+            if (!p.empty() && graph.has_vertex(root)) {
                 p[graph.get_V(root)] = graph.get_V(root);
+            }
         }
     }
 

@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---v2.6
+--v3.0
 CREATE FUNCTION pgr_dijkstraVia(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- via_vids (required)
@@ -51,10 +51,8 @@ $BODY$
     FROM _pgr_dijkstraVia(_pgr_get_statement($1), $2, $3 , $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_dijkstraVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_dijkstraVia

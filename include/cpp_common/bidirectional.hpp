@@ -49,7 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/assert.hpp"
 
-#include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/path.hpp"
 #include "cpp_common/base_graph.hpp"
 
 

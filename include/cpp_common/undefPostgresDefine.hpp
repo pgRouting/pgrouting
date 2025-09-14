@@ -35,7 +35,7 @@ Has the line
 `#define    snprintf   pg_snprintf`
 
 Being `snprintf` part of [stdio.h](https://en.cppreference.com/w/cpp/header/cstdio) since C++11
-Work arount is to undef it.
+Work around is to undef it.
 
 It's affecting boost 83+
 

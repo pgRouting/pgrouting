@@ -21,60 +21,101 @@ set -e
 DIR=$(git rev-parse --show-toplevel)
 pushd "${DIR}" > /dev/null || exit 1
 
+# IMPORTANT
+# Copy this file into the root of your repository
+# Adjust to your developing needs
+#  - Some example of adjustments are mentioned
 
-# copy this file into the root of your repository
-# adjust to your needs
-
-# This run.sh is intended for 3.x.x
+# This run.sh is intended for 4.x.x
 VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
+
+# EXAMPLE: For macOS Homebrew instead of the above use with ggrep as follows
+# VERSION=$(ggrep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
+
 echo "pgRouting VERSION ${VERSION}"
 
 # set up your postgres version, port and compiler (if more than one)
+# EXAMPLE: For macOS Homebrew this line is not needed
 PGVERSION="15"
-PGPORT="5432"
+
 PGBIN="/usr/lib/postgresql/${PGVERSION}/bin"
+
+# EXAMPLE: For macOS Homebrew it has a different path
+# PGBIN="/opt/homebrew/bin"
+
+PGPORT="5432"
+
 # When more than one compiler is installed
 GCC=""
 
-QUERIES_DIRS=$(ls docqueries -1)
-TAP_DIRS=$(ls pgtap -1)
+# -------------- documentation queries and tap tests ---------------
 
+# To process all subdirectories
+QUERIES_DIRS=$(ls -1 docqueries)
+TAP_DIRS=$(ls -1 pgtap)
+
+# To process a particular subdirectory
 QUERIES_DIRS="dijkstra"
 TAP_DIRS="dijkstra"
 
+# To skip processing queries and tap tests
+QUERIES_DIRS=""
+TAP_DIRS=""
+
 function set_cmake {
-    # Using all defaults
-    #cmake ..
-
-    # Options Release RelWithDebInfo MinSizeRel Debug
-    #cmake  -DCMAKE_BUILD_TYPE=Debug ..
-
-    # Additional debug information
-    #cmake -DPgRouting_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug ..
-
-    # with documentation (like the one the website)
-    #cmake  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON ..
-
-    # with developers documentation
-    #cmake  -DWITH_DOC=ON -DBUILD_DOXY=ON ..
-
-    # using a particular PostgreSQL configuration
-    #cmake -DPOSTGRESQL_PG_CONFIG="/usr/lib/postgresql/${PGVERSION}/bin/pg_config" ..
+    # inspect options
+    # cmake -LH ..
 
     # Building using clang
-    #CXX=clang++ CC=clang cmake -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_BUILD_TYPE=Debug  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=OFF ..
+    #CXX=clang++ CC=clang cmake -DPOSTGRESQL_BIN=${PGBIN} ..
 
-    # Building with debug on
-    #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DCMAKE_BUILD_TYPE=Debug -DES=ON -DPROJECT_DEBUG=ON ..
+    # Building using default compiler (g++)
+    #cmake -DPOSTGRESQL_BIN=${PGBIN} ..
 
-    # building languages -DES=ON -DJA=ON -DZH_HANS=ON -DDE=ON -DKO=ON and CMAKE_EXPORT_COMPILE_COMMANDS for static analysis tools.
-    #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DES=ON  -DCMAKE_BUILD_TYPE=Debug ..
+    # Options Release RelWithDebInfo MinSizeRel Debug
+    #cmake -DCMAKE_BUILD_TYPE=Debug ..
+
+    # Build documentation with booststrap
+    #cmake -DDOC_USE_BOOTSTRAP=ON ..
+
+    # Build only english documentation
+    #cmake -DES=OFF -DZH_HANS=OFF ..
+
+    # sphinx flags
+    #cmake -DSPHINX_FLAGS='-E -W' ..
+
+    # Dont build documentation
+    #cmake -DBUILD_HTML=OFF ..
+
+    # Additional debug information
+    #cmake -DPROJECT_DEBUG=ON ..
+
+    # For some checks
+    #cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+
+    # build developers documentation
+    #cmake -DBUILD_DOXY=ON ..
+
+    # build all languages (all others are on by default)
+    #cmake -DDOC_USE_BOOTSTRAP=ON -DJA=ON -DDE=ON -DKO=ON ..
+
+    # build one language for checking warnings, for example swedish
+    cmake -DDOC_USE_BOOTSTRAP=ON -DBUILD_HTML=ON -DEN=ON -DES=OFF -DSV=ON -DZH_HANS=OFF -DSPHINX_FLAGS='-W -w sphinx-errs.txt -v -n -j auto --keep-going' ..
 
     # check link in documentation
-    #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DES=ON -DLINKCHECK=ON -DCMAKE_BUILD_TYPE=Release ..
+    #cmake -DBUILD_LINKCHECK=ON ..
 
-    # build only english
-    cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON  -DCMAKE_BUILD_TYPE=Debug ..
+    # build locale
+    #cmake -DBUILD_LOCALE=ON ..
+
+    # Put all options into one convenient line
+    cmake -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_BUILD_TYPE=Debug -DBUILD_HTML=ON -DES=OFF -DZH_HANS=OFF -DSV=OFF -DDOC_USE_BOOTSTRAP=ON ..
+
+    # Working with code only
+    cmake -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_BUILD_TYPE=Debug -DBUILD_HTML=OFF ..
+
+    # Use clang tidy
+    #cmake -DUSE_CLANG_TIDY=ON ..
 }
 
 function tap_test {
@@ -84,7 +125,6 @@ function tap_test {
 
     dropdb --if-exists -p $PGPORT ___pgr___test___
     createdb  -p $PGPORT ___pgr___test___
-    echo $PGPORT
     tools/testers/pg_prove_tests.sh "$PGUSER" $PGPORT
     dropdb  -p $PGPORT ___pgr___test___
 }
@@ -117,9 +157,10 @@ function set_compiler {
 
 function build_doc {
     pushd build > /dev/null || exit 1
-    #rm -rf doc/* ; rm -rf locale/*/*/*.mo
+    # Start from scratch
+    #rm -rf locale/*/*/*.mo
     # Clean only generated files while preserving custom content
-    find doc -type f \( -name "*.html" -o -name "*.pdf" \) -delete
+    #find doc -type f \( -name "*.html" -o -name "*.pdf" \) -delete
     make doc
     #example on how to only build spanish html
     #make html-es
@@ -159,8 +200,11 @@ function build {
     set_cmake
     #make  -j 16 VERBOSE=1
     make -j 16
-    #make
     sudo make install
+
+    # EXAMPLE: For macOS Homebrew
+    # make install
+
     popd > /dev/null || exit 1
 
 }
@@ -178,8 +222,8 @@ function test_compile {
     do
         # generate the documentation queries
         #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -documentation  -pgport "${PGPORT}"
-        # Show warnings
-        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -level WARNING  -pgport "${PGPORT}"
+        # Show debug messages from pgrouting
+        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -level DEBUG3  -pgport "${PGPORT}"
         # Compare differences on results
         tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -pgport "${PGPORT}"
     done

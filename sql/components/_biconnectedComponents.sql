@@ -43,7 +43,6 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE c IMMUTABLE STRICT;
 
--- COMMENTS
 
 COMMENT ON FUNCTION _pgr_biconnectedComponents(TEXT)
 IS 'pgRouting internal function';

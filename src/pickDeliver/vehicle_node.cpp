@@ -112,7 +112,7 @@ operator << (std::ostream &log, const Vehicle_node &v) {
 }
 
 
-/*! @brief Creates a disconected vehicle node
+/*! @brief Creates a disconnected vehicle node
  *
  * A node that is not served by any vehicle
  *

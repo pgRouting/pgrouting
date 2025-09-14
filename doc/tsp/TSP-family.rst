@@ -87,17 +87,16 @@ Characteristics
 - This problem is an NP-hard optimization problem.
 - Metric Algorithm is used
 - Implementation generates solutions that *are twice as long as the optimal tour
-  in the worst case* when:
+  in the worst case*:
+- Graph characteristics for best performance:
 
   - Graph is undirected
   - Graph is fully connected
   - Graph where traveling costs on edges obey the triangle inequality.
-
-- On an undirected graph:
-
   - The traveling costs are symmetric:
-  - Traveling costs from ``u`` to ``v`` are just as much as traveling from
-    ``v`` to ``u``
+
+    - Traveling costs from ``u`` to ``v`` are just as much as traveling from
+      ``v`` to ``u``
 
 .. tsp characteristics end
 

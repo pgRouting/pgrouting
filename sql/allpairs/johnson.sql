@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---v2.6
+--v3.0
 CREATE FUNCTION pgr_johnson(
     TEXT,    -- edges_sql (required)
     directed BOOLEAN DEFAULT true,
@@ -43,9 +43,9 @@ $BODY$
     FROM _pgr_johnson(_pgr_get_statement($1), $2);
 
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_johnson(TEXT, BOOLEAN)
 IS 'pgr_johnson

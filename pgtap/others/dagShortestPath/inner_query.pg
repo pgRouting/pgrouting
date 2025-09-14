@@ -19,31 +19,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.2.0') THEN plan(132) ELSE plan(98) END;
+UPDATE edges SET cost = sign(cost), reverse_cost = -1 * sign(cost);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(132) ELSE plan(1) END;
 
--- TODO the column has to be dropped because it creates a cycle when cost and reverse cost both have positive values
-ALTER TABLE edges DROP COLUMN reverse_cost;
-
--- ONE TO ONE
-SELECT style_dijkstra('pgr_dagshortestpath(', ', 2, 3)');
--- ONE TO MANY
-SELECT style_dijkstra('pgr_dagshortestpath(', ', 2, ARRAY[3])');
--- MANY TO ONE
-SELECT style_dijkstra('pgr_dagshortestpath(', ', ARRAY[2], 3)');
--- MANY TO MANY
-SELECT style_dijkstra('pgr_dagshortestpath(', ', ARRAY[2], ARRAY[3])');
-
--- COMBINATIONS
 CREATE OR REPLACE FUNCTION inner_query() RETURNS SETOF TEXT AS
 $BODY$
+DECLARE
+params TEXT[];
+subs TEXT[];
 BEGIN
-  IF min_version('3.2.0') THEN
-    RETURN QUERY SELECT style_dijkstra('pgr_dagshortestpath(', ', $$SELECT * FROM combinations$$)');
-    RETURN QUERY SELECT innerquery_combinations('pgr_dagshortestpath($$SELECT * FROM edges$$,',')');
-  ELSE
-    RETURN QUERY SELECT skip(2, 'Combinations signature added on 3.2.0');
+
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_DAGshortestPath return columns are standardized on v4.0.0');
+    RETURN;
   END IF;
+
+  -- ONE TO ONE
+  RETURN QUERY SELECT style_dijkstra('pgr_dagshortestpath(', ', 2, 3)');
+  -- ONE TO MANY
+  RETURN QUERY SELECT style_dijkstra('pgr_dagshortestpath(', ', 2, ARRAY[3])');
+  -- MANY TO ONE
+  RETURN QUERY SELECT style_dijkstra('pgr_dagshortestpath(', ', ARRAY[2], 3)');
+  -- MANY TO MANY
+  RETURN QUERY SELECT style_dijkstra('pgr_dagshortestpath(', ', ARRAY[2], ARRAY[3])');
+
+  RETURN QUERY SELECT style_dijkstra('pgr_dagshortestpath(', ', $$SELECT * FROM combinations$$)');
+  RETURN QUERY SELECT innerquery_combinations('pgr_dagshortestpath($$SELECT * FROM edges$$,',')');
+
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;

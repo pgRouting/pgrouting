@@ -24,7 +24,7 @@ SELECT plan(2);
 
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-CREATE OR REPLACE FUNCTION astar_combinations(sql_TestFunction TEXT, cant INTEGER DEFAULT 18 )
+CREATE OR REPLACE FUNCTION astar_combinations(sql_TestFunction TEXT, lim INTEGER DEFAULT 18 )
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -39,15 +39,15 @@ BEGIN
 
     sql_Combinations := '';
     sql_Many := '';
-    FOR i IN 1.. cant LOOP
+    FOR i IN 1.. lim LOOP
         IF (i > 1) THEN
             sql_Many := sql_Many ||', ';
         END IF;
         sql_Many := sql_Many || i ;
     END LOOP;
 
-    FOR i IN 1.. cant LOOP
-        FOR j IN 1..cant LOOP
+    FOR i IN 1.. lim LOOP
+        FOR j IN 1..lim LOOP
             IF NOT (i =  j) THEN
                 sql_Combinations := sql_Combinations || '(' || i || ',' || j || '),' ;
             END IF;

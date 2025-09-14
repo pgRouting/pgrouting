@@ -108,7 +108,7 @@ class Vehicle : public Identifier {
 
        @returns True if the operation was performed
        @warning Assertions are performed for out of range operations
-       @warning no feasability nor time window or capacity violations
+       @warning no feasibility nor time window or capacity violations
        checks are performed
        @todo TODO more deque like functions here
        */

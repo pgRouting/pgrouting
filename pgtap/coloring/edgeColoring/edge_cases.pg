@@ -20,16 +20,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN NOT min_version('3.3.0') THEN plan(1) ELSE plan(29) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(29) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-IF NOT min_version('3.3.0') THEN
+IF NOT min_version('4.0.0') THEN
   RETURN QUERY
-  SELECT skip(1, 'Function is new on 3.3.0');
+  SELECT skip(1, 'pgr_edgecoloring: testing only signatures standardaized in v4.0.0.');
   RETURN;
 END IF;
 
@@ -118,7 +118,7 @@ SELECT set_eq('q5',
 );
 
 RETURN QUERY
-SELECT ok((SELECT count(DISTINCT color_id) <= 3 FROM pgr_edgeColoring('q5')), 'At most three colors are expected');
+SELECT ok((SELECT count(DISTINCT color) <= 3 FROM pgr_edgeColoring('q5')), 'At most three colors are expected');
 
 
 -- even length cycle test
@@ -142,7 +142,7 @@ SELECT set_eq('q6',
 );
 
 RETURN QUERY
-SELECT ok((SELECT count(DISTINCT color_id) <= 3 FROM pgr_edgeColoring('q6')), 'At most three colors are expected');
+SELECT ok((SELECT count(DISTINCT color) <= 3 FROM pgr_edgeColoring('q6')), 'At most three colors are expected');
 
 -- changing the order of the edges will change the number of colors expected
 
@@ -165,7 +165,7 @@ SELECT set_eq('q7',
 );
 
 RETURN QUERY
-SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q7')), 2, 'Two colors are expected');
+SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q7')), 2, 'Two colors are expected');
 
 
 -- odd length cycle test
@@ -200,7 +200,7 @@ SELECT set_eq('q8',
 );
 
 RETURN QUERY
-SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q8')), 3, 'Three colors are expected');
+SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q8')), 3, 'Three colors are expected');
 
 
 -- 5 vertices cyclic
@@ -237,7 +237,7 @@ SELECT set_eq('q9',
 );
 
 RETURN QUERY
-SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q9')), 3, 'Three colors are expected');
+SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q9')), 3, 'Three colors are expected');
 
 
 -- self loop test
@@ -344,7 +344,7 @@ SELECT set_eq('q12',
 );
 
 RETURN QUERY
-SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q12')), 3, 'Three colors are expected');
+SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q12')), 3, 'Three colors are expected');
 
 
 -- 3 vertices multiple edge
@@ -377,7 +377,7 @@ SELECT set_eq('q13',
 );
 
 RETURN QUERY
-SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q13')), 2, 'Two colors are expected');
+SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q13')), 2, 'Two colors are expected');
 
 
 -- 2 vertices multiple edge
@@ -442,7 +442,7 @@ SELECT set_eq('q15',
 );
 
 RETURN QUERY
-SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q15')), 1, 'One color is required');
+SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q15')), 1, 'One color is required');
 
 
 END;

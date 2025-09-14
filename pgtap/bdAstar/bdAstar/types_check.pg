@@ -20,11 +20,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-SET client_min_messages TO WARNING;
+SELECT CASE WHEN min_version('3.6.0') THEN plan(13) WHEN min_version('3.2.0') THEN plan(12) ELSE PLAN(10) END;
 
-SELECT plan(13);
-
-SELECT astar_types_check('pgr_bdastar');
+SELECT single_path_types_check(
+  'pgr_bdastar',
+  '{directed,heuristic,factor,epsilon}'::TEXT[], '{bool,int4,numeric,numeric}'::TEXT[],
+  standard_v => '3.6.0');
 
 SELECT finish();
 ROLLBACK;

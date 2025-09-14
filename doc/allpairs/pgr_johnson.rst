@@ -17,7 +17,7 @@
 ===============================================================================
 
 ``pgr_johnson`` - Returns the sum of the costs of the shortest path for each
-pair of nodes in the graph using Floyd-Warshall algorithm.
+pair of nodes in the graph using Johnson algorithm.
 
 .. rubric:: Availability
 

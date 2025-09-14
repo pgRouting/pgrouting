@@ -20,12 +20,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(108);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(108) ELSE plan(1) END;
 
--- SINGLE VERTEX
-SELECT style_dijkstra('pgr_breadthFirstSearch(', ', 2)');
--- MULTIPLE VERTEX
-SELECT style_dijkstra('pgr_breadthFirstSearch(', ', ARRAY[2,3])');
+CREATE OR REPLACE FUNCTION inner_query()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
 
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_breadthFirstSearch: testing only signatures standardaized in v4.0.0.');
+    RETURN;
+  END IF;
+
+  -- SINGLE VERTEX
+  RETURN QUERY SELECT style_dijkstra('pgr_breadthFirstSearch(', ', 2)');
+  -- MULTIPLE VERTEX
+  RETURN QUERY SELECT style_dijkstra('pgr_breadthFirstSearch(', ', ARRAY[2,3])');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT inner_query();
 SELECT finish();
 ROLLBACK;

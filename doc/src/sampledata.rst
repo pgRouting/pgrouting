@@ -268,8 +268,7 @@ Inserting the data:
    :start-after: -- c2
    :end-before: -- c3
 
-Combinations data
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. rubric:: Combinations data
 
 .. literalinclude:: sampledata.queries
    :start-after: -- c3
@@ -295,8 +294,7 @@ Adding the restrictions
    :start-after: -- r2
    :end-before: -- r3
 
-Restrictions data
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. rubric:: Restrictions data
 
 .. literalinclude:: sampledata.queries
    :start-after: -- r3

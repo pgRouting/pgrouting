@@ -122,7 +122,7 @@ RETURN QUERY
 SELECT results_eq('twoVerticesTest10', 'SELECT 1::BIGINT', '10: u<->u v<->v  => One row');
 
 
--- 3 vertices tests ====> Already Connnected
+-- 3 vertices tests ====> Already Connected
 
 PREPARE q11 AS
 SELECT id, source, target, cost, reverse_cost
@@ -141,7 +141,7 @@ SELECT is_empty('threeVerticesTest12', '12: u<->v<-w already Connected => Empty'
 
 
 
--- 3 vertices tests ====> Not Connnected
+-- 3 vertices tests ====> Not Connected
 
 PREPARE q13 AS
 SELECT id,  source, source AS target, cost, reverse_cost FROM edges WHERE id = 2

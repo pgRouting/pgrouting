@@ -9,6 +9,7 @@ ADD_LIBRARY(max_flow OBJECT
     edge_disjoint_paths_driver.cpp
     minCostMaxFlow_driver.cpp
 
+    maximumcardinalitymatching.cpp
     maxflow.cpp
     flowgraph.cpp
     minCostMaxFlow.cpp

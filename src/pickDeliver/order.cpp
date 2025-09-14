@@ -101,7 +101,7 @@ Order::is_valid(double speed) const {
 
 /*
  * Initializing the set of nodes that can be placed
- * inmediately after \bthis node
+ * immediately after \bthis node
  *
  * (*this) -> J
  *

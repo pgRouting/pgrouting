@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2019 Gudesa Venkata Sai Akhil
-Mail: gvs.akhil1997@gmail.com
+Mail: gvs.akhil1997 at gmail.com
 
 
 ------
@@ -49,13 +49,13 @@ process(
 
     MST_rt **result_tuples,
     size_t *result_count) {
+    if (max_depth < 0) pgr_throw_error("Negative value found on 'max_depth'", "");
     pgr_SPI_connect();
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
     (*result_tuples) = NULL;
     (*result_count) = 0;
-
 
     clock_t start_t = clock();
     pgr_do_breadthFirstSearch(
@@ -127,7 +127,7 @@ PGDLLEXPORT Datum _pgr_breadthfirstsearch(PG_FUNCTION_ARGS) {
         Datum *values;
         bool *nulls;
 
-        size_t numb = 7;
+        size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
@@ -136,13 +136,14 @@ PGDLLEXPORT Datum _pgr_breadthfirstsearch(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[7] = Int64GetDatum(result_tuples[funcctx->call_cntr].pred);
 
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

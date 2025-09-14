@@ -102,7 +102,7 @@ class Order : public Identifier {
       * An order is valid when:
       *   - The pickup is well formed
       *   - The delivery is well formed
-      *   - isCompatibleIJ to go to delivery after inmediatly visiting pickup
+      *   - isCompatibleIJ to go to delivery after immediately visiting pickup
       */
      bool is_valid(double speed) const;
 

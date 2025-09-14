@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- one to one
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdAstar(
     TEXT,   -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -53,12 +53,11 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_bdAstar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- one to many
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdAstar(
     TEXT,     -- edges_sql (required)
     BIGINT,   -- from_vid (required)
@@ -82,12 +81,11 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_bdAstar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- many to one
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdAstar(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -111,12 +109,11 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- many to many
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdAstar(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -140,9 +137,8 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- combinations
 --v3.2
@@ -168,11 +164,9 @@ $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_bdAstar(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5::FLOAT, $6::FLOAT, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_bdAstar(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC)
 IS 'pgr_bdAstar(One to One)

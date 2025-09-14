@@ -105,7 +105,6 @@ BEGIN
 END;
 $BODY$ LANGUAGE 'plpgsql' VOLATILE STRICT;
 
--- COMMENTS
 COMMENT ON FUNCTION pgr_separateTouching(TEXT, FLOAT, BOOLEAN)
 IS 'pgr_separateTouching
 - Parameters

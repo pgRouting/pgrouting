@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_bdDijkstraCostMatrix
 -----------------------------
 
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdDijkstraCostMatrix(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- vids (required)
@@ -43,9 +43,8 @@ $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), $2::BIGINT[], $2::BIGINT[], $3, true) a;
 $BODY$
-LANGUAGE SQL VOLATILE
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- COMMENT
 

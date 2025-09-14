@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 
 
-void time_msg(char *msg, clock_t start_t, clock_t end_t) {
+void time_msg(const char *msg, clock_t start_t, clock_t end_t) {
     double elapsed_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
     elog(DEBUG2,
             "Elapsed time for %s: %lf sec = (%lf - %f) / CLOCKS_PER_SEC ",

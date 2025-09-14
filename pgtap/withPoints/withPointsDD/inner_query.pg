@@ -20,14 +20,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(168);
+SELECT CASE WHEN min_version('3.6.0') THEN PLAN(168) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION test_innerquery()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-IF min_version('3.6.0') THEN
+    IF NOT min_version('3.6.0') THEN
+      RETURN QUERY SELECT skip(1, 'pgr_withPointsDD testing only valid signatures on 4.0.0');
+      RETURN;
+    END IF;
+
     -- SINGLE VERTEX
     RETURN QUERY
     SELECT style_dijkstra('pgr_withPointsDD(', ', $$SELECT * from pointsOfInterest$$, 5, 3.8, $$r$$, true)');
@@ -38,22 +42,6 @@ IF min_version('3.6.0') THEN
     SELECT style_dijkstra('pgr_withPointsDD(', ', $$SELECT * from pointsOfInterest$$, ARRAY[5,10], 3.8, $$l$$,true)');
     RETURN QUERY
     SELECT innerquery_points('pgr_withPointsDD($$SELECT * FROM edges$$,', ', ARRAY[5,10], 3.8, $$r$$,true)');
-
-ELSE
-
-SET client_min_messages TO ERROR;
-    -- SINGLE VERTEX
-    RETURN QUERY
-    SELECT style_dijkstra('pgr_withPointsDD(', ', $$SELECT * from pointsOfInterest$$, 5, 3.8, true)');
-    RETURN QUERY
-    SELECT innerquery_points('pgr_withPointsDD($$SELECT * FROM edges$$,', ', 5, 3.8, true)');
-    -- MULTIPLE VERTEX
-    RETURN QUERY
-    SELECT style_dijkstra('pgr_withPointsDD(', ', $$SELECT * from pointsOfInterest$$, ARRAY[2,10], 3.8, true)');
-    RETURN QUERY
-    SELECT innerquery_points('pgr_withPointsDD($$SELECT * FROM edges$$,', ', ARRAY[5,10], 3.8, true)');
-
-END IF;
 
 END;
 $BODY$
