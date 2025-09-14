@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN NOT min_version('3.0.0') THEN plan(1) ELSE plan(8) END;
+SELECT CASE WHEN min_lib_version('3.4.0') THEN plan(8) ELSE plan(7) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
@@ -55,8 +55,10 @@ PREPARE q2 AS
     FROM edges WHERE id = 7'
   );
 
-RETURN QUERY
-SELECT throws_ok('q2', 'Graph is not DAG', 'throws is not DAG error');
+IF min_lib_version('3.4.0') THEN
+  /* On v3.4 there is an additional check */
+  RETURN QUERY SELECT throws_ok('q2', 'Graph is not DAG', 'throws is not DAG error');
+END IF;
 
 -- 1 vertex test
 
