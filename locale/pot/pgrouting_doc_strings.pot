@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-14 20:09+0000\n"
+"POT-Creation-Date: 2025-09-14 23:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3532,7 +3532,7 @@ msgstr ""
 msgid "C++ standard is std17"
 msgstr ""
 
-msgid "Using this standard all versions of boost will work"
+msgid "Using this standard, all supported toolchains across our CI matrix will work."
 msgstr ""
 
 msgid "The code is not yet modified to use std17:"
@@ -3541,10 +3541,10 @@ msgstr ""
 msgid "If needed: ``-DCMAKE_CXX_STANDARD=14`` to lower the standard."
 msgstr ""
 
-msgid "The user's documentation is build by default"
+msgid "The user's documentation is built by default."
 msgstr ""
 
-msgid "The doxygen documentation is build by default"
+msgid "The doxygen documentation is built by default."
 msgstr ""
 
 msgid "For developers:"
@@ -3557,6 +3557,9 @@ msgid "Tidy checks are done on CI."
 msgstr ""
 
 msgid "Documentation build"
+msgstr ""
+
+msgid "The doxygen documentation is build by default"
 msgstr ""
 
 msgid "The HTML documentation is build by default"
@@ -3583,10 +3586,10 @@ msgstr ""
 msgid "When all languages are OFF"
 msgstr ""
 
-msgid "To build only English: `-DES=ON -DSV=OFF -DZH_HANS=OFF`"
+msgid "To build only English: `-DES=OFF -DSV=OFF -DZH_HANS=OFF`"
 msgstr ""
 
-msgid "Documentation output changed location to `build/doc/_build/<format>` directory"
+msgid "Documentation output location: ``build/doc/_build/<format>``"
 msgstr ""
 
 msgid "For example: for HTML output is on `build/doc/_build/html` directory"
