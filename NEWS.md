@@ -17,7 +17,7 @@ Build
 
 * C++ standard is std17
 
-  * Using this standard all versions of  will work
+  * Using this standard all versions of boost will work
   * The code is not yet modified to use std17:
 
     * If needed: ``-DCMAKE_CXX_STANDARD=14`` to lower the standard.
@@ -313,7 +313,7 @@ Signatures promoted to official
 * [#2718](https://github.com/pgRouting/pgrouting/issues/2718): pgr_maxFlow(Combinations)
 * [#2718](https://github.com/pgRouting/pgrouting/issues/2718): pgr_pushRelabel(Combinations)
 
-New experimental functions
+New experimental functions.
 
 * Metrics
 
