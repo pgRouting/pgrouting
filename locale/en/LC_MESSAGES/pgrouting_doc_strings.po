@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-14 10:27-0600\n"
+"POT-Creation-Date: 2025-09-14 18:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr ""
@@ -280,9 +280,6 @@ msgid ":ref:`genindex`"
 msgstr ""
 
 msgid ":ref:`search`"
-msgstr ""
-
-msgid "Boost Graph inside"
 msgstr ""
 
 msgid "DFS - Category"
@@ -2556,11 +2553,11 @@ msgid ""
 msgstr ""
 
 msgid ""
-"For large graphs where there is a path bewtween the starting vertex and "
+"For large graphs where there is a path between the starting vertex and "
 "ending vertex:"
 msgstr ""
 
-msgid "It is expected to terminate faster than pgr_aStar"
+msgid "It is expected to terminate faster than doc:`pgr_aStar`"
 msgstr ""
 
 msgid ":doc:`aStar-family`"
@@ -2636,7 +2633,15 @@ msgstr ""
 msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
 msgstr ""
 
+msgid ""
+"For large graphs where there is a path bewtween the starting vertex and "
+"ending vertex:"
+msgstr ""
+
 msgid "It is expected to terminate faster than pgr_dijkstra"
+msgstr ""
+
+msgid "`Boost  <https://www.boost.org/libs/graph/doc>`__"
 msgstr ""
 
 msgid "Chinese Postman Problem - Family of functions (Experimental)"
@@ -8503,6 +8508,9 @@ msgstr ""
 msgid "|Boost| Boost Graph Inside"
 msgstr ""
 
+msgid "Boost Graph inside"
+msgstr ""
+
 msgid "Signatures"
 msgstr ""
 
@@ -9087,8 +9095,8 @@ msgid "New proposed function."
 msgstr ""
 
 msgid ""
-"The ``pgr_aStarCost`` function summarizes of the cost of the shortest "
-"path using the A* algorithm."
+"The ``pgr_aStarCost`` function summarizes the cost of the shortest path "
+"using the A* algorithm."
 msgstr ""
 
 msgid ""
@@ -9316,8 +9324,8 @@ msgid "Signature change on pgr_bdAstar(One to One)"
 msgstr ""
 
 msgid ""
-"The results are equivalent to the union of the results of the "
-"pgr_bdAStar(One to One) on the:"
+"The results are equivalent to the union of the results of pgr_bdAStar(One"
+" to One) on the:"
 msgstr ""
 
 msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
@@ -9347,8 +9355,8 @@ msgid "pgr_bdAstarCost(Combinations)"
 msgstr ""
 
 msgid ""
-"The ``pgr_bdAstarCost`` function summarizes of the cost of the shortest "
-"path using the bidirectional A* algorithm."
+"The ``pgr_bdAstarCost`` function summarizes the cost of the shortest path"
+" using the bidirectional A* algorithm."
 msgstr ""
 
 msgid "pgr_bdAstarCost(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
@@ -9370,11 +9378,11 @@ msgid "``pgr_bdAstarCostMatrix``"
 msgstr ""
 
 msgid ""
-"``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using "
-":doc:`pgr_aStar`."
+"``pgr_bdAstarCostMatrix`` - Calculates the cost matrix using "
+":doc:`pgr_bdAstar`."
 msgstr ""
 
-msgid "Using internally the :doc:`pgr_bdAstar` algorithm"
+msgid "Internally uses the :doc:`pgr_bdAstar` algorithm"
 msgstr ""
 
 msgid "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
@@ -9397,7 +9405,7 @@ msgstr ""
 msgid "pgr_bdDijkstra(Many to Many)"
 msgstr ""
 
-msgid "Signature change on pgr_bdDijsktra(One to One)"
+msgid "Signature change on pgr_bdDijkstra(One to One)"
 msgstr ""
 
 msgid "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
@@ -9454,8 +9462,8 @@ msgid "pgr_bdDijkstraCost(Combinations)"
 msgstr ""
 
 msgid ""
-"The ``pgr_bdDijkstraCost`` function summarizes of the cost of the "
-"shortest path using the bidirectional Dijkstra Algorithm."
+"The ``pgr_bdDijkstraCost`` function summarizes the cost of the shortest "
+"path using the bidirectional Dijkstra Algorithm."
 msgstr ""
 
 msgid ""
@@ -9577,6 +9585,20 @@ msgid ""
 msgstr ""
 
 msgid "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr ""
+
+msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a directed graph"
+msgstr ""
+
+msgid "From vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a directed graph"
+msgstr ""
+
+msgid ""
+"From vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` on an "
+"undirected graph"
+msgstr ""
+
+msgid "Using a combinations table on an undirected graph"
 msgstr ""
 
 msgid ""
@@ -13108,7 +13130,7 @@ msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr ""
 
 msgid ""
-"Boost `floyd-Warshall "
+"Boost `Floyd-Warshall "
 "<https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
 msgstr ""
 
@@ -19449,5 +19471,49 @@ msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
 #~ msgid "pgRouting 4.0.0 Release Notes"
+#~ msgstr ""
+
+#~ msgid "It is expected to terminate faster than pgr_aStar"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The ``pgr_aStarCost`` function summarizes of"
+#~ " the cost of the shortest path "
+#~ "using the A* algorithm."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The results are equivalent to the "
+#~ "union of the results of the "
+#~ "pgr_bdAStar(One to One) on the:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The ``pgr_bdAstarCost`` function summarizes of"
+#~ " the cost of the shortest path "
+#~ "using the bidirectional A* algorithm."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``pgr_bdAstarCostMatrix`` - Calculates the a"
+#~ " cost matrix using :doc:`pgr_aStar`."
+#~ msgstr ""
+
+#~ msgid "Using internally the :doc:`pgr_bdAstar` algorithm"
+#~ msgstr ""
+
+#~ msgid "Signature change on pgr_bdDijsktra(One to One)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The ``pgr_bdDijkstraCost`` function summarizes "
+#~ "of the cost of the shortest path"
+#~ " using the bidirectional Dijkstra "
+#~ "Algorithm."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Boost `floyd-Warshall "
+#~ "<https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
 #~ msgstr ""
 
