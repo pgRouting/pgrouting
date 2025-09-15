@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     BFS-category.rst
     cost-category.rst
     costMatrix-category.rst

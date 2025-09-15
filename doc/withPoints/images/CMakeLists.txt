@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     leftDrivingSide.png
     noMatterDrivingSide.png
     rightDrivingSide.png

@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     pgr_bellmanFord.rst
     pgr_edwardMoore.rst
     )

@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     metrics-family.rst
     pgr_betweennessCentrality.rst
     pgr_degree.rst

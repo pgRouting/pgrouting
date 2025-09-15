@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     flow-family.rst
     pgr_maxFlow.rst
     pgr_boykovKolmogorov.rst

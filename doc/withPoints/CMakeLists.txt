@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     pgr_withPointsDD.rst
     pgr_withPoints.rst
     withPoints-family.rst

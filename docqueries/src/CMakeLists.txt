@@ -1,5 +1,5 @@
 # Do not use extensions
-SET(LOCAL_FILES
+set(LOCAL_FILES
     withPoints-category
     sampledata
     migration

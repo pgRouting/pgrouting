@@ -1,4 +1,4 @@
-SET(LOCAL_FILES
+set(LOCAL_FILES
     pgr_extractVertices.rst
     pgr_findCloseEdges.rst
     pgr_separateCrossing.rst

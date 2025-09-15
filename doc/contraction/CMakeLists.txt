@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     contraction-family.rst
     pgr_contraction.rst
     pgr_contractionDeadEnd.rst

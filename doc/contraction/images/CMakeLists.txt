@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     undirected_sampledata_b.png
     undirected_sampledata_c.png
     newgraph.png

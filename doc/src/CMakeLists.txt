@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     index.rst
     pgRouting-concepts.rst
     pgRouting-installation.rst

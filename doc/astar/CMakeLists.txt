@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     aStar-family.rst
     pgr_aStarCost.rst
     pgr_aStarCostMatrix.rst

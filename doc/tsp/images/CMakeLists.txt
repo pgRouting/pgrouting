@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     wi29optimal.png
     wi29Solution.png
     )

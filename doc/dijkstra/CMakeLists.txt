@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     dijkstra-family.rst
     pgr_dijkstraCostMatrix.rst
     pgr_dijkstraCost.rst

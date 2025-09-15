@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     boost-inside.jpeg
     Fig1-originalData.png
     Fig2-cost.png

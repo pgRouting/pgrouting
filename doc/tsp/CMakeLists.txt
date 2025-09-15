@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     pgr_TSPeuclidean.rst
     pgr_TSP.rst
     TSP-family.rst

@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     cc_sampledata.png
     scc_sampledata.png
     bcc_sampledata.png

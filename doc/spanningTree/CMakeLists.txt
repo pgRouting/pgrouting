@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     #pgr_randomSpanTree.rst
     kruskal-family.rst
     prim-family.rst

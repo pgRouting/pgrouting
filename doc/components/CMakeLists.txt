@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     components-family.rst
 	pgr_connectedComponents.rst
 	pgr_strongComponents.rst

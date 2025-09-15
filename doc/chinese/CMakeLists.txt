@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     chinesePostmanProblem-family.rst
     pgr_chinesePostmanCost.rst
     pgr_chinesePostman.rst

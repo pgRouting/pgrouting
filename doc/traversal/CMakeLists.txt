@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     pgr_binaryBreadthFirstSearch.rst
     pgr_breadthFirstSearch.rst
     pgr_depthFirstSearch.rst

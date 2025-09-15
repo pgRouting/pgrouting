@@ -1,4 +1,4 @@
-SET(LOCAL_FILES
+set(LOCAL_FILES
     ordering-family.rst
     pgr_cuthillMckeeOrdering.rst
     pgr_topologicalSort.rst

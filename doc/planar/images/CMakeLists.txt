@@ -1,4 +1,4 @@
-SET(LOCAL_FILES
+set(LOCAL_FILES
     nonPlanar.png
     )
 
