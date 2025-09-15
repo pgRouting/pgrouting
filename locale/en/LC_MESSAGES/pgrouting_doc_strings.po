@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-14 23:12+0000\n"
+"POT-Creation-Date: 2025-09-15 00:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13366,7 +13366,7 @@ msgstr ""
 msgid "``pgr_kingOrdering`` - Experimental"
 msgstr ""
 
-msgid "``pgr_kingOrdering`` — Returns the King ordering of an undirected graphs"
+msgid "``pgr_kingOrdering`` — Returns the King ordering of an undirected graph."
 msgstr ""
 
 msgid ""
@@ -13376,7 +13376,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"The method follows a breadth-first search (BFS) traversal,but with a "
+"The method follows a breadth-first search (BFS) traversal, but with a "
 "refinement: at each step, the unvisited neighbors of the current vertex "
 "are inserted into the queue in ascending order of their pseudo-degree, "
 "where the pseudo-degree of a vertex is the number of edges connecting it "
@@ -14231,7 +14231,7 @@ msgstr ""
 msgid "pgr_maxFlowMinCost(Combinations)"
 msgstr ""
 
-msgid "|boost| graph inside."
+msgid "|Boost| Boost Graph Inside."
 msgstr ""
 
 msgid "**TODO** check which statement is true:"
@@ -14744,7 +14744,7 @@ msgstr ""
 msgid "``pgr_sloanOrdering`` - Experimental"
 msgstr ""
 
-msgid "``pgr_sloanOrdering`` — Returns the sloan ordering of an undirected graph"
+msgid "``pgr_sloanOrdering`` — Returns the Sloan ordering of an undirected graph"
 msgstr ""
 
 msgid ""
@@ -14762,20 +14762,11 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Aims to mininimize bandwidth (maximum difference between connected vertex"
-" indices."
+"Aims to minimize bandwidth (maximum difference between connected vertex "
+"indices."
 msgstr ""
 
 msgid "Typically produces better orderings than simple breadth-first approaches."
-msgstr ""
-
-msgid "Run time is 0.115846 seconds."
-msgstr ""
-
-msgid "|Boost| Boost Graph inside"
-msgstr ""
-
-msgid "..rubric::Summary"
 msgstr ""
 
 msgid "pgr_sloanOrdering(`Edges SQL`_)"
@@ -14788,21 +14779,6 @@ msgid "New sloan ordering order."
 msgstr ""
 
 msgid "Sloan ordering of Original graph from Boost example (vertices 0-9)."
-msgstr ""
-
-msgid "..graphviz::"
-msgstr ""
-
-msgid "..literalinclude::sloanOrdering.queries"
-msgstr ""
-
-msgid "start-after"
-msgstr ""
-
-msgid "--q3"
-msgstr ""
-
-msgid "--q4"
 msgstr ""
 
 msgid ""
@@ -19889,5 +19865,62 @@ msgstr ""
 #~ msgid ""
 #~ "Documentation output changed location to "
 #~ "`build/doc/_build/<format>` directory"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``pgr_kingOrdering`` — Returns the King "
+#~ "ordering of an undirected graphs"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The method follows a breadth-first "
+#~ "search (BFS) traversal,but with a "
+#~ "refinement: at each step, the unvisited"
+#~ " neighbors of the current vertex are"
+#~ " inserted into the queue in ascending"
+#~ " order of their pseudo-degree, where"
+#~ " the pseudo-degree of a vertex "
+#~ "is the number of edges connecting "
+#~ "it to yet-unvisited vertices. This "
+#~ "prioritization often yields a smaller "
+#~ "bandwidth compared to simpler BFS "
+#~ "orderings."
+#~ msgstr ""
+
+#~ msgid "|boost| graph inside."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``pgr_sloanOrdering`` — Returns the sloan "
+#~ "ordering of an undirected graph"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Aims to mininimize bandwidth (maximum "
+#~ "difference between connected vertex indices."
+#~ msgstr ""
+
+#~ msgid "Run time is 0.115846 seconds."
+#~ msgstr ""
+
+#~ msgid "|Boost| Boost Graph inside"
+#~ msgstr ""
+
+#~ msgid "..rubric::Summary"
+#~ msgstr ""
+
+#~ msgid "..graphviz::"
+#~ msgstr ""
+
+#~ msgid "..literalinclude::sloanOrdering.queries"
+#~ msgstr ""
+
+#~ msgid "start-after"
+#~ msgstr ""
+
+#~ msgid "--q3"
+#~ msgstr ""
+
+#~ msgid "--q4"
 #~ msgstr ""
 
