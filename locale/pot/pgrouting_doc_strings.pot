@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-15 00:20+0000\n"
+"POT-Creation-Date: 2025-09-15 00:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12425,6 +12425,9 @@ msgid "Aims to minimize bandwidth (maximum difference between connected vertex i
 msgstr ""
 
 msgid "Typically produces better orderings than simple breadth-first approaches."
+msgstr ""
+
+msgid "Time complexity: :math:`O(V² + E)` where V is the number of vertices and E is the number of edges."
 msgstr ""
 
 msgid "pgr_sloanOrdering(`Edges SQL`_)"
