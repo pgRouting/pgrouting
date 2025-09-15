@@ -42,6 +42,8 @@ sparse matrix computations and finite element analysis.
 * Aims to minimize bandwidth (maximum difference between connected vertex indices.
 * The implementation is for undirected graphs
 * Typically produces better orderings than simple breadth-first approaches.
+* Time complexity: :math:`O(V² + E)` where V is the number of vertices and E is
+  the number of edges.
 
 |Boost| Boost Graph Inside
 
