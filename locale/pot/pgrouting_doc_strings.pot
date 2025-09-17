@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-15 00:42+0000\n"
+"POT-Creation-Date: 2025-09-17 02:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3559,19 +3559,19 @@ msgstr ""
 msgid "Documentation build"
 msgstr ""
 
-msgid "The doxygen documentation is build by default"
+msgid "The doxygen documentation is built by default"
 msgstr ""
 
-msgid "The HTML documentation is build by default"
+msgid "The HTML documentation is built by default"
 msgstr ""
 
-msgid "The translated languages (en, es, sv, zh_Hans) HTML documentation is build by default"
+msgid "The translated languages (en, es, sv, zh_Hans) HTML documentation are built by default"
 msgstr ""
 
 msgid "`WITH-DOC` is not used anymore"
 msgstr ""
 
-msgid "User's Documentation is not build when"
+msgid "User Documentation is not built when"
 msgstr ""
 
 msgid "Sphinx is not found"
@@ -3595,7 +3595,7 @@ msgstr ""
 msgid "For example: for HTML output is on `build/doc/_build/html` directory"
 msgstr ""
 
-msgid "Developers's Documentation is not build when"
+msgid "Developers' Documentation is not built when"
 msgstr ""
 
 msgid "Doxygen is not found"
@@ -3994,7 +3994,7 @@ msgstr ""
 msgid "`#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__: pgr_edwardMoore"
 msgstr ""
 
-msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__: pgr_DAGshortestPath"
+msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__: pgr_dagShortestPath"
 msgstr ""
 
 msgid "Standardized to |matrix-result|"
@@ -4012,7 +4012,7 @@ msgstr ""
 msgid "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__: pgr_edgeDisjointPaths"
 msgstr ""
 
-msgid "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__: pgr_turnRestrictedPaths"
+msgid "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__: pgr_turnRestrictedPath"
 msgstr ""
 
 msgid "Standardized to |result_edge_color|"
@@ -8029,7 +8029,7 @@ msgstr ""
 msgid "``pgr_bdAstarCostMatrix`` - Calculates the cost matrix using :doc:`pgr_bdAstar`."
 msgstr ""
 
-msgid "Internally uses the :doc:`pgr_bdAstar` algorithm"
+msgid "Internally uses the :doc:`pgr_bdAstar` algorithm."
 msgstr ""
 
 msgid "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
@@ -8329,7 +8329,7 @@ msgstr ""
 msgid "pgr_binaryBreadthFirstSearch(Combinations)"
 msgstr ""
 
-msgid "It is well-known that the shortest paths between a single source and all other vertices can be found using Breadth First Search in :math:`O(|E|)` in an unweighted graph, i.e. the distance is the minimal number of edges that you need to traverse from the source to another vertex. We can interpret such a graph also as a weighted graph, where every edge has the weight :math:`1`. If not all edges in graph have the same weight, that we need a more general algorithm, like Dijkstra's Algorithm which runs in :math:`O(|E|log|V|)` time."
+msgid "It is well-known that the shortest paths between a single source and all other vertices can be found using Breadth First Search in :math:`O(|E|)` in an unweighted graph, i.e. the distance is the minimal number of edges that you need to traverse from the source to another vertex. We can interpret such a graph also as a weighted graph, where every edge has the weight :math:`1`. If not all edges in graph have the same weight, then we a more general algorithm is needed, like Dijkstra's Algorithm which runs in :math:`O(|E|log|V|)` time."
 msgstr ""
 
 msgid "However if the weights are more constrained, we can use a faster algorithm. This algorithm, termed as 'Binary Breadth First Search' as well as '0-1 BFS', is a variation of the standard Breadth First Search problem to solve the SSSP (single-source shortest path) problem in :math:`O(|E|)`, if the weights of each edge belongs to the set {0,X}, where 'X' is any non-negative real integer."
