@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-17 02:07+0000\n"
+"POT-Creation-Date: 2025-09-17 02:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9527,9 +9527,6 @@ msgid "``pgr_dagShortestPath`` — Returns the shortest path for weighted direct
 msgstr ""
 
 msgid "pgr_dagShortestPath(Combinations)"
-msgstr ""
-
-msgid "..rubric:: Version 3.0.0"
 msgstr ""
 
 msgid "Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm that solves the shortest path problem for weighted directed acyclic graph, producing a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``)."
