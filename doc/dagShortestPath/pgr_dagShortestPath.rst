@@ -37,7 +37,7 @@ In particular, the DAG shortest paths algorithm implemented by Boost.Graph.
 
   * pgr_dagShortestPath(Combinations)
 
-..rubric:: Version 3.0.0
+.. rubric:: Version 3.0.0
 
 * New experimental function.
 
