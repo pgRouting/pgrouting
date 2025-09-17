@@ -34,7 +34,7 @@ Description
 
 **The main characteristics are:**
 
-* Internally uses the :doc:`pgr_bdAstar` algorithm
+* Internally uses the :doc:`pgr_bdAstar` algorithm.
 * Returns a cost matrix.
 * No ordering is performed
 * let `v` and `u` are nodes on the graph:

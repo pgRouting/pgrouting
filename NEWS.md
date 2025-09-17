@@ -32,13 +32,13 @@ For developers:
 
 Documentation build
 
-* The doxygen documentation is build by default
-* The HTML documentation is build by default
-* The translated languages (en, es, sv, zh_Hans) HTML documentation is build by
+* The doxygen documentation is built by default
+* The HTML documentation is built by default
+* The translated languages (en, es, sv, zh_Hans) HTML documentation are built by
   default
 * `WITH-DOC` is not used anymore
 
-User's Documentation is not build when
+User Documentation is not built when
 
 * Sphinx is not found
 * When all Sphinx formats are OFF
@@ -53,7 +53,7 @@ User's Documentation is not build when
 
   * For example: for HTML output is on `build/doc/_build/html` directory
 
-Developers's Documentation is not build when
+Developers' Documentation is not built when
 
 * Doxygen is not found
 * To not build Doxygen documentation: `-DBUILD_DOXY=OFF`
@@ -336,7 +336,7 @@ SQL signatures and output standardization
 * [#2907](https://github.com/pgRouting/pgrouting/issues/2907): pgr_bellmanFord
 * [#2908](https://github.com/pgRouting/pgrouting/issues/2908): pgr_binaryBreadthFirstSearch
 * [#2910](https://github.com/pgRouting/pgrouting/issues/2910): pgr_edwardMoore
-* [#2913](https://github.com/pgRouting/pgrouting/issues/2913): pgr_DAGshortestPath
+* [#2913](https://github.com/pgRouting/pgrouting/issues/2913): pgr_dagShortestPath
 
 **Standardized to ``(start_vid, end_vid, agg_cost)``**
 
@@ -346,7 +346,7 @@ SQL signatures and output standardization
 **Standardized to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``**
 
 * [#2909](https://github.com/pgRouting/pgrouting/issues/2909): pgr_edgeDisjointPaths
-* [#2909](https://github.com/pgRouting/pgrouting/issues/2909): pgr_turnRestrictedPaths
+* [#2909](https://github.com/pgRouting/pgrouting/issues/2909): pgr_turnRestrictedPath
 
 **Standardized to ``(edge, color)``**
 

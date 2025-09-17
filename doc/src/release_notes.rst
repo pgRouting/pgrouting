@@ -67,13 +67,13 @@ For developers:
 Documentation build
 ...............................................................................
 
-* The doxygen documentation is build by default
-* The HTML documentation is build by default
-* The translated languages (en, es, sv, zh_Hans) HTML documentation is build by
+* The doxygen documentation is built by default
+* The HTML documentation is built by default
+* The translated languages (en, es, sv, zh_Hans) HTML documentation are built by
   default
 * `WITH-DOC` is not used anymore
 
-User's Documentation is not build when
+User Documentation is not built when
 
 * Sphinx is not found
 * When all Sphinx formats are OFF
@@ -88,7 +88,7 @@ User's Documentation is not build when
 
   * For example: for HTML output is on `build/doc/_build/html` directory
 
-Developers's Documentation is not build when
+Developers' Documentation is not built when
 
 * Doxygen is not found
 * To not build Doxygen documentation: `-DBUILD_DOXY=OFF`
@@ -392,7 +392,7 @@ SQL signatures and output standardization
 * :issue:`2907`: pgr_bellmanFord
 * :issue:`2908`: pgr_binaryBreadthFirstSearch
 * :issue:`2910`: pgr_edwardMoore
-* :issue:`2913`: pgr_DAGshortestPath
+* :issue:`2913`: pgr_dagShortestPath
 
 .. rubric:: Standardized to |matrix-result|
 
@@ -402,7 +402,7 @@ SQL signatures and output standardization
 .. rubric:: Standardized to |generic-result|
 
 * :issue:`2909`: pgr_edgeDisjointPaths
-* :issue:`2909`: pgr_turnRestrictedPaths
+* :issue:`2909`: pgr_turnRestrictedPath
 
 .. rubric:: Standardized to |result_edge_color|
 
