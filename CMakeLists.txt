@@ -182,7 +182,7 @@ find_package(PostgreSQL "${POSTGRESQL_MINIMUM_VERSION}" REQUIRED)
 
 # removing type of release on postgres version
 # for XbetaY XalphaY XrcY -> X.Y
-string(REGEX REPLACE "([0-9]+)[beta|alpha|rc|devel].*" "\\1.0" POSTGRESQL_VERSION_STRING ${POSTGRESQL_VERSION_STRING})
+string(REGEX REPLACE "([0-9]+)[beta|alpha|rc|devel].*" "\\1.0" POSTGRESQL_VERSION_STRING "${POSTGRESQL_VERSION_STRING}")
 message(STATUS "POSTGRESQL_VERSION_STRING=${POSTGRESQL_VERSION_STRING}")
 
 # calculate major.minor
