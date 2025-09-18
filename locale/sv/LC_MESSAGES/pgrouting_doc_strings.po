@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-29 18:06+0000\n"
-"PO-Revision-Date: 2025-07-07 19:42+0000\n"
-"Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
+"PO-Revision-Date: 2025-08-27 18:46+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/sv/>\n"
 "Language: sv\n"
@@ -5672,7 +5672,7 @@ msgid "|matrix-pid|"
 msgstr "|matrix-pid|"
 
 msgid "``pgr_withPointsCostMatrix``"
-msgstr "``pgr_medPunkterKostnadsmatris``"
+msgstr "``pgr_withPointsCostMatrix``"
 
 msgid "**to** |matrix-result|"
 msgstr "**till** |matrix-result|"
@@ -5887,7 +5887,7 @@ msgid "``pgr_edwardMoore``"
 msgstr "``pgr_edwardMoore``"
 
 msgid "``pgr_withPoints``"
-msgstr "``pgr_medPunkter``"
+msgstr "``pgr_withPoints``"
 
 msgid "|old-pid-result|"
 msgstr "|old-pid-result|"
@@ -16921,7 +16921,7 @@ msgid ":doc:`via-category`"
 msgstr ":doc:`via-category`"
 
 msgid "``pgr_trspVia_withPoints``"
-msgstr "``pgr_trspVia_medPunkter``"
+msgstr "``pgr_trspVia_withPoints``"
 
 msgid ""
 "``pgr_trspVia_withPoints`` - Route that goes through a list of vertices and/"
@@ -17139,7 +17139,7 @@ msgstr ""
 "algoritmen. I det här fallet har en U-sväng gjorts med samma kant."
 
 msgid "``pgr_trsp_withPoints``"
-msgstr "``pgr_trsp_medPunkter``"
+msgstr "``pgr_trsp_withPoints``"
 
 msgid "``pgr_trsp_withPoints`` Routing Vertex/Point with restrictions."
 msgstr "``pgr_trsp_withPoints`` Routing Vertex/Point med restriktioner."
@@ -17795,7 +17795,7 @@ msgstr ""
 "körsida, med detaljer."
 
 msgid "``pgr_withPointsKSP``"
-msgstr "``pgr_medPunkterKSP``"
+msgstr "``pgr_withPointsKSP``"
 
 msgid ""
 "``pgr_withPointsKSP`` — Yen's algorithm for K shortest paths using Dijkstra."
@@ -21838,9 +21838,8 @@ msgstr "pgr_withPointsDD is pgr_drivingDistance **with points**"
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 
-#, fuzzy
 msgid "Proposed"
-msgstr "Föreslagen funktion."
+msgstr "Föreslagen"
 
 msgid "Code has been reviewed therefore is not experimental."
 msgstr ""
@@ -21886,9 +21885,8 @@ msgstr "För användardokumentation"
 msgid "The doxygen documentation is build by default"
 msgstr ""
 
-#, fuzzy
 msgid "For developers:"
-msgstr "För dokumentation för utvecklare"
+msgstr "För utvecklare:"
 
 msgid "Set `-DUSE_CLANG_TIDY=ON` for clang tidy checks."
 msgstr ""
@@ -23122,10 +23120,8 @@ msgstr ""
 msgid "Other enhancements:"
 msgstr "Förbättringar av koden"
 
-#, fuzzy
 msgid "`#2869 <https://github.com/pgRouting/pgrouting/issues/2869>`__:"
-msgstr ""
-"`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: pgr_TSP"
+msgstr "`#2869 <https://github.com/pgRouting/pgrouting/issues/2869>`__:"
 
 #, fuzzy
 msgid ""
@@ -24086,9 +24082,8 @@ msgstr ""
 msgid "The bandwidth is the maximum of all these distances"
 msgstr ""
 
-#, fuzzy
 msgid "The implementation is for undirected graphs"
-msgstr "Implementationen är för **undirected** grafer."
+msgstr "Implementationen är för undirected grafer"
 
 msgid "Run time is 0.160789 seconds"
 msgstr ""
@@ -24132,9 +24127,8 @@ msgstr ""
 "`Boost: is_bipartite <https://www.boost.org/libs/graph/doc/is_bipartite."
 "html>`__"
 
-#, fuzzy
 msgid "New experimental function"
-msgstr "Ny experimentell funktion."
+msgstr "Ny experimentell funktion"
 
 #, fuzzy
 msgid ""
@@ -24247,3 +24241,436 @@ msgid ""
 msgstr ""
 "`Boost: Färgläggning av kanter <https://www.boost.org/libs/graph/doc/"
 "edge_coloring.html>`__"
+
+#, fuzzy
+msgid ""
+":doc:`pgr_sloanOrdering` - Returns the sloan ordering of an undirected graph."
+msgstr ""
+":doc:`pgr_cuthillMckeeOrdering` - Return reverse Cuthill-McKee ordering of "
+"an undirected graph."
+
+#, fuzzy
+msgid ""
+":doc:`pgr_kingOrdering` - Returns the King ordering of an undirected graph."
+msgstr ""
+"``pgr_cuthillMckeeOrdering`` - Returnerar den omvända Cuthill-Mckee-"
+"ordningen för en ostyrd graf"
+
+#, fuzzy
+msgid "pgr_sloanOrdering"
+msgstr "Ordning"
+
+#, fuzzy
+msgid "**Driving side** parameter is positional unnamed."
+msgstr "**Driving side** parametern är positionell, namnlös och obligatorisk."
+
+#, fuzzy
+msgid ""
+"`#2955 <https://github.com/pgRouting/pgrouting/issues/2955>`__: "
+"pgr_sloanOrdering"
+msgstr ""
+"`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__ "
+"pgr_edgeColoring"
+
+#, fuzzy
+msgid "Default value of **driving side** parameter"
+msgstr "Giltighet för parametern **förarsida**"
+
+#, fuzzy
+msgid ""
+"**driving side** parameter is unnamed, and valid values differ for directed "
+"and undirected graphs."
+msgstr ""
+"*parametern *driving side** är obligatorisk utan namn och giltiga värden "
+"skiljer sig åt för riktade och oriktade grafer."
+
+#, fuzzy
+msgid "Default value = 'r';"
+msgstr "Med standardvärden"
+
+#, fuzzy
+msgid "Default value = 'b';"
+msgstr "Med standardvärden"
+
+#, fuzzy
+msgid ""
+"And ``driving side`` parameter changed from named optional to unnamed "
+"**driving side** and its validity differ for directed and undirected graphs."
+msgstr ""
+"Parametern ``driving side`` ändrades från namngiven valfri till icke "
+"namngiven obligatorisk **driving side** och dess giltighet skiljer sig åt "
+"för riktade och oriktade grafer."
+
+#, fuzzy
+msgid "Bipasha Gayary, Fan Wu, Regina Obe, Saloni kumari, Vicky Vergara"
+msgstr "Aurélie Bousquet, Regina Obe, Vicky Vergara"
+
+#, fuzzy
+msgid ""
+"Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
+"Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
+"Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, "
+"Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, "
+"Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, "
+"Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu "
+"Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko "
+"Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim "
+"Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish "
+"Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni "
+"Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen "
+"Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, "
+"Vidhan Jain, Virginia Vergara, Yige Huang"
+msgstr ""
+"Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
+"Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
+"Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian "
+"Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, "
+"Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald "
+"Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay "
+"Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, "
+"Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang "
+"Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, "
+"Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, "
+"Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain "
+"Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+
+#, fuzzy
+msgid "``pgr_dijkstraVia``"
+msgstr "``pgr_dijkstra``"
+
+#, fuzzy
+msgid "``pgr_sloanOrdering`` - Experimental"
+msgstr "``pgr_edgeColoring`` - Experimentell"
+
+#, fuzzy
+msgid ""
+"``pgr_sloanOrdering`` — Returns the sloan ordering of an undirected graph"
+msgstr ""
+"``pgr_cuthillMckeeOrdering`` - Returnerar den omvända Cuthill-Mckee-"
+"ordningen för en ostyrd graf"
+
+msgid ""
+"The Sloan ordering algorithm reorders the vertices of a graph to reduce "
+"bandwidth, profile, and wavefront properties, which is particularly useful "
+"for sparse matrix computations and finite element analysis."
+msgstr ""
+
+msgid "Finds a pseudoperipheral vertex pair to determine good starting points"
+msgstr ""
+
+msgid ""
+"Uses a priority-based algorithm that balances vertex degree and distance "
+"from the start vertex."
+msgstr ""
+
+msgid ""
+"Aims to mininimize bandwidth (maximum difference between connected vertex "
+"indices."
+msgstr ""
+
+msgid ""
+"Typically produces better orderings than simple breadth-first approaches."
+msgstr ""
+
+msgid "Run time is 0.115846 seconds."
+msgstr ""
+
+#, fuzzy
+msgid "|Boost| Boost Graph inside"
+msgstr "|Boost-graf inuti"
+
+#, fuzzy
+msgid "..rubric::Summary"
+msgstr "..rubric:: Standardize SQL"
+
+#, fuzzy
+msgid "pgr_sloanOrdering(`Edges SQL`_)"
+msgstr "pgr_edgeColoring(`Edges SQL`_)"
+
+msgid ":Example : Sloan ordering without specifying start vertex"
+msgstr ""
+
+#, fuzzy
+msgid "New sloan ordering order."
+msgstr "Ny beställning i omvänd ordning."
+
+msgid "Sloan ordering of Original graph from Boost example (vertices 0-9)."
+msgstr ""
+
+msgid "..graphviz::"
+msgstr ""
+
+msgid "..literalinclude::sloanOrdering.queries"
+msgstr ""
+
+msgid "start-after"
+msgstr ""
+
+msgid "--q3"
+msgstr ""
+
+msgid "--q4"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"`Boost: Sloan Ordering <https://www.boost.org/doc/libs/latest/libs/graph/doc/"
+"sloan_ordering.htm>`__"
+msgstr ""
+"`Boost: Färgläggning av kanter <https://www.boost.org/libs/graph/doc/"
+"edge_coloring.html>`__"
+
+#, fuzzy
+msgid ""
+"pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**via vertices**, [**driving side**,] [**options**])"
+msgstr ""
+"pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**via vertices**, **driving side** [**options**])"
+
+#, fuzzy
+msgid "[**driving side**]"
+msgstr "**körning på sidan**"
+
+#, fuzzy
+msgid "For directed graph:"
+msgstr "För en riktad graf."
+
+#, fuzzy
+msgid "[``r``, ``R``] for right driving side"
+msgstr "``R``, ``R`` för höger körsida,"
+
+#, fuzzy
+msgid "[``l``, ``L``] for left driving side"
+msgstr "``L``, ``L`` för vänster körsida."
+
+#, fuzzy
+msgid "For undirected graph:"
+msgstr "Om odelade grafer:"
+
+#, fuzzy
+msgid "[``b``, ``B``] for both driving sides"
+msgstr "``L``, ``L`` för vänster körsida."
+
+msgid "Default values when parameter is missing:"
+msgstr ""
+
+#, fuzzy
+msgid "[``r``, ``R``] for directed graph"
+msgstr "[``b``, ``B``] för båda (endast för oriktad graf)"
+
+#, fuzzy
+msgid "[``l``, ``L``] for undirected graph"
+msgstr "[``b``, ``B``] för båda (endast för oriktad graf)"
+
+#, fuzzy
+msgid ""
+"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**start vid**, **end vid**, [**driving side**,] [**options**])"
+msgstr ""
+"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**start vid**, **end vids**, **driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**start vid**, **end vids**, [**driving side**,] [**options**])"
+msgstr ""
+"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**start vid**, **end vids**, **driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**start vids**, **end vid**, [**driving side**,] [**options**])"
+msgstr ""
+"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**start vid**, **end vids**, **driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**start vids**, **end vids**, [**driving side**,] [**options**])"
+msgstr ""
+"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**start vid**, **end vids**, **driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"`Combinations SQL`_, [**driving side**,] [**options**])"
+msgstr ""
+"pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**via vertices**, **driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
+"[**driving side**] [**options**])"
+msgstr ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
+"**driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
+"[**driving side**] [**options**])"
+msgstr ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
+"**driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
+"[**driving side**] [**options**])"
+msgstr ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
+"**driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, "
+"[**driving side**] [**options**])"
+msgstr ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, "
+"**driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**driving "
+"side**] [**options**])"
+msgstr ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **driving "
+"side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
+"[**driving side**] [**options**])"
+msgstr ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
+"**driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
+"[**driving side**] [**options**])"
+msgstr ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
+"**driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
+"[**driving side**] [**options**])"
+msgstr ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
+"**driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
+"vids**, [**driving side**] [**options**])"
+msgstr ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
+"vids**, **driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
+"[**driving side**] [**options**])"
+msgstr ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
+"**driving side** [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, "
+"[**driving side**] [**options**])"
+msgstr ""
+"pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, "
+"**driving side** [**options**])"
+
+#, fuzzy
+msgid "Using the default ``driving side`` value"
+msgstr "Använda standardvärdet för ``driving_side``"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
+"[**driving side**], [**options A**])"
+msgstr ""
+"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
+"**driving side**, [**options A**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, "
+"[**driving side**], [**options B**])"
+msgstr ""
+"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, "
+"**driving side**, [**options B**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
+"[**driving side**], [**options**])"
+msgstr ""
+"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
+"**driving side**, [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, "
+"[**driving side**], [**options**])"
+msgstr ""
+"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, "
+"**driving side**, [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
+"**K**, [**driving side**], [**options**])"
+msgstr ""
+"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
+"**K**, **driving_side**, [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
+"**K**, [**driving side**], [**options**])"
+msgstr ""
+"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
+"**K**, **driving_side**, [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
+"**K**, [**driving side**], [**options**])"
+msgstr ""
+"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
+"**K**, **driving_side**, [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, "
+"**K**, [**driving side**], [**options**])"
+msgstr ""
+"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, "
+"**K**, **driving_side**, [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, "
+"[**driving side**], [**options**])"
+msgstr ""
+"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, "
+"**driving_side**, [**options**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, [**driving "
+"side**] [**options**])"
+msgstr ""
+"pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, **driving "
+"side** [**options**])"
