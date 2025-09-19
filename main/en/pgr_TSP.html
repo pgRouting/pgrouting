@@ -7,16 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_TSP &#8212; pgRouting Manual (3.8)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <title>pgr_TSP &#8212; pgRouting Manual (4.0-alpha1)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=79c17324"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=27c7622d"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=262773b0"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -46,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.8</b></span>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -164,53 +163,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code></a><ul>
-<li><a class="reference internal" href="#description">Description</a><ul>
-<li><a class="reference internal" href="#problem-definition">Problem Definition</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#signatures">Signatures</a></li>
-<li><a class="reference internal" href="#parameters">Parameters</a><ul>
-<li><a class="reference internal" href="#tsp-optional-parameters">TSP optional parameters</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#matrix-sql">Matrix SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Result columns</a></li>
-<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
-<li><a class="reference internal" href="#start-from-vertex-1">Start from vertex <span class="math notranslate nohighlight">\(1\)</span></a></li>
-<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix">Using points of interest to generate an asymmetric matrix.</a></li>
-<li><a class="reference internal" href="#connected-incomplete-data">Connected incomplete data</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="TSP-family.html" title="Previous Chapter: Traveling Sales Person - Family of functions"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Traveling Sal...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_TSPeuclidean.html" title="Next Chapter: pgr_TSPeuclidean"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_TSPeuclidean &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_TSP','en'));  </script>
             
   <div class="line-block" id="index-0">
@@ -222,35 +175,43 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - Approximation using <em>metric</em> algorithm.</p></li>
 </ul>
 <p class="rubric">Availability:</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>Version 3.2.1</p>
+<li><p>Results change depending on input order</p></li>
+<li><p>Only for undirected graphs</p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
 <ul>
+<li><p>pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double
+precision,double precision,double precision,boolean)</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Version 3.2.1</p>
+<ul class="simple">
 <li><p>Metric Algorithm from <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
 <li><p>Simulated Annealing Algorithm no longer supported</p>
 <ul>
 <li><p>The Simulated Annealing Algorithm related parameters are ignored:
-max_processing_time, tries_per_temperature,
-max_changes_per_temperature, max_consecutive_non_changes,
-initial_temperature, final_temperature, cooling_factor,
-randomize</p></li>
+<cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>,
+<cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>,
+<cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Version 2.3.0</p>
-<ul>
-<li><p>Signature change</p>
-<ul>
+<p class="rubric">Version 2.3.0</p>
+<ul class="simple">
+<li><p>Signature change</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
 <li><p>Old signature no longer supported</p></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>Version 2.0.0</p>
-<ul>
+</div></blockquote>
+<p class="rubric">Version 2.0.0</p>
+<ul class="simple">
 <li><p>Official function.</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -269,22 +230,24 @@ to the origin city?</em></p>
 <li><p>This problem is an NP-hard optimization problem.</p></li>
 <li><p>Metric Algorithm is used</p></li>
 <li><p>Implementation generates solutions that <em>are twice as long as the optimal tour
-in the worst case</em> when:</p>
+in the worst case</em>:</p></li>
+<li><p>Graph characteristics for best performance:</p>
 <ul>
 <li><p>Graph is undirected</p></li>
 <li><p>Graph is fully connected</p></li>
 <li><p>Graph where traveling costs on edges obey the triangle inequality.</p></li>
-</ul>
-</li>
-<li><p>On an undirected graph:</p>
+<li><p>The traveling costs are symmetric:</p>
 <ul>
-<li><p>The traveling costs are symmetric:</p></li>
 <li><p>Traveling costs from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> are just as much as traveling from
 <code class="docutils literal notranslate"><span class="pre">v</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 <ul class="simple">
+<li><p>Results change depending on input order of the <a class="reference internal" href="#matrix-sql">Matrix SQL</a></p></li>
+<li><p>Negative costs are ignored.</p></li>
 <li><p>Can be Used with <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a> functions preferably with
 <cite>directed =&gt; false</cite>.</p>
 <ul>
@@ -340,11 +303,24 @@ triangle inequality.</p></li>
 </li>
 </ul>
 </li>
-<li><p>When the data is incomplete, but it is a connected graph:</p>
+<li><p>When the data does not come from an undirected graph or its not fully
+connected:</p>
 <ul>
-<li><p>the missing values will be calculated with dijkstra algorithm.</p></li>
+<li><p>Missing values will be calculated with dijkstra algorithm.</p></li>
+<li><p>When the graph has more than one component:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> are defined and are on the same component:
+the TSP tour will happen on that component.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> are defined and are not on the same
+component: the TSP tour will propose a tour that has both components
+where connecting costs are estimated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> are not defined: the starting point could be
+on any component and will include data only from that component.</p></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p>One cycle attempt to remove crossing edges is done to the TSP results.</p></li>
 </ul>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
@@ -586,7 +562,7 @@ because:</p>
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_withPointsCostMatrix(
 <span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;,
 <span class="linenos"> 4</span>    &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
-<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6],
+<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6], &#39;r&#39;,
 <span class="linenos"> 6</span>    directed =&gt; true) $$,
 <span class="linenos"> 7</span>  start_id =&gt; 7,
 <span class="linenos"> 8</span>  end_id =&gt; 11);
@@ -691,9 +667,9 @@ value used is taken from <span class="math notranslate nohighlight">\(10 \righta
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on Sep 13, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      Last updated on Sep 19, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

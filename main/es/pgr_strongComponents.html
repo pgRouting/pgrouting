@@ -7,17 +7,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_strongComponents &#8212; pgRouting Manual (3.8)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <title>pgr_strongComponents &#8212; pgRouting Manual (4.0-alpha1)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=0610ec03"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=5816fd0a"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=262773b0"></script>
-    <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -47,7 +46,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.8</b></span>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -152,40 +151,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_strongComponents</span></code></a><ul>
-<li><a class="reference internal" href="#description">Descripción</a></li>
-<li><a class="reference internal" href="#signatures">Firmas</a></li>
-<li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
-<li><a class="reference internal" href="#see-also">Ver también</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_connectedComponents.html" title="Previous Chapter: pgr_connectedComponents"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_connected...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_biconnectedComponents.html" title="Next Chapter: pgr_biconnectedComponents"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_biconnect... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_strongComponents','es'));  </script>
             
   <div class="line-block" id="index-0">
@@ -228,7 +194,7 @@
 </li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -274,8 +240,7 @@
 </pre></div>
 </div>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/scc_sampledata.png"><img alt="_images/scc_sampledata.png" src="_images/scc_sampledata.png" style="width: 237.75px; height: 217.75px;" />
-</a>
+<a class="reference internal image-reference" href="_images/scc_sampledata.png"><img alt="_images/scc_sampledata.png" src="_images/scc_sampledata.png" style="width: 237.75px; height: 217.75px;" /></a>
 </figure>
 </section>
 <section id="parameters">
@@ -414,9 +379,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en sept 13, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      Actualizado por última vez en sept 19, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

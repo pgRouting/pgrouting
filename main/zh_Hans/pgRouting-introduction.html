@@ -7,19 +7,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>介绍 &#8212; pgRouting Manual (3.8)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <title>介绍 &#8212; pgRouting Manual (4.0-alpha1)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=b671dda4"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=73718347"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=262773b0"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
     <link rel="icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
     <link rel="next" title="安装" href="pgRouting-installation.html" />
     <link rel="prev" title="目录" href="index.html" />
 <meta charset='utf-8'>
@@ -45,7 +44,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.8</b></span>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -69,17 +68,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -100,8 +99,8 @@
 <li><a class="reference internal" href="#licensing">许可</a></li>
 <li><a class="reference internal" href="#contributors">贡献者</a><ul>
 <li><a class="reference internal" href="#this-release-contributors">此版本贡献者</a><ul>
-<li><a class="reference internal" href="#individuals-in-this-release-v3-8-x-in-alphabetical-order">Individuals in this release v3.8.x (in alphabetical order)</a></li>
-<li><a class="reference internal" href="#translators-in-alphabetical-order">Translators (in alphabetical order)</a></li>
+<li><a class="reference internal" href="#individuals-in-this-release-v4-0-0-in-alphabetical-order">Individuals in this release v4.0.0 (in alphabetical order)</a></li>
+<li><a class="reference internal" href="#translators-in-alphabetical-order">翻译（按字母顺序排列）</a></li>
 <li><a class="reference internal" href="#corporate-sponsors-in-this-release-in-alphabetical-order">本次发布中的企业赞助商（按字母顺序排列）</a></li>
 </ul>
 </li>
@@ -157,47 +156,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">介绍</a><ul>
-<li><a class="reference internal" href="#licensing">许可</a></li>
-<li><a class="reference internal" href="#contributors">贡献者</a><ul>
-<li><a class="reference internal" href="#this-release-contributors">此版本贡献者</a><ul>
-<li><a class="reference internal" href="#individuals-in-this-release-v3-8-x-in-alphabetical-order">Individuals in this release v3.8.x (in alphabetical order)</a></li>
-<li><a class="reference internal" href="#translators-in-alphabetical-order">Translators (in alphabetical order)</a></li>
-<li><a class="reference internal" href="#corporate-sponsors-in-this-release-in-alphabetical-order">本次发布中的企业赞助商（按字母顺序排列）</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#contributors-past-present">过去与现在的贡献者：</a><ul>
-<li><a class="reference internal" href="#individuals-in-alphabetical-order">个人贡献者（按字母排序）</a></li>
-<li><a class="reference internal" href="#corporate-sponsors-in-alphabetical-order">企业赞助商（按字母顺序排列）</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#more-information">更多信息</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="index.html" title="Previous Chapter: 目录"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 目录</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgRouting-installation.html" title="Next Chapter: 安装"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">安装 &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgRouting-introduction','zh-Hans'));  </script>
             
   <div class="line-block">
@@ -205,8 +164,8 @@
 </div>
 <section id="introduction">
 <h1>介绍<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
-<p>pgRouting 是 <a class="reference external" href="https://postgis.net">PostGIS</a> 和 <a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> 地理空间数据库的扩展，并添加了路由和其他网络分析功能。 pgRouting的前身——pgDijkstra，由`Camptocamp &lt;<a class="reference external" href="https://camptocamp.com">https://camptocamp.com</a>&gt;`__ 的Sylvain Pasche编写，后来被Orkney扩展并更名为pgRouting。 该项目现在得到了 <a class="reference external" href="https://georepublic.info">Georepublic</a> 、<a class="reference external" href="https://www.paragoncorporation.com/">Paragon Corporation</a> 和广大用户社区的支持和维护。</p>
-<p>pgRouting 是 <a class="reference external" href="https://www.osgeo.org">OSGeo Community Projects &lt;https://wiki.osgeo.org/wiki/OSGeo_Community_Projects&gt;`__的一部分，隶属于`OSGeo Foundation</a>，并被包含在`OSGeoLive &lt;<a class="reference external" href="http://live.osgeo.org/">http://live.osgeo.org/</a>&gt;`__。</p>
+<p>pgRouting 是 <a class="reference external" href="https://postgis.net">PostGIS</a> 和 <a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> 地理空间数据库的扩展，并添加了路由和其他网络分析功能。 pgRouting的前身 – pgDijkstra，由 <a class="reference external" href="https://camptocamp.com">Camptocamp</a> 的Sylvain Pasche编写，后来被Orkney扩展并更名为pgRouting。 该项目现在得到了 <a class="reference external" href="https://georepublic.info">Georepublic</a> 、 <a class="reference external" href="https://www.paragoncorporation.com/">Paragon Corporation</a> 和广大用户社区的支持和维护。</p>
+<p>pgRouting 是 <a class="reference external" href="https://wiki.osgeo.org/wiki/OSGeo_Community_Projects">OSGeo Community Projects</a> 的一部分，隶属于 <a class="reference external" href="https://www.osgeo.org">OSGeo Foundation</a> ，并被包含在 <a class="reference external" href="http://live.osgeo.org/">OSGeoLive</a> 。</p>
 <section id="licensing">
 <span id="license"></span><h2>许可<a class="headerlink" href="#licensing" title="Link to this heading">¶</a></h2>
 <p>可以在 pgRouting 中找到以下许可证：</p>
@@ -220,16 +179,16 @@
 <td></td>
 </tr>
 <tr class="row-even"><td><p>GNU 通用公共许可证 v2.0 或更高版本</p></td>
-<td><p>pgRouting 的大多数功能都可以在` GNU 通用公共许可证 v2.0 或更高版本 &lt;<a class="reference external" href="https://spdx.org/licenses/GPL-2.0-or-later.html">https://spdx.org/licenses/GPL-2.0-or-later.html</a>&gt;`_ 下使用。</p></td>
+<td><p>pgRouting 的大多数功能都可以在 <a class="reference external" href="https://spdx.org/licenses/GPL-2.0-or-later.html">GNU General Public License v2.0 or later</a> 。</p></td>
 </tr>
 <tr class="row-odd"><td><p>Boost 软件许可证 - 版本 1.0</p></td>
-<td><p>一些 Boost 扩展可根据` Boost 软件许可证 - 版本 1.0 获得 &lt;<a class="reference external" href="https://www.boost.org/LICENSE_1_0.txt">https://www.boost.org/LICENSE_1_0.txt</a>&gt;`_。</p></td>
+<td><p>一些 Boost 扩展可根据 <a class="reference external" href="https://www.boost.org/LICENSE_1_0.txt">Boost Software License - Version 1.0</a> 。</p></td>
 </tr>
 <tr class="row-even"><td><p>MIT-X License</p></td>
 <td><p>iMaptools.com 贡献的一些代码可在 MIT-X 许可证下使用。</p></td>
 </tr>
 <tr class="row-odd"><td><p>知识共享署名 - 相同方式共享 3.0 许可证</p></td>
-<td><p>pgRouting 手册根据`知识共享署名-相同方式共享 3.0 许可证获得许可 &lt;<a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">https://creativecommons.org/licenses/by-sa/3.0/</a>&gt;`_。</p></td>
+<td><p>pgRouting 手册根据 <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">知识共享署名-相同方式共享 3.0 许可证获得许可</a> 。</p></td>
 </tr>
 </tbody>
 </table>
@@ -239,20 +198,33 @@
 <h2>贡献者<a class="headerlink" href="#contributors" title="Link to this heading">¶</a></h2>
 <section id="this-release-contributors">
 <h3>此版本贡献者<a class="headerlink" href="#this-release-contributors" title="Link to this heading">¶</a></h3>
-<section id="individuals-in-this-release-v3-8-x-in-alphabetical-order">
-<h4>Individuals in this release v3.8.x (in alphabetical order)<a class="headerlink" href="#individuals-in-this-release-v3-8-x-in-alphabetical-order" title="Link to this heading">¶</a></h4>
-<p>Aurélie Bousquet,
+<section id="individuals-in-this-release-v4-0-0-in-alphabetical-order">
+<h4>Individuals in this release v4.0.0 (in alphabetical order)<a class="headerlink" href="#individuals-in-this-release-v4-0-0-in-alphabetical-order" title="Link to this heading">¶</a></h4>
+<p>Bipasha Gayary,
+Fan Wu,
 Regina Obe,
+Saloni kumari,
 Vicky Vergara</p>
-<p>还有所有为我们的产品（osm2pgrouting、pgRouting、pgRoutingLayer、workshop）提供意见、发现问题、提出拉取请求等的人们。</p>
+<p>还有所有为我们的产品（osm2pgrouting、pgRouting、pgRoutingLayer、workshop）提供意见、发现问题、提出拉取请求等帮助的开发者。</p>
 </section>
 <section id="translators-in-alphabetical-order">
-<h4>Translators (in alphabetical order)<a class="headerlink" href="#translators-in-alphabetical-order" title="Link to this heading">¶</a></h4>
-<p>Dapeng Wang</p>
+<h4>翻译（按字母顺序排列）<a class="headerlink" href="#translators-in-alphabetical-order" title="Link to this heading">¶</a></h4>
+<p>Chinese:</p>
+<ul class="simple">
+<li><p>Dapeng Wang</p></li>
+</ul>
+<p>Spanish:</p>
+<ul class="simple">
+<li><p>Vicky Vergara</p></li>
+</ul>
+<p>Swedish:</p>
+<ul class="simple">
+<li><p>Daniel Nylander</p></li>
+</ul>
 </section>
 <section id="corporate-sponsors-in-this-release-in-alphabetical-order">
 <h4>本次发布中的企业赞助商（按字母顺序排列）<a class="headerlink" href="#corporate-sponsors-in-this-release-in-alphabetical-order" title="Link to this heading">¶</a></h4>
-<p>这些是为 pgRouting 项目贡献了开发人员时间、托管或直接货币资金的公司实体：</p>
+<p>这些是为 pgRouting 项目贡献了开发人员时间、托管或直接提供资金的公司实体：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.osgeo.org">OSGeo</a></p></li>
 <li><p><a class="reference external" href="https://uk.osgeo.org">OSGeo UK</a></p></li>
@@ -278,6 +250,7 @@ Aryan Gupta,
 Ashraf Hossain,
 Ashish Kumar,
 Aurélie Bousquet,
+Bipasha Gayary,
 Cayetano Benavent,
 Christian Gonzalez,
 Daniel Kastl,
@@ -287,6 +260,7 @@ David Techer,
 Denis Rykov,
 Ema Miyawaki,
 Esteban Zimanyi,
+Fan Wu,
 Florian Thurkow,
 Frederic Junod,
 Gerald Fenoy,
@@ -313,6 +287,7 @@ Rajat Shinde,
 Razequl Islam,
 Regina Obe,
 Rohith Reddy,
+Saloni Kumari,
 Sarthak Agarwal,
 Shobhit Chaurasia,
 Sourabh Garg,
@@ -327,7 +302,7 @@ Yige Huang</p>
 </section>
 <section id="corporate-sponsors-in-alphabetical-order">
 <h4>企业赞助商（按字母顺序排列）<a class="headerlink" href="#corporate-sponsors-in-alphabetical-order" title="Link to this heading">¶</a></h4>
-<p>这些是为 pgRouting 项目贡献了开发人员时间、托管或直接货币资金的公司实体：</p>
+<p>这些是为 pgRouting 项目贡献了开发人员时间、托管或直接提供资金的公司实体：</p>
 <ul class="simple">
 <li><p>Camptocamp</p></li>
 <li><p>CSIS (University of Tokyo)</p></li>
@@ -369,9 +344,9 @@ Yige Huang</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 9月 13, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      最后更新于 9月 19, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

@@ -7,16 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_contractionLinear - Proposed &#8212; pgRouting Manual (3.8)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <title>pgr_contractionLinear - Proposed &#8212; pgRouting Manual (4.0-alpha1)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=79c17324"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=27c7622d"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=262773b0"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -46,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.8</b></span>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -169,58 +168,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionLinear</span></code> - Proposed</a><ul>
-<li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a></li>
-<li><a class="reference internal" href="#parameters">Parameters</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
-<li><a class="reference internal" href="#contraction-optional-parameters">Contraction optional parameters</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Result columns</a></li>
-<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
-<li><a class="reference internal" href="#linear-edges">Linear edges</a></li>
-<li><a class="reference internal" href="#linearity-is-not-symmetrical">Linearity is not symmetrical</a></li>
-<li><a class="reference internal" href="#linearity-is-symmetrical">Linearity is symmetrical</a></li>
-<li><a class="reference internal" href="#step-by-step-linear-contraction">Step by step linear contraction</a></li>
-<li><a class="reference internal" href="#creating-the-contracted-graph">Creating the contracted graph</a><ul>
-<li><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph">Steps for the creation of the contracted graph</a></li>
-<li><a class="reference internal" href="#the-contracted-graph">The contracted graph</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph">Using when departure and destination are in the contracted graph</a></li>
-<li><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph">Using when departure/destination is not in the contracted graph</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_contractionDeadEnd.html" title="Previous Chapter: pgr_contractionDeadEnd - Proposed"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contracti...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_contractionHierarchies.html" title="Next Chapter: pgr_contractionHierarchies - Experimental"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_contractionLinear','en'));  </script>
             
   <div class="line-block" id="index-0">
@@ -303,7 +251,7 @@ edges decreasing the total time and space used in graph algorithms.</p>
 </li>
 <li><p>The red lines will be new edges of the contracted graph.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-069192ad4349ef79e70153b36d4506142c52a931.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-249b3ec8d7cd844e48abfa82a9d5121eafdb3246.png" alt="graph G {
   splines=false;
   3,15,17 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,2,4,5,6,7,8,9,10,11,12,13,14,16 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
@@ -543,14 +491,14 @@ it’s not part of the graph.</p></li>
 <ul class="simple">
 <li><p>The number of adjacent vertices is 2.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-c915ca43812bfb7afeeffd1d2f7e072f6593f696.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-93d86210e6e87060c533d020412da84b33f6cfa3.png" alt="graph G {
   label = &quot;Linear edges&quot;
   2 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
   1 -- 2 -- 3 -- 2;
   1 [pos=&quot;0,2!&quot;];   2 [pos=&quot;1,2!&quot;];   3 [pos=&quot;2,2!&quot;];
 }" class="graphviz" /></div>
-<div class="graphviz"><img src="_images/graphviz-80d04e0ac46c2ac58db33ed33833b8376ea87eef.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-696bc15bbec94b0747f2de898c3a7f594133cf6d.png" alt="graph G {
   label = &quot;Non linear edges&quot;
   4,5,6,7 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
   4 -- 5 -- 6 -- 5; 5 --7;
@@ -562,14 +510,14 @@ it’s not part of the graph.</p></li>
 <li><p>The number of adjacent vertices is 2.</p></li>
 <li><p>Linearity is symmetrical.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-ec0146321e74ae314bab5090db3f7e72f2fa1f65.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-764f2c596d8081e8b639553d3eb670dd29e13eef.png" alt="digraph G {
   label = &quot;Linearity is symmetrical.&quot;
   2 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
   1 -&gt; 2 -&gt; 3 -&gt; 2 -&gt; 1;
   1 [pos=&quot;0,2!&quot;];   2 [pos=&quot;1,2!&quot;];   3 [pos=&quot;2,2!&quot;];
 }" class="graphviz" /></div>
-<div class="graphviz"><img src="_images/graphviz-93233ecad7b6cf2ed672bd846f53b9d50a980a50.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-130cddbfe2305ecbdcc8eccad91d0370c5aa75d0.png" alt="digraph G {
   label = &quot;Linearity is not symmetrical.&quot;
   2 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
@@ -581,7 +529,7 @@ it’s not part of the graph.</p></li>
 <h3><a class="toc-backref" href="#id3" role="doc-backlink">Linearity is not symmetrical</a><a class="headerlink" href="#linearity-is-not-symmetrical" title="Link to this heading">¶</a></h3>
 <p class="rubric">Directed graph</p>
 <p>Graph where linearity is not symmetrical.</p>
-<div class="graphviz"><img src="_images/graphviz-2956b8517f0df69088225a55990846dbb9ae75e4.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-41179398a6e44ad375b2b4d44ae815720427fa14.png" alt="digraph G {
   2 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
 
@@ -608,7 +556,7 @@ $$SELECT * FROM (VALUES
 <p class="rubric">Undirected graph</p>
 <p>When the same graph is processed as an undirected graph, linearity is symmetrical,
 therefore the graph can be contracted.</p>
-<div class="graphviz"><img src="_images/graphviz-946e80eb77cb0529d96e6199cc314eac3c039ad6.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-fd3ee2a4fd315478a6823b77b23bb8bb961f128f.png" alt="graph G {
   2 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
   1 -- 2 [label=&quot;1&quot;,fontsize=8];
@@ -638,7 +586,7 @@ $$SELECT * FROM (VALUES
 </ul>
 </li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-d625f5035052b5ad79de074aa489048c0241ff78.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-bf78c995ae58c5a0f886631556ad203803a07ef7.png" alt="graph G {
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
   1 -- 3 [label=&quot;4, {2}&quot;,fontsize=8;color=red];
   1 [pos=&quot;0,2!&quot;]; 3 [pos=&quot;2,2!&quot;];
@@ -648,7 +596,7 @@ $$SELECT * FROM (VALUES
 <h3><a class="toc-backref" href="#id4" role="doc-backlink">Linearity is symmetrical</a><a class="headerlink" href="#linearity-is-symmetrical" title="Link to this heading">¶</a></h3>
 <p class="rubric">Directed graph</p>
 <p>Graph where linearity is symmetrical.</p>
-<div class="graphviz"><img src="_images/graphviz-49002a1065b9c5bc7564f25175a447b0cccd5c80.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-3746f02b90d7092fb27548d5c395ad9369cc629d.png" alt="digraph G {
   2 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
 
@@ -690,7 +638,7 @@ $$SELECT * FROM (VALUES
 </ul>
 </li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-6f75bf8e66681aa20c069d3ead197ce9e62f267c.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-bcfbe65fbcc43213dce7fa15de9627ba78e17c51.png" alt="digraph G {
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
 
   1 -&gt; 3 [label=&quot;4, {2}&quot;,fontsize=8;color=red];
@@ -701,7 +649,7 @@ $$SELECT * FROM (VALUES
 <p class="rubric">Undirected graph</p>
 <p>When the same graph is processed as an undirected graph, linearity is symmetrical,
 therefore the graph can be contracted.</p>
-<div class="graphviz"><img src="_images/graphviz-4772c46a98d0df937b2ce4687655644d65810756.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-3bdb379cd6a4acbe75c1b38505fadf7555821a49.png" alt="graph G {
   2 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
   1 -- 2 [label=&quot;1&quot;,fontsize=8];
@@ -732,7 +680,7 @@ $$SELECT * FROM (VALUES
 </ul>
 </li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-6bec6c1f2e220906e102c9d21ef8783219c7ec42.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-9a8776a854b6651bfcb28fc2482ce979c72ce1d4.png" alt="graph G {
   1,3 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
 
   1 -- 3 [label=&quot;4, {2}&quot;,fontsize=8;color=red];
@@ -744,7 +692,7 @@ $$SELECT * FROM (VALUES
 <h3><a class="toc-backref" href="#id5" role="doc-backlink">Step by step linear contraction</a><a class="headerlink" href="#step-by-step-linear-contraction" title="Link to this heading">¶</a></h3>
 <p>The linear contraction will stop when there are no more linear edges.
 For example from the following graph there are linear edges</p>
-<div class="graphviz"><img src="_images/graphviz-6567892805665a7ce5981b1a08fc9041d392b59b.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-096741a0068557b4dd13ada8e0a3348b23b06957.png" alt="digraph G {
     1, 2, 3, 4, G [fontsize=8;fixedsize=true;style=filled];
     1, 2, 3, 4 [shape=circle];
     1, 4 [color=deepskyblue];
@@ -764,7 +712,7 @@ For example from the following graph there are linear edges</p>
 from the graph.</p></li>
 <li><p>A new edge <span class="math notranslate nohighlight">\(2 \rightarrow 4\)</span> is inserted represented with red color.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-9979db882d187d41972ef525a3409d772accfd18.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-af961067ccf49cfa971c5542e58cc23f9785c0f0.png" alt="digraph G {
     1, 2, 4, G [fontsize=8;fixedsize=true;style=filled];
     1, 2, 4 [shape=circle];
     1, 4 [color=deepskyblue];
@@ -783,7 +731,7 @@ from the graph.</p></li>
 from the graph.</p></li>
 <li><p>A new edge <span class="math notranslate nohighlight">\(1 \rightarrow 3\)</span> is inserted represented with red color.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-db2920cace480487d7d9f480027b6e67177e2663.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-cebb70cdb2d798d311f379a035a50aff266e1da0.png" alt="digraph G {
     1, 4, G [fontsize=8;fixedsize=true;style=filled];
     1, 4 [shape=circle];
     1, 4 [color=deepskyblue];
@@ -901,7 +849,7 @@ $$SELECT * FROM (VALUES
 
 </pre></div>
 </div>
-<div class="graphviz"><img src="_images/graphviz-0539f2097024ee3664e745ed5dadc5882fc6bb36.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-b9066c51369be6253decbc48d5ac45d0149aa2ed.png" alt="graph G {
   splines=false;
   1,2,4,5,6,7,8,9,10,11,12,13,14,16 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
 
@@ -941,7 +889,7 @@ $$SELECT * FROM (VALUES
 
 </pre></div>
 </div>
-<div class="graphviz"><img src="_images/graphviz-a3f31bc8a0a6461912a48c178829e7fd344a7244.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-d08c93375d34a312cd973c391eae8cf89f707705.png" alt="graph G {
   splines=false;
   1,2,4,5,6,7,8,9,10,11,12,13,14,16 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
 
@@ -990,7 +938,7 @@ $$SELECT * FROM (VALUES
 
 </pre></div>
 </div>
-<div class="graphviz"><img src="_images/graphviz-083b6038b8df39caaf7f1ed454f2e4c2a8921297.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-444f86b4008dbeec7a252d5bb7c5a7e7f9983efa.png" alt="graph G {
   17 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,2,4,5,6,7,8,9,10,11,12,13,14,16 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
 
@@ -1042,9 +990,9 @@ $$SELECT * FROM (VALUES
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on Sep 13, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      Last updated on Sep 19, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

@@ -5,16 +5,19 @@ function createInfo(file, newat, altnames = '', removedat = '') {
     this.removedat = removedat;
 }
 
-const versionsArr = ['3.8','3.7', '3.6', '3.5', '3.4', '3.3', '3.2', '3.1', '3.0'];
-var unsuportedArr = ['2.6', '2.5', '2.4', '2.3', '2.2', '2.1', '2.0'];
+const versionsArr = ['4.0'];
+var unsuportedArr = ['3.8','3.7', '3.6', '3.5', '3.4', '3.3', '3.2', '3.1', '3.0','2.6', '2.5', '2.4', '2.3', '2.2', '2.1', '2.0'];
 var titles = [
     {k: 'en', v: ['Supported versions', 'Unsupported versions']},
     {k: 'es', v: ['Versiones soportadas', 'Versiones no soportadas']},
+    {k: 'sv', v: ['understödda versioner', 'Viversioner som inte stöds']},
     {k: 'zh-Hans', v: ['Supported versions', 'Unsupported versions']},
 ];
 
 
 var newpages = [
+    {v: '4.0', pages: ['pgr_bandwidth', 'pgr_kingOrdering', 'pgr_sloanOrdering']},
+
     {v: '3.8', pages: ['pgr_contractionDeadEnd', 'pgr_contractionLinear', 'pgr_separateCrossing',
         'pgr_separateTouching']},
 
@@ -207,29 +210,10 @@ var filesArr = [
         { v: '2.1', n: 'src/apsp_johnson/doc/index'},
         { v: '2.3', n: 'src/allpairs/doc/pgr_johnson'}
     ]),
-    new createInfo('pgr_nodeNetwork', '2.0', [
-        { v: '2.1', n: 'src/common/doc/functions/node_network'},
-        { v: '2.3', n: 'src/topology/doc/pgr_nodeNetwork'} , 3.8,
-    ]),
-    new createInfo('topology-functions', '2.0', [
+    new createInfo('utilities-family', '2.0', [
         { v: '2.1', n: 'src/common/doc/functions/index'},
         { v: '2.3', n: 'src/topology/doc/topology'},
-    ]),
-    new createInfo('pgr_createVerticesTable', '2.0', [
-        { v: '2.1', n: 'src/common/doc/functions/create_vert_table'},
-        { v: '2.3', n: 'src/topology/doc/pgr_createVerticesTable'}, 3.8
-    ]),
-    new createInfo('pgr_createTopology', '2.0', [
-        { v: '2.1', n: 'src/common/doc/functions/create_topology'},
-        { v: '2.3', n: 'src/topology/doc/pgr_createTopology'}, 3.8
-    ]),
-    new createInfo('pgr_analyzeOneWay', '2.0', [
-        { v: '2.1', n: 'src/common/doc/functions/analyze_oneway'},
-        { v: '2.3', n: 'src/topology/doc/pgr_analyzeOneWay'}, 3.8
-    ]),
-    new createInfo('pgr_analyzeGraph', '2.0', [
-        { v: '2.1', n: 'src/common/doc/functions/analyze_graph'},
-        { v: '2.3', n: 'src/topology/doc/pgr_analyzeGraph'},
+        { v: '3.8', n: 'topology-functions'},
     ]),
     new createInfo('pgRouting-concepts', '2.0', [
         { v: '2.3', n: 'doc/src/tutorial/tutorial'},
@@ -259,6 +243,27 @@ var filesArr = [
         { v: '2.0', n: 'src/driving_distance/doc/dd_driving_distance'},
         { v: '2.1', n: 'src/driving_distance/doc/dd_driving_distance_v3'},
         { v: '2.3', n: 'src/driving_distance/doc/pgr_drivingDistance'}
+    ]),
+
+    new createInfo('pgr_nodeNetwork', '2.0', [
+        { v: '2.1', n: 'src/common/doc/functions/node_network'},
+        { v: '2.3', n: 'src/topology/doc/pgr_nodeNetwork'}, 3.8
+    ]),
+    new createInfo('pgr_createVerticesTable', '2.0', [
+        { v: '2.1', n: 'src/common/doc/functions/create_vert_table'},
+        { v: '2.3', n: 'src/topology/doc/pgr_createVerticesTable'}, 3.8
+    ]),
+    new createInfo('pgr_createTopology', '2.0', [
+        { v: '2.1', n: 'src/common/doc/functions/create_topology'},
+        { v: '2.3', n: 'src/topology/doc/pgr_createTopology'}, 3.8
+    ]),
+    new createInfo('pgr_analyzeOneWay', '2.0', [
+        { v: '2.1', n: 'src/common/doc/functions/analyze_oneway'},
+        { v: '2.3', n: 'src/topology/doc/pgr_analyzeOneWay'}, 3.8
+    ]),
+    new createInfo('pgr_analyzeGraph', '2.0', [
+        { v: '2.1', n: 'src/common/doc/functions/analyze_graph'},
+        { v: '2.3', n: 'src/topology/doc/pgr_analyzeGraph'}, 3.8
     ]),
     new createInfo('pgr_alphaShape', '2.0', [
         { v: '2.1', n: 'src/driving_distance/doc/dd_alphashape'},
@@ -319,9 +324,6 @@ function get_history(name, lang) {
         if (versionsArr[i] < data.newat) break;
         if (data.removedat != '' && versionsArr[i] > data.newat) break;
 
-        /* for zh-Hans non translated versions use english */
-        validlang = (lang == 'zh-Hans' && versionsArr[i] >= '3.7')? 'zh_Hans' : 'en';
-
         let link = `${home}${versionsArr[i]}/`
         link += get_vdata(data.altnames, versionsArr[i], data.file, validlang);
         if (versionsArr[i] == latest) result += '(' + link + ') ';
@@ -338,6 +340,10 @@ function get_history(name, lang) {
 
             /* for spanish non translated versions use english */
             validlang = (lang == 'es' && unsuportedArr[i] == '2.0')? 'es' : validlang;
+            /* for zh-Hans non translated versions use english */
+            validlang = (lang == 'zh-Hans' && versionsArr[i] >= '3.7')? 'zh_Hans' : 'en';
+            /* for swedish non translated versions use english */
+            validlang = (lang == 'sv' && versionsArr[i] >= '4.0')? 'sv' : 'en';
 
             if (data.newat > unsuportedArr[i]) break;
             var link = home + unsuportedArr[i] + '/';
@@ -347,4 +353,3 @@ function get_history(name, lang) {
     }
     return result;
 }
-

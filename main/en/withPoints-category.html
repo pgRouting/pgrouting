@@ -7,16 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>withPoints - Category &#8212; pgRouting Manual (3.8)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <title>withPoints - Category &#8212; pgRouting Manual (4.0-alpha1)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=79c17324"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=27c7622d"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=262773b0"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -46,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.8</b></span>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -75,8 +74,8 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
@@ -170,59 +169,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">withPoints - Category</a><ul>
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#parameters">Parameters</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
-<li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#advanced-documentation">Advanced documentation</a><ul>
-<li><a class="reference internal" href="#about-points">About points</a></li>
-<li><a class="reference internal" href="#driving-side">Driving side</a><ul>
-<li><a class="reference internal" href="#right-driving-side">Right driving side</a></li>
-<li><a class="reference internal" href="#left-driving-side">Left driving side</a></li>
-<li><a class="reference internal" href="#driving-side-does-not-matter">Driving side does not matter</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#creating-temporary-vertices">Creating temporary vertices</a><ul>
-<li><a class="reference internal" href="#on-a-right-hand-side-driving-network">On a right hand side driving network</a></li>
-<li><a class="reference internal" href="#on-a-left-hand-side-driving-network">On a left hand side driving network</a></li>
-<li><a class="reference internal" href="#when-driving-side-does-not-matter">When driving side does not matter</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_vrpOneDepot.html" title="Previous Chapter: pgr_vrpOneDepot - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_vrpOneDep...</span>
-    </a>
-  </li>
-  <li>
-    <a href="proposed.html" title="Next Chapter: Proposed Functions"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Proposed Functions &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('withPoints-category','en'));  </script>
             
   <div class="line-block" id="index-0">
@@ -231,33 +178,12 @@
 <section id="withpoints-category">
 <h1>withPoints - Category<a class="headerlink" href="#withpoints-category" title="Link to this heading">¶</a></h1>
 <p>When points are added to the graph.</p>
-<div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="69a3f41a-7e72-4bae-976a-cdb7221273d5" name="69a3f41a-7e72-4bae-976a-cdb7221273d5" type="checkbox"><label class="sphinx_collapse__label" for="69a3f41a-7e72-4bae-976a-cdb7221273d5"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Proposed functions for next mayor release.</p>
-<ul class="simple">
-<li><p>They are not officially in the current release.</p></li>
-<li><p>They will likely officially be part of the next mayor release:</p>
-<ul>
-<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
-<li><p>Name might not change. (But still can)</p></li>
-<li><p>Signature might not change. (But still can)</p></li>
-<li><p>Functionality might not change. (But still can)</p></li>
-<li><p>pgTap tests have being done. But might need more.</p></li>
-<li><p>Documentation might need refinement.</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Family of functions</span></a> - Functions based on Dijkstra algorithm.</p></li>
 <li><p>From the <a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Family of functions</span></a>:</p>
 <ul>
-<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> - Vertex/Point routing with restrictions.</p></li>
-<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a> - Via Vertex/point routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a> - Vertex/Point routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a> - Via Vertex/point routing with restrictions.</p></li>
 </ul>
 </li>
 </ul>
@@ -375,6 +301,39 @@ identifiers.</p></td>
 </tr>
 </tbody>
 </table>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 19.4%" />
+<col style="width: 19.4%" />
+<col style="width: 61.1%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>[<strong>driving side</strong>]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] indicating if the driving side is:</p>
+<ul class="simple">
+<li><p>For directed graph:</p>
+<ul>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>] for right driving side</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>] for left driving side</p></li>
+</ul>
+</li>
+<li><p>For undirected graph:</p>
+<ul>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] for both driving sides</p></li>
+</ul>
+</li>
+<li><p>Default values when parameter is missing:</p>
+<ul>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>] for directed graph</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>] for undirected graph</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <section id="optional-parameters">
 <h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
@@ -392,21 +351,11 @@ identifiers.</p></td>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
-<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>] indicating if the driving side is:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> for right driving side</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> for left driving side</p></li>
-<li><p>Any other value will be considered as <code class="docutils literal notranslate"><span class="pre">r</span></code></p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">details</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">details</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><ul class="simple">
+<td><p>For showing points stops.</p>
+<ul class="simple">
 <li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the results will include the points that are in the path.</p></li>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the results will not include the points that are in the
 path.</p></li>
@@ -516,7 +465,7 @@ automatically.</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>Value in &lt;0,1&gt; that indicates the relative postition from the first end
+<td><p>Value in &lt;0,1&gt; that indicates the relative position from the first end
 point of the edge.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
@@ -603,8 +552,7 @@ point of the edge.</p></td>
 points such as restaurant, supermarket, post office, etc. will be used as
 example.</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" />
-</a>
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
 </figure>
 <ul class="simple">
 <li><p>The graph is <strong>directed</strong></p></li>
@@ -621,13 +569,14 @@ example.</p>
 </ul>
 <p>The representation on the data base follows the <a class="reference internal" href="#points-sql">Points SQL</a> description, and
 for this example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">side</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">side</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">pid</span><span class="p">;</span>
  <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span> <span class="n">side</span>
 <span class="o">-----+---------+----------+------</span>
    <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">l</span>
-   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">0.3</span> <span class="o">|</span> <span class="n">r</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>      <span class="mf">0.6</span> <span class="o">|</span> <span class="n">l</span>
    <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">r</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>      <span class="mf">0.6</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">0.3</span> <span class="o">|</span> <span class="n">r</span>
    <span class="mi">5</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>      <span class="mf">0.8</span> <span class="o">|</span> <span class="n">l</span>
    <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mf">0.7</span> <span class="o">|</span> <span class="n">b</span>
 <span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
@@ -646,8 +595,7 @@ is interpreted.</p></li>
 </ul>
 <section id="right-driving-side">
 <h4><a class="toc-backref" href="#id3" role="doc-backlink">Right driving side</a><a class="headerlink" href="#right-driving-side" title="Link to this heading">¶</a></h4>
-<a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" />
-</a>
+<a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" /></a>
 <ul class="simple">
 <li><p>Point <strong>1</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">5)</span></code></p></li>
 <li><p>Point <strong>2</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code></p></li>
@@ -659,8 +607,7 @@ is interpreted.</p></li>
 </section>
 <section id="left-driving-side">
 <h4><a class="toc-backref" href="#id4" role="doc-backlink">Left driving side</a><a class="headerlink" href="#left-driving-side" title="Link to this heading">¶</a></h4>
-<a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" />
-</a>
+<a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" /></a>
 <ul class="simple">
 <li><p>Point <strong>1</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">6)</span></code></p></li>
 <li><p>Point <strong>2</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code></p></li>
@@ -677,8 +624,7 @@ is interpreted.</p></li>
 <li><p>Preferred usage on <strong>undirected</strong> graphs</p></li>
 <li><p>On the <a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Family of functions</span></a> this option is not valid</p></li>
 </ul>
-<a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" />
-</a>
+<a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" /></a>
 <ul class="simple">
 <li><p>Point <strong>1</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">6)</span></code> and <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">5)</span></code></p></li>
 <li><p>Point <strong>2</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)``and</span> <span class="pre">``16,</span> <span class="pre">17</span></code></p></li>
@@ -717,8 +663,7 @@ the graph.</p>
 <section id="on-a-right-hand-side-driving-network">
 <h4><a class="toc-backref" href="#id7" role="doc-backlink">On a right hand side driving network</a><a class="headerlink" href="#on-a-right-hand-side-driving-network" title="Link to this heading">¶</a></h4>
 <p class="rubric">Right driving side</p>
-<a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" />
-</a>
+<a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" /></a>
 <ul class="simple">
 <li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achieved only via vertex <strong>16</strong>.</p></li>
 <li><p>Does not affects edge <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>, therefore the edge is kept.</p></li>
@@ -737,8 +682,7 @@ the graph.</p>
 <section id="on-a-left-hand-side-driving-network">
 <h4><a class="toc-backref" href="#id8" role="doc-backlink">On a left hand side driving network</a><a class="headerlink" href="#on-a-left-hand-side-driving-network" title="Link to this heading">¶</a></h4>
 <p class="rubric">Left driving side</p>
-<a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" />
-</a>
+<a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" /></a>
 <ul class="simple">
 <li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achieved only via vertex <strong>17</strong>.</p></li>
 <li><p>Does not affects edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code>, therefore the edge is kept.</p></li>
@@ -769,8 +713,7 @@ the graph.</p></li>
 </section>
 <section id="when-driving-side-does-not-matter">
 <h4><a class="toc-backref" href="#id9" role="doc-backlink">When driving side does not matter</a><a class="headerlink" href="#when-driving-side-does-not-matter" title="Link to this heading">¶</a></h4>
-<a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" />
-</a>
+<a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" /></a>
 <ul class="simple">
 <li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achieved via vertices <strong>16</strong> or <strong>17</strong>.</p></li>
 <li><p>Affects the edges <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> and <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>, therefore the edges are removed.</p></li>
@@ -826,9 +769,9 @@ the graph.</p></li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on Sep 13, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      Last updated on Sep 19, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

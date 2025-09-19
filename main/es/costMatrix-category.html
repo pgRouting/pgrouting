@@ -7,17 +7,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Cost Matrix - Categoría &#8212; pgRouting Manual (3.8)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <title>Cost Matrix - Categoría &#8212; pgRouting Manual (4.0-alpha1)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=0610ec03"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=5816fd0a"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=262773b0"></script>
-    <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -47,7 +46,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.8</b></span>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -159,47 +158,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Cost Matrix - Categoría</a><ul>
-<li><a class="reference internal" href="#general-information">Información general</a><ul>
-<li><a class="reference internal" href="#synopsis">Sinopsis</a></li>
-<li><a class="reference internal" href="#characteristics">Características</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-<li><a class="reference internal" href="#points-sql">SQL de puntos</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
-<li><a class="reference internal" href="#see-also">Ver también</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="cost-category.html" title="Previous Chapter: Costo - Categoría"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Costo - Categoría</span>
-    </a>
-  </li>
-  <li>
-    <a href="DFS-category.html" title="Next Chapter: DFS - Categoría"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">DFS - Categoría &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('costMatrix-category','es'));  </script>
             
   <div class="line-block" id="index-0">
@@ -212,30 +171,7 @@
 <li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a></p></li>
-</ul>
-<div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="ac926209-f4ea-4d80-8322-63a5e1565cde" name="ac926209-f4ea-4d80-8322-63a5e1565cde" type="checkbox"><label class="sphinx_collapse__label" for="ac926209-f4ea-4d80-8322-63a5e1565cde"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
-<div class="admonition warning">
-<p class="admonition-title">Advertencia</p>
-<p>Funciones propuestas para la próxima versión mayor.</p>
-<ul class="simple">
-<li><p>No están oficialmente en la versión actual.</p></li>
-<li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
-<ul>
-<li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
-<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
-<li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
-<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
-<li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
-<li><p>Es posible que la documentación necesite un refinamiento.</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix - Propiesto</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a></p></li>
 </ul>
 <section id="general-information">
 <h2>Información general<a class="headerlink" href="#general-information" title="Link to this heading">¶</a></h2>
@@ -327,7 +263,7 @@
 </table>
 <p class="rubric">Usado en:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix - Propiesto</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a></p></li>
 </ul>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -381,7 +317,7 @@
 <h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
 <p class="rubric">Usado en:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix - Propiesto</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a></p></li>
 </ul>
 <table class="docutils align-default" style="width: 81">
@@ -476,7 +412,7 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>El valor en &lt;0,1&gt; que indica la posición relativa desde el primer punto de la arista.</p></td>
+<td><p>El valor en &lt;0,1&gt; que indica la posición relativa desde el primer punto final de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
@@ -558,9 +494,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en sept 13, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      Actualizado por última vez en sept 19, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

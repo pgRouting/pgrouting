@@ -1,0 +1,811 @@
+
+
+<!DOCTYPE html>
+
+<html lang="sv" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_grad &#8212; pgRouting Manual (4.0-alpha1)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=6ca8ab9b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
+    <script src="_static/translations.js?v=92a62177"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Sök" href="search.html" />
+    <link rel="next" title="pgr_betweennessCentrality - Experimentell" href="pgr_betweennessCentrality.html" />
+    <link rel="prev" title="Metrics - Familj av funktioner" href="metrics-family.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduktion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Exempeldata</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting-koncept</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Funktionsfamiljer</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Föreslagna funktioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Anteckningar för release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migrationsguide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_grad</span></code></a><ul>
+<li><a class="reference internal" href="#description">Beskrivning</a></li>
+<li><a class="reference internal" href="#signatures">Underskrifter</a><ul>
+<li><a class="reference internal" href="#edges">Kanter</a></li>
+<li><a class="reference internal" href="#edges-and-vertices">Kanter och toppar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameters">Parametrar</a></li>
+<li><a class="reference internal" href="#optional-parameters">Valfria parametrar</a></li>
+<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
+<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
+<li><a class="reference internal" href="#vertex-sql">Vertex SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
+<li><a class="reference internal" href="#additional-examples">Ytterligare exempel</a><ul>
+<li><a class="reference internal" href="#degree-of-a-loop">Grad av en slinga</a></li>
+<li><a class="reference internal" href="#degree-of-a-sub-graph">Grad av en undergraf</a></li>
+<li><a class="reference internal" href="#using-a-vertex-table">Använda en toppunktstabell</a></li>
+<li><a class="reference internal" href="#dry-run-execution">Utförande av provkörning</a></li>
+<li><a class="reference internal" href="#finding-dead-ends">Att hitta återvändsgränder</a></li>
+<li><a class="reference internal" href="#finding-linear-vertices">Hitta linjära hörn</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Se även</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="metrics-family.html" title="Previous Chapter: Metrics - Familj av funktioner"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Metrics - Fam...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_betweennessCentrality.html" title="Next Chapter: pgr_betweennessCentrality - Experimentell"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_betweenne... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_degree','sv'));  </script>
+            
+  <div class="line-block" id="index-0">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-degree">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_grad</span></code><a class="headerlink" href="#pgr-degree" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> - För varje toppunkt i en odelad graf, returnera antalet kanter som är kopplade till toppunktet.</p>
+<div class="admonition-proposed admonition">
+<p class="admonition-title">Proposed</p>
+<div class="admonition warning">
+<p class="admonition-title">Varning</p>
+<p>Föreslagna funktioner för nästa version av Mayor.</p>
+<ul class="simple">
+<li><p>De finns inte officiellt med i den aktuella versionen.</p>
+<ul>
+<li><p>Code has been reviewed therefore is not experimental.</p></li>
+<li><p>Name, signature and functionality might not change.</p></li>
+<li><p>pgTap-tester har gjorts. Men det kan behövas fler.</p></li>
+<li><p>Dokumentationen kan behöva förbättras.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p class="rubric">Tillgänglighet</p>
+<p class="rubric">Version 3.8.0</p>
+<ul class="simple">
+<li><p>Justering av felmeddelanden.</p></li>
+<li><p>Ny signatur med endast Edges SQL.</p></li>
+<li><p>Funktion befordrad till tjänsteman.</p></li>
+</ul>
+<p class="rubric">Version 3.4.0</p>
+<ul class="simple">
+<li><p>Ny föreslagen funktion.</p></li>
+</ul>
+<section id="description">
+<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Beräknar graden för topparna i en odelad graf</p>
+<p>Graden (eller valensen) för ett toppunkt i en graf är antalet kanter som är angränsande till toppunktet.</p>
+<ul class="simple">
+<li><p>Fungerar för <strong>undirected</strong> grafer.</p></li>
+<li><p>En loop bidrar med 2 till en topps grad.</p></li>
+<li><p>Ett toppunkt med grad 0 kallas ett isolerat toppunkt.</p>
+<ul>
+<li><p>Isolerad toppunkt är inte en del av resultatet</p></li>
+</ul>
+</li>
+<li><p>Vertex som inte deltar i undergrafen betraktas som en isolerad vertex.</p></li>
+<li><p>Det kan finnas en <code class="docutils literal notranslate"><span class="pre">dryrun</span></code> exekvering och koden som används för att få svaret kommer att visas i en PostgreSQL <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code>.</p>
+<ul>
+<li><p>Koden kan användas som baskod för de specifika applikationskraven.</p></li>
+</ul>
+</li>
+<li><p>Ingen beställning utförs.</p></li>
+</ul>
+</section>
+<section id="signatures">
+<h2>Underskrifter<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_degree(<a class="reference internal" href="#edges-sql">Kanter SQL</a> , [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
+<div class="line">pgr_degree(<a class="reference internal" href="#edges-sql">Kanter SQL</a> , <a class="reference internal" href="#vertex-sql">Vertex SQL</a>, [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNERAR SETOF <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">degree)</span></code></div>
+<div class="line">ELLER TOM UPPSÄTTNING</div>
+</div>
+</div>
+<section id="edges">
+<span id="index-1"></span><h3>Kanter<a class="headerlink" href="#edges" title="Link to this heading">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_degree(<a class="reference internal" href="#edges-sql">Kanter SQL</a> , [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNERAR SETOF <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">degree)</span></code></div>
+<div class="line">ELLER TOM UPPSÄTTNING</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">exempel<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Hämta graden för de toppar som definieras i tabellen edges</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree($$SELECT id, source, target FROM edges$$)
+ORDER BY node;
+ node | degree
+------+--------
+    1 |      1
+    2 |      1
+    3 |      2
+    4 |      1
+    5 |      1
+    6 |      3
+    7 |      4
+    8 |      3
+    9 |      1
+   10 |      3
+   11 |      4
+   12 |      3
+   13 |      1
+   14 |      1
+   15 |      2
+   16 |      3
+   17 |      2
+(17 rows)
+
+</pre></div>
+</div>
+</section>
+<section id="edges-and-vertices">
+<h3>Kanter och toppar<a class="headerlink" href="#edges-and-vertices" title="Link to this heading">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_degree(<a class="reference internal" href="#edges-sql">Kanter SQL</a> , <a class="reference internal" href="#vertex-sql">Vertex SQL</a>, [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNERAR SETOF <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">degree)</span></code></div>
+<div class="line">ELLER TOM UPPSÄTTNING</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Exempel<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Extrahera information om toppunkt</p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> kan använda <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> inbäddad i anropet.</p>
+<p>För nätverk av anständig storlek är det bäst att förbereda vertex-tabellen i förväg och använda den vid anrop av <code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code>. (Se <a class="reference internal" href="#using-a-vertex-table">Användning av en vertex-tabell</a>)</p>
+<p>Beräkna nodernas grad:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree(
+  $$SELECT id FROM edges$$,
+  $$SELECT id, in_edges, out_edges
+    FROM pgr_extractVertices(&#39;SELECT id, geom FROM edges&#39;)$$);
+ node | degree
+------+--------
+    1 |      1
+    2 |      1
+    3 |      2
+    4 |      1
+    5 |      1
+    6 |      3
+    7 |      4
+    8 |      3
+    9 |      1
+   10 |      3
+   11 |      4
+   12 |      3
+   13 |      1
+   14 |      1
+   15 |      2
+   16 |      3
+   17 |      2
+(17 rows)
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="parameters">
+<span id="index-2"></span><h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Kanter SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Kanter SQL</a> enligt beskrivningen nedan</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vertex-sql">Vertex SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#vertex-sql">Vertex SQL</a> enligt beskrivningen nedan</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="optional-parameters">
+<h2>Valfria parametrar<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Standard</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dryrun</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><ul class="simple">
+<li><p>När det är sant bearbeta inte och få i ett NÄRVARO den resulterande frågan.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inner-queries">
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="innehall">
+<ul class="simple">
+<li><p><a class="reference internal" href="#edges-sql" id="id2">Kanter SQL</a></p></li>
+<li><p><a class="reference internal" href="#vertex-sql" id="id3">Vertex SQL</a></p></li>
+</ul>
+</nav>
+<section id="edges-sql">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Kanter SQL</a><a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<p class="rubric">För signaturen <a class="reference internal" href="#edges-and-vertices">Edges and Vertices</a>:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifierare av kanten.</p></td>
+</tr>
+</tbody>
+</table>
+<p>För signaturen <a class="reference internal" href="#edges">Edges</a>:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifierare av kanten.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Källa</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifierare för den första slutpunktsvertexen på kanten.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mål</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="vertex-sql">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Vertex SQL</a><a class="headerlink" href="#vertex-sql" title="Link to this heading">¶</a></h3>
+<p class="rubric">För signaturen <a class="reference internal" href="#edges-and-vertices">Edges and Vertices</a>:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifierare för den första slutpunktsvertexen på kanten.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">in_edges</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]`</span></code></p></td>
+<td><p>Array med identifierare för de kanter som har toppunkten <code class="docutils literal notranslate"><span class="pre">id</span></code> som <em>första slutpunkt</em>.</p>
+<ul class="simple">
+<li><p>När den saknas måste <code class="docutils literal notranslate"><span class="pre">out_edges</span></code> finnas.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ut_kanter</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]`</span></code></p></td>
+<td><p>Array med identifierare för de kanter som har toppunkten <code class="docutils literal notranslate"><span class="pre">id</span></code> som <em>andra slutpunkt</em>.</p>
+<ul class="simple">
+<li><p>När den saknas måste <code class="docutils literal notranslate"><span class="pre">in_edges</span></code> finnas.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="result-columns">
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nod</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifierare för toppunkt</p></td>
+</tr>
+<tr class="row-odd"><td><p>”grad</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Antal kanter som är angränsande till toppunkten <code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#degree-of-a-loop" id="id4">Grad av en slinga</a></p></li>
+<li><p><a class="reference internal" href="#degree-of-a-sub-graph" id="id5">Grad av en undergraf</a></p></li>
+<li><p><a class="reference internal" href="#using-a-vertex-table" id="id6">Använda en toppunktstabell</a></p></li>
+<li><p><a class="reference internal" href="#dry-run-execution" id="id7">Utförande av provkörning</a></p></li>
+<li><p><a class="reference internal" href="#finding-dead-ends" id="id8">Att hitta återvändsgränder</a></p></li>
+<li><p><a class="reference internal" href="#finding-linear-vertices" id="id9">Hitta linjära hörn</a></p></li>
+</ul>
+</nav>
+<section id="degree-of-a-loop">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Grad av en slinga</a><a class="headerlink" href="#degree-of-a-loop" title="Link to this heading">¶</a></h3>
+<p>En loop bidrar med 2 till en topps grad.</p>
+<div class="graphviz"><img src="_images/graphviz-4b5edcb4927407e2e96684359670cbc6d50b1f7f.png" alt="graph G {
+  2 [shape=circle;style=filled;color=green;fontsize=8;width=0.3;fixedsize=true];
+  2 -- 2 [label=&quot;1&quot;,fontsize=8];
+}" class="graphviz" /></div>
+<p class="rubric">Använda signaturen <a class="reference internal" href="#edges">Edges</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">pgr_degree</span><span class="p">(</span><span class="s1">&#39;SELECT 1 as id, 2 as source, 2 as target&#39;</span><span class="p">);</span>
+ <span class="n">node</span> <span class="o">|</span> <span class="n">degree</span>
+<span class="o">------+--------</span>
+    <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p class="rubric">Använda signaturen <a class="reference internal" href="#edges-and-vertices">Edges and Vertices</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree(
+  $$SELECT 1 AS id$$,
+  $$SELECT id, in_edges, out_edges
+     FROM pgr_extractVertices(&#39;SELECT 1 as id, 2 as source, 2 as target&#39;)$$);
+ node | degree
+------+--------
+    2 |      2
+(1 row)
+
+</pre></div>
+</div>
+</section>
+<section id="degree-of-a-sub-graph">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Grad av en undergraf</a><a class="headerlink" href="#degree-of-a-sub-graph" title="Link to this heading">¶</a></h3>
+<p>För följande är en delgraf av <a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E = \{(1, 5 \leftrightarrow 6), (1, 6 \leftrightarrow 10)\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(V = \{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17\}\)</span></p></li>
+</ul>
+<div class="graphviz"><img src="_images/graphviz-098b0175f70f696e3bb21b5ac6f3bb1dd47cc8bd.png" alt="graph G {
+  5,6,10 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
+  1,2,3,4,7,8,9,11,12,13,14,15,16,17 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
+
+  5 -- 6 [label=&quot;1&quot;,fontsize=8];
+  10 -- 6 [label=&quot;2&quot;,fontsize=8];
+
+  1 [pos=&quot;0,2!&quot;];
+  2 [pos=&quot;0.5,3.5!&quot;];
+  3 [pos=&quot;1,2!&quot;];
+  4 [pos=&quot;2,3.5!&quot;];
+  5 [pos=&quot;2,0!&quot;];
+  6 [pos=&quot;2,1!&quot;];
+  7 [pos=&quot;2,2!&quot;];
+  8 [pos=&quot;2,3!&quot;];
+  9 [pos=&quot;2,4!&quot;];
+  10 [pos=&quot;3,1!&quot;];
+  11 [pos=&quot;3,2!&quot;];
+  12 [pos=&quot;3,3!&quot;];
+  13 [pos=&quot;3.5,2.3!&quot;];
+  14 [pos=&quot;3.5,4!&quot;];
+  15 [pos=&quot;4,1!&quot;];
+  16 [pos=&quot;4,2!&quot;];
+  17 [pos=&quot;4,3!&quot;];
+}" class="graphviz" /></div>
+<p>De hörn som inte deltar i kanten betraktas som isolerade</p>
+<ul class="simple">
+<li><p>deras grad är 0 i undergrafen och</p></li>
+<li><p>deras examen visas inte i utdata.</p></li>
+</ul>
+<p class="rubric">Använda signaturen <a class="reference internal" href="#edges">Edges</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree($$SELECT * FROM edges WHERE id IN (1, 2)$$);
+ node | degree
+------+--------
+   10 |      1
+    6 |      2
+    5 |      1
+(3 rows)
+
+</pre></div>
+</div>
+<p class="rubric">Använda signaturen <a class="reference internal" href="#edges-and-vertices">Edges and Vertices</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree(
+  $$SELECT * FROM edges WHERE id IN (1, 2)$$,
+  $$SELECT id, in_edges, out_edges FROM vertices$$);
+ node | degree
+------+--------
+    5 |      1
+    6 |      2
+   10 |      1
+(3 rows)
+
+</pre></div>
+</div>
+</section>
+<section id="using-a-vertex-table">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Använda en toppunktstabell</a><a class="headerlink" href="#using-a-vertex-table" title="Link to this heading">¶</a></h3>
+<p>För nätverk av anständig storlek är det bäst att förbereda vertices-tabellen i förväg och använda den vid anrop av <code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code>.</p>
+<p>Extrahera toppunktsinformationen och spara i en tabell:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">AS</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">17</span>
+</pre></div>
+</div>
+<p>Beräkna nodernas grad:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree(
+  $$SELECT id FROM edges$$,
+  $$SELECT id, in_edges, out_edges FROM vertices$$);
+ node | degree
+------+--------
+    1 |      1
+    2 |      1
+    3 |      2
+    4 |      1
+    5 |      1
+    6 |      3
+    7 |      4
+    8 |      3
+    9 |      1
+   10 |      3
+   11 |      4
+   12 |      3
+   13 |      1
+   14 |      1
+   15 |      2
+   16 |      3
+   17 |      2
+(17 rows)
+
+</pre></div>
+</div>
+</section>
+<section id="dry-run-execution">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Utförande av provkörning</a><a class="headerlink" href="#dry-run-execution" title="Link to this heading">¶</a></h3>
+<p>Använd <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code> för att få den fråga som genereras för att få fram toppunktsinformationen.</p>
+<p>Resultaten kan användas som baskod för att göra en förfining baserad på behoven för backend-utvecklingen.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree(
+  $$SELECT id FROM edges WHERE id &lt; 17$$,
+  $$SELECT id, in_edges, out_edges FROM vertices$$,
+  dryrun =&gt; true);
+NOTICE:
+    WITH
+
+    -- a sub set of edges of the graph goes here
+    g_edges AS (
+      SELECT id FROM edges WHERE id &lt; 17
+    ),
+
+    -- sub set of vertices of the graph goes here
+    all_vertices AS (
+      SELECT id, in_edges, out_edges FROM vertices
+    ),
+
+    g_vertices AS (
+      SELECT id,
+        unnest(
+          coalesce(in_edges::BIGINT[], &#39;{}&#39;::BIGINT[])
+          ||
+          coalesce(out_edges::BIGINT[], &#39;{}&#39;::BIGINT[])) AS eid
+      FROM all_vertices
+    ),
+
+    totals AS (
+      SELECT v.id, count(*)
+      FROM g_vertices v
+      JOIN g_edges e ON (v.eid = e.id) GROUP BY v.id
+    )
+
+    SELECT id::BIGINT, count::BIGINT FROM all_vertices JOIN totals USING (id)
+    ;
+ node | degree
+------+--------
+(0 rows)
+
+</pre></div>
+</div>
+</section>
+<section id="finding-dead-ends">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Att hitta återvändsgränder</a><a class="headerlink" href="#finding-dead-ends" title="Link to this heading">¶</a></h3>
+<p>Om det redan finns en toppunktstabell som byggts med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code> och man vill ha graden för hela grafen i stället för en delmängd, kan man avstå från att använda <code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> och arbeta med kolumnerna <code class="docutils literal notranslate"><span class="pre">in_edges</span></code> och <code class="docutils literal notranslate"><span class="pre">out_edges</span></code> direkt.</p>
+<p>Graden av en återvändsgränd är 1.</p>
+<p>För att få bort återvändsgränderna:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span>
+<span class="n">WHERE</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="nb">id</span>
+<span class="o">----</span>
+  <span class="mi">1</span>
+  <span class="mi">2</span>
+  <span class="mi">5</span>
+<span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>En återvändsgränd uppstår när</p>
+<ul class="simple">
+<li><p>Toppunkten är gränsen för en återvändsgränd, en väg med genomfartsförbud eller en väg med utfartsförbud.</p></li>
+<li><p>Toppunkten ligger på gränsen för den importerade grafen.</p>
+<ul>
+<li><p>Om en större graf importeras är det inte säkert att toppunkten är en återvändsgränd</p></li>
+</ul>
+</li>
+</ul>
+<p>Noden <span class="math notranslate nohighlight">\(4\)</span>, är en återvändsgränd i frågan, även om den visuellt ser ut som en slutpunkt för 3 kanter.</p>
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 190.20000000000002px; height: 173.20000000000002px;" /></a>
+<p class="rubric">Är noden <span class="math notranslate nohighlight">\(4\)</span> en återvändsgränd eller inte?</p>
+<div class="graphviz"><img src="_images/graphviz-0077274f44a10a0ed134a2562bc344093b31f804.png" alt="graph G {
+  1,2,4,5,9,13,14 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
+  3,6,7,8,10,11,12,15,16,17 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
+
+  5 -- 6 [label=&quot;1&quot;,fontsize=8];     6 -- 10 [label=&quot;2&quot;,fontsize=8];
+  10 -- 15 [label=&quot;3&quot;,fontsize=8];   6 -- 7 [label=&quot;4&quot;,fontsize=8];
+  10 -- 11 [label=&quot;5&quot;,fontsize=8];   1 -- 3 [label=&quot;6&quot;,fontsize=8];
+  3 -- 7 [label=&quot;7&quot;,fontsize=8];     7 -- 11 [label=&quot;8&quot;,fontsize=8];
+  11 -- 16 [label=&quot;9&quot;,fontsize=8];   7 -- 8 [label=&quot;10&quot;,fontsize=8];
+  11 -- 12 [label=&quot;11&quot;,fontsize=8];  8 -- 12 [label=&quot;12&quot;,fontsize=8];
+  12 -- 17 [label=&quot;13&quot;,fontsize=8];  8 -- 9 [label=&quot;&quot;,fontsize=8];
+  16 -- 17 [label=&quot;15&quot;,fontsize=8]; 15 -- 16 [label=&quot;16&quot;,fontsize=8];
+  2 -- 4 [label=&quot;17&quot;,fontsize=8];   13 -- 14 [label=&quot;18&quot;,fontsize=8];
+
+  1 [pos=&quot;0,2!&quot;];       2 [pos=&quot;0.5,3.5!&quot;];
+  3 [pos=&quot;1,2!&quot;];       4 [pos=&quot;2,3.5!&quot;];
+  5 [pos=&quot;2,0!&quot;];       6 [pos=&quot;2,1!&quot;];
+  7 [pos=&quot;2,2!&quot;];       8 [pos=&quot;2,3!&quot;];
+  9 [pos=&quot;2,4!&quot;];      10 [pos=&quot;3,1!&quot;];
+  11 [pos=&quot;3,2!&quot;];     12 [pos=&quot;3,3!&quot;];
+  13 [pos=&quot;3.5,2.3!&quot;]; 14 [pos=&quot;3.5,4!&quot;];
+  15 [pos=&quot;4,1!&quot;];     16 [pos=&quot;4,2!&quot;];
+  17 [pos=&quot;4,3!&quot;];
+}" class="graphviz" /></div>
+<p>Svaret på den frågan beror på vilken applikation det gäller.</p>
+<ul class="simple">
+<li><p>Finns det en sådan liten trottoarkant:</p>
+<ul>
+<li><p>Som inte tillåter ett fordon att använda den visuella korsningen?</p></li>
+<li><p>Är applikationen för fotgängare och därför kan fotgängaren enkelt gå på den lilla trottoaren?</p></li>
+<li><p>Gäller applikationen el och elledningar som enkelt kan förlängas ovanpå den lilla trottoarkanten?</p></li>
+</ul>
+</li>
+<li><p>Finns det en stor klippa och från örnens utsikt ser det ut som att återvändsgränden ligger nära segmentet?</p></li>
+</ul>
+<p>Beroende på svaret kan det bli nödvändigt att ändra uppgifterna.</p>
+<p>När det finns många återvändsgränder kan funktionerna <a class="reference internal" href="contraction-family.html"><span class="doc">Sammandragning - Familj av funktioner</span></a> användas för att dra ihop grafen för att påskynda bearbetningen.</p>
+</section>
+<section id="finding-linear-vertices">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Hitta linjära hörn</a><a class="headerlink" href="#finding-linear-vertices" title="Link to this heading">¶</a></h3>
+<p>Graden för ett linjärt toppunkt är 2.</p>
+<p>Om det redan finns en toppunktstabell som byggts upp med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code></p>
+<p>För att få de linjära kanterna:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span>
+<span class="n">WHERE</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+ <span class="nb">id</span>
+<span class="o">----</span>
+  <span class="mi">3</span>
+  <span class="mi">9</span>
+ <span class="mi">13</span>
+ <span class="mi">15</span>
+ <span class="mi">16</span>
+<span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="graphviz"><img src="_images/graphviz-938f4f075262bd73818662374bced10b51df6375.png" alt="graph G {
+  3,15,17 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
+  1,2,4,5,6,7,8,9,10,11,12,13,14,16 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
+
+  5 -- 6 [label=&quot;1&quot;,fontsize=8];     6 -- 10 [label=&quot;2&quot;,fontsize=8];
+  10 -- 15 [label=&quot;3&quot;,fontsize=8];   6 -- 7 [label=&quot;4&quot;,fontsize=8];
+  10 -- 11 [label=&quot;5&quot;,fontsize=8];   1 -- 3 [label=&quot;6&quot;,fontsize=8];
+  3 -- 7 [label=&quot;7&quot;,fontsize=8];     7 -- 11 [label=&quot;8&quot;,fontsize=8];
+  11 -- 16 [label=&quot;9&quot;,fontsize=8];   7 -- 8 [label=&quot;10&quot;,fontsize=8];
+  11 -- 12 [label=&quot;11&quot;,fontsize=8];  8 -- 12 [label=&quot;12&quot;,fontsize=8];
+  12 -- 17 [label=&quot;13&quot;,fontsize=8];  8 -- 9 [label=&quot;&quot;,fontsize=8];
+  16 -- 17 [label=&quot;15&quot;,fontsize=8]; 15 -- 16 [label=&quot;16&quot;,fontsize=8];
+  2 -- 4 [label=&quot;17&quot;,fontsize=8];   13 -- 14 [label=&quot;18&quot;,fontsize=8];
+
+  1 [pos=&quot;0,2!&quot;];       2 [pos=&quot;0.5,3.5!&quot;];
+  3 [pos=&quot;1,2!&quot;];       4 [pos=&quot;2,3.5!&quot;];
+  5 [pos=&quot;2,0!&quot;];       6 [pos=&quot;2,1!&quot;];
+  7 [pos=&quot;2,2!&quot;];       8 [pos=&quot;2,3!&quot;];
+  9 [pos=&quot;2,4!&quot;];      10 [pos=&quot;3,1!&quot;];
+  11 [pos=&quot;3,2!&quot;];     12 [pos=&quot;3,3!&quot;];
+  13 [pos=&quot;3.5,2.3!&quot;]; 14 [pos=&quot;3.5,4!&quot;];
+  15 [pos=&quot;4,1!&quot;];     16 [pos=&quot;4,2!&quot;];
+  17 [pos=&quot;4,3!&quot;];
+}" class="graphviz" /></div>
+<p>Dessa linjära hörn är korrekta, till exempel när de hörnen är farthinder, stoppsignaler och applikationen tar hänsyn till dem.</p>
+<p>När det finns många linjära toppar, som inte behöver beaktas, för att påskynda bearbetningen, kan funktionerna <a class="reference internal" href="contraction-family.html"><span class="doc">Sammandragning - Familj av funktioner</span></a> användas för att kontrahera problemet.</p>
+</section>
+</section>
+<section id="see-also">
+<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="utilities-family.html"><span class="doc">Verktygsfunktioner</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a></p></li>
+</ul>
+<p class="rubric">Index och tabeller</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Söksida</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      Senast uppdaterad sep. 19, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

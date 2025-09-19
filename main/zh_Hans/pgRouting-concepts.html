@@ -7,20 +7,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgRouting 基本概念 &#8212; pgRouting Manual (3.8)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <title>pgRouting 概念 &#8212; pgRouting Manual (4.0-alpha1)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=b671dda4"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=73718347"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=262773b0"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
     <link rel="next" title="函数族" href="routingFunctions.html" />
     <link rel="prev" title="示例数据" href="sampledata.html" />
 <meta charset='utf-8'>
@@ -46,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.8</b></span>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -70,17 +69,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">pgRouting 基本概念</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pgRouting 概念</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -97,11 +96,11 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgRouting 基本概念</a><ul>
+<li><a class="reference internal" href="#">pgRouting 概念</a><ul>
 <li><a class="reference internal" href="#graphs">图</a><ul>
 <li><a class="reference internal" href="#graph-definition">图定义</a></li>
-<li><a class="reference internal" href="#graph-with-cost"><code class="docutils literal notranslate"><span class="pre">成本</span></code> 图</a></li>
-<li><a class="reference internal" href="#graph-with-cost-and-reverse-cost">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和``reverse_cost`` 的图</a></li>
+<li><a class="reference internal" href="#graph-with-cost"><code class="docutils literal notranslate"><span class="pre">cost</span></code> 图</a></li>
+<li><a class="reference internal" href="#graph-with-cost-and-reverse-cost">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的图</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#graphs-without-geometries">没有几何信息的图</a><ul>
@@ -128,11 +127,11 @@
 </li>
 <li><a class="reference internal" href="#check-the-routing-topology">检查路由拓扑</a><ul>
 <li><a class="reference internal" href="#crossing-edges">交叉边</a><ul>
-<li><a class="reference internal" href="#fixing-an-intersection">Fixing an intersection</a></li>
+<li><a class="reference internal" href="#fixing-an-intersection">修复交叉路口</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#touching-edges">Touching edges</a><ul>
-<li><a class="reference internal" href="#fixing-a-gap">Fixing a gap</a></li>
+<li><a class="reference internal" href="#touching-edges">相邻边线</a><ul>
+<li><a class="reference internal" href="#fixing-a-gap">弥补差距</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#connecting-components">连接组件</a></li>
@@ -145,10 +144,10 @@
 </li>
 <li><a class="reference internal" href="#function-s-structure">函数的结构</a></li>
 <li><a class="reference internal" href="#function-s-overloads">函数的重载</a><ul>
-<li><a class="reference internal" href="#one-to-one">一对一</a></li>
-<li><a class="reference internal" href="#one-to-many">一对多</a></li>
-<li><a class="reference internal" href="#many-to-one">多对一</a></li>
-<li><a class="reference internal" href="#many-to-many">多对多</a></li>
+<li><a class="reference internal" href="#one-to-one">One to One</a></li>
+<li><a class="reference internal" href="#one-to-many">One to Many</a></li>
+<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
+<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
 <li><a class="reference internal" href="#combinations">组合</a></li>
 </ul>
 </li>
@@ -171,15 +170,12 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">结果列</a><ul>
-<li><a class="reference internal" href="#result-columns-for-a-path">路径的结果列</a></li>
-<li><a class="reference internal" href="#multiple-paths">多条路径</a><ul>
-<li><a class="reference internal" href="#selective-for-multiple-paths">多路径选择性。</a></li>
-<li><a class="reference internal" href="#non-selective-for-multiple-paths">多路径非选择性</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#result-columns-for-single-path-functions">Result columns for single path functions</a></li>
+<li><a class="reference internal" href="#result-columns-for-multiple-paths-functions">Result columns for multiple paths functions</a></li>
 <li><a class="reference internal" href="#result-columns-for-cost-functions">成本函数结果列</a></li>
 <li><a class="reference internal" href="#result-columns-for-flow-functions">流量函数的结果列</a></li>
 <li><a class="reference internal" href="#result-columns-for-spanning-tree-functions">生成树函数的结果列</a></li>
+<li><a class="reference internal" href="#result-columns-for-simple-spanning-tree-functions">Result columns for simple spanning tree functions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#performance-tips">性能技巧</a><ul>
@@ -187,6 +183,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#how-to-contribute">如何贡献</a></li>
+<li><a class="reference internal" href="#see-also">See also</a></li>
 </ul>
 </li>
 </ul>
@@ -231,135 +228,22 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">pgRouting 基本概念</a><ul>
-<li><a class="reference internal" href="#graphs">图</a><ul>
-<li><a class="reference internal" href="#graph-definition">图定义</a></li>
-<li><a class="reference internal" href="#graph-with-cost"><code class="docutils literal notranslate"><span class="pre">成本</span></code> 图</a></li>
-<li><a class="reference internal" href="#graph-with-cost-and-reverse-cost">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和``reverse_cost`` 的图</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#graphs-without-geometries">没有几何信息的图</a><ul>
-<li><a class="reference internal" href="#wiki-example">维基示例</a><ul>
-<li><a class="reference internal" href="#prepare-the-database">准备数据库</a></li>
-<li><a class="reference internal" href="#create-a-table">创建表</a></li>
-<li><a class="reference internal" href="#insert-the-data">插入数据</a></li>
-<li><a class="reference internal" href="#find-the-shortest-path">寻找最短路径</a></li>
-<li><a class="reference internal" href="#vertex-information">顶点信息</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#graphs-with-geometries">具有几何图形的图</a><ul>
-<li><a class="reference internal" href="#create-a-routing-database">创建路由数据库</a></li>
-<li><a class="reference internal" href="#load-data">加载数据</a></li>
-<li><a class="reference internal" href="#build-a-routing-topology">构建路由拓扑</a></li>
-<li><a class="reference internal" href="#adjust-costs">调整成本</a><ul>
-<li><a class="reference internal" href="#update-costs-to-length-of-geometry">将成本更新为几何形状的长度</a></li>
-<li><a class="reference internal" href="#update-costs-based-on-codes">根据代码更新成本</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#check-the-routing-topology">检查路由拓扑</a><ul>
-<li><a class="reference internal" href="#crossing-edges">交叉边</a><ul>
-<li><a class="reference internal" href="#fixing-an-intersection">Fixing an intersection</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#touching-edges">Touching edges</a><ul>
-<li><a class="reference internal" href="#fixing-a-gap">Fixing a gap</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#connecting-components">连接组件</a></li>
-<li><a class="reference internal" href="#contraction-of-a-graph">图的收缩</a><ul>
-<li><a class="reference internal" href="#dead-ends">死端</a></li>
-<li><a class="reference internal" href="#linear-edges">线性边</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#function-s-structure">函数的结构</a></li>
-<li><a class="reference internal" href="#function-s-overloads">函数的重载</a><ul>
-<li><a class="reference internal" href="#one-to-one">一对一</a></li>
-<li><a class="reference internal" href="#one-to-many">一对多</a></li>
-<li><a class="reference internal" href="#many-to-one">多对一</a></li>
-<li><a class="reference internal" href="#many-to-many">多对多</a></li>
-<li><a class="reference internal" href="#combinations">组合</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a><ul>
-<li><a class="reference internal" href="#general">常规</a></li>
-<li><a class="reference internal" href="#general-without-id">一般没有 <code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
-<li><a class="reference internal" href="#general-with-x-y">通常带有（X,Y)</a></li>
-<li><a class="reference internal" href="#flow">流</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#combinations-sql">分量 SQL</a></li>
-<li><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters">参数</a><ul>
-<li><a class="reference internal" href="#parameters-for-the-via-functions">Via 函数的参数</a></li>
-<li><a class="reference internal" href="#for-the-trsp-functions">对于 TRSP 函数</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">结果列</a><ul>
-<li><a class="reference internal" href="#result-columns-for-a-path">路径的结果列</a></li>
-<li><a class="reference internal" href="#multiple-paths">多条路径</a><ul>
-<li><a class="reference internal" href="#selective-for-multiple-paths">多路径选择性。</a></li>
-<li><a class="reference internal" href="#non-selective-for-multiple-paths">多路径非选择性</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns-for-cost-functions">成本函数结果列</a></li>
-<li><a class="reference internal" href="#result-columns-for-flow-functions">流量函数的结果列</a></li>
-<li><a class="reference internal" href="#result-columns-for-spanning-tree-functions">生成树函数的结果列</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#performance-tips">性能技巧</a><ul>
-<li><a class="reference internal" href="#for-the-routing-functions">对于路由功能</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#how-to-contribute">如何贡献</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="sampledata.html" title="Previous Chapter: 示例数据"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 示例数据</span>
-    </a>
-  </li>
-  <li>
-    <a href="routingFunctions.html" title="Next Chapter: 函数族"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">函数族 &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgRouting-concepts','zh-Hans'));  </script>
             
   <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="pgrouting-concepts">
-<h1>pgRouting 基本概念<a class="headerlink" href="#pgrouting-concepts" title="Link to this heading">¶</a></h1>
+<h1>pgRouting 概念<a class="headerlink" href="#pgrouting-concepts" title="Link to this heading">¶</a></h1>
 <p>这是一个简单的指南，介绍了 pgRouting 入门的一些步骤。 本指南涵盖：</p>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#graphs" id="id8">图</a></p>
 <ul>
 <li><p><a class="reference internal" href="#graph-definition" id="id9">图定义</a></p></li>
-<li><p><a class="reference internal" href="#graph-with-cost" id="id10"><code class="docutils literal notranslate"><span class="pre">成本</span></code> 图</a></p></li>
-<li><p><a class="reference internal" href="#graph-with-cost-and-reverse-cost" id="id11">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和``reverse_cost`` 的图</a></p></li>
+<li><p><a class="reference internal" href="#graph-with-cost" id="id10"><code class="docutils literal notranslate"><span class="pre">cost</span></code> 图</a></p></li>
+<li><p><a class="reference internal" href="#graph-with-cost-and-reverse-cost" id="id11">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的图</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#graphs-without-geometries" id="id12">没有几何信息的图</a></p>
@@ -378,7 +262,7 @@
 <li><p><a class="reference internal" href="#check-the-routing-topology" id="id19">检查路由拓扑</a></p>
 <ul>
 <li><p><a class="reference internal" href="#crossing-edges" id="id20">交叉边</a></p></li>
-<li><p><a class="reference internal" href="#touching-edges" id="id21">Touching edges</a></p></li>
+<li><p><a class="reference internal" href="#touching-edges" id="id21">相邻边线</a></p></li>
 <li><p><a class="reference internal" href="#connecting-components" id="id22">连接组件</a></p></li>
 <li><p><a class="reference internal" href="#contraction-of-a-graph" id="id23">图的收缩</a></p></li>
 </ul>
@@ -386,10 +270,10 @@
 <li><p><a class="reference internal" href="#function-s-structure" id="id24">函数的结构</a></p></li>
 <li><p><a class="reference internal" href="#function-s-overloads" id="id25">函数的重载</a></p>
 <ul>
-<li><p><a class="reference internal" href="#one-to-one" id="id26">一对一</a></p></li>
-<li><p><a class="reference internal" href="#one-to-many" id="id27">一对多</a></p></li>
-<li><p><a class="reference internal" href="#many-to-one" id="id28">多对一</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many" id="id29">多对多</a></p></li>
+<li><p><a class="reference internal" href="#one-to-one" id="id26">One to One</a></p></li>
+<li><p><a class="reference internal" href="#one-to-many" id="id27">One to Many</a></p></li>
+<li><p><a class="reference internal" href="#many-to-one" id="id28">Many to One</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many" id="id29">Many to Many</a></p></li>
 <li><p><a class="reference internal" href="#combinations" id="id30">组合</a></p></li>
 </ul>
 </li>
@@ -409,32 +293,34 @@
 </li>
 <li><p><a class="reference internal" href="#result-columns" id="id39">结果列</a></p>
 <ul>
-<li><p><a class="reference internal" href="#result-columns-for-a-path" id="id40">路径的结果列</a></p></li>
-<li><p><a class="reference internal" href="#multiple-paths" id="id41">多条路径</a></p></li>
+<li><p><a class="reference internal" href="#result-columns-for-single-path-functions" id="id40">Result columns for single path functions</a></p></li>
+<li><p><a class="reference internal" href="#result-columns-for-multiple-paths-functions" id="id41">Result columns for multiple paths functions</a></p></li>
 <li><p><a class="reference internal" href="#result-columns-for-cost-functions" id="id42">成本函数结果列</a></p></li>
 <li><p><a class="reference internal" href="#result-columns-for-flow-functions" id="id43">流量函数的结果列</a></p></li>
 <li><p><a class="reference internal" href="#result-columns-for-spanning-tree-functions" id="id44">生成树函数的结果列</a></p></li>
+<li><p><a class="reference internal" href="#result-columns-for-simple-spanning-tree-functions" id="id45">Result columns for simple spanning tree functions</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#performance-tips" id="id45">性能技巧</a></p>
+<li><p><a class="reference internal" href="#performance-tips" id="id46">性能技巧</a></p>
 <ul>
-<li><p><a class="reference internal" href="#for-the-routing-functions" id="id46">对于路由功能</a></p></li>
+<li><p><a class="reference internal" href="#for-the-routing-functions" id="id47">对于路由功能</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#how-to-contribute" id="id47">如何贡献</a></p></li>
+<li><p><a class="reference internal" href="#how-to-contribute" id="id48">如何贡献</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id49">See also</a></p></li>
 </ul>
 </nav>
 <section id="graphs">
 <h2><a class="toc-backref" href="#id8" role="doc-backlink">图</a><a class="headerlink" href="#graphs" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#graph-definition" id="id48">图定义</a></p></li>
-<li><p><a class="reference internal" href="#graph-with-cost" id="id49"><code class="docutils literal notranslate"><span class="pre">成本</span></code> 图</a></p></li>
-<li><p><a class="reference internal" href="#graph-with-cost-and-reverse-cost" id="id50">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和``reverse_cost`` 的图</a></p></li>
+<li><p><a class="reference internal" href="#graph-definition" id="id50">图定义</a></p></li>
+<li><p><a class="reference internal" href="#graph-with-cost" id="id51"><code class="docutils literal notranslate"><span class="pre">cost</span></code> 图</a></p></li>
+<li><p><a class="reference internal" href="#graph-with-cost-and-reverse-cost" id="id52">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的图</a></p></li>
 </ul>
 </nav>
 <section id="graph-definition">
-<h3><a class="toc-backref" href="#id48" role="doc-backlink">图定义</a><a class="headerlink" href="#graph-definition" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id50" role="doc-backlink">图定义</a><a class="headerlink" href="#graph-definition" title="Link to this heading">¶</a></h3>
 <p>图是一个有序对 <span class="math notranslate nohighlight">\(G = (V ,E)\)</span> ，其中：</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(V\)</span> 是一组顶点，也称为节点。</p></li>
@@ -447,7 +333,7 @@
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid u , v \in V\}\)</span></p></li>
 </ul>
 </li>
-<li><p>无向简单图</p>
+<li><p>无向simple图</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid u , v \in V, u \neq v\}\)</span></p></li>
 </ul>
@@ -457,7 +343,7 @@
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid (u , v) \in (V X V) \}\)</span></p></li>
 </ul>
 </li>
-<li><p>有向简单图</p>
+<li><p>有向simple图</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid (u , v) \in (V X V), u \neq v\}\)</span></p></li>
 </ul>
@@ -501,8 +387,8 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p>边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重：</p>
 <ul class="simple">
-<li><p>当为负时，图上不存在边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)。</p></li>
-<li><p>查询中必须存在 <code class="docutils literal notranslate"><span class="pre">cost</span></code>。</p></li>
+<li><p>当为负时，图上不存在edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)。</p></li>
+<li><p>查询中必须存在 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 。</p></li>
 </ul>
 </td>
 </tr>
@@ -518,7 +404,7 @@
 <p>图是 <strong>有向</strong> 图还是 <strong>无向</strong> 图的决定是在执行 pgRouting 算法时完成的。</p>
 </section>
 <section id="graph-with-cost">
-<h3><a class="toc-backref" href="#id49" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">成本</span></code> 图</a><a class="headerlink" href="#graph-with-cost" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id51" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">cost</span></code> 图</a><a class="headerlink" href="#graph-with-cost" title="Link to this heading">¶</a></h3>
 <p>加权有向图， <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>:</p>
 <ul>
 <li><p>通过查询获取图数据</p>
@@ -528,13 +414,13 @@
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(E = \{(source_{id}, target_{id}, cost_{id}) \text{ when } cost_{id}
 \ge 0 \}\)</span></p></li>
-<li><p>成本非负的边是图的一部分。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cost</span></code> 非负的边是图的一部分。</p></li>
 </ul>
 </li>
 <li><p>顶点集 <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(V = \{source_{id} \cup target_{id}\}\)</span></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code> 和``target`` 中的所有顶点都是图的一部分。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code> 和 <code class="docutils literal notranslate"><span class="pre">target</span></code> 中的所有顶点都是图的一部分。</p></li>
 </ul>
 </li>
 </ul>
@@ -554,7 +440,7 @@
 </div>
 <p>边 <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1 \rightarrow 3\)</span>) 不是图的一部分。</p>
 <p>数据代表下图：</p>
-<div class="graphviz"><img src="_images/graphviz-6a22e17e4c49cbe911a2c3c04aea2e93942005ce.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-6bd797ca50768e0f10212a0236a85afbd8bb3771.png" alt="digraph G {
  1 -&gt; 2 [label=&quot;1(5)&quot;];
  3;
 }" class="graphviz" /></div>
@@ -577,19 +463,19 @@
 </div>
 <p>边 <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1 \frac{\;\;\;\;\;}{} 3\)</span>) 不是图的一部分。</p>
 <p>数据代表下图：</p>
-<div class="graphviz"><img src="_images/graphviz-a9ff7d505ee3aa8158a1f3439d4325a71f0dbcae.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-18dbb5ac9f77e565b643a0f0e7310253dedbee20.png" alt="graph G {
  1 -- 2 [label=&quot;1(5)&quot;];
  3;
 }" class="graphviz" /></div>
 </section>
 <section id="graph-with-cost-and-reverse-cost">
-<h3><a class="toc-backref" href="#id50" role="doc-backlink">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和``reverse_cost`` 的图</a><a class="headerlink" href="#graph-with-cost-and-reverse-cost" title="Link to this heading">¶</a></h3>
-<p>加权有向图， <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>， 定义如下：</p>
+<h3><a class="toc-backref" href="#id52" role="doc-backlink">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的图</a><a class="headerlink" href="#graph-with-cost-and-reverse-cost" title="Link to this heading">¶</a></h3>
+<p>加权有向图， <span class="math notranslate nohighlight">\(G_d(V,E)\)</span> ， 定义如下：</p>
 <ul>
 <li><p>通过查询获取图数据</p>
 <p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">reverse_cost</span> <span class="pre">FROM</span> <span class="pre">edges</span></code></p>
 </li>
-<li><p>边的集合 <span class="math notranslate nohighlight">\(E\)</span>：</p>
+<li><p>边的集合 <span class="math notranslate nohighlight">\(E\)</span> ：</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(E = \begin{split} \begin{align}
 &amp; {\{(source_{id}, target_{id}, cost_{id}) \text{ when } cost_{id} &gt;=0 \}} \\
@@ -600,10 +486,10 @@
 <li><p>边 <span class="math notranslate nohighlight">\((target \rightarrow source)\)</span> 中的 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 是非负数的都属于图的一部分。</p></li>
 </ul>
 </li>
-<li><p>顶点集 <span class="math notranslate nohighlight">\(V\)</span>：</p>
+<li><p>顶点集 <span class="math notranslate nohighlight">\(V\)</span> ：</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(V = \{source_{id} \cup target_{id}\}\)</span></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code> 和``target`` 中的所有顶点都是图的一部分。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code> 和 <code class="docutils literal notranslate"><span class="pre">target</span></code> 中的所有顶点都是图的一部分。</p></li>
 </ul>
 </li>
 </ul>
@@ -632,7 +518,7 @@
 <li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3\rightarrow 2\)</span>)</p></li>
 </ul>
 <p>数据代表下图：</p>
-<div class="graphviz"><img src="_images/graphviz-cf2723f26bd1c3ee60f314423c76e21eb5708d4e.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-c2169ba4585bf5915ed2425fe4db5e9152ef0227.png" alt="digraph G {
  1 -&gt; 2 [label=&quot;1(5)&quot;];
  2 -&gt; 1 [label=&quot;1(2)&quot;];
  3 -&gt; 1 [label=&quot;2(4)&quot;];
@@ -669,7 +555,7 @@
 <li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3 \frac{\;\;\;\;\;}{} 2\)</span>)</p></li>
 </ul>
 <p>数据代表下图：</p>
-<div class="graphviz"><img src="_images/graphviz-7cf300b7d69445756b30b2135af90e936a5dd9e4.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-50eb78779f612b19ac347e75cdae53525e6a5576.png" alt="graph G {
  1 -- 2 [label=&quot;1(5)&quot;];
  2 -- 1 [label=&quot;1(2)&quot;];
  3 -- 1 [label=&quot;2(4)&quot;];
@@ -682,20 +568,20 @@
 <p>使用 pgRouting 可以解决个人关系、家谱和文件依赖性问题。这些问题通常不会与图形相关的几何图形一起出现。</p>
 <nav class="contents local" id="id2">
 <ul class="simple">
-<li><p><a class="reference internal" href="#wiki-example" id="id51">维基示例</a></p>
+<li><p><a class="reference internal" href="#wiki-example" id="id53">维基示例</a></p>
 <ul>
-<li><p><a class="reference internal" href="#prepare-the-database" id="id52">准备数据库</a></p></li>
-<li><p><a class="reference internal" href="#create-a-table" id="id53">创建表</a></p></li>
-<li><p><a class="reference internal" href="#insert-the-data" id="id54">插入数据</a></p></li>
-<li><p><a class="reference internal" href="#find-the-shortest-path" id="id55">寻找最短路径</a></p></li>
-<li><p><a class="reference internal" href="#vertex-information" id="id56">顶点信息</a></p></li>
+<li><p><a class="reference internal" href="#prepare-the-database" id="id54">准备数据库</a></p></li>
+<li><p><a class="reference internal" href="#create-a-table" id="id55">创建表</a></p></li>
+<li><p><a class="reference internal" href="#insert-the-data" id="id56">插入数据</a></p></li>
+<li><p><a class="reference internal" href="#find-the-shortest-path" id="id57">寻找最短路径</a></p></li>
+<li><p><a class="reference internal" href="#vertex-information" id="id58">顶点信息</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="wiki-example">
-<h3><a class="toc-backref" href="#id51" role="doc-backlink">维基示例</a><a class="headerlink" href="#wiki-example" title="Link to this heading">¶</a></h3>
-<p>解决来自 <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">维基百科</a> ）的示例问题 ：</p>
+<h3><a class="toc-backref" href="#id53" role="doc-backlink">维基示例</a><a class="headerlink" href="#wiki-example" title="Link to this heading">¶</a></h3>
+<p>解决来自 <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">维基百科</a>):</p>
 <figure class="align-default">
 <img alt="_images/Dijkstra_Animation.gif" src="_images/Dijkstra_Animation.gif" />
 </figure>
@@ -720,7 +606,7 @@ E = &amp; \{(1,2,7), (1,3,9), (1,6,14), \\
 </li>
 <li><p>该图可以用多种方式表示，例如：</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-aa83b370a30d7a5c2be123929174e31044bca152.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-e1e7271c22c7d8991843607dc481d11949ba6f18.png" alt="graph G {
  rankdir=&quot;LR&quot;;
  1 [color=&quot;red&quot;];
  5 [color=&quot;green&quot;];
@@ -735,8 +621,8 @@ E = &amp; \{(1,2,7), (1,3,9), (1,6,14), \\
  4 -- 5 [label=&quot;(6)&quot;];
 }" class="graphviz" /></div>
 <section id="prepare-the-database">
-<h4><a class="toc-backref" href="#id52" role="doc-backlink">准备数据库</a><a class="headerlink" href="#prepare-the-database" title="Link to this heading">¶</a></h4>
-<p>为示例创建一个数据库，访问数据库并安装 pgRouting：:</p>
+<h4><a class="toc-backref" href="#id54" role="doc-backlink">准备数据库</a><a class="headerlink" href="#prepare-the-database" title="Link to this heading">¶</a></h4>
+<p>为示例创建一个数据库，访问数据库并安装 pgRouting：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ createdb wiki
 $ psql wiki
 wiki =# CREATE EXTENSION pgRouting CASCADE;
@@ -744,7 +630,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="create-a-table">
-<h4><a class="toc-backref" href="#id53" role="doc-backlink">创建表</a><a class="headerlink" href="#create-a-table" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id55" role="doc-backlink">创建表</a><a class="headerlink" href="#create-a-table" title="Link to this heading">¶</a></h4>
 <p>在无向图上执行基本路由所需的基本元素是：</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -768,7 +654,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 </tbody>
 </table>
@@ -792,7 +678,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="insert-the-data">
-<h4><a class="toc-backref" href="#id54" role="doc-backlink">插入数据</a><a class="headerlink" href="#insert-the-data" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id56" role="doc-backlink">插入数据</a><a class="headerlink" href="#insert-the-data" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wiki</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
 <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
@@ -804,8 +690,8 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="find-the-shortest-path">
-<h4><a class="toc-backref" href="#id55" role="doc-backlink">寻找最短路径</a><a class="headerlink" href="#find-the-shortest-path" title="Link to this heading">¶</a></h4>
-<p>为了解决这个例子，使用了 <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra`</span></a>：</p>
+<h4><a class="toc-backref" href="#id57" role="doc-backlink">寻找最短路径</a><a class="headerlink" href="#find-the-shortest-path" title="Link to this heading">¶</a></h4>
+<p>为了解决这个例子，使用了 <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a>：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM wiki&#39;</span><span class="p">,</span>
   <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
@@ -820,7 +706,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </pre></div>
 </div>
 <p>从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(5\)</span> 的路径要经过以下顶点： <span class="math notranslate nohighlight">\(1 \rightarrow 3 \rightarrow 6 \rightarrow 5\)</span></p>
-<div class="graphviz"><img src="_images/graphviz-2be84fbb8166d4e067f5592a16b83c30776ea85c.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-fdf01cf24599e17f1d95f59e619139a55bdedbb0.png" alt="graph G {
  rankdir=&quot;LR&quot;;
  1 [color=&quot;red&quot;];
  5 [color=&quot;green&quot;];
@@ -836,7 +722,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 }" class="graphviz" /></div>
 </section>
 <section id="vertex-information">
-<h4><a class="toc-backref" href="#id56" role="doc-backlink">顶点信息</a><a class="headerlink" href="#vertex-information" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id58" role="doc-backlink">顶点信息</a><a class="headerlink" href="#vertex-information" title="Link to this heading">¶</a></h4>
 <p>要获取顶点信息，请使用 <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target FROM wiki&#39;</span><span class="p">);</span>
@@ -859,19 +745,19 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <h2><a class="toc-backref" href="#id14" role="doc-backlink">具有几何图形的图</a><a class="headerlink" href="#graphs-with-geometries" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="id3">
 <ul class="simple">
-<li><p><a class="reference internal" href="#create-a-routing-database" id="id57">创建路由数据库</a></p></li>
-<li><p><a class="reference internal" href="#load-data" id="id58">加载数据</a></p></li>
-<li><p><a class="reference internal" href="#build-a-routing-topology" id="id59">构建路由拓扑</a></p></li>
-<li><p><a class="reference internal" href="#adjust-costs" id="id60">调整成本</a></p>
+<li><p><a class="reference internal" href="#create-a-routing-database" id="id59">创建路由数据库</a></p></li>
+<li><p><a class="reference internal" href="#load-data" id="id60">加载数据</a></p></li>
+<li><p><a class="reference internal" href="#build-a-routing-topology" id="id61">构建路由拓扑</a></p></li>
+<li><p><a class="reference internal" href="#adjust-costs" id="id62">调整成本</a></p>
 <ul>
-<li><p><a class="reference internal" href="#update-costs-to-length-of-geometry" id="id61">将成本更新为几何形状的长度</a></p></li>
-<li><p><a class="reference internal" href="#update-costs-based-on-codes" id="id62">根据代码更新成本</a></p></li>
+<li><p><a class="reference internal" href="#update-costs-to-length-of-geometry" id="id63">将成本更新为几何形状的长度</a></p></li>
+<li><p><a class="reference internal" href="#update-costs-based-on-codes" id="id64">根据代码更新成本</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="create-a-routing-database">
-<h3><a class="toc-backref" href="#id57" role="doc-backlink">创建路由数据库</a><a class="headerlink" href="#create-a-routing-database" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id59" role="doc-backlink">创建路由数据库</a><a class="headerlink" href="#create-a-routing-database" title="Link to this heading">¶</a></h3>
 <p>第一步是创建数据库并在数据库中加载 pgRouting。</p>
 <p>通常为每个项目创建一个数据库。</p>
 <p>一旦数据库可以工作，加载数据并在该数据库中构建路由应用程序。</p>
@@ -881,7 +767,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="load-data">
-<h3><a class="toc-backref" href="#id58" role="doc-backlink">加载数据</a><a class="headerlink" href="#load-data" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id60" role="doc-backlink">加载数据</a><a class="headerlink" href="#load-data" title="Link to this heading">¶</a></h3>
 <p>有多种方法可以将数据加载到 pgRouting 中。</p>
 <ul class="simple">
 <li><p>手动创建数据库。</p>
@@ -928,29 +814,29 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <div><p>准备图</p>
 </div></blockquote>
 <p>准备什么以及如何准备图将取决于应用程序和/或数据质量和/或信息与 pgRouting 可用的拓扑的接近程度和/或未提及的一些其他因素。</p>
-<p>准备图的步骤涉及使用`PostGIS &lt;<a class="reference external" href="https://postgis.net/">https://postgis.net/</a>&gt;`__ 进行几何操作，其他一些步骤涉及诸如 <a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a> 之类的图操作来收缩图。</p>
+<p>准备图的步骤涉及使用 <a class="reference external" href="https://postgis.net/">PostGIS</a> 进行几何操作，其他一些步骤涉及诸如 <a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a> 之类的图操作来收缩图。</p>
 <p>该 <a class="reference external" href="https://workshop.pgrouting.org/latest">workshop</a> 逐步介绍了如何使用开放街道地图数据为小型应用程序准备图。</p>
 <p>数据库设计上索引的使用一般：</p>
 <ul class="simple">
 <li><p>对几何图形进行索引。</p></li>
 <li><p>对标识符列建立索引。</p></li>
 </ul>
-<p>请查阅`PostgreSQL &lt;<a class="reference external" href="https://www.postgresql.org/docs/">https://www.postgresql.org/docs/</a>&gt;`__ 文档和 <a class="reference external" href="https://postgis.net/">PostGIS</a> 文档。</p>
+<p>请查阅 <a class="reference external" href="https://www.postgresql.org/docs/">PostgreSQL</a> 文档和 <a class="reference external" href="https://postgis.net/">PostGIS</a> 文档。</p>
 </section>
 <section id="build-a-routing-topology">
-<h3><a class="toc-backref" href="#id59" role="doc-backlink">构建路由拓扑</a><a class="headerlink" href="#build-a-routing-topology" title="Link to this heading">¶</a></h3>
-<p>使用大多数 pgRouting 函数的基本信息``id, source, target, cost, [reverse_cost]`` 在 pgRouting 中被称为路由拓扑。</p>
-<p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 是可选的，但强烈建议使用，以便由于几何列的大小而减小数据库的大小。 话虽如此，在本文档中使用了 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>。</p>
+<h3><a class="toc-backref" href="#id61" role="doc-backlink">构建路由拓扑</a><a class="headerlink" href="#build-a-routing-topology" title="Link to this heading">¶</a></h3>
+<p>使用大多数 pgRouting 函数的基本信息 <code class="docutils literal notranslate"><span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">[reverse_cost]</span></code> 在 pgRouting 中被称为路由拓扑。</p>
+<p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 是可选的，但强烈建议使用，以便由于几何列的大小而减小数据库的大小。 话虽如此，在本文档中使用了 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 。</p>
 <p>当数据带有几何图形并且没有路由拓扑时，则需要此步骤。</p>
-<p>几何图的所有开始和结束顶点都需要一个标识符，该标识符将存储在数据表的``source``列和``target``列中。 同样，<code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 需要具有在两个方向上遍历边的值。</p>
-<p>如果这些列不存在，则需要将它们添加到相关表中。 （参见`ALTER TABLE &lt;<a class="reference external" href="https://www.postgresql.org/docs/current/sql-altertable.html">https://www.postgresql.org/docs/current/sql-altertable.html</a>&gt;`__ ）</p>
+<p>几何图的所有开始和结束顶点都需要一个标识符，该标识符将存储在数据表的 <code class="docutils literal notranslate"><span class="pre">source</span></code> 列和 <code class="docutils literal notranslate"><span class="pre">target</span></code> 列中。 同样， <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 需要具有在两个方向上遍历边的值。</p>
+<p>如果这些列不存在，则需要将它们添加到相关表中。 （参见 <a class="reference external" href="https://www.postgresql.org/docs/current/sql-altertable.html">ALTER TABLE</a> ）</p>
 <p>函数 <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> 用于根据边标识符和图边的几何形状创建顶点表。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">18</span>
 </pre></div>
 </div>
-<p>最后使用存储在顶点表上的数据填充 <code class="docutils literal notranslate"><span class="pre">source</span></code> 和``target``。</p>
+<p>最后使用存储在顶点表上的数据填充 <code class="docutils literal notranslate"><span class="pre">source</span></code> 和 <code class="docutils literal notranslate"><span class="pre">target</span></code> 。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
 <span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
@@ -968,10 +854,10 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p>来自 OSM 并使用 <a class="reference external" href="https://github.com/pgRouting/osm2pgrouting">osm2pgrouting</a> 作为导入工具的数据附带路由拓扑。 请参阅 <a class="reference external" href="https://workshop.pgrouting.org/latest/en/basic/data.html">workshop</a> 上使用 <code class="docutils literal notranslate"><span class="pre">osm2pgrouting</span></code> 的示例。</p>
 </section>
 <section id="adjust-costs">
-<h3><a class="toc-backref" href="#id60" role="doc-backlink">调整成本</a><a class="headerlink" href="#adjust-costs" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id62" role="doc-backlink">调整成本</a><a class="headerlink" href="#adjust-costs" title="Link to this heading">¶</a></h3>
 <p>对于本示例， <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 值将是几何体长度的两倍。</p>
 <section id="update-costs-to-length-of-geometry">
-<h4><a class="toc-backref" href="#id61" role="doc-backlink">将成本更新为几何形状的长度</a><a class="headerlink" href="#update-costs-to-length-of-geometry" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id63" role="doc-backlink">将成本更新为几何形状的长度</a><a class="headerlink" href="#update-costs-to-length-of-geometry" title="Link to this heading">¶</a></h4>
 <p>假设样本数据中的 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 列表示：</p>
 <ul class="simple">
 <li><p>当边存在于图中时为 <span class="math notranslate nohighlight">\(1\)</span></p></li>
@@ -1020,7 +906,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="update-costs-based-on-codes">
-<h4><a class="toc-backref" href="#id62" role="doc-backlink">根据代码更新成本</a><a class="headerlink" href="#update-costs-based-on-codes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id64" role="doc-backlink">根据代码更新成本</a><a class="headerlink" href="#update-costs-based-on-codes" title="Link to this heading">¶</a></h4>
 <p>其他数据集可以有一列包含如下值</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">FT</span></code> 几何方向上的车流</p></li>
@@ -1092,21 +978,21 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <h2><a class="toc-backref" href="#id19" role="doc-backlink">检查路由拓扑</a><a class="headerlink" href="#check-the-routing-topology" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="id4">
 <ul class="simple">
-<li><p><a class="reference internal" href="#crossing-edges" id="id63">交叉边</a></p>
+<li><p><a class="reference internal" href="#crossing-edges" id="id65">交叉边</a></p>
 <ul>
-<li><p><a class="reference internal" href="#fixing-an-intersection" id="id64">Fixing an intersection</a></p></li>
+<li><p><a class="reference internal" href="#fixing-an-intersection" id="id66">修复交叉路口</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#touching-edges" id="id65">Touching edges</a></p>
+<li><p><a class="reference internal" href="#touching-edges" id="id67">相邻边线</a></p>
 <ul>
-<li><p><a class="reference internal" href="#fixing-a-gap" id="id66">Fixing a gap</a></p></li>
+<li><p><a class="reference internal" href="#fixing-a-gap" id="id68">弥补差距</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#connecting-components" id="id67">连接组件</a></p></li>
-<li><p><a class="reference internal" href="#contraction-of-a-graph" id="id68">图的收缩</a></p>
+<li><p><a class="reference internal" href="#connecting-components" id="id69">连接组件</a></p></li>
+<li><p><a class="reference internal" href="#contraction-of-a-graph" id="id70">图的收缩</a></p>
 <ul>
-<li><p><a class="reference internal" href="#dead-ends" id="id69">死端</a></p></li>
-<li><p><a class="reference internal" href="#linear-edges" id="id70">线性边</a></p></li>
+<li><p><a class="reference internal" href="#dead-ends" id="id71">死端</a></p></li>
+<li><p><a class="reference internal" href="#linear-edges" id="id72">线性边</a></p></li>
 </ul>
 </li>
 </ul>
@@ -1122,7 +1008,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <li><p>以及 pgRouting 用户（即应用程序开发人员）可能遇到的许多其他问题。</p></li>
 </ul>
 <section id="crossing-edges">
-<h3><a class="toc-backref" href="#id63" role="doc-backlink">交叉边</a><a class="headerlink" href="#crossing-edges" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id65" role="doc-backlink">交叉边</a><a class="headerlink" href="#crossing-edges" title="Link to this heading">¶</a></h3>
 <p>要获取交叉边：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
@@ -1161,11 +1047,10 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p>对交叉点进行一一分析后，对于需要局部修复的交叉点，需要 <a class="reference external" href="https://postgis.net/docs/ST_Split.html">分割</a> 边。</p>
 <p>需要将新边添加到边表中，需要更新新边中的其余属性，需要删除旧边并需要更新路由拓扑。</p>
 <section id="fixing-an-intersection">
-<h4><a class="toc-backref" href="#id64" role="doc-backlink">Fixing an intersection</a><a class="headerlink" href="#fixing-an-intersection" title="Link to this heading">¶</a></h4>
-<p>In this example the original edge table will be used to store the additional
-geometries.</p>
-<p class="rubric">An example use without results</p>
-<p>Routing from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(18\)</span> gives no solution.</p>
+<h4><a class="toc-backref" href="#id66" role="doc-backlink">修复交叉路口</a><a class="headerlink" href="#fixing-an-intersection" title="Link to this heading">¶</a></h4>
+<p>在此示例中，原始边线表将用于存储新增的几何图形。</p>
+<p class="rubric">使用示例（无结果输出）</p>
+<p>从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(18\)</span> 的路由无解。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1174,7 +1059,7 @@ geometries.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Analyze the network for intersections.</p>
+<p class="rubric">分析路网的相交情况。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
   <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="n">id1</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span> <span class="n">id2</span><span class="p">,</span>
   <span class="n">ST_AsText</span><span class="p">(</span><span class="n">ST_Intersection</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">))</span> <span class="n">AS</span> <span class="n">point</span>
@@ -1187,26 +1072,23 @@ geometries.</p>
 
 </pre></div>
 </div>
-<p>The analysis tell us that the network has an intersection.</p>
-<p class="rubric">Prepare tables</p>
-<p>Additional columns to control the origin of the segments.</p>
+<p>分析结果表明该路网存在交叉点。</p>
+<p class="rubric">准备数据表</p>
+<p>用于控制路段来源的附加列。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">old_id</span> <span class="n">BIGINT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
-<p class="rubric">Adding new segments.</p>
-<p>Calling <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> and adding the new segments to the edges
-table.</p>
+<p class="rubric">添加新线段。</p>
+<p>调用 <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> 并将新的线段添加到边缘表中。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span>
 <span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">4</span>
 </pre></div>
 </div>
-<p class="rubric">Update other values</p>
-<p>In this example only <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> are updated, where they are
-based on the length of the geometry and the directionality is kept using the
-<code class="docutils literal notranslate"><span class="pre">sign</span></code> function.</p>
+<p class="rubric">更新其他数值</p>
+<p>在此示例中，仅更新了 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 列，其值基于几何长度并通过 <code class="docutils literal notranslate"><span class="pre">sign</span></code> 函数保持方向性。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">costs</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">sign</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">cost</span><span class="p">)</span> <span class="o">*</span> <span class="n">ST_Length</span><span class="p">(</span><span class="n">e2</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">cost</span><span class="p">,</span>
@@ -1219,8 +1101,8 @@ based on the length of the geometry and the directionality is kept using the
 <span class="n">UPDATE</span> <span class="mi">4</span>
 </pre></div>
 </div>
-<p class="rubric">Update the topology</p>
-<p>Insert the new vertices if any.</p>
+<p class="rubric">更新拓扑结构</p>
+<p>如有新顶点，则插入。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">new_vertex</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="n">ev</span><span class="o">.*</span>
@@ -1232,7 +1114,7 @@ based on the length of the geometry and the directionality is kept using the
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>Update source and target information on the edges table.</p>
+<p>更新边缘表中的源信息和目标信息。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
 <span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
@@ -1247,8 +1129,8 @@ based on the length of the geometry and the directionality is kept using the
 <span class="n">UPDATE</span> <span class="mi">4</span>
 </pre></div>
 </div>
-<p class="rubric">The example has results</p>
-<p>Routing from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(18\)</span> gives a solution.</p>
+<p class="rubric">示例结果</p>
+<p>从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(18\)</span> 的路径给出了解决方案。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1266,8 +1148,8 @@ based on the length of the geometry and the directionality is kept using the
 </section>
 </section>
 <section id="touching-edges">
-<h3><a class="toc-backref" href="#id65" role="doc-backlink">Touching edges</a><a class="headerlink" href="#touching-edges" title="Link to this heading">¶</a></h3>
-<p>Visually the edges seem to be connected, but internally they are not.</p>
+<h3><a class="toc-backref" href="#id67" role="doc-backlink">相邻边线</a><a class="headerlink" href="#touching-edges" title="Link to this heading">¶</a></h3>
+<p>从视觉上看，这些边缘似乎是相连的，但从内部看却并非如此。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">where</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">17</span><span class="p">);</span>
  <span class="nb">id</span> <span class="o">|</span>               <span class="n">st_astext</span>
@@ -1281,19 +1163,17 @@ based on the length of the geometry and the directionality is kept using the
 <figure class="align-default">
 <img alt="_images/touching_edges.png" src="_images/touching_edges.png" />
 </figure>
-<p>The validity of the information is application dependent.</p>
+<p>信息的有效性取决于应用情况。</p>
 <ul class="simple">
-<li><p>Maybe there is a small barrier for vehicles but not for pedestrians.</p></li>
+<li><p>也许对车辆有一个小障碍，但对行人却没有。</p></li>
 </ul>
-<p>Once analyzed one by one the touchings, for the ones that need a local fix,
-the edges need to be <a class="reference external" href="https://postgis.net/docs/ST_Split.html">split</a>.</p>
+<p>逐条分析接触边后，需局部修复的边线应通过 <a class="reference external" href="https://postgis.net/docs/ST_Split.html">split</a> 。</p>
 <p>需要将新边添加到边表中，需要更新新边中的其余属性，需要删除旧边并需要更新路由拓扑。</p>
 <section id="fixing-a-gap">
-<h4><a class="toc-backref" href="#id66" role="doc-backlink">Fixing a gap</a><a class="headerlink" href="#fixing-a-gap" title="Link to this heading">¶</a></h4>
-<p>In this example the original edge table will be used to store the additional
-geometries.</p>
-<p class="rubric">An example use without results</p>
-<p>Routing from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(2\)</span> gives no solution.</p>
+<h4><a class="toc-backref" href="#id68" role="doc-backlink">弥补差距</a><a class="headerlink" href="#fixing-a-gap" title="Link to this heading">¶</a></h4>
+<p>在此示例中，原始边线表将用于存储新增的几何图形。</p>
+<p class="rubric">使用示例（无结果输出）</p>
+<p>从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(2\)</span> 的路由无解。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span> <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1302,7 +1182,7 @@ geometries.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Analyze the network for gaps.</p>
+<p class="rubric">分析路网的断点情况。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">deadends</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="n">AS</span> <span class="n">edge</span><span class="p">,</span> <span class="n">geom</span> <span class="n">AS</span> <span class="n">vgeom</span>
@@ -1319,25 +1199,23 @@ geometries.</p>
 
 </pre></div>
 </div>
-<p>The analysis tell us that the network has a gap.</p>
-<p class="rubric">Prepare tables</p>
-<p>Additional columns to control the origin of the segments.</p>
+<p>分析表明该路网存在断点。</p>
+<p class="rubric">准备数据表</p>
+<p>用于控制路段来源的附加列。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">old_id</span> <span class="n">BIGINT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
-<p class="rubric">Adding new segments.</p>
-<p>Calling <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> and adding the new segments to the edges table.</p>
+<p class="rubric">添加新线段。</p>
+<p>调用 <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> 并将新的线段添加到边缘表中。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span>
 <span class="n">FROM</span> <span class="n">pgr_separateTouching</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p class="rubric">Update other values</p>
-<p>In this example only <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> are updated, where they are
-based on the length of the geometry and the directionality is kept using the
-<code class="docutils literal notranslate"><span class="pre">sign</span></code> function.</p>
+<p class="rubric">更新其他数值</p>
+<p>在此示例中，仅更新了 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 列，其值基于几何长度并通过 <code class="docutils literal notranslate"><span class="pre">sign</span></code> 函数保持方向性。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">costs</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="n">e2</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
@@ -1352,8 +1230,8 @@ based on the length of the geometry and the directionality is kept using the
 <span class="n">UPDATE</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p class="rubric">Update the topology</p>
-<p>Insert the new vertices if any.</p>
+<p class="rubric">更新拓扑结构</p>
+<p>如有新顶点，则插入。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">new_vertex</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="n">ev</span><span class="o">.*</span>
   <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges WHERE old_id IS NOT NULL&#39;</span><span class="p">)</span> <span class="n">ev</span>
@@ -1366,7 +1244,7 @@ based on the length of the geometry and the directionality is kept using the
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<p>Update source and target information on the edges table.</p>
+<p>更新边缘表中的源信息和目标信息。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
 <span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
@@ -1381,8 +1259,8 @@ based on the length of the geometry and the directionality is kept using the
 <span class="n">UPDATE</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p class="rubric">The example has results</p>
-<p>Routing from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(2\)</span> gives a solution.</p>
+<p class="rubric">示例结果</p>
+<p>从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(2\)</span> 的路径给出了解决方案。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1400,7 +1278,7 @@ based on the length of the geometry and the directionality is kept using the
 </section>
 </section>
 <section id="connecting-components">
-<h3><a class="toc-backref" href="#id67" role="doc-backlink">连接组件</a><a class="headerlink" href="#connecting-components" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id69" role="doc-backlink">连接组件</a><a class="headerlink" href="#connecting-components" title="Link to this heading">¶</a></h3>
 <p>要获取图的连通性：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -1428,7 +1306,7 @@ based on the length of the geometry and the directionality is kept using the
 
 </pre></div>
 </div>
-<p>There are three basic ways to connect components:</p>
+<p>连接组件有三种基本方法：</p>
 <ul class="simple">
 <li><p>从顶点到边的起点</p></li>
 <li><p>从顶点到边的终点</p></li>
@@ -1438,9 +1316,8 @@ based on the length of the geometry and the directionality is kept using the
 </ul>
 </li>
 </ul>
-<p>In this example <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> and <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> will
-be used.</p>
-<p class="rubric">Get the connectivity</p>
+<p>在这个例子中，将使用 <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> 和 <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> 。</p>
+<p class="rubric">获取连接性</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
 <span class="p">);</span>
@@ -1467,18 +1344,16 @@ be used.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Prepare tables</p>
-<p>In this example: the edges table will need an additional column and the vertex
-table will be rebuilt completely.</p>
+<p class="rubric">准备数据表</p>
+<p>在本例中：边表需要增加一列，顶点表将完全重建。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">old_id</span> <span class="n">BIGINT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">vertices</span><span class="p">;</span>
 <span class="n">DROP</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
-<p class="rubric">Insert new edges</p>
-<p>Using <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> and <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> insert the
-results into the edges table.</p>
+<p class="rubric">插入新边线</p>
+<p>使用 <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> 和 <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> 将结果插入边缘表。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM edges&#39;</span><span class="p">)</span>
 <span class="n">UNION</span>
@@ -1487,13 +1362,13 @@ results into the edges table.</p>
 </pre></div>
 </div>
 <p class="rubric">创建顶点表</p>
-<p>Using <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> create the table.</p>
+<p>使用 <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> 创建该表。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">AS</span>
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">18</span>
 </pre></div>
 </div>
-<p class="rubric">Update the topology</p>
+<p class="rubric">更新拓扑结构</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
 <span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
@@ -1508,10 +1383,8 @@ results into the edges table.</p>
 <span class="n">UPDATE</span> <span class="mi">24</span>
 </pre></div>
 </div>
-<p class="rubric">Update other values</p>
-<p>In this example only <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> are updated, where they are
-based on the length of the geometry and the directionality is kept using the
-<code class="docutils literal notranslate"><span class="pre">sign</span></code> function.</p>
+<p class="rubric">更新其他数值</p>
+<p>在此示例中，仅更新了 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 列，其值基于几何长度并通过 <code class="docutils literal notranslate"><span class="pre">sign</span></code> 函数保持方向性。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">e</span>
   <span class="n">SET</span> <span class="n">cost</span>          <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span><span class="o">*</span><span class="n">sign</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">cost</span><span class="p">),</span>
       <span class="n">reverse_cost</span>  <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span><span class="o">*</span><span class="n">sign</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">reverse_cost</span><span class="p">)</span>
@@ -1549,13 +1422,13 @@ based on the length of the geometry and the directionality is kept using the
 </div>
 </section>
 <section id="contraction-of-a-graph">
-<h3><a class="toc-backref" href="#id68" role="doc-backlink">图的收缩</a><a class="headerlink" href="#contraction-of-a-graph" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id70" role="doc-backlink">图的收缩</a><a class="headerlink" href="#contraction-of-a-graph" title="Link to this heading">¶</a></h3>
 <p>可以使用 <a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a> 来减小图形的大小</p>
 <p>何时收缩将取决于图的大小、处理时间、数据的正确性、最终应用程序或任何其他未提及的因素。</p>
 <p>确定收缩是否有用的一个相当好的方法是根据死端的数量和/或线性边的数量。</p>
 <p>有关如何收缩以及如何使用收缩图的完整方法在 <a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a> 中进行了描述</p>
 <section id="dead-ends">
-<h4><a class="toc-backref" href="#id69" role="doc-backlink">死端</a><a class="headerlink" href="#dead-ends" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id71" role="doc-backlink">死端</a><a class="headerlink" href="#dead-ends" title="Link to this heading">¶</a></h4>
 <p>获取死端：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span>
 <span class="n">WHERE</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -1571,17 +1444,16 @@ based on the length of the geometry and the directionality is kept using the
 <p>死端（Dead End）的形成条件</p>
 <ul class="simple">
 <li><p>死端顶点（Dead End Vertex）的拓扑定义。</p></li>
-<li><p>The vertex is on the limit of the imported graph.</p>
+<li><p>该顶点位于导入图形的边界处。</p>
 <ul>
 <li><p>如果导入了更大的图，则该顶点可能不会是死端</p></li>
 </ul>
 </li>
 </ul>
 <p>节点 <span class="math notranslate nohighlight">\(4\)</span> 在查询中是一个死端，即使从视觉上看它是三条边的终点。</p>
-<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 190.20000000000002px; height: 173.20000000000002px;" />
-</a>
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 190.20000000000002px; height: 173.20000000000002px;" /></a>
 <p class="rubric">节点 <span class="math notranslate nohighlight">\(4\)</span> 是死端还是非死端？</p>
-<div class="graphviz"><img src="_images/graphviz-0efc1c6f9c1a1176ac42aaa8de0be1e9186f8539.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-2f6ce9ee9f8bfbf56f4d7ac09d49b3451cf45119.png" alt="graph G {
   1,2,4,5,9,13,14 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   3,6,7,8,10,11,12,15,16,17 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
 
@@ -1616,12 +1488,11 @@ based on the length of the geometry and the directionality is kept using the
 </li>
 <li><p>是否有一个大悬崖，从鹰的角度看，死胡同靠近该路段？</p></li>
 </ul>
-<p>Depending on the answer, modification of the data might be needed.</p>
-<p>When there are many dead ends, to speed up processing, the <a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a>
-functions can be used to contract the graph.</p>
+<p>根据分析结果，可能需要对数据进行修改。</p>
+<p>当存在大量断头节点时，可调用 <a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a> 函数族收缩图形结构以加速处理。</p>
 </section>
 <section id="linear-edges">
-<h4><a class="toc-backref" href="#id70" role="doc-backlink">线性边</a><a class="headerlink" href="#linear-edges" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id72" role="doc-backlink">线性边</a><a class="headerlink" href="#linear-edges" title="Link to this heading">¶</a></h4>
 <p>要获得线性边：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span>
 <span class="n">WHERE</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
@@ -1636,7 +1507,7 @@ functions can be used to contract the graph.</p>
 
 </pre></div>
 </div>
-<div class="graphviz"><img src="_images/graphviz-fcaa0541303f92371c3cf508089a4be8712de558.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-d42c82922271693b07f417cb2b9f6fd56854c39d.png" alt="graph G {
   3,15,17 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,2,4,5,6,7,8,9,10,11,12,13,14,16 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
 
@@ -1661,9 +1532,7 @@ functions can be used to contract the graph.</p>
   17 [pos=&quot;4,3!&quot;];
 }" class="graphviz" /></div>
 <p>当这些顶点表示减速带、停止信号，并且应用程序将其纳入考虑时，这些线性顶点是正确的。</p>
-<p>When there are many linear vertices, that need not to be taken into account, to
-speed up the processing, the <a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a> functions can be used to
-contract the problem.</p>
+<p>当图中存在许多不需要考虑的线性顶点时，为了加速处理，可以使用 <a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a> 函数来简化问题。</p>
 </section>
 </section>
 </section>
@@ -1682,7 +1551,7 @@ contract the problem.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">Optional</span> <span class="pre">parameters</span></code> ：是非强制命名参数，省略时具有默认值。</p></li>
 </ul>
 <p>强制参数是位置参数，可选参数是命名参数。</p>
-<p>例如，对于这个 <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra`</span></a> 签名：</p>
+<p>例如，对于这个 <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> 签名：</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <p>pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
@@ -1724,20 +1593,20 @@ contract the problem.</p>
 <h2><a class="toc-backref" href="#id25" role="doc-backlink">函数的重载</a><a class="headerlink" href="#function-s-overloads" title="Link to this heading">¶</a></h2>
 <p>一个函数可能有不同的重载。 最常见的是：</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#one-to-one">一对一</a></p></li>
-<li><p><a class="reference internal" href="#one-to-many">一对多</a></p></li>
-<li><p><a class="reference internal" href="#many-to-one">多对一</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">多对多</a></p></li>
+<li><p><a class="reference internal" href="#one-to-one">One to One</a></p></li>
+<li><p><a class="reference internal" href="#one-to-many">One to Many</a></p></li>
+<li><p><a class="reference internal" href="#many-to-one">Many to One</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 <li><p><a class="reference internal" href="#combinations">组合</a></p></li>
 </ul>
 <p>根据过载，参数类型会发生变化。</p>
 <ul class="simple">
 <li><p><strong>一</strong>: <strong>ANY-INTEGER</strong></p></li>
-<li><p><strong>多</strong>: <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></li>
+<li><p><strong>Many</strong>: <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></li>
 </ul>
 <p>根据函数的不同，重载可能会有所不同。 但参数类型改变的概念保持不变。</p>
 <section id="one-to-one">
-<h3><a class="toc-backref" href="#id26" role="doc-backlink">一对一</a><a class="headerlink" href="#one-to-one" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id26" role="doc-backlink">One to One</a><a class="headerlink" href="#one-to-one" title="Link to this heading">¶</a></h3>
 <p>当路由来自：</p>
 <ul class="simple">
 <li><p>从 <strong>一</strong> 起始顶点</p></li>
@@ -1745,7 +1614,7 @@ contract the problem.</p>
 </ul>
 </section>
 <section id="one-to-many">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">一对多</a><a class="headerlink" href="#one-to-many" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">One to Many</a><a class="headerlink" href="#one-to-many" title="Link to this heading">¶</a></h3>
 <p>当路由来自：</p>
 <ul class="simple">
 <li><p>从 <strong>一</strong> 起始顶点</p></li>
@@ -1753,7 +1622,7 @@ contract the problem.</p>
 </ul>
 </section>
 <section id="many-to-one">
-<h3><a class="toc-backref" href="#id28" role="doc-backlink">多对一</a><a class="headerlink" href="#many-to-one" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">Many to One</a><a class="headerlink" href="#many-to-one" title="Link to this heading">¶</a></h3>
 <p>当路由来自：</p>
 <ul class="simple">
 <li><p>从 <strong>多</strong> 起始顶点</p></li>
@@ -1761,7 +1630,7 @@ contract the problem.</p>
 </ul>
 </section>
 <section id="many-to-many">
-<h3><a class="toc-backref" href="#id29" role="doc-backlink">多对多</a><a class="headerlink" href="#many-to-many" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">Many to Many</a><a class="headerlink" href="#many-to-many" title="Link to this heading">¶</a></h3>
 <p>当路由来自：</p>
 <ul class="simple">
 <li><p>从 <strong>多</strong> 起始顶点</p></li>
@@ -1784,20 +1653,20 @@ contract the problem.</p>
 <h2><a class="toc-backref" href="#id31" role="doc-backlink">内部查询</a><a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="id5">
 <ul class="simple">
-<li><p><a class="reference internal" href="#edges-sql" id="id71">Edges SQL</a></p>
+<li><p><a class="reference internal" href="#edges-sql" id="id73">Edges SQL</a></p>
 <ul>
-<li><p><a class="reference internal" href="#general" id="id72">常规</a></p></li>
-<li><p><a class="reference internal" href="#general-without-id" id="id73">一般没有 <code class="docutils literal notranslate"><span class="pre">id</span></code></a></p></li>
-<li><p><a class="reference internal" href="#general-with-x-y" id="id74">通常带有（X,Y)</a></p></li>
-<li><p><a class="reference internal" href="#flow" id="id75">流</a></p></li>
+<li><p><a class="reference internal" href="#general" id="id74">常规</a></p></li>
+<li><p><a class="reference internal" href="#general-without-id" id="id75">一般没有 <code class="docutils literal notranslate"><span class="pre">id</span></code></a></p></li>
+<li><p><a class="reference internal" href="#general-with-x-y" id="id76">通常带有（X,Y)</a></p></li>
+<li><p><a class="reference internal" href="#flow" id="id77">流</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#combinations-sql" id="id76">分量 SQL</a></p></li>
-<li><p><a class="reference internal" href="#restrictions-sql" id="id77">Restrictions SQL</a></p></li>
-<li><p><a class="reference internal" href="#points-sql" id="id78">Points SQL</a></p></li>
+<li><p><a class="reference internal" href="#combinations-sql" id="id78">分量 SQL</a></p></li>
+<li><p><a class="reference internal" href="#restrictions-sql" id="id79">Restrictions SQL</a></p></li>
+<li><p><a class="reference internal" href="#points-sql" id="id80">Points SQL</a></p></li>
 </ul>
 </nav>
-<p>有几种有效的内部查询类型，返回的列也取决于函数。哪种类型的内部查询将取决于函数的要求。为了简化类型的种类，使用了 <strong>ANY-INTEGER**和**ANY-NUMERICAL</strong>。</p>
+<p>有几种有效的内部查询类型，返回的列也取决于函数。哪种类型的内部查询将取决于函数的要求。为了简化类型的种类，使用了 <strong>ANY-INTEGER</strong> 和 <strong>ANY-NUMERICAL</strong> 。</p>
 <p>其中：</p>
 <dl class="field-list simple">
 <dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
@@ -1808,9 +1677,9 @@ contract the problem.</p>
 </dd>
 </dl>
 <section id="edges-sql">
-<h3><a class="toc-backref" href="#id71" role="doc-backlink">Edges SQL</a><a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id73" role="doc-backlink">Edges SQL</a><a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
 <section id="general">
-<h4><a class="toc-backref" href="#id72" role="doc-backlink">常规</a><a class="headerlink" href="#general" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id74" role="doc-backlink">常规</a><a class="headerlink" href="#general" title="Link to this heading">¶</a></h4>
 <p class="rubric">边 SQL</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - 函数族</span></a></p></li>
@@ -1854,14 +1723,14 @@ contract the problem.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -1878,7 +1747,7 @@ contract the problem.</p>
 </dl>
 </section>
 <section id="general-without-id">
-<h4><a class="toc-backref" href="#id73" role="doc-backlink">一般没有 <code class="docutils literal notranslate"><span class="pre">id</span></code></a><a class="headerlink" href="#general-without-id" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id75" role="doc-backlink">一般没有 <code class="docutils literal notranslate"><span class="pre">id</span></code></a><a class="headerlink" href="#general-without-id" title="Link to this heading">¶</a></h4>
 <p class="rubric">边 SQL</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="allpairs-family.html"><span class="doc">All Pairs - 函数族</span></a></p></li>
@@ -1911,14 +1780,14 @@ contract the problem.</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -1935,7 +1804,7 @@ contract the problem.</p>
 </dl>
 </section>
 <section id="general-with-x-y">
-<h4><a class="toc-backref" href="#id74" role="doc-backlink">通常带有（X,Y)</a><a class="headerlink" href="#general-with-x-y" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id76" role="doc-backlink">通常带有（X,Y)</a><a class="headerlink" href="#general-with-x-y" title="Link to this heading">¶</a></h4>
 <p class="rubric">边 SQL</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - 函数族</span></a></p></li>
@@ -1974,9 +1843,9 @@ contract the problem.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -1985,7 +1854,7 @@ contract the problem.</p>
 <td><p>-1</p></td>
 <td><p>边 (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重，</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -2022,7 +1891,7 @@ contract the problem.</p>
 </dl>
 </section>
 <section id="flow">
-<h4><a class="toc-backref" href="#id75" role="doc-backlink">流</a><a class="headerlink" href="#flow" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id77" role="doc-backlink">流</a><a class="headerlink" href="#flow" title="Link to this heading">¶</a></h4>
 <p class="rubric">用于流数据系列 ( <a class="reference internal" href="flow-family.html"><span class="doc">Flow - 函数族</span></a>) 的Edges SQL</p>
 <p class="rubric">边 SQL</p>
 <ul class="simple">
@@ -2063,14 +1932,14 @@ contract the problem.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -2087,8 +1956,8 @@ contract the problem.</p>
 </dl>
 <p class="rubric">Edges SQL 适用于 <a class="reference internal" href="flow-family.html"><span class="doc">Flow - 函数族</span></a> 的以下函数</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - 实验</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_maxFlowMinCost_Cost.html"><span class="doc">pgr_maxFlowMinCost_Cost - 实验</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - 实验性</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_maxFlowMinCost_Cost.html"><span class="doc">pgr_maxFlowMinCost_Cost - 实验性</span></a></p></li>
 </ul>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -2125,7 +1994,7 @@ contract the problem.</p>
 <td></td>
 <td><p>边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的容量</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -2134,7 +2003,7 @@ contract the problem.</p>
 <td><p>-1</p></td>
 <td><p>边 (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的容量</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -2162,7 +2031,7 @@ contract the problem.</p>
 </section>
 </section>
 <section id="combinations-sql">
-<h3><a class="toc-backref" href="#id76" role="doc-backlink">分量 SQL</a><a class="headerlink" href="#combinations-sql" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id78" role="doc-backlink">分量 SQL</a><a class="headerlink" href="#combinations-sql" title="Link to this heading">¶</a></h3>
 <p class="rubric">结合签名使用</p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -2195,7 +2064,7 @@ contract the problem.</p>
 </dl>
 </section>
 <section id="restrictions-sql">
-<h3><a class="toc-backref" href="#id77" role="doc-backlink">Restrictions SQL</a><a class="headerlink" href="#restrictions-sql" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id79" role="doc-backlink">Restrictions SQL</a><a class="headerlink" href="#restrictions-sql" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 10.3%" />
@@ -2230,7 +2099,7 @@ contract the problem.</p>
 </dl>
 </section>
 <section id="points-sql">
-<h3><a class="toc-backref" href="#id78" role="doc-backlink">Points SQL</a><a class="headerlink" href="#points-sql" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id80" role="doc-backlink">Points SQL</a><a class="headerlink" href="#points-sql" title="Link to this heading">¶</a></h3>
 <p class="rubric">用于Points SQL</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - 函数族</span></a></p></li>
@@ -2269,7 +2138,8 @@ contract the problem.</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>&lt;0,1&gt; 中的值指示距边缘第一个端点的相对位置。</p></td>
+<td><p>Value in &lt;0,1&gt; that indicates the relative position from the first end
+point of the edge.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
@@ -2317,7 +2187,7 @@ contract the problem.</p>
 <section id="parameters-for-the-via-functions">
 <h3><a class="toc-backref" href="#id37" role="doc-backlink">Via 函数的参数</a><a class="headerlink" href="#parameters-for-the-via-functions" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia -拟议</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia</span></a></p></li>
 </ul>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -2348,7 +2218,7 @@ contract the problem.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>当为 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，图被视为`有向`图</p></li>
+<li><p>当为 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，图被视为 <cite>有向</cite> 图</p></li>
 <li><p>当为 <code class="docutils literal notranslate"><span class="pre">false</span></code> 时，图被视为无向图。</p></li>
 </ul>
 </td>
@@ -2377,7 +2247,7 @@ contract the problem.</p>
 <section id="for-the-trsp-functions">
 <h3><a class="toc-backref" href="#id38" role="doc-backlink">对于 TRSP 函数</a><a class="headerlink" href="#for-the-trsp-functions" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a></p></li>
 </ul>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -2434,23 +2304,32 @@ contract the problem.</p>
 <h2><a class="toc-backref" href="#id39" role="doc-backlink">结果列</a><a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="id6">
 <ul class="simple">
-<li><p><a class="reference internal" href="#result-columns-for-a-path" id="id79">路径的结果列</a></p></li>
-<li><p><a class="reference internal" href="#multiple-paths" id="id80">多条路径</a></p>
-<ul>
-<li><p><a class="reference internal" href="#selective-for-multiple-paths" id="id81">多路径选择性。</a></p></li>
-<li><p><a class="reference internal" href="#non-selective-for-multiple-paths" id="id82">多路径非选择性</a></p></li>
-</ul>
-</li>
+<li><p><a class="reference internal" href="#result-columns-for-single-path-functions" id="id81">Result columns for single path functions</a></p></li>
+<li><p><a class="reference internal" href="#result-columns-for-multiple-paths-functions" id="id82">Result columns for multiple paths functions</a></p></li>
 <li><p><a class="reference internal" href="#result-columns-for-cost-functions" id="id83">成本函数结果列</a></p></li>
 <li><p><a class="reference internal" href="#result-columns-for-flow-functions" id="id84">流量函数的结果列</a></p></li>
 <li><p><a class="reference internal" href="#result-columns-for-spanning-tree-functions" id="id85">生成树函数的结果列</a></p></li>
+<li><p><a class="reference internal" href="#result-columns-for-simple-spanning-tree-functions" id="id86">Result columns for simple spanning tree functions</a></p></li>
 </ul>
 </nav>
 <p>根据函数的不同，返回的列有多种。</p>
-<section id="result-columns-for-a-path">
-<h3><a class="toc-backref" href="#id79" role="doc-backlink">路径的结果列</a><a class="headerlink" href="#result-columns-for-a-path" title="Link to this heading">¶</a></h3>
-<p class="rubric">在返回一个路径解的函数中使用</p>
-<p>返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</p>
+<section id="result-columns-for-single-path-functions">
+<h3><a class="toc-backref" href="#id81" role="doc-backlink">Result columns for single path functions</a><a class="headerlink" href="#result-columns-for-single-path-functions" title="Link to this heading">¶</a></h3>
+<p>Used in functions that return one path solution per departure and destination.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bellmanFord.html"><span class="doc">pgr_bellmanFord - 实验性</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_binaryBreadthFirstSearch.html"><span class="doc">pgr_binaryBreadthFirstSearch - 实验性</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - 提议中</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_edwardMoore.html"><span class="doc">pgr_edwardMoore - 实验性</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a></p></li>
+</ul>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -2470,154 +2349,7 @@ contract the problem.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong>。</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>起始顶点的标识符。 当查询中有多个起始向量时返回。</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#many-to-one">多对一</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">多对多</a></p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>结束顶点的标识符。 当查询中有多个结束顶点时返回。</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#one-to-many">一对多</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">多对多</a></p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 路径中节点的标识符。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>用于从路径序列中的 <code class="docutils literal notranslate"><span class="pre">node</span></code> 到下一个节点的边的标识符。 <strong>-1</strong> 表示路径的最后一个节点。</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>从使用 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 的 <code class="docutils literal notranslate"><span class="pre">node</span></code> 遍历到路径序列中的下一个节点的成本。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的总成本。</p></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">用于以下函数：</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - 拟议</span></a></p></li>
-</ul>
-<p>返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_pid]</span> <span class="pre">[,</span> <span class="pre">end_pid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</p>
-<table class="docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 14.0%" />
-<col style="width: 16.3%" />
-<col style="width: 69.8%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>列</p></th>
-<th class="head"><p>类型</p></th>
-<th class="head"><p>描述</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>从 <strong>1</strong> 开始的顺序值。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>路径中的相对位置。</p>
-<ul class="simple">
-<li><p><strong>1</strong> 对于路径的第一行。</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_pid</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>路径起始顶点/点的标识符。</p>
-<ul class="simple">
-<li><p>当正数时是起始顶点的标识符。</p></li>
-<li><p>当负数时是起点的标识符。</p></li>
-<li><p><a class="reference internal" href="#many-to-one">多对一</a> 和 <a class="reference internal" href="#many-to-many">多对多</a> 的返回值</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_pid</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>路径结束顶点/点的标识符。</p>
-<ul class="simple">
-<li><p>当正数时是结束顶点的标识符。</p></li>
-<li><p>当负数时是终点的标识符。</p></li>
-<li><p>返回 <a class="reference internal" href="#one-to-many">一对多</a> 和 <a class="reference internal" href="#many-to-many">多对多</a></p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>从 <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">end_pid</span></code> 路径中节点的标识符。</p>
-<ul class="simple">
-<li><p>当正数时是顶点的标识符。</p></li>
-<li><p>当负数时是a点的标识符。</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>用于从路径序列中的 <code class="docutils literal notranslate"><span class="pre">node</span></code> 到下一个节点的边的标识符。</p>
-<ul class="simple">
-<li><p><strong>-1</strong> 表示路径的最后一行。</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>从使用 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 的 <code class="docutils literal notranslate"><span class="pre">node</span></code> 遍历到路径序列中的下一个节点的成本。</p>
-<ul class="simple">
-<li><p><strong>0</strong> 表示路径的第一行。</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的总成本。</p>
-<ul class="simple">
-<li><p><strong>0</strong> 表示路径的第一行。</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">用于以下函数：</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - 拟议</span></a></p></li>
-</ul>
-<p>返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 14.0%" />
-<col style="width: 16.3%" />
-<col style="width: 69.8%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>列</p></th>
-<th class="head"><p>类型</p></th>
-<th class="head"><p>描述</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>从 <strong>1</strong> 开始的顺序值。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong>。</p></td>
+<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong> 。</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -2645,13 +2377,21 @@ contract the problem.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns have negative values, the identifier is for
+a Point.</p>
+</div>
 </section>
-<section id="multiple-paths">
-<h3><a class="toc-backref" href="#id80" role="doc-backlink">多条路径</a><a class="headerlink" href="#multiple-paths" title="Link to this heading">¶</a></h3>
-<section id="selective-for-multiple-paths">
-<h4><a class="toc-backref" href="#id81" role="doc-backlink">多路径选择性。</a><a class="headerlink" href="#selective-for-multiple-paths" title="Link to this heading">¶</a></h4>
-<p>这些列取决于函数调用。</p>
-<p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 集合</p>
+<section id="result-columns-for-multiple-paths-functions">
+<h3><a class="toc-backref" href="#id82" role="doc-backlink">Result columns for multiple paths functions</a><a class="headerlink" href="#result-columns-for-multiple-paths-functions" title="Link to this heading">¶</a></h3>
+<p>Used in functions that return many paths solutions per departure and destination.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a></p></li>
+</ul>
+<p>返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -2679,82 +2419,7 @@ contract the problem.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong>。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>起始顶点的标识符。 当查询中有多个起始向量时返回。</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#many-to-one">多对一</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">多对多</a></p></li>
-<li><p><a class="reference internal" href="#combinations">组合</a></p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>结束顶点的标识符。 当查询中有多个结束顶点时返回。</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#one-to-many">一对多</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">多对多</a></p></li>
-<li><p><a class="reference internal" href="#combinations">组合</a></p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 路径中节点的标识符。</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>用于从路径序列中的 <code class="docutils literal notranslate"><span class="pre">node</span></code> 到下一个节点的边的标识符。 <strong>-1</strong> 表示路径的最后一个节点。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>从使用 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 的 <code class="docutils literal notranslate"><span class="pre">node</span></code> 遍历到路径序列中的下一个节点的成本。</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的总成本。</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="non-selective-for-multiple-paths">
-<h4><a class="toc-backref" href="#id82" role="doc-backlink">多路径非选择性</a><a class="headerlink" href="#non-selective-for-multiple-paths" title="Link to this heading">¶</a></h4>
-<p>无论调用如何，都会返回所有列。</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a></p></li>
-</ul>
-<p>返回集合``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``</p>
-<table class="docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 14.0%" />
-<col style="width: 16.3%" />
-<col style="width: 69.8%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>列</p></th>
-<th class="head"><p>类型</p></th>
-<th class="head"><p>描述</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>从 <strong>1</strong> 开始的顺序值。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_id</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>路径标识符。</p>
-<ul class="simple">
-<li><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 的第一个路径的值为 <strong>1</strong> 。</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong>。</p></td>
+<td><p>路径中的相对位置。 路径开头的值为 <strong>1</strong> 。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -2782,11 +2447,15 @@ contract the problem.</p>
 </tr>
 </tbody>
 </table>
-</section>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> or <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns have negative values, the identifier is for
+a Point.</p>
+</div>
 </section>
 <section id="result-columns-for-cost-functions">
 <h3><a class="toc-backref" href="#id83" role="doc-backlink">成本函数结果列</a><a class="headerlink" href="#result-columns-for-cost-functions" title="Link to this heading">¶</a></h3>
-<p class="rubric">用于以下函数</p>
+<p>Used by:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="cost-category.html"><span class="doc">成本 - 类别</span></a></p></li>
 <li><p><a class="reference internal" href="costMatrix-category.html"><span class="doc">成本矩阵 - 类别</span></a></p></li>
@@ -2821,13 +2490,13 @@ contract the problem.</p>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">备注</p>
 <p>当 start_vid 或 end_vid 列具有负值时，标识符用于点。</p>
 </div>
 </section>
 <section id="result-columns-for-flow-functions">
 <h3><a class="toc-backref" href="#id84" role="doc-backlink">流量函数的结果列</a><a class="headerlink" href="#result-columns-for-flow-functions" title="Link to this heading">¶</a></h3>
-<p class="rubric">Edges SQL 适用于以下内容</p>
+<p>Used by:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - 函数族</span></a></p></li>
 </ul>
@@ -2867,7 +2536,7 @@ contract the problem.</p>
 </table>
 <p class="rubric">Edges SQL 适用于 <a class="reference internal" href="flow-family.html"><span class="doc">Flow - 函数族</span></a> 的以下函数</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - 实验</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - 实验性</span></a></p></li>
 </ul>
 <table class="docutils align-default">
 <thead>
@@ -2914,7 +2583,79 @@ contract the problem.</p>
 </section>
 <section id="result-columns-for-spanning-tree-functions">
 <h3><a class="toc-backref" href="#id85" role="doc-backlink">生成树函数的结果列</a><a class="headerlink" href="#result-columns-for-spanning-tree-functions" title="Link to this heading">¶</a></h3>
-<p class="rubric">Edges SQL 适用于以下内容</p>
+<p>Used in functions that return a tree solution per departure.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_breadthFirstSearch.html"><span class="doc">pgr_breadthFirstSearch - 实验性</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_depthFirstSearch.html"><span class="doc">pgr_depthFirstSearch - 提议中</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a></p></li>
+</ul>
+<p>返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>参数</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>从 <span class="math notranslate nohighlight">\(1\)</span> 开始的顺序值。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">depth</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">node</span></code> 的深度。</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(0\)</span> 当 <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 。</p></li>
+<li><p><span class="math notranslate nohighlight">\(depth-1\)</span> is the depth of <code class="docutils literal notranslate"><span class="pre">pred</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>根顶点的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pred</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">node</span></code> 的前驱。</p>
+<ul class="simple">
+<li><p>当 <cite>node</cite> 等于 <cite>start_vid</cite> 时，它的值就是 <cite>node</cite> 。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>使用 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 到达的``node`` 的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>从 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 到达 <code class="docutils literal notranslate"><span class="pre">node</span></code> 所使用的 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 的标识符。</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(-1\)</span> 当 <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>遍历 <code class="docutils literal notranslate"><span class="pre">edge</span></code> 的成本。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>从 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 到 <code class="docutils literal notranslate"><span class="pre">node</span></code> 的总成本。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="result-columns-for-simple-spanning-tree-functions">
+<h3><a class="toc-backref" href="#id86" role="doc-backlink">Result columns for simple spanning tree functions</a><a class="headerlink" href="#result-columns-for-simple-spanning-tree-functions" title="Link to this heading">¶</a></h3>
+<p>Used by:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_kruskal.html"><span class="doc">pgr_kruskal</span></a></p></li>
@@ -2941,17 +2682,17 @@ contract the problem.</p>
 </section>
 </section>
 <section id="performance-tips">
-<h2><a class="toc-backref" href="#id45" role="doc-backlink">性能技巧</a><a class="headerlink" href="#performance-tips" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id46" role="doc-backlink">性能技巧</a><a class="headerlink" href="#performance-tips" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="id7">
 <ul class="simple">
-<li><p><a class="reference internal" href="#for-the-routing-functions" id="id86">对于路由功能</a></p></li>
+<li><p><a class="reference internal" href="#for-the-routing-functions" id="id87">对于路由功能</a></p></li>
 </ul>
 </nav>
 <section id="for-the-routing-functions">
-<h3><a class="toc-backref" href="#id86" role="doc-backlink">对于路由功能</a><a class="headerlink" href="#for-the-routing-functions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id87" role="doc-backlink">对于路由功能</a><a class="headerlink" href="#for-the-routing-functions" title="Link to this heading">¶</a></h3>
 <p>为了获得更快的结果，将查询绑定到路由感兴趣的区域。</p>
 <p>在此示例中，使用内部查询 SQL，该 SQL 不包括路由函数中的某些边并且位于结果区域内。</p>
-<p>Given this area:</p>
+<p>针对该区域：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
 <span class="n">FROM</span> <span class="n">edges</span>
 <span class="n">WHERE</span> <span class="n">geom</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
@@ -2973,7 +2714,7 @@ contract the problem.</p>
 
 </pre></div>
 </div>
-<p>Calculate a route:</p>
+<p>计算路线：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra($$
   SELECT id, source, target, cost, reverse_cost
   FROM edges
@@ -2992,7 +2733,7 @@ contract the problem.</p>
 </section>
 </section>
 <section id="how-to-contribute">
-<h2><a class="toc-backref" href="#id47" role="doc-backlink">如何贡献</a><a class="headerlink" href="#how-to-contribute" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id48" role="doc-backlink">如何贡献</a><a class="headerlink" href="#how-to-contribute" title="Link to this heading">¶</a></h2>
 <p class="rubric">维基</p>
 <ul class="simple">
 <li><p>编辑现有的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki">pgRouting 维基</a> 页面。</p></li>
@@ -3004,12 +2745,15 @@ contract the problem.</p>
 </li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-parallel-edges-(KSP)">示例</a></p></li>
 </ul>
-<p class="rubric">Adding Functionality to pgRouting</p>
-<p>查阅`开发者文档 &lt;<a class="reference external" href="https://docs.pgrouting.org/doxy/2.4/index.html">https://docs.pgrouting.org/doxy/2.4/index.html</a>&gt;`__</p>
+<p class="rubric">为 pgRouting 添加功能</p>
+<p>查阅 <a class="reference external" href="https://docs.pgrouting.org/doxy/2.4/index.html">开发者文档</a></p>
+</section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id49" role="doc-backlink">See also</a><a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -3026,9 +2770,9 @@ contract the problem.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 9月 13, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      最后更新于 9月 19, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

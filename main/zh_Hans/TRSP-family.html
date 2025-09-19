@@ -7,21 +7,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>TRSP - 函数族 &#8212; pgRouting Manual (3.8)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <title>TRSP - 函数族 &#8212; pgRouting Manual (4.0-alpha1)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=b671dda4"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=73718347"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=262773b0"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
     <link rel="icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_trsp - Proposed" href="pgr_trsp.html" />
-    <link rel="prev" title="拟议的功能" href="proposed.html" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="pgr_trsp" href="pgr_trsp.html" />
+    <link rel="prev" title="pgr_full_version" href="pgr_full_version.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -45,7 +44,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.8</b></span>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -69,17 +68,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
@@ -119,11 +118,11 @@
               
                 
   <li>
-    <a href="proposed.html" title="Previous Chapter: 拟议的功能"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 拟议的功能</span>
+    <a href="pgr_full_version.html" title="Previous Chapter: pgr_full_version"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_full_version</span>
     </a>
   </li>
   <li>
-    <a href="pgr_trsp.html" title="Next Chapter: pgr_trsp - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_trsp - Proposed &raquo;</span>
+    <a href="pgr_trsp.html" title="Next Chapter: pgr_trsp"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_trsp &raquo;</span>
     </a>
   </li>
               
@@ -152,42 +151,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">TRSP - 函数族</a><ul>
-<li><a class="reference internal" href="#introduction">介绍</a><ul>
-<li><a class="reference internal" href="#trsp-algorithm">TRSP算法</a></li>
-<li><a class="reference internal" href="#parameters">参数</a></li>
-<li><a class="reference internal" href="#restrictions">限制</a></li>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a><ul>
-<li><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">另请参阅</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="proposed.html" title="Previous Chapter: 拟议的功能"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 拟议的功能</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_trsp.html" title="Next Chapter: pgr_trsp - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_trsp - Proposed &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('TRSP-family','zh-Hans'));  </script>
             
   <div class="line-block" id="index-0">
@@ -196,49 +160,17 @@
 <section id="trsp-family-of-functions">
 <h1>TRSP - 函数族<a class="headerlink" href="#trsp-family-of-functions" title="Link to this heading">¶</a></h1>
 <p>当点也作为输入给出时：</p>
-<div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="ecf71dff-d74b-42ca-9c23-bd989b5dee8b" name="ecf71dff-d74b-42ca-9c23-bd989b5dee8b" type="checkbox"><label class="sphinx_collapse__label" for="ecf71dff-d74b-42ca-9c23-bd989b5dee8b"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>下一版本的拟议功能。</p>
 <ul class="simple">
-<li><p>它们并未正式出现在当前版本中。</p></li>
-<li><p>它们可能会正式成为下一个版本的一部分：</p>
-<ul>
-<li><p>这些函数使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
-<li><p>名字可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>签名可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>功能可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>pgTap 测试已经完成。 但可能需要更多。</p></li>
-<li><p>文档可能需要完善。</p></li>
+<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> - Routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a> - 有限制的通过顶点路由。</p></li>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a> - 有限制的顶点/点路由。</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a> - 通过有限制的顶点/点路由。</p></li>
 </ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a> - Vertex - 有限制的顶点路由。</p></li>
-<li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia - Proposed</span></a> - 有限制的通过顶点路由。</p></li>
-<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - 拟议</span></a> - 有限制的顶点/点路由。</p></li>
-<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a> - 通过有限制的顶点/点路由。</p></li>
-</ul>
+<div class="admonition-experimental admonition">
+<p class="admonition-title">Experimental</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>阅读 <a class="reference internal" href="migration.html"><span class="doc">迁移指南</span></a> 了解如何从已弃用的 TRSP 功能迁移到新的签名或替换功能。</p>
-</div>
-<div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="ad33541a-de32-4877-9a6b-8ebd52af61e5" name="ad33541a-de32-4877-9a6b-8ebd52af61e5" type="checkbox"><label class="sphinx_collapse__label" for="ad33541a-de32-4877-9a6b-8ebd52af61e5"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>可能服务器崩溃</p>
-<ul class="simple">
-<li><p>这些功能可能会导致服务器崩溃</p></li>
-</ul>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>实验功能</p>
+<p class="admonition-title">警告</p>
+<p>实验性函数</p>
 <ul class="simple">
 <li><p>它们不是当前版本的正式版本。</p></li>
 <li><p>它们可能不会正式成为下一个版本的一部分：</p>
@@ -248,17 +180,12 @@
 <li><p>签名可能会改变。</p></li>
 <li><p>功能可能会改变。</p></li>
 <li><p>pgTap 测试可能丢失。</p></li>
-<li><p>可能需要 c/c++编码。</p></li>
-<li><p>可能缺乏文档。</p></li>
-<li><p>文档（如果有）可能需要重写。</p></li>
-<li><p>可能需要自动生成文档示例。</p></li>
+<li><p>Might need c/c++ review.</p></li>
+<li><p>文档可能需要重写。</p></li>
 <li><p>需要从社区获取大量反馈意见。</p></li>
-<li><p>可能取决于 pgRouting 的拟议功能</p></li>
-<li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
 </ul>
 </li>
 </ul>
-</div>
 </div>
 </div>
 <ul class="simple">
@@ -315,8 +242,7 @@
 <p>在道路网络上，有左转或右转限制等限制，没有掉头限制。</p>
 <p>限制是一系列边，称为路径，并且要避免该路径。</p>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="_images/with_restrictions.png"><img alt="_images/with_restrictions.png" src="_images/with_restrictions.png" style="width: 475.5px; height: 433.0px;" />
-</a>
+<a class="reference internal image-reference" href="_images/with_restrictions.png"><img alt="_images/with_restrictions.png" src="_images/with_restrictions.png" style="width: 475.5px; height: 433.0px;" /></a>
 <figcaption>
 <p><span class="caption-text"><strong>道路网络的限制</strong></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
@@ -341,7 +267,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">备注</p>
 <p>该表有一个标识符，这可能是管理限制所需要的，但算法不需要该信息。 如果给出，它将被忽略。</p>
 </div>
 </section>
@@ -380,14 +306,14 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
 <ul class="simple">
-<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
 </ul>
 </td>
 </tr>
@@ -443,8 +369,8 @@
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -461,9 +387,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 9月 13, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      最后更新于 9月 19, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

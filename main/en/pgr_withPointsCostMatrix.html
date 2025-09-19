@@ -7,22 +7,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_withPointsCostMatrix - proposed &#8212; pgRouting Manual (3.8)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <title>pgr_withPointsCostMatrix &#8212; pgRouting Manual (4.0-alpha1)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=79c17324"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=27c7622d"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=262773b0"></script>
+    <script src="_static/page_history.js?v=ee02e9fc"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_withPointsKSP - Proposed" href="pgr_withPointsKSP.html" />
-    <link rel="prev" title="pgr_withPointsCost - Proposed" href="pgr_withPointsCost.html" />
+    <link rel="next" title="pgr_withPointsKSP" href="pgr_withPointsKSP.html" />
+    <link rel="prev" title="pgr_withPointsCost" href="pgr_withPointsCost.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -46,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.8</b></span>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -72,11 +71,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
@@ -97,12 +96,11 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code></a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
@@ -128,11 +126,11 @@
               
                 
   <li>
-    <a href="pgr_withPointsCost.html" title="Previous Chapter: pgr_withPointsCost - Proposed"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPoint...</span>
+    <a href="pgr_withPointsCost.html" title="Previous Chapter: pgr_withPointsCost"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsCost</span>
     </a>
   </li>
   <li>
-    <a href="pgr_withPointsKSP.html" title="Next Chapter: pgr_withPointsKSP - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
+    <a href="pgr_withPointsKSP.html" title="Next Chapter: pgr_withPointsKSP"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPointsKSP &raquo;</span>
     </a>
   </li>
               
@@ -161,87 +159,35 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - proposed</a><ul>
-<li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a></li>
-<li><a class="reference internal" href="#parameters">Parameters</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Result columns</a></li>
-<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
-<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Use <span class="xref std std-doc">pgr_findCloseEdges</span> in the Points SQL.</a></li>
-<li><a class="reference internal" href="#use-with-pgr-tsp">Use with <span class="xref std std-doc">pgr_TSP</span>.</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_withPointsCost.html" title="Previous Chapter: pgr_withPointsCost - Proposed"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPoint...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_withPointsKSP.html" title="Next Chapter: pgr_withPointsKSP - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_withPointsCostMatrix','en'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
-<section id="pgr-withpointscostmatrix-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - proposed<a class="headerlink" href="#pgr-withpointscostmatrix-proposed" title="Link to this heading">¶</a></h1>
+<section id="pgr-withpointscostmatrix">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code><a class="headerlink" href="#pgr-withpointscostmatrix" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - Calculates a cost matrix using
-<a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a>.</p>
-<div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="a1618a5f-2583-4dee-8636-a5168ed4cc25" name="a1618a5f-2583-4dee-8636-a5168ed4cc25" type="checkbox"><label class="sphinx_collapse__label" for="a1618a5f-2583-4dee-8636-a5168ed4cc25"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Proposed functions for next mayor release.</p>
-<ul class="simple">
-<li><p>They are not officially in the current release.</p></li>
-<li><p>They will likely officially be part of the next mayor release:</p>
-<ul>
-<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
-<li><p>Name might not change. (But still can)</p></li>
-<li><p>Signature might not change. (But still can)</p></li>
-<li><p>Functionality might not change. (But still can)</p></li>
-<li><p>pgTap tests have being done. But might need more.</p></li>
-<li><p>Documentation might need refinement.</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
+<a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a>.</p>
 <p class="rubric">Availability</p>
+<p class="rubric">Version 4.0.0</p>
 <ul class="simple">
-<li><p>Version 2.2.0</p>
+<li><p>Function promoted to official.</p></li>
+<li><p><strong>Driving side</strong> parameter is positional unnamed and compulsory.</p>
 <ul>
-<li><p>New proposed function.</p></li>
+<li><p>Valid values depend on kind of graph</p></li>
 </ul>
 </li>
+<li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointscostmatrix(text,text,anyarray,boolean,character)</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Version 2.2.0</p>
+<ul class="simple">
+<li><p>New proposed function.</p></li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -316,8 +262,8 @@ path.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, [<strong>options</strong>])</div>
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
+<div class="line">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, [<strong>driving side</strong>] [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
@@ -338,7 +284,7 @@ withPoints family of functions.</p>
 <ul class="simple">
 <li><p>Returning a <strong>symmetrical</strong> cost matrix</p></li>
 <li><p>Using the default <code class="docutils literal notranslate"><span class="pre">side</span></code> value on the <strong>points_sql</strong> query</p></li>
-<li><p>Using the default <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> value</p></li>
+<li><p>Using the default <code class="docutils literal notranslate"><span class="pre">driving</span> <span class="pre">side</span></code> value</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCostMatrix</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
@@ -387,6 +333,39 @@ withPoints family of functions.</p>
 </tr>
 </tbody>
 </table>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 19.4%" />
+<col style="width: 19.4%" />
+<col style="width: 61.1%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>[<strong>driving side</strong>]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] indicating if the driving side is:</p>
+<ul class="simple">
+<li><p>For directed graph:</p>
+<ul>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>] for right driving side</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>] for left driving side</p></li>
+</ul>
+</li>
+<li><p>For undirected graph:</p>
+<ul>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>] for both driving sides</p></li>
+</ul>
+</li>
+<li><p>Default values when parameter is missing:</p>
+<ul>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>] for directed graph</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>] for undirected graph</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <section id="optional-parameters">
 <h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
@@ -404,31 +383,6 @@ withPoints family of functions.</p>
 <td><ul class="simple">
 <li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="with-points-optional-parameters">
-<h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Link to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 35">
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indicating if the driving side is:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> for right driving side.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> for left driving side.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for both.</p></li>
 </ul>
 </td>
 </tr>
@@ -535,7 +489,7 @@ automatically.</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>Value in &lt;0,1&gt; that indicates the relative postition from the first end
+<td><p>Value in &lt;0,1&gt; that indicates the relative position from the first end
 point of the edge.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
@@ -622,15 +576,15 @@ locations on the graph of point <cite>(2.9, 1.8)</cite>.</p>
  start_vid | end_vid | agg_cost
 -----------+---------+----------
         -2 |      -1 |      3.9
-        -2 |       5 |      2.9
+        -2 |       5 |      3.1
         -2 |      10 |      3.1
-        -1 |      -2 |      0.3
+        -1 |      -2 |      2.1
         -1 |       5 |      3.2
         -1 |      10 |      3.2
          5 |      -2 |      2.9
          5 |      -1 |      6.8
          5 |      10 |        6
-        10 |      -2 |      1.1
+        10 |      -2 |      2.9
         10 |      -1 |      0.8
         10 |       5 |        2
 (12 rows)
@@ -640,6 +594,7 @@ locations on the graph of point <cite>(2.9, 1.8)</cite>.</p>
 <ul class="simple">
 <li><p>Point <span class="math notranslate nohighlight">\(-1\)</span> corresponds to the closest edge from point <cite>(2.9, 1.8)</cite>.</p></li>
 <li><p>Point <span class="math notranslate nohighlight">\(-2\)</span> corresponds to the next close edge from point <cite>(2.9, 1.8)</cite>.</p></li>
+<li><p>Being close to the graph does not mean have a shorter route.</p></li>
 </ul>
 </section>
 <section id="use-with-pgr-tsp">
@@ -649,11 +604,9 @@ locations on the graph of point <cite>(2.9, 1.8)</cite>.</p>
   SELECT * FROM pgr_withPointsCostMatrix(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;,
     &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
-    array[-1, 10, 11, -6], directed := false);
+    array[-1, 10, 11, -6], directed =&gt; false);
   $$
 );
-NOTICE:  pgr_TSP no longer solving with simulated annaeling
-HINT:  Ignoring annaeling parameters
  seq | node | cost | agg_cost
 -----+------+------+----------
    1 |   -6 |    0 |        0
@@ -695,9 +648,9 @@ HINT:  Ignoring annaeling parameters
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on Sep 13, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
+      Last updated on Sep 19, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>
