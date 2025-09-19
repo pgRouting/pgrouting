@@ -1,0 +1,31 @@
+digraph "tw_node.hpp"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="tw_node.hpp",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="string",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="cstdint",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="cpp_common/orders_t.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$orders__t_8hpp.html",tooltip=" "];
+  Node4 -> Node3 [id="edge4_Node000004_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node5 [id="edge5_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="cpp_common/vehicle\l_t.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$vehicle__t_8hpp.html",tooltip=" "];
+  Node5 -> Node3 [id="edge6_Node000005_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node6 [id="edge7_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="cpp_common/assert.hpp",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$assert_8hpp.html",tooltip="Assertions Handling."];
+  Node6 -> Node2 [id="edge8_Node000006_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node8 [id="edge9_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="cpp_common/identifier.hpp",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$identifier_8hpp.html",tooltip=" "];
+  Node8 -> Node3 [id="edge10_Node000008_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node10 [id="edge11_Node000001_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="vrp/pd_problem.hpp",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$pd__problem_8hpp.html",tooltip=" "];
+  Node1 -> Node14 [id="edge12_Node000001_Node000014",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="vrp/dnode.hpp",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$dnode_8hpp.html",tooltip=" "];
+  Node14 -> Node2 [id="edge13_Node000014_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node14 -> Node3 [id="edge14_Node000014_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node14 -> Node8 [id="edge15_Node000014_Node000008",color="steelblue1",style="solid",tooltip=" "];
+}

@@ -1,8 +1,15 @@
 <map id="bline.hpp" name="bline.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="519,5,601,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,208,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="232,80,435,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="459,80,661,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="685,80,888,121"/>
-<area shape="rect" id="node6" title=" " alt="" coords="912,80,1115,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="581,5,663,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,86,156,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="581,26,402,47,169,81,145,86,144,81,168,76,401,42,580,21"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="181,79,383,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="581,31,377,78,376,73,580,26"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="407,79,610,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="607,33,549,73,546,69,604,29"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="634,79,837,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="640,29,698,69,695,73,637,33"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="861,79,1063,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="664,26,868,73,867,78,663,31"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="1087,79,1290,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="664,22,1074,76,1073,81,664,27"/>
 </map>

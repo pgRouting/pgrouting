@@ -1,0 +1,32 @@
+<map id="hawickcircuits.hpp" name="hawickcircuits.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="466,5,608,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="28,167,108,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="465,23,369,26,261,36,164,53,126,66,100,81,87,96,78,115,71,154,66,152,73,113,83,93,97,77,124,61,162,48,260,30,369,21,465,17"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="575,86,646,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="550,29,592,74,588,77,546,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="114,247,176,273"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="465,24,365,29,249,39,144,56,102,67,72,81,40,104,17,130,10,144,8,158,10,174,18,191,34,210,55,226,102,246,99,251,53,230,31,214,13,193,5,175,3,158,5,142,12,127,36,100,69,76,100,62,142,50,249,33,364,23,465,18"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="252,240,422,280"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="537,32,515,105,493,151,463,194,435,218,403,236,400,232,431,214,459,190,489,149,510,103,532,30"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="670,86,879,111"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="572,28,728,79,726,84,571,33"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="904,79,1053,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="609,28,890,76,889,81,608,33"/>
+<area shape="rect" id="Node000008" href="$path_8hpp.html" title=" " alt="" coords="110,86,281,111"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="488,33,259,86,258,80,487,28"/>
+<area shape="rect" id="Node000019" href="$base__graph_8hpp.html" title=" " alt="" coords="233,167,449,192"/>
+<area shape="poly" id="edge15_Node000001_Node000019" title=" " alt="" coords="525,33,368,160,364,156,521,29"/>
+<area shape="rect" id="Node000033" href="$assert_8hpp.html" title="Assertions Handling." alt="" coords="446,247,628,273"/>
+<area shape="poly" id="edge17_Node000001_Node000033" title=" " alt="" coords="540,31,540,234,534,234,534,31"/>
+<area shape="rect" id="Node000037" href="$interruption_8hpp.html" title=" " alt="" coords="1078,86,1295,111"/>
+<area shape="poly" id="edge16_Node000001_Node000037" title=" " alt="" coords="609,24,814,46,1065,76,1103,81,1102,87,1065,81,813,51,608,29"/>
+<area shape="rect" id="Node000039" href="$circuits__rt_8h.html" title=" " alt="" coords="1320,86,1472,111"/>
+<area shape="poly" id="edge18_Node000001_Node000039" title=" " alt="" coords="609,19,914,36,1110,52,1308,76,1334,81,1334,86,1307,81,1110,58,913,41,608,24"/>
+<area shape="poly" id="edge9_Node000008_Node000002" title=" " alt="" coords="178,114,100,162,97,157,175,109"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="195,112,156,235,150,233,190,111"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="199,111,205,149,212,171,223,190,247,214,275,232,272,236,244,218,219,194,207,173,199,150,194,112"/>
+<area shape="poly" id="edge11_Node000008_Node000019" title=" " alt="" coords="218,109,309,158,306,162,216,114"/>
+<area shape="poly" id="edge12_Node000019_Node000004" title=" " alt="" coords="314,194,187,245,185,240,312,190"/>
+<area shape="poly" id="edge13_Node000019_Node000005" title=" " alt="" coords="343,192,341,226,336,226,338,192"/>
+<area shape="poly" id="edge14_Node000019_Node000033" title=" " alt="" coords="371,190,497,240,495,245,369,194"/>
+</map>

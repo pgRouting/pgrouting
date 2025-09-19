@@ -1,11 +1,43 @@
 <map id="astar_driver.cpp" name="astar_driver.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="385,5,511,32"/>
-<area shape="rect" id="node2" href="$astar__driver_8h.html" title=" " alt="" coords="5,80,147,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="171,87,245,114"/>
-<area shape="rect" id="node4" title=" " alt="" coords="274,169,337,196"/>
-<area shape="rect" id="node5" title=" " alt="" coords="367,169,452,196"/>
-<area shape="rect" id="node6" title=" " alt="" coords="507,169,570,196"/>
-<area shape="rect" id="node7" href="$pgr__astar_8hpp.html" title=" " alt="" coords="320,87,467,114"/>
-<area shape="rect" id="node8" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="592,87,792,114"/>
-<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="817,87,1010,114"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="777,5,903,31"/>
+<area shape="rect" id="Node000002" href="$astar__driver_8h.html" title=" " alt="" coords="5,79,147,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="777,25,510,43,338,59,166,81,161,82,160,77,165,76,338,54,509,38,776,20"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="209,174,284,199"/>
+<area shape="poly" id="edge2_Node000001_Node000008" title=" " alt="" coords="777,23,629,28,450,38,293,55,239,67,211,81,203,99,206,121,216,142,230,162,225,165,212,145,201,122,198,98,207,77,237,62,292,50,450,33,629,23,777,18"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="809,174,871,199"/>
+<area shape="poly" id="edge3_Node000001_Node000009" title=" " alt="" coords="786,33,746,51,729,64,716,80,709,99,716,117,731,137,752,152,797,172,794,177,749,156,728,140,711,120,704,99,711,77,726,60,744,46,784,28"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="1539,86,1624,111"/>
+<area shape="poly" id="edge4_Node000001_Node000010" title=" " alt="" coords="904,18,1019,22,1173,32,1347,49,1521,76,1536,80,1535,85,1519,81,1346,54,1173,37,1019,27,903,23"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="963,174,1026,199"/>
+<area shape="poly" id="edge5_Node000001_Node000011" title=" " alt="" coords="888,28,931,47,951,60,969,77,981,97,989,119,997,160,991,161,984,120,976,99,965,80,948,64,928,51,886,33"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="608,174,667,199"/>
+<area shape="poly" id="edge6_Node000001_Node000012" title=" " alt="" coords="796,33,748,52,703,81,685,100,670,121,649,163,644,160,666,118,681,96,700,77,746,47,794,28"/>
+<area shape="rect" id="Node000013" href="$astar_8hpp.html" title=" " alt="" coords="1029,86,1149,111"/>
+<area shape="poly" id="edge7_Node000001_Node000013" title=" " alt="" coords="877,28,1041,79,1039,84,875,33"/>
+<area shape="rect" id="Node000044" href="$ii__t__rt_8h.html" title=" " alt="" coords="1143,174,1268,199"/>
+<area shape="poly" id="edge27_Node000001_Node000044" title=" " alt="" coords="904,18,1041,24,1206,35,1350,52,1400,63,1427,77,1434,87,1436,99,1427,120,1406,133,1366,146,1268,173,1266,168,1365,141,1404,128,1423,117,1431,98,1429,89,1424,81,1398,68,1349,57,1205,40,1041,29,903,24"/>
+<area shape="rect" id="Node000045" href="$combinations_8hpp.html" title=" " alt="" coords="725,86,955,111"/>
+<area shape="poly" id="edge11_Node000001_Node000045" title=" " alt="" coords="843,31,843,72,837,72,837,31"/>
+<area shape="rect" id="Node000047" href="$pgdata__getters_8hpp.html" title=" " alt="" coords="1174,86,1413,111"/>
+<area shape="poly" id="edge16_Node000001_Node000047" title=" " alt="" coords="904,28,1215,81,1214,86,903,33"/>
+<area shape="rect" id="Node000037" href="$edge__xy__t_8hpp.html" title=" " alt="" coords="1297,167,1465,207"/>
+<area shape="poly" id="edge26_Node000001_Node000037" title=" " alt="" coords="904,18,1047,23,1218,34,1369,51,1421,62,1450,77,1457,87,1459,98,1453,120,1438,141,1420,160,1416,156,1434,138,1448,118,1453,98,1452,89,1446,81,1419,67,1368,56,1218,39,1046,29,904,23"/>
+<area shape="rect" id="Node000059" href="$alloc_8hpp.html" title=" " alt="" coords="222,86,394,111"/>
+<area shape="poly" id="edge21_Node000001_Node000059" title=" " alt="" coords="777,30,609,51,407,81,379,86,378,81,406,76,609,46,776,24"/>
+<area shape="rect" id="Node000039" href="$assert_8hpp.html" title="Assertions Handling." alt="" coords="419,86,600,111"/>
+<area shape="poly" id="edge24_Node000001_Node000039" title=" " alt="" coords="793,33,571,85,570,80,791,28"/>
+<area shape="poly" id="edge8_Node000013_Node000009" title=" " alt="" coords="1057,114,885,173,884,168,1055,109"/>
+<area shape="poly" id="edge9_Node000013_Node000011" title=" " alt="" coords="1078,113,1020,166,1016,162,1075,110"/>
+<area shape="poly" id="edge10_Node000013_Node000044" title=" " alt="" coords="1107,109,1180,164,1177,168,1103,114"/>
+<area shape="poly" id="edge12_Node000045_Node000009" title=" " alt="" coords="843,112,843,160,837,160,837,112"/>
+<area shape="poly" id="edge13_Node000045_Node000011" title=" " alt="" coords="862,109,963,165,961,170,860,114"/>
+<area shape="poly" id="edge14_Node000045_Node000012" title=" " alt="" coords="814,114,679,171,677,166,812,109"/>
+<area shape="poly" id="edge15_Node000045_Node000044" title=" " alt="" coords="889,109,1144,168,1143,173,888,114"/>
+<area shape="poly" id="edge18_Node000047_Node000011" title=" " alt="" coords="1254,114,1040,175,1038,170,1252,109"/>
+<area shape="poly" id="edge17_Node000047_Node000012" title=" " alt="" coords="1215,114,1162,121,681,183,680,177,1161,116,1214,109"/>
+<area shape="poly" id="edge19_Node000047_Node000044" title=" " alt="" coords="1283,113,1229,166,1225,162,1280,110"/>
+<area shape="poly" id="edge20_Node000047_Node000037" title=" " alt="" coords="1307,110,1354,155,1350,159,1303,113"/>
+<area shape="poly" id="edge23_Node000059_Node000008" title=" " alt="" coords="302,113,265,164,261,161,298,110"/>
+<area shape="poly" id="edge22_Node000059_Node000012" title=" " alt="" coords="353,109,595,172,594,177,351,114"/>
+<area shape="poly" id="edge25_Node000039_Node000012" title=" " alt="" coords="528,109,610,164,607,168,525,114"/>
 </map>

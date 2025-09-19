@@ -1,7 +1,15 @@
 <map id="get_new_queries.h" name="get_new_queries.h">
-<area shape="rect" id="node1" title=" " alt="" coords="323,5,467,32"/>
-<area shape="rect" id="node2" href="$many__to__dist__withPointsDD_8c.html" title=" " alt="" coords="5,80,221,107"/>
-<area shape="rect" id="node3" href="$withPoints__ksp_8c.html" title=" " alt="" coords="245,80,376,107"/>
-<area shape="rect" id="node4" href="$get__new__queries_8cpp.html" title=" " alt="" coords="401,80,559,107"/>
-<area shape="rect" id="node5" href="$withPoints_8c.html" title=" " alt="" coords="584,80,685,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="517,5,661,31"/>
+<area shape="rect" id="Node000002" href="$driving__distance__withPoints_8c.html" title=" " alt="" coords="5,79,220,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="503,35,190,81,189,76,503,29"/>
+<area shape="rect" id="Node000003" href="$get__new__queries_8cpp.html" title=" " alt="" coords="244,79,403,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="533,37,367,81,366,76,532,32"/>
+<area shape="rect" id="Node000004" href="$trspVia__withPoints_8c.html" title=" " alt="" coords="427,79,582,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="566,42,520,80,517,76,563,38"/>
+<area shape="rect" id="Node000005" href="$trsp__withPoints_8c.html" title=" " alt="" coords="606,79,739,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="614,38,661,76,657,80,611,42"/>
+<area shape="rect" id="Node000006" href="$withPointsVia_8c.html" title=" " alt="" coords="763,79,886,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="640,32,787,76,786,81,639,37"/>
+<area shape="rect" id="Node000007" href="$withPoints__ksp_8c.html" title=" " alt="" coords="910,79,1041,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="665,31,913,76,912,81,664,36"/>
 </map>

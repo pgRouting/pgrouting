@@ -1,5 +1,5 @@
 var bellman__ford__driver_8cpp =
 [
-    [ "do_pgr_bellman_ford", "bellman__ford__driver_8cpp.html#a51a1cfcc0d38794ad489a4b639108cfe", null ],
-    [ "pgr_bellman_ford", "bellman__ford__driver_8cpp.html#a01eb618518aa6b1947ab2ef5f7037e16", null ]
+    [ "bellman_ford", "bellman__ford__driver_8cpp.html#ace09bd82e51a0c6e7acfdd5e21da4098", null ],
+    [ "pgr_do_bellman_ford", "bellman__ford__driver_8cpp.html#a393ea54fe76728dc7e639fbbbb72bce6", null ]
 ];

@@ -1,5 +1,7 @@
 <map id="pgrouting::tsp::Dmatrix" name="pgrouting::tsp::Dmatrix">
-<area shape="rect" id="node1" title=" " alt="" coords="103,109,277,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,180,47"/>
-<area shape="rect" id="node3" title=" " alt="" coords="204,13,371,39"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="99,108,273,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,13,172,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,46,176,106,172,110,109,49"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="196,5,371,45"/>
+<area shape="poly" id="edge2_Node000001_Node000005" title=" " alt="" coords="256,57,200,110,196,106,252,53"/>
 </map>

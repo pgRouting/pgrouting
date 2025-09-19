@@ -1,4 +1,7 @@
 <map id="version.c" name="version.c">
-<area shape="rect" id="node1" title=" " alt="" coords="86,5,167,32"/>
-<area shape="rect" id="node2" href="$postgres__connection_8h.html" title=" " alt="" coords="5,80,248,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="181,5,262,31"/>
+<area shape="rect" id="Node000002" href="$postgres__connection_8h.html" title=" " alt="" coords="5,79,248,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,33,155,72,152,68,205,29"/>
+<area shape="rect" id="Node000012" href="$version_8h.html" title=" " alt="" coords="272,79,363,104"/>
+<area shape="poly" id="edge2_Node000001_Node000012" title=" " alt="" coords="238,29,292,68,289,72,235,33"/>
 </map>

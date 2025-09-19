@@ -1,5 +1,7 @@
 <map id="AssertFailedException" name="AssertFailedException">
-<area shape="rect" id="node1" title="Extends std::exception and is the exception that we throw if an assert fails." alt="" coords="43,95,208,121"/>
-<area shape="rect" id="node2" title="STL class." alt="" coords="5,5,120,32"/>
-<area shape="rect" id="node3" title="STL class." alt="" coords="145,5,231,32"/>
+<area shape="rect" id="Node000001" title="Extends std::exception and is the exception that we throw if an assert fails." alt="" coords="42,93,209,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,120,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,40,119,91,114,94,77,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="145,5,231,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="174,43,136,94,132,91,169,40"/>
 </map>

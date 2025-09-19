@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['undirectedgraph_2952',['undirectedGraph',['../classPgr__randomSpanningTree.html#a9ca2ebd07207510f4dac091b92639241',1,'Pgr_randomSpanningTree']]],
-  ['update_5fif_5fbest_2953',['update_if_best',['../classpgrouting_1_1tsp_1_1TSP.html#a52439fc1de9570575952121a531d7efa',1,'pgrouting::tsp::TSP']]],
-  ['updatevertexcosts_2954',['updateVertexCosts',['../classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#afe624795e43580e5b086a23d53464e4f',1,'pgrouting::functions::Pgr_edwardMoore::updateVertexCosts()'],['../classpgrouting_1_1functions_1_1Pgr__binaryBreadthFirstSearch.html#a92dc7b3f1c411fc72d572bc025941719',1,'pgrouting::functions::Pgr_binaryBreadthFirstSearch::updateVertexCosts()']]],
-  ['userquitexception_2955',['UserQuitException',['../classUserQuitException.html#a34a9581cd00bab7a0eae6ee7af7f6d94',1,'UserQuitException']]]
+  ['undirectedhascostbg_0',['undirectedhascostbg',['../classpgrouting_1_1graph_1_1UndirectedHasCostBG.html#af6f94cefda0d44ac2d29489589dd1731',1,'pgrouting::graph::UndirectedHasCostBG::UndirectedHasCostBG(std::vector&lt; IID_t_rt &gt; &amp;)'],['../classpgrouting_1_1graph_1_1UndirectedHasCostBG.html#ad7ec5c67d73c148a3a06358c6a33bbe7',1,'pgrouting::graph::UndirectedHasCostBG::UndirectedHasCostBG(const std::vector&lt; Coordinate_t &gt; &amp;)'],['../classpgrouting_1_1graph_1_1UndirectedHasCostBG.html#a7095af71a519c592025d3d9a91e0e249',1,'pgrouting::graph::UndirectedHasCostBG::UndirectedHasCostBG()=delete']]],
+  ['undirectednocostsbg_1',['UndirectedNoCostsBG',['../classpgrouting_1_1graph_1_1UndirectedNoCostsBG.html#acb400d846269c9bc07724f91e45343ec',1,'pgrouting::graph::UndirectedNoCostsBG']]],
+  ['updatevertexcosts_2',['updatevertexcosts',['../classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#afe624795e43580e5b086a23d53464e4f',1,'pgrouting::functions::Pgr_edwardMoore::updateVertexCosts()'],['../classpgrouting_1_1functions_1_1Pgr__binaryBreadthFirstSearch.html#acfde4e24efe477db299ecc4f1a80f779',1,'pgrouting::functions::Pgr_binaryBreadthFirstSearch::updateVertexCosts()']]]
 ];

@@ -1,4 +1,4 @@
 var bipartite__driver_8cpp =
 [
-    [ "do_pgr_bipartite", "bipartite__driver_8cpp.html#a4d0f35082ef4178b544e5ce91835a518", null ]
+    [ "pgr_do_bipartite", "bipartite__driver_8cpp.html#a9e4097681921c382bdde410c689ce732", null ]
 ];

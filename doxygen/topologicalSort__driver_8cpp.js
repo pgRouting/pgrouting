@@ -1,5 +1,5 @@
 var topologicalSort__driver_8cpp =
 [
-    [ "do_pgr_topologicalSort", "topologicalSort__driver_8cpp.html#ad6b92b5217bae1537c691c35198a403b", null ],
-    [ "pgr_topologicalSort", "topologicalSort__driver_8cpp.html#a7b7a864874be9b88aed76091197f7f97", null ]
+    [ "pgr_do_topologicalSort", "topologicalSort__driver_8cpp.html#ad5fc6494f33a1c8ce9fa863179fb6b5b", null ],
+    [ "pgr_topologicalSort", "topologicalSort__driver_8cpp.html#ab9d1cf0fc8a25cfd3097b57936a5acd8", null ]
 ];

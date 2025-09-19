@@ -1,4 +1,6 @@
 var depthFirstSearch__driver_8h =
 [
-    [ "do_pgr_depthFirstSearch", "depthFirstSearch__driver_8h.html#ae8212f33d9a99165fc18728098c85f1f", null ]
+    [ "Edge_t", "depthFirstSearch__driver_8h.html#aaca95f5785904cc39e74c3f360087288", null ],
+    [ "MST_rt", "depthFirstSearch__driver_8h.html#a7a6bc8f17b38865d16c2f68a93474d96", null ],
+    [ "pgr_do_depthFirstSearch", "depthFirstSearch__driver_8h.html#a869ab5d4b2691f500ce909a3cdaf9315", null ]
 ];

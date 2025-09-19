@@ -1,5 +1,8 @@
 <map id="pgrouting::vrp::PD_Orders" name="pgrouting::vrp::PD_Orders">
-<area shape="rect" id="node1" title=" " alt="" coords="15,95,153,136"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html" title=" " alt="" coords="13,199,155,240"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,163,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="15,93,153,133"/>
+<area shape="rect" id="Node000008" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html" title=" " alt="" coords="13,196,155,236"/>
+<area shape="poly" id="edge3_Node000008_Node000001" title=" " alt="" coords="44,144,34,158,33,168,36,177,52,194,48,198,31,180,27,168,30,156,40,141"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,163,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,44,87,93,81,93,81,44"/>
+<area shape="poly" id="edge2_Node000001_Node000008" title=" " alt="" coords="98,183,100,158,92,135,97,133,105,157,103,184"/>
 </map>

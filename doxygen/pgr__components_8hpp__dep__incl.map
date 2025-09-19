@@ -1,9 +1,0 @@
-<map id="pgr_components.hpp" name="pgr_components.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="454,5,613,32"/>
-<area shape="rect" id="node2" href="$articulationPoints__driver_8cpp.html" title=" " alt="" coords="5,80,141,121"/>
-<area shape="rect" id="node3" href="$biconnectedComponents__driver_8cpp.html" title=" " alt="" coords="166,80,349,121"/>
-<area shape="rect" id="node4" href="$bridges__driver_8cpp.html" title=" " alt="" coords="373,87,515,114"/>
-<area shape="rect" id="node5" href="$connectedComponents__driver_8cpp.html" title=" " alt="" coords="539,80,709,121"/>
-<area shape="rect" id="node6" href="$pgr__components_8cpp.html" title=" " alt="" coords="733,87,891,114"/>
-<area shape="rect" id="node7" href="$strongComponents__driver_8cpp.html" title=" " alt="" coords="915,87,1131,114"/>
-</map>

@@ -1,0 +1,7 @@
+<map id="pgrouting::visitors::astar_many_goals_visitor&lt; V &gt;" name="pgrouting::visitors::astar_many_goals_visitor&lt; V &gt;">
+<area shape="rect" id="Node000001" title="visitor stops when all targets are found" alt="" coords="41,108,277,148"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,157,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,55,146,106,142,110,102,58"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="181,13,291,38"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,51,175,109,171,106,217,48"/>
+</map>

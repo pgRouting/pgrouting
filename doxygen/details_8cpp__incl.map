@@ -1,6 +1,10 @@
 <map id="details.cpp" name="details.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="180,5,273,32"/>
-<area shape="rect" id="node2" href="$details_8hpp.html" title=" " alt="" coords="5,80,189,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="130,155,193,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="264,80,349,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="180,5,273,31"/>
+<area shape="rect" id="Node000002" href="$details_8hpp.html" title=" " alt="" coords="5,79,189,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,33,132,74,130,69,205,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="130,152,193,177"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="227,31,219,65,204,105,181,142,177,139,199,103,213,63,222,30"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="264,79,349,104"/>
+<area shape="poly" id="edge4_Node000001_Node000007" title=" " alt="" coords="241,29,285,68,282,72,238,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="110,103,144,140,140,144,106,106"/>
 </map>

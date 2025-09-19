@@ -1,5 +1,7 @@
 <map id="ksp_driver.h" name="ksp_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="37,5,139,32"/>
-<area shape="rect" id="node2" href="$ksp_8c.html" title=" " alt="" coords="5,80,61,107"/>
-<area shape="rect" id="node3" href="$ksp__driver_8cpp.html" title=" " alt="" coords="86,80,202,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="37,5,139,31"/>
+<area shape="rect" id="Node000002" href="$ksp_8c.html" title=" " alt="" coords="5,79,61,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,43,44,80,40,77,69,40"/>
+<area shape="rect" id="Node000003" href="$ksp__driver_8cpp.html" title=" " alt="" coords="85,79,203,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="108,40,137,77,133,80,104,43"/>
 </map>

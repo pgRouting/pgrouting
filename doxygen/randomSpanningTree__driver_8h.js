@@ -1,4 +1,5 @@
 var randomSpanningTree__driver_8h =
 [
-    [ "do_pgr_randomSpanningTree", "randomSpanningTree__driver_8h.html#aff2fec7737d2fae3f0248be44bbbb4f8", null ]
+    [ "SpanTree_rt", "randomSpanningTree__driver_8h.html#a85ddde5b818071e9b7e239db28c179a8", null ],
+    [ "pgr_do_randomSpanningTree", "randomSpanningTree__driver_8h.html#abb432ff3e3647938075bcb87f7e9c13b", null ]
 ];

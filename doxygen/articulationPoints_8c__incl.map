@@ -1,10 +1,16 @@
 <map id="articulationPoints.c" name="articulationPoints.c">
-<area shape="rect" id="node1" title=" " alt="" coords="392,5,539,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,88,121"/>
-<area shape="rect" id="node3" href="$postgres__connection_8h.html" title=" " alt="" coords="72,184,315,211"/>
-<area shape="rect" id="node4" href="$debug__macro_8h.html" title=" " alt="" coords="163,95,360,121"/>
-<area shape="rect" id="node5" href="$e__report_8h.html" title=" " alt="" coords="384,95,547,121"/>
-<area shape="rect" id="node6" href="$time__msg_8h.html" title=" " alt="" coords="571,95,746,121"/>
-<area shape="rect" id="node7" href="$edges__input_8h.html" title=" " alt="" coords="770,95,958,121"/>
-<area shape="rect" id="node8" href="$articulationPoints__driver_8h.html" title=" " alt="" coords="982,80,1133,136"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="289,5,436,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,88,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="300,33,208,53,108,81,84,90,82,85,106,76,207,48,299,28"/>
+<area shape="rect" id="Node000003" href="$postgres__connection_8h.html" title=" " alt="" coords="72,181,315,207"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="290,33,207,52,173,65,153,80,145,101,149,125,161,148,175,169,171,172,156,151,144,127,140,101,149,77,171,61,205,47,289,28"/>
+<area shape="rect" id="Node000013" href="$debug__macro_8h.html" title=" " alt="" coords="163,93,360,119"/>
+<area shape="poly" id="edge3_Node000001_Node000013" title=" " alt="" coords="351,33,288,86,284,82,347,29"/>
+<area shape="rect" id="Node000014" href="$e__report_8h.html" title=" " alt="" coords="384,93,547,119"/>
+<area shape="poly" id="edge5_Node000001_Node000014" title=" " alt="" coords="378,29,442,82,439,86,375,33"/>
+<area shape="rect" id="Node000015" href="$time__msg_8h.html" title=" " alt="" coords="571,93,746,119"/>
+<area shape="poly" id="edge6_Node000001_Node000015" title=" " alt="" coords="403,28,607,87,605,92,402,33"/>
+<area shape="rect" id="Node000018" href="$articulationPoints__driver_8h.html" title=" " alt="" coords="770,79,921,133"/>
+<area shape="poly" id="edge7_Node000001_Node000018" title=" " alt="" coords="437,25,581,44,757,76,756,81,580,49,436,30"/>
+<area shape="poly" id="edge4_Node000013_Node000003" title=" " alt="" coords="254,121,214,172,209,168,250,117"/>
 </map>

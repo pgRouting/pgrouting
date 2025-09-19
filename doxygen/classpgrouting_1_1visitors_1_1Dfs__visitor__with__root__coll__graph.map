@@ -1,5 +1,7 @@
 <map id="pgrouting::visitors::Dfs_visitor_with_root&lt; V, E &gt;" name="pgrouting::visitors::Dfs_visitor_with_root&lt; V, E &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="69,109,237,165"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,144,47"/>
-<area shape="rect" id="node3" title=" " alt="" coords="169,13,298,39"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="69,108,237,163"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,144,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,55,136,106,132,109,94,58"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="169,13,298,38"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="219,51,175,110,171,106,214,48"/>
 </map>

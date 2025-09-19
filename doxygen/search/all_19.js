@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['y_1659',['y',['../structCoordinate__t.html#abbc494db10b22a87bede79c5b62be604',1,'Coordinate_t::y()'],['../structDelauny__t.html#a7bf8a9276b2920f93a727fce51250a05',1,'Delauny_t::y()'],['../structPgr__point__t.html#aa8436dd88dd00268d254f7984be945a2',1,'Pgr_point_t::y()'],['../classpgrouting_1_1XY__vertex.html#a9a6d308a7e53e82bae501ae3ca24a9cc',1,'pgrouting::XY_vertex::y()']]],
-  ['y1_1660',['y1',['../structPgr__edge__xy__t.html#a2042ed5c17215de537ce94b9ff73fd77',1,'Pgr_edge_xy_t']]],
-  ['y2_1661',['y2',['../structPgr__edge__xy__t.html#a6ee26f23bfc079a5e9583a7edcb683d4',1,'Pgr_edge_xy_t']]],
-  ['yen_1662',['Yen',['../classpgrouting_1_1yen_1_1Pgr__ksp.html#adb171b100a17622c2d896f6310eb615a',1,'pgrouting::yen::Pgr_ksp::Yen()'],['../classpgrouting_1_1yen_1_1Pgr__turnRestrictedPath.html#ac1553a5fb62ab62557f11e07386df5e1',1,'pgrouting::yen::Pgr_turnRestrictedPath::Yen()']]]
+  ['_7eassertfailedexception_0',['~AssertFailedException',['../classAssertFailedException.html#add60057af23323b1c5bd4220e0c0517e',1,'AssertFailedException']]],
+  ['_7epgr_5fbdastar_1',['~Pgr_bdAstar',['../classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#abdeeb861262783f9310f8ad5c693c290',1,'pgrouting::bidirectional::Pgr_bdAstar']]],
+  ['_7epgr_5fbddijkstra_2',['~Pgr_bdDijkstra',['../classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#aaf1b241885c2dc3e2c0563cfc586fd24',1,'pgrouting::bidirectional::Pgr_bdDijkstra']]],
+  ['_7epgr_5fbidirectional_3',['~Pgr_bidirectional',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a2a31cf056b1a9d40b01bbb83012c549c',1,'pgrouting::bidirectional::Pgr_bidirectional']]],
+  ['_7epgr_5fksp_4',['~Pgr_ksp',['../classpgrouting_1_1yen_1_1Pgr__ksp.html#a99bfd6ae31cd690a6e0a25685fa710c4',1,'pgrouting::yen::Pgr_ksp']]],
+  ['_7epgrdirectedchppgraph_5',['~PgrDirectedChPPGraph',['../classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a7e75fad793b73f8831878c8beea9eea7',1,'pgrouting::graph::PgrDirectedChPPGraph']]],
+  ['_7etrsphandler_6',['~TrspHandler',['../classpgrouting_1_1trsp_1_1TrspHandler.html#a66411b6f9974ab53053abc25aa74e4ba',1,'pgrouting::trsp::TrspHandler']]],
+  ['_7evisitor_7',['~Visitor',['../classpgrouting_1_1yen_1_1Pgr__ksp_1_1Visitor.html#ae64182d52e3693eae1ea88c552075eb6',1,'pgrouting::yen::Pgr_ksp::Visitor']]]
 ];

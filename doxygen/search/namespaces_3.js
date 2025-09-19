@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['pgrouting_0',['pgrouting',['../namespacepgrouting.html',1,'']]],
+  ['pgrouting_3a_3aalgorithm_1',['algorithm',['../namespacepgrouting_1_1algorithm.html',1,'pgrouting']]],
+  ['pgrouting_3a_3aalgorithms_2',['algorithms',['../namespacepgrouting_1_1algorithms.html',1,'pgrouting']]],
+  ['pgrouting_3a_3aalgorithms_3a_3adetail_3',['detail',['../namespacepgrouting_1_1algorithms_1_1detail.html',1,'pgrouting::algorithms']]],
+  ['pgrouting_3a_3ab_5fg_4',['b_g',['../namespacepgrouting_1_1b__g.html',1,'pgrouting']]],
+  ['pgrouting_3a_3abidirectional_5',['bidirectional',['../namespacepgrouting_1_1bidirectional.html',1,'pgrouting']]],
+  ['pgrouting_3a_3acontraction_6',['contraction',['../namespacepgrouting_1_1contraction.html',1,'pgrouting']]],
+  ['pgrouting_3a_3adetail_7',['detail',['../namespacepgrouting_1_1detail.html',1,'pgrouting']]],
+  ['pgrouting_3a_3adetails_8',['details',['../namespacepgrouting_1_1details.html',1,'pgrouting']]],
+  ['pgrouting_3a_3aflow_9',['flow',['../namespacepgrouting_1_1flow.html',1,'pgrouting']]],
+  ['pgrouting_3a_3afunctions_10',['functions',['../namespacepgrouting_1_1functions.html',1,'pgrouting']]],
+  ['pgrouting_3a_3agraph_11',['graph',['../namespacepgrouting_1_1graph.html',1,'pgrouting']]],
+  ['pgrouting_3a_3ametrics_12',['metrics',['../namespacepgrouting_1_1metrics.html',1,'pgrouting']]],
+  ['pgrouting_3a_3apgget_13',['pgget',['../namespacepgrouting_1_1pgget.html',1,'pgrouting']]],
+  ['pgrouting_3a_3ato_5fpostgres_14',['to_postgres',['../namespacepgrouting_1_1to__postgres.html',1,'pgrouting']]],
+  ['pgrouting_3a_3ato_5fpostgres_3a_3adetail_15',['detail',['../namespacepgrouting_1_1to__postgres_1_1detail.html',1,'pgrouting::to_postgres']]],
+  ['pgrouting_3a_3atrsp_16',['trsp',['../namespacepgrouting_1_1trsp.html',1,'pgrouting']]],
+  ['pgrouting_3a_3atsp_17',['tsp',['../namespacepgrouting_1_1tsp.html',1,'pgrouting']]],
+  ['pgrouting_3a_3autilities_18',['utilities',['../namespacepgrouting_1_1utilities.html',1,'pgrouting']]],
+  ['pgrouting_3a_3avisitors_19',['visitors',['../namespacepgrouting_1_1visitors.html',1,'pgrouting']]],
+  ['pgrouting_3a_3avrp_20',['vrp',['../namespacepgrouting_1_1vrp.html',1,'pgrouting']]],
+  ['pgrouting_3a_3ayen_21',['yen',['../namespacepgrouting_1_1yen.html',1,'pgrouting']]]
+];

@@ -1,6 +1,5 @@
 <map id="stoerWagner_driver.h" name="stoerWagner_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="104,5,264,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,80,107"/>
-<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title=" " alt="" coords="104,80,264,107"/>
-<area shape="rect" id="node4" href="$pgr__stoerWagner__t_8h.html" title=" " alt="" coords="288,80,499,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,168,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="49,79,124,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,31,89,65,84,65,84,31"/>
 </map>

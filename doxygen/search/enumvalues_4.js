@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fronttruck_3423',['FrontTruck',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168faa490f10d10926a0e5a9a91f0194ab246',1,'pgrouting::vrp']]]
+  ['illegal_0',['ILLEGAL',['../classpgrouting_1_1trsp_1_1TrspHandler.html#af71be24c94cfc2c4142406406a0c5d3cae70cb54144137eb1e92794b5491f4211',1,'pgrouting::trsp::TrspHandler']]]
 ];

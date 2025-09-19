@@ -1,5 +1,7 @@
 <map id="sequentialVertexColoring_driver.h" name="sequentialVertexColoring_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="119,5,305,47"/>
-<area shape="rect" id="node2" href="$sequentialVertexColoring_8c.html" title="Connecting code with postgres." alt="" coords="5,102,203,129"/>
-<area shape="rect" id="node3" href="$sequentialVertexColoring__driver_8cpp.html" title="Handles actual calling of function in the pgr_sequentialVertexColoring.hpp file." alt="" coords="227,95,413,136"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="119,5,306,45"/>
+<area shape="rect" id="Node000002" href="$sequentialVertexColoring_8c.html" title="Connecting code with postgres." alt="" coords="5,101,204,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,56,121,102,118,98,177,52"/>
+<area shape="rect" id="Node000003" href="$sequentialVertexColoring__driver_8cpp.html" title=" " alt="" coords="229,93,415,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="249,52,299,91,296,95,246,56"/>
 </map>

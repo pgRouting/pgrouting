@@ -1,7 +1,13 @@
 <map id="found_goals.hpp" name="found_goals.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="287,5,417,32"/>
-<area shape="rect" id="node2" href="$dfs__visitor_8hpp.html" title=" " alt="" coords="5,80,123,107"/>
-<area shape="rect" id="node3" href="$dfs__visitor__with__root_8hpp.html" title=" " alt="" coords="147,80,333,107"/>
-<area shape="rect" id="node4" href="$dijkstra__one__goal__visitor_8hpp.html" title=" " alt="" coords="358,80,570,107"/>
-<area shape="rect" id="node5" href="$edges__order__dfs__visitor_8hpp.html" title=" " alt="" coords="594,80,798,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="341,5,470,31"/>
+<area shape="rect" id="Node000002" href="$astar__visitors_8hpp.html" title=" " alt="" coords="5,79,144,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="340,36,129,81,128,76,339,31"/>
+<area shape="rect" id="Node000005" href="$dfs__visitor_8hpp.html" title=" " alt="" coords="169,79,287,104"/>
+<area shape="poly" id="edge2_Node000001_Node000005" title=" " alt="" coords="365,38,258,81,256,76,363,33"/>
+<area shape="rect" id="Node000008" href="$dfs__visitor__with__root_8hpp.html" title=" " alt="" coords="312,79,499,104"/>
+<area shape="poly" id="edge3_Node000001_Node000008" title=" " alt="" coords="408,44,408,79,403,79,403,44"/>
+<area shape="rect" id="Node000014" href="$dijkstra__visitors_8hpp.html" title=" " alt="" coords="523,79,677,104"/>
+<area shape="poly" id="edge4_Node000001_Node000014" title=" " alt="" coords="450,33,569,76,567,81,448,38"/>
+<area shape="rect" id="Node000038" href="$edges__order__dfs__visitor_8hpp.html" title=" " alt="" coords="701,79,907,104"/>
+<area shape="poly" id="edge5_Node000001_Node000038" title=" " alt="" coords="483,30,740,76,739,81,482,36"/>
 </map>

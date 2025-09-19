@@ -1,0 +1,18 @@
+<map id="ch_vertex.hpp" name="ch_vertex.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="263,5,378,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="26,152,106,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="263,25,194,30,119,41,53,57,29,68,14,80,8,95,13,111,25,127,40,141,37,145,21,130,8,113,3,95,9,77,26,63,52,52,118,35,194,25,263,19"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="150,152,225,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="329,30,338,65,338,86,331,105,312,126,289,141,239,159,238,154,287,136,309,122,326,103,333,85,333,66,323,32"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="255,79,317,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="317,32,300,67,295,65,313,30"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="438,152,505,177"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="335,29,451,141,448,144,331,33"/>
+<area shape="rect" id="Node000006" href="$edge__t_8hpp.html" title=" " alt="" coords="444,79,629,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="356,28,490,72,488,77,355,33"/>
+<area shape="rect" id="Node000007" href="$identifiers_8hpp.html" title=" " alt="" coords="24,79,231,104"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="291,33,173,76,171,71,289,28"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="528,106,493,144,489,140,524,103"/>
+<area shape="poly" id="edge9_Node000007_Node000002" title=" " alt="" coords="119,106,87,143,83,140,115,103"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="139,103,171,140,167,143,135,106"/>
+</map>

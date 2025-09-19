@@ -1,9 +1,21 @@
 <map id="postgres_connection.h" name="postgres_connection.h">
-<area shape="rect" id="node1" title=" " alt="" coords="277,5,445,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,96,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="121,80,234,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="259,80,341,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="365,80,480,107"/>
-<area shape="rect" id="node6" title=" " alt="" coords="504,80,667,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="691,80,755,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="501,5,669,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,86,96,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="502,28,320,46,214,61,109,81,96,85,94,79,107,76,213,56,319,41,501,22"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="120,86,235,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="509,33,386,54,247,81,231,85,230,80,246,76,385,49,509,28"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="259,86,341,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="536,33,354,81,345,84,343,79,353,76,535,28"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="365,86,480,111"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="563,33,460,83,457,78,561,28"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="504,86,667,111"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="588,31,588,72,583,72,583,31"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="691,86,757,111"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="607,29,693,77,690,82,604,33"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="781,86,880,111"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="622,28,783,79,781,84,620,33"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="904,86,1043,111"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="648,28,893,76,912,80,911,86,891,81,647,33"/>
+<area shape="rect" id="Node000010" href="$undefPostgresDefine_8hpp.html" title="https://doxygen.postgresql.org/port_8h.html Has the line #define snprintf pg_snprintf" alt="" coords="1067,79,1274,119"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="670,26,1054,76,1053,81,669,32"/>
 </map>

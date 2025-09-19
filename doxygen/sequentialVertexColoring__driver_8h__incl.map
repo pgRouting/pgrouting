@@ -1,6 +1,5 @@
 <map id="sequentialVertexColoring_driver.h" name="sequentialVertexColoring_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="91,5,277,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,102,80,129"/>
-<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title=" " alt="" coords="104,102,264,129"/>
-<area shape="rect" id="node4" href="$pgr__vertex__color__rt_8h.html" title=" " alt="" coords="288,95,435,136"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,192,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="61,93,136,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,46,101,79,96,79,96,46"/>
 </map>

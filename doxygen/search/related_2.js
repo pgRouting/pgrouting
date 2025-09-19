@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['equi_5fcost_3440',['equi_cost',['../classPath.html#a5ec42f9cedce93c209092bc259b9c56c',1,'Path']]]
+  ['initial_5fsolution_0',['Initial_solution',['../classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a196ba6fb904c6d6b31d970df3ff28f25',1,'pgrouting::vrp::Vehicle_pickDeliver']]]
 ];

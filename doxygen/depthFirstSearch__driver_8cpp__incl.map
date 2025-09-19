@@ -1,10 +1,27 @@
 <map id="depthFirstSearch_driver.cpp" name="depthFirstSearch_driver.cpp">
-<area shape="rect" id="node1" title="Handles actual calling of function in the pgr_depthFirstSearch.hpp file." alt="" coords="375,5,578,32"/>
-<area shape="rect" id="node2" href="$depthFirstSearch__driver_8h.html" title=" " alt="" coords="5,80,204,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="328,169,391,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="278,87,363,114"/>
-<area shape="rect" id="node5" title=" " alt="" coords="711,169,770,196"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="641,87,841,114"/>
-<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="865,87,1059,114"/>
-<area shape="rect" id="node8" href="$pgr__depthFirstSearch_8hpp.html" title="The main file which calls the respective boost function." alt="" coords="388,80,565,121"/>
+<area shape="rect" id="Node000001" title="Handles actual calling of function in the pgr_depthFirstSearch.hpp file." alt="" coords="604,5,807,31"/>
+<area shape="rect" id="Node000002" href="$depthFirstSearch__driver_8h.html" title=" " alt="" coords="5,79,203,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="604,33,222,81,217,82,216,77,221,76,604,28"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="561,167,623,192"/>
+<area shape="poly" id="edge2_Node000001_Node000008" title=" " alt="" coords="604,21,508,24,408,33,361,41,321,51,289,64,267,81,257,96,253,109,255,121,263,131,292,148,337,160,390,168,447,173,547,176,547,181,447,179,390,174,336,165,290,153,259,135,250,123,248,109,252,94,263,77,286,60,319,46,360,36,407,28,508,19,604,16"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="277,86,363,111"/>
+<area shape="poly" id="edge3_Node000001_Node000009" title=" " alt="" coords="622,33,505,53,375,81,365,84,363,79,374,76,504,48,622,28"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="1148,167,1207,192"/>
+<area shape="poly" id="edge4_Node000001_Node000010" title=" " alt="" coords="807,24,968,44,1041,58,1092,76,1115,93,1136,113,1166,153,1162,156,1132,116,1112,97,1089,81,1039,63,967,49,806,30"/>
+<area shape="rect" id="Node000011" href="$pgdata__getters_8hpp.html" title=" " alt="" coords="839,86,1078,111"/>
+<area shape="poly" id="edge5_Node000001_Node000011" title=" " alt="" coords="743,28,909,79,908,84,741,33"/>
+<area shape="rect" id="Node000029" href="$alloc_8hpp.html" title=" " alt="" coords="1154,86,1326,111"/>
+<area shape="poly" id="edge8_Node000001_Node000029" title=" " alt="" coords="795,28,1135,76,1165,81,1165,86,1134,81,794,33"/>
+<area shape="rect" id="Node000031" href="$assert_8hpp.html" title="Assertions Handling." alt="" coords="1351,86,1532,111"/>
+<area shape="poly" id="edge10_Node000001_Node000031" title=" " alt="" coords="807,23,1050,44,1339,76,1371,81,1370,86,1338,81,1050,49,807,29"/>
+<area shape="rect" id="Node000033" href="$details_8hpp.html" title=" " alt="" coords="387,86,571,111"/>
+<area shape="poly" id="edge12_Node000001_Node000033" title=" " alt="" coords="673,33,525,84,524,79,672,28"/>
+<area shape="rect" id="Node000035" href="$depthFirstSearch_8hpp.html" title=" " alt="" coords="595,86,815,111"/>
+<area shape="poly" id="edge14_Node000001_Node000035" title=" " alt="" coords="708,31,708,72,703,72,703,31"/>
+<area shape="poly" id="edge7_Node000011_Node000008" title=" " alt="" coords="906,114,637,171,636,166,905,109"/>
+<area shape="poly" id="edge6_Node000011_Node000010" title=" " alt="" coords="991,109,1136,160,1134,165,990,114"/>
+<area shape="poly" id="edge9_Node000029_Node000010" title=" " alt="" coords="1233,113,1197,158,1193,154,1229,110"/>
+<area shape="poly" id="edge11_Node000031_Node000010" title=" " alt="" coords="1404,114,1221,168,1219,163,1402,109"/>
+<area shape="poly" id="edge13_Node000033_Node000008" title=" " alt="" coords="497,109,566,157,563,161,494,114"/>
+<area shape="poly" id="edge15_Node000035_Node000008" title=" " alt="" coords="690,114,621,161,618,157,687,109"/>
 </map>

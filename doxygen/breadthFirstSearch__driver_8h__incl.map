@@ -1,6 +1,13 @@
 <map id="breadthFirstSearch_driver.h" name="breadthFirstSearch_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="112,5,256,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,80,121"/>
-<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title=" " alt="" coords="104,95,264,121"/>
-<area shape="rect" id="node4" href="$pgr__mst__rt_8h.html" title=" " alt="" coords="289,95,447,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="275,5,418,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,101,96,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="277,48,109,96,99,99,97,94,107,91,276,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="120,101,219,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="309,48,206,97,204,92,307,43"/>
+<area shape="rect" id="Node000004" href="$undefPostgresDefine_8hpp.html" title="https://doxygen.postgresql.org/port_8h.html Has the line #define snprintf pg_snprintf" alt="" coords="243,93,450,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="349,46,349,79,344,79,344,46"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="475,101,549,126"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="384,43,479,92,477,97,382,48"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="574,101,645,126"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="412,43,562,91,569,93,567,98,560,96,410,48"/>
 </map>

@@ -1,4 +1,4 @@
 var biconnectedComponents__driver_8cpp =
 [
-    [ "do_pgr_biconnectedComponents", "biconnectedComponents__driver_8cpp.html#a5a3919fa760c4bc29bead7d2c62a38ae", null ]
+    [ "pgr_do_biconnectedComponents", "biconnectedComponents__driver_8cpp.html#ab12936c093e3b2ee5ce17439cdf38fd7", null ]
 ];

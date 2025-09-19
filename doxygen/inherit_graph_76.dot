@@ -1,8 +1,13 @@
 digraph "Graphical Class Hierarchy"
 {
  // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [label="pgrouting::functions\l::Pgr_sequentialVertexColoring\< G \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1functions_1_1Pgr__sequentialVertexColoring.html",tooltip=" "];
+  Node0 [id="Node000000",label="pgrouting::vrp::Solution",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Solution.html",tooltip=" "];
+  Node0 -> Node1 [id="edge39_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 [id="Node000001",label="pgrouting::vrp::Initial\l_solution",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Initial__solution.html",tooltip=" "];
+  Node0 -> Node2 [id="edge40_Node000000_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="pgrouting::vrp::Optimize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Optimize.html",tooltip=" "];
 }

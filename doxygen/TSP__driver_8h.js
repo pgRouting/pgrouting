@@ -1,4 +1,5 @@
 var TSP__driver_8h =
 [
-    [ "do_pgr_tsp", "TSP__driver_8h.html#af0938bea88cf9303e4085f0b6cb2ec29", null ]
+    [ "TSP_tour_rt", "TSP__driver_8h.html#aa9d106d27be718ff5291c296be5ce8e5", null ],
+    [ "pgr_do_tsp", "TSP__driver_8h.html#a58e99cd313705f8ef10b296ffaad7654", null ]
 ];

@@ -1,4 +1,5 @@
 var sequentialVertexColoring__driver_8h =
 [
-    [ "do_pgr_sequentialVertexColoring", "sequentialVertexColoring__driver_8h.html#af0b06921a51b37e96b0d086d48b2f8bd", null ]
+    [ "II_t_rt", "sequentialVertexColoring__driver_8h.html#a7ef8c031ce643771dc9cc10db07884ab", null ],
+    [ "pgr_do_sequentialVertexColoring", "sequentialVertexColoring__driver_8h.html#aaf8a4aa139c20173157454ad0df908af", null ]
 ];

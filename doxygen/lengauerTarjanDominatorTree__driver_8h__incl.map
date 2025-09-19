@@ -1,6 +1,7 @@
 <map id="lengauerTarjanDominatorTree_driver.h" name="lengauerTarjanDominatorTree_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="85,5,299,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,80,121"/>
-<area shape="rect" id="node3" href="$pgr__ltdtree__rt_8h.html" title=" " alt="" coords="104,95,280,121"/>
-<area shape="rect" id="node4" href="$pgr__edge__t_8h.html" title=" " alt="" coords="304,95,464,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,220,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="27,93,102,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,47,81,83,77,80,99,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="127,93,197,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="127,44,150,80,145,83,122,47"/>
 </map>

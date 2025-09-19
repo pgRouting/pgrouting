@@ -1,11 +1,14 @@
-digraph "bdDijkstra" {
+digraph "bdDijkstra"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
   subgraph clusterdir_4fe5cf12322eb0f9892753dc20f1484c {
-    graph [ bgcolor="#ddddee", pencolor="black", label="drivers" fontname="Helvetica", fontsize="10", URL="dir_4fe5cf12322eb0f9892753dc20f1484c.html"]
-  dir_9dcc1046b71bb0b5267f9068df298246 [shape=box, label="bdDijkstra", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_9dcc1046b71bb0b5267f9068df298246.html"];
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="drivers", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_4fe5cf12322eb0f9892753dc20f1484c.html",tooltip=""]
+  dir_9dcc1046b71bb0b5267f9068df298246 [label="bdDijkstra", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_9dcc1046b71bb0b5267f9068df298246.html",tooltip=""];
   }
-  dir_d5995d5871f728649bd47ea0d6428e03 [shape=box label="c_types" fillcolor="white" style="filled" color="red" URL="dir_d5995d5871f728649bd47ea0d6428e03.html"];
-  dir_9dcc1046b71bb0b5267f9068df298246->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="3", labeldistance=1.5 headhref="dir_000016_000049.html"];
+  dir_f413d2883acb285bdeb0fac3ae939ed0 [label="cpp_common", fillcolor="#edf0f7", color="grey50", style="filled", URL="dir_f413d2883acb285bdeb0fac3ae939ed0.html",tooltip=""];
+  dir_9dcc1046b71bb0b5267f9068df298246->dir_f413d2883acb285bdeb0fac3ae939ed0 [headlabel="1", labeldistance=1.5 headhref="dir_000009_000036.html" href="dir_000009_000036.html" color="steelblue1" fontcolor="steelblue1"];
 }

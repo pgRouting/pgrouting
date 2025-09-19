@@ -1,0 +1,15 @@
+<map id="dijkstra_visitors.hpp" name="dijkstra_visitors.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="253,5,407,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,159,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="295,33,156,77,154,72,293,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="183,86,245,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="314,33,244,80,241,76,311,29"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="270,86,313,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="327,32,306,75,301,72,322,30"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="337,86,400,111"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="338,30,359,72,354,75,333,32"/>
+<area shape="rect" id="Node000006" href="$found__goals_8hpp.html" title=" " alt="" coords="425,86,606,111"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="358,28,477,78,475,83,356,33"/>
+<area shape="rect" id="Node000007" href="$assert_8hpp.html" title="Assertions Handling." alt="" coords="630,86,811,111"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="387,28,651,81,650,86,386,33"/>
+</map>

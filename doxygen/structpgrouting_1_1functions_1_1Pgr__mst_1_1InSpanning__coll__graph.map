@@ -1,4 +1,5 @@
 <map id="pgrouting::functions::Pgr_mst&lt; G &gt;::InSpanning" name="pgrouting::functions::Pgr_mst&lt; G &gt;::InSpanning">
-<area shape="rect" id="node1" title=" " alt="" coords="5,95,208,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="53,5,161,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,93,208,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="53,5,161,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,44,109,93,104,93,104,44"/>
 </map>

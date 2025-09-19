@@ -1,7 +1,12 @@
 <map id="pgrouting::yen::Pgr_ksp&lt; G &gt;" name="pgrouting::yen::Pgr_ksp&lt; G &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="465,87,611,129"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__messages.html" title=" " alt="" coords="141,5,328,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1yen_1_1Pgr__ksp_1_1Visitor.html" title=" " alt="" coords="162,57,307,98"/>
-<area shape="rect" id="node4" href="$classPath.html" title=" " alt="" coords="5,159,56,185"/>
-<area shape="rect" id="node5" title=" " alt="" coords="139,186,331,227"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="535,75,680,115"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1Pgr__messages.html" title=" " alt="" coords="213,5,400,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="414,27,511,49,569,73,567,78,510,54,413,32"/>
+<area shape="rect" id="Node000008" href="$classpgrouting_1_1Path.html" title=" " alt="" coords="5,91,127,116"/>
+<area shape="poly" id="edge2_Node000001_Node000008" title=" " alt="" coords="140,95,151,94,331,85,511,86,534,87,534,92,511,91,331,90,151,99,141,100"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="209,118,404,158"/>
+<area shape="poly" id="edge4_Node000013_Node000008" title=" " alt="" coords="140,111,210,121,209,127,140,117"/>
+<area shape="poly" id="edge3_Node000001_Node000013" title=" " alt="" coords="418,127,510,115,534,111,535,116,511,121,418,133"/>
+<area shape="rect" id="Node000016" href="$classpgrouting_1_1yen_1_1Pgr__ksp_1_1Visitor.html" title=" " alt="" coords="234,182,379,222"/>
+<area shape="poly" id="edge5_Node000001_Node000016" title=" " alt="" coords="392,182,451,167,510,146,574,113,576,118,512,151,452,172,394,187"/>
 </map>

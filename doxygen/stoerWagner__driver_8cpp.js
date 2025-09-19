@@ -1,5 +1,5 @@
 var stoerWagner__driver_8cpp =
 [
-    [ "do_pgr_stoerWagner", "stoerWagner__driver_8cpp.html#ace6dcba77f5caac0c1bf464c0d5d6060", null ],
-    [ "pgr_stoerWagner", "stoerWagner__driver_8cpp.html#a81997decd93acc47277c5ac2e1e2cce3", null ]
+    [ "pgr_do_stoerWagner", "stoerWagner__driver_8cpp.html#a75592d39d2343b2ad29b6c0df91902c2", null ],
+    [ "pgr_stoerWagner", "stoerWagner__driver_8cpp.html#ad54302da6ab755ff94e0db1826d9ffe4", null ]
 ];

@@ -1,8 +1,21 @@
 digraph "Graphical Class Hierarchy"
 {
  // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [label="pgrouting::alphashape\l::anonymous_namespace\l\{pgr_alphaShape.cpp\}::\lCompareRadius",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structpgrouting_1_1alphashape_1_1anonymous__namespace_02pgr__alphaShape_8cpp_03_1_1CompareRadius.html",tooltip=" "];
+  Node0 [id="Node000000",label="pgrouting::Identifier",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1Identifier.html",tooltip=" "];
+  Node0 -> Node1 [id="edge20_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 [id="Node000001",label="pgrouting::vrp::Dnode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Dnode.html",tooltip="The Dnode class defines a the basic operations when data is a matrix."];
+  Node1 -> Node2 [id="edge21_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="pgrouting::vrp::Tw_node",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html",tooltip="Extends the Node class to create a Node with time window attributes."];
+  Node2 -> Node3 [id="edge22_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="pgrouting::vrp::Vehicle_node",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__node.html",tooltip="Extend Tw_node to evaluate the vehicle at node level."];
+  Node0 -> Node4 [id="edge23_Node000000_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="pgrouting::vrp::Order",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Order.html",tooltip=" "];
+  Node0 -> Node5 [id="edge24_Node000000_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="pgrouting::vrp::Vehicle",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html",tooltip="Vehicle with time windows."];
+  Node5 -> Node6 [id="edge25_Node000005_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="pgrouting::vrp::Vehicle\l_pickDeliver",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html",tooltip=" "];
 }

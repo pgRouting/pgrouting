@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['kdelivery_3425',['kDelivery',['../classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63',1,'pgrouting::vrp::Tw_node']]],
-  ['kdump_3426',['kDump',['../classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a1cac02b77057f76ebbf69348aea584b8',1,'pgrouting::vrp::Tw_node']]],
-  ['kend_3427',['kEnd',['../classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5',1,'pgrouting::vrp::Tw_node']]],
-  ['kload_3428',['kLoad',['../classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a8fe693c767913e5e51c12b548062d8bc',1,'pgrouting::vrp::Tw_node']]],
-  ['kpickup_3429',['kPickup',['../classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4aa1d0ca4b0b1f553d9887025ccb34537d',1,'pgrouting::vrp::Tw_node']]],
-  ['kstart_3430',['kStart',['../classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025',1,'pgrouting::vrp::Tw_node']]]
+  ['onedepot_0',['OneDepot',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168fac3a37ac5b2861f79db698cc0075a53f8',1,'pgrouting::vrp']]],
+  ['onepertruck_1',['OnePerTruck',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168fab3fdf31d608528c978c9509ddc4f568f',1,'pgrouting::vrp']]],
+  ['onetruck_2',['OneTruck',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168fa6b82bbc0d61acddd5c15ad94b07b11e2',1,'pgrouting::vrp']]]
 ];

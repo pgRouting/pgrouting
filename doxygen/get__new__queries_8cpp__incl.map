@@ -1,7 +1,13 @@
 <map id="get_new_queries.cpp" name="get_new_queries.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="181,5,340,32"/>
-<area shape="rect" id="node2" href="$get__new__queries_8h.html" title=" " alt="" coords="5,80,153,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="177,87,248,114"/>
-<area shape="rect" id="node4" title=" " alt="" coords="273,87,347,114"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="371,87,571,114"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="173,5,332,31"/>
+<area shape="rect" id="Node000002" href="$get__new__queries_8h.html" title=" " alt="" coords="5,79,153,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="229,33,135,75,132,71,226,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="233,167,291,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="245,32,231,53,219,79,215,99,219,118,229,138,242,155,238,158,224,140,214,120,210,99,214,78,226,51,241,29"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="331,167,406,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="333,27,379,44,399,59,416,77,423,98,418,120,407,140,393,158,389,155,403,137,413,118,418,98,412,80,396,63,376,49,331,32"/>
+<area shape="rect" id="Node000005" href="$alloc_8hpp.html" title=" " alt="" coords="229,86,401,111"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="264,29,300,74,295,77,260,33"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="310,113,280,157,276,154,305,110"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="325,110,355,154,351,157,321,113"/>
 </map>

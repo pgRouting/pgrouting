@@ -1,0 +1,26 @@
+<map id="contract.hpp" name="contract.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="477,5,580,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,68,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="477,27,304,48,88,81,82,82,81,77,87,76,303,43,477,22"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="408,225,471,251"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="477,21,397,27,350,34,301,46,252,63,207,86,167,116,134,153,129,165,133,176,150,189,176,200,246,217,325,227,394,232,394,237,325,232,246,222,175,205,148,193,129,179,124,165,129,151,163,112,204,81,250,58,299,41,349,29,396,21,477,16"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="826,225,893,251"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="581,24,684,41,809,68,869,85,923,104,965,126,993,150,1000,165,999,178,991,190,978,200,944,217,907,229,905,224,942,212,975,196,987,186,994,176,995,166,989,154,962,130,920,109,867,90,808,73,683,46,580,29"/>
+<area shape="rect" id="Node000005" href="$contractionGraph_8hpp.html" title=" " alt="" coords="477,152,716,177"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="541,29,558,51,574,77,586,108,594,138,589,139,581,110,569,80,553,54,537,32"/>
+<area shape="rect" id="Node000037" href="$ch__graphs_8hpp.html" title=" " alt="" coords="365,79,559,104"/>
+<area shape="poly" id="edge7_Node000001_Node000037" title=" " alt="" coords="520,33,484,70,480,67,516,29"/>
+<area shape="rect" id="Node000038" href="$linearContraction_8hpp.html" title=" " alt="" coords="740,152,979,177"/>
+<area shape="poly" id="edge10_Node000001_Node000038" title=" " alt="" coords="556,28,822,144,819,149,554,33"/>
+<area shape="rect" id="Node000040" href="$deadEndContraction_8hpp.html" title=" " alt="" coords="143,152,402,177"/>
+<area shape="poly" id="edge13_Node000001_Node000040" title=" " alt="" coords="478,32,417,51,355,81,319,111,291,143,287,139,315,107,353,76,415,46,476,27"/>
+<area shape="rect" id="Node000029" href="$assert_8hpp.html" title="Assertions Handling." alt="" coords="1054,79,1235,104"/>
+<area shape="poly" id="edge15_Node000001_Node000029" title=" " alt="" coords="580,23,1040,75,1040,81,580,28"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="572,180,478,222,476,217,570,175"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="640,175,814,222,812,227,638,180"/>
+<area shape="poly" id="edge8_Node000037_Node000003" title=" " alt="" coords="463,105,446,212,441,211,458,104"/>
+<area shape="poly" id="edge9_Node000037_Node000005" title=" " alt="" coords="485,102,564,143,561,148,482,106"/>
+<area shape="poly" id="edge11_Node000038_Node000003" title=" " alt="" coords="792,180,485,232,484,227,791,175"/>
+<area shape="poly" id="edge12_Node000038_Node000004" title=" " alt="" coords="862,178,862,212,857,212,857,178"/>
+<area shape="poly" id="edge14_Node000040_Node000003" title=" " alt="" coords="300,175,401,217,399,222,298,180"/>
+</map>

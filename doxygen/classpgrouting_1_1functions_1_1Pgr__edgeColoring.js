@@ -1,0 +1,26 @@
+var classpgrouting_1_1functions_1_1Pgr__edgeColoring =
+[
+    [ "E", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a4db6f78a3918cc9db21b4c198cb6e6ec", null ],
+    [ "E_it", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#acea40334e20963e80edfe8dd004ce115", null ],
+    [ "EdgeColoring_Graph", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a3ddf93cb7cc0b57004177774fb18a0d7", null ],
+    [ "V", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#ae4aaaf41bd73925b9133e0511bb6282b", null ],
+    [ "V_it", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a35593355c6d1546901dafd22c9bc17a7", null ],
+    [ "Pgr_edgeColoring", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#ab3a22e79672fc15a55276ff272672d6e", null ],
+    [ "Pgr_edgeColoring", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a8fe793380ad9c8d81fbdf4c78b8f7347", null ],
+    [ "clear", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a99a9dde300a4a8e5ce8abc8b0560b9f8", null ],
+    [ "edgeColoring", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a01f797a1a5d144bcc1cd9019ad0ddf77", null ],
+    [ "get_boost_vertex", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a96ae546f7b84b5c65489ad5b9826ccea", null ],
+    [ "get_edge_id", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a8476618b4c3a949cd53f08525e0fcfbb", null ],
+    [ "get_error", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a7f6fd9736d46b81a91df0c465d363547", null ],
+    [ "get_log", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#ad58fe923de5b229f4630b857cc34359b", null ],
+    [ "get_notice", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a13e1801328ed7928eee02065f3d04417", null ],
+    [ "get_vertex_id", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a3479448801d5505289f2017e3cf8ce0d", null ],
+    [ "has_error", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a222d10fd2dc33544152f16680cc050f3", null ],
+    [ "E_to_id", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a658d302561d88f203e6ae8e89e0ca5e3", null ],
+    [ "error", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a4a12f6059130ebe354b184b78086b2c9", null ],
+    [ "graph", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#ad6cea9e4106f9c611511704ad299f09f", null ],
+    [ "id_to_V", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a7508f57eaf20427af2c37bee4ce2d7b6", null ],
+    [ "log", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a7bc802659e3e98f9e4ed1d829d5220b2", null ],
+    [ "notice", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a5e4c820b89d1736b51a441047cb1083f", null ],
+    [ "V_to_id", "classpgrouting_1_1functions_1_1Pgr__edgeColoring.html#a2febf7019c77b46450e74e4e65d816bb", null ]
+];

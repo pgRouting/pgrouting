@@ -1,11 +1,12 @@
 digraph "pgrouting::tsp::Dmatrix"
 {
  // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="pgrouting::tsp::Dmatrix",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" costs" ,fontname="Helvetica"];
-  Node2 [label="std::vector\< std::vector\l\< double \> \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ids" ,fontname="Helvetica"];
-  Node6 [label="std::vector\< int64_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="pgrouting::tsp::Dmatrix",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [id="edge1_Node000001_Node000002",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" ids",fontcolor="grey" ];
+  Node2 [id="Node000002",label="std::vector\< int64_t \>",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",tooltip=" "];
+  Node5 -> Node1 [id="edge2_Node000001_Node000005",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" costs",fontcolor="grey" ];
+  Node5 [id="Node000005",label="std::vector\< std::vector\l\< double \> \>",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",tooltip=" "];
 }

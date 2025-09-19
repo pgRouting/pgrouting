@@ -1,7 +1,6 @@
 var classpgrouting_1_1vrp_1_1Order =
 [
     [ "Order", "classpgrouting_1_1vrp_1_1Order.html#a1ea72aaccc861320b5a291ebd73c9e2a", null ],
-    [ "Order", "classpgrouting_1_1vrp_1_1Order.html#a784973f6eb33011bdd6881307a2922db", null ],
     [ "delivery", "classpgrouting_1_1vrp_1_1Order.html#a909823e836bd8fb257eede3dc13ba61e", null ],
     [ "id", "classpgrouting_1_1vrp_1_1Order.html#a147f029e589a2dd36b1edd638d7ac833", null ],
     [ "idx", "classpgrouting_1_1vrp_1_1Order.html#ae0a3414bc65c1b67101b3f5944505447", null ],
@@ -12,7 +11,7 @@ var classpgrouting_1_1vrp_1_1Order =
     [ "set_compatibles", "classpgrouting_1_1vrp_1_1Order.html#a55f9df9e8695ad727381ceeeddd63ad8", null ],
     [ "subsetI", "classpgrouting_1_1vrp_1_1Order.html#ac227fb60703e6f5f9e553144a0663e60", null ],
     [ "subsetJ", "classpgrouting_1_1vrp_1_1Order.html#a7f2feaffbee72af3295f7e91857767af", null ],
-    [ "operator<<", "classpgrouting_1_1vrp_1_1Order.html#a35cdd37a811c627b997a31e7e04b3262", null ],
+    [ "operator<<", "classpgrouting_1_1vrp_1_1Order.html#a0a72142eba6eeb7ed4c9dfa1d47c0e6b", null ],
     [ "m_compatibleI", "classpgrouting_1_1vrp_1_1Order.html#a70a71f8d25607ecdec13cc5ba85990fd", null ],
     [ "m_compatibleJ", "classpgrouting_1_1vrp_1_1Order.html#a77c107f2f6eaf6da2561c4ffa858a74c", null ],
     [ "m_delivery", "classpgrouting_1_1vrp_1_1Order.html#a9bdb982340168ecebe3be10b043a501c", null ],

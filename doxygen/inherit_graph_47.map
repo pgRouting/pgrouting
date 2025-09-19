@@ -1,3 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classPgr__stoerWagner.html" title=" " alt="" coords="5,5,177,32"/>
+<area shape="rect" id="Node000000" href="$classpgrouting_1_1functions_1_1Pgr__mst.html" title=" " alt="" coords="5,37,157,77"/>
+<area shape="rect" id="Node000001" href="$classpgrouting_1_1functions_1_1Pgr__kruskal.html" title=" " alt="" coords="205,5,357,45"/>
+<area shape="poly" id="edge16_Node000000_Node000001" title=" " alt="" coords="171,40,205,35,205,40,171,46"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1functions_1_1Pgr__prim.html" title=" " alt="" coords="205,69,357,109"/>
+<area shape="poly" id="edge17_Node000000_Node000002" title=" " alt="" coords="171,69,205,75,205,80,171,74"/>
 </map>

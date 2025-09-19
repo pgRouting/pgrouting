@@ -21,7 +21,6 @@ var classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra =
     [ "backward_predecessor", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a4ecb47d0dbeab63cd57721bc88cb13ad", null ],
     [ "backward_queue", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a0a54fb704d67bb33cdac08d447b829e9", null ],
     [ "best_cost", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a9364fe09b92306ce8b43f9cda5b3b78a", null ],
-    [ "cost_only", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a43a0a60c548e5d9b6b0e89aa809537f1", null ],
     [ "forward_cost", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a542d59dbc5f102daa94bb8687b45b75d", null ],
     [ "forward_edge", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#ab7f293e239144ffd2a4499ecec0b2528", null ],
     [ "forward_finished", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#ac9eec462e97b987cfb59bd12709c8395", null ],

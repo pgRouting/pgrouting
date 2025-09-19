@@ -1,10 +1,18 @@
 <map id="euclideanTSP.c" name="euclideanTSP.c">
-<area shape="rect" id="node1" title=" " alt="" coords="401,5,519,32"/>
-<area shape="rect" id="node2" href="$postgres__connection_8h.html" title=" " alt="" coords="5,169,248,196"/>
-<area shape="rect" id="node3" title=" " alt="" coords="35,87,133,114"/>
-<area shape="rect" id="node4" href="$debug__macro_8h.html" title=" " alt="" coords="157,87,355,114"/>
-<area shape="rect" id="node5" href="$e__report_8h.html" title=" " alt="" coords="379,87,541,114"/>
-<area shape="rect" id="node6" href="$time__msg_8h.html" title=" " alt="" coords="566,87,741,114"/>
-<area shape="rect" id="node7" href="$coordinates__input_8h.html" title=" " alt="" coords="765,80,939,121"/>
-<area shape="rect" id="node8" href="$euclideanTSP__driver_8h.html" title=" " alt="" coords="963,80,1146,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="429,5,547,31"/>
+<area shape="rect" id="Node000002" href="$postgres__connection_8h.html" title=" " alt="" coords="15,167,257,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="429,25,186,44,73,61,35,70,15,81,10,89,8,98,16,117,40,142,72,159,70,164,37,147,11,120,3,98,5,87,12,77,33,65,72,55,185,39,428,20"/>
+<area shape="rect" id="Node000012" href="$path__rt_8h.html" title=" " alt="" coords="26,86,161,111"/>
+<area shape="poly" id="edge2_Node000001_Node000012" title=" " alt="" coords="429,32,174,81,155,86,153,80,173,76,428,27"/>
+<area shape="rect" id="Node000014" href="$debug__macro_8h.html" title=" " alt="" coords="185,86,383,111"/>
+<area shape="poly" id="edge3_Node000001_Node000014" title=" " alt="" coords="459,33,327,84,325,79,457,28"/>
+<area shape="rect" id="Node000015" href="$e__report_8h.html" title=" " alt="" coords="407,86,569,111"/>
+<area shape="poly" id="edge5_Node000001_Node000015" title=" " alt="" coords="491,31,491,72,485,72,485,31"/>
+<area shape="rect" id="Node000016" href="$time__msg_8h.html" title=" " alt="" coords="594,86,769,111"/>
+<area shape="poly" id="edge6_Node000001_Node000016" title=" " alt="" coords="517,28,642,78,640,83,515,33"/>
+<area shape="rect" id="Node000019" href="$tsp__tour__rt_8h.html" title=" " alt="" coords="793,86,951,111"/>
+<area shape="poly" id="edge7_Node000001_Node000019" title=" " alt="" coords="545,28,782,76,804,81,803,86,781,81,544,33"/>
+<area shape="rect" id="Node000020" href="$euclideanTSP__driver_8h.html" title=" " alt="" coords="975,79,1158,119"/>
+<area shape="poly" id="edge8_Node000001_Node000020" title=" " alt="" coords="548,23,729,44,962,76,961,81,729,49,547,28"/>
+<area shape="poly" id="edge4_Node000014_Node000002" title=" " alt="" coords="264,114,171,162,169,158,261,109"/>
 </map>

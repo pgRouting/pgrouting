@@ -1,0 +1,11 @@
+<map id="pgrouting::functions::Pgr_edgeColoring" name="pgrouting::functions::Pgr_edgeColoring">
+<area shape="rect" id="Node000001" title=" " alt="" coords="293,73,445,113"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1Pgr__messages.html" title=" " alt="" coords="5,5,192,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,31,270,57,312,70,311,75,269,62,170,36"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="13,55,184,80"/>
+<area shape="poly" id="edge2_Node000001_Node000008" title=" " alt="" coords="198,74,294,83,293,88,197,79"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="13,104,184,129"/>
+<area shape="poly" id="edge3_Node000001_Node000012" title=" " alt="" coords="198,114,269,109,293,105,294,111,270,114,198,119"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="13,153,184,179"/>
+<area shape="poly" id="edge4_Node000001_Node000013" title=" " alt="" coords="197,150,269,133,327,110,328,115,270,138,198,155"/>
+</map>

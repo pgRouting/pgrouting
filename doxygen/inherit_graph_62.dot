@@ -1,8 +1,9 @@
 digraph "Graphical Class Hierarchy"
 {
  // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [label="pgrouting::CH_edge",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1CH__edge.html",tooltip=" "];
+  Node0 [id="Node000000",label="pgrouting::Line_vertex",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1Line__vertex.html",tooltip=" "];
 }

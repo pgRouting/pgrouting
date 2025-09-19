@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['directed_3422',['DIRECTED',['../graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5',1,'graph_enum.h']]]
+  ['fronttruck_0',['FrontTruck',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168faa490f10d10926a0e5a9a91f0194ab246',1,'pgrouting::vrp']]]
 ];

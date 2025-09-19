@@ -1,6 +1,7 @@
 <map id="chinesePostman_driver.h" name="chinesePostman_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="91,5,277,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,87,80,114"/>
-<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title=" " alt="" coords="104,87,264,114"/>
-<area shape="rect" id="node4" href="$general__path__element__t_8h.html" title=" " alt="" coords="289,80,450,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,192,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="11,79,85,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,33,66,69,62,66,88,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="109,79,192,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="109,29,136,66,132,69,105,33"/>
 </map>

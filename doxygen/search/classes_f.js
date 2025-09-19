@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['userquitexception_1815',['UserQuitException',['../classUserQuitException.html',1,'']]]
+  ['undirectedhascostbg_0',['UndirectedHasCostBG',['../classpgrouting_1_1graph_1_1UndirectedHasCostBG.html',1,'pgrouting::graph']]],
+  ['undirectednocostsbg_1',['UndirectedNoCostsBG',['../classpgrouting_1_1graph_1_1UndirectedNoCostsBG.html',1,'pgrouting::graph']]]
 ];

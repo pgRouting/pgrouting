@@ -1,4 +1,5 @@
 <map id="pgrouting::trsp::Rule" name="pgrouting::trsp::Rule">
-<area shape="rect" id="node1" title=" " alt="" coords="11,109,166,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,172,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="11,108,166,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,172,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,45,91,108,86,108,86,45"/>
 </map>

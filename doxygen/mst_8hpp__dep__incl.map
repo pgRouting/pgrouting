@@ -1,0 +1,7 @@
+<map id="mst.hpp" name="mst.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="73,5,148,31"/>
+<area shape="rect" id="Node000002" href="$kruskal_8hpp.html" title=" " alt="" coords="5,79,104,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,43,66,80,62,77,91,40"/>
+<area shape="rect" id="Node000004" href="$prim_8hpp.html" title=" " alt="" coords="128,79,208,104"/>
+<area shape="poly" id="edge2_Node000001_Node000004" title=" " alt="" coords="131,40,161,77,157,80,126,43"/>
+</map>

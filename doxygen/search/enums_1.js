@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['graphtype_3409',['graphType',['../graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490e',1,'graph_enum.h']]]
+  ['initials_5fcode_0',['Initials_code',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168f',1,'pgrouting::vrp']]]
 ];

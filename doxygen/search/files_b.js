@@ -1,16 +1,20 @@
 var searchData=
 [
-  ['lengauertarjandominatortree_2ec_2006',['lengauerTarjanDominatorTree.c',['../lengauerTarjanDominatorTree_8c.html',1,'']]],
-  ['lengauertarjandominatortree_5fdriver_2ecpp_2007',['lengauerTarjanDominatorTree_driver.cpp',['../lengauerTarjanDominatorTree__driver_8cpp.html',1,'']]],
-  ['lengauertarjandominatortree_5fdriver_2eh_2008',['lengauerTarjanDominatorTree_driver.h',['../lengauerTarjanDominatorTree__driver_8h.html',1,'']]],
-  ['line_5fgraph_5ffull_5frt_2eh_2009',['line_graph_full_rt.h',['../line__graph__full__rt_8h.html',1,'']]],
-  ['line_5fgraph_5frt_2eh_2010',['line_graph_rt.h',['../line__graph__rt_8h.html',1,'']]],
-  ['line_5fvertex_2eh_2011',['line_vertex.h',['../line__vertex_8h.html',1,'']]],
-  ['linear_5fdirected_5fgraph_2eh_2012',['linear_directed_graph.h',['../linear__directed__graph_8h.html',1,'']]],
-  ['linegraph_2ec_2013',['lineGraph.c',['../lineGraph_8c.html',1,'']]],
-  ['linegraph_5fdriver_2ecpp_2014',['lineGraph_driver.cpp',['../lineGraph__driver_8cpp.html',1,'']]],
-  ['linegraph_5fdriver_2eh_2015',['lineGraph_driver.h',['../lineGraph__driver_8h.html',1,'']]],
-  ['linegraphfull_2ec_2016',['lineGraphFull.c',['../lineGraphFull_8c.html',1,'']]],
-  ['linegraphfull_5fdriver_2ecpp_2017',['lineGraphFull_driver.cpp',['../lineGraphFull__driver_8cpp.html',1,'']]],
-  ['linegraphfull_5fdriver_2eh_2018',['lineGraphFull_driver.h',['../lineGraphFull__driver_8h.html',1,'']]]
+  ['legacy_2ec_0',['legacy.c',['../legacy_8c.html',1,'']]],
+  ['lengauertarjandominatortree_2ec_1',['lengauerTarjanDominatorTree.c',['../lengauerTarjanDominatorTree_8c.html',1,'']]],
+  ['lengauertarjandominatortree_5fdriver_2ecpp_2',['lengauerTarjanDominatorTree_driver.cpp',['../lengauerTarjanDominatorTree__driver_8cpp.html',1,'']]],
+  ['lengauertarjandominatortree_5fdriver_2eh_3',['lengauerTarjanDominatorTree_driver.h',['../lengauerTarjanDominatorTree__driver_8h.html',1,'']]],
+  ['lengauertarjandominatortree_5fdriver_2ehpp_4',['lengauerTarjanDominatorTree_driver.hpp',['../lengauerTarjanDominatorTree__driver_8hpp.html',1,'']]],
+  ['line_5fgraph_2ehpp_5',['line_graph.hpp',['../line__graph_8hpp.html',1,'']]],
+  ['line_5fgraph_5ffull_5frt_2eh_6',['line_graph_full_rt.h',['../line__graph__full__rt_8h.html',1,'']]],
+  ['line_5fvertex_2ehpp_7',['line_vertex.hpp',['../line__vertex_8hpp.html',1,'']]],
+  ['linear_5fdirected_5fgraph_2ehpp_8',['linear_directed_graph.hpp',['../linear__directed__graph_8hpp.html',1,'']]],
+  ['linearcontraction_2ehpp_9',['linearContraction.hpp',['../linearContraction_8hpp.html',1,'']]],
+  ['linegraph_2ec_10',['lineGraph.c',['../lineGraph_8c.html',1,'']]],
+  ['linegraph_5fdriver_2ecpp_11',['lineGraph_driver.cpp',['../lineGraph__driver_8cpp.html',1,'']]],
+  ['linegraph_5fdriver_2eh_12',['lineGraph_driver.h',['../lineGraph__driver_8h.html',1,'']]],
+  ['linegraphfull_2ec_13',['lineGraphFull.c',['../lineGraphFull_8c.html',1,'']]],
+  ['linegraphfull_2ehpp_14',['lineGraphFull.hpp',['../lineGraphFull_8hpp.html',1,'']]],
+  ['linegraphfull_5fdriver_2ecpp_15',['lineGraphFull_driver.cpp',['../lineGraphFull__driver_8cpp.html',1,'']]],
+  ['linegraphfull_5fdriver_2eh_16',['lineGraphFull_driver.h',['../lineGraphFull__driver_8h.html',1,'']]]
 ];

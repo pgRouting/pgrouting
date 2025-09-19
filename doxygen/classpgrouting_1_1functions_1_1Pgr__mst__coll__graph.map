@@ -1,7 +1,11 @@
 <map id="pgrouting::functions::Pgr_mst&lt; G &gt;" name="pgrouting::functions::Pgr_mst&lt; G &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="373,74,525,115"/>
-<area shape="rect" id="node2" title=" " alt="" coords="23,5,190,32"/>
-<area shape="rect" id="node3" title="STL class." alt="" coords="63,56,150,83"/>
-<area shape="rect" id="node4" title=" " alt="" coords="27,107,186,133"/>
-<area shape="rect" id="node5" href="$structpgrouting_1_1functions_1_1Pgr__mst_1_1InSpanning.html" title=" " alt="" coords="5,158,208,199"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="373,85,525,125"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="23,5,190,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,31,274,46,350,65,400,82,398,87,349,70,273,51,199,36"/>
+<area shape="rect" id="Node000005" href="$structpgrouting_1_1functions_1_1Pgr__mst_1_1InSpanning.html" title=" " alt="" coords="5,55,208,95"/>
+<area shape="poly" id="edge2_Node000001_Node000005" title=" " alt="" coords="222,83,373,96,373,101,222,88"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="27,120,186,145"/>
+<area shape="poly" id="edge3_Node000001_Node000009" title=" " alt="" coords="200,127,349,117,373,114,374,119,350,122,200,132"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="63,169,150,195"/>
+<area shape="poly" id="edge4_Node000001_Node000010" title=" " alt="" coords="164,176,252,166,349,146,409,122,411,127,350,151,252,172,164,181"/>
 </map>

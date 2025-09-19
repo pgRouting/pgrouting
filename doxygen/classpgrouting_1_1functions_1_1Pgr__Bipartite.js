@@ -6,8 +6,8 @@ var classpgrouting_1_1functions_1_1Pgr__Bipartite =
     [ "get_log", "classpgrouting_1_1functions_1_1Pgr__Bipartite.html#ad58fe923de5b229f4630b857cc34359b", null ],
     [ "get_notice", "classpgrouting_1_1functions_1_1Pgr__Bipartite.html#a13e1801328ed7928eee02065f3d04417", null ],
     [ "has_error", "classpgrouting_1_1functions_1_1Pgr__Bipartite.html#a222d10fd2dc33544152f16680cc050f3", null ],
-    [ "pgr_bipartite", "classpgrouting_1_1functions_1_1Pgr__Bipartite.html#a4bd73f7ca816ae181c5c2f259c551b68", null ],
-    [ "print_Bipartite", "classpgrouting_1_1functions_1_1Pgr__Bipartite.html#ade689bee3c9dfc4890f289d4fed2e5b6", null ],
+    [ "pgr_bipartite", "classpgrouting_1_1functions_1_1Pgr__Bipartite.html#adb70f58be45cc9fc45b435a845d18a7c", null ],
+    [ "print_Bipartite", "classpgrouting_1_1functions_1_1Pgr__Bipartite.html#a74596f784ad8d95e404bba69d2e9d293", null ],
     [ "error", "classpgrouting_1_1functions_1_1Pgr__Bipartite.html#a4a12f6059130ebe354b184b78086b2c9", null ],
     [ "log", "classpgrouting_1_1functions_1_1Pgr__Bipartite.html#a7bc802659e3e98f9e4ed1d829d5220b2", null ],
     [ "notice", "classpgrouting_1_1functions_1_1Pgr__Bipartite.html#a5e4c820b89d1736b51a441047cb1083f", null ]

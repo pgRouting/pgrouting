@@ -1,11 +1,25 @@
 <map id="pgrouting::Pgr_messages" name="pgrouting::Pgr_messages">
-<area shape="rect" id="node1" title=" " alt="" coords="5,228,192,255"/>
-<area shape="rect" id="node2" href="$classPgr__bellman__ford.html" title=" " alt="" coords="253,5,429,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html" title=" " alt="" coords="258,57,425,98"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1functions_1_1Pgr__Bipartite.html" title=" " alt="" coords="264,122,419,163"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1functions_1_1Pgr__boyerMyrvold.html" title=" " alt="" coords="247,187,435,229"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1functions_1_1Pgr__LTDTree.html" title=" " alt="" coords="265,253,417,294"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1functions_1_1Pgr__makeConnected.html" title=" " alt="" coords="240,318,443,359"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1Pg__points__graph.html" title=" " alt="" coords="264,383,419,425"/>
-<area shape="rect" id="node9" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html" title=" " alt="" coords="269,449,414,490"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,333,192,358"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1Pg__points__graph.html" title=" " alt="" coords="268,5,423,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,318,118,264,144,193,183,119,209,85,238,55,267,38,269,43,242,59,213,89,188,122,149,195,123,265,108,320"/>
+<area shape="rect" id="Node000003" href="$classpgrouting_1_1Pgr__bellman__ford.html" title=" " alt="" coords="259,69,432,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="107,319,125,276,153,222,191,167,213,141,238,119,258,107,261,112,242,123,217,145,195,170,157,225,130,278,111,321"/>
+<area shape="rect" id="Node000004" href="$classpgrouting_1_1functions_1_1CuthillMckeeOrdering.html" title=" " alt="" coords="240,133,451,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="113,319,163,252,198,215,239,183,261,171,264,176,241,188,202,219,167,255,117,322"/>
+<area shape="rect" id="Node000005" href="$classpgrouting_1_1functions_1_1Pgr__Bipartite.html" title=" " alt="" coords="268,197,423,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="124,322,176,284,239,247,268,235,270,240,241,252,179,289,127,326"/>
+<area shape="rect" id="Node000006" href="$classpgrouting_1_1functions_1_1Pgr__LTDTree.html" title=" " alt="" coords="269,261,421,301"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="161,327,269,298,270,303,163,332"/>
+<area shape="rect" id="Node000007" href="$classpgrouting_1_1functions_1_1Pgr__boyerMyrvold.html" title=" " alt="" coords="251,325,439,365"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="206,343,251,343,251,348,206,348"/>
+<area shape="rect" id="Node000008" href="$classpgrouting_1_1functions_1_1Pgr__edgeColoring.html" title=" " alt="" coords="269,389,421,429"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="163,359,270,387,269,392,161,364"/>
+<area shape="rect" id="Node000009" href="$classpgrouting_1_1functions_1_1Pgr__makeConnected.html" title=" " alt="" coords="244,453,447,493"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="127,365,179,402,241,439,270,451,268,456,239,444,176,407,124,369"/>
+<area shape="rect" id="Node000010" href="$classpgrouting_1_1functions_1_1SloanOrdering.html" title=" " alt="" coords="264,517,427,557"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="117,368,167,435,202,472,241,503,265,515,262,520,239,508,198,476,163,439,113,371"/>
+<area shape="rect" id="Node000011" href="$classpgrouting_1_1trsp_1_1TrspHandler.html" title=" " alt="" coords="244,582,447,607"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="111,370,129,414,156,467,194,522,216,546,241,567,265,579,262,584,239,572,213,550,190,525,152,470,124,416,106,372"/>
+<area shape="rect" id="Node000012" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html" title=" " alt="" coords="273,632,418,672"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="109,371,124,422,151,489,190,558,214,589,242,617,274,635,271,640,238,621,210,593,185,560,146,491,119,424,104,372"/>
 </map>

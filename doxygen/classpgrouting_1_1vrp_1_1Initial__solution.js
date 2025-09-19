@@ -7,7 +7,7 @@ var classpgrouting_1_1vrp_1_1Initial__solution =
     [ "do_while_foo", "classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460", null ],
     [ "duration", "classpgrouting_1_1vrp_1_1Initial__solution.html#aa6bc3fa440ee4f3cdad17bd1f069bc43", null ],
     [ "get_kind", "classpgrouting_1_1vrp_1_1Initial__solution.html#a82bc3ecf220fbf390c9987f908fdad26", null ],
-    [ "get_postgres_result", "classpgrouting_1_1vrp_1_1Initial__solution.html#a016e772056690f0481dbbe1c1375b7b4", null ],
+    [ "get_postgres_result", "classpgrouting_1_1vrp_1_1Initial__solution.html#af171493a89f9fe217e092ea8f856ce1a", null ],
     [ "invariant", "classpgrouting_1_1vrp_1_1Initial__solution.html#ac2b7f0f11fe094e0a6964ce847542811", null ],
     [ "is_feasable", "classpgrouting_1_1vrp_1_1Initial__solution.html#ac3e8bf605c6fd5e6eceac4ddd7255bcb", null ],
     [ "msg", "classpgrouting_1_1vrp_1_1Initial__solution.html#a0c2b983b158da94ba66512e925997180", null ],

@@ -1,6 +1,9 @@
 <map id="pgrouting::vrp::Vehicle_pickDeliver" name="pgrouting::vrp::Vehicle_pickDeliver">
-<area shape="rect" id="node1" title=" " alt="" coords="183,124,351,165"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html" title="Vehicle with time windows." alt="" coords="5,13,173,39"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1PD__Orders.html" title=" " alt="" coords="197,5,336,47"/>
-<area shape="rect" id="node4" href="$classIdentifiers.html" title=" " alt="" coords="360,13,515,39"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="193,123,363,163"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1vrp_1_1Vehicle.html" title="Vehicle with time windows." alt="" coords="5,13,175,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,43,249,120,246,125,119,48"/>
+<area shape="rect" id="Node000026" href="$classpgrouting_1_1Identifiers.html" title=" " alt="" coords="199,5,357,45"/>
+<area shape="poly" id="edge2_Node000001_Node000026" title=" " alt="" coords="281,59,281,122,275,122,275,59"/>
+<area shape="rect" id="Node000023" href="$classpgrouting_1_1vrp_1_1PD__Orders.html" title=" " alt="" coords="382,5,521,45"/>
+<area shape="poly" id="edge3_Node000001_Node000023" title=" " alt="" coords="445,60,435,81,420,101,393,118,364,130,362,125,391,114,416,97,431,79,441,57"/>
 </map>

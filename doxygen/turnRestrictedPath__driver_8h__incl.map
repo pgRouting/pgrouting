@@ -1,7 +1,15 @@
 <map id="turnRestrictedPath_driver.h" name="turnRestrictedPath_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="206,5,349,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,102,80,129"/>
-<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title=" " alt="" coords="104,102,264,129"/>
-<area shape="rect" id="node4" href="$restriction__t_8h.html" title=" " alt="" coords="289,102,455,129"/>
-<area shape="rect" id="node5" href="$general__path__element__t_8h.html" title=" " alt="" coords="479,95,641,136"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="358,5,501,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,101,96,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="358,42,241,65,109,96,97,99,96,94,107,91,240,60,357,37"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="120,101,219,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="373,48,218,99,216,94,371,43"/>
+<area shape="rect" id="Node000004" href="$undefPostgresDefine_8hpp.html" title="https://doxygen.postgresql.org/port_8h.html Has the line #define snprintf pg_snprintf" alt="" coords="243,93,450,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="413,47,376,85,373,81,409,44"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="475,101,549,126"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="450,44,493,89,489,92,446,47"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="574,101,645,126"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="470,43,574,93,572,97,468,48"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="669,101,752,126"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="498,43,658,91,667,94,665,99,657,96,496,48"/>
 </map>

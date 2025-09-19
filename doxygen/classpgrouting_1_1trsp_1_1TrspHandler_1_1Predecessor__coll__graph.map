@@ -1,0 +1,7 @@
+<map id="pgrouting::trsp::TrspHandler::Predecessor" name="pgrouting::trsp::TrspHandler::Predecessor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="78,93,281,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,164,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,38,162,91,158,95,104,42"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="189,5,362,31"/>
+<area shape="poly" id="edge2_Node000001_Node000005" title=" " alt="" coords="256,42,201,95,197,91,252,38"/>
+</map>

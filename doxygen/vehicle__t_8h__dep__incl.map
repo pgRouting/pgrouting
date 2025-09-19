@@ -1,8 +1,0 @@
-<map id="vehicle_t.h" name="vehicle_t.h">
-<area shape="rect" id="node1" title=" " alt="" coords="367,5,460,32"/>
-<area shape="rect" id="node2" href="$vehicles__input_8h.html" title=" " alt="" coords="5,87,133,114"/>
-<area shape="rect" id="node3" href="$pickDeliver__driver_8h.html" title=" " alt="" coords="157,87,309,114"/>
-<area shape="rect" id="node4" href="$pickDeliverEuclidean__driver_8h.html" title=" " alt="" coords="334,80,493,121"/>
-<area shape="rect" id="node5" href="$pgr__pickDeliver_8h.html" title=" " alt="" coords="517,87,651,114"/>
-<area shape="rect" id="node6" href="$tw__node_8h.html" title=" " alt="" coords="675,87,765,114"/>
-</map>

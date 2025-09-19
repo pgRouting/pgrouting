@@ -1,4 +1,5 @@
 var bdDijkstra__driver_8h =
 [
-    [ "do_pgr_bdDijkstra", "bdDijkstra__driver_8h.html#a3fde3220351d411dd62c0a06a0088a05", null ]
+    [ "Path_rt", "bdDijkstra__driver_8h.html#a34efe122b9abd9cd32e9936dbecb97d2", null ],
+    [ "pgr_do_bdDijkstra", "bdDijkstra__driver_8h.html#a8bf4c18afb60942ddee680669a5f8595", null ]
 ];

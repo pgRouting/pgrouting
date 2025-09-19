@@ -1,10 +1,19 @@
 <map id="lineGraph.c" name="lineGraph.c">
-<area shape="rect" id="node1" title="Connecting code with postgres." alt="" coords="417,5,513,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,87,88,114"/>
-<area shape="rect" id="node3" href="$postgres__connection_8h.html" title=" " alt="" coords="72,169,315,196"/>
-<area shape="rect" id="node4" href="$debug__macro_8h.html" title=" " alt="" coords="163,87,360,114"/>
-<area shape="rect" id="node5" href="$e__report_8h.html" title=" " alt="" coords="384,87,547,114"/>
-<area shape="rect" id="node6" href="$time__msg_8h.html" title=" " alt="" coords="571,87,746,114"/>
-<area shape="rect" id="node7" href="$edges__input_8h.html" title=" " alt="" coords="770,87,958,114"/>
-<area shape="rect" id="node8" href="$lineGraph__driver_8h.html" title=" " alt="" coords="982,80,1183,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="532,5,628,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="801,167,884,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="628,19,745,25,888,37,1014,54,1058,64,1082,77,1094,100,1089,120,1071,136,1043,149,971,167,899,176,898,171,970,161,1041,144,1068,132,1085,117,1089,101,1078,81,1056,69,1013,59,887,42,745,31,628,24"/>
+<area shape="rect" id="Node000003" href="$postgres__connection_8h.html" title=" " alt="" coords="5,167,248,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="532,24,416,31,275,43,150,59,108,69,86,80,79,97,82,117,93,137,107,154,103,158,88,139,77,119,74,97,82,77,106,64,149,54,274,37,416,26,532,19"/>
+<area shape="rect" id="Node000013" href="$edge__rt_8h.html" title=" " alt="" coords="318,86,455,111"/>
+<area shape="poly" id="edge3_Node000001_Node000013" title=" " alt="" coords="553,33,428,83,426,78,551,28"/>
+<area shape="rect" id="Node000015" href="$debug__macro_8h.html" title=" " alt="" coords="96,86,293,111"/>
+<area shape="poly" id="edge4_Node000001_Node000015" title=" " alt="" coords="533,32,265,86,264,81,531,26"/>
+<area shape="rect" id="Node000016" href="$e__report_8h.html" title=" " alt="" coords="705,86,868,111"/>
+<area shape="poly" id="edge6_Node000001_Node000016" title=" " alt="" coords="611,28,745,79,743,84,609,33"/>
+<area shape="rect" id="Node000017" href="$time__msg_8h.html" title=" " alt="" coords="893,86,1067,111"/>
+<area shape="poly" id="edge7_Node000001_Node000017" title=" " alt="" coords="629,26,909,81,908,86,628,31"/>
+<area shape="rect" id="Node000020" href="$lineGraph__driver_8h.html" title=" " alt="" coords="479,79,681,119"/>
+<area shape="poly" id="edge8_Node000001_Node000020" title=" " alt="" coords="583,31,583,65,577,65,577,31"/>
+<area shape="poly" id="edge5_Node000015_Node000003" title=" " alt="" coords="187,113,148,158,144,155,183,110"/>
+<area shape="poly" id="edge9_Node000020_Node000002" title=" " alt="" coords="644,116,792,160,790,165,642,121"/>
 </map>

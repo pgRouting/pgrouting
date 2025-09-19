@@ -1,5 +1,5 @@
 var lineGraph__driver_8cpp =
 [
-    [ "do_pgr_lineGraph", "lineGraph__driver_8cpp.html#aed22d07d954513deba5cbcc08896c73d", null ],
-    [ "get_postgres_result", "lineGraph__driver_8cpp.html#a6f7c6b35f9831bd5250675dbabf08921", null ]
+    [ "line_graph", "lineGraph__driver_8cpp.html#a18b7cd67b783ccd354bbb1ced8110297", null ],
+    [ "pgr_do_lineGraph", "lineGraph__driver_8cpp.html#a3e0e2cd06e72c886fca5ca2f7c12cc61", null ]
 ];

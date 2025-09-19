@@ -1,6 +1,9 @@
 <map id="pgrouting::yen::Pgr_turnRestrictedPath&lt; G &gt;::Myvisitor" name="pgrouting::yen::Pgr_turnRestrictedPath&lt; G &gt;::Myvisitor">
-<area shape="rect" id="node1" title=" " alt="" coords="319,63,468,119"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1yen_1_1Pgr__ksp_1_1Visitor.html" title=" " alt="" coords="17,5,162,47"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,71,173,112"/>
-<area shape="rect" id="node4" title="STL class." alt="" coords="35,137,144,163"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="345,62,496,117"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1yen_1_1Pgr__ksp_1_1Visitor.html" title=" " alt="" coords="30,5,175,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,40,322,67,345,72,344,77,321,72,188,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,69,200,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="214,87,345,87,345,92,214,92"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="19,133,187,173"/>
+<area shape="poly" id="edge3_Node000001_Node000011" title=" " alt="" coords="200,131,321,107,344,102,345,107,322,112,201,137"/>
 </map>

@@ -1,4 +1,5 @@
 <map id="pgrouting::functions::Pgr_Bipartite&lt; G &gt;" name="pgrouting::functions::Pgr_Bipartite&lt; G &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="21,80,176,121"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__messages.html" title=" " alt="" coords="5,5,192,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="21,79,176,119"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1Pgr__messages.html" title=" " alt="" coords="5,5,192,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,44,101,79,96,79,96,44"/>
 </map>

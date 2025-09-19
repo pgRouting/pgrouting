@@ -1,13 +1,29 @@
 <map id="Dmatrix.cpp" name="Dmatrix.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="299,5,402,32"/>
-<area shape="rect" id="node2" href="$Dmatrix_8h.html" title=" " alt="" coords="22,155,201,181"/>
-<area shape="rect" id="node3" title=" " alt="" coords="207,229,270,256"/>
-<area shape="rect" id="node4" title=" " alt="" coords="24,229,74,256"/>
-<area shape="rect" id="node5" title=" " alt="" coords="180,80,251,107"/>
-<area shape="rect" id="node6" title=" " alt="" coords="276,80,350,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="310,155,396,181"/>
-<area shape="rect" id="node8" title=" " alt="" coords="425,80,484,107"/>
-<area shape="rect" id="node9" title=" " alt="" coords="508,80,571,107"/>
-<area shape="rect" id="node10" href="$tour_8h.html" title=" " alt="" coords="73,80,156,107"/>
-<area shape="rect" id="node11" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="647,80,840,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="512,5,615,31"/>
+<area shape="rect" id="Node000002" href="$Dmatrix_8hpp.html" title=" " alt="" coords="75,79,270,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="512,31,250,79,249,74,511,26"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,152,68,177"/>
+<area shape="poly" id="edge10_Node000001_Node000004" title=" " alt="" coords="512,25,249,44,122,60,78,70,54,81,45,93,40,107,37,138,31,138,35,106,41,90,51,77,76,65,121,55,248,38,512,19"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="105,152,155,177"/>
+<area shape="poly" id="edge11_Node000001_Node000005" title=" " alt="" coords="512,24,395,31,253,43,129,59,87,69,65,80,60,96,66,112,81,128,100,142,97,147,77,132,62,115,54,96,61,77,85,64,128,54,253,37,394,26,512,19"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="185,152,245,177"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="513,29,427,48,379,63,334,81,282,112,240,145,237,140,279,107,331,76,378,58,426,43,511,24"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="470,152,529,177"/>
+<area shape="poly" id="edge5_Node000001_Node000008" title=" " alt="" coords="563,32,555,65,540,105,519,142,514,139,536,103,550,64,558,31"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="601,79,675,104"/>
+<area shape="poly" id="edge7_Node000001_Node000009" title=" " alt="" coords="577,29,618,67,614,71,573,33"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="699,79,785,104"/>
+<area shape="poly" id="edge8_Node000001_Node000010" title=" " alt="" coords="593,28,701,71,699,76,591,33"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="809,79,867,104"/>
+<area shape="poly" id="edge9_Node000001_Node000011" title=" " alt="" coords="610,28,796,76,795,81,608,33"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="892,79,955,104"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="615,25,732,46,879,76,878,81,731,51,615,31"/>
+<area shape="rect" id="Node000013" href="$assert_8hpp.html" title="Assertions Handling." alt="" coords="345,79,526,104"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="544,33,470,74,467,69,541,28"/>
+<area shape="rect" id="Node000015" href="$iid__t__rt_8h.html" title=" " alt="" coords="979,79,1113,104"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="615,24,966,76,965,81,615,30"/>
+<area shape="poly" id="edge2_Node000002_Node000004" title=" " alt="" coords="152,106,72,148,70,143,150,102"/>
+<area shape="poly" id="edge3_Node000002_Node000005" title=" " alt="" coords="168,106,146,142,142,139,163,103"/>
+<area shape="poly" id="edge4_Node000002_Node000006" title=" " alt="" coords="182,103,204,139,199,142,177,106"/>
+<area shape="poly" id="edge14_Node000013_Node000008" title=" " alt="" coords="448,103,482,140,478,144,444,106"/>
 </map>

@@ -1,0 +1,14 @@
+digraph "pgrouting::Pgr_bellman_ford&lt; G &gt;"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="pgrouting::Pgr_bellman\l_ford\< G \>",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="pgrouting::Pgr_messages",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$classpgrouting_1_1Pgr__messages.html",tooltip=" "];
+  Node8 -> Node1 [id="edge2_Node000001_Node000008",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" predecessors",fontcolor="grey" ];
+  Node8 [id="Node000008",label="std::vector\< V \>",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",tooltip=" "];
+  Node11 -> Node1 [id="edge3_Node000001_Node000011",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" distances",fontcolor="grey" ];
+  Node11 [id="Node000011",label="std::vector\< double \>",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",tooltip=" "];
+}

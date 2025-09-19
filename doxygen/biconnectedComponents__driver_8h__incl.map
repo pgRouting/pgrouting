@@ -1,6 +1,5 @@
 <map id="biconnectedComponents_driver.h" name="biconnectedComponents_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="93,5,275,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,80,121"/>
-<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title=" " alt="" coords="104,95,264,121"/>
-<area shape="rect" id="node4" href="$pgr__components__rt_8h.html" title=" " alt="" coords="288,95,501,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,188,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="59,93,134,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,46,99,79,94,79,94,46"/>
 </map>

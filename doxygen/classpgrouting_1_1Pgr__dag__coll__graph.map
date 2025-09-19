@@ -1,0 +1,11 @@
+<map id="pgrouting::Pgr_dag&lt; G &gt;" name="pgrouting::Pgr_dag&lt; G &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="236,93,420,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,136,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,34,185,67,273,91,271,96,183,72,104,39"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="160,5,325,31"/>
+<area shape="poly" id="edge2_Node000001_Node000005" title=" " alt="" coords="266,39,318,91,314,95,262,43"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="350,5,479,31"/>
+<area shape="poly" id="edge3_Node000001_Node000006" title=" " alt="" coords="395,42,342,95,338,91,392,38"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="504,5,645,31"/>
+<area shape="poly" id="edge4_Node000001_Node000008" title=" " alt="" coords="550,41,525,57,496,72,453,86,410,96,409,91,452,81,494,67,522,53,547,37"/>
+</map>

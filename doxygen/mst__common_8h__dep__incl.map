@@ -1,6 +1,9 @@
 <map id="mst_common.h" name="mst_common.h">
-<area shape="rect" id="node1" title=" " alt="" coords="117,5,240,32"/>
-<area shape="rect" id="node2" href="$kruskal_8c.html" title=" " alt="" coords="5,80,85,107"/>
-<area shape="rect" id="node3" href="$mst__common_8cpp.html" title=" " alt="" coords="109,80,248,107"/>
-<area shape="rect" id="node4" href="$prim_8c.html" title=" " alt="" coords="273,80,335,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="119,5,242,31"/>
+<area shape="rect" id="Node000002" href="$kruskal_8c.html" title=" " alt="" coords="5,79,87,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,39,69,81,67,76,146,35"/>
+<area shape="rect" id="Node000003" href="$mst__common_8cpp.html" title=" " alt="" coords="111,79,250,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,44,183,79,178,79,178,44"/>
+<area shape="rect" id="Node000004" href="$prim_8c.html" title=" " alt="" coords="275,79,337,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="214,35,287,76,284,81,211,40"/>
 </map>

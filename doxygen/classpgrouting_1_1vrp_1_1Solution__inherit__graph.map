@@ -1,5 +1,7 @@
 <map id="pgrouting::vrp::Solution" name="pgrouting::vrp::Solution">
-<area shape="rect" id="node1" title=" " alt="" coords="93,5,268,32"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Initial__solution.html" title=" " alt="" coords="5,80,164,121"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Optimize.html" title=" " alt="" coords="188,87,368,114"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="93,5,268,31"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1vrp_1_1Initial__solution.html" title=" " alt="" coords="5,79,164,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,41,110,81,106,76,154,37"/>
+<area shape="rect" id="Node000003" href="$classpgrouting_1_1vrp_1_1Optimize.html" title=" " alt="" coords="188,86,368,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="207,37,265,84,262,88,204,41"/>
 </map>

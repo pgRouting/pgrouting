@@ -1,6 +1,19 @@
 var searchData=
 [
-  ['degree_5fsize_5ftype_3350',['degree_size_type',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a5c0edf7518daab90753cfc94759a8a26',1,'pgrouting::graph::Pgr_base_graph']]],
-  ['difference_5ftype_3351',['difference_type',['../classpgrouting_1_1tsp_1_1Tour.html#aa57aaaeccdfe519511e72eed5147881a',1,'pgrouting::tsp::Tour::difference_type()'],['../classpgrouting_1_1vrp_1_1Vehicle.html#afc64332f0f95351d13cd998c50734f4a',1,'pgrouting::vrp::Vehicle::difference_type()']]],
-  ['directedgraph_3352',['DirectedGraph',['../namespacepgrouting.html#abcc74023afd040c130b0c460838c924f',1,'pgrouting']]]
+  ['capacity_0',['Capacity',['../namespacepgrouting.html#ad5d72f1e79f0f38618117d50b78927c2',1,'pgrouting']]],
+  ['chdirectedgraph_1',['CHDirectedGraph',['../namespacepgrouting_1_1graph.html#a6f448317ee3d5928f4f01bd9b9c751bd',1,'pgrouting::graph']]],
+  ['chundirectedgraph_2',['CHUndirectedGraph',['../namespacepgrouting_1_1graph.html#a9cd7d6780bcc6e085a83e5d049552676',1,'pgrouting::graph']]],
+  ['chuniqueundirectedgraph_3',['CHUniqueUndirectedGraph',['../namespacepgrouting_1_1graph.html#ae183f66c8afedfba2efb56cd9a512fd4',1,'pgrouting::graph']]],
+  ['circuits_5frt_4',['circuits_rt',['../hawickCircuits__driver_8h.html#a9a566f38d799077eb5592b078695eec1',1,'hawickCircuits_driver.h']]],
+  ['column_5finfo_5ft_5',['Column_info_t',['../namespacepgrouting.html#a97a71820bd5801a6fce629128ff2e12c',1,'pgrouting']]],
+  ['const_5fiterator_6',['const_iterator',['../classpgrouting_1_1Identifiers.html#a7f03d8e25c58a073b0c2c5db63b7d21d',1,'pgrouting::Identifiers']]],
+  ['constiterator_7',['constiterator',['../classpgrouting_1_1trsp_1_1Rule.html#a9ef572e3215c582ab481fd575c42bbdf',1,'pgrouting::trsp::Rule']]],
+  ['constpthit_8',['ConstpthIt',['../classpgrouting_1_1Path.html#a0a295b76427327b5c15bd44b8081d12f',1,'pgrouting::Path']]],
+  ['contracted_5frt_9',['contracted_rt',['../contractGraph__driver_8h.html#a6c05490098e2b12ceb7292f7c305be13',1,'contractGraph_driver.h']]],
+  ['contractionhierarchies_5frt_10',['contractionHierarchies_rt',['../contractionHierarchies__driver_8h.html#abfd52d3a78213229770d59489e908cb4',1,'contractionHierarchies_driver.h']]],
+  ['coordinate_5ft_11',['Coordinate_t',['../undirectedHasCostBG_8hpp.html#a20754588238edacf2ccfe7ce81e17cc3',1,'undirectedHasCostBG.hpp']]],
+  ['cost_12',['Cost',['../classpgrouting_1_1vrp_1_1Vehicle.html#a2c972904c3b3a8cdb6de53ae3c657fca',1,'pgrouting::vrp::Vehicle']]],
+  ['cost_5fvertex_5fpair_13',['cost_vertex_pair',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a46fd5c70452e6aca2609b83f213ff6bc',1,'pgrouting::bidirectional::Pgr_bidirectional::Cost_Vertex_pair'],['../classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a3ef3052e2483b53309f9a9b99552b17e',1,'pgrouting::bidirectional::Pgr_bdDijkstra::Cost_Vertex_pair'],['../classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a06a2485c933062b1202fe537b45f663f',1,'pgrouting::bidirectional::Pgr_bdAstar::Cost_Vertex_pair']]],
+  ['costflowgraph_14',['CostFlowGraph',['../namespacepgrouting.html#a3face63db7657a66896ae94e98537fc9',1,'pgrouting']]],
+  ['costs_15',['Costs',['../classpgrouting_1_1tsp_1_1Dmatrix.html#a60112b4b2eb4c139ae35f58ba3e1128f',1,'pgrouting::tsp::Dmatrix']]]
 ];

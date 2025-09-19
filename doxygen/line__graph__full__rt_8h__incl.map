@@ -1,4 +1,5 @@
 <map id="line_graph_full_rt.h" name="line_graph_full_rt.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,152,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="43,80,114,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,152,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="43,79,114,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,31,81,65,76,65,76,31"/>
 </map>

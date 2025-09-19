@@ -1,5 +1,7 @@
 <map id="pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;" name="pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,184,80"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html" title=" " alt="" coords="232,5,405,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html" title=" " alt="" coords="232,71,405,112"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,184,77"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html" title=" " alt="" coords="232,5,405,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,40,231,35,232,40,198,45"/>
+<area shape="rect" id="Node000003" href="$classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html" title=" " alt="" coords="232,69,405,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="198,69,232,74,231,80,197,75"/>
 </map>

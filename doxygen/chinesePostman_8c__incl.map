@@ -1,11 +1,19 @@
 <map id="chinesePostman.c" name="chinesePostman.c">
-<area shape="rect" id="node1" title=" " alt="" coords="491,5,631,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,87,88,114"/>
-<area shape="rect" id="node3" href="$postgres__connection_8h.html" title=" " alt="" coords="72,177,315,203"/>
-<area shape="rect" id="node4" href="$debug__macro_8h.html" title=" " alt="" coords="163,87,360,114"/>
-<area shape="rect" id="node5" href="$e__report_8h.html" title=" " alt="" coords="384,87,547,114"/>
-<area shape="rect" id="node6" href="$time__msg_8h.html" title=" " alt="" coords="571,87,746,114"/>
-<area shape="rect" id="node7" href="$general__path__element__t_8h.html" title=" " alt="" coords="886,169,1047,211"/>
-<area shape="rect" id="node8" href="$edges__input_8h.html" title=" " alt="" coords="822,87,1010,114"/>
-<area shape="rect" id="node9" href="$chinesePostman__driver_8h.html" title=" " alt="" coords="1035,80,1267,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="523,5,663,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="821,167,904,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="664,20,786,27,925,38,1046,54,1087,65,1110,77,1123,100,1122,111,1117,121,1098,137,1068,150,993,168,918,177,917,172,992,163,1067,145,1095,133,1113,118,1117,110,1117,102,1106,81,1085,70,1045,60,925,43,785,32,663,25"/>
+<area shape="rect" id="Node000003" href="$postgres__connection_8h.html" title=" " alt="" coords="5,167,248,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="523,25,403,32,265,44,147,60,107,70,86,80,79,97,82,117,93,137,107,154,103,158,88,139,77,119,73,97,82,77,105,65,146,55,264,38,402,27,523,20"/>
+<area shape="rect" id="Node000013" href="$path__rt_8h.html" title=" " alt="" coords="318,86,453,111"/>
+<area shape="poly" id="edge3_Node000001_Node000013" title=" " alt="" coords="564,33,429,84,428,79,562,28"/>
+<area shape="rect" id="Node000015" href="$debug__macro_8h.html" title=" " alt="" coords="96,86,293,111"/>
+<area shape="poly" id="edge4_Node000001_Node000015" title=" " alt="" coords="536,33,267,86,266,81,535,28"/>
+<area shape="rect" id="Node000016" href="$e__report_8h.html" title=" " alt="" coords="733,86,896,111"/>
+<area shape="poly" id="edge6_Node000001_Node000016" title=" " alt="" coords="626,28,770,79,768,84,625,33"/>
+<area shape="rect" id="Node000017" href="$time__msg_8h.html" title=" " alt="" coords="921,86,1095,111"/>
+<area shape="poly" id="edge7_Node000001_Node000017" title=" " alt="" coords="654,28,935,81,934,86,653,33"/>
+<area shape="rect" id="Node000020" href="$chinesePostman__driver_8h.html" title=" " alt="" coords="477,79,709,119"/>
+<area shape="poly" id="edge8_Node000001_Node000020" title=" " alt="" coords="596,31,596,65,591,65,591,31"/>
+<area shape="poly" id="edge5_Node000015_Node000003" title=" " alt="" coords="187,113,148,158,144,155,183,110"/>
+<area shape="poly" id="edge9_Node000020_Node000002" title=" " alt="" coords="659,116,811,160,810,165,657,121"/>
 </map>

@@ -1,8 +1,0 @@
-<map id="restriction_t.h" name="restriction_t.h">
-<area shape="rect" id="node1" title=" " alt="" coords="169,5,281,32"/>
-<area shape="rect" id="node2" href="$new__trsp_8c.html" title=" " alt="" coords="52,169,144,196"/>
-<area shape="rect" id="node3" href="$restrictions__input_8h.html" title=" " alt="" coords="25,87,171,114"/>
-<area shape="rect" id="node4" href="$rule_8h.html" title=" " alt="" coords="195,87,254,114"/>
-<area shape="rect" id="node5" href="$trsp__driver_8h.html" title=" " alt="" coords="279,87,381,114"/>
-<area shape="rect" id="node6" href="$turnRestrictedPath__driver_8h.html" title=" " alt="" coords="405,80,548,121"/>
-</map>

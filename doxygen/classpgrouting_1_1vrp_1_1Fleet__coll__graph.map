@@ -1,6 +1,10 @@
 <map id="pgrouting::vrp::Fleet" name="pgrouting::vrp::Fleet">
-<area shape="rect" id="node1" title=" " alt="" coords="331,37,485,64"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html" title=" " alt="" coords="599,30,741,71"/>
-<area shape="rect" id="node3" href="$classIdentifiers.html" title=" " alt="" coords="29,8,184,35"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,59,208,101"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="335,45,489,70"/>
+<area shape="rect" id="Node000010" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html" title=" " alt="" coords="603,37,745,77"/>
+<area shape="poly" id="edge4_Node000010_Node000001" title=" " alt="" coords="503,55,602,55,602,60,503,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,208,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="222,35,335,47,334,52,222,40"/>
+<area shape="rect" id="Node000028" href="$classpgrouting_1_1Identifiers.html" title=" " alt="" coords="27,69,186,109"/>
+<area shape="poly" id="edge2_Node000001_Node000028" title=" " alt="" coords="200,87,310,79,365,67,366,73,311,84,200,92"/>
+<area shape="poly" id="edge3_Node000001_Node000010" title=" " alt="" coords="590,80,579,81,546,84,513,81,462,73,463,67,514,76,546,78,578,76,589,75"/>
 </map>

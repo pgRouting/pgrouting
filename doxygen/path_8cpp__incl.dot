@@ -1,0 +1,36 @@
+digraph "path.cpp"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="path.cpp",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="cpp_common/path.hpp",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$path_8hpp.html",tooltip=" "];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="deque",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node2 -> Node5 [id="edge3_Node000002_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="iostream",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node2 -> Node6 [id="edge4_Node000002_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="algorithm",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node2 -> Node7 [id="edge5_Node000002_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="map",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node2 -> Node12 [id="edge6_Node000002_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="c_types/path_rt.h",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$path__rt_8h.html",tooltip=" "];
+  Node2 -> Node14 [id="edge7_Node000002_Node000014",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="c_types/mst_rt.h",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$mst__rt_8h.html",tooltip=" "];
+  Node1 -> Node34 [id="edge8_Node000001_Node000034",color="steelblue1",style="solid",tooltip=" "];
+  Node34 [id="Node000034",label="cmath",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node1 -> Node18 [id="edge9_Node000001_Node000018",color="steelblue1",style="solid",tooltip=" "];
+  Node18 [id="Node000018",label="limits",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node1 -> Node3 [id="edge10_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node5 [id="edge11_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node6 [id="edge12_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node35 [id="edge13_Node000001_Node000035",color="steelblue1",style="solid",tooltip=" "];
+  Node35 [id="Node000035",label="utility",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node1 -> Node7 [id="edge14_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node12 [id="edge15_Node000001_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node14 [id="edge16_Node000001_Node000014",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node30 [id="edge17_Node000001_Node000030",color="steelblue1",style="solid",tooltip=" "];
+  Node30 [id="Node000030",label="cpp_common/assert.hpp",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$assert_8hpp.html",tooltip="Assertions Handling."];
+}

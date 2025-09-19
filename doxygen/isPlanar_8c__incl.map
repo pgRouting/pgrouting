@@ -1,11 +1,17 @@
 <map id="isPlanar.c" name="isPlanar.c">
-<area shape="rect" id="node1" title=" " alt="" coords="443,5,527,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,87,88,114"/>
-<area shape="rect" id="node3" href="$postgres__connection_8h.html" title=" " alt="" coords="133,169,376,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="163,87,261,114"/>
-<area shape="rect" id="node5" href="$debug__macro_8h.html" title=" " alt="" coords="285,87,483,114"/>
-<area shape="rect" id="node6" href="$e__report_8h.html" title=" " alt="" coords="507,87,669,114"/>
-<area shape="rect" id="node7" href="$time__msg_8h.html" title=" " alt="" coords="694,87,869,114"/>
-<area shape="rect" id="node8" href="$edges__input_8h.html" title=" " alt="" coords="893,87,1081,114"/>
-<area shape="rect" id="node9" href="$isPlanar__driver_8h.html" title=" " alt="" coords="1105,80,1273,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="325,5,411,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="315,167,397,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="361,32,348,53,337,79,335,98,337,118,347,153,342,155,331,119,330,98,332,78,343,51,357,29"/>
+<area shape="rect" id="Node000003" href="$postgres__connection_8h.html" title=" " alt="" coords="5,167,248,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="325,24,257,29,178,39,108,56,82,67,65,80,60,89,58,99,65,119,81,139,100,156,97,160,77,142,61,121,53,99,55,88,61,77,79,63,106,51,177,34,257,24,325,19"/>
+<area shape="rect" id="Node000013" href="$debug__macro_8h.html" title=" " alt="" coords="75,86,272,111"/>
+<area shape="poly" id="edge3_Node000001_Node000013" title=" " alt="" coords="341,33,215,83,213,78,339,28"/>
+<area shape="rect" id="Node000014" href="$e__report_8h.html" title=" " alt="" coords="347,86,509,111"/>
+<area shape="poly" id="edge5_Node000001_Node000014" title=" " alt="" coords="379,29,413,73,409,76,375,32"/>
+<area shape="rect" id="Node000015" href="$time__msg_8h.html" title=" " alt="" coords="534,86,709,111"/>
+<area shape="poly" id="edge6_Node000001_Node000015" title=" " alt="" coords="406,28,572,79,571,84,404,33"/>
+<area shape="rect" id="Node000018" href="$isPlanar__driver_8h.html" title=" " alt="" coords="733,79,901,119"/>
+<area shape="poly" id="edge7_Node000001_Node000018" title=" " alt="" coords="411,24,720,76,719,81,411,29"/>
+<area shape="poly" id="edge4_Node000013_Node000003" title=" " alt="" coords="169,113,143,156,138,153,164,110"/>
+<area shape="poly" id="edge8_Node000018_Node000002" title=" " alt="" coords="734,119,722,121,412,172,411,167,721,116,733,114"/>
 </map>

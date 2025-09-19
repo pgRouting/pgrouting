@@ -1,6 +1,10 @@
 <map id="time_msg.c" name="time_msg.c">
-<area shape="rect" id="node1" title=" " alt="" coords="96,5,195,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="151,155,215,181"/>
-<area shape="rect" id="node3" href="$postgres__connection_8h.html" title=" " alt="" coords="24,80,267,107"/>
-<area shape="rect" id="node4" href="$time__msg_8h.html" title=" " alt="" coords="291,80,466,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="96,5,195,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="151,152,215,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,33,60,44,28,60,16,70,10,80,9,90,14,102,39,127,71,143,105,154,137,159,136,164,104,159,69,148,36,131,10,106,3,91,5,78,12,66,25,56,58,39,95,28"/>
+<area shape="rect" id="Node000003" href="$postgres__connection_8h.html" title=" " alt="" coords="24,79,267,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="148,31,148,65,143,65,143,31"/>
+<area shape="rect" id="Node000013" href="$time__msg_8h.html" title=" " alt="" coords="291,79,466,104"/>
+<area shape="poly" id="edge3_Node000001_Node000013" title=" " alt="" coords="183,28,329,72,327,77,182,33"/>
+<area shape="poly" id="edge4_Node000013_Node000002" title=" " alt="" coords="348,107,228,150,226,145,346,102"/>
 </map>

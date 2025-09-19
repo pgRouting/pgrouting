@@ -1,4 +1,5 @@
 <map id="pgrouting::visitors::dijkstra_one_goal_visitor&lt; V &gt;" name="pgrouting::visitors::dijkstra_one_goal_visitor&lt; V &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="17,95,162,151"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,173,47"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="17,93,162,148"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,173,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,59,92,93,87,93,87,59"/>
 </map>

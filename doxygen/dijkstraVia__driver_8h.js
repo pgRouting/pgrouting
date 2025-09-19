@@ -1,4 +1,5 @@
 var dijkstraVia__driver_8h =
 [
-    [ "do_pgr_dijkstraVia", "dijkstraVia__driver_8h.html#a65bae4bd90fab026ee5f54f17655e776", null ]
+    [ "Routes_t", "dijkstraVia__driver_8h.html#abc2ec757c53b28909cc15251827cf563", null ],
+    [ "pgr_do_dijkstraVia", "dijkstraVia__driver_8h.html#ae6dde393004f6093b7910e6631917cdf", null ]
 ];

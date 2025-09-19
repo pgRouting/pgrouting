@@ -1,13 +1,18 @@
 <map id="binaryBreadthFirstSearch.c" name="binaryBreadthFirstSearch.c">
-<area shape="rect" id="node1" title=" " alt="" coords="513,5,711,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,88,121"/>
-<area shape="rect" id="node3" href="$postgres__connection_8h.html" title=" " alt="" coords="91,184,333,211"/>
-<area shape="rect" id="node4" title=" " alt="" coords="396,184,495,211"/>
-<area shape="rect" id="node5" href="$debug__macro_8h.html" title=" " alt="" coords="163,95,360,121"/>
-<area shape="rect" id="node6" href="$e__report_8h.html" title=" " alt="" coords="435,95,597,121"/>
-<area shape="rect" id="node7" href="$time__msg_8h.html" title=" " alt="" coords="622,95,797,121"/>
-<area shape="rect" id="node8" href="$edges__input_8h.html" title=" " alt="" coords="821,95,1009,121"/>
-<area shape="rect" id="node9" href="$arrays__input_8h.html" title=" " alt="" coords="1033,95,1223,121"/>
-<area shape="rect" id="node10" href="$combinations__input_8h.html" title=" " alt="" coords="1247,87,1433,129"/>
-<area shape="rect" id="node11" href="$binaryBreadthFirstSearch__driver_8h.html" title=" " alt="" coords="1457,80,1650,136"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="323,5,519,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,88,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="333,33,224,52,107,81,83,90,81,85,106,76,223,47,332,28"/>
+<area shape="rect" id="Node000003" href="$postgres__connection_8h.html" title=" " alt="" coords="152,181,395,207"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="323,31,220,49,178,63,153,80,145,93,143,105,146,118,153,132,178,157,209,174,207,179,174,161,149,135,141,120,137,105,140,91,149,77,176,58,219,44,323,25"/>
+<area shape="rect" id="Node000013" href="$path__rt_8h.html" title=" " alt="" coords="163,93,298,119"/>
+<area shape="poly" id="edge3_Node000001_Node000013" title=" " alt="" coords="397,33,270,90,268,85,395,28"/>
+<area shape="rect" id="Node000015" href="$debug__macro_8h.html" title=" " alt="" coords="323,93,520,119"/>
+<area shape="poly" id="edge4_Node000001_Node000015" title=" " alt="" coords="424,31,424,79,419,79,419,31"/>
+<area shape="rect" id="Node000016" href="$e__report_8h.html" title=" " alt="" coords="544,93,707,119"/>
+<area shape="poly" id="edge6_Node000001_Node000016" title=" " alt="" coords="450,28,586,85,584,90,448,33"/>
+<area shape="rect" id="Node000017" href="$time__msg_8h.html" title=" " alt="" coords="731,93,906,119"/>
+<area shape="poly" id="edge7_Node000001_Node000017" title=" " alt="" coords="484,28,719,76,765,87,763,92,718,81,483,33"/>
+<area shape="rect" id="Node000020" href="$binaryBreadthFirstSearch__driver_8h.html" title=" " alt="" coords="931,79,1123,133"/>
+<area shape="poly" id="edge8_Node000001_Node000020" title=" " alt="" coords="520,25,701,44,917,76,917,81,700,50,519,30"/>
+<area shape="poly" id="edge5_Node000015_Node000003" title=" " alt="" coords="403,121,306,177,304,172,400,117"/>
 </map>

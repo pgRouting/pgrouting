@@ -1,4 +1,5 @@
 var withPoints__driver_8h =
 [
-    [ "do_pgr_withPoints", "withPoints__driver_8h.html#a86eb1b920366f28b2b0d8b809ef16d1e", null ]
+    [ "Path_rt", "withPoints__driver_8h.html#a34efe122b9abd9cd32e9936dbecb97d2", null ],
+    [ "pgr_do_withPoints", "withPoints__driver_8h.html#a418517e414ef407be663dd022b8b51ae", null ]
 ];

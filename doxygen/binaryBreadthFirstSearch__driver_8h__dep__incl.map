@@ -1,5 +1,7 @@
 <map id="binaryBreadthFirstSearch_driver.h" name="binaryBreadthFirstSearch_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="119,5,305,47"/>
-<area shape="rect" id="node2" href="$binaryBreadthFirstSearch_8c.html" title=" " alt="" coords="5,102,203,129"/>
-<area shape="rect" id="node3" href="$binaryBreadthFirstSearch__driver_8cpp.html" title=" " alt="" coords="227,95,413,136"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="117,5,303,45"/>
+<area shape="rect" id="Node000002" href="$binaryBreadthFirstSearch_8c.html" title=" " alt="" coords="5,101,201,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,56,120,102,116,98,174,52"/>
+<area shape="rect" id="Node000003" href="$binaryBreadthFirstSearch__driver_8cpp.html" title=" " alt="" coords="225,93,411,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,52,296,91,292,95,243,56"/>
 </map>

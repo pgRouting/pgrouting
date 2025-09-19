@@ -1,0 +1,21 @@
+<map id="pgrouting::trsp::TrspHandler" name="pgrouting::trsp::TrspHandler">
+<area shape="rect" id="Node000001" title=" " alt="" coords="433,248,636,273"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1Pgr__messages.html" title=" " alt="" coords="33,5,220,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,10,278,14,324,22,369,36,411,57,436,78,459,102,494,156,519,208,532,247,527,248,514,210,490,159,455,105,433,81,408,62,367,41,323,27,278,19,234,15"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="43,55,211,95"/>
+<area shape="poly" id="edge2_Node000001_Node000008" title=" " alt="" coords="225,71,270,75,318,83,366,96,411,116,451,146,485,182,512,218,529,246,524,249,507,221,481,186,448,150,408,120,364,101,317,88,269,80,224,76"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="55,119,198,159"/>
+<area shape="poly" id="edge3_Node000001_Node000014" title=" " alt="" coords="212,151,308,172,410,201,465,223,511,246,509,250,463,228,408,206,307,177,211,156"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="37,183,216,223"/>
+<area shape="poly" id="edge4_Node000001_Node000017" title=" " alt="" coords="230,213,410,238,457,245,456,251,409,243,229,219"/>
+<area shape="rect" id="Node000018" href="$classpgrouting_1_1Path.html" title=" " alt="" coords="66,248,187,273"/>
+<area shape="poly" id="edge5_Node000001_Node000018" title=" " alt="" coords="201,258,433,258,433,263,201,263"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="5,298,248,338"/>
+<area shape="poly" id="edge6_Node000001_Node000022" title=" " alt="" coords="262,298,409,278,456,271,457,276,410,283,262,304"/>
+<area shape="rect" id="Node000025" title=" " alt="" coords="9,362,245,402"/>
+<area shape="poly" id="edge7_Node000001_Node000025" title=" " alt="" coords="258,357,333,339,408,317,463,294,509,271,511,276,465,299,410,322,334,344,259,362"/>
+<area shape="rect" id="Node000027" title=" " alt="" coords="41,427,213,481"/>
+<area shape="poly" id="edge8_Node000001_Node000027" title=" " alt="" coords="225,437,317,413,364,396,408,374,444,350,476,322,521,272,525,275,479,326,447,354,411,379,366,401,318,418,227,442"/>
+<area shape="rect" id="Node000031" title=" " alt="" coords="51,506,202,575"/>
+<area shape="poly" id="edge9_Node000001_Node000031" title=" " alt="" coords="215,525,262,514,313,497,362,475,408,447,451,404,485,354,511,307,526,273,531,275,515,310,490,357,455,407,411,451,365,480,314,502,264,519,216,530"/>
+</map>

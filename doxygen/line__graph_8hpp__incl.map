@@ -1,0 +1,17 @@
+<map id="line_graph.hpp" name="line_graph.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="223,5,342,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,86,56,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,33,161,54,76,81,70,83,68,78,74,76,160,49,236,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="559,167,625,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="229,33,181,47,138,67,122,78,114,90,113,103,121,117,141,127,182,137,300,154,545,173,545,178,299,159,181,143,139,132,117,121,107,104,109,88,119,74,135,62,179,42,227,28"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="131,86,261,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="272,33,221,78,217,75,268,29"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="286,79,455,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="297,29,341,68,338,72,294,33"/>
+<area shape="rect" id="Node000006" href="$basic__vertex_8hpp.html" title=" " alt="" coords="480,86,704,111"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="328,28,535,80,533,85,327,33"/>
+<area shape="rect" id="Node000010" href="$basic__edge_8hpp.html" title=" " alt="" coords="729,86,943,111"/>
+<area shape="poly" id="edge7_Node000001_Node000010" title=" " alt="" coords="343,25,716,76,752,81,751,87,716,81,342,30"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="595,112,595,153,589,153,589,112"/>
+<area shape="poly" id="edge8_Node000010_Node000003" title=" " alt="" coords="801,114,640,166,638,161,800,109"/>
+</map>

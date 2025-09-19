@@ -1,4 +1,7 @@
-<map id="pgrouting::graph::Pgr_contractionGraph&lt; G &gt;" name="pgrouting::graph::Pgr_contractionGraph&lt; G &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="19,109,201,151"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html" title=" " alt="" coords="5,5,215,61"/>
+<map id="pgrouting::graph::Pgr_contractionGraph&lt; G, t_directed &gt;" name="pgrouting::graph::Pgr_contractionGraph&lt; G, t_directed &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="383,37,553,92"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html" title=" " alt="" coords="5,5,215,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="229,41,383,54,382,60,228,46"/>
+<area shape="rect" id="Node000018" href="$classpgrouting_1_1Identifiers.html" title=" " alt="" coords="11,84,209,109"/>
+<area shape="poly" id="edge2_Node000001_Node000018" title=" " alt="" coords="222,85,358,73,382,70,383,76,359,78,223,90"/>
 </map>

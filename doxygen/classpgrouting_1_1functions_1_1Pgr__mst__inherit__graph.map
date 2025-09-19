@@ -1,5 +1,7 @@
 <map id="pgrouting::functions::Pgr_mst&lt; G &gt;" name="pgrouting::functions::Pgr_mst&lt; G &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="93,5,245,47"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1functions_1_1Pgr__kruskal.html" title=" " alt="" coords="5,95,157,136"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1functions_1_1Pgr__prim.html" title=" " alt="" coords="181,95,333,136"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="93,5,245,45"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1functions_1_1Pgr__kruskal.html" title=" " alt="" coords="5,93,157,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,57,103,95,99,91,138,53"/>
+<area shape="rect" id="Node000003" href="$classpgrouting_1_1functions_1_1Pgr__prim.html" title=" " alt="" coords="181,93,333,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,53,240,91,236,95,197,57"/>
 </map>

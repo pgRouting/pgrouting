@@ -1,10 +1,18 @@
 <map id="stoerWagner.c" name="stoerWagner.c">
-<area shape="rect" id="node1" title=" " alt="" coords="408,5,523,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,87,88,114"/>
-<area shape="rect" id="node3" href="$postgres__connection_8h.html" title=" " alt="" coords="72,169,315,196"/>
-<area shape="rect" id="node4" href="$debug__macro_8h.html" title=" " alt="" coords="163,87,360,114"/>
-<area shape="rect" id="node5" href="$e__report_8h.html" title=" " alt="" coords="384,87,547,114"/>
-<area shape="rect" id="node6" href="$time__msg_8h.html" title=" " alt="" coords="571,87,746,114"/>
-<area shape="rect" id="node7" href="$edges__input_8h.html" title=" " alt="" coords="770,87,958,114"/>
-<area shape="rect" id="node8" href="$stoerWagner__driver_8h.html" title=" " alt="" coords="983,80,1185,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="407,5,523,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,86,88,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="407,29,270,49,107,81,94,85,93,79,106,76,269,44,407,24"/>
+<area shape="rect" id="Node000003" href="$postgres__connection_8h.html" title=" " alt="" coords="72,167,315,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="407,24,337,30,261,40,194,57,169,68,153,80,146,98,150,117,160,137,174,155,170,158,156,140,144,119,141,97,149,77,166,63,192,52,260,35,337,25,407,19"/>
+<area shape="rect" id="Node000013" href="$debug__macro_8h.html" title=" " alt="" coords="163,86,360,111"/>
+<area shape="poly" id="edge3_Node000001_Node000013" title=" " alt="" coords="437,33,305,84,303,79,435,28"/>
+<area shape="rect" id="Node000014" href="$e__report_8h.html" title=" " alt="" coords="384,86,547,111"/>
+<area shape="poly" id="edge5_Node000001_Node000014" title=" " alt="" coords="468,31,468,72,463,72,463,31"/>
+<area shape="rect" id="Node000015" href="$time__msg_8h.html" title=" " alt="" coords="571,86,746,111"/>
+<area shape="poly" id="edge6_Node000001_Node000015" title=" " alt="" coords="494,28,619,78,617,83,492,33"/>
+<area shape="rect" id="Node000018" href="$stoerWagner__t_8h.html" title=" " alt="" coords="770,86,953,111"/>
+<area shape="poly" id="edge7_Node000001_Node000018" title=" " alt="" coords="523,28,791,81,790,86,522,33"/>
+<area shape="rect" id="Node000020" href="$stoerWagner__driver_8h.html" title=" " alt="" coords="977,79,1180,119"/>
+<area shape="poly" id="edge8_Node000001_Node000020" title=" " alt="" coords="524,23,715,44,964,76,963,81,714,49,523,28"/>
+<area shape="poly" id="edge4_Node000013_Node000003" title=" " alt="" coords="253,113,214,158,210,155,249,110"/>
 </map>

@@ -1,0 +1,7 @@
+<map id="pgrouting::visitors::dijkstra_distance_visitor&lt; V &gt;" name="pgrouting::visitors::dijkstra_distance_visitor&lt; V &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="113,108,255,163"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,173,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,54,163,106,159,110,113,57"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="197,13,363,38"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="263,50,209,110,205,106,259,47"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="basic_vertex.hpp" name="basic_vertex.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="155,5,288,31"/>
+<area shape="rect" id="Node000002" href="$base__graph_8hpp.html" title=" " alt="" coords="5,79,131,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,39,94,81,92,76,183,34"/>
+<area shape="rect" id="Node000107" href="$basic__vertex_8cpp.html" title=" " alt="" coords="155,79,287,104"/>
+<area shape="poly" id="edge2_Node000001_Node000107" title=" " alt="" coords="224,44,224,79,219,79,219,44"/>
+<area shape="rect" id="Node000108" href="$line__graph_8hpp.html" title=" " alt="" coords="311,79,430,104"/>
+<area shape="poly" id="edge3_Node000001_Node000108" title=" " alt="" coords="259,34,347,76,345,81,256,39"/>
+</map>

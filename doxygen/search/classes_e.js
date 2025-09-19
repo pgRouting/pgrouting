@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['tour_1811',['Tour',['../classpgrouting_1_1tsp_1_1Tour.html',1,'pgrouting::tsp']]],
-  ['transitiveclosure_5frt_1812',['transitiveClosure_rt',['../structtransitiveClosure__rt.html',1,'']]],
-  ['tsp_1813',['TSP',['../classpgrouting_1_1tsp_1_1TSP.html',1,'pgrouting::tsp']]],
-  ['tw_5fnode_1814',['Tw_node',['../classpgrouting_1_1vrp_1_1Tw__node.html',1,'pgrouting::vrp']]]
+  ['transitiveclosure_5frt_0',['TransitiveClosure_rt',['../structTransitiveClosure__rt.html',1,'']]],
+  ['trsphandler_1',['TrspHandler',['../classpgrouting_1_1trsp_1_1TrspHandler.html',1,'pgrouting::trsp']]],
+  ['tsp_5ftour_5frt_2',['TSP_tour_rt',['../structTSP__tour__rt.html',1,'']]],
+  ['tw_5fnode_3',['Tw_node',['../classpgrouting_1_1vrp_1_1Tw__node.html',1,'pgrouting::vrp']]]
 ];

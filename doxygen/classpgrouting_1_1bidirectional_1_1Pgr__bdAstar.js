@@ -1,9 +1,9 @@
 var classpgrouting_1_1bidirectional_1_1Pgr__bdAstar =
 [
-    [ "Cost_Vertex_pair", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a2b47d57927be50f697bd2db52c816697", null ],
-    [ "E", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a0e71a6b95eff7c910e329b72f6b4b692", null ],
+    [ "Cost_Vertex_pair", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a06a2485c933062b1202fe537b45f663f", null ],
+    [ "E", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#ab57bf9f0f262598cff214a0a6780cd01", null ],
     [ "Priority_queue", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a7994bd8b22eee89085d14a8e5d7e4345", null ],
-    [ "V", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a433bd6180a5bf479b4747ad7704bf5b3", null ],
+    [ "V", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#aaa3af6263d8881b46b8ce47c5b7dc0fc", null ],
     [ "Pgr_bdAstar", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#adff9c8a46ba0b4ab8643adcf3aba6c4f", null ],
     [ "~Pgr_bdAstar", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#abdeeb861262783f9310f8ad5c693c290", null ],
     [ "bidirectional", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a0a1519de1a666bdfff7584037388e5f9", null ],
@@ -22,7 +22,6 @@ var classpgrouting_1_1bidirectional_1_1Pgr__bdAstar =
     [ "backward_predecessor", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a4ecb47d0dbeab63cd57721bc88cb13ad", null ],
     [ "backward_queue", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a0a54fb704d67bb33cdac08d447b829e9", null ],
     [ "best_cost", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a9364fe09b92306ce8b43f9cda5b3b78a", null ],
-    [ "cost_only", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a43a0a60c548e5d9b6b0e89aa809537f1", null ],
     [ "forward_cost", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a542d59dbc5f102daa94bb8687b45b75d", null ],
     [ "forward_edge", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#ab7f293e239144ffd2a4499ecec0b2528", null ],
     [ "forward_finished", "classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#ac9eec462e97b987cfb59bd12709c8395", null ],

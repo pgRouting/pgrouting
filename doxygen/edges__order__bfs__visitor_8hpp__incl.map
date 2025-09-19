@@ -1,5 +1,7 @@
 <map id="edges_order_bfs_visitor.hpp" name="edges_order_bfs_visitor.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="45,5,249,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,159,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="183,87,245,114"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,211,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="11,86,74,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,33,63,77,59,73,96,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="98,79,251,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="120,29,152,66,148,70,116,33"/>
 </map>

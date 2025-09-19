@@ -1,6 +1,5 @@
 <map id="connectedComponents_driver.h" name="connectedComponents_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="99,5,269,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,80,121"/>
-<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title=" " alt="" coords="104,95,264,121"/>
-<area shape="rect" id="node4" href="$pgr__components__rt_8h.html" title=" " alt="" coords="288,95,501,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,176,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="53,93,128,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,46,93,79,88,79,88,46"/>
 </map>

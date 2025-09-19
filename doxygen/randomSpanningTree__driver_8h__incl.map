@@ -1,6 +1,11 @@
 <map id="randomSpanningTree_driver.h" name="randomSpanningTree_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="105,5,263,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,102,80,129"/>
-<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title=" " alt="" coords="104,102,264,129"/>
-<area shape="rect" id="node4" href="$pgr__randomSpanningTree__t_8h.html" title=" " alt="" coords="289,95,503,136"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="178,5,337,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,101,96,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,48,92,98,90,93,211,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="120,101,219,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="240,48,193,92,190,89,236,44"/>
+<area shape="rect" id="Node000004" href="$undefPostgresDefine_8hpp.html" title="https://doxygen.postgresql.org/port_8h.html Has the line #define snprintf pg_snprintf" alt="" coords="243,93,450,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="279,44,319,82,315,86,275,48"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="475,101,549,126"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="319,43,464,91,470,93,468,98,462,96,317,48"/>
 </map>

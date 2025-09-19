@@ -1,0 +1,16 @@
+<map id="withPoints.hpp" name="withPoints.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="246,5,365,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="18,167,81,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,25,181,32,112,42,52,58,30,69,16,80,9,97,11,117,20,136,32,154,28,157,15,139,6,118,3,97,11,77,27,64,50,53,111,37,181,26,245,20"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="272,167,339,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="365,19,439,24,519,34,590,51,617,63,635,77,647,94,651,109,648,123,639,135,608,154,563,166,510,174,453,179,353,182,353,176,453,174,509,169,562,161,606,149,636,131,643,121,645,110,642,96,632,80,614,67,589,56,518,39,438,29,365,24"/>
+<area shape="rect" id="Node000004" href="$point__on__edge__t_8hpp.html" title=" " alt="" coords="221,79,390,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="308,31,308,65,303,65,303,31"/>
+<area shape="rect" id="Node000005" href="$messages_8hpp.html" title=" " alt="" coords="414,86,621,111"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="337,28,475,79,473,84,335,33"/>
+<area shape="rect" id="Node000008" href="$path_8hpp.html" title=" " alt="" coords="25,86,196,111"/>
+<area shape="poly" id="edge6_Node000001_Node000008" title=" " alt="" coords="278,33,153,83,151,78,276,28"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="308,119,308,153,303,153,303,119"/>
+<area shape="poly" id="edge7_Node000008_Node000002" title=" " alt="" coords="104,113,69,158,65,154,100,110"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="140,109,266,159,264,164,138,114"/>
+</map>

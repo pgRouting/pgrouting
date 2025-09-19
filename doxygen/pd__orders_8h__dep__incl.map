@@ -1,9 +1,0 @@
-<map id="pd_orders.h" name="pd_orders.h">
-<area shape="rect" id="node1" title=" " alt="" coords="246,5,345,32"/>
-<area shape="rect" id="node2" href="$pd__orders_8cpp.html" title=" " alt="" coords="84,155,197,181"/>
-<area shape="rect" id="node3" href="$pd__problem_8cpp.html" title=" " alt="" coords="25,80,152,107"/>
-<area shape="rect" id="node4" href="$pgr__pickDeliver_8cpp.html" title=" " alt="" coords="324,155,475,181"/>
-<area shape="rect" id="node5" href="$initial__solution_8h.html" title=" " alt="" coords="386,80,517,107"/>
-<area shape="rect" id="node6" href="$pgr__pickDeliver_8h.html" title=" " alt="" coords="176,80,311,107"/>
-<area shape="rect" id="node7" href="$vehicle__pickDeliver_8h.html" title=" " alt="" coords="541,80,703,107"/>
-</map>

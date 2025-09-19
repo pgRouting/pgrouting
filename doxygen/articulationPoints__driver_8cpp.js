@@ -1,4 +1,4 @@
 var articulationPoints__driver_8cpp =
 [
-    [ "do_pgr_articulationPoints", "articulationPoints__driver_8cpp.html#a881000d06a98fddaa3e85b890b766f83", null ]
+    [ "pgr_do_articulationPoints", "articulationPoints__driver_8cpp.html#adfa1854a22ed1cc46234d3e28d86c9b8", null ]
 ];

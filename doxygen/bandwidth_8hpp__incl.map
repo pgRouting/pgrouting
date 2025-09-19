@@ -1,0 +1,20 @@
+<map id="bandwidth.hpp" name="bandwidth.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="265,5,384,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,159,68,185"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="265,27,205,34,141,45,85,61,65,70,51,80,41,95,37,111,35,146,30,145,31,111,37,93,47,77,62,65,83,56,140,40,204,29,265,22"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="362,79,437,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="338,29,379,67,375,71,335,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="119,159,186,185"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="266,27,207,34,146,45,93,60,74,70,61,80,56,90,56,99,67,118,88,136,114,151,112,156,85,140,63,122,51,100,51,89,57,77,71,65,91,55,145,40,207,29,265,21"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="225,152,395,192"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="326,31,316,139,310,138,321,30"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="460,79,659,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="363,28,509,72,508,77,362,33"/>
+<area shape="rect" id="Node000007" href="$base__graph_8hpp.html" title=" " alt="" coords="71,79,287,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="302,33,216,75,214,70,300,28"/>
+<area shape="rect" id="Node000026" href="$interruption_8hpp.html" title=" " alt="" coords="683,79,900,104"/>
+<area shape="poly" id="edge10_Node000001_Node000026" title=" " alt="" coords="385,26,703,74,703,79,384,31"/>
+<area shape="poly" id="edge7_Node000007_Node000002" title=" " alt="" coords="160,107,71,155,68,150,157,102"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="178,105,163,147,158,146,173,103"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="200,102,268,143,265,147,197,106"/>
+</map>

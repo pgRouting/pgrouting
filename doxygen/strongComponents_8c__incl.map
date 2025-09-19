@@ -1,10 +1,18 @@
 <map id="strongComponents.c" name="strongComponents.c">
-<area shape="rect" id="node1" title=" " alt="" coords="387,5,543,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,87,88,114"/>
-<area shape="rect" id="node3" href="$postgres__connection_8h.html" title=" " alt="" coords="72,169,315,196"/>
-<area shape="rect" id="node4" href="$debug__macro_8h.html" title=" " alt="" coords="163,87,360,114"/>
-<area shape="rect" id="node5" href="$e__report_8h.html" title=" " alt="" coords="384,87,547,114"/>
-<area shape="rect" id="node6" href="$time__msg_8h.html" title=" " alt="" coords="571,87,746,114"/>
-<area shape="rect" id="node7" href="$edges__input_8h.html" title=" " alt="" coords="770,87,958,114"/>
-<area shape="rect" id="node8" href="$strongComponents__driver_8h.html" title=" " alt="" coords="983,80,1188,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="333,5,489,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,86,88,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="341,33,231,54,107,81,95,85,94,79,106,76,230,49,340,28"/>
+<area shape="rect" id="Node000003" href="$postgres__connection_8h.html" title=" " alt="" coords="147,167,389,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="333,29,225,48,180,62,164,71,153,80,146,98,153,117,177,142,208,159,206,164,174,147,148,120,140,98,148,77,161,66,178,57,224,43,332,24"/>
+<area shape="rect" id="Node000013" href="$ii__t__rt_8h.html" title=" " alt="" coords="163,86,288,111"/>
+<area shape="poly" id="edge3_Node000001_Node000013" title=" " alt="" coords="385,33,266,83,264,78,383,28"/>
+<area shape="rect" id="Node000015" href="$debug__macro_8h.html" title=" " alt="" coords="312,86,509,111"/>
+<area shape="poly" id="edge4_Node000001_Node000015" title=" " alt="" coords="413,31,413,72,408,72,408,31"/>
+<area shape="rect" id="Node000016" href="$e__report_8h.html" title=" " alt="" coords="533,86,696,111"/>
+<area shape="poly" id="edge6_Node000001_Node000016" title=" " alt="" coords="441,28,573,79,571,84,439,33"/>
+<area shape="rect" id="Node000017" href="$time__msg_8h.html" title=" " alt="" coords="721,86,895,111"/>
+<area shape="poly" id="edge7_Node000001_Node000017" title=" " alt="" coords="469,28,737,81,736,86,468,33"/>
+<area shape="rect" id="Node000020" href="$strongComponents__driver_8h.html" title=" " alt="" coords="919,79,1126,119"/>
+<area shape="poly" id="edge8_Node000001_Node000020" title=" " alt="" coords="489,25,675,46,906,76,905,81,674,51,488,30"/>
+<area shape="poly" id="edge5_Node000015_Node000003" title=" " alt="" coords="391,114,302,162,300,158,388,109"/>
 </map>

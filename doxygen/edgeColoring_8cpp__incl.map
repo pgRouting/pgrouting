@@ -1,0 +1,24 @@
+<map id="edgeColoring.cpp" name="edgeColoring.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="333,5,468,31"/>
+<area shape="rect" id="Node000002" href="$edgeColoring_8hpp.html" title=" " alt="" coords="53,79,245,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="361,33,204,77,202,72,359,28"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,152,68,177"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="333,23,254,28,166,38,90,55,62,66,43,80,35,93,32,108,33,138,28,139,26,107,30,91,39,77,59,62,88,50,166,32,253,23,333,18"/>
+<area shape="rect" id="Node000013" href="$assert_8hpp.html" title="Assertions Handling." alt="" coords="114,152,295,177"/>
+<area shape="poly" id="edge11_Node000001_Node000013" title=" " alt="" coords="385,33,316,81,232,145,228,141,312,77,382,29"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="239,225,298,251"/>
+<area shape="poly" id="edge7_Node000001_Node000014" title=" " alt="" coords="394,32,362,80,335,129,310,179,286,215,282,213,305,176,331,127,357,77,390,29"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="371,79,431,104"/>
+<area shape="poly" id="edge6_Node000001_Node000018" title=" " alt="" coords="403,31,403,65,398,65,398,31"/>
+<area shape="rect" id="Node000019" href="$identifiers_8hpp.html" title=" " alt="" coords="455,79,661,104"/>
+<area shape="poly" id="edge8_Node000001_Node000019" title=" " alt="" coords="427,28,521,71,519,75,425,33"/>
+<area shape="rect" id="Node000024" title=" " alt="" coords="685,79,908,104"/>
+<area shape="poly" id="edge9_Node000001_Node000024" title=" " alt="" coords="465,28,720,74,719,79,464,33"/>
+<area shape="rect" id="Node000025" title=" " alt="" coords="931,79,1142,104"/>
+<area shape="poly" id="edge10_Node000001_Node000025" title=" " alt="" coords="468,24,921,75,921,80,468,29"/>
+<area shape="rect" id="Node000026" href="$interruption_8hpp.html" title=" " alt="" coords="1167,79,1384,104"/>
+<area shape="poly" id="edge12_Node000001_Node000026" title=" " alt="" coords="468,22,1153,76,1152,81,468,27"/>
+<area shape="poly" id="edge2_Node000002_Node000005" title=" " alt="" coords="132,106,68,147,65,142,129,102"/>
+<area shape="poly" id="edge3_Node000002_Node000013" title=" " alt="" coords="160,103,189,140,185,143,156,106"/>
+<area shape="poly" id="edge4_Node000013_Node000014" title=" " alt="" coords="217,176,251,213,247,217,213,179"/>
+</map>

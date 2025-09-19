@@ -1,0 +1,5 @@
+<map id="pgrouting::Pgr_dag&lt; G &gt;::dijkstra_many_goal_visitor" name="pgrouting::Pgr_dag&lt; G &gt;::dijkstra_many_goal_visitor">
+<area shape="rect" id="Node000001" title="class for stopping when all targets are found" alt="" coords="8,93,171,148"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,173,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,59,92,93,87,93,87,59"/>
+</map>

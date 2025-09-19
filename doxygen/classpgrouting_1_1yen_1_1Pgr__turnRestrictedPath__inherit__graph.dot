@@ -1,9 +1,10 @@
 digraph "pgrouting::yen::Pgr_turnRestrictedPath&lt; G &gt;"
 {
  // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="pgrouting::yen::Pgr\l_turnRestrictedPath\< G \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="pgrouting::yen::Pgr\l_ksp\< G \>",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1yen_1_1Pgr__ksp.html",tooltip=" "];
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="pgrouting::yen::Pgr\l_turnRestrictedPath\< G \>",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="pgrouting::yen::Pgr\l_ksp\< G \>",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$classpgrouting_1_1yen_1_1Pgr__ksp.html",tooltip=" "];
 }

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tourcost_3439',['tourCost',['../classpgrouting_1_1tsp_1_1Tour.html#a42f356b935e4ed6254c9d4b2434a7c92',1,'pgrouting::tsp::Tour']]]
+  ['equi_5fcost_0',['equi_cost',['../classpgrouting_1_1Path.html#a5ec42f9cedce93c209092bc259b9c56c',1,'pgrouting::Path']]]
 ];

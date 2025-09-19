@@ -1,0 +1,14 @@
+<map id="ch_vertex.hpp" name="ch_vertex.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="139,5,254,31"/>
+<area shape="rect" id="Node000002" href="$ch__edge_8hpp.html" title=" " alt="" coords="30,79,134,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,40,102,81,99,76,165,35"/>
+<area shape="rect" id="Node000004" href="$ch__graphs_8hpp.html" title=" " alt="" coords="45,225,161,251"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="206,44,211,72,214,107,211,144,199,179,187,195,171,209,137,228,135,223,168,204,183,192,194,176,206,143,209,107,206,73,201,45"/>
+<area shape="rect" id="Node000009" href="$contractionGraph_8hpp.html" title=" " alt="" coords="22,152,184,177"/>
+<area shape="poly" id="edge7_Node000001_Node000009" title=" " alt="" coords="185,44,148,105,114,153,110,150,144,103,181,41"/>
+<area shape="rect" id="Node000012" href="$ch__vertex_8cpp.html" title=" " alt="" coords="260,79,373,104"/>
+<area shape="poly" id="edge6_Node000001_Node000012" title=" " alt="" coords="229,35,298,76,295,81,226,40"/>
+<area shape="poly" id="edge2_Node000002_Node000004" title=" " alt="" coords="49,113,31,127,16,142,9,159,12,176,23,192,38,204,71,223,69,228,35,209,20,195,7,178,4,158,12,139,28,123,46,109"/>
+<area shape="poly" id="edge3_Node000002_Node000009" title=" " alt="" coords="92,117,102,151,97,153,87,118"/>
+<area shape="poly" id="edge4_Node000009_Node000004" title=" " alt="" coords="106,191,106,225,100,225,100,191"/>
+</map>

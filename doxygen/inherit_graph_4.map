@@ -1,3 +1,17 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structCostHolder.html" title=" " alt="" coords="5,5,100,32"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,235,173,275"/>
+<area shape="rect" id="Node000001" href="$classpgrouting_1_1Pgr__dag_1_1dijkstra__many__goal__visitor.html" title="class for stopping when all targets are found" alt="" coords="241,5,404,60"/>
+<area shape="poly" id="edge7_Node000000_Node000001" title=" " alt="" coords="104,221,150,147,182,106,220,71,240,58,242,62,223,75,186,110,154,150,109,224"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1visitors_1_1Prim__dijkstra__visitor.html" title=" " alt="" coords="221,85,424,125"/>
+<area shape="poly" id="edge8_Node000000_Node000002" title=" " alt="" coords="115,223,161,178,220,134,245,122,247,127,223,139,165,182,119,227"/>
+<area shape="rect" id="Node000003" href="$classpgrouting_1_1visitors_1_1dijkstra__distance__visitor.html" title=" " alt="" coords="252,149,393,204"/>
+<area shape="poly" id="edge9_Node000000_Node000003" title=" " alt="" coords="161,228,251,198,253,203,163,233"/>
+<area shape="rect" id="Node000004" href="$classpgrouting_1_1visitors_1_1dijkstra__distance__visitor__no__init.html" title=" " alt="" coords="235,228,411,283"/>
+<area shape="poly" id="edge10_Node000000_Node000004" title=" " alt="" coords="187,253,234,253,234,258,187,258"/>
+<area shape="rect" id="Node000005" href="$classpgrouting_1_1visitors_1_1dijkstra__many__goal__visitor.html" title=" " alt="" coords="243,307,402,361"/>
+<area shape="poly" id="edge11_Node000000_Node000005" title=" " alt="" coords="163,277,244,305,242,310,161,282"/>
+<area shape="rect" id="Node000006" href="$classpgrouting_1_1visitors_1_1dijkstra__max__distance__visitor.html" title=" " alt="" coords="234,385,411,440"/>
+<area shape="poly" id="edge12_Node000000_Node000006" title=" " alt="" coords="120,284,166,328,223,370,246,383,243,388,220,375,163,332,116,287"/>
+<area shape="rect" id="Node000007" href="$classpgrouting_1_1visitors_1_1dijkstra__one__goal__visitor.html" title=" " alt="" coords="250,464,395,519"/>
+<area shape="poly" id="edge13_Node000000_Node000007" title=" " alt="" coords="107,286,126,324,152,367,184,411,223,449,251,467,248,471,220,453,180,414,147,370,121,326,102,289"/>
 </map>

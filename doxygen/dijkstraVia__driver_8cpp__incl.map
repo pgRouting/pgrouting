@@ -1,10 +1,32 @@
 <map id="dijkstraVia_driver.cpp" name="dijkstraVia_driver.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="324,5,487,32"/>
-<area shape="rect" id="node2" href="$dijkstraVia__driver_8h.html" title=" " alt="" coords="5,80,179,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="191,169,265,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="294,169,357,196"/>
-<area shape="rect" id="node5" title=" " alt="" coords="383,169,446,196"/>
-<area shape="rect" id="node6" href="$pgr__dijkstraVia_8hpp.html" title=" " alt="" coords="305,87,506,114"/>
-<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="489,169,682,196"/>
-<area shape="rect" id="node8" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="632,87,832,114"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="421,5,585,31"/>
+<area shape="rect" id="Node000002" href="$dijkstraVia__driver_8h.html" title=" " alt="" coords="5,79,179,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="443,33,193,81,192,76,442,28"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="271,167,345,192"/>
+<area shape="poly" id="edge2_Node000001_Node000008" title=" " alt="" coords="421,33,374,51,353,64,334,80,323,97,316,116,310,153,305,153,311,114,318,95,330,77,349,60,372,46,419,28"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="378,167,441,192"/>
+<area shape="poly" id="edge3_Node000001_Node000009" title=" " alt="" coords="421,33,378,50,360,63,345,80,339,98,345,118,360,139,380,157,376,161,356,143,340,120,333,98,340,77,356,59,376,46,419,28"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="797,167,859,192"/>
+<area shape="poly" id="edge4_Node000001_Node000010" title=" " alt="" coords="585,19,662,24,742,34,811,51,837,63,855,77,864,96,863,117,856,137,847,156,842,153,852,135,858,116,859,97,851,80,835,67,809,56,741,39,661,29,585,24"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="531,240,589,265"/>
+<area shape="poly" id="edge5_Node000001_Node000011" title=" " alt="" coords="421,33,363,50,335,64,310,81,279,107,256,134,250,147,248,161,251,175,261,190,277,203,303,214,372,231,450,241,517,247,517,252,449,247,371,236,301,219,275,208,257,194,247,177,243,161,245,146,252,131,275,103,306,77,332,59,361,45,420,28"/>
+<area shape="rect" id="Node000012" href="$routes__t_8h.html" title=" " alt="" coords="1029,167,1171,192"/>
+<area shape="poly" id="edge6_Node000001_Node000012" title=" " alt="" coords="585,18,738,23,915,33,1068,50,1121,62,1150,77,1159,97,1154,119,1141,141,1125,159,1121,155,1137,137,1149,117,1153,98,1146,80,1119,67,1067,56,914,39,737,28,585,24"/>
+<area shape="rect" id="Node000013" href="$pgdata__getters_8hpp.html" title=" " alt="" coords="603,86,842,111"/>
+<area shape="poly" id="edge7_Node000001_Node000013" title=" " alt="" coords="536,28,678,79,677,84,534,33"/>
+<area shape="rect" id="Node000031" href="$to__postgres_8hpp.html" title=" " alt="" coords="918,86,1135,111"/>
+<area shape="poly" id="edge10_Node000001_Node000031" title=" " alt="" coords="579,28,938,81,937,87,578,33"/>
+<area shape="rect" id="Node000052" href="$assert_8hpp.html" title="Assertions Handling." alt="" coords="469,167,651,192"/>
+<area shape="poly" id="edge13_Node000001_Node000052" title=" " alt="" coords="514,29,529,51,542,78,554,117,560,152,555,153,549,118,538,80,524,54,510,32"/>
+<area shape="rect" id="Node000059" href="$dijkstraVia_8hpp.html" title=" " alt="" coords="355,86,528,111"/>
+<area shape="poly" id="edge15_Node000001_Node000059" title=" " alt="" coords="496,32,461,77,457,74,492,29"/>
+<area shape="poly" id="edge9_Node000013_Node000010" title=" " alt="" coords="740,109,803,156,800,161,737,114"/>
+<area shape="poly" id="edge8_Node000013_Node000011" title=" " alt="" coords="720,113,699,151,665,194,633,218,601,236,598,232,630,214,661,190,694,148,715,110"/>
+<area shape="poly" id="edge11_Node000031_Node000010" title=" " alt="" coords="999,114,871,164,869,159,997,109"/>
+<area shape="poly" id="edge12_Node000031_Node000012" title=" " alt="" coords="1039,110,1082,154,1078,158,1036,113"/>
+<area shape="poly" id="edge14_Node000052_Node000011" title=" " alt="" coords="563,192,563,226,557,226,557,192"/>
+<area shape="poly" id="edge16_Node000059_Node000008" title=" " alt="" coords="423,114,341,162,338,157,420,109"/>
+<area shape="poly" id="edge17_Node000059_Node000009" title=" " alt="" coords="439,113,422,155,417,153,434,110"/>
+<area shape="poly" id="edge18_Node000059_Node000010" title=" " alt="" coords="498,109,784,166,783,172,497,114"/>
+<area shape="poly" id="edge19_Node000059_Node000052" title=" " alt="" coords="460,109,532,157,529,161,457,114"/>
 </map>

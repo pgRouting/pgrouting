@@ -1,9 +1,16 @@
 <map id="xy_vertex.cpp" name="xy_vertex.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="369,5,483,32"/>
-<area shape="rect" id="node2" href="$xy__vertex_8h.html" title=" " alt="" coords="5,87,196,114"/>
-<area shape="rect" id="node3" title=" " alt="" coords="136,169,199,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="272,80,441,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="466,87,525,114"/>
-<area shape="rect" id="node6" title=" " alt="" coords="549,87,634,114"/>
-<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="659,87,852,114"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="307,5,422,31"/>
+<area shape="rect" id="Node000002" href="$xy__vertex_8hpp.html" title=" " alt="" coords="5,86,212,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="328,33,160,84,158,79,327,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="148,167,211,192"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="346,33,313,54,277,81,235,120,200,158,196,154,231,116,274,77,310,50,344,28"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="287,86,346,111"/>
+<area shape="poly" id="edge4_Node000001_Node000008" title=" " alt="" coords="360,32,333,76,329,73,355,29"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="370,86,455,111"/>
+<area shape="poly" id="edge5_Node000001_Node000009" title=" " alt="" coords="374,29,401,73,396,76,369,32"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="480,79,649,119"/>
+<area shape="poly" id="edge6_Node000001_Node000010" title=" " alt="" coords="395,28,505,71,503,76,393,33"/>
+<area shape="rect" id="Node000011" href="$assert_8hpp.html" title="Assertions Handling." alt="" coords="674,86,855,111"/>
+<area shape="poly" id="edge7_Node000001_Node000011" title=" " alt="" coords="423,28,693,81,692,86,422,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="121,110,162,155,158,158,117,113"/>
 </map>

@@ -1,5 +1,7 @@
 <map id="pgrouting::vrp::Dnode" name="pgrouting::vrp::Dnode">
-<area shape="rect" id="node1" title="The Dnode class defines a the basic operations when data is a matrix." alt="" coords="13,80,175,107"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html" title="Extends the Node class to create a Node with time window attributes." alt="" coords="5,155,183,181"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title=" " alt="" coords="19,5,169,32"/>
+<area shape="rect" id="Node000001" title="The Dnode class defines a the basic operations when data is a matrix." alt="" coords="13,79,175,104"/>
+<area shape="rect" id="Node000003" href="$classpgrouting_1_1vrp_1_1Tw__node.html" title="Extends the Node class to create a Node with time window attributes." alt="" coords="5,152,183,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="97,118,97,152,91,152,91,118"/>
+<area shape="rect" id="Node000002" href="$classpgrouting_1_1Identifier.html" title=" " alt="" coords="19,5,169,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,44,97,79,91,79,91,44"/>
 </map>

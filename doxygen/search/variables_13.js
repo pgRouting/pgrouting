@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['waittime_3322',['waitTime',['../structGeneral__vehicle__orders__t.html#ac35c6ff98a900b7637e8b525ba989942',1,'General_vehicle_orders_t']]],
-  ['weight_3323',['weight',['../classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#ae6799b01ca0e52a49a89ab7692ccfcb5',1,'pgrouting::graph::PgrCostFlowGraph']]]
+  ['y_0',['y',['../structCoordinate__t.html#abbc494db10b22a87bede79c5b62be604',1,'Coordinate_t::y'],['../structDelauny__t.html#a7bf8a9276b2920f93a727fce51250a05',1,'Delauny_t::y']]],
+  ['y1_1',['y1',['../structEdge__xy__t.html#af43316ca9bab0699f3b035fc55c4d444',1,'Edge_xy_t']]],
+  ['y2_2',['y2',['../structEdge__xy__t.html#a15374dbea0bfc1f04fdc29389aa8334f',1,'Edge_xy_t']]]
 ];

@@ -1,8 +1,23 @@
 digraph "Graphical Class Hierarchy"
 {
  // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [label="CostHolder",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCostHolder.html",tooltip=" "];
+  Node0 [id="Node000000",label="boost::default_dijkstra\l_visitor",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node0 -> Node1 [id="edge7_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 [id="Node000001",label="pgrouting::Pgr_dag\l\< G \>::dijkstra_many\l_goal_visitor",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pgr__dag_1_1dijkstra__many__goal__visitor.html",tooltip="class for stopping when all targets are found"];
+  Node0 -> Node2 [id="edge8_Node000000_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="pgrouting::visitors\l::Prim_dijkstra_visitor\< V \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1visitors_1_1Prim__dijkstra__visitor.html",tooltip=" "];
+  Node0 -> Node3 [id="edge9_Node000000_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="pgrouting::visitors\l::dijkstra_distance\l_visitor\< V \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1visitors_1_1dijkstra__distance__visitor.html",tooltip=" "];
+  Node0 -> Node4 [id="edge10_Node000000_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="pgrouting::visitors\l::dijkstra_distance\l_visitor_no_init\< V, E \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1visitors_1_1dijkstra__distance__visitor__no__init.html",tooltip=" "];
+  Node0 -> Node5 [id="edge11_Node000000_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="pgrouting::visitors\l::dijkstra_many_goal\l_visitor\< V \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1visitors_1_1dijkstra__many__goal__visitor.html",tooltip=" "];
+  Node0 -> Node6 [id="edge12_Node000000_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="pgrouting::visitors\l::dijkstra_max_distance\l_visitor\< V \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1visitors_1_1dijkstra__max__distance__visitor.html",tooltip=" "];
+  Node0 -> Node7 [id="edge13_Node000000_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="pgrouting::visitors\l::dijkstra_one_goal\l_visitor\< V \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classpgrouting_1_1visitors_1_1dijkstra__one__goal__visitor.html",tooltip=" "];
 }

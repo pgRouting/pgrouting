@@ -1,7 +1,5 @@
 <map id="boyerMyrvold_driver.h" name="boyerMyrvold_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="193,5,361,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,80,107"/>
-<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title=" " alt="" coords="104,80,264,107"/>
-<area shape="rect" id="node4" href="$pgr__boyer__t_8h.html" title=" " alt="" coords="288,80,453,107"/>
-<area shape="rect" id="node5" href="$pgr__mst__rt_8h.html" title=" " alt="" coords="478,80,637,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,175,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="53,79,127,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,31,93,65,87,65,87,31"/>
 </map>

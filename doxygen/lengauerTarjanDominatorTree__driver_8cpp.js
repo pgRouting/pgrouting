@@ -1,4 +1,4 @@
 var lengauerTarjanDominatorTree__driver_8cpp =
 [
-    [ "do_pgr_LTDTree", "lengauerTarjanDominatorTree__driver_8cpp.html#a99042246de655fc52daf854183e17e7e", null ]
+    [ "pgr_do_LTDTree", "lengauerTarjanDominatorTree__driver_8cpp.html#a7f56fd05c291cabe0a6bf097559106a9", null ]
 ];

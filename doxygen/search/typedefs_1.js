@@ -1,13 +1,11 @@
 var searchData=
 [
-  ['capacity_3340',['Capacity',['../namespacepgrouting.html#af40d387473b84e06e65b2f866fa214d0',1,'pgrouting']]],
-  ['chdirectedgraph_3341',['CHDirectedGraph',['../namespacepgrouting_1_1graph.html#af597e60f1aa5b252e6c56db3a53c22f9',1,'pgrouting::graph']]],
-  ['chundirectedgraph_3342',['CHUndirectedGraph',['../namespacepgrouting_1_1graph.html#a3872cef07dc0873e92aba0e778c3370a',1,'pgrouting::graph']]],
-  ['const_5fiterator_3343',['const_iterator',['../classIdentifiers.html#a71511a42f9131120a4276aba22084a97',1,'Identifiers']]],
-  ['constiterator_3344',['constiterator',['../classpgrouting_1_1trsp_1_1Rule.html#a9ef572e3215c582ab481fd575c42bbdf',1,'pgrouting::trsp::Rule']]],
-  ['constpthit_3345',['ConstpthIt',['../classPath.html#a170e524b86767313c6fc5df8b9e59ee7',1,'Path']]],
-  ['cost_3346',['Cost',['../classpgrouting_1_1vrp_1_1Vehicle.html#a2c972904c3b3a8cdb6de53ae3c657fca',1,'pgrouting::vrp::Vehicle']]],
-  ['cost_5fvertex_5fpair_3347',['Cost_Vertex_pair',['../classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a2b47d57927be50f697bd2db52c816697',1,'pgrouting::bidirectional::Pgr_bdAstar::Cost_Vertex_pair()'],['../classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a3ef3052e2483b53309f9a9b99552b17e',1,'pgrouting::bidirectional::Pgr_bdDijkstra::Cost_Vertex_pair()'],['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a46fd5c70452e6aca2609b83f213ff6bc',1,'pgrouting::bidirectional::Pgr_bidirectional::Cost_Vertex_pair()']]],
-  ['costflowgraph_3348',['CostFlowGraph',['../namespacepgrouting.html#a3face63db7657a66896ae94e98537fc9',1,'pgrouting']]],
-  ['costs_3349',['Costs',['../classpgrouting_1_1tsp_1_1Dmatrix.html#a60112b4b2eb4c139ae35f58ba3e1128f',1,'pgrouting::tsp::Dmatrix']]]
+  ['b_5fg_0',['b_g',['../classpgrouting_1_1functions_1_1Pgr__binaryBreadthFirstSearch.html#ad8698473ba4a37c9b7c7ca2dbe331e8e',1,'pgrouting::functions::Pgr_binaryBreadthFirstSearch::B_G'],['../classpgrouting_1_1functions_1_1Pgr__breadthFirstSearch.html#aed40958667637b9829159a40d4a7afa2',1,'pgrouting::functions::Pgr_breadthFirstSearch::B_G'],['../classpgrouting_1_1contraction_1_1Pgr__linear.html#ac979261248e489c80200db98abe894a2',1,'pgrouting::contraction::Pgr_linear::B_G'],['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a8ad18352454b47e79fa7c1604fcff48a',1,'pgrouting::graph::Pgr_base_graph::B_G'],['../classpgrouting_1_1functions_1_1Pgr__kruskal.html#a4ace1164328da193d7543328ff1dfe1c',1,'pgrouting::functions::Pgr_kruskal::B_G'],['../classpgrouting_1_1functions_1_1Pgr__mst.html#a7a68d2fe93ce1d15c391e435a1638b7d',1,'pgrouting::functions::Pgr_mst::B_G'],['../classpgrouting_1_1functions_1_1Pgr__prim.html#a6c2042fad6ba5710a66420e204bfc3f3',1,'pgrouting::functions::Pgr_prim::B_G']]],
+  ['b_5fg_5fr_1',['B_G_R',['../namespacepgrouting_1_1b__g.html#aef0a30e52b6b64d399f4e834ad06306f',1,'pgrouting::b_g']]],
+  ['bline_2',['Bline',['../namespacepgrouting.html#ac6b5ae53506ff9f0fb8beee4599a3188',1,'pgrouting']]],
+  ['blines_3',['Blines',['../namespacepgrouting.html#a305da7296f6bf8b777a000b348f08537',1,'pgrouting']]],
+  ['bpoint_4',['Bpoint',['../namespacepgrouting.html#a0d3dfa5ff19b26bd70f3a1866755e24c',1,'pgrouting']]],
+  ['bpoints_5',['Bpoints',['../namespacepgrouting.html#a28d2f2238e1743e0b2691551c66573f3',1,'pgrouting']]],
+  ['bpoly_6',['Bpoly',['../namespacepgrouting.html#a17019cdeb4e47d5afcdfe74cd15ca697',1,'pgrouting']]],
+  ['bpolys_7',['Bpolys',['../namespacepgrouting.html#a8494633303825ea9977cf97e9c5c239e',1,'pgrouting']]]
 ];

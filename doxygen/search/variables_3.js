@@ -1,17 +1,19 @@
 var searchData=
 [
-  ['data_3008',['data',['../classpgrouting_1_1functions_1_1Pgr__prim.html#a304270a87b1b46b56dc8946089c5591f',1,'pgrouting::functions::Pgr_prim']]],
-  ['deadendvertices_3009',['deadendVertices',['../classpgrouting_1_1contraction_1_1Pgr__deadend.html#a999531a34bb650c8419b31ed004f8f57',1,'pgrouting::contraction::Pgr_deadend']]],
-  ['default_5fedge_3010',['DEFAULT_EDGE',['../classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a8caf5a3c8fa0abf97e630b5c490c7ad8',1,'pgrouting::functions::Pgr_edwardMoore::DEFAULT_EDGE()'],['../classpgrouting_1_1functions_1_1Pgr__binaryBreadthFirstSearch.html#a5830bf95cf7a8ab9252c2c13755a7d13',1,'pgrouting::functions::Pgr_binaryBreadthFirstSearch::DEFAULT_EDGE()']]],
-  ['deliver_5fclose_5ft_3011',['deliver_close_t',['../structPickDeliveryOrders__t.html#a353af6b268cf3e4c4c47a0b244fd7928',1,'PickDeliveryOrders_t']]],
-  ['deliver_5fnode_5fid_3012',['deliver_node_id',['../structPickDeliveryOrders__t.html#ae1c604516b9f8439bdd3f15a2442d67f',1,'PickDeliveryOrders_t']]],
-  ['deliver_5fopen_5ft_3013',['deliver_open_t',['../structPickDeliveryOrders__t.html#a7f04597b7a43c58984e9815b604246b8',1,'PickDeliveryOrders_t']]],
-  ['deliver_5fservice_5ft_3014',['deliver_service_t',['../structPickDeliveryOrders__t.html#af8c3366b6a7c4fa93c0c63af3ea7d544',1,'PickDeliveryOrders_t']]],
-  ['deliver_5fx_3015',['deliver_x',['../structPickDeliveryOrders__t.html#ad618370b0b9e6cb8152b659889056cb1',1,'PickDeliveryOrders_t']]],
-  ['deliver_5fy_3016',['deliver_y',['../structPickDeliveryOrders__t.html#af564444415ffabe4cbb2ffb5c9f3000b',1,'PickDeliveryOrders_t']]],
-  ['demand_3017',['demand',['../structPickDeliveryOrders__t.html#aec56228fc0edd5812b5cf9ad882902de',1,'PickDeliveryOrders_t']]],
-  ['departuretime_3018',['departureTime',['../structGeneral__vehicle__orders__t.html#ac44ca989c1127b3483936bd2ed3b62be',1,'General_vehicle_orders_t']]],
-  ['depth_3019',['depth',['../structpgr__mst__rt.html#aa0448b47fef49a4b70ae54239f7cddb9',1,'pgr_mst_rt']]],
-  ['distances_3020',['distances',['../classpgrouting_1_1algorithms_1_1Pgr__astar.html#affc05350450a79f61ec402f4871ad1a7',1,'pgrouting::algorithms::Pgr_astar::distances()'],['../classPgr__bellman__ford.html#ae5d0876e20772f6aa94a68a64023c977',1,'Pgr_bellman_ford::distances()'],['../classPgr__dag.html#a5efb169985ae086ff62835557580a369',1,'Pgr_dag::distances()'],['../classpgrouting_1_1Pgr__dijkstra.html#a9cb4c84c2f76a92afcd48a86b10a3fd7',1,'pgrouting::Pgr_dijkstra::distances()'],['../classpgrouting_1_1functions_1_1Pgr__prim.html#a84ba6e5b1fd634fca1a8986cc254f5e2',1,'pgrouting::functions::Pgr_prim::distances()']]],
-  ['dnode_3021',['Dnode',['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#aa87e2ed158d17a7a0d549bf529a83024',1,'pgrouting::vrp::Pgr_pickDeliver']]]
+  ['d1_0',['d1',['../structII__t__rt.html#a7b6f6b70594fe485491caa5f8420792f',1,'II_t_rt']]],
+  ['d2_1',['d2',['../structII__t__rt.html#a4ff0de5414be96d506703ec769742c4f',1,'II_t_rt']]],
+  ['data_2',['data',['../classpgrouting_1_1functions_1_1Pgr__prim.html#a304270a87b1b46b56dc8946089c5591f',1,'pgrouting::functions::Pgr_prim']]],
+  ['deadendvertices_3',['deadendVertices',['../classpgrouting_1_1contraction_1_1Pgr__deadend.html#a999531a34bb650c8419b31ed004f8f57',1,'pgrouting::contraction::Pgr_deadend']]],
+  ['default_5fedge_4',['default_edge',['../classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a16d1877075e8648b675bfde452cea6ce',1,'pgrouting::functions::Pgr_edwardMoore::default_edge'],['../classpgrouting_1_1functions_1_1Pgr__binaryBreadthFirstSearch.html#aff95a94bde1884b9a1bd6df32e409f61',1,'pgrouting::functions::Pgr_binaryBreadthFirstSearch::default_edge']]],
+  ['deliver_5fclose_5ft_5',['deliver_close_t',['../structOrders__t.html#ab79f1e09e6539043a80af3fe65ff7201',1,'Orders_t']]],
+  ['deliver_5fnode_5fid_6',['deliver_node_id',['../structOrders__t.html#ab1634e32f29b079d897cbe469edcfa7e',1,'Orders_t']]],
+  ['deliver_5fopen_5ft_7',['deliver_open_t',['../structOrders__t.html#a9e0e205c94d45cebc2a1c8d32b3182ee',1,'Orders_t']]],
+  ['deliver_5fservice_5ft_8',['deliver_service_t',['../structOrders__t.html#adc1d0def0caff573dd58839e38cf5ee6',1,'Orders_t']]],
+  ['deliver_5fx_9',['deliver_x',['../structOrders__t.html#a8c3c0d424e1c0935fff9aa089b78d082',1,'Orders_t']]],
+  ['deliver_5fy_10',['deliver_y',['../structOrders__t.html#a999c8433c6a726f92a86dc84e7dfd7ee',1,'Orders_t']]],
+  ['demand_11',['demand',['../structOrders__t.html#a3f0f82e806d96382666637cb91ba1bb5',1,'Orders_t']]],
+  ['departuretime_12',['departureTime',['../structSchedule__rt.html#aabd27345797b5ad4c9056f4eb30b50f6',1,'Schedule_rt']]],
+  ['depth_13',['depth',['../structMST__rt.html#a1479950ce268ab5e1ae4eb7c9ee8bd12',1,'MST_rt']]],
+  ['distances_14',['distances',['../classpgrouting_1_1Pgr__bellman__ford.html#ae97f1bc66f713cb0501e1c6d2a3a0acf',1,'pgrouting::Pgr_bellman_ford::distances'],['../classpgrouting_1_1Pgr__dag.html#a0d0cc826ba341ec1744a07af9093c11a',1,'pgrouting::Pgr_dag::distances'],['../classpgrouting_1_1functions_1_1Pgr__prim.html#a84ba6e5b1fd634fca1a8986cc254f5e2',1,'pgrouting::functions::Pgr_prim::distances']]],
+  ['dnode_15',['Dnode',['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#aa87e2ed158d17a7a0d549bf529a83024',1,'pgrouting::vrp::Pgr_pickDeliver']]]
 ];

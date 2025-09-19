@@ -1,8 +1,16 @@
 <map id="mst_common.cpp" name="mst_common.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="205,5,344,32"/>
-<area shape="rect" id="node2" href="$mst__common_8h.html" title=" " alt="" coords="5,80,163,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="404,169,463,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="237,87,312,114"/>
-<area shape="rect" id="node5" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="337,87,530,114"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="555,87,755,114"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="259,5,397,31"/>
+<area shape="rect" id="Node000002" href="$mst__common_8h.html" title=" " alt="" coords="5,79,163,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="293,33,156,77,155,72,292,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="299,167,357,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="290,33,255,51,240,64,228,80,221,99,228,117,239,132,254,145,287,163,284,167,251,149,235,136,223,120,216,99,223,77,236,61,252,47,288,28"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="553,167,628,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="398,20,463,27,532,37,592,54,615,64,630,77,638,97,635,118,626,139,613,157,609,154,621,136,630,117,633,98,626,80,612,69,590,59,531,43,463,32,397,26"/>
+<area shape="rect" id="Node000005" href="$assert_8hpp.html" title="Assertions Handling." alt="" coords="237,86,419,111"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="331,31,331,72,325,72,325,31"/>
+<area shape="rect" id="Node000007" href="$alloc_8hpp.html" title=" " alt="" coords="443,86,615,111"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="358,28,489,79,487,84,356,33"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="331,112,331,153,325,153,325,112"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="501,114,371,164,369,159,499,109"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="540,110,575,154,571,158,536,113"/>
 </map>

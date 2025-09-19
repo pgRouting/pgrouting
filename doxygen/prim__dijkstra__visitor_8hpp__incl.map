@@ -1,5 +1,7 @@
 <map id="prim_dijkstra_visitor.hpp" name="prim_dijkstra_visitor.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="56,5,239,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,159,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="183,87,245,114"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="10,5,194,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,86,68,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,33,57,77,53,73,90,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="92,79,245,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="114,29,146,66,142,70,110,33"/>
 </map>

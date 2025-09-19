@@ -1,11 +1,34 @@
 <map id="articulationPoints_driver.cpp" name="articulationPoints_driver.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="354,5,490,47"/>
-<area shape="rect" id="node2" href="$articulationPoints__driver_8h.html" title=" " alt="" coords="5,95,156,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="181,109,255,136"/>
-<area shape="rect" id="node4" title=" " alt="" coords="328,288,391,315"/>
-<area shape="rect" id="node5" title=" " alt="" coords="519,288,581,315"/>
-<area shape="rect" id="node6" href="$pgr__components_8hpp.html" title=" " alt="" coords="381,109,623,136"/>
-<area shape="rect" id="node7" href="$pgr__base__graph_8hpp.html" title=" " alt="" coords="340,199,512,240"/>
-<area shape="rect" id="node8" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="609,288,803,315"/>
-<area shape="rect" id="node9" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="749,109,949,136"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="445,5,581,45"/>
+<area shape="rect" id="Node000002" href="$articulationPoints__driver_8h.html" title=" " alt="" coords="5,93,156,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="445,41,320,65,176,96,170,97,169,92,175,91,319,60,444,36"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="623,196,698,221"/>
+<area shape="poly" id="edge2_Node000001_Node000005" title=" " alt="" coords="548,43,578,65,607,92,636,138,655,182,650,184,631,140,603,95,575,69,545,48"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="359,269,421,295"/>
+<area shape="poly" id="edge3_Node000001_Node000006" title=" " alt="" coords="445,36,410,44,374,55,339,72,309,95,281,125,263,155,259,170,259,186,263,202,272,220,283,230,301,241,347,262,345,267,299,246,280,234,268,223,258,204,254,186,254,169,258,153,277,122,306,91,337,68,372,50,409,39,444,31"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="529,269,592,295"/>
+<area shape="poly" id="edge4_Node000001_Node000007" title=" " alt="" coords="534,44,550,66,563,92,572,137,575,182,568,256,563,256,569,182,567,137,558,94,546,69,529,47"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="706,343,765,368"/>
+<area shape="poly" id="edge5_Node000001_Node000008" title=" " alt="" coords="581,26,648,32,728,43,811,62,892,91,938,110,973,129,1002,154,1027,195,1034,214,1035,232,1031,248,1023,263,995,289,956,309,911,325,863,337,779,352,778,347,862,332,909,320,954,304,992,284,1018,260,1026,246,1030,231,1029,215,1022,197,997,158,970,133,935,115,890,96,810,67,727,49,648,37,581,32"/>
+<area shape="rect" id="Node000009" href="$components_8hpp.html" title=" " alt="" coords="333,108,548,133"/>
+<area shape="poly" id="edge6_Node000001_Node000009" title=" " alt="" coords="500,47,460,98,456,95,496,44"/>
+<area shape="rect" id="Node000019" href="$base__graph_8hpp.html" title=" " alt="" coords="282,196,498,221"/>
+<area shape="poly" id="edge21_Node000001_Node000019" title=" " alt="" coords="445,34,412,41,379,53,348,70,324,95,317,108,316,120,324,147,340,169,360,186,356,190,336,172,320,149,310,120,312,106,320,92,345,66,376,48,410,36,444,29"/>
+<area shape="rect" id="Node000032" href="$assert_8hpp.html" title="Assertions Handling." alt="" coords="153,269,334,295"/>
+<area shape="poly" id="edge20_Node000001_Node000032" title=" " alt="" coords="445,38,336,60,289,76,260,95,248,113,240,134,233,178,234,221,240,256,235,257,229,221,227,177,235,132,243,111,256,91,287,71,334,55,444,33"/>
+<area shape="rect" id="Node000040" href="$pgdata__getters_8hpp.html" title=" " alt="" coords="773,196,1012,221"/>
+<area shape="poly" id="edge14_Node000001_Node000040" title=" " alt="" coords="581,29,657,37,739,49,812,67,841,78,861,91,877,112,887,136,895,182,890,183,882,137,873,115,858,95,838,83,811,72,738,54,656,42,581,34"/>
+<area shape="rect" id="Node000053" href="$alloc_8hpp.html" title=" " alt="" coords="675,108,847,133"/>
+<area shape="poly" id="edge17_Node000001_Node000053" title=" " alt="" coords="564,43,718,101,717,106,562,48"/>
+<area shape="poly" id="edge7_Node000009_Node000007" title=" " alt="" coords="455,131,482,159,512,194,551,256,546,259,508,198,478,163,451,135"/>
+<area shape="poly" id="edge8_Node000009_Node000019" title=" " alt="" coords="436,135,406,185,402,182,432,132"/>
+<area shape="poly" id="edge9_Node000019_Node000006" title=" " alt="" coords="393,222,393,256,387,256,387,222"/>
+<area shape="poly" id="edge10_Node000019_Node000007" title=" " alt="" coords="418,219,521,262,519,266,416,224"/>
+<area shape="poly" id="edge11_Node000019_Node000008" title=" " alt="" coords="406,219,454,255,519,292,564,310,611,324,693,344,692,349,609,330,562,315,517,297,451,260,403,224"/>
+<area shape="poly" id="edge12_Node000019_Node000032" title=" " alt="" coords="368,224,281,266,278,261,365,219"/>
+<area shape="poly" id="edge13_Node000032_Node000008" title=" " alt="" coords="323,292,693,345,692,351,322,297"/>
+<area shape="poly" id="edge16_Node000040_Node000007" title=" " alt="" coords="840,224,606,274,605,268,839,219"/>
+<area shape="poly" id="edge15_Node000040_Node000008" title=" " alt="" coords="882,224,760,335,756,331,878,220"/>
+<area shape="poly" id="edge19_Node000053_Node000005" title=" " alt="" coords="749,136,687,188,683,184,745,131"/>
+<area shape="poly" id="edge18_Node000053_Node000008" title=" " alt="" coords="762,134,741,329,735,329,757,134"/>
 </map>

@@ -1,8 +1,0 @@
-<map id="fleet.h" name="fleet.h">
-<area shape="rect" id="node1" title=" " alt="" coords="188,5,251,32"/>
-<area shape="rect" id="node2" href="$fleet_8cpp.html" title=" " alt="" coords="5,229,84,256"/>
-<area shape="rect" id="node3" href="$pd__problem_8cpp.html" title=" " alt="" coords="257,155,384,181"/>
-<area shape="rect" id="node4" href="$pgr__pickDeliver_8cpp.html" title=" " alt="" coords="144,229,295,256"/>
-<area shape="rect" id="node5" href="$pgr__pickDeliver_8h.html" title=" " alt="" coords="47,155,181,181"/>
-<area shape="rect" id="node6" href="$solution_8h.html" title=" " alt="" coords="176,80,263,107"/>
-</map>

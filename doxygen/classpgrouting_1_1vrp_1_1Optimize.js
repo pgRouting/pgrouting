@@ -10,7 +10,7 @@ var classpgrouting_1_1vrp_1_1Optimize =
     [ "delete_empty_truck", "classpgrouting_1_1vrp_1_1Optimize.html#a4dcb408130c2ed4164b8d754d11ad44b", null ],
     [ "duration", "classpgrouting_1_1vrp_1_1Optimize.html#aa6bc3fa440ee4f3cdad17bd1f069bc43", null ],
     [ "get_kind", "classpgrouting_1_1vrp_1_1Optimize.html#a82bc3ecf220fbf390c9987f908fdad26", null ],
-    [ "get_postgres_result", "classpgrouting_1_1vrp_1_1Optimize.html#a016e772056690f0481dbbe1c1375b7b4", null ],
+    [ "get_postgres_result", "classpgrouting_1_1vrp_1_1Optimize.html#af171493a89f9fe217e092ea8f856ce1a", null ],
     [ "inter_swap", "classpgrouting_1_1vrp_1_1Optimize.html#ad1d48cf5916df017926e6d0d7b1fd987", null ],
     [ "inter_swap", "classpgrouting_1_1vrp_1_1Optimize.html#a8c70bf0623e2f035e5a17c44f65a182a", null ],
     [ "is_feasable", "classpgrouting_1_1vrp_1_1Optimize.html#ac3e8bf605c6fd5e6eceac4ddd7255bcb", null ],

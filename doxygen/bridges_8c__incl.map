@@ -1,10 +1,16 @@
 <map id="bridges.c" name="bridges.c">
-<area shape="rect" id="node1" title=" " alt="" coords="425,5,506,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,87,88,114"/>
-<area shape="rect" id="node3" href="$postgres__connection_8h.html" title=" " alt="" coords="72,169,315,196"/>
-<area shape="rect" id="node4" href="$debug__macro_8h.html" title=" " alt="" coords="163,87,360,114"/>
-<area shape="rect" id="node5" href="$e__report_8h.html" title=" " alt="" coords="384,87,547,114"/>
-<area shape="rect" id="node6" href="$time__msg_8h.html" title=" " alt="" coords="571,87,746,114"/>
-<area shape="rect" id="node7" href="$edges__input_8h.html" title=" " alt="" coords="770,87,958,114"/>
-<area shape="rect" id="node8" href="$bridges__driver_8h.html" title=" " alt="" coords="982,80,1133,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="322,5,403,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,86,88,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="322,30,107,81,96,84,94,79,106,76,321,25"/>
+<area shape="rect" id="Node000003" href="$postgres__connection_8h.html" title=" " alt="" coords="72,167,315,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="322,27,224,47,179,62,163,71,153,80,146,98,150,118,161,137,174,155,170,158,156,140,145,120,141,98,148,77,160,67,177,58,222,42,321,22"/>
+<area shape="rect" id="Node000013" href="$debug__macro_8h.html" title=" " alt="" coords="163,86,360,111"/>
+<area shape="poly" id="edge3_Node000001_Node000013" title=" " alt="" coords="349,33,289,79,286,75,346,29"/>
+<area shape="rect" id="Node000014" href="$e__report_8h.html" title=" " alt="" coords="384,86,547,111"/>
+<area shape="poly" id="edge5_Node000001_Node000014" title=" " alt="" coords="379,29,441,75,437,79,376,33"/>
+<area shape="rect" id="Node000015" href="$time__msg_8h.html" title=" " alt="" coords="571,86,746,111"/>
+<area shape="poly" id="edge6_Node000001_Node000015" title=" " alt="" coords="405,28,603,80,602,85,403,33"/>
+<area shape="rect" id="Node000018" href="$bridges__driver_8h.html" title=" " alt="" coords="770,79,921,119"/>
+<area shape="poly" id="edge7_Node000001_Node000018" title=" " alt="" coords="404,22,556,43,757,76,756,81,555,48,403,27"/>
+<area shape="poly" id="edge4_Node000013_Node000003" title=" " alt="" coords="253,113,214,158,210,155,249,110"/>
 </map>

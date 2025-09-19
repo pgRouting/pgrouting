@@ -1,4 +1,5 @@
 var turnRestrictedPath__driver_8h =
 [
-    [ "do_pgr_turnRestrictedPath", "turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11", null ]
+    [ "Path_rt", "turnRestrictedPath__driver_8h.html#a34efe122b9abd9cd32e9936dbecb97d2", null ],
+    [ "pgr_do_turnRestrictedPath", "turnRestrictedPath__driver_8h.html#a3eaf3ad0e9d603d4f88decc9c740ba7a", null ]
 ];
