@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/point_on_edge_t.hpp"
 #include "cpp_common/messages.hpp"
-#include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/path.hpp"
 
 namespace pgrouting {
 

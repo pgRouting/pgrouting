@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     bdAstar-family.rst
     pgr_bdAstar.rst
     pgr_bdAstarCost.rst

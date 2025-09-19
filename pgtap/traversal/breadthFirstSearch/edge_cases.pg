@@ -22,127 +22,139 @@ BEGIN;
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(29);
 
--- 0 edges tests
+CREATE OR REPLACE FUNCTION types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE code TEXT := 'P0001';
+BEGIN
 
-SELECT is_empty(' SELECT id, source, target, cost > 0, reverse_cost > 0  from edges where id>18 ','1');
+  IF min_version('4.0.0') THEN
+    code := 'XX000';
+  END IF;
 
--- directed graph
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '', 5)', '2');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[5])','3');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[2,5])', '4');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '', 5, 2)', '5');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[5], 2)','6');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[2,5], 2)', '7');
+  -- 0 edges tests
 
--- undirected graph
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '', 5, directed := false)', '8');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[5], directed := false)','9');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[2,5], directed := false)', '10');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '', 5, 2, directed := false)', '11');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[5], 2, directed := false)','12');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[2,5], 2, directed := false)', '13');
+  RETURN QUERY SELECT is_empty(' SELECT id, source, target, cost > 0, reverse_cost > 0  from edges where id>18 ','1');
+
+  -- directed graph
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '', 5)', '2');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[5])','3');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[2,5])', '4');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '', 5, max_depth => 2)', '5');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[5], max_depth => 2)','6');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[2,5], max_depth => 2)', '7');
+
+  -- undirected graph
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '', 5, directed := false)', '8');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[5], directed := false)','9');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[2,5], directed := false)', '10');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '', 5, max_depth => 2, directed := false)', '11');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[5], max_depth => 2, directed := false)','12');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[2,5], max_depth => 2, directed := false)', '13');
 
 
--- vertex not present in graph tests
+  -- vertex not present in graph tests
 
--- directed graph
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'', -10)', '14');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[-10])','15');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[20,-10])', '16');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'', -10, 2)', '17');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[-10], 2)','18');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[20,-10], 2)', '19');
+  -- directed graph
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'', -10)', '14');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[-10])','15');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[20,-10])', '16');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'', -10, max_depth => 2)', '17');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[-10], max_depth => 2)','18');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[20,-10], max_depth => 2)', '19');
 
--- undirected graph
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'', -10, directed := false)', '20');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[-10], directed := false)','21');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[20,-10], directed := false)', '22');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'', -10, 2, directed := false)', '23');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[-10], 2, directed := false)','24');
-SELECT is_empty('
-SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[20,-10], 2, directed := false)', '25');
+  -- undirected graph
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'', -10, directed := false)', '20');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[-10], directed := false)','21');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[20,-10], directed := false)', '22');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'', -10, max_depth => 2, directed := false)', '23');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[-10], max_depth => 2, directed := false)','24');
+  RETURN QUERY SELECT is_empty('
+    SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[20,-10], max_depth => 2, directed := false)', '25');
 
--- negative depth tests
+  -- negative depth tests
 
-PREPARE breadthFirstSearch26 AS
-SELECT *
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch26 AS
+  SELECT *
+  FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
     FROM edges',
-    4, -3
-);
+    4, max_depth => -3
+  );
 
-SELECT throws_ok('breadthFirstSearch26',
-    'P0001',
+  RETURN QUERY SELECT throws_ok('breadthFirstSearch26',
+    code,
     'Negative value found on ''max_depth''',
     '26: Negative max_depth throws');
 
 
 
-PREPARE breadthFirstSearch27 AS
-SELECT *
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch27 AS
+  SELECT *
+  FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
     FROM edges',
-    ARRAY[4, 10], -3
-);
+    ARRAY[4, 10], max_depth => -3
+  );
 
-SELECT throws_ok('breadthFirstSearch27',
-    'P0001',
+  RETURN QUERY SELECT throws_ok('breadthFirstSearch27',
+    code,
     'Negative value found on ''max_depth''',
     '27: Negative max_depth throws');
 
-PREPARE breadthFirstSearch28 AS
-SELECT *
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch28 AS
+  SELECT *
+  FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
     FROM edges',
-    4, -3, directed := false
-);
+    4, max_depth => -3, directed => false
+  );
 
-SELECT throws_ok('breadthFirstSearch28',
-    'P0001',
+  RETURN QUERY SELECT throws_ok('breadthFirstSearch28',
+    code,
     'Negative value found on ''max_depth''',
     '28: Negative max_depth throws');
 
-
-
-PREPARE breadthFirstSearch29 AS
-SELECT *
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch29 AS
+  SELECT *
+  FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
     FROM edges',
-    ARRAY[4, 10], -3, directed := false
-);
+    ARRAY[4, 10], max_depth => -3, directed => false
+  );
 
-SELECT throws_ok('breadthFirstSearch29',
-    'P0001',
+  RETURN QUERY SELECT throws_ok('breadthFirstSearch29',
+    code,
     'Negative value found on ''max_depth''',
     '29: Negative max_depth throws');
 
+END;
+$BODY$
+LANGUAGE plpgsql;
 
+SELECT types_check();
 SELECT * FROM finish();
 ROLLBACK;

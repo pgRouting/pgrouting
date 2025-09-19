@@ -32,79 +32,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <string>
 
-
 #include "c_types/routes_t.h"
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/alloc.hpp"
+#include "cpp_common/to_postgres.hpp"
 #include "cpp_common/assert.hpp"
 #include "dijkstra/dijkstraVia.hpp"
 #include "withPoints/withPoints.hpp"
 
-namespace {
-
-void
-get_path(
-        int route_id,
-        int path_id,
-        const pgrouting::Path &path,
-        Routes_t **postgres_data,
-        double &route_cost,
-        size_t &sequence) {
-    size_t i = 0;
-    for (const auto e : path) {
-        (*postgres_data)[sequence] = {
-            route_id,
-            path_id,
-            static_cast<int>(i),
-            path.start_id(),
-            path.end_id(),
-            e.node,
-            e.edge,
-            e.cost,
-            e.agg_cost,
-            route_cost};
-        route_cost += path[i].cost;
-        ++i;
-        ++sequence;
-    }
-}
-
-
-size_t
-get_route(
-        Routes_t **ret_path,
-        std::deque<pgrouting::Path> &paths) {
-    size_t sequence = 0;
-    int path_id = 1;
-    int route_id = 1;
-    double route_cost = 0;  // routes_agg_cost
-    for (auto &p : paths) {
-        p.recalculate_agg_cost();
-    }
-    for (const auto &path : paths) {
-        if (path.size() > 0)
-            get_path(route_id, path_id, path, ret_path, route_cost, sequence);
-        ++path_id;
-    }
-    return sequence;
-}
-
-}  // namespace
 
 void
 pgr_do_withPointsVia(
         const char *edges_sql,
         const char *points_sql,
         const char *edges_of_points_sql,
-        ArrayType* starts,
+        ArrayType* viaArr,
 
         bool directed,
         char driving_side,
         bool details,
         bool strict,
         bool U_turn_on_edge,
-
-        Routes_t** return_tuples, size_t *return_count,
+        Routes_t** return_tuples, size_t* return_count,
 
         char** log_msg,
         char** notice_msg,
@@ -114,6 +62,9 @@ pgr_do_withPointsVia(
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
     using pgrouting::pgget::get_intArray;
+    using pgrouting::pgget::get_edges;
+    using pgrouting::pgget::get_points;
+    using pgrouting::to_postgres::get_viaRoute;
 
     std::ostringstream log;
     std::ostringstream notice;
@@ -127,31 +78,29 @@ pgr_do_withPointsVia(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        auto via_vertices = get_intArray(starts, false);
-
-
+        auto via = get_intArray(viaArr, false);
 
         hint = points_sql;
-        auto points = pgrouting::pgget::get_points(std::string(points_sql));
+        auto points = get_points(std::string(points_sql));
 
         hint = edges_of_points_sql;
-        auto edges_of_points = pgrouting::pgget::get_edges(std::string(edges_of_points_sql), true, false);
+        auto edges_of_points = get_edges(std::string(edges_of_points_sql), true, false);
 
         hint = edges_sql;
-        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        auto edges = get_edges(std::string(edges_sql), true, false);
 
         if (edges.size() + edges_of_points.size() == 0) {
             *notice_msg = to_pg_msg("No edges found");
-            *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log);
+            *log_msg = to_pg_msg(edges_sql);
             return;
         }
         hint = nullptr;
 
-
         /*
          * processing points
          */
-        pgrouting::Pg_points_graph pg_graph(points, edges_of_points,
+        pgrouting::Pg_points_graph pg_graph(
+                points, edges_of_points,
                 true,
                 driving_side,
                 directed);
@@ -164,28 +113,25 @@ pgr_do_withPointsVia(
             return;
         }
 
-        auto vertices(pgrouting::extract_vertices(edges));
-        vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
-
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(vertices);
+            pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
-            pgrouting::pgr_dijkstraVia(
+            pgrouting::dijkstraVia(
                     digraph,
-                    via_vertices,
+                    via,
                     paths,
                     strict,
                     U_turn_on_edge,
                     log);
         } else {
-            pgrouting::UndirectedGraph undigraph(vertices);
+            pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
-            pgrouting::pgr_dijkstraVia(
+            pgrouting::dijkstraVia(
                     undigraph,
-                    via_vertices,
+                    via,
                     paths,
                     strict,
                     U_turn_on_edge,
@@ -196,20 +142,12 @@ pgr_do_withPointsVia(
             for (auto &path : paths) path = pg_graph.eliminate_details(path);
         }
 
-        size_t count(0);
-        count = count_tuples(paths);
+        (*return_count) = get_viaRoute(paths, return_tuples);
 
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice << "No paths found";
-            *log_msg = to_pg_msg(notice);
+        if ((*return_count) == 0) {
+            *log_msg = to_pg_msg("No paths found");
             return;
         }
-
-        (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        (*return_count) = (get_route(return_tuples, paths));
-        (*return_tuples)[count - 1].edge = -2;
 
         *log_msg = to_pg_msg(log);
         *notice_msg = to_pg_msg(notice);

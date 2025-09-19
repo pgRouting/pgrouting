@@ -11,7 +11,7 @@ SET
 /* -- q1 */
 SELECT * FROM pgr_TSPeuclidean(
   $$
-  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices
+  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices ORDER BY id
   $$);
  seq | node |      cost      |   agg_cost
 -----+------+----------------+---------------
@@ -37,7 +37,7 @@ SELECT * FROM pgr_TSPeuclidean(
 
 /* -- q2 */
 SELECT *
-FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
+FROM pgr_TSPeuclidean($$SELECT * FROM wi29 ORDER BY id$$)
 WHERE seq = 30;
  seq | node |     cost      |   agg_cost
 -----+------+---------------+---------------

@@ -37,8 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "drivers/dagShortestPath/dagShortestPath_driver.h"
 
-PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_dagshortestpath);
+PGDLLEXPORT Datum _pgr_dagshortestpath_v4(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_dagshortestpath_v4);
 
 
 static
@@ -48,8 +48,8 @@ process(
         char* combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
-        bool directed,
         bool only_cost,
+        bool normal,
         Path_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
@@ -65,8 +65,9 @@ process(
             combinations_sql,
             starts, ends,
 
-            directed,
             only_cost,
+            normal,
+
             result_tuples,
             result_count,
             &log_msg,
@@ -82,9 +83,9 @@ process(
     pgr_SPI_finish();
 }
 
-PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_dagshortestpath_v4(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    TupleDesc           tuple_desc;
+    TupleDesc            tuple_desc;
 
     Path_rt  *result_tuples = NULL;
     size_t result_count = 0;
@@ -94,8 +95,6 @@ PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
-        PGR_DBG("Calling process");
         if (PG_NARGS() == 5) {
             /*
              * many to many
@@ -110,33 +109,27 @@ PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        } else if (PG_NARGS() == 4) {
+        } else if (PG_NARGS() == 3) {
             /*
              * combinations
              */
             process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
-                NULL,
-                NULL,
+                NULL, NULL,
                 PG_GETARG_BOOL(2),
-                PG_GETARG_BOOL(3),
+                true,
                 &result_tuples,
                 &result_count);
         }
 
-
-
-
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-                     errmsg("function returning record called in context "
-                         "that cannot accept type record")));
+                     errmsg("function returning record called in context that cannot accept type record")));
         }
 
         funcctx->tuple_desc = tuple_desc;
@@ -152,33 +145,34 @@ PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
+        size_t       call_cntr = funcctx->call_cntr;
 
-
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(bool));
-
+        size_t numb = 8;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 6; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
-        int64_t seq = funcctx->call_cntr == 0?  1 : result_tuples[funcctx->call_cntr - 1].start_id;
+        int64_t seq = call_cntr == 0?  1 : result_tuples[call_cntr - 1].start_id;
 
-        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int32GetDatum((int32_t)seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
 
-        result_tuples[funcctx->call_cntr].start_id = result_tuples[funcctx->call_cntr].edge < 0? 1 : seq + 1;
+        result_tuples[call_cntr].start_id = result_tuples[call_cntr].edge < 0? 1 : seq + 1;
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        PGR_DBG("Clean up code");
         SRF_RETURN_DONE(funcctx);
     }
 }

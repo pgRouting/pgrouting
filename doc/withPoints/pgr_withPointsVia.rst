@@ -15,21 +15,30 @@
 
 |
 
-``pgr_withPointsVia`` - Proposed
+``pgr_withPointsVia``
 ===============================================================================
 
 ``pgr_withPointsVia`` - Route that goes through a list of vertices and/or
 points.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
 
-* Version 3.4.0
+.. rubric:: Version 4.0.0
 
-  * New proposed function.
+* Function promoted to official.
+* **Driving side** parameter is positional unnamed and compulsory.
+
+  * Valid values depend on kind of graph
+
+.. Breaking change
+
+* Breaking change, signatures no longer available:
+
+  * pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
+
+.. rubric:: Version 3.4.0
+
+* New proposed function.
 
 Description
 -------------------------------------------------------------------------------
@@ -57,7 +66,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: withPointsVia ; One Via - Proposed on v3.4
+    single: withPointsVia ; One Via
 
 One Via
 ...............................................................................
@@ -65,14 +74,14 @@ One Via
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, [**options**])
-   | **options:** ``[directed, strict, U_turn_on_edge]``
+   | pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, [**driving side**] [**options**])
+   | **options:** ``[directed, strict, U_turn_on_edge, details]``
 
    | Returns set of |via-result|
    | OR EMPTY SET
 
 :Example: Find the route that visits the vertices :math:`\{ -6, 15, -1\}` in
-          that order on a **directed** graph.
+          that order with right driving side in directed graph..
 
 .. literalinclude:: withPointsVia.queries
     :start-after: -- q0
@@ -81,9 +90,38 @@ One Via
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: via-category.rst
-    :start-after: via_withPoints_parameters_start
-    :end-before: via_withPoints_parameters_end
+.. via_withPoints_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     - SQL query as described.
+   * - `Points SQL`_
+     - ``TEXT``
+     - SQL query as described.
+   * - **via vertices**
+     - ``ARRAY`` [ **ANY-INTEGER** ]
+     - Array of ordered vertices identifiers that are going to be visited.
+
+       * When positive it is considered a vertex identifier
+       * When negative it is considered a point identifier
+
+.. include:: withPoints-category.rst
+    :start-after: driving_side_start
+    :end-before: driving_side_end
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+
+.. via_withPoints_parameters_end
 
 Optional parameters
 ...............................................................................
@@ -102,7 +140,7 @@ Via optional parameters
 With points optional parameters
 ...............................................................................
 
-.. include:: withPoints-family.rst
+.. include:: withPoints-category.rst
    :start-after: withPoints_optionals_start
    :end-before: withPoints_optionals_end
 

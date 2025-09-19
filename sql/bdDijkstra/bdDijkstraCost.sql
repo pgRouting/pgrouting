@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- ONE TO ONE
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdDijkstraCost(
     TEXT,   -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -47,13 +47,12 @@ $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, true) AS a;
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 -- ONE TO MANY
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdDijkstraCost(
     TEXT,     -- edges_sql (required)
     BIGINT,   -- from_vid (required)
@@ -69,13 +68,12 @@ $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, true) as a;
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 -- MANY TO ONE
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdDijkstraCost(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -91,13 +89,12 @@ $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, true) as a;
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 -- MANY TO MANY
---v2.6
+--v3.0
 CREATE FUNCTION pgr_bdDijkstraCost(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -114,8 +111,7 @@ $BODY$
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, true) as a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 -- COMBINATIONS
@@ -135,11 +131,9 @@ $BODY$
     FROM _pgr_bdDijkstra(_pgr_get_statement($1), _pgr_get_statement($2), directed, true) as a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_bdDijkstraCost(One to One)

@@ -74,7 +74,7 @@ SELECT agg_cost FROM pgr_dijkstraCost(
   /* The inner query */
   'WITH
   cul_de_sac AS (
-    SELECT contracted_vertices || id as v
+    SELECT contracted_vertices || id::INTEGER as v
     FROM vertices WHERE ' || $1 ||' = ANY(contracted_vertices)
     OR ' || $2 ||' = ANY(contracted_vertices)),
   linears_to_expand AS (

@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "yen/ksp.hpp"
 #include "cpp_common/assert.hpp"
-#include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/path.hpp"
 #include "cpp_common/compPaths.hpp"
 #include "cpp_common/messages.hpp"
 #include "cpp_common/rule.hpp"
@@ -239,7 +239,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
 
      /*! sets an inf value on agg_cost on the vertex/edge where the restriction begins
       *
-      * @param[in] paths that is being analized
+      * @param[in] paths that is being analyzed
       */
      std::deque<Path> inf_cost_on_restriction(std::deque<Path> &paths) {
          if (paths.empty()) return paths;

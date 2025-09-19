@@ -29,18 +29,17 @@ CREATE OR REPLACE FUNCTION test_vertex_points() RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF NOT min_version('3.6.0') THEN
-    RETURN QUERY SELECT skip(1, 'Signature added on 3.6.0');
-    RETURN;
-  END IF;
-
+    IF NOT min_version('3.6.0') THEN
+      RETURN QUERY SELECT skip(1, 'pgr_withPointsKSP testing only valid signatures on 4.0.0');
+      RETURN;
+    END IF;
 
 PREPARE dijkstra1(BIGINT, BIGINT) AS
 SELECT agg_cost::TEXT FROM pgr_KSP(
   $$SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
   $1, $2, 3, true) WHERE edge < 0;
 
--- its a straigh line and one extreme are reachable
+-- its a straight line and one extreme are reachable
 RETURN QUERY SELECT results_eq($$dijkstra1(5,9)$$, ARRAY[4]::TEXT[]);
 RETURN QUERY SELECT results_eq($$dijkstra1(9,5)$$, ARRAY[4]::TEXT[]);
 

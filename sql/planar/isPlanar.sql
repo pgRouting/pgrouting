@@ -26,22 +26,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-------------------
--- pgr_isPlanar
-------------------
-
 --v3.2
 CREATE FUNCTION pgr_isPlanar(
-    TEXT   -- edges_sql (required)
-        )
+  TEXT   -- edges_sql (required)
+)
 
 RETURNS BOOLEAN AS
 $BODY$
-    SELECT _pgr_isPlanar(_pgr_get_statement($1));
+  SELECT _pgr_isPlanar(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_isPlanar(TEXT)
 IS 'pgr_isPlanar

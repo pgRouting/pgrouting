@@ -15,20 +15,29 @@
 
 |
 
-``pgr_trspVia`` - Proposed
+``pgr_trspVia``
 ===============================================================================
 
 ``pgr_trspVia`` Route that goes through a list of vertices with restrictions.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
 
-* Version 3.4.0
+.. rubric:: Version 4.0.0
 
-  * New proposed function.
+* Function promoted to official.
+
+.. Breaking change
+
+* Breaking change, signatures no longer available:
+
+  * pgr_trspviavertices(text,anyarray,boolean,boolean,text)
+
+.. rubric:: Version 3.4.0
+
+* New proposed function.
+* Deprecated signatures
+
+  * pgr_trspviavertices(text,anyarray,boolean,boolean,text)
 
 Description
 -------------------------------------------------------------------------------
@@ -53,7 +62,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: trspVia ; One Via - Proposed on v3.4
+    single: trspVia ; One Via
 
 One Via
 ...............................................................................

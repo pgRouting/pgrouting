@@ -27,9 +27,13 @@ restrictions
 
 .. rubric:: Availability
 
-* Version 3.0.0
+.. rubric:: Version 4.0.0
 
-  * New experimental function.
+* Output columns standardized to |nksp-result|
+
+.. rubric:: Version 3.0.0
+
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -48,7 +52,7 @@ Signatures
    | pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, **K**, [**options**])
    | **options:** ``[directed, heap_paths, stop_on_first, strict]``
 
-   | Returns set of |ksp-result|
+   | Returns set of |nksp-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`3` to vertex :math:`8` on a directed graph

@@ -84,6 +84,8 @@ The main Characteristics are:
 See Also
 -------------------------------------------------------------------------------
 
+* `Boost  <https://www.boost.org/libs/graph/doc>`__
+
 .. rubric:: Indices and tables
 
 * :ref:`genindex`

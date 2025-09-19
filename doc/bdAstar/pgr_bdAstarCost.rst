@@ -21,24 +21,28 @@ A* algorithm.
 
 .. rubric:: Availability
 
-* Version 3.2.0
+.. rubric:: Version 4.0.0
 
-  * New proposed signature:
+* Combinations signature promoted to official.
 
-    * pgr_bdAstarCost(Combinations)
+.. rubric:: Version 3.2.0
 
-* Version 3.0.0
+* New proposed signature:
 
-  * Function promoted to official.
+  * pgr_bdAstarCost(Combinations)
 
-* Version 2.4.0
+.. rubric:: Version 3.0.0
 
-  * New proposed function.
+* Function promoted to official.
+
+.. rubric:: Version 2.4.0
+
+* New proposed function.
 
 Description
 -------------------------------------------------------------------------------
 
-The ``pgr_bdAstarCost`` function summarizes of the cost of the shortest path
+The ``pgr_bdAstarCost`` function summarizes the cost of the shortest path
 using the bidirectional A* algorithm.
 
 **The main characteristics are:**
@@ -171,7 +175,7 @@ Many to Many
     :end-before: -- q51
 
 .. index::
-    single: bdAstarCost ; Combinations - Proposed on v3.2
+    single: bdAstarCost ; Combinations
 
 Combinations
 ...............................................................................

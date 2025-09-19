@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     TRSP-family.rst
     pgr_trsp.rst
     pgr_trspVia.rst

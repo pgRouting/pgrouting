@@ -52,26 +52,17 @@ process(
         char *driving_side,
         bool details,
         bool equicost,
-        bool is_new,
 
         MST_rt **result_tuples,
         size_t *result_count) {
     char d_side = estimate_drivingSide(driving_side[0]);
-    if (is_new) {
-        if (d_side == ' ') {
-            pgr_throw_error("Invalid value of 'driving side'", "Valid value are 'r', 'l', 'b'");
-            return;
-        } else if (directed && !(d_side == 'r' || d_side == 'l')) {
-            pgr_throw_error("Invalid value of 'driving side'", "Valid values are for directed graph are: 'r', 'l'");
-            return;
-        } else if (!directed && !(d_side == 'b')) {
-            pgr_throw_error("Invalid value of 'driving side'", "Valid values are for undirected graph is: 'b'");
-            return;
-        }
-    } else {
-        /* TODO remove on v4 */
-        d_side = (char)tolower(driving_side[0]);
-        if (!((d_side == 'r') || (d_side == 'l'))) d_side = 'b';
+    if (d_side == ' ') {
+        pgr_throw_error("Invalid value of 'driving side'", "Valid value are 'r', 'l', 'b'");
+        return;
+    }
+
+    if (distance <= 0) {
+        pgr_throw_error("Invalid value of 'distance'", "Valid values are greater than 0");
     }
 
     pgr_SPI_connect();
@@ -141,17 +132,15 @@ _pgr_withpointsddv4(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
 
-                true,
                 &result_tuples, &result_count);
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-                != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-                     errmsg("function returning record called in context "
-                         "that cannot accept type record")));
+                     errmsg("function returning record called in context that cannot accept type record")));
+        }
 
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
@@ -198,7 +187,13 @@ _pgr_withpointsddv4(PG_FUNCTION_ARGS) {
 }
 
 
-/* TODO remove old code in v4 */
+/* Deprecated code starts here
+ * This code is used on v3.5 and under
+ *
+ * TODO(v4.2) define SHOWMSG
+ * TODO(v4.3) change to WARNING
+ * TODO(v5) Move to legacy
+ */
 PGDLLEXPORT Datum _pgr_withpointsdd(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_withpointsdd);
 
@@ -215,6 +210,14 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
+#ifdef SHOWMSG
+        ereport(NOTICE, (
+                    errcode(ERRCODE_WARNING_DEPRECATED_FEATURE),
+                    errmsg("A stored procedure is using deprecated C internal function '%s'", __func__),
+                    errdetail("Library function '%s' was deprecated in pgRouting %s", __func__, "3.6.0"),
+                    errhint("Consider upgrade pgRouting")));
+#endif
+
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
@@ -226,18 +229,17 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
 
-                false,
                 &result_tuples, &result_count);
 
         funcctx->max_calls = result_count;
 
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-                != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
                          "that cannot accept type record")));
+        }
 
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);

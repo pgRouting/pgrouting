@@ -73,7 +73,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: degree ; Edges
+    single: degree ; Edges and Vertices
 
 Edges
 ...............................................................................
@@ -91,9 +91,6 @@ Edges
 .. literalinclude:: degree.queries
    :start-after: -- q1
    :end-before: -- q2
-
-.. index::
-    single: degree ; Edges and Vertices
 
 Edges and Vertices
 ...............................................................................
@@ -118,6 +115,10 @@ Calculate the degree of the nodes:
 .. literalinclude:: degree.queries
    :start-after: -- q2
    :end-before: -- q3
+
+.. index::
+    single: degree ; Edges
+
 
 Parameters
 -------------------------------------------------------------------------------
@@ -377,7 +378,7 @@ If there is a vertices table already built using the ``pgr_extractVertices``
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`topology-functions`
+* :doc:`utilities-family`
 * :doc:`pgr_extractVertices`
 
 .. rubric:: Indices and tables

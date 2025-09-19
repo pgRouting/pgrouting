@@ -25,7 +25,7 @@ SELECT plan(18);
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 
-create or REPLACE FUNCTION foo(cant INTEGER default 18 )
+create or REPLACE FUNCTION foo(lim INTEGER default 18 )
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -33,10 +33,10 @@ sql_OneToOne TEXT;
 sql_Many TEXT;
 BEGIN
 
-    FOR i IN 1.. cant LOOP
+    FOR i IN 1.. lim LOOP
         sql_OneToOne := '';
         sql_Many := '';
-        FOR j IN 1..cant LOOP
+        FOR j IN 1..lim LOOP
 
             IF j > 1 THEN
                 sql_OneToOne := sql_OneToOne

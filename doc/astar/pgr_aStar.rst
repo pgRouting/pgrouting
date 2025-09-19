@@ -20,41 +20,45 @@
 
 .. rubric:: Availability
 
-* Version 3.6.0
+.. rubric:: Version 4.0.0
 
-  * Standardizing output columns to |short-generic-result|
+* Combinations signature promoted to official.
 
-    * pgr_aStar(One to One) added ``start_vid`` and ``end_vid`` columns.
-    * pgr_aStar(One to Many) added ``end_vid`` column.
-    * pgr_aStar(Many to One) added ``start_vid`` column.
+.. rubric:: Version 3.6.0
 
-* Version 3.2.0
+* Standardizing output columns to |short-generic-result|
 
-  * New proposed signature:
+  * pgr_aStar(One to One) added ``start_vid`` and ``end_vid`` columns.
+  * pgr_aStar(One to Many) added ``end_vid`` column.
+  * pgr_aStar(Many to One) added ``start_vid`` column.
 
-    * pgr_aStar(Combinations)
+.. rubric:: Version 3.2.0
 
-* Version 3.0.0
+* New proposed signature:
 
-  * Function promoted to official.
+  * pgr_aStar(Combinations)
 
-* Version 2.4.0
+.. rubric:: Version 3.0.0
 
-  * New proposed signatures:
+* Function promoted to official.
 
-    * pgr_aStar(One to Many)
-    * pgr_aStar(Many to One)
-    * pgr_aStar(Many to Many)
+.. rubric:: Version 2.4.0
 
-* Version 2.3.0
+* New proposed signatures:
 
-  * Signature change on pgr_aStar(One to One)
+  * pgr_aStar(One to Many)
+  * pgr_aStar(Many to One)
+  * pgr_aStar(Many to Many)
 
-    * Old signature no longer supported
+.. rubric:: Version 2.3.0
 
-* Version 2.0.0
+* Signature change on pgr_aStar(One to One)
 
-  * New official function.
+  * Old signature no longer supported
+
+.. rubric:: Version 2.0.0
+
+* New official function.
 
 Description
 -------------------------------------------------------------------------------
@@ -184,7 +188,7 @@ Many to Many
    :end-before: -- q51
 
 .. index::
-    single: aStar ; Combinations - Proposed on v3.2
+    single: aStar ; Combinations
 
 Combinations
 ...............................................................................
@@ -255,8 +259,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_short_start
-    :end-before: return_path_short_end
+    :start-after: return_path_complete_start
+    :end-before: return_path_complete_end
 
 Additional Examples
 -------------------------------------------------------------------------------

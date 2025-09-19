@@ -51,14 +51,11 @@ FROM _pgr_trspVia(
   $3 , $4, $5, $6);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_trspVia(TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_trspVia
-- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: cost, path

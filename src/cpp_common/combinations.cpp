@@ -31,41 +31,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include "cpp_common/combinations.hpp"
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/path.hpp"
 
 
 namespace pgrouting {
 namespace utilities {
 
-#if 1
-std::map<int64_t , std::set<int64_t>>
-get_combinations(const II_t_rt *combinations, size_t total) {
-    std::map<int64_t, std::set<int64_t>> result;
-
-    /* TODO(vicky) maybe use std::for_each */
-    for (size_t i = 0; i < total; i++) {
-        auto row = combinations[i];
-        result[row.d1.source].insert(row.d2.target);
-    }
-    return result;
-}
-
-std::map<int64_t , std::set<int64_t>>
-get_combinations(
-        int64_t  *start_arr,
-        size_t size_start_arr,
-        int64_t  *end_arr,
-        size_t size_end_arr) {
-    std::map<int64_t, std::set<int64_t>> result;
-
-    for (size_t i = 0; i < size_start_arr; ++i) {
-        for (size_t j = 0; j < size_end_arr; ++j) {
-            result[start_arr[i]].insert(end_arr[j]);
-        }
-    }
-    return result;
-}
-#endif
 
 std::map<int64_t, std::set<int64_t>>
 get_combinations(
@@ -86,7 +57,7 @@ get_combinations(
             auto ptr = std::find(edgesList.begin(), edgesList.end(), r.precedences().front());
             if (ptr == edgesList.end()) continue;
             /*
-             * And edge on the begining of a rule list was found
+             * And edge on the beginning of a rule list was found
              * Checking if the complete rule applies
              */
 
@@ -152,6 +123,53 @@ get_combinations(
     /* queries are stored in vectors */
     auto combinations = combinations_sql?
         pgrouting::pgget::get_combinations(std::string(combinations_sql)) : std::vector<II_t_rt>();
+
+    /* data comes from a combinations */
+    for (const auto &row : combinations) {
+        result[row.d1.source].insert(row.d2.target);
+    }
+
+    /* data comes from many to many */
+    for (const auto &s : starts) {
+        result[s] = ends;
+    }
+    return result;
+}
+
+/** @brief gets all the departures and destinations
+ * @param[in] combinations_sql from the @b combinations signatures
+ * @param[in] startsArr PostgreSQL array with the departures
+ * @param[in] endsArr PostgreSQL array with the destinations
+ * @param[in] normal the graph is reversed so reverse starts & ends
+ * @param[in] is_matrix set to @b true when data comes from costMatrix
+ * @returns[out] map: for each departure a set of destinations
+ *
+ * When: combinations_sql comes from a combinations signature
+ * When: startsArr && endsArr comes from a Cost signature
+ * When: startsArr && !endsArr comes from a CostMatrix signature
+ *
+ * The resulting std::map can be empty
+ */
+std::map<int64_t , std::set<int64_t>>
+get_combinations(
+        const std::string &combinations_sql,
+        ArrayType* startsArr, ArrayType* endsArr, bool normal, bool &is_matrix) {
+    using pgrouting::pgget::get_intSet;
+    using pgrouting::pgget::get_combinations;
+    std::map<int64_t, std::set<int64_t>> result;
+
+    auto starts = normal? get_intSet(startsArr) : get_intSet(endsArr);
+    auto ends = endsArr? (normal? get_intSet(endsArr) : get_intSet(startsArr)) : std::set<int64_t>();
+
+    /* TODO Read query storing like std::map<int64_t , std::set<int64_t>> */
+    /* queries are stored in vectors */
+    auto combinations = !combinations_sql.empty()? get_combinations(combinations_sql) : std::vector<II_t_rt>();
+
+    /* data comes from CostMatrix */
+    if (combinations.empty() && !starts.empty() && ends.empty()) {
+        is_matrix = true;
+        ends = starts;
+    }
 
     /* data comes from a combinations */
     for (const auto &row : combinations) {

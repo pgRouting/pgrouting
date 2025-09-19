@@ -45,34 +45,8 @@ CREATE FUNCTION _pgr_primv4(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
+LANGUAGE C VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 COMMENT ON FUNCTION _pgr_primv4(TEXT, ANYARRAY, TEXT, BIGINT, FLOAT)
 IS 'pgRouting internal function';
-
---v3.0
-CREATE FUNCTION _pgr_prim(
-    TEXT,             -- Edge sql
-    ANYARRAY,         -- tree root for traversal
-    order_by TEXT,
-    max_depth BIGINT,
-    distance FLOAT,
-
-    OUT seq BIGINT,
-    OUT depth BIGINT,
-    OUT start_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
-
-
--- COMMENTS
-
-
-COMMENT ON FUNCTION _pgr_prim(TEXT, ANYARRAY, TEXT, BIGINT, FLOAT)
-IS 'pgRouting internal function deprecated on v3.7.0';
-

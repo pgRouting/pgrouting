@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 -----------------------------------------------------------------------
--- Core function for vrp with sigle depot computation
+-- Core function for vrp with single depot computation
 -- See README for description
 -----------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------
 
 
---v2.6
+--v3.0
 CREATE FUNCTION pgr_vrpOneDepot(
 	text,  -- order_sql
 	text, -- vehicle_sql
@@ -53,11 +53,9 @@ $BODY$
        $4);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 1000
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
--- COMMENTS
 
 
 COMMENT ON FUNCTION pgr_vrpOneDepot(TEXT, TEXT, TEXT, INTEGER)

@@ -18,52 +18,6 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE;
 
-CREATE OR REPLACE FUNCTION spanntree_bfs_types_check(fn TEXT)
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-  RETURN QUERY SELECT has_function(fn);
-
-  RETURN QUERY SELECT has_function(fn, ARRAY['text','bigint','bigint']);
-  RETURN QUERY SELECT has_function(fn, ARRAY['text','anyarray','bigint']);
-  RETURN QUERY SELECT function_returns(fn, ARRAY['text','bigint','bigint'],  'setof record');
-  RETURN QUERY SELECT function_returns(fn, ARRAY['text','anyarray','bigint'],  'setof record');
-
-  IF NOT min_version('3.7.0') THEN
-
-  RETURN QUERY SELECT function_args_eq(fn,
-    $$VALUES
-    ('{"","","max_depth","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
-    $$
-  );
-
-  RETURN QUERY SELECT function_types_eq(fn,
-    $$VALUES
-    ('{text,int8,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-    ('{text,anyarray,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[])
-    $$
-  );
-
-  ELSE
-
-  RETURN QUERY SELECT function_args_eq(fn,
-    $$VALUES
-    ('{"","","max_depth","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[])
-    $$
-  );
-
-  RETURN QUERY SELECT function_types_eq(fn,
-    $$VALUES
-    ('{text,int8,int8,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
-    ('{text,anyarray,int8,int8,int8,int8,int8,int8,int8,float8,float8}'::TEXT[])
-    $$
-  );
-
-  END IF;
-END;
-$BODY$
-LANGUAGE plpgsql VOLATILE;
-
 
 CREATE OR REPLACE FUNCTION spanntree_dd_types_check(fn TEXT)
 RETURNS SETOF TEXT AS

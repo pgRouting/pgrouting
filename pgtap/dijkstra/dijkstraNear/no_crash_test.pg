@@ -20,6 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(126) END;
+SET client_min_messages TO WARNING;
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 
 

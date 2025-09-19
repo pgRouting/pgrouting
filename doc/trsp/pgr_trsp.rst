@@ -15,44 +15,51 @@
 
 |
 
-``pgr_trsp`` - Proposed
+``pgr_trsp``
 ===============================================================================
 
 ``pgr_trsp`` - routing vertices with restrictions.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
 
-* Version 3.4.0
+.. rubric:: Version 4.0.0
 
-  * New proposed signatures:
+* Function promoted to official.
 
-    * pgr_trsp(One to One)
-    * pgr_trsp(One to Many)
-    * pgr_trsp(Many to One)
-    * pgr_trsp(Many to Many)
-    * pgr_trsp(Combinations)
+.. Breaking change
 
-  * Deprecated signatures
+* Breaking change, signatures no longer available:
 
-    * pgr_trsp(text,integer,integer,boolean,boolean,text)
-    * pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)
-    * pgr_trspViaVertices(text,anyarray,boolean,boolean,text)
-    * pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
+  * pgr_trsp(text,integer,integer,boolean,boolean,text)
+  * pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
 
-* Version 2.1.0
+.. rubric:: Version 3.4.0
 
-  * New prototypes
+* New proposed signatures:
 
-    * pgr_trspViaVertices
-    * pgr_trspViaEdges
+  * pgr_trsp(One to One)
+  * pgr_trsp(One to Many)
+  * pgr_trsp(Many to One)
+  * pgr_trsp(Many to Many)
+  * pgr_trsp(Combinations)
 
-* Version 2.0.0
+* Deprecated signatures
 
-  * Official function.
+  * pgr_trsp(text,integer,integer,boolean,boolean,text)
+  * pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+  * pgr_trspViaVertices(text,anyarray,boolean,boolean,text)
+  * pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
+
+.. rubric:: Version 2.1.0
+
+* New prototypes
+
+  * pgr_trspViaVertices
+  * pgr_trspViaEdges
+
+.. rubric:: Version 2.0.0
+
+* Official function.
 
 Description
 -------------------------------------------------------------------------------
@@ -92,7 +99,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: trsp ; One to One -- Proposed on v3.4
+    single: trsp ; One to One
 
 One to One
 ...............................................................................
@@ -112,7 +119,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: trsp ; One to Many -- Proposed on v3.4
+    single: trsp ; One to Many
 
 One to Many
 ...............................................................................
@@ -133,7 +140,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: trsp ; Many to One -- Proposed on v3.4
+    single: trsp ; Many to One
 
 Many to One
 ...............................................................................
@@ -154,7 +161,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: trsp ; Many to Many -- Proposed on v3.4
+    single: trsp ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -176,7 +183,7 @@ Many to Many
    :end-before: -- q6
 
 .. index::
-    single: trsp ; Combinations - Proposed on v3.4
+    single: trsp ; Combinations
 
 Combinations
 ...............................................................................
@@ -239,10 +246,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_all_columns_start
-    :end-before: return_path_all_columns_end
-
-
+    :start-after: return_path_complete_start
+    :end-before: return_path_complete_end
 
 See Also
 -------------------------------------------------------------------------------

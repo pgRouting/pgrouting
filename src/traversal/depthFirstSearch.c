@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2020 Ashish Kumar
-Mail: ashishkr23438@gmail.com
+Mail: ashishkr23438 at gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -49,6 +49,7 @@ process(
 
         MST_rt **result_tuples,
         size_t *result_count) {
+    if (max_depth < 0) pgr_throw_error("Negative value found on 'max_depth'", "");
     pgr_SPI_connect();
     char* log_msg = NULL;
     char* notice_msg = NULL;
@@ -126,7 +127,7 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        size_t num  = 7;
+        size_t num = 8;
         values = palloc(num * sizeof(Datum));
         nulls = palloc(num * sizeof(bool));
 
@@ -143,6 +144,8 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[7] = Int64GetDatum(result_tuples[funcctx->call_cntr].pred);
+
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

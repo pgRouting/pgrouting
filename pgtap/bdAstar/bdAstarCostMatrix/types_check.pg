@@ -20,11 +20,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-SET client_min_messages TO WARNING;
-
 SELECT plan(5);
 
-SELECT astarcostmatrix_types_check('pgr_bdastarcostmatrix');
+SELECT cost_types_check(
+  'pgr_bdastarcostmatrix',
+  '{directed,heuristic,factor,epsilon}'::TEXT[], '{bool,int4,numeric,numeric}'::TEXT[],
+  standard_v => '3.0.0');
 
 SELECT finish();
 ROLLBACK;

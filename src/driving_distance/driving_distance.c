@@ -37,10 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/driving_distance/driving_distance_driver.h"
 
-
-PGDLLEXPORT Datum _pgr_drivingdistance(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_drivingdistance);
-
 PGDLLEXPORT Datum _pgr_drivingdistancev4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_drivingdistancev4);
 
@@ -164,10 +160,17 @@ _pgr_drivingdistancev4(PG_FUNCTION_ARGS) {
 }
 
 
-/* Old code starts here
- * TODO(v4) remove old code
- * its code that is used when there is an old version of SQL 3.5 and under
+/* Deprecated code starts here
+ * This code is used on v3.5 and under
+ *
+ * TODO(v4.2) define SHOWMSG
+ * TODO(v4.3) change to WARNING
+ * TODO(v5) Move to legacy
  */
+
+PGDLLEXPORT Datum _pgr_drivingdistance(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_drivingdistance);
+
 PGDLLEXPORT Datum
 _pgr_drivingdistance(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -182,8 +185,14 @@ _pgr_drivingdistance(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
+#ifdef SHOWMSG
+        ereport(NOTICE, (
+                    errcode(ERRCODE_WARNING_DEPRECATED_FEATURE),
+                    errmsg("A stored procedure is using deprecated C internal function '%s'", __func__),
+                    errdetail("Library function '%s' was deprecated in pgRouting %s", __func__, "3.6.0"),
+                    errhint("Consider upgrade pgRouting")));
+#endif
 
-        PGR_DBG("Calling driving_many_to_dist_driver");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),

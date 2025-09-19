@@ -53,11 +53,11 @@ CREATE FUNCTION pgr_withPointsDD(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
-    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4, $5, $6, $7, false);
+    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4,
+      $5, directed, details, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- MULTIPLE
 --v3.6
@@ -83,24 +83,21 @@ CREATE FUNCTION pgr_withPointsDD(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
-    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5, $6, $7, $8);
+    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4,
+      $5, directed, details, equicost);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
-
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, BIGINT, FLOAT, CHAR, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsDD(Single Vertex)
-- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
     - From vertex identifier
     - Distance
-    - Driving_side
+    - Driving side
 - Optional Parameters
     - directed := true
     - details := false
@@ -111,13 +108,12 @@ IS 'pgr_withPointsDD(Single Vertex)
 
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsDD(Multiple Vertices)
-- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
     - From ARRAY[vertices identifiers]
     - Distance
-    - Driving_side
+    - Driving side
 - Optional Parameters
     - directed := true
     - details := false
@@ -126,9 +122,9 @@ IS 'pgr_withPointsDD(Multiple Vertices)
     - ${PROJECT_DOC_LINK}/pgr_withPointsDD.html
 ';
 
-/* TODO remove on V4 */
+
 -- SINGLE
---v2.6
+--v4.0
 CREATE FUNCTION pgr_withPointsDD(
     TEXT,   --edges_sql (required)
     TEXT,   -- points_sql (required)
@@ -136,29 +132,27 @@ CREATE FUNCTION pgr_withPointsDD(
     FLOAT,  -- distance (required)
 
     directed BOOLEAN DEFAULT true,
-    driving_side CHAR DEFAULT 'b',
     details BOOLEAN DEFAULT false,
 
-    OUT seq INTEGER,
+    OUT seq BIGINT,
+    OUT depth BIGINT,
+    OUT start_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RAISE WARNING 'pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean) deprecated signature on 3.6.0';
-    RETURN QUERY
-    SELECT a.seq, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_withPointsDD(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4, $5, $6, $7, false) AS a;
-END;
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4,
+      (CASE WHEN directed THEN 'r' ELSE 'b' END), directed, details, false);
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- MULTIPLE
---v2.6
+--v4.0
 CREATE FUNCTION pgr_withPointsDD(
     TEXT,     --edges_sql (required)
     TEXT,     -- points_sql (required)
@@ -166,36 +160,53 @@ CREATE FUNCTION pgr_withPointsDD(
     FLOAT,    -- distance (required)
 
     directed BOOLEAN DEFAULT true,
-    driving_side CHAR DEFAULT 'b',
     details BOOLEAN DEFAULT false,
     equicost BOOLEAN DEFAULT false,
 
-    OUT seq INTEGER,
+    OUT seq BIGINT,
+    OUT depth BIGINT,
     OUT start_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-  RAISE WARNING 'pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean) deprecated signature on v3.6.0';
-  RETURN QUERY
-    SELECT a.seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_withPointsDD(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5, $6, $7, $8) AS a;
-END;
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4,
+      (CASE WHEN directed THEN 'r' ELSE 'b' END), directed, details, equicost);
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
--- COMMENTS
+COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, BIGINT, FLOAT, BOOLEAN, BOOLEAN)
+IS 'pgr_withPointsDD(Single Vertex)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From vertex identifier
+    - Distance
+- Optional Parameters
+    - directed := true
+    - details := false
+- Documentation:
+    - ${PROJECT_DOC_LINK}/pgr_withPointsDD.html
+';
 
-COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, BIGINT, FLOAT, BOOLEAN, CHAR, BOOLEAN)
-IS 'pgRouting deprecated signature on v3.6.0
-- Documentation: ${PROJECT_DOC_LINK}/pgr_withPointsDD.html';
 
-COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
-IS 'pgRouting deprecated signature on v3.6.0
-- Documentation: ${PROJECT_DOC_LINK}/pgr_withPointsDD.html';
+COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgr_withPointsDD(Multiple Vertices)
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
+    - From ARRAY[vertices identifiers]
+    - Distance
+- Optional Parameters
+    - directed := true
+    - details := false
+    - equicost := false
+- Documentation:
+    - ${PROJECT_DOC_LINK}/pgr_withPointsDD.html
+';

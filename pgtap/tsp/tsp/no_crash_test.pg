@@ -18,10 +18,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
-SET client_min_messages TO WARNING;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(9);
+SELECT plan(8);
 
 CREATE TEMP TABLE  data AS
 SELECT * FROM pgr_dijkstraCostMatrix(
@@ -30,7 +29,6 @@ SELECT * FROM pgr_dijkstraCostMatrix(
     directed := false
 );
 
-SELECT isnt_empty('SELECT * FROM data', 'Should not be empty true to tests be meaningful');
 SELECT tsp_no_crash();
 
 SELECT finish();

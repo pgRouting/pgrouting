@@ -1,8 +1,9 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     metrics-family.rst
     pgr_betweennessCentrality.rst
     pgr_degree.rst
+    pgr_bandwidth.rst
    )
 
 foreach (f ${LOCAL_FILES})

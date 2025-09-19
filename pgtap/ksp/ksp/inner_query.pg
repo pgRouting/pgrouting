@@ -20,16 +20,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.6.0') THEN plan(282) ELSE plan(54) END;
+SELECT CASE WHEN min_version('3.6.0') THEN plan(282) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION KSP_inner_query() RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  -- ONE TO ONE
-  RETURN QUERY SELECT style_dijkstra('pgr_ksp(', ', 6, 10, 2, true)');
+    IF NOT min_version('3.6.0') THEN
+      RETURN QUERY SELECT skip(1, 'pgr_KSP testing only valid signatures on 4.0.0');
+      RETURN;
+    END IF;
 
-  IF min_version('3.6.0') THEN
+    -- ONE TO ONE
+    RETURN QUERY SELECT style_dijkstra('pgr_ksp(', ', 6, 10, 2, true)');
+
     -- ONE TO MANY
     RETURN QUERY SELECT style_dijkstra('pgr_ksp(', ', 6, ARRAY[10], 2, true)');
 
@@ -39,10 +43,10 @@ BEGIN
     -- MANY TO MANY
     RETURN QUERY SELECT style_dijkstra('pgr_ksp(', ', ARRAY[6], ARRAY[10], 2, true)');
 
-    -- Combinations
+    -- COMBINATIONS
     RETURN QUERY SELECT style_dijkstra('pgr_ksp(', ', $$SELECT * FROM combinations$$, 2, true)');
     RETURN QUERY SELECT innerquery_combinations('pgr_ksp($$SELECT * FROM edges$$,',', 2, true)');
-  END IF;
+
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;

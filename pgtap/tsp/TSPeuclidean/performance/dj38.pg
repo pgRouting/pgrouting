@@ -18,7 +18,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
-SET client_min_messages TO WARNING;
 
 -- NAME: dj38
 -- COMMENT : 38 locations in Djibouti
@@ -30,7 +29,7 @@ SET client_min_messages TO WARNING;
 -- DIMENSION: 38
 -- EDGE_WEIGHT_TYPE: EUC_2D
 
-DROP TABLE IF EXISTS dj38;
+--DROP TABLE IF EXISTS dj38;
 CREATE TABLE dj38 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
 INSERT INTO dj38 (id, x, y) VALUES
 (1, 11003.611100, 42102.500000),

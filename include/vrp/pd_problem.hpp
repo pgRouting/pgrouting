@@ -46,7 +46,7 @@ class PD_problem {
     /** @brief Not wllowing to copy the problem */
     PD_problem(const PD_problem &problem) = delete;
 
-    /** @brief Not allwing initialization without information */
+    /** @brief Not allowing initialization without information */
     PD_problem() = delete;
 };
 

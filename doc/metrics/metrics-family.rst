@@ -22,16 +22,16 @@ Metrics - Family of functions
 
 .. official-end
 
-.. collapse:: Experimental
-
-  .. include:: experimental.rst
-     :start-after: warning-begin
-     :end-before: end-warning
+.. include:: experimental.rst
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. experimental-start
 
 * :doc:`pgr_betweennessCentrality` - Calculates relative betweenness centrality
   using Brandes Algorithm
+
+* :doc:`pgr_bandwidth` - Computes the bandwidth of a graph.
 
 .. experimental-end
 
@@ -40,6 +40,7 @@ Metrics - Family of functions
 
     pgr_degree
     pgr_betweennessCentrality
+    pgr_bandwidth
 
 See Also
 -------------------------------------------------------------------------------

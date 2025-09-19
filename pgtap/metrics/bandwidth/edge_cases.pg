@@ -1,0 +1,72 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2025  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(4) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('4.0.0') THEN
+  RETURN QUERY SELECT skip(1, 'Function is new on 4.0.0');
+  RETURN;
+END IF;
+
+/* Basic test with subset of edges */
+PREPARE basic_q AS
+  SELECT pgr_bandwidth(
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id < 5'
+  ) AS bandwidth;
+
+RETURN QUERY SELECT lives_ok('basic_q', 'Basic bandwidth calculation works');
+
+/* Test with different edge sets */
+PREPARE small_q AS
+  SELECT pgr_bandwidth(
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id < 3'
+  ) AS bandwidth;
+
+PREPARE large_q AS
+  SELECT pgr_bandwidth(
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id < 6'
+  ) AS bandwidth;
+
+RETURN QUERY SELECT lives_ok('small_q', 'Small graph bandwidth works');
+RETURN QUERY SELECT lives_ok('large_q', 'Larger graph bandwidth works');
+
+/* Test with empty graph */
+PREPARE empty_q AS
+  SELECT pgr_bandwidth(
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id < 0'
+  ) AS bandwidth;
+
+RETURN QUERY SELECT throws_ok('empty_q', NULL, 'Empty graph throws error');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT finish();
+ROLLBACK;

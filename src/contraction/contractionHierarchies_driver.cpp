@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/alloc.hpp"
 
+
 void
 pgr_contractionHierarchies(
         const char *edges_sql,
@@ -59,6 +60,8 @@ pgr_contractionHierarchies(
     using pgrouting::pgr_free;
     using pgrouting::pgget::get_intArray;
     using pgrouting::pgget::get_edges;
+    using pgrouting::functions::contractionHierarchies;
+    using pgrouting::to_postgres::graph_to_tuple;
 
     std::ostringstream log;
     std::ostringstream notice;
@@ -86,21 +89,17 @@ pgr_contractionHierarchies(
         if (directed) {
             using DirectedGraph = pgrouting::graph::CHDirectedGraph;
             DirectedGraph digraph;
+            digraph.insert_edges(edges);
 
-            detail::perform_contractionHierarchies(digraph, directed, edges, forbid, log, err);
-            detail::get_postgres_result_contractionHierarchies(
-                    digraph,
-                    return_tuples,
-                    return_count);
+            contractionHierarchies(digraph, directed, forbid, log, err);
+            graph_to_tuple(digraph, return_tuples, return_count);
         } else {
             using UndirectedGraph = pgrouting::graph::CHUniqueUndirectedGraph;
             UndirectedGraph undigraph;
+            undigraph.insert_edges(edges);
 
-            detail::perform_contractionHierarchies(undigraph, directed, edges, forbid, log, err);
-            detail::get_postgres_result_contractionHierarchies(
-                    undigraph,
-                    return_tuples,
-                    return_count);
+            contractionHierarchies(undigraph, directed, forbid, log, err);
+            graph_to_tuple(undigraph, return_tuples, return_count);
         }
 
         pgassert(err.str().empty());

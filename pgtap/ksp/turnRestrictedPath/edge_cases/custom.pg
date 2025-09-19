@@ -20,10 +20,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(9);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(9) ELSE plan(1) END;
 
-SET client_min_messages TO WARNING;
 
+CREATE or REPLACE FUNCTION custom_tap()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('4.0.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_turnrestrictedpath: testing only signatures standardaized in v4.0.0.');
+    RETURN;
+  END IF;
 
 -------------------------------------------------------------
 -- queries that return r1
@@ -57,8 +66,8 @@ FROM pgr_turnRestrictedPath(
     stop_on_first:=false
 );
 
-SELECT set_eq('q1', 'r1', 'Should return r1 result (one cycle)');
-SELECT set_eq('q2', 'r1', 'Should return r1 result (one cycle, Dont stop_on_first)');
+RETURN QUERY SELECT set_eq('q1', 'r1', 'Should return r1 result (one cycle)');
+RETURN QUERY SELECT set_eq('q2', 'r1', 'Should return r1 result (one cycle, Dont stop_on_first)');
 
 -------------------------------------------------------------
 -- queries that return r2
@@ -87,7 +96,7 @@ FROM pgr_turnRestrictedPath(
     stop_on_first:=false
 );
 
-SELECT set_eq('q3', 'r2', 'Should return r2 result (3 cycle, Dont stop_on_first)');
+RETURN QUERY SELECT set_eq('q3', 'r2', 'Should return r2 result (3 cycle, Dont stop_on_first)');
 
 -------------------------------------------------------------
 -- queries that return r3
@@ -117,8 +126,8 @@ FROM pgr_turnRestrictedPath(
     heap_paths:=true
 )  WHERE agg_cost = FLOAT8 '+infinity';
 
-SELECT set_eq('q4', 'r3', 'Should return r3 result (1 cycle)');
-SELECT set_eq('q7', 'r3', 'Should return r3 result (1 cycle, Heap paths)');
+RETURN QUERY SELECT set_eq('q4', 'r3', 'Should return r3 result (1 cycle)');
+RETURN QUERY SELECT set_eq('q7', 'r3', 'Should return r3 result (1 cycle, Heap paths)');
 
 -------------------------------------------------------------
 -- queries that return r4
@@ -150,8 +159,8 @@ FROM pgr_turnRestrictedPath(
     stop_on_first:=false
 ) WHERE agg_cost = FLOAT8 '+infinity';
 
-SELECT set_eq('q5', 'r4', 'q5 Should return r4 result (2 cycle, Dont stop_on_first)');
-SELECT set_eq('q6', 'r4', 'q6 Should return r4 result (2 cycle, Dont stop_on_first)');
+RETURN QUERY SELECT set_eq('q5', 'r4', 'q5 Should return r4 result (2 cycle, Dont stop_on_first)');
+RETURN QUERY SELECT set_eq('q6', 'r4', 'q6 Should return r4 result (2 cycle, Dont stop_on_first)');
 
 
 ----------------------------------------
@@ -184,9 +193,14 @@ FROM pgr_turnRestrictedPath(
     stop_on_first:=false
 ) WHERE agg_cost = FLOAT8 '+infinity';
 
-SELECT set_eq('q8', 'r5', 'Should return r5 result (2 cycle, Dont stop_on_first, heap paths)');
-SELECT set_eq('q9', 'r5', 'Should return r5 result (3 cycle, Dont stop_on_first, heap paths)');
+RETURN QUERY SELECT set_eq('q8', 'r5', 'Should return r5 result (2 cycle, Dont stop_on_first, heap paths)');
+RETURN QUERY SELECT set_eq('q9', 'r5', 'Should return r5 result (3 cycle, Dont stop_on_first, heap paths)');
+
+END;
+$BODY$
+language plpgsql;
 
 
+SELECT custom_tap();
 SELECT finish();
 ROLLBACK;

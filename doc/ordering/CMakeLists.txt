@@ -1,7 +1,9 @@
-SET(LOCAL_FILES
+set(LOCAL_FILES
     ordering-family.rst
     pgr_cuthillMckeeOrdering.rst
     pgr_topologicalSort.rst
+    pgr_sloanOrdering.rst
+    pgr_kingOrdering.rst
     )
 
 foreach (f ${LOCAL_FILES})

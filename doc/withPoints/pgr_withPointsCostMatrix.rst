@@ -8,28 +8,35 @@
    ****************************************************************************
 
 .. index::
-   single: withPoints Family ; pgr_withPointsCostMatrix - Proposed
-   single: With Points Category ; pgr_withPointsCostMatrix - Proposed
-   single: Cost Matrix Category ; pgr_withPointsCostMatrix - Proposed
-   single: withPointsCostMatrix - proposed on v2.0
+   single: withPoints Family ; pgr_withPointsCostMatrix
+   single: With Points Category ; pgr_withPointsCostMatrix
+   single: Cost Matrix Category ; pgr_withPointsCostMatrix
+   single: withPointsCostMatrix
 
 |
 
-``pgr_withPointsCostMatrix`` - proposed
+``pgr_withPointsCostMatrix``
 ===============================================================================
 
 ``pgr_withPointsCostMatrix`` - Calculates a cost matrix using
 :doc:`pgr_withPoints`.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
 
-* Version 2.2.0
+.. rubric:: Version 4.0.0
 
-  * New proposed function.
+* Function promoted to official.
+* **Driving side** parameter is positional unnamed and compulsory.
+
+  * Valid values depend on kind of graph
+* Output columns standardized to |matrix-result|
+* Breaking change, signatures no longer available:
+
+  * pgr_withpointscostmatrix(text,text,anyarray,boolean,character)
+
+.. rubric:: Version 2.2.0
+
+* New proposed function.
 
 Description
 -------------------------------------------------------------------------------
@@ -52,8 +59,8 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, [**options**])
-   | **options:** ``[directed, driving_side]``
+   | pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, [**driving side**] [**options**])
+   | **options:** ``[directed]``
 
    | Returns set of |matrix-result|
    | OR EMPTY SET
@@ -66,7 +73,7 @@ Signatures
 
 * Returning a **symmetrical** cost matrix
 * Using the default ``side`` value on the **points_sql** query
-* Using the default ``driving_side`` value
+* Using the default ``driving side`` value
 
 .. literalinclude:: withPointsCostMatrix.queries
    :start-after: -- q1
@@ -79,19 +86,16 @@ Parameters
     :start-after: costMatrix_withPoints_parameters_start
     :end-before: costMatrix_withPoints_parameters_end
 
+.. include:: withPoints-category.rst
+    :start-after: driving_side_start
+    :end-before: driving_side_end
+
 Optional parameters
 ...............................................................................
 
 .. include:: dijkstra-family.rst
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
-
-With points optional parameters
-...............................................................................
-
-.. include:: pgr_withPointsCost.rst
-    :start-after: withpoints_short_optionals_start
-    :end-before: withpoints_short_optionals_end
 
 Inner Queries
 -------------------------------------------------------------------------------
@@ -115,10 +119,6 @@ Result columns
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
-    :end-before: return_cost_end
-
-.. include:: pgRouting-concepts.rst
-    :start-after: return_cost_withPoints_start
     :end-before: return_cost_withPoints_end
 
 Additional Examples
@@ -139,6 +139,7 @@ locations on the graph of point `(2.9, 1.8)`.
 
 * Point :math:`-1` corresponds to the closest edge from point `(2.9, 1.8)`.
 * Point :math:`-2` corresponds to the next close edge from point `(2.9, 1.8)`.
+* Being close to the graph does not mean have a shorter route.
 
 Use with :doc:`pgr_TSP`.
 ...............................................................................

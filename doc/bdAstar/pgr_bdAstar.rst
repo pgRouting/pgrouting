@@ -20,39 +20,43 @@
 
 .. rubric:: Availability
 
-* Version 3.6.0
+.. rubric:: Version 4.0.0
 
-  * Standardizing output columns to |short-generic-result|
+* Combinations signature promoted to official.
 
-    * pgr_bdAstar(One to One) added ``start_vid`` and ``end_vid`` columns.
-    * pgr_bdAstar(One to Many) added ``end_vid`` column.
-    * pgr_bdAstar(Many to One) added ``start_vid`` column.
+.. rubric:: Version 3.6.0
 
-* Version 3.2.0
+* Standardizing output columns to |short-generic-result|
 
-  * New proposed signature:
+  * pgr_bdAstar(One to One) added ``start_vid`` and ``end_vid`` columns.
+  * pgr_bdAstar(One to Many) added ``end_vid`` column.
+  * pgr_bdAstar(Many to One) added ``start_vid`` column.
 
-    * pgr_bdAstar(Combinations)
+.. rubric:: Version 3.2.0
 
-* Version 3.0.0
+* New proposed signature:
 
-  * Function promoted to official.
+  * pgr_bdAstar(Combinations)
 
-* Version 2.5.0
+.. rubric:: Version 3.0.0
 
-  * New proposed signatures:
+* Function promoted to official.
 
-    * pgr_bdAstar(One to Many)
-    * pgr_bdAstar(Many to One)
-    * pgr_bdAstar(Many to Many)
+.. rubric:: Version 2.5.0
 
-  * Signature change on pgr_bdAstar(One to One)
+* New proposed signatures:
 
-    * Old signature no longer supported
+  * pgr_bdAstar(One to Many)
+  * pgr_bdAstar(Many to One)
+  * pgr_bdAstar(Many to Many)
 
-* Version 2.0.0
+* Signature change on pgr_bdAstar(One to One)
 
-  * New official function.
+  * Old signature no longer supported
+
+.. rubric:: Version 2.0.0
+
+* New official function.
 
 Description
 -------------------------------------------------------------------------------
@@ -63,8 +67,8 @@ Description
    :start-after: astar general info start
    :end-before: astar general info end
 
-* The results are equivalent to the union of the results of the
-  pgr_bdAStar(One to One) on the:
+* The results are equivalent to the union of the results of pgr_bdAStar(One to
+  One) on the:
 
   * pgr_bdAstar(One to Many)
   * pgr_bdAstar(Many to One)
@@ -182,7 +186,7 @@ Many to Many
    :end-before: -- q51
 
 .. index::
-    single: bdAstar ; Combinations - Proposed on v3.2
+    single: bdAstar ; Combinations
 
 Combinations
 ...............................................................................
@@ -253,8 +257,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_short_start
-    :end-before: return_path_short_end
+    :start-after: return_path_complete_start
+    :end-before: return_path_complete_end
 
 Additional Examples
 -------------------------------------------------------------------------------

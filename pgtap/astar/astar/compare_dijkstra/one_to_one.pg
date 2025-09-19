@@ -27,7 +27,7 @@ SELECT plan(612);
 
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-CREATE or REPLACE FUNCTION astarCompareDijkstra(cant INTEGER default 17)
+CREATE or REPLACE FUNCTION astarCompareDijkstra(lim INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -42,8 +42,8 @@ BEGIN
     result_columns := ' seq, path_seq, round(cost::numeric,8) AS cost, round(agg_cost::numeric,8) AS agg_cost ';
   END IF;
 
-    FOR i IN 1.. cant BY 2 LOOP
-        FOR j IN 1.. cant LOOP
+    FOR i IN 1.. lim BY 2 LOOP
+        FOR j IN 1.. lim LOOP
 
             -- DIRECTED WITH REVERSE COST
             inner_sql := 'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges';

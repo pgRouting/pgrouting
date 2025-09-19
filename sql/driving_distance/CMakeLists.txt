@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     _withPointsDD.sql
     withPointsDD.sql
     _drivingDistance.sql

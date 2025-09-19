@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     _contraction.sql
     contraction.sql
     _contractionHierarchies.sql

@@ -30,8 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------
 ---------------
 
---v3.6
-CREATE FUNCTION _pgr_ksp(
+--v4.0
+CREATE FUNCTION _pgr_ksp_v4(
   TEXT,     -- edges
   ANYARRAY, -- start_vids
   ANYARRAY, -- end_vids
@@ -39,7 +39,6 @@ CREATE FUNCTION _pgr_ksp(
 
   BOOLEAN,  -- directed
   BOOLEAN,  -- heap_paths
-  BOOLEAN,  -- new ksp
 
   OUT seq INTEGER,
   OUT path_id INTEGER,
@@ -52,10 +51,11 @@ CREATE FUNCTION _pgr_ksp(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
+LANGUAGE C VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
---v3.6
-CREATE FUNCTION _pgr_ksp(
+--v4.0
+CREATE FUNCTION _pgr_ksp_v4(
     TEXT,     -- edges
     TEXT,     -- combinations
 
@@ -75,35 +75,11 @@ CREATE FUNCTION _pgr_ksp(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
+LANGUAGE C VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
-COMMENT ON FUNCTION _pgr_ksp(TEXT, ANYARRAY, ANYARRAY, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_ksp_v4(TEXT, ANYARRAY, ANYARRAY, INTEGER, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
 
-COMMENT ON FUNCTION _pgr_ksp(TEXT, TEXT, INTEGER, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_ksp_v4(TEXT, TEXT, INTEGER, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
-
-/* TODO remove on v4 */
---v2.6
-CREATE FUNCTION _pgr_ksp(
-    edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
-    k INTEGER,
-
-    directed BOOLEAN,
-    heap_paths BOOLEAN,
-
-    OUT seq INTEGER,
-    OUT path_id INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
-
-COMMENT ON FUNCTION _pgr_ksp(TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN)
-IS 'pgRouting internal function deprecated on v3.6.0';

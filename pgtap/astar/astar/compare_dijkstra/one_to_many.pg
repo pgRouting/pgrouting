@@ -29,7 +29,7 @@ SET client_min_messages TO ERROR;
 
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-CREATE or REPLACE FUNCTION astarCompareDijkstra(cant INTEGER default 17)
+CREATE or REPLACE FUNCTION astarCompareDijkstra(lim INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -47,7 +47,7 @@ BEGIN
 
     vids = ' ARRAY[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18] ';
 
-    FOR i IN 1.. cant LOOP
+    FOR i IN 1.. lim LOOP
 
         -----------------------
         -- with reverse cost

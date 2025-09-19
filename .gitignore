@@ -2,13 +2,15 @@
 build
 fix_typos
 code_linter
+/.DS_Store
+/.vagrant
+.directory
+*.swp
+/.vscode
+
+# created files during build
 src/version/version.h
 
-.DS_Store
-.vagrant
-.directory
-notUsed
-*.swp
-
-.vscode
-taptest.sh
+# helper files
+/taptest.sh
+/run.sh

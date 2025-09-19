@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     _pickDeliver.sql
     pickDeliver.sql
     _pickDeliverEuclidean.sql

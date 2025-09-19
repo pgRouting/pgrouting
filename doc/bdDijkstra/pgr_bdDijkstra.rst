@@ -21,33 +21,38 @@ algorithm.
 
 .. rubric:: Availability:
 
-* Version 3.2.0
+.. rubric:: Version 4.0.0
 
-  * New proposed signature:
+* Output columns standardized to |short-generic-result|
+* Combinations signature promoted to official.
 
-    * pgr_bdDijkstra(Combinations)
+.. rubric:: Version 3.2.0
 
-* Version 3.0.0
+* New proposed signature:
 
-  * Function promoted to official.
+  * pgr_bdDijkstra(Combinations)
 
-* Version 2.5.0
+.. rubric:: Version 3.0.0
 
-  * New proposed signatures:
+* Function promoted to official.
 
-    * pgr_bdDijkstra(One to Many)
-    * pgr_bdDijkstra(Many to One)
-    * pgr_bdDijkstra(Many to Many)
+.. rubric:: Version 2.5.0
 
-* Version 2.4.0
+* New proposed signatures:
 
-  * Signature change on pgr_bdDijsktra(One to One)
+  * pgr_bdDijkstra(One to Many)
+  * pgr_bdDijkstra(Many to One)
+  * pgr_bdDijkstra(Many to Many)
 
-    * Old signature no longer supported
+.. rubric:: Version 2.4.0
 
-* Version 2.0.0
+* Signature change on pgr_bdDijkstra(One to One)
 
-  * New official function.
+  * Old signature no longer supported
+
+.. rubric:: Version 2.0.0
+
+* New official function.
 
 
 Description
@@ -75,7 +80,7 @@ Signatures
    | pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
    | pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
-   | Returns set of |old-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 .. index::
@@ -89,7 +94,7 @@ One to One
 
    | pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])
 
-   | Returns set of |result-1-1|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
@@ -109,7 +114,7 @@ One to Many
 
    | pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
 
-   | Returns set of |result-1-m|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
@@ -130,7 +135,7 @@ Many to One
 
    | pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
 
-   | Returns set of |result-m-1|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
@@ -162,7 +167,7 @@ Many to Many
     :end-before: -- q51
 
 .. index::
-    single: bdDijkstra ; Combinations - Proposed on v3.2
+    single: bdDijkstra ; Combinations
 
 Combinations
 ...............................................................................
@@ -224,8 +229,8 @@ Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_short_start
-    :end-before: return_path_short_end
+    :start-after: return_path_complete_start
+    :end-before: return_path_complete_end
 
 Additional Examples
 -------------------------------------------------------------------------------

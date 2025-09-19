@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
      pgr_pickDeliverEuclidean.rst
      pgr_pickDeliver.rst
      pgr_vrpOneDepot.rst

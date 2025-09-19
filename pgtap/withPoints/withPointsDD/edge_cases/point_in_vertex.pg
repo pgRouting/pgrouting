@@ -30,7 +30,7 @@ $BODY$
 BEGIN
 
   IF NOT min_version('3.6.0') THEN
-    RETURN QUERY SELECT skip(1, 'Signature added on 3.6.0');
+    RETURN QUERY SELECT skip(1, 'pgr_withPointsDD testing only valid signatures on 4.0.0');
     RETURN;
   END IF;
 
@@ -40,7 +40,7 @@ SELECT agg_cost::TEXT FROM pgr_drivingDistance(
   $$SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
   $1, 5, true) WHERE node = $2;
 
--- its a straigh line and one extreme are reachable
+-- its a straight line and one extreme are reachable
 RETURN QUERY SELECT results_eq($$dijkstra1(5,9)$$, ARRAY[4]::TEXT[]);
 RETURN QUERY SELECT results_eq($$dijkstra1(9,5)$$, ARRAY[4]::TEXT[]);
 

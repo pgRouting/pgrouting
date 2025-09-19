@@ -1,8 +1,10 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     _betweennessCentrality.sql
     betweennessCentrality.sql
     degree.sql
+    _bandwidth.sql
+    bandwidth.sql
 )
 
 foreach (f ${LOCAL_FILES})

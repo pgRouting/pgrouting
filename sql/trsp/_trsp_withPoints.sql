@@ -23,22 +23,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
---v3.4
-CREATE FUNCTION _pgr_trsp_withPoints(
+--v4.0
+CREATE FUNCTION _pgr_trsp_withPoints_v4(
     TEXT,  -- edges_sql
     TEXT,  -- restrictions_sql
     TEXT,  -- points_sql
     ANYARRAY,  -- start_vid
     ANYARRAY,  -- end_vids
 
-    directed BOOLEAN,
-    driving_side CHAR,
-    details BOOLEAN,
+    BOOLEAN, -- directed
+    CHAR,    -- driving side
+    BOOLEAN, -- details
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
-    OUT departure BIGINT,
+    OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -46,23 +45,24 @@ CREATE FUNCTION _pgr_trsp_withPoints(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE c VOLATILE;
+LANGUAGE C VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
---v3.4
-CREATE FUNCTION _pgr_trsp_withPoints(
+--v4.0
+CREATE FUNCTION _pgr_trsp_withPoints_v4(
     TEXT,  -- edges_sql
     TEXT,  -- restrictions_sql
     TEXT,  -- points_sql
     TEXT,  -- combinations_sql
 
-    directed BOOLEAN,
-    driving_side CHAR,
-    details BOOLEAN,
+    BOOLEAN, -- directed
+    CHAR,    -- driving side
+    BOOLEAN, -- details
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
-    OUT departure BIGINT,
+    OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -70,11 +70,11 @@ CREATE FUNCTION _pgr_trsp_withPoints(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
+LANGUAGE C VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
-COMMENT ON FUNCTION _pgr_trsp_withPoints(TEXT, TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN, CHAR, BOOLEAN)
+COMMENT ON FUNCTION _pgr_trsp_withPoints_v4(TEXT, TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgRouting internal function';
 
-COMMENT ON FUNCTION _pgr_trsp_withPoints(TEXT, TEXT, TEXT, TEXT, BOOLEAN, CHAR, BOOLEAN)
+COMMENT ON FUNCTION _pgr_trsp_withPoints_v4(TEXT, TEXT, TEXT, TEXT, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgRouting internal function';

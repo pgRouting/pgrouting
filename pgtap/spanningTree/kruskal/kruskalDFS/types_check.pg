@@ -19,9 +19,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(7);
+SELECT CASE WHEN min_version('3.7.0') THEN plan(7) ELSE plan(6) END;
 
-SELECT spannTree_bfs_types_check('pgr_kruskaldfs'::TEXT);
+SELECT traversal_types_check('pgr_kruskaldfs',
+  opt_names => '{max_depth}'::TEXT[], opt_types => '{int8}'::TEXT[],
+  standard_v => '3.7.0');
 
 SELECT finish();
 ROLLBACK;

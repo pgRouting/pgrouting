@@ -25,8 +25,6 @@ on:
     branches-ignore:
       - 'gh-pages'
 
-    tags: []
-
   pull_request:
     paths:
       - '.github/workflows/doc-check.yml'
@@ -52,7 +50,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          language: [en,es,zh_Hans]
+          language: [en, es, zh_Hans, sv]
 
     steps:
       - uses: actions/checkout@v5
@@ -62,7 +60,7 @@ jobs:
       - name: check modified files
         id: check_files
         run: |
-          # allways processing english, no matter what the change was
+          # always processing english, no matter what the change was
           if [[ "${{ matrix.language }}" == "en" ]]; then echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
 
           # when this file changes  all languages are tested
@@ -103,14 +101,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             libboost-graph-dev \
+            python3-sphinx \
+            python3-sphinx-bootstrap-theme \
             postgresql-${PGVER} \
             postgresql-server-dev-${PGVER} \
-            graphviz \
-            doxygen
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip list
-
+            graphviz
 
       - name: Configure
         if: env.PROCESS == 'true'
@@ -118,22 +113,15 @@ jobs:
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
-          cmake -DLINKCHECK=ON -DWITH_DOC=ON \
-                -DES=ON -DZH_HANS=ON -DBUILD_DOXY=ON \
-                -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DBUILD_LINKCHECK=ON \
+                -DSPHINX_FLAGS='-W -v -j auto --keep-going' \
+                -DPOSTGRESQL_VERSION=${PGVER} ..
 
       - name: Check Documentation
         if: env.PROCESS == 'true'
         run: |
           cd build
           make html-${{ matrix.language }}
-
-      - name: Check Developers Documentation
-        if: env.PROCESS == 'true'
-        run: |
-          cd build
-          make doxy
-          [ ! -s build/doxygen/LOG ] || exit 1
 
       - name: Check Links
         if: env.CHK_LINK == 'true'

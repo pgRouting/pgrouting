@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     pgr_version.rst
     pgr_full_version.rst
     reference.rst

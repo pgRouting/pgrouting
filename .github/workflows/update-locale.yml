@@ -34,21 +34,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get postgres version
-        run: |
-          sudo service postgresql start
-          PGVER=$(psql --version | grep -Po '(?<=psql \(PostgreSQL\) )[^;]+(?=\.\d+ \()')
-          PROJECT_VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
-          echo "PGVER=${PGVER}" >> $GITHUB_ENV
-          echo "PGPORT=5432" >> $GITHUB_ENV
-          echo "PGIS=3" >> $GITHUB_ENV
-          echo "PROJECT_VERSION=${PROJECT_VERSION}" >> $GITHUB_ENV
-
       - name: Extract branch name and commit hash
         run: |
           branch=${GITHUB_REF#refs/heads/}
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           echo "GIT_HASH=$git_hash" >> $GITHUB_ENV
+
+      - name: Get postgres version
+        run: |
+          sudo service postgresql start
+          pgver=$(psql --version | grep -Po '(?<=psql \(PostgreSQL\) )[^;]+(?=\.\d+ \()')
+          echo "PGVER=${pgver}" >> $GITHUB_ENV
 
       - name: Add PostgreSQL APT repository
         run: |
@@ -67,18 +63,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             libboost-graph-dev \
+            python3-sphinx \
+            python3-sphinx-bootstrap-theme \
+            sphinx-intl \
             postgresql-${PGVER} \
-            postgresql-${PGVER}-postgis-${PGIS} \
-            postgresql-${PGVER}-postgis-${PGIS}-scripts \
             postgresql-server-dev-${PGVER} \
-            graphviz \
-            doxygen
-          python -m pip install --upgrade pip
-          pip install Sphinx
-          pip install sphinx-bootstrap-theme
-          pip install sphinx-intl[transifex]
-          pip install sphinx-collapse
-          pip list
+            graphviz
 
       - name: Initialize mandatory git config
         run: |
@@ -87,7 +77,7 @@ jobs:
 
       - name: Update locale
         run: |
-          bash tools/transifex/update_locale.sh
+          bash .github/scripts/update_locale.sh
 
           # Add the files, commit and push
           git diff --staged --quiet || git commit -m "Update locale: commit ${{ env.GIT_HASH }}"

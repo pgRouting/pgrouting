@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     allpairs-family.rst
     pgr_floydWarshall.rst
     pgr_johnson.rst

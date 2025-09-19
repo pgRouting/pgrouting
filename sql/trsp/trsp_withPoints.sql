@@ -1,9 +1,12 @@
 /*PGR-GNU*****************************************************************
 File: trsp_withPoints.sql
 
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
 Function's developer:
 Copyright (c) 2022 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
 
 ------
 
@@ -24,8 +27,247 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
--- ONE TO ONE
---v3.4
+--v4.0
+CREATE FUNCTION pgr_trsp_withPoints(
+  TEXT, -- Edges SQL
+  TEXT, -- Restrictions SQL
+  TEXT, -- Points SQL
+  BIGINT, -- start_vid
+  BIGINT, -- end_vid
+  CHAR,   -- driving side
+
+  directed BOOLEAN DEFAULT true,
+  details BOOLEAN DEFAULT false,
+
+  OUT seq INTEGER,
+  OUT path_seq INTEGER,
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT node BIGINT,
+  OUT edge BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM _pgr_trsp_withPoints_v4(
+  _pgr_get_statement($1),
+  _pgr_get_statement($2),
+  _pgr_get_statement($3),
+  ARRAY[$4]::BIGINT[], ARRAY[$5]::BIGINT[],  directed, $6, details);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+--v4.0
+CREATE FUNCTION pgr_trsp_withPoints(
+  TEXT, -- Edges SQL
+  TEXT, -- Restrictions SQL
+  TEXT, -- Points SQL
+  BIGINT, -- start_vid
+  ANYARRAY, -- end_vids
+  CHAR,     -- driving side
+
+  directed BOOLEAN DEFAULT true,
+  details BOOLEAN DEFAULT false,
+
+  OUT seq INTEGER,
+  OUT path_seq INTEGER,
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT node BIGINT,
+  OUT edge BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM _pgr_trsp_withPoints_v4(
+  _pgr_get_statement($1),
+  _pgr_get_statement($2),
+  _pgr_get_statement($3),
+  ARRAY[$4]::BIGINT[], $5::BIGINT[], directed, $6, details);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+--v4.0
+CREATE FUNCTION pgr_trsp_withPoints(
+  TEXT, -- Edges SQL
+  TEXT, -- Restrictions SQL
+  TEXT, -- Points SQL
+  ANYARRAY, -- start_vids
+  BIGINT, -- end_vid
+  CHAR,     -- driving side
+
+  directed BOOLEAN DEFAULT true,
+  details BOOLEAN DEFAULT false,
+
+  OUT seq INTEGER,
+  OUT path_seq INTEGER,
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT node BIGINT,
+  OUT edge BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM _pgr_trsp_withPoints_v4(
+  _pgr_get_statement($1),
+  _pgr_get_statement($2),
+  _pgr_get_statement($3),
+  $4::BIGINT[], ARRAY[$5]::BIGINT[], directed, $6, details);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+--v4.0
+CREATE FUNCTION pgr_trsp_withPoints(
+  TEXT, -- Edges SQL
+  TEXT, -- Restrictions SQL
+  TEXT, -- Points SQL
+  ANYARRAY, -- start_vids
+  ANYARRAY, -- end_vids
+  CHAR,     -- driving side
+
+  directed BOOLEAN DEFAULT true,
+  details BOOLEAN DEFAULT false,
+
+  OUT seq INTEGER,
+  OUT path_seq INTEGER,
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT node BIGINT,
+  OUT edge BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM _pgr_trsp_withPoints_v4(
+  _pgr_get_statement($1),
+  _pgr_get_statement($2),
+  _pgr_get_statement($3),
+  $4::BIGINT[], $5::BIGINT[], directed, $6, details);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+--v4.0
+CREATE FUNCTION pgr_trsp_withPoints(
+  TEXT, -- Edges SQL
+  TEXT, -- Restrictions SQL
+  TEXT, -- Points SQL
+  TEXT, -- combinations SQL
+  CHAR,     -- driving side
+
+  directed BOOLEAN DEFAULT true,
+  details BOOLEAN DEFAULT false,
+
+  OUT seq INTEGER,
+  OUT path_seq INTEGER,
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT node BIGINT,
+  OUT edge BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM _pgr_trsp_withPoints_v4(
+  _pgr_get_statement($1),
+  _pgr_get_statement($2),
+  _pgr_get_statement($3),
+  _pgr_get_statement($4),
+  directed, $5, details);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, BIGINT, BIGINT, CHAR, BOOLEAN, BOOLEAN)
+IS 'pgr_trsp_withPoints (One to One)
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Restrictions SQL with columns: id, cost, path
+  - Points SQL with columns: [pid], edge_id, fraction [,side]
+  - Departure vertex/point identifier
+  - Destination vertex/point identifier
+  - Driving side: directed graph [r,l], undirected graph [b]
+- Optional Parameters:
+  - directed => true
+  - details => false
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
+';
+
+
+COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, BIGINT, ANYARRAY, CHAR, BOOLEAN, BOOLEAN)
+IS 'pgr_trsp_withPoints(One to Many)
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Restrictions SQL with columns: id, cost, path
+  - Points SQL with columns: [pid], edge_id, fraction [,side]
+  - Departure vertex/point identifier
+  - Destinations ARRAY[vertices/Points identifier]
+  - Driving side: directed graph [r,l], undirected graph [b]
+- Optional Parameters:
+  - directed => true
+  - details => false
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
+';
+
+COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, ANYARRAY, BIGINT, CHAR, BOOLEAN, BOOLEAN)
+IS 'pgr_trsp_withPoints(Many to One)
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Restrictions SQL with columns: id, cost, path
+  - Points SQL with columns: [pid], edge_id, fraction [,side]
+  - Departures ARRAY[vertices/Points identifier]
+  - Destination vertex/point identifier
+  - Driving side: directed graph [r,l], undirected graph [b]
+- Optional Parameters:
+  - directed => true
+  - details => false
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
+';
+
+COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, ANYARRAY, ANYARRAY, CHAR, BOOLEAN, BOOLEAN)
+IS 'pgr_trsp_withPoints(Many to Many)
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Restrictions SQL with columns: id, cost, path
+  - Points SQL with columns: [pid], edge_id, fraction [,side]
+  - Departures ARRAY[vertices/Points identifier]
+  - Destinations ARRAY[vertices/Points identifier]
+  - Driving side: directed graph [r,l], undirected graph [b]
+- Optional Parameters:
+  - directed => true
+  - details => false
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
+';
+
+COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, TEXT, CHAR, BOOLEAN, BOOLEAN)
+IS 'pgr_trsp_withPoints(Combinations)
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Restrictions SQL with columns: id, path, cost
+  - Points SQL with columns: [pid], edge_id, fraction [,side]
+  - Combinations SQL with columns: source, target
+  - Driving side: directed graph [r,l], undirected graph [b]
+- Optional Parameters:
+  - directed => true
+  - details => false
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
+';
+
+--v4.0
 CREATE FUNCTION pgr_trsp_withPoints(
   TEXT, -- Edges SQL
   TEXT, -- Restrictions SQL
@@ -34,7 +276,6 @@ CREATE FUNCTION pgr_trsp_withPoints(
   BIGINT, -- end_vid
 
   directed BOOLEAN DEFAULT true,
-  driving_side CHAR DEFAULT 'r', -- 'r'/'l'
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
@@ -47,20 +288,17 @@ CREATE FUNCTION pgr_trsp_withPoints(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-SELECT seq, path_seq, departure, end_vid, node, edge, cost, agg_cost
-FROM _pgr_trsp_withPoints(
+SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM _pgr_trsp_withPoints_v4(
   _pgr_get_statement($1),
   _pgr_get_statement($2),
   _pgr_get_statement($3),
-  ARRAY[$4]::BIGINT[], ARRAY[$5]::BIGINT[], $6, $7, $8);
+  ARRAY[$4]::BIGINT[], ARRAY[$5]::BIGINT[],  directed, (CASE WHEN directed THEN 'r' ELSE 'b' END), details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
-
--- ONE TO MANY
---v3.4
+--v4.0
 CREATE FUNCTION pgr_trsp_withPoints(
   TEXT, -- Edges SQL
   TEXT, -- Restrictions SQL
@@ -69,7 +307,6 @@ CREATE FUNCTION pgr_trsp_withPoints(
   ANYARRAY, -- end_vids
 
   directed BOOLEAN DEFAULT true,
-  driving_side CHAR DEFAULT 'r', -- 'r'/'l'
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
@@ -82,19 +319,17 @@ CREATE FUNCTION pgr_trsp_withPoints(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-SELECT seq, path_seq, departure, end_vid, node, edge, cost, agg_cost
-FROM _pgr_trsp_withPoints(
+SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM _pgr_trsp_withPoints_v4(
   _pgr_get_statement($1),
   _pgr_get_statement($2),
   _pgr_get_statement($3),
-  ARRAY[$4]::BIGINT[], $5::BIGINT[], $6, $7, $8);
+  ARRAY[$4]::BIGINT[], $5::BIGINT[], directed, (CASE WHEN directed THEN 'r' ELSE 'b' END), details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- MANY TO ONE
---v3.4
+--v4.0
 CREATE FUNCTION pgr_trsp_withPoints(
   TEXT, -- Edges SQL
   TEXT, -- Restrictions SQL
@@ -103,7 +338,6 @@ CREATE FUNCTION pgr_trsp_withPoints(
   BIGINT, -- end_vid
 
   directed BOOLEAN DEFAULT true,
-  driving_side CHAR DEFAULT 'r', -- 'r'/'l'
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
@@ -116,19 +350,17 @@ CREATE FUNCTION pgr_trsp_withPoints(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-SELECT seq, path_seq, departure, end_vid, node, edge, cost, agg_cost
-FROM _pgr_trsp_withPoints(
+SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM _pgr_trsp_withPoints_v4(
   _pgr_get_statement($1),
   _pgr_get_statement($2),
   _pgr_get_statement($3),
-  $4::BIGINT[], ARRAY[$5]::BIGINT[], $6, $7, $8);
+  $4::BIGINT[], ARRAY[$5]::BIGINT[], directed, (CASE WHEN directed THEN 'r' ELSE 'b' END), details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- MANY TO MANY
---v3.4
+--v4.0
 CREATE FUNCTION pgr_trsp_withPoints(
   TEXT, -- Edges SQL
   TEXT, -- Restrictions SQL
@@ -137,7 +369,6 @@ CREATE FUNCTION pgr_trsp_withPoints(
   ANYARRAY, -- end_vids
 
   directed BOOLEAN DEFAULT true,
-  driving_side CHAR DEFAULT 'r', -- 'r'/'l'
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
@@ -150,20 +381,17 @@ CREATE FUNCTION pgr_trsp_withPoints(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-SELECT seq, path_seq, departure, end_vid, node, edge, cost, agg_cost
-FROM _pgr_trsp_withPoints(
+SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM _pgr_trsp_withPoints_v4(
   _pgr_get_statement($1),
   _pgr_get_statement($2),
   _pgr_get_statement($3),
-  $4::BIGINT[], $5::BIGINT[], $6, $7, $8);
+  $4::BIGINT[], $5::BIGINT[], directed, (CASE WHEN directed THEN 'r' ELSE 'b' END), details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
-
--- Combinations
---v3.4
+--v4.0
 CREATE FUNCTION pgr_trsp_withPoints(
   TEXT, -- Edges SQL
   TEXT, -- Restrictions SQL
@@ -171,7 +399,6 @@ CREATE FUNCTION pgr_trsp_withPoints(
   TEXT, -- combinations SQL
 
   directed BOOLEAN DEFAULT true,
-  driving_side CHAR DEFAULT 'r', -- 'r'/'l'
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
@@ -184,22 +411,19 @@ CREATE FUNCTION pgr_trsp_withPoints(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-SELECT seq, path_seq, departure, end_vid, node, edge, cost, agg_cost
-FROM _pgr_trsp_withPoints(
+SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM _pgr_trsp_withPoints_v4(
   _pgr_get_statement($1),
   _pgr_get_statement($2),
   _pgr_get_statement($3),
   _pgr_get_statement($4),
-  $5, $6, $7);
+  directed, (CASE WHEN directed THEN 'r' ELSE 'b' END), details);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
-COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, BIGINT, BIGINT, BOOLEAN, CHAR, BOOLEAN)
+COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, BIGINT, BIGINT, CHAR, BOOLEAN, BOOLEAN)
 IS 'pgr_trsp_withPoints (One to One)
-- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: id, cost, path
@@ -207,17 +431,15 @@ IS 'pgr_trsp_withPoints (One to One)
   - Departure vertex/point identifier
   - Destination vertex/point identifier
 - Optional Parameters:
-  - directed := ''true''
-  - driving_side := ''r''
-  - details := ''false''
+  - directed => true
+  - details => false
 - Documentation:
   - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
 ';
 
 
-COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN, CHAR, BOOLEAN)
+COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, BIGINT, ANYARRAY, CHAR, BOOLEAN, BOOLEAN)
 IS 'pgr_trsp_withPoints(One to Many)
-- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: id, cost, path
@@ -225,16 +447,14 @@ IS 'pgr_trsp_withPoints(One to Many)
   - Departure vertex/point identifier
   - Destinations ARRAY[vertices/Points identifier]
 - Optional Parameters:
-  - directed := ''true''
-  - driving_side := ''r''
-  - details := ''false''
+  - directed => true
+  - details => false
 - Documentation:
   - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
 ';
 
-COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN, CHAR, BOOLEAN)
+COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, ANYARRAY, BIGINT, CHAR, BOOLEAN, BOOLEAN)
 IS 'pgr_trsp_withPoints(Many to One)
-- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: id, cost, path
@@ -242,16 +462,14 @@ IS 'pgr_trsp_withPoints(Many to One)
   - Departures ARRAY[vertices/Points identifier]
   - Destination vertex/point identifier
 - Optional Parameters:
-  - directed := ''true''
-  - driving_side := ''r''
-  - details := ''false''
+  - directed => true
+  - details => false
 - Documentation:
-- ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
+  - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
 ';
 
-COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN, CHAR, BOOLEAN)
+COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, ANYARRAY, ANYARRAY, CHAR, BOOLEAN, BOOLEAN)
 IS 'pgr_trsp_withPoints(Many to Many)
-- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: id, cost, path
@@ -259,25 +477,22 @@ IS 'pgr_trsp_withPoints(Many to Many)
   - Departures ARRAY[vertices/Points identifier]
   - Destinations ARRAY[vertices/Points identifier]
 - Optional Parameters:
-  - directed := ''true''
-  - driving_side := ''r''
-  - details := ''false''
+  - directed => true
+  - details => false
 - Documentation:
-- ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
+  - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
 ';
 
-COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, TEXT, BOOLEAN, CHAR, BOOLEAN)
+COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, TEXT, CHAR, BOOLEAN, BOOLEAN)
 IS 'pgr_trsp_withPoints(Combinations)
-- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: id, path, cost
   - Points SQL with columns: [pid], edge_id, fraction [,side]
   - Combinations SQL with columns: source, target
 - Optional Parameters:
-  - directed := ''true''
-  - driving_side := ''r''
-  - details := ''false''
+  - directed => true
+  - details => false
 - Documentation:
-- ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
+  - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
 ';

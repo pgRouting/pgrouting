@@ -19,26 +19,30 @@
 ``pgr_pushRelabel`` — Calculates the flow on the graph edges that maximizes the
 flow from the sources to the targets using Push Relabel Algorithm.
 
-.. Rubric:: Availability
+.. rubric:: Availability
 
-* Version 3.2.0
+.. rubric:: Version 4.0.0
 
-  * New proposed signature:
+* Combinations signature promoted to official.
 
-    * pgr_pushRelabel(Combinations)
+.. rubric:: Version 3.2.0
 
-* Version 3.0.0
+* New proposed signature:
 
-  * Function promoted to official.
+  * pgr_pushRelabel(Combinations)
 
-* Version 2.5.0
+.. rubric:: Version 3.0.0
 
-  * Renamed from ``pgr_maxFlowPushRelabel``
-  * Function promoted to proposed.
+* Function promoted to official.
 
-* Version 2.3.0
+.. rubric:: Version 2.5.0
 
-  * New experimental function.
+* Renamed from ``pgr_maxFlowPushRelabel``
+* Function promoted to proposed.
+
+.. rubric:: Version 2.3.0
+
+* New experimental function.
 
 
 Description
@@ -150,7 +154,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: pushRelabel ; Combinations - Proposed on v3.2
+    single: pushRelabel ; Combinations
 
 Combinations
 ...............................................................................

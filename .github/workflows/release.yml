@@ -70,33 +70,26 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             libboost-graph-dev \
+            python3-sphinx \
+            python3-sphinx-bootstrap-theme \
             postgresql-${PGVER} \
             postgresql-${PGVER}-postgis-${PGIS} \
             postgresql-${PGVER}-postgis-${PGIS}-scripts \
             postgresql-server-dev-${PGVER} \
             graphviz \
             doxygen
-          python -m pip install --upgrade pip
-          pip install Sphinx
-          pip install sphinx-bootstrap-theme
-          pip install sphinx-collapse
-          pip list
 
-      - name: Configure
+      - name: Configure and build
         run: |
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_VERSION=${PGVER} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release \
-              -DES=ON -DZH_HANS=ON ..
-
-      - name: Build
-        run: |
-          cd build
+          cmake -DPOSTGRESQL_VERSION=${PGVER} \
+                -DDOC_USE_BOOTSTRAP=ON \
+                -DCMAKE_BUILD_TYPE=Release ..
           make doc
-          make -j 4
-          sudo make install
           make doxy
+          sudo make -j 4 install
 
       - name: Update Users Documentation
         run: |
@@ -104,7 +97,7 @@ jobs:
           git checkout -b gh-pages
           PGROUTING_MAJOR_MINOR="${PGROUTING_VERSION%.*}"
           rm -rf ${PGROUTING_MAJOR_MINOR}
-          cp -r build/doc/html ${PGROUTING_MAJOR_MINOR}
+          cp -r build/doc/_build/html ${PGROUTING_MAJOR_MINOR}
           git add ${PGROUTING_MAJOR_MINOR}
           git diff-index --quiet HEAD || git commit -m "Update users documentation for ${PGROUTING_VERSION}: commit ${{ env.GIT_HASH }}"
           git fetch origin
@@ -136,7 +129,7 @@ jobs:
         run: |
           cd build/doc
 
-          cp -r html doc-v${PGROUTING_VERSION}
+          cp -r _build/html doc-v${PGROUTING_VERSION}
           tar -zcvf doc-v${PGROUTING_VERSION}.tar.gz doc-v${PGROUTING_VERSION}
 
           cd ../..

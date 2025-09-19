@@ -17,7 +17,7 @@
 ``pgr_bdAstarCostMatrix``
 ===============================================================================
 
-``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_aStar`.
+``pgr_bdAstarCostMatrix`` - Calculates the cost matrix using :doc:`pgr_bdAstar`.
 
 .. rubric:: Availability
 
@@ -34,7 +34,7 @@ Description
 
 **The main characteristics are:**
 
-* Using internally the :doc:`pgr_bdAstar` algorithm
+* Internally uses the :doc:`pgr_bdAstar` algorithm.
 * Returns a cost matrix.
 * No ordering is performed
 * let `v` and `u` are nodes on the graph:

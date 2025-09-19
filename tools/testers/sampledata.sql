@@ -142,7 +142,7 @@ SELECT
   pid, ST_AsText(geom) geom,
   edge_id, fraction AS frac, side, distance AS dist,
   ST_AsText(edge) edge, ST_AsText(newPoint) newPoint
-FROM pointsOfInterest;
+FROM pointsOfInterest ORDER BY pid;
 /* -- p7 */
 /* --POINTS CREATE end */
 

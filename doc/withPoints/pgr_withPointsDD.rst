@@ -8,48 +8,43 @@
    ****************************************************************************
 
 .. index::
-   single: withPoints Family ; pgr_withPointsDD - Proposed
-   single: With Points Category ; pgr_withPointsDD - Proposed
-   single: Driving Distance Category ; pgr_withPointsDD - Proposed
-   single: withPointsDD - Proposed
+   single: withPoints Family ; pgr_withPointsDD
+   single: With Points Category ; pgr_withPointsDD
+   single: Driving Distance Category ; pgr_withPointsDD
+   single: withPointsDD
 
 |
 
-``pgr_withPointsDD`` - Proposed
+``pgr_withPointsDD``
 ===============================================================================
 
 ``pgr_withPointsDD`` - Returns the driving **distance** from a starting point.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
+
+.. rubric:: Version 4.0.0
+
+* Function promoted to official.
+
+.. Breaking change
+
+* Breaking change, signatures no longer available:
+
+  * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
+  * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
 
 .. rubric:: Version 3.6.0
 
-* Signature change: ``driving_side`` parameter changed from named optional to
-  unnamed compulsory **driving side**.
+* Output columns standardized to |result-spantree|
+* **Driving side** parameter is positional unnamed and compulsory.
 
-  * pgr_withPointsDD(Single vertex)
-  * pgr_withPointsDD(Multiple vertices)
-
-* Standardizing output columns to |result-spantree|
-
-  * pgr_withPointsDD(Single vertex)
-
-    * Added ``depth``, ``pred`` and ``start_vid`` column.
-
-  * pgr_withPointsDD(Multiple vertices)
-
-    * Added ``depth``, ``pred`` columns.
+  * Valid values depend on kind of graph
 
 * When ``details`` is ``false``:
 
-  * Only points that are visited are removed, that is, points reached within the
-    distance are included
+  * Points reached within the distance are not included.
 
-* Deprecated signatures
+* Deprecated signatures:
 
   * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
   * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
@@ -75,8 +70,8 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options A**])
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options B**])
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, [**driving side**], [**options A**])
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, [**driving side**], [**options B**])
    | **options A:** ``[directed, details]``
    | **options B:** ``[directed, details, equicost]``
 
@@ -84,7 +79,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: withPointsDD - Proposed ; Single Vertex - Proposed on v2.2
+    single: withPointsDD ; Single Vertex
 
 Single vertex
 ...............................................................................
@@ -92,7 +87,7 @@ Single vertex
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options**])
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, [**driving side**], [**options**])
    | **options:** ``[directed, details]``
 
    | Returns set of |result-spantree|
@@ -106,7 +101,7 @@ Single vertex
    :end-before: -- q3
 
 .. index::
-    single: withPointsDD - Proposed ; Multiple Vertices - Proposed on v2.2
+    single: withPointsDD ; Multiple Vertices
 
 Multiple vertices
 ...............................................................................
@@ -114,7 +109,7 @@ Multiple vertices
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options**])
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, [**driving side**], [**options**])
    | **options:** ``[directed, details, equicost]``
 
    | Returns set of |result-spantree|
@@ -159,18 +154,10 @@ Parameters
    * - **distance**
      - ``FLOAT``
      - Upper limit for the inclusion of a node in the result.
-   * - **driving side**
-     - ``CHAR``
-     - - Value in [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] indicating if the driving side is:
 
-         - ``r``, ``R`` for right driving side,
-         - ``l``, ``L`` for left driving side.
-         - ``b``, ``B`` for both.
-
-       - Valid values differ for directed and undirected graphs:
-
-         - In directed graphs: [``r``, ``R``, ``l``, ``L``].
-         - In undirected graphs: [``b``, ``B``].
+.. include:: withPoints-category.rst
+    :start-after: driving_side_start
+    :end-before: driving_side_end
 
 Where:
 
@@ -229,7 +216,7 @@ Points SQL
 Result columns
 -------------------------------------------------------------------------------
 
-.. include:: drivingDistance-category.rst
+.. include:: pgRouting-concepts.rst
    :start-after: spantree-result-columns-start
    :end-before: spantree-result-columns-end
 

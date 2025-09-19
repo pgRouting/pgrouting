@@ -20,30 +20,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-SELECT CASE WHEN min_version('3.4.0') THEN plan(20) ELSE plan(8) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(14) WHEN min_version('3.4.0') THEN plan(13) ELSE plan(2) END;
 
 SELECT has_function('pgr_trsp');
 
-SELECT has_function('pgr_trsp', ARRAY['text','integer','integer','boolean','boolean','text']);
-SELECT has_function('pgr_trsp', ARRAY['text','integer','double precision','integer','double precision','boolean','boolean','text']);
-
-SELECT function_returns('pgr_trsp', ARRAY['text','integer','integer','boolean','boolean','text'],'setof record');
-SELECT function_returns('pgr_trsp', ARRAY['text','integer','double precision','integer','double precision','boolean','boolean','text'],'setof record');
-
-SELECT function_args_has('pgr_trsp',
-  $$VALUES
-  ('{"","","","","","restrictions_sql","seq","id1","id2","cost"}'::TEXT[]),
-  ('{"","","","","","","","turn_restrict_sql","seq","id1","id2","cost"}'::TEXT[])
-  $$);
-
-SELECT function_types_has('pgr_trsp',
-  $$VALUES
-  ('{text,int4,int4,bool,bool,text,int4,int4,int4,float8}'::TEXT[]),
-  ('{text,int4,float8,int4,float8,bool,bool,text,int4,int4,int4,float8}')
-  $$);
-
-
-SELECT types_check_general('pgr_trsp');
+SELECT single_path_types_check(
+  'pgr_trsp',
+  created_v => '3.4.0', standard_v => '4.0.0');
 
 SELECT finish();
 ROLLBACK;

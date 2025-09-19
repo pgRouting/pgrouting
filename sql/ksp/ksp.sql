@@ -48,11 +48,10 @@ CREATE FUNCTION pgr_ksp(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_ksp(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6, true);
+    FROM _pgr_ksp_v4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- one-to-many
@@ -77,11 +76,10 @@ CREATE FUNCTION pgr_ksp(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM  _pgr_ksp(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, $5, $6, true);
+    FROM  _pgr_ksp_v4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, $5, $6);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- many-to-one
 --v3.6
@@ -105,11 +103,10 @@ CREATE FUNCTION pgr_ksp(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM  _pgr_ksp(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6, true);
+    FROM  _pgr_ksp_v4(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- many-to-many
 --v3.6
@@ -133,11 +130,10 @@ CREATE FUNCTION pgr_ksp(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM  _pgr_ksp(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, $5, $6, true);
+    FROM  _pgr_ksp_v4(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, $5, $6);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- combinations
 --v3.6
@@ -160,13 +156,11 @@ CREATE FUNCTION pgr_ksp(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM  _pgr_ksp(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5);
+    FROM  _pgr_ksp_v4(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_ksp(TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN)
 IS 'pgr_KSP
@@ -236,4 +230,3 @@ IS 'pgr_KSP(Combinations)
 - Documentation:
     - ${PROJECT_DOC_LINK}/pgr_KSP.html
 ';
-

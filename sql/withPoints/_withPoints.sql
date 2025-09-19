@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: withPoints.sql
+File: _withPoints.sql
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
 
 ------
 
@@ -27,19 +27,72 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+--v4.0
+CREATE FUNCTION _pgr_withPoints_v4(
+    TEXT, -- edges
+    TEXT, -- points
 
-------------------
-------------------
--- withPoints
-------------------
-------------------
+    ANYARRAY, -- departures
+    ANYARRAY, -- arrivals
 
+    BOOLEAN, --directed
+    CHAR,    -- driving_side
+    BOOLEAN, -- details
 
-------------------
--- _pgr_withPoints
-------------------
+    BOOLEAN, -- only_cost
+    BOOLEAN, -- normal
 
+    BIGINT,  -- n_goals
+    BOOLEAN, -- global
 
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+COMMENT ON FUNCTION _pgr_withPoints_v4(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN, CHAR, BOOLEAN, BOOLEAN, BOOLEAN,
+  BIGINT, BOOLEAN)
+IS 'pgRouting internal function';
+
+--v4.0
+CREATE FUNCTION _pgr_withPoints_v4(
+    TEXT, -- edges
+    TEXT, -- points
+    TEXT, -- combinations
+
+    BOOLEAN, --directed
+    CHAR,    -- driving_side
+    BOOLEAN, -- details
+    BOOLEAN, -- only_cost
+
+    BIGINT,  -- n_goals
+    BOOLEAN, -- global
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
+
+COMMENT ON FUNCTION _pgr_withPoints_v4(TEXT, TEXT, TEXT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN, BIGINT, BOOLEAN)
+IS 'pgRouting internal function';
+
+/* TODO remove on v5*/
 --v2.6
 CREATE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
@@ -89,12 +142,12 @@ CREATE FUNCTION _pgr_withPoints(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
+LANGUAGE C VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
--- COMMENTS
 
 COMMENT ON FUNCTION _pgr_withPoints(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
-IS 'pgRouting internal function';
+IS 'pgRouting deprecated internal function';
 
 COMMENT ON FUNCTION _pgr_withPoints(TEXT, TEXT, TEXT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
-IS 'pgRouting internal function';
+IS 'pgRouting deprecated internal function';

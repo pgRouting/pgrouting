@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------
 
 
---v2.6
+--v3.0
 CREATE FUNCTION pgr_aStarCost(
     TEXT,     -- edges sql (required)
     BIGINT,   -- from_vid (required)
@@ -54,13 +54,12 @@ $BODY$
     FROM _pgr_aStar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[],  ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a
     ORDER BY  a.start_vid, a.end_vid;
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 
---v2.6
+--v3.0
 CREATE FUNCTION pgr_aStarCost(
     TEXT,       -- edges sql (required)
     BIGINT,     -- from_vid (required)
@@ -80,13 +79,12 @@ $BODY$
     FROM _pgr_aStar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[],  $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a
     ORDER BY  a.start_vid, a.end_vid;
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 
---v2.6
+--v3.0
 CREATE FUNCTION pgr_aStarCost(
     TEXT,       -- edges sql (required)
     ANYARRAY,   -- from_vids (required)
@@ -106,12 +104,11 @@ $BODY$
     FROM _pgr_aStar(_pgr_get_statement($1), $2::BIGINT[],  ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true, normal:=false) AS a
     ORDER BY  a.start_vid, a.end_vid;
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
---v2.6
+--v3.0
 CREATE FUNCTION pgr_aStarCost(
     TEXT,       -- edges sql (required)
     ANYARRAY,   -- from_vids (required)
@@ -132,9 +129,8 @@ $BODY$
     FROM _pgr_aStar(_pgr_get_statement($1), $2::BIGINT[],  $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a
     ORDER BY  a.start_vid, a.end_vid;
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 --v3.2
@@ -157,12 +153,10 @@ $BODY$
     FROM _pgr_aStar(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5::FLOAT, $6::FLOAT, true) AS a
     ORDER BY  a.start_vid, a.end_vid;
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT)
 IS 'pgr_aStarCost(One to One)

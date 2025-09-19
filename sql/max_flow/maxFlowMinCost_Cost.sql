@@ -27,11 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-----------------------------
--- pgr_maxFlowMinCost_Cost
-----------------------------
-
---    ONE TO ONE
 --v3.0
 CREATE FUNCTION pgr_maxFlowMinCost_Cost(
     TEXT,   -- edges_sql (required)
@@ -43,7 +38,8 @@ $BODY$
     SELECT cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := true);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH};
 
 
 --    ONE TO MANY
@@ -58,7 +54,8 @@ $BODY$
     SELECT cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], only_cost := true);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH};
 
 
 --    MANY TO ONE
@@ -73,7 +70,8 @@ $BODY$
     SELECT cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := true);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH};
 
 
 --    MANY TO MANY
@@ -88,7 +86,8 @@ $BODY$
     SELECT cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], only_cost := true);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH};
 
 
 -- COMBINATIONS
@@ -102,10 +101,10 @@ $BODY$
     SELECT cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), _pgr_get_statement($2), only_cost := true);
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH};
 
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_maxFlowMinCost_Cost(TEXT, BIGINT, BIGINT)
 IS 'pgr_maxFlowMinCost_Cost (One to One)

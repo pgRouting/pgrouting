@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -------------------
 
 -- ONE to ONE
---v2.6
+--v3.0
 CREATE FUNCTION pgr_edmondsKarp(
     TEXT, -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -46,11 +46,12 @@ CREATE FUNCTION pgr_edmondsKarp(
         SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 3);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- ONE to MANY
---v2.6
+--v3.0
 CREATE FUNCTION pgr_edmondsKarp(
     TEXT, -- edges_sql (required)
     BIGINT, -- from_vid (required)
@@ -67,11 +68,12 @@ CREATE FUNCTION pgr_edmondsKarp(
         SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 3);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- MANY to ONE
---v2.6
+--v3.0
 CREATE FUNCTION pgr_edmondsKarp(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -88,11 +90,12 @@ CREATE FUNCTION pgr_edmondsKarp(
         SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 3);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
 -- MANY to MANY
---v2.6
+--v3.0
 CREATE FUNCTION pgr_edmondsKarp(
     TEXT, -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -109,7 +112,8 @@ CREATE FUNCTION pgr_edmondsKarp(
         SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 3);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 -- COMBINATIONS
 --v3.2
@@ -128,10 +132,10 @@ CREATE FUNCTION pgr_edmondsKarp(
         SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), _pgr_get_statement($2), 3);
   $BODY$
-  LANGUAGE sql VOLATILE STRICT;
+  LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
--- COMMENTS
 
 
 COMMENT ON FUNCTION pgr_edmondsKarp(TEXT, BIGINT, BIGINT)

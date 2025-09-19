@@ -1,0 +1,86 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2018  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_lib_version('4.0.0') AND min_version('3.6.0') THEN plan(5)
+            WHEN NOT min_lib_version('4.0.0') AND min_version('3.4.0') THEN plan(5)
+            ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+  restriction TEXT;
+  unrelated_restriction TEXT;
+  empty_restriction TEXT;
+BEGIN
+
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'New signatures added on 3.4.0');
+    RETURN;
+  END IF;
+
+  IF min_lib_version('4.0.0') and NOT min_version('3.6.0') THEN
+    RETURN QUERY SELECT skip(1, 'Internal function _v4trsp deprecated on 3.6.0 deleted on 4.0.0');
+    RETURN;
+  END IF;
+
+  RETURN QUERY SELECT lives_ok($q$
+  SELECT * FROM pgr_trsp(
+  $$SELECT * FROM edges order by id$$,
+  $$SELECT 100::FLOAT AS cost, ARRAY[]::BIGINT[] AS path$$,
+  6,10)$q$, $q$empty restriction path lives$q$);
+
+  RETURN QUERY SELECT isnt_empty($q$
+  SELECT * FROM pgr_trsp(
+  $$SELECT * FROM edges order by id$$,
+  $$SELECT 100::FLOAT AS cost, ARRAY[]::BIGINT[] AS path$$,
+  6,10)$q$, $q$empty restriction path gives non empty result$q$);
+
+  RETURN QUERY SELECT lives_ok($q$
+  SELECT * FROM pgr_trsp(
+  $$SELECT * FROM edges order by id$$,
+  $$SELECT 100::FLOAT AS cost, NULL::BIGINT[] AS path$$,
+  6,10)$q$, $q$null restriction path lives$q$);
+
+  RETURN QUERY SELECT isnt_empty($q$
+  SELECT * FROM pgr_trsp(
+  $$SELECT * FROM edges order by id$$,
+  $$SELECT 100::FLOAT AS cost, NULL::BIGINT[] AS path$$,
+  6,10)$q$, $q$null restriction path gives non empty result$q$);
+
+  RETURN QUERY SELECT throws_ok($q$
+  SELECT * FROM pgr_trsp(
+  $$SELECT * FROM edges order by id$$,
+  $$SELECT 100::FLOAT AS cost, ARRAY[NULL]::BIGINT[] AS path$$,
+  6,10)$q$,
+  $$XX000$$,$$NULL value found in Array!$$,
+$q$array containing a null path throws$q$);
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+
+SELECT finish();
+ROLLBACK;

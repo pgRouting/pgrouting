@@ -34,7 +34,7 @@ the maximum flow on a graph
 Description
 -------------------------------------------------------------------------------
 
-|boost| graph inside.
+|Boost| Boost Graph Inside.
 
 .. include::  flow-family.rst
     :start-after: characteristics_start

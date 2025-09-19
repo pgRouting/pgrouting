@@ -312,7 +312,7 @@ sub process_single_test{
 
     print PSQL "BEGIN;\n";
     print PSQL "SET client_min_messages TO $LEVEL;\n";
-    # prints the whole fle stored in @queries
+    # prints the whole file stored in @queries
     print PSQL @queries;
     print PSQL "\nROLLBACK;";
 
@@ -381,7 +381,7 @@ sub createTestDB {
 
     die "
     Unsupported postgreSQL version $dbver
-    Minimum requierment is $POSGRESQL_MIN_VERSION version
+    Minimum requirement is $POSGRESQL_MIN_VERSION version
     Use -force to force the tests\n"
     unless version_greater_eq($dbver, $POSGRESQL_MIN_VERSION);
 
@@ -473,7 +473,7 @@ sub findPsql {
 }
 
 # getSharePath is complicated by the fact that on Debian we can have multiple
-# versions installed in a cluster. So we get the DB version by connectiong
+# versions installed in a cluster. So we get the DB version by connection,
 # to the port for the server we want. Then we get the share path for the
 # newest version od pg installed on the cluster. And finally we change the
 # in the path to the version of the server.

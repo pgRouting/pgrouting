@@ -31,15 +31,45 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/contractionHierarchies_rt.h"
 #include "c_types/iid_t_rt.h"
+#include "c_types/routes_t.h"
 
+#include "cpp_common/path.hpp"
 #include "cpp_common/base_graph.hpp"
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/identifiers.hpp"
 
-#include "contraction/contractionHierarchies.hpp"
 
 namespace pgrouting {
 namespace to_postgres {
+namespace detail {
+
+/** @brief Count results that are going to be passed to postgres
+ *
+ * @param[in] graph Created graph with the base Graph
+ * @param[in] matrix matrix[i,j] -> the i,j element contains result
+ * @returns total number of valid results
+ *
+ * a result is not valid when:
+ * - is in the diagonal: matrix[i,i]
+ * - has "infinity" as value
+ */
+template <class G>
+size_t
+count_rows(
+        const G &graph,
+        const std::vector<std::vector<double>> &matrix) {
+    int64_t count = 0;
+    for (size_t i = 0; i < graph.num_vertices(); i++) {
+        count += std::count_if(
+                matrix[i].begin(), matrix[i].end(),
+                [](double value) {
+                return value != (std::numeric_limits<double>::max)();
+                });
+    }
+    return static_cast<size_t>(count) - graph.num_vertices();
+}
+
+}  // namespace detail
 
 /** @brief Stored results on a vector are saved on a C array
  *
@@ -73,54 +103,51 @@ void vector_to_tuple(
     }
 }
 
-}  // namespace to_postgres
-}  // namespace pgrouting
-
-namespace detail {
-
-/*! @brief execute the contraction hierarchies, after having forbidden the needed vertices
-    @param [in] graph created graph with base Graph
-    @param [in] forbidden_vertices vector of forbidden vertices
-    @param [in/out] log string stream containing log information
-    @param [in/out] err string stream containing err information
+/** @brief Stored results on a vector are saved on a C array
+ *
+ * @param[in] graph Created graph with the base Graph
+ * @param[in] matrix matrix[i,j] -> the i,j element contains the results
+ * @param[out] result_tuple_count the size of the C array
+ * @param[out] postgres_rows The C array of <bigint, bigint, float>
+ *
+ * <bigint, bigint, float> =  <i , j, results[i,j]>
+ *
+ * Currently works for
+ * - pgr_johnson
+ * - pgr_floydWarshall
  */
 template <class G>
-void perform_contractionHierarchies(
-        G &graph,
-        bool directed,
-        const std::vector< Edge_t > &edges,
-        const std::vector< int64_t > &forbidden_vertices,
-        std::ostringstream &log,
-        std::ostringstream &err) {
-    // Create the graph
-    graph.insert_edges(edges);
+void matrix_to_tuple(
+        const G &graph,
+        const std::vector<std::vector<double>> &matrix,
+        size_t &result_tuple_count,
+        IID_t_rt **postgres_rows) {
+    result_tuple_count = detail::count_rows(graph, matrix);
+    *postgres_rows = pgr_alloc(result_tuple_count, (*postgres_rows));
 
-    // Transform the forbidden vertices IDs vector to a collection of vertices
-    pgrouting::Identifiers<typename G::V> forbid_vertices;
-    for (const auto &vertex : forbidden_vertices) {
-        if (graph.has_vertex(vertex)) {
-            forbid_vertices += graph.get_V(vertex);
+    size_t seq = 0;
+    for (typename G::V v_i = 0; v_i < graph.num_vertices(); v_i++) {
+        for (typename G::V v_j = 0; v_j < graph.num_vertices(); v_j++) {
+            if (v_i == v_j) continue;
+            if (matrix[v_i][v_j] != (std::numeric_limits<double>::max)()) {
+                (*postgres_rows)[seq].from_vid = graph[v_i].id;
+                (*postgres_rows)[seq].to_vid = graph[v_j].id;
+                (*postgres_rows)[seq].cost =  matrix[v_i][v_j];
+                seq++;
+            }
         }
-    }
-    graph.set_forbidden_vertices(forbid_vertices);
-
-    // Execute the contraction
-    try {
-        pgrouting::functions::contractionHierarchies(graph, directed, log, err);
-    }
-    catch ( ... ) {
-        err << "Contractions hierarchy failed" << std::endl;
-        throw;
     }
 }
 
-/*! @brief returns results to the SQL function
+/** @brief returns results to the SQL function
     @param [in] graph created graph
     @param [out] return_tuples tuples containing the results to pass to the SQL function
     @param [out] count string stream containing log information
+
+  Currently works for pgr_contractionHierarchies
 */
 template <class G>
-void get_postgres_result_contractionHierarchies(
+void graph_to_tuple(
         G &graph,
         contractionHierarchies_rt **return_tuples,
         size_t *count) {
@@ -177,6 +204,12 @@ void get_postgres_result_contractionHierarchies(
     }
 }
 
-}  // namespace detail
+/*
+ * @brief Via Routes save on a C array
+ */
+size_t get_viaRoute(std::deque<pgrouting::Path>&, Routes_t**);
+
+}  // namespace to_postgres
+}  // namespace pgrouting
 
 #endif  // INCLUDE_CPP_COMMON_TO_POSTGRES_HPP_

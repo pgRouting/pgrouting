@@ -48,18 +48,21 @@ Bugs are reported and managed in an `issue tracker
 
 
 
-Mailing List and GIS StackExchange
+Mailing List, Matrix, GIS StackExchange
 -------------------------------------------------------------------------------
 
-There are two mailing lists for pgRouting hosted on OSGeo mailing list server:
+There are two mailing lists for pgRouting hosted on OSGeo discourse server:
 
-* User mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-users
+* User mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-users/
 * Developer mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-dev/
 
   * Subscribe: https://discourse.osgeo.org/g/pgrouting-dev
 
 For general questions and topics about how to use pgRouting, please write to the
 user mailing list.
+
+If you want to chat with fellow pgRouting users and contributors, you
+can join our matrix channel: `pgRouting matrix channel <https://matrix.to/#/#pgrouting:osgeo.org>`_.
 
 You can also ask at `GIS StackExchange <https://gis.stackexchange.com/>`_ and
 tag the question with ``pgrouting``.

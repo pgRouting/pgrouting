@@ -9,10 +9,6 @@ q TEXT;
 separator TEXT;
 BEGIN
     FOR i IN 0..array_length(params, 1) LOOP
-        IF _pgr_versionless((SELECT boost from pgr_full_version()), '1.54.0') AND func='pgr_alphashape' THEN
-            RETURN QUERY SELECT * FROM  skip('pgr_alphaSahpe not supported when compiled with Boost version < 1.54.0', 2);
-            CONTINUE;
-        END IF;
         separator = ' ';
         mp := params;
         IF i != 0 THEN
@@ -35,9 +31,9 @@ BEGIN
         IF i = 0 THEN
             RETURN query SELECT * FROM isnt_empty(q1, 'isnt_empty ' || q1);
         ELSE
-            IF func='pgr_alphashape' OR func='pgr_isplanar' THEN
+            IF func='pgr_isplanar' THEN
                 RETURN query SELECT * FROM isnt_empty(q1, 'isnt_empty' || q1);
-            ELSIF func='pgr_maxFlow' OR func='pgr_maxFlowMinCost_Cost' THEN
+            ELSIF func='pgr_maxFlow' OR func='pgr_maxFlowMinCost_Cost' OR func = 'pgr_bandwidth' THEN
                 RETURN query SELECT * FROM set_eq(q1, 'SELECT NULL::BIGINT', 'set_eq' || q1);
             ELSE
                 RETURN query SELECT * FROM is_empty(q1, 'is_empty' || q1);

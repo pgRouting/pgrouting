@@ -19,16 +19,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(5) END;
+SELECT CASE WHEN NOT min_version('4.0.0') THEN plan(1) ELSE plan(5) END;
 
 CREATE OR REPLACE FUNCTION types_check()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF NOT min_version('3.2.0') THEN
+  IF NOT min_version('4.0.0') THEN
     RETURN QUERY
-    SELECT skip(1, 'Function is new on 3.2.0');
+    SELECT skip(1, 'pgr_sequentialvertexcoloring: testing only signatures standardaized in v4.0.0.');
     RETURN;
   END IF;
 
@@ -38,7 +38,7 @@ BEGIN
 
   RETURN QUERY
   SELECT function_args_eq('pgr_sequentialvertexcoloring',
-    $$SELECT  '{"","vertex_id","color_id"}'::TEXT[] $$
+    $$SELECT  '{"","node","color"}'::TEXT[] $$
   );
 
   RETURN QUERY

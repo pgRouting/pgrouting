@@ -20,6 +20,10 @@
 
 .. rubric:: Availability
 
+.. rubric:: Version 4.0.0
+
+* All signatures promoted to official.
+
 .. rubric:: Version 3.6.0
 
 * Standardizing output columns to |nksp-result|
@@ -93,7 +97,7 @@ One to One
     :end-before: --q2
 
 .. index::
-    single: KSP ; One to Many - Proposed on 3.6
+    single: KSP ; One to Many
 
 One to Many
 ...............................................................................
@@ -114,7 +118,7 @@ One to Many
     :end-before: --q3
 
 .. index::
-    single: KSP ; Many to One - Proposed in 3.6
+    single: KSP ; Many to One
 
 Many to One
 ...............................................................................
@@ -135,7 +139,7 @@ Many to One
     :end-before: --q4
 
 .. index::
-    single: KSP ; Many to Many - Proposed in 3.6
+    single: KSP ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -156,7 +160,7 @@ Many to Many
     :end-before: --q5
 
 .. index::
-   single: KSP ; Combinations - Proposed in 3.6
+   single: KSP ; Combinations
 
 Combinations
 ...............................................................................
@@ -269,50 +273,9 @@ Combinations SQL
 Result columns
 -------------------------------------------------------------------------------
 
-.. ksp_returns_start
-
-Returns set of |nksp-result|
-
-.. list-table::
-   :width: 81
-   :widths: auto
-   :header-rows: 1
-
-   * - Column
-     - Type
-     - Description
-   * - ``seq``
-     - ``INTEGER``
-     - Sequential value starting from **1**.
-   * - ``path_id``
-     - ``INTEGER``
-     - Path identifier.
-
-       * Has value **1** for the first of a path from ``start_vid`` to
-         ``end_vid``
-   * - ``path_seq``
-     - ``INTEGER``
-     - Relative position in the path. Has value **1** for the beginning of a
-       path.
-   * - ``node``
-     - ``BIGINT``
-     - Identifier of the node in the path from ``start_vid`` to ``end_vid``
-   * - ``edge``
-     - ``BIGINT``
-     - Identifier of the edge used to go from ``node`` to the next node in the
-       path sequence. **-1** for the last node of the path.
-   * - ``cost``
-     - ``FLOAT``
-     - Cost to traverse from ``node`` using ``edge`` to the next node in the
-       path sequence.
-
-       * :math:`0` for the last ``node`` of the path.
-   * - ``agg_cost``
-     - ``FLOAT``
-     - Aggregate cost from **start vid** to ``node``.
-
-.. ksp_returns_end
-
+.. include:: pgRouting-concepts.rst
+    :start-after: return_path_all_columns_start
+    :end-before: return_path_all_columns_end
 
 Additional Examples
 -------------------------------------------------------------------------------

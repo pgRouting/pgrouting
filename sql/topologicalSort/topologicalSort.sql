@@ -34,16 +34,16 @@ CREATE FUNCTION pgr_topologicalSort(
     TEXT, -- edges_sql (required)
 
     OUT seq INTEGER,
-    OUT sorted_v BIGINT)
+    OUT node BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, sorted_v
     FROM _pgr_topologicalSort(_pgr_get_statement($1));
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
--- COMMENTS
 
 
 COMMENT ON FUNCTION pgr_topologicalSort(TEXT)

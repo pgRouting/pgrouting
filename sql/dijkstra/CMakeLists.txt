@@ -1,12 +1,11 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     _dijkstra.sql
     dijkstra.sql
     dijkstraCost.sql
     dijkstraCostMatrix.sql
     _dijkstraVia.sql
     dijkstraVia.sql
-    _dijkstraNear.sql
     dijkstraNear.sql
     dijkstraNearCost.sql
     )

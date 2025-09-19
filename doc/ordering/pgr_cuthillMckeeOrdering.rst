@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 .. index::
@@ -63,7 +63,7 @@ Signatures
 
    | pgr_cuthillMckeeOrdering(`Edges SQL`_)
 
-   | Returns set of |result-node-order|
+   | Returns set of |result_node_order|
    | OR EMPTY SET
 
 :Example: Graph ordering of pgRouting :doc:`sampledata`
@@ -94,6 +94,8 @@ Edges SQL
 Result columns
 -------------------------------------------------------------------------------
 
+.. node_ordering_start
+
 Returns set of ``(seq, node)``
 
 ===============  =========== ======================================
@@ -102,6 +104,8 @@ Column           Type        Description
 ``seq``           ``BIGINT``  Sequence of the order starting from 1.
 ``node``          ``BIGINT``  New ordering in reverse order.
 ===============  =========== ======================================
+
+.. node_ordering_end
 
 See Also
 -------------------------------------------------------------------------------

@@ -20,16 +20,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(108);
+SELECT CASE WHEN NOT min_version('3.6.0') AND min_lib_version('5.0.0') THEN plan(1) ELSE plan(108) END;
 
 
--- ONE SOURCE
-SELECT style_dijkstra('pgr_drivingdistance(', ',2, 1, true)');
+CREATE OR REPLACE FUNCTION inner_query() RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+    IF NOT min_version('3.6.0') AND min_lib_version('5.0.0') THEN
+      RETURN NEXT skip(1, 'Internal function deprecated on 3.6.0 and removed on 5.0.0');
+      RETURN;
+    END IF;
 
--- MANY SOURCES
-SELECT style_dijkstra('pgr_drivingdistance(', ',ARRAY[2,3], 1, true)');
+    RETURN QUERY SELECT style_dijkstra('pgr_drivingdistance(', ',2, 1, true)');
+    RETURN QUERY SELECT style_dijkstra('pgr_drivingdistance(', ',ARRAY[2,3], 1, true)');
+END;
+$BODY$
+LANGUAGE plpgsql;
 
-
-
+SELECT inner_query();
 SELECT finish();
 ROLLBACK;

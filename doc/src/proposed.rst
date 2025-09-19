@@ -15,46 +15,20 @@ Proposed Functions
 
 .. warning-begin
 
-.. collapse:: Proposed
+.. admonition:: Proposed
 
    .. warning:: Proposed functions for next mayor release.
 
      - They are not officially in the current release.
-     - They will likely officially be part of the next mayor release:
 
-       - The functions make use of ANY-INTEGER and ANY-NUMERICAL
-       - Name might not change. (But still can)
-       - Signature might not change. (But still can)
-       - Functionality might not change. (But still can)
+       - Code has been reviewed therefore is not experimental.
+       - Name, signature and functionality might not change.
        - pgTap tests have being done. But might need more.
        - Documentation might need refinement.
 
 .. end-warning
 
 .. rubric:: Families
-
-:doc:`dijkstra-family`
-
-.. include:: dijkstra-family.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
-:doc:`withPoints-family`
-
-.. include:: withPoints-family.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
-:doc:`TRSP-family`
-
-.. include:: TRSP-family.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
-.. toctree::
-   :hidden:
-
-   TRSP-family
 
 :doc:`transformation-family`
 
@@ -77,14 +51,8 @@ Proposed Functions
 :doc:`traversal-family`
 
 .. include:: traversal-family.rst
-   :start-after: official-start
-   :end-before: official-end
-
-.. toctree::
-   :hidden:
-
-   traversal-family
-   coloring-family
+   :start-after: proposed-start
+   :end-before: proposed-end
 
 .. rubric:: categories
 
@@ -93,44 +61,6 @@ Proposed Functions
 .. include:: cost-category.rst
    :start-after: proposed-start
    :end-before: proposed-end
-
-:doc:`costMatrix-category`
-
-.. include:: costMatrix-category.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
-:doc:`drivingDistance-category`
-
-.. include:: drivingDistance-category.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
-:doc:`KSP-category`
-
-.. include:: KSP-category.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
-:doc:`via-category`
-
-.. include:: via-category.rst
-   :start-after: proposed start
-   :end-before: proposed end
-
-:doc:`withPoints-category`
-
-.. include:: withPoints-category.rst
-   :start-after: proposed start
-   :end-before: proposed end
-
-.. toctree::
-    :hidden:
-
-    withPoints-family
-    KSP-category
-    via-category
-    withPoints-category
 
 See Also
 -------------------------------------------------------------------------------

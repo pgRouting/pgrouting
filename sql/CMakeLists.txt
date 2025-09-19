@@ -1,5 +1,12 @@
 add_subdirectory(sigs)
 
+set(COST_HIGH 10000)
+set(COST_MED   5000)
+set(COST_LOW    100)
+
+set(ROWS_HIGH 10000)
+set(ROWS_MED   5000)
+set(ROWS_LOW    100)
 
 #-------------------
 # From the parent get the subdirectories that have the SQL files
@@ -56,7 +63,7 @@ add_custom_target(extension_file ALL
 #-------------------
 foreach (old_s ${OLD_SIGNATURES})
     string(REGEX REPLACE "^([0-9]+\\.[0-9]+).*" "\\1" minor_s ${old_s})
-    SET (UPDATE_FILES ${UPDATE_FILES} ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME_LOWER}--${old_s}--${PROJECT_VERSION}.sql)
+    set(UPDATE_FILES ${UPDATE_FILES} ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME_LOWER}--${old_s}--${PROJECT_VERSION}.sql)
     add_custom_command(
         OUTPUT ${PROJECT_NAME_LOWER}--${old_s}--${PROJECT_VERSION}.sql
 
@@ -75,4 +82,4 @@ add_custom_target(update_files ALL
     )
 
 
-SET(PROJECT_FILES_TO_INSTALL  ${UPDATE_FILES} ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_EXTENSION_FILE} ${CMAKE_CURRENT_BINARY_DIR}/common/${PROJECT_NAME_LOWER}.control PARENT_SCOPE)
+set(PROJECT_FILES_TO_INSTALL  ${UPDATE_FILES} ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_EXTENSION_FILE} ${CMAKE_CURRENT_BINARY_DIR}/common/${PROJECT_NAME_LOWER}.control PARENT_SCOPE)

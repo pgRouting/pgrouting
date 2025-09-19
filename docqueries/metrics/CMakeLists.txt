@@ -1,5 +1,6 @@
 # Do not use extensions
-SET(LOCAL_FILES
+set(LOCAL_FILES
+    bandwidth
     betweennessCentrality
     degree
     )

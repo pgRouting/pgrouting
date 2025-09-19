@@ -16,21 +16,33 @@
 
 |
 
-``pgr_trspVia_withPoints`` - Proposed
+``pgr_trspVia_withPoints``
 ===============================================================================
 
 ``pgr_trspVia_withPoints`` - Route that goes through a list of vertices and/or
 points with restrictions.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
 
-* Version 3.4.0
+.. rubric:: Version 4.0.0
 
-  * New proposed function.
+* Function promoted to official.
+* **Driving side** parameter is positional unnamed.
+
+  * Valid values depend on kind of graph
+
+* Breaking change, signatures no longer available:
+
+  * pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)
+  * pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
+
+
+.. rubric:: Version 3.4.0
+
+* New proposed function.
+* Deprecated signatures
+
+  * pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
 
 Description
 -------------------------------------------------------------------------------
@@ -65,7 +77,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: trspVia_withPoints ; One Via - Proposed on v3.4
+    single: trspVia_withPoints ; One Via
 
 One Via
 ...............................................................................
@@ -73,8 +85,8 @@ One Via
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **via vertices**, [**options**])
-   | **options:** ``[directed, strict, U_turn_on_edge]``
+   | pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **via vertices**, [**driving side**,] [**options**])
+   | **options:** ``[directed, strict, U_turn_on_edge, details]``
 
    | Returns set of |via-result|
    | OR EMPTY SET
@@ -89,9 +101,41 @@ One Via
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: via-category.rst
-    :start-after: via_withPoints_parameters_start
-    :end-before: via_withPoints_parameters_end
+.. trspvia_withPoints_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     - SQL query as described.
+   * - `Restrictions SQL`_
+     - ``TEXT``
+     - SQL query as described.
+   * - `Points SQL`_
+     - ``TEXT``
+     - SQL query as described.
+   * - **via vertices**
+     - ``ARRAY`` [ **ANY-INTEGER** ]
+     - Array of ordered vertices identifiers that are going to be visited.
+
+       * When positive it is considered a vertex identifier
+       * When negative it is considered a point identifier
+
+.. include:: withPoints-category.rst
+    :start-after: driving_side_start
+    :end-before: driving_side_end
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+
+.. trspvia_withPoints_parameters_end
 
 Optional parameters
 ...............................................................................
@@ -110,9 +154,9 @@ Via optional parameters
 With points optional parameters
 ...............................................................................
 
-.. include:: pgr_trsp_withPoints.rst
-    :start-after: withPoints_parameters_start
-    :end-before: withPoints_parameters_end
+.. include:: withPoints-category.rst
+   :start-after: withPoints_optionals_start
+   :end-before: withPoints_optionals_end
 
 Inner Queries
 -------------------------------------------------------------------------------

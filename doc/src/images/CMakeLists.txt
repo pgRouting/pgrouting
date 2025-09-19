@@ -1,5 +1,5 @@
 
-SET(LOCAL_FILES
+set(LOCAL_FILES
     crossing_edges.png
     touching_edges.png
     Dijkstra_Animation.gif

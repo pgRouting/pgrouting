@@ -24,7 +24,7 @@ SELECT CASE WHEN min_version('3.2.0') THEN plan (22) ELSE plan(2) END;
 
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-CREATE OR REPLACE FUNCTION foo(cant INTEGER default 18, flag boolean default true)
+CREATE OR REPLACE FUNCTION foo(lim INTEGER default 18, flag boolean default true)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -41,7 +41,7 @@ BEGIN
     FOR depth IN 1..11 LOOP
         sql_SingleVertex := '';
         sql_MultipleVertices := '';
-        FOR i IN 1..cant LOOP
+        FOR i IN 1..lim LOOP
 
             IF i > 1 THEN
                 sql_SingleVertex := sql_SingleVertex

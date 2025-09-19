@@ -21,19 +21,7 @@ BEGIN;
 
 SELECT plan(5);
 
-SELECT has_function('pgr_bddijkstracostmatrix');
-SELECT has_function('pgr_bddijkstracostmatrix', ARRAY['text','anyarray','boolean']);
-SELECT function_returns('pgr_bddijkstracostmatrix', ARRAY['text','anyarray','boolean'],'setof record');
-
-SELECT function_args_eq('pgr_bddijkstracostmatrix',
-  $$VALUES
-  ('{"","","directed","start_vid","end_vid","agg_cost"}'::TEXT[])
-  $$);
-
-SELECT function_types_eq('pgr_bddijkstracostmatrix',
-  $$VALUES
-  ('{text,anyarray,bool,int8,int8,float8}'::TEXT[])
-  $$);
+SELECT cost_types_check('pgr_bddijkstracostmatrix');
 
 SELECT finish();
 ROLLBACK;

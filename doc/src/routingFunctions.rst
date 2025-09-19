@@ -89,9 +89,9 @@ Function Families
    :start-after: official-start
    :end-before: official-end
 
-:doc:`topology-functions`
+:doc:`TRSP-family`
 
-.. include:: topology-functions.rst
+.. include:: TRSP-family.rst
    :start-after: official-start
    :end-before: official-end
 
@@ -101,13 +101,17 @@ Function Families
    :start-after: official-start
    :end-before: official-end
 
-:doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)
+:doc:`utilities-family`
 
-.. rubric:: Utilities
+.. include:: utilities-family.rst
+   :start-after: official-start
+   :end-before: official-end
 
-.. include:: topology-functions.rst
-   :start-after: utility_official-start
-   :end-before: utility_official-end
+:doc:`withPoints-family`
+
+.. include:: withPoints-family.rst
+   :start-after: official-start
+   :end-before: official-end
 
 Functions by categories
 ===============================================================================
@@ -155,6 +159,12 @@ Functions by categories
    :start-after: official-start
    :end-before: official-end
 
+:doc:`withPoints-category`
+
+.. include:: withPoints-category.rst
+   :start-after: official-start
+   :end-before: official-end
+
 .. to-here
 
 .. toctree::
@@ -172,8 +182,10 @@ Functions by categories
     metrics-family
     prim-family
     reference
-    topology-functions
+    TRSP-family
     TSP-family
+    utilities-family
+    withPoints-family
 
 .. toctree::
     :hidden:

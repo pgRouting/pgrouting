@@ -21,297 +21,298 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.2.0') THEN plan (16) ELSE plan(1) END;
+SELECT CASE WHEN min_version('3.2.0') THEN plan (17) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-IF NOT min_version('3.2.0') THEN
+  IF NOT min_version('3.2.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_depthFirstSearch: Function is new on 3.2.0');
+    RETURN;
+  END IF;
+
+  PREPARE sample_data AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM edges;
+
+  -- max_depth 1 cases (directed)
+
+  PREPARE depthFirstSearch1 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
+    'sample_data',
+    1, max_depth => 1
+  );
+
+  RETURN QUERY SELECT lives_ok('depthFirstSearch1');
+
+  PREPARE depthFirstSearch2 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
+    'sample_data',
+    2, max_depth => 1
+  );
+
+  PREPARE depthFirstSearch3 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
+    'sample_data',
+    5, max_depth => 1
+  );
+
+  PREPARE breadthFirstSearch1 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
+    'sample_data',
+    1, max_depth => 1
+  );
+
+  PREPARE breadthFirstSearch2 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
+    'sample_data',
+    2, max_depth => 1
+  );
+
+  PREPARE breadthFirstSearch3 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
+    'sample_data',
+    5, max_depth => 1
+  );
+
   RETURN QUERY
-  SELECT skip(1, 'Function is new on 3.2.0');
-  RETURN;
-END IF;
+  SELECT set_eq('depthFirstSearch1', 'breadthFirstSearch1', '1: max_depth => 1 cases (directed)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch2', 'breadthFirstSearch2', '2: max_depth => 1 cases (directed)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch3', 'breadthFirstSearch3', '3: max_depth => 1 cases (directed)');
 
+  -- max_depth 1 cases (undirected)
 
-PREPARE sample_data AS
-SELECT id, source, target, cost, reverse_cost
-FROM edges;
-
--- max_depth 1 cases (directed)
-
-PREPARE depthFirstSearch1 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
-    'sample_data',
-    1, max_depth => 1
-);
-
-PREPARE depthFirstSearch2 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
-    'sample_data',
-    2, max_depth => 1
-);
-
-PREPARE depthFirstSearch3 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
-    'sample_data',
-    5, max_depth => 1
-);
-
-PREPARE breadthFirstSearch1 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
-    'sample_data',
-    1, max_depth => 1
-);
-
-PREPARE breadthFirstSearch2 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
-    'sample_data',
-    2, max_depth => 1
-);
-
-PREPARE breadthFirstSearch3 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
-    'sample_data',
-    5, max_depth => 1
-);
-
-RETURN QUERY
-SELECT set_eq('depthFirstSearch1', 'breadthFirstSearch1', '1: max_depth => 1 cases (directed)');
-RETURN QUERY
-SELECT set_eq('depthFirstSearch2', 'breadthFirstSearch2', '2: max_depth => 1 cases (directed)');
-RETURN QUERY
-SELECT set_eq('depthFirstSearch3', 'breadthFirstSearch3', '3: max_depth => 1 cases (directed)');
-
--- max_depth 1 cases (undirected)
-
-PREPARE depthFirstSearch4 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
+  PREPARE depthFirstSearch4 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
     'sample_data',
     1, directed => false, max_depth => 1
-);
+  );
 
-PREPARE depthFirstSearch5 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
+  PREPARE depthFirstSearch5 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
     'sample_data',
     2, directed => false, max_depth => 1
-);
+  );
 
-PREPARE depthFirstSearch6 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
+  PREPARE depthFirstSearch6 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
     'sample_data',
     5, directed => false, max_depth => 1
-);
+  );
 
-PREPARE breadthFirstSearch4 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch4 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
     'sample_data',
     1, directed => false, max_depth => 1
-);
+  );
 
-PREPARE breadthFirstSearch5 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch5 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
     'sample_data',
     2, directed => false, max_depth => 1
-);
+  );
 
-PREPARE breadthFirstSearch6 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch6 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
     'sample_data',
     5, directed => false, max_depth => 1
-);
+  );
 
-RETURN QUERY
-SELECT set_eq('depthFirstSearch4', 'breadthFirstSearch4', '4: max_depth => 1 cases (undirected)');
-RETURN QUERY
-SELECT set_eq('depthFirstSearch5', 'breadthFirstSearch5', '5: max_depth => 1 cases (undirected)');
-RETURN QUERY
-SELECT set_eq('depthFirstSearch6', 'breadthFirstSearch6', '6: max_depth => 1 cases (undirected)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch4', 'breadthFirstSearch4', '4: max_depth => 1 cases (undirected)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch5', 'breadthFirstSearch5', '5: max_depth => 1 cases (undirected)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch6', 'breadthFirstSearch6', '6: max_depth => 1 cases (undirected)');
 
--- max_depth 2 cases (directed)
+  -- max_depth 2 cases (directed)
 
-PREPARE depthFirstSearch7 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
+  PREPARE depthFirstSearch7 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
     'sample_data',
     1, max_depth => 2
-);
+  );
 
-PREPARE depthFirstSearch8 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
+  PREPARE depthFirstSearch8 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
     'sample_data',
     2, max_depth => 2
-);
+  );
 
-PREPARE depthFirstSearch9 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
+  PREPARE depthFirstSearch9 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
     'sample_data',
     5, max_depth => 2
-);
+  );
 
-PREPARE breadthFirstSearch7 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch7 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
     'sample_data',
     1, max_depth => 2
-);
+  );
 
-PREPARE breadthFirstSearch8 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch8 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
     'sample_data',
     2, max_depth => 2
-);
+  );
 
-PREPARE breadthFirstSearch9 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch9 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
     'sample_data',
     5, max_depth => 2
-);
+  );
 
-RETURN QUERY
-SELECT set_eq('depthFirstSearch7', 'breadthFirstSearch7', '7: max_depth => 2 cases (directed)');
-RETURN QUERY
-SELECT set_eq('depthFirstSearch8', 'breadthFirstSearch8', '8: max_depth => 2 cases (directed)');
-RETURN QUERY
-SELECT set_eq('depthFirstSearch9', 'breadthFirstSearch9', '9: max_depth => 2 cases (directed)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch7', 'breadthFirstSearch7', '7: max_depth => 2 cases (directed)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch8', 'breadthFirstSearch8', '8: max_depth => 2 cases (directed)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch9', 'breadthFirstSearch9', '9: max_depth => 2 cases (directed)');
 
--- max_depth 2 cases (undirected)
+  -- max_depth 2 cases (undirected)
 
-PREPARE depthFirstSearch10 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
+  PREPARE depthFirstSearch10 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
     'sample_data',
     1, directed => false, max_depth => 2
-);
+  );
 
-PREPARE depthFirstSearch11 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
+  PREPARE depthFirstSearch11 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
     'sample_data',
     2, directed => false, max_depth => 2
-);
+  );
 
-PREPARE depthFirstSearch12 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
+  PREPARE depthFirstSearch12 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
     'sample_data',
     5, directed => false, max_depth => 2
-);
+  );
 
-PREPARE breadthFirstSearch10 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch10 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
     'sample_data',
     1, directed => false, max_depth => 2
-);
+  );
 
-PREPARE breadthFirstSearch11 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch11 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
     'sample_data',
     2, directed => false, max_depth => 2
-);
+  );
 
-PREPARE breadthFirstSearch12 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch12 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
     'sample_data',
     5, directed => false, max_depth => 2
-);
+  );
 
-RETURN QUERY
-SELECT set_eq('depthFirstSearch10', 'breadthFirstSearch10', '10: max_depth => 2 cases (undirected)');
-RETURN QUERY
-SELECT set_eq('depthFirstSearch11', 'breadthFirstSearch11', '11: max_depth => 2 cases (undirected)');
-RETURN QUERY
-SELECT set_eq('depthFirstSearch12', 'breadthFirstSearch12', '12: max_depth => 2 cases (undirected)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch10', 'breadthFirstSearch10', '10: max_depth => 2 cases (undirected)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch11', 'breadthFirstSearch11', '11: max_depth => 2 cases (undirected)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch12', 'breadthFirstSearch12', '12: max_depth => 2 cases (undirected)');
 
--- max_depth 3 cases (directed)
+  -- max_depth 3 cases (directed)
 
-PREPARE depthFirstSearch13 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
+  PREPARE depthFirstSearch13 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
     'sample_data',
     1, max_depth => 3
-);
+  );
 
-PREPARE depthFirstSearch14 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
+  PREPARE depthFirstSearch14 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
     'sample_data',
     2, max_depth => 3
-);
+  );
 
-PREPARE depthFirstSearch15 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
+  PREPARE depthFirstSearch15 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
     'sample_data',
     5, max_depth => 3
-);
+  );
 
-PREPARE breadthFirstSearch13 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch13 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
     'sample_data',
     1, max_depth => 3
-);
+  );
 
-PREPARE breadthFirstSearch14 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch14 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
     'sample_data',
     2, max_depth => 3
-);
+  );
 
-PREPARE breadthFirstSearch15 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch15 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
     'sample_data',
     5, max_depth => 3
-);
+  );
 
-RETURN QUERY
-SELECT set_eq('depthFirstSearch13', 'breadthFirstSearch13', '13: max_depth => 3 cases (directed)');
-RETURN QUERY
-SELECT set_eq('depthFirstSearch14', 'breadthFirstSearch14', '14: max_depth => 3 cases (directed)');
-RETURN QUERY
-SELECT set_eq('depthFirstSearch15', 'breadthFirstSearch15', '15: max_depth => 3 cases (directed)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch13', 'breadthFirstSearch13', '13: max_depth => 3 cases (directed)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch14', 'breadthFirstSearch14', '14: max_depth => 3 cases (directed)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch15', 'breadthFirstSearch15', '15: max_depth => 3 cases (directed)');
 
--- max_depth 3 cases (undirected)
+  -- max_depth 3 cases (undirected)
 
-PREPARE depthFirstSearch16 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_depthFirstSearch(
+  PREPARE depthFirstSearch16 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_depthFirstSearch(
     'sample_data',
     1, directed => false, max_depth => 3
-);
+  );
 
-PREPARE breadthFirstSearch16 AS
-SELECT depth, start_vid, node, edge, cost, agg_cost
-FROM pgr_breadthFirstSearch(
+  PREPARE breadthFirstSearch16 AS
+  SELECT depth, start_vid, node, edge, cost, agg_cost
+  FROM pgr_breadthFirstSearch(
     'sample_data',
     1, directed => false, max_depth => 3
-);
+  );
 
-RETURN QUERY
-SELECT set_eq('depthFirstSearch16', 'breadthFirstSearch16', '16: max_depth => 3 cases (undirected)');
+  RETURN QUERY
+  SELECT set_eq('depthFirstSearch16', 'breadthFirstSearch16', '16: max_depth => 3 cases (undirected)');
 
 END;
 $BODY$

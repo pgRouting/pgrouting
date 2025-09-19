@@ -4,7 +4,7 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-mail: vicky_vergara@hotmail.com
+mail: vicky at erosion.dev
 
 ------
 
@@ -24,12 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
--------------------
--- pgr_dijkstraCost
--------------------
-
 -- ONE to ONE
---v2.6
+--v3.0
 CREATE FUNCTION pgr_dijkstraCost(
     TEXT,   -- edges_sql (required)
     BIGINT, -- from_vids (required)
@@ -43,16 +39,15 @@ CREATE FUNCTION pgr_dijkstraCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, true, true, 0, false);
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, true, true, 0, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 
 -- ONE to MANY
---v2.6
+--v3.0
 CREATE FUNCTION pgr_dijkstraCost(
     TEXT,     -- edges_sql (required)
     BIGINT,   -- from_vid (required)
@@ -66,17 +61,16 @@ CREATE FUNCTION pgr_dijkstraCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, true, true, 0, false);
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, true, true, 0, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 
 
 -- MANY to ONE
---v2.6
+--v3.0
 CREATE FUNCTION pgr_dijkstraCost(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -90,17 +84,16 @@ CREATE FUNCTION pgr_dijkstraCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, true, true, 0, false);
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, true, true, 0, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
 
 
 -- MANY to MANY
---v2.6
+--v3.0
 CREATE FUNCTION pgr_dijkstraCost(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -114,11 +107,10 @@ CREATE FUNCTION pgr_dijkstraCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, true, true, 0, false);
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, true, true, 0, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 -- Combinations SQL signature
 --v3.1
@@ -134,14 +126,12 @@ CREATE FUNCTION pgr_dijkstraCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), $3, true, 0, false);
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), _pgr_get_statement($2), $3, true, 0, false);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 
--- COMMENTS
 
 COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_dijkstraCost(One to One)

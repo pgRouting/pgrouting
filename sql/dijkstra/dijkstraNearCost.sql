@@ -24,10 +24,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---------------------
--- pgr_dijkstraNearCost
---------------------
-
 -- ONE to MANY
 --v3.2
 CREATE FUNCTION pgr_dijkstraNearCost(
@@ -44,11 +40,10 @@ CREATE FUNCTION pgr_dijkstraNearCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, true, true, cap, true);
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, true, true, cap, true);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 -- MANY to ONE
 --v3.2
@@ -66,11 +61,10 @@ CREATE FUNCTION pgr_dijkstraNearCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, true, false, cap, true);
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, true, false, cap, true);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 -- MANY to MANY
 --v3.2
@@ -89,13 +83,12 @@ CREATE FUNCTION pgr_dijkstraNearCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, true, true, cap, global);
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, true, true, cap, global);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
--- Combinations SQL signature
+-- Combinations
 --v3.2
 CREATE FUNCTION pgr_dijkstraNearCost(
     TEXT,     -- edges_sql (required)
@@ -111,14 +104,10 @@ CREATE FUNCTION pgr_dijkstraNearCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), directed, true, cap, global);
+    FROM _pgr_dijkstra_v4(_pgr_get_statement($1), _pgr_get_statement($2), directed, true, cap, global);
 $BODY$
-LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
-
-
--- COMMENTS
+LANGUAGE SQL VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_LOW};
 
 COMMENT ON FUNCTION pgr_dijkstraNearCost(TEXT, BIGINT, ANYARRAY, BOOLEAN, BIGINT)
 IS 'pgr_dijkstraNearCost(One to Many)

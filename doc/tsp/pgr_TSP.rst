@@ -20,27 +20,38 @@
 
 .. rubric:: Availability:
 
-* Version 3.2.1
+.. rubric:: Version 4.0.0
 
-  * Metric Algorithm from `Boost library
-    <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
-  * Simulated Annealing Algorithm no longer supported
+* Results change depending on input order
+* Only for undirected graphs
 
-    * The Simulated Annealing Algorithm related parameters are ignored:
-      max_processing_time, tries_per_temperature,
-      max_changes_per_temperature, max_consecutive_non_changes,
-      initial_temperature, final_temperature, cooling_factor,
-      randomize
+.. Breaking change
 
-* Version 2.3.0
+* Breaking change, signatures no longer available:
 
-  * Signature change
+  * pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double
+    precision,double precision,double precision,boolean)
 
-    * Old signature no longer supported
+.. rubric:: Version 3.2.1
 
-* Version 2.0.0
+* Metric Algorithm from `Boost library
+  <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+* Simulated Annealing Algorithm no longer supported
 
-  * Official function.
+  * The Simulated Annealing Algorithm related parameters are ignored:
+    `max_processing_time`, `tries_per_temperature`,
+    `max_changes_per_temperature`, `max_consecutive_non_changes`,
+    `initial_temperature`, `final_temperature`, `cooling_factor`, `randomize`
+
+.. rubric:: Version 2.3.0
+
+* Signature change
+
+ * Old signature no longer supported
+
+.. rubric:: Version 2.0.0
+
+* Official function.
 
 
 Description
@@ -54,6 +65,8 @@ Description
    :start-after: tsp characteristics start
    :end-before: tsp characteristics end
 
+- Results change depending on input order of the `Matrix SQL`_
+- Negative costs are ignored.
 - Can be Used with :doc:`costMatrix-category` functions preferably with
   `directed => false`.
 
@@ -98,9 +111,22 @@ Description
       - Some (or all) traveling costs on edges will still might not obey the
         triangle inequality.
 
-- When the data is incomplete, but it is a connected graph:
+- When the data does not come from an undirected graph or its not fully
+  connected:
 
-  - the missing values will be calculated with dijkstra algorithm.
+  - Missing values will be calculated with dijkstra algorithm.
+  - When the graph has more than one component:
+
+    - ``start_vid`` or ``end_vid`` are defined and are on the same component:
+      the TSP tour will happen on that component.
+    - ``start_vid`` or ``end_vid`` are defined and are not on the same
+      component: the TSP tour will propose a tour that has both components
+      where connecting costs are estimated.
+    - ``start_vid`` or ``end_vid`` are not defined: the starting point could be
+      on any component and will include data only from that component.
+
+- One cycle attempt to remove crossing edges is done to the TSP results.
+
 
 |Boost| Boost Graph Inside
 
