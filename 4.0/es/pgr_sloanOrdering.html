@@ -7,16 +7,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_sloanOrdering - Experimental &#8212; pgRouting Manual (4.0-dev)</title>
+    <title>pgr_sloanOrdering - Experimental &#8212; pgRouting Manual (4.0-alpha1)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=065f0aea"></script>
+    <script src="_static/documentation_options.js?v=5816fd0a"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
     <script src="_static/translations.js?v=efdbd0b9"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -158,8 +159,7 @@
 </div>
 <section id="pgr-sloanordering-experimental">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_sloanOrdering</span></code> - Experimental<a class="headerlink" href="#pgr-sloanordering-experimental" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_sloanOrdering</span></code> — Returns the sloan ordering of an undirected
-graph</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_sloanOrdering</span></code> — Returns the Sloan ordering of an undirected graph</p>
 <div class="admonition-experimental admonition">
 <p class="admonition-title">Experimental</p>
 <div class="admonition warning">
@@ -195,16 +195,16 @@ sparse matrix computations and finite element analysis.</p>
 <ul class="simple">
 <li><p>Finds a pseudoperipheral vertex pair to determine good starting points</p></li>
 <li><p>Uses a priority-based algorithm that balances vertex degree and distance from the start vertex.</p></li>
-<li><p>Aims to mininimize bandwidth (maximum difference between connected vertex indices.</p></li>
+<li><p>Aims to minimize bandwidth (maximum difference between connected vertex indices.</p></li>
 <li><p>The implementation is for undirected graphs</p></li>
 <li><p>Typically produces better orderings than simple breadth-first approaches.</p></li>
-<li><p>Run time is 0.115846 seconds.</p></li>
+<li><p>Time complexity: <span class="math notranslate nohighlight">\(O(V² + E)\)</span> where V is the number of vertices and E is
+the number of edges.</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
-<p>..rubric::Summary</p>
 <div class="signatures admonition" id="index-1">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -348,45 +348,69 @@ sparse matrix computations and finite element analysis.</p>
 <dd class="field-odd"><p>Sloan ordering of Original graph from Boost example (vertices 0-9).</p>
 </dd>
 </dl>
-<p>..graphviz:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">graph</span> <span class="n">G</span><span class="p">{</span>
-<span class="n">node</span><span class="p">[</span><span class="n">shape</span><span class="o">=</span><span class="n">circle</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">filled</span><span class="p">,</span> <span class="n">fillcolor</span><span class="o">=</span><span class="n">lightblue</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">black</span><span class="p">,</span> <span class="n">fontcolor</span><span class="o">=</span><span class="n">black</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">];</span>
-<span class="n">edge</span><span class="p">[</span><span class="n">color</span><span class="o">=</span><span class="n">black</span><span class="p">,</span> <span class="n">penwidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">];</span>
+<div class="graphviz"><img src="_images/graphviz-9b0f7f6c7e490abc66dde20f79e3a6d4b71e32c9.png" alt="graph G{
+node[shape=circle, style=filled, fillcolor=lightblue, color=black, fontcolor=black, fontsize=12];
+edge[color=black, penwidth=1.5];
 
-<span class="mi">0</span> <span class="o">--</span> <span class="mi">3</span><span class="p">;</span>
-<span class="mi">0</span> <span class="o">--</span> <span class="mi">5</span><span class="p">;</span>
-<span class="mi">1</span> <span class="o">--</span> <span class="mi">2</span><span class="p">;</span>
-<span class="mi">1</span> <span class="o">--</span> <span class="mi">4</span><span class="p">;</span>
-<span class="mi">1</span> <span class="o">--</span> <span class="mi">6</span><span class="p">;</span>
-<span class="mi">1</span> <span class="o">--</span> <span class="mi">9</span><span class="p">;</span>
-<span class="mi">2</span> <span class="o">--</span> <span class="mi">3</span><span class="p">;</span>
-<span class="mi">2</span> <span class="o">--</span> <span class="mi">4</span><span class="p">;</span>
-<span class="mi">3</span> <span class="o">--</span> <span class="mi">5</span><span class="p">;</span>
-<span class="mi">3</span> <span class="o">--</span> <span class="mi">8</span><span class="p">;</span>
-<span class="mi">4</span> <span class="o">--</span> <span class="mi">6</span><span class="p">;</span>
-<span class="mi">5</span> <span class="o">--</span> <span class="mi">6</span><span class="p">;</span>
-<span class="mi">5</span> <span class="o">--</span> <span class="mi">7</span><span class="p">;</span>
-<span class="mi">6</span> <span class="o">--</span> <span class="mi">7</span><span class="p">;</span>
+0 -- 3;
+0 -- 5;
+1 -- 2;
+1 -- 4;
+1 -- 6;
+1 -- 9;
+2 -- 3;
+2 -- 4;
+3 -- 5;
+3 -- 8;
+4 -- 6;
+5 -- 6;
+5 -- 7;
+6 -- 7;
 
-<span class="p">{</span><span class="n">rank</span><span class="o">=</span><span class="n">same</span><span class="p">;</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">8</span><span class="p">;}</span>
-<span class="p">{</span><span class="n">rank</span><span class="o">=</span><span class="n">same</span><span class="p">;</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">7</span><span class="p">;}</span>
-<span class="p">{</span><span class="n">rank</span><span class="o">=</span><span class="n">same</span><span class="p">;</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">6</span><span class="p">;}</span>
-<span class="p">{</span><span class="n">rank</span><span class="o">=</span><span class="n">same</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">9</span><span class="p">;}</span>
+{rank=same; 0; 8;}
+{rank=same; 3; 5; 7;}
+{rank=same; 2; 4; 6;}
+{rank=same; 1; 9;}
 
-<span class="p">}</span>
+}" class="graphviz" /></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">example_edges1</span> <span class="p">(</span>
+    <span class="nb">id</span> <span class="n">SERIAL</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="n">source</span> <span class="n">INTEGER</span><span class="p">,</span>
+    <span class="n">target</span> <span class="n">INTEGER</span><span class="p">,</span>
+    <span class="n">cost</span> <span class="n">DOUBLE</span> <span class="n">PRECISION</span><span class="p">,</span>
+    <span class="n">reverse_cost</span> <span class="n">DOUBLE</span> <span class="n">PRECISION</span>
+<span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
-<dl class="simple">
-<dt>..literalinclude::sloanOrdering.queries</dt><dd><dl class="field-list simple">
-<dt class="field-odd">start-after<span class="colon">:</span></dt>
-<dd class="field-odd"><p>–q3</p>
-</dd>
-<dt class="field-even">end-before<span class="colon">:</span></dt>
-<dd class="field-even"><p>–q4</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">example_edges1</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">24</span>
+</pre></div>
+</div>
 </section>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
@@ -415,7 +439,7 @@ sparse matrix computations and finite element analysis.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en sept 14, 2025.<br/>
+      Actualizado por última vez en sept 19, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
