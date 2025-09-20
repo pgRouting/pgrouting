@@ -53,7 +53,7 @@ The main Characteristics are:
 * For large graphs where there is a path between the starting vertex and ending
   vertex:
 
-  * It is expected to terminate faster than doc:`pgr_aStar`
+  * It is expected to terminate faster than :doc:`pgr_aStar`
 
 See :ref:`heuristics <astar_heuristics>` available and :ref:`factor
 <astar_factor>` handling.
