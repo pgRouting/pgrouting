@@ -2,14 +2,14 @@
 # Copyright (C) pgRouting Contributors - Version v3.8
 # This file is distributed under the same license as the pgRouting package.
 # Regina Obe <regina@arrival3d.com>, 2022.
-# Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>, 2022.
+# Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>, 2022, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-08 17:37+0000\n"
 "PO-Revision-Date: 2025-09-22 16:28+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>\n"
 "Language-Team: Korean <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/ko/>\n"
 "Language: ko\n"
@@ -2535,15 +2535,13 @@ msgstr ":doc:`pgr_bdAstar` - 경로를 얻기 위한 양방향 A* 알고리즘."
 msgid ""
 ":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of "
 "the paths."
-msgstr ""
-":doc:`pgr_bdAstarCost` - 경로의 비용을 계산하기 위한 양방향 A* 알고리즘."
+msgstr ":doc:`pgr_bdAstarCost` - 경로의 비용을 계산하기 위한 양방향 A* 알고리즘."
 
 msgid ""
 ":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a "
 "cost matrix of paths."
-msgstr ""
-":doc:`pgr_bdAstarCostMatrix` - 경로의 비용 행렬을 계산하기 위한 양방향 A* 알"
-"고리즘."
+msgstr ":doc:`pgr_bdAstarCostMatrix` - 경로의 비용 행렬을 계산하기 위한 양방향 A* "
+"알고리즘."
 
 msgid ""
 "Based on A* algorithm, the bidirectional search finds a shortest path from a "
@@ -2576,9 +2574,8 @@ msgstr ":doc:`pgr_bdDijkstra` - 최단 경로를 위한 양방향 다익스트�
 msgid ""
 ":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of "
 "the shortest paths"
-msgstr ""
-":doc:`pgr_bdDijkstraCost` - 최단 경로의 비용을 계산하기 위한 양방향 다익스트"
-"라 알고리즘"
+msgstr ":doc:`pgr_bdDijkstraCost` - 최단 경로의 비용을 계산하기 위한 양방향 "
+"다익스트라 알고리즘"
 
 #, fuzzy
 msgid ""
@@ -3042,8 +3039,7 @@ msgstr ""
 msgid ""
 ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest "
 "paths."
-msgstr ""
-":doc:`pgr_KSP` - K 최단 경로를 얻기 위해 pgr_dijkstra로 Yen 알고리즘을 사용."
+msgstr ":doc:`pgr_KSP` - K 최단 경로를 얻기 위해 pgr_dijkstra로 Yen 알고리즘을 사용."
 
 msgid ":doc:`pgr_dijkstraVia` - Get a route of a sequence of vertices."
 msgstr ""
@@ -3752,8 +3748,8 @@ msgid ""
 "other network analysis functionality."
 msgstr ""
 "pgRouting은 `PostGIS <https://postgis.net>`__/`PostgreSQL <https://www."
-"postgresql.org>`__ 지리공간 데이터베이스를 확장하여 기하공간 라우팅과 기타 네"
-"트워크 분석 기능을 제공합니다."
+"postgresql.org>`__ 지리공간 데이터베이스를 확장하여 기하공간 라우팅과 기타 "
+"네트워크 분석 기능을 제공합니다."
 
 msgid "This is the manual for pgRouting |release|."
 msgstr "이 문서는 pgRouting |release|를 위한 매뉴얼입니다."
