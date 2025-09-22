@@ -2767,17 +2767,15 @@ msgstr ""
 "dos se encuentran en el medio. Esta aplicación puede utilizarse con un grafo "
 "dirigido y un grafo sin dirección."
 
-#, fuzzy
 msgid ""
 "For large graphs where there is a path between the starting vertex and "
 "ending vertex:"
 msgstr ""
-"Para grandes gráficos donde hay un camino entre el vértice inicial y el "
+"Para grandes grafos donde hay un camino entre el vértice inicial y el "
 "vértice final:"
 
-#, fuzzy
 msgid "It is expected to terminate faster than doc:`pgr_aStar`"
-msgstr "Se espera que termine más rápido que pgr_aStar"
+msgstr "Se espera que termine más rápido que :doc:`pgr_aStar`"
 
 msgid ":doc:`aStar-family`"
 msgstr ":doc:`aStar-family`"
@@ -2880,10 +2878,8 @@ msgstr ""
 msgid "It is expected to terminate faster than pgr_dijkstra"
 msgstr "Se espera que termine más rápido que pgr_dijkstra"
 
-#, fuzzy
 msgid "`Boost  <https://www.boost.org/libs/graph/doc>`__"
-msgstr ""
-"`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
+msgstr "`Boost <https://www.boost.org/libs/graph/doc>`__"
 
 msgid "Chinese Postman Problem - Family of functions (Experimental)"
 msgstr "Chinese Postman Problem - Familia de funciones (Experimental)"
@@ -3012,7 +3008,6 @@ msgstr ":doc:`pgr_contractionLinear`"
 msgid ":doc:`pgr_contractionHierarchies`"
 msgstr ":doc:`pgr_contractionHierarchies`"
 
-#, fuzzy
 msgid ""
 "In large graphs, like road graphs or electric networks, graph contraction "
 "can be used to speed up some graph algorithms. Contraction can reduce the "
@@ -3021,12 +3016,14 @@ msgid ""
 "kept in some methods). In this way, it decreases the total time and space "
 "used by graph algorithms, particularly those searching for an optimal path."
 msgstr ""
-"En grafos grandes, como los grafos de carretera o de redes eléctricas, la "
-"contracción de grafos se puede utilizar para acelerar algunos algoritmos. La "
-"contracción reduce el tamaño del grafo eliminando algunos de los vértices y "
-"aristas, por ejemplo, podría agregar aristas que representen una secuencia "
-"de las aristas originales disminuyendo el tiempo total y el espacio "
-"utilizados en los algoritmos de grafos."
+"En grafos de gran tamaño, como los grafos de carreteras o las redes "
+"eléctricas, la contracción de grafos puede utilizarse para acelerar algunos "
+"algoritmos de grafos. La contracción puede reducir el tamaño del grafo "
+"eliminando algunos de los vértices y aristas y añadiendo aristas que "
+"representen una secuencia de aristas originales (en algunos métodos pueden "
+"conservarse las originales). De este modo, disminuye el tiempo y el espacio "
+"totales utilizados por los algoritmos de grafos, en particular los que "
+"buscan un camino óptimo."
 
 msgid ""
 "This implementation gives a flexible framework for adding contraction "
@@ -3772,19 +3769,17 @@ msgstr ""
 ":doc:`pgr_topologicalSort` - Orden lineal de los vértices para grafos "
 "acíclicos dirigidos."
 
-#, fuzzy
 msgid ""
 ":doc:`pgr_sloanOrdering` - Returns the sloan ordering of an undirected graph."
 msgstr ""
-":doc:`pgr_cuthillMckeeOrdering` - Ordenamiento Cuthill-McKee de grafo sin no "
+":doc:`pgr_sloanOrdering` - Regresa el ordenamiento Sloan de un grafo no "
 "dirigido."
 
-#, fuzzy
 msgid ""
 ":doc:`pgr_kingOrdering` - Returns the King ordering of an undirected graph."
 msgstr ""
-"``pgr_cuthillMckeeOrdering`` —Ordenamiento Cuthill-Mckee de grapos no "
-"dirigidos"
+":doc:`pgr_kingOrdering` - Regresa el ordenamiento King de un grafo no "
+"dirigido."
 
 msgid ":doc:`metrics-family`"
 msgstr ":doc:`metrics-family`"
@@ -3796,10 +3791,8 @@ msgstr ""
 ":doc:`pgr_betweennessCentrality` - Calcula la centralidad intermedia "
 "relativa mediante el algoritmo de Brandes"
 
-#, fuzzy
 msgid ":doc:`pgr_bandwidth` - Computes the bandwidth of a graph."
-msgstr ""
-":doc:`pgr_withPoints` - Ruta desde/hacia puntos en cualquier parte del grafo."
+msgstr ":doc:`pgr_bandwidth` - Calcula el ancho de banda de un grafo."
 
 msgid ":doc:`TRSP-family`"
 msgstr ":doc:`TRSP-family`"
@@ -4355,9 +4348,8 @@ msgstr ":doc:`experimental`"
 msgid ":doc:`release_notes`"
 msgstr ":doc:`release_notes`"
 
-#, fuzzy
 msgid "pgRouting 4.0.0-alpha1 Release Notes"
-msgstr "Notas de la versión de pgRouting 4.0.0"
+msgstr "Notas de la versión de pgRouting 4.0.0-alpha1"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Github "
@@ -4385,13 +4377,11 @@ msgstr ""
 msgid "If needed: ``-DCMAKE_CXX_STANDARD=14`` to lower the standard."
 msgstr ""
 
-#, fuzzy
 msgid "The user's documentation is built by default."
-msgstr "La documentación del usuario se construye por defecto"
+msgstr "La documentación del usuario se construye por defecto."
 
-#, fuzzy
 msgid "The doxygen documentation is built by default."
-msgstr "La documentación del usuario se construye por defecto"
+msgstr "La documentación doxygen se construye por defecto."
 
 msgid "For developers:"
 msgstr "Para desarrolladores:"
@@ -4405,26 +4395,24 @@ msgstr ""
 msgid "Documentation build"
 msgstr "Construcción de la documentación"
 
-#, fuzzy
 msgid "The doxygen documentation is built by default"
-msgstr "La documentación del usuario se construye por defecto"
+msgstr "La documentación doxygen se construye por defecto"
 
-#, fuzzy
 msgid "The HTML documentation is built by default"
-msgstr "La documentación del usuario se construye por defecto"
+msgstr "La documentación HTML se crea por defecto"
 
-#, fuzzy
 msgid ""
 "The translated languages (en, es, sv, zh_Hans) HTML documentation are built "
 "by default"
-msgstr "La documentación del usuario se construye por defecto"
+msgstr ""
+"Los idiomas traducidos (en, es, sv, zh_Hans) para documentación HTML se "
+"construyen por defecto"
 
 msgid "`WITH-DOC` is not used anymore"
 msgstr ""
 
-#, fuzzy
 msgid "User Documentation is not built when"
-msgstr "La documentación de los desarrolladores no se construye cuando"
+msgstr "La documentación de usuario no se crea cuando"
 
 msgid "Sphinx is not found"
 msgstr ""
@@ -4447,7 +4435,6 @@ msgstr ""
 msgid "For example: for HTML output is on `build/doc/_build/html` directory"
 msgstr ""
 
-#, fuzzy
 msgid "Developers' Documentation is not built when"
 msgstr "La documentación de los desarrolladores no se construye cuando"
 
@@ -4469,9 +4456,8 @@ msgstr "Firmas de combinaciones promovidas a oficial."
 msgid "pgr_aStarCost"
 msgstr "pgr_aStarCost"
 
-#, fuzzy
 msgid "pgr_bandwidth"
-msgstr "pgr_endPoint"
+msgstr "pgr_bandwidth"
 
 msgid "New experimental function."
 msgstr "Nueva función experimental."
@@ -4566,9 +4552,8 @@ msgstr "pgr_edwardMoore(Combinaciones)"
 msgid "Version 3.0.0"
 msgstr "Versión 3.0.0"
 
-#, fuzzy
 msgid "pgr_kingOrdering"
-msgstr "Ordenamiento"
+msgstr "pgr_kingOrdering"
 
 msgid "pgr_KSP"
 msgstr "pgr_KSP"
@@ -4582,9 +4567,8 @@ msgstr "pgr_maxFlow"
 msgid "pgr_pushRelabel"
 msgstr "pgr_pushRelabel"
 
-#, fuzzy
 msgid "pgr_sloanOrdering"
-msgstr "Ordenamiento"
+msgstr "pgr_sloanOrdering"
 
 msgid "pgr_sequentialVertexColoring"
 msgstr "pgr_sequentialVertexColoring"
@@ -4626,10 +4610,10 @@ msgstr "pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
 msgid "pgr_trspVia_withPoints"
 msgstr "pgr_trspVia_withPoints"
 
-#, fuzzy
 msgid "**Driving side** parameter is positional unnamed."
 msgstr ""
-"El parámetro **driving_side** era opcional ahora es obligatorio sin nombre."
+"El parámetro **Lado de Manejo** era opcional ahora es obligatorio posicional "
+"sin nombre."
 
 msgid "Valid values depend on kind of graph"
 msgstr "Valores válidos dependen del tipo de grafo"
@@ -4930,38 +4914,33 @@ msgstr ""
 "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_pushRelabel(Combinaciones)"
 
-#, fuzzy
 msgid "New experimental functions."
-msgstr "Nuevas funciones experimentales"
+msgstr "Nuevas funciones experimentales."
 
 msgid "Metrics"
 msgstr "Métricas"
 
-#, fuzzy
 msgid ""
 "`#2951 <https://github.com/pgRouting/pgrouting/issues/2951>`__: pgr_bandwidth"
 msgstr ""
-"`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__: "
-"pgr_withPoints"
+"`#2951 <https://github.com/pgRouting/pgrouting/issues/2951>`__: pgr_bandwidth"
 
 msgid "Ordering"
 msgstr "Ordenamiento"
 
-#, fuzzy
 msgid ""
 "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: "
 "pgr_kingOrdering"
 msgstr ""
-"`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__: "
-"pgr_edgeColoring"
+"`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: "
+"pgr_kingOrdering"
 
-#, fuzzy
 msgid ""
 "`#2955 <https://github.com/pgRouting/pgrouting/issues/2955>`__: "
 "pgr_sloanOrdering"
 msgstr ""
-"`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__: "
-"pgr_edgeColoring"
+"`#2955 <https://github.com/pgRouting/pgrouting/issues/2955>`__: "
+"pgr_sloanOrdering"
 
 msgid "SQL signatures and output standardization"
 msgstr ""
@@ -4973,9 +4952,8 @@ msgstr ""
 "`#2904 <https://github.com/pgRouting/pgrouting/issues/2904>`__: Estandarizar "
 "columnas de resultados de funciones con diferente salida"
 
-#, fuzzy
 msgid "columns within overloads"
-msgstr "Sobrecargas de funciones"
+msgstr "columnas dentro de las sobrecargas"
 
 msgid "Standardized to |short-generic-result|"
 msgstr "Estandardizar de las columnas de resultados a |short-generic-result|"
@@ -5015,13 +4993,12 @@ msgstr ""
 "`#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__: "
 "pgr_edwardMoore"
 
-#, fuzzy
 msgid ""
 "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__: "
 "pgr_dagShortestPath"
 msgstr ""
-"`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
-"_pgr_dagshortestpath"
+"`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__: "
+"pgr_dagShortestPath"
 
 msgid "Standardized to |matrix-result|"
 msgstr "Estandardizar de las columnas de resultados a |matrix-result|"
@@ -5050,13 +5027,12 @@ msgstr ""
 "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__: "
 "pgr_edgeDisjointPaths"
 
-#, fuzzy
 msgid ""
 "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__: "
 "pgr_turnRestrictedPath"
 msgstr ""
 "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__: "
-"pgr_turnRestrictedPaths"
+"pgr_turnRestrictedPath"
 
 msgid "Standardized to |result_edge_color|"
 msgstr "Estandardizar de las columnas de resultados a |result_edge_color|"
@@ -5209,21 +5185,19 @@ msgstr ""
 msgid "Removal of SQL deprecated functions"
 msgstr "Eliminación de funciones obsoletas"
 
-#, fuzzy
 msgid ""
 "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
 "pgr_trspViaedges"
 msgstr ""
 "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
-"pgr_trspviaedges"
+"pgr_trspViaedges"
 
-#, fuzzy
 msgid ""
 "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: "
 "pgr_trspViaVertices"
 msgstr ""
 "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: "
-"pgr_trspviavertices"
+"pgr_trspViaVertices"
 
 msgid ""
 "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: "
@@ -5270,71 +5244,62 @@ msgstr ""
 msgid "Removal of SQL deprecated internal functions"
 msgstr "Eliminación de funciones internas SQL obsoletas"
 
-#, fuzzy
 msgid ""
 "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ "
 "_pgr_alphaShape(text,double precision)"
 msgstr ""
 "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ "
-"_pgr_alphashape(text,double precision)"
+"_pgr_alphaShape(text,double precision)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "_pgr_checkVertTab(text,text[],integer,text)"
 msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_checkverttab(text,text[],integer,text)"
+"_pgr_checkVertTab(text,text[],integer,text)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "_pgr_createIndex(text,text,text,integer,text)"
 msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_createindex(text,text,text,integer,text)"
+"_pgr_createIndex(text,text,text,integer,text)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "_pgr_createIndex(text,text,text,text,integer,text)"
 msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_createindex(text,text,text,text,integer,text)"
+"_pgr_createIndex(text,text,text,text,integer,text)"
 
-#, fuzzy
 msgid ""
 "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
 "_pgr_dagShortestPath(text,anyarray,anyarray,boolean,boolean)"
 msgstr ""
 "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
-"_pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)"
+"_pgr_dagShortestPath(text,anyarray,anyarray,boolean,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
 "_pgr_dagShortestPath(text,text,boolean,boolean)"
 msgstr ""
 "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
-"_pgr_dagshortestpath(text,text,boolean,boolean)"
+"_pgr_dagShortestPath(text,text,boolean,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
 "_pgr_dijkstraNear(text,anyarray,anyarray,bigint,boolean)"
 msgstr ""
 "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
-"_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
+"_pgr_dijkstraNear(text,anyarray,anyarray,bigint,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
 "_pgr_dijkstraNear(text,anyarray,bigint,bigint,boolean)"
 msgstr ""
 "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
-"_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
+"_pgr_dijkstraNear(text,anyarray,bigint,bigint,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
 "_pgr_dijkstraNear(text,bigint,anyarray,bigint,boolean)"
@@ -5370,39 +5335,34 @@ msgstr ""
 "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
 "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2735 <https://github.com/pgRouting/pgrouting/issues/2735>`__ "
 "_pgr_drivingDistance(text,anyarray,double precision,boolean,boolean)"
 msgstr ""
 "`#2735 <https://github.com/pgRouting/pgrouting/issues/2735>`__ "
-"_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
+"_pgr_drivingDistance(text,anyarray,double precision,boolean,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "_pgr_endPoint(geometry)"
 msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_endpoint(geometry)"
+"_pgr_endPoint(geometry)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "__pgr_getColumnName(text,text,integer,text)"
 msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_getcolumnname(text,text,integer,text)"
+"__pgr_getColumnName(text,text,integer,text)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "__pgr_getColumnName(text,text,text,integer,text)"
 msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_getcolumnname(text,text,text,integer,text)"
+"__pgr_getColumnName(text,text,text,integer,text)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "__pgr_getColumnType(text,text,integer,text)"
@@ -5410,45 +5370,40 @@ msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "_pgr_getcolumntype(text,text,integer,text)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "__pgr_getColumnType(text,text,text,integer,text)"
 msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_getcolumntype(text,text,text,integer,text)"
+"__pgr_getColumnType(text,text,text,integer,text)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "__pgr_getTableName(text,integer,text)"
 msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_gettablename(text,integer,text)"
+"__pgr_getTableName(text,integer,text)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "_pgr_isColumnIndexed(text,text,integer,text)"
 msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_iscolumnindexed(text,text,integer,text)"
+"_pgr_isColumnIndexed(text,text,integer,text)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "_pgr_isColumnIndexed(text,text,text,integer,text)"
 msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_iscolumnindexed(text,text,text,integer,text)"
+"_pgr_isColumnIndexed(text,text,text,integer,text)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "_pgr_isColumnIntable(text,text)"
 msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_iscolumnintable(text,text)"
+"_pgr_isColumnIntable(text,text)"
 
 msgid ""
 "`#2745 <https://github.com/pgRouting/pgrouting/issues/2745>`__ "
@@ -5478,13 +5433,12 @@ msgstr ""
 "`#2897 <https://github.com/pgRouting/pgrouting/issues/2897>`__ _pgr_ksp(text,"
 "text,integer,boolean,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__ "
 "_pgr_maxCardinalityMatch(text,boolean)"
 msgstr ""
 "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__ "
-"_pgr_maxcardinalitymatch(text,boolean)"
+"_pgr_maxCardinalityMatch(text,boolean)"
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
@@ -5521,13 +5475,12 @@ msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "_pgr_quote_ident(text)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "_pgr_startPoint(geometry)"
 msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_startpoint(geometry)"
+"_pgr_startPoint(geometry)"
 
 msgid ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ "
@@ -5566,50 +5519,45 @@ msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ "
 "_pgr_trsp(text,text,bigint,bigint,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__ "
 "_pgr_trspViaVertices(text,integer[],boolean,boolean,text)"
 msgstr ""
 "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__ "
-"_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
+"_pgr_trspViaVertices(text,integer[],boolean,boolean,text)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "_pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,"
 "character,boolean)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"_pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,"
+"_pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,"
 "character,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "_pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,"
 "boolean)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"_pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,"
+"_pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,"
 "boolean)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "_pgr_trsp_withPoints(text,text,text,text,boolean,character,boolean)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"_pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+"_pgr_trsp_withPoints(text,text,text,text,boolean,character,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ "
 "_pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,"
 "integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ "
-"_pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,"
+"_pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,"
 "integer,double precision,double precision,double precision,boolean)"
 
 msgid ""
@@ -5621,68 +5569,61 @@ msgstr ""
 "bigint,bigint,double precision,integer,integer,integer,double precision,"
 "double precision,double precision,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
 "_pgr_versionLess(text,text)"
 msgstr ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_versionless(text,text)"
+"_pgr_versionLess(text,text)"
 
-#, fuzzy
 msgid ""
 "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ "
 "_pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 msgstr ""
 "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ "
-"_pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+"_pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
 "_pgr_withPointsKSP(text,text,anyarray,anyarray,integer,character,boolean,"
 "boolean,boolean,boolean)"
 msgstr ""
 "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
-"_pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,"
+"_pgr_withPointsKSP(text,text,anyarray,anyarray,integer,character,boolean,"
 "boolean,boolean,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
 "_pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,"
 "boolean)"
 msgstr ""
 "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
-"_pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,"
+"_pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,"
 "boolean)"
 
-#, fuzzy
 msgid ""
 "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
 "_pgr_withPointsKSP(text,text,text,integer,character,boolean,boolean,boolean)"
 msgstr ""
 "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
-"_pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)"
+"_pgr_withPointsKSP(text,text,text,integer,character,boolean,boolean,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__ "
 "_pgr_withPointsVia(text,bigint[],double precision[],boolean)"
 msgstr ""
 "`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__ "
-"_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+"_pgr_withPointsVia(text,bigint[],double precision[],boolean)"
 
-#, fuzzy
 msgid ""
 "`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__ "
 "_pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,"
 "boolean)"
 msgstr ""
 "`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__ "
-"_pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,"
+"_pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,"
 "boolean)"
 
 msgid ""
@@ -5706,9 +5647,8 @@ msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _v4trsp(text,"
 "text,text,boolean)"
 
-#, fuzzy
 msgid "Summary of functions and signatures no longer on pgrouting"
-msgstr "Agregando Funcionalidad a pgRouting"
+msgstr "Resumen de funciones y firmas que ya no están en pgrouting"
 
 msgid ""
 "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ "
@@ -5766,13 +5706,12 @@ msgstr ""
 "`#2888 <https://github.com/pgRouting/pgrouting/issues/2888>`__ "
 "pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__ "
 "pgr_maxCardinalityMatch(text,boolean)"
 msgstr ""
 "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__ "
-"pgr_maxcardinalitymatch(text,boolean)"
+"pgr_maxCardinalityMatch(text,boolean)"
 
 msgid ""
 "`#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__ "
@@ -5795,57 +5734,51 @@ msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ pgr_trsp(text,"
 "integer,integer,boolean,boolean,text)"
 
-#, fuzzy
 msgid ""
 "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__ "
 "pgr_trspViaedges(text,integer[],double precision[],boolean,boolean,text)"
 msgstr ""
 "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__ "
-"pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
+"pgr_trspViaedges(text,integer[],double precision[],boolean,boolean,text)"
 
-#, fuzzy
 msgid ""
 "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__ "
 "pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
 msgstr ""
 "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__ "
-"pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
+"pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,"
 "character,boolean)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,"
+"pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,"
 "character,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,"
 "boolean)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,"
+"pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,"
 "boolean)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_trsp_withPoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
+"pgr_trsp_withPoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_trsp_withPoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
+"pgr_trsp_withPoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
 
 #, fuzzy
 msgid ""
@@ -5855,7 +5788,6 @@ msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_trsp_withPoints(text,text,text,text,boolean,character,boolean)"
@@ -5863,14 +5795,13 @@ msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ "
 "pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,integer,"
 "double precision,double precision,double precision,boolean)"
 msgstr ""
 "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ "
-"pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,"
+"pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,integer,"
 "double precision,double precision,double precision,boolean)"
 
 msgid ""
@@ -5882,130 +5813,115 @@ msgstr ""
 "bigint,bigint,double precision,integer,integer,integer,double precision,"
 "double precision,double precision,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_withPointsCostMatrix(text,text,anyarray,boolean,character)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
+"pgr_withPointsCostMatrix(text,text,anyarray,boolean,character)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_withPointsCost(text,text,anyarray,anyarray,boolean,character)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)"
+"pgr_withPointsCost(text,text,anyarray,anyarray,boolean,character)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_withPointsCost(text,text,anyarray,bigint,boolean,character)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointscost(text,text,anyarray,bigint,boolean,character)"
+"pgr_withPointsCost(text,text,anyarray,bigint,boolean,character)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_withPointsCost(text,text,bigint,anyarray,boolean,character)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointscost(text,text,bigint,anyarray,boolean,character)"
+"pgr_withPointsCost(text,text,bigint,anyarray,boolean,character)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_withPointsCost(text,text,bigint,bigint,boolean,character)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointscost(text,text,bigint,bigint,boolean,character)"
+"pgr_withPointsCost(text,text,bigint,bigint,boolean,character)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_withPointsCost(text,text,text,boolean,character)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointscost(text,text,text,boolean,character)"
+"pgr_withPointsCost(text,text,text,boolean,character)"
 
-#, fuzzy
 msgid ""
 "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ "
 "pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 msgstr ""
 "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ "
-"pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+"pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ "
 "pgr_withPointsDD(text,text,bigint,double precision,boolean,character,boolean)"
 msgstr ""
 "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ "
-"pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
+"pgr_withPointsDD(text,text,bigint,double precision,boolean,character,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
 "pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,"
 "boolean)"
 msgstr ""
 "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
-"pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,"
+"pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,"
 "boolean)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_withPoints(text,text,anyarray,anyarray,boolean,character,boolean)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)"
+"pgr_withPoints(text,text,anyarray,anyarray,boolean,character,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_withPoints(text,text,anyarray,bigint,boolean,character,boolean)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)"
+"pgr_withPoints(text,text,anyarray,bigint,boolean,character,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_withPoints(text,text,bigint,anyarray,boolean,character,boolean)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)"
+"pgr_withPoints(text,text,bigint,anyarray,boolean,character,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_withPoints(text,text,bigint,bigint,boolean,character,boolean)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)"
+"pgr_withPoints(text,text,bigint,bigint,boolean,character,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_withPoints(text,text,text,boolean,character,boolean)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpoints(text,text,text,boolean,character,boolean)"
+"pgr_withPoints(text,text,text,boolean,character,boolean)"
 
-#, fuzzy
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
 "pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,"
 "boolean)"
 msgstr ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,"
+"pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,"
 "boolean)"
 
 msgid "Code enhancements"
@@ -6032,13 +5948,11 @@ msgstr "Obsolescencia de funciones internas C/C++"
 msgid "Deprecated functions are substituted by new function."
 msgstr ""
 
-#, fuzzy
 msgid "_pgr_drivingDistance => _pgr_drivingDistancev4"
-msgstr "_pgr_drivingdistance => _pgr_drivingdistancev4"
+msgstr "_pgr_drivingDistance => _pgr_drivingDistancev4"
 
-#, fuzzy
 msgid "_pgr_withPointsDD => _pgr_withPointsddv4"
-msgstr "_pgr_withpointsdd => _pgr_withpointsddv4"
+msgstr "_pgr_withPointsDD => _pgr_withPointsddv4"
 
 msgid "_pgr_kruskal => _pgr_kruskalv4"
 msgstr ""
@@ -6049,21 +5963,17 @@ msgstr ""
 msgid "_pgr_dijkstra => _pgr_dijkstra_v4"
 msgstr "_pgr_dijkstra => _pgr_dijkstra_v4"
 
-#, fuzzy
 msgid "_pgr_withPointsKSP => _pgr_withPointsKSP_v4"
-msgstr "_pgr_withpointsdd => _pgr_withpointsddv4"
+msgstr "_pgr_withPointsKSP => _pgr_withPointsKSP_v4"
 
-#, fuzzy
 msgid "_pgr_trspVia_withPoints => _pgr_trspVia_withPoints_v4"
-msgstr "_pgr_trspvia_withpoints => _pgr_trspvia_withpoints_v4"
+msgstr "_pgr_trspVia_withPoints => _pgr_trspVia_withPoints_v4"
 
-#, fuzzy
 msgid "_pgr_trsp_withPoints => _pgr_trsp_withPoints_v4"
-msgstr "_pgr_trsp_withpoints => _pgr_trsp_withpoints_v4"
+msgstr "_pgr_trsp_withPoints => _pgr_trsp_withPoints_v4"
 
-#, fuzzy
 msgid "_pgr_withPointsVia => _pgr_withPointsvia_v4"
-msgstr "_pgr_withpointsvia => _pgr_withpointsvia_v4"
+msgstr "_pgr_withPointsVia => _pgr_withPointsvia_v4"
 
 msgid "Internal C/C++ functions in legacy"
 msgstr "Funciones C/C++ internas en legado"
@@ -6074,21 +5984,19 @@ msgstr "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _trsp"
 msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _v4trsp"
 msgstr "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _v4trsp"
 
-#, fuzzy
 msgid ""
 "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ "
 "_pgr_alphaShape"
 msgstr ""
 "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ "
-"_pgr_alphashape"
+"_pgr_alphaShape"
 
-#, fuzzy
 msgid ""
 "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
 "_pgr_dagShortestPath"
 msgstr ""
 "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
-"_pgr_dagshortestpath"
+"_pgr_dagShortestPath"
 
 msgid "All releases"
 msgstr "Todas las versiones"
@@ -6135,9 +6043,8 @@ msgstr ""
 "Todas las funciones obsoletas serán removidas en las siguiente versión mayor "
 "4.0.0"
 
-#, fuzzy
 msgid "Migration to standardized columns"
-msgstr "Migración de restricciones"
+msgstr "Migración a columnas estandarizadas"
 
 msgid ""
 "There has been an effort to standardize function output columns names and "
@@ -6148,17 +6055,15 @@ msgstr ""
 msgid ":ref:`pgRouting-concepts:Result columns for cost functions`"
 msgstr "Columnas de resultados de las funciones de costes"
 
-#, fuzzy
 msgid "|matrix-result|"
-msgstr "Conjunto de |matrix-result|"
+msgstr "|matrix-result|"
 
 #, fuzzy
 msgid ":ref:`pgRouting-concepts:Result columns for single path functions`"
 msgstr "Columnas de resultados para funciones de árbol de expansión"
 
-#, fuzzy
 msgid "|short-generic-result|"
-msgstr "Regresa el conjunto de |short-generic-result|"
+msgstr "|short-generic-result|"
 
 #, fuzzy
 msgid ":ref:`pgRouting-concepts:Result columns for spanning tree functions`"
@@ -6177,13 +6082,11 @@ msgstr ":doc:`pgr_dijkstra`"
 msgid "`Migration of single path functions`_"
 msgstr "`Migración de restricciones`_"
 
-#, fuzzy
 msgid ":doc:`pgr_aStar`"
-msgstr ":doc:`pgr_aStarCost`"
+msgstr ":doc:`pgr_aStar`"
 
-#, fuzzy
 msgid ":doc:`pgr_bdAstar`"
-msgstr ":doc:`pgr_bdAstarCost`"
+msgstr ":doc:`pgr_bdAstar`"
 
 msgid ":doc:`pgr_drivingDistance`"
 msgstr ":doc:`pgr_drivingDistance`"
@@ -6192,49 +6095,40 @@ msgstr ":doc:`pgr_drivingDistance`"
 msgid "`Migration of spanning tree functions`_"
 msgstr "`Migración de restricciones`_"
 
-#, fuzzy
 msgid ":doc:`pgr_withPointsDD`"
-msgstr ":doc:`pgr_withPoints`"
+msgstr ":doc:`pgr_withPointsDD`"
 
-#, fuzzy
 msgid ":doc:`pgr_bdDijkstra`"
-msgstr ":doc:`pgr_dijkstra`"
+msgstr ":doc:`pgr_bdDijkstra`"
 
-#, fuzzy
 msgid ":doc:`pgr_binaryBreadthFirstSearch`"
-msgstr "pgr_binaryBreadthFirstSearch"
+msgstr ":doc:`pgr_binaryBreadthFirstSearch`"
 
-#, fuzzy
 msgid ":doc:`pgr_bipartite`"
-msgstr ":doc:`pgr_prim`"
+msgstr ":doc:`pgr_bipartite`"
 
 #, fuzzy
 msgid "`Migration of output column name change`_"
 msgstr "`Migración de restricciones`_"
 
-#, fuzzy
 msgid ":doc:`pgr_breadthFirstSearch`"
-msgstr "pgr_binaryBreadthFirstSearch"
+msgstr ":doc:`pgr_breadthFirstSearch`"
 
-#, fuzzy
 msgid ":doc:`pgr_depthFirstSearch`"
-msgstr "pgr_depthFirstSearch"
+msgstr ":doc:`pgr_depthFirstSearch`"
 
-#, fuzzy
 msgid ":doc:`pgr_edgeColoring`"
-msgstr "pgr_edgeColoring"
+msgstr ":doc:`pgr_edgeColoring`"
 
 #, fuzzy
 msgid "`Migration of multiple paths functions`_"
 msgstr "`Migración de restricciones`_"
 
-#, fuzzy
 msgid ":doc:`pgr_sequentialVertexColoring`"
-msgstr "pgr_sequentialVertexColoring"
+msgstr ":doc:`pgr_sequentialVertexColoring`"
 
-#, fuzzy
 msgid ":doc:`pgr_topologicalSort`"
-msgstr "pgr_topologicalSort"
+msgstr ":doc:`pgr_topologicalSort`"
 
 msgid ":doc:`pgr_withPoints`"
 msgstr ":doc:`pgr_withPoints`"
@@ -6257,9 +6151,8 @@ msgid ""
 "application."
 msgstr ""
 
-#, fuzzy
 msgid "Version"
-msgstr "Versión 3.0"
+msgstr "Versión"
 
 msgid "From"
 msgstr ""
@@ -6270,16 +6163,14 @@ msgstr "``pgr_withPointsCost``"
 msgid "v < 4.0"
 msgstr ""
 
-#, fuzzy
 msgid "|matrix-pid|"
-msgstr "Regresa el conjunto de |matrix-pid|"
+msgstr "|matrix-pid|"
 
 msgid "``pgr_withPointsCostMatrix``"
 msgstr "``pgr_withPointsCostMatrix``"
 
-#, fuzzy
 msgid "**to** |matrix-result|"
-msgstr "Conjunto de |matrix-result|"
+msgstr "**a** |matrix-result|"
 
 #, fuzzy
 msgid "Migration of |matrix-pid|"
@@ -6327,17 +6218,15 @@ msgstr "Ejemplos"
 msgid "Examples for One to One for cost functions"
 msgstr "Columnas de resultados de las funciones de costes"
 
-#, fuzzy
 msgid "Using ``pgr_withPointsCost``"
-msgstr "``pgr_withPointsCost``"
+msgstr "Usando ``pgr_withPointsCost``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost."
 "html#one-to-one>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.8 <https://docs.pgrouting.org/3.8/en/"
+"pgr_withPointsCost.html#one-to-one>`__."
 
 msgid "from"
 msgstr "de"
@@ -6349,49 +6238,45 @@ msgstr "a"
 msgid "Examples for One to Many for cost functions"
 msgstr "Columnas de resultados de las funciones de costes"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost."
 "html#one-to-many>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.8 <https://docs.pgrouting.org/3.8/en/"
+"pgr_withPointsCost.html#one-to-many>`__."
 
 #, fuzzy
 msgid "Examples for Many to One for cost functions"
 msgstr "Columnas de resultados de las funciones de costes"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost."
 "html#many-to-one>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.8 <https://docs.pgrouting.org/3.8/en/"
+"pgr_withPointsCost.html#many-to-one>`__."
 
 #, fuzzy
 msgid "Examples for Many to Many for cost functions"
 msgstr "Columnas de resultados de las funciones de costes"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost."
 "html#many-to-many>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.8 <https://docs.pgrouting.org/3.8/en/"
+"pgr_withPointsCost.html#many-to-many>`__."
 
 #, fuzzy
 msgid "Examples for Combinations for cost functions"
 msgstr "Columnas de resultados de las funciones de costes"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost."
 "html#combinations>`__ example."
 msgstr ""
-"Usando `este <https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP."
-"html#signatures>`__ ejemplo."
+"Migrando ejemplo `de v3.8 <https://docs.pgrouting.org/3.8/en/"
+"pgr_withPointsCost.html#combinations>`__."
 
 #, fuzzy
 msgid "Migration of multiple paths functions"
@@ -6423,9 +6308,8 @@ msgstr "Regresa el conjunto de |result-disjoint|"
 msgid "Migration of |ksp-result|"
 msgstr "Regresa el conjunto de |old-pid-result|"
 
-#, fuzzy
 msgid "|nksp-result|"
-msgstr "|ksp-result|"
+msgstr "|nksp-result|"
 
 #, fuzzy
 msgid "Before updating pgRouting, enumerate the |ksp-result|"
@@ -6441,9 +6325,8 @@ msgstr ""
 "Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ "
 "ejemplo."
 
-#, fuzzy
 msgid "Migration of |result-disjoint|"
-msgstr "|result-dij-dd|"
+msgstr "Migración de |result-disjoint|"
 
 #, fuzzy
 msgid "Before updating pgRouting, enumerate the |result-disjoint|"
@@ -6460,13 +6343,12 @@ msgstr "luego por ``end_vid``"
 msgid "One to One example using ``pgr_edgeDisjointPaths``"
 msgstr "``pgr_edgeDisjointPaths``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.6/en/"
 "pgr_edgeDisjointPaths.html#one-to-one>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.6 <https://docs.pgrouting.org/3.6/en/"
+"pgr_edgeDisjointPaths.html#one-to-one>`__."
 
 #, fuzzy
 msgid "Before updating pgRouting enumerate the columns: |ksp-result|"
@@ -6488,9 +6370,8 @@ msgstr "``pgr_dijkstra``"
 msgid "v < 3.5"
 msgstr ""
 
-#, fuzzy
 msgid "|old-generic-result|"
-msgstr "|nksp-result|"
+msgstr "|old-generic-result|"
 
 msgid "``pgr_aStar``"
 msgstr "``pgr_aStar``"
@@ -6498,41 +6379,34 @@ msgstr "``pgr_aStar``"
 msgid "``pgr_bdDijkstra``"
 msgstr "``pgr_bdDijkstra``"
 
-#, fuzzy
 msgid "``pgr_bellmanFord``"
-msgstr "pgr_bellmanFord"
+msgstr "``pgr_bellmanFord``"
 
-#, fuzzy
 msgid "``pgr_dagShortestPath``"
-msgstr ":doc:`pgr_dagShortestPath`"
+msgstr "``pgr_dagShortestPath``"
 
-#, fuzzy
 msgid "|result-1-1|"
-msgstr "|result-bfs|"
+msgstr "|result-1-1|"
 
-#, fuzzy
 msgid "``pgr_edwardMoore``"
-msgstr "pgr_edwardMoore"
+msgstr "``pgr_edwardMoore``"
 
 msgid "``pgr_withPoints``"
 msgstr "``pgr_withPoints``"
 
-#, fuzzy
 msgid "|old-pid-result|"
-msgstr "|ksp-result|"
+msgstr "|old-pid-result|"
 
-#, fuzzy
 msgid "Migration of |old-generic-result|"
-msgstr "Regresa el conjunto de |old-generic-result|"
+msgstr "Migración de |old-generic-result|"
 
 msgid ""
 "Before updating pgRouting, enumerate the corresponding columns of the "
 "signature"
 msgstr ""
 
-#, fuzzy
 msgid "Migration of |old-pid-result|"
-msgstr "Regresa el conjunto de |old-pid-result|"
+msgstr "Migración de |old-pid-result|"
 
 msgid "To get the old version column names, depending on the signature:"
 msgstr ""
@@ -6546,18 +6420,16 @@ msgstr "Cambio de nombre en las columnas:"
 msgid "``start_vid`` to ``start_pid``"
 msgstr "``start_vid`` a ``end_pid``"
 
-#, fuzzy
 msgid "``end_vid`` to ``end_pid``"
-msgstr "``end_vid`` ascendente"
+msgstr "``end_vid`` a ``end_pid``"
 
 msgid ""
 "If using ``pgr_withPoints``: column names must be changed after updating "
 "pgRouting"
 msgstr ""
 
-#, fuzzy
 msgid "Migration of |result-1-1|"
-msgstr "Regresa el conjunto de |result-1-1|"
+msgstr "Migración de |result-1-1|"
 
 #, fuzzy
 msgid "To get the old version column names:"
@@ -6569,44 +6441,38 @@ msgstr "Filtrar las columnas: ``start_vid`` y ``end_vid``"
 msgid "Examples with One to One with one route result"
 msgstr ""
 
-#, fuzzy
 msgid "Using ``pgr_aStar``"
-msgstr "``pgr_aStar``"
+msgstr "Usando ``pgr_aStar``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_aStar.html#one-"
 "to-one>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.5 <https://docs.pgrouting.org/3.5/en/pgr_aStar."
+"html#one-to-one>`__."
 
 msgid "Before updating pgRouting enumerate the columns: |result-1-1|"
 msgstr ""
 
-#, fuzzy
 msgid "Using ``pgr_bdDijkstra``"
-msgstr "``pgr_bdDijkstra``"
+msgstr "Usando ``pgr_bdDijkstra``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra."
 "html#one-to-one>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.8 <https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra."
+"html#one-to-one>`__."
 
-#, fuzzy
 msgid "Using ``pgr_DAGshortestPath``"
-msgstr "``pgr_bdAstar``"
+msgstr "Usando ``pgr_DAGshortestPath``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_dagShortestPath."
 "html#one-to-one>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.8 <https://docs.pgrouting.org/3.8/en/"
+"pgr_dagShortestPath.html#one-to-one>`__."
 
 msgid "This applies to all signatures of ``pgr_DAGshortestPath``"
 msgstr ""
@@ -6614,32 +6480,28 @@ msgstr ""
 msgid "Examples for One to Many with one route result"
 msgstr ""
 
-#, fuzzy
 msgid "Using ``pgr_bdAstar``"
-msgstr "``pgr_bdAstar``"
+msgstr "Usando ``pgr_bdAstar``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_bdAstar.html#one-"
 "to-many>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.5 <https://docs.pgrouting.org/3.5/en/pgr_bdAstar."
+"html#one-to-many>`__."
 
 msgid "Before updating pgRouting enumerate the columns: |result-1-m|"
 msgstr ""
 
-#, fuzzy
 msgid "Using ``pgr_withPoints``"
-msgstr "Usando :doc:`pgr_withPoints`"
+msgstr "Usando ``pgr_withPoints``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPoints."
 "html#one-to-many>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPoints."
+"html#one-to-many>`__."
 
 msgid "|pid-1-m|"
 msgstr ""
@@ -6653,39 +6515,35 @@ msgstr "las columnas ``start_vid`` y ``end_vid`` no existen."
 msgid "Examples for Many to One with one route result"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra."
 "html#many-to-one>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.8 <https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra."
+"html#many-to-one>`__."
 
 msgid "Before updating pgRouting enumerate the columns: |result-m-1|"
 msgstr ""
 
-#, fuzzy
 msgid "Using ``pgr_dijkstra``"
-msgstr "``pgr_dijkstra``"
+msgstr "Usando ``pgr_dijkstra``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstra."
 "html#many-to-one>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstra."
+"html#many-to-one>`__."
 
 msgid "Examples for Many to Many with one route result"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPoints."
 "html#many-to-many>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPoints."
+"html#many-to-many>`__."
 
 msgid "|pid-m-m|"
 msgstr ""
@@ -6693,13 +6551,12 @@ msgstr ""
 msgid "Examples for combinations with one route result"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.8 `this <https://docs.pgrouting.org/3.8/en/pgr_withPoints."
 "html#combinations>`__ example."
 msgstr ""
-"Usando `este <https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP."
-"html#signatures>`__ ejemplo."
+"Migrando ejemplo `de v3.8 `this <https://docs.pgrouting.org/3.8/en/"
+"pgr_withPoints.html#combinations>`__."
 
 #, fuzzy
 msgid "Migration of spanning tree functions"
@@ -6747,20 +6604,17 @@ msgstr "``pgr_primBFS``"
 msgid "``pgr_primDFS``"
 msgstr "``pgr_primDFS``"
 
-#, fuzzy
 msgid "``pgr_breadthFisrtSearch``"
-msgstr "pgr_breadthFirstSearch"
+msgstr "``pgr_breadthFisrtSearch``"
 
 msgid "v < 4.0.0"
 msgstr ""
 
-#, fuzzy
 msgid "``pgr_depthFisrtSearch``"
-msgstr "pgr_depthFirstSearch"
+msgstr "``pgr_depthFisrtSearch``"
 
-#, fuzzy
 msgid "to |result-spantree|"
-msgstr "|result-spantree|"
+msgstr "a |result-spantree|"
 
 msgid "Migration from |result-bfs|."
 msgstr "Migración de |result-bfs|."
@@ -6778,13 +6632,12 @@ msgstr ""
 msgid "Single vertex example using ``pgr_kruskalDD``"
 msgstr "``pgr_kruskalDD``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.6 <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
 "html#single-vertex>`__ example."
 msgstr ""
-"Comparación con `este ejemplo <https://docs.pgrouting.org/3.6/es/"
-"pgr_kruskalDD.html#single-vertex>`__."
+"Migrando ejemplo `de v3.6 <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
+"html#single-vertex>`__."
 
 msgid "Before updating pgRouting enumerate the columns: |result-bfs|."
 msgstr ""
@@ -6793,17 +6646,15 @@ msgstr ""
 msgid "Multiple vertices example using ``pgr_kruskalDFS``"
 msgstr "``pgr_kruskalDFS``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.6 <https://docs.pgrouting.org/3.6/en/pgr_kruskalDFS."
 "html#multiple-vertices>`__ example."
 msgstr ""
-"Comparación con `este ejemplo <https://docs.pgrouting.org/3.6/es/"
-"pgr_kruskalDD.html#multiple-vertex>`__."
+"Migrando ejemplo `de v3.6 <https://docs.pgrouting.org/3.6/en/pgr_kruskalDFS."
+"html#multiple-vertices>`__."
 
-#, fuzzy
 msgid "Migration from |result-dij-dd|"
-msgstr "|result-dij-dd|"
+msgstr "Migración de |result-dij-dd|"
 
 msgid "Migration depends on the signature."
 msgstr ""
@@ -6828,21 +6679,19 @@ msgstr "Para obtener los nombres originales de las columnas:"
 msgid "filter out the column ``pred`` and ``depth`` and"
 msgstr "filtrar las columnas ``pred`` y ``depth`` y"
 
-#, fuzzy
 msgid "rename ``start_vid`` to ``from_v``."
-msgstr "Costo afregado desde ``start_vid`` hasta ``end_vid``."
+msgstr "renombrar ``start_vid`` a ``from_v``."
 
 #, fuzzy
 msgid "Single vertex example using ``pgr_drivingDistance``"
 msgstr "``pgr_drivingDistance``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance."
 "html#single-vertex>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance."
-"html#single-vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.5 <https://docs.pgrouting.org/3.5/en/"
+"pgr_drivingDistance.html#single-vertex>`__."
 
 #, fuzzy
 msgid "Before updating pgRouting, enumerate |result-1-1-no-seq| columns"
@@ -6852,22 +6701,20 @@ msgstr "Las columnas de resultados eran |result-1-1-no-seq|"
 msgid "Multiple vertices example using ``pgr_drivingDistance``"
 msgstr "``pgr_drivingDistance``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance."
 "html#multiple-vertices>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance."
-"html#multiple-vertices>`__ ejemplo."
+"Migrando ejemplo `de v3.5 <https://docs.pgrouting.org/3.5/en/"
+"pgr_drivingDistance.html#multiple-vertices>`__."
 
 msgid ""
 "To get the old version column names |result-dij-dd-m|: filter out the column "
 "``pred`` and ``depth`` and rename ``start_vid`` to ``from_v``."
 msgstr ""
 
-#, fuzzy
 msgid "Migration of |result-generic-no-seq|"
-msgstr "|result-generic-no-seq|"
+msgstr "Migración de |result-generic-no-seq|"
 
 msgid "After updating pgRouting:"
 msgstr ""
@@ -6903,40 +6750,36 @@ msgid "In directed graph: valid values are [``r``, ``R``, ``l``, ``L``]"
 msgstr ""
 "En grafos dirigidos: Los valores válidos son [``r``, ``R``, ``l``, ``L``]"
 
-#, fuzzy
 msgid "Default value = 'r';"
-msgstr "Con valores predeterminados"
+msgstr "Valor por defecto = 'r';"
 
 msgid "In undirected graph: valid values are [``b``, ``B``]"
 msgstr "En grafos no dirigidos: Los valores válidos son [``b``, ``B``]"
 
-#, fuzzy
 msgid "Default value = 'b';"
-msgstr "Con valores predeterminados"
+msgstr "Valor por defecto = 'b';"
 
 #, fuzzy
 msgid "Single vertex example using ``pgr_withPointsDD``"
 msgstr "``pgr_withPointsDD``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD."
 "html#single-vertex>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.5 <https://docs.pgrouting.org/3.5/en/"
+"pgr_withPointsDD.html#single-vertex>`__."
 
 #, fuzzy
 msgid "Multiple vertices example using ``pgr_withPointsDD``"
 msgstr "``pgr_withPointsDD``"
 
-#, fuzzy
 msgid ""
 "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD."
 "html#multiple-vertex>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Migrando ejemplo `de v3.5 <https://docs.pgrouting.org/3.5/en/"
+"pgr_withPointsDD.html#multiple-vertex>`__."
 
 #, fuzzy
 msgid "Migration of output column name change"
@@ -6945,62 +6788,52 @@ msgstr "Migración de restricciones"
 msgid "The standardized result columns:"
 msgstr "Columnas de resultados estandarizados:"
 
-#, fuzzy
 msgid "|result_edge_color|"
-msgstr "Regresa el conjunto de |result-edge-color|"
+msgstr "|result_edge_color|"
 
-#, fuzzy
 msgid "|result_node_color|"
-msgstr "Regresa el conjunto de |result-node-color|"
+msgstr "|result_node_color|"
 
-#, fuzzy
 msgid "|result_node_order|"
-msgstr "Regresa el conjunto de |result-node-color|"
+msgstr "|result_node_order|"
 
 msgid "Changes on column names must be done after updating pgRouting."
 msgstr ""
 
-#, fuzzy
 msgid "``pgr_edgeColoring``"
-msgstr "pgr_edgeColoring"
+msgstr "``pgr_edgeColoring``"
 
 msgid ":ref:`from_old_edge_color`"
 msgstr ""
 
-#, fuzzy
 msgid "``pgr_bipartite``"
-msgstr "pgr_bipartite"
+msgstr "``pgr_bipartite``"
 
 msgid ":ref:`from_old_node_color`"
 msgstr ""
 
-#, fuzzy
 msgid "``pgr_sequentialVertexColoring``"
-msgstr "pgr_sequentialVertexColoring"
+msgstr "``pgr_sequentialVertexColoring``"
 
-#, fuzzy
 msgid "``pgr_topologicalSort``"
-msgstr "pgr_topologicalSort"
+msgstr "``pgr_topologicalSort``"
 
 #, fuzzy
 msgid ":ref:`from_toposort`"
 msgstr "Regresa el conjunto de |result-disjoint|"
 
-#, fuzzy
 msgid "``pgr_transitiveClosure``"
-msgstr "pgr_transitiveClosure"
+msgstr "``pgr_transitiveClosure``"
 
 #, fuzzy
 msgid ":ref:`from_old_closure`"
 msgstr "|result-generic-no-seq|"
 
-#, fuzzy
 msgid "Migration from |result-old-closure|"
-msgstr "|result-dij-dd|"
+msgstr "Migración de |result-old-closure|"
 
-#, fuzzy
 msgid "Migration to: |result-old-closure|"
-msgstr "|result-generic-no-seq|"
+msgstr "Migración a: |result-old-closure|"
 
 msgid "After update:"
 msgstr ""
@@ -7012,35 +6845,29 @@ msgstr "Se ha eliminado la innecesaria columna seq"
 msgid "Rename ``vid`` to ``node`` and ``target_array`` to ``targets``"
 msgstr ""
 
-#, fuzzy
 msgid "Migration from |result-toposort|"
-msgstr "Migración de restricciones"
+msgstr "Migración de |result-toposort|"
 
-#, fuzzy
 msgid "Migration to: |result_node_order|"
-msgstr "|result-generic-no-seq|"
+msgstr "Migración a: |result_node_order|"
 
 msgid "Rename ``sorted_v`` to ``node``"
 msgstr "Cambiar el nombre de ``sorted_v`` a ``node``"
 
-#, fuzzy
 msgid "Migration from |old-edge-color|"
-msgstr "Regresa el conjunto de |old-pid-result|"
+msgstr "Migración de |old-edge-color|"
 
-#, fuzzy
 msgid "Migration to: |result_edge_color|"
-msgstr "|result-generic-no-seq|"
+msgstr "Migración a: |result_edge_color|"
 
 msgid "Rename ``edge_id`` to ``edge`` and ``color_id`` to ``color``."
 msgstr ""
 
-#, fuzzy
 msgid "Migration from |old-node-color|"
-msgstr "Regresa el conjunto de |old-pid-result|"
+msgstr "Migración de |old-node-color|"
 
-#, fuzzy
 msgid "Migration to: |result_node_color|"
-msgstr "|result-generic-no-seq|"
+msgstr "Migración a: |result_node_color|"
 
 msgid "Rename ``vertex_id`` to ``node`` and ``color_id`` to ``color``."
 msgstr ""
@@ -7059,9 +6886,8 @@ msgstr "Migración de ``pgr_alphaShape``"
 msgid "Deprecated"
 msgstr "Obsoleto"
 
-#, fuzzy
 msgid "`v3.8.0 <https://docs.pgrouting.org/3.8>`__"
-msgstr "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
+msgstr "`v3.8.0 <https://docs.pgrouting.org/3.8>`__"
 
 msgid "Removed"
 msgstr "Eliminado"
@@ -7102,18 +6928,16 @@ msgstr ""
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 msgstr ""
 
-#, fuzzy
 msgid "Migration of ``pgr_nodeNetwork``"
-msgstr "Migración de ``pgr_bdAstar``"
+msgstr "Migración de ``pgr_nodeNetwork``"
 
 msgid ""
 "**Before Deprecation:** A table with `<edges>_nodded` was created. with "
 "split edges."
 msgstr ""
 
-#, fuzzy
 msgid "**Migration**"
-msgstr "Migración"
+msgstr "**Migración**"
 
 msgid "Use :doc:`pgr_separateTouching` and/or use :doc:`pgr_separateCrossing`"
 msgstr ""
@@ -7472,9 +7296,8 @@ msgstr ""
 msgid "|ksp-result|"
 msgstr "|ksp-result|"
 
-#, fuzzy
 msgid "|generic-result|"
-msgstr "|nksp-result|"
+msgstr "|generic-result|"
 
 #, fuzzy
 msgid ""
@@ -7773,9 +7596,8 @@ msgstr "Se eliminara en la próxima versión mayor 4.0.0"
 msgid "The migrated table contents:"
 msgstr "El contenido de la tabla de migración:"
 
-#, fuzzy
 msgid ":doc:`pgRouting-concepts`"
-msgstr "Conceptos de pgRouting"
+msgstr ":doc:`pgRouting-concepts`"
 
 msgid "Ordering - Family of functions"
 msgstr "Ordenamiento - Familia de funciones"
@@ -10840,9 +10662,8 @@ msgstr ""
 msgid "The bandwidth is the maximum of all these distances"
 msgstr ""
 
-#, fuzzy
 msgid "The implementation is for undirected graphs"
-msgstr "La implementación es para grafos **no dirigidos**."
+msgstr "La implementación es para grafos no dirigidos"
 
 msgid "Run time is 0.160789 seconds"
 msgstr ""
@@ -10855,9 +10676,8 @@ msgstr "pgr_bipartite(`SQL de aristas`_)"
 msgid "Returns ``BIGINT``"
 msgstr "``BIGINT``"
 
-#, fuzzy
 msgid "For an undirected graph with edges."
-msgstr "Para un grafo no dirigido con aristas :math:'{2,4,5,8}'"
+msgstr "Para un grafo no dirigido con aristas."
 
 #, fuzzy
 msgid "Returns a bigint ``(pgr_bandwidth)``"
@@ -10867,17 +10687,14 @@ msgstr "Devuelve un valor boolean ``(pgr_isplanar)``"
 msgid "``pgr_bandwidth``"
 msgstr "pgr_bipartite"
 
-#, fuzzy
 msgid "gives the bandwidth of the graph."
-msgstr "Aristas no son parte del grafo:"
+msgstr "da el ancho de banda del grafo."
 
-#, fuzzy
 msgid "Undirected graph with edges before optimization."
-msgstr "En un grafo dirigido ambas aristas tiene direccionalidad"
+msgstr "Grafo no dirigido con aristas antes de la optimización."
 
-#, fuzzy
 msgid "Undirected graph with edges after optimization."
-msgstr "En un grafo dirigido ambas aristas tiene direccionalidad"
+msgstr "Grafo no dirigido con aristas tras la optimización."
 
 #, fuzzy
 msgid ""
@@ -11003,9 +10820,8 @@ msgstr ""
 "``pgr_bdAstarCostMatrix`` - Calcula la matriz de costes utilizando :doc:"
 "`pgr_aStar`."
 
-#, fuzzy
 msgid "Internally uses the :doc:`pgr_bdAstar` algorithm."
-msgstr "Usando internamente el algoritmo :doc:`pgr_bdAstar`"
+msgstr "Internamente utiliza el algoritmo :doc:`pgr_bdAstar`."
 
 msgid "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
 msgstr "pgr_bdAstarCostMatrix(`SQL de aristas`_, **salidas**, [**opciones**])"
@@ -11298,9 +11114,8 @@ msgstr ""
 "De los vértices :math:`\\{6, 1\\}` a los vértices :math:`\\{10, 17\\}` en un "
 "grafo **no dirigido**"
 
-#, fuzzy
 msgid "Using a combinations table on an undirected graph"
-msgstr "Usando una tabla de combinaciones en un grafo no dirigido."
+msgstr "Usando una tabla de combinaciones en un grafo no dirigido"
 
 msgid ""
 "`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/"
@@ -15651,12 +15466,10 @@ msgstr ""
 msgid "``pgr_kingOrdering`` - Experimental"
 msgstr "``pgr_edgeColoring`` - Experimental"
 
-#, fuzzy
 msgid ""
 "``pgr_kingOrdering`` — Returns the King ordering of an undirected graph."
 msgstr ""
-"``pgr_cuthillMckeeOrdering`` —Ordenamiento Cuthill-Mckee de grapos no "
-"dirigidos"
+"``pgr_kingOrdering`` - Regresa el ordenamiento King de un grafo no dirigido."
 
 msgid ""
 "In numerical linear algebra and graph theory, the King ordering algorithm is "
@@ -16666,9 +16479,8 @@ msgstr ""
 msgid "pgr_maxFlowMinCost(Combinations)"
 msgstr "pgr_maxFlowMinCost(Combinaciones)"
 
-#, fuzzy
 msgid "|Boost| Boost Graph Inside."
-msgstr "|Boost| Adentro: Boost Graph"
+msgstr "|Boost| Boost Graph Adentro."
 
 msgid "**TODO** check which statement is true:"
 msgstr "**Por hacer** comprobar qué declaración es verdadera:"
@@ -17887,25 +17699,22 @@ msgstr ""
 "Valor en [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] indicando si el lado de "
 "manejo es:"
 
-#, fuzzy
 msgid "For directed graph:"
-msgstr "Para un grafo dirigido."
+msgstr "Para un grafo dirigido:"
 
 #, fuzzy
 msgid "[``r``, ``R``] for right driving side"
 msgstr "``r``, ``R`` para el manejo del lado derecho,"
 
-#, fuzzy
 msgid "[``l``, ``L``] for left driving side"
-msgstr "``l``, ``L`` para lado de manejo izquierdo."
+msgstr "[``l``, ``L``] para lado izquierdo de conducción"
 
 #, fuzzy
 msgid "For undirected graph:"
 msgstr "En grafos no dirigidos:"
 
-#, fuzzy
 msgid "[``b``, ``B``] for both driving sides"
-msgstr "``l``, ``L`` para lado de manejo izquierdo."
+msgstr "[``b``, ``B``] para ambos lados de conducción"
 
 msgid "Default values when parameter is missing:"
 msgstr ""
