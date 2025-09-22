@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-23 02:38+0000\n"
+"POT-Creation-Date: 2025-09-08 17:37+0000\n"
 "PO-Revision-Date: 2025-05-19 15:24+0000\n"
 "Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -3527,10 +3527,14 @@ msgstr ":doc:`pgr_topologicalSort` - 有向无环图的顶点线性排序。"
 
 #, fuzzy
 msgid ""
-":doc:`pgr_kingOrdering` - Returns the King ordering of an undirected graphs "
-"acyclic graph."
+":doc:`pgr_sloanOrdering` - Returns the sloan ordering of an undirected graph."
 msgstr ""
 ":doc:`pgr_cuthillMckeeOrdering` - 返回无向图的反向 Cuthill-McKee 排序。"
+
+#, fuzzy
+msgid ""
+":doc:`pgr_kingOrdering` - Returns the King ordering of an undirected graph."
+msgstr "``pgr_cuthillMckeeOrdering`` — 返回无向图的反向 Cuthill-Mckee 排序"
 
 msgid ":doc:`metrics-family`"
 msgstr ":doc:`metrics-family`"
@@ -4114,10 +4118,11 @@ msgstr "文档"
 msgid "The HTML documentation is build by default"
 msgstr ""
 
+#, fuzzy
 msgid ""
-"The translated languages (en, es, zh_Hans) HTML documentation is build by "
-"default"
-msgstr ""
+"The translated languages (en, es, sv, zh_Hans) HTML documentation is build "
+"by default"
+msgstr "用于用户文档"
 
 msgid "`WITH-DOC` is not used anymore"
 msgstr ""
@@ -4286,6 +4291,10 @@ msgstr "pgr_maxFlow"
 msgid "pgr_pushRelabel"
 msgstr "``pgr_pushRelabel``"
 
+#, fuzzy
+msgid "pgr_sloanOrdering"
+msgstr "排序"
+
 msgid "pgr_sequentialVertexColoring"
 msgstr "pgr_sequentialVertexColoring"
 
@@ -4330,7 +4339,7 @@ msgid "pgr_trspVia_withPoints"
 msgstr "pgr_trspVia_withPoints"
 
 #, fuzzy
-msgid "**Driving side** parameter is positional unnamed and compulsory."
+msgid "**Driving side** parameter is positional unnamed."
 msgstr "``driving_side`` 参数以前被命名为可选，现在是强制性的未命名参数。"
 
 #, fuzzy
@@ -4352,6 +4361,10 @@ msgstr ""
 
 msgid "pgr_trsp_withPoints"
 msgstr "pgr_trsp_withPoints"
+
+#, fuzzy
+msgid "**Driving side** parameter is positional unnamed and compulsory."
+msgstr "``driving_side`` 参数以前被命名为可选，现在是强制性的未命名参数。"
 
 #, fuzzy
 msgid ""
@@ -4698,6 +4711,13 @@ msgstr "排序"
 msgid ""
 "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: "
 "pgr_kingOrdering"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid ""
+"`#2955 <https://github.com/pgRouting/pgrouting/issues/2955>`__: "
+"pgr_sloanOrdering"
 msgstr ""
 "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
@@ -6635,25 +6655,28 @@ msgid "Enumerate |result-m-1-no-seq| columns"
 msgstr "输出列为 |result-1-1-no-seq|"
 
 #, fuzzy
-msgid "Validity of **driving side** parameter"
+msgid "Default value of **driving side** parameter"
 msgstr "右驾驶侧"
 
+#, fuzzy
 msgid ""
-"**driving side** parameter is unnamed compulsory, and valid values differ "
-"for directed and undirected graphs."
+"**driving side** parameter is unnamed, and valid values differ for directed "
+"and undirected graphs."
 msgstr "**driving side** 参数是未命名的强制参数，有向图和无向图的有效值不同。"
-
-msgid "Does not have a default value."
-msgstr "没有默认值。"
 
 msgid "In directed graph: valid values are [``r``, ``R``, ``l``, ``L``]"
 msgstr "在有向图中：有效值为 [``r``, ``R``, ``l``, ``L``]"
 
+#, fuzzy
+msgid "Default value = 'r';"
+msgstr "有默认值"
+
 msgid "In undirected graph: valid values are [``b``, ``B``]"
 msgstr "在无向图中：有效值为 [``b``, ``B``]"
 
-msgid "Using an invalid value throws an ``ERROR``."
-msgstr "使用无效值会引发 ``ERROR`` 。"
+#, fuzzy
+msgid "Default value = 'b';"
+msgstr "有默认值"
 
 #, fuzzy
 msgid "Single vertex example using ``pgr_withPointsDD``"
@@ -7200,10 +7223,10 @@ msgstr "|ksp-result|"
 msgid "|generic-result|"
 msgstr "|nksp-result|"
 
+#, fuzzy
 msgid ""
 "And ``driving side`` parameter changed from named optional to unnamed "
-"compulsory **driving side** and its validity differ for directed and "
-"undirected graphs."
+"**driving side** and its validity differ for directed and undirected graphs."
 msgstr ""
 "而且 ``driving side`` 参数从命名的可选参数变为未命名的必选参数 **行驶方向**，"
 "其有效性对于有向图和无向图有所不同。"
@@ -9147,7 +9170,14 @@ msgid "ES"
 msgstr ""
 
 #, fuzzy
-msgid "if OFF the Spaish documentation will no be built"
+msgid "if OFF the Spanish documentation will no be built"
+msgstr "有关此文档何时构建的信息"
+
+msgid "SV"
+msgstr ""
+
+#, fuzzy
+msgid "if OFF the Swedish documentation will no be built"
 msgstr "有关此文档何时构建的信息"
 
 msgid "ZH_HANS"
@@ -9269,7 +9299,7 @@ msgid "Individuals in this release v4.0.0 (in alphabetical order)"
 msgstr "本次 v3.8.x 版本发布的个人贡献者（按字母顺序排列）"
 
 #, fuzzy
-msgid "Fan Wu Regina Obe, Saloni kumari, Vicky Vergara"
+msgid "Bipasha Gayary, Fan Wu, Regina Obe, Saloni kumari, Vicky Vergara"
 msgstr "Aurélie Bousquet, Regina Obe, Vicky Vergara"
 
 msgid ""
@@ -9283,8 +9313,23 @@ msgstr ""
 msgid "Translators (in alphabetical order)"
 msgstr "翻译（按字母顺序排列）"
 
+msgid "Chinese:"
+msgstr ""
+
 msgid "Dapeng Wang"
 msgstr "Dapeng Wang"
+
+msgid "Spanish:"
+msgstr ""
+
+msgid "Vicky Vergara"
+msgstr ""
+
+msgid "Swedish:"
+msgstr ""
+
+msgid "Daniel Nylander"
+msgstr ""
 
 msgid "Corporate Sponsors in this release (in alphabetical order)"
 msgstr "本次发布中的企业赞助商（按字母顺序排列）"
@@ -9320,17 +9365,17 @@ msgstr "个人贡献者（按字母排序）"
 msgid ""
 "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
 "Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
-"Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian "
-"Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, "
-"Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, "
-"Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, "
-"Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud "
-"Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, "
-"Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, "
-"Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, "
-"Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, "
-"Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, "
-"Virginia Vergara, Yige Huang"
+"Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, "
+"Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, "
+"Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, "
+"Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu "
+"Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko "
+"Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim "
+"Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish "
+"Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni "
+"Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen "
+"Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, "
+"Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
 "Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
@@ -13464,8 +13509,9 @@ msgid ""
 "Both are equally good as they have the same cost. (lines: `12` and `13`)"
 msgstr "由于成本相同，两者同样好。(行：`12` and `13`)"
 
-msgid "``pgr_dijkstraVia`` - Proposed"
-msgstr "``pgr_dijkstraVia`` - 提议中"
+#, fuzzy
+msgid "``pgr_dijkstraVia``"
+msgstr "``pgr_dijkstra``"
 
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr "``pgr_dijkstraVia`` - 经过顶点列表的路径。"
@@ -16115,6 +16161,85 @@ msgstr ""
 "`Boost: 顺序顶点着色 <https://www.boost.org/libs/graph/doc/"
 "sequential_vertex_coloring.html>`__"
 
+#, fuzzy
+msgid "``pgr_sloanOrdering`` - Experimental"
+msgstr "``pgr_edgeColoring`` - 实验性"
+
+#, fuzzy
+msgid ""
+"``pgr_sloanOrdering`` — Returns the sloan ordering of an undirected graph"
+msgstr "``pgr_cuthillMckeeOrdering`` — 返回无向图的反向 Cuthill-Mckee 排序"
+
+msgid ""
+"The Sloan ordering algorithm reorders the vertices of a graph to reduce "
+"bandwidth, profile, and wavefront properties, which is particularly useful "
+"for sparse matrix computations and finite element analysis."
+msgstr ""
+
+msgid "Finds a pseudoperipheral vertex pair to determine good starting points"
+msgstr ""
+
+msgid ""
+"Uses a priority-based algorithm that balances vertex degree and distance "
+"from the start vertex."
+msgstr ""
+
+msgid ""
+"Aims to mininimize bandwidth (maximum difference between connected vertex "
+"indices."
+msgstr ""
+
+msgid ""
+"Typically produces better orderings than simple breadth-first approaches."
+msgstr ""
+
+msgid "Run time is 0.115846 seconds."
+msgstr ""
+
+#, fuzzy
+msgid "|Boost| Boost Graph inside"
+msgstr "|Boost| Boost 图内部"
+
+#, fuzzy
+msgid "..rubric::Summary"
+msgstr "..rubric:: 标准化 SQL"
+
+#, fuzzy
+msgid "pgr_sloanOrdering(`Edges SQL`_)"
+msgstr "pgr_edgeColoring(`Edges SQL`_)"
+
+msgid ":Example : Sloan ordering without specifying start vertex"
+msgstr ""
+
+#, fuzzy
+msgid "New sloan ordering order."
+msgstr "新的逆序排列。"
+
+msgid "Sloan ordering of Original graph from Boost example (vertices 0-9)."
+msgstr ""
+
+msgid "..graphviz::"
+msgstr ""
+
+msgid "..literalinclude::sloanOrdering.queries"
+msgstr ""
+
+msgid "start-after"
+msgstr ""
+
+msgid "--q3"
+msgstr ""
+
+msgid "--q4"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"`Boost: Sloan Ordering <https://www.boost.org/doc/libs/latest/libs/graph/doc/"
+"sloan_ordering.htm>`__"
+msgstr ""
+"`Boost: 边着色 <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
+
 msgid "``pgr_stoerWagner`` - Experimental"
 msgstr "``pgr_stoerWagner`` - 实验性"
 
@@ -16653,7 +16778,7 @@ msgstr "不要在内部查询的标识符上使用负值。"
 #, fuzzy
 msgid ""
 "pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**via vertices**, **driving side** [**options**])"
+"**via vertices**, [**driving side**,] [**options**])"
 msgstr ""
 "pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**via vertices**, [**options**])"
@@ -16673,7 +16798,8 @@ msgstr "当为正时，它被视为顶点标识符"
 msgid "When negative it is considered a point identifier"
 msgstr "当负数时，它被认为是一个点标识符"
 
-msgid "**driving side**"
+#, fuzzy
+msgid "[**driving side**]"
 msgstr "**driving side**"
 
 msgid ""
@@ -16681,13 +16807,35 @@ msgid ""
 "driving side is:"
 msgstr "值在 [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] 中表示驾驶的一侧是："
 
-msgid "[``r``, ``R``] for right driving side (for directed graph only)"
-msgstr "[``r``, ``R``] 表示右侧驾驶（仅适用于有向图）"
+#, fuzzy
+msgid "For directed graph:"
+msgstr "有向图。"
 
-msgid "[``l``, ``L``] for left driving side (for directed graph only)"
-msgstr "[``l``, ``L``]表示左侧驾驶（仅适用有向图）"
+#, fuzzy
+msgid "[``r``, ``R``] for right driving side"
+msgstr "``r``, ``R`` 表示右侧驾驶，"
 
-msgid "[``b``, ``B``] for both (only for undirected graph)"
+#, fuzzy
+msgid "[``l``, ``L``] for left driving side"
+msgstr "``l``, ``L`` 表示左侧驾驶。"
+
+#, fuzzy
+msgid "For undirected graph:"
+msgstr "在无向图上："
+
+#, fuzzy
+msgid "[``b``, ``B``] for both driving sides"
+msgstr "``l``, ``L`` 表示左侧驾驶。"
+
+msgid "Default values when parameter is missing:"
+msgstr ""
+
+#, fuzzy
+msgid "[``r``, ``R``] for directed graph"
+msgstr "[``b``, ``B``] 表示两侧通行（仅适用于无向图）"
+
+#, fuzzy
+msgid "[``l``, ``L``] for undirected graph"
 msgstr "[``b``, ``B``] 表示两侧通行（仅适用于无向图）"
 
 msgid "With points optional parameters"
@@ -16841,43 +16989,48 @@ msgstr "出于优化目的， `start vids` 或`end vids`中的任何重复值都
 msgid "Running time: :math:`O(|start\\_vids|\\times(V \\log V + E))`"
 msgstr "运行时间： :math:`O(|start\\_vids|\\times(V \\log V + E))`"
 
+#, fuzzy
 msgid ""
 "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vid**, **end vid**, [**options**])"
-msgstr ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vid**, **end vid**, [**options**])"
-
-msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vid**, **end vids**, [**options**])"
+"**start vid**, **end vid**, [**driving side**,] [**options**])"
 msgstr ""
 "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
 "**start vid**, **end vids**, [**options**])"
 
+#, fuzzy
 msgid ""
 "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vids**, **end vid**, [**options**])"
+"**start vid**, **end vids**, [**driving side**,] [**options**])"
 msgstr ""
 "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vids**, **end vid**, [**options**])"
+"**start vid**, **end vids**, [**options**])"
 
+#, fuzzy
 msgid ""
 "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vids**, **end vids**, [**options**])"
+"**start vids**, **end vid**, [**driving side**,] [**options**])"
 msgstr ""
 "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vids**, **end vids**, [**options**])"
+"**start vid**, **end vids**, [**options**])"
 
+#, fuzzy
 msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, "
-"`Points SQL`_, [**options**])"
+"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**start vids**, **end vids**, [**driving side**,] [**options**])"
 msgstr ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, "
-"`Points SQL`_, [**options**])"
+"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**start vid**, **end vids**, [**options**])"
 
-msgid "**options:** ``[directed, driving_side, details]``"
-msgstr "**options:** ``[directed, driving_side, details]``"
+#, fuzzy
+msgid ""
+"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"`Combinations SQL`_, [**driving side**,] [**options**])"
+msgstr ""
+"pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**via vertices**, [**options**])"
+
+msgid "**options:** ``[directed, details]``"
+msgstr "**options:** ``[directed, details]``"
 
 #, fuzzy
 msgid ""
@@ -16885,17 +17038,6 @@ msgid ""
 "directed graph. (with details)"
 msgstr ""
 "从点 :math:`1` 到顶点 :math:`10`，在有向图上显示左侧驾驶侧配置的详细信息。"
-
-#, fuzzy
-msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vid**, **end vids**, **driving side** [**options**])"
-msgstr ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vid**, **end vids**, [**options**])"
-
-msgid "**options:** ``[directed, details]``"
-msgstr "**options:** ``[directed, details]``"
 
 msgid ""
 "From point :math:`1` to point :math:`3` and vertex :math:`7` on an "
@@ -17065,7 +17207,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
-"**driving side** [**options**])"
+"[**driving side**] [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
 "**K**, **driving_side**, [**options**])"
@@ -17073,7 +17215,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
-"**driving side** [**options**])"
+"[**driving side**] [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
 "**K**, **driving_side**, [**options**])"
@@ -17081,7 +17223,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
-"**driving side** [**options**])"
+"[**driving side**] [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
 "**K**, **driving_side**, [**options**])"
@@ -17089,15 +17231,15 @@ msgstr ""
 #, fuzzy
 msgid ""
 "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, "
-"**driving side** [**options**])"
+"[**driving side**] [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, "
 "**K**, **driving_side**, [**options**])"
 
 #, fuzzy
 msgid ""
-"pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **driving "
-"side** [**options**])"
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**driving "
+"side**] [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, "
 "**driving_side**, [**options**])"
@@ -17184,7 +17326,7 @@ msgstr "对于 **无向** 图，结果是 **对称** 的。"
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
-"**driving side** [**options**])"
+"[**driving side**] [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
 "**K**, **driving_side**, [**options**])"
@@ -17192,7 +17334,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
-"**driving side** [**options**])"
+"[**driving side**] [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
 "**K**, **driving_side**, [**options**])"
@@ -17200,7 +17342,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
-"**driving side** [**options**])"
+"[**driving side**] [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
 "**K**, **driving_side**, [**options**])"
@@ -17208,7 +17350,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
-"vids**, **driving side** [**options**])"
+"vids**, [**driving side**] [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, "
 "**K**, **driving_side**, [**options**])"
@@ -17216,7 +17358,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
-"**driving side** [**options**])"
+"[**driving side**] [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, "
 "**driving_side**, [**options**])"
@@ -17286,7 +17428,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, "
-"**driving side** [**options**])"
+"[**driving side**] [**options**])"
 msgstr ""
 "pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, "
 "[**options**])"
@@ -17303,7 +17445,8 @@ msgstr "返回 **对称** 成本矩阵"
 msgid "Using the default ``side`` value on the **points_sql** query"
 msgstr "在 **points_sql** 查询上使用默认 ``side`` 值"
 
-msgid "Using the default ``driving_side`` value"
+#, fuzzy
+msgid "Using the default ``driving side`` value"
 msgstr "使用默认 ``driving_side`` 值"
 
 msgid ""
@@ -17343,16 +17486,18 @@ msgstr ""
 "修改图以包含点，并使用 Dijkstra 算法，提取成本小于或等于距起点 ``**距离**`` "
 "值的所有节点和点。 提取的边将符合相应的生成树。"
 
+#, fuzzy
 msgid ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
-"**driving side**, [**options A**])"
+"[**driving side**], [**options A**])"
 msgstr ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
 "**driving side**, [**options A**])"
 
+#, fuzzy
 msgid ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, "
-"**driving side**, [**options B**])"
+"[**driving side**], [**options B**])"
 msgstr ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, "
 "**driving side**, [**options B**])"
@@ -17363,9 +17508,10 @@ msgstr "**options A:** ``[directed, details]``"
 msgid "**options B:** ``[directed, details, equicost]``"
 msgstr "**options B:** ``[directed, details, equicost]``"
 
+#, fuzzy
 msgid ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
-"**driving side**, [**options**])"
+"[**driving side**], [**options**])"
 msgstr ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
 "**driving side**, [**options**])"
@@ -17376,9 +17522,10 @@ msgid ""
 msgstr ""
 "右侧驾驶拓扑，从点 :math:`1` 开始，距离不超过 :math:`3.3`，并提供详细信息。"
 
+#, fuzzy
 msgid ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, "
-"**driving side**, [**options**])"
+"[**driving side**], [**options**])"
 msgstr ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, "
 "**driving side**, [**options**])"
@@ -17395,24 +17542,6 @@ msgstr ""
 
 msgid "Negative values represent a point"
 msgstr "负值代表一个点"
-
-msgid "``r``, ``R`` for right driving side,"
-msgstr "``r``, ``R`` 表示右侧驾驶，"
-
-msgid "``l``, ``L`` for left driving side."
-msgstr "``l``, ``L`` 表示左侧驾驶。"
-
-msgid "``b``, ``B`` for both."
-msgstr "``b``, ``B`` 表示两侧通行（不限制驾驶方向）。"
-
-msgid "Valid values differ for directed and undirected graphs:"
-msgstr "有效值因有向图和无向图而异："
-
-msgid "In directed graphs: [``r``, ``R``, ``l``, ``L``]."
-msgstr "有向图中：[``r``, ``R``, ``l``, ``L``]。"
-
-msgid "In undirected graphs: [``b``, ``B``]."
-msgstr "无向图中：[``b``, ``B``]。"
 
 msgid ""
 "Find the driving distance from the two closest locations on the graph of "
@@ -17464,37 +17593,42 @@ msgid ""
 msgstr ""
 "修改图以包括 `Points SQL`_ 中定义的点并使用 Yen 算法查找 :math:`K` 最短路径。"
 
+#, fuzzy
 msgid ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
-"**K**, **driving_side**, [**options**])"
+"**K**, [**driving side**], [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
 "**K**, **driving_side**, [**options**])"
 
+#, fuzzy
 msgid ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
-"**K**, **driving_side**, [**options**])"
+"**K**, [**driving side**], [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
 "**K**, **driving_side**, [**options**])"
 
+#, fuzzy
 msgid ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
-"**K**, **driving_side**, [**options**])"
+"**K**, [**driving side**], [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
 "**K**, **driving_side**, [**options**])"
 
+#, fuzzy
 msgid ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, "
-"**K**, **driving_side**, [**options**])"
+"**K**, [**driving side**], [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, "
 "**K**, **driving_side**, [**options**])"
 
+#, fuzzy
 msgid ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, "
-"**driving_side**, [**options**])"
+"[**driving side**], [**options**])"
 msgstr ""
 "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, "
 "**driving_side**, [**options**])"
@@ -17595,8 +17729,8 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, **driving "
-"side** [**options**])"
+"pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, [**driving "
+"side**] [**options**])"
 msgstr ""
 "pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, "
 "[**options**])"
@@ -21452,3 +21586,67 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
 
+#~ msgid "Does not have a default value."
+#~ msgstr "没有默认值。"
+
+#~ msgid "Using an invalid value throws an ``ERROR``."
+#~ msgstr "使用无效值会引发 ``ERROR`` 。"
+
+#~ msgid "``pgr_dijkstraVia`` - Proposed"
+#~ msgstr "``pgr_dijkstraVia`` - 提议中"
+
+#~ msgid "[``r``, ``R``] for right driving side (for directed graph only)"
+#~ msgstr "[``r``, ``R``] 表示右侧驾驶（仅适用于有向图）"
+
+#~ msgid "[``l``, ``L``] for left driving side (for directed graph only)"
+#~ msgstr "[``l``, ``L``]表示左侧驾驶（仅适用有向图）"
+
+#~ msgid ""
+#~ "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+#~ "**start vid**, **end vid**, [**options**])"
+#~ msgstr ""
+#~ "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+#~ "**start vid**, **end vid**, [**options**])"
+
+#~ msgid ""
+#~ "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+#~ "**start vid**, **end vids**, [**options**])"
+#~ msgstr ""
+#~ "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+#~ "**start vid**, **end vids**, [**options**])"
+
+#~ msgid ""
+#~ "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+#~ "**start vids**, **end vid**, [**options**])"
+#~ msgstr ""
+#~ "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+#~ "**start vids**, **end vid**, [**options**])"
+
+#~ msgid ""
+#~ "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+#~ "**start vids**, **end vids**, [**options**])"
+#~ msgstr ""
+#~ "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+#~ "**start vids**, **end vids**, [**options**])"
+
+#~ msgid ""
+#~ "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations "
+#~ "SQL`_, `Points SQL`_, [**options**])"
+#~ msgstr ""
+#~ "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations "
+#~ "SQL`_, `Points SQL`_, [**options**])"
+
+#~ msgid "**options:** ``[directed, driving_side, details]``"
+#~ msgstr "**options:** ``[directed, driving_side, details]``"
+
+#~ msgid "``b``, ``B`` for both."
+#~ msgstr "``b``, ``B`` 表示两侧通行（不限制驾驶方向）。"
+
+#~ msgid "Valid values differ for directed and undirected graphs:"
+#~ msgstr "有效值因有向图和无向图而异："
+
+#~ msgid "In directed graphs: [``r``, ``R``, ``l``, ``L``]."
+#~ msgstr "有向图中：[``r``, ``R``, ``l``, ``L``]。"
+
+#~ msgid "In undirected graphs: [``b``, ``B``]."
+#~ msgstr "无向图中：[``b``, ``B``]。"
