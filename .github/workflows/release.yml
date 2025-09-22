@@ -32,11 +32,13 @@ jobs:
           sudo service postgresql start
           PGVER=$(psql --version | grep -Po '(?<=psql \(PostgreSQL\) )[^;]+(?=\.\d+ \()')
           PGROUTING_VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
+          PGROUTING_VERSION_DEV=$(grep -Po '(?<=set\(PROJECT_VERSION_DEV ")[^"]+' CMakeLists.txt)
+          FULL_VERSION="${PGROUTING_VERSION}${PGROUTING_VERSION_DEV}"
           echo "PGVER=${PGVER}" >> $GITHUB_ENV
           echo "PGPORT=5432" >> $GITHUB_ENV
           echo "PGIS=3" >> $GITHUB_ENV
-          echo "PGROUTING_VERSION=${PGROUTING_VERSION}" >> $GITHUB_ENV
-          echo "TAG_NAME=v${PGROUTING_VERSION}" >> $GITHUB_ENV
+          echo "PGROUTING_VERSION=${FULL_VERSION}" >> $GITHUB_ENV
+          echo "TAG_NAME=v${FULL_VERSION}" >> $GITHUB_ENV
 
       - name: Create and Push Tag
         run: |
