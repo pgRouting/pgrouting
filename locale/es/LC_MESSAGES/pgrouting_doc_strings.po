@@ -6053,21 +6053,21 @@ msgstr ""
 
 #, fuzzy
 msgid ":ref:`pgRouting-concepts:Result columns for cost functions`"
-msgstr "Columnas de resultados de las funciones de costes"
+msgstr ":ref:`pgRouting-concepts:Result columns for cost functions`"
 
 msgid "|matrix-result|"
 msgstr "|matrix-result|"
 
 #, fuzzy
 msgid ":ref:`pgRouting-concepts:Result columns for single path functions`"
-msgstr "Columnas de resultados para funciones de árbol de expansión"
+msgstr ":ref:`pgRouting-concepts:Result columns for single path functions`"
 
 msgid "|short-generic-result|"
 msgstr "|short-generic-result|"
 
 #, fuzzy
 msgid ":ref:`pgRouting-concepts:Result columns for spanning tree functions`"
-msgstr "Columnas de resultados para funciones de árbol de expansión"
+msgstr ":ref:`pgRouting-concepts:Result columns for spanning tree functions`"
 
 msgid "|result-spantree|"
 msgstr "|result-spantree|"
@@ -6578,7 +6578,7 @@ msgstr "``pgr_withPointsDD``"
 
 #, fuzzy
 msgid ":ref:`from_result_generic_no_seq`"
-msgstr "|result-generic-no-seq|"
+msgstr ":ref:`from_result_generic_no_seq`"
 
 msgid "``pgr_kruskalDD``"
 msgstr "``pgr_kruskalDD``"
@@ -6820,14 +6820,14 @@ msgstr "``pgr_topologicalSort``"
 
 #, fuzzy
 msgid ":ref:`from_toposort`"
-msgstr "Regresa el conjunto de |result-disjoint|"
+msgstr ":ref:`from_toposort`"
 
 msgid "``pgr_transitiveClosure``"
 msgstr "``pgr_transitiveClosure``"
 
 #, fuzzy
 msgid ":ref:`from_old_closure`"
-msgstr "|result-generic-no-seq|"
+msgstr ":ref:`from_old_closure`"
 
 msgid "Migration from |result-old-closure|"
 msgstr "Migración de |result-old-closure|"
