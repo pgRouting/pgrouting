@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <cstddef>
 #include <string>
-
+#include <cstdint>
 
 void
 do_ordering(
