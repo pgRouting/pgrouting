@@ -41,10 +41,6 @@ if  [[ "${POSTGIS_VER}" == '' ]] ; then
     POSTGIS_VER=3.3.2
 fi;
 
-if  [[ "${GCC_TYPE}" == '' ]] ; then
-    GCC_TYPE=gcc81
-fi;
-
 if  [[ "${BOOST_VER}" == '' ]] ; then
     BOOST_VER=1.78.0
 fi;
