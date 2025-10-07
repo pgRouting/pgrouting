@@ -131,6 +131,18 @@ Summary of changes by function
 
   * Combinations signature promoted to official.
 
+* pgr_dijkstraNear
+
+  * Function promoted to official.
+
+* pgr_dijkstraNearCost
+
+  * Function promoted to official.
+
+* pgr_dijkstraVia
+
+  * Function promoted to official.
+
 * pgr_edgeColoring
 
   * Output columns standardized to ``(edge, color)``
@@ -138,6 +150,7 @@ Summary of changes by function
 * pgr_edgeDisjointPaths
 
   * Output columns standardized to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+  * Combinations signature promoted to official.
 
 * pgr_edmondsKarp
 
@@ -160,6 +173,12 @@ Summary of changes by function
 
   * All signatures promoted to official.
 
+* pgr_maxCardinalityMatch
+
+  .. Breaking change
+  * Breaking change, signatures no longer available:
+    * pgr_maxCardinalityMatch(text,boolean)
+
 * pgr_maxFlow
 
   * Combinations signature promoted to official.
@@ -168,13 +187,13 @@ Summary of changes by function
 
   * Combinations signature promoted to official.
 
-* pgr_sloanOrdering
-
-  * New experimental function.
-
 * pgr_sequentialVertexColoring
 
   * Output columns standardized to ``(node, color)``
+
+* pgr_sloanOrdering
+
+  * New experimental function.
 
 * pgr_topologicalSort
 
@@ -219,6 +238,23 @@ Summary of changes by function
     * pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)
     * pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)
     * pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)
+
+* pgr_TSP
+
+  * Results change depending on input order
+  * Only for undirected graphs
+  .. Breaking change
+  * Breaking change, signatures no longer available:
+    * pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double
+      precision,double precision,double precision,boolean)
+
+* pgr_TSPeuclidean
+
+  * Results change depending on input order
+  .. Breaking change
+  * Breaking change, signatures no longer available:
+    * pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,
+      integer,double precision,double precision,double precision,boolean)
 
 * pgr_turnRestrictedPath
 
@@ -287,6 +323,7 @@ Summary of changes by function
 Functions promoted to official
 
 * [#2701](https://github.com/pgRouting/pgrouting/issues/2701): pgr_trsp
+* [#2701](https://github.com/pgRouting/pgrouting/issues/2701): pgr_trsp
 * [#2701](https://github.com/pgRouting/pgrouting/issues/2701): pgr_trspVia
 * [#2701](https://github.com/pgRouting/pgrouting/issues/2701): pgr_trspVia_withPoints
 * [#2701](https://github.com/pgRouting/pgrouting/issues/2701): pgr_trsp_withPoints
@@ -296,6 +333,9 @@ Functions promoted to official
 * [#2700](https://github.com/pgRouting/pgrouting/issues/2700): pgr_withPointsDD
 * [#2700](https://github.com/pgRouting/pgrouting/issues/2700): pgr_withPointsKSP
 * [#2700](https://github.com/pgRouting/pgrouting/issues/2700): pgr_withPointsVia
+* [#2983](https://github.com/pgRouting/pgrouting/issues/2983): pgr_dijkstraNear
+* [#2983](https://github.com/pgRouting/pgrouting/issues/2983): pgr_dijkstraNearCost
+* [#2983](https://github.com/pgRouting/pgrouting/issues/2983): pgr_dijkstraVia
 
 Signatures promoted to official
 
