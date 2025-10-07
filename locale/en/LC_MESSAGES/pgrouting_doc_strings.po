@@ -19447,3 +19447,535 @@ msgstr ""
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
+
+#~ msgid "pgRouting 4.0.0 Release Notes"
+#~ msgstr ""
+
+#~ msgid "It is expected to terminate faster than pgr_aStar"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The ``pgr_aStarCost`` function summarizes of"
+#~ " the cost of the shortest path "
+#~ "using the A* algorithm."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The results are equivalent to the "
+#~ "union of the results of the "
+#~ "pgr_bdAStar(One to One) on the:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The ``pgr_bdAstarCost`` function summarizes of"
+#~ " the cost of the shortest path "
+#~ "using the bidirectional A* algorithm."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``pgr_bdAstarCostMatrix`` - Calculates the a"
+#~ " cost matrix using :doc:`pgr_aStar`."
+#~ msgstr ""
+
+#~ msgid "Using internally the :doc:`pgr_bdAstar` algorithm"
+#~ msgstr ""
+
+#~ msgid "Signature change on pgr_bdDijsktra(One to One)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The ``pgr_bdDijkstraCost`` function summarizes "
+#~ "of the cost of the shortest path"
+#~ " using the bidirectional Dijkstra "
+#~ "Algorithm."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Boost `floyd-Warshall "
+#~ "<https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
+#~ msgstr ""
+
+#~ msgid "New experimental functions"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__:"
+#~ " pgr_trspviaedges"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__:"
+#~ " pgr_trspviavertices"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__"
+#~ " _pgr_alphashape(text,double precision)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_checkverttab(text,text[],integer,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_createindex(text,text,text,integer,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_createindex(text,text,text,text,integer,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__"
+#~ " _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__"
+#~ " _pgr_dagshortestpath(text,text,boolean,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__"
+#~ " _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__"
+#~ " _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__"
+#~ " _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2735 <https://github.com/pgRouting/pgrouting/issues/2735>`__"
+#~ " _pgr_drivingdistance(text,anyarray,double "
+#~ "precision,boolean,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_endpoint(geometry)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_getcolumnname(text,text,integer,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_getcolumnname(text,text,text,integer,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_getcolumntype(text,text,integer,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_getcolumntype(text,text,text,integer,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_gettablename(text,integer,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_iscolumnindexed(text,text,integer,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_iscolumnindexed(text,text,text,integer,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_iscolumnintable(text,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__"
+#~ " _pgr_maxcardinalitymatch(text,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_startpoint(geometry)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__"
+#~ " _pgr_trspviavertices(text,integer[],boolean,boolean,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " "
+#~ "_pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " "
+#~ "_pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " "
+#~ "_pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__"
+#~ " _pgr_tspeuclidean(text,bigint,bigint,double "
+#~ "precision,integer,integer,integer,double precision,double "
+#~ "precision,double precision,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__"
+#~ " _pgr_versionless(text,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__"
+#~ " _pgr_withpointsdd(text,text,anyarray,double "
+#~ "precision,boolean,character,boolean,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__"
+#~ " "
+#~ "_pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__"
+#~ " "
+#~ "_pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__"
+#~ " "
+#~ "_pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__"
+#~ " _pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__"
+#~ " "
+#~ "_pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__"
+#~ " pgr_maxcardinalitymatch(text,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__"
+#~ " pgr_trspviaedges(text,integer[],double "
+#~ "precision[],boolean,boolean,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__"
+#~ " pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " "
+#~ "pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " "
+#~ "pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " "
+#~ "pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " "
+#~ "pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " "
+#~ "pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__"
+#~ " pgr_tspeuclidean(text,bigint,bigint,double "
+#~ "precision,integer,integer,integer,double precision,double "
+#~ "precision,double precision,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " pgr_withpointscost(text,text,anyarray,bigint,boolean,character)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " pgr_withpointscost(text,text,bigint,anyarray,boolean,character)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " pgr_withpointscost(text,text,bigint,bigint,boolean,character)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " pgr_withpointscost(text,text,text,boolean,character)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__"
+#~ " pgr_withpointsdd(text,text,anyarray,double "
+#~ "precision,boolean,character,boolean,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__"
+#~ " pgr_withpointsdd(text,text,bigint,double "
+#~ "precision,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__"
+#~ " "
+#~ "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " "
+#~ "pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " "
+#~ "pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " "
+#~ "pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " pgr_withpoints(text,text,text,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__"
+#~ " "
+#~ "pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+#~ msgstr ""
+
+#~ msgid "_pgr_drivingdistance => _pgr_drivingdistancev4"
+#~ msgstr ""
+
+#~ msgid "_pgr_withpointsdd => _pgr_withpointsddv4"
+#~ msgstr ""
+
+#~ msgid "_pgr_withpointsksp => _pgr_withpointsksp_v4"
+#~ msgstr ""
+
+#~ msgid "_pgr_trspvia_withpoints => _pgr_trspvia_withpoints_v4"
+#~ msgstr ""
+
+#~ msgid "_pgr_trsp_withpoints => _pgr_trsp_withpoints_v4"
+#~ msgstr ""
+
+#~ msgid "_pgr_withpointsvia => _pgr_withpointsvia_v4"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__"
+#~ " _pgr_alphashape"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__"
+#~ " _pgr_dagshortestpath"
+#~ msgstr ""
+
+#~ msgid "New experimental function"
+#~ msgstr ""
+
+#~ msgid "Using this standard all versions of boost will work"
+#~ msgstr ""
+
+#~ msgid "The user's documentation is build by default"
+#~ msgstr ""
+
+#~ msgid "To build only English: `-DES=ON -DSV=OFF -DZH_HANS=OFF`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Documentation output changed location to "
+#~ "`build/doc/_build/<format>` directory"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``pgr_kingOrdering`` — Returns the King "
+#~ "ordering of an undirected graphs"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The method follows a breadth-first "
+#~ "search (BFS) traversal,but with a "
+#~ "refinement: at each step, the unvisited"
+#~ " neighbors of the current vertex are"
+#~ " inserted into the queue in ascending"
+#~ " order of their pseudo-degree, where"
+#~ " the pseudo-degree of a vertex "
+#~ "is the number of edges connecting "
+#~ "it to yet-unvisited vertices. This "
+#~ "prioritization often yields a smaller "
+#~ "bandwidth compared to simpler BFS "
+#~ "orderings."
+#~ msgstr ""
+
+#~ msgid "|boost| graph inside."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``pgr_sloanOrdering`` — Returns the sloan "
+#~ "ordering of an undirected graph"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Aims to mininimize bandwidth (maximum "
+#~ "difference between connected vertex indices."
+#~ msgstr ""
+
+#~ msgid "Run time is 0.115846 seconds."
+#~ msgstr ""
+
+#~ msgid "|Boost| Boost Graph inside"
+#~ msgstr ""
+
+#~ msgid "..rubric::Summary"
+#~ msgstr ""
+
+#~ msgid "..graphviz::"
+#~ msgstr ""
+
+#~ msgid "..literalinclude::sloanOrdering.queries"
+#~ msgstr ""
+
+#~ msgid "start-after"
+#~ msgstr ""
+
+#~ msgid "--q3"
+#~ msgstr ""
+
+#~ msgid "--q4"
+#~ msgstr ""
+
+#~ msgid "The doxygen documentation is build by default"
+#~ msgstr ""
+
+#~ msgid "The HTML documentation is build by default"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The translated languages (en, es, sv,"
+#~ " zh_Hans) HTML documentation is build "
+#~ "by default"
+#~ msgstr ""
+
+#~ msgid "User's Documentation is not build when"
+#~ msgstr ""
+
+#~ msgid "Developers's Documentation is not build when"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__:"
+#~ " pgr_DAGshortestPath"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__:"
+#~ " pgr_turnRestrictedPaths"
+#~ msgstr ""
+
+#~ msgid "Internally uses the :doc:`pgr_bdAstar` algorithm"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "It is well-known that the shortest"
+#~ " paths between a single source and"
+#~ " all other vertices can be found "
+#~ "using Breadth First Search in "
+#~ ":math:`O(|E|)` in an unweighted graph, "
+#~ "i.e. the distance is the minimal "
+#~ "number of edges that you need to"
+#~ " traverse from the source to another"
+#~ " vertex. We can interpret such a "
+#~ "graph also as a weighted graph, "
+#~ "where every edge has the weight "
+#~ ":math:`1`. If not all edges in "
+#~ "graph have the same weight, that "
+#~ "we need a more general algorithm, "
+#~ "like Dijkstra's Algorithm which runs in"
+#~ " :math:`O(|E|log|V|)` time."
+#~ msgstr ""
+
+#~ msgid "..rubric:: Version 3.0.0"
+#~ msgstr ""
+
