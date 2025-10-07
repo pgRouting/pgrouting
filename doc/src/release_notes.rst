@@ -198,6 +198,24 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* pgr_dijkstraNear
+
+  .. include:: pgr_dijkstraNear.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_dijkstraNearCost
+
+  .. include:: pgr_dijkstraNearCost.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_dijkstraVia
+
+  .. include:: pgr_dijkstraVia.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_edgeColoring
 
   .. include:: pgr_edgeColoring.rst
@@ -234,6 +252,12 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+* pgr_maxCardinalityMatch
+
+  .. include:: pgr_maxCardinalityMatch.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
 * pgr_maxFlow
 
   .. include:: pgr_maxFlow.rst
@@ -246,17 +270,17 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
-* pgr_sloanOrdering
-
-  .. include:: pgr_sloanOrdering.rst
-     :start-after: Version 4.0.0
-     :end-before: Description
-
 * pgr_sequentialVertexColoring
 
   .. include:: pgr_sequentialVertexColoring.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
+
+* pgr_sloanOrdering
+
+  .. include:: pgr_sloanOrdering.rst
+     :start-after: Version 4.0.0
+     :end-before: Description
 
 * pgr_topologicalSort
 
@@ -291,6 +315,18 @@ Summary of changes by function
 * pgr_trsp_withPoints
 
   .. include:: pgr_trsp_withPoints.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_TSP
+
+  .. include:: pgr_TSP.rst
+     :start-after: Version 4.0.0
+     :end-before: .. rubric
+
+* pgr_TSPeuclidean
+
+  .. include:: pgr_TSPeuclidean.rst
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
@@ -340,6 +376,7 @@ Functions promoted to official
 ...............................................................................
 
 * :issue:`2701`: pgr_trsp
+* :issue:`2701`: pgr_trsp
 * :issue:`2701`: pgr_trspVia
 * :issue:`2701`: pgr_trspVia_withPoints
 * :issue:`2701`: pgr_trsp_withPoints
@@ -349,6 +386,9 @@ Functions promoted to official
 * :issue:`2700`: pgr_withPointsDD
 * :issue:`2700`: pgr_withPointsKSP
 * :issue:`2700`: pgr_withPointsVia
+* :issue:`2983`: pgr_dijkstraNear
+* :issue:`2983`: pgr_dijkstraNearCost
+* :issue:`2983`: pgr_dijkstraVia
 
 Signatures promoted to official
 ...............................................................................
