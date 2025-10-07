@@ -4,9 +4,9 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
 SELECT version, library FROM pgr_full_version();
-   version    |     library
---------------+-----------------
- 4.0.0-alpha1 | pgrouting-4.0.0
+   version   |     library
+-------------+-----------------
+ 4.0.0-beta1 | pgrouting-4.0.0
 (1 row)
 
 /* -- q2 */
