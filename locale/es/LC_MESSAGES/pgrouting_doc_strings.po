@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-17 02:15+0000\n"
-"PO-Revision-Date: 2025-09-22 16:27+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2025-10-07 20:06+0000\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -6091,9 +6091,8 @@ msgstr ":doc:`pgr_bdAstar`"
 msgid ":doc:`pgr_drivingDistance`"
 msgstr ":doc:`pgr_drivingDistance`"
 
-#, fuzzy
 msgid "`Migration of spanning tree functions`_"
-msgstr "`Migración de restricciones`_"
+msgstr "`Migración de las funciones del árbol de expansión`_"
 
 msgid ":doc:`pgr_withPointsDD`"
 msgstr ":doc:`pgr_withPointsDD`"
@@ -6107,9 +6106,8 @@ msgstr ":doc:`pgr_binaryBreadthFirstSearch`"
 msgid ":doc:`pgr_bipartite`"
 msgstr ":doc:`pgr_bipartite`"
 
-#, fuzzy
 msgid "`Migration of output column name change`_"
-msgstr "`Migración de restricciones`_"
+msgstr "`Migración de cambio de nombre de columna de salida`_"
 
 msgid ":doc:`pgr_breadthFirstSearch`"
 msgstr ":doc:`pgr_breadthFirstSearch`"
@@ -6120,9 +6118,8 @@ msgstr ":doc:`pgr_depthFirstSearch`"
 msgid ":doc:`pgr_edgeColoring`"
 msgstr ":doc:`pgr_edgeColoring`"
 
-#, fuzzy
 msgid "`Migration of multiple paths functions`_"
-msgstr "`Migración de restricciones`_"
+msgstr "`Migración de funciones de rutas múltiples`_"
 
 msgid ":doc:`pgr_sequentialVertexColoring`"
 msgstr ":doc:`pgr_sequentialVertexColoring`"
@@ -6133,13 +6130,11 @@ msgstr ":doc:`pgr_topologicalSort`"
 msgid ":doc:`pgr_withPoints`"
 msgstr ":doc:`pgr_withPoints`"
 
-#, fuzzy
 msgid "`Migration of cost functions`_"
-msgstr "`Migración de restricciones`_"
+msgstr "`Migración de las funciones de coste`_"
 
-#, fuzzy
 msgid "Migration of cost functions"
-msgstr "Migración de restricciones"
+msgstr "Migración de las funciones de costes"
 
 msgid ""
 "The standardized :ref:`pgRouting-concepts:Result columns for cost functions` "
