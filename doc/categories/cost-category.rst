@@ -21,21 +21,11 @@ Cost - Category
 * :doc:`pgr_aStarCost`
 * :doc:`pgr_bdAstarCost`
 * :doc:`pgr_dijkstraCost`
+* :doc:`pgr_dijkstraNearCost`
 * :doc:`pgr_bdDijkstraCost`
 * :doc:`pgr_withPointsCost`
 
 .. official-end
-
-.. include:: proposed.rst
-    :start-after: warning-begin
-    :end-before: end-warning
-
-.. proposed-start
-
-* :doc:`pgr_dijkstraNearCost`
-
-.. proposed-end
-
 
 General Information
 -------------------------------------------------------------------------------

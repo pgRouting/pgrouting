@@ -54,14 +54,6 @@ Proposed Functions
    :start-after: proposed-start
    :end-before: proposed-end
 
-.. rubric:: categories
-
-:doc:`cost-category`
-
-.. include:: cost-category.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
 See Also
 -------------------------------------------------------------------------------
 

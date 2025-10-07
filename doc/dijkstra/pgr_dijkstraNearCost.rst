@@ -9,32 +9,32 @@
 
 
 .. index::
-   single: Dijkstra Family ; pgr_dijkstraNearCost - Proposed
-   single: Near Category ; pgr_dijkstraNearCost - Proposed
-   single: Cost Category ; pgr_dijkstraNearCost - Proposed
-   single: dijkstraNearCost - Proposed
+   single: Dijkstra Family ; pgr_dijkstraNearCost
+   single: Near Category ; pgr_dijkstraNearCost
+   single: Cost Category ; pgr_dijkstraNearCost
+   single: dijkstraNearCost
 
 |
 
-``pgr_dijkstraNearCost`` - Proposed
+``pgr_dijkstraNearCost``
 ===============================================================================
 
 ``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that leads
 to the nearest vertex.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
 
-* Version 3.3.0
+.. rubric:: Version 4.0.0
 
-  * Function promoted to proposed.
+* Function promoted to official.
 
-* Version 3.2.0
+.. rubric:: Version 3.3.0
 
-  * New experimental function.
+* Function promoted to proposed.
+
+.. rubric:: Version 3.2.0
+
+* New experimental function.
 
 
 Description
@@ -71,7 +71,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: dijkstraNearCost - Proposed ; One to Many - Proposed on v3.3
+    single: dijkstraNearCost  ; One to Many
 
 One to Many
 ...............................................................................
@@ -104,7 +104,7 @@ One to Many
 The result shows that station at vertex :math:`11` is the nearest.
 
 .. index::
-    single: dijkstraNearCost - Proposed ; Many to One - Proposed on v3.3
+    single: dijkstraNearCost  ; Many to One
 
 Many to One
 ...............................................................................
@@ -135,7 +135,7 @@ The result shows that station at vertex :math:`10` is the nearest and the next
 best is :math:`11`.
 
 .. index::
-    single: dijkstraNearCost - Proposed ; Many to Many - Proposed on v3.3
+    single: dijkstraNearCost  ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -171,7 +171,7 @@ the first subway line and at vertex :math:`10` of the second subway line.
 Only `one` route is returned because `global` is ``true`` and `cap` is ``1``
 
 .. index::
-    single: dijkstraNearCost - Proposed ; Combinations - Proposed on v3.3
+    single: dijkstraNearCost  ; Combinations
 
 Combinations
 ...............................................................................
