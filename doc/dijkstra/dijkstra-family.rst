@@ -23,21 +23,11 @@ Dijkstra - Family of functions
   information.
 * :doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest
   paths.
-
-.. official-end
-
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
-
-.. proposed-start
-
 * :doc:`pgr_dijkstraVia` - Get a route of a sequence of vertices.
 * :doc:`pgr_dijkstraNear` - Get the route to the nearest vertex.
 * :doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex.
 
-.. proposed-end
+.. official-end
 
 .. toctree::
     :hidden:

@@ -8,31 +8,32 @@
    ****************************************************************************
 
 .. index::
-   single: Dijkstra Family ; pgr_dijkstraNear - Proposed
-   single: Near Category ; pgr_dijkstraNear - Proposed
-   single: dijkstraNear - Proposed
+   single: Dijkstra Family ; pgr_dijkstraNear
+   single: Near Category ; pgr_dijkstraNear
+   single: dijkstraNear
 
 |
 
-``pgr_dijkstraNear`` - Proposed
+``pgr_dijkstraNear``
 ===============================================================================
 
 ``pgr_dijkstraNear`` — Using Dijkstra's algorithm, finds the route that leads to
 the nearest vertex.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
 
 .. rubric:: Availability
 
-* Version 3.3.0
+.. rubric:: Version 4.0.0
 
-  * Function promoted to proposed.
+* Function promoted to official.
 
-* Version 3.2.0
+.. rubric:: Version 3.3.0
 
-  * New experimental function.
+* Function promoted to proposed.
+
+.. rubric:: Version 3.2.0
+
+* New experimental function.
 
 
 Description
@@ -94,7 +95,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: dijkstraNear - Proposed; One to Many - Proposed on v3.3
+    single: dijkstraNear; One to Many
 
 One to Many
 ...............................................................................
@@ -127,7 +128,7 @@ One to Many
 The result shows that station at vertex :math:`11` is the nearest.
 
 .. index::
-    single: dijkstraNear - Proposed; Many to One - Proposed on v3.3
+    single: dijkstraNear; Many to One
 
 Many to One
 ...............................................................................
@@ -158,7 +159,7 @@ The result shows that station at vertex :math:`10` is the nearest and the next
 best is :math:`11`.
 
 .. index::
-    single: dijkstraNear - Proposed; Many to Many - Proposed on v3.3
+    single: dijkstraNear; Many to Many
 
 Many to Many
 ...............................................................................
@@ -194,7 +195,7 @@ the first subway line and at vertex :math:`10` of the second subway line.
 Only `one` route is returned because `global` is ``true`` and `cap` is ``1``
 
 .. index::
-    single: dijkstraNear - Proposed; Combinations - Proposed on v3.3
+    single: dijkstraNear; Combinations
 
 Combinations
 ...............................................................................
