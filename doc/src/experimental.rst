@@ -43,14 +43,14 @@ Experimental Functions
 :doc:`chinesePostmanProblem-family`
 
 .. include:: chinesePostmanProblem-family.rst
-   :start-after: official-start
-   :end-before: official-end
+   :start-after: experimental-start
+   :end-before: experimental-end
 
 :doc:`coloring-family`
 
 .. include:: coloring-family.rst
-   :start-after: official-start
-   :end-before: official-end
+   :start-after: experimental-start
+   :end-before: experimental-end
 
 :doc:`contraction-family`
 

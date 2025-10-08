@@ -14,6 +14,18 @@
 Traversal - Family of functions
 ===============================================================================
 
+:doc:`BFS-category`
+
+.. include:: BFS-category.rst
+   :start-after: official-start
+   :end-before: official-end
+
+:doc:`DFS-category`
+
+.. include:: DFS-category.rst
+   :start-after: official-start
+   :end-before: official-end
+
 .. include:: proposed.rst
    :start-after: warning-begin
    :end-before: end-warning
@@ -35,12 +47,6 @@ Traversal - Family of functions
   graph.
 
 .. experimental-end
-
-Additionally there are 2 categories under this family
-
-* :doc:`BFS-category`
-* :doc:`DFS-category`
-
 
 .. toctree::
     :hidden:
