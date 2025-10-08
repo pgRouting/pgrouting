@@ -79,8 +79,8 @@ Experimental Functions
 :doc:`ordering-family`
 
 .. include:: ordering-family.rst
-   :start-after: official-start
-   :end-before: official-end
+   :start-after: experimental-start
+   :end-before: experimental-end
 
 :doc:`metrics-family`
 

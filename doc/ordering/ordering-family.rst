@@ -19,7 +19,7 @@ Ordering - Family of functions
    :end-before: end-warning
 
 
-.. official-start
+.. experimental-start
 
 * :doc:`pgr_cuthillMckeeOrdering` - Return reverse Cuthill-McKee ordering of an undirected graph.
 * :doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed
@@ -27,7 +27,7 @@ Ordering - Family of functions
 * :doc:`pgr_sloanOrdering` - Returns the sloan ordering of an undirected graph.
 * :doc:`pgr_kingOrdering` - Returns the King ordering of an undirected graph.
 
-.. official-end
+.. experimental-end
 
 .. toctree::
     :hidden:

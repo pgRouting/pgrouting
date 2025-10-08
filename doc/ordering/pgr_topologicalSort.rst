@@ -8,7 +8,7 @@
    ****************************************************************************
 
 .. index::
-   single: Ordering Family ; pgr_topologicalSort
+   single: Ordering Family ; pgr_topologicalSort - Experimental
    single: topologicalSort - Experimental on v3.0
 
 |
