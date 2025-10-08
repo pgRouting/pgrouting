@@ -8,8 +8,8 @@
    ****************************************************************************
 
 .. index::
-   single: Ordering Family ; pgr_cuthillMckeeOrdering
-   single: pgr_cuthillMckeeOrdering
+   single: Ordering Family ; pgr_cuthillMckeeOrdering - Experimental
+   single: pgr_cuthillMckeeOrdering  - Experimental on v3.4
 
 |
 

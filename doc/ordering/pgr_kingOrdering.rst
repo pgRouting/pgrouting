@@ -8,7 +8,7 @@
    ****************************************************************************
 
 .. index::
-   single: Ordering Family ; pgr_kingOrdering
+   single: Ordering Family ; pgr_kingOrdering - Experimental
    single: kingOrdering - Experimental on v4.0
 
 |
@@ -52,9 +52,6 @@ prioritization often yields a smaller bandwidth compared to simpler BFS ordering
 
 Signatures
 ------------------------------------------------------------------------------
-
-.. index::
-    single: kingOrdering - Experimental on v4.0
 
 .. admonition:: \ \
    :class: signatures

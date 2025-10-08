@@ -9,7 +9,7 @@
    ****************************************************************************
 
 .. index::
-   single: Ordering Family ; pgr_sloanOrdering
+   single: Ordering Family ; pgr_sloanOrdering - Experimental
    single: pgr_sloanOrdering - Experimental on v4.0
 
 |
@@ -49,9 +49,6 @@ sparse matrix computations and finite element analysis.
 
 Signatures
 ------------------------------------------------------------------------------
-
-.. index::
-    single: sloanOrdering - Experimental on v4.0
 
 .. admonition:: \ \
    :class: signatures
