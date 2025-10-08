@@ -25,6 +25,7 @@ vertices.
 .. rubric:: Version 4.0.0
 
 * Output columns standardized to |generic-result|
+* Combinations signature promoted to official.
 
 .. rubric:: Version 3.2.0
 
@@ -158,7 +159,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: edgeDisjointPaths ; Combinations -- Proposed on v3.2
+    single: edgeDisjointPaths ; Combinations
 
 Combinations
 ...............................................................................
