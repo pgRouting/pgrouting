@@ -3,10 +3,13 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 DROP TABLE IF EXISTS lc101_c CASCADE;
+NOTICE:  table "lc101_c" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS c_lc101 CASCADE;
+NOTICE:  table "c_lc101" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS v_lc101 CASCADE;
+NOTICE:  table "v_lc101" does not exist, skipping
 DROP TABLE
 /* -- q1 */
 CREATE TABLE v_lc101(
