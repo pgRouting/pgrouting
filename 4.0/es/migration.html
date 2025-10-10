@@ -97,8 +97,8 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Guía de migración</a><ul>
-<li><a class="reference internal" href="#migration-to-standardized-columns">Migration to standardized columns</a><ul>
-<li><a class="reference internal" href="#migration-of-cost-functions">Migration of cost functions</a><ul>
+<li><a class="reference internal" href="#migration-to-standardized-columns">Migración a columnas estandarizadas</a><ul>
+<li><a class="reference internal" href="#migration-of-cost-functions">Migración de las funciones de coste</a><ul>
 <li><a class="reference internal" href="#examples-for-one-to-one-for-cost-functions">Examples for One to One for cost functions</a></li>
 <li><a class="reference internal" href="#examples-for-one-to-many-for-cost-functions">Examples for One to Many for cost functions</a></li>
 <li><a class="reference internal" href="#examples-for-many-to-one-for-cost-functions">Examples for Many to One for cost functions</a></li>
@@ -111,7 +111,7 @@
 <li><a class="reference internal" href="#one-to-one-example-using-pgr-ksp">One to One example using <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-result-disjoint">Migration of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-result-disjoint">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
 <li><a class="reference internal" href="#one-to-one-example-using-pgr-edgedisjointpaths">One to One example using <code class="docutils literal notranslate"><span class="pre">pgr_edgeDisjointPaths</span></code></a></li>
 </ul>
 </li>
@@ -131,12 +131,12 @@
 <li><a class="reference internal" href="#multiple-vertices-example-using-pgr-kruskaldfs">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-from-result-dij-dd">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
+<li><a class="reference internal" href="#migration-from-result-dij-dd">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
 <li><a class="reference internal" href="#single-vertex-example-using-pgr-drivingdistance">Single vertex example using <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></li>
 <li><a class="reference internal" href="#multiple-vertices-example-using-pgr-drivingdistance">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-result-generic-no-seq">Migration of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-result-generic-no-seq">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
 <li><a class="reference internal" href="#single-vertex-example-using-pgr-withpointsdd">Single vertex example using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></li>
 <li><a class="reference internal" href="#multiple-vertices-example-using-pgr-withpointsdd">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></li>
 </ul>
@@ -144,17 +144,17 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-output-column-name-change">Migration of output column name change</a><ul>
-<li><a class="reference internal" href="#migration-from-result-old-closure">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></a></li>
-<li><a class="reference internal" href="#migration-from-result-toposort">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">sorted_v)</span></code></a></li>
-<li><a class="reference internal" href="#migration-from-old-edge-color">Migration from <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></a></li>
-<li><a class="reference internal" href="#migration-from-old-node-color">Migration from <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></a></li>
+<li><a class="reference internal" href="#migration-from-result-old-closure">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></a></li>
+<li><a class="reference internal" href="#migration-from-result-toposort">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">sorted_v)</span></code></a></li>
+<li><a class="reference internal" href="#migration-from-old-edge-color">Migración de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></a></li>
+<li><a class="reference internal" href="#migration-from-old-node-color">Migración de <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-deleted-functions">Migration of deleted functions</a><ul>
 <li><a class="reference internal" href="#migration-of-pgr-alphashape">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-nodenetwork">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-nodenetwork">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-createtopology">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
 <li><a class="reference internal" href="#build-a-routing-topology">Construir una topología de ruteo</a></li>
 </ul>
@@ -261,9 +261,9 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#migration-guide" id="id8">Guía de migración</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migration-to-standardized-columns" id="id9">Migration to standardized columns</a></p>
+<li><p><a class="reference internal" href="#migration-to-standardized-columns" id="id9">Migración a columnas estandarizadas</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migration-of-cost-functions" id="id10">Migration of cost functions</a></p></li>
+<li><p><a class="reference internal" href="#migration-of-cost-functions" id="id10">Migración de las funciones de coste</a></p></li>
 <li><p><a class="reference internal" href="#migration-of-multiple-paths-functions" id="id11">Migration of multiple paths functions</a></p></li>
 <li><p><a class="reference internal" href="#migration-of-single-path-functions" id="id12">Migration of single path functions</a></p></li>
 <li><p><a class="reference internal" href="#migration-of-spanning-tree-functions" id="id13">Migration of spanning tree functions</a></p></li>
@@ -273,7 +273,7 @@
 <li><p><a class="reference internal" href="#migration-of-deleted-functions" id="id15">Migration of deleted functions</a></p>
 <ul>
 <li><p><a class="reference internal" href="#migration-of-pgr-alphashape" id="id16">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-nodenetwork" id="id17">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-nodenetwork" id="id17">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-createtopology" id="id18">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-createverticestable" id="id19">Migracion de <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-analyzeoneway" id="id20">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></p></li>
@@ -302,7 +302,7 @@
 </ul>
 </nav>
 <section id="migration-to-standardized-columns">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Migration to standardized columns</a><a class="headerlink" href="#migration-to-standardized-columns" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Migración a columnas estandarizadas</a><a class="headerlink" href="#migration-to-standardized-columns" title="Link to this heading">¶</a></h2>
 <p>There has been an effort to standardize function output columns names and
 types.</p>
 <ul class="simple">
@@ -333,164 +333,164 @@ types.</p>
 <p><span class="versionmodified changed">Distinto en la versión 3.5.0: </span><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migration of single path functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migración de funciones de una sola ruta</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 3.6.0: </span><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migration of single path functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migración de funciones de una sola ruta</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 3.6.0: </span><a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migration of single path functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migración de funciones de una sola ruta</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 3.6.0: </span><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration of spanning tree functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migración de las funciones del árbol de expansión</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 3.6.0: </span><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration of spanning tree functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migración de las funciones del árbol de expansión</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 3.7.0: </span><a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration of spanning tree functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migración de las funciones del árbol de expansión</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 3.7.0: </span><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration of spanning tree functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migración de las funciones del árbol de expansión</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 3.7.0: </span><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration of spanning tree functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migración de las funciones del árbol de expansión</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 3.7.0: </span><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration of spanning tree functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migración de las funciones del árbol de expansión</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 3.7.0: </span><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration of spanning tree functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migración de las funciones del árbol de expansión</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 3.7.0: </span><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration of spanning tree functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migración de las funciones del árbol de expansión</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migration of single path functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migración de funciones de una sola ruta</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_bellmanFord.html"><span class="doc">pgr_bellmanFord - Experimental</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migration of single path functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migración de funciones de una sola ruta</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_binaryBreadthFirstSearch.html"><span class="doc">pgr_binaryBreadthFirstSearch - Experimental</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migration of single path functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migración de funciones de una sola ruta</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_bipartite.html"><span class="doc">pgr_bipartite - Experimental</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-output-column-name-change">Migration of output column name change</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-output-column-name-change">Migración de cambio de nombre de columna de salida</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_breadthFirstSearch.html"><span class="doc">pgr_breadthFirstSearch - Experimental</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration of spanning tree functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migración de las funciones del árbol de expansión</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_dagShortestPath.html"><span class="doc">pgr_dagShortestPath - Experimental</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migration of single path functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migración de funciones de una sola ruta</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_depthFirstSearch.html"><span class="doc">pgr_depthFirstSearch - Propusto</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration of spanning tree functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migración de las funciones del árbol de expansión</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_edgeColoring.html"><span class="doc">pgr_edgeColoring - Experimental</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-output-column-name-change">Migration of output column name change</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-output-column-name-change">Migración de cambio de nombre de columna de salida</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_edwardMoore.html"><span class="doc">pgr_edwardMoore - Experimental</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migration of single path functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migración de funciones de una sola ruta</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-multiple-paths-functions">Migration of multiple paths functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-multiple-paths-functions">Migración de funciones de rutas múltiples</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_sequentialVertexColoring.html"><span class="doc">pgr_sequentialVertexColoring - Propuesto</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-output-column-name-change">Migration of output column name change</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-output-column-name-change">Migración de cambio de nombre de columna de salida</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_topologicalSort.html"><span class="doc">pgr_topologicalSort - Experimental</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-output-column-name-change">Migration of output column name change</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-output-column-name-change">Migración de cambio de nombre de columna de salida</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migration of single path functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-single-path-functions">Migración de funciones de una sola ruta</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-cost-functions">Migration of cost functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-cost-functions">Migración de las funciones de coste</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
 <p><span class="versionmodified changed">Distinto en la versión 4.0.0: </span><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a></p>
 </div>
 </td>
-<td><p><a class="reference internal" href="#migration-of-cost-functions">Migration of cost functions</a></p></td>
+<td><p><a class="reference internal" href="#migration-of-cost-functions">Migración de las funciones de coste</a></p></td>
 </tr>
 </tbody>
 </table>
 <nav class="contents local" id="id1">
 <p class="topic-title">Contenido</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#migration-of-cost-functions" id="id33">Migration of cost functions</a></p>
+<li><p><a class="reference internal" href="#migration-of-cost-functions" id="id33">Migración de las funciones de coste</a></p>
 <ul>
 <li><p><a class="reference internal" href="#examples-for-one-to-one-for-cost-functions" id="id34">Examples for One to One for cost functions</a></p></li>
 <li><p><a class="reference internal" href="#examples-for-one-to-many-for-cost-functions" id="id35">Examples for One to Many for cost functions</a></p></li>
@@ -506,7 +506,7 @@ types.</p>
 <li><p><a class="reference internal" href="#one-to-one-example-using-pgr-ksp" id="id41">One to One example using <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-of-result-disjoint" id="id42">Migration of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a></p>
+<li><p><a class="reference internal" href="#migration-of-result-disjoint" id="id42">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a></p>
 <ul>
 <li><p><a class="reference internal" href="#one-to-one-example-using-pgr-edgedisjointpaths" id="id43">One to One example using <code class="docutils literal notranslate"><span class="pre">pgr_edgeDisjointPaths</span></code></a></p></li>
 </ul>
@@ -530,13 +530,13 @@ types.</p>
 <li><p><a class="reference internal" href="#multiple-vertices-example-using-pgr-kruskaldfs" id="id53">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-from-result-dij-dd" id="id54">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a></p>
+<li><p><a class="reference internal" href="#migration-from-result-dij-dd" id="id54">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a></p>
 <ul>
 <li><p><a class="reference internal" href="#single-vertex-example-using-pgr-drivingdistance" id="id55">Single vertex example using <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></p></li>
 <li><p><a class="reference internal" href="#multiple-vertices-example-using-pgr-drivingdistance" id="id56">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-of-result-generic-no-seq" id="id57">Migration of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a></p>
+<li><p><a class="reference internal" href="#migration-of-result-generic-no-seq" id="id57">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a></p>
 <ul>
 <li><p><a class="reference internal" href="#single-vertex-example-using-pgr-withpointsdd" id="id58">Single vertex example using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></p></li>
 <li><p><a class="reference internal" href="#multiple-vertices-example-using-pgr-withpointsdd" id="id59">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></p></li>
@@ -546,16 +546,16 @@ types.</p>
 </li>
 <li><p><a class="reference internal" href="#migration-of-output-column-name-change" id="id60">Migration of output column name change</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migration-from-result-old-closure" id="id61">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-from-result-toposort" id="id62">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">sorted_v)</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-from-old-edge-color" id="id63">Migration from <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-from-old-node-color" id="id64">Migration from <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-from-result-old-closure" id="id61">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-from-result-toposort" id="id62">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">sorted_v)</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-from-old-edge-color" id="id63">Migración de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-from-old-node-color" id="id64">Migración de <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="migration-of-cost-functions">
-<h3><a class="toc-backref" href="#id33" role="doc-backlink">Migration of cost functions</a><a class="headerlink" href="#migration-of-cost-functions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id33" role="doc-backlink">Migración de las funciones de coste</a><a class="headerlink" href="#migration-of-cost-functions" title="Link to this heading">¶</a></h3>
 <p>The standardized <a class="reference internal" href="pgRouting-concepts.html#result-columns-for-cost-functions"><span class="std std-ref">Columnas de resultados de las funciones de costes</span></a> are
 <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <p>The following functions need to be migrated when they are being used in an
@@ -563,7 +563,7 @@ application.</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Función</p></th>
-<th class="head"><p>Version</p></th>
+<th class="head"><p>Versión</p></th>
 <th class="head"><p>From</p></th>
 </tr>
 </thead>
@@ -578,8 +578,8 @@ application.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>to</strong> <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
-<p class="rubric">Migration of <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></p>
+<p><strong>a</strong> <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<p class="rubric">Migración de <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></p>
 <p>Firmas que serán migradas:</p>
 <ul class="simple">
 <li><p>Uno a Uno</p></li>
@@ -609,9 +609,8 @@ pgRouting</p>
 </nav>
 <section id="examples-for-one-to-one-for-cost-functions">
 <h4><a class="toc-backref" href="#id65" role="doc-backlink">Examples for One to One for cost functions</a><a class="headerlink" href="#examples-for-one-to-one-for-cost-functions" title="Link to this heading">¶</a></h4>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#one-to-one">this v3.8</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#one-to-one">de v3.8</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></p>
@@ -654,9 +653,8 @@ pgRouting</p>
 </section>
 <section id="examples-for-one-to-many-for-cost-functions">
 <h4><a class="toc-backref" href="#id66" role="doc-backlink">Examples for One to Many for cost functions</a><a class="headerlink" href="#examples-for-one-to-many-for-cost-functions" title="Link to this heading">¶</a></h4>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#one-to-many">this v3.8</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#one-to-many">de v3.8</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></p>
@@ -703,9 +701,8 @@ pgRouting</p>
 </section>
 <section id="examples-for-many-to-one-for-cost-functions">
 <h4><a class="toc-backref" href="#id67" role="doc-backlink">Examples for Many to One for cost functions</a><a class="headerlink" href="#examples-for-many-to-one-for-cost-functions" title="Link to this heading">¶</a></h4>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#many-to-one">this v3.8</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#many-to-one">de v3.8</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></p>
@@ -750,9 +747,8 @@ pgRouting</p>
 </section>
 <section id="examples-for-many-to-many-for-cost-functions">
 <h4><a class="toc-backref" href="#id68" role="doc-backlink">Examples for Many to Many for cost functions</a><a class="headerlink" href="#examples-for-many-to-many-for-cost-functions" title="Link to this heading">¶</a></h4>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#many-to-many">this v3.8</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#many-to-many">de v3.8</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></p>
@@ -792,7 +788,7 @@ example.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Cambio de ruptura</p>
@@ -802,9 +798,8 @@ pgRouting</p>
 </section>
 <section id="examples-for-combinations-for-cost-functions">
 <h4><a class="toc-backref" href="#id69" role="doc-backlink">Examples for Combinations for cost functions</a><a class="headerlink" href="#examples-for-combinations-for-cost-functions" title="Link to this heading">¶</a></h4>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#combinations">this v3.8</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#combinations">de v3.8</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></p>
@@ -858,7 +853,7 @@ application.</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Función</p></th>
-<th class="head"><p>Version</p></th>
+<th class="head"><p>Versión</p></th>
 <th class="head"><p>From</p></th>
 </tr>
 </thead>
@@ -869,7 +864,7 @@ application.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pgr_edgeDisjointPaths</span></code></p></td>
 <td><p>v &lt; 4.0</p></td>
-<td><p><a class="reference internal" href="#from-result-disjoint"><span class="std std-ref">Migration of (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)</span></a></p></td>
+<td><p><a class="reference internal" href="#from-result-disjoint"><span class="std std-ref">Migración de (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)</span></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -930,7 +925,7 @@ application.</p>
 </section>
 </section>
 <section id="migration-of-result-disjoint">
-<span id="from-result-disjoint"></span><h4><a class="toc-backref" href="#id42" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-of-result-disjoint" title="Link to this heading">¶</a></h4>
+<span id="from-result-disjoint"></span><h4><a class="toc-backref" href="#id42" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-of-result-disjoint" title="Link to this heading">¶</a></h4>
 <p>Firmas que serán migradas:</p>
 <ul class="simple">
 <li><p>Uno a Uno</p></li>
@@ -944,7 +939,7 @@ application.</p>
 </ul>
 <section id="one-to-one-example-using-pgr-edgedisjointpaths">
 <h5><a class="toc-backref" href="#id43" role="doc-backlink">One to One example using <code class="docutils literal notranslate"><span class="pre">pgr_edgeDisjointPaths</span></code></a><a class="headerlink" href="#one-to-one-example-using-pgr-edgedisjointpaths" title="Link to this heading">¶</a></h5>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_edgeDisjointPaths.html#one-to-one">this v3.8</a> example.</p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_edgeDisjointPaths.html#one-to-one">de v3.6</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
@@ -988,7 +983,7 @@ application.</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Función</p></th>
-<th class="head"><p>Version</p></th>
+<th class="head"><p>Versión</p></th>
 <th class="head"><p>From</p></th>
 </tr>
 </thead>
@@ -1028,7 +1023,7 @@ application.</p>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 </dd>
 </dl>
-<p class="rubric">Migration of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p class="rubric">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <p>Firmas que serán migradas:</p>
 <ul class="simple">
 <li><p>Uno a Uno</p></li>
@@ -1040,7 +1035,7 @@ application.</p>
 <li><p>Skip when applicable, <code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></li>
 <li><p>Skip when applicable, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
 </ul>
-<p class="rubric">Migration of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_pid],</span> <span class="pre">[end_pid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p class="rubric">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_pid],</span> <span class="pre">[end_pid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <p>Firmas que serán migradas:</p>
 <ul class="simple">
 <li><p>Uno a Uno</p></li>
@@ -1055,7 +1050,7 @@ application.</p>
 <li><p>Cambio de nombre en las columnas:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_pid</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_pid</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_pid</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -1065,7 +1060,7 @@ application.</p>
 <p>If using <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code>: column names must be changed after updating
 pgRouting</p>
 </div>
-<p class="rubric">Migration of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p class="rubric">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <p>Firmas que serán migradas:</p>
 <ul class="simple">
 <li><p>Uno a Uno</p></li>
@@ -1090,9 +1085,8 @@ pgRouting</p>
 </nav>
 <section id="examples-with-one-to-one-with-one-route-result">
 <h4><a class="toc-backref" href="#id70" role="doc-backlink">Examples with One to One with one route result</a><a class="headerlink" href="#examples-with-one-to-one-with-one-route-result" title="Link to this heading">¶</a></h4>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_aStar.html#one-to-one">this v3.5</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_aStar.html#one-to-one">de v3.5</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_aStar(
   $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
   6, 10);
@@ -1124,9 +1118,8 @@ example.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#one-to-one">this v3.8</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#one-to-one">de v3.8</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
   <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
@@ -1159,9 +1152,8 @@ example.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_DAGshortestPath</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_dagShortestPath.html#one-to-one">this v3.8</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_DAGshortestPath</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_dagShortestPath.html#one-to-one">de v3.8</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_DAGshortestPath</span><span class="p">(</span>
   <span class="s1">&#39;select id, source, target, cost from edges&#39;</span><span class="p">,</span>
   <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
@@ -1197,9 +1189,8 @@ example.</p>
 </section>
 <section id="examples-for-one-to-many-with-one-route-result">
 <h4><a class="toc-backref" href="#id71" role="doc-backlink">Examples for One to Many with one route result</a><a class="headerlink" href="#examples-for-one-to-many-with-one-route-result" title="Link to this heading">¶</a></h4>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_bdAstar.html#one-to-many">this v3.5</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_bdAstar.html#one-to-many">de v3.5</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_bdAstar(
   $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
   6, ARRAY[10, 12],
@@ -1241,9 +1232,8 @@ example.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#one-to-many">this v3.8</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#one-to-many">de v3.8</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -1302,9 +1292,8 @@ column <code class="docutils literal notranslate"><span class="pre">start_vid</s
 </section>
 <section id="examples-for-many-to-one-with-one-route-result">
 <h4><a class="toc-backref" href="#id72" role="doc-backlink">Examples for Many to One with one route result</a><a class="headerlink" href="#examples-for-many-to-one-with-one-route-result" title="Link to this heading">¶</a></h4>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#many-to-one">this v3.8</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#many-to-one">de v3.8</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
     <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
       <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">17</span><span class="p">);</span>
@@ -1347,9 +1336,8 @@ example.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_dijkstra.html#many-to-one">this v3.4</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_dijkstra.html#many-to-one">de v3.4</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   ARRAY[6, 1], 17);
@@ -1394,9 +1382,8 @@ example.</p>
 </section>
 <section id="examples-for-many-to-many-with-one-route-result">
 <h4><a class="toc-backref" href="#id73" role="doc-backlink">Examples for Many to Many with one route result</a><a class="headerlink" href="#examples-for-many-to-many-with-one-route-result" title="Link to this heading">¶</a></h4>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#many-to-many">this v3.8</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#many-to-many">de v3.8</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -1473,10 +1460,8 @@ pgRouting</p>
 </section>
 <section id="examples-for-combinations-with-one-route-result">
 <h4><a class="toc-backref" href="#id74" role="doc-backlink">Examples for combinations with one route result</a><a class="headerlink" href="#examples-for-combinations-with-one-route-result" title="Link to this heading">¶</a></h4>
-<p class="rubric">Using <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></p>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#combinations">this v3.8
-`this</a>
-example.</p>
+<p class="rubric">Usando <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#combinations">de v3.8 `this</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -1552,18 +1537,18 @@ pgRouting</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Función</p></th>
-<th class="head"><p>Version</p></th>
+<th class="head"><p>Versión</p></th>
 <th class="head"><p>From</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></p></td>
 <td><p>v &lt; 3.6</p></td>
-<td><p><a class="reference internal" href="#from-result-dij-dd"><span class="std std-ref">Migration from (seq, [from_v,] node, edge, cost, agg_cost)</span></a></p></td>
+<td><p><a class="reference internal" href="#from-result-dij-dd"><span class="std std-ref">Migración de (seq, [from_v,] node, edge, cost, agg_cost)</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></p></td>
 <td><p>v &lt; 3.6</p></td>
-<td><p><a class="reference internal" href="#from-result-generic-no-seq"><span class="std std-ref">Migration of (seq, [start_vid], node, edge, cost, agg_cost)</span></a></p></td>
+<td><p><a class="reference internal" href="#from-result-generic-no-seq"><span class="std std-ref">Migración de (seq, [start_vid], node, edge, cost, agg_cost)</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code></p></td>
 <td><p>v &lt; 3.7</p></td>
@@ -1599,7 +1584,7 @@ pgRouting</p>
 </tr>
 </tbody>
 </table>
-<p>to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <nav class="contents local" id="id3">
 <p class="topic-title">Ejemplos</p>
 <ul class="simple">
@@ -1609,13 +1594,13 @@ pgRouting</p>
 <li><p><a class="reference internal" href="#multiple-vertices-example-using-pgr-kruskaldfs" id="id77">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-from-result-dij-dd" id="id78">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a></p>
+<li><p><a class="reference internal" href="#migration-from-result-dij-dd" id="id78">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a></p>
 <ul>
 <li><p><a class="reference internal" href="#single-vertex-example-using-pgr-drivingdistance" id="id79">Single vertex example using <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></p></li>
 <li><p><a class="reference internal" href="#multiple-vertices-example-using-pgr-drivingdistance" id="id80">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-of-result-generic-no-seq" id="id81">Migration of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a></p>
+<li><p><a class="reference internal" href="#migration-of-result-generic-no-seq" id="id81">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a></p>
 <ul>
 <li><p><a class="reference internal" href="#single-vertex-example-using-pgr-withpointsdd" id="id82">Single vertex example using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></p></li>
 <li><p><a class="reference internal" href="#multiple-vertices-example-using-pgr-withpointsdd" id="id83">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></p></li>
@@ -1633,7 +1618,7 @@ pgRouting</p>
 <p>Before updating pgRouting enumerate the columns: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <section id="single-vertex-example-using-pgr-kruskaldd">
 <h5><a class="toc-backref" href="#id76" role="doc-backlink">Single vertex example using <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code></a><a class="headerlink" href="#single-vertex-example-using-pgr-kruskaldd" title="Link to this heading">¶</a></h5>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#single-vertex">this v3.6</a> example.</p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#single-vertex">de v3.6</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_kruskalDD</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">);</span>
@@ -1667,8 +1652,7 @@ pgRouting</p>
 </section>
 <section id="multiple-vertices-example-using-pgr-kruskaldfs">
 <h5><a class="toc-backref" href="#id77" role="doc-backlink">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a><a class="headerlink" href="#multiple-vertices-example-using-pgr-kruskaldfs" title="Link to this heading">¶</a></h5>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_kruskalDFS.html#multiple-vertices">this v3.6</a>
-example.</p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_kruskalDFS.html#multiple-vertices">de v3.6</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_kruskalDFS</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">max_depth</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">);</span>
@@ -1716,7 +1700,7 @@ example.</p>
 </section>
 </section>
 <section id="migration-from-result-dij-dd">
-<span id="from-result-dij-dd"></span><h4><a class="toc-backref" href="#id78" role="doc-backlink">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-from-result-dij-dd" title="Link to this heading">¶</a></h4>
+<span id="from-result-dij-dd"></span><h4><a class="toc-backref" href="#id78" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-from-result-dij-dd" title="Link to this heading">¶</a></h4>
 <p>Firmas que serán migradas:</p>
 <ul class="simple">
 <li><p>Vértice único</p></li>
@@ -1736,12 +1720,11 @@ example.</p>
 <p>To get the old version column names <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">from_v,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code>:</p>
 <ul class="simple">
 <li><p>filtrar las columnas <code class="docutils literal notranslate"><span class="pre">pred</span></code> y <code class="docutils literal notranslate"><span class="pre">depth</span></code> y</p></li>
-<li><p>rename <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">from_v</span></code>.</p></li>
+<li><p>renombrar <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">from_v</span></code>.</p></li>
 </ul>
 <section id="single-vertex-example-using-pgr-drivingdistance">
 <h5><a class="toc-backref" href="#id79" role="doc-backlink">Single vertex example using <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#single-vertex-example-using-pgr-drivingdistance" title="Link to this heading">¶</a></h5>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-vertex">this v3.5</a>
-example.</p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-vertex">de v3.5</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_drivingDistance(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   11, 3.0);
@@ -1791,8 +1774,7 @@ FROM pgr_drivingDistance(
 </section>
 <section id="multiple-vertices-example-using-pgr-drivingdistance">
 <h5><a class="toc-backref" href="#id80" role="doc-backlink">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#multiple-vertices-example-using-pgr-drivingdistance" title="Link to this heading">¶</a></h5>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#multiple-vertices">this v3.5</a>
-example.</p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#multiple-vertices">de v3.5</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
 FROM pgr_drivingDistance(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -1844,7 +1826,7 @@ FROM pgr_drivingDistance(
 </section>
 </section>
 <section id="migration-of-result-generic-no-seq">
-<span id="from-result-generic-no-seq"></span><h4><a class="toc-backref" href="#id81" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-of-result-generic-no-seq" title="Link to this heading">¶</a></h4>
+<span id="from-result-generic-no-seq"></span><h4><a class="toc-backref" href="#id81" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-of-result-generic-no-seq" title="Link to this heading">¶</a></h4>
 <p>Firmas que serán migradas:</p>
 <ul class="simple">
 <li><p>Vértice único</p></li>
@@ -1875,20 +1857,19 @@ directed and undirected graphs.</p>
 <ul class="simple">
 <li><p>En grafos dirigidos: Los valores válidos son [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p>
 <ul>
-<li><p>Default value = “r”;</p></li>
+<li><p>Valor por defecto = “r”;</p></li>
 </ul>
 </li>
 <li><p>En grafos no dirigidos: Los valores válidos son [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p>
 <ul>
-<li><p>Default value = “b”;</p></li>
+<li><p>Valor por defecto = “b”;</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <section id="single-vertex-example-using-pgr-withpointsdd">
 <h5><a class="toc-backref" href="#id82" role="doc-backlink">Single vertex example using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><a class="headerlink" href="#single-vertex-example-using-pgr-withpointsdd" title="Link to this heading">¶</a></h5>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-vertex">this v3.5</a>
-example.</p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-vertex">de v3.5</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
@@ -1927,8 +1908,7 @@ example.</p>
 </section>
 <section id="multiple-vertices-example-using-pgr-withpointsdd">
 <h5><a class="toc-backref" href="#id83" role="doc-backlink">Multiple vertices example using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><a class="headerlink" href="#multiple-vertices-example-using-pgr-withpointsdd" title="Link to this heading">¶</a></h5>
-<p>Migrating <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-vertex">this v3.5</a>
-example.</p>
+<p>Migrando ejemplo <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-vertex">de v3.5</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $$SELECT * FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
@@ -1999,36 +1979,36 @@ example.</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Función</p></th>
-<th class="head"><p>Version</p></th>
+<th class="head"><p>Versión</p></th>
 <th class="head"><p>From</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pgr_edgeColoring</span></code></p></td>
 <td><p>v &lt; 4.0.0</p></td>
-<td><p><a class="reference internal" href="#from-old-edge-color"><span class="std std-ref">Migration from (edge_id, color_id)</span></a></p></td>
+<td><p><a class="reference internal" href="#from-old-edge-color"><span class="std std-ref">Migración de (edge_id, color_id)</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pgr_bipartite</span></code></p></td>
 <td><p>v &lt; 4.0.0</p></td>
-<td><p><a class="reference internal" href="#from-old-node-color"><span class="std std-ref">Migration from (vertex_id, color_id)</span></a></p></td>
+<td><p><a class="reference internal" href="#from-old-node-color"><span class="std std-ref">Migración de (vertex_id, color_id)</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pgr_sequentialVertexColoring</span></code></p></td>
 <td><p>v &lt; 4.0.0</p></td>
-<td><p><a class="reference internal" href="#from-old-node-color"><span class="std std-ref">Migration from (vertex_id, color_id)</span></a></p></td>
+<td><p><a class="reference internal" href="#from-old-node-color"><span class="std std-ref">Migración de (vertex_id, color_id)</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pgr_topologicalSort</span></code></p></td>
 <td><p>v &lt; 4.0.0</p></td>
-<td><p><a class="reference internal" href="#from-toposort"><span class="std std-ref">Migration from (seq, sorted_v)</span></a></p></td>
+<td><p><a class="reference internal" href="#from-toposort"><span class="std std-ref">Migración de (seq, sorted_v)</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pgr_transitiveClosure</span></code></p></td>
 <td><p>v &lt; 4.0.0</p></td>
-<td><p><a class="reference internal" href="#from-old-closure"><span class="std std-ref">Migration from (seq, vid, target_array)</span></a></p></td>
+<td><p><a class="reference internal" href="#from-old-closure"><span class="std std-ref">Migración de (seq, vid, target_array)</span></a></p></td>
 </tr>
 </tbody>
 </table>
 <section id="migration-from-result-old-closure">
-<span id="from-old-closure"></span><h4><a class="toc-backref" href="#id61" role="doc-backlink">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></a><a class="headerlink" href="#migration-from-result-old-closure" title="Link to this heading">¶</a></h4>
-<p>Migration to: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></p>
+<span id="from-old-closure"></span><h4><a class="toc-backref" href="#id61" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></a><a class="headerlink" href="#migration-from-result-old-closure" title="Link to this heading">¶</a></h4>
+<p>Migración a: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Cambio de ruptura</p>
@@ -2041,8 +2021,8 @@ example.</p>
 </ul>
 </section>
 <section id="migration-from-result-toposort">
-<span id="from-toposort"></span><h4><a class="toc-backref" href="#id62" role="doc-backlink">Migration from <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">sorted_v)</span></code></a><a class="headerlink" href="#migration-from-result-toposort" title="Link to this heading">¶</a></h4>
-<p>Migration to: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node)</span></code></p>
+<span id="from-toposort"></span><h4><a class="toc-backref" href="#id62" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">sorted_v)</span></code></a><a class="headerlink" href="#migration-from-result-toposort" title="Link to this heading">¶</a></h4>
+<p>Migración a: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node)</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Cambio de ruptura</p>
@@ -2054,8 +2034,8 @@ example.</p>
 </ul>
 </section>
 <section id="migration-from-old-edge-color">
-<span id="from-old-edge-color"></span><h4><a class="toc-backref" href="#id63" role="doc-backlink">Migration from <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></a><a class="headerlink" href="#migration-from-old-edge-color" title="Link to this heading">¶</a></h4>
-<p>Migration to: <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">color)</span></code></p>
+<span id="from-old-edge-color"></span><h4><a class="toc-backref" href="#id63" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></a><a class="headerlink" href="#migration-from-old-edge-color" title="Link to this heading">¶</a></h4>
+<p>Migración a: <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">color)</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Cambio de ruptura</p>
@@ -2067,8 +2047,8 @@ example.</p>
 </ul>
 </section>
 <section id="migration-from-old-node-color">
-<span id="from-old-node-color"></span><h4><a class="toc-backref" href="#id64" role="doc-backlink">Migration from <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></a><a class="headerlink" href="#migration-from-old-node-color" title="Link to this heading">¶</a></h4>
-<p>Migration to: <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">color)</span></code></p>
+<span id="from-old-node-color"></span><h4><a class="toc-backref" href="#id64" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></a><a class="headerlink" href="#migration-from-old-node-color" title="Link to this heading">¶</a></h4>
+<p>Migración a: <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">color)</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Cambio de ruptura</p>
@@ -2088,7 +2068,7 @@ example.</p>
 <p class="topic-title">Contenido</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#migration-of-pgr-alphashape" id="id84">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-nodenetwork" id="id85">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-nodenetwork" id="id85">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-createtopology" id="id86">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a></p>
 <ul>
 <li><p><a class="reference internal" href="#build-a-routing-topology" id="id87">Construir una topología de ruteo</a></p></li>
@@ -2149,7 +2129,7 @@ example.</p>
 </ul>
 </section>
 <section id="migration-of-pgr-nodenetwork">
-<h3><a class="toc-backref" href="#id85" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a><a class="headerlink" href="#migration-of-pgr-nodenetwork" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id85" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a><a class="headerlink" href="#migration-of-pgr-nodenetwork" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Obsoleto<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.8">v3.8.0</a></p>
@@ -2160,7 +2140,7 @@ example.</p>
 </dl>
 <p><strong>Before Deprecation:</strong> A table with <cite>&lt;edges&gt;_nodded</cite> was created. with split
 edges.</p>
-<p><strong>Migration</strong></p>
+<p><strong>Migración</strong></p>
 <p>Use <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> and/or use <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a></p>
 </section>
 <section id="migration-of-pgr-createtopology">
@@ -2871,12 +2851,12 @@ directed and undirected graphs.</p>
 <ul class="simple">
 <li><p>En grafos dirigidos: Los valores válidos son [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p>
 <ul>
-<li><p>Default value = “r”;</p></li>
+<li><p>Valor por defecto = “r”;</p></li>
 </ul>
 </li>
 <li><p>En grafos no dirigidos: Los valores válidos son [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p>
 <ul>
-<li><p>Default value = “b”;</p></li>
+<li><p>Valor por defecto = “b”;</p></li>
 </ul>
 </li>
 </ul>
