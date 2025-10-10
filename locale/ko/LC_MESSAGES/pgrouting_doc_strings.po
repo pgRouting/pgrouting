@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-17 02:15+0000\n"
+"POT-Creation-Date: 2025-10-08 19:15+0000\n"
 "PO-Revision-Date: 2025-09-22 16:28+0000\n"
 "Last-Translator: Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>\n"
 "Language-Team: Korean <https://weblate.osgeo.org/projects/pgrouting/"
@@ -2559,7 +2559,7 @@ msgid ""
 "ending vertex:"
 msgstr ""
 
-msgid "It is expected to terminate faster than doc:`pgr_aStar`"
+msgid "It is expected to terminate faster than :doc:`pgr_aStar`"
 msgstr ""
 
 msgid ":doc:`aStar-family`"
@@ -2643,14 +2643,15 @@ msgid ""
 "ending vertex:"
 msgstr ""
 
-msgid "It is expected to terminate faster than pgr_dijkstra"
+msgid "It is expected to terminate faster than :doc:`pgr_dijkstra`"
 msgstr ""
 
 msgid "`Boost  <https://www.boost.org/libs/graph/doc>`__"
 msgstr ""
 
-msgid "Chinese Postman Problem - Family of functions (Experimental)"
-msgstr ""
+#, fuzzy
+msgid "Chinese Postman Problem - Family of functions"
+msgstr ":doc:`pgr_withPoints`"
 
 msgid ":doc:`pgr_chinesePostman`"
 msgstr ":doc:`pgr_chinesePostman`"
@@ -2816,14 +2817,14 @@ msgstr ":doc:`pgr_bdAstarCost`"
 msgid ":doc:`pgr_dijkstraCost`"
 msgstr ":doc:`pgr_dijkstraCost`"
 
+msgid ":doc:`pgr_dijkstraNearCost`"
+msgstr ":doc:`pgr_dijkstraNearCost`"
+
 msgid ":doc:`pgr_bdDijkstraCost`"
 msgstr ":doc:`pgr_bdDijkstraCost`"
 
 msgid ":doc:`pgr_withPointsCost`"
 msgstr ":doc:`pgr_withPointsCost`"
-
-msgid ":doc:`pgr_dijkstraNearCost`"
-msgstr ":doc:`pgr_dijkstraNearCost`"
 
 msgid "Each function works as part of the family it belongs to."
 msgstr ""
@@ -4093,6 +4094,18 @@ msgstr ""
 msgid "pgr_dijkstraCost"
 msgstr ""
 
+msgid "pgr_dijkstraNear"
+msgstr ""
+
+msgid "Function promoted to official."
+msgstr ""
+
+msgid "pgr_dijkstraNearCost"
+msgstr ""
+
+msgid "pgr_dijkstraVia"
+msgstr ""
+
 msgid "pgr_edgeColoring"
 msgstr ""
 
@@ -4134,6 +4147,12 @@ msgstr ""
 msgid "All signatures promoted to official."
 msgstr ""
 
+msgid "pgr_maxCardinalityMatch"
+msgstr ""
+
+msgid "pgr_maxCardinalityMatch(text,boolean)"
+msgstr ""
+
 msgid "pgr_maxFlow"
 msgstr ""
 
@@ -4141,10 +4160,10 @@ msgstr ""
 msgid "pgr_pushRelabel"
 msgstr ":doc:`pgr_pushRelabel`"
 
-msgid "pgr_sloanOrdering"
+msgid "pgr_sequentialVertexColoring"
 msgstr ""
 
-msgid "pgr_sequentialVertexColoring"
+msgid "pgr_sloanOrdering"
 msgstr ""
 
 msgid "pgr_topologicalSort"
@@ -4164,9 +4183,6 @@ msgstr ":doc:`pgr_createVerticesTable`"
 #, fuzzy
 msgid "pgr_trsp"
 msgstr ":doc:`pgr_trsp`"
-
-msgid "Function promoted to official."
-msgstr ""
 
 msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
 msgstr ""
@@ -4227,6 +4243,29 @@ msgid ""
 msgstr ""
 
 msgid "pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_TSP"
+msgstr ""
+
+msgid "Results change depending on input order"
+msgstr ""
+
+#, fuzzy
+msgid "Only for undirected graphs"
+msgstr ":doc:`pgr_bridges` - 무방향 그래프의 브릿지."
+
+msgid ""
+"pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double "
+"precision,double precision,double precision,boolean)"
+msgstr ""
+
+msgid "pgr_TSPeuclidean"
+msgstr ""
+
+msgid ""
+"pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, "
+"integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
 msgid "pgr_turnRestrictedPath"
@@ -4364,6 +4403,21 @@ msgstr ""
 msgid ""
 "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: "
 "pgr_withPointsVia"
+msgstr ""
+
+msgid ""
+"`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: "
+"pgr_dijkstraNear"
+msgstr ""
+
+msgid ""
+"`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: "
+"pgr_dijkstraNearCost"
+msgstr ""
+
+msgid ""
+"`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: "
+"pgr_dijkstraVia"
 msgstr ""
 
 msgid "Signatures promoted to official"
@@ -4625,25 +4679,12 @@ msgid ""
 "pgr_maxCardinalityMatch"
 msgstr ""
 
-msgid "pgr_maxCardinalityMatch(text,boolean)"
-msgstr ""
-
 msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: pgr_TSP"
-msgstr ""
-
-msgid ""
-"pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double "
-"precision,double precision,double precision,boolean)"
 msgstr ""
 
 msgid ""
 "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: "
 "pgr_TSPeuclidean"
-msgstr ""
-
-msgid ""
-"pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, "
-"integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
 msgid "Removal of SQL deprecated functions"
@@ -8735,13 +8776,6 @@ msgstr ""
 msgid "Availability:"
 msgstr ""
 
-msgid "Results change depending on input order"
-msgstr ""
-
-#, fuzzy
-msgid "Only for undirected graphs"
-msgstr ":doc:`pgr_bridges` - 무방향 그래프의 브릿지."
-
 msgid "Version 3.2.1"
 msgstr ""
 
@@ -12055,8 +12089,9 @@ msgstr ""
 msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 msgstr ""
 
-msgid "``pgr_dijkstraNear`` - Proposed"
-msgstr ""
+#, fuzzy
+msgid "``pgr_dijkstraNear``"
+msgstr ":doc:`pgr_dijkstraVia`"
 
 msgid ""
 "``pgr_dijkstraNear`` — Using Dijkstra's algorithm, finds the route that "
@@ -12305,8 +12340,9 @@ msgstr ""
 msgid "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
-msgid "``pgr_dijkstraNearCost`` - Proposed"
-msgstr ""
+#, fuzzy
+msgid "``pgr_dijkstraNearCost``"
+msgstr ":doc:`pgr_dijkstraNearCost`"
 
 msgid ""
 "``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that "
@@ -17113,9 +17149,6 @@ msgstr ""
 msgid "Experimental promoted to Proposed"
 msgstr ""
 
-msgid "pgr_dijkstraNear"
-msgstr ""
-
 msgid "pgr_dijkstraNear(Combinations)"
 msgstr ""
 
@@ -17126,9 +17159,6 @@ msgid "pgr_dijkstraNear(Many to One)"
 msgstr ""
 
 msgid "pgr_dijkstraNear(One to Many)"
-msgstr ""
-
-msgid "pgr_dijkstraNearCost"
 msgstr ""
 
 msgid "pgr_dijkstraNearCost(Combinations)"
@@ -18190,9 +18220,6 @@ msgid ""
 "utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.0%22>`__"
 msgstr ""
 
-msgid "pgr_TSP"
-msgstr ""
-
 msgid "pgr_eucledianTSP"
 msgstr ""
 
@@ -18405,9 +18432,6 @@ msgid "pgr_withPointsDD(single vertex)"
 msgstr ""
 
 msgid "pgr_withPointsDD(multiple vertices)"
-msgstr ""
-
-msgid "pgr_dijkstraVia"
 msgstr ""
 
 msgid "pgr_apspWarshall use pgr_floydWarshall instead"
@@ -19164,9 +19188,6 @@ msgid ""
 msgstr ""
 
 msgid "Traversal - Family of functions"
-msgstr ""
-
-msgid "Additionally there are 2 categories under this family"
 msgstr ""
 
 #, fuzzy

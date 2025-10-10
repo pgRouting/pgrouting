@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-17 02:15+0000\n"
+"POT-Creation-Date: 2025-10-08 19:15+0000\n"
 "PO-Revision-Date: 2025-10-08 16:47+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -2774,7 +2774,8 @@ msgstr ""
 "Para grandes grafos donde hay un camino entre el vértice inicial y el "
 "vértice final:"
 
-msgid "It is expected to terminate faster than doc:`pgr_aStar`"
+#, fuzzy
+msgid "It is expected to terminate faster than :doc:`pgr_aStar`"
 msgstr "Se espera que termine más rápido que :doc:`pgr_aStar`"
 
 msgid ":doc:`aStar-family`"
@@ -2875,13 +2876,15 @@ msgstr ""
 "Para grandes gráficos donde hay un camino entre el vértice inicial y el "
 "vértice final:"
 
-msgid "It is expected to terminate faster than pgr_dijkstra"
+#, fuzzy
+msgid "It is expected to terminate faster than :doc:`pgr_dijkstra`"
 msgstr "Se espera que termine más rápido que pgr_dijkstra"
 
 msgid "`Boost  <https://www.boost.org/libs/graph/doc>`__"
 msgstr "`Boost <https://www.boost.org/libs/graph/doc>`__"
 
-msgid "Chinese Postman Problem - Family of functions (Experimental)"
+#, fuzzy
+msgid "Chinese Postman Problem - Family of functions"
 msgstr "Chinese Postman Problem - Familia de funciones (Experimental)"
 
 msgid ":doc:`pgr_chinesePostman`"
@@ -3076,14 +3079,14 @@ msgstr ":doc:`pgr_bdAstarCost`"
 msgid ":doc:`pgr_dijkstraCost`"
 msgstr ":doc:`pgr_dijkstraCost`"
 
+msgid ":doc:`pgr_dijkstraNearCost`"
+msgstr ":doc:`pgr_dijkstraNearCost`"
+
 msgid ":doc:`pgr_bdDijkstraCost`"
 msgstr ":doc:`pgr_bdDijkstraCost`"
 
 msgid ":doc:`pgr_withPointsCost`"
 msgstr ":doc:`pgr_withPointsCost`"
-
-msgid ":doc:`pgr_dijkstraNearCost`"
-msgstr ":doc:`pgr_dijkstraNearCost`"
 
 msgid "Each function works as part of the family it belongs to."
 msgstr "Cada función funciona como parte de la familia a la que pertenece."
@@ -4522,6 +4525,18 @@ msgstr "pgr_dijkstra"
 msgid "pgr_dijkstraCost"
 msgstr "pgr_dijkstraCost"
 
+msgid "pgr_dijkstraNear"
+msgstr "pgr_dijkstraNear"
+
+msgid "Function promoted to official."
+msgstr "Función promovida a oficial."
+
+msgid "pgr_dijkstraNearCost"
+msgstr "pgr_dijkstraNearCost"
+
+msgid "pgr_dijkstraVia"
+msgstr "pgr_dijkstraVia"
+
 msgid "pgr_edgeColoring"
 msgstr "pgr_edgeColoring"
 
@@ -4561,17 +4576,24 @@ msgstr "pgr_KSP"
 msgid "All signatures promoted to official."
 msgstr "Todas las firmas promovidas a oficial."
 
+#, fuzzy
+msgid "pgr_maxCardinalityMatch"
+msgstr "pgr_maxCardinalityMatching"
+
+msgid "pgr_maxCardinalityMatch(text,boolean)"
+msgstr "pgr_maxCardinalityMatch(text,boolean)"
+
 msgid "pgr_maxFlow"
 msgstr "pgr_maxFlow"
 
 msgid "pgr_pushRelabel"
 msgstr "pgr_pushRelabel"
 
-msgid "pgr_sloanOrdering"
-msgstr "pgr_sloanOrdering"
-
 msgid "pgr_sequentialVertexColoring"
 msgstr "pgr_sequentialVertexColoring"
+
+msgid "pgr_sloanOrdering"
+msgstr "pgr_sloanOrdering"
 
 msgid "pgr_topologicalSort"
 msgstr "pgr_topologicalSort"
@@ -4587,9 +4609,6 @@ msgstr "Estandarización de columnas de resultados a |result-closure|"
 
 msgid "pgr_trsp"
 msgstr "pgr_trsp"
-
-msgid "Function promoted to official."
-msgstr "Función promovida a oficial."
 
 msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
 msgstr "pgr_trsp(text,integer,integer,boolean,boolean,text)"
@@ -4661,6 +4680,33 @@ msgstr ""
 
 msgid "pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
 msgstr "pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+
+msgid "pgr_TSP"
+msgstr "pgr_TSP"
+
+msgid "Results change depending on input order"
+msgstr "Los resultados cambian dependiendo el orden de entrada"
+
+msgid "Only for undirected graphs"
+msgstr "Solo para grafos no dirigidos"
+
+msgid ""
+"pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double "
+"precision,double precision,double precision,boolean)"
+msgstr ""
+"pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double "
+"precision,double precision,double precision,boolean)"
+
+#, fuzzy
+msgid "pgr_TSPeuclidean"
+msgstr "``pgr_TSPeuclidean``"
+
+msgid ""
+"pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, "
+"integer,double precision,double precision,double precision,boolean)"
+msgstr ""
+"pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, "
+"integer,double precision,double precision,double precision,boolean)"
 
 msgid "pgr_turnRestrictedPath"
 msgstr "pgr_turnRestrictedPath"
@@ -4819,6 +4865,29 @@ msgid ""
 msgstr ""
 "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: "
 "pgr_withPointsVia"
+
+#, fuzzy
+msgid ""
+"`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: "
+"pgr_dijkstraNear"
+msgstr ""
+"`#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__: "
+"pgr_bdDijkstra"
+
+#, fuzzy
+msgid ""
+"`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: "
+"pgr_dijkstraNearCost"
+msgstr ""
+"`#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__: "
+"pgr_bdDijkstra"
+
+#, fuzzy
+msgid ""
+"`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: "
+"pgr_dijkstraVia"
+msgstr ""
+"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trspVia"
 
 msgid "Signatures promoted to official"
 msgstr "Firmas promovidas a oficial"
@@ -5154,33 +5223,16 @@ msgstr ""
 "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__: "
 "pgr_maxCardinalityMatch"
 
-msgid "pgr_maxCardinalityMatch(text,boolean)"
-msgstr "pgr_maxCardinalityMatch(text,boolean)"
-
 msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: pgr_TSP"
 msgstr ""
 "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: pgr_TSP"
 
 msgid ""
-"pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double "
-"precision,double precision,double precision,boolean)"
-msgstr ""
-"pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double "
-"precision,double precision,double precision,boolean)"
-
-msgid ""
 "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: "
 "pgr_TSPeuclidean"
 msgstr ""
 "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: "
 "pgr_TSPeuclidean"
-
-msgid ""
-"pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, "
-"integer,double precision,double precision,double precision,boolean)"
-msgstr ""
-"pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, "
-"integer,double precision,double precision,double precision,boolean)"
 
 msgid "Removal of SQL deprecated functions"
 msgstr "Eliminación de funciones obsoletas"
@@ -9913,12 +9965,6 @@ msgstr "``pgr_TSP`` - Aproximación usando el algoritmo *métrico*."
 msgid "Availability:"
 msgstr "Disponibilidad:"
 
-msgid "Results change depending on input order"
-msgstr "Los resultados cambian dependiendo el orden de entrada"
-
-msgid "Only for undirected graphs"
-msgstr "Solo para grafos no dirigidos"
-
 msgid "Version 3.2.1"
 msgstr "Versión 3.2.1"
 
@@ -13753,8 +13799,9 @@ msgstr ""
 msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 msgstr "pgr_dijkstraCostMatrix(`SQL de aristas`_, **salidas**, [``directed``])"
 
-msgid "``pgr_dijkstraNear`` - Proposed"
-msgstr "``pgr_dijkstraNear`` - Propuesto"
+#, fuzzy
+msgid "``pgr_dijkstraNear``"
+msgstr "pgr_dijkstraNear"
 
 msgid ""
 "``pgr_dijkstraNear`` — Using Dijkstra's algorithm, finds the route that "
@@ -14066,8 +14113,9 @@ msgstr "Cuando ``false``: ``cap`` límite por ``Start vid`` será devuelto"
 msgid "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 
-msgid "``pgr_dijkstraNearCost`` - Proposed"
-msgstr "``pgr_dijkstraNearCost`` - Propuesto"
+#, fuzzy
+msgid "``pgr_dijkstraNearCost``"
+msgstr "pgr_dijkstraNearCost"
 
 msgid ""
 "``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that "
@@ -19866,9 +19914,6 @@ msgstr "Coloreo"
 msgid "Experimental promoted to Proposed"
 msgstr "Experimental promovido a Propuesto"
 
-msgid "pgr_dijkstraNear"
-msgstr "pgr_dijkstraNear"
-
 msgid "pgr_dijkstraNear(Combinations)"
 msgstr "pgr_dijkstraNear(Combinaciones)"
 
@@ -19880,9 +19925,6 @@ msgstr "pgr_dijkstraNear(Muchos a Uno)"
 
 msgid "pgr_dijkstraNear(One to Many)"
 msgstr "pgr_dijkstraNear(Uno a Muchos)"
-
-msgid "pgr_dijkstraNearCost"
-msgstr "pgr_dijkstraNearCost"
 
 msgid "pgr_dijkstraNearCost(Combinations)"
 msgstr "pgr_dijkstraNearCost(Combinaciones)"
@@ -21130,9 +21172,6 @@ msgstr ""
 "versión, consulte la `meta cerrada 4.0.0 <https://github.com/pgRouting/"
 "pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
-msgid "pgr_TSP"
-msgstr "pgr_TSP"
-
 msgid "pgr_eucledianTSP"
 msgstr "pgr_eucledianTSP"
 
@@ -21347,9 +21386,6 @@ msgstr "pgr_withPointsDD(vértice único)"
 
 msgid "pgr_withPointsDD(multiple vertices)"
 msgstr "pgr_withPointsDD(múltiples vértices)"
-
-msgid "pgr_dijkstraVia"
-msgstr "pgr_dijkstraVia"
 
 msgid "pgr_apspWarshall use pgr_floydWarshall instead"
 msgstr "pgr_apspWarshall utilizar pgr_floydWarshall en su lugar"
@@ -22229,9 +22265,6 @@ msgstr ""
 msgid "Traversal - Family of functions"
 msgstr "Traversal - Familia de funciones"
 
-msgid "Additionally there are 2 categories under this family"
-msgstr "Adicionalmente, hay dos categorías en esta familia"
-
 #, fuzzy
 msgid "Utility functions"
 msgstr "Funciones de flujo"
@@ -22668,6 +22701,15 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#~ msgid "``pgr_dijkstraNear`` - Proposed"
+#~ msgstr "``pgr_dijkstraNear`` - Propuesto"
+
+#~ msgid "``pgr_dijkstraNearCost`` - Proposed"
+#~ msgstr "``pgr_dijkstraNearCost`` - Propuesto"
+
+#~ msgid "Additionally there are 2 categories under this family"
+#~ msgstr "Adicionalmente, hay dos categorías en esta familia"
 
 #~ msgid ""
 #~ "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__: "
