@@ -6,14 +6,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-08 17:37+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2025-10-08 19:15+0000\n"
+"PO-Revision-Date: 2025-09-22 16:28+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: German <https://weblate.osgeo.org/projects/pgrouting/"
+"pgrouting-develop/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.4.3\n"
 
 msgid "BFS - Category"
 msgstr ""
@@ -2544,11 +2547,11 @@ msgid ""
 msgstr ""
 
 msgid ""
-"For large graphs where there is a path bewtween the starting vertex and "
+"For large graphs where there is a path between the starting vertex and "
 "ending vertex:"
 msgstr ""
 
-msgid "It is expected to terminate faster than pgr_aStar"
+msgid "It is expected to terminate faster than :doc:`pgr_aStar`"
 msgstr ""
 
 msgid ":doc:`aStar-family`"
@@ -2622,10 +2625,18 @@ msgstr ""
 msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
 msgstr ""
 
-msgid "It is expected to terminate faster than pgr_dijkstra"
+msgid ""
+"For large graphs where there is a path bewtween the starting vertex and "
+"ending vertex:"
 msgstr ""
 
-msgid "Chinese Postman Problem - Family of functions (Experimental)"
+msgid "It is expected to terminate faster than :doc:`pgr_dijkstra`"
+msgstr ""
+
+msgid "`Boost  <https://www.boost.org/libs/graph/doc>`__"
+msgstr ""
+
+msgid "Chinese Postman Problem - Family of functions"
 msgstr ""
 
 msgid ":doc:`pgr_chinesePostman`"
@@ -2788,13 +2799,13 @@ msgstr ""
 msgid ":doc:`pgr_dijkstraCost`"
 msgstr ""
 
+msgid ":doc:`pgr_dijkstraNearCost`"
+msgstr ""
+
 msgid ":doc:`pgr_bdDijkstraCost`"
 msgstr ""
 
 msgid ":doc:`pgr_withPointsCost`"
-msgstr ""
-
-msgid ":doc:`pgr_dijkstraNearCost`"
 msgstr ""
 
 msgid "Each function works as part of the family it belongs to."
@@ -3880,7 +3891,7 @@ msgstr ""
 msgid ":doc:`release_notes`"
 msgstr ""
 
-msgid "pgRouting 4.0.0 Release Notes"
+msgid "pgRouting 4.0.0-alpha1 Release Notes"
 msgstr ""
 
 msgid ""
@@ -3895,7 +3906,8 @@ msgstr ""
 msgid "C++ standard is std17"
 msgstr ""
 
-msgid "Using this standard all versions of boost will work"
+msgid ""
+"Using this standard, all supported toolchains across our CI matrix will work."
 msgstr ""
 
 msgid "The code is not yet modified to use std17:"
@@ -3904,10 +3916,10 @@ msgstr ""
 msgid "If needed: ``-DCMAKE_CXX_STANDARD=14`` to lower the standard."
 msgstr ""
 
-msgid "The user's documentation is build by default"
+msgid "The user's documentation is built by default."
 msgstr ""
 
-msgid "The doxygen documentation is build by default"
+msgid "The doxygen documentation is built by default."
 msgstr ""
 
 msgid "For developers:"
@@ -3922,18 +3934,21 @@ msgstr ""
 msgid "Documentation build"
 msgstr ""
 
-msgid "The HTML documentation is build by default"
+msgid "The doxygen documentation is built by default"
+msgstr ""
+
+msgid "The HTML documentation is built by default"
 msgstr ""
 
 msgid ""
-"The translated languages (en, es, sv, zh_Hans) HTML documentation is build "
+"The translated languages (en, es, sv, zh_Hans) HTML documentation are built "
 "by default"
 msgstr ""
 
 msgid "`WITH-DOC` is not used anymore"
 msgstr ""
 
-msgid "User's Documentation is not build when"
+msgid "User Documentation is not built when"
 msgstr ""
 
 msgid "Sphinx is not found"
@@ -3942,21 +3957,28 @@ msgstr ""
 msgid "When all Sphinx formats are OFF"
 msgstr ""
 
+msgid "To not build HTML default format: `-DBUILD_HTML=OFF`"
+msgstr ""
+
 msgid "When all languages are OFF"
 msgstr ""
 
-msgid ""
-"Documentation output changed location to `build/doc/_build/<format>` "
-"directory"
+msgid "To build only English: `-DES=OFF -DSV=OFF -DZH_HANS=OFF`"
+msgstr ""
+
+msgid "Documentation output location: ``build/doc/_build/<format>``"
 msgstr ""
 
 msgid "For example: for HTML output is on `build/doc/_build/html` directory"
 msgstr ""
 
-msgid "Developers's Documentation is not build when"
+msgid "Developers' Documentation is not built when"
 msgstr ""
 
 msgid "Doxygen is not found"
+msgstr ""
+
+msgid "To not build Doxygen documentation: `-DBUILD_DOXY=OFF`"
 msgstr ""
 
 msgid "Summary of changes by function"
@@ -4037,6 +4059,18 @@ msgstr ""
 msgid "pgr_dijkstraCost"
 msgstr ""
 
+msgid "pgr_dijkstraNear"
+msgstr ""
+
+msgid "Function promoted to official."
+msgstr ""
+
+msgid "pgr_dijkstraNearCost"
+msgstr ""
+
+msgid "pgr_dijkstraVia"
+msgstr ""
+
 msgid "pgr_edgeColoring"
 msgstr ""
 
@@ -4076,16 +4110,22 @@ msgstr ""
 msgid "All signatures promoted to official."
 msgstr ""
 
+msgid "pgr_maxCardinalityMatch"
+msgstr ""
+
+msgid "pgr_maxCardinalityMatch(text,boolean)"
+msgstr ""
+
 msgid "pgr_maxFlow"
 msgstr ""
 
 msgid "pgr_pushRelabel"
 msgstr ""
 
-msgid "pgr_sloanOrdering"
+msgid "pgr_sequentialVertexColoring"
 msgstr ""
 
-msgid "pgr_sequentialVertexColoring"
+msgid "pgr_sloanOrdering"
 msgstr ""
 
 msgid "pgr_topologicalSort"
@@ -4101,9 +4141,6 @@ msgid "Standardized output to |result-closure|"
 msgstr ""
 
 msgid "pgr_trsp"
-msgstr ""
-
-msgid "Function promoted to official."
 msgstr ""
 
 msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
@@ -4162,6 +4199,28 @@ msgid ""
 msgstr ""
 
 msgid "pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+msgstr ""
+
+msgid "pgr_TSP"
+msgstr ""
+
+msgid "Results change depending on input order"
+msgstr ""
+
+msgid "Only for undirected graphs"
+msgstr ""
+
+msgid ""
+"pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double "
+"precision,double precision,double precision,boolean)"
+msgstr ""
+
+msgid "pgr_TSPeuclidean"
+msgstr ""
+
+msgid ""
+"pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, "
+"integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
 msgid "pgr_turnRestrictedPath"
@@ -4297,6 +4356,21 @@ msgid ""
 "pgr_withPointsVia"
 msgstr ""
 
+msgid ""
+"`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: "
+"pgr_dijkstraNear"
+msgstr ""
+
+msgid ""
+"`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: "
+"pgr_dijkstraNearCost"
+msgstr ""
+
+msgid ""
+"`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: "
+"pgr_dijkstraVia"
+msgstr ""
+
 msgid "Signatures promoted to official"
 msgstr ""
 
@@ -4365,7 +4439,7 @@ msgid ""
 "pgr_pushRelabel(Combinations)"
 msgstr ""
 
-msgid "New experimental functions"
+msgid "New experimental functions."
 msgstr ""
 
 msgid "Metrics"
@@ -4429,7 +4503,7 @@ msgstr ""
 
 msgid ""
 "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__: "
-"pgr_DAGshortestPath"
+"pgr_dagShortestPath"
 msgstr ""
 
 msgid "Standardized to |matrix-result|"
@@ -4455,7 +4529,7 @@ msgstr ""
 
 msgid ""
 "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__: "
-"pgr_turnRestrictedPaths"
+"pgr_turnRestrictedPath"
 msgstr ""
 
 msgid "Standardized to |result_edge_color|"
@@ -4551,15 +4625,7 @@ msgid ""
 "pgr_maxCardinalityMatch"
 msgstr ""
 
-msgid "pgr_maxCardinalityMatch(text,boolean)"
-msgstr ""
-
 msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: pgr_TSP"
-msgstr ""
-
-msgid ""
-"pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double "
-"precision,double precision,double precision,boolean)"
 msgstr ""
 
 msgid ""
@@ -4567,22 +4633,17 @@ msgid ""
 "pgr_TSPeuclidean"
 msgstr ""
 
-msgid ""
-"pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, "
-"integer,double precision,double precision,double precision,boolean)"
-msgstr ""
-
 msgid "Removal of SQL deprecated functions"
 msgstr ""
 
 msgid ""
 "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: "
-"pgr_trspviaedges"
+"pgr_trspViaedges"
 msgstr ""
 
 msgid ""
 "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: "
-"pgr_trspviavertices"
+"pgr_trspViaVertices"
 msgstr ""
 
 msgid ""
@@ -4620,47 +4681,47 @@ msgstr ""
 
 msgid ""
 "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ "
-"_pgr_alphashape(text,double precision)"
+"_pgr_alphaShape(text,double precision)"
 msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_checkverttab(text,text[],integer,text)"
+"_pgr_checkVertTab(text,text[],integer,text)"
 msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_createindex(text,text,text,integer,text)"
+"_pgr_createIndex(text,text,text,integer,text)"
 msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_createindex(text,text,text,text,integer,text)"
+"_pgr_createIndex(text,text,text,text,integer,text)"
 msgstr ""
 
 msgid ""
 "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
-"_pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)"
+"_pgr_dagShortestPath(text,anyarray,anyarray,boolean,boolean)"
 msgstr ""
 
 msgid ""
 "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
-"_pgr_dagshortestpath(text,text,boolean,boolean)"
+"_pgr_dagShortestPath(text,text,boolean,boolean)"
 msgstr ""
 
 msgid ""
 "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
-"_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
+"_pgr_dijkstraNear(text,anyarray,anyarray,bigint,boolean)"
 msgstr ""
 
 msgid ""
 "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
-"_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
+"_pgr_dijkstraNear(text,anyarray,bigint,bigint,boolean)"
 msgstr ""
 
 msgid ""
 "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ "
-"_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+"_pgr_dijkstraNear(text,bigint,anyarray,bigint,boolean)"
 msgstr ""
 
 msgid ""
@@ -4685,52 +4746,52 @@ msgstr ""
 
 msgid ""
 "`#2735 <https://github.com/pgRouting/pgrouting/issues/2735>`__ "
-"_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
+"_pgr_drivingDistance(text,anyarray,double precision,boolean,boolean)"
 msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_endpoint(geometry)"
+"_pgr_endPoint(geometry)"
 msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_getcolumnname(text,text,integer,text)"
+"__pgr_getColumnName(text,text,integer,text)"
 msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_getcolumnname(text,text,text,integer,text)"
+"__pgr_getColumnName(text,text,text,integer,text)"
 msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_getcolumntype(text,text,integer,text)"
+"__pgr_getColumnType(text,text,integer,text)"
 msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_getcolumntype(text,text,text,integer,text)"
+"__pgr_getColumnType(text,text,text,integer,text)"
 msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_gettablename(text,integer,text)"
+"__pgr_getTableName(text,integer,text)"
 msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_iscolumnindexed(text,text,integer,text)"
+"_pgr_isColumnIndexed(text,text,integer,text)"
 msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_iscolumnindexed(text,text,text,integer,text)"
+"_pgr_isColumnIndexed(text,text,text,integer,text)"
 msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_iscolumnintable(text,text)"
+"_pgr_isColumnIntable(text,text)"
 msgstr ""
 
 msgid ""
@@ -4755,7 +4816,7 @@ msgstr ""
 
 msgid ""
 "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__ "
-"_pgr_maxcardinalitymatch(text,boolean)"
+"_pgr_maxCardinalityMatch(text,boolean)"
 msgstr ""
 
 msgid ""
@@ -4785,7 +4846,7 @@ msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_startpoint(geometry)"
+"_pgr_startPoint(geometry)"
 msgstr ""
 
 msgid ""
@@ -4816,29 +4877,29 @@ msgstr ""
 
 msgid ""
 "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__ "
-"_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
+"_pgr_trspViaVertices(text,integer[],boolean,boolean,text)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"_pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,"
+"_pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,"
 "character,boolean)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"_pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,"
+"_pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,"
 "boolean)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"_pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+"_pgr_trsp_withPoints(text,text,text,text,boolean,character,boolean)"
 msgstr ""
 
 msgid ""
 "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ "
-"_pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,"
+"_pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,"
 "integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
@@ -4850,40 +4911,40 @@ msgstr ""
 
 msgid ""
 "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ "
-"_pgr_versionless(text,text)"
+"_pgr_versionLess(text,text)"
 msgstr ""
 
 msgid ""
 "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ "
-"_pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+"_pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 msgstr ""
 
 msgid ""
 "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
-"_pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,"
+"_pgr_withPointsKSP(text,text,anyarray,anyarray,integer,character,boolean,"
 "boolean,boolean,boolean)"
 msgstr ""
 
 msgid ""
 "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
-"_pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,"
+"_pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,"
 "boolean)"
 msgstr ""
 
 msgid ""
 "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
-"_pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)"
+"_pgr_withPointsKSP(text,text,text,integer,character,boolean,boolean,boolean)"
 msgstr ""
 
 msgid ""
 "`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__ "
-"_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+"_pgr_withPointsVia(text,bigint[],double precision[],boolean)"
 msgstr ""
 
 msgid ""
 "`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__ "
-"_pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,"
+"_pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,"
 "boolean)"
 msgstr ""
 
@@ -4947,7 +5008,7 @@ msgstr ""
 
 msgid ""
 "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__ "
-"pgr_maxcardinalitymatch(text,boolean)"
+"pgr_maxCardinalityMatch(text,boolean)"
 msgstr ""
 
 msgid ""
@@ -4967,49 +5028,49 @@ msgstr ""
 
 msgid ""
 "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__ "
-"pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
+"pgr_trspViaedges(text,integer[],double precision[],boolean,boolean,text)"
 msgstr ""
 
 msgid ""
 "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__ "
-"pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
+"pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,"
+"pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,"
 "character,boolean)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,"
+"pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,"
 "boolean)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
+"pgr_trsp_withPoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
+"pgr_trsp_withPoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)"
+"pgr_trsp_withPoints(text,text,text,bigint,bigint,boolean,character,boolean)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+"pgr_trsp_withPoints(text,text,text,text,boolean,character,boolean)"
 msgstr ""
 
 msgid ""
 "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ "
-"pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,"
+"pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,integer,"
 "double precision,double precision,double precision,boolean)"
 msgstr ""
 
@@ -5021,79 +5082,79 @@ msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
+"pgr_withPointsCostMatrix(text,text,anyarray,boolean,character)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)"
+"pgr_withPointsCost(text,text,anyarray,anyarray,boolean,character)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointscost(text,text,anyarray,bigint,boolean,character)"
+"pgr_withPointsCost(text,text,anyarray,bigint,boolean,character)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointscost(text,text,bigint,anyarray,boolean,character)"
+"pgr_withPointsCost(text,text,bigint,anyarray,boolean,character)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointscost(text,text,bigint,bigint,boolean,character)"
+"pgr_withPointsCost(text,text,bigint,bigint,boolean,character)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointscost(text,text,text,boolean,character)"
+"pgr_withPointsCost(text,text,text,boolean,character)"
 msgstr ""
 
 msgid ""
 "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ "
-"pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+"pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 msgstr ""
 
 msgid ""
 "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ "
-"pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
+"pgr_withPointsDD(text,text,bigint,double precision,boolean,character,boolean)"
 msgstr ""
 
 msgid ""
 "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ "
-"pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,"
+"pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,"
 "boolean)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)"
+"pgr_withPoints(text,text,anyarray,anyarray,boolean,character,boolean)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)"
+"pgr_withPoints(text,text,anyarray,bigint,boolean,character,boolean)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)"
+"pgr_withPoints(text,text,bigint,anyarray,boolean,character,boolean)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)"
+"pgr_withPoints(text,text,bigint,bigint,boolean,character,boolean)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpoints(text,text,text,boolean,character,boolean)"
+"pgr_withPoints(text,text,text,boolean,character,boolean)"
 msgstr ""
 
 msgid ""
 "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ "
-"pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,"
+"pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,"
 "boolean)"
 msgstr ""
 
@@ -5121,10 +5182,10 @@ msgstr ""
 msgid "Deprecated functions are substituted by new function."
 msgstr ""
 
-msgid "_pgr_drivingdistance => _pgr_drivingdistancev4"
+msgid "_pgr_drivingDistance => _pgr_drivingDistancev4"
 msgstr ""
 
-msgid "_pgr_withpointsdd => _pgr_withpointsddv4"
+msgid "_pgr_withPointsDD => _pgr_withPointsddv4"
 msgstr ""
 
 msgid "_pgr_kruskal => _pgr_kruskalv4"
@@ -5136,16 +5197,16 @@ msgstr ""
 msgid "_pgr_dijkstra => _pgr_dijkstra_v4"
 msgstr ""
 
-msgid "_pgr_withpointsksp => _pgr_withpointsksp_v4"
+msgid "_pgr_withPointsKSP => _pgr_withPointsKSP_v4"
 msgstr ""
 
-msgid "_pgr_trspvia_withpoints => _pgr_trspvia_withpoints_v4"
+msgid "_pgr_trspVia_withPoints => _pgr_trspVia_withPoints_v4"
 msgstr ""
 
-msgid "_pgr_trsp_withpoints => _pgr_trsp_withpoints_v4"
+msgid "_pgr_trsp_withPoints => _pgr_trsp_withPoints_v4"
 msgstr ""
 
-msgid "_pgr_withpointsvia => _pgr_withpointsvia_v4"
+msgid "_pgr_withPointsVia => _pgr_withPointsvia_v4"
 msgstr ""
 
 msgid "Internal C/C++ functions in legacy"
@@ -5159,12 +5220,12 @@ msgstr ""
 
 msgid ""
 "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ "
-"_pgr_alphashape"
+"_pgr_alphaShape"
 msgstr ""
 
 msgid ""
 "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ "
-"_pgr_dagshortestpath"
+"_pgr_dagShortestPath"
 msgstr ""
 
 msgid "All releases"
@@ -8540,12 +8601,6 @@ msgstr ""
 msgid "Availability:"
 msgstr ""
 
-msgid "Results change depending on input order"
-msgstr ""
-
-msgid "Only for undirected graphs"
-msgstr ""
-
 msgid "Version 3.2.1"
 msgstr ""
 
@@ -8997,7 +9052,7 @@ msgid "New proposed function."
 msgstr ""
 
 msgid ""
-"The ``pgr_aStarCost`` function summarizes of the cost of the shortest path "
+"The ``pgr_aStarCost`` function summarizes the cost of the shortest path "
 "using the A* algorithm."
 msgstr ""
 
@@ -9225,8 +9280,8 @@ msgid "Signature change on pgr_bdAstar(One to One)"
 msgstr ""
 
 msgid ""
-"The results are equivalent to the union of the results of the "
-"pgr_bdAStar(One to One) on the:"
+"The results are equivalent to the union of the results of pgr_bdAStar(One to "
+"One) on the:"
 msgstr ""
 
 msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
@@ -9256,7 +9311,7 @@ msgid "pgr_bdAstarCost(Combinations)"
 msgstr ""
 
 msgid ""
-"The ``pgr_bdAstarCost`` function summarizes of the cost of the shortest path "
+"The ``pgr_bdAstarCost`` function summarizes the cost of the shortest path "
 "using the bidirectional A* algorithm."
 msgstr ""
 
@@ -9283,11 +9338,11 @@ msgid "``pgr_bdAstarCostMatrix``"
 msgstr ""
 
 msgid ""
-"``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using :doc:"
-"`pgr_aStar`."
+"``pgr_bdAstarCostMatrix`` - Calculates the cost matrix using :doc:"
+"`pgr_bdAstar`."
 msgstr ""
 
-msgid "Using internally the :doc:`pgr_bdAstar` algorithm"
+msgid "Internally uses the :doc:`pgr_bdAstar` algorithm."
 msgstr ""
 
 msgid "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
@@ -9310,7 +9365,7 @@ msgstr ""
 msgid "pgr_bdDijkstra(Many to Many)"
 msgstr ""
 
-msgid "Signature change on pgr_bdDijsktra(One to One)"
+msgid "Signature change on pgr_bdDijkstra(One to One)"
 msgstr ""
 
 msgid ""
@@ -9367,8 +9422,8 @@ msgid "pgr_bdDijkstraCost(Combinations)"
 msgstr ""
 
 msgid ""
-"The ``pgr_bdDijkstraCost`` function summarizes of the cost of the shortest "
-"path using the bidirectional Dijkstra Algorithm."
+"The ``pgr_bdDijkstraCost`` function summarizes the cost of the shortest path "
+"using the bidirectional Dijkstra Algorithm."
 msgstr ""
 
 msgid ""
@@ -9489,6 +9544,22 @@ msgid ""
 msgstr ""
 
 msgid "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr ""
+
+msgid ""
+"From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a directed graph"
+msgstr ""
+
+msgid ""
+"From vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a directed graph"
+msgstr ""
+
+msgid ""
+"From vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` on an "
+"undirected graph"
+msgstr ""
+
+msgid "Using a combinations table on an undirected graph"
 msgstr ""
 
 msgid ""
@@ -9661,8 +9732,8 @@ msgid ""
 "an unweighted graph, i.e. the distance is the minimal number of edges that "
 "you need to traverse from the source to another vertex. We can interpret "
 "such a graph also as a weighted graph, where every edge has the weight :math:"
-"`1`. If not all edges in graph have the same weight, that we need a more "
-"general algorithm, like Dijkstra's Algorithm which runs in :math:`O(|E|log|"
+"`1`. If not all edges in graph have the same weight, then we a more general "
+"algorithm is needed, like Dijkstra's Algorithm which runs in :math:`O(|E|log|"
 "V|)` time."
 msgstr ""
 
@@ -10635,9 +10706,6 @@ msgid ""
 "shortcut edges created."
 msgstr ""
 
-msgid "New experimental function"
-msgstr ""
-
 msgid ""
 "The contraction hierarchies method builds, from an initial order of the "
 "vertices, a hierarchical order, giving priority to some vertices during the "
@@ -11140,9 +11208,6 @@ msgid ""
 msgstr ""
 
 msgid "pgr_dagShortestPath(Combinations)"
-msgstr ""
-
-msgid "..rubric:: Version 3.0.0"
 msgstr ""
 
 msgid ""
@@ -11781,7 +11846,7 @@ msgstr ""
 msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 msgstr ""
 
-msgid "``pgr_dijkstraNear`` - Proposed"
+msgid "``pgr_dijkstraNear``"
 msgstr ""
 
 msgid ""
@@ -12031,7 +12096,7 @@ msgstr ""
 msgid "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
-msgid "``pgr_dijkstraNearCost`` - Proposed"
+msgid "``pgr_dijkstraNearCost``"
 msgstr ""
 
 msgid ""
@@ -12954,7 +13019,7 @@ msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr ""
 
 msgid ""
-"Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/"
+"Boost `Floyd-Warshall <https://www.boost.org/libs/graph/doc/"
 "floyd_warshall_shortest.html>`_"
 msgstr ""
 
@@ -13190,7 +13255,7 @@ msgid "``pgr_kingOrdering`` - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_kingOrdering`` — Returns the King ordering of an undirected graphs"
+"``pgr_kingOrdering`` — Returns the King ordering of an undirected graph."
 msgstr ""
 
 msgid ""
@@ -13200,7 +13265,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"The method follows a breadth-first search (BFS) traversal,but with a "
+"The method follows a breadth-first search (BFS) traversal, but with a "
 "refinement: at each step, the unvisited neighbors of the current vertex are "
 "inserted into the queue in ascending order of their pseudo-degree, where the "
 "pseudo-degree of a vertex is the number of edges connecting it to yet-"
@@ -14043,7 +14108,7 @@ msgstr ""
 msgid "pgr_maxFlowMinCost(Combinations)"
 msgstr ""
 
-msgid "|boost| graph inside."
+msgid "|Boost| Boost Graph Inside."
 msgstr ""
 
 msgid "**TODO** check which statement is true:"
@@ -14555,7 +14620,7 @@ msgid "``pgr_sloanOrdering`` - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_sloanOrdering`` — Returns the sloan ordering of an undirected graph"
+"``pgr_sloanOrdering`` — Returns the Sloan ordering of an undirected graph"
 msgstr ""
 
 msgid ""
@@ -14573,7 +14638,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Aims to mininimize bandwidth (maximum difference between connected vertex "
+"Aims to minimize bandwidth (maximum difference between connected vertex "
 "indices."
 msgstr ""
 
@@ -14581,13 +14646,9 @@ msgid ""
 "Typically produces better orderings than simple breadth-first approaches."
 msgstr ""
 
-msgid "Run time is 0.115846 seconds."
-msgstr ""
-
-msgid "|Boost| Boost Graph inside"
-msgstr ""
-
-msgid "..rubric::Summary"
+msgid ""
+"Time complexity: :math:`O(V² + E)` where V is the number of vertices and E "
+"is the number of edges."
 msgstr ""
 
 msgid "pgr_sloanOrdering(`Edges SQL`_)"
@@ -14600,21 +14661,6 @@ msgid "New sloan ordering order."
 msgstr ""
 
 msgid "Sloan ordering of Original graph from Boost example (vertices 0-9)."
-msgstr ""
-
-msgid "..graphviz::"
-msgstr ""
-
-msgid "..literalinclude::sloanOrdering.queries"
-msgstr ""
-
-msgid "start-after"
-msgstr ""
-
-msgid "--q3"
-msgstr ""
-
-msgid "--q4"
 msgstr ""
 
 msgid ""
@@ -16795,9 +16841,6 @@ msgstr ""
 msgid "Experimental promoted to Proposed"
 msgstr ""
 
-msgid "pgr_dijkstraNear"
-msgstr ""
-
 msgid "pgr_dijkstraNear(Combinations)"
 msgstr ""
 
@@ -16808,9 +16851,6 @@ msgid "pgr_dijkstraNear(Many to One)"
 msgstr ""
 
 msgid "pgr_dijkstraNear(One to Many)"
-msgstr ""
-
-msgid "pgr_dijkstraNearCost"
 msgstr ""
 
 msgid "pgr_dijkstraNearCost(Combinations)"
@@ -17841,9 +17881,6 @@ msgid ""
 "utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.0%22>`__"
 msgstr ""
 
-msgid "pgr_TSP"
-msgstr ""
-
 msgid "pgr_eucledianTSP"
 msgstr ""
 
@@ -18037,9 +18074,6 @@ msgid "pgr_withPointsDD(single vertex)"
 msgstr ""
 
 msgid "pgr_withPointsDD(multiple vertices)"
-msgstr ""
-
-msgid "pgr_dijkstraVia"
 msgstr ""
 
 msgid "pgr_apspWarshall use pgr_floydWarshall instead"
@@ -18793,9 +18827,6 @@ msgid ""
 msgstr ""
 
 msgid "Traversal - Family of functions"
-msgstr ""
-
-msgid "Additionally there are 2 categories under this family"
 msgstr ""
 
 msgid "Utility functions"
