@@ -7,12 +7,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_trspVia_medPunkter &#8212; pgRouting Manual (4.0-alpha1)</title>
+    <title>pgr_trspVia_withPoints &#8212; pgRouting Manual (4.0-beta1)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=6ca8ab9b"></script>
+    <script src="_static/documentation_options.js?v=0cd7dff1"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
     <link rel="next" title="pgr_turnRestrictedPath - Experimentell" href="pgr_turnRestrictedPath.html" />
-    <link rel="prev" title="pgr_trsp_medPunkter" href="pgr_trsp_withPoints.html" />
+    <link rel="prev" title="pgr_trsp_withPoints" href="pgr_trsp_withPoints.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -97,7 +97,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_medPunkter</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a><ul>
 <li><a class="reference internal" href="#description">Beskrivning</a></li>
 <li><a class="reference internal" href="#signatures">Underskrifter</a><ul>
 <li><a class="reference internal" href="#one-via">En Via</a></li>
@@ -141,7 +141,7 @@
               
                 
   <li>
-    <a href="pgr_trsp_withPoints.html" title="Previous Chapter: pgr_trsp_medPunkter"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_trsp_medPunkter</span>
+    <a href="pgr_trsp_withPoints.html" title="Previous Chapter: pgr_trsp_withPoints"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_trsp_withPoints</span>
     </a>
   </li>
   <li>
@@ -181,7 +181,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-trspvia-withpoints">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_medPunkter</span></code><a class="headerlink" href="#pgr-trspvia-withpoints" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code><a class="headerlink" href="#pgr-trspvia-withpoints" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> - Rutt som går igenom en lista med toppar och/eller punkter med restriktioner.</p>
 <p class="rubric">Tillgänglighet</p>
 <p class="rubric">Version 4.0.0</p>
@@ -998,7 +998,7 @@ FROM with_seq LEFT JOIN aggregation ON (with_seq.seq = aggregation.seq + 1);
 
 </pre></div>
 </div>
-<p>När algoritmen <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_medPunkter</span></a> exekveras för den konfliktfyllda banan finns det ingen flagga <code class="docutils literal notranslate"><span class="pre">U_turn_on_edge</span></code>.</p>
+<p>När algoritmen <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a> exekveras för den konfliktfyllda banan finns det ingen flagga <code class="docutils literal notranslate"><span class="pre">U_turn_on_edge</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT 5 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
 FROM  pgr_trsp_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -1060,7 +1060,7 @@ FROM  pgr_trsp_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Senast uppdaterad sep. 19, 2025.<br/>
+      Senast uppdaterad okt. 11, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

@@ -7,12 +7,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>发布说明 &#8212; pgRouting Manual (4.0-alpha1)</title>
+    <title>发布说明 &#8212; pgRouting Manual (4.0-beta1)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=73718347"></script>
+    <script src="_static/documentation_options.js?v=7efe9faa"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
@@ -495,6 +495,21 @@ default</p></li>
 <li><p>组合签名已升级为正式版本。</p></li>
 </ul>
 </li>
+<li><p>pgr_dijkstraNear</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+</ul>
+</li>
+<li><p>pgr_dijkstraNearCost</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+</ul>
+</li>
+<li><p>pgr_dijkstraVia</p>
+<ul class="simple">
+<li><p>函数正式发布。</p></li>
+</ul>
+</li>
 <li><p>pgr_edgeColoring</p>
 <ul class="simple">
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">color)</span></code></p></li>
@@ -503,6 +518,7 @@ default</p></li>
 <li><p>pgr_edgeDisjointPaths</p>
 <ul class="simple">
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>组合签名已升级为正式版本。</p></li>
 </ul>
 </li>
 <li><p>pgr_edmondsKarp</p>
@@ -537,6 +553,15 @@ default</p></li>
 <li><p>所有签名均已升级为正式版本。</p></li>
 </ul>
 </li>
+<li><p>pgr_maxCardinalityMatch</p>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_maxCardinalityMatch(text,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>pgr_maxFlow</p>
 <ul class="simple">
 <li><p>组合签名已升级为正式版本。</p></li>
@@ -547,14 +572,14 @@ default</p></li>
 <li><p>组合签名已升级为正式版本。</p></li>
 </ul>
 </li>
-<li><p>pgr_sloanOrdering</p>
-<ul class="simple">
-<li><p>新实验性功能。</p></li>
-</ul>
-</li>
 <li><p>pgr_sequentialVertexColoring</p>
 <ul class="simple">
 <li><p>Output columns standardized to <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">color)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_sloanOrdering</p>
+<ul class="simple">
+<li><p>新实验性功能。</p></li>
 </ul>
 </li>
 <li><p>pgr_topologicalSort</p>
@@ -623,6 +648,33 @@ default</p></li>
 <li><p>pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)</p></li>
 <li><p>pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)</p></li>
 <li><p>pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_TSP</p>
+<ul class="simple">
+<li><p>Results change depending on input order</p></li>
+<li><p>Only for undirected graphs</p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double
+precision,double precision,double precision,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_TSPeuclidean</p>
+<ul class="simple">
+<li><p>Results change depending on input order</p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,
+integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </li>
 </ul>
@@ -738,6 +790,7 @@ default</p></li>
 <h5><a class="toc-backref" href="#id27" role="doc-backlink">正式版功能函数</a><a class="headerlink" href="#functions-promoted-to-official" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>: pgr_trsp</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>: pgr_trsp</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>: pgr_trspVia</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>: pgr_trspVia_withPoints</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>: pgr_trsp_withPoints</p></li>
@@ -747,6 +800,9 @@ default</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2700">#2700</a>: pgr_withPointsDD</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2700">#2700</a>: pgr_withPointsKSP</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2700">#2700</a>: pgr_withPointsVia</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2983">#2983</a>: pgr_dijkstraNear</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2983">#2983</a>: pgr_dijkstraNearCost</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2983">#2983</a>: pgr_dijkstraVia</p></li>
 </ul>
 </section>
 <section id="signatures-promoted-to-official">
@@ -3137,7 +3193,7 @@ WHERE clause</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      最后更新于 9月 19, 2025.<br/>
+      最后更新于 10月 11, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
