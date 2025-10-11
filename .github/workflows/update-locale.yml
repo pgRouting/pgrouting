@@ -66,6 +66,7 @@ jobs:
             python3-sphinx \
             python3-sphinx-bootstrap-theme \
             sphinx-intl \
+            gettext \
             postgresql-${PGVER} \
             postgresql-server-dev-${PGVER} \
             graphviz

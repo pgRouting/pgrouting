@@ -10,7 +10,7 @@
 .. index::
    single: Dijkstra Family ; pgr_dijkstraVia
    single: Via Category ; pgr_dijkstraVia
-   single: dijkstraVia - Proposed
+   single: dijkstraVia
 
 |
 
@@ -25,9 +25,13 @@
 
 .. rubric:: Availability
 
-* Version 2.2.0
+.. rubric:: Version 4.0.0
 
-  * New proposed function.
+* Function promoted to official.
+
+.. rubric:: Version 2.2.0
+
+* New proposed function.
 
 Description
 -------------------------------------------------------------------------------

@@ -5,8 +5,8 @@ SET
 /* -- q1 */
 SELECT pgr_version();
  pgr_version
---------------
- 4.0.0-alpha1
+-------------
+ 4.0.0-beta1
 (1 row)
 
 /* -- q2 */

@@ -9,25 +9,25 @@
 
 |
 
-Chinese Postman Problem - Family of functions (Experimental)
+Chinese Postman Problem - Family of functions
 ===============================================================================
 
-.. official-start
+.. include:: experimental.rst
+   :start-after: warning-begin
+   :end-before: end-warning
+
+.. experimental-start
 
 * :doc:`pgr_chinesePostman`
 * :doc:`pgr_chinesePostmanCost`
 
-.. official-end
+.. experimental-end
 
 .. toctree::
   :hidden:
 
   pgr_chinesePostman
   pgr_chinesePostmanCost
-
-.. include:: experimental.rst
-   :start-after: warning-begin
-   :end-before: end-warning
 
 Description
 -------------------------------------------------------------------------------

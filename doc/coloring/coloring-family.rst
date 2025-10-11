@@ -29,13 +29,13 @@ Coloring - Family of functions
    :start-after: warning-begin
    :end-before: end-warning
 
-.. official-start
+.. experimental-start
 
 * :doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring
   approach.
 * :doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem.
 
-.. official-end
+.. experimental-end
 
 
 .. toctree::

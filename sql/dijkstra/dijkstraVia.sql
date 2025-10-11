@@ -56,7 +56,6 @@ COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 COMMENT ON FUNCTION pgr_dijkstraVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_dijkstraVia
-- PROPOSED
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - ARRAY[via vertices identifiers]
