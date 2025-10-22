@@ -59,7 +59,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_SHARED_MODULE_SUFFIX_CXX=.dylib -DWITH_DOC=OFF ..
 
       - name: Build
         run: |
