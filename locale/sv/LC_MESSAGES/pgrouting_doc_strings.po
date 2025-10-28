@@ -4,7 +4,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2025.
 # Daniel Nylander <daniel@danielnylander.se>, 2025.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.0\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-10-08 19:15+0000\nPO-Revision-Date: 2025-10-15 05:47+0000\nLast-Translator: Daniel Nylander <daniel@danielnylander.se>\nLanguage-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\n"
+msgstr "Project-Id-Version: pgRouting v4.0\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-10-08 19:15+0000\nPO-Revision-Date: 2025-10-28 19:52+0000\nLast-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\nLanguage-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Kategori"
@@ -4343,7 +4343,7 @@ msgid "Documentation output location: ``build/doc/_build/<format>``"
 msgstr "Plats för dokumentationsutdata: ``build/doc/_build/<format>``"
 
 msgid "For example: for HTML output is on `build/doc/_build/html` directory"
-msgstr "Till exempel: för HTML-utdata i katalogen `build/doc/_build/html"
+msgstr "Till exempel: för HTML-utdata i katalogen `build/doc/_build/html`"
 
 msgid "Developers' Documentation is not built when"
 msgstr "Dokumentation för utvecklare byggs inte när"
