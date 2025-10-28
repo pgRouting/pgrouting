@@ -32,7 +32,7 @@ include(pgr/BuildType)
 
 project(PGROUTING VERSION 4.0.0
     LANGUAGES C CXX )
-set(PROJECT_VERSION_DEV "-beta1")
+set(PROJECT_VERSION_DEV "-rc1")
 string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
 
 include(pgr/GitInfo)
