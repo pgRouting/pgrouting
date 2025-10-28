@@ -7,21 +7,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024, 2025.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024, 2025.
 msgid ""
-msgstr ""
-"Project-Id-Version: pgRouting v3.8\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-08 19:15+0000\n"
-"PO-Revision-Date: 2025-10-08 16:47+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"pgrouting-develop/es/>\n"
-"Language: es\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4.3\n"
-"Generated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v3.8\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-10-08 19:15+0000\nPO-Revision-Date: 2025-10-10 21:42+0000\nLast-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Categoría"
@@ -484,10 +470,7 @@ msgid ""
 "The table has an identifier, which maybe is needed for the administration of "
 "the restrictions, but the algorithms do not need that information. If given "
 "it will be ignored."
-msgstr ""
-"La tabla tiene un identificador, lo cual pueda ser necesaria para la "
-"administración de las restricciones, pero el algoritmo no necesita esa "
-"información. Si se le da, será ignorada."
+msgstr "La tabla tiene un identificador, el cual pueda ser necesario para la administración de las restricciones, pero el algoritmo no necesita esa información. Si se le da, será ignorada."
 
 msgid "Restrictions SQL"
 msgstr "SQL restricciones"
@@ -2774,7 +2757,6 @@ msgstr ""
 "Para grandes grafos donde hay un camino entre el vértice inicial y el "
 "vértice final:"
 
-#, fuzzy
 msgid "It is expected to terminate faster than :doc:`pgr_aStar`"
 msgstr "Se espera que termine más rápido que :doc:`pgr_aStar`"
 
@@ -2876,16 +2858,14 @@ msgstr ""
 "Para grandes gráficos donde hay un camino entre el vértice inicial y el "
 "vértice final:"
 
-#, fuzzy
 msgid "It is expected to terminate faster than :doc:`pgr_dijkstra`"
-msgstr "Se espera que termine más rápido que pgr_dijkstra"
+msgstr "Se espera que termine más rápido que :doc:`pgr_dijkstra`"
 
 msgid "`Boost  <https://www.boost.org/libs/graph/doc>`__"
 msgstr "`Boost <https://www.boost.org/libs/graph/doc>`__"
 
-#, fuzzy
 msgid "Chinese Postman Problem - Family of functions"
-msgstr "Chinese Postman Problem - Familia de funciones (Experimental)"
+msgstr "Problema del Cartero Chino - Familia de funciones"
 
 msgid ":doc:`pgr_chinesePostman`"
 msgstr ":doc:`pgr_chinesePostman`"
@@ -4576,9 +4556,8 @@ msgstr "pgr_KSP"
 msgid "All signatures promoted to official."
 msgstr "Todas las firmas promovidas a oficial."
 
-#, fuzzy
 msgid "pgr_maxCardinalityMatch"
-msgstr "pgr_maxCardinalityMatching"
+msgstr "pgr_maxCardinalityMatch"
 
 msgid "pgr_maxCardinalityMatch(text,boolean)"
 msgstr "pgr_maxCardinalityMatch(text,boolean)"
@@ -4697,9 +4676,8 @@ msgstr ""
 "pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double "
 "precision,double precision,double precision,boolean)"
 
-#, fuzzy
 msgid "pgr_TSPeuclidean"
-msgstr "``pgr_TSPeuclidean``"
+msgstr "pgr_TSPeuclidean"
 
 msgid ""
 "pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, "
@@ -4866,28 +4844,20 @@ msgstr ""
 "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: "
 "pgr_withPointsVia"
 
-#, fuzzy
 msgid ""
 "`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: "
 "pgr_dijkstraNear"
-msgstr ""
-"`#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__: "
-"pgr_bdDijkstra"
+msgstr "`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: pgr_dijkstraNear"
 
-#, fuzzy
 msgid ""
 "`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: "
 "pgr_dijkstraNearCost"
-msgstr ""
-"`#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__: "
-"pgr_bdDijkstra"
+msgstr "`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: pgr_dijkstraNearCost"
 
-#, fuzzy
 msgid ""
 "`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: "
 "pgr_dijkstraVia"
-msgstr ""
-"`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trspVia"
+msgstr "`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: pgr_dijkstraVia"
 
 msgid "Signatures promoted to official"
 msgstr "Firmas promovidas a oficial"
@@ -6246,9 +6216,8 @@ msgid ""
 "pgRouting"
 msgstr ""
 
-#, fuzzy
 msgid "New output columns are |matrix-result|"
-msgstr "Columnas de resultados eran |ksp-result|"
+msgstr "Las nuevas columnas de salida son |matrix-result|"
 
 msgid ""
 "To get the old version column names: rename ``start_vid`` to ``start_pid`` "
@@ -6258,9 +6227,8 @@ msgstr ""
 msgid "Examples"
 msgstr "Ejemplos"
 
-#, fuzzy
 msgid "Examples for One to One for cost functions"
-msgstr "Columnas de resultados de las funciones de costes"
+msgstr "Ejemplos de uno a uno para funciones de coste"
 
 msgid "Using ``pgr_withPointsCost``"
 msgstr "Usando ``pgr_withPointsCost``"
