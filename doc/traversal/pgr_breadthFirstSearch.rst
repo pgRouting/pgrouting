@@ -10,7 +10,7 @@
 .. index::
    single: Traversal Family ; pgr_breadthFirstSearch - Experimental
    single: Breadth First Search Category ; pgr_breadthFirstSearch - Experimental
-   single: breadthFirstSearch - Experimental
+   single: breadthFirstSearch - Experimental on v3.0
 
 |
 
@@ -64,7 +64,7 @@ Signatures
    | Returns set of |result-spantree|
 
 .. index::
-    single: breadthFirstSearch - Experimental ; Single vertex - Experimental on v3.0
+    single: breadthFirstSearch - Experimental on v3.0 ; Single vertex - Experimental on v3.0
 
 Single vertex
 ...............................................................................
@@ -85,7 +85,7 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: breadthFirstSearch - Experimental ; Multiple vertices - Experimental on v3.0
+    single: breadthFirstSearch - Experimental on v3.0 ; Multiple vertices - Experimental on v3.0
 
 Multiple vertices
 ...............................................................................

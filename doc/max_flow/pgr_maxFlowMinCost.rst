@@ -9,7 +9,7 @@
 
 .. index::
    single: Flow Family ; pgr_maxFlowMinCost - Experimental
-   single: maxFlowMinCost - Experimental
+   single: maxFlowMinCost - Experimental on v3.0
 
 |
 
@@ -76,7 +76,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: maxFlowMinCost - Experimental ; One to One - Experimental on v3.0
+    single: maxFlowMinCost - Experimental on v3.0 ; One to One - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -96,7 +96,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: maxFlowMinCost - Experimental ; One to Many - Experimental on v3.0
+    single: maxFlowMinCost - Experimental on v3.0 ; One to Many - Experimental on v3.0
 
 One to Many
 ...............................................................................
@@ -136,7 +136,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: maxFlowMinCost - Experimental ; Many to Many - Experimental on v3.0
+    single: maxFlowMinCost - Experimental on v3.0 ; Many to Many - Experimental on v3.0
 
 Many to Many
 ...............................................................................
@@ -156,7 +156,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: maxFlowMinCost - Experimental ; Combinations -- Experimental on v3.2
+    single: maxFlowMinCost - Experimental on v3.0 ; Combinations -- Experimental on v3.2
 
 Combinations
 ...............................................................................

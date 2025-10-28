@@ -9,11 +9,11 @@
 
 .. index::
    single: Shortest Path Category; pgr_bellmanFord - Experimental
-   single: bellmanFord - Experimental
+   single: bellmanFord - Experimental on v3.0
 
 |
 
-``pgr_bellmanFord - Experimental``
+``pgr_bellmanFord`` - Experimental
 ===============================================================================
 
 ``pgr_bellmanFord`` — Shortest path using Bellman-Ford algorithm.
