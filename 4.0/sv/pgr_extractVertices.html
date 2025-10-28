@@ -322,7 +322,7 @@
 <li><p>Ignorerade kolumner:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">startpunkt</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">slutpunkt</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">endpoint</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Källa</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mål</span></code></p></li>
 </ul>
@@ -348,7 +348,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">POINT</span></code></p></td>
 <td><p>POINT Geometri för startvertexen.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">slutpunkt</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">endpoint</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">POINT</span></code></p></td>
 <td><p>POINT Geometri för den avslutande vertexen.</p></td>
 </tr>
@@ -380,11 +380,11 @@
 <td><p>(Valfritt) identifierare för kanten.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Källa</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-TAL</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
 <td><p>Identifierare för den första slutpunktsvertexen på kanten.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mål</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-TAL</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
 <td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
 </tr>
 </tbody>
@@ -407,15 +407,15 @@
 <td><p>Identifierare för toppunkt</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">in_edges</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]`</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
 <td><p>Array med identifierare för de kanter som har toppunkten <code class="docutils literal notranslate"><span class="pre">id</span></code> som <em>första slutpunkt</em>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> När <code class="docutils literal notranslate"><span class="pre">id</span></code> inte är en del av den inre frågan</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ut_kanter</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]`</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">out_edges</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
 <td><p>Array med identifierare för de kanter som har toppunkten <code class="docutils literal notranslate"><span class="pre">id</span></code> som <em>andra slutpunkt</em>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> När <code class="docutils literal notranslate"><span class="pre">id</span></code> inte är en del av den inre frågan</p></li>
@@ -672,7 +672,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Senast uppdaterad okt. 15, 2025.<br/>
+      Senast uppdaterad okt. 28, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

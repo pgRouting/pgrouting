@@ -256,7 +256,7 @@ must value <span class="math notranslate nohighlight">\(\infty\)</span>.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">Kanter SQL</a> enligt beskrivningen nedan</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>starta videor</strong></p></td>
+<tr class="row-odd"><td><p><strong>start vids</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Array med identifierare för startpunkter.</p></td>
 </tr>
@@ -282,7 +282,7 @@ must value <span class="math notranslate nohighlight">\(\infty\)</span>.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#points-sql">Points SQL</a> enligt beskrivningen nedan</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>starta videor</strong></p></td>
+<tr class="row-even"><td><p><strong>start vids</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Array med identifierare för startpunkter.</p></td>
 </tr>
@@ -299,7 +299,7 @@ must value <span class="math notranslate nohighlight">\(\infty\)</span>.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">riktad</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
@@ -352,12 +352,12 @@ must value <span class="math notranslate nohighlight">\(\infty\)</span>.</p>
 <td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">omvända_kostnader</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">mål</span></code>, <code class="docutils literal notranslate"><span class="pre">källa</span></code>)</p>
 <ul class="simple">
@@ -405,13 +405,13 @@ must value <span class="math notranslate nohighlight">\(\infty\)</span>.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Kedge_id</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
 <td><p>Identifierar den kant som ligger ”närmast” punkten.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraktion</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
 <td><p>Värde i &lt;0,1&gt; som anger den relativa positionen från kantens första ändpunkt.</p></td>
 </tr>
@@ -459,7 +459,7 @@ must value <span class="math notranslate nohighlight">\(\infty\)</span>.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för startvertexen.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">slut_vid</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för det avslutande toppunktet.</p></td>
 </tr>
@@ -496,7 +496,7 @@ must value <span class="math notranslate nohighlight">\(\infty\)</span>.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Senast uppdaterad okt. 15, 2025.<br/>
+      Senast uppdaterad okt. 28, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

@@ -654,7 +654,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>)</p></td>
 </tr>
 </tbody>
@@ -815,7 +815,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <div><p>Förbered grafen</p>
 </div></blockquote>
 <p>Vad och hur du ska förbereda grafen beror på applikationen och/eller på datakvaliteten och/eller på hur nära informationen är en topologi som kan användas av pgRouting och/eller på andra faktorer som inte nämns.</p>
-<p>Stegen för att förbereda grafen involverar geometriska operationer med hjälp av <a class="reference external" href="https://postgis.net/">PostGIS</a> och vissa andra involverar grafoperationer som <a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_kontraktion</span></a> för att dra ihop en graf.</p>
+<p>Stegen för att förbereda grafen involverar geometriska operationer med hjälp av <a class="reference external" href="https://postgis.net/">PostGIS</a> och vissa andra involverar grafoperationer som <a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a> för att dra ihop en graf.</p>
 <p>I workshopen &lt;<a class="reference external" href="https://workshop.pgrouting.org/latest">https://workshop.pgrouting.org/latest</a>&gt;`__ finns en steg-för-stegbeskrivning av hur man skapar en graf med hjälp av Open Street Map-data för en liten applikation.</p>
 <p>Användningen av index på databasdesignen i allmänhet:</p>
 <ul class="simple">
@@ -1555,7 +1555,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p>Till exempel, för denna <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> signatur:</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>slut vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 </div>
 <ul class="simple">
 <li><p><a class="reference internal" href="#edges-sql">Kanter SQL</a>:</p>
@@ -1566,21 +1566,21 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <li><p>Den har inget namn, så <strong>Edges SQL</strong> ger en uppfattning om vilken typ av inre fråga som måste användas</p></li>
 </ul>
 </li>
-<li><p><strong>starta video</strong>:</p>
+<li><p><strong>start vid</strong>:</p>
 <ul>
 <li><p>Är den andra parametern.</p></li>
 <li><p>Det är obligatoriskt.</p></li>
 <li><p>Den har inget namn, så <strong>start vid</strong> ger en uppfattning om vad den andra parameterns värde ska innehålla.</p></li>
 </ul>
 </li>
-<li><p><strong>sluta vid</strong></p>
+<li><p><strong>end vid</strong></p>
 <ul>
 <li><p>Är den tredje parametern.</p></li>
 <li><p>Det är obligatoriskt.</p></li>
 <li><p>Den har inget namn, så <strong>slut vid</strong> ger en uppfattning om vad den tredje parameterns värde ska innehålla</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">riktad</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p>
 <ul>
 <li><p>Är den fjärde parametern.</p></li>
 <li><p>Det är valfritt.</p></li>
@@ -1602,7 +1602,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </ul>
 <p>Beroende på överbelastningen ändras parametertyperna.</p>
 <ul class="simple">
-<li><p><strong>Ett</strong>: <strong>ANY-INTEGER</strong></p></li>
+<li><p><strong>One</strong>: <strong>ANY-INTEGER</strong></p></li>
 <li><p><strong>Många</strong>: <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></li>
 </ul>
 <p>Beroende på funktion kan överbelastningarna variera. Men konceptet med ändring av parametertyp förblir detsamma.</p>
@@ -1722,12 +1722,12 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">omvända_kostnader</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">mål</span></code>, <code class="docutils literal notranslate"><span class="pre">källa</span></code>)</p>
 <ul class="simple">
@@ -1779,12 +1779,12 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">omvända_kostnader</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">mål</span></code>, <code class="docutils literal notranslate"><span class="pre">källa</span></code>)</p>
 <ul class="simple">
@@ -1842,7 +1842,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>)</p>
 <ul class="simple">
@@ -1851,7 +1851,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">omvända_kostnader</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">mål</span></code>, <code class="docutils literal notranslate"><span class="pre">källa</span></code>),</p>
 <ul class="simple">
@@ -1860,22 +1860,22 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x1</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
 <td><p>X-koordinat för <code class="docutils literal notranslate"><span class="pre">källans</span></code> toppunkt.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y1</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
 <td><p>Y-koordinat för <code class="docutils literal notranslate"><span class="pre">källans</span></code> toppunkt.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x2</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
 <td><p>X-koordinat för <code class="docutils literal notranslate"><span class="pre">mål</span></code> vertex.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y2</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
 <td><p>Y-koordinat för ”målets” toppunkt.</p></td>
 </tr>
@@ -1930,7 +1930,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td></td>
 <td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Kapacitet</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>)</p></td>
@@ -1990,7 +1990,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td></td>
 <td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Kapacitet</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
 <td><p>Kapacitet för kanten (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>)</p>
@@ -2009,12 +2009,12 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
 <td><p>Vikt för kanten (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>) om den finns</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">omvända_kostnader</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
 <td><p>Vikt för kanten (<code class="docutils literal notranslate"><span class="pre">mål</span></code>, <code class="docutils literal notranslate"><span class="pre">källa</span></code>) om den finns</p></td>
 </tr>
@@ -2079,12 +2079,12 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Sökväg</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
 <td><p>Sekvens av kantidentifierare som bildar en väg som inte är tillåten att ta. - Tomma arrayer eller <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrayer ignoreras. - Arrayer som har ett <code class="docutils literal notranslate"><span class="pre">NULL</span></code>-element kommer att ge upphov till ett undantag.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Kostnad</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>Kostnaden för att gå den förbjudna vägen.</p></td>
 </tr>
 </tbody>
@@ -2131,13 +2131,13 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Kedge_id</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
 <td><p>Identifierar den kant som ligger ”närmast” punkten.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraktion</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
 <td><p>Värde i &lt;0,1&gt; som anger den relativa positionen från kantens första ändpunkt.</p></td>
 </tr>
@@ -2209,12 +2209,12 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td></td>
 <td><p>SQL-fråga enligt beskrivning.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>via toppar</strong></p></td>
+<tr class="row-odd"><td><p><strong>via hörnpunkter</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
 <td></td>
 <td><p>Array av ordnade toppunktsidentifierare som kommer att besökas.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">riktad</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
@@ -2274,19 +2274,19 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> enligt beskrivningen nedan</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>starta vid</strong></p></td>
+<tr class="row-odd"><td><p><strong>start vid</strong></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td><p>Identifierare för avgångsvertexen.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>starta videor</strong></p></td>
+<tr class="row-even"><td><p><strong>start vids</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
 <td><p>Array med identifierare för målpunkter.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>sluta vid</strong></p></td>
+<tr class="row-odd"><td><p><strong>end vid</strong></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td><p>Identifierare för avgångsvertexen.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>sluta vids</strong></p></td>
+<tr class="row-even"><td><p><strong>end vids</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
 <td><p>Array med identifierare för målpunkter.</p></td>
 </tr>
@@ -2347,7 +2347,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Sekventiellt värde med början från <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">väg_seq</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Relativ position i tågläget. Har värdet <strong>1</strong> för början av ett tågläge.</p></td>
 </tr>
@@ -2355,15 +2355,15 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierar startpunkten för den aktuella banan.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">slut_vid</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för den aktuella banans slutpunkt.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nod</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare av noden i sökvägen från <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">slut_vid</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kant</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare av den kant som används för att gå från <code class="docutils literal notranslate"><span class="pre">node</span></code> till nästa nod i sökvägssekvensen. <strong>-1</strong> för den sista noden i sökvägen.</p></td>
 </tr>
@@ -2408,7 +2408,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Sekventiellt värde med början från <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Sökväg_id</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Identifierare för sökväg.</p>
 <ul class="simple">
@@ -2416,7 +2416,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">väg_seq</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Relativ position i tågläget. Har värdet <strong>1</strong> för början av ett tågläge.</p></td>
 </tr>
@@ -2424,15 +2424,15 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för startvertexen.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">slut_vid</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för det avslutande toppunktet.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nod</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare av noden i sökvägen från <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">slut_vid</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kant</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare av den kant som används för att gå från <code class="docutils literal notranslate"><span class="pre">node</span></code> till nästa nod i sökvägssekvensen. <strong>-1</strong> för den sista noden i sökvägen.</p></td>
 </tr>
@@ -2477,7 +2477,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för startvertexen.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">slut_vid</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för det avslutande toppunktet.</p></td>
 </tr>
@@ -2510,7 +2510,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
 <td><p>Sekventiellt värde med början från <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>kant</strong></p></td>
+<tr class="row-odd"><td><p><strong>edge</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare av kanten i den ursprungliga frågan (edges_sql).</p></td>
 </tr>
@@ -2518,11 +2518,11 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för den första slutpunktsvertexen på kanten.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>slut_vid</strong></p></td>
+<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>flöde</strong></p></td>
+<tr class="row-even"><td><p><strong>flow</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Flöde genom kanten i riktning (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">slut_vid</span></code>).</p></td>
 </tr>
@@ -2548,7 +2548,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
 <td><p>Sekventiellt värde med början från <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>kant</strong></p></td>
+<tr class="row-odd"><td><p><strong>edge</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare av kanten i den ursprungliga frågan (edges_sql).</p></td>
 </tr>
@@ -2556,11 +2556,11 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för den första slutpunktsvertexen på kanten.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>målgrupp</strong></p></td>
+<tr class="row-odd"><td><p><strong>mål</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>flöde</strong></p></td>
+<tr class="row-even"><td><p><strong>flow</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Flöde genom kanten i riktning (källa, mål).</p></td>
 </tr>
@@ -2568,11 +2568,11 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Restkapacitet för kanten i riktningen (källa, mål).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>kostnad</strong></p></td>
+<tr class="row-even"><td><p><strong>cost</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Kostnaden för att skicka detta flöde genom kanten i riktningen (källa, mål).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>agg_kostnad</strong></p></td>
+<tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Den sammanlagda kostnaden.</p></td>
 </tr>
@@ -2607,7 +2607,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Sekventiellt värde med början från <span class="math notranslate nohighlight">\(1\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">djup</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">depth</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Djupet på <code class="docutils literal notranslate"><span class="pre">noden</span></code>.</p>
 <ul class="simple">
@@ -2628,11 +2628,11 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nod</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare av <code class="docutils literal notranslate"><span class="pre">nod</span></code> som nås med hjälp av <code class="docutils literal notranslate"><span class="pre">kant</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kant</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare av den <code class="docutils literal notranslate"><span class="pre">edge</span></code> som används för att komma från <code class="docutils literal notranslate"><span class="pre">pred</span></code> till <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
@@ -2667,7 +2667,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kant</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare av kanten.</p></td>
 </tr>
@@ -2769,7 +2769,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Senast uppdaterad okt. 15, 2025.<br/>
+      Senast uppdaterad okt. 28, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

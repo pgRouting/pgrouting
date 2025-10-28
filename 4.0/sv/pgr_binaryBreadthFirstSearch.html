@@ -162,7 +162,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_binaryBreadthFirstSearch</span></code> - Returnerar den kortaste vägen i en binär graf.</p>
 <p>En graf vars kantvikter tillhör uppsättningen {0,X}, där ”X” är ett icke-negativt heltal, kallas för en ”binär graf”.</p>
 <div class="admonition-experimental admonition">
-<p class="admonition-title">Experimental</p>
+<p class="admonition-title">Experiment</p>
 <div class="admonition warning">
 <p class="admonition-title">Varning</p>
 <p>Experimentella funktioner</p>
@@ -175,7 +175,7 @@
 <li><p>Signaturen kan komma att ändras.</p></li>
 <li><p>Funktionaliteten kan komma att ändras.</p></li>
 <li><p>pgTap-tester kan saknas.</p></li>
-<li><p>Might need c/c++ review.</p></li>
+<li><p>Kan behöva c/c++ granskning.</p></li>
 <li><p>Eventuell dokumentation kan behöva skrivas om.</p></li>
 <li><p>Det kan behövas mycket feedback från samhället.</p></li>
 </ul>
@@ -202,13 +202,7 @@
 </ul>
 <section id="description">
 <h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>It is well-known that the shortest paths between a single source and all other
-vertices can be found using Breadth First Search in <span class="math notranslate nohighlight">\(O(|E|)\)</span> in an
-unweighted graph, i.e. the distance is the minimal number of edges that you
-need to traverse from the source to another vertex. We can interpret such a
-graph also as a weighted graph, where every edge has the weight <span class="math notranslate nohighlight">\(1\)</span>.
-If not all edges in graph have the same weight, then we a more general
-algorithm is needed, like Dijkstra’s Algorithm which runs in <span class="math notranslate nohighlight">\(O(|E|log|V|)\)</span> time.</p>
+<p>Det är välkänt att de kortaste vägarna mellan en enda källa och alla andra toppar kan hittas med hjälp av Breadth First Search på <span class="math notranslate nohighlight">\(O(|E|)\)</span> i en oviktad graf, dvs. avståndet är det minsta antalet kanter som du behöver korsa från källan till en annan topp. Vi kan också tolka en sådan graf som en viktad graf, där varje kant har vikten <span class="math notranslate nohighlight">\(1\)</span>. Om inte alla kanter i grafen har samma vikt behövs en mer generell algoritm, som Dijkstras algoritm som går på <span class="math notranslate nohighlight">\(O(|E|log|V|)\)</span> tid.</p>
 <p>Men om vikterna är mer begränsade kan vi använda en snabbare algoritm. Den här algoritmen, som kallas ”Binary Breadth First Search” eller ”0-1 BFS”, är en variant av standardproblemet Breadth First Search för att lösa SSSP-problemet (kortaste vägen med en källa) på <span class="math notranslate nohighlight">\(O(|E|)\)</span>, om vikterna för varje kant tillhör uppsättningen {0,X}, där ”X” är ett icke-negativt heltal.</p>
 <p><strong>De viktigaste egenskaperna är:</strong></p>
 <ul class="simple">
@@ -230,10 +224,10 @@ algorithm is needed, like Dijkstra’s Algorithm which runs in <span class="math
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>slut vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>slut vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>slut vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>slut vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
@@ -247,7 +241,7 @@ algorithm is needed, like Dijkstra’s Algorithm which runs in <span class="math
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>slut vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">Returnerar uppsättning av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -280,7 +274,7 @@ algorithm is needed, like Dijkstra’s Algorithm which runs in <span class="math
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>slut vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">Returnerar uppsättning av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -318,7 +312,7 @@ algorithm is needed, like Dijkstra’s Algorithm which runs in <span class="math
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>slut vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">Returnerar uppsättning av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -356,7 +350,7 @@ algorithm is needed, like Dijkstra’s Algorithm which runs in <span class="math
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>slut vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">Returnerar uppsättning av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -473,19 +467,19 @@ algorithm is needed, like Dijkstra’s Algorithm which runs in <span class="math
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> enligt beskrivningen nedan</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>starta vid</strong></p></td>
+<tr class="row-even"><td><p><strong>start vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för stigens startvertex.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>starta videor</strong></p></td>
+<tr class="row-odd"><td><p><strong>start vids</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Array med identifierare för startpunkter.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>sluta vid</strong></p></td>
+<tr class="row-even"><td><p><strong>end vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för banans slutpunkt.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>sluta vids</strong></p></td>
+<tr class="row-odd"><td><p><strong>end vids</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Array med identifierare för slutpunkter.</p></td>
 </tr>
@@ -503,7 +497,7 @@ algorithm is needed, like Dijkstra’s Algorithm which runs in <span class="math
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">riktad</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
@@ -550,12 +544,12 @@ algorithm is needed, like Dijkstra’s Algorithm which runs in <span class="math
 <td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">omvända_kostnader</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">mål</span></code>, <code class="docutils literal notranslate"><span class="pre">källa</span></code>)</p>
 <ul class="simple">
@@ -628,7 +622,7 @@ algorithm is needed, like Dijkstra’s Algorithm which runs in <span class="math
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Sekventiellt värde med början från <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">väg_seq</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Relativ position i tågläget. Har värdet <strong>1</strong> för början av ett tågläge.</p></td>
 </tr>
@@ -636,15 +630,15 @@ algorithm is needed, like Dijkstra’s Algorithm which runs in <span class="math
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierar startpunkten för den aktuella banan.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">slut_vid</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för den aktuella banans slutpunkt.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nod</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare av noden i sökvägen från <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">slut_vid</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kant</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare av den kant som används för att gå från <code class="docutils literal notranslate"><span class="pre">node</span></code> till nästa nod i sökvägssekvensen. <strong>-1</strong> för den sista noden i sökvägen.</p></td>
 </tr>
@@ -718,7 +712,7 @@ algorithm is needed, like Dijkstra’s Algorithm which runs in <span class="math
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Senast uppdaterad okt. 15, 2025.<br/>
+      Senast uppdaterad okt. 28, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
