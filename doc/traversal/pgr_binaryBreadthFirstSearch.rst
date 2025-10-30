@@ -10,7 +10,7 @@
 .. index::
    single: Traversal Family ; pgr_binaryBreadthFirstSearch - Experimental
    single: Breadth First Search Category ; pgr_binaryBreadthFirstSearch - Experimental
-   single: binaryBreadthFirstSearch - Experimental
+   single: binaryBreadthFirstSearch - Experimental on v3.0
 
 |
 

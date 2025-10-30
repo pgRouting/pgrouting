@@ -9,7 +9,7 @@
 
 .. index::
    single: Shortest Path Category; pgr_edwardMoore - Experimental
-   single: edwardMoore - Experimental
+   single: edwardMoore - Experimental on v3.0
 
 |
 

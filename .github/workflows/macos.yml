@@ -52,13 +52,14 @@ jobs:
 
       - name: install deps
         run: |
-          brew install postgresql@14 postgis boost
+          brew install postgresql@17 postgis boost
+          brew link postgresql@17
 
       - name: Configure
         run: |
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_SHARED_MODULE_SUFFIX_CXX=.dylib -DWITH_DOC=OFF ..
 
       - name: Build
         run: |
@@ -78,7 +79,7 @@ jobs:
       - name: Test
         run: |
           export PATH=$(brew --prefix)/Cellar/perl/$(perl -e 'print substr($^V, 1)')/bin:$PATH
-          pg_ctl -D $(brew --prefix)/var/postgresql@14 start
+          pg_ctl -D $(brew --prefix)/var/postgresql@17 start
           createuser -s postgres
           createdb ___pgr___test___
           bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release

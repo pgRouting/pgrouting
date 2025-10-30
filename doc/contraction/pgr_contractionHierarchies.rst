@@ -11,7 +11,7 @@
 
 .. index::
    single: Contraction Family ; pgr_contractionHierarchies - Experimental
-   single: contractionHierarchies - Experimental
+   single: contractionHierarchies - Experimental on v3.8
 
 
 ``pgr_contractionHierarchies`` - Experimental
