@@ -7,12 +7,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_pickDeliver - Experimentell &#8212; pgRouting Manual (4.0-beta1)</title>
+    <title>pgr_pickDeliver - Experimentell &#8212; pgRouting Manual (4.0-rc1)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=0cd7dff1"></script>
+    <script src="_static/documentation_options.js?v=ee35ff5a"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
@@ -164,7 +164,7 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliver</span></code> - Experimentell<a class="headerlink" href="#pgr-pickdeliver-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliver</span></code> - Problem med ruttplanering för hämtning och leverans av fordon</p>
 <div class="admonition-experimental admonition">
-<p class="admonition-title">Experimental</p>
+<p class="admonition-title">Experiment</p>
 <div class="admonition warning">
 <p class="admonition-title">Varning</p>
 <p>Experimentella funktioner</p>
@@ -177,7 +177,7 @@
 <li><p>Signaturen kan komma att ändras.</p></li>
 <li><p>Funktionaliteten kan komma att ändras.</p></li>
 <li><p>pgTap-tester kan saknas.</p></li>
-<li><p>Might need c/c++ review.</p></li>
+<li><p>Kan behöva c/c++ granskning.</p></li>
 <li><p>Eventuell dokumentation kan behöva skrivas om.</p></li>
 <li><p>Det kan behövas mycket feedback från samhället.</p></li>
 </ul>
@@ -352,12 +352,12 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">faktor</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">factor</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code></p></td>
 <td><p>1</p></td>
 <td><p>Multiplikator för restid. Se <a class="reference internal" href="VRP-category.html#pd-factor"><span class="std std-ref">Faktorhantering</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_cykler</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_cycles</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>10</p></td>
 <td><p>Maximalt antal cykler som ska utföras på optimeringen.</p></td>
@@ -403,7 +403,7 @@
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
 <td><p>Identifierare för orderparet plockning-leverans.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">efterfrågan</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">demand</span></code></p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
 <td><p>Antal enheter i ordern</p></td>
 </tr>
@@ -499,7 +499,7 @@
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
 <td><p>Identifierare av fordonet.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Kapacitet</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
 <td><p>Enheter med maximal kapacitet</p></td>
 </tr>
@@ -655,7 +655,7 @@
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p>beställning_id</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">order_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifierare för orderparet hämtning-leverans.</p>
 <ul class="simple">
@@ -663,7 +663,7 @@
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p>”last</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cargo</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Fordonets lastenheter när det lämnar hållplatsen.</p>
 <ul class="simple">
@@ -716,7 +716,7 @@
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p>tidpunkt för avresa</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">departure_time</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><ul class="simple">
 <li><p>Den tidpunkt då fordonet avgår från hållplatsen.</p>
@@ -763,7 +763,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Senast uppdaterad okt. 11, 2025.<br/>
+      Senast uppdaterad okt. 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

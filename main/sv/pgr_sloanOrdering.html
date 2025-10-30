@@ -7,12 +7,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_sloanOrdering - Experimental &#8212; pgRouting Manual (4.0-beta1)</title>
+    <title>pgr_sloanOrdering - Experimentell &#8212; pgRouting Manual (4.0-rc1)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=0cd7dff1"></script>
+    <script src="_static/documentation_options.js?v=ee35ff5a"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
@@ -21,7 +21,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
-    <link rel="next" title="pgr_kingOrdering - Experimental" href="pgr_kingOrdering.html" />
+    <link rel="next" title="pgr_kingOrdering - Experimentell" href="pgr_kingOrdering.html" />
     <link rel="prev" title="pgr_topologicalSort - Experimentell" href="pgr_topologicalSort.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -97,7 +97,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_sloanOrdering</span></code> - Experimental</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_sloanOrdering</span></code> - Experimentell</a><ul>
 <li><a class="reference internal" href="#description">Beskrivning</a></li>
 <li><a class="reference internal" href="#signatures">Underskrifter</a></li>
 <li><a class="reference internal" href="#parameters">Parametrar</a></li>
@@ -122,7 +122,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_kingOrdering.html" title="Next Chapter: pgr_kingOrdering - Experimental"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_kingOrder... &raquo;</span>
+    <a href="pgr_kingOrdering.html" title="Next Chapter: pgr_kingOrdering - Experimentell"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_kingOrder... &raquo;</span>
     </a>
   </li>
               
@@ -158,10 +158,10 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-sloanordering-experimental">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_sloanOrdering</span></code> - Experimental<a class="headerlink" href="#pgr-sloanordering-experimental" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_sloanOrdering</span></code> — Returns the Sloan ordering of an undirected graph</p>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_sloanOrdering</span></code> - Experimentell<a class="headerlink" href="#pgr-sloanordering-experimental" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_sloanOrdering</span></code> - Returnerar Sloan-ordningen för en odränerad graf</p>
 <div class="admonition-experimental admonition">
-<p class="admonition-title">Experimental</p>
+<p class="admonition-title">Experiment</p>
 <div class="admonition warning">
 <p class="admonition-title">Varning</p>
 <p>Experimentella funktioner</p>
@@ -174,7 +174,7 @@
 <li><p>Signaturen kan komma att ändras.</p></li>
 <li><p>Funktionaliteten kan komma att ändras.</p></li>
 <li><p>pgTap-tester kan saknas.</p></li>
-<li><p>Might need c/c++ review.</p></li>
+<li><p>Kan behöva c/c++ granskning.</p></li>
 <li><p>Eventuell dokumentation kan behöva skrivas om.</p></li>
 <li><p>Det kan behövas mycket feedback från samhället.</p></li>
 </ul>
@@ -189,17 +189,14 @@
 </ul>
 <section id="description">
 <h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>The Sloan ordering algorithm reorders the vertices of a graph to reduce
-bandwidth, profile, and wavefront properties, which is particularly useful for
-sparse matrix computations and finite element analysis.</p>
+<p>Sloans ordningsalgoritm ordnar om topparna i en graf för att minska bandbredd, profil och vågfrontsegenskaper, vilket är särskilt användbart för glesa matrisberäkningar och finita elementanalyser.</p>
 <ul class="simple">
-<li><p>Finds a pseudoperipheral vertex pair to determine good starting points</p></li>
-<li><p>Uses a priority-based algorithm that balances vertex degree and distance from the start vertex.</p></li>
-<li><p>Aims to minimize bandwidth (maximum difference between connected vertex indices.</p></li>
+<li><p>Hittar ett pseudoperifert toppunktspar för att bestämma bra startpunkter</p></li>
+<li><p>Använder en prioritetsbaserad algoritm som balanserar vertexgrad och avstånd från startvertexet.</p></li>
+<li><p>Syftar till att minimera bandbredden (maximal skillnad mellan index för anslutna vertex).</p></li>
 <li><p>Implementationen är för undirected grafer</p></li>
-<li><p>Typically produces better orderings than simple breadth-first approaches.</p></li>
-<li><p>Time complexity: <span class="math notranslate nohighlight">\(O(V² + E)\)</span> where V is the number of vertices and E is
-the number of edges.</p></li>
+<li><p>Ger vanligtvis bättre ordningar än enkla bredd-först-metoder.</p></li>
+<li><p>Tidskomplexitet: <span class="math notranslate nohighlight">\(O(V² + E)\)</span> där V är antalet toppar och E är antalet kanter.</p></li>
 </ul>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost-graf inuti</p>
 </section>
@@ -215,7 +212,7 @@ the number of edges.</p></li>
 <div class="line">ELLER TOM UPPSÄTTNING</div>
 </div>
 </div>
-<p>:Example : Sloan ordering without specifying start vertex</p>
+<p>:Exempel : Sloan-order utan att ange startpunkt</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_sloanOrdering</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
   <span class="p">);</span>
@@ -295,12 +292,12 @@ the number of edges.</p></li>
 <td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">omvända_kostnader</span></code></p></td>
-<td><p><strong>ANY-NUMERISK</strong></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
 <td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">mål</span></code>, <code class="docutils literal notranslate"><span class="pre">källa</span></code>)</p>
 <ul class="simple">
@@ -336,16 +333,16 @@ the number of edges.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Ordningsföljd med början från 1.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nod</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>New sloan ordering order.</p></td>
+<td><p>Ny beställning av Sloan.</p></td>
 </tr>
 </tbody>
 </table>
 <p>Ytterligare exempel</p>
 <dl class="field-list simple">
 <dt class="field-odd">Exempel<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Sloan ordering of Original graph from Boost example (vertices 0-9).</p>
+<dd class="field-odd"><p>Sloan-ordning av originalgrafen från Boost-exemplet (toppar 0-9).</p>
 </dd>
 </dl>
 <div class="graphviz"><img src="_images/graphviz-9b0f7f6c7e490abc66dde20f79e3a6d4b71e32c9.png" alt="graph G{
@@ -416,7 +413,7 @@ edge[color=black, penwidth=1.5];
 <h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/sloan_ordering.htm">Boost: Sloan Ordering</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/sloan_ordering.htm">Boost: Sloan Beställning</a></p></li>
 </ul>
 <p class="rubric">Index och tabeller</p>
 <ul class="simple">
@@ -439,7 +436,7 @@ edge[color=black, penwidth=1.5];
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Senast uppdaterad okt. 11, 2025.<br/>
+      Senast uppdaterad okt. 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

@@ -7,12 +7,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Migrationsguide &#8212; pgRouting Manual (4.0-beta1)</title>
+    <title>Migrationsguide &#8212; pgRouting Manual (4.0-rc1)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=0cd7dff1"></script>
+    <script src="_static/documentation_options.js?v=ee35ff5a"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
@@ -401,7 +401,7 @@
 <td><p><a class="reference internal" href="#migration-of-single-path-functions">Migrering av funktioner med en enda sökväg</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_bellmanFord.html"><span class="doc">pgr_bellmanFord - Experimentell</span></a></p>
+<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_bellmanFord.html"><span class="doc">pgr_bellmanFord - Experimental</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-single-path-functions">Migrering av funktioner med en enda sökväg</a></p></td>
@@ -1826,18 +1826,17 @@ FROM pgr_drivingDistance(
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Observera</p>
-<p>Default value of <strong>driving side</strong> parameter</p>
-<p><strong>driving side</strong> parameter is unnamed, and valid values differ for
-directed and undirected graphs.</p>
+<p>Standardvärde för parametern <strong>förarsida</strong></p>
+<p><em>parametern *driving side*</em> är namnlös och giltiga värden skiljer sig åt för riktade och oriktade grafer.</p>
 <ul class="simple">
 <li><p>I riktad graf: giltiga värden är [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p>
 <ul>
-<li><p>Default value = ’r’;</p></li>
+<li><p>Standardvärde = ”r”;</p></li>
 </ul>
 </li>
 <li><p>I en oriktad graf: giltiga värden är [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p>
 <ul>
-<li><p>Default value = ’b’;</p></li>
+<li><p>Standardvärde = ”b”;</p></li>
 </ul>
 </li>
 </ul>
@@ -2087,7 +2086,7 @@ directed and undirected graphs.</p>
 <ul class="simple">
 <li><p>En alphaShape beräknades</p></li>
 </ul>
-<p><strong>Efter utfasning:</strong></p>
+<p><strong>After Deprecation:</strong></p>
 <p>PostGIS har två sätt att generera alphaShape.</p>
 <p>Om du har SFCGAL, som du kan installera med hjälp av</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">EXTENSION</span> <span class="n">postgis_sfcgal</span>
@@ -2274,7 +2273,7 @@ directed and undirected graphs.</p>
 <p>Istället för att bara räkna isolerade segment kan du bestämma alla komponenter i grafen.</p>
 <p>Beroende på de slutliga kraven för applikationen:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_anslutnaKomponenter</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_connectedComponents</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_strongComponents.html"><span class="doc">pgr_strongComponents</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents</span></a></p></li>
 </ul>
@@ -2307,7 +2306,7 @@ directed and undirected graphs.</p>
 </pre></div>
 </div>
 <p class="rubric">Dödlägen.</p>
-<p>I stället för att räkna återvändsgränderna kan du bestämma alla återvändsgränder i grafen med hjälp av <a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_grad</span></a>.</p>
+<p>I stället för att räkna återvändsgränderna kan du bestämma alla återvändsgränder i grafen med hjälp av <a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree</span></a>.</p>
 <p>Till exempel:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
 FROM pgr_degree($$SELECT id, source, target FROM edges$$)
@@ -2790,8 +2789,7 @@ FROM pgr_trspVia_withPoints(
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 </dd>
 </dl>
-<p>And <code class="docutils literal notranslate"><span class="pre">driving</span> <span class="pre">side</span></code> parameter changed from named optional to unnamed
-<strong>driving side</strong> and its validity differ for directed and undirected graphs.</p>
+<p>Och parametern <code class="docutils literal notranslate"><span class="pre">driving</span> <span class="pre">side</span></code> ändrades från namngiven valfri till icke namngiven <strong>driving side</strong> och dess giltighet skiljer sig åt för riktade och oriktade grafer.</p>
 <p>Signaturer som ska migreras:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>En till en</cite>)</p></li>
@@ -2817,18 +2815,17 @@ FROM pgr_trspVia_withPoints(
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Observera</p>
-<p>Default value of <strong>driving side</strong> parameter</p>
-<p><strong>driving side</strong> parameter is unnamed, and valid values differ for
-directed and undirected graphs.</p>
+<p>Standardvärde för parametern <strong>förarsida</strong></p>
+<p><em>parametern *driving side*</em> är namnlös och giltiga värden skiljer sig åt för riktade och oriktade grafer.</p>
 <ul class="simple">
 <li><p>I riktad graf: giltiga värden är [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>]</p>
 <ul>
-<li><p>Default value = ’r’;</p></li>
+<li><p>Standardvärde = ”r”;</p></li>
 </ul>
 </li>
 <li><p>I en oriktad graf: giltiga värden är [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>]</p>
 <ul>
-<li><p>Default value = ’b’;</p></li>
+<li><p>Standardvärde = ”b”;</p></li>
 </ul>
 </li>
 </ul>
@@ -3257,7 +3254,7 @@ WHERE edge != -1;
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Senast uppdaterad okt. 11, 2025.<br/>
+      Senast uppdaterad okt. 30, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
