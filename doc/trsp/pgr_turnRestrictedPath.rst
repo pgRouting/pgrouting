@@ -9,7 +9,7 @@
 
 .. index::
    single: Turn Restriction Shortest Path Family ; pgr_turnRestrictedPath - Experimental
-   single: Shortest Path Category ; pgr_turnRestrictedPath -Experimental
+   single: Shortest Path Category ; pgr_turnRestrictedPath - Experimental
    single: Restrictions Category ; pgr_turnRestrictedPath - Experimental
    single: turnRestrictedPath - Experimental on v3.0
 
