@@ -55,7 +55,7 @@ jobs:
         fail-fast: false
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: get postgres version
         run: |
