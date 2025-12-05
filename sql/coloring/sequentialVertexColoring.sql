@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
---3.2
+--v3.2
 CREATE FUNCTION pgr_sequentialVertexColoring(
     TEXT,    -- edges_sql (required)
 

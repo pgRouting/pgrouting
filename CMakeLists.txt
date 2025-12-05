@@ -30,9 +30,9 @@ include(pgr/BuildType)
 #---------------------------------------------
 #---------------------------------------------
 
-project(PGROUTING VERSION 4.0.0
+project(PGROUTING VERSION 4.1.0
     LANGUAGES C CXX )
-set(PROJECT_VERSION_DEV "")
+set(PROJECT_VERSION_DEV "-dev")
 string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
 
 include(pgr/GitInfo)
@@ -46,8 +46,9 @@ string(TIMESTAMP COMPILATION_DATE "%Y/%m/%d" UTC)
 # uncomment to show the NOTICE/WARNING of deprecated internal C functions
 # add_compile_definitions(SHOWMSG=1)
 
-set(MINORS 4.0 3.8 3.7 3.6 3.5 3.4 3.3 3.2 3.1 3.0 2.6)
+set(MINORS 4.1 4.0 3.8 3.7 3.6 3.5 3.4 3.3 3.2 3.1 3.0 2.6)
 set(OLD_SIGNATURES
+    4.0.0
     3.8.0
     3.7.3 3.7.2 3.7.1 3.7.0
     3.6.3 3.6.2 3.6.1 3.6.0

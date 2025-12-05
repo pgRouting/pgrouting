@@ -59,8 +59,8 @@ QUERIES_DIRS="dijkstra"
 TAP_DIRS="dijkstra"
 
 # To skip processing queries and tap tests
-QUERIES_DIRS=""
-TAP_DIRS=""
+#QUERIES_DIRS=""
+#TAP_DIRS=""
 
 function set_cmake {
     # inspect options

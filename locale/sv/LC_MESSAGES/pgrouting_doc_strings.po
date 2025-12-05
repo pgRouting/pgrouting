@@ -1,10 +1,10 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v4.0
+# Copyright (C) pgRouting Contributors - Version v4.1
 # This file is distributed under the same license as the pgRouting package.
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2025.
 # Daniel Nylander <daniel@danielnylander.se>, 2025.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.0\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-10-08 19:15+0000\nPO-Revision-Date: 2025-10-28 19:52+0000\nLast-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\nLanguage-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-10-08 19:15+0000\nPO-Revision-Date: 2025-10-28 19:52+0000\nLast-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\nLanguage-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Kategori"
