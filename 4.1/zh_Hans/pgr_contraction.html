@@ -1,0 +1,836 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_contraction &#8212; pgRouting Manual (4.1-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=11382bef"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=1fc9dd11"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="pgr_contractionDeadEnd - 提议中" href="pgr_contractionDeadEnd.html" />
+    <link rel="prev" title="收缩 - 函数族" href="contraction-family.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.1</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contraction</span></code></a><ul>
+<li><a class="reference internal" href="#description">描述</a></li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a><ul>
+<li><a class="reference internal" href="#optional-parameters">可选参数</a></li>
+<li><a class="reference internal" href="#contraction-optional-parameters">可选收缩参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
+<li><a class="reference internal" href="#only-dead-end-contraction">仅死端收缩</a></li>
+<li><a class="reference internal" href="#only-linear-contraction">仅线性收缩</a></li>
+<li><a class="reference internal" href="#the-cycle">循环</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contracting-sample-data">收缩示例数据</a><ul>
+<li><a class="reference internal" href="#construction-of-the-graph-in-the-database">数据库中图的构建</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-process-to-create-the-contraction-graph-on-the-database">在数据库上创建收缩图的过程：</a><ul>
+<li><a class="reference internal" href="#add-additional-columns">添加附加列</a></li>
+<li><a class="reference internal" href="#store-contraction-information">存储收缩信息</a></li>
+<li><a class="reference internal" href="#update-the-edges-and-vertices-tables">更新边线与顶点表</a></li>
+<li><a class="reference internal" href="#the-contracted-graph">收缩图</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-the-contracted-graph">使用收缩图</a></li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="contraction-family.html" title="Previous Chapter: 收缩 - 函数族"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 收缩 - 函数族</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_contractionDeadEnd.html" title="Next Chapter: pgr_contractionDeadEnd - 提议中"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_contraction','zh-Hans'));  </script>
+            
+  <div class="line-block" id="index-0">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-contraction">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_contraction</span></code><a class="headerlink" href="#pgr-contraction" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_contraction</span></code> — 执行图收缩操作并返回收缩后的顶点和边。</p>
+<p class="rubric">可用性</p>
+<p class="rubric">Version 4.0.0</p>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Version 3.8.0</p>
+<ul class="simple">
+<li><p>新签名：</p>
+<ul>
+<li><p>之前必需的参数 <strong>Contraction order</strong> 现在已变为可选参数，并更名为 <code class="docutils literal notranslate"><span class="pre">methods</span></code> 。</p></li>
+<li><p>可选参数的新名称和顺序。</p></li>
+</ul>
+</li>
+<li><p>已弃用签名 pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+</ul>
+<p class="rubric">版本3.0.0</p>
+<ul class="simple">
+<li><p>结果列更改：删除了 <code class="docutils literal notranslate"><span class="pre">seq</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_contractGraph</span></code> 的名称更改</p></li>
+<li><p>Bug修复</p></li>
+<li><p>函数正式发布。</p></li>
+</ul>
+<p class="rubric">版本2.3.0</p>
+<ul class="simple">
+<li><p>新实验性功能。</p></li>
+</ul>
+<section id="description">
+<h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>收缩通过移除部分顶点和边来减小图的大小，例如，可以添加代表原始边序列的边，从而减少图算法所用的总时间和空间。</p>
+<p>主要特点是：</p>
+<ul class="simple">
+<li><p>仅在具有正成本的边进行处理。</p></li>
+<li><p>不返回完整的收缩图。</p>
+<ul>
+<li><p>仅返回图中的变更部分。</p></li>
+</ul>
+</li>
+<li><p>返回值包括：</p>
+<ul>
+<li><p>线性收缩生成的新边线集。</p></li>
+<li><p>断头节点收缩生成的修改后顶点集。</p></li>
+</ul>
+</li>
+<li><p>返回值的排序如下：</p>
+<ul>
+<li><p>列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 升序排列。</p></li>
+<li><p>列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 中的负数，当它是一条新边时，负数依次递减。</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>目前，该功能包含两种收缩方法：</p>
+<ul>
+<li><p>死角收缩。参考 <a class="reference internal" href="pgr_contractionDeadEnd.html"><span class="doc">pgr_contractionDeadEnd - 提议中</span></a>。</p></li>
+<li><p>线性收缩。参考 <a class="reference internal" href="pgr_contractionLinear.html"><span class="doc">pgr_contractionLinear - 提议中</span></a>。</p></li>
+</ul>
+</li>
+</ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+</section>
+<section id="signatures">
+<h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_contraction(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<strong>options</strong>])</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">methods,</span> <span class="pre">cycles,</span> <span class="pre">forbidden]</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost)</span></code></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">示例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>在无向图上依次执行断头节点收缩与线性收缩。</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="o">------+----+---------------------+--------+--------+------</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">}</span>                 <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>               <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">14</span> <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">}</span>                <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>               <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">}</span>               <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">15</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span>
+<span class="p">(</span><span class="mi">7</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>参数<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>参数</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> 如下所述。</p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>可选参数<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="contraction-optional-parameters">
+<h3>可选收缩参数<a class="headerlink" href="#contraction-optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">methods</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[1,2]</span></code></p></td>
+<td><p>有序收缩操作。</p>
+<ul class="simple">
+<li><p>1 = 死端收缩</p></li>
+<li><p>2 = 线性收缩</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cycles</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p>收缩方法的执行次数。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[]::BIGINT[]</span></code></p></td>
+<td><p>禁止收缩的顶点标识符。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>内部查询<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>边的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>边的第一个端点顶点的标识符。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>边的第二个端点顶点的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p>-1</p></td>
+<td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
+<ul class="simple">
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>其中：</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="result-columns">
+<h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost)</span></code></p>
+<p>该函数返回一行数据。该行的列包括：</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p>行的类型。</p>
+<ul class="simple">
+<li><p>当该行表示一个顶点时，列为 <code class="docutils literal notranslate"><span class="pre">v</span></code> 。</p>
+<ul>
+<li><p>列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 为正值。</p></li>
+</ul>
+</li>
+<li><p>当行是边时，则为 <code class="docutils literal notranslate"><span class="pre">e</span></code> 。</p>
+<ul>
+<li><p>列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 的值为负数。</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>此列中的所有数字都是 <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code></p>
+<ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'v'</strong> 时。</p>
+<ul>
+<li><p>修改顶点的标识符。</p></li>
+</ul>
+</li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时。</p>
+<ul>
+<li><p>从 <strong>-1</strong> 开始递减序列。</p></li>
+<li><p>表示未包含在原始边集中的伪`id` 。</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>收缩顶点标识符数组。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'v'</strong>: <span class="math notranslate nohighlight">\(-1\)</span> 时</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) 的source顶点标识符。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'v'</strong>: <span class="math notranslate nohighlight">\(-1\)</span> 时</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) 的target 顶点标识符。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'v'</strong>: <span class="math notranslate nohighlight">\(-1\)</span> 时</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) 的权重。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#only-dead-end-contraction" id="id3">仅死端收缩</a></p></li>
+<li><p><a class="reference internal" href="#only-linear-contraction" id="id4">仅线性收缩</a></p></li>
+<li><p><a class="reference internal" href="#the-cycle" id="id5">循环</a></p></li>
+</ul>
+</nav>
+<section id="only-dead-end-contraction">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">仅死端收缩</a><a class="headerlink" href="#only-dead-end-contraction" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">type</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">contracted_vertices</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">methods</span> <span class="o">=&gt;</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span>
+<span class="o">------+----+---------------------</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">}</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">}</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">8</span> <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">}</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">14</span> <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">}</span>
+<span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="only-linear-contraction">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">仅线性收缩</a><a class="headerlink" href="#only-linear-contraction" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">methods</span> <span class="o">=&gt;</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="o">------+----+---------------------+--------+--------+------</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">}</span>                 <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">}</span>                 <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span>
+<span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="the-cycle">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">循环</a><a class="headerlink" href="#the-cycle" title="Link to this heading">¶</a></h3>
+<p>对图进行收缩可通过多次操作实现，操作顺序会影响最终收缩图的结果——每执行一次操作后，可被后续操作收缩的顶点集合将发生变化。</p>
+<p>这种实现方式在 <code class="docutils literal notranslate"><span class="pre">methods</span></code> 中循环 <code class="docutils literal notranslate"><span class="pre">cycles</span></code> 次。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nb">input</span><span class="o">&gt;</span>
+<span class="n">do</span> <span class="n">max_cycles</span> <span class="n">times</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">operation</span> <span class="ow">in</span> <span class="n">operations_order</span><span class="p">)</span>
+     <span class="p">{</span> <span class="n">do</span> <span class="n">operation</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">&lt;</span><span class="n">output</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="contracting-sample-data">
+<h2>收缩示例数据<a class="headerlink" href="#contracting-sample-data" title="Link to this heading">¶</a></h2>
+<p>在本节中，将通过示例展示构建和使用收缩图。</p>
+<ul class="simple">
+<li><p>使用无向图的 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
+<li><p>首先是死端操作，然后是线性操作。</p></li>
+</ul>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#construction-of-the-graph-in-the-database" id="id6">数据库中图的构建</a></p></li>
+</ul>
+</nav>
+<section id="construction-of-the-graph-in-the-database">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">数据库中图的构建</a><a class="headerlink" href="#construction-of-the-graph-in-the-database" title="Link to this heading">¶</a></h3>
+<p>原始图：</p>
+<a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 241.0px; height: 217.5px;" /></a>
+<p>结果数据并非表示收缩后的图，而是反映应用收缩方法后需对原图执行的变更操作。</p>
+<p>例如，观察到顶点 <span class="math notranslate nohighlight">\(6\)</span> 没有出现在结果中，因为它不受收缩算法的影响。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="o">------+----+---------------------+--------+--------+------</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">}</span>                 <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>               <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">14</span> <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">}</span>                <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>               <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">}</span>               <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">15</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span>
+<span class="p">(</span><span class="mi">7</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>进行死端收缩操作后：</p>
+<a class="reference internal image-reference" href="_images/undirected_sampledata_b.png"><img alt="_images/undirected_sampledata_b.png" src="_images/undirected_sampledata_b.png" style="width: 175.75px; height: 198.5px;" /></a>
+<p>对上图进行线性收缩运算后：</p>
+<a class="reference internal image-reference" href="_images/undirected_sampledata_c.png"><img alt="_images/undirected_sampledata_c.png" src="_images/undirected_sampledata_c.png" style="width: 184.25px; height: 193.75px;" /></a>
+</section>
+</section>
+<section id="the-process-to-create-the-contraction-graph-on-the-database">
+<h2>在数据库上创建收缩图的过程：<a class="headerlink" href="#the-process-to-create-the-contraction-graph-on-the-database" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="id2">
+<ul class="simple">
+<li><p><a class="reference internal" href="#add-additional-columns" id="id7">添加附加列</a></p></li>
+<li><p><a class="reference internal" href="#store-contraction-information" id="id8">存储收缩信息</a></p></li>
+<li><p><a class="reference internal" href="#update-the-edges-and-vertices-tables" id="id9">更新边线与顶点表</a></p></li>
+<li><p><a class="reference internal" href="#the-contracted-graph" id="id10">收缩图</a></p></li>
+</ul>
+</nav>
+<section id="add-additional-columns">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">添加附加列</a><a class="headerlink" href="#add-additional-columns" title="Link to this heading">¶</a></h3>
+<p>在边表和顶点表中添加额外列。在本文档中将使用以下内容：</p>
+<table class="docutils align-default" style="width: 80">
+<thead>
+<tr class="row-odd"><th class="head"><p>列。</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code></p></td>
+<td><p>属于顶点/边的顶点集</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">is_contracted</span></code></p></td>
+<td><p>在顶点表上</p>
+<ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，顶点收缩，它不是收缩图的一部分。</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">false</span></code> 时，顶点不收缩，它是收缩图的一部分。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">is_new</span></code></p></td>
+<td><p>在边表上</p>
+<ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，边缘由收缩算法生成。 它是收缩图的一部分。</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">false</span></code> 时，边是原始边，可能是也可能不是收缩图的一部分。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span>
+  <span class="n">ADD</span> <span class="n">is_contracted</span> <span class="n">BOOLEAN</span> <span class="n">DEFAULT</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">ADD</span> <span class="n">contracted_vertices</span> <span class="n">BIGINT</span><span class="p">[];</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span>
+  <span class="n">ADD</span> <span class="n">is_new</span> <span class="n">BOOLEAN</span> <span class="n">DEFAULT</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">ADD</span> <span class="n">contracted_vertices</span> <span class="n">BIGINT</span><span class="p">[];</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+</section>
+<section id="store-contraction-information">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">存储收缩信息</a><a class="headerlink" href="#store-contraction-information" title="Link to this heading">¶</a></h3>
+<p>将收缩结果存储至数据表。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
+<span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">7</span>
+</pre></div>
+</div>
+</section>
+<section id="update-the-edges-and-vertices-tables">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">更新边线与顶点表</a><a class="headerlink" href="#update-the-edges-and-vertices-tables" title="Link to this heading">¶</a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">is_contracted</span></code> 列来指示收缩的顶点。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
+<span class="n">SET</span> <span class="n">is_contracted</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span>  <span class="n">unnest</span><span class="p">(</span><span class="n">contracted_vertices</span><span class="p">)</span> <span class="n">FROM</span>  <span class="n">contraction_results</span><span class="p">);</span>
+<span class="n">UPDATE</span> <span class="mi">10</span>
+</pre></div>
+</div>
+<p>将属于顶点的结果信息填充至 <code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code> 表中。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
+<span class="n">SET</span> <span class="n">contracted_vertices</span> <span class="o">=</span> <span class="n">contraction_results</span><span class="o">.</span><span class="n">contracted_vertices</span>
+<span class="n">FROM</span> <span class="n">contraction_results</span>
+<span class="n">WHERE</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;v&#39;</span> <span class="n">AND</span> <span class="n">vertices</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">contraction_results</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>插入由 pgr_contraction 生成的新边。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">is_new</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">true</span>
+<span class="n">FROM</span> <span class="n">contraction_results</span>
+<span class="n">WHERE</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;e&#39;</span><span class="p">;</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</section>
+<section id="the-contracted-graph">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">收缩图</a><a class="headerlink" href="#the-contracted-graph" title="Link to this heading">¶</a></h3>
+<p>属于收缩图的顶点。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">WHERE</span> <span class="n">is_contracted</span> <span class="o">=</span> <span class="n">false</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
+ <span class="nb">id</span>
+<span class="o">----</span>
+  <span class="mi">4</span>
+  <span class="mi">7</span>
+ <span class="mi">10</span>
+ <span class="mi">11</span>
+ <span class="mi">12</span>
+ <span class="mi">14</span>
+ <span class="mi">16</span>
+<span class="p">(</span><span class="mi">7</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>属于收缩图的边。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">vertices_in_graph</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">WHERE</span> <span class="n">is_contracted</span> <span class="o">=</span> <span class="n">false</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span>
+<span class="n">FROM</span> <span class="n">edges</span>
+<span class="n">WHERE</span>
+  <span class="n">EXISTS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">WHERE</span> <span class="n">NOT</span> <span class="n">is_contracted</span> <span class="n">AND</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+  <span class="n">AND</span>
+  <span class="n">EXISTS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">WHERE</span> <span class="n">NOT</span> <span class="n">is_contracted</span> <span class="n">AND</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span> <span class="o">|</span> <span class="n">contracted_vertices</span>
+<span class="o">----+--------+--------+------+--------------+---------------------</span>
+  <span class="mi">5</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>
+  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span> <span class="o">|</span>
+  <span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span> <span class="o">|</span>
+ <span class="mi">11</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>
+ <span class="mi">19</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>
+ <span class="mi">20</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">}</span>
+ <span class="mi">21</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>
+ <span class="mi">22</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">15</span><span class="p">}</span>
+<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>视觉效果：</p>
+<a class="reference internal image-reference" href="_images/newgraph.png"><img alt="_images/newgraph.png" src="_images/newgraph.png" style="width: 184.25px; height: 193.75px;" /></a>
+</section>
+</section>
+<section id="using-the-contracted-graph">
+<h2>使用收缩图<a class="headerlink" href="#using-the-contracted-graph" title="Link to this heading">¶</a></h2>
+<p>根据最终应用的需求，图需要进行预处理。在本示例中，最终应用是使用收缩图通过 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code> 计算原始图中两个顶点之间的成本</p>
+<p>计算收缩图中给定源和目标之间的最短路径时，存在三种情况：</p>
+<ul class="simple">
+<li><p>情况1：源和目标都属于收缩图。</p></li>
+<li><p>情况 2：源和/或目标属于边缘子图。</p></li>
+<li><p>情况 3：源和/或目标属于一个顶点。</p></li>
+</ul>
+<p>最终应用应考虑所有这些情况。</p>
+<p>创建收缩图的视图（或表）：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">VIEW</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">contracted_graph</span><span class="p">;</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">view</span> <span class="s2">&quot;contracted_graph&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
+<span class="n">DROP</span> <span class="n">VIEW</span>
+<span class="n">CREATE</span> <span class="n">VIEW</span> <span class="n">contracted_graph</span> <span class="n">AS</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span> <span class="n">FROM</span> <span class="n">edges</span>
+<span class="n">WHERE</span>
+  <span class="n">EXISTS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">WHERE</span> <span class="n">NOT</span> <span class="n">is_contracted</span> <span class="n">AND</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+  <span class="n">AND</span>
+  <span class="n">EXISTS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">WHERE</span> <span class="n">NOT</span> <span class="n">is_contracted</span> <span class="n">AND</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">target</span><span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">VIEW</span>
+</pre></div>
+</div>
+<p>创建使用收缩图的函数。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CREATE OR REPLACE FUNCTION path_cost(source BIGINT, target BIGINT)
+RETURNS SETOF FLOAT AS
+$BODY$
+
+SELECT agg_cost FROM pgr_dijkstraCost(
+  /* The inner query */
+  &#39;WITH
+  cul_de_sac AS (
+    SELECT contracted_vertices || id::INTEGER as v
+    FROM vertices WHERE &#39; || $1 ||&#39; = ANY(contracted_vertices)
+    OR &#39; || $2 ||&#39; = ANY(contracted_vertices)),
+  linears_to_expand AS (
+    SELECT id, contracted_vertices
+    FROM edges WHERE is_new AND (&#39; || $1 ||&#39; = ANY(contracted_vertices)
+      OR &#39;|| $2 ||&#39;  = ANY(contracted_vertices))
+  ),
+  additional_vertices AS (
+    SELECT * FROM cul_de_sac UNION SELECT contracted_vertices FROM linears_to_expand)
+  SELECT id, source, target, cost, reverse_cost
+  FROM edges, additional_vertices WHERE source = ANY(v) OR target = ANY(v)
+
+  UNION
+
+  SELECT id, source, target, cost, reverse_cost
+  FROM contracted_graph LEFT JOIN linears_to_expand c USING (id) WHERE c.id IS NULL&#39;,
+
+  source, target, false);
+
+$BODY$ LANGUAGE SQL;
+CREATE FUNCTION
+</pre></div>
+</div>
+<p>情况1：源和目标都属于收缩图。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">path_cost</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+ <span class="n">path_cost</span>
+<span class="o">-----------</span>
+         <span class="mi">2</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>情况 2：源点和/或目标点位于含收缩顶点的边线上。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">path_cost</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+ <span class="n">path_cost</span>
+<span class="o">-----------</span>
+         <span class="mi">3</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>情况 3：源点和/或目标点属于已被收缩的顶点。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">path_cost</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+ <span class="n">path_cost</span>
+<span class="o">-----------</span>
+         <span class="mi">5</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a></p></li>
+</ul>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.1.<br/>
+      最后更新于 12月 06, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

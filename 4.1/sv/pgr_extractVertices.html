@@ -1,0 +1,681 @@
+
+
+<!DOCTYPE html>
+
+<html lang="sv" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_extractVertices &#8212; pgRouting Manual (4.1-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=4e2df6f4"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=1fc9dd11"></script>
+    <script src="_static/translations.js?v=92a62177"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Sök" href="search.html" />
+    <link rel="next" title="pgr_findCloseEdges" href="pgr_findCloseEdges.html" />
+    <link rel="prev" title="Verktygsfunktioner" href="utilities-family.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.1</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduktion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Exempeldata</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting-koncept</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Funktionsfamiljer</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Föreslagna funktioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Anteckningar för release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migrationsguide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code></a><ul>
+<li><a class="reference internal" href="#description">Beskrivning</a></li>
+<li><a class="reference internal" href="#signatures">Underskrifter</a></li>
+<li><a class="reference internal" href="#parameters">Parametrar</a></li>
+<li><a class="reference internal" href="#optional-parameters">Valfria parametrar</a></li>
+<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
+<li><a class="reference internal" href="#edges-sql">Kanter SQL</a><ul>
+<li><a class="reference internal" href="#when-line-geometry-is-known">När linjegeometrin är känd</a></li>
+<li><a class="reference internal" href="#when-vertex-geometry-is-known">När toppunktsgeometrin är känd</a></li>
+<li><a class="reference internal" href="#when-identifiers-of-vertices-are-known">När identifierare av toppar är kända</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
+<li><a class="reference internal" href="#additional-examples">Ytterligare exempel</a><ul>
+<li><a class="reference internal" href="#dry-run-execution">Utförande av provkörning</a></li>
+<li><a class="reference internal" href="#create-a-routing-topology">Skapa en routningstopologi</a><ul>
+<li><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table">Kontrollera att databasen inte har <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></li>
+<li><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created">Rensa upp kolumnerna i den routningstopologi som ska skapas</a></li>
+<li><a class="reference internal" href="#create-the-vertices-table">Skapa en tabell över hörnpunkter</a></li>
+<li><a class="reference internal" href="#inspect-the-vertices-table">Inspektera tabellen med hörnpunkter</a></li>
+<li><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table">Skapa routningstopologin på edge-tabellen</a></li>
+<li><a class="reference internal" href="#inspect-the-routing-topology">Inspektera routingtopologin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Se även</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="utilities-family.html" title="Previous Chapter: Verktygsfunktioner"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Verktygsfunktioner</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_findCloseEdges.html" title="Next Chapter: pgr_findCloseEdges"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_findCloseEdges &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_extractVertices','sv'));  </script>
+            
+  <div class="line-block" id="index-0">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-extractvertices">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code><a class="headerlink" href="#pgr-extractvertices" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code> - Extraherar information om hörnpunkter</p>
+<p class="rubric">Tillgänglighet</p>
+<p class="rubric">Version 3.8.0</p>
+<ul class="simple">
+<li><p>Justering av felmeddelanden.</p></li>
+<li><p>Funktion befordrad till tjänsteman.</p></li>
+</ul>
+<p class="rubric">Version 3.3.0</p>
+<ul class="simple">
+<li><p>Funktion befordrad till föreslagen.</p></li>
+</ul>
+<p class="rubric">Version 3.0.0</p>
+<ul class="simple">
+<li><p>Ny experimentell funktion.</p></li>
+</ul>
+<section id="description">
+<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Detta är en hjälpfunktion för att extrahera toppunktsinformationen för en grafs uppsättning kanter.</p>
+<ul class="simple">
+<li><p>När kantidentifieraren anges kommer den också att beräkna in- och utkanterna</p></li>
+</ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost-graf inuti</p>
+</section>
+<section id="signatures">
+<h2>Underskrifter<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_extractVertices(<a class="reference internal" href="#edges-sql">Kanter SQL</a>, [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SETOF <code class="docutils literal notranslate"><span class="pre">(id,</span> <span class="pre">in_edges,</span> <span class="pre">out_edges,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">geom)</span></code></div>
+<div class="line">ELLER TOM UPPSÄTTNING</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Exempel<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Extrahera information om toppunkt</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span>       <span class="n">x</span>        <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span>                    <span class="n">geom</span>
+<span class="o">----+----------+-----------+----------------+-----+--------------------------------------------</span>
+  <span class="mi">1</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000000000000000000000040</span>
+  <span class="mi">2</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>      <span class="o">|</span>            <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">0101000000000000000000E03</span><span class="n">F0000000000000C40</span>
+  <span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">0101000000000000000000</span><span class="n">F03F0000000000000040</span>
+  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>     <span class="o">|</span>           <span class="o">|</span> <span class="mf">1.999999999999</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mi">010100000068</span><span class="n">EEFFFFFFFFFF3F0000000000000C40</span>
+  <span class="mi">5</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000000000</span>
+  <span class="mi">6</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span>     <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">01010000000000000000000040000000000000</span><span class="n">F03F</span>
+  <span class="mi">7</span> <span class="o">|</span> <span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">}</span>    <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000000040</span>
+  <span class="mi">8</span> <span class="o">|</span> <span class="p">{</span><span class="mi">10</span><span class="p">}</span>     <span class="o">|</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">}</span>   <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000000840</span>
+  <span class="mi">9</span> <span class="o">|</span> <span class="p">{</span><span class="mi">14</span><span class="p">}</span>     <span class="o">|</span>           <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000001040</span>
+ <span class="mi">10</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">}</span>     <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">01010000000000000000000840000000000000</span><span class="n">F03F</span>
+ <span class="mi">11</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="mi">11</span><span class="p">}</span>    <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000008400000000000000040</span>
+ <span class="mi">12</span> <span class="o">|</span> <span class="p">{</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">}</span>  <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">}</span>      <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">010100000000000000000008400000000000000840</span>
+ <span class="mi">13</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">18</span><span class="p">}</span>      <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">2.3</span> <span class="o">|</span> <span class="mi">01010000000000000000000</span><span class="n">C406666666666660240</span>
+ <span class="mi">14</span> <span class="o">|</span> <span class="p">{</span><span class="mi">18</span><span class="p">}</span>     <span class="o">|</span>           <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span> <span class="mi">01010000000000000000000</span><span class="n">C400000000000001040</span>
+ <span class="mi">15</span> <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">16</span><span class="p">}</span>      <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">01010000000000000000001040000000000000</span><span class="n">F03F</span>
+ <span class="mi">16</span> <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>   <span class="o">|</span> <span class="p">{</span><span class="mi">15</span><span class="p">}</span>      <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000010400000000000000040</span>
+ <span class="mi">17</span> <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">}</span>  <span class="o">|</span>           <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">010100000000000000000010400000000000000840</span>
+<span class="p">(</span><span class="mi">17</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Kanter SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Kanter SQL</a> enligt beskrivningen nedan</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="optional-parameters">
+<h2>Valfria parametrar<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Standard</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dryrun</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><ul class="simple">
+<li><p>När det är sant bearbeta inte och få i ett NÄRVARO den resulterande frågan.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inner-queries">
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="innehall">
+<ul class="simple">
+<li><p><a class="reference internal" href="#edges-sql" id="id3">Kanter SQL</a></p>
+<ul>
+<li><p><a class="reference internal" href="#when-line-geometry-is-known" id="id4">När linjegeometrin är känd</a></p></li>
+<li><p><a class="reference internal" href="#when-vertex-geometry-is-known" id="id5">När toppunktsgeometrin är känd</a></p></li>
+<li><p><a class="reference internal" href="#when-identifiers-of-vertices-are-known" id="id6">När identifierare av toppar är kända</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="edges-sql">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Kanter SQL</a><a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<section id="when-line-geometry-is-known">
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">När linjegeometrin är känd</a><a class="headerlink" href="#when-line-geometry-is-known" title="Link to this heading">¶</a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>(Valfritt) identifierare för kanten.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code></p></td>
+<td><p>Geometri för kanten.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Denna inre fråga har företräde framför de två följande inre frågorna, och därför ignoreras andra kolumner när kolumnen <code class="docutils literal notranslate"><span class="pre">geom</span></code> visas.</p>
+<ul class="simple">
+<li><p>Ignorerade kolumner:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">startpunkt</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">endpoint</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Källa</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mål</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="when-vertex-geometry-is-known">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">När toppunktsgeometrin är känd</a><a class="headerlink" href="#when-vertex-geometry-is-known" title="Link to this heading">¶</a></h4>
+<p>För att använda den här inre frågan får kolumnen <code class="docutils literal notranslate"><span class="pre">geom</span></code> inte ingå i kolumnuppsättningen.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>(Valfritt) identifierare för kanten.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">startpunkt</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POINT</span></code></p></td>
+<td><p>POINT Geometri för startvertexen.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">endpoint</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POINT</span></code></p></td>
+<td><p>POINT Geometri för den avslutande vertexen.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Denna inre fråga har företräde framför nästa inre fråga, och därför ignoreras andra kolumner när kolumnerna <code class="docutils literal notranslate"><span class="pre">startpunkt</span></code> och <code class="docutils literal notranslate"><span class="pre">slutpunkt</span></code> visas.</p>
+<ul class="simple">
+<li><p>Ignorerade kolumner:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Källa</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mål</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="when-identifiers-of-vertices-are-known">
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">När identifierare av toppar är kända</a><a class="headerlink" href="#when-identifiers-of-vertices-are-known" title="Link to this heading">¶</a></h4>
+<p>För att kunna använda den här inre frågan får kolumnerna <code class="docutils literal notranslate"><span class="pre">geom</span></code>, <code class="docutils literal notranslate"><span class="pre">startpoint</span></code> och <code class="docutils literal notranslate"><span class="pre">endpoint</span></code> inte ingå i kolumnuppsättningen.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>(Valfritt) identifierare för kanten.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Källa</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>Identifierare för den första slutpunktsvertexen på kanten.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mål</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="result-columns">
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifierare för toppunkt</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">in_edges</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
+<td><p>Array med identifierare för de kanter som har toppunkten <code class="docutils literal notranslate"><span class="pre">id</span></code> som <em>första slutpunkt</em>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> När <code class="docutils literal notranslate"><span class="pre">id</span></code> inte är en del av den inre frågan</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">out_edges</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
+<td><p>Array med identifierare för de kanter som har toppunkten <code class="docutils literal notranslate"><span class="pre">id</span></code> som <em>andra slutpunkt</em>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> När <code class="docutils literal notranslate"><span class="pre">id</span></code> inte är en del av den inre frågan</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>X-värde för punktgeometrin</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> När ingen geometri anges</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>X-värde för punktgeometrin</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> När ingen geometri anges</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POINT</span></code></p></td>
+<td><p>Geometri för punkten</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> När ingen geometri anges</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#dry-run-execution" id="id7">Utförande av provkörning</a></p></li>
+<li><p><a class="reference internal" href="#create-a-routing-topology" id="id8">Skapa en routningstopologi</a></p>
+<ul>
+<li><p><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table" id="id9">Kontrollera att databasen inte har <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></p></li>
+<li><p><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" id="id10">Rensa upp kolumnerna i den routningstopologi som ska skapas</a></p></li>
+<li><p><a class="reference internal" href="#create-the-vertices-table" id="id11">Skapa en tabell över hörnpunkter</a></p></li>
+<li><p><a class="reference internal" href="#inspect-the-vertices-table" id="id12">Inspektera tabellen med hörnpunkter</a></p></li>
+<li><p><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table" id="id13">Skapa routningstopologin på edge-tabellen</a></p></li>
+<li><p><a class="reference internal" href="#inspect-the-routing-topology" id="id14">Inspektera routingtopologin</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="dry-run-execution">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Utförande av provkörning</a><a class="headerlink" href="#dry-run-execution" title="Link to this heading">¶</a></h3>
+<p>Använd <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">:=</span> <span class="pre">true</span></code> för att få den fråga som genereras för att få fram toppunktsinformationen.</p>
+<p>Resultaten kan användas som baskod för att göra en förfining baserad på behoven för backend-utvecklingen.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">dryrun</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>
+        <span class="n">WITH</span>
+
+        <span class="n">main_sql</span> <span class="n">AS</span> <span class="p">(</span>
+          <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">edges</span>
+        <span class="p">),</span>
+
+        <span class="n">the_out</span> <span class="n">AS</span> <span class="p">(</span>
+          <span class="n">SELECT</span> <span class="nb">id</span><span class="p">::</span><span class="n">BIGINT</span> <span class="n">AS</span> <span class="n">out_edge</span><span class="p">,</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">geom</span>
+          <span class="n">FROM</span> <span class="n">main_sql</span>
+        <span class="p">),</span>
+
+        <span class="n">agg_out</span> <span class="n">AS</span> <span class="p">(</span>
+          <span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="n">out_edge</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">out_edge</span><span class="p">)</span> <span class="n">AS</span> <span class="n">out_edges</span><span class="p">,</span> <span class="n">ST_x</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">x</span><span class="p">,</span> <span class="n">ST_Y</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">y</span><span class="p">,</span> <span class="n">geom</span>
+          <span class="n">FROM</span> <span class="n">the_out</span>
+          <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">geom</span>
+        <span class="p">),</span>
+
+        <span class="n">the_in</span> <span class="n">AS</span> <span class="p">(</span>
+          <span class="n">SELECT</span> <span class="nb">id</span><span class="p">::</span><span class="n">BIGINT</span> <span class="n">AS</span> <span class="n">in_edge</span><span class="p">,</span> <span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">geom</span>
+          <span class="n">FROM</span> <span class="n">main_sql</span>
+        <span class="p">),</span>
+
+        <span class="n">agg_in</span> <span class="n">AS</span> <span class="p">(</span>
+          <span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="n">in_edge</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">in_edge</span><span class="p">)</span> <span class="n">AS</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">ST_x</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">x</span><span class="p">,</span> <span class="n">ST_Y</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">y</span><span class="p">,</span> <span class="n">geom</span>
+          <span class="n">FROM</span> <span class="n">the_in</span>
+          <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">geom</span>
+        <span class="p">),</span>
+
+        <span class="n">the_points</span> <span class="n">AS</span> <span class="p">(</span>
+          <span class="n">SELECT</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span><span class="p">,</span> <span class="n">coalesce</span><span class="p">(</span><span class="n">agg_out</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">agg_in</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">geom</span>
+          <span class="n">FROM</span> <span class="n">agg_out</span>
+          <span class="n">FULL</span> <span class="n">OUTER</span> <span class="n">JOIN</span> <span class="n">agg_in</span> <span class="n">USING</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">SELECT</span> <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span><span class="p">(</span><span class="n">ORDER</span> <span class="n">BY</span> <span class="n">ST_X</span><span class="p">(</span><span class="n">geom</span><span class="p">),</span> <span class="n">ST_Y</span><span class="p">(</span><span class="n">geom</span><span class="p">))</span> <span class="n">AS</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span><span class="p">,</span> <span class="n">ST_X</span><span class="p">(</span><span class="n">geom</span><span class="p">),</span> <span class="n">ST_Y</span><span class="p">(</span><span class="n">geom</span><span class="p">),</span> <span class="n">geom</span>
+        <span class="n">FROM</span> <span class="n">the_points</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span> <span class="n">x</span> <span class="o">|</span> <span class="n">y</span> <span class="o">|</span> <span class="n">geom</span>
+<span class="o">----+----------+-----------+---+---+------</span>
+<span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="create-a-routing-topology">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Skapa en routningstopologi</a><a class="headerlink" href="#create-a-routing-topology" title="Link to this heading">¶</a></h3>
+<section id="make-sure-the-database-does-not-have-the-vertices-table">
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Kontrollera att databasen inte har <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a><a class="headerlink" href="#make-sure-the-database-does-not-have-the-vertices-table" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">vertices_table</span><span class="p">;</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">table</span> <span class="s2">&quot;vertices_table&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
+<span class="n">DROP</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+</section>
+<section id="clean-up-the-columns-of-the-routing-topology-to-be-created">
+<h4><a class="toc-backref" href="#id10" role="doc-backlink">Rensa upp kolumnerna i den routningstopologi som ska skapas</a><a class="headerlink" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</section>
+<section id="create-the-vertices-table">
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">Skapa en tabell över hörnpunkter</a><a class="headerlink" href="#create-the-vertices-table" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>När <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> har en SRID används <code class="docutils literal notranslate"><span class="pre">geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
+<li><p>För bord med stor kant som är förberedda,</p>
+<ul>
+<li><p>Skapa den som <code class="docutils literal notranslate"><span class="pre">UNLOGGED</span></code> och</p></li>
+<li><p>Efter att tabellen har skapats <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span> <span class="pre">..</span> <span class="pre">SET</span> <span class="pre">LOGGED</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices_table</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">17</span>
+</pre></div>
+</div>
+</section>
+<section id="inspect-the-vertices-table">
+<h4><a class="toc-backref" href="#id12" role="doc-backlink">Inspektera tabellen med hörnpunkter</a><a class="headerlink" href="#inspect-the-vertices-table" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">vertices_table</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span>       <span class="n">x</span>        <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span>                    <span class="n">geom</span>
+<span class="o">----+----------+-----------+----------------+-----+--------------------------------------------</span>
+  <span class="mi">1</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000000000000000000000040</span>
+  <span class="mi">2</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>      <span class="o">|</span>            <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">0101000000000000000000E03</span><span class="n">F0000000000000C40</span>
+  <span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">0101000000000000000000</span><span class="n">F03F0000000000000040</span>
+  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>     <span class="o">|</span>           <span class="o">|</span> <span class="mf">1.999999999999</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mi">010100000068</span><span class="n">EEFFFFFFFFFF3F0000000000000C40</span>
+  <span class="mi">5</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000000000</span>
+  <span class="mi">6</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span>     <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">01010000000000000000000040000000000000</span><span class="n">F03F</span>
+  <span class="mi">7</span> <span class="o">|</span> <span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">}</span>    <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000000040</span>
+  <span class="mi">8</span> <span class="o">|</span> <span class="p">{</span><span class="mi">10</span><span class="p">}</span>     <span class="o">|</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">}</span>   <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000000840</span>
+  <span class="mi">9</span> <span class="o">|</span> <span class="p">{</span><span class="mi">14</span><span class="p">}</span>     <span class="o">|</span>           <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000001040</span>
+ <span class="mi">10</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">}</span>     <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">01010000000000000000000840000000000000</span><span class="n">F03F</span>
+ <span class="mi">11</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="mi">11</span><span class="p">}</span>    <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000008400000000000000040</span>
+ <span class="mi">12</span> <span class="o">|</span> <span class="p">{</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">}</span>  <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">}</span>      <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">010100000000000000000008400000000000000840</span>
+ <span class="mi">13</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">18</span><span class="p">}</span>      <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">2.3</span> <span class="o">|</span> <span class="mi">01010000000000000000000</span><span class="n">C406666666666660240</span>
+ <span class="mi">14</span> <span class="o">|</span> <span class="p">{</span><span class="mi">18</span><span class="p">}</span>     <span class="o">|</span>           <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span> <span class="mi">01010000000000000000000</span><span class="n">C400000000000001040</span>
+ <span class="mi">15</span> <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">16</span><span class="p">}</span>      <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">01010000000000000000001040000000000000</span><span class="n">F03F</span>
+ <span class="mi">16</span> <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>   <span class="o">|</span> <span class="p">{</span><span class="mi">15</span><span class="p">}</span>      <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000010400000000000000040</span>
+ <span class="mi">17</span> <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">}</span>  <span class="o">|</span>           <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">010100000000000000000010400000000000000840</span>
+<span class="p">(</span><span class="mi">17</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="create-the-routing-topology-on-the-edge-table">
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">Skapa routningstopologin på edge-tabellen</a><a class="headerlink" href="#create-the-routing-topology-on-the-edge-table" title="Link to this heading">¶</a></h4>
+<p>Uppdatering av informationen om <code class="docutils literal notranslate"><span class="pre">källan</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">out_going</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="n">unnest</span><span class="p">(</span><span class="n">out_edges</span><span class="p">)</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+  <span class="n">FROM</span> <span class="n">vertices_table</span>
+<span class="p">)</span>
+<span class="n">UPDATE</span> <span class="n">edges</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">vid</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">out_going</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">eid</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<p>Uppdatering av informationen om ”målet</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">in_coming</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="n">unnest</span><span class="p">(</span><span class="n">in_edges</span><span class="p">)</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+  <span class="n">FROM</span> <span class="n">vertices_table</span>
+<span class="p">)</span>
+<span class="n">UPDATE</span> <span class="n">edges</span>
+<span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">vid</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">in_coming</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">eid</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</section>
+<section id="inspect-the-routing-topology">
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">Inspektera routingtopologin</a><a class="headerlink" href="#inspect-the-routing-topology" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">x1</span>  <span class="o">|</span> <span class="n">y1</span>  <span class="o">|</span>       <span class="n">x2</span>       <span class="o">|</span> <span class="n">y2</span>
+<span class="o">----+--------+--------+-----+-----+----------------+-----</span>
+  <span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span>
+  <span class="mi">3</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span>
+  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span>
+  <span class="mi">5</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span>
+  <span class="mi">6</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span>
+  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span>
+  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span>
+  <span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
+ <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span>
+ <span class="mi">11</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span>
+ <span class="mi">12</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span>
+ <span class="mi">13</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span>
+ <span class="mi">14</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span>
+ <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span>
+ <span class="mi">16</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
+ <span class="mi">17</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span> <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">1.999999999999</span> <span class="o">|</span> <span class="mf">3.5</span>
+ <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">14</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">2.3</span> <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span>   <span class="mi">4</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Genererad topologi</strong></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+<section id="see-also">
+<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="utilities-family.html"><span class="doc">Verktygsfunktioner</span></a></p></li>
+</ul>
+<p class="rubric">Index och tabeller</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Söksida</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.1.<br/>
+      Senast uppdaterad dec. 06, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

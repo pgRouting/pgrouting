@@ -1,0 +1,1282 @@
+
+
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tabla de Contenido &#8212; pgRouting Manual (4.1-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=7a93a065"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=1fc9dd11"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Introducción" href="pgRouting-introduction.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="#">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.1</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Tabla de Contenido</a><ul>
+<li><a class="reference internal" href="#general">General</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#pgrouting-concepts">Conceptos de pgRouting</a></li>
+<li><a class="reference internal" href="#routingfunctions"><span class="xref std std-doc">routingFunctions</span></a></li>
+<li><a class="reference internal" href="#functions-by-categories">Funciones por categorías</a></li>
+<li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Funciones disponibles pero no oficiales de pgRouting</a></li>
+<li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
+<li><a class="reference internal" href="#pgrouting-4-0">pgRouting 4.0</a><ul>
+<li><a class="reference internal" href="#pgrouting-4-0-0-alpha1-release-notes">Notas de la versión de pgRouting 4.0.0-alpha1</a><ul>
+<li><a class="reference internal" href="#build">Construir</a></li>
+<li><a class="reference internal" href="#documentation-build">Construcción de la documentación</a></li>
+<li><a class="reference internal" href="#summary-of-changes-by-function">Summary of changes by function</a></li>
+<li><a class="reference internal" href="#functions-promoted-to-official">Funciones promovidas a oficial</a></li>
+<li><a class="reference internal" href="#signatures-promoted-to-official">Firmas promovidas a oficial</a></li>
+<li><a class="reference internal" href="#new-experimental-functions">Nuevas funciones experimentales.</a></li>
+<li><a class="reference internal" href="#sql-signatures-and-output-standardization">SQL signatures and output standardization</a></li>
+<li><a class="reference internal" href="#removal-of-sql-deprecated-signatures">Eliminación de funciones SQL obsoletas</a></li>
+<li><a class="reference internal" href="#removal-of-sql-deprecated-functions">Eliminación de funciones obsoletas</a></li>
+<li><a class="reference internal" href="#removal-of-sql-deprecated-internal-functions">Eliminación de funciones internas SQL obsoletas</a></li>
+<li><a class="reference internal" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting">Resumen de funciones y firmas que ya no están en pgrouting</a></li>
+<li><a class="reference internal" href="#code-enhancements">Mejoras del código</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#all-releases">Todas las versiones</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgRouting-introduction.html" title="Next Chapter: Introducción"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Introducción &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('index','es'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="table-of-contents">
+<h1>Tabla de Contenido<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h1>
+<p>pgRouting extiende la base de datos geospacial de <a class="reference external" href="https://postgis.net">PostGIS</a>/<a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> para proporcionar enrutamiento geoespacial y otras funciones de análisis de red.</p>
+<p>Este es el manual para la version v4.1.0-dev de pgRouting.</p>
+<img alt="Licencia de Creative Commons Attribution-Share Alike 3.0" class="align-left" src="_images/ccbysa.png" />
+<p>El Manual de pgRouting está bajo licencia <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Siéntase libre de usar este material de la manera que desee, pero le pedimos que atribuya el crédito correspondiente al proyecto pgRouting y, siempre que sea posible, visite <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a>. Para otras licencias utilizadas en pgRouting, consulte la página <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">Licencias</span></a> .</p>
+<section id="general">
+<h2>General<a class="headerlink" href="#general" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-introduction.html#licensing">Licencias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-introduction.html#contributors">Colaboradores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-introduction.html#more-information">Más Información</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#short-version">Versión corta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#get-the-sources">Obtener las fuentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#enabling-and-upgrading-in-the-database">Habilitación y actualización en la base de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#dependencies">Dependencias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#configuring">Configuración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#building">Compilando</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#testing">Pruebas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-installation.html#see-also">Ver también</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="support.html#reporting-problems">Reporte de Problemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support.html#mailing-list-matrix-gis-stackexchange">Mailing List, Matrix, GIS StackExchange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support.html#commercial-support">Soporte Comercial</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> es usado en los ejemplos de este manual.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="pgrouting-concepts">
+<h2>Conceptos de pgRouting<a class="headerlink" href="#pgrouting-concepts" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs">Grafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs-without-geometries">Grafos sin geometrías</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs-with-geometries">Grafos con geometrías</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#check-the-routing-topology">Compruebe la Topología de Ruteo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#function-s-structure">Estructura de la función</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#function-s-overloads">Sobrecargas de funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#inner-queries">Consultas Internas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#parameters">Parámetros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#result-columns">Columnas de resultados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#performance-tips">Consejos de Rendimiento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#how-to-contribute">Cómo contribuir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#see-also">See also</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="routingfunctions">
+<h2><a class="reference internal" href="routingFunctions.html"><span class="doc">Familias de Funciones</span></a><a class="headerlink" href="#routingfunctions" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<p><a class="reference internal" href="allpairs-family.html"><span class="doc">Todos los Pares - Familia de Funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Algoritmo de Floyd-Warshall.</p></li>
+<li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a> - Algoritmo de Johnson</p></li>
+</ul>
+<p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Familia de Funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a> - Algoritmo A* para la ruta más corta.</p></li>
+<li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a> - Obtener el costo agregado de las rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a> - Obtener la matriz de costos de las rutas más cortas.</p></li>
+</ul>
+<p><a class="reference internal" href="bdAstar-family.html"><span class="doc">A* Bidireccional - Familia de Funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a> - Algoritmo bidireccional A* para obtener rutas.</p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a> - Algoritmo bidireccional A* para calcular el coste de las rutas.</p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a> - Algoritmo bidireccional A* para calcular una matriz de costes de rutas.</p></li>
+</ul>
+<p><a class="reference internal" href="bdDijkstra-family.html"><span class="doc">Bidirectional Dijkstra - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a> - Algoritmo Dijkstra bidireccional para las rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a> - Dijkstra bidireccional para calcular el costo de las rutas más cortas</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a> - Algoritmo bidireccional de Dijkstra para crear una matriz de costes de las rutas más cortas.</p></li>
+</ul>
+<p><a class="reference internal" href="components-family.html"><span class="doc">Componentes - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_connectedComponents</span></a> - Componentes conectados de un grafo no dirigido.</p></li>
+<li><p><a class="reference internal" href="pgr_strongComponents.html"><span class="doc">pgr_strongComponents</span></a> - Componentes fuertemente conectados de un grafo dirigido.</p></li>
+<li><p><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents</span></a> - Componentes biconectados de un grafo no dirigido.</p></li>
+<li><p><a class="reference internal" href="pgr_articulationPoints.html"><span class="doc">pgr_articulationPoints</span></a> - Puntos de articulación de un grafo no dirigido.</p></li>
+<li><p><a class="reference internal" href="pgr_bridges.html"><span class="doc">pgr_bridges</span></a> - Puentes de un grafo no dirigido.</p></li>
+</ul>
+<p><a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> - Algoritmo de Dijkstra para las rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a> - Obtener el costo agregado de las rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> - Usar pgr_dijkstra para crear una matriz de costes.</p></li>
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Usar pgr_dijkstra para calcular información de captación.</p></li>
+<li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Usar el algoritmo Yen con pgr_dijkstra para obtener las K rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia</span></a> - Obtener una ruta para una secuencia de vértices.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear</span></a> - Obtener la ruta al vértice más cercano.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost</span></a> - Consigue el costo del vértice más cercano.</p></li>
+</ul>
+<p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Solo el flujo máximo se calcula usando el algoritmo empuja y reetiquetado.</p></li>
+<li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Algoritmo Boykov y Kolmogorov con detalles del flujo en aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - Algoritmo Edmonds y Karp con detalles de flujo del flujo en aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - Algoritmo empuja y reetiquetado con detalles del flujo en aristas.</p></li>
+<li><p>Aplicaciones</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - Calcula rutas de aristas disjuntas entre dos grupos de vértices.</p></li>
+<li><p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - Calcular una cardinalidad máxima de coincidencia dentro de un grafo.</p></li>
+</ul>
+</li>
+</ul>
+<p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_kruskal.html"><span class="doc">pgr_kruskal</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="metrics-family.html"><span class="doc">Métricas - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree</span></a> - Regresa un conjunto de vertices y la cantidad de aristas incidentes al vértice.</p></li>
+</ul>
+<p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="reference.html"><span class="doc">Referencia</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_version.html"><span class="doc">pgr_version</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_full_version.html"><span class="doc">pgr_full_version</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> - Ruteo con restricciones.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a> - Ruteo Via Vértices con restricciones.</p></li>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a> - Ruteo de Punto/Vértice con restricciones.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a> - Ruteo Vía Punto/Vértice con restricciones.</p></li>
+</ul>
+<p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> - Cuando la entrada es la información de celdas de una matriz.</p></li>
+<li><p><a class="reference internal" href="pgr_TSPeuclidean.html"><span class="doc">pgr_TSPeuclidean</span></a> - Cuando la información son coordenadas.</p></li>
+</ul>
+<p><a class="reference internal" href="utilities-family.html"><span class="doc">Utility functions</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - Extrae información de vértices basada en la tabla de aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> - Encuentra las aristas cercanas a una geometría al vuelo</p></li>
+<li><p><a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> - Breaks geometries that cross each other.</p></li>
+<li><p><a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> - Breaks geometries that (almost) touch each other.</p></li>
+</ul>
+<p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> - Ruta desde/hacia puntos en cualquier parte del grafo.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost</span></a> - Costos de las tutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a> - Costos de las rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP</span></a> - rutas más cortas K.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a> - Distancia de conducción.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a> - Ruteo vía ubicaciones</p></li>
+</ul>
+</section>
+<section id="functions-by-categories">
+<h2>Funciones por categorías<a class="headerlink" href="#functions-by-categories" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="cost-category.html"><span class="doc">Costo - Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">Distancia Manejando - Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Distancia de Manejo basada en el algoritmo de Dijkstra</p></li>
+<li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a> - Distancia de manejo basada en el algoritmo de Prim</p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a> - Distancia de Manejo basada en el algoritmo de Kruskal</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a> - Distancia Manejando basada en pgr_withPoints</p></li>
+</ul>
+<p><a class="reference internal" href="KSP-category.html"><span class="doc">Rutas más cortas K - Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Algoritmo de Yen basado en pgr_dijkstra</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP</span></a> - Algoritmo de Yen basado en pgr_withPoints</p></li>
+</ul>
+<p><a class="reference internal" href="spanningTree-category.html"><span class="doc">Árbol de expansión - Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - Familia de funciones</span></a></p></li>
+<li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Familia de funciones</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="BFS-category.html"><span class="doc">BFS - Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="DFS-category.html"><span class="doc">DFS - Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints- Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a> - Funciones basadas en el algoritmo Dijkstra.</p></li>
+<li><p>Desde <a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Familia de funciones</span></a> :</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a> - Ruteo de Punto/Vértice con restricciones.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a> - Ruteo Vía Punto/Vértice con restricciones.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="available-functions-but-not-official-pgrouting-functions">
+<h2>Funciones disponibles pero no oficiales de pgRouting<a class="headerlink" href="#available-functions-but-not-official-pgrouting-functions" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="proposed.html"><span class="doc">Funciones propuestas</span></a></p></li>
+<li><p><a class="reference internal" href="experimental.html"><span class="doc">Funciones Experimentales</span></a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="release-notes">
+<h2><a class="reference internal" href="release_notes.html"><span class="doc">Notas de versión</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
+<section id="pgrouting-4-0">
+<h3>pgRouting 4.0<a class="headerlink" href="#pgrouting-4-0" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contenido</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#pgrouting-4-0-0-alpha1-release-notes" id="id2">Notas de la versión de pgRouting 4.0.0-alpha1</a></p></li>
+<li><p><a class="reference internal" href="#all-releases" id="id3">Todas las versiones</a></p></li>
+</ul>
+</nav>
+<section id="pgrouting-4-0-0-alpha1-release-notes">
+<h4><a class="toc-backref" href="#id2" role="doc-backlink">Notas de la versión de pgRouting 4.0.0-alpha1</a><a class="headerlink" href="#pgrouting-4-0-0-alpha1-release-notes" title="Link to this heading">¶</a></h4>
+<p>Para ver todos los problemas y solicitudes de extracción cerrados para ésta versión, consulte la <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.0%22">Github milestone for 4.0.0</a></p>
+<nav class="contents local" id="id1">
+<p class="topic-title">Contenido</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#build" id="id4">Construir</a></p></li>
+<li><p><a class="reference internal" href="#documentation-build" id="id5">Construcción de la documentación</a></p></li>
+<li><p><a class="reference internal" href="#summary-of-changes-by-function" id="id6">Summary of changes by function</a></p></li>
+<li><p><a class="reference internal" href="#functions-promoted-to-official" id="id7">Funciones promovidas a oficial</a></p></li>
+<li><p><a class="reference internal" href="#signatures-promoted-to-official" id="id8">Firmas promovidas a oficial</a></p></li>
+<li><p><a class="reference internal" href="#new-experimental-functions" id="id9">Nuevas funciones experimentales.</a></p></li>
+<li><p><a class="reference internal" href="#sql-signatures-and-output-standardization" id="id10">SQL signatures and output standardization</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-signatures" id="id11">Eliminación de funciones SQL obsoletas</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-functions" id="id12">Eliminación de funciones obsoletas</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-internal-functions" id="id13">Eliminación de funciones internas SQL obsoletas</a></p></li>
+<li><p><a class="reference internal" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" id="id14">Resumen de funciones y firmas que ya no están en pgrouting</a></p></li>
+<li><p><a class="reference internal" href="#code-enhancements" id="id15">Mejoras del código</a></p></li>
+</ul>
+</nav>
+<section id="build">
+<h5><a class="toc-backref" href="#id4" role="doc-backlink">Construir</a><a class="headerlink" href="#build" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>C++ standard is std17</p>
+<ul>
+<li><p>Using this standard, all supported toolchains across our CI matrix will work.</p></li>
+<li><p>The code is not yet modified to use std17:</p>
+<ul>
+<li><p>If needed: <code class="docutils literal notranslate"><span class="pre">-DCMAKE_CXX_STANDARD=14</span></code> to lower the standard.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>La documentación del usuario se construye por defecto.</p></li>
+<li><p>La documentación doxygen se construye por defecto.</p></li>
+</ul>
+<p>Para desarrolladores:</p>
+<ul class="simple">
+<li><p>Set <cite>-DUSE_CLANG_TIDY=ON</cite> for clang tidy checks.</p></li>
+<li><p>Tidy checks are done on CI.</p></li>
+</ul>
+</section>
+<section id="documentation-build">
+<h5><a class="toc-backref" href="#id5" role="doc-backlink">Construcción de la documentación</a><a class="headerlink" href="#documentation-build" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>La documentación doxygen se construye por defecto</p></li>
+<li><p>La documentación HTML se crea por defecto</p></li>
+<li><p>Los idiomas traducidos (en, es, sv, zh_Hans) para documentación HTML se construyen por defecto</p></li>
+<li><p><cite>WITH-DOC</cite> is not used anymore</p></li>
+</ul>
+<p>La documentación de usuario no se crea cuando</p>
+<ul class="simple">
+<li><p>Sphinx is not found</p></li>
+<li><p>When all Sphinx formats are OFF</p>
+<ul>
+<li><p>To not build HTML default format: <cite>-DBUILD_HTML=OFF</cite></p></li>
+</ul>
+</li>
+<li><p>When all languages are OFF</p>
+<ul>
+<li><p>To build only English: <cite>-DES=OFF -DSV=OFF -DZH_HANS=OFF</cite></p></li>
+</ul>
+</li>
+<li><p>Documentation output location: <code class="docutils literal notranslate"><span class="pre">build/doc/_build/&lt;format&gt;</span></code></p>
+<ul>
+<li><p>For example: for HTML output is on <cite>build/doc/_build/html</cite> directory</p></li>
+</ul>
+</li>
+</ul>
+<p>La documentación de los desarrolladores no se construye cuando</p>
+<ul class="simple">
+<li><p>Doxygen is not found</p></li>
+<li><p>To not build Doxygen documentation: <cite>-DBUILD_DOXY=OFF</cite></p></li>
+</ul>
+</section>
+<section id="summary-of-changes-by-function">
+<h5><a class="toc-backref" href="#id6" role="doc-backlink">Summary of changes by function</a><a class="headerlink" href="#summary-of-changes-by-function" title="Link to this heading">¶</a></h5>
+<ul>
+<li><p>pgr_aStar</p>
+<ul class="simple">
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_aStarCost</p>
+<ul class="simple">
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_bandwidth</p>
+<ul class="simple">
+<li><p>Nueva función experimental.</p></li>
+</ul>
+</li>
+<li><p>pgr_bdAstar</p>
+<ul class="simple">
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_bdAstarCost</p>
+<ul class="simple">
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_bdDijkstra</p>
+<ul class="simple">
+<li><p>Las columnas de resultados estandarizadas a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_bdDijkstraCost</p>
+<ul class="simple">
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_bellmanFord</p>
+<ul class="simple">
+<li><p>Las columnas de resultados estandarizadas a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_binaryBreadthFirstSearch</p>
+<ul class="simple">
+<li><p>Las columnas de resultados estandarizadas a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_bipartite</p>
+<ul class="simple">
+<li><p>Columnas de resultados estandarizados a <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">color)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_boykovKolmogorov</p>
+<ul class="simple">
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_breadthFirstSearch</p>
+<p>:</p>
+<ul class="simple">
+<li><p>Columnas de resultados estandarizados a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_contraction</p>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_dagShortestpath</p>
+<ul class="simple">
+<li><p>Las columnas de resultados estandarizadas a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_depthFirstSearch</p>
+<p>:</p>
+<ul class="simple">
+<li><p>Columnas de resultados estandarizados a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_dijkstra</p>
+<ul class="simple">
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_dijkstraCost</p>
+<ul class="simple">
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_dijkstraNear</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_dijkstraNearCost</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_dijkstraVia</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_edgeColoring</p>
+<ul class="simple">
+<li><p>Columnas de resultados estandarizados a <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">color)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_edgeDisjointPaths</p>
+<ul class="simple">
+<li><p>Columnas de resultados estandarizados a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_edmondsKarp</p>
+<ul class="simple">
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_edwardMoore</p>
+<ul class="simple">
+<li><p>Las columnas de resultados estandarizadas a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+<p class="rubric">Versión 3.2.0</p>
+<ul class="simple">
+<li><p>Nueva firma experimental:</p>
+<ul>
+<li><p>pgr_edwardMoore(Combinaciones)</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Versión 3.0.0</p>
+<ul class="simple">
+<li><p>Nueva función experimental.</p></li>
+</ul>
+</li>
+<li><p>pgr_kingOrdering</p>
+<ul class="simple">
+<li><p>Nueva función experimental.</p></li>
+</ul>
+</li>
+<li><p>pgr_KSP</p>
+<ul class="simple">
+<li><p>Todas las firmas promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_maxCardinalityMatch</p>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_maxCardinalityMatch(text,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_maxFlow</p>
+<ul class="simple">
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_pushRelabel</p>
+<ul class="simple">
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+</ul>
+</li>
+<li><p>pgr_sequentialVertexColoring</p>
+<ul class="simple">
+<li><p>Columnas de resultados estandarizados a <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">color)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_sloanOrdering</p>
+<ul class="simple">
+<li><p>Nueva función experimental.</p></li>
+</ul>
+</li>
+<li><p>pgr_topologicalSort</p>
+<ul class="simple">
+<li><p>Columnas de resultados estandarizados a|result_node_order|</p></li>
+</ul>
+</li>
+<li><p>pgr_transitiveClosure</p>
+<ul class="simple">
+<li><p>Estandarización de columnas de resultados a <code class="docutils literal notranslate"><span class="pre">(node,targets)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_trsp</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
+<li><p>pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_trspVia</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_trspviavertices(text,anyarray,boolean,boolean,text)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_trspVia_withPoints</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+<li><p>El parámetro <strong>Lado de Manejo</strong> era opcional ahora es obligatorio posicional sin nombre.</p>
+<ul>
+<li><p>Valores válidos dependen del tipo de grafo</p></li>
+</ul>
+</li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+<li><p>pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_trsp_withPoints</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+<li><p>El parámetro <strong>driving_side</strong> era opcional ahora es obligatorio sin nombre.</p>
+<ul>
+<li><p>Valores válidos dependen del tipo de grafo</p></li>
+</ul>
+</li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)</p></li>
+<li><p>pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)</p></li>
+<li><p>pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)</p></li>
+<li><p>pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)</p></li>
+<li><p>pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_TSP</p>
+<ul class="simple">
+<li><p>Los resultados cambian dependiendo el orden de entrada</p></li>
+<li><p>Solo para grafos no dirigidos</p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double
+precision,double precision,double precision,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_TSPeuclidean</p>
+<ul class="simple">
+<li><p>Los resultados cambian dependiendo el orden de entrada</p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,
+integer,double precision,double precision,double precision,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_turnRestrictedPath</p>
+<ul class="simple">
+<li><p>Columnas de salida estandarizados a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+</li>
+<li><p>pgr_withPoints</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+<li><p>El parámetro <strong>driving_side</strong> era opcional ahora es obligatorio sin nombre.</p>
+<ul>
+<li><p>Valores válidos dependen del tipo de grafo</p></li>
+</ul>
+</li>
+<li><p>Las columnas de resultados estandarizadas a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)</p></li>
+<li><p>pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)</p></li>
+<li><p>pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)</p></li>
+<li><p>pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)</p></li>
+<li><p>pgr_withpoints(text,text,text,boolean,character,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_withPointsCost</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+<li><p>El parámetro <strong>Driving side</strong> es obligatorio sin nombre.</p>
+<ul>
+<li><p>Valores válidos dependen del tipo de grafo</p></li>
+</ul>
+</li>
+<li><p>Columnas de resultados estandarizados a <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,anyarray,bigint,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,bigint,anyarray,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,bigint,bigint,boolean,character)</p></li>
+<li><p>pgr_withpointscost(text,text,text,boolean,character)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_withPointsCostMatrix</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+<li><p>El parámetro <strong>driving_side</strong> era opcional ahora es obligatorio sin nombre.</p>
+<ul>
+<li><p>Valores válidos dependen del tipo de grafo</p></li>
+</ul>
+</li>
+<li><p>Columnas de resultados estandarizados a <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointscostmatrix(text,text,anyarray,boolean,character)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_withPointsDD</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)</p></li>
+<li><p>pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_withPointsKSP</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pgr_withPointsVia</p>
+<ul class="simple">
+<li><p>Función promovida a oficial.</p></li>
+<li><p>El parámetro <strong>driving_side</strong> era opcional ahora es obligatorio sin nombre.</p>
+<ul>
+<li><p>Valores válidos dependen del tipo de grafo</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="functions-promoted-to-official">
+<h5><a class="toc-backref" href="#id7" role="doc-backlink">Funciones promovidas a oficial</a><a class="headerlink" href="#functions-promoted-to-official" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>: pgr_trsp</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>: pgr_trsp</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>: pgr_trspVia</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>: pgr_trspVia_withPoints</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>: pgr_trsp_withPoints</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2700">#2700</a>: pgr_withPoints</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2700">#2700</a>: pgr_withPointsCost</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2700">#2700</a>: pgr_withPointsCostMatrix</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2700">#2700</a>: pgr_withPointsDD</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2700">#2700</a>: pgr_withPointsKSP</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2700">#2700</a>: pgr_withPointsVia</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2983">#2983</a>: pgr_dijkstraNear</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2983">#2983</a>: pgr_dijkstraNearCost</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2983">#2983</a>: pgr_dijkstraVia</p></li>
+</ul>
+</section>
+<section id="signatures-promoted-to-official">
+<h5><a class="toc-backref" href="#id8" role="doc-backlink">Firmas promovidas a oficial</a><a class="headerlink" href="#signatures-promoted-to-official" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_aStar(Combinaciones)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_aStarCost(Combinaciones)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_bdAstar(Combinaciones)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_bdAstarCost(Combinaciones)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_bdDijkstra(Combinaciones)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_bdDijkstraCost(Combinaciones)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_dijkstra(Combinaciones)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_dijkstraCost(Combinaciones)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_KSP(Todas las firmas)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_boykovKolmogorov(Combinaciones)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_edmondsKarp(Combinaciones)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_maxFlow(Combinaciones)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_pushRelabel(Combinaciones)</p></li>
+</ul>
+</section>
+<section id="new-experimental-functions">
+<h5><a class="toc-backref" href="#id9" role="doc-backlink">Nuevas funciones experimentales.</a><a class="headerlink" href="#new-experimental-functions" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>Métricas</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2951">#2951</a>: pgr_bandwidth</p></li>
+</ul>
+</li>
+<li><p>Ordenamiento</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2954">#2954</a>: pgr_kingOrdering</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2955">#2955</a>: pgr_sloanOrdering</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="sql-signatures-and-output-standardization">
+<h5><a class="toc-backref" href="#id10" role="doc-backlink">SQL signatures and output standardization</a><a class="headerlink" href="#sql-signatures-and-output-standardization" title="Link to this heading">¶</a></h5>
+<dl class="simple">
+<dt><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2904">#2904</a>: Estandarizar columnas de resultados de funciones con diferente salida</dt><dd><p>columnas dentro de las sobrecargas</p>
+</dd>
+</dl>
+<p class="rubric">Estandardizar de las columnas de resultados a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>: pgr_withPoints</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2906">#2906</a>: pgr_bdDijkstra</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2907">#2907</a>: pgr_bellmanFord</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2908">#2908</a>: pgr_binaryBreadthFirstSearch</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2910">#2910</a>: pgr_edwardMoore</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2913">#2913</a>: pgr_dagShortestPath</p></li>
+</ul>
+<p class="rubric">Estandardizar de las columnas de resultados a <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>: pgr_withPointsCost</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2905">#2905</a>: pgr_withPointsCostMatrix</p></li>
+</ul>
+<p class="rubric">Estandardizar de las columnas de resultados a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2909">#2909</a>: pgr_edgeDisjointPaths</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2909">#2909</a>: pgr_turnRestrictedPath</p></li>
+</ul>
+<p class="rubric">Estandardizar de las columnas de resultados a <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">color)</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2924">#2924</a>: pgr_edgeColoring</p></li>
+</ul>
+<p class="rubric">Estandardizar de las columnas de resultados a <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">color)</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2924">#2924</a>: pgr_bipartite</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2927">#2927</a>: pgr_sequentialVertexColoring</p></li>
+</ul>
+<p class="rubric">Estandardizar de las columnas de resultados a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2931">#2931</a>: pgr_breadthFirstSearch</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2931">#2931</a>: pgr_depthFirstSearch</p></li>
+</ul>
+<p class="rubric">Estandardizar de las columnas de resultados a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node)</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2934">#2934</a>: pgr_topologicalSort</p></li>
+</ul>
+<p class="rubric">Estandardizar de las columnas de resultados a <code class="docutils literal notranslate"><span class="pre">(node,targets)</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2934">#2934</a>: pgr_transitiveClosure</p></li>
+</ul>
+</section>
+<section id="removal-of-sql-deprecated-signatures">
+<h5><a class="toc-backref" href="#id11" role="doc-backlink">Eliminación de funciones SQL obsoletas</a><a class="headerlink" href="#removal-of-sql-deprecated-signatures" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2798">#2798</a>: pgr_contraction</p>
+<ul>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a>: pgr_trsp</p>
+<ul>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
+<li><p>pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a>: pgr_trspVia</p>
+<ul>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_trspviavertices(text,anyarray,boolean,boolean,text)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2700">#2700</a>: pgr_withPointsVia</p>
+<ul>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2888">#2888</a>: pgr_findCloseEdges</p>
+<ul>
+<li><p>pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)</p></li>
+<li><p>pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2890">#2890</a>: pgr_withPointsDD</p>
+<ul>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)</p></li>
+<li><p>pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2895">#2895</a>: pgr_withPointsKSP</p>
+<ul>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2899">#2899</a>: pgr_maxCardinalityMatch</p>
+<ul>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_maxCardinalityMatch(text,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2901">#2901</a>: pgr_TSP</p>
+<ul>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double
+precision,double precision,double precision,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2901">#2901</a>: pgr_TSPeuclidean</p>
+<ul>
+<li><p>Breaking change, signatures no longer available:</p>
+<ul>
+<li><p>pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,
+integer,double precision,double precision,double precision,boolean)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="removal-of-sql-deprecated-functions">
+<h5><a class="toc-backref" href="#id12" role="doc-backlink">Eliminación de funciones obsoletas</a><a class="headerlink" href="#removal-of-sql-deprecated-functions" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2681">#2681</a>: pgr_trspViaedges</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2682">#2682</a>: pgr_trspViaVertices</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2748">#2748</a>: pgr_alphaShape</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2751">#2751</a>: pgr_createTopology</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2752">#2752</a>: pgr_analyzeGraph</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2755">#2755</a>: pgr_analyzeOneWay</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2827">#2827</a>: pgr_createVerticesTable</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2886">#2886</a>: pgr_nodeNetwork</p></li>
+</ul>
+</section>
+<section id="removal-of-sql-deprecated-internal-functions">
+<h5><a class="toc-backref" href="#id13" role="doc-backlink">Eliminación de funciones internas SQL obsoletas</a><a class="headerlink" href="#removal-of-sql-deprecated-internal-functions" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2748">#2748</a> _pgr_alphaShape(text,double precision)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_checkVertTab(text,text[],integer,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_createIndex(text,text,text,integer,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_createIndex(text,text,text,text,integer,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2913">#2913</a> _pgr_dagShortestPath(text,anyarray,anyarray,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2913">#2913</a> _pgr_dagShortestPath(text,text,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2730">#2730</a> _pgr_dijkstraNear(text,anyarray,anyarray,bigint,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2730">#2730</a> _pgr_dijkstraNear(text,anyarray,bigint,bigint,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2730">#2730</a> _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2730">#2730</a> _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2730">#2730</a> _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2730">#2730</a> _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2730">#2730</a> _pgr_dijkstra(text,text,boolean,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2735">#2735</a> _pgr_drivingDistance(text,anyarray,double precision,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_endPoint(geometry)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> __pgr_getColumnName(text,text,integer,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> __pgr_getColumnName(text,text,text,integer,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_getcolumntype(text,text,integer,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> __pgr_getColumnType(text,text,text,integer,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> __pgr_getTableName(text,integer,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_isColumnIndexed(text,text,integer,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_isColumnIndexed(text,text,text,integer,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_isColumnIntable(text,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2745">#2745</a> _pgr_kruskal(text,anyarray,text,bigint,double precision)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2897">#2897</a> _pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2897">#2897</a> _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2897">#2897</a> _pgr_ksp(text,text,integer,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2899">#2899</a> _pgr_maxCardinalityMatch(text,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_msg(integer,text,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_onerror(boolean,integer,text,text,text,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_pointtoid(geometry,double precision,text,integer)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2743">#2743</a> _pgr_prim(text,anyarray,text,bigint,double precision)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_quote_ident(text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_startPoint(geometry)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a> _pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a> _pgr_trsp(text,text,anyarray,anyarray,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a> _pgr_trsp(text,text,anyarray,bigint,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a> _pgr_trsp(text,text,bigint,anyarray,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a> _pgr_trsp(text,text,bigint,bigint,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2682">#2682</a> _pgr_trspViaVertices(text,integer[],boolean,boolean,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> _pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> _pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> _pgr_trsp_withPoints(text,text,text,text,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2901">#2901</a> _pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2901">#2901</a> _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_versionLess(text,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2890">#2890</a> _pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2895">#2895</a> _pgr_withPointsKSP(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2895">#2895</a> _pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2895">#2895</a> _pgr_withPointsKSP(text,text,text,integer,character,boolean,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2741">#2741</a> _pgr_withPointsVia(text,bigint[],double precision[],boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2741">#2741</a> _pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a> _trsp(text,text,anyarray,anyarray,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a> _v4trsp(text,text,anyarray,anyarray,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a> _v4trsp(text,text,text,boolean)</p></li>
+</ul>
+</section>
+<section id="summary-of-functions-and-signatures-no-longer-on-pgrouting">
+<h5><a class="toc-backref" href="#id14" role="doc-backlink">Resumen de funciones y firmas que ya no están en pgrouting</a><a class="headerlink" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2748">#2748</a> pgr_alphashape(geometry,double precision)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2752">#2752</a> pgr_analyzegraph(text,double precision,text,text,text,text,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2755">#2755</a> pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2798">#2798</a> pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2751">#2751</a> pgr_createtopology(text,double precision,text,text,text,text,text,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2827">#2827</a> pgr_createverticestable(text,text,text,text,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2888">#2888</a> pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2888">#2888</a> pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2899">#2899</a> pgr_maxCardinalityMatch(text,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2886">#2886</a> pgr_nodenetwork(text,double precision,text,text,text,text,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a> pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a> pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2681">#2681</a> pgr_trspViaedges(text,integer[],double precision[],boolean,boolean,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2682">#2682</a> pgr_trspViaVertices(text,anyarray,boolean,boolean,text)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_trsp_withPoints(text,text,text,anyarray,bigint,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_trsp_withPoints(text,text,text,bigint,anyarray,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_trsp_withPoints(text,text,text,bigint,bigint,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2901">#2901</a> pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2901">#2901</a> pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_withPointsCostMatrix(text,text,anyarray,boolean,character)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_withPointsCost(text,text,anyarray,anyarray,boolean,character)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_withPointsCost(text,text,anyarray,bigint,boolean,character)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_withPointsCost(text,text,bigint,anyarray,boolean,character)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_withPointsCost(text,text,bigint,bigint,boolean,character)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_withPointsCost(text,text,text,boolean,character)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2890">#2890</a> pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,boolean,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2890">#2890</a> pgr_withPointsDD(text,text,bigint,double precision,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2895">#2895</a> pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_withPoints(text,text,anyarray,anyarray,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_withPoints(text,text,anyarray,bigint,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_withPoints(text,text,bigint,anyarray,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_withPoints(text,text,bigint,bigint,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_withPoints(text,text,text,boolean,character,boolean)</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2919">#2919</a> pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,boolean)</p></li>
+</ul>
+</section>
+<section id="code-enhancements">
+<h5><a class="toc-backref" href="#id15" role="doc-backlink">Mejoras del código</a><a class="headerlink" href="#code-enhancements" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>Eliminación de código C/C++ no utilizado</p></li>
+<li><p>Refactor the Script to build the update PostgreSQL file.</p></li>
+<li><p>One process &amp; driver for:</p>
+<ul>
+<li><p>allpairs: johnson and Floyd-Warshall</p></li>
+<li><p>Shortest path: Dijkstra and withPoints using Dijkstra</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Obsolescencia de funciones internas C/C++</p>
+<p>Deprecated functions are substituted by new function.</p>
+<ul class="simple">
+<li><p>_pgr_drivingDistance =&gt; _pgr_drivingDistancev4</p></li>
+<li><p>_pgr_withPointsDD =&gt; _pgr_withPointsddv4</p></li>
+<li><p>_pgr_kruskal =&gt; _pgr_kruskalv4</p></li>
+<li><p>_pgr_prim =&gt; _pgr_primv4</p></li>
+<li><p>_pgr_dijkstra =&gt; _pgr_dijkstra_v4</p></li>
+<li><p>_pgr_withPointsKSP =&gt; _pgr_withPointsKSP_v4</p></li>
+<li><p>_pgr_trspVia_withPoints =&gt; _pgr_trspVia_withPoints_v4</p></li>
+<li><p>_pgr_trsp_withPoints =&gt; _pgr_trsp_withPoints_v4</p></li>
+<li><p>_pgr_withPointsVia =&gt; _pgr_withPointsvia_v4</p></li>
+</ul>
+<p class="rubric">Funciones C/C++ internas en legado</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a> _trsp</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2683">#2683</a> _v4trsp</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2748">#2748</a> _pgr_alphaShape</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2913">#2913</a> _pgr_dagShortestPath</p></li>
+</ul>
+</section>
+</section>
+<section id="all-releases">
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Todas las versiones</a><a class="headerlink" href="#all-releases" title="Link to this heading">¶</a></h4>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#pgrouting-4">pgRouting 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#pgrouting-3">pgRouting 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#pgrouting-2">pgRouting 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#pgrouting-1">pgRouting 1</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.1.<br/>
+      Actualizado por última vez en dic 06, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

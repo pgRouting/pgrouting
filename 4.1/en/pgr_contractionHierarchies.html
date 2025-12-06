@@ -1,0 +1,817 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_contractionHierarchies - Experimental &#8212; pgRouting Manual (4.1-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=05423f42"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=1fc9dd11"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Dijkstra - Family of functions" href="dijkstra-family.html" />
+    <link rel="prev" title="pgr_contractionLinear - Proposed" href="pgr_contractionLinear.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.1</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> - Experimental</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+<li><a class="reference internal" href="#contraction-hierarchies-optional-parameters">Contraction hierarchies optional parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Result columns</a></li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#on-an-undirected-graph">On an undirected graph</a></li>
+<li><a class="reference internal" href="#on-an-undirected-graph-with-forbidden-vertices">On an undirected graph with forbidden vertices</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contraction-process-steps-details">Contraction process steps details</a><ul>
+<li><a class="reference internal" href="#shortcut-building-process">Shortcut building process</a></li>
+<li><a class="reference internal" href="#initialize-the-queue-with-a-first-vertices-order">Initialize the queue with a first vertices order</a></li>
+<li><a class="reference internal" href="#build-the-final-vertex-order">Build the final vertex order</a></li>
+<li><a class="reference internal" href="#add-shortcuts-to-the-initial-graph">Add shortcuts to the initial graph</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#use-the-contraction">Use the contraction</a><ul>
+<li><a class="reference internal" href="#build-the-contraction">Build the contraction</a></li>
+<li><a class="reference internal" href="#add-shortcuts-and-hierarchy-in-the-existing-tables">Add shortcuts and hierarchy in the existing tables</a></li>
+<li><a class="reference internal" href="#use-a-dijkstra-shortest-path-algorithm-on-it">Use a Dijkstra shortest path algorithm on it</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_contractionLinear.html" title="Previous Chapter: pgr_contractionLinear - Proposed"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contracti...</span>
+    </a>
+  </li>
+  <li>
+    <a href="dijkstra-family.html" title="Next Chapter: Dijkstra - Family of functions"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Dijkstra - Fa... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_contractionHierarchies','en'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-contractionhierarchies-experimental">
+<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> - Experimental<a class="headerlink" href="#pgr-contractionhierarchies-experimental" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> — Performs graph contraction according to
+the contraction hierarchies method and returns the contracted vertices and
+shortcut edges created.</p>
+<p class="rubric">Availability</p>
+<p class="rubric">Version 3.8.0</p>
+<ul class="simple">
+<li><p>New experimental function.</p></li>
+</ul>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>The contraction hierarchies method builds, from an initial order of the vertices,
+a hierarchical order, giving priority to some vertices during the processing of
+label fixing of shortest paths algorithms. Furthermore, the contraction
+hierarchies algorithm adds shortcut edges in the graph, that helps the shortest
+paths algorithm to follow the created hierarchical graph structure.</p>
+<p>The idea of the hierarchy is to put at a high priority level vertices that
+belong to the long distance network (highways for example in a road network)
+and to a low level of priority nodes that belong to the short distance network
+(arterials or secondary roads for example in road networks).</p>
+<p>The contraction hierarchies algorithm makes the assumption that there is already
+a valuable vertices order that is used to initialize the contraction process.
+As in most cases there is no valuable initial node ordering, we use the order
+given by vertices ID. Then, the contraction process is made on the basis of this
+first order to give the final hierarchy.</p>
+<p>The basic idea is to keep the vertices in a priority queue sorted by some
+estimate of how attractive is their contraction. The implemented case uses
+the metric called <em>edge difference</em>, which corresponds to the difference between
+the number of shortcuts produced by a vertex contraction and the number of incident
+edges in the graph before contraction (<code class="docutils literal notranslate"><span class="pre">#shortcuts</span> <span class="pre">-</span> <span class="pre">#incident</span> <span class="pre">edges</span></code>).</p>
+<p>Finally, the aim is to reduce the explored part of the graph, when using a
+bidirectional Dijkstra-like algorithm. The vertices order is used to feed the
+oriented search. The search is made without losing optimality.</p>
+<p>Finding an optimal vertices ordering for contraction is a difficult problem.
+Nevertheless, very simple local heuristics work quite well, according to Geisberger
+et al. [2]. The principle here is to a priori estimate the value of the
+<em>edge difference</em> and to contract the node at the top of the queue only if the
+new value of the metric keeps it at the top of the queue. Otherwise, it is
+reinserted in the queue, at its right place corresponding to the new metric value.</p>
+<p>The process is done on graphs having only edges with positive costs.</p>
+<p>It is necessary to remember that there are no deleted vertices with this function.
+At the end, the graph keeps every vertex it had, but has some added edges,
+corresponding to shortcuts. The vertices which have been contracted, to build
+the shortcut edges, are kept and hierarchically ordered.</p>
+<p>As for the other contraction methods, it does not return the full
+contracted graph, only the changes. They are here of two types:</p>
+<ul class="simple">
+<li><p>added shortcut edges, with negative identifiers;</p></li>
+<li><p>contracted nodes with an order.</p></li>
+</ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+</section>
+<section id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<p class="rubric">Summary</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> function has the following signature:</p>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_contractionHierarchies(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<strong>options</strong>])</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">forbidden]</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">metric,</span> <span class="pre">vertex_order)</span></code></div>
+</div>
+</div>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="contraction-hierarchies-optional-parameters">
+<h3>Contraction hierarchies optional parameters<a class="headerlink" href="#contraction-hierarchies-optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 21.6%" />
+<col style="width: 25.0%" />
+<col style="width: 8.0%" />
+<col style="width: 45.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><strong>Empty</strong></p></td>
+<td><p>Identifiers of vertices forbidden for contraction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p>True if the graph is directed, False otherwise.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifier of the edge.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifier of the first end point vertex of the edge.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifier of the second end point vertex of the edge.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td></td>
+<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p>-1</p></td>
+<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<ul class="simple">
+<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
+it’s not part of the graph.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="result-columns">
+<h2>Result columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">metric,</span> <span class="pre">vertex_order)</span></code></p>
+<p>The function returns many rows (one per vertex and one per shortcut edge created).
+The columns of the rows are:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p>Type of the <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> when the row is a vertex.</p>
+<ul>
+<li><p>Column <code class="docutils literal notranslate"><span class="pre">id</span></code> has a positive value</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">e</span></code> when the row is an edge.</p>
+<ul>
+<li><p>Column <code class="docutils literal notranslate"><span class="pre">id</span></code> has a negative value</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>All numbers on this column are <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code></p>
+<ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>‘v’</strong>.</p>
+<ul>
+<li><p>Identifier of the modified vertex.</p></li>
+</ul>
+</li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>‘e’</strong>.</p>
+<ul>
+<li><p>Decreasing sequence starting from <strong>-1</strong>.</p></li>
+<li><p>Representing a pseudo <cite>id</cite> as is not incorporated in the set of
+original edges.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Array of contracted vertex identifiers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>‘v’</strong>: <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>‘e’</strong>: Identifier of the source vertex of the current
+edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>‘v’</strong>: <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>‘e’</strong>: Identifier of the target vertex of the current
+edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>‘v’</strong>: <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>‘e’</strong>: Weight of the current edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>,
+<code class="docutils literal notranslate"><span class="pre">target</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">metric</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>‘v’</strong>: <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>‘e’</strong>: Weight of the current edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>,
+<code class="docutils literal notranslate"><span class="pre">target</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vertex_order</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>‘v’</strong>: <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>‘e’</strong>: Weight of the current edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>,
+<code class="docutils literal notranslate"><span class="pre">target</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<section id="on-an-undirected-graph">
+<h3>On an undirected graph<a class="headerlink" href="#on-an-undirected-graph" title="Link to this heading">¶</a></h3>
+<p>The following query shows the original data involved in the contraction
+operation on an undirected graph.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="n">FROM</span> <span class="n">edges</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="o">----+--------+--------+------</span>
+  <span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+  <span class="mi">3</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">5</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">6</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">11</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">12</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">13</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">14</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">16</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">17</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The original graph:</p>
+<a class="reference internal image-reference" href="_images/sample_graph.png"><img alt="_images/sample_graph.png" src="_images/sample_graph.png" style="width: 241.0px; height: 217.5px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p>building contraction hierarchies on the whole graph</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractionHierarchies</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">metric</span> <span class="o">|</span> <span class="n">vertex_order</span>
+<span class="o">------+----+---------------------+--------+--------+------+--------+--------------</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">3</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">10</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">4</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">15</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">14</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">6</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">5</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">8</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">9</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">9</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>            <span class="mi">2</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">10</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">7</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">11</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">8</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">12</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>            <span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">13</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">11</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">14</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">16</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">15</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">13</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">16</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">12</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">17</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">17</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>                 <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span>               <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">}</span>                 <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">11</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">21</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The results do not represent the contracted graph. They represent the changes
+done to the graph after applying the contraction algorithm and give the vertex
+order built by the algorithm, by ordering vertices according to the <em>edge difference</em>
+metric. As a consequence, vertices are all represented in the result
+(except of course forbidden ones). Only shortcut built by the algorithm are
+represented in the result.</p>
+<dl class="simple">
+<dt>After computing the contraction hierarchies, an order is now given to the vertices,</dt><dd><p>in order to be used with a specific Dijkstra algorithm (implementation coming
+in a future version), which speeds up the search.</p>
+</dd>
+</dl>
+<p>We obtain the contracted graph above:</p>
+<a class="reference internal image-reference" href="_images/sample_graph_with_shortcuts.png"><img alt="_images/sample_graph_with_shortcuts.png" src="_images/sample_graph_with_shortcuts.png" style="width: 241.0px; height: 217.5px;" /></a>
+<p>We can see without surprise that the vertices belonging to the shortcuts have a
+tendency to have a high priority level in the resulting vertices order.</p>
+</section>
+<section id="on-an-undirected-graph-with-forbidden-vertices">
+<h3>On an undirected graph with forbidden vertices<a class="headerlink" href="#on-an-undirected-graph-with-forbidden-vertices" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p>building contraction with a set of forbidden vertices</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractionHierarchies</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">forbidden</span> <span class="o">=&gt;</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">]);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span>  <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">metric</span> <span class="o">|</span> <span class="n">vertex_order</span>
+<span class="o">------+-----+---------------------+--------+--------+------+--------+--------------</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">4</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">8</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">5</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">15</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">12</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">13</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">7</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>            <span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">6</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">14</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>            <span class="mi">2</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">13</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">9</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">14</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">16</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">15</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">11</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">16</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>            <span class="mi">3</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">17</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">10</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>                 <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>                 <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>                 <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span>               <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">5</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span>               <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">6</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">}</span>                 <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">7</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">}</span>              <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">8</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">}</span>              <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">9</span> <span class="o">|</span> <span class="p">{</span><span class="mi">11</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">10</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">}</span>           <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">26</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="contraction-process-steps-details">
+<h2>Contraction process steps details<a class="headerlink" href="#contraction-process-steps-details" title="Link to this heading">¶</a></h2>
+<section id="shortcut-building-process">
+<h3>Shortcut building process<a class="headerlink" href="#shortcut-building-process" title="Link to this heading">¶</a></h3>
+<p>A vertex <code class="docutils literal notranslate"><span class="pre">v</span></code> is contracted by adding shortcuts replacing former paths of
+the form <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">v,</span> <span class="pre">w)</span></code> by an edge <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">w)</span></code>. The shortcut <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">w)</span></code> is only
+needed when <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">v,</span> <span class="pre">w)</span></code> is the only shortest path between <code class="docutils literal notranslate"><span class="pre">u</span></code> and <code class="docutils literal notranslate"><span class="pre">w</span></code>.</p>
+<p>When all shortcuts have been added for a given vertex <code class="docutils literal notranslate"><span class="pre">v</span></code>, the incident edges
+of <code class="docutils literal notranslate"><span class="pre">v</span></code> are removed and another vertex is contracted with the remaining graph.</p>
+<p>The procedure is destructive for the graph and a copy is made to be able
+to manipulate it again as a whole. The contraction process adds all discovered
+shortcuts to the edge set <code class="docutils literal notranslate"><span class="pre">E</span></code> and attributes a metric to each contracted
+vertex. This metric is giving what is called the <em>contraction hierarchy</em>.</p>
+</section>
+<section id="initialize-the-queue-with-a-first-vertices-order">
+<h3>Initialize the queue with a first vertices order<a class="headerlink" href="#initialize-the-queue-with-a-first-vertices-order" title="Link to this heading">¶</a></h3>
+<p>For each vertex <code class="docutils literal notranslate"><span class="pre">v</span></code> of the graph, a contraction of <code class="docutils literal notranslate"><span class="pre">v</span></code> is built:</p>
+<div class="graphviz"><img src="_images/graphviz-9fd9ee1aab9a22f28f605a75718cd929ec0e6c97.png" alt="graph G {
+    p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
+    v [style=filled; color=green];
+
+    rankdir=LR;
+    v -- p [dir=both, weight=10, arrowhead=vee, arrowtail=vee, label=&quot;  10&quot;];
+    v -- r [dir=both, weight=3, arrowhead=vee, arrowtail=vee, label=&quot;  3&quot;];
+    v -- u [dir=both, weight=6, arrowhead=vee, arrowtail=vee, label=&quot;  6&quot;];
+    p -- u [dir=both, weight=16, arrowhead=vee, arrowtail=vee, label=&quot;  12&quot;];
+    r -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+    u -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+    p -- r [dir=both, weight=13, arrowhead=vee, arrowtail=vee, label=&quot;  13&quot;, style=&quot;invis&quot;];
+    u -- r [dir=both, weight=9, arrowhead=vee, arrowtail=vee, label=&quot;  9&quot;, style=&quot;invis&quot;];
+}" class="graphviz" /></div>
+<table class="docutils align-default" style="width: 80">
+<thead>
+<tr class="row-odd"><th class="head"><p>Node</p></th>
+<th class="head"><p>Adjacent nodes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(v\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{p, r, u\}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{u, v\}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(u\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{p, v, w\}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(r\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{v, w\}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(w\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{r, u\}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Adjacent edges are removed.</p>
+<div class="graphviz"><img src="_images/graphviz-298ea1ea03dc93c82430c5562f4a507c0ae4bcc1.png" alt="graph G {
+    p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
+    v [style=filled; color=green];
+
+    rankdir=LR;
+    v -- p [dir=both, weight=10, arrowhead=vee, arrowtail=vee, label=&quot;  10&quot;, style=&quot;invis&quot;];
+    v -- r [dir=both, weight=3, arrowhead=vee, arrowtail=vee, label=&quot;  3&quot;, style=&quot;invis&quot;];
+    v -- u [dir=both, weight=6, arrowhead=vee, arrowtail=vee, label=&quot;  6&quot;, style=&quot;invis&quot;];
+    p -- r [dir=both, weight=13, arrowhead=vee, arrowtail=vee, label=&quot;  13&quot;, color=red, style=&quot;invis&quot;];
+    u -- r [dir=both, weight=9, arrowhead=vee, arrowtail=vee, label=&quot;  9&quot;, color=red, style=&quot;invis&quot;];
+    p -- u [dir=both, weight=16, arrowhead=vee, arrowtail=vee, label=&quot;  12&quot;];
+    r -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+    u -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+}" class="graphviz" /></div>
+<p>Shortcuts are built from predecessors of <code class="docutils literal notranslate"><span class="pre">v</span></code> to successors of <code class="docutils literal notranslate"><span class="pre">v</span></code> if and only if the path through <code class="docutils literal notranslate"><span class="pre">v</span></code>
+corresponds to the only shortest path between the predecessor and the successor of <code class="docutils literal notranslate"><span class="pre">v</span></code> in the graph.
+The <em>edge difference</em> metric here takes the value of -2.</p>
+<div class="graphviz"><img src="_images/graphviz-779d4ae5a962482f9d4175387305d21e406cb3c6.png" alt="graph G {
+    p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
+    v [style=filled; color=green];
+
+    rankdir=LR;
+    v -- p [dir=both, weight=10, arrowhead=vee, arrowtail=vee, label=&quot;  10&quot;, style=&quot;invis&quot;];
+    v -- r [dir=both, weight=3, arrowhead=vee, arrowtail=vee, label=&quot;  3&quot;, style=&quot;invis&quot;];
+    v -- u [dir=both, weight=6, arrowhead=vee, arrowtail=vee, label=&quot;  6&quot;, style=&quot;invis&quot;];
+    p -- r [dir=both, weight=13, arrowhead=vee, arrowtail=vee, label=&quot;  13&quot;, color=red];
+    u -- r [dir=both, weight=9, arrowhead=vee, arrowtail=vee, label=&quot;  9&quot;, color=red];
+    p -- u [dir=both, weight=16, arrowhead=vee, arrowtail=vee, label=&quot;  12&quot;];
+    r -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+    u -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+}" class="graphviz" /></div>
+<p>Then the following vertex is contracted. The process goes on until each node of the graph has been contracted.
+At the end, there are no more edges in the graph, which has been destroyed by the process.</p>
+<p>This first contraction will give a vertices order, given by ordering them in ascending order on
+the metric (edge difference). A total vertices order is built. If <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">&lt;</span> <span class="pre">v</span></code>, then <code class="docutils literal notranslate"><span class="pre">u</span></code>
+is less important than <code class="docutils literal notranslate"><span class="pre">v</span></code>. The algorithm keeps the vertices into a queue in this order.</p>
+<p>A hierarchy will now be constructed by contracting again the vertices in this order.</p>
+</section>
+<section id="build-the-final-vertex-order">
+<h3>Build the final vertex order<a class="headerlink" href="#build-the-final-vertex-order" title="Link to this heading">¶</a></h3>
+<p>Once the first order built, the algorithm uses it to browse the graph once again.
+For each vertex taken in the queue, the algorithm simulates contraction and calculates
+its edge difference. If the computed value is greater than the one of the next vertex to be
+contracted, then the algorithm puts it back in the queue (heuristic approach).
+Otherwise it contracts it permanently.</p>
+</section>
+<section id="add-shortcuts-to-the-initial-graph">
+<h3>Add shortcuts to the initial graph<a class="headerlink" href="#add-shortcuts-to-the-initial-graph" title="Link to this heading">¶</a></h3>
+<p>At the end, the algorithm takes the initial graph (before edges deletions) and adds the shortcut
+edges to it. It gives you the contracted graph, ready to use with a specialized Dijkstra algorithm,
+which takes into account the order of the nodes in the hierarchy.</p>
+</section>
+</section>
+<section id="use-the-contraction">
+<h2>Use the contraction<a class="headerlink" href="#use-the-contraction" title="Link to this heading">¶</a></h2>
+<section id="build-the-contraction">
+<h3>Build the contraction<a class="headerlink" href="#build-the-contraction" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
+<span class="n">FROM</span> <span class="n">pgr_contractionHierarchies</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">21</span>
+</pre></div>
+</div>
+</section>
+<section id="add-shortcuts-and-hierarchy-in-the-existing-tables">
+<h3>Add shortcuts and hierarchy in the existing tables<a class="headerlink" href="#add-shortcuts-and-hierarchy-in-the-existing-tables" title="Link to this heading">¶</a></h3>
+<p>Add new columns in the <cite>vertices</cite> and <cite>edges</cite> tables to store the results:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span>
+  <span class="n">ADD</span> <span class="n">is_new</span> <span class="n">BOOLEAN</span> <span class="n">DEFAULT</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">ADD</span> <span class="n">contracted_vertices</span> <span class="n">BIGINT</span><span class="p">[];</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span>
+  <span class="n">ADD</span> <span class="n">metric</span> <span class="n">INTEGER</span><span class="p">,</span>
+  <span class="n">ADD</span> <span class="n">vertex_order</span> <span class="n">INTEGER</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<p>Update and insert the results in the two tables.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">is_new</span><span class="p">)</span>
+  <span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">true</span>
+  <span class="n">FROM</span> <span class="n">contraction_results</span>
+  <span class="n">WHERE</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;e&#39;</span><span class="p">;</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
+  <span class="n">SET</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">vertex_order</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">vertex_order</span>
+  <span class="n">FROM</span> <span class="n">contraction_results</span> <span class="n">c</span>
+  <span class="n">WHERE</span> <span class="n">c</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;v&#39;</span> <span class="n">AND</span> <span class="n">c</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">vertices</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">17</span>
+</pre></div>
+</div>
+</section>
+<section id="use-a-dijkstra-shortest-path-algorithm-on-it">
+<h3>Use a Dijkstra shortest path algorithm on it<a class="headerlink" href="#use-a-dijkstra-shortest-path-algorithm-on-it" title="Link to this heading">¶</a></h3>
+<p>Then you can use any Dijkstra-like algorithm, waiting for the adapted one which
+will take into account the built vertices hierarchy. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="mi">1</span><span class="p">,</span> <span class="mi">17</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Family of functions</span></a></p></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.1.<br/>
+      Last updated on Dec 06, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

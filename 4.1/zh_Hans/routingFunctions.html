@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>函数族 &#8212; pgRouting Manual (4.1-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=11382bef"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=1fc9dd11"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="All Pairs - 函数族" href="allpairs-family.html" />
+    <link rel="prev" title="pgRouting 概念" href="pgRouting-concepts.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.1</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">函数族</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">函数族</a><ul>
+<li><a class="reference internal" href="#functions-by-categories">按类别划分的函数</a><ul>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgRouting-concepts.html" title="Previous Chapter: pgRouting 概念"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgRouting 概念</span>
+    </a>
+  </li>
+  <li>
+    <a href="allpairs-family.html" title="Next Chapter: All Pairs - 函数族"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">All Pairs - 函数族 &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('routingFunctions','zh-Hans'));  </script>
+            
+  <section id="function-families">
+<h1>函数族<a class="headerlink" href="#function-families" title="Link to this heading">¶</a></h1>
+<p><a class="reference internal" href="allpairs-family.html"><span class="doc">All Pairs - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Floyd-Warshall 算法。</p></li>
+<li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a> - Johnson算法</p></li>
+</ul>
+<p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a> - A* 最短路径算法。</p></li>
+<li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a> - 获取最短路径的总成本。</p></li>
+<li><p><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a> - 获取最短路径的成本矩阵。</p></li>
+</ul>
+<p><a class="reference internal" href="bdAstar-family.html"><span class="doc">双向A* - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a> - 获取路径的双向A*算法。</p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a> - 双向 A* 算法计算路径成本。</p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a> - 用于计算路径成本矩阵的双向 A* 算法。</p></li>
+</ul>
+<p><a class="reference internal" href="bdDijkstra-family.html"><span class="doc">双向 Dijkstra - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a> - 最短路径的双向 Dijkstra 算法。</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a> - 双向 Dijkstra 计算最短路径的成本</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a> - 创建最短路径成本矩阵的双向 Dijkstra 算法。</p></li>
+</ul>
+<p><a class="reference internal" href="components-family.html"><span class="doc">分量 - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_connectedComponents</span></a> - 无向图的连通分量。</p></li>
+<li><p><a class="reference internal" href="pgr_strongComponents.html"><span class="doc">pgr_strongComponents</span></a> - 有向图的强连通分量。</p></li>
+<li><p><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents</span></a> - 无向图的双连通分量。</p></li>
+<li><p><a class="reference internal" href="pgr_articulationPoints.html"><span class="doc">pgr_articulationPoints</span></a> - 无向图的铰接点。</p></li>
+<li><p><a class="reference internal" href="pgr_bridges.html"><span class="doc">pgr_bridges</span></a> - 无向图的桥。</p></li>
+</ul>
+<p><a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> - Dijkstra 最短路径算法。</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a> - 获取最短路径的总成本。</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> - 使用 pgr_dijkstra 创建成本矩阵。</p></li>
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - 使用 pgr_dijkstra 计算流域信息。</p></li>
+<li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - 使用 Yen 算法和 pgr_dijkstra 来获得 K 条最短路径。</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia</span></a> - 获取经过一系列顶点的路径。</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear</span></a> - 获取到最近顶点的路线。</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost</span></a> - 获取最近顶点的成本。</p></li>
+</ul>
+<p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - 仅使用 Push 和 Relabel 算法进行最大流量计算。</p></li>
+<li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Boykov 和 Kolmogorov 的边流动细节。</p></li>
+<li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - 带有边流量详细信息的 Edmonds 和 Karp 算法。</p></li>
+<li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - 推送和重新标记算法以及边流量的详细信息。</p></li>
+<li><p>Applications</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - 计算两组顶点之间的边不相交路径。</p></li>
+<li><p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - 计算图中的最大基数匹配。</p></li>
+</ul>
+</li>
+</ul>
+<p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_kruskal.html"><span class="doc">pgr_kruskal</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="metrics-family.html"><span class="doc">Metrics - 功能系列</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree</span></a> - 返回顶点集及其关联边数统计。</p></li>
+</ul>
+<p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="reference.html"><span class="doc">参考</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_version.html"><span class="doc">pgr_version</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_full_version.html"><span class="doc">pgr_full_version</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> - Routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a> - 有限制的通过顶点路由。</p></li>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a> - 有限制的顶点/点路由。</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a> - 通过有限制的顶点/点路由。</p></li>
+</ul>
+<p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>- 当输入作为矩阵单元信息给出时。</p></li>
+<li><p><a class="reference internal" href="pgr_TSPeuclidean.html"><span class="doc">pgr_TSPeuclidean</span></a> - 当输入是坐标时。</p></li>
+</ul>
+<p><a class="reference internal" href="utilities-family.html"><span class="doc">实用工具函数集</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - 根据边表信息提取顶点信息。</p></li>
+<li><p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> - 动态查找最近道路边线</p></li>
+<li><p><a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> - 断开相互交叉的几何图形。</p></li>
+<li><p><a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> - 断开相互（接近）接触的几何图形。</p></li>
+</ul>
+<p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - 函数族</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> - 从/到图表上任意点的路线。</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost</span></a> - 最短路径的成本。</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a> - 最短路径的成本。</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP</span></a> -K 最短路径。</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a> -行驶距离。</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a> - 通过路由</p></li>
+</ul>
+<section id="functions-by-categories">
+<h2>按类别划分的函数<a class="headerlink" href="#functions-by-categories" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="cost-category.html"><span class="doc">成本 - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="costMatrix-category.html"><span class="doc">成本矩阵 - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">驾驶距离 - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - 基于 Dijkstra 算法的行驶距离</p></li>
+<li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a> - 基于Prim算法的行驶距离</p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a> - 基于Kruskal算法的行驶距离</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a> - 基于 pgr_withPoints 的行驶距离</p></li>
+</ul>
+<p><a class="reference internal" href="KSP-category.html"><span class="doc">K最短路径 - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - 基于 pgr_dijkstra 的 Yen 算法</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP</span></a> - 基于 pgr_withPoints 的 Yen 算法</p></li>
+</ul>
+<p><a class="reference internal" href="spanningTree-category.html"><span class="doc">生成树 - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - 函数族</span></a></p></li>
+<li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - 函数族</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="BFS-category.html"><span class="doc">BFS - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="DFS-category.html"><span class="doc">DFS - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints - 类别</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - 函数族</span></a> - 基于 Dijkstra 算法的函数。</p></li>
+<li><p>来自 <a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - 函数族</span></a>:</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a> - 有限制的顶点/点路由。</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a> - 通过有限制的顶点/点路由。</p></li>
+</ul>
+</li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<section id="see-also">
+<h3>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h3>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.1.<br/>
+      最后更新于 12月 06, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_contractionHierarchies - 实验性 &#8212; pgRouting Manual (4.1-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=11382bef"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=1fc9dd11"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Dijkstra - 函数族" href="dijkstra-family.html" />
+    <link rel="prev" title="pgr_contractionLinear - 提议中" href="pgr_contractionLinear.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.1</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 概念</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">提议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验性函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发布说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> - 实验性</a><ul>
+<li><a class="reference internal" href="#description">描述</a></li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a><ul>
+<li><a class="reference internal" href="#optional-parameters">可选参数</a></li>
+<li><a class="reference internal" href="#contraction-hierarchies-optional-parameters">收缩层级的可选参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#examples">示例</a><ul>
+<li><a class="reference internal" href="#on-an-undirected-graph">在无向图上</a></li>
+<li><a class="reference internal" href="#on-an-undirected-graph-with-forbidden-vertices">在有禁止顶点的无向图上</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contraction-process-steps-details">收缩过程步骤详情</a><ul>
+<li><a class="reference internal" href="#shortcut-building-process">快捷构建过程</a></li>
+<li><a class="reference internal" href="#initialize-the-queue-with-a-first-vertices-order">用初始顶点顺序初始化队列</a></li>
+<li><a class="reference internal" href="#build-the-final-vertex-order">构建最终顶点顺序</a></li>
+<li><a class="reference internal" href="#add-shortcuts-to-the-initial-graph">向初始图形添加快捷边</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#use-the-contraction">使用缩略语</a><ul>
+<li><a class="reference internal" href="#build-the-contraction">构建收缩</a></li>
+<li><a class="reference internal" href="#add-shortcuts-and-hierarchy-in-the-existing-tables">在现有表中添加快捷边和层级</a></li>
+<li><a class="reference internal" href="#use-a-dijkstra-shortest-path-algorithm-on-it">对其使用 Dijkstra 最短路径算法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_contractionLinear.html" title="Previous Chapter: pgr_contractionLinear - 提议中"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contracti...</span>
+    </a>
+  </li>
+  <li>
+    <a href="dijkstra-family.html" title="Next Chapter: Dijkstra - 函数族"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Dijkstra - 函数族 &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_contractionHierarchies','zh-Hans'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-contractionhierarchies-experimental">
+<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> - 实验性<a class="headerlink" href="#pgr-contractionhierarchies-experimental" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> — 根据收缩层级方法执行图收缩，并返回收缩后的顶点和生成的快捷边。</p>
+<p class="rubric">可用性</p>
+<p class="rubric">Version 3.8.0</p>
+<ul class="simple">
+<li><p>新实验性功能。</p></li>
+</ul>
+<section id="description">
+<h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>收缩层次法是从顶点的初始顺序出发建立层次顺序的，在最短路径算法的标签固定处理过程中优先考虑某些顶点。此外，收缩层次算法还能在图中添加捷径边，帮助最短路径算法遵循所创建的层次图结构。</p>
+<p>层次结构的原理是将属于长距离网络（例如公路网络中的高速公路）的顶点置于高优先级，而将属于短距离网络（例如公路网络中的主干道或次干路）的节点置于低优先级。</p>
+<p>收缩层次结构算法的假设是，已经存在一个有价值的顶点顺序，用于初始化收缩过程。由于大多数情况下没有有价值的初始节点排序，因此我们使用顶点 ID 给出的顺序。然后，在这个首序的基础上进行收缩处理，得到最终的层次结构。</p>
+<p>其基本原理是将顶点按其收缩吸引力的估计值排序，保留在优先队列中。实施案例中使用的度量称为 <em>边差</em> ，相当于顶点收缩产生的捷径数量与收缩前图中附带边的数量之差 (<code class="docutils literal notranslate"><span class="pre">#shortcuts</span> <span class="pre">-</span> <span class="pre">#incident</span> <span class="pre">edges</span></code>).</p>
+<p>最后，在使用类似 Dijkstra 的双向算法时，目的是减少图中已探索的部分。顶点顺序用于为定向搜索提供信息。搜索过程不会失去最优性。</p>
+<p>为收缩寻找最佳顶点排序是一个难题。然而，根据 Geisberger 等人的研究 [2]，非常简单的局部启发式方法就能很好地解决这个问题。这种方法的原理是先验地估算 <em>边差</em> 的值，只有当新的度量值使位于队列顶端的节点保持在队列顶端时，才对其进行收缩。否则，它就会被重新插入队列，位于与新度量值相对应的正确位置。</p>
+<p>这个过程是在只有边的成本为正值的图形上完成的。</p>
+<p>需要注意的是，此函数不会删除任何顶点。最终图中保留了原有的所有顶点，但新增了一些对应于快捷边的边。为构建这些快捷边而收缩的顶点也会被保留，并按层级顺序排列。</p>
+<p>至于其他收缩方法，它不会返回完整的收缩图，只会返回变化。它们有两种类型：</p>
+<ul class="simple">
+<li><p>增加了带有负标识符的快捷边;</p></li>
+<li><p>带有顺序的收缩节点。</p></li>
+</ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+</section>
+<section id="signatures">
+<h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<p class="rubric">总结</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> 函数具有以下签名：</p>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_contractionHierarchies(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<strong>options</strong>])</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">forbidden]</span></code></div>
+<div class="line">返回集合 <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost)</span></code></div>
+</div>
+</div>
+</section>
+<section id="parameters">
+<h2>参数<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>参数</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> 如下所述。</p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>可选参数<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite> 。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="contraction-hierarchies-optional-parameters">
+<h3>收缩层级的可选参数<a class="headerlink" href="#contraction-hierarchies-optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 21.6%" />
+<col style="width: 25.0%" />
+<col style="width: 8.0%" />
+<col style="width: 45.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><strong>Empty</strong></p></td>
+<td><p>禁止收缩的顶点标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p>如果图是有向的，则为 True，否则为 False。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>内部查询<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>边的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>边的第一个端点顶点的标识符。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>边的第二个端点顶点的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td></td>
+<td><p>edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p>-1</p></td>
+<td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
+<ul class="simple">
+<li><p>当为负时：edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) 不存在，因此它不是图的一部分。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>其中：</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="result-columns">
+<h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>返回集合 <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost)</span></code></p>
+<p>该函数返回多行（每个顶点一行，每创建一条快捷边一行）。行的列数为：</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">id</span></code> 的类型。</p>
+<ul class="simple">
+<li><p>当该行表示一个顶点时，列为 <code class="docutils literal notranslate"><span class="pre">v</span></code> 。</p>
+<ul>
+<li><p>列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 为正值</p></li>
+</ul>
+</li>
+<li><p>当行是边时，则为 <code class="docutils literal notranslate"><span class="pre">e</span></code> 。</p>
+<ul>
+<li><p>列 <code class="docutils literal notranslate"><span class="pre">id</span></code> 的值为负数</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>此列中的所有数字都是 <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code></p>
+<ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'v'</strong> 时。</p>
+<ul>
+<li><p>修改顶点的标识符。</p></li>
+</ul>
+</li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时。</p>
+<ul>
+<li><p>从 <strong>-1</strong> 开始递减序列。</p></li>
+<li><p>表示未包含在原始边集中的伪`id` 。</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>收缩顶点标识符数组。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'v'</strong>: <span class="math notranslate nohighlight">\(-1\)</span> 时</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) 的source顶点标识符。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'v'</strong>: <span class="math notranslate nohighlight">\(-1\)</span> 时</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) 的target 顶点标识符。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'v'</strong>: <span class="math notranslate nohighlight">\(-1\)</span> 时</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) 的权重。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">metric</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'v'</strong>: <span class="math notranslate nohighlight">\(-1\)</span> 时</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) 的权重。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vertex_order</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'v'</strong>: <span class="math notranslate nohighlight">\(-1\)</span> 时</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>'e'</strong> 时：当前边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) 的权重。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples">
+<h2>示例<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<section id="on-an-undirected-graph">
+<h3>在无向图上<a class="headerlink" href="#on-an-undirected-graph" title="Link to this heading">¶</a></h3>
+<p>下面的查询显示了在无向图上进行收缩操作所涉及的原始数据。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="n">FROM</span> <span class="n">edges</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="o">----+--------+--------+------</span>
+  <span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+  <span class="mi">3</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">5</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">6</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">11</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">12</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">13</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">14</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">16</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">17</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>原始图：</p>
+<a class="reference internal image-reference" href="_images/sample_graph.png"><img alt="_images/sample_graph.png" src="_images/sample_graph.png" style="width: 241.0px; height: 217.5px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">示例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>在整个图形上建立收缩层次结构</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractionHierarchies</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">metric</span> <span class="o">|</span> <span class="n">vertex_order</span>
+<span class="o">------+----+---------------------+--------+--------+------+--------+--------------</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">3</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">10</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">4</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">15</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">14</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">6</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">5</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">8</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">9</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">9</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>            <span class="mi">2</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">10</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">7</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">11</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">8</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">12</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>            <span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">13</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">11</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">14</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">16</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">15</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">13</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">16</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">12</span>
+ <span class="n">v</span>    <span class="o">|</span> <span class="mi">17</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">17</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>                 <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span>               <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">}</span>                 <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">11</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">21</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>结果并不代表收缩后的图形。它们代表的是应用收缩算法后对图所做的改变，并根据 <em>边差</em> 度量对顶点进行排序，从而给出算法建立的顶点顺序。因此，结果中包含了所有顶点（当然禁止的顶点除外）。结果中只显示算法建立的捷径。</p>
+<dl class="simple">
+<dt>计算完收缩层次后，现在要给顶点排序，</dt><dd><p>是为了与一种特定的 Dijkstra 算法（在未来版本中实现）配合使用，从而加快搜索速度。</p>
+</dd>
+</dl>
+<p>我们得到了上面的收缩图：</p>
+<a class="reference internal image-reference" href="_images/sample_graph_with_shortcuts.png"><img alt="_images/sample_graph_with_shortcuts.png" src="_images/sample_graph_with_shortcuts.png" style="width: 241.0px; height: 217.5px;" /></a>
+<p>我们可以毫不意外地看到，属于捷径的顶点在结果顶点顺序中往往具有较高的优先级。</p>
+</section>
+<section id="on-an-undirected-graph-with-forbidden-vertices">
+<h3>在有禁止顶点的无向图上<a class="headerlink" href="#on-an-undirected-graph-with-forbidden-vertices" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">示例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>带有一组禁止顶点的建筑收缩</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractionHierarchies</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">forbidden</span> <span class="o">=&gt;</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">]);</span>
+ <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span>  <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">metric</span> <span class="o">|</span> <span class="n">vertex_order</span>
+<span class="o">------+-----+---------------------+--------+--------+------+--------+--------------</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">4</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">8</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">5</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">15</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">12</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">13</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">7</span>
+ <span class="n">v</span>    <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>            <span class="mi">1</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">6</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">14</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>            <span class="mi">2</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">13</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">9</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">14</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span> <span class="o">|</span>           <span class="mi">16</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">15</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">11</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">16</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>            <span class="mi">3</span>
+ <span class="n">v</span>    <span class="o">|</span>  <span class="mi">17</span> <span class="o">|</span> <span class="p">{}</span>                  <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">10</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>                 <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>                 <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>                 <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span>               <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">5</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span>               <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">6</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">}</span>                 <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">7</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">}</span>              <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">8</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">}</span>              <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span>  <span class="o">-</span><span class="mi">9</span> <span class="o">|</span> <span class="p">{</span><span class="mi">11</span><span class="p">}</span>                <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="n">e</span>    <span class="o">|</span> <span class="o">-</span><span class="mi">10</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">}</span>           <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">26</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="contraction-process-steps-details">
+<h2>收缩过程步骤详情<a class="headerlink" href="#contraction-process-steps-details" title="Link to this heading">¶</a></h2>
+<section id="shortcut-building-process">
+<h3>快捷构建过程<a class="headerlink" href="#shortcut-building-process" title="Link to this heading">¶</a></h3>
+<p>顶点 <code class="docutils literal notranslate"><span class="pre">v</span></code> 通过添加快捷边来进行收缩，替换形式为 <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">v,</span> <span class="pre">w)</span></code> 的原路径为一条边 <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">w)</span></code> 。仅当 <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">v,</span> <span class="pre">w)</span></code> 是 <code class="docutils literal notranslate"><span class="pre">u</span></code> 和 <code class="docutils literal notranslate"><span class="pre">w</span></code> 之间唯一的最短路径时，才需要快捷边 <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">w)</span></code> 。</p>
+<p>当为给定顶点 <code class="docutils literal notranslate"><span class="pre">v</span></code> 添加完所有快捷边后， <code class="docutils literal notranslate"><span class="pre">v</span></code> 的相关边会被移除，接着对剩余图中的另一个顶点进行收缩。</p>
+<p>这个过程对图形是破坏性的，我们会制作一个副本，以便再次对其进行整体操作。收缩过程会将所有发现的捷径添加到边集 <code class="docutils literal notranslate"><span class="pre">E</span></code> 中，并为每个收缩顶点赋予一个度量值。这个度量值就是所谓的 <em>收缩层次</em> 。</p>
+</section>
+<section id="initialize-the-queue-with-a-first-vertices-order">
+<h3>用初始顶点顺序初始化队列<a class="headerlink" href="#initialize-the-queue-with-a-first-vertices-order" title="Link to this heading">¶</a></h3>
+<p>对于图中的每个顶点 <code class="docutils literal notranslate"><span class="pre">v</span></code> ，都会建立一个 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的收缩：</p>
+<div class="graphviz"><img src="_images/graphviz-9fd9ee1aab9a22f28f605a75718cd929ec0e6c97.png" alt="graph G {
+    p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
+    v [style=filled; color=green];
+
+    rankdir=LR;
+    v -- p [dir=both, weight=10, arrowhead=vee, arrowtail=vee, label=&quot;  10&quot;];
+    v -- r [dir=both, weight=3, arrowhead=vee, arrowtail=vee, label=&quot;  3&quot;];
+    v -- u [dir=both, weight=6, arrowhead=vee, arrowtail=vee, label=&quot;  6&quot;];
+    p -- u [dir=both, weight=16, arrowhead=vee, arrowtail=vee, label=&quot;  12&quot;];
+    r -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+    u -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+    p -- r [dir=both, weight=13, arrowhead=vee, arrowtail=vee, label=&quot;  13&quot;, style=&quot;invis&quot;];
+    u -- r [dir=both, weight=9, arrowhead=vee, arrowtail=vee, label=&quot;  9&quot;, style=&quot;invis&quot;];
+}" class="graphviz" /></div>
+<table class="docutils align-default" style="width: 80">
+<thead>
+<tr class="row-odd"><th class="head"><p>节点</p></th>
+<th class="head"><p>相邻节点</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(v\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{p, r, u\}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{u, v\}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(u\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{p, v, w\}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(r\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{v, w\}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(w\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{r, u\}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>相邻边被移除。</p>
+<div class="graphviz"><img src="_images/graphviz-298ea1ea03dc93c82430c5562f4a507c0ae4bcc1.png" alt="graph G {
+    p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
+    v [style=filled; color=green];
+
+    rankdir=LR;
+    v -- p [dir=both, weight=10, arrowhead=vee, arrowtail=vee, label=&quot;  10&quot;, style=&quot;invis&quot;];
+    v -- r [dir=both, weight=3, arrowhead=vee, arrowtail=vee, label=&quot;  3&quot;, style=&quot;invis&quot;];
+    v -- u [dir=both, weight=6, arrowhead=vee, arrowtail=vee, label=&quot;  6&quot;, style=&quot;invis&quot;];
+    p -- r [dir=both, weight=13, arrowhead=vee, arrowtail=vee, label=&quot;  13&quot;, color=red, style=&quot;invis&quot;];
+    u -- r [dir=both, weight=9, arrowhead=vee, arrowtail=vee, label=&quot;  9&quot;, color=red, style=&quot;invis&quot;];
+    p -- u [dir=both, weight=16, arrowhead=vee, arrowtail=vee, label=&quot;  12&quot;];
+    r -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+    u -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+}" class="graphviz" /></div>
+<p>只有当通过 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的路径是 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的前驱和后继之间唯一的最短路径时，才会从 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的前驱到后继构建快捷边。这里的 <em>边差</em> 度量值为-2。</p>
+<div class="graphviz"><img src="_images/graphviz-779d4ae5a962482f9d4175387305d21e406cb3c6.png" alt="graph G {
+    p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
+    v [style=filled; color=green];
+
+    rankdir=LR;
+    v -- p [dir=both, weight=10, arrowhead=vee, arrowtail=vee, label=&quot;  10&quot;, style=&quot;invis&quot;];
+    v -- r [dir=both, weight=3, arrowhead=vee, arrowtail=vee, label=&quot;  3&quot;, style=&quot;invis&quot;];
+    v -- u [dir=both, weight=6, arrowhead=vee, arrowtail=vee, label=&quot;  6&quot;, style=&quot;invis&quot;];
+    p -- r [dir=both, weight=13, arrowhead=vee, arrowtail=vee, label=&quot;  13&quot;, color=red];
+    u -- r [dir=both, weight=9, arrowhead=vee, arrowtail=vee, label=&quot;  9&quot;, color=red];
+    p -- u [dir=both, weight=16, arrowhead=vee, arrowtail=vee, label=&quot;  12&quot;];
+    r -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+    u -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
+}" class="graphviz" /></div>
+<p>然后收缩下面的顶点。这个过程一直持续到图中的每个节点都被收缩为止。最后，图中就不再有边了，这个过程也就结束了。</p>
+<p>第一次收缩将给出一个顶点顺序，根据度量（边差值）按升序排列。这样就得到了一个总的顶点顺序。如果 <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">&lt;</span> <span class="pre">v</span></code> ，那么 <code class="docutils literal notranslate"><span class="pre">u</span></code> 就比 <code class="docutils literal notranslate"><span class="pre">v</span></code> 重要。算法会按此顺序将顶点保存到队列中。</p>
+<p>现在，我们将按照这个顺序再次收缩顶点，从而构建一个层次结构。</p>
+</section>
+<section id="build-the-final-vertex-order">
+<h3>构建最终顶点顺序<a class="headerlink" href="#build-the-final-vertex-order" title="Link to this heading">¶</a></h3>
+<p>一旦建立了第一顺序，算法就会利用它再次浏览图形。对于队列中的每个顶点，算法都会模拟收缩并计算其边差。如果计算出的值大于下一个要收缩的顶点的值，算法就会把它放回队列（启发式方法）。否则，该顶点将永久收缩。</p>
+</section>
+<section id="add-shortcuts-to-the-initial-graph">
+<h3>向初始图形添加快捷边<a class="headerlink" href="#add-shortcuts-to-the-initial-graph" title="Link to this heading">¶</a></h3>
+<p>最后，算法会使用初始图形（删除边之前）并添加快捷边。这样就得到了收缩后的图形，可以使用专门的 Dijkstra 算法，该算法会考虑层次结构中节点的顺序。</p>
+</section>
+</section>
+<section id="use-the-contraction">
+<h2>使用缩略语<a class="headerlink" href="#use-the-contraction" title="Link to this heading">¶</a></h2>
+<section id="build-the-contraction">
+<h3>构建收缩<a class="headerlink" href="#build-the-contraction" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
+<span class="n">FROM</span> <span class="n">pgr_contractionHierarchies</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">21</span>
+</pre></div>
+</div>
+</section>
+<section id="add-shortcuts-and-hierarchy-in-the-existing-tables">
+<h3>在现有表中添加快捷边和层级<a class="headerlink" href="#add-shortcuts-and-hierarchy-in-the-existing-tables" title="Link to this heading">¶</a></h3>
+<p>在 <cite>vertices</cite> 和 <cite>edges</cite> 表中添加新列来存储结果：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span>
+  <span class="n">ADD</span> <span class="n">is_new</span> <span class="n">BOOLEAN</span> <span class="n">DEFAULT</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">ADD</span> <span class="n">contracted_vertices</span> <span class="n">BIGINT</span><span class="p">[];</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span>
+  <span class="n">ADD</span> <span class="n">metric</span> <span class="n">INTEGER</span><span class="p">,</span>
+  <span class="n">ADD</span> <span class="n">vertex_order</span> <span class="n">INTEGER</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<p>更新并插入结果到两个表中。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">is_new</span><span class="p">)</span>
+  <span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">true</span>
+  <span class="n">FROM</span> <span class="n">contraction_results</span>
+  <span class="n">WHERE</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;e&#39;</span><span class="p">;</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
+  <span class="n">SET</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">vertex_order</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">vertex_order</span>
+  <span class="n">FROM</span> <span class="n">contraction_results</span> <span class="n">c</span>
+  <span class="n">WHERE</span> <span class="n">c</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;v&#39;</span> <span class="n">AND</span> <span class="n">c</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">vertices</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">17</span>
+</pre></div>
+</div>
+</section>
+<section id="use-a-dijkstra-shortest-path-algorithm-on-it">
+<h3>对其使用 Dijkstra 最短路径算法<a class="headerlink" href="#use-a-dijkstra-shortest-path-algorithm-on-it" title="Link to this heading">¶</a></h3>
+<p>然后，你可以使用任何类似Dijkstra的算法，等待适应的算法，它将考虑构建的顶点层级。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="mi">1</span><span class="p">,</span> <span class="mi">17</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a></p></li>
+</ul>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.1.<br/>
+      最后更新于 12月 06, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

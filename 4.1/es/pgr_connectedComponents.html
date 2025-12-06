@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_connectedComponents &#8212; pgRouting Manual (4.1-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=7a93a065"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=1fc9dd11"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="pgr_strongComponents" href="pgr_strongComponents.html" />
+    <link rel="prev" title="Componentes - Familia de funciones" href="components-family.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.1</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code></a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
+<li><a class="reference internal" href="#connecting-disconnected-components">Conectando componentes desconectados</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="components-family.html" title="Previous Chapter: Componentes - Familia de funciones"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Componentes -...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_strongComponents.html" title="Next Chapter: pgr_strongComponents"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_strongComponents &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_connectedComponents','es'));  </script>
+            
+  <div class="line-block" id="index-0">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-connectedcomponents">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code><a class="headerlink" href="#pgr-connectedcomponents" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code> — Componentes conectados de un grafo no dirigido mediante un enfoque basado en DFS.</p>
+<p class="rubric">Disponibilidad</p>
+<ul class="simple">
+<li><p>Versión 3.0.0</p>
+<ul>
+<li><p>Las columnas de resultados cambian:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_seq</span></code> se elimina</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seq</span></code> cambió el tipo a <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>”</p></li>
+</ul>
+</li>
+<li><p>Función promovida a oficial.</p></li>
+</ul>
+</li>
+<li><p>Versión 2.5.0</p>
+<ul>
+<li><p>Nueva función experimental.</p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Un componente conectado de un gráfico no direccionado es un conjunto de vértices que son todos accesibles entre sí.</p>
+<p><strong>Las principales características son:</strong></p>
+<ul class="simple">
+<li><p>Funciona para grafos <strong>no dirigidos</strong>.</p></li>
+<li><p>Los componentes se describen mediante vértices</p></li>
+<li><p>Los valores regresados se ordenan:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">component</span></code> ascendente</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">node</span></code> ascendente</p></li>
+</ul>
+</li>
+<li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
+</ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+</section>
+<section id="signatures">
+<h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_connectedComponents(<a class="reference internal" href="#edges-sql">SQL de aristas</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">node)</span></code></div>
+<div class="line">O CONJUNTO VACÍO</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Los componentes conectados del grafo</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
+<span class="o">-----+-----------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span>
+   <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span>
+   <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span>
+   <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">7</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span>
+   <span class="mi">8</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
+   <span class="mi">9</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span>
+  <span class="mi">10</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span>
+  <span class="mi">11</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span>
+  <span class="mi">12</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span>
+  <span class="mi">13</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span>
+  <span class="mi">14</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">15</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span>
+  <span class="mi">16</span> <span class="o">|</span>        <span class="mi">13</span> <span class="o">|</span>   <span class="mi">13</span>
+  <span class="mi">17</span> <span class="o">|</span>        <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span>
+<span class="p">(</span><span class="mi">17</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cc_sampledata.png"><img alt="_images/cc_sampledata.png" src="_images/cc_sampledata.png" style="width: 255.0px; height: 217.25px;" /></a>
+</figure>
+</section>
+<section id="parameters">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> descritas más adelante.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inner-queries">
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td><p>-1</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<ul class="simple">
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="result-columns">
+<h2>Columnas de resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">node)</span></code></p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">component</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador de componente.</p>
+<ul class="simple">
+<li><p>Continene le valor mínimo de identificador de nodo en el componente.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice que pertenece al <code class="docutils literal notranslate"><span class="pre">component</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<section id="connecting-disconnected-components">
+<h3>Conectando componentes desconectados<a class="headerlink" href="#connecting-disconnected-components" title="Link to this heading">¶</a></h3>
+<p>Para obtener la conectividad del grafo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
+<span class="o">-----+-----------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span>
+   <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span>
+   <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span>
+   <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">7</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span>
+   <span class="mi">8</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
+   <span class="mi">9</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span>
+  <span class="mi">10</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span>
+  <span class="mi">11</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span>
+  <span class="mi">12</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span>
+  <span class="mi">13</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span>
+  <span class="mi">14</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">15</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span>
+  <span class="mi">16</span> <span class="o">|</span>        <span class="mi">13</span> <span class="o">|</span>   <span class="mi">13</span>
+  <span class="mi">17</span> <span class="o">|</span>        <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span>
+<span class="p">(</span><span class="mi">17</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Existen tres formas básicas de conectar los componentes:</p>
+<ul class="simple">
+<li><p>Del vértice al punto inicial de la arista</p></li>
+<li><p>Desde el vértice hasta el punto final de la arista</p></li>
+<li><p>Del vértice al vértice más cercano de la arista</p>
+<ul>
+<li><p>Esta solución requiere dividir el borde.</p></li>
+</ul>
+</li>
+</ul>
+<p>In this example <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> and <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> will
+be used.</p>
+<p class="rubric">Obtener la conectividad</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
+<span class="o">-----+-----------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span>
+   <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span>
+   <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span>
+   <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">7</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span>
+   <span class="mi">8</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
+   <span class="mi">9</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span>
+  <span class="mi">10</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span>
+  <span class="mi">11</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span>
+  <span class="mi">12</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span>
+  <span class="mi">13</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span>
+  <span class="mi">14</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">15</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span>
+  <span class="mi">16</span> <span class="o">|</span>        <span class="mi">13</span> <span class="o">|</span>   <span class="mi">13</span>
+  <span class="mi">17</span> <span class="o">|</span>        <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span>
+<span class="p">(</span><span class="mi">17</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p class="rubric">Prepare tables</p>
+<p>In this example: the edges table will need an additional column and the vertex
+table will be rebuilt completely.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">old_id</span> <span class="n">BIGINT</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">vertices</span><span class="p">;</span>
+<span class="n">DROP</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<p class="rubric">Insertar nuevas aristas</p>
+<p>Using <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> and <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> insert the
+results into the edges table.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM edges&#39;</span><span class="p">)</span>
+<span class="n">UNION</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateTouching</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM edges&#39;</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p class="rubric">Crear la tabla de vértices</p>
+<p>Usar <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> para crear la tabla.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">AS</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<p class="rubric">Actualizar la topología</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">24</span>
+<span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">target</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">24</span>
+</pre></div>
+</div>
+<p class="rubric">Update other values</p>
+<p>In this example only <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> are updated, where they are
+based on the length of the geometry and the directionality is kept using the
+<code class="docutils literal notranslate"><span class="pre">sign</span></code> function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">e</span>
+  <span class="n">SET</span> <span class="n">cost</span>          <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span><span class="o">*</span><span class="n">sign</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">cost</span><span class="p">),</span>
+      <span class="n">reverse_cost</span>  <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span><span class="o">*</span><span class="n">sign</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">reverse_cost</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">e1</span>
+<span class="n">WHERE</span> <span class="n">e</span><span class="o">.</span><span class="n">cost</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">AND</span> <span class="n">e1</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">old_id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
+<span class="o">-----+-----------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span>
+   <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span>
+   <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span>
+   <span class="mi">7</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span>
+   <span class="mi">8</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">9</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span>
+  <span class="mi">10</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
+  <span class="mi">11</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span>
+  <span class="mi">12</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span>
+  <span class="mi">13</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">13</span>
+  <span class="mi">14</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">14</span>
+  <span class="mi">15</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span>
+  <span class="mi">16</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span>
+  <span class="mi">17</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span>
+  <span class="mi">18</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">18</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="components-family.html"><span class="doc">Componentes - Familia de funciones</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/connected_components.html">Boost: Componentes conectados</a></p></li>
+<li><p>wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Connected_component_(graph_theory)">Componente conectado</a></p></li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.1.<br/>
+      Actualizado por última vez en dic 06, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
