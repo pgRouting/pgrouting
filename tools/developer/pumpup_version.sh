@@ -124,7 +124,7 @@ perl -pi -e 's/'"${OLD_VERSION}"'/'"${NEW_VERSION}"'/g' tools/testers/pg_prove_t
 perl -pi -e 's/'"${OLD_VERSION}${KIND}"'/'"${NEW_VERSION}${NEW_KIND}"'/' docqueries/version/*.result
 if [ "${WHAT_NEXT}" == "minor" ]
 then
-    perl -pi -e 's/^---------/-----------/' docqueries/version/doc-full_version.result
+    perl -pi -e 's/^---------/-----------/' docqueries/version/full_version.result
 fi
 perl -pi -e 's/'"${OLD_VERSION}"'/'"${NEW_VERSION}"'/' docqueries/version/*.result
 

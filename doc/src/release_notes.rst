@@ -27,6 +27,24 @@ pgRouting 4
    :local:
    :depth: 1
 
+pgRouting 4.1
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
+
+
+pgRouting 4.1.0 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the
+:milestone:`4.1.0`
+
+No changes yet
+
+.. current
+
 pgRouting 4.0
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -34,7 +52,6 @@ pgRouting 4.0
    :local:
    :depth: 1
 
-.. current
 
 pgRouting 4.0.0-alpha1 Release Notes
 -------------------------------------------------------------------------------

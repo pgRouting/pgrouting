@@ -6,7 +6,7 @@ SET
 SELECT pgr_version();
  pgr_version
 -------------
- 4.0.0
+ 4.1.0-dev
 (1 row)
 
 /* -- q2 */

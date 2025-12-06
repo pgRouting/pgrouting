@@ -5,7 +5,7 @@ function createInfo(file, newat, altnames = '', removedat = '') {
     this.removedat = removedat;
 }
 
-const versionsArr = ['4.0'];
+const versionsArr = ['4.1','4.0'];
 var unsuportedArr = ['3.8','3.7', '3.6', '3.5', '3.4', '3.3', '3.2', '3.1', '3.0','2.6', '2.5', '2.4', '2.3', '2.2', '2.1', '2.0'];
 var titles = [
     {k: 'en', v: ['Supported versions', 'Unsupported versions']},
