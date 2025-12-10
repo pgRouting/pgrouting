@@ -3610,7 +3610,7 @@ msgid "pgr_aStarCost"
 msgstr "pgr_aStarCost"
 
 msgid "pgr_bandwidth"
-msgstr "pgr_bandbredd"
+msgstr "pgr_bandwidth"
 
 msgid "New experimental function."
 msgstr "Ny experimentell funktion."
@@ -3742,7 +3742,7 @@ msgid "pgr_sequentialVertexColoring"
 msgstr "pgr_sequentialVertexColoring"
 
 msgid "pgr_sloanOrdering"
-msgstr "pgr_lånOrdering"
+msgstr "pgr_sloanOrdering"
 
 msgid "pgr_topologicalSort"
 msgstr "pgr_topologicalSort"
