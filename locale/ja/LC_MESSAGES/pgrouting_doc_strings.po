@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-05 23:37+0000\n"
+"POT-Creation-Date: 2025-12-10 19:55+0000\n"
 "PO-Revision-Date: 2025-09-22 16:27+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\n"
@@ -7001,10 +7001,6 @@ msgstr ""
 
 msgid "Consult the `developer's documentation <https://docs.pgrouting.org/doxy/2.4/index.html>`__"
 msgstr ""
-
-#, fuzzy
-msgid "See also"
-msgstr "参照"
 
 msgid "Installation"
 msgstr "インストール"
@@ -16482,6 +16478,10 @@ msgstr ""
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
+
+#, fuzzy
+#~ msgid "See also"
+#~ msgstr "参照"
 
 #, fuzzy
 #~ msgid "New experimental function"
