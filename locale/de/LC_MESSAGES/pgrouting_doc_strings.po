@@ -3612,52 +3612,52 @@ msgid "Summary of changes by function"
 msgstr ""
 
 msgid "pgr_aStar"
-msgstr ""
+msgstr "pgr_aStar"
 
 msgid "Combinations signature promoted to official."
 msgstr ""
 
 msgid "pgr_aStarCost"
-msgstr ""
+msgstr "pgr_aStarCost"
 
 msgid "pgr_bandwidth"
-msgstr ""
+msgstr "pgr_bandwidth"
 
 msgid "New experimental function."
 msgstr ""
 
 msgid "pgr_bdAstar"
-msgstr ""
+msgstr "pgr_bdAstar"
 
 msgid "pgr_bdAstarCost"
-msgstr ""
+msgstr "pgr_bdAstarCost"
 
 msgid "pgr_bdDijkstra"
-msgstr ""
+msgstr "pgr_bdDijkstra"
 
 msgid "Output columns standardized to |short-generic-result|"
 msgstr ""
 
 msgid "pgr_bdDijkstraCost"
-msgstr ""
+msgstr "pgr_bdDijkstraCost"
 
 msgid "pgr_bellmanFord"
-msgstr ""
+msgstr "pgr_bellmanFord"
 
 msgid "pgr_binaryBreadthFirstSearch"
-msgstr ""
+msgstr "pgr_binaryBreadthFirstSearch"
 
 msgid "pgr_bipartite"
-msgstr ""
+msgstr "pgr_bipartite"
 
 msgid "Output columns standardized to |result_node_color|"
 msgstr ""
 
 msgid "pgr_boykovKolmogorov"
-msgstr ""
+msgstr "pgr_boykovKolmogorov"
 
 msgid "pgr_breadthFirstSearch"
-msgstr ""
+msgstr "pgr_breadthFirstSearch"
 
 msgid ":"
 msgstr ""
@@ -3666,7 +3666,7 @@ msgid "Standardizing output columns to |result-spantree|"
 msgstr ""
 
 msgid "pgr_contraction"
-msgstr ""
+msgstr "pgr_contraction"
 
 msgid "Breaking change, signatures no longer available:"
 msgstr ""
@@ -3675,46 +3675,46 @@ msgid "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
 msgstr ""
 
 msgid "pgr_dagShortestPath"
-msgstr ""
+msgstr "pgr_dagShortestPath"
 
 msgid "pgr_depthFirstSearch"
-msgstr ""
+msgstr "pgr_depthFirstSearch"
 
 msgid "pgr_dijkstra"
-msgstr ""
+msgstr "pgr_dijkstra"
 
 msgid "pgr_dijkstraCost"
-msgstr ""
+msgstr "pgr_dijkstraCost"
 
 msgid "pgr_dijkstraNear"
-msgstr ""
+msgstr "pgr_dijkstraNear"
 
 msgid "Function promoted to official."
 msgstr ""
 
 msgid "pgr_dijkstraNearCost"
-msgstr ""
+msgstr "pgr_dijkstraNearCost"
 
 msgid "pgr_dijkstraVia"
-msgstr ""
+msgstr "pgr_dijkstraVia"
 
 msgid "pgr_edgeColoring"
-msgstr ""
+msgstr "pgr_edgeColoring"
 
 msgid "Output columns standardized to |result_edge_color|"
 msgstr ""
 
 msgid "pgr_edgeDisjointPaths"
-msgstr ""
+msgstr "pgr_edgeDisjointPaths"
 
 msgid "Output columns standardized to |generic-result|"
 msgstr ""
 
 msgid "pgr_edmondsKarp"
-msgstr ""
+msgstr "pgr_edmondsKarp"
 
 msgid "pgr_edwardMoore"
-msgstr ""
+msgstr "pgr_edwardMoore"
 
 msgid "Version 3.2.0"
 msgstr ""
@@ -3729,46 +3729,46 @@ msgid "Version 3.0.0"
 msgstr ""
 
 msgid "pgr_kingOrdering"
-msgstr ""
+msgstr "pgr_kingOrdering"
 
 msgid "pgr_KSP"
-msgstr ""
+msgstr "pgr_KSP"
 
 msgid "All signatures promoted to official."
 msgstr ""
 
 msgid "pgr_maxCardinalityMatch"
-msgstr ""
+msgstr "pgr_maxCardinalityMatch"
 
 msgid "pgr_maxCardinalityMatch(text,boolean)"
 msgstr ""
 
 msgid "pgr_maxFlow"
-msgstr ""
+msgstr "pgr_maxFlow"
 
 msgid "pgr_pushRelabel"
-msgstr ""
+msgstr "pgr_pushRelabel"
 
 msgid "pgr_sequentialVertexColoring"
-msgstr ""
+msgstr "pgr_sequentialVertexColoring"
 
 msgid "pgr_sloanOrdering"
-msgstr ""
+msgstr "pgr_sloanOrdering"
 
 msgid "pgr_topologicalSort"
-msgstr ""
+msgstr "pgr_topologicalSort"
 
 msgid "Standardize output to |result_node_order|"
 msgstr ""
 
 msgid "pgr_transitiveClosure"
-msgstr ""
+msgstr "pgr_transitiveClosure"
 
 msgid "Standardized output to |result-closure|"
 msgstr ""
 
 msgid "pgr_trsp"
-msgstr ""
+msgstr "pgr_trsp"
 
 msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
 msgstr ""
@@ -3777,7 +3777,7 @@ msgid "pgr_trsp(text,integer,double precision,integer,double precision,boolean,b
 msgstr ""
 
 msgid "pgr_trspVia"
-msgstr ""
+msgstr "pgr_trspVia"
 
 msgid "pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
 msgstr ""
@@ -3819,7 +3819,7 @@ msgid "pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
 msgstr ""
 
 msgid "pgr_TSP"
-msgstr ""
+msgstr "pgr_TSP"
 
 msgid "Results change depending on input order"
 msgstr ""
@@ -3831,19 +3831,19 @@ msgid "pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,doubl
 msgstr ""
 
 msgid "pgr_TSPeuclidean"
-msgstr ""
+msgstr "pgr_TSPeuclidean"
 
 msgid "pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
 msgid "pgr_turnRestrictedPath"
-msgstr ""
+msgstr "pgr_turnRestrictedPath"
 
 msgid "Output columns standardized to |nksp-result|"
 msgstr ""
 
 msgid "pgr_withPoints"
-msgstr ""
+msgstr "pgr_withPoints"
 
 msgid "pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)"
 msgstr ""
@@ -3861,7 +3861,7 @@ msgid "pgr_withpoints(text,text,text,boolean,character,boolean)"
 msgstr ""
 
 msgid "pgr_withPointsCost"
-msgstr ""
+msgstr "pgr_withPointsCost"
 
 msgid "**Driving side** parameter is unnamed and compulsory."
 msgstr ""
@@ -3885,13 +3885,13 @@ msgid "pgr_withpointscost(text,text,text,boolean,character)"
 msgstr ""
 
 msgid "pgr_withPointsCostMatrix"
-msgstr ""
+msgstr "pgr_withPointsCostMatrix"
 
 msgid "pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
 msgstr ""
 
 msgid "pgr_withPointsDD"
-msgstr ""
+msgstr "pgr_withPointsDD"
 
 msgid "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
 msgstr ""
@@ -3900,13 +3900,13 @@ msgid "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,bo
 msgstr ""
 
 msgid "pgr_withPointsKSP"
-msgstr ""
+msgstr "pgr_withPointsKSP"
 
 msgid "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
 msgstr ""
 
 msgid "pgr_withPointsVia"
-msgstr ""
+msgstr "pgr_withPointsVia"
 
 msgid "pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
 msgstr ""
@@ -12708,10 +12708,10 @@ msgid "New prototypes"
 msgstr ""
 
 msgid "pgr_trspViaVertices"
-msgstr ""
+msgstr "pgr_trspViaVertices"
 
 msgid "pgr_trspViaEdges"
-msgstr ""
+msgstr "pgr_trspViaEdges"
 
 msgid "Turn restricted shortest path (TRSP) is an algorithm that receives turn restrictions in form of a query like those found in real world navigable road networks."
 msgstr ""
@@ -13689,7 +13689,7 @@ msgid "CI does not test for PostgreSQL 12"
 msgstr ""
 
 msgid "pgr_betweennessCentrality"
-msgstr ""
+msgstr "pgr_betweennessCentrality"
 
 msgid "`#2605 <https://github.com/pgRouting/pgrouting/issues/2605>`__: Standardize spanning tree functions output"
 msgstr ""
@@ -13764,7 +13764,7 @@ msgid "Results of documentation queries adujsted to boost 1.83.0 version:"
 msgstr ""
 
 msgid "pgr_stoerWagner"
-msgstr ""
+msgstr "pgr_stoerWagner"
 
 msgid "pgtap tests"
 msgstr ""
@@ -13884,10 +13884,10 @@ msgid "Changes on the documentation to the following:"
 msgstr ""
 
 msgid "pgr_degree"
-msgstr ""
+msgstr "pgr_degree"
 
 msgid "pgr_ksp"
-msgstr ""
+msgstr "pgr_ksp"
 
 msgid "Automatic page history links"
 msgstr ""
@@ -14013,13 +14013,13 @@ msgid "pgr_findCloseEdges(Many points)"
 msgstr ""
 
 msgid "pgr_cuthillMckeeOrdering"
-msgstr ""
+msgstr "pgr_cuthillMckeeOrdering"
 
 msgid "Unclassified"
 msgstr ""
 
 msgid "pgr_hawickCircuits"
-msgstr ""
+msgstr "pgr_hawickCircuits"
 
 msgid "Flow functions"
 msgstr ""
@@ -14175,7 +14175,7 @@ msgid "pgr_dijkstraNearCost(One to Many)"
 msgstr ""
 
 msgid "pgr_extractVertices"
-msgstr ""
+msgstr "pgr_extractVertices"
 
 msgid "Traversal"
 msgstr ""
@@ -14235,13 +14235,13 @@ msgid "Dijkstra Near"
 msgstr ""
 
 msgid "pgr_isPlanar"
-msgstr ""
+msgstr "pgr_isPlanar"
 
 msgid "pgr_lengauerTarjanDominatorTree"
-msgstr ""
+msgstr "pgr_lengauerTarjanDominatorTree"
 
 msgid "pgr_makeConnected"
-msgstr ""
+msgstr "pgr_makeConnected"
 
 msgid "Astar"
 msgstr ""
@@ -14421,31 +14421,31 @@ msgid "Kruskal family"
 msgstr ""
 
 msgid "pgr_kruskal"
-msgstr ""
+msgstr "pgr_kruskal"
 
 msgid "pgr_kruskalBFS"
-msgstr ""
+msgstr "pgr_kruskalBFS"
 
 msgid "pgr_kruskalDD"
-msgstr ""
+msgstr "pgr_kruskalDD"
 
 msgid "pgr_kruskalDFS"
-msgstr ""
+msgstr "pgr_kruskalDFS"
 
 msgid "Prim family"
 msgstr ""
 
 msgid "pgr_prim"
-msgstr ""
+msgstr "pgr_prim"
 
 msgid "pgr_primDD"
-msgstr ""
+msgstr "pgr_primDD"
 
 msgid "pgr_primDFS"
-msgstr ""
+msgstr "pgr_primDFS"
 
 msgid "pgr_primBFS"
-msgstr ""
+msgstr "pgr_primBFS"
 
 msgid "Proposed moved to official on pgRouting"
 msgstr ""
@@ -14466,7 +14466,7 @@ msgid "pgr_aStarCost(Many to Many)"
 msgstr ""
 
 msgid "pgr_aStarCostMatrix"
-msgstr ""
+msgstr "pgr_aStarCostMatrix"
 
 msgid "bdAstar Family"
 msgstr ""
@@ -14484,7 +14484,7 @@ msgid "pgr_bdAstarCost(Many to Many)"
 msgstr ""
 
 msgid "pgr_bdAstarCostMatrix"
-msgstr ""
+msgstr "pgr_bdAstarCostMatrix"
 
 msgid "bdDijkstra Family"
 msgstr ""
@@ -14502,7 +14502,7 @@ msgid "pgr_bdDijkstraCost(Many to Many)"
 msgstr ""
 
 msgid "pgr_bdDijkstraCostMatrix"
-msgstr ""
+msgstr "pgr_bdDijkstraCostMatrix"
 
 msgid "Flow Family"
 msgstr ""
@@ -14544,7 +14544,7 @@ msgid "pgr_boykovKolmogorov (Many to Many)"
 msgstr ""
 
 msgid "pgr_maxCardinalityMatching"
-msgstr ""
+msgstr "pgr_maxCardinalityMatching"
 
 msgid "pgr_edgeDisjointPaths(One to One)"
 msgstr ""
@@ -14562,19 +14562,19 @@ msgid "Components family"
 msgstr ""
 
 msgid "pgr_connectedComponents"
-msgstr ""
+msgstr "pgr_connectedComponents"
 
 msgid "pgr_strongComponents"
-msgstr ""
+msgstr "pgr_strongComponents"
 
 msgid "pgr_biconnectedComponents"
-msgstr ""
+msgstr "pgr_biconnectedComponents"
 
 msgid "pgr_articulationPoints"
-msgstr ""
+msgstr "pgr_articulationPoints"
 
 msgid "pgr_bridges"
-msgstr ""
+msgstr "pgr_bridges"
 
 msgid "Contraction:"
 msgstr ""
@@ -14586,31 +14586,31 @@ msgid "Bug Fixes"
 msgstr ""
 
 msgid "pgr_maxFlowMinCost"
-msgstr ""
+msgstr "pgr_maxFlowMinCost"
 
 msgid "pgr_maxFlowMinCost_Cost"
 msgstr ""
 
 msgid "pgr_dagShortestpath"
-msgstr ""
+msgstr "pgr_dagShortestpath"
 
 msgid "VRP category"
 msgstr ""
 
 msgid "pgr_pickDeliverEuclidean"
-msgstr ""
+msgstr "pgr_pickDeliverEuclidean"
 
 msgid "pgr_pickDeliver"
-msgstr ""
+msgstr "pgr_pickDeliver"
 
 msgid "Chinese Postman family"
 msgstr ""
 
 msgid "pgr_chinesePostman"
-msgstr ""
+msgstr "pgr_chinesePostman"
 
 msgid "pgr_chinesePostmanCost"
-msgstr ""
+msgstr "pgr_chinesePostmanCost"
 
 msgid "Breadth First Search family"
 msgstr ""
@@ -14628,16 +14628,16 @@ msgid "Max flow - functions were renamed on v2.5.0"
 msgstr ""
 
 msgid "pgr_maxFlowPushRelabel"
-msgstr ""
+msgstr "pgr_maxFlowPushRelabel"
 
 msgid "pgr_maxFlowBoykovKolmogorov"
-msgstr ""
+msgstr "pgr_maxFlowBoykovKolmogorov"
 
 msgid "pgr_maxFlowEdmondsKarp"
-msgstr ""
+msgstr "pgr_maxFlowEdmondsKarp"
 
 msgid "pgr_maximumcardinalitymatching"
-msgstr ""
+msgstr "pgr_maximumcardinalitymatching"
 
 msgid "VRP"
 msgstr ""
@@ -14649,7 +14649,7 @@ msgid "TSP old signatures"
 msgstr ""
 
 msgid "pgr_pointsAsPolygon"
-msgstr ""
+msgstr "pgr_pointsAsPolygon"
 
 msgid "pgr_alphaShape old signature"
 msgstr ""
@@ -14703,22 +14703,22 @@ msgid "Fixes server crash on several functions."
 msgstr ""
 
 msgid "pgr_floydWarshall"
-msgstr ""
+msgstr "pgr_floydWarshall"
 
 msgid "pgr_johnson"
-msgstr ""
+msgstr "pgr_johnson"
 
 msgid "pgr_bdDijstra"
-msgstr ""
+msgstr "pgr_bdDijstra"
 
 msgid "pgr_alphashape"
-msgstr ""
+msgstr "pgr_alphashape"
 
 msgid "pgr_dijkstraCostMatrix"
-msgstr ""
+msgstr "pgr_dijkstraCostMatrix"
 
 msgid "pgr_drivingDistance"
-msgstr ""
+msgstr "pgr_drivingDistance"
 
 msgid "pgr_dijkstraVia (proposed)"
 msgstr ""
@@ -14781,7 +14781,7 @@ msgid "To see all issues & pull requests closed by this release see the `Github 
 msgstr ""
 
 msgid "pgr_lineGraphFull"
-msgstr ""
+msgstr "pgr_lineGraphFull"
 
 msgid "Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean[,text])"
 msgstr ""
@@ -14901,7 +14901,7 @@ msgid "pgr_bdAstar(One to One)"
 msgstr ""
 
 msgid "pgr_lineGraph"
-msgstr ""
+msgstr "pgr_lineGraph"
 
 msgid "pgr_bdastar - use pgr_bdAstar instead"
 msgstr ""
@@ -14925,7 +14925,7 @@ msgid "Deprecated Function"
 msgstr ""
 
 msgid "pgr_pointToEdgeNode"
-msgstr ""
+msgstr "pgr_pointToEdgeNode"
 
 msgid "pgRouting 2.4"
 msgstr ""
@@ -14973,7 +14973,7 @@ msgid "pgr_bddijkstra - use pgr_bdDijkstra instead"
 msgstr ""
 
 msgid "pgr_pointsToVids"
-msgstr ""
+msgstr "pgr_pointsToVids"
 
 msgid "Bug fixes on proposed functions"
 msgstr ""
@@ -15027,7 +15027,7 @@ msgid "To see all issues & pull requests closed by this release see the `Github 
 msgstr ""
 
 msgid "pgr_eucledianTSP"
-msgstr ""
+msgstr "pgr_eucledianTSP"
 
 msgid "pgr_maxFlowPushRelabel(One to One)"
 msgstr ""
@@ -15066,10 +15066,10 @@ msgid "pgr_maxFlowBoykovKolmogorov (Many to Many)"
 msgstr ""
 
 msgid "pgr_maximumCardinalityMatching"
-msgstr ""
+msgstr "pgr_maximumCardinalityMatching"
 
 msgid "pgr_contractGraph"
-msgstr ""
+msgstr "pgr_contractGraph"
 
 msgid "pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead"
 msgstr ""
@@ -15081,13 +15081,13 @@ msgid "pgr_flip_edges"
 msgstr ""
 
 msgid "pgr_vidsToDmatrix"
-msgstr ""
+msgstr "pgr_vidsToDmatrix"
 
 msgid "pgr_pointsToDMatrix"
-msgstr ""
+msgstr "pgr_pointsToDMatrix"
 
 msgid "pgr_textToPoints"
-msgstr ""
+msgstr "pgr_textToPoints"
 
 msgid "pgRouting 2.2"
 msgstr ""
@@ -15147,7 +15147,7 @@ msgid "Improvements"
 msgstr ""
 
 msgid "pgr_nodeNetwork"
-msgstr ""
+msgstr "pgr_nodeNetwork"
 
 msgid "Adding a row_where and outall optional parameters"
 msgstr ""
@@ -15159,7 +15159,7 @@ msgid "pgr_dijkstra -- to match what is documented"
 msgstr ""
 
 msgid "pgr_Johnson"
-msgstr ""
+msgstr "pgr_Johnson"
 
 msgid "pgr_dijkstraCost(One to One)"
 msgstr ""
@@ -15267,37 +15267,37 @@ msgid "Added proposed functions from GSoc Projects:"
 msgstr ""
 
 msgid "pgr_vrppdtw"
-msgstr ""
+msgstr "pgr_vrppdtw"
 
 msgid "pgr_vrponedepot"
-msgstr ""
+msgstr "pgr_vrponedepot"
 
 msgid "pgr_getColumnName"
-msgstr ""
+msgstr "pgr_getColumnName"
 
 msgid "pgr_getTableName"
-msgstr ""
+msgstr "pgr_getTableName"
 
 msgid "pgr_isColumnCndexed"
-msgstr ""
+msgstr "pgr_isColumnCndexed"
 
 msgid "pgr_isColumnInTable"
-msgstr ""
+msgstr "pgr_isColumnInTable"
 
 msgid "pgr_quote_ident"
 msgstr ""
 
 msgid "pgr_versionless"
-msgstr ""
+msgstr "pgr_versionless"
 
 msgid "pgr_startPoint"
-msgstr ""
+msgstr "pgr_startPoint"
 
 msgid "pgr_endPoint"
-msgstr ""
+msgstr "pgr_endPoint"
 
 msgid "pgr_pointToId"
-msgstr ""
+msgstr "pgr_pointToId"
 
 msgid "No longer supported"
 msgstr ""

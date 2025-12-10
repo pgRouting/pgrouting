@@ -4500,7 +4500,7 @@ msgid "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
 msgstr "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
 
 msgid "pgr_dagShortestPath"
-msgstr "pgr_dagShortestpath"
+msgstr "pgr_dagShortestPath"
 
 msgid "pgr_depthFirstSearch"
 msgstr "pgr_depthFirstSearch"
