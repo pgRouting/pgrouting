@@ -7,7 +7,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024, 2025.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024, 2025.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-05 23:37+0000\nPO-Revision-Date: 2025-12-10 17:41+0000\nLast-Translator: DeepL <noreply-mt-deepl@weblate.org>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-05 23:37+0000\nPO-Revision-Date: 2025-12-10 17:44+0000\nLast-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Categoría"
@@ -9530,7 +9530,7 @@ msgstr ""
 "productos: osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
 
 msgid "Translators (in alphabetical order)"
-msgstr "Traductores (por orden alfabético)"
+msgstr "Traductores (en orden alfabético)"
 
 msgid "Chinese:"
 msgstr ""
@@ -9541,9 +9541,8 @@ msgstr ""
 msgid "Spanish:"
 msgstr ""
 
-#, fuzzy
 msgid "Vicky Vergara"
-msgstr "Regina Obe, Vicky Vergara"
+msgstr "Vicky Vergara"
 
 msgid "Swedish:"
 msgstr ""
@@ -9571,9 +9570,8 @@ msgstr "`OSGeo UK <https://uk.osgeo.org>`__"
 msgid "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
 msgstr "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
 
-#, fuzzy
 msgid "`HighGo Software <https://www.highgo.com/>`__"
-msgstr "`OSGeo <https://www.osgeo.org>`__"
+msgstr "`HighGo Software <https://www.highgo.com/>`__"
 
 msgid "`Paragon Corporation <https://www.paragoncorporation.com/>`__"
 msgstr "`Paragon Corporation <https://www.paragoncorporation.com/>`__"
@@ -9584,7 +9582,6 @@ msgstr "Colaboradores, Pasado y Presente:"
 msgid "Individuals (in alphabetical order)"
 msgstr "Personas (en orden alfabético)"
 
-#, fuzzy
 msgid ""
 "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
 "Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
@@ -9599,19 +9596,7 @@ msgid ""
 "Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen "
 "Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, "
 "Vidhan Jain, Virginia Vergara, Yige Huang"
-msgstr ""
-"Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
-"Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
-"Hossain, Ashish Kumar, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, "
-"Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, "
-"Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, "
-"Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, "
-"Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin "
-"Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul "
-"Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith "
-"Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, "
-"Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, "
-"Virginia Vergara, Yige Huang"
+msgstr "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 
 msgid "Corporate Sponsors (in alphabetical order)"
 msgstr "Patrocinadores corporativos (en orden alfabético)"
@@ -9740,7 +9725,6 @@ msgstr ""
 msgid "|Boost| Boost Graph Inside"
 msgstr "|Boost| Adentro: Boost Graph"
 
-#, fuzzy
 msgid "Boost Graph inside"
 msgstr "Adentro: Boost Graph"
 
