@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-05 23:37+0000\n"
+"POT-Creation-Date: 2025-12-10 19:55+0000\n"
 "PO-Revision-Date: 2025-09-22 16:28+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: German <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/de/>\n"
@@ -6852,9 +6852,6 @@ msgid "Adding Functionality to pgRouting"
 msgstr ""
 
 msgid "Consult the `developer's documentation <https://docs.pgrouting.org/doxy/2.4/index.html>`__"
-msgstr ""
-
-msgid "See also"
 msgstr ""
 
 msgid "Installation"
