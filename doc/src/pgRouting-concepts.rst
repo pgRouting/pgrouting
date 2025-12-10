@@ -1860,7 +1860,7 @@ How to contribute
 Consult the `developer's documentation
 <https://docs.pgrouting.org/doxy/2.4/index.html>`__
 
-See also
+See Also
 ----------------------------------------------------------------------
 
 .. rubric:: Indices and tables
