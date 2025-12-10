@@ -78,7 +78,7 @@
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Anteckningar för release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Versionsinformation</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">Migrationsguide</a></li>
@@ -276,7 +276,7 @@ graph.</p></li>
 <li><p><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents</span></a> - Biconnected components of an undirected
 graph.</p></li>
 <li><p><a class="reference internal" href="pgr_articulationPoints.html"><span class="doc">pgr_articulationPoints</span></a> - Articulation points of an undirected graph.</p></li>
-<li><p><a class="reference internal" href="pgr_bridges.html"><span class="doc">pgr_bryggor</span></a> - Bridges of an undirected graph.</p></li>
+<li><p><a class="reference internal" href="pgr_bridges.html"><span class="doc">pgr_bridges</span></a> - Bridges of an undirected graph.</p></li>
 </ul>
 <p><a class="reference internal" href="contraction-family.html"><span class="doc">Sammandragning - Familj av funktioner</span></a></p>
 <ul class="simple">
@@ -307,7 +307,7 @@ edges.</p></li>
 edges.</p></li>
 <li><p>Ansökningar</p>
 <ul>
-<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_kantDisjunktaStigar</span></a> - Calculates edge disjoint paths between two
+<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - Calculates edge disjoint paths between two
 groups of vertices.</p></li>
 <li><p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - Calculates a maximum cardinality matching
 in a graph.</p></li>
@@ -355,17 +355,17 @@ incident edges to the vertex.</p></li>
 <li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - Extracts vertex information based on the edge
 table information.</p></li>
 <li><p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> - Finds close edges of points on the fly</p></li>
-<li><p><a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separeraKorsning</span></a> - Breaks geometries that cross each other.</p></li>
+<li><p><a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> - Breaks geometries that cross each other.</p></li>
 <li><p><a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> - Breaks geometries that (almost) touch each other.</p></li>
 </ul>
 <p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familj av funktioner</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> - Route from/to points anywhere on the graph.</p></li>
-<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_medPointsCost</span></a> - Costs of the shortest paths.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost</span></a> - Costs of the shortest paths.</p></li>
 <li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a> - Costs of the shortest paths.</p></li>
 <li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP</span></a> - K shortest paths.</p></li>
-<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_medPointsDD</span></a> - Driving distance.</p></li>
-<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_medPointsVia</span></a> - Via routing</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a> - Driving distance.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a> - Via routing</p></li>
 </ul>
 </section>
 <section id="functions-by-categories">
@@ -377,7 +377,7 @@ table information.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_medPointsCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost</span></a></p></li>
 </ul>
 <p><a class="reference internal" href="costMatrix-category.html"><span class="doc">Kostnadsmatris - Kategori</span></a></p>
 <ul class="simple">
@@ -392,7 +392,7 @@ table information.</p></li>
 <li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Driving Distance based on Dijkstra’s algorithm</p></li>
 <li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a> - Driving Distance based on Prim’s algorithm</p></li>
 <li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a> - Driving Distance based on Kruskal’s algorithm</p></li>
-<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_medPointsDD</span></a> - Driving Distance based on pgr_withPoints</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a> - Driving Distance based on pgr_withPoints</p></li>
 </ul>
 <p><a class="reference internal" href="KSP-category.html"><span class="doc">K kortaste vägarna - Kategori</span></a></p>
 <ul class="simple">
@@ -435,7 +435,7 @@ table information.</p></li>
 </div>
 </section>
 <section id="release-notes">
-<h2><a class="reference internal" href="release_notes.html"><span class="doc">Anteckningar för release</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
+<h2><a class="reference internal" href="release_notes.html"><span class="doc">Versionsinformation</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
 <section id="pgrouting-4-0">
 <h3>pgRouting 4.0<a class="headerlink" href="#pgrouting-4-0" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="contents">
@@ -533,7 +533,7 @@ table information.</p></li>
 <li><p>Kombinationer signatur befordrad till tjänsteman.</p></li>
 </ul>
 </li>
-<li><p>pgr_bandbredd</p>
+<li><p>pgr_bandwidth</p>
 <ul class="simple">
 <li><p>Ny experimentell funktion.</p></li>
 </ul>
@@ -697,7 +697,7 @@ table information.</p></li>
 <li><p>Utdatakolumner standardiserade till <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">color)</span></code></p></li>
 </ul>
 </li>
-<li><p>pgr_lånOrdering</p>
+<li><p>pgr_sloanOrdering</p>
 <ul class="simple">
 <li><p>Ny experimentell funktion.</p></li>
 </ul>
@@ -1256,7 +1256,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 <h4><a class="toc-backref" href="#id3" role="doc-backlink">Alla utgåvor</a><a class="headerlink" href="#all-releases" title="Link to this heading">¶</a></h4>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Anteckningar för release</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Versionsinformation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="release_notes.html#pgrouting-4">pgRouting 4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release_notes.html#pgrouting-3">pgRouting 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release_notes.html#pgrouting-2">pgRouting 2</a></li>
@@ -1290,7 +1290,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.1.<br/>
-      Senast uppdaterad dec. 06, 2025.<br/>
+      Senast uppdaterad dec. 10, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
