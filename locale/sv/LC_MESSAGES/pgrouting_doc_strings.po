@@ -4,19 +4,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2025.
 # Daniel Nylander <daniel@danielnylander.se>, 2025.
 msgid ""
-msgstr ""
-"Project-Id-Version: pgRouting v4.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-05 23:37+0000\n"
-"PO-Revision-Date: 2025-10-28 19:52+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
-"Language-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\n"
-"Language: sv\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-05 23:37+0000\nPO-Revision-Date: 2025-12-08 08:47+0000\nLast-Translator: Daniel Nylander <daniel@danielnylander.se>\nLanguage-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Kategori"
@@ -6915,9 +6903,8 @@ msgstr "Kontroll av PostGIS- och pgRouting-version efter att de har aktiverats i
 msgid "Upgrading the database"
 msgstr "Uppgradering av databasen"
 
-#, fuzzy
 msgid "To upgrade pgRouting in the database to version 4.1.0 use the following command:"
-msgstr "Använd följande kommando för att uppgradera pgRouting i databasen till version 4.0.0:"
+msgstr "Använd följande kommando för att uppgradera pgRouting i databasen till version 4.1.0:"
 
 msgid "More information can be found in https://www.postgresql.org/docs/current/sql-createextension.html"
 msgstr "Mer information finns på https://www.postgresql.org/docs/current/sql-createextension.html"
@@ -8167,9 +8154,8 @@ msgstr "Symmetrisk kostnadsmatris för toppar :math:`{\\5, 6, 10, 15\\}` på en 
 msgid "Use with :doc:`pgr_TSP`."
 msgstr "Använd med :doc:`pgr_TSP`."
 
-#, fuzzy
 msgid "``pgr_bellmanFord`` - Experimental"
-msgstr "``pgr_bellmanFord - Experimentell``"
+msgstr "``pgr_bellmanFord`` - Experimentell"
 
 msgid "``pgr_bellmanFord`` — Shortest path using Bellman-Ford algorithm."
 msgstr "``pgr_bellmanFord`` - Kortaste vägen med Bellman-Ford algoritm."
@@ -13485,7 +13471,7 @@ msgid "Reference"
 msgstr "Referens"
 
 msgid "Release Notes"
-msgstr "Anteckningar för release"
+msgstr "Versionsinformation"
 
 msgid "To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github."
 msgstr "För att se den fullständiga listan över ändringar, se listan över `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ på Github."
@@ -13499,20 +13485,17 @@ msgstr "pgRouting 4"
 msgid "Minors 4.x"
 msgstr "Minors 4.x"
 
-#, fuzzy
 msgid "pgRouting 4.1"
-msgstr "pgRouting 4.0"
+msgstr "pgRouting 4.1"
 
-#, fuzzy
 msgid "pgRouting 4.1.0 Release Notes"
-msgstr "pgRouting 3.1.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 4.1.0"
 
-#, fuzzy
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22>`__"
-msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
+msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 4.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22>`__"
 
 msgid "No changes yet"
-msgstr ""
+msgstr "Inga ändringar ännu"
 
 msgid "pgRouting 3"
 msgstr "pgRouting 3"
@@ -13524,7 +13507,7 @@ msgid "pgRouting 3.8"
 msgstr "pgRouting 3.8"
 
 msgid "pgRouting 3.8.0 Release Notes"
-msgstr "pgRouting 3.8.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.8.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.8.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.8.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
@@ -13629,7 +13612,7 @@ msgid "pgRouting 3.7"
 msgstr "pgRouting 3.7"
 
 msgid "pgRouting 3.7.3 Release Notes"
-msgstr "pgRouting 3.7.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.7.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.7.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
@@ -13638,7 +13621,7 @@ msgid "`#2731 <https://github.com/pgRouting/pgrouting/issues/2731>`__: Build Fai
 msgstr "`#2731 <https://github.com/pgRouting/pgrouting/issues/2731>`__: Byggfel på Ubuntu 22"
 
 msgid "pgRouting 3.7.2 Release Notes"
-msgstr "pgRouting 3.7.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.7.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.7.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
@@ -13659,7 +13642,7 @@ msgid "`#2706 <https://github.com/pgRouting/pgrouting/issues/2706>`__: winnie cr
 msgstr "`#2706 <https://github.com/pgRouting/pgrouting/issues/2706>`__: winnie kraschar på pgr_betweennessCentrality"
 
 msgid "pgRouting 3.7.1 Release Notes"
-msgstr "pgRouting 3.7.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.7.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.7.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
@@ -13677,7 +13660,7 @@ msgid "TRSP family"
 msgstr "TRSP-familjen"
 
 msgid "pgRouting 3.7.0 Release Notes"
-msgstr "pgRouting 3.7.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.7.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.7.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
@@ -13728,7 +13711,7 @@ msgid "pgRouting 3.6"
 msgstr "pgRouting 3.6"
 
 msgid "pgRouting 3.6.3 Release Notes"
-msgstr "pgRouting 3.6.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.6.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
@@ -13779,7 +13762,7 @@ msgid "bug fixes"
 msgstr "buggfixar"
 
 msgid "pgRouting 3.6.2 Release Notes"
-msgstr "pgRouting 3.6.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.6.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
@@ -13803,7 +13786,7 @@ msgid "Name change to `NEWS.md` for better visualization on GitHub"
 msgstr "Namnändring till `NEWS.md` för bättre visualisering på GitHub"
 
 msgid "pgRouting 3.6.1 Release Notes"
-msgstr "pgRouting 3.6.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.6.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`__"
@@ -13812,7 +13795,7 @@ msgid "`#2588 <https://github.com/pgRouting/pgrouting/issues/2588>`__: pgrouting
 msgstr "`#2588 <https://github.com/pgRouting/pgrouting/issues/2588>`__: pgrouting 3.6.0 går inte att bygga under OSX"
 
 msgid "pgRouting 3.6.0 Release Notes"
-msgstr "pgRouting 3.6.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.6.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`__"
@@ -13878,7 +13861,7 @@ msgid "pgRouting 3.5"
 msgstr "pgRouting 3.5"
 
 msgid "pgRouting 3.5.1 Release Notes"
-msgstr "pgRouting 3.5.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.5.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`__"
@@ -13929,7 +13912,7 @@ msgid "Grouping headers of postgres readers"
 msgstr "Gruppering av rubriker för postgres-läsare"
 
 msgid "pgRouting 3.5.0 Release Notes"
-msgstr "pgRouting 3.5.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.5.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`__"
@@ -13941,7 +13924,7 @@ msgid "pgRouting 3.4"
 msgstr "pgRouting 3.4"
 
 msgid "pgRouting 3.4.2 Release Notes"
-msgstr "pgRouting 3.4.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.4.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`__"
@@ -13953,7 +13936,7 @@ msgid "`#2427 <https://github.com/pgRouting/pgrouting/issues/2427>`__: pgr_creat
 msgstr "`#2427 <https://github.com/pgRouting/pgrouting/issues/2427>`__: pgr_createVerticesTable & pgr_createTopology, variabeln ska vara av typen Record."
 
 msgid "pgRouting 3.4.1 Release Notes"
-msgstr "pgRouting 3.4.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.4.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`__"
@@ -13965,7 +13948,7 @@ msgid "`#2398 <https://github.com/pgRouting/pgrouting/issues/2398>`__: v3.4.0 do
 msgstr "`#2398 <https://github.com/pgRouting/pgrouting/issues/2398>`__: v3.4.0 uppgraderar inte från 3.3.3"
 
 msgid "pgRouting 3.4.0 Release Notes"
-msgstr "pgRouting 3.4.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.4.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`__"
@@ -14049,13 +14032,13 @@ msgid "pgRouting 3.3"
 msgstr "pgRouting 3.3"
 
 msgid "pgRouting 3.3.5 Release Notes"
-msgstr "pgRouting 3.3.5 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.3.5"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.5%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.3.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.5%22>`__"
 
 msgid "pgRouting 3.3.4 Release Notes"
-msgstr "pgRouting 3.3.4 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.3.4"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.3.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`__"
@@ -14064,7 +14047,7 @@ msgid "`#2400 <https://github.com/pgRouting/pgrouting/issues/2400>`__: pgRouting
 msgstr "`#2400 <https://github.com/pgRouting/pgrouting/issues/2400>`__: pgRouting 3.3.3 kan inte byggas i fokal"
 
 msgid "pgRouting 3.3.3 Release Notes"
-msgstr "pgRouting 3.3.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.3.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.3.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`__"
@@ -14073,7 +14056,7 @@ msgid "Ignoring optional boolean parameter, as the algorithm works only for undi
 msgstr "Ignorerar den valfria booleska parametern, eftersom algoritmen endast fungerar för oriktade grafer."
 
 msgid "pgRouting 3.3.2 Release Notes"
-msgstr "pgRouting 3.3.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.3.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`__"
@@ -14118,7 +14101,7 @@ msgid "`#2357 <https://github.com/pgRouting/pgrouting/issues/2357>`__: Apply cla
 msgstr "`#2357 <https://github.com/pgRouting/pgrouting/issues/2357>`__: Tillämpa clang-tidy prestanda-*"
 
 msgid "pgRouting 3.3.1 Release Notes"
-msgstr "pgRouting 3.3.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.3.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`__"
@@ -14130,7 +14113,7 @@ msgid "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__: Error pro
 msgstr "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__: Fel vid bearbetning av restriktioner"
 
 msgid "pgRouting 3.3.0 Release Notes"
-msgstr "pgRouting 3.3.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.3.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`__"
@@ -14196,7 +14179,7 @@ msgid "pgRouting 3.2"
 msgstr "pgRouting 3.2"
 
 msgid "pgRouting 3.2.2 Release Notes"
-msgstr "pgRouting 3.2.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.2.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`__"
@@ -14208,7 +14191,7 @@ msgid "`#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build err
 msgstr "`#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Byggfel på RHEL 7"
 
 msgid "pgRouting 3.2.1 Release Notes"
-msgstr "pgRouting 3.2.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.2.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`__"
@@ -14226,7 +14209,7 @@ msgid "The function with the annaeling optional parameters is deprecated"
 msgstr "Funktionen med de valfria parametrarna annaeling är föråldrad"
 
 msgid "pgRouting 3.2.0 Release Notes"
-msgstr "pgRouting 3.2.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.2.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`__"
@@ -14262,7 +14245,7 @@ msgid "pgRouting 3.1"
 msgstr "pgRouting 3.1"
 
 msgid "pgRouting 3.1.4 Release Notes"
-msgstr "pgRouting 3.1.4 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.1.4"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.1.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`__"
@@ -14271,7 +14254,7 @@ msgid "Issues fixes"
 msgstr "Problemlösningar"
 
 msgid "pgRouting 3.1.3 Release Notes"
-msgstr "pgRouting 3.1.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.1.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.1.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`__"
@@ -14286,7 +14269,7 @@ msgid "`#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp funct
 msgstr "`#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp-funktioner kraschar server"
 
 msgid "pgRouting 3.1.2 Release Notes"
-msgstr "pgRouting 3.1.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.1.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.1.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`__"
@@ -14307,7 +14290,7 @@ msgid "`#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove wa
 msgstr "`#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Ta bort varningar vid användning av clang-kompilatorn"
 
 msgid "pgRouting 3.1.1 Release Notes"
-msgstr "pgRouting 3.1.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.1.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.1.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`__"
@@ -14328,7 +14311,7 @@ msgid "`#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chine
 msgstr "`#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chinesePostman kraschar på testdata"
 
 msgid "pgRouting 3.1.0 Release Notes"
-msgstr "pgRouting 3.1.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.1.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`__"
@@ -14349,13 +14332,13 @@ msgid "pgRouting 3.0"
 msgstr "pgRouting 3.0"
 
 msgid "pgRouting 3.0.6 Release Notes"
-msgstr "pgRouting 3.0.6 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.6"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.6 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.6 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`__"
 
 msgid "pgRouting 3.0.5 Release Notes"
-msgstr "pgRouting 3.0.5 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.5"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`__"
@@ -14364,19 +14347,19 @@ msgid "Backport issue fixes"
 msgstr "Fixar problem med backport"
 
 msgid "pgRouting 3.0.4 Release Notes"
-msgstr "pgRouting 3.0.4 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.4"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`__"
 
 msgid "pgRouting 3.0.3 Release Notes"
-msgstr "pgRouting 3.0.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.3%22>`__"
 
 msgid "pgRouting 3.0.2 Release Notes"
-msgstr "pgRouting 3.0.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`__"
@@ -14385,7 +14368,7 @@ msgid "`#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__: Visual St
 msgstr "`#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__: Visual Studio-byggnad misslyckas"
 
 msgid "pgRouting 3.0.1 Release Notes"
-msgstr "pgRouting 3.0.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`__"
@@ -14394,7 +14377,7 @@ msgid "`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__: Honor clien
 msgstr "`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__: Uppfylla begäran om avbrytande av klient i C/C++-kod"
 
 msgid "pgRouting 3.0.0 Release Notes"
-msgstr "pgRouting 3.0.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`__"
@@ -14670,7 +14653,7 @@ msgid "pgRouting 2.6"
 msgstr "pgRouting 2.6"
 
 msgid "pgRouting 2.6.3 Release Notes"
-msgstr "pgRouting 2.6.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.6.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22>`__"
@@ -14685,7 +14668,7 @@ msgid "`#1185 <https://github.com/pgRouting/pgrouting/issues/1185>`__: Improve F
 msgstr "`#1185 <https://github.com/pgRouting/pgrouting/issues/1185>`__: Förbättra FindPostgreSQL.cmake"
 
 msgid "pgRouting 2.6.2 Release Notes"
-msgstr "pgRouting 2.6.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.6.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22>`__"
@@ -14700,7 +14683,7 @@ msgid "`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__: Fixes bui
 msgstr "`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__: Fixar byggandet för python3 och perl5"
 
 msgid "pgRouting 2.6.1 Release Notes"
-msgstr "pgRouting 2.6.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.6.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22>`__"
@@ -14781,7 +14764,7 @@ msgid "Fixed a fallthrugh on Astar and bdAstar."
 msgstr "Åtgärdat ett fel på Astar och bdAstar."
 
 msgid "pgRouting 2.6.0 Release Notes"
-msgstr "pgRouting 2.6.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.6.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22>`__"
@@ -14826,7 +14809,7 @@ msgid "pgRouting 2.5"
 msgstr "pgRouting 2.5"
 
 msgid "pgRouting 2.5.5 Release Notes"
-msgstr "pgRouting 2.5.5 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.5.5"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22>`__"
@@ -14841,13 +14824,13 @@ msgid "Fixes build for python3 and perl5"
 msgstr "Fixar byggsätt för python3 och perl5"
 
 msgid "pgRouting 2.5.4 Release Notes"
-msgstr "pgRouting 2.5.4 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.5.4"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22>`__"
 
 msgid "pgRouting 2.5.3 Release Notes"
-msgstr "pgRouting 2.5.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.5.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22>`__"
@@ -14856,7 +14839,7 @@ msgid "Fix for postgresql 11: Removed a compilation error when compiling with po
 msgstr "Fix för postgresql 11: Tog bort ett kompileringsfel vid kompilering med postgreSQL"
 
 msgid "pgRouting 2.5.2 Release Notes"
-msgstr "pgRouting 2.5.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.5.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22>`__"
@@ -14865,7 +14848,7 @@ msgid "Fix for postgresql 10.1: Removed a compiler condition"
 msgstr "Fix för postgresql 10.1: Tog bort ett kompilatorvillkor"
 
 msgid "pgRouting 2.5.1 Release Notes"
-msgstr "pgRouting 2.5.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.5.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22>`__"
@@ -14874,7 +14857,7 @@ msgid "Fixed prerequisite minimum version of: cmake"
 msgstr "Fixad förkunskapskrav för minsta version av: cmake"
 
 msgid "pgRouting 2.5.0 Release Notes"
-msgstr "pgRouting 2.5.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.5.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.0%22>`__"
@@ -14937,7 +14920,7 @@ msgid "pgRouting 2.4"
 msgstr "pgRouting 2.4"
 
 msgid "pgRouting 2.4.2 Release Notes"
-msgstr "pgRouting 2.4.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.4.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22>`__"
@@ -14955,7 +14938,7 @@ msgid "Replace __linux__ with __GLIBC__ for glibc-specific headers and functions
 msgstr "Ersätt __linux__ med __GLIBC__ för glibc-specifika rubriker och funktioner"
 
 msgid "pgRouting 2.4.1 Release Notes"
-msgstr "pgRouting 2.4.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.4.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22>`__"
@@ -14967,7 +14950,7 @@ msgid "Condition error on pgr_withPoints"
 msgstr "Villkorligt fel på pgr_withPoints"
 
 msgid "pgRouting 2.4.0 Release Notes"
-msgstr "pgRouting 2.4.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.4.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.0%22>`__"
@@ -14994,7 +14977,7 @@ msgid "pgRouting 2.3"
 msgstr "pgRouting 2.3"
 
 msgid "pgRouting 2.3.2 Release Notes"
-msgstr "pgRouting 2.3.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.3.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.2%22>`__"
@@ -15012,7 +14995,7 @@ msgid "Fixed ambiguity on seq"
 msgstr "Fixad tvetydighet på seq"
 
 msgid "pgRouting 2.3.1 Release Notes"
-msgstr "pgRouting 2.3.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.3.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.1%22>`__"
@@ -15027,7 +15010,7 @@ msgid "Types discrepancy on pgr_createVerticesTable"
 msgstr "Typer diskrepans på pgr_createVerticesTable"
 
 msgid "pgRouting 2.3.0 Release Notes"
-msgstr "pgRouting 2.3.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.3.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.0%22>`__"
@@ -15099,7 +15082,7 @@ msgid "pgRouting 2.2"
 msgstr "pgRouting 2.2"
 
 msgid "pgRouting 2.2.4 Release Notes"
-msgstr "pgRouting 2.2.4 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.2.4"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.4%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.2.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.4%22>`__"
@@ -15114,7 +15097,7 @@ msgid "Regression error pgr_nodeNetwork"
 msgstr "Regressionsfel pgr_nodeNetwork"
 
 msgid "pgRouting 2.2.3 Release Notes"
-msgstr "pgRouting 2.2.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.2.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.2.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.3%22>`__"
@@ -15123,7 +15106,7 @@ msgid "Fixed compatibility issues with PostgreSQL 9.6."
 msgstr "Fixade kompatibilitetsproblem med PostgreSQL 9.6."
 
 msgid "pgRouting 2.2.2 Release Notes"
-msgstr "pgRouting 2.2.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.2.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.2%22>`__"
@@ -15132,7 +15115,7 @@ msgid "Fixed regression error on pgr_drivingDistance"
 msgstr "Åtgärdat regressionsfel på pgr_drivingDistance"
 
 msgid "pgRouting 2.2.1 Release Notes"
-msgstr "pgRouting 2.2.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.2.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.1%22>`__"
@@ -15144,7 +15127,7 @@ msgid "Bug fix on With Points family of functions"
 msgstr "Buggfix för funktionerna i With Points-familjen"
 
 msgid "pgRouting 2.2.0 Release Notes"
-msgstr "pgRouting 2.2.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.2.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.0%22>`__"
@@ -15234,7 +15217,7 @@ msgid "pgRouting 2.1"
 msgstr "pgRouting 2.1"
 
 msgid "pgRouting 2.1.0 Release Notes"
-msgstr "pgRouting 2.1.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.1.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.1.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.1.0%22>`__"
@@ -15345,7 +15328,7 @@ msgid "pgRouting 2.0"
 msgstr "pgRouting 2.0"
 
 msgid "pgRouting 2.0.1 Release Notes"
-msgstr "pgRouting 2.0.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.0.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.0.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.0.1%22>`__"
@@ -15357,7 +15340,7 @@ msgid "No track of the bug fixes were kept."
 msgstr "Inga uppgifter om buggfixarna sparades."
 
 msgid "pgRouting 2.0.0 Release Notes"
-msgstr "pgRouting 2.0.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.0.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.0.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.0.0%22>`__"
