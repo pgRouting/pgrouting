@@ -7,21 +7,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024, 2025.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024, 2025.
 msgid ""
-msgstr ""
-"Project-Id-Version: pgRouting v4.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-05 23:37+0000\n"
-"PO-Revision-Date: 2025-12-10 17:11+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"pgrouting-develop/es/>\n"
-"Language: es\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4.3\n"
-"Generated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.0\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-05 23:37+0000\nPO-Revision-Date: 2025-12-10 17:35+0000\nLast-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Categoría"
@@ -6273,7 +6259,7 @@ msgid "to"
 msgstr "a"
 
 msgid "Examples for One to Many for cost functions"
-msgstr "Ejemplos de funciones de coste de uno a muchos"
+msgstr "Ejemplos de funciones de coste de Uno a Muchos"
 
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost."
@@ -6283,7 +6269,7 @@ msgstr ""
 "pgr_withPointsCost.html#one-to-many>`__."
 
 msgid "Examples for Many to One for cost functions"
-msgstr "Ejemplos de muchos a uno para funciones de coste"
+msgstr "Ejemplos de funciones de coste de Muchos a Uno"
 
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost."
@@ -6313,14 +6299,14 @@ msgstr ""
 "pgr_withPointsCost.html#combinations>`__."
 
 msgid "Migration of multiple paths functions"
-msgstr "Migración de funciones de rutas múltiples"
+msgstr "Migración de funciones de múltiples rutas"
 
 msgid ""
 "The standardized :ref:`pgRouting-concepts:Result columns for single path "
 "functions` are |nksp-result|"
 msgstr ""
 "Las columnas estandarizadas :ref:`pgRouting-concepts:Result para funciones "
-"de ruta única` son |nksp-result|."
+"de ruta única` son |nksp-result|"
 
 msgid "``pgr_KSP``"
 msgstr "``pgr_KSP``"
@@ -6336,7 +6322,7 @@ msgstr "``pgr_edgeDisjointPaths``"
 
 #, fuzzy
 msgid ":ref:`from_result_disjoint`"
-msgstr "Regresa el conjunto de |result-disjoint|"
+msgstr ":ref:`from_result_disjoint`"
 
 msgid "Migration of |ksp-result|"
 msgstr "Migración de |ksp-result|"
@@ -6345,7 +6331,7 @@ msgid "|nksp-result|"
 msgstr "|nksp-result|"
 
 msgid "Before updating pgRouting, enumerate the |ksp-result|"
-msgstr "Antes de actualizar pgRouting, enumera los |ksp-result|."
+msgstr "Antes de actualizar pgRouting, enumerar los |ksp-result|"
 
 msgid "One to One example using ``pgr_KSP``"
 msgstr ""
@@ -6361,7 +6347,7 @@ msgid "Migration of |result-disjoint|"
 msgstr "Migración de |result-disjoint|"
 
 msgid "Before updating pgRouting, enumerate the |result-disjoint|"
-msgstr "Antes de actualizar pgRouting, enumera los |resultados-disjuntos|."
+msgstr "Antes de actualizar pgRouting, enumerar los |result-disjoint|"
 
 msgid "Skip when applicable, ``start_vid``"
 msgstr ""
@@ -6370,7 +6356,7 @@ msgid "Skip when applicable, ``end_vid``"
 msgstr "Omitir cuando proceda, ``end_vid``"
 
 msgid "One to One example using ``pgr_edgeDisjointPaths``"
-msgstr "Ejemplo individual con ``pgr_edgeDisjointPaths``"
+msgstr "Ejemplo de Uno a Uno con ``pgr_edgeDisjointPaths``"
 
 msgid ""
 "Migrating `this v3.8 <https://docs.pgrouting.org/3.6/en/"
@@ -6380,7 +6366,7 @@ msgstr ""
 "pgr_edgeDisjointPaths.html#one-to-one>`__."
 
 msgid "Before updating pgRouting enumerate the columns: |ksp-result|"
-msgstr "Antes de actualizar pgRouting enumere las columnas: |ksp-result|"
+msgstr "Antes de actualizar pgRouting enumerar las columnas: |ksp-result|"
 
 msgid "Migration of single path functions"
 msgstr "Migración de funciones de ruta única"
@@ -6389,8 +6375,8 @@ msgid ""
 "The standardized :ref:`pgRouting-concepts:Result columns for single path "
 "functions` are |short-generic-result|"
 msgstr ""
-"Las columnas estandarizadas :ref:`pgRouting-concepts:Result para funciones "
-"de ruta única` son |short-generic-result|."
+"Las columnas estandarizadas :ref:`pgRouting-concepts:Result columns for "
+"single path functions` son |short-generic-result|"
 
 msgid "``pgr_dijkstra``"
 msgstr "``pgr_dijkstra``"
@@ -6537,8 +6523,8 @@ msgid ""
 "To get the old signature column names: filter out the column ``start_vid`` "
 "and rename ``end_vid`` to ``end_pid``."
 msgstr ""
-"Para obtener los nombres de columna de la firma antigua: filtra la columna "
-"``start_vid`` y cambia el nombre de ``end_vid`` a ``end_pid``."
+"Para obtener los nombres de columna de la firma antigua: filtrar la columna "
+"``start_vid`` y cambiar el nombre de ``end_vid`` a ``end_pid``."
 
 msgid "Examples for Many to One with one route result"
 msgstr ""
@@ -6587,7 +6573,7 @@ msgstr ""
 "pgr_withPoints.html#combinations>`__."
 
 msgid "Migration of spanning tree functions"
-msgstr "Migración de las funciones del árbol de expansión"
+msgstr "Migración de las funciones de árbol de expansión"
 
 msgid ""
 "The standardized :ref:`pgRouting-concepts:Result columns for spanning tree "
@@ -6687,7 +6673,7 @@ msgid "For single vertex:"
 msgstr "Para vértice único:"
 
 msgid "Before updating pgRouting, enumerate |result-1-1| columns"
-msgstr "Antes de actualizar pgRouting, enumere las columnas |result-1-1|."
+msgstr "Antes de actualizar pgRouting, enumerar las columnas |result-1-1|."
 
 msgid "For multiple vertices:"
 msgstr "Para múltiples vértices:"
@@ -6717,7 +6703,7 @@ msgstr ""
 
 msgid "Before updating pgRouting, enumerate |result-1-1-no-seq| columns"
 msgstr ""
-"Antes de actualizar pgRouting, enumere las columnas |result-1-1-no-seq|."
+"Antes de actualizar pgRouting, enumerar las columnas |result-1-1-no-seq|."
 
 msgid "Multiple vertices example using ``pgr_drivingDistance``"
 msgstr "Ejemplo de vértices múltiples con ``pgr_drivingDistance``"
@@ -6751,10 +6737,10 @@ msgstr ""
 "parámetro **distancia**."
 
 msgid "Enumerate |result-m-1-no-seq| columns"
-msgstr "Enumerar las columnas |result-m-1-no-seq|."
+msgstr "Enumerar las columnas |result-m-1-no-seq|"
 
 msgid "Default value of **driving side** parameter"
-msgstr "Valor por defecto del parámetro **lado conductor**."
+msgstr "Valor por defecto del parámetro **lado conductor**"
 
 msgid ""
 "**driving side** parameter is unnamed, and valid values differ for directed "
@@ -6853,7 +6839,7 @@ msgid "After update:"
 msgstr ""
 
 msgid "Remove column ``seq``"
-msgstr "Eliminar columna ``seq``"
+msgstr "Eliminar la columna ``seq``"
 
 msgid "Rename ``vid`` to ``node`` and ``target_array`` to ``targets``"
 msgstr ""
@@ -7313,9 +7299,9 @@ msgid ""
 "And ``driving side`` parameter changed from named optional to unnamed "
 "**driving side** and its validity differ for directed and undirected graphs."
 msgstr ""
-"Y el parámetro \"lado conductor\" ha cambiado de opcional con nombre a "
-"\"lado conductor\" sin nombre y su validez difiere para grafos dirigidos y "
-"no dirigidos."
+"Y el parámetro ``driving side`` ha cambiado de opcional con nombre a **lado "
+"conductor** sin nombre y su validez difiere para grafos dirigidos y no "
+"dirigidos."
 
 msgid "``pgr_withPointsKSP`` (`One to One`)"
 msgstr "``pgr_withPointsKSP`` (`Uno a Uno`)"
@@ -7337,7 +7323,7 @@ msgstr ""
 "Tener en cuenta la existencia de las columnas adicionales de resultados."
 
 msgid "New output columns are |generic-result|"
-msgstr "Las nuevas columnas de salida son |generic-result|."
+msgstr "Las nuevas columnas de salida son |generic-result|"
 
 msgid ""
 "Using `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP."
@@ -8385,7 +8371,7 @@ msgid "Routing from :math:`1` to :math:`18` gives a solution."
 msgstr "La ruta de :math:`1` a :math:`18` da una solución."
 
 msgid "Touching edges"
-msgstr "Tocar los bordes"
+msgstr "Bordes que se tocan"
 
 msgid "Visually the edges seem to be connected, but internally they are not."
 msgstr ""
@@ -8399,10 +8385,7 @@ msgstr ""
 msgid ""
 "Once analyzed one by one the touchings, for the ones that need a local fix, "
 "the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__."
-msgstr ""
-"Una vez analizados uno a uno los toques, para los que necesiten un arreglo "
-"local, hay que `splitear las aristas <https://postgis.net/docs/ST_Split."
-"html>`__."
+msgstr "Una vez analizados uno a uno los toques, para los que necesiten un arreglo local, hay que separar las aristas con `split <https://postgis.net/docs/ST_Split.html>`__."
 
 msgid "Fixing a gap"
 msgstr ""
@@ -8414,7 +8397,7 @@ msgid "Analyze the network for gaps."
 msgstr "Analizar la red por espacios."
 
 msgid "The analysis tell us that the network has a gap."
-msgstr "El análisis nos dice que la red tiene una laguna."
+msgstr "El análisis nos dice que la red tiene una brecha."
 
 msgid ""
 "Calling :doc:`pgr_separateTouching` and adding the new segments to the edges "
@@ -8929,7 +8912,7 @@ msgid ""
 msgstr "Hay varios tipos de columnas devueltas que dependen de la función."
 
 msgid "Result columns for single path functions"
-msgstr "Columnas de resultados para funciones de trayectoria única"
+msgstr "Columnas de resultados para funciones de ruta única"
 
 msgid ""
 "Used in functions that return one path solution per departure and "
@@ -9260,13 +9243,11 @@ msgstr ""
 "La compilación con Boost 1.75 requiere un compilador de C++ compatible con "
 "el estándar C++14"
 
-#, fuzzy
 msgid "Postgresql version >= 13"
-msgstr "postgreSQL versión 9.3"
+msgstr "Postgresql version >= 13"
 
-#, fuzzy
 msgid "The Boost Graph Library (BGL) >= 1.56.0"
-msgstr "La Biblioteca de Gráficos Boost (BGL). Versión >= 1.56"
+msgstr "La Biblioteca de Gráficos Boost (BGL). Versión >= 1.56.0"
 
 #, fuzzy
 msgid "CMake >= 3.12"
