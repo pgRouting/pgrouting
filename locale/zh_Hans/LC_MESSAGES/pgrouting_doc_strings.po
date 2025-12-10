@@ -4812,25 +4812,22 @@ msgstr "限制迁移"
 msgid "There has been an effort to standardize function output columns names and types."
 msgstr ""
 
-#, fuzzy
 msgid ":ref:`pgRouting-concepts:Result columns for cost functions`"
-msgstr "成本函数结果列"
+msgstr ":ref:`pgRouting-concepts:Result columns for cost functions`"
 
 #, fuzzy
 msgid "|matrix-result|"
 msgstr "|matrix-result| 的集合"
 
-#, fuzzy
 msgid ":ref:`pgRouting-concepts:Result columns for single path functions`"
-msgstr "生成树函数的结果列"
+msgstr ":ref:`pgRouting-concepts:Result columns for single path functions`"
 
 #, fuzzy
 msgid "|short-generic-result|"
 msgstr "返回集合 |short-generic-result|"
 
-#, fuzzy
 msgid ":ref:`pgRouting-concepts:Result columns for spanning tree functions`"
-msgstr "生成树函数的结果列"
+msgstr ":ref:`pgRouting-concepts:Result columns for spanning tree functions`"
 
 msgid "|result-spantree|"
 msgstr "|result-spantree|"
@@ -5050,14 +5047,13 @@ msgid "v < 3.6"
 msgstr ""
 
 msgid ":ref:`from_ksp_result`"
-msgstr ""
+msgstr ":ref:`from_ksp_result`"
 
 msgid "``pgr_edgeDisjointPaths``"
 msgstr "``pgr_edgeDisjointPaths``"
 
-#, fuzzy
 msgid ":ref:`from_result_disjoint`"
-msgstr "返回集合 |result-disjoint|"
+msgstr ":ref:`from_result_disjoint`"
 
 #, fuzzy
 msgid "Migration of |ksp-result|"
@@ -5307,14 +5303,13 @@ msgid "``pgr_drivingDistance``"
 msgstr "``pgr_drivingDistance``"
 
 msgid ":ref:`from_result_dij_dd`"
-msgstr ""
+msgstr ":ref:`from_result_dij_dd`"
 
 msgid "``pgr_withPointsDD``"
 msgstr "``pgr_withPointsDD``"
 
-#, fuzzy
 msgid ":ref:`from_result_generic_no_seq`"
-msgstr "|result-generic-no-seq|"
+msgstr ":ref:`from_result_generic_no_seq`"
 
 msgid "``pgr_kruskalDD``"
 msgstr "``pgr_kruskalDD``"
@@ -5323,7 +5318,7 @@ msgid "v < 3.7"
 msgstr ""
 
 msgid ":ref:`from_result_bfs`"
-msgstr ""
+msgstr ":ref:`from_result_bfs`"
 
 msgid "``pgr_kruskalBFS``"
 msgstr "``pgr_kruskalBFS``"
@@ -5529,14 +5524,14 @@ msgid "``pgr_edgeColoring``"
 msgstr "pgr_edgeColoring"
 
 msgid ":ref:`from_old_edge_color`"
-msgstr ""
+msgstr ":ref:`from_old_edge_color`"
 
 #, fuzzy
 msgid "``pgr_bipartite``"
 msgstr "pgr_bipartite"
 
 msgid ":ref:`from_old_node_color`"
-msgstr ""
+msgstr ":ref:`from_old_node_color`"
 
 #, fuzzy
 msgid "``pgr_sequentialVertexColoring``"
@@ -5546,17 +5541,15 @@ msgstr "pgr_sequentialVertexColoring"
 msgid "``pgr_topologicalSort``"
 msgstr "pgr_topologicalSort"
 
-#, fuzzy
 msgid ":ref:`from_toposort`"
-msgstr "返回集合 |result-disjoint|"
+msgstr ":ref:`from_toposort`"
 
 #, fuzzy
 msgid "``pgr_transitiveClosure``"
 msgstr "pgr_transitiveClosure"
 
-#, fuzzy
 msgid ":ref:`from_old_closure`"
-msgstr "|result-generic-no-seq|"
+msgstr ":ref:`from_old_closure`"
 
 #, fuzzy
 msgid "Migration from |result-old-closure|"

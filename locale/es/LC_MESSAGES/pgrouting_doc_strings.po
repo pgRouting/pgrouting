@@ -6084,21 +6084,18 @@ msgid ""
 "types."
 msgstr ""
 
-#, fuzzy
 msgid ":ref:`pgRouting-concepts:Result columns for cost functions`"
 msgstr ":ref:`pgRouting-concepts:Result columns for cost functions`"
 
 msgid "|matrix-result|"
 msgstr "|matrix-result|"
 
-#, fuzzy
 msgid ":ref:`pgRouting-concepts:Result columns for single path functions`"
 msgstr ":ref:`pgRouting-concepts:Result columns for single path functions`"
 
 msgid "|short-generic-result|"
 msgstr "|short-generic-result|"
 
-#, fuzzy
 msgid ":ref:`pgRouting-concepts:Result columns for spanning tree functions`"
 msgstr ":ref:`pgRouting-concepts:Result columns for spanning tree functions`"
 
@@ -6313,12 +6310,11 @@ msgid "v < 3.6"
 msgstr ""
 
 msgid ":ref:`from_ksp_result`"
-msgstr ""
+msgstr ":ref:`from_ksp_result`"
 
 msgid "``pgr_edgeDisjointPaths``"
 msgstr "``pgr_edgeDisjointPaths``"
 
-#, fuzzy
 msgid ":ref:`from_result_disjoint`"
 msgstr ":ref:`from_result_disjoint`"
 
@@ -6582,7 +6578,7 @@ msgid "``pgr_drivingDistance``"
 msgstr "``pgr_drivingDistance``"
 
 msgid ":ref:`from_result_dij_dd`"
-msgstr ""
+msgstr ":ref:`from_result_dij_dd`"
 
 msgid "``pgr_withPointsDD``"
 msgstr "``pgr_withPointsDD``"
@@ -6597,7 +6593,7 @@ msgid "v < 3.7"
 msgstr ""
 
 msgid ":ref:`from_result_bfs`"
-msgstr ""
+msgstr ":ref:`from_result_bfs`"
 
 msgid "``pgr_kruskalBFS``"
 msgstr "``pgr_kruskalBFS``"
@@ -6801,13 +6797,13 @@ msgid "``pgr_edgeColoring``"
 msgstr "``pgr_edgeColoring``"
 
 msgid ":ref:`from_old_edge_color`"
-msgstr ""
+msgstr ":ref:`from_old_edge_color`"
 
 msgid "``pgr_bipartite``"
 msgstr "``pgr_bipartite``"
 
 msgid ":ref:`from_old_node_color`"
-msgstr ""
+msgstr ":ref:`from_old_node_color`"
 
 msgid "``pgr_sequentialVertexColoring``"
 msgstr "``pgr_sequentialVertexColoring``"
@@ -6815,14 +6811,12 @@ msgstr "``pgr_sequentialVertexColoring``"
 msgid "``pgr_topologicalSort``"
 msgstr "``pgr_topologicalSort``"
 
-#, fuzzy
 msgid ":ref:`from_toposort`"
 msgstr ":ref:`from_toposort`"
 
 msgid "``pgr_transitiveClosure``"
 msgstr "``pgr_transitiveClosure``"
 
-#, fuzzy
 msgid ":ref:`from_old_closure`"
 msgstr ":ref:`from_old_closure`"
 
