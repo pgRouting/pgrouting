@@ -7,7 +7,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024, 2025.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024, 2025.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-10 19:55+0000\nPO-Revision-Date: 2025-12-10 20:19+0000\nLast-Translator: DeepL <noreply-mt-deepl@weblate.org>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-10 19:55+0000\nPO-Revision-Date: 2025-12-10 20:19+0000\nLast-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Categoría"
@@ -7920,9 +7920,8 @@ msgstr "`Boost: Componentes biconectados y puntos de articulación <https://www.
 msgid "wikipedia: `Biconnected component <https://en.wikipedia.org/wiki/Biconnected_component>`__"
 msgstr "wikipedia: `Componentes biconnectados <https://en.wikipedia.org/wiki/Biconnected_component>`__"
 
-#, fuzzy
 msgid "``pgr_bandwidth`` - Experimental"
-msgstr "``pgr_bipartite`` - Experimental"
+msgstr "``pgr_bandwidth`` - Experimental"
 
 msgid "``pgr_bandwidth`` - Calculates the bandwidth of the graph"
 msgstr ""
@@ -7942,9 +7941,8 @@ msgstr "La implementación es para grafos no dirigidos"
 msgid "Run time is 0.160789 seconds"
 msgstr ""
 
-#, fuzzy
 msgid "pgr_bandwidth(`Edges SQL`_)"
-msgstr "pgr_bipartite(`SQL de aristas`_)"
+msgstr "pgr_bandwidth(`SQL de aristas`_)"
 
 msgid "Returns ``BIGINT``"
 msgstr "Devuelve ``BIGINT``"
