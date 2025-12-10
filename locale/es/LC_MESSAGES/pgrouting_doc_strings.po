@@ -7,7 +7,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024, 2025.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024, 2025.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-10 19:55+0000\nPO-Revision-Date: 2025-12-10 20:19+0000\nLast-Translator: DeepL <noreply-mt-deepl@weblate.org>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-10 19:55+0000\nPO-Revision-Date: 2025-12-10 20:25+0000\nLast-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Categoría"
@@ -7951,7 +7951,7 @@ msgid "For an undirected graph with edges."
 msgstr "Para un grafo no dirigido con aristas."
 
 msgid "Returns a bigint ``(pgr_bandwidth)``"
-msgstr "Devuelve un bigint ``(pgr_ancho_banda)``"
+msgstr "Devuelve un bigint ``(pgr_bandwidth)``"
 
 msgid "``pgr_bandwidth``"
 msgstr "``pgr_bandwidth``"
@@ -7965,9 +7965,8 @@ msgstr "Grafo no dirigido con aristas antes de la optimización."
 msgid "Undirected graph with edges after optimization."
 msgstr "Grafo no dirigido con aristas tras la optimización."
 
-#, fuzzy
 msgid "`Boost: bandwidth <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
-msgstr "`Boost: es bipartido <https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
+msgstr "`Boost: bandwidth <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
 
 msgid "``pgr_bdAstar``"
 msgstr "``pgr_bdAstar``"
@@ -7999,9 +7998,8 @@ msgstr "pgr_bdAstar(Muchos a Muchos)"
 msgid "Signature change on pgr_bdAstar(One to One)"
 msgstr "Cambio de firma en pgr_bdAstar(Uno a Uno)"
 
-#, fuzzy
 msgid "The results are equivalent to the union of the results of pgr_bdAStar(One to One) on the:"
-msgstr "Los resultados son equivalentes a la unión de los resultados de pgr_bdAStar(Uno a Uno) en:"
+msgstr "Los resultados son equivalentes a la unión de los resultados de pgr_bdAStar(Uno a Uno) en el:"
 
 msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
 msgstr "pgr_bdAstar(`SQL de aristas`_, **salida**, **destino**, [**opciones**])"
@@ -8027,7 +8025,6 @@ msgstr "``pgr_bdAstarCost`` - Coste total del camino más corto utilizando el al
 msgid "pgr_bdAstarCost(Combinations)"
 msgstr "pgr_bdAstarCost(Combinaciones)"
 
-#, fuzzy
 msgid "The ``pgr_bdAstarCost`` function summarizes the cost of the shortest path using the bidirectional A* algorithm."
 msgstr "La función ``pgr_bdAstarCost`` suma el coste del camino más corto utilizando el algoritmo bidireccional A*."
 
@@ -8049,9 +8046,8 @@ msgstr "pgr_bdAstarCost(`SQL de aristas`_, `SQL de combinaciones`_, [**opciones*
 msgid "``pgr_bdAstarCostMatrix``"
 msgstr "``pgr_bdAstarCostMatrix``"
 
-#, fuzzy
 msgid "``pgr_bdAstarCostMatrix`` - Calculates the cost matrix using :doc:`pgr_bdAstar`."
-msgstr "``pgr_bdAstarCostMatrix`` - Calcula la matriz de costes utilizando :doc:`pgr_aStar`."
+msgstr "``pgr_bdAstarCostMatrix`` - Calcula la matriz de costes utilizando :doc:`pgr_bdAstar`."
 
 msgid "Internally uses the :doc:`pgr_bdAstar` algorithm."
 msgstr "Internamente utiliza el algoritmo :doc:`pgr_bdAstar`."
@@ -8074,9 +8070,8 @@ msgstr "pgr_bdDijkstra(Muchos a Uno)"
 msgid "pgr_bdDijkstra(Many to Many)"
 msgstr "pgr_bdDijkstra(Muchos a Muchos)"
 
-#, fuzzy
 msgid "Signature change on pgr_bdDijkstra(One to One)"
-msgstr "La firma cambió en pgr_bdDijsktra(Uno a Uno)"
+msgstr "Cambio de firma en pgr_bdDijsktra(Uno a Uno)"
 
 msgid "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
 msgstr "pgr_bdDijkstra(`SQL de aristas`_, **salida**, **destino**, [``directed``])"
@@ -8120,9 +8115,8 @@ msgstr "``pgr_bdDijkstraCost`` - Devuelve el coste del camino más corto utiliza
 msgid "pgr_bdDijkstraCost(Combinations)"
 msgstr "pgr_bdDijkstraCost(Combinaciones)"
 
-#, fuzzy
 msgid "The ``pgr_bdDijkstraCost`` function summarizes the cost of the shortest path using the bidirectional Dijkstra Algorithm."
-msgstr "La función ``pgr_bdDijkstraCost`` sumarisa el costo de la ruta más corta utilizando el algoritmo de bidirecional de Dijkstra."
+msgstr "La función ``pgr_bdDijkstraCost`` suma el costo de la ruta más corta utilizando el algoritmo de bidirecional de Dijkstra."
 
 msgid "pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])"
 msgstr "pgr_bdDijkstraCost(`SQL de aristas`_, **salida**, **destino**, [``directed``])"
@@ -8160,7 +8154,6 @@ msgstr "Matriz de costos simétrica para vértices :math:`\\{5, 6, 10, 15\\}` en
 msgid "Use with :doc:`pgr_TSP`."
 msgstr "Usar con :doc:`pgr_TSP`."
 
-#, fuzzy
 msgid "``pgr_bellmanFord`` - Experimental"
 msgstr "``pgr_bellmanFord`` - Experimental"
 
@@ -8209,17 +8202,14 @@ msgstr "pgr_bellmanFord(`SQL de aristas`_, **salidas**, **destinos**, [``directe
 msgid "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr "pgr_bellmanFord(`SQL de aristas`_, `SQL de combinaciones`_, [``directed``])"
 
-#, fuzzy
 msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a directed graph"
-msgstr "Del vértice :math:`6` a los vértices :math:`\\{10, 17\\}` en un grafo **dirigido**"
+msgstr "Del vértice :math:`6` a los vértices :math:`\\{10, 17\\}` en un grafo dirigido"
 
-#, fuzzy
 msgid "From vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a directed graph"
-msgstr "De los vértices :math:`\\{6, 1\\}` al vertice :math:`17` en un grafo **dirigido**"
+msgstr "De los vértices :math:`\\{6, 1\\}` al vértice :math:`17` en un grafo dirigido"
 
-#, fuzzy
 msgid "From vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` on an undirected graph"
-msgstr "De los vértices :math:`\\{6, 1\\}` a los vértices :math:`\\{10, 17\\}` en un grafo **no dirigido**"
+msgstr "De los vértices :math:`\\{6, 1\\}` a los vértices :math:`\\{10, 17\\}` en un grafo no dirigido"
 
 msgid "Using a combinations table on an undirected graph"
 msgstr "Usando una tabla de combinaciones en un grafo no dirigido"
@@ -8359,9 +8349,8 @@ msgstr "Un grafo cuyos pesos de las aristas pertenece al conjunto {0, X}, donde 
 msgid "pgr_binaryBreadthFirstSearch(Combinations)"
 msgstr "pgr_binaryBreadthFirstSearch(Combinaciones)"
 
-#, fuzzy
 msgid "It is well-known that the shortest paths between a single source and all other vertices can be found using Breadth First Search in :math:`O(|E|)` in an unweighted graph, i.e. the distance is the minimal number of edges that you need to traverse from the source to another vertex. We can interpret such a graph also as a weighted graph, where every edge has the weight :math:`1`. If not all edges in graph have the same weight, then we a more general algorithm is needed, like Dijkstra's Algorithm which runs in :math:`O(|E|log|V|)` time."
-msgstr "Es bien sabido que los caminos más cortos entre un único origen y todos los demás vértices se pueden encontrar utilizando la búsqueda rápida en :math:`O(|E|)` en un grafo no ponderado, es decir, la distancia es el número mínimo de aristas que hay que recorrer desde el origen hasta otro vértice. Podemos interpretar este grafo también como un grafo ponderado, en el que cada arista tiene el peso :math:`1`. Si no todas las aristas del grafo tienen el mismo peso, necesitaremos un algoritmo más general, como el Algoritmo de Dijkstra, que se ejecuta en tiempo :math:`O(|E|log|V|)`."
+msgstr "Es bien sabido que los caminos más cortos entre un único origen y todos los demás vértices se pueden encontrar utilizando la búsqueda rápida en :math:`O(|E|)` en un grafo no ponderado, es decir, la distancia es el número mínimo de aristas que hay que recorrer desde el origen hasta otro vértice. También se puede interpretar este grafo como un grafo ponderado, en el que cada arista tiene el peso :math:`1`. Si no todas las aristas del grafo tienen el mismo peso, se necesita un algoritmo más general, como el Algoritmo de Dijkstra, que se ejecuta en tiempo :math:`O(|E|log|V|)`."
 
 msgid "However if the weights are more constrained, we can use a faster algorithm. This algorithm, termed as 'Binary Breadth First Search' as well as '0-1 BFS', is a variation of the standard Breadth First Search problem to solve the SSSP (single-source shortest path) problem in :math:`O(|E|)`, if the weights of each edge belongs to the set {0,X}, where 'X' is any non-negative real integer."
 msgstr "Sin embargo, si los pesos están más restringidos, podemos usar un algoritmo más rápido. Este algoritmo, llamado 'búsqueda binaria de primero profundidad' así como '0-1 BFS', es una variación del problema estándar de búsqueda de primero profundidad para resolver el problema SSSP (ruta más corta de una sola fuente) en :math:`O(|E|)`, si los pesos de cada arista pertenecen al conjunto de caracteres de {0,X}, donde 'X' es cualquier entero no negativo."
@@ -9179,9 +9168,8 @@ msgstr "Usando cuando la salida /destino no pertenecen al grafo contraído"
 msgid "Using when departure and destination are not in the contracted graph"
 msgstr "Usando cuando la salida y el destino no están en el grafo contraído"
 
-#, fuzzy
 msgid "``pgr_contractionHierarchies`` - Experimental"
-msgstr "``pgr_breadthFirstSearch`` - Experimental"
+msgstr "``pgr_contractionHierarchies`` - Experimental"
 
 #, fuzzy
 msgid "``pgr_contractionHierarchies`` — Performs graph contraction according to the contraction hierarchies method and returns the contracted vertices and shortcut edges created."
