@@ -9291,9 +9291,8 @@ msgstr "Construir dependencias"
 msgid "Optional dependencies"
 msgstr "Dependencias opcionales"
 
-#, fuzzy
 msgid "For documentation"
-msgstr "Para la documentación del usuario"
+msgstr "Para la documentación"
 
 msgid "Configuring"
 msgstr "Configuración"
