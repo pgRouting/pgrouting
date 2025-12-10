@@ -7,7 +7,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024, 2025.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024, 2025.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-05 23:37+0000\nPO-Revision-Date: 2025-12-10 19:02+0000\nLast-Translator: DeepL <noreply-mt-deepl@weblate.org>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-05 23:37+0000\nPO-Revision-Date: 2025-12-10 19:31+0000\nLast-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Categoría"
@@ -6304,9 +6304,7 @@ msgstr "Migración de funciones de múltiples rutas"
 msgid ""
 "The standardized :ref:`pgRouting-concepts:Result columns for single path "
 "functions` are |nksp-result|"
-msgstr ""
-"Las columnas estandarizadas :ref:`pgRouting-concepts:Result para funciones "
-"de ruta única` son |nksp-result|"
+msgstr "Las columnas estandarizadas :ref:`pgRouting-concepts:Result columns for single path functions` son |nksp-result|"
 
 msgid "``pgr_KSP``"
 msgstr "``pgr_KSP``"
@@ -6673,7 +6671,7 @@ msgid "For single vertex:"
 msgstr "Para vértice único:"
 
 msgid "Before updating pgRouting, enumerate |result-1-1| columns"
-msgstr "Antes de actualizar pgRouting, enumerar las columnas |result-1-1|."
+msgstr "Antes de actualizar pgRouting, enumerar las columnas |result-1-1|"
 
 msgid "For multiple vertices:"
 msgstr "Para múltiples vértices:"
@@ -6702,8 +6700,7 @@ msgstr ""
 "pgr_drivingDistance.html#single-vertex>`__."
 
 msgid "Before updating pgRouting, enumerate |result-1-1-no-seq| columns"
-msgstr ""
-"Antes de actualizar pgRouting, enumerar las columnas |result-1-1-no-seq|."
+msgstr "Antes de actualizar pgRouting, enumerar las columnas |result-1-1-no-seq|"
 
 msgid "Multiple vertices example using ``pgr_drivingDistance``"
 msgstr "Ejemplo de vértices múltiples con ``pgr_drivingDistance``"
@@ -6727,7 +6724,7 @@ msgid "After updating pgRouting:"
 msgstr ""
 
 msgid "Enumerate |result-1-1-no-seq| columns"
-msgstr "Enumerar las columnas |result-1-1-no-seq|."
+msgstr "Enumerar las columnas |result-1-1-no-seq|"
 
 msgid ""
 "Use an unnamed valid value for **driving side** after the **distance** "
@@ -9930,7 +9927,7 @@ msgstr "Cuando ``start_vid = 0 Ó end_vid = 0``"
 msgid ""
 "The solutions generated are guaranteed to be *twice as long as the optimal "
 "tour in the worst case*"
-msgstr "Se garantiza que las soluciones generadas sean *en el peor de los casos el doble de largas que el recorrido óptimo*."
+msgstr "Se garantiza que las soluciones generadas sean *en el peor de los casos el doble de largas que el recorrido óptimo*"
 
 msgid "When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
 msgstr "Cuando ``start_vid != 0 Y end_vid != 0 Y start_vid != end_vid``"
@@ -9947,7 +9944,7 @@ msgstr "Con ``directed => true``"
 msgid ""
 "It is **not guaranteed** that the solution will be, in the worst case, twice "
 "as long as the optimal tour"
-msgstr "No está **garantizado** que la solución sea, en el peor de los casos, dos veces más larga que el recorrido óptimo."
+msgstr "No está **garantizado** que la solución sea, en el peor de los casos, dos veces más larga que el recorrido óptimo"
 
 msgid "is directed"
 msgstr "es dirigido"
@@ -10452,7 +10449,7 @@ msgstr ""
 "`pgr_aStar`."
 
 msgid "Using internally the :doc:`pgr_aStar` algorithm"
-msgstr "Uso interno del algoritmo :doc:`pgr_aStar"
+msgstr "Uso interno del algoritmo :doc:`pgr_aStar`"
 
 msgid "Returns a cost matrix."
 msgstr "Devuelve una matriz de costes."
