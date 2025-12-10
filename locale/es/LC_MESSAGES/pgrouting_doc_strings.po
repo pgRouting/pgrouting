@@ -9247,18 +9247,16 @@ msgid "Postgresql version >= 13"
 msgstr "Postgresql version >= 13"
 
 msgid "The Boost Graph Library (BGL) >= 1.56.0"
-msgstr "Biblioteca de gráficos Boost (BGL) >= 1.56.0"
+msgstr "La Librería de Grafos Boost (BGL) >= 1.56.0"
 
-#, fuzzy
 msgid "CMake >= 3.12"
-msgstr "CMake >= 3.2"
+msgstr "CMake >= 3.12"
 
 msgid "For user's documentation"
 msgstr "Para la documentación del usuario"
 
-#, fuzzy
 msgid "Sphinx >= 4.0"
-msgstr "Sphinx >= 1.1"
+msgstr "Sphinx >= 4.0"
 
 msgid "For developer's documentation"
 msgstr "Para la documentación del desarrollador"
@@ -9278,9 +9276,8 @@ msgstr "pg_prove"
 msgid "For using:"
 msgstr "Para uso:"
 
-#, fuzzy
 msgid "PostGIS version >= 3.0.0"
-msgstr "PostGIS version >= 2.2"
+msgstr "PostGIS versión >= 3.0.0"
 
 msgid "Example: Installing dependencies on linux"
 msgstr "Ejemplo: Instalación de dependencias en linux"
