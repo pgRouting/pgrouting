@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-05 23:37+0000\n"
+"POT-Creation-Date: 2025-12-10 19:55+0000\n"
 "PO-Revision-Date: 2025-09-22 16:28+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -7252,10 +7252,6 @@ msgstr "为 pgRouting 添加功能"
 
 msgid "Consult the `developer's documentation <https://docs.pgrouting.org/doxy/2.4/index.html>`__"
 msgstr "查阅 `开发者文档 <https://docs.pgrouting.org/doxy/2.4/index.html>`__"
-
-#, fuzzy
-msgid "See also"
-msgstr "另请参阅"
 
 msgid "Installation"
 msgstr "安装"
@@ -16783,6 +16779,10 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
+
+#, fuzzy
+#~ msgid "See also"
+#~ msgstr "另请参阅"
 
 #~ msgid "It is expected to terminate faster than pgr_aStar"
 #~ msgstr "预计其执行速度将快于 pgr_aStar 函数"
