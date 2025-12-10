@@ -10589,9 +10589,8 @@ msgstr "Para un grafo no dirigido con aristas."
 msgid "Returns a bigint ``(pgr_bandwidth)``"
 msgstr "Devuelve un valor boolean ``(pgr_isplanar)``"
 
-#, fuzzy
 msgid "``pgr_bandwidth``"
-msgstr "pgr_bipartite"
+msgstr "``pgr_bandwidth``"
 
 msgid "gives the bandwidth of the graph."
 msgstr "da el ancho de banda del grafo."
@@ -11822,7 +11821,7 @@ msgid "Contraction optional parameters"
 msgstr "Parámetros opcionales de Contracción"
 
 msgid "``methods``"
-msgstr ""
+msgstr "``methods``"
 
 msgid "``INTEGER[]``"
 msgstr "``INTEGER[]``"
@@ -12470,13 +12469,11 @@ msgstr "Columna ``id`` tiene valor positivo"
 msgid "Column ``id`` has a negative value"
 msgstr "Columna ``id`` tiene valor negativo"
 
-#, fuzzy
 msgid "``metric``"
-msgstr "``strict``"
+msgstr "``metric``"
 
-#, fuzzy
 msgid "``vertex_order``"
-msgstr "``vertex_id``"
+msgstr "``vertex_order``"
 
 msgid "On an undirected graph"
 msgstr "En un grafo no dirigido"
@@ -13668,9 +13665,8 @@ msgstr ""
 msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 msgstr "pgr_dijkstraCostMatrix(`SQL de aristas`_, **salidas**, [``directed``])"
 
-#, fuzzy
 msgid "``pgr_dijkstraNear``"
-msgstr "pgr_dijkstraNear"
+msgstr "``pgr_dijkstraNear``"
 
 msgid ""
 "``pgr_dijkstraNear`` — Using Dijkstra's algorithm, finds the route that "
@@ -13982,9 +13978,8 @@ msgstr "Cuando ``false``: ``cap`` límite por ``Start vid`` será devuelto"
 msgid "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 
-#, fuzzy
 msgid "``pgr_dijkstraNearCost``"
-msgstr "pgr_dijkstraNearCost"
+msgstr "``pgr_dijkstraNearCost``"
 
 msgid ""
 "``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that "
@@ -14067,9 +14062,8 @@ msgstr ""
 "Ambos son igualmente buenos ya que tienen el mismo costo. (lines: `12` and "
 "`13`)"
 
-#, fuzzy
 msgid "``pgr_dijkstraVia``"
-msgstr "``pgr_dijkstra``"
+msgstr "``pgr_dijkstraVia``"
 
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr "``pgr_dijkstraVia`` - Ruta que recorre una lista de vértices."
@@ -14886,7 +14880,7 @@ msgid "At the left ``l`` of the segment."
 msgstr "A la izquierda ``l`` del segmento."
 
 msgid "``distance``"
-msgstr "``distancia``"
+msgstr "``distance``"
 
 msgid "Distance from the point to the edge."
 msgstr "Distancia del punto a la arista."
@@ -16829,9 +16823,8 @@ msgstr "pgr_pushRelabel(`SQL de aristas`_, **salidas**, **destinos**)"
 msgid "pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)"
 msgstr "pgr_pushRelabel(`SQL de aristas`_, `SQL de combinaciones`_)"
 
-#, fuzzy
 msgid "``pgr_separateCrossing``"
-msgstr "``pgr_version``"
+msgstr "``pgr_separateCrossing``"
 
 msgid ""
 "``pgr_separateCrossing`` - From crossing geometries generates geometries "
@@ -16858,9 +16851,8 @@ msgstr "REGRESA |result-version|"
 msgid "Get the segments of the crossing geometries"
 msgstr "Obtener los segmentos de las geometrías que se cruzan"
 
-#, fuzzy
 msgid "``tolerance``"
-msgstr "tolerancia"
+msgstr "``tolerance``"
 
 #, fuzzy
 msgid "0.01"
@@ -16879,9 +16871,8 @@ msgid ""
 "PostgreSQL ``NOTICE`` using the ``dryrun`` flag."
 msgstr ""
 
-#, fuzzy
 msgid "``pgr_separateTouching``"
-msgstr "``pgr_version``"
+msgstr "``pgr_separateTouching``"
 
 msgid ""
 "``pgr_separateTouching`` - From touching geometries generates geometries "
@@ -17928,7 +17919,7 @@ msgid "Special optional parameters"
 msgstr ""
 
 msgid "``stop_on_first``"
-msgstr ""
+msgstr "``stop_on_first``"
 
 msgid ""
 "When ``true`` stops on first path found that dos not violate restrictions"
@@ -21765,10 +21756,10 @@ msgid "Flow capacity from `target` to ``source``."
 msgstr ""
 
 msgid "``category``"
-msgstr ""
+msgstr "``category``"
 
 msgid "``reverse_category``"
-msgstr ""
+msgstr "``reverse_category``"
 
 msgid ":math:`x` coordinate of the starting vertex of the geometry."
 msgstr ""

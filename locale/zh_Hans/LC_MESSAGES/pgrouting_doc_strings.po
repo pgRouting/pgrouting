@@ -2501,9 +2501,8 @@ msgstr ":doc:`pgr_edgeColoring` - 使用 Vizing 定理的边缘着色算法。"
 msgid "Returns set of |result_edge_color|"
 msgstr "返回集合 |result-edge-color|"
 
-#, fuzzy
 msgid "``color``"
-msgstr "``color_id``"
+msgstr "``color``"
 
 #, fuzzy
 msgid "Color of the edge."
@@ -5124,21 +5123,18 @@ msgstr "``pgr_aStar``"
 msgid "``pgr_bdDijkstra``"
 msgstr "``pgr_bdDijkstra``"
 
-#, fuzzy
 msgid "``pgr_bellmanFord``"
-msgstr "pgr_bellmanFord"
+msgstr "``pgr_bellmanFord``"
 
-#, fuzzy
 msgid "``pgr_dagShortestPath``"
-msgstr ":doc:`pgr_dagShortestPath`"
+msgstr "``pgr_dagShortestPath``"
 
 #, fuzzy
 msgid "|result-1-1|"
 msgstr "|result-bfs|"
 
-#, fuzzy
 msgid "``pgr_edwardMoore``"
-msgstr "pgr_edwardMoore"
+msgstr "``pgr_edwardMoore``"
 
 msgid "``pgr_withPoints``"
 msgstr "``pgr_withPoints``"
@@ -5335,16 +5331,14 @@ msgstr "``pgr_primBFS``"
 msgid "``pgr_primDFS``"
 msgstr "``pgr_primDFS``"
 
-#, fuzzy
 msgid "``pgr_breadthFisrtSearch``"
-msgstr "pgr_breadthFirstSearch"
+msgstr "``pgr_breadthFisrtSearch``"
 
 msgid "v < 4.0.0"
 msgstr ""
 
-#, fuzzy
 msgid "``pgr_depthFisrtSearch``"
-msgstr "pgr_depthFirstSearch"
+msgstr "``pgr_depthFisrtSearch``"
 
 #, fuzzy
 msgid "to |result-spantree|"
@@ -5519,34 +5513,29 @@ msgstr "返回集合 |result-node-color|"
 msgid "Changes on column names must be done after updating pgRouting."
 msgstr ""
 
-#, fuzzy
 msgid "``pgr_edgeColoring``"
-msgstr "pgr_edgeColoring"
+msgstr "``pgr_edgeColoring``"
 
 msgid ":ref:`from_old_edge_color`"
 msgstr ":ref:`from_old_edge_color`"
 
-#, fuzzy
 msgid "``pgr_bipartite``"
-msgstr "pgr_bipartite"
+msgstr "``pgr_bipartite``"
 
 msgid ":ref:`from_old_node_color`"
 msgstr ":ref:`from_old_node_color`"
 
-#, fuzzy
 msgid "``pgr_sequentialVertexColoring``"
-msgstr "pgr_sequentialVertexColoring"
+msgstr "``pgr_sequentialVertexColoring``"
 
-#, fuzzy
 msgid "``pgr_topologicalSort``"
-msgstr "pgr_topologicalSort"
+msgstr "``pgr_topologicalSort``"
 
 msgid ":ref:`from_toposort`"
 msgstr ":ref:`from_toposort`"
 
-#, fuzzy
 msgid "``pgr_transitiveClosure``"
-msgstr "pgr_transitiveClosure"
+msgstr "``pgr_transitiveClosure``"
 
 msgid ":ref:`from_old_closure`"
 msgstr ":ref:`from_old_closure`"
@@ -8414,9 +8403,8 @@ msgstr "对于一个undirected graph(无向图)，其边为 :math:'{2,4,5,8}'"
 msgid "Returns a bigint ``(pgr_bandwidth)``"
 msgstr "返回一个布尔值 ``(pgr_isplanar)``"
 
-#, fuzzy
 msgid "``pgr_bandwidth``"
-msgstr "pgr_bipartite"
+msgstr "``pgr_bandwidth``"
 
 #, fuzzy
 msgid "gives the bandwidth of the graph."
@@ -8758,7 +8746,7 @@ msgid "``vid``"
 msgstr "``vid``"
 
 msgid "``centrality``"
-msgstr "``capacity``"
+msgstr "``centrality``"
 
 msgid "Relative betweenness centrality score of the vertex (will be in range [0,1])"
 msgstr "该节点的相对介数中心性得分（范围为 [0,1]）"
@@ -10586,9 +10574,8 @@ msgstr "使用 Dijkstra 算法，计算并返回成本矩阵。"
 msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 msgstr "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 
-#, fuzzy
 msgid "``pgr_dijkstraNear``"
-msgstr "pgr_dijkstraNear"
+msgstr "``pgr_dijkstraNear``"
 
 msgid "``pgr_dijkstraNear`` — Using Dijkstra's algorithm, finds the route that leads to the nearest vertex."
 msgstr "``pgr_dijkstraNear`` - 使用 Dijkstra 算法，找到通往最近顶点的路径。"
@@ -10800,9 +10787,8 @@ msgstr "当 ``false`` 时：将返回每个 ``Start vid`` 的 ``cap`` 限值"
 msgid "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr "维基百科：https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 
-#, fuzzy
 msgid "``pgr_dijkstraNearCost``"
-msgstr "pgr_dijkstraNearCost"
+msgstr "``pgr_dijkstraNearCost``"
 
 msgid "``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that leads to the nearest vertex."
 msgstr "`pgr_dijkstraNearCost`` - 使用 dijkstra 算法，找到通往最近顶点的路径。"
@@ -10840,9 +10826,8 @@ msgstr "最好的方法是 :math:`(11/rightarrow 16)`，成本是 :math:`1` (lin
 msgid "Both are equally good as they have the same cost. (lines: `12` and `13`)"
 msgstr "由于成本相同，两者同样好。(行：`12` and `13`)"
 
-#, fuzzy
 msgid "``pgr_dijkstraVia``"
-msgstr "``pgr_dijkstra``"
+msgstr "``pgr_dijkstraVia``"
 
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr "``pgr_dijkstraVia`` - 经过顶点列表的路径。"
