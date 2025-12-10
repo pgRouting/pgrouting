@@ -7,7 +7,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024, 2025.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024, 2025.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-05 23:37+0000\nPO-Revision-Date: 2025-12-10 17:48+0000\nLast-Translator: DeepL <noreply-mt-deepl@weblate.org>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-05 23:37+0000\nPO-Revision-Date: 2025-12-10 18:06+0000\nLast-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Categoría"
@@ -10085,7 +10085,7 @@ msgid "**Line 6** ``start_vid => 1``"
 msgstr "**Linea 6** ``start_vid => 1``"
 
 msgid "Using points of interest to generate an asymmetric matrix."
-msgstr "Utilización de puntos de interés para generar una matriz asimétrica."
+msgstr "Usar los puntos de interés para generar una matriz asimétrica."
 
 msgid "To generate an asymmetric matrix:"
 msgstr "Para generar una matriz asimétrica:"
@@ -10097,10 +10097,8 @@ msgstr ""
 "**Línea 4** La información ``side`` de ``pointsOfInterset`` se ignora al no "
 "incluirla en la consulta"
 
-#, fuzzy
 msgid "**Line 6** Generating an asymmetric matrix with ``directed => true``"
-msgstr ""
-"**Línea 6** Generación de una matriz asimétrica con ``directed => true``"
+msgstr "**Línea 6** Generación de una matriz asimétrica con ``directed => true``"
 
 msgid ""
 ":math:`min(agg\\_cost(u, v), agg\\_cost(v, u))` is going to be considered as "
@@ -10243,20 +10241,15 @@ msgstr "Obtener una geometría del recorrido"
 msgid "Visual results"
 msgstr "Resultados visuales"
 
-#, fuzzy
 msgid ""
 "Visually, The first image is the `optimal solution <https://www.math."
 "uwaterloo.ca/tsp/world/witour.html>`__ and the second image is the solution "
 "obtained with ``pgr_TSPeuclidean``."
-msgstr ""
-"Visualmente, la primera imagen es la `solución óptima <https://www.math."
-"uwaterloo.ca/tsp/world/witour.html>`__ y la segunda imagen es la solución "
-"obtenida con ``pgr_TSPeuclidean``."
+msgstr "Visualmente, la primera imagen es la `solución óptima <https://www.math.uwaterloo.ca/tsp/world/witour.html>`__ y la segunda imagen es la solución obtenida con ``pgr_TSPeuclidean``."
 
 msgid "``pgr_aStar`` — Shortest path using the A* algorithm."
 msgstr "``pgr_aStar`` — La ruta más corta utilizando el algoritmo A*."
 
-#, fuzzy
 msgid "Standardizing output columns to |short-generic-result|"
 msgstr "Estandarización de las columnas de salida a |short-generic-result|"
 
@@ -10396,13 +10389,10 @@ msgstr "pgr_aStarCost(Combinaciones)"
 msgid "New proposed function."
 msgstr "Nueva función propuesta."
 
-#, fuzzy
 msgid ""
 "The ``pgr_aStarCost`` function summarizes the cost of the shortest path "
 "using the A* algorithm."
-msgstr ""
-"La función ``pgr_aStarCost`` suma el coste del camino más corto utilizando "
-"el algoritmo A*."
+msgstr "La función ``pgr_aStarCost`` suma el coste del camino más corto utilizando el algoritmo A*."
 
 msgid ""
 "Let be the case the values returned are stored in a table, so the unique "
