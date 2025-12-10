@@ -7,7 +7,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024, 2025.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024, 2025.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-05 23:37+0000\nPO-Revision-Date: 2025-12-10 17:44+0000\nLast-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-05 23:37+0000\nPO-Revision-Date: 2025-12-10 17:44+0000\nLast-Translator: DeepL <noreply-mt-deepl@weblate.org>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Categoría"
@@ -9927,13 +9927,10 @@ msgstr ""
 msgid "When ``start_vid = 0 OR end_vid = 0``"
 msgstr "Cuando ``start_vid = 0 Ó end_vid = 0``"
 
-#, fuzzy
 msgid ""
 "The solutions generated are guaranteed to be *twice as long as the optimal "
 "tour in the worst case*"
-msgstr ""
-"Las soluciones generadas están garantizadas para ser *el doble de largas que "
-"el recorrido óptimo en el peor de los casos*"
+msgstr "Se garantiza que las soluciones generadas son *el doble de largas que el recorrido óptimo en el peor de los casos*."
 
 msgid "When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
 msgstr "Cuando ``start_vid != 0 Y end_vid != 0 Y start_vid != end_vid``"
