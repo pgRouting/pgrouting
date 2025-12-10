@@ -9415,9 +9415,8 @@ msgstr ""
 msgid "Linux"
 msgstr "Linux"
 
-#, fuzzy
 msgid "The following instructions start from ``path/to/pgrouting``"
-msgstr "Las siguientes instrucciones comienzan desde *path/to/pgrouting*"
+msgstr "Las siguientes instrucciones parten de ``path/to/pgrouting``."
 
 msgid "Testing"
 msgstr "Pruebas"
