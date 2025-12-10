@@ -7,7 +7,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024, 2025.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024, 2025.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-10 19:55+0000\nPO-Revision-Date: 2025-12-10 20:25+0000\nLast-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-10 19:55+0000\nPO-Revision-Date: 2025-12-10 20:25+0000\nLast-Translator: DeepL <noreply-mt-deepl@weblate.org>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Categoría"
@@ -9171,9 +9171,8 @@ msgstr "Usando cuando la salida y el destino no están en el grafo contraído"
 msgid "``pgr_contractionHierarchies`` - Experimental"
 msgstr "``pgr_contractionHierarchies`` - Experimental"
 
-#, fuzzy
 msgid "``pgr_contractionHierarchies`` — Performs graph contraction according to the contraction hierarchies method and returns the contracted vertices and shortcut edges created."
-msgstr "``pgr_contractionLinear`` — Realiza la contracción del grafo y devuelve los vértices y aristas contraídos.."
+msgstr "``pgr_contractionHierarchies`` - Realiza la contracción del grafo según el método de jerarquías de contracción y devuelve los vértices contraídos y las aristas de acceso directo creadas."
 
 msgid "The contraction hierarchies method builds, from an initial order of the vertices, a hierarchical order, giving priority to some vertices during the processing of label fixing of shortest paths algorithms. Furthermore, the contraction hierarchies algorithm adds shortcut edges in the graph, that helps the shortest paths algorithm to follow the created hierarchical graph structure."
 msgstr ""
