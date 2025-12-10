@@ -4,19 +4,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2025.
 # Daniel Nylander <daniel@danielnylander.se>, 2025.
 msgid ""
-msgstr ""
-"Project-Id-Version: pgRouting v4.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-05 23:37+0000\n"
-"PO-Revision-Date: 2025-10-28 19:52+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
-"Language-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\n"
-"Language: sv\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4.3\n"
+msgstr "Project-Id-Version: pgRouting v4.0\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-05 23:37+0000\nPO-Revision-Date: 2025-12-08 08:47+0000\nLast-Translator: Daniel Nylander <daniel@danielnylander.se>\nLanguage-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Kategori"
@@ -6915,9 +6903,8 @@ msgstr "Kontroll av PostGIS- och pgRouting-version efter att de har aktiverats i
 msgid "Upgrading the database"
 msgstr "Uppgradering av databasen"
 
-#, fuzzy
 msgid "To upgrade pgRouting in the database to version 4.1.0 use the following command:"
-msgstr "Använd följande kommando för att uppgradera pgRouting i databasen till version 4.0.0:"
+msgstr "Använd följande kommando för att uppgradera pgRouting i databasen till version 4.1.0:"
 
 msgid "More information can be found in https://www.postgresql.org/docs/current/sql-createextension.html"
 msgstr "Mer information finns på https://www.postgresql.org/docs/current/sql-createextension.html"
@@ -8167,9 +8154,8 @@ msgstr "Symmetrisk kostnadsmatris för toppar :math:`{\\5, 6, 10, 15\\}` på en 
 msgid "Use with :doc:`pgr_TSP`."
 msgstr "Använd med :doc:`pgr_TSP`."
 
-#, fuzzy
 msgid "``pgr_bellmanFord`` - Experimental"
-msgstr "``pgr_bellmanFord - Experimentell``"
+msgstr "``pgr_bellmanFord`` - Experimentell"
 
 msgid "``pgr_bellmanFord`` — Shortest path using Bellman-Ford algorithm."
 msgstr "``pgr_bellmanFord`` - Kortaste vägen med Bellman-Ford algoritm."
@@ -13485,7 +13471,7 @@ msgid "Reference"
 msgstr "Referens"
 
 msgid "Release Notes"
-msgstr "Anteckningar för release"
+msgstr "Versionsinformation"
 
 msgid "To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github."
 msgstr "För att se den fullständiga listan över ändringar, se listan över `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ på Github."
@@ -13499,20 +13485,17 @@ msgstr "pgRouting 4"
 msgid "Minors 4.x"
 msgstr "Minors 4.x"
 
-#, fuzzy
 msgid "pgRouting 4.1"
-msgstr "pgRouting 4.0"
+msgstr "pgRouting 4.1"
 
-#, fuzzy
 msgid "pgRouting 4.1.0 Release Notes"
-msgstr "pgRouting 3.1.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 4.1.0"
 
-#, fuzzy
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22>`__"
-msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
+msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 4.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22>`__"
 
 msgid "No changes yet"
-msgstr ""
+msgstr "Inga ändringar ännu"
 
 msgid "pgRouting 3"
 msgstr "pgRouting 3"
@@ -13524,7 +13507,7 @@ msgid "pgRouting 3.8"
 msgstr "pgRouting 3.8"
 
 msgid "pgRouting 3.8.0 Release Notes"
-msgstr "pgRouting 3.8.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.8.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.8.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.8.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
@@ -13629,7 +13612,7 @@ msgid "pgRouting 3.7"
 msgstr "pgRouting 3.7"
 
 msgid "pgRouting 3.7.3 Release Notes"
-msgstr "pgRouting 3.7.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.7.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.7.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
@@ -13638,7 +13621,7 @@ msgid "`#2731 <https://github.com/pgRouting/pgrouting/issues/2731>`__: Build Fai
 msgstr "`#2731 <https://github.com/pgRouting/pgrouting/issues/2731>`__: Byggfel på Ubuntu 22"
 
 msgid "pgRouting 3.7.2 Release Notes"
-msgstr "pgRouting 3.7.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.7.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.7.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
@@ -13659,7 +13642,7 @@ msgid "`#2706 <https://github.com/pgRouting/pgrouting/issues/2706>`__: winnie cr
 msgstr "`#2706 <https://github.com/pgRouting/pgrouting/issues/2706>`__: winnie kraschar på pgr_betweennessCentrality"
 
 msgid "pgRouting 3.7.1 Release Notes"
-msgstr "pgRouting 3.7.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.7.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.7.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
@@ -13677,7 +13660,7 @@ msgid "TRSP family"
 msgstr "TRSP-familjen"
 
 msgid "pgRouting 3.7.0 Release Notes"
-msgstr "pgRouting 3.7.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.7.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.7.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
@@ -13728,7 +13711,7 @@ msgid "pgRouting 3.6"
 msgstr "pgRouting 3.6"
 
 msgid "pgRouting 3.6.3 Release Notes"
-msgstr "pgRouting 3.6.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.6.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
@@ -13779,7 +13762,7 @@ msgid "bug fixes"
 msgstr "buggfixar"
 
 msgid "pgRouting 3.6.2 Release Notes"
-msgstr "pgRouting 3.6.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.6.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
@@ -13803,7 +13786,7 @@ msgid "Name change to `NEWS.md` for better visualization on GitHub"
 msgstr "Namnändring till `NEWS.md` för bättre visualisering på GitHub"
 
 msgid "pgRouting 3.6.1 Release Notes"
-msgstr "pgRouting 3.6.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.6.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`__"
@@ -13812,7 +13795,7 @@ msgid "`#2588 <https://github.com/pgRouting/pgrouting/issues/2588>`__: pgrouting
 msgstr "`#2588 <https://github.com/pgRouting/pgrouting/issues/2588>`__: pgrouting 3.6.0 går inte att bygga under OSX"
 
 msgid "pgRouting 3.6.0 Release Notes"
-msgstr "pgRouting 3.6.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.6.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`__"
@@ -13878,7 +13861,7 @@ msgid "pgRouting 3.5"
 msgstr "pgRouting 3.5"
 
 msgid "pgRouting 3.5.1 Release Notes"
-msgstr "pgRouting 3.5.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.5.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`__"
@@ -13929,7 +13912,7 @@ msgid "Grouping headers of postgres readers"
 msgstr "Gruppering av rubriker för postgres-läsare"
 
 msgid "pgRouting 3.5.0 Release Notes"
-msgstr "pgRouting 3.5.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.5.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`__"
@@ -13941,7 +13924,7 @@ msgid "pgRouting 3.4"
 msgstr "pgRouting 3.4"
 
 msgid "pgRouting 3.4.2 Release Notes"
-msgstr "pgRouting 3.4.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.4.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`__"
@@ -13953,7 +13936,7 @@ msgid "`#2427 <https://github.com/pgRouting/pgrouting/issues/2427>`__: pgr_creat
 msgstr "`#2427 <https://github.com/pgRouting/pgrouting/issues/2427>`__: pgr_createVerticesTable & pgr_createTopology, variabeln ska vara av typen Record."
 
 msgid "pgRouting 3.4.1 Release Notes"
-msgstr "pgRouting 3.4.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.4.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`__"
@@ -13965,7 +13948,7 @@ msgid "`#2398 <https://github.com/pgRouting/pgrouting/issues/2398>`__: v3.4.0 do
 msgstr "`#2398 <https://github.com/pgRouting/pgrouting/issues/2398>`__: v3.4.0 uppgraderar inte från 3.3.3"
 
 msgid "pgRouting 3.4.0 Release Notes"
-msgstr "pgRouting 3.4.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.4.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`__"
@@ -14049,13 +14032,13 @@ msgid "pgRouting 3.3"
 msgstr "pgRouting 3.3"
 
 msgid "pgRouting 3.3.5 Release Notes"
-msgstr "pgRouting 3.3.5 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.3.5"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.5%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.3.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.5%22>`__"
 
 msgid "pgRouting 3.3.4 Release Notes"
-msgstr "pgRouting 3.3.4 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.3.4"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.3.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`__"
@@ -14064,7 +14047,7 @@ msgid "`#2400 <https://github.com/pgRouting/pgrouting/issues/2400>`__: pgRouting
 msgstr "`#2400 <https://github.com/pgRouting/pgrouting/issues/2400>`__: pgRouting 3.3.3 kan inte byggas i fokal"
 
 msgid "pgRouting 3.3.3 Release Notes"
-msgstr "pgRouting 3.3.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.3.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.3.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`__"
@@ -14073,7 +14056,7 @@ msgid "Ignoring optional boolean parameter, as the algorithm works only for undi
 msgstr "Ignorerar den valfria booleska parametern, eftersom algoritmen endast fungerar för oriktade grafer."
 
 msgid "pgRouting 3.3.2 Release Notes"
-msgstr "pgRouting 3.3.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.3.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`__"
@@ -14118,7 +14101,7 @@ msgid "`#2357 <https://github.com/pgRouting/pgrouting/issues/2357>`__: Apply cla
 msgstr "`#2357 <https://github.com/pgRouting/pgrouting/issues/2357>`__: Tillämpa clang-tidy prestanda-*"
 
 msgid "pgRouting 3.3.1 Release Notes"
-msgstr "pgRouting 3.3.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.3.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`__"
@@ -14130,7 +14113,7 @@ msgid "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__: Error pro
 msgstr "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__: Fel vid bearbetning av restriktioner"
 
 msgid "pgRouting 3.3.0 Release Notes"
-msgstr "pgRouting 3.3.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.3.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`__"
@@ -14196,7 +14179,7 @@ msgid "pgRouting 3.2"
 msgstr "pgRouting 3.2"
 
 msgid "pgRouting 3.2.2 Release Notes"
-msgstr "pgRouting 3.2.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.2.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`__"
@@ -14208,7 +14191,7 @@ msgid "`#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build err
 msgstr "`#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Byggfel på RHEL 7"
 
 msgid "pgRouting 3.2.1 Release Notes"
-msgstr "pgRouting 3.2.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.2.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`__"
@@ -14226,7 +14209,7 @@ msgid "The function with the annaeling optional parameters is deprecated"
 msgstr "Funktionen med de valfria parametrarna annaeling är föråldrad"
 
 msgid "pgRouting 3.2.0 Release Notes"
-msgstr "pgRouting 3.2.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.2.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`__"
@@ -14262,7 +14245,7 @@ msgid "pgRouting 3.1"
 msgstr "pgRouting 3.1"
 
 msgid "pgRouting 3.1.4 Release Notes"
-msgstr "pgRouting 3.1.4 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.1.4"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.1.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`__"
@@ -14271,7 +14254,7 @@ msgid "Issues fixes"
 msgstr "Problemlösningar"
 
 msgid "pgRouting 3.1.3 Release Notes"
-msgstr "pgRouting 3.1.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.1.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.1.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`__"
@@ -14286,7 +14269,7 @@ msgid "`#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp funct
 msgstr "`#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp-funktioner kraschar server"
 
 msgid "pgRouting 3.1.2 Release Notes"
-msgstr "pgRouting 3.1.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.1.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.1.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`__"
@@ -14307,7 +14290,7 @@ msgid "`#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove wa
 msgstr "`#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Ta bort varningar vid användning av clang-kompilatorn"
 
 msgid "pgRouting 3.1.1 Release Notes"
-msgstr "pgRouting 3.1.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.1.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.1.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`__"
@@ -14328,7 +14311,7 @@ msgid "`#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chine
 msgstr "`#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chinesePostman kraschar på testdata"
 
 msgid "pgRouting 3.1.0 Release Notes"
-msgstr "pgRouting 3.1.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.1.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`__"
@@ -14349,13 +14332,13 @@ msgid "pgRouting 3.0"
 msgstr "pgRouting 3.0"
 
 msgid "pgRouting 3.0.6 Release Notes"
-msgstr "pgRouting 3.0.6 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.6"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.6 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.6 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`__"
 
 msgid "pgRouting 3.0.5 Release Notes"
-msgstr "pgRouting 3.0.5 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.5"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`__"
@@ -14364,19 +14347,19 @@ msgid "Backport issue fixes"
 msgstr "Fixar problem med backport"
 
 msgid "pgRouting 3.0.4 Release Notes"
-msgstr "pgRouting 3.0.4 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.4"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`__"
 
 msgid "pgRouting 3.0.3 Release Notes"
-msgstr "pgRouting 3.0.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.3%22>`__"
 
 msgid "pgRouting 3.0.2 Release Notes"
-msgstr "pgRouting 3.0.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`__"
@@ -14385,7 +14368,7 @@ msgid "`#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__: Visual St
 msgstr "`#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__: Visual Studio-byggnad misslyckas"
 
 msgid "pgRouting 3.0.1 Release Notes"
-msgstr "pgRouting 3.0.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`__"
@@ -14394,7 +14377,7 @@ msgid "`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__: Honor clien
 msgstr "`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__: Uppfylla begäran om avbrytande av klient i C/C++-kod"
 
 msgid "pgRouting 3.0.0 Release Notes"
-msgstr "pgRouting 3.0.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`__"
@@ -14670,7 +14653,7 @@ msgid "pgRouting 2.6"
 msgstr "pgRouting 2.6"
 
 msgid "pgRouting 2.6.3 Release Notes"
-msgstr "pgRouting 2.6.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.6.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22>`__"
@@ -14685,7 +14668,7 @@ msgid "`#1185 <https://github.com/pgRouting/pgrouting/issues/1185>`__: Improve F
 msgstr "`#1185 <https://github.com/pgRouting/pgrouting/issues/1185>`__: Förbättra FindPostgreSQL.cmake"
 
 msgid "pgRouting 2.6.2 Release Notes"
-msgstr "pgRouting 2.6.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.6.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22>`__"
@@ -14700,7 +14683,7 @@ msgid "`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__: Fixes bui
 msgstr "`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__: Fixar byggandet för python3 och perl5"
 
 msgid "pgRouting 2.6.1 Release Notes"
-msgstr "pgRouting 2.6.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.6.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22>`__"
@@ -14781,7 +14764,7 @@ msgid "Fixed a fallthrugh on Astar and bdAstar."
 msgstr "Åtgärdat ett fel på Astar och bdAstar."
 
 msgid "pgRouting 2.6.0 Release Notes"
-msgstr "pgRouting 2.6.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.6.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22>`__"
@@ -14826,7 +14809,7 @@ msgid "pgRouting 2.5"
 msgstr "pgRouting 2.5"
 
 msgid "pgRouting 2.5.5 Release Notes"
-msgstr "pgRouting 2.5.5 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.5.5"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22>`__"
@@ -14841,13 +14824,13 @@ msgid "Fixes build for python3 and perl5"
 msgstr "Fixar byggsätt för python3 och perl5"
 
 msgid "pgRouting 2.5.4 Release Notes"
-msgstr "pgRouting 2.5.4 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.5.4"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22>`__"
 
 msgid "pgRouting 2.5.3 Release Notes"
-msgstr "pgRouting 2.5.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.5.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22>`__"
@@ -14856,7 +14839,7 @@ msgid "Fix for postgresql 11: Removed a compilation error when compiling with po
 msgstr "Fix för postgresql 11: Tog bort ett kompileringsfel vid kompilering med postgreSQL"
 
 msgid "pgRouting 2.5.2 Release Notes"
-msgstr "pgRouting 2.5.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.5.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22>`__"
@@ -14865,7 +14848,7 @@ msgid "Fix for postgresql 10.1: Removed a compiler condition"
 msgstr "Fix för postgresql 10.1: Tog bort ett kompilatorvillkor"
 
 msgid "pgRouting 2.5.1 Release Notes"
-msgstr "pgRouting 2.5.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.5.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22>`__"
@@ -14874,7 +14857,7 @@ msgid "Fixed prerequisite minimum version of: cmake"
 msgstr "Fixad förkunskapskrav för minsta version av: cmake"
 
 msgid "pgRouting 2.5.0 Release Notes"
-msgstr "pgRouting 2.5.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.5.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.0%22>`__"
@@ -14937,7 +14920,7 @@ msgid "pgRouting 2.4"
 msgstr "pgRouting 2.4"
 
 msgid "pgRouting 2.4.2 Release Notes"
-msgstr "pgRouting 2.4.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.4.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22>`__"
@@ -14955,7 +14938,7 @@ msgid "Replace __linux__ with __GLIBC__ for glibc-specific headers and functions
 msgstr "Ersätt __linux__ med __GLIBC__ för glibc-specifika rubriker och funktioner"
 
 msgid "pgRouting 2.4.1 Release Notes"
-msgstr "pgRouting 2.4.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.4.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22>`__"
@@ -14967,7 +14950,7 @@ msgid "Condition error on pgr_withPoints"
 msgstr "Villkorligt fel på pgr_withPoints"
 
 msgid "pgRouting 2.4.0 Release Notes"
-msgstr "pgRouting 2.4.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.4.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.0%22>`__"
@@ -14994,7 +14977,7 @@ msgid "pgRouting 2.3"
 msgstr "pgRouting 2.3"
 
 msgid "pgRouting 2.3.2 Release Notes"
-msgstr "pgRouting 2.3.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.3.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.2%22>`__"
@@ -15012,7 +14995,7 @@ msgid "Fixed ambiguity on seq"
 msgstr "Fixad tvetydighet på seq"
 
 msgid "pgRouting 2.3.1 Release Notes"
-msgstr "pgRouting 2.3.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.3.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.1%22>`__"
@@ -15027,7 +15010,7 @@ msgid "Types discrepancy on pgr_createVerticesTable"
 msgstr "Typer diskrepans på pgr_createVerticesTable"
 
 msgid "pgRouting 2.3.0 Release Notes"
-msgstr "pgRouting 2.3.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.3.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.0%22>`__"
@@ -15099,7 +15082,7 @@ msgid "pgRouting 2.2"
 msgstr "pgRouting 2.2"
 
 msgid "pgRouting 2.2.4 Release Notes"
-msgstr "pgRouting 2.2.4 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.2.4"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.4%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.2.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.4%22>`__"
@@ -15114,7 +15097,7 @@ msgid "Regression error pgr_nodeNetwork"
 msgstr "Regressionsfel pgr_nodeNetwork"
 
 msgid "pgRouting 2.2.3 Release Notes"
-msgstr "pgRouting 2.2.3 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.2.3"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.3%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.2.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.3%22>`__"
@@ -15123,7 +15106,7 @@ msgid "Fixed compatibility issues with PostgreSQL 9.6."
 msgstr "Fixade kompatibilitetsproblem med PostgreSQL 9.6."
 
 msgid "pgRouting 2.2.2 Release Notes"
-msgstr "pgRouting 2.2.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.2.2"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.2%22>`__"
@@ -15132,7 +15115,7 @@ msgid "Fixed regression error on pgr_drivingDistance"
 msgstr "Åtgärdat regressionsfel på pgr_drivingDistance"
 
 msgid "pgRouting 2.2.1 Release Notes"
-msgstr "pgRouting 2.2.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.2.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.1%22>`__"
@@ -15144,7 +15127,7 @@ msgid "Bug fix on With Points family of functions"
 msgstr "Buggfix för funktionerna i With Points-familjen"
 
 msgid "pgRouting 2.2.0 Release Notes"
-msgstr "pgRouting 2.2.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.2.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.0%22>`__"
@@ -15234,7 +15217,7 @@ msgid "pgRouting 2.1"
 msgstr "pgRouting 2.1"
 
 msgid "pgRouting 2.1.0 Release Notes"
-msgstr "pgRouting 2.1.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.1.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.1.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.1.0%22>`__"
@@ -15345,7 +15328,7 @@ msgid "pgRouting 2.0"
 msgstr "pgRouting 2.0"
 
 msgid "pgRouting 2.0.1 Release Notes"
-msgstr "pgRouting 2.0.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.0.1"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.0.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.0.1%22>`__"
@@ -15357,7 +15340,7 @@ msgid "No track of the bug fixes were kept."
 msgstr "Inga uppgifter om buggfixarna sparades."
 
 msgid "pgRouting 2.0.0 Release Notes"
-msgstr "pgRouting 2.0.0 Release Notes"
+msgstr "Versionsinformation för pgRouting 2.0.0"
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.0.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 2.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.0.0%22>`__"
@@ -16171,3 +16154,1415 @@ msgstr "pgr_withPointsDD is pgr_drivingDistance **with points**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia is pgr_dijkstraVia **with points**"
+
+#~ msgid "``pgr_bellmanFord - Experimental``"
+#~ msgstr "``pgr_bellmanFord - Experimentell``"
+
+#~ msgid "It is expected to terminate faster than pgr_aStar"
+#~ msgstr "Den förväntas avslutas snabbare än pgr_aStar"
+
+#~ msgid "pgRouting 4.0.0 Release Notes"
+#~ msgstr "pgRouting 4.0.0 Release Notes"
+
+#, fuzzy
+#~ msgid "The user's documentation is build by default"
+#~ msgstr "För användardokumentation"
+
+#, fuzzy
+#~ msgid "The translated languages (en, es, sv, zh_Hans) HTML documentation is build by default"
+#~ msgstr "För användardokumentation"
+
+#, fuzzy
+#~ msgid "Developers's Documentation is not build when"
+#~ msgstr "För dokumentation för utvecklare"
+
+#~ msgid "New experimental functions"
+#~ msgstr "Nya experimentella funktioner"
+
+#, fuzzy
+#~ msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__: pgr_DAGshortestPath"
+#~ msgstr "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ pgr_DAGshortestPath"
+
+#, fuzzy
+#~ msgid "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__: pgr_turnRestrictedPaths"
+#~ msgstr "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ pgr_turnRestrictedPaths"
+
+#~ msgid "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: pgr_trspviaedges"
+#~ msgstr "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: pgr_trspviaedges"
+
+#~ msgid "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: pgr_trspviavertices"
+#~ msgstr "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: pgr_trspviavertices"
+
+#, fuzzy
+#~ msgid "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ _pgr_alphashape(text,double precision)"
+#~ msgstr "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: pgr_alphaShape"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_checkverttab(text,text[],integer,text)"
+#~ msgstr "`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__: pgr_createVerticesTable"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_createindex(text,text,text,integer,text)"
+#~ msgstr "`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: pgr_contraction(edges) ny signatur"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_createindex(text,text,text,text,integer,text)"
+#~ msgstr "`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: pgr_contraction(edges) ny signatur"
+
+#, fuzzy
+#~ msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)"
+#~ msgstr "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ pgr_DAGshortestPath"
+
+#, fuzzy
+#~ msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ _pgr_dagshortestpath(text,text,boolean,boolean)"
+#~ msgstr "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ pgr_DAGshortestPath"
+
+#, fuzzy
+#~ msgid "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_dijkstra(Kombinationer)"
+
+#, fuzzy
+#~ msgid "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_dijkstra(Kombinationer)"
+
+#, fuzzy
+#~ msgid "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_dijkstra(Kombinationer)"
+
+#, fuzzy
+#~ msgid "`#2735 <https://github.com/pgRouting/pgrouting/issues/2735>`__ _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
+#~ msgstr "#2735 _pgr_drivingdistance(text,valfri matris,dubbel precision,boolean,boolean)"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_endpoint(geometry)"
+#~ msgstr "`#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__: pgr_nodeNetwork"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_getcolumnname(text,text,integer,text)"
+#~ msgstr "`#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__: pgr_nodeNetwork"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_getcolumnname(text,text,text,integer,text)"
+#~ msgstr "`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: pgr_contraction(edges) ny signatur"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_getcolumntype(text,text,integer,text)"
+#~ msgstr "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: pgr_trspviaedges"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_getcolumntype(text,text,text,integer,text)"
+#~ msgstr "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: pgr_trspviaedges"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_gettablename(text,integer,text)"
+#~ msgstr "`#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__: pgr_nodeNetwork"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_iscolumnindexed(text,text,integer,text)"
+#~ msgstr "`#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__: pgr_nodeNetwork"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_iscolumnindexed(text,text,text,integer,text)"
+#~ msgstr "`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: pgr_contraction(edges) ny signatur"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_iscolumnintable(text,text)"
+#~ msgstr "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: pgr_trspviaedges"
+
+#, fuzzy
+#~ msgid "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__ _pgr_maxcardinalitymatch(text,boolean)"
+#~ msgstr "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__: pgr_maxCardinalityMatch"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_startpoint(geometry)"
+#~ msgstr "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: pgr_trspviaedges"
+
+#, fuzzy
+#~ msgid "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__ _pgr_trspviavertices(text,integer[],boolean,boolean,text)"
+#~ msgstr "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: pgr_trspviavertices"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ _pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+#~ msgstr "#2919 _pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ _pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
+#~ msgstr "#2919 _pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,tecken,boolean)"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ _pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+#~ msgstr "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trsp_withPoints"
+
+#, fuzzy
+#~ msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ _pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+#~ msgstr "#2901 _pgr_tspeuclidean(text,bigint,bigint,dubbel precision,heltal,heltal,heltal,dubbel precision,dubbel precision,dubbel precision,boolean)"
+
+#, fuzzy
+#~ msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_versionless(text,text)"
+#~ msgstr "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: pgr_trspviaedges"
+
+#, fuzzy
+#~ msgid "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
+#~ msgstr "#2890 _pgr_withpointsdd(text,text,valfri matris,dubbel precision,boolean,tecken,boolean,boolean)"
+
+#, fuzzy
+#~ msgid "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ _pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)"
+#~ msgstr "#2895 _pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean,boolean)"
+
+#, fuzzy
+#~ msgid "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ _pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+#~ msgstr "#2895 _pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+
+#, fuzzy
+#~ msgid "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ _pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)"
+#~ msgstr "#2895 _pgr_withpointsksp(text,text,text,heltal,tecken,boolean,boolean,boolean)"
+
+#, fuzzy
+#~ msgid "`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__ _pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+#~ msgstr "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsVia"
+
+#, fuzzy
+#~ msgid "`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__ _pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+#~ msgstr "#2741 _pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,boolean,character,boolean)"
+
+#, fuzzy
+#~ msgid "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__ pgr_maxcardinalitymatch(text,boolean)"
+#~ msgstr "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__: pgr_maxCardinalityMatch"
+
+#, fuzzy
+#~ msgid "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__ pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
+#~ msgstr "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: pgr_trspviaedges"
+
+#, fuzzy
+#~ msgid "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__ pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
+#~ msgstr "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: pgr_trspviavertices"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+#~ msgstr "#2919 _pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
+#~ msgstr "#2919 _pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,tecken,boolean)"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,tecken,boolean)"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+#~ msgstr "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trsp_withPoints"
+
+#, fuzzy
+#~ msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+#~ msgstr "#2901 _pgr_tspeuclidean(text,bigint,bigint,dubbel precision,heltal,heltal,heltal,dubbel precision,dubbel precision,dubbel precision,boolean)"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
+#~ msgstr "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCostMatrix"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)"
+#~ msgstr "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCostMatrix"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withpointscost(text,text,anyarray,bigint,boolean,character)"
+#~ msgstr "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCostMatrix"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withpointscost(text,text,bigint,anyarray,boolean,character)"
+#~ msgstr "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCostMatrix"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withpointscost(text,text,bigint,bigint,boolean,character)"
+#~ msgstr "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCostMatrix"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withpointscost(text,text,text,boolean,character)"
+#~ msgstr "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCostMatrix"
+
+#, fuzzy
+#~ msgid "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
+#~ msgstr "#2890 _pgr_withpointsdd(text,text,valfri matris,dubbel precision,boolean,tecken,boolean,boolean)"
+
+#, fuzzy
+#~ msgid "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
+#~ msgstr "#2890 pgr_withpointsdd(text,text,bigint,dubbel precision,boolean,tecken,boolean)"
+
+#, fuzzy
+#~ msgid "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+#~ msgstr "#2895 _pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_withpoints(text,text,valfri matris,valfri matris,boolean,tecken,boolean)"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_withpoints(text,text,bigint,anyarray,boolean,tecken,boolean)"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_withpoints(text,text,bigint,bigint,boolean,tecken,boolean)"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withpoints(text,text,text,boolean,character,boolean)"
+#~ msgstr "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCost"
+
+#, fuzzy
+#~ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,boolean,character,boolean)"
+
+#~ msgid "_pgr_drivingdistance => _pgr_drivingdistancev4"
+#~ msgstr "_pgr_drivingdistance => _pgr_drivingdistancev4"
+
+#~ msgid "_pgr_withpointsdd => _pgr_withpointsddv4"
+#~ msgstr "_pgr_withpointsdd => _pgr_withpointsddv4"
+
+#~ msgid "_pgr_withpointsksp => _pgr_withpointsksp_v4"
+#~ msgstr "_pgr_withpointsksp => _pgr_withpointsksp_v4"
+
+#~ msgid "_pgr_trspvia_withpoints => _pgr_trspvia_withpoints_v4"
+#~ msgstr "_pgr_trspvia_withpoints => _pgr_trspvia_withpoints_v4"
+
+#~ msgid "_pgr_trsp_withpoints => _pgr_trsp_withpoints_v4"
+#~ msgstr "_pgr_trsp_withpoints => _pgr_trsp_withpoints_v4"
+
+#~ msgid "_pgr_withpointsvia => _pgr_withpointsvia_v4"
+#~ msgstr "_pgr_withpointsvia => _pgr_withpointsvia_v4"
+
+#, fuzzy
+#~ msgid "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ _pgr_alphashape"
+#~ msgstr "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: pgr_alphaShape"
+
+#, fuzzy
+#~ msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ _pgr_dagshortestpath"
+#~ msgstr "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ pgr_DAGshortestPath"
+
+#~ msgid "The ``pgr_aStarCost`` function summarizes of the cost of the shortest path using the A* algorithm."
+#~ msgstr "Funktionen ``pgr_aStarCost`` sammanfattar kostnaden för den kortaste vägen med hjälp av A*-algoritmen."
+
+#~ msgid "The results are equivalent to the union of the results of the pgr_bdAStar(One to One) on the:"
+#~ msgstr "Resultaten motsvarar sammanslagningen av resultaten av pgr_bdAStar(One to One) på:"
+
+#~ msgid "The ``pgr_bdAstarCost`` function summarizes of the cost of the shortest path using the bidirectional A* algorithm."
+#~ msgstr "Funktionen ``pgr_bdAstarCost`` sammanfattar kostnaden för den kortaste vägen med hjälp av den dubbelriktade A*-algoritmen."
+
+#~ msgid "``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_aStar`."
+#~ msgstr "``pgr_bdAstarCostMatrix`` - Beräknar en kostnadsmatris med hjälp av :doc:`pgr_aStar`."
+
+#~ msgid "Using internally the :doc:`pgr_bdAstar` algorithm"
+#~ msgstr "Intern användning av :doc:`pgr_bdAstar`-algoritmen"
+
+#~ msgid "Signature change on pgr_bdDijsktra(One to One)"
+#~ msgstr "Ändring av signatur på pgr_bdDijsktra(One to One)"
+
+#~ msgid "The ``pgr_bdDijkstraCost`` function summarizes of the cost of the shortest path using the bidirectional Dijkstra Algorithm."
+#~ msgstr "Funktionen ``pgr_bdDijkstraCost`` sammanfattar kostnaden för den kortaste vägen med hjälp av den dubbelriktade Dijkstra-algoritmen."
+
+#~ msgid "It is well-known that the shortest paths between a single source and all other vertices can be found using Breadth First Search in :math:`O(|E|)` in an unweighted graph, i.e. the distance is the minimal number of edges that you need to traverse from the source to another vertex. We can interpret such a graph also as a weighted graph, where every edge has the weight :math:`1`. If not all edges in graph have the same weight, that we need a more general algorithm, like Dijkstra's Algorithm which runs in :math:`O(|E|log|V|)` time."
+#~ msgstr "Det är välkänt att de kortaste vägarna mellan en enda källa och alla andra toppar kan hittas med hjälp av Breadth First Search på :math:`O(|E|)` i en oviktad graf, dvs. avståndet är det minsta antalet kanter som du behöver korsa från källan till en annan topp. Vi kan också tolka en sådan graf som en viktad graf, där varje kant har vikten :math:`1`. Om inte alla kanter i grafen har samma vikt behöver vi en mer allmän algoritm, som Dijkstras algoritm, som går på :math:`O(|E|log|V|)` tid."
+
+#~ msgid "New experimental function"
+#~ msgstr "Ny experimentell funktion"
+
+#~ msgid "..rubric:: Version 3.0.0"
+#~ msgstr "..rubric:: Version 3.0.0"
+
+#~ msgid "``pgr_dijkstraNear`` - Proposed"
+#~ msgstr "``pgr_dijkstraNear`` - Förslag"
+
+#~ msgid "``pgr_dijkstraNearCost`` - Proposed"
+#~ msgstr "``pgr_dijkstraNearCost`` - Förslag"
+
+#~ msgid "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
+#~ msgstr "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
+
+#, fuzzy
+#~ msgid "``pgr_kingOrdering`` — Returns the King ordering of an undirected graphs"
+#~ msgstr "``pgr_cuthillMckeeOrdering`` - Returnerar den omvända Cuthill-Mckee-ordningen för en ostyrd graf"
+
+#~ msgid "|boost| graph inside."
+#~ msgstr "|boost| graf inuti."
+
+#, fuzzy
+#~ msgid "``pgr_sloanOrdering`` — Returns the sloan ordering of an undirected graph"
+#~ msgstr "``pgr_cuthillMckeeOrdering`` - Returnerar den omvända Cuthill-Mckee-ordningen för en ostyrd graf"
+
+#, fuzzy
+#~ msgid "|Boost| Boost Graph inside"
+#~ msgstr "|Boost-graf inuti"
+
+#, fuzzy
+#~ msgid "..rubric::Summary"
+#~ msgstr "..rubric:: Standardize SQL"
+
+#~ msgid "Additionally there are 2 categories under this family"
+#~ msgstr "Dessutom finns det 2 kategorier under denna familj"
+
+#~ msgid "They will likely officially be part of the next mayor release:"
+#~ msgstr "De kommer sannolikt officiellt att vara en del av nästa borgmästarutgåva:"
+
+#~ msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+#~ msgstr "Funktionerna använder sig av ANY-INTEGER och ANY-NUMERICAL"
+
+#~ msgid "Name might not change. (But still can)"
+#~ msgstr "Namnet kanske inte ändras. (Men kan fortfarande göra det)"
+
+#~ msgid "Signature might not change. (But still can)"
+#~ msgstr "Signaturen kanske inte ändras. (Men kan fortfarande göra det)"
+
+#~ msgid "Functionality might not change. (But still can)"
+#~ msgstr "Funktionaliteten kanske inte ändras. (Men kan fortfarande göra det)"
+
+#~ msgid "Possible server crash"
+#~ msgstr "Möjlig serverkrasch"
+
+#~ msgid "These functions might create a server crash"
+#~ msgstr "Dessa funktioner kan orsaka en serverkrasch"
+
+#~ msgid "Might need c/c++ coding."
+#~ msgstr "Kan behöva c/c++-kodning."
+
+#~ msgid "May lack documentation."
+#~ msgstr "Kan sakna dokumentation."
+
+#~ msgid "Documentation examples might need to be automatically generated."
+#~ msgstr "Dokumentationsexempel kan behöva genereras automatiskt."
+
+#~ msgid "Might depend on a proposed function of pgRouting"
+#~ msgstr "Kan bero på en föreslagen funktion för pgRouting"
+
+#~ msgid "Might depend on a deprecated function of pgRouting"
+#~ msgstr "Kan vara beroende av en föråldrad funktion i pgRouting"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
+
+#~ msgid "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trsp"
+#~ msgstr "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trsp"
+
+#~ msgid "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trspVia"
+#~ msgstr "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trspVia"
+
+#~ msgid "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trspVia_withPoints"
+#~ msgstr "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trspVia_withPoints"
+
+#~ msgid "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trsp_withPoints"
+#~ msgstr "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__ pgr_trsp_withPoints"
+
+#~ msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPoints"
+#~ msgstr "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPoints"
+
+#~ msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsCost"
+#~ msgstr "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_medPointsCost"
+
+#~ msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsCostMatrix"
+#~ msgstr "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsCostMatrix"
+
+#~ msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsDD"
+#~ msgstr "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_medPointsDD"
+
+#~ msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsKSP"
+#~ msgstr "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsKSP"
+
+#~ msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsVia"
+#~ msgstr "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__ pgr_withPointsVia"
+
+#~ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_aStar(Combinations)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_aStar(Kombinationer)"
+
+#~ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_aStarCost(Combinations)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_aStarCost(Kombinationer)"
+
+#~ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_bdAstar(Combinations)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_bdAstar(Kombinationer)"
+
+#~ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_bdAstarCost(Combinations)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_bdAstarCost(Kombinationer)"
+
+#~ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_bdDijkstra(Combinations)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_bdDijkstra(Kombinationer)"
+
+#~ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_bdDijkstraCost(Combinations)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_bdDijkstraCost(Kombinationer)"
+
+#~ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_dijkstra(Combinations)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_dijkstra(Kombinationer)"
+
+#~ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_dijkstraCost(Combinations)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_dijkstraCost(Kombinationer)"
+
+#~ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_KSP(All signatures)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_KSP(Alla signaturer)"
+
+#~ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_boykovKolmogorov(Combinations)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_boykovKolmogorov(Kombinationer)"
+
+#~ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_edmondsKarp(Combinations)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_edmondsKarp(Kombinationer)"
+
+#~ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_maxFlow(Combinations)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_maxFlow(Kombinationer)"
+
+#~ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_pushRelabel(Combinations)"
+#~ msgstr "`#2718 <https://github.com/pgRouting/pgrouting/issues/2918>`__ pgr_pushRelabel(Kombinationer)"
+
+#~ msgid "`#2904 <https://github.com/pgRouting/pgrouting/issues/2904>`__ Standardize output columns of functions with different output columns within overloads"
+#~ msgstr "`#2904 <https://github.com/pgRouting/pgrouting/issues/2904>`__ Standardisera utdatakolumner för funktioner med olika utdatakolumner inom överbelastningar"
+
+#~ msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPoints"
+#~ msgstr "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPoints"
+
+#~ msgid "`#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__ pgr_bdDijkstra"
+#~ msgstr "`#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__ pgr_bdDijkstra"
+
+#~ msgid "`#2907 <https://github.com/pgRouting/pgrouting/issues/2907>`__ pgr_bellmanFord"
+#~ msgstr "`#2907 <https://github.com/pgRouting/pgrouting/issues/2907>`__ pgr_bellmanFord"
+
+#~ msgid "`#2908 <https://github.com/pgRouting/pgrouting/issues/2908>`__ pgr_binaryBreadthFirstSearch"
+#~ msgstr "`#2908 <https://github.com/pgRouting/pgrouting/issues/2908>`__ pgr_binaryBreadthFirstSearch"
+
+#~ msgid "`#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__ pgr_edwardMoore"
+#~ msgstr "`#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__ pgr_edwardMoore"
+
+#~ msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ pgr_DAGshortestPath"
+#~ msgstr "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ pgr_DAGshortestPath"
+
+#~ msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCost"
+#~ msgstr "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCost"
+
+#~ msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCostMatrix"
+#~ msgstr "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__ pgr_withPointsCostMatrix"
+
+#~ msgid "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ pgr_edgeDisjointPaths"
+#~ msgstr "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ pgr_edgeDisjointPaths"
+
+#~ msgid "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ pgr_turnRestrictedPaths"
+#~ msgstr "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__ pgr_turnRestrictedPaths"
+
+#~ msgid "`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__ pgr_edgeColoring"
+#~ msgstr "`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__ pgr_edgeColoring"
+
+#~ msgid "`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__ pgr_bipartite"
+#~ msgstr "`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__ pgr_bipartite"
+
+#~ msgid "`#2927 <https://github.com/pgRouting/pgrouting/issues/2927>`__ pgr_sequentialVertexColoring"
+#~ msgstr "`#2927 <https://github.com/pgRouting/pgrouting/issues/2927>`__ pgr_sequentialVertexColoring"
+
+#~ msgid "`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__ pgr_breadthFirstSearch"
+#~ msgstr "`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__ pgr_breadthFirstSearch"
+
+#~ msgid "`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__ pgr_depthFirstSearch"
+#~ msgstr "`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__ pgr_depthFirstSearch"
+
+#~ msgid "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__ pgr_topologicalSort"
+#~ msgstr "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__ pgr_topologicalSort"
+
+#~ msgid "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__ pgr_transitiveClosure"
+#~ msgstr "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__ pgr_transitiveClosure"
+
+#~ msgid "`#2751 <https://github.com/pgRouting/pgrouting/issues/2851>`__: pgr_createTopology"
+#~ msgstr "`#2751 <https://github.com/pgRouting/pgrouting/issues/2851>`__: pgr_createTopology"
+
+#~ msgid "#2748 _pgr_alphashape(text,double precision)"
+#~ msgstr "#2748 _pgr_alphashape(text,dubbel precision)"
+
+#~ msgid "#2861 _pgr_checkverttab(text,text[],integer,text)"
+#~ msgstr "#2861 _pgr_checkverttab(text,text[],heltal,text)"
+
+#~ msgid "#2861 _pgr_createindex(text,text,text,integer,text)"
+#~ msgstr "#2861 _pgr_createindex(text,text,text,heltal,text)"
+
+#~ msgid "#2861 _pgr_createindex(text,text,text,text,integer,text)"
+#~ msgstr "#2861 _pgr_createindex(text,text,text,text,text,heltal,text)"
+
+#~ msgid "#2913 _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)"
+#~ msgstr "#2913 _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)"
+
+#~ msgid "#2913 _pgr_dagshortestpath(text,text,boolean,boolean)"
+#~ msgstr "#2913 _pgr_dagshortestpath(text,text,boolean,boolean)"
+
+#~ msgid "#2730 _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
+#~ msgstr "#2730 _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
+
+#~ msgid "#2730 _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
+#~ msgstr "#2730 _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
+
+#~ msgid "#2730 _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+#~ msgstr "#2730 _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+
+#~ msgid "#2730 _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
+#~ msgstr "#2730 _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
+
+#~ msgid "#2730 _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)"
+#~ msgstr "#2730 _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)"
+
+#~ msgid "#2730 _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)"
+#~ msgstr "#2730 _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)"
+
+#~ msgid "#2730 _pgr_dijkstra(text,text,boolean,boolean,boolean)"
+#~ msgstr "#2730 _pgr_dijkstra(text,text,boolean,boolean,boolean)"
+
+#~ msgid "#2735 _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
+#~ msgstr "#2735 _pgr_drivingdistance(text,valfri matris,dubbel precision,boolean,boolean)"
+
+#~ msgid "#2861 _pgr_endpoint(geometry)"
+#~ msgstr "#2861 _pgr_slutpunkt(geometri)"
+
+#~ msgid "#2861 _pgr_getcolumnname(text,text,integer,text)"
+#~ msgstr "#2861 _pgr_getcolumnname(text,text,heltal,text)"
+
+#~ msgid "#2861 _pgr_getcolumnname(text,text,text,integer,text)"
+#~ msgstr "#2861 _pgr_getcolumnname(text,text,text,heltal,text)"
+
+#~ msgid "#2861 _pgr_getcolumntype(text,text,integer,text)"
+#~ msgstr "#2861 _pgr_getcolumntype(text,text,heltal,text)"
+
+#~ msgid "#2861 _pgr_getcolumntype(text,text,text,integer,text)"
+#~ msgstr "#2861 _pgr_getcolumntype(text,text,text,heltal,text)"
+
+#~ msgid "#2861 _pgr_gettablename(text,integer,text)"
+#~ msgstr "#2861 _pgr_gettablename(text,heltal,text)"
+
+#~ msgid "#2861 _pgr_iscolumnindexed(text,text,integer,text)"
+#~ msgstr "#2861 _pgr_iscolumnindexed(text,text,heltal,text)"
+
+#~ msgid "#2861 _pgr_iscolumnindexed(text,text,text,integer,text)"
+#~ msgstr "#2861 _pgr_iscolumnindexed(text,text,text,heltal,text)"
+
+#~ msgid "#2861 _pgr_iscolumnintable(text,text)"
+#~ msgstr "#2861 _pgr_iscolumnintable(text,text)"
+
+#~ msgid "#2745 _pgr_kruskal(text,anyarray,text,bigint,double precision)"
+#~ msgstr "#2745 _pgr_kruskal(text,valfri matris,text,bigint,dubbel precision)"
+
+#~ msgid "#2897 _pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)"
+#~ msgstr "#2897 _pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean,boolean)"
+
+#~ msgid "#2897 _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)"
+#~ msgstr "#2897 _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)"
+
+#~ msgid "#2897 _pgr_ksp(text,text,integer,boolean,boolean)"
+#~ msgstr "#2897 _pgr_ksp(text,text,heltal,boolean,boolean)"
+
+#~ msgid "#2899 _pgr_maxcardinalitymatch(text,boolean)"
+#~ msgstr "#2899 _pgr_maxcardinalitymatch(text,boolean)"
+
+#~ msgid "#2861 _pgr_msg(integer,text,text)"
+#~ msgstr "#2861 _pgr_msg(heltal,text,text)"
+
+#~ msgid "#2861 _pgr_onerror(boolean,integer,text,text,text,text)"
+#~ msgstr "#2861 _pgr_onerror(boolean,heltal,text,text,text,text,text)"
+
+#~ msgid "#2861 _pgr_pointtoid(geometry,double precision,text,integer)"
+#~ msgstr "#2861 _pgr_pointtoid(geometri,dubbel precision,text,heltal)"
+
+#~ msgid "#2743 _pgr_prim(text,anyarray,text,bigint,double precision)"
+#~ msgstr "#2743 _pgr_prim(text,valfri matris,text,bigint,dubbel precision)"
+
+#~ msgid "#2861 _pgr_quote_ident(text)"
+#~ msgstr "#2861 _pgr_quote_ident(text)"
+
+#~ msgid "#2861 _pgr_startpoint(geometry)"
+#~ msgstr "#2861 _pgr_startpunkt(geometri)"
+
+#~ msgid "#2683 _pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)"
+#~ msgstr "#2683 _pgr_trsp(text,heltal,dubbel precision,heltal,dubbel precision,boolean,boolean,text)"
+
+#~ msgid "#2683 _pgr_trsp(text,text,anyarray,anyarray,boolean)"
+#~ msgstr "#2683 _pgr_trsp(text,text,valfri matris,valfri matris,boolean)"
+
+#~ msgid "#2683 _pgr_trsp(text,text,anyarray,bigint,boolean)"
+#~ msgstr "#2683 _pgr_trsp(text,text,valfri matris,bigint,boolean)"
+
+#~ msgid "#2683 _pgr_trsp(text,text,bigint,anyarray,boolean)"
+#~ msgstr "#2683 _pgr_trsp(text,text,bigint,anyarray,boolean)"
+
+#~ msgid "#2683 _pgr_trsp(text,text,bigint,bigint,boolean)"
+#~ msgstr "#2683 _pgr_trsp(text,text,bigint,bigint,boolean)"
+
+#~ msgid "#2682 _pgr_trspviavertices(text,integer[],boolean,boolean,text)"
+#~ msgstr "#2682 _pgr_trspviavertices(text,heltal[],boolean,boolean,text)"
+
+#~ msgid "#2919 _pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+#~ msgstr "#2919 _pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+
+#~ msgid "#2919 _pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
+#~ msgstr "#2919 _pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,tecken,boolean)"
+
+#~ msgid "#2919 _pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+#~ msgstr "#2919 _pgr_trsp_withpoints(text,text,text,text,boolean,tecken,boolean)"
+
+#~ msgid "#2901 _pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+#~ msgstr "#2901 _pgr_tspeuclidean(text,bigint,bigint,dubbel precision,heltal,heltal,heltal,dubbel precision,dubbel precision,dubbel precision,boolean)"
+
+#~ msgid "#2901 _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+#~ msgstr "#2901 _pgr_tsp(text,bigint,bigint,dubbel precision,heltal,heltal,heltal,dubbel precision,dubbel precision,dubbel precision,boolean)"
+
+#~ msgid "#2861 _pgr_versionless(text,text)"
+#~ msgstr "#2861 _pgr_versionless(text,text)"
+
+#~ msgid "#2890 _pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
+#~ msgstr "#2890 _pgr_withpointsdd(text,text,valfri matris,dubbel precision,boolean,tecken,boolean,boolean)"
+
+#~ msgid "#2895 _pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)"
+#~ msgstr "#2895 _pgr_withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean,boolean)"
+
+#~ msgid "#2895 _pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+#~ msgstr "#2895 _pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+
+#~ msgid "#2895 _pgr_withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)"
+#~ msgstr "#2895 _pgr_withpointsksp(text,text,text,heltal,tecken,boolean,boolean,boolean)"
+
+#~ msgid "#2741 _pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+#~ msgstr "#2741 _pgr_withpointsvia(text,bigint[],dubbel precision[],boolean)"
+
+#~ msgid "#2741 _pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+#~ msgstr "#2741 _pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,boolean,character,boolean)"
+
+#~ msgid "#2683 _trsp(text,text,anyarray,anyarray,boolean)"
+#~ msgstr "#2683 _trsp(text,text,valfri matris,valfri matris,boolean)"
+
+#~ msgid "#2683 _v4trsp(text,text,anyarray,anyarray,boolean)"
+#~ msgstr "#2683 _v4trsp(text,text,valfri matris,valfri matris,boolean)"
+
+#~ msgid "#2683 _v4trsp(text,text,text,boolean)"
+#~ msgstr "#2683 _v4trsp(text,text,text,boolean)"
+
+#~ msgid "#2748 pgr_alphashape(geometry,double precision)"
+#~ msgstr "#2748 pgr_alphashape(geometri,dubbel precision)"
+
+#~ msgid "#2752 pgr_analyzegraph(text,double precision,text,text,text,text,text)"
+#~ msgstr "#2752 pgr_analyzegraph(text,dubbel precision,text,text,text,text,text,text)"
+
+#~ msgid "#2755 pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)"
+#~ msgstr "#2755 pgr_analyzeoneway(text,text[],text[],text[],text[],text[],boolean,text,text,text)"
+
+#~ msgid "#2798 pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+#~ msgstr "#2798 pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+
+#~ msgid "#2751 pgr_createtopology(text,double precision,text,text,text,text,text,boolean)"
+#~ msgstr "#2751 pgr_createtopology(text,dubbel precision,text,text,text,text,text,text,boolean)"
+
+#~ msgid "#2827 pgr_createverticestable(text,text,text,text,text)"
+#~ msgstr "#2827 pgr_createverticestable(text,text,text,text,text,text)"
+
+#~ msgid "#2888 pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)"
+#~ msgstr "#2888 pgr_findcloseedges(text,geometry,dubbel precision,heltal,boolean,boolean)"
+
+#~ msgid "#2888 pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)"
+#~ msgstr "#2888 pgr_findcloseedges(text,geometry[],dubbel precision,heltal,boolean,boolean)"
+
+#~ msgid "#2899 pgr_maxcardinalitymatch(text,boolean)"
+#~ msgstr "#2899 pgr_maxcardinalitymatch(text,boolean)"
+
+#~ msgid "#2886 pgr_nodenetwork(text,double precision,text,text,text,text,boolean)"
+#~ msgstr "#2886 pgr_nodenetwork(text,dubbel precision,text,text,text,text,text,boolean)"
+
+#~ msgid "#2683 pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)"
+#~ msgstr "#2683 pgr_trsp(text,heltal,dubbel precision,heltal,dubbel precision,boolean,boolean,text)"
+
+#~ msgid "#2683 pgr_trsp(text,integer,integer,boolean,boolean,text)"
+#~ msgstr "#2683 pgr_trsp(text,heltal,heltal,boolean,boolean,text)"
+
+#~ msgid "#2681 pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
+#~ msgstr "#2681 pgr_trspviaedges(text,heltal[],dubbel precision[],boolean,boolean,text)"
+
+#~ msgid "#2682 pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
+#~ msgstr "#2682 pgr_trspviavertices(text,valfri matris,boolean,boolean,text)"
+
+#~ msgid "#2919 pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,boolean,character,boolean)"
+
+#~ msgid "#2919 pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
+
+#~ msgid "#2919 pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
+
+#~ msgid "#2919 pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
+
+#~ msgid "#2919 pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,tecken,boolean)"
+
+#~ msgid "#2919 pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_trsp_withpoints(text,text,text,text,boolean,tecken,boolean)"
+
+#~ msgid "#2901 pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+#~ msgstr "#2901 pgr_tspeuclidean(text,bigint,bigint,dubbel precision,heltal,heltal,heltal,dubbel precision,dubbel precision,dubbel precision,boolean)"
+
+#~ msgid "#2901 pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+#~ msgstr "#2901 pgr_tsp(text,bigint,bigint,dubbel precision,heltal,heltal,heltal,dubbel precision,dubbel precision,dubbel precision,boolean)"
+
+#~ msgid "#2919 pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
+#~ msgstr "#2919 pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
+
+#~ msgid "#2919 pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)"
+#~ msgstr "#2919 pgr_withpointscost(text,text,valfri matris,valfri matris,boolean,tecken)"
+
+#~ msgid "#2919 pgr_withpointscost(text,text,anyarray,bigint,boolean,character)"
+#~ msgstr "#2919 pgr_withpointscost(text,text,anyarray,bigint,boolean,character)"
+
+#~ msgid "#2919 pgr_withpointscost(text,text,bigint,anyarray,boolean,character)"
+#~ msgstr "#2919 pgr_withpointscost(text,text,bigint,anyarray,boolean,character)"
+
+#~ msgid "#2919 pgr_withpointscost(text,text,bigint,bigint,boolean,character)"
+#~ msgstr "#2919 pgr_withpointscost(text,text,bigint,bigint,boolean,character)"
+
+#~ msgid "#2919 pgr_withpointscost(text,text,text,boolean,character)"
+#~ msgstr "#2919 pgr_withpointscost(text,text,text,boolean,tecken)"
+
+#~ msgid "#2890 pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
+#~ msgstr "#2890 pgr_withpointsdd(text,text,valfri matris,dubbel precision,boolean,tecken,boolean,boolean)"
+
+#~ msgid "#2890 pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
+#~ msgstr "#2890 pgr_withpointsdd(text,text,bigint,dubbel precision,boolean,tecken,boolean)"
+
+#~ msgid "#2895 pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+#~ msgstr "#2895 pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+
+#~ msgid "#2919 pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_withpoints(text,text,valfri matris,valfri matris,boolean,tecken,boolean)"
+
+#~ msgid "#2919 pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)"
+
+#~ msgid "#2919 pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_withpoints(text,text,bigint,anyarray,boolean,tecken,boolean)"
+
+#~ msgid "#2919 pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_withpoints(text,text,bigint,bigint,boolean,tecken,boolean)"
+
+#~ msgid "#2919 pgr_withpoints(text,text,text,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_withpoints(text,text,text,boolean,tecken,boolean)"
+
+#~ msgid "#2919 pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+#~ msgstr "#2919 pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,boolean,character,boolean)"
+
+#~ msgid "#2683 _trsp"
+#~ msgstr "#2683 _trsp"
+
+#~ msgid "#2683 _v4trsp"
+#~ msgstr "#2683 _v4trsp"
+
+#~ msgid "#2748 _pgr_alphashape"
+#~ msgstr "#2748 _pgr_alphashape"
+
+#~ msgid "#2913 _pgr_dagshortestpath"
+#~ msgstr "#2913 _pgr_dagshortestpath"
+
+#~ msgid "Validity of **driving side** parameter"
+#~ msgstr "Giltighet för parametern **förarsida**"
+
+#~ msgid "**driving side** parameter is unnamed compulsory, and valid values differ for directed and undirected graphs."
+#~ msgstr "*parametern *driving side** är obligatorisk utan namn och giltiga värden skiljer sig åt för riktade och oriktade grafer."
+
+#~ msgid "Does not have a default value."
+#~ msgstr "Har inget förinställt värde."
+
+#~ msgid "Using an invalid value throws an ``ERROR``."
+#~ msgstr "Om du använder ett ogiltigt värde får du ett ``ERROR``."
+
+#~ msgid "And ``driving side`` parameter changed from named optional to unnamed compulsory **driving side** and its validity differ for directed and undirected graphs."
+#~ msgstr "Parametern ``driving side`` ändrades från namngiven valfri till icke namngiven obligatorisk **driving side** och dess giltighet skiljer sig åt för riktade och oriktade grafer."
+
+#~ msgid "pgr_dijkstra(`Kanter SQL`_, **start vids**, **end vids**, [``directed``])"
+#~ msgstr "pgr_dijkstra(`Kanter SQL`_, **start vids**, **end vids**, [``directed``])"
+
+#~ msgid ":ref:`install-short`"
+#~ msgstr ":ref:`install-short`"
+
+#~ msgid ":ref:`install_get_sources`"
+#~ msgstr ":ref:`install_get_sources`"
+
+#~ msgid ":ref:`install_enable_db`"
+#~ msgstr ":ref:`install_enable_db`"
+
+#~ msgid ":ref:`install_dependencies`"
+#~ msgstr ":ref:`install_dependencies`"
+
+#~ msgid ":ref:`install_configuring`"
+#~ msgstr ":ref:`install_configuring`"
+
+#~ msgid ":ref:`install_build`"
+#~ msgstr ":ref:`install_build`"
+
+#~ msgid ":ref:`install_testing`"
+#~ msgstr ":ref:`install_testing`"
+
+#~ msgid "To use pgRouting PostGIS needs to be installed, please read the information about installation in this `Install Guide <https://www.postgis.us/presentations/postgis_install_guide_22.html>`__"
+#~ msgstr "För att använda pgRouting måste PostGIS installeras, läs informationen om installation i denna `Installationsguide <https://www.postgis.us/presentations/postgis_install_guide_22.html>`__"
+
+#~ msgid "Postgresql version = Supported versions by PostgreSQL"
+#~ msgstr "Postgresql-version = Versioner som stöds av PostgreSQL"
+
+#~ msgid "The Boost Graph Library (BGL). Version >= 1.56"
+#~ msgstr "Boost Graph Library (BGL). Version >= 1.56"
+
+#~ msgid "CMake >= 3.2"
+#~ msgstr "CMake >= 3.2"
+
+#~ msgid "optional dependencies"
+#~ msgstr "valfria beroenden"
+
+#~ msgid "Sphinx >= 1.1"
+#~ msgstr "Sphinx >= 1.1"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "PostGIS version >= 2.2"
+#~ msgstr "PostGIS version >= 2.2"
+
+#~ msgid "Database dependencies"
+#~ msgstr "Beroenden till databaser"
+
+#~ msgid "Configuring PostgreSQL"
+#~ msgstr "Konfigurera PostgreSQL"
+
+#~ msgid "Entering psql console"
+#~ msgstr "Gå in i psql-konsolen"
+
+#~ msgid "To exit psql console"
+#~ msgstr "Så här avslutar du psql-konsolen"
+
+#~ msgid "Entering psql console directly without switching roles can be done by the following commands"
+#~ msgstr "Du kan gå in i psql-konsolen direkt utan att byta roll med följande kommandon"
+
+#~ msgid "Then use the above given method to exit out of the psql console"
+#~ msgstr "Använd sedan ovanstående metod för att avsluta psql-konsolen"
+
+#~ msgid "Checking PostgreSQL version"
+#~ msgstr "Kontrollera PostgreSQL-versionen"
+
+#~ msgid "or"
+#~ msgstr "eller"
+
+#~ msgid "Enter the psql console using above given method and then enter"
+#~ msgstr "Gå in i psql-konsolen med hjälp av ovanstående metod och ange sedan"
+
+#~ msgid "Creating PostgreSQL role"
+#~ msgstr "Skapa PostgreSQL-roll"
+
+#~ msgid "Default role provided by PostgreSQL is postgres. To create new roles you can use the above provided commands. The prompt will ask the user to type name of the role and then provide affirmation. Proceed with the steps and you will succeed in creating PostgreSQL role successfully."
+#~ msgstr "Standardrollen som tillhandahålls av PostgreSQL är postgres. För att skapa nya roller kan du använda ovanstående kommandon. Prompten kommer att be användaren att skriva namnet på rollen och sedan ge bekräftelse. Fortsätt med stegen så kommer du att lyckas skapa PostgreSQL-rollen framgångsrikt."
+
+#~ msgid "To add password to the role or change previously created password of the role use the following commands"
+#~ msgstr "Använd följande kommandon om du vill lägga till ett lösenord för rollen eller ändra ett tidigare skapat lösenord för rollen"
+
+#~ msgid "To get additional details on the flags associated with ``createuser`` below given command can be used"
+#~ msgstr "För att få ytterligare information om de flaggor som är associerade med ``createuser`` kan nedanstående kommando användas"
+
+#~ msgid "Creating Database in PostgreSQL"
+#~ msgstr "Skapa databas i PostgreSQL"
+
+#~ msgid "Connecting to a PostgreSQL Database"
+#~ msgstr "Ansluta till en PostgreSQL-databas"
+
+#~ msgid "Enter the psql console and type the following commands"
+#~ msgstr "Gå till psql-konsolen och skriv följande kommandon"
+
+#~ msgid "For documentation and testing"
+#~ msgstr "För dokumentation och testning"
+
+#~ msgid "Create the build directory"
+#~ msgstr "Skapa byggkatalogen"
+
+#~ msgid "WITH_DOC"
+#~ msgstr "MED_DOK"
+
+#~ msgid "Turn on/off building the documentation"
+#~ msgstr "Aktivera/avaktivera skapandet av dokumentation"
+
+#~ msgid "Configuring cmake to create documentation before building pgRouting"
+#~ msgstr "Konfigurera cmake för att skapa dokumentation innan pgRouting byggs"
+
+#~ msgid "Most of the effort of the documentation has been on the html files."
+#~ msgstr "Det mesta av arbetet med dokumentationen har lagts på html-filerna."
+
+#~ msgid "The following instructions start from *path/to/pgrouting/build*"
+#~ msgstr "Följande instruktioner startar från *stig/till/pgrouting/build*"
+
+#~ msgid "The sql signatures are configured and build in the ``cmake`` command."
+#~ msgstr "Sql-signaturerna konfigureras och byggs i kommandot ``cmake``."
+
+#~ msgid "MinGW on Windows"
+#~ msgstr "MinGW på Windows"
+
+#~ msgid "The following instructions start from *path/to/pgrouting*"
+#~ msgstr "Följande instruktioner börjar från *väg/till/grouting*"
+
+#~ msgid "To remove the build when the configuration changes, use the following code:"
+#~ msgstr "Använd följande kod för att ta bort build när konfigurationen ändras:"
+
+#~ msgid "and start the build process as mentioned previously."
+#~ msgstr "och starta byggprocessen som tidigare nämnts."
+
+#~ msgid "The following instructions start from *path/to/pgrouting/*"
+#~ msgstr "Följande instruktioner startar från *stig/till/pgrouting/*"
+
+#~ msgid "Individuals in this release v3.8.x (in alphabetical order)"
+#~ msgstr "Individer i denna utgåva v3.8.x (i alfabetisk ordning)"
+
+#~ msgid "Aurélie Bousquet, Regina Obe, Vicky Vergara"
+#~ msgstr "Aurélie Bousquet, Regina Obe, Vicky Vergara"
+
+#~ msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+#~ msgstr "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+
+#~ msgid "New **experimental** function"
+#~ msgstr "Ny **experimentell** funktion"
+
+#~ msgid "pgr_dijkstraNear(`Kanter SQL`_, **start vids**, **end vid**, [**options**])"
+#~ msgstr "pgr_dijkstraNear(`Kanter SQL`_, **start vids**, **end vid**, [**options**])"
+
+#~ msgid "pgr_dijkstraNear(`Kanter SQL`_, **start vids**, **end vids**, [**options**])"
+#~ msgstr "pgr_dijkstraNear(`Kanter SQL`_, **start vids**, **end vids**, [**options**])"
+
+#~ msgid "``pgr_dijkstraVia`` - Proposed"
+#~ msgstr "``pgr_dijkstraVia`` - Förslag"
+
+#~ msgid "``pgr_johnson`` - Returns the sum of the costs of the shortest path for each pair of nodes in the graph using Floyd-Warshall algorithm."
+#~ msgstr "``pgr_johnson`` - Returnerar summan av kostnaderna för den kortaste vägen för varje par av noder i grafen med hjälp av Floyd-Warshall-algoritmen."
+
+#~ msgid "pgr_trspVia_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, **via vertices**, **driving side** [**options**])"
+#~ msgstr "pgr_trspVia_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, **via vertices**, **driving side** [**options**])"
+
+#~ msgid "**driving side**"
+#~ msgstr "**körning på sidan**"
+
+#~ msgid "[``r``, ``R``] for right driving side (for directed graph only)"
+#~ msgstr "[``r``, ``R``] för höger körsida (endast för riktad graf)"
+
+#~ msgid "[``l``, ``L``] for left driving side (for directed graph only)"
+#~ msgstr "[``l``, ``L``] för vänster körsida (endast för riktad graf)"
+
+#~ msgid "[``b``, ``B``] for both (only for undirected graph)"
+#~ msgstr "[``b``, ``B``] för båda (endast för oriktad graf)"
+
+#~ msgid "pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vid**, [**options**])"
+#~ msgstr "pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vid**, [**options**])"
+
+#~ msgid "pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])"
+#~ msgstr "pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])"
+
+#~ msgid "pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])"
+#~ msgstr "pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])"
+
+#~ msgid "pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])"
+#~ msgstr "pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])"
+
+#~ msgid "pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Combinations SQL`_, `Points SQL`_, [**options**])"
+#~ msgstr "pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Combinations SQL`_, `Points SQL`_, [**options**])"
+
+#~ msgid "**options:** ``[directed, driving_side, details]``"
+#~ msgstr "**options:** ``[directed, driving_side, details]``"
+
+#~ msgid "pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])"
+#~ msgstr "pgr_trsp_withPoints(`Kanter SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])"
+
+#~ msgid "pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vid**, **driving side** [**options**])"
+#~ msgstr "pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vid**, **driving side** [**options**])"
+
+#~ msgid "pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])"
+#~ msgstr "pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])"
+
+#~ msgid "pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vid**, **driving side** [**options**])"
+#~ msgstr "pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vid**, **driving side** [**options**])"
+
+#~ msgid "pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vids**, **driving side** [**options**])"
+#~ msgstr "pgr_withPoints(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vids**, **driving side** [**options**])"
+
+#~ msgid "pgr_withPoints(`Kanter SQL`_, `Points SQL`_, `Combinations SQL`_, **driving side** [**options**])"
+#~ msgstr "pgr_withPoints(`Kanter SQL`_, `Points SQL`_, `Combinations SQL`_, **driving side** [**options**])"
+
+#~ msgid "pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vid**, **driving side** [**options**])"
+#~ msgstr "pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vid**, **driving side** [**options**])"
+
+#~ msgid "pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])"
+#~ msgstr "pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vids**, **driving side** [**options**])"
+
+#~ msgid "pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vid**, **driving side** [**options**])"
+#~ msgstr "pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vid**, **driving side** [**options**])"
+
+#~ msgid "pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vids**, **driving side** [**options**])"
+#~ msgstr "pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vids**, **driving side** [**options**])"
+
+#~ msgid "pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, `Combinations SQL`_, **driving side** [**options**])"
+#~ msgstr "pgr_withPointsCost(`Kanter SQL`_, `Points SQL`_, `Combinations SQL`_, **driving side** [**options**])"
+
+#~ msgid "pgr_withPointsCostMatrix(`Kanter SQL`_, `Points SQL`_, **start vids**, **driving side** [**options**])"
+#~ msgstr "pgr_withPointsCostMatrix(`Kanter SQL`_, `Points SQL`_, **start vids**, **driving side** [**options**])"
+
+#~ msgid "Using the default ``driving_side`` value"
+#~ msgstr "Använda standardvärdet för ``driving_side``"
+
+#~ msgid "pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options A**])"
+#~ msgstr "pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options A**])"
+
+#~ msgid "pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options B**])"
+#~ msgstr "pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options B**])"
+
+#~ msgid "pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options**])"
+#~ msgstr "pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options**])"
+
+#~ msgid "pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options**])"
+#~ msgstr "pgr_withPointsDD(`Kanter SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options**])"
+
+#~ msgid "``r``, ``R`` for right driving side,"
+#~ msgstr "``R``, ``R`` för höger körsida,"
+
+#~ msgid "``l``, ``L`` for left driving side."
+#~ msgstr "``L``, ``L`` för vänster körsida."
+
+#~ msgid "``b``, ``B`` for both."
+#~ msgstr "``B``, ``B`` för båda."
+
+#~ msgid "Valid values differ for directed and undirected graphs:"
+#~ msgstr "Giltiga värden skiljer sig åt för riktade och oriktade grafer:"
+
+#~ msgid "In directed graphs: [``r``, ``R``, ``l``, ``L``]."
+#~ msgstr "I riktade grafer: [``r``, ``R``, ``l``, ``L``]."
+
+#~ msgid "In undirected graphs: [``b``, ``B``]."
+#~ msgstr "I oriktade grafer: [``b``, ``B``]."
+
+#~ msgid "pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vid**, **K**, **driving_side**, [**options**])"
+#~ msgstr "pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vid**, **K**, **driving_side**, [**options**])"
+
+#~ msgid "pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vids**, **K**, **driving_side**, [**options**])"
+#~ msgstr "pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vid**, **end vids**, **K**, **driving_side**, [**options**])"
+
+#~ msgid "pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vid**, **K**, **driving_side**, [**options**])"
+#~ msgstr "pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vid**, **K**, **driving_side**, [**options**])"
+
+#~ msgid "pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vids**, **K**, **driving_side**, [**options**])"
+#~ msgstr "pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, **start vids**, **end vids**, **K**, **driving_side**, [**options**])"
+
+#~ msgid "pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, **driving_side**, [**options**])"
+#~ msgstr "pgr_withPointsKSP(`Kanter SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, **driving_side**, [**options**])"
+
+#~ msgid "pgr_withPointsVia(`Kanter SQL`_, `Points SQL`_, **via vertices**, **driving side** [**options**])"
+#~ msgstr "pgr_withPointsVia(`Kanter SQL`_, `Points SQL`_, **via vertices**, **driving side** [**options**])"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.8.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.8.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
+
+#~ msgid "Other enhancements: `#2869 <https://github.com/pgRouting/pgrouting/issues/2869>`__"
+#~ msgstr "Andra förbättringar: `#2869 <https://github.com/pgRouting/pgrouting/issues/2869>`__"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.7.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.7.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
+
+#~ msgid "`#2731 <https://github.com/pgRouting/pgrouting/pull/2731>`__ Build Failure on Ubuntu 22"
+#~ msgstr "`#2731 <https://github.com/pgRouting/pgrouting/pull/2731>`__ Byggfel på Ubuntu 22"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git-stängd milstolpe för 3.7.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
+
+#~ msgid "`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cmake missing some policies and min version"
+#~ msgstr "`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cmake saknar vissa policyer och min-version"
+
+#~ msgid "`#2707 <https://github.com/pgRouting/pgrouting/pull/2707>`__ Build failure in pgRouting 3.7.1 on Alpine"
+#~ msgstr "`#2707 <https://github.com/pgRouting/pgrouting/pull/2707>`__ Byggfel i pgRouting 3.7.1 på Alpine"
+
+#~ msgid "`#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie crashing on pgr_betweennessCentrality"
+#~ msgstr "`#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie kraschar på pgr_betweennessCentrality"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.7.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git-stängd milstolpe för 3.7.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+
+#~ msgid "`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ fails to compile under mingw64 gcc 13.2"
+#~ msgstr "`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ kan inte kompileras under mingw64 gcc 13.2"
+
+#~ msgid "`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ When point is a vertex, the withPoints family do not return results."
+#~ msgstr "`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ När punkten är en vertex ger inte withPoints-familjen några resultat."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.7.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+
+#~ msgid "`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of PostgreSQL12 on pgrouting v3.7"
+#~ msgstr "`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stoppa stöd för PostgreSQL12 på pgrouting v3.7"
+
+#~ msgid "`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standardize spanning tree functions output"
+#~ msgstr "`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standardisera utdata för funktioner för spänningsträd"
+
+#~ msgid "`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph ignores directed flag and use negative values for identifiers."
+#~ msgstr "`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph ignorerar directed flag och använder negativa värden för identifierare."
+
+#~ msgid "`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving distance cleanup"
+#~ msgstr "`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Körsträcka uppstädning"
+
+#~ msgid "`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql data on C++"
+#~ msgstr "`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Läsa postgresql-data på C++"
+
+#~ msgid "`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does not work"
+#~ msgstr "`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy fungerar inte"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git-stängd milstolpe för 3.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`_"
+#~ msgstr "För att se alla problem och pull requests som stängts av denna release, se `Git stängd milstolpe för 3.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`_"
+
+#~ msgid "`#2588 <https://github.com/pgRouting/pgrouting/pull/2588>`__ pgrouting 3.6.0 fails to build on OSX"
+#~ msgstr "`#2588 <https://github.com/pgRouting/pgrouting/pull/2588>`__ pgrouting 3.6.0 går inte att bygga under OSX"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
+
+#~ msgid "`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standardize output pgr_aStar"
+#~ msgstr "`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standardisera utdata pgr_aStar"
+
+#~ msgid "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standardize output pgr_bdAstar"
+#~ msgstr "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standardisera utdata pgr_bdAstar"
+
+#~ msgid "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standardize output and modifying signature pgr_KSP"
+#~ msgstr "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standardisera utdata och ändra signatur pgr_KSP"
+
+#~ msgid "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standardize output pgr_drivingDistance"
+#~ msgstr "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standardisera utdata pgr_drivingDistance"
+
+#~ msgid "`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standardize output and modifying signature pgr_withPointsDD"
+#~ msgstr "`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standardisera utdata och ändra signaturen pgr_withPointsDD"
+
+#~ msgid "`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standardize output and modifying signature pgr_withPointsKSP"
+#~ msgstr "`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standardisera utdata och ändra signaturen pgr_withPointsKSP"
+
+#~ msgid "`#2504 <https://github.com/pgRouting/pgrouting/pull/2504>`__ To C++ pg data get, fetch and check."
+#~ msgstr "`#2504 <https://github.com/pgRouting/pgrouting/pull/2504>`__ Till C++ pg-data hämta, hämta och kontrollera."
+
+#~ msgid "`#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ Using namespace."
+#~ msgstr "`#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ Använder namnområde."
+
+#~ msgid "`#2512 <https://github.com/pgRouting/pgrouting/pull/2512>`__ [Dijkstra] Removing duplicate code on Dijkstra."
+#~ msgstr "`#2512 <https://github.com/pgRouting/pgrouting/pull/2512>`__ [Dijkstra] Borttagning av duplicerad kod på Dijkstra."
+
+#~ msgid "`#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Astar code simplification."
+#~ msgstr "`#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Förenkling av Astar-koden."
+
+#~ msgid "`#2521 <https://github.com/pgRouting/pgrouting/pull/2521>`__ Dijkstra code simplification."
+#~ msgstr "`#2521 <https://github.com/pgRouting/pgrouting/pull/2521>`__ Dijkstra kodförenkling."
+
+#~ msgid "`#2522 <https://github.com/pgRouting/pgrouting/pull/2522>`__ bdAstar code simplification."
+#~ msgstr "`#2522 <https://github.com/pgRouting/pgrouting/pull/2522>`__ bdAstar kodförenkling."
+
+#~ msgid "`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatic page history links."
+#~ msgstr "`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatiska länkar till sidans historik."
+
+#~ msgid "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ Standardize deprecated messages"
+#~ msgstr "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ Standardisera föråldrade meddelanden"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`_"
+#~ msgstr "För att se alla problem och pull requests som stängts av den här versionen, se `Git stängd milstolpe för 3.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`_"
+
+#~ msgid "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ pgr_lengauerTarjanDominatorTree triggers an assertion"
+#~ msgstr "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ pgr_lengauerTarjanDominatorTree utlöser ett påstående"
+
+#~ msgid "`#2561 <https://github.com/pgRouting/pgrouting/issues/2561>`__ Not use wildcards on SQL"
+#~ msgstr "`#2561 <https://github.com/pgRouting/pgrouting/issues/2561>`__ Använd inte jokertecken i SQL"
+
+#~ msgid "`#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__ pgtap test using sampledata"
+#~ msgstr "`#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__ pgtap-test med sampledata"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`_"
+#~ msgstr "För att se alla problem och pull requests som stängts av denna release, se `Git stängd milstolpe för 3.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`_"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`_"
+#~ msgstr "För att se alla problem och pull requests som stängts av denna release, se `Git stängd milstolpe för 3.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`_"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`_"
+#~ msgstr "För att se alla problem och pull requests som stängts av denna release, se `Git stängd milstolpe för 3.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`_"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`_"
+#~ msgstr "För att se alla problem och pull requests som stängts av denna release, se `Git stängd milstolpe för 3.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`_"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
+#~ msgstr "För att se alla problem och pull requests som stängts av denna release, se `Git stängd milstolpe för 3.3.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`_"
+#~ msgstr "För att se alla problem och pull requests som stängts av denna release, se `Git stängd milstolpe för 3.3.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`_"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_"
+#~ msgstr "För att se alla problem och pull requests som stängts av denna release, se `Git stängd milstolpe för 3.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_"
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.1.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.1.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.1.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.1.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.6 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.0.6 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.0.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.0.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ på Github."
+
+#~ msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ on Github."
+#~ msgstr "För att se alla problem och pull requests som stängts av den här utgåvan, se `Git stängd milstolpe för 3.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed milestone for 2.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20>`_ on Github."
+#~ msgstr "För att se de problem som stängdes med den här utgåvan, se `Git-stängd milstolpe för 2.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20>`_ på Github."
+
+#~ msgid "`#1219 <https://github.com/pgRouting/pgrouting/pull/1219>`__ Implicit cast for via_path integer to text"
+#~ msgstr "`#1219 <https://github.com/pgRouting/pgrouting/pull/1219>`__ Implicit kast för via_path integer till text"
+
+#~ msgid "`#1193 <https://github.com/pgRouting/pgrouting/pull/1193>`__ Fixed pgr_pointsAsPolygon breaking when comparing strings in WHERE clause"
+#~ msgstr "`#1193 <https://github.com/pgRouting/pgrouting/pull/1193>`__ Fixat att pgr_pointsAsPolygon gick sönder när strängar jämfördes i WHERE-satsen"
+
+#~ msgid "`#1185 <https://github.com/pgRouting/pgrouting/pull/1185>`__ Improve FindPostgreSQL.cmake"
+#~ msgstr "`#1185 <https://github.com/pgRouting/pgrouting/pull/1185>`__ Förbättra FindPostgreSQL.cmake"
+
+#~ msgid "To see the issues closed by this release see the `Git closed milestone for 2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_ on Github."
+#~ msgstr "För att se de problem som stängdes med den här utgåvan, se `Git-stängd milstolpe för 2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_ på Github."
+
+#~ msgid "`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Fixes driving distance when vertex is not part of the graph"
+#~ msgstr "`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Korrigerar körsträcka när toppunkten inte är en del av grafen"
+
+#~ msgid "`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Fixes windows test"
+#~ msgstr "`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Åtgärdar Windows-test"
+
+#~ msgid "`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ Fixes build for python3 and perl5"
+#~ msgstr "`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ Fixar byggsätt för python3 och perl5"
+
+#~ msgid "To see the issues closed by this release see the `Git closed milestone for 2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_ on Github."
+#~ msgstr "För att se de problem som stängdes med den här utgåvan, se `Git-stängd milstolpe för 2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed milestone for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github."
+#~ msgstr "För att se de problem som stängdes med den här utgåvan, se `Git-stängd milstolpe för 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_ on Github."
+#~ msgstr "För att se de problem som stängdes med den här utgåvan, se `Git-stängd milstolpe för 2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_ on Github."
+#~ msgstr "För att se de problem som stängdes med den här utgåvan, se `Git-stängd milstolpe för 2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_ on Github."
+#~ msgstr "För att se de problem som stängdes med den här utgåvan, se `Git-stängd milstolpe för 2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_ on Github."
+#~ msgstr "För att se de problem som stängdes med den här utgåvan, se `Git-stängd milstolpe för 2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_ on Github."
+#~ msgstr "För att se de problem som stängdes med den här utgåvan, se `Git-stängd milstolpe för 2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed issues for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github."
+#~ msgstr "För att se de problem som stängdes av den här utgåvan, se `Git stängda problem för 2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed milestone for 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_ on Github."
+#~ msgstr "För att se de problem som stängdes med den här utgåvan, se `Git-stängd milstolpe för 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed milestone for 2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github."
+#~ msgstr "För att se de problem som stängdes med den här utgåvan, se `Git-stängd milstolpe för 2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed issues for 2.4.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ on Github."
+#~ msgstr "För att se de problem som stängdes av den här utgåvan, se `Git stängda problem för 2.4.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed issues for 2.3.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ on Github."
+#~ msgstr "För att se de problem som stängts av denna utgåva, se `Git stängda problem för 2.3.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed issues for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ on Github."
+#~ msgstr "För att se de problem som stängts av denna utgåva, se `Git stängda problem för 2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed issues for 2.3.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ on Github."
+#~ msgstr "För att se de problem som stängdes av den här utgåvan, se `Git stängda problem för 2.3.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed issues for 2.2.4 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ on Github."
+#~ msgstr "För att se de problem som stängts av denna utgåva, se `Git stängda problem för 2.2.4 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed issues for 2.2.3 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_ on Github."
+#~ msgstr "För att se de problem som stängts av denna utgåva, se `Git stängda problem för 2.2.3 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed issues for 2.2.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ on Github."
+#~ msgstr "För att se de problem som stängts av denna utgåva, se `Git stängda problem för 2.2.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed issues for 2.2.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_ on Github."
+#~ msgstr "För att se de problem som stängts av denna utgåva, se `Git stängda problem för 2.2.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed issues for 2.2.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ on Github."
+#~ msgstr "För att se de problem som stängdes av denna utgåva, se `Git stängda problem för 2.2.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed issues for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github."
+#~ msgstr "För att se de problem som stängdes av denna utgåva, se `Git stängda problem för 2.1.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ på Github."
+
+#~ msgid "To see the issues closed by this release see the `Git closed issues for 2.0.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_ on Github."
+#~ msgstr "För att se de problem som stängdes av den här utgåvan, se `Git stängda problem för 2.0.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_ på Github."
+
+#~ msgid "Mailing List and GIS StackExchange"
+#~ msgstr "Mailinglista och GIS StackExchange"
+
+#~ msgid "There are two mailing lists for pgRouting hosted on OSGeo mailing list server:"
+#~ msgstr "Det finns två e-postlistor för pgRouting som finns på OSGeo mailing list server:"
+
+#~ msgid "User mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
+#~ msgstr "E-postlista för användare: https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
+
+#, fuzzy
+#~ msgid "Regina Obe, Saloni kumari, Vicky Vergara"
+#~ msgstr "Aurélie Bousquet, Regina Obe, Vicky Vergara"
+
+#, fuzzy
+#~ msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+#~ msgstr "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+
+#, fuzzy
+#~ msgid ":doc:`pgr_kingOrdering` - Returns the King ordering of an undirected graphs acyclic graph."
+#~ msgstr ":doc:`pgr_cuthillMckeeOrdering` - Return reverse Cuthill-McKee ordering of an undirected graph."
+
+#, fuzzy
+#~ msgid "Fan Wu Regina Obe, Saloni kumari, Vicky Vergara"
+#~ msgstr "Aurélie Bousquet, Regina Obe, Vicky Vergara"
+
+#, fuzzy
+#~ msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+#~ msgstr "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
