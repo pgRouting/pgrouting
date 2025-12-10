@@ -9381,9 +9381,8 @@ msgstr "si está en OFF no se creará la documentación en inglés"
 msgid "ES"
 msgstr ""
 
-#, fuzzy
 msgid "if OFF the Spanish documentation will no be built"
-msgstr "Información sobre cuándo se construyó esta documentación"
+msgstr "si OFF la documentación española no se construirá"
 
 msgid "SV"
 msgstr ""
