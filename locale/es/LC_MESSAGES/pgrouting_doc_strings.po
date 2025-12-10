@@ -7,7 +7,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024, 2025.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024, 2025.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-05 23:37+0000\nPO-Revision-Date: 2025-12-10 17:36+0000\nLast-Translator: DeepL <noreply-mt-deepl@weblate.org>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2025-12-05 23:37+0000\nPO-Revision-Date: 2025-12-10 17:37+0000\nLast-Translator: DeepL <noreply-mt-deepl@weblate.org>\nLanguage-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\nLanguage: es\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.4.3\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Categoría"
@@ -9375,9 +9375,8 @@ msgstr ""
 msgid "EN"
 msgstr ""
 
-#, fuzzy
 msgid "if OFF the English documentation will no be built"
-msgstr "Información sobre cuándo se construyó esta documentación"
+msgstr "si está en OFF no se creará la documentación en inglés"
 
 msgid "ES"
 msgstr ""
