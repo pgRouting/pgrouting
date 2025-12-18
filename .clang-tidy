@@ -7,7 +7,8 @@ Checks: >
     cppcoreguidelines-avoid-goto,
     cppcoreguidelines-avoid-non-const-global-variables,
     cppcoreguidelines-avoid-reference-coroutine-parameters,
-    cppcoreguidelines-interfaces-global-init
+    cppcoreguidelines-interfaces-global-init,
+    cppcoreguidelines-rvalue-reference-param-not-moved
 
 WarningsAsErrors: ''
 HeaderFilterRegex: './include'
