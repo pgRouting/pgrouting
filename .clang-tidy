@@ -7,7 +7,7 @@ Checks: >
     cppcoreguidelines-avoid-goto,
     cppcoreguidelines-avoid-non-const-global-variables,
     cppcoreguidelines-avoid-reference-coroutine-parameters,
-    cppcoreguidelines-avoid-non-const-global-variables
+    cppcoreguidelines-pro-type-vararg,
 
 WarningsAsErrors: ''
 HeaderFilterRegex: './include'
