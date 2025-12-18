@@ -8,7 +8,8 @@ Checks: >
     cppcoreguidelines-avoid-non-const-global-variables,
     cppcoreguidelines-avoid-reference-coroutine-parameters,
     cppcoreguidelines-interfaces-global-init,
-    cppcoreguidelines-rvalue-reference-param-not-moved
+    cppcoreguidelines-rvalue-reference-param-not-moved,
+    cppcoreguidelines-pro-type-member-init
 
 WarningsAsErrors: ''
 HeaderFilterRegex: './include'
