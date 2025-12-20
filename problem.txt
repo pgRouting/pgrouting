@@ -1,0 +1,102 @@
+Error while trying to load a compilation database:
+Could not auto-detect compilation database for file "src/allpairs/allpairs_driver.cpp"
+No compilation database found in /home/mayurgalhate/pgrouting/src/allpairs or any parent directory
+fixed-compilation-database: Error while opening fixed database: No such file or directory
+json-compilation-database: Error while opening JSON database: No such file or directory
+Running without flags.
+1082 warnings and 1 error generated.
+Error while processing /home/mayurgalhate/pgrouting/src/allpairs/allpairs_driver.cpp.
+1605 warnings and 2 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/allpairs/allpairs_process.cpp.
+2872 warnings and 3 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/astar/astar_driver.cpp.
+4139 warnings and 4 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/bdAstar/bdAstar_driver.cpp.
+5528 warnings and 5 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/bdDijkstra/bdDijkstra_driver.cpp.
+6917 warnings and 6 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/bellman_ford/bellman_ford_driver.cpp.
+8306 warnings and 7 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/bellman_ford/bellman_ford_neg_driver.cpp.
+9695 warnings and 8 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/bellman_ford/edwardMoore_driver.cpp.
+11084 warnings and 9 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/breadthFirstSearch/binaryBreadthFirstSearch_driver.cpp.
+11983 warnings and 10 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/breadthFirstSearch/breadthFirstSearch_driver.cpp.
+13156 warnings and 11 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/chinese/chinesePostman_driver.cpp.
+14337 warnings and 12 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/circuits/hawickCircuits_driver.cpp.
+15732 warnings and 13 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/coloring/bipartite_driver.cpp.
+19019 warnings and 14 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/coloring/edgeColoring.cpp.
+19642 warnings and 15 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/coloring/edgeColoring_driver.cpp.
+20846 warnings and 16 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/coloring/sequentialVertexColoring_driver.cpp.
+21372 warnings and 17 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/common/alloc.cpp.
+21935 warnings and 18 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/common/assert.cpp.
+21935 warnings and 19 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/common/basic_edge.cpp.
+23139 warnings and 20 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/common/basic_vertex.cpp.
+23139 warnings and 21 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/common/ch_edge.cpp.
+23689 warnings and 22 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/common/ch_vertex.cpp.
+23689 warnings and 23 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/common/identifier.cpp.
+25070 warnings and 24 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/common/path.cpp.
+27834 warnings and 25 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/common/xy_vertex.cpp.
+28916 warnings and 26 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/components/articulationPoints_driver.cpp.
+29998 warnings and 27 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/components/biconnectedComponents_driver.cpp.
+31080 warnings and 28 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/components/bridges_driver.cpp.
+34626 warnings and 29 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/components/components.cpp.
+35176 warnings and 30 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/components/componentsResult.cpp.
+36258 warnings and 31 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/components/connectedComponents_driver.cpp.
+37066 warnings and 32 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/components/makeConnected_driver.cpp.
+38148 warnings and 33 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/components/strongComponents_driver.cpp.
+38148 warnings and 34 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/contraction/contract.cpp.
+39415 warnings and 35 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/contraction/contractGraph_driver.cpp.
+40682 warnings and 36 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/contraction/contractionHierarchies_driver.cpp.
+42108 warnings and 37 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/cpp_common/Dmatrix.cpp.
+42108 warnings and 38 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/cpp_common/bpoint.cpp.
+42968 warnings and 39 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/cpp_common/combinations.cpp.
+43175 warnings and 40 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/cpp_common/compPaths.cpp.
+43889 warnings and 41 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/cpp_common/get_check_data.cpp.
+44917 warnings and 42 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/cpp_common/messages.cpp.
+45378 warnings and 43 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/cpp_common/pgdata_fetchers.cpp.
+46505 warnings and 44 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/cpp_common/pgdata_getters.cpp.
+47055 warnings and 45 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/cpp_common/rule.cpp.
+47306 warnings and 46 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/cpp_common/to_postgres.cpp.
+49989 warnings and 47 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/cpp_common/undirectedHasCostBG.cpp.
+53104 warnings and 48 errors generated.
+Error while processing /home/mayurgalhate/pgrouting/src/cpp_common/undirectedNoCostBG.cpp.

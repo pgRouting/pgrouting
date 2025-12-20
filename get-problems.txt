@@ -1,0 +1,111 @@
+[  1%] Built target legacy
+[  3%] Built target metrics
+[  5%] Built target dijkstra
+[ 11%] Built target common
+[ 12%] Built target allpairs
+[ 13%] Built target astar
+[ 15%] Built target driving_distance
+[ 17%] Built target ksp
+[ 19%] Built target tsp
+[ 20%] Built target bdAstar
+[ 21%] Built target bdDijkstra
+[ 26%] Built target trsp
+[ 33%] Built target pickDeliver
+[ 36%] Built target contraction
+[ 41%] Built target max_flow
+[ 44%] Built target withPoints
+[ 46%] Built target lineGraph
+[ 48%] Built target bellman_ford
+[ 54%] Built target components
+[ 59%] Built target cpp_common
+[ 60%] Built target dagShortestPath
+[ 61%] Built target chinese
+[ 64%] Built target spanningTree
+[ 65%] Built target mincut
+[ 65%] Built target version
+[ 66%] Built target topologicalSort
+[ 67%] Built target transitiveClosure
+[ 69%] Built target breadthFirstSearch
+[ 70%] Built target traversal
+[ 73%] Built target coloring
+[ 74%] Built target planar
+[ 75%] Built target dominator
+[ 78%] Built target ordering
+[ 79%] Built target extension_file
+[ 80%] Built target circuits
+[100%] Built target update_files
+[100%] Built target pgrouting-4.1
+[  1%] Building C object src/metrics/CMakeFiles/metrics.dir/betweennessCentrality.c.o
+[  1%] Building C object src/common/CMakeFiles/common.dir/postgres_connection.c.o
+[  2%] Building C object src/legacy/CMakeFiles/legacy.dir/legacy.c.o
+[  3%] Building C object src/dijkstra/CMakeFiles/dijkstra.dir/dijkstra.c.o
+[  3%] Built target legacy
+[  3%] Building C object src/allpairs/CMakeFiles/allpairs.dir/floydWarshall.c.o
+[  4%] Building C object src/common/CMakeFiles/common.dir/e_report.c.o
+[  4%] Building CXX object src/metrics/CMakeFiles/metrics.dir/betweennessCentrality_driver.cpp.o
+[  4%] Building C object src/dijkstra/CMakeFiles/dijkstra.dir/dijkstraVia.c.o
+[  4%] Building C object src/allpairs/CMakeFiles/allpairs.dir/johnson.c.o
+[  4%] Building CXX object src/common/CMakeFiles/common.dir/path.cpp.o
+[  5%] Building CXX object src/dijkstra/CMakeFiles/dijkstra.dir/shortestPath_driver.cpp.o
+[  6%] Building CXX object src/allpairs/CMakeFiles/allpairs.dir/allpairs_process.cpp.o
+[  6%] Building CXX object src/allpairs/CMakeFiles/allpairs.dir/allpairs_driver.cpp.o
+[  6%] Building C object src/metrics/CMakeFiles/metrics.dir/bandwidth.c.o
+[  7%] Building CXX object src/metrics/CMakeFiles/metrics.dir/metrics_driver.cpp.o
+[  7%] Building C object src/common/CMakeFiles/common.dir/check_parameters.c.o
+[  8%] Building C object src/common/CMakeFiles/common.dir/time_msg.c.o
+[  8%] Building CXX object src/common/CMakeFiles/common.dir/assert.cpp.o
+[  9%] Building CXX object src/common/CMakeFiles/common.dir/identifier.cpp.o
+[  9%] Built target allpairs
+[ 10%] Building C object src/astar/CMakeFiles/astar.dir/astar.c.o
+[ 10%] Building CXX object src/common/CMakeFiles/common.dir/basic_vertex.cpp.o
+[ 10%] Building CXX object src/astar/CMakeFiles/astar.dir/astar_driver.cpp.o
+[ 11%] Building CXX object src/common/CMakeFiles/common.dir/xy_vertex.cpp.o
+[ 11%] Building CXX object src/dijkstra/CMakeFiles/dijkstra.dir/shortestPath_process.cpp.o
+[ 12%] Building CXX object src/dijkstra/CMakeFiles/dijkstra.dir/dijkstraVia_driver.cpp.o
+[ 12%] Building CXX object src/metrics/CMakeFiles/metrics.dir/metrics_process.cpp.o
+[ 12%] Built target metrics
+[ 12%] Building C object src/driving_distance/CMakeFiles/driving_distance.dir/driving_distance.c.o
+[ 13%] Building C object src/driving_distance/CMakeFiles/driving_distance.dir/driving_distance_withPoints.c.o
+[ 13%] Building CXX object src/driving_distance/CMakeFiles/driving_distance.dir/driving_distance_driver.cpp.o
+[ 13%] Building CXX object src/common/CMakeFiles/common.dir/ch_vertex.cpp.o
+[ 14%] Building CXX object src/common/CMakeFiles/common.dir/ch_edge.cpp.o
+[ 14%] Building CXX object src/common/CMakeFiles/common.dir/basic_edge.cpp.o
+[ 15%] Building CXX object src/common/CMakeFiles/common.dir/alloc.cpp.o
+[ 15%] Built target common
+[ 15%] Building C object src/ksp/CMakeFiles/ksp.dir/ksp.c.o
+[ 16%] Building CXX object src/ksp/CMakeFiles/ksp.dir/ksp_driver.cpp.o
+[ 16%] Built target astar
+[ 16%] Building C object src/tsp/CMakeFiles/tsp.dir/euclideanTSP.c.o
+[ 17%] Building C object src/tsp/CMakeFiles/tsp.dir/TSP.c.o
+[ 17%] Building CXX object src/tsp/CMakeFiles/tsp.dir/tsp.cpp.o
+[ 17%] Built target dijkstra
+[ 18%] Building C object src/bdAstar/CMakeFiles/bdAstar.dir/bdAstar.c.o
+[ 18%] Building CXX object src/bdAstar/CMakeFiles/bdAstar.dir/bdAstar_driver.cpp.o
+[ 18%] Building CXX object src/driving_distance/CMakeFiles/driving_distance.dir/driving_distance_withPoints_driver.cpp.o
+[ 19%] Building CXX object src/tsp/CMakeFiles/tsp.dir/TSP_driver.cpp.o
+[ 19%] Building C object src/ksp/CMakeFiles/ksp.dir/withPoints_ksp.c.o
+[ 19%] Building CXX object src/ksp/CMakeFiles/ksp.dir/withPoints_ksp_driver.cpp.o
+[ 19%] Built target bdAstar
+[ 20%] Building C object src/bdDijkstra/CMakeFiles/bdDijkstra.dir/bdDijkstra.c.o
+[ 20%] Building CXX object src/bdDijkstra/CMakeFiles/bdDijkstra.dir/bdDijkstra_driver.cpp.o
+[ 20%] Building CXX object src/tsp/CMakeFiles/tsp.dir/euclideanTSP_driver.cpp.o
+[ 20%] Built target driving_distance
+[ 21%] Building CXX object src/trsp/CMakeFiles/trsp.dir/edgeInfo.cpp.o
+[ 21%] Building CXX object src/trsp/CMakeFiles/trsp.dir/trspHandler.cpp.o
+[ 21%] Built target tsp
+[ 21%] Building C object src/max_flow/CMakeFiles/max_flow.dir/max_flow.c.o
+[ 22%] Building C object src/max_flow/CMakeFiles/max_flow.dir/minCostMaxFlow.c.o
+[ 22%] Building C object src/max_flow/CMakeFiles/max_flow.dir/maximum_cardinality_matching.c.o
+[ 22%] Building C object src/max_flow/CMakeFiles/max_flow.dir/edge_disjoint_paths.c.o
+[ 23%] Building CXX object src/max_flow/CMakeFiles/max_flow.dir/max_flow_driver.cpp.o
+[ 24%] Building C object src/ksp/CMakeFiles/ksp.dir/turnRestrictedPath.c.o
+make[2]: *** [src/bdDijkstra/CMakeFiles/bdDijkstra.dir/build.make:90: src/bdDijkstra/CMakeFiles/bdDijkstra.dir/bdDijkstra_driver.cpp.o] Interrupt
+make[2]: *** [src/trsp/CMakeFiles/trsp.dir/build.make:90: src/trsp/CMakeFiles/trsp.dir/trspHandler.cpp.o] Interrupt
+make[2]: *** [src/max_flow/CMakeFiles/max_flow.dir/build.make:132: src/max_flow/CMakeFiles/max_flow.dir/max_flow_driver.cpp.o] Interrupt
+make[1]: *** [CMakeFiles/Makefile2:3047: src/bdDijkstra/CMakeFiles/bdDijkstra.dir/all] Interrupt
+make[1]: *** [CMakeFiles/Makefile2:3073: src/trsp/CMakeFiles/trsp.dir/all] Interrupt
+make[1]: *** [CMakeFiles/Makefile2:3099: src/max_flow/CMakeFiles/max_flow.dir/all] Interrupt
+make[2]: *** [src/ksp/CMakeFiles/ksp.dir/build.make:132: src/ksp/CMakeFiles/ksp.dir/turnRestrictedPath.c.o] Interrupt
+make[1]: *** [CMakeFiles/Makefile2:2969: src/ksp/CMakeFiles/ksp.dir/all] Interrupt
+make: *** [Makefile:136: all] Interrupt
+bash: run.sh: No such file or directory
