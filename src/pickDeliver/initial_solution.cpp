@@ -81,7 +81,7 @@ Initial_solution::do_while_foo(int kind) {
     Identifiers<size_t> notused;
 
     while (!m_unassigned.empty()) {
-        auto current = m_unassigned.size();
+       const auto current = m_unassigned.size();
         auto truck = trucks.get_truck(m_unassigned.front());
         /*
          * kind 1 to 7 work with the same code structure
