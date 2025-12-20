@@ -6,7 +6,10 @@ Checks: >
     cppcoreguidelines-avoid-capturing-lambda-coroutines,
     cppcoreguidelines-avoid-goto,
     cppcoreguidelines-avoid-non-const-global-variables,
-    cppcoreguidelines-avoid-reference-coroutine-parameters
+    cppcoreguidelines-avoid-reference-coroutine-parameters,
+    # Task 4: Check that all variables are initialized before use
+    cppcoreguidelines-init-variables
+#added more check as per task 4
 
 WarningsAsErrors: ''
 HeaderFilterRegex: './include'
