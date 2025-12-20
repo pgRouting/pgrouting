@@ -67,7 +67,7 @@ class TrspHandler : public pgrouting::Pgr_messages {
      *
      * The "legal" values are indices to vectors
      */
-    enum Position {ILLEGAL = -1, RC_EDGE = 0, C_EDGE = 1};
+    enum class Position {ILLEGAL = -1, RC_EDGE = 0, C_EDGE = 1};
 
 
     class Predecessor {
@@ -75,14 +75,14 @@ class TrspHandler : public pgrouting::Pgr_messages {
          Predecessor() :
              e_idx(2),
              v_pos(2) {
-             for (auto &p : v_pos) p = ILLEGAL;
+             for (auto &p : v_pos) p = Position::ILLEGAL;
          }
 
-         bool isIllegal(size_t i) {return v_pos[i] == ILLEGAL;}
+         bool isIllegal(size_t i) {return v_pos[i] == Position::ILLEGAL;}
          bool isIllegal(Position i) {
-             pgassert(i != ILLEGAL);
-             if (i == ILLEGAL) return true;
-             return v_pos[static_cast<size_t>(i)] == ILLEGAL;}
+             pgassert(i != Position::ILLEGAL);
+             if (i == Position::ILLEGAL) return true;
+             return v_pos[static_cast<size_t>(i)] == Position::ILLEGAL;}
 
          std::vector<size_t> e_idx;
          std::vector<Position> v_pos;

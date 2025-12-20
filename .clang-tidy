@@ -6,9 +6,11 @@ Checks: >
     cppcoreguidelines-avoid-capturing-lambda-coroutines,
     cppcoreguidelines-avoid-goto,
     cppcoreguidelines-avoid-non-const-global-variables,
-    cppcoreguidelines-avoid-reference-coroutine-parameters
+    cppcoreguidelines-avoid-reference-coroutine-parameters,
+    cppcoreguidelines-use-enum-class
 
 WarningsAsErrors: ''
 HeaderFilterRegex: './include'
 FormatStyle:     none
 InheritParentConfig: true
+
