@@ -161,15 +161,15 @@ pgr_do_dijkstra(
         }
         hint = nullptr;
 
-        size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
-        std::deque<Path>paths;
+        size_t n{0};
+        n = (n_goals <= 0) ? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
 
         if (directed) {
-            pgrouting::DirectedGraph graph;
+            pgrouting::DirectedGraph graph{};
             graph.insert_edges(edges);
             paths =  pgrouting::algorithms::dijkstra(graph, combinations, only_cost, n);
         } else {
-            pgrouting::UndirectedGraph graph;
+            pgrouting::UndirectedGraph graph{};
             graph.insert_edges(edges);
             paths =  pgrouting::algorithms::dijkstra(graph, combinations, only_cost, n);
         }
