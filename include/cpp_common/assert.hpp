@@ -143,9 +143,14 @@ class AssertFailedException : public std::exception {
      const std::string str;   ///< Holds what() we got as message
 
  public:
-     virtual const char *what() const throw();
+     const char *what() const throw() override;
      explicit AssertFailedException(std::string msg);
-     virtual ~AssertFailedException() throw() {}
+     /**
+ * @brief Destroys the AssertFailedException.
+ *
+ * Ensures any resources owned by the exception object are released.
+ */
+~AssertFailedException() throw() override {}
 };
 
 #endif  //  INCLUDE_CPP_COMMON_ASSERT_HPP_
