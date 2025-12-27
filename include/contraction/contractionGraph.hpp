@@ -437,7 +437,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
         int64_t p_max = 0;
         E e, f;
         bool found_e = false;
-        p_max = 0;
         boost::tie(e, found_e) = boost::edge(u, v, this->graph);
 
         if (found_e) {
