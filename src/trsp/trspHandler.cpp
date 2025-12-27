@@ -232,7 +232,7 @@ void TrspHandler::explore(
         int64_t cur_node,
         const EdgeInfo cur_edge,
         bool isStart) {
-    double totalCost;
+    double totalCost = NAN;
 
     auto vecIndex = cur_edge.get_idx(isStart);
 

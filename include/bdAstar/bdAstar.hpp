@@ -156,7 +156,7 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
 
         double dx = graph[v].x() - graph[u].x();
         double dy = graph[v].y() - graph[u].y();
-        double current;
+        double current = 0;
 
         switch (m_heuristic) {
             case 0:

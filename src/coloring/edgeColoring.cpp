@@ -84,7 +84,7 @@ Pgr_edgeColoring::Pgr_edgeColoring(const std::vector<Edge_t> &edges) {
     /*
      * Inserting edges
      */
-    bool added;
+    bool added = false;
     for (const auto &edge : edges) {
         auto v1 = get_boost_vertex(edge.source);
         auto v2 = get_boost_vertex(edge.target);

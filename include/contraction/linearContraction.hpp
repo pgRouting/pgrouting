@@ -108,7 +108,7 @@ class Pgr_linear {
          pgassert(u != w);
 
          E e, f;
-         bool found_e, found_f;
+         bool found_e = false, found_f = false;
 
          if (graph.is_directed()) {
              /*
