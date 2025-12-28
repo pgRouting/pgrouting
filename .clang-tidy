@@ -9,6 +9,7 @@ Checks: >
     cppcoreguidelines-avoid-reference-coroutine-parameters,
     cppcoreguidelines-init-variables,
 
+    
 WarningsAsErrors: ''
 HeaderFilterRegex: './include'
 FormatStyle:     none
