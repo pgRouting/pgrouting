@@ -401,7 +401,7 @@ Pg_points_graph::create_new_edges() {
                 Edge_t zero_edge = {edge.id, edge.target, -point.pid, 0, 0};
                 m_new_edges.push_back(zero_edge);
 
-                // Issue #2966 fix: Also create edge from prev_target to this point
+                // Also create edge from previous target to this point
                 // This allows Dijkstra to find the direct path through this edge
                 double delta = point.fraction - prev_fraction;
                 if (delta > 0) {
@@ -442,6 +442,7 @@ Pg_points_graph::create_new_edges() {
                     prev_rfraction = point.fraction;
                     agg_rcost += last_rcost;
                 }
+                continue;
             }
             if (point.fraction > 0 &&  point.fraction < 1) {
                 log << "vertex_id of the point is " << -point.pid << "\n";
