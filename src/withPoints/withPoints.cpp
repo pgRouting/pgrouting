@@ -397,8 +397,51 @@ Pg_points_graph::create_new_edges() {
             if (point.fraction == 1) {
                 log << "point's vertex_id = target" << edge.target << "\n";
                 point.vertex_id = -point.pid;
-                Edge_t new_edge = {edge.id, edge.target, -point.pid, 0, 0};
-                m_new_edges.push_back(new_edge);
+                // Zero-cost edge connecting target node to point (they're at same location)
+                Edge_t zero_edge = {edge.id, edge.target, -point.pid, 0, 0};
+                m_new_edges.push_back(zero_edge);
+
+                // Issue #2966 fix: Also create edge from prev_target to this point
+                // This allows Dijkstra to find the direct path through this edge
+                double delta = point.fraction - prev_fraction;
+                if (delta > 0) {
+                    if (edge.cost >= 0) {
+                        double cost_to_point = delta * edge.cost;
+                        Edge_t cost_edge = {
+                            edge.id,
+                            prev_target,
+                            point.vertex_id,
+                            cost_to_point,
+                            -1};
+                        m_new_edges.push_back(cost_edge);
+                        last_cost = cost_to_point;
+                        log << "Issue2966 fix: new_edge("
+                            << "id, source, target, cost, reverse_cost) = ("
+                            << cost_edge.id << "\t"
+                            << cost_edge.source << "\t"
+                            << cost_edge.target << "\t"
+                            << cost_edge.cost << "\t"
+                            << cost_edge.reverse_cost << ")\n";
+                    }
+                    if (edge.reverse_cost >= 0) {
+                        double rcost_to_point = delta * edge.reverse_cost;
+                        Edge_t rcost_edge = {
+                            edge.id,
+                            prev_rtarget,
+                            point.vertex_id,
+                            -1,
+                            rcost_to_point};
+                        m_new_edges.push_back(rcost_edge);
+                        last_rcost = rcost_to_point;
+                    }
+                    // Update tracking variables
+                    prev_target = point.vertex_id;
+                    prev_fraction = point.fraction;
+                    agg_cost += last_cost;
+                    prev_rtarget = point.vertex_id;
+                    prev_rfraction = point.fraction;
+                    agg_rcost += last_rcost;
+                }
             }
             if (point.fraction > 0 &&  point.fraction < 1) {
                 log << "vertex_id of the point is " << -point.pid << "\n";

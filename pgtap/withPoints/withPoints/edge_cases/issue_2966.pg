@@ -1,0 +1,102 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2025  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+
+/*
+ * Issue #2966: pgr_withPoints does not pick optimal route when fraction = 1
+ * https://github.com/pgRouting/pgrouting/issues/2966
+ */
+
+BEGIN;
+
+SET extra_float_digits=-3;
+
+SELECT CASE WHEN min_version('3.8.0') THEN plan(4) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION issue_2966_tests()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('3.8.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_withPoints: Issue 2966 test requires 3.8.0+');
+    RETURN;
+  END IF;
+
+  CREATE TEMP TABLE test_edges AS
+  SELECT * FROM (VALUES
+    (100::BIGINT, 1001::BIGINT, 1002::BIGINT, 10::FLOAT, 10::FLOAT),
+    (101::BIGINT, 1002::BIGINT, 1003::BIGINT, 12::FLOAT, 12::FLOAT),
+    (102::BIGINT, 1002::BIGINT, 1003::BIGINT, 100::FLOAT, 100::FLOAT)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  -- Test 1: fraction = 0.99 should work correctly (baseline)
+  RETURN QUERY SELECT set_eq(
+    $$SELECT round(agg_cost::numeric, 2)::TEXT FROM pgr_withPoints(
+      'SELECT * FROM test_edges',
+      'SELECT * FROM (VALUES (1, 100, 0.5), (2, 101, 0.99)) AS t(pid, edge_id, fraction)',
+      -1, -2
+    ) WHERE edge < 0$$,
+    ARRAY['16.88']::TEXT[],
+    'Issue 2966: fraction=0.99 should route correctly (baseline test)'
+  );
+
+  -- Test 2: fraction = 1 should ALSO work correctly
+  -- BUG: Currently returns 105 instead of 17
+  RETURN QUERY SELECT set_eq(
+    $$SELECT agg_cost::TEXT FROM pgr_withPoints(
+      'SELECT * FROM test_edges',
+      'SELECT * FROM (VALUES (1, 100, 0.5), (2, 101, 1)) AS t(pid, edge_id, fraction)',
+      -1, -2
+    ) WHERE edge < 0$$,
+    ARRAY['17']::TEXT[],
+    'Issue 2966: fraction=1 should route via cheaper edge 101 (cost 17, not 105)'
+  );
+
+  -- Test 3: Verify the path goes through edge 101, not edge 102
+  RETURN QUERY SELECT set_eq(
+    $$SELECT edge::TEXT FROM pgr_withPoints(
+      'SELECT * FROM test_edges',
+      'SELECT * FROM (VALUES (1, 100, 0.5), (2, 101, 1)) AS t(pid, edge_id, fraction)',
+      -1, -2
+    ) WHERE edge > 0$$,
+    ARRAY['100', '101']::TEXT[],
+    'Issue 2966: Path should use edges 100 and 101 (not 102)'
+  );
+
+  -- Test 4: fraction = 0 case (control test)
+  RETURN QUERY SELECT set_eq(
+    $$SELECT agg_cost::TEXT FROM pgr_withPoints(
+      'SELECT * FROM test_edges',
+      'SELECT * FROM (VALUES (1, 100, 0.5), (2, 101, 0)) AS t(pid, edge_id, fraction)',
+      -1, -2
+    ) WHERE edge < 0$$,
+    ARRAY['5']::TEXT[],
+    'Control test: fraction=0 should work (cost = 5 to reach start of edge 101)'
+  );
+
+  DROP TABLE test_edges;
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT issue_2966_tests();
+
+SELECT * FROM finish();
+ROLLBACK;
