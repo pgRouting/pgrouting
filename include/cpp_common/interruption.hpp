@@ -80,13 +80,14 @@ extern "C" {
 #endif
 
     /* Service interrupt, if one is pending and it's safe to service it now */
-#define CHECK_FOR_INTERRUPTS() \
-    do { \
-        if (INTERRUPTS_PENDING_CONDITION()) \
-        ProcessInterrupts(); \
-    } while (0)
 #endif
 
+}
+
+static inline void CHECK_FOR_INTERRUPTS() {
+    if (INTERRUPTS_PENDING_CONDITION()) {
+        ProcessInterrupts();
+    }
 }
 
 #include "cpp_common/undefPostgresDefine.hpp"
