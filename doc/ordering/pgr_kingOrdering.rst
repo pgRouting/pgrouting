@@ -16,7 +16,7 @@
 ``pgr_kingOrdering`` - Experimental
 ===============================================================================
 
-``pgr_kingOrdering`` — Returns the King ordering of an undirected graph.
+``pgr_kingOrdering`` — Returns the reverse King ordering of an undirected graph.
 
 .. include:: experimental.rst
    :start-after: warning-begin
@@ -25,6 +25,7 @@
 .. rubric:: Version 4.0.0
 
 * New experimental function.
+
 
 Description
 -------------------------------------------------------------------------------
