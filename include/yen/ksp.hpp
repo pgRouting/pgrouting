@@ -68,6 +68,10 @@ class Pgr_ksp :  public Pgr_messages {
      ~Pgr_ksp() {
          delete m_vis;
      }
+     Pgr_ksp(const Pgr_ksp&) = delete;
+     Pgr_ksp& operator=(const Pgr_ksp&) = delete;
+     Pgr_ksp(Pgr_ksp&&) = delete;
+     Pgr_ksp& operator=(Pgr_ksp&&) = delete;
 
      std::deque<Path> Yen(
              G &graph,
@@ -121,7 +125,13 @@ class Pgr_ksp :  public Pgr_messages {
 
      class Visitor {
       public:
+          Visitor() = default;
           virtual ~Visitor() {}
+
+     Visitor(const Visitor&) = delete;
+     Visitor& operator=(const Visitor&) = delete;
+     Visitor(Visitor&&) = delete;
+     Visitor& operator=(Visitor&&) = delete;
 
          virtual void on_insert_first_solution(const Path) const {
              /* noop */

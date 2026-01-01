@@ -79,6 +79,11 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
 
      ~Pgr_bdDijkstra() = default;
 
+    Pgr_bdDijkstra(const Pgr_bdDijkstra&) = default;
+    Pgr_bdDijkstra& operator=(const Pgr_bdDijkstra&) = default;
+    Pgr_bdDijkstra(Pgr_bdDijkstra&&) = default;
+    Pgr_bdDijkstra& operator=(Pgr_bdDijkstra&&) = default;
+
      Path pgr_bdDijkstra(V start_vertex, V end_vertex, bool only_cost) {
          m_log << "pgr_bdDijkstra\n";
          v_source = start_vertex;

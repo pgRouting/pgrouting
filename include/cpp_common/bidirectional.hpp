@@ -79,6 +79,12 @@ class Pgr_bidirectional {
     }
 
     ~Pgr_bidirectional() = default;
+ 
+    Pgr_bidirectional(const Pgr_bidirectional&) = delete;
+    Pgr_bidirectional& operator=(const Pgr_bidirectional&) = delete;
+    Pgr_bidirectional(Pgr_bidirectional&&) = delete;
+    Pgr_bidirectional& operator=(Pgr_bidirectional&&) = delete;
+
 
     std::string log() const {return m_log.str();}
     void clean_log() {m_log.clear();}

@@ -61,6 +61,11 @@ class PgrDirectedChPPGraph {
      }
 
       ~PgrDirectedChPPGraph();
+       
+    PgrDirectedChPPGraph(const PgrDirectedChPPGraph&) = delete;
+    PgrDirectedChPPGraph& operator=(const PgrDirectedChPPGraph&) = delete;
+    PgrDirectedChPPGraph(PgrDirectedChPPGraph&&) = delete;
+    PgrDirectedChPPGraph& operator=(PgrDirectedChPPGraph&&) = delete;
 
 
  private:

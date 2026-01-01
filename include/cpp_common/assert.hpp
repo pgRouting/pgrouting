@@ -139,13 +139,19 @@ std::string get_backtrace(const std::string &);
  * @brief Extends std::exception and is the exception that we throw if an assert fails.
  */
 class AssertFailedException : public std::exception {
- private:
-     const std::string str;   ///< Holds what() we got as message
+private:
+    const std::string str;   ///< Holds what() we got as message
 
- public:
-     const char *what() const noexcept override;
-     explicit AssertFailedException(std::string msg);
-     ~AssertFailedException() noexcept override {}
+public:
+    explicit AssertFailedException(std::string msg);
+    const char* what() const noexcept override;
+    ~AssertFailedException() noexcept override = default;
+
+    AssertFailedException(const AssertFailedException&) = default;
+    AssertFailedException(AssertFailedException&&) = default;
+    AssertFailedException& operator=(const AssertFailedException&) = delete;  // cannot assign const member
+    AssertFailedException& operator=(AssertFailedException&&) = delete;       // cannot assign const member
 };
+
 
 #endif  //  INCLUDE_CPP_COMMON_ASSERT_HPP_

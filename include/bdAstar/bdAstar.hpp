@@ -79,6 +79,11 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
     }
 
     ~Pgr_bdAstar() = default;
+       
+    Pgr_bdAstar(const Pgr_bdAstar&) = default;
+    Pgr_bdAstar& operator=(const Pgr_bdAstar&) = default;
+    Pgr_bdAstar(Pgr_bdAstar&&) = default;
+    Pgr_bdAstar& operator=(Pgr_bdAstar&&) = default;
 
     Path pgr_bdAstar(V start_vertex, V end_vertex,
             int heuristic,

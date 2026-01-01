@@ -62,6 +62,10 @@ class Fleet {
      /*!@}*/
 
      Fleet& operator=(const Fleet &fleet);
+~Fleet() = default;           // add destructor
+Fleet(Fleet&&) noexcept = default;            // enable move constructor
+Fleet& operator=(Fleet&&) noexcept = default; // enable move assignment
+
 
      void set_compatibles(const PD_Orders &orders);
 

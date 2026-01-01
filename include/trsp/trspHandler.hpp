@@ -115,6 +115,12 @@ class TrspHandler : public pgrouting::Pgr_messages {
 
     ~TrspHandler(void) = default;
 
+    TrspHandler(const TrspHandler&) = delete;
+    TrspHandler& operator=(const TrspHandler&) = delete;
+    TrspHandler(TrspHandler&&) = delete;
+    TrspHandler& operator=(TrspHandler&&) = delete;
+
+
     std::deque<Path> process(const std::map<int64_t, std::set<int64_t>>&);
 
     void clear();

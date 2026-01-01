@@ -61,6 +61,19 @@ class Line_vertex {
          source(v.source),
          target(v.target),
          cost(v.cost) {}
+ Line_vertex& operator=(const Line_vertex &v) {
+        cp_members(v);
+        return *this;
+    }
+
+
+    // Destructor
+    ~Line_vertex() = default;
+
+    // Delete move operations
+    Line_vertex(Line_vertex&&) = delete;
+    Line_vertex& operator=(Line_vertex&&) = delete;
+
 
      void cp_members(const Line_vertex &other) {
          this->id = other.id;
