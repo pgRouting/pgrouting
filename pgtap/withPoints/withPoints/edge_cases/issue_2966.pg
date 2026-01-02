@@ -26,15 +26,15 @@ BEGIN;
 
 SET extra_float_digits=-3;
 
-SELECT CASE WHEN min_version('3.8.0') THEN plan(4) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.1.0') THEN plan(4) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION issue_2966_tests()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF NOT min_version('3.8.0') THEN
-    RETURN QUERY SELECT skip(1, 'pgr_withPoints: Issue 2966 test requires 3.8.0+');
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_withPoints: Issue 2966 test requires 4.1.0+');
     RETURN;
   END IF;
 
@@ -56,8 +56,7 @@ BEGIN
     'Issue 2966: fraction=0.99 should route correctly (baseline test)'
   );
 
-  -- Test 2: fraction = 1 should ALSO work correctly
-  -- Regression test: previously returned 105 instead of 17
+  -- Test 2: fraction = 1 should ALSO work correctly (regression for issue 2966, which previously returned 105 instead of 17)
   RETURN QUERY SELECT set_eq(
     $$SELECT agg_cost::TEXT FROM pgr_withPoints(
       'SELECT * FROM test_edges',
