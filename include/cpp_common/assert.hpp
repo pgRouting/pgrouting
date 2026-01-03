@@ -143,9 +143,9 @@ class AssertFailedException : public std::exception {
      const std::string str;   ///< Holds what() we got as message
 
  public:
-     virtual const char *what() const throw();
+     const char *what() const noexcept override;
      explicit AssertFailedException(std::string msg);
-     virtual ~AssertFailedException() throw() {}
+     ~AssertFailedException() noexcept override {}
 };
 
 #endif  //  INCLUDE_CPP_COMMON_ASSERT_HPP_
