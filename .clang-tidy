@@ -8,6 +8,7 @@ Checks: >
     cppcoreguidelines-avoid-non-const-global-variables,
     cppcoreguidelines-avoid-reference-coroutine-parameters,
     cppcoreguidelines-avoid-magic-numbers,
+    cppcoreguidelines-init-variables
 
 WarningsAsErrors: ''
 HeaderFilterRegex: './include'

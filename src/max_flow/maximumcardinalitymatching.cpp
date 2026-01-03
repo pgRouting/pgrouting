@@ -78,7 +78,7 @@ maxCardinalityMatch(pgrouting::graph::UndirectedNoCostsBG &graph) {
         if (v1 >= v2) continue;
 
         E e;
-        bool exists;
+        bool exists = false;
         boost::tie(e, exists) = boost::edge(v1, v2, graph());
         if (!exists) throw;
 

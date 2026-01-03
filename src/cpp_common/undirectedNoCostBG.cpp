@@ -49,9 +49,9 @@ UndirectedNoCostsBG::UndirectedNoCostsBG(const std::vector<Edge_bool_t> &edges) 
     for (const auto edge : edges) {
         V v1 = get_boost_vertex(edge.source);
         V v2 = get_boost_vertex(edge.target);
-        E e;
-        bool added;
         if (edge.going) {
+            E e;
+            bool added = false;
             boost::tie(e, added) = boost::add_edge(v1, v2, graph);
             if (added) E_to_id.insert(std::pair<E, int64_t>(e, edge.id));
         }

@@ -224,8 +224,8 @@ void fetch_column_info(
 char getChar(
         const HeapTuple tuple, const TupleDesc &tupdesc, const pgrouting::Column_info_t &info,
         bool strict, char default_value) {
-    Datum binval;
-    bool isNull;
+    Datum binval = 0;
+    bool isNull = false;
     char value = default_value;
 
     binval = SPI_getbinval(tuple, tupdesc, info.colNumber, &isNull);
@@ -274,9 +274,9 @@ get_pgset(ArrayType *v) {
     auto    nitems = ArrayGetNItems(ndim, dim);
     Datum  *elements = nullptr;
     bool   *nulls = nullptr;
-    int16   typlen;
-    bool    typbyval;
-    char    typalign;
+    int16   typlen = 0;
+    bool    typbyval = false;
+    char    typalign = 0;
 
 
     if (ndim == 0 || nitems <= 0) {
@@ -359,9 +359,9 @@ get_pgarray(ArrayType *v, bool allow_empty) {
     auto    nitems = ArrayGetNItems(ndim, dim);
     Datum  *elements = nullptr;
     bool   *nulls = nullptr;
-    int16   typlen;
-    bool    typbyval;
-    char    typalign;
+    int16   typlen = 0;
+    bool    typbyval = false;
+    char    typalign = 0;
 
 
     if (allow_empty && (ndim == 0 || nitems <= 0)) {
@@ -451,9 +451,9 @@ get_array(ArrayType *v, size_t *arrlen, bool allow_empty) {
     auto    nitems = ArrayGetNItems(ndim, dim);
     Datum  *elements = nullptr;
     bool   *nulls = nullptr;
-    int16   typlen;
-    bool    typbyval;
-    char    typalign;
+    int16   typlen = 0;
+    bool    typbyval = false;
+    char    typalign = 0;
 
 
     if (allow_empty && (ndim == 0 || nitems <= 0)) {
@@ -556,8 +556,8 @@ int64_t* getBigIntArr(
  */
 int64_t getBigInt(
         const HeapTuple tuple, const TupleDesc &tupdesc, const pgrouting::Column_info_t &info) {
-    Datum binval;
-    bool isnull;
+    Datum binval = 0;
+    bool isnull = false;
     int64_t value = 0;
     binval = SPI_getbinval(tuple, tupdesc, info.colNumber, &isnull);
     if (isnull) {
@@ -589,7 +589,7 @@ int64_t getBigInt(
  */
 double getFloat8(
         const HeapTuple tuple, const TupleDesc &tupdesc, const pgrouting::Column_info_t &info) {
-    Datum binval;
+    Datum binval = 0;
     bool isnull = false;
     binval = SPI_getbinval(tuple, tupdesc, info.colNumber, &isnull);
     if (isnull) {

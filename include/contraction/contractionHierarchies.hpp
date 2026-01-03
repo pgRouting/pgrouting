@@ -129,7 +129,7 @@ void compute_shortcuts(
         for (const auto &w : out_vertices) {
             if ( u != w ) {
                 typename G::E e, f, g;
-                bool found_e, found_f, found_g;
+                bool found_e = false, found_f = false, found_g = false;
                 boost::tie(e, found_e) = boost::edge(u, v, graph.graph);
                 boost::tie(f, found_f) = boost::edge(v, w, graph.graph);
                 boost::tie(g, found_g) = boost::edge(u, w, graph.graph);
@@ -170,7 +170,7 @@ int64_t vertex_contraction(
 ) {
     Identifiers<typename G::V> adjacent_in_vertices;
     Identifiers<typename G::V> adjacent_out_vertices;
-    int64_t n_old_edges;
+    int64_t n_old_edges = 0;
     std::vector<typename G::E> shortcut_edges;
 
     if (directed) {
@@ -225,7 +225,7 @@ int64_t vertex_contraction(
         << " shortcuts created, " << n_old_edges
         << " old edges" << std::endl;
 
-    int64_t m;
+    int64_t m = 0;
     m = static_cast<int64_t>(shortcut_edges.size())
       - static_cast<int64_t>(n_old_edges);
     log << "  Metric: edge difference = " << shortcut_edges.size()
