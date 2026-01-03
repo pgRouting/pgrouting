@@ -194,7 +194,7 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E, t_directed> {
                 const T &target,
                 int64_t source_in_edge,
                 int64_t source_out_edge) {
-            bool inserted;
+            bool inserted = false;
             E e;
 
             pgassert(m_vertex_map.find({source, source_in_edge}) !=

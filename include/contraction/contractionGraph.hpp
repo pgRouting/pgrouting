@@ -182,7 +182,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
        */
 
       bool add_shortcut(const CH_edge &edge, V u, V v) {
-         bool inserted;
+         bool inserted = false;
          E e;
          if (edge.cost < 0) return false;
 
@@ -395,7 +395,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
         V u, V v, V w,
         std::vector<E> &shortcuts,
         std::ostringstream &log) {
-        bool found_e;
+        bool found_e = false;
         E e;
 
         boost::tie(e, found_e) = boost::edge(u, w, this->graph);
@@ -423,7 +423,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
             shortcut.add_contracted_edge_vertices(std::get<0>(e2));
 
             // Add shortcut in the current graph (to go on the process)
-            bool inserted;
+            bool inserted = false;
             E s;
             boost::tie(s, inserted) = boost::add_edge(u, w, this->graph);
             this->graph[s]= shortcut;
@@ -434,16 +434,15 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
     /*! @brief computes p_max used in the contraction hierarchies method
     */
     int64_t compute_pmax(V u, V v, Identifiers<V> out_vertices) {
-        int64_t p_max;
+        int64_t p_max = 0;
         E e, f;
-        bool found_e;
-        p_max = 0;
+        bool found_e = false;
         boost::tie(e, found_e) = boost::edge(u, v, this->graph);
 
         if (found_e) {
             p_max = this->graph[e].cost;
             for (V w : out_vertices) {
-                bool found_f;
+                bool found_f = false;
                 boost::tie(f, found_f) = boost::edge(v, w, this->graph);
                 if ((found_f) && (u != w)) {
                     if ((this->graph[e].cost + this->graph[f].cost) > p_max) {
