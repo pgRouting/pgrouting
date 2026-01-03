@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 std::string get_backtrace() {
 #ifdef __GLIBC__
         void *trace[16];
-        int i, trace_size = 0;
+        int i = 0, trace_size = 0;
 
         trace_size = backtrace(trace, 16);
         char** funcNames = backtrace_symbols(trace, trace_size);

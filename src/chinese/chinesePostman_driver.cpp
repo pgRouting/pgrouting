@@ -79,7 +79,7 @@ pgr_do_directedChPP(
 
         pgrouting::graph::PgrDirectedChPPGraph digraph(edges);
 
-        double minCost;
+        double minCost = NAN;
         minCost = digraph.DirectedChPP();
 
         std::vector<Path_rt> pathEdges;

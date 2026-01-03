@@ -709,7 +709,7 @@ class Pgr_base_graph {
          auto u = get_V(edge.source);
          auto v = get_V(edge.target);
          if (edge.cost >= 0) {
-             bool inserted;
+             bool inserted = false;
              boost::tie(e, inserted) = boost::add_edge(u, v, graph);
              graph[e].cp_members(edge);
          }
@@ -730,7 +730,7 @@ class Pgr_base_graph {
      /**@}*/
 
      template <typename T> void graph_add_edge(const T &edge, bool normal) {
-         bool inserted;
+         bool inserted = false;
          E e;
          if ((edge.cost < 0) && (edge.reverse_cost < 0)) return;
 
@@ -761,7 +761,7 @@ class Pgr_base_graph {
      }
 
      template <typename T> void graph_add_min_edge_no_parallel(const T &edge) {
-         bool inserted;
+         bool inserted = false;
          E e;
          if ((edge.cost < 0) && (edge.reverse_cost < 0)) return;
 
@@ -776,7 +776,7 @@ class Pgr_base_graph {
          pgassert(vertices_map.find(edge.target) != vertices_map.end());
          if (edge.cost >= 0) {
              E e1;
-             bool found;
+             bool found = false;
              boost::tie(e1, found) = boost::edge(vm_s, vm_t, graph);
              if (found) {
                  if (edge.cost < graph[e1].cost) {
@@ -793,7 +793,7 @@ class Pgr_base_graph {
          if (edge.reverse_cost >= 0
                  && (m_is_directed || (!m_is_directed && edge.cost != edge.reverse_cost))) {
              E e1;
-             bool found;
+             bool found = false;
              boost::tie(e1, found) = boost::edge(vm_t, vm_s, graph);
              if (found) {
                  if (edge.reverse_cost < graph[e1].cost) {
@@ -816,7 +816,7 @@ class Pgr_base_graph {
        To Do: Read and apply edges with negative cost in function as it is
        */
      template <typename T> void graph_add_neg_edge(const T &edge, bool normal = true) {
-         bool inserted;
+         bool inserted = false;
          E e;
 
          auto vm_s = get_V(T_V(edge, true));
