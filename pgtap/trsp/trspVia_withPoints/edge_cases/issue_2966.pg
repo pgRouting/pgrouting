@@ -51,7 +51,7 @@ BEGIN
       'SELECT * FROM test_edges',
       'SELECT path, cost FROM (SELECT ARRAY[1]::INTEGER[] as path, 0::FLOAT as cost WHERE false) AS t',
       'SELECT * FROM (VALUES (1, 100, 0.5), (2, 101, 1)) AS t(pid, edge_id, fraction)',
-      ARRAY[1, 2],
+      ARRAY[-1, -2]::BIGINT[],
       'b'
     ) WHERE edge < 0$$,
     ARRAY['17']::TEXT[],
@@ -64,7 +64,7 @@ BEGIN
       'SELECT * FROM test_edges',
       'SELECT path, cost FROM (SELECT ARRAY[1]::INTEGER[] as path, 0::FLOAT as cost WHERE false) AS t',
       'SELECT * FROM (VALUES (1, 100, 0.5), (2, 101, 1)) AS t(pid, edge_id, fraction)',
-      ARRAY[1, 2],
+      ARRAY[-1, -2]::BIGINT[],
       'b'
     ) WHERE edge > 0$$,
     ARRAY['100', '101']::TEXT[],

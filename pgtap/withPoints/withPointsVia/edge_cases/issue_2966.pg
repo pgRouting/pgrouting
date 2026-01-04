@@ -50,8 +50,8 @@ BEGIN
     $$SELECT agg_cost::TEXT FROM pgr_withPointsVia(
       'SELECT * FROM test_edges',
       'SELECT * FROM (VALUES (1, 100, 0.5), (2, 101, 1)) AS t(pid, edge_id, fraction)',
-      ARRAY[1, 2],
-      driving_side := 'b'
+      ARRAY[-1, -2]::BIGINT[],
+      'b'
     ) WHERE edge < 0$$,
     ARRAY['17']::TEXT[],
     'Issue 2966 (Via): fraction=1 should route correctly (cost 17, not 105)'
@@ -62,8 +62,8 @@ BEGIN
     $$SELECT edge::TEXT FROM pgr_withPointsVia(
       'SELECT * FROM test_edges',
       'SELECT * FROM (VALUES (1, 100, 0.5), (2, 101, 1)) AS t(pid, edge_id, fraction)',
-      ARRAY[1, 2],
-      driving_side := 'b'
+      ARRAY[-1, -2]::BIGINT[],
+      'b'
     ) WHERE edge > 0$$,
     ARRAY['100', '101']::TEXT[],
     'Issue 2966 (Via): Path should use edges 100 and 101'

@@ -407,30 +407,13 @@ Pg_points_graph::create_new_edges() {
                 if (delta > 0) {
                     if (edge.cost >= 0) {
                         double cost_to_point = delta * edge.cost;
-                        Edge_t cost_edge = {
-                            edge.id,
-                            prev_target,
-                            point.vertex_id,
-                            cost_to_point,
-                            -1};
+                        Edge_t cost_edge = {edge.id, prev_target, point.vertex_id, cost_to_point, -1};
                         m_new_edges.push_back(cost_edge);
                         last_cost = cost_to_point;
-                        log << "Issue2966 fix: new_edge("
-                            << "id, source, target, cost, reverse_cost) = ("
-                            << cost_edge.id << "\t"
-                            << cost_edge.source << "\t"
-                            << cost_edge.target << "\t"
-                            << cost_edge.cost << "\t"
-                            << cost_edge.reverse_cost << ")\n";
                     }
                     if (edge.reverse_cost >= 0) {
                         double rcost_to_point = delta * edge.reverse_cost;
-                        Edge_t rcost_edge = {
-                            edge.id,
-                            prev_rtarget,
-                            point.vertex_id,
-                            -1,
-                            rcost_to_point};
+                        Edge_t rcost_edge = {edge.id, prev_rtarget, point.vertex_id, -1, rcost_to_point};
                         m_new_edges.push_back(rcost_edge);
                         last_rcost = rcost_to_point;
                     }
