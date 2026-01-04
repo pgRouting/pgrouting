@@ -76,163 +76,108 @@ Summary of changes by function
 
 * pgr_aStar
 
-  
   * Combinations signature promoted to official.
-  
 
 * pgr_aStarCost
 
-  
   * Combinations signature promoted to official.
-  
 
 * pgr_bandwidth
 
-  
   * New experimental function.
-  
 
 * pgr_bdAstar
 
-  
   * Combinations signature promoted to official.
-  
 
 * pgr_bdAstarCost
 
-  
   * Combinations signature promoted to official.
-  
 
 * pgr_bdDijkstra
 
-  
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
   * Combinations signature promoted to official.
-  
 
 * pgr_bdDijkstraCost
 
-  
   * Combinations signature promoted to official.
-  
 
 * pgr_bellmanFord
 
-  
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
-  
 
 * pgr_binaryBreadthFirstSearch
 
-  
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
-  
 
 * pgr_bipartite
 
-  
   * Output columns standardized to ``(node, color)``
-  
 
 * pgr_boykovKolmogorov
 
-  
   * Combinations signature promoted to official.
-  
 
 * pgr_breadthFirstSearch
 
-  
   * Standardizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
-  
 
 * pgr_contraction
 
-  
   .. Breaking change
-  
   * Breaking change, signatures no longer available:
-  
     * pgr_contraction(text,bigint[],integer,bigint[],boolean)
-  
 
 * pgr_dagShortestPath
 
-  
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
-  
 
 * pgr_depthFirstSearch
 
-  
   * Standardizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
-  
 
 * pgr_dijkstra
 
-  
   * Combinations signature promoted to official.
-  
 
 * pgr_dijkstraCost
 
-  
   * Combinations signature promoted to official.
-  
 
 * pgr_dijkstraNear
 
-  
   * Function promoted to official.
-  
 
 * pgr_dijkstraNearCost
 
-  
   * Function promoted to official.
-  
 
 * pgr_dijkstraVia
 
-  
   * Function promoted to official.
-  
 
 * pgr_edgeColoring
 
-  
   * Output columns standardized to ``(edge, color)``
-  
 
 * pgr_edgeDisjointPaths
 
-  
   * Output columns standardized to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
   * Combinations signature promoted to official.
-  
 
 * pgr_edmondsKarp
 
-  
   * Combinations signature promoted to official.
-  
 
 * pgr_edwardMoore
 
-  
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
-  
   .. rubric:: Version 3.2.0
-  
   * New experimental signature:
-  
     * pgr_edwardMoore(Combinations)
-  
   .. rubric:: Version 3.0.0
-  
   * New experimental function.
-  
 
 * pgr_kingOrdering
 
@@ -240,239 +185,154 @@ Summary of changes by function
 
 * pgr_KSP
 
-  
   * All signatures promoted to official.
-  
 
 * pgr_maxCardinalityMatch
 
-  
   .. Breaking change
-  
   * Breaking change, signatures no longer available:
-  
     * pgr_maxCardinalityMatch(text,boolean)
-  
 
 * pgr_maxFlow
 
-  
   * Combinations signature promoted to official.
-  
 
 * pgr_pushRelabel
 
-  
   * Combinations signature promoted to official.
-  
 
 * pgr_sequentialVertexColoring
 
-  
   * Output columns standardized to ``(node, color)``
-  
 
 * pgr_sloanOrdering
 
-  
   * New experimental function.
-  
-  
 
 * pgr_topologicalSort
 
-  
   * Standardize output to ``(seq, node)``
-  
 
 * pgr_transitiveClosure
 
-  
   * Standardized output to ``(node,targets)``
-  
 
 * pgr_trsp
 
-  
   * Function promoted to official.
-  
   .. Breaking change
-  
   * Breaking change, signatures no longer available:
-  
     * pgr_trsp(text,integer,integer,boolean,boolean,text)
     * pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
-  
 
 * pgr_trspVia
 
-  
   * Function promoted to official.
-  
   .. Breaking change
-  
   * Breaking change, signatures no longer available:
-  
     * pgr_trspviavertices(text,anyarray,boolean,boolean,text)
-  
 
 * pgr_trspVia_withPoints
 
-  
   * Function promoted to official.
   * **Driving side** parameter is positional unnamed.
-  
     * Valid values depend on kind of graph
-  
   * Breaking change, signatures no longer available:
-  
     * pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)
     * pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
-  
-  
 
 * pgr_trsp_withPoints
 
-  
   * Function promoted to official.
   * **Driving side** parameter is positional unnamed and compulsory.
-  
     * Valid values depend on kind of graph
-  
   * Breaking change, signatures no longer available:
-  
     * pgr_trsp_withpoints(text,text,text,anyarray,anyarray,boolean,character,boolean)
     * pgr_trsp_withpoints(text,text,text,anyarray,bigint,boolean,character,boolean)
     * pgr_trsp_withpoints(text,text,text,bigint,anyarray,boolean,character,boolean)
     * pgr_trsp_withpoints(text,text,text,bigint,bigint,boolean,character,boolean)
     * pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)
-  
 
 * pgr_TSP
 
-  
   * Results change depending on input order
   * Only for undirected graphs
-  
   .. Breaking change
-  
   * Breaking change, signatures no longer available:
-  
     * pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double
       precision,double precision,double precision,boolean)
-  
 
 * pgr_TSPeuclidean
 
-  
   * Results change depending on input order
-  
   .. Breaking change
-  
   * Breaking change, signatures no longer available:
-  
     * pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,
       integer,double precision,double precision,double precision,boolean)
-  
 
 * pgr_turnRestrictedPath
 
-  
   * Output columns standardized to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
-  
 
 * pgr_withPoints
 
-  
   * Function promoted to official.
   * **Driving side** parameter is positional unnamed and compulsory.
-  
     * Valid values depend on kind of graph
-  
   * Output columns standardized to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
-  
   .. Breaking change
-  
   * Breaking change, signatures no longer available:
-  
     * pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)
     * pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean)
     * pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)
     * pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)
     * pgr_withpoints(text,text,text,boolean,character,boolean)
-  
 
 * pgr_withPointsCost
 
-  
   * Function promoted to official.
   * **Driving side** parameter is unnamed and compulsory.
-  
     * Valid values depend on kind of graph
-  
   * Output columns standardized to ``(start_vid, end_vid, agg_cost)``
   * Breaking change, signatures no longer available:
-  
     * pgr_withpointscost(text,text,anyarray,anyarray,boolean,character)
     * pgr_withpointscost(text,text,anyarray,bigint,boolean,character)
     * pgr_withpointscost(text,text,bigint,anyarray,boolean,character)
     * pgr_withpointscost(text,text,bigint,bigint,boolean,character)
     * pgr_withpointscost(text,text,text,boolean,character)
-  
-  
 
 * pgr_withPointsCostMatrix
 
-  
   * Function promoted to official.
   * **Driving side** parameter is positional unnamed and compulsory.
-  
     * Valid values depend on kind of graph
   * Output columns standardized to ``(start_vid, end_vid, agg_cost)``
   * Breaking change, signatures no longer available:
-  
     * pgr_withpointscostmatrix(text,text,anyarray,boolean,character)
-  
 
 * pgr_withPointsDD
 
-  
   * Function promoted to official.
-  
   .. Breaking change
-  
   * Breaking change, signatures no longer available:
-  
     * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
     * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
-  
 
 * pgr_withPointsKSP
 
-  
   * Function promoted to official.
-  
   .. Breaking change
-  
   * Breaking change, signatures no longer available:
-  
     * pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
-  
 
 * pgr_withPointsVia
 
-  
   * Function promoted to official.
   * **Driving side** parameter is positional unnamed and compulsory.
-  
     * Valid values depend on kind of graph
-  
   .. Breaking change
-  
   * Breaking change, signatures no longer available:
-  
     * pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
-  
 
 Functions promoted to official
 
@@ -568,32 +428,20 @@ Removal of SQL deprecated signatures
 
 * [#2798](https://github.com/pgRouting/pgrouting/issues/2798): pgr_contraction
 
-  
-  
     * pgr_contraction(text,bigint[],integer,bigint[],boolean)
-  
 
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683): pgr_trsp
 
-  
-  
     * pgr_trsp(text,integer,integer,boolean,boolean,text)
     * pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
-  
 
 * [#2683](https://github.com/pgRouting/pgrouting/issues/2683): pgr_trspVia
 
-  
-  
     * pgr_trspviavertices(text,anyarray,boolean,boolean,text)
-  
 
 * [#2700](https://github.com/pgRouting/pgrouting/issues/2700): pgr_withPointsVia
 
-  
-  
     * pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)
-  
 
 * [#2888](https://github.com/pgRouting/pgrouting/issues/2888): pgr_findCloseEdges
 
@@ -602,41 +450,26 @@ Removal of SQL deprecated signatures
 
 * [#2890](https://github.com/pgRouting/pgrouting/issues/2890): pgr_withPointsDD
 
-  
-  
     * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
     * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
-  
 
 * [#2895](https://github.com/pgRouting/pgrouting/issues/2895): pgr_withPointsKSP
 
-  
-  
     * pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)
-  
 
 * [#2899](https://github.com/pgRouting/pgrouting/issues/2899): pgr_maxCardinalityMatch
 
-  
-  
     * pgr_maxCardinalityMatch(text,boolean)
-  
 
 * [#2901](https://github.com/pgRouting/pgrouting/issues/2901): pgr_TSP
 
-  
-  
     * pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double
       precision,double precision,double precision,boolean)
-  
 
 * [#2901](https://github.com/pgRouting/pgrouting/issues/2901): pgr_TSPeuclidean
 
-  
-  
     * pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,
       integer,double precision,double precision,double precision,boolean)
-  
 
 
 Removal of SQL deprecated functions
