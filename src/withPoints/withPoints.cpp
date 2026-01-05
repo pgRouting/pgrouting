@@ -402,9 +402,9 @@ Pg_points_graph::create_new_edges() {
                 m_new_edges.push_back(zero_edge);
 
                 /*
-                 * Also create edge from previous target to this point
-                 * This allows Dijkstra to find the direct path through this edge
-                 */
+                   Also create edge from previous target to this point
+                   This allows Dijkstra to find the direct path through this edge
+                */
                 double delta = point.fraction - prev_fraction;
                 double rdelta = point.fraction - prev_rfraction;
                 if (delta > 0) {
