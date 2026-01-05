@@ -28,57 +28,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
-
 #include "c_common/postgres_connection.h"
-#include "c_types/i_rt.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "drivers/ordering/topologicalSort_driver.h"
+
+#include "process/ordering_process.h"
 
 PGDLLEXPORT Datum _pgr_topologicalsort(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_topologicalsort);
 
-static
-void
-process(
-        char* edges_sql,
-        I_rt **result_tuples,
-        size_t *result_count) {
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-
-    clock_t start_t = clock();
-    pgr_do_topologicalSort(
-            edges_sql,
-            result_tuples,
-            result_count,
-            &log_msg,
-            &notice_msg,
-            &err_msg);
-
-    time_msg("processing pgr_topologicalSort", start_t, clock());
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
-
 PGDLLEXPORT Datum
 _pgr_topologicalsort(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    TupleDesc            tuple_desc;
+    TupleDesc           tuple_desc;
 
-    I_rt *result_tuples = NULL;
+    int64_t *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -86,13 +52,13 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        process(
+        pgr_process_ordering(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                11, /* Topological sort */
                 &result_tuples,
                 &result_count);
 
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -108,26 +74,25 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (I_rt*) funcctx->user_fctx;
+    result_tuples = (int64_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
         bool*        nulls;
-        size_t       call_cntr = funcctx->call_cntr;
 
-        size_t numb = 2;
-        values = palloc(numb * sizeof(Datum));
-        nulls = palloc(numb * sizeof(bool));
+        size_t num  = 2;
+        values = palloc(num * sizeof(Datum));
+        nulls = palloc(num * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < numb; ++i) {
+        for (i = 0; i < num; ++i) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].id);
+        values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr]);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
