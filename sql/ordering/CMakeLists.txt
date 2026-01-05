@@ -5,6 +5,8 @@ set(LOCAL_FILES
     sloanOrdering.sql
     _kingOrdering.sql
     kingOrdering.sql
+    _topologicalSort.sql
+    topologicalSort.sql
     )
 
 foreach (f ${LOCAL_FILES})
