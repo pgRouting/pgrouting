@@ -32,54 +32,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <vector>
-#include <limits>
-#include <iterator>
-#include <utility>
-#include <string>
-
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/property_map/property_map.hpp>
-
-
 #include "cpp_common/base_graph.hpp"
-#include "cpp_common/interruption.hpp"
-#include <boost/graph/king_ordering.hpp>
 
 
-namespace pgrouting  {
+namespace pgrouting {
+namespace functions {
 
-template <class G>
-std::vector<int64_t>
-kingOrdering(G &graph) {
-    using V = typename G::V;
+std::vector<pgrouting::UndirectedGraph::V>
+kingOrdering(pgrouting::UndirectedGraph &graph);
 
-    size_t n = boost::num_vertices(graph.graph);
-    std::vector<int64_t> results(n);
-
-    auto index_map = boost::get(boost::vertex_index, graph.graph);
-
-    std::vector<V> colors(n);
-    auto color_map = boost::make_iterator_property_map(colors.begin(), index_map);
-    auto degree_map = boost::make_degree_map(graph.graph);
-    std::vector<V> inv_permutation(n);
-
-    CHECK_FOR_INTERRUPTS();
-    boost::king_ordering(
-        graph.graph,
-        inv_permutation.rbegin(),
-        color_map,
-        degree_map,
-        index_map);
-
-    size_t j = 0;
-    for (auto i = inv_permutation.begin(); i != inv_permutation.end(); ++i, ++j) {
-        results[j] = static_cast<int64_t>(graph.graph[index_map[*i]].id);
-    }
-
-    return results;
-}
-
+}  // namespace functions
 }  // namespace pgrouting
 
 #endif  // INCLUDE_ORDERING_KINGORDERING_HPP_
