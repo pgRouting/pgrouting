@@ -71,6 +71,31 @@ count_rows(
 
 }  // namespace detail
 
+/** @brief Vector of vertices id are saved on a C array
+ *
+ * @param[in] graph Created graph with the base Graph
+ * @param[in] data data[i] -> the ith element of the vector contains the vertex id
+ * @param[out] result_count The size of the vector
+ * @param[out] result_tuples The C array of <bigint>
+ *
+ * <bigint> =  < results[i] >
+ */
+template <class G>
+void get_vertexId(
+            const G &graph,
+            const std::vector<typename G::V> data,
+            size_t &result_count,
+            int64_t **result_tuples) {
+    result_count = data.size();
+    *result_tuples = pgrouting::pgr_alloc(result_count, (*result_tuples));
+
+    size_t seq = 0;
+    for (auto const e : data) {
+        (*result_tuples)[seq] = graph.graph[e].id;
+        ++seq;
+    }
+}
+
 /** @brief Stored results on a vector are saved on a C array
  *
  * @param[in] graph Created graph with the base Graph
