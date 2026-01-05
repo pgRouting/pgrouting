@@ -34,7 +34,7 @@ $BODY$
 BEGIN
 
   IF NOT min_version('4.1.0') THEN
-    RETURN QUERY SELECT skip(1, 'pgr_withPointsVia: Issue 2966 test requires 4.1.0+');
+    RETURN QUERY SELECT skip(1, 'pgr_withPointsVia: Fix implemented on 4.1.0');
     RETURN;
   END IF;
 
@@ -45,7 +45,6 @@ BEGIN
     (102::BIGINT, 1002::BIGINT, 1003::BIGINT, 100::FLOAT, 100::FLOAT)
   ) AS t(id, source, target, cost, reverse_cost);
 
-  -- Test 1: fraction = 1 should work correctly
   RETURN QUERY SELECT set_eq(
     $$SELECT agg_cost::TEXT FROM pgr_withPointsVia(
       'SELECT * FROM test_edges',
@@ -54,10 +53,9 @@ BEGIN
       'b'
     ) WHERE edge < 0$$,
     ARRAY['17']::TEXT[],
-    'Issue 2966 (Via): fraction=1 should route correctly (cost 17, not 105)'
+    'pgr_withPointsVia: expected cost is 17'
   );
 
-  -- Test 2: Verify the path uses the correct edges
   RETURN QUERY SELECT set_eq(
     $$SELECT edge::TEXT FROM pgr_withPointsVia(
       'SELECT * FROM test_edges',
@@ -66,7 +64,7 @@ BEGIN
       'b'
     ) WHERE edge > 0$$,
     ARRAY['100', '101']::TEXT[],
-    'Issue 2966 (Via): Path should use edges 100 and 101'
+    'pgr_withPointsVia: Path should use edges 100 and 101'
   );
 
   DROP TABLE test_edges;

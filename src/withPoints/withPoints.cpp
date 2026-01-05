@@ -397,12 +397,14 @@ Pg_points_graph::create_new_edges() {
             if (point.fraction == 1) {
                 log << "point's vertex_id = target" << edge.target << "\n";
                 point.vertex_id = -point.pid;
-                // Zero-cost edge connecting target node to point (they're at same location)
+                /* Zero-cost edge connecting target node to point (they're at same location) */
                 Edge_t zero_edge = {edge.id, edge.target, -point.pid, 0, 0};
                 m_new_edges.push_back(zero_edge);
 
-                // Also create edge from previous target to this point
-                // This allows Dijkstra to find the direct path through this edge
+                /*
+                 * Also create edge from previous target to this point
+                 * This allows Dijkstra to find the direct path through this edge
+                 */
                 double delta = point.fraction - prev_fraction;
                 double rdelta = point.fraction - prev_rfraction;
                 if (delta > 0) {
@@ -412,7 +414,7 @@ Pg_points_graph::create_new_edges() {
                         m_new_edges.push_back(cost_edge);
                         last_cost = cost_to_point;
                     }
-                    // Update forward tracking variables
+                    /* Update forward tracking variables */
                     prev_target = point.vertex_id;
                     prev_fraction = point.fraction;
                     agg_cost += last_cost;
@@ -424,7 +426,7 @@ Pg_points_graph::create_new_edges() {
                         m_new_edges.push_back(rcost_edge);
                         last_rcost = rcost_to_point;
                     }
-                    // Update reverse tracking variables
+                    /* Update reverse tracking variables */
                     prev_rtarget = point.vertex_id;
                     prev_rfraction = point.fraction;
                     agg_rcost += last_rcost;
