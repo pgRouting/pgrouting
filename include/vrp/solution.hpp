@@ -61,15 +61,24 @@ class Solution {
       *
       */
      Solution();
-     ~Solution() = default;  // destructor
 
 
-     /* copy operations */
-    Solution(const Solution&) = default;
-    Solution& operator=(const Solution&) = default;
 
-    Solution(Solution&&) = default;
-    Solution& operator=(Solution&&) = default;
+     /* @brief copy constructor */
+     Solution(const Solution &sol) :
+         EPSILON(0.0001),
+         fleet(sol.fleet),
+         trucks(sol.trucks)
+    {};
+
+     /* @brief copy assignment */
+     Solution& operator = (const Solution& sol) {
+         EPSILON = 0.0001,
+         fleet = sol.fleet;
+         trucks = sol.trucks;
+         return *this;
+     };
+
 
      Initials_code get_kind() const;
 

@@ -45,19 +45,12 @@ class PD_problem {
 
     /** @brief Not wllowing to copy the problem */
     PD_problem(const PD_problem &problem) = delete;
- 
-    /** @brief Not allowing copy assignment */
     PD_problem& operator=(const PD_problem&) = delete;
-
     /** @brief Not allowing initialization without information */
-    PD_problem() = delete;
-
-  /** @brief Destructor */
-    ~PD_problem() = default;
-
-    /** @brief Prevent move */
     PD_problem(PD_problem&&) = delete;
     PD_problem& operator=(PD_problem&&) = delete;
+    PD_problem() = delete;
+   ~PD_problem() = default;
 };
 
 }  //  namespace vrp

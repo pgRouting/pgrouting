@@ -40,9 +40,7 @@ class Pgr_messages {
     Pgr_messages() = default;
     Pgr_messages(const Pgr_messages&) = delete;
     Pgr_messages& operator=(const Pgr_messages&) = delete;
-  
-        ~Pgr_messages() = default;
-
+   ~Pgr_messages() = default;
     Pgr_messages(Pgr_messages&&) = delete;
     Pgr_messages& operator=(Pgr_messages&&) = delete;
 

@@ -52,11 +52,9 @@ class Basic_vertex {
          id(_id) {}
 
      Basic_vertex& operator=(const Basic_vertex&) = default;
-
+    ~Basic_vertex() = default;
      Basic_vertex(Basic_vertex&&) = default;
      Basic_vertex& operator=(Basic_vertex&&) = default;
-     ~Basic_vertex() = default;
-
      Basic_vertex(const Edge_t &other, bool is_source) :
          id(is_source? other.source : other.target) {}
 
