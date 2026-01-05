@@ -12,6 +12,11 @@ To read all history of releases go to the latest [release notes](https://docs.pg
 To see all issues & pull requests closed by this release see the
 [#4.0.1](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.1%22)
 
+Bug Fixes
+
+* [#2966](https://github.com/pgRouting/pgrouting/issues/2966): pgr_withPoints does not pick optimal route when fraction = 1
+
+
 </details>
 
 <details> <summary>pgRouting 4.0.0 Release Notes</summary>

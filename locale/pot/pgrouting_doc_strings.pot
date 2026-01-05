@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-10 19:55+0000\n"
+"POT-Creation-Date: 2026-01-04 17:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13498,6 +13498,12 @@ msgstr ""
 msgid "pgRouting 4.0"
 msgstr ""
 
+msgid "Bug Fixes"
+msgstr ""
+
+msgid "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withPoints does not pick optimal route when fraction = 1"
+msgstr ""
+
 msgid "pgRouting 3"
 msgstr ""
 
@@ -14570,9 +14576,6 @@ msgid "Contraction:"
 msgstr ""
 
 msgid "Removed unnecessary column seq"
-msgstr ""
-
-msgid "Bug Fixes"
 msgstr ""
 
 msgid "pgr_maxFlowMinCost"
