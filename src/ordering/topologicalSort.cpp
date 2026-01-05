@@ -1,8 +1,6 @@
 /*PGR-GNU*****************************************************************
+File: topologicalSort.cpp
 
-File: topologicalSort.hpp
-
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
@@ -26,23 +24,48 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_ORDERING_TOPOLOGICALSORT_HPP_
-#define INCLUDE_ORDERING_TOPOLOGICALSORT_HPP_
-#pragma once
+#include "ordering/topologicalSort.hpp"
 
 #include <vector>
-#include "cpp_common/base_graph.hpp"
+#include <algorithm>
+#include <string>
+#include <cstdint>
 
+#include <boost/config.hpp>
+
+#include "cpp_common/base_graph.hpp"
+#include "cpp_common/interruption.hpp"
+#include <boost/graph/adjacency_list.hpp>
+
+#include <boost/graph/topological_sort.hpp>
 
 namespace pgrouting {
 namespace functions {
 
 std::vector<pgrouting::DirectedGraph::V>
-topologicalSort(const pgrouting::DirectedGraph &graph);
+topologicalSort(const pgrouting::DirectedGraph &graph) {
+    using V = typename pgrouting::DirectedGraph::V;
+
+    std::vector<V> results;
+
+    CHECK_FOR_INTERRUPTS();
+
+    try {
+        boost::topological_sort(graph.graph, std::back_inserter(results));
+    } catch (boost::exception const& ex) {
+        throw std::string("Graph is not DAG");
+    } catch (std::exception &e) {
+        (void)e;
+        throw;
+    } catch (...) {
+        throw;
+    }
+
+    std::reverse(results.begin(), results.end());
+    return results;
+}
 
 }  // namespace functions
 }  // namespace pgrouting
-
-#endif  // INCLUDE_ORDERING_TOPOLOGICALSORT_HPP_
