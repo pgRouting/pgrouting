@@ -26,7 +26,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#include "drivers/topologicalSort/topologicalSort_driver.h"
+#include "drivers/ordering/topologicalSort_driver.h"
 
 #include <sstream>
 #include <string>
@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <limits>
 
-#include "topologicalSort/topologicalSort.hpp"
+#include "ordering/topologicalSort.hpp"
 
 #include "c_types/i_rt.h"
 #include "cpp_common/pgdata_getters.hpp"
