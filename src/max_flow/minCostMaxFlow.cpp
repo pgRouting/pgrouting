@@ -52,7 +52,7 @@ PgrCostFlowGraph::PgrCostFlowGraph(
 PgrCostFlowGraph::E PgrCostFlowGraph::AddEdge(
         PgrCostFlowGraph::V v,
         PgrCostFlowGraph::V w, double wei, double cap) {
-    bool b;
+    bool b = false;
     PgrCostFlowGraph::E e;
     boost::tie(e, b) = boost::add_edge(vertex(v, graph),
                                        vertex(w, graph), graph);
