@@ -46,6 +46,11 @@ Bug Fixes
 
 * :issue:`2966`: pgr_withPoints does not pick optimal route when fraction = 1
 
+Code enhancement
+...............................................................................
+
+* :issue:`3025`: Ordering functions standardized
+
 .. current
 
 pgRouting 4.0
