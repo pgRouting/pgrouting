@@ -76,9 +76,9 @@ count_rows(
  * @param[in] graph Created graph with the base Graph
  * @param[in] data data[i] -> the ith element of the vector contains the vertex id
  * @param[out] result_count The size of the vector
- * @param[out] result_tuples The C array of <bigint>
+ * @param[out] result_tuples The C array of bigint
  *
- * <bigint> =  < results[i] >
+ * bigint results[i]
  */
 template <class G>
 void get_vertexId(
