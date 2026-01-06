@@ -62,7 +62,7 @@ process(const std::vector<Edge_t> &edges, G &graph, Func ordering,
 void
 do_ordering(
     std::string edges_sql,
-    int which,
+    Which which,
 
     int64_t **return_tuples,
     size_t *return_count,
@@ -116,22 +116,22 @@ do_ordering(
 
 
         switch (which) {
-            case 0: {
-                        process(edges, undigraph, &sloanOrdering, *return_count, return_tuples);
-                        break;
-                    }
-            case 1: {
-                        process(edges, undigraph, &cuthillMckeeOrdering, *return_count, return_tuples);
-                        break;
-                    }
-            case 2: {
-                        process(edges, undigraph, &kingOrdering, *return_count, return_tuples);
-                        break;
-                    }
-            case 11: {
-                         process(edges, digraph, &topologicalSort, *return_count, return_tuples);
-                         break;
-                     }
+            case SLOAN: {
+                            process(edges, undigraph, &sloanOrdering, *return_count, return_tuples);
+                            break;
+                        }
+            case CUTCHILL: {
+                               process(edges, undigraph, &cuthillMckeeOrdering, *return_count, return_tuples);
+                               break;
+                           }
+            case KING: {
+                           process(edges, undigraph, &kingOrdering, *return_count, return_tuples);
+                           break;
+                       }
+            case TOPOSORT: {
+                               process(edges, digraph, &topologicalSort, *return_count, return_tuples);
+                               break;
+                           }
         }
 
         if ((*return_count) == 0) {

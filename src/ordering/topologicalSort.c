@@ -54,7 +54,7 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
 
         pgr_process_ordering(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                11, /* Topological sort */
+                TOPOSORT,
                 &result_tuples,
                 &result_count);
 

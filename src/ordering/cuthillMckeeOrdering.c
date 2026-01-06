@@ -54,7 +54,7 @@ _pgr_cuthillmckeeordering(PG_FUNCTION_ARGS) {
 
         pgr_process_ordering(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                1, /* Cuthill Mckee Ordering*/
+                CUTCHILL,
                 &result_tuples,
                 &result_count);
 
