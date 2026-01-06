@@ -83,15 +83,15 @@ count_rows(
 template <class G>
 void get_vertexId(
             const G &graph,
-            const std::vector<typename G::V> data,
+            const std::vector<typename G::V> &data,
             size_t &result_count,
             int64_t **result_tuples) {
     result_count = data.size();
     *result_tuples = pgrouting::pgr_alloc(result_count, (*result_tuples));
 
     size_t seq = 0;
-    for (auto const e : data) {
-        (*result_tuples)[seq] = graph.graph[e].id;
+    for (auto const &v : data) {
+        (*result_tuples)[seq] = graph.graph[v].id;
         ++seq;
     }
 }
