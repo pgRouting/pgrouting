@@ -91,8 +91,9 @@ class TrspHandler : public pgrouting::Pgr_messages {
 
     class CostHolder {
      public:
-         CostHolder() {
-             endCost =  startCost = (std::numeric_limits<double>::max)();
+         CostHolder() :
+             startCost((std::numeric_limits<double>::max)()),
+             endCost((std::numeric_limits<double>::max)()) {
          }
 
      public:

@@ -66,10 +66,8 @@ This Release Contributors
 Individuals in this release v4.0.0 (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Bipasha Gayary,
-Fan Wu,
+Mohit Rawat,
 Regina Obe,
-Saloni kumari,
 Vicky Vergara
 
 
@@ -154,6 +152,7 @@ Maxim Dubinin,
 Maoguang Wang,
 Mohamed Bakli,
 Mohamed Zia,
+Mohit Rawat,
 Mukul Priya,
 Nitish Chauhan,
 Rajat Shinde,
