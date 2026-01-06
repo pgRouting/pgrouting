@@ -11,18 +11,6 @@ Checks: >
     cppcoreguidelines-prefer-member-initializer,
     cppcoreguidelines-special-member-functions
 
-CheckOptions:
-  - key: cppcoreguidelines-special-member-functions.DefaultConstructor
-    value: true
-  - key: cppcoreguidelines-special-member-functions.CopyConstructor
-    value: true
-  - key: cppcoreguidelines-special-member-functions.CopyAssignment
-    value: true
-  - key: cppcoreguidelines-special-member-functions.MoveConstructor
-    value: true
-  - key: cppcoreguidelines-special-member-functions.MoveAssignment
-    value: true
-
 WarningsAsErrors: ''
 HeaderFilterRegex: './include'
 FormatStyle:     none
