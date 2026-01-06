@@ -39,20 +39,24 @@ namespace vrp {
 class Pgr_pickDeliver;
 
 class PD_problem {
+
  public:
-    /** @brief Initializing the problem pointer */
-    explicit PD_problem(Pgr_pickDeliver* p_problem);
+  /** @brief Initializing the problem pointer */
+  explicit PD_problem(Pgr_pickDeliver* p_problem);
 
-    /** @brief Not wllowing to copy the problem */
-    PD_problem(const PD_problem &problem) = delete;
-    PD_problem& operator=(const PD_problem&) = delete;
-    /** @brief Not allowing initialization without information */
-    PD_problem(PD_problem&&) = delete;
-    PD_problem& operator=(PD_problem&&) = delete;
-    PD_problem() = delete;
-   ~PD_problem() = default;
+  /** @brief Not allowing copy */
+  PD_problem(const PD_problem&) = delete;
+  PD_problem& operator=(const PD_problem&) = delete;
+
+  /** @brief Not allowing move */
+  PD_problem(PD_problem&&) = delete;
+  PD_problem& operator=(PD_problem&&) = delete;
+
+  /** @brief Not allowing default construction */
+  PD_problem() = delete;
+
+  ~PD_problem() = default;
 };
-
 }  //  namespace vrp
 }  //  namespace pgrouting
 
