@@ -62,7 +62,9 @@ class Fleet {
      /*!@}*/
 
      Fleet& operator=(const Fleet &fleet);
-
+     ~Fleet() = default;
+     Fleet(Fleet&&) = delete;
+     Fleet& operator=(Fleet&&) = delete;
      void set_compatibles(const PD_Orders &orders);
 
      bool is_fleet_ok() const;
