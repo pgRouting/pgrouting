@@ -145,12 +145,11 @@ class AssertFailedException : public std::exception {
  public:
      const char *what() const noexcept override;
      explicit AssertFailedException(std::string msg);
-    AssertFailedException(const AssertFailedException&) = default;
-    AssertFailedException(AssertFailedException&&) noexcept = default;
-    AssertFailedException& operator=(const AssertFailedException&) = delete;
-    AssertFailedException& operator=(AssertFailedException&&) noexcept = delete;
-
-     ~AssertFailedException() noexcept override {}
+     AssertFailedException(const AssertFailedException&) = default;
+     AssertFailedException& operator=(const AssertFailedException&) = delete;
+     AssertFailedException(AssertFailedException&&) = default;
+     AssertFailedException& operator=(AssertFailedException&&) = delete;
+     ~AssertFailedException() noexcept override = default;
 };
 
 #endif  //  INCLUDE_CPP_COMMON_ASSERT_HPP_

@@ -42,7 +42,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 
 class Basic_vertex {
-
  public:
      Basic_vertex() :
          id(0) {}
@@ -53,9 +52,9 @@ class Basic_vertex {
          id(_id) {}
 
      Basic_vertex& operator=(const Basic_vertex&) = default;
-    ~Basic_vertex() = default;
      Basic_vertex(Basic_vertex&&) = default;
      Basic_vertex& operator=(Basic_vertex&&) = default;
+     ~Basic_vertex() = default;
      Basic_vertex(const Edge_t &other, bool is_source) :
          id(is_source? other.source : other.target) {}
 

@@ -35,17 +35,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
-
 class Pgr_messages {
-
  public:
-  Pgr_messages() = default;
-  Pgr_messages(const Pgr_messages&) = delete;
-  Pgr_messages& operator=(const Pgr_messages&) = delete;
-  ~Pgr_messages() = default;
-  Pgr_messages(Pgr_messages&&) = delete;
-  Pgr_messages& operator=(Pgr_messages&&) = delete;
-
+    Pgr_messages() = default;
+    Pgr_messages(const Pgr_messages&) = delete;
+    Pgr_messages& operator=(const Pgr_messages&) = delete;
+    ~Pgr_messages() = default;
+    Pgr_messages(Pgr_messages&&) = delete;
+    Pgr_messages& operator=(Pgr_messages&&) = delete;
     /*! @brief get_log
      *
      * \returns the current contents of the log and clears the log
