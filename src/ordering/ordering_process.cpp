@@ -49,7 +49,7 @@ extern "C" {
  */
 void pgr_process_ordering(
         const char* edges_sql,
-        int which,
+        enum Which which,
         int64_t **result_tuples,
         size_t *result_count) {
     pgassert(edges_sql);
@@ -67,12 +67,19 @@ void pgr_process_ordering(
             result_tuples, result_count,
             &log_msg , &notice_msg, &err_msg);
 
-    if (which == 0) {
-        time_msg(std::string(" processing pgr_sloanOrdering").c_str(), start_t, clock());
-    } else if (which == 1) {
-        time_msg(std::string("processing pgr_cuthillMckeeOrdering").c_str(), start_t, clock());
-    } else if (which == 2) {
-        time_msg(std::string("processing pgr_kingOrdering").c_str(), start_t, clock());
+    switch (which) {
+        case SLOAN:
+            time_msg(std::string(" processing pgr_sloanOrdering").c_str(), start_t, clock());
+            break;
+        case CUTCHILL:
+            time_msg(std::string("processing pgr_cuthillMckeeOrdering").c_str(), start_t, clock());
+            break;
+        case KING:
+            time_msg(std::string("processing pgr_kingOrdering").c_str(), start_t, clock());
+            break;
+        case TOPOSORT:
+            time_msg(std::string("processing pgr_kingOrdering").c_str(), start_t, clock());
+            break;
     }
 
     if (err_msg && (*result_tuples)) {

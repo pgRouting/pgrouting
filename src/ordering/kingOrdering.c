@@ -54,7 +54,7 @@ _pgr_kingordering(PG_FUNCTION_ARGS) {
 
         pgr_process_ordering(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                2, /*King Ordering*/
+                KING, /*King Ordering*/
                 &result_tuples,
                 &result_count);
 

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: sloanOrdering.hpp
+File: sloanOrdering.cpp
 
 Generated with Template by:
 Copyright (c) 2022 pgRouting developers
