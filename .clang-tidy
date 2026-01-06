@@ -8,6 +8,7 @@ Checks: >
     cppcoreguidelines-avoid-non-const-global-variables,
     cppcoreguidelines-avoid-reference-coroutine-parameters,
     cppcoreguidelines-init-variables,
+    cppcoreguidelines-prefer-member-initializer,
     cppcoreguidelines-special-member-functions
 
 CheckOptions:
@@ -24,6 +25,5 @@ CheckOptions:
 
 WarningsAsErrors: ''
 HeaderFilterRegex: './include'
-FormatStyle: none
+FormatStyle:     none
 InheritParentConfig: true
-
