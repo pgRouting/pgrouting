@@ -22,14 +22,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_PROCESS_ORDERING_ENUMS_H_
-#define INCLUDE_PROCESS_ORDERING_ENUMS_H_
+#ifndef INCLUDE_C_COMMON_ENUMS_H_
+#define INCLUDE_C_COMMON_ENUMS_H_
 
 enum Which {
     /** undirected graph + results: vertex id  */
-    SLOAN=0, CUTCHILL, KING,
+    SLOAN = 0, CUTCHILL, KING,
     /** directed graph + results: vertex id  */
-    TOPOSORT=11
+    TOPOSORT = 11
 };
 
-#endif  // INCLUDE_PROCESS_ORDERING_ENUMS_H_
+#endif  // INCLUDE_C_COMMON_ENUMS_H_
