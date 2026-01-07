@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/enums.h"
 void
 do_ordering(
-        std::string, Which,
+        const std::string&, Which,
         int64_t**,  size_t*,
         char **, char **, char **);
 
