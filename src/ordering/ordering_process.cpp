@@ -78,7 +78,9 @@ void pgr_process_ordering(
             time_msg(std::string("processing pgr_kingOrdering").c_str(), start_t, clock());
             break;
         case TOPOSORT:
-            time_msg(std::string("processing pgr_kingOrdering").c_str(), start_t, clock());
+            time_msg(std::string("processing pgr_pgr_topologicalSort").c_str(), start_t, clock());
+            break;
+        default:
             break;
     }
 

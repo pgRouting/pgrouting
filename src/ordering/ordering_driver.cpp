@@ -61,7 +61,7 @@ process(const std::vector<Edge_t> &edges, G &graph, Func ordering,
 
 void
 do_ordering(
-    std::string edges_sql,
+    const std::string &edges_sql,
     Which which,
 
     int64_t **return_tuples,
@@ -132,6 +132,8 @@ do_ordering(
                                process(edges, digraph, &topologicalSort, *return_count, return_tuples);
                                break;
                            }
+            default:
+                           break;
         }
 
         if ((*return_count) == 0) {
