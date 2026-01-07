@@ -64,6 +64,7 @@ class Basic_vertex {
 
 
      friend std::ostream& operator<<(std::ostream& log, const Basic_vertex &v);
+
  public:
      int64_t id;
 };
