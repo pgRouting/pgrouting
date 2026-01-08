@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-06 18:37+0000\n"
+"POT-Creation-Date: 2026-01-08 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8323,7 +8323,7 @@ msgstr ""
 msgid "This Release Contributors"
 msgstr ""
 
-msgid "Individuals in this release v4.0.0 (in alphabetical order)"
+msgid "Individuals in this release |release| (in alphabetical order)"
 msgstr ""
 
 msgid "Mohit Rawat, Regina Obe, Vicky Vergara"
@@ -16164,6 +16164,14 @@ msgid ""
 "pgr_withPoints does not pick optimal route when fraction = 1"
 msgstr ""
 
+msgid "Code enhancement"
+msgstr ""
+
+msgid ""
+"`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordering "
+"functions standardized"
+msgstr ""
+
 msgid "pgRouting 3"
 msgstr ""
 
@@ -16435,9 +16443,6 @@ msgstr ""
 
 msgid "``pgr_lineGraph``"
 msgstr "``pgr_lineGraph``"
-
-msgid "Code enhancement"
-msgstr ""
 
 msgid ""
 "`#2599 <https://github.com/pgRouting/pgrouting/issues/2599>`__: Driving "
