@@ -145,7 +145,7 @@ PgrCostFlowGraph::GetFlowEdges() const {
         if (((capacity[*e] - residual_capacity[*e]) > 0) &&
                 ((*e).m_source != supersource) &&
                 ((*e).m_target != supersink)) {
-            Flow_t edge;
+            Flow_t edge{};
             edge.edge = GetEdgeId(*e);
             edge.source = GetVertexId((*e).m_source);
             edge.target = GetVertexId((*e).m_target);

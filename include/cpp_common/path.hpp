@@ -59,13 +59,13 @@ class Path {
     std::deque< Path_t > path;
     int64_t m_start_id;
     int64_t m_end_id;
-    double m_tot_cost;
+    double m_tot_cost{0};
 
  public:
-    Path(): m_start_id(0), m_end_id(0), m_tot_cost(0)
+    Path() : m_start_id(0), m_end_id(0)
     {}
     Path(int64_t s_id, int64_t e_id)
-        : m_start_id(s_id), m_end_id(e_id), m_tot_cost(0)
+        : m_start_id(s_id), m_end_id(e_id)
     {}
 
     int64_t start_id() const {return m_start_id;}
@@ -189,8 +189,7 @@ class Path {
             const Path &original,
             bool only_cost) :
         m_start_id(original.m_start_id),
-        m_end_id(original.m_end_id),
-        m_tot_cost(0) {
+        m_end_id(original.m_end_id) {
             if (original.path.empty()) return;
 
             typename G::EO_i ei, ei_end;
