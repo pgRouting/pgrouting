@@ -32,6 +32,7 @@ on:
       - 'include/**'
       - 'pgtap/**'
       - 'tools/testers/**'
+      - '.clang-tidy'
       - 'CMakeLists.txt'
 
     branches-ignore:
