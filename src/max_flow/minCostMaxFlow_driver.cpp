@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <set>
+#include <limits>
 #include <string>
 
 
@@ -114,7 +115,7 @@ pgr_do_minCostMaxFlow(
         pgrouting::graph::PgrCostFlowGraph digraph(
                 edges, sources, targets);
 
-        double min_cost = NAN;
+        double min_cost = std::numeric_limits<double>::quiet_NaN();
         min_cost = digraph.MinCostMaxFlow();
 
         std::vector<Flow_t> flow_edges;
