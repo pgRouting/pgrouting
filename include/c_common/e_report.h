@@ -65,10 +65,34 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *  ~~~~
  */
 void
-pgr_global_report(
-        char** log_msg,
-        char** notice_msg,
-        char** error_msg);
+pgr_global_report(char**, char**, char**);
+
+/*! @brief  Generates a notice on PostgreSQL
+ *
+ * This is a development helper function
+ * `pgr_notice` on code and related code must be deleted
+ *
+ * To use:
+ * Add at the begining of the .cpp/.hpp file:
+ *  ~~~~{.c}
+ * extern "C" {
+ * #include "c_common/postgres_connection.h"
+ * #include "c_common/e_report.h"
+ * }
+ * #include "cpp_common/alloc.hpp"
+ *  ~~~~
+ *
+ * Insert a variable where to store the message
+ * Save the message
+ * Call the function using the to_pg_msg
+ * ~~~~{.c}
+ * std::ostringstream msg;
+ * notice << "This is the message that shows the value of : " << this_variable;
+ * pgr_print_notice(to_pg_msg(msg));
+ *  ~~~~
+ */
+void
+pgr_print_notice(char*);
 
 /* @brief throws postgres error when first string is not null */
 void pgr_throw_error(const char*, const char*);

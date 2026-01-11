@@ -39,6 +39,15 @@ pgr_throw_error(const char *err, const char *hint) {
     }
 }
 
+
+/**
+ * @param[in] msg string with an error message
+ */
+void
+pgr_print_notice(char* msg) {
+    ereport(NOTICE, (errmsg_internal("%s", msg)));
+}
+
 /**
  * On C++ side, the message to be returned;
  * ~~~~{.c}
