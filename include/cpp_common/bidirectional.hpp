@@ -78,7 +78,7 @@ class Pgr_bidirectional {
         m_log << "constructor\n";
     }
 
-    ~Pgr_bidirectional() = default;
+    virtual ~Pgr_bidirectional() = default;
 
     std::string log() const {return m_log.str();}
     void clean_log() {m_log.clear();}

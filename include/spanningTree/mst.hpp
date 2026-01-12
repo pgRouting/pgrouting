@@ -50,6 +50,9 @@ namespace functions {
 
 template <class G>
 class Pgr_mst {
+ public:
+     virtual ~Pgr_mst() = default;
+
  protected:
      typedef typename G::B_G B_G;
      typedef typename G::V V;
