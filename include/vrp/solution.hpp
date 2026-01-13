@@ -66,7 +66,7 @@ class Solution {
 
      /* @brief copy constructor */
      Solution(const Solution &sol) :
-         EPSILON(0.0001),
+         EPSILON(sol.EPSILON),
          fleet(sol.fleet),
          trucks(sol.trucks)
     {};
