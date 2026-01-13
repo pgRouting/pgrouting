@@ -58,7 +58,6 @@ _pgr_dijkstra_v4(PG_FUNCTION_ARGS) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-        char *driving_side = " ";
 
         if (PG_NARGS() == 8) {
             /*
@@ -79,9 +78,9 @@ _pgr_dijkstra_v4(PG_FUNCTION_ARGS) {
 
                 PG_GETARG_INT64(6),
                 PG_GETARG_BOOL(7),
-                driving_side, true,
+                ' ', true,
 
-                0,  // which
+                DIJKSTRA,
                 &result_tuples,
                 &result_count);
 
@@ -102,9 +101,9 @@ _pgr_dijkstra_v4(PG_FUNCTION_ARGS) {
 
                 PG_GETARG_INT64(4),
                 PG_GETARG_BOOL(5),
-                driving_side, true,
+                ' ', true,
 
-                0,  // which
+                DIJKSTRA,
                 &result_tuples,
                 &result_count);
         }
@@ -185,7 +184,6 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-        char *driving_side = " ";
 
 #ifdef SHOWMSG
         ereport(NOTICE, (
@@ -207,8 +205,8 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     PG_GETARG_BOOL(5),
                     PG_GETARG_INT64(6),
                     true,
-                    driving_side, true,
-                    0,  // which
+                    ' ', true,
+                    DIJKSTRA,
                     &result_tuples,
                     &result_count);
         } else if (PG_NARGS() == 5) {
@@ -220,8 +218,8 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     PG_GETARG_BOOL(2),
                     PG_GETARG_BOOL(3),
                     true, 0, true,
-                    driving_side, true,
-                    0,  // which
+                    ' ', true,
+                    DIJKSTRA,
                     &result_tuples,
                     &result_count);
 
@@ -238,9 +236,9 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     PG_GETARG_INT64(6),
                     PG_GETARG_BOOL(7),
 
-                    driving_side, true,
+                    ' ', true,
 
-                    0,  // which
+                    DIJKSTRA,
                     &result_tuples,
                     &result_count);
 
@@ -256,9 +254,9 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     PG_GETARG_INT64(4),
                     PG_GETARG_BOOL(5),
 
-                    driving_side, true,
+                    ' ', true,
 
-                    0,  // which
+                    DIJKSTRA,
                     &result_tuples,
                     &result_count);
         }

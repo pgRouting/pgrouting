@@ -41,6 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <sstream>
 
+#include "c_common/enums.h"
+
 using Path_rt = struct Path_rt;
 using ArrayType = struct ArrayType;
 
@@ -51,7 +53,7 @@ void do_shortestPath(
         bool, bool, bool,
         int64_t, bool, char, bool,
 
-        int32_t,
+        Which,
         bool&,
         Path_rt*&, size_t&,
         std::ostringstream&, std::ostringstream&, std::ostringstream&);

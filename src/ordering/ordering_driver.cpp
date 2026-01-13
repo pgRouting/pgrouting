@@ -79,12 +79,12 @@ do_ordering(
         using pgrouting::pgget::get_edges;
         using pgrouting::UndirectedGraph;
         using pgrouting::DirectedGraph;
+        using pgrouting::to_postgres::get_vertexId;
 
         using pgrouting::functions::sloanOrdering;
         using pgrouting::functions::kingOrdering;
         using pgrouting::functions::cuthillMckeeOrdering;
         using pgrouting::functions::topologicalSort;
-
 
         hint = edges_sql;
         auto edges = get_edges(edges_sql, true, false);
@@ -100,8 +100,8 @@ do_ordering(
             pgrouting::extract_vertices(edges)
             : std::vector<pgrouting::Basic_vertex>();
 
-        UndirectedGraph undigraph = which < 11? UndirectedGraph(vertices) : UndirectedGraph();
-        DirectedGraph digraph = which >= 11? DirectedGraph(vertices) : DirectedGraph();;
+        UndirectedGraph undigraph = which != TOPOSORT? UndirectedGraph(vertices) : UndirectedGraph();
+        DirectedGraph digraph = which == TOPOSORT? DirectedGraph(vertices) : DirectedGraph();;
 
 
         switch (which) {

@@ -45,41 +45,20 @@ extern "C" {
 
 #include "c_types/path_rt.h"
 #include "cpp_common/report_messages.hpp"
+#include "cpp_common/utilities.hpp"
 #include "cpp_common/assert.hpp"
+#include "cpp_common/alloc.hpp"
+
 #include "drivers/shortestPath_driver.hpp"
 
-namespace {
 
-std::string
-get_name(int32_t which, bool is_only_cost, bool is_near, bool is_withPoints, bool is_matrix) {
-    std::string base;
-    switch  (which) {
-        case 0 : { base = "pgr_dijkstra"; break;}
-        case 1 : case 101: { base = "pgr_withPoints"; break;}
-        default : base = "unknown";
-    }
-  base = which > 1 && is_withPoints? base + "_withPoints" : base;
-    return "Processing " + base + (is_near? "Near" : "") + (is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
-}
-
-}  // namespace
-
-/**
- which
-
- 0 = dijkstra
- 1 = withPoints
- 101 = old withPoints
-
- This is c++ code, linked as C code, because pgr_process_shortestPath is called from C code
- */
 void pgr_process_shortestPath(
         const char *edges_sql, const char *points_sql, const char *combinations_sql,
         ArrayType *starts, ArrayType *ends,
         bool directed, bool only_cost, bool normal,
         int64_t n_goals, bool global,
-        char *driving_side, bool details,
-        int32_t which,
+        char driving_side, bool details,
+        enum Which which,
         Path_rt **result_tuples, size_t *result_count) {
     pgassert(edges_sql);
     pgassert(!(*result_tuples));
@@ -101,14 +80,14 @@ void pgr_process_shortestPath(
             directed,
             only_cost, normal,
             n_goals, global,
-            driving_side[0], details,
+            driving_side, details,
             which,
             is_matrix,
             (*result_tuples), (*result_count),
             log, notice, err);
 
-    auto fn_name = get_name(which, only_cost, n_goals > 0, points_sql != nullptr, is_matrix);
-    time_msg(fn_name.c_str(), start_t, clock());
+    auto name = std::string(" processing ") + pgrouting::get_name(which, only_cost, n_goals > 0, is_matrix);
+    time_msg(name.c_str(), start_t, clock());
 
     if (!err.str().empty() && (*result_tuples)) {
         if (*result_tuples) pfree(*result_tuples);
