@@ -87,7 +87,8 @@ pgr_global_report(char**, char**, char**);
  * Call the function using the to_pg_msg
  * ~~~~{.c}
  * std::ostringstream msg;
- * notice << "This is the message that shows the value of : " << this_variable;
+ * int this_variable = 3;
+ * msg << "This is the message that shows the value of : " << this_variable;
  * pgr_print_notice(to_pg_msg(msg));
  *  ~~~~
  */

@@ -41,7 +41,7 @@ pgr_throw_error(const char *err, const char *hint) {
 
 
 /**
- * @param[in] msg string with an error message
+ * @param[in] msg string to send notice to PostgreSQL
  */
 void
 pgr_print_notice(char* msg) {
