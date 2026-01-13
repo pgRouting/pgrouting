@@ -47,6 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/combinations.hpp"
+#include "cpp_common/utilities.hpp"
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
 
@@ -55,45 +56,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace {
 
-// TODO(vicky) This should be in its own file
-char
-estimate_drivingSide(char driving_side, int32_t which) {
-    char d_side = static_cast<char>(tolower(driving_side));
-    if (!((d_side == 'r') || (d_side == 'l') || (d_side == 'b'))) {
-        d_side = ' ';
-    }
-    if (which == 0) {
-        return ' ';
-    } else if (which == 1) {
-        if (d_side == ' ') {
-            throw std::make_pair(std::string("Invalid value of 'driving side'"),
-                    std::string("Valid value are 'r', 'l', 'b'"));
-        }
-    } else {
-        /* For the moment its old signature of pgr_withPoints */
-        if (!((d_side == 'r') || (d_side == 'l'))) d_side = 'b';
-    }
-    return d_side;
-}
-
-void
-get_new_queries(
-        const std::string &edges_sql,
-        const std::string &points_sql,
-        std::string &edges_of_points_query,
-        std::string &edges_no_points_query) {
-    edges_of_points_query = std::string("WITH ")
-        + " edges AS (" + edges_sql + "), "
-        + " points AS (" + points_sql + ")"
-        + " SELECT DISTINCT edges.* FROM edges JOIN points ON (id = edge_id)";
-
-    edges_no_points_query  = std::string("WITH ")
-        + " edges AS (" + edges_sql + "), "
-        + " points AS (" + points_sql + ")"
-        + " SELECT edges.*"
-        + " FROM edges"
-        + " WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)";
-}
 
 void
 post_process(std::deque<pgrouting::Path> &paths, bool only_cost, bool normal, size_t n_goals, bool global) {
@@ -162,7 +124,7 @@ do_shortestPath(
         char driving_side,
         bool details,
 
-        int32_t which,
+        Which which,
         bool &is_matrix,
         Path_rt* &return_tuples, size_t &return_count,
         std::ostringstream &log,
@@ -207,7 +169,7 @@ do_shortestPath(
             edges = get_edges(edges_sql, normal, false);
             hint = "";
         } else {
-            get_new_queries(edges_sql, points_sql, eofp, enop);
+            pgrouting::get_new_queries(edges_sql, points_sql, eofp, enop);
 
             hint = points_sql;
             points = get_points(std::string(points_sql));
@@ -230,7 +192,7 @@ do_shortestPath(
          */
         pgrouting::Pg_points_graph pg_graph(points, edges_of_points,
                 normal,
-                estimate_drivingSide(driving_side, which),
+                pgrouting::estimate_drivingSide(driving_side, which),
                 directed);
 
         if (pg_graph.has_error()) {
@@ -247,6 +209,7 @@ do_shortestPath(
             log << edges_sql;
             return;
         }
+        hint = "";
 
         size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
 
@@ -255,24 +218,11 @@ do_shortestPath(
             DirectedGraph graph;
             graph.insert_edges(edges);
 
-            switch (which) {
-                case 0:
-                case 101:
-                case 1: {
-                            paths =  dijkstra(graph, combinations, only_cost, n);
-                        }
-            }
+            paths =  dijkstra(graph, combinations, only_cost, n);
         } else {
             UndirectedGraph graph;
             graph.insert_edges(edges);
-
-            switch (which) {
-                case 0:
-                case 101:
-                case 1: {
-                            paths =  dijkstra(graph, combinations, only_cost, n);
-                        }
-            }
+            paths =  dijkstra(graph, combinations, only_cost, n);
         }
 
         post_process(paths, only_cost, normal, n, global);

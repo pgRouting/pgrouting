@@ -49,6 +49,8 @@ typedef struct Path_rt Path_rt;
 typedef struct ArrayType ArrayType;
 #endif
 
+#include "c_common/enums.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -58,9 +60,7 @@ void pgr_process_shortestPath(
         ArrayType*, ArrayType*,
         bool, bool, bool,
         int64_t, bool,
-        char*, bool,
-
-        int32_t,
+        char, bool, enum Which,
         Path_rt**, size_t*);
 
 #ifdef __cplusplus

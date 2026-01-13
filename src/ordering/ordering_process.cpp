@@ -43,11 +43,7 @@ extern "C" {
 #include "drivers/ordering_driver.hpp"
 
 /**
- which = 0 -> sloan
- which = 1 -> cuthillmckee
- which = 2 -> king
-
- This is c++ code, linked as C code, because pgr_process_foo is called from C code
+ This is c++ code, linked as C code, because pgr_process_shortestPath is called from C code
  */
 void pgr_process_ordering(
         const char* edges_sql,

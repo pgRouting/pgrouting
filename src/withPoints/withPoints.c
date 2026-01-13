@@ -74,10 +74,10 @@ _pgr_withpoints_v4(PG_FUNCTION_ARGS) {
 
                 0, true,
 
-                text_to_cstring(PG_GETARG_TEXT_P(5)),
+                text_to_cstring(PG_GETARG_TEXT_P(5))[0],
                 PG_GETARG_BOOL(6),
 
-                1,  // which
+                WITHPOINTS,
                 &result_tuples,
                 &result_count);
 
@@ -98,10 +98,10 @@ _pgr_withpoints_v4(PG_FUNCTION_ARGS) {
 
                 0, true,
 
-                text_to_cstring(PG_GETARG_TEXT_P(4)),
+                text_to_cstring(PG_GETARG_TEXT_P(4))[0],
                 PG_GETARG_BOOL(5),
 
-                1,  // which
+                WITHPOINTS,
                 &result_tuples,
                 &result_count);
         }
@@ -209,10 +209,10 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
 
                 0, true,  // n-goals, normal
 
-                text_to_cstring(PG_GETARG_TEXT_P(5)),  // driving side
+                text_to_cstring(PG_GETARG_TEXT_P(5))[0],  // driving side
                 PG_GETARG_BOOL(6),  // details
 
-                1,  // which
+                WITHPOINTS,
                 &result_tuples,
                 &result_count);
 
@@ -233,9 +233,9 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
 
                 0, true,
 
-                text_to_cstring(PG_GETARG_TEXT_P(4)),
+                text_to_cstring(PG_GETARG_TEXT_P(4))[0],
                 PG_GETARG_BOOL(5),
-                101,  // which
+                OLD_WITHPOINTS,
                 &result_tuples,
                 &result_count);
         }
