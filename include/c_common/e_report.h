@@ -93,7 +93,7 @@ pgr_global_report(char**, char**, char**);
  *  ~~~~
  */
 void
-pgr_print_notice(char*);
+pgr_print_notice(const char*);
 
 /* @brief throws postgres error when first string is not null */
 void pgr_throw_error(const char*, const char*);

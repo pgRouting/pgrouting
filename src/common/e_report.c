@@ -44,7 +44,7 @@ pgr_throw_error(const char *err, const char *hint) {
  * @param[in] msg string to send notice to PostgreSQL
  */
 void
-pgr_print_notice(char* msg) {
+pgr_print_notice(const char* msg) {
     ereport(NOTICE, (errmsg_internal("%s", msg)));
 }
 
