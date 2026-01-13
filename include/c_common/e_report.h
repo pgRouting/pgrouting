@@ -70,7 +70,7 @@ pgr_global_report(char**, char**, char**);
 /*! @brief  Generates a notice on PostgreSQL
  *
  * This is a development helper function
- * `pgr_notice` on code and related code must be deleted
+ * `pgr_print_notice` on code and related code must be deleted
  *
  * To use:
  * Add at the begining of the .cpp/.hpp file:

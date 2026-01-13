@@ -45,7 +45,9 @@ pgr_throw_error(const char *err, const char *hint) {
  */
 void
 pgr_print_notice(const char* msg) {
-    ereport(NOTICE, (errmsg_internal("%s", msg)));
+    if (msg) {
+        ereport(NOTICE, (errmsg_internal("%s", msg)));
+    }
 }
 
 /**
