@@ -26,7 +26,6 @@ Checks: >
     -cppcoreguidelines-pro-type-vararg,
     -cppcoreguidelines-slicing,
     -cppcoreguidelines-special-member-functions,
-    -cppcoreguidelines-use-default-member-init,
     -cppcoreguidelines-virtual-class-destructor
 
 CheckOptions:
