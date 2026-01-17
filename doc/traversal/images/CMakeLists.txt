@@ -1,3 +1,6 @@
+# This file is part of the pgRouting project.
+# Copyright (c) 2017-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 set(LOCAL_FILES
     Fig1-AscendingOrder.png
     Fig2-DescendingOrder.png
