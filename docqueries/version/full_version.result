@@ -2,11 +2,17 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2017-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+--------------------------------------------------------------------------------
+--                pgr_version
+--------------------------------------------------------------------------------
 /* -- q1 */
 SELECT version, library FROM pgr_full_version();
- version |     library
+  version  |     library
 -----------+-----------------
- 4.1.0-dev   | pgrouting-4.1.0
+ 4.1.0-dev | pgrouting-4.1.0
 (1 row)
 
 /* -- q2 */
