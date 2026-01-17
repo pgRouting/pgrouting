@@ -1,3 +1,6 @@
+# This file is part of the pgRouting project.
+# Copyright (c) 2007-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
