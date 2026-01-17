@@ -1,3 +1,6 @@
+# This file is part of the pgRouting project.
+# Copyright (c) 2013-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 # Relevant changes from 3.8 to 4.0
 
 # WITH-DOC is not used anymore
