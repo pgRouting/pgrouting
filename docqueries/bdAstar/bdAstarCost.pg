@@ -1,5 +1,6 @@
--- CopyRight(c) pgRouting developers
--- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2017-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
 /* -- q2 */
 SELECT * FROM pgr_bdAstarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2

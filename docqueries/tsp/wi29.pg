@@ -1,5 +1,7 @@
--- CopyRight(c) pgRouting developers
--- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2021-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
 -- NAME : wi29
 -- COMMENT : 29 locations in Western Sahara
 -- COMMENT : Derived from National Imagery and Mapping Agency data
