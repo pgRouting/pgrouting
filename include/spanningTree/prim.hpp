@@ -51,6 +51,7 @@ class Pgr_prim : public Pgr_mst<G> {
      typedef typename G::B_G B_G;
 
  public:
+     virtual ~Pgr_prim() = default;
      std::vector<MST_rt> prim(G &graph);
 
      std::vector<MST_rt> primBFS(

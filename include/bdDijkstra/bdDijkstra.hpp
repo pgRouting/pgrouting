@@ -77,7 +77,7 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
              m_log << "pgr_bdDijkstra constructor\n";
          }
 
-     ~Pgr_bdDijkstra() = default;
+     virtual ~Pgr_bdDijkstra() = default;
 
      Path pgr_bdDijkstra(V start_vertex, V end_vertex, bool only_cost) {
          m_log << "pgr_bdDijkstra\n";

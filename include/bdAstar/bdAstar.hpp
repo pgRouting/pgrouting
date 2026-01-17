@@ -78,7 +78,7 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
         m_log << "pgr_bdAstar constructor\n";
     }
 
-    ~Pgr_bdAstar() = default;
+    virtual ~Pgr_bdAstar() = default;
 
     Path pgr_bdAstar(V start_vertex, V end_vertex,
             int heuristic,

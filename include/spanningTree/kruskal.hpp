@@ -42,6 +42,7 @@ namespace functions {
 template <class G>
 class Pgr_kruskal : public Pgr_mst<G> {
  public:
+     virtual ~Pgr_kruskal() = default;
      std::vector<MST_rt> kruskal(G &graph);
 
      std::vector<MST_rt> kruskalBFS(
