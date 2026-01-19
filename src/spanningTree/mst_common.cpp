@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: mst_common.cpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2018-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018 Vicky Vergara

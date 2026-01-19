@@ -2,7 +2,7 @@
 File: kingOrdering.cpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2026-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Developer:

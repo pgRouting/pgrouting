@@ -2,7 +2,7 @@
 File: edgeColoring.cpp
 
 Generated with Template by:
-Copyright (c) 2021 pgRouting developers
+Copyright (c) 2021-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:

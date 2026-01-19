@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: to_postgres.cpp
 
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -20,7 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #include "cpp_common/to_postgres.hpp"
 
