@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: driving_distance.c
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
