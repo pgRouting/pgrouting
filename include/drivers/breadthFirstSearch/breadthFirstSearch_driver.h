@@ -2,7 +2,7 @@
 File: breadthFirstSearch_driver.h
 
 Generated with Template by:
-Copyright (c) 2019 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #ifndef INCLUDE_DRIVERS_BREADTHFIRSTSEARCH_BREADTHFIRSTSEARCH_DRIVER_H_
 #define INCLUDE_DRIVERS_BREADTHFIRSTSEARCH_BREADTHFIRSTSEARCH_DRIVER_H_

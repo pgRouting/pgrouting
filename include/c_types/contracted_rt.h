@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: contracted_rt.h
 
-Copyright (c) 2017 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------

@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
-File: astarOneToMany_driver.h
+File: astar_driver.h
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
