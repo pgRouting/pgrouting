@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: trsp_driver.h
 
-Copyright (c) 2011 pgRouting developers
+Copyright (c) 2013-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2011 Stephen Woodbridge
