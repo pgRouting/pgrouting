@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: shortestPath_driver.hpp
 
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Design of one process & driver file by
@@ -11,7 +11,7 @@ Mail: vicky at erosion.dev
 Copying this file (or a derivative) within pgRouting code add the following:
 
 Generated with Template by:
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------

@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: pgr_randomSpanningTree.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2018-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018 Aditya Pratap Singh

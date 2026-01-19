@@ -2,7 +2,7 @@
 File: dijkstraVia.hpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2017-2026 pgRouting developers
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
