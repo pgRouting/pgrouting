@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: prim_dijkstra_visitor.hpp
 
-Copyright (c) 2018 pgRouting developers
+Copyright (c) 2018-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018 Aditya Pratap Singh
