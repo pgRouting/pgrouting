@@ -2,7 +2,7 @@
 File: contractionHierarchies_driver.cpp
 
 Generated with Template by:
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2013-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:

@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: details.cpp
 
-Copyright (c) 2018 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018 Vicky Vergara
