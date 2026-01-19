@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: tsp.cpp
 
-Copyright (c) 2021 pgRouting developers
+Copyright (c) 2021-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2021 Vicky Vergara
