@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: withPointsVia_driver.h
 
-Copyright (c) 2022 pgRouting developers
+Copyright (c) 2013-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:

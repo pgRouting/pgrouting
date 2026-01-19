@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: get_new_queries.h
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
