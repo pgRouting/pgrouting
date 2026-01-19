@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: hawickcircuits.hpp
 
-Copyright (c) 2022 pgRouting developers
+Copyright (c) 2022-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2022 Nitish Chauhan

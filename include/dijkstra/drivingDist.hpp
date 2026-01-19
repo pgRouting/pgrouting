@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: drivingDist.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2023-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2022 Celia Virginia Vergara Castillo
