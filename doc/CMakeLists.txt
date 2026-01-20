@@ -154,7 +154,7 @@ endforeach()
 add_subdirectory("images")
 
 
-configure_file("../tools/testers/sampledata.sql" "${PGR_DOCUMENTATION_SOURCE_DIR}/sampledata/sampledata.sql")
+configure_file("../tools/testers/sampledata.pg" "${PGR_DOCUMENTATION_SOURCE_DIR}/sampledata/sampledata.sql")
 
 
 add_subdirectory("_static")

@@ -57,7 +57,7 @@ Additional Example:
 
 .. rubric:: Data
 
-.. literalinclude:: ../../tools/testers/solomon_100_rc101.data.sql
+.. literalinclude:: oneDepotData.queries
 
 See Also
 -------------------------------------------------------------------------------

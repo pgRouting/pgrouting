@@ -7,7 +7,7 @@ set(LOCAL_FILES
     TSP
     )
 
-configure_file("wi29.sql" "${PGR_DOCUMENTATION_SOURCE_DIR}/wi29.queries")
+configure_file("wi29.pg" "${PGR_DOCUMENTATION_SOURCE_DIR}/wi29.queries")
 
 foreach (f ${LOCAL_FILES})
     configure_file("${f}.result" "${PGR_DOCUMENTATION_SOURCE_DIR}/${f}.queries")
