@@ -176,8 +176,7 @@ print "Operative system found: $OS\n";
 createTestDB($DBNAME);
 
 # Load the sample data & any other relevant data files
-mysystem("$psql $connopts -A -t -q -f tools/testers/sampledata.sql $DBNAME >> $TMP2 2>\&1 ");
-mysystem("$psql $connopts -A -t -q -f tools/testers/lc101.pg $DBNAME >> $TMP2 2>\&1 ");
+mysystem("$psql $connopts -A -t -q -f tools/testers/sampledata.pg $DBNAME >> $TMP2 2>\&1 ");
 
 if ($DATA) {exit 0;};
 
@@ -273,8 +272,7 @@ sub process_single_test{
     my $t0 = [gettimeofday];
 
     # Load the sample data & any other relevant data files
-    mysystem("$psql $connopts -A -t -q -f tools/testers/sampledata.sql $DBNAME >> $TMP2 2>\&1 ");
-    mysystem("$psql $connopts -A -t -q -f tools/testers/lc101.pg $DBNAME >> $TMP2 2>\&1 ");
+    mysystem("$psql $connopts -A -t -q -f tools/testers/sampledata.pg $DBNAME >> $TMP2 2>\&1 ");
 
     # TIN = test input file
     open(TIN, "$inputFile") || do {
