@@ -1,7 +1,9 @@
 name: Check queries
+# This file is part of the pgRouting project.
+# Copyright (c) 2020-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 
-
-# This action runs:
+# Makes a general check on the files
 # - When this file changes
 # - When changes on code (src, include, sql)
 # - When changes on data or testing scripts (tools/testers)
