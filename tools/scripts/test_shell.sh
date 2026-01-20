@@ -27,5 +27,5 @@ do
     code=1
   fi
 done
-popd || exit 1
+popd > /dev/null || exit ${code}
 exit $code
