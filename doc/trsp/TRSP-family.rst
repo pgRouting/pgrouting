@@ -106,7 +106,7 @@ avoided.
 
 These restrictions are represented on a table as follows:
 
-.. literalinclude:: ../../tools/testers/sampledata.sql
+.. literalinclude:: sampledata/sampledata.sql
    :start-after: --RESTRICTIONS CREATE start
    :end-before: --RESTRICTIONS CREATE end
 
