@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: deadEndContraction.sql
 
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
