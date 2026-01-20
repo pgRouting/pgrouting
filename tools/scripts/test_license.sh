@@ -5,63 +5,54 @@
 
 # This test checks that all source files correctly have license headers
 
-EXCLUDE_LIST="txt|sig|png|jpeg|_static|md|control|html|cfg|gif|result|conf"
-
-mylicensecheck() {
-    licensecheck -r --copyright -l 30 --tail 0 -i "$EXCLUDE_LIST" "$1"
-}
-
 DIR=$(git rev-parse --show-toplevel)
 pushd "${DIR}" > /dev/null || exit
-{ mylicensecheck src & mylicensecheck  sql &  mylicensecheck include & mylicensecheck pgtap;}  | grep "No copyright\|UNKNOWN"
-missing1=$(mylicensecheck doc | grep "No copyright")
-missing2=$(grep --files-without-match 'Creative Commons' doc/*/*.rst)
-missing3=$(mylicensecheck docqueries | grep "No copyright")
-missing4=$(grep --files-without-match 'Creative Commons' docqueries/*/*.pg)
-popd > /dev/null || exit
 
-#mylicensecheck doc
+
+# extensions
+EXCLUDE_LIST="png|jpeg|gif|ico|md|sig|mo|xml"
+# directories
+EXCLUDE_LIST="${EXCLUDE_LIST}|_static|_templates|git-tools|doctrees"
+# files
+EXCLUDE_LIST="${EXCLUDE_LIST}|forward|README|Doxyfile|allPairs-performance|typos_whitelist|CPPLINT|gitignore"
+mylicensecheck() {
+    licensecheck --copyright -r -m -l 30 --tail 0 -i "$EXCLUDE_LIST" "$1"
+}
+
+
 error=0
+copyr=""
+missing=""
+NAMES=("doc" "src" "include" "docqueries" "pgtap" "sql" "tools" "ci" "cmake" "doxygen")
+for n in "${NAMES[@]}" ; do
+    results=$(mylicensecheck "${n}")
+    tmp=$(grep UNKNOWN <<< "${results}")
+    if [ -n "${tmp}" ] ; then
+        error=1
+        missing="$missing ${tmp}"
+    fi
+    tmp=$(grep "No copyright" <<< "${results}")
+    if [ -n "${tmp}" ] ; then
+        error=1
+        copyr="${copyr} ${tmp}"
+    fi
+done
+
+if [[ ${copyr} ]]; then
+  echo " ****************************************************"
+  echo " *** Found source files without copyright           *"
+  echo " ****************************************************"
+  echo "${copyr}"
+fi
+
 if [[ $missing ]]; then
   echo " ****************************************************"
   echo " *** Found source files without valid license headers"
   echo " ****************************************************"
   echo "$missing"
-  error=1
 fi
 
-if [[ $missing1 ]]; then
-  echo " ****************************************************"
-  echo " *** Found documentation files without copyright"
-  echo " ****************************************************"
-  echo "$missing1"
-  error=1
-fi
-
-if [[ $missing2 ]]; then
-  echo " ****************************************************"
-  echo " *** Found documentation files without valid license headers"
-  echo " ****************************************************"
-  echo "$missing2"
-  error=1
-fi
-
-if [[ $missing3 ]]; then
-  echo " ****************************************************"
-  echo " *** Found docqueries files without copyright"
-  echo " ****************************************************"
-  echo "$missing3"
-  error=1
-fi
-
-if [[ $missing4 ]]; then
-  echo " ****************************************************"
-  echo " *** Found docqueries files without copyright"
-  echo " ****************************************************"
-  echo "$missing4"
-  error=1
-fi
-
-
+echo the pop
+popd > /dev/null || exit ${error}
+echo the pop
 exit $error
-
