@@ -1,25 +1,11 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2024-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
 
-/*PGR-GNU*****************************************************************
-
-Copyright (c) 2018  pgRouting developers
-Mail: project@pgrouting.org
-
-------
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(3);
+SELECT CASE WHEN min_version('3.4.0') THEN plan(3) ELSE plan(1) END;
+
 
 -- Create network table
 CREATE TABLE railroad (
@@ -68,10 +54,21 @@ WHERE ST_EndPoint(e.geom) = v.geom;
 INSERT INTO restrictions_railroad (cost, path)
 VALUES (100, ARRAY[9,2]),(100, ARRAY[2,9]),(100, ARRAY[7,2]),(100, ARRAY[2,7]);
 
+CREATE OR REPLACE FUNCTION issue2575()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.4.0') THEN
+  RETURN QUERY SELECT skip(1, 'pgr_trsp_withPoints: signatures on 3.4.0');
+  RETURN;
+END IF;
+
 PREPARE dijkstra AS
 SELECT seq, path_seq, node, edge, cost, agg_cost
 FROM pgr_dijkstra('SELECT * FROM railroad', 7, 1);
 
+RETURN QUERY
 SELECT set_eq('dijkstra', $$VALUES
   (1, 1, 7, 3, 1, 0),
   (2, 2, 6, 2, 3, 1),
@@ -86,6 +83,7 @@ FROM pgr_withPoints(
   $$SELECT * FROM (VALUES (1, 2, 0.75),(2, 8, 0.5)) AS t(pid, edge_id, fraction)$$,
   -1, -2);
 
+RETURN QUERY
 SELECT set_eq('between2nodes', $$VALUES
   (1, 1, -1, 2, 0.75,               0),
   (2, 2,  6, 9, 1.4142135623730951, 0.75),
@@ -100,6 +98,7 @@ FROM pgr_trsp_withPoints(
   $$SELECT * FROM restrictions_railroad$$,
   $$SELECT * FROM (VALUES (1, 2, 0.75),(2, 8, 0.5)) AS t(pid, edge_id, fraction)$$,
   -1, -2);
+RETURN QUERY
 SELECT set_eq('between2nodeswithRestriction', $$VALUES
    (1, 1, -1, -2, -1, 2, 0.75,                0),
    (2, 2, -1, -2,  6, 3, 1,                   0.75),
@@ -112,7 +111,10 @@ SELECT set_eq('between2nodeswithRestriction', $$VALUES
    (9, 9, -1, -2, -2,-1, 0,                  19.664213562373096)
   $$, 'expected withPoints');
 
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT issue2575();
 SELECT finish();
 ROLLBACK;
-
-
