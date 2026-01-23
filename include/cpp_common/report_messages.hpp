@@ -1,18 +1,9 @@
 /*PGR-GNU*****************************************************************
-File: allpairs_driver.hpp
+File: report_messages.hpp
 
-Copyright (c) 2015-2026 pgRouting developers
-Mail: project@pgrouting.org
-
-Design of one process & driver file by
-Copyright (c) 2025 Celia Virginia Vergara Castillo
-Mail: vicky at erosion.dev
-
-Copying this file (or a derivative) within pgRouting code add the following:
-
-Generated with Template by:
-Copyright (c) 2015-2026 pgRouting developers
-Mail: project@pgrouting.org
+Function's developer:
+Copyright (c) 2016 Celia Virginia Vergara Castillo
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -32,20 +23,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_
-#define INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_
+#ifndef INCLUDE_CPP_COMMON_REPORT_MESSAGES_HPP_
+#define INCLUDE_CPP_COMMON_REPORT_MESSAGES_HPP_
 #pragma once
 
-#include <string>
 #include <sstream>
 
-using IID_t_rt = struct IID_t_rt;
+namespace pgrouting {
 
-void do_allpairs(
-        const std::string&,
-        bool, int,
+void
+report_messages(
+        std::ostringstream &,
+        std::ostringstream &,
+        std::ostringstream &);
 
-        IID_t_rt*&, size_t&,
-        std::ostringstream&, std::ostringstream&);
+}  // namespace pgrouting
 
-#endif  // INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_
+#endif  // INCLUDE_CPP_COMMON_REPORT_MESSAGES_HPP_

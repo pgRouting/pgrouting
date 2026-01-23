@@ -6,7 +6,7 @@ Mail: project@pgrouting.org
 
 Design of one process & driver file by
 Copyright (c) 2025 Celia Virginia Vergara Castillo
-Mail: vicky_vergara at erosion.dev
+Mail: vicky at erosion.dev
 
 Copying this file (or a derivative) within pgRouting code add the following:
 
@@ -36,21 +36,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 extern "C" {
 #include "c_common/postgres_connection.h"
-#include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 }
 
 #include <string>
+#include <sstream>
 
 #include "c_types/iid_t_rt.h"
+
+#include "cpp_common/report_messages.hpp"
 #include "cpp_common/assert.hpp"
+#include "cpp_common/alloc.hpp"
+
 #include "drivers/allpairs_driver.hpp"
 
 /**
  which = 0 -> johnson
  which = 1 -> floydWarshall
-
- This is c++ code, linked as C code, because pgr_process_allpairs is called from C code
  */
 void pgr_process_allpairs(
         const char* edges_sql,
@@ -58,20 +60,24 @@ void pgr_process_allpairs(
         int which,
         IID_t_rt **result_tuples,
         size_t *result_count) {
+    using pgrouting::to_pg_msg;
+    using pgrouting::pgr_free;
     pgassert(edges_sql);
     pgassert(!(*result_tuples));
     pgassert(*result_count == 0);
     pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
+
+    std::ostringstream log;
+    std::ostringstream err;
+    std::ostringstream notice;
 
     clock_t start_t = clock();
     do_allpairs(
-            edges_sql, directed,
+            edges_sql? edges_sql : "",
+            directed,
             which,
-            result_tuples, result_count,
-            &log_msg, &err_msg);
+            (*result_tuples), (*result_count),
+            log, err);
 
     if (which == 0) {
         time_msg(std::string(" processing pgr_johnson").c_str(), start_t, clock());
@@ -79,13 +85,12 @@ void pgr_process_allpairs(
         time_msg(std::string(" processing pgr_floydWarshall").c_str(), start_t, clock());
     }
 
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
+    if (!err.str().empty() && (*result_tuples)) {
+        if (*result_tuples) pfree(*result_tuples);
+        (*result_tuples) = nullptr;
         (*result_count) = 0;
     }
 
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
+    pgrouting::report_messages(log, notice, err);
     pgr_SPI_finish();
 }
