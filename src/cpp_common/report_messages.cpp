@@ -1,18 +1,9 @@
 /*PGR-GNU*****************************************************************
-File: allpairs_driver.hpp
+File: report_messages.cpp
 
-Copyright (c) 2015-2026 pgRouting developers
-Mail: project@pgrouting.org
-
-Design of one process & driver file by
-Copyright (c) 2025 Celia Virginia Vergara Castillo
+Developer:
+Copyright (c) 2026 Celia Virginia Vergara Castillo
 Mail: vicky at erosion.dev
-
-Copying this file (or a derivative) within pgRouting code add the following:
-
-Generated with Template by:
-Copyright (c) 2015-2026 pgRouting developers
-Mail: project@pgrouting.org
 
 ------
 
@@ -32,20 +23,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_
-#define INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_
-#pragma once
+#include "cpp_common/report_messages.hpp"
+extern "C" {
+#include "c_common/postgres_connection.h"
+#include "c_common/e_report.h"
+}
+#include "cpp_common/alloc.hpp"
 
-#include <string>
 #include <sstream>
 
-using IID_t_rt = struct IID_t_rt;
+namespace pgrouting {
 
-void do_allpairs(
-        const std::string&,
-        bool, int,
+void
+report_messages(
+        std::ostringstream &log,
+        std::ostringstream &notice,
+        std::ostringstream &err) {
+    /*
+     * Nothing to do
+     */
+    if (log.str().empty() && notice.str().empty() && err.str().empty()) return;
 
-        IID_t_rt*&, size_t&,
-        std::ostringstream&, std::ostringstream&);
+    auto err_msg = to_pg_msg(err);
+    auto log_msg = to_pg_msg(log);
+    auto notice_msg = to_pg_msg(notice);
 
-#endif  // INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_
+    pgr_global_report(&log_msg, &notice_msg, &err_msg);
+}
+
+} //  namespace pgrouting
