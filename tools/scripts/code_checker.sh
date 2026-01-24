@@ -22,6 +22,7 @@ DIRECTORY="$1"
 INCLUDE_ORDER="
 -build/include_order:src/cpp_common/pgdata_getters.cpp,
 -build/include_order:include/cpp_common/get_data.hpp,
+-build/include_order:src/cpp_common/report_messages.cpp,
 -build/include_order:src/dijkstra/shortestPath_process.cpp,
 -build/include_order:src/metrics/metrics_process.cpp,
 -build/include_order:src/ordering/ordering_process.cpp,
