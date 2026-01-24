@@ -34,48 +34,45 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 extern "C" {
 #include "c_common/postgres_connection.h"
-#include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 }
 
 #include <string>
+#include <sstream>
 
 #include "c_types/iid_t_rt.h"
+
+#include "cpp_common/report_messages.hpp"
 #include "cpp_common/assert.hpp"
+#include "cpp_common/alloc.hpp"
+
 #include "drivers/metrics_driver.hpp"
 
 /**
  which = 0 -> bandwidth
-
- This is c++ code, linked as C code, because pgr_process_metrics is called from C code
  */
-void pgr_process_metrics(const char* edges_sql, int which, IID_t_rt **result_tuples, size_t *result_count) {
+uint64_t pgr_process_metrics(
+        const char* edges_sql,
+        int which) {
     pgassert(edges_sql);
-    pgassert(!(*result_tuples));
-    pgassert(*result_count == 0);
+
     pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
+
+    std::ostringstream log;
+    std::ostringstream err;
+    std::ostringstream notice;
 
     clock_t start_t = clock();
-    do_metrics(
-            edges_sql,
+    auto result = do_metrics(
+            edges_sql? edges_sql : "",
             which,
-            result_tuples, result_count,
-            &log_msg, &err_msg);
+            log, err);
 
     if (which == 0) {
         time_msg(std::string(" processing pgr_bandwidth").c_str(), start_t, clock());
     }
 
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
+    pgrouting::report_messages(log, notice, err);
     pgr_SPI_finish();
+    return result;
 }

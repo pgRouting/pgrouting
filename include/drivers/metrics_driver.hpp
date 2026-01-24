@@ -34,17 +34,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_METRICS_DRIVER_HPP_
 #pragma once
 
+
 #include <cstddef>
-#include <string>
 #include <cstdint>
+#include <string>
+#include <sstream>
 
-#include "c_types/iid_t_rt.h"
-void
+uint64_t
 do_metrics(
-    std::string,
-    int,
+        const std::string&,
+        int,
 
-    IID_t_rt**, size_t*,
-    char**, char**);
+        std::ostringstream&, std::ostringstream&);
 
 #endif  // INCLUDE_DRIVERS_METRICS_DRIVER_HPP_

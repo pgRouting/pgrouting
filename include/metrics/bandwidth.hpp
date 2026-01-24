@@ -44,12 +44,10 @@ namespace metrics {
 
 template <class G>
 uint64_t bandwidth(const G &graph) {
-        CHECK_FOR_INTERRUPTS();
+    CHECK_FOR_INTERRUPTS();
 
-        try {
-        const auto& boost_graph = graph.graph;
-
-        return static_cast<uint64_t>(boost::bandwidth(boost_graph));
+    try {
+        return boost::bandwidth(graph.graph);
     } catch (boost::exception const& ex) {
         (void)ex;
         throw;
