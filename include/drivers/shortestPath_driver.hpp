@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cstddef>
 #include <cstdint>
 #include <string>
+#include <sstream>
 
 using Path_rt = struct Path_rt;
 using ArrayType = struct ArrayType;
@@ -50,7 +51,9 @@ void do_shortestPath(
         bool, bool, bool,
         int64_t, bool, char, bool,
 
-        int32_t, Path_rt**, size_t*,
-        bool*, char**, char**, char**);
+        int32_t,
+        bool&,
+        Path_rt*&, size_t&,
+        std::ostringstream&, std::ostringstream&, std::ostringstream&);
 
 #endif  // INCLUDE_DRIVERS_SHORTESTPATH_DRIVER_HPP_
