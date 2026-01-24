@@ -43,19 +43,8 @@ PG_FUNCTION_INFO_V1(_pgr_bandwidth);
 
 PGDLLEXPORT Datum
 _pgr_bandwidth(PG_FUNCTION_ARGS) {
-    IID_t_rt *result_tuples = NULL;
-    size_t result_count = 0;
-
-    pgr_process_metrics(
+    uint64_t result = pgr_process_metrics(
         text_to_cstring(PG_GETARG_TEXT_P(0)),
-        0,  /* bandwidth */
-        &result_tuples,
-        &result_count);
-
-     if (result_count == 0) {
-             PG_RETURN_UINT64(0);
-     } else {
-             PG_RETURN_UINT64((uint64_t)result_tuples[0].from_vid);
-     }
+        0);  /* bandwidth */
+    PG_RETURN_UINT64(result);
 }
-
