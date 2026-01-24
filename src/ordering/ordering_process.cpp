@@ -36,7 +36,9 @@ extern "C" {
 }
 
 #include <string>
+#include <sstream>
 
+#include "cpp_common/report_messages.hpp"
 #include "cpp_common/assert.hpp"
 #include "drivers/ordering_driver.hpp"
 
@@ -56,16 +58,17 @@ void pgr_process_ordering(
     pgassert(!(*result_tuples));
     pgassert(*result_count == 0);
     pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
+
+    std::ostringstream log;
+    std::ostringstream err;
+    std::ostringstream notice;
 
     clock_t start_t = clock();
     do_ordering(
-            std::string(edges_sql),
+            edges_sql? edges_sql : "",
             which,
-            result_tuples, result_count,
-            &log_msg , &notice_msg, &err_msg);
+            (*result_tuples), (*result_count),
+            log, notice, err);
 
     switch (which) {
         case SLOAN:
@@ -84,13 +87,12 @@ void pgr_process_ordering(
             break;
     }
 
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
+    if (!err.str().empty() && (*result_tuples)) {
+        if (*result_tuples) pfree(*result_tuples);
+        (*result_tuples) = nullptr;
         (*result_count) = 0;
     }
 
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
+    pgrouting::report_messages(log, notice, err);
     pgr_SPI_finish();
 }

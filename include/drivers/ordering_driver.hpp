@@ -36,15 +36,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <cstddef>
-#include <string>
 #include <cstdint>
+#include <string>
+#include <sstream>
 
 #include "c_common/enums.h"
-void
-do_ordering(
-        const std::string&, Which,
-        int64_t**,  size_t*,
-        char **, char **, char **);
 
+void do_ordering(
+        const std::string&, Which,
+
+        int64_t*&, size_t&,
+        std::ostringstream&, std::ostringstream&, std::ostringstream&);
 
 #endif  // INCLUDE_DRIVERS_ORDERING_DRIVER_HPP_
