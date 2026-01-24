@@ -60,7 +60,8 @@ void pgr_process_shortestPath(
         int64_t, bool,
         char*, bool,
 
-        int32_t, Path_rt**, size_t*);
+        int32_t,
+        Path_rt**, size_t*);
 
 #ifdef __cplusplus
 }
