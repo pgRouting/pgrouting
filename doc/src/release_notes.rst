@@ -36,7 +36,13 @@ pgRouting 4.0
 
 .. current
 
-pgRouting 4.0.0-alpha1 Release Notes
+pgRouting 4.0.1 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the
+:milestone:`4.0.1`
+
+pgRouting 4.0.0 Release Notes
 -------------------------------------------------------------------------------
 
 To see all issues & pull requests closed by this release see the
