@@ -77,8 +77,6 @@ namespace detail {
  * - is in the diagonal: matrix[i,i]
  * - has "infinity" as value
  */
-size_t count_rows(const std::vector<std::vector<double>>&);
-
 size_t
 count_rows(const std::vector<std::vector<double>> &matrix) {
     int64_t count = 0;
