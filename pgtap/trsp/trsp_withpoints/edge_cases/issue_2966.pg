@@ -12,15 +12,15 @@ BEGIN;
 
 SET extra_float_digits=-3;
 
-SELECT CASE WHEN min_version('4.1.0') THEN plan(2) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.1') THEN plan(2) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION issue_2966_tests()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF NOT min_version('4.1.0') THEN
-    RETURN QUERY SELECT skip(1, 'pgr_trsp_withPoints: Fix implemented on 4.1.0');
+  IF NOT min_version('4.0.1') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_trsp_withPoints: Fix implemented on 4.0.1');
     RETURN;
   END IF;
 
