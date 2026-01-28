@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v4.0
+# Copyright (C) %Y pgRouting developers
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-08 15:44+0000\n"
+"POT-Creation-Date: 2026-01-28 20:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3526,6 +3526,42 @@ msgstr ""
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.1%22>`__"
 msgstr ""
 
+msgid "Bug Fixes"
+msgstr ""
+
+msgid "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withPoints does not pick optimal route when fraction = 1"
+msgstr ""
+
+msgid "`#3034 <https://github.com/pgRouting/pgrouting/issues/3034>`__: metrics driver should not be using new"
+msgstr ""
+
+msgid "Code enhancements"
+msgstr ""
+
+msgid "`#3044 <https://github.com/pgRouting/pgrouting/issues/3044>`__: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions"
+msgstr ""
+
+msgid "`#3040 <https://github.com/pgRouting/pgrouting/issues/3040>`__: Check and fix cppcoreguidelines-virtual-class-destructor"
+msgstr ""
+
+msgid "`#3039 <https://github.com/pgRouting/pgrouting/issues/3039>`__: Check and fix cppcoreguidelines-special-member-functions"
+msgstr ""
+
+msgid "`#3038 <https://github.com/pgRouting/pgrouting/issues/3038>`__: Check and fix cppcoreguidelines-prefer-member-initializer"
+msgstr ""
+
+msgid "`#3037 <https://github.com/pgRouting/pgrouting/issues/3037>`__: Check and fix cppcoreguidelines-init-variables"
+msgstr ""
+
+msgid "`#3035 <https://github.com/pgRouting/pgrouting/issues/3035>`__: Pass by reference on existing drivers"
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid "`#3031 <https://github.com/pgRouting/pgrouting/issues/3031>`__: pgtap license to Creative commons and License texts standardization"
+msgstr ""
+
 msgid "pgRouting 4.0.0 Release Notes"
 msgstr ""
 
@@ -4442,9 +4478,6 @@ msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPo
 msgstr ""
 
 msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
-msgstr ""
-
-msgid "Code enhancements"
 msgstr ""
 
 msgid "Removal of unused C/C++ code"
@@ -13498,18 +13531,6 @@ msgstr ""
 msgid "pgRouting 4.0"
 msgstr ""
 
-msgid "Bug Fixes"
-msgstr ""
-
-msgid "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withPoints does not pick optimal route when fraction = 1"
-msgstr ""
-
-msgid "Code enhancement"
-msgstr ""
-
-msgid "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordering functions standardized"
-msgstr ""
-
 msgid "pgRouting 3"
 msgstr ""
 
@@ -13706,6 +13727,9 @@ msgid "`#2635 <https://github.com/pgRouting/pgrouting/issues/2635>`__: pgr_LineG
 msgstr ""
 
 msgid "``pgr_lineGraph``"
+msgstr ""
+
+msgid "Code enhancement"
 msgstr ""
 
 msgid "`#2599 <https://github.com/pgRouting/pgrouting/issues/2599>`__: Driving distance cleanup"
