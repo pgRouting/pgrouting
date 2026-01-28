@@ -41,7 +41,23 @@ Bug Fixes
 ...............................................................................
 
 * :issue:`2966`: pgr_withPoints does not pick optimal route when fraction = 1
+* :issue:`3034`: metrics driver should not be using new
 
+Code enhancements
+...............................................................................
+
+* :issue:`3044`: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions
+* :issue:`3040`: Check and fix cppcoreguidelines-virtual-class-destructor
+* :issue:`3039`: Check and fix cppcoreguidelines-special-member-functions
+* :issue:`3038`: Check and fix cppcoreguidelines-prefer-member-initializer
+* :issue:`3037`: Check and fix cppcoreguidelines-init-variables
+* :issue:`3035`: Pass by reference on existing drivers
+
+Administration
+...............................................................................
+
+* :issue:`3031`: pgtap license to Creative commons and License texts
+  standardization
 
 pgRouting 4.0.0 Release Notes
 -------------------------------------------------------------------------------
