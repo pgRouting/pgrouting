@@ -49,6 +49,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "ordering/cuthillMckeeOrdering.hpp"
 #include "ordering/topologicalSort.hpp"
 
+namespace {
+
 template <typename G, typename Func>
 void
 process(const std::vector<Edge_t> &edges, G &graph, Func ordering,
@@ -59,6 +61,8 @@ process(const std::vector<Edge_t> &edges, G &graph, Func ordering,
     auto results = ordering(graph);
     get_vertexId(graph, results, return_count, return_tuples);
 }
+
+}  // namespace
 
 void
 do_ordering(
@@ -79,12 +83,12 @@ do_ordering(
         using pgrouting::pgget::get_edges;
         using pgrouting::UndirectedGraph;
         using pgrouting::DirectedGraph;
-        using pgrouting::to_postgres::get_vertexId;
 
         using pgrouting::functions::sloanOrdering;
         using pgrouting::functions::kingOrdering;
         using pgrouting::functions::cuthillMckeeOrdering;
         using pgrouting::functions::topologicalSort;
+
 
         hint = edges_sql;
         auto edges = get_edges(edges_sql, true, false);
@@ -105,24 +109,28 @@ do_ordering(
 
 
         switch (which) {
-            case SLOAN: {
-                            process(edges, undigraph, &sloanOrdering, return_count, return_tuples);
-                            break;
-                        }
-            case CUTCHILL: {
-                               process(edges, undigraph, &cuthillMckeeOrdering, return_count, return_tuples);
-                               break;
-                           }
-            case KING: {
-                           process(edges, undigraph, &kingOrdering, return_count, return_tuples);
-                           break;
-                       }
-            case TOPOSORT: {
-                               process(edges, digraph, &topologicalSort, return_count, return_tuples);
-                               break;
-                           }
+            case SLOAN:
+                {
+                    process(edges, undigraph, &sloanOrdering, return_count, return_tuples);
+                    break;
+                }
+            case CUTCHILL:
+                {
+                    process(edges, undigraph, &cuthillMckeeOrdering, return_count, return_tuples);
+                    break;
+                }
+            case KING:
+                {
+                    process(edges, undigraph, &kingOrdering, return_count, return_tuples);
+                    break;
+                }
+            case TOPOSORT:
+                {
+                    process(edges, digraph, &topologicalSort, return_count, return_tuples);
+                    break;
+                }
             default:
-                           break;
+                break;
         }
 
         if (return_count == 0) {
