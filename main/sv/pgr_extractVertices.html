@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=ceb0b906"></script>
+    <script src="_static/documentation_options.js?v=aa7f6942"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
@@ -79,7 +79,7 @@
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Anteckningar för release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Versionsinformation</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">Migrationsguide</a></li>
@@ -321,10 +321,10 @@
 <ul class="simple">
 <li><p>Ignorerade kolumner:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">startpunkt</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">startpoint</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">endpoint</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Källa</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mål</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -344,7 +344,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>(Valfritt) identifierare för kanten.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">startpunkt</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">startpoint</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">POINT</span></code></p></td>
 <td><p>POINT Geometri för startvertexen.</p></td>
 </tr>
@@ -358,8 +358,8 @@
 <ul class="simple">
 <li><p>Ignorerade kolumner:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">Källa</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mål</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -379,11 +379,11 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>(Valfritt) identifierare för kanten.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Källa</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
 <td><p>Identifierare för den första slutpunktsvertexen på kanten.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mål</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
 <td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
 </tr>
@@ -671,8 +671,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Senast uppdaterad dec. 06, 2025.<br/>
+        &copy; Copyright %Y pgRouting developers.<br/>
+      Senast uppdaterad jan. 29, 2026.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

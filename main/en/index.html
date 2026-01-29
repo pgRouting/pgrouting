@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=85df70b0"></script>
+    <script src="_static/documentation_options.js?v=e110a0f4"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
@@ -103,7 +103,11 @@
 <li><a class="reference internal" href="#functions-by-categories">Functions by categories</a></li>
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Available Functions but not official pgRouting functions</a></li>
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
-<li><a class="reference internal" href="#pgrouting-4-0-0-alpha1-release-notes">pgRouting 4.0.0-alpha1 Release Notes</a><ul>
+<li><a class="reference internal" href="#pgrouting-4-0-1-release-notes">pgRouting 4.0.1 Release Notes</a><ul>
+<li><a class="reference internal" href="#administration">Administration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 Release Notes</a><ul>
 <li><a class="reference internal" href="#build">Build</a></li>
 <li><a class="reference internal" href="#documentation-build">Documentation build</a></li>
 <li><a class="reference internal" href="#summary-of-changes-by-function">Summary of changes by function</a></li>
@@ -173,7 +177,7 @@
 <h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h1>
 <p>pgRouting extends the <a class="reference external" href="https://postgis.net">PostGIS</a>/<a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> geospatial database to provide geospatial
 routing and other network analysis functionality.</p>
-<p>This is the manual for pgRouting v4.0.0.</p>
+<p>This is the manual for pgRouting v4.0.1.</p>
 <img alt="Creative Commons Attribution-Share Alike 3.0 License" class="align-left" src="_images/ccbysa.png" />
 <p>The pgRouting Manual is licensed under a <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share
 Alike 3.0 License</a>.
@@ -232,7 +236,7 @@ For other licenses used in pgRouting see the <a class="reference internal" href=
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#result-columns">Result columns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#performance-tips">Performance Tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#how-to-contribute">How to contribute</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#see-also">See also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#see-also">See Also</a></li>
 </ul>
 </li>
 </ul>
@@ -438,8 +442,34 @@ table information.</p></li>
 </section>
 <section id="release-notes">
 <h2><a class="reference internal" href="release_notes.html"><span class="doc">Release Notes</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
-<section id="pgrouting-4-0-0-alpha1-release-notes">
-<h3>pgRouting 4.0.0-alpha1 Release Notes<a class="headerlink" href="#pgrouting-4-0-0-alpha1-release-notes" title="Link to this heading">¶</a></h3>
+<section id="pgrouting-4-0-1-release-notes">
+<h3>pgRouting 4.0.1 Release Notes<a class="headerlink" href="#pgrouting-4-0-1-release-notes" title="Link to this heading">¶</a></h3>
+<p>To see all issues &amp; pull requests closed by this release see the
+<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.1%22">Github milestone for 4.0.1</a></p>
+<p class="rubric">Bug Fixes</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2966">#2966</a>: pgr_withPoints does not pick optimal route when fraction = 1</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3034">#3034</a>: metrics driver should not be using new</p></li>
+</ul>
+<p class="rubric">Code enhancements</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3044">#3044</a>: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3040">#3040</a>: Check and fix cppcoreguidelines-virtual-class-destructor</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3039">#3039</a>: Check and fix cppcoreguidelines-special-member-functions</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3038">#3038</a>: Check and fix cppcoreguidelines-prefer-member-initializer</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3037">#3037</a>: Check and fix cppcoreguidelines-init-variables</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3035">#3035</a>: Pass by reference on existing drivers</p></li>
+</ul>
+<section id="administration">
+<h4>Administration<a class="headerlink" href="#administration" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3031">#3031</a>: pgtap license to Creative commons and License texts
+standardization</p></li>
+</ul>
+</section>
+</section>
+<section id="pgrouting-4-0-0-release-notes">
+<h3>pgRouting 4.0.0 Release Notes<a class="headerlink" href="#pgrouting-4-0-0-release-notes" title="Link to this heading">¶</a></h3>
 <p>To see all issues &amp; pull requests closed by this release see the
 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.0%22">Github milestone for 4.0.0</a></p>
 <nav class="contents local" id="contents">
@@ -1283,8 +1313,8 @@ integer,double precision,double precision,double precision,boolean)</p></li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Dec 06, 2025.<br/>
+        &copy; Copyright %Y pgRouting developers.<br/>
+      Last updated on Jan 29, 2026.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

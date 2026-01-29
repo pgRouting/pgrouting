@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=fa0eef97"></script>
+    <script src="_static/documentation_options.js?v=9ec13fd3"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
@@ -198,7 +198,7 @@
 </li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -425,7 +425,7 @@ be used.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Prepare tables</p>
+<p class="rubric">Preparar tablas</p>
 <p>In this example: the edges table will need an additional column and the vertex
 table will be rebuilt completely.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">old_id</span> <span class="n">BIGINT</span><span class="p">;</span>
@@ -466,10 +466,8 @@ results into the edges table.</p>
 <span class="n">UPDATE</span> <span class="mi">24</span>
 </pre></div>
 </div>
-<p class="rubric">Update other values</p>
-<p>In this example only <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> are updated, where they are
-based on the length of the geometry and the directionality is kept using the
-<code class="docutils literal notranslate"><span class="pre">sign</span></code> function.</p>
+<p class="rubric">Actualizar otros valores</p>
+<p>En este ejemplo sólo se actualizan <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>, donde se basan en la longitud de la geometría y se mantiene la direccionalidad mediante la función <code class="docutils literal notranslate"><span class="pre">sign</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">e</span>
   <span class="n">SET</span> <span class="n">cost</span>          <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span><span class="o">*</span><span class="n">sign</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">cost</span><span class="p">),</span>
       <span class="n">reverse_cost</span>  <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span><span class="o">*</span><span class="n">sign</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">reverse_cost</span><span class="p">)</span>
@@ -535,8 +533,8 @@ based on the length of the geometry and the directionality is kept using the
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en dic 06, 2025.<br/>
+        &copy; Copyright %Y pgRouting developers.<br/>
+      Actualizado por última vez en ene 29, 2026.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
