@@ -38,14 +38,15 @@ using IID_t_rt = struct IID_t_rt;
 typedef struct IID_t_rt IID_t_rt;
 #endif
 
+#include "c_common/enums.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 void pgr_process_allpairs(
         const char*,
-        bool, int,
-
+        bool, enum Which,
         IID_t_rt**, size_t*);
 
 #ifdef __cplusplus

@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 extern "C" {
 #include "c_common/postgres_connection.h"
+#include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 }
 
@@ -45,19 +46,16 @@ extern "C" {
 #include "c_types/iid_t_rt.h"
 
 #include "cpp_common/report_messages.hpp"
+#include "cpp_common/utilities.hpp"
 #include "cpp_common/assert.hpp"
 #include "cpp_common/alloc.hpp"
 
 #include "drivers/allpairs_driver.hpp"
 
-/**
- which = 0 -> johnson
- which = 1 -> floydWarshall
- */
 void pgr_process_allpairs(
         const char* edges_sql,
         bool directed,
-        int which,
+        enum Which which,
         IID_t_rt **result_tuples,
         size_t *result_count) {
     using pgrouting::to_pg_msg;
@@ -79,11 +77,8 @@ void pgr_process_allpairs(
             (*result_tuples), (*result_count),
             log, err);
 
-    if (which == 0) {
-        time_msg(std::string(" processing pgr_johnson").c_str(), start_t, clock());
-    } else {
-        time_msg(std::string(" processing pgr_floydWarshall").c_str(), start_t, clock());
-    }
+    auto name = std::string(" processing ") + pgrouting::get_name(which);
+    time_msg(name.c_str(), start_t, clock());
 
     if (!err.str().empty() && (*result_tuples)) {
         if (*result_tuples) pfree(*result_tuples);

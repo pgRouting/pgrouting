@@ -36,15 +36,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_
 #pragma once
 
+#include <cstddef>
+#include <cstdint>
 #include <string>
 #include <sstream>
+
+#include "c_common/enums.h"
 
 using IID_t_rt = struct IID_t_rt;
 
 void do_allpairs(
         const std::string&,
-        bool, int,
-
+        bool, Which,
         IID_t_rt*&, size_t&,
         std::ostringstream&, std::ostringstream&);
 
