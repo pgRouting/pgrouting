@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <string>
 #include <utility>
+#include <cstdint>
 
 #include "c_types/iid_t_rt.h"
 #include "cpp_common/pgdata_getters.hpp"
@@ -44,13 +45,13 @@ void
 do_allpairs(
         const std::string &edges_sql,
         bool directed,
-        int which,
+        Which which,
 
         IID_t_rt* &return_tuples,
         size_t &return_count,
         std::ostringstream &log,
         std::ostringstream &err) {
-    std::string hint;
+    std::string hint = "";
 
     try {
         pgassert(!edges_sql.empty());
@@ -78,7 +79,7 @@ do_allpairs(
             DirectedGraph graph;
             graph.insert_edges(edges);
 
-            if (which == 0) {
+            if (which == JOHNSON) {
                 auto matrix = johnson(graph);
                 matrix_to_tuple(graph, matrix, return_count, return_tuples);
             } else {
@@ -89,7 +90,7 @@ do_allpairs(
             UndirectedGraph graph;
             graph.insert_edges(edges);
 
-            if (which == 0) {
+            if (which == JOHNSON) {
                 auto matrix = johnson(graph);
                 matrix_to_tuple(graph, matrix, return_count, return_tuples);
             } else {
