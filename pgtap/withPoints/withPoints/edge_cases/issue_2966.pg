@@ -1,0 +1,83 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+/*
+ * Issue #2966: pgr_withPoints does not pick optimal route when fraction = 1
+ * https://github.com/pgRouting/pgrouting/issues/2966
+ */
+
+BEGIN;
+
+SET extra_float_digits=-3;
+
+SELECT CASE WHEN min_version('4.0.1') THEN plan(4) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION issue_2966_tests()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('4.0.1') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_withPoints: Fix implemented on 4.0.1');
+    RETURN;
+  END IF;
+
+  CREATE TEMP TABLE test_edges AS
+  SELECT * FROM (VALUES
+    (100::BIGINT, 1001::BIGINT, 1002::BIGINT, 10::FLOAT, 10::FLOAT),
+    (101::BIGINT, 1002::BIGINT, 1003::BIGINT, 12::FLOAT, 12::FLOAT),
+    (102::BIGINT, 1002::BIGINT, 1003::BIGINT, 100::FLOAT, 100::FLOAT)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY SELECT set_eq(
+    $$SELECT round(agg_cost::numeric, 2)::TEXT FROM pgr_withPoints(
+      'SELECT * FROM test_edges',
+      'SELECT * FROM (VALUES (1, 100, 0.5), (2, 101, 0.99)) AS t(pid, edge_id, fraction)',
+      -1, -2
+    ) WHERE edge < 0$$,
+    ARRAY['16.88']::TEXT[],
+    'pgr_withPoints: fraction=0.99 baseline test'
+  );
+
+  RETURN QUERY SELECT set_eq(
+    $$SELECT agg_cost::TEXT FROM pgr_withPoints(
+      'SELECT * FROM test_edges',
+      'SELECT * FROM (VALUES (1, 100, 0.5), (2, 101, 1)) AS t(pid, edge_id, fraction)',
+      -1, -2
+    ) WHERE edge < 0$$,
+    ARRAY['17']::TEXT[],
+    'pgr_withPoints: expected cost is 17'
+  );
+
+  RETURN QUERY SELECT set_eq(
+    $$SELECT edge::TEXT FROM pgr_withPoints(
+      'SELECT * FROM test_edges',
+      'SELECT * FROM (VALUES (1, 100, 0.5), (2, 101, 1)) AS t(pid, edge_id, fraction)',
+      -1, -2
+    ) WHERE edge > 0$$,
+    ARRAY['100', '101']::TEXT[],
+    'pgr_withPoints: Path should use edges 100 and 101'
+  );
+
+  RETURN QUERY SELECT set_eq(
+    $$SELECT agg_cost::TEXT FROM pgr_withPoints(
+      'SELECT * FROM test_edges',
+      'SELECT * FROM (VALUES (1, 100, 0.5), (2, 101, 0)) AS t(pid, edge_id, fraction)',
+      -1, -2
+    ) WHERE edge < 0$$,
+    ARRAY['5']::TEXT[],
+    'pgr_withPoints: fraction=0 control test'
+  );
+
+  DROP TABLE test_edges;
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT issue_2966_tests();
+
+SELECT * FROM finish();
+ROLLBACK;

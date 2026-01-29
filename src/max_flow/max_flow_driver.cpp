@@ -2,7 +2,7 @@
 File: max_flow_driver.cpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -114,7 +114,7 @@ pgr_do_max_flow(
                 edges, sources, targets, algorithm);
         // digraph.create_flow_graph(edges, sources, targets, algorithm);
 
-        int64_t max_flow;
+        int64_t max_flow = 0;
         if (algorithm == 1) {
             max_flow = digraph.push_relabel();
         } else if (algorithm == 3) {

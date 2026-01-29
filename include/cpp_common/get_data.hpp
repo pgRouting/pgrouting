@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: get_data.hpp
 
-Copyright (c) 2023 pgRouting developers
+Copyright (c) 2023-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2023 Celia Virginia Vergara Castillo
@@ -61,8 +61,8 @@ void get_data(
         Func func) {
     const int tuple_limit = 1000000;
 
-    size_t total_tuples;
-    size_t valid_pgtuples;
+    size_t total_tuples = 0;
+    size_t valid_pgtuples = 0;
 
     auto SPIplan = pgr_SPI_prepare(sql);
     auto SPIportal = pgr_SPI_cursor_open(SPIplan);
@@ -120,8 +120,8 @@ std::vector<Data_type> get_data(
         Func func) {
     const int tuple_limit = 1000000;
 
-    size_t total_tuples;
-    size_t valid_pgtuples;
+    size_t total_tuples = 0;
+    size_t valid_pgtuples = 0;
 
     auto SPIplan = pgr_SPI_prepare(sql.c_str());
     auto SPIportal = pgr_SPI_cursor_open(SPIplan);

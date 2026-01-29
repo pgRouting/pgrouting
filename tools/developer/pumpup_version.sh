@@ -1,9 +1,8 @@
 #!/bin/bash
+# This file is part of the pgRouting project.
+# Copyright (c) 2020-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 
-# ------------------------------------------------------------------------------
-# pgRouting Scripts
-# Copyright(c) pgRouting Contributors
-#
 # Pump up version
 # ------------------------------------------------------------------------------
 # shellcheck disable=SC2016
@@ -151,7 +150,7 @@ fi
 # ------
 # Documentation related
 # ------
-bash tools/transifex/update_locale.sh
+#bash tools/transifex/update_locale.sh
 perl -pi -e 's/# Copyright(.*) v(.*)$/# Copyright$1 v'"${NEW_MAYOR}.${NEW_MINOR}"'/' locale/pot/*.pot locale/*/*/*.po
 perl -pi -e 's/Id-Version: pgRouting v'"${MAYOR}.${MINOR}"'/Id-Version: pgRouting v'"${NEW_MAYOR}.${NEW_MINOR}"'/' locale/*/*/*.po locale/pot/*.pot
 perl -pi -e "s/versionsArr = \[/versionsArr = \['${NEW_MAYOR}.${NEW_MINOR}',/" doc/_static/page_history.js

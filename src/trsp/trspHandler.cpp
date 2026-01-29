@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: trspHandler.cpp
 
-Copyright (c) 2011 pgRouting developers
+Copyright (c) 2013-2026 pgRouting developers
 Mail: project@pgrouting.org
 Copyright (c) 2022 Vicky Vergara
 * Added functionality to handle map of combinations
@@ -232,8 +232,6 @@ void TrspHandler::explore(
         int64_t cur_node,
         const EdgeInfo cur_edge,
         bool isStart) {
-    double totalCost;
-
     auto vecIndex = cur_edge.get_idx(isStart);
 
     for (const auto &index : vecIndex) {
@@ -244,7 +242,7 @@ void TrspHandler::explore(
                 edge, isStart);
 
         if ((edge.startNode() == cur_node) && (edge.cost() >= 0.0)) {
-            totalCost = get_tot_cost(
+            double totalCost = get_tot_cost(
                     edge.cost() + extra_cost,
                     cur_edge.idx(),
                     isStart);
@@ -260,7 +258,7 @@ void TrspHandler::explore(
         }
 
        if ((edge.endNode() == cur_node) && (edge.r_cost() >= 0.0)) {
-            totalCost = get_tot_cost(
+            double totalCost = get_tot_cost(
                     edge.r_cost() + extra_cost,
                     cur_edge.idx(),
                     isStart);

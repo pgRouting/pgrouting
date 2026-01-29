@@ -2,7 +2,7 @@
 File: compPaths.cpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2018-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -55,7 +55,7 @@ bool compPathsLess::operator()(const Path &p1, const Path &p2) const {
     pgassert(p1.size() == p2.size());
 
     // paths weights & lengths are equal now check by node ID
-    unsigned int i;
+    unsigned int i = 0;
     for (i = 0; i < p1.size(); i++) {
         if (p1[i].node >  p2[i].node) return false;
         if (p1[i].node <  p2[i].node) return true;

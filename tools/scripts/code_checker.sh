@@ -1,32 +1,8 @@
 #!/bin/bash
-# -*- coding: utf-8 -*-
-###############################################################################
-#
-#  Project:  pgRouting
-#  Purpose:  (Interactive) script to lint C and C++ code
-#  Author:   Vicky Vergara <vicky_vergara@hotmail.com>
-#
-###############################################################################
-#  Copyright (c) 2016, Vicky Vergara <vicky_vergara@hotmail.com>
-#
-#  Permission is hereby granted, free of charge, to any person obtaining a
-#  copy of this software and associated documentation files (the "Software"),
-#  to deal in the Software without restriction, including without limitation
-#  the rights to use, copy, modify, merge, publish, distribute, sublicense,
-#  and/or sell copies of the Software, and to permit persons to whom the
-#  Software is furnished to do so, subject to the following conditions:
-#
-#  The above copyright notice and this permission notice shall be included
-#  in all copies or substantial portions of the Software.
-#
-#  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-#  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-#  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-#  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-#  DEALINGS IN THE SOFTWARE.
-###############################################################################
+# This file is part of the pgRouting project.
+# Copyright (c) 2016-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
+
 set -e
 
 if ! test -d code_linter; then
@@ -46,6 +22,7 @@ DIRECTORY="$1"
 INCLUDE_ORDER="
 -build/include_order:src/cpp_common/pgdata_getters.cpp,
 -build/include_order:include/cpp_common/get_data.hpp,
+-build/include_order:src/cpp_common/report_messages.cpp,
 -build/include_order:src/dijkstra/shortestPath_process.cpp,
 -build/include_order:src/metrics/metrics_process.cpp,
 -build/include_order:src/ordering/ordering_process.cpp,

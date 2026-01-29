@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: shortestPath_process.cpp
 
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Design of one process & driver file by
@@ -11,7 +11,7 @@ Mail: vicky at erosion.dev
 Copying this file (or a derivative) within pgRouting code add the following:
 
 Generated with Template by:
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -41,8 +41,10 @@ extern "C" {
 }
 
 #include <string>
+#include <sstream>
 
 #include "c_types/path_rt.h"
+#include "cpp_common/report_messages.hpp"
 #include "cpp_common/assert.hpp"
 #include "drivers/shortestPath_driver.hpp"
 
@@ -83,9 +85,11 @@ void pgr_process_shortestPath(
     pgassert(!(*result_tuples));
     pgassert(*result_count == 0);
     pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
+
+    std::ostringstream log;
+    std::ostringstream err;
+    std::ostringstream notice;
+
     bool is_matrix = false;
 
     clock_t start_t = clock();
@@ -94,23 +98,24 @@ void pgr_process_shortestPath(
             points_sql? points_sql : "",
             combinations_sql? combinations_sql : "",
             starts, ends,
-            directed, only_cost, normal,
+            directed,
+            only_cost, normal,
             n_goals, global,
             driving_side[0], details,
             which,
-            result_tuples, result_count,
-            &is_matrix, &log_msg, &notice_msg, &err_msg);
+            is_matrix,
+            (*result_tuples), (*result_count),
+            log, notice, err);
 
-    auto fn_name = get_name(which,  only_cost, n_goals > 0, points_sql != nullptr, is_matrix);
+    auto fn_name = get_name(which, only_cost, n_goals > 0, points_sql != nullptr, is_matrix);
     time_msg(fn_name.c_str(), start_t, clock());
 
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
+    if (!err.str().empty() && (*result_tuples)) {
+        if (*result_tuples) pfree(*result_tuples);
+        (*result_tuples) = nullptr;
         (*result_count) = 0;
     }
 
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
+    pgrouting::report_messages(log, notice, err);
     pgr_SPI_finish();
 }

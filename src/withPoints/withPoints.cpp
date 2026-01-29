@@ -2,7 +2,7 @@
 File: withPoints.cpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -397,8 +397,41 @@ Pg_points_graph::create_new_edges() {
             if (point.fraction == 1) {
                 log << "point's vertex_id = target" << edge.target << "\n";
                 point.vertex_id = -point.pid;
-                Edge_t new_edge = {edge.id, edge.target, -point.pid, 0, 0};
-                m_new_edges.push_back(new_edge);
+                /* Zero-cost edge connecting target node to point (they're at same location) */
+                Edge_t zero_edge = {edge.id, edge.target, -point.pid, 0, 0};
+                m_new_edges.push_back(zero_edge);
+
+                /*
+                   Also create edge from previous target to this point
+                   This allows Dijkstra to find the direct path through this edge
+                */
+                double delta = point.fraction - prev_fraction;
+                double rdelta = point.fraction - prev_rfraction;
+                if (delta > 0) {
+                    if (edge.cost >= 0) {
+                        double cost_to_point = delta * edge.cost;
+                        Edge_t cost_edge = {edge.id, prev_target, point.vertex_id, cost_to_point, -1};
+                        m_new_edges.push_back(cost_edge);
+                        last_cost = cost_to_point;
+                    }
+                    /* Update forward tracking variables */
+                    prev_target = point.vertex_id;
+                    prev_fraction = point.fraction;
+                    agg_cost += last_cost;
+                }
+                if (rdelta > 0) {
+                    if (edge.reverse_cost >= 0) {
+                        double rcost_to_point = rdelta * edge.reverse_cost;
+                        Edge_t rcost_edge = {edge.id, prev_rtarget, point.vertex_id, -1, rcost_to_point};
+                        m_new_edges.push_back(rcost_edge);
+                        last_rcost = rcost_to_point;
+                    }
+                    /* Update reverse tracking variables */
+                    prev_rtarget = point.vertex_id;
+                    prev_rfraction = point.fraction;
+                    agg_rcost += last_rcost;
+                }
+                continue;
             }
             if (point.fraction > 0 &&  point.fraction < 1) {
                 log << "vertex_id of the point is " << -point.pid << "\n";

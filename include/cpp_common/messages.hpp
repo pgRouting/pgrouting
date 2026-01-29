@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: messages.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -40,7 +40,9 @@ class Pgr_messages {
     Pgr_messages() = default;
     Pgr_messages(const Pgr_messages&) = delete;
     Pgr_messages& operator=(const Pgr_messages&) = delete;
-
+    ~Pgr_messages() = default;
+    Pgr_messages(Pgr_messages&&) = delete;
+    Pgr_messages& operator=(Pgr_messages&&) = delete;
     /*! @brief get_log
      *
      * \returns the current contents of the log and clears the log

@@ -2,7 +2,7 @@
 File: bidirectional.hpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -78,7 +78,7 @@ class Pgr_bidirectional {
         m_log << "constructor\n";
     }
 
-    ~Pgr_bidirectional() = default;
+    virtual ~Pgr_bidirectional() = default;
 
     std::string log() const {return m_log.str();}
     void clean_log() {m_log.clear();}

@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: circuits_driver.h
+File: hawickCircuits_driver.h
 
 Generated with Template by:
-Copyright (c) 2022 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:

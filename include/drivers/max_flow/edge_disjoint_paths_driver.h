@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: edge_disjoint_paths_many_to_one_driver.h
+File: edge_disjoint_paths_driver.h
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:

@@ -1,11 +1,6 @@
-..
-   ****************************************************************************
-    pgRouting Manual
-    Copyright(c) pgRouting Contributors
-
-    This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
-   ****************************************************************************
+:file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2013-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0
 
 |
 
@@ -63,13 +58,11 @@ Contributors
 This Release Contributors
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Individuals in this release v4.0.0 (in alphabetical order)
+Individuals in this release |release| (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Bipasha Gayary,
-Fan Wu,
+Mohit Rawat,
 Regina Obe,
-Saloni kumari,
 Vicky Vergara
 
 
@@ -154,6 +147,7 @@ Maxim Dubinin,
 Maoguang Wang,
 Mohamed Bakli,
 Mohamed Zia,
+Mohit Rawat,
 Mukul Priya,
 Nitish Chauhan,
 Rajat Shinde,

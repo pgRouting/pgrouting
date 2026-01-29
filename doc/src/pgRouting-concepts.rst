@@ -1,11 +1,6 @@
-..
-   ****************************************************************************
-    pgRouting Manual
-    Copyright(c) pgRouting Contributors
-
-    This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
-   ****************************************************************************
+:file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2017-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0
 
 |
 
@@ -1860,7 +1855,7 @@ How to contribute
 Consult the `developer's documentation
 <https://docs.pgrouting.org/doxy/2.4/index.html>`__
 
-See also
+See Also
 ----------------------------------------------------------------------
 
 .. rubric:: Indices and tables

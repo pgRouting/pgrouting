@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: to_postgres.cpp
 
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -20,12 +20,13 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #include "cpp_common/to_postgres.hpp"
 
 #include <cstddef>
 #include <deque>
+#include <vector>
 
 #include "c_types/routes_t.h"
 
@@ -66,6 +67,30 @@ get_path(
 
 namespace pgrouting {
 namespace to_postgres {
+namespace detail {
+
+/**
+ * @param[in] matrix matrix[i,j] -> the i,j element contains result
+ * @returns total number of valid results
+ *
+ * a result is not valid when:
+ * - is in the diagonal: matrix[i,i]
+ * - has "infinity" as value
+ */
+size_t
+count_rows(const std::vector<std::vector<double>> &matrix) {
+    int64_t count = 0;
+    for (size_t i = 0; i < matrix.size(); i++) {
+        count += std::count_if(
+                matrix[i].begin(), matrix[i].end(),
+                [](double value) {
+                return value != (std::numeric_limits<double>::max)();
+                });
+    }
+    return static_cast<size_t>(count) - matrix.size();
+}
+
+}  // namespace detail
 
 /**
  * @param[in] paths  The set of Paths

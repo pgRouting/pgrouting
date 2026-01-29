@@ -2,7 +2,7 @@
 File: metrics_driver.cpp
 
 Generated with Template by:
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Developer:
@@ -25,90 +25,71 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #include "drivers/metrics_driver.hpp"
 
 #include <sstream>
 #include <vector>
 #include <string>
+#include <utility>
+#include <cstdint>
 
-#include "metrics/bandwidth.hpp"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/assert.hpp"
-#include "cpp_common/to_postgres.hpp"
-#include "c_types/iid_t_rt.h"
 
-void
+#include "metrics/bandwidth.hpp"
+
+uint64_t
 do_metrics(
-    std::string edges_sql,
-    int which,
+        const std::string &edges_sql,
+        int which,
 
-    IID_t_rt **return_tuples,
-    size_t *return_count,
-    char ** log_msg,
-    char ** err_msg) {
-    using pgrouting::to_pg_msg;
-    using pgrouting::pgr_free;
-
-    std::ostringstream log;
-    std::ostringstream err;
+        std::ostringstream &log,
+        std::ostringstream &err) {
     std::string hint;
 
     try {
-        pgassert(!(*log_msg));
-        pgassert(!(*err_msg));
-        pgassert(!(*return_tuples));
-        pgassert(*return_count == 0);
+        pgassert(!edges_sql.empty());
+
+        using pgrouting::pgget::get_edges;
+        using pgrouting::UndirectedGraph;
 
         hint = edges_sql;
-        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, true);
+        auto edges = get_edges(edges_sql, true, true);
 
         if (edges.empty()) {
-            throw std::string("No edges found");
+            err << "No edges found";
+            log << edges_sql;
+            return 0;
         }
 
         hint = "";
 
         auto vertices(pgrouting::extract_vertices(edges));
-        pgrouting::UndirectedGraph undigraph(vertices);
+        UndirectedGraph undigraph(vertices);
 
         undigraph.insert_edges(edges);
 
         uint64_t result = 0;
 
         if (which == 0) {
-            log << "call the function which calculates the bandwidth";
             result = pgrouting::metrics::bandwidth(undigraph);
         }
 
-        log << "result = " << result;
-
-        *return_tuples = new IID_t_rt[1];
-        (*return_tuples)[0].from_vid = static_cast<int64_t>(result);
-        *return_count = 1;
-
-        *log_msg = to_pg_msg(log);
+        return result;
     } catch (AssertFailedException &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
+    } catch (const std::pair<std::string, std::string>& ex) {
+        err << ex.first;
+        log << ex.second;
     } catch (const std::string &ex) {
-        *err_msg = to_pg_msg(ex);
-        *log_msg = hint.empty()? to_pg_msg(hint) : to_pg_msg(log);
+        err << ex;
+        log << hint;
     } catch (std::exception &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
-    } catch(...) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
+    } catch (...) {
         err << "Caught unknown exception!";
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
     }
+    return 0;
 }

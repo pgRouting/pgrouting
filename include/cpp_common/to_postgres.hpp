@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: to_postgres.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -20,7 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #ifndef INCLUDE_CPP_COMMON_TO_POSTGRES_HPP_
 #define INCLUDE_CPP_COMMON_TO_POSTGRES_HPP_
@@ -43,33 +43,35 @@ namespace pgrouting {
 namespace to_postgres {
 namespace detail {
 
-/** @brief Count results that are going to be passed to postgres
- *
- * @param[in] graph Created graph with the base Graph
- * @param[in] matrix matrix[i,j] -> the i,j element contains result
- * @returns total number of valid results
- *
- * a result is not valid when:
- * - is in the diagonal: matrix[i,i]
- * - has "infinity" as value
- */
-template <class G>
-size_t
-count_rows(
-        const G &graph,
-        const std::vector<std::vector<double>> &matrix) {
-    int64_t count = 0;
-    for (size_t i = 0; i < graph.num_vertices(); i++) {
-        count += std::count_if(
-                matrix[i].begin(), matrix[i].end(),
-                [](double value) {
-                return value != (std::numeric_limits<double>::max)();
-                });
-    }
-    return static_cast<size_t>(count) - graph.num_vertices();
-}
+/** @brief Count results that are going to be passed to postgres */
+size_t count_rows(const std::vector<std::vector<double>>&);
 
 }  // namespace detail
+
+/** @brief Vector of vertices id are saved on a C array
+ *
+ * @param[in] graph Created graph with the base Graph
+ * @param[in] data data[i] -> the ith element of the vector contains the vertex id
+ * @param[out] count The size of the vector
+ * @param[out] tuples The C array of bigint
+ *
+ * bigint results[i]
+ */
+template <class G>
+void get_vertexId(
+            const G &graph,
+            const std::vector<typename G::V> &data,
+            size_t &count,
+            int64_t* &tuples) {
+    count = data.size();
+    tuples = pgrouting::pgr_alloc(count, tuples);
+
+    size_t seq = 0;
+    for (auto const &v : data) {
+        tuples[seq] = graph.graph[v].id;
+        ++seq;
+    }
+}
 
 /** @brief Stored results on a vector are saved on a C array
  *
@@ -107,8 +109,8 @@ void vector_to_tuple(
  *
  * @param[in] graph Created graph with the base Graph
  * @param[in] matrix matrix[i,j] -> the i,j element contains the results
- * @param[out] result_tuple_count the size of the C array
- * @param[out] postgres_rows The C array of <bigint, bigint, float>
+ * @param[out] tupcount the size of the C array
+ * @param[out] tuples The C array of <bigint, bigint, float>
  *
  * <bigint, bigint, float> =  <i , j, results[i,j]>
  *
@@ -120,19 +122,19 @@ template <class G>
 void matrix_to_tuple(
         const G &graph,
         const std::vector<std::vector<double>> &matrix,
-        size_t &result_tuple_count,
-        IID_t_rt **postgres_rows) {
-    result_tuple_count = detail::count_rows(graph, matrix);
-    *postgres_rows = pgr_alloc(result_tuple_count, (*postgres_rows));
+        size_t &tupcount,
+        IID_t_rt* &tuples) {
+    tupcount = detail::count_rows(matrix);
+    tuples = pgr_alloc(tupcount, tuples);
 
     size_t seq = 0;
     for (typename G::V v_i = 0; v_i < graph.num_vertices(); v_i++) {
         for (typename G::V v_j = 0; v_j < graph.num_vertices(); v_j++) {
             if (v_i == v_j) continue;
             if (matrix[v_i][v_j] != (std::numeric_limits<double>::max)()) {
-                (*postgres_rows)[seq].from_vid = graph[v_i].id;
-                (*postgres_rows)[seq].to_vid = graph[v_j].id;
-                (*postgres_rows)[seq].cost =  matrix[v_i][v_j];
+                tuples[seq].from_vid = graph[v_i].id;
+                tuples[seq].to_vid = graph[v_j].id;
+                tuples[seq].cost =  matrix[v_i][v_j];
                 seq++;
             }
         }

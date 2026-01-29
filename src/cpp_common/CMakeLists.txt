@@ -1,3 +1,7 @@
+# This file is part of the pgRouting project.
+# Copyright (c) 2018-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
+
 ADD_LIBRARY(cpp_common OBJECT
     Dmatrix.cpp
     compPaths.cpp
@@ -6,6 +10,7 @@ ADD_LIBRARY(cpp_common OBJECT
     messages.cpp
     combinations.cpp
 
+    report_messages.cpp
     to_postgres.cpp
     get_check_data.cpp
     pgdata_fetchers.cpp

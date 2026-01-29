@@ -2,7 +2,7 @@
 File: kingOrdering.c
 
 Generated with Template by:
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -54,7 +54,7 @@ _pgr_kingordering(PG_FUNCTION_ARGS) {
 
         pgr_process_ordering(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                2, /*King Ordering*/
+                KING, /*King Ordering*/
                 &result_tuples,
                 &result_count);
 

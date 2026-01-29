@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: fleet.hpp
 
-Copyright (c) 2017 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -62,7 +62,9 @@ class Fleet {
      /*!@}*/
 
      Fleet& operator=(const Fleet &fleet);
-
+     ~Fleet() = default;
+     Fleet(Fleet&&) = delete;
+     Fleet& operator=(Fleet&&) = delete;
      void set_compatibles(const PD_Orders &orders);
 
      bool is_fleet_ok() const;

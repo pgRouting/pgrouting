@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: trsp.sql
 
-Copyright (c) 2021 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2022 Vicky Vergara

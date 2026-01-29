@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: bdAstar.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -78,7 +78,7 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
         m_log << "pgr_bdAstar constructor\n";
     }
 
-    ~Pgr_bdAstar() = default;
+    virtual ~Pgr_bdAstar() = default;
 
     Path pgr_bdAstar(V start_vertex, V end_vertex,
             int heuristic,
@@ -156,7 +156,7 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
 
         double dx = graph[v].x() - graph[u].x();
         double dy = graph[v].y() - graph[u].y();
-        double current;
+        double current = 0;
 
         switch (m_heuristic) {
             case 0:

@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: bandwidth.hpp
 
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2025 Saloni Kumari
@@ -23,7 +23,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #ifndef INCLUDE_METRICS_BANDWIDTH_HPP_
 #define INCLUDE_METRICS_BANDWIDTH_HPP_
@@ -44,12 +44,10 @@ namespace metrics {
 
 template <class G>
 uint64_t bandwidth(const G &graph) {
-        CHECK_FOR_INTERRUPTS();
+    CHECK_FOR_INTERRUPTS();
 
-        try {
-        const auto& boost_graph = graph.graph;
-
-        return static_cast<uint64_t>(boost::bandwidth(boost_graph));
+    try {
+        return boost::bandwidth(graph.graph);
     } catch (boost::exception const& ex) {
         (void)ex;
         throw;

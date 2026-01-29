@@ -1,11 +1,11 @@
 /*PGR-GNU*****************************************************************
 File: ordering_process.cpp
 
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Developers:
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: bipashagayary at gmail.com
 Mail: wifiblack0131 at gmail.com
 
@@ -36,7 +36,9 @@ extern "C" {
 }
 
 #include <string>
+#include <sstream>
 
+#include "cpp_common/report_messages.hpp"
 #include "cpp_common/assert.hpp"
 #include "drivers/ordering_driver.hpp"
 
@@ -49,39 +51,48 @@ extern "C" {
  */
 void pgr_process_ordering(
         const char* edges_sql,
-        int which,
+        enum Which which,
         int64_t **result_tuples,
         size_t *result_count) {
     pgassert(edges_sql);
     pgassert(!(*result_tuples));
     pgassert(*result_count == 0);
     pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
+
+    std::ostringstream log;
+    std::ostringstream err;
+    std::ostringstream notice;
 
     clock_t start_t = clock();
     do_ordering(
-            std::string(edges_sql),
+            edges_sql? edges_sql : "",
             which,
-            result_tuples, result_count,
-            &log_msg , &notice_msg, &err_msg);
+            (*result_tuples), (*result_count),
+            log, notice, err);
 
-    if (which == 0) {
-        time_msg(std::string(" processing pgr_sloanOrdering").c_str(), start_t, clock());
-    } else if (which == 1) {
-        time_msg(std::string("processing pgr_cuthillMckeeOrdering").c_str(), start_t, clock());
-    } else if (which == 2) {
-        time_msg(std::string("processing pgr_kingOrdering").c_str(), start_t, clock());
+    switch (which) {
+        case SLOAN:
+            time_msg(std::string(" processing pgr_sloanOrdering").c_str(), start_t, clock());
+            break;
+        case CUTCHILL:
+            time_msg(std::string(" processing pgr_cuthillMckeeOrdering").c_str(), start_t, clock());
+            break;
+        case KING:
+            time_msg(std::string(" processing pgr_kingOrdering").c_str(), start_t, clock());
+            break;
+        case TOPOSORT:
+            time_msg(std::string(" processing pgr_topologicalSort").c_str(), start_t, clock());
+            break;
+        default:
+            break;
     }
 
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
+    if (!err.str().empty() && (*result_tuples)) {
+        if (*result_tuples) pfree(*result_tuples);
+        (*result_tuples) = nullptr;
         (*result_count) = 0;
     }
 
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
+    pgrouting::report_messages(log, notice, err);
     pgr_SPI_finish();
 }

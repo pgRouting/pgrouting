@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: assert.hpp
 
-Copyright (c) 2014 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright 2015~ Vicky Vergara <vicky_vergara@hotmail.com>
@@ -143,9 +143,13 @@ class AssertFailedException : public std::exception {
      const std::string str;   ///< Holds what() we got as message
 
  public:
-     virtual const char *what() const throw();
+     const char *what() const noexcept override;
      explicit AssertFailedException(std::string msg);
-     virtual ~AssertFailedException() throw() {}
+     AssertFailedException(const AssertFailedException&) = default;
+     AssertFailedException& operator=(const AssertFailedException&) = delete;
+     AssertFailedException(AssertFailedException&&) = default;
+     AssertFailedException& operator=(AssertFailedException&&) = delete;
+     ~AssertFailedException() noexcept override = default;
 };
 
 #endif  //  INCLUDE_CPP_COMMON_ASSERT_HPP_

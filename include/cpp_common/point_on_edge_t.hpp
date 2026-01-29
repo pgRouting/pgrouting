@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: point_on_edge_t.hpp
 
-Copyright (c) 2017 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2017 Celia Virginia Vergara Castillo

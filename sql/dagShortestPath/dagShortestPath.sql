@@ -2,7 +2,7 @@
 File: dagShortestPath.sql
 
 Generated with Template by:
-Copyright (c) 2016 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:

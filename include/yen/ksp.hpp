@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: ksp.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2013-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
@@ -62,8 +62,8 @@ class Pgr_ksp :  public Pgr_messages {
          m_start(0),
          m_end(0),
          m_K(0),
-         m_heap_paths(false) {
-             m_vis = new Visitor;
+         m_heap_paths(false),
+         m_vis(new Visitor) {
          }
      ~Pgr_ksp() {
          delete m_vis;

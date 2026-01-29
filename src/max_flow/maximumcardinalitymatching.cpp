@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
-File:maximumcardinalitymatching.cpp
+File: maximumcardinalitymatching.cpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Refactoring
@@ -78,7 +78,7 @@ maxCardinalityMatch(pgrouting::graph::UndirectedNoCostsBG &graph) {
         if (v1 >= v2) continue;
 
         E e;
-        bool exists;
+        bool exists = false;
         boost::tie(e, exists) = boost::edge(v1, v2, graph());
         if (!exists) throw;
 

@@ -1,5 +1,7 @@
 name: Boost supported versions
-
+# This file is part of the pgRouting project.
+# Copyright (c) 2020-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 
 # This action runs:
 # - When this file changes
@@ -129,5 +131,5 @@ jobs:
           sudo service postgresql start
           psql -c "CREATE DATABASE ___pgr___test___;"
           DIR=$(git rev-parse --show-toplevel)
-          bash "${DIR}/tools/testers/setup_db.sh" "${PGPORT}" ___pgr___test___ "${PG_RUNNER_USER}" "4.0.0"
+          bash "${DIR}/tools/testers/setup_db.sh" "${PGPORT}" ___pgr___test___ "${PG_RUNNER_USER}" "4.0.1"
           pg_prove  -Q -f --normalize --directives --recurse -U "${PG_RUNNER_USER}" -d ___pgr___test___ "pgtap"

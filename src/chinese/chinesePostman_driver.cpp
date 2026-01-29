@@ -2,7 +2,7 @@
 File: chinesePostman_driver.cpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <set>
+#include <limits>
 #include <string>
 
 // work for only directed
@@ -79,7 +80,7 @@ pgr_do_directedChPP(
 
         pgrouting::graph::PgrDirectedChPPGraph digraph(edges);
 
-        double minCost;
+        double minCost = std::numeric_limits<double>::quiet_NaN();
         minCost = digraph.DirectedChPP();
 
         std::vector<Path_rt> pathEdges;

@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: path.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2013-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_CPP_COMMON_BASEPATH_SSEC_HPP_
-#define INCLUDE_CPP_COMMON_BASEPATH_SSEC_HPP_
+#ifndef INCLUDE_CPP_COMMON_PATH_HPP_
+#define INCLUDE_CPP_COMMON_PATH_HPP_
 #pragma once
 
 #include <deque>
@@ -346,4 +346,4 @@ class Path {
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CPP_COMMON_BASEPATH_SSEC_HPP_
+#endif  // INCLUDE_CPP_COMMON_PATH_HPP_

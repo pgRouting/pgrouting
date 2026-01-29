@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: prim.hpp
 
-Copyright (c) 2018 pgRouting developers
+Copyright (c) 2018-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018 Aditya Pratap Singh
@@ -51,6 +51,7 @@ class Pgr_prim : public Pgr_mst<G> {
      typedef typename G::B_G B_G;
 
  public:
+     virtual ~Pgr_prim() = default;
      std::vector<MST_rt> prim(G &graph);
 
      std::vector<MST_rt> primBFS(

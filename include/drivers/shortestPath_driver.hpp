@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: shortestPath_driver.hpp
 
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Design of one process & driver file by
@@ -11,7 +11,7 @@ Mail: vicky at erosion.dev
 Copying this file (or a derivative) within pgRouting code add the following:
 
 Generated with Template by:
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cstddef>
 #include <cstdint>
 #include <string>
+#include <sstream>
 
 using Path_rt = struct Path_rt;
 using ArrayType = struct ArrayType;
@@ -50,7 +51,9 @@ void do_shortestPath(
         bool, bool, bool,
         int64_t, bool, char, bool,
 
-        int32_t, Path_rt**, size_t*,
-        bool*, char**, char**, char**);
+        int32_t,
+        bool&,
+        Path_rt*&, size_t&,
+        std::ostringstream&, std::ostringstream&, std::ostringstream&);
 
 #endif  // INCLUDE_DRIVERS_SHORTESTPATH_DRIVER_HPP_

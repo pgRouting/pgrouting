@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: components.cpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2013-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2017 Maoguang Wang
@@ -49,7 +49,7 @@ pgr_connectedComponents(pgrouting::UndirectedGraph &graph) {
     typedef pgrouting::UndirectedGraph::V V;
     // perform the algorithm
     std::vector<V> components(num_vertices(graph.graph));
-    size_t num_comps;
+    size_t num_comps = 0;
     /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
     CHECK_FOR_INTERRUPTS();
     try {
@@ -74,7 +74,7 @@ strongComponents(
     typedef pgrouting::UndirectedGraph::V V;
     // perform the algorithm
     std::vector<V> components(num_vertices(graph.graph));
-    size_t num_comps;
+    size_t num_comps = 0;
     /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
     CHECK_FOR_INTERRUPTS();
     try {
@@ -108,7 +108,7 @@ biconnectedComponents(
     // perform the algorithm
     Edge_map bicmp_map;
     boost::associative_property_map<Edge_map> bimap(bicmp_map);
-    size_t num_comps;
+    size_t num_comps = 0;
     try {
         // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
         num_comps = biconnected_components(graph.graph, bimap);
@@ -169,7 +169,7 @@ bridges(pgrouting::UndirectedGraph &graph) {
     Identifiers<int64_t> bridge_edges;
     Identifiers<int64_t> processed_edges;
     std::vector<V> components(num_vertices(graph.graph));
-    size_t ini_comps;
+    size_t ini_comps = 0;
     /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
     CHECK_FOR_INTERRUPTS();
     try {
@@ -231,7 +231,7 @@ bridges(pgrouting::UndirectedGraph &graph) {
 
             if (parallel_count == 1) {
                 // TODO(vicky) filter graph instead of removing edges
-                size_t now_comps;
+                size_t now_comps = 0;
                 try {
                     boost::remove_edge(edge, graph.graph);
 

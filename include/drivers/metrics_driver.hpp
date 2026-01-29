@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: metrics_driver.hpp
 
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Developer:
@@ -9,7 +9,7 @@ Copyright (c) 2025 Saloni Kumari
 Mail: chaudharysaloni2510 at gmail.com
 
 Generated with Template by:
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -34,17 +34,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_METRICS_DRIVER_HPP_
 #pragma once
 
+
 #include <cstddef>
-#include <string>
 #include <cstdint>
+#include <string>
+#include <sstream>
 
-#include "c_types/iid_t_rt.h"
-void
+uint64_t
 do_metrics(
-    std::string,
-    int,
+        const std::string&,
+        int,
 
-    IID_t_rt**, size_t*,
-    char**, char**);
+        std::ostringstream&, std::ostringstream&);
 
 #endif  // INCLUDE_DRIVERS_METRICS_DRIVER_HPP_

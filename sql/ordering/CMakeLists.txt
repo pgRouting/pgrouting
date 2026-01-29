@@ -1,3 +1,6 @@
+# This file is part of the pgRouting project.
+# Copyright (c) 2013-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 set(LOCAL_FILES
     _cuthillMckeeOrdering.sql
     cuthillMckeeOrdering.sql
@@ -5,6 +8,8 @@ set(LOCAL_FILES
     sloanOrdering.sql
     _kingOrdering.sql
     kingOrdering.sql
+    _topologicalSort.sql
+    topologicalSort.sql
     )
 
 foreach (f ${LOCAL_FILES})

@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: maxflow.cpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2013-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2016 Andrea Nardelli
@@ -74,7 +74,7 @@ PgrFlowGraph::PgrFlowGraph(
  */
 void PgrFlowGraph::insert_edges_push_relabel(
         const std::vector<Edge_t> &edges) {
-    bool added;
+    bool added = false;
     for (const auto edge : edges) {
         V v1 = get_boost_vertex(edge.source);
         V v2 = get_boost_vertex(edge.target);
@@ -109,7 +109,7 @@ void PgrFlowGraph::insert_edges_push_relabel(
  */
 void PgrFlowGraph::insert_edges(
         const std::vector<Edge_t> &edges) {
-    bool added;
+    bool added = false;
     for (const auto edge : edges) {
         V v1 = get_boost_vertex(edge.source);
         V v2 = get_boost_vertex(edge.target);
@@ -133,7 +133,7 @@ void PgrFlowGraph::insert_edges(
 void PgrFlowGraph::insert_edges_edge_disjoint(
         const std::vector<Edge_t> &edges,
         bool directed) {
-    bool added;
+    bool added = false;
     for (const auto edge : edges) {
         V v1 = get_boost_vertex(edge.source);
         V v2 = get_boost_vertex(edge.target);
@@ -161,7 +161,7 @@ void PgrFlowGraph::insert_edges_edge_disjoint(
 
 void PgrFlowGraph::set_supersource(
         const std::set<int64_t> &source_vertices) {
-    bool added;
+    bool added = false;
     supersource = add_vertex(graph);
     for (int64_t source_id : source_vertices) {
         V source = get_boost_vertex(source_id);
@@ -181,7 +181,7 @@ void PgrFlowGraph::set_supersource(
 
 void PgrFlowGraph::set_supersink(
         const std::set<int64_t> &sink_vertices) {
-    bool added;
+    bool added = false;
     supersink = add_vertex(graph);
     for (int64_t sink_id : sink_vertices) {
         V sink = get_boost_vertex(sink_id);
@@ -278,8 +278,8 @@ PgrFlowGraph::get_edge_disjoint_paths(
     for (size_t i = 0; i < flow; i++) {
         size_t size = paths[i].size();
         E e;
-        bool exists;
-        size_t j;
+        bool exists = false;
+        size_t j = 0;
         for (j = 0; j < size - 1; j++) {
             Path_rt edge = {};
             edge.start_id = paths[i][0];

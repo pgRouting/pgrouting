@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.8
+# Copyright (C) pgRouting Contributors - Version v4.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.8\n"
+"Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 20:20+0000\n"
+"POT-Creation-Date: 2026-01-28 20:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,7 +66,7 @@ msgid "`Edges SQL`_"
 msgstr ""
 
 msgid "``TEXT``"
-msgstr ""
+msgstr "``TEXT``"
 
 msgid "`Edges SQL`_ as described below."
 msgstr ""
@@ -75,7 +75,7 @@ msgid "**root vid**"
 msgstr ""
 
 msgid "``BIGINT``"
-msgstr ""
+msgstr "``BIGINT``"
 
 msgid "Identifier of the root vertex of the tree."
 msgstr ""
@@ -122,7 +122,7 @@ msgid "Default"
 msgstr ""
 
 msgid "``max_depth``"
-msgstr ""
+msgstr "``max_depth``"
 
 msgid ":math:`9223372036854775807`"
 msgstr ""
@@ -143,7 +143,7 @@ msgid "Column"
 msgstr ""
 
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 msgid "**ANY-INTEGER**"
 msgstr ""
@@ -152,19 +152,19 @@ msgid "Identifier of the edge."
 msgstr ""
 
 msgid "``source``"
-msgstr ""
+msgstr "``source``"
 
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
 msgid "``target``"
-msgstr ""
+msgstr "``target``"
 
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 msgid "``cost``"
-msgstr ""
+msgstr "``cost``"
 
 msgid "**ANY-NUMERICAL**"
 msgstr ""
@@ -173,7 +173,7 @@ msgid "Weight of the edge (``source``, ``target``)"
 msgstr ""
 
 msgid "``reverse_cost``"
-msgstr ""
+msgstr "``reverse_cost``"
 
 msgid "-1"
 msgstr ""
@@ -202,13 +202,13 @@ msgid "Returns set of ``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
 msgstr ""
 
 msgid "``seq``"
-msgstr ""
+msgstr "``seq``"
 
 msgid "Sequential value starting from :math:`1`."
 msgstr ""
 
 msgid "``depth``"
-msgstr ""
+msgstr "``depth``"
 
 msgid "Depth of the ``node``."
 msgstr ""
@@ -217,19 +217,19 @@ msgid ":math:`0` when ``node`` = ``start_vid``."
 msgstr ""
 
 msgid "``start_vid``"
-msgstr ""
+msgstr "``start_vid``"
 
 msgid "Identifier of the root vertex."
 msgstr ""
 
 msgid "``node``"
-msgstr ""
+msgstr "``node``"
 
 msgid "Identifier of ``node`` reached using ``edge``."
 msgstr ""
 
 msgid "``edge``"
-msgstr ""
+msgstr "``edge``"
 
 msgid "Identifier of the ``edge`` used to arrive to ``node``."
 msgstr ""
@@ -238,13 +238,13 @@ msgid ":math:`-1` when ``node`` = ``start_vid``."
 msgstr ""
 
 msgid "``FLOAT``"
-msgstr ""
+msgstr "``FLOAT``"
 
 msgid "Cost to traverse ``edge``."
 msgstr ""
 
 msgid "``agg_cost``"
-msgstr ""
+msgstr "``agg_cost``"
 
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
@@ -277,10 +277,10 @@ msgid "Indices and tables"
 msgstr ""
 
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
 
 msgid "DFS - Category"
 msgstr ""
@@ -456,7 +456,7 @@ msgid "Restrictions SQL"
 msgstr ""
 
 msgid "``path``"
-msgstr ""
+msgstr "``path``"
 
 msgid "``ARRAY`` [**ANY-INTEGER**]"
 msgstr ""
@@ -468,7 +468,7 @@ msgid ""
 msgstr ""
 
 msgid "``Cost``"
-msgstr ""
+msgstr "``Cost``"
 
 msgid "Cost of taking the forbidden path."
 msgstr ""
@@ -593,10 +593,10 @@ msgid "TSP optional parameters"
 msgstr ""
 
 msgid "``start_id``"
-msgstr ""
+msgstr "``start_id``"
 
 msgid "``0``"
-msgstr ""
+msgstr "``0``"
 
 msgid "The first visiting vertex"
 msgstr ""
@@ -605,7 +605,7 @@ msgid "When `0` any vertex can become the first visiting vertex."
 msgstr ""
 
 msgid "``end_id``"
-msgstr ""
+msgstr "``end_id``"
 
 msgid "Last visiting vertex before returning to ``start_vid``."
 msgstr ""
@@ -785,10 +785,10 @@ msgid "Pick-Deliver optional parameters"
 msgstr ""
 
 msgid "``factor``"
-msgstr ""
+msgstr "``factor``"
 
 msgid "``NUMERIC``"
-msgstr ""
+msgstr "``NUMERIC``"
 
 msgid "1"
 msgstr ""
@@ -797,10 +797,10 @@ msgid "Travel time multiplier. See :ref:`pd_factor`"
 msgstr ""
 
 msgid "``max_cycles``"
-msgstr ""
+msgstr "``max_cycles``"
 
 msgid "``INTEGER``"
-msgstr ""
+msgstr "``INTEGER``"
 
 msgid "10"
 msgstr ""
@@ -809,7 +809,7 @@ msgid "Maximum number of cycles to perform on the optimization."
 msgstr ""
 
 msgid "``initial_sol``"
-msgstr ""
+msgstr "``initial_sol``"
 
 msgid "4"
 msgstr ""
@@ -850,7 +850,7 @@ msgid "Identifier of the pick-delivery order pair."
 msgstr ""
 
 msgid "``demand``"
-msgstr ""
+msgstr "``demand``"
 
 msgid "|ANY-NUMERICAL|"
 msgstr ""
@@ -859,13 +859,13 @@ msgid "Number of units in the order"
 msgstr ""
 
 msgid "``p_open``"
-msgstr ""
+msgstr "``p_open``"
 
 msgid "The time, relative to 0, when the pickup location opens."
 msgstr ""
 
 msgid "``p_close``"
-msgstr ""
+msgstr "``p_close``"
 
 msgid "The time, relative to 0, when the pickup location closes."
 msgstr ""
@@ -880,13 +880,13 @@ msgid "When missing: 0 time units are used"
 msgstr ""
 
 msgid "``d_open``"
-msgstr ""
+msgstr "``d_open``"
 
 msgid "The time, relative to 0, when the delivery location opens."
 msgstr ""
 
 msgid "``d_close``"
-msgstr ""
+msgstr "``d_close``"
 
 msgid "The time, relative to 0, when the delivery location closes."
 msgstr ""
@@ -903,7 +903,7 @@ msgid ""
 msgstr ""
 
 msgid "``p_node_id``"
-msgstr ""
+msgstr "``p_node_id``"
 
 msgid ""
 "The node identifier of the pickup, must match a vertex identifier in the "
@@ -911,7 +911,7 @@ msgid ""
 msgstr ""
 
 msgid "``d_node_id``"
-msgstr ""
+msgstr "``d_node_id``"
 
 msgid ""
 "The node identifier of the delivery, must match a vertex identifier in the "
@@ -924,25 +924,25 @@ msgid ""
 msgstr ""
 
 msgid "``p_x``"
-msgstr ""
+msgstr "``p_x``"
 
 msgid ":math:`x` value of the pick up location"
 msgstr ""
 
 msgid "``p_y``"
-msgstr ""
+msgstr "``p_y``"
 
 msgid ":math:`y` value of the pick up location"
 msgstr ""
 
 msgid "``d_x``"
-msgstr ""
+msgstr "``d_x``"
 
 msgid ":math:`x` value of the delivery location"
 msgstr ""
 
 msgid "``d_y``"
-msgstr ""
+msgstr "``d_y``"
 
 msgid ":math:`y` value of the delivery location"
 msgstr ""
@@ -957,19 +957,19 @@ msgid "Identifier of the vehicle."
 msgstr ""
 
 msgid "``capacity``"
-msgstr ""
+msgstr "``capacity``"
 
 msgid "Maiximum capacity units"
 msgstr ""
 
 msgid "``start_open``"
-msgstr ""
+msgstr "``start_open``"
 
 msgid "The time, relative to 0, when the starting location opens."
 msgstr ""
 
 msgid "``start_close``"
-msgstr ""
+msgstr "``start_close``"
 
 msgid "The time, relative to 0, when the starting location closes."
 msgstr ""
@@ -1016,7 +1016,7 @@ msgid ""
 msgstr ""
 
 msgid "``start_node_id``"
-msgstr ""
+msgstr "``start_node_id``"
 
 msgid ""
 "The node identifier of the start location, must match a vertex identifier in "
@@ -1035,13 +1035,13 @@ msgid "When missing: ``end_node_id`` is used."
 msgstr ""
 
 msgid "``start_x``"
-msgstr ""
+msgstr "``start_x``"
 
 msgid ":math:`x` value of the starting location"
 msgstr ""
 
 msgid "``start_y``"
-msgstr ""
+msgstr "``start_y``"
 
 msgid ":math:`y` value of the starting location"
 msgstr ""
@@ -1074,7 +1074,7 @@ msgid "Identifier of the starting vertex."
 msgstr ""
 
 msgid "``end_vid``"
-msgstr ""
+msgstr "``end_vid``"
 
 msgid "Identifier of the ending vertex."
 msgstr ""
@@ -1086,7 +1086,7 @@ msgid "Sequential value starting from **1**."
 msgstr ""
 
 msgid "``vehicle_seq``"
-msgstr ""
+msgstr "``vehicle_seq``"
 
 #, python-brace-format
 msgid ""
@@ -1098,7 +1098,7 @@ msgid "Value :math:`-2` indicates it is the summary row."
 msgstr ""
 
 msgid "``vehicle_id``"
-msgstr ""
+msgstr "``vehicle_id``"
 
 msgid "BIGINT"
 msgstr ""
@@ -1114,7 +1114,7 @@ msgid ""
 msgstr ""
 
 msgid "``stop_seq``"
-msgstr ""
+msgstr "``stop_seq``"
 
 msgid "INTEGER"
 msgstr ""
@@ -1133,7 +1133,7 @@ msgid ""
 msgstr ""
 
 msgid "``stop_type``"
-msgstr ""
+msgstr "``stop_type``"
 
 msgid "Kind of stop location the vehicle is at"
 msgstr ""
@@ -1154,7 +1154,7 @@ msgid ":math:`6`: Ending location and indicates the vehicle's summary row"
 msgstr ""
 
 msgid "``order_id``"
-msgstr ""
+msgstr "``order_id``"
 
 msgid "Pickup-Delivery order pair identifier."
 msgstr ""
@@ -1164,7 +1164,7 @@ msgid ""
 msgstr ""
 
 msgid "``cargo``"
-msgstr ""
+msgstr "``cargo``"
 
 msgid "Cargo units of the vehicle when leaving the stop."
 msgstr ""
@@ -1173,7 +1173,7 @@ msgid "Value :math:`-1` on solution summary row."
 msgstr ""
 
 msgid "``travel_time``"
-msgstr ""
+msgstr "``travel_time``"
 
 msgid "Travel time from previous ``stop_seq`` to current ``stop_seq``."
 msgstr ""
@@ -1185,7 +1185,7 @@ msgid "The sum of all the ``travel_time``."
 msgstr ""
 
 msgid "``arrival_time``"
-msgstr ""
+msgstr "``arrival_time``"
 
 msgid "Time spent waiting for current location to open."
 msgstr ""
@@ -1197,7 +1197,7 @@ msgid ":math:`0`: at the starting location."
 msgstr ""
 
 msgid "``wait_time``"
-msgstr ""
+msgstr "``wait_time``"
 
 msgid "Summary row has the **total waiting time**:"
 msgstr ""
@@ -1206,7 +1206,7 @@ msgid "The sum of all the ``wait_time``."
 msgstr ""
 
 msgid "``service_time``"
-msgstr ""
+msgstr "``service_time``"
 
 msgid "Service duration at current location."
 msgstr ""
@@ -1218,7 +1218,7 @@ msgid "The sum of all the ``service_time``."
 msgstr ""
 
 msgid "``departure_time``"
-msgstr ""
+msgstr "``departure_time``"
 
 msgid "The time at which the vehicle departs from the stop."
 msgstr ""
@@ -1659,7 +1659,7 @@ msgid "aStar optional parameters"
 msgstr ""
 
 msgid "``heuristic``"
-msgstr ""
+msgstr "``heuristic``"
 
 msgid "Heuristic number. Current valid values 0~5."
 msgstr ""
@@ -1683,13 +1683,13 @@ msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
 msgstr ""
 
 msgid "``1``"
-msgstr ""
+msgstr "``1``"
 
 msgid "For units manipulation. :math:`factor > 0`."
 msgstr ""
 
 msgid "``epsilon``"
-msgstr ""
+msgstr "``epsilon``"
 
 msgid "For less restricted results. :math:`epsilon >= 1`."
 msgstr ""
@@ -1812,13 +1812,13 @@ msgid "Optional parameters"
 msgstr ""
 
 msgid "``directed``"
-msgstr ""
+msgstr "``directed``"
 
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 msgid "``true``"
-msgstr ""
+msgstr "``true``"
 
 msgid "When ``true`` the graph is considered `Directed`"
 msgstr ""
@@ -2688,7 +2688,7 @@ msgid "Returns set of |result_edge_color|"
 msgstr ""
 
 msgid "``color``"
-msgstr ""
+msgstr "``color``"
 
 msgid "Color of the edge."
 msgstr ""
@@ -2961,7 +2961,7 @@ msgid "Points SQL"
 msgstr ""
 
 msgid "``pid``"
-msgstr ""
+msgstr "``pid``"
 
 msgid "**value**"
 msgstr ""
@@ -2982,13 +2982,13 @@ msgid ""
 msgstr ""
 
 msgid "``edge_id``"
-msgstr ""
+msgstr "``edge_id``"
 
 msgid "Identifier of the \"closest\" edge to the point."
 msgstr ""
 
 msgid "``fraction``"
-msgstr ""
+msgstr "``fraction``"
 
 msgid ""
 "Value in <0,1> that indicates the relative position from the first end point "
@@ -2996,13 +2996,13 @@ msgid ""
 msgstr ""
 
 msgid "``side``"
-msgstr ""
+msgstr "``side``"
 
 msgid "``CHAR``"
-msgstr ""
+msgstr "``CHAR``"
 
 msgid "``b``"
-msgstr ""
+msgstr "``b``"
 
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
 msgstr ""
@@ -3332,7 +3332,7 @@ msgid ":math:`depth-1` is the depth of ``pred``"
 msgstr ""
 
 msgid "``pred``"
-msgstr ""
+msgstr "``pred``"
 
 msgid "Predecessor of ``node``."
 msgstr ""
@@ -3566,7 +3566,7 @@ msgid ":doc:`pgr_boykovKolmogorov`"
 msgstr ""
 
 msgid "``reverse_capacity``"
-msgstr ""
+msgstr "``reverse_capacity``"
 
 msgid "Capacity-Cost edges"
 msgstr ""
@@ -3602,7 +3602,7 @@ msgid "**seq**"
 msgstr ""
 
 msgid "``INT``"
-msgstr ""
+msgstr "``INT``"
 
 msgid "**edge**"
 msgstr ""
@@ -3913,7 +3913,71 @@ msgstr ""
 msgid ":doc:`release_notes`"
 msgstr ""
 
-msgid "pgRouting 4.0.0-alpha1 Release Notes"
+msgid "pgRouting 4.0.1 Release Notes"
+msgstr ""
+
+#, python-format
+msgid ""
+"To see all issues & pull requests closed by this release see the `Github "
+"milestone for 4.0.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.1%22>`__"
+msgstr ""
+
+msgid "Bug Fixes"
+msgstr ""
+
+msgid ""
+"`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: "
+"pgr_withPoints does not pick optimal route when fraction = 1"
+msgstr ""
+
+msgid ""
+"`#3034 <https://github.com/pgRouting/pgrouting/issues/3034>`__: metrics "
+"driver should not be using new"
+msgstr ""
+
+msgid "Code enhancements"
+msgstr ""
+
+msgid ""
+"`#3044 <https://github.com/pgRouting/pgrouting/issues/3044>`__: Check and "
+"fix assert.hpp for cppcoreguidelines-explicit-virtual-functions"
+msgstr ""
+
+msgid ""
+"`#3040 <https://github.com/pgRouting/pgrouting/issues/3040>`__: Check and "
+"fix cppcoreguidelines-virtual-class-destructor"
+msgstr ""
+
+msgid ""
+"`#3039 <https://github.com/pgRouting/pgrouting/issues/3039>`__: Check and "
+"fix cppcoreguidelines-special-member-functions"
+msgstr ""
+
+msgid ""
+"`#3038 <https://github.com/pgRouting/pgrouting/issues/3038>`__: Check and "
+"fix cppcoreguidelines-prefer-member-initializer"
+msgstr ""
+
+msgid ""
+"`#3037 <https://github.com/pgRouting/pgrouting/issues/3037>`__: Check and "
+"fix cppcoreguidelines-init-variables"
+msgstr ""
+
+msgid ""
+"`#3035 <https://github.com/pgRouting/pgrouting/issues/3035>`__: Pass by "
+"reference on existing drivers"
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid ""
+"`#3031 <https://github.com/pgRouting/pgrouting/issues/3031>`__: pgtap "
+"license to Creative commons and License texts standardization"
+msgstr ""
+
+msgid "pgRouting 4.0.0 Release Notes"
 msgstr ""
 
 #, python-format
@@ -4008,52 +4072,52 @@ msgid "Summary of changes by function"
 msgstr ""
 
 msgid "pgr_aStar"
-msgstr ""
+msgstr "pgr_aStar"
 
 msgid "Combinations signature promoted to official."
 msgstr ""
 
 msgid "pgr_aStarCost"
-msgstr ""
+msgstr "pgr_aStarCost"
 
 msgid "pgr_bandwidth"
-msgstr ""
+msgstr "pgr_bandwidth"
 
 msgid "New experimental function."
 msgstr ""
 
 msgid "pgr_bdAstar"
-msgstr ""
+msgstr "pgr_bdAstar"
 
 msgid "pgr_bdAstarCost"
-msgstr ""
+msgstr "pgr_bdAstarCost"
 
 msgid "pgr_bdDijkstra"
-msgstr ""
+msgstr "pgr_bdDijkstra"
 
 msgid "Output columns standardized to |short-generic-result|"
 msgstr ""
 
 msgid "pgr_bdDijkstraCost"
-msgstr ""
+msgstr "pgr_bdDijkstraCost"
 
 msgid "pgr_bellmanFord"
-msgstr ""
+msgstr "pgr_bellmanFord"
 
 msgid "pgr_binaryBreadthFirstSearch"
-msgstr ""
+msgstr "pgr_binaryBreadthFirstSearch"
 
 msgid "pgr_bipartite"
-msgstr ""
+msgstr "pgr_bipartite"
 
 msgid "Output columns standardized to |result_node_color|"
 msgstr ""
 
 msgid "pgr_boykovKolmogorov"
-msgstr ""
+msgstr "pgr_boykovKolmogorov"
 
 msgid "pgr_breadthFirstSearch"
-msgstr ""
+msgstr "pgr_breadthFirstSearch"
 
 msgid ":"
 msgstr ""
@@ -4062,7 +4126,7 @@ msgid "Standardizing output columns to |result-spantree|"
 msgstr ""
 
 msgid "pgr_contraction"
-msgstr ""
+msgstr "pgr_contraction"
 
 msgid "Breaking change, signatures no longer available:"
 msgstr ""
@@ -4071,46 +4135,46 @@ msgid "pgr_contraction(text,bigint[],integer,bigint[],boolean)"
 msgstr ""
 
 msgid "pgr_dagShortestPath"
-msgstr ""
+msgstr "pgr_dagShortestPath"
 
 msgid "pgr_depthFirstSearch"
-msgstr ""
+msgstr "pgr_depthFirstSearch"
 
 msgid "pgr_dijkstra"
-msgstr ""
+msgstr "pgr_dijkstra"
 
 msgid "pgr_dijkstraCost"
-msgstr ""
+msgstr "pgr_dijkstraCost"
 
 msgid "pgr_dijkstraNear"
-msgstr ""
+msgstr "pgr_dijkstraNear"
 
 msgid "Function promoted to official."
 msgstr ""
 
 msgid "pgr_dijkstraNearCost"
-msgstr ""
+msgstr "pgr_dijkstraNearCost"
 
 msgid "pgr_dijkstraVia"
-msgstr ""
+msgstr "pgr_dijkstraVia"
 
 msgid "pgr_edgeColoring"
-msgstr ""
+msgstr "pgr_edgeColoring"
 
 msgid "Output columns standardized to |result_edge_color|"
 msgstr ""
 
 msgid "pgr_edgeDisjointPaths"
-msgstr ""
+msgstr "pgr_edgeDisjointPaths"
 
 msgid "Output columns standardized to |generic-result|"
 msgstr ""
 
 msgid "pgr_edmondsKarp"
-msgstr ""
+msgstr "pgr_edmondsKarp"
 
 msgid "pgr_edwardMoore"
-msgstr ""
+msgstr "pgr_edwardMoore"
 
 msgid "Version 3.2.0"
 msgstr ""
@@ -4125,46 +4189,46 @@ msgid "Version 3.0.0"
 msgstr ""
 
 msgid "pgr_kingOrdering"
-msgstr ""
+msgstr "pgr_kingOrdering"
 
 msgid "pgr_KSP"
-msgstr ""
+msgstr "pgr_KSP"
 
 msgid "All signatures promoted to official."
 msgstr ""
 
 msgid "pgr_maxCardinalityMatch"
-msgstr ""
+msgstr "pgr_maxCardinalityMatch"
 
 msgid "pgr_maxCardinalityMatch(text,boolean)"
 msgstr ""
 
 msgid "pgr_maxFlow"
-msgstr ""
+msgstr "pgr_maxFlow"
 
 msgid "pgr_pushRelabel"
-msgstr ""
+msgstr "pgr_pushRelabel"
 
 msgid "pgr_sequentialVertexColoring"
-msgstr ""
+msgstr "pgr_sequentialVertexColoring"
 
 msgid "pgr_sloanOrdering"
-msgstr ""
+msgstr "pgr_sloanOrdering"
 
 msgid "pgr_topologicalSort"
-msgstr ""
+msgstr "pgr_topologicalSort"
 
 msgid "Standardize output to |result_node_order|"
 msgstr ""
 
 msgid "pgr_transitiveClosure"
-msgstr ""
+msgstr "pgr_transitiveClosure"
 
 msgid "Standardized output to |result-closure|"
 msgstr ""
 
 msgid "pgr_trsp"
-msgstr ""
+msgstr "pgr_trsp"
 
 msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
 msgstr ""
@@ -4175,7 +4239,7 @@ msgid ""
 msgstr ""
 
 msgid "pgr_trspVia"
-msgstr ""
+msgstr "pgr_trspVia"
 
 msgid "pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
 msgstr ""
@@ -4225,7 +4289,7 @@ msgid "pgr_trsp_withpoints(text,text,text,text,boolean,character,boolean)"
 msgstr ""
 
 msgid "pgr_TSP"
-msgstr ""
+msgstr "pgr_TSP"
 
 msgid "Results change depending on input order"
 msgstr ""
@@ -4239,7 +4303,7 @@ msgid ""
 msgstr ""
 
 msgid "pgr_TSPeuclidean"
-msgstr ""
+msgstr "pgr_TSPeuclidean"
 
 msgid ""
 "pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, "
@@ -4247,13 +4311,13 @@ msgid ""
 msgstr ""
 
 msgid "pgr_turnRestrictedPath"
-msgstr ""
+msgstr "pgr_turnRestrictedPath"
 
 msgid "Output columns standardized to |nksp-result|"
 msgstr ""
 
 msgid "pgr_withPoints"
-msgstr ""
+msgstr "pgr_withPoints"
 
 msgid "pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean)"
 msgstr ""
@@ -4271,7 +4335,7 @@ msgid "pgr_withpoints(text,text,text,boolean,character,boolean)"
 msgstr ""
 
 msgid "pgr_withPointsCost"
-msgstr ""
+msgstr "pgr_withPointsCost"
 
 msgid "**Driving side** parameter is unnamed and compulsory."
 msgstr ""
@@ -4295,13 +4359,13 @@ msgid "pgr_withpointscost(text,text,text,boolean,character)"
 msgstr ""
 
 msgid "pgr_withPointsCostMatrix"
-msgstr ""
+msgstr "pgr_withPointsCostMatrix"
 
 msgid "pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
 msgstr ""
 
 msgid "pgr_withPointsDD"
-msgstr ""
+msgstr "pgr_withPointsDD"
 
 msgid ""
 "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
@@ -4313,7 +4377,7 @@ msgid ""
 msgstr ""
 
 msgid "pgr_withPointsKSP"
-msgstr ""
+msgstr "pgr_withPointsKSP"
 
 msgid ""
 "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,"
@@ -4321,7 +4385,7 @@ msgid ""
 msgstr ""
 
 msgid "pgr_withPointsVia"
-msgstr ""
+msgstr "pgr_withPointsVia"
 
 msgid ""
 "pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,"
@@ -5181,9 +5245,6 @@ msgid ""
 "boolean)"
 msgstr ""
 
-msgid "Code enhancements"
-msgstr ""
-
 msgid "Removal of unused C/C++ code"
 msgstr ""
 
@@ -5298,19 +5359,19 @@ msgid ""
 msgstr ""
 
 msgid ":ref:`pgRouting-concepts:Result columns for cost functions`"
-msgstr ""
+msgstr ":ref:`pgRouting-concepts:Result columns for cost functions`"
 
 msgid "|matrix-result|"
 msgstr ""
 
 msgid ":ref:`pgRouting-concepts:Result columns for single path functions`"
-msgstr ""
+msgstr ":ref:`pgRouting-concepts:Result columns for single path functions`"
 
 msgid "|short-generic-result|"
 msgstr ""
 
 msgid ":ref:`pgRouting-concepts:Result columns for spanning tree functions`"
-msgstr ""
+msgstr ":ref:`pgRouting-concepts:Result columns for spanning tree functions`"
 
 msgid "|result-spantree|"
 msgstr ""
@@ -5395,7 +5456,7 @@ msgid "From"
 msgstr ""
 
 msgid "``pgr_withPointsCost``"
-msgstr ""
+msgstr "``pgr_withPointsCost``"
 
 msgid "v < 4.0"
 msgstr ""
@@ -5404,7 +5465,7 @@ msgid "|matrix-pid|"
 msgstr ""
 
 msgid "``pgr_withPointsCostMatrix``"
-msgstr ""
+msgstr "``pgr_withPointsCostMatrix``"
 
 msgid "**to** |matrix-result|"
 msgstr ""
@@ -5507,19 +5568,19 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_KSP``"
-msgstr ""
+msgstr "``pgr_KSP``"
 
 msgid "v < 3.6"
 msgstr ""
 
 msgid ":ref:`from_ksp_result`"
-msgstr ""
+msgstr ":ref:`from_ksp_result`"
 
 msgid "``pgr_edgeDisjointPaths``"
-msgstr ""
+msgstr "``pgr_edgeDisjointPaths``"
 
 msgid ":ref:`from_result_disjoint`"
-msgstr ""
+msgstr ":ref:`from_result_disjoint`"
 
 msgid "Migration of |ksp-result|"
 msgstr ""
@@ -5570,7 +5631,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_dijkstra``"
-msgstr ""
+msgstr "``pgr_dijkstra``"
 
 msgid "v < 3.5"
 msgstr ""
@@ -5579,25 +5640,25 @@ msgid "|old-generic-result|"
 msgstr ""
 
 msgid "``pgr_aStar``"
-msgstr ""
+msgstr "``pgr_aStar``"
 
 msgid "``pgr_bdDijkstra``"
-msgstr ""
+msgstr "``pgr_bdDijkstra``"
 
 msgid "``pgr_bellmanFord``"
-msgstr ""
+msgstr "``pgr_bellmanFord``"
 
 msgid "``pgr_dagShortestPath``"
-msgstr ""
+msgstr "``pgr_dagShortestPath``"
 
 msgid "|result-1-1|"
 msgstr ""
 
 msgid "``pgr_edwardMoore``"
-msgstr ""
+msgstr "``pgr_edwardMoore``"
 
 msgid "``pgr_withPoints``"
-msgstr ""
+msgstr "``pgr_withPoints``"
 
 msgid "|old-pid-result|"
 msgstr ""
@@ -5752,49 +5813,49 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_drivingDistance``"
-msgstr ""
+msgstr "``pgr_drivingDistance``"
 
 msgid ":ref:`from_result_dij_dd`"
-msgstr ""
+msgstr ":ref:`from_result_dij_dd`"
 
 msgid "``pgr_withPointsDD``"
-msgstr ""
+msgstr "``pgr_withPointsDD``"
 
 msgid ":ref:`from_result_generic_no_seq`"
-msgstr ""
+msgstr ":ref:`from_result_generic_no_seq`"
 
 msgid "``pgr_kruskalDD``"
-msgstr ""
+msgstr "``pgr_kruskalDD``"
 
 msgid "v < 3.7"
 msgstr ""
 
 msgid ":ref:`from_result_bfs`"
-msgstr ""
+msgstr ":ref:`from_result_bfs`"
 
 msgid "``pgr_kruskalBFS``"
-msgstr ""
+msgstr "``pgr_kruskalBFS``"
 
 msgid "``pgr_kruskalDFS``"
-msgstr ""
+msgstr "``pgr_kruskalDFS``"
 
 msgid "``pgr_primDD``"
-msgstr ""
+msgstr "``pgr_primDD``"
 
 msgid "``pgr_primBFS``"
-msgstr ""
+msgstr "``pgr_primBFS``"
 
 msgid "``pgr_primDFS``"
-msgstr ""
+msgstr "``pgr_primDFS``"
 
 msgid "``pgr_breadthFisrtSearch``"
-msgstr ""
+msgstr "``pgr_breadthFisrtSearch``"
 
 msgid "v < 4.0.0"
 msgstr ""
 
 msgid "``pgr_depthFisrtSearch``"
-msgstr ""
+msgstr "``pgr_depthFisrtSearch``"
 
 msgid "to |result-spantree|"
 msgstr ""
@@ -5953,31 +6014,31 @@ msgid "Changes on column names must be done after updating pgRouting."
 msgstr ""
 
 msgid "``pgr_edgeColoring``"
-msgstr ""
+msgstr "``pgr_edgeColoring``"
 
 msgid ":ref:`from_old_edge_color`"
-msgstr ""
+msgstr ":ref:`from_old_edge_color`"
 
 msgid "``pgr_bipartite``"
-msgstr ""
+msgstr "``pgr_bipartite``"
 
 msgid ":ref:`from_old_node_color`"
-msgstr ""
+msgstr ":ref:`from_old_node_color`"
 
 msgid "``pgr_sequentialVertexColoring``"
-msgstr ""
+msgstr "``pgr_sequentialVertexColoring``"
 
 msgid "``pgr_topologicalSort``"
-msgstr ""
+msgstr "``pgr_topologicalSort``"
 
 msgid ":ref:`from_toposort`"
-msgstr ""
+msgstr ":ref:`from_toposort`"
 
 msgid "``pgr_transitiveClosure``"
-msgstr ""
+msgstr "``pgr_transitiveClosure``"
 
 msgid ":ref:`from_old_closure`"
-msgstr ""
+msgstr ":ref:`from_old_closure`"
 
 msgid "Migration from |result-old-closure|"
 msgstr ""
@@ -6538,7 +6599,7 @@ msgid "Column ``rid`` is ignored"
 msgstr ""
 
 msgid "``via_path``"
-msgstr ""
+msgstr "``via_path``"
 
 msgid "Must be in reverse order."
 msgstr ""
@@ -6550,7 +6611,7 @@ msgid "When more than one via edge must be separated with ``,``."
 msgstr ""
 
 msgid "``target_id``"
-msgstr ""
+msgstr "``target_id``"
 
 msgid "Is the last edge of the forbidden path."
 msgstr ""
@@ -6559,7 +6620,7 @@ msgid "Is of type ``INTEGER``."
 msgstr ""
 
 msgid "``to_cost``"
-msgstr ""
+msgstr "``to_cost``"
 
 msgid "Is of type ``FLOAT``."
 msgstr ""
@@ -7714,25 +7775,25 @@ msgid "Weight of the edge (``target``, ``source``),"
 msgstr ""
 
 msgid "``x1``"
-msgstr ""
+msgstr "``x1``"
 
 msgid "X coordinate of ``source`` vertex."
 msgstr ""
 
 msgid "``y1``"
-msgstr ""
+msgstr "``y1``"
 
 msgid "Y coordinate of ``source`` vertex."
 msgstr ""
 
 msgid "``x2``"
-msgstr ""
+msgstr "``x2``"
 
 msgid "X coordinate of ``target`` vertex."
 msgstr ""
 
 msgid "``y2``"
-msgstr ""
+msgstr "``y2``"
 
 msgid "Y coordinate of ``target`` vertex."
 msgstr ""
@@ -7781,10 +7842,10 @@ msgid "When ``false`` the graph is considered as Undirected."
 msgstr ""
 
 msgid "``strict``"
-msgstr ""
+msgstr "``strict``"
 
 msgid "``false``"
-msgstr ""
+msgstr "``false``"
 
 msgid "When ``true`` if a path is missing stops and returns **EMPTY SET**"
 msgstr ""
@@ -7793,7 +7854,7 @@ msgid "When ``false`` ignores missing paths returning all paths found"
 msgstr ""
 
 msgid "``U_turn_on_edge``"
-msgstr ""
+msgstr "``U_turn_on_edge``"
 
 msgid ""
 "When ``true`` departing from a visited vertex will not try to avoid using "
@@ -7832,7 +7893,7 @@ msgid "Returns |short-generic-result|"
 msgstr ""
 
 msgid "``path_seq``"
-msgstr ""
+msgstr "``path_seq``"
 
 msgid ""
 "Relative position in the path. Has value **1** for the beginning of a path."
@@ -7880,7 +7941,7 @@ msgid "Returns set of |generic-result|"
 msgstr ""
 
 msgid "``path_id``"
-msgstr ""
+msgstr "``path_id``"
 
 msgid "Path identifier."
 msgstr ""
@@ -7974,9 +8035,6 @@ msgid ""
 "index.html>`__"
 msgstr ""
 
-msgid "See also"
-msgstr ""
-
 msgid "Installation"
 msgstr ""
 
@@ -8055,7 +8113,7 @@ msgid "Upgrading the database"
 msgstr ""
 
 msgid ""
-"To upgrade pgRouting in the database to version 4.0.0 use the following "
+"To upgrade pgRouting in the database to version 4.0.1 use the following "
 "command:"
 msgstr ""
 
@@ -8323,10 +8381,10 @@ msgstr ""
 msgid "This Release Contributors"
 msgstr ""
 
-msgid "Individuals in this release v4.0.0 (in alphabetical order)"
+msgid "Individuals in this release |release| (in alphabetical order)"
 msgstr ""
 
-msgid "Bipasha Gayary, Fan Wu, Regina Obe, Saloni kumari, Vicky Vergara"
+msgid "Mohit Rawat, Regina Obe, Vicky Vergara"
 msgstr ""
 
 msgid ""
@@ -8394,11 +8452,11 @@ msgid ""
 "Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu "
 "Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko "
 "Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim "
-"Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish "
-"Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni "
-"Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen "
-"Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, "
-"Vidhan Jain, Virginia Vergara, Yige Huang"
+"Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul "
+"Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith "
+"Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, "
+"Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit "
+"Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -8603,7 +8661,7 @@ msgid "KSP Optional parameters"
 msgstr ""
 
 msgid "``heap_paths``"
-msgstr ""
+msgstr "``heap_paths``"
 
 msgid "When ``false`` Returns at most K paths."
 msgstr ""
@@ -8638,7 +8696,7 @@ msgid "https://en.wikipedia.org/wiki/K_shortest_path_routing"
 msgstr ""
 
 msgid "``pgr_TSP``"
-msgstr ""
+msgstr "``pgr_TSP``"
 
 msgid "``pgr_TSP`` - Approximation using *metric* algorithm."
 msgstr ""
@@ -8883,7 +8941,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_TSPeuclidean``"
-msgstr ""
+msgstr "``pgr_TSPeuclidean``"
 
 msgid "``pgr_TSPeuclidean`` - Approximation using *metric* algorithm."
 msgstr ""
@@ -8931,13 +8989,13 @@ msgid "Coordinates SQL"
 msgstr ""
 
 msgid "``x``"
-msgstr ""
+msgstr "``x``"
 
 msgid "X value of the coordinate."
 msgstr ""
 
 msgid "``y``"
-msgstr ""
+msgstr "``y``"
 
 msgid "Y value of the coordinate."
 msgstr ""
@@ -9089,7 +9147,7 @@ msgid "Manually assigned vertex combinations."
 msgstr ""
 
 msgid "``pgr_aStarCost``"
-msgstr ""
+msgstr "``pgr_aStarCost``"
 
 msgid ""
 "``pgr_aStarCost`` - Total cost of the shortest path using the A* algorithm."
@@ -9146,7 +9204,7 @@ msgid "pgr_aStarCost(`Edges SQL`_, **start vids**, **end vids**, [options])"
 msgstr ""
 
 msgid "``pgr_aStarCostMatrix``"
-msgstr ""
+msgstr "``pgr_aStarCostMatrix``"
 
 msgid ""
 "``pgr_aStarCostMatrix`` - Calculates the a cost matrix using :doc:"
@@ -9193,7 +9251,7 @@ msgid "Use with :doc:`pgr_TSP`"
 msgstr ""
 
 msgid "``pgr_articulationPoints``"
-msgstr ""
+msgstr "``pgr_articulationPoints``"
 
 msgid ""
 "``pgr_articulationPoints`` - Return the articulation points of an undirected "
@@ -9285,7 +9343,7 @@ msgid "Returns a bigint ``(pgr_bandwidth)``"
 msgstr ""
 
 msgid "``pgr_bandwidth``"
-msgstr ""
+msgstr "``pgr_bandwidth``"
 
 msgid "gives the bandwidth of the graph."
 msgstr ""
@@ -9301,7 +9359,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_bdAstar``"
-msgstr ""
+msgstr "``pgr_bdAstar``"
 
 msgid "``pgr_bdAstar`` — Shortest path using the bidirectional A* algorithm."
 msgstr ""
@@ -9351,7 +9409,7 @@ msgid "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
 
 msgid "``pgr_bdAstarCost``"
-msgstr ""
+msgstr "``pgr_bdAstarCost``"
 
 msgid ""
 "``pgr_bdAstarCost`` - Total cost of the shortest path using the "
@@ -9386,7 +9444,7 @@ msgid "pgr_bdAstarCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
 
 msgid "``pgr_bdAstarCostMatrix``"
-msgstr ""
+msgstr "``pgr_bdAstarCostMatrix``"
 
 msgid ""
 "``pgr_bdAstarCostMatrix`` - Calculates the cost matrix using :doc:"
@@ -9465,7 +9523,7 @@ msgid "https://en.wikipedia.org/wiki/Bidirectional_search"
 msgstr ""
 
 msgid "``pgr_bdDijkstraCost``"
-msgstr ""
+msgstr "``pgr_bdDijkstraCost``"
 
 msgid ""
 "``pgr_bdDijkstraCost`` — Returns the shortest path's cost using "
@@ -9505,7 +9563,7 @@ msgid "pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
 msgid "``pgr_bdDijkstraCostMatrix``"
-msgstr ""
+msgstr "``pgr_bdDijkstraCostMatrix``"
 
 msgid ""
 "``pgr_bdDijkstraCostMatrix`` - Calculates a cost matrix using :doc:"
@@ -9697,10 +9755,10 @@ msgid "Removing vertex :math:`10` will create two graph components."
 msgstr ""
 
 msgid "``vid``"
-msgstr ""
+msgstr "``vid``"
 
 msgid "``centrality``"
-msgstr ""
+msgstr "``centrality``"
 
 msgid ""
 "Relative betweenness centrality score of the vertex (will be in range [0,1])"
@@ -9712,7 +9770,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_biconnectedComponents``"
-msgstr ""
+msgstr "``pgr_biconnectedComponents``"
 
 msgid ""
 "``pgr_biconnectedComponents`` — Biconnected components of an undirected "
@@ -9756,7 +9814,7 @@ msgid "The biconnected components of the graph"
 msgstr ""
 
 msgid "``component``"
-msgstr ""
+msgstr "``component``"
 
 msgid "Component identifier."
 msgstr ""
@@ -9921,7 +9979,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_boykovKolmogorov``"
-msgstr ""
+msgstr "``pgr_boykovKolmogorov``"
 
 msgid ""
 "``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that "
@@ -10065,7 +10123,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_bridges``"
-msgstr ""
+msgstr "``pgr_bridges``"
 
 msgid "``pgr_bridges`` - Return the bridges of an undirected graph."
 msgstr ""
@@ -10153,13 +10211,13 @@ msgid "RETURNS ``FLOAT``"
 msgstr ""
 
 msgid "``pgr_chinesepostmancost``"
-msgstr ""
+msgstr "``pgr_chinesepostmancost``"
 
 msgid "Minimum costs of a circuit path."
 msgstr ""
 
 msgid "``pgr_connectedComponents``"
-msgstr ""
+msgstr "``pgr_connectedComponents``"
 
 msgid ""
 "``pgr_connectedComponents`` — Connected components of an undirected graph "
@@ -10201,7 +10259,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_contraction``"
-msgstr ""
+msgstr "``pgr_contraction``"
 
 msgid ""
 "``pgr_contraction`` — Performs graph contraction and returns the contracted "
@@ -10289,7 +10347,7 @@ msgid "Contraction optional parameters"
 msgstr ""
 
 msgid "``methods``"
-msgstr ""
+msgstr "``methods``"
 
 msgid "``INTEGER[]``"
 msgstr ""
@@ -10307,7 +10365,7 @@ msgid "2 = Linear contraction"
 msgstr ""
 
 msgid "``cycles``"
-msgstr ""
+msgstr "``cycles``"
 
 msgid ":math:`1`"
 msgstr ""
@@ -10316,7 +10374,7 @@ msgid "Number of times the contraction methods will be performed."
 msgstr ""
 
 msgid "``forbidden``"
-msgstr ""
+msgstr "``forbidden``"
 
 msgid "``BIGINT[]``"
 msgstr ""
@@ -10331,7 +10389,7 @@ msgid "The function returns a single row. The columns of the row are:"
 msgstr ""
 
 msgid "``type``"
-msgstr ""
+msgstr "``type``"
 
 msgid "Type of the row."
 msgstr ""
@@ -10369,7 +10427,7 @@ msgid ""
 msgstr ""
 
 msgid "``contracted_vertices``"
-msgstr ""
+msgstr "``contracted_vertices``"
 
 msgid "Array of contracted vertex identifiers."
 msgstr ""
@@ -10465,7 +10523,7 @@ msgid "The vertices set belonging to the vertex/edge"
 msgstr ""
 
 msgid "``is_contracted``"
-msgstr ""
+msgstr "``is_contracted``"
 
 msgid "On the vertex table"
 msgstr ""
@@ -10480,7 +10538,7 @@ msgid ""
 msgstr ""
 
 msgid "``is_new``"
-msgstr ""
+msgstr "``is_new``"
 
 msgid "On the edge table"
 msgstr ""
@@ -10881,10 +10939,10 @@ msgid "Column ``id`` has a negative value"
 msgstr ""
 
 msgid "``metric``"
-msgstr ""
+msgstr "``metric``"
 
 msgid "``vertex_order``"
-msgstr ""
+msgstr "``vertex_order``"
 
 msgid "On an undirected graph"
 msgstr ""
@@ -11370,7 +11428,7 @@ msgid "https://en.wikipedia.org/wiki/Topological_sorting"
 msgstr ""
 
 msgid "``pgr_degree``"
-msgstr ""
+msgstr "``pgr_degree``"
 
 msgid ""
 "``pgr_degree`` — For each vertex in an undirected graph, return the count of "
@@ -11459,7 +11517,7 @@ msgid "`Vertex SQL`_ as described below"
 msgstr ""
 
 msgid "``dryrun``"
-msgstr ""
+msgstr "``dryrun``"
 
 msgid "When true do not process and get in a NOTICE the resulting query."
 msgstr ""
@@ -11474,7 +11532,7 @@ msgid "Vertex SQL"
 msgstr ""
 
 msgid "``in_edges``"
-msgstr ""
+msgstr "``in_edges``"
 
 msgid ""
 "Array of identifiers of the edges that have the vertex ``id`` as *first end "
@@ -11485,7 +11543,7 @@ msgid "When missing, ``out_edges`` must exist."
 msgstr ""
 
 msgid "``out_edges``"
-msgstr ""
+msgstr "``out_edges``"
 
 msgid ""
 "Array of identifiers of the edges that have the vertex ``id`` as *second end "
@@ -11499,7 +11557,7 @@ msgid "Vertex identifier"
 msgstr ""
 
 msgid "``degree``"
-msgstr ""
+msgstr "``degree``"
 
 msgid "Number of edges that are incident to the vertex ``id``"
 msgstr ""
@@ -11891,7 +11949,7 @@ msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
 msgid "``pgr_dijkstraCost``"
-msgstr ""
+msgstr "``pgr_dijkstraCost``"
 
 msgid ""
 "``pgr_dijkstraCost`` - Total cost of the shortest path using Dijkstra "
@@ -11926,7 +11984,7 @@ msgid "pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
 msgid "``pgr_dijkstraCostMatrix``"
-msgstr ""
+msgstr "``pgr_dijkstraCostMatrix``"
 
 msgid ""
 "``pgr_dijkstraCostMatrix`` - Calculates a cost matrix using :doc:"
@@ -11940,7 +11998,7 @@ msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 msgstr ""
 
 msgid "``pgr_dijkstraNear``"
-msgstr ""
+msgstr "``pgr_dijkstraNear``"
 
 msgid ""
 "``pgr_dijkstraNear`` — Using Dijkstra's algorithm, finds the route that "
@@ -12181,13 +12239,13 @@ msgid "Near optional parameters"
 msgstr ""
 
 msgid "``cap``"
-msgstr ""
+msgstr "``cap``"
 
 msgid "Find at most ``cap`` number of nearest shortest paths"
 msgstr ""
 
 msgid "``global``"
-msgstr ""
+msgstr "``global``"
 
 msgid "When ``true``: only ``cap`` limit results will be returned"
 msgstr ""
@@ -12200,7 +12258,7 @@ msgid "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
 msgid "``pgr_dijkstraNearCost``"
-msgstr ""
+msgstr "``pgr_dijkstraNearCost``"
 
 msgid ""
 "``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that "
@@ -12259,7 +12317,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_dijkstraVia``"
-msgstr ""
+msgstr "``pgr_dijkstraVia``"
 
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr ""
@@ -12322,7 +12380,7 @@ msgid "-2 for the last node of the route."
 msgstr ""
 
 msgid "``route_agg_cost``"
-msgstr ""
+msgstr "``route_agg_cost``"
 
 msgid ""
 "Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the current "
@@ -12426,7 +12484,7 @@ msgid "Driving distance optional parameters"
 msgstr ""
 
 msgid "``equicost``"
-msgstr ""
+msgstr "``equicost``"
 
 msgid ""
 "When ``true`` the node will only appear in the closest ``start_vid`` list. "
@@ -12592,7 +12650,7 @@ msgid "Manually assigned vertex combinations on an undirected graph."
 msgstr ""
 
 msgid "``pgr_edmondsKarp``"
-msgstr ""
+msgstr "``pgr_edmondsKarp``"
 
 msgid ""
 "``pgr_edmondsKarp`` — Calculates the flow on the graph edges that maximizes "
@@ -12702,7 +12760,7 @@ msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 msgstr ""
 
 msgid "``pgr_extractVertices``"
-msgstr ""
+msgstr "``pgr_extractVertices``"
 
 msgid "``pgr_extractVertices`` — Extracts the vertices information"
 msgstr ""
@@ -12730,10 +12788,10 @@ msgid "(Optional) identifier of the edge."
 msgstr ""
 
 msgid "``geom``"
-msgstr ""
+msgstr "``geom``"
 
 msgid "``LINESTRING``"
-msgstr ""
+msgstr "``LINESTRING``"
 
 msgid "Geometry of the edge."
 msgstr ""
@@ -12747,10 +12805,10 @@ msgid "Ignored columns:"
 msgstr ""
 
 msgid "``startpoint``"
-msgstr ""
+msgstr "``startpoint``"
 
 msgid "``endpoint``"
-msgstr ""
+msgstr "``endpoint``"
 
 msgid "When vertex geometry is known"
 msgstr ""
@@ -12761,7 +12819,7 @@ msgid ""
 msgstr ""
 
 msgid "``POINT``"
-msgstr ""
+msgstr "``POINT``"
 
 msgid "POINT geometry of the starting vertex."
 msgstr ""
@@ -12840,7 +12898,7 @@ msgid "**Generated topology**"
 msgstr ""
 
 msgid "``pgr_findCloseEdges``"
-msgstr ""
+msgstr "``pgr_findCloseEdges``"
 
 msgid "``pgr_findCloseEdges`` - Finds the close edges to a point geometry."
 msgstr ""
@@ -12927,7 +12985,7 @@ msgid ""
 msgstr ""
 
 msgid "``geometry``"
-msgstr ""
+msgstr "``geometry``"
 
 msgid "The ``LINESTRING`` geometry of the edge."
 msgstr ""
@@ -12953,7 +13011,7 @@ msgid "At the left ``l`` of the segment."
 msgstr ""
 
 msgid "``distance``"
-msgstr ""
+msgstr "``distance``"
 
 msgid "Distance from the point to the edge."
 msgstr ""
@@ -13085,7 +13143,7 @@ msgid ""
 msgstr ""
 
 msgid "``newPoint``"
-msgstr ""
+msgstr "``newPoint``"
 
 msgid "A point on segment ``edge_id`` that is the closest to ``geom``."
 msgstr ""
@@ -13108,7 +13166,7 @@ msgid "The points of interest:"
 msgstr ""
 
 msgid "``pgr_floydWarshall``"
-msgstr ""
+msgstr "``pgr_floydWarshall``"
 
 msgid ""
 "``pgr_floydWarshall`` - Returns the sum of the costs of the shortest path "
@@ -13135,7 +13193,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_full_version``"
-msgstr ""
+msgstr "``pgr_full_version``"
 
 msgid ""
 "``pgr_full_version`` — Get the details of pgRouting version information."
@@ -13154,55 +13212,55 @@ msgid "Information about when this documentation was built"
 msgstr ""
 
 msgid "``version``"
-msgstr ""
+msgstr "``version``"
 
 msgid "pgRouting version"
 msgstr ""
 
 msgid "``build_type``"
-msgstr ""
+msgstr "``build_type``"
 
 msgid "The Build type"
 msgstr ""
 
 msgid "``compile_date``"
-msgstr ""
+msgstr "``compile_date``"
 
 msgid "Compilation date"
 msgstr ""
 
 msgid "``library``"
-msgstr ""
+msgstr "``library``"
 
 msgid "Library name and version"
 msgstr ""
 
 msgid "``system``"
-msgstr ""
+msgstr "``system``"
 
 msgid "Operative system"
 msgstr ""
 
 msgid "``postgreSQL``"
-msgstr ""
+msgstr "``postgreSQL``"
 
 msgid "pgsql used"
 msgstr ""
 
 msgid "``compiler``"
-msgstr ""
+msgstr "``compiler``"
 
 msgid "Compiler and version"
 msgstr ""
 
 msgid "``boost``"
-msgstr ""
+msgstr "``boost``"
 
 msgid "Boost version"
 msgstr ""
 
 msgid "``hash``"
-msgstr ""
+msgstr "``hash``"
 
 msgid "Git hash of pgRouting build"
 msgstr ""
@@ -13318,7 +13376,7 @@ msgid "Returns a boolean ``(pgr_isplanar)``"
 msgstr ""
 
 msgid "``pgr_isplanar``"
-msgstr ""
+msgstr "``pgr_isplanar``"
 
 msgid "`true` when the graph is planar."
 msgstr ""
@@ -13343,7 +13401,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_johnson``"
-msgstr ""
+msgstr "``pgr_johnson``"
 
 msgid ""
 "``pgr_johnson`` - Returns the sum of the costs of the shortest path for each "
@@ -13412,7 +13470,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_kruskal``"
-msgstr ""
+msgstr "``pgr_kruskal``"
 
 msgid ""
 "``pgr_kruskal`` — Minimum spanning tree of a graph using Kruskal's algorithm."
@@ -13566,13 +13624,13 @@ msgid "Returns set of ``(seq, vertex_id, idom)``"
 msgstr ""
 
 msgid "``vertex_id``"
-msgstr ""
+msgstr "``vertex_id``"
 
 msgid "Identifier of vertex ."
 msgstr ""
 
 msgid "``idom``"
-msgstr ""
+msgstr "``idom``"
 
 msgid "Immediate dominator of vertex."
 msgstr ""
@@ -14090,7 +14148,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_maxCardinalityMatch``"
-msgstr ""
+msgstr "``pgr_maxCardinalityMatch``"
 
 msgid ""
 "``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a "
@@ -14167,7 +14225,7 @@ msgid "https://en.wikipedia.org/wiki/Ackermann_function"
 msgstr ""
 
 msgid "``pgr_maxFlow``"
-msgstr ""
+msgstr "``pgr_maxFlow``"
 
 msgid ""
 "``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the "
@@ -14526,7 +14584,7 @@ msgid "This implementation's travel time: 854.54"
 msgstr ""
 
 msgid "``pgr_prim``"
-msgstr ""
+msgstr "``pgr_prim``"
 
 msgid ""
 "``pgr_prim`` — Minimum spanning forest of a graph using Prim's algorithm."
@@ -14599,7 +14657,7 @@ msgid "pgr_primDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr ""
 
 msgid "``pgr_pushRelabel``"
-msgstr ""
+msgstr "``pgr_pushRelabel``"
 
 msgid ""
 "``pgr_pushRelabel`` — Calculates the flow on the graph edges that maximizes "
@@ -14628,7 +14686,7 @@ msgid "pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)"
 msgstr ""
 
 msgid "``pgr_separateCrossing``"
-msgstr ""
+msgstr "``pgr_separateCrossing``"
 
 msgid ""
 "``pgr_separateCrossing`` - From crossing geometries generates geometries "
@@ -14651,7 +14709,7 @@ msgid "Get the segments of the crossing geometries"
 msgstr ""
 
 msgid "``tolerance``"
-msgstr ""
+msgstr "``tolerance``"
 
 msgid "0.01"
 msgstr ""
@@ -14669,7 +14727,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_separateTouching``"
-msgstr ""
+msgstr "``pgr_separateTouching``"
 
 msgid ""
 "``pgr_separateTouching`` - From touching geometries generates geometries "
@@ -14886,7 +14944,7 @@ msgid "https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm"
 msgstr ""
 
 msgid "``pgr_strongComponents``"
-msgstr ""
+msgstr "``pgr_strongComponents``"
 
 msgid ""
 "``pgr_strongComponents`` — Strongly connected components of a directed graph "
@@ -15022,7 +15080,7 @@ msgid "Identifier of the source of the edges"
 msgstr ""
 
 msgid "``target_array``"
-msgstr ""
+msgstr "``target_array``"
 
 msgid "Identifiers of the targets of the edges"
 msgstr ""
@@ -15039,7 +15097,7 @@ msgid "https://en.wikipedia.org/wiki/Transitive_closure"
 msgstr ""
 
 msgid "``pgr_trsp``"
-msgstr ""
+msgstr "``pgr_trsp``"
 
 msgid "``pgr_trsp`` - routing vertices with restrictions."
 msgstr ""
@@ -15069,10 +15127,10 @@ msgid "New prototypes"
 msgstr ""
 
 msgid "pgr_trspViaVertices"
-msgstr ""
+msgstr "pgr_trspViaVertices"
 
 msgid "pgr_trspViaEdges"
-msgstr ""
+msgstr "pgr_trspViaEdges"
 
 msgid ""
 "Turn restricted shortest path (TRSP) is an algorithm that receives turn "
@@ -15148,7 +15206,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_trspVia``"
-msgstr ""
+msgstr "``pgr_trspVia``"
 
 msgid ""
 "``pgr_trspVia`` Route that goes through a list of vertices with restrictions."
@@ -15237,7 +15295,7 @@ msgid ":doc:`via-category`"
 msgstr ""
 
 msgid "``pgr_trspVia_withPoints``"
-msgstr ""
+msgstr "``pgr_trspVia_withPoints``"
 
 msgid ""
 "``pgr_trspVia_withPoints`` - Route that goes through a list of vertices and/"
@@ -15334,7 +15392,7 @@ msgid "With points optional parameters"
 msgstr ""
 
 msgid "``details``"
-msgstr ""
+msgstr "``details``"
 
 msgid "For showing points stops."
 msgstr ""
@@ -15427,7 +15485,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_trsp_withPoints``"
-msgstr ""
+msgstr "``pgr_trsp_withPoints``"
 
 msgid "``pgr_trsp_withPoints`` Routing Vertex/Point with restrictions."
 msgstr ""
@@ -15569,7 +15627,7 @@ msgid "Special optional parameters"
 msgstr ""
 
 msgid "``stop_on_first``"
-msgstr ""
+msgstr "``stop_on_first``"
 
 msgid ""
 "When ``true`` stops on first path found that dos not violate restrictions"
@@ -15597,7 +15655,7 @@ msgid "From vertex :math:`3` to vertex :math:`8` with more alternatives"
 msgstr ""
 
 msgid "``pgr_version``"
-msgstr ""
+msgstr "``pgr_version``"
 
 msgid "``pgr_version`` — Query for pgRouting version information."
 msgstr ""
@@ -15931,7 +15989,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_withPointsKSP``"
-msgstr ""
+msgstr "``pgr_withPointsKSP``"
 
 msgid ""
 "``pgr_withPointsKSP`` — Yen's algorithm for K shortest paths using Dijkstra."
@@ -16044,7 +16102,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_withPointsVia``"
-msgstr ""
+msgstr "``pgr_withPointsVia``"
 
 msgid ""
 "``pgr_withPointsVia`` - Route that goes through a list of vertices and/or "
@@ -16397,7 +16455,7 @@ msgid "CI does not test for PostgreSQL 12"
 msgstr ""
 
 msgid "pgr_betweennessCentrality"
-msgstr ""
+msgstr "pgr_betweennessCentrality"
 
 msgid ""
 "`#2605 <https://github.com/pgRouting/pgrouting/issues/2605>`__: Standardize "
@@ -16416,7 +16474,7 @@ msgid ""
 msgstr ""
 
 msgid "``pgr_lineGraph``"
-msgstr ""
+msgstr "``pgr_lineGraph``"
 
 msgid "Code enhancement"
 msgstr ""
@@ -16488,7 +16546,7 @@ msgid "Results of documentation queries adujsted to boost 1.83.0 version:"
 msgstr ""
 
 msgid "pgr_stoerWagner"
-msgstr ""
+msgstr "pgr_stoerWagner"
 
 msgid "pgtap tests"
 msgstr ""
@@ -16655,10 +16713,10 @@ msgid "Changes on the documentation to the following:"
 msgstr ""
 
 msgid "pgr_degree"
-msgstr ""
+msgstr "pgr_degree"
 
 msgid "pgr_ksp"
-msgstr ""
+msgstr "pgr_ksp"
 
 msgid "Automatic page history links"
 msgstr ""
@@ -16817,13 +16875,13 @@ msgid "pgr_findCloseEdges(Many points)"
 msgstr ""
 
 msgid "pgr_cuthillMckeeOrdering"
-msgstr ""
+msgstr "pgr_cuthillMckeeOrdering"
 
 msgid "Unclassified"
 msgstr ""
 
 msgid "pgr_hawickCircuits"
-msgstr ""
+msgstr "pgr_hawickCircuits"
 
 msgid "Flow functions"
 msgstr ""
@@ -17027,7 +17085,7 @@ msgid "pgr_dijkstraNearCost(One to Many)"
 msgstr ""
 
 msgid "pgr_extractVertices"
-msgstr ""
+msgstr "pgr_extractVertices"
 
 msgid "Traversal"
 msgstr ""
@@ -17109,13 +17167,13 @@ msgid "Dijkstra Near"
 msgstr ""
 
 msgid "pgr_isPlanar"
-msgstr ""
+msgstr "pgr_isPlanar"
 
 msgid "pgr_lengauerTarjanDominatorTree"
-msgstr ""
+msgstr "pgr_lengauerTarjanDominatorTree"
 
 msgid "pgr_makeConnected"
-msgstr ""
+msgstr "pgr_makeConnected"
 
 msgid "Astar"
 msgstr ""
@@ -17385,31 +17443,31 @@ msgid "Kruskal family"
 msgstr ""
 
 msgid "pgr_kruskal"
-msgstr ""
+msgstr "pgr_kruskal"
 
 msgid "pgr_kruskalBFS"
-msgstr ""
+msgstr "pgr_kruskalBFS"
 
 msgid "pgr_kruskalDD"
-msgstr ""
+msgstr "pgr_kruskalDD"
 
 msgid "pgr_kruskalDFS"
-msgstr ""
+msgstr "pgr_kruskalDFS"
 
 msgid "Prim family"
 msgstr ""
 
 msgid "pgr_prim"
-msgstr ""
+msgstr "pgr_prim"
 
 msgid "pgr_primDD"
-msgstr ""
+msgstr "pgr_primDD"
 
 msgid "pgr_primDFS"
-msgstr ""
+msgstr "pgr_primDFS"
 
 msgid "pgr_primBFS"
-msgstr ""
+msgstr "pgr_primBFS"
 
 msgid "Proposed moved to official on pgRouting"
 msgstr ""
@@ -17430,7 +17488,7 @@ msgid "pgr_aStarCost(Many to Many)"
 msgstr ""
 
 msgid "pgr_aStarCostMatrix"
-msgstr ""
+msgstr "pgr_aStarCostMatrix"
 
 msgid "bdAstar Family"
 msgstr ""
@@ -17448,7 +17506,7 @@ msgid "pgr_bdAstarCost(Many to Many)"
 msgstr ""
 
 msgid "pgr_bdAstarCostMatrix"
-msgstr ""
+msgstr "pgr_bdAstarCostMatrix"
 
 msgid "bdDijkstra Family"
 msgstr ""
@@ -17466,7 +17524,7 @@ msgid "pgr_bdDijkstraCost(Many to Many)"
 msgstr ""
 
 msgid "pgr_bdDijkstraCostMatrix"
-msgstr ""
+msgstr "pgr_bdDijkstraCostMatrix"
 
 msgid "Flow Family"
 msgstr ""
@@ -17508,7 +17566,7 @@ msgid "pgr_boykovKolmogorov (Many to Many)"
 msgstr ""
 
 msgid "pgr_maxCardinalityMatching"
-msgstr ""
+msgstr "pgr_maxCardinalityMatching"
 
 msgid "pgr_edgeDisjointPaths(One to One)"
 msgstr ""
@@ -17526,19 +17584,19 @@ msgid "Components family"
 msgstr ""
 
 msgid "pgr_connectedComponents"
-msgstr ""
+msgstr "pgr_connectedComponents"
 
 msgid "pgr_strongComponents"
-msgstr ""
+msgstr "pgr_strongComponents"
 
 msgid "pgr_biconnectedComponents"
-msgstr ""
+msgstr "pgr_biconnectedComponents"
 
 msgid "pgr_articulationPoints"
-msgstr ""
+msgstr "pgr_articulationPoints"
 
 msgid "pgr_bridges"
-msgstr ""
+msgstr "pgr_bridges"
 
 msgid "Contraction:"
 msgstr ""
@@ -17546,35 +17604,32 @@ msgstr ""
 msgid "Removed unnecessary column seq"
 msgstr ""
 
-msgid "Bug Fixes"
-msgstr ""
-
 msgid "pgr_maxFlowMinCost"
-msgstr ""
+msgstr "pgr_maxFlowMinCost"
 
 msgid "pgr_maxFlowMinCost_Cost"
 msgstr ""
 
 msgid "pgr_dagShortestpath"
-msgstr ""
+msgstr "pgr_dagShortestpath"
 
 msgid "VRP category"
 msgstr ""
 
 msgid "pgr_pickDeliverEuclidean"
-msgstr ""
+msgstr "pgr_pickDeliverEuclidean"
 
 msgid "pgr_pickDeliver"
-msgstr ""
+msgstr "pgr_pickDeliver"
 
 msgid "Chinese Postman family"
 msgstr ""
 
 msgid "pgr_chinesePostman"
-msgstr ""
+msgstr "pgr_chinesePostman"
 
 msgid "pgr_chinesePostmanCost"
-msgstr ""
+msgstr "pgr_chinesePostmanCost"
 
 msgid "Breadth First Search family"
 msgstr ""
@@ -17592,16 +17647,16 @@ msgid "Max flow - functions were renamed on v2.5.0"
 msgstr ""
 
 msgid "pgr_maxFlowPushRelabel"
-msgstr ""
+msgstr "pgr_maxFlowPushRelabel"
 
 msgid "pgr_maxFlowBoykovKolmogorov"
-msgstr ""
+msgstr "pgr_maxFlowBoykovKolmogorov"
 
 msgid "pgr_maxFlowEdmondsKarp"
-msgstr ""
+msgstr "pgr_maxFlowEdmondsKarp"
 
 msgid "pgr_maximumcardinalitymatching"
-msgstr ""
+msgstr "pgr_maximumcardinalitymatching"
 
 msgid "VRP"
 msgstr ""
@@ -17613,7 +17668,7 @@ msgid "TSP old signatures"
 msgstr ""
 
 msgid "pgr_pointsAsPolygon"
-msgstr ""
+msgstr "pgr_pointsAsPolygon"
 
 msgid "pgr_alphaShape old signature"
 msgstr ""
@@ -17691,22 +17746,22 @@ msgid "Fixes server crash on several functions."
 msgstr ""
 
 msgid "pgr_floydWarshall"
-msgstr ""
+msgstr "pgr_floydWarshall"
 
 msgid "pgr_johnson"
-msgstr ""
+msgstr "pgr_johnson"
 
 msgid "pgr_bdDijstra"
-msgstr ""
+msgstr "pgr_bdDijstra"
 
 msgid "pgr_alphashape"
-msgstr ""
+msgstr "pgr_alphashape"
 
 msgid "pgr_dijkstraCostMatrix"
-msgstr ""
+msgstr "pgr_dijkstraCostMatrix"
 
 msgid "pgr_drivingDistance"
-msgstr ""
+msgstr "pgr_drivingDistance"
 
 msgid "pgr_dijkstraVia (proposed)"
 msgstr ""
@@ -17773,7 +17828,7 @@ msgid ""
 msgstr ""
 
 msgid "pgr_lineGraphFull"
-msgstr ""
+msgstr "pgr_lineGraphFull"
 
 msgid ""
 "Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
@@ -17923,7 +17978,7 @@ msgid "pgr_bdAstar(One to One)"
 msgstr ""
 
 msgid "pgr_lineGraph"
-msgstr ""
+msgstr "pgr_lineGraph"
 
 msgid "pgr_bdastar - use pgr_bdAstar instead"
 msgstr ""
@@ -17947,7 +18002,7 @@ msgid "Deprecated Function"
 msgstr ""
 
 msgid "pgr_pointToEdgeNode"
-msgstr ""
+msgstr "pgr_pointToEdgeNode"
 
 msgid "pgRouting 2.4"
 msgstr ""
@@ -18008,7 +18063,7 @@ msgid "pgr_bddijkstra - use pgr_bdDijkstra instead"
 msgstr ""
 
 msgid "pgr_pointsToVids"
-msgstr ""
+msgstr "pgr_pointsToVids"
 
 msgid "Bug fixes on proposed functions"
 msgstr ""
@@ -18074,7 +18129,7 @@ msgid ""
 msgstr ""
 
 msgid "pgr_eucledianTSP"
-msgstr ""
+msgstr "pgr_eucledianTSP"
 
 msgid "pgr_maxFlowPushRelabel(One to One)"
 msgstr ""
@@ -18113,10 +18168,10 @@ msgid "pgr_maxFlowBoykovKolmogorov (Many to Many)"
 msgstr ""
 
 msgid "pgr_maximumCardinalityMatching"
-msgstr ""
+msgstr "pgr_maximumCardinalityMatching"
 
 msgid "pgr_contractGraph"
-msgstr ""
+msgstr "pgr_contractGraph"
 
 msgid "pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead"
 msgstr ""
@@ -18128,13 +18183,13 @@ msgid "pgr_flip_edges"
 msgstr ""
 
 msgid "pgr_vidsToDmatrix"
-msgstr ""
+msgstr "pgr_vidsToDmatrix"
 
 msgid "pgr_pointsToDMatrix"
-msgstr ""
+msgstr "pgr_pointsToDMatrix"
 
 msgid "pgr_textToPoints"
-msgstr ""
+msgstr "pgr_textToPoints"
 
 msgid "pgRouting 2.2"
 msgstr ""
@@ -18214,7 +18269,7 @@ msgid "Improvements"
 msgstr ""
 
 msgid "pgr_nodeNetwork"
-msgstr ""
+msgstr "pgr_nodeNetwork"
 
 msgid "Adding a row_where and outall optional parameters"
 msgstr ""
@@ -18226,7 +18281,7 @@ msgid "pgr_dijkstra -- to match what is documented"
 msgstr ""
 
 msgid "pgr_Johnson"
-msgstr ""
+msgstr "pgr_Johnson"
 
 msgid "pgr_dijkstraCost(One to One)"
 msgstr ""
@@ -18350,37 +18405,37 @@ msgid "Added proposed functions from GSoc Projects:"
 msgstr ""
 
 msgid "pgr_vrppdtw"
-msgstr ""
+msgstr "pgr_vrppdtw"
 
 msgid "pgr_vrponedepot"
-msgstr ""
+msgstr "pgr_vrponedepot"
 
 msgid "pgr_getColumnName"
-msgstr ""
+msgstr "pgr_getColumnName"
 
 msgid "pgr_getTableName"
-msgstr ""
+msgstr "pgr_getTableName"
 
 msgid "pgr_isColumnCndexed"
-msgstr ""
+msgstr "pgr_isColumnCndexed"
 
 msgid "pgr_isColumnInTable"
-msgstr ""
+msgstr "pgr_isColumnInTable"
 
 msgid "pgr_quote_ident"
 msgstr ""
 
 msgid "pgr_versionless"
-msgstr ""
+msgstr "pgr_versionless"
 
 msgid "pgr_startPoint"
-msgstr ""
+msgstr "pgr_startPoint"
 
 msgid "pgr_endPoint"
-msgstr ""
+msgstr "pgr_endPoint"
 
 msgid "pgr_pointToId"
-msgstr ""
+msgstr "pgr_pointToId"
 
 msgid "No longer supported"
 msgstr ""
@@ -18704,10 +18759,10 @@ msgid "Flow capacity from `target` to ``source``."
 msgstr ""
 
 msgid "``category``"
-msgstr ""
+msgstr "``category``"
 
 msgid "``reverse_category``"
-msgstr ""
+msgstr "``reverse_category``"
 
 msgid ":math:`x` coordinate of the starting vertex of the geometry."
 msgstr ""

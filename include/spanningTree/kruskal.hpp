@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: kruskal.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018 Aditya Pratap Singh
@@ -42,6 +42,7 @@ namespace functions {
 template <class G>
 class Pgr_kruskal : public Pgr_mst<G> {
  public:
+     virtual ~Pgr_kruskal() = default;
      std::vector<MST_rt> kruskal(G &graph);
 
      std::vector<MST_rt> kruskalBFS(

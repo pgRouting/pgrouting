@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: mst.hpp
 
-Copyright (c) 2018 pgRouting developers
+Copyright (c) 2018-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018 Vicky Vergara
@@ -50,6 +50,9 @@ namespace functions {
 
 template <class G>
 class Pgr_mst {
+ public:
+     virtual ~Pgr_mst() = default;
+
  protected:
      typedef typename G::B_G B_G;
      typedef typename G::V V;

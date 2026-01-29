@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: legacy.c
 
-Copyright (c) 2017 pgRouting developers
+Copyright (c) 2024-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018-2020 Regina Obe <lr@pcorp.us>

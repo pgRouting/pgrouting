@@ -5,7 +5,7 @@ Copyright (c) 2023 Celia Virginia Vergara Castillo
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky at erosion.dev
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------

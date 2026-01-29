@@ -2,7 +2,7 @@
 File: allpairs_driver.cpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2025 Celia Virginia Vergara Castillo
@@ -32,107 +32,87 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <string>
+#include <utility>
 
-#include "allpairs/allpairs.hpp"
+#include "c_types/iid_t_rt.h"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/assert.hpp"
 #include "cpp_common/to_postgres.hpp"
-
+#include "allpairs/allpairs.hpp"
 
 void
 do_allpairs(
-        std::string edges_sql,
+        const std::string &edges_sql,
         bool directed,
         int which,
-        /* IDEA: have as a parameter the function name*/
 
-        IID_t_rt **return_tuples,
-        size_t *return_count,
-        char ** log_msg,
-        char ** err_msg) {
-    using pgrouting::to_pg_msg;
-    using pgrouting::pgr_free;
-
-    std::ostringstream log;
-    std::ostringstream err;
+        IID_t_rt* &return_tuples,
+        size_t &return_count,
+        std::ostringstream &log,
+        std::ostringstream &err) {
     std::string hint;
 
     try {
-        pgassert(!(*log_msg));
-        pgassert(!(*err_msg));
-        pgassert(!(*return_tuples));
-        pgassert(*return_count == 0);
+        pgassert(!edges_sql.empty());
+
+        using pgrouting::pgget::get_edges;
+        using pgrouting::to_postgres::matrix_to_tuple;
+        using pgrouting::UndirectedGraph;
+        using pgrouting::DirectedGraph;
 
         using pgrouting::johnson;
         using pgrouting::floydWarshall;
-        using pgrouting::to_postgres::matrix_to_tuple;
 
         hint = edges_sql;
-        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, true);
+        auto edges = get_edges(edges_sql, true, true);
 
         if (edges.empty()) {
-            throw std::string("No edges found");
-        }
-
-        hint = "";
-        if (directed) {
-            log << "Processing Directed graph\n";
-
-            pgrouting::DirectedGraph digraph;
-            digraph.insert_edges(edges);
-
-            if (which == 0) {
-                auto matrix = johnson(digraph);
-                matrix_to_tuple(digraph, matrix, *return_count, return_tuples);
-            } else {
-                auto matrix = floydWarshall(digraph);
-                matrix_to_tuple(digraph, matrix, *return_count, return_tuples);
-            }
-        } else {
-            log << "Processing Undirected graph\n";
-
-            pgrouting::UndirectedGraph undigraph;
-            undigraph.insert_edges(edges);
-
-            if (which == 0) {
-                auto matrix = johnson(undigraph);
-                matrix_to_tuple(undigraph, matrix, *return_count, return_tuples);
-            } else {
-                auto matrix = floydWarshall(undigraph);
-                matrix_to_tuple(undigraph, matrix, *return_count, return_tuples);
-            }
-        }
-
-
-        if (*return_count == 0) {
-            err <<  "No result generated, report this error\n";
-            *err_msg = to_pg_msg(err);
-            *return_tuples = NULL;
-            *return_count = 0;
+            err << "No edges found";
+            log << edges_sql;
             return;
         }
 
-        *log_msg = to_pg_msg(log);
+        hint = "";
+
+        if (directed) {
+            DirectedGraph graph;
+            graph.insert_edges(edges);
+
+            if (which == 0) {
+                auto matrix = johnson(graph);
+                matrix_to_tuple(graph, matrix, return_count, return_tuples);
+            } else {
+                auto matrix = floydWarshall(graph);
+                matrix_to_tuple(graph, matrix, return_count, return_tuples);
+            }
+        } else {
+            UndirectedGraph graph;
+            graph.insert_edges(edges);
+
+            if (which == 0) {
+                auto matrix = johnson(graph);
+                matrix_to_tuple(graph, matrix, return_count, return_tuples);
+            } else {
+                auto matrix = floydWarshall(graph);
+                matrix_to_tuple(graph, matrix, return_count, return_tuples);
+            }
+        }
+
+        if (return_count == 0) {
+            err << "No result generated, report this error\n";
+            return;
+        }
     } catch (AssertFailedException &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
+    } catch (const std::pair<std::string, std::string>& ex) {
+        err << ex.first;
+        log << ex.second;
     } catch (const std::string &ex) {
-        *err_msg = to_pg_msg(ex);
-        *log_msg = hint.empty()? to_pg_msg(hint) : to_pg_msg(log);
+        err << ex;
+        log << hint;
     } catch (std::exception &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
-    } catch(...) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
+    } catch (...) {
         err << "Caught unknown exception!";
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
     }
 }

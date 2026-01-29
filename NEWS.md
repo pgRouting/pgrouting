@@ -7,7 +7,33 @@ To read all history of releases go to the latest [release notes](https://docs.pg
 
 
 
-pgRouting 4.0.0-alpha1 Release Notes
+### pgRouting 4.0.1 Release Notes
+
+To see all issues & pull requests closed by this release see the
+[#4.0.1](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.1%22)
+
+**Bug Fixes**
+
+* [#2966](https://github.com/pgRouting/pgrouting/issues/2966): pgr_withPoints does not pick optimal route when fraction = 1
+* [#3034](https://github.com/pgRouting/pgrouting/issues/3034): metrics driver should not be using new
+
+**Code enhancements**
+
+* [#3044](https://github.com/pgRouting/pgrouting/issues/3044): Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions
+* [#3040](https://github.com/pgRouting/pgrouting/issues/3040): Check and fix cppcoreguidelines-virtual-class-destructor
+* [#3039](https://github.com/pgRouting/pgrouting/issues/3039): Check and fix cppcoreguidelines-special-member-functions
+* [#3038](https://github.com/pgRouting/pgrouting/issues/3038): Check and fix cppcoreguidelines-prefer-member-initializer
+* [#3037](https://github.com/pgRouting/pgrouting/issues/3037): Check and fix cppcoreguidelines-init-variables
+* [#3035](https://github.com/pgRouting/pgrouting/issues/3035): Pass by reference on existing drivers
+
+Administration
+
+* [#3031](https://github.com/pgRouting/pgrouting/issues/3031): pgtap license to Creative commons and License texts
+  standardization
+
+</details>
+
+<details> <summary>pgRouting 4.0.0 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the
 [#4.0.0](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22)

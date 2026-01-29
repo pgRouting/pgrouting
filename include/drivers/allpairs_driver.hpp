@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: allpairs_driver.hpp
 
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Design of one process & driver file by
@@ -11,7 +11,7 @@ Mail: vicky at erosion.dev
 Copying this file (or a derivative) within pgRouting code add the following:
 
 Generated with Template by:
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -36,17 +36,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_
 #pragma once
 
-
-#include <cstddef>
 #include <string>
+#include <sstream>
+
 using IID_t_rt = struct IID_t_rt;
 
-void
-do_allpairs(
-    std::string,
-    bool, int,
+void do_allpairs(
+        const std::string&,
+        bool, int,
 
-    IID_t_rt**, size_t*,
-    char**, char**);
+        IID_t_rt*&, size_t&,
+        std::ostringstream&, std::ostringstream&);
 
 #endif  // INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_

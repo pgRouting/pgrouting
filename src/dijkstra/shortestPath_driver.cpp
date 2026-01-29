@@ -1,17 +1,17 @@
 /*PGR-GNU*****************************************************************
 File: shortestPath_driver.cpp
 
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Design of one process & driver file by
 Copyright (c) 2025 Celia Virginia Vergara Castillo
-Mail: vicky_vergara at erosion.dev
+Mail: vicky at erosion.dev
 
 Copying this file (or a derivative) within pgRouting code add the following:
 
 Generated with Template by:
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -43,14 +43,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <set>
 #include <utility>
+#include <cstdint>
 
-#include "withPoints/withPoints.hpp"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/combinations.hpp"
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
 
 #include "dijkstra/dijkstra.hpp"
+#include "withPoints/withPoints.hpp"
 
 namespace {
 
@@ -162,41 +163,36 @@ do_shortestPath(
         bool details,
 
         int32_t which,
-        Path_rt **return_tuples, size_t *return_count,
-        bool *is_matrix,
-        char **log_msg,
-        char **notice_msg,
-        char **err_msg) {
+        bool &is_matrix,
+        Path_rt* &return_tuples, size_t &return_count,
+        std::ostringstream &log,
+        std::ostringstream &notice,
+        std::ostringstream &err) {
     using pgrouting::Path;
     using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
 
-    std::ostringstream log;
-    std::ostringstream notice;
-    std::ostringstream err;
     std::string hint = "";
 
     try {
         pgassert(!edges_sql.empty());
-        pgassert(!(*log_msg));
-        pgassert(!(*notice_msg));
-        pgassert(!(*err_msg));
-        pgassert(!(*return_tuples));
-        pgassert(*return_count == 0);
+
+        using pgrouting::pgget::get_edges;
+        using pgrouting::pgget::get_points;
+        using pgrouting::utilities::get_combinations;
+        using pgrouting::UndirectedGraph;
+        using pgrouting::DirectedGraph;
 
         using pgrouting::algorithms::dijkstra;
-        using pgrouting::pgget::get_points;
-        using pgrouting::pgget::get_edges;
-        using pgrouting::utilities::get_combinations;
 
         hint = combinations_sql;
-        auto combinations = get_combinations(combinations_sql, starts, ends, normal, *is_matrix);
+        auto combinations = get_combinations(combinations_sql, starts, ends, normal, is_matrix);
         hint = "";
 
         if (combinations.empty() && !combinations_sql.empty()) {
-            *notice_msg = to_pg_msg("No (source, target) pairs found");
-            *log_msg = to_pg_msg(combinations_sql);
+            notice << "No (source, target) pairs found";
+            log << combinations_sql;
             return;
         }
 
@@ -224,7 +220,7 @@ do_shortestPath(
             hint = "";
 
             if (edges.empty() && edges_of_points.empty()) {
-                *notice_msg = to_pg_msg("No edges found");
+                notice << "No edges found";
                 return;
             }
         }
@@ -238,8 +234,8 @@ do_shortestPath(
                 directed);
 
         if (pg_graph.has_error()) {
-            *log_msg = to_pg_msg(pg_graph.get_log());
-            *err_msg = to_pg_msg(pg_graph.get_error());
+            log << pg_graph.get_log();
+            err << pg_graph.get_error();
             return;
         }
         auto new_edges = pg_graph.new_edges();
@@ -247,8 +243,8 @@ do_shortestPath(
         edges.insert(edges.end(), new_edges.begin(), new_edges.end());
 
         if (edges.empty()) {
-            *notice_msg = to_pg_msg("No edges found");
-            *log_msg = to_pg_msg(edges_sql);
+            notice << "No edges found";
+            log << edges_sql;
             return;
         }
 
@@ -256,7 +252,7 @@ do_shortestPath(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph graph;
+            DirectedGraph graph;
             graph.insert_edges(edges);
 
             switch (which) {
@@ -267,7 +263,7 @@ do_shortestPath(
                         }
             }
         } else {
-            pgrouting::UndirectedGraph graph;
+            UndirectedGraph graph;
             graph.insert_edges(edges);
 
             switch (which) {
@@ -288,41 +284,23 @@ do_shortestPath(
         auto count = count_tuples(paths);
 
         if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            *log_msg = to_pg_msg("No paths found");
+            log << "No paths found";
             return;
         }
 
-        (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        (*return_count) = (collapse_paths(return_tuples, paths));
-
-        *log_msg = to_pg_msg(log);
-        *notice_msg = to_pg_msg(notice);
+        return_tuples = pgr_alloc(count, return_tuples);
+        return_count = (collapse_paths(&return_tuples, paths));
     } catch (AssertFailedException &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
     } catch (const std::pair<std::string, std::string>& ex) {
-        (*return_count) = 0;
-        *err_msg = to_pg_msg(ex.first.c_str());
-        *log_msg = to_pg_msg(ex.second.c_str());
+        err << ex.first;
+        log << ex.second;
     } catch (const std::string &ex) {
-        *err_msg = to_pg_msg(ex);
-        *log_msg = !hint.empty()? to_pg_msg(hint) : to_pg_msg(log);
+        err << ex;
+        log << hint;
     } catch (std::exception &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
-    } catch(...) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
+    } catch (...) {
         err << "Caught unknown exception!";
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
     }
 }

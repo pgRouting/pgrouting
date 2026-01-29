@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: pd_problem.hpp
 
-Copyright (c) 2017 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -45,7 +45,10 @@ class PD_problem {
 
     /** @brief Not wllowing to copy the problem */
     PD_problem(const PD_problem &problem) = delete;
-
+    PD_problem& operator=(const PD_problem&) = delete;
+    ~PD_problem() = default;
+    PD_problem(PD_problem&&) = delete;
+    PD_problem& operator=(PD_problem&&) = delete;
     /** @brief Not allowing initialization without information */
     PD_problem() = delete;
 };

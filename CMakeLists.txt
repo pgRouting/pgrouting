@@ -1,3 +1,6 @@
+# This file is part of the pgRouting project.
+# Copyright (c) 2007-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
@@ -30,7 +33,7 @@ include(pgr/BuildType)
 #---------------------------------------------
 #---------------------------------------------
 
-project(PGROUTING VERSION 4.0.0
+project(PGROUTING VERSION 4.0.1
     LANGUAGES C CXX )
 set(PROJECT_VERSION_DEV "")
 string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
@@ -48,6 +51,7 @@ string(TIMESTAMP COMPILATION_DATE "%Y/%m/%d" UTC)
 
 set(MINORS 4.0 3.8 3.7 3.6 3.5 3.4 3.3 3.2 3.1 3.0 2.6)
 set(OLD_SIGNATURES
+    4.0.0
     3.8.0
     3.7.3 3.7.2 3.7.1 3.7.0
     3.6.3 3.6.2 3.6.1 3.6.0
