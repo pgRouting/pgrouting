@@ -40,10 +40,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <sstream>
 
+#include "c_common/enums.h"
+
 uint64_t
 do_metrics(
         const std::string&,
-        int,
+        Which,
 
         std::ostringstream&, std::ostringstream&);
 

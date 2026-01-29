@@ -45,6 +45,6 @@ PGDLLEXPORT Datum
 _pgr_bandwidth(PG_FUNCTION_ARGS) {
     uint64_t result = pgr_process_metrics(
         text_to_cstring(PG_GETARG_TEXT_P(0)),
-        0);  /* bandwidth */
+        BANDWIDTH);
     PG_RETURN_UINT64(result);
 }

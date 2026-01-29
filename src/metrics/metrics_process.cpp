@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 extern "C" {
 #include "c_common/postgres_connection.h"
+#include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 }
 
@@ -43,17 +44,14 @@ extern "C" {
 #include "c_types/iid_t_rt.h"
 
 #include "cpp_common/report_messages.hpp"
+#include "cpp_common/utilities.hpp"
 #include "cpp_common/assert.hpp"
-#include "cpp_common/alloc.hpp"
 
 #include "drivers/metrics_driver.hpp"
 
-/**
- which = 0 -> bandwidth
- */
 uint64_t pgr_process_metrics(
         const char* edges_sql,
-        int which) {
+        enum Which which) {
     pgassert(edges_sql);
 
     pgr_SPI_connect();
@@ -68,9 +66,8 @@ uint64_t pgr_process_metrics(
             which,
             log, err);
 
-    if (which == 0) {
-        time_msg(std::string(" processing pgr_bandwidth").c_str(), start_t, clock());
-    }
+    auto name = std::string(" processing ") + pgrouting::get_name(which);
+    time_msg(name.c_str(), start_t, clock());
 
     pgrouting::report_messages(log, notice, err);
     pgr_SPI_finish();

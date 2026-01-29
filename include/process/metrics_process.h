@@ -35,11 +35,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdint.h>
 #endif
 
+#include "c_common/enums.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-uint64_t pgr_process_metrics(const char*, int);
+uint64_t pgr_process_metrics(const char*, enum Which);
 
 #ifdef __cplusplus
 }

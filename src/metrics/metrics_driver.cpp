@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 uint64_t
 do_metrics(
         const std::string &edges_sql,
-        int which,
+        Which which,
 
         std::ostringstream &log,
         std::ostringstream &err) {
@@ -73,8 +73,14 @@ do_metrics(
 
         uint64_t result = 0;
 
-        if (which == 0) {
-            result = pgrouting::metrics::bandwidth(undigraph);
+        switch (which) {
+            case BANDWIDTH:
+                {
+                    result = pgrouting::metrics::bandwidth(undigraph);
+                    break;
+                }
+            default:
+                break;
         }
 
         return result;
