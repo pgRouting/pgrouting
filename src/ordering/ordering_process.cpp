@@ -39,12 +39,13 @@ extern "C" {
 #include <sstream>
 
 #include "cpp_common/report_messages.hpp"
+#include "cpp_common/utilities.hpp"
 #include "cpp_common/assert.hpp"
+#include "cpp_common/alloc.hpp"
+
 #include "drivers/ordering_driver.hpp"
 
-/**
- This is c++ code, linked as C code, because pgr_process_shortestPath is called from C code
- */
+
 void pgr_process_ordering(
         const char* edges_sql,
         enum Which which,
@@ -66,22 +67,8 @@ void pgr_process_ordering(
             (*result_tuples), (*result_count),
             log, notice, err);
 
-    switch (which) {
-        case SLOAN:
-            time_msg(std::string(" processing pgr_sloanOrdering").c_str(), start_t, clock());
-            break;
-        case CUTCHILL:
-            time_msg(std::string(" processing pgr_cuthillMckeeOrdering").c_str(), start_t, clock());
-            break;
-        case KING:
-            time_msg(std::string(" processing pgr_kingOrdering").c_str(), start_t, clock());
-            break;
-        case TOPOSORT:
-            time_msg(std::string(" processing pgr_topologicalSort").c_str(), start_t, clock());
-            break;
-        default:
-            break;
-    }
+    auto name = std::string(" processing ") + pgrouting::get_name(which);
+    time_msg(name.c_str(), start_t, clock());
 
     if (!err.str().empty() && (*result_tuples)) {
         if (*result_tuples) pfree(*result_tuples);
