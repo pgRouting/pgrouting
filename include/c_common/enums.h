@@ -29,7 +29,13 @@ enum Which {
     /** undirected graph + results: vertex id  */
     SLOAN = 0, CUTCHILL, KING,
     /** directed graph + results: vertex id  */
-    TOPOSORT = 11
+    TOPOSORT = 11,
+    /** shortest_paths */
+    DIJKSTRA = 21, WITHPOINTS, OLD_WITHPOINTS,
+    /** allpairs **/
+    FLOYD = 31, JOHNSON,
+    /** metrics **/
+    BANDWIDTH
 };
 
 #endif  // INCLUDE_C_COMMON_ENUMS_H_
