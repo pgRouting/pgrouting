@@ -41,6 +41,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/to_postgres.hpp"
 #include "allpairs/allpairs.hpp"
 
+namespace {
+
+template <typename G, typename Func>
+void
+process(const std::vector<Edge_t> &edges, G &graph, Func funcname,
+        size_t &return_count,
+        IID_t_rt* &return_tuples) {
+    using pgrouting::to_postgres::matrix_to_tuple;
+    graph.insert_edges(edges);
+    auto results = funcname(graph);
+    matrix_to_tuple(graph, results, return_count, return_tuples);
+}
+
+
+
+}  // namespace
+
 void
 do_allpairs(
         const std::string &edges_sql,
@@ -75,27 +92,20 @@ do_allpairs(
 
         hint = "";
 
-        if (directed) {
-            DirectedGraph graph;
-            graph.insert_edges(edges);
+        DirectedGraph digraph;
+        UndirectedGraph undigraph;
 
+        if (directed) {
             if (which == JOHNSON) {
-                auto matrix = johnson(graph);
-                matrix_to_tuple(graph, matrix, return_count, return_tuples);
+                process(edges, digraph, &johnson<DirectedGraph>, return_count, return_tuples);
             } else {
-                auto matrix = floydWarshall(graph);
-                matrix_to_tuple(graph, matrix, return_count, return_tuples);
+                process(edges, digraph, &floydWarshall<DirectedGraph>, return_count, return_tuples);
             }
         } else {
-            UndirectedGraph graph;
-            graph.insert_edges(edges);
-
             if (which == JOHNSON) {
-                auto matrix = johnson(graph);
-                matrix_to_tuple(graph, matrix, return_count, return_tuples);
+                process(edges, undigraph, &johnson<UndirectedGraph>, return_count, return_tuples);
             } else {
-                auto matrix = floydWarshall(graph);
-                matrix_to_tuple(graph, matrix, return_count, return_tuples);
+                process(edges, undigraph, &floydWarshall<UndirectedGraph>, return_count, return_tuples);
             }
         }
 
