@@ -86,7 +86,7 @@ Available Functions but not official pgRouting functions
 
 .. include:: release_notes.rst
    :start-after: current
-   :end-before: pgRouting 3
+   :end-before: pgRouting 4.0
 
 All releases
 -------------------------------------------------------------------------------
