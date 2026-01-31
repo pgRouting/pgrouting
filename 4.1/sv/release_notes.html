@@ -99,15 +99,15 @@
 <li><a class="reference internal" href="#">Versionsinformation</a><ul>
 <li><a class="reference internal" href="#pgrouting-4">pgRouting 4</a><ul>
 <li><a class="reference internal" href="#pgrouting-4-1">pgRouting 4.1</a><ul>
-<li><a class="reference internal" href="#pgrouting-4-1-0-release-notes">Versionsinformation för pgRouting 4.1.0</a><ul>
-<li><a class="reference internal" href="#bug-fixes">Buggfixar</a></li>
-<li><a class="reference internal" href="#code-enhancement">Förbättring av kod</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#pgrouting-4-1-0-release-notes">Versionsinformation för pgRouting 4.1.0</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#pgrouting-4-0">pgRouting 4.0</a><ul>
-<li><a class="reference internal" href="#pgrouting-4-0-0-alpha1-release-notes">pgRouting 4.0.0-alpha1 Release Notes</a><ul>
+<li><a class="reference internal" href="#pgrouting-4-0-1-release-notes">pgRouting 4.0.1 Release Notes</a><ul>
+<li><a class="reference internal" href="#administration">Administration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 Release Notes</a><ul>
 <li><a class="reference internal" href="#build">Skapa</a></li>
 <li><a class="reference internal" href="#documentation-build">Uppbyggnad av dokumentation</a></li>
 <li><a class="reference internal" href="#summary-of-changes-by-function">Sammanfattning av förändringar per funktion</a></li>
@@ -336,18 +336,7 @@
 <section id="pgrouting-4-1-0-release-notes">
 <h4><a class="toc-backref" href="#id25" role="doc-backlink">Versionsinformation för pgRouting 4.1.0</a><a class="headerlink" href="#pgrouting-4-1-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.1.0%22">Github milstolpe för 4.1.0</a></p>
-<section id="bug-fixes">
-<h5>Buggfixar<a class="headerlink" href="#bug-fixes" title="Link to this heading">¶</a></h5>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2966">#2966</a>: pgr_withPoints does not pick optimal route when fraction = 1</p></li>
-</ul>
-</section>
-<section id="code-enhancement">
-<h5>Förbättring av kod<a class="headerlink" href="#code-enhancement" title="Link to this heading">¶</a></h5>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3025">#3025</a>: Ordering functions standardized</p></li>
-</ul>
-</section>
+<p>Inga ändringar ännu</p>
 </section>
 </section>
 <section id="pgrouting-4-0">
@@ -355,31 +344,58 @@
 <nav class="contents local" id="id1">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-4-0-0-alpha1-release-notes" id="id26">pgRouting 4.0.0-alpha1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-4-0-1-release-notes" id="id26">pgRouting 4.0.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-4-0-0-release-notes" id="id27">pgRouting 4.0.0 Release Notes</a></p></li>
 </ul>
 </nav>
-<section id="pgrouting-4-0-0-alpha1-release-notes">
-<h4><a class="toc-backref" href="#id26" role="doc-backlink">pgRouting 4.0.0-alpha1 Release Notes</a><a class="headerlink" href="#pgrouting-4-0-0-alpha1-release-notes" title="Link to this heading">¶</a></h4>
+<section id="pgrouting-4-0-1-release-notes">
+<h4><a class="toc-backref" href="#id26" role="doc-backlink">pgRouting 4.0.1 Release Notes</a><a class="headerlink" href="#pgrouting-4-0-1-release-notes" title="Link to this heading">¶</a></h4>
+<p>To see all issues &amp; pull requests closed by this release see the
+<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.1%22">Github milestone for 4.0.1</a></p>
+<p class="rubric">Buggfixar</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2966">#2966</a>: pgr_withPoints does not pick optimal route when fraction = 1</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3034">#3034</a>: metrics driver should not be using new</p></li>
+</ul>
+<p class="rubric">Förbättringar av koden</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3044">#3044</a>: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3040">#3040</a>: Check and fix cppcoreguidelines-virtual-class-destructor</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3039">#3039</a>: Check and fix cppcoreguidelines-special-member-functions</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3038">#3038</a>: Check and fix cppcoreguidelines-prefer-member-initializer</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3037">#3037</a>: Check and fix cppcoreguidelines-init-variables</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3035">#3035</a>: Pass by reference on existing drivers</p></li>
+</ul>
+<section id="administration">
+<h5>Administration<a class="headerlink" href="#administration" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3031">#3031</a>: pgtap license to Creative commons and License texts
+standardization</p></li>
+</ul>
+</section>
+</section>
+<section id="pgrouting-4-0-0-release-notes">
+<h4><a class="toc-backref" href="#id27" role="doc-backlink">pgRouting 4.0.0 Release Notes</a><a class="headerlink" href="#pgrouting-4-0-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.0%22">Github milstolpe för 4.0.0</a></p>
 <nav class="contents local" id="id2">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#build" id="id27">Skapa</a></p></li>
-<li><p><a class="reference internal" href="#documentation-build" id="id28">Uppbyggnad av dokumentation</a></p></li>
-<li><p><a class="reference internal" href="#summary-of-changes-by-function" id="id29">Sammanfattning av förändringar per funktion</a></p></li>
-<li><p><a class="reference internal" href="#functions-promoted-to-official" id="id30">Funktioner som befordrats till tjänsteman</a></p></li>
-<li><p><a class="reference internal" href="#signatures-promoted-to-official" id="id31">Underskrifter befordrade till officiella</a></p></li>
-<li><p><a class="reference internal" href="#new-experimental-functions" id="id32">Nya experimentella funktioner.</a></p></li>
-<li><p><a class="reference internal" href="#sql-signatures-and-output-standardization" id="id33">SQL-signaturer och standardisering av utdata</a></p></li>
-<li><p><a class="reference internal" href="#removal-of-sql-deprecated-signatures" id="id34">Borttagning av SQL-signaturer som inte längre är aktuella</a></p></li>
-<li><p><a class="reference internal" href="#removal-of-sql-deprecated-functions" id="id35">Borttagning av föråldrade SQL-funktioner</a></p></li>
-<li><p><a class="reference internal" href="#removal-of-sql-deprecated-internal-functions" id="id36">Borttagning av interna funktioner i SQL som inte längre är aktuella</a></p></li>
-<li><p><a class="reference internal" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" id="id37">Sammanfattning av funktioner och signaturer som inte längre finns på pgrouting</a></p></li>
-<li><p><a class="reference internal" href="#code-enhancements" id="id38">Förbättringar av koden</a></p></li>
+<li><p><a class="reference internal" href="#build" id="id28">Skapa</a></p></li>
+<li><p><a class="reference internal" href="#documentation-build" id="id29">Uppbyggnad av dokumentation</a></p></li>
+<li><p><a class="reference internal" href="#summary-of-changes-by-function" id="id30">Sammanfattning av förändringar per funktion</a></p></li>
+<li><p><a class="reference internal" href="#functions-promoted-to-official" id="id31">Funktioner som befordrats till tjänsteman</a></p></li>
+<li><p><a class="reference internal" href="#signatures-promoted-to-official" id="id32">Underskrifter befordrade till officiella</a></p></li>
+<li><p><a class="reference internal" href="#new-experimental-functions" id="id33">Nya experimentella funktioner.</a></p></li>
+<li><p><a class="reference internal" href="#sql-signatures-and-output-standardization" id="id34">SQL-signaturer och standardisering av utdata</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-signatures" id="id35">Borttagning av SQL-signaturer som inte längre är aktuella</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-functions" id="id36">Borttagning av föråldrade SQL-funktioner</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-internal-functions" id="id37">Borttagning av interna funktioner i SQL som inte längre är aktuella</a></p></li>
+<li><p><a class="reference internal" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" id="id38">Sammanfattning av funktioner och signaturer som inte längre finns på pgrouting</a></p></li>
+<li><p><a class="reference internal" href="#code-enhancements" id="id39">Förbättringar av koden</a></p></li>
 </ul>
 </nav>
 <section id="build">
-<h5><a class="toc-backref" href="#id27" role="doc-backlink">Skapa</a><a class="headerlink" href="#build" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id28" role="doc-backlink">Skapa</a><a class="headerlink" href="#build" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>C++-standarden är std17</p>
 <ul>
@@ -401,7 +417,7 @@
 </ul>
 </section>
 <section id="documentation-build">
-<h5><a class="toc-backref" href="#id28" role="doc-backlink">Uppbyggnad av dokumentation</a><a class="headerlink" href="#documentation-build" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id29" role="doc-backlink">Uppbyggnad av dokumentation</a><a class="headerlink" href="#documentation-build" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>Doxygen-dokumentationen byggs som standard</p></li>
 <li><p>HTML-dokumentationen byggs som standard</p></li>
@@ -434,7 +450,7 @@
 </ul>
 </section>
 <section id="summary-of-changes-by-function">
-<h5><a class="toc-backref" href="#id29" role="doc-backlink">Sammanfattning av förändringar per funktion</a><a class="headerlink" href="#summary-of-changes-by-function" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id30" role="doc-backlink">Sammanfattning av förändringar per funktion</a><a class="headerlink" href="#summary-of-changes-by-function" title="Link to this heading">¶</a></h5>
 <ul>
 <li><p>pgr_aStar</p>
 <ul class="simple">
@@ -820,7 +836,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="functions-promoted-to-official">
-<h5><a class="toc-backref" href="#id30" role="doc-backlink">Funktioner som befordrats till tjänsteman</a><a class="headerlink" href="#functions-promoted-to-official" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id31" role="doc-backlink">Funktioner som befordrats till tjänsteman</a><a class="headerlink" href="#functions-promoted-to-official" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>: pgr_trsp</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">#2701</a>: pgr_trsp</p></li>
@@ -839,7 +855,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="signatures-promoted-to-official">
-<h5><a class="toc-backref" href="#id31" role="doc-backlink">Underskrifter befordrade till officiella</a><a class="headerlink" href="#signatures-promoted-to-official" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id32" role="doc-backlink">Underskrifter befordrade till officiella</a><a class="headerlink" href="#signatures-promoted-to-official" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_aStar(Kombinationer)</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">#2718</a>: pgr_aStarCost(Kombinationer)</p></li>
@@ -857,7 +873,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="new-experimental-functions">
-<h5><a class="toc-backref" href="#id32" role="doc-backlink">Nya experimentella funktioner.</a><a class="headerlink" href="#new-experimental-functions" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id33" role="doc-backlink">Nya experimentella funktioner.</a><a class="headerlink" href="#new-experimental-functions" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>Mätvärde</p>
 <ul>
@@ -873,7 +889,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="sql-signatures-and-output-standardization">
-<h5><a class="toc-backref" href="#id33" role="doc-backlink">SQL-signaturer och standardisering av utdata</a><a class="headerlink" href="#sql-signatures-and-output-standardization" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id34" role="doc-backlink">SQL-signaturer och standardisering av utdata</a><a class="headerlink" href="#sql-signatures-and-output-standardization" title="Link to this heading">¶</a></h5>
 <dl class="simple">
 <dt><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2904">#2904</a>: Standardisera utdatakolumner för funktioner med olika utdata</dt><dd><p>kolumner inom överbelastningar</p>
 </dd>
@@ -921,7 +937,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="removal-of-sql-deprecated-signatures">
-<h5><a class="toc-backref" href="#id34" role="doc-backlink">Borttagning av SQL-signaturer som inte längre är aktuella</a><a class="headerlink" href="#removal-of-sql-deprecated-signatures" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id35" role="doc-backlink">Borttagning av SQL-signaturer som inte längre är aktuella</a><a class="headerlink" href="#removal-of-sql-deprecated-signatures" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2798">#2798</a>: pgr_kontraktion</p>
 <ul>
@@ -1017,7 +1033,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="removal-of-sql-deprecated-functions">
-<h5><a class="toc-backref" href="#id35" role="doc-backlink">Borttagning av föråldrade SQL-funktioner</a><a class="headerlink" href="#removal-of-sql-deprecated-functions" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id36" role="doc-backlink">Borttagning av föråldrade SQL-funktioner</a><a class="headerlink" href="#removal-of-sql-deprecated-functions" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2681">#2681</a>: pgr_trspViaedges</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2682">#2682</a>: pgr_trspViaVertices</p></li>
@@ -1030,7 +1046,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="removal-of-sql-deprecated-internal-functions">
-<h5><a class="toc-backref" href="#id36" role="doc-backlink">Borttagning av interna funktioner i SQL som inte längre är aktuella</a><a class="headerlink" href="#removal-of-sql-deprecated-internal-functions" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id37" role="doc-backlink">Borttagning av interna funktioner i SQL som inte längre är aktuella</a><a class="headerlink" href="#removal-of-sql-deprecated-internal-functions" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2748">#2748</a> _pgr_alphaShape(text,dubbel precision)</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">#2861</a> _pgr_checkVertTab(text,text[],heltal,text)</p></li>
@@ -1090,7 +1106,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="summary-of-functions-and-signatures-no-longer-on-pgrouting">
-<h5><a class="toc-backref" href="#id37" role="doc-backlink">Sammanfattning av funktioner och signaturer som inte längre finns på pgrouting</a><a class="headerlink" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id38" role="doc-backlink">Sammanfattning av funktioner och signaturer som inte längre finns på pgrouting</a><a class="headerlink" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2748">#2748</a> pgr_alphashape(geometri,dubbel precision)</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2752">#2752</a> pgr_analyzegraph(text,dubbel precision,text,text,text,text,text,text)</p></li>
@@ -1132,7 +1148,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="code-enhancements">
-<h5><a class="toc-backref" href="#id38" role="doc-backlink">Förbättringar av koden</a><a class="headerlink" href="#code-enhancements" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id39" role="doc-backlink">Förbättringar av koden</a><a class="headerlink" href="#code-enhancements" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p>Borttagning av oanvänd C/C++-kod</p></li>
 <li><p>Refaktorera skriptet för att bygga uppdateringsfilen PostgreSQL.</p></li>
@@ -1172,27 +1188,27 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 <nav class="contents local" id="minors-3-x">
 <p class="topic-title">Minors 3.x</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-8" id="id39">pgRouting 3.8</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-7" id="id40">pgRouting 3.7</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6" id="id41">pgRouting 3.6</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-5" id="id42">pgRouting 3.5</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-4" id="id43">pgRouting 3.4</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3" id="id44">pgRouting 3.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-2" id="id45">pgRouting 3.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1" id="id46">pgRouting 3.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0" id="id47">pgRouting 3.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-8" id="id40">pgRouting 3.8</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7" id="id41">pgRouting 3.7</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6" id="id42">pgRouting 3.6</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-5" id="id43">pgRouting 3.5</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4" id="id44">pgRouting 3.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3" id="id45">pgRouting 3.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2" id="id46">pgRouting 3.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1" id="id47">pgRouting 3.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0" id="id48">pgRouting 3.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-8">
-<h3><a class="toc-backref" href="#id39" role="doc-backlink">pgRouting 3.8</a><a class="headerlink" href="#pgrouting-3-8" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id40" role="doc-backlink">pgRouting 3.8</a><a class="headerlink" href="#pgrouting-3-8" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id3">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-8-0-release-notes" id="id48">Versionsinformation för pgRouting 3.8.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-8-0-release-notes" id="id49">Versionsinformation för pgRouting 3.8.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-8-0-release-notes">
-<h4><a class="toc-backref" href="#id48" role="doc-backlink">Versionsinformation för pgRouting 3.8.0</a><a class="headerlink" href="#pgrouting-3-8-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id49" role="doc-backlink">Versionsinformation för pgRouting 3.8.0</a><a class="headerlink" href="#pgrouting-3-8-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.8.0%22">Github milstolpe för 3.8.0</a></p>
 <p class="rubric">Befordran till officiell funktion för pgRouting.</p>
 <p class="rubric">Metriska</p>
@@ -1288,25 +1304,25 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="pgrouting-3-7">
-<h3><a class="toc-backref" href="#id40" role="doc-backlink">pgRouting 3.7</a><a class="headerlink" href="#pgrouting-3-7" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id41" role="doc-backlink">pgRouting 3.7</a><a class="headerlink" href="#pgrouting-3-7" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id4">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-7-3-release-notes" id="id49">Versionsinformation för pgRouting 3.7.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-7-2-release-notes" id="id50">Versionsinformation för pgRouting 3.7.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-7-1-release-notes" id="id51">Versionsinformation för pgRouting 3.7.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-7-0-release-notes" id="id52">Versionsinformation för pgRouting 3.7.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-3-release-notes" id="id50">Versionsinformation för pgRouting 3.7.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-2-release-notes" id="id51">Versionsinformation för pgRouting 3.7.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-1-release-notes" id="id52">Versionsinformation för pgRouting 3.7.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-0-release-notes" id="id53">Versionsinformation för pgRouting 3.7.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-7-3-release-notes">
-<h4><a class="toc-backref" href="#id49" role="doc-backlink">Versionsinformation för pgRouting 3.7.3</a><a class="headerlink" href="#pgrouting-3-7-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id50" role="doc-backlink">Versionsinformation för pgRouting 3.7.3</a><a class="headerlink" href="#pgrouting-3-7-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.3%22">Github milstolpe för 3.7.3</a></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2731">#2731</a>: Byggfel på Ubuntu 22</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-7-2-release-notes">
-<h4><a class="toc-backref" href="#id50" role="doc-backlink">Versionsinformation för pgRouting 3.7.2</a><a class="headerlink" href="#pgrouting-3-7-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id51" role="doc-backlink">Versionsinformation för pgRouting 3.7.2</a><a class="headerlink" href="#pgrouting-3-7-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.2%22">Github milstolpe för 3.7.2</a></p>
 <p class="rubric">Skapa</p>
 <ul class="simple">
@@ -1324,7 +1340,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-7-1-release-notes">
-<h4><a class="toc-backref" href="#id51" role="doc-backlink">Versionsinformation för pgRouting 3.7.1</a><a class="headerlink" href="#pgrouting-3-7-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id52" role="doc-backlink">Versionsinformation för pgRouting 3.7.1</a><a class="headerlink" href="#pgrouting-3-7-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.1%22">Github milstolpe för 3.7.1</a></p>
 <p class="rubric">Buggfixar</p>
 <ul class="simple">
@@ -1337,7 +1353,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-7-0-release-notes">
-<h4><a class="toc-backref" href="#id52" role="doc-backlink">Versionsinformation för pgRouting 3.7.0</a><a class="headerlink" href="#pgrouting-3-7-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id53" role="doc-backlink">Versionsinformation för pgRouting 3.7.0</a><a class="headerlink" href="#pgrouting-3-7-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.0%22">Github milstolpe för 3.7.0</a></p>
 <p class="rubric">Support</p>
 <ul class="simple">
@@ -1406,18 +1422,18 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="pgrouting-3-6">
-<h3><a class="toc-backref" href="#id41" role="doc-backlink">pgRouting 3.6</a><a class="headerlink" href="#pgrouting-3-6" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id42" role="doc-backlink">pgRouting 3.6</a><a class="headerlink" href="#pgrouting-3-6" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id5">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-6-3-release-notes" id="id53">Versionsinformation för pgRouting 3.6.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6-2-release-notes" id="id54">Versionsinformation för pgRouting 3.6.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6-1-release-notes" id="id55">Versionsinformation för pgRouting 3.6.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6-0-release-notes" id="id56">Versionsinformation för pgRouting 3.6.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-3-release-notes" id="id54">Versionsinformation för pgRouting 3.6.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-2-release-notes" id="id55">Versionsinformation för pgRouting 3.6.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-1-release-notes" id="id56">Versionsinformation för pgRouting 3.6.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-0-release-notes" id="id57">Versionsinformation för pgRouting 3.6.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-6-3-release-notes">
-<h4><a class="toc-backref" href="#id53" role="doc-backlink">Versionsinformation för pgRouting 3.6.3</a><a class="headerlink" href="#pgrouting-3-6-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id54" role="doc-backlink">Versionsinformation för pgRouting 3.6.3</a><a class="headerlink" href="#pgrouting-3-6-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.3%22">Github milstolpe för 3.6.3</a></p>
 <p class="rubric">Skapa</p>
 <ul class="simple">
@@ -1454,7 +1470,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-6-2-release-notes">
-<h4><a class="toc-backref" href="#id54" role="doc-backlink">Versionsinformation för pgRouting 3.6.2</a><a class="headerlink" href="#pgrouting-3-6-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id55" role="doc-backlink">Versionsinformation för pgRouting 3.6.2</a><a class="headerlink" href="#pgrouting-3-6-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.2%22">Github milstolpe för 3.6.2</a></p>
 <p class="rubric">Fix för uppgradering</p>
 <ul class="simple">
@@ -1474,14 +1490,14 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-6-1-release-notes">
-<h4><a class="toc-backref" href="#id55" role="doc-backlink">Versionsinformation för pgRouting 3.6.1</a><a class="headerlink" href="#pgrouting-3-6-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id56" role="doc-backlink">Versionsinformation för pgRouting 3.6.1</a><a class="headerlink" href="#pgrouting-3-6-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.1%22">Github milstolpe för 3.6.1</a></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2588">#2588</a>: pgrouting 3.6.0 går inte att bygga under OSX</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-6-0-release-notes">
-<h4><a class="toc-backref" href="#id56" role="doc-backlink">Versionsinformation för pgRouting 3.6.0</a><a class="headerlink" href="#pgrouting-3-6-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id57" role="doc-backlink">Versionsinformation för pgRouting 3.6.0</a><a class="headerlink" href="#pgrouting-3-6-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.0%22">Github milstolpe för 3.6.0</a></p>
 <p class="rubric">Förändringar i officiella funktioner</p>
 <ul class="simple">
@@ -1615,16 +1631,16 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="pgrouting-3-5">
-<h3><a class="toc-backref" href="#id42" role="doc-backlink">pgRouting 3.5</a><a class="headerlink" href="#pgrouting-3-5" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id43" role="doc-backlink">pgRouting 3.5</a><a class="headerlink" href="#pgrouting-3-5" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id6">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-5-1-release-notes" id="id57">Versionsinformation för pgRouting 3.5.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-5-0-release-notes" id="id58">Versionsinformation för pgRouting 3.5.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-5-1-release-notes" id="id58">Versionsinformation för pgRouting 3.5.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-5-0-release-notes" id="id59">Versionsinformation för pgRouting 3.5.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-5-1-release-notes">
-<h4><a class="toc-backref" href="#id57" role="doc-backlink">Versionsinformation för pgRouting 3.5.1</a><a class="headerlink" href="#pgrouting-3-5-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id58" role="doc-backlink">Versionsinformation för pgRouting 3.5.1</a><a class="headerlink" href="#pgrouting-3-5-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.5.1%22">Github milstolpe för 3.5.1</a></p>
 <p class="rubric">Dokumentationsfixar</p>
 <p>Ändringar i dokumentationen till följande:</p>
@@ -1664,7 +1680,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-5-0-release-notes">
-<h4><a class="toc-backref" href="#id58" role="doc-backlink">Versionsinformation för pgRouting 3.5.0</a><a class="headerlink" href="#pgrouting-3-5-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id59" role="doc-backlink">Versionsinformation för pgRouting 3.5.0</a><a class="headerlink" href="#pgrouting-3-5-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.5.0%22">Github milstolpe för 3.5.0</a></p>
 <p class="rubric">Förändringar i officiella funktioner</p>
 <ul class="simple">
@@ -1683,17 +1699,17 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="pgrouting-3-4">
-<h3><a class="toc-backref" href="#id43" role="doc-backlink">pgRouting 3.4</a><a class="headerlink" href="#pgrouting-3-4" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id44" role="doc-backlink">pgRouting 3.4</a><a class="headerlink" href="#pgrouting-3-4" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id7">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-4-2-release-notes" id="id59">Versionsinformation för pgRouting 3.4.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-4-1-release-notes" id="id60">Versionsinformation för pgRouting 3.4.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-4-0-release-notes" id="id61">Versionsinformation för pgRouting 3.4.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4-2-release-notes" id="id60">Versionsinformation för pgRouting 3.4.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4-1-release-notes" id="id61">Versionsinformation för pgRouting 3.4.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4-0-release-notes" id="id62">Versionsinformation för pgRouting 3.4.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-4-2-release-notes">
-<h4><a class="toc-backref" href="#id59" role="doc-backlink">Versionsinformation för pgRouting 3.4.2</a><a class="headerlink" href="#pgrouting-3-4-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id60" role="doc-backlink">Versionsinformation för pgRouting 3.4.2</a><a class="headerlink" href="#pgrouting-3-4-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.4.2%22">Github milstolpe för 3.4.2</a></p>
 <p class="rubric">Problemkorrigeringar</p>
 <ul class="simple">
@@ -1702,7 +1718,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-4-1-release-notes">
-<h4><a class="toc-backref" href="#id60" role="doc-backlink">Versionsinformation för pgRouting 3.4.1</a><a class="headerlink" href="#pgrouting-3-4-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id61" role="doc-backlink">Versionsinformation för pgRouting 3.4.1</a><a class="headerlink" href="#pgrouting-3-4-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.4.1%22">Github milstolpe för 3.4.1</a></p>
 <p class="rubric">Problemkorrigeringar</p>
 <ul class="simple">
@@ -1711,7 +1727,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-4-0-release-notes">
-<h4><a class="toc-backref" href="#id61" role="doc-backlink">Versionsinformation för pgRouting 3.4.0</a><a class="headerlink" href="#pgrouting-3-4-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id62" role="doc-backlink">Versionsinformation för pgRouting 3.4.0</a><a class="headerlink" href="#pgrouting-3-4-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.4.0%22">Github milstolpe för 3.4.0</a></p>
 <p class="rubric">Problemkorrigeringar</p>
 <ul class="simple">
@@ -1803,20 +1819,20 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="pgrouting-3-3">
-<h3><a class="toc-backref" href="#id44" role="doc-backlink">pgRouting 3.3</a><a class="headerlink" href="#pgrouting-3-3" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id45" role="doc-backlink">pgRouting 3.3</a><a class="headerlink" href="#pgrouting-3-3" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id8">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-3-5-release-notes" id="id62">Versionsinformation för pgRouting 3.3.5</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-4-release-notes" id="id63">Versionsinformation för pgRouting 3.3.4</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-3-release-notes" id="id64">Versionsinformation för pgRouting 3.3.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-2-release-notes" id="id65">Versionsinformation för pgRouting 3.3.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-1-release-notes" id="id66">Versionsinformation för pgRouting 3.3.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-0-release-notes" id="id67">Versionsinformation för pgRouting 3.3.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-5-release-notes" id="id63">Versionsinformation för pgRouting 3.3.5</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-4-release-notes" id="id64">Versionsinformation för pgRouting 3.3.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-3-release-notes" id="id65">Versionsinformation för pgRouting 3.3.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-2-release-notes" id="id66">Versionsinformation för pgRouting 3.3.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-1-release-notes" id="id67">Versionsinformation för pgRouting 3.3.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-0-release-notes" id="id68">Versionsinformation för pgRouting 3.3.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-3-5-release-notes">
-<h4><a class="toc-backref" href="#id62" role="doc-backlink">Versionsinformation för pgRouting 3.3.5</a><a class="headerlink" href="#pgrouting-3-3-5-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id63" role="doc-backlink">Versionsinformation för pgRouting 3.3.5</a><a class="headerlink" href="#pgrouting-3-3-5-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.5%22">Github milstolpe för 3.3.5</a></p>
 <p class="rubric">Dokumentation</p>
 <ul class="simple">
@@ -1824,7 +1840,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-4-release-notes">
-<h4><a class="toc-backref" href="#id63" role="doc-backlink">Versionsinformation för pgRouting 3.3.4</a><a class="headerlink" href="#pgrouting-3-3-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id64" role="doc-backlink">Versionsinformation för pgRouting 3.3.4</a><a class="headerlink" href="#pgrouting-3-3-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.4%22">Github milstolpe för 3.3.4</a></p>
 <p class="rubric">Problemkorrigeringar</p>
 <ul class="simple">
@@ -1832,7 +1848,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-3-release-notes">
-<h4><a class="toc-backref" href="#id64" role="doc-backlink">Versionsinformation för pgRouting 3.3.3</a><a class="headerlink" href="#pgrouting-3-3-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id65" role="doc-backlink">Versionsinformation för pgRouting 3.3.3</a><a class="headerlink" href="#pgrouting-3-3-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.3%22">Github milstolpe för 3.3.3</a></p>
 <p class="rubric">Problemkorrigeringar</p>
 <ul class="simple">
@@ -1852,7 +1868,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-2-release-notes">
-<h4><a class="toc-backref" href="#id65" role="doc-backlink">Versionsinformation för pgRouting 3.3.2</a><a class="headerlink" href="#pgrouting-3-3-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id66" role="doc-backlink">Versionsinformation för pgRouting 3.3.2</a><a class="headerlink" href="#pgrouting-3-3-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.2%22">Github milstolpe för 3.3.2</a></p>
 <ul>
 <li><p>Reviderad dokumentation</p>
@@ -1893,7 +1909,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-1-release-notes">
-<h4><a class="toc-backref" href="#id66" role="doc-backlink">Versionsinformation för pgRouting 3.3.1</a><a class="headerlink" href="#pgrouting-3-3-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id67" role="doc-backlink">Versionsinformation för pgRouting 3.3.1</a><a class="headerlink" href="#pgrouting-3-3-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.1%22">Github milstolpe för 3.3.1</a></p>
 <p class="rubric">Problemkorrigeringar</p>
 <ul class="simple">
@@ -1902,7 +1918,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-0-release-notes">
-<h4><a class="toc-backref" href="#id67" role="doc-backlink">Versionsinformation för pgRouting 3.3.0</a><a class="headerlink" href="#pgrouting-3-3-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id68" role="doc-backlink">Versionsinformation för pgRouting 3.3.0</a><a class="headerlink" href="#pgrouting-3-3-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.0%22">Github milstolpe för 3.3.0</a></p>
 <p class="rubric">Problemkorrigeringar</p>
 <ul class="simple">
@@ -1962,17 +1978,17 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="pgrouting-3-2">
-<h3><a class="toc-backref" href="#id45" role="doc-backlink">pgRouting 3.2</a><a class="headerlink" href="#pgrouting-3-2" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id46" role="doc-backlink">pgRouting 3.2</a><a class="headerlink" href="#pgrouting-3-2" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id9">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-2-2-release-notes" id="id68">Versionsinformation för pgRouting 3.2.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-2-1-release-notes" id="id69">Versionsinformation för pgRouting 3.2.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-2-0-release-notes" id="id70">Versionsinformation för pgRouting 3.2.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2-2-release-notes" id="id69">Versionsinformation för pgRouting 3.2.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2-1-release-notes" id="id70">Versionsinformation för pgRouting 3.2.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2-0-release-notes" id="id71">Versionsinformation för pgRouting 3.2.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-2-2-release-notes">
-<h4><a class="toc-backref" href="#id68" role="doc-backlink">Versionsinformation för pgRouting 3.2.2</a><a class="headerlink" href="#pgrouting-3-2-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id69" role="doc-backlink">Versionsinformation för pgRouting 3.2.2</a><a class="headerlink" href="#pgrouting-3-2-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.2%22">Github milstolpe för 3.2.2</a></p>
 <p class="rubric">Problemkorrigeringar</p>
 <ul class="simple">
@@ -1981,7 +1997,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-2-1-release-notes">
-<h4><a class="toc-backref" href="#id69" role="doc-backlink">Versionsinformation för pgRouting 3.2.1</a><a class="headerlink" href="#pgrouting-3-2-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id70" role="doc-backlink">Versionsinformation för pgRouting 3.2.1</a><a class="headerlink" href="#pgrouting-3-2-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.1%22">Github milstolpe för 3.2.1</a></p>
 <p class="rubric">Problemkorrigeringar</p>
 <ul class="simple">
@@ -1995,7 +2011,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-2-0-release-notes">
-<h4><a class="toc-backref" href="#id70" role="doc-backlink">Versionsinformation för pgRouting 3.2.0</a><a class="headerlink" href="#pgrouting-3-2-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id71" role="doc-backlink">Versionsinformation för pgRouting 3.2.0</a><a class="headerlink" href="#pgrouting-3-2-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.0%22">Github milstolpe för 3.2.0</a></p>
 <p class="rubric">Skapa</p>
 <ul class="simple">
@@ -2079,19 +2095,19 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="pgrouting-3-1">
-<h3><a class="toc-backref" href="#id46" role="doc-backlink">pgRouting 3.1</a><a class="headerlink" href="#pgrouting-3-1" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id47" role="doc-backlink">pgRouting 3.1</a><a class="headerlink" href="#pgrouting-3-1" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id10">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-1-4-release-notes" id="id71">Versionsinformation för pgRouting 3.1.4</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-3-release-notes" id="id72">Versionsinformation för pgRouting 3.1.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-2-release-notes" id="id73">Versionsinformation för pgRouting 3.1.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-1-release-notes" id="id74">Versionsinformation för pgRouting 3.1.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-0-release-notes" id="id75">Versionsinformation för pgRouting 3.1.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-4-release-notes" id="id72">Versionsinformation för pgRouting 3.1.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-3-release-notes" id="id73">Versionsinformation för pgRouting 3.1.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-2-release-notes" id="id74">Versionsinformation för pgRouting 3.1.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-1-release-notes" id="id75">Versionsinformation för pgRouting 3.1.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-0-release-notes" id="id76">Versionsinformation för pgRouting 3.1.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-1-4-release-notes">
-<h4><a class="toc-backref" href="#id71" role="doc-backlink">Versionsinformation för pgRouting 3.1.4</a><a class="headerlink" href="#pgrouting-3-1-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id72" role="doc-backlink">Versionsinformation för pgRouting 3.1.4</a><a class="headerlink" href="#pgrouting-3-1-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.4%22">Github milstolpe för 3.1.4</a></p>
 <p class="rubric">Problemlösningar</p>
 <ul class="simple">
@@ -2099,7 +2115,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-3-release-notes">
-<h4><a class="toc-backref" href="#id72" role="doc-backlink">Versionsinformation för pgRouting 3.1.3</a><a class="headerlink" href="#pgrouting-3-1-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id73" role="doc-backlink">Versionsinformation för pgRouting 3.1.3</a><a class="headerlink" href="#pgrouting-3-1-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.3%22">Github milstolpe för 3.1.3</a></p>
 <p class="rubric">Problemlösningar</p>
 <ul class="simple">
@@ -2109,7 +2125,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-2-release-notes">
-<h4><a class="toc-backref" href="#id73" role="doc-backlink">Versionsinformation för pgRouting 3.1.2</a><a class="headerlink" href="#pgrouting-3-1-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id74" role="doc-backlink">Versionsinformation för pgRouting 3.1.2</a><a class="headerlink" href="#pgrouting-3-1-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.2%22">Github milstolpe för 3.1.2</a></p>
 <p class="rubric">Problemlösningar</p>
 <ul class="simple">
@@ -2121,7 +2137,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-1-release-notes">
-<h4><a class="toc-backref" href="#id74" role="doc-backlink">Versionsinformation för pgRouting 3.1.1</a><a class="headerlink" href="#pgrouting-3-1-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id75" role="doc-backlink">Versionsinformation för pgRouting 3.1.1</a><a class="headerlink" href="#pgrouting-3-1-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.1%22">Github milstolpe för 3.1.1</a></p>
 <p class="rubric">Problemlösningar</p>
 <ul class="simple">
@@ -2133,7 +2149,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-0-release-notes">
-<h4><a class="toc-backref" href="#id75" role="doc-backlink">Versionsinformation för pgRouting 3.1.0</a><a class="headerlink" href="#pgrouting-3-1-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id76" role="doc-backlink">Versionsinformation för pgRouting 3.1.0</a><a class="headerlink" href="#pgrouting-3-1-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.0%22">Github milstolpe för 3.1.0</a></p>
 <p class="rubric">Nya föreslagna funktioner.</p>
 <ul class="simple">
@@ -2147,21 +2163,21 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="pgrouting-3-0">
-<h3><a class="toc-backref" href="#id47" role="doc-backlink">pgRouting 3.0</a><a class="headerlink" href="#pgrouting-3-0" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id48" role="doc-backlink">pgRouting 3.0</a><a class="headerlink" href="#pgrouting-3-0" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id11">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-0-6-release-notes" id="id76">Versionsinformation för pgRouting 3.0.6</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-5-release-notes" id="id77">Versionsinformation för pgRouting 3.0.5</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-4-release-notes" id="id78">Versionsinformation för pgRouting 3.0.4</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-3-release-notes" id="id79">Versionsinformation för pgRouting 3.0.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-2-release-notes" id="id80">Versionsinformation för pgRouting 3.0.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-1-release-notes" id="id81">Versionsinformation för pgRouting 3.0.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-0-release-notes" id="id82">Versionsinformation för pgRouting 3.0.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-6-release-notes" id="id77">Versionsinformation för pgRouting 3.0.6</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-5-release-notes" id="id78">Versionsinformation för pgRouting 3.0.5</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-4-release-notes" id="id79">Versionsinformation för pgRouting 3.0.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-3-release-notes" id="id80">Versionsinformation för pgRouting 3.0.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-2-release-notes" id="id81">Versionsinformation för pgRouting 3.0.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-1-release-notes" id="id82">Versionsinformation för pgRouting 3.0.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-0-release-notes" id="id83">Versionsinformation för pgRouting 3.0.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-0-6-release-notes">
-<h4><a class="toc-backref" href="#id76" role="doc-backlink">Versionsinformation för pgRouting 3.0.6</a><a class="headerlink" href="#pgrouting-3-0-6-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id77" role="doc-backlink">Versionsinformation för pgRouting 3.0.6</a><a class="headerlink" href="#pgrouting-3-0-6-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.6%22">Github milstolpe för 3.0.6</a></p>
 <p class="rubric">Problemlösningar</p>
 <ul class="simple">
@@ -2169,7 +2185,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-5-release-notes">
-<h4><a class="toc-backref" href="#id77" role="doc-backlink">Versionsinformation för pgRouting 3.0.5</a><a class="headerlink" href="#pgrouting-3-0-5-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id78" role="doc-backlink">Versionsinformation för pgRouting 3.0.5</a><a class="headerlink" href="#pgrouting-3-0-5-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.5%22">Github milstolpe för 3.0.5</a></p>
 <p class="rubric">Fixar problem med backport</p>
 <ul class="simple">
@@ -2179,7 +2195,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-4-release-notes">
-<h4><a class="toc-backref" href="#id78" role="doc-backlink">Versionsinformation för pgRouting 3.0.4</a><a class="headerlink" href="#pgrouting-3-0-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id79" role="doc-backlink">Versionsinformation för pgRouting 3.0.4</a><a class="headerlink" href="#pgrouting-3-0-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.4%22">Github milstolpe för 3.0.4</a></p>
 <p class="rubric">Fixar problem med backport</p>
 <ul class="simple">
@@ -2191,7 +2207,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-3-release-notes">
-<h4><a class="toc-backref" href="#id79" role="doc-backlink">Versionsinformation för pgRouting 3.0.3</a><a class="headerlink" href="#pgrouting-3-0-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id80" role="doc-backlink">Versionsinformation för pgRouting 3.0.3</a><a class="headerlink" href="#pgrouting-3-0-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.3%22">Github milstolpe för 3.0.3</a></p>
 <p class="rubric">Fixar problem med backport</p>
 <ul class="simple">
@@ -2203,7 +2219,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-2-release-notes">
-<h4><a class="toc-backref" href="#id80" role="doc-backlink">Versionsinformation för pgRouting 3.0.2</a><a class="headerlink" href="#pgrouting-3-0-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id81" role="doc-backlink">Versionsinformation för pgRouting 3.0.2</a><a class="headerlink" href="#pgrouting-3-0-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.2%22">Github milstolpe för 3.0.2</a></p>
 <p class="rubric">Problemlösningar</p>
 <ul class="simple">
@@ -2211,7 +2227,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-1-release-notes">
-<h4><a class="toc-backref" href="#id81" role="doc-backlink">Versionsinformation för pgRouting 3.0.1</a><a class="headerlink" href="#pgrouting-3-0-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id82" role="doc-backlink">Versionsinformation för pgRouting 3.0.1</a><a class="headerlink" href="#pgrouting-3-0-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.1%22">Github milstolpe för 3.0.1</a></p>
 <p class="rubric">Problemlösningar</p>
 <ul class="simple">
@@ -2219,7 +2235,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-0-release-notes">
-<h4><a class="toc-backref" href="#id82" role="doc-backlink">Versionsinformation för pgRouting 3.0.0</a><a class="headerlink" href="#pgrouting-3-0-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id83" role="doc-backlink">Versionsinformation för pgRouting 3.0.0</a><a class="headerlink" href="#pgrouting-3-0-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.0%22">Github milstolpe för 3.0.0</a></p>
 <p class="rubric">Korrigerade problem</p>
 <ul class="simple">
@@ -2395,28 +2411,28 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 <nav class="contents local" id="minors-2-x">
 <p class="topic-title">Minors 2.x</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-6" id="id83">pgRouting 2.6</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5" id="id84">pgRouting 2.5</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-4" id="id85">pgRouting 2.4</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-3" id="id86">pgRouting 2.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2" id="id87">pgRouting 2.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-1" id="id88">pgRouting 2.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-0" id="id89">pgRouting 2.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6" id="id84">pgRouting 2.6</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5" id="id85">pgRouting 2.5</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4" id="id86">pgRouting 2.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-3" id="id87">pgRouting 2.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2" id="id88">pgRouting 2.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-1" id="id89">pgRouting 2.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0" id="id90">pgRouting 2.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-6">
-<h3><a class="toc-backref" href="#id83" role="doc-backlink">pgRouting 2.6</a><a class="headerlink" href="#pgrouting-2-6" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id84" role="doc-backlink">pgRouting 2.6</a><a class="headerlink" href="#pgrouting-2-6" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id12">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-6-3-release-notes" id="id90">Versionsinformation för pgRouting 2.6.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-6-2-release-notes" id="id91">Versionsinformation för pgRouting 2.6.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-6-1-release-notes" id="id92">Versionsinformation för pgRouting 2.6.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-6-0-release-notes" id="id93">Versionsinformation för pgRouting 2.6.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-3-release-notes" id="id91">Versionsinformation för pgRouting 2.6.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-2-release-notes" id="id92">Versionsinformation för pgRouting 2.6.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-1-release-notes" id="id93">Versionsinformation för pgRouting 2.6.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-0-release-notes" id="id94">Versionsinformation för pgRouting 2.6.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-6-3-release-notes">
-<h4><a class="toc-backref" href="#id90" role="doc-backlink">Versionsinformation för pgRouting 2.6.3</a><a class="headerlink" href="#pgrouting-2-6-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id91" role="doc-backlink">Versionsinformation för pgRouting 2.6.3</a><a class="headerlink" href="#pgrouting-2-6-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.3%22">Github milstolpe för 2.6.3</a></p>
 <p class="rubric">Buggfixar</p>
 <ul class="simple">
@@ -2426,7 +2442,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-6-2-release-notes">
-<h4><a class="toc-backref" href="#id91" role="doc-backlink">Versionsinformation för pgRouting 2.6.2</a><a class="headerlink" href="#pgrouting-2-6-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id92" role="doc-backlink">Versionsinformation för pgRouting 2.6.2</a><a class="headerlink" href="#pgrouting-2-6-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.2%22">Github milstolpe för 2.6.2</a></p>
 <p class="rubric">Buggfixar</p>
 <ul class="simple">
@@ -2436,7 +2452,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-6-1-release-notes">
-<h4><a class="toc-backref" href="#id92" role="doc-backlink">Versionsinformation för pgRouting 2.6.1</a><a class="headerlink" href="#pgrouting-2-6-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id93" role="doc-backlink">Versionsinformation för pgRouting 2.6.1</a><a class="headerlink" href="#pgrouting-2-6-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.1%22">Github milstolpe för 2.6.1</a></p>
 <ul class="simple">
 <li><p>Fixar serverkrasch på flera funktioner.</p>
@@ -2475,7 +2491,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-6-0-release-notes">
-<h4><a class="toc-backref" href="#id93" role="doc-backlink">Versionsinformation för pgRouting 2.6.0</a><a class="headerlink" href="#pgrouting-2-6-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id94" role="doc-backlink">Versionsinformation för pgRouting 2.6.0</a><a class="headerlink" href="#pgrouting-2-6-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.0%22">Github milstolpe för 2.6.0</a></p>
 <p class="rubric">Nya experimentella funktioner.</p>
 <ul class="simple">
@@ -2512,20 +2528,20 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="pgrouting-2-5">
-<h3><a class="toc-backref" href="#id84" role="doc-backlink">pgRouting 2.5</a><a class="headerlink" href="#pgrouting-2-5" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id85" role="doc-backlink">pgRouting 2.5</a><a class="headerlink" href="#pgrouting-2-5" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id13">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-5-5-release-notes" id="id94">Versionsinformation för pgRouting 2.5.5</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-4-release-notes" id="id95">Versionsinformation för pgRouting 2.5.4</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-3-release-notes" id="id96">Versionsinformation för pgRouting 2.5.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-2-release-notes" id="id97">Versionsinformation för pgRouting 2.5.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-1-release-notes" id="id98">Versionsinformation för pgRouting 2.5.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-0-release-notes" id="id99">Versionsinformation för pgRouting 2.5.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-5-release-notes" id="id95">Versionsinformation för pgRouting 2.5.5</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-4-release-notes" id="id96">Versionsinformation för pgRouting 2.5.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-3-release-notes" id="id97">Versionsinformation för pgRouting 2.5.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-2-release-notes" id="id98">Versionsinformation för pgRouting 2.5.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-1-release-notes" id="id99">Versionsinformation för pgRouting 2.5.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-0-release-notes" id="id100">Versionsinformation för pgRouting 2.5.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-5-5-release-notes">
-<h4><a class="toc-backref" href="#id94" role="doc-backlink">Versionsinformation för pgRouting 2.5.5</a><a class="headerlink" href="#pgrouting-2-5-5-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id95" role="doc-backlink">Versionsinformation för pgRouting 2.5.5</a><a class="headerlink" href="#pgrouting-2-5-5-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.5%22">Github milstolpe för 2.5.5</a></p>
 <p class="rubric">Buggfixar</p>
 <ul class="simple">
@@ -2535,7 +2551,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-4-release-notes">
-<h4><a class="toc-backref" href="#id95" role="doc-backlink">Versionsinformation för pgRouting 2.5.4</a><a class="headerlink" href="#pgrouting-2-5-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id96" role="doc-backlink">Versionsinformation för pgRouting 2.5.4</a><a class="headerlink" href="#pgrouting-2-5-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.4%22">Github milstolpe för 2.5.4</a></p>
 <ul class="simple">
 <li><p>Fixar serverkrasch på flera funktioner.</p>
@@ -2574,7 +2590,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-3-release-notes">
-<h4><a class="toc-backref" href="#id96" role="doc-backlink">Versionsinformation för pgRouting 2.5.3</a><a class="headerlink" href="#pgrouting-2-5-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id97" role="doc-backlink">Versionsinformation för pgRouting 2.5.3</a><a class="headerlink" href="#pgrouting-2-5-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.3%22">Github milstolpe för 2.5.3</a></p>
 <p class="rubric">Buggfixar</p>
 <ul class="simple">
@@ -2582,7 +2598,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-2-release-notes">
-<h4><a class="toc-backref" href="#id97" role="doc-backlink">Versionsinformation för pgRouting 2.5.2</a><a class="headerlink" href="#pgrouting-2-5-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id98" role="doc-backlink">Versionsinformation för pgRouting 2.5.2</a><a class="headerlink" href="#pgrouting-2-5-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.2%22">Github milstolpe för 2.5.2</a></p>
 <p class="rubric">Buggfixar</p>
 <ul class="simple">
@@ -2590,7 +2606,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-1-release-notes">
-<h4><a class="toc-backref" href="#id98" role="doc-backlink">Versionsinformation för pgRouting 2.5.1</a><a class="headerlink" href="#pgrouting-2-5-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id99" role="doc-backlink">Versionsinformation för pgRouting 2.5.1</a><a class="headerlink" href="#pgrouting-2-5-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.1%22">Github milstolpe för 2.5.1</a></p>
 <p class="rubric">Buggfixar</p>
 <ul class="simple">
@@ -2598,7 +2614,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-0-release-notes">
-<h4><a class="toc-backref" href="#id99" role="doc-backlink">Versionsinformation för pgRouting 2.5.0</a><a class="headerlink" href="#pgrouting-2-5-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id100" role="doc-backlink">Versionsinformation för pgRouting 2.5.0</a><a class="headerlink" href="#pgrouting-2-5-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.0%22">Github milstolpe för 2.5.0</a></p>
 <p class="rubric">förbättring:</p>
 <ul class="simple">
@@ -2662,17 +2678,17 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="pgrouting-2-4">
-<h3><a class="toc-backref" href="#id85" role="doc-backlink">pgRouting 2.4</a><a class="headerlink" href="#pgrouting-2-4" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id86" role="doc-backlink">pgRouting 2.4</a><a class="headerlink" href="#pgrouting-2-4" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id14">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-4-2-release-notes" id="id100">Versionsinformation för pgRouting 2.4.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-4-1-release-notes" id="id101">Versionsinformation för pgRouting 2.4.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-4-0-release-notes" id="id102">Versionsinformation för pgRouting 2.4.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-2-release-notes" id="id101">Versionsinformation för pgRouting 2.4.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-1-release-notes" id="id102">Versionsinformation för pgRouting 2.4.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-0-release-notes" id="id103">Versionsinformation för pgRouting 2.4.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-4-2-release-notes">
-<h4><a class="toc-backref" href="#id100" role="doc-backlink">Versionsinformation för pgRouting 2.4.2</a><a class="headerlink" href="#pgrouting-2-4-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id101" role="doc-backlink">Versionsinformation för pgRouting 2.4.2</a><a class="headerlink" href="#pgrouting-2-4-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.2%22">Github milstolpe för 2.4.2</a></p>
 <p class="rubric">Förbättring</p>
 <ul class="simple">
@@ -2685,7 +2701,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-4-1-release-notes">
-<h4><a class="toc-backref" href="#id101" role="doc-backlink">Versionsinformation för pgRouting 2.4.1</a><a class="headerlink" href="#pgrouting-2-4-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id102" role="doc-backlink">Versionsinformation för pgRouting 2.4.1</a><a class="headerlink" href="#pgrouting-2-4-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.1%22">Github milstolpe för 2.4.1</a></p>
 <p class="rubric">Buggfixar</p>
 <ul class="simple">
@@ -2694,7 +2710,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-4-0-release-notes">
-<h4><a class="toc-backref" href="#id102" role="doc-backlink">Versionsinformation för pgRouting 2.4.0</a><a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id103" role="doc-backlink">Versionsinformation för pgRouting 2.4.0</a><a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.0%22">Github milstolpe för 2.4.0</a></p>
 <p class="rubric">Nya funktioner</p>
 <ul class="simple">
@@ -2732,7 +2748,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="pgrouting-2-3">
-<h3><a class="toc-backref" href="#id86" role="doc-backlink">pgRouting 2.3</a><a class="headerlink" href="#pgrouting-2-3" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id87" role="doc-backlink">pgRouting 2.3</a><a class="headerlink" href="#pgrouting-2-3" title="Link to this heading">¶</a></h3>
 <section id="pgrouting-2-3-2-release-notes">
 <h4>Versionsinformation för pgRouting 2.3.2<a class="headerlink" href="#pgrouting-2-3-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.3.2%22">Github milstolpe för 2.3.2</a></p>
@@ -2807,19 +2823,19 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="pgrouting-2-2">
-<h3><a class="toc-backref" href="#id87" role="doc-backlink">pgRouting 2.2</a><a class="headerlink" href="#pgrouting-2-2" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id88" role="doc-backlink">pgRouting 2.2</a><a class="headerlink" href="#pgrouting-2-2" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id15">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-2-4-release-notes" id="id103">Versionsinformation för pgRouting 2.2.4</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-3-release-notes" id="id104">Versionsinformation för pgRouting 2.2.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-2-release-notes" id="id105">Versionsinformation för pgRouting 2.2.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-1-release-notes" id="id106">Versionsinformation för pgRouting 2.2.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-0-release-notes" id="id107">Versionsinformation för pgRouting 2.2.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-4-release-notes" id="id104">Versionsinformation för pgRouting 2.2.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-3-release-notes" id="id105">Versionsinformation för pgRouting 2.2.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-2-release-notes" id="id106">Versionsinformation för pgRouting 2.2.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-1-release-notes" id="id107">Versionsinformation för pgRouting 2.2.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-0-release-notes" id="id108">Versionsinformation för pgRouting 2.2.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-2-4-release-notes">
-<h4><a class="toc-backref" href="#id103" role="doc-backlink">Versionsinformation för pgRouting 2.2.4</a><a class="headerlink" href="#pgrouting-2-2-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id104" role="doc-backlink">Versionsinformation för pgRouting 2.2.4</a><a class="headerlink" href="#pgrouting-2-2-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.2.4%22">Github milstolpe för 2.2.4</a></p>
 <p class="rubric">Buggfixar</p>
 <ul class="simple">
@@ -2829,7 +2845,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-2-3-release-notes">
-<h4><a class="toc-backref" href="#id104" role="doc-backlink">Versionsinformation för pgRouting 2.2.3</a><a class="headerlink" href="#pgrouting-2-2-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id105" role="doc-backlink">Versionsinformation för pgRouting 2.2.3</a><a class="headerlink" href="#pgrouting-2-2-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.2.3%22">Github milstolpe för 2.2.3</a></p>
 <p class="rubric">Buggfixar</p>
 <ul class="simple">
@@ -2837,7 +2853,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-2-2-release-notes">
-<h4><a class="toc-backref" href="#id105" role="doc-backlink">Versionsinformation för pgRouting 2.2.2</a><a class="headerlink" href="#pgrouting-2-2-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id106" role="doc-backlink">Versionsinformation för pgRouting 2.2.2</a><a class="headerlink" href="#pgrouting-2-2-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.2.2%22">Github milstolpe för 2.2.2</a></p>
 <p class="rubric">Buggfixar</p>
 <ul class="simple">
@@ -2845,7 +2861,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-2-1-release-notes">
-<h4><a class="toc-backref" href="#id106" role="doc-backlink">Versionsinformation för pgRouting 2.2.1</a><a class="headerlink" href="#pgrouting-2-2-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id107" role="doc-backlink">Versionsinformation för pgRouting 2.2.1</a><a class="headerlink" href="#pgrouting-2-2-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.2.1%22">Github milstolpe för 2.2.1</a></p>
 <p class="rubric">Buggfixar</p>
 <ul class="simple">
@@ -2854,7 +2870,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-2-0-release-notes">
-<h4><a class="toc-backref" href="#id107" role="doc-backlink">Versionsinformation för pgRouting 2.2.0</a><a class="headerlink" href="#pgrouting-2-2-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id108" role="doc-backlink">Versionsinformation för pgRouting 2.2.0</a><a class="headerlink" href="#pgrouting-2-2-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.2.0%22">Github milstolpe för 2.2.0</a></p>
 <p class="rubric">Förbättringar</p>
 <ul class="simple">
@@ -2907,15 +2923,15 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="pgrouting-2-1">
-<h3><a class="toc-backref" href="#id88" role="doc-backlink">pgRouting 2.1</a><a class="headerlink" href="#pgrouting-2-1" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id89" role="doc-backlink">pgRouting 2.1</a><a class="headerlink" href="#pgrouting-2-1" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id16">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-1-0-release-notes" id="id108">Versionsinformation för pgRouting 2.1.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-1-0-release-notes" id="id109">Versionsinformation för pgRouting 2.1.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-1-0-release-notes">
-<h4><a class="toc-backref" href="#id108" role="doc-backlink">Versionsinformation för pgRouting 2.1.0</a><a class="headerlink" href="#pgrouting-2-1-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id109" role="doc-backlink">Versionsinformation för pgRouting 2.1.0</a><a class="headerlink" href="#pgrouting-2-1-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.1.0%22">Github milstolpe för 2.1.0</a></p>
 <p class="rubric">Nya signaturer</p>
 <ul class="simple">
@@ -2998,16 +3014,16 @@ geometries.</p></li>
 </section>
 </section>
 <section id="pgrouting-2-0">
-<h3><a class="toc-backref" href="#id89" role="doc-backlink">pgRouting 2.0</a><a class="headerlink" href="#pgrouting-2-0" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id90" role="doc-backlink">pgRouting 2.0</a><a class="headerlink" href="#pgrouting-2-0" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id17">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-0-1-release-notes" id="id109">Versionsinformation för pgRouting 2.0.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-0-0-release-notes" id="id110">Versionsinformation för pgRouting 2.0.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0-1-release-notes" id="id110">Versionsinformation för pgRouting 2.0.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0-0-release-notes" id="id111">Versionsinformation för pgRouting 2.0.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-0-1-release-notes">
-<h4><a class="toc-backref" href="#id109" role="doc-backlink">Versionsinformation för pgRouting 2.0.1</a><a class="headerlink" href="#pgrouting-2-0-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id110" role="doc-backlink">Versionsinformation för pgRouting 2.0.1</a><a class="headerlink" href="#pgrouting-2-0-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.0.1%22">Github milstolpe för 2.0.1</a></p>
 <p>Mindre buggfixar.</p>
 <p class="rubric">Buggfixar</p>
@@ -3016,7 +3032,7 @@ geometries.</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-0-0-release-notes">
-<h4><a class="toc-backref" href="#id110" role="doc-backlink">Versionsinformation för pgRouting 2.0.0</a><a class="headerlink" href="#pgrouting-2-0-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id111" role="doc-backlink">Versionsinformation för pgRouting 2.0.0</a><a class="headerlink" href="#pgrouting-2-0-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.0.0%22">Github milstolpe för 2.0.0</a></p>
 <p>Med lanseringen av pgRouting 2.0.0 har biblioteket övergett bakåtkompatibilitet till <a class="reference internal" href="#pgrouting-1-0">pgRouting 1.0</a>-utgåvor. Huvudmålen för denna utgåva är:</p>
 <ul class="simple">
@@ -3068,46 +3084,46 @@ geometries.</p></li>
 <nav class="contents local" id="id18">
 <p class="topic-title">Innehåll</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#changes-for-release-1-05" id="id111">Ändringar för version 1.05</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-03" id="id112">Ändringar för version 1.03</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-02" id="id113">Ändringar för version 1.02</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-01" id="id114">Ändringar för version 1.01</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-0" id="id115">Ändringar för version 1.0</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-0-0b" id="id116">Ändringar för version 1.0.0b</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-0-0a" id="id117">Ändringar för version 1.0.0a</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-0-9-9" id="id118">Ändringar för version 0.9.9</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-0-9-8" id="id119">Ändringar för version 0.9.8</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-05" id="id112">Ändringar för version 1.05</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-03" id="id113">Ändringar för version 1.03</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-02" id="id114">Ändringar för version 1.02</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-01" id="id115">Ändringar för version 1.01</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0" id="id116">Ändringar för version 1.0</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0-0b" id="id117">Ändringar för version 1.0.0b</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0-0a" id="id118">Ändringar för version 1.0.0a</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-0-9-9" id="id119">Ändringar för version 0.9.9</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-0-9-8" id="id120">Ändringar för version 0.9.8</a></p></li>
 </ul>
 </nav>
 <p>För att se de problem som stängts av denna utgåva, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed">Git stängda problem för 1.x</a> på Github. Följande release notes har kopierats från den tidigare filen <code class="docutils literal notranslate"><span class="pre">RELEASE_NOTES</span></code> och behålls som en referens.</p>
 <section id="changes-for-release-1-05">
-<h4><a class="toc-backref" href="#id111" role="doc-backlink">Ändringar för version 1.05</a><a class="headerlink" href="#changes-for-release-1-05" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id112" role="doc-backlink">Ändringar för version 1.05</a><a class="headerlink" href="#changes-for-release-1-05" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Buggfixar</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-03">
-<h4><a class="toc-backref" href="#id112" role="doc-backlink">Ändringar för version 1.03</a><a class="headerlink" href="#changes-for-release-1-03" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id113" role="doc-backlink">Ändringar för version 1.03</a><a class="headerlink" href="#changes-for-release-1-03" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Mycket snabbare skapande av topologi</p></li>
 <li><p>Buggfixar</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-02">
-<h4><a class="toc-backref" href="#id113" role="doc-backlink">Ändringar för version 1.02</a><a class="headerlink" href="#changes-for-release-1-02" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id114" role="doc-backlink">Ändringar för version 1.02</a><a class="headerlink" href="#changes-for-release-1-02" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Fotografering* buggfixar</p></li>
 <li><p>Kompileringsproblem lösta</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-01">
-<h4><a class="toc-backref" href="#id114" role="doc-backlink">Ändringar för version 1.01</a><a class="headerlink" href="#changes-for-release-1-01" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id115" role="doc-backlink">Ändringar för version 1.01</a><a class="headerlink" href="#changes-for-release-1-01" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Fotografering* buggfixar</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-0">
-<h4><a class="toc-backref" href="#id115" role="doc-backlink">Ändringar för version 1.0</a><a class="headerlink" href="#changes-for-release-1-0" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id116" role="doc-backlink">Ändringar för version 1.0</a><a class="headerlink" href="#changes-for-release-1-0" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Kärn- och extrafunktioner separeras</p></li>
 <li><p>Byggprocess med Cmake</p></li>
@@ -3115,28 +3131,28 @@ geometries.</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-0-0b">
-<h4><a class="toc-backref" href="#id116" role="doc-backlink">Ändringar för version 1.0.0b</a><a class="headerlink" href="#changes-for-release-1-0-0b" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id117" role="doc-backlink">Ändringar för version 1.0.0b</a><a class="headerlink" href="#changes-for-release-1-0-0b" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Ytterligare SQL-fil med enklare namn för wrapper-funktioner</p></li>
 <li><p>Buggfixar</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-0-0a">
-<h4><a class="toc-backref" href="#id117" role="doc-backlink">Ändringar för version 1.0.0a</a><a class="headerlink" href="#changes-for-release-1-0-0a" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id118" role="doc-backlink">Ändringar för version 1.0.0a</a><a class="headerlink" href="#changes-for-release-1-0-0a" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Algoritm för kortaste väg för verkliga vägnät</p></li>
 <li><p>Flera SQL-buggar har åtgärdats</p></li>
 </ul>
 </section>
 <section id="changes-for-release-0-9-9">
-<h4><a class="toc-backref" href="#id118" role="doc-backlink">Ändringar för version 0.9.9</a><a class="headerlink" href="#changes-for-release-0-9-9" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id119" role="doc-backlink">Ändringar för version 0.9.9</a><a class="headerlink" href="#changes-for-release-0-9-9" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Stöd för PostgreSQL 8.2</p></li>
 <li><p>Kortaste vägen-funktioner returnerar ett tomt resultat om de inte kunde hitta någon väg</p></li>
 </ul>
 </section>
 <section id="changes-for-release-0-9-8">
-<h4><a class="toc-backref" href="#id119" role="doc-backlink">Ändringar för version 0.9.8</a><a class="headerlink" href="#changes-for-release-0-9-8" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id120" role="doc-backlink">Ändringar för version 0.9.8</a><a class="headerlink" href="#changes-for-release-0-9-8" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Omnumreringssystem lades till för funktioner för kortaste vägen</p></li>
 <li><p>Directed shortest path-funktioner lades till</p></li>
@@ -3160,7 +3176,7 @@ geometries.</p></li>
     </p>
     <p>
         &copy; Copyright %Y pgRouting developers.<br/>
-      Senast uppdaterad jan. 24, 2026.<br/>
+      Senast uppdaterad jan. 31, 2026.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
