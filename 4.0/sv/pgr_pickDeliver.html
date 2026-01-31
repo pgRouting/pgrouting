@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=ceb0b906"></script>
+    <script src="_static/documentation_options.js?v=aa7f6942"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
@@ -80,7 +80,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Anteckningar för release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Versionsinformation</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">Migrationsguide</a></li>
@@ -503,7 +503,7 @@
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
 <td><p>Enheter med maximal kapacitet</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_öppna</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_open</span></code></p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
 <td><p>Tidpunkten, relativt 0, när startplatsen öppnas.</p></td>
 </tr>
@@ -608,7 +608,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Sekventiellt värde med början från <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fordon_seq</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vehicle_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Sekventiellt värde med början från <strong>1</strong> för aktuella fordon. Fordonet <span class="math notranslate nohighlight">\(n_{th}\)</span> i lösningen.</p>
 <ul class="simple">
@@ -616,7 +616,7 @@
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fordon_id</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vehicle_id</span></code></p></td>
 <td><p>BIGINT</p></td>
 <td><p>Aktuell fordonsidentifiering.</p>
 <ul class="simple">
@@ -628,7 +628,7 @@
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stopp_seq</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stop_seq</span></code></p></td>
 <td><p>INTEGER</p></td>
 <td><p>Sekventiellt värde med början från <strong>1</strong> för de stopp som görs av det aktuella fordonet. Stoppet <span class="math notranslate nohighlight">\(m_{th}\)</span> för det aktuella fordonet.</p>
 <ul class="simple">
@@ -640,7 +640,7 @@
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stopp_typ</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stop_type</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><ul class="simple">
 <li><p>Typ av stopplats som fordonet befinner sig på</p>
@@ -671,7 +671,7 @@
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">resetid</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">travel_time</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Restid från föregående <code class="docutils literal notranslate"><span class="pre">stop_seq</span></code> till aktuell <code class="docutils literal notranslate"><span class="pre">stop_seq</span></code>.</p>
 <ul class="simple">
@@ -683,7 +683,7 @@
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p>ankomsttid</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arrival_time</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Tidsåtgång för att vänta på att den aktuella platsen ska öppnas.</p>
 <ul class="simple">
@@ -692,7 +692,7 @@
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Vänta_tid</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wait_time</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Tidsåtgång för att vänta på att den aktuella platsen ska öppnas.</p>
 <ul class="simple">
@@ -704,7 +704,7 @@
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">service_tid</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">service_time</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Servicens varaktighet på den aktuella platsen.</p>
 <ul class="simple">
@@ -762,8 +762,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Senast uppdaterad dec. 06, 2025.<br/>
+        &copy; Copyright %Y pgRouting developers.<br/>
+      Senast uppdaterad jan. 31, 2026.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
