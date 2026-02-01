@@ -61,7 +61,7 @@ void pgr_process_ordering(
     std::ostringstream notice;
 
     clock_t start_t = clock();
-    do_ordering(
+    pgrouting::drivers::do_ordering(
             edges_sql? edges_sql : "",
             which,
             (*result_tuples), (*result_count),

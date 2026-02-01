@@ -72,7 +72,7 @@ void pgr_process_shortestPath(
     bool is_matrix = false;
 
     clock_t start_t = clock();
-    do_shortestPath(
+    pgrouting::drivers::do_shortestPath(
             edges_sql? edges_sql : "",
             points_sql? points_sql : "",
             combinations_sql? combinations_sql : "",

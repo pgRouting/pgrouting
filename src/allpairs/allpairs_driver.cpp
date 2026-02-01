@@ -54,9 +54,10 @@ process(const std::vector<Edge_t> &edges, G &graph, Func funcname,
     matrix_to_tuple(graph, results, return_count, return_tuples);
 }
 
-
-
 }  // namespace
+
+namespace pgrouting {
+namespace drivers {
 
 void
 do_allpairs(
@@ -127,3 +128,6 @@ do_allpairs(
         err << "Caught unknown exception!";
     }
 }
+
+}  // namespace drivers
+}  // namespace pgrouting

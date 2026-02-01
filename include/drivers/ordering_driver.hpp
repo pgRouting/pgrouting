@@ -42,10 +42,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/enums.h"
 
+namespace pgrouting {
+namespace drivers {
+
 void do_ordering(
         const std::string&, Which,
 
         int64_t*&, size_t&,
         std::ostringstream&, std::ostringstream&, std::ostringstream&);
+
+}  // namespace drivers
+}  // namespace pgrouting
 
 #endif  // INCLUDE_DRIVERS_ORDERING_DRIVER_HPP_

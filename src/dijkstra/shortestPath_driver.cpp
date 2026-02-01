@@ -107,6 +107,8 @@ post_process(std::deque<pgrouting::Path> &paths, bool only_cost, bool normal, si
 
 }  // namespace
 
+namespace pgrouting {
+namespace drivers {
 
 void
 do_shortestPath(
@@ -254,3 +256,6 @@ do_shortestPath(
         err << "Caught unknown exception!";
     }
 }
+
+}  // namespace drivers
+}  // namespace pgrouting

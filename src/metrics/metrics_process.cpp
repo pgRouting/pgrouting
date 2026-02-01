@@ -61,7 +61,7 @@ uint64_t pgr_process_metrics(
     std::ostringstream notice;
 
     clock_t start_t = clock();
-    auto result = do_metrics(
+    auto result = pgrouting::drivers::do_metrics(
             edges_sql? edges_sql : "",
             which,
             log, err);
