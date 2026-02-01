@@ -48,7 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/combinations.hpp"
 #include "cpp_common/utilities.hpp"
-#include "cpp_common/alloc.hpp"
+#include "cpp_common/to_postgres.hpp"
 #include "cpp_common/assert.hpp"
 
 #include "dijkstra/dijkstra.hpp"
@@ -133,9 +133,7 @@ do_shortestPath(
         std::ostringstream &notice,
         std::ostringstream &err) {
     using pgrouting::Path;
-    using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
-    using pgrouting::pgr_free;
 
     std::string hint = "";
 
@@ -145,6 +143,7 @@ do_shortestPath(
         using pgrouting::pgget::get_edges;
         using pgrouting::pgget::get_points;
         using pgrouting::utilities::get_combinations;
+        using pgrouting::to_postgres::get_tuples;
         using pgrouting::UndirectedGraph;
         using pgrouting::DirectedGraph;
 
@@ -233,15 +232,11 @@ do_shortestPath(
             for (auto &path : paths) path = pg_graph.eliminate_details(path);
         }
 
-        auto count = count_tuples(paths);
+        return_count = get_tuples(paths, return_tuples);
 
-        if (count == 0) {
+        if (return_count == 0) {
             log << "No paths found";
-            return;
         }
-
-        return_tuples = pgr_alloc(count, return_tuples);
-        return_count = (collapse_paths(&return_tuples, paths));
     } catch (AssertFailedException &except) {
         err << except.what();
     } catch (const std::pair<std::string, std::string>& ex) {

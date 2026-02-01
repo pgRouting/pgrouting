@@ -282,18 +282,6 @@ Path::sort_by_node_agg_cost() {
  */
 
 
-size_t
-collapse_paths(
-        Path_rt **ret_path,
-        const std::deque< Path > &paths) {
-    size_t sequence = 0;
-    for (const Path &path : paths) {
-        if (path.path.size() > 0) {
-            path.generate_postgres_data(ret_path, sequence);
-        }
-    }
-    return sequence;
-}
 
 /*
  * sort the paths by size from greater to smaller

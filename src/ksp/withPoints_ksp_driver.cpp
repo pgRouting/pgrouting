@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/combinations.hpp"
-#include "cpp_common/alloc.hpp"
+#include "cpp_common/to_postgres.hpp"
 #include "cpp_common/assert.hpp"
 #include "withPoints/withPoints.hpp"
 
@@ -69,7 +69,6 @@ pgr_do_withPointsKsp(
         char ** notice_msg,
         char ** err_msg) {
     using pgrouting::Path;
-    using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
     using pgrouting::yen::Pgr_ksp;
@@ -89,6 +88,7 @@ pgr_do_withPointsKsp(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
+        using pgrouting::to_postgres::get_tuples;
 
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, true);
@@ -157,34 +157,12 @@ pgr_do_withPointsKsp(
             }
         }
 
-        auto count(count_tuples(paths));
+        *return_count = get_tuples(paths, (*return_tuples));
 
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice << "No paths found";
-            *log_msg = to_pg_msg(notice);
+        if ((*return_count) == 0) {
+            *log_msg = to_pg_msg("No paths found");
             return;
         }
-
-
-        *return_tuples = NULL;
-        *return_tuples = pgr_alloc(count, (*return_tuples));
-
-        size_t sequence = 0;
-        for (const auto &path : paths) {
-            if (path.size() > 0) {
-                path.get_pg_nksp_path(return_tuples, sequence);
-            }
-        }
-
-        if (count != sequence) {
-            (*return_count) = 0;
-            notice << "Something went wrong";
-            *log_msg = to_pg_msg(notice);
-            return;
-        }
-        (*return_count) = sequence;
 
         *log_msg = to_pg_msg(log);
         *notice_msg = to_pg_msg(notice);

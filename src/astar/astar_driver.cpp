@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/combinations.hpp"
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/alloc.hpp"
+#include "cpp_common/to_postgres.hpp"
 #include "cpp_common/assert.hpp"
 
 #include "cpp_common/edge_xy_t.hpp"
@@ -60,7 +60,6 @@ void pgr_do_astar(
         Path_rt **return_tuples, size_t *return_count,
         char** log_msg, char** notice_msg, char** err_msg) {
     using pgrouting::Path;
-    using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
     using pgrouting::utilities::get_combinations;
@@ -76,6 +75,8 @@ void pgr_do_astar(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
+
+        using pgrouting::to_postgres::get_tuples;
 
         (*return_tuples) = nullptr;
         (*return_count) = 0;
@@ -121,19 +122,12 @@ void pgr_do_astar(
             }
         }
 
-        size_t count(0);
-        count = count_tuples(paths);
+        (*return_count) = get_tuples(paths, (*return_tuples));
 
-        if (count == 0) {
-            (*return_tuples) = nullptr;
-            (*return_count) = 0;
-            notice << "No paths found\n";
-            *log_msg = to_pg_msg(notice);
+        if (*return_count == 0) {
+            *log_msg = to_pg_msg("No paths found");
             return;
         }
-
-        (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        (*return_count) = (collapse_paths(return_tuples, paths));
 
         *log_msg = to_pg_msg(log);
         *notice_msg = to_pg_msg(notice);
