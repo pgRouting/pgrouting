@@ -27,11 +27,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <vector>
+#include <deque>
 #include <cstddef>
 
 #include "c_types/contractionHierarchies_rt.h"
 #include "c_types/iid_t_rt.h"
 #include "c_types/routes_t.h"
+#include "c_types/path_rt.h"
+#include "c_types/mst_rt.h"
 
 #include "cpp_common/path.hpp"
 #include "cpp_common/base_graph.hpp"
@@ -47,6 +50,21 @@ namespace detail {
 size_t count_rows(const std::vector<std::vector<double>>&);
 
 }  // namespace detail
+
+/*
+ * @brief Via Routes save on a C array
+ */
+size_t get_viaRoute(std::deque<pgrouting::Path>&, Routes_t**);
+
+/*
+ * @brief get tuples from a Path to a Path_rt
+ */
+size_t get_tuples(const std::deque<pgrouting::Path>&, Path_rt*&);
+
+/*
+ * @brief get tuples from a Path to a MST_rt
+ */
+size_t get_tuples(const std::deque<pgrouting::Path>&, MST_rt*&);
 
 /** @brief Vector of vertices id are saved on a C array
  *
@@ -205,11 +223,6 @@ void graph_to_tuple(
         ++sequence;
     }
 }
-
-/*
- * @brief Via Routes save on a C array
- */
-size_t get_viaRoute(std::deque<pgrouting::Path>&, Routes_t**);
 
 }  // namespace to_postgres
 }  // namespace pgrouting

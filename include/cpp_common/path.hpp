@@ -143,17 +143,6 @@ class Path {
             Path_rt **ret_path,
             size_t &sequence, int routeId) const;
 
-    void generate_postgres_data(
-            Path_rt **postgres_data,
-            size_t &sequence) const;
-
-    void generate_tuples(MST_rt**, size_t&) const;
-    friend size_t collapse_paths(MST_rt**, const std::deque<Path>&);
-
-    friend size_t collapse_paths(
-            Path_rt **ret_path,
-            const std::deque< Path > &paths);
-
 
     /** @brief discards common vertices with greater agg_cost */
     friend void equi_cost(std::deque< Path > &paths);

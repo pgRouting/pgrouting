@@ -27,8 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cstddef>
 #include <deque>
 #include <vector>
+#include <limits>
 
 #include "c_types/routes_t.h"
+#include "c_types/path_rt.h"
+#include "c_types/mst_rt.h"
 
 #include "cpp_common/path.hpp"
 #include "cpp_common/alloc.hpp"
@@ -36,17 +39,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace {
 
+double
+to_inf(double value) {
+    return std::fabs(value - (std::numeric_limits<double>::max)()) < 1?
+        std::numeric_limits<double>::infinity() : value;
+}
+
 void
 get_path(
         int route_id,
         int path_id,
         const pgrouting::Path &path,
-        Routes_t **postgres_data,
+        Routes_t **tuples,
         double &route_agg_cost,
         size_t &sequence) {
     int path_seq = 0;
     for (const auto e : path) {
-        (*postgres_data)[sequence] = {
+        (*tuples)[sequence] = {
             route_id,
             path_id,
             path_seq,
@@ -62,6 +71,45 @@ get_path(
         ++sequence;
     }
 }
+
+void get_path(
+        const pgrouting::Path &path,
+        Path_rt* &tuples,
+        size_t &sequence) {
+    double prev_cost = 0;
+    double aggcost = path.size() == 1? path[0].agg_cost : 0;
+    for (const auto e : path) {
+        aggcost += prev_cost;
+        tuples[sequence] = {
+            path.start_id(),
+            path.end_id(),
+            e.node,
+            e.edge,
+            to_inf(e.cost),
+            to_inf(aggcost)
+        };
+        prev_cost = e.cost;
+        sequence++;
+    }
+}
+
+void get_path(
+        const pgrouting::Path &path,
+        MST_rt* &tuples,
+        size_t &sequence) {
+    for (const auto e : path) {
+        tuples[sequence] = {
+            path.start_id(),
+            0,
+            e.pred,
+            e.node,
+            e.edge,
+            to_inf(e.cost),
+            to_inf(e.agg_cost)};
+        ++sequence;
+    }
+}
+
 
 }  // namespace
 
@@ -131,6 +179,47 @@ get_viaRoute(
 
     pgassert(count == sequence);
 
+    return sequence;
+}
+
+size_t
+get_tuples(
+        const std::deque<pgrouting::Path> &paths,
+        Path_rt* &tuples) {
+    pgassert(!tuples);
+
+    auto count = count_tuples(paths);
+    if (count == 0) return 0;
+
+    tuples = pgr_alloc(count, tuples);
+
+    size_t sequence = 0;
+    for (const auto &path : paths) {
+        if (path.size() > 0) {
+            ::get_path(path, tuples, sequence);
+        }
+    }
+    return sequence;
+}
+
+
+size_t
+get_tuples(
+        const std::deque<pgrouting::Path> &paths,
+        MST_rt* &tuples) {
+    pgassert(!tuples);
+
+    auto count = count_tuples(paths);
+    if (count == 0) return 0;
+
+    tuples = pgr_alloc(count, tuples);
+
+    size_t sequence = 0;
+    for (const Path &path : paths) {
+        if (path.size() > 0) {
+            ::get_path(path, tuples, sequence);
+        }
+    }
     return sequence;
 }
 
