@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-31 16:04+0000\n"
+"POT-Creation-Date: 2026-02-01 00:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3526,7 +3526,10 @@ msgstr ""
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22>`__"
 msgstr ""
 
-msgid "No changes yet"
+msgid "Code enhancements"
+msgstr ""
+
+msgid "`#3049 <https://github.com/pgRouting/pgrouting/issues/3049>`__: Use enumeration on drivers and process."
 msgstr ""
 
 msgid "All releases"
@@ -12692,9 +12695,6 @@ msgid "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withP
 msgstr ""
 
 msgid "`#3034 <https://github.com/pgRouting/pgrouting/issues/3034>`__: metrics driver should not be using new"
-msgstr ""
-
-msgid "Code enhancements"
 msgstr ""
 
 msgid "`#3044 <https://github.com/pgRouting/pgrouting/issues/3044>`__: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions"
