@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/rule.hpp"
 #include "cpp_common/assert.hpp"
-#include "cpp_common/alloc.hpp"
+#include "cpp_common/to_postgres.hpp"
 #include "cpp_common/combinations.hpp"
 #include "cpp_common/restriction_t.hpp"
 #include "c_types/ii_t_rt.h"
@@ -126,6 +126,7 @@ pgr_do_trsp(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
+        using pgrouting::to_postgres::get_tuples;
 
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, true);
@@ -177,8 +178,7 @@ pgr_do_trsp(
         }
 
         if (!restrictions_sql) {
-            (*return_tuples) = pgr_alloc(count, (*return_tuples));
-            (*return_count) = (collapse_paths(return_tuples, paths));
+            (*return_count) = get_tuples(paths, (*return_tuples));
             return;
         }
 
@@ -188,8 +188,7 @@ pgr_do_trsp(
         hint = restrictions_sql;
         auto restrictions = pgrouting::pgget::get_restrictions(std::string(restrictions_sql));
         if (restrictions.empty()) {
-            (*return_tuples) = pgr_alloc(count, (*return_tuples));
-            (*return_count) = (collapse_paths(return_tuples, paths));
+            (*return_count) = get_tuples(paths, (*return_tuples));
             return;
         }
 
@@ -211,16 +210,12 @@ pgr_do_trsp(
         }
         post_process_trsp(paths, true);
 
-        count = count_tuples(paths);
+        (*return_count) = get_tuples(paths, (*return_tuples));
 
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
+        if ((*return_count) == 0) {
+            *log_msg = to_pg_msg("No paths found");
             return;
         }
-
-        (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        (*return_count) = collapse_paths(return_tuples, paths);
 
         *log_msg = to_pg_msg(log);
         *notice_msg = to_pg_msg(notice);
