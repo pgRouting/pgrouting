@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "withPoints/withPoints.hpp"
 #include "c_types/mst_rt.h"
 #include "cpp_common/combinations.hpp"
-#include "cpp_common/alloc.hpp"
+#include "cpp_common/to_postgres.hpp"
 
 
 void
@@ -66,7 +66,6 @@ pgr_do_withPointsDD(
         char** notice_msg,
         char** err_msg) {
     using pgrouting::Path;
-    using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
     using pgrouting::pgget::get_intSet;
@@ -86,6 +85,8 @@ pgr_do_withPointsDD(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
+
+        using pgrouting::to_postgres::get_tuples;
 
         auto roots = get_intSet(starts);
 
@@ -141,21 +142,14 @@ pgr_do_withPointsDD(
         }
 
 
-        auto count(count_tuples(paths));
+        *return_count = get_tuples(paths, *return_tuples);
 
-
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice << "No paths found";
-            *log_msg = to_pg_msg(notice);
+        if (*return_count == 0) {
+            *log_msg = to_pg_msg("No paths found");
             return;
         }
 
-        (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        (*return_count) = (collapse_paths(return_tuples, paths));
-
-        for (size_t i = 0; i < count; i++) {
+        for (size_t i = 0; i < *return_count; i++) {
             auto row = (*return_tuples)[i];
             /* given the depth assign the correct depth */
             int64_t depth = -1;
@@ -169,11 +163,11 @@ pgr_do_withPointsDD(
         }
 
         /* sort to get depths in order*/
-        std::sort((*return_tuples), (*return_tuples) + count,
+        std::sort((*return_tuples), (*return_tuples) + *return_count,
                 [](const MST_rt &l, const MST_rt &r) {return l.agg_cost < r.agg_cost;});
-        std::stable_sort((*return_tuples), (*return_tuples) + count,
+        std::stable_sort((*return_tuples), (*return_tuples) + *return_count,
                 [](const MST_rt &l, const MST_rt &r) {return l.depth < r.depth;});
-        std::stable_sort((*return_tuples), (*return_tuples) + count,
+        std::stable_sort((*return_tuples), (*return_tuples) + *return_count,
                 [](const MST_rt &l, const MST_rt &r) {return l.from_v < r.from_v;});
 
         *log_msg = to_pg_msg(log);

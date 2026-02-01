@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "dijkstra/drivingDist.hpp"
 
 #include "c_types/mst_rt.h"
-#include "cpp_common/alloc.hpp"
+#include "cpp_common/to_postgres.hpp"
 #include "cpp_common/assert.hpp"
 
 
@@ -74,6 +74,8 @@ pgr_do_drivingDistance(
         pgassert(*return_count == 0);
         pgassert((*return_tuples) == NULL);
 
+        using pgrouting::to_postgres::get_tuples;
+
         auto roots = get_intSet(starts);
 
         hint = edges_sql;
@@ -99,18 +101,14 @@ pgr_do_drivingDistance(
             paths = drivingDistance(undigraph, roots, distance, equiCostFlag, depths, true);
         }
 
-        size_t count(count_tuples(paths));
+        *return_count = get_tuples(paths, *return_tuples);
 
-        if (count == 0) {
-            log << "\nNo return values were found";
-            *notice_msg = to_pg_msg(log);
+        if (*return_count == 0) {
+            *log_msg = to_pg_msg("No paths found");
             return;
         }
 
-        *return_tuples = pgr_alloc(count, (*return_tuples));
-        *return_count = collapse_paths(return_tuples, paths);
-
-        for (size_t i = 0; i < count; i++) {
+        for (size_t i = 0; i < *return_count; i++) {
             auto row = (*return_tuples)[i];
             /* given the depth assign the correct depth */
             int64_t depth = -1;
@@ -122,7 +120,6 @@ pgr_do_drivingDistance(
             }
             (*return_tuples)[i].depth = depth;
         }
-        (*return_count) = count;
 
         *log_msg = to_pg_msg(log);
         *notice_msg = to_pg_msg(notice);
