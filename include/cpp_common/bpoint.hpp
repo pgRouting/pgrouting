@@ -36,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace bg = boost::geometry;
 
 // TODO(vicky) mogidying this file should not affect:
-// dijkstra_driver.cpp
 // dijkstraVia_driver.cpp
 // floydWarshall_driver
 // etc...
