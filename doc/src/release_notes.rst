@@ -37,7 +37,9 @@ pgRouting 4.1.0 Release Notes
 To see all issues & pull requests closed by this release see the
 :milestone:`4.1.0`
 
-No changes yet
+.. rubric:: Code enhancements
+
+* :issue:`3049`: Use enumeration on drivers and process.
 
 pgRouting 4.0
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
