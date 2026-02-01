@@ -40,6 +40,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "metrics/bandwidth.hpp"
 
+namespace pgrouting {
+namespace drivers {
+
 uint64_t
 do_metrics(
         const std::string &edges_sql,
@@ -99,3 +102,6 @@ do_metrics(
     }
     return 0;
 }
+
+}  // namespace drivers
+}  // namespace pgrouting

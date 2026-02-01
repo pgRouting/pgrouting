@@ -42,11 +42,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/enums.h"
 
+namespace pgrouting {
+namespace drivers {
+
 uint64_t
 do_metrics(
         const std::string&,
         Which,
 
         std::ostringstream&, std::ostringstream&);
+
+}  // namespace drivers
+}  // namespace pgrouting
 
 #endif  // INCLUDE_DRIVERS_METRICS_DRIVER_HPP_

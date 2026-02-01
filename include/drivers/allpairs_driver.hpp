@@ -45,10 +45,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 using IID_t_rt = struct IID_t_rt;
 
+namespace pgrouting {
+namespace drivers {
+
 void do_allpairs(
         const std::string&,
         bool, Which,
         IID_t_rt*&, size_t&,
         std::ostringstream&, std::ostringstream&);
+
+}  // namespace drivers
+}  // namespace pgrouting
 
 #endif  // INCLUDE_DRIVERS_ALLPAIRS_DRIVER_HPP_

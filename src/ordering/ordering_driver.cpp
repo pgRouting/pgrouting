@@ -64,6 +64,9 @@ process(const std::vector<Edge_t> &edges, G &graph, Func ordering,
 
 }  // namespace
 
+namespace pgrouting {
+namespace drivers {
+
 void
 do_ordering(
         const std::string &edges_sql,
@@ -151,3 +154,6 @@ do_ordering(
         err << "Caught unknown exception!";
     }
 }
+
+}  // namespace drivers
+}  // namespace pgrouting

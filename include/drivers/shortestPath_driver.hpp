@@ -46,6 +46,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 using Path_rt = struct Path_rt;
 using ArrayType = struct ArrayType;
 
+namespace pgrouting {
+namespace drivers {
+
 void do_shortestPath(
         const std::string&, const std::string&, const std::string&,
         ArrayType*, ArrayType*,
@@ -57,5 +60,8 @@ void do_shortestPath(
         bool&,
         Path_rt*&, size_t&,
         std::ostringstream&, std::ostringstream&, std::ostringstream&);
+
+}  // namespace drivers
+}  // namespace pgrouting
 
 #endif  // INCLUDE_DRIVERS_SHORTESTPATH_DRIVER_HPP_

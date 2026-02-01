@@ -70,7 +70,7 @@ void pgr_process_allpairs(
     std::ostringstream notice;
 
     clock_t start_t = clock();
-    do_allpairs(
+    pgrouting::drivers::do_allpairs(
             edges_sql? edges_sql : "",
             directed,
             which,
