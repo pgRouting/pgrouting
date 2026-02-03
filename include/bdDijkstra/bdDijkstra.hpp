@@ -35,6 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <limits>
 #include <functional>
+#include <set>
+#include <map>
+#include <deque>
 
 
 #include "cpp_common/bidirectional.hpp"
@@ -141,6 +144,35 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
 };
 
 }  // namespace bidirectional
+
+namespace algorithms {
+
+template <class G>
+std::deque<pgrouting::Path>
+bdDijkstra(
+        G &graph,
+        const std::map<int64_t, std::set<int64_t>> &combinations,
+        bool only_cost) {
+    using pgrouting::Path;
+
+    pgrouting::bidirectional::Pgr_bdDijkstra<G> fn_bdDijkstra(graph);
+    std::deque<Path> paths;
+
+    for (const auto &comb : combinations) {
+        auto source = comb.first;
+        if (!graph.has_vertex(source)) continue;
+
+        for (const auto &target : comb.second) {
+            if (!graph.has_vertex(target)) continue;
+            fn_bdDijkstra.clear();
+
+            paths.push_back(fn_bdDijkstra.pgr_bdDijkstra(graph.get_V(source), graph.get_V(target), only_cost));
+        }
+    }
+    return paths;
+}
+
+}  // namespace algorithms
 }  // namespace pgrouting
 
 #endif  // INCLUDE_BDDIJKSTRA_BDDIJKSTRA_HPP_
