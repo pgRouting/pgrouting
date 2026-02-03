@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <limits>
+#include <cmath>
 
 #include "c_types/routes_t.h"
 #include "c_types/path_rt.h"
