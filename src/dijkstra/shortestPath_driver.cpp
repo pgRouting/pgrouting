@@ -51,10 +51,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/to_postgres.hpp"
 
 #include "dijkstra/dijkstra.hpp"
+#include "bdDijkstra/bdDijkstra.hpp"
 #include "withPoints/withPoints.hpp"
 
 namespace {
-
 
 void
 post_process(std::deque<pgrouting::Path> &paths, bool only_cost, bool normal, size_t n_goals, bool global) {
@@ -150,6 +150,7 @@ do_shortestPath(
         using pgrouting::DirectedGraph;
 
         using pgrouting::algorithms::dijkstra;
+        using pgrouting::algorithms::bdDijkstra;
 
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, normal, is_matrix);
@@ -221,14 +222,39 @@ do_shortestPath(
 
         std::deque<Path> paths;
         if (directed) {
-            graph.insert_edges(edges);
-            paths =  dijkstra(digraph, combinations, only_cost, n);
+            digraph.insert_edges(edges);
+            switch (which) {
+                case WITHPOINTS:
+                case OLD_WITHPOINTS:
+                case DIJKSTRA:
+                    paths =  dijkstra(digraph, combinations, only_cost, n);
+                    post_process(paths, only_cost, normal, n, global);
+                    break;
+                case BDDIJKSTRA:
+                        paths =  bdDijkstra(digraph, combinations, only_cost);
+                        break;
+                default:
+                    err << "INTERNAL: wrong function call: " << which;
+                    return;
+            }
         } else {
-            graph.insert_edges(edges);
-            paths =  dijkstra(undigraph, combinations, only_cost, n);
+            undigraph.insert_edges(edges);
+            switch (which) {
+                case WITHPOINTS:
+                case OLD_WITHPOINTS:
+                case DIJKSTRA:
+                    paths =  dijkstra(undigraph, combinations, only_cost, n);
+                    post_process(paths, only_cost, normal, n, global);
+                    break;
+                case BDDIJKSTRA:
+                    paths =  bdDijkstra(undigraph, combinations, only_cost);
+                    break;
+                default:
+                    err << "INTERNAL: wrong function call: " << which;
+                    return;
+            }
         }
 
-        post_process(paths, only_cost, normal, n, global);
 
         if (!details) {
             for (auto &path : paths) path = pg_graph.eliminate_details(path);

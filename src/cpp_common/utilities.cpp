@@ -73,6 +73,12 @@ get_name(Which which, bool is_only_cost, bool is_near, bool is_matrix) {
                 suffix = std::string(is_near? "Near" : "") + (is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
                 break;
             }
+        case BDDIJKSTRA :
+            {
+                base = "pgr_bdDijkstra";
+                suffix = std::string(is_near? "Near" : "") + (is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+                break;
+            }
         case OLD_WITHPOINTS:
         case WITHPOINTS:
             {
@@ -93,6 +99,7 @@ estimate_drivingSide(char driving_side, Which which) {
         d_side = ' ';
     }
     switch (which) {
+        case BDDIJKSTRA:
         case DIJKSTRA:
             {
                 return ' ';

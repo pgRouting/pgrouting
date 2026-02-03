@@ -53,11 +53,20 @@ extern "C" {
 
 
 void pgr_process_shortestPath(
-        const char *edges_sql, const char *points_sql, const char *combinations_sql,
+        const char *edges_sql,
+        const char *points_sql,
+        const char *combinations_sql,
+
         ArrayType *starts, ArrayType *ends,
-        bool directed, bool only_cost, bool normal,
-        int64_t n_goals, bool global,
-        char driving_side, bool details,
+
+        bool directed,
+        bool only_cost,
+        bool normal,
+
+        int64_t n_goals,
+        bool global,
+        char driving_side,
+        bool details,
         enum Which which,
         Path_rt **result_tuples, size_t *result_count) {
     pgassert(edges_sql);
