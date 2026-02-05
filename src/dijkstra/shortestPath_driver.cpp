@@ -120,6 +120,7 @@ do_shortestPath(
         bool directed,
         bool only_cost,
         bool normal,
+
         int64_t n_goals,
         bool global,
         char driving_side,
@@ -132,7 +133,6 @@ do_shortestPath(
         std::ostringstream &notice,
         std::ostringstream &err) {
     using pgrouting::Path;
-    using pgrouting::to_pg_msg;
 
     std::string hint = "";
 
@@ -216,16 +216,16 @@ do_shortestPath(
 
         size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
 
+        DirectedGraph digraph;
+        UndirectedGraph undigraph;
+
         std::deque<Path> paths;
         if (directed) {
-            DirectedGraph graph;
             graph.insert_edges(edges);
-
-            paths =  dijkstra(graph, combinations, only_cost, n);
+            paths =  dijkstra(digraph, combinations, only_cost, n);
         } else {
-            UndirectedGraph graph;
             graph.insert_edges(edges);
-            paths =  dijkstra(graph, combinations, only_cost, n);
+            paths =  dijkstra(undigraph, combinations, only_cost, n);
         }
 
         post_process(paths, only_cost, normal, n, global);
