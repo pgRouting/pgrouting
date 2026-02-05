@@ -6,7 +6,7 @@
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN NOT min_version('3.4.0') THEN plan(1) ELSE plan(7) END;
+SELECT CASE WHEN min_version('3.4.0') THEN plan(8) ELSE plan(1) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edges;
@@ -48,6 +48,7 @@ BEGIN
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_cuthillMckeeOrdering', params, subs);
+    RETURN query SELECT throw_on_empty_edges_sql('pgr_cuthillMckeeOrdering', '');
 
 END
 $BODY$

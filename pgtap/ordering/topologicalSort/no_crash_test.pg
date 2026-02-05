@@ -6,7 +6,7 @@
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(4);
+SELECT plan(5);
 
 SELECT has_function('pgr_topologicalsort');
 SELECT function_returns('pgr_topologicalsort', ARRAY['text'], 'setof record');
@@ -27,6 +27,7 @@ SELECT lives_ok(
     )',
     '4: Documentation says works with no flags');
 
+SELECT throw_on_empty_edges_sql('pgr_topologicalsort', '');
 
 SELECT * FROM finish();
 ROLLBACK;
