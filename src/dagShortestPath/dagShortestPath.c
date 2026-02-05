@@ -30,58 +30,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-
 #include "c_types/path_rt.h"
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
-#include "drivers/dagShortestPath/dagShortestPath_driver.h"
+#include "process/shortestPath_process.h"
 
 PGDLLEXPORT Datum _pgr_dagshortestpath_v4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_dagshortestpath_v4);
-
-
-static
-void
-process(
-        char* edges_sql,
-        char* combinations_sql,
-        ArrayType *starts,
-        ArrayType *ends,
-        bool only_cost,
-        bool normal,
-        Path_rt **result_tuples,
-        size_t *result_count) {
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
-
-    clock_t start_t = clock();
-    pgr_do_dagShortestPath(
-            edges_sql,
-            combinations_sql,
-            starts, ends,
-
-            only_cost,
-            normal,
-
-            result_tuples,
-            result_count,
-            &log_msg,
-            &notice_msg,
-            &err_msg);
-    time_msg(" processing pgr_dagShortestPath", start_t, clock());
-
-    if (err_msg) {
-        if (*result_tuples) pfree(*result_tuples);
-    }
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
 
 PGDLLEXPORT Datum _pgr_dagshortestpath_v4(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -99,13 +52,24 @@ PGDLLEXPORT Datum _pgr_dagshortestpath_v4(PG_FUNCTION_ARGS) {
             /*
              * many to many
              */
-            process(
+            pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 NULL,
+                NULL,
+
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
+
+                true,
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
+
+                0,
+                true,
+                ' ',
+                true,
+
+                DAGSP,
                 &result_tuples,
                 &result_count);
 
@@ -113,12 +77,23 @@ PGDLLEXPORT Datum _pgr_dagshortestpath_v4(PG_FUNCTION_ARGS) {
             /*
              * combinations
              */
-            process(
+            pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                NULL,
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
+
                 NULL, NULL,
+
+                true,
                 PG_GETARG_BOOL(2),
                 true,
+
+                0,
+                true,
+                ' ',
+                true,
+
+                DAGSP,
                 &result_tuples,
                 &result_count);
         }
@@ -129,7 +104,8 @@ PGDLLEXPORT Datum _pgr_dagshortestpath_v4(PG_FUNCTION_ARGS) {
                 != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-                     errmsg("function returning record called in context that cannot accept type record")));
+                     errmsg("function returning record called in context "
+                         "that cannot accept type record")));
         }
 
         funcctx->tuple_desc = tuple_desc;

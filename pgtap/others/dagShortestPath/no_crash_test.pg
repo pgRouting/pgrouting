@@ -6,7 +6,7 @@
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = -sign(cost);
-SELECT CASE WHEN min_version('4.0.0') THEN plan(81) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(82) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION no_crash()
 RETURNS SETOF TEXT AS
@@ -135,6 +135,7 @@ BEGIN
   'NULL::TEXT'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_dagShortestPath', params, subs);
+  RETURN query SELECT throw_on_empty_edges_sql('pgr_dagShortestPath', ',1,5');
 
 END
 $BODY$
