@@ -29,17 +29,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-
 #include "c_types/path_rt.h"
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
 #include "process/shortestPath_process.h"
 
 PGDLLEXPORT Datum _pgr_withpoints_v4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_withpoints_v4);
-
-
 
 PGDLLEXPORT Datum
 _pgr_withpoints_v4(PG_FUNCTION_ARGS) {
