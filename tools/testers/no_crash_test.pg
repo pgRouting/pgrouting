@@ -48,3 +48,23 @@ BEGIN
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION throw_on_empty_edges_sql(func TEXT, params TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+tquery TEXT;
+BEGIN
+
+  tquery := $$SELECT * FROM $$ || $1 || $$ ('' $$ || $2 || ')';
+  IF (min_lib_version('4.1.0')) THEN
+    RETURN query
+    SELECT * FROM throws_ok( tquery, 'XX000', 'Empty edges SQL', 'throws_ok: ' || tquery);
+  ELSE
+    RETURN query
+    SELECT * FROM skip(1, 'Throw implemented on 4.1.0' || tquery);
+  END IF;
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;

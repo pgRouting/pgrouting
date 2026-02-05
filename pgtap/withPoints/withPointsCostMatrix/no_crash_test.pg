@@ -6,7 +6,7 @@
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('4.0.0') THEN plan(20) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(21) ELSE plan(2) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edges;
@@ -57,5 +57,8 @@ LANGUAGE plpgsql VOLATILE;
 
 
 SELECT * FROM test_function();
+SELECT throw_on_empty_edges_sql('pgr_withPointsCostMatrix',
+  ',$$SELECT pid, edge_id, fraction from pointsOfInterest$$,ARRAY[1,2]');
+
 SELECT finish();
 ROLLBACK;

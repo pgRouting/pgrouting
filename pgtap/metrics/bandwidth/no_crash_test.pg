@@ -6,7 +6,7 @@
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('4.0.0') THEN plan(4) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(5) ELSE plan(1) END;
 
 PREPARE edges_q AS
 SELECT id, source, target, cost, reverse_cost  FROM edges;
@@ -38,6 +38,7 @@ BEGIN
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_bandwidth', params, subs);
+    RETURN query SELECT throw_on_empty_edges_sql('pgr_bandwidth', '');
 
 END
 $BODY$

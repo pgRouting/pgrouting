@@ -5,7 +5,7 @@
 
 BEGIN;
 
-SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(126) END;
+SELECT CASE WHEN min_version('3.2.0') THEN plan(127) ELSE plan(1) END;
 SET client_min_messages TO WARNING;
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 
@@ -136,6 +136,7 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_dijkstraNear', params1, subs2);
   RETURN query SELECT * FROM no_crash_test('pgr_dijkstranear', params2, subs1);
   RETURN query SELECT * FROM no_crash_test('pgr_dijkstraNear', params2, subs2);
+  RETURN query SELECT throw_on_empty_edges_sql('pgr_dijkstranear', ',1,ARRAY[5,6]');
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;
