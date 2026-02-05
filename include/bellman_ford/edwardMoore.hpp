@@ -191,6 +191,19 @@ class Pgr_edwardMoore {
     }
 };
 }  // namespace functions
+
+namespace algorithms {
+
+template <class G>
+std::deque<pgrouting::Path>
+edwardMoore(
+        G &graph,
+        const std::map<int64_t, std::set<int64_t>> &combinations) {
+    pgrouting::functions::Pgr_edwardMoore<G> fn_edwardMoore;
+    return fn_edwardMoore.edwardMoore(graph, combinations);
+}
+
+}  // namespace algorithms
 }  // namespace pgrouting
 
 #endif  // INCLUDE_BELLMAN_FORD_EDWARDMOORE_HPP_

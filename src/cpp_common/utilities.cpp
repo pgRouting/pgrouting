@@ -68,22 +68,21 @@ get_name(Which which, bool is_only_cost, bool is_near, bool is_matrix) {
     std::string suffix = "";
     switch  (which) {
         case DIJKSTRA :
-            {
-                base = "pgr_dijkstra";
-                suffix = std::string(is_near? "Near" : "") + (is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
-                break;
-            }
+            base = "pgr_dijkstra";
+            suffix = std::string(is_near? "Near" : "") + (is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+            break;
         case BDDIJKSTRA :
             base = "pgr_bdDijkstra";
-            suffix = std::string(is_near? "Near" : "") + (is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+            suffix = std::string(is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+            break;
+        case EDWARDMOORE:
+            base = "pgr_edwardMoore";
             break;
         case OLD_WITHPOINTS:
         case WITHPOINTS:
-            {
-                base = "pgr_withPoints";
-                suffix = std::string(is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
-                break;
-            }
+            base = "pgr_withPoints";
+            suffix = std::string(is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+            break;
         default : base = "unknown";
     }
 
@@ -97,6 +96,7 @@ estimate_drivingSide(char driving_side, Which which) {
         d_side = ' ';
     }
     switch (which) {
+        case EDWARDMOORE:
         case BDDIJKSTRA:
         case DIJKSTRA:
             {
