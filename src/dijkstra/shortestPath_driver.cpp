@@ -51,6 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/to_postgres.hpp"
 
 #include "dijkstra/dijkstra.hpp"
+#include "bellman_ford/edwardMoore.hpp"
 #include "bdDijkstra/bdDijkstra.hpp"
 #include "withPoints/withPoints.hpp"
 
@@ -151,6 +152,7 @@ do_shortestPath(
 
         using pgrouting::algorithms::dijkstra;
         using pgrouting::algorithms::bdDijkstra;
+        using pgrouting::algorithms::edwardMoore;
 
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, normal, is_matrix);
@@ -233,6 +235,9 @@ do_shortestPath(
                 case BDDIJKSTRA:
                         paths =  bdDijkstra(digraph, combinations, only_cost);
                         break;
+                case EDWARDMOORE:
+                        paths =  edwardMoore(digraph, combinations);
+                        break;
                 default:
                     err << "INTERNAL: wrong function call: " << which;
                     return;
@@ -249,6 +254,9 @@ do_shortestPath(
                 case BDDIJKSTRA:
                     paths =  bdDijkstra(undigraph, combinations, only_cost);
                     break;
+                case EDWARDMOORE:
+                        paths =  edwardMoore(undigraph, combinations);
+                        break;
                 default:
                     err << "INTERNAL: wrong function call: " << which;
                     return;

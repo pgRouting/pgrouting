@@ -31,7 +31,7 @@ enum Which {
     /** directed graph + results: vertex id  */
     TOPOSORT = 11,
     /** shortest_paths */
-    DIJKSTRA = 21, WITHPOINTS, OLD_WITHPOINTS, BDDIJKSTRA,
+    DIJKSTRA = 21, WITHPOINTS, OLD_WITHPOINTS, BDDIJKSTRA, EDWARDMOORE,
     /** allpairs **/
     FLOYD = 31, JOHNSON,
     /** metrics **/
