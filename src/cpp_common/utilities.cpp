@@ -78,6 +78,9 @@ get_name(Which which, bool is_only_cost, bool is_near, bool is_matrix) {
         case EDWARDMOORE:
             base = "pgr_edwardMoore";
             break;
+        case DAGSP :
+            base = "pgr_dagShortestPath";
+            break;
         case OLD_WITHPOINTS:
         case WITHPOINTS:
             base = "pgr_withPoints";
@@ -96,26 +99,21 @@ estimate_drivingSide(char driving_side, Which which) {
         d_side = ' ';
     }
     switch (which) {
+        case DAGSP :
         case EDWARDMOORE:
         case BDDIJKSTRA:
         case DIJKSTRA:
-            {
                 return ' ';
                 break;
-            }
         case WITHPOINTS:
-            {
                 if (d_side == ' ') {
                     throw std::make_pair(std::string("Invalid value of 'driving side'"),
                             std::string("Valid value are 'r', 'l', 'b'"));
                 }
                 break;
-            }
         default:
-            {
                 /* For the moment its old signature of pgr_withPoints */
                 if (!((d_side == 'r') || (d_side == 'l'))) d_side = 'b';
-            }
     }
     return d_side;
 }

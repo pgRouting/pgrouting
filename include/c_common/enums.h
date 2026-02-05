@@ -32,6 +32,7 @@ enum Which {
     TOPOSORT = 11,
     /** shortest_paths */
     DIJKSTRA = 21, WITHPOINTS, OLD_WITHPOINTS, BDDIJKSTRA, EDWARDMOORE,
+    DAGSP,
     /** allpairs **/
     FLOYD = 31, JOHNSON,
     /** metrics **/

@@ -54,6 +54,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "bellman_ford/edwardMoore.hpp"
 #include "bdDijkstra/bdDijkstra.hpp"
 #include "withPoints/withPoints.hpp"
+#include "dagShortestPath/dagShortestPath.hpp"
 
 namespace {
 
@@ -153,6 +154,7 @@ do_shortestPath(
         using pgrouting::algorithms::dijkstra;
         using pgrouting::algorithms::bdDijkstra;
         using pgrouting::algorithms::edwardMoore;
+        using pgrouting::algorithms::dagShortestPath;
 
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, normal, is_matrix);
@@ -238,6 +240,9 @@ do_shortestPath(
                 case EDWARDMOORE:
                         paths =  edwardMoore(digraph, combinations);
                         break;
+                case DAGSP:
+                        paths = dagShortestPath(digraph, combinations, only_cost);
+                        break;
                 default:
                     err << "INTERNAL: wrong function call: " << which;
                     return;
@@ -255,8 +260,8 @@ do_shortestPath(
                     paths =  bdDijkstra(undigraph, combinations, only_cost);
                     break;
                 case EDWARDMOORE:
-                        paths =  edwardMoore(undigraph, combinations);
-                        break;
+                    paths =  edwardMoore(undigraph, combinations);
+                    break;
                 default:
                     err << "INTERNAL: wrong function call: " << which;
                     return;
