@@ -37,7 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/iid_t_rt.h"
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/assert.hpp"
 #include "cpp_common/to_postgres.hpp"
 #include "allpairs/allpairs.hpp"
 
@@ -72,7 +71,10 @@ do_allpairs(
     std::string hint = "";
 
     try {
-        pgassert(!edges_sql.empty());
+        if (edges_sql.empty()) {
+            err << "Empty edges SQL";
+            return;
+        }
 
         using pgrouting::pgget::get_edges;
         using pgrouting::to_postgres::matrix_to_tuple;

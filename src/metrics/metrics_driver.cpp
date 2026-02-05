@@ -36,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cstdint>
 
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/assert.hpp"
 
 #include "metrics/bandwidth.hpp"
 
@@ -53,7 +52,10 @@ do_metrics(
     std::string hint;
 
     try {
-        pgassert(!edges_sql.empty());
+        if (edges_sql.empty()) {
+            err << "Empty edges SQL";
+            return 0;
+        }
 
         using pgrouting::pgget::get_edges;
         using pgrouting::UndirectedGraph;
