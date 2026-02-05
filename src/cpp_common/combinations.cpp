@@ -165,11 +165,10 @@ get_combinations(
     /* queries are stored in vectors */
     auto combinations = !combinations_sql.empty()? get_combinations(combinations_sql) : std::vector<II_t_rt>();
 
+    ends = (!starts.empty() && ends.empty()) ?  starts : ends;
+
     /* data comes from CostMatrix */
-    if (combinations.empty() && !starts.empty() && ends.empty()) {
-        is_matrix = true;
-        ends = starts;
-    }
+    is_matrix = combinations.empty() && starts == ends;
 
     /* data comes from a combinations */
     for (const auto &row : combinations) {
