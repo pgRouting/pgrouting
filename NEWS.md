@@ -15,6 +15,8 @@ To see all issues & pull requests closed by this release see the
 **Code enhancements**
 
 * [#3049](https://github.com/pgRouting/pgrouting/issues/3049): Use enumeration on drivers and process.
+* [#3054](https://github.com/pgRouting/pgrouting/issues/3054): Change error message when edges_sql is empty
+* [#3055](https://github.com/pgRouting/pgrouting/issues/3055): bdDijkstra: use the shortest_path process and driver
 
 ## pgRouting 4.0
 
