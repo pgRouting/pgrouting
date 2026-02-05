@@ -27,130 +27,148 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/astar/astar_driver.h"
+#include "drivers/astar_driver.hpp"
 
+#include <algorithm>
 #include <sstream>
 #include <deque>
-#include <algorithm>
 #include <vector>
 #include <string>
+#include <utility>
+
+#include "cpp_common/pgdata_getters.hpp"
+#include "cpp_common/combinations.hpp"
+#include "cpp_common/utilities.hpp"
+#include "cpp_common/to_postgres.hpp"
 
 #include "astar/astar.hpp"
 
-#include "cpp_common/combinations.hpp"
-#include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/to_postgres.hpp"
-#include "cpp_common/assert.hpp"
+namespace pgrouting {
+namespace drivers {
 
-#include "cpp_common/edge_xy_t.hpp"
-#include "c_types/ii_t_rt.h"
-
-void pgr_do_astar(
-        const char *edges_sql,
-        const char *combinations_sql,
+void do_astar(
+        const std::string &edges_sql,
+        const std::string &combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
 
         bool directed,
+        bool only_cost,
+        bool normal,
+
         int heuristic,
         double factor,
         double epsilon,
-        bool only_cost,
-        bool normal,
-        Path_rt **return_tuples, size_t *return_count,
-        char** log_msg, char** notice_msg, char** err_msg) {
+
+        Which which,
+        bool &is_matrix,
+        Path_rt* &return_tuples, size_t &return_count,
+        std::ostringstream &log,
+        std::ostringstream &notice,
+        std::ostringstream &err) {
     using pgrouting::Path;
-    using pgrouting::to_pg_msg;
-    using pgrouting::pgr_free;
-    using pgrouting::utilities::get_combinations;
 
-    std::ostringstream log;
-    std::ostringstream notice;
-    std::ostringstream err;
+    std::string hint = "";
 
-    const char *hint = nullptr;
     try {
-        pgassert(!(*log_msg));
-        pgassert(!(*notice_msg));
-        pgassert(!(*err_msg));
-        pgassert(!(*return_tuples));
-        pgassert(*return_count == 0);
+        if (edges_sql.empty()) {
+            err << "Empty edges SQL";
+            return;
+        }
+        if (heuristic > 5 || heuristic < 0) {
+            err << "Unknown heuristic";
+            log << "Valid values: 0~5";
+            return;
+        }
+        if (factor <= 0) {
+            err << "Factor value out of range";
+            log << "Valid values: positive non zero";
+            return;
+        }
+        if (epsilon < 1) {
+            err << "Epsilon value out of range";
+            log << "Valid values: 1 or greater than 1";
+            return;
+        }
 
+        using pgrouting::pgget::get_edges_xy;
+        using pgrouting::utilities::get_combinations;
         using pgrouting::to_postgres::get_tuples;
+        using pgrouting::xyUndirectedGraph;
+        using pgrouting::xyDirectedGraph;
 
-        (*return_tuples) = nullptr;
-        (*return_count) = 0;
+        using pgrouting::algorithms::astar;
 
         hint = combinations_sql;
-        auto combinations = get_combinations(combinations_sql, starts, ends, normal);
-        hint = nullptr;
+        auto combinations = get_combinations(combinations_sql, starts, ends, normal, is_matrix);
+        hint = "";
+        log << "is matrix" << is_matrix;
 
-        if (combinations.empty() && combinations_sql) {
-            *notice_msg = to_pg_msg("No (source, target) pairs found");
-            *log_msg = to_pg_msg(combinations_sql);
+        if (combinations.empty() && !combinations_sql.empty()) {
+            notice << "No (source, target) pairs found";
+            log << combinations_sql;
             return;
         }
-
 
         hint = edges_sql;
-        auto edges = pgrouting::pgget::get_edges_xy(std::string(edges_sql), normal);
-        hint = nullptr;
+        auto edges = get_edges_xy(edges_sql, normal);
+        hint = "";
 
         if (edges.empty()) {
-            *notice_msg = to_pg_msg("No edges found");
-            *log_msg = to_pg_msg(edges_sql);
+            notice << "No edges found";
+            log << edges_sql;
             return;
         }
 
-
-
+        xyDirectedGraph digraph;
+        xyUndirectedGraph undigraph;
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::xyDirectedGraph graph;
-            graph.insert_edges(edges);
-            paths = pgrouting::algorithms::astar(graph, combinations, heuristic, factor, epsilon, only_cost);
+            digraph.insert_edges(edges);
+            switch (which) {
+                case ASTAR:
+                    paths = astar(digraph, combinations, heuristic, factor, epsilon, only_cost);
+                    break;
+                default:
+                    err << "INTERNAL: wrong function call: " << which;
+                    return;
+            }
         } else {
-            pgrouting::xyUndirectedGraph graph;
-            graph.insert_edges(edges);
-            paths = pgrouting::algorithms::astar(graph, combinations, heuristic, factor, epsilon, only_cost);
-        }
-
-        if (!normal) {
-            for (auto &path : paths) {
-                path.reverse();
+            undigraph.insert_edges(edges);
+            switch (which) {
+                case ASTAR:
+                    paths = astar(undigraph, combinations, heuristic, factor, epsilon, only_cost);
+                    break;
+                default:
+                    err << "INTERNAL: wrong function call: " << which;
+                    return;
             }
         }
 
-        (*return_count) = get_tuples(paths, (*return_tuples));
-
-        if (*return_count == 0) {
-            *log_msg = to_pg_msg("No paths found");
-            return;
+        if (!normal) {
+            for (auto &path : paths) path.reverse();
         }
 
-        *log_msg = to_pg_msg(log);
-        *notice_msg = to_pg_msg(notice);
+        return_count = get_tuples(paths, return_tuples);
+
+        if (return_count == 0) {
+            log << "No paths found";
+        }
     } catch (AssertFailedException &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
+    } catch (const std::pair<std::string, std::string>& ex) {
+        err << ex.first;
+        log << ex.second;
     } catch (const std::string &ex) {
-        *err_msg = to_pg_msg(ex);
-        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log);
+        err << ex;
+        log << hint;
     } catch (std::exception &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
-    } catch(...) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
+    } catch (...) {
         err << "Caught unknown exception!";
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
     }
 }
+
+}  // namespace drivers
+}  // namespace pgrouting
