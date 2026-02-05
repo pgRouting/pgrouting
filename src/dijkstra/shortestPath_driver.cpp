@@ -49,7 +49,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/combinations.hpp"
 #include "cpp_common/utilities.hpp"
 #include "cpp_common/to_postgres.hpp"
-#include "cpp_common/assert.hpp"
 
 #include "dijkstra/dijkstra.hpp"
 #include "withPoints/withPoints.hpp"
@@ -138,7 +137,10 @@ do_shortestPath(
     std::string hint = "";
 
     try {
-        pgassert(!edges_sql.empty());
+        if (edges_sql.empty()) {
+            err << "Empty edges SQL";
+            return;
+        }
 
         using pgrouting::pgget::get_edges;
         using pgrouting::pgget::get_points;
