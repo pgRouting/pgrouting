@@ -40,6 +40,8 @@ To see all issues & pull requests closed by this release see the
 .. rubric:: Code enhancements
 
 * :issue:`3049`: Use enumeration on drivers and process.
+* :issue:`3054`: Change error message when edges_sql is empty
+* :issue:`3055`: bdDijkstra: use the shortest_path process and driver
 
 pgRouting 4.0
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

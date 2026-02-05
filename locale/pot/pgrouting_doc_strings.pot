@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-01 00:30+0000\n"
+"POT-Creation-Date: 2026-02-05 18:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3530,6 +3530,12 @@ msgid "Code enhancements"
 msgstr ""
 
 msgid "`#3049 <https://github.com/pgRouting/pgrouting/issues/3049>`__: Use enumeration on drivers and process."
+msgstr ""
+
+msgid "`#3054 <https://github.com/pgRouting/pgrouting/issues/3054>`__: Change error message when edges_sql is empty"
+msgstr ""
+
+msgid "`#3055 <https://github.com/pgRouting/pgrouting/issues/3055>`__: bdDijkstra: use the shortest_path process and driver"
 msgstr ""
 
 msgid "All releases"
