@@ -33,7 +33,7 @@ LANGUAGE plpgsql VOLATILE;
 
 
 SELECT * FROM test_function();
-SELECT throw_on_empty_edges_sql('pgr_floydWarshall', '');
+SELECT throw_on_empty_edges_sql('pgr_johnson', '');
 
 SELECT finish();
 ROLLBACK;

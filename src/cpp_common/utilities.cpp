@@ -74,11 +74,9 @@ get_name(Which which, bool is_only_cost, bool is_near, bool is_matrix) {
                 break;
             }
         case BDDIJKSTRA :
-            {
-                base = "pgr_bdDijkstra";
-                suffix = std::string(is_near? "Near" : "") + (is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
-                break;
-            }
+            base = "pgr_bdDijkstra";
+            suffix = std::string(is_near? "Near" : "") + (is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+            break;
         case OLD_WITHPOINTS:
         case WITHPOINTS:
             {
