@@ -489,14 +489,21 @@ documentation and the `PostGIS <https://postgis.net/>`__ documentation.
 Build a routing topology
 ...............................................................................
 
+.. note::
+   When using topology creation (e.g. the deprecated ``pgr_createTopology`` or
+   the steps below), the edge table may be affected: if ``clean=true``, the
+   ``source`` and ``target`` column values are wiped and reassigned; otherwise
+   they are only updated where not already filled. Indexes may be created on
+   ``id``, ``the_geom``, ``source``, and ``target`` if they do not exist. A
+   vertices table is created if not present.
+
 The basic information to use the majority of the pgRouting functions ``id,
 source, target, cost, [reverse_cost]`` is what in pgRouting is called the
 routing topology.
 
 ``reverse_cost`` is optional but strongly recommended to have in order to reduce
 the size of the database due to the size of the geometry columns.
-Having said that, in this documentation ``reverse_cost`` is used in this
-documentation.
+Having said that, in this documentation ``reverse_cost`` is used throughout.
 
 When the data comes with geometries and there is no routing topology, then this
 step is needed.
