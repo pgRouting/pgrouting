@@ -80,7 +80,7 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
              m_log << "pgr_bdDijkstra constructor\n";
          }
 
-     virtual ~Pgr_bdDijkstra() = default;
+     ~Pgr_bdDijkstra() override = default;
 
      Path pgr_bdDijkstra(V start_vertex, V end_vertex, bool only_cost) {
          m_log << "pgr_bdDijkstra\n";
@@ -96,7 +96,7 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
 
 
  private:
-     void explore_forward(const Cost_Vertex_pair &node) {
+     void explore_forward(const Cost_Vertex_pair &node) override {
          typename G::EO_i out, out_end;
 
          auto current_cost = node.first;
@@ -119,7 +119,7 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
          forward_finished[current_node] = true;
      }
 
-     void explore_backward(const Cost_Vertex_pair &node) {
+     void explore_backward(const Cost_Vertex_pair &node) override {
          typename G::EI_i in, in_end;
 
          auto current_cost = node.first;

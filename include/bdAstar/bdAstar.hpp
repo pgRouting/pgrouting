@@ -78,7 +78,7 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
         m_log << "pgr_bdAstar constructor\n";
     }
 
-    virtual ~Pgr_bdAstar() = default;
+    ~Pgr_bdAstar() override = default;
 
     Path pgr_bdAstar(V start_vertex, V end_vertex,
             int heuristic,
@@ -98,7 +98,7 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
     using Pgr_bidirectional<G>::clean_log;
 
  private:
-    void explore_forward(const Cost_Vertex_pair &node) {
+    void explore_forward(const Cost_Vertex_pair &node) override {
         typename G::EO_i out, out_end;
 
         auto current_node = node.second;
@@ -124,7 +124,7 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
         forward_finished[current_node] = true;
     }
 
-    void explore_backward(const Cost_Vertex_pair &node) {
+    void explore_backward(const Cost_Vertex_pair &node) override {
         typename G::EI_i in, in_end;
 
         auto current_cost = node.first;

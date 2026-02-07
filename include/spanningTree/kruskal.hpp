@@ -42,7 +42,7 @@ namespace functions {
 template <class G>
 class Pgr_kruskal : public Pgr_mst<G> {
  public:
-     virtual ~Pgr_kruskal() = default;
+     ~Pgr_kruskal() override = default;
      std::vector<MST_rt> kruskal(G &graph);
 
      std::vector<MST_rt> kruskalBFS(
@@ -66,7 +66,7 @@ class Pgr_kruskal : public Pgr_mst<G> {
      typedef typename G::E E;
 
      /* Does all the work */
-     void generate_mst(const G &graph);
+     void generate_mst(const G &graph) override;
 };
 
 

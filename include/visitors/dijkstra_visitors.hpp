@@ -90,7 +90,7 @@ class dijkstra_many_goal_visitor : public boost::default_dijkstra_visitor {
          m_found_goals(f_goals)   {
          }
      template <class B_G>
-         void examine_vertex(V u, B_G &) {
+         void examine_vertex(V u, B_G &) override {
              auto s_it = m_goals.find(u);
 
              /* examined vertex is not a goal */
@@ -125,7 +125,7 @@ class dijkstra_distance_visitor : public boost::default_dijkstra_visitor {
              pgassert(m_distance_goal > 0);
          }
      template <class B_G>
-         void examine_vertex(V u, B_G &) {
+         void examine_vertex(V u, B_G &) override {
              if (m_dist[u] > m_distance_goal) {
                  throw found_goals();
              }
@@ -155,7 +155,7 @@ class dijkstra_distance_visitor_no_init : public boost::default_dijkstra_visitor
          }
 
      template <class B_G>
-         void examine_vertex(V u, B_G &) {
+         void examine_vertex(V u, B_G &) override {
              if ( 0 == m_num_examined++) m_root = u;
              if (m_dist[u] > m_distance_goal) {
                  throw found_goals();
@@ -166,7 +166,7 @@ class dijkstra_distance_visitor_no_init : public boost::default_dijkstra_visitor
          }
 
      template <class B_G>
-         void examine_edge(E e, B_G &g) {
+         void examine_edge(E e, B_G &g) override {
              if (source(e, g) != m_root && m_predecessors[source(e, g)] == source(e, g)) {
                  m_color[target(e, g)] = boost::black_color;
              }
@@ -174,14 +174,14 @@ class dijkstra_distance_visitor_no_init : public boost::default_dijkstra_visitor
 
 
      template <class B_G>
-         void edge_not_relaxed(E e, B_G &g) {
+         void edge_not_relaxed(E e, B_G &g) override {
              if (source(e, g) != m_root && m_predecessors[source(e, g)] == source(e, g)) {
                  m_color[target(e, g)] = boost::black_color;
              }
          }
 
      template <class B_G>
-         void discover_vertex(V u, B_G &) {
+         void discover_vertex(V u, B_G &) override {
              if (u  != m_root && m_predecessors[u] == u) {
                  m_color[u] = boost::black_color;
              }

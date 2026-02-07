@@ -45,7 +45,7 @@ class Prim_dijkstra_visitor : public boost::default_dijkstra_visitor {
              std::vector<V> &data) :
          m_data(data)  {}
      template <class B_G>
-         void finish_vertex(V v, B_G&) {
+         void finish_vertex(V v, B_G&) override {
              m_data.push_back(v);
          }
  private:

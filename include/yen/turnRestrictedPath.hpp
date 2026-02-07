@@ -65,7 +65,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
              m_restrictions(restrictions) {
              }
 
-         void on_insert_first_solution(const Path path) const {
+         void on_insert_first_solution(const Path path) const override {
              if (path.empty()) return;
              if (has_restriction(path)) return;
 
@@ -74,7 +74,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
              if (m_stop_on_first) throw found_goals();
          }
 
-         void on_insert_to_heap(const Path path) const {
+         void on_insert_to_heap(const Path path) const override {
              if (path.empty()) return;
              if (has_restriction(path)) return;
 

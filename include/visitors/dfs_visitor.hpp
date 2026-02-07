@@ -59,13 +59,13 @@ class Dfs_visitor : public boost::default_dfs_visitor {
              m_depth.resize(m_graph.num_vertices(), 0);
          }
      template <typename B_G>
-         void start_vertex(V v, const B_G&) {
+         void start_vertex(V v, const B_G&) override {
              // exception for visitor termination
              if (v != m_roots) throw found_goals();
              m_depth[v] = 0;
          }
      template <typename B_G>
-         void examine_edge(E e, const B_G&) {
+         void examine_edge(E e, const B_G&) override {
              auto source = m_graph.source(e), target = m_graph.target(e);
              // If the target has not been visited before
              if (m_depth[target] == 0 && target != m_roots) {
@@ -79,7 +79,7 @@ class Dfs_visitor : public boost::default_dfs_visitor {
              }
          }
      template <typename B_G>
-         void tree_edge(E e, const B_G&) {
+         void tree_edge(E e, const B_G&) override {
              m_data.push_back(e);
          }
 
