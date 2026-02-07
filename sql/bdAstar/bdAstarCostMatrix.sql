@@ -46,7 +46,7 @@ CREATE FUNCTION pgr_bdAstarCostMatrix(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], $2::BIGINT[], $3, $4, $5::FLOAT, $6::FLOAT, true) a;
+    FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], '{}'::BIGINT[], $3, $4, $5::FLOAT, $6::FLOAT, true) a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST ${COST_HIGH} ROWS ${ROWS_HIGH};

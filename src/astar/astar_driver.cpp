@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/to_postgres.hpp"
 
 #include "astar/astar.hpp"
+#include "bdAstar/bdAstar.hpp"
 
 namespace pgrouting {
 namespace drivers {
@@ -98,6 +99,7 @@ void do_astar(
         using pgrouting::xyDirectedGraph;
 
         using pgrouting::algorithms::astar;
+        using pgrouting::algorithms::bdastar;
 
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, normal, is_matrix);
@@ -127,6 +129,9 @@ void do_astar(
         if (directed) {
             digraph.insert_edges(edges);
             switch (which) {
+                case BDASTAR:
+                    paths = bdastar(digraph, combinations, heuristic, factor, epsilon, only_cost);
+                    break;
                 case ASTAR:
                     paths = astar(digraph, combinations, heuristic, factor, epsilon, only_cost);
                     break;
@@ -137,6 +142,9 @@ void do_astar(
         } else {
             undigraph.insert_edges(edges);
             switch (which) {
+                case BDASTAR:
+                    paths = bdastar(undigraph, combinations, heuristic, factor, epsilon, only_cost);
+                    break;
                 case ASTAR:
                     paths = astar(undigraph, combinations, heuristic, factor, epsilon, only_cost);
                     break;
