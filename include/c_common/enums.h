@@ -36,7 +36,9 @@ enum Which {
     /** allpairs **/
     FLOYD = 31, JOHNSON,
     /** metrics **/
-    BANDWIDTH
+    BANDWIDTH,
+    /* with edges that have x y*/
+    ASTAR = 400, BDASTAR
 };
 
 #endif  // INCLUDE_C_COMMON_ENUMS_H_

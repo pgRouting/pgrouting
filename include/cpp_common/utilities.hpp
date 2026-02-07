@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 
 std::string get_name(Which);
+std::string get_name(Which, bool, bool);
 std::string get_name(Which, bool, bool, bool);
 char estimate_drivingSide(char, Which);
 void get_new_queries(const std::string&, const std::string&, std::string&, std::string&);

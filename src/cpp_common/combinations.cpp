@@ -158,17 +158,17 @@ get_combinations(
     using pgrouting::pgget::get_combinations;
     std::map<int64_t, std::set<int64_t>> result;
 
-    auto starts = normal? get_intSet(startsArr) : get_intSet(endsArr);
-    auto ends = endsArr? (normal? get_intSet(endsArr) : get_intSet(startsArr)) : std::set<int64_t>();
+    auto starts = startsArr? (normal? get_intSet(startsArr) : get_intSet(endsArr))   : std::set<int64_t>();
+    auto ends =     endsArr? (normal? get_intSet(endsArr)   : get_intSet(startsArr)) : std::set<int64_t>();
 
     /* TODO Read query storing like std::map<int64_t , std::set<int64_t>> */
     /* queries are stored in vectors */
     auto combinations = !combinations_sql.empty()? get_combinations(combinations_sql) : std::vector<II_t_rt>();
 
-    ends = (!starts.empty() && ends.empty()) ?  starts : ends;
-
     /* data comes from CostMatrix */
-    is_matrix = combinations.empty() && starts == ends;
+    is_matrix = combinations.empty() && !starts.empty() && ends.empty();
+
+    ends = is_matrix? starts : ends;
 
     /* data comes from a combinations */
     for (const auto &row : combinations) {

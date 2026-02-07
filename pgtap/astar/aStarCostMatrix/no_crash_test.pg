@@ -6,7 +6,7 @@
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(15);
+SELECT plan(16);
 
 PREPARE edges_q AS
 SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2  FROM edges;
@@ -49,6 +49,7 @@ LANGUAGE plpgsql VOLATILE;
 
 
 SELECT * FROM test_function();
+SELECT throw_on_empty_edges_sql('pgr_astarCostMatrix', ',ARRAY[5,6]');
 
 SELECT finish();
 ROLLBACK;
