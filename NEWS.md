@@ -19,6 +19,7 @@ To see all issues & pull requests closed by this release see the
 * [#3055](https://github.com/pgRouting/pgrouting/issues/3055): bdDijkstra: use the shortest_path process and driver
 * [#3056](https://github.com/pgRouting/pgrouting/issues/3056): edwardMoore: use the shortest_path process and driver
 * [#3060](https://github.com/pgRouting/pgrouting/issues/3060): dagShortestPath: use the shortest_path process and driver
+* [#3064](https://github.com/pgRouting/pgrouting/issues/3064): Astar: create an use a process & driverAstar
 
 ## pgRouting 4.0
 
