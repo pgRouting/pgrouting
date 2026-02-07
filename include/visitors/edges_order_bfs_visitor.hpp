@@ -44,7 +44,7 @@ class Edges_order_bfs_visitor : public boost::default_bfs_visitor {
              std::vector<E> &data) :
          m_data(data)  {}
      template <class B_G>
-         void tree_edge(E e, const B_G&) override {
+         void tree_edge(E e, const B_G&) {
              m_data.push_back(e);
          }
  private:

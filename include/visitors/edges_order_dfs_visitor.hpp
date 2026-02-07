@@ -45,7 +45,7 @@ class Edges_order_dfs_visitor : public boost::default_dfs_visitor {
              std::vector<E> &data) :
          m_data(data)  {}
      template <typename B_G>
-         void tree_edge(E e, const B_G&) override {
+         void tree_edge(E e, const B_G&) {
              m_data.push_back(e);
          }
  private:

@@ -43,7 +43,7 @@ class astar_many_goals_visitor : public boost::default_astar_visitor {
      explicit astar_many_goals_visitor(const std::set<V> &goals)
          :m_goals(goals) {}
      template <class B_G>
-         void examine_vertex(V u, B_G &g) override {
+         void examine_vertex(V u, B_G &g) {
              auto s_it = m_goals.find(u);
              if (s_it == m_goals.end()) return;
              // found one more goal

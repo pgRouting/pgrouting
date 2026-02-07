@@ -197,7 +197,7 @@ class Pgr_dag {
               m_goals(goals),
               m_n_goals(n_goals) {}
           template <class B_G>
-              void examine_vertex(V u, B_G &) override {
+              void examine_vertex(V u, B_G &) {
                   auto s_it = m_goals.find(u);
                   if (s_it == m_goals.end()) return;
 

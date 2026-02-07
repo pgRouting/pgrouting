@@ -47,11 +47,11 @@ class Dfs_visitor_with_root : public boost::default_dfs_visitor {
          m_data(data),
          m_roots(root) {}
      template <typename B_G>
-         void tree_edge(E e, const B_G&) override {
+         void tree_edge(E e, const B_G&) {
              m_data.push_back(e);
          }
      template <typename B_G>
-         void start_vertex(V v, const B_G&) override {
+         void start_vertex(V v, const B_G&) {
              if (v != m_roots) throw found_goals();
          }
 
