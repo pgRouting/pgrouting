@@ -69,7 +69,7 @@ get_name(Which which, bool is_only_cost, bool is_near, bool is_matrix) {
     switch  (which) {
         case DIJKSTRA :
             base = "pgr_dijkstra";
-            suffix = std::string(is_near? "Near" : "") + (is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+            suffix = std::string(is_near? "Near" : "") + (is_only_cost? "Cost" : "") + (is_only_cost && is_matrix? "Matrix" : "");
             break;
         case BDDIJKSTRA :
             base = "pgr_bdDijkstra";
@@ -92,6 +92,26 @@ get_name(Which which, bool is_only_cost, bool is_near, bool is_matrix) {
     return base + suffix;
 }
 
+std::string
+get_name(Which which, bool is_only_cost, bool is_matrix) {
+    std::string base = "";
+    std::string suffix = "";
+
+    switch (which) {
+        case ASTAR :
+            base = "pgr_astar";
+            suffix = std::string(is_only_cost? "Cost" : "") + (is_only_cost && is_matrix? "Matrix" : "");
+            break;
+        case BDASTAR :
+            base = "pgr_bdAstar";
+            suffix = std::string(is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+            break;
+        default : base = "unknown";
+    }
+
+    return base + suffix;
+}
+
 char
 estimate_drivingSide(char driving_side, Which which) {
     char d_side = static_cast<char>(tolower(driving_side));
@@ -99,6 +119,8 @@ estimate_drivingSide(char driving_side, Which which) {
         d_side = ' ';
     }
     switch (which) {
+        case ASTAR :
+        case BDASTAR :
         case DAGSP :
         case EDWARDMOORE:
         case BDDIJKSTRA:
