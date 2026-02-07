@@ -48,6 +48,7 @@ PGDLLEXPORT Datum _pgr_astar(PG_FUNCTION_ARGS) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+
         if (PG_NARGS() == 9) {
             /*
              * many to many

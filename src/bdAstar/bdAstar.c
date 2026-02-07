@@ -31,73 +31,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 
 #include "c_types/path_rt.h"
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
-#include "c_common/check_parameters.h"
-#include "drivers/bdAstar/bdAstar_driver.h"
+#include "process/astar_process.h"
 
 PGDLLEXPORT Datum _pgr_bdastar(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_bdastar);
 
 
-static
-void
-process(char* edges_sql,
-        char* combinations_sql,
-        ArrayType *starts,
-        ArrayType *ends,
-        bool directed,
-        int heuristic,
-        double factor,
-        double epsilon,
-        bool only_cost,
-        Path_rt **result_tuples,
-        size_t *result_count) {
-    check_parameters(heuristic, factor, epsilon);
-
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-
-    clock_t start_t = clock();
-    pgr_do_bdAstar(
-            edges_sql,
-            combinations_sql,
-            starts, ends,
-
-            directed,
-            heuristic,
-            factor,
-            epsilon,
-            only_cost,
-            result_tuples, result_count,
-            &log_msg,
-            &notice_msg,
-            &err_msg);
-
-    if (only_cost) {
-        time_msg("pgr_bdAstarCost", start_t, clock());
-    } else {
-        time_msg("pgr_bdAstar", start_t, clock());
-    }
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
-
 PGDLLEXPORT Datum
 _pgr_bdastar(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    TupleDesc           tuple_desc;
+    TupleDesc            tuple_desc;
 
     Path_rt  *result_tuples = NULL;
     size_t result_count = 0;
@@ -107,50 +50,59 @@ _pgr_bdastar(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
         if (PG_NARGS() == 8) {
             /*
              * many to many
              */
-            process(
+            pgr_process_astar(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 NULL,
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
+
                 PG_GETARG_BOOL(3),
+                PG_GETARG_BOOL(7),
+                true,
+
                 PG_GETARG_INT32(4),
                 PG_GETARG_FLOAT8(5),
                 PG_GETARG_FLOAT8(6),
-                PG_GETARG_BOOL(7),
+
+                BDASTAR,
                 &result_tuples,
                 &result_count);
         } else if (PG_NARGS() == 7) {
             /*
-             * combinations
+             * Combinations
              */
-            process(
+            pgr_process_astar(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
-                NULL,
-                NULL,
+
+                NULL, NULL,
+
                 PG_GETARG_BOOL(2),
+                PG_GETARG_BOOL(6),
+                true,
+
                 PG_GETARG_INT32(3),
                 PG_GETARG_FLOAT8(4),
                 PG_GETARG_FLOAT8(5),
-                PG_GETARG_BOOL(6),
+
+                BDASTAR,
                 &result_tuples,
                 &result_count);
         }
 
-
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-                != TYPEFUNC_COMPOSITE)
+                != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
                          "that cannot accept type record")));
+        }
 
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
@@ -166,7 +118,6 @@ _pgr_bdastar(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
         size_t       call_cntr = funcctx->call_cntr;
-
 
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
