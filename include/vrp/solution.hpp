@@ -73,11 +73,14 @@ class Solution {
 
      /* @brief copy assignment */
      Solution& operator = (const Solution& sol) {
-         EPSILON = 0.0001,
+         EPSILON = 0.0001;
          fleet = sol.fleet;
          trucks = sol.trucks;
          return *this;
-     };
+     }
+
+     /* @brief destructor */
+     ~Solution() = default;
 
 
      Initials_code get_kind() const;

@@ -50,6 +50,11 @@ class Pg_points_graph : public Pgr_messages {
  public:
      Pg_points_graph() = delete;
      Pg_points_graph(const Pg_points_graph &) = delete;
+     Pg_points_graph& operator=(const Pg_points_graph&) = delete;
+     Pg_points_graph(Pg_points_graph&&) = delete;
+     Pg_points_graph& operator=(Pg_points_graph&&) = delete;
+     ~Pg_points_graph() = default;
+
      Pg_points_graph(
              std::vector<Point_on_edge_t> p_points,
              std::vector<Edge_t>      p_edges_to_modify,

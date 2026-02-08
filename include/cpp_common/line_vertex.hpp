@@ -62,6 +62,11 @@ class Line_vertex {
          target(v.target),
          cost(v.cost) {}
 
+     Line_vertex& operator=(const Line_vertex&) = default;
+     Line_vertex(Line_vertex&&) = default;
+     Line_vertex& operator=(Line_vertex&&) = default;
+     ~Line_vertex() = default;
+
      void cp_members(const Line_vertex &other) {
          this->id = other.id;
          this->vertex_id = other.vertex_id;
