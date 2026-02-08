@@ -25,7 +25,6 @@ Checks: >
     -cppcoreguidelines-pro-type-union-access,
     -cppcoreguidelines-pro-type-vararg,
     -cppcoreguidelines-slicing,
-    -cppcoreguidelines-special-member-functions,
     -cppcoreguidelines-use-default-member-init
 
 CheckOptions:

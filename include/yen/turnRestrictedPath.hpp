@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 #include <cstdint>
+#include <memory>
 
 #include "yen/ksp.hpp"
 #include "cpp_common/assert.hpp"
@@ -161,8 +162,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
          this->m_end = end_vertex;
          this->m_K = K;
          Pgr_ksp<G>::m_heap_paths = true;
-         delete this->m_vis;
-         this->m_vis = new Myvisitor(
+         this->m_vis = std::make_unique<Myvisitor>(
                  m_solutions,
                  m_restrictions,
                  m_stop_on_first);

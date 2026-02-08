@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <map>
+#include <memory>
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -63,11 +64,15 @@ class Pgr_ksp :  public Pgr_messages {
          m_end(0),
          m_K(0),
          m_heap_paths(false),
-         m_vis(new Visitor) {
+         m_vis(std::make_unique<Visitor>()) {
          }
-     ~Pgr_ksp() {
-         delete m_vis;
-     }
+
+     ~Pgr_ksp() = default;
+
+     Pgr_ksp(const Pgr_ksp&) = delete;
+     Pgr_ksp& operator=(const Pgr_ksp&) = delete;
+     Pgr_ksp(Pgr_ksp&&) = delete;
+     Pgr_ksp& operator=(Pgr_ksp&&) = delete;
 
      std::deque<Path> Yen(
              G &graph,
@@ -121,7 +126,13 @@ class Pgr_ksp :  public Pgr_messages {
 
      class Visitor {
       public:
-          virtual ~Visitor() {}
+          virtual ~Visitor() = default;
+
+          Visitor() = default;
+          Visitor(const Visitor&) = delete;
+          Visitor& operator=(const Visitor&) = delete;
+          Visitor(Visitor&&) = delete;
+          Visitor& operator=(Visitor&&) = delete;
 
          virtual void on_insert_first_solution(const Path) const {
              /* noop */
@@ -239,7 +250,7 @@ class Pgr_ksp :  public Pgr_messages {
      pSet m_ResultSet;  //!< ordered set of shortest paths
      pSet m_Heap;  //!< the heap
 
-     Visitor *m_vis;
+     std::unique_ptr<Visitor> m_vis;
 };
 
 
