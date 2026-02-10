@@ -26,6 +26,7 @@ INCLUDE_ORDER="
 -build/include_order:src/dijkstra/shortestPath_process.cpp,
 -build/include_order:src/metrics/metrics_process.cpp,
 -build/include_order:src/ordering/ordering_process.cpp,
+-build/include_order:src/astar/astar_process.cpp,
 -build/include_order:src/allpairs/allpairs_process.cpp"
 
 if test -z "$DIRECTORY"; then
