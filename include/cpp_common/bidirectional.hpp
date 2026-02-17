@@ -73,8 +73,7 @@ class Pgr_bidirectional {
  public:
     explicit Pgr_bidirectional(G &pgraph):
         graph(pgraph),
-        INF((std::numeric_limits<double>::max)()),
-        best_cost(0) {
+        INF((std::numeric_limits<double>::max)()) {
         m_log << "constructor\n";
     }
 
@@ -222,7 +221,7 @@ class Pgr_bidirectional {
 
     double INF;  //!< infinity
 
-    double best_cost;
+    double best_cost{0};
 
     mutable std::ostringstream m_log;
     Priority_queue forward_queue;

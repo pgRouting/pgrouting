@@ -230,7 +230,6 @@ Solution::get_kind() const {
 }
 
 Solution::Solution() :
-    EPSILON(0.0001),
     trucks(problem->trucks()) {
     ENTERING(msg());
     for (const auto &t : trucks) {

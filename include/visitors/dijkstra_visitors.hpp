@@ -147,7 +147,6 @@ class dijkstra_distance_visitor_no_init : public boost::default_dijkstra_visitor
              std::vector<boost::default_color_type> &color_map) :
          m_root(root),
          m_distance_goal(distance_goal),
-         m_num_examined(0),
          m_predecessors(predecessors),
          m_dist(distances),
          m_color(color_map) {
@@ -190,7 +189,7 @@ class dijkstra_distance_visitor_no_init : public boost::default_dijkstra_visitor
  private:
      V m_root;
      double m_distance_goal;
-     size_t m_num_examined;
+     size_t m_num_examined{0};
      std::vector<V > &m_predecessors;
      std::vector<double> &m_dist;
      std::vector<boost::default_color_type> &m_color;
