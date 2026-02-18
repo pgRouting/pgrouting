@@ -23,14 +23,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "cpp_common/report_messages.hpp"
-
 extern "C" {
 #include "c_common/postgres_connection.h"
 #include "c_common/e_report.h"
 }
 
 #include <sstream>
+
+#include "cpp_common/report_messages.hpp"
 
 #include "cpp_common/alloc.hpp"
 
