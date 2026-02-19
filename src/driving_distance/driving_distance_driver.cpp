@@ -58,7 +58,7 @@ pgr_do_drivingDistance(
     using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
-    using pgrouting::algorithm::drivingDistance;
+    using pgrouting::functions::drivingDistance;
     using pgrouting::pgget::get_intSet;
 
     std::ostringstream log;
@@ -101,24 +101,12 @@ pgr_do_drivingDistance(
             paths = drivingDistance(undigraph, roots, distance, equiCostFlag, depths, true);
         }
 
-        *return_count = get_tuples(paths, *return_tuples);
+
+        *return_count = get_tuples(std::vector<MST_rt>(), paths, depths, *return_tuples);
 
         if (*return_count == 0) {
             *log_msg = to_pg_msg("No paths found");
             return;
-        }
-
-        for (size_t i = 0; i < *return_count; i++) {
-            auto row = (*return_tuples)[i];
-            /* given the depth assign the correct depth */
-            int64_t depth = -1;
-            for (const auto &d : depths) {
-                /* look for the correct path */
-                auto itr = d.find(row.from_v);
-                if (itr == d.end() || !(itr->second == 0)) continue;
-                depth = d.at(row.node);
-            }
-            (*return_tuples)[i].depth = depth;
         }
 
         *log_msg = to_pg_msg(log);
