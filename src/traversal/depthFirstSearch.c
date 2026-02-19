@@ -8,6 +8,7 @@ Mail: project@pgrouting.org
 Function's developer:
 Copyright (c) 2020 Ashish Kumar
 Mail: ashishkr23438 at gmail.com
+
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -27,61 +28,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
+
 #include "c_common/postgres_connection.h"
 
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
 #include "c_types/mst_rt.h"
 
-#include "drivers/traversal/depthFirstSearch_driver.h"
+#include "process/spanningTree_process.h"
 
 PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_depthfirstsearch);
 
-static
-void
-process(
-        char* edges_sql,
-        ArrayType *roots,
-        bool directed,
-        int64_t max_depth,
-
-        MST_rt **result_tuples,
-        size_t *result_count) {
-    if (max_depth < 0) pgr_throw_error("Negative value found on 'max_depth'", "");
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
-
-    clock_t start_t = clock();
-    pgr_do_depthFirstSearch(
-            edges_sql,
-            roots,
-
-            directed,
-            max_depth,
-
-            result_tuples,
-            result_count,
-            &log_msg,
-            &notice_msg,
-            &err_msg);
-    time_msg("processing pgr_depthFirstSearch", start_t, clock());
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
 
 PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -95,11 +51,17 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        process(
+        pgr_process_spanningTree(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
+
                 PG_GETARG_BOOL(2),
                 PG_GETARG_INT64(3),
+                0,
+                false,
+
+                NULL,
+                DFS,
                 &result_tuples,
                 &result_count);
 
@@ -145,7 +107,6 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         values[7] = Int64GetDatum(result_tuples[funcctx->call_cntr].pred);
-
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
