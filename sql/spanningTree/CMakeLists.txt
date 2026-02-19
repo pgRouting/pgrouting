@@ -5,7 +5,6 @@
 set(LOCAL_FILES
     _prim.sql
     _kruskal.sql
-    #_randomSpanTree.sql
 
     prim.sql
     primDFS.sql
@@ -16,10 +15,7 @@ set(LOCAL_FILES
     kruskalDFS.sql
     kruskalBFS.sql
     kruskalDD.sql
-    #randomSpanTree.sql
-    )
-
-# Do not modify below this line
+)
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})
