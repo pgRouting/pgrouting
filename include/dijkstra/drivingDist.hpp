@@ -485,7 +485,7 @@ std::deque<pgrouting::Path> drivingDistance_no_equicost(
 
 
 namespace pgrouting {
-namespace algorithm {
+namespace functions {
 
 template <typename G>
 std::deque<Path> drivingDistance(
@@ -510,7 +510,7 @@ std::deque<Path> drivingDistance(
     }
 }
 
-}  // namespace algorithm
+}  // namespace functions
 }  // namespace pgrouting
 
 
