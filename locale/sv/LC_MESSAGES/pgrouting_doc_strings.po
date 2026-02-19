@@ -22426,11 +22426,9 @@ msgstr "pgr_withPointsDD is pgr_drivingDistance **with points**"
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 
-#, fuzzy
 msgid "Mohit Rawat, Regina Obe, Vicky Vergara"
-msgstr "Aurélie Bousquet, Regina Obe, Vicky Vergara"
+msgstr "Mohit Rawat, Regina Obe, Vicky Vergara"
 
-#, fuzzy
 msgid ""
 "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
 "Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
@@ -22454,31 +22452,28 @@ msgstr ""
 "Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu "
 "Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko "
 "Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim "
-"Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish "
-"Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni "
-"Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen "
-"Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, "
-"Vidhan Jain, Virginia Vergara, Yige Huang"
+"Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul "
+"Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith "
+"Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, "
+"Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit "
+"Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 
-#, fuzzy
 msgid ""
 "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: "
 "pgr_withPoints does not pick optimal route when fraction = 1"
 msgstr ""
-"`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__: "
-"pgr_withPointsCostMatrix"
+"`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: "
+"pgr_withPoints väljer inte optimal rutt när fraction = 1"
 
-#, fuzzy
 msgid "Individuals in this release |release| (in alphabetical order)"
-msgstr "Personer i denna utgåva v4.0.0 (i alfabetisk ordning)"
+msgstr "Personer i denna utgåva |release| (i alfabetisk ordning)"
 
-#, fuzzy
 msgid ""
 "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordering "
 "functions standardized"
 msgstr ""
-"`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: "
-"pgr_kingOrdering"
+"`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: "
+"Ordningsfunktioner standardiserade"
 
 #~ msgid "See also"
 #~ msgstr "Se även"
