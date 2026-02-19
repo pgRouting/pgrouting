@@ -104,7 +104,6 @@ void do_astar(
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, normal, is_matrix);
         hint = "";
-        log << "is matrix" << is_matrix;
 
         if (combinations.empty() && !combinations_sql.empty()) {
             notice << "No (source, target) pairs found";

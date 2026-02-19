@@ -75,7 +75,7 @@ get_name(Which which, bool is_only_cost, bool is_near, bool is_matrix) {
             break;
         case BDDIJKSTRA :
             base = "pgr_bdDijkstra";
-            suffix = std::string(is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+            suffix = std::string(is_only_cost? "Cost" : "") + (is_only_cost && is_matrix? "Matrix" : "");
             break;
         case EDWARDMOORE:
             base = "pgr_edwardMoore";
@@ -86,7 +86,7 @@ get_name(Which which, bool is_only_cost, bool is_near, bool is_matrix) {
         case OLD_WITHPOINTS:
         case WITHPOINTS:
             base = "pgr_withPoints";
-            suffix = std::string(is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+            suffix = std::string(is_only_cost? "Cost" : "") + (is_only_cost && is_matrix? "Matrix" : "");
             break;
         default : base = "unknown";
     }
@@ -106,7 +106,7 @@ get_name(Which which, bool is_only_cost, bool is_matrix) {
             break;
         case BDASTAR :
             base = "pgr_bdAstar";
-            suffix = std::string(is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+            suffix = std::string(is_only_cost? "Cost" : "") + (is_only_cost && is_matrix? "Matrix" : "");
             break;
         default : base = "unknown";
     }
