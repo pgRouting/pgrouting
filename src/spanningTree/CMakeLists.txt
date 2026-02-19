@@ -11,4 +11,7 @@ ADD_LIBRARY(spanningTree OBJECT
 
     prim.c
     prim_driver.cpp
+
+    prim.cpp
+    kruskal.cpp
 )
