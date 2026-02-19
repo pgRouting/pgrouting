@@ -26,9 +26,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CPP_COMMON_UTILITIES_HPP_
 #pragma once
 
+#include <set>
+#include <vector>
 #include <string>
+#include <cstdint>
 
 #include "c_common/enums.h"
+#include "c_types/mst_rt.h"
 
 namespace pgrouting {
 
@@ -37,6 +41,7 @@ std::string get_name(Which, bool, bool);
 std::string get_name(Which, bool, bool, bool);
 char estimate_drivingSide(char, Which);
 void get_new_queries(const std::string&, const std::string&, std::string&, std::string&);
+std::vector<MST_rt> only_root_result(const std::set<int64_t>&);
 
 }  //  namespace pgrouting
 
