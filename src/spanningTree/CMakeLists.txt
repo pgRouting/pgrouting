@@ -14,4 +14,7 @@ ADD_LIBRARY(spanningTree OBJECT
 
     prim.cpp
     kruskal.cpp
+
+    spanningTree_process.cpp
+    spanningTree_driver.cpp
 )
