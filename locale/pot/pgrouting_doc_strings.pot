@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-07 19:07+0000\n"
+"POT-Creation-Date: 2026-02-19 14:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3542,6 +3542,9 @@ msgid "`#3056 <https://github.com/pgRouting/pgrouting/issues/3056>`__: edwardMoo
 msgstr ""
 
 msgid "`#3060 <https://github.com/pgRouting/pgrouting/issues/3060>`__: dagShortestPath: use the shortest_path process and driver"
+msgstr ""
+
+msgid "`#3064 <https://github.com/pgRouting/pgrouting/issues/3064>`__: Astar: create and use a process and driver for Astar"
 msgstr ""
 
 msgid "All releases"
