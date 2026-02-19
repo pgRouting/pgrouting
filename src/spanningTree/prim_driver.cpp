@@ -36,11 +36,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
+#include "cpp_common/utilities.hpp"
 
 #include "c_types/mst_rt.h"
 
 #include "spanningTree/prim.hpp"
-#include "spanningTree/details.hpp"
 
 
 void
@@ -62,7 +62,7 @@ pgr_do_prim(
     using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
-    using pgrouting::pgget::get_intArray;
+    using pgrouting::pgget::get_intSet;
 
     std::ostringstream log;
     std::ostringstream err;
@@ -78,7 +78,12 @@ pgr_do_prim(
         pgassert(*return_count == 0);
         // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 
-        auto roots = get_intArray(starts, false);
+        using pgrouting::functions::prim;
+        using pgrouting::functions::primBFS;
+        using pgrouting::functions::primDFS;
+        using pgrouting::functions::primDD;
+
+        auto roots = get_intSet(starts);
 
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
@@ -90,21 +95,20 @@ pgr_do_prim(
 
         pgrouting::UndirectedGraph undigraph;
         undigraph.insert_min_edges_no_parallel(edges);
-        pgrouting::functions::Pgr_prim<pgrouting::UndirectedGraph> prim;
 
         if (edges.empty()) {
-            results = pgrouting::details::get_no_edge_graph_result(roots);
+            results = pgrouting::only_root_result(roots);
             *notice_msg = to_pg_msg("No edges found");
             *log_msg = to_pg_msg(edges_sql);
         } else {
             if (suffix == "") {
-                results = prim.prim(undigraph);
+                results = prim(undigraph);
             } else if (suffix == "BFS") {
-                results = prim.primBFS(undigraph, roots, max_depth);
+                results = primBFS(undigraph, roots, max_depth);
             } else if (suffix == "DFS") {
-                results = prim.primDFS(undigraph, roots, max_depth);
+                results = primDFS(undigraph, roots, max_depth);
             } else if (suffix == "DD") {
-                results = prim.primDD(undigraph, roots, distance);
+                results = primDD(undigraph, roots, distance);
             } else {
                 err << "Unknown Prim function";
                 *err_msg = to_pg_msg(err);
