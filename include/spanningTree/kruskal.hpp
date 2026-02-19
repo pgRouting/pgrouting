@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <vector>
+#include <set>
 #include <cstdint>
 
 #include <boost/graph/kruskal_min_spanning_tree.hpp>
@@ -37,28 +38,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/interruption.hpp"
 
 namespace pgrouting {
-namespace functions {
+namespace algorithms {
 
 template <class G>
 class Pgr_kruskal : public Pgr_mst<G> {
  public:
      ~Pgr_kruskal() override = default;
-     std::vector<MST_rt> kruskal(G &graph);
+     std::vector<MST_rt> kruskal(G &graph) {
+         return this->mst(graph);
+     }
 
      std::vector<MST_rt> kruskalBFS(
              G &graph,
-             std::vector<int64_t> roots,
-             int64_t max_depth);
+             const std::set<int64_t>& roots,
+             int64_t max_depth) {
+         return this->mstBFS(graph, roots, max_depth);
+     }
 
      std::vector<MST_rt> kruskalDFS(
              G &graph,
-             std::vector<int64_t> roots,
-             int64_t max_depth);
+             const std::set<int64_t>& roots,
+             int64_t max_depth) {
+         return this->mstDFS(graph, roots, max_depth);
+     }
 
      std::vector<MST_rt> kruskalDD(
              G &graph,
-             std::vector<int64_t> roots,
-             double distance);
+             const std::set<int64_t>& roots,
+             double distance) {
+         return this->mstDD(graph, roots, distance);
+     }
 
  private:
      typedef typename G::B_G B_G;
@@ -66,58 +75,32 @@ class Pgr_kruskal : public Pgr_mst<G> {
      typedef typename G::E E;
 
      /* Does all the work */
-     void generate_mst(const G &graph) override;
+     void generate_mst(const G &graph) override {
+         this->clear();
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
+         boost::kruskal_minimum_spanning_tree(
+                 graph.graph,
+                 std::inserter(this->m_spanning_tree.edges, this->m_spanning_tree.edges.begin()),
+                 boost::weight_map(get(&G::G_T_E::cost, graph.graph)));
+     }
 };
 
+}  // namespace algorithms
 
-template <class G>
-void
-Pgr_kruskal<G>::generate_mst(const G &graph) {
-    this->clear();
-    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-    CHECK_FOR_INTERRUPTS();
-    boost::kruskal_minimum_spanning_tree(
-            graph.graph,
-            std::inserter(this->m_spanning_tree.edges, this->m_spanning_tree.edges.begin()),
-            boost::weight_map(get(&G::G_T_E::cost, graph.graph)));
-}
+namespace functions {
 
-
-template <class G>
 std::vector<MST_rt>
-Pgr_kruskal<G>::kruskal(
-        G &graph) {
-    return this->mst(graph);
-}
+kruskal(pgrouting::UndirectedGraph&);
 
-
-template <class G>
 std::vector<MST_rt>
-Pgr_kruskal<G>::kruskalBFS(
-        G &graph,
-        std::vector<int64_t> roots,
-        int64_t max_depth) {
-    return this->mstBFS(graph, roots, max_depth);
-}
+kruskalBFS(pgrouting::UndirectedGraph&, const std::set<int64_t>&, int64_t);
 
-template <class G>
 std::vector<MST_rt>
-Pgr_kruskal<G>::kruskalDFS(
-        G &graph,
-        std::vector<int64_t> roots,
-        int64_t max_depth) {
-    return this->mstDFS(graph, roots, max_depth);
-}
+kruskalDFS(pgrouting::UndirectedGraph&, const std::set<int64_t>&, int64_t);
 
-template <class G>
 std::vector<MST_rt>
-Pgr_kruskal<G>::kruskalDD(
-        G &graph,
-        std::vector<int64_t> roots,
-        double distance) {
-    return this->mstDD(graph, roots, distance);
-}
-
+kruskalDD(pgrouting::UndirectedGraph&, const std::set<int64_t>&, double);
 
 }  // namespace functions
 }  // namespace pgrouting
