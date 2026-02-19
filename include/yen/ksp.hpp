@@ -60,10 +60,6 @@ class Pgr_ksp :  public Pgr_messages {
 
  public:
      Pgr_ksp() :
-         m_start(0),
-         m_end(0),
-         m_K(0),
-         m_heap_paths(false),
          m_vis(std::make_unique<Visitor>()) {
          }
 
@@ -240,10 +236,10 @@ class Pgr_ksp :  public Pgr_messages {
      ///@{
      V v_source;  //!< source descriptor
      V v_target;  //!< target descriptor
-     int64_t m_start;  //!< source id
-     int64_t m_end;   //!< target id
-     size_t m_K;
-     bool m_heap_paths;
+     int64_t m_start{0};  //!< source id
+     int64_t m_end{0};   //!< target id
+     size_t m_K{0};
+     bool m_heap_paths{false};
 
      Path curr_result_path;  //!< storage for the current result
 

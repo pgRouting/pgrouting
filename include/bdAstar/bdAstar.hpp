@@ -72,9 +72,7 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
 
  public:
     explicit Pgr_bdAstar(G &pgraph) :
-        Pgr_bidirectional<G>(pgraph),
-        m_heuristic(5),
-        m_factor(1.0) {
+        Pgr_bidirectional<G>(pgraph) {
         m_log << "pgr_bdAstar constructor\n";
     }
 
@@ -184,8 +182,8 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
     }
 
  private:
-    int m_heuristic;
-    double m_factor;
+    int m_heuristic{5};
+    double m_factor{1.0};
 };
 
 }  // namespace bidirectional
