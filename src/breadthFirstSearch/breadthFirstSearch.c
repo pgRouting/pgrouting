@@ -9,7 +9,6 @@ Function's developer:
 Copyright (c) 2019 Gudesa Venkata Sai Akhil
 Mail: gvs.akhil1997 at gmail.com
 
-
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -29,60 +28,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
+
 #include "c_common/postgres_connection.h"
 
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
 #include "c_types/mst_rt.h"
-#include "drivers/breadthFirstSearch/breadthFirstSearch_driver.h"
+
+#include "process/spanningTree_process.h"
 
 PGDLLEXPORT Datum _pgr_breadthfirstsearch(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_breadthfirstsearch);
 
-static void
-process(
-    char *edges_sql,
-    ArrayType *starts,
-    int64_t max_depth,
-    bool directed,
-
-    MST_rt **result_tuples,
-    size_t *result_count) {
-    if (max_depth < 0) pgr_throw_error("Negative value found on 'max_depth'", "");
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
-
-    clock_t start_t = clock();
-    pgr_do_breadthFirstSearch(
-        edges_sql,
-        starts,
-        max_depth,
-        directed,
-
-        result_tuples,
-        result_count,
-
-        &log_msg,
-        &notice_msg,
-        &err_msg);
-
-    time_msg(" processing pgr_breadthFirstSearch", start_t, clock());
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
 
 PGDLLEXPORT Datum _pgr_breadthfirstsearch(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
@@ -92,25 +47,32 @@ PGDLLEXPORT Datum _pgr_breadthfirstsearch(PG_FUNCTION_ARGS) {
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
-        MemoryContext oldcontext;
+        MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        process(
-            text_to_cstring(PG_GETARG_TEXT_P(0)),
-            PG_GETARG_ARRAYTYPE_P(1),
-            PG_GETARG_INT64(2),
-            PG_GETARG_BOOL(3),
-            &result_tuples,
-            &result_count);
+        pgr_process_spanningTree(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_ARRAYTYPE_P(1),
+
+                PG_GETARG_BOOL(3),
+                PG_GETARG_INT64(2),
+                0,
+                false,
+
+                NULL,
+                BFS,
+                &result_tuples,
+                &result_count);
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE) {
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
-                            "that cannot accept type record")));
+                         "that cannot accept type record")));
         }
 
         funcctx->tuple_desc = tuple_desc;
@@ -119,20 +81,21 @@ PGDLLEXPORT Datum _pgr_breadthfirstsearch(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (MST_rt *)funcctx->user_fctx;
+    result_tuples = (MST_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple tuple;
-        Datum result;
-        Datum *values;
-        bool *nulls;
+        HeapTuple    tuple;
+        Datum        result;
+        Datum        *values;
+        bool*        nulls;
 
-        size_t numb = 8;
-        values = palloc(numb * sizeof(Datum));
-        nulls = palloc(numb * sizeof(bool));
+        size_t num = 8;
+        values = palloc(num * sizeof(Datum));
+        nulls = palloc(num * sizeof(bool));
+
 
         size_t i;
-        for (i = 0; i < numb; ++i) {
+        for (i = 0; i < num; ++i) {
             nulls[i] = false;
         }
 
