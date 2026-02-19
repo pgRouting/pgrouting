@@ -101,7 +101,7 @@ get_name(Which which, bool is_only_cost, bool is_matrix) {
 
     switch (which) {
         case ASTAR :
-            base = "pgr_astar";
+            base = "pgr_aStar";
             suffix = std::string(is_only_cost? "Cost" : "") + (is_only_cost && is_matrix? "Matrix" : "");
             break;
         case BDASTAR :
