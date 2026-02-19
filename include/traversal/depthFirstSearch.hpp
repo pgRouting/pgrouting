@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_TRAVERSAL_DEPTHFIRSTSEARCH_HPP_
 #pragma once
 
+#include <set>
 #include <vector>
 #include <map>
 #include <cstdint>
@@ -229,7 +230,6 @@ depthFirstSearch(
         const std::set<int64_t>& roots,
         bool directed,
         int64_t max_depth) {
-
     algorithms::Pgr_depthFirstSearch<G> fn_depthFirstSearch;
     auto results = fn_depthFirstSearch.depthFirstSearch(graph, roots, directed, max_depth);
     return results;

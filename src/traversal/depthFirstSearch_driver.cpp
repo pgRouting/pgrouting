@@ -35,49 +35,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
+#include "cpp_common/utilities.hpp"
 
-#include "spanningTree/details.hpp"
 #include "traversal/depthFirstSearch.hpp"
 
 /** @file depthFirstSearch_driver.cpp
  * @brief Handles actual calling of function in the `pgr_depthFirstSearch.hpp` file.
  *
  */
-
-namespace {
-
-/** @brief Calls the main function defined in the C++ Header file.
- *
- * Also sorts the root vertices in an increasing order,
- * and removes the duplicated vertices. Then calls the function
- * defined in the C++ Header file - `pgr_depthFirstSearch.hpp`
- *
- * @param graph      the graph containing the edges
- * @param roots      the root vertices
- * @param directed   whether the graph is directed or undirected
- * @param max_depth  the maximum depth of traversal
- *
- * @returns results, when results are found
- */
-
-template < class G >
-std::vector < MST_rt >
-pgr_depthFirstSearch(
-        G &graph,
-        std::vector < int64_t > roots,
-        bool directed,
-        int64_t max_depth) {
-    std::sort(roots.begin(), roots.end());
-    roots.erase(
-            std::unique(roots.begin(), roots.end()),
-            roots.end());
-
-    pgrouting::functions::Pgr_depthFirstSearch < G > fn_depthFirstSearch;
-    auto results = fn_depthFirstSearch.depthFirstSearch(graph, roots, directed, max_depth);
-    return results;
-}
-
-}  // namespace
 
 void
 pgr_do_depthFirstSearch(
@@ -96,7 +61,7 @@ pgr_do_depthFirstSearch(
     using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
-    using pgrouting::pgget::get_intArray;
+    using pgrouting::pgget::get_intSet;
 
     std::ostringstream log;
     std::ostringstream err;
@@ -110,7 +75,9 @@ pgr_do_depthFirstSearch(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        auto roots = get_intArray(starts, false);
+        using pgrouting::functions::depthFirstSearch;
+
+        auto roots = get_intSet(starts);
         std::vector<MST_rt> results;
 
         hint = edges_sql;
@@ -118,7 +85,7 @@ pgr_do_depthFirstSearch(
         hint = nullptr;
 
         if (edges.empty()) {
-            results = pgrouting::details::get_no_edge_graph_result(roots);
+            results = pgrouting::only_root_result(roots);
             *notice_msg = to_pg_msg("No edges found");
             *log_msg = to_pg_msg(edges_sql);
         } else {
@@ -126,7 +93,7 @@ pgr_do_depthFirstSearch(
                 pgrouting::DirectedGraph digraph;
                 digraph.insert_edges(edges);
 
-            results = pgr_depthFirstSearch(
+            results = depthFirstSearch(
                     digraph,
                     roots,
                     directed,
@@ -135,7 +102,7 @@ pgr_do_depthFirstSearch(
                 pgrouting::UndirectedGraph undigraph;
                 undigraph.insert_edges(edges);
 
-                results = pgr_depthFirstSearch(
+                results = depthFirstSearch(
                         undigraph,
                         roots,
                         directed,
