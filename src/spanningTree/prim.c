@@ -8,6 +8,7 @@ Mail: project@pgrouting.org
 Function's developer:
 Copyright (c) 2018 Aditya Pratap Singh
 Mail: adityapratap.singh28@gmail.com
+
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -27,74 +28,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
+
 #include "c_common/postgres_connection.h"
 
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
 #include "c_types/mst_rt.h"
 
-#include "drivers/spanningTree/mst_common.h"
-#include "drivers/spanningTree/prim_driver.h"
+#include "process/spanningTree_process.h"
 
 PGDLLEXPORT Datum _pgr_primv4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_primv4);
-
-static
-void
-process(
-        char *edges_sql,
-        ArrayType *roots,
-        char * fn_suffix,
-        int64_t max_depth,
-        double distance,
-
-        MST_rt **result_tuples,
-        size_t *result_count) {
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-
-
-    char * fn_name = get_name(1, fn_suffix, &err_msg);
-    if (err_msg) {
-        pgr_global_report(&log_msg, &notice_msg, &err_msg);
-        return;
-    }
-
-    if (strcmp(fn_suffix, "DD") == 0 && distance < 0) {
-        pgr_throw_error("Negative value found on 'distance'", "Must be positive");
-    } else if ((strcmp(fn_suffix, "BFS") == 0 || strcmp(fn_suffix, "DFS") == 0) && max_depth < 0) {
-        pgr_throw_error("Negative value found on 'max_depth'", "Must be positive");
-    }
-
-    clock_t start_t = clock();
-    pgr_do_prim(
-            edges_sql,
-            roots,
-
-            fn_suffix,
-
-            max_depth,
-            distance,
-
-            result_tuples,
-            result_count,
-            &log_msg,
-            &notice_msg,
-            &err_msg);
-
-
-    time_msg(fn_name, start_t, clock());
-
-    if (err_msg) {
-        if (*result_tuples) pfree(*result_tuples);
-    }
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
 
 
 PGDLLEXPORT Datum _pgr_primv4(PG_FUNCTION_ARGS) {
@@ -109,16 +51,19 @@ PGDLLEXPORT Datum _pgr_primv4(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        /* Edge sql, tree roots, fn_suffix, max_depth, distance */
-        process(
+        pgr_process_spanningTree(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
-                text_to_cstring(PG_GETARG_TEXT_P(2)),
+
+                false,
                 PG_GETARG_INT64(3),
                 PG_GETARG_FLOAT8(4),
+                false,
+
+                text_to_cstring(PG_GETARG_TEXT_P(2)),
+                PRIM,
                 &result_tuples,
                 &result_count);
-
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
@@ -144,7 +89,7 @@ PGDLLEXPORT Datum _pgr_primv4(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        size_t num  = 8;
+        size_t num = 8;
         values = palloc(num * sizeof(Datum));
         nulls = palloc(num * sizeof(bool));
 
@@ -202,15 +147,19 @@ PGDLLEXPORT Datum _pgr_prim(PG_FUNCTION_ARGS) {
                     errhint("Consider upgrade pgRouting")));
 #endif
 
-        process(
+        pgr_process_spanningTree(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
-                text_to_cstring(PG_GETARG_TEXT_P(2)),
+
+                false,
                 PG_GETARG_INT64(3),
                 PG_GETARG_FLOAT8(4),
+                false,
+
+                text_to_cstring(PG_GETARG_TEXT_P(2)),
+                PRIM,
                 &result_tuples,
                 &result_count);
-
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;

@@ -8,7 +8,6 @@ ADD_LIBRARY(spanningTree OBJECT
 
     kruskal.c
     prim.c
-    prim_driver.cpp
 
     prim.cpp
     kruskal.cpp
