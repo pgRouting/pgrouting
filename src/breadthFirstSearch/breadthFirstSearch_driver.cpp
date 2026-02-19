@@ -40,20 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "breadthFirstSearch/breadthFirstSearch.hpp"
 
-namespace {
-
-
-template <class G> std::vector<MST_rt> breadthFirstSearch(
-        G &graph,
-        std::set<int64_t> sources,
-        int64_t max_depth) {
-    pgrouting::functions::Pgr_breadthFirstSearch<G> fn_breadthFirstSearch;
-    auto results = fn_breadthFirstSearch.breadthFirstSearch(graph, sources, max_depth);
-    return results;
-}
-
-}  // namespace
-
 void
 pgr_do_breadthFirstSearch(
                 const char *edges_sql,
@@ -103,12 +89,12 @@ pgr_do_breadthFirstSearch(
         if (directed) {
             pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
-            results = breadthFirstSearch(digraph, roots, max_depth);
+            results = pgrouting::functions::breadthFirstSearch(digraph, roots, true, max_depth);
 
         } else {
             pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
-            results = breadthFirstSearch(undigraph, roots, max_depth);
+            results = pgrouting::functions::breadthFirstSearch(undigraph, roots, false, max_depth);
         }
 
         auto count = results.size();
