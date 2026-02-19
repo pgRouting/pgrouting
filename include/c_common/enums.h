@@ -37,7 +37,7 @@ enum Which {
     FLOYD = 31, JOHNSON,
     /** metrics **/
     BANDWIDTH,
-    /* with edges that have x y*/
+    /** with edges that have x y */
     ASTAR = 400, BDASTAR
 };
 
