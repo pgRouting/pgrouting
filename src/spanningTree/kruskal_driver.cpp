@@ -36,9 +36,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
+#include "cpp_common/utilities.hpp"
 
 #include "spanningTree/kruskal.hpp"
-#include "spanningTree/details.hpp"
 
 
 void
@@ -60,7 +60,7 @@ pgr_do_kruskal(
     using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
-    using pgrouting::pgget::get_intArray;
+    using pgrouting::pgget::get_intSet;
 
     std::ostringstream log;
     std::ostringstream err;
@@ -76,7 +76,12 @@ pgr_do_kruskal(
         pgassert(*return_count == 0);
         // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 
-        auto roots = get_intArray(starts, false);
+        using pgrouting::functions::kruskal;
+        using pgrouting::functions::kruskalBFS;
+        using pgrouting::functions::kruskalDFS;
+        using pgrouting::functions::kruskalDD;
+
+        auto roots = get_intSet(starts);
 
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
@@ -88,21 +93,20 @@ pgr_do_kruskal(
 
         pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
-        pgrouting::functions::Pgr_kruskal<pgrouting::UndirectedGraph> kruskal;
 
         if (edges.empty()) {
-            results = pgrouting::details::get_no_edge_graph_result(roots);
+            results = pgrouting::only_root_result(roots);
             *notice_msg = to_pg_msg("No edges found");
             *log_msg = to_pg_msg(edges_sql);
         } else {
             if (suffix == "") {
-                results = kruskal.kruskal(undigraph);
+                results = kruskal(undigraph);
             } else if (suffix == "BFS") {
-                results = kruskal.kruskalBFS(undigraph, roots, max_depth);
+                results = kruskalBFS(undigraph, roots, max_depth);
             } else if (suffix == "DFS") {
-                results = kruskal.kruskalDFS(undigraph, roots, max_depth);
+                results = kruskalDFS(undigraph, roots, max_depth);
             } else if (suffix == "DD") {
-                results = kruskal.kruskalDD(undigraph, roots, distance);
+                results = kruskalDD(undigraph, roots, distance);
             } else {
                 err << "Unknown Kruskal function";
                 *err_msg = to_pg_msg(err);
