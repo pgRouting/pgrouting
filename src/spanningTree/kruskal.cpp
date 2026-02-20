@@ -34,31 +34,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace functions {
 
+using Kruskal = pgrouting::algorithms::Pgr_kruskal<pgrouting::UndirectedGraph>;
+
 std::vector<MST_rt>
 kruskal(pgrouting::UndirectedGraph &graph) {
-    using Kruskal = pgrouting::algorithms::Pgr_kruskal<pgrouting::UndirectedGraph>;
-    Kruskal kruskal;
-    return kruskal.kruskal(graph);
+    Kruskal kruskalfn;
+    return kruskalfn.kruskal(graph);
 }
 
 std::vector<MST_rt>
 kruskalBFS(pgrouting::UndirectedGraph &graph, const std::set<int64_t>& roots, int64_t max_depth) {
-    using Kruskal = pgrouting::algorithms::Pgr_kruskal<pgrouting::UndirectedGraph>;
-    Kruskal kruskal;
-    return kruskal.kruskalBFS(graph, roots, max_depth);
+    Kruskal kruskalfn;
+    return kruskalfn.kruskalBFS(graph, roots, max_depth);
 }
 std::vector<MST_rt>
 kruskalDFS(pgrouting::UndirectedGraph &graph, const std::set<int64_t>& roots, int64_t max_depth) {
-    using Kruskal = pgrouting::algorithms::Pgr_kruskal<pgrouting::UndirectedGraph>;
-    Kruskal kruskal;
-    return kruskal.kruskalDFS(graph, roots, max_depth);
+    Kruskal kruskalfn;
+    return kruskalfn.kruskalDFS(graph, roots, max_depth);
 }
 
 std::vector<MST_rt>
 kruskalDD(pgrouting::UndirectedGraph &graph, const std::set<int64_t>& roots, double distance) {
-    using Kruskal = pgrouting::algorithms::Pgr_kruskal<pgrouting::UndirectedGraph>;
-    Kruskal kruskal;
-    return kruskal.kruskalDD(graph, roots, distance);
+    Kruskal kruskalfn;
+    return kruskalfn.kruskalDD(graph, roots, distance);
 }
 
 }  // namespace functions

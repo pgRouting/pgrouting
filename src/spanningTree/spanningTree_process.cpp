@@ -80,13 +80,13 @@ void pgr_process_spanningTree(
             switch (val) {
                 case 1:
                     if (distance < 0) {
-                        pgr_throw_error("Negative value found on 'distance'", "Must be positive");
+                        pgr_throw_error("Negative value found on 'distance'", "Must be non negative");
                     }
                     break;
                 case 2:
                 case 3:
                     if (max_depth < 0) {
-                        pgr_throw_error("Negative value found on 'max_depth'", "Must be positive");
+                        pgr_throw_error("Negative value found on 'max_depth'", "Must be non negative");
                     }
                     break;
                 default:
@@ -97,7 +97,7 @@ void pgr_process_spanningTree(
         case BFS:
         case DFS:
             if (max_depth < 0) {
-                pgr_throw_error("Negative value found on 'max_depth'", "Must be positive");
+                pgr_throw_error("Negative value found on 'max_depth'", "Must be non negative");
             }
             break;
 
@@ -130,11 +130,12 @@ void pgr_process_spanningTree(
             which,
             (*result_tuples), (*result_count),
             log, notice, err);
+
     auto name = std::string(" processing ") + pgrouting::get_name(which);
     time_msg(name.c_str(), start_t, clock());
 
     if (!err.str().empty() && (*result_tuples)) {
-        if (*result_tuples) pfree(*result_tuples);
+        pfree(*result_tuples);
         (*result_tuples) = nullptr;
         (*result_count) = 0;
     }

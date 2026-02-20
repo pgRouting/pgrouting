@@ -99,7 +99,7 @@ class Pgr_mst {
 
      std::vector<MST_rt> mstBFS(
              const G &graph,
-             std::set<int64_t> roots,
+             const std::set<int64_t> &roots,
              int64_t max_depth) {
          m_suffix = "BFS";
          m_get_component = true;
@@ -114,7 +114,7 @@ class Pgr_mst {
 
      std::vector<MST_rt> mstDFS(
              const G &graph,
-             std::set<int64_t> roots,
+             const std::set<int64_t> &roots,
              int64_t max_depth) {
          m_suffix = "DFS";
          m_get_component = false;
@@ -129,7 +129,7 @@ class Pgr_mst {
 
      std::vector<MST_rt> mstDD(
              const G &graph,
-             std::set<int64_t> roots,
+             const std::set<int64_t> &roots,
              double distance) {
          m_suffix = "DD";
          m_get_component = false;
