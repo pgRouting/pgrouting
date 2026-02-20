@@ -34,31 +34,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace functions {
 
+using Prim = pgrouting::algorithms::Pgr_prim<pgrouting::UndirectedGraph>;
+
 std::vector<MST_rt>
 prim(pgrouting::UndirectedGraph &graph) {
-    using Prim = pgrouting::algorithms::Pgr_prim<pgrouting::UndirectedGraph>;
-    Prim prim;
-    return prim.prim(graph);
+    Prim primfn;
+    return primfn.prim(graph);
 }
 
 std::vector<MST_rt>
 primBFS(pgrouting::UndirectedGraph &graph, const std::set<int64_t>& roots, int64_t max_depth) {
-    using Prim = pgrouting::algorithms::Pgr_prim<pgrouting::UndirectedGraph>;
-    Prim prim;
-    return prim.primBFS(graph, roots, max_depth);
+    Prim primfn;
+    return primfn.primBFS(graph, roots, max_depth);
 }
 std::vector<MST_rt>
 primDFS(pgrouting::UndirectedGraph &graph, const std::set<int64_t>& roots, int64_t max_depth) {
-    using Prim = pgrouting::algorithms::Pgr_prim<pgrouting::UndirectedGraph>;
-    Prim prim;
-    return prim.primDFS(graph, roots, max_depth);
+    Prim primfn;
+    return primfn.primDFS(graph, roots, max_depth);
 }
 
 std::vector<MST_rt>
 primDD(pgrouting::UndirectedGraph &graph, const std::set<int64_t>& roots, double distance) {
-    using Prim = pgrouting::algorithms::Pgr_prim<pgrouting::UndirectedGraph>;
-    Prim prim;
-    return prim.primDD(graph, roots, distance);
+    Prim primfn;
+    return primfn.primDD(graph, roots, distance);
 }
 
 }  // namespace functions

@@ -265,14 +265,18 @@ get_tuples(
     if (count == 0) return 0;
 
     for (size_t i = 0; i < count; i++) {
-        auto row = tuples[i];
+        const auto& row = tuples[i];
         /* given the depth assign the correct depth */
         int64_t depth = -1;
         for (const auto &d : depths) {
             /* look for the correct path */
             auto itr = d.find(row.from_v);
             if (itr == d.end() || !(itr->second == 0)) continue;
-            depth = d.at(row.node);
+            auto node_itr = d.find(row.node);
+            if (node_itr != d.end()) {
+                depth = node_itr->second;
+            }
+            break;
         }
         tuples[i].depth = depth;
     }

@@ -40,7 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/utilities.hpp"
 #include "cpp_common/to_postgres.hpp"
-#include "withPoints/withPoints.hpp"
 
 #include "spanningTree/prim.hpp"
 #include "spanningTree/kruskal.hpp"
@@ -156,11 +155,7 @@ do_spanningTree(
         bool normal = true;
         auto roots = get_intSet(starts);
 
-        std::string enop;
-        std::string eofp;
         std::vector<Edge_t> edges;
-        std::vector<Edge_t> edges_of_points;
-        std::vector<Point_on_edge_t> points;
 
         hint = edges_sql;
         edges = get_edges(edges_sql, normal, false);
@@ -170,13 +165,13 @@ do_spanningTree(
             notice << "No edges found";
             log << edges_sql;
 
+            /* TODO(later) standardize BFS */
             if (which == BFS) return;
 
             auto emptyresults = pgrouting::only_root_result(roots);
             return_count = get_tuples(emptyresults, return_tuples);
             return;
         }
-        hint = "";
 
         std::vector<MST_rt> results;
         std::deque<Path> paths;
