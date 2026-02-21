@@ -92,6 +92,18 @@ get_name(Which which) {
         case DIJKSTRADD:
             return "pgr_drivingDistance";
             break;
+        case MAXFLOW:
+            return "pgr_maxFlow";
+            break;
+        case PUSHRELABEL:
+            return "pgr_pushRelabel";
+            break;
+        case BOYKOV:
+            return "pgr_boykovKolmogorov";
+            break;
+        case EDMONDSKARP:
+            return "pgr_edmondsKarp";
+            break;
         default:
             return "unknown";
             break;
@@ -210,6 +222,13 @@ only_root_result(const std::set<int64_t> &vids) {
     for (auto const root : vids) {
         if (root != 0) results.push_back({root, 0, root, root, -1, 0.0, 0.0});
     }
+    return results;
+}
+
+std::vector<Flow_t>
+only_maxFlow_result(int64_t maxFlow) {
+    std::vector<Flow_t> results;
+    results.push_back({-1, -1, -1, maxFlow, -1, 0, 0});
     return results;
 }
 

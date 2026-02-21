@@ -182,5 +182,13 @@ get_combinations(
     return result;
 }
 
+std::map<int64_t , std::set<int64_t>>
+get_combinations(
+        const std::string &combinations_sql,
+        ArrayType* startsArr, ArrayType* endsArr, bool normal) {
+    bool is_matrix = false;
+    return get_combinations(combinations_sql, startsArr, endsArr, normal, is_matrix);
+}
+
 }  // namespace utilities
 }  // namespace pgrouting
