@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: max_flow_driver.cpp
+File: maxFlow_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015-2026 pgRouting developers
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/max_flow/max_flow_driver.h"
+#include "drivers/maxFlow_driver.hpp"
 
 #include <sstream>
 #include <vector>
@@ -36,51 +36,46 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "max_flow/maxflow.hpp"
 
-#include "cpp_common/combinations.hpp"
+#include "c_types/flow_t.h"
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/assert.hpp"
-#include "cpp_common/alloc.hpp"
+#include "cpp_common/utilities.hpp"
+#include "cpp_common/to_postgres.hpp"
+#include "cpp_common/combinations.hpp"
 
-#include "c_types/ii_t_rt.h"
+namespace pgrouting {
+namespace drivers {
 
 void
-pgr_do_max_flow(
-        const char *edges_sql,
-        const char *combinations_sql,
+do_maxFlow(
+        const std::string &edges_sql,
+        const std::string &combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
 
-        int algorithm,
-        bool only_flow,
-
-        Flow_t **return_tuples, size_t *return_count,
-        char** log_msg,
-        char** notice_msg,
-        char **err_msg) {
-    using pgrouting::pgr_alloc;
-    using pgrouting::to_pg_msg;
-    using pgrouting::pgr_free;
-    using pgrouting::utilities::get_combinations;
-
-    std::ostringstream log;
-    std::ostringstream notice;
-    std::ostringstream err;
-    const char *hint = nullptr;
+        Which which,
+        Flow_t* &return_tuples, size_t &return_count,
+        std::ostringstream &log,
+        std::ostringstream &notice,
+        std::ostringstream &err) {
+    std::string hint = "";
 
     try {
-        pgassert(!(*log_msg));
-        pgassert(!(*notice_msg));
-        pgassert(!(*err_msg));
-        pgassert(!(*return_tuples));
-        pgassert(*return_count == 0);
+        if (edges_sql.empty()) {
+            err << "Empty edges SQL";
+            return;
+        }
+
+        using pgget::get_flow_edges;
+        using utilities::get_combinations;
+        using to_postgres::get_tuples;
 
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, true);
-        hint = nullptr;
+        hint = "";
 
-        if (combinations.empty() && combinations_sql) {
-            *notice_msg = to_pg_msg("No (source, target) pairs found");
-            *log_msg = to_pg_msg(combinations_sql);
+        if (combinations.empty() && !combinations_sql.empty()) {
+            notice << "No (source, target) pairs found";
+            log << combinations_sql;
             return;
         }
 
@@ -95,78 +90,57 @@ pgr_do_max_flow(
         vertices.insert(targets.begin(), targets.end());
 
         if (vertices.size() != (sources.size() + targets.size())) {
-            *err_msg = to_pg_msg("A source found as sink");
+            err << "A source found as sink";
             return;
         }
 
         hint = edges_sql;
-        auto edges = pgrouting::pgget::get_flow_edges(std::string(edges_sql));
-        hint = nullptr;
+        auto edges = get_flow_edges(edges_sql);
+        hint = "";
 
         if (edges.empty()) {
-            *notice_msg = to_pg_msg("No edges found");
-            *log_msg = to_pg_msg(edges_sql);
+            notice << "No edges found";
+            log << edges_sql;
             return;
         }
 
 
-        pgrouting::graph::PgrFlowGraph digraph(
-                edges, sources, targets, algorithm);
-        // digraph.create_flow_graph(edges, sources, targets, algorithm);
+        pgrouting::graph::PgrFlowGraph digraph(edges, sources, targets, which);
 
         int64_t max_flow = 0;
-        if (algorithm == 1) {
-            max_flow = digraph.push_relabel();
-        } else if (algorithm == 3) {
-            max_flow = digraph.edmonds_karp();
-        } else if (algorithm == 2) {
-            max_flow = digraph.boykov_kolmogorov();
-        } else {
-            log << "Unspecified algorithm!\n";
-            *err_msg = to_pg_msg(log);
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            return;
+        switch (which) {
+            case MAXFLOW:
+            case PUSHRELABEL:
+                max_flow = digraph.push_relabel();
+                break;
+            case EDMONDSKARP:
+                max_flow = digraph.edmonds_karp();
+                break;
+            case BOYKOV:
+                max_flow = digraph.boykov_kolmogorov();
+                break;
+            default:
+                err << "Unknown flow function" << get_name(which);
+                return;
         }
 
+        auto flow_edges = which == MAXFLOW? only_maxFlow_result(max_flow) : digraph.get_flow_edges();
 
-        std::vector<Flow_t> flow_edges;
-
-        if (only_flow) {
-            Flow_t edge = {-1, -1, -1, max_flow, -1, 0, 0};
-            flow_edges.push_back(edge);
-        } else {
-            flow_edges = digraph.get_flow_edges();
-        }
-        (*return_tuples) = pgr_alloc(flow_edges.size(), (*return_tuples));
-        for (size_t i = 0; i < flow_edges.size(); ++i) {
-            (*return_tuples)[i] = flow_edges[i];
-        }
-        *return_count = flow_edges.size();
-
-
-        *log_msg = to_pg_msg(log);
-        *notice_msg = to_pg_msg(notice);
+        return_count = get_tuples(flow_edges, return_tuples);
     } catch (AssertFailedException &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
-    } catch (std::exception &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
-        err << except.what();
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
+    } catch (const std::pair<std::string, std::string>& ex) {
+        err << ex.first;
+        log << ex.second;
     } catch (const std::string &ex) {
-        *err_msg = to_pg_msg(ex);
-        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log);
-    } catch(...) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
+        err << ex;
+        log << hint;
+    } catch (std::exception &except) {
+        err << except.what();
+    } catch (...) {
         err << "Caught unknown exception!";
-        *err_msg = to_pg_msg(err);
-        *log_msg = to_pg_msg(log);
     }
 }
+
+}  // namespace drivers
+}  // namespace pgrouting

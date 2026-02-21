@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: max_flow_driver.h
+File: maxFlow_process.h
 
 Generated with Template by:
 Copyright (c) 2007-2026 pgRouting developers
@@ -27,49 +27,38 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_MAX_FLOW_MAX_FLOW_DRIVER_H_
-#define INCLUDE_DRIVERS_MAX_FLOW_MAX_FLOW_DRIVER_H_
+#ifndef INCLUDE_PROCESS_MAXFLOW_PROCESS_H_
+#define INCLUDE_PROCESS_MAXFLOW_PROCESS_H_
 #pragma once
 
 #ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <postgres.h>
-#include <utils/array.h>
-
-#ifdef __cplusplus
-}
-#endif
-
-#include "cpp_common/undefPostgresDefine.hpp"
-
-#ifdef __cplusplus
-#   include <cstddef>
-#   include <cstdint>
+#include <cstddef>
+#include <cstdint>
 using Flow_t = struct Flow_t;
+using ArrayType = struct ArrayType;
 #else
-#   include <stddef.h>
-#   include <stdint.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
 typedef struct Flow_t Flow_t;
+typedef struct ArrayType ArrayType;
 #endif
+
+#include "c_common/enums.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void pgr_do_max_flow(
-        const char*,
-        const char*,
+void pgr_process_maxFlow(
+        const char*, const char*,
         ArrayType*, ArrayType*,
 
-        int, bool,
-
-        Flow_t**, size_t*,
-        char**, char**, char**);
+        enum Which,
+        Flow_t**, size_t*);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_MAX_FLOW_MAX_FLOW_DRIVER_H_
+#endif  // INCLUDE_PROCESS_MAXFLOW_PROCESS_H_
