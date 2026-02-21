@@ -38,7 +38,13 @@ enum Which {
     /** metrics **/
     BANDWIDTH,
     /** with edges that have x y */
-    ASTAR = 400, BDASTAR
+    ASTAR = 400, BDASTAR,
+    /** For spanning tree like results */
+    KRUSKAL = 500, KRUSKALDD, KRUSKALDFS, KRUSKALBFS,
+    PRIM = 510, PRIMDD, PRIMDFS, PRIMBFS,
+    DFS = 520,
+    BFS = 530,
+    DIJKSTRADD = 540
 };
 
 #endif  // INCLUDE_C_COMMON_ENUMS_H_

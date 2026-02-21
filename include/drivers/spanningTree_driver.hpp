@@ -1,11 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: mst_common.h
+File: spanningTree_driver.hpp
 
-Copyright (c) 2007-2026 pgRouting developers
+Copyright (c) 2026-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2018 Vicky Vergara
-Mail: vicky at georepublic dot de
+Design of one process & driver file by
+Copyright (c) 2026 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -25,33 +26,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_SPANNINGTREE_MST_COMMON_H_
-#define INCLUDE_DRIVERS_SPANNINGTREE_MST_COMMON_H_
-#pragma once
+#ifndef INCLUDE_DRIVERS_SPANNINGTREE_DRIVER_HPP_
+#define INCLUDE_DRIVERS_SPANNINGTREE_DRIVER_HPP_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <cstddef>
+#include <cstdint>
+#include <string>
+#include <sstream>
 
-/**
- * @brief defines ordering
- *
- * @param[in] fn_suffix
- * @param[in] err_msg
- *
- * @return
- * 0 = no matter
- * 1 = DFS
- * 2 = BFS
- */
-int
-get_order(char * fn_suffix, char ** err_msg);
+#include "c_common/enums.h"
 
-char *
-get_name(int fn_id, char * fn_suffix, char ** err_msg);
+using MST_rt = struct MST_rt;
+using ArrayType = struct ArrayType;
 
-#ifdef __cplusplus
-}
-#endif
+namespace pgrouting {
+namespace drivers {
 
-#endif  // INCLUDE_DRIVERS_SPANNINGTREE_MST_COMMON_H_
+void do_spanningTree(
+        const std::string&,
+        ArrayType*,
+
+        bool, int64_t, double, bool,
+
+        Which,
+        MST_rt*&, size_t&,
+        std::ostringstream&, std::ostringstream&, std::ostringstream&);
+
+}  // namespace drivers
+}  // namespace pgrouting
+
+#endif  // INCLUDE_DRIVERS_SPANNINGTREE_DRIVER_HPP_

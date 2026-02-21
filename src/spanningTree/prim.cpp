@@ -1,8 +1,7 @@
 /*PGR-GNU*****************************************************************
-File: kruskal_driver.h
+File: prim.cpp
 
-Generated with Template by:
-Copyright (c) 2007-2026 pgRouting developers
+Copyright (c) 2026-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -27,48 +26,38 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_SPANNINGTREE_KRUSKAL_DRIVER_H_
-#define INCLUDE_DRIVERS_SPANNINGTREE_KRUSKAL_DRIVER_H_
-#pragma once
+#include "spanningTree/prim.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <vector>
+#include <set>
 
-#include <postgres.h>
-#include <utils/array.h>
+namespace pgrouting {
+namespace functions {
 
-#ifdef __cplusplus
+using Prim = pgrouting::algorithms::Pgr_prim<pgrouting::UndirectedGraph>;
+
+std::vector<MST_rt>
+prim(pgrouting::UndirectedGraph &graph) {
+    Prim primfn;
+    return primfn.prim(graph);
 }
-#endif
 
-#include "cpp_common/undefPostgresDefine.hpp"
-
-#ifdef __cplusplus
-#   include <cstddef>
-#   include <cstdint>
-using MST_rt = struct MST_rt;
-#else
-#   include <stddef.h>
-#   include <stdint.h>
-typedef struct MST_rt MST_rt;
-#endif
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-void pgr_do_kruskal(
-        const char*,
-        ArrayType*,
-
-        const char*, int64_t, double,
-
-        MST_rt**, size_t*,
-        char**, char**, char**);
-
-#ifdef __cplusplus
+std::vector<MST_rt>
+primBFS(pgrouting::UndirectedGraph &graph, const std::set<int64_t>& roots, int64_t max_depth) {
+    Prim primfn;
+    return primfn.primBFS(graph, roots, max_depth);
 }
-#endif
+std::vector<MST_rt>
+primDFS(pgrouting::UndirectedGraph &graph, const std::set<int64_t>& roots, int64_t max_depth) {
+    Prim primfn;
+    return primfn.primDFS(graph, roots, max_depth);
+}
 
-#endif  // INCLUDE_DRIVERS_SPANNINGTREE_KRUSKAL_DRIVER_H_
+std::vector<MST_rt>
+primDD(pgrouting::UndirectedGraph &graph, const std::set<int64_t>& roots, double distance) {
+    Prim primfn;
+    return primfn.primDD(graph, roots, distance);
+}
+
+}  // namespace functions
+}  // namespace pgrouting

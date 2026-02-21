@@ -1,11 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: details.hpp
+File: spanningTree_process.h
 
-Copyright (c) 2015-2026 pgRouting developers
+Copyright (c) 2026-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2018 Vicky Vergara
-
+Design of one process & driver file by
+Copyright (c) 2026 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -25,26 +26,41 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_SPANNINGTREE_DETAILS_HPP_
-#define INCLUDE_SPANNINGTREE_DETAILS_HPP_
+#ifndef INCLUDE_PROCESS_SPANNINGTREE_PROCESS_H_
+#define INCLUDE_PROCESS_SPANNINGTREE_PROCESS_H_
 #pragma once
 
-#include <vector>
+#ifdef __cplusplus
+#include <cstddef>
 #include <cstdint>
+using MST_rt = struct MST_rt;
+using ArrayType = struct ArrayType;
+#else
+#include <stddef.h>
+#include <stdint.h>
+typedef struct MST_rt MST_rt;
+typedef struct ArrayType ArrayType;
+#endif
 
-#include "c_types/mst_rt.h"
+#include "c_common/enums.h"
 
-namespace pgrouting {
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-namespace details {
+void pgr_process_spanningTree(
+        const char*,
+        ArrayType*,
 
-std::vector<int64_t>
-clean_vids(std::vector<int64_t> vids);
+        bool, int64_t, double, bool,
 
-std::vector<MST_rt>
-get_no_edge_graph_result(const std::vector<int64_t> &vids);
+        const char*,
+        enum Which,
 
-}  // namespace details
-}  // namespace pgrouting
+        MST_rt**, size_t*);
 
-#endif  // INCLUDE_SPANNINGTREE_DETAILS_HPP_
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // INCLUDE_PROCESS_SPANNINGTREE_PROCESS_H_

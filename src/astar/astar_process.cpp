@@ -92,6 +92,8 @@ void pgr_process_astar(
     time_msg(name.c_str(), start_t, clock());
 
     if (!err.str().empty() && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = nullptr;
         (*result_count) = 0;
     }
 
