@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/routes_t.h"
 #include "c_types/path_rt.h"
 #include "c_types/mst_rt.h"
+#include "c_types/flow_t.h"
 
 #include "cpp_common/path.hpp"
 #include "cpp_common/base_graph.hpp"
@@ -67,6 +68,11 @@ size_t get_tuples(const std::deque<pgrouting::Path>&, Path_rt*&);
  * @brief get tuples from a Path to a MST_rt
  */
 size_t get_tuples(const std::deque<pgrouting::Path>&, MST_rt*&);
+
+/*
+ * @brief get tuples for Flow_t
+ */
+size_t get_tuples(const std::vector<Flow_t>&, Flow_t*&);
 
 /*
  * @brief get tuples for spanning tree driver
