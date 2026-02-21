@@ -131,7 +131,7 @@ class Pgr_prim : public Pgr_mst<G> {
               */
              if (u == v) continue;
 
-             auto cost = distances[u] - distances[v];
+             auto cost = distances[v] - distances[u];
              auto edge = graph.get_edge(u, v, cost);
              this->m_spanning_tree.edges.insert(edge);
          }
