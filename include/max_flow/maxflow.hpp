@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/flow_t.h"
 #include "cpp_common/edge_t.hpp"
+#include "c_common/enums.h"
 #include "c_types/path_rt.h"
 #include "cpp_common/interruption.hpp"
 
@@ -107,10 +108,10 @@ class PgrFlowGraph {
      }
 
      PgrFlowGraph(
-             const std::vector<Edge_t> &edges,
-             const std::set<int64_t> &source_vertices,
-             const std::set<int64_t> &sink_vertices,
-             int algorithm);
+             const std::vector<Edge_t>&,
+             const std::set<int64_t>&,
+             const std::set<int64_t>&,
+             Which);
 
      PgrFlowGraph(
              const std::vector<Edge_t> &edges,
