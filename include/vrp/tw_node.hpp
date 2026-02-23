@@ -226,7 +226,7 @@ class Tw_node : public Dnode {
      double m_closes{};       ///< closing time of the node
      double m_service_time{};  // /< time it takes to be served
      double m_demand{};       ///< The demand for the Node
-     NodeType m_type{};       ///< The demand for the Node
+     NodeType m_type{};       ///< The type for the Node
 };
 
 }  //  namespace vrp
