@@ -254,10 +254,10 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
 
  private:
      std::vector<pgrouting::trsp::Rule> m_restrictions;
-     bool m_strict;
+     bool m_strict{};
      pSet m_solutions;
-     bool m_stop_on_first;
-     bool m_heap_paths;
+     bool m_stop_on_first{};
+     bool m_heap_paths{};
 };
 
 }  // namespace yen

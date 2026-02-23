@@ -68,7 +68,7 @@ II_t_rt fetch_combination(
         int64_t*,
         size_t*,
         bool) {
-    II_t_rt combination;
+    II_t_rt combination{};
     combination.d1.source = getBigInt(tuple, tupdesc, info[0]);
     combination.d2.target = getBigInt(tuple, tupdesc, info[1]);
     return combination;
@@ -81,7 +81,7 @@ Coordinate_t fetch_coordinate(
         int64_t *default_id,
         size_t*,
         bool) {
-    Coordinate_t coordinate;
+    Coordinate_t coordinate{};
     if (column_found(info[0].colNumber)) {
         coordinate.id = getBigInt(tuple, tupdesc, info[0]);
     } else {
@@ -100,7 +100,7 @@ Delauny_t fetch_delauny(
         int64_t*,
         size_t*,
         bool) {
-    Delauny_t delauny;
+    Delauny_t delauny{};
     delauny.tid = getBigInt(tuple, tupdesc, info[0]);
     delauny.pid = getBigInt(tuple, tupdesc, info[1]);
     delauny.x = getFloat8(tuple, tupdesc, info[2]);
@@ -117,7 +117,7 @@ Edge_bool_t fetch_basic_edge(
         int64_t *default_id,
         size_t *valid_edges,
         bool) {
-    Edge_bool_t edge;
+    Edge_bool_t edge{};
     if (column_found(info[0].colNumber)) {
         edge.id = getBigInt(tuple, tupdesc, info[0]);
     } else {
@@ -150,7 +150,7 @@ Edge_t fetch_edge(
         int64_t *default_id,
         size_t *valid_edges,
         bool normal) {
-    Edge_t edge;
+    Edge_t edge{};
     if (column_found(info[0].colNumber)) {
         edge.id = getBigInt(tuple, tupdesc, info[0]);
     } else {
@@ -194,7 +194,7 @@ CostFlow_t fetch_costFlow_edge(
         int64_t *default_id,
         size_t *valid_edges,
         bool normal) {
-    CostFlow_t edge;
+    CostFlow_t edge{};
     if (column_found(info[0].colNumber)) {
         edge.edge_id = getBigInt(tuple, tupdesc, info[0]);
     } else {
@@ -236,7 +236,7 @@ Edge_xy_t fetch_edge_xy(
         int64_t *default_id,
         size_t *valid_edges,
         bool normal) {
-    Edge_xy_t edge;
+    Edge_xy_t edge{};
     if (column_found(info[0].colNumber)) {
         edge.id = getBigInt(tuple, tupdesc, info[0]);
     } else {
@@ -276,7 +276,7 @@ IID_t_rt pgr_fetch_row(
         int64_t*,
         size_t*,
         bool) {
-    IID_t_rt distance;
+    IID_t_rt distance{};
     distance.from_vid = getBigInt(tuple, tupdesc,  info[0]);
     distance.to_vid = getBigInt(tuple, tupdesc,  info[1]);
     distance.cost = getFloat8(tuple, tupdesc, info[2]);
@@ -291,7 +291,7 @@ Orders_t fetch_orders(
         int64_t*,
         size_t*,
         bool with_id) {
-    Orders_t pd_order;
+    Orders_t pd_order{};
     pd_order.id = getBigInt(tuple, tupdesc, info[0]);
     pd_order.demand = getFloat8(tuple, tupdesc, info[1]);
 
@@ -334,7 +334,7 @@ Restriction_t fetch_restriction(
         int64_t*,
         size_t*,
         bool) {
-    Restriction_t restriction;
+    Restriction_t restriction{};
     restriction.cost = getFloat8(tuple, tupdesc, info[0]);
 
     restriction.via = NULL;
@@ -377,7 +377,7 @@ Vehicle_t fetch_vehicle(
         int64_t*,
         size_t*,
         bool with_id) {
-    Vehicle_t vehicle;
+    Vehicle_t vehicle{};
     vehicle.id = getBigInt(tuple, tupdesc, info[0]);
     vehicle.capacity = getFloat8(tuple, tupdesc, info[1]);
 

@@ -720,7 +720,7 @@ class Pgr_base_graph {
       * @return edge data
       */
      T_E get_edge_info(const E &e) const {
-         T_E d_edge;
+         T_E d_edge{};
          d_edge.id = graph[e].id;
          d_edge.source = graph[source(e)].id;
          d_edge.target = graph[target(e)].id;

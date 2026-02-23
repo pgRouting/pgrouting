@@ -63,10 +63,10 @@ class CH_edge {
      friend std::ostream& operator <<(std::ostream& os, const CH_edge& e);
 
  public:
-     int64_t id;
-     int64_t source;
-     int64_t target;
-     double cost;
+     int64_t id{};
+     int64_t source{};
+     int64_t target{};
+     double cost{};
 
  private:
      Identifiers<int64_t> m_contracted_vertices;
