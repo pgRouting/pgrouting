@@ -224,7 +224,7 @@ class Tw_node : public Dnode {
      int64_t m_order{};       ///< order to which it belongs
      double m_opens{};        ///< opening time of the node
      double m_closes{};       ///< closing time of the node
-     double m_service_time{};  // /< time it takes to be served
+     double m_service_time{};  ////< time it takes to be served
      double m_demand{};       ///< The demand for the Node
      NodeType m_type{};       ///< The type for the Node
 };
