@@ -41,5 +41,5 @@ LANGUAGE plpgsql VOLATILE;
 
 
 SELECT * FROM test_function();
-SELECT finish();
+SELECT * FROM finish();
 ROLLBACK;
