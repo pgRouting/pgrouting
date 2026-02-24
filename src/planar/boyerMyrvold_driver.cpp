@@ -33,13 +33,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <string>
 
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/alloc.hpp"
+#include "cpp_common/assert.hpp"
 #include "cpp_common/pgdata_getters.hpp"
 #include "c_types/iid_t_rt.h"
 
-#include "planar/pgr_boyerMyrvold.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "planar/boyerMyrvold.hpp"
+#include "cpp_common/base_graph.hpp"
 
 
 
@@ -71,8 +71,6 @@ pgr_do_boyerMyrvold(
         std::vector<IID_t_rt> results;
         std::string logstr;
 
-        graphType gType = UNDIRECTED;
-
         hint = edges_sql;
         auto edges = get_edges(std::string(edges_sql), true, true);
 
@@ -82,7 +80,7 @@ pgr_do_boyerMyrvold(
         hint = nullptr;
 
         log << "Working with Undirected Graph\n";
-        pgrouting::UndirectedGraph undigraph(directed);
+        pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
         pgrouting::functions::Pgr_boyerMyrvold<pgrouting::UndirectedGraph> fn_boyerMyrvold;
         results = fn_boyerMyrvold.boyerMyrvold(undigraph);

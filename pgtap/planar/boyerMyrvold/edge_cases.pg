@@ -1,0 +1,154 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2018-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.2.0') THEN plan (12) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.2.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 3.2.0');
+  RETURN;
+END IF;
+
+-- 0 edge, 0 vertex tests
+
+PREPARE q1 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edges
+WHERE id > 18;
+
+-- Graph is empty - it has 0 edge and 0 vertex
+RETURN QUERY
+SELECT is_empty('q1', 'q1: Graph with 0 edge and 0 vertex');
+
+-- boyerMyrvold throws "No edges found" error for empty input
+PREPARE zeroEdgeTest2 AS
+SELECT *
+FROM pgr_boyerMyrvold('SELECT id, source, target, cost, reverse_cost FROM edges WHERE id > 18');
+
+RETURN QUERY
+SELECT throws_ok('zeroEdgeTest2', NULL, '2: Empty graph throws error');
+
+
+-- vertex not present in graph test
+
+PREPARE q3 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE source = 50;
+
+RETURN QUERY
+SELECT is_empty('q3','3: Vertex 50 does not exist in sample data');
+
+PREPARE vertexNotPresent4 AS
+SELECT *
+FROM pgr_boyerMyrvold('SELECT id, source, target, cost, reverse_cost FROM edges WHERE source = 50');
+
+RETURN QUERY
+SELECT throws_ok('vertexNotPresent4', NULL, '4: Vertex not present -> throws error');
+
+
+-- 1 vertex test (self-loop)
+
+PREPARE q5 AS
+SELECT id, source, source AS target, cost, reverse_cost
+FROM edges
+WHERE id = 9;
+
+-- Graph with only vertex 9 (self-loop)
+RETURN QUERY
+SELECT set_eq('q5', $$VALUES (9, 11, 11, 1, 1)$$, 'q5: source<->source');
+
+PREPARE oneVertexTest6 AS
+SELECT *
+FROM pgr_boyerMyrvold('SELECT id, source, source AS target, cost, reverse_cost FROM edges WHERE id = 9');
+
+-- Self-loop: planar, returns rows in embedding
+RETURN QUERY
+SELECT isnt_empty('oneVertexTest6', '6: source-source: planar, returns rows');
+
+
+-- 2 vertices tests
+
+PREPARE q9 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edges
+WHERE id = 1;
+
+RETURN QUERY
+SELECT set_eq('q9', $$VALUES (1, 5, 6, 1, 1)$$, 'q9: u<->v');
+
+PREPARE twoVerticesTest10 AS
+SELECT *
+FROM pgr_boyerMyrvold('SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 1');
+
+RETURN QUERY
+SELECT isnt_empty('twoVerticesTest10', '10: simple edge: planar, returns rows');
+
+
+-- Full sample graph (planar)
+PREPARE fullGraphTest11 AS
+SELECT *
+FROM pgr_boyerMyrvold('SELECT id, source, target, cost, reverse_cost FROM edges');
+
+RETURN QUERY
+SELECT isnt_empty('fullGraphTest11', '11: sample graph is planar, must return rows');
+
+
+-- Non-planar graph (K5: complete graph on 5 vertices)
+-- K5 has nodes 1-5 and all (5 choose 2) = 10 edges
+PREPARE k5Test12 AS
+SELECT * FROM pgr_boyerMyrvold(
+$$SELECT row_number() OVER () AS id,
+         a AS source, b AS target,
+         1.0 AS cost, 1.0 AS reverse_cost
+  FROM generate_series(1,5) a, generate_series(1,5) b
+  WHERE a < b$$
+);
+
+RETURN QUERY
+SELECT is_empty('k5Test12', '12: K5 is NOT planar -> 0 rows (no embedding possible)');
+
+
+-- 4 vertices cyclic (planar)
+
+PREPARE q13 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edges
+WHERE id IN (8, 10, 11, 12);
+
+RETURN QUERY
+SELECT set_eq('q13',
+    $$VALUES
+        (8, 7, 11, 1, 1),
+        (10, 7, 8, 1, 1),
+        (11, 11, 12, 1, -1),
+        (12, 8, 12, 1, -1)
+    $$,
+    'q13: 8<->7<->11->12->8'
+);
+
+PREPARE fourVerticesCyclicTest14 AS
+SELECT *
+FROM pgr_boyerMyrvold('SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (8, 10, 11, 12)');
+
+RETURN QUERY
+SELECT isnt_empty('fourVerticesCyclicTest14', '14: cyclic 4-vertex planar graph returns rows');
+
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT * FROM finish();
+ROLLBACK;

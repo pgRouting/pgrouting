@@ -1,0 +1,31 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2020-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.2.0') THEN plan (54) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION inner_query()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.2.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 3.2.0');
+  RETURN;
+END IF;
+
+RETURN QUERY SELECT style_dijkstra('pgr_boyermyrvold(', ')');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT inner_query();
+
+SELECT finish();
+ROLLBACK;

@@ -1,0 +1,32 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2018-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+SELECT CASE WHEN min_version('3.2.0') THEN plan (3) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.2.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 3.2.0');
+  RETURN;
+END IF;
+
+RETURN QUERY SELECT has_function('pgr_boyermyrvold');
+RETURN QUERY SELECT has_function('pgr_boyermyrvold', ARRAY['text']);
+RETURN QUERY SELECT function_returns('pgr_boyermyrvold', ARRAY['text'], 'setof record');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT types_check();
+
+SELECT * FROM finish();
+ROLLBACK;
