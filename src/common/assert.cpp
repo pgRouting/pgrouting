@@ -44,8 +44,8 @@ std::string get_backtrace() {
         void *trace[16];
         int i = 0, trace_size = 0;
 
-        trace_size = backtrace(trace, 16);
-        char** funcNames = backtrace_symbols(trace, trace_size);
+        trace_size = backtrace(static_cast<void**>(trace), 16);
+        char** funcNames = backtrace_symbols(static_cast<void**>(trace), trace_size);
 
 
         std::string message = "\n*** Execution path***\n";
