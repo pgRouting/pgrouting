@@ -5,16 +5,16 @@
 
 BEGIN;
 
-SELECT CASE WHEN min_version('3.2.0') THEN plan (3) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.1.0') THEN plan (3) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION types_check()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-IF NOT min_version('3.2.0') THEN
+IF NOT min_version('4.1.0') THEN
   RETURN QUERY
-  SELECT skip(1, 'Function is new on 3.2.0');
+  SELECT skip(1, 'Function is new on 4.1.0');
   RETURN;
 END IF;
 
