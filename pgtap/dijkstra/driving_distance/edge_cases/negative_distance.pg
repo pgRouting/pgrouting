@@ -1,0 +1,45 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2025-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.6.0') THEN plan(3) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION test_function()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+    IF min_version('3.6.0') THEN
+        -- Test negative distance throws error
+        SELECT throws_ok(
+            $$SELECT * FROM pgr_drivingDistance('SELECT id, source, target, cost FROM edges', 1, -1.0)$$,
+            'XX000',
+            'Invalid value of ''distance''',
+            'SHOULD THROW because distance is negative'
+        );
+
+        -- Test zero distance throws error  
+        SELECT throws_ok(
+            $$SELECT * FROM pgr_drivingDistance('SELECT id, source, target, cost FROM edges', 1, 0.0)$$,
+            'XX000',
+            'Invalid value of ''distance''',
+            'SHOULD THROW because distance is zero'
+        );
+
+        -- Test positive distance works (regression test)
+        SELECT lives_ok(
+            $$SELECT * FROM pgr_drivingDistance('SELECT id, source, target, cost FROM edges', 1, 1.0)$$,
+            'SHOULD NOT THROW because distance is positive'
+        );
+    ELSE
+        SELECT skip(1, 'Function standardized on 3.6.0');
+    END IF;
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT * FROM test_function();
+SELECT * FROM finish();
+ROLLBACK;

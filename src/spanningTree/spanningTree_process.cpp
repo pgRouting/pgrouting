@@ -79,8 +79,8 @@ void pgr_process_spanningTree(
 
             switch (val) {
                 case 1:
-                    if (distance < 0) {
-                        pgr_throw_error("Negative value found on 'distance'", "Must be non negative");
+                    if (distance <= 0) {
+                        pgr_throw_error("Invalid value of 'distance'", "Valid values are greater than 0");
                     }
                     break;
                 case 2:
@@ -102,8 +102,8 @@ void pgr_process_spanningTree(
             break;
 
         case DIJKSTRADD:
-            if (distance < 0) {
-                pgr_throw_error("Negative value found on 'distance'", "Must be positive");
+            if (distance <= 0) {
+                pgr_throw_error("Invalid value of 'distance'", "Valid values are greater than 0");
             }
             break;
 
