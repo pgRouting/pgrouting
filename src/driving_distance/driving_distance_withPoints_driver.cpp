@@ -72,7 +72,7 @@ pgr_do_withPointsDD(
     using pgrouting::utilities::get_combinations;
     using pgrouting::pgget::get_points;
     using pgrouting::pgget::get_edges;
-    using pgrouting::algorithm::drivingDistance;
+    using pgrouting::functions::drivingDistance;
 
     std::ostringstream log;
     std::ostringstream notice;

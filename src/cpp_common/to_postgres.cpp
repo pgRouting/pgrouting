@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <cstddef>
 #include <deque>
+#include <map>
 #include <vector>
 #include <limits>
 #include <cmath>
@@ -98,7 +99,7 @@ void get_path(
         const pgrouting::Path &path,
         MST_rt* &tuples,
         size_t &sequence) {
-    for (const auto e : path) {
+    for (const auto &e : path) {
         tuples[sequence] = {
             path.start_id(),
             0,
@@ -222,6 +223,65 @@ get_tuples(
         }
     }
     return sequence;
+}
+
+size_t
+get_tuples(
+        const std::vector<MST_rt> &results,
+        MST_rt* &tuples) {
+    pgassert(!tuples);
+
+    auto count = results.size();
+    if (count == 0) return 0;
+
+    tuples = pgr_alloc(count, tuples);
+
+    for (size_t i = 0; i < count; i++) {
+        tuples[i] = results[i];
+    }
+    return count;
+}
+
+
+size_t
+get_tuples(
+        const std::vector<MST_rt> &results,
+        const std::deque<pgrouting::Path> &paths,
+        const std::vector<std::map<int64_t, int64_t>>& depths,
+        MST_rt* &tuples) {
+    pgassert(!tuples);
+
+    if (!results.empty()) {
+        /*
+         * These are not driving distance results
+         */
+        return get_tuples(results, tuples);
+    }
+
+    /*
+     * This are the driving distance results
+     */
+    auto count = get_tuples(paths, tuples);
+    if (count == 0) return 0;
+
+    for (size_t i = 0; i < count; i++) {
+        const auto& row = tuples[i];
+        /* given the depth assign the correct depth */
+        int64_t depth = -1;
+        for (const auto &d : depths) {
+            /* look for the correct path */
+            auto itr = d.find(row.from_v);
+            if (itr == d.end() || !(itr->second == 0)) continue;
+            auto node_itr = d.find(row.node);
+            if (node_itr != d.end()) {
+                depth = node_itr->second;
+            }
+            break;
+        }
+        tuples[i].depth = depth;
+    }
+
+    return count;
 }
 
 }  // namespace to_postgres

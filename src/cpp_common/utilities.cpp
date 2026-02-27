@@ -24,10 +24,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/utilities.hpp"
 
+#include <set>
+#include <vector>
 #include <string>
 #include <utility>
+#include <algorithm>
 
 #include "c_common/enums.h"
+#include "c_types/mst_rt.h"
 
 namespace pgrouting {
 
@@ -54,6 +58,39 @@ get_name(Which which) {
             break;
         case BANDWIDTH:
             return "pgr_bandwidth";
+            break;
+        case KRUSKAL:
+            return "pgr_kruskal";
+            break;
+        case KRUSKALDD:
+            return "pgr_kruskalDD";
+            break;
+        case KRUSKALDFS:
+            return "pgr_kruskalDFS";
+            break;
+        case KRUSKALBFS:
+            return "pgr_kruskalBFS";
+            break;
+        case PRIM:
+            return "pgr_prim";
+            break;
+        case PRIMDD:
+            return "pgr_primDD";
+            break;
+        case PRIMDFS:
+            return "pgr_primDFS";
+            break;
+        case PRIMBFS:
+            return "pgr_primBFS";
+            break;
+        case DFS:
+            return "pgr_depthFirstSearch";
+            break;
+        case BFS:
+            return "pgr_breadthFirstSearch";
+            break;
+        case DIJKSTRADD:
+            return "pgr_drivingDistance";
             break;
         default:
             return "unknown";
@@ -148,6 +185,11 @@ get_new_queries(
         const std::string &points_sql,
         std::string &edges_of_points_query,
         std::string &edges_no_points_query) {
+    if (points_sql.empty()) {
+        edges_no_points_query = edges_sql;
+        return;
+    }
+
     edges_of_points_query = std::string("WITH ")
         + " edges AS (" + edges_sql + "), "
         + " points AS (" + points_sql + ")"
@@ -161,4 +203,14 @@ get_new_queries(
         + " WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)";
 }
 
-}  //  namespace pgrouting
+std::vector<MST_rt>
+only_root_result(const std::set<int64_t> &vids) {
+    std::vector<MST_rt> results;
+    if (vids.empty()) return results;
+    for (auto const root : vids) {
+        if (root != 0) results.push_back({root, 0, root, root, -1, 0.0, 0.0});
+    }
+    return results;
+}
+
+}  // namespace pgrouting

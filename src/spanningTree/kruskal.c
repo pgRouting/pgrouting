@@ -29,74 +29,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
 #include "c_types/mst_rt.h"
 
-#include "drivers/spanningTree/mst_common.h"
-#include "drivers/spanningTree/kruskal_driver.h"
+#include "process/spanningTree_process.h"
 
 PGDLLEXPORT Datum _pgr_kruskalv4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_kruskalv4);
 
-
-static
-void
-process(
-        char* edges_sql,
-        ArrayType *roots,
-        char * fn_suffix,
-        int64_t max_depth,
-        double distance,
-
-        MST_rt **result_tuples,
-        size_t *result_count) {
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
-
-
-    char * fn_name = get_name(0, fn_suffix, &err_msg);
-    if (err_msg) {
-        pgr_global_report(&log_msg, &notice_msg, &err_msg);
-        return;
-    }
-
-    /* checks previously done on sql now done here */
-    if (strcmp(fn_suffix, "DD") == 0 && distance < 0) {
-        pgr_throw_error("Negative value found on 'distance'", "Must be positive");
-    } else if ((strcmp(fn_suffix, "BFS") == 0 || strcmp(fn_suffix, "DFS") == 0) && max_depth < 0) {
-        pgr_throw_error("Negative value found on 'max_depth'", "Must be positive");
-    }
-
-    clock_t start_t = clock();
-    pgr_do_kruskal(
-            edges_sql,
-            roots,
-            fn_suffix,
-            max_depth,
-            distance,
-
-            result_tuples,
-            result_count,
-            &log_msg,
-            &notice_msg,
-            &err_msg);
-    time_msg(fn_name, start_t, clock());
-
-    if (err_msg) {
-        if (*result_tuples) pfree(*result_tuples);
-    }
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
 
 PGDLLEXPORT Datum _pgr_kruskalv4(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -110,12 +50,17 @@ PGDLLEXPORT Datum _pgr_kruskalv4(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        process(
+        pgr_process_spanningTree(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
-                text_to_cstring(PG_GETARG_TEXT_P(2)),
+
+                false,
                 PG_GETARG_INT64(3),
                 PG_GETARG_FLOAT8(4),
+                false,
+
+                text_to_cstring(PG_GETARG_TEXT_P(2)),
+                KRUSKAL,
                 &result_tuples,
                 &result_count);
 
@@ -143,7 +88,7 @@ PGDLLEXPORT Datum _pgr_kruskalv4(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        size_t num  = 8;
+        size_t num = 8;
         values = palloc(num * sizeof(Datum));
         nulls = palloc(num * sizeof(bool));
 
@@ -201,13 +146,17 @@ PGDLLEXPORT Datum _pgr_kruskal(PG_FUNCTION_ARGS) {
                     errhint("Consider upgrade pgRouting")));
 #endif
 
-        /* Edge sql, tree roots, fn_suffix, max_depth, distance */
-        process(
+        pgr_process_spanningTree(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
-                text_to_cstring(PG_GETARG_TEXT_P(2)),
+
+                false,
                 PG_GETARG_INT64(3),
                 PG_GETARG_FLOAT8(4),
+                false,
+
+                text_to_cstring(PG_GETARG_TEXT_P(2)),
+                KRUSKAL,
                 &result_tuples,
                 &result_count);
 

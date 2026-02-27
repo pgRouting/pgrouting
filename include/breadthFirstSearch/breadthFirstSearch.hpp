@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //******************************************
 
 namespace pgrouting {
-namespace functions {
+namespace algorithms {
 
 template <class G>
 class Pgr_breadthFirstSearch {
@@ -113,6 +113,22 @@ class Pgr_breadthFirstSearch {
          return results;
      }
 };
+
+}  // namespace algorithms
+
+namespace functions {
+
+template <class G>
+std::vector<MST_rt> breadthFirstSearch(
+        G &graph,
+        const std::set<int64_t> &roots,
+        bool,
+        int64_t max_depth) {
+    pgrouting::algorithms::Pgr_breadthFirstSearch<G> fn_breadthFirstSearch;
+    auto results = fn_breadthFirstSearch.breadthFirstSearch(graph, roots, max_depth);
+    return results;
+}
+
 }  // namespace functions
 }  // namespace pgrouting
 
