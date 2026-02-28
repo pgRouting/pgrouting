@@ -101,8 +101,8 @@ process(
 PG_FUNCTION_INFO_V1(_pgr_maxflow);
 PGDLLEXPORT Datum
 _pgr_maxflow(PG_FUNCTION_ARGS) {
-    FuncCallContext *funcctx;
-    TupleDesc tuple_desc;
+    FuncCallContext *funcctx = NULL;
+    TupleDesc tuple_desc = NULL;
 
     /**************************************************************************/
     Flow_t *result_tuples = 0;
@@ -110,7 +110,7 @@ _pgr_maxflow(PG_FUNCTION_ARGS) {
     /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
-        MemoryContext oldcontext;
+        MemoryContext oldcontext = NULL;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
@@ -168,10 +168,10 @@ _pgr_maxflow(PG_FUNCTION_ARGS) {
     result_tuples = (Flow_t *) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple tuple;
-        Datum result;
-        Datum *values;
-        bool *nulls;
+        HeapTuple tuple = NULL;
+        Datum result = 0;
+        Datum *values = NULL;
+        bool *nulls = NULL;
         size_t call_cntr = funcctx->call_cntr;
 
         /**********************************************************************/
@@ -179,7 +179,7 @@ _pgr_maxflow(PG_FUNCTION_ARGS) {
         values = palloc(6 * sizeof(Datum));
         nulls = palloc(6 * sizeof(bool));
 
-        size_t i;
+        size_t i = 0;
         for (i = 0; i < 6; ++i) {
             nulls[i] = false;
         }

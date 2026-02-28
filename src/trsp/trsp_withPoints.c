@@ -120,14 +120,14 @@ process(
 
 PGDLLEXPORT Datum
 _pgr_trsp_withpoints_v4(PG_FUNCTION_ARGS) {
-    FuncCallContext     *funcctx;
-    TupleDesc            tuple_desc;
+    FuncCallContext     *funcctx = NULL;
+    TupleDesc            tuple_desc = NULL;
 
     Path_rt *result_tuples = 0;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
-        MemoryContext   oldcontext;
+        MemoryContext   oldcontext = NULL;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
@@ -185,17 +185,17 @@ _pgr_trsp_withpoints_v4(PG_FUNCTION_ARGS) {
     result_tuples = (Path_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple    tuple;
-        Datum        result;
-        Datum        *values;
-        bool*        nulls;
+        HeapTuple    tuple = NULL;
+        Datum        result = 0;
+        Datum        *values = NULL;
+        bool*        nulls = NULL;
         size_t call_cntr = funcctx->call_cntr;
 
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
-        size_t i;
+        size_t i = 0;
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
@@ -231,14 +231,14 @@ PGDLLEXPORT Datum _pgr_trsp_withpoints(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_trsp_withpoints);
 PGDLLEXPORT Datum
 _pgr_trsp_withpoints(PG_FUNCTION_ARGS) {
-    FuncCallContext     *funcctx;
-    TupleDesc            tuple_desc;
+    FuncCallContext     *funcctx = NULL;
+    TupleDesc            tuple_desc = NULL;
 
     Path_rt *result_tuples = 0;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
-        MemoryContext   oldcontext;
+        MemoryContext   oldcontext = NULL;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
@@ -305,17 +305,17 @@ _pgr_trsp_withpoints(PG_FUNCTION_ARGS) {
     result_tuples = (Path_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple    tuple;
-        Datum        result;
-        Datum        *values;
-        bool*        nulls;
+        HeapTuple    tuple = NULL;
+        Datum        result = 0;
+        Datum        *values = NULL;
+        bool*        nulls = NULL;
         size_t call_cntr = funcctx->call_cntr;
 
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
-        size_t i;
+        size_t i = 0;
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
