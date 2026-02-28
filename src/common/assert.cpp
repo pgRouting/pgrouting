@@ -36,27 +36,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include <string>
+#include <array>
 #include <exception>
-
 
 std::string get_backtrace() {
 #ifdef __GLIBC__
-        void *trace[16];
-        int i = 0, trace_size = 0;
+    std::array<void *, 16> trace;
+    int trace_size = 0;
 
-        trace_size = backtrace(trace, 16);
-        char** funcNames = backtrace_symbols(trace, trace_size);
+    trace_size = backtrace(trace.data(), trace.size());
+    char **funcNames = backtrace_symbols(trace.data(), trace_size);
 
-
-        std::string message = "\n*** Execution path***\n";
-        for (i = 0; i < trace_size; ++i) {
+    std::string message = "\n*** Execution path***\n";
+    if (funcNames != nullptr) {
+        for (int i = 0; i < trace_size; ++i) {
             message += "[bt]" + static_cast<std::string>(funcNames[i]) + "\n";
         }
-
         free(funcNames);
-        return message;
+    } else {
+        message += "[bt] Failed to get backtrace symbols\n";
+    }
+
+    return message;
 #else
-        return "";
+    return "";
 #endif
 }
 
@@ -64,12 +67,8 @@ std::string get_backtrace(const std::string &msg) {
     return std::string("\n") + msg + "\n" + get_backtrace();
 }
 
-
-
-const char* AssertFailedException::what() const throw() {
+const char *AssertFailedException::what() const throw() {
     return str.c_str();
 }
 
-AssertFailedException::AssertFailedException(std::string msg) :
-    str(msg) {}
-
+AssertFailedException::AssertFailedException(std::string msg) : str(msg) {}
