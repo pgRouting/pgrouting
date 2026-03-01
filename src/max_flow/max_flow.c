@@ -61,7 +61,7 @@ PGDLLEXPORT Datum _pgr_maxflow(PG_FUNCTION_ARGS) {
 
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
-                PG_GETARG_BOOL(4)? MAXFLOW : MAXFLOW + PG_GETARG_INT32(3),
+                PG_GETARG_BOOL(4)? MAXFLOW : MAXFLOW + PG_GETARG_UINT32(3),
                 &result_tuples,
                 &result_count);
 
@@ -76,7 +76,7 @@ PGDLLEXPORT Datum _pgr_maxflow(PG_FUNCTION_ARGS) {
                 NULL,
                 NULL,
 
-                PG_GETARG_BOOL(3)? MAXFLOW : MAXFLOW + PG_GETARG_INT32(2),
+                PG_GETARG_BOOL(3)? MAXFLOW : MAXFLOW + PG_GETARG_UINT32(2),
                 &result_tuples,
                 &result_count);
         }
