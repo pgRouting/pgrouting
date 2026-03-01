@@ -75,6 +75,12 @@ size_t get_tuples(const std::deque<pgrouting::Path>&, MST_rt*&);
 size_t get_tuples(const std::vector<Flow_t>&, Flow_t*&);
 
 /*
+ * @brief get tuples for Path_rt
+ */
+size_t
+get_tuples(const std::vector<Path_rt>&, Path_rt*&);
+
+/*
  * @brief get tuples for spanning tree driver
  */
 size_t get_tuples(
