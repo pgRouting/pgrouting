@@ -35,58 +35,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "drivers/bellman_ford/bellman_ford_driver.h"
+#include "process/shortestPath_process.h"
 
 PGDLLEXPORT Datum _pgr_bellmanford(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_bellmanford);
-
-static
-void
-process(
-        char* edges_sql,
-        char *combinations_sql,
-        ArrayType *starts,
-        ArrayType *ends,
-        bool directed,
-        bool only_cost,
-
-        Path_rt **result_tuples,
-        size_t *result_count) {
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
-
-    clock_t start_t = clock();
-    pgr_do_bellman_ford(
-            edges_sql,
-            combinations_sql,
-            starts, ends,
-
-            directed,
-            only_cost,
-
-            result_tuples,
-            result_count,
-
-            &log_msg,
-            &notice_msg,
-            &err_msg);
-
-    time_msg(" processing pgr_bellman_ford", start_t, clock());
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
 
 PGDLLEXPORT Datum
 _pgr_bellmanford(PG_FUNCTION_ARGS) {
@@ -105,27 +57,48 @@ _pgr_bellmanford(PG_FUNCTION_ARGS) {
             /*
              * many to many
              */
-            process(
+            pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 NULL,
+                NULL,
+
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
+
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
+                true,
+
+                0,
+                true,
+                ' ',
+                true,
+
+                BELLMANFORD,
                 &result_tuples,
                 &result_count);
 
         } else if (PG_NARGS() == 4) {
             /*
-             * combinations
+             * Combinations
              */
-            process(
+            pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                NULL,
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
-                NULL,
-                NULL,
+
+                NULL, NULL,
+
                 PG_GETARG_BOOL(2),
                 PG_GETARG_BOOL(3),
+                true,
+
+                0,
+                true,
+                ' ',
+                true,
+
+                BELLMANFORD,
                 &result_tuples,
                 &result_count);
         }
@@ -153,6 +126,7 @@ _pgr_bellmanford(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
+        size_t       call_cntr = funcctx->call_cntr;
 
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
@@ -163,18 +137,18 @@ _pgr_bellmanford(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        int64_t seq = funcctx->call_cntr == 0?  1 : result_tuples[funcctx->call_cntr - 1].start_id;
+        int64_t seq = call_cntr == 0?  1 : result_tuples[call_cntr - 1].start_id;
 
-        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int32GetDatum((int32_t)seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
 
-        result_tuples[funcctx->call_cntr].start_id = result_tuples[funcctx->call_cntr].edge < 0? 1 : seq + 1;
+        result_tuples[call_cntr].start_id = result_tuples[call_cntr].edge < 0? 1 : seq + 1;
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
