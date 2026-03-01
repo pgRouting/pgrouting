@@ -44,6 +44,10 @@ To see all issues & pull requests closed by this release see the
 * :issue:`3055`: bdDijkstra: use the shortest_path process and driver
 * :issue:`3056`: edwardMoore: use the shortest_path process and driver
 
+.. rubric:: Documentation
+
+* Fixed documentation for ``pgr_drivingDistance`` and ``pgr_withPointsDD``: added note that ``distance`` must be greater than 0.
+
 pgRouting 4.0
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

@@ -148,7 +148,7 @@ Parameters
        - For optimization purposes, any duplicated value is ignored.
    * - **distance**
      - ``FLOAT``
-     - Upper limit for the inclusion of a node in the result.
+     - Upper limit for the inclusion of a node in the result. Must be greater than 0.
 
 .. include:: withPoints-category.rst
     :start-after: driving_side_start
