@@ -46,7 +46,6 @@ enum Which {
     BFS = 530,
     DIJKSTRADD = 540,
     MAXFLOW, PUSHRELABEL, BOYKOV, EDMONDSKARP
-
 };
 
 #endif  // INCLUDE_C_COMMON_ENUMS_H_
