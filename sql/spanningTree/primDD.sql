@@ -154,7 +154,7 @@ IS 'pgr_primDD(Single Vertex)
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - From root vertex identifier
     - Distance
-- DocumentatiEdgeson:
+- Documentation:
     - ${PROJECT_DOC_LINK}/pgr_primDD.html
 ';
 
