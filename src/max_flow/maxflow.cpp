@@ -57,7 +57,7 @@ PgrFlowGraph::PgrFlowGraph(
             insert_edges(edges);
             break;
         default:
-            ;
+            {};
             /* Maybe do a throw */
     }
 }
