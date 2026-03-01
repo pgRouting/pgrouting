@@ -302,5 +302,22 @@ get_tuples(
     return count;
 }
 
+size_t
+get_tuples(
+        const std::vector<Path_rt> &paths,
+        Path_rt* &tuples) {
+    pgassert(!tuples);
+
+    auto count = paths.size();
+    if (count == 0) return 0;
+
+    tuples = pgr_alloc(count, tuples);
+
+    for (size_t i = 0; i < paths.size(); ++i) {
+        tuples[i] = paths[i];
+    }
+    return count;
+}
+
 }  // namespace to_postgres
 }  // namespace pgrouting
