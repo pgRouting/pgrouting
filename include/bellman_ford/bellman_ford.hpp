@@ -50,6 +50,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/ii_t_rt.h"
 
 namespace pgrouting {
+namespace algorithms {
 
 template < class G >
 class Pgr_bellman_ford : public pgrouting::Pgr_messages {
@@ -181,7 +182,23 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
 
      //@}
 };
+}  // namespace algorithms
 
+namespace functions {
+
+template <class G>
+std::deque<pgrouting::Path>
+bellmanFord(
+        G &graph,
+        const std::map<int64_t, std::set<int64_t>> &combinations,
+        bool only_cost = false) {
+    algorithms::Pgr_bellman_ford<G> fn_bellman_ford;
+    auto paths = fn_bellman_ford.bellman_ford(graph, combinations, only_cost);
+    for (auto &p : paths) p.recalculate_agg_cost();
+    return paths;
+}
+
+}  // namespace functions
 }  // namespace pgrouting
 
 #endif  // INCLUDE_BELLMAN_FORD_BELLMAN_FORD_HPP_
