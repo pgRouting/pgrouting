@@ -120,7 +120,7 @@ PGDLLEXPORT Datum _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_maxcardinalitymatch);
 PGDLLEXPORT Datum
 _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
-    FuncCallContext *funcctx = NULL ;
+    FuncCallContext *funcctx = NULL;
     TupleDesc tuple_desc = NULL;
     int64_t *result_tuples = NULL;
     size_t result_count = 0;
