@@ -4,7 +4,7 @@
 
 .. index::
    single: Planar Family ; pgr_boyerMyrvold
-   single: boyerMyrvold - Experimental on v4.1
+   single: boyerMyrvold
 
 |
 
@@ -33,12 +33,10 @@ no two edges cross. Given a graph, the Boyer-Myrvold planarity testing algorithm
 can produce a planar embedding if the graph is planar, or identify a Kuratowski
 subgraph (a subdivision of :math:`K_5` or :math:`K_{3,3}`) if it is not.
 
-This function returns the edges of the planar embedding when the graph is planar.
-
 The main characteristics are:
 
 * This implementation uses the Boyer-Myrvold Planarity Testing.
-* It will return the edges of the planar embedding when the graph is planar.
+* Returns the edges of the planar embedding when the graph is planar.
 * If the graph is not planar, it returns an empty set.
 * Applicable only for **undirected** graphs.
 * The algorithm does not consider traversal costs in the calculations.
