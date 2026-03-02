@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-21 01:08+0000\n"
+"POT-Creation-Date: 2026-03-02 03:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12713,6 +12713,9 @@ msgid "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withP
 msgstr ""
 
 msgid "`#3034 <https://github.com/pgRouting/pgrouting/issues/3034>`__: metrics driver should not be using new"
+msgstr ""
+
+msgid "`#3010 <https://github.com/pgRouting/pgrouting/issues/3010>`__: Performance issue with pgr_separateTouching()"
 msgstr ""
 
 msgid "`#3044 <https://github.com/pgRouting/pgrouting/issues/3044>`__: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions"
