@@ -64,6 +64,7 @@ To see all issues & pull requests closed by this release see the
 
 * :issue:`2966`: pgr_withPoints does not pick optimal route when fraction = 1
 * :issue:`3034`: metrics driver should not be using new
+* :issue:`3010`: Performance issue with pgr_separateTouching()
 
 .. rubric:: Code enhancements
 
