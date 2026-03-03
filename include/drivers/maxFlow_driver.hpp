@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: maxFlow_driver.h
+File: maxFlow_driver.hpp
 
 Generated with Template by:
 Copyright (c) 2007-2026 pgRouting developers
