@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 03:27+0000\n"
+"POT-Creation-Date: 2026-03-03 04:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3962,6 +3962,11 @@ msgstr ""
 msgid ""
 "`#3075 <https://github.com/pgRouting/pgrouting/issues/3075>`__: Spanning "
 "tree: create and use a process and driver"
+msgstr ""
+
+msgid ""
+"`#3086 <https://github.com/pgRouting/pgrouting/issues/3086>`__: MaxFlow: "
+"create and use a process and driver"
 msgstr ""
 
 msgid "All releases"
@@ -8695,16 +8700,10 @@ msgid ""
 "it is not."
 msgstr ""
 
-msgid ""
-"This function returns the edges of the planar embedding when the graph is "
-"planar."
-msgstr ""
-
 msgid "This implementation uses the Boyer-Myrvold Planarity Testing."
 msgstr ""
 
-msgid ""
-"It will return the edges of the planar embedding when the graph is planar."
+msgid "Returns the edges of the planar embedding when the graph is planar."
 msgstr ""
 
 msgid "If the graph is not planar, it returns an empty set."
@@ -8740,11 +8739,18 @@ msgstr ""
 msgid "Cost of the edge."
 msgstr ""
 
+msgid "Making a non planar graph"
+msgstr ""
+
 msgid "Adding extra edges to create a :math:`K_5` subgraph."
 msgstr ""
 
 msgid "The graph is no longer planar, so the result is empty:"
 msgstr ""
+
+#, fuzzy
+msgid "Using with pgr_connectedComponents"
+msgstr "pgr_connectedComponents"
 
 msgid ""
 "`Boost: Boyer Myrvold <https://www.boost.org/libs/graph/doc/boyer_myrvold."
