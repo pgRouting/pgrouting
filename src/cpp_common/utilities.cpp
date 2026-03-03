@@ -135,6 +135,9 @@ get_name(Which which, bool is_only_cost, bool is_near, bool is_matrix) {
         case BELLMANFORD :
             base = "pgr_bellmanFord";
             break;
+        case EDGEDISJOINT:
+            base = "pgr_edgeDisjointPaths";
+            break;
         case OLD_WITHPOINTS:
         case WITHPOINTS:
             base = "pgr_withPoints";

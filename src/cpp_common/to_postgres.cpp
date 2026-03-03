@@ -304,19 +304,33 @@ get_tuples(
 
 size_t
 get_tuples(
-        const std::vector<Path_rt> &paths,
+        std::vector<Path_rt> &paths,
+        const std::vector<Edge_t> &edges,
         Path_rt* &tuples) {
     pgassert(!tuples);
 
-    auto count = paths.size();
-    if (count == 0) return 0;
+    if (paths.empty()) return 0;
 
-    tuples = pgr_alloc(count, tuples);
+    /*
+     * Calculating the cost
+     */
+    auto found = paths.size();
+    for (const auto &e : edges) {
+        for (auto &r : paths) {
+            if (r.edge == e.id) {
+                r.cost = (r.node == e.source) ?  e.cost : e.reverse_cost;
+                --found;
+            }
+        }
+        if (found == 0) break;
+    }
+
+    tuples = pgr_alloc(paths.size(), tuples);
 
     for (size_t i = 0; i < paths.size(); ++i) {
         tuples[i] = paths[i];
     }
-    return count;
+    return paths.size();
 }
 
 }  // namespace to_postgres
