@@ -35,18 +35,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <execinfo.h>
 #endif
 
+#include <array>
 #include <string>
 #include <exception>
 
 
 std::string get_backtrace() {
 #ifdef __GLIBC__
-        void *trace[16];
+        const int max_trace_size = 16;
+        std::array<void *, max_trace_size> trace{};
         int i = 0, trace_size = 0;
 
-        trace_size = backtrace(trace, 16);
-        char** funcNames = backtrace_symbols(trace, trace_size);
-
+        trace_size = backtrace(trace.data(), max_trace_size);
+        char** funcNames = backtrace_symbols(trace.data(), trace_size);
 
         std::string message = "\n*** Execution path***\n";
         for (i = 0; i < trace_size; ++i) {

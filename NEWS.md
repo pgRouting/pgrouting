@@ -21,6 +21,7 @@ To see all issues & pull requests closed by this release see the
 * [#3060](https://github.com/pgRouting/pgrouting/issues/3060): dagShortestPath: use the shortest_path process and driver
 * [#3064](https://github.com/pgRouting/pgrouting/issues/3064): Astar: create and use a process and driver for Astar
 * [#3075](https://github.com/pgRouting/pgrouting/issues/3075): Spanning tree: create and use a process and driver
+* [#3086](https://github.com/pgRouting/pgrouting/issues/3086): MaxFlow: create and use a process and driver
 
 ## pgRouting 4.0
 

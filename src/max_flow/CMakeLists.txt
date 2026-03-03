@@ -7,7 +7,9 @@ ADD_LIBRARY(max_flow OBJECT
     maximum_cardinality_matching.c
     edge_disjoint_paths.c
 
-    max_flow_driver.cpp
+    maxFlow_driver.cpp
+    maxFlow_process.cpp
+
     maximum_cardinality_matching_driver.cpp
     edge_disjoint_paths_driver.cpp
     minCostMaxFlow_driver.cpp
