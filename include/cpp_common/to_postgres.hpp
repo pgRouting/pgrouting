@@ -78,7 +78,7 @@ size_t get_tuples(const std::vector<Flow_t>&, Flow_t*&);
  * @brief get tuples for Path_rt
  */
 size_t
-get_tuples(const std::vector<Path_rt>&, Path_rt*&);
+get_tuples(std::vector<Path_rt>&, const std::vector<Edge_t>&, Path_rt*&);
 
 /*
  * @brief get tuples for spanning tree driver
