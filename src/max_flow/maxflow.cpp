@@ -31,6 +31,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <vector>
 #include <set>
+#include <map>
+
+namespace {
+
+std::vector<Path_rt>
+single_execution(
+        std::vector<Edge_t> edges,
+        int64_t source,
+        int64_t target,
+        bool directed) {
+    std::set<int64_t> set_source_vertices;
+    std::set<int64_t> set_sink_vertices;
+    set_source_vertices.insert(source);
+    set_sink_vertices.insert(target);
+    pgrouting::graph::PgrFlowGraph G(
+            edges,
+            set_source_vertices,
+            set_sink_vertices, directed);
+
+    /*
+     * boykov_kolmogorov is only for directed graphs
+     */
+    return G.edge_disjoint_paths();
+}
+}  // namespace
 
 namespace pgrouting {
 namespace graph {
@@ -309,8 +334,30 @@ PgrFlowGraph::get_edge_disjoint_paths(
     return path_elements;
 }
 
-
-
 }  // namespace graph
-}  // namespace pgrouting
 
+namespace functions {
+
+std::vector<Path_rt>
+edgeDisjoint(
+        std::vector<Edge_t> edges,
+        const std::map<int64_t, std::set<int64_t>> & combinations,
+        bool directed) {
+    std::vector<Path_rt> results;
+    for (const auto &c : combinations) {
+        for (const auto &t : c.second) {
+            /*
+             * a source can not be a sink
+             * aka there is no path
+             */
+            if (c.first == t) continue;
+            auto result = single_execution(edges, c.first, t, directed);
+            results.insert(results.end(), result.begin(), result.end());
+        }
+    }
+
+    return results;
+}
+
+}  // namespace functions
+}  // namespace pgrouting
