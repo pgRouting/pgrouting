@@ -16,6 +16,8 @@ var titles = [
 
 
 var newpages = [
+    {v: '4.1', pages: ['pgr_boyerMyrvold']},
+
     {v: '4.0', pages: ['pgr_bandwidth', 'pgr_kingOrdering', 'pgr_sloanOrdering']},
 
     {v: '3.8', pages: ['pgr_contractionDeadEnd', 'pgr_contractionLinear', 'pgr_separateCrossing',

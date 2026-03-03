@@ -125,11 +125,13 @@ Experimental Functions
 
 .. rubric:: Planar Family
 
+- :doc:`pgr_boyerMyrvold`
 - :doc:`pgr_isPlanar`
 
 .. toctree::
   :hidden:
 
+  pgr_boyerMyrvold
   pgr_isPlanar
 
 .. rubric:: Miscellaneous Algorithms

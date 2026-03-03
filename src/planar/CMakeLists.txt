@@ -2,6 +2,8 @@
 # Copyright (c) 2020-2026 pgRouting developers
 # License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 ADD_LIBRARY(planar OBJECT
+    boyerMyrvold.c
+    boyerMyrvold_driver.cpp
     isPlanar.c
     isPlanar_driver.cpp
     )

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-01 21:16+0000\n"
+"POT-Creation-Date: 2026-03-03 04:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3444,6 +3444,9 @@ msgid ":doc:`pgr_edwardMoore`"
 msgstr ""
 
 msgid "Planar Family"
+msgstr ""
+
+msgid ":doc:`pgr_boyerMyrvold`"
 msgstr ""
 
 msgid ":doc:`pgr_isPlanar`"
@@ -8678,6 +8681,82 @@ msgid ""
 "Bipartite_graph>`__"
 msgstr ""
 
+msgid "``pgr_boyerMyrvold`` - Experimental"
+msgstr ""
+
+msgid ""
+"``pgr_boyerMyrvold`` — Returns the planar embedding of a graph, if the graph "
+"is planar."
+msgstr ""
+
+msgid "Version 4.1.0"
+msgstr ""
+
+msgid ""
+"A planar embedding of a graph is a mapping of the graph onto a plane such "
+"that no two edges cross. Given a graph, the Boyer-Myrvold planarity testing "
+"algorithm can produce a planar embedding if the graph is planar, or identify "
+"a Kuratowski subgraph (a subdivision of :math:`K_5` or :math:`K_{3,3}`) if "
+"it is not."
+msgstr ""
+
+msgid "This implementation uses the Boyer-Myrvold Planarity Testing."
+msgstr ""
+
+msgid "Returns the edges of the planar embedding when the graph is planar."
+msgstr ""
+
+msgid "If the graph is not planar, it returns an empty set."
+msgstr ""
+
+msgid "Applicable only for **undirected** graphs."
+msgstr ""
+
+msgid "The algorithm does not consider traversal costs in the calculations."
+msgstr ""
+
+msgid "Running time: :math:`O(|V|)`"
+msgstr ""
+
+msgid "pgr_boyerMyrvold(`Edges SQL`)"
+msgstr ""
+
+msgid "RETURNS SETOF |result-edge|"
+msgstr ""
+
+msgid "Get the planar embedding of the graph"
+msgstr ""
+
+msgid "Returns set of ``(seq, source, target, cost)``"
+msgstr ""
+
+msgid "Identifier of the source vertex."
+msgstr ""
+
+msgid "Identifier of the target vertex."
+msgstr ""
+
+msgid "Cost of the edge."
+msgstr ""
+
+msgid "Making a non planar graph"
+msgstr ""
+
+msgid "Adding extra edges to create a :math:`K_5` subgraph."
+msgstr ""
+
+msgid "The graph is no longer planar, so the result is empty:"
+msgstr ""
+
+#, fuzzy
+msgid "Using with pgr_connectedComponents"
+msgstr "pgr_connectedComponents"
+
+msgid ""
+"`Boost: Boyer Myrvold <https://www.boost.org/libs/graph/doc/boyer_myrvold."
+"html>`__"
+msgstr ""
+
 msgid "``pgr_boykovKolmogorov``"
 msgstr "``pgr_boykovKolmogorov``"
 
@@ -12072,13 +12151,7 @@ msgid ""
 "It will return a boolean value depending upon the planarity of the graph."
 msgstr ""
 
-msgid "Applicable only for **undirected** graphs."
-msgstr ""
-
 msgid "The algorithm does not considers traversal costs in the calculations."
-msgstr ""
-
-msgid "Running time: :math:`O(|V|)`"
 msgstr ""
 
 msgid "pgr_isPlanar(`Edges SQL`)"
@@ -12108,11 +12181,6 @@ msgstr ""
 msgid ""
 "The new graph is not planar because it has a :math:`K_5` subgraph. Edges in "
 "blue represent :math:`K_5` subgraph."
-msgstr ""
-
-msgid ""
-"`Boost: Boyer Myrvold <https://www.boost.org/libs/graph/doc/boyer_myrvold."
-"html>`__"
 msgstr ""
 
 msgid "``pgr_johnson``"

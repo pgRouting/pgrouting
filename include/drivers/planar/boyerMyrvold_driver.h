@@ -42,7 +42,7 @@ typedef struct IID_t_rt IID_t_rt;
 #ifdef __cplusplus
 extern "C" {
 #endif
-    void pgr_do_pgr_boyerMyrvold(
+    void pgr_do_boyerMyrvold(
                 const char*,
                 IID_t_rt**, size_t*,
                 char**, char**, char**);

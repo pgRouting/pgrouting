@@ -127,8 +127,8 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_vid);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].to_vid);
         values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
