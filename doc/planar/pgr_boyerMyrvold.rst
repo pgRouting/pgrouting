@@ -100,7 +100,7 @@ Additional Examples
    :local:
 
 Making a non planar graph
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+...............................................................................
 
 Adding extra edges to create a :math:`K_5` subgraph.
 
@@ -115,7 +115,7 @@ The graph is no longer planar, so the result is empty:
    :end-before: -- q4
 
 Using with pgr_connectedComponents
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+...............................................................................
 
 .. literalinclude:: boyerMyrvold.queries
    :start-after: -- q4
