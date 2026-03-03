@@ -198,6 +198,12 @@ class PgrFlowGraph {
 };
 
 }  // namespace graph
+
+namespace functions {
+
+std::vector<Path_rt> edgeDisjoint(std::vector<Edge_t>, const std::map<int64_t, std::set<int64_t>>&, bool);
+
+}  // namespace functions
 }  // namespace pgrouting
 
 #endif  // INCLUDE_MAX_FLOW_MAXFLOW_HPP_
