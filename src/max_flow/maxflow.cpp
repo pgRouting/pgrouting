@@ -40,17 +40,25 @@ PgrFlowGraph::PgrFlowGraph(
         const std::vector<Edge_t> &edges,
         const std::set<int64_t> &source_vertices,
         const std::set<int64_t> &sink_vertices,
-        int algorithm) {
+        Which algorithm) {
     add_vertices(edges, source_vertices, sink_vertices);
 
     capacity = get(boost::edge_capacity, graph);
     rev = get(boost::edge_reverse, graph);
     residual_capacity = get(boost::edge_residual_capacity, graph);
 
-    if (algorithm == 1) {
-        insert_edges_push_relabel(edges);
-    } else {
-        insert_edges(edges);
+    switch (algorithm) {
+        case MAXFLOW:
+        case PUSHRELABEL:
+            insert_edges_push_relabel(edges);
+            break;
+        case BOYKOV:
+        case EDMONDSKARP:
+            insert_edges(edges);
+            break;
+        default:
+            {};
+            /* Maybe do a throw */
     }
 }
 

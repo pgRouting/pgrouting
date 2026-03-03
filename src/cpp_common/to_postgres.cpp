@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/routes_t.h"
 #include "c_types/path_rt.h"
 #include "c_types/mst_rt.h"
+#include "c_types/flow_t.h"
 
 #include "cpp_common/path.hpp"
 #include "cpp_common/alloc.hpp"
@@ -229,6 +230,23 @@ size_t
 get_tuples(
         const std::vector<MST_rt> &results,
         MST_rt* &tuples) {
+    pgassert(!tuples);
+
+    auto count = results.size();
+    if (count == 0) return 0;
+
+    tuples = pgr_alloc(count, tuples);
+
+    for (size_t i = 0; i < count; i++) {
+        tuples[i] = results[i];
+    }
+    return count;
+}
+
+size_t
+get_tuples(
+        const std::vector<Flow_t> &results,
+        Flow_t* &tuples) {
     pgassert(!tuples);
 
     auto count = results.size();
