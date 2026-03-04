@@ -195,8 +195,7 @@ _pgr_trsp_withpoints_v4(PG_FUNCTION_ARGS) {
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
-        size_t i = 0;
-        for (i = 0; i < numb; ++i) {
+        for (size_t i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
@@ -315,8 +314,7 @@ _pgr_trsp_withpoints(PG_FUNCTION_ARGS) {
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
-        size_t i = 0;
-        for (i = 0; i < numb; ++i) {
+        for (size_t i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 

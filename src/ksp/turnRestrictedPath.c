@@ -156,8 +156,7 @@ _pgr_turnrestrictedpath_v4(PG_FUNCTION_ARGS) {
         values = palloc(n * sizeof(Datum));
         nulls = palloc(n * sizeof(bool));
 
-        size_t i = 0;
-        for (i = 0; i < n; ++i) {
+        for (size_t i = 0; i < n; ++i) {
             nulls[i] = false;
         }
 

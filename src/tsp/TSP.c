@@ -129,8 +129,7 @@ PGDLLEXPORT Datum _pgr_tsp_v4(PG_FUNCTION_ARGS) {
         nulls = palloc(4 * sizeof(bool));
 
 
-        size_t i = 0;
-        for (i = 0; i < 4; ++i) {
+        for (size_t i = 0; i < 4; ++i) {
             nulls[i] = false;
         }
 
@@ -215,8 +214,7 @@ _pgr_tsp(PG_FUNCTION_ARGS) {
         nulls = palloc(4 * sizeof(bool));
 
 
-        size_t i = 0;
-        for (i = 0; i < 4; ++i) {
+        for (size_t i = 0; i < 4; ++i) {
             nulls[i] = false;
         }
 

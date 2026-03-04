@@ -122,8 +122,7 @@ _pgr_lengauertarjandominatortree(PG_FUNCTION_ARGS) {
         size_t numb = 3;
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
-        size_t i = 0;
-        for (i = 0; i < numb; ++i) {
+        for (size_t i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
             values[0] = Int32GetDatum((int32_t)call_cntr + 1);

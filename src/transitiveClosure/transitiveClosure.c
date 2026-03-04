@@ -125,8 +125,7 @@ _pgr_transitiveclosure(PG_FUNCTION_ARGS) {
         size_t numb = 3;
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
-        size_t i = 0;
-        for (i = 0; i < numb; ++i) {
+        for (size_t i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
@@ -137,7 +136,7 @@ _pgr_transitiveclosure(PG_FUNCTION_ARGS) {
         target_array_array = (Datum*) palloc(sizeof(Datum) *
                 (size_t)target_array_size);
 
-        for (i = 0; i < target_array_size; ++i) {
+        for (size_t i = 0; i < target_array_size; ++i) {
             PGR_DBG("Storing target_array vertex %ld",
                     result_tuples[call_cntr].target_array[i]);
             target_array_array[i] =

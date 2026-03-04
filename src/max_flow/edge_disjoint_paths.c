@@ -152,8 +152,7 @@ _pgr_edgedisjointpaths(PG_FUNCTION_ARGS) {
         values = palloc(9 * sizeof(Datum));
         nulls = palloc(9 * sizeof(bool));
 
-        size_t i = 0;
-        for (i = 0; i < 9; ++i) {
+        for (size_t i = 0; i < 9; ++i) {
             nulls[i] = false;
         }
 

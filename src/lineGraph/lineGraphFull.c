@@ -118,8 +118,7 @@ PGDLLEXPORT Datum _pgr_linegraphfull(PG_FUNCTION_ARGS) {
         nulls = palloc(5 * sizeof(bool));
 
 
-        size_t i = 0;
-        for (i = 0; i < 5; ++i) {
+        for (size_t i = 0; i < 5; ++i) {
             nulls[i] = false;
         }
 

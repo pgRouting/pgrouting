@@ -157,8 +157,7 @@ _pgr_withpointsvia_v4(PG_FUNCTION_ARGS) {
         size_t numb_out = 10;
         values = palloc(numb_out * sizeof(Datum));
         nulls = palloc(numb_out * sizeof(bool));
-        size_t i = 0;
-        for (i = 0; i< numb_out; ++i) {
+        for (size_t i = 0; i< numb_out; ++i) {
             nulls[i] = false;
         }
 
@@ -259,8 +258,7 @@ _pgr_withpointsvia(PG_FUNCTION_ARGS) {
         size_t numb_out = 10;
         values = palloc(numb_out * sizeof(Datum));
         nulls = palloc(numb_out * sizeof(bool));
-        size_t i = 0;
-        for (i = 0; i< numb_out; ++i) {
+        for (size_t i = 0; i< numb_out; ++i) {
             nulls[i] = false;
         }
 

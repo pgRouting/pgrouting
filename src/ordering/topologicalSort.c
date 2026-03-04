@@ -81,8 +81,7 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
         values = palloc(num * sizeof(Datum));
         nulls = palloc(num * sizeof(bool));
 
-        size_t i = 0;
-        for (i = 0; i < num; ++i) {
+        for (size_t i = 0; i < num; ++i) {
             nulls[i] = false;
         }
 

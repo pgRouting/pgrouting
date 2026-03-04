@@ -94,8 +94,7 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         nulls = palloc(num * sizeof(bool));
 
 
-        size_t i = 0;
-        for (i = 0; i < num; ++i) {
+        for (size_t i = 0; i < num; ++i) {
             nulls[i] = false;
         }
 

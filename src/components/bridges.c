@@ -126,8 +126,7 @@ PGDLLEXPORT Datum _pgr_bridges(PG_FUNCTION_ARGS) {
         nulls = palloc(2 * sizeof(bool));
 
 
-        size_t i = 0;
-        for (i = 0; i < 2; ++i) {
+        for (size_t i = 0; i < 2; ++i) {
             nulls[i] = false;
         }
 

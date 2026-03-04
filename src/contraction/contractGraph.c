@@ -141,8 +141,7 @@ _pgr_contraction(PG_FUNCTION_ARGS) {
         size_t numb = 6;
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
-        size_t i = 0;
-        for (i = 0; i < numb; ++i) {
+        for (size_t i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
@@ -152,7 +151,7 @@ _pgr_contraction(PG_FUNCTION_ARGS) {
         Datum* contracted_vertices_array = NULL;
         contracted_vertices_array = (Datum*) palloc(sizeof(Datum) * contracted_vertices_size);
 
-        for (i = 0; i < contracted_vertices_size; ++i) {
+        for (size_t i = 0; i < contracted_vertices_size; ++i) {
             contracted_vertices_array[i] =
                 Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
         }

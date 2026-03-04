@@ -118,8 +118,7 @@ _pgr_bipartite(PG_FUNCTION_ARGS) {
         size_t numb = 2;
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
-        size_t i = 0;
-        for (i = 0; i < numb; ++i) {
+        for (size_t i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
             values[0] = Int64GetDatum(result_tuples[call_cntr].d1.id);

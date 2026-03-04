@@ -133,8 +133,7 @@ PGDLLEXPORT Datum _pgr_chinesepostman(PG_FUNCTION_ARGS) {
         nulls = palloc(numb * sizeof(bool));
 
 
-        size_t i = 0;
-        for (i = 0; i < numb; ++i) {
+        for (size_t i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
         values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);

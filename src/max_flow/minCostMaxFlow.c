@@ -152,8 +152,7 @@ PGDLLEXPORT Datum _pgr_maxflowmincost(PG_FUNCTION_ARGS) {
         values = palloc(8 * sizeof(Datum));
         nulls = palloc(8 * sizeof(bool));
 
-        size_t i = 0;
-        for (i = 0; i < 8; ++i) {
+        for (size_t i = 0; i < 8; ++i) {
             nulls[i] = false;
         }
 

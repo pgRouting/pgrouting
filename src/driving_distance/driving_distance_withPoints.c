@@ -160,8 +160,7 @@ _pgr_withpointsddv4(PG_FUNCTION_ARGS) {
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
-        size_t i = 0;
-        for (i = 0; i < numb; ++i) {
+        for (size_t i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
@@ -259,8 +258,7 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
-        size_t i = 0;
-        for (i = 0; i < numb; ++i) {
+        for (size_t i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
