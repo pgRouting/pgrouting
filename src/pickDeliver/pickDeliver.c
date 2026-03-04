@@ -116,14 +116,14 @@ process(
 
 PGDLLEXPORT Datum
 _pgr_pickdeliver(PG_FUNCTION_ARGS) {
-    FuncCallContext     *funcctx;
-    TupleDesc            tuple_desc;
+    FuncCallContext     *funcctx = NULL;
+    TupleDesc            tuple_desc = NULL;
 
     Schedule_rt *result_tuples = 0;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
-        MemoryContext   oldcontext;
+        MemoryContext   oldcontext = NULL;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
@@ -157,18 +157,17 @@ _pgr_pickdeliver(PG_FUNCTION_ARGS) {
     result_tuples = (Schedule_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr <  funcctx->max_calls) {
-        HeapTuple   tuple;
-        Datum       result;
-        Datum       *values;
-        bool*       nulls;
+        HeapTuple   tuple = NULL;
+        Datum       result = 0;
+        Datum       *values = NULL;
+        bool*       nulls = NULL;
         size_t      call_cntr = funcctx->call_cntr;
 
         size_t numb = 13;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
-        size_t i;
-        for (i = 0; i < numb; ++i) {
+        for (size_t i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 

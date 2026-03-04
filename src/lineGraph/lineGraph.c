@@ -79,14 +79,14 @@ process(
 }
 
 PGDLLEXPORT Datum _pgr_linegraph(PG_FUNCTION_ARGS) {
-    FuncCallContext     *funcctx;
-    TupleDesc           tuple_desc;
+    FuncCallContext     *funcctx = NULL;
+    TupleDesc           tuple_desc = NULL;
 
     Edge_rt  *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
-        MemoryContext   oldcontext;
+        MemoryContext   oldcontext = NULL;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
@@ -116,17 +116,16 @@ PGDLLEXPORT Datum _pgr_linegraph(PG_FUNCTION_ARGS) {
     result_tuples = (Edge_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple    tuple;
-        Datum        result;
-        Datum        *values;
-        bool*        nulls;
+        HeapTuple    tuple = NULL;
+        Datum        result = 0;
+        Datum        *values = NULL;
+        bool*        nulls = NULL;
 
         values = palloc(5 * sizeof(Datum));
         nulls = palloc(5 * sizeof(bool));
 
 
-        size_t i;
-        for (i = 0; i < 5; ++i) {
+        for (size_t i = 0; i < 5; ++i) {
             nulls[i] = false;
         }
 

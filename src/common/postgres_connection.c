@@ -64,7 +64,7 @@ pgr_SPI_finish(void) {
 
 void
 pgr_SPI_connect(void) {
-    int SPIcode;
+    int SPIcode = 0;
     SPIcode = SPI_connect();
     if (SPIcode  != SPI_OK_CONNECT) {
         elog(ERROR, "Couldn't open a connection to SPI");
@@ -73,7 +73,7 @@ pgr_SPI_connect(void) {
 
 SPIPlanPtr
 pgr_SPI_prepare(const char* sql) {
-    SPIPlanPtr SPIplan;
+    SPIPlanPtr SPIplan = NULL;
     SPIplan = SPI_prepare(sql, 0, NULL);
     if (SPIplan  == NULL) {
         elog(ERROR, "Couldn't create query plan via SPI: %s", sql);
@@ -83,7 +83,7 @@ pgr_SPI_prepare(const char* sql) {
 
 Portal
 pgr_SPI_cursor_open(SPIPlanPtr SPIplan) {
-    Portal SPIportal;
+    Portal SPIportal = NULL;
     SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true);
     if (SPIportal == NULL) {
         elog(ERROR, "SPI_cursor_open returns NULL");
