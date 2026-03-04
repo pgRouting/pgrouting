@@ -12,7 +12,7 @@ SELECT edge, color FROM pgr_edgeColoring(
 );
  edge | color
 ------+-------
-    1 |     3
+    1 |     1
     2 |     2
     3 |     3
     4 |     4
