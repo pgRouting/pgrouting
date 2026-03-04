@@ -1,13 +1,14 @@
 /*PGR-GNU*****************************************************************
 File: sequentialVertexColoring.c
-Generated with Template by:
 
+Generated with Template by:
 Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2020 Ashish Kumar
 Mail: ashishkr23438@gmail.com
+
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -26,10 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/** @file sequentialVertexColoring.c
- * @brief Connecting code with postgres.
- *
- */
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
@@ -37,10 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-
-
 #include "c_types/ii_t_rt.h"
-
 #include "drivers/coloring/sequentialVertexColoring_driver.h"
 
 PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS);
@@ -64,9 +58,7 @@ process(
     clock_t start_t = clock();
     pgr_do_sequentialVertexColoring(
             edges_sql,
-
-            result_tuples,
-            result_count,
+            result_tuples, result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
@@ -85,8 +77,7 @@ process(
 
 PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    TupleDesc           tuple_desc;
-
+    TupleDesc            tuple_desc;
     II_t_rt *result_tuples = NULL;
     size_t result_count = 0;
 
@@ -120,23 +111,22 @@ PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS) {
     result_tuples = (II_t_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple    tuple;
-        Datum        result;
-        Datum        *values;
-        bool*        nulls;
+        HeapTuple   tuple;
+        Datum       result;
+        Datum       *values;
+        bool        *nulls;
+        size_t call_cntr = funcctx->call_cntr;
 
-        size_t num  = 2;
-        values = palloc(num * sizeof(Datum));
-        nulls = palloc(num * sizeof(bool));
-
-
+        size_t numb = 2;
+        values =(Datum *)palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
         size_t i;
-        for (i = 0; i < num; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].d1.id);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].d2.value);
+        values[0] = Int64GetDatum(result_tuples[call_cntr].d1.id);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].d2.value);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
