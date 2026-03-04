@@ -5,6 +5,10 @@ Generated with Template by:
 Copyright (c) 2021-2026 pgRouting developers
 Mail: project@pgrouting.org
 
+Rewrite:
+Copyright (c) 2026 Vicky Vergara
+Mail: vicky at erosion.dev
+
 Function's developer:
 Copyright (c) 2021 Veenit Kumar
 Mail: 123sveenit@gmail.com
@@ -29,14 +33,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "coloring/edgeColoring.hpp"
 
 #include <vector>
-#include <utility>
 #include <string>
+#include <map>
+#include <cstdint>
 
-#include "cpp_common/identifiers.hpp"
 #include <boost/graph/edge_coloring.hpp>
-#include <boost/graph/graph_utility.hpp>
 
-#include "cpp_common/assert.hpp"
 #include "cpp_common/interruption.hpp"
 
 
@@ -44,97 +46,46 @@ namespace pgrouting {
 namespace functions {
 
 std::vector<II_t_rt>
-Pgr_edgeColoring::edgeColoring() {
-    std::vector<II_t_rt> results;
+edgeColoring(pgrouting::UndirectedGraph g) {
+    std::vector<II_t_rt> results(boost::num_edges(g.graph));
+    using B_G = pgrouting::UndirectedGraph::B_G;
+    using E  = pgrouting::UndirectedGraph::E;
 
+    // Create a std::map to store edge colors
+    std::map<E, int64_t> edge_colors_map;
+
+    // Create an associated property map adaptor
+    boost::associative_property_map<std::map<E, int64_t>> color_map(edge_colors_map);
+
+    int64_t colors = 0;
+    // Run the edge coloring algorithm
     CHECK_FOR_INTERRUPTS();
-
     try {
-        boost::edge_coloring(graph,  boost::get(boost::edge_bundle, graph));
+        colors = boost::edge_coloring(g.graph, color_map);
+    } catch (boost::exception const& ex) {
+        throw;
+    } catch (std::exception &e) {
+        throw;
     } catch (...) {
         throw std::make_pair(
-            std::string("INTERNAL: something went wrong while calling boost::edge_coloring"),
-            std::string(__PGR_PRETTY_FUNCTION__));
+                std::string("INTERNAL: something went wrong while calling boost::edge_coloring"),
+                std::string(__PGR_PRETTY_FUNCTION__));
     }
 
-    for (auto e_i : boost::make_iterator_range(boost::edges(graph))) {
-        auto edge = get_edge_id(e_i);
-        int64_t color = graph[e_i];
-        results.push_back({{edge}, {(color + 1)}});
+    size_t i = 0;
+    boost::graph_traits<B_G>::edge_iterator ei, ei_end;
+    for (boost::tie(ei, ei_end) = boost::edges(g.graph); ei != ei_end; ++ei, ++i) {
+        results[i].d1.id = static_cast<int64_t>(g[*ei].id);
+
+        /**
+         * There is a problem with boost:
+         * Sometimes it returns a color with outsatnding large value
+         * When that happens changing color to: colors + 1
+         */
+        results[i].d2.value = get(color_map, *ei) < colors? get(color_map, *ei) + 1 : colors + 1;
     }
+
     return results;
-}
-
-Pgr_edgeColoring::Pgr_edgeColoring(const std::vector<Edge_t> &edges) {
-    /*
-     * Inserting vertices
-     */
-    Identifiers<int64_t> ids;
-    for (const auto &e : edges) {
-        ids += e.source;
-        ids += e.target;
-    }
-
-    for (const auto id : ids) {
-        auto v = add_vertex(graph);
-        id_to_V.insert(std::make_pair(id, v));
-        V_to_id.insert(std::make_pair(v, id));
-    }
-
-    /*
-     * Inserting edges
-     */
-    bool added = false;
-    for (const auto &edge : edges) {
-        auto v1 = get_boost_vertex(edge.source);
-        auto v2 = get_boost_vertex(edge.target);
-        auto e_exists = boost::edge(v1, v2, graph);
-        // NOLINTNEXTLINE
-        if (e_exists.second) continue;
-
-        if (edge.source == edge.target) continue;
-
-        if (edge.cost < 0 && edge.reverse_cost < 0) continue;
-
-        E e;
-        // NOLINTNEXTLINE
-        boost::tie(e, added) = boost::add_edge(v1, v2, graph);
-
-        E_to_id.insert(std::make_pair(e, edge.id));
-    }
-}
-
-Pgr_edgeColoring::V
-Pgr_edgeColoring::get_boost_vertex(int64_t id) const {
-    try {
-        return id_to_V.at(id);
-    } catch (...) {
-        throw std::make_pair(
-            std::string("INTERNAL: something went wrong when getting the vertex descriptor"),
-            std::string(__PGR_PRETTY_FUNCTION__));
-    }
-}
-
-int64_t
-Pgr_edgeColoring::get_vertex_id(V v) const {
-    try {
-        return V_to_id.at(v);
-    } catch (...) {
-        throw std::make_pair(
-            std::string("INTERNAL: something went wrong when getting the vertex id"),
-            std::string(__PGR_PRETTY_FUNCTION__));
-    }
-}
-
-int64_t
-Pgr_edgeColoring::get_edge_id(E e) const {
-    try {
-        return E_to_id.at(e);
-    } catch (...) {
-        throw std::make_pair(
-            std::string("INTERNAL: something went wrong when getting the edge id"),
-            std::string(__PGR_PRETTY_FUNCTION__));
-    }
 }
 
 }  // namespace functions
