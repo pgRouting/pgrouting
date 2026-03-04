@@ -47,6 +47,8 @@ To see all issues & pull requests closed by this release see the
 * :issue:`3064`: Astar: create and use a process and driver for Astar
 * :issue:`3075`: Spanning tree: create and use a process and driver
 * :issue:`3086`: MaxFlow: create and use a process and driver
+* :issue:`3089`: edgeDisjoint and bellmanFord use shortestPath driver and
+  process
 
 pgRouting 4.0
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
