@@ -31,28 +31,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <string>
 
-#include "coloring/edgeColoring.hpp"
-
+#include "c_types/ii_t_rt.h"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
 
+#include "coloring/edgeColoring.hpp"
+
+
 void pgr_do_edgeColoring(
         const char *edges_sql,
 
-    II_t_rt **return_tuples,
-    size_t *return_count,
+        II_t_rt **return_tuples,
+        size_t *return_count,
 
-    char **log_msg,
-    char **notice_msg,
-    char **err_msg) {
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg) {
     using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
 
     std::ostringstream log;
-    std::ostringstream err;
     std::ostringstream notice;
+    std::ostringstream err;
     const char *hint = nullptr;
 
     try {
@@ -71,11 +73,9 @@ void pgr_do_edgeColoring(
         }
         hint = nullptr;
 
-
         std::vector<II_t_rt> results;
 
         pgrouting::functions::Pgr_edgeColoring fn_edgeColoring(edges);
-
         results = fn_edgeColoring.edgeColoring();
 
         auto count = results.size();
@@ -95,8 +95,8 @@ void pgr_do_edgeColoring(
         (*return_count) = count;
 
         pgassert(*err_msg == NULL);
-        *log_msg = log.str().empty() ? *log_msg : to_pg_msg(log);
-        *notice_msg = notice.str().empty() ? *notice_msg : to_pg_msg(notice);
+        *log_msg = to_pg_msg(log);
+        *notice_msg = to_pg_msg(notice);
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
