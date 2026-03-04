@@ -73,10 +73,9 @@ void pgr_do_edgeColoring(
         }
         hint = nullptr;
 
-        std::vector<II_t_rt> results;
-
-        pgrouting::functions::Pgr_edgeColoring fn_edgeColoring(edges);
-        results = fn_edgeColoring.edgeColoring();
+        pgrouting::UndirectedGraph undigraph;
+        undigraph.insert_edges(edges);
+        auto results = pgrouting::functions::edgeColoring(undigraph);
 
         auto count = results.size();
 
