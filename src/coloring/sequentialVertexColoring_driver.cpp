@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <string>
 
+#include "c_types/ii_t_rt.h"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
@@ -61,16 +62,16 @@ pgr_do_sequentialVertexColoring(
         II_t_rt **return_tuples,
         size_t *return_count,
 
-        char ** log_msg,
-        char ** notice_msg,
-        char ** err_msg) {
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg) {
     using pgrouting::pgr_alloc;
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
 
     std::ostringstream log;
-    std::ostringstream err;
     std::ostringstream notice;
+    std::ostringstream err;
     const char *hint = nullptr;
 
     try {
@@ -89,10 +90,9 @@ pgr_do_sequentialVertexColoring(
         }
         hint = nullptr;
 
-        std::vector <II_t_rt> results;
+        std::vector<II_t_rt> results;
 
         pgrouting::UndirectedGraph undigraph;
-
         undigraph.insert_edges(edges);
 
         results = pgr_sequentialVertexColoring(undigraph);
@@ -102,7 +102,7 @@ pgr_do_sequentialVertexColoring(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice << "No traversal found";
+            notice << "No results found";
             *log_msg = to_pg_msg(notice);
             return;
         }
@@ -131,7 +131,7 @@ pgr_do_sequentialVertexColoring(
         err << except.what();
         *err_msg = to_pg_msg(err);
         *log_msg = to_pg_msg(log);
-    } catch(...) {
+    } catch (...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";

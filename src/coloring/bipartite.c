@@ -29,23 +29,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include <stdbool.h>
-
 #include "c_common/postgres_connection.h"
 
-#include "c_types/ii_t_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
+#include "c_types/ii_t_rt.h"
 #include "drivers/coloring/bipartite_driver.h"
-
 
 PGDLLEXPORT Datum _pgr_bipartite(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_bipartite);
 
-
 static
 void
-process(char* edges_sql,
+process(
+        char* edges_sql,
+
         II_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
@@ -53,7 +52,9 @@ process(char* edges_sql,
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    PGR_DBG("Starting timer");
+    (*result_tuples) = NULL;
+    (*result_count) = 0;
+
     clock_t start_t = clock();
     pgr_do_bipartite(
             edges_sql,
@@ -62,7 +63,6 @@ process(char* edges_sql,
             &notice_msg,
             &err_msg);
     time_msg("processing pgr_bipartite()", start_t, clock());
-
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -75,31 +75,33 @@ process(char* edges_sql,
     pgr_SPI_finish();
 }
 
-PGDLLEXPORT Datum
-_pgr_bipartite(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_bipartite(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
     II_t_rt *result_tuples = NULL;
     size_t result_count = 0;
+
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 &result_tuples,
                 &result_count);
 
-
         funcctx->max_calls = result_count;
 
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-                != TYPEFUNC_COMPOSITE)
+                != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
                          "that cannot accept type record")));
+        }
+
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
     }
@@ -122,12 +124,14 @@ _pgr_bipartite(PG_FUNCTION_ARGS) {
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
-            values[0] = Int64GetDatum(result_tuples[call_cntr].d1.id);
-            values[1] = Int64GetDatum(result_tuples[call_cntr].d2.value);
-            tuple = heap_form_tuple(tuple_desc, values, nulls);
-            result = HeapTupleGetDatum(tuple);
-            SRF_RETURN_NEXT(funcctx, result);
-        } else {
-            SRF_RETURN_DONE(funcctx);
-        }
+
+        values[0] = Int64GetDatum(result_tuples[call_cntr].d1.id);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].d2.value);
+
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
+        result = HeapTupleGetDatum(tuple);
+        SRF_RETURN_NEXT(funcctx, result);
+    } else {
+        SRF_RETURN_DONE(funcctx);
+    }
 }
