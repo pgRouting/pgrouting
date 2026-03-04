@@ -110,8 +110,7 @@ _pgr_maxflow(PG_FUNCTION_ARGS) {
         values = palloc(6 * sizeof(Datum));
         nulls = palloc(6 * sizeof(bool));
 
-        size_t i = 0;
-        for (i = 0; i < 6; ++i) {
+        for (size_t i = 0; i < 6; ++i) {
             nulls[i] = false;
         }
 
