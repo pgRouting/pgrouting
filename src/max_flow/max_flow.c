@@ -39,7 +39,6 @@ PGDLLEXPORT Datum _pgr_maxflow(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_maxflow);
 
 
-PG_FUNCTION_INFO_V1(_pgr_maxflow);
 PGDLLEXPORT Datum
 _pgr_maxflow(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx = NULL;
