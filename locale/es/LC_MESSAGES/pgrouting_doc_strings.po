@@ -22628,6 +22628,18 @@ msgstr ""
 "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__: "
 "pgr_withPointsCostMatrix"
 
+#, fuzzy
+msgid "Individuals in this release |release| (in alphabetical order)"
+msgstr "Personas en esta versión v4.0.0 (por orden alfabético)"
+
+#, fuzzy
+msgid ""
+"`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordering "
+"functions standardized"
+msgstr ""
+"`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: "
+"pgr_kingOrdering"
+
 #~ msgid "See also"
 #~ msgstr "Ver también"
 
