@@ -196,13 +196,13 @@ boost::adjacency_list < boost::vecS, boost::vecS,
     Basic_vertex, Basic_edge , true> DirectedGraph;
 
 typedef graph::Pgr_base_graph <
-boost::adjacency_list < boost::vecS, boost::vecS,
+boost::adjacency_list < boost::listS, boost::vecS,
     boost::undirectedS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge , false> xyUndirectedGraph;
 
 typedef graph::Pgr_base_graph <
-boost::adjacency_list < boost::vecS, boost::vecS,
+boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge , true> xyDirectedGraph;
@@ -241,9 +241,6 @@ class Pgr_base_graph {
      using edges_size_type = typename boost::graph_traits<G>::edges_size_type;
      using degree_size_type = typename boost::graph_traits<G>::degree_size_type;
      using vertex_index_t = typename boost::property_map<G, boost::vertex_index_t>::type;
-#if 0
-     using edge_index_t = typename boost::property_map<G, boost::edge_index_t>::type;
-#endif
 
      /**@}*/
 
