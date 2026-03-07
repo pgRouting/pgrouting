@@ -59,15 +59,19 @@ BEGIN
   the_query := format($$
     WITH
     edges_table AS (
-      %s
+      SELECT id, geom,
+             ST_StartPoint(geom) AS startpoint,
+             ST_EndPoint(geom) AS endpoint
+      FROM (%s) _edges
     ),
 
     get_touching AS (
-      SELECT e1.id id1, e2.id id2, ST_Snap(e1.geom, e2.geom, %2$s) AS geom, e1.geom AS g1, e2.geom AS g2
+      SELECT e1.id id1, e2.id id2, ST_Snap(e1.geom, e2.geom, %2$s) AS geom, e1.geom AS g1, e2.geom AS g2,
+             e1.startpoint AS sp1, e1.endpoint AS ep1
       FROM edges_table e1, edges_table e2
       WHERE e1.id != e2.id AND ST_DWithin(e1.geom, e2.geom, %2$s) AND NOT(
-        ST_StartPoint(e1.geom) = ST_StartPoint(e2.geom) OR ST_StartPoint(e1.geom) = ST_EndPoint(e2.geom)
-        OR ST_EndPoint(e1.geom) = ST_StartPoint(e2.geom) OR ST_EndPoint(e1.geom) = ST_EndPoint(e2.geom))
+        e1.startpoint = e2.startpoint OR e1.startpoint = e2.endpoint
+        OR e1.endpoint = e2.startpoint OR e1.endpoint = e2.endpoint)
     ),
 
     touchings AS (
@@ -75,8 +79,8 @@ BEGIN
       FROM get_touching
       WHERE  NOT (geom = g1) OR
          (ST_touches(g1, g2) AND NOT
-            (ST_Intersection(geom, g2) = ST_StartPoint(g1)
-             OR ST_Intersection(geom, g2) = ST_EndPoint(g1)))
+            (ST_Intersection(geom, g2) = sp1
+             OR ST_Intersection(geom, g2) = ep1))
     ),
 
     blades AS (
