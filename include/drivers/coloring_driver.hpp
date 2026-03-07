@@ -1,6 +1,16 @@
 /*PGR-GNU*****************************************************************
-File: enums.h
+File: allpairs_driver.hpp
 
+Copyright (c) 2015-2026 pgRouting developers
+Mail: project@pgrouting.org
+
+Design of one process & driver file by
+Copyright (c) 2025 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
+
+Copying this file (or a derivative) within pgRouting code add the following:
+
+Generated with Template by:
 Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
@@ -22,35 +32,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_C_COMMON_ENUMS_H_
-#define INCLUDE_C_COMMON_ENUMS_H_
+#ifndef INCLUDE_DRIVERS_COLORING_DRIVER_HPP_
+#define INCLUDE_DRIVERS_COLORING_DRIVER_HPP_
+#pragma once
 
-enum Which {
-    /** undirected graph + results: vertex id  */
-    SLOAN = 0, CUTCHILL, KING,
-    /** directed graph + results: vertex id  */
-    TOPOSORT = 11,
-    /** shortest_paths */
-    DIJKSTRA = 21, WITHPOINTS, OLD_WITHPOINTS, BDDIJKSTRA, EDWARDMOORE,
-    DAGSP,
-    BELLMANFORD,
-    EDGEDISJOINT,
-    /** allpairs **/
-    FLOYD = 31, JOHNSON,
-    /** metrics **/
-    BANDWIDTH,
-    /** with edges that have x y */
-    ASTAR = 400, BDASTAR,
-    /** For spanning tree like results */
-    KRUSKAL = 500, KRUSKALDD, KRUSKALDFS, KRUSKALBFS,
-    PRIM = 510, PRIMDD, PRIMDFS, PRIMBFS,
-    DFS = 520,
-    BFS = 530,
-    DIJKSTRADD = 540,
-    /* For flow */
-    MAXFLOW, PUSHRELABEL, BOYKOV, EDMONDSKARP,
-    /* For coloring */
-    EDGECOLORING
-};
+#include <cstddef>
+#include <cstdint>
+#include <string>
+#include <sstream>
 
-#endif  // INCLUDE_C_COMMON_ENUMS_H_
+#include "c_common/enums.h"
+
+using II_t_rt = struct II_t_rt;
+
+namespace pgrouting {
+namespace drivers {
+
+void do_coloring(
+        const std::string&,
+        Which,
+        II_t_rt*&, size_t&,
+        std::ostringstream&, std::ostringstream&, std::ostringstream&);
+
+}  // namespace drivers
+}  // namespace pgrouting
+
+#endif  // INCLUDE_DRIVERS_COLORING_DRIVER_HPP_
