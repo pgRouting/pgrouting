@@ -29,22 +29,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/coloring/bipartite_driver.h"
 
-#include <string>
 #include <sstream>
-#include <deque>
 #include <vector>
-#include <algorithm>
+#include <string>
 
 #include "c_types/ii_t_rt.h"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
-
-
-#include "cpp_common/identifiers.hpp"
-
-#include "cpp_common/path.hpp"
-#include "cpp_common/base_graph.hpp"
 
 #include "coloring/bipartite_driver.hpp"
 
@@ -86,13 +78,10 @@ pgr_do_bipartite(
         }
         hint = nullptr;
 
-        std::vector<II_t_rt> results;
-
         pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
-
         pgrouting::functions::Pgr_Bipartite <pgrouting::UndirectedGraph> fn_Bipartite;
-        results = fn_Bipartite.pgr_bipartite(undigraph);
+        auto results = fn_Bipartite.pgr_bipartite(undigraph);
 
         auto count = results.size();
 
