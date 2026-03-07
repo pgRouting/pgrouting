@@ -30,11 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "coloring/bipartite.hpp"
 
 #include <vector>
+#include <string>
 #include <cstdint>
 
-#include <boost/property_map/property_map.hpp>
-#include <boost/property_map/vector_property_map.hpp>
-#include <boost/type_traits.hpp>
 #include <boost/graph/bipartite.hpp>
 
 #include "cpp_common/interruption.hpp"
@@ -57,7 +55,9 @@ std::vector<II_t_rt> get_bipartition(pgrouting::UndirectedGraph &graph) {
     } catch (std::exception &e) {
         throw;
     } catch (...) {
-        throw;
+        throw std::make_pair(
+                std::string("INTERNAL: something went wrong while calling boost::edge_coloring"),
+                std::string(__PGR_PRETTY_FUNCTION__));;
     }
 
     V_i v, vend;
