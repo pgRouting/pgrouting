@@ -30,7 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <sstream>
 #include <vector>
-#include <algorithm>
 #include <string>
 
 #include "c_types/ii_t_rt.h"
@@ -40,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "coloring/sequentialVertexColoring.hpp"
 
-/** @file sequentialVertexColoring_driver.cpp */
 
 
 namespace {
@@ -90,12 +88,9 @@ pgr_do_sequentialVertexColoring(
         }
         hint = nullptr;
 
-        std::vector<II_t_rt> results;
-
         pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
-
-        results = pgr_sequentialVertexColoring(undigraph);
+        auto results = pgr_sequentialVertexColoring(undigraph);
 
         auto count = results.size();
 
