@@ -50,7 +50,7 @@ enum Which {
     /* For flow */
     MAXFLOW, PUSHRELABEL, BOYKOV, EDMONDSKARP,
     /* For coloring */
-    EDGECOLORING
+    EDGECOLORING, BIPARTITE, SEQUENTIAL
 };
 
 #endif  // INCLUDE_C_COMMON_ENUMS_H_

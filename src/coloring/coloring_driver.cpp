@@ -42,7 +42,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
 
+#include "coloring/bipartite.hpp"
 #include "coloring/edgeColoring.hpp"
+#include "coloring/sequentialVertexColoring.hpp"
 
 namespace pgrouting {
 namespace drivers {
@@ -69,6 +71,8 @@ void do_coloring(
         using pgrouting::UndirectedGraph;
 
         using pgrouting::functions::edgeColoring;
+        using pgrouting::functions::sequentialVertexColoring;
+        using pgrouting::functions::pgr_bipartite;
 
         hint = edges_sql;
         auto edges = get_edges(edges_sql, true, false);
@@ -90,6 +94,12 @@ void do_coloring(
             case EDGECOLORING:
                 results = edgeColoring(undigraph);
                 break;
+            case BIPARTITE:
+                results = pgr_bipartite(undigraph);
+                break;
+            case SEQUENTIAL:
+                results = sequentialVertexColoring(undigraph);
+                break;
             default:
                 err << "Unknown coloring function" << get_name(which);
                 return;
@@ -98,7 +108,7 @@ void do_coloring(
         auto count = results.size();
 
         if (count == 0) {
-            notice << "No results found";
+            log << "No results found";
             return;
         }
 

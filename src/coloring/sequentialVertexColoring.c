@@ -35,11 +35,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 #include "c_types/ii_t_rt.h"
-#include "drivers/coloring/sequentialVertexColoring_driver.h"
+#include "process/coloring_process.h"
 
 PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_sequentialvertexcoloring);
 
+#if 0
 static
 void
 process(
@@ -74,6 +75,7 @@ process(
 
     pgr_SPI_finish();
 }
+#endif
 
 PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -86,8 +88,10 @@ PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        process(
+        pgr_process_coloring(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+
+                SEQUENTIAL,
                 &result_tuples,
                 &result_count);
 
