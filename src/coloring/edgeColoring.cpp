@@ -35,17 +35,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <string>
 #include <map>
+#include <cstdint>
 
-#include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/edge_coloring.hpp>
-#include <boost/property_map/property_map.hpp>
 
 #include "cpp_common/interruption.hpp"
 
 
 namespace pgrouting {
 namespace functions {
-
 
 std::vector<II_t_rt>
 edgeColoring(pgrouting::UndirectedGraph g) {
@@ -64,10 +62,14 @@ edgeColoring(pgrouting::UndirectedGraph g) {
     CHECK_FOR_INTERRUPTS();
     try {
         colors = boost::edge_coloring(g.graph, color_map);
+    } catch (boost::exception const& ex) {
+        throw;
+    } catch (std::exception &e) {
+        throw;
     } catch (...) {
         throw std::make_pair(
-            std::string("INTERNAL: something went wrong while calling boost::edge_coloring"),
-            std::string(__PGR_PRETTY_FUNCTION__));
+                std::string("INTERNAL: something went wrong while calling boost::edge_coloring"),
+                std::string(__PGR_PRETTY_FUNCTION__));
     }
 
     size_t i = 0;
