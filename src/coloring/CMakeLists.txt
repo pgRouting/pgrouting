@@ -12,4 +12,5 @@ ADD_LIBRARY(coloring OBJECT
 
     bipartite.cpp
     edgeColoring.cpp
+    sequentialVertexColoring.cpp
     )

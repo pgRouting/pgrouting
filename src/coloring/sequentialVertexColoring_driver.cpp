@@ -39,20 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "coloring/sequentialVertexColoring.hpp"
 
-
-
-namespace {
-
-template < class G >
-std::vector <II_t_rt>
-pgr_sequentialVertexColoring(G &graph) {
-    pgrouting::functions::Pgr_sequentialVertexColoring < G > fn_sequentialVertexColoring;
-    auto results = fn_sequentialVertexColoring.sequentialVertexColoring(graph);
-    return results;
-}
-
-}  // namespace
-
 void
 pgr_do_sequentialVertexColoring(
         const char *edges_sql,
@@ -79,6 +65,9 @@ pgr_do_sequentialVertexColoring(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
+        using pgrouting::functions::sequentialVertexColoring;
+
+
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
         if (edges.empty()) {
@@ -90,7 +79,7 @@ pgr_do_sequentialVertexColoring(
 
         pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
-        auto results = pgr_sequentialVertexColoring(undigraph);
+        auto results = sequentialVertexColoring(undigraph);
 
         auto count = results.size();
 
