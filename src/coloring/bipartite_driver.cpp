@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
 
-#include "coloring/bipartite_driver.hpp"
+#include "coloring/bipartite.hpp"
 
 
 void
@@ -69,6 +69,8 @@ pgr_do_bipartite(
         pgassert(*return_count == 0);
         // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 
+        using pgrouting::functions::pgr_bipartite;
+
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
         if (edges.empty()) {
@@ -80,8 +82,7 @@ pgr_do_bipartite(
 
         pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
-        pgrouting::functions::Pgr_Bipartite <pgrouting::UndirectedGraph> fn_Bipartite;
-        auto results = fn_Bipartite.pgr_bipartite(undigraph);
+        auto results = pgr_bipartite(undigraph);
 
         auto count = results.size();
 
