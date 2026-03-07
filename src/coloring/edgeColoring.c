@@ -41,42 +41,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum _pgr_edgecoloring(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_edgecoloring);
 
-#if 0
-static
-void
-process(
-        char* edges_sql,
-
-        II_t_rt **result_tuples,
-        size_t *result_count) {
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
-
-    clock_t start_t = clock();
-    pgr_do_edgeColoring(
-            edges_sql,
-            result_tuples, result_count,
-            &log_msg,
-            &notice_msg,
-            &err_msg);
-    time_msg("processing pgr_edgeColoring", start_t, clock());
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
-#endif
 
 PGDLLEXPORT Datum _pgr_edgecoloring(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
