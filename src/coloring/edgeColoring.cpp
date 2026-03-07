@@ -48,10 +48,10 @@ namespace functions {
 
 
 std::vector<II_t_rt>
-edgeColoring(pgrouting::UndirectedB_G g) {
+edgeColoring(pgrouting::UndirectedGraph g) {
     std::vector<II_t_rt> results(boost::num_edges(g.graph));
     using B_G = pgrouting::UndirectedGraph::B_G;
-    using E  = pgrouting::UndirectedB_G::E;
+    using E  = pgrouting::UndirectedGraph::E;
 
     // Create a std::map to store edge colors
     std::map<E, int64_t> edge_colors_map;
