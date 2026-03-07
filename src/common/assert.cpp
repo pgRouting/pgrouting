@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <exception>
-
+#include <iterator>
 
 std::string get_backtrace() {
 #ifdef __GLIBC__
