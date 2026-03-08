@@ -35,14 +35,14 @@ PG_FUNCTION_INFO_V1(_pgr_sloanordering);
 
 PGDLLEXPORT Datum
 _pgr_sloanordering(PG_FUNCTION_ARGS) {
-    FuncCallContext     *funcctx;
-    TupleDesc           tuple_desc;
+    FuncCallContext     *funcctx = NULL;
+    TupleDesc           tuple_desc = NULL;
 
     int64_t *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
-        MemoryContext   oldcontext;
+        MemoryContext   oldcontext = NULL;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
@@ -72,18 +72,17 @@ _pgr_sloanordering(PG_FUNCTION_ARGS) {
     result_tuples = (int64_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple    tuple;
-        Datum        result;
-        Datum        *values;
-        bool*        nulls;
+        HeapTuple    tuple = NULL;
+        Datum        result = 0;
+        Datum        *values = NULL;
+        bool*        nulls = NULL;
 
         size_t num  = 2;
         values = palloc(num * sizeof(Datum));
         nulls = palloc(num * sizeof(bool));
 
 
-        size_t i;
-        for (i = 0; i < num; ++i) {
+        for (size_t i = 0; i < num; ++i) {
             nulls[i] = false;
         }
 

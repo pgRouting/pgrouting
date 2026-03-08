@@ -82,14 +82,14 @@ process(char* edges_sql,
 
 PGDLLEXPORT Datum
 _pgr_transitiveclosure(PG_FUNCTION_ARGS) {
-    FuncCallContext     *funcctx;
-    TupleDesc            tuple_desc;
+    FuncCallContext     *funcctx = NULL;
+    TupleDesc            tuple_desc = NULL;
 
     TransitiveClosure_rt  *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
-        MemoryContext   oldcontext;
+        MemoryContext   oldcontext = NULL;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
@@ -115,39 +115,38 @@ _pgr_transitiveclosure(PG_FUNCTION_ARGS) {
     result_tuples = (TransitiveClosure_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple   tuple;
-        Datum       result;
-        Datum       *values;
-        bool        *nulls;
-        int16 typlen;
+        HeapTuple   tuple = NULL;
+        Datum       result = 0;
+        Datum       *values = NULL;
+        bool        *nulls = NULL;
+        int16 typlen = 0;
         size_t      call_cntr = funcctx->call_cntr;
 
         size_t numb = 3;
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
-        size_t i;
-        for (i = 0; i < numb; ++i) {
+        for (size_t i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
         size_t target_array_size =
             (size_t)result_tuples[call_cntr].target_array_size;
 
-        Datum* target_array_array;
+        Datum* target_array_array = NULL;
         target_array_array = (Datum*) palloc(sizeof(Datum) *
                 (size_t)target_array_size);
 
-        for (i = 0; i < target_array_size; ++i) {
+        for (size_t i = 0; i < target_array_size; ++i) {
             PGR_DBG("Storing target_array vertex %ld",
                     result_tuples[call_cntr].target_array[i]);
             target_array_array[i] =
                 Int64GetDatum(result_tuples[call_cntr].target_array[i]);
         }
 
-        bool typbyval;
-        char typalign;
+        bool typbyval = 0;
+        char typalign = 0;
         get_typlenbyvalalign(INT8OID, &typlen, &typbyval, &typalign);
-        ArrayType* arrayType;
+        ArrayType* arrayType = NULL;
         /*
          * https://doxygen.postgresql.org/arrayfuncs_8c.html
 
