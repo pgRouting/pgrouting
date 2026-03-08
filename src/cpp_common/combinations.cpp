@@ -85,16 +85,6 @@ get_combinations(
     return new_combinations;
 }
 
-std::map<int64_t , std::set<int64_t>>
-get_combinations(const std::vector<II_t_rt> &combinations) {
-    std::map<int64_t, std::set<int64_t>> result;
-
-    for (const auto &row : combinations) {
-        result[row.d1.source].insert(row.d2.target);
-    }
-    return result;
-}
-
 /** @brief gets all the departures and destinations
  * @param[in] combinations_sql from the @b combinations signatures
  * @param[in] startsArr PostgreSQL array with the departures
@@ -153,7 +143,8 @@ get_combinations(
 std::map<int64_t , std::set<int64_t>>
 get_combinations(
         const std::string &combinations_sql,
-        ArrayType* startsArr, ArrayType* endsArr, bool normal, bool &is_matrix) {
+        ArrayType* startsArr, ArrayType* endsArr,
+        bool normal, bool &is_matrix) {
     using pgrouting::pgget::get_intSet;
     using pgrouting::pgget::get_combinations;
     std::map<int64_t, std::set<int64_t>> result;
@@ -185,7 +176,8 @@ get_combinations(
 std::map<int64_t , std::set<int64_t>>
 get_combinations(
         const std::string &combinations_sql,
-        ArrayType* startsArr, ArrayType* endsArr, bool normal) {
+        ArrayType* startsArr, ArrayType* endsArr,
+        bool normal) {
     bool is_matrix = false;
     return get_combinations(combinations_sql, startsArr, endsArr, normal, is_matrix);
 }

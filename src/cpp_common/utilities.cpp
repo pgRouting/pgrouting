@@ -132,6 +132,12 @@ get_name(Which which, bool is_only_cost, bool is_near, bool is_matrix) {
         case DAGSP :
             base = "pgr_dagShortestPath";
             break;
+        case BELLMANFORD :
+            base = "pgr_bellmanFord";
+            break;
+        case EDGEDISJOINT:
+            base = "pgr_edgeDisjointPaths";
+            break;
         case OLD_WITHPOINTS:
         case WITHPOINTS:
             base = "pgr_withPoints";
@@ -174,6 +180,7 @@ estimate_drivingSide(char driving_side, Which which) {
         case BDASTAR :
         case DAGSP :
         case EDWARDMOORE:
+        case BELLMANFORD :
         case BDDIJKSTRA:
         case DIJKSTRA:
                 return ' ';

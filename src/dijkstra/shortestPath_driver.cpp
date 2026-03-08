@@ -55,6 +55,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "bdDijkstra/bdDijkstra.hpp"
 #include "withPoints/withPoints.hpp"
 #include "dagShortestPath/dagShortestPath.hpp"
+#include "bellman_ford/bellman_ford.hpp"
+#include "max_flow/maxflow.hpp"
 
 namespace {
 
@@ -155,6 +157,8 @@ do_shortestPath(
         using pgrouting::algorithms::bdDijkstra;
         using pgrouting::algorithms::edwardMoore;
         using pgrouting::algorithms::dagShortestPath;
+        using pgrouting::functions::bellmanFord;
+        using pgrouting::functions::edgeDisjoint;
 
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, normal, is_matrix);
@@ -225,24 +229,32 @@ do_shortestPath(
         UndirectedGraph undigraph;
 
         std::deque<Path> paths;
-        if (directed) {
+
+        if (which == EDGEDISJOINT) {
+            auto results = edgeDisjoint(edges, combinations, directed);
+            return_count = get_tuples(results, edges, return_tuples);
+            return;
+        } else if (directed) {
             digraph.insert_edges(edges);
             switch (which) {
                 case WITHPOINTS:
                 case OLD_WITHPOINTS:
                 case DIJKSTRA:
-                    paths =  dijkstra(digraph, combinations, only_cost, n);
+                    paths = dijkstra(digraph, combinations, only_cost, n);
                     post_process(paths, only_cost, normal, n, global);
                     break;
                 case BDDIJKSTRA:
-                        paths =  bdDijkstra(digraph, combinations, only_cost);
-                        break;
+                    paths = bdDijkstra(digraph, combinations, only_cost);
+                    break;
                 case EDWARDMOORE:
-                        paths =  edwardMoore(digraph, combinations);
-                        break;
+                    paths = edwardMoore(digraph, combinations);
+                    break;
                 case DAGSP:
-                        paths = dagShortestPath(digraph, combinations, only_cost);
-                        break;
+                    paths = dagShortestPath(digraph, combinations, only_cost);
+                    break;
+                case BELLMANFORD:
+                    paths = bellmanFord(digraph, combinations, only_cost);
+                    break;
                 default:
                     err << "INTERNAL: wrong function call: " << which;
                     return;
@@ -261,6 +273,9 @@ do_shortestPath(
                     break;
                 case EDWARDMOORE:
                     paths =  edwardMoore(undigraph, combinations);
+                    break;
+                case BELLMANFORD:
+                    paths =  bellmanFord(undigraph, combinations, only_cost);
                     break;
                 default:
                     err << "INTERNAL: wrong function call: " << which;

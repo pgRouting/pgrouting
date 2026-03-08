@@ -302,5 +302,36 @@ get_tuples(
     return count;
 }
 
+size_t
+get_tuples(
+        std::vector<Path_rt> &paths,
+        const std::vector<Edge_t> &edges,
+        Path_rt* &tuples) {
+    pgassert(!tuples);
+
+    if (paths.empty()) return 0;
+
+    /*
+     * Calculating the cost
+     */
+    auto found = paths.size();
+    for (const auto &e : edges) {
+        for (auto &r : paths) {
+            if (r.edge == e.id) {
+                r.cost = (r.node == e.source) ?  e.cost : e.reverse_cost;
+                --found;
+            }
+        }
+        if (found == 0) break;
+    }
+
+    tuples = pgr_alloc(paths.size(), tuples);
+
+    for (size_t i = 0; i < paths.size(); ++i) {
+        tuples[i] = paths[i];
+    }
+    return paths.size();
+}
+
 }  // namespace to_postgres
 }  // namespace pgrouting

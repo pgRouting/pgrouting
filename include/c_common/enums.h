@@ -33,6 +33,8 @@ enum Which {
     /** shortest_paths */
     DIJKSTRA = 21, WITHPOINTS, OLD_WITHPOINTS, BDDIJKSTRA, EDWARDMOORE,
     DAGSP,
+    BELLMANFORD,
+    EDGEDISJOINT,
     /** allpairs **/
     FLOYD = 31, JOHNSON,
     /** metrics **/
