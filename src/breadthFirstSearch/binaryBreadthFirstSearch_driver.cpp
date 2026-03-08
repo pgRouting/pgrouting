@@ -144,8 +144,10 @@ pgr_do_binaryBreadthFirstSearch(
     std::ostringstream err;
     std::ostringstream notice;
     const char *hint = nullptr;
-    const std::string c_err_msg = "Graph Condition Failed: Graph should have at most two distinct non-negative edge costs! "
-                             "If there are exactly two distinct edge costs, one of them must equal zero!";
+    const std::string c_err_msg =
+        "Graph Condition Failed: Graph should have at most two distinct "
+        "non-negative edge costs! If there are exactly two distinct edge "
+        "costs, one of them must equal zero!";
 
     try {
         pgassert(!(*log_msg));
