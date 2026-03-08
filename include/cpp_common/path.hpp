@@ -59,7 +59,7 @@ class Path {
     std::deque< Path_t > path;
     int64_t m_start_id;
     int64_t m_end_id;
-    double m_tot_cost;
+    double m_tot_cost{};
 
  public:
     Path(): m_start_id(0), m_end_id(0), m_tot_cost(0)
