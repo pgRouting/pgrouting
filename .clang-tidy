@@ -22,7 +22,8 @@ Checks: >
     -cppcoreguidelines-pro-type-reinterpret-cast,
     -cppcoreguidelines-pro-type-union-access,
     -cppcoreguidelines-pro-type-vararg,
-    -cppcoreguidelines-slicing
+    -cppcoreguidelines-slicing,
+    cppcoreguidelines-avoid-c-arrays
 
 CheckOptions:
     - key: cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor
@@ -34,7 +35,7 @@ CheckOptions:
     - key: cppcoreguidelines-special-member-functions.AllowImplicitlyDeletedCopyOrMove
       value: true
 
-WarningsAsErrors: ''
-HeaderFilterRegex: './include'
-FormatStyle:     none
+WarningsAsErrors: ""
+HeaderFilterRegex: "./include"
+FormatStyle: none
 InheritParentConfig: true
