@@ -39,10 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "spanningTree/mst.hpp"
 #include "cpp_common/interruption.hpp"
 
-//******************************************
-
 namespace pgrouting {
-namespace functions {
+namespace algorithms {
 
 template <class G>
 class Pgr_prim : public Pgr_mst<G> {
@@ -52,23 +50,39 @@ class Pgr_prim : public Pgr_mst<G> {
 
  public:
      ~Pgr_prim() override = default;
-     std::vector<MST_rt> prim(G &graph);
+
+     std::vector<MST_rt> prim(G &graph) {
+         return this->mst(graph);
+     }
 
      std::vector<MST_rt> primBFS(
              G &graph,
-             std::vector<int64_t> roots,
-             int64_t max_depth);
+             const std::set<int64_t>& roots,
+             int64_t max_depth) {
+         return this->mstBFS(graph, roots, max_depth);
+     }
 
      std::vector<MST_rt> primDFS(
              G &graph,
-             std::vector<int64_t> roots,
-             int64_t max_depth);
+             const std::set<int64_t>& roots,
+             int64_t max_depth) {
+         return this->mstDFS(graph, roots, max_depth);
+     }
 
      std::vector<MST_rt> primDD(
              G &graph,
-             std::vector<int64_t> roots,
-             double distance);
+             const std::set<int64_t>& roots,
+             double distance) {
+         return this->mstDD(graph, roots, distance);
+     }
 
+
+ private:
+     // Member
+     std::vector<V> predecessors;
+     std::vector<double> distances;
+     std::vector<V> data;
+     std::set<V> m_unassigned;
 
  private:
      // Functions
@@ -80,123 +94,85 @@ class Pgr_prim : public Pgr_mst<G> {
 
      void primTree(
              const G &graph,
-             int64_t root_vertex);
+             int64_t root_vertex) {
+         clear();
 
-     void generate_mst(const G &graph) override;
+         predecessors.resize(graph.num_vertices());
+         distances.resize(graph.num_vertices());
 
- private:
-     // Member
-     std::vector<V> predecessors;
-     std::vector<double> distances;
-     std::vector<V> data;
-     std::set<V> m_unassigned;
+         auto v_root(graph.get_V(root_vertex));
+
+         using prim_visitor = visitors::Prim_dijkstra_visitor<V>;
+
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
+
+         boost::prim_minimum_spanning_tree(
+                 graph.graph,
+                 &predecessors[0],
+                 boost::distance_map(&distances[0]).
+                 weight_map(get(&G::G_T_E::cost, graph.graph))
+                 .root_vertex(v_root)
+                 .visitor(prim_visitor(data)));
+
+         for (const auto v : data) {
+             /*
+              * its not a tree, its a forest
+              * - v is not on current tree
+              */
+             if (std::isinf(distances[v])) continue;
+             m_unassigned.erase(v);
+
+
+             auto u = predecessors[v];
+
+             /*
+              * Not a valid edge
+              */
+             if (u == v) continue;
+
+             auto cost = distances[v] - distances[u];
+             auto edge = graph.get_edge(u, v, cost);
+             this->m_spanning_tree.edges.insert(edge);
+         }
+     }
+
+
+     void generate_mst(const G &graph) override {
+         this->clear();
+
+         size_t totalNodes = num_vertices(graph.graph);
+
+         m_unassigned.clear();
+         for (V v = 0; v < totalNodes; ++v) {
+             m_unassigned.insert(m_unassigned.end(), v);
+         }
+
+         while (!m_unassigned.empty()) {
+             auto root = *m_unassigned.begin();
+             m_unassigned.erase(m_unassigned.begin());
+             primTree(
+                     graph,
+                     graph.graph[root].id);
+         }
+     }
 };
 
+}  // namespace algorithms
 
-template <class G>
-void
-Pgr_prim<G>::primTree(
-        const G &graph,
-        int64_t root_vertex) {
-    clear();
+namespace functions {
 
-    predecessors.resize(graph.num_vertices());
-    distances.resize(graph.num_vertices());
+    std::vector<MST_rt>
+        prim(pgrouting::UndirectedGraph&);
 
-    auto v_root(graph.get_V(root_vertex));
+    std::vector<MST_rt>
+        primBFS(pgrouting::UndirectedGraph&, const std::set<int64_t>&, int64_t);
 
-    using prim_visitor = visitors::Prim_dijkstra_visitor<V>;
+    std::vector<MST_rt>
+        primDFS(pgrouting::UndirectedGraph&, const std::set<int64_t>&, int64_t);
 
-    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-    CHECK_FOR_INTERRUPTS();
-
-    boost::prim_minimum_spanning_tree(
-            graph.graph,
-            &predecessors[0],
-            boost::distance_map(&distances[0]).
-            weight_map(get(&G::G_T_E::cost, graph.graph))
-            .root_vertex(v_root)
-            .visitor(prim_visitor(data)));
-
-    for (const auto v : data) {
-        /*
-         * its not a tree, its a forest
-         * - v is not on current tree
-         */
-        if (std::isinf(distances[v])) continue;
-        m_unassigned.erase(v);
-
-
-        auto u = predecessors[v];
-
-        /*
-         * Not a valid edge
-         */
-        if (u == v) continue;
-
-        auto cost = distances[u] - distances[v];
-        auto edge = graph.get_edge(u, v, cost);
-        this->m_spanning_tree.edges.insert(edge);
-    }
-}
-
-
-template <class G>
-void
-Pgr_prim<G>::generate_mst(const G &graph) {
-    this->clear();
-
-    size_t totalNodes = num_vertices(graph.graph);
-
-    m_unassigned.clear();
-    for (V v = 0; v < totalNodes; ++v) {
-            m_unassigned.insert(m_unassigned.end(), v);
-    }
-
-    while (!m_unassigned.empty()) {
-        auto root = *m_unassigned.begin();
-        m_unassigned.erase(m_unassigned.begin());
-        primTree(
-                graph,
-                graph.graph[root].id);
-    }
-}
-
-template <class G>
-std::vector<MST_rt>
-Pgr_prim<G>::prim(
-        G &graph) {
-    return this->mst(graph);
-}
-
-template <class G>
-std::vector<MST_rt>
-Pgr_prim<G>::primBFS(
-        G &graph,
-        std::vector<int64_t> roots,
-        int64_t max_depth) {
-    return this->mstBFS(graph, roots, max_depth);
-}
-
-template <class G>
-std::vector<MST_rt>
-Pgr_prim<G>::primDFS(
-        G &graph,
-        std::vector<int64_t> roots,
-        int64_t max_depth) {
-    return this->mstDFS(graph, roots, max_depth);
-}
-
-template <class G>
-std::vector<MST_rt>
-Pgr_prim<G>::primDD(
-        G &graph,
-        std::vector<int64_t> roots,
-        double distance) {
-    return this->mstDD(graph, roots, distance);
-}
-
-
+    std::vector<MST_rt>
+        primDD(pgrouting::UndirectedGraph&, const std::set<int64_t>&, double);
 
 }  // namespace functions
 }  // namespace pgrouting

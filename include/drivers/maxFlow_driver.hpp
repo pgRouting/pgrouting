@@ -1,13 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: bellman_ford_neg_driver.h
+File: maxFlow_driver.hpp
 
 Generated with Template by:
 Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2018 Sourabh Garg
-Mail: sourabh.garg.mat@gmail.com
+Copyright (c) 2016 Andrea Nardelli
+Mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -27,50 +27,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_BELLMAN_FORD_BELLMAN_FORD_NEG_DRIVER_H_
-#define INCLUDE_DRIVERS_BELLMAN_FORD_BELLMAN_FORD_NEG_DRIVER_H_
-#pragma once
+#ifndef INCLUDE_DRIVERS_MAXFLOW_DRIVER_HPP_
+#define INCLUDE_DRIVERS_MAXFLOW_DRIVER_HPP_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <cstddef>
+#include <cstdint>
+#include <string>
+#include <sstream>
 
-#include <postgres.h>
-#include <utils/array.h>
+#include "c_common/enums.h"
 
-#ifdef __cplusplus
-}
-#endif
+using Flow_t = struct Flow_t;
+using ArrayType = struct ArrayType;
 
-#include "cpp_common/undefPostgresDefine.hpp"
+namespace pgrouting {
+namespace drivers {
 
-#ifdef __cplusplus
-#   include <cstddef>
-#   include <cstdint>
-using Path_rt = struct Path_rt;
-#else
-#   include <stddef.h>
-#   include <stdint.h>
-typedef struct Path_rt Path_rt;
-#endif
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-void pgr_do_bellman_ford_neg(
-        const char*,
-        const char*,
-        const char*,
+void do_maxFlow(
+        const std::string&, const std::string&,
         ArrayType*, ArrayType*,
 
-        bool, bool,
+        Which,
+        Flow_t*&, size_t&,
+        std::ostringstream&, std::ostringstream&, std::ostringstream&);
 
-        Path_rt**, size_t*,
-        char**, char**, char**);
+}  // namespace drivers
+}  // namespace pgrouting
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif  // INCLUDE_DRIVERS_BELLMAN_FORD_BELLMAN_FORD_NEG_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_MAXFLOW_DRIVER_HPP_

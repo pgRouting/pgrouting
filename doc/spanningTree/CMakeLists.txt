@@ -3,7 +3,6 @@
 # License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 
 set(LOCAL_FILES
-    #pgr_randomSpanTree.rst
     kruskal-family.rst
     prim-family.rst
     pgr_kruskal.rst
@@ -15,7 +14,7 @@ set(LOCAL_FILES
     pgr_primDD.rst
     pgr_primDFS.rst
     pgr_primBFS.rst
-    )
+)
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} "${PGR_DOCUMENTATION_SOURCE_DIR}/${f}")
@@ -23,4 +22,3 @@ foreach (f ${LOCAL_FILES})
 endforeach()
 
 set(PROJECT_DOC_FILES ${PROJECT_DOC_FILES} ${LOCAL_DOC_FILES} PARENT_SCOPE)
-

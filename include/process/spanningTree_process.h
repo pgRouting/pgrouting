@@ -1,13 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: bdAstar_driver.h
+File: spanningTree_process.h
 
-Generated with Template by:
-Copyright (c) 2007-2026 pgRouting developers
+Copyright (c) 2026-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Design of one process & driver file by
+Copyright (c) 2026 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -27,51 +26,41 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_BDASTAR_BDASTAR_DRIVER_H_
-#define INCLUDE_DRIVERS_BDASTAR_BDASTAR_DRIVER_H_
+#ifndef INCLUDE_PROCESS_SPANNINGTREE_PROCESS_H_
+#define INCLUDE_PROCESS_SPANNINGTREE_PROCESS_H_
 #pragma once
 
 #ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <postgres.h>
-#include <utils/array.h>
-
-#ifdef __cplusplus
-}
-#endif
-
-#include "cpp_common/undefPostgresDefine.hpp"
-
-#ifdef __cplusplus
-#   include <cstddef>
-#   include <cstdint>
-using Path_rt = struct Path_rt;
+#include <cstddef>
+#include <cstdint>
+using MST_rt = struct MST_rt;
+using ArrayType = struct ArrayType;
 #else
-#   include <stddef.h>
-#   include <stdint.h>
-typedef struct Path_rt Path_rt;
+#include <stddef.h>
+#include <stdint.h>
+typedef struct MST_rt MST_rt;
+typedef struct ArrayType ArrayType;
 #endif
+
+#include "c_common/enums.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    void pgr_do_bdAstar(
-            const char*,
-            const char*,
-            ArrayType*, ArrayType*,
+void pgr_process_spanningTree(
+        const char*,
+        ArrayType*,
 
-            bool, int, double, double, bool,
+        bool, int64_t, double, bool,
 
-            Path_rt**, size_t*,
+        const char*,
+        enum Which,
 
-            char**, char**, char**);
-
+        MST_rt**, size_t*);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  //  INCLUDE_DRIVERS_BDASTAR_BDASTAR_DRIVER_H_
+#endif  // INCLUDE_PROCESS_SPANNINGTREE_PROCESS_H_

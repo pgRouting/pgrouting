@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <deque>
+#include <map>
 #include <cstddef>
 
 #include "c_types/contractionHierarchies_rt.h"
@@ -35,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/routes_t.h"
 #include "c_types/path_rt.h"
 #include "c_types/mst_rt.h"
+#include "c_types/flow_t.h"
 
 #include "cpp_common/path.hpp"
 #include "cpp_common/base_graph.hpp"
@@ -61,10 +63,36 @@ size_t get_viaRoute(std::deque<pgrouting::Path>&, Routes_t**);
  */
 size_t get_tuples(const std::deque<pgrouting::Path>&, Path_rt*&);
 
+
 /*
  * @brief get tuples from a Path to a MST_rt
  */
 size_t get_tuples(const std::deque<pgrouting::Path>&, MST_rt*&);
+
+/*
+ * @brief get tuples for Flow_t
+ */
+size_t get_tuples(const std::vector<Flow_t>&, Flow_t*&);
+
+/*
+ * @brief get tuples for Path_rt
+ */
+size_t
+get_tuples(std::vector<Path_rt>&, const std::vector<Edge_t>&, Path_rt*&);
+
+/*
+ * @brief get tuples for spanning tree driver
+ */
+size_t get_tuples(
+        const std::vector<MST_rt>&,
+        const std::deque<pgrouting::Path>&,
+        const std::vector<std::map<int64_t, int64_t>>&,
+        MST_rt*&);
+
+/*
+ * @brief get tuples from a vector of MST_rt to a MST_rt
+ */
+size_t get_tuples(const std::vector<MST_rt>&, MST_rt*&);
 
 /** @brief Vector of vertices id are saved on a C array
  *

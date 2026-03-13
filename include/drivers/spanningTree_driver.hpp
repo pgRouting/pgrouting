@@ -1,11 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: details.hpp
+File: spanningTree_driver.hpp
 
-Copyright (c) 2015-2026 pgRouting developers
+Copyright (c) 2026-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2018 Vicky Vergara
-
+Design of one process & driver file by
+Copyright (c) 2026 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -25,26 +26,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_SPANNINGTREE_DETAILS_HPP_
-#define INCLUDE_SPANNINGTREE_DETAILS_HPP_
-#pragma once
+#ifndef INCLUDE_DRIVERS_SPANNINGTREE_DRIVER_HPP_
+#define INCLUDE_DRIVERS_SPANNINGTREE_DRIVER_HPP_
 
-#include <vector>
+#include <cstddef>
 #include <cstdint>
+#include <string>
+#include <sstream>
 
-#include "c_types/mst_rt.h"
+#include "c_common/enums.h"
+
+using MST_rt = struct MST_rt;
+using ArrayType = struct ArrayType;
 
 namespace pgrouting {
+namespace drivers {
 
-namespace details {
+void do_spanningTree(
+        const std::string&,
+        ArrayType*,
 
-std::vector<int64_t>
-clean_vids(std::vector<int64_t> vids);
+        bool, int64_t, double, bool,
 
-std::vector<MST_rt>
-get_no_edge_graph_result(const std::vector<int64_t> &vids);
+        Which,
+        MST_rt*&, size_t&,
+        std::ostringstream&, std::ostringstream&, std::ostringstream&);
 
-}  // namespace details
+}  // namespace drivers
 }  // namespace pgrouting
 
-#endif  // INCLUDE_SPANNINGTREE_DETAILS_HPP_
+#endif  // INCLUDE_DRIVERS_SPANNINGTREE_DRIVER_HPP_

@@ -24,10 +24,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/utilities.hpp"
 
+#include <set>
+#include <vector>
 #include <string>
 #include <utility>
+#include <algorithm>
 
 #include "c_common/enums.h"
+#include "c_types/mst_rt.h"
 
 namespace pgrouting {
 
@@ -55,6 +59,51 @@ get_name(Which which) {
         case BANDWIDTH:
             return "pgr_bandwidth";
             break;
+        case KRUSKAL:
+            return "pgr_kruskal";
+            break;
+        case KRUSKALDD:
+            return "pgr_kruskalDD";
+            break;
+        case KRUSKALDFS:
+            return "pgr_kruskalDFS";
+            break;
+        case KRUSKALBFS:
+            return "pgr_kruskalBFS";
+            break;
+        case PRIM:
+            return "pgr_prim";
+            break;
+        case PRIMDD:
+            return "pgr_primDD";
+            break;
+        case PRIMDFS:
+            return "pgr_primDFS";
+            break;
+        case PRIMBFS:
+            return "pgr_primBFS";
+            break;
+        case DFS:
+            return "pgr_depthFirstSearch";
+            break;
+        case BFS:
+            return "pgr_breadthFirstSearch";
+            break;
+        case DIJKSTRADD:
+            return "pgr_drivingDistance";
+            break;
+        case MAXFLOW:
+            return "pgr_maxFlow";
+            break;
+        case PUSHRELABEL:
+            return "pgr_pushRelabel";
+            break;
+        case BOYKOV:
+            return "pgr_boykovKolmogorov";
+            break;
+        case EDMONDSKARP:
+            return "pgr_edmondsKarp";
+            break;
         default:
             return "unknown";
             break;
@@ -69,11 +118,13 @@ get_name(Which which, bool is_only_cost, bool is_near, bool is_matrix) {
     switch  (which) {
         case DIJKSTRA :
             base = "pgr_dijkstra";
-            suffix = std::string(is_near? "Near" : "") + (is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+            suffix = std::string(is_near? "Near" : "")
+                + (is_only_cost? "Cost" : "")
+                + (is_only_cost && is_matrix? "Matrix" : "");
             break;
         case BDDIJKSTRA :
             base = "pgr_bdDijkstra";
-            suffix = std::string(is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+            suffix = std::string(is_only_cost? "Cost" : "") + (is_only_cost && is_matrix? "Matrix" : "");
             break;
         case EDWARDMOORE:
             base = "pgr_edwardMoore";
@@ -81,10 +132,36 @@ get_name(Which which, bool is_only_cost, bool is_near, bool is_matrix) {
         case DAGSP :
             base = "pgr_dagShortestPath";
             break;
+        case BELLMANFORD :
+            base = "pgr_bellmanFord";
+            break;
+        case EDGEDISJOINT:
+            base = "pgr_edgeDisjointPaths";
+            break;
         case OLD_WITHPOINTS:
         case WITHPOINTS:
             base = "pgr_withPoints";
-            suffix = std::string(is_only_cost? "Cost" : "") + (is_matrix? "Matrix" : "");
+            suffix = std::string(is_only_cost? "Cost" : "") + (is_only_cost && is_matrix? "Matrix" : "");
+            break;
+        default : base = "unknown";
+    }
+
+    return base + suffix;
+}
+
+std::string
+get_name(Which which, bool is_only_cost, bool is_matrix) {
+    std::string base = "";
+    std::string suffix = "";
+
+    switch (which) {
+        case ASTAR :
+            base = "pgr_aStar";
+            suffix = std::string(is_only_cost? "Cost" : "") + (is_only_cost && is_matrix? "Matrix" : "");
+            break;
+        case BDASTAR :
+            base = "pgr_bdAstar";
+            suffix = std::string(is_only_cost? "Cost" : "") + (is_only_cost && is_matrix? "Matrix" : "");
             break;
         default : base = "unknown";
     }
@@ -99,8 +176,11 @@ estimate_drivingSide(char driving_side, Which which) {
         d_side = ' ';
     }
     switch (which) {
+        case ASTAR :
+        case BDASTAR :
         case DAGSP :
         case EDWARDMOORE:
+        case BELLMANFORD :
         case BDDIJKSTRA:
         case DIJKSTRA:
                 return ' ';
@@ -124,6 +204,11 @@ get_new_queries(
         const std::string &points_sql,
         std::string &edges_of_points_query,
         std::string &edges_no_points_query) {
+    if (points_sql.empty()) {
+        edges_no_points_query = edges_sql;
+        return;
+    }
+
     edges_of_points_query = std::string("WITH ")
         + " edges AS (" + edges_sql + "), "
         + " points AS (" + points_sql + ")"
@@ -137,4 +222,21 @@ get_new_queries(
         + " WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)";
 }
 
-}  //  namespace pgrouting
+std::vector<MST_rt>
+only_root_result(const std::set<int64_t> &vids) {
+    std::vector<MST_rt> results;
+    if (vids.empty()) return results;
+    for (auto const root : vids) {
+        if (root != 0) results.push_back({root, 0, root, root, -1, 0.0, 0.0});
+    }
+    return results;
+}
+
+std::vector<Flow_t>
+only_maxFlow_result(int64_t maxFlow) {
+    std::vector<Flow_t> results;
+    results.push_back({-1, -1, -1, maxFlow, -1, 0, 0});
+    return results;
+}
+
+}  // namespace pgrouting

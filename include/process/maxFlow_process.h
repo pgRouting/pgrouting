@@ -1,13 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: astar_driver.h
+File: maxFlow_process.h
 
+Generated with Template by:
 Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2023 Celia Virginia Vergara Castillo
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky at erosion.dev
+Copyright (c) 2016 Andrea Nardelli
+Mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -27,51 +27,38 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_ASTAR_ASTAR_DRIVER_H_
-#define INCLUDE_DRIVERS_ASTAR_ASTAR_DRIVER_H_
+#ifndef INCLUDE_PROCESS_MAXFLOW_PROCESS_H_
+#define INCLUDE_PROCESS_MAXFLOW_PROCESS_H_
 #pragma once
 
 #ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <postgres.h>
-#include <utils/array.h>
-
-#ifdef __cplusplus
-}
-#endif
-
-#include "cpp_common/undefPostgresDefine.hpp"
-
-#ifdef __cplusplus
-#   include <cstddef>
-#   include <cstdint>
-using Path_rt = struct Path_rt;
+#include <cstddef>
+#include <cstdint>
+using Flow_t = struct Flow_t;
+using ArrayType = struct ArrayType;
 #else
-#   include <stddef.h>
-#   include <stdint.h>
-typedef struct Path_rt Path_rt;
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+typedef struct Flow_t Flow_t;
+typedef struct ArrayType ArrayType;
 #endif
+
+#include "c_common/enums.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void pgr_do_astar(
-        const char*,
-        const char*,
-        ArrayType*,
-        ArrayType*,
+void pgr_process_maxFlow(
+        const char*, const char*,
+        ArrayType*, ArrayType*,
 
-        bool, int, double, double, bool, bool,
-
-        Path_rt**, size_t*,
-        char**, char**, char**);
-
+        enum Which,
+        Flow_t**, size_t*);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_ASTAR_ASTAR_DRIVER_H_
+#endif  // INCLUDE_PROCESS_MAXFLOW_PROCESS_H_

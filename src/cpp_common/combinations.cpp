@@ -85,16 +85,6 @@ get_combinations(
     return new_combinations;
 }
 
-std::map<int64_t , std::set<int64_t>>
-get_combinations(const std::vector<II_t_rt> &combinations) {
-    std::map<int64_t, std::set<int64_t>> result;
-
-    for (const auto &row : combinations) {
-        result[row.d1.source].insert(row.d2.target);
-    }
-    return result;
-}
-
 /** @brief gets all the departures and destinations
  * @param[in] combinations_sql from the @b combinations signatures
  * @param[in] startsArr PostgreSQL array with the departures
@@ -153,22 +143,23 @@ get_combinations(
 std::map<int64_t , std::set<int64_t>>
 get_combinations(
         const std::string &combinations_sql,
-        ArrayType* startsArr, ArrayType* endsArr, bool normal, bool &is_matrix) {
+        ArrayType* startsArr, ArrayType* endsArr,
+        bool normal, bool &is_matrix) {
     using pgrouting::pgget::get_intSet;
     using pgrouting::pgget::get_combinations;
     std::map<int64_t, std::set<int64_t>> result;
 
-    auto starts = normal? get_intSet(startsArr) : get_intSet(endsArr);
-    auto ends = endsArr? (normal? get_intSet(endsArr) : get_intSet(startsArr)) : std::set<int64_t>();
+    auto starts = startsArr? (normal? get_intSet(startsArr) : get_intSet(endsArr))   : std::set<int64_t>();
+    auto ends =     endsArr? (normal? get_intSet(endsArr)   : get_intSet(startsArr)) : std::set<int64_t>();
 
     /* TODO Read query storing like std::map<int64_t , std::set<int64_t>> */
     /* queries are stored in vectors */
     auto combinations = !combinations_sql.empty()? get_combinations(combinations_sql) : std::vector<II_t_rt>();
 
-    ends = (!starts.empty() && ends.empty()) ?  starts : ends;
-
     /* data comes from CostMatrix */
-    is_matrix = combinations.empty() && starts == ends;
+    is_matrix = combinations.empty() && !starts.empty() && ends.empty();
+
+    ends = is_matrix? starts : ends;
 
     /* data comes from a combinations */
     for (const auto &row : combinations) {
@@ -180,6 +171,15 @@ get_combinations(
         result[s] = ends;
     }
     return result;
+}
+
+std::map<int64_t , std::set<int64_t>>
+get_combinations(
+        const std::string &combinations_sql,
+        ArrayType* startsArr, ArrayType* endsArr,
+        bool normal) {
+    bool is_matrix = false;
+    return get_combinations(combinations_sql, startsArr, endsArr, normal, is_matrix);
 }
 
 }  // namespace utilities

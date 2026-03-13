@@ -19,6 +19,11 @@ To see all issues & pull requests closed by this release see the
 * [#3055](https://github.com/pgRouting/pgrouting/issues/3055): bdDijkstra: use the shortest_path process and driver
 * [#3056](https://github.com/pgRouting/pgrouting/issues/3056): edwardMoore: use the shortest_path process and driver
 * [#3060](https://github.com/pgRouting/pgrouting/issues/3060): dagShortestPath: use the shortest_path process and driver
+* [#3064](https://github.com/pgRouting/pgrouting/issues/3064): Astar: create and use a process and driver for Astar
+* [#3075](https://github.com/pgRouting/pgrouting/issues/3075): Spanning tree: create and use a process and driver
+* [#3086](https://github.com/pgRouting/pgrouting/issues/3086): MaxFlow: create and use a process and driver
+* [#3089](https://github.com/pgRouting/pgrouting/issues/3089): edgeDisjoint and bellmanFord use shortestPath driver and
+  process
 
 ## pgRouting 4.0
 

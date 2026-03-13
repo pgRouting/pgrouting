@@ -1,13 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: prim_driver.h
+File: astar_driver.hpp
 
-Generated with Template by:
 Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2018 Aditya Pratap Singh
-Mail: adityapratap.singh28@gmail.com
+Design of one process & driver file by
+Copyright (c) 2026 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -27,49 +26,38 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_SPANNINGTREE_PRIM_DRIVER_H_
-#define INCLUDE_DRIVERS_SPANNINGTREE_PRIM_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_ASTAR_DRIVER_HPP_
+#define INCLUDE_DRIVERS_ASTAR_DRIVER_HPP_
 #pragma once
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
-#include <postgres.h>
-#include <utils/array.h>
+#include <cstddef>
+#include <cstdint>
+#include <string>
+#include <sstream>
 
-#ifdef __cplusplus
-}
-#endif
+#include "c_common/enums.h"
 
-#include "cpp_common/undefPostgresDefine.hpp"
+using Path_rt = struct Path_rt;
+using ArrayType = struct ArrayType;
 
-#ifdef __cplusplus
-#   include <cstddef>
-#   include <cstdint>
-using MST_rt = struct MST_rt;
-#else
-#   include <stddef.h>
-#   include <stdint.h>
-typedef struct MST_rt MST_rt;
-#endif
+namespace pgrouting {
+namespace drivers {
 
+void do_astar(
+        const std::string&, const std::string&,
+        ArrayType*, ArrayType*,
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+        bool, bool, bool,
 
-void pgr_do_prim(
-        const char*,
-        ArrayType*,
+        int, double, double,
 
-        const char*, int64_t, double,
+        Which,
+        bool&,
+        Path_rt*&, size_t&,
+        std::ostringstream&, std::ostringstream&, std::ostringstream&);
 
-        MST_rt**, size_t*,
-        char**, char**, char**);
+}  // namespace drivers
+}  // namespace pgrouting
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif  // INCLUDE_DRIVERS_SPANNINGTREE_PRIM_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_ASTAR_DRIVER_HPP_

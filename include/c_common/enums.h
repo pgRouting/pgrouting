@@ -33,10 +33,21 @@ enum Which {
     /** shortest_paths */
     DIJKSTRA = 21, WITHPOINTS, OLD_WITHPOINTS, BDDIJKSTRA, EDWARDMOORE,
     DAGSP,
+    BELLMANFORD,
+    EDGEDISJOINT,
     /** allpairs **/
     FLOYD = 31, JOHNSON,
     /** metrics **/
-    BANDWIDTH
+    BANDWIDTH,
+    /** with edges that have x y */
+    ASTAR = 400, BDASTAR,
+    /** For spanning tree like results */
+    KRUSKAL = 500, KRUSKALDD, KRUSKALDFS, KRUSKALBFS,
+    PRIM = 510, PRIMDD, PRIMDFS, PRIMBFS,
+    DFS = 520,
+    BFS = 530,
+    DIJKSTRADD = 540,
+    MAXFLOW, PUSHRELABEL, BOYKOV, EDMONDSKARP
 };
 
 #endif  // INCLUDE_C_COMMON_ENUMS_H_

@@ -28,101 +28,76 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
-
 #include "c_common/postgres_connection.h"
-
 #include "c_types/path_rt.h"
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
-#include "drivers/max_flow/edge_disjoint_paths_driver.h"
+#include "process/shortestPath_process.h"
 
 PGDLLEXPORT Datum
 _pgr_edgedisjointpaths(PG_FUNCTION_ARGS);
-
-static
-void
-process(
-    char *edges_sql,
-    char *combinations_sql,
-    ArrayType *starts,
-    ArrayType *ends,
-
-    bool directed,
-    Path_rt **result_tuples,
-    size_t *result_count) {
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-
-    clock_t start_t = clock();
-    pgr_do_edge_disjoint_paths(
-        edges_sql,
-        combinations_sql,
-        starts, ends,
-        directed,
-
-        result_tuples, result_count,
-
-        &log_msg,
-        &notice_msg,
-        &err_msg);
-    time_msg("pgr_edgeDisjointPaths(many to many)", start_t, clock());
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
-
 PG_FUNCTION_INFO_V1(_pgr_edgedisjointpaths);
+
 PGDLLEXPORT Datum
 _pgr_edgedisjointpaths(PG_FUNCTION_ARGS) {
-    FuncCallContext *funcctx;
-    TupleDesc tuple_desc;
+    FuncCallContext     *funcctx;
+    TupleDesc            tuple_desc;
 
-    Path_rt *result_tuples = NULL;
+    Path_rt  *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
-        MemoryContext oldcontext;
+        MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
 
         if (PG_NARGS() == 4) {
             /*
              * many to many
              */
-            process(
+            pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 NULL,
+                NULL,
+
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
+
                 PG_GETARG_BOOL(3),
+                false,
+                true,
+
+                0,
+                true,
+                ' ',
+                true,
+
+                EDGEDISJOINT,
                 &result_tuples,
                 &result_count);
 
         } else if (PG_NARGS() == 3) {
             /*
-             * combinations
+             * Combinations
              */
-            process(
+            pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                NULL,
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
-                NULL,
-                NULL,
+
+                NULL, NULL,
+
                 PG_GETARG_BOOL(2),
+                false,
+                true,
+
+                0,
+                true,
+                ' ',
+                true,
+
+                EDGEDISJOINT,
                 &result_tuples,
                 &result_count);
         }
-
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
@@ -140,50 +115,51 @@ _pgr_edgedisjointpaths(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (Path_rt *) funcctx->user_fctx;
+    result_tuples = (Path_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple tuple;
-        Datum result;
-        Datum *values;
-        bool *nulls;
+        HeapTuple    tuple;
+        Datum        result;
+        Datum        *values;
+        bool*        nulls;
+        size_t       call_cntr = funcctx->call_cntr;
 
-
-        values = palloc(9 * sizeof(Datum));
-        nulls = palloc(9 * sizeof(bool));
+        size_t numb = 9;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 9; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
-        int64_t path_id = 1;
-        int64_t seq = 1;
-        if (funcctx->call_cntr != 0) {
-            if (result_tuples[funcctx->call_cntr - 1].edge == -1) {
-                path_id = result_tuples[funcctx->call_cntr - 1].start_id + 1;
-                seq = 1;
-            } else {
-                path_id = result_tuples[funcctx->call_cntr - 1].start_id;
-                seq = result_tuples[funcctx->call_cntr - 1].end_id + 1;
-            }
-        }
 
-        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
+        /* from previous record:
+         * end_id   has the sequence of this record
+         * start_id has the path_id of this record
+         * cost     has the agg_cost of this record
+         */
+        int64_t path_id  = call_cntr == 0? 1 : result_tuples[call_cntr - 1].start_id;
+        int64_t seq      = call_cntr == 0? 1 : result_tuples[call_cntr - 1].end_id;
+        double  agg_cost = call_cntr == 0? 0 : result_tuples[call_cntr - 1].cost;
+
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int32GetDatum((int32_t)path_id);
         values[2] = Int32GetDatum((int32_t)seq);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
-        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[6] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[8] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[6] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[8] = Float8GetDatum(agg_cost);
 
         /*
-         * storing in the previous record values to use on the next record
+         * storing in this record values to use on the next record
          */
-        result_tuples[funcctx->call_cntr].start_id = path_id;
-        result_tuples[funcctx->call_cntr].end_id = seq;
+        result_tuples[call_cntr].start_id = result_tuples[call_cntr].edge == -1? path_id + 1 : path_id;
+        result_tuples[call_cntr].end_id   = result_tuples[call_cntr].edge == -1? 1 : seq + 1;
+        result_tuples[call_cntr].cost     = result_tuples[call_cntr].edge == -1?
+            0 : agg_cost + result_tuples[call_cntr].cost;
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

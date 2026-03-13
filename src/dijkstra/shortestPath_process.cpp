@@ -99,7 +99,7 @@ void pgr_process_shortestPath(
     time_msg(name.c_str(), start_t, clock());
 
     if (!err.str().empty() && (*result_tuples)) {
-        if (*result_tuples) pfree(*result_tuples);
+        pfree(*result_tuples);
         (*result_tuples) = nullptr;
         (*result_count) = 0;
     }

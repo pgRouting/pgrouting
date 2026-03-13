@@ -1,13 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: ordering_process.cpp
+File: maxFlow_process.cpp
 
+Generated with Template by:
 Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Developers:
-Copyright (c) 2025-2026 pgRouting developers
-Mail: bipashagayary at gmail.com
-Mail: wifiblack0131 at gmail.com
+Function's developer:
+Copyright (c) 2016 Andrea Nardelli
+Mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "process/ordering_process.h"
+#include "process/maxFlow_process.h"
 
 extern "C" {
 #include "c_common/postgres_connection.h"
@@ -38,19 +38,22 @@ extern "C" {
 #include <string>
 #include <sstream>
 
+#include "c_types/flow_t.h"
 #include "cpp_common/report_messages.hpp"
 #include "cpp_common/utilities.hpp"
 #include "cpp_common/assert.hpp"
 #include "cpp_common/alloc.hpp"
 
-#include "drivers/ordering_driver.hpp"
+#include "drivers/maxFlow_driver.hpp"
 
+void pgr_process_maxFlow(
+        const char *edges_sql,
+        const char *combinations_sql,
 
-void pgr_process_ordering(
-        const char* edges_sql,
+        ArrayType *starts, ArrayType *ends,
+
         enum Which which,
-        int64_t **result_tuples,
-        size_t *result_count) {
+        Flow_t **result_tuples, size_t *result_count) {
     pgassert(edges_sql);
     pgassert(!(*result_tuples));
     pgassert(*result_count == 0);
@@ -61,8 +64,11 @@ void pgr_process_ordering(
     std::ostringstream notice;
 
     clock_t start_t = clock();
-    pgrouting::drivers::do_ordering(
+    pgrouting::drivers::do_maxFlow(
             edges_sql? edges_sql : "",
+            combinations_sql? combinations_sql : "",
+            starts, ends,
+
             which,
             (*result_tuples), (*result_count),
             log, notice, err);

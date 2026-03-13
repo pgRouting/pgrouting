@@ -7,7 +7,6 @@ Checks: >
     -clang-analyzer-core.uninitialized.Assign,
     clang-diagnostic-*,
     cppcoreguidelines-*,
-    -cppcoreguidelines-avoid-c-arrays,
     -cppcoreguidelines-avoid-const-or-ref-data-members,
     -cppcoreguidelines-avoid-do-while,
     -cppcoreguidelines-avoid-magic-numbers,
