@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <array>
 #include <string>
 #include <exception>
-
+#include <iterator>
 
 std::string get_backtrace() {
 #ifdef __GLIBC__
@@ -50,11 +50,14 @@ std::string get_backtrace() {
         char** funcNames = backtrace_symbols(trace.data(), trace_size);
 
         std::string message = "\n*** Execution path***\n";
-        for (i = 0; i < trace_size; ++i) {
-            message += "[bt]" + static_cast<std::string>(funcNames[i]) + "\n";
+        if (funcNames == nullptr) {
+            message += "[bt] backtrace_symbols failed\n";
+        } else {
+            for (i = 0; i < trace_size; ++i) {
+                message += "[bt]" + static_cast<std::string>(funcNames[i]) + "\n";
+            }
+            free(funcNames);
         }
-
-        free(funcNames);
         return message;
 #else
         return "";
