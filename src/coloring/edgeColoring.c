@@ -135,8 +135,8 @@ PGDLLEXPORT Datum _pgr_edgecoloring(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].d1.id);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].d2.value);
+        values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].d1);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].d2);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

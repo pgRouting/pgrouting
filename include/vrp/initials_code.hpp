@@ -32,7 +32,7 @@ namespace pgrouting {
 namespace vrp {
 
 /*! Different kinds to insert an order into the vehicle */
-enum Initials_code {
+enum Initials_code {  // NOLINT(cppcoreguidelines-use-enum-class)
     OneTruck,    /*! All orders in one truck */
     OnePerTruck, /*! One Order per truck */
     FrontTruck,  /*! Insertion, at the front of the truck */

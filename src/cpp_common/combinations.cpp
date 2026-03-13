@@ -116,7 +116,7 @@ get_combinations(
 
     /* data comes from a combinations */
     for (const auto &row : combinations) {
-        result[row.d1.source].insert(row.d2.target);
+        result[row.d1].insert(row.d2);
     }
 
     /* data comes from many to many */
@@ -163,7 +163,7 @@ get_combinations(
 
     /* data comes from a combinations */
     for (const auto &row : combinations) {
-        result[row.d1.source].insert(row.d2.target);
+        result[row.d1].insert(row.d2);
     }
 
     /* data comes from many to many */

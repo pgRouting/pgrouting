@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_C_COMMON_ENUMS_H_
 #define INCLUDE_C_COMMON_ENUMS_H_
 
-enum Which {
+enum Which {  // NOLINT(cppcoreguidelines-use-enum-class)
     /** undirected graph + results: vertex id  */
     SLOAN = 0, CUTCHILL, KING,
     /** directed graph + results: vertex id  */

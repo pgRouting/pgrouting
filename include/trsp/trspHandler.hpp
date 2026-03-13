@@ -67,7 +67,7 @@ class TrspHandler : public pgrouting::Pgr_messages {
      *
      * The "legal" values are indices to vectors
      */
-    enum Position {ILLEGAL = -1, RC_EDGE = 0, C_EDGE = 1};
+    enum Position {ILLEGAL = -1, RC_EDGE = 0, C_EDGE = 1};  // NOLINT(cppcoreguidelines-use-enum-class)
 
 
     class Predecessor {
