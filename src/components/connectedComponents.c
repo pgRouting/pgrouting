@@ -135,8 +135,8 @@ PGDLLEXPORT Datum _pgr_connectedcomponents(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].d2.value);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].d1.id);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].d2);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].d1);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
