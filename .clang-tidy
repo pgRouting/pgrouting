@@ -9,7 +9,7 @@ Checks: >
     cppcoreguidelines-*,
     -cppcoreguidelines-avoid-const-or-ref-data-members,
     -cppcoreguidelines-avoid-do-while,
-    -cppcoreguidelines-avoid-magic-numbers,
+    cppcoreguidelines-avoid-magic-numbers,
     -cppcoreguidelines-macro-usage,
     -cppcoreguidelines-narrowing-conversions,
     -cppcoreguidelines-no-malloc,
