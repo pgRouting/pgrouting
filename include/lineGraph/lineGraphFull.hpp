@@ -292,7 +292,7 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E, t_directed> {
     }
 
  private:
-    int64_t m_num_edges;
+    int64_t m_num_edges{};
     std::map < int64_t, double > m_edge_costs;
     std::map < int64_t, std::pair< int64_t, int64_t > > m_transformation_map;
     std::map < std::pair< int64_t, int64_t >, int64_t > m_vertex_map;

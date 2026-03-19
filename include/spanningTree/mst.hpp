@@ -144,9 +144,9 @@ class Pgr_mst {
 
  protected:
      std::set<int64_t> m_roots;
-     bool m_get_component;
-     int64_t  m_max_depth;
-     double  m_distance;
+     bool m_get_component{};
+     int64_t  m_max_depth{};
+     double  m_distance{};
 
      struct InSpanning {
          std::set<E> edges;
