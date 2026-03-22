@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "cpp_common/undirectedHasCostBG.hpp"
-
+#include <stdexcept>
 #include <utility>
 #include <vector>
 #include <deque>
@@ -166,8 +166,13 @@ void
 UndirectedHasCostBG::insert_vertex(int64_t id) {
     try {
         if (has_vertex(id)) return;
-        assert(m_id_to_V.size() <= static_cast<size_t>(std::numeric_limits<int>::max()));
-        auto v = add_vertex(static_cast<int>(m_id_to_V.size()), m_graph);
+        const auto vertex_count = m_id_to_V.size();
+
+        if (vertex_count > static_cast<size_t>(std::numeric_limits<int>::max())) {
+            throw std::overflow_error("vertex index overflow");
+        }
+
+        auto v = add_vertex(static_cast<int>(vertex_count), m_graph);
         m_id_to_V.insert(std::make_pair(id, v));
         m_V_to_id.insert(std::make_pair(v, id));
     } catch (...) {
