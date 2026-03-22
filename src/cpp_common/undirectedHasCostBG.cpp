@@ -31,7 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <deque>
 #include <string>
-#include <cassert>
 #include <limits>
 #include "c_types/iid_t_rt.h"
 #include "cpp_common/coordinate_t.hpp"
