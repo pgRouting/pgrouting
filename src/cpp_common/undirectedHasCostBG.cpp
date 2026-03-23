@@ -166,12 +166,14 @@ UndirectedHasCostBG::insert_vertex(int64_t id) {
     try {
         if (has_vertex(id)) return;
         const auto vertex_count = m_id_to_V.size();
+        const auto max_int = static_cast<size_t>(std::numeric_limits<int>::max());
 
-        if (vertex_count > static_cast<size_t>(std::numeric_limits<int>::max())) {
-            throw std::overflow_error("vertex index overflow");
+        if (vertex_count > max_int) {
+            throw std::overflow_error("vertex index exceeds int range");
         }
 
         auto v = add_vertex(static_cast<int>(vertex_count), m_graph);
+
         m_id_to_V.insert(std::make_pair(id, v));
         m_V_to_id.insert(std::make_pair(v, id));
     } catch (...) {
