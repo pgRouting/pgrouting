@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: bipartite_driver.h
+File: bipartite.hpp
 
 Generated with Template by:
-Copyright (c) 2013-2026 pgRouting developers
+Copyright (c) 2021-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -27,33 +27,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_COLORING_BIPARTITE_DRIVER_H_
-#define INCLUDE_DRIVERS_COLORING_BIPARTITE_DRIVER_H_
 
+#ifndef INCLUDE_COLORING_BIPARTITE_HPP_
+#define INCLUDE_COLORING_BIPARTITE_HPP_
+#pragma once
 
-/* for size-t */
-#ifdef __cplusplus
-#   include <cstddef>
-using II_t_rt = struct II_t_rt;
-#else
-#   include <stddef.h>
-typedef struct II_t_rt II_t_rt;
-#endif
+#include <vector>
 
+#include "c_types/ii_t_rt.h"
+#include "cpp_common/base_graph.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+namespace pgrouting {
+namespace functions {
 
-void
-pgr_do_bipartite(
-        const char*,
+std::vector<II_t_rt> pgr_bipartite(pgrouting::UndirectedGraph&);
 
-        II_t_rt**, size_t*,
-        char**, char**, char**);
+}  // namespace functions
+}  // namespace pgrouting
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif  // INCLUDE_DRIVERS_COLORING_BIPARTITE_DRIVER_H_
+#endif  // INCLUDE_COLORING_BIPARTITE_HPP_

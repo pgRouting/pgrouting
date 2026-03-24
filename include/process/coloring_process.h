@@ -1,13 +1,9 @@
 /*PGR-GNU*****************************************************************
-File: sequentialVertexColoring_driver.h
-
-Generated with Template by:
-Copyright (c) 2007-2026 pgRouting developers
-Mail: project@pgrouting.org
+File: allpairs_process.h
 
 Function's developer:
-Copyright (c) 2020 Ashish Kumar
-Mail: ashishkr23438@gmail.com
+Copyright (c) 2025 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -27,31 +23,34 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_COLORING_SEQUENTIALVERTEXCOLORING_DRIVER_H_
-#define INCLUDE_DRIVERS_COLORING_SEQUENTIALVERTEXCOLORING_DRIVER_H_
+#ifndef INCLUDE_PROCESS_COLORING_PROCESS_H_
+#define INCLUDE_PROCESS_COLORING_PROCESS_H_
 #pragma once
 
 #ifdef __cplusplus
-#   include <cstddef>
+#include <cstddef>
+#include <cstdint>
 using II_t_rt = struct II_t_rt;
 #else
-#   include <stddef.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
 typedef struct II_t_rt II_t_rt;
 #endif
 
+#include "c_common/enums.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void pgr_do_sequentialVertexColoring(
+void pgr_process_coloring(
         const char*,
-
-        II_t_rt**, size_t*,
-        char**, char**, char**);
+        enum Which,
+        II_t_rt**, size_t*);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_COLORING_SEQUENTIALVERTEXCOLORING_DRIVER_H_
+#endif  // INCLUDE_PROCESS_COLORING_PROCESS_H_
