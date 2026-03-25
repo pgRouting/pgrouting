@@ -56,7 +56,7 @@ class Pgr_edgeColoring : public Pgr_messages {
 #endif
 
  private:
-    pgrouting:: UndirectedGraph graph;
+    pgrouting::UndirectedGraph graph;
 };
 
 }  // namespace functions

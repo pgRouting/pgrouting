@@ -64,7 +64,8 @@ Pgr_edgeColoring::edgeColoring() {
             results.push_back({{edge_id}, {(color + 1)}});
         }
     } catch (...) {
-        throw std::make_pair(
+        throw std::make_pair
+        (
             std::string("INTERNAL: something went wrong while calling boost::edge_coloring"),
             std::string(__PGR_PRETTY_FUNCTION__));
     }

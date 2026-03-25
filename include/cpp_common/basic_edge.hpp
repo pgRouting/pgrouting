@@ -45,7 +45,6 @@ class Basic_edge{
 
      int64_t id;
      double cost;
-     int64_t color;
 };
 
 }  // namespace pgrouting
