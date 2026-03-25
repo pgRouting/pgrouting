@@ -1,13 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: edgeColoring_driver.h
+File: coloring_driver.hpp
 
-Generated with Template by:
-Copyright (c) 2013-2026 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2021 Veenit Kumar
-Mail: 123sveenit@gmail.com
+Design of one process & driver file by
+Copyright (c) 2025 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -27,31 +26,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_COLORING_EDGECOLORING_DRIVER_H_
-#define INCLUDE_DRIVERS_COLORING_EDGECOLORING_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_COLORING_DRIVER_HPP_
+#define INCLUDE_DRIVERS_COLORING_DRIVER_HPP_
+#pragma once
 
+#include <cstddef>
+#include <cstdint>
+#include <string>
+#include <sstream>
 
-#ifdef __cplusplus
-#   include <cstddef>
+#include "c_common/enums.h"
+
 using II_t_rt = struct II_t_rt;
-#else
-#   include <stddef.h>
-typedef struct II_t_rt II_t_rt;
-#endif
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+namespace pgrouting {
+namespace drivers {
 
-void
-pgr_do_edgeColoring(
-        const char*,
+void do_coloring(
+        const std::string&,
+        Which,
+        II_t_rt*&, size_t&,
+        std::ostringstream&, std::ostringstream&, std::ostringstream&);
 
-        II_t_rt**, size_t*,
-        char**, char**, char**);
+}  // namespace drivers
+}  // namespace pgrouting
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif  // INCLUDE_DRIVERS_COLORING_EDGECOLORING_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_COLORING_DRIVER_HPP_

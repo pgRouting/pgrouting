@@ -6,7 +6,7 @@
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('4.0.0') THEN plan(29) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(17) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
@@ -27,409 +27,236 @@ FROM edges
 WHERE id > 18;
 
 RETURN QUERY
-SELECT is_empty('q1', 'Graph with 0 edge and 0 vertex');
-
-PREPARE edgeColoring1 AS
-SELECT * FROM pgr_edgeColoring('q1');
-
-RETURN QUERY
-SELECT is_empty('edgeColoring1', 'Graph with 0 edge and 0 vertex -> Empty row is returned');
+SELECT is_empty($$SELECT * FROM pgr_edgeColoring('q1')$$, 'is empty: Graph with 0 edge and 0 vertex');
 
 
 -- 1 vertex test
 
+-- 6 -- 6
 PREPARE q2 AS
-SELECT id, source, 6 AS target, cost, reverse_cost
-FROM edges
-WHERE id = 2;
-
-PREPARE edgeColoring2 AS
-SELECT * FROM pgr_edgeColoring('q2');
+SELECT 2 AS id, 6 AS source, 6 AS target, -1 AS cost, 1 AS reverse_cost;
 
 RETURN QUERY
-SELECT is_empty('edgeColoring2', 'One vertex graph can not be edgeColored -> Empty row is returned');
+SELECT CASE WHEN min_lib_version('4.1.0') THEN
+collect_tap(
+  isnt_empty($$SELECT * FROM pgr_edgeColoring('q2')$$, 'q2: One vertex self-loop graph has results')
+)
+ELSE
+collect_tap(
+  skip(1, 'pgr_edgecoloring: graph building fixed on v4.1.0.')
+)
+END;
 
 
 -- 2 vertices test (connected)
 
+-- 3--7
 PREPARE q3 AS
-SELECT id, source, target, cost, reverse_cost
-FROM edges
-WHERE id = 7;
+SELECT 7 AS id, 3 AS source, 7 AS target, 1 AS cost, 1 AS reverse_cost;
 
 RETURN QUERY
-SELECT set_eq('q3', $$VALUES (7, 3, 7, 1, 1)$$, 'Graph with two connected vertices');
+SELECT set_eq($$SELECT * FROM pgr_edgeColoring('q3')$$,
+  $$VALUES (7, 1)$$, 'q3: Edge is colored with color 1');
 
-PREPARE edgeColoring3 AS
-SELECT * FROM pgr_edgeColoring('q3');
-
-RETURN QUERY
-SELECT set_eq('edgeColoring3', $$VALUES (7, 1)$$, 'Edge is colored with color 1');
-
-
--- linear tests
 
 -- 3 vertices test
 
+-- 6 -- {5---10}
 PREPARE q4 AS
-SELECT id, source, target, cost, reverse_cost
-FROM edges
-WHERE id <= 2;
+SELECT id, source, target, cost, reverse_cost FROM edges WHERE id <= 2;
 
 RETURN QUERY
-SELECT set_eq('q4', $$VALUES (1, 5, 6, 1, 1), (2, 6, 10, -1, 1)$$, 'Graph with three vertices');
-
-PREPARE edgeColoring4 AS
-SELECT * FROM pgr_edgeColoring('q4');
-
-RETURN QUERY
-SELECT set_eq('edgeColoring4', $$VALUES (1, 1), (2, 2)$$, 'Two colors are expected');
+SELECT set_eq($$SELECT * FROM pgr_edgeColoring('q4')$$, $$VALUES (1, 1), (2, 2)$$, 'q4: Two colors are expected');
 
 
 -- 4 vertices test
 
+-- 6 -- {5---10}; 15--10;
 PREPARE q5 AS
-SELECT id, source, target, cost, reverse_cost
-FROM edges
-WHERE id <= 3;
+SELECT id, source, target, cost, reverse_cost FROM edges WHERE id <= 3;
 
 RETURN QUERY
-SELECT set_eq('q5',
-    $$VALUES
-        (1, 5, 6, 1, 1),
-        (2, 6, 10, -1, 1),
-        (3, 10, 15, -1, 1)
-    $$,
-    'Graph with four vertices'
-);
-
-RETURN QUERY
-SELECT ok((SELECT count(DISTINCT color) <= 3 FROM pgr_edgeColoring('q5')), 'At most three colors are expected');
+SELECT ok((SELECT count(DISTINCT color) <= 3 FROM pgr_edgeColoring('q5')), 'q5: At most three colors are expected');
 
 
 -- even length cycle test
 
 -- 4 vertices length
 
+-- {7,12}--{8,11} ;
 PREPARE q6 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edges
-WHERE id IN (8, 10, 11, 12);
+FROM edges WHERE id IN (8, 10, 11, 12)  ORDER BY id ASC;
 
 RETURN QUERY
-SELECT set_eq('q6',
-    $$VALUES
-        (8, 7, 11, 1, 1),
-        (10, 7, 8, 1, 1),
-        (11, 11, 12, 1, -1),
-        (12, 8, 12, 1, -1)
-    $$,
-    'Graph with four vertices (cyclic)'
-);
+SELECT ok((SELECT count(DISTINCT color) <= 3 FROM pgr_edgeColoring('q6')), 'q6: At most three colors are expected');
 
 RETURN QUERY
-SELECT ok((SELECT count(DISTINCT color) <= 3 FROM pgr_edgeColoring('q6')), 'At most three colors are expected');
+SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q6')), 3, 'q6: Three colors are used');
 
 -- changing the order of the edges will change the number of colors expected
 
--- 4 vertices length
-
+-- {7,12}--{8,11} ;
 PREPARE q7 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edges
 WHERE id IN (8, 10, 11, 12) ORDER BY id DESC;
 
 RETURN QUERY
-SELECT set_eq('q7',
-    $$VALUES
-        (8, 7, 11, 1, 1),
-        (10, 7, 8, 1, 1),
-        (11, 11, 12, 1, -1),
-        (12, 8, 12, 1, -1)
-    $$,
-    'Graph with four vertices (cyclic)'
-);
-
-RETURN QUERY
-SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q7')), 2, 'Two colors are expected');
+SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q7')), 2, 'q7 == q6 DESC: Two colors are used');
 
 
--- odd length cycle test
-
--- 3 vertices cyclic
-
-CREATE TABLE three_vertices_table (
-    id BIGSERIAL,
-    source BIGINT,
-    target BIGINT,
-    cost FLOAT,
-    reverse_cost FLOAT
-);
-
-INSERT INTO three_vertices_table (source, target, cost, reverse_cost) VALUES
-    (3, 6, 20, 15),
-    (3, 8, 10, -10),
-    (6, 8, -1, 12);
-
+-- 3--{6,8}; 8--3; 8--6;
 PREPARE q8 AS
 SELECT id, source, target, cost, reverse_cost
-FROM three_vertices_table;
+FROM (VALUES
+  (1, 3, 6, 20, 15),
+  (2, 3, 8, 10, -10),
+  (3, 6, 8, -1, 12))
+AS t(id, source, target, cost, reverse_cost);
 
 RETURN QUERY
-SELECT set_eq('q8',
-    $$VALUES
-        (1, 3, 6, 20, 15),
-        (2, 3, 8, 10, -10),
-        (3, 6, 8, -1, 12)
-    $$,
-    'Cyclic Graph with three vertices 3, 6 and 8'
-);
+SELECT CASE WHEN min_lib_version('4.1.0') THEN
+  collect_tap(
+    is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q8')), 4, 'q8: Four colors are expected')
+  )
+ELSE
+  collect_tap(
+    is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q8')), 3, 'q8: Three colors are expected')
+  )
+END;
 
-RETURN QUERY
-SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q8')), 3, 'Three colors are expected');
-
-
--- 5 vertices cyclic
-
-CREATE TABLE five_vertices_table (
-    id BIGSERIAL,
-    source BIGINT,
-    target BIGINT,
-    cost FLOAT,
-    reverse_cost FLOAT
-);
-
-INSERT INTO five_vertices_table (source, target, cost, reverse_cost) VALUES
-    (1, 2, 1, 1),
-    (2, 3, 1, 1),
-    (3, 4, 1, -1),
-    (4, 5, 1, 1),
-    (5, 1, 1, -1);
-
+-- 1--2--3--4--5--6--1
 PREPARE q9 AS
 SELECT id, source, target, cost, reverse_cost
-FROM five_vertices_table;
+FROM (VALUES
+    (1, 1, 2, 1, 1),
+    (2, 2, 3, 1, 1),
+    (3, 3, 4, 1, -1),
+    (4, 4, 5, 1, 1),
+    (5, 5, 1, 1, -1))
+AS t(id, source, target, cost, reverse_cost);
 
 RETURN QUERY
-SELECT set_eq('q9',
-    $$VALUES
-        (1, 1, 2, 1, 1),
-        (2, 2, 3, 1, 1),
-        (3, 3, 4, 1, -1),
-        (4, 4, 5, 1, 1),
-        (5, 5, 1, 1, -1)
-    $$,
-    'Cyclic Graph with five vertices 1, 2, 3, 4 and 5'
-);
-
-RETURN QUERY
-SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q9')), 3, 'Three colors are expected');
+SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q9')), 3, 'q9: Three colors are expected');
 
 
 -- self loop test
 
--- 1 vertex self loop
-
-CREATE TABLE one_vertex_table (
-    id BIGSERIAL,
-    source BIGINT,
-    target BIGINT,
-    cost FLOAT,
-    reverse_cost FLOAT
-);
-
-INSERT INTO one_vertex_table (source, target, cost, reverse_cost) VALUES
-    (1, 1, 1, 1);
-
+-- 1--1
 PREPARE q10 AS
 SELECT id, source, target, cost, reverse_cost
-FROM one_vertex_table;
-
-RETURN QUERY
-SELECT set_eq('q10',
-    $$VALUES
-        (1, 1, 1, 1, 1)
-    $$,
-    'Self loop Graph with one vertex 1'
-);
+FROM (VALUES
+    (1, 1, 1, 1, 1))
+AS t(id, source, target, cost, reverse_cost);
 
 PREPARE edgeColoring10 AS
 SELECT * FROM pgr_edgeColoring('q10');
 
 RETURN QUERY
-SELECT is_empty('edgeColoring10', 'One vertex self-loop graph can not be edgeColored -> Empty row is returned');
+SELECT CASE WHEN min_lib_version('4.1.0') THEN
+collect_tap(
+  isnt_empty($$SELECT * FROM pgr_edgeColoring('q10')$$, 'q10: One vertex self-loop graph has results')
+)
+ELSE
+collect_tap(
+  is_empty($$SELECT * FROM pgr_edgeColoring('q10')$$, 'q10: One vertex self-loop graph is empty')
+)
+END;
 
 
--- 2 vertex self loop
-
-CREATE TABLE two_vertices_table (
-    id BIGSERIAL,
-    source BIGINT,
-    target BIGINT,
-    cost FLOAT,
-    reverse_cost FLOAT
-);
-
-INSERT INTO two_vertices_table (source, target, cost, reverse_cost) VALUES
-    (1, 2, 1, 1),
-    (2, 2, 1, 1);
-
+-- {1,2} --2
 PREPARE q11 AS
 SELECT id, source, target, cost, reverse_cost
-FROM two_vertices_table;
+FROM (VALUES
+    (1, 1, 2, 1, 1),
+    (2, 2, 2, 1, 1))
+AS t(id, source, target, cost, reverse_cost);
 
 RETURN QUERY
-SELECT set_eq('q11',
-    $$VALUES
-        (1, 1, 2, 1, 1),
-        (2, 2, 2, 1, 1)
-    $$,
-    'Self loop Graph with two vertices 1 and 2'
-);
-
-PREPARE edgeColoring11 AS
-SELECT * FROM pgr_edgeColoring('q11');
-
-RETURN QUERY
-SELECT set_eq('edgeColoring11', $$VALUES (1, 1)$$, 'One color is required');
+SELECT CASE WHEN min_lib_version('4.1.0') THEN
+collect_tap(
+  is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q11')), 2, 'q11: Two colors are used')
+)
+ELSE
+  collect_tap(
+    is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q11')), 1, 'q11: One color is used')
+  )
+END;
 
 
--- 7 vertices tree
-
-CREATE TABLE seven_vertices_table (
-    id BIGSERIAL,
-    source BIGINT,
-    target BIGINT,
-    cost FLOAT,
-    reverse_cost FLOAT
-);
-
-INSERT INTO seven_vertices_table (source, target, cost, reverse_cost) VALUES
-    (1, 2, 1, 1),
-    (1, 4, 1, 1),
-    (2, 3, 1, 1),
-    (2, 5, 1, 1),
-    (4, 6, 1, 1),
-    (4, 7, 1, 1);
-
+-- 1--{2,4} ; 2--{3,5} ; 4--{6,7}
 PREPARE q12 AS
 SELECT id, source, target, cost, reverse_cost
-FROM seven_vertices_table;
+FROM (VALUES
+  (1, 1, 2, 1, 1),
+  (2, 1, 4, 1, 1),
+  (3, 2, 3, 1, 1),
+  (4, 2, 5, 1, 1),
+  (5, 4, 6, 1, 1),
+  (6, 4, 7, 1, 1))
+AS t(id, source, target, cost, reverse_cost);
 
 RETURN QUERY
-SELECT set_eq('q12',
-    $$VALUES
-    (1, 1, 2, 1, 1),
-    (2, 1, 4, 1, 1),
-    (3, 2, 3, 1, 1),
-    (4, 2, 5, 1, 1),
-    (5, 4, 6, 1, 1),
-    (6, 4, 7, 1, 1)
-    $$,
-    'A tree Graph with seven vertices 1, 2, 3, 4, 5, 6 and 7'
-);
-
-RETURN QUERY
-SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q12')), 3, 'Three colors are expected');
+SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q12')), 3, 'q12: Three colors are used');
 
 
 -- 3 vertices multiple edge
 
-CREATE TABLE multiple_edge_table (
-    id BIGSERIAL,
-    source BIGINT,
-    target BIGINT,
-    cost FLOAT,
-    reverse_cost FLOAT
-);
-
-INSERT INTO multiple_edge_table (source, target, cost, reverse_cost) VALUES
-    (1, 2, 1, 1),
-    (2, 3, 1, 1),
-    (3, 2, 1, 1);
-
+-- 1--2--3--2
 PREPARE q13 AS
 SELECT id, source, target, cost, reverse_cost
-FROM multiple_edge_table;
+FROM (VALUES
+  (1, 1, 2, 1, 1),
+  (2, 2, 3, 1, 1),
+  (3, 3, 2, 1, 1))
+AS t(id, source, target, cost, reverse_cost) ORDER BY id ASC;
 
 RETURN QUERY
-SELECT set_eq('q13',
-    $$VALUES
-        (1, 1, 2, 1, 1),
-        (2, 2, 3, 1, 1),
-        (3, 3, 2, 1, 1)
-    $$,
-    'Multiple edge Graph with three vertices 1, 2 and 3'
-);
-
-RETURN QUERY
-SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q13')), 2, 'Two colors are expected');
+SELECT CASE WHEN min_lib_version('4.1.0') THEN
+collect_tap(
+  is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q13')), 3, 'q13: Three colors are expected')
+)
+ELSE
+  collect_tap(
+    skip(1, 'pgr_edgecoloring: graph building fixed on v4.1.0.')
+  )
+END;
 
 
 -- 2 vertices multiple edge
 
-CREATE TABLE two_vertices_multiple_edge_table (
-    id BIGSERIAL,
-    source BIGINT,
-    target BIGINT,
-    cost FLOAT,
-    reverse_cost FLOAT
-);
-
-INSERT INTO two_vertices_multiple_edge_table (source, target, cost, reverse_cost) VALUES
-    (1, 2, 1, 1),
-    (2, 1, 1, 1);
-
+-- 1--2--1
 PREPARE q14 AS
 SELECT id, source, target, cost, reverse_cost
-FROM two_vertices_multiple_edge_table;
-
-RETURN QUERY
-SELECT set_eq('q14',
-    $$VALUES
+FROM (VALUES
         (1, 1, 2, 1, 1),
-        (2, 2, 1, 1, 1)
-    $$,
-    'Multiple edge Graph with two vertices 1 and 2'
-);
-
-PREPARE edgeColoring14 AS
-SELECT * FROM pgr_edgeColoring('q14');
+        (2, 2, 1, 1, 1))
+AS t(id, source, target, cost, reverse_cost) ORDER BY id ASC;
 
 RETURN QUERY
-SELECT set_eq('edgeColoring14', $$VALUES (1, 1)$$, 'One color is required');
-
+SELECT CASE WHEN min_lib_version('4.1.0') THEN
+collect_tap(
+ is((SELECT count(*) FROM pgr_edgeColoring('q14'))::INTEGER, 2, 'q14: two rows are expected'),
+ is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q14')), 2, 'q14: Two colors are used')
+)
+ELSE
+  collect_tap(
+    skip(2, 'pgr_edgecoloring: graph building fixed on v4.1.0.')
+  )
+END;
 
 -- 4 vertices disconnected graph
 
-CREATE TABLE disconnected_graph_table (
-    id BIGSERIAL,
-    source BIGINT,
-    target BIGINT,
-    cost FLOAT,
-    reverse_cost FLOAT
-);
-
-INSERT INTO disconnected_graph_table (source, target, cost, reverse_cost) VALUES
-    (1, 2, 1, 1),
-    (3, 4, 1, 1);
-
 PREPARE q15 AS
 SELECT id, source, target, cost, reverse_cost
-FROM disconnected_graph_table;
-
-RETURN QUERY
-SELECT set_eq('q15',
-    $$VALUES
+FROM (VALUES
         (1, 1, 2, 1, 1),
-        (2, 3, 4, 1, 1)
-    $$,
-    'Disconnected Graph with four vertices 1, 2, 3 and 4'
-);
+        (2, 3, 4, 1, 1))
+AS t(id, source, target, cost, reverse_cost);
 
 RETURN QUERY
-SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q15')), 1, 'One color is required');
-
+SELECT is((SELECT count(DISTINCT color)::INTEGER FROM pgr_edgeColoring('q15')), 1, 'q15: One color is used');
 
 END;
 $BODY$

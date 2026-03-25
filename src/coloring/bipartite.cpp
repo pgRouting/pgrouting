@@ -1,17 +1,14 @@
 /*PGR-GNU*****************************************************************
-File: edgeColoring.cpp
+File: bipartite.cpp
 
 Generated with Template by:
 Copyright (c) 2021-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Rewrite:
-Copyright (c) 2026 Vicky Vergara
-Mail: vicky at erosion.dev
-
 Function's developer:
-Copyright (c) 2021 Veenit Kumar
-Mail: 123sveenit@gmail.com
+Copyright (c) 2020 Prakash Tiwari
+Mail: 85prakash2017@gmail.com
+
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -30,38 +27,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "coloring/edgeColoring.hpp"
+#include "coloring/bipartite.hpp"
 
 #include <vector>
 #include <string>
-#include <map>
 #include <cstdint>
 
-#include <boost/graph/edge_coloring.hpp>
+#include <boost/graph/bipartite.hpp>
 
 #include "cpp_common/interruption.hpp"
 
+namespace {
 
-namespace pgrouting {
-namespace functions {
+std::vector<II_t_rt> get_bipartition(pgrouting::UndirectedGraph &graph) {
+    using V_i = pgrouting::UndirectedGraph::V_i;
 
-std::vector<II_t_rt>
-edgeColoring(pgrouting::UndirectedGraph g) {
-    std::vector<II_t_rt> results(boost::num_edges(g.graph));
-    using B_G = pgrouting::UndirectedGraph::B_G;
-    using E  = pgrouting::UndirectedGraph::E;
+    std::vector<II_t_rt> results;
+    std::vector<boost::default_color_type> partition(graph.num_vertices());
+    auto partition_map =
+        make_iterator_property_map(partition.begin(), boost::get(boost::vertex_index, graph.graph));
 
-    // Create a std::map to store edge colors
-    std::map<E, int64_t> edge_colors_map;
-
-    // Create an associated property map adaptor
-    boost::associative_property_map<std::map<E, int64_t>> color_map(edge_colors_map);
-
-    int64_t colors = 0;
-    // Run the edge coloring algorithm
     CHECK_FOR_INTERRUPTS();
     try {
-        colors = boost::edge_coloring(g.graph, color_map);
+        boost::is_bipartite(graph.graph, boost::get(boost::vertex_index, graph.graph), partition_map);
     } catch (boost::exception const& ex) {
         throw;
     } catch (std::exception &e) {
@@ -69,23 +57,27 @@ edgeColoring(pgrouting::UndirectedGraph g) {
     } catch (...) {
         throw std::make_pair(
                 std::string("INTERNAL: something went wrong while calling boost::edge_coloring"),
-                std::string(__PGR_PRETTY_FUNCTION__));
+                std::string(__PGR_PRETTY_FUNCTION__));;
     }
 
-    size_t i = 0;
-    boost::graph_traits<B_G>::edge_iterator ei, ei_end;
-    for (boost::tie(ei, ei_end) = boost::edges(g.graph); ei != ei_end; ++ei, ++i) {
-        results[i].d1.id = static_cast<int64_t>(g[*ei].id);
-
-        /**
-         * There is a problem with boost:
-         * Sometimes it returns a color with outsatnding large value
-         * When that happens changing color to: colors + 1
-         */
-        results[i].d2.value = get(color_map, *ei) < colors? get(color_map, *ei) + 1 : colors + 1;
+    V_i v, vend;
+    for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
+        int64_t vid = graph[*v].id;
+        boost::get(partition_map, *v) ==
+            boost::color_traits <boost::default_color_type>::white() ?
+            results.push_back({{vid}, {0}}) : results.push_back({{vid}, {1}});
     }
-
     return results;
+}
+
+}  // namespace
+
+namespace pgrouting {
+namespace functions {
+
+std::vector<II_t_rt> pgr_bipartite(pgrouting::UndirectedGraph &graph ) {
+    bool bipartite = boost::is_bipartite(graph.graph);
+    return (bipartite)? get_bipartition(graph) : std::vector<II_t_rt>();
 }
 
 }  // namespace functions
