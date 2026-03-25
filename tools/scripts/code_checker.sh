@@ -29,7 +29,8 @@ INCLUDE_ORDER="
 -build/include_order:src/astar/astar_process.cpp,
 -build/include_order:src/max_flow/maxFlow_process.cpp,
 -build/include_order:src/spanningTree/spanningTree_process.cpp,
--build/include_order:src/allpairs/allpairs_process.cpp"
+-build/include_order:src/allpairs/allpairs_process.cpp,
+-build/include_order:src/coloring/coloring_process.cpp"
 
 if test -z "$DIRECTORY"; then
     echo "--------------------"
