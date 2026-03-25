@@ -28,14 +28,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "coloring/edgeColoring.hpp"
 
+#include <map>
+
 #include <vector>
 #include <utility>
 #include <string>
 
-#include "cpp_common/identifiers.hpp"
 #include <boost/graph/edge_coloring.hpp>
 #include <boost/graph/graph_utility.hpp>
 
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/assert.hpp"
 #include "cpp_common/interruption.hpp"
 
@@ -50,91 +52,31 @@ Pgr_edgeColoring::edgeColoring() {
     CHECK_FOR_INTERRUPTS();
 
     try {
-        boost::edge_coloring(graph,  boost::get(boost::edge_bundle, graph));
+        using E = pgrouting::UndirectedGraph::E;
+
+        std::map<E, int64_t> color_storage;
+        auto color_map = boost::make_assoc_property_map(color_storage);
+
+        boost::edge_coloring(graph.graph, color_map);
+
+        for (auto e_i : boost::make_iterator_range(boost::edges(graph.graph))) {
+            int64_t edge_id = graph.graph[e_i].id;
+            int64_t color = color_map[e_i];
+
+            results.push_back({{edge_id}, {(color + 1)}});
+        }
     } catch (...) {
-        throw std::make_pair(
+        throw std::make_pair
+        (
             std::string("INTERNAL: something went wrong while calling boost::edge_coloring"),
             std::string(__PGR_PRETTY_FUNCTION__));
     }
 
-    for (auto e_i : boost::make_iterator_range(boost::edges(graph))) {
-        auto edge = get_edge_id(e_i);
-        int64_t color = graph[e_i];
-        results.push_back({{edge}, {(color + 1)}});
-    }
     return results;
 }
 
 Pgr_edgeColoring::Pgr_edgeColoring(const std::vector<Edge_t> &edges) {
-    /*
-     * Inserting vertices
-     */
-    Identifiers<int64_t> ids;
-    for (const auto &e : edges) {
-        ids += e.source;
-        ids += e.target;
-    }
-
-    for (const auto id : ids) {
-        auto v = add_vertex(graph);
-        id_to_V.insert(std::make_pair(id, v));
-        V_to_id.insert(std::make_pair(v, id));
-    }
-
-    /*
-     * Inserting edges
-     */
-    bool added = false;
-    for (const auto &edge : edges) {
-        auto v1 = get_boost_vertex(edge.source);
-        auto v2 = get_boost_vertex(edge.target);
-        auto e_exists = boost::edge(v1, v2, graph);
-        // NOLINTNEXTLINE
-        if (e_exists.second) continue;
-
-        if (edge.source == edge.target) continue;
-
-        if (edge.cost < 0 && edge.reverse_cost < 0) continue;
-
-        E e;
-        // NOLINTNEXTLINE
-        boost::tie(e, added) = boost::add_edge(v1, v2, graph);
-
-        E_to_id.insert(std::make_pair(e, edge.id));
-    }
-}
-
-Pgr_edgeColoring::V
-Pgr_edgeColoring::get_boost_vertex(int64_t id) const {
-    try {
-        return id_to_V.at(id);
-    } catch (...) {
-        throw std::make_pair(
-            std::string("INTERNAL: something went wrong when getting the vertex descriptor"),
-            std::string(__PGR_PRETTY_FUNCTION__));
-    }
-}
-
-int64_t
-Pgr_edgeColoring::get_vertex_id(V v) const {
-    try {
-        return V_to_id.at(v);
-    } catch (...) {
-        throw std::make_pair(
-            std::string("INTERNAL: something went wrong when getting the vertex id"),
-            std::string(__PGR_PRETTY_FUNCTION__));
-    }
-}
-
-int64_t
-Pgr_edgeColoring::get_edge_id(E e) const {
-    try {
-        return E_to_id.at(e);
-    } catch (...) {
-        throw std::make_pair(
-            std::string("INTERNAL: something went wrong when getting the edge id"),
-            std::string(__PGR_PRETTY_FUNCTION__));
-    }
+    graph.insert_edges(edges);
 }
 
 }  // namespace functions
