@@ -35,45 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 #include "c_types/ii_t_rt.h"
-#include "drivers/coloring/bipartite_driver.h"
+#include "process/coloring_process.h"
 
 PGDLLEXPORT Datum _pgr_bipartite(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_bipartite);
 
-static
-void
-process(
-        char* edges_sql,
-
-        II_t_rt **result_tuples,
-        size_t *result_count) {
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
-
-    clock_t start_t = clock();
-    pgr_do_bipartite(
-            edges_sql,
-            result_tuples, result_count,
-            &log_msg,
-            &notice_msg,
-            &err_msg);
-    time_msg("processing pgr_bipartite()", start_t, clock());
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
 
 PGDLLEXPORT Datum _pgr_bipartite(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -86,8 +52,10 @@ PGDLLEXPORT Datum _pgr_bipartite(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        process(
+        pgr_process_coloring(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+
+                BIPARTITE,
                 &result_tuples,
                 &result_count);
 
