@@ -27,9 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "coloring/sequentialVertexColoring.hpp"
 
 #include <vector>
+#include <string>
 #include <cstdint>
+#include <algorithm>
 
 #include <boost/graph/sequential_vertex_coloring.hpp>
+
 #include "cpp_common/interruption.hpp"
 
 namespace {
@@ -83,35 +86,35 @@ namespace functions {
  * @see [boost::sequential_vertex_coloring]
  * (https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html)
  */
-    std::vector<II_t_rt> sequentialVertexColoring(const pgrouting::UndirectedGraph &graph) {
-        using vertices_size_type = pgrouting::UndirectedGraph::vertices_size_type;
+std::vector<II_t_rt> sequentialVertexColoring(const pgrouting::UndirectedGraph &graph) {
+    using vertices_size_type = pgrouting::UndirectedGraph::vertices_size_type;
 
-        std::vector <II_t_rt> results;
+    std::vector <II_t_rt> results;
 
-        auto i_map = boost::get(boost::vertex_index, graph.graph);
+    auto i_map = boost::get(boost::vertex_index, graph.graph);
 
-        // vector which will store the color of all the vertices in the graph
-        std::vector<vertices_size_type> colors(boost::num_vertices(graph.graph));
+    // vector which will store the color of all the vertices in the graph
+    std::vector<vertices_size_type> colors(boost::num_vertices(graph.graph));
 
-        // An iterator property map which records the color of each vertex
-        auto color_map = boost::make_iterator_property_map(colors.begin(), i_map);
+    // An iterator property map which records the color of each vertex
+    auto color_map = boost::make_iterator_property_map(colors.begin(), i_map);
 
-        CHECK_FOR_INTERRUPTS();
+    CHECK_FOR_INTERRUPTS();
 
-        try {
-            boost::sequential_vertex_coloring(graph.graph, color_map);
-        } catch (boost::exception const& ex) {
-            (void)ex;
-            throw;
-        } catch (std::exception &e) {
-            (void)e;
-            throw;
-        } catch (...) {
-            throw;
-        }
-
-        return get_results(colors, graph);
+    try {
+        boost::sequential_vertex_coloring(graph.graph, color_map);
+    } catch (boost::exception const& ex) {
+        throw;
+    } catch (std::exception &e) {
+        throw;
+    } catch (...) {
+        throw std::make_pair(
+                std::string("INTERNAL: something went wrong while calling boost::edge_coloring"),
+                std::string(__PGR_PRETTY_FUNCTION__));;
     }
+
+    return get_results(colors, graph);
+}
 
 }  // namespace functions
 }  // namespace pgrouting
