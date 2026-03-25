@@ -49,6 +49,20 @@ To see all issues & pull requests closed by this release see the
 * :issue:`3086`: MaxFlow: create and use a process and driver
 * :issue:`3089`: edgeDisjoint and bellmanFord use shortestPath driver and
   process
+* :issue:`3100`: Coloring: create an use a process & driver
+
+.. rubric:: Bug Fixes
+
+* :issue:`3101`: pgr_edgeColoring not building graph correctly
+
+
+.. rubric:: Summary of changes by function
+
+* pgr_edgeColoring
+
+  .. include:: pgr_edgeColoring.rst
+     :start-after: Version 4.1.0
+     :end-before: .. rubric
 
 pgRouting 4.0
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
