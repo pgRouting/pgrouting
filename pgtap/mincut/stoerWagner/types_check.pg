@@ -5,7 +5,7 @@
 
 BEGIN;
 
-UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = abs(sign(cost)), reverse_cost = abs(sign(reverse_cost));
 SELECT plan(5);
 
 SELECT has_function('pgr_stoerwagner');

@@ -5,7 +5,7 @@
 
 BEGIN;
 
-UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = abs(sign(cost)), reverse_cost = abs(sign(reverse_cost));
 SELECT plan(2);
 
 SELECT lives_ok(
@@ -16,7 +16,7 @@ SELECT lives_ok(
 
 SELECT throws_ok(
     'SELECT * FROM pgr_stoerWagner(
-        ''SELECT id, source, target, cost, reverse_cost FROM edges id < 17'',
+        ''SELECT id, source, target, cost, reverse_cost FROM edges WHERE id < 17'',
         3
     )','42883','function pgr_stoerwagner(unknown, integer) does not exist',
     '6: Documentation says it does not work with 1 flags');
