@@ -172,13 +172,13 @@ class TrspHandler : public pgrouting::Pgr_messages {
     /* idx -> id */
     std::map<int64_t, int64_t> m_idx_to_id;
 
-    [[maybe_unused]] int64_t m_start_vertex{};
-    [[maybe_unused]] int64_t m_end_vertex{};
+    int64_t m_start_vertex{}; // NOSONAR
+    int64_t m_end_vertex{}; // NOSONAR
 
     /*
      * Used in dijkstra_exploration
      */
-    [[maybe_unused]] int64_t m_current_node{};
+    int64_t m_current_node{}; // NOSONAR
 
     Path m_path;
 
