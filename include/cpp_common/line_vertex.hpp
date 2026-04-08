@@ -93,11 +93,11 @@ class Line_vertex {
      }
 
  public:
-     int64_t id;
-     int64_t vertex_id;
-     int64_t source;
-     int64_t target;
-     double cost;
+     int64_t id{};
+     int64_t vertex_id{};
+     int64_t source{};
+     int64_t target{};
+     double cost{};
 };
 
 }  // namespace pgrouting

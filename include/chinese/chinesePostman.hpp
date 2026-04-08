@@ -160,7 +160,7 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(const std::vector<Edge_t> &dataEdges)
             }
         }
 
-        CostFlow_t edge;
+        CostFlow_t edge{};
         edge.edge_id = e.id;
         edge.reverse_capacity = -1;
         edge.reverse_cost = -1.0;
@@ -185,7 +185,7 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(const std::vector<Edge_t> &dataEdges)
         int d = iter->second;
         if (d == 0) continue;
         if (d > 0) totalDeg += d;
-        CostFlow_t edge = {};
+        CostFlow_t edge{};
         edge.reverse_capacity = -1;
         edge.reverse_cost = -1.0;
         edge.cost = 0.0;

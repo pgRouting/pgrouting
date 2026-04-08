@@ -138,8 +138,8 @@ class PgrCostFlowGraph {
      * The same applies for sinks.
      * To avoid code repetition, a supersource/sink is used even in the one to one signature.
      */
-     V supersource;
-     V supersink;
+     V supersource{};
+     V supersink{};
 };
 
 }  // namespace graph
