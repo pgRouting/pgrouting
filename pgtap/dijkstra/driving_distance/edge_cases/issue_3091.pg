@@ -1,0 +1,25 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+/* Issue #3091: pgr_drivingDistance accepts negative distance without raising an error */
+
+BEGIN;
+
+SELECT plan(2);
+
+-- Negative distance should raise an error, not silently return empty result.
+SELECT throws_ok(
+    $$SELECT * FROM pgr_drivingDistance('SELECT id, source, target, cost, reverse_cost FROM edges', 1, -1.0)$$,
+    'Negative value found on ''distance''',
+    '1: pgr_drivingDistance with negative distance raises error'
+);
+
+-- Distance of 0 is valid (returns only the origin node).
+SELECT ok(
+    (SELECT count(*) = 1 FROM pgr_drivingDistance('SELECT id, source, target, cost, reverse_cost FROM edges', 1, 0.0)),
+    '2: pgr_drivingDistance with distance=0 returns only origin'
+);
+
+SELECT * FROM finish();
+ROLLBACK;

@@ -87,6 +87,12 @@ pgr_do_withPointsDD(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
+        if (distance < 0) {
+            *err_msg = to_pg_msg("Negative value found on 'distance'");
+            *log_msg = to_pg_msg("distance must be non-negative");
+            return;
+        }
+
         auto roots = get_intSet(starts);
 
         hint = points_sql;

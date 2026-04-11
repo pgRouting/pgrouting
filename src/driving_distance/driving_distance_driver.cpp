@@ -74,6 +74,12 @@ pgr_do_drivingDistance(
         pgassert(*return_count == 0);
         pgassert((*return_tuples) == NULL);
 
+        if (distance < 0) {
+            *err_msg = to_pg_msg("Negative value found on 'distance'");
+            *log_msg = to_pg_msg("distance must be non-negative");
+            return;
+        }
+
         auto roots = get_intSet(starts);
 
         hint = edges_sql;
