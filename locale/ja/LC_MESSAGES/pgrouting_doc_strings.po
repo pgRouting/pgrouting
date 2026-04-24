@@ -19,7 +19,7 @@
 # Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>, 2026.
 # DeepL <noreply-mt-deepl@weblate.org>, 2026.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-03-04 00:25+0000\nPO-Revision-Date: 2026-04-21 12:13+0000\nLast-Translator: DeepL <noreply-mt-deepl@weblate.org>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.16.2\nGenerated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-03-04 00:25+0000\nPO-Revision-Date: 2026-04-24 08:39+0000\nLast-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.16.2\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - カテゴリ"
@@ -408,7 +408,7 @@ msgid "`Restrictions SQL`_ query as described."
 msgstr "`Restrictions SQL`_ クエリーを説明通りに行います。"
 
 msgid "**via vertices**"
-msgstr ""
+msgstr "**via vertices**"
 
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
 msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
@@ -434,10 +434,10 @@ msgid "These restrictions are represented on a table as follows:"
 msgstr "これらの制限をテーブルで表すと次のようになります:"
 
 msgid "The table has an identifier, which maybe is needed for the administration of the restrictions, but the algorithms do not need that information. If given it will be ignored."
-msgstr ""
+msgstr "テーブルには識別子があり、制約の管理には必要かもしれませんが、アルゴリズムにはその情報は必要ありません。もし与えられても無視されます。"
 
 msgid "Restrictions SQL"
-msgstr ""
+msgstr "制約SQL"
 
 msgid "``path``"
 msgstr "``path``"
@@ -474,8 +474,9 @@ msgstr "一般情報"
 msgid "Problem Definition"
 msgstr "問題の定義"
 
+#, fuzzy
 msgid "The travelling salesperson problem (TSP) asks the following question:"
-msgstr ""
+msgstr "巡回セールスマン問題 (TSP) は次の質問をします:"
 
 msgid "*Given a list of cities and the distances between each pair of cities, which is the shortest possible route that visits each city exactly once and returns to the origin city?*"
 msgstr "*都市の一覧と各都市間の距離を指定し、どの都市も必ず一回訪問し元の都市に戻ってくるための最短ルートはどうなるか?*"
@@ -484,7 +485,7 @@ msgid "Origin"
 msgstr "発端"
 
 msgid "The traveling sales person problem was studied in the 18th century by mathematicians **Sir William Rowam Hamilton** and **Thomas Penyngton Kirkman**."
-msgstr ""
+msgstr "巡回セールスマン問題は 18世紀に数学者の **ウィリアム・ローワン・ハミルトン** と **トーマス・ペニントン・カークマン** とによって研究されました。"
 
 #, fuzzy
 msgid "A discussion about the work of Hamilton & Kirkman can be found in the book **Graph Theory (Biggs et al. 1976)**."
@@ -497,7 +498,7 @@ msgid "ISBN-10: 0198539169"
 msgstr "ISBN-10: 0198539169"
 
 msgid "It is believed that the general form of the TSP have been first studied by Kalr Menger in Vienna and Harvard. The problem was later promoted by Hassler, Whitney & Merrill at Princeton. A detailed description about the connection between Menger & Whitney, and the development of the TSP can be found in `On the history of combinatorial optimization (till 1960) <https://homepages.cwi.nl/~lex/files/histco.ps>`__"
-msgstr ""
+msgstr "TSPの一般的な形式はウィーンやハーバードにいたカール・メンガーによって最初に研究されたと言われています。後にプリンストンのハスラー・ホイットニーとメリルによってこの問題が推進されました。メンガーとホイットニーの関係やTSPの開発に関する詳細説明は`組合せ最適化の歴史について (1960年まで) <https://homepages.cwi.nl/~lex/files/histco.ps>`__ にあります"
 
 #, fuzzy
 msgid "To calculate the number of different tours through :math:`n` cities:"
@@ -518,7 +519,7 @@ msgid "Multiplying these together we get :math:`(n-1)! = (n-1) (n-2) . . 1`."
 msgstr "これらを掛け合わせると、 :math:`(n-1)! = (n-1) (n-2) . . 1` となります。"
 
 msgid "Now since the travel costs do not depend on the direction taken around the tour:"
-msgstr ""
+msgstr "ここでは移動コストは経路の方向に依存しないので:"
 
 msgid "this number by 2"
 msgstr "この数は2となり、"
@@ -533,31 +534,32 @@ msgid "This problem is an NP-hard optimization problem."
 msgstr "これはNP困難最適化の問題です。"
 
 msgid "Metric Algorithm is used"
-msgstr ""
+msgstr "メトリックアルゴリズムを使用"
 
+#, fuzzy
 msgid "Implementation generates solutions that *are twice as long as the optimal tour in the worst case*:"
-msgstr ""
+msgstr "*最悪の場合で最適解の2倍の長さ*の解を生成する実装です:"
 
 msgid "Graph characteristics for best performance:"
 msgstr ""
 
 msgid "Graph is undirected"
-msgstr ""
+msgstr "無向であること"
 
 msgid "Graph is fully connected"
-msgstr ""
+msgstr "完全に接続されていること"
 
 msgid "Graph where traveling costs on edges obey the triangle inequality."
-msgstr ""
+msgstr "エッジ上の移動コストが三角不等式に従うこと。"
 
 msgid "The traveling costs are symmetric:"
-msgstr ""
+msgstr "移動コストは対称であること:"
 
 msgid "Traveling costs from ``u`` to ``v`` are just as much as traveling from ``v`` to ``u``"
-msgstr ""
+msgstr "``u`` から``v`` への移動コストと ``v`` から ``u`` への移動コストと同じであること"
 
 msgid "TSP optional parameters"
-msgstr ""
+msgstr "TSP任意パラメーター"
 
 msgid "``start_id``"
 msgstr "``start_id``"
@@ -566,22 +568,22 @@ msgid "``0``"
 msgstr "``0``"
 
 msgid "The first visiting vertex"
-msgstr ""
+msgstr "最初に訪問する頂点"
 
 msgid "When `0` any vertex can become the first visiting vertex."
-msgstr ""
+msgstr "`0` のとき、どの頂点でも最初に訪問する頂点になることができます。"
 
 msgid "``end_id``"
 msgstr "``end_id``"
 
 msgid "Last visiting vertex before returning to ``start_vid``."
-msgstr ""
+msgstr "``start_vid`` に戻る前の最後に訪問する頂点。"
 
 msgid "When ``0`` any vertex can become the last visiting vertex before returning to ``start_id``."
-msgstr ""
+msgstr "`0` のとき、どの頂点でも ``start_vid`` に戻る前の最後に訪問する頂点になることができます。"
 
 msgid "When ``NOT 0`` and ``start_id = 0`` then it is the first and last vertex"
-msgstr ""
+msgstr "``0でない値`` で、かつ ``start_id = 0`` のとき、これが最初と最後に訪問する頂点になります"
 
 msgid "References"
 msgstr "参照"
@@ -596,43 +598,43 @@ msgid "`Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Tra
 msgstr "`Wikipedia: 巡回セールスマン問題 <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 
 msgid "Vehicle Routing Functions - Category"
-msgstr ""
+msgstr "配送計画問題 - カテゴリー"
 
 msgid "Pickup and delivery problem"
-msgstr ""
+msgstr "集配送計画問題"
 
 msgid ":doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
-msgstr ""
+msgstr ":doc:`pgr_pickDeliver` - コスト行列を用いた集配送計画問題"
 
 msgid ":doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
-msgstr ""
+msgstr ":doc:`pgr_pickDeliverEuclidean` - ユークリッド距離を用いた集配送計画問題"
 
 msgid "Distribution problem"
 msgstr ""
 
 msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
-msgstr ""
+msgstr ":doc:`pgr_vrpOneDepot` - 一つのデポから注文品を配送する"
 
 msgid "Contents"
 msgstr "コンテンツ"
 
 msgid "Vehicle Routing Problems `VRP` are **NP-hard** optimization problem, it generalises the travelling salesman problem (TSP)."
-msgstr ""
+msgstr "配送計画問題`VRP` (Vehicle Routing Problems) は **NP困難** の最適化問題で、巡回セールスマン問題の一般化したものえです。"
 
 msgid "The objective of the VRP is to minimize the total route cost."
-msgstr ""
+msgstr "配送計画問題の目的は総経路コストを最小化することです。"
 
 msgid "There are several variants of the VRP problem,"
-msgstr ""
+msgstr "配送計画問題にはいくつかの種類があります。"
 
 msgid "**pgRouting does not try to implement all variants.**"
-msgstr ""
+msgstr "**pgRoutingは全種類を実装するつもりはありません。**"
 
 msgid "Capacitated Vehicle Routing Problem `CVRP` where The vehicles have limited carrying capacity of the goods."
-msgstr ""
+msgstr "容量制約付き配送計画問題 `CVRP` (Capacitated Vehicle Routing Problem) では、車両は商品の積載量制限があります。"
 
 msgid "Vehicle Routing Problem with Time Windows `VRPTW` where the locations have time windows within which the vehicle's visits must be made."
-msgstr ""
+msgstr "時間枠付き配送計画問題 `VRPTW` (Vehicle Routing Problem with Time Windows) では、訪問位置ごとに車両が訪問しなければならない時刻範囲が決まっています。"
 
 msgid "Vehicle Routing Problem with Pickup and Delivery `VRPPD` where a number of goods need to be moved from certain pickup locations to other delivery locations."
 msgstr ""
