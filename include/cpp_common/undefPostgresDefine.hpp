@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: undefPostgresDefine.hpp
 
-Copyright (c) 2024 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2024 Celia Virginia Vergara Castillo

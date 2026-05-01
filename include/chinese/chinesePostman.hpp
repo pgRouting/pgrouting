@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: chinesePostman.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018 Maoguang Wang
@@ -62,6 +62,10 @@ class PgrDirectedChPPGraph {
 
       ~PgrDirectedChPPGraph();
 
+      PgrDirectedChPPGraph(const PgrDirectedChPPGraph&) = delete;
+      PgrDirectedChPPGraph& operator=(const PgrDirectedChPPGraph&) = delete;
+      PgrDirectedChPPGraph(PgrDirectedChPPGraph&&) = delete;
+      PgrDirectedChPPGraph& operator=(PgrDirectedChPPGraph&&) = delete;
 
  private:
      bool EulerCircuitDFS(int64_t p);
@@ -70,8 +74,8 @@ class PgrDirectedChPPGraph {
      void setPathEdges(graph::PgrCostFlowGraph &flowGraph);
 
  private:
-     int64_t totalDeg;
-     double totalCost;
+     int64_t totalDeg{0};
+     double totalCost{0};
      int64_t superSource, superTarget;
      int64_t startPoint;
      double m_cost;
@@ -106,7 +110,7 @@ PgrDirectedChPPGraph::~PgrDirectedChPPGraph() {
     edgeToIdx.clear();
 }
 PgrDirectedChPPGraph::PgrDirectedChPPGraph(const std::vector<Edge_t> &dataEdges) :
-    totalDeg(0), totalCost(0), vertices(),
+    vertices(),
     edgeToIdx(), originalEdges(),
     resultGraph(), VToVecid(), edgeVisited(),
     pathStack(), resultPath(),

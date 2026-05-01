@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: basic_vertex.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
@@ -64,6 +64,7 @@ class Basic_vertex {
 
 
      friend std::ostream& operator<<(std::ostream& log, const Basic_vertex &v);
+
  public:
      int64_t id;
 };

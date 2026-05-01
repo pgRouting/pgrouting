@@ -2,7 +2,7 @@
 File: sloanOrdering.c
 
 Generated with Template by:
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Developer:
@@ -27,11 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
-
 #include "process/ordering_process.h"
 
 PGDLLEXPORT Datum _pgr_sloanordering(PG_FUNCTION_ARGS);
@@ -54,7 +49,7 @@ _pgr_sloanordering(PG_FUNCTION_ARGS) {
 
         pgr_process_ordering(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                0, /* Sloan */
+                SLOAN, /* Sloan */
                 &result_tuples,
                 &result_count);
 

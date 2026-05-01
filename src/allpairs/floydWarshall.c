@@ -2,7 +2,7 @@
 File: floydWarshall.c
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -28,12 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-
 #include "c_types/iid_t_rt.h"
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
-
 #include "process/allpairs_process.h"
 
 PGDLLEXPORT Datum _pgr_floydwarshall(PG_FUNCTION_ARGS);
@@ -57,7 +52,7 @@ _pgr_floydwarshall(PG_FUNCTION_ARGS) {
         pgr_process_allpairs(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_BOOL(1),
-                1, /* Floyd Warshall */
+                FLOYD,
                 &result_tuples,
                 &result_count);
 

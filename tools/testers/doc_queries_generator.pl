@@ -1,17 +1,16 @@
-#! /usr/bin/perl -w
-
+#!/usr/bin/perl -w
 =pod
+/*PGR-GNU*****************************************************************
 File: doc_queries_generator.pl
 
-Copyright (c) 2013 pgRouting developers
+Copyright (c) 2013-2026 pgRouting developers
+Mail: project@pgrouting.org
 
 Function contributors:
   	Celia Virginia Vergara Castillo
   	Stephen Woodbridge
   	Vadim Zhukov
 	Nagase Ko
-
-Mail:
 
 ------
 
@@ -28,6 +27,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
 =cut
 
 
@@ -176,8 +177,7 @@ print "Operative system found: $OS\n";
 createTestDB($DBNAME);
 
 # Load the sample data & any other relevant data files
-mysystem("$psql $connopts -A -t -q -f tools/testers/sampledata.sql $DBNAME >> $TMP2 2>\&1 ");
-mysystem("$psql $connopts -A -t -q -f tools/testers/lc101.pg $DBNAME >> $TMP2 2>\&1 ");
+mysystem("$psql $connopts -A -t -q -f tools/testers/sampledata.pg $DBNAME >> $TMP2 2>\&1 ");
 
 if ($DATA) {exit 0;};
 
@@ -273,8 +273,7 @@ sub process_single_test{
     my $t0 = [gettimeofday];
 
     # Load the sample data & any other relevant data files
-    mysystem("$psql $connopts -A -t -q -f tools/testers/sampledata.sql $DBNAME >> $TMP2 2>\&1 ");
-    mysystem("$psql $connopts -A -t -q -f tools/testers/lc101.pg $DBNAME >> $TMP2 2>\&1 ");
+    mysystem("$psql $connopts -A -t -q -f tools/testers/sampledata.pg $DBNAME >> $TMP2 2>\&1 ");
 
     # TIN = test input file
     open(TIN, "$inputFile") || do {

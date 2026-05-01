@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: depthFirstSearch.hpp
 
-Copyright (c) 2020 pgRouting developers
+Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2020 Ashish Kumar
@@ -12,19 +12,23 @@ This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
+
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
+
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-********************************************************************PGR-GNU*/
+
+ ********************************************************************PGR-GNU*/
 
 #ifndef INCLUDE_TRAVERSAL_DEPTHFIRSTSEARCH_HPP_
 #define INCLUDE_TRAVERSAL_DEPTHFIRSTSEARCH_HPP_
 #pragma once
 
+#include <set>
 #include <vector>
 #include <map>
 #include <cstdint>
@@ -38,11 +42,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/mst_rt.h"
 
 namespace pgrouting {
-namespace functions {
+namespace algorithms {
 
 //*************************************************************
 
-template < class G >
+template <class G>
 class Pgr_depthFirstSearch {
  public:
      typedef typename G::V V;
@@ -69,14 +73,14 @@ class Pgr_depthFirstSearch {
       * @see [boost::undirected_dfs]
       * (https://www.boost.org/libs/graph/doc/undirected_dfs.html)
       */
-     std::vector < MST_rt > depthFirstSearch(
+     std::vector <MST_rt> depthFirstSearch(
              G &graph,
-             std::vector < int64_t > roots,
+             const std::set<int64_t>& roots,
              bool directed,
              int64_t max_depth) {
-         std::vector < MST_rt > results;
+         std::vector<MST_rt> results;
 
-         for (auto root : roots) {
+         for (const auto& root : roots) {
              results.push_back({root, 0, root, root, -1, 0.0, 0.0});
 
              if (graph.has_vertex(root)) {
@@ -115,14 +119,14 @@ class Pgr_depthFirstSearch {
      bool depthFirstSearch_single_vertex(
                  G &graph,
                  V root,
-                 std::vector < E > &visited_order,
+                 std::vector <E> &visited_order,
                  bool directed,
                  int64_t max_depth) {
-         using dfs_visitor = visitors::Dfs_visitor < V, E, G >;
+         using dfs_visitor = visitors::Dfs_visitor <V, E, G>;
 
          // Exterior property storage containers
-         std::vector < boost::default_color_type > colors(boost::num_vertices(graph.graph));
-         std::map < E, boost::default_color_type > edge_color;
+         std::vector <boost::default_color_type> colors(boost::num_vertices(graph.graph));
+         std::map <E, boost::default_color_type> edge_color;
 
          auto i_map = boost::get(boost::vertex_index, graph.graph);
 
@@ -168,16 +172,16 @@ class Pgr_depthFirstSearch {
       *
       * @returns `results` vector
       */
-     template < typename T >
-     std::vector < MST_rt > get_results(
+     template <typename T>
+     std::vector <MST_rt> get_results(
              T visited_order,
              int64_t root,
              int64_t max_depth,
              const G &graph) {
-         std::vector < MST_rt > results;
+         std::vector <MST_rt> results;
 
-         std::vector < double > agg_cost(graph.num_vertices(), 0);
-         std::vector < int64_t > depth(graph.num_vertices(), 0);
+         std::vector <double> agg_cost(graph.num_vertices(), 0);
+         std::vector <int64_t> depth(graph.num_vertices(), 0);
 
          for (const auto edge : visited_order) {
              auto u = graph.source(edge);
@@ -201,6 +205,36 @@ class Pgr_depthFirstSearch {
          return results;
      }
 };
+
+}  // namespace algorithms
+
+namespace functions {
+
+/** @brief Calls the main function defined in the C++ Header file.
+ *
+ * Also sorts the root vertices in an increasing order,
+ * and removes the duplicated vertices. Then calls the function
+ * defined in the C++ Header file - `pgr_depthFirstSearch.hpp`
+ *
+ * @param graph      the graph containing the edges
+ * @param roots      the root vertices
+ * @param directed   whether the graph is directed or undirected
+ * @param max_depth  the maximum depth of traversal
+ *
+ * @returns results, when results are found
+ */
+template <class G>
+std::vector <MST_rt>
+depthFirstSearch(
+        G &graph,
+        const std::set<int64_t>& roots,
+        bool directed,
+        int64_t max_depth) {
+    algorithms::Pgr_depthFirstSearch<G> fn_depthFirstSearch;
+    auto results = fn_depthFirstSearch.depthFirstSearch(graph, roots, directed, max_depth);
+    return results;
+}
+
 }  // namespace functions
 }  // namespace pgrouting
 

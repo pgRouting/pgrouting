@@ -16478,15 +16478,3 @@ msgstr ""
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
-
-#, fuzzy
-#~ msgid "See also"
-#~ msgstr "参照"
-
-#, fuzzy
-#~ msgid "New experimental function"
-#~ msgstr "新しい **公式** 機能"
-
-#, fuzzy
-#~ msgid "..rubric:: Version 3.0.0"
-#~ msgstr "バージョン 3.0.0"

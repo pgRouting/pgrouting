@@ -2,7 +2,7 @@
 File: line_vertex.hpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2017-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -61,6 +61,11 @@ class Line_vertex {
          source(v.source),
          target(v.target),
          cost(v.cost) {}
+
+     Line_vertex& operator=(const Line_vertex&) = default;
+     Line_vertex(Line_vertex&&) = default;
+     Line_vertex& operator=(Line_vertex&&) = default;
+     ~Line_vertex() = default;
 
      void cp_members(const Line_vertex &other) {
          this->id = other.id;

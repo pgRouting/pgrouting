@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: mst.hpp
 
-Copyright (c) 2018 pgRouting developers
+Copyright (c) 2018-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018 Vicky Vergara
@@ -43,13 +43,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
-#include "spanningTree/details.hpp"
+#include "cpp_common/utilities.hpp"
 
 namespace pgrouting {
-namespace functions {
+namespace algorithms {
 
 template <class G>
 class Pgr_mst {
+ public:
+     virtual ~Pgr_mst() = default;
+
  protected:
      typedef typename G::B_G B_G;
      typedef typename G::V V;
@@ -96,13 +99,14 @@ class Pgr_mst {
 
      std::vector<MST_rt> mstBFS(
              const G &graph,
-             std::vector<int64_t> roots,
+             const std::set<int64_t> &roots,
              int64_t max_depth) {
          m_suffix = "BFS";
          m_get_component = true;
          m_distance = -1;
          m_max_depth = max_depth;
-         m_roots = details::clean_vids(roots);
+         m_roots = roots;
+         m_roots.erase(0);
 
          this->generate_mst(graph);
          return bfs_order(graph);
@@ -110,13 +114,14 @@ class Pgr_mst {
 
      std::vector<MST_rt> mstDFS(
              const G &graph,
-             std::vector<int64_t> roots,
+             const std::set<int64_t> &roots,
              int64_t max_depth) {
          m_suffix = "DFS";
          m_get_component = false;
          m_distance = -1;
          m_max_depth = max_depth;
-         m_roots = details::clean_vids(roots);
+         m_roots = roots;
+         m_roots.erase(0);
 
          this->generate_mst(graph);
          return dfs_order(graph);
@@ -124,20 +129,21 @@ class Pgr_mst {
 
      std::vector<MST_rt> mstDD(
              const G &graph,
-             std::vector<int64_t> roots,
+             const std::set<int64_t> &roots,
              double distance) {
          m_suffix = "DD";
          m_get_component = false;
          m_distance = distance;
          m_max_depth = -1;
-         m_roots = details::clean_vids(roots);
+         m_roots = roots;
+         m_roots.erase(0);
 
          this->generate_mst(graph);
          return dfs_order(graph);
      }
 
  protected:
-     std::vector<int64_t> m_roots;
+     std::set<int64_t> m_roots;
      bool m_get_component;
      int64_t  m_max_depth;
      double  m_distance;
@@ -333,11 +339,11 @@ class Pgr_mst {
 
          calculate_component(graph);
 
-         std::vector<int64_t> roots;
+         std::set<int64_t> roots;
          if (!m_roots.empty()) {
              roots = m_roots;
          } else {
-             roots =  m_tree_id;
+             roots.insert(m_tree_id.begin(), m_tree_id.end());
          }
 
          using bfs_visitor = visitors::Edges_order_bfs_visitor<E>;
@@ -369,7 +375,7 @@ class Pgr_mst {
      }
 };
 
-}  // namespace functions
+}  // namespace algorithms
 }  // namespace pgrouting
 
 #endif  // INCLUDE_SPANNINGTREE_MST_HPP_

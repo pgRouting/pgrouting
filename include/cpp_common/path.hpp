@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: path.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2013-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
@@ -142,17 +142,6 @@ class Path {
     void get_pg_turn_restricted_path(
             Path_rt **ret_path,
             size_t &sequence, int routeId) const;
-
-    void generate_postgres_data(
-            Path_rt **postgres_data,
-            size_t &sequence) const;
-
-    void generate_tuples(MST_rt**, size_t&) const;
-    friend size_t collapse_paths(MST_rt**, const std::deque<Path>&);
-
-    friend size_t collapse_paths(
-            Path_rt **ret_path,
-            const std::deque< Path > &paths);
 
 
     /** @brief discards common vertices with greater agg_cost */

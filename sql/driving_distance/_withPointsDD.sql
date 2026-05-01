@@ -2,7 +2,7 @@
 File: _withPointsDD.sql
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2017-2026 pgRouting developers
 Mail: project at pgrouting.org
 
 Function's developer:

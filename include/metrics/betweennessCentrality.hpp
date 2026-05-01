@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: betweennessCentrality.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2024-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2024 Arun Thakur
@@ -23,7 +23,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #ifndef INCLUDE_METRICS_BETWEENNESSCENTRALITY_HPP_
 #define INCLUDE_METRICS_BETWEENNESSCENTRALITY_HPP_

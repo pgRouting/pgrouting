@@ -2,6 +2,9 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2025-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
 /* -- q1 */
 SELECT * FROM pgr_contractionLinear(
   'SELECT id, source, target, cost, reverse_cost FROM edges',

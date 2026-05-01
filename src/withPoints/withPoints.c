@@ -2,7 +2,7 @@
 File: withPoints.c
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -29,17 +29,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-
 #include "c_types/path_rt.h"
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
 #include "process/shortestPath_process.h"
 
 PGDLLEXPORT Datum _pgr_withpoints_v4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_withpoints_v4);
-
-
 
 PGDLLEXPORT Datum
 _pgr_withpoints_v4(PG_FUNCTION_ARGS) {
@@ -74,10 +68,10 @@ _pgr_withpoints_v4(PG_FUNCTION_ARGS) {
 
                 0, true,
 
-                text_to_cstring(PG_GETARG_TEXT_P(5)),
+                text_to_cstring(PG_GETARG_TEXT_P(5))[0],
                 PG_GETARG_BOOL(6),
 
-                1,  // which
+                WITHPOINTS,
                 &result_tuples,
                 &result_count);
 
@@ -98,10 +92,10 @@ _pgr_withpoints_v4(PG_FUNCTION_ARGS) {
 
                 0, true,
 
-                text_to_cstring(PG_GETARG_TEXT_P(4)),
+                text_to_cstring(PG_GETARG_TEXT_P(4))[0],
                 PG_GETARG_BOOL(5),
 
-                1,  // which
+                WITHPOINTS,
                 &result_tuples,
                 &result_count);
         }
@@ -209,10 +203,10 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
 
                 0, true,  // n-goals, normal
 
-                text_to_cstring(PG_GETARG_TEXT_P(5)),  // driving side
+                text_to_cstring(PG_GETARG_TEXT_P(5))[0],  // driving side
                 PG_GETARG_BOOL(6),  // details
 
-                1,  // which
+                WITHPOINTS,
                 &result_tuples,
                 &result_count);
 
@@ -233,9 +227,9 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
 
                 0, true,
 
-                text_to_cstring(PG_GETARG_TEXT_P(4)),
+                text_to_cstring(PG_GETARG_TEXT_P(4))[0],
                 PG_GETARG_BOOL(5),
-                101,  // which
+                OLD_WITHPOINTS,
                 &result_tuples,
                 &result_count);
         }

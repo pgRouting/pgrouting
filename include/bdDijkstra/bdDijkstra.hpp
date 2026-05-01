@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: bdDijkstra.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2016 Celia Virginia Vergara Castillo
@@ -35,6 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <limits>
 #include <functional>
+#include <set>
+#include <map>
+#include <deque>
 
 
 #include "cpp_common/bidirectional.hpp"
@@ -77,7 +80,7 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
              m_log << "pgr_bdDijkstra constructor\n";
          }
 
-     ~Pgr_bdDijkstra() = default;
+     ~Pgr_bdDijkstra() override = default;
 
      Path pgr_bdDijkstra(V start_vertex, V end_vertex, bool only_cost) {
          m_log << "pgr_bdDijkstra\n";
@@ -93,7 +96,7 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
 
 
  private:
-     void explore_forward(const Cost_Vertex_pair &node) {
+     void explore_forward(const Cost_Vertex_pair &node) override {
          typename G::EO_i out, out_end;
 
          auto current_cost = node.first;
@@ -116,7 +119,7 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
          forward_finished[current_node] = true;
      }
 
-     void explore_backward(const Cost_Vertex_pair &node) {
+     void explore_backward(const Cost_Vertex_pair &node) override {
          typename G::EI_i in, in_end;
 
          auto current_cost = node.first;
@@ -141,6 +144,35 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
 };
 
 }  // namespace bidirectional
+
+namespace algorithms {
+
+template <class G>
+std::deque<pgrouting::Path>
+bdDijkstra(
+        G &graph,
+        const std::map<int64_t, std::set<int64_t>> &combinations,
+        bool only_cost) {
+    using pgrouting::Path;
+
+    pgrouting::bidirectional::Pgr_bdDijkstra<G> fn_bdDijkstra(graph);
+    std::deque<Path> paths;
+
+    for (const auto &comb : combinations) {
+        auto source = comb.first;
+        if (!graph.has_vertex(source)) continue;
+
+        for (const auto &target : comb.second) {
+            if (!graph.has_vertex(target)) continue;
+            fn_bdDijkstra.clear();
+
+            paths.push_back(fn_bdDijkstra.pgr_bdDijkstra(graph.get_V(source), graph.get_V(target), only_cost));
+        }
+    }
+    return paths;
+}
+
+}  // namespace algorithms
 }  // namespace pgrouting
 
 #endif  // INCLUDE_BDDIJKSTRA_BDDIJKSTRA_HPP_

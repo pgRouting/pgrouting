@@ -1,11 +1,6 @@
-..
-   ****************************************************************************
-    pgRouting Manual
-    Copyright(c) pgRouting Contributors
-
-    This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
-   ****************************************************************************
+:file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2016-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0
 
 |
 
@@ -34,6 +29,7 @@ pgRouting 4.1
    :local:
    :depth: 1
 
+.. current
 
 pgRouting 4.1.0 Release Notes
 -------------------------------------------------------------------------------
@@ -41,22 +37,53 @@ pgRouting 4.1.0 Release Notes
 To see all issues & pull requests closed by this release see the
 :milestone:`4.1.0`
 
-Bug Fixes
-...............................................................................
+.. rubric:: Code enhancements
 
-* :issue:`2966`: pgr_withPoints does not pick optimal route when fraction = 1
-
-.. current
+* :issue:`3049`: Use enumeration on drivers and process.
+* :issue:`3054`: Change error message when edges_sql is empty
+* :issue:`3055`: bdDijkstra: use the shortest_path process and driver
+* :issue:`3056`: edwardMoore: use the shortest_path process and driver
+* :issue:`3060`: dagShortestPath: use the shortest_path process and driver
+* :issue:`3064`: Astar: create and use a process and driver for Astar
+* :issue:`3075`: Spanning tree: create and use a process and driver
+* :issue:`3086`: MaxFlow: create and use a process and driver
+* :issue:`3089`: edgeDisjoint and bellmanFord use shortestPath driver and
+  process
 
 pgRouting 4.0
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. contents:: Contents
    :local:
    :depth: 1
 
+pgRouting 4.0.1 Release Notes
+-------------------------------------------------------------------------------
 
-pgRouting 4.0.0-alpha1 Release Notes
+To see all issues & pull requests closed by this release see the
+:milestone:`4.0.1`
+
+.. rubric:: Bug Fixes
+
+* :issue:`2966`: pgr_withPoints does not pick optimal route when fraction = 1
+* :issue:`3034`: metrics driver should not be using new
+
+.. rubric:: Code enhancements
+
+* :issue:`3044`: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions
+* :issue:`3040`: Check and fix cppcoreguidelines-virtual-class-destructor
+* :issue:`3039`: Check and fix cppcoreguidelines-special-member-functions
+* :issue:`3038`: Check and fix cppcoreguidelines-prefer-member-initializer
+* :issue:`3037`: Check and fix cppcoreguidelines-init-variables
+* :issue:`3035`: Pass by reference on existing drivers
+
+Administration
+...............................................................................
+
+* :issue:`3031`: pgtap license to Creative commons and License texts
+  standardization
+
+pgRouting 4.0.0 Release Notes
 -------------------------------------------------------------------------------
 
 To see all issues & pull requests closed by this release see the

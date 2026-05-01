@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2015~2025 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------

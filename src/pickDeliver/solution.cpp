@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: solution.cpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -230,7 +230,6 @@ Solution::get_kind() const {
 }
 
 Solution::Solution() :
-    EPSILON(0.0001),
     trucks(problem->trucks()) {
     ENTERING(msg());
     for (const auto &t : trucks) {

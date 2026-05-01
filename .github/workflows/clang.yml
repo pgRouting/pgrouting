@@ -1,4 +1,7 @@
 name: Build for Ubuntu with clang
+# This file is part of the pgRouting project.
+# Copyright (c) 2020-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 
 # This action runs:
 # - When this file changes
@@ -19,6 +22,7 @@ on:
       - 'include/**'
       - 'pgtap/**'
       - 'tools/testers/**'
+      - '.clang-tidy'
       - 'CMakeLists.txt'
 
     branches-ignore:
@@ -31,6 +35,7 @@ on:
       - 'include/**'
       - 'pgtap/**'
       - 'tools/testers/**'
+      - '.clang-tidy'
       - 'CMakeLists.txt'
 
     branches-ignore:

@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: edgeInfo.hpp
 
-Copyright (c) 2017 pgRouting developers
+Copyright (c) 2017-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------

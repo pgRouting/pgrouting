@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: ksp.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2013-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <map>
+#include <memory>
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -59,15 +60,15 @@ class Pgr_ksp :  public Pgr_messages {
 
  public:
      Pgr_ksp() :
-         m_start(0),
-         m_end(0),
-         m_K(0),
-         m_heap_paths(false),
-         m_vis(new Visitor) {
+         m_vis(std::make_unique<Visitor>()) {
          }
-     ~Pgr_ksp() {
-         delete m_vis;
-     }
+
+     ~Pgr_ksp() = default;
+
+     Pgr_ksp(const Pgr_ksp&) = delete;
+     Pgr_ksp& operator=(const Pgr_ksp&) = delete;
+     Pgr_ksp(Pgr_ksp&&) = delete;
+     Pgr_ksp& operator=(Pgr_ksp&&) = delete;
 
      std::deque<Path> Yen(
              G &graph,
@@ -121,7 +122,13 @@ class Pgr_ksp :  public Pgr_messages {
 
      class Visitor {
       public:
-          virtual ~Visitor() {}
+          virtual ~Visitor() = default;
+
+          Visitor() = default;
+          Visitor(const Visitor&) = delete;
+          Visitor& operator=(const Visitor&) = delete;
+          Visitor(Visitor&&) = delete;
+          Visitor& operator=(Visitor&&) = delete;
 
          virtual void on_insert_first_solution(const Path) const {
              /* noop */
@@ -229,17 +236,17 @@ class Pgr_ksp :  public Pgr_messages {
      ///@{
      V v_source;  //!< source descriptor
      V v_target;  //!< target descriptor
-     int64_t m_start;  //!< source id
-     int64_t m_end;   //!< target id
-     size_t m_K;
-     bool m_heap_paths;
+     int64_t m_start{0};  //!< source id
+     int64_t m_end{0};   //!< target id
+     size_t m_K{0};
+     bool m_heap_paths{false};
 
      Path curr_result_path;  //!< storage for the current result
 
      pSet m_ResultSet;  //!< ordered set of shortest paths
      pSet m_Heap;  //!< the heap
 
-     Visitor *m_vis;
+     std::unique_ptr<Visitor> m_vis;
 };
 
 

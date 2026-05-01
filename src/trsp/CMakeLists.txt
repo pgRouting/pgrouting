@@ -1,3 +1,6 @@
+# This file is part of the pgRouting project.
+# Copyright (c) 2013-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 add_library(trsp OBJECT
     # keeping these for backwards compatibility
     edgeInfo.cpp

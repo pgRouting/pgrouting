@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: separateTouching.sql
 
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2025 Celia Virginia Vergara Castillo

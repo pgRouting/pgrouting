@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: path.cpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
@@ -228,36 +228,6 @@ void Path::append(const Path &other) {
 }
 
 
-void Path::generate_postgres_data(
-        Path_rt **postgres_data,
-        size_t &sequence) const {
-    for (const auto e : path) {
-        auto agg_cost = std::fabs(
-                e.agg_cost - (std::numeric_limits<double>::max)()) < 1?
-            std::numeric_limits<double>::infinity() : e.agg_cost;
-        auto cost = std::fabs(e.cost - (std::numeric_limits<double>::max)()) < 1?
-            std::numeric_limits<double>::infinity() : e.cost;
-
-        (*postgres_data)[sequence] = {start_id(), end_id(), e.node, e.edge, cost, agg_cost};
-        ++sequence;
-    }
-}
-
-void Path::generate_tuples(
-        MST_rt **tuples,
-        size_t &sequence) const {
-    for (const auto e : path) {
-        auto agg_cost = std::fabs(
-                e.agg_cost - (std::numeric_limits<double>::max)()) < 1?
-            std::numeric_limits<double>::infinity() : e.agg_cost;
-        auto cost = std::fabs(e.cost - (std::numeric_limits<double>::max)()) < 1?
-            std::numeric_limits<double>::infinity() : e.cost;
-
-        (*tuples)[sequence] = {start_id(), 0, e.pred, e.node, e.edge, cost, agg_cost};
-        ++sequence;
-    }
-}
-
 
 /* used by ksp */
 void Path::get_pg_nksp_path(
@@ -312,29 +282,6 @@ Path::sort_by_node_agg_cost() {
  */
 
 
-size_t
-collapse_paths(
-        Path_rt **ret_path,
-        const std::deque< Path > &paths) {
-    size_t sequence = 0;
-    for (const Path &path : paths) {
-        if (path.path.size() > 0) {
-            path.generate_postgres_data(ret_path, sequence);
-        }
-    }
-    return sequence;
-}
-
-size_t
-collapse_paths(
-        MST_rt **tuples,
-        const std::deque<Path> &paths) {
-    size_t sequence = 0;
-    for (const Path &path : paths) {
-        if (path.path.size() > 0) path.generate_tuples(tuples, sequence);
-    }
-    return sequence;
-}
 
 /*
  * sort the paths by size from greater to smaller

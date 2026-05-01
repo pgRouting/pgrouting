@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: _withPointsKSP.sql
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2017-2026 pgRouting developers
 Mail: project at pgrouting.org
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo

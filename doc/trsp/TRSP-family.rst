@@ -1,11 +1,6 @@
-..
-   ****************************************************************************
-    pgRouting Manual
-    Copyright(c) pgRouting Contributors
-
-    This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
-   ****************************************************************************
+:file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2022-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0
 
 .. index:: Turn Restriction Shortest Path Family
 
@@ -111,7 +106,7 @@ avoided.
 
 These restrictions are represented on a table as follows:
 
-.. literalinclude:: ../../tools/testers/sampledata.sql
+.. literalinclude:: sampledata/sampledata.sql
    :start-after: --RESTRICTIONS CREATE start
    :end-before: --RESTRICTIONS CREATE end
 

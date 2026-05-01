@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: breadthFirstSearch.hpp
 
-Copyright (c) 2019 pgRouting developers
+Copyright (c) 2019-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2019 Gudesa Venkata Sai AKhil
@@ -12,14 +12,17 @@ This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
+
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
+
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-********************************************************************PGR-GNU*/
+
+ ********************************************************************PGR-GNU*/
 
 #ifndef INCLUDE_BREADTHFIRSTSEARCH_BREADTHFIRSTSEARCH_HPP_
 #define INCLUDE_BREADTHFIRSTSEARCH_BREADTHFIRSTSEARCH_HPP_
@@ -40,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //******************************************
 
 namespace pgrouting {
-namespace functions {
+namespace algorithms {
 
 template <class G>
 class Pgr_breadthFirstSearch {
@@ -110,6 +113,22 @@ class Pgr_breadthFirstSearch {
          return results;
      }
 };
+
+}  // namespace algorithms
+
+namespace functions {
+
+template <class G>
+std::vector<MST_rt> breadthFirstSearch(
+        G &graph,
+        const std::set<int64_t> &roots,
+        bool,
+        int64_t max_depth) {
+    pgrouting::algorithms::Pgr_breadthFirstSearch<G> fn_breadthFirstSearch;
+    auto results = fn_breadthFirstSearch.breadthFirstSearch(graph, roots, max_depth);
+    return results;
+}
+
 }  // namespace functions
 }  // namespace pgrouting
 

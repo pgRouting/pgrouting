@@ -1,8 +1,10 @@
+# This file is part of the pgRouting project.
+# Copyright (c) 2013-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 
 set(LOCAL_FILES
     _prim.sql
     _kruskal.sql
-    #_randomSpanTree.sql
 
     prim.sql
     primDFS.sql
@@ -13,10 +15,7 @@ set(LOCAL_FILES
     kruskalDFS.sql
     kruskalBFS.sql
     kruskalDD.sql
-    #randomSpanTree.sql
-    )
-
-# Do not modify below this line
+)
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})

@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: undirectedHasCostBG.cpp
 
-Copyright (c) 2021 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2025 Vicky Vergara

@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: dagShortestPath.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2013-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018 Sourabh Garg
@@ -218,6 +218,20 @@ class Pgr_dag {
      };
 };
 
+namespace algorithms {
+
+template <class G>
+std::deque<pgrouting::Path>
+dagShortestPath(
+        G &graph,
+        std::map<int64_t, std::set<int64_t>> &combinations,
+        bool only_cost = false) {
+    pgrouting::Pgr_dag<G> fn_dag;
+    auto paths = fn_dag.dag(graph, combinations, only_cost);
+    return paths;
+}
+
+}  // namespace algorithms
 }  // namespace pgrouting
 
 #endif  // INCLUDE_DAGSHORTESTPATH_DAGSHORTESTPATH_HPP_

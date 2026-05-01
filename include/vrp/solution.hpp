@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: solution.hpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -46,7 +46,7 @@ class Solution {
     friend class Optimize;
     friend class PD_problem;
  protected:
-     double EPSILON;
+     double EPSILON{0.0001};
      std::deque<Vehicle_pickDeliver> fleet;
 
      /* this solution belongs to this problem*/
@@ -66,18 +66,19 @@ class Solution {
 
      /* @brief copy constructor */
      Solution(const Solution &sol) :
-         EPSILON(0.0001),
          fleet(sol.fleet),
          trucks(sol.trucks)
     {};
 
      /* @brief copy assignment */
      Solution& operator = (const Solution& sol) {
-         EPSILON = 0.0001,
          fleet = sol.fleet;
          trucks = sol.trucks;
          return *this;
-     };
+     }
+
+     /* @brief destructor */
+     ~Solution() = default;
 
 
      Initials_code get_kind() const;

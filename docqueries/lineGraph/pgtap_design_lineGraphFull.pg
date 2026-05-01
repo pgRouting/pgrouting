@@ -1,5 +1,6 @@
--- CopyRight(c) pgRouting developers
--- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2017-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
 UPDATE edges SET id = id * 100, source = 1000 * source, target = 1000 * target;
 UPDATE vertices SET id = id * 1000;
 

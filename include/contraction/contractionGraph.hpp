@@ -2,7 +2,7 @@
 File: contractionGraph.hpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -66,8 +66,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
        Prepares the _graph_ to be of type *directed*
        */
      explicit Pgr_contractionGraph()
-         : Pgr_base_graph<G, CH_vertex, CH_edge, t_directed>(),
-        min_edge_id(0) {
+         : Pgr_base_graph<G, CH_vertex, CH_edge, t_directed>() {
          }
 
      /*! @brief get the vertex descriptors of adjacent vertices of *v*
@@ -548,7 +547,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
     }
 
  private:
-    int64_t min_edge_id;
+     int64_t min_edge_id{0};
     Identifiers<V> forbiddenVertices;
 };
 

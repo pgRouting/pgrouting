@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
-File:maximumcardinalitymatching.cpp
+File: maximumcardinalitymatching.cpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Refactoring

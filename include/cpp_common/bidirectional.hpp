@@ -2,7 +2,7 @@
 File: bidirectional.hpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -73,12 +73,11 @@ class Pgr_bidirectional {
  public:
     explicit Pgr_bidirectional(G &pgraph):
         graph(pgraph),
-        INF((std::numeric_limits<double>::max)()),
-        best_cost(0) {
+        INF((std::numeric_limits<double>::max)()) {
         m_log << "constructor\n";
     }
 
-    ~Pgr_bidirectional() = default;
+    virtual ~Pgr_bidirectional() = default;
 
     std::string log() const {return m_log.str();}
     void clean_log() {m_log.clear();}
@@ -222,7 +221,7 @@ class Pgr_bidirectional {
 
     double INF;  //!< infinity
 
-    double best_cost;
+    double best_cost{0};
 
     mutable std::ostringstream m_log;
     Priority_queue forward_queue;

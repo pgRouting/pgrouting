@@ -2,7 +2,7 @@
 File: bandwidth.c
 
 Generated with Template by:
-Copyright (c) 2025 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -27,14 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include <stdbool.h>
 #include "c_common/postgres_connection.h"
-
-#include "c_types/iid_t_rt.h"
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
-
 #include "process/metrics_process.h"
 
 PGDLLEXPORT Datum _pgr_bandwidth(PG_FUNCTION_ARGS);
@@ -43,19 +36,8 @@ PG_FUNCTION_INFO_V1(_pgr_bandwidth);
 
 PGDLLEXPORT Datum
 _pgr_bandwidth(PG_FUNCTION_ARGS) {
-    IID_t_rt *result_tuples = NULL;
-    size_t result_count = 0;
-
-    pgr_process_metrics(
+    uint64_t result = pgr_process_metrics(
         text_to_cstring(PG_GETARG_TEXT_P(0)),
-        0,  /* bandwidth */
-        &result_tuples,
-        &result_count);
-
-     if (result_count == 0) {
-             PG_RETURN_UINT64(0);
-     } else {
-             PG_RETURN_UINT64((uint64_t)result_tuples[0].from_vid);
-     }
+        BANDWIDTH);
+    PG_RETURN_UINT64(result);
 }
-

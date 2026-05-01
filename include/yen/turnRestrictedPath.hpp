@@ -2,7 +2,7 @@
 File: turnRestrictedPath.hpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2018-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 #include <cstdint>
+#include <memory>
 
 #include "yen/ksp.hpp"
 #include "cpp_common/assert.hpp"
@@ -65,7 +66,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
              m_restrictions(restrictions) {
              }
 
-         void on_insert_first_solution(const Path path) const {
+         void on_insert_first_solution(const Path path) const override {
              if (path.empty()) return;
              if (has_restriction(path)) return;
 
@@ -74,7 +75,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
              if (m_stop_on_first) throw found_goals();
          }
 
-         void on_insert_to_heap(const Path path) const {
+         void on_insert_to_heap(const Path path) const override {
              if (path.empty()) return;
              if (has_restriction(path)) return;
 
@@ -161,8 +162,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
          this->m_end = end_vertex;
          this->m_K = K;
          Pgr_ksp<G>::m_heap_paths = true;
-         delete this->m_vis;
-         this->m_vis = new Myvisitor(
+         this->m_vis = std::make_unique<Myvisitor>(
                  m_solutions,
                  m_restrictions,
                  m_stop_on_first);

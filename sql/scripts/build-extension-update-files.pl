@@ -1,6 +1,9 @@
 #!/usr/bin/perl -w
 =pod
-Copyright (c) 2015 pgRouting developers
+/*PGR-GNU*****************************************************************
+File: build-extension-update-files.pl
+
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -18,6 +21,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
 =cut
 
 eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'

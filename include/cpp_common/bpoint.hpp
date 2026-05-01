@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: bpoint.hpp
 
-Copyright (c) 2017 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2017 Celia Virginia Vergara Castillo
@@ -36,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace bg = boost::geometry;
 
 // TODO(vicky) mogidying this file should not affect:
-// dijkstra_driver.cpp
 // dijkstraVia_driver.cpp
 // floydWarshall_driver
 // etc...

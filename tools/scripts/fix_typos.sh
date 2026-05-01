@@ -1,7 +1,7 @@
 #!/bin/sh
-# -*- coding: utf-8 -*-
-###############################################################################
-# $Id$
+# This file is part of the pgRouting project.
+# Copyright (c) 2016-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 #
 #  Project:  GDAL
 #  Purpose:  (Interactive) script to identify and fix typos

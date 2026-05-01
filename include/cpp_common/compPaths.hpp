@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: compPaths.hpp
 
-Copyright (c) 2018 pgRouting developers
+Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Class's developer:

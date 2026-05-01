@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: initial_solution.cpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -81,7 +81,9 @@ Initial_solution::do_while_foo(int kind) {
     Identifiers<size_t> notused;
 
     while (!m_unassigned.empty()) {
+#ifndef NDEBUG
         auto current = m_unassigned.size();
+#endif
         auto truck = trucks.get_truck(m_unassigned.front());
         /*
          * kind 1 to 7 work with the same code structure
