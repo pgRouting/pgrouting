@@ -56,7 +56,7 @@ namespace vrp {
  */
 class Tw_node : public Dnode {
  public:
-     typedef enum {
+     typedef enum {  // NOLINT(cppcoreguidelines-use-enum-class)
          kStart = 0,  ///< starting site
          kPickup,  ///< pickup site
          kDelivery,  ///< delivery site

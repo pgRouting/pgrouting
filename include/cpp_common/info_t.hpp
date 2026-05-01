@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
-enum expectType {
+enum class expectType {
     ANY_INTEGER,
     ANY_NUMERICAL,
     TEXT,

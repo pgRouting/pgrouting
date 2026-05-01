@@ -122,8 +122,8 @@ _pgr_bipartite(PG_FUNCTION_ARGS) {
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
-            values[0] = Int64GetDatum(result_tuples[call_cntr].d1.id);
-            values[1] = Int64GetDatum(result_tuples[call_cntr].d2.value);
+            values[0] = Int64GetDatum(result_tuples[call_cntr].d1);
+            values[1] = Int64GetDatum(result_tuples[call_cntr].d2);
             tuple = heap_form_tuple(tuple_desc, values, nulls);
             result = HeapTupleGetDatum(tuple);
             SRF_RETURN_NEXT(funcctx, result);

@@ -27,16 +27,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "components/components.hpp"
 
-#include <vector>
+#include <algorithm>
 #include <map>
 #include <utility>
-#include <algorithm>
+#include <vector>
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/biconnected_components.hpp>
 #include <boost/graph/connected_components.hpp>
 #include <boost/graph/strong_components.hpp>
-#include <boost/graph/biconnected_components.hpp>
 
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/interruption.hpp"
@@ -46,107 +46,104 @@ namespace algorithms {
 
 std::vector<II_t_rt>
 pgr_connectedComponents(pgrouting::UndirectedGraph &graph) {
+    if (boost::num_vertices(graph.graph) == 0) return {};
     typedef pgrouting::UndirectedGraph::V V;
     // perform the algorithm
-    std::vector<V> components(num_vertices(graph.graph));
+    std::vector<V> components(boost::num_vertices(graph.graph));
     size_t num_comps = 0;
     /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
     CHECK_FOR_INTERRUPTS();
     try {
-        num_comps = boost::connected_components(graph.graph, &components[0]);
+        num_comps = boost::connected_components(graph.graph, components.data());
     } catch (...) {
         throw;
     }
 
-    // get the results
-    std::vector< std::vector< int64_t > > results(num_comps);
-    for (auto vd : boost::make_iterator_range(vertices(graph.graph))) {
-        results[components[vd]].push_back(graph[vd].id);
-    }
+  // get the results
+  std::vector<std::vector<int64_t>> results(num_comps);
+  for (auto vd : boost::make_iterator_range(vertices(graph.graph))) {
+    results[components[vd]].push_back(graph[vd].id);
+  }
 
-    return detail::componentsResult(results);
+  return detail::componentsResult(results);
 }
 
 //! Strongly Connected Components Vertex Version
-std::vector<II_t_rt>
-strongComponents(
-        pgrouting::DirectedGraph &graph) {
-    typedef pgrouting::UndirectedGraph::V V;
-    // perform the algorithm
-    std::vector<V> components(num_vertices(graph.graph));
-    size_t num_comps = 0;
-    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-    CHECK_FOR_INTERRUPTS();
-    try {
-        num_comps = boost::strong_components(
-                graph.graph,
-                boost::make_iterator_property_map(components.begin(),
-                    get(boost::vertex_index, graph.graph)));
-    } catch (...) {
-        throw;
-    }
+std::vector<II_t_rt> strongComponents(pgrouting::DirectedGraph &graph) {
+  typedef pgrouting::UndirectedGraph::V V;
+  // perform the algorithm
+  std::vector<V> components(num_vertices(graph.graph));
+  size_t num_comps = 0;
+  /* abort in case of an interruption occurs (e.g. the query is being cancelled)
+   */
+  CHECK_FOR_INTERRUPTS();
+  try {
+    num_comps = boost::strong_components(
+        graph.graph,
+        boost::make_iterator_property_map(
+            components.begin(), get(boost::vertex_index, graph.graph)));
+  } catch (...) {
+    throw;
+  }
 
-    // get the results
-    std::vector< std::vector< int64_t > > results(num_comps);
-    for (auto vd : boost::make_iterator_range(vertices(graph.graph))) {
-        results[components[vd]].push_back(graph[vd].id);
-    }
+  // get the results
+  std::vector<std::vector<int64_t>> results(num_comps);
+  for (auto vd : boost::make_iterator_range(vertices(graph.graph))) {
+    results[components[vd]].push_back(graph[vd].id);
+  }
 
-    return detail::componentsResult(results);
+  return detail::componentsResult(results);
 }
-
-
 
 //! Biconnected Components
-std::vector<II_t_rt>
-biconnectedComponents(
-        pgrouting::UndirectedGraph &graph) {
-    using G = pgrouting::UndirectedGraph;
-    using E = G::E;
-    using Edge_map = std::map< E, size_t >;
+std::vector<II_t_rt> biconnectedComponents(pgrouting::UndirectedGraph &graph) {
+  using G = pgrouting::UndirectedGraph;
+  using E = G::E;
+  using Edge_map = std::map<E, size_t>;
 
-    // perform the algorithm
-    Edge_map bicmp_map;
-    boost::associative_property_map<Edge_map> bimap(bicmp_map);
-    size_t num_comps = 0;
-    try {
-        // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
-        num_comps = biconnected_components(graph.graph, bimap);
-    } catch (...) {
-        throw;
-    }
+  // perform the algorithm
+  Edge_map bicmp_map;
+  boost::associative_property_map<Edge_map> bimap(bicmp_map);
+  size_t num_comps = 0;
+  try {
+    // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
+    num_comps = biconnected_components(graph.graph, bimap);
+  } catch (...) {
+    throw;
+  }
 
-    std::vector< std::vector< int64_t > > results(num_comps);
-    for (auto ed : boost::make_iterator_range(edges(graph.graph))) {
-        results[bimap[ed]].push_back(graph[ed].id);
-    }
+  std::vector<std::vector<int64_t>> results(num_comps);
+  for (auto ed : boost::make_iterator_range(edges(graph.graph))) {
+    results[bimap[ed]].push_back(graph[ed].id);
+  }
 
-    return detail::componentsResult(results);
+  return detail::componentsResult(results);
 }
 
-Identifiers<int64_t>
-articulationPoints(
-        pgrouting::UndirectedGraph &graph) {
-    using G = pgrouting::UndirectedGraph;
-    using V =  G::V;
-    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-    CHECK_FOR_INTERRUPTS();
+Identifiers<int64_t> articulationPoints(pgrouting::UndirectedGraph &graph) {
+  using G = pgrouting::UndirectedGraph;
+  using V = G::V;
+  /* abort in case of an interruption occurs (e.g. the query is being cancelled)
+   */
+  CHECK_FOR_INTERRUPTS();
 
-    // perform the algorithm
-    std::vector<V> art_points;
-    try {
-        boost::articulation_points(graph.graph, std::back_inserter(art_points));
-    } catch (...) {
-        throw;
-    }
+  // perform the algorithm
+  std::vector<V> art_points;
+  try {
+#ifndef __clang_analyzer__
+    boost::articulation_points(graph.graph, std::back_inserter(art_points));
+#endif
+  } catch (...) {
+    throw;
+  }
 
-    // get the results
-    Identifiers<int64_t> results;
-    for (const auto v : art_points) {
-        results += graph[v].id;
-    }
+  // get the results
+  Identifiers<int64_t> results;
+  for (const auto v : art_points) {
+    results += graph[v].id;
+  }
 
-    return results;
+  return results;
 }
 
 /** Bridges
@@ -160,20 +157,20 @@ articulationPoints(
  * Analogously to bridgeless graphs being 2-edge-connected,
  * graphs without articulation vertices are 2-vertex-connected.
  */
-Identifiers<int64_t>
-bridges(pgrouting::UndirectedGraph &graph) {
-    using G = pgrouting::UndirectedGraph;
-    using V = G::V;
-    using EO_i = G::EO_i;
+Identifiers<int64_t> bridges(pgrouting::UndirectedGraph &graph) {
+  using G = pgrouting::UndirectedGraph;
+  using V = G::V;
+  using EO_i = G::EO_i;
 
     Identifiers<int64_t> bridge_edges;
     Identifiers<int64_t> processed_edges;
-    std::vector<V> components(num_vertices(graph.graph));
+    if (boost::num_vertices(graph.graph) == 0) return bridge_edges;
+    std::vector<V> components(boost::num_vertices(graph.graph));
     size_t ini_comps = 0;
     /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
     CHECK_FOR_INTERRUPTS();
     try {
-        ini_comps = boost::connected_components(graph.graph, &components[0]);
+        ini_comps = boost::connected_components(graph.graph, components.data());
     } catch (...) {
         throw;
     }
@@ -187,71 +184,79 @@ bridges(pgrouting::UndirectedGraph &graph) {
     }
 
     for (auto v : boost::make_iterator_range(vertices(graph.graph))) {
-        if (graph.out_degree(v) == 1) {
+        if (boost::out_degree(v, graph.graph) == 1) {
             art_points.push_back(v);
         }
     }
 
-    for (const auto u : art_points) {
-        for (const auto v : art_points) {
-            /*
-             * skip when the vertices are the same and do half the work
-             */
-            if (u < v) continue;
-            auto p = boost::edge(u, v, graph.graph);
+  for (const auto u : art_points) {
+    for (const auto v : art_points) {
+      /*
+       * skip when the vertices are the same and do half the work
+       */
+      if (u < v) {
+        continue;
+      }
+      auto p = boost::edge(u, v, graph.graph);
 
-            /*
-             * skip when there is no edge (u, v) on the graph
-             */
-            if (!p.second) continue;
-            auto edge = p.first;
-            auto id = graph[edge].id;
+      /*
+       * skip when there is no edge (u, v) on the graph
+       */
+      if (!p.second) {
+        continue;
+      }
+      auto edge = p.first;
+      auto id = graph[edge].id;
 
-            /*
-             * Skip when the edge has already being processed
-             */
-            if (processed_edges.has(id)) continue;
+      /*
+       * Skip when the edge has already being processed
+       */
+      if (processed_edges.has(id)) {
+        continue;
+      }
 
-            /*
-             * Processing edge
-             */
-            processed_edges += id;
+      /*
+       * Processing edge
+       */
+      processed_edges += id;
 
+      /*
+       * At least one edge between articulation points u & v
+       */
+      int parallel_count = 0;
+      EO_i ei, ei_end;
+      boost::tie(ei, ei_end) = out_edges(u, graph.graph);
 
-            /*
-             * At least one edge between articulation points u & v
-             */
-            int parallel_count = 0;
-            EO_i ei, ei_end;
-            boost::tie(ei, ei_end) = out_edges(u, graph.graph);
-
-            for ( ; ei != ei_end; ++ei) {
-                if (target(*ei, graph.graph) == v) ++parallel_count;
-            }
-
-            if (parallel_count == 1) {
-                // TODO(vicky) filter graph instead of removing edges
-                size_t now_comps = 0;
-                try {
-                    boost::remove_edge(edge, graph.graph);
-
-                    now_comps = boost::connected_components(graph.graph, &components[0]);
-
-                    boost::add_edge(boost::source(edge, graph.graph),
-                            boost::target(edge, graph.graph),
-                            graph.graph);
-                } catch (...) {
-                    throw;
-                }
-
-                if (now_comps > ini_comps) {
-                    bridge_edges += id;
-                }
-            }
+      for (; ei != ei_end; ++ei) {
+        if (target(*ei, graph.graph) == v) {
+          ++parallel_count;
         }
-    }
+      }
 
-    return bridge_edges;
+      if (parallel_count == 1) {
+        // TODO(vicky) filter graph instead of removing edges
+        size_t now_comps = 0;
+        auto u_src = boost::source(edge, graph.graph);
+        auto v_tgt = boost::target(edge, graph.graph);
+        auto edge_data = graph[edge];
+        try {
+          boost::remove_edge(edge, graph.graph);
+
+          now_comps = boost::connected_components(graph.graph, components.data());
+
+          boost::add_edge(u_src, v_tgt, edge_data, graph.graph);
+        } catch (...) {
+          throw;
+        }
+
+        if (now_comps > ini_comps) {
+          bridge_edges += id;
+        }
+      }
+    }
+  }
+
+  return bridge_edges;
 }
 
 }  // namespace algorithms

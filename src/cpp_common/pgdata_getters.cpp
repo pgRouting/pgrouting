@@ -110,8 +110,8 @@ std::set<int64_t> get_intSet(ArrayType *arr) {
 std::vector<II_t_rt> get_combinations(const std::string &sql) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{
-    {-1, 0, true, "source", ANY_INTEGER},
-    {-1, 0, true, "target", ANY_INTEGER}};
+    {-1, 0, true, "source", expectType::ANY_INTEGER},
+    {-1, 0, true, "target", expectType::ANY_INTEGER}};
 
     return get_data<II_t_rt>(sql, true, info, &fetch_combination);
 }
@@ -129,9 +129,9 @@ std::vector<II_t_rt> get_combinations(const std::string &sql) {
 std::vector<Coordinate_t> get_coordinates(const std::string &sql) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{
-    {-1, 0, true, "id", ANY_INTEGER},
-    {-1, 0, true, "x", ANY_NUMERICAL},
-    {-1, 0, true, "y", ANY_NUMERICAL}};
+    {-1, 0, true, "id", expectType::ANY_INTEGER},
+    {-1, 0, true, "x", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "y", expectType::ANY_NUMERICAL}};
 
     return get_data<Coordinate_t>(sql, true, info, &fetch_coordinate);
 }
@@ -151,10 +151,10 @@ std::vector<Coordinate_t> get_coordinates(const std::string &sql) {
 std::vector<Delauny_t> get_delauny(const std::string &sql) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{
-    {-1, 0, true, "tid", ANY_INTEGER},
-    {-1, 0, true, "pid", ANY_INTEGER},
-    {-1, 0, true, "x", ANY_NUMERICAL},
-    {-1, 0, true, "y", ANY_NUMERICAL}};
+    {-1, 0, true, "tid", expectType::ANY_INTEGER},
+    {-1, 0, true, "pid", expectType::ANY_INTEGER},
+    {-1, 0, true, "x", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "y", expectType::ANY_NUMERICAL}};
 
     return get_data<Delauny_t>(sql, true, info, &fetch_delauny);
 }
@@ -173,11 +173,11 @@ std::vector<Delauny_t> get_delauny(const std::string &sql) {
 std::vector<Edge_t> get_flow_edges(const std::string &sql) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{
-    {-1, 0, true, "id", ANY_INTEGER},
-    {-1, 0, true, "source", ANY_INTEGER},
-    {-1, 0, true, "target", ANY_INTEGER},
-    {-1, 0, true, "capacity", ANY_INTEGER},
-    {-1, 0, false, "reverse_capacity", ANY_INTEGER}};
+    {-1, 0, true, "id", expectType::ANY_INTEGER},
+    {-1, 0, true, "source", expectType::ANY_INTEGER},
+    {-1, 0, true, "target", expectType::ANY_INTEGER},
+    {-1, 0, true, "capacity", expectType::ANY_INTEGER},
+    {-1, 0, false, "reverse_capacity", expectType::ANY_INTEGER}};
 
     return get_data<Edge_t>(sql, true, info, &fetch_edge);
 }
@@ -196,13 +196,13 @@ std::vector<Edge_t> get_flow_edges(const std::string &sql) {
 std::vector<CostFlow_t> get_costFlow_edges(const std::string &sql) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{
-    {-1, 0, true, "id", ANY_INTEGER},
-    {-1, 0, true, "source", ANY_INTEGER},
-    {-1, 0, true, "target", ANY_INTEGER},
-    {-1, 0, true, "capacity", ANY_INTEGER},
-    {-1, 0, false, "reverse_capacity", ANY_INTEGER},
-    {-1, 0, true, "cost", ANY_NUMERICAL},
-    {-1, 0, false, "reverse_cost", ANY_NUMERICAL}};
+    {-1, 0, true, "id", expectType::ANY_INTEGER},
+    {-1, 0, true, "source", expectType::ANY_INTEGER},
+    {-1, 0, true, "target", expectType::ANY_INTEGER},
+    {-1, 0, true, "capacity", expectType::ANY_INTEGER},
+    {-1, 0, false, "reverse_capacity", expectType::ANY_INTEGER},
+    {-1, 0, true, "cost", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "reverse_cost", expectType::ANY_NUMERICAL}};
 
     return get_data<CostFlow_t>(sql, true, info, &fetch_costFlow_edge);
 }
@@ -227,13 +227,13 @@ std::vector<CostFlow_t> get_costFlow_edges(const std::string &sql) {
 std::vector<Edge_bool_t> get_basic_edges(const std::string &sql) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{
-    {-1, 0, true, "id", ANY_INTEGER},
-    {-1, 0, true, "source", ANY_INTEGER},
-    {-1, 0, true, "target", ANY_INTEGER},
-    {-1, 0, false, "going", ANY_NUMERICAL},
-    {-1, 0, false, "coming", ANY_NUMERICAL},
-    {-1, 0, false, "cost", ANY_NUMERICAL},
-    {-1, 0, false, "reverse_cost", ANY_NUMERICAL}};
+    {-1, 0, true, "id", expectType::ANY_INTEGER},
+    {-1, 0, true, "source", expectType::ANY_INTEGER},
+    {-1, 0, true, "target", expectType::ANY_INTEGER},
+    {-1, 0, false, "going", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "coming", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "cost", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "reverse_cost", expectType::ANY_NUMERICAL}};
 
     return get_data<Edge_bool_t>(sql, true, info, &fetch_basic_edge);
 }
@@ -252,15 +252,15 @@ std::vector<Edge_bool_t> get_basic_edges(const std::string &sql) {
 std::vector<Edge_xy_t> get_edges_xy(const std::string &sql, bool normal) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{
-    {-1, 0, true, "id", ANY_INTEGER},
-    {-1, 0, true, "source", ANY_INTEGER},
-    {-1, 0, true, "target", ANY_INTEGER},
-    {-1, 0, true, "cost", ANY_NUMERICAL},
-    {-1, 0, false, "reverse_cost", ANY_NUMERICAL},
-    {-1, 0, true, "x1", ANY_NUMERICAL},
-    {-1, 0, true, "y1", ANY_NUMERICAL},
-    {-1, 0, true, "x2", ANY_NUMERICAL},
-    {-1, 0, true, "y2", ANY_NUMERICAL}};
+    {-1, 0, true, "id", expectType::ANY_INTEGER},
+    {-1, 0, true, "source", expectType::ANY_INTEGER},
+    {-1, 0, true, "target", expectType::ANY_INTEGER},
+    {-1, 0, true, "cost", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "reverse_cost", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "x1", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "y1", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "x2", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "y2", expectType::ANY_NUMERICAL}};
 
     return get_data<Edge_xy_t>(sql, normal, info, &fetch_edge_xy);
 }
@@ -280,11 +280,11 @@ std::vector<Edge_xy_t> get_edges_xy(const std::string &sql, bool normal) {
 std::vector<Edge_t> get_edges(const std::string &sql, bool normal, bool ignore_id) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{
-    {-1, 0, !ignore_id, "id", ANY_INTEGER},
-    {-1, 0, true, "source", ANY_INTEGER},
-    {-1, 0, true, "target", ANY_INTEGER},
-    {-1, 0, true, "cost", ANY_NUMERICAL},
-    {-1, 0, false, "reverse_cost", ANY_NUMERICAL}};
+    {-1, 0, !ignore_id, "id", expectType::ANY_INTEGER},
+    {-1, 0, true, "source", expectType::ANY_INTEGER},
+    {-1, 0, true, "target", expectType::ANY_INTEGER},
+    {-1, 0, true, "cost", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "reverse_cost", expectType::ANY_NUMERICAL}};
 
     return get_data<Edge_t>(sql, normal, info, &fetch_edge);
 }
@@ -303,9 +303,9 @@ std::vector<Edge_t> get_edges(const std::string &sql, bool normal, bool ignore_i
 std::vector<IID_t_rt> get_matrixRows(const std::string &sql) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{
-    {-1, 0, true, "start_vid", ANY_INTEGER},
-    {-1, 0, true, "end_vid", ANY_INTEGER},
-    {-1, 0, true, "agg_cost", ANY_NUMERICAL}};
+    {-1, 0, true, "start_vid", expectType::ANY_INTEGER},
+    {-1, 0, true, "end_vid", expectType::ANY_INTEGER},
+    {-1, 0, true, "agg_cost", expectType::ANY_NUMERICAL}};
     return get_data<IID_t_rt>(sql, true, info, &pgr_fetch_row);
 }
 
@@ -330,21 +330,21 @@ std::vector<Orders_t> get_orders(
         ) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{
-    {-1, 0, true, "id", ANY_INTEGER},
-    {-1, 0, true, "demand", ANY_NUMERICAL},
-    {-1, 0, true, "p_x", ANY_NUMERICAL},
-    {-1, 0, true, "p_y", ANY_NUMERICAL},
-    {-1, 0, true, "p_open", ANY_NUMERICAL},
-    {-1, 0, true, "p_close", ANY_NUMERICAL},
-    {-1, 0, false, "p_service", ANY_NUMERICAL},
-    {-1, 0, true, "d_x", ANY_NUMERICAL},
-    {-1, 0, true, "d_y", ANY_NUMERICAL},
-    {-1, 0, true, "d_open", ANY_NUMERICAL},
-    {-1, 0, true, "d_close", ANY_NUMERICAL},
-    {-1, 0, false, "d_service", ANY_NUMERICAL},
+    {-1, 0, true, "id", expectType::ANY_INTEGER},
+    {-1, 0, true, "demand", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "p_x", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "p_y", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "p_open", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "p_close", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "p_service", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "d_x", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "d_y", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "d_open", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "d_close", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "d_service", expectType::ANY_NUMERICAL},
     /* nodes are going to be ignored*/
-    {-1, 0, false, "p_node_id", ANY_INTEGER},
-    {-1, 0, false, "d_node_id", ANY_INTEGER}};
+    {-1, 0, false, "p_node_id", expectType::ANY_INTEGER},
+    {-1, 0, false, "d_node_id", expectType::ANY_INTEGER}};
 
     if (with_id) {
         /* (x,y) values are ignored*/
@@ -373,10 +373,10 @@ std::vector<Orders_t> get_orders(
 std::vector<Point_on_edge_t> get_points(const std::string &sql) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{
-    {-1, 0, false, "pid", ANY_INTEGER},
-    {-1, 0, true, "edge_id", ANY_INTEGER},
-    {-1, 0, true, "fraction", ANY_NUMERICAL},
-    {-1, 0, false, "side", pgrouting::CHAR1}};
+    {-1, 0, false, "pid", expectType::ANY_INTEGER},
+    {-1, 0, true, "edge_id", expectType::ANY_INTEGER},
+    {-1, 0, true, "fraction", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "side", expectType::CHAR1}};
 
     return get_data<Point_on_edge_t>(sql, true, info, &fetch_point);
 }
@@ -395,8 +395,8 @@ std::vector<Point_on_edge_t> get_points(const std::string &sql) {
 std::vector<Restriction_t> get_restrictions(const std::string &sql) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{
-    {-1, 0, true, "cost", ANY_NUMERICAL},
-    {-1, 0, true, "path", ANY_INTEGER_ARRAY}};
+    {-1, 0, true, "cost", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "path", expectType::ANY_INTEGER_ARRAY}};
 
     return get_data<Restriction_t>(sql, true, info, &fetch_restriction);
 }
@@ -419,23 +419,23 @@ std::vector<Restriction_t> get_restrictions(const std::string &sql) {
 std::vector<Vehicle_t> get_vehicles(const std::string &sql, bool with_id) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{
-    {-1, 0, true, "id", ANY_INTEGER},
-    {-1, 0, true, "capacity", ANY_NUMERICAL},
-    {-1, 0, true, "start_x", ANY_NUMERICAL},
-    {-1, 0, true, "start_y", ANY_NUMERICAL},
-    {-1, 0, false, "number", ANY_INTEGER},
-    {-1, 0, false, "start_open", ANY_NUMERICAL},
-    {-1, 0, false, "start_close", ANY_NUMERICAL},
-    {-1, 0, false, "start_service", ANY_NUMERICAL},
-    {-1, 0, false, "end_x", ANY_NUMERICAL},
-    {-1, 0, false, "end_y", ANY_NUMERICAL},
-    {-1, 0, false, "end_open", ANY_NUMERICAL},
-    {-1, 0, false, "end_close", ANY_NUMERICAL},
-    {-1, 0, false, "end_service", ANY_NUMERICAL},
-    {-1, 0, false, "speed", ANY_NUMERICAL},
+    {-1, 0, true, "id", expectType::ANY_INTEGER},
+    {-1, 0, true, "capacity", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "start_x", expectType::ANY_NUMERICAL},
+    {-1, 0, true, "start_y", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "number", expectType::ANY_INTEGER},
+    {-1, 0, false, "start_open", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "start_close", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "start_service", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "end_x", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "end_y", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "end_open", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "end_close", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "end_service", expectType::ANY_NUMERICAL},
+    {-1, 0, false, "speed", expectType::ANY_NUMERICAL},
     /* nodes are going to be ignored*/
-    {-1, 0, false, "start_node_id", ANY_INTEGER},
-    {-1, 0, false, "end_node_id", ANY_INTEGER}};
+    {-1, 0, false, "start_node_id", expectType::ANY_INTEGER},
+    {-1, 0, false, "end_node_id", expectType::ANY_INTEGER}};
 
     if (with_id) {
         /* (x,y) values are ignored*/

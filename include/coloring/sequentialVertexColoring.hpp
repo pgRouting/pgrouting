@@ -127,13 +127,13 @@ class Pgr_sequentialVertexColoring {
          for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
              int64_t node = graph[*v].id;
              auto color = colors[*v];
-             results.push_back({{node}, {static_cast<int64_t>(color + 1)}});
+             results.push_back({node, static_cast<int64_t>(color + 1)});
          }
 
          // ordering the results in an increasing order of the node id
          std::sort(results.begin(), results.end(),
              [](const II_t_rt row1, const II_t_rt row2) {
-                 return row1.d1.id < row2.d1.id;
+                 return row1.d1 < row2.d1;
              });
 
          return results;

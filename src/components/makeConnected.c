@@ -133,8 +133,8 @@ PGDLLEXPORT Datum _pgr_makeconnected(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].d1.start_vid);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].d2.end_vid);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].d1);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].d2);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

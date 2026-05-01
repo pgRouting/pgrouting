@@ -184,19 +184,19 @@ void fetch_column_info(
     for (auto &coldata : info) {
         if (get_column_info(tupdesc, coldata)) {
             switch (coldata.eType) {
-                case ANY_INTEGER:
+                case expectType::ANY_INTEGER:
                     check_any_integer_type(coldata);
                     break;
-                case ANY_NUMERICAL:
+                case expectType::ANY_NUMERICAL:
                     check_any_numerical_type(coldata);
                     break;
-                case TEXT:
+                case expectType::TEXT:
                     check_text_type(coldata);
                     break;
-                case CHAR1:
+                case expectType::CHAR1:
                     check_char_type(coldata);
                     break;
-                case ANY_INTEGER_ARRAY:
+                case expectType::ANY_INTEGER_ARRAY:
                     check_any_integer_array_type(coldata);
                     break;
                 default:
