@@ -480,12 +480,12 @@ Optimize::decrease_truck(size_t cycle) {
 void
 Optimize::save_if_best() {
     if (duration() < best_solution.duration()) {
-        best_solution = (*this);
+        best_solution = static_cast<const Solution&>(*this);
         msg().log << "\n*********** best by duration"
             << best_solution.cost_str();
     }
     if (fleet.size() < best_solution.fleet.size()) {
-        best_solution = (*this);
+        best_solution = static_cast<const Solution&>(*this);
         msg().log << "\n*********** best by fleet size"
             << best_solution.cost_str();
     }
