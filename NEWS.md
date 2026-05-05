@@ -37,6 +37,7 @@ To see all issues & pull requests closed by this release see the
 
 * [#2966](https://github.com/pgRouting/pgrouting/issues/2966): pgr_withPoints does not pick optimal route when fraction = 1
 * [#3034](https://github.com/pgRouting/pgrouting/issues/3034): metrics driver should not be using new
+* [#3010](https://github.com/pgRouting/pgrouting/issues/3010): Performance issue with pgr_separateTouching()
 
 **Code enhancements**
 
