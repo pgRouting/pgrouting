@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace functions {
 
-std::vector<II_t_rt> edgeColoring(pgrouting::UndirectedGraph);
+std::vector<II_t_rt> edgeColoring(const pgrouting::UndirectedGraph&);
 
 
 }  // namespace functions

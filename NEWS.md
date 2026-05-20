@@ -24,7 +24,7 @@ To see all issues & pull requests closed by this release see the
 * [#3086](https://github.com/pgRouting/pgrouting/issues/3086): MaxFlow: create and use a process and driver
 * [#3089](https://github.com/pgRouting/pgrouting/issues/3089): edgeDisjoint and bellmanFord use shortestPath driver and
   process
-* [#3100](https://github.com/pgRouting/pgrouting/issues/3100): Coloring: create an use a process & driver
+* [#3100](https://github.com/pgRouting/pgrouting/issues/3100): Coloring: create and use a process & driver
 
 **Bug Fixes**
 

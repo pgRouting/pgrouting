@@ -46,7 +46,7 @@ namespace pgrouting {
 namespace functions {
 
 std::vector<II_t_rt>
-edgeColoring(const pgrouting::UndirectedGraph g) {
+edgeColoring(const pgrouting::UndirectedGraph &g) {
     std::vector<II_t_rt> results(boost::num_edges(g.graph));
     using B_G = pgrouting::UndirectedGraph::B_G;
     using E  = pgrouting::UndirectedGraph::E;

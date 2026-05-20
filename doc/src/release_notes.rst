@@ -49,7 +49,7 @@ To see all issues & pull requests closed by this release see the
 * :issue:`3086`: MaxFlow: create and use a process and driver
 * :issue:`3089`: edgeDisjoint and bellmanFord use shortestPath driver and
   process
-* :issue:`3100`: Coloring: create an use a process & driver
+* :issue:`3100`: Coloring: create and use a process & driver
 
 .. rubric:: Bug Fixes
 

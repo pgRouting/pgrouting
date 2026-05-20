@@ -43,7 +43,7 @@ std::vector<II_t_rt> get_bipartition(const pgrouting::UndirectedGraph &graph) {
     using V_i = pgrouting::UndirectedGraph::V_i;
 
     std::vector<II_t_rt> results;
-    std::vector<boost::default_color_type> partition(graph.num_vertices());
+    std::vector<boost::default_color_type> partition(boost::num_vertices(graph.graph));
     auto partition_map =
         make_iterator_property_map(partition.begin(), boost::get(boost::vertex_index, graph.graph));
 

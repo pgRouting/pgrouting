@@ -60,6 +60,8 @@ void do_coloring(
         std::ostringstream &notice,
         std::ostringstream &err) {
     std::string hint = "";
+    return_tuples = nullptr;
+    return_count = 0;
 
     try {
         if (edges_sql.empty()) {
