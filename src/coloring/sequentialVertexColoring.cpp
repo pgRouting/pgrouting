@@ -58,7 +58,7 @@ std::vector<II_t_rt> get_results(
     for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
         int64_t node = graph[*v].id;
         auto color = colors[*v];
-        results.push_back({{node}, {static_cast<int64_t>(color + 1)}});
+        results.push_back({node, static_cast<int64_t>(color + 1)});
     }
 
     // ordering the results in an increasing order of the node id
@@ -109,7 +109,7 @@ std::vector<II_t_rt> sequentialVertexColoring(const pgrouting::UndirectedGraph &
         throw;
     } catch (...) {
         throw std::make_pair(
-                std::string("INTERNAL: something went wrong while calling boost::edge_coloring"),
+                std::string("INTERNAL: something went wrong while calling boost::sequential_vertex_coloring"),
                 std::string(__PGR_PRETTY_FUNCTION__));;
     }
 

@@ -46,7 +46,7 @@ namespace pgrouting {
 namespace functions {
 
 std::vector<II_t_rt>
-edgeColoring(pgrouting::UndirectedGraph g) {
+edgeColoring(const pgrouting::UndirectedGraph g) {
     std::vector<II_t_rt> results(boost::num_edges(g.graph));
     using B_G = pgrouting::UndirectedGraph::B_G;
     using E  = pgrouting::UndirectedGraph::E;
@@ -79,7 +79,7 @@ edgeColoring(pgrouting::UndirectedGraph g) {
 
         /**
          * There is a problem with boost:
-         * Sometimes it returns a color with outsatnding large value
+         * Sometimes it returns a color with outstanding large value
          * When that happens changing color to: colors + 1
          */
         results[i].d2 = get(color_map, *ei) < colors? get(color_map, *ei) + 1 : colors + 1;

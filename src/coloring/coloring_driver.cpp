@@ -101,7 +101,7 @@ void do_coloring(
                 results = sequentialVertexColoring(undigraph);
                 break;
             default:
-                err << "Unknown coloring function" << get_name(which);
+                err << "Unknown coloring function " << get_name(which);
                 return;
         }
 

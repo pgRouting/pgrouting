@@ -53,8 +53,7 @@ void pgr_process_coloring(
         II_t_rt **result_tuples,
         size_t *result_count) {
     using pgrouting::to_pg_msg;
-    using pgrouting::pgr_free;
-    pgassert(edges_sql);
+
     pgassert(!(*result_tuples));
     pgassert(*result_count == 0);
     pgr_SPI_connect();

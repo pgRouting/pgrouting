@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace {
 
-std::vector<II_t_rt> get_bipartition(pgrouting::UndirectedGraph &graph) {
+std::vector<II_t_rt> get_bipartition(const pgrouting::UndirectedGraph &graph) {
     using V_i = pgrouting::UndirectedGraph::V_i;
 
     std::vector<II_t_rt> results;
@@ -56,7 +56,7 @@ std::vector<II_t_rt> get_bipartition(pgrouting::UndirectedGraph &graph) {
         throw;
     } catch (...) {
         throw std::make_pair(
-                std::string("INTERNAL: something went wrong while calling boost::edge_coloring"),
+                std::string("INTERNAL: something went wrong while calling boost::bipartite"),
                 std::string(__PGR_PRETTY_FUNCTION__));;
     }
 
@@ -65,7 +65,7 @@ std::vector<II_t_rt> get_bipartition(pgrouting::UndirectedGraph &graph) {
         int64_t vid = graph[*v].id;
         boost::get(partition_map, *v) ==
             boost::color_traits <boost::default_color_type>::white() ?
-            results.push_back({{vid}, {0}}) : results.push_back({{vid}, {1}});
+            results.push_back({vid, 0}) : results.push_back({vid, 1});
     }
     return results;
 }
@@ -75,7 +75,7 @@ std::vector<II_t_rt> get_bipartition(pgrouting::UndirectedGraph &graph) {
 namespace pgrouting {
 namespace functions {
 
-std::vector<II_t_rt> pgr_bipartite(pgrouting::UndirectedGraph &graph ) {
+std::vector<II_t_rt> pgr_bipartite(const pgrouting::UndirectedGraph &graph ) {
     bool bipartite = boost::is_bipartite(graph.graph);
     return (bipartite)? get_bipartition(graph) : std::vector<II_t_rt>();
 }
