@@ -20,6 +20,10 @@ graphs
 
 .. rubric:: Availability
 
+.. rubric:: Version 4.1.0
+
+* Fix the way it builds the graph
+
 .. rubric:: Version 4.0.0
 
 * Output columns standardized to |result_edge_color|
