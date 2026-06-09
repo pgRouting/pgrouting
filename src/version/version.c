@@ -29,6 +29,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "./version.h"
 
+#ifdef PG_MODULE_MAGIC_EXT
+PG_MODULE_MAGIC_EXT(.name = "pgrouting", .version = PROJECT_VERSION);
+#else
+PG_MODULE_MAGIC;
+#endif
+
 #define UNUSED(x) (void)(x)
 
 PGDLLEXPORT Datum _pgr_boost_version(PG_FUNCTION_ARGS);
