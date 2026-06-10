@@ -17,8 +17,9 @@
 # Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2024, 2025.
 # Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>, 2026.
+# DeepL <noreply-mt-deepl@weblate.org>, 2026.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-03-04 00:25+0000\nPO-Revision-Date: 2026-04-21 12:13+0000\nLast-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.16.2\nGenerated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-03-04 00:25+0000\nPO-Revision-Date: 2026-04-21 12:13+0000\nLast-Translator: DeepL <noreply-mt-deepl@weblate.org>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.16.2\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - カテゴリ"
@@ -334,7 +335,7 @@ msgid "When points are also given as input:"
 msgstr "ポイントも入力として与えられている時:"
 
 msgid ":doc:`pgr_trsp` - Routing with restrictions."
-msgstr ""
+msgstr ":doc:`pgr_trsp` - 制限付きルーティング。"
 
 msgid ":doc:`pgr_trspVia` - Via Vertices routing with restrictions."
 msgstr ":doc:`pgr_trspVia` - 制限付き頂点経由順路計算。"
