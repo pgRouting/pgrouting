@@ -104,6 +104,25 @@ get_name(Which which) {
         case EDMONDSKARP:
             return "pgr_edmondsKarp";
             break;
+
+        case ARTICULATIONPOINTS:
+            return "pgr_articulationPoints";
+            break;
+        case BRIDGES:
+            return "pgr_bridges";
+            break;
+        case MAKECONNECTED:
+            return "pgr_makeConnected";
+            break;
+        case BICONNECTEDCOMPONENTS:
+            return "pgr_biconnectedComponents";
+            break;
+        case CONNECTEDCOMPONENTS:
+            return "pgr_connectedComponents";
+            break;
+        case STRONGCOMPONENTS:
+            return "pgr_strongComponents";
+            break;
         default:
             return "unknown";
             break;

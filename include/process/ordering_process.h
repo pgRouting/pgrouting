@@ -44,7 +44,7 @@ extern "C" {
 #endif
 
 void pgr_process_ordering(
-        const char*,
+        const char*, bool,
 
         enum Which,
         int64_t**, size_t*);

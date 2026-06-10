@@ -46,7 +46,8 @@ namespace pgrouting {
 namespace drivers {
 
 void do_ordering(
-        const std::string&, Which,
+        const std::string&, bool,
+        Which,
 
         int64_t*&, size_t&,
         std::ostringstream&, std::ostringstream&, std::ostringstream&);

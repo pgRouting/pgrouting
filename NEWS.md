@@ -25,6 +25,7 @@ To see all issues & pull requests closed by this release see the
 * [#3089](https://github.com/pgRouting/pgrouting/issues/3089): edgeDisjoint and bellmanFord use shortestPath driver and
   process
 * [#3100](https://github.com/pgRouting/pgrouting/issues/3100): Coloring: create and use a process & driver
+* [#3113](https://github.com/pgRouting/pgrouting/issues/3113): Components: Integrate into existing process/driver pair
 
 **Bug Fixes**
 

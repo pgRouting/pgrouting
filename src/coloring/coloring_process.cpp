@@ -48,6 +48,7 @@ extern "C" {
 
 void pgr_process_coloring(
         const char* edges_sql,
+        bool directed,
 
         enum Which which,
         II_t_rt **result_tuples,
@@ -65,6 +66,7 @@ void pgr_process_coloring(
     clock_t start_t = clock();
     pgrouting::drivers::do_coloring(
             edges_sql? edges_sql : "",
+            directed,
 
             which,
             (*result_tuples), (*result_count),

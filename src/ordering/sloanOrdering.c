@@ -8,7 +8,9 @@ Mail: project@pgrouting.org
 Developer:
 Copyright (c) 2025 Bipasha Gayary
 Mail: bipashagayary at gmail.com
+
 ------
+
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
@@ -32,24 +34,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum _pgr_sloanordering(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_sloanordering);
 
-
 PGDLLEXPORT Datum
 _pgr_sloanordering(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
     int64_t *result_tuples = NULL;
-    size_t result_count = 0;
+    size_t   result_count  = 0;
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
         pgr_process_ordering(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                SLOAN, /* Sloan */
+                false,
+
+                SLOAN,
                 &result_tuples,
                 &result_count);
 
@@ -67,28 +69,27 @@ _pgr_sloanordering(PG_FUNCTION_ARGS) {
         MemoryContextSwitchTo(oldcontext);
     }
 
-    funcctx = SRF_PERCALL_SETUP();
-    tuple_desc = funcctx->tuple_desc;
-    result_tuples = (int64_t*) funcctx->user_fctx;
+    funcctx            = SRF_PERCALL_SETUP();
+    tuple_desc         = funcctx->tuple_desc;
+    result_tuples      = funcctx->user_fctx;
+    uint64_t call_cntr = funcctx->call_cntr;
 
-    if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple    tuple;
-        Datum        result;
-        Datum        *values;
-        bool*        nulls;
+    if (call_cntr < funcctx->max_calls) {
+        HeapTuple   tuple;
+        Datum       result;
+        Datum       *values;
+        bool        *nulls;
 
         size_t num  = 2;
         values = palloc(num * sizeof(Datum));
         nulls = palloc(num * sizeof(bool));
-
-
         size_t i;
         for (i = 0; i < num; ++i) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr]);
+        values[0] = UInt64GetDatum(call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[call_cntr]);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

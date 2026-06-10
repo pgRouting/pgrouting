@@ -42,26 +42,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/to_postgres.hpp"
+#include "cpp_common/utilities.hpp"
 
 #include "ordering/sloanOrdering.hpp"
 #include "ordering/kingOrdering.hpp"
 #include "ordering/cuthillMckeeOrdering.hpp"
 #include "ordering/topologicalSort.hpp"
+#include "components/components.hpp"
 
-namespace {
-
-template <typename G, typename Func>
-void
-process(const std::vector<Edge_t> &edges, G &graph, Func ordering,
-        size_t &return_count,
-        int64_t* &return_tuples) {
-    using pgrouting::to_postgres::get_vertexId;
-    graph.insert_edges(edges);
-    auto results = ordering(graph);
-    get_vertexId(graph, results, return_count, return_tuples);
-}
-
-}  // namespace
 
 namespace pgrouting {
 namespace drivers {
@@ -69,6 +57,7 @@ namespace drivers {
 void
 do_ordering(
         const std::string &edges_sql,
+        bool directed,
         Which which,
 
         int64_t *&return_tuples,
@@ -86,6 +75,9 @@ do_ordering(
         }
 
         using pgrouting::pgget::get_edges;
+        using pgrouting::to_postgres::get_vertexId;
+        using pgrouting::to_postgres::get_identifiers;
+
         using pgrouting::UndirectedGraph;
         using pgrouting::DirectedGraph;
 
@@ -93,6 +85,8 @@ do_ordering(
         using pgrouting::functions::kingOrdering;
         using pgrouting::functions::cuthillMckeeOrdering;
         using pgrouting::functions::topologicalSort;
+        using pgrouting::algorithms::bridges;
+        using pgrouting::algorithms::articulationPoints;
 
 
         hint = edges_sql;
@@ -105,37 +99,80 @@ do_ordering(
         hint = "";
 
 
-        auto vertices = which == 0 || which == 2?
+        /*
+         * Decide which algorithms needs extract vertices
+         */
+        auto vertices = which == SLOAN || which == KING?
             pgrouting::extract_vertices(edges)
             : std::vector<pgrouting::Basic_vertex>();
 
-        UndirectedGraph undigraph = which != TOPOSORT? UndirectedGraph(vertices) : UndirectedGraph();
-        DirectedGraph digraph = which == TOPOSORT? DirectedGraph(vertices) : DirectedGraph();;
+        /*
+         * Initialize the graphs
+         * No need to use extract_vertices on directed graph, because
+         * SLOAN & KING are for undirected graph
+         */
+        UndirectedGraph undigraph = vertices.empty()? UndirectedGraph() : UndirectedGraph(vertices);
+        DirectedGraph digraph = DirectedGraph();
 
+        std::vector<typename UndirectedGraph::V> undi_results;
+        std::vector<typename DirectedGraph::V> di_results;
+        Identifiers<int64_t> id_results;
 
-        switch (which) {
-            case SLOAN:
-                {
-                    process(edges, undigraph, &sloanOrdering, return_count, return_tuples);
-                    break;
-                }
-            case CUTCHILL:
-                {
-                    process(edges, undigraph, &cuthillMckeeOrdering, return_count, return_tuples);
-                    break;
-                }
-            case KING:
-                {
-                    process(edges, undigraph, &kingOrdering, return_count, return_tuples);
-                    break;
-                }
-            case TOPOSORT:
-                {
-                    process(edges, digraph, &topologicalSort, return_count, return_tuples);
-                    break;
-                }
-            default:
-                break;
+        if (directed) {
+            digraph.insert_edges(edges);
+            switch (which) {
+                case TOPOSORT:
+                    {
+                        di_results = topologicalSort(digraph);
+                        break;
+                    }
+                default:
+                    err << __FILE_NAME__ << ": Unknown function with name '" << get_name(which)
+                        << "' for directed graph";
+                    return;
+            }
+
+        } else {
+            undigraph.insert_edges(edges);
+            switch (which) {
+                case SLOAN:
+                    {
+                        undi_results = sloanOrdering(undigraph);
+                        break;
+                    }
+                case CUTCHILL:
+                    {
+                        undi_results = cuthillMckeeOrdering(undigraph);
+                        break;
+                    }
+                case KING:
+                    {
+                        undi_results = kingOrdering(undigraph);
+                        break;
+                    }
+                case ARTICULATIONPOINTS:
+                    {
+                        id_results = articulationPoints(undigraph);
+                        break;
+                    }
+                case BRIDGES:
+                    {
+                        id_results = bridges(undigraph);
+                        break;
+                    }
+                default:
+                    err << __FILE_NAME__ << ": Unknown function with name '" << get_name(which)
+                        << "' for undirected graph";
+                    return;
+            }
+        }
+
+        if (!undi_results.empty()) {
+            get_vertexId(undigraph, undi_results, return_count, return_tuples);
+        } else if (!di_results.empty()) {
+            get_vertexId(digraph, di_results, return_count, return_tuples);
+        } else if (!id_results.empty()) {
+            return_count = get_identifiers(id_results, return_tuples);
         }
 
         if (return_count == 0) {

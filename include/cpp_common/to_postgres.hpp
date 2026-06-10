@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/contractionHierarchies_rt.h"
 #include "c_types/iid_t_rt.h"
+#include "c_types/ii_t_rt.h"
 #include "c_types/routes_t.h"
 #include "c_types/path_rt.h"
 #include "c_types/mst_rt.h"
@@ -53,34 +54,40 @@ size_t count_rows(const std::vector<std::vector<double>>&);
 
 }  // namespace detail
 
-/*
+/**
  * @brief Via Routes save on a C array
  */
 size_t get_viaRoute(std::deque<pgrouting::Path>&, Routes_t**);
 
-/*
+/**
  * @brief get tuples from a Path to a Path_rt
  */
 size_t get_tuples(const std::deque<pgrouting::Path>&, Path_rt*&);
 
-
-/*
+/**
  * @brief get tuples from a Path to a MST_rt
  */
 size_t get_tuples(const std::deque<pgrouting::Path>&, MST_rt*&);
 
-/*
+/**
  * @brief get tuples for Flow_t
  */
 size_t get_tuples(const std::vector<Flow_t>&, Flow_t*&);
 
-/*
+/**
  * @brief get tuples for Path_rt
  */
 size_t
 get_tuples(std::vector<Path_rt>&, const std::vector<Edge_t>&, Path_rt*&);
 
-/*
+size_t
+get_tuples(const std::vector<II_t_rt>&, II_t_rt*&);
+
+size_t
+get_tuples(std::vector<std::vector<int64_t>>&, II_t_rt*&);
+
+
+/**
  * @brief get tuples for spanning tree driver
  */
 size_t get_tuples(
@@ -89,10 +96,31 @@ size_t get_tuples(
         const std::vector<std::map<int64_t, int64_t>>&,
         MST_rt*&);
 
-/*
+/**
  * @brief get tuples from a vector of MST_rt to a MST_rt
  */
 size_t get_tuples(const std::vector<MST_rt>&, MST_rt*&);
+
+/**
+ * @brief get tuples from Identifiers
+ */
+template <class T>
+size_t get_identifiers(
+        const Identifiers<T> &ids,
+        int64_t* &tuples) {
+    pgassert(!tuples);
+
+    auto count = ids.size();
+    if (count == 0) return 0;
+
+    tuples = pgrouting::pgr_alloc(count, tuples);
+
+    size_t i = 0;
+    for (const auto &id : ids) {
+        tuples[i++] = id;
+    }
+    return count;
+}
 
 /** @brief Vector of vertices id are saved on a C array
  *

@@ -44,14 +44,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace algorithms {
 
-std::vector<II_t_rt>
-pgr_connectedComponents(pgrouting::UndirectedGraph &graph) {
+std::vector<std::vector<int64_t>>
+connectedComponents(pgrouting::UndirectedGraph &graph) {
     if (boost::num_vertices(graph.graph) == 0) return {};
     typedef pgrouting::UndirectedGraph::V V;
-    // perform the algorithm
+
     std::vector<V> components(boost::num_vertices(graph.graph));
     size_t num_comps = 0;
-    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+
     CHECK_FOR_INTERRUPTS();
     try {
         num_comps = boost::connected_components(graph.graph, components.data());
@@ -65,17 +65,18 @@ pgr_connectedComponents(pgrouting::UndirectedGraph &graph) {
     results[components[vd]].push_back(graph[vd].id);
   }
 
-  return detail::componentsResult(results);
+  return results;
 }
 
 //! Strongly Connected Components Vertex Version
-std::vector<II_t_rt> strongComponents(pgrouting::DirectedGraph &graph) {
-  typedef pgrouting::UndirectedGraph::V V;
-  // perform the algorithm
+std::vector<std::vector<int64_t>>
+strongComponents(pgrouting::DirectedGraph &graph) {
+  typedef pgrouting::DirectedGraph::V V;
+
   std::vector<V> components(num_vertices(graph.graph));
   size_t num_comps = 0;
-  /* abort in case of an interruption occurs (e.g. the query is being cancelled)
-   */
+
+
   CHECK_FOR_INTERRUPTS();
   try {
     num_comps = boost::strong_components(
@@ -86,22 +87,23 @@ std::vector<II_t_rt> strongComponents(pgrouting::DirectedGraph &graph) {
     throw;
   }
 
-  // get the results
+
   std::vector<std::vector<int64_t>> results(num_comps);
   for (auto vd : boost::make_iterator_range(vertices(graph.graph))) {
     results[components[vd]].push_back(graph[vd].id);
   }
 
-  return detail::componentsResult(results);
+  return results;
 }
 
 //! Biconnected Components
-std::vector<II_t_rt> biconnectedComponents(pgrouting::UndirectedGraph &graph) {
+std::vector<std::vector<int64_t>>
+biconnectedComponents(pgrouting::UndirectedGraph &graph) {
   using G = pgrouting::UndirectedGraph;
   using E = G::E;
   using Edge_map = std::map<E, size_t>;
 
-  // perform the algorithm
+
   Edge_map bicmp_map;
   boost::associative_property_map<Edge_map> bimap(bicmp_map);
   size_t num_comps = 0;
@@ -117,17 +119,15 @@ std::vector<II_t_rt> biconnectedComponents(pgrouting::UndirectedGraph &graph) {
     results[bimap[ed]].push_back(graph[ed].id);
   }
 
-  return detail::componentsResult(results);
+  return results;
 }
 
 Identifiers<int64_t> articulationPoints(pgrouting::UndirectedGraph &graph) {
   using G = pgrouting::UndirectedGraph;
   using V = G::V;
-  /* abort in case of an interruption occurs (e.g. the query is being cancelled)
-   */
+
   CHECK_FOR_INTERRUPTS();
 
-  // perform the algorithm
   std::vector<V> art_points;
   try {
 #ifndef __clang_analyzer__
@@ -167,14 +167,14 @@ Identifiers<int64_t> bridges(pgrouting::UndirectedGraph &graph) {
     if (boost::num_vertices(graph.graph) == 0) return bridge_edges;
     std::vector<V> components(boost::num_vertices(graph.graph));
     size_t ini_comps = 0;
-    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+
     CHECK_FOR_INTERRUPTS();
     try {
         ini_comps = boost::connected_components(graph.graph, components.data());
     } catch (...) {
         throw;
     }
-    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+
     CHECK_FOR_INTERRUPTS();
     std::vector<V> art_points;
     try {
