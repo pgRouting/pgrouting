@@ -12437,7 +12437,7 @@ msgstr ""
 
 msgid "The process is done on graphs having only edges with positive costs."
 msgstr ""
-"El proceso se realiza en grafos que sólo tienen aristas con costes positivos."
+"El proceso se realiza en grafos que sólo tienen aristas con costos positivos."
 
 msgid ""
 "It is necessary to remember that there are no deleted vertices with this "
@@ -12462,10 +12462,10 @@ msgid ""
 msgstr "La función ``pgr_contractionHierarchies`` tiene la siguiente firma:"
 
 msgid "pgr_contractionHierarchies(`Edges SQL`_, [**options**])"
-msgstr "pgr_contractionHierarchies(`Edges SQL`_, [**options**])"
+msgstr "pgr_contractionHierarchies(`SQL de aristas`_, [**opciones**])"
 
 msgid "Returns set of |result-contraction-hierarchies|"
-msgstr "Devuelve el conjunto de |resultados-contracción-jerarquías|."
+msgstr "Devuelve el conjunto de |result-contraction-hierarchies|"
 
 msgid "Contraction hierarchies optional parameters"
 msgstr "Parámetros opcionales de las jerarquías de contracción"
@@ -12477,8 +12477,8 @@ msgid ""
 "The function returns many rows (one per vertex and one per shortcut edge "
 "created). The columns of the rows are:"
 msgstr ""
-"La función devuelve muchas filas (una por vértice y una por arista de acceso "
-"directo creada). Las columnas de las filas son:"
+"La función devuelve muchas filas (una por vértice y una por cada atajo de "
+"arista creada). Las columnas de las filas son:"
 
 msgid "Type of the ``id``."
 msgstr "Tipo del ``id``."
@@ -12544,7 +12544,7 @@ msgid "Contraction process steps details"
 msgstr "Detalles de los pasos del proceso de contracción"
 
 msgid "Shortcut building process"
-msgstr "Proceso de construcción de accesos directos"
+msgstr "Proceso de construcción de atajos"
 
 msgid ""
 "A vertex ``v`` is contracted by adding shortcuts replacing former paths of "
@@ -12572,45 +12572,35 @@ msgstr ""
 msgid "For each vertex ``v`` of the graph, a contraction of ``v`` is built:"
 msgstr ""
 
-#, fuzzy
 msgid ":math:`v`"
-msgstr ":math:`9`"
+msgstr ":math:`v`"
 
-#, fuzzy
 msgid ":math:`\\{p, r, u\\}`"
-msgstr ":math:`\\{2, 3\\}`"
+msgstr ":math:`\\{p, r, u\\}`"
 
-#, fuzzy
 msgid ":math:`p`"
-msgstr ":math:`9`"
+msgstr ":math:`p`"
 
-#, fuzzy
 msgid ":math:`\\{u, v\\}`"
-msgstr ":math:`\\{2, 3\\}`"
+msgstr ":math:`\\{u, v\\}`"
 
-#, fuzzy
 msgid ":math:`u`"
-msgstr ":math:`9`"
+msgstr ":math:`u`"
 
-#, fuzzy
 msgid ":math:`\\{p, v, w\\}`"
-msgstr ":math:`\\{2, 3\\}`"
+msgstr ":math:`\\{p, v, w\\}`"
 
-#, fuzzy
 msgid ":math:`r`"
-msgstr ":math:`9`"
+msgstr ":math:`r`"
 
-#, fuzzy
 msgid ":math:`\\{v, w\\}`"
-msgstr ":math:`\\{2, 3\\}`"
+msgstr ":math:`\\{v, w\\}`"
 
-#, fuzzy
 msgid ":math:`w`"
-msgstr ":math:`9`"
+msgstr ":math:`w`"
 
-#, fuzzy
 msgid ":math:`\\{r, u\\}`"
-msgstr ":math:`\\{2, 3\\}`"
+msgstr ":math:`\\{r, u\\}`"
 
 msgid "Adjacent edges are removed."
 msgstr ""
@@ -22595,6 +22585,48 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#, fuzzy
+msgid "Mohit Rawat, Regina Obe, Vicky Vergara"
+msgstr "Regina Obe, Vicky Vergara"
+
+#, fuzzy
+msgid ""
+"Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
+"Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
+"Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, "
+"Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, "
+"Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, "
+"Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu "
+"Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko "
+"Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim "
+"Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul "
+"Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith "
+"Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, "
+"Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit "
+"Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgstr ""
+"Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio "
+"Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf "
+"Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, "
+"Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, "
+"Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, "
+"Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu "
+"Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko "
+"Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim "
+"Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish "
+"Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni "
+"Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen "
+"Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, "
+"Vidhan Jain, Virginia Vergara, Yige Huang"
+
+#, fuzzy
+msgid ""
+"`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: "
+"pgr_withPoints does not pick optimal route when fraction = 1"
+msgstr ""
+"`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__: "
+"pgr_withPointsCostMatrix"
 
 #~ msgid "See also"
 #~ msgstr "Ver también"
