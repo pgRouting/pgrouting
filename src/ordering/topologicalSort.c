@@ -40,7 +40,7 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
     TupleDesc           tuple_desc;
 
     int64_t *result_tuples = NULL;
-    size_t result_count = 0;
+    size_t   result_count  = 0;
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -49,6 +49,8 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
 
         pgr_process_ordering(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                true,
+
                 TOPOSORT,
                 &result_tuples,
                 &result_count);
@@ -67,27 +69,27 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
         MemoryContextSwitchTo(oldcontext);
     }
 
-    funcctx = SRF_PERCALL_SETUP();
-    tuple_desc = funcctx->tuple_desc;
-    result_tuples = (int64_t*) funcctx->user_fctx;
+    funcctx            = SRF_PERCALL_SETUP();
+    tuple_desc         = funcctx->tuple_desc;
+    result_tuples      = funcctx->user_fctx;
+    uint32_t call_cntr = (uint32_t)funcctx->call_cntr;
 
-    if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple    tuple;
-        Datum        result;
-        Datum        *values;
-        bool*        nulls;
+    if (call_cntr < funcctx->max_calls) {
+        HeapTuple   tuple;
+        Datum       result;
+        Datum       *values;
+        bool        *nulls;
 
         size_t num  = 2;
         values = palloc(num * sizeof(Datum));
         nulls = palloc(num * sizeof(bool));
-
         size_t i;
         for (i = 0; i < num; ++i) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr]);
+        values[0] = UInt32GetDatum(call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[call_cntr]);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
