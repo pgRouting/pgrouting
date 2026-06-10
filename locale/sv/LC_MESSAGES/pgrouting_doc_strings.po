@@ -12736,6 +12736,10 @@ msgid "`#3034 <https://github.com/pgRouting/pgrouting/issues/3034>`__: metrics d
 msgstr "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__: pgr_transitiveClosure"
 
 #, fuzzy
+msgid "`#3010 <https://github.com/pgRouting/pgrouting/issues/3010>`__: Performance issue with pgr_separateTouching()"
+msgstr "`#2874 <https://github.com/pgRouting/pgrouting/issues/2874>`__: Befordrad till officiell pgr_separateTouching i version 3.8"
+
+#, fuzzy
 msgid "`#3044 <https://github.com/pgRouting/pgrouting/issues/3044>`__: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions"
 msgstr "`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__: Omorganisering av kod för pgr_contraction"
 

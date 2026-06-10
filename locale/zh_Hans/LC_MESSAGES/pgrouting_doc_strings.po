@@ -13067,6 +13067,10 @@ msgid "`#3034 <https://github.com/pgRouting/pgrouting/issues/3034>`__: metrics d
 msgstr "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
+msgid "`#3010 <https://github.com/pgRouting/pgrouting/issues/3010>`__: Performance issue with pgr_separateTouching()"
+msgstr "`#2874 <https://github.com/pgRouting/pgrouting/issues/2874>`__: pgr_separateTouching 在3.8版本中被提升为官方函数"
+
+#, fuzzy
 msgid "`#3044 <https://github.com/pgRouting/pgrouting/issues/3044>`__: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions"
 msgstr "`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__:pgr_contraction 函数进行了代码重构"
 
