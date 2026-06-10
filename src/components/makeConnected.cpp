@@ -24,10 +24,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_COMPONENTS_MAKECONNECTED_HPP_
-#define INCLUDE_COMPONENTS_MAKECONNECTED_HPP_
-#pragma once
-
 #include <vector>
 #include <set>
 #include <map>
@@ -45,15 +41,56 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/messages.hpp"
 #include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
-//******************************************
+
+#include "components/makeConnected.hpp"
+
+namespace {
+
+class UpdateNewEdges {
+ public:
+     using G = typename pgrouting::UndirectedGraph::B_G;
+     using V = typename pgrouting::UndirectedGraph::V;
+
+     std::vector<II_t_rt> &new_edges;
+
+     explicit UpdateNewEdges(std::vector<II_t_rt>& edges_out)
+         : new_edges(edges_out) {}
+
+     void visit_vertex_pair(V u, V v, G& g) {
+         boost::add_edge(u, v, g);
+         new_edges.push_back({g[u].id, g[v].id});
+     }
+};
+
+
+}  // namespace
 
 namespace pgrouting {
 namespace functions {
 
 std::vector<II_t_rt>
-makeConnected(pgrouting::UndirectedGraph &graph);
+makeConnected(pgrouting::UndirectedGraph &graph) {
+    std::vector<II_t_rt> results;
+    UpdateNewEdges visitor(results);
+
+    /* map which store the indices with their nodes. */
+    auto index_map = boost::get(boost::vertex_index, graph.graph);
+
+    CHECK_FOR_INTERRUPTS();
+    try {
+        boost::make_connected(graph.graph, index_map, visitor);
+    } catch (boost::exception const& ex) {
+        (void)ex;
+        throw;
+    } catch (std::exception &e) {
+        (void)e;
+        throw;
+    } catch (...) {
+        throw;
+    }
+
+    return results;
+}
 
 }  // namespace functions
 }  // namespace pgrouting
-
-#endif  // INCLUDE_COMPONENTS_MAKECONNECTED_HPP_

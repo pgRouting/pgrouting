@@ -12,6 +12,7 @@ ADD_LIBRARY(components OBJECT
     makeConnected_driver.cpp
     componentsResult.cpp
     components.cpp
+    makeConnected.cpp
     connectedComponents_driver.cpp
 	strongComponents_driver.cpp
     biconnectedComponents_driver.cpp
