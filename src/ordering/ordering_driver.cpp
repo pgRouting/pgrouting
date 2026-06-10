@@ -128,7 +128,7 @@ do_ordering(
                     }
                 default:
                     err << __FILE_NAME__ << ": Unknown function with name '" << get_name(which)
-                        << "' for undirected graph";
+                        << "' for directed graph";
                     return;
             }
 
