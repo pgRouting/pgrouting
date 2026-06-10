@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <limits>
 #include <cmath>
+#include <algorithm>
 
 #include "c_types/routes_t.h"
 #include "c_types/path_rt.h"
@@ -225,6 +226,46 @@ get_tuples(
     }
     return sequence;
 }
+
+size_t
+get_tuples(const std::vector<II_t_rt> &data, II_t_rt* &tuples) {
+    pgassert(!tuples);
+
+    auto count = data.size();
+    if (count == 0) return 0;
+
+    tuples = pgrouting::pgr_alloc(count, tuples);
+
+    size_t i = 0;
+    for (const auto &d : data) {
+        tuples[i++] = d;
+    }
+
+    return count;
+}
+
+size_t
+get_tuples(std::vector<std::vector<int64_t>> components, II_t_rt* &tuples) {
+    size_t count = 0;
+    for (auto &component : components) {
+        count += component.size();
+        std::sort(component.begin(), component.end());
+    }
+
+    sort(components.begin(), components.end());
+
+    tuples = pgrouting::pgr_alloc(count, tuples);
+
+    size_t i = 0;
+    for (const auto& component : components) {
+        auto component_id = component[0];
+        for (const auto edge_id : component) {
+            tuples[i++]= {edge_id, component_id};
+        }
+    }
+    return count;
+}
+
 
 size_t
 get_tuples(
