@@ -19,20 +19,7 @@
 # Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>, 2026.
 # DeepL <noreply-mt-deepl@weblate.org>, 2026.
 msgid ""
-msgstr ""
-"Project-Id-Version: pgRouting v4.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-20 20:20+0000\n"
-"PO-Revision-Date: 2026-05-18 10:45+0000\n"
-"Last-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\n"
-"Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\n"
-"Language: ja\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.16.2\n"
-"Generated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-05-20 20:20+0000\nPO-Revision-Date: 2026-06-10 16:05+0000\nLast-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.16.2\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - カテゴリ"
@@ -626,7 +613,7 @@ msgid ":doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distan
 msgstr ":doc:`pgr_pickDeliverEuclidean` - ユークリッド距離を用いた集配送計画問題"
 
 msgid "Distribution problem"
-msgstr ""
+msgstr "配送問題"
 
 msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
 msgstr ":doc:`pgr_vrpOneDepot` - 一つのデポから注文品を配送する"
@@ -927,97 +914,97 @@ msgid "``start_open``"
 msgstr "``start_open``"
 
 msgid "The time, relative to 0, when the starting location opens."
-msgstr ""
+msgstr "開始位置が開く時刻。0を基準とした相対時刻。"
 
 msgid "``start_close``"
 msgstr "``start_close``"
 
 msgid "The time, relative to 0, when the starting location closes."
-msgstr ""
+msgstr "開始位置が閉じる時刻。0を基準とした相対時刻。"
 
 msgid "[``start_service``]"
-msgstr ""
+msgstr "[``start_service``]"
 
 msgid "The duration of the loading at the starting location."
-msgstr ""
+msgstr "開始位置での積込時間。"
 
 msgid "When missing: A duration of :math:`0` time units is used."
-msgstr ""
+msgstr "無い場合: 積載時間 :math:`0`とします。"
 
 msgid "[``end_open``]"
-msgstr ""
+msgstr "[``end_open``]"
 
 msgid "The time, relative to 0, when the ending location opens."
-msgstr ""
+msgstr "終了位置が開く時刻。0を基準とした相対時刻。"
 
 msgid "When missing: The value of ``start_open`` is used"
-msgstr ""
+msgstr "無い場合: ``start_open`` を使います。"
 
 msgid "[``end_close``]"
-msgstr ""
+msgstr "[``end_close``]"
 
 msgid "The time, relative to 0, when the ending location closes."
-msgstr ""
+msgstr "終了位置が閉じる時刻。0を基準とした相対時刻。"
 
 msgid "When missing: The value of ``start_close`` is used"
-msgstr ""
+msgstr "無い場合: ``start_close`` を使います。"
 
 msgid "[``end_service``]"
-msgstr ""
+msgstr "[``end_service``]"
 
 msgid "The duration of the loading at the ending location."
-msgstr ""
+msgstr "終了位置での積込時間。"
 
 msgid "When missing: A duration in ``start_service`` is used."
-msgstr ""
+msgstr "無い場合: ``start_service`` を使います。"
 
 msgid "For :doc:`pgr_pickDeliver` the starting and ending identifiers of the locations are needed:"
-msgstr ""
+msgstr ":doc:`pgr_pickDeliver` では、開始位置識別番号子と終了位置識別番号が必要です:"
 
 msgid "``start_node_id``"
 msgstr "``start_node_id``"
 
 msgid "The node identifier of the start location, must match a vertex identifier in the `Matrix SQL`_."
-msgstr ""
+msgstr "開始位置のノード識別番号で、`Matrix SQL`_ 内の頂点識別番号と合致する必要があります。"
 
 msgid "[``end_node_id``]"
-msgstr ""
+msgstr "[``end_node_id``]"
 
 msgid "The node identifier of the end location, must match a vertex identifier in the `Matrix SQL`_."
-msgstr ""
+msgstr "終了位置のノード識別番号で、`Matrix SQL`_ 内の頂点識別番号と合致する必要があります。"
 
 msgid "When missing: ``end_node_id`` is used."
-msgstr ""
+msgstr "無い場合: ``start_node_id`` is used."
 
 msgid "``start_x``"
 msgstr "``start_x``"
 
 msgid ":math:`x` value of the starting location"
-msgstr ""
+msgstr "開始位置の :math:`x` 値"
 
 msgid "``start_y``"
 msgstr "``start_y``"
 
 msgid ":math:`y` value of the starting location"
-msgstr ""
+msgstr "開始位置の :math:`y` 値"
 
 msgid "[``end_x``]"
-msgstr ""
+msgstr "[``end_x``]"
 
 msgid ":math:`x` value of the ending location"
-msgstr ""
+msgstr "終了位置の :math:`x` 値"
 
 msgid "When missing: ``start_x`` is used."
-msgstr ""
+msgstr "無い場合: ``start_x`` を使います。"
 
 msgid "[``end_y``]"
-msgstr ""
+msgstr "[``end_y``]"
 
 msgid ":math:`y` value of the ending location"
-msgstr ""
+msgstr "終了位置の :math:`y` 値"
 
 msgid "When missing: ``start_y`` is used."
-msgstr ""
+msgstr "無い場合: ``start_y`` を使います。"
 
 msgid "Matrix SQL"
 msgstr "行列SQL"
@@ -1047,22 +1034,23 @@ msgid "Sequential value starting from **1** for current vehicles. The :math:`n_{
 msgstr "現在の車両の**1**始まりの順序値。解における :math:`n_{番目}` の車両です。"
 
 msgid "Value :math:`-2` indicates it is the summary row."
-msgstr ""
+msgstr ":math:`-2` 値は要約行を示します。"
 
 msgid "``vehicle_id``"
 msgstr "``vehicle_id``"
 
 msgid "BIGINT"
-msgstr ""
+msgstr "BIGINT"
 
 msgid "Current vehicle identifier."
-msgstr ""
+msgstr "現在の車両識別子。"
 
+#, fuzzy
 msgid "Summary row has the **total capacity violations**."
-msgstr ""
+msgstr "要約行には**総許容量違反**があります。"
 
 msgid "A capacity violation happens when overloading or underloading a vehicle."
-msgstr ""
+msgstr "許容量違反は車両が過積載または過少積載になるときに発生します。"
 
 msgid "``stop_seq``"
 msgstr "``stop_seq``"
@@ -1071,49 +1059,51 @@ msgid "INTEGER"
 msgstr "INTEGER"
 
 msgid "Sequential value starting from **1** for the stops made by the current vehicle. The :math:`m_{th}` stop of the current vehicle."
-msgstr ""
+msgstr "現在の車両の立寄り地点を示す**1**から始まる連番。現在の車両の :math:`m番目`の停車位置です。"
 
+#, fuzzy
 msgid "Summary row has the **total time windows violations**."
-msgstr ""
+msgstr "要約行には**総時間幅違反**があります。"
 
 msgid "A time window violation happens when arriving after the location has closed."
-msgstr ""
+msgstr "総時間幅違反は立寄り地点への到着が閉じた後になった時に発生します。"
 
 msgid "``stop_type``"
 msgstr "``stop_type``"
 
 msgid "Kind of stop location the vehicle is at"
-msgstr ""
+msgstr "車両の立寄り地点の種別"
 
 msgid ":math:`-1`: at the solution summary row"
 msgstr ""
 
 msgid ":math:`1`: Starting location"
-msgstr ""
+msgstr ":math:`1`: 開始位置"
 
 msgid ":math:`2`: Pickup location"
-msgstr ""
+msgstr ":math:`2`: 積込位置"
 
 msgid ":math:`3`: Delivery location"
-msgstr ""
+msgstr ":math:`3`: 積降位置"
 
 msgid ":math:`6`: Ending location and indicates the vehicle's summary row"
-msgstr ""
+msgstr ":math:`6`: 終了位置で車両のサマリー行を示します"
 
 msgid "``order_id``"
 msgstr "``order_id``"
 
+#, fuzzy
 msgid "Pickup-Delivery order pair identifier."
-msgstr ""
+msgstr "集荷配送の組合せの順序を示す識別子。"
 
 msgid "Value :math:`-1`: When no order is involved on the current stop location."
-msgstr ""
+msgstr "値 :math:`-1`: 現在の停止位置で指示が存在しない時。"
 
 msgid "``cargo``"
 msgstr "``cargo``"
 
 msgid "Cargo units of the vehicle when leaving the stop."
-msgstr ""
+msgstr "停止位置から出発したときの車両の貨物の単位。"
 
 msgid "Value :math:`-1` on solution summary row."
 msgstr ""
@@ -1149,7 +1139,7 @@ msgid "Summary row has the **total waiting time**:"
 msgstr ""
 
 msgid "The sum of all the ``wait_time``."
-msgstr ""
+msgstr "``wait_time``の全ての合計。"
 
 msgid "``service_time``"
 msgstr "``service_time``"
