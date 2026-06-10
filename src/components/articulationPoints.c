@@ -9,7 +9,6 @@ Function's developer:
 Copyright (c) 2017 Maoguang Wang
 Mail: xjtumg1007@gmail.com
 
-
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -28,77 +27,34 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/** @file articulationPoints.c */
-
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-
-
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
-
-#include "drivers/components/articulationPoints_driver.h"
+#include "process/ordering_process.h"
 
 PGDLLEXPORT Datum _pgr_articulationpoints(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_articulationpoints);
-
-
-static
-void
-process(
-        char* edges_sql,
-        int64_t **result_tuples,
-        size_t *result_count) {
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
-
-    clock_t start_t = clock();
-    pgr_do_articulationPoints(
-            edges_sql,
-
-            result_tuples,
-            result_count,
-            &log_msg,
-            &notice_msg,
-            &err_msg);
-    time_msg(" processing pgr_articulationPoints", start_t, clock());
-
-    if (err_msg) {
-        if (*result_tuples) pfree(*result_tuples);
-        (*result_count) = 0;
-    }
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
 
 PGDLLEXPORT Datum _pgr_articulationpoints(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
     int64_t *result_tuples = NULL;
-    size_t result_count = 0;
+    size_t   result_count  = 0;
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
-        process(
+        pgr_process_ordering(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                false,
+
+                ARTICULATIONPOINTS,
                 &result_tuples,
                 &result_count);
 
-
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -112,28 +68,27 @@ PGDLLEXPORT Datum _pgr_articulationpoints(PG_FUNCTION_ARGS) {
         MemoryContextSwitchTo(oldcontext);
     }
 
-    funcctx = SRF_PERCALL_SETUP();
-    tuple_desc = funcctx->tuple_desc;
-    result_tuples = (int64_t*) funcctx->user_fctx;
+    funcctx            = SRF_PERCALL_SETUP();
+    tuple_desc         = funcctx->tuple_desc;
+    result_tuples      = funcctx->user_fctx;
+    uint64_t call_cntr = funcctx->call_cntr;
 
-    if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple    tuple;
-        Datum        result;
-        Datum        *values;
-        bool*        nulls;
+    if (call_cntr < funcctx->max_calls) {
+        HeapTuple   tuple;
+        Datum       result;
+        Datum       *values;
+        bool        *nulls;
 
-
-        values = palloc(2 * sizeof(Datum));
-        nulls = palloc(2 * sizeof(bool));
-
-
+        size_t num  = 2;
+        values = palloc(num * sizeof(Datum));
+        nulls = palloc(num * sizeof(bool));
         size_t i;
-        for (i = 0; i < 2; ++i) {
+        for (i = 0; i < num; ++i) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr]);
+        values[0] = Int32GetDatum(-1);
+        values[1] = Int64GetDatum(result_tuples[call_cntr]);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
