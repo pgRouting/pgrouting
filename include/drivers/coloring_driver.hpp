@@ -44,6 +44,7 @@ namespace drivers {
 
 void do_coloring(
         const std::string&,
+        bool,
         Which,
         II_t_rt*&, size_t&,
         std::ostringstream&, std::ostringstream&, std::ostringstream&);

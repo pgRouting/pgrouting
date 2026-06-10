@@ -48,7 +48,7 @@ extern "C" {
 #endif
 
 void pgr_process_coloring(
-        const char*,
+        const char*, bool,
         enum Which,
         II_t_rt**, size_t*);
 
