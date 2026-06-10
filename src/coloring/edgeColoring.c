@@ -27,25 +27,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
 #include "c_types/ii_t_rt.h"
 #include "process/coloring_process.h"
 
 PGDLLEXPORT Datum _pgr_edgecoloring(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_edgecoloring);
 
-
 PGDLLEXPORT Datum _pgr_edgecoloring(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    TupleDesc            tuple_desc;
+    TupleDesc           tuple_desc;
+
     II_t_rt *result_tuples = NULL;
-    size_t result_count = 0;
+    size_t   result_count  = 0;
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -54,13 +49,13 @@ PGDLLEXPORT Datum _pgr_edgecoloring(PG_FUNCTION_ARGS) {
 
         pgr_process_coloring(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                false,
 
                 EDGECOLORING,
                 &result_tuples,
                 &result_count);
 
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -74,22 +69,22 @@ PGDLLEXPORT Datum _pgr_edgecoloring(PG_FUNCTION_ARGS) {
         MemoryContextSwitchTo(oldcontext);
     }
 
-    funcctx = SRF_PERCALL_SETUP();
-    tuple_desc = funcctx->tuple_desc;
-    result_tuples = (II_t_rt*) funcctx->user_fctx;
+    funcctx            = SRF_PERCALL_SETUP();
+    tuple_desc         = funcctx->tuple_desc;
+    result_tuples      = (II_t_rt*) funcctx->user_fctx;
+    uint64_t call_cntr = funcctx->call_cntr;
 
-    if (funcctx->call_cntr < funcctx->max_calls) {
+    if (call_cntr < funcctx->max_calls) {
         HeapTuple   tuple;
         Datum       result;
         Datum       *values;
         bool        *nulls;
-        size_t call_cntr = funcctx->call_cntr;
 
-        size_t numb = 2;
-        values =(Datum *)palloc(numb * sizeof(Datum));
-        nulls = palloc(numb * sizeof(bool));
+        size_t num = 2;
+        values = palloc(num * sizeof(Datum));
+        nulls = palloc(num * sizeof(bool));
         size_t i;
-        for (i = 0; i < numb; ++i) {
+        for (i = 0; i < num; ++i) {
             nulls[i] = false;
         }
 
