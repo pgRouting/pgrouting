@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-04 00:25+0000\n"
+"POT-Creation-Date: 2026-05-20 20:20+0000\n"
 "PO-Revision-Date: 2025-12-10 20:25+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\n"
@@ -3572,6 +3572,27 @@ msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_king
 #, fuzzy
 msgid "`#3089 <https://github.com/pgRouting/pgrouting/issues/3089>`__: edgeDisjoint and bellmanFord use shortestPath driver and process"
 msgstr "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__: pgr_transitiveClosure"
+
+#, fuzzy
+msgid "`#3100 <https://github.com/pgRouting/pgrouting/issues/3100>`__: Coloring: create and use a process & driver"
+msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_kingOrdering"
+
+msgid "Bug Fixes"
+msgstr "Corrección de errores"
+
+#, fuzzy
+msgid "`#3101 <https://github.com/pgRouting/pgrouting/issues/3101>`__: pgr_edgeColoring not building graph correctly"
+msgstr "`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__: pgr_edgeColoring"
+
+msgid "Summary of changes by function"
+msgstr ""
+
+msgid "pgr_edgeColoring"
+msgstr "pgr_edgeColoring"
+
+#, fuzzy
+msgid "Fix the way it builds the graph"
+msgstr "da el ancho de banda del grafo."
 
 msgid "All releases"
 msgstr "Todas las versiones"
@@ -9656,6 +9677,10 @@ msgstr "``pgr_edgeColoring`` - Experimental"
 msgid "``pgr_edgeColoring`` — Returns the edge coloring of undirected and loop-free graphs"
 msgstr "``pgr_edgeColoring`` — Coloración de aristas de grafos no dirigidos acíclicos"
 
+#, fuzzy
+msgid "Version 4.1.0"
+msgstr "Versión 4.0.0"
+
 msgid "Output columns standardized to |result_edge_color|"
 msgstr "Columnas de resultados estandarizados a |result_edge_color|"
 
@@ -12834,9 +12859,6 @@ msgstr "Notas de la versión 3.0.1 de pgRouting"
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.1%22>`__"
 msgstr "Para ver todos los problemas y solicitudes de extracción cerrados para ésta versión, consulte la `Github milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
-msgid "Bug Fixes"
-msgstr "Corrección de errores"
-
 #, fuzzy
 msgid "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withPoints does not pick optimal route when fraction = 1"
 msgstr "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__: pgr_withPointsCostMatrix"
@@ -12966,9 +12988,6 @@ msgstr ""
 msgid "To not build Doxygen documentation: `-DBUILD_DOXY=OFF`"
 msgstr ""
 
-msgid "Summary of changes by function"
-msgstr ""
-
 msgid "pgr_aStar"
 msgstr "pgr_aStar"
 
@@ -13031,9 +13050,6 @@ msgstr "pgr_dijkstraNearCost"
 
 msgid "pgr_dijkstraVia"
 msgstr "pgr_dijkstraVia"
-
-msgid "pgr_edgeColoring"
-msgstr "pgr_edgeColoring"
 
 msgid "pgr_edgeDisjointPaths"
 msgstr "pgr_edgeDisjointPaths"

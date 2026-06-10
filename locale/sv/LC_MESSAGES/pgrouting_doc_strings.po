@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-04 00:25+0000\n"
+"POT-Creation-Date: 2026-05-20 20:20+0000\n"
 "PO-Revision-Date: 2025-12-08 08:47+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\n"
@@ -3566,6 +3566,27 @@ msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordnings
 #, fuzzy
 msgid "`#3089 <https://github.com/pgRouting/pgrouting/issues/3089>`__: edgeDisjoint and bellmanFord use shortestPath driver and process"
 msgstr "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__: pgr_transitiveClosure"
+
+#, fuzzy
+msgid "`#3100 <https://github.com/pgRouting/pgrouting/issues/3100>`__: Coloring: create and use a process & driver"
+msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
+
+msgid "Bug Fixes"
+msgstr "Buggfixar"
+
+#, fuzzy
+msgid "`#3101 <https://github.com/pgRouting/pgrouting/issues/3101>`__: pgr_edgeColoring not building graph correctly"
+msgstr "`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__: pgr_edgeColoring"
+
+msgid "Summary of changes by function"
+msgstr "Sammanfattning av förändringar per funktion"
+
+msgid "pgr_edgeColoring"
+msgstr "pgr_edgeColoring"
+
+#, fuzzy
+msgid "Fix the way it builds the graph"
+msgstr "ger grafens bandbredd."
 
 msgid "All releases"
 msgstr "Alla utgåvor"
@@ -9639,6 +9660,10 @@ msgstr "``pgr_edgeColoring`` - Experimentell"
 msgid "``pgr_edgeColoring`` — Returns the edge coloring of undirected and loop-free graphs"
 msgstr "``pgr_edgeColoring`` - Returnerar kantfärgning av oledade och loopfria grafer"
 
+#, fuzzy
+msgid "Version 4.1.0"
+msgstr "Version 4.0.0"
+
 msgid "Output columns standardized to |result_edge_color|"
 msgstr "Utgångskolumner standardiserade till |result_edge_color|"
 
@@ -12725,9 +12750,6 @@ msgstr "Versionsinformation för pgRouting 3.0.1"
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.1%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
-msgid "Bug Fixes"
-msgstr "Buggfixar"
-
 msgid "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withPoints does not pick optimal route when fraction = 1"
 msgstr "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withPoints väljer inte optimal rutt när fraction = 1"
 
@@ -12855,9 +12877,6 @@ msgstr "Doxygen hittas inte"
 msgid "To not build Doxygen documentation: `-DBUILD_DOXY=OFF`"
 msgstr "Om du inte vill bygga Doxygen-dokumentation: `-DBUILD_DOXY=OFF`"
 
-msgid "Summary of changes by function"
-msgstr "Sammanfattning av förändringar per funktion"
-
 msgid "pgr_aStar"
 msgstr "pgr_aStar"
 
@@ -12920,9 +12939,6 @@ msgstr "pgr_dijkstraNearCost"
 
 msgid "pgr_dijkstraVia"
 msgstr "pgr_dijkstraVia"
-
-msgid "pgr_edgeColoring"
-msgstr "pgr_edgeColoring"
 
 msgid "pgr_edgeDisjointPaths"
 msgstr "pgr_edgeDisjointPaths"
