@@ -19,20 +19,7 @@
 # Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>, 2026.
 # DeepL <noreply-mt-deepl@weblate.org>, 2026.
 msgid ""
-msgstr ""
-"Project-Id-Version: pgRouting v4.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-04 00:25+0000\n"
-"PO-Revision-Date: 2026-04-24 08:39+0000\n"
-"Last-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\n"
-"Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\n"
-"Language: ja\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.16.2\n"
-"Generated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-03-04 00:25+0000\nPO-Revision-Date: 2026-05-18 10:45+0000\nLast-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.16.2\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - カテゴリ"
@@ -217,7 +204,7 @@ msgid "Result columns"
 msgstr "結果として返却されるカラム"
 
 msgid "Returns set of ``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
-msgstr "(seq, depth, start_vid, node, edge, cost, agg_cost)`` の集合を返す。"
+msgstr "Returns set of ``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
 
 msgid "``seq``"
 msgstr "``seq``"
@@ -553,8 +540,9 @@ msgstr "メトリックアルゴリズムを使用"
 msgid "Implementation generates solutions that *are twice as long as the optimal tour in the worst case*:"
 msgstr "*最悪の場合で最適解の2倍の長さ*の解を生成する実装です:"
 
+#, fuzzy
 msgid "Graph characteristics for best performance:"
-msgstr ""
+msgstr "最善の効率を得るためのグラフの特徴:"
 
 msgid "Graph is undirected"
 msgstr "無向であること"
@@ -601,11 +589,13 @@ msgstr "``0でない値`` で、かつ ``start_id = 0`` のとき、これが最
 msgid "References"
 msgstr "参照"
 
+#, fuzzy
 msgid "`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
-msgstr ""
+msgstr "`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
 
+#, fuzzy
 msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
-msgstr ""
+msgstr "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
 
 msgid "`Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 msgstr "`Wikipedia: 巡回セールスマン問題 <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
@@ -650,100 +640,104 @@ msgid "Vehicle Routing Problem with Time Windows `VRPTW` where the locations hav
 msgstr "時間枠付き配送計画問題 `VRPTW` (Vehicle Routing Problem with Time Windows) では、訪問位置ごとに車両が訪問しなければならない時刻範囲が決まっています。"
 
 msgid "Vehicle Routing Problem with Pickup and Delivery `VRPPD` where a number of goods need to be moved from certain pickup locations to other delivery locations."
-msgstr ""
+msgstr "集配送計画問題 (Vehicle Routing Problem with Pickup and Delivery, `VRPPD`) では、ある積込地からある積降地に輸送しなければならない数量が決まっています。"
 
+#, fuzzy
 msgid "Limitations"
-msgstr ""
+msgstr "制限"
 
 msgid "No multiple time windows for a location."
-msgstr ""
+msgstr "地点ごとの時間枠が複数設定されていないこと。"
 
 msgid "Less vehicle used is considered better."
-msgstr ""
+msgstr "使用車両が少ないほど良いと考えます。"
 
 msgid "Less total duration is better."
-msgstr ""
+msgstr "総時間が少ないほど良いです。"
 
 msgid "Less wait time is better."
-msgstr ""
+msgstr "待ち時間が少ないほど良いです。"
 
 msgid "Pick & Delivery"
-msgstr ""
+msgstr "積込と積降"
 
 msgid "Problem: `CVRPPDTW` Capacitated Pick and Delivery Vehicle Routing problem with Time Windows"
-msgstr ""
+msgstr "問題: 容量制約付き配送計画問題 (Capacitated Pick and Delivery Vehicle Routing problem with Time Windows, `CVRPPDTW`)"
 
 msgid "Times are relative to `0`"
-msgstr ""
+msgstr "時間は相対値で基準は `0`"
 
 msgid "The vehicles"
-msgstr ""
+msgstr "車両には:"
 
 msgid "have start and ending service duration times."
-msgstr ""
+msgstr "サービス開始時刻と終了時刻があります。"
 
 msgid "have opening and closing times for the start and ending locations."
-msgstr ""
+msgstr "積込位置・積降位置ごとの開始時刻と終了時刻があります。"
 
 msgid "have a capacity."
-msgstr ""
+msgstr "容量があります。"
 
 msgid "The orders"
-msgstr ""
+msgstr "指示には:"
 
 msgid "Have pick up and delivery locations."
-msgstr ""
+msgstr "積込位置・積降位置があります。"
 
 msgid "Have opening and closing times for the pickup and delivery locations."
-msgstr ""
+msgstr "積込位置・積降位置の開始時刻と終了時刻とがあります。"
 
+#, fuzzy
 msgid "Have pickup and delivery duration service times."
-msgstr ""
+msgstr "積込・積降の稼働時間があります。"
 
 msgid "have a demand request for moving goods from the pickup location to the delivery location."
-msgstr ""
+msgstr "積込位置から積降位置までの物品移動の要求があります。"
 
 msgid "Time based calculations:"
-msgstr ""
+msgstr "時間ベースの計算では:"
 
 msgid "Travel time between customers is :math:`distance / speed`"
-msgstr ""
+msgstr "顧客間の移動時間は :math:`distance / speed`とします。"
 
 msgid "Pickup and delivery order pair is done by the same vehicle."
-msgstr ""
+msgstr "積込指示と積降指示の組合せは同じ車両で対応します。"
 
 msgid "A pickup is done before the delivery."
-msgstr ""
+msgstr "積込は積降より前に行われます。"
 
 msgid "Pick & deliver"
-msgstr ""
+msgstr "積込・積降"
 
 msgid "Used in :doc:`pgr_pickDeliverEuclidean`"
-msgstr ""
+msgstr "使用箇所 :doc:`pgr_pickDeliverEuclidean`"
 
+#, fuzzy
 msgid "`Orders SQL`_"
-msgstr ""
+msgstr "`Orders SQL`_"
 
 msgid "`Orders SQL`_ as described below."
-msgstr ""
+msgstr "`Orders SQL`_ は下に説明があります。"
 
 msgid "`Vehicles SQL`_"
-msgstr ""
+msgstr "`Vehicles SQL`_"
 
 msgid "`Vehicles SQL`_ as described below."
-msgstr ""
+msgstr "`Vehicles SQL`_ は下に説明があります。"
 
+#, fuzzy
 msgid "Used in :doc:`pgr_pickDeliver`"
-msgstr ""
+msgstr "Used in :doc:`pgr_pickDeliver`"
 
 msgid "`Matrix SQL`_"
-msgstr ""
+msgstr "`Matrix SQL`_"
 
 msgid "`Matrix SQL`_ as described below."
-msgstr ""
+msgstr "`Matrix SQL`_ は下に説明があります。"
 
 msgid "Pick-Deliver optional parameters"
-msgstr ""
+msgstr "Pick-Deliver 任意パラメーター"
 
 msgid "``factor``"
 msgstr "``factor``"
@@ -752,10 +746,10 @@ msgid "``NUMERIC``"
 msgstr "``NUMERIC``"
 
 msgid "1"
-msgstr ""
+msgstr "1"
 
 msgid "Travel time multiplier. See :ref:`pd_factor`"
-msgstr ""
+msgstr "旅行時間倍率。:ref:`pd_factor`参照。"
 
 msgid "``max_cycles``"
 msgstr "``max_cycles``"
@@ -764,154 +758,157 @@ msgid "``INTEGER``"
 msgstr "``INTEGER``"
 
 msgid "10"
-msgstr ""
+msgstr "10"
 
 msgid "Maximum number of cycles to perform on the optimization."
-msgstr ""
+msgstr "最適化の最大周回数。"
 
 msgid "``initial_sol``"
 msgstr "``initial_sol``"
 
 msgid "4"
-msgstr ""
+msgstr "4"
 
+#, fuzzy
 msgid "Initial solution to be used."
-msgstr ""
+msgstr "使用する初期解。"
 
 msgid "``1`` One order per truck"
-msgstr ""
+msgstr "``1`` トラックごとに1件ずつの注文"
 
 msgid "``2`` Push front order."
-msgstr ""
+msgstr "``2`` 注文を前側に追加。"
 
 msgid "``3`` Push back order."
-msgstr ""
+msgstr "``3`` 注文を後側に追加。"
 
 msgid "``4`` Optimize insert."
-msgstr ""
+msgstr "``4`` 注文を最適位置に追加。"
 
 msgid "``5`` Push back order that allows more orders to be inserted at the back"
-msgstr ""
+msgstr "``5`` より多くの注文を後側に追加できるような状態で、注文を後側に追加。"
 
 msgid "``6`` Push front order that allows more orders to be inserted at the front"
-msgstr ""
+msgstr "``6`` より多くの注文を前側に追加できるような状態で、注文を前側に追加。"
 
 msgid "Orders SQL"
-msgstr ""
+msgstr "注文SQL"
 
+#, fuzzy
 msgid "Common columns for the orders SQL in both implementations:"
-msgstr ""
+msgstr "両方の実装における注文SQLの共通カラム:"
 
 msgid "|ANY-INTEGER|"
-msgstr ""
+msgstr "|ANY-INTEGER|"
 
 msgid "Identifier of the pick-delivery order pair."
-msgstr ""
+msgstr "集荷・配送組の識別子。"
 
 msgid "``demand``"
 msgstr "``demand``"
 
 msgid "|ANY-NUMERICAL|"
-msgstr ""
+msgstr "|ANY-NUMERICAL|"
 
 msgid "Number of units in the order"
-msgstr ""
+msgstr "当該注文における数量。"
 
 msgid "``p_open``"
 msgstr "``p_open``"
 
 msgid "The time, relative to 0, when the pickup location opens."
-msgstr ""
+msgstr "集荷位置が開く時の相対時刻。0を基準とした相対時刻。"
 
 msgid "``p_close``"
 msgstr "``p_close``"
 
 msgid "The time, relative to 0, when the pickup location closes."
-msgstr ""
+msgstr "集荷位置が閉じる時の相対時刻。0を基準とした相対時刻。"
 
 msgid "[``p_service``]"
-msgstr ""
+msgstr "[``p_service``]"
 
 msgid "The duration of the loading at the pickup location."
-msgstr ""
+msgstr "集荷位置での積込時間。"
 
 msgid "When missing: 0 time units are used"
-msgstr ""
+msgstr "無い場合: 0時間を使用"
 
 msgid "``d_open``"
 msgstr "``d_open``"
 
 msgid "The time, relative to 0, when the delivery location opens."
-msgstr ""
+msgstr "配送位置が開く時刻。0を基準とした相対時刻。"
 
 msgid "``d_close``"
 msgstr "``d_close``"
 
 msgid "The time, relative to 0, when the delivery location closes."
-msgstr ""
+msgstr "配達位置が閉じる時刻。0を基準とした相対時刻。"
 
 msgid "[``d_service``]"
-msgstr ""
+msgstr "[``d_service``]"
 
 msgid "The duration of the unloading at the delivery location."
-msgstr ""
+msgstr "配達位置での積降時間。"
 
 msgid "For :doc:`pgr_pickDeliver` the pickup and delivery identifiers of the locations are needed:"
-msgstr ""
+msgstr ":doc:`pgr_pickDeliver`では次の通り集荷と配送の位置識別子が必要です:"
 
 msgid "``p_node_id``"
 msgstr "``p_node_id``"
 
 msgid "The node identifier of the pickup, must match a vertex identifier in the `Matrix SQL`_."
-msgstr ""
+msgstr "集荷位置のノード識別子で、`Matrix SQL`_ 内の頂点識別子と一致しなければなりません。"
 
 msgid "``d_node_id``"
 msgstr "``d_node_id``"
 
 msgid "The node identifier of the delivery, must match a vertex identifier in the `Matrix SQL`_."
-msgstr ""
+msgstr "配送位置のノード識別子で、`Matrix SQL`_ 内の頂点識別子と一致しなければなりません。"
 
 msgid "For :doc:`pgr_pickDeliverEuclidean` the :math:`(x, y)` values of the locations are needed:"
-msgstr ""
+msgstr ":doc:`pgr_pickDeliverEuclidean` では次の通り位置を示す :math:`(x, y)` 値が必要です:"
 
 msgid "``p_x``"
 msgstr "``p_x``"
 
 msgid ":math:`x` value of the pick up location"
-msgstr ""
+msgstr "集荷位置の :math:`x` 値"
 
 msgid "``p_y``"
 msgstr "``p_y``"
 
 msgid ":math:`y` value of the pick up location"
-msgstr ""
+msgstr "集荷位置の :math:`y` 値"
 
 msgid "``d_x``"
 msgstr "``d_x``"
 
 msgid ":math:`x` value of the delivery location"
-msgstr ""
+msgstr "配送位置の :math:`x` 値"
 
 msgid "``d_y``"
 msgstr "``d_y``"
 
 msgid ":math:`y` value of the delivery location"
-msgstr ""
+msgstr "配送位置の :math:`y` 値"
 
 msgid "Vehicles SQL"
-msgstr ""
+msgstr "車両SQL"
 
 msgid "Common columns for the vehicles SQL in both implementations:"
-msgstr ""
+msgstr "両方の実装における車両SQLの共通カラム:"
 
 msgid "Identifier of the vehicle."
-msgstr ""
+msgstr "車両識別子。"
 
 msgid "``capacity``"
 msgstr "``capacity``"
 
+#, fuzzy
 msgid "Maiximum capacity units"
-msgstr ""
+msgstr "最大許容数量。"
 
 msgid "``start_open``"
 msgstr "``start_open``"
@@ -1010,10 +1007,10 @@ msgid "When missing: ``start_y`` is used."
 msgstr ""
 
 msgid "Matrix SQL"
-msgstr ""
+msgstr "行列SQL"
 
 msgid "Set of |matrix-result|"
-msgstr ""
+msgstr "|matrix-result| 集合"
 
 msgid "Identifier of the starting vertex."
 msgstr "開始ノードの識別子。"
@@ -1025,16 +1022,16 @@ msgid "Identifier of the ending vertex."
 msgstr "終了ノードの識別子。"
 
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
-msgstr ""
+msgstr "``start_vid`` から ``end_vid`` へのコストの集約。"
 
 msgid "Sequential value starting from **1**."
-msgstr ""
+msgstr "**1** 始まりの順序値。"
 
 msgid "``vehicle_seq``"
 msgstr "``vehicle_seq``"
 
 msgid "Sequential value starting from **1** for current vehicles. The :math:`n_{th}` vehicle in the solution."
-msgstr ""
+msgstr "現在の車両の**1**始まりの順序値。解における :math:`n_{番目}` の車両です。"
 
 msgid "Value :math:`-2` indicates it is the summary row."
 msgstr ""
@@ -1058,7 +1055,7 @@ msgid "``stop_seq``"
 msgstr "``stop_seq``"
 
 msgid "INTEGER"
-msgstr ""
+msgstr "INTEGER"
 
 msgid "Sequential value starting from **1** for the stops made by the current vehicle. The :math:`m_{th}` stop of the current vehicle."
 msgstr ""
@@ -2894,7 +2891,6 @@ msgstr "次のクエリを実行します。"
 msgid "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-#, fuzzy
 msgid "where :math:`sql = \\{(id_i, source_i, target_i, cost_i, reverse\\_cost_i)\\}`"
 msgstr "where :math:`sql = \\{(id_i, source_i, target_i, cost_i, reverse\\_cost_i)\\}`"
 
