@@ -71,7 +71,7 @@ connectedComponents(pgrouting::UndirectedGraph &graph) {
 //! Strongly Connected Components Vertex Version
 std::vector<std::vector<int64_t>>
 strongComponents(pgrouting::DirectedGraph &graph) {
-  typedef pgrouting::UndirectedGraph::V V;
+  typedef pgrouting::DirectedGraph::V V;
 
   std::vector<V> components(num_vertices(graph.graph));
   size_t num_comps = 0;

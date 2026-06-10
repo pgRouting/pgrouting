@@ -84,7 +84,7 @@ size_t
 get_tuples(const std::vector<II_t_rt>&, II_t_rt*&);
 
 size_t
-get_tuples(std::vector<std::vector<int64_t>>, II_t_rt*&);
+get_tuples(std::vector<std::vector<int64_t>>&, II_t_rt*&);
 
 
 /**

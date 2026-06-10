@@ -245,14 +245,14 @@ get_tuples(const std::vector<II_t_rt> &data, II_t_rt* &tuples) {
 }
 
 size_t
-get_tuples(std::vector<std::vector<int64_t>> components, II_t_rt* &tuples) {
+get_tuples(std::vector<std::vector<int64_t>> &components, II_t_rt* &tuples) {
     size_t count = 0;
     for (auto &component : components) {
         count += component.size();
         std::sort(component.begin(), component.end());
     }
 
-    sort(components.begin(), components.end());
+    std::sort(components.begin(), components.end());
 
     tuples = pgrouting::pgr_alloc(count, tuples);
 

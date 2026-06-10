@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: makeConnected.hpp
+File: makeConnected.cpp
 
 Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
@@ -79,12 +79,6 @@ makeConnected(pgrouting::UndirectedGraph &graph) {
     CHECK_FOR_INTERRUPTS();
     try {
         boost::make_connected(graph.graph, index_map, visitor);
-    } catch (boost::exception const& ex) {
-        (void)ex;
-        throw;
-    } catch (std::exception &e) {
-        (void)e;
-        throw;
     } catch (...) {
         throw;
     }
