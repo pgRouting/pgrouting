@@ -43,7 +43,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/base_graph.hpp"
 #include "cpp_common/identifiers.hpp"
-#include "components/componentsResult.hpp"
 
 namespace pgrouting {
 namespace algorithms {
@@ -51,15 +50,15 @@ namespace algorithms {
 /**
  * works for undirected graph
  **/
-std::vector<II_t_rt>
-pgr_connectedComponents(pgrouting::UndirectedGraph &graph);
+std::vector<std::vector<int64_t>>
+connectedComponents(pgrouting::UndirectedGraph &graph);
 
 //! Strongly Connected Components Vertex Version
-std::vector<II_t_rt>
+std::vector<std::vector<int64_t>>
 strongComponents(pgrouting::DirectedGraph &graph);
 
 //! Biconnected Components (for undirected)
-std::vector<II_t_rt>
+std::vector<std::vector<int64_t>>
 biconnectedComponents(pgrouting::UndirectedGraph &graph);
 
 //! Articulation Points
