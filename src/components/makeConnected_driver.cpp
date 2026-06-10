@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
+#include "cpp_common/to_postgres.hpp"
 
 #include "components/makeConnected.hpp"
 #include "cpp_common/base_graph.hpp"
@@ -81,9 +82,7 @@ pgr_do_makeConnected(
 
         pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
-        pgrouting::functions::Pgr_makeConnected<pgrouting::UndirectedGraph> fn_makeConnected;
-        results = fn_makeConnected.makeConnected(undigraph);
-        logstr += fn_makeConnected.get_log();
+        results = pgrouting::functions::makeConnected(undigraph);
         log << logstr;
 
         auto count = results.size();

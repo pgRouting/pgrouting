@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
 #include "cpp_common/base_graph.hpp"
+#include "cpp_common/to_postgres.hpp"
 
 #include "components/components.hpp"
 
@@ -55,6 +56,7 @@ pgr_do_connectedComponents(
     using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
     using pgrouting::pgget::get_edges;
+    using pgrouting::to_postgres::get_tuples;
 
     std::ostringstream log;
     std::ostringstream err;
@@ -79,7 +81,7 @@ pgr_do_connectedComponents(
 
         pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
-        auto results(pgrouting::algorithms::pgr_connectedComponents(undigraph));
+        auto results = pgrouting::algorithms::connectedComponents(undigraph);
 
         auto count = results.size();
 
@@ -90,11 +92,7 @@ pgr_do_connectedComponents(
             return;
         }
 
-        (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        for (size_t i = 0; i < count; i++) {
-            *((*return_tuples) + i) = results[i];
-        }
-        (*return_count) = count;
+        (*return_count) = get_tuples(results, (*return_tuples));
 
         pgassert(*err_msg == NULL);
         *log_msg = to_pg_msg(log);
