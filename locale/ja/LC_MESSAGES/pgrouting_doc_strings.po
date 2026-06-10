@@ -16,21 +16,9 @@
 # Ko Nagase <nagase@georepublic.co.jp>, 2021
 # Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2024, 2025.
+# Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>, 2026.
 msgid ""
-msgstr ""
-"Project-Id-Version: pgRouting v4.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-04 00:25+0000\n"
-"PO-Revision-Date: 2025-09-22 16:27+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
-"Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\n"
-"Language: ja\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.4.3\n"
-"Generated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-03-04 00:25+0000\nPO-Revision-Date: 2026-04-21 12:13+0000\nLast-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.16.2\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - カテゴリ"
@@ -42,28 +30,29 @@ msgid ":doc:`pgr_primBFS`"
 msgstr ":doc:`pgr_primBFS`"
 
 msgid "Traversal using breadth first search."
-msgstr ""
+msgstr "幅優先探索による走査を行います。"
 
 msgid "It's implementation is only on **undirected** graph."
 msgstr "実装は**undirected**グラフのみです。"
 
 msgid "Process is done only on edges with positive costs."
-msgstr ""
+msgstr "正のコストを持つエッジのみ処理されます。"
 
 msgid "When the graph is connected"
-msgstr ""
+msgstr "フラフが接続されている時には"
 
 msgid "The resulting edges make up a tree"
-msgstr ""
+msgstr "結果エッジは木構造を作ります"
 
 msgid "When the graph is not connected,"
-msgstr ""
+msgstr "グラフが接続されていない時には"
 
 msgid "Finds a minimum spanning tree for each connected component."
-msgstr ""
+msgstr "連結成分ごとの最小全域ツリーを見つけます。"
 
+#, fuzzy
 msgid "The resulting edges make up a forest."
-msgstr ""
+msgstr "結果エッジは木の集合を形成します。"
 
 msgid "Parameters"
 msgstr "パラメータ"
@@ -78,58 +67,59 @@ msgid "Description"
 msgstr "説明"
 
 msgid "`Edges SQL`_"
-msgstr ""
+msgstr "`Edges SQL`_"
 
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
 msgid "`Edges SQL`_ as described below."
-msgstr ""
+msgstr "下にある `Edges SQL`_ を参照して下さい。"
 
 msgid "**root vid**"
-msgstr ""
+msgstr "**root vid**"
 
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
 msgid "Identifier of the root vertex of the tree."
-msgstr ""
+msgstr "ツリーのルートにあたる頂点の識別番号。"
 
 msgid "When value is :math:`0` then gets the spanning forest starting in aleatory nodes for each tree in the forest."
-msgstr ""
+msgstr "値が :math:`0` のとき、フォレスト内における個々のツリーのランダムなノードを起点とした全域フォレストを得ます。"
 
 msgid "**root vids**"
-msgstr ""
+msgstr "**root vids**"
 
 msgid "``ARRAY`` [ **ANY-INTEGER** ]"
-msgstr ""
+msgstr "``ARRAY`` [ **ANY-INTEGER** ]"
 
 msgid "Array of identifiers of the root vertices."
-msgstr ""
+msgstr "ルート頂点の識別番号を要素に持つ配列。"
 
 msgid ":math:`0` values are ignored"
-msgstr ""
+msgstr ":math:`0` 値は無視されます"
 
 msgid "For optimization purposes, any duplicated value is ignored."
-msgstr ""
+msgstr "最適化のために重複値は全て無視されます。"
 
+#, fuzzy
 msgid "Where:"
-msgstr ""
+msgstr "ここで:"
 
 msgid "ANY-INTEGER"
-msgstr ""
+msgstr "ANY-INTEGER"
 
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
+msgstr "SMALLINT, INTEGER, BIGINT"
 
 msgid "ANY-NUMERIC"
-msgstr ""
+msgstr "ANY-NUMERIC"
 
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
-msgstr ""
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 
 msgid "BFS optional parameters"
-msgstr ""
+msgstr "BFS任意パラメーター"
 
 msgid "Default"
 msgstr "デフォルト値"
@@ -138,19 +128,19 @@ msgid "``max_depth``"
 msgstr "``max_depth``"
 
 msgid ":math:`9223372036854775807`"
-msgstr ""
+msgstr ":math:`9223372036854775807`"
 
 msgid "Upper limit of the depth of the tree."
-msgstr ""
+msgstr "木の深さの上限。"
 
 msgid "When negative throws an error."
-msgstr ""
+msgstr "負数の場合にはエラーが投げられます。"
 
 msgid "Inner Queries"
-msgstr ""
+msgstr "内部クエリー"
 
 msgid "Edges SQL"
-msgstr ""
+msgstr "エッジSQL"
 
 msgid "Column"
 msgstr "カラム"
@@ -159,123 +149,124 @@ msgid "``id``"
 msgstr "``id``"
 
 msgid "**ANY-INTEGER**"
-msgstr ""
+msgstr "**ANY-INTEGER**"
 
 msgid "Identifier of the edge."
-msgstr ""
+msgstr "エッジ識別番号。"
 
 msgid "``source``"
 msgstr "``source``"
 
 msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
+msgstr "一つ目のエッジの終端頂点の識別番号。"
 
 msgid "``target``"
 msgstr "``target``"
 
 msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
+msgstr "二つ目のエッジの終端頂点の識別子。"
 
 msgid "``cost``"
 msgstr "``cost``"
 
+#, fuzzy
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**ANY-NUMERICAL**"
 
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr ""
+msgstr "エッジ (``source``, ``target``)のウエイト"
 
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr ""
+msgstr "エッジ (``target``, ``source``)のウェイト"
 
 msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
-msgstr ""
+msgstr "負数の時: エッジ (``target``, ``source``)は存在しないので、グラフの一部にはなりません。"
 
+#, fuzzy
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 msgid "ANY-NUMERICAL"
-msgstr ""
+msgstr "ANY-NUMERICAL"
 
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #, fuzzy
 msgid "Result columns"
 msgstr "結果として返却されるカラム"
 
-#, fuzzy
 msgid "Returns set of ``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
-msgstr "``(seq, node, cost, agg_cost)`` の1セットを返却します"
+msgstr "(seq, depth, start_vid, node, edge, cost, agg_cost)`` の集合を返す。"
 
 msgid "``seq``"
 msgstr "``seq``"
 
 msgid "Sequential value starting from :math:`1`."
-msgstr ""
+msgstr ":math:`1` 始まりのシーケンシャル値。"
 
 msgid "``depth``"
 msgstr "``depth``"
 
 msgid "Depth of the ``node``."
-msgstr ""
+msgstr "``node`` の深さ。"
 
 msgid ":math:`0` when ``node`` = ``start_vid``."
-msgstr ""
+msgstr "``node`` = ``start_vid`` の時は :math:`0` になります。"
 
 msgid "``start_vid``"
 msgstr "``start_vid``"
 
 msgid "Identifier of the root vertex."
-msgstr ""
+msgstr "開始頂点の識別番号。"
 
 msgid "``node``"
 msgstr "``node``"
 
 msgid "Identifier of ``node`` reached using ``edge``."
-msgstr ""
+msgstr "``edge``を使用して到達した``node``の識別番号。"
 
 msgid "``edge``"
 msgstr "``edge``"
 
 msgid "Identifier of the ``edge`` used to arrive to ``node``."
-msgstr ""
+msgstr "``node``に到達するまでに使われた``edge``の識別番号。"
 
 msgid ":math:`-1` when ``node`` = ``start_vid``."
-msgstr ""
+msgstr "``node`` = ``start_vid`` の時 :math:`-1`。"
 
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
 msgid "Cost to traverse ``edge``."
-msgstr ""
+msgstr "``edge``横断のコスト。"
 
 msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
 msgid "Aggregate cost from ``start_vid`` to ``node``."
-msgstr ""
+msgstr "``start_vid``から``node``までのコスト集約値。"
 
 msgid "See Also"
 msgstr "参照"
 
 msgid "`Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
-msgstr ""
+msgstr "`Boost: プリム法 (英語) <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 
 msgid "`Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
-msgstr ""
+msgstr "`Boost: クラスカル法 (英語) <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 
 msgid "`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
-msgstr ""
+msgstr "`Wikipedia: プリム法 <https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AA%E3%83%A0%E6%B3%95>`__"
 
 msgid "`Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
-msgstr ""
+msgstr "`Wikipedia: クラスカル法 <https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%AB%E3%83%AB%E6%B3%95>`__"
 
 msgid "Indices and tables"
 msgstr "索引とテーブル"
@@ -287,16 +278,16 @@ msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
 msgid "DFS - Category"
-msgstr ""
+msgstr "DFS - カテゴリー"
 
 msgid "Traversal using Depth First Search."
-msgstr ""
+msgstr "深さ優先探索による走査を行います。"
 
 msgid ":doc:`pgr_kruskalDFS`"
-msgstr ""
+msgstr ":doc:`pgr_kruskalDFS`"
 
 msgid ":doc:`pgr_primDFS`"
-msgstr ""
+msgstr ":doc:`pgr_primDFS`"
 
 #, fuzzy
 msgid "Proposed"
@@ -309,11 +300,10 @@ msgid "They are not officially in the current release."
 msgstr "現在のリリースでは公式ではありません。"
 
 msgid "Code has been reviewed therefore is not experimental."
-msgstr ""
+msgstr "コードはレビューされているので実験ではありません。"
 
-#, fuzzy
 msgid "Name, signature and functionality might not change."
-msgstr "機能は変更されない場合があります。(しかし、まだ変更することもできます)"
+msgstr "名前と引数が変更されない可能性もあります。"
 
 msgid "pgTap tests have being done. But might need more."
 msgstr "pgTap テストが行われています。しかし、さらなるテストが必要となるかもしれません。"
@@ -322,122 +312,125 @@ msgid "Documentation might need refinement."
 msgstr "ドキュメントには改良が必要な場合があります。"
 
 msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
-msgstr ""
+msgstr ":doc:`pgr_depthFirstSearch` - グラフの深さ優先探索を行います。"
 
 msgid "In general:"
 msgstr "概要:"
 
 msgid "K shortest paths - Category"
-msgstr ""
+msgstr "K番目最短経路 - カテゴリー"
 
 msgid ":doc:`pgr_KSP` - Yen's algorithm based on pgr_dijkstra"
-msgstr ""
+msgstr ":doc:`pgr_KSP` - pgr_dijkstra に基づく Yen のアルゴリズム。"
 
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
-msgstr ""
+msgstr ":doc:`pgr_withPointsKSP` - pgr_withPointsに基づくYenのアルゴリズム"
+
+msgid "TRSP - Family of functions"
+msgstr "TRSP - 関数ファミリー"
 
 #, fuzzy
-msgid "TRSP - Family of functions"
-msgstr "ダイクストラ関連機能"
-
 msgid "When points are also given as input:"
-msgstr ""
+msgstr "ポイントも入力として与えられている時:"
 
 msgid ":doc:`pgr_trsp` - Routing with restrictions."
 msgstr ""
 
 msgid ":doc:`pgr_trspVia` - Via Vertices routing with restrictions."
-msgstr ""
+msgstr ":doc:`pgr_trspVia` - 制限付き頂点経由順路計算。"
 
 msgid ":doc:`pgr_trsp_withPoints` - Vertex/Point routing with restrictions."
-msgstr ""
+msgstr ":doc:`pgr_trsp_withPoints` - 制約付き頂点/ポイントのルーティング。"
 
 msgid ":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictions."
-msgstr ""
+msgstr ":doc:`pgr_trspVia_withPoints` - 制約付き頂点/ポイントのルーティング。"
 
 msgid "Experimental"
-msgstr ""
+msgstr "実験段階"
 
 msgid "Experimental functions"
-msgstr ""
+msgstr "実験段階関数"
 
 msgid "They are not officially of the current release."
-msgstr ""
+msgstr "これらは現在のリリースでは公式ではありません。"
 
 msgid "They likely will not be officially be part of the next release:"
-msgstr ""
+msgstr "次のものは次回リリースに正式には含まれないと思われます:"
 
 msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr ""
+msgstr "関数は、ANY-INTEGERとANY-NUMERICALを使用します"
 
 msgid "Name might change."
-msgstr ""
+msgstr "名称は変わる可能性があります。"
 
 msgid "Signature might change."
-msgstr ""
+msgstr "引数や返り値の型は変更されることがあります。"
 
 msgid "Functionality might change."
-msgstr ""
+msgstr "機能は変更される可能性があります。"
 
 msgid "pgTap tests might be missing."
-msgstr ""
+msgstr "pgTAPテストが抜けている場合があります。"
 
 msgid "Might need c/c++ review."
-msgstr ""
+msgstr "C/C++のレビューが必要な場合があります。"
 
 msgid "Documentation if any might need to be rewritten."
-msgstr ""
+msgstr "ドキュメントの書き換えが必要な場合があります。"
 
 msgid "Might need a lot of feedback from the community."
-msgstr ""
+msgstr "コミュニティからの多数のフィードバックが必要な可能性があります。"
 
 msgid ":doc:`pgr_turnRestrictedPath` - Routing with restrictions."
-msgstr ""
+msgstr ":doc:`pgr_turnRestrictedPath` - 制約付き経路検索。"
 
 msgid "Introduction"
 msgstr "序章"
 
 msgid "Road restrictions are a sequence of road segments that can not be taken in a sequential manner. Some restrictions are implicit on a directed graph, for example, one way roads where the wrong way edge is not even inserted on the graph. But normally on turns like no left turn or no right turn, hence the name turn restrictions, there are sometimes restrictions."
-msgstr ""
+msgstr "道路制限は順次通行できない一連の区間です。逆方向のエッジがグラフに挿入さえされていない場合の一方通行のように、有向グラフで暗黙に設定されている制約があります。しかし通常は、左折禁止や右折禁止などのような曲がり角では、その名の通り制限が存在します。"
 
 msgid "TRSP algorithm"
-msgstr ""
+msgstr "TRSPアルゴリズム"
 
+#, fuzzy
 msgid "The internal TRSP algorithm performs a lookahead over the dijkstra algorithm in order to find out if the attempted path has a restriction. This allows the algorithm to pass twice on the same vertex."
-msgstr ""
+msgstr "TRSPアルゴリズムは、試行されたパスに対して制限を持っているかどうかを調べるために、ダイクストラ法に対して先読みを行います。これにより、このアルゴリズムで、同じ頂点を2回通過することができます。"
 
 msgid "`Edges SQL`_ query as described."
-msgstr ""
+msgstr "`Edges SQL`_ クエリーを説明通りに行います。"
 
 msgid "`Restrictions SQL`_"
-msgstr ""
+msgstr "`Restrictions SQL`_"
 
 msgid "`Restrictions SQL`_ query as described."
-msgstr ""
+msgstr "`Restrictions SQL`_ クエリーを説明通りに行います。"
 
 msgid "**via vertices**"
 msgstr ""
 
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
-msgstr ""
+msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
 
+#, fuzzy
 msgid "Array of ordered vertices identifiers that are going to be visited."
-msgstr ""
+msgstr "訪問しようとしている頂点識別番号を順序良く並べた配列。"
 
 msgid "Restrictions"
-msgstr ""
+msgstr "制限事項"
 
 msgid "On road networks, there are restrictions such as left or right turn restrictions, no U turn restrictions."
-msgstr ""
+msgstr "道路網では、右折禁止や左折禁止やUターン禁止といった制限があります。"
 
+#, fuzzy
 msgid "A restriction is a sequence of edges, called path and that path is to be avoided."
-msgstr ""
+msgstr "制約はパスと呼ばれる一連のエッジのことで、そのパスは避けないといけません。"
 
 msgid "**Restrictions on the road network**"
-msgstr ""
+msgstr "**道路網の制限**"
 
 msgid "These restrictions are represented on a table as follows:"
-msgstr ""
+msgstr "これらの制限をテーブルで表すと次のようになります:"
 
 msgid "The table has an identifier, which maybe is needed for the administration of the restrictions, but the algorithms do not need that information. If given it will be ignored."
 msgstr ""
@@ -448,17 +441,19 @@ msgstr ""
 msgid "``path``"
 msgstr "``path``"
 
+#, fuzzy
 msgid "``ARRAY`` [**ANY-INTEGER**]"
-msgstr ""
+msgstr "``ARRAY`` [**ANY-INTEGER**]"
 
 msgid "Sequence of edge identifiers that form a path that is not allowed to be taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have a ``NULL`` element will raise an exception."
-msgstr ""
+msgstr "選択できな通り道を形成するエッジ識別番号の列。- 空配列または ``NULL`` 配列は無視されます。- 要素に ``NULL`` がある配列の場合には例外が発生します。"
 
 msgid "``Cost``"
 msgstr "``Cost``"
 
+#, fuzzy
 msgid "Cost of taking the forbidden path."
-msgstr ""
+msgstr "通行禁止の道を選択した時のコスト。"
 
 msgid "Traveling Sales Person - Family of functions"
 msgstr "巡回セールスマン問題の関連機能"
