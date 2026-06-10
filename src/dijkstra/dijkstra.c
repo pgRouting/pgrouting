@@ -37,8 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/path_rt.h"
 #include "process/shortestPath_process.h"
 
-PG_MODULE_MAGIC;
-
 PGDLLEXPORT Datum _pgr_dijkstra_v4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_dijkstra_v4);
 
