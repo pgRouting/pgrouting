@@ -43,7 +43,7 @@ jobs:
           os: [ubuntu-latest, ubuntu-22.04]
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: 'Raise Priority for apt.postgresql.org'
         run: |
