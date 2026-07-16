@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-10 19:05+0000\n"
+"POT-Creation-Date: 2026-07-16 19:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -351,6 +351,12 @@ msgid ""
 msgstr ""
 
 msgid "Experimental"
+msgstr ""
+
+msgid "Possible server crash"
+msgstr ""
+
+msgid "These functions might create a server crash"
 msgstr ""
 
 msgid "Experimental functions"
