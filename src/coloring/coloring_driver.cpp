@@ -111,7 +111,7 @@ void do_coloring(
                     component_results = strongComponents(digraph);
                     break;
                 default:
-                    err << __FILE_NAME__ << ": Unknown function with name '" << get_name(which)
+                    err << "coloring_driver.cpp: Unknown function with name '" << get_name(which)
                         << "' for directed graph";
                     return;
             }
@@ -140,7 +140,7 @@ void do_coloring(
                     component_results = connectedComponents(undigraph);
                     break;
                 default:
-                    err << __FILE_NAME__ << ": Unknown function with name '" << get_name(which)
+                    err << "coloring_driver.cpp: Unknown function with name '" << get_name(which)
                         << "' for undirected graph";
                     return;
             }

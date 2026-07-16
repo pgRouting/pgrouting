@@ -127,7 +127,7 @@ do_ordering(
                         break;
                     }
                 default:
-                    err << __FILE_NAME__ << ": Unknown function with name '" << get_name(which)
+                    err << "ordering_driver.cpp: Unknown function with name '" << get_name(which)
                         << "' for directed graph";
                     return;
             }
@@ -161,7 +161,7 @@ do_ordering(
                         break;
                     }
                 default:
-                    err << __FILE_NAME__ << ": Unknown function with name '" << get_name(which)
+                    err << "ordering_driver.cpp: Unknown function with name '" << get_name(which)
                         << "' for undirected graph";
                     return;
             }
