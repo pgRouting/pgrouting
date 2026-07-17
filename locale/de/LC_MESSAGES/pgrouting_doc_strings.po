@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-10 19:05+0000\n"
+"POT-Creation-Date: 2026-07-16 19:50+0000\n"
 "PO-Revision-Date: 2025-09-22 16:28+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: German <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/de/>\n"
@@ -336,6 +336,12 @@ msgid ":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restriction
 msgstr ""
 
 msgid "Experimental"
+msgstr ""
+
+msgid "Possible server crash"
+msgstr ""
+
+msgid "These functions might create a server crash"
 msgstr ""
 
 msgid "Experimental functions"
