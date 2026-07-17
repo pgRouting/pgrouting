@@ -11,6 +11,10 @@ Experimental Functions
 
 .. admonition:: Experimental
 
+   .. warning:: Possible server crash
+
+     - These functions might create a server crash
+
    .. warning:: Experimental functions
 
      - They are not officially of the current release.
