@@ -41,6 +41,12 @@ Any kind of contribution will automatically fall to the following Licences:
 * Documentation contribution:
   * Creative Commons Attribution-Share Alike 3.0
 
+Contributions developed for an employer or as part of a work project also fall under the above liscences. This should be cleared with an authorized supervisor or manager in advance. 
+
+Contributions should be developed by the contributor, from the public domain, or from an open source project under a compatible liscence. If the code does not come from the contributor, the original source should be clearly marked. 
+
+Do not remove existing copyright headers and liscence text from contributions. If the copyright holder wants to give up copyright, they must do so in writing before any copyright messages are deleted. 
+
 ## Submitting changes
 
 Write a clear log message for your commits. One-line messages are fine for small
