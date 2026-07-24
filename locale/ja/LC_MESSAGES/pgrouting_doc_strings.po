@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-10 19:05+0000\n"
+"POT-Creation-Date: 2026-07-16 19:50+0000\n"
 "PO-Revision-Date: 2026-06-10 16:05+0000\n"
 "Last-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\n"
@@ -361,6 +361,12 @@ msgstr ":doc:`pgr_trspVia_withPoints` - 制約付き頂点/ポイントのルー
 
 msgid "Experimental"
 msgstr "実験段階"
+
+msgid "Possible server crash"
+msgstr ""
+
+msgid "These functions might create a server crash"
+msgstr ""
 
 msgid "Experimental functions"
 msgstr "実験段階関数"

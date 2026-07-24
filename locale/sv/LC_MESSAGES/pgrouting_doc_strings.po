@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-10 19:05+0000\n"
+"POT-Creation-Date: 2026-07-16 19:50+0000\n"
 "PO-Revision-Date: 2025-12-08 08:47+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\n"
@@ -338,6 +338,12 @@ msgstr ":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictio
 
 msgid "Experimental"
 msgstr "Experiment"
+
+msgid "Possible server crash"
+msgstr "Möjlig serverkrasch"
+
+msgid "These functions might create a server crash"
+msgstr "Dessa funktioner kan orsaka en serverkrasch"
 
 msgid "Experimental functions"
 msgstr "Experimentella funktioner"
@@ -16654,12 +16660,6 @@ msgstr "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 
 #~ msgid "Functionality might not change. (But still can)"
 #~ msgstr "Funktionaliteten kanske inte ändras. (Men kan fortfarande göra det)"
-
-#~ msgid "Possible server crash"
-#~ msgstr "Möjlig serverkrasch"
-
-#~ msgid "These functions might create a server crash"
-#~ msgstr "Dessa funktioner kan orsaka en serverkrasch"
 
 #~ msgid "Might need c/c++ coding."
 #~ msgstr "Kan behöva c/c++-kodning."
