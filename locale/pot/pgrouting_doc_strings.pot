@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-16 19:50+0000\n"
+"POT-Creation-Date: 2026-07-27 19:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12734,6 +12734,15 @@ msgid "pgRouting 4.1"
 msgstr ""
 
 msgid "pgRouting 4.0"
+msgstr ""
+
+msgid "pgRouting 4.0.2 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.2%22>`__"
+msgstr ""
+
+msgid "`#3110 <https://github.com/pgRouting/pgrouting/issues/3110>`__: pgr_dijkstraVia throws std::bad_alloc when a node does not exist"
 msgstr ""
 
 msgid "pgRouting 4.0.1 Release Notes"
