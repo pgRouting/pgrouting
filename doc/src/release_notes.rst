@@ -31,6 +31,17 @@ pgRouting 4.0
 
 .. current
 
+
+pgRouting 4.0.2 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the
+:milestone:`4.0.2`
+
+.. rubric:: Bug Fixes
+
+* :issue:`3110`: pgr_dijkstraVia throws std::bad_alloc when a node does not exist
+
 pgRouting 4.0.1 Release Notes
 -------------------------------------------------------------------------------
 

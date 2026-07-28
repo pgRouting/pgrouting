@@ -184,6 +184,7 @@ Path dijkstra(
     combinations[start_vertex].insert(end_vertex);
 
     auto paths = dijkstra(graph, combinations, only_cost);
+    if (paths.empty()) return Path(start_vertex, end_vertex);
     return paths.front();
 }
 
