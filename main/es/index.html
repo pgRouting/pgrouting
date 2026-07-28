@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=9ec13fd3"></script>
+    <script src="_static/documentation_options.js?v=33914f1f"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
@@ -104,6 +104,7 @@
 <li><a class="reference internal" href="#functions-by-categories">Funciones por categorías</a></li>
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Funciones disponibles pero no oficiales de pgRouting</a></li>
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
+<li><a class="reference internal" href="#pgrouting-4-0-2-release-notes">pgRouting 4.0.2 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-4-0-1-release-notes">pgRouting 4.0.1 Release Notes</a><ul>
 <li><a class="reference internal" href="#administration">Administration</a></li>
 </ul>
@@ -177,7 +178,7 @@
 <section id="table-of-contents">
 <h1>Tabla de Contenido<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h1>
 <p>pgRouting extiende la base de datos geospacial de <a class="reference external" href="https://postgis.net">PostGIS</a>/<a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> para proporcionar enrutamiento geoespacial y otras funciones de análisis de red.</p>
-<p>Este es el manual para la version v4.0.1 de pgRouting.</p>
+<p>Este es el manual para la version v4.0.2 de pgRouting.</p>
 <img alt="Licencia de Creative Commons Attribution-Share Alike 3.0" class="align-left" src="_images/ccbysa.png" />
 <p>El Manual de pgRouting está bajo licencia <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Siéntase libre de usar este material de la manera que desee, pero le pedimos que atribuya el crédito correspondiente al proyecto pgRouting y, siempre que sea posible, visite <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a>. Para otras licencias utilizadas en pgRouting, consulte la página <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">Licencias</span></a> .</p>
 <section id="general">
@@ -420,6 +421,15 @@
 </section>
 <section id="release-notes">
 <h2><a class="reference internal" href="release_notes.html"><span class="doc">Notas de versión</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
+<section id="pgrouting-4-0-2-release-notes">
+<h3>pgRouting 4.0.2 Release Notes<a class="headerlink" href="#pgrouting-4-0-2-release-notes" title="Link to this heading">¶</a></h3>
+<p>To see all issues &amp; pull requests closed by this release see the
+<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.2%22">Github milestone for 4.0.2</a></p>
+<p class="rubric">Corrección de errores</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3110">#3110</a>: pgr_dijkstraVia throws std::bad_alloc when a node does not exist</p></li>
+</ul>
+</section>
 <section id="pgrouting-4-0-1-release-notes">
 <h3>pgRouting 4.0.1 Release Notes<a class="headerlink" href="#pgrouting-4-0-1-release-notes" title="Link to this heading">¶</a></h3>
 <p>To see all issues &amp; pull requests closed by this release see the
@@ -1290,7 +1300,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
     </p>
     <p>
         &copy; Copyright %Y pgRouting developers.<br/>
-      Actualizado por última vez en jul 24, 2026.<br/>
+      Actualizado por última vez en jul 28, 2026.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
