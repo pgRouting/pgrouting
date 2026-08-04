@@ -59,7 +59,7 @@ bool column_found(int);
 /**
  * @brief Function tells expected type of each column and then check the correspondence type of each column.
  * @param[in] tupdesc  tuple descriptor
- * @param[in] info     contain one or more column information.
+ * @param[in,out] info  contain one or more column information; populated with column type and number.
  * @throw ERROR Unknown type of column.
  */
 void fetch_column_info(const TupleDesc&, std::vector<Column_info_t>&);
