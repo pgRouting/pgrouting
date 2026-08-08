@@ -122,7 +122,7 @@ class dijkstra_distance_visitor : public boost::default_dijkstra_visitor {
              std::vector<double> &distances) :
          m_distance_goal(distance_goal),
          m_dist(distances) {
-             pgassert(m_distance_goal > 0);
+             pgassert(m_distance_goal >= 0);
          }
      template <class B_G>
          void examine_vertex(V u, B_G &) {
