@@ -15,6 +15,13 @@
 
 .. rubric:: Availability
 
+.. rubric:: Version 4.0.2
+
+* Standardizing negative distance behaviour
+
+  * Throws when :math:`distance < 0`.
+  * Standard message and hint.
+
 .. rubric:: Version 3.6.0
 
 * Standardizing output columns to |result-spantree|
