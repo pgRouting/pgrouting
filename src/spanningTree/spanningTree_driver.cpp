@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "spanningTree/prim.hpp"
 #include "spanningTree/kruskal.hpp"
-#include "breadthFirstSearch/breadthFirstSearch.hpp"
+#include "traversal/breadthFirstSearch.hpp"
 #include "traversal/depthFirstSearch.hpp"
 #include "dijkstra/drivingDist.hpp"
 

@@ -3,8 +3,4 @@
 # License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 
 ADD_LIBRARY(breadthFirstSearch OBJECT
-    breadthFirstSearch.c
-    binaryBreadthFirstSearch.c
-
-    binaryBreadthFirstSearch_driver.cpp
 )

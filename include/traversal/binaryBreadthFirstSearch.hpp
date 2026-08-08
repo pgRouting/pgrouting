@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_BREADTHFIRSTSEARCH_BINARYBREADTHFIRSTSEARCH_HPP_
-#define INCLUDE_BREADTHFIRSTSEARCH_BINARYBREADTHFIRSTSEARCH_HPP_
+#ifndef INCLUDE_TRAVERSAL_BINARYBREADTHFIRSTSEARCH_HPP_
+#define INCLUDE_TRAVERSAL_BINARYBREADTHFIRSTSEARCH_HPP_
 #pragma once
 
 #include <deque>
@@ -217,4 +217,4 @@ class Pgr_binaryBreadthFirstSearch {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_BREADTHFIRSTSEARCH_BINARYBREADTHFIRSTSEARCH_HPP_
+#endif  // INCLUDE_TRAVERSAL_BINARYBREADTHFIRSTSEARCH_HPP_

@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/breadthFirstSearch/binaryBreadthFirstSearch_driver.h"
+#include "drivers/traversal/binaryBreadthFirstSearch_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <map>
 
-#include "breadthFirstSearch/binaryBreadthFirstSearch.hpp"
+#include "traversal/binaryBreadthFirstSearch.hpp"
 
 #include "cpp_common/combinations.hpp"
 #include "cpp_common/pgdata_getters.hpp"
