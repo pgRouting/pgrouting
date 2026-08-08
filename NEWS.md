@@ -13,9 +13,33 @@ To read all history of releases go to the latest [release notes](https://docs.pg
 To see all issues & pull requests closed by this release see the
 [#4.0.2](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.2%22)
 
-**Bug Fixes**
+4.0.2 Summary of changes by function
+
+* pgr_dijkstraVia
+
+  * Fix: bad alloc
+
+* pgr_drivingDistance
+
+  * Standardizing negative distance behaviour
+    * Throws when :math:`distance < 0`.
+    * Standard message and hint.
+
+* pgr_withPointsDD
+
+  * Standardizing negative distance behaviour
+    * Throws when :math:`distance < 0`.
+    * Standard message and hint.
+
+* pgr_withPointsVia
+
+  * Fix: bad alloc
+
+4.0.2 Bug Fixes
 
 * [#3110](https://github.com/pgRouting/pgrouting/issues/3110): pgr_dijkstraVia throws std::bad_alloc when a node does not exist
+* [#3091](https://github.com/pgRouting/pgrouting/issues/3091): Catchment functions when negative distance do not have a
+  standardized behaviour
 
 </details>
 
