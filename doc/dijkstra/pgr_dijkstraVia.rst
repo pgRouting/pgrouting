@@ -20,6 +20,10 @@
 
 .. rubric:: Availability
 
+.. rubric:: Version 4.0.2
+
+* Fix: bad alloc
+
 .. rubric:: Version 4.0.0
 
 * Function promoted to official.
