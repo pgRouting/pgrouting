@@ -61,8 +61,8 @@ process(
         return;
     }
 
-    if (distance <= 0) {
-        pgr_throw_error("Invalid value of 'distance'", "Valid values are greater than 0");
+    if (distance < 0) {
+        pgr_throw_error("Negative value found on 'distance'", "Must be positive");
     }
 
     pgr_SPI_connect();

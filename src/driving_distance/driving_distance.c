@@ -54,6 +54,10 @@ void process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
+    if (distance < 0) {
+        pgr_throw_error("Negative value found on 'distance'", "Must be positive");
+    }
+
     clock_t start_t = clock();
     pgr_do_drivingDistance(
             edges_sql,
