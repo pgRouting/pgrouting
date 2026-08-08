@@ -57,6 +57,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "dagShortestPath/dagShortestPath.hpp"
 #include "bellman_ford/bellman_ford.hpp"
 #include "max_flow/maxflow.hpp"
+#include "traversal/binaryBreadthFirstSearch.hpp"
 
 namespace {
 
@@ -159,6 +160,7 @@ do_shortestPath(
         using pgrouting::algorithms::dagShortestPath;
         using pgrouting::functions::bellmanFord;
         using pgrouting::functions::edgeDisjoint;
+        using functions::binaryBreadthFirstSearch;
 
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, normal, is_matrix);
@@ -255,6 +257,9 @@ do_shortestPath(
                 case BELLMANFORD:
                     paths = bellmanFord(digraph, combinations, only_cost);
                     break;
+                case BINARYBFS:
+                    paths = binaryBreadthFirstSearch(digraph, combinations);
+                    break;
                 default:
                     err << "INTERNAL: wrong function call: " << which;
                     return;
@@ -277,9 +282,12 @@ do_shortestPath(
                 case BELLMANFORD:
                     paths =  bellmanFord(undigraph, combinations, only_cost);
                     break;
+                case BINARYBFS:
+                   paths = binaryBreadthFirstSearch(undigraph, combinations);
+                   break;
                 default:
-                    err << "INTERNAL: wrong function call: " << which;
-                    return;
+                   err << "INTERNAL: wrong function call: " << which;
+                   return;
             }
         }
 
