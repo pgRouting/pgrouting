@@ -1,0 +1,174 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2016-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_lib_version('4.0.2') THEN plan(12)
+            WHEN min_version('4.0.0') THEN plan(11)
+            ELSE plan(10) END;
+
+PREPARE edges AS
+SELECT id, source, target, cost FROM edges;
+
+PREPARE points AS
+SELECT pid, edge_id, fraction, side from pointsOfInterest;
+
+/*
+ * Test results by pgRouting version (12 tests)
+ *
+ * +------+------------------+-------------------------+----------------------+----------------+
+ * | Test | Function         | What it tests           | Status               | Note           |
+ * +------+------------------+-------------------------+----------------------+----------------+
+ * |    1 | drivingDistance  | throws_ok (any error)   | v3.0.0 - v4.0.1 FAIL | no validation  |
+ * |      |                  |                         | v4.0.2 - * PASS      |                |
+ * |    2 | drivingDistance  | throws_ok (XX000+msg)   | v3.0.0 - v4.0.1 FAIL | no validation  |
+ * |      |                  |                         | v4.0.2 - * PASS      |                |
+ * |    3 | drivingDistance  | lives_ok (distance=0)   | v3.0.0 - * PASS      |                |
+ * |    4 | primDD           | throws_ok (any error)   | v3.0.0 - v3.6.3 PASS | P0001          |
+ * |      |                  |                         | v3.7.0 - * PASS      |                |
+ * |    5 | primDD           | throws_ok (XX000+msg)   | v3.0.0 - v3.6.3 FAIL | P0001 != XX000 |
+ * |      |                  |                         | v3.7.0 - * PASS      |                |
+ * |    6 | primDD           | lives_ok (distance=0)   | v3.0.0 - * PASS      |                |
+ * |    7 | kruskalDD        | throws_ok (any error)   | v3.0.0 - v3.6.3 PASS | P0001          |
+ * |      |                  |                         | v3.7.0 - * PASS      |                |
+ * |    8 | kruskalDD        | throws_ok (XX000+msg)   | v3.0.0 - v3.6.3 FAIL | P0001 != XX000 |
+ * |      |                  |                         | v3.7.0 - * PASS      |                |
+ * |    9 | kruskalDD        | lives_ok (distance=0)   | v3.0.0 - * PASS      |                |
+ * |   10 | withPointsDD     | throws_ok (any error)   | v3.0.0 - v3.8.0 FAIL | no validation  |
+ * |      |                  |                         | v4.0.0 - * PASS      |                |
+ * |   11 | withPointsDD     | throws_ok (XX000+msg)   | v3.0.0 - v3.8.0 FAIL | no validation  |
+ * |      |                  |                         | v4.0.2 - * PASS      |                |
+ * |   12 | withPointsDD     | lives_ok (distance=0)   | v3.0.0 - v3.8.0 PASS |                |
+ * |      |                  |                         | v4.0.0 - v4.0.1 FAIL | distance <= 0  |
+ * |      |                  |                         | v4.0.2 - * PASS      |                |
+ * +------+------------------+-------------------------+----------------------+----------------+
+ */
+
+CREATE OR REPLACE FUNCTION test_DD() RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+  fn TEXT = 'pgr_drivingDistance';
+  stmt TEXT = 'SELECT * FROM pgr_drivingDistance';
+BEGIN
+
+  IF min_lib_version('4.0.2') THEN
+    RETURN QUERY
+    SELECT throws_ok(stmt || $$('edges', 1, -3.5)$$);
+
+    RETURN QUERY
+    SELECT throws_ok(stmt || $$('edges', 1, -3.5)$$,
+    'XX000', $$Negative value found on 'distance'$$, fn || ': Negative distance throws');
+
+    RETURN QUERY
+    SELECT lives_ok(stmt || $$('edges', 1, 0)$$, fn || ': 0 is ok');
+
+  ELSE
+
+    RETURN QUERY
+    SELECT lives_ok(stmt || $$('edges', 1, -3.5)$$, 'Silently ignores negative values');
+
+    RETURN QUERY
+    SELECT lives_ok(stmt || $$('edges', 1, 0)$$, fn || ': 0 is ok');
+
+  END IF;
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION test_withPDD() RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+  fn TEXT = 'pgr_withPointsDD';
+  stmt TEXT = 'SELECT * FROM pgr_withPointsDD';
+BEGIN
+
+  IF min_lib_version('4.0.2') THEN
+    -- v4.0.2+: distance < 0, standardized message
+
+    RETURN QUERY
+    SELECT throws_ok(stmt || $$('edges', 'points', 1, -3.5)$$);
+
+    RETURN QUERY
+    SELECT throws_ok(stmt || $$('edges', 'points', 1, -3.5)$$,
+    'XX000', $$Negative value found on 'distance'$$, fn || ': Negative distance throws');
+
+    RETURN QUERY
+    SELECT lives_ok(stmt || $$('edges', 'points', 1, 0)$$, fn || ': 0 is ok');
+
+  ELSIF min_lib_version('4.0.0') THEN
+    -- v4.0.0-v4.0.1: distance <= 0, different message, distance=0 also throws
+
+    RETURN QUERY
+    SELECT throws_ok(stmt || $$('edges', 'points', 1, -3.5)$$);
+
+    RETURN QUERY
+    SELECT throws_ok(stmt || $$('edges', 'points', 1, -3.5)$$,
+    'XX000', $$Invalid value of 'distance'$$, fn || ': Negative distance throws non standard message');
+
+    RETURN QUERY
+    SELECT throws_ok(stmt || $$('edges', 'points', 1, 0)$$);
+
+  ELSE
+    -- v3.0.0-v3.8.0: no check
+    RETURN QUERY
+    SELECT lives_ok(stmt || $$('edges', 'points', 1, -3.5)$$, 'Silently ignores negative values');
+
+    RETURN QUERY
+    SELECT lives_ok(stmt || $$('edges', 'points', 1, 0)$$, fn || ': 0 is ok');
+
+  END IF;
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION test_mst(fn TEXT) RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+  stmt TEXT = 'SELECT * FROM ' || fn;
+BEGIN
+
+  RETURN QUERY
+  SELECT throws_ok(stmt || $$('edges', 1, -3.5)$$);
+
+  IF min_version('3.7.0') THEN
+    -- v3.7.0-*: distance < 0, standardized message
+
+    RETURN QUERY
+    SELECT throws_ok(stmt || $$('edges', 1, -3.5)$$,
+    'XX000', $$Negative value found on 'distance'$$, fn || ': Negative distance throws from C/C++');
+
+  ELSE
+    -- v3.0.0-v3.6.3: error code from SQL
+
+    RETURN QUERY
+    SELECT throws_ok(stmt || $$('edges', 1, -3.5)$$,
+    'P0001', $$Negative value found on 'distance'$$, fn || ': Negative distance throws from SQL');
+
+  END IF;
+
+  RETURN QUERY
+  SELECT lives_ok(stmt || $$('edges', 1, 0)$$, fn || ': 0 is ok');
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION test_function() RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  RETURN QUERY SELECT test_mst('pgr_primDD');
+  RETURN QUERY SELECT test_mst('pgr_kruskalDD');
+  RETURN QUERY SELECT test_DD();
+  RETURN QUERY SELECT test_withPDD();
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT test_function();
+
+SELECT finish();
+ROLLBACK;
