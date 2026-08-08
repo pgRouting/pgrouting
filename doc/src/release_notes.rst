@@ -51,6 +51,7 @@ To see all issues & pull requests closed by this release see the
   process
 * :issue:`3100`: Coloring: create and use a process & driver
 * :issue:`3113`: Components: Integrate into existing process/driver pair
+* :issue:`3129`: breadthFirstSearch: Reorganize into traversal
 
 .. rubric:: Bug Fixes
 
