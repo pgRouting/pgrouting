@@ -5,6 +5,12 @@
 set(LOCAL_FILES
     _depthFirstSearch.sql
     depthFirstSearch.sql
+
+	_breadthFirstSearch.sql
+    breadthFirstSearch.sql
+
+	_binaryBreadthFirstSearch.sql
+    binaryBreadthFirstSearch.sql
     )
 
 foreach (f ${LOCAL_FILES})

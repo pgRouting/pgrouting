@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_BREADTHFIRSTSEARCH_BREADTHFIRSTSEARCH_HPP_
-#define INCLUDE_BREADTHFIRSTSEARCH_BREADTHFIRSTSEARCH_HPP_
+#ifndef INCLUDE_TRAVERSAL_BREADTHFIRSTSEARCH_HPP_
+#define INCLUDE_TRAVERSAL_BREADTHFIRSTSEARCH_HPP_
 #pragma once
 
 #include <vector>
@@ -132,4 +132,4 @@ std::vector<MST_rt> breadthFirstSearch(
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_BREADTHFIRSTSEARCH_BREADTHFIRSTSEARCH_HPP_
+#endif  // INCLUDE_TRAVERSAL_BREADTHFIRSTSEARCH_HPP_

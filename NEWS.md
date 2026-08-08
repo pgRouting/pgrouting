@@ -26,6 +26,7 @@ To see all issues & pull requests closed by this release see the
   process
 * [#3100](https://github.com/pgRouting/pgrouting/issues/3100): Coloring: create and use a process & driver
 * [#3113](https://github.com/pgRouting/pgrouting/issues/3113): Components: Integrate into existing process/driver pair
+* [#3129](https://github.com/pgRouting/pgrouting/issues/3129): breadthFirstSearch: Reorganize into traversal
 
 **Bug Fixes**
 
