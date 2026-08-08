@@ -30,11 +30,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <deque>
 #include <algorithm>
-#include <cmath>
 #include <limits>
 #include <vector>
 #include <set>
 #include <map>
+#include <utility>
+#include <string>
 #include <cstdint>
 
 #include "cpp_common/path.hpp"
@@ -44,6 +45,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/ii_t_rt.h"
 
 namespace pgrouting {
+
+template <class G>
+bool
+costCheck(G &graph)  {
+    typedef typename G::E_i E_i;
+
+    auto edges = boost::edges(graph.graph);
+    E_i out_i;
+    E_i out_end;
+    std::set<double> cost_set;
+    for (boost::tie(out_i, out_end) = edges; out_i != out_end; ++out_i) {
+        auto e = *out_i;
+        cost_set.insert(graph[e].cost);
+        if (cost_set.size() > 2) {
+            return false;
+        }
+    }
+
+    if (cost_set.size() == 2) {
+        if (*cost_set.begin() != 0.0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 namespace functions {
 
 template <class G>
@@ -214,6 +242,25 @@ class Pgr_binaryBreadthFirstSearch {
         }
     }
 };
+
+
+
+template <class G>
+std::deque<pgrouting::Path> binaryBreadthFirstSearch(
+        G &graph,
+        std::map<int64_t, std::set<int64_t>> &combinations) {
+    if (!costCheck(graph)) {
+        throw std::make_pair(std::string(
+        "Graph Condition Failed: Graph should have at most two distinct non-negative edge costs."),
+        std::string("If there are exactly two distinct edge costs, one of them must equal zero"));
+    }
+
+    pgrouting::functions::Pgr_binaryBreadthFirstSearch< G > fn_binaryBreadthFirstSearch;
+    auto paths = fn_binaryBreadthFirstSearch.binaryBreadthFirstSearch(graph, combinations);
+
+    return paths;
+}
+
 }  // namespace functions
 }  // namespace pgrouting
 
