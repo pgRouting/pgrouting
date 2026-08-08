@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 19:11+0000\n"
+"POT-Creation-Date: 2026-08-08 14:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3532,16 +3532,49 @@ msgstr ""
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.2%22>`__"
 msgstr ""
 
-msgid "Bug Fixes"
+msgid "4.0.2 Summary of changes by function"
+msgstr ""
+
+msgid "pgr_dijkstraVia"
+msgstr ""
+
+msgid "Fix: bad alloc"
+msgstr ""
+
+msgid "pgr_drivingDistance"
+msgstr ""
+
+msgid "Standardizing negative distance behaviour"
+msgstr ""
+
+msgid "Throws when :math:`distance < 0`."
+msgstr ""
+
+msgid "Standard message and hint."
+msgstr ""
+
+msgid "pgr_withPointsDD"
+msgstr ""
+
+msgid "pgr_withPointsVia"
+msgstr ""
+
+msgid "4.0.2 Bug Fixes"
 msgstr ""
 
 msgid "`#3110 <https://github.com/pgRouting/pgrouting/issues/3110>`__: pgr_dijkstraVia throws std::bad_alloc when a node does not exist"
+msgstr ""
+
+msgid "`#3091 <https://github.com/pgRouting/pgrouting/issues/3091>`__: Catchment functions when negative distance do not have a standardized behaviour"
 msgstr ""
 
 msgid "pgRouting 4.0.1 Release Notes"
 msgstr ""
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.1%22>`__"
+msgstr ""
+
+msgid "Bug Fixes"
 msgstr ""
 
 msgid "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withPoints does not pick optimal route when fraction = 1"
@@ -3748,9 +3781,6 @@ msgstr ""
 msgid "pgr_dijkstraNearCost"
 msgstr ""
 
-msgid "pgr_dijkstraVia"
-msgstr ""
-
 msgid "pgr_edgeColoring"
 msgstr ""
 
@@ -3943,9 +3973,6 @@ msgstr ""
 msgid "pgr_withpointscostmatrix(text,text,anyarray,boolean,character)"
 msgstr ""
 
-msgid "pgr_withPointsDD"
-msgstr ""
-
 msgid "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
 msgstr ""
 
@@ -3956,9 +3983,6 @@ msgid "pgr_withPointsKSP"
 msgstr ""
 
 msgid "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
-msgstr ""
-
-msgid "pgr_withPointsVia"
 msgstr ""
 
 msgid "pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
@@ -10423,6 +10447,9 @@ msgstr ""
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr ""
 
+msgid "Version 4.0.2"
+msgstr ""
+
 msgid "Given a list of vertices and a graph, this function is equivalent to finding the shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i < size\\_of(via\\;vertices)`."
 msgstr ""
 
@@ -14750,9 +14777,6 @@ msgid "pgr_alphashape"
 msgstr ""
 
 msgid "pgr_dijkstraCostMatrix"
-msgstr ""
-
-msgid "pgr_drivingDistance"
 msgstr ""
 
 msgid "pgr_dijkstraVia (proposed)"
