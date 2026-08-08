@@ -57,54 +57,60 @@ SELECT * from pgr_binaryBreadthFirstSearch(''SELECT *  from edges'',array[-2,-5]
 SELECT * INTO edges_invalid_1 FROM edges;
 UPDATE edges_invalid_1 SET cost = 5 WHERE id = 1;
 
-PREPARE errorTestManyWeights AS
-SELECT *
-FROM pgr_binaryBreadthFirstSearch(
-    'SELECT *
-    FROM edges_invalid_1',
-    4, 6
-);
-
-
-SELECT
-  CASE WHEN min_lib_version('4.0.0') THEN
-    throws_ok('errorTestManyWeights',
-    'XX000',
-    'Graph Condition Failed: Graph should have at most two distinct non-negative edge costs! If there are exactly two distinct edge costs, one of them must equal zero!',
-      '17: Graph has more than 2 distinct weights')
-  ELSE
-  throws_ok('errorTestManyWeights',
-    'XX000',
-    'Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs! If there are exactly two distinct edge costs, one of them must equal zero!',
-      '17: Graph has more than 2 distinct weights')
-  END;
-
 SELECT * INTO edges_invalid_2 FROM edges;
 UPDATE edges_invalid_2 SET cost = 2 WHERE cost = 0;
 UPDATE edges_invalid_2 SET reverse_cost = 2 WHERE reverse_cost = 0;
 
+CREATE OR REPLACE FUNCTION test_throws()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+
+
+PREPARE errorTestManyWeights AS
+SELECT * FROM pgr_binaryBreadthFirstSearch('SELECT * FROM edges_invalid_1', 4, 6);
+
+
+IF min_lib_version('4.0.2') THEN
+
+  RETURN QUERY
+  SELECT throws_ok('errorTestManyWeights',
+    'XX000',
+    'Graph Condition Failed: Graph should have at most two distinct non-negative edge costs.',
+      '17: Graph has more than 2 distinct weights');
+
+ELSE
+
+  RETURN QUERY
+  SELECT  throws_ok('errorTestManyWeights');
+
+END IF;
+
 PREPARE errorTestNoZeroWeight AS
-SELECT *
-FROM pgr_binaryBreadthFirstSearch(
-    'SELECT *
-    FROM edges_invalid_2',
-    4, 6
-);
+SELECT * FROM pgr_binaryBreadthFirstSearch('SELECT * FROM edges_invalid_2', 4, 6);
 
 
-SELECT
-  CASE WHEN min_lib_version('4.0.0') THEN
-     throws_ok('errorTestNoZeroWeight',
+IF min_lib_version('4.0.2') THEN
+
+   RETURN QUERY
+   SELECT throws_ok('errorTestNoZeroWeight',
     'XX000',
-    'Graph Condition Failed: Graph should have at most two distinct non-negative edge costs! If there are exactly two distinct edge costs, one of them must equal zero!',
-    '17: If graph has 2 distinct weights, one must be zero')
-  ELSE
-     throws_ok('errorTestNoZeroWeight',
-    'XX000',
-    'Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs! If there are exactly two distinct edge costs, one of them must equal zero!',
-    '17: If graph has 2 distinct weights, one must be zero')
-  END;
+    'Graph Condition Failed: Graph should have at most two distinct non-negative edge costs.',
+    '18: If graph has 2 distinct weights, one must be zero');
+
+ELSE
+
+   RETURN QUERY
+   SELECT throws_ok('errorTestNoZeroWeight');
+
+END IF;
+
+END;
+$BODY$
+LANGUAGE plpgsql;
 
 
-SELECT * FROM finish();
+SELECT test_throws();
+SELECT finish();
 ROLLBACK;
