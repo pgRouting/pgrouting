@@ -1,0 +1,183 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2016-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+BEGIN;
+SET client_min_messages TO WARNING;
+
+SELECT CASE WHEN min_lib_version('3.6.0') AND NOT min_lib_version('4.0.2') THEN plan(2)
+            WHEN NOT min_version('3.4.0') THEN plan(7)
+            ELSE plan(14) END;
+
+PREPARE edges AS
+SELECT *
+FROM (
+  VALUES
+  (100, 1, 2, 1, 1),
+  (101, 2, 3, 1, 1),
+  (102, 3, 4, 1, 1)
+) AS edge_table(id, source, target, cost, reverse_cost);
+
+PREPARE points AS
+SELECT *
+FROM (
+  VALUES (1, 101, 0.5::FLOAT)
+) AS t(pid, edge_id, fraction);
+
+
+/*
+ * Test results by pgRouting version (14 tests)
+ *
+ * pgr_dijkstraVia tests run on all versions
+ * pgr_withPointsVia exists since 3.4.0
+ * Bad alloc error on lib 3.6.0 - 4.0.1, fixed on 4.0.2
+ *
+ * +------+------------------+------------------------------------------+------------------------+---------------------+
+ * | Test | Function         | What it tests                            | Status                 | Note                |
+ * +------+------------------+------------------------------------------+------------------------+---------------------+
+ * |    1 | dijkstraVia      | lives_ok (all via vertices exist)        | v3.0.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * |    2 | dijkstraVia      | isnt_empty (all via vertices exist)      | v3.0.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * |    3 | dijkstraVia      | lives_ok (via vertex not in graph)       | v3.0.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * |    4 | dijkstraVia      | isnt_empty (via vertex not in graph)     | v3.0.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * |    5 | dijkstraVia      | lives_ok (via missing between two valid) | v3.0.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * |    6 | dijkstraVia      | is_empty (via missing between two valid) | v3.0.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * |    7 | withPointsVia    | lives_ok (all via vertices exist)        | v3.0.0 - v3.3.x SKIP   | exists since 3.4.0  |
+ * |      |                  |                                          | v3.4.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * |    8 | withPointsVia    | isnt_empty (all via vertices exist)      | v3.0.0 - v3.3.x SKIP   | exists since 3.4.0  |
+ * |      |                  |                                          | v3.4.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * |    9 | withPointsVia    | lives_ok (via vertex not in graph)       | v3.0.0 - v3.3.x SKIP   | exists since 3.4.0  |
+ * |      |                  |                                          | v3.4.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * |   10 | withPointsVia    | isnt_empty (via vertex not in graph)     | v3.0.0 - v3.3.x SKIP   | exists since 3.4.0  |
+ * |      |                  |                                          | v3.4.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * |   11 | withPointsVia    | lives_ok (via missing between two valid) | v3.0.0 - v3.3.x SKIP   | exists since 3.4.0  |
+ * |      |                  |                                          | v3.4.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * |   12 | withPointsVia    | is_empty (via missing between two valid) | v3.0.0 - v3.3.x SKIP   | exists since 3.4.0  |
+ * |      |                  |                                          | v3.4.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * |   13 | withPointsVia    | lives_ok (via includes a point pid)      | v3.0.0 - v3.3.x SKIP   | exists since 3.4.0  |
+ * |      |                  |                                          | v3.4.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * |   14 | withPointsVia    | isnt_empty (via includes a point pid)    | v3.0.0 - v3.3.x SKIP   | exists since 3.4.0  |
+ * |      |                  |                                          | v3.4.0 - v3.5.x PASS   |                     |
+ * |      |                  |                                          | v3.6.0 - v4.0.1 SKIP   | bad alloc           |
+ * |      |                  |                                          | v4.0.2 - * PASS        |                     |
+ * +------+------------------+------------------------------------------+------------------------+---------------------+
+ */
+
+CREATE OR REPLACE FUNCTION test_wpVia()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('3.4.0') THEN
+    RETURN query
+    SELECT skip(1, 'pgr_withPointsVia exists since 3.4.0');
+    RETURN;
+  END IF;
+
+
+  /* lib 3.6.0..4.0.1 have the bad alloc */
+  IF min_lib_version('3.6.0') AND NOT min_lib_version('4.0.2') THEN
+    RETURN query
+    SELECT skip(1, 'bad alloc error on lib 3.6.0..4.0.1, fixed on 4.0.2');
+    RETURN;
+  END IF;
+
+
+  RETURN QUERY
+  SELECT lives_ok($$SELECT * FROM pgr_withPointsVia('edges', 'points', ARRAY[1, 3, 4])$$,
+    'withPointsVia lives when all via vertices exist in the graph');
+  RETURN QUERY
+  SELECT isnt_empty($$SELECT * FROM pgr_withPointsVia('edges', 'points', ARRAY[1, 3, 4])$$,
+    'withPointsVia returns results when all via vertices exist in the graph');
+
+  RETURN QUERY
+  SELECT lives_ok($$SELECT * FROM pgr_withPointsVia('edges', 'points', ARRAY[1, 3, 5])$$,
+    'withPointsVia lives when a via vertex does not exist in the graph');
+  RETURN QUERY
+  SELECT isnt_empty($$SELECT * FROM pgr_withPointsVia('edges', 'points', ARRAY[1, 3, 5])$$,
+    'withPointsVia returns results when a via vertex does not exist in the graph');
+
+  RETURN QUERY
+  SELECT lives_ok($$SELECT * FROM pgr_withPointsVia('edges', 'points', ARRAY[1, 5, 4])$$,
+    'withPointsVia handles via vertex missing between two valid vertices');
+  RETURN QUERY
+  SELECT is_empty($$SELECT * FROM pgr_withPointsVia('edges', 'points', ARRAY[1, 5, 4]);$$,
+    'withPointsVia returns empty when via vertex missing between two valid vertices');
+
+  RETURN QUERY
+  SELECT lives_ok($$SELECT * FROM pgr_withPointsVia('edges', 'points', ARRAY[1, -1, 4])$$,
+    'withPointsVia lives when via includes a point pid that exists');
+  RETURN QUERY
+  SELECT isnt_empty($$SELECT * FROM pgr_withPointsVia('edges', 'points', ARRAY[1, -1, 4])$$,
+    'withPointsVia returns results when via includes a point pid that exists');
+END
+$BODY$
+language plpgsql;
+
+CREATE OR REPLACE FUNCTION test_dVia()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  /* lib 3.6.0..4.0.1 have the bad alloc */
+  IF min_lib_version('3.6.0') AND NOT min_lib_version('4.0.2') THEN
+    RETURN query
+    SELECT skip(1, 'bad alloc error on lib 3.6.0..4.0.1, fixed on 4.0.2');
+    RETURN;
+  END IF;
+
+  RETURN QUERY
+  SELECT lives_ok($$SELECT * FROM pgr_dijkstraVia('edges', ARRAY[1, 3, 4] )$$,
+    'dijkstraVia lives when all via vertices exist in the graph');
+  RETURN QUERY
+  SELECT isnt_empty($$SELECT * FROM pgr_dijkstraVia('edges', ARRAY[1, 3, 4] )$$,
+    'dijkstraVia lives when all via vertices exist in the graph');
+
+  RETURN QUERY
+  SELECT lives_ok($$SELECT * FROM pgr_dijkstraVia('edges', ARRAY[1, 3, 5])$$,
+    'dijkstraVia lives when a via vertex does not exist in the graph');
+  RETURN QUERY
+  SELECT isnt_empty($$SELECT * FROM pgr_dijkstraVia('edges', ARRAY[1, 3, 5])$$,
+    'dijkstraVia lives when a via vertex does not exist in the graph');
+
+  RETURN QUERY
+  SELECT lives_ok($$SELECT * FROM pgr_dijkstraVia('edges', ARRAY[1, 5, 4])$$,
+    'dijkstraVia handles via vertex missing between two valid vertices');
+  RETURN QUERY
+  SELECT is_empty($$SELECT * FROM pgr_dijkstraVia('edges', ARRAY[1, 5, 4]);$$,
+    'dijkstraVia handles via vertex missing between two valid vertices');
+
+END
+$BODY$
+language plpgsql;
+
+SELECT test_dVia();
+SELECT test_wpVia();
+
+SELECT * FROM finish();
+ROLLBACK;
