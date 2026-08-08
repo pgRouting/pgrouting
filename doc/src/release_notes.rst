@@ -38,9 +38,27 @@ pgRouting 4.0.2 Release Notes
 To see all issues & pull requests closed by this release see the
 :milestone:`4.0.2`
 
-.. rubric:: Bug Fixes
+4.0.2 Summary of changes by function
+...............................................................................
+
+* pgr_drivingDistance
+
+  .. include:: pgr_drivingDistance.rst
+     :start-after: Version 4.0.2
+     :end-before: .. rubric
+
+* pgr_withPointsDD
+
+  .. include:: pgr_withPointsDD.rst
+     :start-after: Version 4.0.2
+     :end-before: .. rubric
+
+4.0.2 Bug Fixes
+...............................................................................
 
 * :issue:`3110`: pgr_dijkstraVia throws std::bad_alloc when a node does not exist
+* :issue:`3091`: Catchment functions when negative distance do not have a
+  standardized behaviour
 
 pgRouting 4.0.1 Release Notes
 -------------------------------------------------------------------------------
