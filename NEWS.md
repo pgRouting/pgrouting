@@ -15,6 +15,10 @@ To see all issues & pull requests closed by this release see the
 
 4.0.2 Summary of changes by function
 
+* pgr_dijkstraVia
+
+  * Fix: bad alloc
+
 * pgr_drivingDistance
 
   * Standardizing negative distance behaviour
@@ -26,6 +30,10 @@ To see all issues & pull requests closed by this release see the
   * Standardizing negative distance behaviour
     * Throws when :math:`distance < 0`.
     * Standard message and hint.
+
+* pgr_withPointsVia
+
+  * Fix: bad alloc
 
 4.0.2 Bug Fixes
 

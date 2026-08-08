@@ -41,6 +41,12 @@ To see all issues & pull requests closed by this release see the
 4.0.2 Summary of changes by function
 ...............................................................................
 
+* pgr_dijkstraVia
+
+  .. include:: pgr_dijkstraVia.rst
+     :start-after: Version 4.0.2
+     :end-before: .. rubric
+
 * pgr_drivingDistance
 
   .. include:: pgr_drivingDistance.rst
@@ -50,6 +56,12 @@ To see all issues & pull requests closed by this release see the
 * pgr_withPointsDD
 
   .. include:: pgr_withPointsDD.rst
+     :start-after: Version 4.0.2
+     :end-before: .. rubric
+
+* pgr_withPointsVia
+
+  .. include:: pgr_withPointsVia.rst
      :start-after: Version 4.0.2
      :end-before: .. rubric
 
