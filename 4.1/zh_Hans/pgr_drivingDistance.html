@@ -169,6 +169,15 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code><a class="headerlink" href="#pgr-drivingdistance" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> - 返回起始节点的行驶距离。</p>
 <p class="rubric">可用性</p>
+<p class="rubric">Version 4.0.2</p>
+<ul class="simple">
+<li><p>Standardizing negative distance behaviour</p>
+<ul>
+<li><p>Throws when <span class="math notranslate nohighlight">\(distance &lt; 0\)</span>.</p></li>
+<li><p>Standard message and hint.</p></li>
+</ul>
+</li>
+</ul>
 <p class="rubric">版本3.6.0</p>
 <ul class="simple">
 <li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -535,7 +544,7 @@
     </p>
     <p>
         &copy; Copyright %Y pgRouting developers.<br/>
-      最后更新于 7月 28, 2026.<br/>
+      最后更新于 8月 08, 2026.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
