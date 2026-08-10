@@ -35,6 +35,7 @@ enum Which {  // NOLINT(cppcoreguidelines-use-enum-class)
     DAGSP,
     BELLMANFORD,
     EDGEDISJOINT,
+    BINARYBFS,
     /** allpairs **/
     FLOYD = 31, JOHNSON,
     /** metrics **/

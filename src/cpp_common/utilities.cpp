@@ -151,6 +151,9 @@ get_name(Which which, bool is_only_cost, bool is_near, bool is_matrix) {
         case DAGSP :
             base = "pgr_dagShortestPath";
             break;
+        case BINARYBFS :
+            base = "pgr_binaryBreadthFirstSearch";
+            break;
         case BELLMANFORD :
             base = "pgr_bellmanFord";
             break;
