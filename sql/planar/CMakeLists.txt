@@ -5,6 +5,8 @@
 set(LOCAL_FILES
     _isPlanar.sql
     isPlanar.sql
+    _makeMaximalPlanar.sql
+    makeMaximalPlanar.sql
     )
 
 foreach (f ${LOCAL_FILES})
