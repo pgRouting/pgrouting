@@ -5,6 +5,7 @@
 set(LOCAL_FILES
     bandwidth
     betweennessCentrality
+    coreNumbers
     degree
     )
 

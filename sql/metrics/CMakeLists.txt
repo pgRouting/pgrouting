@@ -8,6 +8,8 @@ set(LOCAL_FILES
     degree.sql
     _bandwidth.sql
     bandwidth.sql
+    _coreNumbers.sql
+    coreNumbers.sql
 )
 
 foreach (f ${LOCAL_FILES})

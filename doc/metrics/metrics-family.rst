@@ -28,6 +28,8 @@ Metrics - Family of functions
 
 * :doc:`pgr_bandwidth` - Computes the bandwidth of a graph.
 
+* :doc:`pgr_coreNumbers` - Computes the core number of each vertex.
+
 .. experimental-end
 
 .. toctree::
@@ -35,6 +37,7 @@ Metrics - Family of functions
 
     pgr_degree
     pgr_betweennessCentrality
+    pgr_coreNumbers
     pgr_bandwidth
 
 See Also

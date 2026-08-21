@@ -62,6 +62,12 @@ To see all issues & pull requests closed by this release see the
 
 .. rubric:: Summary of changes by function
 
+* pgr_coreNumbers
+
+  .. include:: pgr_coreNumbers.rst
+     :start-after: Version 4.1.0
+     :end-before: Description
+
 * pgr_edgeColoring
 
   .. include:: pgr_edgeColoring.rst
