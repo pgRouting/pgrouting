@@ -88,7 +88,7 @@ PGDLLEXPORT Datum _pgr_makemaximalplanar(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = UInt64GetDatum(call_cntr + 1);
+        values[0] = Int64GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].d1);
         values[2] = Int64GetDatum(result_tuples[call_cntr].d2);
 
