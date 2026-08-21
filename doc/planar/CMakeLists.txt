@@ -3,7 +3,9 @@
 # License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 
 set(LOCAL_FILES
+    planar-family.rst
     pgr_isPlanar.rst
+    pgr_makeMaximalPlanar.rst
     )
 
 foreach (f ${LOCAL_FILES})

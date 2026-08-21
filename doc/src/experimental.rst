@@ -93,6 +93,12 @@ Experimental Functions
    :start-after: experimental-start
    :end-before: experimental-end
 
+:doc:`planar-family`
+
+.. include:: planar-family.rst
+   :start-after: experimental-start
+   :end-before: experimental-end
+
 .. toctree::
    :hidden:
 
@@ -100,6 +106,7 @@ Experimental Functions
    transformation-family
    components-family
    ordering-family
+   planar-family
 
 .. rubric:: categories
 
@@ -127,14 +134,7 @@ Experimental Functions
   pgr_dagShortestPath
   pgr_edwardMoore
 
-.. rubric:: Planar Family
 
-- :doc:`pgr_isPlanar`
-
-.. toctree::
-  :hidden:
-
-  pgr_isPlanar
 
 .. rubric:: Miscellaneous Algorithms
 
