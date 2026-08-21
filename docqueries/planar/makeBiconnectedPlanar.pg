@@ -1,0 +1,25 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2020-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+/* -- q1 */
+SELECT * FROM pgr_makeBiconnectedPlanar(
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
+);
+/* -- q2 */
+CREATE TABLE example_edges_bi (
+    id SERIAL PRIMARY KEY,
+    source INTEGER,
+    target INTEGER,
+    cost DOUBLE PRECISION,
+    reverse_cost DOUBLE PRECISION
+);
+INSERT INTO example_edges_bi (source, target, cost, reverse_cost) VALUES
+(1, 2, 1, 1),
+(2, 3, 1, 1),
+(3, 4, 1, 1);
+
+/* -- q3 */
+SELECT * FROM pgr_makeBiconnectedPlanar(
+  'SELECT id, source, target, cost, reverse_cost FROM example_edges_bi'
+);
+/* -- q4 */
