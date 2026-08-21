@@ -1,0 +1,75 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2015-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+/* -- q1 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id < 8'
+) ORDER BY node;
+/* -- q2 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id < 5'
+) ORDER BY node;
+/* -- q3 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id < 10'
+) ORDER BY node;
+/* -- q4 */
+SELECT node, core
+FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id < 10'
+) WHERE core >= 2
+ORDER BY node;
+/* -- q5 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges'
+) ORDER BY node;
+/* -- q6 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id < 2'
+) ORDER BY node;
+/* -- q7 */
+SELECT * FROM pgr_coreNumbers(
+$$SELECT * FROM (VALUES
+  (1, 1::BIGINT, 2::BIGINT, 1::FLOAT, 1::FLOAT),
+  (2, 2::BIGINT, 3::BIGINT, 1::FLOAT, 1::FLOAT),
+  (3, 3::BIGINT, 1::BIGINT, 1::FLOAT, 1::FLOAT)
+) AS t(id, source, target, cost, reverse_cost)$$
+) ORDER BY node;
+/* -- q8 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id IN (2, 4, 5, 8)'
+) ORDER BY node;
+/* -- q9 */
+SELECT * FROM pgr_coreNumbers(
+$$SELECT * FROM (VALUES
+  (1, 1::BIGINT, 2::BIGINT, 1::FLOAT, 1::FLOAT),
+  (2, 1::BIGINT, 3::BIGINT, 1::FLOAT, 1::FLOAT),
+  (3, 1::BIGINT, 4::BIGINT, 1::FLOAT, 1::FLOAT),
+  (4, 1::BIGINT, 5::BIGINT, 1::FLOAT, 1::FLOAT)
+) AS t(id, source, target, cost, reverse_cost)$$
+) ORDER BY node;
+/* -- q10 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id < 0'
+) ORDER BY node;
+/* -- q11 */
+SELECT * FROM pgr_coreNumbers(
+$$SELECT * FROM (VALUES
+  (1, 1::BIGINT, 2::BIGINT, 1::FLOAT, 1::FLOAT),
+  (2, 1::BIGINT, 3::BIGINT, 1::FLOAT, 1::FLOAT),
+  (3, 1::BIGINT, 4::BIGINT, 1::FLOAT, 1::FLOAT),
+  (4, 2::BIGINT, 3::BIGINT, 1::FLOAT, 1::FLOAT),
+  (5, 2::BIGINT, 4::BIGINT, 1::FLOAT, 1::FLOAT),
+  (6, 3::BIGINT, 4::BIGINT, 1::FLOAT, 1::FLOAT)
+) AS t(id, source, target, cost, reverse_cost)$$
+) ORDER BY node;
+/* -- q12 */
