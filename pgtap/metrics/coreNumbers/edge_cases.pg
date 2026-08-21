@@ -1,0 +1,400 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN NOT min_version('4.1.0') THEN plan(1) ELSE plan(27) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('4.1.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 4.1.0');
+  RETURN;
+END IF;
+
+PREPARE idless2_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 2'
+  ) ORDER BY node;
+
+PREPARE idless2_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT, 1::BIGINT),
+    (6, 1))
+  AS t(node, core);
+
+RETURN QUERY
+SELECT lives_ok('idless2_q');
+
+RETURN QUERY
+SELECT results_eq('idless2_q', 'idless2_r');
+
+
+PREPARE idless4_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 4'
+  ) ORDER BY node;
+
+PREPARE idless4_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT, 1::BIGINT),
+    (6, 1),
+    (10, 1),
+    (15, 1))
+  AS t(node, core);
+
+RETURN QUERY
+SELECT lives_ok('idless4_q');
+
+RETURN QUERY
+SELECT results_eq('idless4_q', 'idless4_r', 'test 4');
+
+
+PREPARE idless3_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 3'
+  ) ORDER BY node;
+
+PREPARE idless3_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT, 1::BIGINT),
+    (6, 1),
+    (10, 1))
+  AS t(node, core);
+
+RETURN QUERY
+SELECT lives_ok('idless3_q');
+
+RETURN QUERY
+SELECT results_eq('idless3_q', 'idless3_r', 'test 5');
+
+
+PREPARE idless5_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 5'
+  ) ORDER BY node;
+
+PREPARE idless5_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT, 1::BIGINT),
+    (6, 1),
+    (7, 1),
+    (10, 1),
+    (15, 1))
+  AS t(node, core);
+
+RETURN QUERY
+SELECT lives_ok('idless5_q');
+
+RETURN QUERY
+SELECT results_eq('idless5_q', 'idless5_r', 'test 6');
+
+
+PREPARE idless8_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 8'
+  ) ORDER BY node;
+
+PREPARE idless8_r AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 1::BIGINT),
+    (3, 1),
+    (5, 1),
+    (6, 1),
+    (7, 1),
+    (10, 1),
+    (11, 1),
+    (15, 1))
+  AS t(node, core);
+
+RETURN QUERY
+SELECT lives_ok('idless8_q');
+
+RETURN QUERY
+SELECT results_eq('idless8_q', 'idless8_r', 'test 7');
+
+
+PREPARE idless10_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 10'
+  ) ORDER BY node;
+
+PREPARE idless10_r AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 1::BIGINT),
+    (3, 1),
+    (5, 1),
+    (6, 2),
+    (7, 2),
+    (10, 2),
+    (11, 2),
+    (15, 1),
+    (16, 1))
+  AS t(node, core);
+
+RETURN QUERY
+SELECT lives_ok('idless10_q');
+
+RETURN QUERY
+SELECT results_eq('idless10_q', 'idless10_r', 'test 8');
+
+
+PREPARE empty_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 0'
+  ) ORDER BY node;
+
+RETURN QUERY
+SELECT is_empty('empty_q', 'Empty graph returns no rows');
+
+
+/* Higher core numbers: a K4 clique puts every vertex in the 3-core */
+
+PREPARE k4_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT * FROM (VALUES
+      (1,1,2,1.0,1.0),(2,1,3,1.0,1.0),(3,1,4,1.0,1.0),
+      (4,2,3,1.0,1.0),(5,2,4,1.0,1.0),(6,3,4,1.0,1.0))
+     AS t(id, source, target, cost, reverse_cost)'
+  ) ORDER BY node;
+
+PREPARE k4_r AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 3::BIGINT),
+    (2, 3),
+    (3, 3),
+    (4, 3))
+  AS t(node, core);
+
+RETURN QUERY
+SELECT lives_ok('k4_q');
+
+RETURN QUERY
+SELECT results_eq('k4_q', 'k4_r', 'K4 clique: every vertex has core 3');
+
+
+/* A K5 clique puts every vertex in the 4-core */
+
+PREPARE k5_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT * FROM (VALUES
+      (1,1,2,1.0,1.0),(2,1,3,1.0,1.0),(3,1,4,1.0,1.0),(4,1,5,1.0,1.0),
+      (5,2,3,1.0,1.0),(6,2,4,1.0,1.0),(7,2,5,1.0,1.0),
+      (8,3,4,1.0,1.0),(9,3,5,1.0,1.0),(10,4,5,1.0,1.0))
+     AS t(id, source, target, cost, reverse_cost)'
+  ) ORDER BY node;
+
+PREPARE k5_r AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 4::BIGINT),
+    (2, 4),
+    (3, 4),
+    (4, 4),
+    (5, 4))
+  AS t(node, core);
+
+RETURN QUERY
+SELECT lives_ok('k5_q');
+
+RETURN QUERY
+SELECT results_eq('k5_q', 'k5_r', 'K5 clique: every vertex has core 4');
+
+
+/* Mixed cores: a K4 clique with one pendant vertex peels in two levels */
+
+PREPARE pendant_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT * FROM (VALUES
+      (1,1,2,1.0,1.0),(2,1,3,1.0,1.0),(3,1,4,1.0,1.0),
+      (4,2,3,1.0,1.0),(5,2,4,1.0,1.0),(6,3,4,1.0,1.0),
+      (7,1,5,1.0,1.0))
+     AS t(id, source, target, cost, reverse_cost)'
+  ) ORDER BY node;
+
+PREPARE pendant_r AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 3::BIGINT),
+    (2, 3),
+    (3, 3),
+    (4, 3),
+    (5, 1))
+  AS t(node, core);
+
+RETURN QUERY
+SELECT lives_ok('pendant_q');
+
+RETURN QUERY
+SELECT results_eq('pendant_q', 'pendant_r',
+  'K4 with a pendant vertex: clique is core 3, pendant is core 1');
+
+
+/* cost and reverse_cost are ignored: a one way triangle (reverse_cost = -1)
+   gives the same core numbers as the two way triangle */
+
+PREPARE oneway_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT * FROM (VALUES
+      (1,1,2,1.0,-1.0),(2,2,3,1.0,-1.0),(3,3,1,1.0,-1.0))
+     AS t(id, source, target, cost, reverse_cost)'
+  ) ORDER BY node;
+
+PREPARE triangle_r AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 2::BIGINT),
+    (2, 2),
+    (3, 2))
+  AS t(node, core);
+
+RETURN QUERY
+SELECT results_eq('oneway_q', 'triangle_r',
+  'reverse_cost = -1 is ignored: triangle is still core 2');
+
+
+/* the magnitude of cost does not change the result */
+
+PREPARE bigcost_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT * FROM (VALUES
+      (1,1,2,999.0,999.0),(2,2,3,999.0,999.0),(3,3,1,999.0,999.0))
+     AS t(id, source, target, cost, reverse_cost)'
+  ) ORDER BY node;
+
+RETURN QUERY
+SELECT results_eq('bigcost_q', 'triangle_r',
+  'cost magnitude is ignored: triangle is still core 2');
+
+
+/* results are ordered by node ascending without an explicit ORDER BY */
+
+PREPARE ordering_q AS
+  SELECT node FROM pgr_coreNumbers(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 10'
+  );
+
+PREPARE ordering_r AS
+  SELECT * FROM (VALUES
+    (1::BIGINT), (3), (5), (6), (7), (10), (11), (15), (16))
+  AS t(node);
+
+RETURN QUERY
+SELECT results_eq('ordering_q', 'ordering_r',
+  'Results are ordered by node ascending without an explicit ORDER BY');
+
+
+/* parallel edges are collapsed to a single edge, keeping the lowest cost,
+   so they do not inflate the degree */
+
+PREPARE parallel_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT * FROM (VALUES
+      (1,1,2,1.0,1.0),(2,1,2,1.0,1.0))
+     AS t(id, source, target, cost, reverse_cost)'
+  ) ORDER BY node;
+
+PREPARE parallel_r AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 1::BIGINT),
+    (2, 1))
+  AS t(node, core);
+
+RETURN QUERY
+SELECT results_eq('parallel_q', 'parallel_r',
+  'Two parallel edges are collapsed: both vertices are core 1');
+
+
+/* three parallel edges also collapse to a single edge */
+
+PREPARE parallel3_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT * FROM (VALUES
+      (1,1,2,1.0,1.0),(2,1,2,1.0,1.0),(3,1,2,1.0,1.0))
+     AS t(id, source, target, cost, reverse_cost)'
+  ) ORDER BY node;
+
+RETURN QUERY
+SELECT results_eq('parallel3_q', 'parallel_r',
+  'Three parallel edges are collapsed: both vertices are core 1');
+
+
+/* a self loop is not a neighbor of its own vertex, so it is dropped
+   before peeling and does not inflate that vertex's core number */
+
+PREPARE selfloop_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT * FROM (VALUES
+      (1,1,1,1.0,1.0),(2,1,2,1.0,1.0))
+     AS t(id, source, target, cost, reverse_cost)'
+  ) ORDER BY node;
+
+PREPARE selfloop_r AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 1::BIGINT),
+    (2, 1))
+  AS t(node, core);
+
+RETURN QUERY
+SELECT results_eq('selfloop_q', 'selfloop_r',
+  'A self loop is dropped: it does not add to the degree of its own vertex');
+
+/* a vertex whose only edge is a self loop has no real neighbors left
+   after the self loop is dropped, so it does not appear in the result */
+
+PREPARE selfloop_only_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT * FROM (VALUES
+      (1,1,1,1.0,1.0))
+     AS t(id, source, target, cost, reverse_cost)'
+  );
+
+RETURN QUERY
+SELECT is_empty('selfloop_only_q',
+  'A vertex whose only edge is a self loop has no results');
+
+
+/* disconnected components are peeled independently */
+
+PREPARE disjoint_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT * FROM (VALUES
+      (1,1,2,1.0,1.0),(2,2,3,1.0,1.0),(3,3,1,1.0,1.0),
+      (4,4,5,1.0,1.0),(5,5,6,1.0,1.0),(6,6,4,1.0,1.0))
+     AS t(id, source, target, cost, reverse_cost)'
+  ) ORDER BY node;
+
+PREPARE disjoint_r AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 2::BIGINT),
+    (2, 2),
+    (3, 2),
+    (4, 2),
+    (5, 2),
+    (6, 2))
+  AS t(node, core);
+
+RETURN QUERY
+SELECT results_eq('disjoint_q', 'disjoint_r',
+  'Two disjoint triangles: every vertex is core 2');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT finish();
+ROLLBACK;
