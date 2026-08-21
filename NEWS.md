@@ -35,11 +35,21 @@ To see all issues & pull requests closed by this release see the
 * [#3101](https://github.com/pgRouting/pgrouting/issues/3101): pgr_edgeColoring not building graph correctly
 
 
+**New experimental functions.**
+
+* Planar
+
+  * pgr_makeMaximalPlanar
+
 **Summary of changes by function**
 
 * pgr_edgeColoring
 
   * Fix the way it builds the graph
+
+* pgr_makeMaximalPlanar
+
+  * New experimental function.
 
 ## pgRouting 4.0
 
@@ -272,6 +282,7 @@ Summary of changes by function
 
   * All signatures promoted to official.
 
+
 * pgr_maxCardinalityMatch
 
   .. Breaking change
@@ -462,6 +473,7 @@ New experimental functions.
 
   * [#2954](https://github.com/pgRouting/pgrouting/issues/2954): pgr_kingOrdering
   * [#2955](https://github.com/pgRouting/pgrouting/issues/2955): pgr_sloanOrdering
+
 
 SQL signatures and output standardization
 

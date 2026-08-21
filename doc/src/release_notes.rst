@@ -60,6 +60,12 @@ To see all issues & pull requests closed by this release see the
 * :issue:`3101`: pgr_edgeColoring not building graph correctly
 
 
+.. rubric:: New experimental functions.
+
+* Planar
+
+  * pgr_makeMaximalPlanar
+
 .. rubric:: Summary of changes by function
 
 * pgr_edgeColoring
@@ -67,6 +73,12 @@ To see all issues & pull requests closed by this release see the
   .. include:: pgr_edgeColoring.rst
      :start-after: Version 4.1.0
      :end-before: .. rubric
+
+* pgr_makeMaximalPlanar
+
+  .. include:: pgr_makeMaximalPlanar.rst
+     :start-after: Version 4.1.0
+     :end-before: Description
 
 pgRouting 4.0
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -358,6 +370,7 @@ Summary of changes by function
      :start-after: Version 4.0.0
      :end-before: .. rubric
 
+
 * pgr_maxCardinalityMatch
 
   .. include:: pgr_maxCardinalityMatch.rst
@@ -524,6 +537,7 @@ New experimental functions.
 
   * :issue:`2954`: pgr_kingOrdering
   * :issue:`2955`: pgr_sloanOrdering
+
 
 SQL signatures and output standardization
 ...............................................................................
