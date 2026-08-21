@@ -123,6 +123,9 @@ get_name(Which which) {
         case STRONGCOMPONENTS:
             return "pgr_strongComponents";
             break;
+        case CORENUMBERS:
+            return "pgr_coreNumbers";
+            break;
         default:
             return "unknown";
             break;
