@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <utility>
 #include <cstdint>
+#include <algorithm>
 
 #include "c_types/ii_t_rt.h"
 #include "cpp_common/base_graph.hpp"
@@ -43,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
 
+#include "planar/makeBiconnectedPlanar.hpp"
 #include "coloring/bipartite.hpp"
 #include "coloring/edgeColoring.hpp"
 #include "coloring/sequentialVertexColoring.hpp"
@@ -119,6 +121,13 @@ void do_coloring(
             undigraph.insert_edges(edges);
 
             switch (which) {
+               case BICONNECTEDPLANAR:
+                    {
+                        pgrouting::functions::Pgr_makeBiconnectedPlanar<UndirectedGraph> fn;
+                        results = fn.makeBiconnectedPlanar(undigraph);
+                        log << fn.get_log();
+                    }
+                    break;
                 case EDGECOLORING:
                     results = edgeColoring(undigraph);
                     break;
