@@ -3,6 +3,9 @@
 # License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 set(LOCAL_FILES
     nonPlanar.png
+    biconnected_planar_sampledata.png
+    biconnected_line_before.png
+    biconnected_line_after.png
     )
 
 foreach (f ${LOCAL_FILES})

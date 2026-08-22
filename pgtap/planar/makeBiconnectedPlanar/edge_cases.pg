@@ -1,0 +1,90 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2018-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+BEGIN;
+
+SELECT CASE WHEN min_version('4.1.0') THEN plan(6) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('4.1.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 4.1.0');
+  RETURN;
+END IF;
+
+-- 0 edge, 0 vertex test
+
+RETURN QUERY
+SELECT is_empty(
+  $$SELECT * FROM pgr_makeBiconnectedPlanar('SELECT id, source, target, cost, reverse_cost FROM edges WHERE false')$$,
+  '1: Graph with 0 edges and 0 vertices is empty');
+
+-- 1 vertex test
+
+--6 -- 6
+RETURN QUERY
+SELECT is_empty(
+  $$SELECT * FROM pgr_makeBiconnectedPlanar('SELECT 2 AS id, 6 AS source, 6 AS target, 1 AS cost, 1 AS reverse_cost')$$,
+  '2: Graph with 1 vertex and 1 edge returns empty set of edges');
+
+-- 2 vertex test(already biconnected)
+
+--5 -- 6
+RETURN QUERY
+SELECT is_empty(
+  $$SELECT * FROM pgr_makeBiconnectedPlanar( 
+    'SELECT 1 AS id,5 AS source,6 AS target, 1 AS cost,1 AS reverse_cost')$$,
+  '3: Graph with 2 vertices returns empty set of edges');
+-- 4 vertex test (path graph 1-2-3-4, needs 1 edge to become biconnected)
+RETURN QUERY
+SELECT isnt_empty(
+  $$SELECT * FROM pgr_makeBiconnectedPlanar(
+    'SELECT 1 AS id, 1 AS source, 2 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 2 AS id, 2 AS source, 3 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 3 AS id, 3 AS source, 4 AS target, 1 AS cost, 1 AS reverse_cost'
+  )$$,
+  '4: Graph with 4 vertices in a path returns new edges to make it biconnected');
+
+-- 5 vertex non-planar graph (K5)
+RETURN QUERY
+SELECT is_empty(
+  $$SELECT * FROM pgr_makeBiconnectedPlanar(
+    'SELECT 1 AS id, 1 AS source, 2 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 2 AS id, 1 AS source, 3 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 3 AS id, 1 AS source, 4 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 4 AS id, 1 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 5 AS id, 2 AS source, 3 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 6 AS id, 2 AS source, 4 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 7 AS id, 2 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 8 AS id, 3 AS source, 4 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 9 AS id, 3 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 10 AS id, 4 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost'
+  )$$,
+  '5: Non-planar graph (K5) returns empty set');
+
+-- Disconnected graph: 4-vertex path (1-2-3-4) and 3-vertex path (5-6-7)
+-- Each component needs at least 1 added edge to become biconnected
+RETURN QUERY
+SELECT isnt_empty(
+  $$SELECT * FROM pgr_makeBiconnectedPlanar(
+    'SELECT 1 AS id, 1 AS source, 2 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 2 AS id, 2 AS source, 3 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 3 AS id, 3 AS source, 4 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 4 AS id, 5 AS source, 6 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 5 AS id, 6 AS source, 7 AS target, 1 AS cost, 1 AS reverse_cost'
+  )$$,
+  '6: Disconnected graph processes components independently and returns new edges for components that need them');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT * FROM finish();
+ROLLBACK;

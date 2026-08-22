@@ -60,6 +60,12 @@ To see all issues & pull requests closed by this release see the
 * :issue:`3101`: pgr_edgeColoring not building graph correctly
 
 
+.. rubric:: New experimental functions.
+
+* Planar
+
+  * pgr_makeBiconnectedPlanar
+
 .. rubric:: Summary of changes by function
 
 * pgr_edgeColoring
@@ -67,6 +73,12 @@ To see all issues & pull requests closed by this release see the
   .. include:: pgr_edgeColoring.rst
      :start-after: Version 4.1.0
      :end-before: .. rubric
+
+* pgr_makeBiconnectedPlanar
+
+  .. include:: pgr_makeBiconnectedPlanar.rst
+     :start-after: Version 4.1.0
+     :end-before: Description
 
 pgRouting 4.0
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
