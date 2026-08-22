@@ -1,0 +1,38 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+SELECT CASE WHEN min_version('4.1.0') THEN plan (4) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('4.1.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 4.1.0');
+  RETURN;
+END IF;
+
+RETURN QUERY SELECT has_function('pgr_planarfaces');
+RETURN QUERY SELECT has_function('pgr_planarfaces', ARRAY['text']);
+RETURN QUERY SELECT function_returns('pgr_planarfaces', ARRAY['text'], 'setof record');
+
+RETURN QUERY
+SELECT function_args_eq('pgr_planarfaces',
+  $$VALUES
+  ('{"","seq","face_id","edge_id","side"}'::TEXT[])
+  $$);
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT types_check();
+
+SELECT * FROM finish();
+ROLLBACK;
