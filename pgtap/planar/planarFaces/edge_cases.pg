@@ -1,0 +1,165 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('4.1.0') THEN plan (10) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('4.1.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 4.1.0');
+  RETURN;
+END IF;
+
+-- empty graph
+PREPARE q1 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edges
+WHERE id > 18;
+
+RETURN QUERY
+SELECT is_empty('q1', '1: Graph with 0 edges');
+
+PREPARE emptyTest AS
+SELECT * FROM pgr_planarFaces('q1');
+
+RETURN QUERY
+SELECT is_empty('emptyTest', '2: Empty graph returns 0 rows');
+
+-- single edge: 2 faces (each side)
+PREPARE q3 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edges
+WHERE id = 1;
+
+PREPARE singleEdgeTest AS
+SELECT * FROM pgr_planarFaces('q3');
+
+RETURN QUERY
+SELECT set_eq('singleEdgeTest',
+    $$VALUES
+        (1::BIGINT, 1::BIGINT, 1::BIGINT, 1),
+        (2::BIGINT, 1::BIGINT, 1::BIGINT, 2)
+    $$,
+    '3: Single edge has 2 face-edge incidences');
+
+-- open path 11 - 7 - 8 - 12 (edges 8, 10, 12): a tree has no interior face,
+-- so all 3 edges border the single exterior face, still giving 2|E| = 6 rows
+PREPARE q4 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edges
+WHERE id IN (8, 10, 12);
+
+PREPARE triangleTest AS
+SELECT count(*) FROM pgr_planarFaces('q4');
+
+RETURN QUERY
+SELECT set_eq('triangleTest',
+    $$VALUES (6::BIGINT) $$,
+    '4: Open path of 3 edges has 6 rows, all on the exterior face');
+
+-- total rows = 2 * number of edges
+PREPARE q5 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edges;
+
+PREPARE fullGraphRows AS
+SELECT count(*) FROM pgr_planarFaces('q5');
+
+PREPARE expectedRows AS
+SELECT 2 * count(*)::BIGINT FROM (
+    SELECT id FROM edges
+    WHERE cost >= 0 OR reverse_cost >= 0
+) e;
+
+RETURN QUERY
+SELECT set_eq('fullGraphRows', 'expectedRows',
+    '5: Total rows = 2 * number of edges');
+
+-- each edge appears exactly twice (once per side)
+PREPARE sideCheck AS
+SELECT edge_id, count(*) FROM pgr_planarFaces('q5')
+GROUP BY edge_id HAVING count(*) != 2;
+
+RETURN QUERY
+SELECT is_empty('sideCheck', '6: Each edge appears exactly twice');
+
+-- subgraph id < 10: 9 edges, 18 rows
+PREPARE subgraphTest AS
+SELECT count(*) FROM pgr_planarFaces(
+  'SELECT id, source, target, cost, reverse_cost
+  FROM edges WHERE id < 10'
+);
+
+RETURN QUERY
+SELECT set_eq('subgraphTest',
+    $$VALUES (18::BIGINT) $$,
+    '7: Subgraph id < 10 has 18 rows (2 x 9 edges)');
+
+-- Euler's formula on a connected planar graph: V - E + F = 2
+-- edges id < 10 form a single connected component with 9 vertices and 9 edges,
+-- so the traversal must find exactly 2 faces
+
+PREPARE eulerConnected AS
+SELECT (
+    (SELECT count(*) FROM (
+        SELECT source AS n FROM edges WHERE id < 10
+        UNION SELECT target FROM edges WHERE id < 10) v)      -- V
+  - (SELECT count(*) FROM edges WHERE id < 10)                -- E
+  + (SELECT count(DISTINCT face_id) FROM pgr_planarFaces(
+        'SELECT id, source, target, cost, reverse_cost
+        FROM edges WHERE id < 10'))                           -- F
+  )::BIGINT;
+
+RETURN QUERY
+SELECT set_eq('eulerConnected',
+    $$VALUES (2::BIGINT) $$,
+    '9: Euler formula on a connected subgraph: V - E + F = 2');
+
+-- Generalised Euler formula on a disconnected graph: V - E + F = 2 * C
+-- the traversal walks the outer face of every component separately, so each
+-- of the 3 components of the full sample network contributes 2
+
+PREPARE eulerDisconnected AS
+SELECT (
+    (SELECT count(*) FROM (
+        SELECT source AS n FROM edges UNION SELECT target FROM edges) v)
+  - (SELECT count(*) FROM edges)
+  + (SELECT count(DISTINCT face_id) FROM pgr_planarFaces(
+        'SELECT id, source, target, cost, reverse_cost FROM edges'))
+  )::BIGINT;
+
+RETURN QUERY
+SELECT set_eq('eulerDisconnected',
+    $$VALUES (6::BIGINT) $$,
+    '10: Euler formula on the disconnected sample network: V - E + F = 2 * 3 components');
+
+-- non-planar graph (K5 minor) raises error
+INSERT INTO edges (source, target, cost, reverse_cost) VALUES
+  (10, 16, 1, 1), (10, 13, 1, 1),
+  (15, 11, 1, 1), (15, 13, 1, 1),
+  (11, 13, 1, 1), (16, 13, 1, 1);
+
+RETURN QUERY
+SELECT throws_ok(
+  $$SELECT * FROM pgr_planarFaces(
+    'SELECT id, source, target, cost, reverse_cost FROM edges')$$,
+  'Graph is not planar',
+  '8: Non-planar graph raises error');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT * FROM finish();
+ROLLBACK;
