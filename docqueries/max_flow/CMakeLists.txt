@@ -11,6 +11,7 @@ set(LOCAL_FILES
     pushRelabel
     maxFlowMinCost
     maxFlowMinCost_Cost
+    maxWeightedMatching
 
     )
 

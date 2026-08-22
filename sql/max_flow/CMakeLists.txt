@@ -15,6 +15,8 @@ set(LOCAL_FILES
     maxFlowMinCost.sql
     maxFlowMinCost_Cost.sql
     maxFlow.sql
+    _maxWeightedMatching.sql
+    maxWeightedMatching.sql
     )
 
 foreach (f ${LOCAL_FILES})

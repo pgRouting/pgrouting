@@ -11,6 +11,7 @@ set(LOCAL_FILES
     pgr_maxCardinalityMatch.rst
     pgr_pushRelabel.rst
     pgr_maxFlowMinCost.rst
+    pgr_maxWeightedMatching.rst
     # TODO rename
     pgr_maxFlowMinCost_Cost.rst
     )
@@ -21,4 +22,8 @@ foreach (f ${LOCAL_FILES})
 endforeach()
 
 set(PROJECT_DOC_FILES ${PROJECT_DOC_FILES} ${LOCAL_DOC_FILES} PARENT_SCOPE)
+
+add_subdirectory("images")
+set(PROJECT_IMG_FILES ${PROJECT_IMG_FILES} PARENT_SCOPE)
+
 

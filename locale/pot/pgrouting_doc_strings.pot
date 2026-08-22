@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 21:44+0000\n"
+"POT-Creation-Date: 2026-08-22 09:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3052,6 +3052,9 @@ msgstr ""
 msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
 msgstr ""
 
+msgid ":doc:`pgr_maxWeightedMatching` - Calculates a maximum weighted matching in a graph."
+msgstr ""
+
 msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ""
 
@@ -3571,13 +3574,31 @@ msgstr ""
 msgid "`#3129 <https://github.com/pgRouting/pgrouting/issues/3129>`__: breadthFirstSearch: Reorganize into traversal"
 msgstr ""
 
+msgid "`#3131 <https://github.com/pgRouting/pgrouting/issues/3131>`__: binaryBreadthFirstSearch: Integrate into existing process/driver pair"
+msgstr ""
+
 msgid "Bug Fixes"
 msgstr ""
 
 msgid "`#3101 <https://github.com/pgRouting/pgrouting/issues/3101>`__: pgr_edgeColoring not building graph correctly"
 msgstr ""
 
+msgid "New experimental functions."
+msgstr ""
+
+msgid "Flow"
+msgstr ""
+
+msgid "issue:3136"
+msgstr ""
+
+msgid "pgr_maxWeightedMatching"
+msgstr ""
+
 msgid "Summary of changes by function"
+msgstr ""
+
+msgid "New experimental function."
 msgstr ""
 
 msgid "pgr_edgeColoring"
@@ -5734,9 +5755,6 @@ msgstr ""
 msgid "Y coordinate of ``target`` vertex."
 msgstr ""
 
-msgid "Flow"
-msgstr ""
-
 msgid "Edges SQL for :doc:`flow-family`"
 msgstr ""
 
@@ -6280,7 +6298,7 @@ msgstr ""
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
-msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mayur Galhate, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -7001,9 +7019,6 @@ msgid "Result columns change: ``seq`` is removed"
 msgstr ""
 
 msgid "Version 2.5.0"
-msgstr ""
-
-msgid "New experimental function."
 msgstr ""
 
 msgid "Those vertices that belong to more than one biconnected component are called articulation points or, equivalently, cut vertices. Articulation points are vertices whose removal would increase the number of connected components in the graph. This implementation can only be used with an undirected graph."
@@ -11218,6 +11233,60 @@ msgstr ""
 msgid "Minimum Cost Maximum Flow possible from the source(s) to the target(s)"
 msgstr ""
 
+msgid "``pgr_maxWeightedMatching`` - Experimental"
+msgstr ""
+
+msgid "``pgr_maxWeightedMatching`` — Calculates a maximum weighted matching in a graph."
+msgstr ""
+
+msgid "A **maximum weighted matching** in a graph is a matching where the sum of the weights of selected edges is maximized."
+msgstr ""
+
+msgid "Each vertex is matched with at most one other vertex."
+msgstr ""
+
+msgid "Maximizes the total edge weight sum."
+msgstr ""
+
+msgid "There may be many maximum weighted matchings."
+msgstr ""
+
+msgid "Calculates one possible maximum weighted matching in a graph."
+msgstr ""
+
+msgid "Returns the matched pairs of vertices in the form of a set of `(start_vid, end_vid, agg_cost)`."
+msgstr ""
+
+msgid "`start_vid` and `end_vid` are the endpoints of the matched edge."
+msgstr ""
+
+msgid "`agg_cost` is the weight of the matched edge."
+msgstr ""
+
+msgid "Running time: :math:`O(n^3)` where :math:`n` is the number of vertices."
+msgstr ""
+
+msgid "pgr_maxWeightedMatching(`Edges SQL`_, ``directed``)"
+msgstr ""
+
+msgid "Ignored. The matching algorithm always works on **undirected** graphs."
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the matched edge."
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the matched edge."
+msgstr ""
+
+msgid "Weight of the matched edge."
+msgstr ""
+
+msgid "Maximum weighted matching on a custom 5-vertex graph."
+msgstr ""
+
+msgid "`Boost: maximum_weighted_matching <https://www.boost.org/doc/libs/latest/libs/graph/doc/maximum_weighted_matching.html>`__"
+msgstr ""
+
 msgid "``pgr_pickDeliver`` - Experimental"
 msgstr ""
 
@@ -13118,9 +13187,6 @@ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_maxFl
 msgstr ""
 
 msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_pushRelabel(Combinations)"
-msgstr ""
-
-msgid "New experimental functions."
 msgstr ""
 
 msgid "Metrics"
