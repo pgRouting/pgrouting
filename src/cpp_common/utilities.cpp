@@ -104,7 +104,9 @@ get_name(Which which) {
         case EDMONDSKARP:
             return "pgr_edmondsKarp";
             break;
-
+        case MAXIMALPLANAR:
+            return "pgr_makeMaximalPlanar";
+            break;
         case ARTICULATIONPOINTS:
             return "pgr_articulationPoints";
             break;

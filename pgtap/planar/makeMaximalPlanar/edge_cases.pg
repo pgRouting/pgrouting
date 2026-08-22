@@ -1,0 +1,93 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2018-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+BEGIN;
+
+SELECT CASE WHEN min_version('4.1.0') THEN plan(5) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('4.1.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'pgr_makeMaximalPlanar is new on 4.1.0');
+  RETURN;
+END IF;
+
+-- 0 edge, 0 vertex test
+
+RETURN QUERY
+SELECT is_empty(
+  $$SELECT * FROM pgr_makeMaximalPlanar('SELECT id, source, target, cost, reverse_cost FROM edges WHERE false')$$,
+  '1: Graph with 0 edges and 0 vertices is empty');
+
+-- 1 vertex test
+
+--6 -- 6
+RETURN QUERY
+SELECT is_empty(
+  $$SELECT * FROM pgr_makeMaximalPlanar('SELECT 2 AS id, 6 AS source, 6 AS target, 1 AS cost, 1 AS reverse_cost')$$,
+  '2: Graph with 1 vertex and 1 edge returns empty set of edges');
+
+-- 2 vertex test(already biconnected)
+
+--5 -- 6
+RETURN QUERY
+SELECT is_empty(
+  $$SELECT * FROM pgr_makeMaximalPlanar( 
+    'SELECT 1 AS id,5 AS source,6 AS target, 1 AS cost,1 AS reverse_cost')$$,
+  '3: Graph with 2 vertices returns empty set of edges');
+
+-- 2 disconnected 4-vertex paths
+-- Component 1: 1-2, 2-3, 3-4 (vertices 1,2,3,4)
+-- Component 2: 5-6, 6-7, 7-8 (vertices 5,6,7,8)
+-- Expected edges: only edges within {1,2,3,4} and within {5,6,7,8}, no cross edges.
+
+RETURN QUERY
+SELECT results_eq(
+  $$SELECT seq, start_vid, end_vid FROM pgr_makeMaximalPlanar(
+      'SELECT 1 AS id, 1 AS source, 2 AS target, 1 AS cost, 1 AS reverse_cost UNION ' ||
+      'SELECT 2 AS id, 2 AS source, 3 AS target, 1 AS cost, 1 AS reverse_cost UNION ' ||
+      'SELECT 3 AS id, 3 AS source, 4 AS target, 1 AS cost, 1 AS reverse_cost UNION ' ||
+      'SELECT 4 AS id, 5 AS source, 6 AS target, 1 AS cost, 1 AS reverse_cost UNION ' ||
+      'SELECT 5 AS id, 6 AS source, 7 AS target, 1 AS cost, 1 AS reverse_cost UNION ' ||
+      'SELECT 6 AS id, 7 AS source, 8 AS target, 1 AS cost, 1 AS reverse_cost'
+  ) ORDER BY seq$$,
+  $$VALUES 
+    (1::BIGINT, 1::BIGINT, 3::BIGINT),
+    (2::BIGINT, 1::BIGINT, 4::BIGINT),
+    (3::BIGINT, 2::BIGINT, 4::BIGINT),
+    (4::BIGINT, 5::BIGINT, 7::BIGINT),
+    (5::BIGINT, 5::BIGINT, 8::BIGINT),
+    (6::BIGINT, 6::BIGINT, 8::BIGINT)
+  $$,
+  '4: Disconnected components are augmented independently without cross-linking');
+
+-- 5 vertex non-planar graph (K5) returns empty set
+RETURN QUERY
+SELECT is_empty(
+  $$SELECT * FROM pgr_makeMaximalPlanar(
+    'SELECT 1 AS id, 1 AS source, 2 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 2 AS id, 1 AS source, 3 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 3 AS id, 1 AS source, 4 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 4 AS id, 1 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 5 AS id, 2 AS source, 3 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 6 AS id, 2 AS source, 4 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 7 AS id, 2 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 8 AS id, 3 AS source, 4 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 9 AS id, 3 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost UNION
+     SELECT 10 AS id, 4 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost'
+  )$$,
+  '5: Non-planar graph (K5) returns empty set');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT * FROM finish();
+ROLLBACK;
