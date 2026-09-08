@@ -19,20 +19,7 @@
 # Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>, 2026.
 # DeepL <noreply-mt-deepl@weblate.org>, 2026.
 msgid ""
-msgstr ""
-"Project-Id-Version: pgRouting v4.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 21:44+0000\n"
-"PO-Revision-Date: 2026-06-10 16:05+0000\n"
-"Last-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\n"
-"Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\n"
-"Language: ja\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.16.2\n"
-"Generated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-08-08 21:44+0000\nPO-Revision-Date: 2026-09-08 08:39+0000\nLast-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.16.2\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - カテゴリ"
@@ -363,10 +350,10 @@ msgid "Experimental"
 msgstr "実験段階"
 
 msgid "Possible server crash"
-msgstr ""
+msgstr "サーバー異常終了の可能性"
 
 msgid "These functions might create a server crash"
-msgstr ""
+msgstr "これらの関数はサーバー異常終了を引き起こす可能性があります"
 
 msgid "Experimental functions"
 msgstr "実験段階関数"
@@ -1094,7 +1081,7 @@ msgid "Kind of stop location the vehicle is at"
 msgstr "車両の立寄り地点の種別"
 
 msgid ":math:`-1`: at the solution summary row"
-msgstr ""
+msgstr ":math:`-1`: 解の要約行"
 
 msgid ":math:`1`: Starting location"
 msgstr ":math:`1`: 開始位置"
@@ -1125,37 +1112,37 @@ msgid "Cargo units of the vehicle when leaving the stop."
 msgstr "停止位置から出発したときの車両の貨物の単位。"
 
 msgid "Value :math:`-1` on solution summary row."
-msgstr ""
+msgstr "Value :math:`-1` 解の要約行。"
 
 msgid "``travel_time``"
 msgstr "``travel_time``"
 
 msgid "Travel time from previous ``stop_seq`` to current ``stop_seq``."
-msgstr ""
+msgstr "前の ``stop_seq`` から現在の ``stop_seq`` までの移動時間。"
 
 msgid "Summary has the **total traveling time**:"
-msgstr ""
+msgstr "要約には **総移動時間** があります:"
 
 msgid "The sum of all the ``travel_time``."
-msgstr ""
+msgstr "全ての ``travel_time`` の合計。"
 
 msgid "``arrival_time``"
 msgstr "``arrival_time``"
 
 msgid "Time spent waiting for current location to open."
-msgstr ""
+msgstr "現在の位置が開くまでの待機時間。"
 
 msgid ":math:`-1`: at the solution summary row."
-msgstr ""
+msgstr ":math:`-1`: 解の要約行。"
 
 msgid ":math:`0`: at the starting location."
-msgstr ""
+msgstr ":math:`0`: 開始位置。"
 
 msgid "``wait_time``"
 msgstr "``wait_time``"
 
 msgid "Summary row has the **total waiting time**:"
-msgstr ""
+msgstr "要約行には **合計待機時間** があります:"
 
 msgid "The sum of all the ``wait_time``."
 msgstr "``wait_time``の全ての合計。"
@@ -1164,40 +1151,40 @@ msgid "``service_time``"
 msgstr "``service_time``"
 
 msgid "Service duration at current location."
-msgstr ""
+msgstr "現在地でのサービス時間。"
 
 msgid "Summary row has the **total service time**:"
-msgstr ""
+msgstr "要約行には **合計サービス時間** があります。"
 
 msgid "The sum of all the ``service_time``."
-msgstr ""
+msgstr "全ての ``service_time`` の合計。"
 
 msgid "``departure_time``"
 msgstr "``departure_time``"
 
 msgid "The time at which the vehicle departs from the stop."
-msgstr ""
+msgstr "車両が立寄り地点から出発する時刻。"
 
 msgid ":math:`arrival\\_time + wait\\_time + service\\_time`."
-msgstr ""
+msgstr ":math:`arrival\\_time + wait\\_time + service\\_time`。"
 
 msgid "The ending location has the **total time** used by the current vehicle."
-msgstr ""
+msgstr "終了位置には現在の車両が使った **合計時間** が入ります。"
 
 msgid "Summary row has the **total solution time**:"
-msgstr ""
+msgstr "要約行には **合計解決時間** が入ります。"
 
 msgid ":math:`total\\ traveling\\ time + total\\ waiting\\ time + total\\ service\\ time`."
-msgstr ""
+msgstr ":math:`total\\ traveling\\ time + total\\ waiting\\ time + total\\ service\\ time`."
 
 msgid "Summary Row"
-msgstr ""
+msgstr "要約行"
 
 msgid "Continues the sequence"
-msgstr ""
+msgstr "シーケンスの継続"
 
 msgid "**total capacity violations**:"
-msgstr ""
+msgstr "**全体容量違反**:"
 
 msgid "**total time windows violations**:"
 msgstr ""
