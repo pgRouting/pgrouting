@@ -7,10 +7,17 @@ BEGIN;
 
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.1.0') THEN plan(82) ELSE plan(69) END;
+SELECT CASE WHEN min_version('3.1.0') THEN plan(84) ELSE plan(71) END;
 
 SELECT no_crash_dijkstra('pgr_dijkstra');
 SELECT throw_on_empty_edges_sql('pgr_dijkstra', ',1,2');
+SELECT is_empty(
+    $$SELECT * FROM pgr_dijkstra('SELECT id, source, target, cost FROM edges WHERE false', 1, 2)$$,
+    'zero-row edges_sql returns empty set without crashing');
+SELECT throws_ok(
+    $$SELECT * FROM pgr_dijkstra('SELECT id, source FROM edges WHERE false', 1, 2)$$,
+    'XX000', 'Column ''cost'' not Found',
+    'zero-row edges_sql with missing column raises a clean error');
 
 SELECT finish();
 

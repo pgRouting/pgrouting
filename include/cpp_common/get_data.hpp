@@ -134,14 +134,42 @@ std::vector<Data_type> get_data(
 
     while (moredata == true) {
         SPI_cursor_fetch(SPIportal, true, tuple_limit);
+        long fetched = SPI_processed;
         auto tuptable = SPI_tuptable;
-        auto tupdesc = SPI_tuptable->tupdesc;
-        if (total_tuples == 0) fetch_column_info(tupdesc, info);
+        auto tupdesc = tuptable ? tuptable->tupdesc : nullptr;
 
-        size_t ntuples = SPI_processed;
-        total_tuples += ntuples;
+        if (fetched <= 0) {
+            /*
+             * Zero-row batch: validate schema when a descriptor is
+             * available so typos still raise a clean error, then exit
+             * with whatever was collected so far (possibly empty).
+             */
+            if (tupdesc && total_tuples == 0) {
+                try {
+                    fetch_column_info(tupdesc, info);
+                } catch (...) {
+                    if (tuptable) SPI_freetuptable(tuptable);
+                    SPI_cursor_close(SPIportal);
+                    throw;
+                }
+            }
+            if (tuptable) SPI_freetuptable(tuptable);
+            moredata = false;
+            break;
+        }
 
-        if (ntuples > 0) {
+        if (!tuptable || !tupdesc) {
+            if (tuptable) SPI_freetuptable(tuptable);
+            moredata = false;
+            break;
+        }
+
+        try {
+            if (total_tuples == 0) fetch_column_info(tupdesc, info);
+
+            size_t ntuples = static_cast<size_t>(fetched);
+            total_tuples += ntuples;
+
             tuples.reserve(total_tuples);
             for (size_t t = 0; t < ntuples; t++) {
                 tuples.push_back(func(tuptable->vals[t], tupdesc, info,
@@ -149,8 +177,10 @@ std::vector<Data_type> get_data(
                         &valid_pgtuples, flag));
             }
             SPI_freetuptable(tuptable);
-        } else {
-            moredata = false;
+        } catch (...) {
+            SPI_freetuptable(tuptable);
+            SPI_cursor_close(SPIportal);
+            throw;
         }
     }
 
