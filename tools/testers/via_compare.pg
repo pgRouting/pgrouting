@@ -45,7 +45,7 @@ BEGIN
           all_found := (l=1);
           allow_u := (m=1);
 
-          dijkstraVia_sql := 'SELECT * FROM pgr_dijkstraVia( '
+          dijkstraVia_sql := 'SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost FROM pgr_dijkstraVia( '
             || with_reverse_cost
             || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ',' || all_found || ',' || allow_u || ')';
 
@@ -57,7 +57,7 @@ BEGIN
           msg := '-1- ' || directed || ', with reverse_cost: from 1 to '  || i || ' to ' || j || msg_end;
           RETURN query SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
 
-          dijkstraVia_sql := 'SELECT * FROM pgr_dijkstraVia( '
+          dijkstraVia_sql := 'SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost FROM pgr_dijkstraVia( '
             || no_reverse_cost
             || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ',' || all_found || ',' || allow_u || ')';
 
@@ -124,7 +124,7 @@ BEGIN
           all_found := (l=1);
           allow_u := (m=1);
 
-          dijkstraVia_sql := 'SELECT * FROM pgr_dijkstraVia( '
+          dijkstraVia_sql := 'SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost FROM pgr_dijkstraVia( '
             || with_reverse_cost
             || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ',' || all_found || ',' || allow_u || ')';
 
@@ -136,7 +136,7 @@ BEGIN
           msg := '-1- ' || directed || ', with reverse_cost: from 1 to '  || i || ' to ' || j || msg_end || withPoints_sql;
           RETURN query SELECT set_eq(withPoints_sql, dijkstraVia_sql, msg);
 
-          dijkstraVia_sql := 'SELECT * FROM pgr_dijkstraVia( '
+          dijkstraVia_sql := 'SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost FROM pgr_dijkstraVia( '
             || no_reverse_cost
             || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ',' || all_found || ',' || allow_u || ')';
 

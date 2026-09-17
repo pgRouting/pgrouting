@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_dijkstraVia
 ------------------
 
---v3.0
+--v4.1
 CREATE FUNCTION _pgr_dijkstraVia(
     edges_sql TEXT,
     via_vids ANYARRAY,
@@ -43,6 +43,7 @@ CREATE FUNCTION _pgr_dijkstraVia(
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
+    OUT prev BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,

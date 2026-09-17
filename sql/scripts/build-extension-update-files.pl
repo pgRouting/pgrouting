@@ -330,6 +330,12 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_bddijkstra(text,anyarray,bigint,boolean)");
             push @commands, drop_special_case_function("pgr_bddijkstra(text,bigint,anyarray,boolean)");
         }
+
+        # updating to 4.1+ (OUT parameters changed on pgr_dijkstraVia)
+        if ($old_minor < 4.1) {
+            push @commands, drop_special_case_function("_pgr_dijkstravia(text,anyarray,boolean,boolean,boolean)");
+            push @commands, drop_special_case_function("pgr_dijkstravia(text,anyarray,boolean,boolean,boolean)");
+        }
     }
 
     if ($old_mayor == 2) {
