@@ -129,6 +129,21 @@ Result columns
     :start-after: result_via_start
     :end-before: result_via_end
 
+``pgr_dijkstraVia`` additionally returns:
+
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``prev``
+     - ``BIGINT``
+     - Identifier of the previous node in the path. For the first row of a
+       path segment, equals ``start_vid``.
+
 Additional Examples
 -------------------------------------------------------------------------------
 
