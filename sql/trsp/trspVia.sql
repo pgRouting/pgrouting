@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---v3.4
+--v4.1
 CREATE FUNCTION pgr_trspVia(
   TEXT,     -- edges sql
   TEXT,     -- restrictions sql
@@ -37,6 +37,7 @@ CREATE FUNCTION pgr_trspVia(
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
+  OUT prev BIGINT,
   OUT node BIGINT,
   OUT edge BIGINT,
   OUT cost FLOAT,
@@ -44,7 +45,7 @@ CREATE FUNCTION pgr_trspVia(
   OUT route_agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost
+SELECT seq, path_id, path_seq, start_vid, end_vid, prev, node, edge, cost, agg_cost, route_agg_cost
 FROM _pgr_trspVia(
   _pgr_get_statement($1),
   _pgr_get_statement($2),

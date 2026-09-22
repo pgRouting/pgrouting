@@ -331,10 +331,16 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_bddijkstra(text,bigint,anyarray,boolean)");
         }
 
-        # updating to 4.1+ (OUT parameters changed on pgr_dijkstraVia)
+        # updating to 4.1+ (OUT parameters changed on pgr_dijkstraVia and pgr_trspVia)
         if ($old_minor < 4.1) {
             push @commands, drop_special_case_function("_pgr_dijkstravia(text,anyarray,boolean,boolean,boolean)");
             push @commands, drop_special_case_function("pgr_dijkstravia(text,anyarray,boolean,boolean,boolean)");
+
+            # pgr_trspVia only exists since 3.4.0
+            if ($old_minor >= 3.4) {
+                push @commands, drop_special_case_function("_pgr_trspvia(text,text,anyarray,boolean,boolean,boolean)");
+                push @commands, drop_special_case_function("pgr_trspvia(text,text,anyarray,boolean,boolean,boolean)");
+            }
         }
     }
 
