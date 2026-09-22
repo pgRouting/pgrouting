@@ -5,8 +5,8 @@ Copyright (c) 2026-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Design of one process & driver file by
-Copyright (c) 2025 Celia Virginia Vergara Castillo
-Mail: vicky at erosion.dev
+Copyright (c) 2026 Md Sakir Ahmed
+Mail: sakirahmed690078 at gmail.com
 
 ------
 
