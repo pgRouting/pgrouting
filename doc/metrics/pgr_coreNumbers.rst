@@ -34,40 +34,54 @@ The :math:`k`-core of a graph is the maximal subgraph in which every vertex has
 degree at least :math:`k` within that subgraph. K-core decomposition iteratively
 removes vertices of degree less than :math:`k` until no such vertices remain,
 increasing :math:`k` at each stage. The process assigns one core number to every
-vertex and runs in :math:`O(m)` time on a graph with :math:`m` edges.
+vertex.
 
 The core number says how deeply a vertex sits inside the graph:
 
-* Core :math:`1` vertices are peeled in the first step. They are **terminal
-  nodes**, adjacent to at most one other vertex in the induced subgraph: the
-  dead-ends and cul-de-sacs of a road network.
+* Core :math:`1` vertices are peeled in the first step. They are terminal
+  nodes of the peeled graph, adjacent to at most one other vertex in the induced
+  subgraph.
 * Core :math:`2` vertices survive that step. They lie on cycles, or on the
-  chains joining them, like a rural highway that runs on before it branches.
+  chains joining them.
 * Core :math:`3` and above mark dense regions where every vertex keeps three or
-  more neighbors however much of the graph is peeled away. Urban street grids,
-  which offer alternate routes at most intersections, behave this way.
+  more neighbors however much of the graph is peeled away.
 
-The function applies to **undirected** graphs only. Edge direction and traversal
-costs are ignored; only the edge endpoints matter. Each vertex receives exactly
-one core number, all vertices in the graph are returned, and the number of rows
-is :math:`|V|`. Results are ordered by ``node`` ascending. When the edge SQL
-returns no rows, the function emits a notice and returns no rows.
-
-**Parallel edges** between the same pair of vertices are collapsed into a single
+Parallel edges between the same pair of vertices are collapsed into a single
 edge before the peeling starts, so edge multiplicity does not inflate core
-numbers: three parallel edges between two vertices give both vertices core
-:math:`1`, the same as a single edge. This matters when importing road networks
-that contain duplicate geometry. A **self loop** is not a neighbor of its own
-vertex, so it is dropped before peeling and does not contribute to that
-vertex's degree. A vertex whose only edge is a self loop has no real
-neighbors left, and therefore does not appear in the result.
+numbers.
+
+* Three parallel edges between two vertices give both vertices core :math:`1`,
+  the same as a single edge.
+
+Self loop: a vertex is not a neighbor of its own vertex, so it is dropped before
+peeling and does not contribute to that vertex's degree.
+
+* A vertex whose only edge is a self loop has no real neighbors left, So the
+  core number is 0.
+
+.. rubric:: Characteristcs
+
+* Works for **undirected** graphs.
+* Loops and parallel edges are removed.
+
+  * All vertices are kept
+
+* Costs are ignored
+
+* Each vertex receives exactly one core number
+* Results:
+
+  * Number of returned rows: :math:`|V|`.
+  * Ordered by ``node`` ascending.
+  * No rows returned when no edges found. Emits a ``NOTICE``
+
+* Running time: :math:`O(|E| + |E| + |V| log |V|)`
+
+  * Loop and parallel removal: :math:`O(|E|)`
+  * Peeling algorithm: :math:`O(|E|)`
+  * Sorting:  :math:`|V| log |V|`
 
 |Boost| Boost Graph Inside
-
-.. rubric:: References
-
-* Batagelj, V. and Zaversnik, M. (2003). An O(m) Algorithm for Cores Decomposition
-  of Networks. arXiv:cs/0310049.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -540,9 +554,6 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* :doc:`pgr_betweennessCentrality`
-* :doc:`pgr_degree`
-* :doc:`pgr_isPlanar`
 * :doc:`metrics-family`
 * Batagelj, V. and Zaversnik, M. (2003). `An O(m) Algorithm for Cores Decomposition
   of Networks <https://arxiv.org/abs/cs/0310049>`__
