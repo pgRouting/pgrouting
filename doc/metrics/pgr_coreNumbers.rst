@@ -59,7 +59,7 @@ peeling and does not contribute to that vertex's degree.
 * A vertex whose only edge is a self loop has no real neighbors left, So the
   core number is 0.
 
-.. rubric:: Characteristcs
+.. rubric:: Characteristics
 
 * Works for **undirected** graphs.
 * Loops and parallel edges are removed.

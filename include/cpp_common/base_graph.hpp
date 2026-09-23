@@ -776,7 +776,7 @@ class Pgr_base_graph {
          if ((edge.cost < 0) && (edge.reverse_cost < 0)) return;
 
          /* the edge exists on the graph */
-         pgassert((edge.cost > 0) || (edge.reverse_cost > 0));
+         pgassert((edge.cost >= 0) || (edge.reverse_cost >= 0));
 
          /*
           * All vertices are part of the graph
