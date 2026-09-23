@@ -1,0 +1,188 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2015-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+/* -- q1 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id < 8'
+) ORDER BY node;
+ seq | node | core
+-----+------+------
+   1 |    1 |    1
+   2 |    3 |    1
+   3 |    5 |    1
+   4 |    6 |    1
+   5 |    7 |    1
+   6 |   10 |    1
+   7 |   11 |    1
+   8 |   15 |    1
+(8 rows)
+
+/* -- q2 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id < 5'
+) ORDER BY node;
+ seq | node | core
+-----+------+------
+   1 |    5 |    1
+   2 |    6 |    1
+   3 |    7 |    1
+   4 |   10 |    1
+   5 |   15 |    1
+(5 rows)
+
+/* -- q3 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id < 10'
+) ORDER BY node;
+ seq | node | core
+-----+------+------
+   1 |    1 |    1
+   2 |    3 |    1
+   3 |    5 |    1
+   4 |    6 |    2
+   5 |    7 |    2
+   6 |   10 |    2
+   7 |   11 |    2
+   8 |   15 |    1
+   9 |   16 |    1
+(9 rows)
+
+/* -- q4 */
+SELECT node, core
+FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id < 10'
+) WHERE core >= 2
+ORDER BY node;
+ node | core
+------+------
+    6 |    2
+    7 |    2
+   10 |    2
+   11 |    2
+(4 rows)
+
+/* -- q5 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges'
+) ORDER BY node;
+ seq | node | core
+-----+------+------
+   1 |    1 |    1
+   2 |    2 |    1
+   3 |    3 |    1
+   4 |    4 |    1
+   5 |    5 |    1
+   6 |    6 |    2
+   7 |    7 |    2
+   8 |    8 |    2
+   9 |    9 |    1
+  10 |   10 |    2
+  11 |   11 |    2
+  12 |   12 |    2
+  13 |   13 |    1
+  14 |   14 |    1
+  15 |   15 |    2
+  16 |   16 |    2
+  17 |   17 |    2
+(17 rows)
+
+/* -- q6 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id < 2'
+) ORDER BY node;
+ seq | node | core
+-----+------+------
+   1 |    5 |    1
+   2 |    6 |    1
+(2 rows)
+
+/* -- q7 */
+SELECT * FROM pgr_coreNumbers(
+$$SELECT * FROM (VALUES
+  (1, 1::BIGINT, 2::BIGINT, 1::FLOAT, 1::FLOAT),
+  (2, 2::BIGINT, 3::BIGINT, 1::FLOAT, 1::FLOAT),
+  (3, 3::BIGINT, 1::BIGINT, 1::FLOAT, 1::FLOAT)
+) AS t(id, source, target, cost, reverse_cost)$$
+) ORDER BY node;
+ seq | node | core
+-----+------+------
+   1 |    1 |    2
+   2 |    2 |    2
+   3 |    3 |    2
+(3 rows)
+
+/* -- q8 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id IN (2, 4, 5, 8)'
+) ORDER BY node;
+ seq | node | core
+-----+------+------
+   1 |    6 |    2
+   2 |    7 |    2
+   3 |   10 |    2
+   4 |   11 |    2
+(4 rows)
+
+/* -- q9 */
+SELECT * FROM pgr_coreNumbers(
+$$SELECT * FROM (VALUES
+  (1, 1::BIGINT, 2::BIGINT, 1::FLOAT, 1::FLOAT),
+  (2, 1::BIGINT, 3::BIGINT, 1::FLOAT, 1::FLOAT),
+  (3, 1::BIGINT, 4::BIGINT, 1::FLOAT, 1::FLOAT),
+  (4, 1::BIGINT, 5::BIGINT, 1::FLOAT, 1::FLOAT)
+) AS t(id, source, target, cost, reverse_cost)$$
+) ORDER BY node;
+ seq | node | core
+-----+------+------
+   1 |    1 |    1
+   2 |    2 |    1
+   3 |    3 |    1
+   4 |    4 |    1
+   5 |    5 |    1
+(5 rows)
+
+/* -- q10 */
+SELECT * FROM pgr_coreNumbers(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id < 0'
+) ORDER BY node;
+NOTICE:  No edges found
+HINT:  SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id < 0
+ seq | node | core
+-----+------+------
+(0 rows)
+
+/* -- q11 */
+SELECT * FROM pgr_coreNumbers(
+$$SELECT * FROM (VALUES
+  (1, 1::BIGINT, 2::BIGINT, 1::FLOAT, 1::FLOAT),
+  (2, 1::BIGINT, 3::BIGINT, 1::FLOAT, 1::FLOAT),
+  (3, 1::BIGINT, 4::BIGINT, 1::FLOAT, 1::FLOAT),
+  (4, 2::BIGINT, 3::BIGINT, 1::FLOAT, 1::FLOAT),
+  (5, 2::BIGINT, 4::BIGINT, 1::FLOAT, 1::FLOAT),
+  (6, 3::BIGINT, 4::BIGINT, 1::FLOAT, 1::FLOAT)
+) AS t(id, source, target, cost, reverse_cost)$$
+) ORDER BY node;
+ seq | node | core
+-----+------+------
+   1 |    1 |    3
+   2 |    2 |    3
+   3 |    3 |    3
+   4 |    4 |    3
+(4 rows)
+
+/* -- q12 */
+ROLLBACK;
+ROLLBACK

@@ -54,6 +54,7 @@ To see all issues & pull requests closed by this release see the
 * :issue:`3129`: breadthFirstSearch: Reorganize into traversal
 * :issue:`3131`: binaryBreadthFirstSearch: Integrate into existing
   process/driver pair
+* :issue:`3142`:pgr_coreNumbers
 
 .. rubric:: Bug Fixes
 
@@ -65,6 +66,12 @@ To see all issues & pull requests closed by this release see the
 * pgr_planarFaces
 
   .. include:: pgr_planarFaces.rst
+     :start-after: Version 4.1.0
+     :end-before: Description
+
+* pgr_coreNumbers
+
+  .. include:: pgr_coreNumbers.rst
      :start-after: Version 4.1.0
      :end-before: Description
 
