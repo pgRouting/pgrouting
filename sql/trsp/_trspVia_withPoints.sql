@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---v4.0
+--v4.1
 CREATE FUNCTION _pgr_trspVia_withPoints_v4(
   TEXT,     -- edges
   TEXT,     -- restrictions
@@ -46,6 +46,7 @@ CREATE FUNCTION _pgr_trspVia_withPoints_v4(
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
+  OUT prev BIGINT,
   OUT node BIGINT,
   OUT edge BIGINT,
   OUT cost FLOAT,

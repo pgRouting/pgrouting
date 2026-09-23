@@ -214,7 +214,7 @@ BEGIN
             || the_points
             || ', ARRAY[1, ' || i || ', ' || j || '], ' || drv_side || flag || ', strict => ' || all_found || ', U_turn_on_edge => ' || allow_u || ')';
 
-          withPoints_sql := 'SELECT * FROM pgr_trspVia_withPoints('
+          withPoints_sql := 'SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost FROM pgr_trspVia_withPoints('
             || with_reverse_cost  || ','
             || empty_restrictions || ','
             || the_points
@@ -228,7 +228,7 @@ BEGIN
             || the_points
             || ', ARRAY[1, ' || i || ', ' || j || '], ' || drv_side || flag || ', strict => ' || all_found || ', U_turn_on_edge => ' || allow_u || ')';
 
-          withPoints_sql := 'SELECT * FROM pgr_trspVia_withPoints('
+          withPoints_sql := 'SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost FROM pgr_trspVia_withPoints('
             || no_reverse_cost  || ','
             || empty_restrictions || ','
             || the_points

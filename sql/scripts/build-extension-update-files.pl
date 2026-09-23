@@ -331,7 +331,7 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_bddijkstra(text,bigint,anyarray,boolean)");
         }
 
-        # updating to 4.1+ (OUT parameters changed on pgr_dijkstraVia and pgr_trspVia)
+        # updating to 4.1+ (OUT parameters changed on pgr_dijkstraVia, pgr_trspVia and pgr_trspVia_withPoints)
         if ($old_minor < 4.1) {
             push @commands, drop_special_case_function("_pgr_dijkstravia(text,anyarray,boolean,boolean,boolean)");
             push @commands, drop_special_case_function("pgr_dijkstravia(text,anyarray,boolean,boolean,boolean)");
@@ -340,6 +340,13 @@ sub generate_upgrade_script {
             if ($old_minor >= 3.4) {
                 push @commands, drop_special_case_function("_pgr_trspvia(text,text,anyarray,boolean,boolean,boolean)");
                 push @commands, drop_special_case_function("pgr_trspvia(text,text,anyarray,boolean,boolean,boolean)");
+            }
+
+            # pgr_trspVia_withPoints current signatures only exist since 4.0.0
+            if ($old_minor >= 4.0) {
+                push @commands, drop_special_case_function("_pgr_trspvia_withpoints_v4(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)");
+                push @commands, drop_special_case_function("pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,boolean)");
+                push @commands, drop_special_case_function("pgr_trspvia_withpoints(text,text,text,anyarray,character,boolean,boolean,boolean,boolean)");
             }
         }
     }
