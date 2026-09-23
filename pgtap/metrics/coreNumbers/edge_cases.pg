@@ -6,7 +6,7 @@
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN NOT min_version('4.1.0') THEN plan(1) ELSE plan(27) END;
+SELECT CASE WHEN min_version('4.1.0') THEN plan(29) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
@@ -334,36 +334,71 @@ SELECT results_eq('parallel3_q', 'parallel_r',
 /* a self loop is not a neighbor of its own vertex, so it is dropped
    before peeling and does not inflate that vertex's core number */
 
-PREPARE selfloop_q AS
+/* 1 -- 2 */
+PREPARE oneedgeNoloop_q AS
   SELECT node, core FROM pgr_coreNumbers(
     'SELECT * FROM (VALUES
-      (1,1,1,1.0,1.0),(2,1,2,1.0,1.0))
-     AS t(id, source, target, cost, reverse_cost)'
-  ) ORDER BY node;
+      (5, 1, 2, 1.0))
+     AS t(id, source, target, cost)')
+  ORDER BY node;
 
-PREPARE selfloop_r AS
+PREPARE oneedgeNoloop_r AS
   SELECT * FROM (VALUES
     (1::BIGINT, 1::BIGINT),
     (2, 1))
   AS t(node, core);
 
 RETURN QUERY
-SELECT results_eq('selfloop_q', 'selfloop_r',
-  'A self loop is dropped: it does not add to the degree of its own vertex');
+SELECT results_eq('oneedgeNoloop_q', 'oneedgeNoloop_r', '1 -- 2: both nodes have 1');
+
+/* 5 -- 1 -- 5 */
+PREPARE twoedge_parallel_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT * FROM (VALUES
+      (5, 1, 5, 1.0, 1.0))
+     AS t(id, source, target, cost, reverse_cost)'
+  ) ORDER BY node;
+
+PREPARE twoedge_parralel_r AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 1::BIGINT),
+    (5, 1))
+  AS t(node, core);
+
+
+RETURN QUERY
+SELECT results_eq('twoedge_parallel_q', 'twoedge_parralel_r', '1 -- 5 -- 1: both nodes have 1');
+
+-- 1 -- 1 -- 2
+PREPARE selfloop_q AS
+  SELECT node, core FROM pgr_coreNumbers(
+    'SELECT * FROM (VALUES
+      (1, 1, 1, 1.0,1.0),(5, 1, 2, 1.0,1.0))
+     AS t(id, source, target, cost, reverse_cost)'
+  ) ORDER BY node;
+
+RETURN QUERY
+SELECT results_eq('selfloop_q', 'oneedgeNoloop_r',
+  '1 -- 1 -- 2: = 1 -- 2');
 
 /* a vertex whose only edge is a self loop has no real neighbors left
    after the self loop is dropped, so it does not appear in the result */
 
-PREPARE selfloop_only_q AS
+/* 1 -- 1 */
+PREPARE oneedgeloop_q AS
   SELECT node, core FROM pgr_coreNumbers(
     'SELECT * FROM (VALUES
-      (1,1,1,1.0,1.0))
-     AS t(id, source, target, cost, reverse_cost)'
-  );
+      (3, 1, 1, 1.0))
+     AS t(id, source, target, cost)')
+  ORDER BY node;
+
+PREPARE oneedgeloop_r AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 0::BIGINT))
+  AS t(node, core);
 
 RETURN QUERY
-SELECT is_empty('selfloop_only_q',
-  'A vertex whose only edge is a self loop has no results');
+SELECT results_eq('oneedgeloop_q', 'oneedgeloop_r', '1 -- 1: node has 0');
 
 
 /* disconnected components are peeled independently */
@@ -387,8 +422,7 @@ PREPARE disjoint_r AS
   AS t(node, core);
 
 RETURN QUERY
-SELECT results_eq('disjoint_q', 'disjoint_r',
-  'Two disjoint triangles: every vertex is core 2');
+SELECT results_eq('disjoint_q', 'disjoint_r', 'Two disjoint triangles: every vertex is core 2');
 
 END;
 $BODY$

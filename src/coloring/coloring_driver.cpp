@@ -93,16 +93,6 @@ void do_coloring(
         hint = edges_sql;
         auto edges = get_edges(edges_sql, true, false);
 
-        if (which == CORENUMBERS) {
-            /* remove self loops */
-            edges.erase(
-                    std::remove_if(edges.begin(), edges.end(),
-                        [](const Edge_t &edge) {
-                            return edge.source == edge.target;
-                        }),
-                    edges.end());
-        }
-
         if (edges.empty()) {
             notice << "No edges found";
             log << edges_sql;
@@ -130,7 +120,7 @@ void do_coloring(
             }
         } else {
             if (which == CORENUMBERS) {
-                undigraph.insert_min_edges_no_parallel(edges);
+                undigraph.insert_cost1_edge_no_parallel_no_loop(edges);
             } else {
                 undigraph.insert_edges(edges);
             }
