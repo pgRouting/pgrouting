@@ -50,11 +50,21 @@ sloanOrdering(pgrouting::UndirectedGraph &graph) {
     /* number of vertices */
     size_t n = boost::num_vertices(graph.graph);
 
-    /* map which store the indices with their nodes. */
-    auto index_map = boost::get(boost::vertex_index, graph.graph);
-
     /* vector which will store the order of the indices. */
     std::vector<V> inv_permutation(n);
+
+    if (n == 1) {
+        inv_permutation[0] = 0;
+        return inv_permutation;
+    }
+    if (n == 2) {
+        inv_permutation[0] = 0;
+        inv_permutation[1] = 1;
+        return inv_permutation;
+    }
+
+    /* map which store the indices with their nodes. */
+    auto index_map = boost::get(boost::vertex_index, graph.graph);
 
     /* vector which will store the color of all the vertices in the graph */
     std::vector<boost::default_color_type> colors(n);
@@ -63,7 +73,7 @@ sloanOrdering(pgrouting::UndirectedGraph &graph) {
     auto color_map = boost::make_iterator_property_map(colors.begin(), index_map, colors[0]);
 
     /* map which store the degree of each vertex. */
-    auto degree_map = boost::make_out_degree_map(graph.graph);
+    auto degree_map = boost::make_degree_map(graph.graph);
 
     /* store the priority of each vertex. */
     std::vector<int> priorities(n);
