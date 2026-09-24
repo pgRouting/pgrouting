@@ -55,7 +55,7 @@ Pgr_pickDeliver::solve() {
 
     if (m_initial_id == 0) {
         msg.log << "trying all \n";
-        for (int i = 1; i < 7; ++i) {
+        for (int i = OnePerTruck; i < OneDepot; ++i) {
             initial_sols.push_back(Initial_solution((Initials_code)i, m_orders.size()));
             msg.log << "solution " << i << "\n" << initial_sols.back().tau();
             // TODO(vicky) calculate the time it takes

@@ -43,6 +43,8 @@ namespace pgrouting {
 
 namespace bidirectional {
 
+constexpr int kHeuristicManhattan{5};
+
 template <typename G>
 class Pgr_bdAstar : public Pgr_bidirectional<G> {
     using V = typename Pgr_bidirectional<G>::V;
@@ -172,7 +174,7 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
             case 4:
                 current = std::sqrt(dx * dx + dy * dy) * m_factor;
                 break;
-            case 5:
+            case kHeuristicManhattan:
                 current = (std::fabs(dx) + std::fabs(dy)) * m_factor;
                 break;
             default:
@@ -182,7 +184,7 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
     }
 
  private:
-    int m_heuristic{5};
+    int m_heuristic{kHeuristicManhattan};
     double m_factor{1.0};
 };
 

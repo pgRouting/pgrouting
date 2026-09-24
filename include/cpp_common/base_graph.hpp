@@ -916,6 +916,7 @@ class Pgr_base_graph {
          bool inserted = false;
          E e;
 
+         constexpr double kNegativeCostFactor{0.5};
          auto vm_s = get_V(T_V(edge, true));
          auto vm_t = get_V(T_V(edge, false));
 
@@ -925,7 +926,7 @@ class Pgr_base_graph {
          boost::tie(e, inserted) = boost::add_edge(vm_s, vm_t, graph);
          if (edge.cost < 0) {
              /* reading negative edges as positive */
-             graph[e].cost = (-0.5)*edge.cost;
+             graph[e].cost = (-kNegativeCostFactor)*edge.cost;
          } else {
              graph[e].cost = edge.cost;
          }
@@ -937,7 +938,7 @@ class Pgr_base_graph {
                  boost::add_edge(vm_t, vm_s, graph);
              if (edge.reverse_cost < 0) {
                  /* reading negative edges as positive */
-                 graph[e].cost = (-0.5)*edge.reverse_cost;
+                 graph[e].cost = (-kNegativeCostFactor)*edge.reverse_cost;
              } else {
                  graph[e].cost = edge.reverse_cost;
              }
