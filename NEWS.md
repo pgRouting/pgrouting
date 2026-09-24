@@ -38,10 +38,11 @@ To see all issues & pull requests closed by this release see the
 
 **Summary of changes by function**
 
-
 * pgr_planarFaces
-* pgr_coreNumbers
 
+  * New experimental function.
+
+* pgr_coreNumbers
 
   * New experimental function.
 
