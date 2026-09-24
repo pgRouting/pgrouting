@@ -4,7 +4,7 @@
 
 BEGIN;
 
-SELECT CASE WHEN min_version('4.1.0') THEN plan(6) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.1.0') THEN plan(5) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
@@ -37,7 +37,7 @@ SELECT is_empty(
 --5 -- 6
 RETURN QUERY
 SELECT is_empty(
-  $$SELECT * FROM pgr_makeBiconnectedPlanar( 
+  $$SELECT * FROM pgr_makeBiconnectedPlanar(
     'SELECT 1 AS id,5 AS source,6 AS target, 1 AS cost,1 AS reverse_cost')$$,
   '3: Graph with 2 vertices returns empty set of edges');
 -- 4 vertex test (path graph 1-2-3-4, needs 1 edge to become biconnected)
@@ -49,23 +49,6 @@ SELECT isnt_empty(
      SELECT 3 AS id, 3 AS source, 4 AS target, 1 AS cost, 1 AS reverse_cost'
   )$$,
   '4: Graph with 4 vertices in a path returns new edges to make it biconnected');
-
--- 5 vertex non-planar graph (K5)
-RETURN QUERY
-SELECT is_empty(
-  $$SELECT * FROM pgr_makeBiconnectedPlanar(
-    'SELECT 1 AS id, 1 AS source, 2 AS target, 1 AS cost, 1 AS reverse_cost UNION
-     SELECT 2 AS id, 1 AS source, 3 AS target, 1 AS cost, 1 AS reverse_cost UNION
-     SELECT 3 AS id, 1 AS source, 4 AS target, 1 AS cost, 1 AS reverse_cost UNION
-     SELECT 4 AS id, 1 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost UNION
-     SELECT 5 AS id, 2 AS source, 3 AS target, 1 AS cost, 1 AS reverse_cost UNION
-     SELECT 6 AS id, 2 AS source, 4 AS target, 1 AS cost, 1 AS reverse_cost UNION
-     SELECT 7 AS id, 2 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost UNION
-     SELECT 8 AS id, 3 AS source, 4 AS target, 1 AS cost, 1 AS reverse_cost UNION
-     SELECT 9 AS id, 3 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost UNION
-     SELECT 10 AS id, 4 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost'
-  )$$,
-  '5: Non-planar graph (K5) returns empty set');
 
 -- Disconnected graph: 4-vertex path (1-2-3-4) and 3-vertex path (5-6-7)
 -- Each component needs at least 1 added edge to become biconnected

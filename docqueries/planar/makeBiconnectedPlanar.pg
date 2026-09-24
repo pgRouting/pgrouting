@@ -6,20 +6,15 @@ SELECT * FROM pgr_makeBiconnectedPlanar(
   'SELECT id, source, target, cost, reverse_cost FROM edges'
 );
 /* -- q2 */
-CREATE TABLE example_edges_bi (
-    id SERIAL PRIMARY KEY,
-    source INTEGER,
-    target INTEGER,
-    cost DOUBLE PRECISION,
-    reverse_cost DOUBLE PRECISION
-);
-INSERT INTO example_edges_bi (source, target, cost, reverse_cost) VALUES
+CREATE TEMP TABLE pathG AS
+SELECT id, source, target, cost
+FROM (VALUES
 (1, 2, 1, 1),
 (2, 3, 1, 1),
-(3, 4, 1, 1);
-
+(3, 4, 1, 1))
+AS t(id, source, target, cost);
 /* -- q3 */
 SELECT * FROM pgr_makeBiconnectedPlanar(
-  'SELECT id, source, target, cost, reverse_cost FROM example_edges_bi'
+  'SELECT id, source, target, cost FROM pathG'
 );
 /* -- q4 */
