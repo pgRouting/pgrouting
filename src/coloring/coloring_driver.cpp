@@ -35,7 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <utility>
 #include <cstdint>
-#include <algorithm>
 
 #include "c_types/ii_t_rt.h"
 #include "cpp_common/base_graph.hpp"
@@ -90,6 +89,7 @@ void do_coloring(
         using pgrouting::algorithms::connectedComponents;
         using pgrouting::algorithms::strongComponents;
         using pgrouting::functions::makeConnected;
+        using pgrouting::functions::makeBiconnectedPlanar;
         using pgrouting::metrics::coreNumbers;
 
         hint = edges_sql;
@@ -132,9 +132,7 @@ void do_coloring(
             switch (which) {
                case BICONNECTEDPLANAR:
                     {
-                        pgrouting::functions::Pgr_makeBiconnectedPlanar<UndirectedGraph> fn;
-                        results = fn.makeBiconnectedPlanar(undigraph);
-                        log << fn.get_log();
+                        results = makeBiconnectedPlanar(undigraph);
                     }
                     break;
                 case EDGECOLORING:

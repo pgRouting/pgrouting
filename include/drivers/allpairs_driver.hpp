@@ -52,7 +52,7 @@ void do_allpairs(
         const std::string&,
         bool, Which,
         IID_t_rt*&, size_t&,
-        std::ostringstream&, std::ostringstream&);
+        std::ostringstream&, std::ostringstream&, std::ostringstream&);
 
 }  // namespace drivers
 }  // namespace pgrouting

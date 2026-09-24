@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/interruption.hpp"
 
 namespace pgrouting {
-namespace metrics {
+namespace functions {
 
 template <class G>
 std::vector<double> betweennessCentrality(
@@ -76,7 +76,7 @@ std::vector<double> betweennessCentrality(
 }
 
 
-}  // namespace metrics
+}  // namespace functions
 }  // namespace pgrouting
 
 #endif  // INCLUDE_METRICS_BETWEENNESSCENTRALITY_HPP_

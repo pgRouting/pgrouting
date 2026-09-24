@@ -75,7 +75,7 @@ void pgr_process_allpairs(
             directed,
             which,
             (*result_tuples), (*result_count),
-            log, err);
+            log, notice, err);
 
     auto name = std::string(" processing ") + pgrouting::get_name(which);
     time_msg(name.c_str(), start_t, clock());

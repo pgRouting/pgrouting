@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 06:37+0000\n"
+"POT-Creation-Date: 2026-09-24 19:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3541,7 +3541,31 @@ msgstr ""
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22>`__"
 msgstr ""
 
-msgid "Code enhancements"
+msgid "4.1.0 Summary of changes by function"
+msgstr ""
+
+msgid "pgr_coreNumbers"
+msgstr ""
+
+msgid "New experimental function."
+msgstr ""
+
+msgid "pgr_edgeColoring"
+msgstr ""
+
+msgid "Fix the way it builds the graph"
+msgstr ""
+
+msgid "pgr_makeBiconnectedPlanar"
+msgstr ""
+
+msgid "pgr_planarFaces"
+msgstr ""
+
+msgid "4.1.0 New experimental functions."
+msgstr ""
+
+msgid "4.1.0 Code enhancements"
 msgstr ""
 
 msgid "`#3049 <https://github.com/pgRouting/pgrouting/issues/3049>`__: Use enumeration on drivers and process."
@@ -3583,40 +3607,22 @@ msgstr ""
 msgid "`#3131 <https://github.com/pgRouting/pgrouting/issues/3131>`__: binaryBreadthFirstSearch: Integrate into existing process/driver pair"
 msgstr ""
 
-msgid "`#3142 <https://github.com/pgRouting/pgrouting/issues/3142>`__:pgr_coreNumbers"
+msgid "`#3140 <https://github.com/pgRouting/pgrouting/issues/3140>`__: New function: pgr_makeBiconnectedPlannar"
 msgstr ""
 
-msgid "Bug Fixes"
+msgid "`#3142 <https://github.com/pgRouting/pgrouting/issues/3142>`__: New function: pgr_coreNumbers"
+msgstr ""
+
+msgid "`#3143 <https://github.com/pgRouting/pgrouting/issues/3143>`__: New function: pgr_planarFaces"
+msgstr ""
+
+msgid "`#3154 <https://github.com/pgRouting/pgrouting/issues/3154>`__: betweennessCentrality: use allpairs/process and driver"
+msgstr ""
+
+msgid "4.1.0 Bug Fixes"
 msgstr ""
 
 msgid "`#3101 <https://github.com/pgRouting/pgrouting/issues/3101>`__: pgr_edgeColoring not building graph correctly"
-msgstr ""
-
-msgid "New experimental functions."
-msgstr ""
-
-msgid "Planar"
-msgstr ""
-
-msgid "pgr_makeBiconnectedPlanar"
-msgstr ""
-
-msgid "Summary of changes by function"
-msgstr ""
-
-msgid "pgr_planarFaces"
-msgstr ""
-
-msgid "New experimental function."
-msgstr ""
-
-msgid "pgr_coreNumbers"
-msgstr ""
-
-msgid "pgr_edgeColoring"
-msgstr ""
-
-msgid "Fix the way it builds the graph"
 msgstr ""
 
 msgid "All releases"
@@ -13330,6 +13336,9 @@ msgstr ""
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.1%22>`__"
 msgstr ""
 
+msgid "Bug Fixes"
+msgstr ""
+
 msgid "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withPoints does not pick optimal route when fraction = 1"
 msgstr ""
 
@@ -13337,6 +13346,9 @@ msgid "`#3034 <https://github.com/pgRouting/pgrouting/issues/3034>`__: metrics d
 msgstr ""
 
 msgid "`#3010 <https://github.com/pgRouting/pgrouting/issues/3010>`__: Performance issue with pgr_separateTouching()"
+msgstr ""
+
+msgid "Code enhancements"
 msgstr ""
 
 msgid "`#3044 <https://github.com/pgRouting/pgrouting/issues/3044>`__: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions"
@@ -13445,6 +13457,9 @@ msgid "Doxygen is not found"
 msgstr ""
 
 msgid "To not build Doxygen documentation: `-DBUILD_DOXY=OFF`"
+msgstr ""
+
+msgid "Summary of changes by function"
 msgstr ""
 
 msgid "pgr_aStar"
@@ -13658,6 +13673,9 @@ msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_maxFl
 msgstr ""
 
 msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_pushRelabel(Combinations)"
+msgstr ""
+
+msgid "New experimental functions."
 msgstr ""
 
 msgid "Metrics"
