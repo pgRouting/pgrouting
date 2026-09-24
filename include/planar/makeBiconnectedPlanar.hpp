@@ -146,8 +146,7 @@ class Pgr_makeBiconnectedPlanar : public pgrouting::Pgr_messages {
              boost::boyer_myrvold_params::embedding = &embedding[0]);
 
          if (!is_planar) {
-             notice << "Graph is not planar\n";
-             return std::vector<II_t_rt>();
+             throw std::string("Graph is not planar");
          }
 
          /* Sub-graphs are guaranteed to be connected at this point */

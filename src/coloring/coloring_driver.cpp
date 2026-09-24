@@ -123,6 +123,8 @@ void do_coloring(
         } else {
             if (which == CORENUMBERS) {
                 undigraph.insert_cost1_edge_no_parallel_no_loop(edges);
+            } else if (which == BICONNECTEDPLANAR) {
+                undigraph.insert_cost1_edge_no_parallel_no_loop(edges);
             } else {
                 undigraph.insert_edges(edges);
             }
