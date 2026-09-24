@@ -140,7 +140,7 @@ makeBiconnectedPlanar(pgrouting::UndirectedGraph &graph) {
             ei != ei_end; ++ei) {
         V src_v = boost::source(*ei, graph.graph);
         size_t c = component[src_v];
-        Edge_t e;
+        Edge_t e{};
         e.id           = graph[*ei].id;
         e.source       = graph[src_v].id;
         e.target       = graph[boost::target(*ei, graph.graph)].id;

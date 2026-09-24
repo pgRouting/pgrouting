@@ -172,6 +172,7 @@ Tw_node::Tw_node(
         Vehicle_t data,
         NodeType type) :
     Dnode(id, data.start_node_id),
+    m_order(-1),
     m_opens(data.start_open_t),
     m_closes(data.start_close_t),
     m_service_time(data.start_service_t),

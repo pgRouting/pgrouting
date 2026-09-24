@@ -46,7 +46,7 @@ namespace pgrouting {
 class Line_vertex {
  public:
      Line_vertex() :
-         id(0) {}
+         id(0), vertex_id(0), source(0), target(0), cost(0) {}
 
      explicit Line_vertex(const Edge_t& edge) :
          id(edge.id),

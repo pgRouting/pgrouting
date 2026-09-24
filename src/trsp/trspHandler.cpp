@@ -46,6 +46,9 @@ TrspHandler::TrspHandler(
         std::vector<Edge_t> &edges,
         const bool directed,
         const std::vector<Rule> &ruleList) :
+    m_start_vertex(-1),
+    m_end_vertex(-1),
+    m_current_node(-1),
     m_ruleTable() {
     initialize_restrictions(ruleList);
 
@@ -62,6 +65,9 @@ TrspHandler::TrspHandler(
         const std::vector<Edge_t> &new_edges,
         const bool directed,
         const std::vector<Rule> &ruleList) :
+    m_start_vertex(-1),
+    m_end_vertex(-1),
+    m_current_node(-1),
     m_ruleTable() {
     initialize_restrictions(ruleList);
 
