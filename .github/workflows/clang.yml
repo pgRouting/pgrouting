@@ -57,7 +57,7 @@ jobs:
         fail-fast: false
         matrix:
           release: [Debug, Release]
-          os: [ubuntu-latest, ubuntu-22.04]
+          os: [ubuntu-latest, ubuntu-26.04, ubuntu-22.04]
 
     steps:
       - uses: actions/checkout@v6
@@ -105,7 +105,7 @@ jobs:
           mkdir build
           cd build
           CXX=clang++ CC=clang cmake -DPOSTGRESQL_VERSION=${PGVER} \
-             -DCMAKE_BUILD_TYPE=${{ matrix.release }} -DBUILD_HTML=OFF -DBUILD_DOXY=OFF \
+             -DCMAKE_BUILD_TYPE=${{ matrix.release }} \
              -DUSE_CLANG_TIDY=ON ..
 
       - name: Build

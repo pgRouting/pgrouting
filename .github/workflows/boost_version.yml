@@ -3,15 +3,11 @@ name: Boost supported versions
 # Copyright (c) 2020-2026 pgRouting developers
 # License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 
-# This action runs:
-# - When this file changes
-# - When changes on code (src, include)
-# - When changes on data or testing scripts (tools/testers)
-# - When the way the build changes (CMakeLists.txt)
-#
 # Test is done on:
+# - ubuntu-latest
 # - the preinstalled postgres version
 # - postgis 3
+# - Release
 #
 # The boost version tested are when changes that affect pgRouting on
 # - boost::graph
@@ -20,14 +16,14 @@ name: Boost supported versions
 # Currently
 # - boost::geometry has not changed anything we use
 #
-# boost::graph
+# boost
+# - 1.92 Latest version at time of release (tested on ubuntu.yml)
 # - 1.86 does not support C++11 (Aug 2024)
 # - 1.84 is failing its own tests (Jul 2022)
 # - 1.83 transitive closure & stoer wagner changed on 83 (Jul 2022)
 # - 1.80 changed on 1.80 (Aug 2022)
 # - 1.75 requires C++14 (Dec 2020)
-# - 1.68 changed on 1.68 (Aug 2018)
-# - 1.56 is the minimum version we ask (Aug 2014)
+# - 1.74 Min requirement, works on 22.04 (tested on ubuntu.yml)
 
 on:
   workflow_dispatch:
@@ -65,12 +61,13 @@ permissions:
 jobs:
   build:
     name: Ubuntu Boost
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     strategy:
         fail-fast: false
         matrix:
-          boost_minor: [56, 68, 75, 76, 77, 78, 79, 80, 83, 84, 86]
+          boost_minor: [75, 76, 77, 78, 79, 80, 83, 84, 86, 91]
+          os: [ubuntu-latest]
 
     steps:
       - uses: actions/checkout@v6
@@ -89,12 +86,20 @@ jobs:
           sudo -u postgres psql -p "${PG_PORT}" -c "CREATE ROLE \"${PG_USER}\" WITH LOGIN SUPERUSER;"
           sudo -u postgres psql -p "${PG_PORT}" -c "CREATE DATABASE \"${PG_USER}\";"
 
+      - name: 'Raise Priority for apt.postgresql.org'
+        run: |
+          cat << EOF >> ./pgdg.pref
+          Package: *
+          Pin: release o=apt.postgresql.org
+          Pin-Priority: 600
+          EOF
+          sudo mv ./pgdg.pref /etc/apt/preferences.d/
+          sudo apt update
+
       - name: Add PostgreSQL APT repository
         run: |
-          sudo apt-get install curl ca-certificates gnupg
-          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
-            $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg-testing main ${{ matrix.psql }}" > /etc/apt/sources.list.d/pgdg.list'
+          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
 
       - name: Install dependencies
         run: |
@@ -108,17 +113,16 @@ jobs:
             postgresql-server-dev-${PGVER}
 
           wget https://sourceforge.net/projects/boost/files/boost/1.${{ matrix.boost_minor }}.0/boost_1_${{ matrix.boost_minor }}_0.tar.bz2
-          #wget https://dl.bintray.com/boostorg/release/1.${{ matrix.boost_minor }}.0/source/boost_1_${{ matrix.boost_minor }}_0.tar.bz2
           sudo tar --bzip2 -xf  boost_1_${{ matrix.boost_minor }}_0.tar.bz2
           sudo mv boost_1_${{ matrix.boost_minor }}_0/boost /usr/include/
-
 
       - name: Configure
         run: |
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Debug ..
+          cmake -DPOSTGRESQL_VERSION=${PGVER} -DBoost_DIR=/usr/include/boost \
+             -DCMAKE_BUILD_TYPE=Release ..
 
       - name: Build
         run: |

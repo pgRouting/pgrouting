@@ -20,6 +20,7 @@ on:
       - '.github/workflows/check-queries.yml'
       - 'src/**'
       - 'include/**'
+      - 'pgtap/**'
       - 'sql/**'
       - 'docqueries/**'
       - 'tools/testers/**'
@@ -33,6 +34,7 @@ on:
       - '.github/workflows/check-queries.yml'
       - 'src/**'
       - 'include/**'
+      - 'pgtap/**'
       - 'sql/**'
       - 'docqueries/**'
       - 'tools/testers/**'
@@ -51,7 +53,7 @@ permissions:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
 
     strategy:
         fail-fast: false
@@ -69,10 +71,9 @@ jobs:
 
       - name: Add PostgreSQL APT repository
         run: |
-          sudo apt-get install curl ca-certificates gnupg
-          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
-            $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+          sudo apt-get -y purge postgresql-*
+          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg-testing main ${PGVER}" > /etc/apt/sources.list.d/pgdg.list'
+          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
 
       - name: Install dependencies
         run: |
@@ -92,7 +93,8 @@ jobs:
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Debug -DBUILD_DOXY=ON ..
+          cmake -DPOSTGRESQL_VERSION=${PGVER} \
+             -DCMAKE_BUILD_TYPE=Release -DBUILD_DOXY=ON ..
 
       - name: Build
         run: |
@@ -114,11 +116,13 @@ jobs:
           sudo -u postgres createdb -p ${PGPORT}  pgr_test__db__test
           # queries that might change
           # mincut: results change depending on boost
-          TESTDIRS="mincut"
+          TESTDIRS="mincut max_flow"
           for d in ${TESTDIRS}
           do
             ./tools/testers/doc_queries_generator.pl -pgver "${PGVER}" -pguser runner -documentation -alg "docqueries/${d}"
           done
+
+          ./tools/testers/doc_queries_generator.pl -pgver "${PGVER}" -pguser runner -alg "docqueries/contraction" -l DEBUG3
 
           ./tools/testers/doc_queries_generator.pl -pgver "${PGVER}"
 
@@ -129,3 +133,16 @@ jobs:
           more DOXYLOG
           [ ! -s DOXYLOG ] || echo "There are Doxygen warnings"
           [ ! -s DOXYLOG ] || exit 1
+
+      - name: pgtap test
+        run: |
+          sudo service postgresql start
+          export PG_RUNNER_USER=`whoami`
+          sudo -u postgres psql -p ${PGPORT} -c "DROP DATABASE IF EXISTS ___pgr___test___;"
+          sudo -u postgres psql -p ${PGPORT} -c "DROP DATABASE IF EXISTS \"${PG_RUNNER_USER}\";"
+          sudo -u postgres psql -p ${PGPORT} -c "DROP ROLE IF EXISTS \"${PG_RUNNER_USER}\";"
+          sudo -u postgres psql -p ${PGPORT} -c "CREATE ROLE \"${PG_RUNNER_USER}\" WITH LOGIN SUPERUSER;"
+          sudo -u postgres psql -p ${PGPORT} -c "CREATE DATABASE \"${PG_RUNNER_USER}\";"
+          psql -c "CREATE DATABASE ___pgr___test___;"
+          bash ./tools/testers/pg_prove_tests.sh ${PG_RUNNER_USER} ${PGPORT}  Release
+          psql -c "DROP DATABASE IF EXISTS ___pgr___test___;"
