@@ -76,7 +76,7 @@ std::vector<double> betweennessCentrality(
 }
 
 
-}  // namespace metrics
+}  // namespace functions
 }  // namespace pgrouting
 
 #endif  // INCLUDE_METRICS_BETWEENNESSCENTRALITY_HPP_
