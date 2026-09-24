@@ -55,6 +55,8 @@ enum Which {  // NOLINT(cppcoreguidelines-use-enum-class)
     /* For components */
     CONNECTEDCOMPONENTS, BICONNECTEDCOMPONENTS, STRONGCOMPONENTS, ARTICULATIONPOINTS,
     BRIDGES, MAKECONNECTED,
+    /* For planar */
+    PLANARFACES,
     /* For metrics */
     CORENUMBERS
 };

@@ -127,14 +127,16 @@ Experimental Functions
   pgr_dagShortestPath
   pgr_edwardMoore
 
-.. rubric:: Planar Family
+:doc:`planar-family`
 
-- :doc:`pgr_isPlanar`
+.. include:: planar-family.rst
+   :start-after: experimental-start
+   :end-before: experimental-end
 
 .. toctree::
   :hidden:
 
-  pgr_isPlanar
+  planar-family
 
 .. rubric:: Miscellaneous Algorithms
 

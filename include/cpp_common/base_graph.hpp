@@ -339,6 +339,13 @@ class Pgr_base_graph {
      }
 
      template <typename T>
+     void insert_cost1_edges(const std::vector<T> &edges) {
+         for (const auto &edge : edges) {
+             add_cost1_edges(edge);
+         }
+     }
+
+     template <typename T>
      void insert_cost1_edge_no_parallel_no_loop(const std::vector<T> &edges) {
          for (const auto &edge : edges) {
              add_cost1_edge_no_parallel_no_loop(edge);
@@ -764,6 +771,52 @@ class Pgr_base_graph {
 
              graph[e].cost = edge.reverse_cost;
              graph[e].id = normal? edge.id : -edge.id;
+         }
+     }
+
+     /**
+      * @brief For an undirected graph
+      *
+      * Builds a graph where all costs will be ignored
+      * - all edges will get a cost of 1
+      *
+      * All edges will be added including
+      * - loops
+      * - parallel edges
+      * Currently used by pgr_planarFaces
+      */
+     template <typename T>
+     void add_cost1_edges(const T &edge) {
+         pgassert(is_undirected());
+
+         bool inserted = false;
+         E e;
+         if ((edge.cost < 0) && (edge.reverse_cost < 0)) return;
+
+         /* the edge exists on the graph */
+         pgassert((edge.cost >= 0) || (edge.reverse_cost >= 0));
+
+         /*
+          * All vertices are part of the graph
+          * true: for source
+          * false: for target
+          */
+         auto vm_s = get_V(T_V(edge, true));
+         auto vm_t = get_V(T_V(edge, false));
+
+         pgassert(vertices_map.find(edge.source) != vertices_map.end());
+         pgassert(vertices_map.find(edge.target) != vertices_map.end());
+
+         if (edge.cost >= 0) {
+             boost::tie(e, inserted) = boost::add_edge(vm_s, vm_t, graph);
+             graph[e].cost = 1;
+             graph[e].id = edge.id;
+         }
+
+         if (edge.reverse_cost >= 0) {
+             boost::tie(e, inserted) = boost::add_edge(vm_t, vm_s, graph);
+             graph[e].cost = 1;
+             graph[e].id = edge.id;
          }
      }
 
