@@ -20,6 +20,10 @@
 
 .. rubric:: Availability
 
+.. rubric:: Version 4.1.0
+
+* Added ``prev`` result column.
+
 .. rubric:: Version 4.0.2
 
 * Fix: bad alloc

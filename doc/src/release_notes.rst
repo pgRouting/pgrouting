@@ -50,6 +50,7 @@ To see all issues & pull requests closed by this release see the
 * :issue:`3089`: edgeDisjoint and bellmanFord use shortestPath driver and
   process
 * :issue:`3100`: Coloring: create and use a process & driver
+* :issue:`3111`: Via functions: add prev result column
 * :issue:`3113`: Components: Integrate into existing process/driver pair
 * :issue:`3129`: breadthFirstSearch: Reorganize into traversal
 * :issue:`3131`: binaryBreadthFirstSearch: Integrate into existing
@@ -78,6 +79,30 @@ To see all issues & pull requests closed by this release see the
 * pgr_edgeColoring
 
   .. include:: pgr_edgeColoring.rst
+     :start-after: Version 4.1.0
+     :end-before: .. rubric
+
+* pgr_dijkstraVia
+
+  .. include:: pgr_dijkstraVia.rst
+     :start-after: Version 4.1.0
+     :end-before: .. rubric
+
+* pgr_trspVia
+
+  .. include:: pgr_trspVia.rst
+     :start-after: Version 4.1.0
+     :end-before: .. rubric
+
+* pgr_trspVia_withPoints
+
+  .. include:: pgr_trspVia_withPoints.rst
+     :start-after: Version 4.1.0
+     :end-before: .. rubric
+
+* pgr_withPointsVia
+
+  .. include:: pgr_withPointsVia.rst
      :start-after: Version 4.1.0
      :end-before: .. rubric
 
