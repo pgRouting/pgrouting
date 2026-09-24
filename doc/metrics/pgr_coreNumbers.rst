@@ -61,7 +61,7 @@ peeling and does not contribute to that vertex's degree.
 
 .. rubric:: Characteristics
 
-* Works for **undirected** graphs.
+* Works for undirected graphs.
 * Loops and parallel edges are removed.
 
   * All vertices are kept

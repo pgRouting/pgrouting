@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 02:58+0000\n"
+"POT-Creation-Date: 2026-09-24 06:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3455,7 +3455,14 @@ msgstr ""
 msgid ":doc:`planar-family`"
 msgstr ""
 
-msgid ":doc:`pgr_isPlanar` - Returns whether the graph is planar."
+msgid ""
+":doc:`pgr_isPlanar` - Returns a boolean depending upon the planarity of the "
+"graph."
+msgstr ""
+
+msgid ""
+":doc:`pgr_makeBiconnectedPlanar` - Returns edges to add to a planar graph to "
+"make each connected component biconnected."
 msgstr ""
 
 msgid ""
@@ -4017,6 +4024,17 @@ msgid ""
 "`#3101 <https://github.com/pgRouting/pgrouting/issues/3101>`__: "
 "pgr_edgeColoring not building graph correctly"
 msgstr ""
+
+msgid "New experimental functions."
+msgstr ""
+
+#, fuzzy
+msgid "Planar"
+msgstr "pgr_isPlanar"
+
+#, fuzzy
+msgid "pgr_makeBiconnectedPlanar"
+msgstr "pgr_makeConnected"
 
 msgid "Summary of changes by function"
 msgstr ""
@@ -13328,6 +13346,99 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Complete_graph"
 msgstr ""
 
+msgid "``pgr_makeBiconnectedPlanar`` - Experimental"
+msgstr ""
+
+msgid ""
+"``pgr_makeBiconnectedPlanar`` — Returns the set of edges needed to make each "
+"connected component of a planar graph biconnected."
+msgstr ""
+
+msgid ""
+"``pgr_makeBiconnectedPlanar`` identifies the missing edges that need to be "
+"added to each connected component of an existing planar graph to make those "
+"components biconnected, while ensuring the graph remains planar."
+msgstr ""
+
+msgid ""
+"A graph is considered **biconnected** if it is connected and cannot be "
+"broken into disconnected pieces by deleting any single vertex (it has no "
+"articulation points). A planar graph is one that can be drawn in two-"
+"dimensional space with no two of its edges crossing."
+msgstr ""
+
+msgid ""
+"If the graph is not connected it will treat each component as an idividual "
+"graph."
+msgstr ""
+
+msgid "Run :doc:`pgr_makeConnected` to connect all components."
+msgstr ""
+
+msgid "When the graph is not planar it will emit an ``ERROR``"
+msgstr ""
+
+#, fuzzy
+msgid "Run :doc:`pgr_isPlanar` first."
+msgstr "``pgr_isplanar``"
+
+msgid "All vertices are kept."
+msgstr ""
+
+msgid "Costs are ignored."
+msgstr ""
+
+msgid ""
+"Returns a list of all new edges needed to make biconected graphs out of each "
+"connected component."
+msgstr ""
+
+msgid "Empty results when the graph is already biconnected planar."
+msgstr ""
+
+msgid "Running time: :math:`O(|V| + |E| + R \\log R)` for each component"
+msgstr ""
+
+msgid ":math:`R` is the number of returned edges."
+msgstr ""
+
+msgid "pgr_makeBiconnectedPlanar(`Edges SQL`_)"
+msgstr ""
+
+msgid "Returns set of |result-component-make|"
+msgstr ""
+
+msgid "List of edges that are needed to make the graph biconnected planar."
+msgstr ""
+
+msgid ""
+"Sample graph after adding biconnecting edges (olive = original edges, red "
+"dashed = 4 new biconnecting edges)."
+msgstr ""
+
+msgid ""
+"When a graph contains multiple disconnected components, each component is "
+"processed independently. Components (2,4) and (13,14) are already "
+"biconnected (0 articulation points) and require no new edges."
+msgstr ""
+
+msgid "4-vertex path graph."
+msgstr ""
+
+msgid "Create a 4-vertex tree graph."
+msgstr ""
+
+msgid "Get the edges needed to have biconnected planar graph."
+msgstr ""
+
+msgid "Adding the edges to the graph"
+msgstr ""
+
+msgid ""
+"`Boost: make_biconnected_planar <https://www.boost.org/doc/libs/latest/libs/"
+"graph/doc/html/graph/algorithms/planar/make_biconnected_planar.html>`__"
+msgstr ""
+
 msgid "``pgr_makeConnected`` - Experimental"
 msgstr ""
 
@@ -13354,9 +13465,6 @@ msgid ""
 msgstr ""
 
 msgid "pgr_makeConnected(`Edges SQL`_)"
-msgstr ""
-
-msgid "Returns set of |result-component-make|"
 msgstr ""
 
 msgid "List of edges that are needed to connect the graph."
@@ -13851,9 +13959,6 @@ msgid "Loops and paralell edges are preserved."
 msgstr ""
 
 msgid "They are used to determine the existance of an edge"
-msgstr ""
-
-msgid "When the graph is not planar it will emit an 'ERROR'"
 msgstr ""
 
 #, fuzzy
@@ -16193,9 +16298,6 @@ msgstr ""
 msgid ""
 "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_pushRelabel(Combinations)"
-msgstr ""
-
-msgid "New experimental functions."
 msgstr ""
 
 msgid "Metrics"
