@@ -12,7 +12,31 @@ To read all history of releases go to the latest [release notes](https://docs.pg
 To see all issues & pull requests closed by this release see the
 [#4.1.0](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22)
 
-**Code enhancements**
+4.1.0 Summary of changes by function
+
+* pgr_coreNumbers
+
+  * New experimental function.
+
+* pgr_edgeColoring
+
+  * Fix the way it builds the graph
+
+* pgr_makeBiconnectedPlanar
+
+  * New experimental function.
+
+* pgr_planarFaces
+
+  * New experimental function.
+
+4.1.0 New experimental functions.
+
+* pgr_coreNumbers
+* pgr_makeBiconnectedPlanar
+* pgr_planarFaces
+
+4.1.0 Code enhancements
 
 * [#3049](https://github.com/pgRouting/pgrouting/issues/3049): Use enumeration on drivers and process.
 * [#3054](https://github.com/pgRouting/pgrouting/issues/3054): Change error message when edges_sql is empty
@@ -29,36 +53,14 @@ To see all issues & pull requests closed by this release see the
 * [#3129](https://github.com/pgRouting/pgrouting/issues/3129): breadthFirstSearch: Reorganize into traversal
 * [#3131](https://github.com/pgRouting/pgrouting/issues/3131): binaryBreadthFirstSearch: Integrate into existing
   process/driver pair
-* [#3142](https://github.com/pgRouting/pgrouting/issues/3142):pgr_coreNumbers
+* [#3140](https://github.com/pgRouting/pgrouting/issues/3140): New function: pgr_makeBiconnectedPlannar
+* [#3142](https://github.com/pgRouting/pgrouting/issues/3142): New function: pgr_coreNumbers
+* [#3142](https://github.com/pgRouting/pgrouting/issues/3142): New function: pgr_planarFaces
+* [#3154](https://github.com/pgRouting/pgrouting/issues/3154): betweennessCentrality: use allpairs/process and driver
 
-**Bug Fixes**
+4.1.0 Bug Fixes
 
 * [#3101](https://github.com/pgRouting/pgrouting/issues/3101): pgr_edgeColoring not building graph correctly
-
-
-**New experimental functions.**
-
-* Planar
-
-  * pgr_makeBiconnectedPlanar
-
-**Summary of changes by function**
-
-* pgr_planarFaces
-
-  * New experimental function.
-
-* pgr_coreNumbers
-
-  * New experimental function.
-
-* pgr_edgeColoring
-
-  * Fix the way it builds the graph
-
-* pgr_makeBiconnectedPlanar
-
-  * New experimental function.
 
 ## pgRouting 4.0
 
