@@ -415,22 +415,22 @@ DECLARE
   typs TEXT;
 BEGIN
 
-   IF fn ILIKE '%dijkstravia%' THEN
+   IF fn ILIKE '%dijkstravia%' AND min_version('4.1.0') THEN
      return_params_names := ARRAY['seq','path_id','path_seq','start_vid','end_vid','pred','node','edge','cost','agg_cost','route_agg_cost'];
      return_params_types := '{int4,int4,int4,int8,int8,int8,int8,int8,float8,float8,float8}'::TEXT[];
    END IF;
 
-   IF fn IN ('pgr_trspvia') THEN
+   IF fn IN ('pgr_trspvia') AND min_version('4.1.0') THEN
      return_params_names := ARRAY['seq','path_id','path_seq','start_vid','end_vid','pred','node','edge','cost','agg_cost','route_agg_cost'];
      return_params_types := '{int4,int4,int4,int8,int8,int8,int8,int8,float8,float8,float8}'::TEXT[];
    END IF;
 
-   IF fn IN ('pgr_trspvia_withpoints') THEN
+   IF fn IN ('pgr_trspvia_withpoints') AND min_version('4.1.0') THEN
      return_params_names := ARRAY['seq','path_id','path_seq','start_vid','end_vid','pred','node','edge','cost','agg_cost','route_agg_cost'];
      return_params_types := '{int4,int4,int4,int8,int8,int8,int8,int8,float8,float8,float8}'::TEXT[];
    END IF;
 
-   IF fn IN ('pgr_withpointsvia') THEN
+   IF fn IN ('pgr_withpointsvia') AND min_version('4.1.0') THEN
      return_params_names := ARRAY['seq','path_id','path_seq','start_vid','end_vid','pred','node','edge','cost','agg_cost','route_agg_cost'];
      return_params_types := '{int4,int4,int4,int8,int8,int8,int8,int8,float8,float8,float8}'::TEXT[];
    END IF;

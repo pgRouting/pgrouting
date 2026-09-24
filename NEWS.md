@@ -63,19 +63,19 @@ To see all issues & pull requests closed by this release see the
 
 * pgr_dijkstraVia
 
-  * Added pred result column.
+  * Added ``pred`` result column.
 
 * pgr_trspVia
 
-  * Added pred result column.
+  * Added ``pred`` result column.
 
 * pgr_trspVia_withPoints
 
-  * Added pred result column.
+  * Added ``pred`` result column.
 
 * pgr_withPointsVia
 
-  * Added pred result column.
+  * Added ``pred`` result column.
 
 ## pgRouting 4.0
 
