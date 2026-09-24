@@ -4,8 +4,6 @@
 set(LOCAL_FILES
     nonPlanar.png
     biconnected_planar_sampledata.png
-    biconnected_line_before.png
-    biconnected_line_after.png
     )
 
 foreach (f ${LOCAL_FILES})

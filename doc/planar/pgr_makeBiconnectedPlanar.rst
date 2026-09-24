@@ -38,13 +38,31 @@ its edges crossing.
 
 The main characteristics are:
 
-* Works for **undirected** graphs.
-* Works for **planar** graphs only.
-* If any component of the input graph is not planar, no added edges are returned for that component.
-* Returns a list of all new edges needed to make each connected component of the graph biconnected.
-* The algorithm does not consider traversal costs in the calculations.
-* The algorithm does not consider geometric topology in the calculations.
-* Running time: :math:`O(|V_G| + |E_G| + R \log R)` where :math:`G(V_G, E_G)` is the input graph and :math:`R` is the number of returned edges.
+* Works for undirected graphs.
+* If the graph is not connected it will treat each component as an idividual
+  graph.
+
+  * Run :doc:`pgr_makeConnected` to connect all components.
+
+* When the graph is not planar it will emit an ``ERROR``
+
+  * Run :doc:`pgr_isPlanar` first.
+
+* Loops and parallel edges are removed.
+
+  * All vertices are kept.
+
+* Costs are ignored.
+
+* Results:
+
+  * Returns a list of all new edges needed to make biconected graphs out of each
+    connected component.
+  * Empty results when the graph is already biconnected planar.
+
+* Running time: :math:`O(|V| + |E| + R \log R)` for each component
+
+  * :math:`R` is the number of returned edges.
 
 |Boost| Boost Graph Inside
 
@@ -59,28 +77,23 @@ Signatures
    | Returns set of |result-component-make|
    | OR EMPTY SET
 
-:Example: List of edges that are needed to make the graph biconnected planar.
 
-**Sample graph before:**
-
-.. figure:: /images/Fig6-undirected.png
-   :scale: 50%
-
-   Sample graph before
-
-**Output:**
+:example: List of edges that are needed to make the graph biconnected planar.
 
 .. literalinclude:: makeBiconnectedPlanar.queries
    :start-after: -- q1
    :end-before: -- q2
 
-**Sample graph after adding biconnecting edges:**
+
+Sample graph after adding biconnecting edges (olive = original edges, red
+dashed = 4 new biconnecting edges).
 
 .. figure:: images/biconnected_planar_sampledata.png
    :scale: 75%
 
-   Sample graph after adding biconnecting edges (olive = original edges, red dashed = 4 new biconnecting edges).
-   Note: When a graph contains multiple disconnected components, each component is processed independently. Components (2,4) and (13,14) are already biconnected (0 articulation points) and require no new edges.
+When a graph contains multiple disconnected components, each component
+is processed independently. Components (2,4) and (13,14) are already
+biconnected (0 articulation points) and require no new edges.
 
 Parameters
 -------------------------------------------------------------------------------
@@ -125,31 +138,46 @@ Returns set of |result-component-make|
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Biconnecting a simple 4-vertex line graph (path graph).
+:Example: 4-vertex path graph.
+
+Create a 4-vertex tree graph.
+
+.. graphviz::
+
+   graph G {
+      node [color=cyan;shape=circle;style=filled;width=0.3;fixedsize=true;fontsize=8];
+      1 [pos="1,1!"];
+      2 [pos="0,0!"];
+      3 [pos="1,0!"];
+      4 [pos="2,0!"];
+      1 -- {2, 3, 4};
+   }
+
 
 .. literalinclude:: makeBiconnectedPlanar.queries
    :start-after: -- q2
    :end-before: -- q3
 
-**Sample graph before:**
-
-.. figure:: images/biconnected_line_before.png
-   :scale: 75%
-
-   Sample 4-vertex line graph before biconnecting (vertices 2 and 3 are articulation points).
-
-**Output:**
+Get the edges needed to have biconnected planar graph.
 
 .. literalinclude:: makeBiconnectedPlanar.queries
    :start-after: -- q3
    :end-before: -- q4
 
-**Sample graph after adding biconnecting edges:**
+Adding the edges to the graph
 
-.. figure:: images/biconnected_line_after.png
-   :scale: 75%
+.. graphviz::
 
-   Biconnected planar graph after adding new edges to eliminate articulation points without crossing.
+   graph G {
+      node [color=cyan;shape=circle;style=filled;width=0.3;fixedsize=true;fontsize=8];
+      1 [pos="1,1!"];
+      2 [pos="0,0!"];
+      3 [pos="1,0!"];
+      4 [pos="2,0!"];
+      1 -- {2, 3, 4};
+      2 -- 3 [color=red];
+      3 -- 4 [color=red];
+   }
 
 See Also
 -------------------------------------------------------------------------------
