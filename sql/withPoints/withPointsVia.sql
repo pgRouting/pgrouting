@@ -48,7 +48,7 @@ CREATE FUNCTION pgr_withPointsVia(
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
-  OUT prev BIGINT,
+  OUT pred BIGINT,
   OUT node BIGINT,
   OUT edge BIGINT,
   OUT cost FLOAT,
@@ -56,7 +56,7 @@ CREATE FUNCTION pgr_withPointsVia(
   OUT route_agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-  SELECT seq, path_id, path_seq, start_vid, end_vid, prev, node, edge, cost, agg_cost, route_agg_cost
+  SELECT seq, path_id, path_seq, start_vid, end_vid, pred, node, edge, cost, agg_cost, route_agg_cost
   FROM _pgr_withPointsVia_v4(
     _pgr_get_statement($1), _pgr_get_statement($2), $3,
     directed, strict, u_turn_on_edge, $4, details);
@@ -100,7 +100,7 @@ CREATE FUNCTION pgr_withPointsVia(
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
-  OUT prev BIGINT,
+  OUT pred BIGINT,
   OUT node BIGINT,
   OUT edge BIGINT,
   OUT cost FLOAT,
@@ -108,7 +108,7 @@ CREATE FUNCTION pgr_withPointsVia(
   OUT route_agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-  SELECT seq, path_id, path_seq, start_vid, end_vid, prev, node, edge, cost, agg_cost, route_agg_cost
+  SELECT seq, path_id, path_seq, start_vid, end_vid, pred, node, edge, cost, agg_cost, route_agg_cost
   FROM _pgr_withPointsVia_v4(
     _pgr_get_statement($1), _pgr_get_statement($2), $3,
     directed, strict, u_turn_on_edge, (CASE WHEN directed THEN 'r' ELSE 'b' END), details);

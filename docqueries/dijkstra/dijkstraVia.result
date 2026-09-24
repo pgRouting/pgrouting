@@ -9,7 +9,7 @@ SET
 SELECT * FROM pgr_dijkstraVia(
   'SELECT id, source, target, cost, reverse_cost FROM edges order by id',
   ARRAY[5, 1, 8]);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |         5 |       1 |    5 |    5 |    1 |    1 |        0 |              0
    2 |       1 |        2 |         5 |       1 |    5 |    6 |    4 |    1 |        1 |              1
@@ -26,7 +26,7 @@ SELECT * FROM pgr_dijkstraVia(
 SELECT * FROM pgr_dijkstraVia(
   'SELECT id, source, target, cost, reverse_cost FROM edges order by id',
   ARRAY[5, 7, 1, 8, 15]);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |         5 |       7 |    5 |    5 |    1 |    1 |        0 |              0
    2 |       1 |        2 |         5 |       7 |    5 |    6 |    4 |    1 |        1 |              1

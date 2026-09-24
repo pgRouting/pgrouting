@@ -11,7 +11,7 @@ SELECT * FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   ARRAY[5, 1, 8]);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |         5 |       1 |    5 |    5 |    1 |    1 |        0 |              0
    2 |       1 |        2 |         5 |       1 |    5 |    6 |    4 |    1 |        1 |              1
@@ -35,7 +35,7 @@ SELECT * FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   ARRAY[5, 7, 1, 8, 15]);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |         5 |       7 |    5 |    5 |    1 |    1 |        0 |              0
    2 |       1 |        2 |         5 |       7 |    5 |    6 |    4 |    1 |        1 |              1
@@ -143,7 +143,7 @@ WHERE agg_cost <> 0 or seq = 1;
 SELECT * FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   ARRAY[6, 3, 6]);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |         6 |       3 |    6 |    6 |    4 |    1 |        0 |              0
    2 |       1 |        2 |         6 |       3 |    6 |    7 |    7 |    1 |        1 |              1
@@ -209,7 +209,7 @@ SELECT * FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   ARRAY[6, 3, 6]);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |         6 |       3 |    6 |    6 |    4 |    1 |        0 |              0
    2 |       1 |        2 |         6 |       3 |    6 |    7 |   10 |    1 |        1 |              1
@@ -229,7 +229,7 @@ SELECT * FROM pgr_trspVia(
 SELECT * FROM pgr_dijkstraVia(
     $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
     ARRAY[6, 7, 6], U_turn_on_edge => false);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |         6 |       7 |    6 |    6 |    4 |    1 |        0 |              0
    2 |       1 |        2 |         6 |       7 |    6 |    7 |   -1 |    0 |        1 |              1
@@ -257,7 +257,7 @@ SELECT * FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   ARRAY[6, 7, 6], U_turn_on_edge => false);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |         6 |       7 |    6 |    6 |    4 |    1 |        0 |              0
    2 |       1 |        2 |         6 |       7 |    6 |    7 |   -1 |    0 |        1 |              1

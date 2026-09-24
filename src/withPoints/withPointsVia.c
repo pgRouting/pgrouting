@@ -167,7 +167,7 @@ _pgr_withpointsvia_v4(PG_FUNCTION_ARGS) {
         values[2] = Int32GetDatum(result_tuples[call_cntr].path_seq + 1);
         values[3] = Int64GetDatum(result_tuples[call_cntr].start_vid);
         values[4] = Int64GetDatum(result_tuples[call_cntr].end_vid);
-        values[5] = Int64GetDatum(result_tuples[call_cntr].prev);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].pred);
         values[6] = Int64GetDatum(result_tuples[call_cntr].node);
         values[7] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[8] = Float8GetDatum(result_tuples[call_cntr].cost);

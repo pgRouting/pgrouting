@@ -221,7 +221,7 @@ WHERE edge != -1;
 SELECT * FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   ARRAY[6, 3, 6]);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |         6 |       3 |    6 |    6 |    4 |    1 |        0 |              0
    2 |       1 |        2 |         6 |       3 |    6 |    7 |    7 |    1 |        1 |              1
@@ -254,7 +254,7 @@ SELECT * FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM new_restrictions$$,
   ARRAY[6, 3, 6]);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |         6 |       3 |    6 |    6 |    4 |    1 |        0 |              0
    2 |       1 |        2 |         6 |       3 |    6 |    7 |    8 |    1 |        1 |              1
@@ -319,7 +319,7 @@ SELECT * FROM pgr_withPointsVia(
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
   ARRAY[-4, -3, -6],
   'r', details => false);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |        -4 |      -3 |   -4 |   -4 |    6 |  0.7 |        0 |              0
    2 |       1 |        2 |        -4 |      -3 |   -4 |    3 |    7 |    1 |      0.7 |            0.7
@@ -368,7 +368,7 @@ SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
   ARRAY[-4, -3, -6],
   'r', details => false);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |        -4 |      -3 |   -4 |   -4 |    6 |  0.7 |        0 |              0
    2 |       1 |        2 |        -4 |      -3 |   -4 |    3 |    7 |    1 |      0.7 |            0.7

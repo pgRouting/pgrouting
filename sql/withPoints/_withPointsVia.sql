@@ -42,7 +42,7 @@ CREATE FUNCTION _pgr_withPointsVia_v4(
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
-  OUT prev BIGINT,
+  OUT pred BIGINT,
   OUT node BIGINT,
   OUT edge BIGINT,
   OUT cost FLOAT,

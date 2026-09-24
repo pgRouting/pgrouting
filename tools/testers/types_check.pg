@@ -416,22 +416,22 @@ DECLARE
 BEGIN
 
    IF fn ILIKE '%dijkstravia%' THEN
-     return_params_names := ARRAY['seq','path_id','path_seq','start_vid','end_vid','prev','node','edge','cost','agg_cost','route_agg_cost'];
+     return_params_names := ARRAY['seq','path_id','path_seq','start_vid','end_vid','pred','node','edge','cost','agg_cost','route_agg_cost'];
      return_params_types := '{int4,int4,int4,int8,int8,int8,int8,int8,float8,float8,float8}'::TEXT[];
    END IF;
 
    IF fn IN ('pgr_trspvia') THEN
-     return_params_names := ARRAY['seq','path_id','path_seq','start_vid','end_vid','prev','node','edge','cost','agg_cost','route_agg_cost'];
+     return_params_names := ARRAY['seq','path_id','path_seq','start_vid','end_vid','pred','node','edge','cost','agg_cost','route_agg_cost'];
      return_params_types := '{int4,int4,int4,int8,int8,int8,int8,int8,float8,float8,float8}'::TEXT[];
    END IF;
 
    IF fn IN ('pgr_trspvia_withpoints') THEN
-     return_params_names := ARRAY['seq','path_id','path_seq','start_vid','end_vid','prev','node','edge','cost','agg_cost','route_agg_cost'];
+     return_params_names := ARRAY['seq','path_id','path_seq','start_vid','end_vid','pred','node','edge','cost','agg_cost','route_agg_cost'];
      return_params_types := '{int4,int4,int4,int8,int8,int8,int8,int8,float8,float8,float8}'::TEXT[];
    END IF;
 
    IF fn IN ('pgr_withpointsvia') THEN
-     return_params_names := ARRAY['seq','path_id','path_seq','start_vid','end_vid','prev','node','edge','cost','agg_cost','route_agg_cost'];
+     return_params_names := ARRAY['seq','path_id','path_seq','start_vid','end_vid','pred','node','edge','cost','agg_cost','route_agg_cost'];
      return_params_types := '{int4,int4,int4,int8,int8,int8,int8,int8,float8,float8,float8}'::TEXT[];
    END IF;
 

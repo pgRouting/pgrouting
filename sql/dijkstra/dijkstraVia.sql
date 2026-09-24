@@ -40,7 +40,7 @@ CREATE FUNCTION pgr_dijkstraVia(
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
-    OUT prev BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
@@ -48,7 +48,7 @@ CREATE FUNCTION pgr_dijkstraVia(
     OUT route_agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, path_id, path_seq, start_vid, end_vid, prev, node, edge, cost, agg_cost, route_agg_cost
+    SELECT seq, path_id, path_seq, start_vid, end_vid, pred, node, edge, cost, agg_cost, route_agg_cost
     FROM _pgr_dijkstraVia(_pgr_get_statement($1), $2, $3 , $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT

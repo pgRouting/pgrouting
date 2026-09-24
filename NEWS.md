@@ -25,7 +25,7 @@ To see all issues & pull requests closed by this release see the
 * [#3089](https://github.com/pgRouting/pgrouting/issues/3089): edgeDisjoint and bellmanFord use shortestPath driver and
   process
 * [#3100](https://github.com/pgRouting/pgrouting/issues/3100): Coloring: create and use a process & driver
-* [#3111](https://github.com/pgRouting/pgrouting/issues/3111): Via functions: add prev result column
+* [#3111](https://github.com/pgRouting/pgrouting/issues/3111): Via functions: add pred result column
 * [#3113](https://github.com/pgRouting/pgrouting/issues/3113): Components: Integrate into existing process/driver pair
 * [#3129](https://github.com/pgRouting/pgrouting/issues/3129): breadthFirstSearch: Reorganize into traversal
 * [#3131](https://github.com/pgRouting/pgrouting/issues/3131): binaryBreadthFirstSearch: Integrate into existing
@@ -53,19 +53,19 @@ To see all issues & pull requests closed by this release see the
 
 * pgr_dijkstraVia
 
-  * Added prev result column.
+  * Added pred result column.
 
 * pgr_trspVia
 
-  * Added prev result column.
+  * Added pred result column.
 
 * pgr_trspVia_withPoints
 
-  * Added prev result column.
+  * Added pred result column.
 
 * pgr_withPointsVia
 
-  * Added prev result column.
+  * Added pred result column.
 
 ## pgRouting 4.0
 

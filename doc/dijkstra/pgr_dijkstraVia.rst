@@ -22,7 +22,7 @@
 
 .. rubric:: Version 4.1.0
 
-* Added ``prev`` result column.
+* Added ``pred`` result column.
 
 .. rubric:: Version 4.0.2
 
@@ -143,7 +143,7 @@ Result columns
    * - Column
      - Type
      - Description
-   * - ``prev``
+   * - ``pred``
      - ``BIGINT``
      - Identifier of the previous node in the path. For the first row of a
        path segment, equals ``start_vid``.

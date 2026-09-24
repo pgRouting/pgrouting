@@ -43,8 +43,8 @@ struct Routes_t{
     int path_seq;
     int64_t start_vid;
     int64_t end_vid;
-    /* Currently only populated meaningfully for pgr_dijkstraVia (see issue #3111) */
-    int64_t prev;
+    /* Predecessor of node: start_vid on the first row of a path */
+    int64_t pred;
     int64_t node;
     int64_t edge;
     double cost;

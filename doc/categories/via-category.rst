@@ -190,7 +190,7 @@ Result columns
 .. result_via_withPoints_start
 
 .. Note::
-   When ``start_vid``, ``end_vid``, ``prev`` and ``node`` columns have negative
+   When ``start_vid``, ``end_vid``, ``pred`` and ``node`` columns have negative
    values, the identifier is for a Point.
 
 .. result_via_withPoints_end

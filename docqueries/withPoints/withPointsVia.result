@@ -12,7 +12,7 @@ SELECT * FROM pgr_withPointsVia(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, side, fraction FROM pointsOfInterest',
   ARRAY[-6, 15, -5]);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |        -6 |      15 |   -6 |   -6 |    4 |  0.3 |        0 |              0
    2 |       1 |        2 |        -6 |      15 |   -6 |    7 |    8 |    1 |      0.3 |            0.3
@@ -29,7 +29,7 @@ SELECT * FROM pgr_withPointsVia(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, side, fraction FROM pointsOfInterest',
   ARRAY[-1, 7, -3, 16, 15]);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |        -1 |       7 |   -1 |   -1 |    1 |  1.4 |        0 |              0
    2 |       1 |        2 |        -1 |       7 |   -1 |    6 |    4 |    1 |      1.4 |            1.4
@@ -136,7 +136,7 @@ SELECT * FROM pgr_withPointsVia(
         0.5, cap => 2)
   $p$,
   ARRAY[1, -1, -2], details => true);
- seq | path_id | path_seq | start_vid | end_vid | prev | node | edge | cost | agg_cost | route_agg_cost
+ seq | path_id | path_seq | start_vid | end_vid | pred | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+------+----------+----------------
    1 |       1 |        1 |         1 |      -1 |    1 |    1 |    6 |    1 |        0 |              0
    2 |       1 |        2 |         1 |      -1 |    1 |    3 |    7 |    1 |        1 |              1

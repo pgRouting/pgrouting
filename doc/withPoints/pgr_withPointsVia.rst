@@ -20,7 +20,7 @@ points.
 
 .. rubric:: Version 4.1.0
 
-* Added ``prev`` result column.
+* Added ``pred`` result column.
 
 .. rubric:: Version 4.0.2
 
@@ -181,17 +181,19 @@ Result columns
    * - Column
      - Type
      - Description
-   * - ``prev``
+   * - ``pred``
      - ``BIGINT``
      - Identifier of the previous node in the path. For the first row of a
        path segment, equals ``start_vid``.
 
 .. Note::
-   The value of ``prev`` depends on the ``details`` flag, because rows are
-   collapsed before ``prev`` is calculated. ``prev`` is always the ``node`` of
-   the previous returned row of the same ``path_id``, so a point that is
-   returned when ``details`` is ``true`` is not available to be reported as
-   ``prev`` when ``details`` is ``false``.
+   ``pred`` is the ``node`` of the previous row of the same path, so its value
+   depends on ``details``:
+
+   * ``details => true``: points passed on the way are returned as rows, and
+     can be the ``pred`` of the next row.
+   * ``details => false``: those points are not returned, so they never appear
+     as ``pred``.
 
 .. include:: via-category.rst
     :start-after: result_via_withPoints_start
