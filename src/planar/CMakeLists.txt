@@ -7,4 +7,6 @@ ADD_LIBRARY(planar OBJECT
 
     makeBiconnectedPlanar.c
     planarFaces.c
+
+    planarFaces.cpp
 )

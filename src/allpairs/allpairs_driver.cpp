@@ -82,6 +82,7 @@ do_allpairs(
         using pgrouting::johnson;
         using pgrouting::floydWarshall;
         using pgrouting::functions::betweennessCentrality;
+        using pgrouting::functions::planarFaces;
 
         hint = edges_sql;
         auto edges = get_edges(edges_sql, true, true);
@@ -132,10 +133,7 @@ do_allpairs(
                     vector_to_tuple(undigraph, betweennessCentrality(undigraph), return_count, return_tuples);
                     break;
                 case PLANARFACES:
-                    {
-                        pgrouting::functions::Pgr_planarFaces<UndirectedGraph> fn;
-                        return_count = get_tuples(fn.planarFaces(undigraph), return_tuples);
-                    }
+                    return_count = get_tuples(planarFaces(undigraph), return_tuples);
                     break;
                 default:
                     err << "coloring_driver.cpp: Unknown function with name '" << get_name(which)

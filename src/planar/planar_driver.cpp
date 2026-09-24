@@ -133,8 +133,7 @@ do_planar(
                     break;
                 case PLANARFACES:
                     {
-                        pgrouting::functions::Pgr_planarFaces<UndirectedGraph> fn;
-                        return_count = get_tuples(fn.planarFaces(undigraph), return_tuples);
+                        return_count = get_tuples(pgrouting::functions::planarFaces(undigraph), return_tuples);
                     }
                     break;
                 default:
