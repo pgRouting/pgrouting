@@ -90,6 +90,7 @@ void do_coloring(
         using pgrouting::algorithms::connectedComponents;
         using pgrouting::algorithms::strongComponents;
         using pgrouting::functions::makeConnected;
+        using pgrouting::functions::makeBiconnectedPlanar;
         using pgrouting::metrics::coreNumbers;
 
         hint = edges_sql;
@@ -132,9 +133,7 @@ void do_coloring(
             switch (which) {
                case BICONNECTEDPLANAR:
                     {
-                        pgrouting::functions::Pgr_makeBiconnectedPlanar<UndirectedGraph> fn;
-                        results = fn.makeBiconnectedPlanar(undigraph);
-                        log << fn.get_log();
+                        results = makeBiconnectedPlanar(undigraph);
                     }
                     break;
                 case EDGECOLORING:
