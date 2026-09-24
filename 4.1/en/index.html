@@ -103,7 +103,13 @@
 <li><a class="reference internal" href="#functions-by-categories">Functions by categories</a></li>
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Available Functions but not official pgRouting functions</a></li>
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
-<li><a class="reference internal" href="#pgrouting-4-1-0-release-notes">pgRouting 4.1.0 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-4-1-0-release-notes">pgRouting 4.1.0 Release Notes</a><ul>
+<li><a class="reference internal" href="#summary-of-changes-by-function">4.1.0 Summary of changes by function</a></li>
+<li><a class="reference internal" href="#new-experimental-functions">4.1.0 New experimental functions.</a></li>
+<li><a class="reference internal" href="#code-enhancements">4.1.0 Code enhancements</a></li>
+<li><a class="reference internal" href="#bug-fixes">4.1.0 Bug Fixes</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#all-releases">All releases</a><ul>
 </ul>
 </li>
@@ -428,7 +434,41 @@ table information.</p></li>
 <h3>pgRouting 4.1.0 Release Notes<a class="headerlink" href="#pgrouting-4-1-0-release-notes" title="Link to this heading">¶</a></h3>
 <p>To see all issues &amp; pull requests closed by this release see the
 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.1.0%22">Github milestone for 4.1.0</a></p>
-<p class="rubric">Code enhancements</p>
+<section id="summary-of-changes-by-function">
+<h4>4.1.0 Summary of changes by function<a class="headerlink" href="#summary-of-changes-by-function" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>pgr_coreNumbers</p>
+<ul>
+<li><p>New experimental function.</p></li>
+</ul>
+</li>
+<li><p>pgr_edgeColoring</p>
+<ul>
+<li><p>Fix the way it builds the graph</p></li>
+</ul>
+</li>
+<li><p>pgr_makeBiconnectedPlanar</p>
+<ul>
+<li><p>New experimental function.</p></li>
+</ul>
+</li>
+<li><p>pgr_planarFaces</p>
+<ul>
+<li><p>New experimental function.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="new-experimental-functions">
+<h4>4.1.0 New experimental functions.<a class="headerlink" href="#new-experimental-functions" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>pgr_coreNumbers</p></li>
+<li><p>pgr_makeBiconnectedPlanar</p></li>
+<li><p>pgr_planarFaces</p></li>
+</ul>
+</section>
+<section id="code-enhancements">
+<h4>4.1.0 Code enhancements<a class="headerlink" href="#code-enhancements" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3049">#3049</a>: Use enumeration on drivers and process.</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3054">#3054</a>: Change error message when edges_sql is empty</p></li>
@@ -445,43 +485,18 @@ process</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3129">#3129</a>: breadthFirstSearch: Reorganize into traversal</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3131">#3131</a>: binaryBreadthFirstSearch: Integrate into existing
 process/driver pair</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3142">#3142</a>:pgr_coreNumbers</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3140">#3140</a>: New function: pgr_makeBiconnectedPlannar</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3142">#3142</a>: New function: pgr_coreNumbers</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3143">#3143</a>: New function: pgr_planarFaces</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3154">#3154</a>: betweennessCentrality: use allpairs/process and driver</p></li>
 </ul>
-<p class="rubric">Bug Fixes</p>
+</section>
+<section id="bug-fixes">
+<h4>4.1.0 Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3101">#3101</a>: pgr_edgeColoring not building graph correctly</p></li>
 </ul>
-<p class="rubric">New experimental functions.</p>
-<ul class="simple">
-<li><p>Planar</p>
-<ul>
-<li><p>pgr_makeBiconnectedPlanar</p></li>
-</ul>
-</li>
-</ul>
-<p class="rubric">Summary of changes by function</p>
-<ul class="simple">
-<li><p>pgr_planarFaces</p>
-<ul>
-<li><p>New experimental function.</p></li>
-</ul>
-</li>
-<li><p>pgr_coreNumbers</p>
-<ul>
-<li><p>New experimental function.</p></li>
-</ul>
-</li>
-<li><p>pgr_edgeColoring</p>
-<ul>
-<li><p>Fix the way it builds the graph</p></li>
-</ul>
-</li>
-<li><p>pgr_makeBiconnectedPlanar</p>
-<ul>
-<li><p>New experimental function.</p></li>
-</ul>
-</li>
-</ul>
+</section>
 </section>
 <section id="all-releases">
 <h3>All releases<a class="headerlink" href="#all-releases" title="Link to this heading">¶</a></h3>
