@@ -53,10 +53,12 @@ permissions:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-26.04
+    runs-on: ${{ matrix.os }}
 
     strategy:
         fail-fast: false
+        matrix:
+          os: [ubuntu-latest, ubuntu-26.04]
 
     steps:
       - uses: actions/checkout@v6
