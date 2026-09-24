@@ -18,6 +18,10 @@ points.
 
 .. rubric:: Availability
 
+.. rubric:: Version 4.1.0
+
+* Added ``prev`` result column.
+
 .. rubric:: Version 4.0.2
 
 * Fix: bad alloc
@@ -166,6 +170,28 @@ Result columns
 .. include:: via-category.rst
     :start-after: result_via_start
     :end-before: result_via_end
+
+``pgr_withPointsVia`` additionally returns:
+
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``prev``
+     - ``BIGINT``
+     - Identifier of the previous node in the path. For the first row of a
+       path segment, equals ``start_vid``.
+
+.. Note::
+   The value of ``prev`` depends on the ``details`` flag, because rows are
+   collapsed before ``prev`` is calculated. ``prev`` is always the ``node`` of
+   the previous returned row of the same ``path_id``, so a point that is
+   returned when ``details`` is ``true`` is not available to be reported as
+   ``prev`` when ``details`` is ``false``.
 
 .. include:: via-category.rst
     :start-after: result_via_withPoints_start

@@ -154,7 +154,7 @@ _pgr_withpointsvia_v4(PG_FUNCTION_ARGS) {
         bool*        nulls;
         size_t       call_cntr = funcctx->call_cntr;
 
-        size_t numb_out = 10;
+        size_t numb_out = 11;
         values = palloc(numb_out * sizeof(Datum));
         nulls = palloc(numb_out * sizeof(bool));
         size_t i;
@@ -167,11 +167,12 @@ _pgr_withpointsvia_v4(PG_FUNCTION_ARGS) {
         values[2] = Int32GetDatum(result_tuples[call_cntr].path_seq + 1);
         values[3] = Int64GetDatum(result_tuples[call_cntr].start_vid);
         values[4] = Int64GetDatum(result_tuples[call_cntr].end_vid);
-        values[5] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[6] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[7] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[8] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
-        values[9] = Float8GetDatum(result_tuples[call_cntr].route_agg_cost);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].prev);
+        values[6] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[7] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[8] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[9] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[10] = Float8GetDatum(result_tuples[call_cntr].route_agg_cost);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
