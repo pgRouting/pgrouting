@@ -59,26 +59,33 @@ class Pgr_planarFaces : public pgrouting::Pgr_messages {
       * which is 1 (left) or 2 (right)
       */
      struct FaceVisitor : public boost::planar_face_traversal_visitor {
+         typedef typename boost::graph_traits<B_G>::vertex_descriptor V;
          const G &m_graph;
          std::vector<IID_t_rt> &m_results;
          std::map<E, int> &m_visit_count;
-         int64_t face_id;
-         int64_t seq;
+         int64_t face_id {0};
+         V m_current = 0;
 
          FaceVisitor(const G &graph,
                      std::vector<IID_t_rt> &results,
                      std::map<E, int> &visit_count)
              : m_graph(graph), m_results(results),
-               m_visit_count(visit_count), face_id(0), seq(0) {}
+               m_visit_count(visit_count) {}
 
          void begin_face() { ++face_id; }
+         void next_vertex(V v) { m_current = v; }
 
          void next_edge(E e) {
              int n = ++m_visit_count[e];
+             auto s = boost::source(e, m_graph.graph);
+             auto t = boost::target(e, m_graph.graph);
+             /* loops: orientation is undefined, keep the visit order */
+             int side = (s == t) ? n : (s == m_current ? 1 : 2);
+
              IID_t_rt row;
              row.from_vid = face_id;
              row.to_vid   = m_graph.graph[e].id;
-             row.cost     = n;
+             row.cost     = side;
              m_results.push_back(row);
          }
      };
