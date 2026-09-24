@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+
+<html lang="sv" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_planarFaces - Experimental &#8212; pgRouting Manual (4.1-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
+    <script src="_static/documentation_options.js?v=4e2df6f4"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=c6ea2c72"></script>
+    <script src="_static/translations.js?v=92a62177"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Sök" href="search.html" />
+    <link rel="next" title="pgr_lengauerTarjanDominatorTree - Experimentell" href="pgr_lengauerTarjanDominatorTree.html" />
+    <link rel="prev" title="pgr_isPlanar - Experimentell" href="pgr_isPlanar.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.1</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduktion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Exempeldata</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting-koncept</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Funktionsfamiljer</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Föreslagna funktioner</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Versionsinformation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migrationsguide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_planarFaces</span></code> - Experimental</a><ul>
+<li><a class="reference internal" href="#description">Beskrivning</a></li>
+<li><a class="reference internal" href="#signatures">Underskrifter</a></li>
+<li><a class="reference internal" href="#parameters">Parametrar</a></li>
+<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
+<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
+<li><a class="reference internal" href="#additional-examples">Ytterligare exempel</a><ul>
+<li><a class="reference internal" href="#non-planar-graphs">Non-planar graphs</a></li>
+<li><a class="reference internal" href="#planarity-of-loops">Planarity of loops</a></li>
+<li><a class="reference internal" href="#triangular-graphs">Triangular graphs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Se även</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_isPlanar.html" title="Previous Chapter: pgr_isPlanar - Experimentell"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_isPlanar ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_lengauerTarjanDominatorTree.html" title="Next Chapter: pgr_lengauerTarjanDominatorTree - Experimentell"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_lengauerT... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_planarFaces','sv'));  </script>
+            
+  <div class="line-block" id="index-0">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-planarfaces-experimental">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_planarFaces</span></code> - Experimental<a class="headerlink" href="#pgr-planarfaces-experimental" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_planarFaces</span></code> - Identifies the faces of a planar embedding and lists every
+edge-face incidence for an undirected graph.</p>
+<div class="admonition-experimental admonition">
+<p class="admonition-title">Experiment</p>
+<div class="admonition warning">
+<p class="admonition-title">Varning</p>
+<p>Possible server crash</p>
+<ul class="simple">
+<li><p>These functions might create a server crash</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Varning</p>
+<p>Experimentella funktioner</p>
+<ul class="simple">
+<li><p>De är inte officiellt i den aktuella versionen.</p></li>
+<li><p>De kommer troligen inte att officiellt vara en del av nästa utgåva:</p>
+<ul>
+<li><p>Funktionerna får inte använda sig av ANY-INTEGER och ANY-NUMERICAL</p></li>
+<li><p>Namnet kan komma att ändras.</p></li>
+<li><p>Signaturen kan komma att ändras.</p></li>
+<li><p>Funktionaliteten kan komma att ändras.</p></li>
+<li><p>pgTap-tester kan saknas.</p></li>
+<li><p>Kan behöva c/c++ granskning.</p></li>
+<li><p>Eventuell dokumentation kan behöva skrivas om.</p></li>
+<li><p>Det kan behövas mycket feedback från samhället.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p class="rubric">Tillgänglighet</p>
+<p class="rubric">Version 4.1.0</p>
+<ul class="simple">
+<li><p>Ny experimentell funktion.</p></li>
+</ul>
+<section id="description">
+<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>In a planar embedding, the graph is drawn in the plane so that edges meet only
+at vertices. A face is a maximal connected region of the plane bounded by
+edges.</p>
+<p>Every bounded face is a cycle of edges enclosing an interior region.
+The exterior face, also called the unbounded face, is the region outside the
+outermost cycle.</p>
+<p>Once an embedding is fixed, each undirected edge has a left and a right
+side when walked in the direction the embedding assigns around each vertex.</p>
+<p>In a connected planar undirected graph, each edge separates exactly two faces, so it
+contributes one row on the left and one on the right.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_planarFaces</span></code> returns
+those incidences: <code class="docutils literal notranslate"><span class="pre">face_id</span></code> names the face, <code class="docutils literal notranslate"><span class="pre">edge_id</span></code> is the border edge, and
+<code class="docutils literal notranslate"><span class="pre">side</span></code> is <code class="docutils literal notranslate"><span class="pre">1</span></code> (left) or <code class="docutils literal notranslate"><span class="pre">2</span></code> (right) relative to the embedding.</p>
+<p>The function first computes a planar embedding with the Boyer-Myrvold planarity
+test, then walks faces with Boost <code class="docutils literal notranslate"><span class="pre">planar_face_traversal</span></code>.i</p>
+<p class="rubric">Egenskaper</p>
+<ul class="simple">
+<li><p>Fungerar för <strong>undirected</strong> grafer.</p></li>
+<li><p>Loops and paralell edges are preserved.</p></li>
+<li><p>Costs are ignored</p>
+<ul>
+<li><p>They are used to determine the existance of an edge</p></li>
+</ul>
+</li>
+<li><p>When the graph is not planar it will emit an ’ERROR’</p>
+<ul>
+<li><p>Run <a class="reference internal" href="pgr_isPlanar.html"><span class="doc">pgr_isPlanar - Experimentell</span></a> first</p></li>
+</ul>
+</li>
+<li><p>Each vertex receives exactly one core number</p></li>
+<li><p>Results:</p>
+<ul>
+<li><p>The result has one row per edge-side pair</p>
+<ul>
+<li><p>Graph with <span class="math notranslate nohighlight">\(|E|\)</span> edges yields <span class="math notranslate nohighlight">\(2|E|\)</span> rows.</p></li>
+</ul>
+</li>
+<li><p>Number of faces:
+* Obeys Euler’s formula: <span class="math notranslate nohighlight">\(|V| - |E| + |F| = 2\)</span>
+* On a graph with <span class="math notranslate nohighlight">\(C\)</span> components: <span class="math notranslate nohighlight">\(|V| - |E| + |F| = 2C\)</span>.</p></li>
+<li><p>Number of returned rows: <span class="math notranslate nohighlight">\(|V|\)</span>.</p></li>
+<li><p>Ordered by <code class="docutils literal notranslate"><span class="pre">node</span></code> ascending.</p></li>
+<li><p>No rows returned when no edges found. Emits a <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code></p></li>
+</ul>
+</li>
+<li><p>Running time: <span class="math notranslate nohighlight">\(O(|E| + |V|)\)</span></p>
+<ul>
+<li><p>Loop and parallel removal: <span class="math notranslate nohighlight">\(O(|E|)\)</span></p></li>
+<li><p>Peeling algorithm: <span class="math notranslate nohighlight">\(O(|E|)\)</span></p></li>
+<li><p>Sorting:  <span class="math notranslate nohighlight">\(|V| log |V|\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost-graf inuti</p>
+</section>
+<section id="signatures">
+<h2>Underskrifter<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<p class="rubric">Sammanfattning</p>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_planarFaces(<a class="reference internal" href="#edges-sql">Edges SQL</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">face_id,</span> <span class="pre">edge_id,</span> <span class="pre">side)</span></code></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Exempel<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Faces of the full <a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a> graph</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_planarFaces</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, 1 AS cost FROM edges&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">face_id</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+---------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">7</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">8</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>       <span class="mi">8</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">9</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">10</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">11</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">12</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">13</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">14</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>      <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">15</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">16</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">17</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">18</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">19</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">20</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">21</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">22</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">23</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>       <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">24</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">25</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">26</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">27</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mi">14</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">28</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">29</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">30</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">31</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">32</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>      <span class="mi">13</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">33</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">34</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mi">17</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">35</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>      <span class="mi">18</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">36</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>      <span class="mi">18</span> <span class="o">|</span>    <span class="mi">2</span>
+<span class="p">(</span><span class="mi">36</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The query returns <strong>36 rows</strong>, twice the <strong>18</strong> edges in <code class="docutils literal notranslate"><span class="pre">edges</span></code>, consistent
+with <span class="math notranslate nohighlight">\(2|E|\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">face_id</span></code> runs from <strong>1</strong> through <strong>7</strong> on this network; each id is one face
+of the embedding, including the unbounded <strong>exterior face</strong> (here <code class="docutils literal notranslate"><span class="pre">face_id</span> <span class="pre">=</span> <span class="pre">1</span></code>
+borders the outer layout of the city block).</p></li>
+<li><p>Every <code class="docutils literal notranslate"><span class="pre">edge_id</span></code> appears <strong>twice</strong>, once with <code class="docutils literal notranslate"><span class="pre">side</span> <span class="pre">=</span> <span class="pre">1</span></code> and once with
+<code class="docutils literal notranslate"><span class="pre">side</span> <span class="pre">=</span> <span class="pre">2</span></code>.</p></li>
+<li><p>Rows follow the counterclockwise walk of each face in the computed embedding.</p></li>
+<li><p>Have <span class="math notranslate nohighlight">\(3\)</span> components then number if faces = <span class="math notranslate nohighlight">\(17 - 18 + 7 = 6 = 2 \times 3\)</span>.</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Kanter SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Kanter SQL</a> enligt beskrivningen nedan.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inner-queries">
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Standard</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifierare av kanten.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifierare för den första slutpunktsvertexen på kanten.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifierare för den andra slutpunktsvertexen på kanten.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td></td>
+<td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">källa</span></code>, <code class="docutils literal notranslate"><span class="pre">mål</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p>-1</p></td>
+<td><p>Kantvikt (<code class="docutils literal notranslate"><span class="pre">mål</span></code>, <code class="docutils literal notranslate"><span class="pre">källa</span></code>)</p>
+<ul class="simple">
+<li><p>När negativ: kanten (<code class="docutils literal notranslate"><span class="pre">mål</span></code>, <code class="docutils literal notranslate"><span class="pre">källa</span></code>) existerar inte, därför är den inte en del av grafen.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Var:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-TAL<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="result-columns">
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolumn</p></th>
+<th class="head"><p>Typ</p></th>
+<th class="head"><p>Beskrivning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Sequential value starting from 1.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">face_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the face in the computed embedding.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the edge that borders the face.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">1</span></code> when the edge borders the face on the left side.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">2</span></code> when the edge borders the face on the right side.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<section id="non-planar-graphs">
+<h3>Non-planar graphs<a class="headerlink" href="#non-planar-graphs" title="Link to this heading">¶</a></h3>
+<p>Face extraction requires a planar graph. Subgraphs containing a <span class="math notranslate nohighlight">\(K_5\)</span> or
+<span class="math notranslate nohighlight">\(K_{3,3}\)</span> minor cannot be embedded without crossings; <code class="docutils literal notranslate"><span class="pre">pgr_planarFaces</span></code>
+raises <code class="docutils literal notranslate"><span class="pre">ERROR:</span> <span class="pre">Graph</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">planar</span></code> in that case. The <a class="reference internal" href="pgr_isPlanar.html"><span class="doc">pgr_isPlanar - Experimentell</span></a>
+documentation shows a non-planar subgraph of <code class="docutils literal notranslate"><span class="pre">sampledata</span></code> (edges highlighted in
+blue in the figure).</p>
+<div class="graphviz"><img src="_images/graphviz-b034c614a21178f731b4adf0e227057267f4bd1d.png" alt="graph G {
+ node [shape=circle;style=filled;width=0.3;fixedsize=true;fontsize=8];
+ 1,2,3,4,5 [color=lightcoral];
+ 1 [pos=&quot;0,0!&quot;];
+ 2 [pos=&quot;1,0!&quot;];
+ 3 [pos=&quot;1,1!&quot;];
+ 4 [pos=&quot;0,1!&quot;];
+ 5 [pos=&quot;0.5,1.5!&quot;];
+ 1 -- {2, 3, 4, 5};
+ 2 -- {3, 4, 5};
+ 3 -- {4, 5};
+ 4 -- 5;
+}" class="graphviz" /></div>
+<p>Create a <span class="math notranslate nohighlight">\(K_5\)</span> graph.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TEMP</span> <span class="n">TABLE</span> <span class="n">k5</span> <span class="n">AS</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span>
+<span class="n">FROM</span> <span class="p">(</span><span class="n">VALUES</span>
+  <span class="p">(</span><span class="mi">1</span><span class="p">::</span><span class="n">BIGINT</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="n">BIGINT</span><span class="p">,</span> <span class="mi">2</span><span class="p">::</span><span class="n">BIGINT</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="n">BIGINT</span><span class="p">),</span>
+  <span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+  <span class="p">(</span><span class="mi">3</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+  <span class="p">(</span><span class="mi">4</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+  <span class="p">(</span><span class="mi">5</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+  <span class="p">(</span><span class="mi">6</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+  <span class="p">(</span><span class="mi">7</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+  <span class="p">(</span><span class="mi">8</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+  <span class="p">(</span><span class="mi">9</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+  <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">AS</span> <span class="n">t</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+<p>Test planarity: dont execute when is not planar.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_isPlanar</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost FROM k5&#39;</span><span class="p">);</span>
+ <span class="n">pgr_isplanar</span>
+<span class="o">--------------</span>
+ <span class="n">f</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Or get an error: (not shown)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_planarFaces</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost FROM k5&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="planarity-of-loops">
+<h3>Planarity of loops<a class="headerlink" href="#planarity-of-loops" title="Link to this heading">¶</a></h3>
+<p>One loop graph with only one vertex:</p>
+<div class="graphviz"><img src="_images/graphviz-56fc70402d79eadb72a932982636717ffcc81d5d.png" alt="graph G {
+    node [shape=circle;style=filled;width=0.3;fixedsize=true;fontsize=8];
+    1 [color=lightblue];
+    1 -- 1;
+}" class="graphviz" /></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_planarFaces</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT 1 AS id, 5 AS source, 5 AS target, 2 AS cost&#39;</span>
+<span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">seq</span><span class="p">;</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">face_id</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+---------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span>
+<span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Two loop graph with only one vertex:</p>
+<div class="graphviz"><img src="_images/graphviz-baa0b2c883afc31958d015ce4a8d1bf7df4fb19e.png" alt="graph G {
+    node [shape=circle;style=filled;width=0.3;fixedsize=true;fontsize=8];
+    1 [color=lightblue];
+    1 -- 1 -- 1;
+}" class="graphviz" /></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_planarFaces</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT 1 AS id, 5 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost&#39;</span>
+<span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">seq</span><span class="p">;</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">face_id</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+---------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="triangular-graphs">
+<h3>Triangular graphs<a class="headerlink" href="#triangular-graphs" title="Link to this heading">¶</a></h3>
+<p class="rubric">Triangular graph (no duplicate edges)</p>
+<div class="graphviz"><img src="_images/graphviz-10b54e391ad16e7201dda1501c98136b21776768.png" alt="graph G {
+    node [shape=circle;style=filled;width=0.5;fixedsize=true;fontsize=8];
+    1,2,3 [color=lightblue];
+    1 -- 2 -- 3 -- 1;
+}" class="graphviz" /></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TEMP</span> <span class="n">TABLE</span> <span class="n">tri_edges</span> <span class="n">AS</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span>
+<span class="n">FROM</span> <span class="p">(</span><span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">AS</span> <span class="n">t</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_planarFaces</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, 1 AS cost FROM tri_edges&#39;</span>
+<span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">seq</span><span class="p">;</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">face_id</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+---------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mi">13</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>      <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>    <span class="mi">2</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Six rows are returned: <span class="math notranslate nohighlight">\(2 \times 3\)</span> edges.</p></li>
+<li><p><span class="math notranslate nohighlight">\(face\_id = 1\)</span> is the interior face.</p></li>
+<li><p><span class="math notranslate nohighlight">\(face\_id = 2\)</span> is the exterior face.
+face.</p></li>
+<li><p>Each edge lists <code class="docutils literal notranslate"><span class="pre">1</span></code> on one face and <code class="docutils literal notranslate"><span class="pre">2</span></code> on the other.</p></li>
+</ul>
+<p class="rubric">Triangular graph (duplicate edges)</p>
+<div class="graphviz"><img src="_images/graphviz-6a6b1450bc245ece07658a9d0869cc94037b97d7.png" alt="graph G {
+    node [shape=circle;style=filled;width=0.5;fixedsize=true;fontsize=8];
+    1,2,3 [color=lightblue];
+    1 -- 2 -- 3 -- 1;
+    1 -- 2 -- 3 -- 1;
+}" class="graphviz" /></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_planarFaces</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, 1 AS cost, 1 AS reverse_cost</span>
+  <span class="n">FROM</span> <span class="n">tri_edges</span><span class="s1">&#39;</span>
+<span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">seq</span><span class="p">;</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">face_id</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+---------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mi">13</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>      <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">8</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">9</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">10</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">11</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>      <span class="mi">13</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">12</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>      <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+<span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_isPlanar.html"><span class="doc">pgr_isPlanar - Experimentell</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a></p></li>
+<li><p>Boost Graph Library: <a class="reference external" href="https://www.boost.org/libs/graph/doc/planar_face_traversal.html">Planar Face Traversal</a></p></li>
+<li><p>Boost Graph Library: <a class="reference external" href="https://www.boost.org/libs/graph/doc/boyer_myrvold.html">Boost: Boyer Myrvold planarity</a></p></li>
+<li><p>Wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Planar_graph">Planar graph</a></p></li>
+<li><p>Boyer, J. M. and Myrvold, W. J. (2004). On the Cutting Edge: Simplified O(n)
+Planarity Algorithms by Edge Addition. Journal of Graph Algorithms and
+Applications, 8(3), 241-273.</p></li>
+</ul>
+<p class="rubric">Index och tabeller</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Söksida</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright %Y pgRouting developers.<br/>
+      Senast uppdaterad sep. 24, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
