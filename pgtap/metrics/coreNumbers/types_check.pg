@@ -1,0 +1,46 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+SELECT CASE WHEN NOT min_version('4.1.0') THEN plan(1) ELSE plan(5) END;
+
+CREATE OR REPLACE FUNCTION types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'Function is new on 4.1.0');
+    RETURN;
+  END IF;
+
+RETURN QUERY
+SELECT has_function('pgr_corenumbers');
+RETURN QUERY
+SELECT has_function('pgr_corenumbers', ARRAY['text']);
+RETURN QUERY
+SELECT function_returns('pgr_corenumbers', ARRAY['text'],'setof record');
+
+RETURN QUERY
+SELECT function_args_eq('pgr_corenumbers',
+  $$VALUES
+  ('{"","seq","node","core"}'::TEXT[])
+  $$);
+
+RETURN QUERY
+SELECT function_types_eq('pgr_corenumbers',
+  $$VALUES
+  ('{text,int8,int8,int8}'::TEXT[])
+  $$);
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+SELECT types_check();
+
+SELECT finish();
+ROLLBACK;

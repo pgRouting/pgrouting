@@ -125,6 +125,11 @@ get_name(Which which) {
         case STRONGCOMPONENTS:
             return "pgr_strongComponents";
             break;
+        case PLANARFACES:
+            return "pgr_planarFaces";
+        case CORENUMBERS:
+            return "pgr_coreNumbers";
+            break;
         default:
             return "unknown";
             break;

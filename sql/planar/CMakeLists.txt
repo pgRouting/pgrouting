@@ -7,6 +7,8 @@ set(LOCAL_FILES
     isPlanar.sql
     _makeBiconnectedPlanar.sql
     makeBiconnectedPlanar.sql
+    _planarFaces.sql
+    planarFaces.sql
     )
 
 foreach (f ${LOCAL_FILES})

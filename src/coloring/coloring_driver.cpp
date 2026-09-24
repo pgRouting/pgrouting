@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/coloring_driver.hpp"
 
+#include <algorithm>
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -50,6 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "coloring/sequentialVertexColoring.hpp"
 #include "components/components.hpp"
 #include "components/makeConnected.hpp"
+#include "metrics/coreNumbers.hpp"
 
 namespace pgrouting {
 namespace drivers {
@@ -88,6 +90,7 @@ void do_coloring(
         using pgrouting::algorithms::connectedComponents;
         using pgrouting::algorithms::strongComponents;
         using pgrouting::functions::makeConnected;
+        using pgrouting::metrics::coreNumbers;
 
         hint = edges_sql;
         auto edges = get_edges(edges_sql, true, false);
@@ -118,7 +121,11 @@ void do_coloring(
                     return;
             }
         } else {
-            undigraph.insert_edges(edges);
+            if (which == CORENUMBERS) {
+                undigraph.insert_cost1_edge_no_parallel_no_loop(edges);
+            } else {
+                undigraph.insert_edges(edges);
+            }
 
             switch (which) {
                case BICONNECTEDPLANAR:
@@ -147,6 +154,9 @@ void do_coloring(
                     }
                 case CONNECTEDCOMPONENTS:
                     component_results = connectedComponents(undigraph);
+                    break;
+                case CORENUMBERS:
+                    results = coreNumbers(undigraph);
                     break;
                 default:
                     err << "coloring_driver.cpp: Unknown function with name '" << get_name(which)

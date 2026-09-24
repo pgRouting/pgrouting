@@ -1,0 +1,58 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN NOT min_version('4.1.0') THEN plan(1) ELSE plan(8) END;
+
+PREPARE edges_q AS
+SELECT id, source, target, cost, reverse_cost  FROM edges;
+
+PREPARE null_ret AS
+SELECT id FROM vertices WHERE id IN (-1);
+
+PREPARE null_ret_arr AS
+SELECT array_agg(id) FROM vertices WHERE id IN (-1);
+
+CREATE OR REPLACE FUNCTION no_crash()
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+params TEXT[];
+subs TEXT[];
+BEGIN
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'Function is new on 4.1.0');
+    RETURN;
+  END IF;
+
+  RETURN QUERY
+  SELECT isnt_empty('edges_q', 'Should be not empty to tests be meaningful');
+  RETURN QUERY
+  SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
+  RETURN QUERY
+  SELECT set_eq('null_ret_arr', 'SELECT NULL::BIGINT[]', 'Should be empty to tests be meaningful');
+
+    params = ARRAY[
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_coreNumbers', params, subs);
+    RETURN query SELECT throw_on_empty_edges_sql('pgr_coreNumbers', '');
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+
+SELECT * FROM no_crash();
+
+SELECT finish();
+ROLLBACK;
