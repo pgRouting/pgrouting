@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 09:25+0000\n"
+"POT-Creation-Date: 2026-09-24 06:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3455,7 +3455,14 @@ msgstr ""
 msgid ":doc:`planar-family`"
 msgstr ""
 
-msgid ":doc:`pgr_isPlanar` - Returns whether the graph is planar."
+msgid ""
+":doc:`pgr_isPlanar` - Returns a boolean depending upon the planarity of the "
+"graph."
+msgstr ""
+
+msgid ""
+":doc:`pgr_makeBiconnectedPlanar` - Returns edges to add to a planar graph to "
+"make each connected component biconnected."
 msgstr ""
 
 msgid ""
@@ -3991,11 +3998,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"`#3111 <https://github.com/pgRouting/pgrouting/issues/3111>`__: Via "
-"functions: add prev result column"
-msgstr ""
-
-msgid ""
 "`#3113 <https://github.com/pgRouting/pgrouting/issues/3113>`__: Components: "
 "Integrate into existing process/driver pair"
 msgstr ""
@@ -4023,6 +4025,17 @@ msgid ""
 "pgr_edgeColoring not building graph correctly"
 msgstr ""
 
+msgid "New experimental functions."
+msgstr ""
+
+#, fuzzy
+msgid "Planar"
+msgstr "pgr_isPlanar"
+
+#, fuzzy
+msgid "pgr_makeBiconnectedPlanar"
+msgstr "pgr_makeConnected"
+
 msgid "Summary of changes by function"
 msgstr ""
 
@@ -4041,21 +4054,6 @@ msgstr "pgr_edgeColoring"
 
 msgid "Fix the way it builds the graph"
 msgstr ""
-
-msgid "pgr_dijkstraVia"
-msgstr "pgr_dijkstraVia"
-
-msgid "Added ``prev`` result column."
-msgstr ""
-
-msgid "pgr_trspVia"
-msgstr "pgr_trspVia"
-
-msgid "pgr_trspVia_withPoints"
-msgstr ""
-
-msgid "pgr_withPointsVia"
-msgstr "pgr_withPointsVia"
 
 msgid "All releases"
 msgstr ""
@@ -11609,19 +11607,6 @@ msgid ""
 "``seq``."
 msgstr ""
 
-#, fuzzy
-msgid "``pgr_dijkstraVia`` additionally returns:"
-msgstr "``pgr_dijkstraVia``"
-
-#, fuzzy
-msgid "``prev``"
-msgstr "``pred``"
-
-msgid ""
-"Identifier of the previous node in the path. For the first row of a path "
-"segment, equals ``start_vid``."
-msgstr ""
-
 #, python-brace-format
 msgid ""
 "All this examples are about the route that visits the vertices :math:`\\{5, "
@@ -13361,6 +13346,99 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Complete_graph"
 msgstr ""
 
+msgid "``pgr_makeBiconnectedPlanar`` - Experimental"
+msgstr ""
+
+msgid ""
+"``pgr_makeBiconnectedPlanar`` — Returns the set of edges needed to make each "
+"connected component of a planar graph biconnected."
+msgstr ""
+
+msgid ""
+"``pgr_makeBiconnectedPlanar`` identifies the missing edges that need to be "
+"added to each connected component of an existing planar graph to make those "
+"components biconnected, while ensuring the graph remains planar."
+msgstr ""
+
+msgid ""
+"A graph is considered **biconnected** if it is connected and cannot be "
+"broken into disconnected pieces by deleting any single vertex (it has no "
+"articulation points). A planar graph is one that can be drawn in two-"
+"dimensional space with no two of its edges crossing."
+msgstr ""
+
+msgid ""
+"If the graph is not connected it will treat each component as an idividual "
+"graph."
+msgstr ""
+
+msgid "Run :doc:`pgr_makeConnected` to connect all components."
+msgstr ""
+
+msgid "When the graph is not planar it will emit an ``ERROR``"
+msgstr ""
+
+#, fuzzy
+msgid "Run :doc:`pgr_isPlanar` first."
+msgstr "``pgr_isplanar``"
+
+msgid "All vertices are kept."
+msgstr ""
+
+msgid "Costs are ignored."
+msgstr ""
+
+msgid ""
+"Returns a list of all new edges needed to make biconected graphs out of each "
+"connected component."
+msgstr ""
+
+msgid "Empty results when the graph is already biconnected planar."
+msgstr ""
+
+msgid "Running time: :math:`O(|V| + |E| + R \\log R)` for each component"
+msgstr ""
+
+msgid ":math:`R` is the number of returned edges."
+msgstr ""
+
+msgid "pgr_makeBiconnectedPlanar(`Edges SQL`_)"
+msgstr ""
+
+msgid "Returns set of |result-component-make|"
+msgstr ""
+
+msgid "List of edges that are needed to make the graph biconnected planar."
+msgstr ""
+
+msgid ""
+"Sample graph after adding biconnecting edges (olive = original edges, red "
+"dashed = 4 new biconnecting edges)."
+msgstr ""
+
+msgid ""
+"When a graph contains multiple disconnected components, each component is "
+"processed independently. Components (2,4) and (13,14) are already "
+"biconnected (0 articulation points) and require no new edges."
+msgstr ""
+
+msgid "4-vertex path graph."
+msgstr ""
+
+msgid "Create a 4-vertex tree graph."
+msgstr ""
+
+msgid "Get the edges needed to have biconnected planar graph."
+msgstr ""
+
+msgid "Adding the edges to the graph"
+msgstr ""
+
+msgid ""
+"`Boost: make_biconnected_planar <https://www.boost.org/doc/libs/latest/libs/"
+"graph/doc/html/graph/algorithms/planar/make_biconnected_planar.html>`__"
+msgstr ""
+
 msgid "``pgr_makeConnected`` - Experimental"
 msgstr ""
 
@@ -13387,9 +13465,6 @@ msgid ""
 msgstr ""
 
 msgid "pgr_makeConnected(`Edges SQL`_)"
-msgstr ""
-
-msgid "Returns set of |result-component-make|"
 msgstr ""
 
 msgid "List of edges that are needed to connect the graph."
@@ -13884,9 +13959,6 @@ msgid "Loops and paralell edges are preserved."
 msgstr ""
 
 msgid "They are used to determine the existance of an edge"
-msgstr ""
-
-msgid "When the graph is not planar it will emit an 'ERROR'"
 msgstr ""
 
 #, fuzzy
@@ -14708,9 +14780,6 @@ msgid ""
 "[**options**])"
 msgstr ""
 
-msgid "``pgr_trspVia`` additionally returns:"
-msgstr ""
-
 #, python-brace-format
 msgid ""
 "All this examples are about the route that visits the vertices :math:`\\{5, "
@@ -14886,21 +14955,9 @@ msgid ""
 "When ``false`` the results will not include the points that are in the path."
 msgstr ""
 
-#, fuzzy
-msgid "``pgr_trspVia_withPoints`` additionally returns:"
-msgstr "``pgr_trspVia_withPoints``"
-
 msgid ""
-"The value of ``prev`` depends on the ``details`` flag, because rows are "
-"collapsed before ``prev`` is calculated. ``prev`` is always the ``node`` of "
-"the previous returned row of the same ``path_id``, so a point that is "
-"returned when ``details`` is ``true`` is not available to be reported as "
-"``prev`` when ``details`` is ``false``."
-msgstr ""
-
-msgid ""
-"When ``start_vid``, ``end_vid``, ``prev`` and ``node`` columns have negative "
-"values, the identifier is for a Point."
+"When ``start_vid``, ``end_vid`` and ``node`` columns have negative values, "
+"the identifier is for a Point."
 msgstr ""
 
 msgid "Use ``pgr_findCloseEdges`` for points on the fly"
@@ -15706,9 +15763,6 @@ msgid ""
 "order with right driving side in directed graph.."
 msgstr ""
 
-msgid "``pgr_withPointsVia`` additionally returns:"
-msgstr ""
-
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_"
 msgstr ""
 
@@ -15804,11 +15858,17 @@ msgstr ""
 msgid "4.0.2 Summary of changes by function"
 msgstr ""
 
+msgid "pgr_dijkstraVia"
+msgstr "pgr_dijkstraVia"
+
 msgid "pgr_drivingDistance"
 msgstr "pgr_drivingDistance"
 
 msgid "pgr_withPointsDD"
 msgstr "pgr_withPointsDD"
+
+msgid "pgr_withPointsVia"
+msgstr "pgr_withPointsVia"
 
 msgid "4.0.2 Bug Fixes"
 msgstr ""
@@ -16076,6 +16136,12 @@ msgstr "pgr_transitiveClosure"
 msgid "pgr_trsp"
 msgstr "pgr_trsp"
 
+msgid "pgr_trspVia"
+msgstr "pgr_trspVia"
+
+msgid "pgr_trspVia_withPoints"
+msgstr ""
+
 msgid "pgr_trsp_withPoints"
 msgstr ""
 
@@ -16232,9 +16298,6 @@ msgstr ""
 msgid ""
 "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_pushRelabel(Combinations)"
-msgstr ""
-
-msgid "New experimental functions."
 msgstr ""
 
 msgid "Metrics"

@@ -5,6 +5,8 @@
 set(LOCAL_FILES
     _isPlanar.sql
     isPlanar.sql
+    _makeBiconnectedPlanar.sql
+    makeBiconnectedPlanar.sql
     _planarFaces.sql
     planarFaces.sql
     )
