@@ -85,7 +85,7 @@ void do_planar(
         (void)directed;
 
         UndirectedGraph undigraph;
-        undigraph.insert_edges(edges);
+        undigraph.insert_cost1_edges(edges);
 
         std::vector<IID_t_rt> results;
 
