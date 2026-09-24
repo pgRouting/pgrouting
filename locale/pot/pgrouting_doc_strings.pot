@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 02:58+0000\n"
+"POT-Creation-Date: 2026-09-24 09:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3571,6 +3571,9 @@ msgstr ""
 msgid "`#3100 <https://github.com/pgRouting/pgrouting/issues/3100>`__: Coloring: create and use a process & driver"
 msgstr ""
 
+msgid "`#3111 <https://github.com/pgRouting/pgrouting/issues/3111>`__: Via functions: add prev result column"
+msgstr ""
+
 msgid "`#3113 <https://github.com/pgRouting/pgrouting/issues/3113>`__: Components: Integrate into existing process/driver pair"
 msgstr ""
 
@@ -3605,6 +3608,21 @@ msgid "pgr_edgeColoring"
 msgstr ""
 
 msgid "Fix the way it builds the graph"
+msgstr ""
+
+msgid "pgr_dijkstraVia"
+msgstr ""
+
+msgid "Added ``prev`` result column."
+msgstr ""
+
+msgid "pgr_trspVia"
+msgstr ""
+
+msgid "pgr_trspVia_withPoints"
+msgstr ""
+
+msgid "pgr_withPointsVia"
 msgstr ""
 
 msgid "All releases"
@@ -9874,6 +9892,15 @@ msgstr ""
 msgid "Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the current ``seq``."
 msgstr ""
 
+msgid "``pgr_dijkstraVia`` additionally returns:"
+msgstr ""
+
+msgid "``prev``"
+msgstr ""
+
+msgid "Identifier of the previous node in the path. For the first row of a path segment, equals ``start_vid``."
+msgstr ""
+
 msgid "All this examples are about the route that visits the vertices :math:`\\{5, 7, 1, 8, 15\\}` in that order on a **directed** graph."
 msgstr ""
 
@@ -12421,6 +12448,9 @@ msgstr ""
 msgid "pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**, [**options**])"
 msgstr ""
 
+msgid "``pgr_trspVia`` additionally returns:"
+msgstr ""
+
 msgid "All this examples are about the route that visits the vertices :math:`\\{5, 7, 1, 8, 15\\}` in that order on a directed graph."
 msgstr ""
 
@@ -12562,7 +12592,13 @@ msgstr ""
 msgid "When ``false`` the results will not include the points that are in the path."
 msgstr ""
 
-msgid "When ``start_vid``, ``end_vid`` and ``node`` columns have negative values, the identifier is for a Point."
+msgid "``pgr_trspVia_withPoints`` additionally returns:"
+msgstr ""
+
+msgid "The value of ``prev`` depends on the ``details`` flag, because rows are collapsed before ``prev`` is calculated. ``prev`` is always the ``node`` of the previous returned row of the same ``path_id``, so a point that is returned when ``details`` is ``true`` is not available to be reported as ``prev`` when ``details`` is ``false``."
+msgstr ""
+
+msgid "When ``start_vid``, ``end_vid``, ``prev`` and ``node`` columns have negative values, the identifier is for a Point."
 msgstr ""
 
 msgid "Use ``pgr_findCloseEdges`` for points on the fly"
@@ -13159,6 +13195,9 @@ msgstr ""
 msgid "Find the route that visits the vertices :math:`\\{ -6, 15, -1\\}` in that order with right driving side in directed graph.."
 msgstr ""
 
+msgid "``pgr_withPointsVia`` additionally returns:"
+msgstr ""
+
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_"
 msgstr ""
 
@@ -13225,16 +13264,10 @@ msgstr ""
 msgid "4.0.2 Summary of changes by function"
 msgstr ""
 
-msgid "pgr_dijkstraVia"
-msgstr ""
-
 msgid "pgr_drivingDistance"
 msgstr ""
 
 msgid "pgr_withPointsDD"
-msgstr ""
-
-msgid "pgr_withPointsVia"
 msgstr ""
 
 msgid "4.0.2 Bug Fixes"
@@ -13466,12 +13499,6 @@ msgid "pgr_transitiveClosure"
 msgstr ""
 
 msgid "pgr_trsp"
-msgstr ""
-
-msgid "pgr_trspVia"
-msgstr ""
-
-msgid "pgr_trspVia_withPoints"
 msgstr ""
 
 msgid "pgr_trsp_withPoints"
