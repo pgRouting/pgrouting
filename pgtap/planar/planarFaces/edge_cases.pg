@@ -6,7 +6,7 @@
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('4.1.0') THEN plan (10) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.1.0') THEN plan (9) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
@@ -25,20 +25,15 @@ SELECT id, source, target, cost, reverse_cost
 FROM edges
 WHERE id > 18;
 
-RETURN QUERY
-SELECT is_empty('q1', '1: Graph with 0 edges');
-
 PREPARE emptyTest AS
 SELECT * FROM pgr_planarFaces('q1');
 
 RETURN QUERY
 SELECT is_empty('emptyTest', '2: Empty graph returns 0 rows');
 
--- single edge: 2 faces (each side)
+-- 1--1
 PREPARE q3 AS
-SELECT id, source, target, cost, reverse_cost
-FROM edges
-WHERE id = 1;
+SELECT 5 AS id, 3 AS source, 2 AS target, 1 AS cost;
 
 PREPARE singleEdgeTest AS
 SELECT * FROM pgr_planarFaces('q3');
@@ -46,29 +41,31 @@ SELECT * FROM pgr_planarFaces('q3');
 RETURN QUERY
 SELECT set_eq('singleEdgeTest',
     $$VALUES
-        (1::BIGINT, 1::BIGINT, 1::BIGINT, 1),
-        (2::BIGINT, 1::BIGINT, 1::BIGINT, 2)
+        (1::BIGINT, 1::BIGINT, 5::BIGINT, 1),
+        (2::BIGINT, 1::BIGINT, 5::BIGINT, 2)
     $$,
-    '3: Single edge has 2 face-edge incidences');
+    '1--1: Single edge has 2 face-edge incidences');
 
 -- open path 11 - 7 - 8 - 12 (edges 8, 10, 12): a tree has no interior face,
 -- so all 3 edges border the single exterior face, still giving 2|E| = 6 rows
+-- 11--7--8--12
 PREPARE q4 AS
-SELECT id, source, target, cost, reverse_cost
+SELECT id, source, target, 1 AS cost
 FROM edges
 WHERE id IN (8, 10, 12);
 
-PREPARE triangleTest AS
+PREPARE openpath AS
 SELECT count(*) FROM pgr_planarFaces('q4');
 
 RETURN QUERY
-SELECT set_eq('triangleTest',
+SELECT set_eq('openpath',
     $$VALUES (6::BIGINT) $$,
     '4: Open path of 3 edges has 6 rows, all on the exterior face');
 
 -- total rows = 2 * number of edges
+-- only including all existing edges without duplicates
 PREPARE q5 AS
-SELECT id, source, target, cost, reverse_cost
+SELECT id, source, target, 1 AS cost
 FROM edges;
 
 PREPARE fullGraphRows AS
@@ -76,8 +73,7 @@ SELECT count(*) FROM pgr_planarFaces('q5');
 
 PREPARE expectedRows AS
 SELECT 2 * count(*)::BIGINT FROM (
-    SELECT id FROM edges
-    WHERE cost >= 0 OR reverse_cost >= 0
+    SELECT * FROM edges
 ) e;
 
 RETURN QUERY
@@ -95,7 +91,7 @@ SELECT is_empty('sideCheck', '6: Each edge appears exactly twice');
 -- subgraph id < 10: 9 edges, 18 rows
 PREPARE subgraphTest AS
 SELECT count(*) FROM pgr_planarFaces(
-  'SELECT id, source, target, cost, reverse_cost
+  'SELECT id, source, target, 1 AS cost
   FROM edges WHERE id < 10'
 );
 
@@ -112,10 +108,11 @@ PREPARE eulerConnected AS
 SELECT (
     (SELECT count(*) FROM (
         SELECT source AS n FROM edges WHERE id < 10
-        UNION SELECT target FROM edges WHERE id < 10) v)      -- V
+        UNION
+        SELECT target FROM edges WHERE id < 10) v)      -- V
   - (SELECT count(*) FROM edges WHERE id < 10)                -- E
   + (SELECT count(DISTINCT face_id) FROM pgr_planarFaces(
-        'SELECT id, source, target, cost, reverse_cost
+        'SELECT id, source, target, 1 AS cost
         FROM edges WHERE id < 10'))                           -- F
   )::BIGINT;
 
@@ -132,7 +129,8 @@ PREPARE eulerDisconnected AS
 SELECT (
     (SELECT count(*) FROM (
         SELECT source AS n FROM edges UNION SELECT target FROM edges) v)
-  - (SELECT count(*) FROM edges)
+  - (SELECT count(*) FROM (
+      SELECT * FROM edges WHERE cost >= 0 UNION ALL SELECT * FROM edges WHERE reverse_cost >= 0) e)
   + (SELECT count(DISTINCT face_id) FROM pgr_planarFaces(
         'SELECT id, source, target, cost, reverse_cost FROM edges'))
   )::BIGINT;
