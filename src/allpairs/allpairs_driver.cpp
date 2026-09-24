@@ -42,6 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/to_postgres.hpp"
 
 #include "allpairs/allpairs.hpp"
+#include "metrics/betweennessCentrality.hpp"
+#include "planar/planarFaces.hpp"
 
 namespace pgrouting {
 namespace drivers {
@@ -70,12 +72,16 @@ do_allpairs(
 
         using pgrouting::pgget::get_edges;
         using pgrouting::to_postgres::matrix_to_tuple;
+        using pgrouting::to_postgres::vector_to_tuple;
+        using pgrouting::to_postgres::get_tuples;
+
 
         using pgrouting::DirectedGraph;
         using pgrouting::UndirectedGraph;
 
         using pgrouting::johnson;
         using pgrouting::floydWarshall;
+        using pgrouting::functions::betweennessCentrality;
 
         hint = edges_sql;
         auto edges = get_edges(edges_sql, true, true);
@@ -91,16 +97,17 @@ do_allpairs(
         UndirectedGraph undigraph;
         DirectedGraph digraph;
 
-        std::vector<std::vector<double> > results;
-
         if (directed) {
             digraph.insert_edges(edges);
             switch (which) {
                 case JOHNSON:
-                    results = johnson(digraph);
+                    matrix_to_tuple(digraph, johnson(digraph), return_count, return_tuples);
                     break;
                 case FLOYD:
-                    results = floydWarshall(digraph);
+                    matrix_to_tuple(digraph, floydWarshall(digraph), return_count, return_tuples);
+                    break;
+                case BETWEENCENTRALITY:
+                    vector_to_tuple(digraph, betweennessCentrality(digraph), return_count, return_tuples);
                     break;
                 default:
                     err << "coloring_driver.cpp: Unknown function with name '" << get_name(which)
@@ -108,14 +115,27 @@ do_allpairs(
                     return;
             }
         } else {
-            undigraph.insert_edges(edges);
+            if (which == PLANARFACES) {
+                undigraph.insert_cost1_edges(edges);
+            } else {
+                undigraph.insert_edges(edges);
+            }
 
             switch (which) {
                 case JOHNSON:
-                    results = johnson(undigraph);
+                    matrix_to_tuple(undigraph, johnson(undigraph), return_count, return_tuples);
                     break;
                 case FLOYD:
-                    results = floydWarshall(undigraph);
+                    matrix_to_tuple(undigraph, floydWarshall(undigraph), return_count, return_tuples);
+                    break;
+                case BETWEENCENTRALITY:
+                    vector_to_tuple(undigraph, betweennessCentrality(undigraph), return_count, return_tuples);
+                    break;
+                case PLANARFACES:
+                    {
+                        pgrouting::functions::Pgr_planarFaces<UndirectedGraph> fn;
+                        return_count = get_tuples(fn.planarFaces(undigraph), return_tuples);
+                    }
                     break;
                 default:
                     err << "coloring_driver.cpp: Unknown function with name '" << get_name(which)
@@ -124,29 +144,9 @@ do_allpairs(
             }
         }
 
-        if (!results.empty()) {
-
-            if (directed) {
-                switch (which) {
-                    case JOHNSON:
-                    case FLOYD:
-                        matrix_to_tuple(digraph, results, return_count, return_tuples);
-                        break;
-                    default:
-                        break;
-                }
-            } else {
-                switch (which) {
-                    case JOHNSON:
-                    case FLOYD:
-                        matrix_to_tuple(undigraph, results, return_count, return_tuples);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        } else {
-            log << "No results found";
+        if (return_count == 0) {
+            notice << "No result found\n";
+            return;
         }
     } catch (AssertFailedException &except) {
         err << except.what();

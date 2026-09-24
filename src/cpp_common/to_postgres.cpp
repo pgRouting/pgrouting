@@ -269,6 +269,23 @@ get_tuples(std::vector<std::vector<int64_t>> &components, II_t_rt* &tuples) {
 
 size_t
 get_tuples(
+        const std::vector<IID_t_rt> &results,
+        IID_t_rt* &tuples) {
+    pgassert(!tuples);
+
+    auto count = results.size();
+    if (count == 0) return 0;
+
+    tuples = pgr_alloc(count, tuples);
+
+    for (size_t i = 0; i < count; i++) {
+        tuples[i] = results[i];
+    }
+    return count;
+}
+
+size_t
+get_tuples(
         const std::vector<MST_rt> &results,
         MST_rt* &tuples) {
     pgassert(!tuples);

@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
+
 #include "c_types/iid_t_rt.h"
 #include "process/allpairs_process.h"
 
@@ -70,25 +71,28 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
         MemoryContextSwitchTo(oldcontext);
     }
 
-    funcctx = SRF_PERCALL_SETUP();
-    tuple_desc = funcctx->tuple_desc;
-    result_tuples = (IID_t_rt*) funcctx->user_fctx;
+    funcctx            = SRF_PERCALL_SETUP();
+    tuple_desc         = funcctx->tuple_desc;
+    result_tuples      = (IID_t_rt*) funcctx->user_fctx;
+    uint64_t call_cntr = funcctx->call_cntr;
 
-    if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple    tuple;
-        Datum        result;
-        Datum        *values;
-        bool         *nulls;
+    if (call_cntr < funcctx->max_calls) {
+        HeapTuple   tuple;
+        Datum       result;
+        Datum       *values;
+        bool        *nulls;
 
-        values = palloc(3 * sizeof(Datum));
-        nulls = palloc(3 * sizeof(bool));
+        size_t num = 3;
+        values = palloc(num * sizeof(Datum));
+        nulls = palloc(num * sizeof(bool));
+        size_t i;
+        for (i = 0; i < num; ++i) {
+            nulls[i] = false;
+        }
 
-        values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_vid);
-        nulls[0] = false;
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].to_vid);
-        nulls[1] = false;
-        values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        nulls[2] = false;
+        values[0] = Int64GetDatum(result_tuples[call_cntr].from_vid);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].to_vid);
+        values[2] = Float8GetDatum(result_tuples[call_cntr].cost);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
@@ -97,4 +101,3 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-

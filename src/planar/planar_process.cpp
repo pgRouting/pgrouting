@@ -28,14 +28,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "process/planar_process.h"
 
-#include <string>
-#include <sstream>
-
 extern "C" {
 #include "c_common/postgres_connection.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 }
+
+#include <string>
+#include <sstream>
 
 #include "c_types/iid_t_rt.h"
 
@@ -52,6 +52,8 @@ void pgr_process_planar(
         enum Which which,
         IID_t_rt **result_tuples,
         size_t *result_count) {
+    using pgrouting::to_pg_msg;
+    using pgrouting::pgr_free;
     pgassert(edges_sql);
     pgassert(!(*result_tuples));
     pgassert(*result_count == 0);

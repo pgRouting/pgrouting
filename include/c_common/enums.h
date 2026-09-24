@@ -37,7 +37,7 @@ enum Which {  // NOLINT(cppcoreguidelines-use-enum-class)
     EDGEDISJOINT,
     BINARYBFS,
     /** allpairs **/
-    FLOYD = 31, JOHNSON,
+    FLOYD = 131, JOHNSON, BETWEENCENTRALITY,
     /** metrics **/
     BANDWIDTH,
     /** with edges that have x y */

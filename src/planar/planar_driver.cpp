@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/planar_driver.hpp"
 
 #include <sstream>
+#include <deque>
 #include <vector>
 #include <string>
 #include <utility>
@@ -38,15 +39,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/base_graph.hpp"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/utilities.hpp"
-#include "cpp_common/alloc.hpp"
-#include "cpp_common/assert.hpp"
+#include "cpp_common/to_postgres.hpp"
 
+#include "allpairs/allpairs.hpp"
+#include "metrics/betweennessCentrality.hpp"
 #include "planar/planarFaces.hpp"
 
 namespace pgrouting {
 namespace drivers {
 
-void do_planar(
+void
+do_planar(
         const std::string &edges_sql,
         bool directed,
 
@@ -68,7 +71,17 @@ void do_planar(
         }
 
         using pgrouting::pgget::get_edges;
+        using pgrouting::to_postgres::matrix_to_tuple;
+        using pgrouting::to_postgres::vector_to_tuple;
+        using pgrouting::to_postgres::get_tuples;
+
+
+        using pgrouting::DirectedGraph;
         using pgrouting::UndirectedGraph;
+
+        using pgrouting::johnson;
+        using pgrouting::floydWarshall;
+        using pgrouting::functions::betweennessCentrality;
 
         hint = edges_sql;
         auto edges = get_edges(edges_sql, true, true);
@@ -81,40 +94,60 @@ void do_planar(
 
         hint = "";
 
-        /* the planar family works on the undirected structure only */
-        (void)directed;
-
         UndirectedGraph undigraph;
-        undigraph.insert_cost1_edges(edges);
+        DirectedGraph digraph;
 
-        std::vector<IID_t_rt> results;
+        if (directed) {
+            digraph.insert_edges(edges);
+            switch (which) {
+                case JOHNSON:
+                    matrix_to_tuple(digraph, johnson(digraph), return_count, return_tuples);
+                    break;
+                case FLOYD:
+                    matrix_to_tuple(digraph, floydWarshall(digraph), return_count, return_tuples);
+                    break;
+                case BETWEENCENTRALITY:
+                    vector_to_tuple(digraph, betweennessCentrality(digraph), return_count, return_tuples);
+                    break;
+                default:
+                    err << "coloring_driver.cpp: Unknown function with name '" << get_name(which)
+                        << "' for directed graph";
+                    return;
+            }
+        } else {
+            if (which == PLANARFACES) {
+                undigraph.insert_cost1_edges(edges);
+            } else {
+                undigraph.insert_edges(edges);
+            }
 
-        switch (which) {
-            case PLANARFACES:
-                {
-                    pgrouting::functions::Pgr_planarFaces<UndirectedGraph> fn;
-                    results = fn.planarFaces(undigraph);
-                    log << fn.get_log();
-                }
-                break;
-            default:
-                err << "planar_driver.cpp: Unknown function with name '" << get_name(which)
-                    << "' for undirected graph";
-                return;
+            switch (which) {
+                case JOHNSON:
+                    matrix_to_tuple(undigraph, johnson(undigraph), return_count, return_tuples);
+                    break;
+                case FLOYD:
+                    matrix_to_tuple(undigraph, floydWarshall(undigraph), return_count, return_tuples);
+                    break;
+                case BETWEENCENTRALITY:
+                    vector_to_tuple(undigraph, betweennessCentrality(undigraph), return_count, return_tuples);
+                    break;
+                case PLANARFACES:
+                    {
+                        pgrouting::functions::Pgr_planarFaces<UndirectedGraph> fn;
+                        return_count = get_tuples(fn.planarFaces(undigraph), return_tuples);
+                    }
+                    break;
+                default:
+                    err << "coloring_driver.cpp: Unknown function with name '" << get_name(which)
+                        << "' for undirected graph";
+                    return;
+            }
         }
 
-        auto count = results.size();
-
-        if (count == 0) {
-            notice << "No results found";
+        if (return_count == 0) {
+            notice << "No result found\n";
             return;
         }
-
-        return_tuples = pgr_alloc(count, return_tuples);
-        for (size_t i = 0; i < count; ++i) {
-            return_tuples[i] = results[i];
-        }
-        return_count = count;
     } catch (AssertFailedException &except) {
         err << except.what();
     } catch (const std::pair<std::string, std::string>& ex) {
