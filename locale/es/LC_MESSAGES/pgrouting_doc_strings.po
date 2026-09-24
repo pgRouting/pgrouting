@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-10 19:05+0000\n"
+"POT-Creation-Date: 2026-08-08 21:44+0000\n"
 "PO-Revision-Date: 2025-12-10 20:25+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\n"
@@ -342,6 +342,12 @@ msgstr ":doc:`pgr_trspVia_withPoints` - Ruteo Vía Punto/Vértice con restriccio
 
 msgid "Experimental"
 msgstr "Experimental"
+
+msgid "Possible server crash"
+msgstr ""
+
+msgid "These functions might create a server crash"
+msgstr ""
 
 msgid "Experimental functions"
 msgstr "Funciones experimentales"
@@ -3580,6 +3586,10 @@ msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_king
 #, fuzzy
 msgid "`#3113 <https://github.com/pgRouting/pgrouting/issues/3113>`__: Components: Integrate into existing process/driver pair"
 msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_kingOrdering"
+
+#, fuzzy
+msgid "`#3129 <https://github.com/pgRouting/pgrouting/issues/3129>`__: breadthFirstSearch: Reorganize into traversal"
+msgstr "`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__: pgr_breadthFirstSearch"
 
 msgid "Bug Fixes"
 msgstr "Corrección de errores"
@@ -9521,6 +9531,13 @@ msgstr "``pgr_dijkstraVia``"
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr "``pgr_dijkstraVia`` - Ruta que recorre una lista de vértices."
 
+#, fuzzy
+msgid "Version 4.0.2"
+msgstr "Versión 4.0.0"
+
+msgid "Fix: bad alloc"
+msgstr ""
+
 msgid "Given a list of vertices and a graph, this function is equivalent to finding the shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i < size\\_of(via\\;vertices)`."
 msgstr "Dada una lista de vértices y un grafo, esta función equivale a encontrar el camino más corto entre :math:`vértice_i` y :math:`vértice_{i+1}` para todo :math:`i < tamaño\\_de(vía\\;vértices)`."
 
@@ -9604,6 +9621,15 @@ msgstr ":doc:`dijkstra-family`."
 
 msgid "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr "``pgr_drivingDistance`` - Devuelve la distancia de manejo desde un nodo de inicio."
+
+msgid "Standardizing negative distance behaviour"
+msgstr ""
+
+msgid "Throws when :math:`distance < 0`."
+msgstr ""
+
+msgid "Standard message and hint."
+msgstr ""
 
 msgid "pgr_drivingDistance(Single vertex)"
 msgstr "pgr_drivingDistance(Vértice único)"
@@ -12856,6 +12882,41 @@ msgid "pgRouting 4.0"
 msgstr "pgRouting 4.0"
 
 #, fuzzy
+msgid "pgRouting 4.0.2 Release Notes"
+msgstr "Notas de la versión 3.0.1 de pgRouting"
+
+#, fuzzy
+msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.2%22>`__"
+msgstr "Para ver todos los problemas y solicitudes de extracción cerrados para ésta versión, consulte la `Github milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
+
+msgid "4.0.2 Summary of changes by function"
+msgstr ""
+
+msgid "pgr_dijkstraVia"
+msgstr "pgr_dijkstraVia"
+
+msgid "pgr_drivingDistance"
+msgstr "pgr_drivingDistance"
+
+msgid "pgr_withPointsDD"
+msgstr "pgr_withPointsDD"
+
+msgid "pgr_withPointsVia"
+msgstr "pgr_withPointsVia"
+
+#, fuzzy
+msgid "4.0.2 Bug Fixes"
+msgstr "Corrección de errores"
+
+#, fuzzy
+msgid "`#3110 <https://github.com/pgRouting/pgrouting/issues/3110>`__: pgr_dijkstraVia throws std::bad_alloc when a node does not exist"
+msgstr "`#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: pgr_withPoints falla cuando points_sql está vacía"
+
+#, fuzzy
+msgid "`#3091 <https://github.com/pgRouting/pgrouting/issues/3091>`__: Catchment functions when negative distance do not have a standardized behaviour"
+msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_kingOrdering"
+
+#, fuzzy
 msgid "pgRouting 4.0.1 Release Notes"
 msgstr "Notas de la versión 3.0.1 de pgRouting"
 
@@ -13052,9 +13113,6 @@ msgstr "pgr_dijkstraNear"
 msgid "pgr_dijkstraNearCost"
 msgstr "pgr_dijkstraNearCost"
 
-msgid "pgr_dijkstraVia"
-msgstr "pgr_dijkstraVia"
-
 msgid "pgr_edgeDisjointPaths"
 msgstr "pgr_edgeDisjointPaths"
 
@@ -13121,14 +13179,8 @@ msgstr "pgr_withPointsCost"
 msgid "pgr_withPointsCostMatrix"
 msgstr "pgr_withPointsCostMatrix"
 
-msgid "pgr_withPointsDD"
-msgstr "pgr_withPointsDD"
-
 msgid "pgr_withPointsKSP"
 msgstr "pgr_withPointsKSP"
-
-msgid "pgr_withPointsVia"
-msgstr "pgr_withPointsVia"
 
 msgid "Functions promoted to official"
 msgstr "Funciones promovidas a oficial"
@@ -15024,9 +15076,6 @@ msgstr "pgr_alphashape"
 
 msgid "pgr_dijkstraCostMatrix"
 msgstr "pgr_dijkstraCostMatrix"
-
-msgid "pgr_drivingDistance"
-msgstr "pgr_drivingDistance"
 
 msgid "pgr_dijkstraVia (proposed)"
 msgstr "pgr_dijkstraVia (proposed)"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-10 19:05+0000\n"
+"POT-Creation-Date: 2026-08-08 21:44+0000\n"
 "PO-Revision-Date: 2025-12-08 08:47+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\n"
@@ -338,6 +338,12 @@ msgstr ":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictio
 
 msgid "Experimental"
 msgstr "Experiment"
+
+msgid "Possible server crash"
+msgstr "Möjlig serverkrasch"
+
+msgid "These functions might create a server crash"
+msgstr "Dessa funktioner kan orsaka en serverkrasch"
 
 msgid "Experimental functions"
 msgstr "Experimentella funktioner"
@@ -3574,6 +3580,10 @@ msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordnings
 #, fuzzy
 msgid "`#3113 <https://github.com/pgRouting/pgrouting/issues/3113>`__: Components: Integrate into existing process/driver pair"
 msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
+
+#, fuzzy
+msgid "`#3129 <https://github.com/pgRouting/pgrouting/issues/3129>`__: breadthFirstSearch: Reorganize into traversal"
+msgstr "`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__: pgr_breadthFirstSearch"
 
 msgid "Bug Fixes"
 msgstr "Buggfixar"
@@ -9505,6 +9515,13 @@ msgstr "``pgr_dijkstraVia``"
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr "``pgr_dijkstraVia`` - Rutt som går genom en lista med toppar."
 
+#, fuzzy
+msgid "Version 4.0.2"
+msgstr "Version 4.0.0"
+
+msgid "Fix: bad alloc"
+msgstr ""
+
 msgid "Given a list of vertices and a graph, this function is equivalent to finding the shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i < size\\_of(via\\;vertices)`."
 msgstr "Med en lista över hörnpunkter och en graf är denna funktion likvärdig med att hitta den kortaste vägen mellan :math:`vertex_i` och :math:`vertex_{i+1}` för alla :math:`i < size\\_of(via\\;hörnpunkter)`."
 
@@ -9588,6 +9605,15 @@ msgstr ":doc:`dijkstra-family`."
 
 msgid "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr "``pgr_drivingDistance`` - Returnerar köravståndet från en startnod."
+
+msgid "Standardizing negative distance behaviour"
+msgstr ""
+
+msgid "Throws when :math:`distance < 0`."
+msgstr ""
+
+msgid "Standard message and hint."
+msgstr ""
 
 msgid "pgr_drivingDistance(Single vertex)"
 msgstr "pgr_drivingDistance(Single vertex)"
@@ -12747,6 +12773,42 @@ msgid "pgRouting 4.0"
 msgstr "pgRouting 4.0"
 
 #, fuzzy
+msgid "pgRouting 4.0.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 3.0.1"
+
+#, fuzzy
+msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.2%22>`__"
+msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
+
+#, fuzzy
+msgid "4.0.2 Summary of changes by function"
+msgstr "Sammanfattning av förändringar per funktion"
+
+msgid "pgr_dijkstraVia"
+msgstr "pgr_dijkstraVia"
+
+msgid "pgr_drivingDistance"
+msgstr "pgr_drivingDistance"
+
+msgid "pgr_withPointsDD"
+msgstr "pgr_withPointsDD"
+
+msgid "pgr_withPointsVia"
+msgstr "pgr_withPointsVia"
+
+#, fuzzy
+msgid "4.0.2 Bug Fixes"
+msgstr "Buggfixar"
+
+#, fuzzy
+msgid "`#3110 <https://github.com/pgRouting/pgrouting/issues/3110>`__: pgr_dijkstraVia throws std::bad_alloc when a node does not exist"
+msgstr "`#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: pgr_withPoints misslyckas när points_sql är tom"
+
+#, fuzzy
+msgid "`#3091 <https://github.com/pgRouting/pgrouting/issues/3091>`__: Catchment functions when negative distance do not have a standardized behaviour"
+msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
+
+#, fuzzy
 msgid "pgRouting 4.0.1 Release Notes"
 msgstr "Versionsinformation för pgRouting 3.0.1"
 
@@ -12941,9 +13003,6 @@ msgstr "pgr_dijkstraNear"
 msgid "pgr_dijkstraNearCost"
 msgstr "pgr_dijkstraNearCost"
 
-msgid "pgr_dijkstraVia"
-msgstr "pgr_dijkstraVia"
-
 msgid "pgr_edgeDisjointPaths"
 msgstr "pgr_edgeDisjointPaths"
 
@@ -13010,14 +13069,8 @@ msgstr "pgr_withPointsCost"
 msgid "pgr_withPointsCostMatrix"
 msgstr "pgr_withPointsCostMatrix"
 
-msgid "pgr_withPointsDD"
-msgstr "pgr_withPointsDD"
-
 msgid "pgr_withPointsKSP"
 msgstr "pgr_withPointsKSP"
-
-msgid "pgr_withPointsVia"
-msgstr "pgr_withPointsVia"
 
 msgid "Functions promoted to official"
 msgstr "Funktioner som befordrats till tjänsteman"
@@ -14818,9 +14871,6 @@ msgstr "pgr_alphashape"
 
 msgid "pgr_dijkstraCostMatrix"
 msgstr "pgr_dijkstraCostMatrix"
-
-msgid "pgr_drivingDistance"
-msgstr "pgr_drivingDistance"
 
 msgid "pgr_dijkstraVia (proposed)"
 msgstr "pgr_dijkstraVia (proposed)"
@@ -16654,12 +16704,6 @@ msgstr "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 
 #~ msgid "Functionality might not change. (But still can)"
 #~ msgstr "Funktionaliteten kanske inte ändras. (Men kan fortfarande göra det)"
-
-#~ msgid "Possible server crash"
-#~ msgstr "Möjlig serverkrasch"
-
-#~ msgid "These functions might create a server crash"
-#~ msgstr "Dessa funktioner kan orsaka en serverkrasch"
 
 #~ msgid "Might need c/c++ coding."
 #~ msgstr "Kan behöva c/c++-kodning."
