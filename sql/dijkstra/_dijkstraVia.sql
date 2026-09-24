@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ------------------
 
 --v4.1
-CREATE FUNCTION _pgr_dijkstraVia(
+CREATE FUNCTION _pgr_dijkstraVia_v4(
     edges_sql TEXT,
     via_vids ANYARRAY,
     directed BOOLEAN,
@@ -55,5 +55,5 @@ LANGUAGE C VOLATILE STRICT
 COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
-COMMENT ON FUNCTION _pgr_dijkstraVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_dijkstraVia_v4(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';

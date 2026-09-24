@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ------------------
 
 --v4.1
-CREATE FUNCTION _pgr_trspVia(
+CREATE FUNCTION _pgr_trspVia_v4(
   TEXT, -- edges
   TEXT, -- restrictions
   ANYARRAY, -- via
@@ -52,5 +52,5 @@ LANGUAGE C VOLATILE STRICT
 COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
 
-COMMENT ON FUNCTION _pgr_trspVia(TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_trspVia_v4(TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';

@@ -36,8 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "drivers/dijkstra/dijkstraVia_driver.h"
 
-PGDLLEXPORT Datum _pgr_dijkstravia(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_dijkstravia);
+PGDLLEXPORT Datum _pgr_dijkstravia_v4(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_dijkstravia_v4);
 
 static
 void
@@ -80,7 +80,7 @@ process(char* edges_sql,
 
 
 PGDLLEXPORT Datum
-_pgr_dijkstravia(PG_FUNCTION_ARGS) {
+_pgr_dijkstravia_v4(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
@@ -145,6 +145,89 @@ _pgr_dijkstravia(PG_FUNCTION_ARGS) {
         values[8] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[9] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         values[10] = Float8GetDatum(result_tuples[call_cntr].route_agg_cost);
+
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
+        result = HeapTupleGetDatum(tuple);
+        SRF_RETURN_NEXT(funcctx, result);
+    } else {
+        SRF_RETURN_DONE(funcctx);
+    }
+}
+
+/* Deprecated code starts here
+ * This code is used on v4.0 and under
+ *
+ * TODO(v4.2) define SHOWMSG
+ * TODO(v4.3) change to WARNING
+ * TODO(v5) Move to legacy
+ */
+PGDLLEXPORT Datum _pgr_dijkstravia(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_dijkstravia);
+PGDLLEXPORT Datum
+_pgr_dijkstravia(PG_FUNCTION_ARGS) {
+    FuncCallContext     *funcctx;
+    TupleDesc            tuple_desc;
+
+    Routes_t  *result_tuples = 0;
+    size_t result_count = 0;
+
+    if (SRF_IS_FIRSTCALL()) {
+        MemoryContext   oldcontext;
+        funcctx = SRF_FIRSTCALL_INIT();
+        oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+
+        process(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_ARRAYTYPE_P(1),
+                PG_GETARG_BOOL(2),
+                PG_GETARG_BOOL(3),
+                PG_GETARG_BOOL(4),
+                &result_tuples,
+                &result_count);
+
+        funcctx->max_calls = result_count;
+
+        funcctx->user_fctx = result_tuples;
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE)
+            ereport(ERROR,
+                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     errmsg("function returning record called in context "
+                         "that cannot accept type record")));
+
+        funcctx->tuple_desc = tuple_desc;
+        MemoryContextSwitchTo(oldcontext);
+    }
+
+    funcctx = SRF_PERCALL_SETUP();
+    tuple_desc = funcctx->tuple_desc;
+    result_tuples = (Routes_t*) funcctx->user_fctx;
+
+    if (funcctx->call_cntr < funcctx->max_calls) {
+        HeapTuple    tuple;
+        Datum        result;
+        Datum        *values;
+        bool*        nulls;
+        size_t       call_cntr = funcctx->call_cntr;
+
+        size_t numb_out = 10;
+        values = palloc(numb_out * sizeof(Datum));
+        nulls = palloc(numb_out * sizeof(bool));
+        size_t i;
+        for (i = 0; i< numb_out; ++i) {
+            nulls[i] = false;
+        }
+
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].path_id);
+        values[2] = Int32GetDatum(result_tuples[call_cntr].path_seq + 1);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].start_vid);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].end_vid);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[6] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[8] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[9] = Float8GetDatum(result_tuples[call_cntr].route_agg_cost);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
