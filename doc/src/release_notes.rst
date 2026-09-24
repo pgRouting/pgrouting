@@ -91,7 +91,7 @@ To see all issues & pull requests closed by this release see the
   process/driver pair
 * :issue:`3140`: New function: pgr_makeBiconnectedPlannar
 * :issue:`3142`: New function: pgr_coreNumbers
-* :issue:`3142`: New function: pgr_planarFaces
+* :issue:`3143`: New function: pgr_planarFaces
 * :issue:`3154`: betweennessCentrality: use allpairs/process and driver
 
 4.1.0 Bug Fixes

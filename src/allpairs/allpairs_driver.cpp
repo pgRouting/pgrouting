@@ -111,7 +111,7 @@ do_allpairs(
                     vector_to_tuple(digraph, betweennessCentrality(digraph), return_count, return_tuples);
                     break;
                 default:
-                    err << "coloring_driver.cpp: Unknown function with name '" << get_name(which)
+                    err << "allpairs_driver.cpp: Unknown function with name '" << get_name(which)
                         << "' for directed graph";
                     return;
             }
@@ -136,7 +136,7 @@ do_allpairs(
                     return_count = get_tuples(planarFaces(undigraph), return_tuples);
                     break;
                 default:
-                    err << "coloring_driver.cpp: Unknown function with name '" << get_name(which)
+                    err << "allpairs_driver.cpp: Unknown function with name '" << get_name(which)
                         << "' for undirected graph";
                     return;
             }
