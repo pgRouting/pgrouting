@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 05:35+0000\n"
+"POT-Creation-Date: 2026-09-24 02:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3452,10 +3452,15 @@ msgstr ""
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ""
 
-msgid "Planar Family"
+msgid ":doc:`planar-family`"
 msgstr ""
 
-msgid ":doc:`pgr_isPlanar`"
+msgid ":doc:`pgr_isPlanar` - Returns whether the graph is planar."
+msgstr ""
+
+msgid ""
+":doc:`pgr_planarFaces` - Identifies the faces of a planar embedding and "
+"lists every edge-face incidence for an undirected graph."
 msgstr ""
 
 msgid "Miscellaneous Algorithms"
@@ -4016,10 +4021,14 @@ msgstr ""
 msgid "Summary of changes by function"
 msgstr ""
 
-msgid "pgr_coreNumbers"
-msgstr ""
+#, fuzzy
+msgid "pgr_planarFaces"
+msgstr "pgr_isPlanar"
 
 msgid "New experimental function."
+msgstr ""
+
+msgid "pgr_coreNumbers"
 msgstr ""
 
 msgid "pgr_edgeColoring"
@@ -13797,6 +13806,197 @@ msgstr ""
 msgid "This implementation's travel time: 854.54"
 msgstr ""
 
+msgid "``pgr_planarFaces`` - Experimental"
+msgstr ""
+
+msgid ""
+"``pgr_planarFaces`` - Identifies the faces of a planar embedding and lists "
+"every edge-face incidence for an undirected graph."
+msgstr ""
+
+msgid ""
+"In a planar embedding, the graph is drawn in the plane so that edges meet "
+"only at vertices. A face is a maximal connected region of the plane bounded "
+"by edges."
+msgstr ""
+
+msgid ""
+"Every bounded face is a cycle of edges enclosing an interior region. The "
+"exterior face, also called the unbounded face, is the region outside the "
+"outermost cycle."
+msgstr ""
+
+msgid ""
+"Once an embedding is fixed, each undirected edge has a left and a right side "
+"when walked in the direction the embedding assigns around each vertex."
+msgstr ""
+
+msgid ""
+"In a connected planar undirected graph, each edge separates exactly two "
+"faces, so it contributes one row on the left and one on the right."
+msgstr ""
+
+msgid ""
+"``pgr_planarFaces`` returns those incidences: ``face_id`` names the face, "
+"``edge_id`` is the border edge, and ``side`` is ``1`` (left) or ``2`` "
+"(right) relative to the embedding."
+msgstr ""
+
+msgid ""
+"The function first computes a planar embedding with the Boyer-Myrvold "
+"planarity test, then walks faces with Boost ``planar_face_traversal``.i"
+msgstr ""
+
+msgid "Loops and paralell edges are preserved."
+msgstr ""
+
+msgid "They are used to determine the existance of an edge"
+msgstr ""
+
+msgid "When the graph is not planar it will emit an 'ERROR'"
+msgstr ""
+
+#, fuzzy
+msgid "Run :doc:`pgr_isPlanar` first"
+msgstr "``pgr_isplanar``"
+
+msgid "The result has one row per edge-side pair"
+msgstr ""
+
+msgid "Graph with :math:`|E|` edges yields :math:`2|E|` rows."
+msgstr ""
+
+msgid ""
+"Number of faces: * Obeys Euler's formula: :math:`|V| - |E| + |F| = 2` * On a "
+"graph with :math:`C` components: :math:`|V| - |E| + |F| = 2C`."
+msgstr ""
+
+msgid "Running time: :math:`O(|E| + |V|)`"
+msgstr ""
+
+msgid "pgr_planarFaces(`Edges SQL`_)"
+msgstr ""
+
+msgid "Returns set of ``(seq, face_id, edge_id, side)``"
+msgstr ""
+
+msgid "Faces of the full :doc:`sampledata` graph"
+msgstr ""
+
+msgid ""
+"The query returns **36 rows**, twice the **18** edges in ``edges``, "
+"consistent with :math:`2|E|`."
+msgstr ""
+
+msgid ""
+"``face_id`` runs from **1** through **7** on this network; each id is one "
+"face of the embedding, including the unbounded **exterior face** (here "
+"``face_id = 1`` borders the outer layout of the city block)."
+msgstr ""
+
+msgid ""
+"Every ``edge_id`` appears **twice**, once with ``side = 1`` and once with "
+"``side = 2``."
+msgstr ""
+
+msgid ""
+"Rows follow the counterclockwise walk of each face in the computed embedding."
+msgstr ""
+
+msgid ""
+"Have :math:`3` components then number if faces = :math:`17 - 18 + 7 = 6 = 2 "
+"\\times 3`."
+msgstr ""
+
+#, fuzzy
+msgid "``face_id``"
+msgstr "``end_id``"
+
+msgid "Identifier of the face in the computed embedding."
+msgstr ""
+
+msgid "Identifier of the edge that borders the face."
+msgstr ""
+
+msgid "``1`` when the edge borders the face on the left side."
+msgstr ""
+
+msgid "``2`` when the edge borders the face on the right side."
+msgstr ""
+
+msgid "Non-planar graphs"
+msgstr ""
+
+msgid ""
+"Face extraction requires a planar graph. Subgraphs containing a :math:`K_5` "
+"or :math:`K_{3,3}` minor cannot be embedded without crossings; "
+"``pgr_planarFaces`` raises ``ERROR: Graph is not planar`` in that case. The :"
+"doc:`pgr_isPlanar` documentation shows a non-planar subgraph of "
+"``sampledata`` (edges highlighted in blue in the figure)."
+msgstr ""
+
+msgid "Create a :math:`K_5` graph."
+msgstr ""
+
+msgid "Test planarity: dont execute when is not planar."
+msgstr ""
+
+msgid "Or get an error: (not shown)"
+msgstr ""
+
+msgid "Planarity of loops"
+msgstr ""
+
+msgid "One loop graph with only one vertex:"
+msgstr ""
+
+msgid "Two loop graph with only one vertex:"
+msgstr ""
+
+msgid "Triangular graphs"
+msgstr ""
+
+msgid "Triangular graph (no duplicate edges)"
+msgstr ""
+
+msgid "Six rows are returned: :math:`2 \\times 3` edges."
+msgstr ""
+
+msgid ":math:`face\\_id = 1` is the interior face."
+msgstr ""
+
+msgid ":math:`face\\_id = 2` is the exterior face. face."
+msgstr ""
+
+msgid "Each edge lists ``1`` on one face and ``2`` on the other."
+msgstr ""
+
+msgid "Triangular graph (duplicate edges)"
+msgstr ""
+
+msgid ":doc:`pgr_isPlanar`"
+msgstr ""
+
+msgid ""
+"Boost Graph Library: `Planar Face Traversal <https://www.boost.org/libs/"
+"graph/doc/planar_face_traversal.html>`__"
+msgstr ""
+
+msgid ""
+"Boost Graph Library: `Boost: Boyer Myrvold planarity <https://www.boost.org/"
+"libs/graph/doc/boyer_myrvold.html>`__"
+msgstr ""
+
+msgid ""
+"Wikipedia: `Planar graph <https://en.wikipedia.org/wiki/Planar_graph>`__"
+msgstr ""
+
+msgid ""
+"Boyer, J. M. and Myrvold, W. J. (2004). On the Cutting Edge: Simplified O(n) "
+"Planarity Algorithms by Edge Addition. Journal of Graph Algorithms and "
+"Applications, 8(3), 241-273."
+msgstr ""
+
 msgid "``pgr_prim``"
 msgstr "``pgr_prim``"
 
@@ -15465,6 +15665,9 @@ msgstr ""
 msgid ""
 "All this examples are about the route that visits the vertices :math:`\\{-1, "
 "7, -3, 16, 15\\}` in that order on a **directed** graph."
+msgstr ""
+
+msgid "Planar - Family of functions"
 msgstr ""
 
 msgid "Prim - Family of functions"
