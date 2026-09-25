@@ -46,7 +46,7 @@ CREATE FUNCTION pgr_trspVia(
 RETURNS SETOF RECORD AS
 $BODY$
 SELECT seq, path_id, path_seq, start_vid, end_vid, pred, node, edge, cost, agg_cost, route_agg_cost
-FROM _pgr_trspVia_v4(
+FROM _pgr_trspVia(
   _pgr_get_statement($1),
   _pgr_get_statement($2),
   $3 , $4, $5, $6);
