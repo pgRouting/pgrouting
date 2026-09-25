@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 19:15+0000\n"
+"POT-Creation-Date: 2026-09-25 06:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3463,6 +3463,11 @@ msgstr ""
 msgid ""
 ":doc:`pgr_makeBiconnectedPlanar` - Returns edges to add to a planar graph to "
 "make each connected component biconnected."
+msgstr ""
+
+msgid ""
+":doc:`pgr_makeMaximalPlanar` - Returns edges to add to a planar graph to "
+"make each connected component maximal."
 msgstr ""
 
 msgid ""
@@ -13484,6 +13489,98 @@ msgstr ""
 msgid ""
 "`Boost: make connected <https://www.boost.org/libs/graph/doc/make_connected."
 "html>`__"
+msgstr ""
+
+msgid "``pgr_makeMaximalPlanar`` - Experimental"
+msgstr ""
+
+msgid ""
+"``pgr_makeMaximalPlanar`` — Returns the set of edges needed to make a planar "
+"graph maximal planar."
+msgstr ""
+
+msgid ""
+"``pgr_makeMaximalPlanar`` identifies the missing edges that need to be added "
+"to the connected components of a planar graph to make each eligible "
+"component maximal planar."
+msgstr ""
+
+msgid ""
+"A planar graph is considered **maximal planar** (or fully triangulated) if "
+"no additional edges can be added to it without violating its planarity. In a "
+"maximal planar graph, every face (including the outer face) is a triangle."
+msgstr ""
+
+msgid "Works for **planar** graphs only."
+msgstr ""
+
+msgid ""
+"If any component of the input graph is not planar, no added edges are "
+"returned for that component."
+msgstr ""
+
+msgid ""
+"Returns a list of all new edges needed to triangulate the eligible "
+"components of the graph and make them maximal planar."
+msgstr ""
+
+msgid ""
+"The augmentation applies independently to eligible components (components "
+"with 3 or more vertices). Components with fewer than 3 vertices produce no "
+"added edges."
+msgstr ""
+
+msgid "The algorithm does not consider traversal costs in the calculations."
+msgstr ""
+
+msgid "The algorithm does not consider geometric topology in the calculations."
+msgstr ""
+
+msgid ""
+"Running time: :math:`O(|V_G| + |E_G| + R \\log R)` where :math:`G(V_G, E_G)` "
+"is the input graph and :math:`R` is the number of returned edges."
+msgstr ""
+
+msgid "pgr_makeMaximalPlanar(`Edges SQL`_)"
+msgstr ""
+
+msgid "List of edges that are needed to make the sample graph maximal planar."
+msgstr ""
+
+msgid "**Sample graph before:**"
+msgstr ""
+
+msgid "Sample graph before"
+msgstr ""
+
+msgid "**Output:**"
+msgstr ""
+
+msgid "**Sample graph after adding triangulation edges:**"
+msgstr ""
+
+msgid ""
+"Sample graph after adding triangulation edges (olive = original edges, red "
+"dashed = 17 new triangulation edges). Note: When a graph contains multiple "
+"disconnected components, each component is processed independently. "
+"Components (2,4) and (13,14) have < 3 vertices and cannot be triangulated; "
+"the 13-vertex component is triangulated with 17 new edges."
+msgstr ""
+
+msgid "Triangulating a simple 5-cycle ring graph."
+msgstr ""
+
+msgid "Sample 5-cycle ring graph before triangulation."
+msgstr ""
+
+msgid ""
+"Maximal planar triangulation of a simple 5-cycle ring graph (4 red dashed "
+"triangulation edges added)."
+msgstr ""
+
+msgid ""
+"`Boost: make_maximal_planar <https://www.boost.org/doc/libs/latest/libs/"
+"graph/doc/html/graph/algorithms/planar/make_maximal_planar.html>`__"
 msgstr ""
 
 msgid "``pgr_maxCardinalityMatch``"
