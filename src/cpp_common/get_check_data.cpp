@@ -139,7 +139,7 @@ check_char_type(const pgrouting::Column_info_t &info) {
     }
 }
 
-/**
+/*
  * @brief The function check whether column type is ANY-INTEGER-ARRAY or not.
  *        Where ANY-INTEGER-ARRAY is SQL type:
  *             SMALLINT[], INTEGER[], BIGINT[]
@@ -160,7 +160,7 @@ check_any_integer_array_type(const pgrouting::Column_info_t &info) {
 
 namespace pgrouting {
 
-/**
+/*
  * @param[in] colNumber Column number (count starts at 1).
  * @return @b TRUE when colNumber exist.
  *         @b FALSE when colNumber was not found.
@@ -172,7 +172,7 @@ bool column_found(int colNumber) {
 }
 
 
-/**
+/*
  * @param[in] tupdesc  tuple descriptor
  * @param[in] info     contain one or more column information.
  *
@@ -206,7 +206,7 @@ void fetch_column_info(
     }
 }
 
-/**
+/*
  * http://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html;
  * [SPI_getbinval](https://www.postgresql.org/docs/8.1/static/spi-spi-getbinval.html)
  * [Datum](https://doxygen.postgresql.org/datum_8h.html)
@@ -243,7 +243,7 @@ char getChar(
     return value;
 }
 
-/** @brief get the array contents from postgres
+/* @brief get the array contents from postgres
  *
  * @details This function generates the array inputs according to their type
  * received through @a ArrayType *v parameter and store them in @a c_array. It
@@ -328,7 +328,7 @@ get_pgset(ArrayType *v) {
     return results;
 }
 
-/** @brief get the array contents from postgres
+/* @brief get the array contents from postgres
  *
  * @details This function generates the array inputs according to their type
  * received through @a ArrayType *v parameter and store them in @a c_array. It
@@ -420,7 +420,7 @@ get_pgarray(ArrayType *v, bool allow_empty) {
     return results;
 }
 
-/** @brief get the array contents from postgres
+/* @brief get the array contents from postgres
  *
  * @details This function generates the array inputs according to their type
  * received through @a ArrayType *v parameter and store them in @a c_array. It
@@ -517,7 +517,7 @@ get_array(ArrayType *v, size_t *arrlen, bool allow_empty) {
     return c_array;
 }
 
-/**
+/*
  * [DatumGetArrayTypeP](https://doxygen.postgresql.org/array_8h.html#aa1b8e77c103863862e06a7b7c07ec532)
  * [pgrouting::get_bigIntArray](http://docs.pgrouting.org/doxy/2.2/arrays__input_8c_source.html)
  * @param[in]  tuple    input row to be examined.
@@ -545,7 +545,7 @@ int64_t* getBigIntArr(
     return get_array(pg_array, the_size, true);
 }
 
-/**
+/*
  * @param[in] tuple   input row to be examined.
  * @param[in] tupdesc  tuple descriptor
  * @param[in] info    contain column information.
@@ -579,7 +579,7 @@ int64_t getBigInt(
     return value;
 }
 
-/**
+/*
  * @param[in] tuple   input row to be examined.
  * @param[in] tupdesc  tuple descriptor
  * @param[in] info    contain column information.
@@ -622,7 +622,7 @@ double getFloat8(
     return 0.0;
 }
 
-/*!
+/*
  * [SPI_getvalue](https://doxygen.postgresql.org/spi_8c.html#ae53c12ff90592f67e4e40ad0af24205b
  which calls OidOutputFunctionCall, which calls
  OutputFunctionCall - https://doxygen.postgresql.org/fmgr_8c.html#ae19cff34818e4a6c90523e8bb02c3420
