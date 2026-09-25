@@ -332,7 +332,9 @@ sub generate_upgrade_script {
         }
 
         # updating to 4.1+ (OUT parameters changed on all four *Via functions)
-        if ($old_minor < 4.1) {
+        # Only for mayor 3 and up: on mayor 2 the generic loop above already
+        # drops every old function, and _pgr_dijkstraVia did not exist yet.
+        if ($old_mayor >= 3 && $old_minor < 4.1) {
             push @commands, drop_special_case_function("_pgr_dijkstravia(text,anyarray,boolean,boolean,boolean)");
             push @commands, drop_special_case_function("pgr_dijkstravia(text,anyarray,boolean,boolean,boolean)");
 
