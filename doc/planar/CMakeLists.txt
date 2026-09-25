@@ -6,6 +6,7 @@ set(LOCAL_FILES
     planar-family.rst
     pgr_isPlanar.rst
     pgr_makeBiconnectedPlanar.rst
+    pgr_makeMaximalPlanar.rst
     pgr_planarFaces.rst
     )
 
