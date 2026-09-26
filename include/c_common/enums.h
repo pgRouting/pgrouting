@@ -54,6 +54,8 @@ enum Which {  // NOLINT(cppcoreguidelines-use-enum-class)
     EDGECOLORING, BIPARTITE, SEQUENTIAL,
     /* For planar */
     BICONNECTEDPLANAR,
+    /* For Matching */
+    MAXWEIGHTEDMATCHING,
     /* For components */
     CONNECTEDCOMPONENTS, BICONNECTEDCOMPONENTS, STRONGCOMPONENTS, ARTICULATIONPOINTS,
     BRIDGES, MAKECONNECTED,

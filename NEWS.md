@@ -62,6 +62,25 @@ To see all issues & pull requests closed by this release see the
 
 * [#3101](https://github.com/pgRouting/pgrouting/issues/3101): pgr_edgeColoring not building graph correctly
 
+<<<<<<< HEAD
+=======
+**New experimental functions.**
+
+* Flow
+
+  * :issue:3136: pgr_maxWeightedMatching
+
+**Summary of changes by function**
+
+* pgr_maxWeightedMatching
+
+  * New experimental function.
+
+* pgr_edgeColoring
+
+  * Fix the way it builds the graph
+
+>>>>>>> 148c7c5cff630c8db83ad68320d1eb0f27a3bb6a
 ## pgRouting 4.0
 
 

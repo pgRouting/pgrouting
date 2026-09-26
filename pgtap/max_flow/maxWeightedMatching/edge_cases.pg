@@ -1,0 +1,58 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2021-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+SELECT CASE WHEN min_version('4.1.0') THEN plan(3) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('4.1.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 4.1.0');
+  RETURN;
+END IF;
+
+-- 0 edge, 0 vertex test
+
+RETURN QUERY
+SELECT is_empty(
+  $$SELECT * FROM pgr_maxWeightedMatching('SELECT id, source, target, cost, reverse_cost FROM edges WHERE id > 18', false)$$,
+  '1: Graph with 0 edges and 0 vertices is empty');
+
+-- 1 edge, 2 vertices test
+
+RETURN QUERY
+SELECT set_eq(
+  $$SELECT * FROM pgr_maxWeightedMatching('SELECT 1::BIGINT AS id, 5::BIGINT AS source, 6::BIGINT AS target, 1.0::FLOAT AS cost, 1.0::FLOAT AS reverse_cost', false)$$,
+  $$VALUES (5::BIGINT, 6::BIGINT, 1.0::FLOAT)$$,
+  '2: Single edge (2 vertices) -> 1 matched pair');
+
+-- Triangle (3-cycle) test
+
+RETURN QUERY
+SELECT set_eq(
+  $$SELECT * FROM pgr_maxWeightedMatching(
+    'SELECT * FROM (VALUES
+      (1::BIGINT, 1::BIGINT, 2::BIGINT, 5.0::FLOAT, 5.0::FLOAT),
+      (2::BIGINT, 2::BIGINT, 3::BIGINT, 6.0::FLOAT, 6.0::FLOAT),
+      (3::BIGINT, 3::BIGINT, 1::BIGINT, 7.0::FLOAT, 7.0::FLOAT)
+    ) AS t(id, source, target, cost, reverse_cost)',
+    false
+  )$$,
+  $$VALUES (1::BIGINT, 3::BIGINT, 7.0::FLOAT)$$,
+  '3: Triangle (3-cycle) -> maximum weighted edge selected');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT * FROM finish();
+ROLLBACK;
