@@ -4,7 +4,7 @@
 
 BEGIN;
 
-SELECT CASE WHEN min_version('4.1.0') THEN plan(7) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.1.0') THEN plan(8) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
@@ -106,6 +106,21 @@ SELECT lives_ok(
      SELECT 3 AS id, 1 AS source, 3 AS target, 1 AS cost, -1 AS reverse_cost'
   )$$,
   '7: Unequal costs with a triangle does not crash');
+
+-- Iosefa regression test (Issue/PR reproduction of segfault)
+RETURN QUERY
+SELECT results_eq(
+  $$SELECT start_vid, end_vid FROM pgr_makeMaximalPlanar(
+      'SELECT 1 AS id, 1 AS source, 2 AS target, 1 AS cost, 2 AS reverse_cost UNION
+       SELECT 2 AS id, 2 AS source, 3 AS target, 1 AS cost, 2 AS reverse_cost UNION
+       SELECT 3 AS id, 3 AS source, 4 AS target, 1 AS cost, 2 AS reverse_cost UNION
+       SELECT 4 AS id, 4 AS source, 1 AS target, 1 AS cost, 2 AS reverse_cost'
+  ) ORDER BY seq$$,
+  $$VALUES 
+    (1::BIGINT, 3::BIGINT),
+    (2::BIGINT, 4::BIGINT)
+  $$,
+  '8: Iosefa regression test for unequal costs 4-cycle');
 
 END;
 $BODY$
