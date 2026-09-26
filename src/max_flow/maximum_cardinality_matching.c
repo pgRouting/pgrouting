@@ -28,83 +28,46 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
-
 #include "c_common/postgres_connection.h"
-
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
-
-#include "c_types/edge_bool_t_rt.h"
-
-#include "drivers/max_flow/maximum_cardinality_matching_driver.h"
-
+#include "process/ordering_process.h"
 
 PGDLLEXPORT Datum _pgr_maxcardinalitymatch_v4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_maxcardinalitymatch_v4);
 
-static
-void
-process(
-    char *edges_sql,
-    int64_t **result_tuples,
-    size_t *result_count) {
-    pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-
-    clock_t start_t = clock();
-    pgr_do_maximum_cardinality_matching(
-            edges_sql,
-            result_tuples,
-            result_count,
-
-            &log_msg,
-            &notice_msg,
-            &err_msg);
-    time_msg("pgr_maxCardinalityMatch()", start_t, clock());
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
-
-PGDLLEXPORT Datum _pgr_maxcardinalitymatch_v4(PG_FUNCTION_ARGS) {
-    FuncCallContext *funcctx;
+PGDLLEXPORT Datum
+_pgr_maxcardinalitymatch_v4(PG_FUNCTION_ARGS) {
+    FuncCallContext     *funcctx;
 
     int64_t *result_tuples = NULL;
-    size_t result_count = 0;
+    size_t   result_count  = 0;
 
     if (SRF_IS_FIRSTCALL()) {
-        MemoryContext oldcontext;
+        MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        process(
+        pgr_process_ordering(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                false,
+
+                MAXCARDINALITYMATCH,
                 &result_tuples,
                 &result_count);
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
+
         MemoryContextSwitchTo(oldcontext);
     }
 
-    funcctx = SRF_PERCALL_SETUP();
-    result_tuples = (int64_t *) funcctx->user_fctx;
+    funcctx            = SRF_PERCALL_SETUP();
+    result_tuples      = funcctx->user_fctx;
+    uint64_t call_cntr = funcctx->call_cntr;
 
-    if (funcctx->call_cntr < funcctx->max_calls) {
+    if (call_cntr < funcctx->max_calls) {
         Datum result;
 
-
-        result = Int64GetDatum(result_tuples[funcctx->call_cntr]);
+        result = Int64GetDatum(result_tuples[call_cntr]);
 
         SRF_RETURN_NEXT(funcctx, result);
     } else {
@@ -112,26 +75,43 @@ PGDLLEXPORT Datum _pgr_maxcardinalitymatch_v4(PG_FUNCTION_ARGS) {
     }
 }
 
-/*
- * TODO (v5) v5 remove deprecated code
- * TODO (v4 last micro) warn about deprecated code
+
+/* Deprecated code starts here
+ * This code is used on v3.4 and under
+ *
+ * TODO(v4.x) define SHOWMSG
+ * TODO(v4.x+1) change to WARNING
+ * TODO(v5) Move to legacy
  */
 PGDLLEXPORT Datum _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_maxcardinalitymatch);
+
 PGDLLEXPORT Datum
 _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
-    FuncCallContext *funcctx;
-    TupleDesc tuple_desc;
+    FuncCallContext     *funcctx;
+    TupleDesc           tuple_desc;
+
     int64_t *result_tuples = NULL;
-    size_t result_count = 0;
+    size_t   result_count  = 0;
 
     if (SRF_IS_FIRSTCALL()) {
-        MemoryContext oldcontext;
+        MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        process(
+#ifdef SHOWMSG
+        ereport(NOTICE, (
+                    errcode(ERRCODE_WARNING_DEPRECATED_FEATURE),
+                    errmsg("A stored procedure is using deprecated C internal function '%s'", __func__),
+                    errdetail("Library function '%s' was deprecated in pgRouting %s", __func__, "4.0.0"),
+                    errhint("Consider upgrade pgRouting")));
+#endif
+
+        pgr_process_ordering(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                false,
+
+                MAXCARDINALITYMATCH,
                 &result_tuples,
                 &result_count);
 
@@ -149,26 +129,27 @@ _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
         MemoryContextSwitchTo(oldcontext);
     }
 
-    funcctx = SRF_PERCALL_SETUP();
-    tuple_desc = funcctx->tuple_desc;
-    result_tuples = (int64_t *) funcctx->user_fctx;
+    funcctx            = SRF_PERCALL_SETUP();
+    tuple_desc         = funcctx->tuple_desc;
+    result_tuples      = funcctx->user_fctx;
+    uint64_t call_cntr = funcctx->call_cntr;
 
-    if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple tuple;
-        Datum result;
-        Datum *values;
-        bool *nulls;
+    if (call_cntr < funcctx->max_calls) {
+        HeapTuple   tuple;
+        Datum       result;
+        Datum       *values;
+        bool        *nulls;
 
-        values = palloc(4 * sizeof(Datum));
-        nulls = palloc(4 * sizeof(bool));
-
+        size_t num  = 2;
+        values = palloc(num * sizeof(Datum));
+        nulls = palloc(num * sizeof(bool));
         size_t i;
-        for (i = 0; i < 4; ++i) {
+        for (i = 0; i < num; ++i) {
             nulls[i] = false;
         }
 
         values[0] = 0;
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr]);
+        values[1] = Int64GetDatum(result_tuples[call_cntr]);
         values[2] = 0;
         values[3] = 0;
         tuple = heap_form_tuple(tuple_desc, values, nulls);

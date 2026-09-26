@@ -38,19 +38,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <boost/graph/max_cardinality_matching.hpp>
 #include "cpp_common/interruption.hpp"
+#include "cpp_common/identifiers.hpp"
 
 namespace pgrouting {
 namespace flow {
 
 
-std::set<int64_t>
+Identifiers<int64_t>
 maxCardinalityMatch(pgrouting::graph::UndirectedNoCostsBG &graph) {
     using G = pgrouting::graph::UndirectedNoCostsBG::G;
     using V = pgrouting::graph::UndirectedNoCostsBG::V;
     using E = pgrouting::graph::UndirectedNoCostsBG::E;
 
     std::vector<V> mate_map(boost::num_vertices(graph()));
-    std::set<int64_t> match;
+    Identifiers<int64_t> match;
 
     CHECK_FOR_INTERRUPTS();
     try {
@@ -82,7 +83,7 @@ maxCardinalityMatch(pgrouting::graph::UndirectedNoCostsBG &graph) {
         boost::tie(e, exists) = boost::edge(v1, v2, graph());
         if (!exists) throw;
 
-        match.insert(graph.get_edge_id(e));
+        match += graph.get_edge_id(e);
     }
 
     return match;

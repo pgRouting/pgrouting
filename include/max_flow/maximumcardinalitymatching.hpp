@@ -36,13 +36,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <set>
 
+#include "cpp_common/identifiers.hpp"
 #include "cpp_common/undirectedNoCostBG.hpp"
 
 
 namespace pgrouting {
 namespace flow {
 
-  std::set<int64_t> maxCardinalityMatch(pgrouting::graph::UndirectedNoCostsBG&);
+  Identifiers<int64_t> maxCardinalityMatch(pgrouting::graph::UndirectedNoCostsBG&);
 
 }  // namespace flow
 }  // namespace pgrouting
