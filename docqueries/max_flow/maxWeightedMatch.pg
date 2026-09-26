@@ -1,10 +1,10 @@
 /* :file: This file is part of the pgRouting project.
 :copyright: Copyright (c) 2016-2026 pgRouting developers
 :license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
 /* -- q1 */
 SELECT * FROM pgr_maxWeightedMatch(
-  'SELECT id, source, target, cost FROM edges',
-  false
+  'SELECT id, source, target, cost FROM edges ORDER BY id'
 );
 
 /* -- q2 */
@@ -24,8 +24,7 @@ INSERT INTO additional_sample_1 (source, target, cost, reverse_cost) VALUES
 (4, 5, 3, 3),
 (3, 5, 6, 6);
 SELECT * FROM pgr_maxWeightedMatch(
-    'SELECT id, source, target, cost, reverse_cost FROM additional_sample_1',
-    false
+    'SELECT id, source, target, cost, reverse_cost FROM additional_sample_1 ORDER BY id'
 );
 
 /* -- q4 */
