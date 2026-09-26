@@ -29,7 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --v4.1
 CREATE FUNCTION pgr_maxWeightedMatch(
     TEXT,    -- edges_sql (required)
-    BOOLEAN, -- directed (ignored, always undirected)
 
     OUT start_vid  BIGINT,
     OUT end_vid    BIGINT,
@@ -42,7 +41,7 @@ $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
-COMMENT ON FUNCTION pgr_maxWeightedMatch(TEXT, BOOLEAN)
+COMMENT ON FUNCTION pgr_maxWeightedMatch(TEXT)
 IS 'pgr_maxWeightedMatch
 - EXPERIMENTAL
 - Undirected graph
