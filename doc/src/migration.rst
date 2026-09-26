@@ -51,6 +51,8 @@ Migration to standardized columns
 .. |result-toposort| replace:: ``(seq, sorted_v)``
 .. |result-old-closure| replace:: ``(seq, vid, target_array)``
 
+.. |old-via-result| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost)``
+
 There has been an effort to standardize function output columns names and
 types.
 
@@ -124,6 +126,14 @@ types.
      - `Migration of cost functions`_
    * - .. versionchanged:: 4.0.0 :doc:`pgr_withPointsCostMatrix`
      - `Migration of cost functions`_
+   * - .. versionchanged:: 4.1.0 :doc:`pgr_dijkstraVia`
+     - `Migration of via functions`_
+   * - .. versionchanged:: 4.1.0 :doc:`pgr_trspVia`
+     - `Migration of via functions`_
+   * - .. versionchanged:: 4.1.0 :doc:`pgr_trspVia_withPoints`
+     - `Migration of via functions`_
+   * - .. versionchanged:: 4.1.0 :doc:`pgr_withPointsVia`
+     - `Migration of via functions`_
 
 .. contents:: Contents
    :local:
@@ -1017,6 +1027,53 @@ Migration to: |result_node_color|
 After update:
 
 * Rename ``vertex_id`` to ``node`` and ``color_id`` to ``color``.
+
+Migration of via functions
+-------------------------------------------------------------------------------
+
+Starting from v4.1.0 the via functions return the column ``pred``, the
+identifier of the previous node in the path.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Function
+     - Version
+     - From
+   * - ``pgr_dijkstraVia``
+     - v < 4.1.0
+     - :ref:`from_old_via`
+   * - ``pgr_trspVia``
+     - v < 4.1.0
+     - :ref:`from_old_via`
+   * - ``pgr_trspVia_withPoints``
+     - v < 4.1.0
+     - :ref:`from_old_via`
+   * - ``pgr_withPointsVia``
+     - v < 4.1.0
+     - :ref:`from_old_via`
+
+.. _from_old_via:
+
+Migration from |old-via-result|
+.................................................................................
+
+Migration to: |via-result|
+
+Signatures to be migrated:
+
+* All signatures
+
+The new column ``pred`` is placed between ``end_vid`` and ``node``, so the
+columns ``node``, ``edge``, ``cost``, ``agg_cost`` and ``route_agg_cost`` move
+one position to the right.
+
+Queries that select the columns by name are not affected.
+Queries that use ``SELECT *`` or depend on the position of the columns, for
+example ``INSERT INTO my_table SELECT * FROM pgr_dijkstraVia(...)``, are
+affected.
+
+Before updating pgRouting enumerate the columns: |old-via-result|
 
 Migration of deleted functions
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

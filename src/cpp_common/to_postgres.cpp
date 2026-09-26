@@ -58,6 +58,7 @@ get_path(
         double &route_agg_cost,
         size_t &sequence) {
     int path_seq = 0;
+    int64_t pred = path.start_id();
     for (const auto e : path) {
         (*tuples)[sequence] = {
             route_id,
@@ -65,12 +66,14 @@ get_path(
             path_seq,
             path.start_id(),
             path.end_id(),
+            pred,
             e.node,
             e.edge,
             e.cost,
             e.agg_cost,
             route_agg_cost};
         route_agg_cost += path[static_cast<uint32_t>(path_seq)].cost;
+        pred = e.node;
         path_seq++;
         ++sequence;
     }
