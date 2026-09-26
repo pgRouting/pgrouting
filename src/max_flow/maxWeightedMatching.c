@@ -29,18 +29,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-
-#include "c_types/iid_t_rt.h"
-#include "process/allpairs_process.h"
+#include "process/ordering_process.h"
 
 PGDLLEXPORT Datum _pgr_maxweightedmatch(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_maxweightedmatch);
 
 PGDLLEXPORT Datum _pgr_maxweightedmatch(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
-    TupleDesc        tuple_desc;
 
-    IID_t_rt *result_tuples = NULL;
+    int64_t  *result_tuples = NULL;
     size_t    result_count  = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -48,7 +45,7 @@ PGDLLEXPORT Datum _pgr_maxweightedmatch(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        pgr_process_allpairs(
+        pgr_process_ordering(
             text_to_cstring(PG_GETARG_TEXT_P(0)),
             false,
             MAXWEIGHTMATCH,
@@ -58,42 +55,18 @@ PGDLLEXPORT Datum _pgr_maxweightedmatch(PG_FUNCTION_ARGS) {
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
 
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE) {
-            ereport(ERROR,
-                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-                     errmsg("function returning record called in context "
-                            "that cannot accept type record")));
-        }
-
-        funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
     }
 
-    funcctx            = SRF_PERCALL_SETUP();
-    tuple_desc         = funcctx->tuple_desc;
-    result_tuples      = (IID_t_rt*) funcctx->user_fctx;
+    funcctx       = SRF_PERCALL_SETUP();
+    result_tuples = funcctx->user_fctx;
     uint64_t call_cntr = funcctx->call_cntr;
 
     if (call_cntr < funcctx->max_calls) {
-        HeapTuple   tuple;
-        Datum       result;
-        Datum       *values;
-        bool        *nulls;
+        Datum      result;
 
-        size_t num = 3;
-        values = palloc(num * sizeof(Datum));
-        nulls  = palloc(num * sizeof(bool));
-        size_t i;
-        for (i = 0; i < num; ++i) {
-            nulls[i] = false;
-        }
+        result = Int64GetDatum(result_tuples[call_cntr]);
 
-        values[0] = Int64GetDatum(result_tuples[call_cntr].from_vid);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].to_vid);
-        values[2] = Float8GetDatum(result_tuples[call_cntr].cost);
-
-        tuple = heap_form_tuple(tuple_desc, values, nulls);
-        result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
         SRF_RETURN_DONE(funcctx);

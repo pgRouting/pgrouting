@@ -42,13 +42,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace functions {
 
-std::vector<IID_t_rt>
-maximumWeightedMatch(pgrouting::graph::UndirectedHasCostBG &graph) {
+Identifiers<int64_t>
+maxWeightedMatch(pgrouting::graph::UndirectedHasCostBG &graph) {
     using G = pgrouting::graph::UndirectedHasCostBG::TSP_Graph;
     using V = pgrouting::graph::UndirectedHasCostBG::V;
     using E = pgrouting::graph::UndirectedHasCostBG::E;
 
     std::vector<V> mate_map(boost::num_vertices(graph.graph()));
+    Identifiers<int64_t> match;
 
     CHECK_FOR_INTERRUPTS();
     try {
@@ -63,8 +64,11 @@ maximumWeightedMatch(pgrouting::graph::UndirectedHasCostBG &graph) {
         throw;
     }
 
-    std::vector<IID_t_rt> results;
-
+    /*
+     * Check for each vertex:
+     * 1) The vertex does not have a match
+     * 2) prevent double output of the edge
+     */
     for (const auto &v2 : mate_map) {
         auto v1 = static_cast<V>(&v2 - &mate_map[0]);
 
@@ -76,24 +80,10 @@ maximumWeightedMatch(pgrouting::graph::UndirectedHasCostBG &graph) {
         boost::tie(e, exists) = boost::edge(v1, v2, graph.graph());
         if (!exists) throw;
 
-        int64_t src = graph.get_vertex_id(v1);
-        int64_t tgt = graph.get_vertex_id(v2);
-
-        if (src > tgt) std::swap(src, tgt);
-
-        IID_t_rt row;
-        row.from_vid = src;
-        row.to_vid   = tgt;
-        row.cost     = boost::get(boost::edge_weight_t(), graph.graph(), e);
-        results.push_back(row);
+        match += graph.get_edge_id(e);
     }
 
-    std::sort(results.begin(), results.end(),
-        [](const IID_t_rt &a, const IID_t_rt &b) {
-            return a.to_vid < b.to_vid;
-        });
-
-    return results;
+    return match;
 }
 
 }  // namespace functions
