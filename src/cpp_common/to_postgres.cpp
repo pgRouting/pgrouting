@@ -285,6 +285,28 @@ get_tuples(
 }
 
 size_t
+get_cumulative_tuples(
+        const std::vector<IID_t_rt> &results,
+        IID_t_rt* &tuples) {
+    pgassert(!tuples);
+
+    auto count = results.size();
+    if (count == 0) return 0;
+
+    std::vector<IID_t_rt> cumulated;
+    cumulated.reserve(count);
+    double agg = 0.0;
+    for (const auto &row : results) {
+        agg += row.cost;
+        auto cum = row;
+        cum.cost = agg;
+        cumulated.push_back(cum);
+    }
+
+    return get_tuples(cumulated, tuples);
+}
+
+size_t
 get_tuples(
         const std::vector<MST_rt> &results,
         MST_rt* &tuples) {
