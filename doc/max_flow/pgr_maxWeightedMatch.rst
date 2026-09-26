@@ -64,7 +64,7 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_maxWeightedMatch(`Edges SQL`_, ``directed``)
+   | pgr_maxWeightedMatch(`Edges SQL`_)
 
    | Returns set of |matrix-result|
    | OR EMPTY SET
@@ -81,23 +81,6 @@ Parameters
 .. include:: allpairs-family.rst
     :start-after: edges_start
     :end-before: edges_end
-
-Optional parameters
-...............................................................................
-
-.. list-table::
-   :width: 81
-   :widths: auto
-   :header-rows: 1
-
-   * - Column
-     - Type
-     - Default
-     - Description
-   * - ``directed``
-     - ``BOOLEAN``
-     - ``false``
-     - Ignored. The matching algorithm always works on **undirected** graphs.
 
 Inner Queries
 -------------------------------------------------------------------------------
