@@ -140,7 +140,7 @@ _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
         Datum       *values;
         bool        *nulls;
 
-        size_t num  = 2;
+        size_t num  = 4;
         values = palloc(num * sizeof(Datum));
         nulls = palloc(num * sizeof(bool));
         size_t i;

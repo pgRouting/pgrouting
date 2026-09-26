@@ -80,7 +80,7 @@ To see all issues & pull requests closed by this release see the
 ...............................................................................
 
 * :issue:`3136`: pgr_maxWeightedMatch
-* :issue:`3140`: pgr_makeBiconnectedPlannar
+* :issue:`3140`: pgr_makeBiconnectedPlanar
 * :issue:`3142`: pgr_coreNumbers
 * :issue:`3143`: pgr_planarFaces
 

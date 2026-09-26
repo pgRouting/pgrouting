@@ -134,18 +134,6 @@ Experimental Functions
   pgr_dagShortestPath
   pgr_edwardMoore
 
-
-:doc:`planar-family`
-
-.. include:: planar-family.rst
-   :start-after: experimental-start
-   :end-before: experimental-end
-
-.. toctree::
-  :hidden:
-
-  planar-family
-
 .. rubric:: Miscellaneous Algorithms
 
 - :doc:`pgr_lengauerTarjanDominatorTree`
