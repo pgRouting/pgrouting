@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-10 19:05+0000\n"
+"POT-Creation-Date: 2026-09-24 19:15+0000\n"
 "PO-Revision-Date: 2025-12-10 20:25+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\n"
@@ -342,6 +342,12 @@ msgstr ":doc:`pgr_trspVia_withPoints` - Ruteo Vía Punto/Vértice con restriccio
 
 msgid "Experimental"
 msgstr "Experimental"
+
+msgid "Possible server crash"
+msgstr ""
+
+msgid "These functions might create a server crash"
+msgstr ""
 
 msgid "Experimental functions"
 msgstr "Funciones experimentales"
@@ -3103,6 +3109,10 @@ msgstr ":doc:`pgr_betweennessCentrality` - Calcula la centralidad intermedia rel
 msgid ":doc:`pgr_bandwidth` - Computes the bandwidth of a graph."
 msgstr ":doc:`pgr_bandwidth` - Calcula el ancho de banda de un grafo."
 
+#, fuzzy
+msgid ":doc:`pgr_coreNumbers` - Computes the core number of each vertex."
+msgstr ":doc:`pgr_dijkstraNearCost` - Consigue el costo del vértice más cercano."
+
 msgid ":doc:`TRSP-family`"
 msgstr ":doc:`TRSP-family`"
 
@@ -3124,11 +3134,20 @@ msgstr ":doc:`pgr_dagShortestPath`"
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ":doc:`pgr_edwardMoore`"
 
-msgid "Planar Family"
-msgstr "Familia Planar"
+#, fuzzy
+msgid ":doc:`planar-family`"
+msgstr ":doc:`aStar-family`"
 
-msgid ":doc:`pgr_isPlanar`"
-msgstr ":doc:`pgr_isPlanar`"
+#, fuzzy
+msgid ":doc:`pgr_isPlanar` - Returns a boolean depending upon the planarity of the graph."
+msgstr "``pgr_isPlanar`` — Devuelve un valor boolean dependiendo de la planaridad del grafo."
+
+#, fuzzy
+msgid ":doc:`pgr_makeBiconnectedPlanar` - Returns edges to add to a planar graph to make each connected component biconnected."
+msgstr ":doc:`pgr_makeConnected` - Detalles de aristas para hacer grafos conectados."
+
+msgid ":doc:`pgr_planarFaces` - Identifies the faces of a planar embedding and lists every edge-face incidence for an undirected graph."
+msgstr ""
 
 msgid "Miscellaneous Algorithms"
 msgstr "Algoritmos Diversos"
@@ -3534,7 +3553,37 @@ msgstr "Notas de la Versión pgRouting 3.1.0"
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22>`__"
 msgstr "Para ver todos los problemas y solicitudes de extracción cerrados para ésta versión, consulte la `Github milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
-msgid "Code enhancements"
+msgid "4.1.0 Summary of changes by function"
+msgstr ""
+
+#, fuzzy
+msgid "pgr_coreNumbers"
+msgstr "pgr_nodeNetwork"
+
+msgid "New experimental function."
+msgstr "Nueva función experimental."
+
+msgid "pgr_edgeColoring"
+msgstr "pgr_edgeColoring"
+
+#, fuzzy
+msgid "Fix the way it builds the graph"
+msgstr "da el ancho de banda del grafo."
+
+#, fuzzy
+msgid "pgr_makeBiconnectedPlanar"
+msgstr "pgr_makeConnected"
+
+#, fuzzy
+msgid "pgr_planarFaces"
+msgstr "pgr_isPlanar"
+
+#, fuzzy
+msgid "4.1.0 New experimental functions."
+msgstr "Nuevas funciones experimentales."
+
+#, fuzzy
+msgid "4.1.0 Code enhancements"
 msgstr "Mejoras del código"
 
 #, fuzzy
@@ -3581,22 +3630,37 @@ msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_king
 msgid "`#3113 <https://github.com/pgRouting/pgrouting/issues/3113>`__: Components: Integrate into existing process/driver pair"
 msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_kingOrdering"
 
-msgid "Bug Fixes"
+#, fuzzy
+msgid "`#3129 <https://github.com/pgRouting/pgrouting/issues/3129>`__: breadthFirstSearch: Reorganize into traversal"
+msgstr "`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__: pgr_breadthFirstSearch"
+
+#, fuzzy
+msgid "`#3131 <https://github.com/pgRouting/pgrouting/issues/3131>`__: binaryBreadthFirstSearch: Integrate into existing process/driver pair"
+msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_kingOrdering"
+
+#, fuzzy
+msgid "`#3140 <https://github.com/pgRouting/pgrouting/issues/3140>`__: New function: pgr_makeBiconnectedPlannar"
+msgstr "`#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__: pgr_nodeNetwork"
+
+#, fuzzy
+msgid "`#3142 <https://github.com/pgRouting/pgrouting/issues/3142>`__: New function: pgr_coreNumbers"
+msgstr "`#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__: pgr_nodeNetwork"
+
+#, fuzzy
+msgid "`#3143 <https://github.com/pgRouting/pgrouting/issues/3143>`__: New function: pgr_planarFaces"
+msgstr "`#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__: pgr_nodeNetwork"
+
+#, fuzzy
+msgid "`#3154 <https://github.com/pgRouting/pgrouting/issues/3154>`__: betweennessCentrality: use allpairs/process and driver"
+msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_kingOrdering"
+
+#, fuzzy
+msgid "4.1.0 Bug Fixes"
 msgstr "Corrección de errores"
 
 #, fuzzy
 msgid "`#3101 <https://github.com/pgRouting/pgrouting/issues/3101>`__: pgr_edgeColoring not building graph correctly"
 msgstr "`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__: pgr_edgeColoring"
-
-msgid "Summary of changes by function"
-msgstr ""
-
-msgid "pgr_edgeColoring"
-msgstr "pgr_edgeColoring"
-
-#, fuzzy
-msgid "Fix the way it builds the graph"
-msgstr "da el ancho de banda del grafo."
 
 msgid "All releases"
 msgstr "Todas las versiones"
@@ -7018,9 +7082,6 @@ msgstr "Cambio de columnas de resultados: ``seq`` se elimina"
 msgid "Version 2.5.0"
 msgstr "Versión 2.5.0"
 
-msgid "New experimental function."
-msgstr "Nueva función experimental."
-
 msgid "Those vertices that belong to more than one biconnected component are called articulation points or, equivalently, cut vertices. Articulation points are vertices whose removal would increase the number of connected components in the graph. This implementation can only be used with an undirected graph."
 msgstr "Los vértices que pertenecen a más de un componente biconectado se denominan puntos de articulación o, equivalentemente, corte de vértices. Los puntos de articulación son vértices cuya eliminación aumentaría el número de componentes conectados en el grafo. Esta implementación solo se puede utilizar con un grafo no dirigido."
 
@@ -8638,6 +8699,336 @@ msgstr "El arista :math:`1 \\rightarrow 3` tiene la información de los costos y
 msgid "Create the contracted graph."
 msgstr "Crear el grafo contraído."
 
+#, fuzzy
+msgid "``pgr_coreNumbers`` - Experimental"
+msgstr "``pgr_pickDeliver`` - Experimental"
+
+msgid "``pgr_coreNumbers`` - Computes the core number of each vertex in an undirected graph using k-core decomposition."
+msgstr ""
+
+#, fuzzy
+msgid "Version 4.1.0"
+msgstr "Versión 4.0.0"
+
+msgid "The **core number** of a vertex is the largest value :math:`k` such that the vertex **belongs to the** :math:`k`-core of the graph."
+msgstr ""
+
+msgid "The :math:`k`-core of a graph is the maximal subgraph in which every vertex has degree at least :math:`k` within that subgraph. K-core decomposition iteratively removes vertices of degree less than :math:`k` until no such vertices remain, increasing :math:`k` at each stage. The process assigns one core number to every vertex."
+msgstr ""
+
+msgid "The core number says how deeply a vertex sits inside the graph:"
+msgstr ""
+
+msgid "Core :math:`1` vertices are peeled in the first step. They are terminal nodes of the peeled graph, adjacent to at most one other vertex in the induced subgraph."
+msgstr ""
+
+msgid "Core :math:`2` vertices survive that step. They lie on cycles, or on the chains joining them."
+msgstr ""
+
+msgid "Core :math:`3` and above mark dense regions where every vertex keeps three or more neighbors however much of the graph is peeled away."
+msgstr ""
+
+msgid "Parallel edges between the same pair of vertices are collapsed into a single edge before the peeling starts, so edge multiplicity does not inflate core numbers."
+msgstr ""
+
+msgid "Three parallel edges between two vertices give both vertices core :math:`1`, the same as a single edge."
+msgstr ""
+
+msgid "Self loop: a vertex is not a neighbor of its own vertex, so it is dropped before peeling and does not contribute to that vertex's degree."
+msgstr ""
+
+msgid "A vertex whose only edge is a self loop has no real neighbors left, So the core number is 0."
+msgstr ""
+
+#, fuzzy
+msgid "Loops and parallel edges are removed."
+msgstr "Sin auto ciclos ni aristas paralelas."
+
+#, fuzzy
+msgid "All vertices are kept"
+msgstr "Todos los vehículos son iguales."
+
+#, fuzzy
+msgid "Costs are ignored"
+msgstr "Costos negativos son ignorados."
+
+msgid "Each vertex receives exactly one core number"
+msgstr ""
+
+#, fuzzy
+msgid "Results:"
+msgstr "Resultados"
+
+#, fuzzy
+msgid "Number of returned rows: :math:`|V|`."
+msgstr "Cantidad de rutas requeridas."
+
+#, fuzzy
+msgid "Ordered by ``node`` ascending."
+msgstr "``node`` ascendente"
+
+msgid "No rows returned when no edges found. Emits a ``NOTICE``"
+msgstr ""
+
+#, fuzzy
+msgid "Running time: :math:`O(|E| + |E| + |V| log |V|)`"
+msgstr "Tiempo de ejecución: :math:`O(E * (E + V * logV))`"
+
+msgid "Loop and parallel removal: :math:`O(|E|)`"
+msgstr ""
+
+#, fuzzy
+msgid "Peeling algorithm: :math:`O(|E|)`"
+msgstr "Tiempo de ejecución: :math:`O(|V|)`"
+
+#, fuzzy
+msgid "Sorting:  :math:`|V| log |V|`"
+msgstr "Peor caso: :math:`O(| V | * | E |)`"
+
+#, fuzzy
+msgid "pgr_coreNumbers(`Edges SQL`_)"
+msgstr "pgr_prim(`SQL de aristas`_)"
+
+#, fuzzy
+msgid "Returns set of ``(seq, node, core)``"
+msgstr "Regresa el conjunto de ``(seq, node)``"
+
+#, fuzzy
+msgid "Core numbers on a subgraph of :doc:`sampledata`"
+msgstr "Para el siguiente sub-grafo de :doc:`sampledata`:"
+
+msgid "Vertices are colored by core number in the diagrams below: ``deepskyblue`` for core :math:`1` and ``green`` for core :math:`2`."
+msgstr ""
+
+msgid "All returned vertices have core number :math:`1`; they belong to the 1-core but not to any higher core."
+msgstr ""
+
+#, fuzzy
+msgid "Vertices :math:`5` and :math:`15` are terminal nodes in this subgraph (degree :math:`1`)."
+msgstr "Sean :math:`v` y :math:`u` nodos en el grafo:"
+
+msgid "Vertices :math:`6`, :math:`7`, and :math:`10` have higher degree here, but peeling degree-:math:`1` vertices first removes the entire subgraph before a 2-core can form."
+msgstr ""
+
+msgid "The following diagram shows edges :math:`\\{1, \\ldots, 7\\}` from :doc:`sampledata`; every vertex label shows ``node (core)``."
+msgstr ""
+
+msgid "The next subgraph uses edges :math:`\\{1, 2, 3, 4\\}`, the same set as the main example of :doc:`pgr_betweennessCentrality`. Every vertex is still core :math:`1` because the structure is a tree-like path with terminal nodes at :math:`5` and :math:`15`."
+msgstr ""
+
+msgid "K-core peeling (illustration)"
+msgstr ""
+
+msgid "On edges :math:`id < 10`, vertices :math:`5` and :math:`15` are removed first because they have degree :math:`1`. After further peeling, vertices :math:`6`, :math:`7`, :math:`10`, and :math:`11` remain as the 2-core (shown in green below)."
+msgstr ""
+
+#, fuzzy
+msgid "Sequential value starting from 1."
+msgstr "Valor secuencial a partir de **1**."
+
+#, fuzzy
+msgid "``core``"
+msgstr "``color``"
+
+msgid "Core number of the vertex: the largest :math:`k` for which the vertex belongs to the :math:`k`-core."
+msgstr ""
+
+msgid "The examples of this section are based on the :doc:`sampledata` network."
+msgstr "Los ejemplos de esta sección se basan en la red :doc:`sampledata`."
+
+msgid "Sample network overview"
+msgstr ""
+
+msgid "Directed sample network. ``pgr_coreNumbers`` treats every edge as undirected, so ``cost`` and ``reverse_cost`` are not used in the calculation."
+msgstr ""
+
+msgid "Comparing with :doc:`pgr_betweennessCentrality` on the same edges"
+msgstr ""
+
+msgid "Both functions use the same ``Edges SQL`` format. The betweenness example on edges :math:`\\{1, 2, 3, 4\\}` measures shortest-path influence; core numbers measure peeling resilience."
+msgstr ""
+
+#, fuzzy
+msgid "1) Core numbers on edges :math:`\\{1, 2, 3, 4\\}`"
+msgstr "Para sub-grafo con aristas :math:`\\{1, 2, 3, 4\\}`."
+
+#, fuzzy
+msgid "Vertices :math:`5` and :math:`15` are terminal (core :math:`1`)."
+msgstr "Sean :math:`v` y :math:`u` nodos en el grafo:"
+
+msgid "Vertex :math:`6` has degree :math:`3` in this subgraph but still has core :math:`1`, because removing :math:`5` and :math:`15` first leaves no subgraph where every vertex has degree at least :math:`2`."
+msgstr ""
+
+msgid "Compare with :doc:`pgr_betweennessCentrality` on the same edges: vertex :math:`6` has the highest betweenness, but core number does not rank vertices by path importance."
+msgstr ""
+
+msgid "Subgraph with core-:math:`2` vertices"
+msgstr ""
+
+msgid "Adding edges :math:`5` through :math:`9` connects the inner vertices into a 2-core. The undirected layout below shows the same network."
+msgstr ""
+
+#, fuzzy
+msgid "Undirected view of the sample network"
+msgstr "Grafo no dirigido simple"
+
+#, fuzzy
+msgid "2) Core numbers on edges :math:`id < 10`"
+msgstr "El conjunto de aristas :math:`E`"
+
+msgid "Vertices :math:`6`, :math:`7`, :math:`10`, and :math:`11` have core :math:`2`."
+msgstr ""
+
+msgid "Vertices :math:`1`, :math:`3`, :math:`5`, :math:`15`, and :math:`16` are attached by tree-like branches and remain core :math:`1`."
+msgstr ""
+
+msgid "Edge :math:`8` (between :math:`7` and :math:`11`) closes a cycle with edges :math:`4`, :math:`2`, and :math:`5`, which is why the inner four vertices survive peeling."
+msgstr ""
+
+msgid "Filtering results in SQL"
+msgstr ""
+
+msgid "``pgr_coreNumbers`` always returns every vertex. To keep only the dense core, wrap the call in a standard SQL query."
+msgstr ""
+
+#, fuzzy
+msgid "3) Vertices with core :math:`\\geq 2` on edges :math:`id < 10`"
+msgstr "3) Ruta de :math:`12` a :math:`10`"
+
+msgid "The ``WHERE core >= 2`` clause keeps only the 2-core vertices."
+msgstr ""
+
+msgid "Use it to export only the hub vertices for further analysis."
+msgstr ""
+
+#, fuzzy
+msgid "Full sample graph"
+msgstr "Grafo dirigido simple"
+
+msgid "4) Core numbers on all edges"
+msgstr ""
+
+msgid "The full network has :math:`17` vertices and maximum core number :math:`2`."
+msgstr ""
+
+msgid "Terminal branches (vertices :math:`1`, :math:`2`, :math:`3`, :math:`4`, :math:`5`, :math:`9`, :math:`13`, :math:`14`) remain core :math:`1`."
+msgstr ""
+
+msgid "The 2-core is vertices :math:`6`, :math:`7`, :math:`8`, :math:`10`, :math:`11`, :math:`12`, :math:`15`, :math:`16` and :math:`17`: the central block of the city network. Vertex :math:`9` hangs off :math:`8` by edge :math:`14` alone, so it is peeled first and stays core :math:`1`."
+msgstr ""
+
+msgid "Small graphs"
+msgstr ""
+
+msgid "5) Single edge (two terminal nodes)"
+msgstr ""
+
+msgid "Both endpoints have core number :math:`1`."
+msgstr ""
+
+msgid "Edge :math:`1` from :doc:`sampledata` connects vertices :math:`5` and :math:`6`."
+msgstr ""
+
+msgid "Each endpoint has degree :math:`1`, so both are peeled immediately at :math:`k = 1`."
+msgstr ""
+
+#, fuzzy
+msgid "6) Triangle (all vertices core :math:`2`)"
+msgstr "Conjunto de vértices :math:`V`"
+
+msgid "In a triangle every vertex has degree :math:`2`, so all three belong to the 2-core."
+msgstr ""
+
+msgid "The ``VALUES`` clause builds a minimal three-edge graph inline."
+msgstr ""
+
+msgid "No vertex can be peeled before :math:`k = 2`, so every core number is :math:`2`."
+msgstr ""
+
+msgid "7) Square cycle from :doc:`sampledata` (all vertices core :math:`2`)"
+msgstr ""
+
+#, fuzzy
+msgid "Edges :math:`\\{2, 4, 5, 8\\}` form a 4-cycle on vertices :math:`\\{6, 7, 10, 11\\}`."
+msgstr "De los vértices :math:`\\{11, 3, 17\\}` a los vértices :math:`\\{5, 10, 12\\}`"
+
+msgid "This is the 2-core heart of example 2) before branches are attached."
+msgstr ""
+
+msgid "Every vertex has degree :math:`2` in the cycle, so all core numbers are :math:`2`."
+msgstr ""
+
+msgid "8) Star graph (hub and spokes, all core :math:`1`)"
+msgstr ""
+
+msgid "A star has a central hub connected to leaf vertices. Every vertex is peeled at :math:`k = 1`."
+msgstr ""
+
+msgid "The hub has degree :math:`4`, but removing the four leaves leaves an isolated vertex, so the hub never belongs to a 2-core."
+msgstr ""
+
+msgid "Star-like cul-de-sac layouts in road networks often produce core :math:`1` vertices throughout."
+msgstr ""
+
+#, fuzzy
+msgid "Empty edge set"
+msgstr "Aristas de capacidad"
+
+msgid "9) No edges in the SQL query"
+msgstr ""
+
+msgid "When the inner query returns no edges, a notice is emitted and the result is empty."
+msgstr ""
+
+#, fuzzy
+msgid "No exception is raised."
+msgstr "sección de migración es creada."
+
+msgid "Core numbers and planarity"
+msgstr ""
+
+msgid "Vertices with higher core numbers often lie in densely connected regions. The workflow below computes core numbers, filters the 2-core, and checks whether the subgraph can be drawn without edge crossings using :doc:`pgr_isPlanar`."
+msgstr ""
+
+#, fuzzy
+msgid "10) Planarity of the subgraph with edges :math:`id < 10`"
+msgstr "Para sub-grafo con aristas :math:`\\{1, 2, 3, 4\\}`."
+
+msgid "First compute core numbers (example 2)), then filter the 2-core (example 3)), then test planarity:"
+msgstr ""
+
+msgid "The subgraph with edges :math:`id < 10` is planar (``pgr_isPlanar`` returns ``true``)."
+msgstr ""
+
+msgid "The four vertices with core :math:`2` lie in the densest part of this subgraph."
+msgstr ""
+
+msgid "Planarity and core number measure different properties: a graph can be planar while still having a mix of core-:math:`1` and core-:math:`2` vertices."
+msgstr ""
+
+msgid "11) Complete graph :math:`K_4` (all vertices core :math:`3`)"
+msgstr ""
+
+msgid "The examples above reach at most core :math:`2`, because the :doc:`sampledata` network has degeneracy :math:`2`. Higher cores need a denser graph. In the complete graph :math:`K_4` every vertex is adjacent to the other three, so no vertex can ever be peeled at :math:`k \\leq 3` and the whole graph is its own 3-core."
+msgstr ""
+
+msgid "Every vertex has degree :math:`3`, so nothing is removed while peeling at :math:`k = 1`, :math:`2` or :math:`3`: all four vertices have core :math:`3`."
+msgstr ""
+
+msgid "In general the complete graph :math:`K_n` has core number :math:`n - 1` for every vertex, which is the maximum possible core number on :math:`n` vertices."
+msgstr ""
+
+#, fuzzy
+msgid "The degeneracy of this graph is :math:`3`, compared with :math:`2` for the :doc:`sampledata` network."
+msgstr "Los ejemplos de esta sección se basan en la red :doc:`sampledata`."
+
+msgid "Batagelj, V. and Zaversnik, M. (2003). `An O(m) Algorithm for Cores Decomposition of Networks <https://arxiv.org/abs/cs/0310049>`__"
+msgstr ""
+
+#, fuzzy
+msgid "`Wikipedia: Degeneracy (graph theory) <https://en.wikipedia.org/wiki/Degeneracy_(graph_theory)>`__"
+msgstr "'Wikipedia: árbol de dominador' <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
+
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
 msgstr "``pgr_cuthillMckeeOrdering`` - Experimental"
 
@@ -9057,9 +9448,6 @@ msgstr "pgr_dijkstra(`SQL de aristas`_, `SQL de combinaciones`_, [``directed``])
 
 msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed**"
 msgstr "Del vértice :math:`6` a los vértices :math:`\\{10, 17\\}` en un grafo **no dirigido**"
-
-msgid "The examples of this section are based on the :doc:`sampledata` network."
-msgstr "Los ejemplos de esta sección se basan en la red :doc:`sampledata`."
 
 msgid "For **directed** graphs with ``cost`` and ``reverse_cost`` columns"
 msgstr "Para grafos **dirigidos** con columnas ``cost`` and ``reverse_cost``"
@@ -9521,6 +9909,13 @@ msgstr "``pgr_dijkstraVia``"
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr "``pgr_dijkstraVia`` - Ruta que recorre una lista de vértices."
 
+#, fuzzy
+msgid "Version 4.0.2"
+msgstr "Versión 4.0.0"
+
+msgid "Fix: bad alloc"
+msgstr ""
+
 msgid "Given a list of vertices and a graph, this function is equivalent to finding the shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i < size\\_of(via\\;vertices)`."
 msgstr "Dada una lista de vértices y un grafo, esta función equivale a encontrar el camino más corto entre :math:`vértice_i` y :math:`vértice_{i+1}` para todo :math:`i < tamaño\\_de(vía\\;vértices)`."
 
@@ -9605,6 +10000,15 @@ msgstr ":doc:`dijkstra-family`."
 msgid "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr "``pgr_drivingDistance`` - Devuelve la distancia de manejo desde un nodo de inicio."
 
+msgid "Standardizing negative distance behaviour"
+msgstr ""
+
+msgid "Throws when :math:`distance < 0`."
+msgstr ""
+
+msgid "Standard message and hint."
+msgstr ""
+
 msgid "pgr_drivingDistance(Single vertex)"
 msgstr "pgr_drivingDistance(Vértice único)"
 
@@ -9680,10 +10084,6 @@ msgstr "``pgr_edgeColoring`` - Experimental"
 
 msgid "``pgr_edgeColoring`` — Returns the edge coloring of undirected and loop-free graphs"
 msgstr "``pgr_edgeColoring`` — Coloración de aristas de grafos no dirigidos acíclicos"
-
-#, fuzzy
-msgid "Version 4.1.0"
-msgstr "Versión 4.0.0"
 
 msgid "Output columns standardized to |result_edge_color|"
 msgstr "Columnas de resultados estandarizados a |result_edge_color|"
@@ -11010,6 +11410,94 @@ msgstr "https://en.wikipedia.org/wiki/Line_graph"
 msgid "https://en.wikipedia.org/wiki/Complete_graph"
 msgstr "https://en.wikipedia.org/wiki/Complete_graph"
 
+#, fuzzy
+msgid "``pgr_makeBiconnectedPlanar`` - Experimental"
+msgstr "``pgr_makeConnected`` - Experimental"
+
+msgid "``pgr_makeBiconnectedPlanar`` — Returns the set of edges needed to make each connected component of a planar graph biconnected."
+msgstr ""
+
+msgid "``pgr_makeBiconnectedPlanar`` identifies the missing edges that need to be added to each connected component of an existing planar graph to make those components biconnected, while ensuring the graph remains planar."
+msgstr ""
+
+msgid "A graph is considered **biconnected** if it is connected and cannot be broken into disconnected pieces by deleting any single vertex (it has no articulation points). A planar graph is one that can be drawn in two-dimensional space with no two of its edges crossing."
+msgstr ""
+
+msgid "If the graph is not connected it will treat each component as an idividual graph."
+msgstr ""
+
+#, fuzzy
+msgid "Run :doc:`pgr_makeConnected` to connect all components."
+msgstr "Usando :doc:`pgr_connectedComponents`"
+
+#, fuzzy
+msgid "When the graph is not planar it will emit an ``ERROR``"
+msgstr "Cuando el grafo es bi-partido"
+
+#, fuzzy
+msgid "Run :doc:`pgr_isPlanar` first."
+msgstr ":doc:`pgr_isPlanar`"
+
+#, fuzzy
+msgid "All vertices are kept."
+msgstr "Todos los vehículos son iguales."
+
+#, fuzzy
+msgid "Costs are ignored."
+msgstr "Costos negativos son ignorados."
+
+msgid "Returns a list of all new edges needed to make biconected graphs out of each connected component."
+msgstr ""
+
+#, fuzzy
+msgid "Empty results when the graph is already biconnected planar."
+msgstr "`false` cuando el grafo no es planar."
+
+#, fuzzy
+msgid "Running time: :math:`O(|V| + |E| + R \\log R)` for each component"
+msgstr "Tiempo de ejecución: :math:`O(E * (E + V * logV))`"
+
+#, fuzzy
+msgid ":math:`R` is the number of returned edges."
+msgstr ":math:`k` es el número de colores utilizados."
+
+#, fuzzy
+msgid "pgr_makeBiconnectedPlanar(`Edges SQL`_)"
+msgstr "pgr_makeConnected(`SQL de aristas`_)"
+
+msgid "Returns set of |result-component-make|"
+msgstr "Regresa conjunto de |result-component-make|"
+
+#, fuzzy
+msgid "List of edges that are needed to make the graph biconnected planar."
+msgstr "Lista de aristas que se necesitan para conectar el grafo."
+
+msgid "Sample graph after adding biconnecting edges (olive = original edges, red dashed = 4 new biconnecting edges)."
+msgstr ""
+
+msgid "When a graph contains multiple disconnected components, each component is processed independently. Components (2,4) and (13,14) are already biconnected (0 articulation points) and require no new edges."
+msgstr ""
+
+#, fuzzy
+msgid "4-vertex path graph."
+msgstr "Prepara el grafo"
+
+#, fuzzy
+msgid "Create a 4-vertex tree graph."
+msgstr "Crear el grafo contraído."
+
+#, fuzzy
+msgid "Get the edges needed to have biconnected planar graph."
+msgstr "Lista de aristas que se necesitan para conectar el grafo."
+
+#, fuzzy
+msgid "Adding the edges to the graph"
+msgstr "Los puentes del grafo"
+
+#, fuzzy
+msgid "`Boost: make_biconnected_planar <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/planar/make_biconnected_planar.html>`__"
+msgstr "`Boost: conectar <https://www.boost.org/libs/graph/doc/make_connected.html>`__"
+
 msgid "``pgr_makeConnected`` - Experimental"
 msgstr "``pgr_makeConnected`` - Experimental"
 
@@ -11027,9 +11515,6 @@ msgstr "El algoritmo no considera la topología geométrica en los cálculos."
 
 msgid "pgr_makeConnected(`Edges SQL`_)"
 msgstr "pgr_makeConnected(`SQL de aristas`_)"
-
-msgid "Returns set of |result-component-make|"
-msgstr "Regresa conjunto de |result-component-make|"
 
 msgid "List of edges that are needed to connect the graph."
 msgstr "Lista de aristas que se necesitan para conectar el grafo."
@@ -11434,6 +11919,169 @@ msgid "The best solution found for **lc101** is a travel time: 828.94"
 msgstr ""
 
 msgid "This implementation's travel time: 854.54"
+msgstr ""
+
+#, fuzzy
+msgid "``pgr_planarFaces`` - Experimental"
+msgstr "``pgr_isPlanar`` - Experimental"
+
+msgid "``pgr_planarFaces`` - Identifies the faces of a planar embedding and lists every edge-face incidence for an undirected graph."
+msgstr ""
+
+msgid "In a planar embedding, the graph is drawn in the plane so that edges meet only at vertices. A face is a maximal connected region of the plane bounded by edges."
+msgstr ""
+
+msgid "Every bounded face is a cycle of edges enclosing an interior region. The exterior face, also called the unbounded face, is the region outside the outermost cycle."
+msgstr ""
+
+msgid "Once an embedding is fixed, each undirected edge has a left and a right side when walked in the direction the embedding assigns around each vertex."
+msgstr ""
+
+msgid "In a connected planar undirected graph, each edge separates exactly two faces, so it contributes one row on the left and one on the right."
+msgstr ""
+
+msgid "``pgr_planarFaces`` returns those incidences: ``face_id`` names the face, ``edge_id`` is the border edge, and ``side`` is ``1`` (left) or ``2`` (right) relative to the embedding."
+msgstr ""
+
+msgid "The function first computes a planar embedding with the Boyer-Myrvold planarity test, then walks faces with Boost ``planar_face_traversal``.i"
+msgstr ""
+
+#, fuzzy
+msgid "Loops and paralell edges are preserved."
+msgstr "Sin auto ciclos ni aristas paralelas."
+
+msgid "They are used to determine the existance of an edge"
+msgstr ""
+
+#, fuzzy
+msgid "Run :doc:`pgr_isPlanar` first"
+msgstr ":doc:`pgr_isPlanar`"
+
+msgid "The result has one row per edge-side pair"
+msgstr ""
+
+msgid "Graph with :math:`|E|` edges yields :math:`2|E|` rows."
+msgstr ""
+
+msgid "Number of faces: * Obeys Euler's formula: :math:`|V| - |E| + |F| = 2` * On a graph with :math:`C` components: :math:`|V| - |E| + |F| = 2C`."
+msgstr ""
+
+#, fuzzy
+msgid "Running time: :math:`O(|E| + |V|)`"
+msgstr "Tiempo de ejecución: :math:`O(E + V)`"
+
+#, fuzzy
+msgid "pgr_planarFaces(`Edges SQL`_)"
+msgstr "pgr_isPlanar(`SQL de aristas`)"
+
+#, fuzzy
+msgid "Returns set of ``(seq, face_id, edge_id, side)``"
+msgstr "Devuelve el conjunto de ``(seq, vertex_id, idom)``"
+
+#, fuzzy
+msgid "Faces of the full :doc:`sampledata` graph"
+msgstr "Circuitos dentro de los :doc:`sampledata` de pgRouting"
+
+msgid "The query returns **36 rows**, twice the **18** edges in ``edges``, consistent with :math:`2|E|`."
+msgstr ""
+
+msgid "``face_id`` runs from **1** through **7** on this network; each id is one face of the embedding, including the unbounded **exterior face** (here ``face_id = 1`` borders the outer layout of the city block)."
+msgstr ""
+
+msgid "Every ``edge_id`` appears **twice**, once with ``side = 1`` and once with ``side = 2``."
+msgstr ""
+
+msgid "Rows follow the counterclockwise walk of each face in the computed embedding."
+msgstr ""
+
+msgid "Have :math:`3` components then number if faces = :math:`17 - 18 + 7 = 6 = 2 \\times 3`."
+msgstr ""
+
+#, fuzzy
+msgid "``face_id``"
+msgstr "``end_id``"
+
+#, fuzzy
+msgid "Identifier of the face in the computed embedding."
+msgstr "Identificador del primer vértice de la arista."
+
+#, fuzzy
+msgid "Identifier of the edge that borders the face."
+msgstr "Identificador del borde que es un puente."
+
+#, fuzzy
+msgid "``1`` when the edge borders the face on the left side."
+msgstr ":math:`-1` cuando la arista no existe en el grafo"
+
+#, fuzzy
+msgid "``2`` when the edge borders the face on the right side."
+msgstr ":math:`-1` cuando la arista no existe en el grafo"
+
+msgid "Non-planar graphs"
+msgstr ""
+
+msgid "Face extraction requires a planar graph. Subgraphs containing a :math:`K_5` or :math:`K_{3,3}` minor cannot be embedded without crossings; ``pgr_planarFaces`` raises ``ERROR: Graph is not planar`` in that case. The :doc:`pgr_isPlanar` documentation shows a non-planar subgraph of ``sampledata`` (edges highlighted in blue in the figure)."
+msgstr ""
+
+#, fuzzy
+msgid "Create a :math:`K_5` graph."
+msgstr "Crear el grafo contraído."
+
+msgid "Test planarity: dont execute when is not planar."
+msgstr ""
+
+msgid "Or get an error: (not shown)"
+msgstr ""
+
+msgid "Planarity of loops"
+msgstr ""
+
+#, fuzzy
+msgid "One loop graph with only one vertex:"
+msgstr "Un componente de grafo con un solo segmento."
+
+#, fuzzy
+msgid "Two loop graph with only one vertex:"
+msgstr "Un componente de grafo con un solo segmento."
+
+#, fuzzy
+msgid "Triangular graphs"
+msgstr "El grafo original:"
+
+msgid "Triangular graph (no duplicate edges)"
+msgstr ""
+
+msgid "Six rows are returned: :math:`2 \\times 3` edges."
+msgstr ""
+
+msgid ":math:`face\\_id = 1` is the interior face."
+msgstr ""
+
+msgid ":math:`face\\_id = 2` is the exterior face. face."
+msgstr ""
+
+msgid "Each edge lists ``1`` on one face and ``2`` on the other."
+msgstr ""
+
+msgid "Triangular graph (duplicate edges)"
+msgstr ""
+
+msgid ":doc:`pgr_isPlanar`"
+msgstr ":doc:`pgr_isPlanar`"
+
+#, fuzzy
+msgid "Boost Graph Library: `Planar Face Traversal <https://www.boost.org/libs/graph/doc/planar_face_traversal.html>`__"
+msgstr "`Boost: Búsqueda A* <https://www.boost.org/libs/graph/doc/astar_search.html>`__"
+
+#, fuzzy
+msgid "Boost Graph Library: `Boost: Boyer Myrvold planarity <https://www.boost.org/libs/graph/doc/boyer_myrvold.html>`__"
+msgstr "`Boost: Boyer Myrvold <https://www.boost.org/libs/graph/doc/boyer_myrvold.html>`__"
+
+#, fuzzy
+msgid "Wikipedia: `Planar graph <https://en.wikipedia.org/wiki/Planar_graph>`__"
+msgstr "wikipedia: `Grafo lineal <https://en.wikipedia.org/wiki/Line_graph>`__"
+
+msgid "Boyer, J. M. and Myrvold, W. J. (2004). On the Cutting Edge: Simplified O(n) Planarity Algorithms by Edge Addition. Journal of Graph Algorithms and Applications, 8(3), 241-273."
 msgstr ""
 
 msgid "``pgr_prim``"
@@ -12806,6 +13454,10 @@ msgstr ""
 msgid "All this examples are about the route that visits the vertices :math:`\\{-1, 7, -3, 16, 15\\}` in that order on a **directed** graph."
 msgstr ""
 
+#, fuzzy
+msgid "Planar - Family of functions"
+msgstr "Prim - Familia de funciones"
+
 msgid "Prim - Family of functions"
 msgstr "Prim - Familia de funciones"
 
@@ -12856,12 +13508,50 @@ msgid "pgRouting 4.0"
 msgstr "pgRouting 4.0"
 
 #, fuzzy
+msgid "pgRouting 4.0.2 Release Notes"
+msgstr "Notas de la versión 3.0.1 de pgRouting"
+
+#, fuzzy
+msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.2%22>`__"
+msgstr "Para ver todos los problemas y solicitudes de extracción cerrados para ésta versión, consulte la `Github milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
+
+msgid "4.0.2 Summary of changes by function"
+msgstr ""
+
+msgid "pgr_dijkstraVia"
+msgstr "pgr_dijkstraVia"
+
+msgid "pgr_drivingDistance"
+msgstr "pgr_drivingDistance"
+
+msgid "pgr_withPointsDD"
+msgstr "pgr_withPointsDD"
+
+msgid "pgr_withPointsVia"
+msgstr "pgr_withPointsVia"
+
+#, fuzzy
+msgid "4.0.2 Bug Fixes"
+msgstr "Corrección de errores"
+
+#, fuzzy
+msgid "`#3110 <https://github.com/pgRouting/pgrouting/issues/3110>`__: pgr_dijkstraVia throws std::bad_alloc when a node does not exist"
+msgstr "`#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: pgr_withPoints falla cuando points_sql está vacía"
+
+#, fuzzy
+msgid "`#3091 <https://github.com/pgRouting/pgrouting/issues/3091>`__: Catchment functions when negative distance do not have a standardized behaviour"
+msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_kingOrdering"
+
+#, fuzzy
 msgid "pgRouting 4.0.1 Release Notes"
 msgstr "Notas de la versión 3.0.1 de pgRouting"
 
 #, fuzzy
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.1%22>`__"
 msgstr "Para ver todos los problemas y solicitudes de extracción cerrados para ésta versión, consulte la `Github milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
+
+msgid "Bug Fixes"
+msgstr "Corrección de errores"
 
 #, fuzzy
 msgid "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withPoints does not pick optimal route when fraction = 1"
@@ -12874,6 +13564,9 @@ msgstr "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__: pgr_tran
 #, fuzzy
 msgid "`#3010 <https://github.com/pgRouting/pgrouting/issues/3010>`__: Performance issue with pgr_separateTouching()"
 msgstr "`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: pgr_degree"
+
+msgid "Code enhancements"
+msgstr "Mejoras del código"
 
 #, fuzzy
 msgid "`#3044 <https://github.com/pgRouting/pgrouting/issues/3044>`__: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions"
@@ -12992,6 +13685,9 @@ msgstr ""
 msgid "To not build Doxygen documentation: `-DBUILD_DOXY=OFF`"
 msgstr ""
 
+msgid "Summary of changes by function"
+msgstr ""
+
 msgid "pgr_aStar"
 msgstr "pgr_aStar"
 
@@ -13051,9 +13747,6 @@ msgstr "pgr_dijkstraNear"
 
 msgid "pgr_dijkstraNearCost"
 msgstr "pgr_dijkstraNearCost"
-
-msgid "pgr_dijkstraVia"
-msgstr "pgr_dijkstraVia"
 
 msgid "pgr_edgeDisjointPaths"
 msgstr "pgr_edgeDisjointPaths"
@@ -13121,14 +13814,8 @@ msgstr "pgr_withPointsCost"
 msgid "pgr_withPointsCostMatrix"
 msgstr "pgr_withPointsCostMatrix"
 
-msgid "pgr_withPointsDD"
-msgstr "pgr_withPointsDD"
-
 msgid "pgr_withPointsKSP"
 msgstr "pgr_withPointsKSP"
-
-msgid "pgr_withPointsVia"
-msgstr "pgr_withPointsVia"
 
 msgid "Functions promoted to official"
 msgstr "Funciones promovidas a oficial"
@@ -15025,9 +15712,6 @@ msgstr "pgr_alphashape"
 msgid "pgr_dijkstraCostMatrix"
 msgstr "pgr_dijkstraCostMatrix"
 
-msgid "pgr_drivingDistance"
-msgstr "pgr_drivingDistance"
-
 msgid "pgr_dijkstraVia (proposed)"
 msgstr "pgr_dijkstraVia (proposed)"
 
@@ -16504,6 +17188,17 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#, fuzzy
+#~ msgid "Planar"
+#~ msgstr "pgr_isPlanar"
+
+#, fuzzy
+#~ msgid ":doc:`pgr_isPlanar` - Returns whether the graph is planar."
+#~ msgstr "`true` cuando el grafo es planar."
+
+#~ msgid "Planar Family"
+#~ msgstr "Familia Planar"
 
 #~ msgid "pgRouting 4.0.0-alpha1 Release Notes"
 #~ msgstr "Notas de la versión de pgRouting 4.0.0-alpha1"
