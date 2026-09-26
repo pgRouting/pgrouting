@@ -129,7 +129,9 @@ do_ordering(
         UndirectedGraph undigraph = vertices.empty()? UndirectedGraph() : UndirectedGraph(vertices);
         DirectedGraph digraph;
         UndirectedHasCostBG wgraph;
-        UndirectedNoCostsBG bgraph = (which == MAXCARDINALITYMATCH)? UndirectedNoCostsBG(bedges) :  UndirectedNoCostsBG(std::vector<Edge_bool_t>());
+        UndirectedNoCostsBG bgraph = (which == MAXCARDINALITYMATCH)?
+            UndirectedNoCostsBG(bedges)
+            :  UndirectedNoCostsBG(std::vector<Edge_bool_t>());
 
         std::vector<typename UndirectedGraph::V> undi_results;
         std::vector<typename DirectedGraph::V> di_results;
