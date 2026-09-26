@@ -52,12 +52,6 @@ To see all issues & pull requests closed by this release see the
      :start-after: Version 4.1.0
      :end-before: .. rubric
 
-* pgr_maxWeightedMatch
-
-  .. include:: pgr_maxWeightedMatch.rst
-     :start-after: Version 4.1.0
-     :end-before: Description
-
 * pgr_makeBiconnectedPlanar
 
   .. include:: pgr_makeBiconnectedPlanar.rst
