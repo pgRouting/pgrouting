@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-22 09:09+0000\n"
+"POT-Creation-Date: 2026-09-26 04:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3969,10 +3969,17 @@ msgid "pgr_makeBiconnectedPlanar"
 msgstr "pgr_makeConnected"
 
 #, fuzzy
+msgid "pgr_maxWeightedMatch"
+msgstr "pgr_maximumcardinalitymatching"
+
+#, fuzzy
 msgid "pgr_planarFaces"
 msgstr "pgr_isPlanar"
 
 msgid "4.1.0 New experimental functions."
+msgstr ""
+
+msgid "issue:3136"
 msgstr ""
 
 msgid "4.1.0 Code enhancements"
@@ -4069,31 +4076,6 @@ msgstr ""
 msgid ""
 "`#3101 <https://github.com/pgRouting/pgrouting/issues/3101>`__: "
 "pgr_edgeColoring not building graph correctly"
-msgstr ""
-
-msgid "New experimental functions."
-msgstr ""
-
-msgid "Flow"
-msgstr ""
-
-msgid "issue:3136"
-msgstr ""
-
-#, fuzzy
-msgid "pgr_maxWeightedMatch"
-msgstr "pgr_maximumcardinalitymatching"
-
-msgid "Summary of changes by function"
-msgstr ""
-
-msgid "New experimental function."
-msgstr ""
-
-msgid "pgr_edgeColoring"
-msgstr "pgr_edgeColoring"
-
-msgid "Fix the way it builds the graph"
 msgstr ""
 
 msgid "All releases"
@@ -6580,6 +6562,9 @@ msgid "``y2``"
 msgstr "``y2``"
 
 msgid "Y coordinate of ``target`` vertex."
+msgstr ""
+
+msgid "Flow"
 msgstr ""
 
 msgid "Edges SQL for :doc:`flow-family`"
@@ -13748,8 +13733,7 @@ msgid "``pgr_maxWeightedMatch`` - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_maxWeightedMatch`` — Calculates a maximum weighted matching in a "
-"graph."
+"``pgr_maxWeightedMatch`` — Calculates a maximum weighted matching in a graph."
 msgstr ""
 
 msgid ""
@@ -13783,11 +13767,9 @@ msgstr ""
 msgid "Running time: :math:`O(n^3)` where :math:`n` is the number of vertices."
 msgstr ""
 
-msgid "pgr_maxWeightedMatch(`Edges SQL`_, ``directed``)"
-msgstr ""
-
-msgid "Ignored. The matching algorithm always works on **undirected** graphs."
-msgstr ""
+#, fuzzy
+msgid "pgr_maxWeightedMatch(`Edges SQL`_)"
+msgstr "pgr_maximumcardinalitymatching"
 
 msgid "Identifier of the first end point vertex of the matched edge."
 msgstr ""
@@ -16407,6 +16389,9 @@ msgstr ""
 msgid ""
 "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: "
 "pgr_pushRelabel(Combinations)"
+msgstr ""
+
+msgid "New experimental functions."
 msgstr ""
 
 msgid "Metrics"
