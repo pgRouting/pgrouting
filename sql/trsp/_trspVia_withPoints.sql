@@ -53,7 +53,7 @@ CREATE FUNCTION _pgr_trspVia_withPoints_v4(
   OUT agg_cost FLOAT,
   OUT route_agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
+'MODULE_PATHNAME', '_pgr_trspvia_withpoints_v5'
 LANGUAGE C VOLATILE STRICT
 COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
