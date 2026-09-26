@@ -173,13 +173,14 @@ void vector_to_tuple(
     tuples = pgrouting::pgr_alloc(tupcount, (tuples));
 
     size_t seq = 0;
+    constexpr double kDirectedCostFactor{2.0};
     for (typename G::V v_i = 0; v_i < graph.num_vertices(); ++v_i) {
         (tuples)[seq].from_vid = graph[v_i].id;
         /*
          * These 2 lines are specifically for pgr_betweennessCentrality
          */
         (tuples)[seq].to_vid = 0;
-        (tuples)[seq].cost = graph.is_directed()? results[v_i] / 2.0 : results[v_i];
+        (tuples)[seq].cost = graph.is_directed()? results[v_i] / kDirectedCostFactor : results[v_i];
         seq++;
     }
 }

@@ -171,9 +171,10 @@ Dmatrix::obeys_triangle_inequality() const {
 
 bool
 Dmatrix::is_symmetric() const {
+    constexpr double kTolerance{1e-6};
     for (size_t i = 0; i < costs.size(); ++i) {
         for (size_t j = 0; j < costs.size(); ++j) {
-            if (0.000001 < std::fabs(costs[i][j] - costs[j][i])) {
+            if (kTolerance < std::fabs(costs[i][j] - costs[j][i])) {
                 std::ostringstream log;
                 log << "i \t" << i
                     << "j \t" << j

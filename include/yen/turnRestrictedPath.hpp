@@ -254,15 +254,13 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
 
  private:
      std::vector<pgrouting::trsp::Rule> m_restrictions;
-     bool m_strict;
+     bool m_strict {false};
      pSet m_solutions;
-     bool m_stop_on_first;
-     bool m_heap_paths;
+     bool m_stop_on_first {false};
+     bool m_heap_paths {false};
 };
 
 }  // namespace yen
 }  // namespace pgrouting
-
-
 
 #endif  // INCLUDE_YEN_TURNRESTRICTEDPATH_HPP_

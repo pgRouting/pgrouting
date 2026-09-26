@@ -166,7 +166,7 @@ void
 UndirectedHasCostBG::insert_vertex(int64_t id) {
     try {
         if (has_vertex(id)) return;
-        auto v = add_vertex(m_id_to_V.size(), m_graph);
+        auto v = add_vertex(static_cast<int>(m_id_to_V.size()), m_graph);
         m_id_to_V.insert(std::make_pair(id, v));
         m_V_to_id.insert(std::make_pair(v, id));
     } catch (...) {

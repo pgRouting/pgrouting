@@ -78,7 +78,7 @@ struct FaceVisitor : public boost::planar_face_traversal_visitor {
         /* loops: orientation is undefined, keep the visit order */
         int side = (s == t) ? n : (s == m_current ? 1 : 2);
 
-        IID_t_rt row;
+        IID_t_rt row{};
         row.from_vid = face_id;
         row.to_vid   = m_graph.graph[e].id;
         row.cost     = side;

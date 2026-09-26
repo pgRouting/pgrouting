@@ -146,7 +146,7 @@ Vehicle::get_postgres_result(
             /* order_id
              * The order_id is invalid for stops type 0 and 5
              */
-            (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.order(),
+            (p_stop.type() == Tw_node::kStart || p_stop.type() == Tw_node::kEnd)? -1 : p_stop.order(),
             p_stop.id(),
             p_stop.type(),
             p_stop.cargo(),
