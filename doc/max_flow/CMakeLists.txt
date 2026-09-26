@@ -11,7 +11,7 @@ set(LOCAL_FILES
     pgr_maxCardinalityMatch.rst
     pgr_pushRelabel.rst
     pgr_maxFlowMinCost.rst
-    pgr_maxWeightedMatching.rst
+    pgr_maxWeightedMatch.rst
     # TODO rename
     pgr_maxFlowMinCost_Cost.rst
     )

@@ -25,7 +25,7 @@ DECLARE
 BEGIN
     IF NOT min_lib_version('4.1.0') THEN
         RETURN QUERY
-        SELECT skip(1, 'pgr_maxWeightedMatching is new on 4.1.0');
+        SELECT skip(1, 'pgr_maxWeightedMatch is new on 4.1.0');
         RETURN;
     END IF;
 
@@ -42,13 +42,13 @@ BEGIN
     RETURN QUERY
     SELECT *
     FROM no_crash_test(
-        'pgr_maxWeightedMatching',
+        'pgr_maxWeightedMatch',
         params,
         subs);
 
     RETURN QUERY
     SELECT throw_on_empty_edges_sql(
-        'pgr_maxWeightedMatching',
+        'pgr_maxWeightedMatch',
         ', false');
 
 END

@@ -68,11 +68,11 @@ To see all issues & pull requests closed by this release see the
 
 * Flow
 
-  * :issue:3136: pgr_maxWeightedMatching
+  * :issue:3136: pgr_maxWeightedMatch
 
 **Summary of changes by function**
 
-* pgr_maxWeightedMatching
+* pgr_maxWeightedMatch
 
   * New experimental function.
 

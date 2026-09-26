@@ -33,10 +33,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/iid_t_rt.h"
 #include "process/allpairs_process.h"
 
-PGDLLEXPORT Datum _pgr_maxweightedmatching(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_maxweightedmatching);
+PGDLLEXPORT Datum _pgr_maxweightedmatch(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_maxweightedmatch);
 
-PGDLLEXPORT Datum _pgr_maxweightedmatching(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_maxweightedmatch(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     TupleDesc        tuple_desc;
 

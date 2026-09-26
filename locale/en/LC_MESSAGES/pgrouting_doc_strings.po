@@ -3365,7 +3365,7 @@ msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
 msgstr ""
 
 msgid ""
-":doc:`pgr_maxWeightedMatching` - Calculates a maximum weighted matching in a "
+":doc:`pgr_maxWeightedMatch` - Calculates a maximum weighted matching in a "
 "graph."
 msgstr ""
 
@@ -4081,7 +4081,7 @@ msgid "issue:3136"
 msgstr ""
 
 #, fuzzy
-msgid "pgr_maxWeightedMatching"
+msgid "pgr_maxWeightedMatch"
 msgstr "pgr_maximumcardinalitymatching"
 
 msgid "Summary of changes by function"
@@ -13744,11 +13744,11 @@ msgstr ""
 msgid "Minimum Cost Maximum Flow possible from the source(s) to the target(s)"
 msgstr ""
 
-msgid "``pgr_maxWeightedMatching`` - Experimental"
+msgid "``pgr_maxWeightedMatch`` - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_maxWeightedMatching`` — Calculates a maximum weighted matching in a "
+"``pgr_maxWeightedMatch`` — Calculates a maximum weighted matching in a "
 "graph."
 msgstr ""
 
@@ -13783,7 +13783,7 @@ msgstr ""
 msgid "Running time: :math:`O(n^3)` where :math:`n` is the number of vertices."
 msgstr ""
 
-msgid "pgr_maxWeightedMatching(`Edges SQL`_, ``directed``)"
+msgid "pgr_maxWeightedMatch(`Edges SQL`_, ``directed``)"
 msgstr ""
 
 msgid "Ignored. The matching algorithm always works on **undirected** graphs."

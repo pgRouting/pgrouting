@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 --v4.1
-CREATE FUNCTION _pgr_maxWeightedMatching(
+CREATE FUNCTION _pgr_maxWeightedMatch(
     edges_sql TEXT,
 
     OUT start_vid  BIGINT,
@@ -38,5 +38,5 @@ RETURNS SETOF RECORD AS
 LANGUAGE C VOLATILE STRICT
 COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
-COMMENT ON FUNCTION _pgr_maxWeightedMatching(TEXT)
+COMMENT ON FUNCTION _pgr_maxWeightedMatch(TEXT)
 IS 'pgRouting internal function';

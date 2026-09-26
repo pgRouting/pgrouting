@@ -58,9 +58,9 @@ To see all issues & pull requests closed by this release see the
      :start-after: Version 4.1.0
      :end-before: Description
 
-* pgr_maxWeightedMatching
+* pgr_maxWeightedMatch
 
-  .. include:: pgr_maxWeightedMatching.rst
+  .. include:: pgr_maxWeightedMatch.rst
      :start-after: Version 4.1.0
      :end-before: Description
 
@@ -75,7 +75,7 @@ To see all issues & pull requests closed by this release see the
 
 * pgr_coreNumbers
 * pgr_makeBiconnectedPlanar
-* :issue:3136: pgr_maxWeightedMatching
+* :issue:3136: pgr_maxWeightedMatch
 * pgr_planarFaces
 
 4.1.0 Code enhancements

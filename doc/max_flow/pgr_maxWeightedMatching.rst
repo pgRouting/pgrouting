@@ -3,15 +3,15 @@
 :license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0
 
 .. index::
-   single: Flow Family ; pgr_maxWeightedMatching - Experimental
-   single: maxWeightedMatching - Experimental on v4.1
+   single: Flow Family ; pgr_maxWeightedMatch - Experimental
+   single: maxWeightedMatch - Experimental on v4.1
 
 |
 
-``pgr_maxWeightedMatching`` - Experimental
+``pgr_maxWeightedMatch`` - Experimental
 ===============================================================================
 
-``pgr_maxWeightedMatching`` — Calculates a maximum weighted matching in a graph.
+``pgr_maxWeightedMatch`` — Calculates a maximum weighted matching in a graph.
 
 .. include:: experimental.rst
    :start-after: warning-begin
@@ -64,14 +64,14 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_maxWeightedMatching(`Edges SQL`_, ``directed``)
+   | pgr_maxWeightedMatch(`Edges SQL`_, ``directed``)
 
    | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: Using all edges.
 
-.. literalinclude:: maxWeightedMatching.queries
+.. literalinclude:: maxWeightedMatch.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -160,7 +160,7 @@ Additional Examples
 
 :Example: Maximum weighted matching on a custom 5-vertex graph.
 
-.. literalinclude:: maxWeightedMatching.queries
+.. literalinclude:: maxWeightedMatch.queries
    :start-after: -- q2
    :end-before: -- q4
 

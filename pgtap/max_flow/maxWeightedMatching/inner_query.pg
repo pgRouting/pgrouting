@@ -15,12 +15,12 @@ $BODY$
 BEGIN
 
 IF NOT min_lib_version('4.1.0') THEN
-  RETURN QUERY SELECT skip(1, 'pgr_maxWeightedMatching is new on 4.1.0');
+  RETURN QUERY SELECT skip(1, 'pgr_maxWeightedMatch is new on 4.1.0');
   RETURN;
 END IF;
 
 RETURN QUERY
-SELECT style_dijkstra('pgr_maxWeightedMatching(', ', false)');
+SELECT style_dijkstra('pgr_maxWeightedMatch(', ', false)');
 
 END;
 $BODY$

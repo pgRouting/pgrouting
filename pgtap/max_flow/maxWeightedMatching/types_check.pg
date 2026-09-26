@@ -13,32 +13,32 @@ $BODY$
 BEGIN
 
   IF NOT min_lib_version('4.1.0') THEN
-    RETURN QUERY SELECT skip(1, 'pgr_maxWeightedMatching: Function is new on 4.1.0');
+    RETURN QUERY SELECT skip(1, 'pgr_maxWeightedMatch: Function is new on 4.1.0');
     RETURN;
   END IF;
 
-  RETURN QUERY SELECT has_function('pgr_maxweightedmatching');
+  RETURN QUERY SELECT has_function('pgr_maxweightedmatch');
 
   RETURN QUERY
   SELECT has_function(
-      'pgr_maxweightedmatching',
+      'pgr_maxweightedmatch',
       ARRAY['text', 'boolean']);
 
   RETURN QUERY
   SELECT function_returns(
-      'pgr_maxweightedmatching',
+      'pgr_maxweightedmatch',
       ARRAY['text', 'boolean'],
       'setof record');
 
   RETURN QUERY
 SELECT function_args_eq(
-    'pgr_maxweightedmatching',
+    'pgr_maxweightedmatch',
     $$SELECT '{"", "", start_vid, end_vid, agg_cost}'::TEXT[]$$
   );
 
   RETURN QUERY
   SELECT function_types_eq(
-      'pgr_maxweightedmatching',
+      'pgr_maxweightedmatch',
       $$VALUES
       ('{text,bool,int8,int8,float8}'::TEXT[])
       $$

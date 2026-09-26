@@ -36,7 +36,7 @@ Flow - Family of functions
 
 * :doc:`pgr_maxFlowMinCost` - Details of flow and cost on edges.
 * :doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation.
-* :doc:`pgr_maxWeightedMatching` - Calculates a maximum weighted matching in a
+* :doc:`pgr_maxWeightedMatch` - Calculates a maximum weighted matching in a
   graph.
 
 .. experimental-end
@@ -52,7 +52,7 @@ Flow - Family of functions
     pgr_maxCardinalityMatch
     pgr_maxFlowMinCost
     pgr_maxFlowMinCost_Cost
-    pgr_maxWeightedMatching
+    pgr_maxWeightedMatch
 
 
 Flow Functions General Information
