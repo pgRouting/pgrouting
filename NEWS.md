@@ -12,6 +12,20 @@ To read all history of releases go to the latest [release notes](https://docs.pg
 To see all issues & pull requests closed by this release see the
 [#4.1.0](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22)
 
+4.1.0 Build
+
+* PostgreSQL:
+
+  Minimum requirement: 14
+
+*  library:
+
+  Minimum requirement: 1.74
+
+* cmake:
+
+  Minimum requirement: 3.22
+
 4.1.0 Summary of changes by function
 
 * pgr_coreNumbers
@@ -63,6 +77,11 @@ To see all issues & pull requests closed by this release see the
 4.1.0 Bug Fixes
 
 * [#3101](https://github.com/pgRouting/pgrouting/issues/3101): pgr_edgeColoring not building graph correctly
+
+4.1.0 Requirements
+
+* [#3120](https://github.com/pgRouting/pgrouting/issues/3120): Up min requirements:  to 1.74 Postgres to 14 cmake to
+  3.22.
 
 ## pgRouting 4.0
 
@@ -135,7 +154,7 @@ To see all issues & pull requests closed by this release see the
 [#4.0.0](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22)
 
 
-Build
+4.0.0 Build
 
 * C++ standard is std17
 
