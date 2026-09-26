@@ -42,17 +42,7 @@ The main characteristics are:
 
   - Calculates one possible maximum weighted matching in a graph.
 
-- Returns the matched pairs of vertices in the form of a set of
-  `(start_vid, end_vid, agg_cost)`.
-
-  - `start_vid` and `end_vid` are the endpoints of the matched edge.
-  - `agg_cost` is the weight of the matched edge.
-
-- For the undirected graph, the results are symmetric.
-
-  - The `agg_cost` of `(u, v)` is the same as for `(v, u)`.
-
-- Running time: :math:`O(n^3)` where :math:`n` is the number of vertices.
+- Running time: :math:`O(V^3)`.
 
 |Boost| Boost Graph Inside
 
@@ -66,7 +56,7 @@ Signatures
 
    | pgr_maxWeightedMatch(`Edges SQL`_)
 
-   | Returns set of |matrix-result|
+   | Returns set of |result-edge|
    | OR EMPTY SET
 
 :Example: Using all edges.
@@ -79,8 +69,8 @@ Parameters
 -------------------------------------------------------------------------------
 
 .. include:: allpairs-family.rst
-    :start-after: edges_start
-    :end-before: edges_end
+   :start-after: edges_start
+   :end-before: edges_end
 
 Inner Queries
 -------------------------------------------------------------------------------
@@ -89,31 +79,18 @@ Edges SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
 
 Result columns
 -------------------------------------------------------------------------------
 
-Set of |matrix-result|
+Set of |result-edge|
 
-.. list-table::
-   :width: 81
-   :widths: 12 14 60
-   :header-rows: 1
+.. include:: pgr_maxCardinalityMatch.rst
+   :start-after: only_edge start
+   :end-before: only_edge end
 
-   * - Column
-     - Type
-     - Description
-   * - ``start_vid``
-     - ``BIGINT``
-     - Identifier of the first end point vertex of the matched edge.
-   * - ``end_vid``
-     - ``BIGINT``
-     - Identifier of the second end point vertex of the matched edge.
-   * - ``agg_cost``
-     - ``FLOAT``
-     - Weight of the matched edge.
 
 Additional Examples
 -------------------------------------------------------------------------------
