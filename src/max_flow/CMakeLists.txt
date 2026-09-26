@@ -12,7 +12,6 @@ ADD_LIBRARY(max_flow OBJECT
     # driver & process files
     maxFlow_driver.cpp
     maxFlow_process.cpp
-    maximum_cardinality_matching_driver.cpp
     minCostMaxFlow_driver.cpp
 
 
