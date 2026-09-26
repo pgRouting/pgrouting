@@ -28,12 +28,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 --v4.1
 CREATE FUNCTION _pgr_maxWeightedMatch(
-    edges_sql TEXT,
-
-    OUT start_vid  BIGINT,
-    OUT end_vid    BIGINT,
-    OUT agg_cost   FLOAT)
-RETURNS SETOF RECORD AS
+    TEXT,
+    OUT edge BIGINT)
+RETURNS SETOF BIGINT AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT
 COST ${COST_HIGH} ROWS ${ROWS_HIGH};

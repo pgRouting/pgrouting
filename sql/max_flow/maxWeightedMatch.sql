@@ -29,13 +29,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --v4.1
 CREATE FUNCTION pgr_maxWeightedMatch(
     TEXT,    -- edges_sql (required)
-
-    OUT start_vid  BIGINT,
-    OUT end_vid    BIGINT,
-    OUT agg_cost   FLOAT)
-RETURNS SETOF RECORD AS
+    OUT edge BIGINT)
+RETURNS SETOF BIGINT AS
 $BODY$
-    SELECT start_vid, end_vid, agg_cost
+    SELECT edge
     FROM _pgr_maxWeightedMatch(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
