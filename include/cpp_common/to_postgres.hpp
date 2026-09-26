@@ -86,6 +86,11 @@ get_tuples(const std::vector<II_t_rt>&, II_t_rt*&);
 size_t
 get_tuples(std::vector<std::vector<int64_t>>&, II_t_rt*&);
 
+/**
+ * @brief get tuples for IID_t_rt
+ */
+size_t
+get_tuples(const std::vector<IID_t_rt>&, IID_t_rt*&);
 
 /**
  * @brief get tuples for spanning tree driver
@@ -151,8 +156,8 @@ void get_vertexId(
  *
  * @param[in] graph Created graph with the base Graph
  * @param[in] results results[i] -> the ith element of the vector contains the results
- * @param[out] result_count The size of the vector
- * @param[out] result_tuples The C array of <bigint, bigint, float>
+ * @param[out] tupcount The size of the vector
+ * @param[out] tuples The C array of <bigint, bigint, float>
  *
  * <bigint, bigint, float> =  < i , 0, results[i] >
  *
@@ -162,19 +167,20 @@ template <class G>
 void vector_to_tuple(
             const G &graph,
             const std::vector<double> results,
-            size_t &result_count,
-            IID_t_rt **result_tuples) {
-    result_count = results.size();
-    *result_tuples = pgrouting::pgr_alloc(result_count, (*result_tuples));
+            size_t &tupcount,
+            IID_t_rt *&tuples) {
+    tupcount = results.size();
+    tuples = pgrouting::pgr_alloc(tupcount, (tuples));
 
     size_t seq = 0;
+    constexpr double kDirectedCostFactor{2.0};
     for (typename G::V v_i = 0; v_i < graph.num_vertices(); ++v_i) {
-        (*result_tuples)[seq].from_vid = graph[v_i].id;
+        (tuples)[seq].from_vid = graph[v_i].id;
         /*
          * These 2 lines are specifically for pgr_betweennessCentrality
          */
-        (*result_tuples)[seq].to_vid = 0;
-        (*result_tuples)[seq].cost = graph.is_directed()? results[v_i] / 2.0 : results[v_i];
+        (tuples)[seq].to_vid = 0;
+        (tuples)[seq].cost = graph.is_directed()? results[v_i] / kDirectedCostFactor : results[v_i];
         seq++;
     }
 }

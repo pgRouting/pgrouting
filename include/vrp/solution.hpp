@@ -46,7 +46,7 @@ class Solution {
     friend class Optimize;
     friend class PD_problem;
  protected:
-     double EPSILON{0.0001};
+     static constexpr double EPSILON{1e-4};
      std::deque<Vehicle_pickDeliver> fleet;
 
      /* this solution belongs to this problem*/

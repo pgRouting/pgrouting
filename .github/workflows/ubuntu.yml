@@ -3,14 +3,30 @@ name: Build for Ubuntu
 # Copyright (c) 2020-2026 pgRouting developers
 # License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 
-# manually triggered workflow
-# - 5 * 2 * 2 = 20 jobs are triggered
-# - So many jobs take too much time
-# When this file changes
+# Test is done on:
+# - ubuntu available on actions
+# - postgres not in EOL at time of release
+# - postgis 3
+# - boost
+#   - 1.92 Latest version at time of release
+#   - 1.74 Min requirement
+# - Debug & Release
 
 on:
   workflow_dispatch:
   push:
+    paths:
+      - '.github/workflows/ubuntu.yml'
+      - 'src/**'
+      - 'include/**'
+      - 'pgtap/**'
+      - 'tools/testers/**'
+      - 'CMakeLists.txt'
+
+    branches-ignore:
+      - 'gh-pages'
+
+  pull_request:
     paths:
       - '.github/workflows/ubuntu.yml'
       - 'src/**'
@@ -37,10 +53,11 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          psql: [13, 14, 15, 16, 17, 18]
+          psql: [14, 15, 16, 17, 18]
           postgis: [3]
           release: [Debug, Release]
-          os: [ubuntu-latest, ubuntu-22.04]
+          boost_minor: [74, 92]
+          os: [ubuntu-latest, ubuntu-26.04, ubuntu-22.04]
 
     steps:
       - uses: actions/checkout@v6
@@ -65,7 +82,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            libboost-graph-dev \
             libtap-parser-sourcehandler-pgtap-perl \
             postgresql-${{ matrix.psql }} \
             postgresql-${{ matrix.psql }}-pgtap \
@@ -73,13 +89,18 @@ jobs:
             postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }}-scripts \
             postgresql-server-dev-${{ matrix.psql }}
 
-      - name: Configure for gcc
+          wget https://sourceforge.net/projects/boost/files/boost/1.${{ matrix.boost_minor }}.0/boost_1_${{ matrix.boost_minor }}_0.tar.bz2
+          sudo tar --bzip2 -xf  boost_1_${{ matrix.boost_minor }}_0.tar.bz2
+          sudo mv boost_1_${{ matrix.boost_minor }}_0/boost /usr/include/
+
+      - name: Configure
         run: |
           export PATH=/usr/lib/postgresql/${{ matrix.psql }}/bin:$PATH
           mkdir build
           cd build
           cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} \
-             -DCMAKE_BUILD_TYPE=${{ matrix.release }} -DBUILD_HTML=OFF -DBUILD_DOXY=OFF ..
+             -DBoost_DIR=/usr/include/boost \
+             -DCMAKE_BUILD_TYPE=${{ matrix.release }} ..
 
       - name: Build
         run: |

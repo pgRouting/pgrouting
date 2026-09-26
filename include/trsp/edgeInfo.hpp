@@ -85,8 +85,8 @@ class EdgeInfo {
 
 
  private:
-     Edge_t m_edge;
-     size_t m_edgeIndex;
+     Edge_t m_edge = {};
+     size_t m_edgeIndex = 0;
      std::vector<size_t> m_startConnectedEdge;
      std::vector<size_t> m_endConnectedEdge;
 };

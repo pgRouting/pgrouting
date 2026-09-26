@@ -12,42 +12,7 @@ To read all history of releases go to the latest [release notes](https://docs.pg
 To see all issues & pull requests closed by this release see the
 [#4.1.0](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22)
 
-**Code enhancements**
-
-* [#3049](https://github.com/pgRouting/pgrouting/issues/3049): Use enumeration on drivers and process.
-* [#3054](https://github.com/pgRouting/pgrouting/issues/3054): Change error message when edges_sql is empty
-* [#3055](https://github.com/pgRouting/pgrouting/issues/3055): bdDijkstra: use the shortest_path process and driver
-* [#3056](https://github.com/pgRouting/pgrouting/issues/3056): edwardMoore: use the shortest_path process and driver
-* [#3060](https://github.com/pgRouting/pgrouting/issues/3060): dagShortestPath: use the shortest_path process and driver
-* [#3064](https://github.com/pgRouting/pgrouting/issues/3064): Astar: create and use a process and driver for Astar
-* [#3075](https://github.com/pgRouting/pgrouting/issues/3075): Spanning tree: create and use a process and driver
-* [#3086](https://github.com/pgRouting/pgrouting/issues/3086): MaxFlow: create and use a process and driver
-* [#3089](https://github.com/pgRouting/pgrouting/issues/3089): edgeDisjoint and bellmanFord use shortestPath driver and
-  process
-* [#3100](https://github.com/pgRouting/pgrouting/issues/3100): Coloring: create and use a process & driver
-* [#3111](https://github.com/pgRouting/pgrouting/issues/3111): Via functions: add pred result column
-* [#3113](https://github.com/pgRouting/pgrouting/issues/3113): Components: Integrate into existing process/driver pair
-* [#3129](https://github.com/pgRouting/pgrouting/issues/3129): breadthFirstSearch: Reorganize into traversal
-* [#3131](https://github.com/pgRouting/pgrouting/issues/3131): binaryBreadthFirstSearch: Integrate into existing
-  process/driver pair
-* [#3142](https://github.com/pgRouting/pgrouting/issues/3142):pgr_coreNumbers
-
-**Bug Fixes**
-
-* [#3101](https://github.com/pgRouting/pgrouting/issues/3101): pgr_edgeColoring not building graph correctly
-
-
-**New experimental functions.**
-
-* Planar
-
-  * pgr_makeBiconnectedPlanar
-
-**Summary of changes by function**
-
-* pgr_planarFaces
-
-  * New experimental function.
+4.1.0 Summary of changes by function
 
 * pgr_coreNumbers
 
@@ -61,21 +26,41 @@ To see all issues & pull requests closed by this release see the
 
   * New experimental function.
 
-* pgr_dijkstraVia
+* pgr_planarFaces
 
-  * Added ``pred`` result column.
+  * New experimental function.
 
-* pgr_trspVia
+4.1.0 New experimental functions.
 
-  * Added ``pred`` result column.
+* pgr_coreNumbers
+* pgr_makeBiconnectedPlanar
+* pgr_planarFaces
 
-* pgr_trspVia_withPoints
+4.1.0 Code enhancements
 
-  * Added ``pred`` result column.
+* [#3049](https://github.com/pgRouting/pgrouting/issues/3049): Use enumeration on drivers and process.
+* [#3054](https://github.com/pgRouting/pgrouting/issues/3054): Change error message when edges_sql is empty
+* [#3055](https://github.com/pgRouting/pgrouting/issues/3055): bdDijkstra: use the shortest_path process and driver
+* [#3056](https://github.com/pgRouting/pgrouting/issues/3056): edwardMoore: use the shortest_path process and driver
+* [#3060](https://github.com/pgRouting/pgrouting/issues/3060): dagShortestPath: use the shortest_path process and driver
+* [#3064](https://github.com/pgRouting/pgrouting/issues/3064): Astar: create and use a process and driver for Astar
+* [#3075](https://github.com/pgRouting/pgrouting/issues/3075): Spanning tree: create and use a process and driver
+* [#3086](https://github.com/pgRouting/pgrouting/issues/3086): MaxFlow: create and use a process and driver
+* [#3089](https://github.com/pgRouting/pgrouting/issues/3089): edgeDisjoint and bellmanFord use shortestPath driver and
+  process
+* [#3100](https://github.com/pgRouting/pgrouting/issues/3100): Coloring: create and use a process & driver
+* [#3113](https://github.com/pgRouting/pgrouting/issues/3113): Components: Integrate into existing process/driver pair
+* [#3129](https://github.com/pgRouting/pgrouting/issues/3129): breadthFirstSearch: Reorganize into traversal
+* [#3131](https://github.com/pgRouting/pgrouting/issues/3131): binaryBreadthFirstSearch: Integrate into existing
+  process/driver pair
+* [#3140](https://github.com/pgRouting/pgrouting/issues/3140): New function: pgr_makeBiconnectedPlannar
+* [#3142](https://github.com/pgRouting/pgrouting/issues/3142): New function: pgr_coreNumbers
+* [#3143](https://github.com/pgRouting/pgrouting/issues/3143): New function: pgr_planarFaces
+* [#3154](https://github.com/pgRouting/pgrouting/issues/3154): betweennessCentrality: use allpairs/process and driver
 
-* pgr_withPointsVia
+4.1.0 Bug Fixes
 
-  * Added ``pred`` result column.
+* [#3101](https://github.com/pgRouting/pgrouting/issues/3101): pgr_edgeColoring not building graph correctly
 
 ## pgRouting 4.0
 

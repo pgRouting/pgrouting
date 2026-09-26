@@ -47,6 +47,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace detail {
 
+constexpr int kHeuristicManhattan{5};
+
 template <typename B_G, typename V>
 class distance_heuristic : public boost::astar_heuristic<B_G, double> {
  public:
@@ -84,7 +86,7 @@ class distance_heuristic : public boost::astar_heuristic<B_G, double> {
                  case 4:
                      current = std::sqrt(dx * dx + dy * dy) * m_factor;
                      break;
-                 case 5:
+                 case kHeuristicManhattan:
                      current = (std::fabs(dx) + std::fabs(dy)) * m_factor;
                      break;
                  default:

@@ -76,7 +76,8 @@ void do_astar(
             err << "Empty edges SQL";
             return;
         }
-        if (heuristic > 5 || heuristic < 0) {
+        constexpr int kMaxHeuristic{5};
+        if (heuristic > kMaxHeuristic || heuristic < 0) {
             err << "Unknown heuristic";
             log << "Valid values: 0~5";
             return;

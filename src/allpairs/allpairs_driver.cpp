@@ -36,24 +36,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cstdint>
 
 #include "c_types/iid_t_rt.h"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/pgdata_getters.hpp"
+#include "cpp_common/utilities.hpp"
 #include "cpp_common/to_postgres.hpp"
+
 #include "allpairs/allpairs.hpp"
-
-namespace {
-
-template <typename G, typename Func>
-void
-process(const std::vector<Edge_t> &edges, G &graph, Func funcname,
-        size_t &return_count,
-        IID_t_rt* &return_tuples) {
-    using pgrouting::to_postgres::matrix_to_tuple;
-    graph.insert_edges(edges);
-    auto results = funcname(graph);
-    matrix_to_tuple(graph, results, return_count, return_tuples);
-}
-
-}  // namespace
+#include "metrics/betweennessCentrality.hpp"
+#include "planar/planarFaces.hpp"
 
 namespace pgrouting {
 namespace drivers {
@@ -62,13 +52,17 @@ void
 do_allpairs(
         const std::string &edges_sql,
         bool directed,
+
         Which which,
 
         IID_t_rt* &return_tuples,
         size_t &return_count,
         std::ostringstream &log,
+        std::ostringstream &notice,
         std::ostringstream &err) {
     std::string hint = "";
+    return_tuples = nullptr;
+    return_count = 0;
 
     try {
         if (edges_sql.empty()) {
@@ -78,42 +72,78 @@ do_allpairs(
 
         using pgrouting::pgget::get_edges;
         using pgrouting::to_postgres::matrix_to_tuple;
-        using pgrouting::UndirectedGraph;
+        using pgrouting::to_postgres::vector_to_tuple;
+        using pgrouting::to_postgres::get_tuples;
+
+
         using pgrouting::DirectedGraph;
+        using pgrouting::UndirectedGraph;
 
         using pgrouting::johnson;
         using pgrouting::floydWarshall;
+        using pgrouting::functions::betweennessCentrality;
+        using pgrouting::functions::planarFaces;
 
         hint = edges_sql;
         auto edges = get_edges(edges_sql, true, true);
 
         if (edges.empty()) {
-            err << "No edges found";
+            notice << "No edges found";
             log << edges_sql;
             return;
         }
 
         hint = "";
 
-        DirectedGraph digraph;
         UndirectedGraph undigraph;
+        DirectedGraph digraph;
 
         if (directed) {
-            if (which == JOHNSON) {
-                process(edges, digraph, &johnson<DirectedGraph>, return_count, return_tuples);
-            } else {
-                process(edges, digraph, &floydWarshall<DirectedGraph>, return_count, return_tuples);
+            digraph.insert_edges(edges);
+            switch (which) {
+                case JOHNSON:
+                    matrix_to_tuple(digraph, johnson(digraph), return_count, return_tuples);
+                    break;
+                case FLOYD:
+                    matrix_to_tuple(digraph, floydWarshall(digraph), return_count, return_tuples);
+                    break;
+                case BETWEENCENTRALITY:
+                    vector_to_tuple(digraph, betweennessCentrality(digraph), return_count, return_tuples);
+                    break;
+                default:
+                    err << "allpairs_driver.cpp: Unknown function with name '" << get_name(which)
+                        << "' for directed graph";
+                    return;
             }
         } else {
-            if (which == JOHNSON) {
-                process(edges, undigraph, &johnson<UndirectedGraph>, return_count, return_tuples);
+            if (which == PLANARFACES) {
+                undigraph.insert_cost1_edges(edges);
             } else {
-                process(edges, undigraph, &floydWarshall<UndirectedGraph>, return_count, return_tuples);
+                undigraph.insert_edges(edges);
+            }
+
+            switch (which) {
+                case JOHNSON:
+                    matrix_to_tuple(undigraph, johnson(undigraph), return_count, return_tuples);
+                    break;
+                case FLOYD:
+                    matrix_to_tuple(undigraph, floydWarshall(undigraph), return_count, return_tuples);
+                    break;
+                case BETWEENCENTRALITY:
+                    vector_to_tuple(undigraph, betweennessCentrality(undigraph), return_count, return_tuples);
+                    break;
+                case PLANARFACES:
+                    return_count = get_tuples(planarFaces(undigraph), return_tuples);
+                    break;
+                default:
+                    err << "allpairs_driver.cpp: Unknown function with name '" << get_name(which)
+                        << "' for undirected graph";
+                    return;
             }
         }
 
         if (return_count == 0) {
-            err << "No result generated, report this error\n";
+            notice << "No result found\n";
             return;
         }
     } catch (AssertFailedException &except) {

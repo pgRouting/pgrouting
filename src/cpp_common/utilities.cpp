@@ -56,6 +56,8 @@ get_name(Which which) {
         case JOHNSON:
             return "pgr_johnson";
             break;
+        case BETWEENCENTRALITY:
+            return "pgr_betweennessCentrality";
         case BANDWIDTH:
             return "pgr_bandwidth";
             break;

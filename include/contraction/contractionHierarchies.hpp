@@ -268,14 +268,16 @@ void contractionHierarchies(
                 shortcuts,
                 log,
                 err);
+        bool queue_is_empty = minPQ.empty();
+        int64_t next_min = queue_is_empty? -1 : minPQ.top().first;
         log << "  Vertex: " << graph[ordered_vertex.second].id
             << ", min value of the queue: "
-            << minPQ.top().first << std::endl
+            << next_min << std::endl
             << "  Lazy non-destructive simulation: initial order "
             << ordered_vertex.first << ", new order "
             << corrected_metric << std::endl;
 
-        if (minPQ.top().first < corrected_metric) {
+        if (!queue_is_empty && next_min < corrected_metric) {
             log << "   Vertex reinserted in the queue" << std::endl;
             minPQ.push(
                 std::make_pair(corrected_metric, ordered_vertex.second));

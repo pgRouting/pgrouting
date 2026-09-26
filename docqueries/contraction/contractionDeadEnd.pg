@@ -86,7 +86,7 @@ SELECT * FROM pgr_dijkstra(
 
   UNION
 
-  SELECT id, source, target, cost, reverse_cost FROM contracted_graph',
+  SELECT id, source, target, cost, reverse_cost FROM contracted_graph ORDER BY id',
   1, 17);
 /* -- cg9 */
 SELECT * FROM pgr_dijkstra(

@@ -37,44 +37,8 @@ pgRouting 4.1.0 Release Notes
 To see all issues & pull requests closed by this release see the
 :milestone:`4.1.0`
 
-.. rubric:: Code enhancements
-
-* :issue:`3049`: Use enumeration on drivers and process.
-* :issue:`3054`: Change error message when edges_sql is empty
-* :issue:`3055`: bdDijkstra: use the shortest_path process and driver
-* :issue:`3056`: edwardMoore: use the shortest_path process and driver
-* :issue:`3060`: dagShortestPath: use the shortest_path process and driver
-* :issue:`3064`: Astar: create and use a process and driver for Astar
-* :issue:`3075`: Spanning tree: create and use a process and driver
-* :issue:`3086`: MaxFlow: create and use a process and driver
-* :issue:`3089`: edgeDisjoint and bellmanFord use shortestPath driver and
-  process
-* :issue:`3100`: Coloring: create and use a process & driver
-* :issue:`3111`: Via functions: add pred result column
-* :issue:`3113`: Components: Integrate into existing process/driver pair
-* :issue:`3129`: breadthFirstSearch: Reorganize into traversal
-* :issue:`3131`: binaryBreadthFirstSearch: Integrate into existing
-  process/driver pair
-* :issue:`3142`:pgr_coreNumbers
-
-.. rubric:: Bug Fixes
-
-* :issue:`3101`: pgr_edgeColoring not building graph correctly
-
-
-.. rubric:: New experimental functions.
-
-* Planar
-
-  * pgr_makeBiconnectedPlanar
-
-.. rubric:: Summary of changes by function
-
-* pgr_planarFaces
-
-  .. include:: pgr_planarFaces.rst
-     :start-after: Version 4.1.0
-     :end-before: Description
+4.1.0 Summary of changes by function
+...............................................................................
 
 * pgr_coreNumbers
 
@@ -94,29 +58,46 @@ To see all issues & pull requests closed by this release see the
      :start-after: Version 4.1.0
      :end-before: Description
 
-* pgr_dijkstraVia
+* pgr_planarFaces
 
-  .. include:: pgr_dijkstraVia.rst
+  .. include:: pgr_planarFaces.rst
      :start-after: Version 4.1.0
-     :end-before: .. rubric
+     :end-before: Description
 
-* pgr_trspVia
+4.1.0 New experimental functions.
+...............................................................................
 
-  .. include:: pgr_trspVia.rst
-     :start-after: Version 4.1.0
-     :end-before: .. rubric
+* pgr_coreNumbers
+* pgr_makeBiconnectedPlanar
+* pgr_planarFaces
 
-* pgr_trspVia_withPoints
+4.1.0 Code enhancements
+...............................................................................
 
-  .. include:: pgr_trspVia_withPoints.rst
-     :start-after: Version 4.1.0
-     :end-before: .. rubric
+* :issue:`3049`: Use enumeration on drivers and process.
+* :issue:`3054`: Change error message when edges_sql is empty
+* :issue:`3055`: bdDijkstra: use the shortest_path process and driver
+* :issue:`3056`: edwardMoore: use the shortest_path process and driver
+* :issue:`3060`: dagShortestPath: use the shortest_path process and driver
+* :issue:`3064`: Astar: create and use a process and driver for Astar
+* :issue:`3075`: Spanning tree: create and use a process and driver
+* :issue:`3086`: MaxFlow: create and use a process and driver
+* :issue:`3089`: edgeDisjoint and bellmanFord use shortestPath driver and
+  process
+* :issue:`3100`: Coloring: create and use a process & driver
+* :issue:`3113`: Components: Integrate into existing process/driver pair
+* :issue:`3129`: breadthFirstSearch: Reorganize into traversal
+* :issue:`3131`: binaryBreadthFirstSearch: Integrate into existing
+  process/driver pair
+* :issue:`3140`: New function: pgr_makeBiconnectedPlannar
+* :issue:`3142`: New function: pgr_coreNumbers
+* :issue:`3143`: New function: pgr_planarFaces
+* :issue:`3154`: betweennessCentrality: use allpairs/process and driver
 
-* pgr_withPointsVia
+4.1.0 Bug Fixes
+...............................................................................
 
-  .. include:: pgr_withPointsVia.rst
-     :start-after: Version 4.1.0
-     :end-before: .. rubric
+* :issue:`3101`: pgr_edgeColoring not building graph correctly
 
 pgRouting 4.0
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
