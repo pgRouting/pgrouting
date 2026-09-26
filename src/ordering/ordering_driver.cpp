@@ -40,16 +40,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <cstdint>
 
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/to_postgres.hpp"
 #include "cpp_common/utilities.hpp"
+#include "cpp_common/to_postgres.hpp"
+#include "cpp_common/undirectedHasCostBG.hpp"
 
 #include "ordering/sloanOrdering.hpp"
 #include "ordering/kingOrdering.hpp"
 #include "ordering/cuthillMckeeOrdering.hpp"
 #include "ordering/topologicalSort.hpp"
 #include "components/components.hpp"
-
+#include "max_flow/maximumcardinalitymatching.hpp"
 
 namespace pgrouting {
 namespace drivers {
@@ -58,6 +60,7 @@ void
 do_ordering(
         const std::string &edges_sql,
         bool directed,
+
         Which which,
 
         int64_t *&return_tuples,
@@ -67,6 +70,8 @@ do_ordering(
         std::ostringstream &notice,
         std::ostringstream &err) {
     std::string hint = "";
+    return_tuples = nullptr;
+    return_count = 0;
 
     try {
         if (edges_sql.empty()) {
@@ -75,11 +80,15 @@ do_ordering(
         }
 
         using pgrouting::pgget::get_edges;
+        using pgrouting::pgget::get_basic_edges;
         using pgrouting::to_postgres::get_vertexId;
         using pgrouting::to_postgres::get_identifiers;
 
-        using pgrouting::UndirectedGraph;
+
         using pgrouting::DirectedGraph;
+        using pgrouting::UndirectedGraph;
+        using pgrouting::graph::UndirectedNoCostsBG;
+        using pgrouting::graph::UndirectedHasCostBG;
 
         using pgrouting::functions::sloanOrdering;
         using pgrouting::functions::kingOrdering;
@@ -87,15 +96,19 @@ do_ordering(
         using pgrouting::functions::topologicalSort;
         using pgrouting::algorithms::bridges;
         using pgrouting::algorithms::articulationPoints;
-
+        using pgrouting::flow::maxCardinalityMatch;
 
         hint = edges_sql;
-        auto edges = get_edges(edges_sql, true, false);
-        if (edges.empty()) {
+        auto bedges = (which == MAXCARDINALITYMATCH)? get_basic_edges(edges_sql) : std::vector<Edge_bool_t>();
+        auto edges  = (which != MAXCARDINALITYMATCH)? get_edges(edges_sql, true, false) : std::vector<Edge_t>();
+        auto no_edges = (which == MAXCARDINALITYMATCH)? bedges.empty() : edges.empty();
+
+        if (no_edges) {
             notice << "No edges found";
-            log << hint;
+            log << edges_sql;
             return;
         }
+
         hint = "";
 
 
@@ -112,54 +125,45 @@ do_ordering(
          * SLOAN & KING are for undirected graph
          */
         UndirectedGraph undigraph = vertices.empty()? UndirectedGraph() : UndirectedGraph(vertices);
-        DirectedGraph digraph = DirectedGraph();
+        DirectedGraph digraph;
+        UndirectedNoCostsBG bgraph = (which == MAXCARDINALITYMATCH)? UndirectedNoCostsBG(bedges) :  UndirectedNoCostsBG(std::vector<Edge_bool_t>());
 
         std::vector<typename UndirectedGraph::V> undi_results;
         std::vector<typename DirectedGraph::V> di_results;
-        Identifiers<int64_t> id_results;
 
         if (directed) {
             digraph.insert_edges(edges);
             switch (which) {
                 case TOPOSORT:
-                    {
-                        di_results = topologicalSort(digraph);
-                        break;
-                    }
+                    get_vertexId(digraph, topologicalSort(digraph), return_count, return_tuples);
+                    break;
                 default:
                     err << "ordering_driver.cpp: Unknown function with name '" << get_name(which)
                         << "' for directed graph";
                     return;
             }
-
         } else {
             undigraph.insert_edges(edges);
+
             switch (which) {
                 case SLOAN:
-                    {
-                        undi_results = sloanOrdering(undigraph);
-                        break;
-                    }
+                    get_vertexId(undigraph, sloanOrdering(undigraph), return_count, return_tuples);
+                    break;
                 case CUTCHILL:
-                    {
-                        undi_results = cuthillMckeeOrdering(undigraph);
-                        break;
-                    }
+                    get_vertexId(undigraph, cuthillMckeeOrdering(undigraph), return_count, return_tuples);
+                    break;
                 case KING:
-                    {
-                        undi_results = kingOrdering(undigraph);
-                        break;
-                    }
+                    get_vertexId(undigraph, kingOrdering(undigraph), return_count, return_tuples);
+                    break;
                 case ARTICULATIONPOINTS:
-                    {
-                        id_results = articulationPoints(undigraph);
-                        break;
-                    }
+                    return_count = get_identifiers(articulationPoints(undigraph), return_tuples);
+                    break;
                 case BRIDGES:
-                    {
-                        id_results = bridges(undigraph);
-                        break;
-                    }
+                    return_count = get_identifiers(bridges(undigraph), return_tuples);
+                    break;
+                case MAXCARDINALITYMATCH:
+                    return_count = get_identifiers(maxCardinalityMatch(bgraph), return_tuples);
+                    break;
                 default:
                     err << "ordering_driver.cpp: Unknown function with name '" << get_name(which)
                         << "' for undirected graph";
@@ -167,17 +171,8 @@ do_ordering(
             }
         }
 
-        if (!undi_results.empty()) {
-            get_vertexId(undigraph, undi_results, return_count, return_tuples);
-        } else if (!di_results.empty()) {
-            get_vertexId(digraph, di_results, return_count, return_tuples);
-        } else if (!id_results.empty()) {
-            return_count = get_identifiers(id_results, return_tuples);
-        }
-
         if (return_count == 0) {
             notice << "No results found";
-            return;
         }
     } catch (AssertFailedException &except) {
         err << except.what();
