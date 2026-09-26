@@ -5,14 +5,14 @@
 
 BEGIN;
 
-SELECT CASE WHEN min_lib_version('4.1.0') THEN plan(5) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.1.0') THEN plan(5) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION types_check()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF NOT min_lib_version('4.1.0') THEN
+  IF NOT min_version('4.1.0') THEN
     RETURN QUERY SELECT skip(1, 'pgr_maxWeightedMatch: Function is new on 4.1.0');
     RETURN;
   END IF;
@@ -20,27 +20,20 @@ BEGIN
   RETURN QUERY SELECT has_function('pgr_maxweightedmatch');
 
   RETURN QUERY
-  SELECT has_function(
-      'pgr_maxweightedmatch',
-      ARRAY['text', 'boolean']);
+  SELECT has_function('pgr_maxweightedmatch', ARRAY['text']);
 
   RETURN QUERY
-  SELECT function_returns(
-      'pgr_maxweightedmatch',
-      ARRAY['text', 'boolean'],
-      'setof record');
+  SELECT function_returns('pgr_maxweightedmatch', ARRAY['text'], 'setof record');
 
   RETURN QUERY
-SELECT function_args_eq(
-    'pgr_maxweightedmatch',
-    $$SELECT '{"", "", start_vid, end_vid, agg_cost}'::TEXT[]$$
+  SELECT function_args_eq('pgr_maxweightedmatch',
+    $$SELECT '{"", start_vid, end_vid, agg_cost}'::TEXT[]$$
   );
 
   RETURN QUERY
-  SELECT function_types_eq(
-      'pgr_maxweightedmatch',
+  SELECT function_types_eq('pgr_maxweightedmatch',
       $$VALUES
-      ('{text,bool,int8,int8,float8}'::TEXT[])
+      ('{text,int8,int8,float8}'::TEXT[])
       $$
   );
 

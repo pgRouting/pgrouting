@@ -5,16 +5,10 @@
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_lib_version('4.1.0') THEN plan(7) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.1.0') THEN plan(5) ELSE plan(1) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost FROM edges;
-
-PREPARE null_ret AS
-SELECT id FROM vertices WHERE id IN (-1);
-
-PREPARE null_ret_arr AS
-SELECT array_agg(id) FROM vertices WHERE id IN (-1);
 
 CREATE OR REPLACE FUNCTION no_crash()
 RETURNS SETOF TEXT AS
@@ -23,33 +17,29 @@ DECLARE
     params TEXT[];
     subs TEXT[];
 BEGIN
-    IF NOT min_lib_version('4.1.0') THEN
+    IF NOT min_version('4.1.0') THEN
         RETURN QUERY
         SELECT skip(1, 'pgr_maxWeightedMatch is new on 4.1.0');
         RETURN;
     END IF;
 
     params := ARRAY[
-        '$$SELECT id, source, target, cost, reverse_cost FROM edges$$',
-        'false'
+        '$$SELECT id, source, target, cost, reverse_cost FROM edges$$'
     ]::TEXT[];
 
     subs := ARRAY[
-        'NULL',
         'NULL'
     ]::TEXT[];
 
     RETURN QUERY
-    SELECT *
-    FROM no_crash_test(
-        'pgr_maxWeightedMatch',
-        params,
-        subs);
+    SELECT * FROM no_crash_test('pgr_maxWeightedMatch', params, subs);
+
+    params := ARRAY[
+        '$$edges$$'
+    ]::TEXT[];
 
     RETURN QUERY
-    SELECT throw_on_empty_edges_sql(
-        'pgr_maxWeightedMatch',
-        ', false');
+    SELECT throw_on_empty_edges_sql('pgr_maxWeightedMatch', '');
 
 END
 $BODY$
