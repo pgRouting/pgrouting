@@ -64,6 +64,7 @@ struct planar_visitor {
 
     template <typename Vertex, typename BGraph>
     void visit_vertex_pair(Vertex u, Vertex v, BGraph& g) {
+        CHECK_FOR_INTERRUPTS();
         boost::add_edge(u, v, g);
         m_results.push_back({m_graph[u].id, m_graph[v].id});
     }
@@ -95,7 +96,7 @@ std::vector<II_t_rt> generateMakeMaximalPlanar(G &graph) {
         boost::boyer_myrvold_params::embedding = &embedding[0]);
 
     if (!is_planar) {
-        throw std::string("Graph is not planar");
+        return std::vector<II_t_rt>();
     }
 
     /* Sub-graphs are guaranteed to be connected at this point */
