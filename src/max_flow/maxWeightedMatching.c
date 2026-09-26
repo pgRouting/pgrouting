@@ -31,9 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 
 #include "c_types/iid_t_rt.h"
-#include "c_common/debug_macro.h"
-
-#include "process/maxWeightedMatching_process.h"
+#include "process/allpairs_process.h"
 
 PGDLLEXPORT Datum _pgr_maxweightedmatching(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_maxweightedmatching);
@@ -50,9 +48,10 @@ PGDLLEXPORT Datum _pgr_maxweightedmatching(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        PGR_DBG("Calling process");
-        pgr_process_maxWeightedMatching(
+        pgr_process_allpairs(
             text_to_cstring(PG_GETARG_TEXT_P(0)),
+            false,
+            MAXWEIGHTMATCH,
             &result_tuples,
             &result_count);
 
@@ -70,30 +69,30 @@ PGDLLEXPORT Datum _pgr_maxweightedmatching(PG_FUNCTION_ARGS) {
         MemoryContextSwitchTo(oldcontext);
     }
 
-    funcctx       = SRF_PERCALL_SETUP();
-    tuple_desc    = funcctx->tuple_desc;
-    result_tuples = (IID_t_rt *) funcctx->user_fctx;
+    funcctx            = SRF_PERCALL_SETUP();
+    tuple_desc         = funcctx->tuple_desc;
+    result_tuples      = (IID_t_rt*) funcctx->user_fctx;
+    uint64_t call_cntr = funcctx->call_cntr;
 
-    if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple  tuple;
-        Datum      result;
-        Datum     *values;
-        bool      *nulls;
+    if (call_cntr < funcctx->max_calls) {
+        HeapTuple   tuple;
+        Datum       result;
+        Datum       *values;
+        bool        *nulls;
 
-        size_t numb = 3;
-        values = (Datum *) palloc(numb * sizeof(Datum));
-        nulls  = (bool *)  palloc(numb * sizeof(bool));
-
+        size_t num = 3;
+        values = palloc(num * sizeof(Datum));
+        nulls  = palloc(num * sizeof(bool));
         size_t i;
-        for (i = 0; i < numb; ++i) {
+        for (i = 0; i < num; ++i) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_vid);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].to_vid);
-        values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[0] = Int64GetDatum(result_tuples[call_cntr].from_vid);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].to_vid);
+        values[2] = Float8GetDatum(result_tuples[call_cntr].cost);
 
-        tuple  = heap_form_tuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
