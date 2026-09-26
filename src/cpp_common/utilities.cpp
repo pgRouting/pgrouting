@@ -108,9 +108,9 @@ get_name(Which which) {
             break;
         case BICONNECTEDPLANAR:
             return "pgr_makeBiconnectedPlanar";
-        case MAXWEIGHTEDMATCHING:
-            return "pgr_maxWeightedMatching";
-
+            break;
+        case MAXWEIGHTMATCH:
+            return "pgr_maxWeightedMatch";
         case ARTICULATIONPOINTS:
             return "pgr_articulationPoints";
             break;
@@ -133,7 +133,6 @@ get_name(Which which) {
             return "pgr_planarFaces";
         case CORENUMBERS:
             return "pgr_coreNumbers";
-            break;
         default:
             return "unknown";
             break;
