@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 19:15+0000\n"
+"POT-Creation-Date: 2026-09-26 04:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3364,6 +3364,11 @@ msgstr ""
 msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
 msgstr ""
 
+msgid ""
+":doc:`pgr_maxWeightedMatch` - Calculates a maximum weighted matching in a "
+"graph."
+msgstr ""
+
 msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ""
 
@@ -3964,10 +3969,17 @@ msgid "pgr_makeBiconnectedPlanar"
 msgstr "pgr_makeConnected"
 
 #, fuzzy
+msgid "pgr_maxWeightedMatch"
+msgstr "pgr_maximumcardinalitymatching"
+
+#, fuzzy
 msgid "pgr_planarFaces"
 msgstr "pgr_isPlanar"
 
 msgid "4.1.0 New experimental functions."
+msgstr ""
+
+msgid "issue:3136"
 msgstr ""
 
 msgid "4.1.0 Code enhancements"
@@ -7205,12 +7217,12 @@ msgid ""
 "Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, "
 "Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu "
 "Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko "
-"Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim "
-"Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul "
-"Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith "
-"Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, "
-"Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit "
-"Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+"Nagase, Mayur Galhate, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin "
+"Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mohit "
+"Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, "
+"Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh "
+"Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, "
+"Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -13715,6 +13727,65 @@ msgid "RETURNS FLOAT"
 msgstr ""
 
 msgid "Minimum Cost Maximum Flow possible from the source(s) to the target(s)"
+msgstr ""
+
+msgid "``pgr_maxWeightedMatch`` - Experimental"
+msgstr ""
+
+msgid ""
+"``pgr_maxWeightedMatch`` — Calculates a maximum weighted matching in a graph."
+msgstr ""
+
+msgid ""
+"A **maximum weighted matching** in a graph is a matching where the sum of "
+"the weights of selected edges is maximized."
+msgstr ""
+
+msgid "Each vertex is matched with at most one other vertex."
+msgstr ""
+
+msgid "Maximizes the total edge weight sum."
+msgstr ""
+
+msgid "There may be many maximum weighted matchings."
+msgstr ""
+
+msgid "Calculates one possible maximum weighted matching in a graph."
+msgstr ""
+
+msgid ""
+"Returns the matched pairs of vertices in the form of a set of `(start_vid, "
+"end_vid, agg_cost)`."
+msgstr ""
+
+msgid "`start_vid` and `end_vid` are the endpoints of the matched edge."
+msgstr ""
+
+msgid "`agg_cost` is the weight of the matched edge."
+msgstr ""
+
+msgid "Running time: :math:`O(n^3)` where :math:`n` is the number of vertices."
+msgstr ""
+
+#, fuzzy
+msgid "pgr_maxWeightedMatch(`Edges SQL`_)"
+msgstr "pgr_maximumcardinalitymatching"
+
+msgid "Identifier of the first end point vertex of the matched edge."
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the matched edge."
+msgstr ""
+
+msgid "Weight of the matched edge."
+msgstr ""
+
+msgid "Maximum weighted matching on a custom 5-vertex graph."
+msgstr ""
+
+msgid ""
+"`Boost: maximum_weighted_matching <https://www.boost.org/doc/libs/latest/"
+"libs/graph/doc/maximum_weighted_matching.html>`__"
 msgstr ""
 
 msgid "``pgr_pickDeliver`` - Experimental"

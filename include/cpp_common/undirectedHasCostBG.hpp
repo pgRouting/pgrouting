@@ -36,7 +36,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
+
 #include "cpp_common/identifiers.hpp"
+#include "cpp_common/edge_t.hpp"
 
 using Coordinate_t = struct Coordinate_t;
 using IID_t_rt = struct IID_t_rt;
@@ -61,7 +63,7 @@ class UndirectedHasCostBG {
  public:
     explicit UndirectedHasCostBG(std::vector<IID_t_rt>&);
     explicit UndirectedHasCostBG(const std::vector<Coordinate_t>&);
-    UndirectedHasCostBG() = delete;
+    UndirectedHasCostBG() = default;
 
     bool has_vertex(int64_t id) const;
 
@@ -72,6 +74,10 @@ class UndirectedHasCostBG {
     void insert_vertex(int64_t id);
     int64_t get_vertex_id(V v) const;
     int64_t get_edge_id(E e) const;
+    V get_V(int64_t) const;
+
+    void insert_maxCost_edge_no_parallel_no_loop(const std::vector<Edge_t> &edges);
+    void add_maxCost_edge_no_parallel_no_loop(const Edge_t &edge);
 
 
  private:

@@ -93,6 +93,12 @@ size_t
 get_tuples(const std::vector<IID_t_rt>&, IID_t_rt*&);
 
 /**
+ * @brief get tuples for IID_t_rt, with the cost as a cumulative total
+ */
+size_t
+get_cumulative_tuples(const std::vector<IID_t_rt> &, IID_t_rt* &);
+
+/**
  * @brief get tuples for spanning tree driver
  */
 size_t get_tuples(

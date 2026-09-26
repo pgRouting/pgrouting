@@ -16,7 +16,8 @@ var titles = [
 
 
 var newpages = [
-    {v: '4.1', pages: ['pgr_coreNumbers', 'pgr_planarFaces', 'planar-family', 'pgr_makeBiconnectedPlanar']},
+    {v: '4.1', pages: ['pgr_coreNumbers', 'pgr_planarFaces', 'planar-family', 'pgr_makeBiconnectedPlanar',
+        'pgr_maxWeightedMatch']},
 
     {v: '4.0', pages: ['pgr_bandwidth', 'pgr_kingOrdering', 'pgr_sloanOrdering']},
 

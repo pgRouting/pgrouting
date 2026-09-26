@@ -26,6 +26,10 @@ To see all issues & pull requests closed by this release see the
 
   * New experimental function.
 
+* pgr_maxWeightedMatch
+
+  * New experimental function.
+
 * pgr_planarFaces
 
   * New experimental function.
@@ -34,6 +38,7 @@ To see all issues & pull requests closed by this release see the
 
 * pgr_coreNumbers
 * pgr_makeBiconnectedPlanar
+* :issue:3136: pgr_maxWeightedMatch
 * pgr_planarFaces
 
 4.1.0 Code enhancements
