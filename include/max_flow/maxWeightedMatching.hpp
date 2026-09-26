@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 namespace pgrouting {
-namespace flow {
+namespace functions {
 
 inline std::vector<IID_t_rt>
 maximumWeightedMatch(pgrouting::graph::UndirectedHasCostBG &graph) {
@@ -98,7 +98,7 @@ maximumWeightedMatch(pgrouting::graph::UndirectedHasCostBG &graph) {
     return results;
 }
 
-}  // namespace flow
+}  // namespace functions
 }  // namespace pgrouting
 
 #endif  // INCLUDE_MAX_FLOW_MAXWEIGHTEDMATCHING_HPP_
