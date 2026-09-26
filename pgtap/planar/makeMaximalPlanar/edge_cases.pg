@@ -68,7 +68,7 @@ SELECT results_eq(
 
 -- 5 vertex non-planar graph (K5) returns empty set
 RETURN QUERY
-SELECT is_empty(
+SELECT throws_ok(
   $$SELECT * FROM pgr_makeMaximalPlanar(
     'SELECT 1 AS id, 1 AS source, 2 AS target, 1 AS cost, 1 AS reverse_cost UNION
      SELECT 2 AS id, 1 AS source, 3 AS target, 1 AS cost, 1 AS reverse_cost UNION
@@ -81,7 +81,9 @@ SELECT is_empty(
      SELECT 9 AS id, 3 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost UNION
      SELECT 10 AS id, 4 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost'
   )$$,
-  '5: Non-planar graph (K5) returns empty set');
+  'XX000',
+  'Graph is not planar',
+  '5: Non-planar graph (K5) throws exception');
 
 -- Unequal directional costs test (this was causing segfault)
 -- cost != reverse_cost should not crash
