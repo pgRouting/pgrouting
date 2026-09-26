@@ -108,6 +108,8 @@ get_name(Which which) {
             break;
         case BICONNECTEDPLANAR:
             return "pgr_makeBiconnectedPlanar";
+        case MAXIMALPLANAR:
+            return "pgr_makeMaximalPlanar";
 
         case ARTICULATIONPOINTS:
             return "pgr_articulationPoints";
