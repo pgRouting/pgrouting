@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: maxWeightedMatching.hpp
+File: maxWeightedMatching.cpp
 
 Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
@@ -26,9 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MAX_FLOW_MAXWEIGHTEDMATCHING_HPP_
-#define INCLUDE_MAX_FLOW_MAXWEIGHTEDMATCHING_HPP_
-#pragma once
+#include "max_flow/maxWeightedMatching.hpp"
 
 #include <vector>
 #include <algorithm>
@@ -45,9 +43,7 @@ namespace pgrouting {
 namespace functions {
 
 std::vector<IID_t_rt>
-maximumWeightedMatch(pgrouting::graph::UndirectedHasCostBG&);
-#if 0
-{
+maximumWeightedMatch(pgrouting::graph::UndirectedHasCostBG &graph) {
     using G = pgrouting::graph::UndirectedHasCostBG::TSP_Graph;
     using V = pgrouting::graph::UndirectedHasCostBG::V;
     using E = pgrouting::graph::UndirectedHasCostBG::E;
@@ -99,9 +95,6 @@ maximumWeightedMatch(pgrouting::graph::UndirectedHasCostBG&);
 
     return results;
 }
-#endif
 
 }  // namespace functions
 }  // namespace pgrouting
-
-#endif  // INCLUDE_MAX_FLOW_MAXWEIGHTEDMATCHING_HPP_
