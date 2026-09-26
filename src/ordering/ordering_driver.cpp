@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/utilities.hpp"
 #include "cpp_common/to_postgres.hpp"
-#include "cpp_common/undirectedHasCostBG.hpp"
+#include "cpp_common/undirectedNoCostBG.hpp"
 
 #include "ordering/sloanOrdering.hpp"
 #include "ordering/kingOrdering.hpp"
@@ -52,6 +52,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "ordering/topologicalSort.hpp"
 #include "components/components.hpp"
 #include "max_flow/maximumcardinalitymatching.hpp"
+#include "max_flow/maxWeightedMatching.hpp"
 
 namespace pgrouting {
 namespace drivers {
@@ -97,6 +98,7 @@ do_ordering(
         using pgrouting::algorithms::bridges;
         using pgrouting::algorithms::articulationPoints;
         using pgrouting::flow::maxCardinalityMatch;
+        using pgrouting::functions::maxWeightedMatch;
 
         hint = edges_sql;
         auto bedges = (which == MAXCARDINALITYMATCH)? get_basic_edges(edges_sql) : std::vector<Edge_bool_t>();
@@ -126,6 +128,7 @@ do_ordering(
          */
         UndirectedGraph undigraph = vertices.empty()? UndirectedGraph() : UndirectedGraph(vertices);
         DirectedGraph digraph;
+        UndirectedHasCostBG wgraph;
         UndirectedNoCostsBG bgraph = (which == MAXCARDINALITYMATCH)? UndirectedNoCostsBG(bedges) :  UndirectedNoCostsBG(std::vector<Edge_bool_t>());
 
         std::vector<typename UndirectedGraph::V> undi_results;
@@ -143,7 +146,11 @@ do_ordering(
                     return;
             }
         } else {
-            undigraph.insert_edges(edges);
+            if (which == MAXWEIGHTMATCH) {
+                wgraph.insert_maxCost_edge_no_parallel_no_loop(edges);
+            } else if (which != MAXCARDINALITYMATCH) {
+                undigraph.insert_edges(edges);
+            }
 
             switch (which) {
                 case SLOAN:
@@ -163,6 +170,9 @@ do_ordering(
                     break;
                 case MAXCARDINALITYMATCH:
                     return_count = get_identifiers(maxCardinalityMatch(bgraph), return_tuples);
+                    break;
+                case MAXWEIGHTMATCH:
+                    return_count = get_identifiers(maxWeightedMatch(wgraph), return_tuples);
                     break;
                 default:
                     err << "ordering_driver.cpp: Unknown function with name '" << get_name(which)
