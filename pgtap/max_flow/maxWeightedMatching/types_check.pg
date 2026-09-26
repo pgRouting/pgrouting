@@ -23,18 +23,15 @@ BEGIN
   SELECT has_function('pgr_maxweightedmatch', ARRAY['text']);
 
   RETURN QUERY
-  SELECT function_returns('pgr_maxweightedmatch', ARRAY['text'], 'setof record');
+  SELECT function_returns('pgr_maxweightedmatch', ARRAY['text'], 'setof bigint');
 
   RETURN QUERY
   SELECT function_args_eq('pgr_maxweightedmatch',
-    $$SELECT '{"", start_vid, end_vid, agg_cost}'::TEXT[]$$
-  );
+        $$VALUES ('{"","edge"}'::TEXT[]) $$);
 
   RETURN QUERY
   SELECT function_types_eq('pgr_maxweightedmatch',
-      $$VALUES
-      ('{text,int8,int8,float8}'::TEXT[])
-      $$
+      $$VALUES ('{text,int8}'::TEXT[]) $$
   );
 
 END;
@@ -42,6 +39,5 @@ $BODY$
 LANGUAGE plpgsql;
 
 SELECT types_check();
-
-SELECT * FROM finish();
+SELECT finish();
 ROLLBACK;
