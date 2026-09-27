@@ -1,0 +1,139 @@
+:file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2020-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0
+
+.. index::
+   single: Flow Family ; pgr_maxWeightedMatch - Experimental
+   single: maxWeightedMatch - Experimental on v4.1
+
+|
+
+``pgr_maxWeightedMatch`` - Experimental
+===============================================================================
+
+``pgr_maxWeightedMatch`` — Calculates a maximum weighted matching in a graph.
+
+.. include:: experimental.rst
+   :start-after: warning-begin
+   :end-before: end-warning
+
+.. rubric:: Availability
+
+.. rubric:: Version 4.1.0
+
+* New experimental function.
+
+
+Description
+-------------------------------------------------------------------------------
+
+A **maximum weighted matching** in a graph is a matching where the sum of the
+weights of selected edges is maximized.
+
+A matching or independent edge set in a graph is a set of edges without common
+vertices.
+
+The main characteristics are:
+
+- Works for **undirected** graphs.
+- Each vertex is matched with at most one other vertex.
+- Maximizes the total edge weight sum.
+- There may be many maximum weighted matchings.
+
+  - Calculates one possible maximum weighted matching in a graph.
+
+- Running time: :math:`O(V^3)`.
+
+|Boost| Boost Graph Inside
+
+Signatures
+-------------------------------------------------------------------------------
+
+.. rubric:: Summary
+
+.. admonition:: \ \
+   :class: signatures
+
+   | pgr_maxWeightedMatch(`Edges SQL`_)
+
+   | Returns set of |result-edge|
+   | OR EMPTY SET
+
+:Example: Using all edges.
+
+.. literalinclude:: maxWeightedMatch.queries
+   :start-after: -- q1
+   :end-before: -- q2
+
+Parameters
+-------------------------------------------------------------------------------
+
+.. include:: allpairs-family.rst
+   :start-after: edges_start
+   :end-before: edges_end
+
+Inner Queries
+-------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
+
+Result columns
+-------------------------------------------------------------------------------
+
+Set of |result-edge|
+
+.. include:: pgr_maxCardinalityMatch.rst
+   :start-after: only_edge start
+   :end-before: only_edge end
+
+
+Additional Examples
+-------------------------------------------------------------------------------
+
+.. raw:: html
+
+   <table style="width:100%; border:none; border-collapse:collapse;">
+     <tr>
+       <td style="width:50%; text-align:center; padding:8px; border:none;">
+         <strong>Before Matching</strong><br/>
+         <img src="_images/mwm_graph.png" alt="Sample graph before maximum weighted matching" style="max-width:100%;"/>
+         <p><em>Sample graph with 5 vertices and 6 weighted edges before matching.</em></p>
+       </td>
+       <td style="width:50%; text-align:center; padding:8px; border:none;">
+         <strong>After Matching</strong><br/>
+         <img src="_images/mwm_result.png" alt="Sample graph after maximum weighted matching" style="max-width:100%;"/>
+         <p><em>Graph after maximum weighted matching: selected edges are highlighted.</em></p>
+       </td>
+     </tr>
+   </table>
+
+.. image:: images/mwm_graph.png
+   :width: 0
+
+.. image:: images/mwm_result.png
+   :width: 0
+
+:Example: Maximum weighted matching on a custom 5-vertex graph.
+
+.. literalinclude:: maxWeightedMatch.queries
+   :start-after: -- q2
+   :end-before: -- q4
+
+
+See Also
+-------------------------------------------------------------------------------
+
+* :doc:`flow-family`
+* :doc:`sampledata`
+* `Boost: maximum_weighted_matching
+  <https://www.boost.org/doc/libs/latest/libs/graph/doc/maximum_weighted_matching.html>`__
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`

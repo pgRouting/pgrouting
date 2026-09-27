@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 19:15+0000\n"
+"POT-Creation-Date: 2026-09-26 23:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3052,6 +3052,9 @@ msgstr ""
 msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
 msgstr ""
 
+msgid ":doc:`pgr_maxWeightedMatch` - Calculates a maximum weighted matching in a graph."
+msgstr ""
+
 msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ""
 
@@ -3109,6 +3112,18 @@ msgstr ""
 msgid ":doc:`TRSP-family`"
 msgstr ""
 
+msgid ":doc:`planar-family`"
+msgstr ""
+
+msgid ":doc:`pgr_isPlanar` - Returns a boolean depending upon the planarity of the graph."
+msgstr ""
+
+msgid ":doc:`pgr_makeBiconnectedPlanar` - Returns edges to add to a planar graph to make each connected component biconnected."
+msgstr ""
+
+msgid ":doc:`pgr_planarFaces` - Identifies the faces of a planar embedding and lists every edge-face incidence for an undirected graph."
+msgstr ""
+
 msgid "categories"
 msgstr ""
 
@@ -3125,18 +3140,6 @@ msgid ":doc:`pgr_dagShortestPath`"
 msgstr ""
 
 msgid ":doc:`pgr_edwardMoore`"
-msgstr ""
-
-msgid ":doc:`planar-family`"
-msgstr ""
-
-msgid ":doc:`pgr_isPlanar` - Returns a boolean depending upon the planarity of the graph."
-msgstr ""
-
-msgid ":doc:`pgr_makeBiconnectedPlanar` - Returns edges to add to a planar graph to make each connected component biconnected."
-msgstr ""
-
-msgid ":doc:`pgr_planarFaces` - Identifies the faces of a planar embedding and lists every edge-face incidence for an undirected graph."
 msgstr ""
 
 msgid "Miscellaneous Algorithms"
@@ -3556,6 +3559,9 @@ msgstr ""
 msgid "Fix the way it builds the graph"
 msgstr ""
 
+msgid "pgr_maxWeightedMatch"
+msgstr ""
+
 msgid "pgr_makeBiconnectedPlanar"
 msgstr ""
 
@@ -3563,6 +3569,18 @@ msgid "pgr_planarFaces"
 msgstr ""
 
 msgid "4.1.0 New experimental functions."
+msgstr ""
+
+msgid "`#3136 <https://github.com/pgRouting/pgrouting/issues/3136>`__: pgr_maxWeightedMatch"
+msgstr ""
+
+msgid "`#3140 <https://github.com/pgRouting/pgrouting/issues/3140>`__: pgr_makeBiconnectedPlanar"
+msgstr ""
+
+msgid "`#3142 <https://github.com/pgRouting/pgrouting/issues/3142>`__: pgr_coreNumbers"
+msgstr ""
+
+msgid "`#3143 <https://github.com/pgRouting/pgrouting/issues/3143>`__: pgr_planarFaces"
 msgstr ""
 
 msgid "4.1.0 Code enhancements"
@@ -3605,15 +3623,6 @@ msgid "`#3129 <https://github.com/pgRouting/pgrouting/issues/3129>`__: breadthFi
 msgstr ""
 
 msgid "`#3131 <https://github.com/pgRouting/pgrouting/issues/3131>`__: binaryBreadthFirstSearch: Integrate into existing process/driver pair"
-msgstr ""
-
-msgid "`#3140 <https://github.com/pgRouting/pgrouting/issues/3140>`__: New function: pgr_makeBiconnectedPlannar"
-msgstr ""
-
-msgid "`#3142 <https://github.com/pgRouting/pgrouting/issues/3142>`__: New function: pgr_coreNumbers"
-msgstr ""
-
-msgid "`#3143 <https://github.com/pgRouting/pgrouting/issues/3143>`__: New function: pgr_planarFaces"
 msgstr ""
 
 msgid "`#3154 <https://github.com/pgRouting/pgrouting/issues/3154>`__: betweennessCentrality: use allpairs/process and driver"
@@ -6319,7 +6328,7 @@ msgstr ""
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
-msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mayur Galhate, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -11615,6 +11624,42 @@ msgid "RETURNS FLOAT"
 msgstr ""
 
 msgid "Minimum Cost Maximum Flow possible from the source(s) to the target(s)"
+msgstr ""
+
+msgid "``pgr_maxWeightedMatch`` - Experimental"
+msgstr ""
+
+msgid "``pgr_maxWeightedMatch`` — Calculates a maximum weighted matching in a graph."
+msgstr ""
+
+msgid "A **maximum weighted matching** in a graph is a matching where the sum of the weights of selected edges is maximized."
+msgstr ""
+
+msgid "Each vertex is matched with at most one other vertex."
+msgstr ""
+
+msgid "Maximizes the total edge weight sum."
+msgstr ""
+
+msgid "There may be many maximum weighted matchings."
+msgstr ""
+
+msgid "Calculates one possible maximum weighted matching in a graph."
+msgstr ""
+
+msgid "Running time: :math:`O(V^3)`."
+msgstr ""
+
+msgid "pgr_maxWeightedMatch(`Edges SQL`_)"
+msgstr ""
+
+msgid "Set of |result-edge|"
+msgstr ""
+
+msgid "Maximum weighted matching on a custom 5-vertex graph."
+msgstr ""
+
+msgid "`Boost: maximum_weighted_matching <https://www.boost.org/doc/libs/latest/libs/graph/doc/maximum_weighted_matching.html>`__"
 msgstr ""
 
 msgid "``pgr_pickDeliver`` - Experimental"

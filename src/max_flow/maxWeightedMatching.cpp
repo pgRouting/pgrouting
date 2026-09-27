@@ -1,16 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: maximumcardinalitymatching.cpp
+File: maxWeightedMatching.cpp
 
 Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Refactoring
-Copyright (c) 2022 Celia Vriginia Vergara Castillo
-Mail: vicky at erosion.dev
-
 Function's developer:
-Copyright (c) 2016 Andrea Nardelli
-Mail: nrd.nardelli at gmail.com
+Copyright (c) 2026 Mayur Galhate
+Mail: galhatemayur at gmail.com
 
 ------
 
@@ -30,33 +26,35 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "max_flow/maximumcardinalitymatching.hpp"
-#include <vector>
-#include <utility>
-#include <set>
-#include <algorithm>
+#include "max_flow/maxWeightedMatching.hpp"
 
-#include <boost/graph/max_cardinality_matching.hpp>
+#include <vector>
+#include <algorithm>
+#include <utility>
+
+#include <boost/graph/maximum_weighted_matching.hpp>
+
+#include "c_types/iid_t_rt.h"
+#include "cpp_common/undirectedHasCostBG.hpp"
 #include "cpp_common/interruption.hpp"
-#include "cpp_common/identifiers.hpp"
+
 
 namespace pgrouting {
-namespace flow {
-
+namespace functions {
 
 Identifiers<int64_t>
-maxCardinalityMatch(pgrouting::graph::UndirectedNoCostsBG &graph) {
-    using G = pgrouting::graph::UndirectedNoCostsBG::G;
-    using V = pgrouting::graph::UndirectedNoCostsBG::V;
-    using E = pgrouting::graph::UndirectedNoCostsBG::E;
+maxWeightedMatch(pgrouting::graph::UndirectedHasCostBG &graph) {
+    using G = pgrouting::graph::UndirectedHasCostBG::TSP_Graph;
+    using V = pgrouting::graph::UndirectedHasCostBG::V;
+    using E = pgrouting::graph::UndirectedHasCostBG::E;
 
-    std::vector<V> mate_map(boost::num_vertices(graph()));
+    std::vector<V> mate_map(boost::num_vertices(graph.graph()));
     Identifiers<int64_t> match;
 
     CHECK_FOR_INTERRUPTS();
     try {
-        edmonds_maximum_cardinality_matching(graph(), &mate_map[0]);
-    } catch (boost::exception const& ex) {
+        boost::maximum_weighted_matching(graph.graph(), &mate_map[0]);
+    } catch (boost::exception const &ex) {
         (void)ex;
         throw;
     } catch (std::exception &e) {
@@ -65,7 +63,6 @@ maxCardinalityMatch(pgrouting::graph::UndirectedNoCostsBG &graph) {
     } catch (...) {
         throw;
     }
-
 
     /*
      * Check for each vertex:
@@ -80,7 +77,7 @@ maxCardinalityMatch(pgrouting::graph::UndirectedNoCostsBG &graph) {
 
         E e;
         bool exists = false;
-        boost::tie(e, exists) = boost::edge(v1, v2, graph());
+        boost::tie(e, exists) = boost::edge(v1, v2, graph.graph());
         if (!exists) throw;
 
         match += graph.get_edge_id(e);
@@ -89,5 +86,5 @@ maxCardinalityMatch(pgrouting::graph::UndirectedNoCostsBG &graph) {
     return match;
 }
 
-}  // namespace flow
+}  // namespace functions
 }  // namespace pgrouting

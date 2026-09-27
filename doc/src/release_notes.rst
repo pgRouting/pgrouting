@@ -58,6 +58,12 @@ To see all issues & pull requests closed by this release see the
      :start-after: Version 4.1.0
      :end-before: Description
 
+* pgr_maxWeightedMatch
+
+  .. include:: pgr_maxWeightedMatch.rst
+     :start-after: Version 4.1.0
+     :end-before: Description
+
 * pgr_planarFaces
 
   .. include:: pgr_planarFaces.rst
@@ -67,9 +73,10 @@ To see all issues & pull requests closed by this release see the
 4.1.0 New experimental functions.
 ...............................................................................
 
-* pgr_coreNumbers
-* pgr_makeBiconnectedPlanar
-* pgr_planarFaces
+* :issue:`3136`: pgr_maxWeightedMatch
+* :issue:`3140`: pgr_makeBiconnectedPlanar
+* :issue:`3142`: pgr_coreNumbers
+* :issue:`3143`: pgr_planarFaces
 
 4.1.0 Code enhancements
 ...............................................................................
@@ -89,9 +96,6 @@ To see all issues & pull requests closed by this release see the
 * :issue:`3129`: breadthFirstSearch: Reorganize into traversal
 * :issue:`3131`: binaryBreadthFirstSearch: Integrate into existing
   process/driver pair
-* :issue:`3140`: New function: pgr_makeBiconnectedPlannar
-* :issue:`3142`: New function: pgr_coreNumbers
-* :issue:`3143`: New function: pgr_planarFaces
 * :issue:`3154`: betweennessCentrality: use allpairs/process and driver
 
 4.1.0 Bug Fixes

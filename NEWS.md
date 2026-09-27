@@ -26,15 +26,20 @@ To see all issues & pull requests closed by this release see the
 
   * New experimental function.
 
+* pgr_maxWeightedMatch
+
+  * New experimental function.
+
 * pgr_planarFaces
 
   * New experimental function.
 
 4.1.0 New experimental functions.
 
-* pgr_coreNumbers
-* pgr_makeBiconnectedPlanar
-* pgr_planarFaces
+* [#3136](https://github.com/pgRouting/pgrouting/issues/3136): pgr_maxWeightedMatch
+* [#3140](https://github.com/pgRouting/pgrouting/issues/3140): pgr_makeBiconnectedPlanar
+* [#3142](https://github.com/pgRouting/pgrouting/issues/3142): pgr_coreNumbers
+* [#3143](https://github.com/pgRouting/pgrouting/issues/3143): pgr_planarFaces
 
 4.1.0 Code enhancements
 
@@ -53,9 +58,6 @@ To see all issues & pull requests closed by this release see the
 * [#3129](https://github.com/pgRouting/pgrouting/issues/3129): breadthFirstSearch: Reorganize into traversal
 * [#3131](https://github.com/pgRouting/pgrouting/issues/3131): binaryBreadthFirstSearch: Integrate into existing
   process/driver pair
-* [#3140](https://github.com/pgRouting/pgrouting/issues/3140): New function: pgr_makeBiconnectedPlannar
-* [#3142](https://github.com/pgRouting/pgrouting/issues/3142): New function: pgr_coreNumbers
-* [#3143](https://github.com/pgRouting/pgrouting/issues/3143): New function: pgr_planarFaces
 * [#3154](https://github.com/pgRouting/pgrouting/issues/3154): betweennessCentrality: use allpairs/process and driver
 
 4.1.0 Bug Fixes

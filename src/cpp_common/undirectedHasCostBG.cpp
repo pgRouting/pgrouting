@@ -32,10 +32,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <string>
 #include <limits>
+#include <tuple>
+#include <algorithm>
 
 #include "c_types/iid_t_rt.h"
 #include "cpp_common/coordinate_t.hpp"
 #include "cpp_common/interruption.hpp"
+#include "cpp_common/assert.hpp"
 #include <boost/graph/connected_components.hpp>
 
 
@@ -198,6 +201,21 @@ UndirectedHasCostBG::get_vertex_id(V v) const {
     }
 }
 
+/** @brief get the vertex descriptor of the vid
+Call has_vertex(vid) before calling this function
+@param[in] vid vertex identifier
+@return V: The vertex descriptor of the vertex
+*/
+UndirectedHasCostBG::V
+UndirectedHasCostBG::get_V(int64_t vid) const {
+    if (!has_vertex(vid)) {
+        throw std::make_pair(
+                std::string("INTERNAL: get_V called without checking with has_vertex"),
+                std::string(__PGR_PRETTY_FUNCTION__));
+    }
+    return m_id_to_V.find(vid)->second;
+}
+
 int64_t
 UndirectedHasCostBG::get_edge_id(E e) const {
     try {
@@ -208,6 +226,49 @@ UndirectedHasCostBG::get_edge_id(E e) const {
                 std::string(__PGR_PRETTY_FUNCTION__));
     }
 }
+
+void
+UndirectedHasCostBG::insert_maxCost_edge_no_parallel_no_loop(const std::vector<Edge_t> &edges) {
+    for (const auto &edge : edges) {
+        add_maxCost_edge_no_parallel_no_loop(edge);
+    }
+}
+
+void
+UndirectedHasCostBG::add_maxCost_edge_no_parallel_no_loop(const Edge_t &edge) {
+    if ((edge.cost < 0) && (edge.reverse_cost < 0)) return;
+
+    /* the edge exists on the graph */
+    pgassert((edge.cost >= 0) || (edge.reverse_cost >= 0));
+
+    /* vertices are created on demand */
+    insert_vertex(edge.source);
+    insert_vertex(edge.target);
+
+    auto vm_s = get_boost_vertex(edge.source);
+    auto vm_t = get_boost_vertex(edge.target);
+
+    /* no loop */
+    if (vm_s == vm_t) return;
+
+    /* no parallel: the cost is the max of the 2 costs */
+    auto cost = std::max(edge.cost, edge.reverse_cost);
+
+    bool found = false;
+    E e1;
+    boost::tie(e1, found) = boost::edge(vm_s, vm_t, m_graph);
+
+    if (!found) {
+        /* adds the edge */
+        boost::tie(e1, std::ignore) = boost::add_edge(vm_s, vm_t, cost, m_graph);
+        m_E_to_id[e1] = edge.id;
+    } else if (cost > boost::get(boost::edge_weight_t(), m_graph, e1)) {
+        /* no parallel edges: keep the edge with the max cost */
+        boost::put(boost::edge_weight_t(), m_graph, e1, cost);
+        m_E_to_id[e1] = edge.id;
+    }
+}
+
 
 }  // namespace graph
 
