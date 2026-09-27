@@ -45,6 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/assert.hpp"
 
 #include "planar/makeBiconnectedPlanar.hpp"
+#include "planar/makeMaximalPlanar.hpp"
 #include "coloring/bipartite.hpp"
 #include "coloring/edgeColoring.hpp"
 #include "coloring/sequentialVertexColoring.hpp"
@@ -90,6 +91,7 @@ void do_coloring(
         using pgrouting::algorithms::strongComponents;
         using pgrouting::functions::makeConnected;
         using pgrouting::functions::makeBiconnectedPlanar;
+        using pgrouting::functions::makeMaximalPlanar;
         using pgrouting::metrics::coreNumbers;
 
         hint = edges_sql;
@@ -123,7 +125,7 @@ void do_coloring(
         } else {
             if (which == CORENUMBERS) {
                 undigraph.insert_cost1_edge_no_parallel_no_loop(edges);
-            } else if (which == BICONNECTEDPLANAR) {
+            } else if (which == BICONNECTEDPLANAR || which == MAXIMALPLANAR) {
                 undigraph.insert_cost1_edge_no_parallel_no_loop(edges);
             } else {
                 undigraph.insert_edges(edges);
@@ -133,6 +135,11 @@ void do_coloring(
                case BICONNECTEDPLANAR:
                     {
                         results = makeBiconnectedPlanar(undigraph);
+                    }
+                    break;
+               case MAXIMALPLANAR:
+                    {
+                        results = makeMaximalPlanar(undigraph);
                     }
                     break;
                 case EDGECOLORING:
