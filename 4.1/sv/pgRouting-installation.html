@@ -227,15 +227,14 @@ git<span class="w"> </span>checkout<span class="w"> </span>v4.1.0
 <p class="rubric">Beroenden för kompilering</p>
 <p>För att kunna kompilera pgRouting måste du se till att följande beroenden är uppfyllda:</p>
 <ul class="simple">
-<li><p>C- och C++0x-kompilatorer</p>
+<li><p>C++ standard</p>
 <ul>
-<li><p>Kompilering med Boost 1.56 upp till Boost 1.74 kräver C++-kompilator med standardstöd för C++03 eller C++11</p></li>
-<li><p>Kompilering med Boost 1.75 kräver C++-kompilator med stöd för C++14-standarden</p></li>
+<li><p>C++17</p></li>
 </ul>
 </li>
-<li><p>Postgresql-version &gt;= 13</p></li>
-<li><p>Boost Graph Library (BGL) &gt;= 1.56.0</p></li>
-<li><p>CMake &gt;= 3.12</p></li>
+<li><p>Postgresql version &gt;= 14</p></li>
+<li><p>The Boost Graph Library (BGL) &gt;= 1.74.0</p></li>
+<li><p>CMake &gt;= 3.22</p></li>
 </ul>
 <p>För användardokumentation</p>
 <ul class="simple">
@@ -260,9 +259,9 @@ git<span class="w"> </span>checkout<span class="w"> </span>v4.1.0
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>build-essential<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>libboost-graph-dev<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>postgresql-13<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>postgresql-server-dev-13<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>postgresql-13-postgis
+<span class="w">   </span>postgresql-14<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>postgresql-server-dev-14<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>postgresql-14-postgis
 </pre></div>
 </div>
 <p class="rubric">Valfria beroenden</p>
@@ -277,7 +276,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>v4.1.0
 <p>För testning</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>libtap-parser-sourcehandler-pgtap-perl
-<span class="w">   </span>postgresql-13-pgtap
+<span class="w">   </span>postgresql-14-pgtap
 </pre></div>
 </div>
 </section>

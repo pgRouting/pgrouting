@@ -239,17 +239,14 @@ following command:</p>
 <p>To be able to compile pgRouting, make sure that the following dependencies are
 met:</p>
 <ul class="simple">
-<li><p>C and C++0x compilers</p>
+<li><p>C++ standard</p>
 <ul>
-<li><p>Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with
-C++03 or C++11 standard support</p></li>
-<li><p>Compiling with Boost 1.75 requires C++ Compiler with C++14 standard
-support</p></li>
+<li><p>C++17</p></li>
 </ul>
 </li>
-<li><p>Postgresql version &gt;= 13</p></li>
-<li><p>The Boost Graph Library (BGL) &gt;= 1.56.0</p></li>
-<li><p>CMake &gt;= 3.12</p></li>
+<li><p>Postgresql version &gt;= 14</p></li>
+<li><p>The Boost Graph Library (BGL) &gt;= 1.74.0</p></li>
+<li><p>CMake &gt;= 3.22</p></li>
 </ul>
 <p>For user’s documentation</p>
 <ul class="simple">
@@ -274,9 +271,9 @@ support</p></li>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>build-essential<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>libboost-graph-dev<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>postgresql-13<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>postgresql-server-dev-13<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>postgresql-13-postgis
+<span class="w">   </span>postgresql-14<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>postgresql-server-dev-14<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>postgresql-14-postgis
 </pre></div>
 </div>
 <p class="rubric">Optional dependencies</p>
@@ -291,7 +288,7 @@ support</p></li>
 <p>For testing</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>libtap-parser-sourcehandler-pgtap-perl
-<span class="w">   </span>postgresql-13-pgtap
+<span class="w">   </span>postgresql-14-pgtap
 </pre></div>
 </div>
 </section>
