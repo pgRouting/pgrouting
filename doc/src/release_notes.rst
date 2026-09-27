@@ -37,6 +37,21 @@ pgRouting 4.1.0 Release Notes
 To see all issues & pull requests closed by this release see the
 :milestone:`4.1.0`
 
+4.1.0 Build
+...............................................................................
+
+* PostgreSQL:
+
+  Minimum requirement: 14
+
+* Boost library:
+
+  Minimum requirement: 1.74
+
+* cmake:
+
+  Minimum requirement: 3.22
+
 4.1.0 Summary of changes by function
 ...............................................................................
 
@@ -102,6 +117,12 @@ To see all issues & pull requests closed by this release see the
 ...............................................................................
 
 * :issue:`3101`: pgr_edgeColoring not building graph correctly
+
+4.1.0 Requirements
+...............................................................................
+
+* :issue:`3120`: Up min requirements: Boost to 1.74 Postgres to 14 cmake to
+  3.22.
 
 pgRouting 4.0
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -187,7 +208,7 @@ To see all issues & pull requests closed by this release see the
    :local:
    :depth: 1
 
-Build
+4.0.0 Build
 ...............................................................................
 
 * C++ standard is std17

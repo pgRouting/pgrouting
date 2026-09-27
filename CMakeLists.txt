@@ -1,24 +1,12 @@
 # This file is part of the pgRouting project.
 # Copyright (c) 2007-2026 pgRouting developers
 # License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
-cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.22 FATAL_ERROR)
 
 if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
     message(FATAL_ERROR "In-source builds not allowed.
     Please make a new directory (called a build directory) and run CMake from there.
     You may need to remove CMakeCache.txt." )
-endif()
-
-if(POLICY CMP0144)
-    cmake_policy(SET CMP0144 OLD)
-endif()
-
-if(POLICY CMP0167)
-    cmake_policy(SET CMP0167 OLD)
-endif()
-
-if(POLICY CMP0148)
-    cmake_policy(SET CMP0148 OLD)
 endif()
 
 #---------------------------------------------
@@ -77,8 +65,8 @@ include(pgr/Configure)
 #---------------------------------------------
 set(DOXYGEN_MINIMUM_VERSION "1.7")
 set(SPHINX_MINIMUM_VERSION "4.0")
-set(POSTGRESQL_MINIMUM_VERSION "13")
-set(BOOST_MINIMUM_VERSION "1.56.0")
+set(POSTGRESQL_MINIMUM_VERSION "14")
+set(BOOST_MINIMUM_VERSION "1.74.0")
 set(POSTGIS_MINIMUM_VERSION "3.0.0")
 
 message(STATUS "DOXYGEN_MINIMUM_VERSION=${DOXYGEN_MINIMUM_VERSION}")
@@ -97,14 +85,24 @@ endif()
 # Boost
 #---------------------------------------------
 
-find_package(Boost ${BOOST_MINIMUM_VERSION} REQUIRED)
+if (POLICY CMP0167)
+    cmake_policy(SET CMP0167 NEW)
+    find_package(Boost CONFIG)
+else (POLICY CMP0167)
+    find_package(Boost ${BOOST_MINIMUM_VERSION} REQUIRED)
+endif (POLICY CMP0167)
+
+if (Boost_FOUND OR Boost_INCLUDE_DIR)
+    include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
+endif (Boost_FOUND OR Boost_INCLUDE_DIR)
+
 if (NOT Boost_VERSION_MACRO)
     set(Boost_VERSION_MACRO ${Boost_VERSION})
 endif()
 set(BOOST_VERSION "${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
+message(STATUS "Found Boost: ${BOOST_VERSION}")
 add_definitions(-DBOOST_ALLOW_DEPRECATED_HEADERS)
 
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
 #---------------------------------------------
 # Clang tidy
