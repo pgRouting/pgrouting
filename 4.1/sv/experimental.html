@@ -15,7 +15,7 @@
     <script src="_static/documentation_options.js?v=4e2df6f4"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=7fc8433e"></script>
+    <script src="_static/page_history.js?v=6e532ea3"></script>
     <script src="_static/translations.js?v=92a62177"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -184,6 +184,8 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimentell</span></a> - Details of flow and cost on edges.</p></li>
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost_Cost.html"><span class="doc">pgr_maxFlowMinCost_Cost - Experimentell</span></a> - Only the Min Cost calculation.</p></li>
+<li><p><a class="reference internal" href="pgr_maxWeightedMatch.html"><span class="doc">pgr_maxWeightedMatch - Experimental</span></a> - Calculates a maximum weighted matching in a
+graph.</p></li>
 </ul>
 <p><a class="reference internal" href="chinesePostmanProblem-family.html"><span class="doc">Problem med kinesiska brevbärare - Familj av funktioner</span></a></p>
 <ul class="simple">
@@ -234,6 +236,13 @@ using Brandes Algorithm</p></li>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_turnRestrictedPath.html"><span class="doc">pgr_turnRestrictedPath - Experimentell</span></a> - Routing with restrictions.</p></li>
 </ul>
+<p><a class="reference internal" href="planar-family.html"><span class="doc">Planar - Family of functions</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_isPlanar.html"><span class="doc">pgr_isPlanar - Experimentell</span></a> - Returns a boolean depending upon the planarity of the graph.</p></li>
+<li><p><a class="reference internal" href="pgr_makeBiconnectedPlanar.html"><span class="doc">pgr_makeBiconnectedPlanar - Experimental</span></a> - Returns edges to add to a planar graph to make each connected component biconnected.</p></li>
+<li><p><a class="reference internal" href="pgr_planarFaces.html"><span class="doc">pgr_planarFaces - Experimental</span></a> - Identifies the faces of a planar embedding and lists
+every edge-face incidence for an undirected graph.</p></li>
+</ul>
 <div class="toctree-wrapper compound">
 </div>
 <p class="rubric">kategorier</p>
@@ -258,15 +267,6 @@ using Brandes Algorithm</p></li>
 <li><p><a class="reference internal" href="pgr_bellmanFord.html"><span class="doc">pgr_bellmanFord - Experimentell</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_dagShortestPath.html"><span class="doc">pgr_dagShortestPath - Experimentell</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_edwardMoore.html"><span class="doc">pgr_edwardMoore - Experimentell</span></a></p></li>
-</ul>
-<div class="toctree-wrapper compound">
-</div>
-<p><a class="reference internal" href="planar-family.html"><span class="doc">Planar - Family of functions</span></a></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="pgr_isPlanar.html"><span class="doc">pgr_isPlanar - Experimentell</span></a> - Returns a boolean depending upon the planarity of the graph.</p></li>
-<li><p><a class="reference internal" href="pgr_makeBiconnectedPlanar.html"><span class="doc">pgr_makeBiconnectedPlanar - Experimental</span></a> - Returns edges to add to a planar graph to make each connected component biconnected.</p></li>
-<li><p><a class="reference internal" href="pgr_planarFaces.html"><span class="doc">pgr_planarFaces - Experimental</span></a> - Identifies the faces of a planar embedding and lists
-every edge-face incidence for an undirected graph.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -302,7 +302,7 @@ every edge-face incidence for an undirected graph.</p></li>
     </p>
     <p>
         &copy; Copyright %Y pgRouting developers.<br/>
-      Senast uppdaterad sep. 24, 2026.<br/>
+      Senast uppdaterad sep. 27, 2026.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
