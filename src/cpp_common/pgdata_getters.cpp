@@ -364,7 +364,7 @@ std::vector<Orders_t> get_orders(
 
   For queries of the type:
   ~~~~{.c}
-SELECT pid, edge_id, fraction, side FROM points;
+  SELECT pid, edge_id, fraction side FROM points;
   ~~~~
 
   @param[in] sql The points query
