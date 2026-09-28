@@ -95,7 +95,6 @@ class Pgr_dag {
      std::deque<V> nodesInDistance;
      std::ostringstream log;
      //@}
-
 };
 
 
