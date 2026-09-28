@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "dagShortestPath/dagShortestPath.hpp"
 
 #include <deque>
+#include "visitors/dijkstra_visitors.hpp"
 
 namespace pgrouting {
 
@@ -106,8 +107,8 @@ bool Pgr_dag::dag_1_to_many(
                 .weight_map(get(&G::G_T_E::cost, graph.graph))
                 .distance_map(&distances[0])
                 .distance_inf(std::numeric_limits<double>::infinity())
-                .visitor(dijkstra_many_goal_visitor(targets, n_goals, goals_found)));
-    } catch(found_goals &) {
+                .visitor(pgrouting::visitors::dijkstra_many_goal_visitor<V>(targets, n_goals, goals_found)));
+    } catch(pgrouting::found_goals &) {
         return true;
     } catch (boost::exception const& ex) {
         (void)ex;
@@ -160,6 +161,5 @@ std::deque<pgrouting::Path>
         return paths;
     }
 }  // namespace algorithms
-
 }  // namespace pgrouting
 
