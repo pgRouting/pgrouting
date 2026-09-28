@@ -194,7 +194,12 @@ do_shortestPath(
             return_count = get_tuples(results, edges, return_tuples);
             return;
         } else if (directed) {
-            digraph.insert_edges(edges);
+            if (which == DAGSP) {
+                digraph.insert_no_edge_cycle(edges);
+            } else {
+                digraph.insert_edges(edges);
+            }
+
             switch (which) {
                 case DIJKSTRA: {
                     auto paths = dijkstra(digraph, combinations, only_cost, n);

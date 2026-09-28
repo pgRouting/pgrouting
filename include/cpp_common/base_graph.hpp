@@ -338,6 +338,12 @@ class Pgr_base_graph {
          }
      }
 
+     template <typename T> void insert_no_edge_cycle(const std::vector<T> &edges) {
+         for (const auto &edge : edges) {
+             add_no_edge_cycle(edge);
+         }
+     }
+
      template <typename T>
      void insert_cost1_edges(const std::vector<T> &edges) {
          for (const auto &edge : edges) {
@@ -944,6 +950,61 @@ class Pgr_base_graph {
              }
 
              graph[e].id = normal? edge.id : -edge.id;
+         }
+     }
+
+     /**
+       Add edges with negative cost(either cost or reverse_cost or both)
+       Reading them into graph as positive cost ( edge_cost = (-1)* edge_negative_cost) [L931 & L941]
+       To Do: Read and apply edges with negative cost in function as it is
+       */
+     template <typename T> void add_no_edge_cycle(const T &edge) {
+         pgassert(is_directed());
+         bool inserted = false;
+         E e;
+
+         auto vm_s = get_V(T_V(edge, true));
+         auto vm_t = get_V(T_V(edge, false));
+
+         pgassert(vertices_map.find(edge.source) != vertices_map.end());
+         pgassert(vertices_map.find(edge.target) != vertices_map.end());
+
+         if (edge.cost >= 0) {
+             E e1;
+             bool found = false;
+             boost::tie(e1, found) = boost::edge(vm_s, vm_t, graph);
+             if (found) {
+                 if (edge.cost < graph[e1].cost) {
+                     graph[e1].cost = edge.cost;
+                     graph[e1].id = edge.id;
+                 }
+             } else {
+                 boost::tie(e, inserted) = boost::add_edge(vm_s, vm_t, graph);
+                 graph[e].cost = edge.cost;
+                 graph[e].id = edge.id;
+             }
+
+             /*
+              * Dont consider reverse_cost because it creates a cycle
+              */
+             return;
+         }
+
+         pgassert(edge.cost < 0);
+         if (edge.reverse_cost >= 0) {
+             E e1;
+             bool found = false;
+             boost::tie(e1, found) = boost::edge(vm_t, vm_s, graph);
+             if (found) {
+                 if (edge.reverse_cost < graph[e1].cost) {
+                     graph[e1].cost = edge.reverse_cost;
+                     graph[e1].id = edge.id;
+                 }
+             } else {
+                 boost::tie(e, inserted) = boost::add_edge(vm_t, vm_s, graph);
+                 graph[e].cost = edge.reverse_cost;
+                 graph[e].id = edge.id;
+             }
          }
      }
 
