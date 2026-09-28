@@ -189,8 +189,6 @@ do_shortestPath(
         DirectedGraph digraph;
         UndirectedGraph undigraph;
 
-        std::deque<Path> paths;
-
         if (which == EDGEDISJOINT) {
             auto results = edgeDisjoint(edges, combinations, directed);
             return_count = get_tuples(results, edges, return_tuples);
@@ -198,24 +196,26 @@ do_shortestPath(
         } else if (directed) {
             digraph.insert_edges(edges);
             switch (which) {
-                case DIJKSTRA:
-                    paths = dijkstra(digraph, combinations, only_cost, n);
+                case DIJKSTRA: {
+                    auto paths = dijkstra(digraph, combinations, only_cost, n);
                     post_process(paths, only_cost, normal, n, global);
+                    return_count = get_tuples(paths, return_tuples);
                     break;
+                    }
                 case BDDIJKSTRA:
-                    paths = bdDijkstra(digraph, combinations, only_cost);
+                    return_count = get_tuples(bdDijkstra(digraph, combinations, only_cost), return_tuples);
                     break;
                 case EDWARDMOORE:
-                    paths = edwardMoore(digraph, combinations);
+                    return_count = get_tuples(edwardMoore(digraph, combinations), return_tuples);
                     break;
                 case DAGSP:
-                    paths = dagShortestPath(digraph, combinations, only_cost);
+                    return_count = get_tuples(dagShortestPath(digraph, combinations, only_cost), return_tuples);
                     break;
                 case BELLMANFORD:
-                    paths = bellmanFord(digraph, combinations, only_cost);
+                    return_count = get_tuples(bellmanFord(digraph, combinations, only_cost), return_tuples);
                     break;
                 case BINARYBFS:
-                    paths = binaryBreadthFirstSearch(digraph, combinations);
+                    return_count = get_tuples(binaryBreadthFirstSearch(digraph, combinations), return_tuples);
                     break;
                 default:
                     err << "INTERNAL: wrong function call: " << which;
@@ -224,30 +224,29 @@ do_shortestPath(
         } else {
             undigraph.insert_edges(edges);
             switch (which) {
-                case DIJKSTRA:
-                    paths =  dijkstra(undigraph, combinations, only_cost, n);
+                case DIJKSTRA: {
+                    auto paths = dijkstra(undigraph, combinations, only_cost, n);
                     post_process(paths, only_cost, normal, n, global);
+                    return_count = get_tuples(paths, return_tuples);
                     break;
+                    }
                 case BDDIJKSTRA:
-                    paths =  bdDijkstra(undigraph, combinations, only_cost);
+                    return_count = get_tuples(bdDijkstra(undigraph, combinations, only_cost), return_tuples);
                     break;
                 case EDWARDMOORE:
-                    paths =  edwardMoore(undigraph, combinations);
+                    return_count = get_tuples(edwardMoore(undigraph, combinations), return_tuples);
                     break;
                 case BELLMANFORD:
-                    paths =  bellmanFord(undigraph, combinations, only_cost);
+                    return_count = get_tuples(bellmanFord(undigraph, combinations, only_cost), return_tuples);
                     break;
                 case BINARYBFS:
-                   paths = binaryBreadthFirstSearch(undigraph, combinations);
+                   return_count = get_tuples(binaryBreadthFirstSearch(undigraph, combinations), return_tuples);
                    break;
                 default:
                    err << "INTERNAL: wrong function call: " << which;
                    return;
             }
         }
-
-
-        return_count = get_tuples(paths, return_tuples);
 
         if (return_count == 0) {
             log << "No paths found";
