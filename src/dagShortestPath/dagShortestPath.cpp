@@ -28,7 +28,37 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "dagShortestPath/dagShortestPath.hpp"
 
 #include <deque>
+#include <vector>
+
 #include "visitors/dijkstra_visitors.hpp"
+
+namespace {
+
+using G = pgrouting::DirectedGraph;
+using V = typename G::V;
+using Path = pgrouting::Path;
+
+// used when multiple goals
+std::deque<Path>
+get_paths(
+        const G &graph,
+        const std::vector<V> &predecessors,
+        const std::vector<double> &distances,
+        V source,
+        const std::set<V> &targets,
+        bool only_cost) {
+    std::deque<Path> paths;
+    for (const auto target : targets) {
+        paths.push_back(Path(
+                    graph,
+                    source, target,
+                    predecessors, distances,
+                    only_cost, true));
+    }
+    return paths;
+}
+
+}  // namespace
 
 namespace pgrouting {
 
@@ -62,7 +92,7 @@ Pgr_dag::dag(
     if (v_targets.empty()) return paths;
 
     dag_1_to_many(graph, v_source, v_targets, n_goals);
-    paths = get_paths(graph, v_source, v_targets, only_cost);
+    paths = ::get_paths(graph, predecessors, distances, v_source, v_targets, only_cost);
 
     std::stable_sort(paths.begin(), paths.end(),
             [](const Path &e1, const Path &e2)->bool {
@@ -131,23 +161,6 @@ void Pgr_dag::clear() {
 
 
 
-
-// used when multiple goals
-std::deque<Path> Pgr_dag::get_paths(
-        const G &graph,
-        V source,
-        std::set<V> &targets,
-        bool only_cost) const {
-    std::deque<Path> paths;
-    for (const auto target : targets) {
-        paths.push_back(Path(
-                    graph,
-                    source, target,
-                    predecessors, distances,
-                    only_cost, true));
-    }
-    return paths;
-}
 
 namespace algorithms {
 

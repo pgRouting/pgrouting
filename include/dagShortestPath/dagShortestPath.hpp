@@ -81,13 +81,6 @@ class Pgr_dag {
      void clear();
 
 
-     // used when multiple goals
-     std::deque<Path> get_paths(
-             const G &graph,
-             V source,
-             std::set<V> &targets,
-             bool only_cost) const;
-
      //! @name members
      //@{
      std::vector<V> predecessors;
