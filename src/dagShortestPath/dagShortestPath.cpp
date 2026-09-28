@@ -38,6 +38,37 @@ using G = pgrouting::DirectedGraph;
 using V = typename G::V;
 using Path = pgrouting::Path;
 
+/** DAG  1 source to many targets */
+void
+dag_1_to_many(
+        G &graph,
+        std::vector<V> &predecessors,
+        std::vector<double> &distances,
+        V source,
+        const std::set<V> &targets,
+        size_t n_goals) {
+    CHECK_FOR_INTERRUPTS();
+    std::set<V> goals_found;
+    try {
+        boost::dag_shortest_paths(graph.graph, source,
+                boost::predecessor_map(&predecessors[0])
+                .weight_map(get(&G::G_T_E::cost, graph.graph))
+                .distance_map(&distances[0])
+                .distance_inf(std::numeric_limits<double>::infinity())
+                .visitor(pgrouting::visitors::dijkstra_many_goal_visitor<V>(targets, n_goals, goals_found)));
+    } catch(pgrouting::found_goals &) {
+        return;
+    } catch (boost::exception const& ex) {
+        (void)ex;
+        throw;
+    } catch (std::exception &e) {
+        (void)e;
+        throw;
+    } catch (...) {
+        throw;
+    }
+}
+
 // used when multiple goals
 std::deque<Path>
 get_paths(
@@ -91,7 +122,7 @@ Pgr_dag::dag(
     }
     if (v_targets.empty()) return paths;
 
-    dag_1_to_many(graph, v_source, v_targets, n_goals);
+    dag_1_to_many(graph, predecessors, distances, v_source, v_targets, n_goals);
     paths = ::get_paths(graph, predecessors, distances, v_source, v_targets, only_cost);
 
     std::stable_sort(paths.begin(), paths.end(),
@@ -123,40 +154,10 @@ std::deque<Path> Pgr_dag::dag(
 
 //@}
 
-/** DAG  1 source to many targets */
-bool Pgr_dag::dag_1_to_many(
-        G &graph,
-        V source,
-        const std::set<V> &targets,
-        size_t n_goals) {
-    CHECK_FOR_INTERRUPTS();
-    std::set<V> goals_found;
-    try {
-        boost::dag_shortest_paths(graph.graph, source,
-                boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&G::G_T_E::cost, graph.graph))
-                .distance_map(&distances[0])
-                .distance_inf(std::numeric_limits<double>::infinity())
-                .visitor(pgrouting::visitors::dijkstra_many_goal_visitor<V>(targets, n_goals, goals_found)));
-    } catch(pgrouting::found_goals &) {
-        return true;
-    } catch (boost::exception const& ex) {
-        (void)ex;
-        throw;
-    } catch (std::exception &e) {
-        (void)e;
-        throw;
-    } catch (...) {
-        throw;
-    }
-    return true;
-}
-
 
 void Pgr_dag::clear() {
     predecessors.clear();
     distances.clear();
-    nodesInDistance.clear();
 }
 
 

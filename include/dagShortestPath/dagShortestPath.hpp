@@ -33,9 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <vector>
 #include <algorithm>
-#include <sstream>
 #include <functional>
-#include <limits>
 #include <map>
 #include <cstdint>
 
@@ -56,7 +54,6 @@ class Pgr_dag {
  public:
      using G = pgrouting::DirectedGraph;
      using V = typename G::V;
-     using E = typename G::E;
 
 
      /** dag 1 to many */
@@ -72,12 +69,6 @@ class Pgr_dag {
              const std::map<int64_t, std::set<int64_t>> &combinations,
              bool only_cost) ;
  private:
-     /** DAG  1 source to many targets */
-     bool dag_1_to_many(
-             G &graph,
-             V source,
-             const std::set<V> &targets,
-             size_t n_goals = (std::numeric_limits<size_t>::max)()) ;
      void clear();
 
 
@@ -85,8 +76,6 @@ class Pgr_dag {
      //@{
      std::vector<V> predecessors;
      std::vector< double > distances;
-     std::deque<V> nodesInDistance;
-     std::ostringstream log;
      //@}
 };
 
