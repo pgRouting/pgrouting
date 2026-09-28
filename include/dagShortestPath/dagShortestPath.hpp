@@ -30,62 +30,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <deque>
-#include <set>
-#include <vector>
-#include <algorithm>
-#include <functional>
 #include <map>
+#include <set>
 #include <cstdint>
-
-#include <boost/config.hpp>
-#include <boost/graph/dijkstra_shortest_paths.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/dag_shortest_paths.hpp>
 
 #include "cpp_common/path.hpp"
 #include "cpp_common/base_graph.hpp"
-#include "cpp_common/interruption.hpp"
-
-#include "c_types/ii_t_rt.h"
 
 namespace pgrouting {
-
-class Pgr_dag {
- public:
-     using G = pgrouting::DirectedGraph;
-     using V = typename G::V;
-
-
-     /** dag 1 to many */
-     std::deque<Path> dag(
-             G &graph,
-             int64_t start_vertex,
-             const std::set<int64_t> &end_vertex,
-             bool only_cost) ;
-
-     /** combinations */
-     std::deque<Path> dag(
-             G &graph,
-             const std::map<int64_t, std::set<int64_t>> &combinations,
-             bool only_cost) ;
- private:
-     void clear();
-
-
-     //! @name members
-     //@{
-     std::vector<V> predecessors;
-     std::vector< double > distances;
-     //@}
-};
-
 
 namespace algorithms {
 
 std::deque<pgrouting::Path>
 dagShortestPath(
-        pgrouting::DirectedGraph&graph,
-        std::map<int64_t, std::set<int64_t>> &combinations,
+        pgrouting::DirectedGraph&,
+        std::map<int64_t, std::set<int64_t>>&,
         bool only_cost = false);
 
 }  // namespace algorithms

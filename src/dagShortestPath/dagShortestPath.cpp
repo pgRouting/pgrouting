@@ -27,9 +27,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "dagShortestPath/dagShortestPath.hpp"
 
+#include <algorithm>
 #include <deque>
+#include <iterator>
+#include <limits>
+#include <map>
+#include <set>
 #include <vector>
 
+#include <boost/graph/dag_shortest_paths.hpp>
+
+#include "cpp_common/interruption.hpp"
 #include "visitors/dijkstra_visitors.hpp"
 
 namespace {
@@ -45,8 +53,7 @@ dag_1_to_many(
         std::vector<V> &predecessors,
         std::vector<double> &distances,
         V source,
-        const std::set<V> &targets,
-        size_t n_goals) {
+        const std::set<V> &targets) {
     CHECK_FOR_INTERRUPTS();
     std::set<V> goals_found;
     try {
@@ -55,7 +62,10 @@ dag_1_to_many(
                 .weight_map(get(&G::G_T_E::cost, graph.graph))
                 .distance_map(&distances[0])
                 .distance_inf(std::numeric_limits<double>::infinity())
-                .visitor(pgrouting::visitors::dijkstra_many_goal_visitor<V>(targets, n_goals, goals_found)));
+                .visitor(pgrouting::visitors::dijkstra_many_goal_visitor<V>(
+                            targets,
+                            (std::numeric_limits<size_t>::max)(),
+                            goals_found)));
     } catch(pgrouting::found_goals &) {
         return;
     } catch (boost::exception const& ex) {
@@ -89,13 +99,10 @@ get_paths(
     return paths;
 }
 
-}  // namespace
-
-namespace pgrouting {
 
 /** dag 1 to many */
 std::deque<Path>
-Pgr_dag::dag(
+dag_shortestPath(
         G &graph,
         int64_t start_vertex,
         const std::set<int64_t> &end_vertex,
@@ -106,13 +113,10 @@ Pgr_dag::dag(
     if (!graph.has_vertex(start_vertex)) return paths;
 
     /* adjust predecessors and distances vectors */
-    clear();
-    size_t n_goals = (std::numeric_limits<size_t>::max)();
-    predecessors.resize(graph.num_vertices());
-    distances.resize(
+    std::vector<V> predecessors(graph.num_vertices());
+    std::vector<double> distances(
             graph.num_vertices(),
             std::numeric_limits<double>::infinity());
-
 
     auto v_source(graph.get_V(start_vertex));
 
@@ -122,8 +126,8 @@ Pgr_dag::dag(
     }
     if (v_targets.empty()) return paths;
 
-    dag_1_to_many(graph, predecessors, distances, v_source, v_targets, n_goals);
-    paths = ::get_paths(graph, predecessors, distances, v_source, v_targets, only_cost);
+    dag_1_to_many(graph, predecessors, distances, v_source, v_targets);
+    paths = get_paths(graph, predecessors, distances, v_source, v_targets, only_cost);
 
     std::stable_sort(paths.begin(), paths.end(),
             [](const Path &e1, const Path &e2)->bool {
@@ -135,14 +139,15 @@ Pgr_dag::dag(
 
 
 /** combinations */
-std::deque<Path> Pgr_dag::dag(
+std::deque<Path>
+dag_shortestPath(
         G &graph,
         const std::map<int64_t, std::set<int64_t>> &combinations,
         bool only_cost) {
     std::deque<Path> paths;
 
     for (const auto &c : combinations) {
-        auto result_paths = dag(graph, c.first, c.second, only_cost);
+        auto result_paths = ::dag_shortestPath(graph, c.first, c.second, only_cost);
         paths.insert(
                 paths.end(),
                 std::make_move_iterator(result_paths.begin()),
@@ -152,16 +157,9 @@ std::deque<Path> Pgr_dag::dag(
     return paths;
 }
 
-//@}
+}  // namespace
 
-
-void Pgr_dag::clear() {
-    predecessors.clear();
-    distances.clear();
-}
-
-
-
+namespace pgrouting {
 
 namespace algorithms {
 
@@ -170,9 +168,7 @@ std::deque<pgrouting::Path>
             pgrouting::DirectedGraph &graph,
             std::map<int64_t, std::set<int64_t>> &combinations,
             bool only_cost) {
-        pgrouting::Pgr_dag fn_dag;
-        auto paths = fn_dag.dag(graph, combinations, only_cost);
-        return paths;
+        return ::dag_shortestPath(graph, combinations, only_cost);
     }
 }  // namespace algorithms
 }  // namespace pgrouting
