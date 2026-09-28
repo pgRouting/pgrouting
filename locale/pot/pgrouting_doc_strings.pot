@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-28 01:27+0000\n"
+"POT-Creation-Date: 2026-09-27 01:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3547,6 +3547,27 @@ msgstr ""
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22>`__"
 msgstr ""
 
+msgid "4.1.0 Build"
+msgstr ""
+
+msgid "PostgreSQL:"
+msgstr ""
+
+msgid "Minimum requirement: 14"
+msgstr ""
+
+msgid "Boost library:"
+msgstr ""
+
+msgid "Minimum requirement: 1.74"
+msgstr ""
+
+msgid "cmake:"
+msgstr ""
+
+msgid "Minimum requirement: 3.22"
+msgstr ""
+
 msgid "4.1.0 Summary of changes by function"
 msgstr ""
 
@@ -3635,6 +3656,12 @@ msgid "4.1.0 Bug Fixes"
 msgstr ""
 
 msgid "`#3101 <https://github.com/pgRouting/pgrouting/issues/3101>`__: pgr_edgeColoring not building graph correctly"
+msgstr ""
+
+msgid "4.1.0 Requirements"
+msgstr ""
+
+msgid "`#3120 <https://github.com/pgRouting/pgrouting/issues/3120>`__: Up min requirements: Boost to 1.74 Postgres to 14 cmake to 3.22."
 msgstr ""
 
 msgid "All releases"
@@ -6055,22 +6082,19 @@ msgstr ""
 msgid "To be able to compile pgRouting, make sure that the following dependencies are met:"
 msgstr ""
 
-msgid "C and C++0x compilers"
+msgid "C++ standard"
 msgstr ""
 
-msgid "Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support"
+msgid "C++17"
 msgstr ""
 
-msgid "Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support"
+msgid "Postgresql version >= 14"
 msgstr ""
 
-msgid "Postgresql version >= 13"
+msgid "The Boost Graph Library (BGL) >= 1.74.0"
 msgstr ""
 
-msgid "The Boost Graph Library (BGL) >= 1.56.0"
-msgstr ""
-
-msgid "CMake >= 3.12"
+msgid "CMake >= 3.22"
 msgstr ""
 
 msgid "For user's documentation"
@@ -13495,7 +13519,7 @@ msgstr ""
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 msgstr ""
 
-msgid "Build"
+msgid "4.0.0 Build"
 msgstr ""
 
 msgid "C++ standard is std17"
@@ -14426,6 +14450,9 @@ msgid "pgRouting 3.7.2 Release Notes"
 msgstr ""
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
+msgstr ""
+
+msgid "Build"
 msgstr ""
 
 msgid "`#2713 <https://github.com/pgRouting/pgrouting/issues/2713>`__: cmake missing some policies and min version"
