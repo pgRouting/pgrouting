@@ -52,11 +52,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
-template <class G>
 class Pgr_dag {
  public:
-     typedef typename G::V V;
-     typedef typename G::E E;
+     using G = pgrouting::DirectedGraph;
+     using V = typename G::V;
+     using E = typename G::E;
 
 
      /** dag 1 to many */
@@ -64,98 +64,21 @@ class Pgr_dag {
              G &graph,
              int64_t start_vertex,
              const std::set<int64_t> &end_vertex,
-             bool only_cost) {
-         std::deque<Path> paths;
-
-         /* precondition */
-         if (!graph.has_vertex(start_vertex)) return paths;
-
-         /* adjust predecessors and distances vectors */
-         clear();
-         size_t n_goals = (std::numeric_limits<size_t>::max)();
-         predecessors.resize(graph.num_vertices());
-         distances.resize(
-                 graph.num_vertices(),
-                 std::numeric_limits<double>::infinity());
-
-
-         auto v_source(graph.get_V(start_vertex));
-
-         std::set<V> v_targets;
-         for (const auto &vertex : end_vertex) {
-             if (graph.has_vertex(vertex)) v_targets.insert(graph.get_V(vertex));
-         }
-         if (v_targets.empty()) return paths;
-
-         dag_1_to_many(graph, v_source, v_targets, n_goals);
-         paths = get_paths(graph, v_source, v_targets, only_cost);
-
-         std::stable_sort(paths.begin(), paths.end(),
-                 [](const Path &e1, const Path &e2)->bool {
-                 return e1.end_id() < e2.end_id();
-                 });
-
-         return paths;
-     }
-
+             bool only_cost) ;
 
      /** combinations */
      std::deque<Path> dag(
              G &graph,
              const std::map<int64_t, std::set<int64_t>> &combinations,
-             bool only_cost) {
-         std::deque<Path> paths;
-
-         for (const auto &c : combinations) {
-             auto result_paths = dag(graph, c.first, c.second, only_cost);
-             paths.insert(
-                     paths.end(),
-                     std::make_move_iterator(result_paths.begin()),
-                     std::make_move_iterator(result_paths.end()));
-         }
-
-         return paths;
-     }
-
-     //@}
-
+             bool only_cost) ;
  private:
      /** DAG  1 source to many targets */
      bool dag_1_to_many(
              G &graph,
              V source,
              const std::set<V> &targets,
-             size_t n_goals = (std::numeric_limits<size_t>::max)()) {
-         CHECK_FOR_INTERRUPTS();
-         try {
-             boost::dag_shortest_paths(graph.graph, source,
-                     boost::predecessor_map(&predecessors[0])
-                     .weight_map(get(&G::G_T_E::cost, graph.graph))
-                     .distance_map(&distances[0])
-                     .distance_inf(std::numeric_limits<double>::infinity())
-                     .visitor(dijkstra_many_goal_visitor(targets, n_goals)));
-         } catch(found_goals &) {
-             return true;
-         } catch (boost::exception const& ex) {
-             (void)ex;
-             throw;
-         } catch (std::exception &e) {
-             (void)e;
-             throw;
-         } catch (...) {
-             throw;
-         }
-         return true;
-     }
-
-
-     void clear() {
-         predecessors.clear();
-         distances.clear();
-         nodesInDistance.clear();
-     }
-
-
+             size_t n_goals = (std::numeric_limits<size_t>::max)()) ;
+     void clear();
 
 
      // used when multiple goals
@@ -163,73 +86,62 @@ class Pgr_dag {
              const G &graph,
              V source,
              std::set<V> &targets,
-             bool only_cost) const {
-         std::deque<Path> paths;
-         for (const auto target : targets) {
-             paths.push_back(Path(
-                         graph,
-                         source, target,
-                         predecessors, distances,
-                         only_cost, true));
-         }
-         return paths;
-     }
-
-
+             bool only_cost) const;
 
      //! @name members
      //@{
      struct found_goals{};  //!< exception for termination
-     std::vector< V > predecessors;
+     std::vector<V> predecessors;
      std::vector< double > distances;
-     std::deque< V > nodesInDistance;
+     std::deque<V> nodesInDistance;
      std::ostringstream log;
      //@}
 
+     template <typename V>
+class dijkstra_many_goal_visitor : public boost::default_dijkstra_visitor {
+ public:
+     dijkstra_many_goal_visitor(
+             const std::set<V> &goals,
+             size_t n_goals,
+             std::set<V> &f_goals) :
+         m_goals(goals),
+         m_n_goals(n_goals),
+         m_found_goals(f_goals)   {
+         }
+     template <class B_G>
+         void examine_vertex(V u, B_G &) {
+             auto s_it = m_goals.find(u);
 
+             /* examined vertex is not a goal */
+             if (s_it == m_goals.end()) return;
 
-     //! class for stopping when all targets are found
-     class dijkstra_many_goal_visitor : public boost::default_dijkstra_visitor {
-      public:
-          explicit dijkstra_many_goal_visitor(
-                  const std::set<V> &goals,
-                  size_t n_goals) :
-              m_goals(goals),
-              m_n_goals(n_goals) {}
-          template <class B_G>
-              void examine_vertex(V u, B_G &) {
-                  auto s_it = m_goals.find(u);
-                  if (s_it == m_goals.end()) return;
+             // found one more goal
+             m_found_goals.insert(*s_it);
+             m_goals.erase(s_it);
 
-                  // found one more goal
-                  m_goals.erase(s_it);
+             // all goals found
+             if (m_goals.size() == 0) throw found_goals();
 
-                  // all goals found
-                  if (m_goals.size() == 0) throw found_goals();
+             // number of requested goals found
+             --m_n_goals;
+             if (m_n_goals == 0) throw found_goals();
+         }
 
-                  // number of requested goals found
-                  --m_n_goals;
-                  if (m_n_goals == 0) throw found_goals();
-              }
-
-      private:
-          std::set<V> m_goals;
-          size_t m_n_goals;
-     };
+ private:
+     std::set<V> m_goals;
+     size_t m_n_goals;
+     std::set<V> &m_found_goals;
 };
+};
+
 
 namespace algorithms {
 
-template <class G>
 std::deque<pgrouting::Path>
 dagShortestPath(
-        G &graph,
+        pgrouting::DirectedGraph&graph,
         std::map<int64_t, std::set<int64_t>> &combinations,
-        bool only_cost = false) {
-    pgrouting::Pgr_dag<G> fn_dag;
-    auto paths = fn_dag.dag(graph, combinations, only_cost);
-    return paths;
-}
+        bool only_cost = false);
 
 }  // namespace algorithms
 }  // namespace pgrouting
