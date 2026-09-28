@@ -55,7 +55,6 @@ PGDLLEXPORT Datum _pgr_dagshortestpath_v4(PG_FUNCTION_ARGS) {
             pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 NULL,
-                NULL,
 
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
@@ -65,8 +64,6 @@ PGDLLEXPORT Datum _pgr_dagshortestpath_v4(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(4),
 
                 0,
-                true,
-                ' ',
                 true,
 
                 DAGSP,
@@ -79,7 +76,6 @@ PGDLLEXPORT Datum _pgr_dagshortestpath_v4(PG_FUNCTION_ARGS) {
              */
             pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                NULL,
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
 
                 NULL, NULL,
@@ -89,8 +85,6 @@ PGDLLEXPORT Datum _pgr_dagshortestpath_v4(PG_FUNCTION_ARGS) {
                 true,
 
                 0,
-                true,
-                ' ',
                 true,
 
                 DAGSP,

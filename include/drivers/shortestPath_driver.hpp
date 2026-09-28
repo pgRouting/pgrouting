@@ -50,11 +50,11 @@ namespace pgrouting {
 namespace drivers {
 
 void do_shortestPath(
-        const std::string&, const std::string&, const std::string&,
+        const std::string&, const std::string&,
         ArrayType*, ArrayType*,
 
         bool, bool, bool,
-        int64_t, bool, char, bool,
+        int64_t, bool,
 
         Which,
         bool&,

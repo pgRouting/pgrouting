@@ -54,7 +54,6 @@ extern "C" {
 
 void pgr_process_shortestPath(
         const char *edges_sql,
-        const char *points_sql,
         const char *combinations_sql,
 
         ArrayType *starts, ArrayType *ends,
@@ -65,8 +64,7 @@ void pgr_process_shortestPath(
 
         int64_t n_goals,
         bool global,
-        char driving_side,
-        bool details,
+
         enum Which which,
         Path_rt **result_tuples, size_t *result_count) {
     pgassert(edges_sql);
@@ -83,13 +81,13 @@ void pgr_process_shortestPath(
     clock_t start_t = clock();
     pgrouting::drivers::do_shortestPath(
             edges_sql? edges_sql : "",
-            points_sql? points_sql : "",
             combinations_sql? combinations_sql : "",
             starts, ends,
+
             directed,
             only_cost, normal,
             n_goals, global,
-            driving_side, details,
+
             which,
             is_matrix,
             (*result_tuples), (*result_count),

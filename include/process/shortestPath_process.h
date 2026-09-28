@@ -56,11 +56,12 @@ extern "C" {
 #endif
 
 void pgr_process_shortestPath(
-        const char*, const char*, const char*,
+        const char*, const char*,
         ArrayType*, ArrayType*,
         bool, bool, bool,
         int64_t, bool,
-        char, bool, enum Which,
+
+        enum Which,
         Path_rt**, size_t*);
 
 #ifdef __cplusplus

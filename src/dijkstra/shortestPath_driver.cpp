@@ -53,7 +53,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "dijkstra/dijkstra.hpp"
 #include "bellman_ford/edwardMoore.hpp"
 #include "bdDijkstra/bdDijkstra.hpp"
-#include "withPoints/withPoints.hpp"
 #include "dagShortestPath/dagShortestPath.hpp"
 #include "bellman_ford/bellman_ford.hpp"
 #include "max_flow/maxflow.hpp"
@@ -117,7 +116,6 @@ namespace drivers {
 void
 do_shortestPath(
         const std::string &edges_sql,
-        const std::string &,
         const std::string &combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
@@ -128,8 +126,6 @@ do_shortestPath(
 
         int64_t n_goals,
         bool global,
-        char driving_side,
-        bool details,
 
         Which which,
         bool &is_matrix,
@@ -228,8 +224,6 @@ do_shortestPath(
         } else {
             undigraph.insert_edges(edges);
             switch (which) {
-                case WITHPOINTS:
-                case OLD_WITHPOINTS:
                 case DIJKSTRA:
                     paths =  dijkstra(undigraph, combinations, only_cost, n);
                     post_process(paths, only_cost, normal, n, global);
