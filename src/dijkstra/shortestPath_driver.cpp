@@ -117,7 +117,7 @@ namespace drivers {
 void
 do_shortestPath(
         const std::string &edges_sql,
-        const std::string &points_sql,
+        const std::string &,
         const std::string &combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
@@ -148,7 +148,6 @@ do_shortestPath(
         }
 
         using pgrouting::pgget::get_edges;
-        using pgrouting::pgget::get_points;
         using pgrouting::utilities::get_combinations;
         using pgrouting::to_postgres::get_tuples;
         using pgrouting::UndirectedGraph;
@@ -178,45 +177,9 @@ do_shortestPath(
         std::vector<Edge_t> edges_of_points;
         std::vector<Point_on_edge_t> points;
 
-        if (points_sql.empty()) {
-            hint = edges_sql;
-            edges = get_edges(edges_sql, normal, false);
-            hint = "";
-        } else {
-            pgrouting::get_new_queries(edges_sql, points_sql, eofp, enop);
-
-            hint = points_sql;
-            points = get_points(std::string(points_sql));
-
-            hint = eofp;
-            edges_of_points = !eofp.empty()? get_edges(eofp, normal, false) : std::vector<Edge_t>();
-
-            hint = enop;
-            edges = !enop.empty()? get_edges(enop, normal, false) : std::vector<Edge_t>();
-            hint = "";
-
-            if (edges.empty() && edges_of_points.empty()) {
-                notice << "No edges found";
-                return;
-            }
-        }
-
-        /*
-         * processing points
-         */
-        pgrouting::Pg_points_graph pg_graph(points, edges_of_points,
-                normal,
-                pgrouting::estimate_drivingSide(driving_side, which),
-                directed);
-
-        if (pg_graph.has_error()) {
-            log << pg_graph.get_log();
-            err << pg_graph.get_error();
-            return;
-        }
-        auto new_edges = pg_graph.new_edges();
-
-        edges.insert(edges.end(), new_edges.begin(), new_edges.end());
+        hint = edges_sql;
+        edges = get_edges(edges_sql, normal, false);
+        hint = "";
 
         if (edges.empty()) {
             notice << "No edges found";
@@ -239,8 +202,6 @@ do_shortestPath(
         } else if (directed) {
             digraph.insert_edges(edges);
             switch (which) {
-                case WITHPOINTS:
-                case OLD_WITHPOINTS:
                 case DIJKSTRA:
                     paths = dijkstra(digraph, combinations, only_cost, n);
                     post_process(paths, only_cost, normal, n, global);
@@ -291,10 +252,6 @@ do_shortestPath(
             }
         }
 
-
-        if (!details) {
-            for (auto &path : paths) path = pg_graph.eliminate_details(path);
-        }
 
         return_count = get_tuples(paths, return_tuples);
 
