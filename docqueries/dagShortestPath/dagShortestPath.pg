@@ -4,7 +4,7 @@
 /* -- q2 */
 SELECT * FROM pgr_dagShortestPath(
   'SELECT id, source, target, cost, reverse_cost FROM edges',
-  1, 11);
+  5, 11);
 /* -- q3 */
 SELECT * FROM pgr_dagShortestPath(
   'SELECT id, source, target, cost FROM edges',
