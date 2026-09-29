@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: shortestPath_driver.hpp
+File: shortestPathWithPoints_driver.hpp
 
 Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: shortestPath_process.h
+File: shortestPathWithPoints_process.h
 
 Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org

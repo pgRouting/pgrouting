@@ -167,11 +167,7 @@ do_shortestPath(
             return;
         }
 
-        std::string enop;
-        std::string eofp;
         std::vector<Edge_t> edges;
-        std::vector<Edge_t> edges_of_points;
-        std::vector<Point_on_edge_t> points;
 
         hint = edges_sql;
         edges = get_edges(edges_sql, normal, false);

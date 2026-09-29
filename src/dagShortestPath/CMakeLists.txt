@@ -4,6 +4,5 @@
 
 ADD_LIBRARY(dagShortestPath OBJECT
     dagShortestPath.c
-
     dagShortestPath.cpp
 )

@@ -232,33 +232,13 @@ do_shortestPathWithPoints(
 
         std::deque<Path> paths;
 
-        if (which == EDGEDISJOINT) {
-            auto results = edgeDisjoint(edges, combinations, directed);
-            return_count = get_tuples(results, edges, return_tuples);
-            return;
-        } else if (directed) {
+        if (directed) {
             digraph.insert_edges(edges);
             switch (which) {
                 case WITHPOINTS:
                 case OLD_WITHPOINTS:
-                case DIJKSTRA:
                     paths = dijkstra(digraph, combinations, only_cost, n);
                     post_process(paths, only_cost, normal, n, global);
-                    break;
-                case BDDIJKSTRA:
-                    paths = bdDijkstra(digraph, combinations, only_cost);
-                    break;
-                case EDWARDMOORE:
-                    paths = edwardMoore(digraph, combinations);
-                    break;
-                case DAGSP:
-                    paths = dagShortestPath(digraph, combinations, only_cost);
-                    break;
-                case BELLMANFORD:
-                    paths = bellmanFord(digraph, combinations, only_cost);
-                    break;
-                case BINARYBFS:
-                    paths = binaryBreadthFirstSearch(digraph, combinations);
                     break;
                 default:
                     err << "INTERNAL: wrong function call: " << which;
@@ -269,22 +249,9 @@ do_shortestPathWithPoints(
             switch (which) {
                 case WITHPOINTS:
                 case OLD_WITHPOINTS:
-                case DIJKSTRA:
                     paths =  dijkstra(undigraph, combinations, only_cost, n);
                     post_process(paths, only_cost, normal, n, global);
                     break;
-                case BDDIJKSTRA:
-                    paths =  bdDijkstra(undigraph, combinations, only_cost);
-                    break;
-                case EDWARDMOORE:
-                    paths =  edwardMoore(undigraph, combinations);
-                    break;
-                case BELLMANFORD:
-                    paths =  bellmanFord(undigraph, combinations, only_cost);
-                    break;
-                case BINARYBFS:
-                   paths = binaryBreadthFirstSearch(undigraph, combinations);
-                   break;
                 default:
                    err << "INTERNAL: wrong function call: " << which;
                    return;

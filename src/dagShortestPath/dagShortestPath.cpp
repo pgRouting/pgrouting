@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
-File: dagShortestPath.hpp
+File: dagShortestPath.cpp
 
-Copyright (c) 2013-2026 pgRouting developers
+Copyright (c) 2026-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018 Sourabh Garg
