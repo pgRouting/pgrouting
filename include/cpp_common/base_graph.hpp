@@ -954,14 +954,18 @@ class Pgr_base_graph {
      }
 
      /**
-       Add edges with negative cost(either cost or reverse_cost or both)
-       Reading them into graph as positive cost ( edge_cost = (-1)* edge_negative_cost) [L931 & L941]
-       To Do: Read and apply edges with negative cost in function as it is
+      * Directed-only insertion that avoids per cycles between two vertices:
+       - cost >= 0: When target->source does not exist:
+         - insert/update source->target,
+         - ignore reverse_cost
+       - cost < 0 && reverse_cost >= 0: When target->source does not exist
+         - insert/update target->source
+       - update: Parallel edges keep the edge with minimum cost.
        */
      template <typename T> void add_no_edge_cycle(const T &edge) {
          pgassert(is_directed());
          bool inserted = false;
-         E e;
+         E e, er;
 
          auto vm_s = get_V(T_V(edge, true));
          auto vm_t = get_V(T_V(edge, false));
@@ -969,14 +973,16 @@ class Pgr_base_graph {
          pgassert(vertices_map.find(edge.source) != vertices_map.end());
          pgassert(vertices_map.find(edge.target) != vertices_map.end());
 
-         if (edge.cost >= 0) {
-             E e1;
-             bool found = false;
-             boost::tie(e1, found) = boost::edge(vm_s, vm_t, graph);
+         bool found = false;
+         bool found_r = false;
+         boost::tie(e, found) = boost::edge(vm_s, vm_t, graph);
+         boost::tie(er, found_r) = boost::edge(vm_t, vm_s, graph);
+
+         if (edge.cost >= 0 && !found_r) {
              if (found) {
-                 if (edge.cost < graph[e1].cost) {
-                     graph[e1].cost = edge.cost;
-                     graph[e1].id = edge.id;
+                 if (edge.cost < graph[e].cost) {
+                     graph[e].cost = edge.cost;
+                     graph[e].id = edge.id;
                  }
              } else {
                  boost::tie(e, inserted) = boost::add_edge(vm_s, vm_t, graph);
@@ -990,20 +996,16 @@ class Pgr_base_graph {
              return;
          }
 
-         pgassert(edge.cost < 0);
-         if (edge.reverse_cost >= 0) {
-             E e1;
-             bool found = false;
-             boost::tie(e1, found) = boost::edge(vm_t, vm_s, graph);
+         if (edge.reverse_cost >= 0 && !found) {
              if (found) {
-                 if (edge.reverse_cost < graph[e1].cost) {
-                     graph[e1].cost = edge.reverse_cost;
-                     graph[e1].id = edge.id;
+                 if (edge.reverse_cost < graph[er].cost) {
+                     graph[er].cost = edge.reverse_cost;
+                     graph[er].id = edge.id;
                  }
              } else {
-                 boost::tie(e, inserted) = boost::add_edge(vm_t, vm_s, graph);
-                 graph[e].cost = edge.reverse_cost;
-                 graph[e].id = edge.id;
+                 boost::tie(er, inserted) = boost::add_edge(vm_t, vm_s, graph);
+                 graph[er].cost = edge.reverse_cost;
+                 graph[er].id = edge.id;
              }
          }
      }
