@@ -37,6 +37,21 @@ pgRouting 4.1.0 Release Notes
 To see all issues & pull requests closed by this release see the
 :milestone:`4.1.0`
 
+4.1.0 Build
+...............................................................................
+
+* PostgreSQL:
+
+  Minimum requirement: 14
+
+* Boost library:
+
+  Minimum requirement: 1.74
+
+* cmake:
+
+  Minimum requirement: 3.22
+
 4.1.0 Summary of changes by function
 ...............................................................................
 
@@ -61,6 +76,12 @@ To see all issues & pull requests closed by this release see the
 * pgr_makeBiconnectedPlanar
 
   .. include:: pgr_makeBiconnectedPlanar.rst
+     :start-after: Version 4.1.0
+     :end-before: Description
+
+* pgr_maxWeightedMatch
+
+  .. include:: pgr_maxWeightedMatch.rst
      :start-after: Version 4.1.0
      :end-before: Description
 
@@ -91,9 +112,10 @@ To see all issues & pull requests closed by this release see the
 4.1.0 New experimental functions.
 ...............................................................................
 
-* pgr_coreNumbers
-* pgr_makeBiconnectedPlanar
-* pgr_planarFaces
+* :issue:`3136`: pgr_maxWeightedMatch
+* :issue:`3140`: pgr_makeBiconnectedPlanar
+* :issue:`3142`: pgr_coreNumbers
+* :issue:`3143`: pgr_planarFaces
 
 4.1.0 Code enhancements
 ...............................................................................
@@ -114,15 +136,18 @@ To see all issues & pull requests closed by this release see the
 * :issue:`3129`: breadthFirstSearch: Reorganize into traversal
 * :issue:`3131`: binaryBreadthFirstSearch: Integrate into existing
   process/driver pair
-* :issue:`3140`: New function: pgr_makeBiconnectedPlannar
-* :issue:`3142`: New function: pgr_coreNumbers
-* :issue:`3143`: New function: pgr_planarFaces
 * :issue:`3154`: betweennessCentrality: use allpairs/process and driver
 
 4.1.0 Bug Fixes
 ...............................................................................
 
 * :issue:`3101`: pgr_edgeColoring not building graph correctly
+
+4.1.0 Requirements
+...............................................................................
+
+* :issue:`3120`: Up min requirements: Boost to 1.74 Postgres to 14 cmake to
+  3.22.
 
 pgRouting 4.0
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -208,7 +233,7 @@ To see all issues & pull requests closed by this release see the
    :local:
    :depth: 1
 
-Build
+4.0.0 Build
 ...............................................................................
 
 * C++ standard is std17

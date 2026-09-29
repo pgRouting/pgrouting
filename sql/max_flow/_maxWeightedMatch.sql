@@ -1,13 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: maximum_cardinality_matching_driver.h
+FILE: _maxWeightedMatching.sql
 
-Generated with Template by:
 Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2016 Andrea Nardelli
-Mail: nrd.nardelli at gmail.com
+Copyright (c) 2026 Mayur Galhate
+Mail: galhatemayur at gmail.com
 
 ------
 
@@ -27,31 +26,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_MAX_FLOW_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_
-#define INCLUDE_DRIVERS_MAX_FLOW_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_
-#pragma once
+--v4.1
+CREATE FUNCTION _pgr_maxWeightedMatch(
+    TEXT,
+    OUT edge BIGINT)
+RETURNS SETOF BIGINT AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT
+COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 
-#ifdef __cplusplus
-#include <cstddef>
-#include <cstdint>
-#else
-#include <stddef.h>
-#include <stdint.h>
-#endif
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-void pgr_do_maximum_cardinality_matching(
-            const char*,
-
-            int64_t **, size_t *,
-            char**, char**, char **);
-
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif  // INCLUDE_DRIVERS_MAX_FLOW_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_
+COMMENT ON FUNCTION _pgr_maxWeightedMatch(TEXT)
+IS 'pgRouting internal function';

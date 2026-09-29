@@ -12,6 +12,20 @@ To read all history of releases go to the latest [release notes](https://docs.pg
 To see all issues & pull requests closed by this release see the
 [#4.1.0](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22)
 
+4.1.0 Build
+
+* PostgreSQL:
+
+  Minimum requirement: 14
+
+*  library:
+
+  Minimum requirement: 1.74
+
+* cmake:
+
+  Minimum requirement: 3.22
+
 4.1.0 Summary of changes by function
 
 * pgr_coreNumbers
@@ -27,6 +41,10 @@ To see all issues & pull requests closed by this release see the
   * Fix the way it builds the graph
 
 * pgr_makeBiconnectedPlanar
+
+  * New experimental function.
+
+* pgr_maxWeightedMatch
 
   * New experimental function.
 
@@ -48,9 +66,10 @@ To see all issues & pull requests closed by this release see the
 
 4.1.0 New experimental functions.
 
-* pgr_coreNumbers
-* pgr_makeBiconnectedPlanar
-* pgr_planarFaces
+* [#3136](https://github.com/pgRouting/pgrouting/issues/3136): pgr_maxWeightedMatch
+* [#3140](https://github.com/pgRouting/pgrouting/issues/3140): pgr_makeBiconnectedPlanar
+* [#3142](https://github.com/pgRouting/pgrouting/issues/3142): pgr_coreNumbers
+* [#3143](https://github.com/pgRouting/pgrouting/issues/3143): pgr_planarFaces
 
 4.1.0 Code enhancements
 
@@ -70,14 +89,16 @@ To see all issues & pull requests closed by this release see the
 * [#3129](https://github.com/pgRouting/pgrouting/issues/3129): breadthFirstSearch: Reorganize into traversal
 * [#3131](https://github.com/pgRouting/pgrouting/issues/3131): binaryBreadthFirstSearch: Integrate into existing
   process/driver pair
-* [#3140](https://github.com/pgRouting/pgrouting/issues/3140): New function: pgr_makeBiconnectedPlannar
-* [#3142](https://github.com/pgRouting/pgrouting/issues/3142): New function: pgr_coreNumbers
-* [#3143](https://github.com/pgRouting/pgrouting/issues/3143): New function: pgr_planarFaces
 * [#3154](https://github.com/pgRouting/pgrouting/issues/3154): betweennessCentrality: use allpairs/process and driver
 
 4.1.0 Bug Fixes
 
 * [#3101](https://github.com/pgRouting/pgrouting/issues/3101): pgr_edgeColoring not building graph correctly
+
+4.1.0 Requirements
+
+* [#3120](https://github.com/pgRouting/pgrouting/issues/3120): Up min requirements:  to 1.74 Postgres to 14 cmake to
+  3.22.
 
 ## pgRouting 4.0
 
@@ -150,7 +171,7 @@ To see all issues & pull requests closed by this release see the
 [#4.0.0](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22)
 
 
-Build
+4.0.0 Build
 
 * C++ standard is std17
 

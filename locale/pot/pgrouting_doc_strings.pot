@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-26 06:57+0000\n"
+"POT-Creation-Date: 2026-09-27 01:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3052,6 +3052,9 @@ msgstr ""
 msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
 msgstr ""
 
+msgid ":doc:`pgr_maxWeightedMatch` - Calculates a maximum weighted matching in a graph."
+msgstr ""
+
 msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ""
 
@@ -3109,6 +3112,18 @@ msgstr ""
 msgid ":doc:`TRSP-family`"
 msgstr ""
 
+msgid ":doc:`planar-family`"
+msgstr ""
+
+msgid ":doc:`pgr_isPlanar` - Returns a boolean depending upon the planarity of the graph."
+msgstr ""
+
+msgid ":doc:`pgr_makeBiconnectedPlanar` - Returns edges to add to a planar graph to make each connected component biconnected."
+msgstr ""
+
+msgid ":doc:`pgr_planarFaces` - Identifies the faces of a planar embedding and lists every edge-face incidence for an undirected graph."
+msgstr ""
+
 msgid "categories"
 msgstr ""
 
@@ -3125,18 +3140,6 @@ msgid ":doc:`pgr_dagShortestPath`"
 msgstr ""
 
 msgid ":doc:`pgr_edwardMoore`"
-msgstr ""
-
-msgid ":doc:`planar-family`"
-msgstr ""
-
-msgid ":doc:`pgr_isPlanar` - Returns a boolean depending upon the planarity of the graph."
-msgstr ""
-
-msgid ":doc:`pgr_makeBiconnectedPlanar` - Returns edges to add to a planar graph to make each connected component biconnected."
-msgstr ""
-
-msgid ":doc:`pgr_planarFaces` - Identifies the faces of a planar embedding and lists every edge-face incidence for an undirected graph."
 msgstr ""
 
 msgid "Miscellaneous Algorithms"
@@ -3541,6 +3544,27 @@ msgstr ""
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22>`__"
 msgstr ""
 
+msgid "4.1.0 Build"
+msgstr ""
+
+msgid "PostgreSQL:"
+msgstr ""
+
+msgid "Minimum requirement: 14"
+msgstr ""
+
+msgid "Boost library:"
+msgstr ""
+
+msgid "Minimum requirement: 1.74"
+msgstr ""
+
+msgid "cmake:"
+msgstr ""
+
+msgid "Minimum requirement: 3.22"
+msgstr ""
+
 msgid "4.1.0 Summary of changes by function"
 msgstr ""
 
@@ -3548,12 +3572,6 @@ msgid "pgr_coreNumbers"
 msgstr ""
 
 msgid "New experimental function."
-msgstr ""
-
-msgid "pgr_dijkstraVia"
-msgstr ""
-
-msgid "Added ``pred`` result column."
 msgstr ""
 
 msgid "pgr_edgeColoring"
@@ -3565,19 +3583,25 @@ msgstr ""
 msgid "pgr_makeBiconnectedPlanar"
 msgstr ""
 
+msgid "pgr_maxWeightedMatch"
+msgstr ""
+
 msgid "pgr_planarFaces"
 msgstr ""
 
-msgid "pgr_trspVia"
-msgstr ""
-
-msgid "pgr_trspVia_withPoints"
-msgstr ""
-
-msgid "pgr_withPointsVia"
-msgstr ""
-
 msgid "4.1.0 New experimental functions."
+msgstr ""
+
+msgid "`#3136 <https://github.com/pgRouting/pgrouting/issues/3136>`__: pgr_maxWeightedMatch"
+msgstr ""
+
+msgid "`#3140 <https://github.com/pgRouting/pgrouting/issues/3140>`__: pgr_makeBiconnectedPlanar"
+msgstr ""
+
+msgid "`#3142 <https://github.com/pgRouting/pgrouting/issues/3142>`__: pgr_coreNumbers"
+msgstr ""
+
+msgid "`#3143 <https://github.com/pgRouting/pgrouting/issues/3143>`__: pgr_planarFaces"
 msgstr ""
 
 msgid "4.1.0 Code enhancements"
@@ -3613,9 +3637,6 @@ msgstr ""
 msgid "`#3100 <https://github.com/pgRouting/pgrouting/issues/3100>`__: Coloring: create and use a process & driver"
 msgstr ""
 
-msgid "`#3111 <https://github.com/pgRouting/pgrouting/issues/3111>`__: Via functions: add pred result column"
-msgstr ""
-
 msgid "`#3113 <https://github.com/pgRouting/pgrouting/issues/3113>`__: Components: Integrate into existing process/driver pair"
 msgstr ""
 
@@ -3625,15 +3646,6 @@ msgstr ""
 msgid "`#3131 <https://github.com/pgRouting/pgrouting/issues/3131>`__: binaryBreadthFirstSearch: Integrate into existing process/driver pair"
 msgstr ""
 
-msgid "`#3140 <https://github.com/pgRouting/pgrouting/issues/3140>`__: New function: pgr_makeBiconnectedPlannar"
-msgstr ""
-
-msgid "`#3142 <https://github.com/pgRouting/pgrouting/issues/3142>`__: New function: pgr_coreNumbers"
-msgstr ""
-
-msgid "`#3143 <https://github.com/pgRouting/pgrouting/issues/3143>`__: New function: pgr_planarFaces"
-msgstr ""
-
 msgid "`#3154 <https://github.com/pgRouting/pgrouting/issues/3154>`__: betweennessCentrality: use allpairs/process and driver"
 msgstr ""
 
@@ -3641,6 +3653,12 @@ msgid "4.1.0 Bug Fixes"
 msgstr ""
 
 msgid "`#3101 <https://github.com/pgRouting/pgrouting/issues/3101>`__: pgr_edgeColoring not building graph correctly"
+msgstr ""
+
+msgid "4.1.0 Requirements"
+msgstr ""
+
+msgid "`#3120 <https://github.com/pgRouting/pgrouting/issues/3120>`__: Up min requirements: Boost to 1.74 Postgres to 14 cmake to 3.22."
 msgstr ""
 
 msgid "All releases"
@@ -3758,21 +3776,6 @@ msgid ":doc:`pgr_withPoints`"
 msgstr ""
 
 msgid "`Migration of cost functions`_"
-msgstr ""
-
-msgid ":doc:`pgr_dijkstraVia`"
-msgstr ""
-
-msgid "`Migration of via functions`_"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia`"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia_withPoints`"
-msgstr ""
-
-msgid ":doc:`pgr_withPointsVia`"
 msgstr ""
 
 msgid "Migration of cost functions"
@@ -4351,48 +4354,6 @@ msgstr ""
 msgid "Rename ``vertex_id`` to ``node`` and ``color_id`` to ``color``."
 msgstr ""
 
-msgid "Migration of via functions"
-msgstr ""
-
-msgid "Starting from v4.1.0 the via functions return the column ``pred``, the identifier of the previous node in the path."
-msgstr ""
-
-msgid "``pgr_dijkstraVia``"
-msgstr ""
-
-msgid "v < 4.1.0"
-msgstr ""
-
-msgid ":ref:`from_old_via`"
-msgstr ""
-
-msgid "``pgr_trspVia``"
-msgstr ""
-
-msgid "``pgr_trspVia_withPoints``"
-msgstr ""
-
-msgid "``pgr_withPointsVia``"
-msgstr ""
-
-msgid "Migration from |old-via-result|"
-msgstr ""
-
-msgid "Migration to: |via-result|"
-msgstr ""
-
-msgid "All signatures"
-msgstr ""
-
-msgid "The new column ``pred`` is placed between ``end_vid`` and ``node``, so the columns ``node``, ``edge``, ``cost``, ``agg_cost`` and ``route_agg_cost`` move one position to the right."
-msgstr ""
-
-msgid "Queries that select the columns by name are not affected. Queries that use ``SELECT *`` or depend on the position of the columns, for example ``INSERT INTO my_table SELECT * FROM pgr_dijkstraVia(...)``, are affected."
-msgstr ""
-
-msgid "Before updating pgRouting enumerate the columns: |old-via-result|"
-msgstr ""
-
 msgid "Migration of deleted functions"
 msgstr ""
 
@@ -4660,6 +4621,12 @@ msgstr ""
 msgid "Migration of ``pgr_trspViaVertices``"
 msgstr ""
 
+msgid ":doc:`pgr_dijkstraVia`"
+msgstr ""
+
+msgid ":doc:`pgr_trspVia`"
+msgstr ""
+
 msgid "Use ``pgr_dijkstraVia`` when there are no restrictions"
 msgstr ""
 
@@ -4682,6 +4649,12 @@ msgid "Use :doc:`pgr_trspVia` instead."
 msgstr ""
 
 msgid "Migration of ``pgr_trspViaEdges``"
+msgstr ""
+
+msgid ":doc:`pgr_withPointsVia`"
+msgstr ""
+
+msgid ":doc:`pgr_trspVia_withPoints`"
 msgstr ""
 
 msgid "Use ``pgr_withPointsVia`` when there are no restrictions"
@@ -6106,22 +6079,19 @@ msgstr ""
 msgid "To be able to compile pgRouting, make sure that the following dependencies are met:"
 msgstr ""
 
-msgid "C and C++0x compilers"
+msgid "C++ standard"
 msgstr ""
 
-msgid "Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support"
+msgid "C++17"
 msgstr ""
 
-msgid "Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support"
+msgid "Postgresql version >= 14"
 msgstr ""
 
-msgid "Postgresql version >= 13"
+msgid "The Boost Graph Library (BGL) >= 1.74.0"
 msgstr ""
 
-msgid "The Boost Graph Library (BGL) >= 1.56.0"
-msgstr ""
-
-msgid "CMake >= 3.12"
+msgid "CMake >= 3.22"
 msgstr ""
 
 msgid "For user's documentation"
@@ -6382,7 +6352,7 @@ msgstr ""
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
-msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mayur Galhate, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -9889,6 +9859,9 @@ msgstr ""
 msgid "Both are equally good as they have the same cost. (lines: `12` and `13`)"
 msgstr ""
 
+msgid "``pgr_dijkstraVia``"
+msgstr ""
+
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr ""
 
@@ -9950,12 +9923,6 @@ msgid "``route_agg_cost``"
 msgstr ""
 
 msgid "Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the current ``seq``."
-msgstr ""
-
-msgid "``pgr_dijkstraVia`` additionally returns:"
-msgstr ""
-
-msgid "Identifier of the previous node in the path. For the first row of a path segment, equals ``start_vid``."
 msgstr ""
 
 msgid "All this examples are about the route that visits the vertices :math:`\\{5, 7, 1, 8, 15\\}` in that order on a **directed** graph."
@@ -11683,6 +11650,42 @@ msgstr ""
 msgid "Minimum Cost Maximum Flow possible from the source(s) to the target(s)"
 msgstr ""
 
+msgid "``pgr_maxWeightedMatch`` - Experimental"
+msgstr ""
+
+msgid "``pgr_maxWeightedMatch`` — Calculates a maximum weighted matching in a graph."
+msgstr ""
+
+msgid "A **maximum weighted matching** in a graph is a matching where the sum of the weights of selected edges is maximized."
+msgstr ""
+
+msgid "Each vertex is matched with at most one other vertex."
+msgstr ""
+
+msgid "Maximizes the total edge weight sum."
+msgstr ""
+
+msgid "There may be many maximum weighted matchings."
+msgstr ""
+
+msgid "Calculates one possible maximum weighted matching in a graph."
+msgstr ""
+
+msgid "Running time: :math:`O(V^3)`."
+msgstr ""
+
+msgid "pgr_maxWeightedMatch(`Edges SQL`_)"
+msgstr ""
+
+msgid "Set of |result-edge|"
+msgstr ""
+
+msgid "Maximum weighted matching on a custom 5-vertex graph."
+msgstr ""
+
+msgid "`Boost: maximum_weighted_matching <https://www.boost.org/doc/libs/latest/libs/graph/doc/maximum_weighted_matching.html>`__"
+msgstr ""
+
 msgid "``pgr_pickDeliver`` - Experimental"
 msgstr ""
 
@@ -12541,6 +12544,9 @@ msgstr ""
 msgid "`Deprecated documentation <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`_"
 msgstr ""
 
+msgid "``pgr_trspVia``"
+msgstr ""
+
 msgid "``pgr_trspVia`` Route that goes through a list of vertices with restrictions."
 msgstr ""
 
@@ -12566,9 +12572,6 @@ msgid "**NOTE** when this is done, ``U_turn_on_edge`` flag is ignored."
 msgstr ""
 
 msgid "pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**, [**options**])"
-msgstr ""
-
-msgid "``pgr_trspVia`` additionally returns:"
 msgstr ""
 
 msgid "All this examples are about the route that visits the vertices :math:`\\{5, 7, 1, 8, 15\\}` in that order on a directed graph."
@@ -12608,6 +12611,9 @@ msgid "Therefore the result ignores the ``U_turn_on_edge`` flag when set to ``fa
 msgstr ""
 
 msgid ":doc:`via-category`"
+msgstr ""
+
+msgid "``pgr_trspVia_withPoints``"
 msgstr ""
 
 msgid "``pgr_trspVia_withPoints`` - Route that goes through a list of vertices and/or points with restrictions."
@@ -12709,19 +12715,7 @@ msgstr ""
 msgid "When ``false`` the results will not include the points that are in the path."
 msgstr ""
 
-msgid "``pgr_trspVia_withPoints`` additionally returns:"
-msgstr ""
-
-msgid "``pred`` is the ``node`` of the previous row of the same path, so its value depends on ``details``:"
-msgstr ""
-
-msgid "``details => true``: points passed on the way are returned as rows, and can be the ``pred`` of the next row."
-msgstr ""
-
-msgid "``details => false``: those points are not returned, so they never appear as ``pred``."
-msgstr ""
-
-msgid "When ``start_vid``, ``end_vid``, ``pred`` and ``node`` columns have negative values, the identifier is for a Point."
+msgid "When ``start_vid``, ``end_vid`` and ``node`` columns have negative values, the identifier is for a Point."
 msgstr ""
 
 msgid "Use ``pgr_findCloseEdges`` for points on the fly"
@@ -13300,6 +13294,9 @@ msgstr ""
 msgid "Get :math:`2` paths using right side driving topology from, point :math:`1` to point :math:`2` with heap paths and details."
 msgstr ""
 
+msgid "``pgr_withPointsVia``"
+msgstr ""
+
 msgid "``pgr_withPointsVia`` - Route that goes through a list of vertices and/or points."
 msgstr ""
 
@@ -13313,9 +13310,6 @@ msgid "pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, [**drivi
 msgstr ""
 
 msgid "Find the route that visits the vertices :math:`\\{ -6, 15, -1\\}` in that order with right driving side in directed graph.."
-msgstr ""
-
-msgid "``pgr_withPointsVia`` additionally returns:"
 msgstr ""
 
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_"
@@ -13384,10 +13378,16 @@ msgstr ""
 msgid "4.0.2 Summary of changes by function"
 msgstr ""
 
+msgid "pgr_dijkstraVia"
+msgstr ""
+
 msgid "pgr_drivingDistance"
 msgstr ""
 
 msgid "pgr_withPointsDD"
+msgstr ""
+
+msgid "pgr_withPointsVia"
 msgstr ""
 
 msgid "4.0.2 Bug Fixes"
@@ -13450,7 +13450,7 @@ msgstr ""
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 msgstr ""
 
-msgid "Build"
+msgid "4.0.0 Build"
 msgstr ""
 
 msgid "C++ standard is std17"
@@ -13628,6 +13628,12 @@ msgid "pgr_transitiveClosure"
 msgstr ""
 
 msgid "pgr_trsp"
+msgstr ""
+
+msgid "pgr_trspVia"
+msgstr ""
+
+msgid "pgr_trspVia_withPoints"
 msgstr ""
 
 msgid "pgr_trsp_withPoints"
@@ -14375,6 +14381,9 @@ msgid "pgRouting 3.7.2 Release Notes"
 msgstr ""
 
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
+msgstr ""
+
+msgid "Build"
 msgstr ""
 
 msgid "`#2713 <https://github.com/pgRouting/pgrouting/issues/2713>`__: cmake missing some policies and min version"

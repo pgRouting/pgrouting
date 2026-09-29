@@ -53,12 +53,16 @@ enum Which {  // NOLINT(cppcoreguidelines-use-enum-class)
     /* For coloring */
     EDGECOLORING, BIPARTITE, SEQUENTIAL,
     /* For planar */
+    MAXIMALPLANAR,
     BICONNECTEDPLANAR,
+    PLANARFACES,
+    /* For Matching */
+    MAXWEIGHTMATCH,
+    MAXCARDINALITYMATCH,
+
     /* For components */
     CONNECTEDCOMPONENTS, BICONNECTEDCOMPONENTS, STRONGCOMPONENTS, ARTICULATIONPOINTS,
     BRIDGES, MAKECONNECTED,
-    /* For planar */
-    PLANARFACES,
     /* For metrics */
     CORENUMBERS
 };
