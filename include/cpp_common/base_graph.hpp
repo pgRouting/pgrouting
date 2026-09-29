@@ -978,13 +978,23 @@ class Pgr_base_graph {
          boost::tie(e, found) = boost::edge(vm_s, vm_t, graph);
          boost::tie(er, found_r) = boost::edge(vm_t, vm_s, graph);
 
+         /*
+          * vm_t -> vm_s : does not exist
+          * insert/uptade vm_s -> vm_t
+          */
          if (edge.cost >= 0 && !found_r) {
              if (found) {
+                 /*
+                  * update e: vm_s -> vm_t
+                  */
                  if (edge.cost < graph[e].cost) {
                      graph[e].cost = edge.cost;
                      graph[e].id = edge.id;
                  }
              } else {
+                 /*
+                  * insert e: vm_s -> vm_t
+                  */
                  boost::tie(e, inserted) = boost::add_edge(vm_s, vm_t, graph);
                  graph[e].cost = edge.cost;
                  graph[e].id = edge.id;
@@ -996,13 +1006,24 @@ class Pgr_base_graph {
              return;
          }
 
+         /*
+          * edge.cost < 0 OR vm_t -> vm_s already exists
+          * vm_s -> vm_t : does not exist
+          * insert/uptade vm_t -> vm_s
+          */
          if (edge.reverse_cost >= 0 && !found) {
-             if (found) {
+             if (found_r) {
+                 /*
+                  * update er: vm_t -> vm_s
+                  */
                  if (edge.reverse_cost < graph[er].cost) {
                      graph[er].cost = edge.reverse_cost;
                      graph[er].id = edge.id;
                  }
              } else {
+                 /*
+                  * insert er: vm_t -> vm_s
+                  */
                  boost::tie(er, inserted) = boost::add_edge(vm_t, vm_s, graph);
                  graph[er].cost = edge.reverse_cost;
                  graph[er].id = edge.id;
