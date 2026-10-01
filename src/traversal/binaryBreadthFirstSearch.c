@@ -56,7 +56,6 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS) {
             pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 NULL,
-                NULL,
 
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
@@ -67,7 +66,6 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS) {
 
                 0,
                 0,
-                ' ', true,
 
                 BINARYBFS,
                 &result_tuples,
@@ -79,7 +77,6 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS) {
              */
             pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                NULL,
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
 
                 NULL, NULL,
@@ -90,7 +87,6 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS) {
 
                 0,
                 0,
-                ' ', true,
 
                 BINARYBFS,
 

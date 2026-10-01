@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: shortestPath_driver.cpp
+File: shortestPathWithPoints_driver.cpp
 
 Copyright (c) 2015-2026 pgRouting developers
 Mail: project@pgrouting.org
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/shortestPath_driver.hpp"
+#include "drivers/shortestPathWithPoints_driver.hpp"
 
 #include <algorithm>
 #include <sstream>
@@ -53,6 +53,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "dijkstra/dijkstra.hpp"
 #include "bellman_ford/edwardMoore.hpp"
 #include "bdDijkstra/bdDijkstra.hpp"
+#include "withPoints/withPoints.hpp"
 #include "dagShortestPath/dagShortestPath.hpp"
 #include "bellman_ford/bellman_ford.hpp"
 #include "max_flow/maxflow.hpp"
@@ -114,8 +115,9 @@ namespace pgrouting {
 namespace drivers {
 
 void
-do_shortestPath(
+do_shortestPathWithPoints(
         const std::string &edges_sql,
+        const std::string &points_sql,
         const std::string &combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
@@ -126,6 +128,8 @@ do_shortestPath(
 
         int64_t n_goals,
         bool global,
+        char driving_side,
+        bool details,
 
         Which which,
         bool &is_matrix,
@@ -144,6 +148,7 @@ do_shortestPath(
         }
 
         using pgrouting::pgget::get_edges;
+        using pgrouting::pgget::get_points;
         using pgrouting::utilities::get_combinations;
         using pgrouting::to_postgres::get_tuples;
         using pgrouting::UndirectedGraph;
@@ -167,11 +172,51 @@ do_shortestPath(
             return;
         }
 
+        std::string enop;
+        std::string eofp;
         std::vector<Edge_t> edges;
+        std::vector<Edge_t> edges_of_points;
+        std::vector<Point_on_edge_t> points;
 
-        hint = edges_sql;
-        edges = get_edges(edges_sql, normal, false);
-        hint = "";
+        if (points_sql.empty()) {
+            hint = edges_sql;
+            edges = get_edges(edges_sql, normal, false);
+            hint = "";
+        } else {
+            pgrouting::get_new_queries(edges_sql, points_sql, eofp, enop);
+
+            hint = points_sql;
+            points = get_points(std::string(points_sql));
+
+            hint = eofp;
+            edges_of_points = !eofp.empty()? get_edges(eofp, normal, false) : std::vector<Edge_t>();
+
+            hint = enop;
+            edges = !enop.empty()? get_edges(enop, normal, false) : std::vector<Edge_t>();
+            hint = "";
+
+            if (edges.empty() && edges_of_points.empty()) {
+                notice << "No edges found";
+                return;
+            }
+        }
+
+        /*
+         * processing points
+         */
+        pgrouting::Pg_points_graph pg_graph(points, edges_of_points,
+                normal,
+                pgrouting::estimate_drivingSide(driving_side, which),
+                directed);
+
+        if (pg_graph.has_error()) {
+            log << pg_graph.get_log();
+            err << pg_graph.get_error();
+            return;
+        }
+        auto new_edges = pg_graph.new_edges();
+
+        edges.insert(edges.end(), new_edges.begin(), new_edges.end());
 
         if (edges.empty()) {
             notice << "No edges found";
@@ -185,38 +230,15 @@ do_shortestPath(
         DirectedGraph digraph;
         UndirectedGraph undigraph;
 
-        if (which == EDGEDISJOINT) {
-            auto results = edgeDisjoint(edges, combinations, directed);
-            return_count = get_tuples(results, edges, return_tuples);
-            return;
-        } else if (directed) {
-            if (which == DAGSP) {
-                digraph.insert_no_edge_cycle(edges);
-            } else {
-                digraph.insert_edges(edges);
-            }
+        std::deque<Path> paths;
 
+        if (directed) {
+            digraph.insert_edges(edges);
             switch (which) {
-                case DIJKSTRA: {
-                    auto paths = dijkstra(digraph, combinations, only_cost, n);
+                case WITHPOINTS:
+                case OLD_WITHPOINTS:
+                    paths = dijkstra(digraph, combinations, only_cost, n);
                     post_process(paths, only_cost, normal, n, global);
-                    return_count = get_tuples(paths, return_tuples);
-                    break;
-                    }
-                case BDDIJKSTRA:
-                    return_count = get_tuples(bdDijkstra(digraph, combinations, only_cost), return_tuples);
-                    break;
-                case EDWARDMOORE:
-                    return_count = get_tuples(edwardMoore(digraph, combinations), return_tuples);
-                    break;
-                case DAGSP:
-                    return_count = get_tuples(dagShortestPath(digraph, combinations, only_cost), return_tuples);
-                    break;
-                case BELLMANFORD:
-                    return_count = get_tuples(bellmanFord(digraph, combinations, only_cost), return_tuples);
-                    break;
-                case BINARYBFS:
-                    return_count = get_tuples(binaryBreadthFirstSearch(digraph, combinations), return_tuples);
                     break;
                 default:
                     err << "INTERNAL: wrong function call: " << which;
@@ -225,29 +247,23 @@ do_shortestPath(
         } else {
             undigraph.insert_edges(edges);
             switch (which) {
-                case DIJKSTRA: {
-                    auto paths = dijkstra(undigraph, combinations, only_cost, n);
+                case WITHPOINTS:
+                case OLD_WITHPOINTS:
+                    paths =  dijkstra(undigraph, combinations, only_cost, n);
                     post_process(paths, only_cost, normal, n, global);
-                    return_count = get_tuples(paths, return_tuples);
                     break;
-                    }
-                case BDDIJKSTRA:
-                    return_count = get_tuples(bdDijkstra(undigraph, combinations, only_cost), return_tuples);
-                    break;
-                case EDWARDMOORE:
-                    return_count = get_tuples(edwardMoore(undigraph, combinations), return_tuples);
-                    break;
-                case BELLMANFORD:
-                    return_count = get_tuples(bellmanFord(undigraph, combinations, only_cost), return_tuples);
-                    break;
-                case BINARYBFS:
-                   return_count = get_tuples(binaryBreadthFirstSearch(undigraph, combinations), return_tuples);
-                   break;
                 default:
                    err << "INTERNAL: wrong function call: " << which;
                    return;
             }
         }
+
+
+        if (!details) {
+            for (auto &path : paths) path = pg_graph.eliminate_details(path);
+        }
+
+        return_count = get_tuples(paths, return_tuples);
 
         if (return_count == 0) {
             log << "No paths found";

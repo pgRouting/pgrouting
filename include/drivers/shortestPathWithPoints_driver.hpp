@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: shortestPath_process.h
+File: shortestPathWithPoints_driver.hpp
 
 Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
@@ -32,40 +32,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_PROCESS_SHORTESTPATH_PROCESS_H_
-#define INCLUDE_PROCESS_SHORTESTPATH_PROCESS_H_
-#pragma once
+#ifndef INCLUDE_DRIVERS_SHORTESTPATHWITHPOINTS_DRIVER_HPP_
+#define INCLUDE_DRIVERS_SHORTESTPATHWITHPOINTS_DRIVER_HPP_
 
-#ifdef __cplusplus
+
 #include <cstddef>
 #include <cstdint>
-using Path_rt = struct Path_rt;
-using ArrayType = struct ArrayType;
-#else
-#include <stddef.h>
-#include <stdint.h>
-#include <stdbool.h>
-typedef struct Path_rt Path_rt;
-typedef struct ArrayType ArrayType;
-#endif
+#include <string>
+#include <sstream>
 
 #include "c_common/enums.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+using Path_rt = struct Path_rt;
+using ArrayType = struct ArrayType;
 
-void pgr_process_shortestPath(
-        const char*, const char*,
+namespace pgrouting {
+namespace drivers {
+
+void do_shortestPathWithPoints(
+        const std::string&, const std::string&, const std::string&,
         ArrayType*, ArrayType*,
+
         bool, bool, bool,
-        int64_t, bool,
+        int64_t, bool, char, bool,
 
-        enum Which,
-        Path_rt**, size_t*);
+        Which,
+        bool&,
+        Path_rt*&, size_t&,
+        std::ostringstream&, std::ostringstream&, std::ostringstream&);
 
-#ifdef __cplusplus
-}
-#endif
+}  // namespace drivers
+}  // namespace pgrouting
 
-#endif  // INCLUDE_PROCESS_SHORTESTPATH_PROCESS_H_
+#endif  // INCLUDE_DRIVERS_SHORTESTPATHWITHPOINTS_DRIVER_HPP_

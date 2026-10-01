@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: shortestPath_process.h
+File: shortestPathWithPoints_process.h
 
 Copyright (c) 2007-2026 pgRouting developers
 Mail: project@pgrouting.org
@@ -32,8 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_PROCESS_SHORTESTPATH_PROCESS_H_
-#define INCLUDE_PROCESS_SHORTESTPATH_PROCESS_H_
+#ifndef INCLUDE_PROCESS_SHORTESTPATHWITHPOINTS_PROCESS_H_
+#define INCLUDE_PROCESS_SHORTESTPATHWITHPOINTS_PROCESS_H_
 #pragma once
 
 #ifdef __cplusplus
@@ -55,17 +55,16 @@ typedef struct ArrayType ArrayType;
 extern "C" {
 #endif
 
-void pgr_process_shortestPath(
-        const char*, const char*,
+void pgr_process_shortestPathWithPoints(
+        const char*, const char*, const char*,
         ArrayType*, ArrayType*,
         bool, bool, bool,
         int64_t, bool,
-
-        enum Which,
+        char, bool, enum Which,
         Path_rt**, size_t*);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // INCLUDE_PROCESS_SHORTESTPATH_PROCESS_H_
+#endif  // INCLUDE_PROCESS_SHORTESTPATHWITHPOINTS_PROCESS_H_

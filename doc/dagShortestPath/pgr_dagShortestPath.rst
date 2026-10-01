@@ -45,7 +45,7 @@ solves the shortest path problem for weighted directed acyclic graph, producing
 a shortest path from a starting vertex (``start_vid``) to an ending vertex
 (``end_vid``).
 
-This implementation can only be used with a **directed** graph with no cycles
+This implementation can only be used with a directed graph with no cycles
 i.e. directed acyclic graph.
 
 The algorithm relies on topological sorting the dag to impose a linear ordering
@@ -53,28 +53,31 @@ on the vertices, and thus is more efficient for DAG's than either the Dijkstra
 or Bellman-Ford algorithm.
 
 The main characteristics are:
-  - Process is valid for weighted directed acyclic graphs only. otherwise it
-    will throw warnings.
-  - Values are returned when there is a path.
 
-    - When the starting vertex and ending vertex are the same, there is no path.
+* Process is valid for weighted directed acyclic graphs only.
 
-      - The `agg_cost` the non included values `(v, v)` is `0`
+  * Avoids one edge cycle: `reverse_cost` column is used when :math:`cost < 0`.
+  * If the graph is not DAG, will throw a PostgreSQL `ERROR`.
 
-    - When the starting vertex and ending vertex are the different and there is
-      no path:
+* Values are returned when there is a path.
 
-      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
+  * When the starting vertex and ending vertex are the same, there is no path.
+  * The `agg_cost` the non included values `(v, v)` is `0`
 
-  - For optimization purposes, any duplicated value in the `start_vids` or
-    `end_vids` are ignored.
+* When the starting vertex and ending vertex are the different and there is no
+  path:
 
-  - The returned values are ordered:
+  * The `agg_cost` the non included values `(u, v)` is :math:`\infty`
 
-    - `start_vid` ascending
-    - `end_vid` ascending
+* For optimization purposes, any duplicated value in the `start_vids` or
+  `end_vids` are ignored.
 
-  * Running time: :math:`O(| start\_vids | * (V + E))`
+* The returned values are ordered:
+
+  * `start_vid` ascending
+  * `end_vid` ascending
+
+* Running time: :math:`O(| start\_vids | * (V + E))`
 
 |Boost| Boost Graph Inside
 
@@ -217,6 +220,8 @@ Inner Queries
 
 Edges SQL
 ...............................................................................
+
+.. note:: `reverse_cost` column is used when :math:`cost < 0` to avoid edge cycle.
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start

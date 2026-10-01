@@ -19,6 +19,14 @@ Checks: >
     -cppcoreguidelines-pro-type-const-cast,
     -cppcoreguidelines-pro-type-reinterpret-cast,
     -cppcoreguidelines-pro-type-vararg,
+     bugprone-unused-local-non-trivial-variable,
+     misc-unused-parameters,
+     misc-unused-using-decls,
+     clang-analyzer-deadcode.DeadStores
+
+ExtraArgs:
+  - -Wunused-variable
+  - -Wunused-parameter
 
 CheckOptions:
     - key: cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor
