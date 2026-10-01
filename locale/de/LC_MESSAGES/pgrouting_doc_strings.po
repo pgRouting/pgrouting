@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-27 01:08+0000\n"
+"POT-Creation-Date: 2026-09-28 18:14+0000\n"
 "PO-Revision-Date: 2025-09-22 16:28+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: German <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/de/>\n"
@@ -9062,13 +9062,19 @@ msgstr ""
 msgid "Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm that solves the shortest path problem for weighted directed acyclic graph, producing a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``)."
 msgstr ""
 
-msgid "This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph."
+msgid "This implementation can only be used with a directed graph with no cycles i.e. directed acyclic graph."
 msgstr ""
 
 msgid "The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG's than either the Dijkstra or Bellman-Ford algorithm."
 msgstr ""
 
-msgid "Process is valid for weighted directed acyclic graphs only. otherwise it will throw warnings."
+msgid "Process is valid for weighted directed acyclic graphs only."
+msgstr ""
+
+msgid "Avoids one edge cycle: `reverse_cost` column is used when :math:`cost < 0`."
+msgstr ""
+
+msgid "If the graph is not DAG, will throw a PostgreSQL `ERROR`."
 msgstr ""
 
 msgid "The `agg_cost` the non included values `(v, v)` is `0`"
@@ -9105,6 +9111,9 @@ msgid "From vertices :math:`\\{5, 10\\}` to vertex :math:`11`"
 msgstr ""
 
 msgid "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an **undirected** graph"
+msgstr ""
+
+msgid "`reverse_cost` column is used when :math:`cost < 0` to avoid edge cycle."
 msgstr ""
 
 msgid "Return columns"

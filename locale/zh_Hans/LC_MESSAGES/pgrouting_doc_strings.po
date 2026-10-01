@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-27 01:08+0000\n"
+"POT-Creation-Date: 2026-09-28 18:14+0000\n"
 "PO-Revision-Date: 2025-09-22 16:28+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -9353,14 +9353,23 @@ msgstr "pgr_dagShortestPath(组合)"
 msgid "Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm that solves the shortest path problem for weighted directed acyclic graph, producing a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``)."
 msgstr "有向无环图（DAG）的最短路径是一种图搜索算法，用于解决加权有向无环图的最短路径问题，找到从起始顶点 (``start_vid``) 到结束顶点 (``end_vid``) 的最短路径。"
 
-msgid "This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph."
+#, fuzzy
+msgid "This implementation can only be used with a directed graph with no cycles i.e. directed acyclic graph."
 msgstr "这个实现只能用于 **有向** 图，且没有循环，即有向无环图。"
 
 msgid "The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG's than either the Dijkstra or Bellman-Ford algorithm."
 msgstr "该算法依靠对 DAG 进行拓扑排序来对顶点进行线性排序，因此比 Dijkstra 或 Bellman-Ford 算法更有效率。"
 
-msgid "Process is valid for weighted directed acyclic graphs only. otherwise it will throw warnings."
+#, fuzzy
+msgid "Process is valid for weighted directed acyclic graphs only."
 msgstr "该过程仅对加权有向无环图有效。 否则它会抛出警告。"
+
+msgid "Avoids one edge cycle: `reverse_cost` column is used when :math:`cost < 0`."
+msgstr ""
+
+#, fuzzy
+msgid "If the graph is not DAG, will throw a PostgreSQL `ERROR`."
+msgstr "当图形为两方时"
 
 msgid "The `agg_cost` the non included values `(v, v)` is `0`"
 msgstr "`agg_cost`中未包括的值`(v, v)` 的成本为`0`"
@@ -9397,6 +9406,9 @@ msgstr "从顶点 :math:`\\{5, 10\\}` 到顶点 :math:`11`"
 
 msgid "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an **undirected** graph"
 msgstr "在 **无向** 图上，从顶点 :math:`\\{5, 15\\} ` 到顶点 :math:`\\{11, 17\\}`"
+
+msgid "`reverse_cost` column is used when :math:`cost < 0` to avoid edge cycle."
+msgstr ""
 
 msgid "Return columns"
 msgstr "返回列"
