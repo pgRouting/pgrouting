@@ -217,23 +217,26 @@
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>有向无环图（DAG）的最短路径是一种图搜索算法，用于解决加权有向无环图的最短路径问题，找到从起始顶点 (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) 到结束顶点 (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>) 的最短路径。</p>
-<p>这个实现只能用于 <strong>有向</strong> 图，且没有循环，即有向无环图。</p>
+<p>This implementation can only be used with a directed graph with no cycles
+i.e. directed acyclic graph.</p>
 <p>该算法依靠对 DAG 进行拓扑排序来对顶点进行线性排序，因此比 Dijkstra 或 Bellman-Ford 算法更有效率。</p>
-<dl>
-<dt>主要特点是：</dt><dd><ul class="simple">
-<li><p>该过程仅对加权有向无环图有效。 否则它会抛出警告。</p></li>
+<p>主要特点是：</p>
+<ul class="simple">
+<li><p>Process is valid for weighted directed acyclic graphs only.</p>
+<ul>
+<li><p>Avoids one edge cycle: <cite>reverse_cost</cite> column is used when <span class="math notranslate nohighlight">\(cost &lt; 0\)</span>.</p></li>
+<li><p>If the graph is not DAG, will throw a PostgreSQL <cite>ERROR</cite>.</p></li>
+</ul>
+</li>
 <li><p>当存在路径时返回值。</p>
 <ul>
-<li><p>当起始顶点和结束顶点相同时，就没有路径。</p>
-<ul>
+<li><p>当起始顶点和结束顶点相同时，就没有路径。</p></li>
 <li><p><cite>agg_cost`中未包括的值`(v, v)</cite> 的成本为`0`</p></li>
 </ul>
 </li>
 <li><p>当起始顶点和结束顶点不同且不存在路径时：</p>
 <ul>
 <li><p><cite>agg_cost`中未包括的值 `(u, v)`是数学符号中的 :math:</cite>infty`</p></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><p>出于优化目的，<cite>start_vids`或 `end_vids</cite> 中的任何重复值都将被忽略。</p></li>
@@ -243,12 +246,8 @@
 <li><p><cite>end_vid</cite> 升序</p></li>
 </ul>
 </li>
-</ul>
-<ul class="simple">
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(| start\_vids | * (V + E))\)</span></p></li>
 </ul>
-</dd>
-</dl>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
@@ -286,7 +285,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dagShortestPath</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -496,6 +495,10 @@
 <h2>内部查询<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
 <section id="edges-sql">
 <h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p><cite>reverse_cost</cite> column is used when <span class="math notranslate nohighlight">\(cost &lt; 0\)</span> to avoid edge cycle.</p>
+</div>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -733,7 +736,7 @@
     </p>
     <p>
         &copy; Copyright %Y pgRouting developers.<br/>
-      最后更新于 9月 27, 2026.<br/>
+      最后更新于 10月 01, 2026.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

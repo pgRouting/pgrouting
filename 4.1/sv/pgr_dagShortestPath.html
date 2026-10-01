@@ -218,23 +218,26 @@
 <section id="description">
 <h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>Shortest Path for Directed Acyclic Graph(DAG) är en grafsökningsalgoritm som löser problemet med kortaste vägen för viktad riktad acyklisk graf, vilket ger en kortaste väg från ett startvertex (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) till ett slutvertex (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</p>
-<p>Denna implementation kan endast användas med en <strong>riktad</strong> graf utan cykler, dvs. en riktad acyklisk graf.</p>
+<p>This implementation can only be used with a directed graph with no cycles
+i.e. directed acyclic graph.</p>
 <p>Algoritmen förlitar sig på topologisk sortering av DAG för att införa en linjär ordning på topparna och är därmed effektivare för DAG än både Dijkstra- och Bellman-Ford-algoritmen.</p>
-<dl>
-<dt>De viktigaste egenskaperna är:</dt><dd><ul class="simple">
-<li><p>Processen är endast giltig för viktade riktade acykliska grafer. annars kommer den att ge varningar.</p></li>
+<p>De viktigaste egenskaperna är:</p>
+<ul class="simple">
+<li><p>Process is valid for weighted directed acyclic graphs only.</p>
+<ul>
+<li><p>Avoids one edge cycle: <cite>reverse_cost</cite> column is used when <span class="math notranslate nohighlight">\(cost &lt; 0\)</span>.</p></li>
+<li><p>If the graph is not DAG, will throw a PostgreSQL <cite>ERROR</cite>.</p></li>
+</ul>
+</li>
 <li><p>Värden returneras när det finns en sökväg.</p>
 <ul>
-<li><p>När startvertex och slutvertex är desamma finns det ingen väg.</p>
-<ul>
+<li><p>När startvertex och slutvertex är desamma finns det ingen väg.</p></li>
 <li><p>Den <cite>agg_cost</cite> de icke inkluderade värdena <cite>(v, v)</cite> är <cite>0</cite></p></li>
 </ul>
 </li>
 <li><p>När startvertex och slutvertex är olika och det inte finns någon väg:</p>
 <ul>
 <li><p>Den <cite>agg_cost</cite> de icke inkluderade värdena <cite>(u, v)</cite> är <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><p>För optimeringsändamål ignoreras alla duplicerade värden i <cite>start_vids</cite> eller <cite>end_vids</cite>.</p></li>
@@ -244,12 +247,8 @@
 <li><p><cite>end_vid</cite> stigande</p></li>
 </ul>
 </li>
-</ul>
-<ul class="simple">
 <li><p>Drifttid: <span class="math notranslate nohighlight">\(O(| start\_vids | * (V + E))\)</span></p></li>
 </ul>
-</dd>
-</dl>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost-graf inuti</p>
 </section>
 <section id="signatures">
@@ -287,7 +286,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dagShortestPath</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -497,6 +496,10 @@
 <h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
 <section id="edges-sql">
 <h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p><cite>reverse_cost</cite> column is used when <span class="math notranslate nohighlight">\(cost &lt; 0\)</span> to avoid edge cycle.</p>
+</div>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -734,7 +737,7 @@
     </p>
     <p>
         &copy; Copyright %Y pgRouting developers.<br/>
-      Senast uppdaterad sep. 27, 2026.<br/>
+      Senast uppdaterad okt. 01, 2026.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
