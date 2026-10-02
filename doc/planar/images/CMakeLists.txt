@@ -4,6 +4,9 @@
 set(LOCAL_FILES
     nonPlanar.png
     biconnected_planar_sampledata.png
+    maximal_planar_sampledata.png
+    maximal_planar_5cycle.png
+    maximal_planar_5cycle_before.png
     )
 
 foreach (f ${LOCAL_FILES})
