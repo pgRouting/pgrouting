@@ -40,17 +40,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/property_map/property_map.hpp>
 #include <boost/graph/boyer_myrvold_planar_test.hpp>
 #include <boost/graph/make_biconnected_planar.hpp>
-#include <boost/graph/connected_components.hpp>
 
 #include "c_types/ii_t_rt.h"
 #include "cpp_common/base_graph.hpp"
-#include "cpp_common/edge_t.hpp"
 #include "cpp_common/interruption.hpp"
 
 namespace {
 
 using G = pgrouting::UndirectedGraph;
-using V = typename G::V;
 using E = typename G::E;
 using E_i = typename G::E_i;
 
@@ -61,14 +58,31 @@ struct planar_visitor {
     planar_visitor(std::vector<II_t_rt>& results, G& graph)
         : m_results(results), m_graph(graph) {}
 
+    /*
+     * boost::make_biconnected_planar() only reports the pairs it wants
+     * added; it never adds them itself when an explicit visitor is given
+     */
     template <typename Vertex, typename BGraph>
-    void visit_vertex_pair(Vertex u, Vertex v, BGraph& g) {
-        boost::add_edge(u, v, g);
+    void visit_vertex_pair(Vertex u, Vertex v, BGraph&) {
         m_results.push_back({m_graph[u].id, m_graph[v].id});
     }
 };
 
-std::vector<II_t_rt> generateMakeBiconnectedPlanar(G &graph) {
+}  // namespace
+
+namespace pgrouting {
+namespace functions {
+
+/** @brief generate the missing edges to have biconnected graphs
+ *
+ * Disconnected graphs are handled by boost::boyer_myrvold_planarity_test()
+ * and boost::make_biconnected_planar() directly, so no per component
+ * sub-graph is built
+ */
+std::vector<II_t_rt>
+makeBiconnectedPlanar(pgrouting::UndirectedGraph &graph) {
+    CHECK_FOR_INTERRUPTS();
+
     E_i ei, ei_end;
     std::map<E, size_t> edge_id_map;
     size_t edge_count = 0;
@@ -93,8 +107,6 @@ std::vector<II_t_rt> generateMakeBiconnectedPlanar(G &graph) {
         throw std::string("Graph is not planar");
     }
 
-    /* Sub-graphs are guaranteed to be connected at this point */
-
     std::vector<II_t_rt> results;
     planar_visitor vis(results, graph);
 
@@ -113,58 +125,6 @@ std::vector<II_t_rt> generateMakeBiconnectedPlanar(G &graph) {
     });
 
     return results;
-}
-
-}  // namespace
-
-namespace pgrouting {
-namespace functions {
-
-std::vector<II_t_rt>
-makeBiconnectedPlanar(pgrouting::UndirectedGraph &graph) {
-    /* Process based on connected components */
-    std::vector<size_t> component(boost::num_vertices(graph.graph));
-    auto num_components = boost::connected_components(
-            graph.graph, &component[0]);
-
-    if (num_components == 1) {
-        /* Single connected component */
-        return generateMakeBiconnectedPlanar(graph);
-    }
-
-    /* Multiple connected components */
-    /* Group edges by component */
-    std::vector<std::vector<Edge_t>> comp_edges(num_components);
-    E_i ei, ei_end;
-    for (boost::tie(ei, ei_end) = edges(graph.graph);
-            ei != ei_end; ++ei) {
-        V src_v = boost::source(*ei, graph.graph);
-        size_t c = component[src_v];
-        Edge_t e{};
-        e.id           = graph[*ei].id;
-        e.source       = graph[src_v].id;
-        e.target       = graph[boost::target(*ei, graph.graph)].id;
-        e.cost         = graph[*ei].cost;
-        e.reverse_cost = -1;
-        comp_edges[c].push_back(e);
-    }
-
-    std::vector<II_t_rt> all_results;
-    for (size_t c = 0; c < num_components; ++c) {
-        if (comp_edges[c].empty()) continue;
-        CHECK_FOR_INTERRUPTS();
-        G sub_graph;
-        sub_graph.insert_edges(comp_edges[c]);
-        auto sub_results = generateMakeBiconnectedPlanar(sub_graph);
-        all_results.insert(
-                all_results.end(),
-                sub_results.begin(), sub_results.end());
-    }
-    std::sort(all_results.begin(), all_results.end(), [](const II_t_rt &a, const II_t_rt &b) {
-        if (a.d1 != b.d1) return a.d1 < b.d1;
-        return a.d2 < b.d2;
-    });
-    return all_results;
 }
 
 }  // namespace functions
