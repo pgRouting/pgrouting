@@ -3,7 +3,7 @@
 :license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
 /* -- q2 */
 SELECT * FROM pgr_dagShortestPath(
-  'SELECT id, source, target, cost FROM edges',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   5, 11);
 /* -- q3 */
 SELECT * FROM pgr_dagShortestPath(

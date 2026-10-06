@@ -60,7 +60,6 @@ _pgr_bellmanford(PG_FUNCTION_ARGS) {
             pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 NULL,
-                NULL,
 
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
@@ -70,8 +69,6 @@ _pgr_bellmanford(PG_FUNCTION_ARGS) {
                 true,
 
                 0,
-                true,
-                ' ',
                 true,
 
                 BELLMANFORD,
@@ -84,7 +81,6 @@ _pgr_bellmanford(PG_FUNCTION_ARGS) {
              */
             pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                NULL,
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
 
                 NULL, NULL,
@@ -94,8 +90,6 @@ _pgr_bellmanford(PG_FUNCTION_ARGS) {
                 true,
 
                 0,
-                true,
-                ' ',
                 true,
 
                 BELLMANFORD,

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-29 01:58+0000\n"
+"POT-Creation-Date: 2026-09-28 18:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3574,12 +3574,6 @@ msgstr ""
 msgid "New experimental function."
 msgstr ""
 
-msgid "pgr_dijkstraVia"
-msgstr ""
-
-msgid "Added ``pred`` result column."
-msgstr ""
-
 msgid "pgr_edgeColoring"
 msgstr ""
 
@@ -3593,15 +3587,6 @@ msgid "pgr_maxWeightedMatch"
 msgstr ""
 
 msgid "pgr_planarFaces"
-msgstr ""
-
-msgid "pgr_trspVia"
-msgstr ""
-
-msgid "pgr_trspVia_withPoints"
-msgstr ""
-
-msgid "pgr_withPointsVia"
 msgstr ""
 
 msgid "4.1.0 New experimental functions."
@@ -3650,9 +3635,6 @@ msgid "`#3089 <https://github.com/pgRouting/pgrouting/issues/3089>`__: edgeDisjo
 msgstr ""
 
 msgid "`#3100 <https://github.com/pgRouting/pgrouting/issues/3100>`__: Coloring: create and use a process & driver"
-msgstr ""
-
-msgid "`#3111 <https://github.com/pgRouting/pgrouting/issues/3111>`__: Via functions: add pred result column"
 msgstr ""
 
 msgid "`#3113 <https://github.com/pgRouting/pgrouting/issues/3113>`__: Components: Integrate into existing process/driver pair"
@@ -3794,21 +3776,6 @@ msgid ":doc:`pgr_withPoints`"
 msgstr ""
 
 msgid "`Migration of cost functions`_"
-msgstr ""
-
-msgid ":doc:`pgr_dijkstraVia`"
-msgstr ""
-
-msgid "`Migration of via functions`_"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia`"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia_withPoints`"
-msgstr ""
-
-msgid ":doc:`pgr_withPointsVia`"
 msgstr ""
 
 msgid "Migration of cost functions"
@@ -4387,48 +4354,6 @@ msgstr ""
 msgid "Rename ``vertex_id`` to ``node`` and ``color_id`` to ``color``."
 msgstr ""
 
-msgid "Migration of via functions"
-msgstr ""
-
-msgid "Starting from v4.1.0 the via functions return the column ``pred``, the identifier of the previous node in the path."
-msgstr ""
-
-msgid "``pgr_dijkstraVia``"
-msgstr ""
-
-msgid "v < 4.1.0"
-msgstr ""
-
-msgid ":ref:`from_old_via`"
-msgstr ""
-
-msgid "``pgr_trspVia``"
-msgstr ""
-
-msgid "``pgr_trspVia_withPoints``"
-msgstr ""
-
-msgid "``pgr_withPointsVia``"
-msgstr ""
-
-msgid "Migration from |old-via-result|"
-msgstr ""
-
-msgid "Migration to: |via-result|"
-msgstr ""
-
-msgid "All signatures"
-msgstr ""
-
-msgid "The new column ``pred`` is placed between ``end_vid`` and ``node``, so the columns ``node``, ``edge``, ``cost``, ``agg_cost`` and ``route_agg_cost`` move one position to the right."
-msgstr ""
-
-msgid "Queries that select the columns by name are not affected. Queries that use ``SELECT *`` or depend on the position of the columns, for example ``INSERT INTO my_table SELECT * FROM pgr_dijkstraVia(...)``, are affected."
-msgstr ""
-
-msgid "Before updating pgRouting enumerate the columns: |old-via-result|"
-msgstr ""
-
 msgid "Migration of deleted functions"
 msgstr ""
 
@@ -4696,6 +4621,12 @@ msgstr ""
 msgid "Migration of ``pgr_trspViaVertices``"
 msgstr ""
 
+msgid ":doc:`pgr_dijkstraVia`"
+msgstr ""
+
+msgid ":doc:`pgr_trspVia`"
+msgstr ""
+
 msgid "Use ``pgr_dijkstraVia`` when there are no restrictions"
 msgstr ""
 
@@ -4718,6 +4649,12 @@ msgid "Use :doc:`pgr_trspVia` instead."
 msgstr ""
 
 msgid "Migration of ``pgr_trspViaEdges``"
+msgstr ""
+
+msgid ":doc:`pgr_withPointsVia`"
+msgstr ""
+
+msgid ":doc:`pgr_trspVia_withPoints`"
 msgstr ""
 
 msgid "Use ``pgr_withPointsVia`` when there are no restrictions"
@@ -9118,13 +9055,19 @@ msgstr ""
 msgid "Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm that solves the shortest path problem for weighted directed acyclic graph, producing a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``)."
 msgstr ""
 
-msgid "This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph."
+msgid "This implementation can only be used with a directed graph with no cycles i.e. directed acyclic graph."
 msgstr ""
 
 msgid "The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG's than either the Dijkstra or Bellman-Ford algorithm."
 msgstr ""
 
-msgid "Process is valid for weighted directed acyclic graphs only. otherwise it will throw warnings."
+msgid "Process is valid for weighted directed acyclic graphs only."
+msgstr ""
+
+msgid "Avoids one edge cycle: `reverse_cost` column is used when :math:`cost < 0`."
+msgstr ""
+
+msgid "If the graph is not DAG, will throw a PostgreSQL `ERROR`."
 msgstr ""
 
 msgid "The `agg_cost` the non included values `(v, v)` is `0`"
@@ -9161,6 +9104,9 @@ msgid "From vertices :math:`\\{5, 10\\}` to vertex :math:`11`"
 msgstr ""
 
 msgid "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an **undirected** graph"
+msgstr ""
+
+msgid "`reverse_cost` column is used when :math:`cost < 0` to avoid edge cycle."
 msgstr ""
 
 msgid "Return columns"
@@ -9922,6 +9868,9 @@ msgstr ""
 msgid "Both are equally good as they have the same cost. (lines: `12` and `13`)"
 msgstr ""
 
+msgid "``pgr_dijkstraVia``"
+msgstr ""
+
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr ""
 
@@ -9983,12 +9932,6 @@ msgid "``route_agg_cost``"
 msgstr ""
 
 msgid "Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the current ``seq``."
-msgstr ""
-
-msgid "``pgr_dijkstraVia`` additionally returns:"
-msgstr ""
-
-msgid "Identifier of the previous node in the path. For the first row of a path segment, equals ``start_vid``."
 msgstr ""
 
 msgid "All this examples are about the route that visits the vertices :math:`\\{5, 7, 1, 8, 15\\}` in that order on a **directed** graph."
@@ -12610,6 +12553,9 @@ msgstr ""
 msgid "`Deprecated documentation <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`_"
 msgstr ""
 
+msgid "``pgr_trspVia``"
+msgstr ""
+
 msgid "``pgr_trspVia`` Route that goes through a list of vertices with restrictions."
 msgstr ""
 
@@ -12635,9 +12581,6 @@ msgid "**NOTE** when this is done, ``U_turn_on_edge`` flag is ignored."
 msgstr ""
 
 msgid "pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**, [**options**])"
-msgstr ""
-
-msgid "``pgr_trspVia`` additionally returns:"
 msgstr ""
 
 msgid "All this examples are about the route that visits the vertices :math:`\\{5, 7, 1, 8, 15\\}` in that order on a directed graph."
@@ -12677,6 +12620,9 @@ msgid "Therefore the result ignores the ``U_turn_on_edge`` flag when set to ``fa
 msgstr ""
 
 msgid ":doc:`via-category`"
+msgstr ""
+
+msgid "``pgr_trspVia_withPoints``"
 msgstr ""
 
 msgid "``pgr_trspVia_withPoints`` - Route that goes through a list of vertices and/or points with restrictions."
@@ -12778,19 +12724,7 @@ msgstr ""
 msgid "When ``false`` the results will not include the points that are in the path."
 msgstr ""
 
-msgid "``pgr_trspVia_withPoints`` additionally returns:"
-msgstr ""
-
-msgid "``pred`` is the ``node`` of the previous row of the same path, so its value depends on ``details``:"
-msgstr ""
-
-msgid "``details => true``: points passed on the way are returned as rows, and can be the ``pred`` of the next row."
-msgstr ""
-
-msgid "``details => false``: those points are not returned, so they never appear as ``pred``."
-msgstr ""
-
-msgid "When ``start_vid``, ``end_vid``, ``pred`` and ``node`` columns have negative values, the identifier is for a Point."
+msgid "When ``start_vid``, ``end_vid`` and ``node`` columns have negative values, the identifier is for a Point."
 msgstr ""
 
 msgid "Use ``pgr_findCloseEdges`` for points on the fly"
@@ -13369,6 +13303,9 @@ msgstr ""
 msgid "Get :math:`2` paths using right side driving topology from, point :math:`1` to point :math:`2` with heap paths and details."
 msgstr ""
 
+msgid "``pgr_withPointsVia``"
+msgstr ""
+
 msgid "``pgr_withPointsVia`` - Route that goes through a list of vertices and/or points."
 msgstr ""
 
@@ -13382,9 +13319,6 @@ msgid "pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, [**drivi
 msgstr ""
 
 msgid "Find the route that visits the vertices :math:`\\{ -6, 15, -1\\}` in that order with right driving side in directed graph.."
-msgstr ""
-
-msgid "``pgr_withPointsVia`` additionally returns:"
 msgstr ""
 
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_"
@@ -13453,10 +13387,16 @@ msgstr ""
 msgid "4.0.2 Summary of changes by function"
 msgstr ""
 
+msgid "pgr_dijkstraVia"
+msgstr ""
+
 msgid "pgr_drivingDistance"
 msgstr ""
 
 msgid "pgr_withPointsDD"
+msgstr ""
+
+msgid "pgr_withPointsVia"
 msgstr ""
 
 msgid "4.0.2 Bug Fixes"
@@ -13697,6 +13637,12 @@ msgid "pgr_transitiveClosure"
 msgstr ""
 
 msgid "pgr_trsp"
+msgstr ""
+
+msgid "pgr_trspVia"
+msgstr ""
+
+msgid "pgr_trspVia_withPoints"
 msgstr ""
 
 msgid "pgr_trsp_withPoints"

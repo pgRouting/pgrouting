@@ -61,7 +61,6 @@ _pgr_dijkstra_v4(PG_FUNCTION_ARGS) {
             pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 NULL,
-                NULL,
 
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
@@ -72,7 +71,6 @@ _pgr_dijkstra_v4(PG_FUNCTION_ARGS) {
 
                 PG_GETARG_INT64(6),
                 PG_GETARG_BOOL(7),
-                ' ', true,
 
                 DIJKSTRA,
                 &result_tuples,
@@ -84,7 +82,6 @@ _pgr_dijkstra_v4(PG_FUNCTION_ARGS) {
              */
             pgr_process_shortestPath(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                NULL,
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
 
                 NULL, NULL,
@@ -95,7 +92,6 @@ _pgr_dijkstra_v4(PG_FUNCTION_ARGS) {
 
                 PG_GETARG_INT64(4),
                 PG_GETARG_BOOL(5),
-                ' ', true,
 
                 DIJKSTRA,
                 &result_tuples,
@@ -191,7 +187,6 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
             pgr_process_shortestPath(
                     text_to_cstring(PG_GETARG_TEXT_P(0)),
                     NULL,
-                    NULL,
                     PG_GETARG_ARRAYTYPE_P(1),
                     PG_GETARG_ARRAYTYPE_P(2),
                     PG_GETARG_BOOL(3),
@@ -199,20 +194,17 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     PG_GETARG_BOOL(5),
                     PG_GETARG_INT64(6),
                     true,
-                    ' ', true,
                     DIJKSTRA,
                     &result_tuples,
                     &result_count);
         } else if (PG_NARGS() == 5) {
             pgr_process_shortestPath(
                     text_to_cstring(PG_GETARG_TEXT_P(0)),
-                    NULL,
                     text_to_cstring(PG_GETARG_TEXT_P(1)),
                     NULL, NULL,
                     PG_GETARG_BOOL(2),
                     PG_GETARG_BOOL(3),
                     true, 0, true,
-                    ' ', true,
                     DIJKSTRA,
                     &result_tuples,
                     &result_count);
@@ -220,7 +212,6 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
         } else if (PG_NARGS() == 8) {
             pgr_process_shortestPath(
                     text_to_cstring(PG_GETARG_TEXT_P(0)),
-                    NULL,
                     NULL,
                     PG_GETARG_ARRAYTYPE_P(1),
                     PG_GETARG_ARRAYTYPE_P(2),
@@ -230,8 +221,6 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     PG_GETARG_INT64(6),
                     PG_GETARG_BOOL(7),
 
-                    ' ', true,
-
                     DIJKSTRA,
                     &result_tuples,
                     &result_count);
@@ -239,7 +228,6 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
         } else /* (PG_NARGS() == 6) */ {
             pgr_process_shortestPath(
                     text_to_cstring(PG_GETARG_TEXT_P(0)),
-                    NULL,
                     text_to_cstring(PG_GETARG_TEXT_P(1)),
                     NULL, NULL,
                     PG_GETARG_BOOL(2),
@@ -247,8 +235,6 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     true,
                     PG_GETARG_INT64(4),
                     PG_GETARG_BOOL(5),
-
-                    ' ', true,
 
                     DIJKSTRA,
                     &result_tuples,

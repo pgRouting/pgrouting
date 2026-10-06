@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 #include "c_types/path_rt.h"
-#include "process/shortestPath_process.h"
+#include "process/shortestPathWithPoints_process.h"
 
 PGDLLEXPORT Datum _pgr_withpoints_v4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_withpoints_v4);
@@ -54,7 +54,7 @@ _pgr_withpoints_v4(PG_FUNCTION_ARGS) {
              * many to many
              */
 
-            pgr_process_shortestPath(
+            pgr_process_shortestPathWithPoints(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 NULL,
@@ -79,7 +79,7 @@ _pgr_withpoints_v4(PG_FUNCTION_ARGS) {
             /*
              * Combinations
              */
-            pgr_process_shortestPath(
+            pgr_process_shortestPathWithPoints(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 text_to_cstring(PG_GETARG_TEXT_P(2)),
@@ -189,7 +189,7 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
              * many to many
              */
 
-            pgr_process_shortestPath(
+            pgr_process_shortestPathWithPoints(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 NULL,
@@ -214,7 +214,7 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
             /*
              * Combinations
              */
-            pgr_process_shortestPath(
+            pgr_process_shortestPathWithPoints(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 text_to_cstring(PG_GETARG_TEXT_P(2)),

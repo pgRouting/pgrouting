@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: shortestPath_process.cpp
+File: shortestPathWithPoints_process.cpp
 
 Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "process/shortestPath_process.h"
+#include "process/shortestPathWithPoints_process.h"
 
 extern "C" {
 #include "c_common/postgres_connection.h"
@@ -49,11 +49,12 @@ extern "C" {
 #include "cpp_common/assert.hpp"
 #include "cpp_common/alloc.hpp"
 
-#include "drivers/shortestPath_driver.hpp"
+#include "drivers/shortestPathWithPoints_driver.hpp"
 
 
-void pgr_process_shortestPath(
+void pgr_process_shortestPathWithPoints(
         const char *edges_sql,
+        const char *points_sql,
         const char *combinations_sql,
 
         ArrayType *starts, ArrayType *ends,
@@ -64,7 +65,8 @@ void pgr_process_shortestPath(
 
         int64_t n_goals,
         bool global,
-
+        char driving_side,
+        bool details,
         enum Which which,
         Path_rt **result_tuples, size_t *result_count) {
     pgassert(edges_sql);
@@ -79,15 +81,15 @@ void pgr_process_shortestPath(
     bool is_matrix = false;
 
     clock_t start_t = clock();
-    pgrouting::drivers::do_shortestPath(
+    pgrouting::drivers::do_shortestPathWithPoints(
             edges_sql? edges_sql : "",
+            points_sql? points_sql : "",
             combinations_sql? combinations_sql : "",
             starts, ends,
-
             directed,
             only_cost, normal,
             n_goals, global,
-
+            driving_side, details,
             which,
             is_matrix,
             (*result_tuples), (*result_count),
