@@ -82,7 +82,7 @@ void pgr_process_ksp(
             directed,
             false, true, -1, false,
 
-            static_cast<size_t>(k),
+            k,
             heap_paths,
 
             start_vid, end_vid,

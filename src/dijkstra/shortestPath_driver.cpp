@@ -129,7 +129,7 @@ do_shortestPath(
         bool global,
 
         /* for ksp */
-        size_t k,
+        int k,
         bool heap_paths,
         int64_t *start_vid,
         int64_t *end_vid,
@@ -179,6 +179,8 @@ do_shortestPath(
         if (which == OLDKSP && start_vid && end_vid) {
             combinations[*start_vid].insert(*end_vid);
         }
+
+        size_t K{static_cast<size_t>(k)};
 
         if (combinations.empty() && !combinations_sql.empty()) {
             notice << "No (source, target) pairs found";
@@ -238,7 +240,7 @@ do_shortestPath(
                     break;
                 case OLDKSP:
                 case KSP:
-                    return_count = get_tuples(Yen(digraph, combinations, k, heap_paths), return_tuples);
+                    return_count = get_tuples(Yen(digraph, combinations, K, heap_paths), return_tuples);
                     break;
                 default:
                     err << "INTERNAL: wrong function call: " << which;
@@ -272,7 +274,7 @@ do_shortestPath(
                     break;
                 case OLDKSP:
                 case KSP:
-                    return_count = get_tuples(Yen(undigraph, combinations, k, heap_paths), return_tuples);
+                    return_count = get_tuples(Yen(undigraph, combinations, K, heap_paths), return_tuples);
                     break;
                 default:
                    err << "INTERNAL: wrong function call: " << which;
