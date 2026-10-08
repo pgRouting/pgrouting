@@ -47,24 +47,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/to_postgres.hpp"
 
 
-/**
- * @brief Executes driving distance analysis on a graph augmented with points of interest.
- *
- * @param[in] edges_sql SQL query for network edges.
- * @param[in] points_sql SQL query for points of interest.
- * @param[in] edges_of_points_sql SQL query for edges associated with points of interest.
- * @param[in] starts Array of starting vertex identifiers.
- * @param[in] distance Maximum driving distance threshold (must be non-negative).
- * @param[in] driving_side Driving side ('r', 'l', 'b').
- * @param[in] directed True if the graph is directed.
- * @param[in] details True to include detailed path intermediate edges.
- * @param[in] equiCost True to partition equally among starting vertices.
- * @param[out] return_tuples Allocated array of result tuples.
- * @param[out] return_count Number of result tuples returned.
- * @param[out] log_msg Log messages buffer.
- * @param[out] notice_msg Notice messages buffer.
- * @param[out] err_msg Error messages buffer.
- */
 void
 pgr_do_withPointsDD(
         const char *edges_sql,
@@ -105,12 +87,6 @@ pgr_do_withPointsDD(
         pgassert(*return_count == 0);
 
         using pgrouting::to_postgres::get_tuples;
- 
-        if (distance < 0) {
-            err << "Negative value found on 'distance': Must be non negative";
-            *err_msg = to_pg_msg(err);
-            return;
-        }
 
         auto roots = get_intSet(starts);
 
