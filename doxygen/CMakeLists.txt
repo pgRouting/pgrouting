@@ -12,7 +12,18 @@ if (BUILD_DOXY)
     if(Doxygen_FOUND)
         message(STATUS "DOXYGEN_VERSION=${DOXYGEN_VERSION}")
         configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
-        doxygen_add_docs(doxy ALL USE_STAMP_FILE
+        file(GLOB_RECURSE DOXY_SOURCES CONFIGURE_DEPENDS
+            ${CMAKE_SOURCE_DIR}/src/*.c
+            ${CMAKE_SOURCE_DIR}/src/*.cc
+            ${CMAKE_SOURCE_DIR}/src/*.cpp
+            ${CMAKE_SOURCE_DIR}/src/*.h
+            ${CMAKE_SOURCE_DIR}/src/*.hpp
+            ${CMAKE_SOURCE_DIR}/include/*.h
+            ${CMAKE_SOURCE_DIR}/include/*.hpp
+        )
+        list(APPEND DOXY_SOURCES ${CMAKE_SOURCE_DIR}/README.md)
+        doxygen_add_docs(doxy ${DOXY_SOURCES}
+            ALL USE_STAMP_FILE
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
             COMMENT "Generating API documentation with Doxygen"
             CONFIG_FILE ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
