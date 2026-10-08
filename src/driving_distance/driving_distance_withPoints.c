@@ -40,6 +40,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum _pgr_withpointsddv4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_withpointsddv4);
 
+/**
+ * @brief Processes driving distance with points of interest from SQL inputs.
+ *
+ * @param[in] edges_sql Query string defining network edges.
+ * @param[in] points_sql Query string defining points of interest.
+ * @param[in] starts Array of starting vertex IDs.
+ * @param[in] distance Maximum distance limit.
+ * @param[in] directed Flag indicating directed or undirected graph traversal.
+ * @param[in] driving_side Side of the street driving rule ('r', 'l', 'b').
+ * @param[in] details Flag indicating whether detailed path segments are included.
+ * @param[in] equicost Flag indicating whether equidistant cost sharing is applied.
+ * @param[out] result_tuples Output result tuples array.
+ * @param[out] result_count Number of output tuples.
+ */
 static
 void
 process(
