@@ -87,6 +87,12 @@ pgr_do_withPointsDD(
         pgassert(*return_count == 0);
 
         using pgrouting::to_postgres::get_tuples;
+ 
+        if (distance < 0) {
+            err << "Negative value found on 'distance': Must be non negative";
+            *err_msg = to_pg_msg(err);
+            return;
+        }
 
         auto roots = get_intSet(starts);
 

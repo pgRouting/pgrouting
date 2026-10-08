@@ -103,7 +103,7 @@ void pgr_process_spanningTree(
 
         case DIJKSTRADD:
             if (distance < 0) {
-                pgr_throw_error("Negative value found on 'distance'", "Must be positive");
+                pgr_throw_error("Negative value found on 'distance'", "Must be non negative");
             }
             break;
 

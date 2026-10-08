@@ -1,0 +1,36 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+BEGIN;
+
+SELECT plan(2);
+
+PREPARE wp_dd_neg1 AS
+SELECT *
+FROM pgr_withPointsDD(
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+    'SELECT pid, edge_id, fraction, side FROM pointsOfInterest',
+    15, -3
+);
+
+SELECT throws_ok('wp_dd_neg1',
+    CASE WHEN min_version('3.7.0') THEN 'XX000' ELSE 'P0001' END,
+    'Negative value found on ''distance''',
+    '1: Negative distance throws for single vertex in withPointsDD');
+
+PREPARE wp_dd_neg2 AS
+SELECT *
+FROM pgr_withPointsDD(
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+    'SELECT pid, edge_id, fraction, side FROM pointsOfInterest',
+    ARRAY[15, 8], -3
+);
+
+SELECT throws_ok('wp_dd_neg2',
+    CASE WHEN min_version('3.7.0') THEN 'XX000' ELSE 'P0001' END,
+    'Negative value found on ''distance''',
+    '2: Negative distance throws for multiple vertices in withPointsDD');
+
+SELECT * FROM finish();
+ROLLBACK;
