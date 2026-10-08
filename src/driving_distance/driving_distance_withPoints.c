@@ -62,7 +62,7 @@ process(
     }
 
     if (distance < 0) {
-        pgr_throw_error("Negative value found on 'distance'", "Must be positive");
+        pgr_throw_error("Negative value found on 'distance'", "Must be non negative");
     }
 
     pgr_SPI_connect();
