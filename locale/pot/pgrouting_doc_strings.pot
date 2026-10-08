@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-28 18:14+0000\n"
+"POT-Creation-Date: 2026-10-08 15:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3647,6 +3647,9 @@ msgid "`#3131 <https://github.com/pgRouting/pgrouting/issues/3131>`__: binaryBre
 msgstr ""
 
 msgid "`#3154 <https://github.com/pgRouting/pgrouting/issues/3154>`__: betweennessCentrality: use allpairs/process and driver"
+msgstr ""
+
+msgid "`#3163 <https://github.com/pgRouting/pgrouting/issues/3163>`__: KSP & KSP WithPoints Use ShortestPath driver files"
 msgstr ""
 
 msgid "4.1.0 Bug Fixes"
