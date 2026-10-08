@@ -73,6 +73,7 @@ To see all issues & pull requests closed by this release see the
 * [#3131](https://github.com/pgRouting/pgrouting/issues/3131): binaryBreadthFirstSearch: Integrate into existing
   process/driver pair
 * [#3154](https://github.com/pgRouting/pgrouting/issues/3154): betweennessCentrality: use allpairs/process and driver
+* [#3163](https://github.com/pgRouting/pgrouting/issues/3163): KSP & KSP WithPoints Use ShortestPath driver files
 
 4.1.0 Bug Fixes
 
