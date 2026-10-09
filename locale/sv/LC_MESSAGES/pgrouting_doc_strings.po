@@ -2,13 +2,13 @@
 # Copyright (C) pgRouting Contributors - Version v4.1
 # This file is distributed under the same license as the pgRouting package.
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2025.
-# Daniel Nylander <daniel@danielnylander.se>, 2025.
+# Daniel Nylander <daniel@danielnylander.se>, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-10 19:05+0000\n"
-"PO-Revision-Date: 2025-12-08 08:47+0000\n"
+"POT-Creation-Date: 2026-10-08 15:38+0000\n"
+"PO-Revision-Date: 2026-10-05 18:39+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\n"
 "Language: sv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4.3\n"
+"X-Generator: Weblate 5.16.2\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Kategori"
@@ -304,7 +304,7 @@ msgid "Documentation might need refinement."
 msgstr "Dokumentationen kan behöva förbättras."
 
 msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
-msgstr ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
+msgstr ":doc:`pgr_depthFirstSearch` - Djupet först-genomgång av grafen."
 
 msgid "In general:"
 msgstr "I allmänhet:"
@@ -313,10 +313,10 @@ msgid "K shortest paths - Category"
 msgstr "K kortaste vägarna - Kategori"
 
 msgid ":doc:`pgr_KSP` - Yen's algorithm based on pgr_dijkstra"
-msgstr ":doc:`pgr_KSP` - Yen's algorithm based on pgr_dijkstra"
+msgstr ":doc:`pgr_KSP` - Yens algoritm baserad på pgr_dijkstra"
 
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
-msgstr ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
+msgstr ":doc:`pgr_withPointsKSP` - Yens algoritm baserad på pgr_withPoints"
 
 msgid "TRSP - Family of functions"
 msgstr "TRSP - Familj av funktioner"
@@ -325,19 +325,25 @@ msgid "When points are also given as input:"
 msgstr "När punkt också ges som input:"
 
 msgid ":doc:`pgr_trsp` - Routing with restrictions."
-msgstr ":doc:`pgr_trsp` - Routing with restrictions."
+msgstr ":doc:`pgr_trsp` - Ruttplanering med begränsningar."
 
 msgid ":doc:`pgr_trspVia` - Via Vertices routing with restrictions."
-msgstr ":doc:`pgr_trspVia` - Via Vertices routing with restrictions."
+msgstr ":doc:`pgr_trspVia` - Ruttplanering via hörn med begränsningar."
 
 msgid ":doc:`pgr_trsp_withPoints` - Vertex/Point routing with restrictions."
-msgstr ":doc:`pgr_trsp_withPoints` - Vertex/Point routing with restrictions."
+msgstr ":doc:`pgr_trsp_withPoints` - Ruttplanering via hörn/punkter med begränsningar."
 
 msgid ":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictions."
-msgstr ":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictions."
+msgstr ":doc:`pgr_trspVia_withPoints` - Ruttplanering via hörn/punkter med begränsningar."
 
 msgid "Experimental"
 msgstr "Experiment"
+
+msgid "Possible server crash"
+msgstr "Möjlig serverkrasch"
+
+msgid "These functions might create a server crash"
+msgstr "Dessa funktioner kan orsaka en serverkrasch"
 
 msgid "Experimental functions"
 msgstr "Experimentella funktioner"
@@ -373,7 +379,7 @@ msgid "Might need a lot of feedback from the community."
 msgstr "Det kan behövas mycket feedback från samhället."
 
 msgid ":doc:`pgr_turnRestrictedPath` - Routing with restrictions."
-msgstr ":doc:`pgr_turnRestrictedPath` - Routing with restrictions."
+msgstr ":doc:`pgr_turnRestrictedPath` - Ruttplanering med begränsningar."
 
 msgid "Introduction"
 msgstr "Introduktion"
@@ -412,7 +418,7 @@ msgid "On road networks, there are restrictions such as left or right turn restr
 msgstr "På vägnätet finns det begränsningar, till exempel begränsningar för vänster- eller högersväng, inga begränsningar för U-sväng."
 
 msgid "A restriction is a sequence of edges, called path and that path is to be avoided."
-msgstr "En restriktion är en sekvens av kanter, som kallas väg, och den vägen ska undvikas."
+msgstr "En restriktion är en sekvens av kanter som kallas väg och den vägen ska undvikas."
 
 msgid "**Restrictions on the road network**"
 msgstr "**Begränsningar av vägnätet**"
@@ -445,10 +451,10 @@ msgid "Traveling Sales Person - Family of functions"
 msgstr "Resande säljare - Familj av funktioner"
 
 msgid ":doc:`pgr_TSP` - When input is given as matrix cell information."
-msgstr ":doc:`pgr_TSP` - When input is given as matrix cell information."
+msgstr ":doc:`pgr_TSP` - När indata anges som matriscellsinformation."
 
 msgid ":doc:`pgr_TSPeuclidean` - When input are coordinates."
-msgstr ":doc:`pgr_TSPeuclidean` - When input are coordinates."
+msgstr ":doc:`pgr_TSPeuclidean` - När indata är koordinater."
 
 msgid "Table of Contents"
 msgstr "Innehåll"
@@ -583,16 +589,16 @@ msgid "Pickup and delivery problem"
 msgstr "Problem med upphämtning och leverans"
 
 msgid ":doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
-msgstr ":doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
+msgstr ":doc:`pgr_pickDeliver` - Hämtning och leverans med en kostnadsmatris"
 
 msgid ":doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
-msgstr ":doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
+msgstr ":doc:`pgr_pickDeliverEuclidean` - Hämtning och leverans med euklidiska avstånd"
 
 msgid "Distribution problem"
 msgstr "Distributionsproblem"
 
 msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
-msgstr ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
+msgstr ":doc:`pgr_vrpOneDepot` - Distribuerar beställningar från en enda depå"
 
 msgid "Contents"
 msgstr "Innehåll"
@@ -634,7 +640,7 @@ msgid "Less wait time is better."
 msgstr "Kortare väntetid är bättre."
 
 msgid "Pick & Delivery"
-msgstr "Pick & Delivery"
+msgstr "Upphämtning och leverans"
 
 msgid "Problem: `CVRPPDTW` Capacitated Pick and Delivery Vehicle Routing problem with Time Windows"
 msgstr "Problem: `CVRPPDTW` Kapaciterade plock- och leveransfordons ruttproblem med tidsfönster"
@@ -844,25 +850,25 @@ msgid "``p_x``"
 msgstr "``p_x``"
 
 msgid ":math:`x` value of the pick up location"
-msgstr ":math:`x` value of the pick up location"
+msgstr ":math:`x`-värde för upphämtningsplatsen"
 
 msgid "``p_y``"
 msgstr "``p_y``"
 
 msgid ":math:`y` value of the pick up location"
-msgstr ":math:`y` value of the pick up location"
+msgstr ":math:`y`-värde för upphämtningsplatsen"
 
 msgid "``d_x``"
 msgstr "``d_x``"
 
 msgid ":math:`x` value of the delivery location"
-msgstr ":math:`x` value of the delivery location"
+msgstr ":math:`x`-värde för leveransplatsen"
 
 msgid "``d_y``"
 msgstr "``d_y``"
 
 msgid ":math:`y` value of the delivery location"
-msgstr ":math:`y` value of the delivery location"
+msgstr ":math:`y`-värde för leveransplatsen"
 
 msgid "Vehicles SQL"
 msgstr "Fordon SQL"
@@ -949,19 +955,19 @@ msgid "``start_x``"
 msgstr "``start_x``"
 
 msgid ":math:`x` value of the starting location"
-msgstr ":math:`x` value of the starting location"
+msgstr ":math:`x`-värde för startplatsen"
 
 msgid "``start_y``"
 msgstr "``start_y``"
 
 msgid ":math:`y` value of the starting location"
-msgstr ":math:`y` value of the starting location"
+msgstr ":math:`y`-värde för startplatsen"
 
 msgid "[``end_x``]"
 msgstr "[``end_x``]"
 
 msgid ":math:`x` value of the ending location"
-msgstr ":math:`x` value of the ending location"
+msgstr ":math:`x`-värde för slutplatsen"
 
 msgid "When missing: ``start_x`` is used."
 msgstr "När den saknas: ``start_x`` används."
@@ -970,7 +976,7 @@ msgid "[``end_y``]"
 msgstr "[``end_y``]"
 
 msgid ":math:`y` value of the ending location"
-msgstr ":math:`y` value of the ending location"
+msgstr ":math:`y`-värde för slutplatsen"
 
 msgid "When missing: ``start_y`` is used."
 msgstr "När den saknas: ``start_y`` används."
@@ -1042,19 +1048,19 @@ msgid "Kind of stop location the vehicle is at"
 msgstr "Typ av stopplats som fordonet befinner sig på"
 
 msgid ":math:`-1`: at the solution summary row"
-msgstr ":math:`-1`: at the solution summary row"
+msgstr ":math:`-1`: på sammanfattningsraden för lösningen"
 
 msgid ":math:`1`: Starting location"
-msgstr ":math:`1`: Starting location"
+msgstr ":math:`1`: Startposition"
 
 msgid ":math:`2`: Pickup location"
-msgstr ":math:`2`: Pickup location"
+msgstr ":math:`2`: Upphämtningsplats"
 
 msgid ":math:`3`: Delivery location"
-msgstr ":math:`3`: Delivery location"
+msgstr ":math:`3`: Leveransplats"
 
 msgid ":math:`6`: Ending location and indicates the vehicle's summary row"
-msgstr ":math:`6`: Ending location and indicates the vehicle's summary row"
+msgstr ":math:`6`: Slutplats och anger fordonets sammanfattningsrad"
 
 msgid "``order_id``"
 msgstr "``order_id``"
@@ -1093,10 +1099,10 @@ msgid "Time spent waiting for current location to open."
 msgstr "Tidsåtgång för att vänta på att den aktuella platsen ska öppnas."
 
 msgid ":math:`-1`: at the solution summary row."
-msgstr ":math:`-1`: at the solution summary row."
+msgstr ":math:`-1`: på sammanfattningsraden för lösningen."
 
 msgid ":math:`0`: at the starting location."
-msgstr ":math:`0`: at the starting location."
+msgstr ":math:`0`: vid startplatsen."
 
 msgid "``wait_time``"
 msgstr "``wait_time``"
@@ -1282,16 +1288,16 @@ msgid "time units"
 msgstr "tidsenheter"
 
 msgid "9:00 am"
-msgstr "9:00"
+msgstr "9.00"
 
 msgid "4:30 pm"
-msgstr "16:30"
+msgstr "16.30"
 
 msgid "10 min 30 secs"
 msgstr "10 min 30 sek"
 
 msgid "0:00 am"
-msgstr "0:00 am"
+msgstr "0.00"
 
 msgid "hours"
 msgstr "timmar"
@@ -1468,13 +1474,13 @@ msgid "The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm
 msgstr "Algoritmen A* (uttalas \"A Star\") är baserad på Dijkstras algoritm med en heuristik som gör att den kan lösa de flesta problem med kortaste vägen genom att endast utvärdera en delmängd av den totala grafen."
 
 msgid ":doc:`pgr_aStar` - A* algorithm for the shortest path."
-msgstr ":doc:`pgr_aStar` - A* algorithm for the shortest path."
+msgstr ":doc:`pgr_aStar` - A*-algoritm för den kortaste vägen."
 
 msgid ":doc:`pgr_aStarCost` - Get the aggregate cost of the shortest paths."
-msgstr ":doc:`pgr_aStarCost` - Get the aggregate cost of the shortest paths."
+msgstr ":doc:`pgr_aStarCost` - Hämta den sammanlagda kostnaden för de kortaste vägarna."
 
 msgid ":doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
-msgstr ":doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
+msgstr ":doc:`pgr_aStarCostMatrix` - Hämta kostnadsmatrisen för de kortaste vägarna."
 
 msgid "The main Characteristics are:"
 msgstr "De viktigaste egenskaperna är:"
@@ -1621,10 +1627,10 @@ msgid "The following functions work on all vertices pair combinations"
 msgstr "Följande funktioner fungerar på alla kombinationer av toppar och par"
 
 msgid ":doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm."
-msgstr ":doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm."
+msgstr ":doc:`pgr_floydWarshall` - Floyd–Warshalls algoritm."
 
 msgid ":doc:`pgr_johnson` - Johnson's algorithm"
-msgstr ":doc:`pgr_johnson` - Johnson's algorithm"
+msgstr ":doc:`pgr_johnson` - Johnsons algoritm"
 
 msgid "The main characteristics are:"
 msgstr "De viktigaste egenskaperna är:"
@@ -2368,16 +2374,16 @@ msgid "The bidirectional A* (pronounced \"A Star\") algorithm is based on the A*
 msgstr "Den dubbelriktade algoritmen A* (uttalas \"A Star\") är baserad på A*-algoritmen."
 
 msgid ":doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths."
-msgstr ":doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths."
+msgstr ":doc:`pgr_bdAstar` - Dubbelriktad A*-algoritm för att hitta vägar."
 
 msgid ":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of the paths."
-msgstr ":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of the paths."
+msgstr ":doc:`pgr_bdAstarCost` - Dubbelriktad A*-algoritm för att beräkna vägars kostnad."
 
 msgid ":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost matrix of paths."
-msgstr ":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost matrix of paths."
+msgstr ":doc:`pgr_bdAstarCostMatrix` - Dubbelriktad A*-algoritm för att beräkna en kostnadsmatris för vägar."
 
 msgid "Based on A* algorithm, the bidirectional search finds a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``). It runs two simultaneous searches: one forward from the ``start_vid``, and one backward from the ``end_vid``, stopping when the two meet in the middle. This implementation can be used with a directed graph and an undirected graph."
-msgstr "Baserat på A*-algoritmen hittar den dubbelriktade sökningen den kortaste vägen från ett startvertex (``start_vid``) till ett slutvertex (``end_vid``). Den kör två samtidiga sökningar: en framåt från ``start_vid`` och en bakåt från ``slut_vid``, och stannar när de två möts i mitten. Den här implementationen kan användas med en riktad graf och en oriktad graf."
+msgstr "Med A*-algoritmen hittar den dubbelriktade sökningen den kortaste vägen från en starthörnpunkt (``start_vid``) till en sluthornpunkt (``end_vid``). Den kör två samtidiga sökningar: en framåt från ``start_vid`` och en bakåt från ``end_vid`` och stannar när de två möts i mitten. Den här implementationen kan användas med en riktad graf och en oriktad graf."
 
 msgid "For large graphs where there is a path between the starting vertex and ending vertex:"
 msgstr "För stora grafer där det finns en väg mellan start- och slutvertexen:"
@@ -2392,13 +2398,13 @@ msgid "Bidirectional Dijkstra - Family of functions"
 msgstr "Dubbelriktad Dijkstra - Familj av funktioner"
 
 msgid ":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest paths."
-msgstr ":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest paths."
+msgstr ":doc:`pgr_bdDijkstra` - Dubbelriktad Dijkstra-algoritm för de kortaste vägarna."
 
 msgid ":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of the shortest paths"
-msgstr ":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of the shortest paths"
+msgstr ":doc:`pgr_bdDijkstraCost` - Dubbelriktad Dijkstra för att beräkna kostnaden för de kortaste vägarna"
 
 msgid ":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm to create a matrix of costs of the shortest paths."
-msgstr ":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm to create a matrix of costs of the shortest paths."
+msgstr ":doc:`pgr_bdDijkstraCostMatrix` - Dubbelriktad Dijkstra-algoritm för att skapa en matris med kostnader för de kortaste vägarna."
 
 msgid "Synopsis"
 msgstr "Sammanfattning"
@@ -2407,7 +2413,7 @@ msgid "Based on Dijkstra's algorithm, the bidirectional search finds a shortest 
 msgstr "Baserat på Dijkstras algoritm hittar den dubbelriktade sökningen den kortaste vägen från en startpunkt till en slutpunkt."
 
 msgid "It runs two simultaneous searches: one forward from the source, and one backward from the target, stopping when the two meet in the middle."
-msgstr "Den kör två samtidiga sökningar: en framåt från källan och en bakåt från målet, och stannar när de två möts i mitten."
+msgstr "Den kör två samtidiga sökningar: en framåt från källan och en bakåt från målet och stannar när de två möts i mitten."
 
 msgid "This implementation can be used with a directed graph and an undirected graph."
 msgstr "Denna implementation kan användas med en riktad graf och en oriktad graf."
@@ -2473,13 +2479,13 @@ msgid "Coloring - Family of functions"
 msgstr "Färgläggning - Familj av funktioner"
 
 msgid ":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy approach."
-msgstr ":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy approach."
+msgstr ":doc:`pgr_sequentialVertexColoring` - Algoritm för hörnfärgning med girig metod."
 
 msgid ":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring approach."
-msgstr ":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring approach."
+msgstr ":doc:`pgr_bipartite` - Algoritm för bipartita grafer med DFS-baserad färgning."
 
 msgid ":doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem."
-msgstr ":doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem."
+msgstr ":doc:`pgr_edgeColoring` - Algoritm för kantfärgning med Vizings sats."
 
 msgid "Returns set of |result_edge_color|"
 msgstr "Returnerar uppsättning av |result_edge_color|"
@@ -2509,22 +2515,22 @@ msgid "Components - Family of functions"
 msgstr "Komponenter - Familj av funktioner"
 
 msgid ":doc:`pgr_connectedComponents` - Connected components of an undirected graph."
-msgstr ":doc:`pgr_connectedComponents` - Connected components of an undirected graph."
+msgstr ":doc:`pgr_connectedComponents` - Sammanhängande komponenter i en oriktad graf."
 
 msgid ":doc:`pgr_strongComponents` - Strongly connected components of a directed graph."
-msgstr ":doc:`pgr_strongComponents` - Strongly connected components of a directed graph."
+msgstr ":doc:`pgr_strongComponents` - Starkt sammanhängande komponenter i en riktad graf."
 
 msgid ":doc:`pgr_biconnectedComponents` - Biconnected components of an undirected graph."
-msgstr ":doc:`pgr_biconnectedComponents` - Biconnected components of an undirected graph."
+msgstr ":doc:`pgr_biconnectedComponents` - Bikonnekterade komponenter i en oriktad graf."
 
 msgid ":doc:`pgr_articulationPoints` - Articulation points of an undirected graph."
-msgstr ":doc:`pgr_articulationPoints` - Articulation points of an undirected graph."
+msgstr ":doc:`pgr_articulationPoints` - Artikulationspunkter i en oriktad graf."
 
 msgid ":doc:`pgr_bridges` - Bridges of an undirected graph."
-msgstr ":doc:`pgr_bridges` - Bridges of an undirected graph."
+msgstr ":doc:`pgr_bridges` - Broar i en oriktad graf."
 
 msgid ":doc:`pgr_makeConnected` - Details of edges to make graph connected."
-msgstr ":doc:`pgr_makeConnected` - Details of edges to make graph connected."
+msgstr ":doc:`pgr_makeConnected` - Information om kanter för att göra grafen sammanhängande."
 
 msgid "Contraction - Family of functions"
 msgstr "Sammandragning - Familj av funktioner"
@@ -2776,28 +2782,28 @@ msgid "Dijkstra - Family of functions"
 msgstr "Dijkstra - Familj av funktioner"
 
 msgid ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
-msgstr ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
+msgstr ":doc:`pgr_dijkstra` - Dijkstras algoritm för de kortaste vägarna."
 
 msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
-msgstr ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
+msgstr ":doc:`pgr_dijkstraCost` - Hämta den sammanlagda kostnaden för de kortaste vägarna."
 
 msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
-msgstr ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
+msgstr ":doc:`pgr_dijkstraCostMatrix` - Använd pgr_dijkstra för att skapa en kostnadsmatris."
 
 msgid ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament information."
-msgstr ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament information."
+msgstr ":doc:`pgr_drivingDistance` - Använd pgr_dijkstra för att beräkna avrinningsområdesinformation."
 
 msgid ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest paths."
-msgstr ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest paths."
+msgstr ":doc:`pgr_KSP` - Använd Yens algoritm med pgr_dijkstra för att få de K kortaste vägarna."
 
 msgid ":doc:`pgr_dijkstraVia` - Get a route of a sequence of vertices."
-msgstr ":doc:`pgr_dijkstraVia` - Get a route of a sequence of vertices."
+msgstr ":doc:`pgr_dijkstraVia` - Hämta en rutt genom en följd av hörn."
 
 msgid ":doc:`pgr_dijkstraNear` - Get the route to the nearest vertex."
-msgstr ":doc:`pgr_dijkstraNear` - Get the route to the nearest vertex."
+msgstr ":doc:`pgr_dijkstraNear` - Hämta rutten till närmaste hörn."
 
 msgid ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
-msgstr ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
+msgstr ":doc:`pgr_dijkstraNearCost` - Hämta kostnaden till närmaste hörn."
 
 msgid "Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956. It is a graph search algorithm that solves the shortest path problem for a graph with non-negative edge path costs, producing a shortest path from a starting vertex to an ending vertex. This implementation can be used with a directed graph and an undirected graph."
 msgstr "Dijkstras algoritm, skapad av den holländske datavetaren Edsger Dijkstra 1956. Det är en algoritm för grafsökning som löser problemet med kortaste vägen för en graf med icke-negativa kantvägskostnader, vilket ger en kortaste väg från ett startvertex till ett slutvertex. Den här implementationen kan användas med en riktad graf och en oriktad graf."
@@ -2950,13 +2956,13 @@ msgid "In other words: The algorithm returns a the shortest path between :math:`
 msgstr "Eller med andra ord Algoritmen returnerar den kortaste vägen mellan :math:`start_{vid}` och :math:`slut_{vid}`, om den finns, i form av en sekvens av noder och kanter,"
 
 msgid ":math:`path\\_seq` indicates the relative position in the path of the :math:`node` or :math:`edge`."
-msgstr ":math:`path\\_seq` indicates the relative position in the path of the :math:`node` or :math:`edge`."
+msgstr ":math:`path\\_seq` anger den relativa positionen i vägen för :math:`node` eller :math:`edge`."
 
 msgid ":math:`cost` is the cost of the edge to be used to go to the next node."
-msgstr ":math:`cost` is the cost of the edge to be used to go to the next node."
+msgstr ":math:`cost` är kostnaden för den kant som används för att gå till nästa nod."
 
 msgid ":math:`agg\\_cost` is the cost from the :math:`start_{vid}` up to the node."
-msgstr ":math:`agg\\_cost` is the cost from the :math:`start_{vid}` up to the node."
+msgstr ":math:`agg\\_cost` är kostnaden från :math:`start_{vid}` till noden."
 
 msgid "If there is no path, the resulting set is empty."
 msgstr "Om det inte finns någon väg är den resulterande uppsättningen tom."
@@ -2965,16 +2971,16 @@ msgid "Driving Distance - Category"
 msgstr "Köravstånd - Kategori"
 
 msgid ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
-msgstr ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
+msgstr ":doc:`pgr_drivingDistance` - Köravstånd baserat på Dijkstras algoritm"
 
 msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
-msgstr ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
+msgstr ":doc:`pgr_primDD` - Köravstånd baserat på Prims algoritm"
 
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
-msgstr ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
+msgstr ":doc:`pgr_kruskalDD` - Köravstånd baserat på Kruskals algoritm"
 
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
-msgstr ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
+msgstr ":doc:`pgr_withPointsDD` - Köravstånd baserat på pgr_withPoints"
 
 msgid "Calculate nodes that are within a distance."
 msgstr "Beräkna noder som ligger inom ett visst avstånd."
@@ -3043,10 +3049,13 @@ msgid ":doc:`flow-family`"
 msgstr ":doc:`flow-family`"
 
 msgid ":doc:`pgr_maxFlowMinCost` - Details of flow and cost on edges."
-msgstr ":doc:`pgr_maxFlowMinCost` - Details of flow and cost on edges."
+msgstr ":doc:`pgr_maxFlowMinCost` - Information om flöde och kostnad på kanter."
 
 msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
-msgstr ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
+msgstr ":doc:`pgr_maxFlowMinCost_Cost` - Endast beräkning av lägsta kostnad."
+
+msgid ":doc:`pgr_maxWeightedMatch` - Calculates a maximum weighted matching in a graph."
+msgstr ":doc:`pgr_maxWeightedMatch` – Beräknar en maximal viktad matchning i en graf."
 
 msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ":doc:`chinesePostmanProblem-family`"
@@ -3061,16 +3070,16 @@ msgid ":doc:`transformation-family`"
 msgstr ":doc:`transformation-family`"
 
 msgid ":doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line Graph out of each vertex in the input graph."
-msgstr ":doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line Graph out of each vertex in the input graph."
+msgstr ":doc:`pgr_lineGraphFull` - Omvandlingsalgoritm som skapar en linjegraf av varje hörn i indatagrafen."
 
 msgid ":doc:`traversal-family`"
 msgstr ":doc:`traversal-family`"
 
 msgid ":doc:`pgr_breadthFirstSearch` - Breath first search traversal of the graph."
-msgstr ":doc:`pgr_breadthFirstSearch` - Breath first search traversal of the graph."
+msgstr ":doc:`pgr_breadthFirstSearch` - Bredden först-genomgång av grafen."
 
 msgid ":doc:`pgr_binaryBreadthFirstSearch` - Breath first search traversal of the graph."
-msgstr ":doc:`pgr_binaryBreadthFirstSearch` - Breath first search traversal of the graph."
+msgstr ":doc:`pgr_binaryBreadthFirstSearch` - Bredden först-genomgång av grafen."
 
 msgid ":doc:`components-family`"
 msgstr ":doc:`components-family`"
@@ -3079,10 +3088,10 @@ msgid ":doc:`ordering-family`"
 msgstr ":doc:`ordering-family`"
 
 msgid ":doc:`pgr_cuthillMckeeOrdering` - Return reverse Cuthill-McKee ordering of an undirected graph."
-msgstr ":doc:`pgr_cuthillMckeeOrdering` - Return reverse Cuthill-McKee ordering of an undirected graph."
+msgstr ":doc:`pgr_cuthillMckeeOrdering` - Returnera omvänd Cuthill–McKee-ordning för en oriktad graf."
 
 msgid ":doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed acyclic graph."
-msgstr ":doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed acyclic graph."
+msgstr ":doc:`pgr_topologicalSort` - Linjär ordning av hörnen i en riktad acyklisk graf."
 
 msgid ":doc:`pgr_sloanOrdering` - Returns the sloan ordering of an undirected graph."
 msgstr ":doc:`pgr_sloanOrdering` - Returnerar sloan-ordningen för en odränerad graf."
@@ -3094,13 +3103,28 @@ msgid ":doc:`metrics-family`"
 msgstr ":doc:`metrics-family`"
 
 msgid ":doc:`pgr_betweennessCentrality` - Calculates relative betweenness centrality using Brandes Algorithm"
-msgstr ":doc:`pgr_betweennessCentrality` - Calculates relative betweenness centrality using Brandes Algorithm"
+msgstr ":doc:`pgr_betweennessCentrality` - Beräknar relativ mellanknutscentralitet med Brandes algoritm"
 
 msgid ":doc:`pgr_bandwidth` - Computes the bandwidth of a graph."
 msgstr ":doc:`pgr_bandwidth` - Beräknar bandbredden för en graf."
 
+msgid ":doc:`pgr_coreNumbers` - Computes the core number of each vertex."
+msgstr ":doc:`pgr_coreNumbers` – Beräknar kärntalet för varje hörnpunkt."
+
 msgid ":doc:`TRSP-family`"
 msgstr ":doc:`TRSP-family`"
+
+msgid ":doc:`planar-family`"
+msgstr ":doc:`planar-family`"
+
+msgid ":doc:`pgr_isPlanar` - Returns a boolean depending upon the planarity of the graph."
+msgstr ":doc:`pgr_isPlanar` – Returnerar ett booleskt värde beroende på om grafen är plan."
+
+msgid ":doc:`pgr_makeBiconnectedPlanar` - Returns edges to add to a planar graph to make each connected component biconnected."
+msgstr ":doc:`pgr_makeBiconnectedPlanar` – Returnerar kanter som kan läggas till i en plan graf för att göra varje sammanhängande komponent tvåhörnssammanhängande."
+
+msgid ":doc:`pgr_planarFaces` - Identifies the faces of a planar embedding and lists every edge-face incidence for an undirected graph."
+msgstr ":doc:`pgr_planarFaces` – Identifierar ytorna i en plan inbäddning och listar varje incidens mellan kant och yta för en oriktad graf."
 
 msgid "categories"
 msgstr "kategorier"
@@ -3119,12 +3143,6 @@ msgstr ":doc:`pgr_dagShortestPath`"
 
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ":doc:`pgr_edwardMoore`"
-
-msgid "Planar Family"
-msgstr "Planar familj"
-
-msgid ":doc:`pgr_isPlanar`"
-msgstr ":doc:`pgr_isPlanar`"
 
 msgid "Miscellaneous Algorithms"
 msgstr "Diverse algoritmer"
@@ -3145,25 +3163,25 @@ msgid "Flow - Family of functions"
 msgstr "Flow - Familj av funktioner"
 
 msgid ":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm."
-msgstr ":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm."
+msgstr ":doc:`pgr_maxFlow` - Endast beräkningen av maximalt flöde med push-relabel-algoritmen."
 
 msgid ":doc:`pgr_boykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges."
-msgstr ":doc:`pgr_boykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges."
+msgstr ":doc:`pgr_boykovKolmogorov` - Boykov och Kolmogorov med detaljer om flödet på kanter."
 
 msgid ":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow on edges."
-msgstr ":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow on edges."
+msgstr ":doc:`pgr_edmondsKarp` - Edmonds-Karps algoritm med detaljer om flödet på kanter."
 
 msgid ":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow on edges."
-msgstr ":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow on edges."
+msgstr ":doc:`pgr_pushRelabel` - Push-relabel-algoritmen med detaljer om flödet på kanter."
 
 msgid "Applications"
 msgstr "Ansökningar"
 
 msgid ":doc:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices."
-msgstr ":doc:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices."
+msgstr ":doc:`pgr_edgeDisjointPaths` - Beräknar kantdisjunkta vägar mellan två grupper av hörn."
 
 msgid ":doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching in a graph."
-msgstr ":doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching in a graph."
+msgstr ":doc:`pgr_maxCardinalityMatch` - Beräknar en matchning med maximal kardinalitet i en graf."
 
 msgid "Flow Functions General Information"
 msgstr "Flödesfunktioner Allmän information"
@@ -3208,7 +3226,7 @@ msgid "By aggregation of the incoming flow to the targets"
 msgstr "Genom aggregering av det inkommande flödet till målen"
 
 msgid ":doc:`pgr_maxFlow` is the maximum Flow and that maximum is guaranteed to be the same on the functions :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`, :doc:`pgr_boykovKolmogorov`, but the actual flow through each edge may vary."
-msgstr ":doc:`pgr_maxFlow` is the maximum Flow and that maximum is guaranteed to be the same on the functions :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`, :doc:`pgr_boykovKolmogorov`, but the actual flow through each edge may vary."
+msgstr ":doc:`pgr_maxFlow` är det maximala flödet och detta maximum garanteras vara detsamma för funktionerna :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp` och :doc:`pgr_boykovKolmogorov`, men det faktiska flödet genom varje kant kan variera."
 
 msgid "Capacity edges"
 msgstr "Kapacitet kanter"
@@ -3394,7 +3412,7 @@ msgid "General"
 msgstr "Allmänt"
 
 msgid ":doc:`sampledata` that is used in the examples of this manual."
-msgstr ":doc:`sampledata` that is used in the examples of this manual."
+msgstr ":doc:`sampledata` som används i exemplen i den här handboken."
 
 msgid "Pgrouting Concepts"
 msgstr "Koncept för injektering"
@@ -3421,7 +3439,7 @@ msgid ":doc:`pgr_kruskalDD`"
 msgstr ":doc:`pgr_kruskalDD`"
 
 msgid ":doc:`pgr_degree` - Returns a set of vertices and corresponding count of incident edges to the vertex."
-msgstr ":doc:`pgr_degree` - Returns a set of vertices and corresponding count of incident edges to the vertex."
+msgstr ":doc:`pgr_degree` - Returnerar en mängd hörn och motsvarande antal incidenta kanter för hörnet."
 
 msgid ":doc:`prim-family`"
 msgstr ":doc:`prim-family`"
@@ -3445,37 +3463,37 @@ msgid ":doc:`utilities-family`"
 msgstr ":doc:`utilities-family`"
 
 msgid ":doc:`pgr_extractVertices` - Extracts vertex information based on the edge table information."
-msgstr ":doc:`pgr_extractVertices` - Extracts vertex information based on the edge table information."
+msgstr ":doc:`pgr_extractVertices` - Extraherar hörninformation baserat på informationen i kanttabellen."
 
 msgid ":doc:`pgr_findCloseEdges` - Finds close edges of points on the fly"
-msgstr ":doc:`pgr_findCloseEdges` - Finds close edges of points on the fly"
+msgstr ":doc:`pgr_findCloseEdges` - Hittar närliggande kanter till punkter vid behov"
 
 msgid ":doc:`pgr_separateCrossing` - Breaks geometries that cross each other."
-msgstr ":doc:`pgr_separateCrossing` - Breaks geometries that cross each other."
+msgstr ":doc:`pgr_separateCrossing` - Delar upp geometrier som korsar varandra."
 
 msgid ":doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each other."
-msgstr ":doc:`pgr_separateTouching` - Breaks geometries that (almost) touch each other."
+msgstr ":doc:`pgr_separateTouching` - Delar upp geometrier som (nästan) vidrör varandra."
 
 msgid ":doc:`withPoints-family`"
 msgstr ":doc:`withPoints-family`"
 
 msgid ":doc:`pgr_withPoints` - Route from/to points anywhere on the graph."
-msgstr ":doc:`pgr_withPoints` - Route from/to points anywhere on the graph."
+msgstr ":doc:`pgr_withPoints` - Rutt från/till punkter var som helst i grafen."
 
 msgid ":doc:`pgr_withPointsCost` - Costs of the shortest paths."
-msgstr ":doc:`pgr_withPointsCost` - Costs of the shortest paths."
+msgstr ":doc:`pgr_withPointsCost` - Kostnader för de kortaste vägarna."
 
 msgid ":doc:`pgr_withPointsCostMatrix` - Costs of the shortest paths."
-msgstr ":doc:`pgr_withPointsCostMatrix` - Costs of the shortest paths."
+msgstr ":doc:`pgr_withPointsCostMatrix` - Kostnader för de kortaste vägarna."
 
 msgid ":doc:`pgr_withPointsKSP` - K shortest paths."
-msgstr ":doc:`pgr_withPointsKSP` - K shortest paths."
+msgstr ":doc:`pgr_withPointsKSP` - K kortaste vägar."
 
 msgid ":doc:`pgr_withPointsDD` - Driving distance."
-msgstr ":doc:`pgr_withPointsDD` - Driving distance."
+msgstr ":doc:`pgr_withPointsDD` - Köravstånd."
 
 msgid ":doc:`pgr_withPointsVia` - Via routing"
-msgstr ":doc:`pgr_withPointsVia` - Via routing"
+msgstr ":doc:`pgr_withPointsVia` - Ruttplanering via punkter"
 
 msgid "Functions by categories"
 msgstr "Funktioner per kategori"
@@ -3505,7 +3523,7 @@ msgid ":doc:`withPoints-category`"
 msgstr ":doc:`withPoints-category`"
 
 msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
-msgstr ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
+msgstr ":doc:`withPoints-family` - Funktioner baserade på Dijkstras algoritm."
 
 msgid "From the :doc:`TRSP-family`:"
 msgstr "Från :doc:`TRSP-familjen <TRSP-family>`:"
@@ -3528,69 +3546,126 @@ msgstr "Versionsinformation för pgRouting 4.1.0"
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 4.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22>`__"
 
-msgid "Code enhancements"
-msgstr "Förbättringar av koden"
+msgid "4.1.0 Build"
+msgstr "4.1.0 Bygge"
 
-#, fuzzy
-msgid "`#3049 <https://github.com/pgRouting/pgrouting/issues/3049>`__: Use enumeration on drivers and process."
-msgstr "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__: pgr_transitiveClosure"
+msgid "PostgreSQL:"
+msgstr "PostgreSQL:"
 
-#, fuzzy
-msgid "`#3054 <https://github.com/pgRouting/pgrouting/issues/3054>`__: Change error message when edges_sql is empty"
-msgstr "`#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: pgr_withPoints misslyckas när points_sql är tom"
+msgid "Minimum requirement: 14"
+msgstr "Minimikrav: 14"
 
-#, fuzzy
-msgid "`#3055 <https://github.com/pgRouting/pgrouting/issues/3055>`__: bdDijkstra: use the shortest_path process and driver"
-msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
+msgid "Boost library:"
+msgstr "Boost-bibliotek:"
 
-#, fuzzy
-msgid "`#3056 <https://github.com/pgRouting/pgrouting/issues/3056>`__: edwardMoore: use the shortest_path process and driver"
-msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
+msgid "Minimum requirement: 1.74"
+msgstr "Minimikrav: 1.74"
 
-#, fuzzy
-msgid "`#3060 <https://github.com/pgRouting/pgrouting/issues/3060>`__: dagShortestPath: use the shortest_path process and driver"
-msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
+msgid "cmake:"
+msgstr "cmake:"
 
-#, fuzzy
-msgid "`#3064 <https://github.com/pgRouting/pgrouting/issues/3064>`__: Astar: create and use a process and driver for Astar"
-msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
+msgid "Minimum requirement: 3.22"
+msgstr "Minimikrav: 3.22"
 
-#, fuzzy
-msgid "`#3075 <https://github.com/pgRouting/pgrouting/issues/3075>`__: Spanning tree: create and use a process and driver"
-msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
+msgid "4.1.0 Summary of changes by function"
+msgstr "4.1.0 Sammanfattning av ändringar per funktion"
 
-#, fuzzy
-msgid "`#3086 <https://github.com/pgRouting/pgrouting/issues/3086>`__: MaxFlow: create and use a process and driver"
-msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
+msgid "pgr_coreNumbers"
+msgstr "pgr_coreNumbers"
 
-#, fuzzy
-msgid "`#3089 <https://github.com/pgRouting/pgrouting/issues/3089>`__: edgeDisjoint and bellmanFord use shortestPath driver and process"
-msgstr "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__: pgr_transitiveClosure"
-
-#, fuzzy
-msgid "`#3100 <https://github.com/pgRouting/pgrouting/issues/3100>`__: Coloring: create and use a process & driver"
-msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
-
-#, fuzzy
-msgid "`#3113 <https://github.com/pgRouting/pgrouting/issues/3113>`__: Components: Integrate into existing process/driver pair"
-msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
-
-msgid "Bug Fixes"
-msgstr "Buggfixar"
-
-#, fuzzy
-msgid "`#3101 <https://github.com/pgRouting/pgrouting/issues/3101>`__: pgr_edgeColoring not building graph correctly"
-msgstr "`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__: pgr_edgeColoring"
-
-msgid "Summary of changes by function"
-msgstr "Sammanfattning av förändringar per funktion"
+msgid "New experimental function."
+msgstr "Ny experimentell funktion."
 
 msgid "pgr_edgeColoring"
 msgstr "pgr_edgeColoring"
 
-#, fuzzy
 msgid "Fix the way it builds the graph"
-msgstr "ger grafens bandbredd."
+msgstr "Rättar hur grafen byggs"
+
+msgid "pgr_makeBiconnectedPlanar"
+msgstr "pgr_makeBiconnectedPlanar"
+
+msgid "pgr_maxWeightedMatch"
+msgstr "pgr_maxWeightedMatch"
+
+msgid "pgr_planarFaces"
+msgstr "pgr_planarFaces"
+
+msgid "4.1.0 New experimental functions."
+msgstr "4.1.0 Nya experimentella funktioner."
+
+msgid "`#3136 <https://github.com/pgRouting/pgrouting/issues/3136>`__: pgr_maxWeightedMatch"
+msgstr "`#3136 <https://github.com/pgRouting/pgrouting/issues/3136>`__: pgr_maxWeightedMatch"
+
+msgid "`#3140 <https://github.com/pgRouting/pgrouting/issues/3140>`__: pgr_makeBiconnectedPlanar"
+msgstr "`#3140 <https://github.com/pgRouting/pgrouting/issues/3140>`__: pgr_makeBiconnectedPlanar"
+
+msgid "`#3142 <https://github.com/pgRouting/pgrouting/issues/3142>`__: pgr_coreNumbers"
+msgstr "`#3142 <https://github.com/pgRouting/pgrouting/issues/3142>`__: pgr_coreNumbers"
+
+msgid "`#3143 <https://github.com/pgRouting/pgrouting/issues/3143>`__: pgr_planarFaces"
+msgstr "`#3143 <https://github.com/pgRouting/pgrouting/issues/3143>`__: pgr_planarFaces"
+
+msgid "4.1.0 Code enhancements"
+msgstr "4.1.0 Kodförbättringar"
+
+msgid "`#3049 <https://github.com/pgRouting/pgrouting/issues/3049>`__: Use enumeration on drivers and process."
+msgstr "`#3049 <https://github.com/pgRouting/pgrouting/issues/3049>`__: Använder uppräkning i drivrutiner och processer."
+
+msgid "`#3054 <https://github.com/pgRouting/pgrouting/issues/3054>`__: Change error message when edges_sql is empty"
+msgstr "`#3054 <https://github.com/pgRouting/pgrouting/issues/3054>`__: Ändrar felmeddelandet när edges_sql är tomt"
+
+msgid "`#3055 <https://github.com/pgRouting/pgrouting/issues/3055>`__: bdDijkstra: use the shortest_path process and driver"
+msgstr "`#3055 <https://github.com/pgRouting/pgrouting/issues/3055>`__: bdDijkstra: använder processen och drivrutinen shortest_path"
+
+msgid "`#3056 <https://github.com/pgRouting/pgrouting/issues/3056>`__: edwardMoore: use the shortest_path process and driver"
+msgstr "`#3056 <https://github.com/pgRouting/pgrouting/issues/3056>`__: edwardMoore: använder processen och drivrutinen shortest_path"
+
+msgid "`#3060 <https://github.com/pgRouting/pgrouting/issues/3060>`__: dagShortestPath: use the shortest_path process and driver"
+msgstr "`#3060 <https://github.com/pgRouting/pgrouting/issues/3060>`__: dagShortestPath: använder processen och drivrutinen shortest_path"
+
+msgid "`#3064 <https://github.com/pgRouting/pgrouting/issues/3064>`__: Astar: create and use a process and driver for Astar"
+msgstr "`#3064 <https://github.com/pgRouting/pgrouting/issues/3064>`__: Astar: skapar och använder en process och drivrutin för Astar"
+
+msgid "`#3075 <https://github.com/pgRouting/pgrouting/issues/3075>`__: Spanning tree: create and use a process and driver"
+msgstr "`#3075 <https://github.com/pgRouting/pgrouting/issues/3075>`__: Uppspännande träd: skapar och använder en process och drivrutin"
+
+msgid "`#3086 <https://github.com/pgRouting/pgrouting/issues/3086>`__: MaxFlow: create and use a process and driver"
+msgstr "`#3086 <https://github.com/pgRouting/pgrouting/issues/3086>`__: MaxFlow: skapar och använder en process och drivrutin"
+
+msgid "`#3089 <https://github.com/pgRouting/pgrouting/issues/3089>`__: edgeDisjoint and bellmanFord use shortestPath driver and process"
+msgstr "`#3089 <https://github.com/pgRouting/pgrouting/issues/3089>`__: edgeDisjoint och bellmanFord använder drivrutinen och processen shortestPath"
+
+msgid "`#3100 <https://github.com/pgRouting/pgrouting/issues/3100>`__: Coloring: create and use a process & driver"
+msgstr "`#3100 <https://github.com/pgRouting/pgrouting/issues/3100>`__: Färgläggning: skapar och använder en process och drivrutin"
+
+msgid "`#3113 <https://github.com/pgRouting/pgrouting/issues/3113>`__: Components: Integrate into existing process/driver pair"
+msgstr "`#3113 <https://github.com/pgRouting/pgrouting/issues/3113>`__: Komponenter: integrerar i befintligt par med process och drivrutin"
+
+msgid "`#3129 <https://github.com/pgRouting/pgrouting/issues/3129>`__: breadthFirstSearch: Reorganize into traversal"
+msgstr "`#3129 <https://github.com/pgRouting/pgrouting/issues/3129>`__: breadthFirstSearch: omorganiserar till traversering"
+
+msgid "`#3131 <https://github.com/pgRouting/pgrouting/issues/3131>`__: binaryBreadthFirstSearch: Integrate into existing process/driver pair"
+msgstr "`#3131 <https://github.com/pgRouting/pgrouting/issues/3131>`__: binaryBreadthFirstSearch: integrerar i befintligt par med process och drivrutin"
+
+msgid "`#3154 <https://github.com/pgRouting/pgrouting/issues/3154>`__: betweennessCentrality: use allpairs/process and driver"
+msgstr "`#3154 <https://github.com/pgRouting/pgrouting/issues/3154>`__: betweennessCentrality: använder allpairs/process och drivrutin"
+
+#, fuzzy
+msgid "`#3163 <https://github.com/pgRouting/pgrouting/issues/3163>`__: KSP & KSP WithPoints Use ShortestPath driver files"
+msgstr "`#3060 <https://github.com/pgRouting/pgrouting/issues/3060>`__: dagShortestPath: använder processen och drivrutinen shortest_path"
+
+msgid "4.1.0 Bug Fixes"
+msgstr "4.1.0 Felrättningar"
+
+msgid "`#3101 <https://github.com/pgRouting/pgrouting/issues/3101>`__: pgr_edgeColoring not building graph correctly"
+msgstr "`#3101 <https://github.com/pgRouting/pgrouting/issues/3101>`__: pgr_edgeColoring bygger inte grafen korrekt"
+
+msgid "4.1.0 Requirements"
+msgstr "4.1.0 Krav"
+
+msgid "`#3120 <https://github.com/pgRouting/pgrouting/issues/3120>`__: Up min requirements: Boost to 1.74 Postgres to 14 cmake to 3.22."
+msgstr "`#3120 <https://github.com/pgRouting/pgrouting/issues/3120>`__: Höjer minimikraven: Boost till 1.74, Postgres till 14 och cmake till 3.22."
 
 msgid "All releases"
 msgstr "Alla utgåvor"
@@ -4415,7 +4490,7 @@ msgid "Bridges."
 msgstr "Broar."
 
 msgid "Another routing problem can arise when there is an edge of an undirected graph whose deletion increases its number of connected components, and the bridge is only one way."
-msgstr "Ett annat routningsproblem kan uppstå när det finns en kant i en odelad graf vars borttagning ökar antalet anslutna komponenter, och bron bara går åt ett håll."
+msgstr "Ett annat routningsproblem kan uppstå när det finns en kant i en oriktad graf vars borttagning ökar antalet sammanhängande komponenter och bron bara går åt ett håll."
 
 msgid "To determine if the bridges are or not one way."
 msgstr "För att avgöra om broarna är enkelriktade eller inte."
@@ -5156,7 +5231,7 @@ msgid "`Graphs without geometries`_"
 msgstr "`Grafer utan geometrier`_"
 
 msgid ":doc:`sampledata`: a small graph used in the documentation examples"
-msgstr ":doc:`sampledata`: a small graph used in the documentation examples"
+msgstr ":doc:`sampledata`: en liten graf som används i dokumentationsexemplen"
 
 msgid "Using `osm2pgrouting <https://workshop.pgrouting.org/latest/en/basic/data.html>`__"
 msgstr "Använda `osm2pgrouting <https://workshop.pgrouting.org/latest/en/basic/data.html>`__"
@@ -6010,23 +6085,20 @@ msgstr "Beroenden för kompilering"
 msgid "To be able to compile pgRouting, make sure that the following dependencies are met:"
 msgstr "För att kunna kompilera pgRouting måste du se till att följande beroenden är uppfyllda:"
 
-msgid "C and C++0x compilers"
-msgstr "C- och C++0x-kompilatorer"
+msgid "C++ standard"
+msgstr "C++-standard"
 
-msgid "Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support"
-msgstr "Kompilering med Boost 1.56 upp till Boost 1.74 kräver C++-kompilator med standardstöd för C++03 eller C++11"
+msgid "C++17"
+msgstr "C++17"
 
-msgid "Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support"
-msgstr "Kompilering med Boost 1.75 kräver C++-kompilator med stöd för C++14-standarden"
+msgid "Postgresql version >= 14"
+msgstr "PostgreSQL-version >= 14"
 
-msgid "Postgresql version >= 13"
-msgstr "Postgresql-version >= 13"
+msgid "The Boost Graph Library (BGL) >= 1.74.0"
+msgstr "Boost Graph Library (BGL) >= 1.74.0"
 
-msgid "The Boost Graph Library (BGL) >= 1.56.0"
-msgstr "Boost Graph Library (BGL) >= 1.56.0"
-
-msgid "CMake >= 3.12"
-msgstr "CMake >= 3.12"
+msgid "CMake >= 3.22"
+msgstr "CMake >= 3.22"
 
 msgid "For user's documentation"
 msgstr "För användardokumentation"
@@ -6286,8 +6358,8 @@ msgstr "Tidigare och nuvarande bidragsgivare:"
 msgid "Individuals (in alphabetical order)"
 msgstr "Enskilda personer (i alfabetisk ordning)"
 
-msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
-msgstr "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mayur Galhate, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgstr "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mayur Galhate, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 
 msgid "Corporate Sponsors (in alphabetical order)"
 msgstr "Företagssponsorer (i alfabetisk ordning)"
@@ -7009,9 +7081,6 @@ msgstr "Ändring av resultatkolumner: ``seq`` tas bort"
 msgid "Version 2.5.0"
 msgstr "Version 2.5.0"
 
-msgid "New experimental function."
-msgstr "Ny experimentell funktion."
-
 msgid "Those vertices that belong to more than one biconnected component are called articulation points or, equivalently, cut vertices. Articulation points are vertices whose removal would increase the number of connected components in the graph. This implementation can only be used with an undirected graph."
 msgstr "De hörn som tillhör mer än en biconnected komponent kallas artikulationspunkter eller, på motsvarande sätt, cut vertices. Artikulationspunkter är hörn vars borttagning skulle öka antalet anslutna komponenter i grafen. Denna implementation kan endast användas med en odelad graf."
 
@@ -7304,10 +7373,10 @@ msgid "When the start vertex and the end vertex are the same, there is no path. 
 msgstr "När startvertex och slutvertex är desamma finns det ingen väg. Agg_cost skulle vara :math:`0`."
 
 msgid "When the start vertex and the end vertex are different, and there exists a path between them without having a *negative cycle*. The agg_cost would be some finite value denoting the shortest distance between them."
-msgstr "När startvertex och slutvertex är olika, och det finns en väg mellan dem utan att ha en *negativ cykel*. Agg_cost skulle vara ett ändligt värde som anger det kortaste avståndet mellan dem."
+msgstr "När start- och sluthornpunkterna är olika och det finns en väg mellan dem utan en *negativ cykel*. agg_cost skulle då vara ett ändligt värde som anger det kortaste avståndet mellan dem."
 
 msgid "When the start vertex and the end vertex are different, and there exists a path between them, but it contains a *negative cycle*. In such case, agg_cost for those vertices keep on decreasing furthermore, Hence agg_cost can’t be defined for them."
-msgstr "När startpunkten och slutpunkten är olika, och det finns en väg mellan dem, men den innehåller en *negativ cykel*. I sådana fall fortsätter agg_cost för dessa toppar att minska och därför kan agg_cost inte definieras för dem."
+msgstr "När start- och sluthornpunkterna är olika och det finns en väg mellan dem men den innehåller en *negativ cykel*. I sådana fall fortsätter agg_cost för dessa hörnpunkter att minska och därför kan agg_cost inte definieras för dem."
 
 msgid "When the start vertex and the end vertex are different, and there is no path. The agg_cost is :math:`\\infty`."
 msgstr "När startvertex och slutvertex är olika och det inte finns någon väg. Agg_cost är :math:`\\infty`."
@@ -8555,7 +8624,7 @@ msgid "Graph where linearity is not symmetrical."
 msgstr "Graf där linjäriteten inte är symmetrisk."
 
 msgid "When the graph is processed as a directed graph, linearity is not symmetrical, therefore the graph can not be contracted."
-msgstr "När grafen bearbetas som en riktad graf är linjäriteten inte symmetrisk, och grafen kan därför inte dras ihop."
+msgstr "När grafen bearbetas som en riktad graf är linjäriteten inte symmetrisk och grafen kan därför inte dras ihop."
 
 msgid "When the same graph is processed as an undirected graph, linearity is symmetrical, therefore the graph can be contracted."
 msgstr "När samma graf behandlas som en odelad graf är linjäriteten symmetrisk och grafen kan därför krympas."
@@ -8626,6 +8695,306 @@ msgstr "Edge :math:`1 \\rightarrow 3` har information om kostnad och de noder so
 msgid "Create the contracted graph."
 msgstr "Skapa den kontraherade grafen."
 
+msgid "``pgr_coreNumbers`` - Experimental"
+msgstr "``pgr_coreNumbers`` – Experimentell"
+
+msgid "``pgr_coreNumbers`` - Computes the core number of each vertex in an undirected graph using k-core decomposition."
+msgstr "``pgr_coreNumbers`` – Beräknar kärntalet för varje hörnpunkt i en oriktad graf med k-kärnuppdelning."
+
+msgid "Version 4.1.0"
+msgstr "Version 4.1.0"
+
+msgid "The **core number** of a vertex is the largest value :math:`k` such that the vertex **belongs to the** :math:`k`-core of the graph."
+msgstr "**Kärntalet** för en hörnpunkt är det största värdet :math:`k` så att hörnpunkten **tillhör** grafens :math:`k`-kärna."
+
+msgid "The :math:`k`-core of a graph is the maximal subgraph in which every vertex has degree at least :math:`k` within that subgraph. K-core decomposition iteratively removes vertices of degree less than :math:`k` until no such vertices remain, increasing :math:`k` at each stage. The process assigns one core number to every vertex."
+msgstr "En grafs :math:`k`-kärna är den maximala delgraf där varje hörnpunkt har grad minst :math:`k` inom delgrafen. K-kärndecomposition tar iterativt bort hörnpunkter med grad mindre än :math:`k` tills inga sådana återstår och ökar :math:`k` i varje steg. Processen tilldelar varje hörnpunkt ett kärntal."
+
+msgid "The core number says how deeply a vertex sits inside the graph:"
+msgstr "Kärntalet anger hur djupt inne i grafen en hörnpunkt ligger:"
+
+msgid "Core :math:`1` vertices are peeled in the first step. They are terminal nodes of the peeled graph, adjacent to at most one other vertex in the induced subgraph."
+msgstr "Hörnpunkter med kärntal :math:`1` skalas bort i det första steget. De är slutnoder i den avskalade grafen och gränsar till högst en annan hörnpunkt i den inducerade delgrafen."
+
+msgid "Core :math:`2` vertices survive that step. They lie on cycles, or on the chains joining them."
+msgstr "Hörnpunkter med kärntal :math:`2` överlever det steget. De ligger på cykler eller på kedjorna som binder samman dem."
+
+msgid "Core :math:`3` and above mark dense regions where every vertex keeps three or more neighbors however much of the graph is peeled away."
+msgstr "Kärntal :math:`3` och högre markerar täta områden där varje hörnpunkt behåller tre eller fler grannar, oavsett hur mycket av grafen som skalas bort."
+
+msgid "Parallel edges between the same pair of vertices are collapsed into a single edge before the peeling starts, so edge multiplicity does not inflate core numbers."
+msgstr "Parallella kanter mellan samma par av hörnpunkter slås ihop till en enda kant innan avskalningen börjar, så antalet parallella kanter påverkar inte kärntalen."
+
+msgid "Three parallel edges between two vertices give both vertices core :math:`1`, the same as a single edge."
+msgstr "Tre parallella kanter mellan två hörnpunkter ger båda hörnpunkterna kärntalet :math:`1`, precis som en enda kant."
+
+msgid "Self loop: a vertex is not a neighbor of its own vertex, so it is dropped before peeling and does not contribute to that vertex's degree."
+msgstr "Självslinga: en hörnpunkt är inte granne med sig själv, så slingan tas bort före avskalningen och bidrar inte till hörnpunktens grad."
+
+msgid "A vertex whose only edge is a self loop has no real neighbors left, So the core number is 0."
+msgstr "En hörnpunkt vars enda kant är en självslinga har inga verkliga grannar kvar, så kärntalet är 0."
+
+msgid "Loops and parallel edges are removed."
+msgstr "Slingor och parallella kanter tas bort."
+
+msgid "All vertices are kept"
+msgstr "Alla hörnpunkter behålls"
+
+msgid "Costs are ignored"
+msgstr "Kostnader ignoreras"
+
+msgid "Each vertex receives exactly one core number"
+msgstr "Varje hörnpunkt får exakt ett kärntal"
+
+msgid "Results:"
+msgstr "Resultat:"
+
+msgid "Number of returned rows: :math:`|V|`."
+msgstr "Antal returnerade rader: :math:`|V|`."
+
+msgid "Ordered by ``node`` ascending."
+msgstr "Sorterat stigande efter ``node``."
+
+msgid "No rows returned when no edges found. Emits a ``NOTICE``"
+msgstr "Inga rader returneras när inga kanter hittas. Avger ett ``NOTICE``"
+
+msgid "Running time: :math:`O(|E| + |E| + |V| log |V|)`"
+msgstr "Körtid: :math:`O(|E| + |E| + |V| log |V|)`"
+
+msgid "Loop and parallel removal: :math:`O(|E|)`"
+msgstr "Borttagning av slingor och parallella kanter: :math:`O(|E|)`"
+
+msgid "Peeling algorithm: :math:`O(|E|)`"
+msgstr "Avskalningsalgoritm: :math:`O(|E|)`"
+
+msgid "Sorting:  :math:`|V| log |V|`"
+msgstr "Sortering: :math:`|V| log |V|`"
+
+msgid "pgr_coreNumbers(`Edges SQL`_)"
+msgstr "pgr_coreNumbers(`Edges SQL`_)"
+
+msgid "Returns set of ``(seq, node, core)``"
+msgstr "Returnerar mängden ``(seq, node, core)``"
+
+msgid "Core numbers on a subgraph of :doc:`sampledata`"
+msgstr "Kärntal för en delgraf av :doc:`sampledata`"
+
+msgid "Vertices are colored by core number in the diagrams below: ``deepskyblue`` for core :math:`1` and ``green`` for core :math:`2`."
+msgstr "Hörnpunkterna färgsätts efter kärntal i diagrammen nedan: ``deepskyblue`` för kärntal :math:`1` och ``green`` för kärntal :math:`2`."
+
+msgid "All returned vertices have core number :math:`1`; they belong to the 1-core but not to any higher core."
+msgstr "Alla returnerade hörnpunkter har kärntal :math:`1`; de tillhör 1-kärnan men ingen högre kärna."
+
+msgid "Vertices :math:`5` and :math:`15` are terminal nodes in this subgraph (degree :math:`1`)."
+msgstr "Hörnpunkterna :math:`5` och :math:`15` är slutnoder i denna delgraf (grad :math:`1`)."
+
+msgid "Vertices :math:`6`, :math:`7`, and :math:`10` have higher degree here, but peeling degree-:math:`1` vertices first removes the entire subgraph before a 2-core can form."
+msgstr "Hörnpunkterna :math:`6`, :math:`7` och :math:`10` har högre grad här, men när hörnpunkter med grad :math:`1` skalas bort först försvinner hela delgrafen innan en 2-kärna kan bildas."
+
+msgid "The following diagram shows edges :math:`\\{1, \\ldots, 7\\}` from :doc:`sampledata`; every vertex label shows ``node (core)``."
+msgstr "Följande diagram visar kanterna :math:`\\{1, \\ldots, 7\\}` från :doc:`sampledata`; varje hörnpunkts etikett visar ``node (core)``."
+
+msgid "The next subgraph uses edges :math:`\\{1, 2, 3, 4\\}`, the same set as the main example of :doc:`pgr_betweennessCentrality`. Every vertex is still core :math:`1` because the structure is a tree-like path with terminal nodes at :math:`5` and :math:`15`."
+msgstr "Nästa delgraf använder kanterna :math:`\\{1, 2, 3, 4\\}`, samma mängd som huvudsakliga exemplet för :doc:`pgr_betweennessCentrality`. Varje hörnpunkt har fortfarande kärntal :math:`1`, eftersom strukturen är en trädliknande väg med slutnoderna :math:`5` och :math:`15`."
+
+msgid "K-core peeling (illustration)"
+msgstr "Avskalning av k-kärna (illustration)"
+
+msgid "On edges :math:`id < 10`, vertices :math:`5` and :math:`15` are removed first because they have degree :math:`1`. After further peeling, vertices :math:`6`, :math:`7`, :math:`10`, and :math:`11` remain as the 2-core (shown in green below)."
+msgstr "För kanter med :math:`id < 10` tas hörnpunkterna :math:`5` och :math:`15` bort först eftersom de har grad :math:`1`. Efter ytterligare avskalning återstår hörnpunkterna :math:`6`, :math:`7`, :math:`10` och :math:`11` som 2-kärnan (visas i grönt nedan)."
+
+msgid "Sequential value starting from 1."
+msgstr "Löpnummer som börjar på 1."
+
+msgid "``core``"
+msgstr "``core``"
+
+msgid "Core number of the vertex: the largest :math:`k` for which the vertex belongs to the :math:`k`-core."
+msgstr "Hörnpunktens kärntal: det största :math:`k` för vilket hörnpunkten tillhör :math:`k`-kärnan."
+
+msgid "The examples of this section are based on the :doc:`sampledata` network."
+msgstr "Exemplen i detta avsnitt är baserade på :doc:`sampledata`-nätverket."
+
+msgid "Sample network overview"
+msgstr "Översikt över exempelnätverk"
+
+msgid "Directed sample network. ``pgr_coreNumbers`` treats every edge as undirected, so ``cost`` and ``reverse_cost`` are not used in the calculation."
+msgstr "Riktat exempelnätverk. ``pgr_coreNumbers`` behandlar varje kant som oriktad, så ``cost`` och ``reverse_cost`` används inte i beräkningen."
+
+msgid "Comparing with :doc:`pgr_betweennessCentrality` on the same edges"
+msgstr "Jämförelse med :doc:`pgr_betweennessCentrality` för samma kanter"
+
+msgid "Both functions use the same ``Edges SQL`` format. The betweenness example on edges :math:`\\{1, 2, 3, 4\\}` measures shortest-path influence; core numbers measure peeling resilience."
+msgstr "Båda funktionerna använder samma format för ``Edges SQL``. Exemplet för betweenness på kanterna :math:`\\{1, 2, 3, 4\\}` mäter påverkan på kortaste vägar, medan kärntal mäter motståndskraft mot avskalning."
+
+msgid "1) Core numbers on edges :math:`\\{1, 2, 3, 4\\}`"
+msgstr "1) Kärntal för kanterna :math:`\\{1, 2, 3, 4\\}`"
+
+msgid "Vertices :math:`5` and :math:`15` are terminal (core :math:`1`)."
+msgstr "Hörnpunkterna :math:`5` och :math:`15` är slutnoder (kärntal :math:`1`)."
+
+msgid "Vertex :math:`6` has degree :math:`3` in this subgraph but still has core :math:`1`, because removing :math:`5` and :math:`15` first leaves no subgraph where every vertex has degree at least :math:`2`."
+msgstr "Hörnpunkt :math:`6` har grad :math:`3` i denna delgraf men har ändå kärntal :math:`1`, eftersom när :math:`5` och :math:`15` först tas bort återstår ingen delgraf där varje hörnpunkt har grad minst :math:`2`."
+
+msgid "Compare with :doc:`pgr_betweennessCentrality` on the same edges: vertex :math:`6` has the highest betweenness, but core number does not rank vertices by path importance."
+msgstr "Jämför med :doc:`pgr_betweennessCentrality` för samma kanter: hörnpunkt :math:`6` har högst betweenness, men kärntalet rangordnar inte hörnpunkter efter vägars betydelse."
+
+msgid "Subgraph with core-:math:`2` vertices"
+msgstr "Delgraf med hörnpunkter med kärntal :math:`2`"
+
+msgid "Adding edges :math:`5` through :math:`9` connects the inner vertices into a 2-core. The undirected layout below shows the same network."
+msgstr "När kanterna :math:`5` till :math:`9` läggs till kopplas de inre hörnpunkterna samman till en 2-kärna. Den oriktade layouten nedan visar samma nätverk."
+
+msgid "Undirected view of the sample network"
+msgstr "Oriktad vy av exempelnätverket"
+
+msgid "2) Core numbers on edges :math:`id < 10`"
+msgstr "2) Kärntal för kanter med :math:`id < 10`"
+
+msgid "Vertices :math:`6`, :math:`7`, :math:`10`, and :math:`11` have core :math:`2`."
+msgstr "Hörnpunkterna :math:`6`, :math:`7`, :math:`10` och :math:`11` har kärntal :math:`2`."
+
+msgid "Vertices :math:`1`, :math:`3`, :math:`5`, :math:`15`, and :math:`16` are attached by tree-like branches and remain core :math:`1`."
+msgstr "Hörnpunkterna :math:`1`, :math:`3`, :math:`5`, :math:`15` och :math:`16` är anslutna via trädliknande grenar och har fortsatt kärntal :math:`1`."
+
+msgid "Edge :math:`8` (between :math:`7` and :math:`11`) closes a cycle with edges :math:`4`, :math:`2`, and :math:`5`, which is why the inner four vertices survive peeling."
+msgstr "Kant :math:`8` (mellan :math:`7` och :math:`11`) sluter en cykel tillsammans med kanterna :math:`4`, :math:`2` och :math:`5`, vilket gör att de fyra inre hörnpunkterna överlever avskalningen."
+
+msgid "Filtering results in SQL"
+msgstr "Filtrera resultat i SQL"
+
+msgid "``pgr_coreNumbers`` always returns every vertex. To keep only the dense core, wrap the call in a standard SQL query."
+msgstr "``pgr_coreNumbers`` returnerar alltid varje hörnpunkt. För att endast behålla den täta kärnan omsluter du anropet med en vanlig SQL-fråga."
+
+msgid "3) Vertices with core :math:`\\geq 2` on edges :math:`id < 10`"
+msgstr "3) Hörnpunkter med kärntal :math:`\\geq 2` för kanter med :math:`id < 10`"
+
+msgid "The ``WHERE core >= 2`` clause keeps only the 2-core vertices."
+msgstr "Satsen ``WHERE core >= 2`` behåller endast hörnpunkterna i 2-kärnan."
+
+msgid "Use it to export only the hub vertices for further analysis."
+msgstr "Använd den för att endast exportera navhörnpunkterna för fortsatt analys."
+
+msgid "Full sample graph"
+msgstr "Fullständig exempelgraf"
+
+msgid "4) Core numbers on all edges"
+msgstr "4) Kärntal för alla kanter"
+
+msgid "The full network has :math:`17` vertices and maximum core number :math:`2`."
+msgstr "Det fullständiga nätverket har :math:`17` hörnpunkter och maximalt kärntal :math:`2`."
+
+msgid "Terminal branches (vertices :math:`1`, :math:`2`, :math:`3`, :math:`4`, :math:`5`, :math:`9`, :math:`13`, :math:`14`) remain core :math:`1`."
+msgstr "Ändgrenar (hörnpunkterna :math:`1`, :math:`2`, :math:`3`, :math:`4`, :math:`5`, :math:`9`, :math:`13`, :math:`14`) har fortsatt kärntal :math:`1`."
+
+msgid "The 2-core is vertices :math:`6`, :math:`7`, :math:`8`, :math:`10`, :math:`11`, :math:`12`, :math:`15`, :math:`16` and :math:`17`: the central block of the city network. Vertex :math:`9` hangs off :math:`8` by edge :math:`14` alone, so it is peeled first and stays core :math:`1`."
+msgstr "2-kärnan består av hörnpunkterna :math:`6`, :math:`7`, :math:`8`, :math:`10`, :math:`11`, :math:`12`, :math:`15`, :math:`16` och :math:`17`: stadens centrala nätblock. Hörnpunkt :math:`9` är endast ansluten till :math:`8` genom kant :math:`14`, så den skalas bort först och har fortsatt kärntal :math:`1`."
+
+msgid "Small graphs"
+msgstr "Små grafer"
+
+msgid "5) Single edge (two terminal nodes)"
+msgstr "5) Enstaka kant (två slutnoder)"
+
+msgid "Both endpoints have core number :math:`1`."
+msgstr "Båda ändpunkterna har kärntal :math:`1`."
+
+msgid "Edge :math:`1` from :doc:`sampledata` connects vertices :math:`5` and :math:`6`."
+msgstr "Kant :math:`1` från :doc:`sampledata` förbinder hörnpunkterna :math:`5` och :math:`6`."
+
+msgid "Each endpoint has degree :math:`1`, so both are peeled immediately at :math:`k = 1`."
+msgstr "Varje ändpunkt har grad :math:`1`, så båda skalas bort omedelbart vid :math:`k = 1`."
+
+msgid "6) Triangle (all vertices core :math:`2`)"
+msgstr "6) Triangel (alla hörnpunkter har kärntal :math:`2`)"
+
+msgid "In a triangle every vertex has degree :math:`2`, so all three belong to the 2-core."
+msgstr "I en triangel har varje hörnpunkt grad :math:`2`, så alla tre tillhör 2-kärnan."
+
+msgid "The ``VALUES`` clause builds a minimal three-edge graph inline."
+msgstr "Satsen ``VALUES`` bygger en minimal graf med tre kanter direkt i frågan."
+
+msgid "No vertex can be peeled before :math:`k = 2`, so every core number is :math:`2`."
+msgstr "Ingen hörnpunkt kan skalas bort före :math:`k = 2`, så varje kärntal är :math:`2`."
+
+msgid "7) Square cycle from :doc:`sampledata` (all vertices core :math:`2`)"
+msgstr "7) Fyrkantig cykel från :doc:`sampledata` (alla hörnpunkter har kärntal :math:`2`)"
+
+msgid "Edges :math:`\\{2, 4, 5, 8\\}` form a 4-cycle on vertices :math:`\\{6, 7, 10, 11\\}`."
+msgstr "Kanterna :math:`\\{2, 4, 5, 8\\}` bildar en 4-cykel med hörnpunkterna :math:`\\{6, 7, 10, 11\\}`."
+
+msgid "This is the 2-core heart of example 2) before branches are attached."
+msgstr "Detta är 2-kärnan i exempel 2) innan grenar ansluts."
+
+msgid "Every vertex has degree :math:`2` in the cycle, so all core numbers are :math:`2`."
+msgstr "Varje hörnpunkt har grad :math:`2` i cykeln, så alla kärntal är :math:`2`."
+
+msgid "8) Star graph (hub and spokes, all core :math:`1`)"
+msgstr "8) Stjärngraf (nav och ekrar, alla har kärntal :math:`1`)"
+
+msgid "A star has a central hub connected to leaf vertices. Every vertex is peeled at :math:`k = 1`."
+msgstr "En stjärna har ett centralt nav som är anslutet till lövhörnpunkter. Varje hörnpunkt skalas bort vid :math:`k = 1`."
+
+msgid "The hub has degree :math:`4`, but removing the four leaves leaves an isolated vertex, so the hub never belongs to a 2-core."
+msgstr "Navet har grad :math:`4`, men när de fyra löven tas bort återstår en isolerad hörnpunkt, så navet tillhör aldrig en 2-kärna."
+
+msgid "Star-like cul-de-sac layouts in road networks often produce core :math:`1` vertices throughout."
+msgstr "Stjärnliknande återvändsgator i vägnät ger ofta enbart hörnpunkter med kärntal :math:`1`."
+
+msgid "Empty edge set"
+msgstr "Tom kantmängd"
+
+msgid "9) No edges in the SQL query"
+msgstr "9) Inga kanter i SQL-frågan"
+
+msgid "When the inner query returns no edges, a notice is emitted and the result is empty."
+msgstr "När den inre frågan inte returnerar några kanter avges ett meddelande och resultatet är tomt."
+
+msgid "No exception is raised."
+msgstr "Inget undantag utlöses."
+
+msgid "Core numbers and planarity"
+msgstr "Kärntal och planaritet"
+
+msgid "Vertices with higher core numbers often lie in densely connected regions. The workflow below computes core numbers, filters the 2-core, and checks whether the subgraph can be drawn without edge crossings using :doc:`pgr_isPlanar`."
+msgstr "Hörnpunkter med högre kärntal ligger ofta i tät sammankopplade områden. Arbetsflödet nedan beräknar kärntal, filtrerar 2-kärnan och kontrollerar med :doc:`pgr_isPlanar` om delgrafen kan ritas utan korsande kanter."
+
+msgid "10) Planarity of the subgraph with edges :math:`id < 10`"
+msgstr "10) Planaritet för delgrafen med kanter där :math:`id < 10`"
+
+msgid "First compute core numbers (example 2)), then filter the 2-core (example 3)), then test planarity:"
+msgstr "Beräkna först kärntal (exempel 2), filtrera sedan 2-kärnan (exempel 3) och testa därefter planariteten:"
+
+msgid "The subgraph with edges :math:`id < 10` is planar (``pgr_isPlanar`` returns ``true``)."
+msgstr "Delgrafen med kanter där :math:`id < 10` är plan (``pgr_isPlanar`` returnerar ``true``)."
+
+msgid "The four vertices with core :math:`2` lie in the densest part of this subgraph."
+msgstr "De fyra hörnpunkterna med kärntal :math:`2` ligger i den tätaste delen av denna delgraf."
+
+msgid "Planarity and core number measure different properties: a graph can be planar while still having a mix of core-:math:`1` and core-:math:`2` vertices."
+msgstr "Planaritet och kärntal mäter olika egenskaper: en graf kan vara plan även om den innehåller en blandning av hörnpunkter med kärntal :math:`1` och :math:`2`."
+
+msgid "11) Complete graph :math:`K_4` (all vertices core :math:`3`)"
+msgstr "11) Komplett graf :math:`K_4` (alla hörnpunkter har kärntal :math:`3`)"
+
+msgid "The examples above reach at most core :math:`2`, because the :doc:`sampledata` network has degeneracy :math:`2`. Higher cores need a denser graph. In the complete graph :math:`K_4` every vertex is adjacent to the other three, so no vertex can ever be peeled at :math:`k \\leq 3` and the whole graph is its own 3-core."
+msgstr "Exemplen ovan når som mest kärntal :math:`2`, eftersom nätverket :doc:`sampledata` har degenerationsgrad :math:`2`. Högre kärntal kräver en tätare graf. I den kompletta grafen :math:`K_4` är varje hörnpunkt granne med de tre andra, så ingen hörnpunkt kan skalas bort vid :math:`k \\leq 3` och hela grafen utgör sin egen 3-kärna."
+
+msgid "Every vertex has degree :math:`3`, so nothing is removed while peeling at :math:`k = 1`, :math:`2` or :math:`3`: all four vertices have core :math:`3`."
+msgstr "Varje hörnpunkt har grad :math:`3`, så inget tas bort vid avskalning för :math:`k = 1`, :math:`2` eller :math:`3`: alla fyra hörnpunkter har kärntal :math:`3`."
+
+msgid "In general the complete graph :math:`K_n` has core number :math:`n - 1` for every vertex, which is the maximum possible core number on :math:`n` vertices."
+msgstr "Allmänt har den kompletta grafen :math:`K_n` kärntalet :math:`n - 1` för varje hörnpunkt, vilket är högsta möjliga kärntal för :math:`n` hörnpunkter."
+
+msgid "The degeneracy of this graph is :math:`3`, compared with :math:`2` for the :doc:`sampledata` network."
+msgstr "Degenerationsgraden för denna graf är :math:`3`, jämfört med :math:`2` för nätverket :doc:`sampledata`."
+
+msgid "Batagelj, V. and Zaversnik, M. (2003). `An O(m) Algorithm for Cores Decomposition of Networks <https://arxiv.org/abs/cs/0310049>`__"
+msgstr "Batagelj, V. och Zaversnik, M. (2003). `En O(m)-algoritm för kärndecomposition av nätverk <https://arxiv.org/abs/cs/0310049>`__"
+
+msgid "`Wikipedia: Degeneracy (graph theory) <https://en.wikipedia.org/wiki/Degeneracy_(graph_theory)>`__"
+msgstr "`Wikipedia: Degenerationsgrad (grafteori) <https://en.wikipedia.org/wiki/Degeneracy_(graph_theory)>`__"
+
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
 msgstr "``pgr_cuthillMckeeOrdering`` - Experimentell"
 
@@ -8692,14 +9061,20 @@ msgstr "pgr_dagShortestPath(Combinations)"
 msgid "Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm that solves the shortest path problem for weighted directed acyclic graph, producing a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``)."
 msgstr "Shortest Path for Directed Acyclic Graph(DAG) är en grafsökningsalgoritm som löser problemet med kortaste vägen för viktad riktad acyklisk graf, vilket ger en kortaste väg från ett startvertex (``start_vid``) till ett slutvertex (``end_vid``)."
 
-msgid "This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph."
-msgstr "Denna implementation kan endast användas med en **riktad** graf utan cykler, dvs. en riktad acyklisk graf."
+msgid "This implementation can only be used with a directed graph with no cycles i.e. directed acyclic graph."
+msgstr "Denna implementation kan endast användas med en riktad graf utan cykler, det vill säga en riktad acyklisk graf."
 
 msgid "The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG's than either the Dijkstra or Bellman-Ford algorithm."
 msgstr "Algoritmen förlitar sig på topologisk sortering av DAG för att införa en linjär ordning på topparna och är därmed effektivare för DAG än både Dijkstra- och Bellman-Ford-algoritmen."
 
-msgid "Process is valid for weighted directed acyclic graphs only. otherwise it will throw warnings."
-msgstr "Processen är endast giltig för viktade riktade acykliska grafer. annars kommer den att ge varningar."
+msgid "Process is valid for weighted directed acyclic graphs only."
+msgstr "Processen gäller endast viktade riktade acykliska grafer."
+
+msgid "Avoids one edge cycle: `reverse_cost` column is used when :math:`cost < 0`."
+msgstr "Undviker cykel med en kant: kolumnen `reverse_cost` används när :math:`cost < 0`."
+
+msgid "If the graph is not DAG, will throw a PostgreSQL `ERROR`."
+msgstr "Om grafen inte är en DAG utlöses ett PostgreSQL-`ERROR`."
 
 msgid "The `agg_cost` the non included values `(v, v)` is `0`"
 msgstr "Den `agg_cost` de icke inkluderade värdena `(v, v)` är `0`"
@@ -8736,6 +9111,9 @@ msgstr "Från topparna :math:`\\{5, 10\\}` till topp :math:`11`"
 
 msgid "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an **undirected** graph"
 msgstr "Från topparna :math:`\\{5, 15\\}` till topparna :math:`\\{11, 17\\}` i en **omdirigerad** graf"
+
+msgid "`reverse_cost` column is used when :math:`cost < 0` to avoid edge cycle."
+msgstr "Kolumnen `reverse_cost` används när :math:`cost < 0` för att undvika kantcykler."
 
 msgid "Return columns"
 msgstr "Returnera kolumner"
@@ -9045,9 +9423,6 @@ msgstr "pgr_dijkstra(`Kanter SQL`_, `Combinations SQL`_, [``directed``])"
 
 msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed**"
 msgstr "Från toppunkten :math:`6` till toppunkterna :math:`\\{10, 17\\}` på en **riktad**"
-
-msgid "The examples of this section are based on the :doc:`sampledata` network."
-msgstr "Exemplen i detta avsnitt är baserade på :doc:`sampledata`-nätverket."
 
 msgid "For **directed** graphs with ``cost`` and ``reverse_cost`` columns"
 msgstr "För **riktade** grafer med kolumnerna ``kostnad`` och ``omvända_kostnader``"
@@ -9505,6 +9880,12 @@ msgstr "``pgr_dijkstraVia``"
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr "``pgr_dijkstraVia`` - Rutt som går genom en lista med toppar."
 
+msgid "Version 4.0.2"
+msgstr "Version 4.0.2"
+
+msgid "Fix: bad alloc"
+msgstr "Rättar: felaktig minnesallokering"
+
 msgid "Given a list of vertices and a graph, this function is equivalent to finding the shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i < size\\_of(via\\;vertices)`."
 msgstr "Med en lista över hörnpunkter och en graf är denna funktion likvärdig med att hitta den kortaste vägen mellan :math:`vertex_i` och :math:`vertex_{i+1}` för alla :math:`i < size\\_of(via\\;hörnpunkter)`."
 
@@ -9589,14 +9970,23 @@ msgstr ":doc:`dijkstra-family`."
 msgid "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr "``pgr_drivingDistance`` - Returnerar köravståndet från en startnod."
 
+msgid "Standardizing negative distance behaviour"
+msgstr "Standardiserar beteendet för negativa avstånd"
+
+msgid "Throws when :math:`distance < 0`."
+msgstr "Utlöser ett fel när :math:`distance < 0`."
+
+msgid "Standard message and hint."
+msgstr "Standardmeddelande och ledtråd."
+
 msgid "pgr_drivingDistance(Single vertex)"
-msgstr "pgr_drivingDistance(Single vertex)"
+msgstr "pgr_drivingDistance(Enskilt hörn)"
 
 msgid "Added ``depth`` and ``start_vid`` result columns."
 msgstr "Lagt till resultatkolumnerna ``depth`` och ``start_vid``."
 
 msgid "pgr_drivingDistance(Multiple vertices)"
-msgstr "pgr_drivingDistance(Multiple vertices)"
+msgstr "pgr_drivingDistance(Flera hörn)"
 
 msgid "Result column name change: ``from_v`` to ``start_vid``."
 msgstr "Namnbyte på resultatkolumnen: ``from_v`` till ``start_vid``."
@@ -9608,13 +9998,13 @@ msgid "Signature change:"
 msgstr "Ändring av signatur:"
 
 msgid "pgr_drivingDistance(single vertex)"
-msgstr "pgr_drivingDistance(single vertex)"
+msgstr "pgr_drivingDistance(enskilt hörn)"
 
 msgid "New official signature:"
 msgstr "Ny officiell signatur:"
 
 msgid "pgr_drivingDistance(multiple vertices)"
-msgstr "pgr_drivingDistance(multiple vertices)"
+msgstr "pgr_drivingDistance(flera hörn)"
 
 msgid "Using the Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value ``distance``. The edges extracted will conform to the corresponding spanning tree."
 msgstr "Med hjälp av Dijkstra-algoritmen extraheras alla noder som har kostnader som är mindre än eller lika med värdet ``distance``. De kanter som extraheras kommer att överensstämma med motsvarande spännträd."
@@ -9663,10 +10053,6 @@ msgstr "``pgr_edgeColoring`` - Experimentell"
 
 msgid "``pgr_edgeColoring`` — Returns the edge coloring of undirected and loop-free graphs"
 msgstr "``pgr_edgeColoring`` - Returnerar kantfärgning av oledade och loopfria grafer"
-
-#, fuzzy
-msgid "Version 4.1.0"
-msgstr "Version 4.0.0"
 
 msgid "Output columns standardized to |result_edge_color|"
 msgstr "Utgångskolumner standardiserade till |result_edge_color|"
@@ -9900,7 +10286,7 @@ msgid "Geometry of the edge."
 msgstr "Geometri för kanten."
 
 msgid "This inner query takes precedence over the next two inner query, therefore other columns are ignored when ``geom`` column appears."
-msgstr "Denna inre fråga har företräde framför de två följande inre frågorna, och därför ignoreras andra kolumner när kolumnen ``geom`` visas."
+msgstr "Denna inre fråga har företräde framför de två följande inre frågorna och därför ignoreras andra kolumner när kolumnen ``geom`` visas."
 
 msgid "Ignored columns:"
 msgstr "Ignorerade kolumner:"
@@ -9927,7 +10313,7 @@ msgid "POINT geometry of the ending vertex."
 msgstr "POINT Geometri för den avslutande vertexen."
 
 msgid "This inner query takes precedence over the next inner query, therefore other columns are ignored when ``startpoint`` and ``endpoint`` columns appears."
-msgstr "Denna inre fråga har företräde framför nästa inre fråga, och därför ignoreras andra kolumner när kolumnerna ``startpunkt`` och ``slutpunkt`` visas."
+msgstr "Denna inre fråga har företräde framför nästa inre fråga och därför ignoreras andra kolumner när kolumnerna ``startpoint`` och ``endpoint`` visas."
 
 msgid "When identifiers of vertices are known"
 msgstr "När identifierare av toppar är kända"
@@ -10593,7 +10979,7 @@ msgid "``vertex_id``"
 msgstr "``vertex_id``"
 
 msgid "Identifier of vertex ."
-msgstr "Identifierare för toppunkt ."
+msgstr "Identifierare för toppunkt."
 
 msgid "``idom``"
 msgstr "``idom``"
@@ -10979,6 +11365,78 @@ msgstr "https://en.wikipedia.org/wiki/Line_graph"
 msgid "https://en.wikipedia.org/wiki/Complete_graph"
 msgstr "https://en.wikipedia.org/wiki/Complete_graph"
 
+msgid "``pgr_makeBiconnectedPlanar`` - Experimental"
+msgstr "``pgr_makeBiconnectedPlanar`` – Experimentell"
+
+msgid "``pgr_makeBiconnectedPlanar`` — Returns the set of edges needed to make each connected component of a planar graph biconnected."
+msgstr "``pgr_makeBiconnectedPlanar`` – Returnerar mängden kanter som behövs för att göra varje sammanhängande komponent i en plan graf tvåhörnssammanhängande."
+
+msgid "``pgr_makeBiconnectedPlanar`` identifies the missing edges that need to be added to each connected component of an existing planar graph to make those components biconnected, while ensuring the graph remains planar."
+msgstr "``pgr_makeBiconnectedPlanar`` identifierar de saknade kanter som behöver läggas till i varje sammanhängande komponent i en befintlig plan graf för att göra komponenterna tvåhörnssammanhängande och samtidigt se till att grafen förblir plan."
+
+msgid "A graph is considered **biconnected** if it is connected and cannot be broken into disconnected pieces by deleting any single vertex (it has no articulation points). A planar graph is one that can be drawn in two-dimensional space with no two of its edges crossing."
+msgstr "En graf betraktas som **tvåhörnssammanhängande** om den är sammanhängande och inte kan delas i osammanhängande delar genom att en enskild hörnpunkt tas bort (den har inga artikulationspunkter). En plan graf kan ritas i två dimensioner utan att två av dess kanter korsar varandra."
+
+msgid "If the graph is not connected it will treat each component as an idividual graph."
+msgstr "Om grafen inte är sammanhängande behandlas varje komponent som en enskild graf."
+
+msgid "Run :doc:`pgr_makeConnected` to connect all components."
+msgstr "Kör :doc:`pgr_makeConnected` för att koppla samman alla komponenter."
+
+msgid "When the graph is not planar it will emit an ``ERROR``"
+msgstr "När grafen inte är plan avges ett ``ERROR``"
+
+msgid "Run :doc:`pgr_isPlanar` first."
+msgstr "Kör först :doc:`pgr_isPlanar`."
+
+msgid "All vertices are kept."
+msgstr "Alla hörnpunkter behålls."
+
+msgid "Costs are ignored."
+msgstr "Kostnader ignoreras."
+
+msgid "Returns a list of all new edges needed to make biconected graphs out of each connected component."
+msgstr "Returnerar en lista över alla nya kanter som behövs för att göra varje sammanhängande komponent tvåhörnssammanhängande."
+
+msgid "Empty results when the graph is already biconnected planar."
+msgstr "Tomt resultat när grafen redan är tvåhörnssammanhängande och plan."
+
+msgid "Running time: :math:`O(|V| + |E| + R \\log R)` for each component"
+msgstr "Körtid: :math:`O(|V| + |E| + R \\log R)` för varje komponent"
+
+msgid ":math:`R` is the number of returned edges."
+msgstr ":math:`R` är antalet returnerade kanter."
+
+msgid "pgr_makeBiconnectedPlanar(`Edges SQL`_)"
+msgstr "pgr_makeBiconnectedPlanar(`Edges SQL`_)"
+
+msgid "Returns set of |result-component-make|"
+msgstr "Returnerar uppsättning av |result-component-make|"
+
+msgid "List of edges that are needed to make the graph biconnected planar."
+msgstr "Lista över kanter som behövs för att göra grafen tvåhörnssammanhängande och plan."
+
+msgid "Sample graph after adding biconnecting edges (olive = original edges, red dashed = 4 new biconnecting edges)."
+msgstr "Exempelgraf efter att tvåhörnssammanhängande kanter har lagts till (oliv = ursprungliga kanter, röd streckad = 4 nya kanter)."
+
+msgid "When a graph contains multiple disconnected components, each component is processed independently. Components (2,4) and (13,14) are already biconnected (0 articulation points) and require no new edges."
+msgstr "När en graf innehåller flera osammanhängande komponenter bearbetas varje komponent oberoende. Komponenterna (2,4) och (13,14) är redan tvåhörnssammanhängande (0 artikulationspunkter) och behöver inga nya kanter."
+
+msgid "4-vertex path graph."
+msgstr "Väggraf med 4 hörnpunkter."
+
+msgid "Create a 4-vertex tree graph."
+msgstr "Skapa en trädgraf med 4 hörnpunkter."
+
+msgid "Get the edges needed to have biconnected planar graph."
+msgstr "Hämta de kanter som behövs för en tvåhörnssammanhängande plan graf."
+
+msgid "Adding the edges to the graph"
+msgstr "Lägga till kanterna i grafen"
+
+msgid "`Boost: make_biconnected_planar <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/planar/make_biconnected_planar.html>`__"
+msgstr "`Boost: make_biconnected_planar <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/planar/make_biconnected_planar.html>`__"
+
 msgid "``pgr_makeConnected`` - Experimental"
 msgstr "``pgr_makeConnected`` - Experimentell"
 
@@ -10996,9 +11454,6 @@ msgstr "Algoritmen tar inte hänsyn till geometrisk topologi i beräkningarna."
 
 msgid "pgr_makeConnected(`Edges SQL`_)"
 msgstr "pgr_makeConnected(`Kanter SQL`_)"
-
-msgid "Returns set of |result-component-make|"
-msgstr "Returnerar uppsättning av |result-component-make|"
 
 msgid "List of edges that are needed to connect the graph."
 msgstr "Lista över kanter som behövs för att koppla ihop grafen."
@@ -11151,7 +11606,7 @@ msgid "where :math:`U` is the value of the max flow."
 msgstr "där :math:`U` är värdet på maxflödet."
 
 msgid ":math:`U` is upper bound on number of iterations. In many real world cases number of iterations is much smaller than :math:`U`."
-msgstr ":math:`U` is upper bound on number of iterations. In many real world cases number of iterations is much smaller than :math:`U`."
+msgstr ":math:`U` är den övre gränsen för antalet iterationer. I många verkliga fall är antalet iterationer mycket mindre än :math:`U`."
 
 msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vid**)"
 msgstr "pgr_maxFlowMinCost(`Kanter SQL`_, **start vid**, **end vid**)"
@@ -11209,6 +11664,42 @@ msgstr "RETURNS FLOAT"
 
 msgid "Minimum Cost Maximum Flow possible from the source(s) to the target(s)"
 msgstr "Minsta kostnad Högsta möjliga flöde från källa(n) till mål(en)"
+
+msgid "``pgr_maxWeightedMatch`` - Experimental"
+msgstr "``pgr_maxWeightedMatch`` – Experimentell"
+
+msgid "``pgr_maxWeightedMatch`` — Calculates a maximum weighted matching in a graph."
+msgstr "``pgr_maxWeightedMatch`` – Beräknar en maximal viktad matchning i en graf."
+
+msgid "A **maximum weighted matching** in a graph is a matching where the sum of the weights of selected edges is maximized."
+msgstr "En **maximal viktad matchning** i en graf är en matchning där summan av de valda kanternas vikter maximeras."
+
+msgid "Each vertex is matched with at most one other vertex."
+msgstr "Varje hörnpunkt matchas med högst en annan hörnpunkt."
+
+msgid "Maximizes the total edge weight sum."
+msgstr "Maximerar den totala summan av kantvikter."
+
+msgid "There may be many maximum weighted matchings."
+msgstr "Det kan finnas många maximala viktade matchningar."
+
+msgid "Calculates one possible maximum weighted matching in a graph."
+msgstr "Beräknar en möjlig maximal viktad matchning i en graf."
+
+msgid "Running time: :math:`O(V^3)`."
+msgstr "Körtid: :math:`O(V^3)`."
+
+msgid "pgr_maxWeightedMatch(`Edges SQL`_)"
+msgstr "pgr_maxWeightedMatch(`Edges SQL`_)"
+
+msgid "Set of |result-edge|"
+msgstr "Mängd av |result-edge|"
+
+msgid "Maximum weighted matching on a custom 5-vertex graph."
+msgstr "Maximal viktad matchning i en anpassad graf med 5 hörnpunkter."
+
+msgid "`Boost: maximum_weighted_matching <https://www.boost.org/doc/libs/latest/libs/graph/doc/maximum_weighted_matching.html>`__"
+msgstr "`Boost: maximum_weighted_matching <https://www.boost.org/doc/libs/latest/libs/graph/doc/maximum_weighted_matching.html>`__"
 
 msgid "``pgr_pickDeliver`` - Experimental"
 msgstr "``pgr_pickDeliver`` - Experimentell"
@@ -11405,6 +11896,150 @@ msgstr "Den bästa lösningen som hittades för **lc101** är en restid: 828.94"
 msgid "This implementation's travel time: 854.54"
 msgstr "Restid för detta genomförande: 854.54"
 
+msgid "``pgr_planarFaces`` - Experimental"
+msgstr "``pgr_planarFaces`` – Experimentell"
+
+msgid "``pgr_planarFaces`` - Identifies the faces of a planar embedding and lists every edge-face incidence for an undirected graph."
+msgstr "``pgr_planarFaces`` – Identifierar ytorna i en plan inbäddning och listar varje incidens mellan kant och yta för en oriktad graf."
+
+msgid "In a planar embedding, the graph is drawn in the plane so that edges meet only at vertices. A face is a maximal connected region of the plane bounded by edges."
+msgstr "I en plan inbäddning ritas grafen i planet så att kanter endast möts vid hörnpunkter. En yta är ett maximalt sammanhängande område i planet som begränsas av kanter."
+
+msgid "Every bounded face is a cycle of edges enclosing an interior region. The exterior face, also called the unbounded face, is the region outside the outermost cycle."
+msgstr "Varje begränsad yta är en cykel av kanter som omsluter ett inre område. Den yttre ytan, även kallad den obegränsade ytan, är området utanför den yttersta cykeln."
+
+msgid "Once an embedding is fixed, each undirected edge has a left and a right side when walked in the direction the embedding assigns around each vertex."
+msgstr "När en inbäddning är fastställd har varje oriktad kant en vänster- och en högersida när den genomlöps i den riktning som inbäddningen anger runt varje hörnpunkt."
+
+msgid "In a connected planar undirected graph, each edge separates exactly two faces, so it contributes one row on the left and one on the right."
+msgstr "I en sammanhängande plan oriktad graf skiljer varje kant exakt två ytor åt och bidrar därför med en rad till vänster och en till höger."
+
+msgid "``pgr_planarFaces`` returns those incidences: ``face_id`` names the face, ``edge_id`` is the border edge, and ``side`` is ``1`` (left) or ``2`` (right) relative to the embedding."
+msgstr "``pgr_planarFaces`` returnerar dessa incidenser: ``face_id`` namnger ytan, ``edge_id`` är gränskanten och ``side`` är ``1`` (vänster) eller ``2`` (höger) i förhållande till inbäddningen."
+
+msgid "The function first computes a planar embedding with the Boyer-Myrvold planarity test, then walks faces with Boost ``planar_face_traversal``.i"
+msgstr "Funktionen beräknar först en plan inbäddning med planaritetstestet Boyer-Myrvold och genomlöper sedan ytor med Boost ``planar_face_traversal``."
+
+msgid "Loops and paralell edges are preserved."
+msgstr "Slingor och parallella kanter bevaras."
+
+msgid "They are used to determine the existance of an edge"
+msgstr "De används för att avgöra om en kant finns"
+
+msgid "Run :doc:`pgr_isPlanar` first"
+msgstr "Kör först :doc:`pgr_isPlanar`"
+
+msgid "The result has one row per edge-side pair"
+msgstr "Resultatet har en rad per par av kant och sida"
+
+msgid "Graph with :math:`|E|` edges yields :math:`2|E|` rows."
+msgstr "En graf med :math:`|E|` kanter ger :math:`2|E|` rader."
+
+msgid "Number of faces: * Obeys Euler's formula: :math:`|V| - |E| + |F| = 2` * On a graph with :math:`C` components: :math:`|V| - |E| + |F| = 2C`."
+msgstr "Antal ytor: * Följer Eulers formel: :math:`|V| - |E| + |F| = 2` * I en graf med :math:`C` komponenter: :math:`|V| - |E| + |F| = 2C`."
+
+msgid "Running time: :math:`O(|E| + |V|)`"
+msgstr "Körtid: :math:`O(|E| + |V|)`"
+
+msgid "pgr_planarFaces(`Edges SQL`_)"
+msgstr "pgr_planarFaces(`Edges SQL`_)"
+
+msgid "Returns set of ``(seq, face_id, edge_id, side)``"
+msgstr "Returnerar mängden ``(seq, face_id, edge_id, side)``"
+
+msgid "Faces of the full :doc:`sampledata` graph"
+msgstr "Ytor i hela grafen :doc:`sampledata`"
+
+msgid "The query returns **36 rows**, twice the **18** edges in ``edges``, consistent with :math:`2|E|`."
+msgstr "Frågan returnerar **36 rader**, två gånger de **18** kanterna i ``edges``, i enlighet med :math:`2|E|`."
+
+msgid "``face_id`` runs from **1** through **7** on this network; each id is one face of the embedding, including the unbounded **exterior face** (here ``face_id = 1`` borders the outer layout of the city block)."
+msgstr "``face_id`` går från **1** till **7** i detta nätverk; varje id är en yta i inbäddningen, inklusive den obegränsade **yttre ytan** (här gränsar ``face_id = 1`` till stadskvarterets yttre layout)."
+
+msgid "Every ``edge_id`` appears **twice**, once with ``side = 1`` and once with ``side = 2``."
+msgstr "Varje ``edge_id`` förekommer **två gånger**, en gång med ``side = 1`` och en gång med ``side = 2``."
+
+msgid "Rows follow the counterclockwise walk of each face in the computed embedding."
+msgstr "Raderna följer den moturs genomlöpningen av varje yta i den beräknade inbäddningen."
+
+msgid "Have :math:`3` components then number if faces = :math:`17 - 18 + 7 = 6 = 2 \\times 3`."
+msgstr "Med :math:`3` komponenter blir antalet ytor :math:`17 - 18 + 7 = 6 = 2 \\times 3`."
+
+msgid "``face_id``"
+msgstr "``face_id``"
+
+msgid "Identifier of the face in the computed embedding."
+msgstr "Identifierare för ytan i den beräknade inbäddningen."
+
+msgid "Identifier of the edge that borders the face."
+msgstr "Identifierare för kanten som gränsar till ytan."
+
+msgid "``1`` when the edge borders the face on the left side."
+msgstr "``1`` när kanten gränsar till ytan på vänster sida."
+
+msgid "``2`` when the edge borders the face on the right side."
+msgstr "``2`` när kanten gränsar till ytan på höger sida."
+
+msgid "Non-planar graphs"
+msgstr "Icke-plana grafer"
+
+msgid "Face extraction requires a planar graph. Subgraphs containing a :math:`K_5` or :math:`K_{3,3}` minor cannot be embedded without crossings; ``pgr_planarFaces`` raises ``ERROR: Graph is not planar`` in that case. The :doc:`pgr_isPlanar` documentation shows a non-planar subgraph of ``sampledata`` (edges highlighted in blue in the figure)."
+msgstr "Ytextraktion kräver en plan graf. Delgrafer som innehåller en :math:`K_5`- eller :math:`K_{3,3}`-minor kan inte bäddas in utan korsningar; ``pgr_planarFaces`` utlöser då ``ERROR: Graph is not planar``. Dokumentationen för :doc:`pgr_isPlanar` visar en icke-plan delgraf av ``sampledata`` (kanterna är markerade blå i figuren)."
+
+msgid "Create a :math:`K_5` graph."
+msgstr "Skapa en :math:`K_5`-graf."
+
+msgid "Test planarity: dont execute when is not planar."
+msgstr "Testa planaritet: kör inte när grafen inte är plan."
+
+msgid "Or get an error: (not shown)"
+msgstr "Eller få ett fel: (visas inte)"
+
+msgid "Planarity of loops"
+msgstr "Planaritet för slingor"
+
+msgid "One loop graph with only one vertex:"
+msgstr "Graf med en slinga och endast en hörnpunkt:"
+
+msgid "Two loop graph with only one vertex:"
+msgstr "Graf med två slingor och endast en hörnpunkt:"
+
+msgid "Triangular graphs"
+msgstr "Triangulära grafer"
+
+msgid "Triangular graph (no duplicate edges)"
+msgstr "Triangulär graf (inga duplicerade kanter)"
+
+msgid "Six rows are returned: :math:`2 \\times 3` edges."
+msgstr "Sex rader returneras: :math:`2 \\times 3` kanter."
+
+msgid ":math:`face\\_id = 1` is the interior face."
+msgstr ":math:`face\\_id = 1` är den inre ytan."
+
+msgid ":math:`face\\_id = 2` is the exterior face. face."
+msgstr ":math:`face\\_id = 2` är den yttre ytan."
+
+msgid "Each edge lists ``1`` on one face and ``2`` on the other."
+msgstr "Varje kant listar ``1`` på den ena ytan och ``2`` på den andra."
+
+msgid "Triangular graph (duplicate edges)"
+msgstr "Triangulär graf (duplicerade kanter)"
+
+msgid ":doc:`pgr_isPlanar`"
+msgstr ":doc:`pgr_isPlanar`"
+
+msgid "Boost Graph Library: `Planar Face Traversal <https://www.boost.org/libs/graph/doc/planar_face_traversal.html>`__"
+msgstr "Boost Graph Library: `Planar Face Traversal <https://www.boost.org/libs/graph/doc/planar_face_traversal.html>`__"
+
+msgid "Boost Graph Library: `Boost: Boyer Myrvold planarity <https://www.boost.org/libs/graph/doc/boyer_myrvold.html>`__"
+msgstr "Boost Graph Library: `Boost: Boyer Myrvold-planaritet <https://www.boost.org/libs/graph/doc/boyer_myrvold.html>`__"
+
+msgid "Wikipedia: `Planar graph <https://en.wikipedia.org/wiki/Planar_graph>`__"
+msgstr "Wikipedia: `Plan graf <https://en.wikipedia.org/wiki/Planar_graph>`__"
+
+msgid "Boyer, J. M. and Myrvold, W. J. (2004). On the Cutting Edge: Simplified O(n) Planarity Algorithms by Edge Addition. Journal of Graph Algorithms and Applications, 8(3), 241-273."
+msgstr "Boyer, J. M. och Myrvold, W. J. (2004). On the Cutting Edge: Simplified O(n) Planarity Algorithms by Edge Addition. Journal of Graph Algorithms and Applications, 8(3), 241–273."
+
 msgid "``pgr_prim``"
 msgstr "``pgr_prim``"
 
@@ -11532,7 +12167,7 @@ msgid "``pgr_separateTouching`` - From touching geometries generates geometries 
 msgstr "``pgr_separateTouching`` - Från berörande geometrier genereras geometrier som är korrekt anslutna vid ändpunkterna"
 
 msgid "This is an auxiliary function for processing geometries that touch but don't share exact endpoints, splitting them at their intersection points to improve network connectivity."
-msgstr "Detta är en hjälpfunktion för bearbetning av geometrier som berör varandra men inte har exakta ändpunkter, och som delas upp vid sina skärningspunkter för att förbättra nätverksanslutningen."
+msgstr "Detta är en hjälpfunktion för bearbetning av geometrier som berör varandra men inte delar exakta ändpunkter och som delas upp vid sina skärningspunkter för att förbättra nätverksanslutningen."
 
 msgid "pgr_separateTouching(`Edges SQL`_, [``tolerance``, ``dryrun``])"
 msgstr "pgr_separateTouching(`Kanter SQL`_, [``tolerance``, ``dryrun``])"
@@ -11559,7 +12194,7 @@ msgid "The algorithm tries to assign the least possible color to every vertex."
 msgstr "Algoritmen försöker tilldela minsta möjliga färg till varje toppunkt."
 
 msgid "Efficient graph coloring is an NP-Hard problem, and therefore, this algorithm does not always produce optimal coloring. It follows a greedy strategy by iterating through all the vertices sequentially, and assigning the smallest possible color that is not used by its neighbors, to each vertex."
-msgstr "Effektiv färgläggning av grafer är ett NP-hårt problem, och därför ger den här algoritmen inte alltid optimal färgläggning. Den följer en girig strategi genom att iterera genom alla toppar i följd och tilldela varje topp den minsta möjliga färg som inte används av dess grannar."
+msgstr "Effektiv färgläggning av grafer är ett NP-hårt problem och därför ger den här algoritmen inte alltid optimal färgläggning. Den följer en girig strategi genom att iterera genom alla hörnpunkter i följd och tilldela varje hörnpunkt den minsta möjliga färg som inte används av dess grannar."
 
 msgid "The returned rows are ordered in ascending order of the vertex value."
 msgstr "De återlämnade raderna är ordnade i stigande ordning efter vertexvärdet."
@@ -12231,7 +12866,7 @@ msgid "Two combinations"
 msgstr "Två kombinationer"
 
 msgid "From point :math:`1` to vertex :math:`10`, and from vertex :math:`6` to point :math:`3` with right side driving. (with details)"
-msgstr "Från punkt :math:`1` till toppunkt :math:`10`, och från toppunkt :math:`6` till punkt :math:`3` med högerkörning. (med detaljer)"
+msgstr "Från punkt :math:`1` till hörnpunkt :math:`10` och från hörnpunkt :math:`6` till punkt :math:`3` med högerkörning. (med detaljer)"
 
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
 msgstr "Använd :doc:`pgr_findCloseEdges` i `Points SQL`_."
@@ -12474,7 +13109,7 @@ msgid "From point :math:`1` and vertex :math:`6` to point :math:`3` with right d
 msgstr "Från punkt :math:`1` och toppunkt :math:`6` till punkt :math:`3` med höger drivsida i riktad graf."
 
 msgid "From point :math:`1` to vertex :math:`10`, and from vertex :math:`6` to point :math:`3` with right side driving."
-msgstr "Från punkt :math:`1` till toppunkt :math:`10`, och från toppunkt :math:`6` till punkt :math:`3` med körning på höger sida."
+msgstr "Från punkt :math:`1` till hörnpunkt :math:`10` och från hörnpunkt :math:`6` till punkt :math:`3` med körning på höger sida."
 
 msgid "Find the cost of the routes from vertex :math:`1` to the two closest locations on the graph of point `(2.9, 1.8)`."
 msgstr "Beräkna kostnaden för rutterna från toppunkten :math:`1` till de två närmaste platserna på grafen för punkten `(2,9, 1,8)`."
@@ -12698,11 +13333,14 @@ msgstr "Använd :doc:`pgr_findCloseEdges` i `Points SQL`_"
 msgid "All this examples are about the route that visits the vertices :math:`\\{-1, 7, -3, 16, 15\\}` in that order on a **directed** graph."
 msgstr "Alla dessa exempel handlar om den rutt som besöker topparna :math:`\\{-1, 7, -3, 16, 15\\}` i den ordningen i en **riktad** graf."
 
+msgid "Planar - Family of functions"
+msgstr "Planar – funktionsfamilj"
+
 msgid "Prim - Family of functions"
 msgstr "Prim - Familj av funktioner"
 
 msgid "The prim algorithm was developed in 1930 by Czech mathematician Vojtěch Jarník. It is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph. This means it finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in the tree is minimized. The algorithm operates by building this tree one vertex at a time, from an arbitrary starting vertex, at each step adding the cheapest possible connection from the tree to another vertex."
-msgstr "Prim-algoritmen utvecklades 1930 av den tjeckiske matematikern Vojtěch Jarník. Det är en girig algoritm som hittar ett träd med minsta spännvidd för en viktad oiktad graf. Detta innebär att den hittar en delmängd av kanterna som bildar ett träd som inkluderar varje vertex, där den totala vikten av alla kanter i trädet minimeras. Algoritmen bygger trädet ett vertex i taget, från ett godtyckligt startvertex, och lägger i varje steg till den billigaste möjliga förbindelsen från trädet till ett annat vertex."
+msgstr "Prim-algoritmen utvecklades 1930 av den tjeckiske matematikern Vojtěch Jarník. Det är en girig algoritm som hittar ett träd med minsta spännvidd för en viktad oriktad graf. Detta innebär att den hittar en delmängd av kanterna som bildar ett träd som omfattar varje hörnpunkt och där den sammanlagda vikten för alla trädets kanter minimeras. Algoritmen bygger trädet en hörnpunkt i taget från en godtycklig starthörnpunkt och lägger i varje steg till den billigaste möjliga förbindelsen från trädet till en annan hörnpunkt."
 
 msgid "This algorithms find the minimum spanning forest in a possibly disconnected graph; in contrast, the most basic form of Prim's algorithm only finds minimum spanning trees in connected graphs. However, running Prim's algorithm separately for each connected component of the graph, then it is called minimum spanning forest."
 msgstr "Den här algoritmen hittar den minsta överspännande skogen i en eventuellt frånkopplad graf; däremot hittar den mest grundläggande formen av Prims algoritm bara minsta överspännande träd i sammanhängande grafer. Men om man kör Prims algoritm separat för varje ansluten komponent i grafen kallas den minsta spännvidden för skog."
@@ -12720,7 +13358,7 @@ msgid "Proposed Functions"
 msgstr "Föreslagna funktioner"
 
 msgid ":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
-msgstr ":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
+msgstr ":doc:`pgr_lineGraph` - Transformationsalgoritm för att skapa en linjegraf."
 
 msgid "Reference"
 msgstr "Referens"
@@ -12746,56 +13384,80 @@ msgstr "pgRouting 4.1"
 msgid "pgRouting 4.0"
 msgstr "pgRouting 4.0"
 
-#, fuzzy
-msgid "pgRouting 4.0.1 Release Notes"
-msgstr "Versionsinformation för pgRouting 3.0.1"
+msgid "pgRouting 4.0.2 Release Notes"
+msgstr "Versionsinformation för pgRouting 4.0.2"
 
-#, fuzzy
+msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.2%22>`__"
+msgstr "För alla ärenden och pull requests som stängts i denna utgåva, se `GitHub-milstolpen för 4.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.2%22>`__"
+
+msgid "4.0.2 Summary of changes by function"
+msgstr "4.0.2 Sammanfattning av ändringar per funktion"
+
+msgid "pgr_dijkstraVia"
+msgstr "pgr_dijkstraVia"
+
+msgid "pgr_drivingDistance"
+msgstr "pgr_drivingDistance"
+
+msgid "pgr_withPointsDD"
+msgstr "pgr_withPointsDD"
+
+msgid "pgr_withPointsVia"
+msgstr "pgr_withPointsVia"
+
+msgid "4.0.2 Bug Fixes"
+msgstr "4.0.2 Felrättningar"
+
+msgid "`#3110 <https://github.com/pgRouting/pgrouting/issues/3110>`__: pgr_dijkstraVia throws std::bad_alloc when a node does not exist"
+msgstr "`#3110 <https://github.com/pgRouting/pgrouting/issues/3110>`__: pgr_dijkstraVia kastar std::bad_alloc när en nod inte finns"
+
+msgid "`#3091 <https://github.com/pgRouting/pgrouting/issues/3091>`__: Catchment functions when negative distance do not have a standardized behaviour"
+msgstr "`#3091 <https://github.com/pgRouting/pgrouting/issues/3091>`__: Vattendragsfunktioner saknar standardiserat beteende vid negativt avstånd"
+
+msgid "pgRouting 4.0.1 Release Notes"
+msgstr "Versionsinformation för pgRouting 4.0.1"
+
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.1%22>`__"
-msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
+msgstr "För alla ärenden och pull requests som stängts i denna utgåva, se `GitHub-milstolpen för 4.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.1%22>`__"
+
+msgid "Bug Fixes"
+msgstr "Buggfixar"
 
 msgid "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withPoints does not pick optimal route when fraction = 1"
 msgstr "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withPoints väljer inte optimal rutt när fraction = 1"
 
-#, fuzzy
 msgid "`#3034 <https://github.com/pgRouting/pgrouting/issues/3034>`__: metrics driver should not be using new"
-msgstr "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__: pgr_transitiveClosure"
+msgstr "`#3034 <https://github.com/pgRouting/pgrouting/issues/3034>`__: metricsdrivrutinen bör inte använda new"
 
-#, fuzzy
 msgid "`#3010 <https://github.com/pgRouting/pgrouting/issues/3010>`__: Performance issue with pgr_separateTouching()"
-msgstr "`#2874 <https://github.com/pgRouting/pgrouting/issues/2874>`__: Befordrad till officiell pgr_separateTouching i version 3.8"
+msgstr "`#3010 <https://github.com/pgRouting/pgrouting/issues/3010>`__: Prestandaproblem med pgr_separateTouching()"
 
-#, fuzzy
+msgid "Code enhancements"
+msgstr "Förbättringar av koden"
+
 msgid "`#3044 <https://github.com/pgRouting/pgrouting/issues/3044>`__: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions"
-msgstr "`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__: Omorganisering av kod för pgr_contraction"
+msgstr "`#3044 <https://github.com/pgRouting/pgrouting/issues/3044>`__: Kontrollera och rätta assert.hpp för cppcoreguidelines-explicit-virtual-functions"
 
-#, fuzzy
 msgid "`#3040 <https://github.com/pgRouting/pgrouting/issues/3040>`__: Check and fix cppcoreguidelines-virtual-class-destructor"
-msgstr "`#1002 <https://github.com/pgRouting/pgrouting/issues/1002>`__: Fixade problem med sammandragning:"
+msgstr "`#3040 <https://github.com/pgRouting/pgrouting/issues/3040>`__: Kontrollera och rätta cppcoreguidelines-virtual-class-destructor"
 
-#, fuzzy
 msgid "`#3039 <https://github.com/pgRouting/pgrouting/issues/3039>`__: Check and fix cppcoreguidelines-special-member-functions"
-msgstr "`#2605 <https://github.com/pgRouting/pgrouting/issues/2605>`__: Standardisera utdata för funktioner för spänningsträd"
+msgstr "`#3039 <https://github.com/pgRouting/pgrouting/issues/3039>`__: Kontrollera och rätta cppcoreguidelines-special-member-functions"
 
-#, fuzzy
 msgid "`#3038 <https://github.com/pgRouting/pgrouting/issues/3038>`__: Check and fix cppcoreguidelines-prefer-member-initializer"
-msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
+msgstr "`#3038 <https://github.com/pgRouting/pgrouting/issues/3038>`__: Kontrollera och rätta cppcoreguidelines-prefer-member-initializer"
 
-#, fuzzy
 msgid "`#3037 <https://github.com/pgRouting/pgrouting/issues/3037>`__: Check and fix cppcoreguidelines-init-variables"
-msgstr "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__: pgr_edgeDisjointPaths"
+msgstr "`#3037 <https://github.com/pgRouting/pgrouting/issues/3037>`__: Kontrollera och rätta cppcoreguidelines-init-variables"
 
-#, fuzzy
 msgid "`#3035 <https://github.com/pgRouting/pgrouting/issues/3035>`__: Pass by reference on existing drivers"
-msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
+msgstr "`#3035 <https://github.com/pgRouting/pgrouting/issues/3035>`__: Skicka genom referens i befintliga drivrutiner"
 
-#, fuzzy
 msgid "Administration"
-msgstr "Begränsningar"
+msgstr "Administration"
 
-#, fuzzy
 msgid "`#3031 <https://github.com/pgRouting/pgrouting/issues/3031>`__: pgtap license to Creative commons and License texts standardization"
-msgstr "`#3025 <https://github.com/pgRouting/pgrouting/issues/3025>`__: Ordningsfunktioner standardiserade"
+msgstr "`#3031 <https://github.com/pgRouting/pgrouting/issues/3031>`__: pgtap-licens till Creative Commons och standardisering av licenstexter"
 
 msgid "pgRouting 4.0.0 Release Notes"
 msgstr "pgRouting 4.0.0 Release Notes"
@@ -12803,8 +13465,8 @@ msgstr "pgRouting 4.0.0 Release Notes"
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
-msgid "Build"
-msgstr "Skapa"
+msgid "4.0.0 Build"
+msgstr "4.0.0 Bygge"
 
 msgid "C++ standard is std17"
 msgstr "C++-standarden är std17"
@@ -12881,6 +13543,9 @@ msgstr "Doxygen hittas inte"
 msgid "To not build Doxygen documentation: `-DBUILD_DOXY=OFF`"
 msgstr "Om du inte vill bygga Doxygen-dokumentation: `-DBUILD_DOXY=OFF`"
 
+msgid "Summary of changes by function"
+msgstr "Sammanfattning av förändringar per funktion"
+
 msgid "pgr_aStar"
 msgstr "pgr_aStar"
 
@@ -12940,9 +13605,6 @@ msgstr "pgr_dijkstraNear"
 
 msgid "pgr_dijkstraNearCost"
 msgstr "pgr_dijkstraNearCost"
-
-msgid "pgr_dijkstraVia"
-msgstr "pgr_dijkstraVia"
 
 msgid "pgr_edgeDisjointPaths"
 msgstr "pgr_edgeDisjointPaths"
@@ -13010,14 +13672,8 @@ msgstr "pgr_withPointsCost"
 msgid "pgr_withPointsCostMatrix"
 msgstr "pgr_withPointsCostMatrix"
 
-msgid "pgr_withPointsDD"
-msgstr "pgr_withPointsDD"
-
 msgid "pgr_withPointsKSP"
 msgstr "pgr_withPointsKSP"
-
-msgid "pgr_withPointsVia"
-msgstr "pgr_withPointsVia"
 
 msgid "Functions promoted to official"
 msgstr "Funktioner som befordrats till tjänsteman"
@@ -13742,6 +14398,9 @@ msgstr "Versionsinformation för pgRouting 3.7.2"
 msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 msgstr "För att se alla problem och pull requests som stängts av denna release, se `Github milstolpe för 3.7.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 
+msgid "Build"
+msgstr "Skapa"
+
 msgid "`#2713 <https://github.com/pgRouting/pgrouting/issues/2713>`__: cmake missing some policies and min version"
 msgstr "`#2713 <https://github.com/pgRouting/pgrouting/issues/2713>`__: cmake saknar vissa policyer och min-version"
 
@@ -14286,10 +14945,10 @@ msgid "Traversal"
 msgstr "Traversal"
 
 msgid "pgr_depthFirstSearch(Multiple vertices)"
-msgstr "pgr_depthFirstSearch(Multiple vertices)"
+msgstr "pgr_depthFirstSearch(Flera hörn)"
 
 msgid "pgr_depthFirstSearch(Single vertex)"
-msgstr "pgr_depthFirstSearch(Single vertex)"
+msgstr "pgr_depthFirstSearch(Enskilt hörn)"
 
 msgid "pgRouting 3.2"
 msgstr "pgRouting 3.2"
@@ -14706,7 +15365,7 @@ msgid "pgr_pickDeliver"
 msgstr "pgr_pickDeliver"
 
 msgid "Chinese Postman family"
-msgstr "Chinese Postman family"
+msgstr "Kinesiska postiljonsfamiljen"
 
 msgid "pgr_chinesePostman"
 msgstr "pgr_chinesePostman"
@@ -14715,16 +15374,16 @@ msgid "pgr_chinesePostmanCost"
 msgstr "pgr_chinesePostmanCost"
 
 msgid "Breadth First Search family"
-msgstr "Breadth First Search family"
+msgstr "Bredden-först-sökningsfamiljen"
 
 msgid "Bellman Ford family"
-msgstr "Bellman Ford family"
+msgstr "Bellman–Ford-familjen"
 
 msgid "Moved to legacy"
 msgstr "Flyttat till legacy"
 
 msgid "pgr_labelGraph - Use the components family of functions instead."
-msgstr "pgr_labelGraph - Use the components family of functions instead."
+msgstr "pgr_labelGraph – använd i stället funktionsfamiljen components."
 
 msgid "Max flow - functions were renamed on v2.5.0"
 msgstr "Maxflöde - funktioner döptes om i v2.5.0"
@@ -14818,9 +15477,6 @@ msgstr "pgr_alphashape"
 
 msgid "pgr_dijkstraCostMatrix"
 msgstr "pgr_dijkstraCostMatrix"
-
-msgid "pgr_drivingDistance"
-msgstr "pgr_drivingDistance"
 
 msgid "pgr_dijkstraVia (proposed)"
 msgstr "pgr_dijkstraVia (proposed)"
@@ -14979,7 +15635,7 @@ msgid "enhancement:"
 msgstr "förbättring:"
 
 msgid "pgr_version is now on SQL language"
-msgstr "pgr_version is now on SQL language"
+msgstr "pgr_version finns nu i SQL-språket"
 
 msgid "Breaking change on:"
 msgstr "Bryter förändring på:"
@@ -15006,22 +15662,22 @@ msgid "pgr_lineGraph"
 msgstr "pgr_lineGraph"
 
 msgid "pgr_bdastar - use pgr_bdAstar instead"
-msgstr "pgr_bdastar - use pgr_bdAstar instead"
+msgstr "pgr_bdastar – använd i stället pgr_bdAstar"
 
 msgid "Renamed functions"
 msgstr "Omdöpta funktioner"
 
 msgid "pgr_maxFlowPushRelabel - use pgr_pushRelabel instead"
-msgstr "pgr_maxFlowPushRelabel - use pgr_pushRelabel instead"
+msgstr "pgr_maxFlowPushRelabel – använd i stället pgr_pushRelabel"
 
 msgid "pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead"
-msgstr "pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead"
+msgstr "pgr_maxFlowEdmondsKarp – använd i stället pgr_edmondsKarp"
 
 msgid "pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead"
-msgstr "pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead"
+msgstr "pgr_maxFlowBoykovKolmogorov – använd i stället pgr_boykovKolmogorov"
 
 msgid "pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead"
-msgstr "pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead"
+msgstr "pgr_maximumCardinalityMatching – använd i stället pgr_maxCardinalityMatch"
 
 msgid "Deprecated Function"
 msgstr "Föråldrad funktion"
@@ -15072,7 +15728,7 @@ msgid "Deprecated signatures."
 msgstr "Föråldrade signaturer."
 
 msgid "pgr_bddijkstra - use pgr_bdDijkstra instead"
-msgstr "pgr_bddijkstra - use pgr_bdDijkstra instead"
+msgstr "pgr_bddijkstra – använd i stället pgr_bdDijkstra"
 
 msgid "pgr_pointsToVids"
 msgstr "pgr_pointsToVids"
@@ -15174,7 +15830,7 @@ msgid "pgr_contractGraph"
 msgstr "pgr_contractGraph"
 
 msgid "pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead"
-msgstr "pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead"
+msgstr "pgr_tsp – använd i stället pgr_TSP eller pgr_eucledianTSP"
 
 msgid "pgr_aStar - use pgr_aStar instead"
 msgstr "pgr_aStar - use pgr_aStar instead"
@@ -15303,28 +15959,28 @@ msgid "pgr_withPointsCost(Many to Many)"
 msgstr "pgr_withPointsCost(Many to Many)"
 
 msgid "pgr_withPointsDD(single vertex)"
-msgstr "pgr_withPointsDD(single vertex)"
+msgstr "pgr_withPointsDD(enskilt hörn)"
 
 msgid "pgr_withPointsDD(multiple vertices)"
-msgstr "pgr_withPointsDD(multiple vertices)"
+msgstr "pgr_withPointsDD(flera hörn)"
 
 msgid "pgr_apspWarshall use pgr_floydWarshall instead"
-msgstr "pgr_apspWarshall use pgr_floydWarshall instead"
+msgstr "pgr_apspWarshall använder i stället pgr_floydWarshall"
 
 msgid "pgr_apspJohnson use pgr_Johnson instead"
-msgstr "pgr_apspJohnson use pgr_Johnson instead"
+msgstr "pgr_apspJohnson använder i stället pgr_Johnson"
 
 msgid "pgr_kDijkstraCost use pgr_dijkstraCost instead"
-msgstr "pgr_kDijkstraCost use pgr_dijkstraCost instead"
+msgstr "pgr_kDijkstraCost använder i stället pgr_dijkstraCost"
 
 msgid "pgr_kDijkstraPath use pgr_dijkstra instead"
-msgstr "pgr_kDijkstraPath use pgr_dijkstra instead"
+msgstr "pgr_kDijkstraPath använder i stället pgr_dijkstra"
 
 msgid "Renamed and Deprecated Function"
 msgstr "Omdöpta och utfasade funktioner"
 
 msgid "pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix"
-msgstr "pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix"
+msgstr "pgr_makeDistanceMatrix har bytt namn till _pgr_makeDistanceMatrix"
 
 msgid "pgRouting 2.1"
 msgstr "pgRouting 2.1"
@@ -15342,28 +15998,28 @@ msgid "pgr_dijkstra(One to One)"
 msgstr "pgr_dijkstra(One to One)"
 
 msgid "pgr_alphaShape function now can generate better (multi)polygon with holes and alpha parameter."
-msgstr "pgr_alphaShape function now can generate better (multi)polygon with holes and alpha parameter."
+msgstr "Funktionen pgr_alphaShape kan nu skapa bättre (multi)polygoner med hål och alfa-parameter."
 
 msgid "Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)"
 msgstr "Föreslagna funktioner från Steve Woodbridge, (Klassificeras som bekvämlighet av författaren.)"
 
 msgid "pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge."
-msgstr "pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge."
+msgstr "pgr_pointToEdgeNode – omvandlar en punktgeometri till ett vertex_id baserat på närmaste kant."
 
 msgid "pgr_flipEdges - flip the edges in an array of geometries so the connect end to end."
-msgstr "pgr_flipEdges - flip the edges in an array of geometries so the connect end to end."
+msgstr "pgr_flipEdges – vänder kanterna i en matris av geometrier så att de ansluter från ände till ände."
 
 msgid "pgr_textToPoints - convert a string of x,y;x,y;... locations into point geometries."
-msgstr "pgr_textToPoints - convert a string of x,y;x,y;... locations into point geometries."
+msgstr "pgr_textToPoints – omvandlar en sträng med x,y;x,y;...-positioner till punktgeometrier."
 
 msgid "pgr_pointsToVids - convert an array of point geometries into vertex ids."
-msgstr "pgr_pointsToVids - convert an array of point geometries into vertex ids."
+msgstr "pgr_pointsToVids – omvandlar en matris av punktgeometrier till vertex-id:n."
 
 msgid "pgr_pointsToDMatrix - Create a distance matrix from an array of points."
-msgstr "pgr_pointsToDMatrix - Create a distance matrix from an array of points."
+msgstr "pgr_pointsToDMatrix – skapar en avståndsmatris från en matris av punkter."
 
 msgid "pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id."
-msgstr "pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id."
+msgstr "pgr_vidsToDMatrix – skapar en avståndsmatris från en matris av vertex_id."
 
 msgid "Added proposed functions from GSoc Projects:"
 msgstr "Lagt till föreslagna funktioner från GSoc Projects:"
@@ -15687,13 +16343,13 @@ msgid "``reverse_category``"
 msgstr "``reverse_category``"
 
 msgid ":math:`x` coordinate of the starting vertex of the geometry."
-msgstr ":math:`x` coordinate of the starting vertex of the geometry."
+msgstr ":math:`x`-koordinaten för geometrins starthörn."
 
 msgid "For convenience it is saved on the table but can be calculated as ``ST_X(ST_StartPoint(geom))``."
 msgstr "För enkelhetens skull sparas den i tabellen, men kan beräknas som ``ST_X(ST_StartPoint(geom))``."
 
 msgid ":math:`y` coordinate of the ending vertex of the geometry."
-msgstr ":math:`y` coordinate of the ending vertex of the geometry."
+msgstr ":math:`y`-koordinaten för geometrins sluthörn."
 
 msgid "For convenience it is saved on the table but can be calculated as ``ST_Y(ST_EndPoint(geom))``."
 msgstr "För enkelhetens skull sparas den i tabellen, men kan beräknas som ``ST_Y(ST_EndPoint(geom))``."
@@ -16086,7 +16742,7 @@ msgid "On both sides for point **6**."
 msgstr "På båda sidor för punkt **6**."
 
 msgid "The representation on the data base follows the `Points SQL`_ description, and for this example:"
-msgstr "Representationen på databasen följer `Points SQL`_-beskrivningen, och för detta exempel:"
+msgstr "Representationen i databasen följer `Points SQL`_-beskrivningen och för detta exempel:"
 
 msgid "Driving side"
 msgstr "Körning på sidan"
@@ -16251,22 +16907,45 @@ msgid "Depending on the name:"
 msgstr "Beroende på namnet:"
 
 msgid "pgr_withPoints is pgr_dijkstra **with points**"
-msgstr "pgr_withPoints is pgr_dijkstra **with points**"
+msgstr "pgr_withPoints är pgr_dijkstra **med punkter**"
 
 msgid "pgr_withPointsCost is pgr_dijkstraCost **with points**"
-msgstr "pgr_withPointsCost is pgr_dijkstraCost **with points**"
+msgstr "pgr_withPointsCost är pgr_dijkstraCost **med punkter**"
 
 msgid "pgr_withPointsCostMatrix is pgr_dijkstraCostMatrix **with points**"
-msgstr "pgr_withPointsCostMatrix is pgr_dijkstraCostMatrix **with points**"
+msgstr "pgr_withPointsCostMatrix är pgr_dijkstraCostMatrix **med punkter**"
 
 msgid "pgr_withPointsKSP is pgr_ksp **with points**"
-msgstr "pgr_withPointsKSP is pgr_ksp **with points**"
+msgstr "pgr_withPointsKSP är pgr_ksp **med punkter**"
 
 msgid "pgr_withPointsDD is pgr_drivingDistance **with points**"
-msgstr "pgr_withPointsDD is pgr_drivingDistance **with points**"
+msgstr "pgr_withPointsDD är pgr_drivingDistance **med punkter**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
-msgstr "pgr_withPointsvia is pgr_dijkstraVia **with points**"
+msgstr "pgr_withPointsvia är pgr_dijkstraVia **med punkter**"
+
+#~ msgid "C and C++0x compilers"
+#~ msgstr "C- och C++0x-kompilatorer"
+
+#~ msgid "Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support"
+#~ msgstr "Kompilering med Boost 1.56 upp till Boost 1.74 kräver C++-kompilator med standardstöd för C++03 eller C++11"
+
+#~ msgid "Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support"
+#~ msgstr "Kompilering med Boost 1.75 kräver C++-kompilator med stöd för C++14-standarden"
+
+#~ msgid "CMake >= 3.12"
+#~ msgstr "CMake >= 3.12"
+
+#, fuzzy
+#~ msgid "Planar"
+#~ msgstr "pgr_isPlanar"
+
+#, fuzzy
+#~ msgid ":doc:`pgr_isPlanar` - Returns whether the graph is planar."
+#~ msgstr "`true` när grafen är planar."
+
+#~ msgid "Planar Family"
+#~ msgstr "Planar familj"
 
 #~ msgid "No changes yet"
 #~ msgstr "Inga ändringar ännu"
@@ -16654,12 +17333,6 @@ msgstr "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 
 #~ msgid "Functionality might not change. (But still can)"
 #~ msgstr "Funktionaliteten kanske inte ändras. (Men kan fortfarande göra det)"
-
-#~ msgid "Possible server crash"
-#~ msgstr "Möjlig serverkrasch"
-
-#~ msgid "These functions might create a server crash"
-#~ msgstr "Dessa funktioner kan orsaka en serverkrasch"
 
 #~ msgid "Might need c/c++ coding."
 #~ msgstr "Kan behöva c/c++-kodning."
@@ -17140,9 +17813,6 @@ msgstr "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 
 #~ msgid "The Boost Graph Library (BGL). Version >= 1.56"
 #~ msgstr "Boost Graph Library (BGL). Version >= 1.56"
-
-#~ msgid "CMake >= 3.2"
-#~ msgstr "CMake >= 3.2"
 
 #~ msgid "optional dependencies"
 #~ msgstr "valfria beroenden"
