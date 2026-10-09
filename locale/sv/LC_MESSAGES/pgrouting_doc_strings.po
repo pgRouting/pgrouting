@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-27 01:08+0000\n"
+"POT-Creation-Date: 2026-09-28 18:14+0000\n"
 "PO-Revision-Date: 2025-12-08 08:47+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\n"
@@ -9133,14 +9133,23 @@ msgstr "pgr_dagShortestPath(Combinations)"
 msgid "Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm that solves the shortest path problem for weighted directed acyclic graph, producing a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``)."
 msgstr "Shortest Path for Directed Acyclic Graph(DAG) är en grafsökningsalgoritm som löser problemet med kortaste vägen för viktad riktad acyklisk graf, vilket ger en kortaste väg från ett startvertex (``start_vid``) till ett slutvertex (``end_vid``)."
 
-msgid "This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph."
+#, fuzzy
+msgid "This implementation can only be used with a directed graph with no cycles i.e. directed acyclic graph."
 msgstr "Denna implementation kan endast användas med en **riktad** graf utan cykler, dvs. en riktad acyklisk graf."
 
 msgid "The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG's than either the Dijkstra or Bellman-Ford algorithm."
 msgstr "Algoritmen förlitar sig på topologisk sortering av DAG för att införa en linjär ordning på topparna och är därmed effektivare för DAG än både Dijkstra- och Bellman-Ford-algoritmen."
 
-msgid "Process is valid for weighted directed acyclic graphs only. otherwise it will throw warnings."
+#, fuzzy
+msgid "Process is valid for weighted directed acyclic graphs only."
 msgstr "Processen är endast giltig för viktade riktade acykliska grafer. annars kommer den att ge varningar."
+
+msgid "Avoids one edge cycle: `reverse_cost` column is used when :math:`cost < 0`."
+msgstr ""
+
+#, fuzzy
+msgid "If the graph is not DAG, will throw a PostgreSQL `ERROR`."
+msgstr "När grafen är tvådelad"
 
 msgid "The `agg_cost` the non included values `(v, v)` is `0`"
 msgstr "Den `agg_cost` de icke inkluderade värdena `(v, v)` är `0`"
@@ -9177,6 +9186,9 @@ msgstr "Från topparna :math:`\\{5, 10\\}` till topp :math:`11`"
 
 msgid "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an **undirected** graph"
 msgstr "Från topparna :math:`\\{5, 15\\}` till topparna :math:`\\{11, 17\\}` i en **omdirigerad** graf"
+
+msgid "`reverse_cost` column is used when :math:`cost < 0` to avoid edge cycle."
+msgstr ""
 
 msgid "Return columns"
 msgstr "Returnera kolumner"
