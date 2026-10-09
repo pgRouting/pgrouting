@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-28 18:14+0000\n"
+"POT-Creation-Date: 2026-10-08 15:38+0000\n"
 "PO-Revision-Date: 2025-12-10 20:25+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\n"
@@ -3689,6 +3689,10 @@ msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_king
 
 #, fuzzy
 msgid "`#3154 <https://github.com/pgRouting/pgrouting/issues/3154>`__: betweennessCentrality: use allpairs/process and driver"
+msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_kingOrdering"
+
+#, fuzzy
+msgid "`#3163 <https://github.com/pgRouting/pgrouting/issues/3163>`__: KSP & KSP WithPoints Use ShortestPath driver files"
 msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_kingOrdering"
 
 #, fuzzy
