@@ -36,6 +36,8 @@ enum Which {  // NOLINT(cppcoreguidelines-use-enum-class)
     BELLMANFORD,
     EDGEDISJOINT,
     BINARYBFS,
+    KSP, OLDKSP,
+    KSPWITHPOINTS, OLDKSPWITHPOINTS,
     /** allpairs **/
     FLOYD = 131, JOHNSON, BETWEENCENTRALITY,
     /** metrics **/

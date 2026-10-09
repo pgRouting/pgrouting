@@ -66,8 +66,6 @@ _pgr_withpoints_v4(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(7),
                 PG_GETARG_BOOL(8),
 
-                0, true,
-
                 text_to_cstring(PG_GETARG_TEXT_P(5))[0],
                 PG_GETARG_BOOL(6),
 
@@ -89,8 +87,6 @@ _pgr_withpoints_v4(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(6),
                 true,
-
-                0, true,
 
                 text_to_cstring(PG_GETARG_TEXT_P(4))[0],
                 PG_GETARG_BOOL(5),
@@ -201,8 +197,6 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(7),  // only cost
                 PG_GETARG_BOOL(8),  // normal
 
-                0, true,  // n-goals, normal
-
                 text_to_cstring(PG_GETARG_TEXT_P(5))[0],  // driving side
                 PG_GETARG_BOOL(6),  // details
 
@@ -224,8 +218,6 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(6),
                 true,
-
-                0, true,
 
                 text_to_cstring(PG_GETARG_TEXT_P(4))[0],
                 PG_GETARG_BOOL(5),

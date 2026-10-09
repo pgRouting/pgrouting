@@ -1,18 +1,12 @@
 /*PGR-GNU*****************************************************************
 File: shortestPathWithPoints_driver.hpp
 
-Copyright (c) 2007-2026 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Design of one process & driver file by
 Copyright (c) 2025 Celia Virginia Vergara Castillo
 Mail: vicky at erosion.dev
-
-Copying this file (or a derivative) within pgRouting code add the following:
-
-Generated with Template by:
-Copyright (c) 2007-2026 pgRouting developers
-Mail: project@pgrouting.org
 
 ------
 
@@ -55,6 +49,11 @@ void do_shortestPathWithPoints(
 
         bool, bool, bool,
         int64_t, bool, char, bool,
+
+        int,
+        bool,
+        int64_t*,
+        int64_t*,
 
         Which,
         bool&,

@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: shortestPathWithPoints_process.h
 
-Copyright (c) 2007-2026 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Design of one process & driver file by
@@ -11,7 +11,7 @@ Mail: vicky at erosion.dev
 Copying this file (or a derivative) within pgRouting code add the following:
 
 Generated with Template by:
-Copyright (c) 2007-2026 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -58,9 +58,12 @@ extern "C" {
 void pgr_process_shortestPathWithPoints(
         const char*, const char*, const char*,
         ArrayType*, ArrayType*,
+
         bool, bool, bool,
-        int64_t, bool,
-        char, bool, enum Which,
+
+        char, bool,
+
+        enum Which,
         Path_rt**, size_t*);
 
 #ifdef __cplusplus

@@ -1,15 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: withPoints_ksp_driver.h
+File: kPathsWithPoints_process.h
 
-Copyright (c) 2007-2026 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
+Design of one process & driver file by
+Copyright (c) 2026 Celia Virginia Vergara Castillo
 Mail: vicky at erosion.dev
-
-Copyright (c) 2023 Abhinav Jain
-Mail: this.abhinav at gmail.com
 
 ------
 
@@ -29,55 +26,43 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_YEN_WITHPOINTS_KSP_DRIVER_H_
-#define INCLUDE_DRIVERS_YEN_WITHPOINTS_KSP_DRIVER_H_
+#ifndef INCLUDE_PROCESS_KPATHSWITHPOINTS_PROCESS_H_
+#define INCLUDE_PROCESS_KPATHSWITHPOINTS_PROCESS_H_
 #pragma once
 
-
 #ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <postgres.h>
-#include <utils/array.h>
-
-#ifdef __cplusplus
-}
-#endif
-
-#include "cpp_common/undefPostgresDefine.hpp"
-
-#ifdef __cplusplus
-#   include <cstddef>
-#   include <cstdint>
+#include <cstddef>
+#include <cstdint>
 using Path_rt = struct Path_rt;
+using ArrayType = struct ArrayType;
 #else
-#   include <stddef.h>
-#   include <stdint.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
 typedef struct Path_rt Path_rt;
+typedef struct ArrayType ArrayType;
 #endif
+
+#include "c_common/enums.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-
-void pgr_do_withPointsKsp(
-        const char*,
-        const char*,
-        const char*,
-        const char*,
+void pgr_process_kPathsWithPoints(
+        const char*, const char*, const char*,
         ArrayType*, ArrayType*,
+
+        int, bool, bool,
+        char, bool,
+
         int64_t*, int64_t*,
-        size_t,
 
-bool, bool, char, bool,
-
-        Path_rt**, size_t*,
-        char**, char**, char**);
+        enum Which,
+        Path_rt**, size_t*);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_YEN_WITHPOINTS_KSP_DRIVER_H_
+#endif  // INCLUDE_PROCESS_KPATHSWITHPOINTS_PROCESS_H_

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: shortestPath_process.cpp
+File: kPathsWithPoints_process.cpp
 
 Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "process/shortestPath_process.h"
+#include "process/kPathsWithPoints_process.h"
 
 extern "C" {
 #include "c_common/postgres_connection.h"
@@ -44,25 +44,29 @@ extern "C" {
 #include "cpp_common/assert.hpp"
 #include "cpp_common/alloc.hpp"
 
-#include "drivers/shortestPath_driver.hpp"
+#include "drivers/shortestPathWithPoints_driver.hpp"
 
-
-void pgr_process_shortestPath(
+void pgr_process_kPathsWithPoints(
         const char *edges_sql,
+        const char *points_sql,
         const char *combinations_sql,
 
         ArrayType *starts, ArrayType *ends,
 
+        int k,
         bool directed,
-        bool only_cost,
-        bool normal,
+        bool heap_paths,
 
-        int64_t n_goals,
-        bool global,
+        char driving_side,
+        bool details,
+
+        int64_t* start_vid,
+        int64_t* end_vid,
 
         enum Which which,
         Path_rt **result_tuples, size_t *result_count) {
     pgassert(edges_sql);
+    pgassert(points_sql);
     pgassert(!(*result_tuples));
     pgassert(*result_count == 0);
     pgr_SPI_connect();
@@ -71,27 +75,32 @@ void pgr_process_shortestPath(
     std::ostringstream err;
     std::ostringstream notice;
 
-    bool is_matrix = false;
+    bool is_matrix {false};
 
     clock_t start_t = clock();
-    pgrouting::drivers::do_shortestPath(
+    pgrouting::drivers::do_shortestPathWithPoints(
             edges_sql? edges_sql : "",
+            points_sql? points_sql : "",
             combinations_sql? combinations_sql : "",
+
             starts, ends,
 
             directed,
-            only_cost, normal,
-            n_goals, global,
+            false, true, -1, false,
 
-            /* Use kPath_process to define these */
-            0, false, nullptr, nullptr,
+            driving_side,
+            details,
+
+            k,
+            heap_paths,
+            start_vid, end_vid,
 
             which,
             is_matrix,
             (*result_tuples), (*result_count),
             log, notice, err);
 
-    auto name = std::string(" processing ") + pgrouting::get_name(which, only_cost, n_goals > 0, is_matrix);
+    auto name = std::string(" processing ") + pgrouting::get_name(which);
     time_msg(name.c_str(), start_t, clock());
 
     if (!err.str().empty() && (*result_tuples)) {
