@@ -48,34 +48,54 @@ extern "C" {
 namespace pgrouting {
 using Column_info_t = struct Column_info_t;
 
-/** @brief  Function will check whether the colNumber represent any specific column or NULL (SPI_ERROR_NOATTRIBUTE).  */
+/**
+ * @brief Function will check whether the colNumber exists
+ */
 bool column_found(int);
 
-/** @brief Function tells expected type of each column and then check the correspondence type of each column.  */
+/**
+ * @brief Function tells expected type of each column
+ */
 void fetch_column_info(const TupleDesc&, std::vector<Column_info_t>&);
 
-/** @brief Function return the value of specified column in char type. */
+/**
+ * @brief Function return the value of specified column
+ */
 char getChar(const HeapTuple, const TupleDesc&, const Column_info_t&, bool, char);
 
-/** @brief get postgres array into c++ set container */
+/**
+ * @brief get postgres array into c++ set container
+ */
 std::set<int64_t> get_pgset(ArrayType*);
-
-/** @brief get postgres array into c++ vector container */
+/**
+ * @brief Get postgres array into c++ vector container
+ */
 std::vector<int64_t> get_pgarray(ArrayType*, bool);
 
-/** @brief Enforces the input array to be @b NOT empty */
+/**
+ * @brief Enforces the input array to be NOT empty
+ */
 int64_t* get_array(ArrayType*, size_t*, bool);
 
-/** @brief Function returns the values of specified columns in array. */
+/**
+ * @brief Function returns the values of specified column
+ */
 int64_t* getBigIntArr(const HeapTuple, const TupleDesc&, const Column_info_t&, size_t*);
 
-/** @brief Function returns the value of specified column in integer type.  */
+/**
+ * @brief Function returns the value of specified column
+ */
 int64_t getBigInt(const HeapTuple, const TupleDesc&, const Column_info_t&);
 
-/** @brief Function returns the value of specified column in double type.  */
+/**
+ * @brief Function returns the value of specified column
+ */
 double  getFloat8(const HeapTuple, const TupleDesc&, const Column_info_t&);
 
-/** @brief Function returns the string representation of the value of specified column.  */
+/**
+ * @brief Function returns the string representation of column
+ * @note Under development - not used, not tested
+ */
 char* getText(const HeapTuple, const TupleDesc&, const Column_info_t&);
 
 }  // namespace pgrouting
