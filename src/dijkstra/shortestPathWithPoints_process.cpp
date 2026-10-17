@@ -8,12 +8,6 @@ Design of one process & driver file by
 Copyright (c) 2025 Celia Virginia Vergara Castillo
 Mail: vicky at erosion.dev
 
-Copying this file (or a derivative) within pgRouting code add the following:
-
-Generated with Template by:
-Copyright (c) 2025-2026 pgRouting developers
-Mail: project@pgrouting.org
-
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -63,13 +57,12 @@ void pgr_process_shortestPathWithPoints(
         bool only_cost,
         bool normal,
 
-        int64_t n_goals,
-        bool global,
         char driving_side,
         bool details,
         enum Which which,
         Path_rt **result_tuples, size_t *result_count) {
     pgassert(edges_sql);
+    pgassert(points_sql);
     pgassert(!(*result_tuples));
     pgassert(*result_count == 0);
     pgr_SPI_connect();
@@ -78,7 +71,9 @@ void pgr_process_shortestPathWithPoints(
     std::ostringstream err;
     std::ostringstream notice;
 
-    bool is_matrix = false;
+    bool is_matrix {false};
+    int64_t n_goals {0};
+    bool global {true};
 
     clock_t start_t = clock();
     pgrouting::drivers::do_shortestPathWithPoints(
@@ -90,6 +85,8 @@ void pgr_process_shortestPathWithPoints(
             only_cost, normal,
             n_goals, global,
             driving_side, details,
+
+            -1, false, nullptr, nullptr,
             which,
             is_matrix,
             (*result_tuples), (*result_count),

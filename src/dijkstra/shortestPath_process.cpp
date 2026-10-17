@@ -8,12 +8,6 @@ Design of one process & driver file by
 Copyright (c) 2025 Celia Virginia Vergara Castillo
 Mail: vicky at erosion.dev
 
-Copying this file (or a derivative) within pgRouting code add the following:
-
-Generated with Template by:
-Copyright (c) 2025-2026 pgRouting developers
-Mail: project@pgrouting.org
-
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -44,6 +38,7 @@ extern "C" {
 #include <sstream>
 
 #include "c_types/path_rt.h"
+
 #include "cpp_common/report_messages.hpp"
 #include "cpp_common/utilities.hpp"
 #include "cpp_common/assert.hpp"
@@ -87,6 +82,9 @@ void pgr_process_shortestPath(
             directed,
             only_cost, normal,
             n_goals, global,
+
+            /* Use kPath_process to define these */
+            0, false, nullptr, nullptr,
 
             which,
             is_matrix,

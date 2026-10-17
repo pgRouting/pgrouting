@@ -1,0 +1,174 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+/* Parallel edges in pgr_ksp.
+ *
+ * pgr_ksp reports one edge per (source, target) pair: of several parallel
+ * edges it keeps the cheapest and ignores the rest. The other edges are not
+ * lost, they are reachable from the edge id that pgr_ksp returns, by joining it
+ * back to the original data, which is what the last check in this file does.
+ * See the wiki page "How to: KSP: Handle parallel edges".
+ *
+ * The graph below carries three parallel edges 1 -> 2 with costs 1, 2 and 3,
+ * plus an alternate route 1 -> 3 -> 4 -> 2, so after collapsing the bundle
+ * there are exactly two loopless paths:
+ *
+ *     1 -> 2                     over edge 1  = 1
+ *     1 -> 3 -> 4 -> 2           over 4,5,6   = 15
+ *
+ * So k=1 reports the first, k=2 adds the second, and k=3 and above repeat them
+ * however large k gets. The bundle is not a source of extra paths.
+ *
+ * Every check here is ungated: keeping the cheapest edge of a bundle is the
+ * documented behaviour of pgr_ksp, not something new. */
+
+CREATE TEMP TABLE par AS
+SELECT * FROM (VALUES
+       (1, 1, 2, 1, -1),
+       (2, 1, 2, 2, -1),
+       (3, 1, 2, 3, -1),
+       (4, 1, 3, 4, -1),
+       (5, 3, 4, 5, -1),
+       (6, 4, 2, 6, -1))
+AS t(id, source, target, cost, reverse_cost);
+
+/* The same graph with the bundle removed, to show that the bundle now makes no
+ * difference at all. Both give the two paths above. */
+CREATE TEMP TABLE par_single AS
+SELECT * FROM (VALUES
+       (1, 1, 2, 1, -1),
+       (4, 1, 3, 4, -1),
+       (5, 3, 4, 5, -1),
+       (6, 4, 2, 6, -1))
+AS t(id, source, target, cost, reverse_cost);
+
+SELECT plan(8);
+
+/* the cheapest path only, over edge 1 */
+PREPARE r_one AS
+SELECT * FROM (VALUES
+       (1, 1, 1,  1,  0::numeric),
+       (1, 2, 2, -1,  1::numeric))
+AS t(path_id, path_seq, node, edge, agg_cost);
+
+/* both paths of the collapsed graph: 1 -> 2 direct, and 1 -> 3 -> 4 -> 2 */
+PREPARE r_two AS
+SELECT * FROM (VALUES
+       (1, 1, 1,  1,  0::numeric),
+       (1, 2, 2, -1,  1::numeric),
+       (2, 1, 1,  4,  0::numeric),
+       (2, 2, 3,  5,  4::numeric),
+       (2, 3, 4,  6,  9::numeric),
+       (2, 4, 2, -1, 15::numeric))
+AS t(path_id, path_seq, node, edge, agg_cost);
+
+PREPARE q1 AS
+SELECT path_id, path_seq, node, edge, agg_cost::numeric AS agg_cost
+FROM pgr_ksp('SELECT id, source, target, cost, reverse_cost FROM par',
+             1, 2, 1, directed:=true);
+SELECT set_eq('q1', 'r_one', 'k=1 gives the cheapest path, over the cheapest edge 1');
+
+PREPARE q2 AS
+SELECT path_id, path_seq, node, edge, agg_cost::numeric AS agg_cost
+FROM pgr_ksp('SELECT id, source, target, cost, reverse_cost FROM par',
+             1, 2, 2, directed:=true);
+SELECT set_eq('q2', 'r_two', 'k=2 adds the alternate route 1 -> 3 -> 4 -> 2');
+
+PREPARE q3 AS
+SELECT path_id, path_seq, node, edge, agg_cost::numeric AS agg_cost
+FROM pgr_ksp('SELECT id, source, target, cost, reverse_cost FROM par',
+             1, 2, 3, directed:=true);
+SELECT set_eq('q3', 'r_two', 'k=3 repeats the two paths, the bundle adds none');
+
+PREPARE q4 AS
+SELECT path_id, path_seq, node, edge, agg_cost::numeric AS agg_cost
+FROM pgr_ksp('SELECT id, source, target, cost, reverse_cost FROM par',
+             1, 2, 100, directed:=true);
+SELECT set_eq('q4', 'r_two', 'k=100 also repeats the two paths');
+
+PREPARE q5 AS
+SELECT path_id, path_seq, node, edge, agg_cost::numeric AS agg_cost
+FROM pgr_ksp('SELECT id, source, target, cost, reverse_cost FROM par',
+             1, 2, 2, directed:=false);
+SELECT set_eq('q5', 'r_two', 'undirected gives the same two paths');
+
+/* the edge pgr_ksp reports for the collapsed hop is the cheapest of the bundle,
+ * worked out from the data rather than hardcoded, so the test states the
+ * contract instead of one particular fixture */
+PREPARE q_cheapest AS
+SELECT DISTINCT edge
+FROM pgr_ksp('SELECT id, source, target, cost, reverse_cost FROM par',
+             1, 2, 1, directed:=true)
+WHERE path_seq = 1;
+
+PREPARE r_cheapest AS
+SELECT id::bigint AS edge
+FROM par
+WHERE source = 1 AND target = 2
+ORDER BY cost, id
+LIMIT 1;
+
+SELECT set_eq('q_cheapest', 'r_cheapest',
+    'the reported edge is the cheapest of the parallel edges');
+
+/* the bundle changes nothing: same answer with it and without it */
+PREPARE q_single AS
+SELECT path_id, path_seq, node, edge, agg_cost::numeric AS agg_cost
+FROM pgr_ksp('SELECT id, source, target, cost, reverse_cost FROM par_single',
+             1, 2, 2, directed:=true);
+
+SELECT set_eq('q2', 'q_single',
+    'adding parallel edges does not change what pgr_ksp reports');
+
+/* Getting the ignored edges back, the way the wiki page does it: take the edge
+ * id of the returned row, look up that edge in the original data to get its
+ * (source, target), then pair it with every edge of the original data that has
+ * the same (source, target). Each pairing is a variant of the path, so they are
+ * numbered in sequence off the row they replace.
+ *
+ * The cheapest path is the single hop 1 -> 2, so the three variants are three
+ * copies of that hop carrying edges 1, 2 and 3, and the hop is renumbered 1, 2
+ * and 3 while the node it reaches follows on as 2, 3 and 4. */
+PREPARE q_expanded AS
+WITH ksp_one AS (
+    SELECT path_seq, node, edge, agg_cost::numeric AS agg_cost
+    FROM pgr_ksp('SELECT id, source, target, cost, reverse_cost FROM par',
+                 1, 2, 1, directed:=true)
+),
+hop AS (
+    SELECT k.path_seq AS hop_seq, u.source, u.target, u.cost::numeric AS used_cost
+    FROM ksp_one k JOIN par u ON u.id = k.edge
+    WHERE k.edge > 0
+),
+variants AS (
+    SELECT p.id AS edge, p.cost::numeric AS cost,
+           row_number() OVER (ORDER BY p.id) AS rn,
+           h.hop_seq, h.used_cost
+    FROM hop h JOIN par p ON p.source = h.source AND p.target = h.target
+)
+SELECT v.rn + k.path_seq - 1 AS path_seq,
+       k.node,
+       CASE WHEN k.path_seq = v.hop_seq THEN v.edge ELSE k.edge END AS edge,
+       k.agg_cost
+         + CASE WHEN k.path_seq > v.hop_seq THEN v.cost - v.used_cost ELSE 0 END AS agg_cost
+FROM ksp_one k CROSS JOIN variants v;
+
+PREPARE r_expanded AS
+SELECT * FROM (VALUES
+       (1::bigint, 1::bigint,  1::bigint,  0::numeric),
+       (2::bigint, 2::bigint, -1::bigint,  1::numeric),
+       (2::bigint, 1::bigint,  2::bigint,  0::numeric),
+       (3::bigint, 2::bigint, -1::bigint,  2::numeric),
+       (3::bigint, 1::bigint,  3::bigint,  0::numeric),
+       (4::bigint, 2::bigint, -1::bigint,  3::numeric))
+AS t(path_seq, node, edge, agg_cost);
+
+SELECT set_eq('q_expanded', 'r_expanded',
+    'the ignored parallel edges come back by joining the edge id to the data');
+
+SELECT finish();
+ROLLBACK;

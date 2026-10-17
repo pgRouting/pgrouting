@@ -38,24 +38,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cstdint>
 #include <memory>
 
-#include "yen/ksp.hpp"
 #include "cpp_common/assert.hpp"
 #include "cpp_common/path.hpp"
 #include "cpp_common/compPaths.hpp"
 #include "cpp_common/messages.hpp"
 #include "cpp_common/rule.hpp"
 
+#include "yen/yen.hpp"
+
 namespace pgrouting {
 namespace yen {
 
 template < typename G >
-class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
+class Pgr_turnRestrictedPath : public Yen<G> {
      typedef std::set<Path, compPathsLess> pSet;
 
  public:
      Pgr_turnRestrictedPath() = default;
      struct found_goals{};
-     class Myvisitor : public Pgr_ksp<G>::Visitor {
+     class Myvisitor : public Yen<G>::Visitor {
       public:
          Myvisitor(
                  pSet &solutions,
@@ -121,7 +122,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
         m_restrictions = restrictions;
         m_heap_paths = heap_paths;
 
-        return Yen(graph, source, target, k);
+        return runYen(graph, source, target, k);
     }
 
 
@@ -132,7 +133,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
       * @param[in] K  when k=0 stop at first path without turn restriction
       * when k > 0 do K cycles and return best path without turn restriction
       */
-     std::deque<Path> Yen(G &graph,
+     std::deque<Path> runYen(G &graph,
              int64_t  start_vertex,
              int64_t end_vertex,
              size_t K) {
@@ -161,7 +162,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
          this->m_start = start_vertex;
          this->m_end = end_vertex;
          this->m_K = K;
-         Pgr_ksp<G>::m_heap_paths = true;
+         Yen<G>::m_heap_paths = true;
          this->m_vis = std::make_unique<Myvisitor>(
                  m_solutions,
                  m_restrictions,
@@ -170,7 +171,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
 
 
          try {
-              Pgr_ksp< G >::executeYen(graph);
+              Yen<G>::executeYen(graph);
          } catch(found_goals &) {
              pgassert(!m_solutions.empty());
              std::deque<Path> solutions(m_solutions.begin(), m_solutions.end());
@@ -191,7 +192,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
              return solutions;
          }
 
-         auto solutions = Pgr_ksp<G>::get_results();
+         auto solutions = Yen<G>::get_results();
 
          return get_results(solutions);
      }
@@ -231,7 +232,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
       * empties containers
       */
      void clear() {
-         Pgr_ksp<G>::clear();
+         Yen<G>::clear();
          m_solutions.clear();
      }
 

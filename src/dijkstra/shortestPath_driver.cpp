@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: shortestPath_driver.cpp
 
-Copyright (c) 2015-2026 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 Design of one process & driver file by
@@ -11,7 +11,7 @@ Mail: vicky at erosion.dev
 Copying this file (or a derivative) within pgRouting code add the following:
 
 Generated with Template by:
-Copyright (c) 2015-2026 pgRouting developers
+Copyright (c) 2025-2026 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -57,6 +57,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "bellman_ford/bellman_ford.hpp"
 #include "max_flow/maxflow.hpp"
 #include "traversal/binaryBreadthFirstSearch.hpp"
+#include "yen/yen.hpp"
 
 namespace {
 
@@ -127,8 +128,15 @@ do_shortestPath(
         int64_t n_goals,
         bool global,
 
+        /* for ksp */
+        int k,
+        bool heap_paths,
+        int64_t *start_vid,
+        int64_t *end_vid,
+
         Which which,
         bool &is_matrix,
+
         Path_rt* &return_tuples, size_t &return_count,
         std::ostringstream &log,
         std::ostringstream &notice,
@@ -140,6 +148,11 @@ do_shortestPath(
     try {
         if (edges_sql.empty()) {
             err << "Empty edges SQL";
+            return;
+        }
+
+        if ((which == KSP || which == OLDKSP) && k <= 0) {
+            err << "Invalid value for k";
             return;
         }
 
@@ -156,10 +169,18 @@ do_shortestPath(
         using pgrouting::functions::bellmanFord;
         using pgrouting::functions::edgeDisjoint;
         using functions::binaryBreadthFirstSearch;
+        using pgrouting::algorithms::Yen;
 
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, normal, is_matrix);
         hint = "";
+
+
+        if (which == OLDKSP && start_vid && end_vid) {
+            combinations[*start_vid].insert(*end_vid);
+        }
+
+        size_t K{static_cast<size_t>(k)};
 
         if (combinations.empty() && !combinations_sql.empty()) {
             notice << "No (source, target) pairs found";
@@ -167,10 +188,8 @@ do_shortestPath(
             return;
         }
 
-        std::vector<Edge_t> edges;
-
         hint = edges_sql;
-        edges = get_edges(edges_sql, normal, false);
+        auto edges = get_edges(edges_sql, normal, false);
         hint = "";
 
         if (edges.empty()) {
@@ -178,7 +197,6 @@ do_shortestPath(
             log << edges_sql;
             return;
         }
-        hint = "";
 
         size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
 
@@ -192,6 +210,8 @@ do_shortestPath(
         } else if (directed) {
             if (which == DAGSP) {
                 digraph.insert_no_edge_cycle(edges);
+            } else if (which == KSP || which == OLDKSP) {
+                digraph.insert_min_edges_no_parallel(edges);
             } else {
                 digraph.insert_edges(edges);
             }
@@ -218,12 +238,21 @@ do_shortestPath(
                 case BINARYBFS:
                     return_count = get_tuples(binaryBreadthFirstSearch(digraph, combinations), return_tuples);
                     break;
+                case OLDKSP:
+                case KSP:
+                    return_count = get_tuples(Yen(digraph, combinations, K, heap_paths), return_tuples);
+                    break;
                 default:
                     err << "INTERNAL: wrong function call: " << which;
                     return;
             }
         } else {
-            undigraph.insert_edges(edges);
+            if (which == KSP || which == OLDKSP) {
+                undigraph.insert_min_edges_no_parallel(edges);
+            } else {
+                undigraph.insert_edges(edges);
+            }
+
             switch (which) {
                 case DIJKSTRA: {
                     auto paths = dijkstra(undigraph, combinations, only_cost, n);
@@ -241,8 +270,12 @@ do_shortestPath(
                     return_count = get_tuples(bellmanFord(undigraph, combinations, only_cost), return_tuples);
                     break;
                 case BINARYBFS:
-                   return_count = get_tuples(binaryBreadthFirstSearch(undigraph, combinations), return_tuples);
-                   break;
+                    return_count = get_tuples(binaryBreadthFirstSearch(undigraph, combinations), return_tuples);
+                    break;
+                case OLDKSP:
+                case KSP:
+                    return_count = get_tuples(Yen(undigraph, combinations, K, heap_paths), return_tuples);
+                    break;
                 default:
                    err << "INTERNAL: wrong function call: " << which;
                    return;

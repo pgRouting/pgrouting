@@ -1,5 +1,5 @@
 :file: This file is part of the pgRouting project.
-:copyright: Copyright (c) 2020-2026 pgRouting developers
+:copyright: Copyright (c) 2026-2026 pgRouting developers
 :license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0
 
 .. index::
@@ -11,7 +11,8 @@
 ``pgr_makeBiconnectedPlanar`` - Experimental
 ===============================================================================
 
-``pgr_makeBiconnectedPlanar`` — Returns the set of edges needed to make each connected component of a planar graph biconnected.
+``pgr_makeBiconnectedPlanar`` — Returns the set of edges needed to make each
+connected component of a planar graph biconnected.
 
 .. include:: experimental.rst
    :start-after: warning-begin

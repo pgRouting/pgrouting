@@ -1,17 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: ksp.hpp
+File: yen.hpp
 
-Copyright (c) 2013-2026 pgRouting developers
+Copyright (c) 2026-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
+Copyright (c) 2026 Celia Virginia Vergara Castillo
 Mail: vicky AT erosion.dev
 
-Copyright (c) 2023 Aniket Agarwal
-Mail: aniketgarg187 AT gmail.com
-
-Copyright (c) 2023 Abhinav Jain
-Mail: this.abhinav AT gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -22,7 +17,7 @@ the Free Software Foundation; either version 2 of the License, or
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
+GNU General Public License for more yen.
 
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
@@ -30,47 +25,67 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_YEN_KSP_HPP_
-#define INCLUDE_YEN_KSP_HPP_
+#ifndef INCLUDE_YEN_YEN_HPP_
+#define INCLUDE_YEN_YEN_HPP_
 #pragma once
 
+#include <algorithm>
+#include <cstdint>
+#include <deque>
 #include <map>
 #include <memory>
-#include <sstream>
-#include <deque>
-#include <vector>
-#include <algorithm>
 #include <set>
-#include <limits>
-#include <cstdint>
 
-#include "dijkstra/dijkstra.hpp"
 #include "cpp_common/assert.hpp"
 #include "cpp_common/compPaths.hpp"
+#include "cpp_common/filteredGraph.hpp"
 #include "cpp_common/messages.hpp"
 #include "cpp_common/path.hpp"
+
+#include "dijkstra/dijkstra.hpp"
 
 namespace pgrouting {
 namespace yen {
 
-template < class G >
-class Pgr_ksp :  public Pgr_messages {
-     typedef typename G::V V;
-     typedef std::set<Path, compPathsLess> pSet;
+/** @brief Yen's K shortest paths
+ *
+ * The algorithm runs over a filtered view of the graphi
+ *
+ * Used by pgr_ksp and pgr_withPointsKSP (via algorithms::Yen) and as
+ * the base of Pgr_turnRestrictedPath. The public entry point is run() rather
+ * than Yen(), because a member function cannot share its class's name.
+ *
+ * @tparam G the Pgr_base_graph being searched
+ */
+template <class G>
+class Yen : public Pgr_messages {
+    using V = typename G::V;
+    using pSet = std::set<Path, compPathsLess>;
+    using FilteredGraph_t = pgrouting::graph::FilteredGraph<G>;
 
  public:
-     Pgr_ksp() :
+    Yen() :
          m_vis(std::make_unique<Visitor>()) {
          }
 
-     ~Pgr_ksp() = default;
+     ~Yen() = default;
 
-     Pgr_ksp(const Pgr_ksp&) = delete;
-     Pgr_ksp& operator=(const Pgr_ksp&) = delete;
-     Pgr_ksp(Pgr_ksp&&) = delete;
-     Pgr_ksp& operator=(Pgr_ksp&&) = delete;
+     Yen(const Yen&) = delete;
+     Yen& operator=(const Yen&) = delete;
+     Yen(Yen&&) = delete;
+     Yen& operator=(Yen&&) = delete;
 
-     std::deque<Path> Yen(
+     /** @brief Calculates the K shortest paths between two vertices
+      *
+      * @param [in] graph       the graph to search
+      * @param [in] start_vertex source vertex identifier
+      * @param [in] end_vertex   destination vertex identifier
+      * @param [in] K            how many paths
+      * @param [in] heap_paths   when true, also returns the candidates that did
+      *                          not make it into the result set
+      * @returns the paths found
+      */
+     std::deque<Path> run(
              G &graph,
              int64_t  start_vertex,
              int64_t end_vertex,
@@ -143,13 +158,18 @@ class Pgr_ksp :  public Pgr_messages {
      //! the actual algorithm
      void executeYen(G &graph) {
          clear();
-         curr_result_path = getFirstSolution(graph);
+         /* One view for the whole run. The filter starts empty, is filled and
+          * emptied once per spur node, and the underlying graph is never
+          * touched. */
+         FilteredGraph_t filtered(graph);
+
+         curr_result_path = getFirstSolution(filtered);
          m_vis->on_insert_first_solution(curr_result_path);
 
          if (m_ResultSet.size() == 0) return;  // no path found
 
          while (m_ResultSet.size() <  m_K) {
-             doNextCycle(graph);
+             doNextCycle(filtered);
              if (m_Heap.empty()) break;
              curr_result_path = *m_Heap.begin();
              curr_result_path.recalculate_agg_cost();
@@ -158,12 +178,8 @@ class Pgr_ksp :  public Pgr_messages {
          }
      }
 
-     /** @name Auxiliary function for yen's algorithm */
-     ///@{
-
      //! Performs the first Dijkstra of the algorithm
- protected:
-     Path getFirstSolution(G &graph) {
+      Path getFirstSolution(FilteredGraph_t &graph) {
          Path path;
 
          path = algorithms::dijkstra(graph, m_start, m_end);
@@ -174,10 +190,8 @@ class Pgr_ksp :  public Pgr_messages {
          return path;
      }
 
-
- protected:
      //! Performs the next cycle of the algorithm
-     void doNextCycle(G &graph) {
+     void doNextCycle(FilteredGraph_t &graph) {
          for (unsigned int i = 0; i < curr_result_path.size(); ++i) {
              int64_t spurNodeId = curr_result_path[i].node;
 
@@ -185,9 +199,11 @@ class Pgr_ksp :  public Pgr_messages {
 
              for (const auto &path : m_ResultSet) {
                  if (path.isEqual(rootPath) && spurNodeId == path[i].node) {
-                     if (path.size() > i + 1) {
-                         graph.disconnect_edge(path[i].node,     // from
-                                 path[i + 1].node);  // to
+                     if (path.size() > i + 1 && path[i].edge != -1) {
+                         /* Suppress only this path's edge, by edge id, so the
+                          * parallel edges between the same pair stay available
+                          * to the spur search. */
+                         graph.remove_edge_id(path[i].edge);
                      }
                  }
              }
@@ -202,14 +218,13 @@ class Pgr_ksp :  public Pgr_messages {
                  m_vis->on_insert_to_heap(rootPath);
              }
 
-             graph.restore_graph();
+             graph.clear_filter();
          }
      }
 
- protected:
      //! stores in subPath the first i elements of path
-     void removeVertices(G &graph, const Path &subpath) {
-         for (const auto &e : subpath) graph.disconnect_vertex(e.node);
+     void removeVertices(FilteredGraph_t &graph, const Path &subpath) {
+         for (const auto &e : subpath) graph.remove_vertex(e.node);
      }
 
      std::deque<Path> get_results() {
@@ -229,11 +244,6 @@ class Pgr_ksp :  public Pgr_messages {
          return paths;
      }
 
-     ///@}
-
- protected:
-     /** @name members */
-     ///@{
      V v_source;  //!< source descriptor
      V v_target;  //!< target descriptor
      int64_t m_start{0};  //!< source id
@@ -254,32 +264,40 @@ class Pgr_ksp :  public Pgr_messages {
 
 namespace algorithms {
 
-    template <class G>
-    std::deque<Path> Yen(
+/** @brief Yen's algorithm over a filtered graph, for every (source, target) pair
+ *
+ * @param [in] graph        the graph to search
+ * @param [in] combinations the (source, target) pairs
+ * @param [in] k            how many paths per pair
+ * @param [in] heap_paths   also return the candidates not selected
+ * @returns the paths found
+ */
+template <class G>
+std::deque<Path> Yen(
         G &graph,
         const std::map<int64_t, std::set<int64_t>> &combinations,
         size_t k,
         bool heap_paths) {
-        std::deque<Path> paths;
-        pgrouting::yen::Pgr_ksp<G> fn_yen;
+    std::deque<Path> paths;
+    pgrouting::yen::Yen<G> fn_yen;
 
-        for (const auto &c : combinations) {
-            if (!graph.has_vertex(c.first)) continue;
+    for (const auto &c : combinations) {
+        if (!graph.has_vertex(c.first)) continue;
 
-            for (const auto &destination : c.second) {
-                if (!graph.has_vertex(destination)) continue;
+        for (const auto &destination : c.second) {
+            if (!graph.has_vertex(destination)) continue;
 
-                fn_yen.clear();
-                auto result_path = fn_yen.Yen(graph, c.first, destination, k, heap_paths);
-                paths.insert(paths.end(), result_path.begin(), result_path.end());
-            }
+            fn_yen.clear();
+            auto result_path = fn_yen.run(graph, c.first, destination, k, heap_paths);
+            paths.insert(paths.end(), result_path.begin(), result_path.end());
         }
-
-        return paths;
     }
+
+    return paths;
+}
 
 }  // namespace algorithms
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_YEN_KSP_HPP_
+#endif  // INCLUDE_YEN_YEN_HPP_

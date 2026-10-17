@@ -133,6 +133,12 @@ get_name(Which which) {
             return "pgr_planarFaces";
         case CORENUMBERS:
             return "pgr_coreNumbers";
+        case OLDKSP:
+        case KSP:
+            return "pgr_KSP";
+        case OLDKSPWITHPOINTS:
+        case KSPWITHPOINTS:
+            return "pgr_WithPointsKSP";
         default:
             return "unknown";
             break;
@@ -217,6 +223,8 @@ estimate_drivingSide(char driving_side, Which which) {
         case DIJKSTRA:
                 return ' ';
                 break;
+        case OLDKSPWITHPOINTS:
+        case KSPWITHPOINTS:
         case WITHPOINTS:
                 if (d_side == ' ') {
                     throw std::make_pair(std::string("Invalid value of 'driving side'"),

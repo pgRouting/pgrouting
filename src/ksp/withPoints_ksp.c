@@ -37,93 +37,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/e_report.h"
 #include "drivers/withPoints/get_new_queries.h"
-#include "drivers/yen/withPoints_ksp_driver.h"
+#include "process/kPathsWithPoints_process.h"
 
 PGDLLEXPORT Datum _pgr_withpointsksp_v4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_withpointsksp_v4);
-
-static
-void
-process(
-        char* edges_sql,
-        char* points_sql,
-        char* combinations_sql,
-        ArrayType *starts,
-        ArrayType *ends,
-
-        int64_t* start_vid,
-        int64_t* end_vid,
-
-        int p_k,
-        char *driving_side,
-
-        bool directed,
-        bool heap_paths,
-        bool details,
-
-        Path_rt **result_tuples,
-        size_t *result_count) {
-    char d_side = estimate_drivingSide(driving_side[0]);
-    if (d_side == ' ') {
-        pgr_throw_error("Invalid value of 'driving side'", "Valid value are 'r', 'l', 'b'");
-        return;
-    }
-
-    if (p_k < 0) {
-        pgr_throw_error("Invalid value of 'K'", "Valid value are greater than 0");
-    }
-
-    size_t k = (size_t)p_k;
-
-    pgr_SPI_connect();
-
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-
-    char *edges_of_points_query = NULL;
-    char *edges_no_points_query = NULL;
-    get_new_queries(
-            edges_sql, points_sql,
-            &edges_of_points_query,
-            &edges_no_points_query);
-
-
-    clock_t start_t = clock();
-
-    pgr_do_withPointsKsp(
-            edges_no_points_query,
-            points_sql,
-            edges_of_points_query,
-            combinations_sql,
-            starts, ends,
-
-            start_vid, end_vid,
-            k,
-
-            directed,
-            heap_paths,
-            d_side,
-            details,
-
-            result_tuples,
-            result_count,
-
-            &log_msg,
-            &notice_msg,
-            &err_msg);
-    time_msg(" processing withPointsKSP", start_t, clock());
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
-
-    pgr_SPI_finish();
-}
 
 PGDLLEXPORT Datum _pgr_withpointsksp_v4(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -138,32 +55,44 @@ PGDLLEXPORT Datum _pgr_withpointsksp_v4(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
         if (PG_NARGS() == 9) {
-            process(
+            pgr_process_kPathsWithPoints(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 NULL,
+
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_ARRAYTYPE_P(3),
-                NULL, NULL,
+
                 PG_GETARG_INT32(4),
-                text_to_cstring(PG_GETARG_TEXT_P(5)),
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
+
+                text_to_cstring(PG_GETARG_TEXT_P(5))[0],
                 PG_GETARG_BOOL(8),
+
+                NULL, NULL,
+
+                KSPWITHPOINTS,
                 &result_tuples,
                 &result_count);
         } else if (PG_NARGS() == 8) {
-            process(
+            pgr_process_kPathsWithPoints(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 text_to_cstring(PG_GETARG_TEXT_P(2)),
+
                 NULL, NULL,
-                NULL, NULL,
+
                 PG_GETARG_INT32(3),
-                text_to_cstring(PG_GETARG_TEXT_P(4)),
                 PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(6),
+
+                text_to_cstring(PG_GETARG_TEXT_P(4))[0],
                 PG_GETARG_BOOL(7),
+
+                NULL, NULL,
+
+                KSPWITHPOINTS,
                 &result_tuples,
                 &result_count);
         }
@@ -263,32 +192,44 @@ PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
 #endif
 
         if (PG_NARGS() == 10) {
-            process(
+            pgr_process_kPathsWithPoints(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 NULL,
+
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_ARRAYTYPE_P(3),
-                NULL, NULL,
+
                 PG_GETARG_INT32(4),
-                text_to_cstring(PG_GETARG_TEXT_P(5)),
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
+
+                text_to_cstring(PG_GETARG_TEXT_P(5))[0],
                 PG_GETARG_BOOL(8),
+
+                NULL, NULL,
+
+                OLDKSPWITHPOINTS,
                 &result_tuples,
                 &result_count);
         } else if (PG_NARGS() == 8) {
-            process(
+            pgr_process_kPathsWithPoints(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 text_to_cstring(PG_GETARG_TEXT_P(2)),
+
                 NULL, NULL,
-                NULL, NULL,
+
                 PG_GETARG_INT32(3),
-                text_to_cstring(PG_GETARG_TEXT_P(4)),
                 PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(6),
+
+                text_to_cstring(PG_GETARG_TEXT_P(4))[0],
                 PG_GETARG_BOOL(7),
+
+                NULL, NULL,
+
+                OLDKSPWITHPOINTS,
                 &result_tuples,
                 &result_count);
         } else if (PG_NARGS() == 9) {
@@ -296,18 +237,23 @@ PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
             int64_t departure = PG_GETARG_INT64(2);
             int64_t destination = PG_GETARG_INT64(3);
 
-            process(
+            pgr_process_kPathsWithPoints(
                     text_to_cstring(PG_GETARG_TEXT_P(0)),
                     text_to_cstring(PG_GETARG_TEXT_P(1)),
                     NULL,
+
                     NULL, NULL,
-                    &departure,
-                    &destination,
+
                     PG_GETARG_INT32(4),
-                    text_to_cstring(PG_GETARG_TEXT_P(7)),
                     PG_GETARG_BOOL(5),
                     PG_GETARG_BOOL(6),
+
+                    text_to_cstring(PG_GETARG_TEXT_P(7))[0],
                     PG_GETARG_BOOL(8),
+
+                    &departure, &destination,
+
+                    OLDKSPWITHPOINTS,
                     &result_tuples,
                     &result_count);
         }
