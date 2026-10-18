@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_trspVia
 ------------------
 
---v3.0
+--v4.1
 CREATE FUNCTION _pgr_trspVia(
   TEXT, -- edges
   TEXT, -- restrictions
@@ -40,13 +40,14 @@ CREATE FUNCTION _pgr_trspVia(
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
+  OUT pred BIGINT,
   OUT node BIGINT,
   OUT edge BIGINT,
   OUT cost FLOAT,
   OUT agg_cost FLOAT,
   OUT route_agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
+'MODULE_PATHNAME', '_pgr_trspvia_v4'
 LANGUAGE C VOLATILE STRICT
 COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 

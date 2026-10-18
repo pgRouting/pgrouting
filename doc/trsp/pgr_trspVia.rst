@@ -17,6 +17,10 @@
 
 .. rubric:: Availability
 
+.. rubric:: Version 4.1.0
+
+* Added ``pred`` result column.
+
 .. rubric:: Version 4.0.0
 
 * Function promoted to official.
@@ -122,6 +126,21 @@ Result columns
 .. include:: via-category.rst
     :start-after: result_via_start
     :end-before: result_via_end
+
+``pgr_trspVia`` additionally returns:
+
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``pred``
+     - ``BIGINT``
+     - Identifier of the previous node in the path. For the first row of a
+       path segment, equals ``start_vid``.
 
 Additional Examples
 -------------------------------------------------------------------------------

@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---v4.0
+--v4.1
 CREATE FUNCTION _pgr_withPointsVia_v4(
   TEXT,     -- edges_sql
   TEXT,     -- points_sql
@@ -42,13 +42,14 @@ CREATE FUNCTION _pgr_withPointsVia_v4(
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
+  OUT pred BIGINT,
   OUT node BIGINT,
   OUT edge BIGINT,
   OUT cost FLOAT,
   OUT agg_cost FLOAT,
   OUT route_agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
+'MODULE_PATHNAME', '_pgr_withpointsvia_v5'
 LANGUAGE C VOLATILE STRICT
 COST ${COST_HIGH} ROWS ${ROWS_HIGH};
 

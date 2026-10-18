@@ -330,6 +330,31 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_bddijkstra(text,anyarray,bigint,boolean)");
             push @commands, drop_special_case_function("pgr_bddijkstra(text,bigint,anyarray,boolean)");
         }
+
+        # updating to 4.1+ (OUT parameters changed on all four *Via functions)
+        # Only for mayor 3 and up: on mayor 2 the generic loop above already
+        # drops every old function, and _pgr_dijkstraVia did not exist yet.
+        if ($old_mayor >= 3 && $old_minor < 4.1) {
+            push @commands, drop_special_case_function("_pgr_dijkstravia(text,anyarray,boolean,boolean,boolean)");
+            push @commands, drop_special_case_function("pgr_dijkstravia(text,anyarray,boolean,boolean,boolean)");
+
+            # pgr_trspVia only exists since 3.4.0
+            if ($old_minor >= 3.4) {
+                push @commands, drop_special_case_function("_pgr_trspvia(text,text,anyarray,boolean,boolean,boolean)");
+                push @commands, drop_special_case_function("pgr_trspvia(text,text,anyarray,boolean,boolean,boolean)");
+            }
+
+            # pgr_trspVia_withPoints and pgr_withPointsVia current signatures only exist since 4.0.0
+            if ($old_minor >= 4.0) {
+                push @commands, drop_special_case_function("_pgr_trspvia_withpoints_v4(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)");
+                push @commands, drop_special_case_function("pgr_trspvia_withpoints(text,text,text,anyarray,boolean,boolean,boolean,boolean)");
+                push @commands, drop_special_case_function("pgr_trspvia_withpoints(text,text,text,anyarray,character,boolean,boolean,boolean,boolean)");
+
+                push @commands, drop_special_case_function("_pgr_withpointsvia_v4(text,text,anyarray,boolean,boolean,boolean,character,boolean)");
+                push @commands, drop_special_case_function("pgr_withpointsvia(text,text,anyarray,boolean,boolean,boolean,boolean)");
+                push @commands, drop_special_case_function("pgr_withpointsvia(text,text,anyarray,character,boolean,boolean,boolean,boolean)");
+            }
+        }
     }
 
     if ($old_mayor == 2) {
