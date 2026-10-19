@@ -118,6 +118,7 @@ To see all issues & pull requests closed by this release see the
 ...............................................................................
 
 * :issue:`3101`: pgr_edgeColoring not building graph correctly
+* :issue:`3145`: pgr_bdDijkstra returns a more expensive route
 
 4.1.0 Requirements
 ...............................................................................
