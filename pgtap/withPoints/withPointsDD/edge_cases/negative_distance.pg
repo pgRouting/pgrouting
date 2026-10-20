@@ -4,7 +4,31 @@
 
 BEGIN;
 
-SELECT plan(2);
+SELECT CASE WHEN min_version('4.1.0') THEN plan(2) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION test_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('4.1.0') THEN
+  RETURN QUERY SELECT skip(1, 'pgr_withPointsDD: negative distance error implemented on 4.1.0');
+  RETURN;
+END IF;
+
+RETURN QUERY SELECT throws_ok('wp_dd_neg1',
+    'XX000',
+    'Negative value found on ''distance''',
+    '1: Negative distance throws for single vertex in withPointsDD');
+
+RETURN QUERY SELECT throws_ok('wp_dd_neg2',
+    'XX000',
+    'Negative value found on ''distance''',
+    '2: Negative distance throws for multiple vertices in withPointsDD');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
 
 PREPARE wp_dd_neg1 AS
 SELECT *
@@ -14,11 +38,6 @@ FROM pgr_withPointsDD(
     15, -3
 );
 
-SELECT throws_ok('wp_dd_neg1',
-    CASE WHEN min_version('3.7.0') THEN 'XX000' ELSE 'P0001' END,
-    'Negative value found on ''distance''',
-    '1: Negative distance throws for single vertex in withPointsDD');
-
 PREPARE wp_dd_neg2 AS
 SELECT *
 FROM pgr_withPointsDD(
@@ -27,10 +46,7 @@ FROM pgr_withPointsDD(
     ARRAY[15, 8], -3
 );
 
-SELECT throws_ok('wp_dd_neg2',
-    CASE WHEN min_version('3.7.0') THEN 'XX000' ELSE 'P0001' END,
-    'Negative value found on ''distance''',
-    '2: Negative distance throws for multiple vertices in withPointsDD');
+SELECT test_cases();
 
 SELECT * FROM finish();
 ROLLBACK;

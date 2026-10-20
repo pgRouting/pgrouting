@@ -4,7 +4,31 @@
 
 BEGIN;
 
-SELECT plan(2);
+SELECT CASE WHEN min_version('4.1.0') THEN plan(2) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION test_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('4.1.0') THEN
+  RETURN QUERY SELECT skip(1, 'pgr_drivingDistance: negative distance error implemented on 4.1.0');
+  RETURN;
+END IF;
+
+RETURN QUERY SELECT throws_ok('dd_neg1',
+    'XX000',
+    'Negative value found on ''distance''',
+    '1: Negative distance throws for single vertex');
+
+RETURN QUERY SELECT throws_ok('dd_neg2',
+    'XX000',
+    'Negative value found on ''distance''',
+    '2: Negative distance throws for multiple vertices');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
 
 PREPARE dd_neg1 AS
 SELECT *
@@ -13,11 +37,6 @@ FROM pgr_drivingDistance(
     15, -3
 );
 
-SELECT throws_ok('dd_neg1',
-    CASE WHEN min_version('3.7.0') THEN 'XX000' ELSE 'P0001' END,
-    'Negative value found on ''distance''',
-    '1: Negative distance throws for single vertex');
-
 PREPARE dd_neg2 AS
 SELECT *
 FROM pgr_drivingDistance(
@@ -25,10 +44,7 @@ FROM pgr_drivingDistance(
     ARRAY[15, 8], -3
 );
 
-SELECT throws_ok('dd_neg2',
-    CASE WHEN min_version('3.7.0') THEN 'XX000' ELSE 'P0001' END,
-    'Negative value found on ''distance''',
-    '2: Negative distance throws for multiple vertices');
+SELECT test_cases();
 
 SELECT * FROM finish();
 ROLLBACK;
