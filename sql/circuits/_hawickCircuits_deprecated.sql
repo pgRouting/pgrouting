@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: _hawickCircuits.sql
+File: _hawickCircuits_deprecated.sql
 
 Generated with Template by:
 Copyright (c) 2007-2026 pgRouting developers
@@ -49,4 +49,4 @@ RETURNS SETOF RECORD AS
 LANGUAGE C IMMUTABLE STRICT;
 
 COMMENT ON FUNCTION _pgr_hawickCircuits(TEXT)
-IS 'pgRouting internal function';
+IS 'pgRouting deprecated internal function';
