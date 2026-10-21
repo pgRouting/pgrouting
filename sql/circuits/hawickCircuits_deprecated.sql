@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: hawickCircuits.sql
+File: hawickCircuits_deprecated.sql
 
 Generated with Template by:
 Copyright (c) 2007-2026 pgRouting developers
@@ -26,19 +26,17 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
----------------
--- pgr_hawickCircuits
----------------
 
---v3.4.0
+--v4.1.0
 CREATE FUNCTION pgr_hawickCircuits(
     TEXT, -- edges_sql (required)
 
     OUT seq INTEGER,
     OUT path_id INTEGER,
-    OUT path_seq INTEGER,
+    OUT depth INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
@@ -48,17 +46,11 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN QUERY
-    SELECT a.seq, a.path_id, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_hawickCircuits(_pgr_get_statement($1)) AS a;
+    SELECT a.seq, a.path_id, a.depth, a.start_vid, a.end_vid, a.pred, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_hawickCircuits_v4(_pgr_get_statement($1), '{}'::BIGINT[], 0, 9223372036854775807, true, true) AS a;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_hawickCircuits(TEXT)
-IS 'pgr_hawickCircuits
-- EXPERIMENTAL
-- Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-- Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_hawickCircuits.html
-';
+IS 'pgRouting deprecated function';
