@@ -1,0 +1,68 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2020-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('4.1.0') THEN plan(32) ELSE plan(1) END;
+
+PREPARE edges_q AS
+SELECT id, source, target, cost, reverse_cost FROM edges;
+
+CREATE OR REPLACE FUNCTION no_crash()
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+params TEXT[];
+subs TEXT[];
+BEGIN
+
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_hawickcircuits was rewritten on 4.1.0');
+    RETURN;
+  END IF;
+
+  params = ARRAY[
+  '$$SELECT id, source, target, cost, reverse_cost FROM edges$$'
+  ]::TEXT[];
+
+  subs = ARRAY[ 'NULL' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickcircuits', params, subs);
+
+  params = ARRAY[ '$$edges_q$$' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickcircuits', params, subs);
+
+  params = ARRAY[
+  '$$SELECT id, source, target, cost, reverse_cost FROM edges$$',
+  '1'
+  ]::TEXT[];
+
+  subs = ARRAY[ 'NULL::TEXT', 'NULL::INTEGER' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickcircuits', params, subs);
+
+  params = ARRAY[ '$$edges_q$$', '1' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickcircuits', params, subs);
+
+  params = ARRAY[
+  '$$SELECT id, source, target, cost, reverse_cost FROM edges$$',
+  'ARRAY[1,2]::INTEGER[]'
+  ]::TEXT[];
+
+  subs = ARRAY[ 'NULL::TEXT', 'NULL::INTEGER[]' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickcircuits', params, subs);
+
+  params = ARRAY[ '$$edges_q$$', 'ARRAY[1,2]::INTEGER[]' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickcircuits', params, subs);
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+
+SELECT * FROM no_crash();
+
+SELECT finish();
+ROLLBACK;

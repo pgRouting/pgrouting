@@ -1,0 +1,60 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2022-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+SELECT CASE WHEN min_version('4.1.0') THEN plan(9) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_hawickcircuits was rewritten on 4.1.0');
+    RETURN;
+  END IF;
+
+  RETURN QUERY SELECT
+  has_function('pgr_hawickcircuits', ARRAY['text']);
+  RETURN QUERY SELECT
+  function_returns('pgr_hawickcircuits', ARRAY['text'],'setof record');
+
+  RETURN QUERY
+  SELECT collect_tap(
+
+    has_function('pgr_hawickcircuits'),
+
+    has_function('pgr_hawickcircuits', '{text,int8,int8,int8,bool,bool}'::TEXT[]),
+    has_function('pgr_hawickcircuits', '{text,anyarray,int8,int8,bool,bool}'::TEXT[]),
+
+    function_returns('pgr_hawickcircuits', '{text,int8,int8,int8,bool,bool}'::TEXT[],'setof record'),
+    function_returns('pgr_hawickcircuits', '{text,anyarray,int8,int8,bool,bool}'::TEXT[],'setof record'),
+
+    function_args_eq('pgr_hawickcircuits',
+      $$VALUES
+      ('{"",seq,path_id,depth,start_vid,end_vid,pred,node,edge,cost,agg_cost}'::TEXT[]),
+      ('{"","",min_depth,max_depth,self_loops,u_turn_on_edge,seq,path_id,depth,start_vid,end_vid,pred,node,edge,cost,agg_cost}'::TEXT[])
+      $$),
+
+    function_types_eq('pgr_hawickcircuits',
+      $$VALUES
+      ('{text,int4,int4,int4,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,anyarray,int8,int8,bool,bool,int4,int4,int4,int8,int8,int8,int8,int8,float8,float8}'::TEXT[]),
+      ('{text,int8,int8,int8,bool,bool,int4,int4,int4,int8,int8,int8,int8,int8,float8,float8}'::TEXT[])
+      $$)
+  );
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+
+SELECT types_check();
+
+SELECT * FROM finish();
+ROLLBACK;
+
