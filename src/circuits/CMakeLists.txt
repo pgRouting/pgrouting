@@ -8,5 +8,4 @@ ADD_LIBRARY(circuits OBJECT
 
     circuits_process.cpp
     hawick_circuits.cpp
-    hawickCircuits_driver.cpp
 )
