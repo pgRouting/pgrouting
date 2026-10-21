@@ -269,7 +269,7 @@ The following instructions start from ``path/to/pgrouting``
 
     tools/testers/doc_queries_generator.pl
     createdb -U <user> ___pgr___test___
-    sh ./tools/testers/pg_prove_tests.sh <user>
+    bash ./tools/testers/pg_prove_tests.sh <user>
     dropdb -U <user> ___pgr___test___
 
 See Also
