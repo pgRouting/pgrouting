@@ -332,6 +332,23 @@ sub generate_upgrade_script {
         }
     }
 
+    if ($old_mayor == 4) {
+        # Out parameters changed names on v4.1.0
+        # (path_seq -> depth, pred added)
+        if ($old_minor == "4.0") {
+            push @commands, drop_special_case_function("pgr_hawickcircuits(text)");
+        }
+    }
+
+    if ($old_mayor == 3) {
+        # Out parameters changed names on v4.1.0
+        # (path_seq -> depth, pred added)
+        # The v3.4 style signature exists on 3.4.0 and up
+        if ($old_minor >= "3.4" && $old_minor <= "3.8") {
+            push @commands, drop_special_case_function("pgr_hawickcircuits(text)");
+        }
+    }
+
     if ($old_mayor == 2) {
         push @commands, "ALTER EXTENSION pgrouting DROP TYPE pgr_costresult;  DROP TYPE pgr_costresult;\n";
         push @commands, "ALTER EXTENSION pgrouting DROP TYPE pgr_costresult3; DROP TYPE pgr_costresult3;\n";
