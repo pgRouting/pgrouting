@@ -331,11 +331,50 @@ class Pgr_base_graph {
          }
      }
 
+     /** @brief Inserts the vertices first, then the edges
+       The vertices are inserted so they get the lowest vertex indexes.
+       @param edges
+       @param vids vertices to insert before the edges
+     */
+     template <typename T>
+     void insert_edges(const std::vector<T> &edges, const std::set<int64_t> &vids) {
+         insert_vertices(vids);
+         insert_edges(edges);
+     }
+
+
+     template <typename T> void insert_edges_no_parallel(const std::vector<T> &edges) {
+         for (const auto &edge : edges) {
+             graph_add_edge_no_parallel(edge);
+         }
+     }
+
+     /** @brief Inserts the vertices first, then the non parallel edges
+       The vertices are inserted so they get the lowest vertex indexes.
+       @param edges
+       @param vids vertices to insert before the edges
+     */
+     template <typename T>
+     void insert_edges_no_parallel(const std::vector<T> &edges, const std::set<int64_t> &vids) {
+         insert_vertices(vids);
+         insert_edges_no_parallel(edges);
+     }
 
      template <typename T> void insert_min_edges_no_parallel(const std::vector<T> &edges) {
          for (const auto &edge : edges) {
              graph_add_min_edge_no_parallel(edge);
          }
+     }
+
+     /** @brief Inserts the vertices first, then the min non parallel edges
+       The vertices are inserted so they get the lowest vertex indexes.
+       @param edges
+       @param vids vertices to insert before the edges
+     */
+     template <typename T>
+     void insert_min_edges_no_parallel(const std::vector<T> &edges, const std::set<int64_t> &vids) {
+         insert_vertices(vids);
+         insert_min_edges_no_parallel(edges);
      }
 
      template <typename T> void insert_no_edge_cycle(const std::vector<T> &edges) {
@@ -723,6 +762,16 @@ class Pgr_base_graph {
          }
 
  private:
+     /* @brief Inserts vertices so they get the lowest vertex indexes
+      * @param[in] vids vertices to insert
+      */
+     void insert_vertices(const std::set<int64_t> &vids) {
+         for (const auto &vid : vids) {
+             if (has_vertex(vid)) continue;
+             get_V(T_V(vid));
+         }
+     }
+
      void restore_edge(const T_E &edge) {
          E e;
 
@@ -863,9 +912,139 @@ class Pgr_base_graph {
          }
      }
 
-     template <typename T> void graph_add_min_edge_no_parallel(const T &edge) {
+     /** no parallel, but if an edge exists and has a different id it is replaced
+      *  ci >= 0
+      *
+      * CASE
+      *  e1, v1, v2, c1, c2
+      *  e2, v1, v2, c3, c4
+      *
+      *  v1 --e1(c1)--> v2  --e1(c2)--> v1
+      *  v1 --e2(c3)--> v2  --e2(c4)--> v1
+      *
+      *  edge e1 gets inserted first.
+      *  Graph looks like
+      *  v1 --e1(c1)--> v2  --e1(c2)--> v1
+      *
+      *  Then when e2 gets processed:
+      *  when c3 < c1 final graph is
+      *  v1 --e2(c3)--> v2  --e1(c2)--> v1
+      *
+      *  when (c1 < c3)final graph is
+      *  v1 --e1(c3)--> v2  --e2(c4)--> v1
+      *
+      *
+      * CASE
+      *  e1, v1, v3, c1, c2
+      *  e2, v1, v3, c3, -1
+      *
+      *  v1 --e1(c1)--> v2  --e1(c2)--> v1
+      *  v1 --e2(c3)--> v2
+      *
+      *  edge e1 gets inserted first.
+      *  Graph looks like
+      *  v1 --e1(c1)--> v2  --e1(c2)--> v1
+      *
+      *  Then when e2 gets processed:
+      *  because there is no reverse edge on e2
+      *  and both (going and coming) edges were found in the graph
+      *  and both existing edges in the graph have the same id
+      *  v1 --e1(c3)--> v2  --e1(c2)--> v1
+      *
+      *  when (c1 < c3)final graph is
+      *  v1 --e1(c3)--> v2  --e2(c4)--> v1
+      *
+      *
+      **/
+
+     template <typename T> void graph_add_edge_no_parallel(const T &edge) {
+         if ((edge.cost < 0) && (edge.reverse_cost < 0)) return;
+
          bool inserted = false;
          E e;
+
+         /*
+          * true: for source
+          * false: for target
+          */
+         auto vm_s = get_V(T_V(edge, true));
+         auto vm_t = get_V(T_V(edge, false));
+
+         pgassert(vertices_map.find(edge.source) != vertices_map.end());
+         pgassert(vertices_map.find(edge.target) != vertices_map.end());
+
+         E e1, e2;
+         bool has_going = false;
+         bool has_coming = false;
+         boost::tie(e1, has_going) = boost::edge(vm_s, vm_t, graph);
+         boost::tie(e2, has_coming) = boost::edge(vm_t, vm_s, graph);
+
+         /* first edge on the pair: it defines both directions */
+         if (!has_going && !has_coming) {
+             if (edge.cost >= 0) {
+                 boost::tie(e, inserted) = boost::add_edge(vm_s, vm_t, graph);
+                 graph[e].cost = edge.cost;
+                 graph[e].id = edge.id;
+             }
+             if (edge.reverse_cost >= 0) {
+                 boost::tie(e, inserted) = boost::add_edge(vm_t, vm_s, graph);
+                 graph[e].cost = edge.reverse_cost;
+                 graph[e].id = edge.id;
+             }
+             return;
+         }
+
+         const double kImprovementInfinite = (std::numeric_limits<double>::max)();
+
+         /*
+          * can the new edge take a direction without creating a u-turn?
+          * (its id must differ from the id already used in the other direction)
+          */
+         bool can_go = (edge.cost >= 0) && (!has_coming || graph[e2].id != edge.id);
+         bool can_come = (edge.reverse_cost >= 0) && (!has_going || graph[e1].id != edge.id);
+
+         /* improvement of taking each direction */
+         double dg = !can_go? -kImprovementInfinite
+                     : (has_going? graph[e1].cost - edge.cost : kImprovementInfinite);
+         double dc = !can_come? -kImprovementInfinite
+                     : (has_coming? graph[e2].cost - edge.reverse_cost : kImprovementInfinite);
+
+         /*
+          * a change is mandatory when both directions use the same edge:
+          * that is exactly the u-turn we want to avoid
+          */
+         bool u_turn = has_going && has_coming && (graph[e1].id == graph[e2].id);
+
+         /* otherwise change only when a direction improves */
+         if (!u_turn && dg <= 0 && dc <= 0) return;
+
+         /* change only the best direction */
+         if (can_go && (!can_come || dg >= dc)) {
+             if (has_going) {
+                 graph[e1].cost = edge.cost;
+                 graph[e1].id = edge.id;
+             } else {
+                 boost::tie(e, inserted) = boost::add_edge(vm_s, vm_t, graph);
+                 graph[e].cost = edge.cost;
+                 graph[e].id = edge.id;
+             }
+         } else if (can_come) {
+             if (has_coming) {
+                 graph[e2].cost = edge.reverse_cost;
+                 graph[e2].id = edge.id;
+             } else {
+                 boost::tie(e, inserted) = boost::add_edge(vm_t, vm_s, graph);
+                 graph[e].cost = edge.reverse_cost;
+                 graph[e].id = edge.id;
+             }
+         }
+     }
+
+
+     template <typename T> void graph_add_min_edge_no_parallel(const T &edge) {
+         E e;
+         bool inserted = false;
+
          if ((edge.cost < 0) && (edge.reverse_cost < 0)) return;
 
          /*
