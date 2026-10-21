@@ -67,6 +67,12 @@ To see all issues & pull requests closed by this release see the
      :start-after: Version 4.1.0
      :end-before: .. rubric
 
+* pgr_hawickCircuits
+
+  .. include:: pgr_hawickCircuits.rst
+     :start-after: Version 4.1.0
+     :end-before: .. rubric
+
 * pgr_makeBiconnectedPlanar
 
   .. include:: pgr_makeBiconnectedPlanar.rst
@@ -113,6 +119,7 @@ To see all issues & pull requests closed by this release see the
   process/driver pair
 * :issue:`3154`: betweennessCentrality: use allpairs/process and driver
 * :issue:`3163`: KSP & KSP WithPoints Use ShortestPath driver files
+* :issue:`3170`: pgr_hawickCircuits: wrong Boost function referenced
 
 4.1.0 Bug Fixes
 ...............................................................................
