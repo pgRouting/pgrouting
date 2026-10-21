@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/path.hpp"
 #include "cpp_common/base_graph.hpp"
 #include "cpp_common/alloc.hpp"
+#include "cpp_common/circuits_t.hpp"
 #include "cpp_common/identifiers.hpp"
 
 
@@ -79,6 +80,14 @@ size_t get_tuples(const std::vector<Flow_t>&, Flow_t*&);
  */
 size_t
 get_tuples(std::vector<Path_rt>&, const std::vector<Edge_t>&, Path_rt*&);
+
+/**
+ * @brief get tuples from a set of arc-distinct circuits to a Path_rt
+ */
+size_t
+get_tuples(
+        const pgrouting::types::Circuits&,
+        Path_rt*&);
 
 size_t
 get_tuples(const std::vector<II_t_rt>&, II_t_rt*&);
