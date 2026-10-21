@@ -3,6 +3,8 @@
 # License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 
 set(LOCAL_FILES
+    _hawickCircuits.sql
+
     _hawickCircuits_deprecated.sql
     hawickCircuits_deprecated.sql
 )
