@@ -1,14 +1,11 @@
 # This file is part of the pgRouting project.
 # Copyright (c) 2013-2026 pgRouting developers
 # License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
+
 set(LOCAL_FILES
-    _hawickCircuits.sql
-    hawickCircuits.sql
-    )
-
-# Do not modify below this line
-
-
+    _hawickCircuits_deprecated.sql
+    hawickCircuits_deprecated.sql
+)
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})
