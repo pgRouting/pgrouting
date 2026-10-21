@@ -25,6 +25,12 @@ SELECT has_function('pgr_hawickcircuits', ARRAY['text']);
 RETURN QUERY
 SELECT function_returns('pgr_hawickcircuits', ARRAY['text'],'setof record');
 
+  IF min_lib_version('4.1.0') THEN
+    RETURN QUERY
+    SELECT skip(2, 'pgr_hawickcircuits parameters changed on 4.1.0');
+    RETURN;
+  END IF;
+
 RETURN QUERY
 SELECT function_args_eq('pgr_hawickcircuits',
   $$VALUES
