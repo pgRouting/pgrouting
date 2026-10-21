@@ -53,6 +53,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "dijkstra/dijkstra.hpp"
 #include "bellman_ford/edwardMoore.hpp"
 #include "bdDijkstra/bdDijkstra.hpp"
+#include "circuits/hawick_circuits.hpp"
 #include "dagShortestPath/dagShortestPath.hpp"
 #include "bellman_ford/bellman_ford.hpp"
 #include "max_flow/maxflow.hpp"
@@ -134,6 +135,12 @@ do_shortestPath(
         int64_t *start_vid,
         int64_t *end_vid,
 
+        /* for circuits */
+        int64_t min_depth,
+        int64_t max_depth,
+        bool self_loops,
+        bool u_turn_on_edge,
+
         Which which,
         bool &is_matrix,
 
@@ -151,12 +158,34 @@ do_shortestPath(
             return;
         }
 
+        const bool is_circuits =
+            which == HAWICKCIRCUITS || which == HAWICKUNIQUECIRCUITS;
+
+        if (is_circuits && min_depth < 0) {
+            err << "'Invalid value for min_depth'";
+            log << "Must be positive";
+            return;
+        }
+
+        if (is_circuits && max_depth <= 0) {
+            err << "Invalid value for 'max_depth'";
+            log << "Must be positive";
+            return;
+        }
+
+        if (is_circuits && max_depth < min_depth) {
+            err << "Invalid values for 'min_depth' < 'max_depth'";
+            log << "'min_depth' can not be greater than 'max_depth'";
+            return;
+        }
+
         if ((which == KSP || which == OLDKSP) && k <= 0) {
             err << "Invalid value for k";
             return;
         }
 
         using pgrouting::pgget::get_edges;
+        using pgrouting::pgget::get_intSet;
         using pgrouting::utilities::get_combinations;
         using pgrouting::to_postgres::get_tuples;
         using pgrouting::UndirectedGraph;
@@ -168,7 +197,9 @@ do_shortestPath(
         using pgrouting::algorithms::dagShortestPath;
         using pgrouting::functions::bellmanFord;
         using pgrouting::functions::edgeDisjoint;
-        using functions::binaryBreadthFirstSearch;
+        using pgrouting::functions::binaryBreadthFirstSearch;
+        using pgrouting::functions::hawickCircuits;
+        using pgrouting::functions::hawickUniqueCircuits;
         using pgrouting::algorithms::Yen;
 
         hint = combinations_sql;
@@ -179,6 +210,8 @@ do_shortestPath(
         if (which == OLDKSP && start_vid && end_vid) {
             combinations[*start_vid].insert(*end_vid);
         }
+
+        auto circuit_starts = get_intSet(starts);
 
         size_t K{static_cast<size_t>(k)};
 
@@ -208,12 +241,28 @@ do_shortestPath(
             return_count = get_tuples(results, edges, return_tuples);
             return;
         } else if (directed) {
-            if (which == DAGSP) {
-                digraph.insert_no_edge_cycle(edges);
-            } else if (which == KSP || which == OLDKSP) {
-                digraph.insert_min_edges_no_parallel(edges);
-            } else {
-                digraph.insert_edges(edges);
+            switch (which) {
+                case DAGSP:
+                    digraph.insert_no_edge_cycle(edges);
+                    break;
+                case HAWICKUNIQUECIRCUITS:
+                    if (u_turn_on_edge) {
+                        digraph.insert_min_edges_no_parallel(edges, circuit_starts);
+                    } else {
+                        digraph.insert_edges_no_parallel(edges, circuit_starts);
+                    }
+                    break;
+                case OLDHAWICKCIRCUITS:
+                case HAWICKCIRCUITS:
+                    digraph.insert_edges(edges, circuit_starts);
+                    break;
+
+                case KSP:
+                case OLDKSP:
+                    digraph.insert_min_edges_no_parallel(edges);
+                    break;
+                default:
+                    digraph.insert_edges(edges);
             }
 
             switch (which) {
@@ -234,6 +283,17 @@ do_shortestPath(
                     break;
                 case BELLMANFORD:
                     return_count = get_tuples(bellmanFord(digraph, combinations, only_cost), return_tuples);
+                    break;
+                case OLDHAWICKCIRCUITS:
+                case HAWICKCIRCUITS:
+                    return_count = get_tuples(
+                            hawickCircuits(digraph, circuit_starts, min_depth, max_depth, self_loops, u_turn_on_edge),
+                            return_tuples);
+                    break;
+                case HAWICKUNIQUECIRCUITS:
+                    return_count = get_tuples(
+                            hawickUniqueCircuits(digraph, circuit_starts, min_depth, max_depth, self_loops),
+                            return_tuples);
                     break;
                 case BINARYBFS:
                     return_count = get_tuples(binaryBreadthFirstSearch(digraph, combinations), return_tuples);
