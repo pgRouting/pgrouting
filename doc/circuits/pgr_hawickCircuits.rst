@@ -19,20 +19,16 @@
 
 .. rubric:: Availability
 
-* Version 4.1.0
+.. rubric:: Version 4.1.0
 
-  * New optional parameters: ``min_depth``, ``max_depth``, ``self_loops`` and
-    ``u_turn_on_edge``.
-  * New signatures to select the starting vertices: **start vid** and
-    **start vids**.
-  * Deprecated signature: ``pgr_hawickCircuits(text)``.
-  * The circuits are arc-distinct: each combination of parallel arcs is
-    returned as a different circuit.
-  * The ``depth`` column starts at ``0`` for the first node of a circuit.
+* New optional parameters: ``min_depth``, ``max_depth``, ``self_loops`` and
+  ``u_turn_on_edge``.
+* New signatures to select starting vertices.
+* Deprecated signature: ``pgr_hawickCircuits(text)``.
 
-* Version 3.4.0
+.. rubric:: Version 3.4.0
 
-  * New experimental function.
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -40,7 +36,10 @@ Description
 Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Heath A. James.
 This algorithm solves the problem of detecting and enumerating circuits in graphs.
 
-Circuit enumeration in directed graphs, where parallel circuits are enumerated.
+Circuit enumeration in directed graphs, where circuits with parallel arcs are
+enumerated.
+
+* Each combination of parallel arcs is returned as a different circuit.
 
 .. circuits_characteristics_start
 
@@ -53,9 +52,9 @@ Circuit enumeration in directed graphs, where parallel circuits are enumerated.
 
 - When no initial vertices are given all circuits are in canonical order of the
   vertices insertion of the graph: A circuit with vertices ``u``, ``v``: ``u``
-  starting circuits containg ``v`` will not be listed on ``start_vid = v`` rows.
+  starting circuits containing ``v`` will not be listed on ``start_vid = v`` rows.
 
-  - Different edge ordering gives different cannonical ordering.
+  - Different edge ordering gives different canonical ordering.
 
 - When start vertices are given, all circuits are returned for each requested
   vertex it contains, and the results are grouped by ``start_vid``.
@@ -189,7 +188,7 @@ Additional Examples
 
 .. graph_start
 
-The examples use the followeing table ``c_example``, that represent a cul_de_sac
+The examples use the following table ``c_example``, that represent a cul_de_sac
 where the exit is on vertex :math:`5` and the vehicle is on vertex :math:`1` but
 pointing at the wrong direction of the exit.
 
@@ -244,7 +243,7 @@ See Also
 
 * :doc:`sampledata`
 * `Boost: Hawick Circuit Algorithm
-  <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__
+  <https://www.boost.org/doc/libs/graph/doc/hawick_circuits.html>`__
 
 .. rubric:: Indices and tables
 
