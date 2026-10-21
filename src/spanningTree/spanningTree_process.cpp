@@ -45,6 +45,20 @@ extern "C" {
 
 #include "drivers/spanningTree_driver.hpp"
 
+/**
+ * @brief Processes spanning tree algorithms (Prim, Kruskal, BFS, DFS, DijkstraDD).
+ *
+ * @param[in] edges_sql Query string defining the edges.
+ * @param[in] roots Array of root vertex identifiers.
+ * @param[in] directed True for directed graph traversal.
+ * @param[in] max_depth Maximum depth for BFS/DFS traversal.
+ * @param[in] distance Maximum distance limit for driving distance traversal.
+ * @param[in] equicost True for equal cost distribution.
+ * @param[in] fn_suffix Algorithm function suffix (e.g., "DD", "BFS", "DFS").
+ * @param[in] which Spanning tree algorithm variant selector.
+ * @param[out] result_tuples Array of output tuples.
+ * @param[out] result_count Count of output tuples.
+ */
 void pgr_process_spanningTree(
         const char* edges_sql,
         ArrayType* roots,
@@ -103,7 +117,7 @@ void pgr_process_spanningTree(
 
         case DIJKSTRADD:
             if (distance < 0) {
-                pgr_throw_error("Negative value found on 'distance'", "Must be positive");
+                pgr_throw_error("Negative value found on 'distance'", "Must be non negative");
             }
             break;
 
