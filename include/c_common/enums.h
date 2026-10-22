@@ -61,7 +61,6 @@ enum Which {  // NOLINT(cppcoreguidelines-use-enum-class)
     /* For Matching */
     MAXWEIGHTMATCH,
     MAXCARDINALITYMATCH,
-
     /* For components */
     CONNECTEDCOMPONENTS, BICONNECTEDCOMPONENTS, STRONGCOMPONENTS, ARTICULATIONPOINTS,
     BRIDGES, MAKECONNECTED,
