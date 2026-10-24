@@ -59,7 +59,6 @@ enumerated.
 - When start vertices are given, all circuits are returned for each requested
   vertex it contains, and the results are grouped by ``start_vid``.
 - The graph passed to the algorithm discard parallel edges with higher costs.
-  keeps the lowest cost edges.
 - Time Complexity: :math:`O((V + E) (c + 1))`
 
   - where :math:`|E|` is the number of edges in the graph,
@@ -78,7 +77,7 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_hawickCircuits(`Edges SQL`_ [, **options**])
+   | pgr_hawickCircuits(`Edges SQL`_)
    | pgr_hawickCircuits(`Edges SQL`_, **start vid** [, **options**])
    | pgr_hawickCircuits(`Edges SQL`_, **start vids** [, **options**])
    | **options:** ``[min_depth, max_depth, self_loops, u_turn_on_edge]``
@@ -243,7 +242,7 @@ See Also
 
 * :doc:`sampledata`
 * `Boost: Hawick Circuit Algorithm
-  <https://www.boost.org/doc/libs/graph/doc/hawick_circuits.html>`__
+  <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html`__
 
 .. rubric:: Indices and tables
 

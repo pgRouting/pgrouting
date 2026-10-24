@@ -912,49 +912,8 @@ class Pgr_base_graph {
          }
      }
 
-     /** no parallel, but if an edge exists and has a different id it is replaced
-      *  ci >= 0
-      *
-      * CASE
-      *  e1, v1, v2, c1, c2
-      *  e2, v1, v2, c3, c4
-      *
-      *  v1 --e1(c1)--> v2  --e1(c2)--> v1
-      *  v1 --e2(c3)--> v2  --e2(c4)--> v1
-      *
-      *  edge e1 gets inserted first.
-      *  Graph looks like
-      *  v1 --e1(c1)--> v2  --e1(c2)--> v1
-      *
-      *  Then when e2 gets processed:
-      *  when c3 < c1 final graph is
-      *  v1 --e2(c3)--> v2  --e1(c2)--> v1
-      *
-      *  when (c1 < c3)final graph is
-      *  v1 --e1(c3)--> v2  --e2(c4)--> v1
-      *
-      *
-      * CASE
-      *  e1, v1, v3, c1, c2
-      *  e2, v1, v3, c3, -1
-      *
-      *  v1 --e1(c1)--> v2  --e1(c2)--> v1
-      *  v1 --e2(c3)--> v2
-      *
-      *  edge e1 gets inserted first.
-      *  Graph looks like
-      *  v1 --e1(c1)--> v2  --e1(c2)--> v1
-      *
-      *  Then when e2 gets processed:
-      *  because there is no reverse edge on e2
-      *  and both (going and coming) edges were found in the graph
-      *  and both existing edges in the graph have the same id
-      *  v1 --e1(c3)--> v2  --e1(c2)--> v1
-      *
-      *  when (c1 < c3)final graph is
-      *  v1 --e1(c3)--> v2  --e2(c4)--> v1
-      *
-      *
+     /** no parallel,
+      * but if an edge exists and has a different id it is replaced
       **/
 
      template <typename T> void graph_add_edge_no_parallel(const T &edge) {

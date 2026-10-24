@@ -162,7 +162,7 @@ do_shortestPath(
             which == HAWICKCIRCUITS || which == HAWICKUNIQUECIRCUITS;
 
         if (is_circuits && min_depth < 0) {
-            err << "'Invalid value for min_depth'";
+            err << "Invalid value for 'min_depth'";
             log << "Must be positive";
             return;
         }
