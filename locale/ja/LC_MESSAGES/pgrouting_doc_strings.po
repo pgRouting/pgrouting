@@ -19,20 +19,7 @@
 # Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>, 2026.
 # DeepL <noreply-mt-deepl@weblate.org>, 2026.
 msgid ""
-msgstr ""
-"Project-Id-Version: pgRouting v4.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-08 15:38+0000\n"
-"PO-Revision-Date: 2026-10-07 05:39+0000\n"
-"Last-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\n"
-"Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\n"
-"Language: ja\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.16.2\n"
-"Generated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-10-08 15:38+0000\nPO-Revision-Date: 2026-10-24 01:39+0000\nLast-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 2026.10.1\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - カテゴリ"
@@ -271,10 +258,10 @@ msgid "See Also"
 msgstr "参照"
 
 msgid "`Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
-msgstr "`Boost: プリム法 (英語) <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+msgstr "`Boost: プリム法 (英語) <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/spanning_trees/prim_minimum_spanning_tree.html>`__"
 
 msgid "`Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
-msgstr "`Boost: クラスカル法 (英語) <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+msgstr "`Boost: クラスカル法 (英語) <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/spanning_trees/kruskal_min_spanning_tree.html>`__"
 
 msgid "`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr "`Wikipedia: プリム法 <https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AA%E3%83%A0%E6%B3%95>`__"
@@ -608,9 +595,8 @@ msgstr "``0でない値`` で、かつ ``start_id = 0`` のとき、これが最
 msgid "References"
 msgstr "参照"
 
-#, fuzzy
 msgid "`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
-msgstr "`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgstr "`Boost: メトリック巡回セールスマン問題 (英語) <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html>`__"
 
 #, fuzzy
 msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
@@ -1401,182 +1387,184 @@ msgstr "``factor`` > 1 の時、移動時間は速くなります"
 msgid "When ``factor`` < 1 the travel times are slower"
 msgstr "``factor`` < 1 の時、移動時間は遅くなります"
 
+#, fuzzy
 msgid "For the :doc:`pgr_pickDeliverEuclidean`:"
-msgstr ""
+msgstr ":doc:`pgr_pickDeliverEuclidean` では:"
 
 msgid "Working with time units in seconds, and x/y in lat/lon: Factor: would depend on the location of the points and on the average velocity say 25m/s is the velocity."
-msgstr ""
+msgstr "作業の時間単位は秒で x/y は 緯度/経度 のとき: Factor: はポイントの位置と、平均速度に依存します。平均速度を 25m/s と仮定します。"
 
 msgid "Latitude"
-msgstr ""
+msgstr "緯度"
 
 msgid "Conversion"
-msgstr ""
+msgstr "変換"
 
 msgid "Factor"
-msgstr ""
+msgstr "係数"
 
 msgid "45"
-msgstr ""
+msgstr "45"
 
 msgid "1 longitude degree is (78846.81m)/(25m/s)"
-msgstr ""
+msgstr "経度 1度について (78846.81m)/(25m/s)"
 
 msgid "3153 s"
-msgstr ""
+msgstr "3153 s"
 
 msgid "1 longitude degree is (111319.46 m)/(25m/s)"
-msgstr ""
+msgstr "経度1度について (111319.46 m)/(25m/s)"
 
 msgid "4452 s"
-msgstr ""
+msgstr "4452 s"
 
 msgid "For the :doc:`pgr_pickDeliver`:"
-msgstr ""
+msgstr ":doc:`pgr_pickDeliver` では:"
 
 msgid "Given :math:`v = d / t` therefore :math:`t = d / v` And the ``factor`` becomes :math:`1 / v`"
-msgstr ""
+msgstr ":math:`v = d / t` より :math:`t = d / v` となり ``factor`` は :math:`1 / v` となります"
 
 msgid "v"
-msgstr ""
+msgstr "v"
 
 msgid "Velocity"
-msgstr ""
+msgstr "速度 (Velocity)"
 
 msgid "d"
-msgstr ""
+msgstr "d"
 
 msgid "Distance"
-msgstr ""
+msgstr "距離 (Distance)"
 
 msgid "t"
-msgstr ""
+msgstr "t"
 
 msgid "Time"
-msgstr ""
+msgstr "時間 (Time)"
 
 msgid "For the following equivalences :math:`10m/s \\approx 600m/min \\approx 36 km/hr`"
-msgstr ""
+msgstr "換算関係 :math:`10m/s \\approx 600m/min \\approx 36 km/hr` について"
 
 msgid "Working with time units in seconds and the matrix been in meters: For a 1000m length value on the matrix:"
-msgstr ""
+msgstr "作業の時間単位は秒、行列の単位はメートルで、行列上の値が 1000m長のとき:"
 
 msgid "Units"
-msgstr ""
+msgstr "単位"
 
 msgid "velocity"
-msgstr ""
+msgstr "速度"
 
 msgid "Result"
-msgstr ""
+msgstr "結果"
 
 msgid "seconds"
-msgstr ""
+msgstr "秒"
 
 msgid ":math:`10 m/s`"
-msgstr ""
+msgstr ":math:`10 m/s`"
 
 msgid ":math:`\\frac{1}{10m/s}`"
-msgstr ""
+msgstr ":math:`\\frac{1}{10m/s}`"
 
 msgid ":math:`0.1s/m`"
-msgstr ""
+msgstr ":math:`0.1s/m`"
 
 msgid ":math:`1000m * 0.1s/m = 100s`"
-msgstr ""
+msgstr ":math:`1000m * 0.1s/m = 100s`"
 
 msgid ":math:`600 m/min`"
-msgstr ""
+msgstr ":math:`600 m/min`"
 
 msgid ":math:`\\frac{1}{600m/min}`"
-msgstr ""
+msgstr ":math:`\\frac{1}{600m/min}`"
 
 msgid ":math:`0.0016min/m`"
-msgstr ""
+msgstr ":math:`0.0016min/m`"
 
 msgid ":math:`1000m * 0.0016min/m = 1.6min`"
-msgstr ""
+msgstr ":math:`1000m * 0.0016min/m = 1.6min`"
 
 msgid "Hours"
-msgstr ""
+msgstr "時"
 
 msgid ":math:`36 km/hr`"
-msgstr ""
+msgstr ":math:`36 km/hr`"
 
 msgid ":math:`\\frac{1}{36 km/hr}`"
-msgstr ""
+msgstr ":math:`\\frac{1}{36 km/hr}`"
 
 msgid ":math:`0.0277hr/km`"
-msgstr ""
+msgstr ":math:`0.0277hr/km`"
 
 msgid ":math:`1km * 0.0277hr/km = 0.0277hr`"
-msgstr ""
+msgstr ":math:`1km * 0.0277hr/km = 0.0277hr`"
 
+#, fuzzy
 msgid "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
-msgstr ""
+msgstr "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
 
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 msgid "A* - Family of functions"
-msgstr ""
+msgstr "A* - 関数群"
 
 msgid "The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm with a heuristic that allow it to solve most shortest path problems by evaluation only a sub-set of the overall graph."
-msgstr ""
+msgstr "A* (「エースター」と読みます) アルゴリズムはダイクストラ法を基にして、最短経路問題を解くために、グラフ全体の一部だけを評価するヒューリスティックを付けたものです。"
 
 msgid ":doc:`pgr_aStar` - A* algorithm for the shortest path."
-msgstr ""
+msgstr ":doc:`pgr_aStar` - 最短経路を求める A* アルゴリズム。"
 
 msgid ":doc:`pgr_aStarCost` - Get the aggregate cost of the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_aStarCost` - 最短経路のコストの合計を得ます。"
 
 msgid ":doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_aStarCostMatrix` - 最短経路のコスト行列を得ます。"
 
 msgid "The main Characteristics are:"
-msgstr ""
+msgstr "主要な特徴は次の通りです:"
 
 msgid "Process works for directed and undirected graphs."
-msgstr ""
+msgstr "無向グラフ、有向グラフのどちらでも動作します。"
 
 msgid "Ordering is:"
-msgstr ""
+msgstr "並び順は次の通りです:"
 
 msgid "first by ``start_vid`` (if exists)"
-msgstr ""
+msgstr "最初に ``start_vid`` (存在するなら)"
 
 msgid "then by ``end_vid``"
-msgstr ""
+msgstr "続いて ``end_vid``"
 
 msgid "Values are returned when there is a path."
-msgstr ""
+msgstr "値はパスが存在する時に返ります。"
 
 msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
-msgstr ""
+msgstr ":math:`v` と :math:`u` がグラフのノードとします:"
 
 msgid "If there is no path from :math:`v` to :math:`u`:"
-msgstr ""
+msgstr ":math:`v` から :math:`u` へのパスが無い場合:"
 
 msgid "no corresponding row is returned"
-msgstr ""
+msgstr "対応する行は返りません"
 
 msgid "``agg_cost`` from :math:`v` to :math:`u` is :math:`\\infty`"
-msgstr ""
+msgstr ":math:`v` から :math:`u` への ``agg_cost`` は :math:`\\infty` です"
 
 msgid "There is no path when :math:`v = u` therefore"
-msgstr ""
+msgstr ":math:`v = u`の時パスは存在しないので"
 
 msgid "``agg_cost`` from `v` to `u` is :math:`0`"
-msgstr ""
+msgstr "`v` から `u` への ``agg_cost`` は :math:`0`"
 
 msgid "When :math:`(x,y)` coordinates for the same vertex identifier differ:"
-msgstr ""
+msgstr "頂点識別子が同じで :math:`(x,y)` 座標が異なる時:"
 
 msgid "A random selection of the vertex's :math:`(x,y)` coordinates is used."
-msgstr ""
+msgstr "選択される :math:`(x,y)` 座標は不定です。"
 
 msgid "Running time: :math:`O((E + V) * \\log V)`"
-msgstr ""
+msgstr "実行時間: :math:`O((E + V) * \\log V)`"
 
 #, fuzzy
 msgid "aStar optional parameters"
@@ -1586,88 +1574,88 @@ msgid "``heuristic``"
 msgstr "``heuristic``"
 
 msgid "Heuristic number. Current valid values 0~5."
-msgstr ""
+msgstr "ヒューリスティック番号。現在の妥当な値は 0~5です。"
 
 msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
-msgstr ""
+msgstr "0: :math:`h(v) = 0` (この値を使って pgr_dijkstra と比較してみて下さい)"
 
 msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
-msgstr ""
+msgstr "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
 
 msgid "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
-msgstr ""
+msgstr "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
 
 msgid "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
-msgstr ""
+msgstr "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
 
 msgid "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
-msgstr ""
+msgstr "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
 
 msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
-msgstr ""
+msgstr "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
 
 msgid "``1``"
 msgstr "``1``"
 
 msgid "For units manipulation. :math:`factor > 0`."
-msgstr ""
+msgstr "単位調整用。:math:`factor > 0`."
 
 msgid "``epsilon``"
 msgstr "``epsilon``"
 
 msgid "For less restricted results. :math:`epsilon >= 1`."
-msgstr ""
+msgstr "制約の少ない結果を得るために使用。:math:`epsilon >= 1`."
 
 msgid "See :ref:`heuristics <astar_heuristics>` available and :ref:`factor <astar_factor>` handling."
-msgstr ""
+msgstr "利用できる :ref:`heuristics <astar_heuristics>` および :ref:`factor <astar_factor>` の取り扱いを参照してください。"
 
 msgid "Advanced documentation"
-msgstr ""
+msgstr "高度なドキュメント"
 
 msgid "Heuristic"
-msgstr ""
+msgstr "ヒューリスティック"
 
 msgid "Currently the heuristic functions available are:"
-msgstr ""
+msgstr "現在利用できるヒューリスティック関数は次の通りです。"
 
 msgid "where :math:`\\Delta x = x_1 - x_0` and :math:`\\Delta y = y_1 - y_0`"
-msgstr ""
+msgstr "ここで :math:`\\Delta x = x_1 - x_0`、:math:`\\Delta y = y_1 - y_0`"
 
 msgid "Analysis 1"
-msgstr ""
+msgstr "解析 1"
 
 msgid "Working with cost/reverse_cost as length in degrees, x/y in lat/lon: Factor = 1 (no need to change units)"
-msgstr ""
+msgstr "コスト/逆コスト を度単位の長さとし、x/y を 緯度/経度 とする: Factor = 1 (単位変換不要)"
 
 msgid "Analysis 2"
-msgstr ""
+msgstr "解析 2"
 
 msgid "Working with cost/reverse_cost as length in meters, x/y in lat/lon: Factor = would depend on the location of the points:"
-msgstr ""
+msgstr "コスト/逆コスト をメートル単位の長さとし、x/y を 緯度/経度 とする: Factor = 点の位置に次の通り依存します:"
 
 msgid "1 longitude degree is 78846.81 m"
-msgstr ""
+msgstr "経度 1度は 78846.81 m"
 
 msgid "78846"
-msgstr ""
+msgstr "78846"
 
 msgid "1 longitude degree is 111319.46 m"
-msgstr ""
+msgstr "経度 1度は 111319.46 m"
 
 msgid "111319"
-msgstr ""
+msgstr "111319"
 
 msgid "Analysis 3"
-msgstr ""
+msgstr "解析 3"
 
 msgid "Working with cost/reverse_cost as time in seconds, x/y in lat/lon: Factor: would depend on the location of the points and on the average speed say 25m/s is the speed."
-msgstr ""
+msgstr "コスト/逆コスト を秒単位の時間とし、x/y を 緯度/経度 とする: Factor = 点の位置と平均速度 (たとえば 25m/s) に依存します。"
 
 msgid ":doc:`bdAstar-family`"
-msgstr ""
+msgstr ":doc:`bdAstar-family`"
 
 msgid "`Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__"
-msgstr ""
+msgstr "`Boost: A* 探索 (英語) <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/shortest_paths/astar_search.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/A*_search_algorithm"
 msgstr ""
@@ -2417,7 +2405,7 @@ msgid ":doc:`pgr_floydWarshall`"
 msgstr ""
 
 msgid "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__"
-msgstr ""
+msgstr "Boost `ワーシャル–フロイド法 (英語) <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/shortest_paths/floyd_warshall_shortest.html>`__"
 
 msgid "Bidirectional A* - Family of functions"
 msgstr ""
@@ -2502,7 +2490,7 @@ msgid "It is expected to terminate faster than :doc:`pgr_dijkstra`"
 msgstr ""
 
 msgid "`Boost  <https://www.boost.org/libs/graph/doc>`__"
-msgstr ""
+msgstr "`Boost (英語) <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/index.html>`__"
 
 #, fuzzy
 msgid "Chinese Postman Problem - Family of functions"
@@ -6977,7 +6965,7 @@ msgid "pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, int
 msgstr ""
 
 msgid "Using `Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
-msgstr ""
+msgstr "`Boost: メトリック巡回セールスマン問題 (英語) <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html>`__ を使用"
 
 msgid "Version 3.0.0"
 msgstr "バージョン 3.0.0"
@@ -7296,7 +7284,7 @@ msgid "Identifier of the vertex."
 msgstr ""
 
 msgid "`Boost: Biconnected components & articulation points <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__"
-msgstr ""
+msgstr "`Boost: 二重連結成分 & 関節点 (英語) <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/connected_components/biconnected_components.html>`__"
 
 msgid "wikipedia: `Biconnected component <https://en.wikipedia.org/wiki/Biconnected_component>`__"
 msgstr ""
@@ -7351,7 +7339,7 @@ msgid "Undirected graph with edges after optimization."
 msgstr ""
 
 msgid "`Boost: bandwidth <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
-msgstr ""
+msgstr "`Boost: グラフ帯域幅 (英語) <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/metrics/bandwidth.html>`_"
 
 msgid "``pgr_bdAstar``"
 msgstr "``pgr_bdAstar``"
@@ -7611,7 +7599,7 @@ msgid "Using a combinations table on an undirected graph"
 msgstr "導かれないグラフ。"
 
 msgid "`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__"
-msgstr ""
+msgstr "`Boost: ベルマンーフォード法 (英語) <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/shortest_paths/bellman_ford_shortest.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgstr ""
