@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: hawickCircuits_driver.h
+File: _hawickCircuits_deprecated.sql
 
 Generated with Template by:
 Copyright (c) 2007-2026 pgRouting developers
@@ -26,32 +26,27 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+---------------
+-- _pgr_hawickCircuits
+---------------
 
-#ifndef INCLUDE_DRIVERS_CIRCUITS_HAWICKCIRCUITS_DRIVER_H_
-#define INCLUDE_DRIVERS_CIRCUITS_HAWICKCIRCUITS_DRIVER_H_
+--v3.4.0
+CREATE FUNCTION _pgr_hawickCircuits(
+    TEXT,
 
-#ifdef __cplusplus
-#   include <cstddef>
-#else
-#   include <stddef.h>
-#endif
+    OUT seq INTEGER,
+    OUT path_id  INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 
-typedef struct Edge_t Edge_t;
-typedef struct circuits_rt circuits_rt;
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C IMMUTABLE STRICT;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-void
-pgr_do_hawickCircuits(
-        const char*,
-
-        circuits_rt**, size_t*,
-        char**, char**, char**);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif  // INCLUDE_DRIVERS_CIRCUITS_HAWICKCIRCUITS_DRIVER_H_
+COMMENT ON FUNCTION _pgr_hawickCircuits(TEXT)
+IS 'pgRouting deprecated internal function';

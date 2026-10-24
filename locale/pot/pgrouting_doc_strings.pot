@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-08 15:38+0000\n"
+"POT-Creation-Date: 2026-10-24 01:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2473,6 +2473,108 @@ msgstr ""
 msgid "An Edges SQL that represents a **directed** graph with the following columns"
 msgstr ""
 
+msgid "Circuits - Family of Functions"
+msgstr ""
+
+msgid "The following functions work on circuits of directed graphs."
+msgstr ""
+
+msgid ":doc:`pgr_hawickCircuits` - Hawick's circuits algorithm."
+msgstr ""
+
+msgid "``start vid``"
+msgstr ""
+
+msgid "A vertex of the circuits: - All the circuits that contain the vertex are returned. - When ``0`` all the circuits are returned in canonical order."
+msgstr ""
+
+msgid "``start vids``"
+msgstr ""
+
+msgid "``ARRAY[`` |ANY-INTEGER| ``]``"
+msgstr ""
+
+msgid "Vertices of the circuits: for each requested vertex: - All the circuits that contain the vertex are returned: - When empty all the circuits are returned in canonical order."
+msgstr ""
+
+msgid "``min_depth``"
+msgstr ""
+
+msgid "Minimum number of vertices in a circuit. * Exclude 2 edge circuits by increasing this number."
+msgstr ""
+
+msgid "``9223372036854775807``"
+msgstr ""
+
+msgid "Maximum number of vertices in a circuit."
+msgstr ""
+
+msgid "``self_loops``"
+msgstr ""
+
+msgid "When ``true`` self loops are included in the results."
+msgstr ""
+
+msgid "When ``false`` self loops are excluded from the results."
+msgstr ""
+
+msgid "Self loops are included or excluded regardless of ``min_depth`` and ``max_depth``."
+msgstr ""
+
+msgid "``u_turn_on_edge``"
+msgstr ""
+
+msgid "A u-turn on an edge is a 2 edge circuit that uses the same ``id`` on both directions of the edge."
+msgstr ""
+
+msgid "When ``true``: u-turns are part of the results."
+msgstr ""
+
+msgid "When ``false``: u-turns are discarded when the circuit can be formed with two different edges; a u-turn is kept when it is the only option, that is, when the two vertices are connected by a single edge."
+msgstr ""
+
+msgid "Self loops are not affected."
+msgstr ""
+
+msgid "Sequential value starting from ``1``"
+msgstr ""
+
+msgid "``path_id``"
+msgstr ""
+
+msgid "Id of the circuit starting from ``1``"
+msgstr ""
+
+msgid "Relative position in the circuit. Has value **0** for the beginning of a circuit"
+msgstr ""
+
+msgid "Identifier of the starting vertex of the circuit."
+msgstr ""
+
+msgid "Identifier of the ending vertex of the circuit."
+msgstr ""
+
+msgid "``pred``"
+msgstr ""
+
+msgid "Identifier of the node that precedes ``node`` in the circuit."
+msgstr ""
+
+msgid "When ``node`` is the first node of the circuit, it has the same value as ``node``."
+msgstr ""
+
+msgid "Identifier of the node in the path from a vid to next vid."
+msgstr ""
+
+msgid "Identifier of the edge used to arrive from ``pred`` to ``node``. - ``-1`` when :math:`depth = 0`."
+msgstr ""
+
+msgid "Cost to traverse from ``pred`` to ``node`` using ``edge``. - ``0`` when :math:`depth = 0`."
+msgstr ""
+
+msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+msgstr ""
+
 msgid "Coloring - Family of functions"
 msgstr ""
 
@@ -3025,9 +3127,6 @@ msgstr ""
 msgid ":math:`depth-1` is the depth of ``pred``"
 msgstr ""
 
-msgid "``pred``"
-msgstr ""
-
 msgid "Predecessor of ``node``."
 msgstr ""
 
@@ -3124,6 +3223,9 @@ msgstr ""
 msgid ":doc:`pgr_planarFaces` - Identifies the faces of a planar embedding and lists every edge-face incidence for an undirected graph."
 msgstr ""
 
+msgid ":doc:`circuits-family`"
+msgstr ""
+
 msgid "categories"
 msgstr ""
 
@@ -3152,9 +3254,6 @@ msgid ":doc:`pgr_stoerWagner`"
 msgstr ""
 
 msgid ":doc:`pgr_transitiveClosure`"
-msgstr ""
-
-msgid ":doc:`pgr_hawickCircuits`"
 msgstr ""
 
 msgid "Flow - Family of functions"
@@ -3580,6 +3679,18 @@ msgstr ""
 msgid "Fix the way it builds the graph"
 msgstr ""
 
+msgid "pgr_hawickCircuits"
+msgstr ""
+
+msgid "New optional parameters: ``min_depth``, ``max_depth``, ``self_loops`` and ``u_turn_on_edge``."
+msgstr ""
+
+msgid "New signatures to select starting vertices."
+msgstr ""
+
+msgid "Deprecated signature: ``pgr_hawickCircuits(text)``."
+msgstr ""
+
 msgid "pgr_makeBiconnectedPlanar"
 msgstr ""
 
@@ -3650,6 +3761,9 @@ msgid "`#3154 <https://github.com/pgRouting/pgrouting/issues/3154>`__: betweenne
 msgstr ""
 
 msgid "`#3163 <https://github.com/pgRouting/pgrouting/issues/3163>`__: KSP & KSP WithPoints Use ShortestPath driver files"
+msgstr ""
+
+msgid "`#3170 <https://github.com/pgRouting/pgrouting/issues/3170>`__: pgr_hawickCircuits: wrong Boost function referenced"
 msgstr ""
 
 msgid "4.1.0 Bug Fixes"
@@ -5929,9 +6043,6 @@ msgstr ""
 msgid "Returns set of |generic-result|"
 msgstr ""
 
-msgid "``path_id``"
-msgstr ""
-
 msgid "Path identifier."
 msgstr ""
 
@@ -7804,9 +7915,6 @@ msgstr ""
 msgid "Returns set of ``(seq, node, edge, cost, agg_cost)``"
 msgstr ""
 
-msgid "Sequential value starting from ``1``"
-msgstr ""
-
 msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path."
 msgstr ""
 
@@ -8231,9 +8339,6 @@ msgid "The green nodes are dead end nodes."
 msgstr ""
 
 msgid "Node :math:`3` is a dead end node after node :math:`1` is contracted."
-msgstr ""
-
-msgid "``ARRAY[`` |ANY-INTEGER| ``]``"
 msgstr ""
 
 msgid "**Empty**"
@@ -10039,9 +10144,6 @@ msgstr ""
 msgid "When ``false`` which resembles several calls using the single vertex signature."
 msgstr ""
 
-msgid "end-before"
-msgstr ""
-
 msgid "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` on an undirected graph"
 msgstr ""
 
@@ -10702,49 +10804,97 @@ msgstr ""
 msgid "``pgr_hawickCircuits`` — Returns the list of circuits using hawick circuits algorithm."
 msgstr ""
 
-msgid "Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Health A. James. This algorithm solves the problem of detecting and enumerating circuits in graphs. It is capable of circuit enumeration in graphs with directed-arcs, multiple-arcs and self-arcs with a memory efficient and high-performance im-plementation. It is an extension of Johnson's Algorithm of finding all the elementary circuits of a directed graph."
+msgid "Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Heath A. James. This algorithm solves the problem of detecting and enumerating circuits in graphs."
 msgstr ""
 
-msgid "There are 2 variations defined in the Boost Graph Library. Here, we have implemented only 2nd as it serves the most suitable and practical usecase. In this variation we get the circuits after filtering out the circuits caused by parallel edges. Parallel edge circuits have more use cases when you want to count the no. of circuits.Maybe in future, we will also implemenent this variation."
+msgid "Circuit enumeration in directed graphs, where circuits with parallel arcs are enumerated."
 msgstr ""
 
-msgid "The algorithm implementation works only for directed graph"
+msgid "Each combination of parallel arcs is returned as a different circuit."
 msgstr ""
 
-msgid "It is a variation of Johnson's algorithm for circuit enumeration."
+msgid "Works for directed graphs."
 msgstr ""
 
 msgid "The algorithm outputs the distinct circuits present in the graph."
 msgstr ""
 
+msgid "The circuits are elementary: a vertex is not repeated within a circuit, except the starting vertex that closes the circuit."
+msgstr ""
+
+msgid "When no initial vertices are given all circuits are in canonical order of the vertices insertion of the graph: A circuit with vertices ``u``, ``v``: ``u`` starting circuits containing ``v`` will not be listed on ``start_vid = v`` rows."
+msgstr ""
+
+msgid "Different edge ordering gives different canonical ordering."
+msgstr ""
+
+msgid "When start vertices are given, all circuits are returned for each requested vertex it contains, and the results are grouped by ``start_vid``."
+msgstr ""
+
+msgid "The graph passed to the algorithm discard parallel edges with higher costs."
+msgstr ""
+
 msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
 msgstr ""
 
-msgid ":math:`|c|` is the number of circuits in the graph."
+msgid "where :math:`|V|` is the number of vertices in the graph."
+msgstr ""
+
+msgid "where :math:`|c|` is the number of circuits in the graph."
 msgstr ""
 
 msgid "pgr_hawickCircuits(`Edges SQL`_)"
 msgstr ""
 
-msgid "Circuits present in the pgRouting :doc:`sampledata`"
+msgid "pgr_hawickCircuits(`Edges SQL`_, **start vid** [, **options**])"
 msgstr ""
 
-msgid "Id of the circuit starting from ``1``"
+msgid "pgr_hawickCircuits(`Edges SQL`_, **start vids** [, **options**])"
 msgstr ""
 
-msgid "Relative position in the path. Has value ``0`` for beginning of the path"
+msgid "**options:** ``[min_depth, max_depth, self_loops, u_turn_on_edge]``"
 msgstr ""
 
-msgid "Identifier of the starting vertex of the circuit."
+msgid "Returns set of |circuits-result|"
 msgstr ""
 
-msgid "Identifier of the ending vertex of the circuit."
+msgid "All circuits"
 msgstr ""
 
-msgid "Identifier of the node in the path from a vid to next vid."
+msgid "pgr_hawickCircuits(`Edges SQL`_ [, **options**])"
 msgstr ""
 
-msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+msgid "All the circuits of the pgRouting :doc:`sampledata`"
+msgstr ""
+
+msgid "When no starting vertex is given, all the circuits of the graph are returned. The result has 94 rows, one ``path_id`` for each circuit:"
+msgstr ""
+
+msgid "Single start vertex"
+msgstr ""
+
+msgid "Circuits that contain vertex :math:`10`"
+msgstr ""
+
+msgid "Many start vertices"
+msgstr ""
+
+msgid "Circuits that contain vertices :math:`\\{10, 11\\}`"
+msgstr ""
+
+msgid "The examples use the following table ``c_example``, that represent a cul_de_sac where the exit is on vertex :math:`5` and the vehicle is on vertex :math:`1` but pointing at the wrong direction of the exit."
+msgstr ""
+
+msgid "All possible ways to return to vertex :math:`1`."
+msgstr ""
+
+msgid "Exclude self loops."
+msgstr ""
+
+msgid "Exclude self loops and U-turn on the same edge."
+msgstr ""
+
+msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__"
 msgstr ""
 
 msgid "``pgr_isPlanar`` - Experimental"
@@ -14777,9 +14927,6 @@ msgid "pgr_cuthillMckeeOrdering"
 msgstr ""
 
 msgid "Unclassified"
-msgstr ""
-
-msgid "pgr_hawickCircuits"
 msgstr ""
 
 msgid "Flow functions"

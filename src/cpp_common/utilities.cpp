@@ -133,6 +133,12 @@ get_name(Which which) {
             return "pgr_planarFaces";
         case CORENUMBERS:
             return "pgr_coreNumbers";
+        case HAWICKCIRCUITS:
+            return "pgr_hawickCircuits";
+        case HAWICKUNIQUECIRCUITS:
+            return "pgr_hawickUniqueCircuits";
+        case OLDHAWICKCIRCUITS:
+            return "pgr_hawickCircuits(deprecated)";
         case OLDKSP:
         case KSP:
             return "pgr_KSP";
