@@ -242,7 +242,7 @@ See Also
 
 * :doc:`sampledata`
 * `Boost: Hawick Circuit Algorithm
-  <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html`__
+  <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__
 
 .. rubric:: Indices and tables
 
