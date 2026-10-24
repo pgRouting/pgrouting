@@ -1,0 +1,124 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+/*
+ * Issue #3145: pgr_bdDijkstra returns a more expensive route than pgr_dijkstra
+ *
+ * pgr_bdDijkstra can return a more expensive route than pgr_dijkstra. The
+ * bidirectional search only records a meeting point when both searches have
+ * finished that node, so a cheaper meeting through a node that only one side
+ * has reached is missed, and the search stops on a rule that does not prove
+ * no cheaper route exists.
+ *
+ * pgr_bdDijkstraCost reports the cost of that same route, so it reports the
+ * same too high number.
+ *
+ * Every graph here is DIRECTED, or has cost = reverse_cost on every edge, so
+ * that this test is not affected by the separate problem seen on undirected
+ * graphs whose cost and reverse_cost differ.
+ */
+
+BEGIN;
+
+SET extra_float_digits=-3;
+
+SELECT CASE WHEN min_version('4.1.0') THEN plan(3) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION issue_3145_cost_tests()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_bdDijkstraCost: Fix implemented on 4.1.0');
+    RETURN;
+  END IF;
+
+  /*
+   * Reported example: three routes from 1 to 5
+   *   1 -> 2 -> 5 = 12
+   *   1 -> 3 -> 5 = 13
+   *   1 -> 4 -> 5 = 11   <- cheapest
+   */
+  CREATE TEMP TABLE edges_3145_reported AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 1::BIGINT, 2::BIGINT,  6::FLOAT, -1::FLOAT),
+    (2::BIGINT, 2::BIGINT, 5::BIGINT,  6::FLOAT, -1::FLOAT),
+    (3::BIGINT, 1::BIGINT, 3::BIGINT,  7::FLOAT, -1::FLOAT),
+    (4::BIGINT, 3::BIGINT, 5::BIGINT,  6::FLOAT, -1::FLOAT),
+    (5::BIGINT, 1::BIGINT, 4::BIGINT, 10::FLOAT, -1::FLOAT),
+    (6::BIGINT, 4::BIGINT, 5::BIGINT,  1::FLOAT, -1::FLOAT)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY SELECT set_eq(
+    $$SELECT start_vid, end_vid, agg_cost FROM pgr_bdDijkstraCost(
+      'SELECT id, source, target, cost, reverse_cost FROM edges_3145_reported',
+      1, 5, true)$$,
+    $$SELECT start_vid, end_vid, agg_cost FROM pgr_dijkstraCost(
+      'SELECT id, source, target, cost, reverse_cost FROM edges_3145_reported',
+      1, 5, true)$$,
+    'pgr_bdDijkstraCost: reported example 1 -> 5 must match pgr_dijkstraCost (cost 11 via 1 -> 4 -> 5)'
+  );
+
+  /*
+   * Second example: node 6 is reachable from node 1 in one step for a cost
+   * of 4, but a two step route costing 5 is reported instead.
+   */
+  CREATE TEMP TABLE edges_3145_onehop AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 3::BIGINT, 1::BIGINT, 4::FLOAT, 4::FLOAT),
+    (2::BIGINT, 3::BIGINT, 5::BIGINT, 1::FLOAT, 1::FLOAT),
+    (3::BIGINT, 6::BIGINT, 1::BIGINT, 4::FLOAT, 4::FLOAT),
+    (4::BIGINT, 4::BIGINT, 6::BIGINT, 9::FLOAT, 9::FLOAT),
+    (5::BIGINT, 6::BIGINT, 2::BIGINT, 5::FLOAT, 5::FLOAT),
+    (6::BIGINT, 6::BIGINT, 3::BIGINT, 1::FLOAT, 1::FLOAT),
+    (7::BIGINT, 5::BIGINT, 2::BIGINT, 2::FLOAT, 2::FLOAT),
+    (8::BIGINT, 6::BIGINT, 4::BIGINT, 5::FLOAT, 5::FLOAT),
+    (9::BIGINT, 1::BIGINT, 2::BIGINT, 2::FLOAT, 2::FLOAT)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY SELECT set_eq(
+    $$SELECT start_vid, end_vid, agg_cost FROM pgr_bdDijkstraCost(
+      'SELECT id, source, target, cost, reverse_cost FROM edges_3145_onehop',
+      1, 6, true)$$,
+    $$SELECT start_vid, end_vid, agg_cost FROM pgr_dijkstraCost(
+      'SELECT id, source, target, cost, reverse_cost FROM edges_3145_onehop',
+      1, 6, true)$$,
+    'pgr_bdDijkstraCost: 1 -> 6 must match pgr_dijkstraCost (cost 4 in a single step)'
+  );
+
+  /*
+   * Control: a straight chain where pgr_bdDijkstraCost is already correct.
+   * A fix must not change this.
+   */
+  CREATE TEMP TABLE edges_3145_chain AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 1::BIGINT, 2::BIGINT, 3::FLOAT, 3::FLOAT),
+    (2::BIGINT, 2::BIGINT, 3::BIGINT, 3::FLOAT, 3::FLOAT),
+    (3::BIGINT, 3::BIGINT, 4::BIGINT, 3::FLOAT, 3::FLOAT)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY SELECT set_eq(
+    $$SELECT start_vid, end_vid, agg_cost FROM pgr_bdDijkstraCost(
+      'SELECT id, source, target, cost, reverse_cost FROM edges_3145_chain',
+      1, 4, true)$$,
+    $$SELECT start_vid, end_vid, agg_cost FROM pgr_dijkstraCost(
+      'SELECT id, source, target, cost, reverse_cost FROM edges_3145_chain',
+      1, 4, true)$$,
+    'pgr_bdDijkstraCost: straight chain 1 -> 4 already matches pgr_dijkstraCost (cost 9)'
+  );
+
+  DROP TABLE edges_3145_reported;
+  DROP TABLE edges_3145_onehop;
+  DROP TABLE edges_3145_chain;
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT issue_3145_cost_tests();
+
+SELECT * FROM finish();
+ROLLBACK;
