@@ -43,6 +43,10 @@ To see all issues & pull requests closed by this release see the
   * New signatures to select starting vertices.
   * Deprecated signature: ``pgr_hawickCircuits(text)``.
 
+* pgr_hawickUniqueCircuits
+
+    * New experimental function.
+
 * pgr_makeBiconnectedPlanar
 
   * New experimental function.
@@ -82,6 +86,7 @@ To see all issues & pull requests closed by this release see the
 * [#3154](https://github.com/pgRouting/pgrouting/issues/3154): betweennessCentrality: use allpairs/process and driver
 * [#3163](https://github.com/pgRouting/pgrouting/issues/3163): KSP & KSP WithPoints Use ShortestPath driver files
 * [#3170](https://github.com/pgRouting/pgrouting/issues/3170): pgr_hawickCircuits: wrong  function referenced
+* [#3171](https://github.com/pgRouting/pgrouting/issues/3171): pgr_hawickUniqueCircuits: new functionality
 
 4.1.0 Bug Fixes
 
