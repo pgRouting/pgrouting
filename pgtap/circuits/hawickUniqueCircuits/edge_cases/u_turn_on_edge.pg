@@ -1,0 +1,189 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+SELECT CASE WHEN min_version('4.1.0') THEN plan(11) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION u_turn_on_edge()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_hawickUniqueCircuits new on 4.1.0');
+    RETURN;
+  END IF;
+
+  -- a single bidirected edge: the two-cycle uses the same edge twice (a u-turn)
+
+  PREPARE a AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES (1, 3, 7, 1, 1)) AS t(id, source, target, cost, reverse_cost);
+
+  -- the default value of u_turn_on_edge is true
+
+  PREPARE a_default AS
+  SELECT * FROM pgr_hawickUniqueCircuits('a', 3);
+
+  PREPARE a_true AS
+  SELECT * FROM pgr_hawickUniqueCircuits('a', 3, 1, 5, true, true);
+
+  RETURN QUERY
+  SELECT set_eq('a_default', 'a_true',
+      'u_turn_on_edge -> default value is true');
+
+  -- u_turn_on_edge => true keeps the u-turn two-cycle
+
+  PREPARE a_true_cyc AS
+  SELECT seq, path_id, start_vid, end_vid, pred, node, edge, cost, agg_cost
+  FROM pgr_hawickUniqueCircuits('a', 3, 1, 5, true, true);
+
+  RETURN QUERY
+  SELECT set_eq('a_true_cyc',
+      $$VALUES
+          (1, 1, 3, 3, 3, 3, -1, 0, 0),
+          (2, 1, 3, 3, 3, 7, 1, 1, 1),
+          (3, 1, 3, 3, 7, 3, 1, 1, 2)
+      $$,
+      'u_turn_on_edge => true -> the u-turn two-cycle is returned');
+
+  -- u_turn_on_edge => false keeps the u-turn two-cycle when no different-edge circuit exists
+
+  PREPARE a_false AS
+  SELECT seq, path_id, start_vid, end_vid, pred, node, edge, cost, agg_cost
+  FROM pgr_hawickUniqueCircuits('a', 3, 1, 5, true, false);
+
+  RETURN QUERY
+  SELECT set_eq('a_false', 'a_true_cyc',
+      'u_turn_on_edge => false -> the two-cycle has no alternative and is kept');
+
+  -- a two-cycle that uses two different edges is not a u-turn
+
+  PREPARE b AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES (1, 1, 2, 1, -1), (2, 2, 1, 1, -1)) AS t(id, source, target, cost, reverse_cost);
+
+  PREPARE b_false AS
+  SELECT seq, path_id, start_vid, end_vid, pred, node, edge, cost, agg_cost
+  FROM pgr_hawickUniqueCircuits('b', 1, 1, 5, true, false);
+
+  RETURN QUERY
+  SELECT set_eq('b_false',
+      $$VALUES
+          (1, 1, 1, 1, 1, 1, -1, 0, 0),
+          (2, 1, 1, 1, 1, 2, 1, 1, 1),
+          (3, 1, 1, 1, 2, 1, 2, 1, 2)
+      $$,
+      'u_turn_on_edge => false -> a two-cycle with distinct edges is kept');
+
+  -- a directed triangle never repeats an edge
+
+  PREPARE c AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES (1, 1, 2, 1, -1), (2, 2, 3, 1, -1), (3, 3, 1, 1, -1)) AS t(id, source, target, cost, reverse_cost);
+
+  PREPARE c_false AS
+  SELECT seq, path_id, start_vid, end_vid, pred, node, edge, cost, agg_cost
+  FROM pgr_hawickUniqueCircuits('c', 1, 1, 5, true, false);
+
+  RETURN QUERY
+  SELECT set_eq('c_false',
+      $$VALUES
+          (1, 1, 1, 1, 1, 1, -1, 0, 0),
+          (2, 1, 1, 1, 1, 2, 1, 1, 1),
+          (3, 1, 1, 1, 2, 3, 2, 1, 2),
+          (4, 1, 1, 1, 3, 1, 3, 1, 3)
+      $$,
+      'u_turn_on_edge => false -> a directed triangle is kept');
+
+  -- a bidirected edge (two-cycle, a u-turn) plus a triangle sharing vertex 1
+
+  PREPARE d AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES (1, 1, 2, 1, 1), (2, 2, 3, 1, -1), (3, 3, 1, 1, -1)) AS t(id, source, target, cost, reverse_cost);
+
+  PREPARE d_true AS
+  SELECT seq, path_id, start_vid, end_vid, pred, node, edge, cost, agg_cost
+  FROM pgr_hawickUniqueCircuits('d', 1, 1, 5, true, true);
+
+  RETURN QUERY
+  SELECT set_eq('d_true',
+      $$VALUES
+          (1, 1, 1, 1, 1, 1, -1, 0, 0),
+          (2, 1, 1, 1, 1, 2, 1, 1, 1),
+          (3, 1, 1, 1, 2, 1, 1, 1, 2),
+          (4, 2, 1, 1, 1, 1, -1, 0, 0),
+          (5, 2, 1, 1, 1, 2, 1, 1, 1),
+          (6, 2, 1, 1, 2, 3, 2, 1, 2),
+          (7, 2, 1, 1, 3, 1, 3, 1, 3)
+      $$,
+      'u_turn_on_edge => true -> the two-cycle and the triangle are returned');
+
+  PREPARE d_false AS
+  SELECT seq, path_id, start_vid, end_vid, pred, node, edge, cost, agg_cost
+  FROM pgr_hawickUniqueCircuits('d', 1, 1, 5, true, false);
+
+  RETURN QUERY
+  SELECT set_eq('d_false',
+      $$VALUES
+          (1, 1, 1, 1, 1, 1, -1, 0, 0),
+          (2, 1, 1, 1, 1, 2, 1, 1, 1),
+          (3, 1, 1, 1, 2, 1, 1, 1, 2),
+          (4, 2, 1, 1, 1, 1, -1, 0, 0),
+          (5, 2, 1, 1, 1, 2, 1, 1, 1),
+          (6, 2, 1, 1, 2, 3, 2, 1, 2),
+          (7, 2, 1, 1, 3, 1, 3, 1, 3)
+      $$,
+      'u_turn_on_edge => false -> the u-turn two-cycle has no alternative, both circuits are returned');
+
+  -- the flag does not affect self loops
+
+  PREPARE e AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES (1, 7, 7, 1, -1)) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniqueCircuits('e', 7, 1, 5, true, false) WHERE edge = -1), 1,
+      'u_turn_on_edge => false -> self loops are not affected');
+
+  -- the flag can be given by name
+
+  PREPARE d_named_false AS
+  SELECT * FROM pgr_hawickUniqueCircuits('d', 1, min_depth => 1, max_depth => 5, self_loops => true, u_turn_on_edge => false);
+
+  PREPARE d_positional_false AS
+  SELECT * FROM pgr_hawickUniqueCircuits('d', 1, 1, 5, true, false);
+
+  RETURN QUERY
+  SELECT set_eq('d_named_false', 'd_positional_false',
+      'u_turn_on_edge -> can be given by name');
+
+  -- parallel bidirectional arcs collapse to a single unique circuit regardless of the flag
+
+  PREPARE p AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES (10, 1, 2, 1, 1), (11, 1, 2, 2, 2)) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniqueCircuits('p', 1, 1, 5, true, true) WHERE edge = -1), 1,
+      'u_turn_on_edge => true -> parallel arcs collapse to a single circuit');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniqueCircuits('p', 1, 1, 5, true, false) WHERE edge = -1), 1,
+      'u_turn_on_edge => false -> parallel arcs collapse to a single circuit');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT u_turn_on_edge();
+
+SELECT * FROM finish();
+ROLLBACK;
