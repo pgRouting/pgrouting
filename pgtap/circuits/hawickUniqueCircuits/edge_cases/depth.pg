@@ -1,0 +1,205 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+SELECT CASE WHEN min_version('4.1.0') THEN plan(22) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION depth()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_hawickUniquecircuits is new on 4.1.0');
+    RETURN;
+  END IF;
+
+  -- complete digraph K4: 6 bidirected edges -> 12 arcs
+  -- elementary circuits by size: 2 (6), 3 (8), 4 (6) => 20
+
+  PREPARE depth_q AS
+  SELECT id, source, target, cost, reverse_cost FROM (VALUES
+      (1, 1, 2, 1, 1),
+      (2, 1, 3, 1, 1),
+      (3, 1, 4, 1, 1),
+      (4, 2, 3, 1, 1),
+      (5, 2, 4, 1, 1),
+      (6, 3, 4, 1, 1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_q', min_depth => 0)
+      WHERE edge = -1), 20,
+      'K4: min_depth = 1 with unlimited max_depth returns all 20 circuits');
+
+  PREPARE depth_q_min AS
+  SELECT * FROM pgr_hawickUniquecircuits('depth_q', min_depth => 1);
+
+  PREPARE depth_q_full AS
+  SELECT * FROM pgr_hawickUniquecircuits('depth_q', min_depth => 1, max_depth => 9223372036854775807);
+
+  RETURN QUERY
+  SELECT set_eq('depth_q_min', 'depth_q_full',
+      'K4: default max_depth equals bigint max');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_q', min_depth => 1, max_depth => 2) WHERE edge = -1), 6,
+      'K4: max_depth = 2 keeps the 6 two-cycles');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_q', min_depth => 1, max_depth => 3) WHERE edge = -1), 14,
+      'K4: max_depth = 3 keeps the 2-cycles and 3-cycles');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_q', min_depth => 2, max_depth => 2) WHERE edge = -1), 6,
+      'K4: min_depth = max_depth = 2 keeps only the two-cycles');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_q', min_depth => 3, max_depth => 3) WHERE edge = -1), 8,
+      'K4: min_depth = max_depth = 3 keeps only the triangles');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_q', min_depth => 4, max_depth => 4) WHERE edge = -1), 6,
+      'K4: min_depth = max_depth = 4 keeps only the 4-cycles');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_q', min_depth => 3, max_depth => 4) WHERE edge = -1), 14,
+      'K4: a depth range keeps the circuits within it');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_q', min_depth => 4) WHERE edge = -1), 6,
+      'K4: min_depth with an unlimited max_depth keeps the 4-cycles');
+
+  RETURN QUERY
+  SELECT is_empty($$
+      SELECT * FROM pgr_hawickUniquecircuits('depth_q', min_depth => 5)
+      $$,
+      'K4: min_depth greater than the largest circuit returns no rows');
+
+  RETURN QUERY
+  SELECT is_empty($$
+      SELECT * FROM pgr_hawickUniquecircuits('depth_q', min_depth => 10, max_depth => 20)
+      $$,
+      'K4: a depth range without circuits returns no rows');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+       FROM pgr_hawickUniquecircuits('depth_q', min_depth => 1, max_depth => 2)
+       WHERE edge = -1), 6,
+      'K4: max_depth can be given by name');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_q', min_depth => 4) WHERE edge = -1), 6,
+      'K4: min_depth can be given by name');
+
+  -- complete digraph K5: elementary circuits by size: 2 (10), 3 (20), 4 (30), 5 (24) => 84
+
+  PREPARE depth_k5 AS
+  SELECT id, source, target, cost, reverse_cost FROM (VALUES
+      ( 1, 1, 2, 1, 1),
+      ( 2, 1, 3, 1, 1),
+      ( 3, 1, 4, 1, 1),
+      ( 4, 1, 5, 1, 1),
+      ( 5, 2, 3, 1, 1),
+      ( 6, 2, 4, 1, 1),
+      ( 7, 2, 5, 1, 1),
+      ( 8, 3, 4, 1, 1),
+      ( 9, 3, 5, 1, 1),
+      (10, 4, 5, 1, 1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_k5', min_depth => 5) WHERE edge = -1), 24,
+      'K5: min_depth = 5 keeps only the 5-cycles');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_k5', min_depth => 1, max_depth => 3) WHERE edge = -1), 30,
+      'K5: max_depth = 3 keeps the 2-cycles and 3-cycles');
+
+  -- self loop (size 1) and two-cycle (size 2)
+
+  PREPARE depth_self AS
+  SELECT id, source, target, cost, reverse_cost FROM (VALUES
+      (1, 1, 1, 1, -1),
+      (2, 1, 2, 1, -1),
+      (3, 2, 1, 1, -1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_self', min_depth => 1, max_depth => 1) WHERE edge = -1), 1,
+      'Self loop: min_depth = max_depth = 1 keeps only the self loop');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_self', min_depth => 2, max_depth => 2) WHERE edge = -1), 2,
+      'Self loop: min_depth = 2 keeps the self loop (self_loops default true)');
+
+  -- parallel edges collapse to the min cost edge, the circuit has size 2
+
+  PREPARE depth_par AS
+  SELECT id, source, target, cost, reverse_cost FROM (VALUES
+      (1, 1, 2, 5, -1),
+      (2, 1, 2, 1, -1),
+      (3, 2, 1, 4, -1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_par', min_depth => 1, max_depth => 1) WHERE edge = -1), 0,
+      'Parallel edges: the collapsed circuit has size 2 and is excluded by max_depth = 1');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('depth_par', min_depth => 2, max_depth => 2) WHERE edge = -1), 1,
+      'Parallel edges: the collapsed circuit has size 2 and is kept by min_depth = max_depth = 2');
+
+  -- invalid parameters
+
+  RETURN QUERY
+  SELECT throws_ok($$
+      SELECT * FROM pgr_hawickUniquecircuits('depth_q', min_depth => -1, max_depth => 5)
+      $$,
+      'XX000',
+      $$'Invalid value for min_depth'$$,
+      'min_depth = -1 should throw');
+
+  RETURN QUERY
+  SELECT throws_ok($$
+      SELECT * FROM pgr_hawickUniquecircuits('depth_q', min_depth => 1, max_depth => 0)
+      $$,
+      'XX000',
+      $$Invalid value for 'max_depth'$$,
+      'max_depth = 0 should throw');
+
+  RETURN QUERY
+  SELECT throws_ok($$
+      SELECT * FROM pgr_hawickUniquecircuits('depth_q', min_depth => 5, max_depth => 2)
+      $$,
+      'XX000',
+      $$Invalid values for 'min_depth' < 'max_depth'$$,
+      'min_depth greater than max_depth should throw');
+
+  END;
+  $BODY$
+  LANGUAGE plpgsql;
+
+  SELECT depth();
+
+  SELECT * FROM finish();
+  ROLLBACK;

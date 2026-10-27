@@ -1,0 +1,201 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+SELECT CASE WHEN min_version('4.1.0') THEN plan(12) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION min_depth_default()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_hawickUniquecircuits is new on 4.1.0');
+    RETURN;
+  END IF;
+
+  -- pgr_hawickUniquecircuits has min_depth DEFAULT 1, so a bare call returns
+  -- every elementary circuit, including the two-vertex u-turns (1->2->1).
+  -- Self loops (1->1) are governed by self_loops (DEFAULT true) and are
+  -- returned independently of min_depth.
+
+  -- complete digraph K4: elementary circuits by size: 2 (6), 3 (8), 4 (6) => 20
+
+  PREPARE g_k4 AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES
+      (1, 1, 2, 1, 1),
+      (2, 1, 3, 1, 1),
+      (3, 1, 4, 1, 1),
+      (4, 2, 3, 1, 1),
+      (5, 2, 4, 1, 1),
+      (6, 3, 4, 1, 1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  PREPARE default_k4 AS
+  SELECT * FROM pgr_hawickUniquecircuits('g_k4');
+
+  PREPARE min_depth_1_k4 AS
+  SELECT * FROM pgr_hawickUniquecircuits('g_k4', min_depth => 1);
+
+  PREPARE full_k4 AS
+  SELECT * FROM pgr_hawickUniquecircuits('g_k4', min_depth => 1, max_depth => 9223372036854775807, self_loops => true);
+
+  PREPARE named_k4 AS
+  SELECT * FROM pgr_hawickUniquecircuits('g_k4', min_depth => 1);
+
+  -- the default min_depth includes the six u-turns of K4
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('g_k4') WHERE edge = -1), 20,
+      'K4: default min_depth = 1 returns all 20 circuits');
+
+  -- the default call equals the explicit min_depth = 1 call
+
+  RETURN QUERY
+  SELECT set_eq('default_k4', 'min_depth_1_k4',
+      'K4: default call equals min_depth = 1');
+
+  -- the default max_depth and self_loops values
+
+  RETURN QUERY
+  SELECT set_eq('default_k4', 'full_k4',
+      'K4: default call equals (min_depth = 1, max_depth = bigint max, self_loops = true)');
+
+  -- the default is the complete (min_depth = 1) enumeration
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('g_k4') WHERE edge = -1), 20,
+      'K4: default is the complete 20 circuit enumeration');
+
+  -- the named min_depth argument equals the default
+
+  RETURN QUERY
+  SELECT set_eq('default_k4', 'named_k4',
+      'K4: min_depth => 1 equals the default call');
+
+  -- a u-turn (1->2->1) has depth 2 and is returned by default
+
+  PREPARE g_u_turn AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES (1, 1, 2, 1, 1)) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('g_u_turn') WHERE edge = -1), 1,
+      'U-turn (1->2->1): returned by the default min_depth = 1');
+
+  -- a self loop (1->1) has depth 1 and is returned by default
+
+  PREPARE g_self AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES (1, 1, 1, 1, -1)) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('g_self') WHERE edge = -1), 1,
+      'Self loop (1->1): returned by the default (self_loops = true)');
+
+  -- a size three circuit is included by default
+
+  PREPARE g_tri AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES
+      (1, 1, 2, 1, -1),
+      (2, 2, 3, 1, -1),
+      (3, 3, 1, 1, -1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('g_tri') WHERE edge = -1), 1,
+      'Directed triangle: size 3 is included by default');
+
+  -- a size four circuit is included by default
+
+  PREPARE g_quad AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES
+      (1, 1, 2, 1, -1),
+      (2, 2, 3, 1, -1),
+      (3, 3, 4, 1, -1),
+      (4, 4, 1, 1, -1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('g_quad') WHERE edge = -1), 1,
+      'Four-cycle: size 4 is included by default');
+
+  -- the default max_depth is unlimited
+
+  PREPARE g_pent AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES
+      (1, 1, 2, 1, -1),
+      (2, 2, 3, 1, -1),
+      (3, 3, 4, 1, -1),
+      (4, 4, 5, 1, -1),
+      (5, 5, 1, 1, -1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('g_pent') WHERE edge = -1), 1,
+      'Five-cycle: default max_depth is unlimited');
+
+  -- on a mixed graph the self loop, the u-turn and the triangle survive the default
+
+  -- a self loop, a u-turn and a triangle on the same graph
+  PREPARE g_mixed AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES
+      (1, 1, 1, 1, -1),
+      (2, 1, 2, 1, 1),
+      (3, 2, 3, 1, -1),
+      (4, 3, 4, 1, -1),
+      (5, 4, 2, 1, -1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('g_mixed') WHERE edge = -1), 3,
+      'Mixed graph: the self loop, the u-turn and the size 3 circuit survive the default');
+
+  -- K5 with the default keeps every circuit of size 2, 3, 4 and 5
+
+  -- complete digraph K5: by size: 2 (10), 3 (20), 4 (30), 5 (24) => 84
+  PREPARE g_k5 AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES
+      ( 1, 1, 2, 1, 1),
+      ( 2, 1, 3, 1, 1),
+      ( 3, 1, 4, 1, 1),
+      ( 4, 1, 5, 1, 1),
+      ( 5, 2, 3, 1, 1),
+      ( 6, 2, 4, 1, 1),
+      ( 7, 2, 5, 1, 1),
+      ( 8, 3, 4, 1, 1),
+      ( 9, 3, 5, 1, 1),
+      (10, 4, 5, 1, 1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('g_k5') WHERE edge = -1), 84,
+      'K5: default returns all 84 circuits');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT min_depth_default();
+
+SELECT * FROM finish();
+ROLLBACK;
