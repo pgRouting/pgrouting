@@ -19,6 +19,7 @@ The following functions work on circuits of directed graphs.
 .. experimental-start
 
 * :doc:`pgr_hawickCircuits` - Hawick's circuits algorithm.
+* :doc:`pgr_hawickUniqueCircuits` - Hawick's unique circuits algorithm.
 
 .. experimental-end
 
@@ -26,6 +27,7 @@ The following functions work on circuits of directed graphs.
     :hidden:
 
     pgr_hawickCircuits
+    pgr_hawickUniqueCircuits
 
 Description
 -------------------------------------------------------------------------------
@@ -170,7 +172,7 @@ See Also
 
 * :doc:`sampledata`
 * `Boost: Hawick Circuit Algorithm
-  <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__
+  <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__
 
 .. rubric:: Indices and tables
 
