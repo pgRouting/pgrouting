@@ -176,7 +176,7 @@ BEGIN
       SELECT * FROM pgr_hawickUniquecircuits('depth_q', min_depth => -1, max_depth => 5)
       $$,
       'XX000',
-      $$'Invalid value for min_depth'$$,
+      $$Invalid value for 'min_depth'$$,
       'min_depth = -1 should throw');
 
   RETURN QUERY
