@@ -5,6 +5,7 @@
 set(LOCAL_FILES
     circuits-family.rst
     pgr_hawickCircuits.rst
+    pgr_hawickUniqueCircuits.rst
 )
 
 foreach (f ${LOCAL_FILES})
