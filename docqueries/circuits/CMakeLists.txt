@@ -4,6 +4,7 @@
 # Do not use extensions
 set(LOCAL_FILES
     hawickCircuits
+    hawickUniqueCircuits
     )
 
 foreach (f ${LOCAL_FILES})
