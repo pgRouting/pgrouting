@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-27 01:08+0000\n"
+"POT-Creation-Date: 2026-09-28 18:14+0000\n"
 "PO-Revision-Date: 2025-12-10 20:25+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\n"
@@ -9140,14 +9140,23 @@ msgstr "pgr_dagShortestPath(Combinaciones)"
 msgid "Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm that solves the shortest path problem for weighted directed acyclic graph, producing a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``)."
 msgstr "Ruta Más Corta para grafos acíclicos dirigidos (DAG) es un algoritmo de búsqueda de grafos que resuelve el problema de ruta más corta para el grafo acíclico dirigido ponderado, produciendo una ruta más corta desde un vértice inicial (``start_vid``) a un vértice final (``end_vid``)."
 
-msgid "This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph."
+#, fuzzy
+msgid "This implementation can only be used with a directed graph with no cycles i.e. directed acyclic graph."
 msgstr "Esta implementación solo se puede utilizar con un grafo **dirigido** sin ciclos i.e., es decir, un grafo acíclico dirigido."
 
 msgid "The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG's than either the Dijkstra or Bellman-Ford algorithm."
 msgstr "El algoritmo se basa en la ordenación topológica del dag para imponer un orden lineal en los vértices, y por lo tanto es más eficaz para DAG que el algoritmo Dijkstra o Bellman-Ford."
 
-msgid "Process is valid for weighted directed acyclic graphs only. otherwise it will throw warnings."
+#, fuzzy
+msgid "Process is valid for weighted directed acyclic graphs only."
 msgstr "El proceso solo es válido para grafos acíclicos dirigidos ponderados, de lo contrario lanzará advertencias."
+
+msgid "Avoids one edge cycle: `reverse_cost` column is used when :math:`cost < 0`."
+msgstr ""
+
+#, fuzzy
+msgid "If the graph is not DAG, will throw a PostgreSQL `ERROR`."
+msgstr "Cuando el grafo es bi-partido"
 
 msgid "The `agg_cost` the non included values `(v, v)` is `0`"
 msgstr "El `agg_cost` de los valores no incluídos `(v, v)` es `0`"
@@ -9184,6 +9193,9 @@ msgstr "Desde los vértices :math:`\\{5, 10\\}` al vértice :math:`11`"
 
 msgid "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an **undirected** graph"
 msgstr "Desde los vértices :math:`\\{5, 15\\}` a los vértices :math:`\\{11, 17\\}` en un grafo **no dirigido**"
+
+msgid "`reverse_cost` column is used when :math:`cost < 0` to avoid edge cycle."
+msgstr ""
 
 msgid "Return columns"
 msgstr "Columnas de Resultados"

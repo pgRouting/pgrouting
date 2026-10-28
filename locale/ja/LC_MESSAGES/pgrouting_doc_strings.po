@@ -19,7 +19,20 @@
 # Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>, 2026.
 # DeepL <noreply-mt-deepl@weblate.org>, 2026.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-09-27 01:08+0000\nPO-Revision-Date: 2026-09-30 02:39+0000\nLast-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.16.2\nGenerated-By: Babel 2.10.3\n"
+msgstr ""
+"Project-Id-Version: pgRouting v4.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-28 18:14+0000\n"
+"PO-Revision-Date: 2026-09-30 02:39+0000\n"
+"Last-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\n"
+"Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.16.2\n"
+"Generated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - カテゴリ"
@@ -9306,13 +9319,20 @@ msgstr ""
 msgid "Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm that solves the shortest path problem for weighted directed acyclic graph, producing a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``)."
 msgstr ""
 
-msgid "This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph."
-msgstr ""
+#, fuzzy
+msgid "This implementation can only be used with a directed graph with no cycles i.e. directed acyclic graph."
+msgstr "導かれないグラフ。"
 
 msgid "The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG's than either the Dijkstra or Bellman-Ford algorithm."
 msgstr ""
 
-msgid "Process is valid for weighted directed acyclic graphs only. otherwise it will throw warnings."
+msgid "Process is valid for weighted directed acyclic graphs only."
+msgstr ""
+
+msgid "Avoids one edge cycle: `reverse_cost` column is used when :math:`cost < 0`."
+msgstr ""
+
+msgid "If the graph is not DAG, will throw a PostgreSQL `ERROR`."
 msgstr ""
 
 msgid "The `agg_cost` the non included values `(v, v)` is `0`"
@@ -9351,6 +9371,9 @@ msgid "From vertices :math:`\\{5, 10\\}` to vertex :math:`11`"
 msgstr ""
 
 msgid "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an **undirected** graph"
+msgstr ""
+
+msgid "`reverse_cost` column is used when :math:`cost < 0` to avoid edge cycle."
 msgstr ""
 
 #, fuzzy
