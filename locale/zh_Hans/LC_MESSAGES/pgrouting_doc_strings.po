@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-08 15:38+0000\n"
+"POT-Creation-Date: 2026-10-24 01:29+0000\n"
 "PO-Revision-Date: 2025-09-22 16:28+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -2491,6 +2491,125 @@ msgstr "图必须是连通的。"
 msgid "An Edges SQL that represents a **directed** graph with the following columns"
 msgstr "表示具有以下列的有向图的 Edges SQL"
 
+#, fuzzy
+msgid "Circuits - Family of Functions"
+msgstr "Prim - 函数族"
+
+#, fuzzy
+msgid "The following functions work on circuits of directed graphs."
+msgstr "该函数适用于 **有向** 图。"
+
+#, fuzzy
+msgid ":doc:`pgr_hawickCircuits` - Hawick's circuits algorithm."
+msgstr "``pgr_hawickCircuits`` — 使用 Hawick 电路算法返回电路列表。"
+
+#, fuzzy
+msgid "``start vid``"
+msgstr "``start_vid``"
+
+msgid "A vertex of the circuits: - All the circuits that contain the vertex are returned. - When ``0`` all the circuits are returned in canonical order."
+msgstr ""
+
+#, fuzzy
+msgid "``start vids``"
+msgstr "``start_vid``"
+
+msgid "``ARRAY[`` |ANY-INTEGER| ``]``"
+msgstr "``ARRAY[`` |ANY-INTEGER| ``]``"
+
+msgid "Vertices of the circuits: for each requested vertex: - All the circuits that contain the vertex are returned: - When empty all the circuits are returned in canonical order."
+msgstr ""
+
+#, fuzzy
+msgid "``min_depth``"
+msgstr "``max_depth``"
+
+msgid "Minimum number of vertices in a circuit. * Exclude 2 edge circuits by increasing this number."
+msgstr ""
+
+#, fuzzy
+msgid "``9223372036854775807``"
+msgstr ":math:`9223372036854775807`"
+
+#, fuzzy
+msgid "Maximum number of vertices in a circuit."
+msgstr "是作为输入给出的边数。"
+
+msgid "``self_loops``"
+msgstr ""
+
+#, fuzzy
+msgid "When ``true`` self loops are included in the results."
+msgstr "如果为 ``true`` ，结果将包括路径中的点。"
+
+#, fuzzy
+msgid "When ``false`` self loops are excluded from the results."
+msgstr "当为 ``false`` 时，执行计算。"
+
+msgid "Self loops are included or excluded regardless of ``min_depth`` and ``max_depth``."
+msgstr ""
+
+#, fuzzy
+msgid "``u_turn_on_edge``"
+msgstr "``U_turn_on_edge``"
+
+msgid "A u-turn on an edge is a 2 edge circuit that uses the same ``id`` on both directions of the edge."
+msgstr ""
+
+#, fuzzy
+msgid "When ``true``: u-turns are part of the results."
+msgstr "当 ``true`` 时仅返回不违反限制的路径"
+
+msgid "When ``false``: u-turns are discarded when the circuit can be formed with two different edges; a u-turn is kept when it is the only option, that is, when the two vertices are connected by a single edge."
+msgstr ""
+
+msgid "Self loops are not affected."
+msgstr ""
+
+msgid "Sequential value starting from ``1``"
+msgstr "从 ``1`` 开始的顺序值"
+
+msgid "``path_id``"
+msgstr "``path_id``"
+
+msgid "Id of the circuit starting from ``1``"
+msgstr "电路id从 ``1`` 开始"
+
+#, fuzzy
+msgid "Relative position in the circuit. Has value **0** for the beginning of a circuit"
+msgstr "路径中的相对位置。 路径开头的值为 **1** 。"
+
+msgid "Identifier of the starting vertex of the circuit."
+msgstr "电路起始顶点的标识符。"
+
+msgid "Identifier of the ending vertex of the circuit."
+msgstr "电路结束顶点的标识符。"
+
+msgid "``pred``"
+msgstr "``pred``"
+
+#, fuzzy
+msgid "Identifier of the node that precedes ``node`` in the circuit."
+msgstr "电路起始顶点的标识符。"
+
+#, fuzzy
+msgid "When ``node`` is the first node of the circuit, it has the same value as ``node``."
+msgstr "当 `node` 等于 `start_vid` 时，它的值就是 `node` 。"
+
+msgid "Identifier of the node in the path from a vid to next vid."
+msgstr "从 vid 到下一个 vid 的路径中节点的标识符。"
+
+#, fuzzy
+msgid "Identifier of the edge used to arrive from ``pred`` to ``node``. - ``-1`` when :math:`depth = 0`."
+msgstr "从 ``pred`` 到达 ``node`` 所使用的 ``edge`` 的标识符。"
+
+#, fuzzy
+msgid "Cost to traverse from ``pred`` to ``node`` using ``edge``. - ``0`` when :math:`depth = 0`."
+msgstr "从使用 ``edge`` 的 ``node`` 遍历到路径序列中的下一个节点的成本。"
+
+msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+msgstr "`Boost：Hawick 电路算法 <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+
 msgid "Coloring - Family of functions"
 msgstr "着色 - 函数族"
 
@@ -3049,9 +3168,6 @@ msgstr "返回集合 |result-spantree|"
 msgid ":math:`depth-1` is the depth of ``pred``"
 msgstr ":math:`depth-1` is the depth of ``pred``"
 
-msgid "``pred``"
-msgstr "``pred``"
-
 msgid "Predecessor of ``node``."
 msgstr "``node`` 的前驱。"
 
@@ -3156,6 +3272,10 @@ msgstr ":doc:`pgr_makeConnected` - 使图形连接的边的详细信息。"
 msgid ":doc:`pgr_planarFaces` - Identifies the faces of a planar embedding and lists every edge-face incidence for an undirected graph."
 msgstr ""
 
+#, fuzzy
+msgid ":doc:`circuits-family`"
+msgstr ":doc:`metrics-family`"
+
 msgid "categories"
 msgstr "类别"
 
@@ -3185,9 +3305,6 @@ msgstr ":doc:`pgr_stoerWagner`"
 
 msgid ":doc:`pgr_transitiveClosure`"
 msgstr ":doc:`pgr_transitiveClosure`"
-
-msgid ":doc:`pgr_hawickCircuits`"
-msgstr ":doc:`pgr_hawickCircuits`"
 
 msgid "Flow - Family of functions"
 msgstr "Flow - 函数族"
@@ -3622,6 +3739,20 @@ msgstr "pgr_edgeColoring"
 msgid "Fix the way it builds the graph"
 msgstr "边不是图的一部分："
 
+msgid "pgr_hawickCircuits"
+msgstr "pgr_hawickCircuits"
+
+msgid "New optional parameters: ``min_depth``, ``max_depth``, ``self_loops`` and ``u_turn_on_edge``."
+msgstr ""
+
+#, fuzzy
+msgid "New signatures to select starting vertices."
+msgstr "起始顶点的标识符数组。"
+
+#, fuzzy
+msgid "Deprecated signature: ``pgr_hawickCircuits(text)``."
+msgstr "已废弃的签名。"
+
 #, fuzzy
 msgid "pgr_makeBiconnectedPlanar"
 msgstr "pgr_makeConnected"
@@ -3717,6 +3848,10 @@ msgstr "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp
 #, fuzzy
 msgid "`#3163 <https://github.com/pgRouting/pgrouting/issues/3163>`__: KSP & KSP WithPoints Use ShortestPath driver files"
 msgstr "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+
+#, fuzzy
+msgid "`#3170 <https://github.com/pgRouting/pgrouting/issues/3170>`__: pgr_hawickCircuits: wrong Boost function referenced"
+msgstr "`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__:重写 pgr_nodeNetwork"
 
 #, fuzzy
 msgid "4.1.0 Bug Fixes"
@@ -6145,9 +6280,6 @@ msgstr ":doc:`pgr_withPoints`"
 msgid "Returns set of |generic-result|"
 msgstr "返回 |generic-result| 的集合"
 
-msgid "``path_id``"
-msgstr "``path_id``"
-
 msgid "Path identifier."
 msgstr "路径标识符。"
 
@@ -8072,9 +8204,6 @@ msgstr "返回 |result-1-1-no-seq| 的集合"
 msgid "Returns set of ``(seq, node, edge, cost, agg_cost)``"
 msgstr "返回集合 ``(seq, node, edge, cost, agg_cost)``"
 
-msgid "Sequential value starting from ``1``"
-msgstr "从 ``1`` 开始的顺序值"
-
 msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path."
 msgstr "用于从路径序列中的 ``node`` 到下一个节点的边的标识符。 ``-1`` 表示路径的最后一个节点。"
 
@@ -8500,9 +8629,6 @@ msgstr "绿色节点为断头节点。"
 
 msgid "Node :math:`3` is a dead end node after node :math:`1` is contracted."
 msgstr "节点 :math:`3` 是节点 :math:`1` 收缩后的死结节点。"
-
-msgid "``ARRAY[`` |ANY-INTEGER| ``]``"
-msgstr "``ARRAY[`` |ANY-INTEGER| ``]``"
 
 msgid "**Empty**"
 msgstr "**Empty**"
@@ -10342,9 +10468,6 @@ msgstr "``true`` 时，节点只会出现在最近的 ``start_vid`` 列表中。
 msgid "When ``false`` which resembles several calls using the single vertex signature."
 msgstr "``false`` 时，类似于使用单个顶点签名的多次调用。"
 
-msgid "end-before"
-msgstr ""
-
 msgid "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` on an undirected graph"
 msgstr "在无向图上，从顶点 :math:`{11, 16\\}` 开始的距离为 :math:`3.0`"
 
@@ -11008,49 +11131,113 @@ msgstr "``pgr_hawickCircuits`` - 实验性"
 msgid "``pgr_hawickCircuits`` — Returns the list of circuits using hawick circuits algorithm."
 msgstr "``pgr_hawickCircuits`` — 使用 Hawick 电路算法返回电路列表。"
 
-msgid "Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Health A. James. This algorithm solves the problem of detecting and enumerating circuits in graphs. It is capable of circuit enumeration in graphs with directed-arcs, multiple-arcs and self-arcs with a memory efficient and high-performance im-plementation. It is an extension of Johnson's Algorithm of finding all the elementary circuits of a directed graph."
-msgstr "Hawick Circuit 算法由 Ken Hawick 和 Health A. James 于 2008 年发表。 该算法解决了图中电路的检测和枚举问题。 它能够在具有有向弧、多弧和自弧的图中进行电路枚举，并具有内存高效和高性能的实现。 它是寻找有向图所有基本电路的约翰逊算法的扩展。"
+msgid "Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Heath A. James. This algorithm solves the problem of detecting and enumerating circuits in graphs."
+msgstr ""
 
-msgid "There are 2 variations defined in the Boost Graph Library. Here, we have implemented only 2nd as it serves the most suitable and practical usecase. In this variation we get the circuits after filtering out the circuits caused by parallel edges. Parallel edge circuits have more use cases when you want to count the no. of circuits.Maybe in future, we will also implemenent this variation."
-msgstr "Boost Graph Library 中定义了 2 个变体。 在这里，我们只实现了第二个，因为它服务于最合适和最实用的用例。 在这个变体中，我们在过滤掉由平行边缘引起的电路后得到电路。 当您想要计算数量时，并行边缘电路有更多用例。 也许将来我们也会实现这种变化。"
+msgid "Circuit enumeration in directed graphs, where circuits with parallel arcs are enumerated."
+msgstr ""
 
-msgid "The algorithm implementation works only for directed graph"
-msgstr "该算法实现仅适用于有向图"
+msgid "Each combination of parallel arcs is returned as a different circuit."
+msgstr ""
 
-msgid "It is a variation of Johnson's algorithm for circuit enumeration."
-msgstr "这是对于电路枚举的一种格式，基于Johnson的算法。"
+#, fuzzy
+msgid "Works for directed graphs."
+msgstr "适用于无向图。"
 
 msgid "The algorithm outputs the distinct circuits present in the graph."
 msgstr "该算法输出图中存在的不同电路。"
 
+msgid "The circuits are elementary: a vertex is not repeated within a circuit, except the starting vertex that closes the circuit."
+msgstr ""
+
+msgid "When no initial vertices are given all circuits are in canonical order of the vertices insertion of the graph: A circuit with vertices ``u``, ``v``: ``u`` starting circuits containing ``v`` will not be listed on ``start_vid = v`` rows."
+msgstr ""
+
+msgid "Different edge ordering gives different canonical ordering."
+msgstr ""
+
+msgid "When start vertices are given, all circuits are returned for each requested vertex it contains, and the results are grouped by ``start_vid``."
+msgstr ""
+
+msgid "The graph passed to the algorithm discard parallel edges with higher costs."
+msgstr ""
+
 msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
 msgstr "时间复杂度： :math:`O((V + E) (c + 1))`"
 
-msgid ":math:`|c|` is the number of circuits in the graph."
+#, fuzzy
+msgid "where :math:`|V|` is the number of vertices in the graph."
+msgstr ":math:`|V|` 是图中的顶点数。"
+
+#, fuzzy
+msgid "where :math:`|c|` is the number of circuits in the graph."
 msgstr ":math:`|c|` 是图中电路的数目。"
 
 msgid "pgr_hawickCircuits(`Edges SQL`_)"
 msgstr "pgr_hawickCircuits(`Edges SQL`_)"
 
-msgid "Circuits present in the pgRouting :doc:`sampledata`"
+#, fuzzy
+msgid "pgr_hawickCircuits(`Edges SQL`_, **start vid** [, **options**])"
+msgstr "pgr_aStarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
+
+#, fuzzy
+msgid "pgr_hawickCircuits(`Edges SQL`_, **start vids** [, **options**])"
+msgstr "pgr_aStarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
+
+#, fuzzy
+msgid "**options:** ``[min_depth, max_depth, self_loops, u_turn_on_edge]``"
+msgstr "**options:** ``[directed, strict, U_turn_on_edge]``"
+
+#, fuzzy
+msgid "Returns set of |circuits-result|"
+msgstr "返回 |tsp-result| 的集合"
+
+msgid "All circuits"
+msgstr ""
+
+#, fuzzy
+msgid "pgr_hawickCircuits(`Edges SQL`_ [, **options**])"
+msgstr "pgr_hawickCircuits(`Edges SQL`_)"
+
+#, fuzzy
+msgid "All the circuits of the pgRouting :doc:`sampledata`"
 msgstr "pgRouting :doc:`sampledata` 中存在的电路"
 
-msgid "Id of the circuit starting from ``1``"
-msgstr "电路id从 ``1`` 开始"
+msgid "When no starting vertex is given, all the circuits of the graph are returned. The result has 94 rows, one ``path_id`` for each circuit:"
+msgstr ""
 
-msgid "Relative position in the path. Has value ``0`` for beginning of the path"
-msgstr "在路径中的相对位置。数值 ``0`` 表示路径的起点"
+#, fuzzy
+msgid "Single start vertex"
+msgstr "单个顶点"
 
-msgid "Identifier of the starting vertex of the circuit."
-msgstr "电路起始顶点的标识符。"
+#, fuzzy
+msgid "Circuits that contain vertex :math:`10`"
+msgstr "收缩顶点 :math:`3`,"
 
-msgid "Identifier of the ending vertex of the circuit."
-msgstr "电路结束顶点的标识符。"
+#, fuzzy
+msgid "Many start vertices"
+msgstr "从 **多** 起始顶点"
 
-msgid "Identifier of the node in the path from a vid to next vid."
-msgstr "从 vid 到下一个 vid 的路径中节点的标识符。"
+#, fuzzy
+msgid "Circuits that contain vertices :math:`\\{10, 11\\}`"
+msgstr "从顶点 :math:`5` 到顶点 :math:`\\{7, 11\\}`"
 
-msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+msgid "The examples use the following table ``c_example``, that represent a cul_de_sac where the exit is on vertex :math:`5` and the vehicle is on vertex :math:`1` but pointing at the wrong direction of the exit."
+msgstr ""
+
+#, fuzzy
+msgid "All possible ways to return to vertex :math:`1`."
+msgstr "具有根顶点 :math:`5` 的支配树"
+
+msgid "Exclude self loops."
+msgstr ""
+
+#, fuzzy
+msgid "Exclude self loops and U-turn on the same edge."
+msgstr "无自循环，无平行边。"
+
+#, fuzzy
+msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__"
 msgstr "`Boost：Hawick 电路算法 <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
 
 msgid "``pgr_isPlanar`` - Experimental"
@@ -15481,9 +15668,6 @@ msgstr "pgr_cuthillMckeeOrdering"
 msgid "Unclassified"
 msgstr "未分类"
 
-msgid "pgr_hawickCircuits"
-msgstr "pgr_hawickCircuits"
-
 msgid "Flow functions"
 msgstr "流程函数"
 
@@ -17676,6 +17860,24 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
+
+#~ msgid ":doc:`pgr_hawickCircuits`"
+#~ msgstr ":doc:`pgr_hawickCircuits`"
+
+#~ msgid "Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Health A. James. This algorithm solves the problem of detecting and enumerating circuits in graphs. It is capable of circuit enumeration in graphs with directed-arcs, multiple-arcs and self-arcs with a memory efficient and high-performance im-plementation. It is an extension of Johnson's Algorithm of finding all the elementary circuits of a directed graph."
+#~ msgstr "Hawick Circuit 算法由 Ken Hawick 和 Health A. James 于 2008 年发表。 该算法解决了图中电路的检测和枚举问题。 它能够在具有有向弧、多弧和自弧的图中进行电路枚举，并具有内存高效和高性能的实现。 它是寻找有向图所有基本电路的约翰逊算法的扩展。"
+
+#~ msgid "There are 2 variations defined in the Boost Graph Library. Here, we have implemented only 2nd as it serves the most suitable and practical usecase. In this variation we get the circuits after filtering out the circuits caused by parallel edges. Parallel edge circuits have more use cases when you want to count the no. of circuits.Maybe in future, we will also implemenent this variation."
+#~ msgstr "Boost Graph Library 中定义了 2 个变体。 在这里，我们只实现了第二个，因为它服务于最合适和最实用的用例。 在这个变体中，我们在过滤掉由平行边缘引起的电路后得到电路。 当您想要计算数量时，并行边缘电路有更多用例。 也许将来我们也会实现这种变化。"
+
+#~ msgid "The algorithm implementation works only for directed graph"
+#~ msgstr "该算法实现仅适用于有向图"
+
+#~ msgid "It is a variation of Johnson's algorithm for circuit enumeration."
+#~ msgstr "这是对于电路枚举的一种格式，基于Johnson的算法。"
+
+#~ msgid "Relative position in the path. Has value ``0`` for beginning of the path"
+#~ msgstr "在路径中的相对位置。数值 ``0`` 表示路径的起点"
 
 #~ msgid "C and C++0x compilers"
 #~ msgstr "C 和 C++0x编译器"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-08 15:38+0000\n"
+"POT-Creation-Date: 2026-10-24 01:29+0000\n"
 "PO-Revision-Date: 2025-12-10 20:25+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/es/>\n"
@@ -2479,6 +2479,125 @@ msgstr "El grafo debe estar conectado."
 msgid "An Edges SQL that represents a **directed** graph with the following columns"
 msgstr "Un SQL de aristas que representa un grafo **dirigido** con las siguientes columnas"
 
+#, fuzzy
+msgid "Circuits - Family of Functions"
+msgstr "Prim - Familia de funciones"
+
+#, fuzzy
+msgid "The following functions work on circuits of directed graphs."
+msgstr "Esta función es para grafos **dirigidos**."
+
+#, fuzzy
+msgid ":doc:`pgr_hawickCircuits` - Hawick's circuits algorithm."
+msgstr "``pgr_hawickCircuits`` — Enumeración de circuitos usando el algoritmo de circutos de Hawick."
+
+#, fuzzy
+msgid "``start vid``"
+msgstr "``start_vid``"
+
+msgid "A vertex of the circuits: - All the circuits that contain the vertex are returned. - When ``0`` all the circuits are returned in canonical order."
+msgstr ""
+
+#, fuzzy
+msgid "``start vids``"
+msgstr "``start_vid``"
+
+msgid "``ARRAY[`` |ANY-INTEGER| ``]``"
+msgstr "``ARRAY[`` |ANY-INTEGER| ``]``"
+
+msgid "Vertices of the circuits: for each requested vertex: - All the circuits that contain the vertex are returned: - When empty all the circuits are returned in canonical order."
+msgstr ""
+
+#, fuzzy
+msgid "``min_depth``"
+msgstr "``max_depth``"
+
+msgid "Minimum number of vertices in a circuit. * Exclude 2 edge circuits by increasing this number."
+msgstr ""
+
+#, fuzzy
+msgid "``9223372036854775807``"
+msgstr ":math:`9223372036854775807`"
+
+#, fuzzy
+msgid "Maximum number of vertices in a circuit."
+msgstr "es la cantidad de aristas dadas como entradas."
+
+msgid "``self_loops``"
+msgstr ""
+
+#, fuzzy
+msgid "When ``true`` self loops are included in the results."
+msgstr "Cuando ``true`` los resultados incluyen los puntos que están en el camino."
+
+#, fuzzy
+msgid "When ``false`` self loops are excluded from the results."
+msgstr "Cuando ``false`` se realizan los cálculos."
+
+msgid "Self loops are included or excluded regardless of ``min_depth`` and ``max_depth``."
+msgstr ""
+
+#, fuzzy
+msgid "``u_turn_on_edge``"
+msgstr "``U_turn_on_edge``"
+
+msgid "A u-turn on an edge is a 2 edge circuit that uses the same ``id`` on both directions of the edge."
+msgstr ""
+
+#, fuzzy
+msgid "When ``true``: u-turns are part of the results."
+msgstr "Cuando ``false`` Regresa a lo más K caminos."
+
+msgid "When ``false``: u-turns are discarded when the circuit can be formed with two different edges; a u-turn is kept when it is the only option, that is, when the two vertices are connected by a single edge."
+msgstr ""
+
+msgid "Self loops are not affected."
+msgstr ""
+
+msgid "Sequential value starting from ``1``"
+msgstr "Valor secuencial a partir de ``1``"
+
+msgid "``path_id``"
+msgstr "``path_id``"
+
+msgid "Id of the circuit starting from ``1``"
+msgstr "Identificador del circuito comenzando con ``1``"
+
+#, fuzzy
+msgid "Relative position in the circuit. Has value **0** for the beginning of a circuit"
+msgstr "Posición relativa en la ruta. Tiene el valor **1** para el inicio de una ruta."
+
+msgid "Identifier of the starting vertex of the circuit."
+msgstr "Identificador del vértice inicial del circuito."
+
+msgid "Identifier of the ending vertex of the circuit."
+msgstr "Identificador del vértice final del circuito."
+
+msgid "``pred``"
+msgstr "``pred``"
+
+#, fuzzy
+msgid "Identifier of the node that precedes ``node`` in the circuit."
+msgstr "Identificador del vértice inicial del circuito."
+
+#, fuzzy
+msgid "When ``node`` is the first node of the circuit, it has the same value as ``node``."
+msgstr "Cuando ``node`` = ``start_vid`` entonces tiene el valor ``node``."
+
+msgid "Identifier of the node in the path from a vid to next vid."
+msgstr "Identificador del nodo en la ruta de un vértice al siguiente vértice."
+
+#, fuzzy
+msgid "Identifier of the edge used to arrive from ``pred`` to ``node``. - ``-1`` when :math:`depth = 0`."
+msgstr "Identificador del ``edge`` utilizado para llegar desde ``pred`` hasta ``node``."
+
+#, fuzzy
+msgid "Cost to traverse from ``pred`` to ``node`` using ``edge``. - ``0`` when :math:`depth = 0`."
+msgstr "Costo para atravesar desde ``node`` usando ``edge`` hasta el siguiente nodo en la secuencia de la ruta."
+
+msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+msgstr "`Boost: Algoritmo de Circutios de Hawick <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+
 msgid "Coloring - Family of functions"
 msgstr "Coloración - Familia de funciones"
 
@@ -3031,9 +3150,6 @@ msgstr "Regresa el conjunto de |result-spantree|"
 msgid ":math:`depth-1` is the depth of ``pred``"
 msgstr ":math:`depth-1` es la profundidad de ``pred``"
 
-msgid "``pred``"
-msgstr "``pred``"
-
 msgid "Predecessor of ``node``."
 msgstr "Presdecesor de ``node``."
 
@@ -3135,6 +3251,10 @@ msgstr ":doc:`pgr_makeConnected` - Detalles de aristas para hacer grafos conecta
 msgid ":doc:`pgr_planarFaces` - Identifies the faces of a planar embedding and lists every edge-face incidence for an undirected graph."
 msgstr ""
 
+#, fuzzy
+msgid ":doc:`circuits-family`"
+msgstr ":doc:`utilities-family`"
+
 msgid "categories"
 msgstr "Categorías"
 
@@ -3164,9 +3284,6 @@ msgstr ":doc:`pgr_stoerWagner`"
 
 msgid ":doc:`pgr_transitiveClosure`"
 msgstr ":doc:`pgr_transitiveClosure`"
-
-msgid ":doc:`pgr_hawickCircuits`"
-msgstr ":doc:`pgr_hawickCircuits`"
 
 msgid "Flow - Family of functions"
 msgstr "Flow - Familia de funciones"
@@ -3599,6 +3716,20 @@ msgstr "pgr_edgeColoring"
 msgid "Fix the way it builds the graph"
 msgstr "da el ancho de banda del grafo."
 
+msgid "pgr_hawickCircuits"
+msgstr "pgr_hawickCircuits"
+
+msgid "New optional parameters: ``min_depth``, ``max_depth``, ``self_loops`` and ``u_turn_on_edge``."
+msgstr ""
+
+#, fuzzy
+msgid "New signatures to select starting vertices."
+msgstr "Arreglo de identificadores de vértices iniciales."
+
+#, fuzzy
+msgid "Deprecated signature: ``pgr_hawickCircuits(text)``."
+msgstr "Firmas obsoletas."
+
 #, fuzzy
 msgid "pgr_makeBiconnectedPlanar"
 msgstr "pgr_makeConnected"
@@ -3694,6 +3825,10 @@ msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_king
 #, fuzzy
 msgid "`#3163 <https://github.com/pgRouting/pgrouting/issues/3163>`__: KSP & KSP WithPoints Use ShortestPath driver files"
 msgstr "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_kingOrdering"
+
+#, fuzzy
+msgid "`#3170 <https://github.com/pgRouting/pgrouting/issues/3170>`__: pgr_hawickCircuits: wrong Boost function referenced"
+msgstr "`#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__: pgr_nodeNetwork"
 
 #, fuzzy
 msgid "4.1.0 Bug Fixes"
@@ -5976,9 +6111,6 @@ msgstr ":doc:`pgr_withPointsKSP`"
 msgid "Returns set of |generic-result|"
 msgstr "Regresa el conjunto de |generic-result|"
 
-msgid "``path_id``"
-msgstr "``path_id``"
-
 msgid "Path identifier."
 msgstr "Identificador del camino."
 
@@ -7857,9 +7989,6 @@ msgstr "Regresa el conjunto de |result-1-1-no-seq|"
 msgid "Returns set of ``(seq, node, edge, cost, agg_cost)``"
 msgstr "Devuelve un conjunto de ``(seq, node, edge, cost, agg_cost)``"
 
-msgid "Sequential value starting from ``1``"
-msgstr "Valor secuencial a partir de ``1``"
-
 msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path."
 msgstr "Identificador del borde utilizado para ir del ``nodo`` al siguiente nodo de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
 
@@ -8285,9 +8414,6 @@ msgstr "Los nodos verdes son nodos sin salida."
 
 msgid "Node :math:`3` is a dead end node after node :math:`1` is contracted."
 msgstr "El nodo :math:`3` es sin salida después de haberse contraído el nodo :math:`1`."
-
-msgid "``ARRAY[`` |ANY-INTEGER| ``]``"
-msgstr "``ARRAY[`` |ANY-INTEGER| ``]``"
 
 msgid "**Empty**"
 msgstr "**vacío**"
@@ -10134,9 +10260,6 @@ msgstr "Cuando ``true`` el nodo solo aparece en la lista más cercana a ``start_
 msgid "When ``false`` which resembles several calls using the single vertex signature."
 msgstr "Cuando ``false`` se asemeja a varias llamadas usando la firma de vértice único."
 
-msgid "end-before"
-msgstr ""
-
 msgid "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` on an undirected graph"
 msgstr "Desde vértices math:`\\{11, 16\\}` con una distancia de :math:`3.0` en un grafo no dirigido"
 
@@ -10799,50 +10922,113 @@ msgstr "``pgr_hawickCircuits`` - Experimental"
 msgid "``pgr_hawickCircuits`` — Returns the list of circuits using hawick circuits algorithm."
 msgstr "``pgr_hawickCircuits`` — Enumeración de circuitos usando el algoritmo de circutos de Hawick."
 
-msgid "Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Health A. James. This algorithm solves the problem of detecting and enumerating circuits in graphs. It is capable of circuit enumeration in graphs with directed-arcs, multiple-arcs and self-arcs with a memory efficient and high-performance im-plementation. It is an extension of Johnson's Algorithm of finding all the elementary circuits of a directed graph."
-msgstr "El algoritmo Hawick Circuit fue publicado en 2008 por Ken Hawick y Health A. James. Este algoritmo resuelve el problema de detectar y enumerar circuitos en grafos. Es capaz de enumerar circuitos en grafos con arcos dirigidos, arcos múltiples y autoarcos con una implementación eficiente en memoria y de alto rendimiento. Es una extensión del Algoritmo de Johnson para encontrar todos los circuitos elementales de un grafo dirigido."
+msgid "Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Heath A. James. This algorithm solves the problem of detecting and enumerating circuits in graphs."
+msgstr ""
 
-msgid "There are 2 variations defined in the Boost Graph Library. Here, we have implemented only 2nd as it serves the most suitable and practical usecase. In this variation we get the circuits after filtering out the circuits caused by parallel edges. Parallel edge circuits have more use cases when you want to count the no. of circuits.Maybe in future, we will also implemenent this variation."
-msgstr "Hay 2 variaciones definidas en la librería Boost Graph. Aquí hemos implementado sólo la segunda, ya que es la más adecuada y práctica. En esta variación obtenemos los circuitos después de filtrar los circuitos causados por aristas paralelas. Los circuitos de aristas paralelas tienen más casos de uso cuando se quiere contar el número de circuitos."
+msgid "Circuit enumeration in directed graphs, where circuits with parallel arcs are enumerated."
+msgstr ""
 
-msgid "The algorithm implementation works only for directed graph"
-msgstr "La implementación del algoritmo sirve solo para grafos dirigidos"
+msgid "Each combination of parallel arcs is returned as a different circuit."
+msgstr ""
 
-msgid "It is a variation of Johnson's algorithm for circuit enumeration."
-msgstr "Es una variación del algoritmo de Johnson para la enumeración de circuitos."
+#, fuzzy
+msgid "Works for directed graphs."
+msgstr "Funciona para grafos no dirigidos."
 
 msgid "The algorithm outputs the distinct circuits present in the graph."
 msgstr "El algoritmo da como resultado los distintos circuitos presentes en el grafo."
 
+msgid "The circuits are elementary: a vertex is not repeated within a circuit, except the starting vertex that closes the circuit."
+msgstr ""
+
+msgid "When no initial vertices are given all circuits are in canonical order of the vertices insertion of the graph: A circuit with vertices ``u``, ``v``: ``u`` starting circuits containing ``v`` will not be listed on ``start_vid = v`` rows."
+msgstr ""
+
+msgid "Different edge ordering gives different canonical ordering."
+msgstr ""
+
+msgid "When start vertices are given, all circuits are returned for each requested vertex it contains, and the results are grouped by ``start_vid``."
+msgstr ""
+
+msgid "The graph passed to the algorithm discard parallel edges with higher costs."
+msgstr ""
+
 msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
 msgstr "Complejidad temporal: :math:`O((V + E) (c + 1))`"
 
-msgid ":math:`|c|` is the number of circuits in the graph."
+#, fuzzy
+msgid "where :math:`|V|` is the number of vertices in the graph."
+msgstr ":math:`|V|` es la cantidad de vertices del grafo."
+
+#, fuzzy
+msgid "where :math:`|c|` is the number of circuits in the graph."
 msgstr ":math:`|c|` es la cantidad de circuitos en el grafo."
 
 msgid "pgr_hawickCircuits(`Edges SQL`_)"
 msgstr "pgr_hawickCircuits(`SQL de aristas`_)"
 
-msgid "Circuits present in the pgRouting :doc:`sampledata`"
-msgstr "Circuitos dentro de los :doc:`sampledata` de pgRouting"
-
-msgid "Id of the circuit starting from ``1``"
-msgstr "Identificador del circuito comenzando con ``1``"
+#, fuzzy
+msgid "pgr_hawickCircuits(`Edges SQL`_, **start vid** [, **options**])"
+msgstr "pgr_aStarCostMatrix(`SQL de aristas`_, **salidas**, [**opciones**])"
 
 #, fuzzy
-msgid "Relative position in the path. Has value ``0`` for beginning of the path"
-msgstr "Posición relativa en la camino. Tiene el valor ``0`` para el inicio de la ruta"
+msgid "pgr_hawickCircuits(`Edges SQL`_, **start vids** [, **options**])"
+msgstr "pgr_aStarCostMatrix(`SQL de aristas`_, **salidas**, [**opciones**])"
 
-msgid "Identifier of the starting vertex of the circuit."
-msgstr "Identificador del vértice inicial del circuito."
+#, fuzzy
+msgid "**options:** ``[min_depth, max_depth, self_loops, u_turn_on_edge]``"
+msgstr "**opcionales:** ``[directed, strict, U_turn_on_edge]``"
 
-msgid "Identifier of the ending vertex of the circuit."
-msgstr "Identificador del vértice final del circuito."
+#, fuzzy
+msgid "Returns set of |circuits-result|"
+msgstr "Regresa el conjunto de |nksp-result|"
 
-msgid "Identifier of the node in the path from a vid to next vid."
-msgstr "Identificador del nodo en la ruta de un vértice al siguiente vértice."
+msgid "All circuits"
+msgstr ""
 
-msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+#, fuzzy
+msgid "pgr_hawickCircuits(`Edges SQL`_ [, **options**])"
+msgstr "pgr_hawickCircuits(`SQL de aristas`_)"
+
+#, fuzzy
+msgid "All the circuits of the pgRouting :doc:`sampledata`"
+msgstr "Circuitos dentro de los :doc:`sampledata` de pgRouting"
+
+msgid "When no starting vertex is given, all the circuits of the graph are returned. The result has 94 rows, one ``path_id`` for each circuit:"
+msgstr ""
+
+#, fuzzy
+msgid "Single start vertex"
+msgstr "Vértice único"
+
+#, fuzzy
+msgid "Circuits that contain vertex :math:`10`"
+msgstr "Contrayendo el vértice :math:`3`,"
+
+#, fuzzy
+msgid "Many start vertices"
+msgstr "Desde **muchos** vértices iniciales"
+
+#, fuzzy
+msgid "Circuits that contain vertices :math:`\\{10, 11\\}`"
+msgstr "Desde el vértice :math:`5` a los vértices :math:`\\{ 7, 11\\}`"
+
+msgid "The examples use the following table ``c_example``, that represent a cul_de_sac where the exit is on vertex :math:`5` and the vehicle is on vertex :math:`1` but pointing at the wrong direction of the exit."
+msgstr ""
+
+#, fuzzy
+msgid "All possible ways to return to vertex :math:`1`."
+msgstr "El árbol dominante con vértice raíz :math:`5`"
+
+msgid "Exclude self loops."
+msgstr ""
+
+#, fuzzy
+msgid "Exclude self loops and U-turn on the same edge."
+msgstr "Sin auto ciclos ni aristas paralelas."
+
+#, fuzzy
+msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__"
 msgstr "`Boost: Algoritmo de Circutios de Hawick <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
 
 msgid "``pgr_isPlanar`` - Experimental"
@@ -15095,9 +15281,6 @@ msgstr "pgr_cuthillMckeeOrdering"
 msgid "Unclassified"
 msgstr "No clasificado"
 
-msgid "pgr_hawickCircuits"
-msgstr "pgr_hawickCircuits"
-
 msgid "Flow functions"
 msgstr "Funciones de flujo"
 
@@ -17297,6 +17480,25 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#~ msgid ":doc:`pgr_hawickCircuits`"
+#~ msgstr ":doc:`pgr_hawickCircuits`"
+
+#~ msgid "Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Health A. James. This algorithm solves the problem of detecting and enumerating circuits in graphs. It is capable of circuit enumeration in graphs with directed-arcs, multiple-arcs and self-arcs with a memory efficient and high-performance im-plementation. It is an extension of Johnson's Algorithm of finding all the elementary circuits of a directed graph."
+#~ msgstr "El algoritmo Hawick Circuit fue publicado en 2008 por Ken Hawick y Health A. James. Este algoritmo resuelve el problema de detectar y enumerar circuitos en grafos. Es capaz de enumerar circuitos en grafos con arcos dirigidos, arcos múltiples y autoarcos con una implementación eficiente en memoria y de alto rendimiento. Es una extensión del Algoritmo de Johnson para encontrar todos los circuitos elementales de un grafo dirigido."
+
+#~ msgid "There are 2 variations defined in the Boost Graph Library. Here, we have implemented only 2nd as it serves the most suitable and practical usecase. In this variation we get the circuits after filtering out the circuits caused by parallel edges. Parallel edge circuits have more use cases when you want to count the no. of circuits.Maybe in future, we will also implemenent this variation."
+#~ msgstr "Hay 2 variaciones definidas en la librería Boost Graph. Aquí hemos implementado sólo la segunda, ya que es la más adecuada y práctica. En esta variación obtenemos los circuitos después de filtrar los circuitos causados por aristas paralelas. Los circuitos de aristas paralelas tienen más casos de uso cuando se quiere contar el número de circuitos."
+
+#~ msgid "The algorithm implementation works only for directed graph"
+#~ msgstr "La implementación del algoritmo sirve solo para grafos dirigidos"
+
+#~ msgid "It is a variation of Johnson's algorithm for circuit enumeration."
+#~ msgstr "Es una variación del algoritmo de Johnson para la enumeración de circuitos."
+
+#, fuzzy
+#~ msgid "Relative position in the path. Has value ``0`` for beginning of the path"
+#~ msgstr "Posición relativa en la camino. Tiene el valor ``0`` para el inicio de la ruta"
 
 #~ msgid "C and C++0x compilers"
 #~ msgstr "Compiladores C y C++0x"
