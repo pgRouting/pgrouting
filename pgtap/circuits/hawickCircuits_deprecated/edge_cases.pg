@@ -59,6 +59,10 @@ WHERE id = 7;
 RETURN QUERY
 SELECT set_eq('q3', $$VALUES (7, 3, 7, 1, 1)$$, 'Graph with two connected vertices 3 and 7');
 
+IF min_lib_version('4.1.0') THEN
+  RETURN QUERY SELECT skip(1, 'pgr_hawickCircuits is modified on 4.1.0');
+ELSE
+
 PREPARE hawickCircuits3 AS
 SELECT * FROM pgr_hawickcircuits('q3');
 
@@ -71,6 +75,8 @@ SELECT set_eq('hawickCircuits3',
     $$,
     'Circuit between the vertex 3 and 7');
 
+END IF;
+
 -- 3 vertices test
 
 PREPARE q4 AS
@@ -80,6 +86,10 @@ WHERE id <= 2;
 
 RETURN QUERY
 SELECT set_eq('q4', $$VALUES (1, 5, 6, 1, 1), (2, 6, 10, -1, 1)$$, 'Graph with three vertices 5, 6 and 10');
+
+IF min_lib_version('4.1.0') THEN
+  RETURN QUERY SELECT skip(1, 'pgr_hawickCircuits is modified on 4.1.0');
+ELSE
 
 PREPARE hawickCircuits4 AS
 SELECT * FROM pgr_hawickcircuits('q4');
@@ -92,6 +102,8 @@ SELECT set_eq('hawickCircuits4',
         (3, 1, 2, 5, 5, 5, -1, 0, 2)
     $$,
     'Circuit between the vertex 5 and 6');
+
+END IF;
 
 -- 4 vertices test
 
@@ -109,6 +121,10 @@ SELECT set_eq('q5',
         (16, 15, 16, 1, 1)
     $$,
     'Graph with four vertices 10, 11, 15, 16');
+
+IF min_lib_version('4.1.0') THEN
+  RETURN QUERY SELECT skip(1, 'pgr_hawickCircuits is modified on 4.1.0');
+ELSE
 
 PREPARE hawickCircuits5 AS
 SELECT path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM pgr_hawickCircuits('q5');
@@ -129,6 +145,8 @@ SELECT set_eq('hawickCircuits5',
     ( 2, 11, 11, 11, -1, 0, 2)
     $$,
     'TEST 9: Circuits 10->11->16->15->10, 15->16->15 & 11>16>11 expected');
+
+END IF;
 
 END;
 $BODY$
