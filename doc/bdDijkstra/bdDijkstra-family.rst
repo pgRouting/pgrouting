@@ -79,7 +79,7 @@ The main Characteristics are:
 See Also
 -------------------------------------------------------------------------------
 
-* `Boost  <https://www.boost.org/libs/graph/doc>`__
+* `Boost  <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/index.html>`__
 
 .. rubric:: Indices and tables
 
