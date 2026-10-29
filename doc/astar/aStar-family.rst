@@ -175,7 +175,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`bdAstar-family`
-* `Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__
+* `Boost: A* search <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/shortest_paths/astar_search.html>`__
 * https://en.wikipedia.org/wiki/A*_search_algorithm
 
 .. rubric:: Indices and tables
