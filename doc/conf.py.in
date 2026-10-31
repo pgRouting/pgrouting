@@ -347,6 +347,7 @@ rst_epilog="""
 .. |ANY-INTEGER| replace:: :abbr:`ANY-INTEGER(SMALLINT, INTEGER, BIGINT)`
 .. |ANY-NUMERICAL| replace:: :abbr:`ANY-NUMERICAL(SMALLINT, INTEGER, BIGINT, REAL, FLOAT)`
 .. |generic-result| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+.. |circuits-result| replace:: ``(seq, path_id, depth, start_vid, end_vid, pred, node, edge, cost, agg_cost)``
 .. |short-generic-result| replace:: ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 .. |via-result| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost)``
 .. |matrix-result| replace:: ``(start_vid, end_vid, agg_cost)``

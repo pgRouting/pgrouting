@@ -3,8 +3,9 @@
 # License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
 
 set(LOCAL_FILES
+    circuits-family.rst
     pgr_hawickCircuits.rst
-    )
+)
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} "${PGR_DOCUMENTATION_SOURCE_DIR}/${f}")

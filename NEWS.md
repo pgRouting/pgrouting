@@ -36,6 +36,13 @@ To see all issues & pull requests closed by this release see the
 
   * Fix the way it builds the graph
 
+* pgr_hawickCircuits
+
+  * New optional parameters: ``min_depth``, ``max_depth``, ``self_loops`` and
+    ``u_turn_on_edge``.
+  * New signatures to select starting vertices.
+  * Deprecated signature: ``pgr_hawickCircuits(text)``.
+
 * pgr_makeBiconnectedPlanar
 
   * New experimental function.
@@ -74,6 +81,7 @@ To see all issues & pull requests closed by this release see the
   process/driver pair
 * [#3154](https://github.com/pgRouting/pgrouting/issues/3154): betweennessCentrality: use allpairs/process and driver
 * [#3163](https://github.com/pgRouting/pgrouting/issues/3163): KSP & KSP WithPoints Use ShortestPath driver files
+* [#3170](https://github.com/pgRouting/pgrouting/issues/3170): pgr_hawickCircuits: wrong  function referenced
 
 4.1.0 Bug Fixes
 

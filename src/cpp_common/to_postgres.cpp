@@ -362,6 +362,46 @@ get_tuples(
 
 size_t
 get_tuples(
+        const pgrouting::types::Circuits &circuits,
+        Path_rt* &tuples) {
+    pgassert(!tuples);
+
+    size_t count = 0;
+    for (const auto &circuit : circuits) {
+        count += circuit.size() + 1;
+    }
+    if (count == 0) return 0;
+
+    tuples = pgr_alloc(count, tuples);
+
+    size_t sequence = 0;
+    for (const auto &circuit : circuits) {
+        auto start_vid = circuit.front().node;
+        /* depth 0: the start node has no incoming edge */
+        tuples[sequence++] = {start_vid, start_vid, start_vid, -1, 0, 0};
+        double agg_cost = 0;
+        for (size_t i = 0; i < circuit.size(); ++i) {
+            agg_cost += circuit[i].cost;
+            /* the node reached by this hop is the next step's node,
+               wrapping back to the start node on the closing hop */
+            auto next_node = (i + 1 < circuit.size())
+                ? circuit[i + 1].node
+                : start_vid;
+            tuples[sequence++] = {
+                start_vid, start_vid,
+                next_node,
+                circuit[i].edge,
+                circuit[i].cost,
+                agg_cost};
+        }
+    }
+
+    pgassert(count == sequence);
+    return count;
+}
+
+size_t
+get_tuples(
         std::vector<Path_rt> &paths,
         const std::vector<Edge_t> &edges,
         Path_rt* &tuples) {
