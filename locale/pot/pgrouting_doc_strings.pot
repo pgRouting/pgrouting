@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-24 01:29+0000\n"
+"POT-Creation-Date: 2026-10-30 22:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2482,6 +2482,9 @@ msgstr ""
 msgid ":doc:`pgr_hawickCircuits` - Hawick's circuits algorithm."
 msgstr ""
 
+msgid ":doc:`pgr_hawickUniqueCircuits` - Hawick's unique circuits algorithm."
+msgstr ""
+
 msgid "``start vid``"
 msgstr ""
 
@@ -2572,7 +2575,7 @@ msgstr ""
 msgid "Cost to traverse from ``pred`` to ``node`` using ``edge``. - ``0`` when :math:`depth = 0`."
 msgstr ""
 
-msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__"
 msgstr ""
 
 msgid "Coloring - Family of functions"
@@ -3691,6 +3694,9 @@ msgstr ""
 msgid "Deprecated signature: ``pgr_hawickCircuits(text)``."
 msgstr ""
 
+msgid "pgr_hawickUniqueCircuits"
+msgstr ""
+
 msgid "pgr_makeBiconnectedPlanar"
 msgstr ""
 
@@ -3764,6 +3770,9 @@ msgid "`#3163 <https://github.com/pgRouting/pgrouting/issues/3163>`__: KSP & KSP
 msgstr ""
 
 msgid "`#3170 <https://github.com/pgRouting/pgrouting/issues/3170>`__: pgr_hawickCircuits: wrong Boost function referenced"
+msgstr ""
+
+msgid "`#3171 <https://github.com/pgRouting/pgrouting/issues/3171>`__: pgr_hawickUniqueCircuits: new functionality"
 msgstr ""
 
 msgid "4.1.0 Bug Fixes"
@@ -10894,7 +10903,79 @@ msgstr ""
 msgid "Exclude self loops and U-turn on the same edge."
 msgstr ""
 
-msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__"
+msgid "``pgr_hawickUniqueCircuits`` - Experimental"
+msgstr ""
+
+msgid "``pgr_hawickUniqueCircuits`` — Returns the list of unique circuits using hawick circuits algorithm."
+msgstr ""
+
+msgid "Circuit enumeration in directed graphs, where parallel circuits are listed only once."
+msgstr ""
+
+msgid "pgr_hawickUniqueCircuits(`Edges SQL`_ [, **options**])"
+msgstr ""
+
+msgid "pgr_hawickUniqueCircuits(`Edges SQL`_, **start vid** [, **options**])"
+msgstr ""
+
+msgid "pgr_hawickUniqueCircuits(`Edges SQL`_, **start vids** [, **options**])"
+msgstr ""
+
+msgid "Circuits present in the pgRouting :doc:`sampledata` in canonical order."
+msgstr ""
+
+msgid "All circuits that contain vertex :math:`10`"
+msgstr ""
+
+msgid "All circuits that contain vertices :math:`\\{10, 11\\}`"
+msgstr ""
+
+msgid "All possible unique ways to return to vertex :math:`1`."
+msgstr ""
+
+msgid "black is :math:`path\\_id = 1`"
+msgstr ""
+
+msgid "purple is :math:`path\\_id = 2`"
+msgstr ""
+
+msgid "red is :math:`path\\_id = 3`"
+msgstr ""
+
+msgid "green is :math:`path\\_id = 4`"
+msgstr ""
+
+msgid "blue is :math:`path\\_id = 5`"
+msgstr ""
+
+msgid "orange is :math:`path\\_id = 6`"
+msgstr ""
+
+msgid "purple is :math:`path\\_id = 1`"
+msgstr ""
+
+msgid "red is :math:`path\\_id = 2`"
+msgstr ""
+
+msgid "green is :math:`path\\_id = 3`"
+msgstr ""
+
+msgid "blue is :math:`path\\_id = 4`"
+msgstr ""
+
+msgid "orange is :math:`path\\_id = 5`"
+msgstr ""
+
+msgid "red is :math:`path\\_id = 1`"
+msgstr ""
+
+msgid "green is :math:`path\\_id = 2`"
+msgstr ""
+
+msgid "blue is :math:`path\\_id = 3`"
+msgstr ""
+
+msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
 msgstr ""
 
 msgid "``pgr_isPlanar`` - Experimental"

@@ -1,0 +1,190 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+SELECT CASE WHEN min_version('4.1.0') THEN plan(18) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION options()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_hawickUniquecircuits is new on 4.1.0');
+    RETURN;
+  END IF;
+
+  -- the named options min_depth, max_depth and self_loops can be given by name
+
+  -- complete digraph K4: elementary circuits by size: 2 (6), 3 (8), 4 (6) => 20
+
+  PREPARE k4 AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES
+      (1, 1, 2, 1, 1),
+      (2, 1, 3, 1, 1),
+      (3, 1, 4, 1, 1),
+      (4, 2, 3, 1, 1),
+      (5, 2, 4, 1, 1),
+      (6, 3, 4, 1, 1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  -- min_depth by name
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('k4', min_depth => 1) WHERE edge = -1), 20,
+      'K4: min_depth => 1 returns all 20 circuits');
+
+  -- min_depth and max_depth by name
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('k4', min_depth => 1, max_depth => 2) WHERE edge = -1), 6,
+      'K4: min_depth => 1, max_depth => 2 returns the 6 two-cycles');
+
+  -- a depth range by name
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('k4', min_depth => 2, max_depth => 3) WHERE edge = -1), 14,
+      'K4: min_depth => 2, max_depth => 3 returns the 2-cycles and 3-cycles');
+
+  -- min_depth by name with the default max_depth
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('k4', min_depth => 3) WHERE edge = -1), 14,
+      'K4: min_depth => 3 keeps the 3-cycles and 4-cycles');
+
+  -- a named option can skip the following default option
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('k4', min_depth => 3, max_depth => 4) WHERE edge = -1), 14,
+      'K4: min_depth => 3, max_depth => 4 skips the self_loops default');
+
+  -- self_loops by name skips min_depth and max_depth
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('k4', self_loops => false) WHERE edge = -1), 20,
+      'K4: self_loops => false alone keeps the default depth range (min_depth = 1)');
+
+  -- all the options by name
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('k4', min_depth => 1, max_depth => 4, self_loops => true) WHERE edge = -1), 20,
+      'K4: min_depth => 1, max_depth => 4, self_loops => true returns all 20 circuits');
+
+  -- the order of the named options does not matter
+
+  PREPARE k4_min AS
+  SELECT * FROM pgr_hawickUniquecircuits('k4', min_depth => 1);
+
+  PREPARE k4_reordered AS
+  SELECT * FROM pgr_hawickUniquecircuits('k4', self_loops => true, min_depth => 1);
+
+  RETURN QUERY
+  SELECT set_eq('k4_reordered', 'k4_min',
+      'K4: the named options can be given in any order');
+
+  -- self loop (1->1) and two-cycle (1->2->1)
+
+  PREPARE self AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM (VALUES
+      (1, 1, 1, 1, -1),
+      (2, 1, 2, 1, -1),
+      (3, 2, 1, 1, -1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  -- self_loops => true keeps the self loop
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('self', min_depth => 1, self_loops => true) WHERE edge = -1), 2,
+      'Self loop graph: self_loops => true keeps the self loop and the two-cycle');
+
+  -- self_loops => false drops the self loop
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('self', min_depth => 1, self_loops => false) WHERE edge = -1), 1,
+      'Self loop graph: self_loops => false drops the self loop');
+
+  -- the named option can be combined with positional arguments
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('self', min_depth => 1, self_loops => false) WHERE edge = -1), 1,
+      'Self loop graph: positional min_depth with a named self_loops');
+
+  -- self_loops => false with the default min_depth = 1 keeps the two-cycle
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('self', self_loops => false) WHERE edge = -1), 1,
+      'Self loop graph: self_loops => false alone keeps the two-cycle');
+
+  -- min_depth by name keeps the default self_loops = true
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('self', min_depth => 1) WHERE edge = -1), 2,
+      'Self loop graph: min_depth => 1 keeps the default self_loops = true');
+
+  -- max_depth by name is checked against the default min_depth = 1
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER
+      FROM pgr_hawickUniquecircuits('k4', max_depth => 2) WHERE edge = -1), 6,
+      'K4: max_depth => 2 with the default min_depth = 1 returns the six two-cycles');
+
+  -- wrong option values
+
+  RETURN QUERY
+  SELECT throws_ok($$
+      SELECT * FROM pgr_hawickUniquecircuits('k4', min_depth => -1)
+      $$,
+      'XX000',
+      $$Invalid value for 'min_depth'$$,
+      'K4: min_depth => -1 is rejected');
+
+  RETURN QUERY
+  SELECT throws_ok($$
+      SELECT * FROM pgr_hawickUniquecircuits('k4', max_depth => 0)
+      $$,
+      'XX000',
+      $$Invalid value for 'max_depth'$$,
+      'K4: max_depth => 0 is rejected');
+
+  RETURN QUERY
+  SELECT throws_ok($$
+      SELECT * FROM pgr_hawickUniquecircuits('k4', max_depth => -1)
+      $$,
+      'XX000',
+      $$Invalid value for 'max_depth'$$,
+      'K4: max_depth => -1 is rejected');
+
+  RETURN QUERY
+  SELECT throws_ok($$
+      SELECT * FROM pgr_hawickUniquecircuits('k4', min_depth => 5, max_depth => 2)
+      $$,
+      'XX000',
+      $$Invalid values for 'min_depth' < 'max_depth'$$,
+      'K4: min_depth => 5 greater than max_depth => 2 is rejected');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT options();
+
+SELECT * FROM finish();
+ROLLBACK;
