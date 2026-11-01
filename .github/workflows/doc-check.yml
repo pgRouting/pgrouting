@@ -108,7 +108,7 @@ jobs:
             python3-sphinx-bootstrap-theme \
             postgresql-${PGVER} \
             postgresql-server-dev-${PGVER} \
-            graphviz
+            graphviz $(apt-cache pkgnames libgvplugin-neato-layout | grep -v -- -dev)
 
       - name: Configure
         if: env.PROCESS == 'true'

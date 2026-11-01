@@ -72,7 +72,7 @@ jobs:
             gettext \
             postgresql-${PGVER} \
             postgresql-server-dev-${PGVER} \
-            graphviz
+            graphviz $(apt-cache pkgnames libgvplugin-neato-layout | grep -v -- -dev)
 
       - name: Initialize mandatory git config
         run: |
