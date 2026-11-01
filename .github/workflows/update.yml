@@ -107,6 +107,8 @@ jobs:
         run: |
           pushd  "v${{ matrix.old_pgr }}" || exit 1
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
+          # GCC >= 14 treats -Wint-conversion as an error, old releases have such code
+          export CFLAGS="-Wno-error=int-conversion"
           mkdir build
           cd build || exit 1
           cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.12 -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
