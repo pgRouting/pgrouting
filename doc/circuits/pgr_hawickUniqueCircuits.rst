@@ -20,9 +20,9 @@ circuits algorithm.
 
 .. rubric:: Availability
 
-* Version 4.1.0
+.. rubric:: Version 4.1.0
 
-  * New experimental function.
+* New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -265,7 +265,7 @@ See Also
 
 * :doc:`sampledata`
 * `Boost: Hawick Circuit Algorithm
-  <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__
+  <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__
 
 .. rubric:: Indices and tables
 
