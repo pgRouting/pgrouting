@@ -45,7 +45,7 @@ To see all issues & pull requests closed by this release see the
 
 * pgr_hawickUniqueCircuits
 
-    * New experimental function.
+  * New experimental function.
 
 * pgr_makeBiconnectedPlanar
 

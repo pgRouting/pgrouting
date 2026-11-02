@@ -37,6 +37,12 @@ once.
    :start-after: circuits_characteristics_start
    :end-before: circuits_characteristics_end
 
+- Of the parallel arcs, a circuit uses the one with the minimum cost, except on
+  a u-turn when ``u_turn_on_edge`` is ``false`` a parallel edge that is not
+  minimum cost might be used.
+
+|Boost| Boost Graph Inside
+
 Signatures
 -------------------------------------------------------------------------------
 
