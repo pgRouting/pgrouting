@@ -211,10 +211,10 @@ void remove_details(const G &graph,
  *
  * @param [in] graph The graph that is being worked
  * @param [in] root The starting node
- * @param [in] distances An array of vertices @b id
+ * @param [in] distances distances from root
  * @param [in] predecessors an array of predecessors
  * @param [in] distance the max distance
- * @param [in] details the max distance
+ * @param [in] details flag to indicate to include points
  */
 template <typename G, typename V>
 std::map<int64_t, int64_t> get_depth(
@@ -224,55 +224,73 @@ std::map<int64_t, int64_t> get_depth(
         std::vector<V>& predecessors,
         double distance,
         bool details) {
-    std::map<int64_t, int64_t> depth;
-    if (predecessors.empty()) return depth;
-    if (predecessors.size() != distances.size()) return depth;
-    depth[graph[root].id] = 0;
+    const auto num_vertices = graph.num_vertices();
 
-    std::set<V> vertices;
-    vertices.insert(root);
+    if (num_vertices == 0) return {};
+    if (distances.size() != num_vertices) return {};
+    if (predecessors.size() != num_vertices) return {};
 
     if (!details) {
         remove_details(graph, distances, predecessors);
     }
 
-    /* cycle depth max depth can be number of nodes*/
-    for (int64_t d = 1; static_cast<size_t>(d) < graph.num_vertices() ; ++d) {
-        /*
-         * there is no more to search for
-         */
-        if (vertices.empty()) break;
+    constexpr int64_t kUnknown{-1};
+    constexpr int64_t kNotInTree{-2};
+
+    std::vector<int64_t> depths(num_vertices, kUnknown);
+    depths[root] = 0;
+
+    std::vector<V> chain;
+    CHECK_FOR_INTERRUPTS();
+    for (V vstart = 0; vstart < num_vertices; ++vstart) {
+        if (depths[vstart] != kUnknown) continue;
 
         /*
-         * One next cycle these vertices have the next depth
+         * Since the distance to the root is assumed to be monotonically
+         * decreasing along the predecessor chain, we can check this once
+         * instead of for every vertex along the chain.
          */
-        std::set<V> vertices_next;
-        std::set<V> point_vertices;
-
-
-        for (const auto v : vertices) {
-            /*
-             * Cycle predecessors looking for vertices on the depth d
-             * v -> p
-             */
-            for (V p = 0; p < graph.num_vertices() ; ++p) {
-                /*
-                 * Sikiping unassigned predecessors
-                 * Sikiping distances greater than the one asked for
-                 */
-                if (predecessors[p] == p) continue;
-                if (!(distances[p] <= distance)) continue;
-                if (!(predecessors[p] == v)) continue;
-
-
-                /* found */
-                depth[graph[p].id] = d;
-                vertices_next.insert(p);
-            }
+        if (distances[vstart] > distance) {
+            depths[vstart] = kNotInTree;
+            continue;
         }
-        vertices = vertices_next;
+
+        chain.clear();
+
+        /*
+         * Walk backwards from vstart until we find a vertex v of known depth.
+         * Mark visited vertices to detect cycles and guarantee termination.
+         */
+        V v;
+        CHECK_FOR_INTERRUPTS();
+        for (v = vstart; depths[v] == kUnknown; v = predecessors[v]) {
+            depths[v] = kNotInTree;
+            chain.push_back(v);
+        }
+
+        /*
+         * If v is not-in-tree, there is nothing more to do since the vertices
+         * along the chain are already marked as not-in-tree.
+         */
+        if (depths[v] == kNotInTree) continue;
+
+        /*
+         * Assign the computed depths to the vertices along the chain.
+         */
+        const auto vdepth = depths[v];
+        for (size_t i = 0; i < chain.size(); ++i) {
+            depths[chain[i]] = vdepth + static_cast<int64_t>(chain.size() - i);
+        }
     }
-    return depth;
+
+    std::map<int64_t, int64_t> depth_map;
+    for (V v = 0; v < num_vertices; ++v) {
+        if (const auto d = depths[v]; d >= 0) {
+            depth_map[graph[v].id] = d;
+        }
+    }
+
+    return depth_map;
 }
 
 /** @brief gets results for many vertices and equi costs
