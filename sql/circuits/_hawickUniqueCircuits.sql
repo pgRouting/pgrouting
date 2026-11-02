@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: _hawickCircuits.sql
+File: _hawickUniqueCircuits.sql
 
 Generated with Template by:
 Copyright (c) 2007-2026 pgRouting developers
