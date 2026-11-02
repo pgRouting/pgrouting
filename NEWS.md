@@ -65,6 +65,7 @@ To see all issues & pull requests closed by this release see the
 * [#3140](https://github.com/pgRouting/pgrouting/issues/3140): pgr_makeBiconnectedPlanar
 * [#3142](https://github.com/pgRouting/pgrouting/issues/3142): pgr_coreNumbers
 * [#3143](https://github.com/pgRouting/pgrouting/issues/3143): pgr_planarFaces
+* [#3171](https://github.com/pgRouting/pgrouting/issues/3171): pgr_hawickUniqueCircuits: new functionality
 
 4.1.0 Code enhancements
 
@@ -86,7 +87,6 @@ To see all issues & pull requests closed by this release see the
 * [#3154](https://github.com/pgRouting/pgrouting/issues/3154): betweennessCentrality: use allpairs/process and driver
 * [#3163](https://github.com/pgRouting/pgrouting/issues/3163): KSP & KSP WithPoints Use ShortestPath driver files
 * [#3170](https://github.com/pgRouting/pgrouting/issues/3170): pgr_hawickCircuits: wrong  function referenced
-* [#3171](https://github.com/pgRouting/pgrouting/issues/3171): pgr_hawickUniqueCircuits: new functionality
 
 4.1.0 Bug Fixes
 
