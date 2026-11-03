@@ -139,7 +139,7 @@ check_char_type(const pgrouting::Column_info_t &info) {
     }
 }
 
-/**
+/*
  * @brief The function check whether column type is ANY-INTEGER-ARRAY or not.
  *        Where ANY-INTEGER-ARRAY is SQL type:
  *             SMALLINT[], INTEGER[], BIGINT[]
@@ -243,8 +243,7 @@ char getChar(
     return value;
 }
 
-/** @brief get the array contents from postgres
- *
+/**
  * @details This function generates the array inputs according to their type
  * received through @a ArrayType *v parameter and store them in @a c_array. It
  * can be empty also if received @a allow_empty true. The cases of failure are:-
@@ -328,8 +327,7 @@ get_pgset(ArrayType *v) {
     return results;
 }
 
-/** @brief get the array contents from postgres
- *
+/**
  * @details This function generates the array inputs according to their type
  * received through @a ArrayType *v parameter and store them in @a c_array. It
  * can be empty also if received @a allow_empty true. The cases of failure are:-
@@ -420,8 +418,7 @@ get_pgarray(ArrayType *v, bool allow_empty) {
     return results;
 }
 
-/** @brief get the array contents from postgres
- *
+/**
  * @details This function generates the array inputs according to their type
  * received through @a ArrayType *v parameter and store them in @a c_array. It
  * can be empty also if received @a allow_empty true. The cases of failure are:-
@@ -622,7 +619,7 @@ double getFloat8(
     return 0.0;
 }
 
-/*!
+/**
  * [SPI_getvalue](https://doxygen.postgresql.org/spi_8c.html#ae53c12ff90592f67e4e40ad0af24205b
  which calls OidOutputFunctionCall, which calls
  OutputFunctionCall - https://doxygen.postgresql.org/fmgr_8c.html#ae19cff34818e4a6c90523e8bb02c3420
