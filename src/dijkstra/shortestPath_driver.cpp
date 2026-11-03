@@ -198,7 +198,6 @@ do_shortestPath(
         using pgrouting::functions::bellmanFord;
         using pgrouting::functions::edgeDisjoint;
         using pgrouting::functions::binaryBreadthFirstSearch;
-        using pgrouting::functions::hawickCircuits;
         using pgrouting::functions::hawickUniqueCircuits;
         using pgrouting::algorithms::Yen;
 
@@ -249,7 +248,7 @@ do_shortestPath(
                     if (u_turn_on_edge) {
                         digraph.insert_min_edges_no_parallel(edges, circuit_starts);
                     } else {
-                        digraph.insert_edges_no_parallel(edges, circuit_starts);
+                        digraph.insert_min_edges_one_parallel(edges, circuit_starts);
                     }
                     break;
                 case OLDHAWICKCIRCUITS:
@@ -286,14 +285,12 @@ do_shortestPath(
                     break;
                 case OLDHAWICKCIRCUITS:
                 case HAWICKCIRCUITS:
-                    return_count = get_tuples(
-                            hawickCircuits(digraph, circuit_starts, min_depth, max_depth, self_loops, u_turn_on_edge),
-                            return_tuples);
-                    break;
                 case HAWICKUNIQUECIRCUITS:
                     return_count = get_tuples(
-                            hawickUniqueCircuits(digraph, circuit_starts, min_depth, max_depth, self_loops),
-                            return_tuples);
+                            hawickUniqueCircuits(digraph, circuit_starts,
+                                min_depth, max_depth,
+                                self_loops, u_turn_on_edge),
+                            return_tuples, which);
                     break;
                 case BINARYBFS:
                     return_count = get_tuples(binaryBreadthFirstSearch(digraph, combinations), return_tuples);
