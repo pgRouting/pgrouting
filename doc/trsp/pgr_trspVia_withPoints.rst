@@ -19,6 +19,10 @@ points with restrictions.
 
 .. rubric:: Availability
 
+.. rubric:: Version 4.1.0
+
+* Added ``pred`` result column.
+
 .. rubric:: Version 4.0.0
 
 * Function promoted to official.
@@ -183,6 +187,30 @@ Result columns
 .. include:: via-category.rst
     :start-after: result_via_start
     :end-before: result_via_end
+
+``pgr_trspVia_withPoints`` additionally returns:
+
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``pred``
+     - ``BIGINT``
+     - Identifier of the previous node in the path. For the first row of a
+       path segment, equals ``start_vid``.
+
+.. Note::
+   ``pred`` is the ``node`` of the previous row of the same path, so its value
+   depends on ``details``:
+
+   * ``details => true``: points passed on the way are returned as rows, and
+     can be the ``pred`` of the next row.
+   * ``details => false``: those points are not returned, so they never appear
+     as ``pred``.
 
 .. include:: via-category.rst
     :start-after: result_via_withPoints_start
