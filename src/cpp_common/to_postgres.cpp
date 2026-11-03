@@ -49,6 +49,35 @@ to_inf(double value) {
         std::numeric_limits<double>::infinity() : value;
 }
 
+/** @brief Keeps one circuit per vertex sequence, with the minimum cost */
+pgrouting::types::Circuits
+unique_circuits(const pgrouting::types::Circuits &circuits) {
+    pgrouting::types::Circuits unique;
+    std::map<std::vector<int64_t>, size_t> position;
+    std::vector<double> total_cost;
+
+    for (const auto &circuit : circuits) {
+        std::vector<int64_t> vertex_sequence;
+        vertex_sequence.reserve(circuit.size());
+        double cost = 0;
+        for (const auto &step : circuit) {
+            vertex_sequence.push_back(step.node);
+            cost += step.cost;
+        }
+
+        auto it = position.find(vertex_sequence);
+        if (it == position.end()) {
+            position.emplace(vertex_sequence, unique.size());
+            unique.push_back(circuit);
+            total_cost.push_back(cost);
+        } else if (cost < total_cost[it->second]) {
+            unique[it->second] = circuit;
+            total_cost[it->second] = cost;
+        }
+    }
+    return unique;
+}
+
 void
 get_path(
         int route_id,
@@ -363,11 +392,19 @@ get_tuples(
 size_t
 get_tuples(
         const pgrouting::types::Circuits &circuits,
-        Path_rt* &tuples) {
+        Path_rt* &tuples,
+        Which which) {
     pgassert(!tuples);
 
+    pgrouting::types::Circuits filtered;
+    const pgrouting::types::Circuits *result = &circuits;
+    if (which == HAWICKUNIQUECIRCUITS) {
+        filtered = unique_circuits(circuits);
+        result = &filtered;
+    }
+
     size_t count = 0;
-    for (const auto &circuit : circuits) {
+    for (const auto &circuit : *result) {
         count += circuit.size() + 1;
     }
     if (count == 0) return 0;
@@ -375,7 +412,7 @@ get_tuples(
     tuples = pgr_alloc(count, tuples);
 
     size_t sequence = 0;
-    for (const auto &circuit : circuits) {
+    for (const auto &circuit : *result) {
         auto start_vid = circuit.front().node;
         /* depth 0: the start node has no incoming edge */
         tuples[sequence++] = {start_vid, start_vid, start_vid, -1, 0, 0};
