@@ -336,11 +336,11 @@ linkcheck_ignore = [
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
+    r'https://github\.com/.*'
     r'https://github.com/pgRouting/pgrouting/issues/*',    # limit only pgrouting
     r'https://github.com/pgRouting/pgrouting/archive/*',
     r'https://docs.pgrouting.org/3.8/*',
     # Currently has a problem
-    'https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html',
     r'https://www.overpass-api.de/*',
     # 403 Client error
     'https://gis.stackexchange.com/questions/tagged/pgrouting'
