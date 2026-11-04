@@ -109,8 +109,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: Lengauer-Tarjan dominator
-  <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__
+* :bgl:`Boost: Lengauer-Tarjan dominator <algorithms/utility/lengauer_tarjan_dominator.html>`
 * `Wikipedia: dominator tree
   <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__
 
