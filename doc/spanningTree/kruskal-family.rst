@@ -59,8 +59,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`spanningTree-category`
-* `Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
-* `Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* :bgl:`Boost: Kruskal's algorithm <algorithms/spanning_trees/kruskal_min_spanning_tree.html>`
+* :bgl:`Boost: Prim's algorithm <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`
 * `Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
 
 .. rubric:: Indices and tables
