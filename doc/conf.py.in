@@ -132,7 +132,6 @@ pygments_style = 'sphinx'
 
 gettext_allow_fuzzy_translations = False
 gettext_location = False
-gettext_compact = True
 gettext_uuid = False
 gettext_auto_build = True
 #For example: gettext_additional_targets = ['literal-block','raw','index','doctest-block']
