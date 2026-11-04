@@ -1612,8 +1612,8 @@ msgstr ""
 msgid ":doc:`bdAstar-family`"
 msgstr ":doc:`bdAstar-family`"
 
-msgid "`Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__"
-msgstr ""
+msgid ":bgl:`Boost: A* search <algorithms/shortest_paths/astar_search.html>`"
+msgstr ":bgl:`Boost: A* 탐색 <algorithms/shortest_paths/astar_search.html>`"
 
 msgid "https://en.wikipedia.org/wiki/A*_search_algorithm"
 msgstr ""
