@@ -11,16 +11,18 @@ Introduction
 pgRouting is an extension of `PostGIS <https://postgis.net>`__ and `PostgreSQL
 <https://www.postgresql.org>`__ geospatial database and adds routing and other
 network analysis functionality. A predecessor of pgRouting – pgDijkstra, written
-by Sylvain Pasche from `Camptocamp <https://camptocamp.com>`__, was later
-extended by Orkney and renamed to pgRouting. The project is
-now supported and maintained by `Georepublic <https://georepublic.info>`__,
-`Paragon Corporation <https://www.paragoncorporation.com/>`__ and a broad user
-community.
+by Sylvain Pasche, was later extended by Orkney and renamed to pgRouting.
 
-pgRouting is part of `OSGeo Community Projects
-<https://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`__ from the `OSGeo
-Foundation <https://www.osgeo.org>`__ and included on `OSGeoLive
-<http://live.osgeo.org/>`__.
+Currently mantained by:
+
+- `Erosion <https://www.erosion.dev>`__
+- `Paragon Corporation <https://www.paragoncorporation.com/>`__
+-  and a broad user community.
+
+pgRouting is part of `OSGeo Projects
+<https://www.osgeo.org/projects/pgrouting>`__ from the `OSGeo Foundation
+<https://www.osgeo.org>`__ and included on `OSGeoLive
+<https://live.osgeo.org/>`__.
 
 
 .. _license:
@@ -61,10 +63,9 @@ This Release Contributors
 Individuals in this release |release| (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Mohit Rawat,
+Ko Nagase,
 Regina Obe,
 Vicky Vergara
-
 
 And all the people that give us a little of their time making comments, finding
 issues, making pull requests etc. in any of our products: osm2pgrouting,
