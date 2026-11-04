@@ -180,10 +180,8 @@ See Also
 
 * :doc:`DFS-category`
 * :doc:`sampledata`
-* `Boost: Depth First Search
-  <https://www.boost.org/libs/graph/doc/depth_first_search.html>`__
-* `Boost: Undirected DFS
-  <https://www.boost.org/libs/graph/doc/undirected_dfs.html>`__
+* :bgl:`Boost: Depth First Search <algorithms/traversal/depth_first_search.html>`
+* :bgl:`Boost: Undirected DFS <algorithms/traversal/undirected_dfs.html>`
 * `Wikipedia: Depth First Search algorithm
   <https://en.wikipedia.org/wiki/Depth-first_search>`__
 
