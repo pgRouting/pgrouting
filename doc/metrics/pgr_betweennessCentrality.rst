@@ -132,8 +132,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: betweenness centrality
-  <https://www.boost.org/libs/graph/doc/betweenness_centrality.html>`_
+* :bgl:`Boost: betweenness centrality <algorithms/metrics/betweenness_centrality.html>`
 
 .. rubric:: Indices and tables
 
