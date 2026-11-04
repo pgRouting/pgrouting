@@ -162,8 +162,7 @@ See Also
 
 * :doc:`flow-family`
 * :doc:`migration`
-* `Boost: maximum_matching
-  <https://www.boost.org/libs/graph/doc/maximum_matching.html>`__
+* :bgl:`Boost: maximum_matching <algorithms/network_flow/maximum_matching.html>`
 * https://en.wikipedia.org/wiki/Matching_%28graph_theory%29
 * https://en.wikipedia.org/wiki/Ackermann_function
 
