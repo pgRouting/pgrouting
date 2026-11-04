@@ -54,8 +54,15 @@ extensions = [
         'sphinx.ext.mathjax',
         'sphinx.ext.graphviz',
         'sphinx.ext.autosectionlabel',
+        'sphinx.ext.extlinks',
         ]
 autosectionlabel_prefix_document = True
+
+# External links that are used in several places.
+# Usage: :bgl:`Title <relative/path.html>`
+extlinks = {
+        'bgl': ('https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/%s', None),
+        }
 
 graphviz_dot='neato'
 
@@ -382,7 +389,7 @@ rst_epilog="""
 .. |result-mincut| replace:: ``(seq, edge, cost, mincut)``
 .. |result-pickdrop| replace:: ``(seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo, travel_time, arrival_time, wait_time, service_time, departure_time)``
 .. |Boost| image:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph
+   :target: https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/
    :alt: Boost Graph inside
    :height: 18
 .. |epilog_end| replace:: just a marker for notes2news
