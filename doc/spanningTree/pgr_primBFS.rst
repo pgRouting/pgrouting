@@ -132,8 +132,7 @@ See Also
 * :doc:`spanningTree-category`
 * :doc:`prim-family`
 * :doc:`sampledata`
-* `Boost: Prim's algorithm
-  <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* :bgl:`Boost: Prim's algorithm <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`
 * `Wikipedia: Prim's algorithm
   <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__
 
