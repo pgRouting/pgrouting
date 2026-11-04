@@ -2358,8 +2358,8 @@ msgstr ":doc:`pgr_johnson`"
 msgid ":doc:`pgr_floydWarshall`"
 msgstr ":doc:`pgr_floydWarshall`"
 
-msgid "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__"
-msgstr "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__"
+msgid ":bgl:`Boost: floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
+msgstr ":bgl:`Boost: floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
 
 msgid "Bidirectional A* - Family of functions"
 msgstr "Dubbelriktad A* - Familj av funktioner"
@@ -11094,8 +11094,8 @@ msgstr "pgr_floydWarshall(`Kanter SQL`_, [``directed``])"
 msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr "För en riktad delgraf med kanter :math:`\\{1, 2, 3, 4\\}`."
 
-msgid "Boost `Floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
-msgstr "Boost `Floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
+msgid ":bgl:`Boost: Floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
+msgstr ":bgl:`Boost: Floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
 
 msgid "``pgr_full_version``"
 msgstr "``pgr_full_version``"
@@ -11283,8 +11283,8 @@ msgstr "Johnson-algoritmen är ett bra val för att beräkna summan av kostnader
 msgid "pgr johnson(`Edges SQL`_, [``directed``])"
 msgstr "pgr johnson(`Kanter SQL`_, [``directed``])"
 
-msgid "Boost `Johnson <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_"
-msgstr "Boost `Johnson <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_"
+msgid ":bgl:`Boost: Johnson <algorithms/shortest_paths/johnson_all_pairs_shortest.html>`"
+msgstr ":bgl:`Boost: Johnson <algorithms/shortest_paths/johnson_all_pairs_shortest.html>`"
 
 msgid "``pgr_kingOrdering`` - Experimental"
 msgstr "``pgr_kingOrdering`` - Experimentell"

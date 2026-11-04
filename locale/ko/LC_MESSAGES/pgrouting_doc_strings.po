@@ -2362,7 +2362,7 @@ msgstr ":doc:`pgr_johnson`"
 msgid ":doc:`pgr_floydWarshall`"
 msgstr ":doc:`pgr_floydWarshall`"
 
-msgid "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__"
+msgid ":bgl:`Boost: floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
 msgstr ""
 
 msgid "Bidirectional A* - Family of functions"
@@ -11290,7 +11290,7 @@ msgstr ""
 msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr ""
 
-msgid "Boost `Floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
+msgid ":bgl:`Boost: Floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
 msgstr ""
 
 msgid "``pgr_full_version``"
@@ -11482,7 +11482,7 @@ msgstr ""
 msgid "pgr johnson(`Edges SQL`_, [``directed``])"
 msgstr ""
 
-msgid "Boost `Johnson <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_"
+msgid ":bgl:`Boost: Johnson <algorithms/shortest_paths/johnson_all_pairs_shortest.html>`"
 msgstr ""
 
 #, fuzzy

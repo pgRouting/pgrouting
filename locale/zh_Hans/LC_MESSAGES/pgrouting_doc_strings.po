@@ -2369,8 +2369,8 @@ msgstr ":doc:`pgr_johnson`"
 msgid ":doc:`pgr_floydWarshall`"
 msgstr ":doc:`pgr_floydWarshall`"
 
-msgid "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__"
-msgstr "Boost `弗洛伊德算法 <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__"
+msgid ":bgl:`Boost: floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
+msgstr ":bgl:`Boost: 弗洛伊德算法 <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
 
 msgid "Bidirectional A* - Family of functions"
 msgstr "双向A* - 函数族"
@@ -11536,8 +11536,8 @@ msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr "对于有边 :math:`\\{1, 2, 3, 4\\}` 的有向子图。"
 
 #, fuzzy
-msgid "Boost `Floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
-msgstr "Boost `弗洛伊德-沃沙尔算法 <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
+msgid ":bgl:`Boost: Floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
+msgstr ":bgl:`Boost: 弗洛伊德-沃沙尔算法 <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
 
 msgid "``pgr_full_version``"
 msgstr "``pgr_full_version``"
@@ -11726,8 +11726,8 @@ msgstr "Johnson 算法是计算图中每对节点的最短路径总成本的一�
 msgid "pgr johnson(`Edges SQL`_, [``directed``])"
 msgstr "pgr johnson(`Edges SQL`_, [``directed``])"
 
-msgid "Boost `Johnson <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_"
-msgstr "Boost `Johnson 算法 <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_"
+msgid ":bgl:`Boost: Johnson <algorithms/shortest_paths/johnson_all_pairs_shortest.html>`"
+msgstr ":bgl:`Boost: Johnson 算法 <algorithms/shortest_paths/johnson_all_pairs_shortest.html>`"
 
 #, fuzzy
 msgid "``pgr_kingOrdering`` - Experimental"

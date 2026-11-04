@@ -2349,8 +2349,8 @@ msgstr ":doc:`pgr_johnson`"
 msgid ":doc:`pgr_floydWarshall`"
 msgstr ":doc:`pgr_floydWarshall`"
 
-msgid "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__"
-msgstr "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
+msgid ":bgl:`Boost: floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
+msgstr ":bgl:`Boost: floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
 
 msgid "Bidirectional A* - Family of functions"
 msgstr "A* Bidireccional - Familia de Funciones"
@@ -11115,8 +11115,8 @@ msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr "Para sub-grafo con aristas :math:`\\{1, 2, 3, 4\\}`."
 
 #, fuzzy
-msgid "Boost `Floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
-msgstr "Boost `Algoritmo floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
+msgid ":bgl:`Boost: Floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
+msgstr ":bgl:`Boost: Algoritmo floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
 
 msgid "``pgr_full_version``"
 msgstr "``pgr_full_version``"
@@ -11308,8 +11308,8 @@ msgstr "El algoritmo Johnson, es una buena opción para calcular la suma de los 
 msgid "pgr johnson(`Edges SQL`_, [``directed``])"
 msgstr "johnson(`SQL de aristas`_ , [``dryrun``])"
 
-msgid "Boost `Johnson <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_"
-msgstr "Boost `Algoritmo de Johnson <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_"
+msgid ":bgl:`Boost: Johnson <algorithms/shortest_paths/johnson_all_pairs_shortest.html>`"
+msgstr ":bgl:`Boost: Algoritmo de Johnson <algorithms/shortest_paths/johnson_all_pairs_shortest.html>`"
 
 #, fuzzy
 msgid "``pgr_kingOrdering`` - Experimental"
