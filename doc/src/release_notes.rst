@@ -612,14 +612,14 @@ Removal of SQL deprecated internal functions
 * :issue:`2861` _pgr_createIndex(text,text,text,text,integer,text)
 * :issue:`2913` _pgr_dagShortestPath(text,anyarray,anyarray,boolean,boolean)
 * :issue:`2913` _pgr_dagShortestPath(text,text,boolean,boolean)
-* :issue:`2730` _pgr_dijkstraNear(text,anyarray,anyarray,bigint,boolean)
-* :issue:`2730` _pgr_dijkstraNear(text,anyarray,bigint,bigint,boolean)
-* :issue:`2730` _pgr_dijkstraNear(text,bigint,anyarray,bigint,boolean)
-* :issue:`2730` _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)
-* :issue:`2730` _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)
-* :issue:`2730` _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)
-* :issue:`2730` _pgr_dijkstra(text,text,boolean,boolean,boolean)
-* :issue:`2735` _pgr_drivingDistance(text,anyarray,double precision,boolean,boolean)
+* :pr:`2730` _pgr_dijkstraNear(text,anyarray,anyarray,bigint,boolean)
+* :pr:`2730` _pgr_dijkstraNear(text,anyarray,bigint,bigint,boolean)
+* :pr:`2730` _pgr_dijkstraNear(text,bigint,anyarray,bigint,boolean)
+* :pr:`2730` _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)
+* :pr:`2730` _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)
+* :pr:`2730` _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)
+* :pr:`2730` _pgr_dijkstra(text,text,boolean,boolean,boolean)
+* :pr:`2735` _pgr_drivingDistance(text,anyarray,double precision,boolean,boolean)
 * :issue:`2861` _pgr_endPoint(geometry)
 * :issue:`2861` __pgr_getColumnName(text,text,integer,text)
 * :issue:`2861` __pgr_getColumnName(text,text,text,integer,text)
@@ -784,7 +784,7 @@ To see all issues & pull requests closed by this release see the
      :start-after: Version 3.8.0
      :end-before: Description
 
-* :issue:`2874`: Promoted to official pgr_separateTouching in version 3.8
+* :pr:`2874`: Promoted to official pgr_separateTouching in version 3.8
 
   .. include:: pgr_separateTouching.rst
      :start-after: Version 3.8.0
@@ -934,9 +934,9 @@ To see all issues & pull requests closed by this release see the
 
 .. rubric:: Code enhancement
 
-* :issue:`2599`: Driving distance
+* :pr:`2599`: Driving distance
   cleanup
-* :issue:`2607`: Read postgresql
+* :pr:`2607`: Read postgresql
   data on C++
 * :issue:`2614`: Clang tidy does
   not work
@@ -1023,7 +1023,7 @@ To see all issues & pull requests closed by this release see the
 
 .. rubric:: Official functions changes
 
-* :issue:`2516`: Standardize output pgr_aStar
+* :pr:`2516`: Standardize output pgr_aStar
 
   * Standardize output columns to |short-generic-result|
 
@@ -1031,7 +1031,7 @@ To see all issues & pull requests closed by this release see the
     * pgr_aStar(One to Many) added ``end_vid`` column.
     * pgr_aStar(Many to One) added ``start_vid`` column.
 
-* :issue:`2523`: Standardize output pgr_bdAstar
+* :pr:`2523`: Standardize output pgr_bdAstar
 
   * Standardize output columns to |short-generic-result|
 
@@ -1039,13 +1039,13 @@ To see all issues & pull requests closed by this release see the
     * pgr_bdAstar(One to Many) added ``end_vid`` column.
     * pgr_bdAstar(Many to One) added ``start_vid`` column.
 
-* :issue:`2547`: Standardize output and modifying signature pgr_KSP
+* :pr:`2547`: Standardize output and modifying signature pgr_KSP
 
   .. include:: pgr_KSP.rst
      :start-after: Version 3.6.0
      :end-before: .. rubric
 
-* :issue:`2548`: Standardize output pgr_drivingDistance
+* :pr:`2548`: Standardize output pgr_drivingDistance
 
   .. include:: pgr_drivingDistance.rst
      :start-after: Version 3.6.0
@@ -1053,13 +1053,13 @@ To see all issues & pull requests closed by this release see the
 
 .. rubric:: Proposed functions changes
 
-* :issue:`2544`: Standardize output and modifying signature pgr_withPointsDD
+* :pr:`2544`: Standardize output and modifying signature pgr_withPointsDD
 
   .. include:: pgr_withPointsDD.rst
      :start-after: Version 3.6.0
      :end-before: .. rubric
 
-* :issue:`2546`: Standardize output and modifying signature pgr_withPointsKSP
+* :pr:`2546`: Standardize output and modifying signature pgr_withPointsKSP
 
   .. include:: pgr_withPointsKSP.rst
      :start-after: Version 3.6.0
@@ -1067,25 +1067,25 @@ To see all issues & pull requests closed by this release see the
 
 .. rubric:: C/C++ code enhancements
 
-* :issue:`2504`: To C++ pg data get,
+* :pr:`2504`: To C++ pg data get,
   fetch and check.
 
   * Stopping support for compilation with MSVC.
 
-* :issue:`2505`: Using namespace.
-* :issue:`2512`: [Dijkstra] Removing duplicate code on Dijkstra.
-* :issue:`2517`: Astar code simplification.
-* :issue:`2521`: Dijkstra code simplification.
-* :issue:`2522`: bdAstar code simplification.
+* :pr:`2505`: Using namespace.
+* :pr:`2512`: [Dijkstra] Removing duplicate code on Dijkstra.
+* :pr:`2517`: Astar code simplification.
+* :pr:`2521`: Dijkstra code simplification.
+* :pr:`2522`: bdAstar code simplification.
 
 .. rubric:: Documentation
 
-* :issue:`2490`: Automatic page
+* :pr:`2490`: Automatic page
   history links.
 
 * ..rubric:: Standardize SQL
 
-* :issue:`2555`: Standardize
+* :pr:`2555`: Standardize
   deprecated messages
 * On new internal function: do not use named parameters and default parameters.
 
@@ -1119,11 +1119,11 @@ Changes on the documentation to the following:
 
 .. rubric:: SQL enhancements
 
-* :issue:`2561`: Not use wildcards on SQL
+* :pr:`2561`: Not use wildcards on SQL
 
 .. rubric:: pgtap tests
 
-* :issue:`2559`: pgtap test using sampledata
+* :pr:`2559`: pgtap test using sampledata
 
 .. rubric:: Build fixes
 
@@ -1685,7 +1685,7 @@ To see all issues & pull requests closed by this release see the
 .. rubric:: Fixed Issues
 
 * :issue:`1153`: Renamed pgr_eucledianTSP to pgr_TSPeuclidean
-* :issue:`1188`: Removed CGAL dependency
+* :pr:`1188`: Removed CGAL dependency
 * :issue:`1002`: Fixed contraction issues:
 
   * :issue:`1004`: Contracts when forbidden vertices do not belong to graph
@@ -1851,10 +1851,10 @@ To see all issues & pull requests closed by this release see the
 
 .. rubric:: Bug fixes
 
-* :issue:`1219`: Implicit cast for via_path integer to text
-* :issue:`1193`: Fixed pgr_pointsAsPolygon breaking when comparing strings in
+* :pr:`1219`: Implicit cast for via_path integer to text
+* :pr:`1193`: Fixed pgr_pointsAsPolygon breaking when comparing strings in
   WHERE clause
-* :issue:`1185`: Improve FindPostgreSQL.cmake
+* :pr:`1185`: Improve FindPostgreSQL.cmake
 
 pgRouting 2.6.2 Release Notes
 -------------------------------------------------------------------------------
