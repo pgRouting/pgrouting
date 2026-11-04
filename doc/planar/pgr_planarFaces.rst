@@ -280,10 +280,8 @@ See Also
 
 * :doc:`pgr_isPlanar`
 * :doc:`sampledata`
-* Boost Graph Library: `Planar Face Traversal
-  <https://www.boost.org/libs/graph/doc/planar_face_traversal.html>`__
-* Boost Graph Library: `Boost: Boyer Myrvold planarity
-  <https://www.boost.org/libs/graph/doc/boyer_myrvold.html>`__
+* Boost Graph Library: :bgl:`Planar Face Traversal <algorithms/planar/planar_face_traversal.html>`
+* Boost Graph Library: :bgl:`Boost: Boyer Myrvold planarity <algorithms/planar/boyer_myrvold.html>`
 * Wikipedia: `Planar graph
   <https://en.wikipedia.org/wiki/Planar_graph>`__
 * Boyer, J. M. and Myrvold, W. J. (2004). On the Cutting Edge: Simplified O(n)
