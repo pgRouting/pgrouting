@@ -99,8 +99,7 @@ See Also
 
 * :doc:`components-family`
 * :doc:`sampledata`
-* `Boost: Strong components
-  <https://www.boost.org/libs/graph/doc/strong_components.html>`__
+* :bgl:`Boost: Strong components <algorithms/connected_components/strong_components.html>`
 * wikipedia: `Strongly connected component
   <https://en.wikipedia.org/wiki/Strongly_connected_component>`__
 
