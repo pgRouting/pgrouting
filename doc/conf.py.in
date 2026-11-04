@@ -62,6 +62,11 @@ autosectionlabel_prefix_document = True
 # Usage: :bgl:`Title <relative/path.html>`
 extlinks = {
         'bgl': ('https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/%s', None),
+        'pr': ('https://github.com/pgRouting/pgrouting/pulls/%s', 'PR #%s'),
+        'issue': ('https://github.com/pgRouting/pgrouting/issues/%s', 'Issue #%s'),
+        'milestone':
+        ('https://github.com/pgRouting/pgrouting/issues?utf8=%%E2%%9C%%93&q=milestone%%3A%%22Release%%20%s%%22',
+        'Milestone %s'),
         }
 
 graphviz_dot='neato'
@@ -327,18 +332,19 @@ pdf_stylesheets = ['sphinx','kerning','a4']
 # A list of folders to search for stylesheets. Example:
 pdf_style_path = ['.', '_styles']
 
-# Linkcheck configuration, see https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-the-linkcheck-builder
+
+#################
+# Linkcheck configuration,
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-the-linkcheck-builder
+#################
 
 # cases to ignore during link checking
 linkcheck_ignore = [
-    # link failing used in contraction-family
-    'https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf',
-
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
+    'https://github.com/pgRouting/pgrouting/commits',
     r'https://github\.com/.*'
     r'https://github.com/pgRouting/pgrouting/issues/*',    # limit only pgrouting
-    r'https://github.com/pgRouting/pgrouting/archive/*',
     r'https://docs.pgrouting.org/3.8/*',
     # Currently has a problem
     r'https://www.overpass-api.de/*',
@@ -347,7 +353,7 @@ linkcheck_ignore = [
 ]
 
 linkcheck_timeout = 20
-linkcheck_retries = 5
+linkcheck_retries = 2
 linkcheck_anchors = False
 
 rst_epilog="""
