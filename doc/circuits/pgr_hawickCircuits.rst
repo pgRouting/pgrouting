@@ -139,8 +139,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: Hawick Circuit Algorithm
-  <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__
+* :bgl:`Boost: Hawick Circuit Algorithm <cycle_detection/hawick_circuits.html>`
 
 .. rubric:: Indices and tables
 
