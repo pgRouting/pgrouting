@@ -7965,8 +7965,8 @@ msgstr "Grafo no dirigido con aristas antes de la optimización."
 msgid "Undirected graph with edges after optimization."
 msgstr "Grafo no dirigido con aristas tras la optimización."
 
-msgid "`Boost: bandwidth <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
-msgstr "`Boost: bandwidth <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
+msgid ":bgl:`Boost: bandwidth <algorithms/metrics/bandwidth.html>`"
+msgstr ":bgl:`Boost: bandwidth <algorithms/metrics/bandwidth.html>`"
 
 msgid "``pgr_bdAstar``"
 msgstr "``pgr_bdAstar``"
@@ -8286,8 +8286,8 @@ msgstr "``centrality``"
 msgid "Relative betweenness centrality score of the vertex (will be in range [0,1])"
 msgstr "Puntuación relativa de centralidad entre vértices (estará en el rango [0,1])"
 
-msgid "`Boost: betweenness centrality <https://www.boost.org/libs/graph/doc/betweenness_centrality.html>`_"
-msgstr "`Boost: Centralidad de intermediación <https://www.boost.org/libs/graph/doc/betweenness_centrality.html>`__"
+msgid ":bgl:`Boost: betweenness centrality <algorithms/metrics/betweenness_centrality.html>`"
+msgstr ":bgl:`Boost: Centralidad de intermediación <algorithms/metrics/betweenness_centrality.html>`_"
 
 msgid "``pgr_biconnectedComponents``"
 msgstr "``pgr_biconnectedComponents``"

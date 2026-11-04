@@ -7974,8 +7974,8 @@ msgstr "Oriktad graf med kanter före optimering."
 msgid "Undirected graph with edges after optimization."
 msgstr "Oriktad graf med kanter efter optimering."
 
-msgid "`Boost: bandwidth <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
-msgstr "`Boost: bandbredd <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
+msgid ":bgl:`Boost: bandwidth <algorithms/metrics/bandwidth.html>`"
+msgstr ":bgl:`Boost: bandbredd <algorithms/metrics/bandwidth.html>`"
 
 msgid "``pgr_bdAstar``"
 msgstr "``pgr_bdAstar``"
@@ -8295,8 +8295,8 @@ msgstr "``centrality``"
 msgid "Relative betweenness centrality score of the vertex (will be in range [0,1])"
 msgstr "Relativ betweenness centrality-punkt för vertexet (kommer att ligga inom intervallet [0,1])"
 
-msgid "`Boost: betweenness centrality <https://www.boost.org/libs/graph/doc/betweenness_centrality.html>`_"
-msgstr "`Boost: betweenness centrality <https://www.boost.org/libs/graph/doc/betweenness_centrality.html>`_"
+msgid ":bgl:`Boost: betweenness centrality <algorithms/metrics/betweenness_centrality.html>`"
+msgstr ":bgl:`Boost: betweenness centrality <algorithms/metrics/betweenness_centrality.html>`"
 
 msgid "``pgr_biconnectedComponents``"
 msgstr "``pgr_biconnectedComponents``"

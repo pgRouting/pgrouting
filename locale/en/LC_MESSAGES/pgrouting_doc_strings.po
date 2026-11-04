@@ -9401,7 +9401,7 @@ msgid "Undirected graph with edges after optimization."
 msgstr ""
 
 msgid ""
-"`Boost: bandwidth <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
+":bgl:`Boost: bandwidth <algorithms/metrics/bandwidth.html>`"
 msgstr ""
 
 msgid "``pgr_bdAstar``"

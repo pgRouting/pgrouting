@@ -8142,7 +8142,7 @@ msgstr ""
 msgid "Undirected graph with edges after optimization."
 msgstr ""
 
-msgid "`Boost: bandwidth <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
+msgid ":bgl:`Boost: bandwidth <algorithms/metrics/bandwidth.html>`"
 msgstr ""
 
 msgid "``pgr_bdAstar``"
@@ -8472,7 +8472,7 @@ msgstr "``centrality``"
 msgid "Relative betweenness centrality score of the vertex (will be in range [0,1])"
 msgstr ""
 
-msgid "`Boost: betweenness centrality <https://www.boost.org/libs/graph/doc/betweenness_centrality.html>`_"
+msgid ":bgl:`Boost: betweenness centrality <algorithms/metrics/betweenness_centrality.html>`"
 msgstr ""
 
 msgid "``pgr_biconnectedComponents``"

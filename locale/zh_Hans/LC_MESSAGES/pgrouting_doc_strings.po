@@ -8402,7 +8402,7 @@ msgid "Undirected graph with edges after optimization."
 msgstr "在有向图中，两条边都有方向性"
 
 #, fuzzy
-msgid "`Boost: bandwidth <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
+msgid ":bgl:`Boost: bandwidth <algorithms/metrics/bandwidth.html>`"
 msgstr "`Boost: 是否为二分图 <https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
 
 msgid "``pgr_bdAstar``"
@@ -8734,8 +8734,8 @@ msgstr "``centrality``"
 msgid "Relative betweenness centrality score of the vertex (will be in range [0,1])"
 msgstr "该节点的相对介数中心性得分（范围为 [0,1]）"
 
-msgid "`Boost: betweenness centrality <https://www.boost.org/libs/graph/doc/betweenness_centrality.html>`_"
-msgstr "`Boost: 介数中心性 <https://www.boost.org/libs/graph/doc/betweenness_centrality.html>`_"
+msgid ":bgl:`Boost: betweenness centrality <algorithms/metrics/betweenness_centrality.html>`"
+msgstr ":bgl:`Boost: 介数中心性 <algorithms/metrics/betweenness_centrality.html>`"
 
 msgid "``pgr_biconnectedComponents``"
 msgstr "``pgr_biconnectedComponents``"
