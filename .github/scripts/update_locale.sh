@@ -22,7 +22,7 @@ perl -ne '/\/en\// && print' build/doc/locale_changes_po.txt | \
 
 # Remove obsolete entries #~ from .po files
 find locale -type f -name '*.po' -exec sh -c '
-    msgattrib --no-obsolete -o "$1" "$1"
+    msgattrib --no-wrap --no-obsolete -o "$1" "$1"
   ' sh {} \;
 
 while read -r f; do git add "$f"; done < build/doc/locale_changes_po_pot.txt
