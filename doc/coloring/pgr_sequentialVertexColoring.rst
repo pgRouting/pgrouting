@@ -106,8 +106,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: Sequential Vertex Coloring
-  <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__
+* :bgl:`Boost: Sequential Vertex Coloring <algorithms/coloring/sequential_vertex_coloring.html>`
 * `Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__
 
 .. rubric:: Indices and tables
