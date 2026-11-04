@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) %Y pgRouting developers
+# Copyright (C) 2026 pgRouting developers
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-30 22:48+0000\n"
+"POT-Creation-Date: 2026-11-04 14:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3721,6 +3721,9 @@ msgstr ""
 msgid "`#3143 <https://github.com/pgRouting/pgrouting/issues/3143>`__: pgr_planarFaces"
 msgstr ""
 
+msgid "`#3171 <https://github.com/pgRouting/pgrouting/issues/3171>`__: pgr_hawickUniqueCircuits: new functionality"
+msgstr ""
+
 msgid "4.1.0 Code enhancements"
 msgstr ""
 
@@ -3770,9 +3773,6 @@ msgid "`#3163 <https://github.com/pgRouting/pgrouting/issues/3163>`__: KSP & KSP
 msgstr ""
 
 msgid "`#3170 <https://github.com/pgRouting/pgrouting/issues/3170>`__: pgr_hawickCircuits: wrong Boost function referenced"
-msgstr ""
-
-msgid "`#3171 <https://github.com/pgRouting/pgrouting/issues/3171>`__: pgr_hawickUniqueCircuits: new functionality"
 msgstr ""
 
 msgid "4.1.0 Bug Fixes"
@@ -10840,9 +10840,6 @@ msgstr ""
 msgid "When start vertices are given, all circuits are returned for each requested vertex it contains, and the results are grouped by ``start_vid``."
 msgstr ""
 
-msgid "The graph passed to the algorithm discard parallel edges with higher costs."
-msgstr ""
-
 msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
 msgstr ""
 
@@ -10900,7 +10897,7 @@ msgstr ""
 msgid "Exclude self loops."
 msgstr ""
 
-msgid "Exclude self loops and U-turn on the same edge."
+msgid "Exclude self loops and avoid U-turns when possible."
 msgstr ""
 
 msgid "``pgr_hawickUniqueCircuits`` - Experimental"
@@ -10909,7 +10906,13 @@ msgstr ""
 msgid "``pgr_hawickUniqueCircuits`` — Returns the list of unique circuits using hawick circuits algorithm."
 msgstr ""
 
-msgid "Circuit enumeration in directed graphs, where parallel circuits are listed only once."
+msgid "Circuit enumeration in directed graphs, where circuits that traverse the same sequence of vertices are listed only once."
+msgstr ""
+
+msgid "When a circuit has parallel arcs, the expansion with the minimum cost is kept."
+msgstr ""
+
+msgid "When ``u_turn_on_edge`` is ``false`` and the circuit can be formed with two different edges, the U-turn on the same edge is discarded, and a parallel arc that is not the minimum cost is used."
 msgstr ""
 
 msgid "pgr_hawickUniqueCircuits(`Edges SQL`_ [, **options**])"
@@ -10964,18 +10967,6 @@ msgid "blue is :math:`path\\_id = 4`"
 msgstr ""
 
 msgid "orange is :math:`path\\_id = 5`"
-msgstr ""
-
-msgid "red is :math:`path\\_id = 1`"
-msgstr ""
-
-msgid "green is :math:`path\\_id = 2`"
-msgstr ""
-
-msgid "blue is :math:`path\\_id = 3`"
-msgstr ""
-
-msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
 msgstr ""
 
 msgid "``pgr_isPlanar`` - Experimental"
