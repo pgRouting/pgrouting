@@ -16615,9 +16615,6 @@ msgstr "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 #~ msgid "``pgr_dijkstraNearCost`` - Proposed"
 #~ msgstr "``pgr_dijkstraNearCost`` - Förslag"
 
-#~ msgid ":bgl:`Boost: floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
-#~ msgstr ":bgl:`Boost: floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
-
 #, fuzzy
 #~ msgid "``pgr_kingOrdering`` — Returns the King ordering of an undirected graphs"
 #~ msgstr "``pgr_cuthillMckeeOrdering`` - Returnerar den omvända Cuthill-Mckee-ordningen för en ostyrd graf"
