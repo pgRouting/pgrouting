@@ -114,7 +114,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: transitive closure <https://www.boost.org/libs/graph/doc/transitive_closure.html>`__
+* :bgl:`Boost: transitive closure <algorithms/utility/transitive_closure.html>`
 * https://en.wikipedia.org/wiki/Transitive_closure
 
 .. rubric:: Indices and tables
