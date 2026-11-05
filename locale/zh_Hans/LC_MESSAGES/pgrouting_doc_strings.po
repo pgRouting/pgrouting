@@ -254,11 +254,11 @@ msgstr "从 ``start_vid`` 到 ``node`` 的总成本。"
 msgid "See Also"
 msgstr "另请参阅"
 
-msgid "`Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
-msgstr "`Boost: Prim算法 <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+msgid ":bgl:`Boost: Prim's algorithm <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
+msgstr ":bgl:`Boost: Prim算法 <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
 
-msgid "`Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
-msgstr "`Boost: Kruskal算法 <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+msgid ":bgl:`Boost: Kruskal's algorithm <algorithms/spanning_trees/kruskal_min_spanning_tree.html>`"
+msgstr ":bgl:`Boost: Kruskal算法 <algorithms/spanning_trees/kruskal_min_spanning_tree.html>`"
 
 msgid "`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr "`维基百科: Prim算法 <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
@@ -578,8 +578,8 @@ msgstr "当 ``NOT 0`` 且 ``start_id = 0`` 时，它是第一个和最后一个�
 msgid "References"
 msgstr "参考"
 
-msgid "`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
-msgstr "`Boost: 度量旅行商问题近似算法 <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgid ":bgl:`Boost: metric TSP approx <algorithms/utility/metric_tsp_approx.html>`"
+msgstr ":bgl:`Boost: 度量旅行商问题近似算法 <algorithms/utility/metric_tsp_approx.html>`"
 
 msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
 msgstr "`滑铁卢大学TSP研究 <https://www.math.uwaterloo.ca/tsp/>`__"
@@ -2458,7 +2458,7 @@ msgstr "预计终止速度比 pgr_dijkstra 更快"
 
 #, fuzzy
 msgid "`Boost  <https://www.boost.org/libs/graph/doc>`__"
-msgstr "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
+msgstr ":bgl:`Boost: <algorithms/coloring/coloring_overview.html>`"
 
 #, fuzzy
 msgid "Chinese Postman Problem - Family of functions"
@@ -2523,8 +2523,8 @@ msgstr "边的标识符。"
 msgid "Color of the node."
 msgstr "边的几何形状。"
 
-msgid "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
-msgstr "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
+msgid ":bgl:`Boost: <algorithms/coloring/coloring_overview.html>`"
+msgstr ":bgl:`Boost: <algorithms/coloring/coloring_overview.html>`"
 
 msgid "Components - Family of functions"
 msgstr "分量 - 函数族"
@@ -7845,8 +7845,8 @@ msgstr "可用性："
 msgid "Version 3.2.1"
 msgstr "版本3.2.1"
 
-msgid "Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
-msgstr "`Boost库 <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__ 中的度量算法"
+msgid "Metric Algorithm from :bgl:`Boost library <algorithms/utility/metric_tsp_approx.html>`"
+msgstr ":bgl:`Boost库 <algorithms/utility/metric_tsp_approx.html>` 中的度量算法"
 
 msgid "Simulated Annealing Algorithm no longer supported"
 msgstr "Simulated Annealing算法不再受支持"
@@ -8037,8 +8037,8 @@ msgstr "``pgr_TSPeuclidean``"
 msgid "``pgr_TSPeuclidean`` - Approximation using *metric* algorithm."
 msgstr "``pgr_TSPeuclidean`` - 使用 *metric* 算法进行近似计算。"
 
-msgid "Using `Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
-msgstr "使用 `Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgid "Using :bgl:`Boost: metric TSP approx <algorithms/utility/metric_tsp_approx.html>`"
+msgstr "使用 :bgl:`Boost: metric TSP approx <algorithms/utility/metric_tsp_approx.html>`"
 
 msgid "Name change from pgr_eucledianTSP"
 msgstr "pgr_eucledianTSP 的名称更改"
@@ -8341,8 +8341,8 @@ msgstr "红色节点是关节点。"
 msgid "Identifier of the vertex."
 msgstr "顶点的标识符。"
 
-msgid "`Boost: Biconnected components & articulation points <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__"
-msgstr "`Boost: 双连通分量与割点 <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__"
+msgid ":bgl:`Boost: Biconnected components & articulation points <algorithms/connected_components/biconnected_components.html>`"
+msgstr ":bgl:`Boost: 双连通分量与割点 <algorithms/connected_components/biconnected_components.html>`"
 
 msgid "wikipedia: `Biconnected component <https://en.wikipedia.org/wiki/Biconnected_component>`__"
 msgstr "维基百科: `双连通分量 <https://en.wikipedia.org/wiki/Biconnected_component>`__"
@@ -8403,7 +8403,7 @@ msgstr "在有向图中，两条边都有方向性"
 
 #, fuzzy
 msgid ":bgl:`Boost: bandwidth <algorithms/metrics/bandwidth.html>`"
-msgstr "`Boost: 是否为二分图 <https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
+msgstr ":bgl:`Boost: 是否为二分图 <is_bipartite.htm>`"
 
 msgid "``pgr_bdAstar``"
 msgstr "``pgr_bdAstar``"
@@ -8662,8 +8662,8 @@ msgstr "在 **无向** 图上从顶点 :math:`\\{6, 1\\}` 到顶点 :math:`\\{10
 msgid "Using a combinations table on an undirected graph"
 msgstr "在无向图上使用组合表。"
 
-msgid "`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__"
-msgstr "`Boost: Belman Ford <https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__"
+msgid ":bgl:`Boost: Bellman Ford <algorithms/shortest_paths/bellman_ford_shortest.html>`"
+msgstr ":bgl:`Boost: Belman Ford <algorithms/shortest_paths/bellman_ford_shortest.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
@@ -8828,8 +8828,8 @@ msgstr "pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, [``direc
 msgid "**Note:** Using the :doc:`sampledata` Network as all weights are same (i.e :math:`1``)"
 msgstr "**注意:** 使用 :doc:`sampledata` 网络，因为所有权重都相同 (即为 :math:`1`)"
 
-msgid "`Boost: Breadth First Search <https://www.boost.org/libs/graph/doc/breadth_first_search.html>`__"
-msgstr "`Boost: 广度优先搜索 <https://www.boost.org/libs/graph/doc/breadth_first_search.html>`__"
+msgid ":bgl:`Boost: Breadth First Search <algorithms/traversal/breadth_first_search.html>`"
+msgstr ":bgl:`Boost: 广度优先搜索 <algorithms/traversal/breadth_first_search.html>`"
 
 msgid "https://cp-algorithms.com/graph/01_bfs.html"
 msgstr "https://cp-algorithms.com/graph/01_bfs.html"
@@ -8876,8 +8876,8 @@ msgstr "边 :math:`5 \\rightarrow 1` 将使顶点为 :math:`\\{1, 3, 7, 6, 5\\}`
 msgid "Edges in blue represent odd length cycle subgraph."
 msgstr "蓝色边代表奇数长度循环子图。"
 
-msgid "`Boost: is_bipartite <https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
-msgstr "`Boost: 是否为二分图 <https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
+msgid ":bgl:`Boost: is_bipartite <is_bipartite.htm>`"
+msgstr ":bgl:`Boost: 是否为二分图 <is_bipartite.htm>`"
 
 msgid "`Wikipedia: bipartite graph <https://en.wikipedia.org/wiki/Bipartite_graph>`__"
 msgstr "`维基百科：二分图 <https://en.wikipedia.org/wiki/Bipartite_graph>`__"
@@ -8933,8 +8933,8 @@ msgstr "从顶点 :math:`\\{11, 3, 17\\}` 到顶点 :math:`\\{5, 10, 12\\}`"
 msgid "Using a combinations table, equivalent to calculating result from vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}`."
 msgstr "使用组合表，相当于计算从顶点 :math:`\\{5, 6\\}` 到顶点 :math:`{\\10, 15, 14\\}` 的结果。"
 
-msgid "`Boost: Boykov Kolmogorov max flow <https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html>`__"
-msgstr "`Boost: Boykov-Kolmogorov 最大流算法 <https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html>`__"
+msgid ":bgl:`Boost: Boykov Kolmogorov max flow <algorithms/network_flow/boykov_kolmogorov_max_flow.html>`"
+msgstr ":bgl:`Boost: Boykov-Kolmogorov 最大流算法 <algorithms/network_flow/boykov_kolmogorov_max_flow.html>`"
 
 msgid "``pgr_breadthFirstSearch`` - Experimental"
 msgstr "``pgr_breadthFirstSearch`` - 实验性"
@@ -9030,8 +9030,8 @@ msgstr "作为桥的边的标识符。"
 msgid "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 msgstr "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 
-msgid "`Boost: Connected components <https://www.boost.org/libs/graph/doc/connected_components.html>`__"
-msgstr "`Boost: 已连接的组件 <https://www.boost.org/libs/graph/doc/connected_components.html>`__"
+msgid ":bgl:`Boost: Connected components <algorithms/connected_components/connected_components.html>`"
+msgstr ":bgl:`Boost: 已连接的组件 <algorithms/connected_components/connected_components.html>`"
 
 msgid "``pgr_chinesePostman`` - Experimental"
 msgstr "``pgr_chinesePostman`` - 实验性"
@@ -9984,8 +9984,8 @@ msgstr "从1开始的顺序序列。"
 msgid "New ordering in reverse order."
 msgstr "新的逆序排列。"
 
-msgid "`Boost: Cuthill-McKee Ordering <https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html>`__"
-msgstr "`Boost: Cuthill-McKee 排序 <https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html>`__"
+msgid ":bgl:`Boost: Cuthill-McKee Ordering <algorithms/ordering/cuthill_mckee_ordering.html>`"
+msgstr ":bgl:`Boost: Cuthill-McKee 排序 <algorithms/ordering/cuthill_mckee_ordering.html>`"
 
 msgid "`Wikipedia: Cuthill-McKee Ordering <https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm>`__"
 msgstr "`Wikipedia: Cuthill-McKee 排序 <https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm>`__"
@@ -10053,8 +10053,8 @@ msgstr "返回列"
 msgid "Making **start_vids** the same as **end_vids**"
 msgstr "使 **start_vids** 与 **end_vids** 相同"
 
-msgid "`Boost: DAG shortest paths <https://www.boost.org/libs/graph/doc/dag_shortest_paths.html>`__"
-msgstr "`Boost: DAG最短路径DAG 最短路径 <https://www.boost.org/libs/graph/doc/dag_shortest_paths.html>`__"
+msgid ":bgl:`Boost: DAG shortest paths <algorithms/shortest_paths/dag_shortest_paths.html>`"
+msgstr ":bgl:`Boost: DAG最短路径DAG 最短路径 <algorithms/shortest_paths/dag_shortest_paths.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Topological_sorting"
 msgstr "https://en.wikipedia.org/wiki/Topological_sorting"
@@ -10296,11 +10296,11 @@ msgstr "**options:** ``[directed, max_depth]``"
 msgid "Same as `Single vertex`_ but with edges in descending order of ``id``."
 msgstr "与 `单个顶点`_ 相同，但边按 ``id`` 降序排列。"
 
-msgid "`Boost: Depth First Search <https://www.boost.org/libs/graph/doc/depth_first_search.html>`__"
-msgstr "`Boost: 深度优先搜索 <https://www.boost.org/libs/graph/doc/depth_first_search.html>`__"
+msgid ":bgl:`Boost: Depth First Search <algorithms/traversal/depth_first_search.html>`"
+msgstr ":bgl:`Boost: 深度优先搜索 <algorithms/traversal/depth_first_search.html>`"
 
-msgid "`Boost: Undirected DFS <https://www.boost.org/libs/graph/doc/undirected_dfs.html>`__"
-msgstr "`Boost: 非定向 DFS <https://www.boost.org/libs/graph/doc/undirected_dfs.html>`__"
+msgid ":bgl:`Boost: Undirected DFS <algorithms/traversal/undirected_dfs.html>`"
+msgstr ":bgl:`Boost: 非定向 DFS <algorithms/traversal/undirected_dfs.html>`"
 
 msgid "`Wikipedia: Depth First Search algorithm <https://en.wikipedia.org/wiki/Depth-first_search>`__"
 msgstr "`维基百科：深度优先搜索算法 <https://en.wikipedia.org/wiki/Depth-first_search>`__"
@@ -10512,8 +10512,8 @@ msgstr "36) 使用 `Many to Many`_"
 msgid "37) Using `Combinations`_"
 msgstr "37) 使用 `组合`_"
 
-msgid "`Boost: Dijkstra shortest paths <https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html>`__"
-msgstr "`Boost: Dijkstra最短路径Dijkstra 最短路径 <https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html>`__"
+msgid ":bgl:`Boost: Dijkstra shortest paths <algorithms/shortest_paths/dijkstra_shortest_paths.html>`"
+msgstr ":bgl:`Boost: Dijkstra最短路径Dijkstra 最短路径 <algorithms/shortest_paths/dijkstra_shortest_paths.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
@@ -11025,8 +11025,8 @@ msgstr "pgr_edgeColoring(`Edges SQL`_)"
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
 msgstr "pgRouting :doc:`sampledata` 的图形着色"
 
-msgid "`Boost: Edge Coloring <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
-msgstr "`Boost: 边着色 <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
+msgid ":bgl:`Boost: Edge Coloring <algorithms/coloring/edge_coloring.html>`"
+msgstr ":bgl:`Boost: 边着色 <algorithms/coloring/edge_coloring.html>`"
 
 msgid "`Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr "`维基百科：图着色 <https://en.wikipedia.org/wiki/Graph_coloring>`__"
@@ -11106,8 +11106,8 @@ msgstr "pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vids**)"
 msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 msgstr "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 
-msgid "`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html>`__"
-msgstr "`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html>`__"
+msgid ":bgl:`Boost: Edmonds Karp max flow <algorithms/network_flow/edmonds_karp_max_flow.html>`"
+msgstr ":bgl:`Boost: Edmonds Karp max flow <algorithms/network_flow/edmonds_karp_max_flow.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
@@ -11659,8 +11659,8 @@ msgstr "电路结束顶点的标识符。"
 msgid "Identifier of the node in the path from a vid to next vid."
 msgstr "从 vid 到下一个 vid 的路径中节点的标识符。"
 
-msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
-msgstr "`Boost：Hawick 电路算法 <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+msgid ":bgl:`Boost: Hawick Circuit Algorithm <algorithms/cycle_detection/hawick_circuits.html>`"
+msgstr ":bgl:`Boost：Hawick 电路算法 <algorithms/cycle_detection/hawick_circuits.html>`"
 
 msgid "``pgr_isPlanar`` - Experimental"
 msgstr "``pgr_isPlanar`` - 实验性"
@@ -11710,8 +11710,8 @@ msgstr "以下边将构成具有顶点 {10, 15, 11, 16, 13} 的子图，这个�
 msgid "The new graph is not planar because it has a :math:`K_5` subgraph. Edges in blue represent :math:`K_5` subgraph."
 msgstr "新图不是平面图，因为它具有一个 :math:`K_5` 子图。蓝色的边代表 :math:`K_5` 子图。"
 
-msgid "`Boost: Boyer Myrvold <https://www.boost.org/libs/graph/doc/boyer_myrvold.html>`__"
-msgstr "`Boost: Boyer-Myrvold 算法 <https://www.boost.org/libs/graph/doc/boyer_myrvold.html>`__"
+msgid ":bgl:`Boost: Boyer Myrvold <algorithms/planar/boyer_myrvold.html>`"
+msgstr ":bgl:`Boost: Boyer-Myrvold 算法 <algorithms/planar/boyer_myrvold.html>`"
 
 msgid "``pgr_johnson``"
 msgstr "``pgr_johnson``"
@@ -11767,8 +11767,8 @@ msgid "pgr_kingOrdering(`Edges SQL`_)"
 msgstr "pgr_edgeColoring(`Edges SQL`_)"
 
 #, fuzzy
-msgid "`Boost: King Ordering <https://www.boost.org/libs/graph/doc/king_ordering.html>`__"
-msgstr "`Boost: 边着色 <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
+msgid ":bgl:`Boost: King Ordering <algorithms/ordering/king_ordering.html>`"
+msgstr ":bgl:`Boost: 边着色 <algorithms/coloring/edge_coloring.html>`"
 
 msgid "``pgr_kruskal``"
 msgstr "``pgr_kruskal``"
@@ -11911,8 +11911,8 @@ msgstr "顶点的直接支配者。"
 msgid "Dominator tree of another component."
 msgstr "另一个组件的支配树。"
 
-msgid "`Boost: Lengauer-Tarjan dominator <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__"
-msgstr "`Boost: Lengauer-Tarjan 支配者算法 <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__"
+msgid ":bgl:`Boost: Lengauer-Tarjan dominator <algorithms/utility/lengauer_tarjan_dominator.html>`"
+msgstr ":bgl:`Boost: Lengauer-Tarjan 支配者算法 <algorithms/utility/lengauer_tarjan_dominator.html>`"
 
 msgid "`Wikipedia: dominator tree <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
 msgstr "`维基百科:支配树 <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
@@ -12310,8 +12310,8 @@ msgstr "返回结果 |result-component-make|"
 msgid "List of edges that are needed to connect the graph."
 msgstr "连接图形所需的边线列表。"
 
-msgid "`Boost: make connected <https://www.boost.org/libs/graph/doc/make_connected.html>`__"
-msgstr "`Boost: 使图连通 <https://www.boost.org/libs/graph/doc/make_connected.html>`__"
+msgid ":bgl:`Boost: make connected <algorithms/planar/make_connected.html>`"
+msgstr ":bgl:`Boost: 使图连通 <algorithms/planar/make_connected.html>`"
 
 msgid "``pgr_maxCardinalityMatch``"
 msgstr "``pgr_maxCardinalityMatch``"
@@ -12367,8 +12367,8 @@ msgstr "正值表示存在边 (``target``, ``source``)"
 msgid "Identifier of the edge in the original query."
 msgstr "原始查询中边的标识符。"
 
-msgid "`Boost: maximum_matching <https://www.boost.org/libs/graph/doc/maximum_matching.html>`__"
-msgstr "`Boost: 最大匹配 <https://www.boost.org/libs/graph/doc/maximum_matching.html>`__"
+msgid ":bgl:`Boost: maximum_matching <algorithms/network_flow/maximum_matching.html>`"
+msgstr ":bgl:`Boost: 最大匹配 <algorithms/network_flow/maximum_matching.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Matching_%28graph_theory%29"
 msgstr "https://en.wikipedia.org/wiki/Matching_%28graph_theory%29"
@@ -12418,8 +12418,8 @@ msgstr "返回 ``BIGINT``"
 msgid "Maximum flow possible from the source(s) to the target(s)"
 msgstr "从 source(s)到 target(s)的可能最大流量"
 
-msgid "`Boost: push relabel max flow <https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html>`__"
-msgstr "`Boost: 推-重标最大流算法 <https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html>`__"
+msgid ":bgl:`Boost: push relabel max flow <algorithms/network_flow/push_relabel_max_flow.html>`"
+msgstr ":bgl:`Boost: 推-重标最大流算法 <algorithms/network_flow/push_relabel_max_flow.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
@@ -12728,8 +12728,8 @@ msgstr "pgr_prim(`Edges SQL`_)"
 msgid "Minimum spanning forest of a subgraph"
 msgstr "子图的最小生成森林"
 
-msgid "`Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
-msgstr "`Boost: Prim算法文档 <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+msgid ":bgl:`Boost: Prim's algorithm documentation <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
+msgstr ":bgl:`Boost: Prim算法文档 <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
 
 msgid "``pgr_primBFS`` — Prim's algorithm for Minimum Spanning Tree with Depth First Search ordering."
 msgstr "``pgr_primBFS`` — Prim 的深度优先搜索排序最小生成树算法。"
@@ -12881,8 +12881,8 @@ msgstr ":math:`k` 是使用的颜色数量。"
 msgid "pgr_sequentialVertexColoring(`Edges SQL`_)"
 msgstr "pgr_sequentialVertexColoring(`Edges SQL`_)"
 
-msgid "`Boost: Sequential Vertex Coloring <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
-msgstr "`Boost: 顺序顶点着色 <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
+msgid ":bgl:`Boost: Sequential Vertex Coloring <algorithms/coloring/sequential_vertex_coloring.html>`"
+msgstr ":bgl:`Boost: 顺序顶点着色 <algorithms/coloring/sequential_vertex_coloring.html>`"
 
 #, fuzzy
 msgid "``pgr_sloanOrdering`` - Experimental"
@@ -12925,8 +12925,8 @@ msgid "Sloan ordering of Original graph from Boost example (vertices 0-9)."
 msgstr ""
 
 #, fuzzy
-msgid "`Boost: Sloan Ordering <https://www.boost.org/doc/libs/latest/libs/graph/doc/sloan_ordering.htm>`__"
-msgstr "`Boost: 边着色 <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
+msgid ":bgl:`Boost: Sloan Ordering <algorithms/ordering/sloan_ordering.html>`"
+msgstr ":bgl:`Boost: 边着色 <algorithms/coloring/edge_coloring.html>`"
 
 msgid "``pgr_stoerWagner`` - Experimental"
 msgstr "``pgr_stoerWagner`` - 实验性"
@@ -12997,8 +12997,8 @@ msgstr "边的最小割"
 msgid "Using :doc:`pgr_connectedComponents`"
 msgstr "使用 :doc:`pgr_connectedComponents`"
 
-msgid "`Boost: Stoer Wagner min cut <https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html>`__"
-msgstr "`Boost: Stoer-Wagner 最小割算法 <https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html>`__"
+msgid ":bgl:`Boost: Stoer Wagner min cut <algorithms/network_flow/stoer_wagner_min_cut.html>`"
+msgstr ":bgl:`Boost: Stoer-Wagner 最小割算法 <algorithms/network_flow/stoer_wagner_min_cut.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm"
@@ -13024,8 +13024,8 @@ msgstr "pgr_strongComponents(`Edges SQL`_)"
 msgid "The strong components of the graph"
 msgstr "图的重要组成部分"
 
-msgid "`Boost: Strong components <https://www.boost.org/libs/graph/doc/strong_components.html>`__"
-msgstr "`Boost: 强连通分量 <https://www.boost.org/libs/graph/doc/strong_components.html>`__"
+msgid ":bgl:`Boost: Strong components <algorithms/connected_components/strong_components.html>`"
+msgstr ":bgl:`Boost: 强连通分量 <algorithms/connected_components/strong_components.html>`"
 
 msgid "wikipedia: `Strongly connected component <https://en.wikipedia.org/wiki/Strongly_connected_component>`__"
 msgstr "维基百科: `强连通分量 <https://en.wikipedia.org/wiki/Strongly_connected_component>`__"
@@ -13072,8 +13072,8 @@ msgstr "对单向段进行拓扑排序"
 msgid "Graph is not a DAG"
 msgstr "图不是 DAG"
 
-msgid "`Boost: topological sort <https://www.boost.org/libs/graph/doc/topological_sort.html>`__"
-msgstr "`Boost: 拓扑排序 <https://www.boost.org/libs/graph/doc/topological_sort.html>`__"
+msgid ":bgl:`Boost: topological sort <algorithms/topological_sort/topological_sort.html>`"
+msgstr ":bgl:`Boost: 拓扑排序 <algorithms/topological_sort/topological_sort.html>`"
 
 msgid "``pgr_transitiveClosure`` - Experimental"
 msgstr "``pgr_transitiveClosure`` - 实验性"
@@ -13126,8 +13126,8 @@ msgstr "边目标的标识符"
 msgid "Identifiers of the vertices that are reachable from vertex v."
 msgstr "从顶点 v 可到达的顶点的标识符。"
 
-msgid "`Boost: transitive closure <https://www.boost.org/libs/graph/doc/transitive_closure.html>`__"
-msgstr "`Boost: 传递闭包 <https://www.boost.org/libs/graph/doc/transitive_closure.html>`__"
+msgid ":bgl:`Boost: transitive closure <algorithms/utility/transitive_closure.html>`"
+msgstr ":bgl:`Boost: 传递闭包 <algorithms/utility/transitive_closure.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Transitive_closure"
 msgstr "https://en.wikipedia.org/wiki/Transitive_closure"
@@ -13977,8 +13977,8 @@ msgstr "该算法在可能不连通的图中找到最小生成森林； 相反�
 msgid "From boost Graph: \"The algorithm as implemented in Boost.Graph does not produce correct results on graphs with parallel edges.\""
 msgstr "来自 boost Graph：“Boost.Graph 中实现的算法不会在具有平行边的图上产生正确的结果。”"
 
-msgid "Boost: `Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
-msgstr "Boost: `Prim算法 <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+msgid "Boost: :bgl:`Prim's algorithm <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
+msgstr "Boost: :bgl:`Prim算法 <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
 
 msgid "Wikipedia: `Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr "维基百科: `Prim算法 <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"

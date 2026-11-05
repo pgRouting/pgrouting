@@ -249,11 +249,11 @@ msgstr "Sammanlagd kostnad från ``start_vid`` till ``node``."
 msgid "See Also"
 msgstr "Se även"
 
-msgid "`Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
-msgstr "`Boost: Prims algoritm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+msgid ":bgl:`Boost: Prim's algorithm <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
+msgstr ":bgl:`Boost: Prims algoritm <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
 
-msgid "`Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
-msgstr "`Boost: Kruskals algoritm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+msgid ":bgl:`Boost: Kruskal's algorithm <algorithms/spanning_trees/kruskal_min_spanning_tree.html>`"
+msgstr ":bgl:`Boost: Kruskals algoritm <algorithms/spanning_trees/kruskal_min_spanning_tree.html>`"
 
 msgid "`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr "`Wikipedia: Prims algoritm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
@@ -567,8 +567,8 @@ msgstr "När ``NOT 0`` och ``start_id = 0`` är det den första och sista toppun
 msgid "References"
 msgstr "Referenser"
 
-msgid "`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
-msgstr "`Boost: metrisk TSP ca <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgid ":bgl:`Boost: metric TSP approx <algorithms/utility/metric_tsp_approx.html>`"
+msgstr ":bgl:`Boost: metrisk TSP ca <algorithms/utility/metric_tsp_approx.html>`"
 
 msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
 msgstr "universitetet i Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
@@ -2502,8 +2502,8 @@ msgstr "Identifierare för noden."
 msgid "Color of the node."
 msgstr "Färg på noden."
 
-msgid "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
-msgstr "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
+msgid ":bgl:`Boost: <algorithms/coloring/coloring_overview.html>`"
+msgstr ":bgl:`Boost: <algorithms/coloring/coloring_overview.html>`"
 
 msgid "Components - Family of functions"
 msgstr "Komponenter - Familj av funktioner"
@@ -7431,8 +7431,8 @@ msgstr "Tillgänglighet:"
 msgid "Version 3.2.1"
 msgstr "Version 3.2.1"
 
-msgid "Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
-msgstr "Metrisk algoritm från `Boost-biblioteket <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgid "Metric Algorithm from :bgl:`Boost library <algorithms/utility/metric_tsp_approx.html>`"
+msgstr "Metrisk algoritm från :bgl:`Boost-biblioteket <algorithms/utility/metric_tsp_approx.html>`"
 
 msgid "Simulated Annealing Algorithm no longer supported"
 msgstr "Simulated Annealing Algorithm stöds inte längre"
@@ -7620,8 +7620,8 @@ msgstr "``pgr_TSPeuclidean``"
 msgid "``pgr_TSPeuclidean`` - Approximation using *metric* algorithm."
 msgstr "``pgr_TSPeuclidean`` - Approximation med hjälp av *metrisk* algoritm."
 
-msgid "Using `Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
-msgstr "Använda `Boost: metrisk TSP ca <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgid "Using :bgl:`Boost: metric TSP approx <algorithms/utility/metric_tsp_approx.html>`"
+msgstr "Använda :bgl:`Boost: metrisk TSP ca <algorithms/utility/metric_tsp_approx.html>`"
 
 msgid "Name change from pgr_eucledianTSP"
 msgstr "Namnändring från pgr_eucledianTSP"
@@ -7923,8 +7923,8 @@ msgstr "Rödmarkerade noder är artikulationspunkterna."
 msgid "Identifier of the vertex."
 msgstr "Identifierare för toppunkten."
 
-msgid "`Boost: Biconnected components & articulation points <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__"
-msgstr "`Boost: Biconnected komponenter & ledpunkter <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__"
+msgid ":bgl:`Boost: Biconnected components & articulation points <algorithms/connected_components/biconnected_components.html>`"
+msgstr ":bgl:`Boost: Biconnected komponenter & ledpunkter <algorithms/connected_components/biconnected_components.html>`"
 
 msgid "wikipedia: `Biconnected component <https://en.wikipedia.org/wiki/Biconnected_component>`__"
 msgstr "wikipedia: `Sammankopplad komponent <https://en.wikipedia.org/wiki/Biconnected_component>`__"
@@ -8223,8 +8223,8 @@ msgstr "Från hörn :math:`\\{6, 1\\}` till hörn :math:`\\{10, 17\\}` på en od
 msgid "Using a combinations table on an undirected graph"
 msgstr "Använda en kombinationstabell på en ostyrd graf"
 
-msgid "`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__"
-msgstr "`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__"
+msgid ":bgl:`Boost: Bellman Ford <algorithms/shortest_paths/bellman_ford_shortest.html>`"
+msgstr ":bgl:`Boost: Bellman Ford <algorithms/shortest_paths/bellman_ford_shortest.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
@@ -8388,8 +8388,8 @@ msgstr "pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, [``direc
 msgid "**Note:** Using the :doc:`sampledata` Network as all weights are same (i.e :math:`1``)"
 msgstr "**Anmärkning:** Använda :doc:`sampledata` Network eftersom alla vikter är desamma (dvs :math:`1``)"
 
-msgid "`Boost: Breadth First Search <https://www.boost.org/libs/graph/doc/breadth_first_search.html>`__"
-msgstr "`Boost: Bredd först Sök <https://www.boost.org/libs/graph/doc/breadth_first_search.html>`__"
+msgid ":bgl:`Boost: Breadth First Search <algorithms/traversal/breadth_first_search.html>`"
+msgstr ":bgl:`Boost: Bredd först Sök <algorithms/traversal/breadth_first_search.html>`"
 
 msgid "https://cp-algorithms.com/graph/01_bfs.html"
 msgstr "https://cp-algorithms.com/graph/01_bfs.html"
@@ -8436,8 +8436,8 @@ msgstr "Kanten :math:`5 \\rightarrow 1` kommer att göra undergrafen med hörn :
 msgid "Edges in blue represent odd length cycle subgraph."
 msgstr "Kanter i blått representerar cykelundergraf med udda längd."
 
-msgid "`Boost: is_bipartite <https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
-msgstr "`Boost: is_bipartite <https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
+msgid ":bgl:`Boost: is_bipartite <is_bipartite.htm>`"
+msgstr ":bgl:`Boost: is_bipartite <is_bipartite.htm>`"
 
 msgid "`Wikipedia: bipartite graph <https://en.wikipedia.org/wiki/Bipartite_graph>`__"
 msgstr "`Wikipedia: bipartitgraf <https://en.wikipedia.org/wiki/Bipartite_graph>`__"
@@ -8493,8 +8493,8 @@ msgstr "Från topparna :math:`{11, 3, 17\\}` till topparna :math:`{5, 10, 12\\}`
 msgid "Using a combinations table, equivalent to calculating result from vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}`."
 msgstr "Att använda en kombinationstabell motsvarar att beräkna resultatet från topparna :math:`\\{5, 6\\}` till topparna :math:`\\{10, 15, 14\\}`."
 
-msgid "`Boost: Boykov Kolmogorov max flow <https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html>`__"
-msgstr "`Boost: Boykov Kolmogorov maxflöde <https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html>`__"
+msgid ":bgl:`Boost: Boykov Kolmogorov max flow <algorithms/network_flow/boykov_kolmogorov_max_flow.html>`"
+msgstr ":bgl:`Boost: Boykov Kolmogorov maxflöde <algorithms/network_flow/boykov_kolmogorov_max_flow.html>`"
 
 msgid "``pgr_breadthFirstSearch`` - Experimental"
 msgstr "``pgr_breadthFirstSearch`` - Experimentell"
@@ -8589,8 +8589,8 @@ msgstr "Identifierar den kant som är en bro."
 msgid "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 msgstr "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 
-msgid "`Boost: Connected components <https://www.boost.org/libs/graph/doc/connected_components.html>`__"
-msgstr "`Boost: Anslutna komponenter <https://www.boost.org/libs/graph/doc/connected_components.html>`__"
+msgid ":bgl:`Boost: Connected components <algorithms/connected_components/connected_components.html>`"
+msgstr ":bgl:`Boost: Anslutna komponenter <algorithms/connected_components/connected_components.html>`"
 
 msgid "``pgr_chinesePostman`` - Experimental"
 msgstr "``pgr_chinesePostman`` - Experimentell"
@@ -9543,8 +9543,8 @@ msgstr "Ordningsföljd med början från 1."
 msgid "New ordering in reverse order."
 msgstr "Ny beställning i omvänd ordning."
 
-msgid "`Boost: Cuthill-McKee Ordering <https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html>`__"
-msgstr "`Boost: Cuthill-McKee Beställning <https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html>`__"
+msgid ":bgl:`Boost: Cuthill-McKee Ordering <algorithms/ordering/cuthill_mckee_ordering.html>`"
+msgstr ":bgl:`Boost: Cuthill-McKee Beställning <algorithms/ordering/cuthill_mckee_ordering.html>`"
 
 msgid "`Wikipedia: Cuthill-McKee Ordering <https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm>`__"
 msgstr "`Wikipedia: Cuthill-McKee-ordning <https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm>`__"
@@ -9612,8 +9612,8 @@ msgstr "Returnera kolumner"
 msgid "Making **start_vids** the same as **end_vids**"
 msgstr "Gör **start_vids** till samma sak som **end_vids**"
 
-msgid "`Boost: DAG shortest paths <https://www.boost.org/libs/graph/doc/dag_shortest_paths.html>`__"
-msgstr "`Boost: DAG kortaste vägar <https://www.boost.org/libs/graph/doc/dag_shortest_paths.html>`__"
+msgid ":bgl:`Boost: DAG shortest paths <algorithms/shortest_paths/dag_shortest_paths.html>`"
+msgstr ":bgl:`Boost: DAG kortaste vägar <algorithms/shortest_paths/dag_shortest_paths.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Topological_sorting"
 msgstr "https://en.wikipedia.org/wiki/Topological_sorting"
@@ -9855,11 +9855,11 @@ msgstr "**options:** ``[directed, max_depth]``"
 msgid "Same as `Single vertex`_ but with edges in descending order of ``id``."
 msgstr "Samma som `Single vertex`_ men med kanter i fallande ordning efter ``id``."
 
-msgid "`Boost: Depth First Search <https://www.boost.org/libs/graph/doc/depth_first_search.html>`__"
-msgstr "`Boost: Djup första sökning <https://www.boost.org/libs/graph/doc/depth_first_search.html>`__"
+msgid ":bgl:`Boost: Depth First Search <algorithms/traversal/depth_first_search.html>`"
+msgstr ":bgl:`Boost: Djup första sökning <algorithms/traversal/depth_first_search.html>`"
 
-msgid "`Boost: Undirected DFS <https://www.boost.org/libs/graph/doc/undirected_dfs.html>`__"
-msgstr "`Boost: Oriktad DFS <https://www.boost.org/libs/graph/doc/undirected_dfs.html>`__"
+msgid ":bgl:`Boost: Undirected DFS <algorithms/traversal/undirected_dfs.html>`"
+msgstr ":bgl:`Boost: Oriktad DFS <algorithms/traversal/undirected_dfs.html>`"
 
 msgid "`Wikipedia: Depth First Search algorithm <https://en.wikipedia.org/wiki/Depth-first_search>`__"
 msgstr "`Wikipedia: Djup först-sökalgoritm <https://en.wikipedia.org/wiki/Depth-first_search>`__"
@@ -10071,8 +10071,8 @@ msgstr "36) Använda `Många till många`_"
 msgid "37) Using `Combinations`_"
 msgstr "37) Använda `Kombinationer`_"
 
-msgid "`Boost: Dijkstra shortest paths <https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html>`__"
-msgstr "`Boost: Dijkstra kortaste vägar <https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html>`__"
+msgid ":bgl:`Boost: Dijkstra shortest paths <algorithms/shortest_paths/dijkstra_shortest_paths.html>`"
+msgstr ":bgl:`Boost: Dijkstra kortaste vägar <algorithms/shortest_paths/dijkstra_shortest_paths.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
@@ -10584,8 +10584,8 @@ msgstr "pgr_edgeColoring(`Kanter SQL`_)"
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
 msgstr "Grafisk färgläggning av pgRouting :doc:`sampledata`"
 
-msgid "`Boost: Edge Coloring <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
-msgstr "`Boost: Färgläggning av kanter <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
+msgid ":bgl:`Boost: Edge Coloring <algorithms/coloring/edge_coloring.html>`"
+msgstr ":bgl:`Boost: Färgläggning av kanter <algorithms/coloring/edge_coloring.html>`"
 
 msgid "`Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr "`Wikipedia: Färgläggning av grafer <https://en.wikipedia.org/wiki/Graph_coloring>`__"
@@ -10665,8 +10665,8 @@ msgstr "pgr_edmondsKarp(`Kanter SQL`_, **start vids**, **end vids**)"
 msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 msgstr "pgr_edmondsKarp(`Kanter SQL`_, `Combinations SQL`_)"
 
-msgid "`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html>`__"
-msgstr "`Boost: Edmonds Karp maxflöde <https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html>`__"
+msgid ":bgl:`Boost: Edmonds Karp max flow <algorithms/network_flow/edmonds_karp_max_flow.html>`"
+msgstr ":bgl:`Boost: Edmonds Karp maxflöde <algorithms/network_flow/edmonds_karp_max_flow.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
@@ -11217,8 +11217,8 @@ msgstr "Identifierare för kretsens slutpunkt."
 msgid "Identifier of the node in the path from a vid to next vid."
 msgstr "Identifierare av noden i sökvägen från en vid till nästa vid."
 
-msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
-msgstr "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+msgid ":bgl:`Boost: Hawick Circuit Algorithm <algorithms/cycle_detection/hawick_circuits.html>`"
+msgstr ":bgl:`Boost: Hawick Circuit Algorithm <algorithms/cycle_detection/hawick_circuits.html>`"
 
 msgid "``pgr_isPlanar`` - Experimental"
 msgstr "``pgr_isPlanar`` - Experimentell"
@@ -11268,8 +11268,8 @@ msgstr "Följande kanter kommer att göra undergrafen med topparna {10, 15, 11, 
 msgid "The new graph is not planar because it has a :math:`K_5` subgraph. Edges in blue represent :math:`K_5` subgraph."
 msgstr "Den nya grafen är inte plan eftersom den har en :math:`K_5`-undergraf. Kanter i blått representerar :math:`K_5` subgraf."
 
-msgid "`Boost: Boyer Myrvold <https://www.boost.org/libs/graph/doc/boyer_myrvold.html>`__"
-msgstr "`Boost: Boyer Myrvold <https://www.boost.org/libs/graph/doc/boyer_myrvold.html>`__"
+msgid ":bgl:`Boost: Boyer Myrvold <algorithms/planar/boyer_myrvold.html>`"
+msgstr ":bgl:`Boost: Boyer Myrvold <algorithms/planar/boyer_myrvold.html>`"
 
 msgid "``pgr_johnson``"
 msgstr "``pgr_johnson``"
@@ -11316,8 +11316,8 @@ msgstr ":math:`m` är den högsta graden bland alla toppar."
 msgid "pgr_kingOrdering(`Edges SQL`_)"
 msgstr "pgr_kingOrdering(`Edges SQL`_)"
 
-msgid "`Boost: King Ordering <https://www.boost.org/libs/graph/doc/king_ordering.html>`__"
-msgstr "`Boost: Kungens beställning <https://www.boost.org/libs/graph/doc/king_ordering.html>`__"
+msgid ":bgl:`Boost: King Ordering <algorithms/ordering/king_ordering.html>`"
+msgstr ":bgl:`Boost: Kungens beställning <algorithms/ordering/king_ordering.html>`"
 
 msgid "``pgr_kruskal``"
 msgstr "``pgr_kruskal``"
@@ -11460,8 +11460,8 @@ msgstr "Omedelbar dominator av toppunkt."
 msgid "Dominator tree of another component."
 msgstr "Dominant träd av en annan komponent."
 
-msgid "`Boost: Lengauer-Tarjan dominator <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__"
-msgstr "`Boost: Lengauer-Tarjan dominator <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__"
+msgid ":bgl:`Boost: Lengauer-Tarjan dominator <algorithms/utility/lengauer_tarjan_dominator.html>`"
+msgstr ":bgl:`Boost: Lengauer-Tarjan dominator <algorithms/utility/lengauer_tarjan_dominator.html>`"
 
 msgid "`Wikipedia: dominator tree <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
 msgstr "`Wikipedia: dominatorträd <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
@@ -11859,8 +11859,8 @@ msgstr "Returnerar uppsättning av |result-component-make|"
 msgid "List of edges that are needed to connect the graph."
 msgstr "Lista över kanter som behövs för att koppla ihop grafen."
 
-msgid "`Boost: make connected <https://www.boost.org/libs/graph/doc/make_connected.html>`__"
-msgstr "`Boost: skapa anslutning <https://www.boost.org/libs/graph/doc/make_connected.html>`__"
+msgid ":bgl:`Boost: make connected <algorithms/planar/make_connected.html>`"
+msgstr ":bgl:`Boost: skapa anslutning <algorithms/planar/make_connected.html>`"
 
 msgid "``pgr_maxCardinalityMatch``"
 msgstr "``pgr_maxCardinalityMatch``"
@@ -11916,8 +11916,8 @@ msgstr "Ett positivt värde representerar existensen av kanten (``target``, ``so
 msgid "Identifier of the edge in the original query."
 msgstr "Identifierare av kanten i den ursprungliga frågan."
 
-msgid "`Boost: maximum_matching <https://www.boost.org/libs/graph/doc/maximum_matching.html>`__"
-msgstr "`Boost: maximum_matching <https://www.boost.org/libs/graph/doc/maximum_matching.html>`__"
+msgid ":bgl:`Boost: maximum_matching <algorithms/network_flow/maximum_matching.html>`"
+msgstr ":bgl:`Boost: maximum_matching <algorithms/network_flow/maximum_matching.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Matching_%28graph_theory%29"
 msgstr "https://en.wikipedia.org/wiki/Matching_%28graph_theory%29"
@@ -11967,8 +11967,8 @@ msgstr "RETURNERAR ``BIGINT``"
 msgid "Maximum flow possible from the source(s) to the target(s)"
 msgstr "Högsta möjliga flöde från källan/källorna till målet/målen"
 
-msgid "`Boost: push relabel max flow <https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html>`__"
-msgstr "`Boost: push relabel max flöde <https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html>`__"
+msgid ":bgl:`Boost: push relabel max flow <algorithms/network_flow/push_relabel_max_flow.html>`"
+msgstr ":bgl:`Boost: push relabel max flöde <algorithms/network_flow/push_relabel_max_flow.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
@@ -12276,8 +12276,8 @@ msgstr "pgr_prim(`Kanter SQL`_)"
 msgid "Minimum spanning forest of a subgraph"
 msgstr "Minsta skog som spänner över en delgraf"
 
-msgid "`Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
-msgstr "`Boost: Dokumentation av Prims algoritm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+msgid ":bgl:`Boost: Prim's algorithm documentation <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
+msgstr ":bgl:`Boost: Dokumentation av Prims algoritm <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
 
 msgid "``pgr_primBFS`` — Prim's algorithm for Minimum Spanning Tree with Depth First Search ordering."
 msgstr "``pgr_primBFS`` - Prims algoritm för minsta spännviddsträd med djup först-sökordning."
@@ -12429,8 +12429,8 @@ msgstr ":math:`k` is the number of colors used."
 msgid "pgr_sequentialVertexColoring(`Edges SQL`_)"
 msgstr "pgr_sequentialVertexColoring(`Kanter SQL`_)"
 
-msgid "`Boost: Sequential Vertex Coloring <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
-msgstr "`Boost: Sekventiell färgläggning av toppar <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
+msgid ":bgl:`Boost: Sequential Vertex Coloring <algorithms/coloring/sequential_vertex_coloring.html>`"
+msgstr ":bgl:`Boost: Sekventiell färgläggning av toppar <algorithms/coloring/sequential_vertex_coloring.html>`"
 
 msgid "``pgr_sloanOrdering`` - Experimental"
 msgstr "``pgr_sloanOrdering`` - Experimentell"
@@ -12468,8 +12468,8 @@ msgstr "Ny beställning av Sloan."
 msgid "Sloan ordering of Original graph from Boost example (vertices 0-9)."
 msgstr "Sloan-ordning av originalgrafen från Boost-exemplet (toppar 0-9)."
 
-msgid "`Boost: Sloan Ordering <https://www.boost.org/doc/libs/latest/libs/graph/doc/sloan_ordering.htm>`__"
-msgstr "`Boost: Sloan Beställning <https://www.boost.org/doc/libs/latest/libs/graph/doc/sloan_ordering.htm>`__"
+msgid ":bgl:`Boost: Sloan Ordering <algorithms/ordering/sloan_ordering.html>`"
+msgstr ":bgl:`Boost: Sloan Beställning <algorithms/ordering/sloan_ordering.html>`"
 
 msgid "``pgr_stoerWagner`` - Experimental"
 msgstr "``pgr_stoerWagner`` - Experimentell"
@@ -12540,8 +12540,8 @@ msgstr "minutskärning av en kant"
 msgid "Using :doc:`pgr_connectedComponents`"
 msgstr "Använda :doc:`pgr_connectedComponents`"
 
-msgid "`Boost: Stoer Wagner min cut <https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html>`__"
-msgstr "`Boost: Stoer Wagner min cut <https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html>`__"
+msgid ":bgl:`Boost: Stoer Wagner min cut <algorithms/network_flow/stoer_wagner_min_cut.html>`"
+msgstr ":bgl:`Boost: Stoer Wagner min cut <algorithms/network_flow/stoer_wagner_min_cut.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm"
@@ -12567,8 +12567,8 @@ msgstr "pgr_strongComponents(`Kanter SQL`_)"
 msgid "The strong components of the graph"
 msgstr "De starka komponenterna i grafen"
 
-msgid "`Boost: Strong components <https://www.boost.org/libs/graph/doc/strong_components.html>`__"
-msgstr "`Boost: Starka komponenter <https://www.boost.org/libs/graph/doc/strong_components.html>`__"
+msgid ":bgl:`Boost: Strong components <algorithms/connected_components/strong_components.html>`"
+msgstr ":bgl:`Boost: Starka komponenter <algorithms/connected_components/strong_components.html>`"
 
 msgid "wikipedia: `Strongly connected component <https://en.wikipedia.org/wiki/Strongly_connected_component>`__"
 msgstr "wikipedia: `Starkt ansluten komponent <https://en.wikipedia.org/wiki/Strongly_connected_component>`__"
@@ -12615,8 +12615,8 @@ msgstr "Topologisk sortering av enkelriktade segment"
 msgid "Graph is not a DAG"
 msgstr "Grafen är inte en DAG"
 
-msgid "`Boost: topological sort <https://www.boost.org/libs/graph/doc/topological_sort.html>`__"
-msgstr "`Boost: topologisk sortering <https://www.boost.org/libs/graph/doc/topological_sort.html>`__"
+msgid ":bgl:`Boost: topological sort <algorithms/topological_sort/topological_sort.html>`"
+msgstr ":bgl:`Boost: topologisk sortering <algorithms/topological_sort/topological_sort.html>`"
 
 msgid "``pgr_transitiveClosure`` - Experimental"
 msgstr "``pgr_transitiveClosure`` - Experimentell"
@@ -12669,8 +12669,8 @@ msgstr "Identifierare av målen för kanterna"
 msgid "Identifiers of the vertices that are reachable from vertex v."
 msgstr "Identifierare för de toppar som är nåbara från topp v."
 
-msgid "`Boost: transitive closure <https://www.boost.org/libs/graph/doc/transitive_closure.html>`__"
-msgstr "`Boost: transitiv stängning <https://www.boost.org/libs/graph/doc/transitive_closure.html>`__"
+msgid ":bgl:`Boost: transitive closure <algorithms/utility/transitive_closure.html>`"
+msgstr ":bgl:`Boost: transitiv stängning <algorithms/utility/transitive_closure.html>`"
 
 msgid "https://en.wikipedia.org/wiki/Transitive_closure"
 msgstr "https://en.wikipedia.org/wiki/Transitive_closure"
@@ -13464,8 +13464,8 @@ msgstr "Den här algoritmen hittar den minsta överspännande skogen i en eventu
 msgid "From boost Graph: \"The algorithm as implemented in Boost.Graph does not produce correct results on graphs with parallel edges.\""
 msgstr "Från Boost Graph: \"Algoritmen som den implementeras i Boost.Graph ger inte korrekta resultat på grafer med parallella kanter.\""
 
-msgid "Boost: `Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
-msgstr "Boost: `Prims algoritm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+msgid "Boost: :bgl:`Prim's algorithm <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
+msgstr "Boost: :bgl:`Prims algoritm <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
 
 msgid "Wikipedia: `Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr "Wikipedia: `Prims algoritm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
