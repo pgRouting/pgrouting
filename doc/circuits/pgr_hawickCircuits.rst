@@ -229,7 +229,7 @@ pointing at the wrong direction of the exit.
    :start-after: -- q6
    :end-before: -- q7
 
-:Example 3: Exclude self loops and avoid U-turns when possible.
+:Example 3: Exclude self loops and avoid U-turns on the same edge when possible.
 
 .. literalinclude:: hawickCircuits.queries
    :start-after: -- q7
