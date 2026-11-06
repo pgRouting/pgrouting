@@ -49,7 +49,6 @@ enumerated.
 - The algorithm outputs the distinct circuits present in the graph.
 - The circuits are elementary: a vertex is not repeated within a circuit, except
   the starting vertex that closes the circuit.
-
 - When no initial vertices are given all circuits are in canonical order of the
   vertices insertion of the graph: A circuit with vertices ``u``, ``v``: ``u``
   starting circuits containing ``v`` will not be listed on ``start_vid = v`` rows.
@@ -58,16 +57,15 @@ enumerated.
 
 - When start vertices are given, all circuits are returned for each requested
   vertex it contains, and the results are grouped by ``start_vid``.
-- The graph passed to the algorithm discard parallel edges with higher costs.
 - Time Complexity: :math:`O((V + E) (c + 1))`
 
   - where :math:`|E|` is the number of edges in the graph,
   - where :math:`|V|` is the number of vertices in the graph.
   - where :math:`|c|` is the number of circuits in the graph.
 
-|Boost| Boost Graph Inside
-
 .. circuits_characteristics_end
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -231,7 +229,7 @@ pointing at the wrong direction of the exit.
    :start-after: -- q6
    :end-before: -- q7
 
-:Example 3: Exclude self loops and U-turn on the same edge.
+:Example 3: Exclude self loops and avoid U-turns on the same edge when possible.
 
 .. literalinclude:: hawickCircuits.queries
    :start-after: -- q7

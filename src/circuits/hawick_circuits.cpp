@@ -238,30 +238,6 @@ expand_parallel_arcs(
     }
 }
 
-/** @brief Resolves one unique circuit over the graph's edges
- *
- * Every hop of the vertex cycle is resolved to exactly one edge
- * keeping a single circuit per vertex cycle.
- */
-void
-resolve_unique_circuit(
-        const pgrouting::DirectedGraph& graph,
-        const std::vector<pgrouting::DirectedGraph::V>& vertex_circuit,
-        pgrouting::types::Circuits& circuits) {
-    const size_t size = vertex_circuit.size();
-    pgrouting::types::Circuit circuit;
-    circuit.reserve(size);
-
-    for (size_t i = 0; i < size; ++i) {
-        const auto to = vertex_circuit[(i + 1) % size];
-        double cost = 0;
-        const auto edge_id = graph.get_edge_id(vertex_circuit[i], to, cost);
-        circuit.push_back({graph[vertex_circuit[i]].id, edge_id, cost});
-    }
-
-    circuits.push_back(std::move(circuit));
-}
-
 /** @brief Orders the circuits by start_vid when start vertices were requested
  *
  * With rotation-based filtering a circuit can be emitted under any requested
@@ -299,7 +275,7 @@ namespace functions {
  * @returns results, when results are found
  */
 pgrouting::types::Circuits
-hawickCircuits(
+hawickUniqueCircuits(
         const pgrouting::DirectedGraph &graph,
         const std::set<int64_t> &vertices,
         int64_t min_depth,
@@ -311,37 +287,6 @@ hawickCircuits(
     pgrouting::types::Circuits circuits;
     for (const auto& vertex_circuit : vertex_circuits) {
         expand_parallel_arcs(graph, vertex_circuit, circuits, u_turn_on_edge);
-    }
-    sort_by_start_vid(circuits, vertices);
-
-    return circuits;
-}
-
-
-/** @brief Connector to boost::hawick_unique_circuits
- *
- * It does all the processing and returns the results.
- * @param graph  the graph containing the edges
- * @param vertices  requested start vertices: a circuit containing one of them
- * is returned once per requested vertex, rotated to start at that vertex, and
- * an empty set returns every circuit
- * @param min_depth  minimum depth of the circuits to be returned
- * @param max_depth  maximum depth of the circuits to be returned
- * @param self_loops  when false, the circuits of depth 1 are not returned
- * @returns results, when results are found
- */
-pgrouting::types::Circuits
-hawickUniqueCircuits(
-        const pgrouting::DirectedGraph &graph,
-        const std::set<int64_t> &vertices,
-        int64_t min_depth,
-        int64_t max_depth,
-        bool self_loops) {
-    auto vertex_circuits = enumerate_vertex_circuits(graph, vertices, min_depth, max_depth, self_loops);
-
-    pgrouting::types::Circuits circuits;
-    for (const auto& vertex_circuit : vertex_circuits) {
-        resolve_unique_circuit(graph, vertex_circuit, circuits);
     }
     sort_by_start_vid(circuits, vertices);
 

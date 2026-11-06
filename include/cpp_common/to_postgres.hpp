@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <cstddef>
 
+#include "c_common/enums.h"
 #include "c_types/contractionHierarchies_rt.h"
 #include "c_types/iid_t_rt.h"
 #include "c_types/ii_t_rt.h"
@@ -87,7 +88,8 @@ get_tuples(std::vector<Path_rt>&, const std::vector<Edge_t>&, Path_rt*&);
 size_t
 get_tuples(
         const pgrouting::types::Circuits&,
-        Path_rt*&);
+        Path_rt*&,
+        Which);
 
 size_t
 get_tuples(const std::vector<II_t_rt>&, II_t_rt*&);

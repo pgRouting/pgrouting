@@ -39,16 +39,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace functions {
 
-pgrouting::types::Circuits hawickCircuits(
-        const pgrouting::DirectedGraph&,
-        const std::set<int64_t>&,
-        int64_t, int64_t, bool, bool
-);
-
 pgrouting::types::Circuits hawickUniqueCircuits(
         const pgrouting::DirectedGraph&,
         const std::set<int64_t>&,
-        int64_t, int64_t, bool
+        int64_t, int64_t, bool, bool
 );
 
 }  // namespace functions

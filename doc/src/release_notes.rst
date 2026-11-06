@@ -73,6 +73,12 @@ To see all issues & pull requests closed by this release see the
      :start-after: Version 4.1.0
      :end-before: .. rubric
 
+* pgr_hawickUniqueCircuits
+
+  .. include:: pgr_hawickUniqueCircuits.rst
+     :start-after: Version 4.1.0
+     :end-before: Description
+
 * pgr_makeBiconnectedPlanar
 
   .. include:: pgr_makeBiconnectedPlanar.rst
@@ -98,6 +104,7 @@ To see all issues & pull requests closed by this release see the
 * :issue:`3140`: pgr_makeBiconnectedPlanar
 * :issue:`3142`: pgr_coreNumbers
 * :issue:`3143`: pgr_planarFaces
+* :issue:`3171`: pgr_hawickUniqueCircuits: new functionality
 
 4.1.0 Code enhancements
 ...............................................................................

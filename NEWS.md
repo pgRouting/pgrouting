@@ -43,6 +43,10 @@ To see all issues & pull requests closed by this release see the
   * New signatures to select starting vertices.
   * Deprecated signature: ``pgr_hawickCircuits(text)``.
 
+* pgr_hawickUniqueCircuits
+
+  * New experimental function.
+
 * pgr_makeBiconnectedPlanar
 
   * New experimental function.
@@ -61,6 +65,7 @@ To see all issues & pull requests closed by this release see the
 * [#3140](https://github.com/pgRouting/pgrouting/issues/3140): pgr_makeBiconnectedPlanar
 * [#3142](https://github.com/pgRouting/pgrouting/issues/3142): pgr_coreNumbers
 * [#3143](https://github.com/pgRouting/pgrouting/issues/3143): pgr_planarFaces
+* [#3171](https://github.com/pgRouting/pgrouting/issues/3171): pgr_hawickUniqueCircuits: new functionality
 
 4.1.0 Code enhancements
 

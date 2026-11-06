@@ -1,5 +1,5 @@
 :file: This file is part of the pgRouting project.
-:copyright: Copyright (c) 2022-2026 pgRouting developers
+:copyright: Copyright (c) 2026-2026 pgRouting developers
 :license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0
 
 
@@ -19,6 +19,7 @@ The following functions work on circuits of directed graphs.
 .. experimental-start
 
 * :doc:`pgr_hawickCircuits` - Hawick's circuits algorithm.
+* :doc:`pgr_hawickUniqueCircuits` - Hawick's unique circuits algorithm.
 
 .. experimental-end
 
@@ -26,6 +27,7 @@ The following functions work on circuits of directed graphs.
     :hidden:
 
     pgr_hawickCircuits
+    pgr_hawickUniqueCircuits
 
 Description
 -------------------------------------------------------------------------------
@@ -92,11 +94,11 @@ Optional parameters
    * - ``u_turn_on_edge``
      - ``BOOLEAN``
      - ``true``
-     - * A u-turn on an edge is a 2 edge circuit that uses the same ``id`` on
+     - * A U-turn on the same edge is a 2 edge circuit that uses the same ``id`` on
          both directions of the edge.
-       * When ``true``: u-turns are part of the results.
-       * When ``false``: u-turns are discarded when the circuit can be formed
-         with two different edges; a u-turn is kept when it is the only
+       * When ``true``: U-turns on the same edge are not avoided.
+       * When ``false``: U-turns are avided when the circuit can be formed
+         with two different edges; a U-turn is kept when it is the only
          option, that is, when the two vertices are connected by a single
          edge.
        * Self loops are not affected.
@@ -170,7 +172,7 @@ See Also
 
 * :doc:`sampledata`
 * `Boost: Hawick Circuit Algorithm
-  <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__
+  <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__
 
 .. rubric:: Indices and tables
 
