@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-        fail-fast: true
+        fail-fast: false
         matrix:
           boost_minor: [74]
           old_pgr: [
