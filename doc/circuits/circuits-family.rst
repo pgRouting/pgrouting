@@ -94,11 +94,11 @@ Optional parameters
    * - ``u_turn_on_edge``
      - ``BOOLEAN``
      - ``true``
-     - * A u-turn on an edge is a 2 edge circuit that uses the same ``id`` on
+     - * A U-turn on the same edge is a 2 edge circuit that uses the same ``id`` on
          both directions of the edge.
-       * When ``true``: u-turns are part of the results.
-       * When ``false``: u-turns are discarded when the circuit can be formed
-         with two different edges; a u-turn is kept when it is the only
+       * When ``true``: U-turns on the same edge are not avoided.
+       * When ``false``: U-turns are avided when the circuit can be formed
+         with two different edges; a U-turn is kept when it is the only
          option, that is, when the two vertices are connected by a single
          edge.
        * Self loops are not affected.
