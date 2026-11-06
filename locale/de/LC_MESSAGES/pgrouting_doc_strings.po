@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-24 01:29+0000\n"
+"POT-Creation-Date: 2026-11-06 17:06+0000\n"
 "PO-Revision-Date: 2025-09-22 16:28+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: German <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/de/>\n"
@@ -2483,6 +2483,9 @@ msgstr ""
 msgid ":doc:`pgr_hawickCircuits` - Hawick's circuits algorithm."
 msgstr ""
 
+msgid ":doc:`pgr_hawickUniqueCircuits` - Hawick's unique circuits algorithm."
+msgstr ""
+
 #, fuzzy
 msgid "``start vid``"
 msgstr "``start_vid``"
@@ -2529,13 +2532,13 @@ msgstr ""
 msgid "``u_turn_on_edge``"
 msgstr "``U_turn_on_edge``"
 
-msgid "A u-turn on an edge is a 2 edge circuit that uses the same ``id`` on both directions of the edge."
+msgid "A U-turn on the same edge is a 2 edge circuit that uses the same ``id`` on both directions of the edge."
 msgstr ""
 
-msgid "When ``true``: u-turns are part of the results."
+msgid "When ``true``: U-turns on the same edge are not avoided."
 msgstr ""
 
-msgid "When ``false``: u-turns are discarded when the circuit can be formed with two different edges; a u-turn is kept when it is the only option, that is, when the two vertices are connected by a single edge."
+msgid "When ``false``: U-turns are avided when the circuit can be formed with two different edges; a U-turn is kept when it is the only option, that is, when the two vertices are connected by a single edge."
 msgstr ""
 
 msgid "Self loops are not affected."
@@ -2577,7 +2580,7 @@ msgstr ""
 msgid "Cost to traverse from ``pred`` to ``node`` using ``edge``. - ``0`` when :math:`depth = 0`."
 msgstr ""
 
-msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__"
 msgstr ""
 
 msgid "Coloring - Family of functions"
@@ -3699,6 +3702,10 @@ msgid "Deprecated signature: ``pgr_hawickCircuits(text)``."
 msgstr ""
 
 #, fuzzy
+msgid "pgr_hawickUniqueCircuits"
+msgstr "pgr_hawickCircuits"
+
+#, fuzzy
 msgid "pgr_makeBiconnectedPlanar"
 msgstr "pgr_makeConnected"
 
@@ -3723,6 +3730,9 @@ msgid "`#3142 <https://github.com/pgRouting/pgrouting/issues/3142>`__: pgr_coreN
 msgstr ""
 
 msgid "`#3143 <https://github.com/pgRouting/pgrouting/issues/3143>`__: pgr_planarFaces"
+msgstr ""
+
+msgid "`#3171 <https://github.com/pgRouting/pgrouting/issues/3171>`__: pgr_hawickUniqueCircuits: new functionality"
 msgstr ""
 
 msgid "4.1.0 Code enhancements"
@@ -10842,9 +10852,6 @@ msgstr ""
 msgid "When start vertices are given, all circuits are returned for each requested vertex it contains, and the results are grouped by ``start_vid``."
 msgstr ""
 
-msgid "The graph passed to the algorithm discard parallel edges with higher costs."
-msgstr ""
-
 msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
 msgstr ""
 
@@ -10902,10 +10909,76 @@ msgstr ""
 msgid "Exclude self loops."
 msgstr ""
 
-msgid "Exclude self loops and U-turn on the same edge."
+msgid "Exclude self loops and avoid U-turns on the same edge when possible."
 msgstr ""
 
-msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__"
+msgid "``pgr_hawickUniqueCircuits`` - Experimental"
+msgstr ""
+
+msgid "``pgr_hawickUniqueCircuits`` — Returns the list of unique circuits using hawick circuits algorithm."
+msgstr ""
+
+msgid "Circuit enumeration in directed graphs, where circuits that traverse the same sequence of vertices are listed only once."
+msgstr ""
+
+msgid "When a circuit has parallel arcs, the expansion with the minimum cost is kept."
+msgstr ""
+
+msgid "When ``u_turn_on_edge`` is ``false`` and the circuit can be formed with two different edges, the U-turn on the same edge is discarded, and a parallel arc that is not the minimum cost is used."
+msgstr ""
+
+msgid "pgr_hawickUniqueCircuits(`Edges SQL`_ [, **options**])"
+msgstr ""
+
+msgid "pgr_hawickUniqueCircuits(`Edges SQL`_, **start vid** [, **options**])"
+msgstr ""
+
+msgid "pgr_hawickUniqueCircuits(`Edges SQL`_, **start vids** [, **options**])"
+msgstr ""
+
+msgid "Circuits present in the pgRouting :doc:`sampledata` in canonical order."
+msgstr ""
+
+msgid "All circuits that contain vertex :math:`10`"
+msgstr ""
+
+msgid "All circuits that contain vertices :math:`\\{10, 11\\}`"
+msgstr ""
+
+msgid "All possible unique ways to return to vertex :math:`1`."
+msgstr ""
+
+msgid "black is :math:`path\\_id = 1`"
+msgstr ""
+
+msgid "purple is :math:`path\\_id = 2`"
+msgstr ""
+
+msgid "red is :math:`path\\_id = 3`"
+msgstr ""
+
+msgid "green is :math:`path\\_id = 4`"
+msgstr ""
+
+msgid "blue is :math:`path\\_id = 5`"
+msgstr ""
+
+msgid "orange is :math:`path\\_id = 6`"
+msgstr ""
+
+msgid "purple is :math:`path\\_id = 1`"
+msgstr ""
+
+msgid "red is :math:`path\\_id = 2`"
+msgstr ""
+
+msgid "green is :math:`path\\_id = 3`"
+msgstr ""
+
+msgid "blue is :math:`path\\_id = 4`"
+msgstr ""
+
+msgid "orange is :math:`path\\_id = 5`"
 msgstr ""
 
 msgid "``pgr_isPlanar`` - Experimental"

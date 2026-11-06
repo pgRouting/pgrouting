@@ -4,7 +4,19 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2025.
 # Daniel Nylander <daniel@danielnylander.se>, 2025, 2026.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-10-24 01:29+0000\nPO-Revision-Date: 2026-11-04 15:39+0000\nLast-Translator: Daniel Nylander <daniel@danielnylander.se>\nLanguage-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 2026.10.1\n"
+msgstr ""
+"Project-Id-Version: pgRouting v4.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 17:06+0000\n"
+"PO-Revision-Date: 2026-11-04 15:39+0000\n"
+"Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
+"Language-Team: Swedish <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/sv/>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.10.1\n"
 
 msgid "BFS - Category"
 msgstr "BFS - Kategori"
@@ -2472,6 +2484,10 @@ msgstr "Följande funktioner arbetar med kretsar i riktade grafer."
 msgid ":doc:`pgr_hawickCircuits` - Hawick's circuits algorithm."
 msgstr ":doc:`pgr_hawickCircuits` – Hawicks kretsalgoritm."
 
+#, fuzzy
+msgid ":doc:`pgr_hawickUniqueCircuits` - Hawick's unique circuits algorithm."
+msgstr ":doc:`pgr_hawickCircuits` – Hawicks kretsalgoritm."
+
 msgid "``start vid``"
 msgstr "``start_vid``"
 
@@ -2514,13 +2530,16 @@ msgstr "Självslingor inkluderas eller utesluts oavsett ``min_depth`` och ``max_
 msgid "``u_turn_on_edge``"
 msgstr "``u_turn_on_edge``"
 
-msgid "A u-turn on an edge is a 2 edge circuit that uses the same ``id`` on both directions of the edge."
+#, fuzzy
+msgid "A U-turn on the same edge is a 2 edge circuit that uses the same ``id`` on both directions of the edge."
 msgstr "En U-sväng på en kant är en krets med två kanter som använder samma ``id`` i båda riktningarna på kanten."
 
-msgid "When ``true``: u-turns are part of the results."
+#, fuzzy
+msgid "When ``true``: U-turns on the same edge are not avoided."
 msgstr "När ``true`` ingår U-svängar i resultatet."
 
-msgid "When ``false``: u-turns are discarded when the circuit can be formed with two different edges; a u-turn is kept when it is the only option, that is, when the two vertices are connected by a single edge."
+#, fuzzy
+msgid "When ``false``: U-turns are avided when the circuit can be formed with two different edges; a U-turn is kept when it is the only option, that is, when the two vertices are connected by a single edge."
 msgstr "När ``false`` förkastas U-svängar när kretsen kan bildas med två olika kanter; en U-sväng behålls när den är det enda alternativet, det vill säga när de två toppunkterna är förbundna med en enda kant."
 
 msgid "Self loops are not affected."
@@ -2562,8 +2581,8 @@ msgstr "Identifierare för kanten som används för att komma från ``pred`` til
 msgid "Cost to traverse from ``pred`` to ``node`` using ``edge``. - ``0`` when :math:`depth = 0`."
 msgstr "Kostnad för att färdas från ``pred`` till ``node`` med ``edge``. - ``0`` när :math:`depth = 0`."
 
-msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
-msgstr "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__"
+msgstr "`Boost: Hawicks kretsalgoritm <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__"
 
 msgid "Coloring - Family of functions"
 msgstr "Färgläggning - Familj av funktioner"
@@ -3681,6 +3700,10 @@ msgstr "Nya signaturer för att välja startpunkter."
 msgid "Deprecated signature: ``pgr_hawickCircuits(text)``."
 msgstr "Föråldrad signatur: ``pgr_hawickCircuits(text)``."
 
+#, fuzzy
+msgid "pgr_hawickUniqueCircuits"
+msgstr "pgr_hawickCircuits"
+
 msgid "pgr_makeBiconnectedPlanar"
 msgstr "pgr_makeBiconnectedPlanar"
 
@@ -3704,6 +3727,10 @@ msgstr "`#3142 <https://github.com/pgRouting/pgrouting/issues/3142>`__: pgr_core
 
 msgid "`#3143 <https://github.com/pgRouting/pgrouting/issues/3143>`__: pgr_planarFaces"
 msgstr "`#3143 <https://github.com/pgRouting/pgrouting/issues/3143>`__: pgr_planarFaces"
+
+#, fuzzy
+msgid "`#3171 <https://github.com/pgRouting/pgrouting/issues/3171>`__: pgr_hawickUniqueCircuits: new functionality"
+msgstr "`#3170 <https://github.com/pgRouting/pgrouting/issues/3170>`__: pgr_hawickCircuits: fel Boost-funktion refereras"
 
 msgid "4.1.0 Code enhancements"
 msgstr "4.1.0 Kodförbättringar"
@@ -10821,9 +10848,6 @@ msgstr "Olika kantordning ger olika kanonisk ordning."
 msgid "When start vertices are given, all circuits are returned for each requested vertex it contains, and the results are grouped by ``start_vid``."
 msgstr "När startpunkter anges returneras alla kretsar för varje begärd toppunkt de innehåller, och resultaten grupperas efter ``start_vid``."
 
-msgid "The graph passed to the algorithm discard parallel edges with higher costs."
-msgstr "Grafen som skickas till algoritmen förkastar parallella kanter med högre kostnader."
-
 msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
 msgstr "Tidskomplexitet: :math:`O((V + E) (c + 1))`"
 
@@ -10881,11 +10905,100 @@ msgstr "Alla möjliga sätt att återvända till toppunkten :math:`1`."
 msgid "Exclude self loops."
 msgstr "Uteslut självslingor."
 
-msgid "Exclude self loops and U-turn on the same edge."
+#, fuzzy
+msgid "Exclude self loops and avoid U-turns on the same edge when possible."
 msgstr "Uteslut självslingor och U-svängar på samma kant."
 
-msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__"
-msgstr "`Boost: Hawicks kretsalgoritm <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__"
+#, fuzzy
+msgid "``pgr_hawickUniqueCircuits`` - Experimental"
+msgstr "``pgr_hawickCircuits`` - Experimentell"
+
+#, fuzzy
+msgid "``pgr_hawickUniqueCircuits`` — Returns the list of unique circuits using hawick circuits algorithm."
+msgstr "``pgr_hawickCircuits`` - Returnerar listan över kretsar som använder Hawick-kretsalgoritmen."
+
+#, fuzzy
+msgid "Circuit enumeration in directed graphs, where circuits that traverse the same sequence of vertices are listed only once."
+msgstr "Uppräkning av kretsar i riktade grafer, där kretsar med parallella bågar räknas upp."
+
+msgid "When a circuit has parallel arcs, the expansion with the minimum cost is kept."
+msgstr ""
+
+#, fuzzy
+msgid "When ``u_turn_on_edge`` is ``false`` and the circuit can be formed with two different edges, the U-turn on the same edge is discarded, and a parallel arc that is not the minimum cost is used."
+msgstr "När ``false`` förkastas U-svängar när kretsen kan bildas med två olika kanter; en U-sväng behålls när den är det enda alternativet, det vill säga när de två toppunkterna är förbundna med en enda kant."
+
+#, fuzzy
+msgid "pgr_hawickUniqueCircuits(`Edges SQL`_ [, **options**])"
+msgstr "pgr_hawickCircuits(`Kant-SQL`_ [, **alternativ**])"
+
+#, fuzzy
+msgid "pgr_hawickUniqueCircuits(`Edges SQL`_, **start vid** [, **options**])"
+msgstr "pgr_hawickCircuits(`Kant-SQL`_, **start_vid** [, **alternativ**])"
+
+#, fuzzy
+msgid "pgr_hawickUniqueCircuits(`Edges SQL`_, **start vids** [, **options**])"
+msgstr "pgr_hawickCircuits(`Kant-SQL`_, **start_vids** [, **alternativ**])"
+
+#, fuzzy
+msgid "Circuits present in the pgRouting :doc:`sampledata` in canonical order."
+msgstr "Alla kretsar i pgRoutings :doc:`sampledata`"
+
+#, fuzzy
+msgid "All circuits that contain vertex :math:`10`"
+msgstr "Kretsar som innehåller toppunkten :math:`10`"
+
+#, fuzzy
+msgid "All circuits that contain vertices :math:`\\{10, 11\\}`"
+msgstr "Kretsar som innehåller toppunkterna :math:`\\{10, 11\\}`"
+
+#, fuzzy
+msgid "All possible unique ways to return to vertex :math:`1`."
+msgstr "Alla möjliga sätt att återvända till toppunkten :math:`1`."
+
+#, fuzzy
+msgid "black is :math:`path\\_id = 1`"
+msgstr ":math:`path\\_seq_i = i`"
+
+#, fuzzy
+msgid "purple is :math:`path\\_id = 2`"
+msgstr ":math:`path\\_seq_i = i`"
+
+#, fuzzy
+msgid "red is :math:`path\\_id = 3`"
+msgstr ":math:`path\\_seq_i = i`"
+
+#, fuzzy
+msgid "green is :math:`path\\_id = 4`"
+msgstr ":math:`path\\_seq_i = i`"
+
+#, fuzzy
+msgid "blue is :math:`path\\_id = 5`"
+msgstr ":math:`path\\_seq_i = i`"
+
+#, fuzzy
+msgid "orange is :math:`path\\_id = 6`"
+msgstr ":math:`path\\_seq_i = i`"
+
+#, fuzzy
+msgid "purple is :math:`path\\_id = 1`"
+msgstr ":math:`path\\_seq_i = i`"
+
+#, fuzzy
+msgid "red is :math:`path\\_id = 2`"
+msgstr ":math:`path\\_seq_i = i`"
+
+#, fuzzy
+msgid "green is :math:`path\\_id = 3`"
+msgstr ":math:`path\\_seq_i = i`"
+
+#, fuzzy
+msgid "blue is :math:`path\\_id = 4`"
+msgstr ":math:`path\\_seq_i = i`"
+
+#, fuzzy
+msgid "orange is :math:`path\\_id = 5`"
+msgstr ":math:`path\\_seq_i = i`"
 
 msgid "``pgr_isPlanar`` - Experimental"
 msgstr "``pgr_isPlanar`` - Experimentell"
@@ -17057,6 +17170,12 @@ msgstr "pgr_withPointsDD is pgr_drivingDistance **with points**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia is pgr_dijkstraVia **with points**"
+
+#~ msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+#~ msgstr "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+
+#~ msgid "The graph passed to the algorithm discard parallel edges with higher costs."
+#~ msgstr "Grafen som skickas till algoritmen förkastar parallella kanter med högre kostnader."
 
 #~ msgid ":doc:`pgr_hawickCircuits`"
 #~ msgstr ":doc:`pgr_hawickCircuits`"
