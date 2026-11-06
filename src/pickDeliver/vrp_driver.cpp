@@ -78,6 +78,27 @@ void do_vrp(
         using pgrouting::pgget::get_vehicles;
         using pgrouting::pgget::get_matrixRows;
 
+    if (factor <= 0) {
+        err << "Illegal value in parameter: factor";
+        log << "Value found: " << factor << " <= 0";
+        return;
+    }
+
+    if (max_cycles < 0) {
+        err << "Illegal value in parameter: max_cycles";
+        log << "Value found: " << max_cycles << " <= 0";
+        return;
+    }
+
+    if (initial_solution_id <= 0
+            || (which == PICKDELIVER && initial_solution_id > 7)
+            || (which == PICKDELIVEREUCLIDEAN && initial_solution_id > 6)) {
+        err << "Illegal value in parameter: initial_sol";
+        log << "Value found: " << initial_solution_id
+            << (initial_solution_id <= 0? " <= 0" : which == PICKDELIVER? " > 7" : " > 6");
+        return;
+    }
+
         hint = customers_sql;
         auto orders = get_orders(customers_sql, which == PICKDELIVER);
         if (orders.size() == 0) {
