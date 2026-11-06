@@ -19,20 +19,7 @@
 # Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>, 2026.
 # DeepL <noreply-mt-deepl@weblate.org>, 2026.
 msgid ""
-msgstr ""
-"Project-Id-Version: pgRouting v4.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-24 01:29+0000\n"
-"PO-Revision-Date: 2026-10-28 00:39+0000\n"
-"Last-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\n"
-"Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\n"
-"Language: ja\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.10.1\n"
-"Generated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-10-24 01:29+0000\nPO-Revision-Date: 2026-11-04 15:39+0000\nLast-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 2026.10.1\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - カテゴリ"
@@ -1675,50 +1662,51 @@ msgstr "`Boost: A* 探索 (英語) <https://www.boost.org/doc/libs/latest/libs/g
 msgid "https://en.wikipedia.org/wiki/A*_search_algorithm"
 msgstr ""
 
+#, fuzzy
 msgid "All Pairs - Family of Functions"
-msgstr ""
+msgstr "全点対最 - 関数群"
 
 msgid "The following functions work on all vertices pair combinations"
-msgstr ""
+msgstr "次の関数はすべての頂点対の組合せで動作します"
 
 msgid ":doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm."
-msgstr ""
+msgstr ":doc:`pgr_floydWarshall` - ワーシャル–フロイド法。"
 
 msgid ":doc:`pgr_johnson` - Johnson's algorithm"
-msgstr ""
+msgstr ":doc:`pgr_johnson` - ジョンソン法"
 
 msgid "The main characteristics are:"
-msgstr ""
+msgstr "主たる特徴は次の通り:"
 
 msgid "It does not return a path."
-msgstr ""
+msgstr "経路を返しません。"
 
 msgid "Returns the sum of the costs of the shortest path for each pair of nodes in the graph."
-msgstr ""
+msgstr "グラフのノード対ごとの最短経路のコストの合計を返します。"
 
 msgid "Boost returns a :math:`V \\times V` matrix, where the infinity values. Represent the distance between vertices for which there is no path."
-msgstr ""
+msgstr "Boost は :math:`V \\times V` 行列を返します。要素は頂点間距離を表現し、経路がない場合には無限大値となります。"
 
 msgid "We return only the non infinity values in form of a set of `(start_vid, end_vid, agg_cost)`."
-msgstr ""
+msgstr "`(start_vid, end_vid, agg_cost)` の集合の形式で無限大でない値だけを返します。"
 
 msgid "Let be the case the values returned are stored in a table, so the unique index would be the pair: `(start_vid, end_vid)`."
-msgstr ""
+msgstr "返り値がテーブルに保存されると仮定すると、一意のインデックスが `(start_vid, end_vid)` となります。"
 
 msgid "For the undirected graph, the results are symmetric."
-msgstr ""
+msgstr "無向グラフでは結果は対称になります。"
 
 msgid "The `agg_cost` of `(u, v)` is the same as for `(v, u)`."
-msgstr ""
+msgstr "`(u, v)` と `(v, u)` の `agg_cost` は同じです。"
 
 msgid "When `start_vid` = `end_vid`, the `agg_cost` = 0."
-msgstr ""
+msgstr "`start_vid` = `end_vid` の時、`agg_cost` = 0 となります。"
 
 msgid "**Recommended, use a bounding box of no more than 3500 edges.**"
-msgstr ""
+msgstr "**3500 エッジ以下のバウンディングボックスを使うことが推奨されます。**"
 
 msgid "Optional parameters"
-msgstr ""
+msgstr "任意パラメーター"
 
 msgid "``directed``"
 msgstr "``directed``"
@@ -1730,394 +1718,396 @@ msgid "``true``"
 msgstr "``true``"
 
 msgid "When ``true`` the graph is considered `Directed`"
-msgstr ""
+msgstr "``true`` の時、グラフは `Directed` (有向) として扱われます"
 
 msgid "When ``false`` the graph is considered as `Undirected`."
-msgstr ""
+msgstr "``false`` の時、グラフは `Undirected` (無向) として扱われます。"
 
 msgid "Performance"
-msgstr ""
+msgstr "性能"
 
 msgid "The following tests:"
-msgstr ""
+msgstr "次のテストを行いました:"
 
 msgid "non server computer"
-msgstr ""
+msgstr "非サーバーコンピューター"
 
 msgid "with AMD 64 CPU"
-msgstr ""
+msgstr "AMD 64 CPU 搭載"
 
 msgid "4G memory"
-msgstr ""
+msgstr "4G メモリー"
 
 msgid "trusty"
 msgstr ""
 
 msgid "PostgreSQL version 9.3"
-msgstr ""
+msgstr "PostgreSQL 9.3"
 
 msgid "Data"
 msgstr "データ"
 
 msgid "The following data was used"
-msgstr ""
+msgstr "次のデータを使いました"
 
 msgid "Data processing was done with osm2pgrouting-alpha"
-msgstr ""
+msgstr "データ処理は osm2pgrouting-alpha を使用しました"
 
 msgid "Results"
-msgstr ""
+msgstr "結果"
 
 msgid "Test"
-msgstr ""
+msgstr "テスト"
 
+#, fuzzy
 msgid "One"
-msgstr ""
+msgstr "一つ目"
 
 msgid "This test is not with a bounding box The density of the passed graph is extremely low. For each <SIZE> 30 tests were executed to get the average The tested query is:"
-msgstr ""
+msgstr "このテストはバウンディングボックスを使いません。渡されるグラフは非常に密度の低いものです。各 <SIZE> について 30 回のテストを実行して、平均値をとりました。テストに使ったクエリーは次の通りです:"
 
 msgid "The results of this tests are presented as:"
-msgstr ""
+msgstr "このテストの結果を次に示します:"
 
 msgid "SIZE"
 msgstr ""
 
 msgid "is the number of edges given as input."
-msgstr ""
+msgstr "入力として与えられたエッジの数。"
 
 msgid "EDGES"
 msgstr ""
 
 msgid "is the total number of records in the query."
-msgstr ""
+msgstr "クエリーのレコードの総数。"
 
 msgid "DENSITY"
 msgstr ""
 
 msgid "is the density of the data :math:`\\dfrac{E}{V \\times (V-1)}`."
-msgstr ""
+msgstr ":math:`\\dfrac{E}{V \\times (V-1)}` で表されるデータの密度。"
 
 msgid "OUT ROWS"
 msgstr ""
 
 msgid "is the number of records returned by the queries."
-msgstr ""
+msgstr "クエリーで返されるレコードの数。"
 
 msgid "Floyd-Warshall"
 msgstr ""
 
 msgid "is the average execution time in seconds of pgr_floydWarshall."
-msgstr ""
+msgstr "pgr_floydWarshall の平均実行秒数。"
 
 msgid "Johnson"
 msgstr ""
 
 msgid "is the average execution time in seconds of pgr_johnson."
-msgstr ""
+msgstr "pgr_johnson の平均実行秒数。"
 
 msgid "500"
-msgstr ""
+msgstr "500"
 
 msgid "0.18E-7"
-msgstr ""
+msgstr "0.18E-7"
 
 msgid "1346"
-msgstr ""
+msgstr "1346"
 
 msgid "0.14"
-msgstr ""
+msgstr "0.14"
 
 msgid "0.13"
-msgstr ""
+msgstr "0.13"
 
 msgid "1000"
-msgstr ""
+msgstr "1000"
 
 msgid "0.36E-7"
-msgstr ""
+msgstr "0.36E-7"
 
 msgid "2655"
-msgstr ""
+msgstr "2655"
 
 msgid "0.23"
-msgstr ""
+msgstr "0.23"
 
 msgid "0.18"
-msgstr ""
+msgstr "0.18"
 
 msgid "1500"
-msgstr ""
+msgstr "1500"
 
 msgid "0.55E-7"
-msgstr ""
+msgstr "0.55E-7"
 
 msgid "4110"
-msgstr ""
+msgstr "4110"
 
 msgid "0.37"
-msgstr ""
+msgstr "0.37"
 
 msgid "0.34"
-msgstr ""
+msgstr "0.34"
 
 msgid "2000"
-msgstr ""
+msgstr "2000"
 
 msgid "0.73E-7"
-msgstr ""
+msgstr "0.73E-7"
 
 msgid "5676"
-msgstr ""
+msgstr "5676"
 
 msgid "0.56"
-msgstr ""
+msgstr "0.56"
 
 msgid "2500"
-msgstr ""
+msgstr "2500"
 
 msgid "0.89E-7"
-msgstr ""
+msgstr "0.89E-7"
 
 msgid "7177"
-msgstr ""
+msgstr "7177"
 
 msgid "0.84"
-msgstr ""
+msgstr "0.84"
 
 msgid "0.51"
-msgstr ""
+msgstr "0.51"
 
 msgid "3000"
-msgstr ""
+msgstr "3000"
 
 msgid "1.07E-7"
-msgstr ""
+msgstr "1.07E-7"
 
 msgid "8778"
-msgstr ""
+msgstr "8778"
 
 msgid "1.28"
-msgstr ""
+msgstr "1.28"
 
 msgid "0.68"
-msgstr ""
+msgstr "0.68"
 
 msgid "3500"
-msgstr ""
+msgstr "3500"
 
 msgid "1.24E-7"
-msgstr ""
+msgstr "1.24E-7"
 
 msgid "10526"
-msgstr ""
+msgstr "10526"
 
 msgid "2.08"
-msgstr ""
+msgstr "2.08"
 
 msgid "0.95"
-msgstr ""
+msgstr "0.95"
 
 msgid "4000"
-msgstr ""
+msgstr "4000"
 
 msgid "1.41E-7"
-msgstr ""
+msgstr "1.41E-7"
 
 msgid "12484"
-msgstr ""
+msgstr "12484"
 
 msgid "3.16"
-msgstr ""
+msgstr "3.16"
 
 msgid "1.24"
-msgstr ""
+msgstr "1.24"
 
 msgid "4500"
-msgstr ""
+msgstr "4500"
 
 msgid "1.58E-7"
-msgstr ""
+msgstr "1.58E-7"
 
 msgid "14354"
-msgstr ""
+msgstr "14354"
 
 msgid "4.49"
-msgstr ""
+msgstr "4.49"
 
 msgid "1.47"
-msgstr ""
+msgstr "1.47"
 
 msgid "5000"
-msgstr ""
+msgstr "5000"
 
 msgid "1.76E-7"
-msgstr ""
+msgstr "1.76E-7"
 
 msgid "16503"
-msgstr ""
+msgstr "16503"
 
 msgid "6.05"
-msgstr ""
+msgstr "6.05"
 
 msgid "1.78"
-msgstr ""
+msgstr "1.78"
 
 msgid "5500"
-msgstr ""
+msgstr "5500"
 
 msgid "1.93E-7"
-msgstr ""
+msgstr "1.93E-7"
 
 msgid "18623"
-msgstr ""
+msgstr "18623"
 
 msgid "7.53"
-msgstr ""
+msgstr "7.53"
 
 msgid "2.03"
-msgstr ""
+msgstr "2.03"
 
 msgid "6000"
-msgstr ""
+msgstr "6000"
 
 msgid "2.11E-7"
-msgstr ""
+msgstr "2.11E-7"
 
 msgid "20710"
-msgstr ""
+msgstr "20710"
 
 msgid "8.47"
-msgstr ""
+msgstr "8.47"
 
 msgid "2.37"
-msgstr ""
+msgstr "2.37"
 
 msgid "6500"
-msgstr ""
+msgstr "6500"
 
 msgid "2.28E-7"
-msgstr ""
+msgstr "2.28E-7"
 
 msgid "22752"
-msgstr ""
+msgstr "22752"
 
 msgid "9.99"
-msgstr ""
+msgstr "9.99"
 
 msgid "2.68"
-msgstr ""
+msgstr "2.68"
 
 msgid "7000"
-msgstr ""
+msgstr "7000"
 
 msgid "2.46E-7"
-msgstr ""
+msgstr "2.46E-7"
 
 msgid "24687"
-msgstr ""
+msgstr "24687"
 
 msgid "11.82"
-msgstr ""
+msgstr "11.82"
 
 msgid "3.12"
-msgstr ""
+msgstr "3.12"
 
 msgid "7500"
-msgstr ""
+msgstr "7500"
 
 msgid "2.64E-7"
-msgstr ""
+msgstr "2.64E-7"
 
 msgid "26861"
-msgstr ""
+msgstr "26861"
 
 msgid "13.94"
-msgstr ""
+msgstr "13.94"
 
 msgid "3.60"
-msgstr ""
+msgstr "3.60"
 
 msgid "8000"
-msgstr ""
+msgstr "8000"
 
 msgid "2.83E-7"
-msgstr ""
+msgstr "2.83E-7"
 
 msgid "29050"
-msgstr ""
+msgstr "29050"
 
 msgid "15.61"
-msgstr ""
+msgstr "15.61"
 
 msgid "4.09"
-msgstr ""
+msgstr "4.09"
 
 msgid "8500"
-msgstr ""
+msgstr "8500"
 
 msgid "3.01E-7"
-msgstr ""
+msgstr "3.01E-7"
 
 msgid "31693"
-msgstr ""
+msgstr "31693"
 
 msgid "17.43"
-msgstr ""
+msgstr "17.43"
 
 msgid "4.63"
-msgstr ""
+msgstr "4.63"
 
 msgid "9000"
-msgstr ""
+msgstr "9000"
 
 msgid "3.17E-7"
-msgstr ""
+msgstr "3.17E-7"
 
 msgid "33879"
-msgstr ""
+msgstr "33879"
 
 msgid "19.19"
-msgstr ""
+msgstr "19.19"
 
 msgid "5.34"
-msgstr ""
+msgstr "5.34"
 
 msgid "9500"
-msgstr ""
+msgstr "9500"
 
 msgid "3.35E-7"
-msgstr ""
+msgstr "3.35E-7"
 
 msgid "36287"
-msgstr ""
+msgstr "36287"
 
 msgid "20.77"
-msgstr ""
+msgstr "20.77"
 
 msgid "6.24"
-msgstr ""
+msgstr "6.24"
 
 msgid "10000"
-msgstr ""
+msgstr "10000"
 
 msgid "3.52E-7"
-msgstr ""
+msgstr "3.52E-7"
 
 msgid "38491"
-msgstr ""
+msgstr "38491"
 
 msgid "23.26"
-msgstr ""
+msgstr "23.26"
 
 msgid "6.51"
-msgstr ""
+msgstr "6.51"
 
+#, fuzzy
 msgid "Two"
-msgstr ""
+msgstr "二つ目"
 
 msgid "This test is with a bounding box The density of the passed graph higher than of the Test One. For each <SIZE> 30 tests were executed to get the average The tested edge query is:"
-msgstr ""
+msgstr "このテストはバウンディングボックスを使います。渡されるグラフの密度は一つ目のテストより高いです。<SIZE> ごとに 30回テストを行い、平均値をとります。テストしたエッジのクエリーは次の通りです:"
 
 msgid "The tested queries"
 msgstr ""
