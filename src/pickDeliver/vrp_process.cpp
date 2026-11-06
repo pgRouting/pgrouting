@@ -40,7 +40,7 @@ extern "C" {
 #include "c_types/iid_t_rt.h"
 #include "c_types/schedule_rt.h"
 
-#include "drivers/pickDeliver/pickDeliver_driver.h"
+#include "drivers/vrp_driver.hpp"
 
 #include "cpp_common/report_messages.hpp"
 #include "cpp_common/utilities.hpp"
@@ -66,32 +66,6 @@ pgr_process_vrp(
     pgassert(!(*result_tuples));
     pgassert(*result_count == 0);
     pgr_SPI_connect();
-
-#if 0
-    if (factor <= 0) {
-        ereport(ERROR,
-                (errcode(ERRCODE_INTERNAL_ERROR),
-                 errmsg("Illegal value in parameter: factor"),
-                 errhint("Value found: %f <= 0", factor)));
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        return;
-    }
-
-    if (max_cycles < 0) {
-        elog(ERROR, "Illegal value in parameter: max_cycles");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        return;
-    }
-
-    if (initial_solution_id < 0 || initial_solution_id > 7) {
-        elog(ERROR, "Illegal value in parameter: initial");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        return;
-    }
-#endif
 
     std::ostringstream log;
     std::ostringstream err;
