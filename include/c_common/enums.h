@@ -67,6 +67,9 @@ enum Which {  // NOLINT(cppcoreguidelines-use-enum-class)
     /* For components */
     CONNECTEDCOMPONENTS, BICONNECTEDCOMPONENTS, STRONGCOMPONENTS, ARTICULATIONPOINTS,
     BRIDGES, MAKECONNECTED,
+    /* For vrp */
+    PICKDELIVER,
+    PICKDELIVEREUCLIDEAN,
     /* For metrics */
     CORENUMBERS
 };
