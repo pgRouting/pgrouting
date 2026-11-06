@@ -2458,7 +2458,7 @@ msgstr "预计终止速度比 pgr_dijkstra 更快"
 
 #, fuzzy
 msgid "`Boost  <https://www.boost.org/libs/graph/doc>`__"
-msgstr "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
+msgstr ":bgl:`Boost: <algorithms/coloring/coloring_overview.html>`"
 
 #, fuzzy
 msgid "Chinese Postman Problem - Family of functions"
@@ -2523,8 +2523,8 @@ msgstr "边的标识符。"
 msgid "Color of the node."
 msgstr "边的几何形状。"
 
-msgid "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
-msgstr "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
+msgid ":bgl:`Boost: <algorithms/coloring/coloring_overview.html>`"
+msgstr ":bgl:`Boost: <algorithms/coloring/coloring_overview.html>`"
 
 msgid "Components - Family of functions"
 msgstr "分量 - 函数族"
@@ -10843,8 +10843,8 @@ msgstr "顶点的直接支配者。"
 msgid "Dominator tree of another component."
 msgstr "另一个组件的支配树。"
 
-msgid "`Boost: Lengauer-Tarjan dominator <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__"
-msgstr "`Boost: Lengauer-Tarjan 支配者算法 <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__"
+msgid ":bgl:`Boost: Lengauer-Tarjan dominator <algorithms/utility/lengauer_tarjan_dominator.html>`"
+msgstr ":bgl:`Boost: Lengauer-Tarjan 支配者算法 <algorithms/utility/lengauer_tarjan_dominator.html>`"
 
 msgid "`Wikipedia: dominator tree <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
 msgstr "`维基百科:支配树 <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
@@ -11860,7 +11860,7 @@ msgid "Sloan ordering of Original graph from Boost example (vertices 0-9)."
 msgstr ""
 
 #, fuzzy
-msgid "`Boost: Sloan Ordering <https://www.boost.org/doc/libs/latest/libs/graph/doc/sloan_ordering.htm>`__"
+msgid ":bgl:`Boost: Sloan Ordering <algorithms/ordering/sloan_ordering.html>`"
 msgstr ":bgl:`Boost: 边着色 <algorithms/coloring/edge_coloring.html>`"
 
 msgid "``pgr_stoerWagner`` - Experimental"

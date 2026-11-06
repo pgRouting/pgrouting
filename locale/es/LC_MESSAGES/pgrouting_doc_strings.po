@@ -2506,8 +2506,8 @@ msgstr "Identificador del nodo."
 msgid "Color of the node."
 msgstr "Color del nodo."
 
-msgid "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
-msgstr "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
+msgid ":bgl:`Boost: <algorithms/coloring/coloring_overview.html>`"
+msgstr ":bgl:`Boost: <algorithms/coloring/coloring_overview.html>`"
 
 msgid "Components - Family of functions"
 msgstr "Componentes - Familia de funciones"
@@ -10634,8 +10634,8 @@ msgstr "Dominador inmediato del vértice."
 msgid "Dominator tree of another component."
 msgstr "Árbnol dominante de otro componente."
 
-msgid "`Boost: Lengauer-Tarjan dominator <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__"
-msgstr "`Boost: Árbol dominante Lengauer-Tarjan <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__"
+msgid ":bgl:`Boost: Lengauer-Tarjan dominator <algorithms/utility/lengauer_tarjan_dominator.html>`"
+msgstr ":bgl:`Boost: Árbol dominante Lengauer-Tarjan <algorithms/utility/lengauer_tarjan_dominator.html>`"
 
 msgid "`Wikipedia: dominator tree <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
 msgstr "'Wikipedia: árbol de dominador' <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
@@ -11657,7 +11657,7 @@ msgid "Sloan ordering of Original graph from Boost example (vertices 0-9)."
 msgstr ""
 
 #, fuzzy
-msgid "`Boost: Sloan Ordering <https://www.boost.org/doc/libs/latest/libs/graph/doc/sloan_ordering.htm>`__"
+msgid ":bgl:`Boost: Sloan Ordering <algorithms/ordering/sloan_ordering.html>`"
 msgstr ":bgl:`Boost: Coloración de Segmentos <algorithms/coloring/edge_coloring.html>`"
 
 msgid "``pgr_stoerWagner`` - Experimental"
