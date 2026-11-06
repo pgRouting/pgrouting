@@ -66,11 +66,6 @@ class Pgr_depthFirstSearch {
       * @param directed   whether the graph is directed or undirected
       *
       * @returns results, when results are found
-      *
-      * @see [boost::depth_first_search]
-      * (https://www.boost.org/libs/graph/doc/depth_first_search.html)
-      * @see [boost::undirected_dfs]
-      * (https://www.boost.org/libs/graph/doc/undirected_dfs.html)
       */
      std::vector < MST_rt > depthFirstSearch(
              G &graph,
@@ -100,12 +95,6 @@ class Pgr_depthFirstSearch {
 
  private:
      /** @brief Calls the Boost function
-      *
-      * Calls [boost::depth_first_search]
-      * (https://www.boost.org/libs/graph/doc/depth_first_search.html)
-      * and [boost::undirected_dfs]
-      * (https://www.boost.org/libs/graph/doc/undirected_dfs.html)
-      * for directed graphs and undirected graphs, respectively.
       *
       * @param graph          the graph containing the edges
       * @param root           the root vertex
