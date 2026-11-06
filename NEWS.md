@@ -18,7 +18,7 @@ To see all issues & pull requests closed by this release see the
 
   Minimum requirement: 14
 
-*  library:
+* Boost library:
 
   Minimum requirement: 1.74
 
@@ -86,7 +86,8 @@ To see all issues & pull requests closed by this release see the
   process/driver pair
 * [#3154](https://github.com/pgRouting/pgrouting/issues/3154): betweennessCentrality: use allpairs/process and driver
 * [#3163](https://github.com/pgRouting/pgrouting/issues/3163): KSP & KSP WithPoints Use ShortestPath driver files
-* [#3170](https://github.com/pgRouting/pgrouting/issues/3170): pgr_hawickCircuits: wrong  function referenced
+* [#3170](https://github.com/pgRouting/pgrouting/issues/3170): pgr_hawickCircuits: wrong Boost function referenced
+* [#3176](https://github.com/pgRouting/pgrouting/issues/3176): Boost broken links
 
 4.1.0 Bug Fixes
 
@@ -94,7 +95,7 @@ To see all issues & pull requests closed by this release see the
 
 4.1.0 Requirements
 
-* [#3120](https://github.com/pgRouting/pgrouting/issues/3120): Up min requirements:  to 1.74 Postgres to 14 cmake to
+* [#3120](https://github.com/pgRouting/pgrouting/issues/3120): Up min requirements: Boost to 1.74 Postgres to 14 cmake to
   3.22.
 
 ## pgRouting 4.0
