@@ -19,20 +19,7 @@
 # Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>, 2026.
 # DeepL <noreply-mt-deepl@weblate.org>, 2026.
 msgid ""
-msgstr ""
-"Project-Id-Version: pgRouting v4.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-27 01:08+0000\n"
-"PO-Revision-Date: 2026-09-16 08:39+0000\n"
-"Last-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\n"
-"Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\n"
-"Language: ja\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.16.2\n"
-"Generated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-09-27 01:08+0000\nPO-Revision-Date: 2026-09-30 02:39+0000\nLast-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.16.2\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - カテゴリ"
@@ -1256,130 +1243,131 @@ msgid "Number of seats in the vehicle"
 msgstr "車両内の座席数"
 
 msgid "The `demand` request of the pickup-deliver orders must use the same units as the units used in the vehicle's `capacity`."
-msgstr ""
+msgstr "集配注文の `demand` の単位は車両の `capacity` と同じでなければなりません。"
 
+#, fuzzy
 msgid "To handle problems like: 10 (equal dimension) boxes of apples and 5 kg of feathers that are to be transported (not packed in boxes)."
-msgstr ""
+msgstr "次のような問題の処理: 10個のリング箱 (次元は同じ) と5kg (箱に入れていない) の輸送。"
 
 msgid "If the vehicle's **capacity** is measured in `boxes`, a conversion of `kg of feathers` to `number of boxes` is needed."
-msgstr ""
+msgstr "車両の **容量** の単位が箱だと、`kg単位の羽` から `箱数` への変換が必要です。"
 
 msgid "If the vehicle's **capacity** is measured in `kg`, a conversion of `box of apples` to `kg` is needed."
-msgstr ""
+msgstr "車両の**容量**の単位が `kg` の場合には、`リンゴ箱数` から `kg` への変換が必要です。"
 
 msgid "Showing how the 2 possible conversions can be done"
-msgstr ""
+msgstr "考えられる二通りの変換方法の提示"
 
 msgid "Let: - :math:`f\\_boxes`: number of boxes needed for `1` kg of feathers. - :math:`a\\_weight`: weight of `1` box of apples."
-msgstr ""
+msgstr "次の通りとする: - :math:`f\\_boxes`: 羽 `1` kg の箱数。- :math:`a\\_weight`: リンゴ `1 ` 箱の重量。"
 
 msgid "Capacity Units"
-msgstr ""
+msgstr "容量単位"
 
 msgid "apples"
-msgstr ""
+msgstr "リンゴ"
 
 msgid "feathers"
-msgstr ""
+msgstr "羽"
 
 msgid "boxes"
-msgstr ""
+msgstr "箱"
 
 msgid ":math:`5 * f\\_boxes`"
-msgstr ""
+msgstr ":math:`5 * f\\_boxes`"
 
 msgid "kg"
-msgstr ""
+msgstr "kg"
 
 msgid ":math:`10 * a\\_weight`"
-msgstr ""
+msgstr ":math:`10 * a\\_weight`"
 
 msgid "5"
-msgstr ""
+msgstr "5"
 
 msgid "Locations"
-msgstr ""
+msgstr "位置"
 
 msgid "When using :doc:`pgr_pickDeliverEuclidean`:"
-msgstr ""
+msgstr ":doc:`pgr_pickDeliverEuclidean` 使用時:"
 
 msgid "The vehicles have :math:`(x, y)` pairs for start and ending locations."
-msgstr ""
+msgstr "車両は、開始位置と終了位置の :math:`(x, y)`ペアを持っています。"
 
 msgid "The orders Have :math:`(x, y)` pairs for pickup and delivery locations."
-msgstr ""
+msgstr "注文は、集荷位置と配送位置の :math:`(x, y)` ペアを持っています。"
 
 msgid "When using :doc:`pgr_pickDeliver`:"
-msgstr ""
+msgstr ":doc:`pgr_pickDeliver` を使う時:"
 
 msgid "The vehicles have identifiers for the start and ending locations."
-msgstr ""
+msgstr "車両には、始点と終点の識別子がついています。"
 
 msgid "The orders have identifiers for the pickup and delivery locations."
-msgstr ""
+msgstr "注文には、集荷場所と配達場所の識別子がついています。"
 
 msgid "All the identifiers are indices to the given matrix."
-msgstr ""
+msgstr "すべての識別子は、与えられた行列へのインデックスです。"
 
 msgid "Time Handling"
-msgstr ""
+msgstr "時刻の扱い"
 
 msgid "The times are relative to **0**. All time units have to be converted to a **0** reference and the same time units."
-msgstr ""
+msgstr "時間は**0**を基準とした相対的なものです。すべての時間単位は、**0**を基準として、同じ時間単位に変換する必要があります。"
 
 msgid "Suppose that a vehicle's driver starts the shift at 9:00 am and ends the shift at 4:30 pm and the service time duration is 10 minutes with 30 seconds."
-msgstr ""
+msgstr "車両の運転手が業務を午前 9:00 に開始し、午後 4:30 に終了し、訪問先作業時間は 10分30秒 とします。"
 
 msgid "Meaning of 0"
-msgstr ""
+msgstr "0の意味"
 
 msgid "time units"
-msgstr ""
+msgstr "時間単位"
 
 msgid "9:00 am"
-msgstr ""
+msgstr "午前 9:00"
 
 msgid "4:30 pm"
-msgstr ""
+msgstr "午後 4:30"
 
 msgid "10 min 30 secs"
-msgstr ""
+msgstr "10分30秒"
 
 msgid "0:00 am"
-msgstr ""
+msgstr "午前 0:00"
 
 msgid "hours"
-msgstr ""
+msgstr "時"
 
 msgid "9"
-msgstr ""
+msgstr "9"
 
 msgid "16.5"
-msgstr ""
+msgstr "16.5"
 
 msgid ":math:`10.5 / 60 = 0.175`"
-msgstr ""
+msgstr ":math:`10.5 / 60 = 0.175`"
 
 msgid "minutes"
-msgstr ""
+msgstr "分"
 
 msgid ":math:`9*60 = 54`"
-msgstr ""
+msgstr ":math:`9*60 = 54`"
 
 msgid ":math:`16.5*60 = 990`"
-msgstr ""
+msgstr ":math:`16.5*60 = 990`"
 
 msgid "10.5"
-msgstr ""
+msgstr "10.5"
 
 msgid "0"
-msgstr ""
+msgstr "0"
 
 msgid "7.5"
-msgstr ""
+msgstr "7.5"
 
 msgid ":math:`7.5*60 = 540`"
-msgstr ""
+msgstr ":math:`7.5*60 = 540`"
 
 msgid "Factor handling"
 msgstr ""
