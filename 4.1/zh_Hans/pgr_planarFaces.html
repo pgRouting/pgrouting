@@ -8,18 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_planarFaces - Experimental &#8212; pgRouting Manual (4.1-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=11382bef"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=33b2492b"></script>
+    <script src="_static/page_history.js?v=6d6cd173"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
-    <link rel="index" title="索引" href="genindex.html" />
-    <link rel="search" title="搜索" href="search.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Circuits - Family of Functions" href="circuits-family.html" />
     <link rel="prev" title="pgr_makeBiconnectedPlanar - Experimental" href="pgr_makeBiconnectedPlanar.html" />
 <meta charset='utf-8'>
@@ -156,7 +156,46 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_planarFaces</span></code> - Experimental</a><ul>
+<li><a class="reference internal" href="#description">描述</a></li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a></li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
+<li><a class="reference internal" href="#non-planar-graphs">Non-planar graphs</a></li>
+<li><a class="reference internal" href="#planarity-of-loops">Planarity of loops</a></li>
+<li><a class="reference internal" href="#triangular-graphs">Triangular graphs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_makeBiconnectedPlanar.html" title="Previous Chapter: pgr_makeBiconnectedPlanar - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_makeBicon...</span>
+    </a>
+  </li>
+  <li>
+    <a href="circuits-family.html" title="Next Chapter: Circuits - Family of Functions"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Circuits - Fa... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_planarFaces','zh-Hans'));  </script>
             
   <div class="line-block" id="index-0">
@@ -169,14 +208,14 @@ edge-face incidence for an undirected graph.</p>
 <div class="admonition-experimental admonition">
 <p class="admonition-title">Experimental</p>
 <div class="admonition warning">
-<p class="admonition-title">警告</p>
+<p class="admonition-title">Warning</p>
 <p>Possible server crash</p>
 <ul class="simple">
 <li><p>These functions might create a server crash</p></li>
 </ul>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">警告</p>
+<p class="admonition-title">Warning</p>
 <p>实验性函数</p>
 <ul class="simple">
 <li><p>它们不是当前版本的正式版本。</p></li>
@@ -255,7 +294,7 @@ test, then walks faces with Boost <code class="docutils literal notranslate"><sp
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -451,7 +490,7 @@ borders the outer layout of the city block).</p></li>
 raises <code class="docutils literal notranslate"><span class="pre">ERROR:</span> <span class="pre">Graph</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">planar</span></code> in that case. The <a class="reference internal" href="pgr_isPlanar.html"><span class="doc">pgr_isPlanar - 实验性</span></a>
 documentation shows a non-planar subgraph of <code class="docutils literal notranslate"><span class="pre">sampledata</span></code> (edges highlighted in
 blue in the figure).</p>
-<div class="graphviz"><img src="_images/graphviz-b034c614a21178f731b4adf0e227057267f4bd1d.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-9dae6fcccae4752b018a6981ed153237732fc706.png" alt="graph G {
  node [shape=circle;style=filled;width=0.3;fixedsize=true;fontsize=8];
  1,2,3,4,5 [color=lightcoral];
  1 [pos=&quot;0,0!&quot;];
@@ -499,7 +538,7 @@ blue in the figure).</p>
 <section id="planarity-of-loops">
 <h3>Planarity of loops<a class="headerlink" href="#planarity-of-loops" title="Link to this heading">¶</a></h3>
 <p>One loop graph with only one vertex:</p>
-<div class="graphviz"><img src="_images/graphviz-56fc70402d79eadb72a932982636717ffcc81d5d.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-23bb27bab62f42a193fc03e75f95767bc66d99f5.png" alt="graph G {
     node [shape=circle;style=filled;width=0.3;fixedsize=true;fontsize=8];
     1 [color=lightblue];
     1 -- 1;
@@ -516,7 +555,7 @@ blue in the figure).</p>
 </pre></div>
 </div>
 <p>Two loop graph with only one vertex:</p>
-<div class="graphviz"><img src="_images/graphviz-baa0b2c883afc31958d015ce4a8d1bf7df4fb19e.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-d39bb1b9dc2d6991c1220eeb61f672e5d2135931.png" alt="graph G {
     node [shape=circle;style=filled;width=0.3;fixedsize=true;fontsize=8];
     1 [color=lightblue];
     1 -- 1 -- 1;
@@ -538,7 +577,7 @@ blue in the figure).</p>
 <section id="triangular-graphs">
 <h3>Triangular graphs<a class="headerlink" href="#triangular-graphs" title="Link to this heading">¶</a></h3>
 <p class="rubric">Triangular graph (no duplicate edges)</p>
-<div class="graphviz"><img src="_images/graphviz-10b54e391ad16e7201dda1501c98136b21776768.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-2978d599eb907557d554d9d800e5da4c1c50616f.png" alt="graph G {
     node [shape=circle;style=filled;width=0.5;fixedsize=true;fontsize=8];
     1,2,3 [color=lightblue];
     1 -- 2 -- 3 -- 1;
@@ -576,7 +615,7 @@ face.</p></li>
 <li><p>Each edge lists <code class="docutils literal notranslate"><span class="pre">1</span></code> on one face and <code class="docutils literal notranslate"><span class="pre">2</span></code> on the other.</p></li>
 </ul>
 <p class="rubric">Triangular graph (duplicate edges)</p>
-<div class="graphviz"><img src="_images/graphviz-6a6b1450bc245ece07658a9d0869cc94037b97d7.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-3ef46441972ca0b00ed0eb62d9ef5504035e6a24.png" alt="graph G {
     node [shape=circle;style=filled;width=0.5;fixedsize=true;fontsize=8];
     1,2,3 [color=lightblue];
     1 -- 2 -- 3 -- 1;
@@ -620,8 +659,8 @@ Applications, 8(3), 241-273.</p></li>
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -638,9 +677,9 @@ Applications, 8(3), 241-273.</p></li>
       
     </p>
     <p>
-        &copy; Copyright %Y pgRouting developers.<br/>
-      最后更新于 11月 02, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright 2026 pgRouting developers.<br/>
+      Last updated on 11月 06, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

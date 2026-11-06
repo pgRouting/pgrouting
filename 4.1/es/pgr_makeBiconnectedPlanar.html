@@ -8,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_makeBiconnectedPlanar - Experimental &#8212; pgRouting Manual (4.1-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=7a93a065"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=33b2492b"></script>
-    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <script src="_static/page_history.js?v=6d6cd173"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -152,7 +152,41 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_makeBiconnectedPlanar</span></code> - Experimental</a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_isPlanar.html" title="Previous Chapter: pgr_isPlanar - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_isPlanar ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_planarFaces.html" title="Next Chapter: pgr_planarFaces - Experimental"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_planarFac... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_makeBiconnectedPlanar','es'));  </script>
             
   <div class="line-block" id="index-0">
@@ -238,7 +272,7 @@ connected component.</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -273,7 +307,8 @@ connected component.</p></li>
 <p>Sample graph after adding biconnecting edges (olive = original edges, red
 dashed = 4 new biconnecting edges).</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/biconnected_planar_sampledata.png"><img alt="_images/biconnected_planar_sampledata.png" src="_images/biconnected_planar_sampledata.png" style="width: 787.5px; height: 637.5px;" /></a>
+<a class="reference internal image-reference" href="_images/biconnected_planar_sampledata.png"><img alt="_images/biconnected_planar_sampledata.png" height="638" src="_images/biconnected_planar_sampledata.png" width="788" />
+</a>
 </figure>
 <p>When a graph contains multiple disconnected components, each component
 is processed independently. Components (2,4) and (13,14) are already
@@ -391,7 +426,7 @@ biconnected (0 articulation points) and require no new edges.</p>
 </dd>
 </dl>
 <p>Create a 4-vertex tree graph.</p>
-<div class="graphviz"><img src="_images/graphviz-fe15e31c93ad67418db34b7ce61239d2ee728c25.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-15feac206986bfe7afcab6137c6057d672b54f4f.png" alt="graph G {
    node [color=cyan;shape=circle;style=filled;width=0.3;fixedsize=true;fontsize=8];
    1 [pos=&quot;1,1!&quot;];
    2 [pos=&quot;0,0!&quot;];
@@ -422,7 +457,7 @@ biconnected (0 articulation points) and require no new edges.</p>
 </pre></div>
 </div>
 <p>Adding the edges to the graph</p>
-<div class="graphviz"><img src="_images/graphviz-b0e2473aa153c374bfdc45e90c697f6ab85b42f2.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-f86b31fa685e3dd8f387e232ffb19f7a7fa431d6.png" alt="graph G {
    node [color=cyan;shape=circle;style=filled;width=0.3;fixedsize=true;fontsize=8];
    1 [pos=&quot;1,1!&quot;];
    2 [pos=&quot;0,0!&quot;];
@@ -459,9 +494,9 @@ biconnected (0 articulation points) and require no new edges.</p>
       
     </p>
     <p>
-        &copy; Copyright %Y pgRouting developers.<br/>
-      Actualizado por última vez en nov 02, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright 2026 pgRouting developers.<br/>
+      Actualizado por última vez en nov 06, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

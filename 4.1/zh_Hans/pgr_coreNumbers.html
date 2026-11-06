@@ -8,18 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_coreNumbers - Experimental &#8212; pgRouting Manual (4.1-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=11382bef"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=33b2492b"></script>
+    <script src="_static/page_history.js?v=6d6cd173"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
-    <link rel="index" title="索引" href="genindex.html" />
-    <link rel="search" title="搜索" href="search.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_bandwidth - Experimental" href="pgr_bandwidth.html" />
     <link rel="prev" title="pgr_betweennessCentrality - 实验性" href="pgr_betweennessCentrality.html" />
 <meta charset='utf-8'>
@@ -186,7 +186,76 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_coreNumbers</span></code> - Experimental</a><ul>
+<li><a class="reference internal" href="#description">描述</a></li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a></li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
+<li><a class="reference internal" href="#sample-network-overview">Sample network overview</a></li>
+<li><a class="reference internal" href="#comparing-with-pgr-betweennesscentrality-on-the-same-edges">Comparing with <span class="xref std std-doc">pgr_betweennessCentrality</span> on the same edges</a><ul>
+<li><a class="reference internal" href="#core-numbers-on-edges-1-2-3-4">1) Core numbers on edges <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#subgraph-with-core-2-vertices">Subgraph with core-<span class="math notranslate nohighlight">\(2\)</span> vertices</a><ul>
+<li><a class="reference internal" href="#core-numbers-on-edges-id-10">2) Core numbers on edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#filtering-results-in-sql">Filtering results in SQL</a><ul>
+<li><a class="reference internal" href="#vertices-with-core-geq-2-on-edges-id-10">3) Vertices with core <span class="math notranslate nohighlight">\(\geq 2\)</span> on edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#full-sample-graph">Full sample graph</a><ul>
+<li><a class="reference internal" href="#core-numbers-on-all-edges">4) Core numbers on all edges</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#small-graphs">Small graphs</a><ul>
+<li><a class="reference internal" href="#single-edge-two-terminal-nodes">5) Single edge (two terminal nodes)</a></li>
+<li><a class="reference internal" href="#triangle-all-vertices-core-2">6) Triangle (all vertices core <span class="math notranslate nohighlight">\(2\)</span>)</a></li>
+<li><a class="reference internal" href="#square-cycle-from-sampledata-all-vertices-core-2">7) Square cycle from <span class="xref std std-doc">sampledata</span> (all vertices core <span class="math notranslate nohighlight">\(2\)</span>)</a></li>
+<li><a class="reference internal" href="#star-graph-hub-and-spokes-all-core-1">8) Star graph (hub and spokes, all core <span class="math notranslate nohighlight">\(1\)</span>)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#empty-edge-set">Empty edge set</a><ul>
+<li><a class="reference internal" href="#no-edges-in-the-sql-query">9) No edges in the SQL query</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#core-numbers-and-planarity">Core numbers and planarity</a><ul>
+<li><a class="reference internal" href="#planarity-of-the-subgraph-with-edges-id-10">10) Planarity of the subgraph with edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span></a></li>
+<li><a class="reference internal" href="#complete-graph-k-4-all-vertices-core-3">11) Complete graph <span class="math notranslate nohighlight">\(K_4\)</span> (all vertices core <span class="math notranslate nohighlight">\(3\)</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_betweennessCentrality.html" title="Previous Chapter: pgr_betweennessCentrality - 实验性"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_betweenne...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_bandwidth.html" title="Next Chapter: pgr_bandwidth - Experimental"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_bandwidth... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_coreNumbers','zh-Hans'));  </script>
             
   <div class="line-block" id="index-0">
@@ -199,14 +268,14 @@ graph using k-core decomposition.</p>
 <div class="admonition-experimental admonition">
 <p class="admonition-title">Experimental</p>
 <div class="admonition warning">
-<p class="admonition-title">警告</p>
+<p class="admonition-title">Warning</p>
 <p>Possible server crash</p>
 <ul class="simple">
 <li><p>These functions might create a server crash</p></li>
 </ul>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">警告</p>
+<p class="admonition-title">Warning</p>
 <p>实验性函数</p>
 <ul class="simple">
 <li><p>它们不是当前版本的正式版本。</p></li>
@@ -287,7 +356,7 @@ core number is 0.</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -338,7 +407,7 @@ peeling degree-<span class="math notranslate nohighlight">\(1\)</span> vertices 
 </ul>
 <p>The following diagram shows edges <span class="math notranslate nohighlight">\(\{1, \ldots, 7\}\)</span> from
 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a>; every vertex label shows <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">(core)</span></code>.</p>
-<div class="graphviz"><img src="_images/graphviz-10c40397530f536df84701b340d3835a132272fa.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-5568440d896992799f51000b24c8ef55f412ed69.png" alt="graph G {
     node [shape=circle;style=filled;width=.5;fixedsize=true;fontsize=8];
     1,3,5,6,7,10,11,15 [color=deepskyblue];
     5 [pos=&quot;0,0!&quot;;label=&quot;5 (1)&quot;];
@@ -361,7 +430,7 @@ peeling degree-<span class="math notranslate nohighlight">\(1\)</span> vertices 
 example of <a class="reference internal" href="pgr_betweennessCentrality.html"><span class="doc">pgr_betweennessCentrality - 实验性</span></a>. Every vertex is still core
 <span class="math notranslate nohighlight">\(1\)</span> because the structure is a tree-like path with terminal nodes at
 <span class="math notranslate nohighlight">\(5\)</span> and <span class="math notranslate nohighlight">\(15\)</span>.</p>
-<div class="graphviz"><img src="_images/graphviz-ff23191fefc6ae69d5506a0d1487b42cdf8ad59b.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-66ca7d76aeca9fe56e3ad34387ee0b9c14b47295.png" alt="graph G {
     5,7,15,6,10 [shape=circle;style=filled;width=.5;fixedsize=true;fontsize=8];
     5,7,15,6,10 [color=deepskyblue];
     5 [pos=&quot;0,0!&quot;;label=&quot;5 (1)&quot;];
@@ -379,7 +448,7 @@ example of <a class="reference internal" href="pgr_betweennessCentrality.html"><
 because they have degree <span class="math notranslate nohighlight">\(1\)</span>. After further peeling, vertices
 <span class="math notranslate nohighlight">\(6\)</span>, <span class="math notranslate nohighlight">\(7\)</span>, <span class="math notranslate nohighlight">\(10\)</span>, and <span class="math notranslate nohighlight">\(11\)</span> remain as the 2-core (shown in
 green below).</p>
-<div class="graphviz"><img src="_images/graphviz-77c0f525a232146baab5d19ca545ce7e19e9ae17.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-60a535036fe635284972a6bd572271706f876adf.png" alt="graph G {
     node [shape=circle;style=filled;width=.5;fixedsize=true;fontsize=8];
     1,3,5,15,16 [color=deepskyblue];
     6,7,10,11 [color=green];
@@ -513,7 +582,8 @@ belongs to the <span class="math notranslate nohighlight">\(k\)</span>-core.</p>
 <section id="sample-network-overview">
 <h3>Sample network overview<a class="headerlink" href="#sample-network-overview" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" height="433" src="_images/Fig1-originalData.png" width="476" />
+</a>
 <figcaption>
 <p><span class="caption-text">Directed sample network. <code class="docutils literal notranslate"><span class="pre">pgr_coreNumbers</span></code> treats every edge as undirected,
 so <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> are not used in the calculation.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
@@ -559,7 +629,8 @@ by path importance.</p></li>
 <p>Adding edges <span class="math notranslate nohighlight">\(5\)</span> through <span class="math notranslate nohighlight">\(9\)</span> connects the inner vertices into a
 2-core. The undirected layout below shows the same network.</p>
 <figure class="align-default" id="id2">
-<a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 482.0px; height: 435.0px;" /></a>
+<a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" height="435" src="_images/Fig6-undirected.png" width="482" />
+</a>
 <figcaption>
 <p><span class="caption-text">Undirected view of the sample network</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
@@ -673,7 +744,7 @@ block of the city network. Vertex <span class="math notranslate nohighlight">\(9
 <section id="single-edge-two-terminal-nodes">
 <h4>5) Single edge (two terminal nodes)<a class="headerlink" href="#single-edge-two-terminal-nodes" title="Link to this heading">¶</a></h4>
 <p>Both endpoints have core number <span class="math notranslate nohighlight">\(1\)</span>.</p>
-<div class="graphviz"><img src="_images/graphviz-cffc2fc20d147f8b604dd576d543799a751fbdb6.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-c08df860a963f80ba86de703afedf7744df9c3f1.png" alt="graph G {
     node [shape=circle;style=filled;width=.5;color=deepskyblue;fixedsize=true;fontsize=8];
     5 [label=&quot;5 (1)&quot;];
     6 [label=&quot;6 (1)&quot;];
@@ -702,7 +773,7 @@ block of the city network. Vertex <span class="math notranslate nohighlight">\(9
 <h4>6) Triangle (all vertices core <span class="math notranslate nohighlight">\(2\)</span>)<a class="headerlink" href="#triangle-all-vertices-core-2" title="Link to this heading">¶</a></h4>
 <p>In a triangle every vertex has degree <span class="math notranslate nohighlight">\(2\)</span>, so all three belong to the
 2-core.</p>
-<div class="graphviz"><img src="_images/graphviz-acd1123f59a880eb5c60ed96d8b7bbbbdda283e4.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-1323435d596ae9bf8a8cc23327d8ab9ceefc8f2b.png" alt="graph G {
     node [shape=circle;style=filled;width=.5;color=green;fixedsize=true;fontsize=8];
     1 [label=&quot;1 (2)&quot;];
     2 [label=&quot;2 (2)&quot;];
@@ -738,7 +809,7 @@ $$SELECT * FROM (VALUES
 <h4>7) Square cycle from <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a> (all vertices core <span class="math notranslate nohighlight">\(2\)</span>)<a class="headerlink" href="#square-cycle-from-sampledata-all-vertices-core-2" title="Link to this heading">¶</a></h4>
 <p>Edges <span class="math notranslate nohighlight">\(\{2, 4, 5, 8\}\)</span> form a 4-cycle on vertices
 <span class="math notranslate nohighlight">\(\{6, 7, 10, 11\}\)</span>.</p>
-<div class="graphviz"><img src="_images/graphviz-489b1227ade6f392ce2947c21dac005881eaa6dc.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-5ea4ceea1ca49150c3be2a4bef1b88812e669552.png" alt="graph G {
     node [shape=circle;style=filled;width=.5;color=green;fixedsize=true;fontsize=8];
     6 [label=&quot;6 (2)&quot;];
     7 [label=&quot;7 (2)&quot;];
@@ -774,7 +845,7 @@ $$SELECT * FROM (VALUES
 <h4>8) Star graph (hub and spokes, all core <span class="math notranslate nohighlight">\(1\)</span>)<a class="headerlink" href="#star-graph-hub-and-spokes-all-core-1" title="Link to this heading">¶</a></h4>
 <p>A star has a central hub connected to leaf vertices. Every vertex is peeled at
 <span class="math notranslate nohighlight">\(k = 1\)</span>.</p>
-<div class="graphviz"><img src="_images/graphviz-f554db807d77ade81b07c7727f8e25c151026142.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-b27d5982680b27751ca80e75c0931bded0693656.png" alt="graph G {
     node [shape=circle;style=filled;width=.5;color=deepskyblue;fixedsize=true;fontsize=8];
     1 [label=&quot;1 (1)&quot;];
     2 [label=&quot;2 (1)&quot;];
@@ -914,7 +985,7 @@ every vertex, which is the maximum possible core number on <span class="math not
 <li><p>The degeneracy of this graph is <span class="math notranslate nohighlight">\(3\)</span>, compared with <span class="math notranslate nohighlight">\(2\)</span> for the
 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a> network.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-3d18b1631229be78cdd753fc9fd6d5062cbdde7d.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-a6b9edc6dd2e840f6a548995dd164d0a845e288d.png" alt="graph G {
     node [shape=circle;style=filled;width=.5;fixedsize=true;fontsize=8];
     1,2,3,4 [color=orange];
     1 [pos=&quot;0,1!&quot;;label=&quot;1 (3)&quot;];
@@ -942,8 +1013,8 @@ of Networks</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -960,9 +1031,9 @@ of Networks</a></p></li>
       
     </p>
     <p>
-        &copy; Copyright %Y pgRouting developers.<br/>
-      最后更新于 11月 02, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright 2026 pgRouting developers.<br/>
+      Last updated on 11月 06, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

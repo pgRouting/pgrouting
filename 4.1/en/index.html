@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Table of Contents &#8212; pgRouting Manual (4.1-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=05423f42"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=33b2492b"></script>
+    <script src="_static/page_history.js?v=6d6cd173"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -157,7 +157,49 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">Table of Contents</a><ul>
+<li><a class="reference internal" href="#general">General</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#pgrouting-concepts">Pgrouting Concepts</a></li>
+<li><a class="reference internal" href="#routingfunctions"><span class="xref std std-doc">routingFunctions</span></a></li>
+<li><a class="reference internal" href="#functions-by-categories">Functions by categories</a></li>
+<li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Available Functions but not official pgRouting functions</a></li>
+<li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
+<li><a class="reference internal" href="#pgrouting-4-1-0-release-notes">pgRouting 4.1.0 Release Notes</a><ul>
+<li><a class="reference internal" href="#build">4.1.0 Build</a></li>
+<li><a class="reference internal" href="#summary-of-changes-by-function">4.1.0 Summary of changes by function</a></li>
+<li><a class="reference internal" href="#new-experimental-functions">4.1.0 New experimental functions.</a></li>
+<li><a class="reference internal" href="#code-enhancements">4.1.0 Code enhancements</a></li>
+<li><a class="reference internal" href="#bug-fixes">4.1.0 Bug Fixes</a></li>
+<li><a class="reference internal" href="#requirements">4.1.0 Requirements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#all-releases">All releases</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgRouting-introduction.html" title="Next Chapter: Introduction"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Introduction &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('index','en'));  </script>
             
   <div class="line-block">
@@ -471,6 +513,11 @@ table information.</p></li>
 <li><p>Deprecated signature: <code class="docutils literal notranslate"><span class="pre">pgr_hawickCircuits(text)</span></code>.</p></li>
 </ul>
 </li>
+<li><p>pgr_hawickUniqueCircuits</p>
+<ul>
+<li><p>New experimental function.</p></li>
+</ul>
+</li>
 <li><p>pgr_makeBiconnectedPlanar</p>
 <ul>
 <li><p>New experimental function.</p></li>
@@ -495,6 +542,7 @@ table information.</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3140">#3140</a>: pgr_makeBiconnectedPlanar</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3142">#3142</a>: pgr_coreNumbers</p></li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3143">#3143</a>: pgr_planarFaces</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3171">#3171</a>: pgr_hawickUniqueCircuits: new functionality</p></li>
 </ul>
 </section>
 <section id="code-enhancements">
@@ -570,9 +618,9 @@ process/driver pair</p></li>
       
     </p>
     <p>
-        &copy; Copyright %Y pgRouting developers.<br/>
-      Last updated on Nov 02, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright 2026 pgRouting developers.<br/>
+      Last updated on Nov 06, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

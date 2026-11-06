@@ -8,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Circuits - Family of Functions &#8212; pgRouting Manual (4.1-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=4e2df6f4"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=33b2492b"></script>
-    <script src="_static/translations.js?v=92a62177"></script>
+    <script src="_static/page_history.js?v=6d6cd173"></script>
+    <script src="_static/translations.js?v=55d7b627"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -153,7 +153,42 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">Circuits - Family of Functions</a><ul>
+<li><a class="reference internal" href="#description">Beskrivning</a></li>
+<li><a class="reference internal" href="#parameters">Parametrar</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Valfria parametrar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
+<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
+<li><a class="reference internal" href="#see-also">Se även</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_planarFaces.html" title="Previous Chapter: pgr_planarFaces - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_planarFac...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_hawickCircuits.html" title="Next Chapter: pgr_hawickCircuits - Experimentell"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_hawickCir... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('circuits-family','sv'));  </script>
             
   <div class="line-block" id="index-0">
@@ -193,6 +228,7 @@
 </div>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_hawickCircuits.html"><span class="doc">pgr_hawickCircuits - Experimentell</span></a> - Hawick’s circuits algorithm.</p></li>
+<li><p><a class="reference internal" href="pgr_hawickUniqueCircuits.html"><span class="doc">pgr_hawickUniqueCircuits - Experimental</span></a> - Hawick’s unique circuits algorithm.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -268,11 +304,11 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>A u-turn on an edge is a 2 edge circuit that uses the same <code class="docutils literal notranslate"><span class="pre">id</span></code> on
+<li><p>A U-turn on the same edge is a 2 edge circuit that uses the same <code class="docutils literal notranslate"><span class="pre">id</span></code> on
 both directions of the edge.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code>: u-turns are part of the results.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code>: u-turns are discarded when the circuit can be formed
-with two different edges; a u-turn is kept when it is the only
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code>: U-turns on the same edge are not avoided.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code>: U-turns are avided when the circuit can be formed
+with two different edges; a U-turn is kept when it is the only
 option, that is, when the two vertices are connected by a single
 edge.</p></li>
 <li><p>Self loops are not affected.</p></li>
@@ -409,7 +445,7 @@ as <code class="docutils literal notranslate"><span class="pre">node</span></cod
 <h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html">Boost: Hawick Circuit Algorithm</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html">Boost: Hawick Circuit Algorithm</a></p></li>
 </ul>
 <p class="rubric">Index och tabeller</p>
 <ul class="simple">
@@ -431,9 +467,9 @@ as <code class="docutils literal notranslate"><span class="pre">node</span></cod
       
     </p>
     <p>
-        &copy; Copyright %Y pgRouting developers.<br/>
-      Senast uppdaterad nov. 02, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright 2026 pgRouting developers.<br/>
+      Senast uppdaterad nov. 06, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

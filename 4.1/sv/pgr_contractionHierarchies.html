@@ -8,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_contractionHierarchies - Experimentell &#8212; pgRouting Manual (4.1-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=4e2df6f4"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=33b2492b"></script>
-    <script src="_static/translations.js?v=92a62177"></script>
+    <script src="_static/page_history.js?v=6d6cd173"></script>
+    <script src="_static/translations.js?v=55d7b627"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -173,7 +173,62 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionHierarchies</span></code> - Experimentell</a><ul>
+<li><a class="reference internal" href="#description">Beskrivning</a></li>
+<li><a class="reference internal" href="#signatures">Underskrifter</a></li>
+<li><a class="reference internal" href="#parameters">Parametrar</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Valfria parametrar</a></li>
+<li><a class="reference internal" href="#contraction-hierarchies-optional-parameters">Sammandragningshierarkier valfria parametrar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
+<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
+<li><a class="reference internal" href="#examples">Exempel</a><ul>
+<li><a class="reference internal" href="#on-an-undirected-graph">På en odelad graf</a></li>
+<li><a class="reference internal" href="#on-an-undirected-graph-with-forbidden-vertices">På en odelad graf med förbjudna toppar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contraction-process-steps-details">Detaljer för sammandragningsprocessens steg</a><ul>
+<li><a class="reference internal" href="#shortcut-building-process">Genväg till byggprocessen</a></li>
+<li><a class="reference internal" href="#initialize-the-queue-with-a-first-vertices-order">Initiera kön med en ordning för första toppar</a></li>
+<li><a class="reference internal" href="#build-the-final-vertex-order">Bygg den slutliga toppunktsordningen</a></li>
+<li><a class="reference internal" href="#add-shortcuts-to-the-initial-graph">Lägga till genvägar till den initiala grafen</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#use-the-contraction">Använd sammandragning</a><ul>
+<li><a class="reference internal" href="#build-the-contraction">Bygg sammandragningen</a></li>
+<li><a class="reference internal" href="#add-shortcuts-and-hierarchy-in-the-existing-tables">Lägg till genvägar och hierarki i befintliga tabeller</a></li>
+<li><a class="reference internal" href="#use-a-dijkstra-shortest-path-algorithm-on-it">Använd en Dijkstra-algoritm för kortaste vägen på den</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Se även</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_contractionLinear.html" title="Previous Chapter: pgr_contractionLinear - Föreslagen"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contracti...</span>
+    </a>
+  </li>
+  <li>
+    <a href="dijkstra-family.html" title="Next Chapter: Dijkstra - Familj av funktioner"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Dijkstra - Fa... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_contractionHierarchies','sv'));  </script>
             
   <div class="line-block">
@@ -202,7 +257,7 @@
 <li><p>lagt till genvägskanter, med negativa identifierare;</p></li>
 <li><p>kontrakterade noder med en order.</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost-graf inuti</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
 </section>
 <section id="signatures">
 <h2>Underskrifter<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -475,7 +530,8 @@
 </pre></div>
 </div>
 <p>Den ursprungliga grafen:</p>
-<a class="reference internal image-reference" href="_images/sample_graph.png"><img alt="_images/sample_graph.png" src="_images/sample_graph.png" style="width: 241.0px; height: 217.5px;" /></a>
+<a class="reference internal image-reference" href="_images/sample_graph.png"><img alt="_images/sample_graph.png" height="218" src="_images/sample_graph.png" width="241" />
+</a>
 <dl class="field-list simple">
 <dt class="field-odd">Exempel<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bygga sammandragningshierarkier på hela grafen</p>
@@ -517,7 +573,8 @@
 </dd>
 </dl>
 <p>Vi får den kontraherade grafen ovan:</p>
-<a class="reference internal image-reference" href="_images/sample_graph_with_shortcuts.png"><img alt="_images/sample_graph_with_shortcuts.png" src="_images/sample_graph_with_shortcuts.png" style="width: 241.0px; height: 217.5px;" /></a>
+<a class="reference internal image-reference" href="_images/sample_graph_with_shortcuts.png"><img alt="_images/sample_graph_with_shortcuts.png" height="218" src="_images/sample_graph_with_shortcuts.png" width="241" />
+</a>
 <p>Vi kan utan överraskning se att de toppar som tillhör genvägarna har en tendens att ha en hög prioritetsnivå i den resulterande topparnas ordning.</p>
 </section>
 <section id="on-an-undirected-graph-with-forbidden-vertices">
@@ -576,7 +633,7 @@
 <section id="initialize-the-queue-with-a-first-vertices-order">
 <h3>Initiera kön med en ordning för första toppar<a class="headerlink" href="#initialize-the-queue-with-a-first-vertices-order" title="Link to this heading">¶</a></h3>
 <p>För varje topp <code class="docutils literal notranslate"><span class="pre">v</span></code> i grafen byggs en sammandragning av <code class="docutils literal notranslate"><span class="pre">v</span></code>:</p>
-<div class="graphviz"><img src="_images/graphviz-9fd9ee1aab9a22f28f605a75718cd929ec0e6c97.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-0f5a834e273029f3b3f5483ea9147ac4fca9e7b8.png" alt="graph G {
     p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green];
 
@@ -615,7 +672,7 @@
 </tbody>
 </table>
 <p>Intilliggande kanter tas bort.</p>
-<div class="graphviz"><img src="_images/graphviz-298ea1ea03dc93c82430c5562f4a507c0ae4bcc1.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-5141a13c76a88605bcca254fd57645d54d33539a.png" alt="graph G {
     p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green];
 
@@ -630,7 +687,7 @@
     u -- w [dir=both, weight=5, arrowhead=vee, arrowtail=vee, label=&quot;  5&quot;];
 }" class="graphviz" /></div>
 <p>Genvägar byggs från föregångare till <code class="docutils literal notranslate"><span class="pre">v</span></code> till efterföljare till <code class="docutils literal notranslate"><span class="pre">v</span></code> om och endast om vägen genom <code class="docutils literal notranslate"><span class="pre">v</span></code> motsvarar den enda kortaste vägen mellan föregångaren och efterföljaren till <code class="docutils literal notranslate"><span class="pre">v</span></code> i grafen. Måttet <em>kantskillnad</em> antar här värdet -2.</p>
-<div class="graphviz"><img src="_images/graphviz-779d4ae5a962482f9d4175387305d21e406cb3c6.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-3e2092dfbdc3e5f4f3b11b67f7623d0c4a660c82.png" alt="graph G {
     p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green];
 
@@ -746,9 +803,9 @@
       
     </p>
     <p>
-        &copy; Copyright %Y pgRouting developers.<br/>
-      Senast uppdaterad nov. 02, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright 2026 pgRouting developers.<br/>
+      Senast uppdaterad nov. 06, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

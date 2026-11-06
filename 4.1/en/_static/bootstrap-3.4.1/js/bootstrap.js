@@ -1,10 +1,10 @@
 /*!
- * Bootstrap v3.4.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 Twitter, Inc.
+ * Bootstrap v3.4.1+dfsg (http://getbootstrap.com)
+ * Copyright 2011-2025 Twitter, Inc.
  * Licensed under the MIT license
  */
 
-if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
+if (typeof jQuery === 'undefined') {
   throw new Error('Bootstrap\'s JavaScript requires jQuery')
 }
 
@@ -14,7 +14,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
   if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] > 3)) {
     throw new Error('Bootstrap\'s JavaScript requires jQuery version 1.9.1 or higher, but lower than version 4')
   }
-}(window.$jqTheme || window.jQuery);
+}(jQuery);
 
 /* ========================================================================
  * Bootstrap: transition.js v3.4.1
@@ -74,7 +74,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
     }
   })
 
-}(window.$jqTheme || window.jQuery);
+}(jQuery);
 
 /* ========================================================================
  * Bootstrap: alert.js v3.4.1
@@ -170,7 +170,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
 
   $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
 
-}(window.$jqTheme || window.jQuery);
+}(jQuery);
 
 /* ========================================================================
  * Bootstrap: button.js v3.4.1
@@ -199,6 +199,15 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
     loadingText: 'loading...'
   }
 
+  Button.prototype.sanitize = function (unsafeText) {
+    return unsafeText
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
   Button.prototype.setState = function (state) {
     var d    = 'disabled'
     var $el  = this.$element
@@ -211,7 +220,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
 
     // push to event loop to allow forms to submit
     setTimeout($.proxy(function () {
-      $el[val](data[state] == null ? this.options[state] : data[state])
+      $el[val](data[state] == null ? this.options[state] : this.sanitize(data[state]))
 
       if (state == 'loadingText') {
         this.isLoading = true
@@ -296,7 +305,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
       $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type))
     })
 
-}(window.$jqTheme || window.jQuery);
+}(jQuery);
 
 /* ========================================================================
  * Bootstrap: carousel.js v3.4.1
@@ -517,7 +526,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
     var target  = $this.attr('data-target') || href
     var $target = $(document).find(target)
 
-    if (!$target.hasClass('carousel')) return
+    if (!$target.hasClass('carousel')) return false;
 
     var options = $.extend({}, $target.data(), $this.data())
     var slideIndex = $this.attr('data-slide-to')
@@ -543,7 +552,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
     })
   })
 
-}(window.$jqTheme || window.jQuery);
+}(jQuery);
 
 /* ========================================================================
  * Bootstrap: collapse.js v3.4.1
@@ -756,7 +765,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
     Plugin.call($target, option)
   })
 
-}(window.$jqTheme || window.jQuery);
+}(jQuery);
 
 /* ========================================================================
  * Bootstrap: dropdown.js v3.4.1
@@ -922,7 +931,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
     .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
     .on('keydown.bs.dropdown.data-api', '.dropdown-menu', Dropdown.prototype.keydown)
 
-}(window.$jqTheme || window.jQuery);
+}(jQuery);
 
 /* ========================================================================
  * Bootstrap: modal.js v3.4.1
@@ -1281,7 +1290,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
     Plugin.call($target, option, this)
   })
 
-}(window.$jqTheme || window.jQuery);
+}(jQuery);
 
 /* ========================================================================
  * Bootstrap: tooltip.js v3.4.1
@@ -1384,6 +1393,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
   }
 
   function sanitizeHtml(unsafeHtml, whiteList, sanitizeFn) {
+    let doc = null
     if (unsafeHtml.length === 0) {
       return unsafeHtml
     }
@@ -1392,16 +1402,21 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
       return sanitizeFn(unsafeHtml)
     }
 
-    // IE 8 and below don't support createHTMLDocument
-    if (!document.implementation || !document.implementation.createHTMLDocument) {
-      return unsafeHtml
+    try {
+        doc = new DOMParser().parseFromString(unsafeHtml, 'text/html');
+    } catch (_) {}
+    if (!doc || !doc.documentElement) {
+      // IE 8 and below don't support createHTMLDocument
+      if (!document.implementation || !(document.implementation instanceof DOMImplementation) || document.implementation.createHTMLDocument === undefined) {
+        throw new Error('Could not sanitize CVE-2025-1647');
+      }
+      doc = document.implementation.createHTMLDocument('sanitization')
+      doc.body.innerHTML = unsafeHtml
     }
-
-    var createdDocument = document.implementation.createHTMLDocument('sanitization')
-    createdDocument.body.innerHTML = unsafeHtml
+    const body = doc.body || doc.documentElement;
 
     var whitelistKeys = $.map(whiteList, function (el, i) { return i })
-    var elements = $(createdDocument.body).find('*')
+    var elements = $(body).find('*')
 
     for (var i = 0, len = elements.length; i < len; i++) {
       var el = elements[i]
@@ -1423,7 +1438,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
       }
     }
 
-    return createdDocument.body.innerHTML
+    return body.innerHTML
   }
 
   // TOOLTIP PUBLIC CLASS DEFINITION
@@ -1959,7 +1974,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
     return this
   }
 
-}(window.$jqTheme || window.jQuery);
+}(jQuery);
 
 /* ========================================================================
  * Bootstrap: popover.js v3.4.1
@@ -2083,7 +2098,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
     return this
   }
 
-}(window.$jqTheme || window.jQuery);
+}(jQuery);
 
 /* ========================================================================
  * Bootstrap: scrollspy.js v3.4.1
@@ -2256,7 +2271,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
     })
   })
 
-}(window.$jqTheme || window.jQuery);
+}(jQuery);
 
 /* ========================================================================
  * Bootstrap: tab.js v3.4.1
@@ -2412,7 +2427,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
     .on('click.bs.tab.data-api', '[data-toggle="tab"]', clickHandler)
     .on('click.bs.tab.data-api', '[data-toggle="pill"]', clickHandler)
 
-}(window.$jqTheme || window.jQuery);
+}(jQuery);
 
 /* ========================================================================
  * Bootstrap: affix.js v3.4.1
@@ -2577,4 +2592,4 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
     })
   })
 
-}(window.$jqTheme || window.jQuery);
+}(jQuery);
