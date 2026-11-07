@@ -110,7 +110,6 @@ Experimental Functions
 
    chinesePostmanProblem-family
    transformation-family
-   components-family
    ordering-family
    planar-family
    circuits-family
@@ -122,11 +121,6 @@ Experimental Functions
 .. include:: VRP-category.rst
    :start-after: experimental-start
    :end-before: experimental-end
-
-.. toctree::
-  :hidden:
-
-  VRP-category
 
 .. rubric:: Shortest Path Category
 
