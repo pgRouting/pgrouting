@@ -28,8 +28,7 @@
 
 .. rubric:: Version 3.2.1
 
-* Using `Boost: metric TSP approx
-  <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+* Using :bgl:`Boost: metric TSP approx <algorithms/utility/metric_tsp_approx.html>`
 * Simulated Annealing Algorithm no longer supported
 
   * The Simulated Annealing Algorithm related parameters are ignored:
@@ -199,8 +198,7 @@ See Also
 
 * :doc:`TSP-family`
 * :doc:`sampledata`
-* `Boost: metric TSP approx
-  <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+* :bgl:`Boost: metric TSP approx <algorithms/utility/metric_tsp_approx.html>`
 * `University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__
 * `Wikipedia: Traveling Salesman Problem
   <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__

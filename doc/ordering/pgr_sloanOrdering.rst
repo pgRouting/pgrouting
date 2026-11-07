@@ -134,8 +134,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: Sloan Ordering
-  <https://www.boost.org/doc/libs/latest/libs/graph/doc/sloan_ordering.htm>`__
+* :bgl:`Boost: Sloan Ordering <algorithms/ordering/sloan_ordering.html>`
 
 .. rubric:: Indices and tables
 

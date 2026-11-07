@@ -79,7 +79,7 @@ The main Characteristics are:
 See Also
 -------------------------------------------------------------------------------
 
-* `Boost  <https://www.boost.org/libs/graph/doc>`__
+* :bgl:`Boost: Shortest Path Overview <algorithms/shortest_paths/shortest_paths_overview.html>`
 
 .. rubric:: Indices and tables
 

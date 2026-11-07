@@ -254,8 +254,7 @@ See Also
 
 * :doc:`pgr_johnson`
 * :doc:`pgr_floydWarshall`
-* Boost `floyd-Warshall
-  <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__
+* :bgl:`Boost: Floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`
 
 .. rubric:: Indices and tables
 

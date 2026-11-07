@@ -106,8 +106,7 @@ See Also
 * :doc:`costMatrix-category`
 * :doc:`TSP-family`
 * :doc:`sampledata`
-* `Boost: Dijkstra shortest paths
-  <https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html>`__
+* :bgl:`Boost: Dijkstra shortest paths <algorithms/shortest_paths/dijkstra_shortest_paths.html>`
 
 .. rubric:: Indices and tables
 

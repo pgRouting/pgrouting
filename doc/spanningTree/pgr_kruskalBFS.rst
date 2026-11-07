@@ -130,8 +130,7 @@ See Also
 * :doc:`spanningTree-category`
 * :doc:`kruskal-family`
 * :doc:`sampledata`
-* `Boost: Kruskal's algorithm
-  <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
+* :bgl:`Boost: Kruskal's algorithm <algorithms/spanning_trees/kruskal_min_spanning_tree.html>`
 * `Wikipedia: Kruskal's algorithm
   <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
 
