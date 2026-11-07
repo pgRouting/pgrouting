@@ -57,27 +57,16 @@ jobs:
           sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
             $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
-      - name: Install python
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.x'
-
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
             libboost-graph-dev \
-            python3-sphinx \
-            python3-sphinx-bootstrap-theme \
-            python3-sphinxcontrib.applehelp \
-            python3-sphinxcontrib.devhelp \
-            python3-sphinxcontrib.htmlhelp \
-            python3-sphinxcontrib.qthelp \
-            python3-sphinxcontrib.serializinghtml \
             gettext \
             postgresql-${PGVER} \
             postgresql-server-dev-${PGVER} \
             graphviz $(apt-cache pkgnames libgvplugin-neato-layout | grep -v -- -dev)
+          python3 -m pip install --break-system-packages sphinx sphinx-bootstrap-theme
 
       - name: Initialize mandatory git config
         run: |
