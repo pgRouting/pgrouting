@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 13:26+0000\n"
+"POT-Creation-Date: 2026-11-07 14:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6376,7 +6376,7 @@ msgstr ""
 msgid "pgRouting is an extension of `PostGIS <https://postgis.net>`__ and `PostgreSQL <https://www.postgresql.org>`__ geospatial database and adds routing and other network analysis functionality. A predecessor of pgRouting – pgDijkstra, written by Sylvain Pasche, was later extended by Orkney and renamed to pgRouting."
 msgstr ""
 
-msgid "Currently mantained by:"
+msgid "Currently maintained by:"
 msgstr ""
 
 msgid "`Erosion <https://www.erosion.dev>`__"
@@ -6433,7 +6433,7 @@ msgstr ""
 msgid "Individuals in this release |release| (in alphabetical order)"
 msgstr ""
 
-msgid "Ko Nagase, Regina Obe, Vicky Vergara"
+msgid "Ashish Kumar, Ko Nagase, Mayur Galhate, Mohit Rawat, Regina Obe, Sakir Ahmed, Vicky Vergara"
 msgstr ""
 
 msgid "And all the people that give us a little of their time making comments, finding issues, making pull requests etc. in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
@@ -6484,7 +6484,7 @@ msgstr ""
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
-msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mayur Galhate, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mayur Galhate, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sakir Ahmed, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -11608,7 +11608,7 @@ msgstr ""
 msgid "A graph is considered **biconnected** if it is connected and cannot be broken into disconnected pieces by deleting any single vertex (it has no articulation points). A planar graph is one that can be drawn in two-dimensional space with no two of its edges crossing."
 msgstr ""
 
-msgid "If the graph is not connected it will treat each component as an idividual graph."
+msgid "If the graph is not connected it will treat each component as an individual graph."
 msgstr ""
 
 msgid "Run :doc:`pgr_makeConnected` to connect all components."
@@ -12151,10 +12151,10 @@ msgstr ""
 msgid "The function first computes a planar embedding with the Boyer-Myrvold planarity test, then walks faces with Boost ``planar_face_traversal``.i"
 msgstr ""
 
-msgid "Loops and paralell edges are preserved."
+msgid "Loops and parallel edges are preserved."
 msgstr ""
 
-msgid "They are used to determine the existance of an edge"
+msgid "They are used to determine the existence of an edge"
 msgstr ""
 
 msgid "Run :doc:`pgr_isPlanar` first"
