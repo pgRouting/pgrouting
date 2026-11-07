@@ -16884,7 +16884,3 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
-
-#, fuzzy
-#~ msgid "pgRouting 4.0.0-alpha1 Release Notes"
-#~ msgstr "pgRouting 4.0.0 发布说明"
