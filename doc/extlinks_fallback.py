@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# This file is part of the pgRouting project.
+# Copyright (c) 2026-2026 pgRouting developers
+# License: GPL-2 See https://github.com/pgRouting/pgrouting/blob/main/LICENSE
+
 """Fallback for documents using Sphinx extlinks roles.
 
 When ``sphinx.ext.extlinks`` is available this script does nothing: the roles
