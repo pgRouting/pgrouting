@@ -8,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgRouting-koncept &#8212; pgRouting Manual (4.0)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=072f198e"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script src="_static/translations.js?v=92a62177"></script>
+    <script src="_static/translations.js?v=55d7b627"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -229,7 +229,118 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">pgRouting-koncept</a><ul>
+<li><a class="reference internal" href="#graphs">Diagram</a><ul>
+<li><a class="reference internal" href="#graph-definition">Definition av graf</a></li>
+<li><a class="reference internal" href="#graph-with-cost">Graf med <code class="docutils literal notranslate"><span class="pre">kostnad</span></code></a></li>
+<li><a class="reference internal" href="#graph-with-cost-and-reverse-cost">Graf med <code class="docutils literal notranslate"><span class="pre">kostnad</span></code> och <code class="docutils literal notranslate"><span class="pre">omvända_kostnader</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#graphs-without-geometries">Grafer utan geometrier</a><ul>
+<li><a class="reference internal" href="#wiki-example">Wiki-exempel</a><ul>
+<li><a class="reference internal" href="#prepare-the-database">Förbereda databasen</a></li>
+<li><a class="reference internal" href="#create-a-table">Skapa en tabell</a></li>
+<li><a class="reference internal" href="#insert-the-data">Infoga data</a></li>
+<li><a class="reference internal" href="#find-the-shortest-path">Hitta den kortaste vägen</a></li>
+<li><a class="reference internal" href="#vertex-information">Information om toppunkt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#graphs-with-geometries">Grafer med geometrier</a><ul>
+<li><a class="reference internal" href="#create-a-routing-database">Skapa en routningsdatabas</a></li>
+<li><a class="reference internal" href="#load-data">Ladda data</a></li>
+<li><a class="reference internal" href="#build-a-routing-topology">Bygga upp en routingtopologi</a></li>
+<li><a class="reference internal" href="#adjust-costs">Justera kostnader</a><ul>
+<li><a class="reference internal" href="#update-costs-to-length-of-geometry">Uppdatera kostnaderna till geometrins längd</a></li>
+<li><a class="reference internal" href="#update-costs-based-on-codes">Uppdatera kostnader baserat på koder</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#check-the-routing-topology">Kontrollera routingtopologin</a><ul>
+<li><a class="reference internal" href="#crossing-edges">Korsande kanter</a><ul>
+<li><a class="reference internal" href="#fixing-an-intersection">Fixa en korsning</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#touching-edges">Beröring av kanter</a><ul>
+<li><a class="reference internal" href="#fixing-a-gap">Åtgärda en lucka</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#connecting-components">Anslutning av komponenter</a></li>
+<li><a class="reference internal" href="#contraction-of-a-graph">Sammandragning av en graf</a><ul>
+<li><a class="reference internal" href="#dead-ends">Döda ändar</a></li>
+<li><a class="reference internal" href="#linear-edges">Linjära kanter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#function-s-structure">Funktionens struktur</a></li>
+<li><a class="reference internal" href="#function-s-overloads">Funktionens överbelastningar</a><ul>
+<li><a class="reference internal" href="#one-to-one">En till en</a></li>
+<li><a class="reference internal" href="#one-to-many">En till många</a></li>
+<li><a class="reference internal" href="#many-to-one">Många till en</a></li>
+<li><a class="reference internal" href="#many-to-many">Många till många</a></li>
+<li><a class="reference internal" href="#combinations">Kombinationer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
+<li><a class="reference internal" href="#edges-sql">Kanter SQL</a><ul>
+<li><a class="reference internal" href="#general">Allmänt</a></li>
+<li><a class="reference internal" href="#general-without-id">Allmänt utan <code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
+<li><a class="reference internal" href="#general-with-x-y">Allmänt med (X,Y)</a></li>
+<li><a class="reference internal" href="#flow">Flöde</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#combinations-sql">Kombinationer SQL</a></li>
+<li><a class="reference internal" href="#restrictions-sql">Begränsningar SQL</a></li>
+<li><a class="reference internal" href="#points-sql">Punkt SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameters">Parametrar</a><ul>
+<li><a class="reference internal" href="#parameters-for-the-via-functions">Parametrar för Via-funktionerna</a></li>
+<li><a class="reference internal" href="#for-the-trsp-functions">För TRSP-funktionerna</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Resultat kolumner</a><ul>
+<li><a class="reference internal" href="#result-columns-for-single-path-functions">Resultatkolumner för funktioner med enkel sökväg</a></li>
+<li><a class="reference internal" href="#result-columns-for-multiple-paths-functions">Resultatkolumner för funktioner med flera sökvägar</a></li>
+<li><a class="reference internal" href="#result-columns-for-cost-functions">Resultatkolumner för kostnadsfunktioner</a></li>
+<li><a class="reference internal" href="#result-columns-for-flow-functions">Resultatkolumner för flödesfunktioner</a></li>
+<li><a class="reference internal" href="#result-columns-for-spanning-tree-functions">Resultatkolumner för funktioner för spännträd</a></li>
+<li><a class="reference internal" href="#result-columns-for-simple-spanning-tree-functions">Resultatkolumner för funktioner för enkla spännträd</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#performance-tips">Tips om prestanda</a><ul>
+<li><a class="reference internal" href="#for-the-routing-functions">För Routing-funktionerna</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#how-to-contribute">Hur du bidrar</a></li>
+<li><a class="reference internal" href="#see-also">Se även</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="sampledata.html" title="Previous Chapter: Exempeldata"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Exempeldata</span>
+    </a>
+  </li>
+  <li>
+    <a href="routingFunctions.html" title="Next Chapter: Funktionsfamiljer"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Funktionsfamiljer &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('pgRouting-concepts','sv'));  </script>
             
   <div class="line-block">
@@ -441,7 +552,7 @@
 </div>
 <p>Edge <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1 \rightarrow 3\)</span>) är inte en del av grafen.</p>
 <p>Uppgifterna representeras av följande graf:</p>
-<div class="graphviz"><img src="_images/graphviz-6bd797ca50768e0f10212a0236a85afbd8bb3771.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-6a22e17e4c49cbe911a2c3c04aea2e93942005ce.png" alt="digraph G {
  1 -&gt; 2 [label=&quot;1(5)&quot;];
  3;
 }" class="graphviz" /></div>
@@ -464,7 +575,7 @@
 </div>
 <p>Kanten <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1 \frac{\;\;\;\;\;}{} 3\)</span>) är inte en del av grafen.</p>
 <p>Uppgifterna representeras av följande graf:</p>
-<div class="graphviz"><img src="_images/graphviz-18dbb5ac9f77e565b643a0f0e7310253dedbee20.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-a9ff7d505ee3aa8158a1f3439d4325a71f0dbcae.png" alt="graph G {
  1 -- 2 [label=&quot;1(5)&quot;];
  3;
 }" class="graphviz" /></div>
@@ -519,7 +630,7 @@
 <li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3 \rightarrow 2\)</span>)</p></li>
 </ul>
 <p>Uppgifterna representeras av följande graf:</p>
-<div class="graphviz"><img src="_images/graphviz-c2169ba4585bf5915ed2425fe4db5e9152ef0227.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-cf2723f26bd1c3ee60f314423c76e21eb5708d4e.png" alt="digraph G {
  1 -&gt; 2 [label=&quot;1(5)&quot;];
  2 -&gt; 1 [label=&quot;1(2)&quot;];
  3 -&gt; 1 [label=&quot;2(4)&quot;];
@@ -556,7 +667,7 @@
 <li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3 \frac{\;\;\;\;\;}{} 2\)</span>)</p></li>
 </ul>
 <p>Uppgifterna representeras av följande graf:</p>
-<div class="graphviz"><img src="_images/graphviz-50eb78779f612b19ac347e75cdae53525e6a5576.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-7cf300b7d69445756b30b2135af90e936a5dd9e4.png" alt="graph G {
  1 -- 2 [label=&quot;1(5)&quot;];
  2 -- 1 [label=&quot;1(2)&quot;];
  3 -- 1 [label=&quot;2(4)&quot;];
@@ -607,7 +718,7 @@ E = &amp; \{(1,2,7), (1,3,9), (1,6,14), \\
 </li>
 <li><p>Grafen kan representeras på många olika sätt, t.ex:</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-e1e7271c22c7d8991843607dc481d11949ba6f18.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-aa83b370a30d7a5c2be123929174e31044bca152.png" alt="graph G {
  rankdir=&quot;LR&quot;;
  1 [color=&quot;red&quot;];
  5 [color=&quot;green&quot;];
@@ -707,7 +818,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </pre></div>
 </div>
 <p>För att gå från <span class="math notranslate nohighlight">\(1\)</span> till <span class="math notranslate nohighlight">\(5\)</span> går vägen genom följande hörn: <span class="math notranslate nohighlight">\(1 \rightarrow 3 \rightarrow 6 \rightarrow 5\)</span></p>
-<div class="graphviz"><img src="_images/graphviz-fdf01cf24599e17f1d95f59e619139a55bdedbb0.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-2be84fbb8166d4e067f5592a16b83c30776ea85c.png" alt="graph G {
  rankdir=&quot;LR&quot;;
  1 [color=&quot;red&quot;];
  5 [color=&quot;green&quot;];
@@ -1452,9 +1563,10 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </li>
 </ul>
 <p>Noden <span class="math notranslate nohighlight">\(4\)</span>, är en återvändsgränd i frågan, även om den visuellt ser ut som en slutpunkt för 3 kanter.</p>
-<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 190.20000000000002px; height: 173.20000000000002px;" /></a>
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" height="173" src="_images/Fig1-originalData.png" width="190" />
+</a>
 <p class="rubric">Är noden <span class="math notranslate nohighlight">\(4\)</span> en återvändsgränd eller inte?</p>
-<div class="graphviz"><img src="_images/graphviz-2f6ce9ee9f8bfbf56f4d7ac09d49b3451cf45119.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-0efc1c6f9c1a1176ac42aaa8de0be1e9186f8539.png" alt="graph G {
   1,2,4,5,9,13,14 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   3,6,7,8,10,11,12,15,16,17 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
 
@@ -1508,7 +1620,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 
 </pre></div>
 </div>
-<div class="graphviz"><img src="_images/graphviz-d42c82922271693b07f417cb2b9f6fd56854c39d.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-fcaa0541303f92371c3cf508089a4be8712de558.png" alt="graph G {
   3,15,17 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
   1,2,4,5,6,7,8,9,10,11,12,13,14,16 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
 
@@ -2768,9 +2880,9 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
       
     </p>
     <p>
-        &copy; Copyright %Y pgRouting developers.<br/>
-      Senast uppdaterad aug. 08, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright 2026 pgRouting developers.<br/>
+      Senast uppdaterad nov. 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>
