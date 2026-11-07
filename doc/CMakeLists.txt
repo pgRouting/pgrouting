@@ -160,7 +160,57 @@ configure_file("../tools/testers/sampledata.pg" "${PGR_DOCUMENTATION_SOURCE_DIR}
 add_subdirectory("_static")
 add_subdirectory("_templates")
 
+#---------------------------------------------
+# Detect whether sphinx.ext.extlinks is available
+#---------------------------------------------
+
+find_package(Python3 COMPONENTS Interpreter QUIET)
+set(PGR_HAVE_EXTLINKS FALSE)
+if(Python3_Interpreter_FOUND)
+  execute_process(
+    COMMAND ${Python3_EXECUTABLE} -c "import sphinx.ext.extlinks"
+    RESULT_VARIABLE PGR_EXTLINKS_IMPORT_RESULT
+    OUTPUT_QUIET ERROR_QUIET)
+  if(PGR_EXTLINKS_IMPORT_RESULT EQUAL 0)
+    set(PGR_HAVE_EXTLINKS TRUE)
+  endif()
+endif()
+
+if(PGR_HAVE_EXTLINKS)
+  set(EXTLINKS_EXTENSION "        'sphinx.ext.extlinks',")
+  message(STATUS "sphinx.ext.extlinks found: keeping extlink roles.")
+else()
+  set(EXTLINKS_EXTENSION "")
+  message(STATUS "sphinx.ext.extlinks not found: rewriting extlink roles.")
+endif()
+
 configure_file("conf.py.in" "${PGR_DOCUMENTATION_SOURCE_DIR}/conf.py" @ONLY)
+
+#---------------------------------------------
+# fallback script part of the build
+#---------------------------------------------
+
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/extlinks_fallback.py"
+  "${PGR_DOCUMENTATION_SOURCE_DIR}/extlinks_fallback.py"
+  COPYONLY)
+
+if(NOT PGR_HAVE_EXTLINKS AND Python3_Interpreter_FOUND)
+  execute_process(
+    COMMAND ${Python3_EXECUTABLE}
+            "${CMAKE_CURRENT_SOURCE_DIR}/extlinks_fallback.py"
+            "${PGR_DOCUMENTATION_SOURCE_DIR}"
+    RESULT_VARIABLE PGR_EXTLINKS_FALLBACK_RESULT
+    OUTPUT_VARIABLE PGR_EXTLINKS_FALLBACK_OUTPUT
+    ERROR_VARIABLE PGR_EXTLINKS_FALLBACK_ERROR)
+
+  if(NOT PGR_EXTLINKS_FALLBACK_RESULT EQUAL 0)
+    message(WARNING "extlinks_fallback failed: ${PGR_EXTLINKS_FALLBACK_ERROR}")
+  else()
+    message(STATUS "${PGR_EXTLINKS_FALLBACK_OUTPUT}")
+  endif()
+
+endif()
 
 foreach (format ${PROJECT_DOC_TARGETS})
 
