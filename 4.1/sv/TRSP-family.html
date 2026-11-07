@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=4e2df6f4"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -152,49 +152,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">TRSP - Familj av funktioner</a><ul>
-<li><a class="reference internal" href="#introduction">Introduktion</a><ul>
-<li><a class="reference internal" href="#trsp-algorithm">TRSP-algoritm</a></li>
-<li><a class="reference internal" href="#parameters">Parametrar</a></li>
-<li><a class="reference internal" href="#restrictions">Begränsningar</a></li>
-<li><a class="reference internal" href="#edges-sql">Kanter SQL</a><ul>
-<li><a class="reference internal" href="#restrictions-sql">Begränsningar SQL</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_full_version.html" title="Previous Chapter: pgr_full_version"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_full_version</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_trsp.html" title="Next Chapter: pgr_trsp"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_trsp &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('TRSP-family','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="trsp-family-of-functions">
-<h1>TRSP - Familj av funktioner<a class="headerlink" href="#trsp-family-of-functions" title="Link to this heading">¶</a></h1>
+<h1>TRSP - Familj av funktioner<a class="headerlink" href="#trsp-family-of-functions" title="Länk till denna rubrik">¶</a></h1>
 <p>När punkt också ges som input:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> - Routing with restrictions.</p></li>
@@ -237,15 +202,15 @@
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
-<h2>Introduktion<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<h2>Introduktion<a class="headerlink" href="#introduction" title="Länk till denna rubrik">¶</a></h2>
 <p>Vägrestriktioner är en sekvens av vägsegment som inte kan tas i en följd. Vissa restriktioner är implicita i en riktad graf, t.ex. enkelriktade vägar där kanten för fel väg inte ens är inlagd i grafen. Men normalt finns det ibland restriktioner vid svängar, t.ex. ingen vänstersväng eller högersväng, därav namnet svängrestriktioner.</p>
 <img alt="_images/restrictions.png" src="_images/restrictions.png" />
 <section id="trsp-algorithm">
-<h3>TRSP-algoritm<a class="headerlink" href="#trsp-algorithm" title="Link to this heading">¶</a></h3>
+<h3>TRSP-algoritm<a class="headerlink" href="#trsp-algorithm" title="Länk till denna rubrik">¶</a></h3>
 <p>Den interna TRSP-algoritmen utför en lookahead över dijkstra-algoritmen för att ta reda på om den sökta sökvägen har en restriktion. Detta gör att algoritmen kan passera två gånger på samma vertex.</p>
 </section>
 <section id="parameters">
-<h3>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<h3>Parametrar<a class="headerlink" href="#parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 23.1%" />
@@ -281,14 +246,14 @@
 </dl>
 </section>
 <section id="restrictions">
-<h3>Begränsningar<a class="headerlink" href="#restrictions" title="Link to this heading">¶</a></h3>
+<h3>Begränsningar<a class="headerlink" href="#restrictions" title="Länk till denna rubrik">¶</a></h3>
 <p>På vägnätet finns det begränsningar, till exempel begränsningar för vänster- eller högersväng, inga begränsningar för U-sväng.</p>
 <p>En restriktion är en sekvens av kanter, som kallas väg, och den vägen ska undvikas.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/with_restrictions.png"><img alt="_images/with_restrictions.png" height="433" src="_images/with_restrictions.png" width="476" />
 </a>
 <figcaption>
-<p><span class="caption-text"><strong>Begränsningar av vägnätet</strong></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-text"><strong>Begränsningar av vägnätet</strong></span><a class="headerlink" href="#id1" title="Länk till denna bild">¶</a></p>
 </figcaption>
 </figure>
 <p>Dessa begränsningar visas i en tabell enligt följande:</p>
@@ -311,12 +276,12 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Observera</p>
+<p class="admonition-title">Anteckning</p>
 <p>Tabellen har en identifierare, som kanske behövs för administrationen av restriktionerna, men algoritmerna behöver inte den informationen. Om den ges kommer den att ignoreras.</p>
 </div>
 </section>
 <section id="edges-sql">
-<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -373,7 +338,7 @@
 </dd>
 </dl>
 <section id="restrictions-sql">
-<h4>Begränsningar SQL<a class="headerlink" href="#restrictions-sql" title="Link to this heading">¶</a></h4>
+<h4>Begränsningar SQL<a class="headerlink" href="#restrictions-sql" title="Länk till denna rubrik">¶</a></h4>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 10.3%" />
@@ -410,7 +375,7 @@
 </section>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <p class="rubric">Index och tabeller</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
@@ -432,8 +397,8 @@
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

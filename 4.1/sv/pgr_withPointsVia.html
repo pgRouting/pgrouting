@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=4e2df6f4"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -172,68 +172,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a><ul>
-<li><a class="reference internal" href="#description">Beskrivning</a></li>
-<li><a class="reference internal" href="#signatures">Underskrifter</a><ul>
-<li><a class="reference internal" href="#one-via">En Via</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters">Parametrar</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Valfria parametrar</a></li>
-<li><a class="reference internal" href="#via-optional-parameters">Via valfria parametrar</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">Med punkter valfria parametrar</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
-<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Punkt SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
-<li><a class="reference internal" href="#additional-examples">Ytterligare exempel</a><ul>
-<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Använd <span class="xref std std-doc">pgr_findCloseEdges</span> i Points SQL</a></li>
-<li><a class="reference internal" href="#usage-variations">Variationer i användning</a><ul>
-<li><a class="reference internal" href="#aggregate-cost-of-the-third-path">Sammanlagd kostnad för det tredje tågläget.</a></li>
-<li><a class="reference internal" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path">Ruttens sammanlagda kostnad för rutten vid slutet av den tredje vägen.</a></li>
-<li><a class="reference internal" href="#nodes-visited-in-the-route">Noder som besökts i rutten.</a></li>
-<li><a class="reference internal" href="#the-aggregate-costs-of-the-route-when-the-visited-vertices-are-reached">De sammanlagda kostnaderna för rutten när de besökta topparna nås.</a></li>
-<li><a class="reference internal" href="#status-of-passes-in-front-or-visits-of-the-nodes-and-points">Status för ”passeringar framför” eller ”besök” av noder och punkter.</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_withPointsDD.html" title="Previous Chapter: pgr_withPointsDD"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsDD</span>
-    </a>
-  </li>
-  <li>
-    <a href="BFS-category.html" title="Next Chapter: BFS - Kategori"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">BFS - Kategori &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_withPointsVia','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-withpointsvia">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code><a class="headerlink" href="#pgr-withpointsvia" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code><a class="headerlink" href="#pgr-withpointsvia" title="Länk till denna rubrik">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> - Rutt som går genom en lista med toppar och/eller punkter.</p>
 <p class="rubric">Tillgänglighet</p>
 <p class="rubric">Version 4.0.2</p>
@@ -261,7 +207,7 @@
 <li><p>Ny föreslagen funktion.</p></li>
 </ul>
 <section id="description">
-<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<h2>Beskrivning<a class="headerlink" href="#description" title="Länk till denna rubrik">¶</a></h2>
 <p>Med tanke på en graf, en uppsättning punkter på grafens kanter och en lista med hörnpunkter är denna funktion likvärdig med att hitta den kortaste vägen mellan <span class="math notranslate nohighlight">\(vertex_i\)</span> och <span class="math notranslate nohighlight">\(vertex_{i+1}\)</span> (där <span class="math notranslate nohighlight">\(vertex\)</span> kan vara en hörnpunkt eller en punkt i grafen) för alla <span class="math notranslate nohighlight">\(i &lt; size\_of(via\;vertices)\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Rutt<span class="colon">:</span></dt>
@@ -281,12 +227,12 @@
 </li>
 <li><p>Exekvera en <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia</span></a>.</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
 </section>
 <section id="signatures">
-<h2>Underskrifter<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<h2>Underskrifter<a class="headerlink" href="#signatures" title="Länk till denna rubrik">¶</a></h2>
 <section id="one-via">
-<span id="index-1"></span><h3>En Via<a class="headerlink" href="#one-via" title="Link to this heading">¶</a></h3>
+<span id="index-1"></span><h3>En Via<a class="headerlink" href="#one-via" title="Länk till denna rubrik">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -304,8 +250,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsVia</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, side, fraction FROM pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, side, fraction FROM pointsOfInterest'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">route_agg_cost</span>
 <span class="o">-----+---------+----------+-----------+---------+------+------+------+----------+----------------</span>
@@ -324,7 +270,7 @@
 </section>
 </section>
 <section id="parameters">
-<h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<h2>Parametrar<a class="headerlink" href="#parameters" title="Länk till denna rubrik">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -392,7 +338,7 @@
 </dd>
 </dl>
 <section id="optional-parameters">
-<h3>Valfria parametrar<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>Valfria parametrar<a class="headerlink" href="#optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Kolumn</p></th>
@@ -415,7 +361,7 @@
 </table>
 </section>
 <section id="via-optional-parameters">
-<h3>Via valfria parametrar<a class="headerlink" href="#via-optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>Via valfria parametrar<a class="headerlink" href="#via-optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 15.9%" />
@@ -452,7 +398,7 @@
 </table>
 </section>
 <section id="with-points-optional-parameters">
-<h3>Med punkter valfria parametrar<a class="headerlink" href="#with-points-optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>Med punkter valfria parametrar<a class="headerlink" href="#with-points-optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 15.9%" />
@@ -483,9 +429,9 @@
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Länk till denna rubrik">¶</a></h2>
 <section id="edges-sql">
-<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -543,7 +489,7 @@
 </dl>
 </section>
 <section id="points-sql">
-<h3>Punkt SQL<a class="headerlink" href="#points-sql" title="Link to this heading">¶</a></h3>
+<h3>Punkt SQL<a class="headerlink" href="#points-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 15.6%" />
@@ -605,7 +551,7 @@
 </section>
 </section>
 <section id="result-columns">
-<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Länk till denna rubrik">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -667,12 +613,12 @@
 </tbody>
 </table>
 <div class="admonition note">
-<p class="admonition-title">Observera</p>
+<p class="admonition-title">Anteckning</p>
 <p>När kolumnerna <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> och <code class="docutils literal notranslate"><span class="pre">node</span></code> har negativa värden är identifieraren för en Point.</p>
 </div>
 </section>
 <section id="additional-examples">
-<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Länk till denna rubrik">¶</a></h2>
 <nav class="contents local" id="innehall">
 <ul class="simple">
 <li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">Använd <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> i Points SQL</a></p></li>
@@ -688,7 +634,7 @@
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>Använd <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> i <a class="reference internal" href="#points-sql">Points SQL</a><a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
+<h3>Använd <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> i <a class="reference internal" href="#points-sql">Points SQL</a><a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Länk till denna rubrik">¶</a></h3>
 <p>Besök från toppunkten <span class="math notranslate nohighlight">\(1\)</span> till de två platserna på grafen för punkten <cite>(2,9, 1,8)</cite> i ordning efter närhet till grafen.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsVia(
   $e$ SELECT * FROM edges $e$,
@@ -725,11 +671,11 @@
 </ul>
 </section>
 <section id="usage-variations">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Variationer i användning</a><a class="headerlink" href="#usage-variations" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Variationer i användning</a><a class="headerlink" href="#usage-variations" title="Länk till denna rubrik">¶</a></h3>
 <p>Alla dessa exempel handlar om den rutt som besöker topparna <span class="math notranslate nohighlight">\(\{-1, 7, -3, 16, 15\}\)</span> i den ordningen i en <strong>riktad</strong> graf.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsVia</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, side, fraction FROM pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, side, fraction FROM pointsOfInterest'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">15</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">route_agg_cost</span>
 <span class="o">-----+---------+----------+-----------+---------+------+------+------+----------+----------------</span>
@@ -750,10 +696,10 @@
 </pre></div>
 </div>
 <section id="aggregate-cost-of-the-third-path">
-<h4><a class="toc-backref" href="#id3" role="doc-backlink">Sammanlagd kostnad för det tredje tågläget.</a><a class="headerlink" href="#aggregate-cost-of-the-third-path" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Sammanlagd kostnad för det tredje tågläget.</a><a class="headerlink" href="#aggregate-cost-of-the-third-path" title="Länk till denna rubrik">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">agg_cost</span> <span class="n">FROM</span>  <span class="n">pgr_withPointsVia</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, side, fraction FROM pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, side, fraction FROM pointsOfInterest'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
 <span class="n">WHERE</span> <span class="n">path_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">AND</span> <span class="n">edge</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
  <span class="n">agg_cost</span>
@@ -765,10 +711,10 @@
 </div>
 </section>
 <section id="route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path">
-<h4><a class="toc-backref" href="#id4" role="doc-backlink">Ruttens sammanlagda kostnad för rutten vid slutet av den tredje vägen.</a><a class="headerlink" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Ruttens sammanlagda kostnad för rutten vid slutet av den tredje vägen.</a><a class="headerlink" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path" title="Länk till denna rubrik">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">route_agg_cost</span> <span class="n">FROM</span>  <span class="n">pgr_withPointsVia</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, side, fraction FROM pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, side, fraction FROM pointsOfInterest'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
 <span class="n">WHERE</span> <span class="n">path_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">AND</span> <span class="n">edge</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
  <span class="n">route_agg_cost</span>
@@ -780,11 +726,11 @@
 </div>
 </section>
 <section id="nodes-visited-in-the-route">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">Noder som besökts i rutten.</a><a class="headerlink" href="#nodes-visited-in-the-route" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Noder som besökts i rutten.</a><a class="headerlink" href="#nodes-visited-in-the-route" title="Länk till denna rubrik">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span> <span class="p">()</span> <span class="k">as</span> <span class="n">node_seq</span><span class="p">,</span> <span class="n">node</span>
 <span class="n">FROM</span>  <span class="n">pgr_withPointsVia</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, side, fraction FROM pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, side, fraction FROM pointsOfInterest'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
 <span class="n">WHERE</span> <span class="n">edge</span> <span class="o">&lt;&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">seq</span><span class="p">;</span>
  <span class="n">node_seq</span> <span class="o">|</span> <span class="n">node</span>
@@ -804,10 +750,10 @@
 </div>
 </section>
 <section id="the-aggregate-costs-of-the-route-when-the-visited-vertices-are-reached">
-<h4><a class="toc-backref" href="#id6" role="doc-backlink">De sammanlagda kostnaderna för rutten när de besökta topparna nås.</a><a class="headerlink" href="#the-aggregate-costs-of-the-route-when-the-visited-vertices-are-reached" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">De sammanlagda kostnaderna för rutten när de besökta topparna nås.</a><a class="headerlink" href="#the-aggregate-costs-of-the-route-when-the-visited-vertices-are-reached" title="Länk till denna rubrik">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">path_id</span><span class="p">,</span> <span class="n">route_agg_cost</span> <span class="n">FROM</span>  <span class="n">pgr_withPointsVia</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, side, fraction FROM pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, side, fraction FROM pointsOfInterest'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
 <span class="n">WHERE</span> <span class="n">edge</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
  <span class="n">path_id</span> <span class="o">|</span> <span class="n">route_agg_cost</span>
@@ -822,14 +768,14 @@
 </div>
 </section>
 <section id="status-of-passes-in-front-or-visits-of-the-nodes-and-points">
-<h4><a class="toc-backref" href="#id7" role="doc-backlink">Status för ”passeringar framför” eller ”besök” av noder och punkter.</a><a class="headerlink" href="#status-of-passes-in-front-or-visits-of-the-nodes-and-points" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">Status för ”passeringar framför” eller ”besök” av noder och punkter.</a><a class="headerlink" href="#status-of-passes-in-front-or-visits-of-the-nodes-and-points" title="Länk till denna rubrik">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span>
-<span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39;visits&#39;</span>
-<span class="n">ELSE</span> <span class="s1">&#39;passes in front&#39;</span>
+<span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">'visits'</span>
+<span class="n">ELSE</span> <span class="s1">'passes in front'</span>
 <span class="n">END</span> <span class="k">as</span> <span class="n">status</span>
 <span class="n">FROM</span>  <span class="n">pgr_withPointsVia</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, side, fraction FROM pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, side, fraction FROM pointsOfInterest'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">)</span>
 <span class="n">WHERE</span> <span class="n">agg_cost</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">seq</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span>     <span class="n">status</span>
@@ -853,7 +799,7 @@
 </section>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familj av funktioner</span></a></p></li>
 <li><p><a class="reference internal" href="via-category.html"><span class="doc">Via - Kategori</span></a></p></li>
@@ -880,8 +826,8 @@
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=11382bef"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -168,58 +168,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_contractionDeadEnd</span></code> - 提议中</a><ul>
-<li><a class="reference internal" href="#description">描述</a></li>
-<li><a class="reference internal" href="#signatures">签名</a></li>
-<li><a class="reference internal" href="#parameters">参数</a><ul>
-<li><a class="reference internal" href="#optional-parameters">可选参数</a></li>
-<li><a class="reference internal" href="#contraction-optional-parameters">可选收缩参数</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">结果列</a></li>
-<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
-<li><a class="reference internal" href="#dead-end-vertex-on-undirected-graph">无向图上的死端顶点</a></li>
-<li><a class="reference internal" href="#dead-end-vertex-on-directed-graph">有向图上的死端顶点</a></li>
-<li><a class="reference internal" href="#step-by-step-dead-end-contraction">逐步断头节点收缩</a></li>
-<li><a class="reference internal" href="#creating-the-contracted-graph">创建收缩图</a><ul>
-<li><a class="reference internal" href="#steps-for-the-creation-of-the-contracted-graph">创建收缩图的步骤</a></li>
-<li><a class="reference internal" href="#the-contracted-graph">收缩图</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#using-when-departure-and-destination-are-in-the-contracted-graph">当出发地和目的地位于收缩图中时使用</a></li>
-<li><a class="reference internal" href="#using-when-departure-destination-is-not-in-the-contracted-graph">当出发地/目的地不在收缩图中时使用</a></li>
-<li><a class="reference internal" href="#using-when-departure-and-destination-are-not-in-the-contracted-graph">当出发地和目的地均不在收缩图中时使用</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">另请参阅</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_contraction.html" title="Previous Chapter: pgr_contraction"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contraction</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_contractionLinear.html" title="Next Chapter: pgr_contractionLinear - 提议中"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contracti... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_contractionDeadEnd','zh-Hans'));  </script>
             
   <div class="line-block" id="index-0">
@@ -291,7 +240,7 @@
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -311,7 +260,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractionDeadEnd</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
  <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
 <span class="o">------+----+---------------------+--------+--------+------</span>
@@ -780,7 +729,7 @@ $$SELECT * FROM (VALUES
 <p>将结果保存到表格中。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
 <span class="n">FROM</span> <span class="n">pgr_contractionDeadEnd</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">5</span>
 </pre></div>
@@ -796,7 +745,7 @@ $$SELECT * FROM (VALUES
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
 <span class="n">SET</span> <span class="n">contracted_vertices</span> <span class="o">=</span> <span class="n">contraction_results</span><span class="o">.</span><span class="n">contracted_vertices</span>
 <span class="n">FROM</span> <span class="n">contraction_results</span>
-<span class="n">WHERE</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;v&#39;</span> <span class="n">AND</span> <span class="n">vertices</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">contraction_results</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">WHERE</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">'v'</span> <span class="n">AND</span> <span class="n">vertices</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">contraction_results</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
 <span class="n">UPDATE</span> <span class="mi">5</span>
 </pre></div>
 </div>
@@ -819,7 +768,7 @@ $$SELECT * FROM (VALUES
 <section id="the-contracted-graph">
 <h4><a class="toc-backref" href="#id12" role="doc-backlink">收缩图</a><a class="headerlink" href="#the-contracted-graph" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">VIEW</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">contracted_graph</span><span class="p">;</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">view</span> <span class="s2">&quot;contracted_graph&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">view</span> <span class="s2">"contracted_graph"</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
 <span class="n">DROP</span> <span class="n">VIEW</span>
 <span class="n">CREATE</span> <span class="n">VIEW</span> <span class="n">contracted_graph</span> <span class="n">AS</span>
 <span class="n">WITH</span>
@@ -866,7 +815,7 @@ $$SELECT * FROM (VALUES
 <section id="using-when-departure-and-destination-are-in-the-contracted-graph">
 <h3><a class="toc-backref" href="#id8" role="doc-backlink">当出发地和目的地位于收缩图中时使用</a><a class="headerlink" href="#using-when-departure-and-destination-are-in-the-contracted-graph" title="Link to this heading">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM contracted_graph&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">);</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">'SELECT * FROM contracted_graph'</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">);</span>
 <span class="w"> </span><span class="n">seq</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">path_seq</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">start_vid</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">end_vid</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">edge</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cost</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">agg_cost</span>
 <span class="c1">-----+----------+-----------+---------+------+------+------+----------</span>
 <span class="w">   </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">        </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">         </span><span class="mi">6</span><span class="w"> </span><span class="o">|</span><span class="w">      </span><span class="mi">17</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">6</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">        </span><span class="mi">0</span>
@@ -908,7 +857,7 @@ $$SELECT * FROM (VALUES
 <section id="using-when-departure-destination-is-not-in-the-contracted-graph">
 <h3><a class="toc-backref" href="#id9" role="doc-backlink">当出发地/目的地不在收缩图中时使用</a><a class="headerlink" href="#using-when-departure-destination-is-not-in-the-contracted-graph" title="Link to this heading">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pgr_dijkstra</span><span class="p">(</span>
-<span class="w">  </span><span class="s1">&#39;WITH cul_de_sac AS (</span>
+<span class="w">  </span><span class="s1">'WITH cul_de_sac AS (</span>
 <span class="s1">    SELECT contracted_vertices || id::INTEGER as v</span>
 <span class="s1">    FROM vertices WHERE 1 = ANY(contracted_vertices))</span>
 <span class="s1">  SELECT id, source, target, cost, reverse_cost FROM edges, cul_de_sac</span>
@@ -916,7 +865,7 @@ $$SELECT * FROM (VALUES
 
 <span class="s1">  UNION</span>
 
-<span class="s1">  SELECT id, source, target, cost, reverse_cost FROM contracted_graph ORDER BY id&#39;</span><span class="p">,</span>
+<span class="s1">  SELECT id, source, target, cost, reverse_cost FROM contracted_graph ORDER BY id'</span><span class="p">,</span>
 <span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">);</span>
 <span class="w"> </span><span class="n">seq</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">path_seq</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">start_vid</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">end_vid</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">edge</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cost</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">agg_cost</span>
 <span class="c1">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -964,14 +913,14 @@ $$SELECT * FROM (VALUES
 <section id="using-when-departure-and-destination-are-not-in-the-contracted-graph">
 <h3><a class="toc-backref" href="#id10" role="doc-backlink">当出发地和目的地均不在收缩图中时使用</a><a class="headerlink" href="#using-when-departure-and-destination-are-not-in-the-contracted-graph" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;WITH cul_de_sac AS (</span>
+  <span class="s1">'WITH cul_de_sac AS (</span>
     <span class="n">SELECT</span> <span class="n">contracted_vertices</span> <span class="o">||</span> <span class="nb">id</span><span class="p">::</span><span class="n">INTEGER</span> <span class="k">as</span> <span class="n">v</span>
     <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="n">ANY</span><span class="p">(</span><span class="n">contracted_vertices</span><span class="p">)</span> <span class="n">OR</span> <span class="mi">9</span> <span class="o">=</span> <span class="n">ANY</span><span class="p">(</span><span class="n">contracted_vertices</span><span class="p">))</span>
   <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span> <span class="n">FROM</span> <span class="n">edges</span><span class="p">,</span> <span class="n">cul_de_sac</span> <span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">ANY</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="n">AND</span> <span class="n">target</span> <span class="o">=</span> <span class="n">ANY</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
   <span class="n">UNION</span>
 
-  <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span> <span class="n">FROM</span> <span class="n">contracted_graph</span><span class="s1">&#39;,</span>
+  <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span> <span class="n">FROM</span> <span class="n">contracted_graph</span><span class="s1">',</span>
   <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -1044,8 +993,8 @@ $$SELECT * FROM (VALUES
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on 11月 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on 11月 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

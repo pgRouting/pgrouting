@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=7a93a065"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -158,47 +158,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Todos los Pares - Familia de Funciones</a><ul>
-<li><a class="reference internal" href="#introduction">Introducción</a></li>
-<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
-<li><a class="reference internal" href="#performance">Rendimiento</a><ul>
-<li><a class="reference internal" href="#data">Datos</a></li>
-<li><a class="reference internal" href="#results">Resultados</a></li>
-<li><a class="reference internal" href="#see-also">Ver también</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="routingFunctions.html" title="Previous Chapter: Familias de Funciones"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Familias de Funciones</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_floydWarshall.html" title="Next Chapter: pgr_floydWarshall"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_floydWarshall &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('allpairs-family','es'));  </script>
             
   <div class="line-block" id="index-0">
@@ -383,8 +343,8 @@
 wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="reference external" href="https://www.overpass-api.de/api/xapi?*[bbox=][&#64;meta">https://www.overpass-api.de/api/xapi?*[bbox=][&#64;meta</a>]&quot;</pre>
 <p>El procesamiento de datos se llevó a cabo con osm2pgrouting-alpha</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">createdb</span> <span class="n">portland</span>
-<span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;create extension postgis&quot;</span> <span class="n">portland</span>
-<span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;create extension pgrouting&quot;</span> <span class="n">portland</span>
+<span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"create extension postgis"</span> <span class="n">portland</span>
+<span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"create extension pgrouting"</span> <span class="n">portland</span>
 <span class="n">osm2pgrouting</span> <span class="o">-</span><span class="n">f</span> <span class="n">sampledata</span><span class="o">.</span><span class="n">osm</span> <span class="o">-</span><span class="n">d</span> <span class="n">portland</span> <span class="o">-</span><span class="n">s</span> <span class="mi">0</span>
 </pre></div>
 </div>
@@ -398,12 +358,12 @@ wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="refe
 </dl>
 <p>Esta prueba no se hace con cuadro delimitador. La densidad del gráfico que se pasa es extremadamente baja. Para cada &lt;SIZE&gt; se ejecutaron 30 pruebas para obtener el medio. La consulta probada es:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_floydWarshall</span><span class="p">(</span>
-   <span class="s1">&#39;SELECT gid as id, source, target, cost, reverse_cost</span>
-    <span class="n">FROM</span> <span class="n">ways</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">&lt;=</span> <span class="o">&lt;</span><span class="n">SIZE</span><span class="o">&gt;</span><span class="s1">&#39;);</span>
+   <span class="s1">'SELECT gid as id, source, target, cost, reverse_cost</span>
+    <span class="n">FROM</span> <span class="n">ways</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">&lt;=</span> <span class="o">&lt;</span><span class="n">SIZE</span><span class="o">&gt;</span><span class="s1">');</span>
 
 <span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_johnson</span><span class="p">(</span>
-   <span class="s1">&#39;SELECT gid as id, source, target, cost, reverse_cost</span>
-    <span class="n">FROM</span> <span class="n">ways</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">&lt;=</span> <span class="o">&lt;</span><span class="n">SIZE</span><span class="o">&gt;</span><span class="s1">&#39;);</span>
+   <span class="s1">'SELECT gid as id, source, target, cost, reverse_cost</span>
+    <span class="n">FROM</span> <span class="n">ways</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">&lt;=</span> <span class="o">&lt;</span><span class="n">SIZE</span><span class="o">&gt;</span><span class="s1">');</span>
 </pre></div>
 </div>
 <p>Los resultados de la prueba son:</p>
@@ -760,7 +720,7 @@ wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="refe
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a></p></li>
-<li><p>Boost <a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">floyd-Warshall</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/shortest_paths/floyd_warshall_shortest.html">Boost: Floyd-Warshall</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -784,8 +744,8 @@ wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="refe
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Actualizado por última vez en nov 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Actualizado por última vez en nov 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

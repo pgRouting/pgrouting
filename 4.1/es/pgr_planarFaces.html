@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=7a93a065"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -157,46 +157,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_planarFaces</span></code> - Experimental</a><ul>
-<li><a class="reference internal" href="#description">Descripción</a></li>
-<li><a class="reference internal" href="#signatures">Firmas</a></li>
-<li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
-<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#non-planar-graphs">Non-planar graphs</a></li>
-<li><a class="reference internal" href="#planarity-of-loops">Planarity of loops</a></li>
-<li><a class="reference internal" href="#triangular-graphs">Triangular graphs</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Ver también</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_makeBiconnectedPlanar.html" title="Previous Chapter: pgr_makeBiconnectedPlanar - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_makeBicon...</span>
-    </a>
-  </li>
-  <li>
-    <a href="circuits-family.html" title="Next Chapter: Circuits - Family of Functions"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Circuits - Fa... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_planarFaces','es'));  </script>
             
   <div class="line-block" id="index-0">
@@ -260,10 +221,10 @@ test, then walks faces with Boost <code class="docutils literal notranslate"><sp
 <p class="rubric">Características</p>
 <ul class="simple">
 <li><p>Funciona para grafos no dirigidos.</p></li>
-<li><p>Loops and paralell edges are preserved.</p></li>
+<li><p>Loops and parallel edges are preserved.</p></li>
 <li><p>Costs are ignored</p>
 <ul>
-<li><p>They are used to determine the existance of an edge</p></li>
+<li><p>They are used to determine the existence of an edge</p></li>
 </ul>
 </li>
 <li><p>When the graph is not planar it will emit an <code class="docutils literal notranslate"><span class="pre">ERROR</span></code></p>
@@ -295,7 +256,7 @@ test, then walks faces with Boost <code class="docutils literal notranslate"><sp
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Adentro: Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -315,7 +276,7 @@ test, then walks faces with Boost <code class="docutils literal notranslate"><sp
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_planarFaces</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, 1 AS cost FROM edges&#39;</span>
+  <span class="s1">'SELECT id, source, target, 1 AS cost FROM edges'</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">face_id</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span>
 <span class="o">-----+---------+---------+------</span>
@@ -523,7 +484,7 @@ blue in the figure).</p>
 </pre></div>
 </div>
 <p>Test planarity: dont execute when is not planar.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_isPlanar</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost FROM k5&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_isPlanar</span><span class="p">(</span><span class="s1">'SELECT id, source, target, cost FROM k5'</span><span class="p">);</span>
  <span class="n">pgr_isplanar</span>
 <span class="o">--------------</span>
  <span class="n">f</span>
@@ -532,7 +493,7 @@ blue in the figure).</p>
 </pre></div>
 </div>
 <p>Or get an error: (not shown)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_planarFaces</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost FROM k5&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_planarFaces</span><span class="p">(</span><span class="s1">'SELECT id, source, target, cost FROM k5'</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -545,7 +506,7 @@ blue in the figure).</p>
     1 -- 1;
 }" class="graphviz" /></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_planarFaces</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT 1 AS id, 5 AS source, 5 AS target, 2 AS cost&#39;</span>
+  <span class="s1">'SELECT 1 AS id, 5 AS source, 5 AS target, 2 AS cost'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">seq</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">face_id</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span>
 <span class="o">-----+---------+---------+------</span>
@@ -562,7 +523,7 @@ blue in the figure).</p>
     1 -- 1 -- 1;
 }" class="graphviz" /></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_planarFaces</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT 1 AS id, 5 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost&#39;</span>
+  <span class="s1">'SELECT 1 AS id, 5 AS source, 5 AS target, 1 AS cost, 1 AS reverse_cost'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">seq</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">face_id</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span>
 <span class="o">-----+---------+---------+------</span>
@@ -594,7 +555,7 @@ blue in the figure).</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_planarFaces</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, 1 AS cost FROM tri_edges&#39;</span>
+  <span class="s1">'SELECT id, source, target, 1 AS cost FROM tri_edges'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">seq</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">face_id</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span>
 <span class="o">-----+---------+---------+------</span>
@@ -623,8 +584,8 @@ face.</p></li>
     1 -- 2 -- 3 -- 1;
 }" class="graphviz" /></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_planarFaces</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, 1 AS cost, 1 AS reverse_cost</span>
-  <span class="n">FROM</span> <span class="n">tri_edges</span><span class="s1">&#39;</span>
+  <span class="s1">'SELECT id, source, target, 1 AS cost, 1 AS reverse_cost</span>
+  <span class="n">FROM</span> <span class="n">tri_edges</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">seq</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">face_id</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span>
 <span class="o">-----+---------+---------+------</span>
@@ -651,8 +612,8 @@ face.</p></li>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_isPlanar.html"><span class="doc">pgr_isPlanar - Experimental</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p>Boost Graph Library: <a class="reference external" href="https://www.boost.org/libs/graph/doc/planar_face_traversal.html">Planar Face Traversal</a></p></li>
-<li><p>Boost Graph Library: <a class="reference external" href="https://www.boost.org/libs/graph/doc/boyer_myrvold.html">Boost: Boyer Myrvold planarity</a></p></li>
+<li><p>Boost Graph Library: <a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/planar/planar_face_traversal.html">Planar Face Traversal</a></p></li>
+<li><p>Boost Graph Library: <a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/planar/boyer_myrvold.html">Boost: Boyer Myrvold planarity</a></p></li>
 <li><p>Wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Planar_graph">Planar graph</a></p></li>
 <li><p>Boyer, J. M. and Myrvold, W. J. (2004). On the Cutting Edge: Simplified O(n)
 Planarity Algorithms by Edge Addition. Journal of Graph Algorithms and
@@ -679,8 +640,8 @@ Applications, 8(3), 241-273.</p></li>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Actualizado por última vez en nov 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Actualizado por última vez en nov 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

@@ -13,8 +13,8 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=7a93a065"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -168,58 +168,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code></a><ul>
-<li><a class="reference internal" href="#description">Descripción</a><ul>
-<li><a class="reference internal" href="#problem-definition">Definición del Problema</a></li>
-<li><a class="reference internal" href="#characteristics">Características</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#signatures">Firmas</a></li>
-<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#tsp-optional-parameters">Parámetros opcionales de TSP</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
-<li><a class="reference internal" href="#coordinates-sql">Coordenadas SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
-<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#test-29-cities-of-western-sahara">Prueba 29 ciudades del Sáhara Occidental</a><ul>
-<li><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data">Creación de una tabla para datos y almacenamiento de los datos</a></li>
-<li><a class="reference internal" href="#adding-a-geometry-for-visual-purposes">Agregar una geometría (con fines visuales)</a></li>
-<li><a class="reference internal" href="#total-tour-cost">Costo total del tour</a></li>
-<li><a class="reference internal" href="#getting-a-geometry-of-the-tour">Obtener una geometría del recorrido</a></li>
-<li><a class="reference internal" href="#visual-results">Resultados visuales</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Ver también</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_TSP.html" title="Previous Chapter: pgr_TSP"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_TSP</span>
-    </a>
-  </li>
-  <li>
-    <a href="utilities-family.html" title="Next Chapter: Utility functions"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Utility functions &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_TSPeuclidean','es'));  </script>
             
   <div class="line-block" id="index-0">
@@ -245,7 +194,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 <p class="rubric">Versión 3.2.1</p>
 <ul class="simple">
-<li><p>Usando <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: Algoritmo de aproximación Métrica de TSP</a></p></li>
+<li><p>Usando <a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html">Boost: Algoritmo de aproximación Métrica de TSP</a></p></li>
 <li><p>El algoritmo de recocido simulado ya no es utilizado</p>
 <ul>
 <li><p>Se ignoran los parámetros relacionados con el algoritmo de recocido simulado: <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
@@ -307,7 +256,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Adentro: Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Adentro: Boost Graph</p>
 </section>
 </section>
 <section id="signatures">
@@ -581,7 +530,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: aproximación métrica de TSP</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html">Boost: aproximación métrica de TSP</a></p></li>
 <li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">Universided de Waterloo TSP</a></p></li>
 <li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Problema_del_viajante">Wikipedia: Problema del viajante</a></p></li>
 </ul>
@@ -606,8 +555,8 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Actualizado por última vez en nov 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Actualizado por última vez en nov 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

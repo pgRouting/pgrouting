@@ -13,8 +13,8 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=7a93a065"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -157,47 +157,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Introducción</a><ul>
-<li><a class="reference internal" href="#licensing">Licencias</a></li>
-<li><a class="reference internal" href="#contributors">Colaboradores</a><ul>
-<li><a class="reference internal" href="#this-release-contributors">Colaboradores de esta Versión</a><ul>
-<li><a class="reference internal" href="#individuals-in-this-release-release-in-alphabetical-order">Individuals in this release v4.1.0-dev (in alphabetical order)</a></li>
-<li><a class="reference internal" href="#translators-in-alphabetical-order">Traductores (en orden alfabético)</a></li>
-<li><a class="reference internal" href="#corporate-sponsors-in-this-release-in-alphabetical-order">Patrocinadores corporativos de este lanzamiento (en orden alfabético)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#contributors-past-present">Colaboradores, Pasado y Presente:</a><ul>
-<li><a class="reference internal" href="#individuals-in-alphabetical-order">Personas (en orden alfabético)</a></li>
-<li><a class="reference internal" href="#corporate-sponsors-in-alphabetical-order">Patrocinadores corporativos (en orden alfabético)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#more-information">Más Información</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="index.html" title="Previous Chapter: Tabla de Contenido"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Tabla de Contenido</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgRouting-installation.html" title="Next Chapter: Instalación"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Instalación &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgRouting-introduction','es'));  </script>
             
   <div class="line-block">
@@ -205,8 +165,16 @@
 </div>
 <section id="introduction">
 <h1>Introducción<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
-<p>pgRouting es una extensión de la base de datos geoespacial <a class="reference external" href="https://postgis.net">PostGIS</a> y <a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> y agrega ruteo y otras funciones de análisis de redes. Un predecesor de pgRouting – pgDijkstra, escrito por Sylvain Pasche de <a class="reference external" href="https://camptocamp.com">Camptocamp</a>, fue más tarde extendido por Orkney y renombrado a pgRouting. El proyecto ahora es apoyado y mantenido por Georepublic &lt;<a class="reference external" href="https://georepublic.info">https://georepublic.info</a>&gt;`__, <a class="reference external" href="https://www.paragoncorporation.com/">Paragon Corporation</a> y una amplia comunidad de usuarios.</p>
-<p>pgRouting es parte de la <cite>Comunidad de Proyectos de OSGeo &lt;https://wiki.osgeo.org/wiki/OSGeo_Community_Projects&gt;</cite> __ de la <cite>Fundación OSGeo &lt;https://www.osgeo.org&gt;</cite> __ y se incluye en`OSGeoLive &lt;<a class="reference external" href="http://live.osgeo.org/">http://live.osgeo.org/</a>&gt;`__.</p>
+<p>pgRouting is an extension of <a class="reference external" href="https://postgis.net">PostGIS</a> and <a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> geospatial database and adds routing and other
+network analysis functionality. A predecessor of pgRouting – pgDijkstra, written
+by Sylvain Pasche, was later extended by Orkney and renamed to pgRouting.</p>
+<p>Currently maintained by:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.erosion.dev">Erosion</a></p></li>
+<li><p><a class="reference external" href="https://www.paragoncorporation.com/">Paragon Corporation</a></p></li>
+<li><p>and a broad user community.</p></li>
+</ul>
+<p>pgRouting is part of <a class="reference external" href="https://www.osgeo.org/projects/pgrouting">OSGeo Projects</a> from the <a class="reference external" href="https://www.osgeo.org">OSGeo Foundation</a> and included on <a class="reference external" href="https://live.osgeo.org/">OSGeoLive</a>.</p>
 <section id="licensing">
 <span id="license"></span><h2>Licencias<a class="headerlink" href="#licensing" title="Link to this heading">¶</a></h2>
 <p>Las siguientes licencias pueden ser encontradas en pgRouting:</p>
@@ -241,8 +209,12 @@
 <h3>Colaboradores de esta Versión<a class="headerlink" href="#this-release-contributors" title="Link to this heading">¶</a></h3>
 <section id="individuals-in-this-release-release-in-alphabetical-order">
 <h4>Individuals in this release v4.1.0-dev (in alphabetical order)<a class="headerlink" href="#individuals-in-this-release-release-in-alphabetical-order" title="Link to this heading">¶</a></h4>
-<p>Mohit Rawat,
+<p>Ashish Kumar,
+Ko Nagase,
+Mayur Galhate,
+Mohit Rawat,
 Regina Obe,
+Sakir Ahmed,
 Vicky Vergara</p>
 <p>Y a toda la gente que nos regala un poco de su tiempo haciendo comentarios, encontrando problemas, haciendo pull requests etc. en cualquiera de nuestros productos: osm2pgrouting, pgRouting, pgRoutingLayer, workshop.</p>
 </section>
@@ -329,6 +301,7 @@ Razequl Islam,
 Regina Obe,
 Rohith Reddy,
 Saloni Kumari,
+Sakir Ahmed,
 Sarthak Agarwal,
 Shobhit Chaurasia,
 Sourabh Garg,
@@ -386,8 +359,8 @@ Yige Huang</p>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Actualizado por última vez en nov 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Actualizado por última vez en nov 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=4e2df6f4"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -158,62 +158,20 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Innehåll</a><ul>
-<li><a class="reference internal" href="#general">Allmänt</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#pgrouting-concepts">Koncept för injektering</a></li>
-<li><a class="reference internal" href="#routingfunctions"><span class="xref std std-doc">routingFunctions</span></a></li>
-<li><a class="reference internal" href="#functions-by-categories">Funktioner per kategori</a></li>
-<li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Tillgängliga funktioner men inte officiella pgRouting-funktioner</a></li>
-<li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
-<li><a class="reference internal" href="#pgrouting-4-1-0-release-notes">Versionsinformation för pgRouting 4.1.0</a><ul>
-<li><a class="reference internal" href="#build">4.1.0 Build</a></li>
-<li><a class="reference internal" href="#summary-of-changes-by-function">4.1.0 Summary of changes by function</a></li>
-<li><a class="reference internal" href="#new-experimental-functions">4.1.0 New experimental functions.</a></li>
-<li><a class="reference internal" href="#code-enhancements">4.1.0 Code enhancements</a></li>
-<li><a class="reference internal" href="#bug-fixes">4.1.0 Bug Fixes</a></li>
-<li><a class="reference internal" href="#requirements">4.1.0 Requirements</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#all-releases">Alla utgåvor</a><ul>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgRouting-introduction.html" title="Next Chapter: Introduktion"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Introduktion &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('index','sv'));  </script>
             
   <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="table-of-contents">
-<h1>Innehåll<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h1>
+<h1>Innehåll<a class="headerlink" href="#table-of-contents" title="Länk till denna rubrik">¶</a></h1>
 <p>pgRouting utökar <a class="reference external" href="https://postgis.net">PostGIS</a>/<a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> geospatial databas för att tillhandahålla geospatial routing och annan nätverksanalysfunktionalitet.</p>
 <p>Detta är manualen för pgRouting v4.1.0-dev.</p>
 <img alt="Creative Commons Erkännande-Dela Lika 3.0-licens" class="align-left" src="_images/ccbysa.png" />
 <p>Manualen för pgRouting är licensierad under en <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Du är välkommen att använda detta material på vilket sätt du vill, men vi ber dig att ange pgRouting-projektet som källa och om möjligt en länk tillbaka till <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a>. För andra licenser som används i pgRouting, se sidan <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">Licens</span></a>.</p>
 <section id="general">
-<h2>Allmänt<a class="headerlink" href="#general" title="Link to this heading">¶</a></h2>
+<h2>Allmänt<a class="headerlink" href="#general" title="Länk till denna rubrik">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduktion</a><ul>
@@ -248,7 +206,7 @@
 </div>
 </section>
 <section id="pgrouting-concepts">
-<h2>Koncept för injektering<a class="headerlink" href="#pgrouting-concepts" title="Link to this heading">¶</a></h2>
+<h2>Koncept för injektering<a class="headerlink" href="#pgrouting-concepts" title="Länk till denna rubrik">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting-koncept</a><ul>
@@ -270,7 +228,7 @@
 </div>
 </section>
 <section id="routingfunctions">
-<h2><a class="reference internal" href="routingFunctions.html"><span class="doc">Funktionsfamiljer</span></a><a class="headerlink" href="#routingfunctions" title="Link to this heading">¶</a></h2>
+<h2><a class="reference internal" href="routingFunctions.html"><span class="doc">Funktionsfamiljer</span></a><a class="headerlink" href="#routingfunctions" title="Länk till denna rubrik">¶</a></h2>
 <div class="toctree-wrapper compound">
 </div>
 <p><a class="reference internal" href="allpairs-family.html"><span class="doc">Alla par - Familj av funktioner</span></a></p>
@@ -402,7 +360,7 @@ table information.</p></li>
 </ul>
 </section>
 <section id="functions-by-categories">
-<h2>Funktioner per kategori<a class="headerlink" href="#functions-by-categories" title="Link to this heading">¶</a></h2>
+<h2>Funktioner per kategori<a class="headerlink" href="#functions-by-categories" title="Länk till denna rubrik">¶</a></h2>
 <p><a class="reference internal" href="cost-category.html"><span class="doc">Kostnad - Kategori</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a></p></li>
@@ -459,7 +417,7 @@ table information.</p></li>
 </ul>
 </section>
 <section id="available-functions-but-not-official-pgrouting-functions">
-<h2>Tillgängliga funktioner men inte officiella pgRouting-funktioner<a class="headerlink" href="#available-functions-but-not-official-pgrouting-functions" title="Link to this heading">¶</a></h2>
+<h2>Tillgängliga funktioner men inte officiella pgRouting-funktioner<a class="headerlink" href="#available-functions-but-not-official-pgrouting-functions" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="proposed.html"><span class="doc">Föreslagna funktioner</span></a></p></li>
 <li><p><a class="reference internal" href="experimental.html"><span class="doc">Experimentella funktioner</span></a></p></li>
@@ -468,12 +426,13 @@ table information.</p></li>
 </div>
 </section>
 <section id="release-notes">
-<h2><a class="reference internal" href="release_notes.html"><span class="doc">Versionsinformation</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
+<h2><a class="reference internal" href="release_notes.html"><span class="doc">Versionsinformation</span></a><a class="headerlink" href="#release-notes" title="Länk till denna rubrik">¶</a></h2>
 <section id="pgrouting-4-1-0-release-notes">
-<h3>Versionsinformation för pgRouting 4.1.0<a class="headerlink" href="#pgrouting-4-1-0-release-notes" title="Link to this heading">¶</a></h3>
-<p>För att se alla problem och pull requests som stängts av denna release, se <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.1.0%22">Github milstolpe för 4.1.0</a></p>
+<h3>Versionsinformation för pgRouting 4.1.0<a class="headerlink" href="#pgrouting-4-1-0-release-notes" title="Länk till denna rubrik">¶</a></h3>
+<p>To see all issues &amp; pull requests closed by this release see the
+<a class="extlink-milestone reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.1.0%22">Milestone 4.1.0</a></p>
 <section id="build">
-<h4>4.1.0 Build<a class="headerlink" href="#build" title="Link to this heading">¶</a></h4>
+<h4>4.1.0 Build<a class="headerlink" href="#build" title="Länk till denna rubrik">¶</a></h4>
 <ul>
 <li><p>PostgreSQL:</p>
 <p>Minimum requirement: 14</p>
@@ -487,7 +446,7 @@ table information.</p></li>
 </ul>
 </section>
 <section id="summary-of-changes-by-function">
-<h4>4.1.0 Summary of changes by function<a class="headerlink" href="#summary-of-changes-by-function" title="Link to this heading">¶</a></h4>
+<h4>4.1.0 Summary of changes by function<a class="headerlink" href="#summary-of-changes-by-function" title="Länk till denna rubrik">¶</a></h4>
 <ul class="simple">
 <li><p>pgr_coreNumbers</p>
 <ul>
@@ -530,54 +489,55 @@ table information.</p></li>
 </ul>
 </section>
 <section id="new-experimental-functions">
-<h4>4.1.0 New experimental functions.<a class="headerlink" href="#new-experimental-functions" title="Link to this heading">¶</a></h4>
+<h4>4.1.0 New experimental functions.<a class="headerlink" href="#new-experimental-functions" title="Länk till denna rubrik">¶</a></h4>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3136">#3136</a>: pgr_maxWeightedMatch</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3140">#3140</a>: pgr_makeBiconnectedPlanar</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3142">#3142</a>: pgr_coreNumbers</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3143">#3143</a>: pgr_planarFaces</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3171">#3171</a>: pgr_hawickUniqueCircuits: new functionality</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3136">Issue #3136</a>: pgr_maxWeightedMatch</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3140">Issue #3140</a>: pgr_makeBiconnectedPlanar</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3142">Issue #3142</a>: pgr_coreNumbers</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3143">Issue #3143</a>: pgr_planarFaces</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3171">Issue #3171</a>: pgr_hawickUniqueCircuits: new functionality</p></li>
 </ul>
 </section>
 <section id="code-enhancements">
-<h4>4.1.0 Code enhancements<a class="headerlink" href="#code-enhancements" title="Link to this heading">¶</a></h4>
+<h4>4.1.0 Code enhancements<a class="headerlink" href="#code-enhancements" title="Länk till denna rubrik">¶</a></h4>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3049">#3049</a>: Use enumeration on drivers and process.</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3054">#3054</a>: Change error message when edges_sql is empty</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3055">#3055</a>: bdDijkstra: use the shortest_path process and driver</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3056">#3056</a>: edwardMoore: use the shortest_path process and driver</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3060">#3060</a>: dagShortestPath: use the shortest_path process and driver</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3064">#3064</a>: Astar: create and use a process and driver for Astar</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3075">#3075</a>: Spanning tree: create and use a process and driver</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3086">#3086</a>: MaxFlow: create and use a process and driver</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3089">#3089</a>: edgeDisjoint and bellmanFord use shortestPath driver and
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3049">Issue #3049</a>: Use enumeration on drivers and process.</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3054">Issue #3054</a>: Change error message when edges_sql is empty</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3055">Issue #3055</a>: bdDijkstra: use the shortest_path process and driver</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3056">Issue #3056</a>: edwardMoore: use the shortest_path process and driver</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3060">Issue #3060</a>: dagShortestPath: use the shortest_path process and driver</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3064">Issue #3064</a>: Astar: create and use a process and driver for Astar</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3075">Issue #3075</a>: Spanning tree: create and use a process and driver</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3086">Issue #3086</a>: MaxFlow: create and use a process and driver</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3089">Issue #3089</a>: edgeDisjoint and bellmanFord use shortestPath driver and
 process</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3100">#3100</a>: Coloring: create and use a process &amp; driver</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3113">#3113</a>: Components: Integrate into existing process/driver pair</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3129">#3129</a>: breadthFirstSearch: Reorganize into traversal</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3131">#3131</a>: binaryBreadthFirstSearch: Integrate into existing
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3100">Issue #3100</a>: Coloring: create and use a process &amp; driver</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3113">Issue #3113</a>: Components: Integrate into existing process/driver pair</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3129">Issue #3129</a>: breadthFirstSearch: Reorganize into traversal</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3131">Issue #3131</a>: binaryBreadthFirstSearch: Integrate into existing
 process/driver pair</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3154">#3154</a>: betweennessCentrality: use allpairs/process and driver</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3163">#3163</a>: KSP &amp; KSP WithPoints Use ShortestPath driver files</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3170">#3170</a>: pgr_hawickCircuits: wrong Boost function referenced</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3154">Issue #3154</a>: betweennessCentrality: use allpairs/process and driver</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3163">Issue #3163</a>: KSP &amp; KSP WithPoints Use ShortestPath driver files</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3170">Issue #3170</a>: pgr_hawickCircuits: wrong Boost function referenced</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3176">Issue #3176</a>: Boost broken links</p></li>
 </ul>
 </section>
 <section id="bug-fixes">
-<h4>4.1.0 Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">¶</a></h4>
+<h4>4.1.0 Bug Fixes<a class="headerlink" href="#bug-fixes" title="Länk till denna rubrik">¶</a></h4>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3101">#3101</a>: pgr_edgeColoring not building graph correctly</p></li>
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3101">Issue #3101</a>: pgr_edgeColoring not building graph correctly</p></li>
 </ul>
 </section>
 <section id="requirements">
-<h4>4.1.0 Requirements<a class="headerlink" href="#requirements" title="Link to this heading">¶</a></h4>
+<h4>4.1.0 Requirements<a class="headerlink" href="#requirements" title="Länk till denna rubrik">¶</a></h4>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/3120">#3120</a>: Up min requirements: Boost to 1.74 Postgres to 14 cmake to
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3120">Issue #3120</a>: Up min requirements: Boost to 1.74 Postgres to 14 cmake to
 3.22.</p></li>
 </ul>
 </section>
 </section>
 <section id="all-releases">
-<h3>Alla utgåvor<a class="headerlink" href="#all-releases" title="Link to this heading">¶</a></h3>
+<h3>Alla utgåvor<a class="headerlink" href="#all-releases" title="Länk till denna rubrik">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Versionsinformation</a><ul>
@@ -613,8 +573,8 @@ process/driver pair</p></li>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

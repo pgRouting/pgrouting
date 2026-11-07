@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=05423f42"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -159,49 +159,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_boykovKolmogorov</span></code></a><ul>
-<li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#one-to-one">One to One</a></li>
-<li><a class="reference internal" href="#one-to-many">One to Many</a></li>
-<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
-<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
-<li><a class="reference internal" href="#combinations">Combinations</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-<li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Result columns</a></li>
-<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_maxFlow.html" title="Previous Chapter: pgr_maxFlow"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_maxFlow</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_edmondsKarp.html" title="Next Chapter: pgr_edmondsKarp"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_edmondsKarp &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_boykovKolmogorov','en'));  </script>
             
   <div class="line-block" id="index-0">
@@ -273,7 +231,7 @@ can be calculated:</p>
 <ul class="simple">
 <li><p>Running time: Polynomial</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -310,8 +268,8 @@ can be calculated:</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_boykovKolmogorov</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, capacity, reverse_capacity</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, capacity, reverse_capacity</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">flow</span> <span class="o">|</span> <span class="n">residual_capacity</span>
 <span class="o">-----+------+-----------+---------+------+-------------------</span>
@@ -342,8 +300,8 @@ can be calculated:</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_boykovKolmogorov</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, capacity, reverse_capacity</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, capacity, reverse_capacity</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="mi">11</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">flow</span> <span class="o">|</span> <span class="n">residual_capacity</span>
 <span class="o">-----+------+-----------+---------+------+-------------------</span>
@@ -379,8 +337,8 @@ can be calculated:</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_boykovKolmogorov</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, capacity, reverse_capacity</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, capacity, reverse_capacity</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">17</span><span class="p">],</span> <span class="mi">12</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">flow</span> <span class="o">|</span> <span class="n">residual_capacity</span>
 <span class="o">-----+------+-----------+---------+------+-------------------</span>
@@ -412,8 +370,8 @@ can be calculated:</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_boykovKolmogorov</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, capacity, reverse_capacity</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, capacity, reverse_capacity</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">17</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">flow</span> <span class="o">|</span> <span class="n">residual_capacity</span>
 <span class="o">-----+------+-----------+---------+------+-------------------</span>
@@ -464,9 +422,9 @@ vertices <span class="math notranslate nohighlight">\(\{5, 6\}\)</span> to verti
 </div>
 <p>The query:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_boykovKolmogorov</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, capacity, reverse_capacity</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
-  <span class="s1">&#39;SELECT * FROM combinations WHERE target NOT IN (5, 6)&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, capacity, reverse_capacity</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
+  <span class="s1">'SELECT * FROM combinations WHERE target NOT IN (5, 6)'</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">flow</span> <span class="o">|</span> <span class="n">residual_capacity</span>
 <span class="o">-----+------+-----------+---------+------+-------------------</span>
    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>   <span class="mi">80</span> <span class="o">|</span>                <span class="mi">20</span>
@@ -665,9 +623,9 @@ the edge.</p></td>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_boykovKolmogorov</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, capacity, reverse_capacity</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES (5, 10), (6, 15), (6, 14)) AS t(source, target)&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, capacity, reverse_capacity</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
+  <span class="s1">'SELECT * FROM (VALUES (5, 10), (6, 15), (6, 14)) AS t(source, target)'</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">flow</span> <span class="o">|</span> <span class="n">residual_capacity</span>
 <span class="o">-----+------+-----------+---------+------+-------------------</span>
    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>   <span class="mi">80</span> <span class="o">|</span>                <span class="mi">20</span>
@@ -688,7 +646,7 @@ the edge.</p></td>
 <li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html">Boost: Boykov Kolmogorov max flow</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/network_flow/boykov_kolmogorov_max_flow.html">Boost: Boykov Kolmogorov max flow</a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -711,8 +669,8 @@ the edge.</p></td>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on Nov 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on Nov 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

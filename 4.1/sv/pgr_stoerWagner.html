@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=4e2df6f4"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -152,48 +152,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_stoerWagner</span></code> - Experimentell</a><ul>
-<li><a class="reference internal" href="#description">Beskrivning</a></li>
-<li><a class="reference internal" href="#signatures">Underskrifter</a></li>
-<li><a class="reference internal" href="#parameters">Parametrar</a></li>
-<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
-<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
-<li><a class="reference internal" href="#additional-example">Ytterligare exempel:</a></li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_lengauerTarjanDominatorTree.html" title="Previous Chapter: pgr_lengauerTarjanDominatorTree - Experimentell"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lengauerT...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_transitiveClosure.html" title="Next Chapter: pgr_transitiveClosure - Experimentell"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_transitiv... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_stoerWagner','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-stoerwagner-experimental">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_stoerWagner</span></code> - Experimentell<a class="headerlink" href="#pgr-stoerwagner-experimental" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_stoerWagner</span></code> - Experimentell<a class="headerlink" href="#pgr-stoerwagner-experimental" title="Länk till denna rubrik">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_stoerWagner</span></code> - Min-cut av grafen med stoerWagner-algoritmen.</p>
 <div class="admonition-experimental admonition">
 <p class="admonition-title">Experiment</p>
@@ -235,7 +201,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<h2>Beskrivning<a class="headerlink" href="#description" title="Länk till denna rubrik">¶</a></h2>
 <p>Inom grafteorin är Stoer-Wagner-algoritmen en rekursiv algoritm för att lösa problemet med minsta snitt i ovägda viktade grafer med icke-negativa vikter. Den grundläggande idén med denna algoritm är att krympa grafen genom att slå samman de mest intensiva topparna, tills grafen bara innehåller två kombinerade toppuppsättningar. I varje fas hittar algoritmen det minsta s-t-snittet för två toppar s och t som valts som dess vilja. Därefter krymper algoritmen kanten mellan s och t för att söka efter andra snitt än s-t-snitt. Det minsta snitt som hittas i alla faser kommer att vara det minsta viktade snittet i grafen.</p>
 <p>Ett snitt är en uppdelning av hörnen i en graf i två disjunkta delmängder. En minsta skärning är en skärning där skärningens storlek eller vikt inte är större än storleken på någon annan skärning. För en oviktad graf skulle det minsta snittet helt enkelt vara det snitt som har minst kanter. För en viktad graf är det summan av alla kanters vikt på snittet som avgör om det är ett minimisnitt.</p>
 <p><strong>De viktigaste egenskaperna är:</strong></p>
@@ -258,10 +224,10 @@
 <ul class="simple">
 <li><p>Drifttid: <span class="math notranslate nohighlight">\(O(V*E + V^2*log V)\)</span>.</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
 </section>
 <section id="signatures">
-<h2>Underskrifter<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<h2>Underskrifter<a class="headerlink" href="#signatures" title="Länk till denna rubrik">¶</a></h2>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -278,8 +244,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_stoerWagner</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-  <span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="s1">&#39;);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+  <span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="s1">');</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">mincut</span>
 <span class="o">-----+------+------+--------</span>
    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span>
@@ -289,7 +255,7 @@
 </div>
 </section>
 <section id="parameters">
-<h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<h2>Parametrar<a class="headerlink" href="#parameters" title="Länk till denna rubrik">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -306,9 +272,9 @@
 </table>
 </section>
 <section id="inner-queries">
-<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Länk till denna rubrik">¶</a></h2>
 <section id="edges-sql">
-<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -367,7 +333,7 @@
 </section>
 </section>
 <section id="result-columns">
-<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Länk till denna rubrik">¶</a></h2>
 <p>Returnerar uppsättning av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">mincut)</span></code></p>
 <table class="docutils align-default">
 <thead>
@@ -397,15 +363,15 @@
 </table>
 </section>
 <section id="additional-example">
-<h2>Ytterligare exempel:<a class="headerlink" href="#additional-example" title="Link to this heading">¶</a></h2>
+<h2>Ytterligare exempel:<a class="headerlink" href="#additional-example" title="Länk till denna rubrik">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Exempel<span class="colon">:</span></dt>
 <dd class="field-odd"><p>minutskärning av en kant</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_stoerWagner</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-  <span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">18</span><span class="s1">&#39;);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+  <span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">18</span><span class="s1">');</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">mincut</span>
 <span class="o">-----+------+------+--------</span>
    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span>
@@ -423,7 +389,7 @@
   SELECT id, source, target, cost, reverse_cost FROM edges
   WHERE source IN (
       SELECT node FROM pgr_connectedComponents(
-      &#39;SELECT id, source, target, cost, reverse_cost FROM edges &#39;)
+      'SELECT id, source, target, cost, reverse_cost FROM edges ')
       WHERE component = 2)
   $$
 );
@@ -436,10 +402,10 @@
 </div>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html">Boost: Stoer Wagner min cut</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/network_flow/stoer_wagner_min_cut.html">Boost: Stoer Wagner min cut</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm">https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm</a></p></li>
 </ul>
 <p class="rubric">Index och tabeller</p>
@@ -463,8 +429,8 @@
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

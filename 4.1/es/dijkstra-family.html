@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=7a93a065"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -157,46 +157,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Dijkstra - Familia de funciones</a><ul>
-<li><a class="reference internal" href="#introduction">Introducción</a></li>
-<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-<li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#advanced-documentation">Documentación avanzada</a><ul>
-<li><a class="reference internal" href="#the-problem-definition-advanced-documentation">La definición de problema (Documentación avanzada)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Ver también</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_contractionHierarchies.html" title="Previous Chapter: pgr_contractionHierarchies - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contracti...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_dijkstra.html" title="Next Chapter: pgr_dijkstra"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_dijkstra &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('dijkstra-family','es'));  </script>
             
   <div class="line-block" id="index-0">
@@ -427,7 +388,12 @@
 </li>
 <li><p>El conjunto de aristas <span class="math notranslate nohighlight">\(E\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(E = \begin{cases} \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{if } reverse\_cost = \varnothing \\ \text{ } \text{ } &amp; \quad \text{ } \\ \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{ } \\ \cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i&gt;=0 \} &amp; \quad \text{if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E = \begin{cases}
+\text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{if } reverse\_cost = \varnothing \\
+\text{ } \text{ }  &amp; \quad \text{ } \\
+\text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp;  \quad \text{ } \\
+\cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i&gt;=0 \} &amp; \quad \text{if } reverse\_cost \neq \varnothing \\
+\end{cases}\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -441,7 +407,15 @@
 </li>
 <li><p>El conjunto de aristas <span class="math notranslate nohighlight">\(E\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(E = \begin{cases} \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{ } \\ \cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{ if } reverse\_cost = \varnothing \\ \text{ } \text{ } &amp; \text{ } \\ \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\ \cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\ \cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \text{ } \\ \cup \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E = \begin{cases}
+\text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \}  &amp; \quad \text{ } \\
+\cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \}  &amp; \quad \text{ if } reverse\_cost = \varnothing \\
+\text{ } \text{ }  &amp; \text{ } \\
+\text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\
+\cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\
+\cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \text{ } \\
+\cup \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \quad \text{ if } reverse\_cost \neq \varnothing \\
+\end{cases}\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -505,8 +479,8 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Actualizado por última vez en nov 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Actualizado por última vez en nov 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

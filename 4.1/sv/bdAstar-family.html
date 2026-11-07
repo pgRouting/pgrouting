@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=4e2df6f4"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -144,40 +144,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Dubbelriktad A* - Familj av funktioner</a><ul>
-<li><a class="reference internal" href="#description">Beskrivning</a></li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_aStarCostMatrix.html" title="Previous Chapter: pgr_aStarCostMatrix"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_aStarCostMatrix</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_bdAstar.html" title="Next Chapter: pgr_bdAstar"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_bdAstar &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('bdAstar-family','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="bidirectional-a-family-of-functions">
-<h1>Dubbelriktad A* - Familj av funktioner<a class="headerlink" href="#bidirectional-a-family-of-functions" title="Link to this heading">¶</a></h1>
+<h1>Dubbelriktad A* - Familj av funktioner<a class="headerlink" href="#bidirectional-a-family-of-functions" title="Länk till denna rubrik">¶</a></h1>
 <p>Den dubbelriktade algoritmen A* (uttalas ”A Star”) är baserad på A*-algoritmen.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a> - Bidirectional A* algorithm for obtaining paths.</p></li>
@@ -189,7 +163,7 @@ matrix of paths.</p></li>
 <div class="toctree-wrapper compound">
 </div>
 <section id="description">
-<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<h2>Beskrivning<a class="headerlink" href="#description" title="Länk till denna rubrik">¶</a></h2>
 <p>Baserat på A*-algoritmen hittar den dubbelriktade sökningen den kortaste vägen från ett startvertex (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) till ett slutvertex (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>). Den kör två samtidiga sökningar: en framåt från <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> och en bakåt från <code class="docutils literal notranslate"><span class="pre">slut_vid</span></code>, och stannar när de två möts i mitten. Den här implementationen kan användas med en riktad graf och en oriktad graf.</p>
 <p>De viktigaste egenskaperna är:</p>
 <ul class="simple">
@@ -234,10 +208,10 @@ matrix of paths.</p></li>
 <p>Se <a class="reference internal" href="aStar-family.html#astar-heuristics"><span class="std std-ref">heuristics</span></a> tillgänglig och <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">factor</span></a> hantering.</p>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Familj av funktioner</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">Boost: A*-sökning</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/shortest_paths/astar_search.html">Boost: A*-sökning</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm">https://en.wikipedia.org/wiki/A*_search_algorithm</a></p></li>
 </ul>
 <p class="rubric">Index och tabeller</p>
@@ -261,8 +235,8 @@ matrix of paths.</p></li>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

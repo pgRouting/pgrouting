@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=11382bef"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -169,59 +169,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></a><ul>
-<li><a class="reference internal" href="#description">描述</a></li>
-<li><a class="reference internal" href="#signatures">签名</a><ul>
-<li><a class="reference internal" href="#one-to-one">One to One</a></li>
-<li><a class="reference internal" href="#one-to-many">One to Many</a></li>
-<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
-<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
-<li><a class="reference internal" href="#combinations">组合</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters">参数</a><ul>
-<li><a class="reference internal" href="#optional-parameters">可选参数</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
-<li><a class="reference internal" href="#combinations-sql">分量 SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">结果列</a></li>
-<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
-<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">在 Points SQL 中使用 <span class="xref std std-doc">pgr_findCloseEdges</span> 。</a></li>
-<li><a class="reference internal" href="#right-side-driving-topology">右侧驾驶拓扑</a></li>
-<li><a class="reference internal" href="#left-side-driving-topology">左侧驾驶拓扑</a></li>
-<li><a class="reference internal" href="#does-not-matter-driving-side-driving-topology">与驱动端驱动拓扑无关</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">另请参阅</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_withPoints.html" title="Previous Chapter: pgr_withPoints"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPoints</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_withPointsCostMatrix.html" title="Next Chapter: pgr_withPointsCostMatrix"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_withPointsCost','zh-Hans'));  </script>
             
   <div class="line-block" id="index-0">
@@ -310,7 +258,7 @@
 </li>
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(|start\_vids|\times(V \log V + E))\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -349,8 +297,8 @@
 </div>
 <p class="rubric">From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span> with right driving side in directed graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
   <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
@@ -375,8 +323,8 @@
 </div>
 <p class="rubric">无向图上的点 <span class="math notranslate nohighlight">\(1\)</span> 到点 <span class="math notranslate nohighlight">\(3\)</span> 和顶点 <span class="math notranslate nohighlight">\(7\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
   <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
   <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -407,8 +355,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
@@ -439,9 +387,9 @@ vertex <span class="math notranslate nohighlight">\(1\)</span> with left side dr
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;L&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">'L'</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
@@ -474,10 +422,10 @@ vertex <span class="math notranslate nohighlight">\(1\)</span> with left side dr
 <p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span>, and from vertex <span class="math notranslate nohighlight">\(6\)</span> to point
 <span class="math notranslate nohighlight">\(3\)</span> with right side driving.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="s1">'SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)'</span><span class="p">,</span>
+  <span class="s1">'r'</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">6.4</span>
@@ -820,10 +768,10 @@ point of the edge.</p></td>
 <h3><a class="toc-backref" href="#id2" role="doc-backlink">右侧驾驶拓扑</a><a class="headerlink" href="#right-side-driving-topology" title="Link to this heading">¶</a></h3>
 <p>从点 <span class="math notranslate nohighlight">\(1\)</span> 和顶点 <span class="math notranslate nohighlight">\(5\)</span> 出发，前往点 <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> 和顶点 <span class="math notranslate nohighlight">\(\{10, 11\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
-  <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+  <span class="s1">'r'</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">2.1</span>
@@ -845,10 +793,10 @@ point of the edge.</p></td>
 <h3><a class="toc-backref" href="#id3" role="doc-backlink">左侧驾驶拓扑</a><a class="headerlink" href="#left-side-driving-topology" title="Link to this heading">¶</a></h3>
 <p>从点 <span class="math notranslate nohighlight">\(1\)</span> 和顶点 <span class="math notranslate nohighlight">\(5\)</span> 出发，前往点 <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> 和顶点 <span class="math notranslate nohighlight">\(\{10, 11\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
-  <span class="s1">&#39;l&#39;</span><span class="p">);</span>
+  <span class="s1">'l'</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
@@ -870,8 +818,8 @@ point of the edge.</p></td>
 <h3><a class="toc-backref" href="#id4" role="doc-backlink">与驱动端驱动拓扑无关</a><a class="headerlink" href="#does-not-matter-driving-side-driving-topology" title="Link to this heading">¶</a></h3>
 <p>从点 <span class="math notranslate nohighlight">\(1\)</span> 和顶点 <span class="math notranslate nohighlight">\(5\)</span> 出发，前往点 <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> 和顶点 <span class="math notranslate nohighlight">\(\{10, 11\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
@@ -919,8 +867,8 @@ point of the edge.</p></td>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on 11月 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on 11月 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

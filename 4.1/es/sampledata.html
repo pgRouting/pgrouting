@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=7a93a065"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -180,69 +180,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Datos Muestra</a><ul>
-<li><a class="reference internal" href="#main-graph">Main graph</a><ul>
-<li><a class="reference internal" href="#edges">Edges</a><ul>
-<li><a class="reference internal" href="#edges-data">Edges data</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#vertices">Vertices</a><ul>
-<li><a class="reference internal" href="#vertices-data">Datos de vértices</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#the-topology">La topología</a><ul>
-<li><a class="reference internal" href="#topology-data">Datos de topología</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#points-outside-the-graph">Puntos fuera del grafo</a><ul>
-<li><a class="reference internal" href="#points-of-interest">Puntos de interés</a></li>
-<li><a class="reference internal" href="#points-of-interest-fill-up">Llenado de puntos de interés</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#support-tables">Tablas de apoyo</a><ul>
-<li><a class="reference internal" href="#combinations">Combinaciones</a></li>
-<li><a class="reference internal" href="#restrictions">Restricciones</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#images">Imágenes</a><ul>
-<li><a class="reference internal" href="#directed-graph-with-cost-and-reverse-cost">Grafo dirigido con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></li>
-<li><a class="reference internal" href="#undirected-graph-with-cost-and-reverse-cost">Grafo no dirigido con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></li>
-<li><a class="reference internal" href="#directed-graph-with-cost">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></li>
-<li><a class="reference internal" href="#undirected-graph-with-cost">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#pick-deliver-data">Datos de Recogida y Entrega</a><ul>
-<li><a class="reference internal" href="#the-vehicles">Los vehículos</a></li>
-<li><a class="reference internal" href="#the-original-orders">The original orders</a></li>
-<li><a class="reference internal" href="#the-orders">Las órdenes</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="support.html" title="Previous Chapter: Soporte"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Soporte</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgRouting-concepts.html" title="Next Chapter: Conceptos de pgRouting"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Conceptos de ... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('sampledata','es'));  </script>
             
   <div class="line-block">
@@ -445,7 +383,7 @@ exist.</p>
 geometry and saved on a table.
 Saving all the information provided by <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
-<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">'SELECT id, geom FROM edges ORDER BY id'</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">17</span>
 </pre></div>
 </div>
@@ -453,11 +391,11 @@ Saving all the information provided by <a class="reference internal" href="pgr_e
 of an index on the table is needed.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">SEQUENCE</span> <span class="n">vertices_id_seq</span><span class="p">;</span>
 <span class="n">CREATE</span> <span class="n">SEQUENCE</span>
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">DEFAULT</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;vertices_id_seq&#39;</span><span class="p">);</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">DEFAULT</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">'vertices_id_seq'</span><span class="p">);</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">SEQUENCE</span> <span class="n">vertices_id_seq</span> <span class="n">OWNED</span> <span class="n">BY</span> <span class="n">vertices</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">SEQUENCE</span>
-<span class="n">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">&#39;vertices_id_seq&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">coalesce</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">id</span><span class="p">))</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">));</span>
+<span class="n">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">'vertices_id_seq'</span><span class="p">,</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">coalesce</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">id</span><span class="p">))</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">));</span>
  <span class="n">setval</span>
 <span class="o">--------</span>
      <span class="mi">17</span>
@@ -467,10 +405,10 @@ of an index on the table is needed.</p>
 </div>
 <p>The structure of the table is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-                                  <span class="n">Table</span> <span class="s2">&quot;public.vertices&quot;</span>
+                                  <span class="n">Table</span> <span class="s2">"public.vertices"</span>
   <span class="n">Column</span>   <span class="o">|</span>       <span class="n">Type</span>       <span class="o">|</span> <span class="n">Collation</span> <span class="o">|</span> <span class="n">Nullable</span> <span class="o">|</span>               <span class="n">Default</span>
 <span class="o">-----------+------------------+-----------+----------+--------------------------------------</span>
- <span class="nb">id</span>        <span class="o">|</span> <span class="n">bigint</span>           <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;vertices_id_seq&#39;</span><span class="p">::</span><span class="n">regclass</span><span class="p">)</span>
+ <span class="nb">id</span>        <span class="o">|</span> <span class="n">bigint</span>           <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">'vertices_id_seq'</span><span class="p">::</span><span class="n">regclass</span><span class="p">)</span>
  <span class="n">in_edges</span>  <span class="o">|</span> <span class="n">bigint</span><span class="p">[]</span>         <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>
  <span class="n">out_edges</span> <span class="o">|</span> <span class="n">bigint</span><span class="p">[]</span>         <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>
  <span class="n">x</span>         <span class="o">|</span> <span class="n">double</span> <span class="n">precision</span> <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>
@@ -640,7 +578,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 </div>
 <p>Any other additional modification: In this manual, point <span class="math notranslate nohighlight">\(6\)</span> can be
 reached from both sides.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">'b'</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Los puntos de interés:</p>
@@ -978,8 +916,8 @@ order.</p>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Actualizado por última vez en nov 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Actualizado por última vez en nov 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

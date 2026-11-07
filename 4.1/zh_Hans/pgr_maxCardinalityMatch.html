@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=11382bef"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -150,40 +150,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a><ul>
-<li><a class="reference internal" href="#description">描述</a></li>
-<li><a class="reference internal" href="#signatures">签名</a></li>
-<li><a class="reference internal" href="#parameters">参数</a></li>
-<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">结果列</a></li>
-<li><a class="reference internal" href="#see-also">另请参阅</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_edgeDisjointPaths.html" title="Previous Chapter: pgr_edgeDisjointPaths"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_edgeDisjointPaths</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_maxFlowMinCost.html" title="Next Chapter: pgr_maxFlowMinCost - 实验性"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_maxFlowMi... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_maxCardinalityMatch','zh-Hans'));  </script>
             
   <div class="line-block" id="index-0">
@@ -252,7 +219,7 @@
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -272,7 +239,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_maxCardinalityMatch</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">);</span>
  <span class="n">edge</span>
 <span class="o">------</span>
     <span class="mi">1</span>
@@ -385,7 +352,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - 函数族</span></a></p></li>
 <li><p><a class="reference internal" href="migration.html"><span class="doc">迁移指南</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/maximum_matching.html">Boost: 最大匹配</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/network_flow/maximum_matching.html">Boost: 最大匹配</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Matching_%28graph_theory%29">https://en.wikipedia.org/wiki/Matching_%28graph_theory%29</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Ackermann_function">https://en.wikipedia.org/wiki/Ackermann_function</a></p></li>
 </ul>
@@ -410,8 +377,8 @@
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on 11月 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on 11月 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

@@ -13,16 +13,16 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=4e2df6f4"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
     <link rel="next" title="Funktioner för fordonsdirigering - Kategori" href="VRP-category.html" />
-    <link rel="prev" title="Spanning Tree - Kategori" href="spanningTree-category.html" />
+    <link rel="prev" title="pgr_primDFS" href="pgr_primDFS.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -122,7 +122,7 @@
               
                 
   <li>
-    <a href="spanningTree-category.html" title="Previous Chapter: Spanning Tree - Kategori"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Spanning Tree...</span>
+    <a href="pgr_primDFS.html" title="Previous Chapter: pgr_primDFS"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_primDFS</span>
     </a>
   </li>
   <li>
@@ -155,51 +155,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Via - Kategori</a><ul>
-<li><a class="reference internal" href="#general-information">Allmän information</a></li>
-<li><a class="reference internal" href="#parameters">Parametrar</a><ul>
-<li><a class="reference internal" href="#via-optional-parameters">Via valfria parametrar</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
-<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
-<li><a class="reference internal" href="#restrictions-sql">Begränsningar SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Punkt SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="spanningTree-category.html" title="Previous Chapter: Spanning Tree - Kategori"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Spanning Tree...</span>
-    </a>
-  </li>
-  <li>
-    <a href="VRP-category.html" title="Next Chapter: Funktioner för fordonsdirigering - Kategori"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Funktioner fö... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('via-category','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="via-category">
-<h1>Via - Kategori<a class="headerlink" href="#via-category" title="Link to this heading">¶</a></h1>
+<h1>Via - Kategori<a class="headerlink" href="#via-category" title="Länk till denna rubrik">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a></p></li>
@@ -207,7 +170,7 @@
 <li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a></p></li>
 </ul>
 <section id="general-information">
-<h2>Allmän information<a class="headerlink" href="#general-information" title="Link to this heading">¶</a></h2>
+<h2>Allmän information<a class="headerlink" href="#general-information" title="Länk till denna rubrik">¶</a></h2>
 <p>Denna kategori avser att lösa det allmänna problemet:</p>
 <blockquote>
 <div><p>Givet en graf och en lista med toppar, hitta den kortaste vägen mellan <span class="math notranslate nohighlight">\(vertex_i\)</span> och <span class="math notranslate nohighlight">\(vertex_{i+1}\)</span> för alla toppar</p>
@@ -223,7 +186,7 @@
 </dl>
 </section>
 <section id="parameters">
-<h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<h2>Parametrar<a class="headerlink" href="#parameters" title="Länk till denna rubrik">¶</a></h2>
 <p><strong>Används i:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia</span></a></p></li>
@@ -444,7 +407,7 @@
 </dl>
 <p>Förutom de obligatoriska parametrar som varje funktion har, finns det valfria parametrar som beror på vilken typ av funktion det är.</p>
 <section id="via-optional-parameters">
-<h3>Via valfria parametrar<a class="headerlink" href="#via-optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>Via valfria parametrar<a class="headerlink" href="#via-optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <p class="rubric">Används i alla Via-funktioner</p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -483,10 +446,10 @@
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Länk till denna rubrik">¶</a></h2>
 <p>Beroende på funktion behövs en eller flera inre frågor.</p>
 <section id="edges-sql">
-<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Länk till denna rubrik">¶</a></h3>
 <p class="rubric">Används i alla Via-funktioner</p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -545,7 +508,7 @@
 </dl>
 </section>
 <section id="restrictions-sql">
-<h3>Begränsningar SQL<a class="headerlink" href="#restrictions-sql" title="Link to this heading">¶</a></h3>
+<h3>Begränsningar SQL<a class="headerlink" href="#restrictions-sql" title="Länk till denna rubrik">¶</a></h3>
 <p>Använd i</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a></p></li>
@@ -584,7 +547,7 @@
 </dl>
 </section>
 <section id="points-sql">
-<h3>Punkt SQL<a class="headerlink" href="#points-sql" title="Link to this heading">¶</a></h3>
+<h3>Punkt SQL<a class="headerlink" href="#points-sql" title="Länk till denna rubrik">¶</a></h3>
 <p>Använd i</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a></p></li>
@@ -650,7 +613,7 @@
 </section>
 </section>
 <section id="result-columns">
-<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Länk till denna rubrik">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -712,12 +675,12 @@
 </tbody>
 </table>
 <div class="admonition note">
-<p class="admonition-title">Observera</p>
+<p class="admonition-title">Anteckning</p>
 <p>När kolumnerna <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> och <code class="docutils literal notranslate"><span class="pre">node</span></code> har negativa värden är identifieraren för en Point.</p>
 </div>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a></p></li>
@@ -744,8 +707,8 @@
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

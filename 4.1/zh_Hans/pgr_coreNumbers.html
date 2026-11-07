@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=11382bef"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -186,76 +186,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_coreNumbers</span></code> - Experimental</a><ul>
-<li><a class="reference internal" href="#description">描述</a></li>
-<li><a class="reference internal" href="#signatures">签名</a></li>
-<li><a class="reference internal" href="#parameters">参数</a></li>
-<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">结果列</a></li>
-<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
-<li><a class="reference internal" href="#sample-network-overview">Sample network overview</a></li>
-<li><a class="reference internal" href="#comparing-with-pgr-betweennesscentrality-on-the-same-edges">Comparing with <span class="xref std std-doc">pgr_betweennessCentrality</span> on the same edges</a><ul>
-<li><a class="reference internal" href="#core-numbers-on-edges-1-2-3-4">1) Core numbers on edges <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#subgraph-with-core-2-vertices">Subgraph with core-<span class="math notranslate nohighlight">\(2\)</span> vertices</a><ul>
-<li><a class="reference internal" href="#core-numbers-on-edges-id-10">2) Core numbers on edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#filtering-results-in-sql">Filtering results in SQL</a><ul>
-<li><a class="reference internal" href="#vertices-with-core-geq-2-on-edges-id-10">3) Vertices with core <span class="math notranslate nohighlight">\(\geq 2\)</span> on edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#full-sample-graph">Full sample graph</a><ul>
-<li><a class="reference internal" href="#core-numbers-on-all-edges">4) Core numbers on all edges</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#small-graphs">Small graphs</a><ul>
-<li><a class="reference internal" href="#single-edge-two-terminal-nodes">5) Single edge (two terminal nodes)</a></li>
-<li><a class="reference internal" href="#triangle-all-vertices-core-2">6) Triangle (all vertices core <span class="math notranslate nohighlight">\(2\)</span>)</a></li>
-<li><a class="reference internal" href="#square-cycle-from-sampledata-all-vertices-core-2">7) Square cycle from <span class="xref std std-doc">sampledata</span> (all vertices core <span class="math notranslate nohighlight">\(2\)</span>)</a></li>
-<li><a class="reference internal" href="#star-graph-hub-and-spokes-all-core-1">8) Star graph (hub and spokes, all core <span class="math notranslate nohighlight">\(1\)</span>)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#empty-edge-set">Empty edge set</a><ul>
-<li><a class="reference internal" href="#no-edges-in-the-sql-query">9) No edges in the SQL query</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#core-numbers-and-planarity">Core numbers and planarity</a><ul>
-<li><a class="reference internal" href="#planarity-of-the-subgraph-with-edges-id-10">10) Planarity of the subgraph with edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span></a></li>
-<li><a class="reference internal" href="#complete-graph-k-4-all-vertices-core-3">11) Complete graph <span class="math notranslate nohighlight">\(K_4\)</span> (all vertices core <span class="math notranslate nohighlight">\(3\)</span>)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">另请参阅</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_betweennessCentrality.html" title="Previous Chapter: pgr_betweennessCentrality - 实验性"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_betweenne...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_bandwidth.html" title="Next Chapter: pgr_bandwidth - Experimental"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_bandwidth... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_coreNumbers','zh-Hans'));  </script>
             
   <div class="line-block" id="index-0">
@@ -356,7 +287,7 @@ core number is 0.</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -376,8 +307,8 @@ core number is 0.</p></li>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
 <span class="o">-----+------+------</span>
@@ -598,8 +529,8 @@ measure peeling resilience.</p>
 <section id="core-numbers-on-edges-1-2-3-4">
 <h4>1) Core numbers on edges <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span><a class="headerlink" href="#core-numbers-on-edges-1-2-3-4" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
 <span class="o">-----+------+------</span>
@@ -638,8 +569,8 @@ by path importance.</p></li>
 <section id="core-numbers-on-edges-id-10">
 <h4>2) Core numbers on edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span><a class="headerlink" href="#core-numbers-on-edges-id-10" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
 <span class="o">-----+------+------</span>
@@ -675,8 +606,8 @@ wrap the call in a standard SQL query.</p>
 <h4>3) Vertices with core <span class="math notranslate nohighlight">\(\geq 2\)</span> on edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span><a class="headerlink" href="#vertices-with-core-geq-2-on-edges-id-10" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">node</span><span class="p">,</span> <span class="n">core</span>
 <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">WHERE</span> <span class="n">core</span> <span class="o">&gt;=</span> <span class="mi">2</span>
 <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
@@ -701,8 +632,8 @@ wrap the call in a standard SQL query.</p>
 <section id="core-numbers-on-all-edges">
 <h4>4) Core numbers on all edges<a class="headerlink" href="#core-numbers-on-all-edges" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
 <span class="o">-----+------+------</span>
@@ -751,8 +682,8 @@ block of the city network. Vertex <span class="math notranslate nohighlight">\(9
     5 -- 6 [label=&quot;1&quot;];
 }" class="graphviz" /></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
 <span class="o">-----+------+------</span>
@@ -821,8 +752,8 @@ $$SELECT * FROM (VALUES
     7 -- 11 [label=&quot;8&quot;];
 }" class="graphviz" /></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
 <span class="o">-----+------+------</span>
@@ -890,8 +821,8 @@ vertices throughout.</p></li>
 <section id="no-edges-in-the-sql-query">
 <h4>9) No edges in the SQL query<a class="headerlink" href="#no-edges-in-the-sql-query" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">No</span> <span class="n">edges</span> <span class="n">found</span>
 <span class="n">HINT</span><span class="p">:</span>  <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
@@ -921,22 +852,22 @@ subgraph can be drawn without edge crossings using <a class="reference internal"
 then test planarity:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Step 1: core numbers on edges id &lt; 10</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="s1">FROM edges WHERE id &lt; 10&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="s1">FROM edges WHERE id &lt; 10'</span>
 <span class="p">)</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">node</span><span class="p">;</span>
 
 <span class="c1">-- Step 2: keep only vertices in the 2-core</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">core</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="s1">FROM edges WHERE id &lt; 10&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="s1">FROM edges WHERE id &lt; 10'</span>
 <span class="p">)</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">core</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">node</span><span class="p">;</span>
 
 <span class="c1">-- Step 3: check planarity of the same edge set</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="n">pgr_isPlanar</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="s1">FROM edges WHERE id &lt; 10&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="s1">FROM edges WHERE id &lt; 10'</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -1032,8 +963,8 @@ of Networks</a></p></li>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on 11月 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on 11月 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

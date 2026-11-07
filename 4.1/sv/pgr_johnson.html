@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=4e2df6f4"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -154,50 +154,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_johnson</span></code></a><ul>
-<li><a class="reference internal" href="#description">Beskrivning</a></li>
-<li><a class="reference internal" href="#signatures">Underskrifter</a></li>
-<li><a class="reference internal" href="#parameters">Parametrar</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Valfria parametrar</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
-<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_floydWarshall.html" title="Previous Chapter: pgr_floydWarshall"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_floydWarshall</span>
-    </a>
-  </li>
-  <li>
-    <a href="aStar-family.html" title="Next Chapter: A* - Familj av funktioner"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">A* - Familj a... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_johnson','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-johnson">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_johnson</span></code><a class="headerlink" href="#pgr-johnson" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_johnson</span></code><a class="headerlink" href="#pgr-johnson" title="Länk till denna rubrik">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_johnson</span></code> - Returnerar summan av kostnaderna för den kortaste vägen för varje par noder i grafen med hjälp av Johnson-algoritmen.</p>
 <p class="rubric">Tillgänglighet</p>
 <ul class="simple">
@@ -214,7 +178,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<h2>Beskrivning<a class="headerlink" href="#description" title="Länk till denna rubrik">¶</a></h2>
 <p>Johnson-algoritmen är ett bra val för att beräkna summan av kostnaderna för den kortaste vägen för varje par noder i grafen, för <em>glesa grafer</em>. Den använder Boosts implementation som körs på <span class="math notranslate nohighlight">\(O(V E \log V)\)</span> tid,</p>
 <p>De viktigaste egenskaperna är:</p>
 <ul class="simple">
@@ -235,10 +199,10 @@
 <li><p>När <cite>start_vid</cite> = <cite>slut_vid</cite> är <cite>agg_cost</cite> = 0.</p></li>
 <li><p><strong>Rekommendation: använd en avgränsande box med högst 3500 kanter</strong></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
 </section>
 <section id="signatures">
-<h2>Underskrifter<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<h2>Underskrifter<a class="headerlink" href="#signatures" title="Länk till denna rubrik">¶</a></h2>
 <p class="rubric">Sammanfattning</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
@@ -254,8 +218,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_johnson</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT source, target, cost FROM edges</span>
-  <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="s1">&#39;</span>
+  <span class="s1">'SELECT source, target, cost FROM edges</span>
+  <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">;</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
@@ -268,7 +232,7 @@
 </div>
 </section>
 <section id="parameters">
-<h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<h2>Parametrar<a class="headerlink" href="#parameters" title="Länk till denna rubrik">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -286,7 +250,7 @@
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Valfria parametrar<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>Valfria parametrar<a class="headerlink" href="#optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Kolumn</p></th>
@@ -310,9 +274,9 @@
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Länk till denna rubrik">¶</a></h2>
 <section id="edges-sql">
-<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -366,7 +330,7 @@
 </section>
 </section>
 <section id="result-columns">
-<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Länk till denna rubrik">¶</a></h2>
 <p>Uppsättning av <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -397,11 +361,11 @@
 </table>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a></p></li>
-<li><p>Boost <a class="reference external" href="https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html">Johnson</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/shortest_paths/johnson_all_pairs_shortest.html">Boost: Johnson</a></p></li>
 </ul>
 <p class="rubric">Index och tabeller</p>
 <ul class="simple">
@@ -424,8 +388,8 @@
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

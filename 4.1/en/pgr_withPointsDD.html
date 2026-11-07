@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=05423f42"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -165,55 +165,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><ul>
-<li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#single-vertex">Single vertex</a></li>
-<li><a class="reference internal" href="#multiple-vertices">Multiple vertices</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters">Parameters</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
-<li><a class="reference internal" href="#driving-distance-optional-parameters">Driving distance optional parameters</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Result columns</a></li>
-<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
-<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Use <span class="xref std std-doc">pgr_findCloseEdges</span> in the Points SQL.</a></li>
-<li><a class="reference internal" href="#driving-side-does-not-matter">Driving side does not matter</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_withPointsKSP.html" title="Previous Chapter: pgr_withPointsKSP"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsKSP</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_withPointsVia.html" title="Next Chapter: pgr_withPointsVia"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPointsVia &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_withPointsDD','en'));  </script>
             
   <div class="line-block" id="index-0">
@@ -274,7 +226,7 @@
 the nodes and points that have costs less than or equal to the value
 <code class="docutils literal notranslate"><span class="pre">**distance**</span></code> from the starting point.
 The edges extracted will conform the corresponding spanning tree.</p>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -311,9 +263,9 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span>
   <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">pred</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+-------+-----------+------+------+------+------+----------</span>
@@ -347,9 +299,9 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="mf">3.3</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="mf">3.3</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">,</span>
   <span class="n">equicost</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">pred</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+-------+-----------+------+------+------+------+----------</span>
@@ -749,7 +701,7 @@ point of the edge.</p></td>
         (SELECT ST_POINT(2.9, 1.8)),
         0.5, cap =&gt; 2)
   $p$,
-  ARRAY[-1, -2], 2.3, &#39;r&#39;,
+  ARRAY[-1, -2], 2.3, 'r',
   details =&gt; true);
  seq | depth | start_vid | pred | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+------+----------
@@ -788,9 +740,9 @@ point of the edge.</p></td>
 <p>From point <span class="math notranslate nohighlight">\(1\)</span> within a distance of <span class="math notranslate nohighlight">\(3.3\)</span>, does not matter driving
 side, with details.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span>
   <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
   <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">pred</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -841,8 +793,8 @@ side, with details.</p>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on Nov 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on Nov 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

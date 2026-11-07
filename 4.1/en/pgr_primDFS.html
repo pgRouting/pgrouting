@@ -13,14 +13,14 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=05423f42"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Reference" href="reference.html" />
+    <link rel="next" title="Via - Category" href="via-category.html" />
     <link rel="prev" title="pgr_primDD" href="pgr_primDD.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -128,7 +128,7 @@
     </a>
   </li>
   <li>
-    <a href="reference.html" title="Next Chapter: Reference"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Reference &raquo;</span>
+    <a href="via-category.html" title="Next Chapter: Via - Category"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Via - Category &raquo;</span>
     </a>
   </li>
               
@@ -157,47 +157,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><ul>
-<li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#single-vertex">Single vertex</a></li>
-<li><a class="reference internal" href="#multiple-vertices">Multiple vertices</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters">Parameters</a><ul>
-<li><a class="reference internal" href="#dfs-optional-parameters">DFS optional parameters</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Result columns</a></li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_primDD.html" title="Previous Chapter: pgr_primDD"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_primDD</span>
-    </a>
-  </li>
-  <li>
-    <a href="reference.html" title="Next Chapter: Reference"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Reference &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_primDFS','en'));  </script>
             
   <div class="line-block" id="index-0">
@@ -253,7 +213,7 @@ of the Minimum Spanning Tree created using Prims’s algorithm.</p>
 <li><p>Returned tree nodes from a root vertex are on Depth First Search order</p></li>
 <li><p>Depth First Search Running time: <span class="math notranslate nohighlight">\(O(E + V)\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -284,7 +244,7 @@ of the Minimum Spanning Tree created using Prims’s algorithm.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_primDFS</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">pred</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+-------+-----------+------+------+------+------+----------</span>
@@ -324,7 +284,7 @@ of the Minimum Spanning Tree created using Prims’s algorithm.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_primDFS</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">max_depth</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">pred</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+-------+-----------+------+------+------+------+----------</span>
@@ -546,7 +506,7 @@ it’s not part of the graph.</p></li>
 <li><p><a class="reference internal" href="spanningTree-category.html"><span class="doc">Spanning Tree - Category</span></a></p></li>
 <li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Family of functions</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html">Boost: Prim’s algorithm</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/spanning_trees/prim_minimum_spanning_tree.html">Boost: Prim’s algorithm</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">Wikipedia: Prim’s algorithm</a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
@@ -570,8 +530,8 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on Nov 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on Nov 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

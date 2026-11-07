@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=11382bef"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -163,53 +163,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code></a><ul>
-<li><a class="reference internal" href="#description">描述</a><ul>
-<li><a class="reference internal" href="#problem-definition">问题定义</a></li>
-<li><a class="reference internal" href="#characteristics">特征</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#signatures">签名</a></li>
-<li><a class="reference internal" href="#parameters">参数</a><ul>
-<li><a class="reference internal" href="#tsp-optional-parameters">TSP 可选参数</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
-<li><a class="reference internal" href="#matrix-sql">矩阵SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">结果列</a></li>
-<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
-<li><a class="reference internal" href="#start-from-vertex-1">从顶点 <span class="math notranslate nohighlight">\(1\)</span> 开始</a></li>
-<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix">使用兴趣点（POI）生成非对称矩阵的步骤如下。</a></li>
-<li><a class="reference internal" href="#connected-incomplete-data">连接不完整数据</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">另请参阅</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="TSP-family.html" title="Previous Chapter: Traveling Sales Person - 函数族"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Traveling Sal...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_TSPeuclidean.html" title="Next Chapter: pgr_TSPeuclidean"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_TSPeuclidean &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_TSP','zh-Hans'));  </script>
             
   <div class="line-block" id="index-0">
@@ -236,7 +190,7 @@ precision,double precision,double precision,boolean)</p></li>
 </ul>
 <p class="rubric">版本3.2.1</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost库</a> 中的度量算法</p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html">Boost库</a> 中的度量算法</p></li>
 <li><p>Simulated Annealing算法不再受支持</p>
 <ul>
 <li><p>Simulated Annealing 算法相关参数被忽略： <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
@@ -352,7 +306,7 @@ on any component and will include data only from that component.</p></li>
 </li>
 <li><p>One cycle attempt to remove crossing edges is done to the TSP results.</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
 </section>
 </section>
 <section id="signatures">
@@ -378,7 +332,7 @@ on any component and will include data only from that component.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
-<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 3</span>    'SELECT id, source, target, cost, reverse_cost FROM edges',
 <span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
 <span class="linenos"> 5</span>    directed =&gt; false) $$);
 <span class="linenos"> 6</span> seq | node | cost | agg_cost
@@ -540,7 +494,7 @@ on any component and will include data only from that component.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
-<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 3</span>    'SELECT id, source, target, cost, reverse_cost FROM edges',
 <span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
 <span class="linenos"> 5</span>    directed =&gt; false) $$,
 <span class="linenos"> 6</span>  start_id =&gt; 1);
@@ -584,9 +538,9 @@ on any component and will include data only from that component.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_withPointsCostMatrix(
-<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;,
-<span class="linenos"> 4</span>    &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
-<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6], &#39;r&#39;,
+<span class="linenos"> 3</span>    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+<span class="linenos"> 4</span>    'SELECT pid, edge_id, fraction from pointsOfInterest',
+<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6], 'r',
 <span class="linenos"> 6</span>    directed =&gt; true) $$,
 <span class="linenos"> 7</span>  start_id =&gt; 7,
 <span class="linenos"> 8</span>  end_id =&gt; 11);
@@ -667,7 +621,7 @@ on any component and will include data only from that component.</p></li>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - 函数族</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: 度量旅行商问题近似算法</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html">Boost: 度量旅行商问题近似算法</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">维基百科：旅行商问题</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
@@ -691,8 +645,8 @@ on any component and will include data only from that component.</p></li>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on 11月 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on 11月 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

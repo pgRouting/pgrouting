@@ -13,8 +13,8 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=05423f42"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -151,42 +151,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Installation</a><ul>
-<li><a class="reference internal" href="#short-version">Short Version</a></li>
-<li><a class="reference internal" href="#get-the-sources">Get the sources</a></li>
-<li><a class="reference internal" href="#enabling-and-upgrading-in-the-database">Enabling and upgrading in the database</a></li>
-<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
-<li><a class="reference internal" href="#configuring">Configuring</a><ul>
-<li><a class="reference internal" href="#configurable-variables">Configurable variables</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#building">Building</a></li>
-<li><a class="reference internal" href="#testing">Testing</a></li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgRouting-introduction.html" title="Previous Chapter: Introduction"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Introduction</span>
-    </a>
-  </li>
-  <li>
-    <a href="support.html" title="Next Chapter: Support"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Support &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgRouting-installation','en'));  </script>
             
   <div class="line-block">
@@ -218,7 +183,7 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 <p>Once pgRouting is installed, it needs to be enabled in each individual
 database you want to use it in.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>createdb<span class="w"> </span>routing
-psql<span class="w"> </span>routing<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;CREATE EXTENSION pgRouting CASCADE&#39;</span>
+psql<span class="w"> </span>routing<span class="w"> </span>-c<span class="w"> </span><span class="s1">'CREATE EXTENSION pgRouting CASCADE'</span>
 </pre></div>
 </div>
 </section>
@@ -262,7 +227,7 @@ pgRouting in the database.</p>
 <p class="rubric">Upgrading the database</p>
 <p>To upgrade pgRouting in the database to version 4.1.0 use the
 following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">&quot;4.1.0&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">"4.1.0"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>More information can be found in
@@ -400,9 +365,9 @@ be built</p></td>
 <p>Using <code class="docutils literal notranslate"><span class="pre">make</span></code> to build the code and the documentation</p>
 <p>The following instructions start from <code class="docutils literal notranslate"><span class="pre">path/to/pgrouting/build</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make          # default build
-$ make doc      # build only the user&#39;s documentation
-$ make doxy     # build only the developer&#39;s documentation
-$ make all      # build both the code and the user&#39;s documentation
+$ make doc      # build only the user's documentation
+$ make doxy     # build only the developer's documentation
+$ make all      # build both the code and the user's documentation
 </pre></div>
 </div>
 <p>We have tested on several platforms, For installing or reinstalling all the
@@ -451,8 +416,8 @@ dropdb<span class="w"> </span>-U<span class="w"> </span>&lt;user&gt;<span class=
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on Nov 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on Nov 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

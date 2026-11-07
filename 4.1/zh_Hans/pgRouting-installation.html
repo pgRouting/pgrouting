@@ -13,8 +13,8 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=11382bef"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -151,42 +151,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">安装</a><ul>
-<li><a class="reference internal" href="#short-version">简洁版本</a></li>
-<li><a class="reference internal" href="#get-the-sources">获取源码</a></li>
-<li><a class="reference internal" href="#enabling-and-upgrading-in-the-database">在数据库中启用和升级</a></li>
-<li><a class="reference internal" href="#dependencies">依赖</a></li>
-<li><a class="reference internal" href="#configuring">配置</a><ul>
-<li><a class="reference internal" href="#configurable-variables">可配置变量</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#building">构建</a></li>
-<li><a class="reference internal" href="#testing">测试</a></li>
-<li><a class="reference internal" href="#see-also">另请参阅</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgRouting-introduction.html" title="Previous Chapter: 介绍"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 介绍</span>
-    </a>
-  </li>
-  <li>
-    <a href="support.html" title="Next Chapter: 支持"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">支持 &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgRouting-installation','zh-Hans'));  </script>
             
   <div class="line-block">
@@ -215,7 +180,7 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 </div>
 <p>安装 pgRouting 后，需要在您想要使用它的每个数据库中启用它。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>createdb<span class="w"> </span>routing
-psql<span class="w"> </span>routing<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;CREATE EXTENSION pgRouting CASCADE&#39;</span>
+psql<span class="w"> </span>routing<span class="w"> </span>-c<span class="w"> </span><span class="s1">'CREATE EXTENSION pgRouting CASCADE'</span>
 </pre></div>
 </div>
 </section>
@@ -253,7 +218,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>v4.1.0
 <p class="rubric">升级数据库</p>
 <p>To upgrade pgRouting in the database to version 4.1.0 use the
 following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">&quot;4.1.0&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">"4.1.0"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>更多信息可以在 <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createextension.html">https://www.postgresql.org/docs/current/sql-createextension.html</a> 中找到</p>
@@ -385,9 +350,9 @@ be built</p></td>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">make</span></code> 构建代码和文档</p>
 <p>The following instructions start from <code class="docutils literal notranslate"><span class="pre">path/to/pgrouting/build</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make          # default build
-$ make doc      # build only the user&#39;s documentation
-$ make doxy     # build only the developer&#39;s documentation
-$ make all      # build both the code and the user&#39;s documentation
+$ make doc      # build only the user's documentation
+$ make doxy     # build only the developer's documentation
+$ make all      # build both the code and the user's documentation
 </pre></div>
 </div>
 <p>我们已经在多个平台上进行了测试，安装或重新安装需要所有步骤。</p>
@@ -435,8 +400,8 @@ dropdb<span class="w"> </span>-U<span class="w"> </span>&lt;user&gt;<span class=
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on 11月 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on 11月 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

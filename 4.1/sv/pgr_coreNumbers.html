@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=4e2df6f4"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -187,83 +187,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_coreNumbers</span></code> - Experimental</a><ul>
-<li><a class="reference internal" href="#description">Beskrivning</a></li>
-<li><a class="reference internal" href="#signatures">Underskrifter</a></li>
-<li><a class="reference internal" href="#parameters">Parametrar</a></li>
-<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
-<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
-<li><a class="reference internal" href="#additional-examples">Ytterligare exempel</a><ul>
-<li><a class="reference internal" href="#sample-network-overview">Sample network overview</a></li>
-<li><a class="reference internal" href="#comparing-with-pgr-betweennesscentrality-on-the-same-edges">Comparing with <span class="xref std std-doc">pgr_betweennessCentrality</span> on the same edges</a><ul>
-<li><a class="reference internal" href="#core-numbers-on-edges-1-2-3-4">1) Core numbers on edges <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#subgraph-with-core-2-vertices">Subgraph with core-<span class="math notranslate nohighlight">\(2\)</span> vertices</a><ul>
-<li><a class="reference internal" href="#core-numbers-on-edges-id-10">2) Core numbers on edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#filtering-results-in-sql">Filtering results in SQL</a><ul>
-<li><a class="reference internal" href="#vertices-with-core-geq-2-on-edges-id-10">3) Vertices with core <span class="math notranslate nohighlight">\(\geq 2\)</span> on edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#full-sample-graph">Full sample graph</a><ul>
-<li><a class="reference internal" href="#core-numbers-on-all-edges">4) Core numbers on all edges</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#small-graphs">Small graphs</a><ul>
-<li><a class="reference internal" href="#single-edge-two-terminal-nodes">5) Single edge (two terminal nodes)</a></li>
-<li><a class="reference internal" href="#triangle-all-vertices-core-2">6) Triangle (all vertices core <span class="math notranslate nohighlight">\(2\)</span>)</a></li>
-<li><a class="reference internal" href="#square-cycle-from-sampledata-all-vertices-core-2">7) Square cycle from <span class="xref std std-doc">sampledata</span> (all vertices core <span class="math notranslate nohighlight">\(2\)</span>)</a></li>
-<li><a class="reference internal" href="#star-graph-hub-and-spokes-all-core-1">8) Star graph (hub and spokes, all core <span class="math notranslate nohighlight">\(1\)</span>)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#empty-edge-set">Empty edge set</a><ul>
-<li><a class="reference internal" href="#no-edges-in-the-sql-query">9) No edges in the SQL query</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#core-numbers-and-planarity">Core numbers and planarity</a><ul>
-<li><a class="reference internal" href="#planarity-of-the-subgraph-with-edges-id-10">10) Planarity of the subgraph with edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span></a></li>
-<li><a class="reference internal" href="#complete-graph-k-4-all-vertices-core-3">11) Complete graph <span class="math notranslate nohighlight">\(K_4\)</span> (all vertices core <span class="math notranslate nohighlight">\(3\)</span>)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_betweennessCentrality.html" title="Previous Chapter: pgr_betweennessCentrality - Experimentell"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_betweenne...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_bandwidth.html" title="Next Chapter: pgr_bandbredd - Experimentell"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_bandbredd... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_coreNumbers','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-corenumbers-experimental">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_coreNumbers</span></code> - Experimental<a class="headerlink" href="#pgr-corenumbers-experimental" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_coreNumbers</span></code> - Experimental<a class="headerlink" href="#pgr-corenumbers-experimental" title="Länk till denna rubrik">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_coreNumbers</span></code> - Computes the core number of each vertex in an undirected
 graph using k-core decomposition.</p>
 <div class="admonition-experimental admonition">
@@ -301,7 +232,7 @@ graph using k-core decomposition.</p>
 <li><p>Ny experimentell funktion.</p></li>
 </ul>
 <section id="description">
-<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<h2>Beskrivning<a class="headerlink" href="#description" title="Länk till denna rubrik">¶</a></h2>
 <p>The <strong>core number</strong> of a vertex is the largest value <span class="math notranslate nohighlight">\(k\)</span> such that the
 vertex <strong>belongs to the</strong> <span class="math notranslate nohighlight">\(k\)</span>-core of the graph.</p>
 <p>The <span class="math notranslate nohighlight">\(k\)</span>-core of a graph is the maximal subgraph in which every vertex has
@@ -357,10 +288,10 @@ core number is 0.</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
 </section>
 <section id="signatures">
-<h2>Underskrifter<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<h2>Underskrifter<a class="headerlink" href="#signatures" title="Länk till denna rubrik">¶</a></h2>
 <p class="rubric">Sammanfattning</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
@@ -377,8 +308,8 @@ core number is 0.</p></li>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
 <span class="o">-----+------+------</span>
@@ -474,7 +405,7 @@ green below).</p>
 }" class="graphviz" /></div>
 </section>
 <section id="parameters">
-<h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<h2>Parametrar<a class="headerlink" href="#parameters" title="Länk till denna rubrik">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -491,9 +422,9 @@ green below).</p>
 </table>
 </section>
 <section id="inner-queries">
-<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Länk till denna rubrik">¶</a></h2>
 <section id="edges-sql">
-<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -552,7 +483,7 @@ green below).</p>
 </section>
 </section>
 <section id="result-columns">
-<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Länk till denna rubrik">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Kolumn</p></th>
@@ -578,29 +509,29 @@ belongs to the <span class="math notranslate nohighlight">\(k\)</span>-core.</p>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Länk till denna rubrik">¶</a></h2>
 <p>Exemplen i detta avsnitt är baserade på <a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a>-nätverket.</p>
 <section id="sample-network-overview">
-<h3>Sample network overview<a class="headerlink" href="#sample-network-overview" title="Link to this heading">¶</a></h3>
+<h3>Sample network overview<a class="headerlink" href="#sample-network-overview" title="Länk till denna rubrik">¶</a></h3>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" height="433" src="_images/Fig1-originalData.png" width="476" />
 </a>
 <figcaption>
 <p><span class="caption-text">Directed sample network. <code class="docutils literal notranslate"><span class="pre">pgr_coreNumbers</span></code> treats every edge as undirected,
-so <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> are not used in the calculation.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+so <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> are not used in the calculation.</span><a class="headerlink" href="#id1" title="Länk till denna bild">¶</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="comparing-with-pgr-betweennesscentrality-on-the-same-edges">
-<h3>Comparing with <a class="reference internal" href="pgr_betweennessCentrality.html"><span class="doc">pgr_betweennessCentrality - Experimentell</span></a> on the same edges<a class="headerlink" href="#comparing-with-pgr-betweennesscentrality-on-the-same-edges" title="Link to this heading">¶</a></h3>
+<h3>Comparing with <a class="reference internal" href="pgr_betweennessCentrality.html"><span class="doc">pgr_betweennessCentrality - Experimentell</span></a> on the same edges<a class="headerlink" href="#comparing-with-pgr-betweennesscentrality-on-the-same-edges" title="Länk till denna rubrik">¶</a></h3>
 <p>Both functions use the same <code class="docutils literal notranslate"><span class="pre">Edges</span> <span class="pre">SQL</span></code> format. The betweenness example on
 edges <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span> measures shortest-path influence; core numbers
 measure peeling resilience.</p>
 <section id="core-numbers-on-edges-1-2-3-4">
-<h4>1) Core numbers on edges <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span><a class="headerlink" href="#core-numbers-on-edges-1-2-3-4" title="Link to this heading">¶</a></h4>
+<h4>1) Core numbers on edges <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span><a class="headerlink" href="#core-numbers-on-edges-1-2-3-4" title="Länk till denna rubrik">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
 <span class="o">-----+------+------</span>
@@ -626,21 +557,21 @@ by path importance.</p></li>
 </section>
 </section>
 <section id="subgraph-with-core-2-vertices">
-<h3>Subgraph with core-<span class="math notranslate nohighlight">\(2\)</span> vertices<a class="headerlink" href="#subgraph-with-core-2-vertices" title="Link to this heading">¶</a></h3>
+<h3>Subgraph with core-<span class="math notranslate nohighlight">\(2\)</span> vertices<a class="headerlink" href="#subgraph-with-core-2-vertices" title="Länk till denna rubrik">¶</a></h3>
 <p>Adding edges <span class="math notranslate nohighlight">\(5\)</span> through <span class="math notranslate nohighlight">\(9\)</span> connects the inner vertices into a
 2-core. The undirected layout below shows the same network.</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" height="435" src="_images/Fig6-undirected.png" width="482" />
 </a>
 <figcaption>
-<p><span class="caption-text">Undirected view of the sample network</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-text">Undirected view of the sample network</span><a class="headerlink" href="#id2" title="Länk till denna bild">¶</a></p>
 </figcaption>
 </figure>
 <section id="core-numbers-on-edges-id-10">
-<h4>2) Core numbers on edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span><a class="headerlink" href="#core-numbers-on-edges-id-10" title="Link to this heading">¶</a></h4>
+<h4>2) Core numbers on edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span><a class="headerlink" href="#core-numbers-on-edges-id-10" title="Länk till denna rubrik">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
 <span class="o">-----+------+------</span>
@@ -669,15 +600,15 @@ survive peeling.</p></li>
 </section>
 </section>
 <section id="filtering-results-in-sql">
-<h3>Filtering results in SQL<a class="headerlink" href="#filtering-results-in-sql" title="Link to this heading">¶</a></h3>
+<h3>Filtering results in SQL<a class="headerlink" href="#filtering-results-in-sql" title="Länk till denna rubrik">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_coreNumbers</span></code> always returns every vertex. To keep only the dense core,
 wrap the call in a standard SQL query.</p>
 <section id="vertices-with-core-geq-2-on-edges-id-10">
-<h4>3) Vertices with core <span class="math notranslate nohighlight">\(\geq 2\)</span> on edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span><a class="headerlink" href="#vertices-with-core-geq-2-on-edges-id-10" title="Link to this heading">¶</a></h4>
+<h4>3) Vertices with core <span class="math notranslate nohighlight">\(\geq 2\)</span> on edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span><a class="headerlink" href="#vertices-with-core-geq-2-on-edges-id-10" title="Länk till denna rubrik">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">node</span><span class="p">,</span> <span class="n">core</span>
 <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">WHERE</span> <span class="n">core</span> <span class="o">&gt;=</span> <span class="mi">2</span>
 <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
@@ -698,12 +629,12 @@ wrap the call in a standard SQL query.</p>
 </section>
 </section>
 <section id="full-sample-graph">
-<h3>Full sample graph<a class="headerlink" href="#full-sample-graph" title="Link to this heading">¶</a></h3>
+<h3>Full sample graph<a class="headerlink" href="#full-sample-graph" title="Länk till denna rubrik">¶</a></h3>
 <section id="core-numbers-on-all-edges">
-<h4>4) Core numbers on all edges<a class="headerlink" href="#core-numbers-on-all-edges" title="Link to this heading">¶</a></h4>
+<h4>4) Core numbers on all edges<a class="headerlink" href="#core-numbers-on-all-edges" title="Länk till denna rubrik">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
 <span class="o">-----+------+------</span>
@@ -741,9 +672,9 @@ block of the city network. Vertex <span class="math notranslate nohighlight">\(9
 </section>
 </section>
 <section id="small-graphs">
-<h3>Small graphs<a class="headerlink" href="#small-graphs" title="Link to this heading">¶</a></h3>
+<h3>Small graphs<a class="headerlink" href="#small-graphs" title="Länk till denna rubrik">¶</a></h3>
 <section id="single-edge-two-terminal-nodes">
-<h4>5) Single edge (two terminal nodes)<a class="headerlink" href="#single-edge-two-terminal-nodes" title="Link to this heading">¶</a></h4>
+<h4>5) Single edge (two terminal nodes)<a class="headerlink" href="#single-edge-two-terminal-nodes" title="Länk till denna rubrik">¶</a></h4>
 <p>Both endpoints have core number <span class="math notranslate nohighlight">\(1\)</span>.</p>
 <div class="graphviz"><img src="_images/graphviz-c08df860a963f80ba86de703afedf7744df9c3f1.png" alt="graph G {
     node [shape=circle;style=filled;width=.5;color=deepskyblue;fixedsize=true;fontsize=8];
@@ -752,8 +683,8 @@ block of the city network. Vertex <span class="math notranslate nohighlight">\(9
     5 -- 6 [label=&quot;1&quot;];
 }" class="graphviz" /></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
 <span class="o">-----+------+------</span>
@@ -771,7 +702,7 @@ block of the city network. Vertex <span class="math notranslate nohighlight">\(9
 </ul>
 </section>
 <section id="triangle-all-vertices-core-2">
-<h4>6) Triangle (all vertices core <span class="math notranslate nohighlight">\(2\)</span>)<a class="headerlink" href="#triangle-all-vertices-core-2" title="Link to this heading">¶</a></h4>
+<h4>6) Triangle (all vertices core <span class="math notranslate nohighlight">\(2\)</span>)<a class="headerlink" href="#triangle-all-vertices-core-2" title="Länk till denna rubrik">¶</a></h4>
 <p>In a triangle every vertex has degree <span class="math notranslate nohighlight">\(2\)</span>, so all three belong to the
 2-core.</p>
 <div class="graphviz"><img src="_images/graphviz-1323435d596ae9bf8a8cc23327d8ab9ceefc8f2b.png" alt="graph G {
@@ -807,7 +738,7 @@ $$SELECT * FROM (VALUES
 </ul>
 </section>
 <section id="square-cycle-from-sampledata-all-vertices-core-2">
-<h4>7) Square cycle from <a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a> (all vertices core <span class="math notranslate nohighlight">\(2\)</span>)<a class="headerlink" href="#square-cycle-from-sampledata-all-vertices-core-2" title="Link to this heading">¶</a></h4>
+<h4>7) Square cycle from <a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a> (all vertices core <span class="math notranslate nohighlight">\(2\)</span>)<a class="headerlink" href="#square-cycle-from-sampledata-all-vertices-core-2" title="Länk till denna rubrik">¶</a></h4>
 <p>Edges <span class="math notranslate nohighlight">\(\{2, 4, 5, 8\}\)</span> form a 4-cycle on vertices
 <span class="math notranslate nohighlight">\(\{6, 7, 10, 11\}\)</span>.</p>
 <div class="graphviz"><img src="_images/graphviz-5ea4ceea1ca49150c3be2a4bef1b88812e669552.png" alt="graph G {
@@ -822,8 +753,8 @@ $$SELECT * FROM (VALUES
     7 -- 11 [label=&quot;8&quot;];
 }" class="graphviz" /></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">core</span>
 <span class="o">-----+------+------</span>
@@ -843,7 +774,7 @@ $$SELECT * FROM (VALUES
 </ul>
 </section>
 <section id="star-graph-hub-and-spokes-all-core-1">
-<h4>8) Star graph (hub and spokes, all core <span class="math notranslate nohighlight">\(1\)</span>)<a class="headerlink" href="#star-graph-hub-and-spokes-all-core-1" title="Link to this heading">¶</a></h4>
+<h4>8) Star graph (hub and spokes, all core <span class="math notranslate nohighlight">\(1\)</span>)<a class="headerlink" href="#star-graph-hub-and-spokes-all-core-1" title="Länk till denna rubrik">¶</a></h4>
 <p>A star has a central hub connected to leaf vertices. Every vertex is peeled at
 <span class="math notranslate nohighlight">\(k = 1\)</span>.</p>
 <div class="graphviz"><img src="_images/graphviz-b27d5982680b27751ca80e75c0931bded0693656.png" alt="graph G {
@@ -887,12 +818,12 @@ vertices throughout.</p></li>
 </section>
 </section>
 <section id="empty-edge-set">
-<h3>Empty edge set<a class="headerlink" href="#empty-edge-set" title="Link to this heading">¶</a></h3>
+<h3>Empty edge set<a class="headerlink" href="#empty-edge-set" title="Länk till denna rubrik">¶</a></h3>
 <section id="no-edges-in-the-sql-query">
-<h4>9) No edges in the SQL query<a class="headerlink" href="#no-edges-in-the-sql-query" title="Link to this heading">¶</a></h4>
+<h4>9) No edges in the SQL query<a class="headerlink" href="#no-edges-in-the-sql-query" title="Länk till denna rubrik">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="s1">&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="s1">'</span>
 <span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">node</span><span class="p">;</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">No</span> <span class="n">edges</span> <span class="n">found</span>
 <span class="n">HINT</span><span class="p">:</span>  <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
@@ -912,32 +843,32 @@ empty.</p></li>
 </section>
 </section>
 <section id="core-numbers-and-planarity">
-<h3>Core numbers and planarity<a class="headerlink" href="#core-numbers-and-planarity" title="Link to this heading">¶</a></h3>
+<h3>Core numbers and planarity<a class="headerlink" href="#core-numbers-and-planarity" title="Länk till denna rubrik">¶</a></h3>
 <p>Vertices with higher core numbers often lie in densely connected regions. The
 workflow below computes core numbers, filters the 2-core, and checks whether the
 subgraph can be drawn without edge crossings using <a class="reference internal" href="pgr_isPlanar.html"><span class="doc">pgr_isPlanar - Experimentell</span></a>.</p>
 <section id="planarity-of-the-subgraph-with-edges-id-10">
-<h4>10) Planarity of the subgraph with edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span><a class="headerlink" href="#planarity-of-the-subgraph-with-edges-id-10" title="Link to this heading">¶</a></h4>
+<h4>10) Planarity of the subgraph with edges <span class="math notranslate nohighlight">\(id &lt; 10\)</span><a class="headerlink" href="#planarity-of-the-subgraph-with-edges-id-10" title="Länk till denna rubrik">¶</a></h4>
 <p>First compute core numbers (example 2)), then filter the 2-core (example 3)),
 then test planarity:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Step 1: core numbers on edges id &lt; 10</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="s1">FROM edges WHERE id &lt; 10&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="s1">FROM edges WHERE id &lt; 10'</span>
 <span class="p">)</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">node</span><span class="p">;</span>
 
 <span class="c1">-- Step 2: keep only vertices in the 2-core</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">core</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">pgr_coreNumbers</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="s1">FROM edges WHERE id &lt; 10&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="s1">FROM edges WHERE id &lt; 10'</span>
 <span class="p">)</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">core</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">node</span><span class="p">;</span>
 
 <span class="c1">-- Step 3: check planarity of the same edge set</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="n">pgr_isPlanar</span><span class="p">(</span>
-<span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
-<span class="s1">FROM edges WHERE id &lt; 10&#39;</span>
+<span class="s1">'SELECT id, source, target, cost, reverse_cost</span>
+<span class="s1">FROM edges WHERE id &lt; 10'</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -951,7 +882,7 @@ while still having a mix of core-<span class="math notranslate nohighlight">\(1\
 </ul>
 </section>
 <section id="complete-graph-k-4-all-vertices-core-3">
-<h4>11) Complete graph <span class="math notranslate nohighlight">\(K_4\)</span> (all vertices core <span class="math notranslate nohighlight">\(3\)</span>)<a class="headerlink" href="#complete-graph-k-4-all-vertices-core-3" title="Link to this heading">¶</a></h4>
+<h4>11) Complete graph <span class="math notranslate nohighlight">\(K_4\)</span> (all vertices core <span class="math notranslate nohighlight">\(3\)</span>)<a class="headerlink" href="#complete-graph-k-4-all-vertices-core-3" title="Länk till denna rubrik">¶</a></h4>
 <p>The examples above reach at most core <span class="math notranslate nohighlight">\(2\)</span>, because the
 <a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a> network has degeneracy <span class="math notranslate nohighlight">\(2\)</span>. Higher cores need a denser
 graph. In the complete graph <span class="math notranslate nohighlight">\(K_4\)</span> every vertex is adjacent to the other
@@ -1004,7 +935,7 @@ every vertex, which is the maximum possible core number on <span class="math not
 </section>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a></p></li>
 <li><p><a class="reference internal" href="metrics-family.html"><span class="doc">Metrics - Familj av funktioner</span></a></p></li>
@@ -1033,8 +964,8 @@ of Networks</a></p></li>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

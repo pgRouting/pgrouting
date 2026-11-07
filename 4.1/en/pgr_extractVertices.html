@@ -13,8 +13,8 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=05423f42"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -168,59 +168,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code></a><ul>
-<li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a></li>
-<li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a><ul>
-<li><a class="reference internal" href="#when-line-geometry-is-known">When line geometry is known</a></li>
-<li><a class="reference internal" href="#when-vertex-geometry-is-known">When vertex geometry is known</a></li>
-<li><a class="reference internal" href="#when-identifiers-of-vertices-are-known">When identifiers of vertices are known</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Result columns</a></li>
-<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
-<li><a class="reference internal" href="#dry-run-execution">Dry run execution</a></li>
-<li><a class="reference internal" href="#create-a-routing-topology">Create a routing topology</a><ul>
-<li><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></li>
-<li><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created">Clean up the columns of the routing topology to be created</a></li>
-<li><a class="reference internal" href="#create-the-vertices-table">Create the vertices table</a></li>
-<li><a class="reference internal" href="#inspect-the-vertices-table">Inspect the vertices table</a></li>
-<li><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table">Create the routing topology on the edge table</a></li>
-<li><a class="reference internal" href="#inspect-the-routing-topology">Inspect the routing topology</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="utilities-family.html" title="Previous Chapter: Utility functions"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Utility functions</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_findCloseEdges.html" title="Next Chapter: pgr_findCloseEdges"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_findCloseEdges &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_extractVertices','en'));  </script>
             
   <div class="line-block" id="index-0">
@@ -251,7 +199,7 @@ of edges of a graph.</p>
 <li><p>When the edge identifier is given, then it will also calculate the in and out
 edges</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -271,7 +219,7 @@ edges</p></li>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, geom FROM edges'</span><span class="p">);</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span>       <span class="n">x</span>        <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span>                    <span class="n">geom</span>
 <span class="o">----+----------+-----------+----------------+-----+--------------------------------------------</span>
   <span class="mi">1</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000000000000000000000040</span>
@@ -535,7 +483,7 @@ end point</em>.</p>
 <p>The results can be used as base code to make a refinement based on the backend
 development needs.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, geom FROM edges'</span><span class="p">,</span>
   <span class="n">dryrun</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>
         <span class="n">WITH</span>
@@ -586,7 +534,7 @@ development needs.</p>
 <section id="make-sure-the-database-does-not-have-the-vertices-table">
 <h4><a class="toc-backref" href="#id9" role="doc-backlink">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a><a class="headerlink" href="#make-sure-the-database-does-not-have-the-vertices-table" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">vertices_table</span><span class="p">;</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">table</span> <span class="s2">&quot;vertices_table&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">table</span> <span class="s2">"vertices_table"</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
 <span class="n">DROP</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
@@ -613,7 +561,7 @@ development needs.</p>
 </li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices_table</span>
-<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">'SELECT id, geom FROM edges ORDER BY id'</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">17</span>
 </pre></div>
 </div>
@@ -737,8 +685,8 @@ development needs.</p>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on Nov 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on Nov 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

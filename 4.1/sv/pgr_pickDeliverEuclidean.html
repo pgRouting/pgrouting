@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=4e2df6f4"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=6d6cd173"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -75,9 +75,9 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Funktionsfamiljer</a></li>
 </ul>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="proposed.html">Föreslagna funktioner</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Versionsinformation</a></li>
@@ -160,56 +160,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliverEuclidean</span></code> - Experimentell</a><ul>
-<li><a class="reference internal" href="#synopsis">Sammanfattning</a></li>
-<li><a class="reference internal" href="#characteristics">Egenskaper</a></li>
-<li><a class="reference internal" href="#signature">Underskrift</a><ul>
-<li><a class="reference internal" href="#parameters">Parametrar</a></li>
-<li><a class="reference internal" href="#pick-deliver-optional-parameters">Pick-Deliver valfria parametrar</a></li>
-<li><a class="reference internal" href="#orders-sql">beställningar SQL</a></li>
-<li><a class="reference internal" href="#vehicles-sql">Fordon SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
-<li><a class="reference internal" href="#example">Exempel</a><ul>
-<li><a class="reference internal" href="#the-vehicles">Fordonen</a></li>
-<li><a class="reference internal" href="#the-original-orders">De ursprungliga beställningarna</a></li>
-<li><a class="reference internal" href="#the-orders">Beställningarna</a></li>
-<li><a class="reference internal" href="#the-query">Frågeställningen</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_pickDeliver.html" title="Previous Chapter: pgr_pickDeliver - Experimentell"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_pickDeliv...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_vrpOneDepot.html" title="Next Chapter: pgr_vrpOneDepot - Experimentell"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_vrpOneDep... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_pickDeliverEuclidean','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-pickdelivereuclidean-experimental">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliverEuclidean</span></code> - Experimentell<a class="headerlink" href="#pgr-pickdelivereuclidean-experimental" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliverEuclidean</span></code> - Experimentell<a class="headerlink" href="#pgr-pickdelivereuclidean-experimental" title="Länk till denna rubrik">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliverEuclidean</span></code> - Problem med ruttplanering för hämtning och leverans av fordon</p>
 <div class="admonition-experimental admonition">
 <p class="admonition-title">Experiment</p>
@@ -250,7 +208,7 @@
 </li>
 </ul>
 <section id="synopsis">
-<h2>Sammanfattning<a class="headerlink" href="#synopsis" title="Link to this heading">¶</a></h2>
+<h2>Sammanfattning<a class="headerlink" href="#synopsis" title="Länk till denna rubrik">¶</a></h2>
 <p>Problem: Fördela och optimera upphämtnings- och leveranspar i en fordonsflotta.</p>
 <ul class="simple">
 <li><p>Optimeringsproblemet är NP-svårt.</p></li>
@@ -284,7 +242,7 @@
 </ul>
 </section>
 <section id="characteristics">
-<h2>Egenskaper<a class="headerlink" href="#characteristics" title="Link to this heading">¶</a></h2>
+<h2>Egenskaper<a class="headerlink" href="#characteristics" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p>Inga flera tidsfönster för en plats.</p></li>
 <li><p>Mindre fordon som används anses vara bättre.</p></li>
@@ -298,7 +256,7 @@
 </ul>
 </section>
 <section id="signature">
-<h2>Underskrift<a class="headerlink" href="#signature" title="Link to this heading">¶</a></h2>
+<h2>Underskrift<a class="headerlink" href="#signature" title="Länk till denna rubrik">¶</a></h2>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -365,7 +323,7 @@
 </pre></div>
 </div>
 <section id="parameters">
-<h3>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<h3>Parametrar<a class="headerlink" href="#parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Kolumn</p></th>
@@ -386,7 +344,7 @@
 </table>
 </section>
 <section id="pick-deliver-optional-parameters">
-<h3>Pick-Deliver valfria parametrar<a class="headerlink" href="#pick-deliver-optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>Pick-Deliver valfria parametrar<a class="headerlink" href="#pick-deliver-optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Kolumn</p></th>
@@ -424,7 +382,7 @@
 </table>
 </section>
 <section id="orders-sql">
-<h3><a class="reference internal" href="#orders-sql">beställningar SQL</a><a class="headerlink" href="#orders-sql" title="Link to this heading">¶</a></h3>
+<h3><a class="reference internal" href="#orders-sql">beställningar SQL</a><a class="headerlink" href="#orders-sql" title="Länk till denna rubrik">¶</a></h3>
 <p>En <cite>SELECT</cite>-sats som returnerar följande kolumner:</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
@@ -528,7 +486,7 @@
 </dl>
 </section>
 <section id="vehicles-sql">
-<h3>Fordon SQL<a class="headerlink" href="#vehicles-sql" title="Link to this heading">¶</a></h3>
+<h3>Fordon SQL<a class="headerlink" href="#vehicles-sql" title="Länk till denna rubrik">¶</a></h3>
 <p>En <cite>SELECT</cite>-sats som returnerar följande kolumner:</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
@@ -640,7 +598,7 @@
 </section>
 </section>
 <section id="result-columns">
-<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Länk till denna rubrik">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Returns</span> <span class="nb">set</span> <span class="n">of</span>
  <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
      <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span> <span class="n">departure_time</span><span class="p">)</span>
@@ -789,7 +747,7 @@
 </table>
 </section>
 <section id="example">
-<h2>Exempel<a class="headerlink" href="#example" title="Link to this heading">¶</a></h2>
+<h2>Exempel<a class="headerlink" href="#example" title="Länk till denna rubrik">¶</a></h2>
 <nav class="contents local" id="innehall">
 <ul class="simple">
 <li><p><a class="reference internal" href="#the-vehicles" id="id1">Fordonen</a></p></li>
@@ -800,7 +758,7 @@
 </nav>
 <p>Detta dataexempel <strong>lc101</strong> är hämtat från data som publicerats på <a class="reference external" href="https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/">https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/</a></p>
 <section id="the-vehicles">
-<h3><a class="toc-backref" href="#id1" role="doc-backlink">Fordonen</a><a class="headerlink" href="#the-vehicles" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">Fordonen</a><a class="headerlink" href="#the-vehicles" title="Länk till denna rubrik">¶</a></h3>
 <p>Det finns 25 fordon i problemet som alla har samma egenskaper.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">v_lc101</span><span class="p">(</span>
   <span class="nb">id</span> <span class="n">BIGINT</span> <span class="n">NOT</span> <span class="n">NULL</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
@@ -818,7 +776,7 @@
 </div>
 </section>
 <section id="the-original-orders">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">De ursprungliga beställningarna</a><a class="headerlink" href="#the-original-orders" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">De ursprungliga beställningarna</a><a class="headerlink" href="#the-original-orders" title="Länk till denna rubrik">¶</a></h3>
 <p>Uppgifterna kommer i olika rader för upphämtning och leverans av samma order.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">table</span> <span class="n">lc101_c</span><span class="p">(</span>
   <span class="nb">id</span> <span class="n">BIGINT</span> <span class="ow">not</span> <span class="n">null</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
@@ -946,7 +904,7 @@
 </div>
 </section>
 <section id="the-orders">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Beställningarna</a><a class="headerlink" href="#the-orders" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Beställningarna</a><a class="headerlink" href="#the-orders" title="Länk till denna rubrik">¶</a></h3>
 <p>Originaldata måste konverteras till en lämplig tabell:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">deliveries</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">lc101_c</span> <span class="n">WHERE</span> <span class="n">dindex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">SELECT</span>
@@ -966,7 +924,7 @@
 </div>
 </section>
 <section id="the-query">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Frågeställningen</a><a class="headerlink" href="#the-query" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Frågeställningen</a><a class="headerlink" href="#the-query" title="Länk till denna rubrik">¶</a></h3>
 <p>Visar endast relevant information för att jämföra med informationen om den bästa lösningen som publiceras på <a class="reference external" href="https://www.sintef.no/projectweb/top/pdptw/100-customers/">https://www.sintef.no/projectweb/top/pdptw/100-customers/</a></p>
 <ul class="simple">
 <li><p>Den bästa lösningen som hittades för <strong>lc101</strong> är en restid: 828.94</p></li>
@@ -987,7 +945,7 @@ FROM pgr_pickDeliverEuclidean(
 </section>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="VRP-category.html"><span class="doc">Funktioner för fordonsdirigering - Kategori</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a></p></li>
@@ -1013,8 +971,8 @@ FROM pgr_pickDeliverEuclidean(
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 06, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 07, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>
