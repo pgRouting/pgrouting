@@ -54,5 +54,5 @@ IS 'pgr_betweennessCentrality
 - Optional Parameters:
     - directed := true
 - Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_centrality.html
+    - ${PROJECT_DOC_LINK}/pgr_betweennessCentrality.html
 ';
