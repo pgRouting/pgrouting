@@ -6,7 +6,7 @@
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(145);
+SELECT plan(146);
 
 CREATE TABLE matrix AS
 SELECT * from pgr_dijkstraCostMatrix($$SELECT * FROM edges$$,
@@ -36,6 +36,22 @@ SET end_node_id  = start_node_id,
  end_close = start_close,
  end_service = start_service;
 
+SELECT is(
+    (
+        SELECT array_agg(DISTINCT stop_id)
+        FROM pgr_pickDeliver(
+            $$SELECT * FROM orders$$,
+            $$SELECT id, capacity, start_node_id, start_open, start_close,
+                     (SELECT p_node_id FROM orders ORDER BY id LIMIT 1) AS end_node_id,
+                     end_open, end_close
+              FROM vehicles$$,
+            $$SELECT * FROM matrix$$
+        )
+        WHERE stop_type = 6
+    ),
+    ARRAY[(SELECT p_node_id FROM orders ORDER BY id LIMIT 1)]::BIGINT[],
+    'end_node_id is respected when end_service is omitted'
+);
 
 CREATE OR REPLACE FUNCTION style_jobs()
 RETURNS SETOF TEXT AS
