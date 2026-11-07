@@ -67,7 +67,7 @@ autosectionlabel_prefix_document = True
 # Usage: :bgl:`Title <relative/path.html>`
 extlinks = {
         'bgl': ('https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/%s', None),
-        'pr': ('https://github.com/pgRouting/pgrouting/pulls/%s', 'PR #%s'),
+        'pr': ('https://github.com/pgRouting/pgrouting/pull/%s', 'PR #%s'),
         'issue': ('https://github.com/pgRouting/pgrouting/issues/%s', 'Issue #%s'),
         'milestone':
         ('https://github.com/pgRouting/pgrouting/issues?utf8=%%E2%%9C%%93&q=milestone%%3A%%22Release%%20%s%%22',
@@ -233,9 +233,10 @@ html_last_updated_fmt = '%b %d, %Y'
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
+# No sidebar (the bootstrap theme already exposes the table of contents in the
+# navbar via the "Page" tab).
 html_sidebars = {
-	# '**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'],
-	# 'using/windows': ['windowssidebar.html', 'searchbox.html'],
+	'**': [],
 }
 
 # Additional templates that should be rendered to pages, maps page names to
