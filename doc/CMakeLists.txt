@@ -160,56 +160,6 @@ configure_file("../tools/testers/sampledata.pg" "${PGR_DOCUMENTATION_SOURCE_DIR}
 add_subdirectory("_static")
 add_subdirectory("_templates")
 
-#---------------------------------------------
-#---------------------------------------------
-# Determine the Python interpreter that actually runs Sphinx.
-# Prefer an explicit Python3_EXECUTABLE cache value,
-# then the interpreter named in the sphinx-build shebang
-#  - so an activated virtualenv is used automatically,
-# and finally the Python found by find_package(Python3).
-#
-# This is done to be used by developers with virtual environments.
-#---------------------------------------------
-#---------------------------------------------
-
-#---------------------------------------------
-# checks whether a Python3_EXECUTABLE value was passed
-#---------------------------------------------
-set(PGR_PYTHON_EXECUTABLE "")
-if(DEFINED Python3_EXECUTABLE AND NOT "${Python3_EXECUTABLE}" STREQUAL "")
-  set(PGR_PYTHON_EXECUTABLE "${Python3_EXECUTABLE}")
-endif()
-
-if(NOT PGR_PYTHON_EXECUTABLE AND EXISTS "${SPHINX_EXECUTABLE}")
-  file(READ "${SPHINX_EXECUTABLE}" _pgr_sphinx_head LIMIT 256)
-  if(_pgr_sphinx_head MATCHES "^#!([^ \r\n]+)(.*)$")
-    #---------------------------------------------
-    # extracts the python path from the #! line of sphinx-build.
-    #---------------------------------------------
-    set(_pgr_shebang_interp "${CMAKE_MATCH_1}")
-    string(STRIP "${CMAKE_MATCH_2}" _pgr_shebang_args)
-    if(_pgr_shebang_interp MATCHES "/env$")
-      #---------------------------------------------
-      # #!/usr/bin/env python3  ->  resolve via PATH
-      #---------------------------------------------
-      separate_arguments(_pgr_env_args UNIX_COMMAND "${_pgr_shebang_args}")
-      if(_pgr_env_args)
-        list(GET _pgr_env_args 0 _pgr_env_name)
-        find_program(PGR_PYTHON_EXECUTABLE NAMES "${_pgr_env_name}")
-      endif()
-    else()
-      set(PGR_PYTHON_EXECUTABLE "${_pgr_shebang_interp}")
-    endif()
-  endif()
-endif()
-
-if(NOT PGR_PYTHON_EXECUTABLE)
-  find_package(Python3 COMPONENTS Interpreter QUIET)
-  if(Python3_Interpreter_FOUND)
-    set(PGR_PYTHON_EXECUTABLE "${Python3_EXECUTABLE}")
-  endif()
-endif()
-
 configure_file("conf.py.in" "${PGR_DOCUMENTATION_SOURCE_DIR}/conf.py" @ONLY)
 
 foreach (format ${PROJECT_DOC_TARGETS})
