@@ -106,6 +106,11 @@ jobs:
             libboost-graph-dev \
             python3-sphinx \
             python3-sphinx-bootstrap-theme \
+            python3-sphinxcontrib.applehelp \
+            python3-sphinxcontrib.devhelp \
+            python3-sphinxcontrib.htmlhelp \
+            python3-sphinxcontrib.qthelp \
+            python3-sphinxcontrib.serializinghtml \
             postgresql-${PGVER} \
             postgresql-server-dev-${PGVER} \
             graphviz $(apt-cache pkgnames libgvplugin-neato-layout | grep -v -- -dev)

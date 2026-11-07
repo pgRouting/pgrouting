@@ -69,7 +69,11 @@ jobs:
             libboost-graph-dev \
             python3-sphinx \
             python3-sphinx-bootstrap-theme \
-            sphinx-intl \
+            python3-sphinxcontrib.applehelp \
+            python3-sphinxcontrib.devhelp \
+            python3-sphinxcontrib.htmlhelp \
+            python3-sphinxcontrib.qthelp \
+            python3-sphinxcontrib.serializinghtml \
             gettext \
             postgresql-${PGVER} \
             postgresql-server-dev-${PGVER} \
