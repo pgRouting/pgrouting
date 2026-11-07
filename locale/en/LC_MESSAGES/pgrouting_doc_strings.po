@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 23:36+0000\n"
+"POT-Creation-Date: 2026-11-07 13:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2993,7 +2993,7 @@ msgstr ""
 msgid "the set of edges :math:`E`"
 msgstr ""
 
-msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = \\varnothing \\\\ \\text{ } \\text{ }  & \\quad \\text{ } \\\\ \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad \\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
+msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = \\varnothing \\ \\text{ } \\text{ }  & \\quad \\text{ } \\ \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad \\text{ } \\ \\cup \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost \\neq \\varnothing \\ \\end{cases}`"
 msgstr ""
 
 msgid "Undirected graph"
@@ -3005,7 +3005,7 @@ msgstr ""
 msgid ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
 msgstr ""
 
-msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ if } reverse\\_cost = \\varnothing \\\\ \\text{ } \\text{ }  & \\text{ } \\\\ \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\\\ \\cup \\{(source_i, target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
+msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ } \\ \\cup \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ if } reverse\\_cost = \\varnothing \\ \\text{ } \\text{ }  & \\text{ } \\ \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\ \\cup \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\ \\cup \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\ \\cup \\{(source_i, target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\ \\end{cases}`"
 msgstr ""
 
 msgid "The problem"
@@ -3020,7 +3020,7 @@ msgstr ""
 msgid ":math:`end_{vid} \\in V` an ending vertex"
 msgstr ""
 
-msgid ":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed = true \\\\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\\\ \\end{cases}`"
+msgid ":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed = true \\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\ \\end{cases}`"
 msgstr ""
 
 msgid "Then:"
@@ -3464,7 +3464,7 @@ msgstr ""
 msgid ":math:`source\\_vertex  \\cup  sink\\_vertex  \\bigcup  source_i  \\bigcup  target_i`"
 msgstr ""
 
-msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\quad  \\text{ if } reverse\\_capacity = \\varnothing \\\\ \\text{ } & \\quad \\text{ } \\\\ \\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_capacity_i) \\text{ when } reverse\\_capacity_i > 0)\\} & \\quad \\text{ if } reverse\\_capacity \\neq \\varnothing \\\\ \\end{cases}`"
+msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\quad  \\text{ if } reverse\\_capacity = \\varnothing \\ \\text{ } & \\quad \\text{ } \\ \\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\text{ } \\ \\cup \\{(target_i, source_i, reverse\\_capacity_i) \\text{ when } reverse\\_capacity_i > 0)\\} & \\quad \\text{ if } reverse\\_capacity \\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
 
 msgid "Maximum flow problem"
@@ -5211,7 +5211,7 @@ msgstr ""
 msgid "The set of edges :math:`E`:"
 msgstr ""
 
-msgid ":math:`E = \\begin{split} \\begin{align} & {\\{(source_{id}, target_{id}, cost_{id}) \\text{ when } cost_{id} >=0 \\}} \\\\ & \\cup \\\\ & {\\{(target_{id}, source_{id}, reverse\\_cost_{id}) \\text{ when } reverse\\_cost_{id} >=0 \\}} \\end{align} \\end{split}`"
+msgid ":math:`E = \\begin{split} \\begin{align} & {\\{(source_{id}, target_{id}, cost_{id}) \\text{ when } cost_{id} >=0 \\}} \\ & \\cup \\ & {\\{(target_{id}, source_{id}, reverse\\_cost_{id}) \\text{ when } reverse\\_cost_{id} >=0 \\}} \\end{align} \\end{split}`"
 msgstr ""
 
 msgid "Edges :math:`(source \\rightarrow target)` where ``cost`` is non negative are part of the graph."
@@ -5295,7 +5295,7 @@ msgstr ""
 msgid "Has 9 edges:"
 msgstr ""
 
-msgid ":math:`\\begin{split} \\begin{align} E = & \\{(1,2,7), (1,3,9), (1,6,14), \\\\ & (2,3,10), (2,4,13), \\\\ & (3,4,11), (3,6,2), \\\\ & (4,5,6), \\\\ & (5,6,9) \\} \\end{align} \\end{split}`"
+msgid ":math:`\\begin{split} \\begin{align} E = & \\{(1,2,7), (1,3,9), (1,6,14), \\ & (2,3,10), (2,4,13), \\ & (3,4,11), (3,6,2), \\ & (4,5,6), \\ & (5,6,9) \\} \\end{align} \\end{split}`"
 msgstr ""
 
 msgid "The graph can be represented in many ways for example:"
@@ -5775,7 +5775,7 @@ msgstr ""
 msgid "The general form of a pgRouting function call is:"
 msgstr ""
 
-msgid "\\ \\"
+msgid "\\"
 msgstr ""
 
 msgid "pgr_<name>(`Inner queries`_, **parameters**, [ ``Optional parameters``)"
@@ -10994,6 +10994,9 @@ msgid "blue is :math:`path\\_id = 4`"
 msgstr ""
 
 msgid "orange is :math:`path\\_id = 5`"
+msgstr ""
+
+msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__"
 msgstr ""
 
 msgid "``pgr_isPlanar`` - Experimental"
