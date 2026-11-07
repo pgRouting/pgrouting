@@ -63,8 +63,11 @@ jobs:
       - name: check modified files
         id: check_files
         run: |
+          # manual trigger: test all languages (and run linkcheck)
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then echo "PROCESS=true" >> $GITHUB_ENV; echo "CHK_LINK=true" >> $GITHUB_ENV; exit 0; fi
+
           # always processing english, no matter what the change was
-          if [[ "${{ matrix.language }}" == "en" ]]; then echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
+          if [[ "${{ matrix.language }}" == "en" ]]; then echo "PROCESS=true" >> $GITHUB_ENV; echo "CHK_LINK=true" >> $GITHUB_ENV; exit 0; fi
 
           # when this file changes  all languages are tested
           if git diff --name-only HEAD^ HEAD | grep -q '.github/workflows/doc-check.yml' ; then  echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
