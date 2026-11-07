@@ -51,10 +51,10 @@ test, then walks faces with Boost ``planar_face_traversal``.i
 .. rubric:: Characteristics
 
 * Works for undirected graphs.
-* Loops and paralell edges are preserved.
+* Loops and parallel edges are preserved.
 * Costs are ignored
 
-  * They are used to determine the existance of an edge
+  * They are used to determine the existence of an edge
 
 * When the graph is not planar it will emit an ``ERROR``
 
@@ -280,10 +280,8 @@ See Also
 
 * :doc:`pgr_isPlanar`
 * :doc:`sampledata`
-* Boost Graph Library: `Planar Face Traversal
-  <https://www.boost.org/libs/graph/doc/planar_face_traversal.html>`__
-* Boost Graph Library: `Boost: Boyer Myrvold planarity
-  <https://www.boost.org/libs/graph/doc/boyer_myrvold.html>`__
+* Boost Graph Library: :bgl:`Planar Face Traversal <algorithms/planar/planar_face_traversal.html>`
+* Boost Graph Library: :bgl:`Boost: Boyer Myrvold planarity <algorithms/planar/boyer_myrvold.html>`
 * Wikipedia: `Planar graph
   <https://en.wikipedia.org/wiki/Planar_graph>`__
 * Boyer, J. M. and Myrvold, W. J. (2004). On the Cutting Edge: Simplified O(n)

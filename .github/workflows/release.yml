@@ -75,14 +75,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             libboost-graph-dev \
-            python3-sphinx \
-            python3-sphinx-bootstrap-theme \
             postgresql-${PGVER} \
             postgresql-${PGVER}-postgis-${PGIS} \
             postgresql-${PGVER}-postgis-${PGIS}-scripts \
             postgresql-server-dev-${PGVER} \
             graphviz $(apt-cache pkgnames libgvplugin-neato-layout | grep -v -- -dev) \
             doxygen
+          python3 -m pip install sphinx sphinx-bootstrap-theme
 
       - name: Configure and build
         run: |

@@ -160,6 +160,56 @@ configure_file("../tools/testers/sampledata.pg" "${PGR_DOCUMENTATION_SOURCE_DIR}
 add_subdirectory("_static")
 add_subdirectory("_templates")
 
+#---------------------------------------------
+#---------------------------------------------
+# Determine the Python interpreter that actually runs Sphinx.
+# Prefer an explicit Python3_EXECUTABLE cache value,
+# then the interpreter named in the sphinx-build shebang
+#  - so an activated virtualenv is used automatically,
+# and finally the Python found by find_package(Python3).
+#
+# This is done to be used by developers with virtual environments.
+#---------------------------------------------
+#---------------------------------------------
+
+#---------------------------------------------
+# checks whether a Python3_EXECUTABLE value was passed
+#---------------------------------------------
+set(PGR_PYTHON_EXECUTABLE "")
+if(DEFINED Python3_EXECUTABLE AND NOT "${Python3_EXECUTABLE}" STREQUAL "")
+  set(PGR_PYTHON_EXECUTABLE "${Python3_EXECUTABLE}")
+endif()
+
+if(NOT PGR_PYTHON_EXECUTABLE AND EXISTS "${SPHINX_EXECUTABLE}")
+  file(READ "${SPHINX_EXECUTABLE}" _pgr_sphinx_head LIMIT 256)
+  if(_pgr_sphinx_head MATCHES "^#!([^ \r\n]+)(.*)$")
+    #---------------------------------------------
+    # extracts the python path from the #! line of sphinx-build.
+    #---------------------------------------------
+    set(_pgr_shebang_interp "${CMAKE_MATCH_1}")
+    string(STRIP "${CMAKE_MATCH_2}" _pgr_shebang_args)
+    if(_pgr_shebang_interp MATCHES "/env$")
+      #---------------------------------------------
+      # #!/usr/bin/env python3  ->  resolve via PATH
+      #---------------------------------------------
+      separate_arguments(_pgr_env_args UNIX_COMMAND "${_pgr_shebang_args}")
+      if(_pgr_env_args)
+        list(GET _pgr_env_args 0 _pgr_env_name)
+        find_program(PGR_PYTHON_EXECUTABLE NAMES "${_pgr_env_name}")
+      endif()
+    else()
+      set(PGR_PYTHON_EXECUTABLE "${_pgr_shebang_interp}")
+    endif()
+  endif()
+endif()
+
+if(NOT PGR_PYTHON_EXECUTABLE)
+  find_package(Python3 COMPONENTS Interpreter QUIET)
+  if(Python3_Interpreter_FOUND)
+    set(PGR_PYTHON_EXECUTABLE "${Python3_EXECUTABLE}")
+  endif()
+endif()
+
 configure_file("conf.py.in" "${PGR_DOCUMENTATION_SOURCE_DIR}/conf.py" @ONLY)
 
 foreach (format ${PROJECT_DOC_TARGETS})
@@ -167,12 +217,30 @@ foreach (format ${PROJECT_DOC_TARGETS})
 message(STATUS "format=${format}")
   if ("${format}" STREQUAL "locale")
 
-    find_program(SPHINX_INTL_EXECUTABLE
-      NAMES sphinx-intl
-      DOC "Sphinx Documentation Builder (sphinx-doc.org)"
+    find_program(MSGMERGE_EXECUTABLE
+      NAMES msgmerge
+      DOC "GNU gettext message merge"
     )
 
-    if (SPHINX_INTL_EXECUTABLE)
+    if (MSGMERGE_EXECUTABLE)
+
+      # Mirrors sphinx-intl's -l option: comma- or semicolon-separated list
+      # of languages to merge. Defaults to English only.
+      set(LOCALE_LANGUAGES "en" CACHE STRING
+        "Languages to merge with msgmerge (e.g. \"en,es\" or \"en;es\")")
+      string(REPLACE "," ";" LOCALE_LANGUAGES "${LOCALE_LANGUAGES}")
+
+      set(LOCALE_MERGE_COMMANDS)
+      foreach(lang ${LOCALE_LANGUAGES})
+        list(APPEND LOCALE_MERGE_COMMANDS
+          COMMAND ${MSGMERGE_EXECUTABLE}
+          --quiet
+          --no-wrap
+          --backup=none
+          --update
+          "${CMAKE_SOURCE_DIR}/locale/${lang}/LC_MESSAGES/pgrouting_doc_strings.po"
+          "${CMAKE_SOURCE_DIR}/locale/pot/pgrouting_doc_strings.pot")
+      endforeach()
 
       add_custom_target(locale
         COMMAND ${SPHINX_EXECUTABLE}
@@ -181,16 +249,14 @@ message(STATUS "format=${format}")
         "${PGR_DOCUMENTATION_SOURCE_DIR}"
         "${CMAKE_SOURCE_DIR}/locale/pot"
 
-        COMMAND ${SPHINX_INTL_EXECUTABLE} update
-        -d ${CMAKE_SOURCE_DIR}/locale
-        -l en > locale_changes.txt
+        ${LOCALE_MERGE_COMMANDS}
 
         COMMENT "Generating POT and PO files"
         SOURCES ${PROJECT_DOC_FILES})
 
     else()
 
-      message(WARNING "sphinx-intl not found.
+      message(WARNING "msgmerge not found.
       Not building the pot and po locale files")
 
     endif()

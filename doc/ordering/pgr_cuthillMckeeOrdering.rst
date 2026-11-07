@@ -106,8 +106,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: Cuthill-McKee Ordering
-  <https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html>`__
+* :bgl:`Boost: Cuthill-McKee Ordering <algorithms/ordering/cuthill_mckee_ordering.html>`
 * `Wikipedia: Cuthill-McKee Ordering
   <https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm>`__
 
