@@ -40,7 +40,7 @@ its edges crossing.
 The main characteristics are:
 
 * Works for undirected graphs.
-* If the graph is not connected it will treat each component as an idividual
+* If the graph is not connected it will treat each component as an individual
   graph.
 
   * Run :doc:`pgr_makeConnected` to connect all components.

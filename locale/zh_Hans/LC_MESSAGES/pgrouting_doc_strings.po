@@ -7303,7 +7303,7 @@ msgstr "在有向图中，两条边都有方向性"
 
 #, fuzzy
 msgid ":bgl:`Boost: bandwidth <algorithms/metrics/bandwidth.html>`"
-msgstr ":bgl:`Boost: 是否为二分图 <is_bipartite.htm>`"
+msgstr ":bgl:`Boost: 是否为二分图 <is_bipartite.html>`"
 
 msgid "``pgr_bdAstar``"
 msgstr "``pgr_bdAstar``"
@@ -7787,8 +7787,8 @@ msgstr "边 :math:`5 \\rightarrow 1` 将使顶点为 :math:`\\{1, 3, 7, 6, 5\\}`
 msgid "Edges in blue represent odd length cycle subgraph."
 msgstr "蓝色边代表奇数长度循环子图。"
 
-msgid ":bgl:`Boost: is_bipartite <is_bipartite.htm>`"
-msgstr ":bgl:`Boost: 是否为二分图 <is_bipartite.htm>`"
+msgid ":bgl:`Boost: is_bipartite <is_bipartite.html>`"
+msgstr ":bgl:`Boost: 是否为二分图 <is_bipartite.html>`"
 
 msgid "`Wikipedia: bipartite graph <https://en.wikipedia.org/wiki/Bipartite_graph>`__"
 msgstr "`维基百科：二分图 <https://en.wikipedia.org/wiki/Bipartite_graph>`__"

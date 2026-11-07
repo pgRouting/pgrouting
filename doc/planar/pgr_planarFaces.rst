@@ -51,10 +51,10 @@ test, then walks faces with Boost ``planar_face_traversal``.i
 .. rubric:: Characteristics
 
 * Works for undirected graphs.
-* Loops and paralell edges are preserved.
+* Loops and parallel edges are preserved.
 * Costs are ignored
 
-  * They are used to determine the existance of an edge
+  * They are used to determine the existence of an edge
 
 * When the graph is not planar it will emit an ``ERROR``
 

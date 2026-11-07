@@ -7689,7 +7689,7 @@ msgstr ""
 msgid "Edges in blue represent odd length cycle subgraph."
 msgstr ""
 
-msgid ":bgl:`Boost: is_bipartite <is_bipartite.htm>`"
+msgid ":bgl:`Boost: is_bipartite <is_bipartite.html>`"
 msgstr ""
 
 msgid "`Wikipedia: bipartite graph <https://en.wikipedia.org/wiki/Bipartite_graph>`__"
