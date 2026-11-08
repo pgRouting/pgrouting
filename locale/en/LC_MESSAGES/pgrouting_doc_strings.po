@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 14:13+0000\n"
+"POT-Creation-Date: 2026-11-08 20:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3787,6 +3787,9 @@ msgid ":issue:`3170`: pgr_hawickCircuits: wrong Boost function referenced"
 msgstr ""
 
 msgid ":issue:`3176`: Boost broken links"
+msgstr ""
+
+msgid ":issue:`3188`: pickdeliver: Create and use process/driver pair"
 msgstr ""
 
 msgid "4.1.0 Bug Fixes"
