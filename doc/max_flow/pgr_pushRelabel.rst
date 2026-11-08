@@ -225,8 +225,7 @@ See Also
   * :doc:`pgr_boykovKolmogorov`
   * :doc:`pgr_edmondsKarp`
 
-* `Boost: push relabel max flow
-  <https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html>`__
+* :bgl:`Boost: push relabel max flow <algorithms/network_flow/push_relabel_max_flow.html>`
 * https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
 
 .. rubric:: Indices and tables

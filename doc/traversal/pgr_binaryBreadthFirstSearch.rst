@@ -254,8 +254,7 @@ Additional Examples
 See Also
 -------------------------------------------------------------------------------
 * :doc:`sampledata`
-* `Boost: Breadth First Search
-  <https://www.boost.org/libs/graph/doc/breadth_first_search.html>`__
+* :bgl:`Boost: Breadth First Search <algorithms/traversal/breadth_first_search.html>`
 * https://cp-algorithms.com/graph/01_bfs.html
 * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants
 

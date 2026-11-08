@@ -151,8 +151,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: bandwidth
-  <https://www.boost.org/libs/graph/doc/bandwidth.html>`_
+* :bgl:`Boost: bandwidth <algorithms/metrics/bandwidth.html>`
 
 .. rubric:: Indices and tables
 

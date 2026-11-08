@@ -18,7 +18,7 @@ To see all issues & pull requests closed by this release see the
 
   Minimum requirement: 14
 
-*  library:
+* Boost library:
 
   Minimum requirement: 1.74
 
@@ -86,7 +86,8 @@ To see all issues & pull requests closed by this release see the
   process/driver pair
 * [#3154](https://github.com/pgRouting/pgrouting/issues/3154): betweennessCentrality: use allpairs/process and driver
 * [#3163](https://github.com/pgRouting/pgrouting/issues/3163): KSP & KSP WithPoints Use ShortestPath driver files
-* [#3170](https://github.com/pgRouting/pgrouting/issues/3170): pgr_hawickCircuits: wrong  function referenced
+* [#3170](https://github.com/pgRouting/pgrouting/issues/3170): pgr_hawickCircuits: wrong Boost function referenced
+* [#3176](https://github.com/pgRouting/pgrouting/issues/3176): Boost broken links
 
 4.1.0 Bug Fixes
 
@@ -94,7 +95,7 @@ To see all issues & pull requests closed by this release see the
 
 4.1.0 Requirements
 
-* [#3120](https://github.com/pgRouting/pgrouting/issues/3120): Up min requirements:  to 1.74 Postgres to 14 cmake to
+* [#3120](https://github.com/pgRouting/pgrouting/issues/3120): Up min requirements: Boost to 1.74 Postgres to 14 cmake to
   3.22.
 
 ## pgRouting 4.0
@@ -632,14 +633,14 @@ Removal of SQL deprecated internal functions
 * [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_createIndex(text,text,text,text,integer,text)
 * [#2913](https://github.com/pgRouting/pgrouting/issues/2913) _pgr_dagShortestPath(text,anyarray,anyarray,boolean,boolean)
 * [#2913](https://github.com/pgRouting/pgrouting/issues/2913) _pgr_dagShortestPath(text,text,boolean,boolean)
-* [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstraNear(text,anyarray,anyarray,bigint,boolean)
-* [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstraNear(text,anyarray,bigint,bigint,boolean)
-* [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstraNear(text,bigint,anyarray,bigint,boolean)
-* [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)
-* [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)
-* [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)
-* [#2730](https://github.com/pgRouting/pgrouting/issues/2730) _pgr_dijkstra(text,text,boolean,boolean,boolean)
-* [#2735](https://github.com/pgRouting/pgrouting/issues/2735) _pgr_drivingDistance(text,anyarray,double precision,boolean,boolean)
+* [#2730](https://github.com/pgRouting/pgrouting/pull/2730) _pgr_dijkstraNear(text,anyarray,anyarray,bigint,boolean)
+* [#2730](https://github.com/pgRouting/pgrouting/pull/2730) _pgr_dijkstraNear(text,anyarray,bigint,bigint,boolean)
+* [#2730](https://github.com/pgRouting/pgrouting/pull/2730) _pgr_dijkstraNear(text,bigint,anyarray,bigint,boolean)
+* [#2730](https://github.com/pgRouting/pgrouting/pull/2730) _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)
+* [#2730](https://github.com/pgRouting/pgrouting/pull/2730) _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)
+* [#2730](https://github.com/pgRouting/pgrouting/pull/2730) _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)
+* [#2730](https://github.com/pgRouting/pgrouting/pull/2730) _pgr_dijkstra(text,text,boolean,boolean,boolean)
+* [#2735](https://github.com/pgRouting/pgrouting/pull/2735) _pgr_drivingDistance(text,anyarray,double precision,boolean,boolean)
 * [#2861](https://github.com/pgRouting/pgrouting/issues/2861) _pgr_endPoint(geometry)
 * [#2861](https://github.com/pgRouting/pgrouting/issues/2861) __pgr_getColumnName(text,text,integer,text)
 * [#2861](https://github.com/pgRouting/pgrouting/issues/2861) __pgr_getColumnName(text,text,text,integer,text)

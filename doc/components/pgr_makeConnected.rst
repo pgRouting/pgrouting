@@ -108,8 +108,7 @@ Returns set of |result-component-make|
 See Also
 -------------------------------------------------------------------------------
 
-* `Boost: make connected
-  <https://www.boost.org/libs/graph/doc/make_connected.html>`__
+* :bgl:`Boost: make connected <algorithms/planar/make_connected.html>`
 * :doc:`sampledata`
 
 .. rubric:: Indices and tables

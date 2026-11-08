@@ -48,8 +48,8 @@ Mailing List, Matrix, GIS StackExchange
 
 There are two mailing lists for pgRouting hosted on OSGeo discourse server:
 
-* User mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-users/
-* Developer mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-dev/
+* User mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-users/18
+* Developer mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-dev/17
 
   * Subscribe: https://discourse.osgeo.org/g/pgrouting-dev
 
@@ -82,9 +82,9 @@ contributed to the development of pgRouting:
    * - **Company**
      - **Offices in**
      - **Website**
-   * - Georepublic
-     - Germany, Japan
-     - https://georepublic.info
+   * - Erosion
+     - Mexico
+     - https://www.erosion.dev
    * - Paragon Corporation
      - United States
      - https://www.paragoncorporation.com

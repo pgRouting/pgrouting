@@ -121,8 +121,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: King Ordering
-  <https://www.boost.org/libs/graph/doc/king_ordering.html>`__
+* :bgl:`Boost: King Ordering <algorithms/ordering/king_ordering.html>`
 
 .. rubric:: Indices and tables
 

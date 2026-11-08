@@ -52,9 +52,6 @@ namespace functions {
  * @param graph      the graph containing the edges
  *
  * @returns results, when results are found
- *
- * @see [boost::cuthill_mckee_ordering]
- * (https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html)
  */
 std::vector<pgrouting::UndirectedGraph::V>
 cuthillMckeeOrdering(pgrouting::UndirectedGraph &graph) {

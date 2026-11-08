@@ -225,8 +225,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`flow-family`
-* `Boost: push relabel max flow
-  <https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html>`__
+* :bgl:`Boost: push relabel max flow <algorithms/network_flow/push_relabel_max_flow.html>`
 
 .. rubric:: Indices and tables
 

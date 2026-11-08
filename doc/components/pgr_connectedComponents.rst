@@ -133,8 +133,7 @@ See Also
 
 * :doc:`components-family`
 * :doc:`sampledata`
-* `Boost: Connected components
-  <https://www.boost.org/libs/graph/doc/connected_components.html>`__
+* :bgl:`Boost: Connected components <algorithms/connected_components/connected_components.html>`
 * wikipedia: `Connected component
   <https://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__
 
