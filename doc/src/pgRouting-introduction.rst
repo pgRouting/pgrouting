@@ -13,7 +13,7 @@ pgRouting is an extension of `PostGIS <https://postgis.net>`__ and `PostgreSQL
 network analysis functionality. A predecessor of pgRouting – pgDijkstra, written
 by Sylvain Pasche, was later extended by Orkney and renamed to pgRouting.
 
-Currently mantained by:
+Currently maintained by:
 
 - `Erosion <https://www.erosion.dev>`__
 - `Paragon Corporation <https://www.paragoncorporation.com/>`__
