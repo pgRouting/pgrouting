@@ -128,6 +128,7 @@ To see all issues & pull requests closed by this release see the
 * :issue:`3163`: KSP & KSP WithPoints Use ShortestPath driver files
 * :issue:`3170`: pgr_hawickCircuits: wrong Boost function referenced
 * :issue:`3176`: Boost broken links
+* :issue:`3188`: pickdeliver: Create and use process/driver pair
 
 4.1.0 Bug Fixes
 ...............................................................................
