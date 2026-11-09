@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=0e79a2cd"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -177,67 +177,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - 实验性</a><ul>
-<li><a class="reference internal" href="#description">描述</a></li>
-<li><a class="reference internal" href="#signatures">签名</a></li>
-<li><a class="reference internal" href="#parameters">参数</a></li>
-<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">结果列</a></li>
-<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
-<li><a class="reference internal" href="#the-data">数据</a></li>
-<li><a class="reference internal" href="#the-transformation">转变</a></li>
-<li><a class="reference internal" href="#creating-table-that-identifies-transformed-vertices">创建标识变换顶点的表</a><ul>
-<li><a class="reference internal" href="#store-edge-results">存储边结果</a></li>
-<li><a class="reference internal" href="#create-the-mapping-table">创建映射表</a></li>
-<li><a class="reference internal" href="#filling-the-mapping-table">填写映射表</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#adding-a-soft-restriction">添加软限制</a><ul>
-<li><a class="reference internal" href="#identifying-the-restriction">识别限制条件</a></li>
-<li><a class="reference internal" href="#adding-a-value-to-the-restriction">向限制添加值</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#simplifying-leaf-vertices">简化叶顶点</a><ul>
-<li><a class="reference internal" href="#using-the-vertex-map-give-the-leaf-verices-their-original-value">使用顶点图赋予叶顶点其原始值。</a></li>
-<li><a class="reference internal" href="#removing-self-loops-on-leaf-nodes">删除叶节点上的自循环</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#complete-routing-graph">完整的路由图</a><ul>
-<li><a class="reference internal" href="#add-edges-from-the-original-graph">从原始图中添加边</a></li>
-<li><a class="reference internal" href="#add-the-newly-calculated-edges">添加新计算的边</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#using-the-routing-graph">使用路由图</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">另请参阅</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_lineGraph.html" title="Previous Chapter: pgr_lineGraph - 提议中"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph - 提议中</span>
-    </a>
-  </li>
-  <li>
-    <a href="ordering-family.html" title="Next Chapter: 排序 - 函数族"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">排序 - 函数族 &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_lineGraphFull','zh-Hans'));  </script>
             
   <div class="line-block" id="index-0">
@@ -299,7 +239,7 @@
 <li><p>当输入图中使用重复的边 id 时，结果是不确定的。</p></li>
 <li><p>运行时间：TBD（待定）</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -943,13 +883,13 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
 <p>一些获取边新标识符的管理任务</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">SEQUENCE</span> <span class="n">new_graph_id_seq</span><span class="p">;</span>
 <span class="n">CREATE</span> <span class="n">SEQUENCE</span>
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">new_graph</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">DEFAULT</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;new_graph_id_seq&#39;</span><span class="p">);</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">new_graph</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">DEFAULT</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">'new_graph_id_seq'</span><span class="p">);</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">new_graph</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">SEQUENCE</span> <span class="n">new_graph_id_seq</span> <span class="n">OWNED</span> <span class="n">BY</span> <span class="n">new_graph</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">SEQUENCE</span>
-<span class="n">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">&#39;new_graph_id_seq&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">max</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">new_graph</span><span class="p">));</span>
+<span class="n">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">'new_graph_id_seq'</span><span class="p">,</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">max</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">new_graph</span><span class="p">));</span>
  <span class="n">setval</span>
 <span class="o">--------</span>
      <span class="mi">18</span>
@@ -1051,8 +991,8 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on 11月 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on 11月 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

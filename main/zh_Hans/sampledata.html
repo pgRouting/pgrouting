@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=0e79a2cd"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -179,69 +179,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">示例数据</a><ul>
-<li><a class="reference internal" href="#main-graph">主图</a><ul>
-<li><a class="reference internal" href="#edges">边</a><ul>
-<li><a class="reference internal" href="#edges-data">边数据</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#vertices">顶点</a><ul>
-<li><a class="reference internal" href="#vertices-data">顶点数据</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#the-topology">拓扑结构</a><ul>
-<li><a class="reference internal" href="#topology-data">拓扑数据</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#points-outside-the-graph">图之外的点</a><ul>
-<li><a class="reference internal" href="#points-of-interest">兴趣点</a></li>
-<li><a class="reference internal" href="#points-of-interest-fill-up">兴趣点填充</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#support-tables">支持表</a><ul>
-<li><a class="reference internal" href="#combinations">组合</a></li>
-<li><a class="reference internal" href="#restrictions">限制</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#images">图片</a><ul>
-<li><a class="reference internal" href="#directed-graph-with-cost-and-reverse-cost">带 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的有向图</a></li>
-<li><a class="reference internal" href="#undirected-graph-with-cost-and-reverse-cost">具有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的无向图</a></li>
-<li><a class="reference internal" href="#directed-graph-with-cost">有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的有向图</a></li>
-<li><a class="reference internal" href="#undirected-graph-with-cost">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 的无向图</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#pick-deliver-data">取货和送货数据</a><ul>
-<li><a class="reference internal" href="#the-vehicles">车辆</a></li>
-<li><a class="reference internal" href="#the-original-orders">原始订单</a></li>
-<li><a class="reference internal" href="#the-orders">订单</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="support.html" title="Previous Chapter: 支持"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 支持</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgRouting-concepts.html" title="Next Chapter: pgRouting 概念"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgRouting 概念 &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('sampledata','zh-Hans'));  </script>
             
   <div class="line-block">
@@ -432,18 +370,18 @@
 <h3><a class="toc-backref" href="#id8" role="doc-backlink">顶点</a><a class="headerlink" href="#vertices" title="Link to this heading">¶</a></h3>
 <p>根据边的标识符和几何形状计算顶点信息并保存在表中。 保存 <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> 提供的所有信息 ：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
-<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">'SELECT id, geom FROM edges ORDER BY id'</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">17</span>
 </pre></div>
 </div>
 <p>在本例中，由于未使用 <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> 语句，因此需要在表上定义索引。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">SEQUENCE</span> <span class="n">vertices_id_seq</span><span class="p">;</span>
 <span class="n">CREATE</span> <span class="n">SEQUENCE</span>
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">DEFAULT</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;vertices_id_seq&#39;</span><span class="p">);</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">DEFAULT</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">'vertices_id_seq'</span><span class="p">);</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">SEQUENCE</span> <span class="n">vertices_id_seq</span> <span class="n">OWNED</span> <span class="n">BY</span> <span class="n">vertices</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">SEQUENCE</span>
-<span class="n">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">&#39;vertices_id_seq&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">coalesce</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">id</span><span class="p">))</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">));</span>
+<span class="n">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">'vertices_id_seq'</span><span class="p">,</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">coalesce</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">id</span><span class="p">))</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">));</span>
  <span class="n">setval</span>
 <span class="o">--------</span>
      <span class="mi">17</span>
@@ -453,10 +391,10 @@
 </div>
 <p>表的结构如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-                                  <span class="n">Table</span> <span class="s2">&quot;public.vertices&quot;</span>
+                                  <span class="n">Table</span> <span class="s2">"public.vertices"</span>
   <span class="n">Column</span>   <span class="o">|</span>       <span class="n">Type</span>       <span class="o">|</span> <span class="n">Collation</span> <span class="o">|</span> <span class="n">Nullable</span> <span class="o">|</span>               <span class="n">Default</span>
 <span class="o">-----------+------------------+-----------+----------+--------------------------------------</span>
- <span class="nb">id</span>        <span class="o">|</span> <span class="n">bigint</span>           <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;vertices_id_seq&#39;</span><span class="p">::</span><span class="n">regclass</span><span class="p">)</span>
+ <span class="nb">id</span>        <span class="o">|</span> <span class="n">bigint</span>           <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">'vertices_id_seq'</span><span class="p">::</span><span class="n">regclass</span><span class="p">)</span>
  <span class="n">in_edges</span>  <span class="o">|</span> <span class="n">bigint</span><span class="p">[]</span>         <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>
  <span class="n">out_edges</span> <span class="o">|</span> <span class="n">bigint</span><span class="p">[]</span>         <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>
  <span class="n">x</span>         <span class="o">|</span> <span class="n">double</span> <span class="n">precision</span> <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>
@@ -623,7 +561,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 </pre></div>
 </div>
 <p>任何其他额外的修改：在本手册中，可从两侧到达点 <span class="math notranslate nohighlight">\(6\)</span>。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">'b'</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>兴趣点：</p>
@@ -958,8 +896,8 @@ WHERE pointsOfInterest.geom = poi.geom;
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on 11月 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on 11月 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

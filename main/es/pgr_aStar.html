@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=33914f1f"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -164,53 +164,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a><ul>
-<li><a class="reference internal" href="#description">Descripción</a></li>
-<li><a class="reference internal" href="#signatures">Firmas</a><ul>
-<li><a class="reference internal" href="#one-to-one">Uno a Uno</a></li>
-<li><a class="reference internal" href="#one-to-many">Uno a Muchos</a></li>
-<li><a class="reference internal" href="#many-to-one">Muchos a Uno</a></li>
-<li><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></li>
-<li><a class="reference internal" href="#combinations">Combinaciones</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-<li><a class="reference internal" href="#astar-optional-parameters">Parámetros opcionales de aStar</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-<li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
-<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
-<li><a class="reference internal" href="#see-also">Ver también</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="aStar-family.html" title="Previous Chapter: A* - Familia de Funciones"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; A* - Familia ...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_aStarCost.html" title="Next Chapter: pgr_aStarCost"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_aStarCost &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_aStar','es'));  </script>
             
   <div class="line-block" id="index-0">
@@ -313,7 +267,7 @@
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Adentro: Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -353,8 +307,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStar</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span>
   <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -387,8 +341,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStar</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
   <span class="n">heuristic</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="n">factor</span> <span class="o">:=</span> <span class="mf">3.5</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -427,8 +381,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStar</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span>
   <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -463,8 +417,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStar</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
   <span class="n">factor</span> <span class="o">=&gt;</span> <span class="mf">0.5</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -525,9 +479,9 @@
 </div>
 <p>La consulta:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStar</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
-  <span class="s1">&#39;SELECT * FROM combinations&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
+  <span class="s1">'SELECT * FROM combinations'</span><span class="p">,</span>
   <span class="n">factor</span> <span class="o">=&gt;</span> <span class="mf">0.5</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -833,8 +787,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStar</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -870,8 +824,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStar</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -907,9 +861,9 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStar</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
+  <span class="s1">'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)'</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -936,7 +890,7 @@
 <li><p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="bdAstar-family.html"><span class="doc">A* Bidireccional - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">Boost: Búsqueda A*</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/shortest_paths/astar_search.html">Boost: Búsqueda A*</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm">https://en.wikipedia.org/wiki/A*_search_algorithm</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
@@ -960,8 +914,8 @@
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Actualizado por última vez en nov 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Actualizado por última vez en nov 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

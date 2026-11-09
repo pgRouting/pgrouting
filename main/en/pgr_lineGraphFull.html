@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=4c40d038"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -177,67 +177,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - Experimental</a><ul>
-<li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a></li>
-<li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Result columns</a></li>
-<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
-<li><a class="reference internal" href="#the-data">The data</a></li>
-<li><a class="reference internal" href="#the-transformation">The transformation</a></li>
-<li><a class="reference internal" href="#creating-table-that-identifies-transformed-vertices">Creating table that identifies transformed vertices</a><ul>
-<li><a class="reference internal" href="#store-edge-results">Store edge results</a></li>
-<li><a class="reference internal" href="#create-the-mapping-table">Create the mapping table</a></li>
-<li><a class="reference internal" href="#filling-the-mapping-table">Filling the mapping table</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#adding-a-soft-restriction">Adding a soft restriction</a><ul>
-<li><a class="reference internal" href="#identifying-the-restriction">Identifying the restriction</a></li>
-<li><a class="reference internal" href="#adding-a-value-to-the-restriction">Adding a value to the restriction</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#simplifying-leaf-vertices">Simplifying leaf vertices</a><ul>
-<li><a class="reference internal" href="#using-the-vertex-map-give-the-leaf-verices-their-original-value">Using the vertex map give the leaf verices their original value.</a></li>
-<li><a class="reference internal" href="#removing-self-loops-on-leaf-nodes">Removing self loops on leaf nodes</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#complete-routing-graph">Complete routing graph</a><ul>
-<li><a class="reference internal" href="#add-edges-from-the-original-graph">Add edges from the original graph</a></li>
-<li><a class="reference internal" href="#add-the-newly-calculated-edges">Add the newly calculated edges</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#using-the-routing-graph">Using the routing graph</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_lineGraph.html" title="Previous Chapter: pgr_lineGraph - Proposed"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph...</span>
-    </a>
-  </li>
-  <li>
-    <a href="ordering-family.html" title="Next Chapter: Ordering - Family of functions"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Ordering - Fa... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_lineGraphFull','en'));  </script>
             
   <div class="line-block" id="index-0">
@@ -308,7 +248,7 @@ that intersection.</p>
 <li><p>Results are undefined when a duplicated edge id is used in the input graph.</p></li>
 <li><p>Running time: TBD</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -971,13 +911,13 @@ table</p>
 <p>Some administrative tasks to get new identifiers for the edges</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">SEQUENCE</span> <span class="n">new_graph_id_seq</span><span class="p">;</span>
 <span class="n">CREATE</span> <span class="n">SEQUENCE</span>
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">new_graph</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">DEFAULT</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;new_graph_id_seq&#39;</span><span class="p">);</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">new_graph</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">DEFAULT</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">'new_graph_id_seq'</span><span class="p">);</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">new_graph</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">SEQUENCE</span> <span class="n">new_graph_id_seq</span> <span class="n">OWNED</span> <span class="n">BY</span> <span class="n">new_graph</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">SEQUENCE</span>
-<span class="n">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">&#39;new_graph_id_seq&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">max</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">new_graph</span><span class="p">));</span>
+<span class="n">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">'new_graph_id_seq'</span><span class="p">,</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">max</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">new_graph</span><span class="p">));</span>
  <span class="n">setval</span>
 <span class="o">--------</span>
      <span class="mi">18</span>
@@ -1079,8 +1019,8 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on Nov 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on Nov 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

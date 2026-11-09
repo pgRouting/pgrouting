@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=072f198e"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -151,47 +151,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Flow - Familj av funktioner</a><ul>
-<li><a class="reference internal" href="#flow-functions-general-information">Flödesfunktioner Allmän information</a></li>
-<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
-<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
-<li><a class="reference internal" href="#combinations-sql">Kombinationer SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
-<li><a class="reference internal" href="#advanced-documentation">Avancerad dokumentation</a></li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_dijkstraNearCost.html" title="Previous Chapter: pgr_dijkstraNearCost"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dijkstraNearCost</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_maxFlow.html" title="Next Chapter: pgr_maxFlow"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_maxFlow &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('flow-family','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="flow-family-of-functions">
-<h1>Flow - Familj av funktioner<a class="headerlink" href="#flow-family-of-functions" title="Link to this heading">¶</a></h1>
+<h1>Flow - Familj av funktioner<a class="headerlink" href="#flow-family-of-functions" title="Länk till denna rubrik">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Only the Max flow calculation using Push and Relabel
 algorithm.</p></li>
@@ -246,7 +213,7 @@ in a graph.</p></li>
 <div class="toctree-wrapper compound">
 </div>
 <section id="flow-functions-general-information">
-<h2>Flödesfunktioner Allmän information<a class="headerlink" href="#flow-functions-general-information" title="Link to this heading">¶</a></h2>
+<h2>Flödesfunktioner Allmän information<a class="headerlink" href="#flow-functions-general-information" title="Länk till denna rubrik">¶</a></h2>
 <p><strong>De viktigaste egenskaperna är:</strong></p>
 <ul class="simple">
 <li><p>Grafen är <strong>riktad</strong>.</p></li>
@@ -280,9 +247,9 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a>, but the actual flow through each edge may vary.</p>
 </section>
 <section id="inner-queries">
-<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Länk till denna rubrik">¶</a></h2>
 <section id="edges-sql">
-<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Länk till denna rubrik">¶</a></h3>
 <p class="rubric">Kapacitet kanter</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a></p></li>
@@ -479,7 +446,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>Kombinationer SQL<a class="headerlink" href="#combinations-sql" title="Link to this heading">¶</a></h3>
+<h3>Kombinationer SQL<a class="headerlink" href="#combinations-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -512,7 +479,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 </section>
 </section>
 <section id="result-columns">
-<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Länk till denna rubrik">¶</a></h2>
 <p>Använd i</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a></p></li>
@@ -598,7 +565,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 </table>
 </section>
 <section id="advanced-documentation">
-<h2>Avancerad dokumentation<a class="headerlink" href="#advanced-documentation" title="Link to this heading">¶</a></h2>
+<h2>Avancerad dokumentation<a class="headerlink" href="#advanced-documentation" title="Länk till denna rubrik">¶</a></h2>
 <p>Ett flödesnät är en riktad graf där varje kant har en kapacitet och ett flöde. Flödet genom en kant får inte överstiga kapaciteten i kanten. Dessutom måste det inkommande och utgående flödet för en nod vara lika med undantag för källan som bara har utgående flöde och destinationen (sink) som bara har inkommande flöde.</p>
 <p>Algoritmer för maximalt flöde beräknar det maximala flödet genom grafen och flödet för varje kant.</p>
 <p>Det maximala flödet genom grafen är garanterat detsamma för alla implementeringar, men det faktiska flödet genom varje kant kan variera.</p>
@@ -647,7 +614,7 @@ or sink and summing the flow from/to it. In particular:</p>
 </ul>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_flow_problem">https://en.wikipedia.org/wiki/Maximum_flow_problem</a></p></li>
 </ul>
@@ -672,8 +639,8 @@ or sink and summing the flow from/to it. In particular:</p>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=33914f1f"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -164,53 +164,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code></a><ul>
-<li><a class="reference internal" href="#description">Descripción</a><ul>
-<li><a class="reference internal" href="#problem-definition">Definición del Problema</a></li>
-<li><a class="reference internal" href="#characteristics">Características</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#signatures">Firmas</a></li>
-<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#tsp-optional-parameters">Parámetros opcionales de TSP</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
-<li><a class="reference internal" href="#matrix-sql">SQL de matriz</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
-<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#start-from-vertex-1">Inicio en el vértice <span class="math notranslate nohighlight">\(1\)</span></a></li>
-<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix">Usar los puntos de interés para generar una matriz asimétrica.</a></li>
-<li><a class="reference internal" href="#connected-incomplete-data">Datos incompletos conectados</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Ver también</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="TSP-family.html" title="Previous Chapter: Vendedor Viajante - Familia de funciones"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Vendedor Viaj...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_TSPeuclidean.html" title="Next Chapter: pgr_TSPeuclidean"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_TSPeuclidean &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_TSP','es'));  </script>
             
   <div class="line-block" id="index-0">
@@ -237,7 +191,7 @@ precision,double precision,double precision,boolean)</p></li>
 </ul>
 <p class="rubric">Versión 3.2.1</p>
 <ul class="simple">
-<li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
+<li><p>Algoritmo Metrico de la <a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html">Librería Boost</a></p></li>
 <li><p>El algoritmo de recocido simulado ya no es utilizado</p>
 <ul>
 <li><p>Se ignoran los parámetros relacionados con el algoritmo de recocido simulado: <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
@@ -352,7 +306,7 @@ on any component and will include data only from that component.</p></li>
 </li>
 <li><p>One cycle attempt to remove crossing edges is done to the TSP results.</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Adentro: Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Adentro: Boost Graph</p>
 </section>
 </section>
 <section id="signatures">
@@ -378,7 +332,7 @@ on any component and will include data only from that component.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
-<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 3</span>    'SELECT id, source, target, cost, reverse_cost FROM edges',
 <span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
 <span class="linenos"> 5</span>    directed =&gt; false) $$);
 <span class="linenos"> 6</span> seq | node | cost | agg_cost
@@ -540,7 +494,7 @@ on any component and will include data only from that component.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
-<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 3</span>    'SELECT id, source, target, cost, reverse_cost FROM edges',
 <span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
 <span class="linenos"> 5</span>    directed =&gt; false) $$,
 <span class="linenos"> 6</span>  start_id =&gt; 1);
@@ -584,9 +538,9 @@ on any component and will include data only from that component.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_withPointsCostMatrix(
-<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;,
-<span class="linenos"> 4</span>    &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
-<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6], &#39;r&#39;,
+<span class="linenos"> 3</span>    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+<span class="linenos"> 4</span>    'SELECT pid, edge_id, fraction from pointsOfInterest',
+<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6], 'r',
 <span class="linenos"> 6</span>    directed =&gt; true) $$,
 <span class="linenos"> 7</span>  start_id =&gt; 7,
 <span class="linenos"> 8</span>  end_id =&gt; 11);
@@ -667,7 +621,7 @@ on any component and will include data only from that component.</p></li>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: aproximación métrica de TSP</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html">Boost: aproximación métrica de TSP</a></p></li>
 <li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Problema_del_viajante">Wikipedia: Problema del viajante</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
@@ -691,8 +645,8 @@ on any component and will include data only from that component.</p></li>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Actualizado por última vez en nov 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Actualizado por última vez en nov 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=4c40d038"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -170,60 +170,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code></a><ul>
-<li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#one-point">One point</a></li>
-<li><a class="reference internal" href="#many-points">Many points</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters">Parameters</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Result columns</a></li>
-<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
-<li><a class="reference internal" href="#one-point-in-an-edge">One point in an edge</a></li>
-<li><a class="reference internal" href="#one-point-dry-run-execution">One point dry run execution</a></li>
-<li><a class="reference internal" href="#many-points-in-an-edge">Many points in an edge</a></li>
-<li><a class="reference internal" href="#many-points-dry-run-execution">Many points dry run execution</a></li>
-<li><a class="reference internal" href="#find-at-most-two-routes-to-a-given-point">Find at most two routes to a given point</a></li>
-<li><a class="reference internal" href="#a-point-of-interest-table">A point of interest table</a><ul>
-<li><a class="reference internal" href="#points-of-interest">Points of interest</a></li>
-<li><a class="reference internal" href="#points-of-interest-fill-up">Points of interest fill up</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_extractVertices.html" title="Previous Chapter: pgr_extractVertices"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_extractVertices</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_separateCrossing.html" title="Next Chapter: pgr_separateCrossing"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_separateCrossing &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_findCloseEdges','en'));  </script>
             
   <div class="line-block" id="index-0">
@@ -253,7 +200,7 @@ point geometry.</p>
 adjustments needed by the application.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code> is returned on dryrun executions</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -570,14 +517,14 @@ ST_MakePoint(0,1.5), 5, dryrun =&gt; true);
 NOTICE:
 WITH
 edges_sql AS (SELECT 1 AS id, ST_MakeLine(ST_makePoint(2,0), ST_MakePoint(2,3)) AS geom),
-point_sql AS (SELECT unnest(&#39;{01010000000000000000000000000000000000F83F}&#39;::geometry[]) AS point),
+point_sql AS (SELECT unnest('{01010000000000000000000000000000000000F83F}'::geometry[]) AS point),
 results AS (
   SELECT
     id::BIGINT AS edge_id,
     ST_LineLocatePoint(geom, point) AS fraction,
-    CASE WHEN ST_Intersects(ST_Buffer(geom, 5, &#39;side=right endcap=flat&#39;), point)
-         THEN &#39;r&#39;
-         ELSE &#39;l&#39; END::CHAR AS side,
+    CASE WHEN ST_Intersects(ST_Buffer(geom, 5, 'side=right endcap=flat'), point)
+         THEN 'r'
+         ELSE 'l' END::CHAR AS side,
     geom &lt;-&gt; point AS distance,
     point,
     ST_MakeLine(point, ST_ClosestPoint(geom, point)) AS new_line
@@ -673,14 +620,14 @@ ARRAY[ST_MakePoint(0,2), ST_MakePoint(3,1)]::GEOMETRY[], 5, dryrun=&gt;true);
 NOTICE:
 WITH
 edges_sql AS (SELECT 1 AS id, ST_MakeLine(ST_makePoint(1,0), ST_MakePoint(1,3)) AS geom),
-point_sql AS (SELECT unnest(&#39;{010100000000000000000000000000000000000040:01010000000000000000000840000000000000F03F}&#39;::geometry[]) AS point),
+point_sql AS (SELECT unnest('{010100000000000000000000000000000000000040:01010000000000000000000840000000000000F03F}'::geometry[]) AS point),
 results AS (
   SELECT
     id::BIGINT AS edge_id,
     ST_LineLocatePoint(geom, point) AS fraction,
-    CASE WHEN ST_Intersects(ST_Buffer(geom, 5, &#39;side=right endcap=flat&#39;), point)
-         THEN &#39;r&#39;
-         ELSE &#39;l&#39; END::CHAR AS side,
+    CASE WHEN ST_Intersects(ST_Buffer(geom, 5, 'side=right endcap=flat'), point)
+         THEN 'r'
+         ELSE 'l' END::CHAR AS side,
     geom &lt;-&gt; point AS distance,
     point,
     ST_MakeLine(point, ST_ClosestPoint(geom, point)) AS new_line
@@ -712,7 +659,7 @@ WHERE rn &lt;= 1
         (SELECT geom FROM pointsOfInterest WHERE pid = 5),
         0.5, cap =&gt; 2)
   $p$,
-  1, ARRAY[-1, -2], &#39;r&#39;);
+  1, ARRAY[-1, -2], 'r');
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         1 |      -2 |    1 |    6 |    1 |        0
@@ -820,7 +767,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 </div>
 <p>Any other additional modification: In this manual, point <span class="math notranslate nohighlight">\(6\)</span> can be
 reached from both sides.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">'b'</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The points of interest:</p>
@@ -871,8 +818,8 @@ reached from both sides.</p>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on Nov 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on Nov 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

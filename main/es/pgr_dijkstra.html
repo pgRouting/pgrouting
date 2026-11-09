@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=33914f1f"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -217,106 +217,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a><ul>
-<li><a class="reference internal" href="#description">Descripción</a></li>
-<li><a class="reference internal" href="#signatures">Firmas</a><ul>
-<li><a class="reference internal" href="#one-to-one">Uno a Uno</a></li>
-<li><a class="reference internal" href="#one-to-many">Uno a Muchos</a></li>
-<li><a class="reference internal" href="#many-to-one">Muchos a Uno</a></li>
-<li><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></li>
-<li><a class="reference internal" href="#combinations">Combinaciones</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-<li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
-<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#for-directed-graphs-with-cost-and-reverse-cost-columns">Para grafos <strong>dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><ul>
-<li><a class="reference internal" href="#path-from-6-to-10">1) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></li>
-<li><a class="reference internal" href="#path-from-6-to-7">2) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></li>
-<li><a class="reference internal" href="#path-from-12-to-10">3) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></li>
-<li><a class="reference internal" href="#path-from-12-to-7">4) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></li>
-<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2">5) Usando Uno a Muchos para obtener la solución de los ejemplos 1 y 2</a></li>
-<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4">6) Usando Muchos a Uno para obtener la solución de los ejemplos 2 y 4</a></li>
-<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4">7) Usando Muchos a Muchos para obtener la solución de los ejemplos 1 y 4</a></li>
-<li><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-1-to-3">8) Usando Combinaciones para obtener la solución de los ejemplos 1 a 3</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#for-undirected-graphs-with-cost-and-reverse-cost-columns">Para grafos <strong>no dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><ul>
-<li><a class="reference internal" href="#id1">9) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></li>
-<li><a class="reference internal" href="#id2">10) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></li>
-<li><a class="reference internal" href="#id3">11) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></li>
-<li><a class="reference internal" href="#id4">12) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></li>
-<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10">13) Usando Uno a Muchos para obtener la solución de los ejemplos 9 y 10</a></li>
-<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12">14) Usando Muchos a Uno para obtener la solución de los ejemplos 10 y 12</a></li>
-<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12">15) Usando Muchos a Muchos para obtener la solución de los ejemplos 9 y 12</a></li>
-<li><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-9-to-11">16) Usando Combinaciones para obtener la solución de los ejemplos 9 a 13</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#for-directed-graphs-only-with-cost-column">Para grafos <strong>dirigidos</strong> con columna``cost``</a><ul>
-<li><a class="reference internal" href="#id5">17) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></li>
-<li><a class="reference internal" href="#id6">18) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></li>
-<li><a class="reference internal" href="#id7">19) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></li>
-<li><a class="reference internal" href="#id8">20) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></li>
-<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18">21) Usando Uno a Muchos para obtener la solución de los ejemplos 17 y 18</a></li>
-<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20">22) Usando Muchos a Uno para obtener la solución de los ejemplos 18 y 20</a></li>
-<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20">23) Usando Muchos a Muchos para obtener la solución de los ejemplos 17 y 20</a></li>
-<li><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-17-to-19">24) Usando Combinaciones para obtener la solución de los ejemplos 17 a 19</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#for-undirected-graphs-only-with-cost-column">Para grafos <strong>no dirigidos</strong> con columna``cost``</a><ul>
-<li><a class="reference internal" href="#id9">25) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></li>
-<li><a class="reference internal" href="#id10">26) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></li>
-<li><a class="reference internal" href="#id11">27) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></li>
-<li><a class="reference internal" href="#id12">28) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></li>
-<li><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26">29) Usando Uno a Muchos para obtener la solución de los ejemplos 25 y 26</a></li>
-<li><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28">30) Usando Muchos a Uno para obtener la solución de los ejemplos 26 y 28</a></li>
-<li><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28">31) Usando Muchos a Muchos para obtener la solución de los ejemplos 25 y 28</a></li>
-<li><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-25-to-27">32) Usando Combinaciones para obtener la solución de los ejemplos 25 a 27</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#equvalences-between-signatures">Equivalencias entre firmas</a><ul>
-<li><a class="reference internal" href="#using-one-to-one">33) Usando Uno a Uno</a></li>
-<li><a class="reference internal" href="#using-one-to-many">34) Usando Uno a Muchos</a></li>
-<li><a class="reference internal" href="#using-many-to-one">35) Usando Muchos a Uno</a></li>
-<li><a class="reference internal" href="#using-many-to-many">36) Usando Muchos a Muchos</a></li>
-<li><a class="reference internal" href="#using-combinations">37) Usando Combinaciones</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Ver también</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="dijkstra-family.html" title="Previous Chapter: Dijkstra - Familia de funciones"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Dijkstra - Fa...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_dijkstraCost.html" title="Next Chapter: pgr_dijkstraCost"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_dijkstraCost &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_dijkstra','es'));  </script>
             
   <div class="line-block" id="index-0">
@@ -397,7 +298,7 @@
 <li><p>Para fines de optimización, se ignora cualquier valor duplicado en los vertices de salida o destino.</p></li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(| start\_vids | * (V \log V + E))\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Adentro: Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -434,7 +335,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_Dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+  <span class="s1">'select id, source, target, cost, reverse_cost from edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -467,7 +368,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_Dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+  <span class="s1">'select id, source, target, cost, reverse_cost from edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -505,7 +406,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_Dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+  <span class="s1">'select id, source, target, cost, reverse_cost from edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">17</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -543,7 +444,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_Dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+  <span class="s1">'select id, source, target, cost, reverse_cost from edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">],</span>
   <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -603,8 +504,8 @@
 </div>
 <p>La consulta:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_Dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT source, target FROM combinations&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
+  <span class="s1">'SELECT source, target FROM combinations'</span><span class="p">,</span>
   <span class="n">false</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -841,7 +742,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_Dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+  <span class="s1">'select id, source, target, cost, reverse_cost from edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -877,7 +778,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_Dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+  <span class="s1">'select id, source, target, cost, reverse_cost from edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -913,8 +814,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_Dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
+  <span class="s1">'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)'</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -1008,7 +909,7 @@
 <section id="path-from-6-to-10">
 <h4><a class="toc-backref" href="#id18" role="doc-backlink">1) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-6-to-10" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1027,7 +928,7 @@
 <section id="path-from-6-to-7">
 <h4><a class="toc-backref" href="#id19" role="doc-backlink">2) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-6-to-7" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1042,7 +943,7 @@
 <section id="path-from-12-to-10">
 <h4><a class="toc-backref" href="#id20" role="doc-backlink">3) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-12-to-10" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1060,7 +961,7 @@
 <section id="path-from-12-to-7">
 <h4><a class="toc-backref" href="#id21" role="doc-backlink">4) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-12-to-7" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1079,7 +980,7 @@
 <h4>5) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a> para obtener la solución de los ejemplos 1 y 2<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1101,7 +1002,7 @@
 <h4>6) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a> para obtener la solución de los ejemplos 2 y 4<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="mi">7</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1122,7 +1023,7 @@
 <h4>7) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a> para obtener la solución de los ejemplos 1 y 4<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1154,8 +1055,8 @@
 <h4>8) Usando <a class="reference internal" href="#combinations">Combinaciones</a> para obtener la solución de los ejemplos 1 a 3<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-1-to-3" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)&#39;</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
+  <span class="s1">'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)'</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -1190,7 +1091,7 @@
 <section id="id1">
 <h4><a class="toc-backref" href="#id27" role="doc-backlink">9) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1206,7 +1107,7 @@
 <section id="id2">
 <h4><a class="toc-backref" href="#id28" role="doc-backlink">10) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1222,7 +1123,7 @@
 <section id="id3">
 <h4><a class="toc-backref" href="#id29" role="doc-backlink">11) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1239,7 +1140,7 @@
 <section id="id4">
 <h4><a class="toc-backref" href="#id30" role="doc-backlink">12) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1257,7 +1158,7 @@
 <h4>13) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a> para obtener la solución de los ejemplos 9 y 10<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1276,7 +1177,7 @@
 <h4>14) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a> para obtener la solución de los ejemplos 10 y 12<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="mi">7</span><span class="p">,</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1296,7 +1197,7 @@
 <h4>15) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a> para obtener la solución de los ejemplos 9 y 12<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1321,8 +1222,8 @@
 <h4>16) Usando <a class="reference internal" href="#combinations">Combinaciones</a> para obtener la solución de los ejemplos 9 a 13<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-9-to-11" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
+  <span class="s1">'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)'</span><span class="p">,</span>
   <span class="n">false</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1352,7 +1253,7 @@
 <section id="id5">
 <h4><a class="toc-backref" href="#id36" role="doc-backlink">17) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1365,7 +1266,7 @@
 <section id="id6">
 <h4><a class="toc-backref" href="#id37" role="doc-backlink">18) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1380,7 +1281,7 @@
 <section id="id7">
 <h4><a class="toc-backref" href="#id38" role="doc-backlink">19) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1393,7 +1294,7 @@
 <section id="id8">
 <h4><a class="toc-backref" href="#id39" role="doc-backlink">20) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1407,7 +1308,7 @@
 <h4>21) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a> para obtener la solución de los ejemplos 17 y 18<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1423,7 +1324,7 @@
 <h4>22) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a> para obtener la solución de los ejemplos 18 y 20<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="mi">7</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1439,7 +1340,7 @@
 <h4>23) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a> para obtener la solución de los ejemplos 17 y 20<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1455,8 +1356,8 @@
 <h4>24) Usando <a class="reference internal" href="#combinations">Combinaciones</a> para obtener la solución de los ejemplos 17 a 19<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-17-to-19" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)&#39;</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
+  <span class="s1">'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)'</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -1480,7 +1381,7 @@
 <section id="id9">
 <h4><a class="toc-backref" href="#id45" role="doc-backlink">25) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1498,7 +1399,7 @@
 <section id="id10">
 <h4><a class="toc-backref" href="#id46" role="doc-backlink">26) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1514,7 +1415,7 @@
 <section id="id11">
 <h4><a class="toc-backref" href="#id47" role="doc-backlink">27) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1531,7 +1432,7 @@
 <section id="id12">
 <h4><a class="toc-backref" href="#id48" role="doc-backlink">28) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1549,7 +1450,7 @@
 <h4>29) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a> para obtener la solución de los ejemplos 25 y 26<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1570,7 +1471,7 @@
 <h4>30) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a> para obtener la solución de los ejemplos 26 y 28<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="mi">7</span><span class="p">,</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1590,7 +1491,7 @@
 <h4>31) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a> para obtener la solución de los ejemplos 25 y 28<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
   <span class="n">false</span>
 <span class="p">);</span>
@@ -1617,8 +1518,8 @@
 <h4>32) Usando <a class="reference internal" href="#combinations">Combinaciones</a> para obtener la solución de los ejemplos 25 a 27<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-25-to-27" title="Link to this heading">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
+  <span class="s1">'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)'</span><span class="p">,</span>
   <span class="n">false</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1644,7 +1545,7 @@
 <section id="using-one-to-one">
 <h4>33) Usando <a class="reference internal" href="#one-to-one">Uno a Uno</a><a class="headerlink" href="#using-one-to-one" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1663,7 +1564,7 @@
 <section id="using-one-to-many">
 <h4>34) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a><a class="headerlink" href="#using-one-to-many" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1682,7 +1583,7 @@
 <section id="using-many-to-one">
 <h4>35) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a><a class="headerlink" href="#using-many-to-one" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="mi">10</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1701,7 +1602,7 @@
 <section id="using-many-to-many">
 <h4>36) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a><a class="headerlink" href="#using-many-to-many" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -1720,8 +1621,8 @@
 <section id="using-combinations">
 <h4>37) Usando <a class="reference internal" href="#combinations">Combinaciones</a><a class="headerlink" href="#using-combinations" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES(6, 10)) AS combinations (source, target)&#39;</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
+  <span class="s1">'SELECT * FROM (VALUES(6, 10)) AS combinations (source, target)'</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -1742,7 +1643,7 @@
 <h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html">Boost: Camino mas corto Dijkstra</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/shortest_paths/dijkstra_shortest_paths.html">Boost: Camino mas corto Dijkstra</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
@@ -1766,8 +1667,8 @@
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Actualizado por última vez en nov 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Actualizado por última vez en nov 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

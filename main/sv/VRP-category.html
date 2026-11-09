@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=072f198e"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -75,9 +75,9 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Funktionsfamiljer</a></li>
 </ul>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="proposed.html">Föreslagna funktioner</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Versionsinformation</a></li>
@@ -170,66 +170,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Funktioner för fordonsdirigering - Kategori</a><ul>
-<li><a class="reference internal" href="#introduction">Introduktion</a><ul>
-<li><a class="reference internal" href="#characteristics">Egenskaper</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#pick-delivery">Pick &amp; Delivery</a></li>
-<li><a class="reference internal" href="#parameters">Parametrar</a><ul>
-<li><a class="reference internal" href="#pick-deliver">Hämta och leverera</a></li>
-<li><a class="reference internal" href="#pick-deliver-optional-parameters">Pick-Deliver valfria parametrar</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
-<li><a class="reference internal" href="#orders-sql">beställningar SQL</a></li>
-<li><a class="reference internal" href="#vehicles-sql">Fordon SQL</a></li>
-<li><a class="reference internal" href="#matrix-sql">Matrix SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Resultat kolumner</a><ul>
-<li><a class="reference internal" href="#summary-row">Sammanfattande rad</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#handling-parameters">Parametrar för hantering</a><ul>
-<li><a class="reference internal" href="#capacity-and-demand-units-handling">Hantering av kapacitets- och efterfrågeenheter</a></li>
-<li><a class="reference internal" href="#locations">Platser</a></li>
-<li><a class="reference internal" href="#time-handling">Tidshantering</a></li>
-<li><a class="reference internal" href="#factor-handling">Faktorhantering</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="via-category.html" title="Previous Chapter: Via - Kategori"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Via - Kategori</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_pickDeliver.html" title="Next Chapter: pgr_pickDeliver - Experimentell"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_pickDeliv... &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('VRP-category','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="vehicle-routing-functions-category">
-<h1><a class="toc-backref" href="#id1" role="doc-backlink">Funktioner för fordonsdirigering - Kategori</a><a class="headerlink" href="#vehicle-routing-functions-category" title="Link to this heading">¶</a></h1>
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">Funktioner för fordonsdirigering - Kategori</a><a class="headerlink" href="#vehicle-routing-functions-category" title="Länk till denna rubrik">¶</a></h1>
 <div class="admonition-experimental admonition">
 <p class="admonition-title">Experiment</p>
 <div class="admonition warning">
@@ -317,7 +265,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Introduktion</a><a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Introduktion</a><a class="headerlink" href="#introduction" title="Länk till denna rubrik">¶</a></h2>
 <p>Vehicle Routing Problems <cite>VRP</cite> är <strong>NP-hårda</strong> optimeringsproblem och är en generalisering av Travelling Salesman Problem (TSP).</p>
 <ul class="simple">
 <li><p>VRP:s mål är att minimera den totala ruttkostnaden.</p></li>
@@ -325,7 +273,7 @@
 </ul>
 <p><strong>pgRouting försöker inte implementera alla varianter.</strong></p>
 <section id="characteristics">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Egenskaper</a><a class="headerlink" href="#characteristics" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Egenskaper</a><a class="headerlink" href="#characteristics" title="Länk till denna rubrik">¶</a></h3>
 <ul class="simple">
 <li><p>Capacitated Vehicle Routing Problem <cite>CVRP</cite> där fordonen har begränsad lastkapacitet för godset.</p></li>
 <li><p>Vehicle Routing Problem with Time Windows <cite>VRPTW</cite> där platserna har tidsfönster inom vilka fordonets besök måste göras.</p></li>
@@ -341,7 +289,7 @@
 </section>
 </section>
 <section id="pick-delivery">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Pick &amp; Delivery</a><a class="headerlink" href="#pick-delivery" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Pick &amp; Delivery</a><a class="headerlink" href="#pick-delivery" title="Länk till denna rubrik">¶</a></h2>
 <p>Problem: <cite>CVRPPDTW</cite> Kapaciterade plock- och leveransfordons ruttproblem med tidsfönster</p>
 <ul class="simple">
 <li><p>Tiden är relativ till <cite>0</cite></p></li>
@@ -370,9 +318,9 @@
 </ul>
 </section>
 <section id="parameters">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Parametrar</a><a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Parametrar</a><a class="headerlink" href="#parameters" title="Länk till denna rubrik">¶</a></h2>
 <section id="pick-deliver">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Hämta och leverera</a><a class="headerlink" href="#pick-deliver" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Hämta och leverera</a><a class="headerlink" href="#pick-deliver" title="Länk till denna rubrik">¶</a></h3>
 <p>Används i <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimentell</span></a></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -417,7 +365,7 @@
 </table>
 </section>
 <section id="pick-deliver-optional-parameters">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Pick-Deliver valfria parametrar</a><a class="headerlink" href="#pick-deliver-optional-parameters" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Pick-Deliver valfria parametrar</a><a class="headerlink" href="#pick-deliver-optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Kolumn</p></th>
@@ -456,9 +404,9 @@
 </section>
 </section>
 <section id="inner-queries">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Inre frågor</a><a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Inre frågor</a><a class="headerlink" href="#inner-queries" title="Länk till denna rubrik">¶</a></h2>
 <section id="orders-sql">
-<h3><a class="reference internal" href="#orders-sql">beställningar SQL</a><a class="headerlink" href="#orders-sql" title="Link to this heading">¶</a></h3>
+<h3><a class="reference internal" href="#orders-sql">beställningar SQL</a><a class="headerlink" href="#orders-sql" title="Länk till denna rubrik">¶</a></h3>
 <p>Gemensamma kolumner för order SQL i båda implementationerna:</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -579,7 +527,7 @@
 </dl>
 </section>
 <section id="vehicles-sql">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Fordon SQL</a><a class="headerlink" href="#vehicles-sql" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Fordon SQL</a><a class="headerlink" href="#vehicles-sql" title="Länk till denna rubrik">¶</a></h3>
 <p>Gemensamma kolumner för fordon SQL i båda implementationerna:</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -711,7 +659,7 @@
 </dl>
 </section>
 <section id="matrix-sql">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink">Matrix SQL</a><a class="headerlink" href="#matrix-sql" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Matrix SQL</a><a class="headerlink" href="#matrix-sql" title="Länk till denna rubrik">¶</a></h3>
 <p>Uppsättning av <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -743,7 +691,7 @@
 </section>
 </section>
 <section id="result-columns">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">Resultat kolumner</a><a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Resultat kolumner</a><a class="headerlink" href="#result-columns" title="Länk till denna rubrik">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Returns</span> <span class="nb">set</span> <span class="n">of</span>
  <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
      <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span> <span class="n">departure_time</span><span class="p">)</span>
@@ -891,7 +839,7 @@
 </tbody>
 </table>
 <section id="summary-row">
-<h3><a class="toc-backref" href="#id13" role="doc-backlink">Sammanfattande rad</a><a class="headerlink" href="#summary-row" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Sammanfattande rad</a><a class="headerlink" href="#summary-row" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Kolumn</p></th>
@@ -977,7 +925,7 @@
 </section>
 </section>
 <section id="handling-parameters">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">Parametrar för hantering</a><a class="headerlink" href="#handling-parameters" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Parametrar för hantering</a><a class="headerlink" href="#handling-parameters" title="Länk till denna rubrik">¶</a></h2>
 <p>För att definiera ett problem måste flera överväganden göras för att få konsekventa resultat. Detta avsnitt ger en inblick i hur parametrar ska beaktas.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#capacity-and-demand-units-handling">Hantering av kapacitets- och efterfrågeenheter</a></p></li>
@@ -986,7 +934,7 @@
 <li><p><a class="reference internal" href="#factor-handling">Faktorhantering</a></p></li>
 </ul>
 <section id="capacity-and-demand-units-handling">
-<h3><a class="toc-backref" href="#id15" role="doc-backlink">Hantering av kapacitets- och efterfrågeenheter</a><a class="headerlink" href="#capacity-and-demand-units-handling" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Hantering av kapacitets- och efterfrågeenheter</a><a class="headerlink" href="#capacity-and-demand-units-handling" title="Länk till denna rubrik">¶</a></h3>
 <p>Ett fordons ”kapacitet” kan mätas i:</p>
 <ul class="simple">
 <li><p>Volymenheter som <span class="math notranslate nohighlight">\(m^3\)</span>.</p></li>
@@ -1023,7 +971,7 @@
 </table>
 </section>
 <section id="locations">
-<h3><a class="toc-backref" href="#id16" role="doc-backlink">Platser</a><a class="headerlink" href="#locations" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Platser</a><a class="headerlink" href="#locations" title="Länk till denna rubrik">¶</a></h3>
 <ul class="simple">
 <li><p>När du använder <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimentell</span></a>:</p>
 <ul>
@@ -1041,7 +989,7 @@
 </ul>
 </section>
 <section id="time-handling">
-<h3><a class="toc-backref" href="#id17" role="doc-backlink">Tidshantering</a><a class="headerlink" href="#time-handling" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Tidshantering</a><a class="headerlink" href="#time-handling" title="Länk till denna rubrik">¶</a></h3>
 <p>Tiderna är relativa till <strong>0</strong>. Alla tidsenheter måste konverteras till en referens på <strong>0</strong> och samma tidsenheter.</p>
 <p>Anta att en fordonsförare börjar sitt skift kl. 9.00 och slutar kl. 16.30 och att servicetiden är 10 minuter och 30 sekunder.</p>
 <table class="docutils align-default">
@@ -1082,7 +1030,7 @@
 </table>
 </section>
 <section id="factor-handling">
-<span id="pd-factor"></span><h3><a class="toc-backref" href="#id18" role="doc-backlink">Faktorhantering</a><a class="headerlink" href="#factor-handling" title="Link to this heading">¶</a></h3>
+<span id="pd-factor"></span><h3><a class="toc-backref" href="#id18" role="doc-backlink">Faktorhantering</a><a class="headerlink" href="#factor-handling" title="Länk till denna rubrik">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">factor</span></code> fungerar som en multiplikator för att konvertera matrisvärden eller euklidiska värden från avståndsvärden till tidsenheter.</p>
 <ul class="simple">
 <li><p>När värdena redan är i önskad tidsenhet</p>
@@ -1162,7 +1110,7 @@
 </section>
 </section>
 <section id="see-also">
-<h2><a class="toc-backref" href="#id19" role="doc-backlink">Se även</a><a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Se även</a><a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">https://en.wikipedia.org/wiki/Vehicle_routing_problem</a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a></p></li>
@@ -1188,8 +1136,8 @@
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

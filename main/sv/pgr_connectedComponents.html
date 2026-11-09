@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=072f198e"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -75,9 +75,9 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Funktionsfamiljer</a></li>
 </ul>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="proposed.html">Föreslagna funktioner</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimentella funktioner</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Versionsinformation</a></li>
@@ -155,51 +155,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code></a><ul>
-<li><a class="reference internal" href="#description">Beskrivning</a></li>
-<li><a class="reference internal" href="#signatures">Underskrifter</a></li>
-<li><a class="reference internal" href="#parameters">Parametrar</a></li>
-<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
-<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
-<li><a class="reference internal" href="#additional-examples">Ytterligare exempel</a><ul>
-<li><a class="reference internal" href="#connecting-disconnected-components">Anslutning av frånkopplade komponenter</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="components-family.html" title="Previous Chapter: Komponenter - Familj av funktioner"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Komponenter -...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_strongComponents.html" title="Next Chapter: pgr_strongComponents"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_strongComponents &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_connectedComponents','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-connectedcomponents">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code><a class="headerlink" href="#pgr-connectedcomponents" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code><a class="headerlink" href="#pgr-connectedcomponents" title="Länk till denna rubrik">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code> - Anslutna komponenter i en odelad graf med hjälp av en DFS-baserad metod.</p>
 <p class="rubric">Tillgänglighet</p>
 <ul class="simple">
@@ -221,7 +184,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<h2>Beskrivning<a class="headerlink" href="#description" title="Länk till denna rubrik">¶</a></h2>
 <p>En kopplad komponent i en odelad graf är en uppsättning hörn som alla är nåbara från varandra.</p>
 <p><strong>De viktigaste egenskaperna är:</strong></p>
 <ul class="simple">
@@ -235,10 +198,10 @@
 </li>
 <li><p>Speltid: <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
 </section>
 <section id="signatures">
-<h2>Underskrifter<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<h2>Underskrifter<a class="headerlink" href="#signatures" title="Länk till denna rubrik">¶</a></h2>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -255,7 +218,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
 <span class="o">-----+-----------+------</span>
@@ -286,7 +249,7 @@
 </figure>
 </section>
 <section id="parameters">
-<h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<h2>Parametrar<a class="headerlink" href="#parameters" title="Länk till denna rubrik">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -303,9 +266,9 @@
 </table>
 </section>
 <section id="inner-queries">
-<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Länk till denna rubrik">¶</a></h2>
 <section id="edges-sql">
-<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -364,7 +327,7 @@
 </section>
 </section>
 <section id="result-columns">
-<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Länk till denna rubrik">¶</a></h2>
 <p>Returnerar uppsättning av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">node)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -394,12 +357,12 @@
 </table>
 </section>
 <section id="additional-examples">
-<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Länk till denna rubrik">¶</a></h2>
 <section id="connecting-disconnected-components">
-<h3>Anslutning av frånkopplade komponenter<a class="headerlink" href="#connecting-disconnected-components" title="Link to this heading">¶</a></h3>
+<h3>Anslutning av frånkopplade komponenter<a class="headerlink" href="#connecting-disconnected-components" title="Länk till denna rubrik">¶</a></h3>
 <p>För att få grafens anslutningsmöjligheter:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
 <span class="o">-----+-----------+------</span>
@@ -437,7 +400,7 @@
 <p>I detta exempel kommer <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> och <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> att användas.</p>
 <p class="rubric">Få anslutningsmöjligheterna</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
 <span class="o">-----+-----------+------</span>
@@ -473,16 +436,16 @@
 <p class="rubric">Infoga nya kanter</p>
 <p>Använd <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> och <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> för att infoga resultaten i tabellen över kanter.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
-<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM edges&#39;</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">'SELECT * FROM edges'</span><span class="p">)</span>
 <span class="n">UNION</span>
-<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateTouching</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM edges&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateTouching</span><span class="p">(</span><span class="s1">'SELECT * FROM edges'</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">6</span>
 </pre></div>
 </div>
 <p class="rubric">Skapa en tabell över hörnpunkter</p>
 <p>Skapa tabellen med hjälp av <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">AS</span>
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">'SELECT id, geom FROM edges'</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">18</span>
 </pre></div>
 </div>
@@ -512,7 +475,7 @@
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
 <span class="o">-----+-----------+------</span>
@@ -541,11 +504,11 @@
 </section>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="components-family.html"><span class="doc">Komponenter - Familj av funktioner</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/connected_components.html">Boost: Anslutna komponenter</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/connected_components/connected_components.html">Boost: Anslutna komponenter</a></p></li>
 <li><p>wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Connected_component_(graph_theory)">sammanhängande komponent</a></p></li>
 </ul>
 <p class="rubric">Index och tabeller</p>
@@ -569,8 +532,8 @@
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

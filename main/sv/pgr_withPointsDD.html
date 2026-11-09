@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=072f198e"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -166,62 +166,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><ul>
-<li><a class="reference internal" href="#description">Beskrivning</a></li>
-<li><a class="reference internal" href="#signatures">Underskrifter</a><ul>
-<li><a class="reference internal" href="#single-vertex">Enstaka toppunkt</a></li>
-<li><a class="reference internal" href="#multiple-vertices">Flera hörn</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters">Parametrar</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Valfria parametrar</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">Med punkter valfria parametrar</a></li>
-<li><a class="reference internal" href="#driving-distance-optional-parameters">Valfria parametrar för körsträcka</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
-<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Punkt SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
-<li><a class="reference internal" href="#additional-examples">Ytterligare exempel</a><ul>
-<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Använd <span class="xref std std-doc">pgr_findCloseEdges</span> i Points SQL.</a></li>
-<li><a class="reference internal" href="#driving-side-does-not-matter">Körsidan spelar ingen roll</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_withPointsKSP.html" title="Previous Chapter: pgr_withPointsKSP"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsKSP</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_withPointsVia.html" title="Next Chapter: pgr_withPointsVia"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPointsVia &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_withPointsDD','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-withpointsdd">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code><a class="headerlink" href="#pgr-withpointsdd" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code><a class="headerlink" href="#pgr-withpointsdd" title="Länk till denna rubrik">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - Returnerar köravståndet <strong>från</strong> en startpunkt.</p>
 <p class="rubric">Tillgänglighet</p>
 <p class="rubric">Version 4.0.2</p>
@@ -270,12 +222,12 @@
 <li><p>Ny föreslagen funktion.</p></li>
 </ul>
 <section id="description">
-<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<h2>Beskrivning<a class="headerlink" href="#description" title="Länk till denna rubrik">¶</a></h2>
 <p>Modifiera grafen så att den inkluderar punkter och använd Dijkstra-algoritmen för att extrahera alla noder och punkter som har kostnader som är mindre än eller lika med värdet <code class="docutils literal notranslate"><span class="pre">**avstånd**</span></code> från startpunkten. De extraherade kanterna kommer att överensstämma med motsvarande spännträd.</p>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
 </section>
 <section id="signatures">
-<h2>Underskrifter<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<h2>Underskrifter<a class="headerlink" href="#signatures" title="Länk till denna rubrik">¶</a></h2>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -290,7 +242,7 @@
 </div>
 </div>
 <section id="single-vertex">
-<span id="index-1"></span><h3>Enstaka toppunkt<a class="headerlink" href="#single-vertex" title="Link to this heading">¶</a></h3>
+<span id="index-1"></span><h3>Enstaka toppunkt<a class="headerlink" href="#single-vertex" title="Länk till denna rubrik">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -308,9 +260,9 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span>
   <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">pred</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+-------+-----------+------+------+------+------+----------</span>
@@ -325,7 +277,7 @@
 </div>
 </section>
 <section id="multiple-vertices">
-<span id="index-2"></span><h3>Flera hörn<a class="headerlink" href="#multiple-vertices" title="Link to this heading">¶</a></h3>
+<span id="index-2"></span><h3>Flera hörn<a class="headerlink" href="#multiple-vertices" title="Länk till denna rubrik">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -343,9 +295,9 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="mf">3.3</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="mf">3.3</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">,</span>
   <span class="n">equicost</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">pred</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+-------+-----------+------+------+------+------+----------</span>
@@ -370,7 +322,7 @@
 </section>
 </section>
 <section id="parameters">
-<h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<h2>Parametrar<a class="headerlink" href="#parameters" title="Länk till denna rubrik">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18.2%" />
@@ -456,7 +408,7 @@
 </dd>
 </dl>
 <section id="optional-parameters">
-<h3>Valfria parametrar<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>Valfria parametrar<a class="headerlink" href="#optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Kolumn</p></th>
@@ -479,7 +431,7 @@
 </table>
 </section>
 <section id="with-points-optional-parameters">
-<h3>Med punkter valfria parametrar<a class="headerlink" href="#with-points-optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>Med punkter valfria parametrar<a class="headerlink" href="#with-points-optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 15.9%" />
@@ -508,7 +460,7 @@
 </table>
 </section>
 <section id="driving-distance-optional-parameters">
-<h3>Valfria parametrar för körsträcka<a class="headerlink" href="#driving-distance-optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>Valfria parametrar för körsträcka<a class="headerlink" href="#driving-distance-optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 13.6%" />
@@ -538,9 +490,9 @@
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Länk till denna rubrik">¶</a></h2>
 <section id="edges-sql">
-<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -598,7 +550,7 @@
 </dl>
 </section>
 <section id="points-sql">
-<h3>Punkt SQL<a class="headerlink" href="#points-sql" title="Link to this heading">¶</a></h3>
+<h3>Punkt SQL<a class="headerlink" href="#points-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 15.6%" />
@@ -660,7 +612,7 @@
 </section>
 </section>
 <section id="result-columns">
-<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Länk till denna rubrik">¶</a></h2>
 <p>Returnerar uppsättning av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -719,7 +671,7 @@
 </table>
 </section>
 <section id="additional-examples">
-<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Länk till denna rubrik">¶</a></h2>
 <nav class="contents local" id="innehall">
 <ul class="simple">
 <li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">Använd <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> i Points SQL.</a></p></li>
@@ -727,7 +679,7 @@
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>Använd <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> i <a class="reference internal" href="#points-sql">Points SQL</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
+<h3>Använd <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> i <a class="reference internal" href="#points-sql">Points SQL</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Länk till denna rubrik">¶</a></h3>
 <p>Hitta köravståndet från de två närmaste platserna på grafen för punkten <cite>(2,9, 1,8)</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $e$ SELECT * FROM edges $e$,
@@ -737,7 +689,7 @@
         (SELECT ST_POINT(2.9, 1.8)),
         0.5, cap =&gt; 2)
   $p$,
-  ARRAY[-1, -2], 2.3, &#39;r&#39;,
+  ARRAY[-1, -2], 2.3, 'r',
   details =&gt; true);
  seq | depth | start_vid | pred | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+------+----------
@@ -772,12 +724,12 @@
 </ul>
 </section>
 <section id="driving-side-does-not-matter">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Körsidan spelar ingen roll</a><a class="headerlink" href="#driving-side-does-not-matter" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Körsidan spelar ingen roll</a><a class="headerlink" href="#driving-side-does-not-matter" title="Länk till denna rubrik">¶</a></h3>
 <p>Från punkt <span class="math notranslate nohighlight">\(1\)</span> inom ett avstånd av <span class="math notranslate nohighlight">\(3.3\)</span>, spelar ingen roll körsida, med detaljer.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span>
   <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
   <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">pred</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -802,7 +754,7 @@
 </section>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a></p></li>
@@ -828,8 +780,8 @@
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=072f198e"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -171,67 +171,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code></a><ul>
-<li><a class="reference internal" href="#description">Beskrivning</a></li>
-<li><a class="reference internal" href="#signatures">Underskrifter</a><ul>
-<li><a class="reference internal" href="#one-point">En punkt</a></li>
-<li><a class="reference internal" href="#many-points">Många punkt</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters">Parametrar</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Valfria parametrar</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
-<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
-<li><a class="reference internal" href="#additional-examples">Ytterligare exempel</a><ul>
-<li><a class="reference internal" href="#one-point-in-an-edge">En punkt i en kant</a></li>
-<li><a class="reference internal" href="#one-point-dry-run-execution">En punkts provkörning</a></li>
-<li><a class="reference internal" href="#many-points-in-an-edge">Många punkter i en kant</a></li>
-<li><a class="reference internal" href="#many-points-dry-run-execution">Utförande av torrkörning på många punkter</a></li>
-<li><a class="reference internal" href="#find-at-most-two-routes-to-a-given-point">Hitta högst två vägar till en given punkt</a></li>
-<li><a class="reference internal" href="#a-point-of-interest-table">Ett bord för intressepunkter</a><ul>
-<li><a class="reference internal" href="#points-of-interest">Attraktioner</a></li>
-<li><a class="reference internal" href="#points-of-interest-fill-up">Intressanta platser fylls upp</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_extractVertices.html" title="Previous Chapter: pgr_extractVertices"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_extractVertices</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_separateCrossing.html" title="Next Chapter: pgr_separateCrossing"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_separateCrossing &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_findCloseEdges','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-findcloseedges">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code><a class="headerlink" href="#pgr-findcloseedges" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code><a class="headerlink" href="#pgr-findcloseedges" title="Länk till denna rubrik">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> - Hittar de närmaste kanterna till en punktgeometri.</p>
 <p class="rubric">Tillgänglighet</p>
 <p class="rubric">Version 3.8.0</p>
@@ -245,17 +192,17 @@
 <li><p>Ny föreslagen funktion.</p></li>
 </ul>
 <section id="description">
-<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<h2>Beskrivning<a class="headerlink" href="#description" title="Länk till denna rubrik">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> - En verktygsfunktion som hittar den närmaste kanten till en punktgeometri.</p>
 <ul class="simple">
 <li><p>Geometrierna måste ligga i samma koordinatsystem (ha samma SRID).</p></li>
 <li><p>Koden för att göra beräkningarna kan erhållas för ytterligare specifika justeringar som krävs av applikationen.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code> returneras vid dryrun-körningar</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
 </section>
 <section id="signatures">
-<h2>Underskrifter<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<h2>Underskrifter<a class="headerlink" href="#signatures" title="Länk till denna rubrik">¶</a></h2>
 <p class="rubric">Sammanfattning</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
@@ -270,7 +217,7 @@
 </div>
 </div>
 <section id="one-point">
-<span id="index-1"></span><h3>En punkt<a class="headerlink" href="#one-point" title="Link to this heading">¶</a></h3>
+<span id="index-1"></span><h3>En punkt<a class="headerlink" href="#one-point" title="Länk till denna rubrik">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -307,7 +254,7 @@ FROM pgr_findCloseEdges(
 </div>
 </section>
 <section id="many-points">
-<span id="index-2"></span><h3>Många punkt<a class="headerlink" href="#many-points" title="Link to this heading">¶</a></h3>
+<span id="index-2"></span><h3>Många punkt<a class="headerlink" href="#many-points" title="Länk till denna rubrik">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -347,7 +294,7 @@ FROM pgr_findCloseEdges(
 </section>
 </section>
 <section id="parameters">
-<h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<h2>Parametrar<a class="headerlink" href="#parameters" title="Länk till denna rubrik">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -375,7 +322,7 @@ FROM pgr_findCloseEdges(
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Valfria parametrar<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>Valfria parametrar<a class="headerlink" href="#optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -404,9 +351,9 @@ FROM pgr_findCloseEdges(
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Länk till denna rubrik">¶</a></h2>
 <section id="edges-sql">
-<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Kolumn</p></th>
@@ -428,7 +375,7 @@ FROM pgr_findCloseEdges(
 </section>
 </section>
 <section id="result-columns">
-<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Länk till denna rubrik">¶</a></h2>
 <p>Returnerar uppsättning av <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">fraction,</span> <span class="pre">side,</span> <span class="pre">distance,</span> <span class="pre">geom,</span> <span class="pre">edge)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -479,7 +426,7 @@ FROM pgr_findCloseEdges(
 </table>
 </section>
 <section id="additional-examples">
-<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Länk till denna rubrik">¶</a></h2>
 <nav class="contents local" id="innehall">
 <ul class="simple">
 <li><p><a class="reference internal" href="#one-point-in-an-edge" id="id1">En punkt i en kant</a></p></li>
@@ -496,7 +443,7 @@ FROM pgr_findCloseEdges(
 </ul>
 </nav>
 <section id="one-point-in-an-edge">
-<h3><a class="toc-backref" href="#id1" role="doc-backlink">En punkt i en kant</a><a class="headerlink" href="#one-point-in-an-edge" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">En punkt i en kant</a><a class="headerlink" href="#one-point-in-an-edge" title="Länk till denna rubrik">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, side, distance, ST_AsText(geom) geom, ST_AsText(edge) edge
 FROM pgr_findCloseEdges(
 $$SELECT 1 AS id, ST_MakeLine(ST_makePoint(2,0), ST_MakePoint(2,3)) AS geom$$,
@@ -546,7 +493,7 @@ ST_MakePoint(0,1.5), 5);
 </ul>
 </section>
 <section id="one-point-dry-run-execution">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">En punkts provkörning</a><a class="headerlink" href="#one-point-dry-run-execution" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">En punkts provkörning</a><a class="headerlink" href="#one-point-dry-run-execution" title="Länk till denna rubrik">¶</a></h3>
 <p>Använd frågan från föregående exempel:</p>
 <ul class="simple">
 <li><p>Returnerar <code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code>.</p></li>
@@ -564,14 +511,14 @@ ST_MakePoint(0,1.5), 5, dryrun =&gt; true);
 NOTICE:
 WITH
 edges_sql AS (SELECT 1 AS id, ST_MakeLine(ST_makePoint(2,0), ST_MakePoint(2,3)) AS geom),
-point_sql AS (SELECT unnest(&#39;{01010000000000000000000000000000000000F83F}&#39;::geometry[]) AS point),
+point_sql AS (SELECT unnest('{01010000000000000000000000000000000000F83F}'::geometry[]) AS point),
 results AS (
   SELECT
     id::BIGINT AS edge_id,
     ST_LineLocatePoint(geom, point) AS fraction,
-    CASE WHEN ST_Intersects(ST_Buffer(geom, 5, &#39;side=right endcap=flat&#39;), point)
-         THEN &#39;r&#39;
-         ELSE &#39;l&#39; END::CHAR AS side,
+    CASE WHEN ST_Intersects(ST_Buffer(geom, 5, 'side=right endcap=flat'), point)
+         THEN 'r'
+         ELSE 'l' END::CHAR AS side,
     geom &lt;-&gt; point AS distance,
     point,
     ST_MakeLine(point, ST_ClosestPoint(geom, point)) AS new_line
@@ -593,7 +540,7 @@ WHERE rn &lt;= 1
 </div>
 </section>
 <section id="many-points-in-an-edge">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Många punkter i en kant</a><a class="headerlink" href="#many-points-in-an-edge" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Många punkter i en kant</a><a class="headerlink" href="#many-points-in-an-edge" title="Länk till denna rubrik">¶</a></h3>
 <ul class="simple">
 <li><p>De gröna noderna är <strong>originalpunkterna</strong></p></li>
 <li><p>Geometrin <code class="docutils literal notranslate"><span class="pre">geom</span></code>, markerad som <strong>g1</strong> och <strong>g2</strong> är de <strong>originalpunkter</strong></p></li>
@@ -647,7 +594,7 @@ ARRAY[ST_MakePoint(0,2), ST_MakePoint(3,1)]::GEOMETRY[], 5);
 }" class="graphviz" /></div>
 </section>
 <section id="many-points-dry-run-execution">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Utförande av torrkörning på många punkter</a><a class="headerlink" href="#many-points-dry-run-execution" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Utförande av torrkörning på många punkter</a><a class="headerlink" href="#many-points-dry-run-execution" title="Länk till denna rubrik">¶</a></h3>
 <ul class="simple">
 <li><p>Returnerar <code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
@@ -664,14 +611,14 @@ ARRAY[ST_MakePoint(0,2), ST_MakePoint(3,1)]::GEOMETRY[], 5, dryrun=&gt;true);
 NOTICE:
 WITH
 edges_sql AS (SELECT 1 AS id, ST_MakeLine(ST_makePoint(1,0), ST_MakePoint(1,3)) AS geom),
-point_sql AS (SELECT unnest(&#39;{010100000000000000000000000000000000000040:01010000000000000000000840000000000000F03F}&#39;::geometry[]) AS point),
+point_sql AS (SELECT unnest('{010100000000000000000000000000000000000040:01010000000000000000000840000000000000F03F}'::geometry[]) AS point),
 results AS (
   SELECT
     id::BIGINT AS edge_id,
     ST_LineLocatePoint(geom, point) AS fraction,
-    CASE WHEN ST_Intersects(ST_Buffer(geom, 5, &#39;side=right endcap=flat&#39;), point)
-         THEN &#39;r&#39;
-         ELSE &#39;l&#39; END::CHAR AS side,
+    CASE WHEN ST_Intersects(ST_Buffer(geom, 5, 'side=right endcap=flat'), point)
+         THEN 'r'
+         ELSE 'l' END::CHAR AS side,
     geom &lt;-&gt; point AS distance,
     point,
     ST_MakeLine(point, ST_ClosestPoint(geom, point)) AS new_line
@@ -693,7 +640,7 @@ WHERE rn &lt;= 1
 </div>
 </section>
 <section id="find-at-most-two-routes-to-a-given-point">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Hitta högst två vägar till en given punkt</a><a class="headerlink" href="#find-at-most-two-routes-to-a-given-point" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Hitta högst två vägar till en given punkt</a><a class="headerlink" href="#find-at-most-two-routes-to-a-given-point" title="Länk till denna rubrik">¶</a></h3>
 <p>Använda <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $e$ SELECT * FROM edges $e$,
@@ -703,7 +650,7 @@ WHERE rn &lt;= 1
         (SELECT geom FROM pointsOfInterest WHERE pid = 5),
         0.5, cap =&gt; 2)
   $p$,
-  1, ARRAY[-1, -2], &#39;r&#39;);
+  1, ARRAY[-1, -2], 'r');
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         1 |      -2 |    1 |    6 |    1 |        0
@@ -724,10 +671,10 @@ WHERE rn &lt;= 1
 </div>
 </section>
 <section id="a-point-of-interest-table">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Ett bord för intressepunkter</a><a class="headerlink" href="#a-point-of-interest-table" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Ett bord för intressepunkter</a><a class="headerlink" href="#a-point-of-interest-table" title="Länk till denna rubrik">¶</a></h3>
 <p>Hantering av punkter utanför grafen.</p>
 <section id="points-of-interest">
-<h4><a class="toc-backref" href="#id7" role="doc-backlink">Attraktioner</a><a class="headerlink" href="#points-of-interest" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">Attraktioner</a><a class="headerlink" href="#points-of-interest" title="Länk till denna rubrik">¶</a></h4>
 <p>Ibland fungerar applikationerna ”on the fly” med utgångspunkt från en plats som inte är ett vertex i grafen. Dessa platser kallas i pgRrouting för intressepunkter.</p>
 <p>Den information som behövs i intressepunkterna är <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>, <code class="docutils literal notranslate"><span class="pre">side</span></code>, <code class="docutils literal notranslate"><span class="pre">fraction</span></code>.</p>
 <p>På denna dokumentation kommer det att finnas cirka 6 fasta punkter av intresse och de kommer att lagras på ett bord.</p>
@@ -778,7 +725,7 @@ WHERE rn &lt;= 1
 </div>
 </section>
 <section id="points-of-interest-fill-up">
-<h4><a class="toc-backref" href="#id8" role="doc-backlink">Intressanta platser fylls upp</a><a class="headerlink" href="#points-of-interest-fill-up" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Intressanta platser fylls upp</a><a class="headerlink" href="#points-of-interest-fill-up" title="Länk till denna rubrik">¶</a></h4>
 <p>Infoga intressepunkterna.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">pointsOfInterest</span> <span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)),</span>
@@ -805,7 +752,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 </pre></div>
 </div>
 <p>Någon annan ytterligare modifiering: I denna manual kan punkten <span class="math notranslate nohighlight">\(6\)</span> nås från båda sidor.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">'b'</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>De intressanta platserna:</p>
@@ -830,7 +777,7 @@ WHERE pointsOfInterest.geom = poi.geom;
 </section>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints - Kategori</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a></p></li>
@@ -856,8 +803,8 @@ WHERE pointsOfInterest.geom = poi.geom;
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

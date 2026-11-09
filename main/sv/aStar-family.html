@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=072f198e"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -152,48 +152,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">A* - Familj av funktioner</a><ul>
-<li><a class="reference internal" href="#description">Beskrivning</a><ul>
-<li><a class="reference internal" href="#astar-optional-parameters">aStar valfria parametrar</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#advanced-documentation">Avancerad dokumentation</a><ul>
-<li><a class="reference internal" href="#heuristic">Heuristisk</a></li>
-<li><a class="reference internal" href="#factor">Faktor</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_johnson.html" title="Previous Chapter: pgr_johnson"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_johnson</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_aStar.html" title="Next Chapter: pgr_aStar"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_aStar &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('aStar-family','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="a-family-of-functions">
-<h1>A* - Familj av funktioner<a class="headerlink" href="#a-family-of-functions" title="Link to this heading">¶</a></h1>
+<h1>A* - Familj av funktioner<a class="headerlink" href="#a-family-of-functions" title="Länk till denna rubrik">¶</a></h1>
 <p>Algoritmen A* (uttalas ”A Star”) är baserad på Dijkstras algoritm med en heuristik som gör att den kan lösa de flesta problem med kortaste vägen genom att endast utvärdera en delmängd av den totala grafen.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a> - A* algorithm for the shortest path.</p></li>
@@ -203,7 +169,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <section id="description">
-<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<h2>Beskrivning<a class="headerlink" href="#description" title="Länk till denna rubrik">¶</a></h2>
 <p>De viktigaste egenskaperna är:</p>
 <ul class="simple">
 <li><p>Processen fungerar för riktade och oriktade grafer.</p></li>
@@ -238,7 +204,7 @@
 <li><p>Drifttid: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
 </ul>
 <section id="astar-optional-parameters">
-<h3>aStar valfria parametrar<a class="headerlink" href="#astar-optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>aStar valfria parametrar<a class="headerlink" href="#astar-optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -278,9 +244,9 @@
 </section>
 </section>
 <section id="advanced-documentation">
-<h2>Avancerad dokumentation<a class="headerlink" href="#advanced-documentation" title="Link to this heading">¶</a></h2>
+<h2>Avancerad dokumentation<a class="headerlink" href="#advanced-documentation" title="Länk till denna rubrik">¶</a></h2>
 <section id="heuristic">
-<span id="astar-heuristics"></span><h3>Heuristisk<a class="headerlink" href="#heuristic" title="Link to this heading">¶</a></h3>
+<span id="astar-heuristics"></span><h3>Heuristisk<a class="headerlink" href="#heuristic" title="Länk till denna rubrik">¶</a></h3>
 <p>För närvarande är de tillgängliga heuristiska funktionerna:</p>
 <ul class="simple">
 <li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Använd detta värde för att jämföra med pgr_dijkstra)</p></li>
@@ -293,7 +259,7 @@
 <p>där <span class="math notranslate nohighlight">\(\Delta x = x_1 - x_0\)</span> och <span class="math notranslate nohighlight">\(\Delta y = y_1 - y_0\)</span></p>
 </section>
 <section id="factor">
-<span id="astar-factor"></span><h3>Faktor<a class="headerlink" href="#factor" title="Link to this heading">¶</a></h3>
+<span id="astar-factor"></span><h3>Faktor<a class="headerlink" href="#factor" title="Länk till denna rubrik">¶</a></h3>
 <p class="rubric">Analys 1</p>
 <p>Arbetar med kostnad/omvänd_kostnad som längd i grader, x/y i lat/lon: Faktor = 1 (inget behov av att ändra enheter)</p>
 <p class="rubric">Analys 2</p>
@@ -339,10 +305,10 @@
 </section>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="bdAstar-family.html"><span class="doc">Dubbelriktad A* - Familj av funktioner</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">Boost: A*-sökning</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/shortest_paths/astar_search.html">Boost: A*-sökning</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm">https://en.wikipedia.org/wiki/A*_search_algorithm</a></p></li>
 </ul>
 <p class="rubric">Index och tabeller</p>
@@ -366,8 +332,8 @@
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

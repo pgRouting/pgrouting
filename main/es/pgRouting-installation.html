@@ -13,8 +13,8 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=33914f1f"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -152,42 +152,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Instalación</a><ul>
-<li><a class="reference internal" href="#short-version">Versión corta</a></li>
-<li><a class="reference internal" href="#get-the-sources">Obtener las fuentes</a></li>
-<li><a class="reference internal" href="#enabling-and-upgrading-in-the-database">Habilitación y actualización en la base de datos</a></li>
-<li><a class="reference internal" href="#dependencies">Dependencias</a></li>
-<li><a class="reference internal" href="#configuring">Configuración</a><ul>
-<li><a class="reference internal" href="#configurable-variables">Variables configurables</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#building">Compilando</a></li>
-<li><a class="reference internal" href="#testing">Pruebas</a></li>
-<li><a class="reference internal" href="#see-also">Ver también</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgRouting-introduction.html" title="Previous Chapter: Introducción"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Introducción</span>
-    </a>
-  </li>
-  <li>
-    <a href="support.html" title="Next Chapter: Soporte"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Soporte &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgRouting-installation','es'));  </script>
             
   <div class="line-block">
@@ -215,7 +180,7 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 </div>
 <p>Una vez que pgRouting está instalado, debe habilitarse en cada base de datos individual en la que desee utilizarlo.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>createdb<span class="w"> </span>routing
-psql<span class="w"> </span>routing<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;CREATE EXTENSION pgRouting CASCADE&#39;</span>
+psql<span class="w"> </span>routing<span class="w"> </span>-c<span class="w"> </span><span class="s1">'CREATE EXTENSION pgRouting CASCADE'</span>
 </pre></div>
 </div>
 </section>
@@ -253,7 +218,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>v4.0.2
 <p class="rubric">Actualización de la base de datos</p>
 <p>To upgrade pgRouting in the database to version 4.0.2 use the
 following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">&quot;4.0.2&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">"4.0.2"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Puede hallar más información en <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createextension.html">https://www.postgresql.org/docs/current/sql-createextension.html</a></p>
@@ -263,8 +228,9 @@ following command:</p>
 <p class="rubric">Dependencias de Compilación</p>
 <p>Para poder compilar pgRouting, asegúrese de que se cumplen las siguientes dependencias:</p>
 <ul class="simple">
-<li><p>Compiladores C y C++0x</p>
+<li><p>C++ standard</p>
 <ul>
+<li><p>C++17</p></li>
 <li><p>Compilar con Boost 1.56 hasta Boost 1.74 requiere un compilador C++ con soporte estandard para C++03 o C++11</p></li>
 <li><p>La compilación con Boost 1.75 requiere un compilador de C++ compatible con el estándar C++14</p></li>
 </ul>
@@ -386,9 +352,9 @@ be built</p></td>
 <p>Uso de <code class="docutils literal notranslate"><span class="pre">make</span></code> para compilar el código y la documentación</p>
 <p>Las siguientes instrucciones parten de <code class="docutils literal notranslate"><span class="pre">path/to/pgrouting/build</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make          # default build
-$ make doc      # build only the user&#39;s documentation
-$ make doxy     # build only the developer&#39;s documentation
-$ make all      # build both the code and the user&#39;s documentation
+$ make doc      # build only the user's documentation
+$ make doxy     # build only the developer's documentation
+$ make all      # build both the code and the user's documentation
 </pre></div>
 </div>
 <p>Hemos probado en varias plataformas, Para instalar o reinstalar todos los pasos son necesarios.</p>
@@ -408,7 +374,7 @@ $ make all      # build both the code and the user&#39;s documentation
 <p>Las siguientes instrucciones parten de <code class="docutils literal notranslate"><span class="pre">path/to/pgrouting</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tools/testers/doc_queries_generator.pl
 createdb<span class="w"> </span>-U<span class="w"> </span>&lt;user&gt;<span class="w"> </span>___pgr___test___
-sh<span class="w"> </span>./tools/testers/pg_prove_tests.sh<span class="w"> </span>&lt;user&gt;
+bash<span class="w"> </span>./tools/testers/pg_prove_tests.sh<span class="w"> </span>&lt;user&gt;
 dropdb<span class="w"> </span>-U<span class="w"> </span>&lt;user&gt;<span class="w"> </span>___pgr___test___
 </pre></div>
 </div>
@@ -436,8 +402,8 @@ dropdb<span class="w"> </span>-U<span class="w"> </span>&lt;user&gt;<span class=
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Actualizado por última vez en nov 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Actualizado por última vez en nov 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

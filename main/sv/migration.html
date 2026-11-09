@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=072f198e"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -242,139 +242,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Migrationsguide</a><ul>
-<li><a class="reference internal" href="#migration-to-standardized-columns">Migrering till standardiserade kolumner</a><ul>
-<li><a class="reference internal" href="#migration-of-cost-functions">Migrering av kostnadsfunktioner</a><ul>
-<li><a class="reference internal" href="#examples-for-one-to-one-for-cost-functions">Exempel på One to One för kostnadsfunktioner</a></li>
-<li><a class="reference internal" href="#examples-for-one-to-many-for-cost-functions">Exempel på One to Many för kostnadsfunktioner</a></li>
-<li><a class="reference internal" href="#examples-for-many-to-one-for-cost-functions">Exempel på Many to One för kostnadsfunktioner</a></li>
-<li><a class="reference internal" href="#examples-for-many-to-many-for-cost-functions">Exempel på Many to Many för kostnadsfunktioner</a></li>
-<li><a class="reference internal" href="#examples-for-combinations-for-cost-functions">Exempel på Kombinationer för kostnadsfunktioner</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-multiple-paths-functions">Migrering av funktioner för flera banor</a><ul>
-<li><a class="reference internal" href="#migration-of-ksp-result">Migrering av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
-<li><a class="reference internal" href="#one-to-one-example-using-pgr-ksp">Ett till ett exempel med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-result-disjoint">Migrering av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
-<li><a class="reference internal" href="#one-to-one-example-using-pgr-edgedisjointpaths">Ett till ett exempel med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_edgeDisjointPaths</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-single-path-functions">Migrering av funktioner med en enda sökväg</a><ul>
-<li><a class="reference internal" href="#examples-with-one-to-one-with-one-route-result">Exempel med en till en med en rutt resultat</a></li>
-<li><a class="reference internal" href="#examples-for-one-to-many-with-one-route-result">Exempel för One to Many med ett ruttresultat</a></li>
-<li><a class="reference internal" href="#examples-for-many-to-one-with-one-route-result">Exempel för Many to One med ett ruttresultat</a></li>
-<li><a class="reference internal" href="#examples-for-many-to-many-with-one-route-result">Exempel för Many to Many med ett ruttresultat</a></li>
-<li><a class="reference internal" href="#examples-for-combinations-with-one-route-result">Exempel på kombinationer med ett vägresultat</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-spanning-tree-functions">Migrering av spanning tree-funktioner</a><ul>
-<li><a class="reference internal" href="#migration-from-result-bfs">Migrering från <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code>.</a><ul>
-<li><a class="reference internal" href="#single-vertex-example-using-pgr-kruskaldd">Exempel på enstaka toppar med <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code></a></li>
-<li><a class="reference internal" href="#multiple-vertices-example-using-pgr-kruskaldfs">Exempel på flera vertikaler med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-from-result-dij-dd">Migrering från <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
-<li><a class="reference internal" href="#single-vertex-example-using-pgr-drivingdistance">Exempel på en enda vertex med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></li>
-<li><a class="reference internal" href="#multiple-vertices-example-using-pgr-drivingdistance">Exempel på flera toppar med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-result-generic-no-seq">Migrering av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><ul>
-<li><a class="reference internal" href="#single-vertex-example-using-pgr-withpointsdd">Exempel på en enda toppunkt med <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></li>
-<li><a class="reference internal" href="#multiple-vertices-example-using-pgr-withpointsdd">Exempel på flera vertikaler med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-output-column-name-change">Ändring av namn på utdatakolumn vid migrering</a><ul>
-<li><a class="reference internal" href="#migration-from-result-old-closure">Migrering från <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></a></li>
-<li><a class="reference internal" href="#migration-from-result-toposort">Migrering från <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">sorted_v)</span></code></a></li>
-<li><a class="reference internal" href="#migration-from-old-edge-color">Migrering från <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></a></li>
-<li><a class="reference internal" href="#migration-from-old-node-color">Migrering från <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-deleted-functions">Migrering av borttagna funktioner</a><ul>
-<li><a class="reference internal" href="#migration-of-pgr-alphashape">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-nodenetwork">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-createtopology">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><ul>
-<li><a class="reference internal" href="#build-a-routing-topology">Bygga upp en routingtopologi</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-pgr-createverticestable">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-analyzeoneway">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-analyzegraph">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-trsp-vertices">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (toppar)</a><ul>
-<li><a class="reference internal" href="#use-pgr-dijkstra-when-there-are-no-restrictions">Använd <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> när det inte finns några begränsningar.</a></li>
-<li><a class="reference internal" href="#use-pgr-trsp-when-there-are-restrictions">Använd <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> när det finns begränsningar.</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-pgr-trsp-edges">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (kanter)</a></li>
-<li><a class="reference internal" href="#migration-of-pgr-trspviavertices">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><ul>
-<li><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions">Använd <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> när det inte finns några begränsningar</a></li>
-<li><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions">Använd <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> när det finns begränsningar</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-pgr-trspviaedges">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><ul>
-<li><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions">Använd <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> när det inte finns några begränsningar</a></li>
-<li><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions">Använd <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> när det finns begränsningar</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#not-yet-classified-migrations">Ännu ej klassificerade migrationer</a><ul>
-<li><a class="reference internal" href="#migration-of-pgr-withpointsksp">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><ul>
-<li><a class="reference internal" href="#pgr-withpointsksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>En till en</cite>)</a></li>
-<li><a class="reference internal" href="#use-pgr-withpoints-when-there-are-no-restrictions">Använd <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> när det inte finns några begränsningar.</a></li>
-<li><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions">Använd <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> när det finns begränsningar.</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#migration-of-restrictions">Överföring av restriktioner</a><ul>
-<li><a class="reference internal" href="#old-restrictions-structure">Gammal begränsningsstruktur</a><ul>
-<li><a class="reference internal" href="#old-restrictions-contents">Gamla restriktioner innehåll</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#new-restrictions-structure">Ny struktur för restriktioner</a><ul>
-<li><a class="reference internal" href="#migration">Migrering</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="release_notes.html" title="Previous Chapter: Versionsinformation"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Versionsinformation</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('migration','sv'));  </script>
             
   <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="migration-guide">
-<h1><a class="toc-backref" href="#id8" role="doc-backlink">Migrationsguide</a><a class="headerlink" href="#migration-guide" title="Link to this heading">¶</a></h1>
+<h1><a class="toc-backref" href="#id8" role="doc-backlink">Migrationsguide</a><a class="headerlink" href="#migration-guide" title="Länk till denna rubrik">¶</a></h1>
 <p>Flera funktioner har förändringar på signaturerna och/eller har ersatts av nya funktioner.</p>
 <p>Resultaten kan bli annorlunda på grund av förändringarna.</p>
 <div class="admonition warning">
@@ -427,7 +302,7 @@
 </ul>
 </nav>
 <section id="migration-to-standardized-columns">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Migrering till standardiserade kolumner</a><a class="headerlink" href="#migration-to-standardized-columns" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Migrering till standardiserade kolumner</a><a class="headerlink" href="#migration-to-standardized-columns" title="Länk till denna rubrik">¶</a></h2>
 <p>Det har gjorts försök att standardisera namn och typer på kolumner för funktionsutdata.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgRouting-concepts.html#result-columns-for-cost-functions"><span class="std std-ref">Resultatkolumner för kostnadsfunktioner</span></a></p>
@@ -454,157 +329,157 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 3.5.0: </span><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 3.5.0: </span><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-single-path-functions">Migrering av funktioner med en enda sökväg</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 3.6.0: </span><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 3.6.0: </span><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-single-path-functions">Migrering av funktioner med en enda sökväg</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 3.6.0: </span><a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 3.6.0: </span><a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-single-path-functions">Migrering av funktioner med en enda sökväg</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 3.6.0: </span><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 3.6.0: </span><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration av funktioner för spänningsträd</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 3.6.0: </span><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 3.6.0: </span><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration av funktioner för spänningsträd</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 3.7.0: </span><a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 3.7.0: </span><a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration av funktioner för spänningsträd</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 3.7.0: </span><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 3.7.0: </span><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration av funktioner för spänningsträd</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 3.7.0: </span><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 3.7.0: </span><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration av funktioner för spänningsträd</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 3.7.0: </span><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 3.7.0: </span><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration av funktioner för spänningsträd</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 3.7.0: </span><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 3.7.0: </span><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration av funktioner för spänningsträd</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 3.7.0: </span><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 3.7.0: </span><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration av funktioner för spänningsträd</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-single-path-functions">Migrering av funktioner med en enda sökväg</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_bellmanFord.html"><span class="doc">pgr_bellmanFord - Experimentell</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_bellmanFord.html"><span class="doc">pgr_bellmanFord - Experimentell</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-single-path-functions">Migrering av funktioner med en enda sökväg</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_binaryBreadthFirstSearch.html"><span class="doc">pgr_binaryBreadthFirstSearch - Experimentell</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_binaryBreadthFirstSearch.html"><span class="doc">pgr_binaryBreadthFirstSearch - Experimentell</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-single-path-functions">Migrering av funktioner med en enda sökväg</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_bipartite.html"><span class="doc">pgr_bipartite - Experimentell</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_bipartite.html"><span class="doc">pgr_bipartite - Experimentell</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-output-column-name-change">Migrering av namnändring för utdatakolumn</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_breadthFirstSearch.html"><span class="doc">pgr_breadthFirstSearch - Experimentell</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_breadthFirstSearch.html"><span class="doc">pgr_breadthFirstSearch - Experimentell</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration av funktioner för spänningsträd</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_dagShortestPath.html"><span class="doc">pgr_dagShortestPath - Experimentell</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_dagShortestPath.html"><span class="doc">pgr_dagShortestPath - Experimentell</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-single-path-functions">Migrering av funktioner med en enda sökväg</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_depthFirstSearch.html"><span class="doc">pgr_depthFirstSearch - Föreslagen</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_depthFirstSearch.html"><span class="doc">pgr_depthFirstSearch - Föreslagen</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-spanning-tree-functions">Migration av funktioner för spänningsträd</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_edgeColoring.html"><span class="doc">pgr_edgeColoring - Experimentell</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_edgeColoring.html"><span class="doc">pgr_edgeColoring - Experimentell</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-output-column-name-change">Migrering av namnändring för utdatakolumn</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_edwardMoore.html"><span class="doc">pgr_edwardMoore - Experimentell</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_edwardMoore.html"><span class="doc">pgr_edwardMoore - Experimentell</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-single-path-functions">Migrering av funktioner med en enda sökväg</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-multiple-paths-functions">Migrering av funktioner för flera sökvägar</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_sequentialVertexColoring.html"><span class="doc">`pgr_sequentialVertexColoring - Föreslagen</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_sequentialVertexColoring.html"><span class="doc">`pgr_sequentialVertexColoring - Föreslagen</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-output-column-name-change">Migrering av namnändring för utdatakolumn</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_topologicalSort.html"><span class="doc">pgr_topologicalSort - Experimentell</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_topologicalSort.html"><span class="doc">pgr_topologicalSort - Experimentell</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-output-column-name-change">Migrering av namnändring för utdatakolumn</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-single-path-functions">Migrering av funktioner med en enda sökväg</a></p></td>
 </tr>
 <tr class="row-even"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-cost-functions">Migrering av kostnadsfunktioner</a></p></td>
 </tr>
 <tr class="row-odd"><td><div class="versionchanged">
-<p><span class="versionmodified changed">Förändrat i version 4.0.0: </span><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a></p>
+<p><span class="versionmodified changed">Ändrad i version 4.0.0: </span><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a></p>
 </div>
 </td>
 <td><p><a class="reference internal" href="#migration-of-cost-functions">Migrering av kostnadsfunktioner</a></p></td>
@@ -679,7 +554,7 @@
 </ul>
 </nav>
 <section id="migration-of-cost-functions">
-<h3><a class="toc-backref" href="#id33" role="doc-backlink">Migrering av kostnadsfunktioner</a><a class="headerlink" href="#migration-of-cost-functions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id33" role="doc-backlink">Migrering av kostnadsfunktioner</a><a class="headerlink" href="#migration-of-cost-functions" title="Länk till denna rubrik">¶</a></h3>
 <p>De standardiserade <a class="reference internal" href="pgRouting-concepts.html#result-columns-for-cost-functions"><span class="std std-ref">Resultatkolumner för kostnadsfunktioner</span></a> är <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <p>Följande funktioner måste migreras när de används i en applikation.</p>
 <table class="docutils align-default">
@@ -728,7 +603,7 @@
 </ul>
 </nav>
 <section id="examples-for-one-to-one-for-cost-functions">
-<h4><a class="toc-backref" href="#id65" role="doc-backlink">Exempel på One to One för kostnadsfunktioner</a><a class="headerlink" href="#examples-for-one-to-one-for-cost-functions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id65" role="doc-backlink">Exempel på One to One för kostnadsfunktioner</a><a class="headerlink" href="#examples-for-one-to-one-for-cost-functions" title="Länk till denna rubrik">¶</a></h4>
 <p class="rubric">Använda <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#one-to-one">this v3.8</a> exempel.</p>
 <dl class="field-list simple">
@@ -740,9 +615,9 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">6.4</span>
@@ -753,9 +628,9 @@
 <p>För att få kolumnnamnen i den gamla versionen: byt namn på <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> och <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">end_pid</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">start_vid</span> <span class="n">AS</span> <span class="n">start_pid</span><span class="p">,</span> <span class="n">end_vid</span> <span class="n">AS</span> <span class="n">end_pid</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">);</span>
  <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">6.4</span>
@@ -770,7 +645,7 @@
 </div>
 </section>
 <section id="examples-for-one-to-many-for-cost-functions">
-<h4><a class="toc-backref" href="#id66" role="doc-backlink">Exempel på One to Many för kostnadsfunktioner</a><a class="headerlink" href="#examples-for-one-to-many-for-cost-functions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id66" role="doc-backlink">Exempel på One to Many för kostnadsfunktioner</a><a class="headerlink" href="#examples-for-one-to-many-for-cost-functions" title="Länk till denna rubrik">¶</a></h4>
 <p class="rubric">Använda <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#one-to-many">this v3.8</a> exempel.</p>
 <dl class="field-list simple">
@@ -782,10 +657,10 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
   <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
-  <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
+  <span class="s1">'b'</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
@@ -797,10 +672,10 @@
 <p>För att få kolumnnamnen i den gamla versionen: byt namn på <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> och <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">end_pid</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">start_vid</span> <span class="n">AS</span> <span class="n">start_pid</span><span class="p">,</span> <span class="n">end_vid</span> <span class="n">AS</span> <span class="n">end_pid</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
   <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
-  <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
+  <span class="s1">'b'</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
@@ -816,7 +691,7 @@
 </div>
 </section>
 <section id="examples-for-many-to-one-for-cost-functions">
-<h4><a class="toc-backref" href="#id67" role="doc-backlink">Exempel på Many to One för kostnadsfunktioner</a><a class="headerlink" href="#examples-for-many-to-one-for-cost-functions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id67" role="doc-backlink">Exempel på Many to One för kostnadsfunktioner</a><a class="headerlink" href="#examples-for-many-to-one-for-cost-functions" title="Länk till denna rubrik">¶</a></h4>
 <p class="rubric">Använda <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#many-to-one">this v3.8</a> exempel.</p>
 <dl class="field-list simple">
@@ -828,9 +703,9 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span>
@@ -842,9 +717,9 @@
 <p>För att få kolumnnamnen i den gamla versionen: byt namn på <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> och <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">end_pid</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">start_vid</span> <span class="n">AS</span> <span class="n">start_pid</span><span class="p">,</span> <span class="n">end_vid</span> <span class="n">AS</span> <span class="n">end_pid</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">);</span>
  <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span>
@@ -860,7 +735,7 @@
 </div>
 </section>
 <section id="examples-for-many-to-many-for-cost-functions">
-<h4><a class="toc-backref" href="#id68" role="doc-backlink">Exempel på Many to Many för kostnadsfunktioner</a><a class="headerlink" href="#examples-for-many-to-many-for-cost-functions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id68" role="doc-backlink">Exempel på Many to Many för kostnadsfunktioner</a><a class="headerlink" href="#examples-for-many-to-many-for-cost-functions" title="Länk till denna rubrik">¶</a></h4>
 <p class="rubric">Använda <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#many-to-many">this v3.8</a> exempel.</p>
 <dl class="field-list simple">
@@ -872,9 +747,9 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">'r'</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span>
@@ -888,9 +763,9 @@
 <p>För att få kolumnnamnen i den gamla versionen: byt namn på <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> och <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">end_pid</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">start_vid</span> <span class="n">AS</span> <span class="n">start_pid</span><span class="p">,</span> <span class="n">end_vid</span> <span class="n">AS</span> <span class="n">end_pid</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">'r'</span><span class="p">);</span>
  <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span>
@@ -909,7 +784,7 @@
 </div>
 </section>
 <section id="examples-for-combinations-for-cost-functions">
-<h4><a class="toc-backref" href="#id69" role="doc-backlink">Exempel på Kombinationer för kostnadsfunktioner</a><a class="headerlink" href="#examples-for-combinations-for-cost-functions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id69" role="doc-backlink">Exempel på Kombinationer för kostnadsfunktioner</a><a class="headerlink" href="#examples-for-combinations-for-cost-functions" title="Länk till denna rubrik">¶</a></h4>
 <p class="rubric">Använda <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code></p>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#combinations">this v3.8</a> exempel.</p>
 <dl class="field-list simple">
@@ -921,10 +796,10 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="s1">'SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)'</span><span class="p">,</span>
+  <span class="s1">'r'</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">6.4</span>
@@ -936,10 +811,10 @@
 <p>För att få kolumnnamnen i den gamla versionen: byt namn på <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> och <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">end_pid</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">start_vid</span> <span class="n">AS</span> <span class="n">start_pid</span><span class="p">,</span> <span class="n">end_vid</span> <span class="n">AS</span> <span class="n">end_pid</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="s1">'SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)'</span><span class="p">,</span>
+  <span class="s1">'r'</span><span class="p">);</span>
  <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>      <span class="mf">6.4</span>
@@ -956,7 +831,7 @@
 </section>
 </section>
 <section id="migration-of-multiple-paths-functions">
-<h3><a class="toc-backref" href="#id39" role="doc-backlink">Migrering av funktioner för flera banor</a><a class="headerlink" href="#migration-of-multiple-paths-functions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id39" role="doc-backlink">Migrering av funktioner för flera banor</a><a class="headerlink" href="#migration-of-multiple-paths-functions" title="Länk till denna rubrik">¶</a></h3>
 <p>De standardiserade <a class="reference internal" href="pgRouting-concepts.html#result-columns-for-single-path-functions"><span class="std std-ref">Resultatkolumner för funktioner med enkel sökväg</span></a> är <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <p>Följande funktioner måste migreras när de används i en applikation.</p>
 <table class="docutils align-default">
@@ -978,7 +853,7 @@
 </tbody>
 </table>
 <section id="migration-of-ksp-result">
-<span id="from-ksp-result"></span><h4><a class="toc-backref" href="#id40" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-of-ksp-result" title="Link to this heading">¶</a></h4>
+<span id="from-ksp-result"></span><h4><a class="toc-backref" href="#id40" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-of-ksp-result" title="Länk till denna rubrik">¶</a></h4>
 <dl class="field-list simple">
 <dt class="field-odd">till<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -990,7 +865,7 @@
 </ul>
 <p>Innan du uppdaterar pgRouting, räkna upp <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <section id="one-to-one-example-using-pgr-ksp">
-<h5><a class="toc-backref" href="#id41" role="doc-backlink">Ett till ett exempel med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a><a class="headerlink" href="#one-to-one-example-using-pgr-ksp" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id41" role="doc-backlink">Ett till ett exempel med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a><a class="headerlink" href="#one-to-one-example-using-pgr-ksp" title="Länk till denna rubrik">¶</a></h5>
 <p>Använda <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures">det här</a> exemplet.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_KSP(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -1034,7 +909,7 @@
 </section>
 </section>
 <section id="migration-of-result-disjoint">
-<span id="from-result-disjoint"></span><h4><a class="toc-backref" href="#id42" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-of-result-disjoint" title="Link to this heading">¶</a></h4>
+<span id="from-result-disjoint"></span><h4><a class="toc-backref" href="#id42" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-of-result-disjoint" title="Länk till denna rubrik">¶</a></h4>
 <p>Signaturer som ska migreras:</p>
 <ul class="simple">
 <li><p>En till en</p></li>
@@ -1047,10 +922,10 @@
 <li><p>Hoppa över när det är tillämpligt, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
 </ul>
 <section id="one-to-one-example-using-pgr-edgedisjointpaths">
-<h5><a class="toc-backref" href="#id43" role="doc-backlink">Ett till ett exempel med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_edgeDisjointPaths</span></code></a><a class="headerlink" href="#one-to-one-example-using-pgr-edgedisjointpaths" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id43" role="doc-backlink">Ett till ett exempel med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_edgeDisjointPaths</span></code></a><a class="headerlink" href="#one-to-one-example-using-pgr-edgedisjointpaths" title="Länk till denna rubrik">¶</a></h5>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_edgeDisjointPaths.html#one-to-one">this v3.8</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+-----------+---------+------+------+------+----------</span>
@@ -1067,7 +942,7 @@
 <p>Innan du uppdaterar pgRouting räkna upp kolumnerna: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">path_id</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+------+------+------+----------</span>
@@ -1085,7 +960,7 @@
 </section>
 </section>
 <section id="migration-of-single-path-functions">
-<h3><a class="toc-backref" href="#id44" role="doc-backlink">Migrering av funktioner med en enda sökväg</a><a class="headerlink" href="#migration-of-single-path-functions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id44" role="doc-backlink">Migrering av funktioner med en enda sökväg</a><a class="headerlink" href="#migration-of-single-path-functions" title="Länk till denna rubrik">¶</a></h3>
 <p>De standardiserade <a class="reference internal" href="pgRouting-concepts.html#result-columns-for-single-path-functions"><span class="std std-ref">Resultatkolumner för funktioner med enkel sökväg</span></a> är <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <p>Följande funktioner måste migreras när de används i en applikation.</p>
 <table class="docutils align-default">
@@ -1191,7 +1066,7 @@
 </ul>
 </nav>
 <section id="examples-with-one-to-one-with-one-route-result">
-<h4><a class="toc-backref" href="#id70" role="doc-backlink">Exempel med en till en med en rutt resultat</a><a class="headerlink" href="#examples-with-one-to-one-with-one-route-result" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id70" role="doc-backlink">Exempel med en till en med en rutt resultat</a><a class="headerlink" href="#examples-with-one-to-one-with-one-route-result" title="Länk till denna rubrik">¶</a></h4>
 <p class="rubric">Använda <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></p>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_aStar.html#one-to-one">this v3.5</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_aStar(
@@ -1228,7 +1103,7 @@
 <p class="rubric">Använda <code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code></p>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#one-to-one">this v3.8</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+  <span class="s1">'select id, source, target, cost, reverse_cost from edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -1245,7 +1120,7 @@
 <p>Innan du uppdaterar pgRouting räkna upp kolumnerna: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+  <span class="s1">'select id, source, target, cost, reverse_cost from edges'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+------+------+------+----------</span>
@@ -1262,7 +1137,7 @@
 <p class="rubric">Använda <code class="docutils literal notranslate"><span class="pre">pgr_DAGshortestPath</span></code></p>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_dagShortestPath.html#one-to-one">this v3.8</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_DAGshortestPath</span><span class="p">(</span>
-  <span class="s1">&#39;select id, source, target, cost from edges&#39;</span><span class="p">,</span>
+  <span class="s1">'select id, source, target, cost from edges'</span><span class="p">,</span>
   <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -1277,7 +1152,7 @@
 <p>Innan du uppdaterar pgRouting räkna upp kolumnerna: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_DAGshortestPath</span><span class="p">(</span>
-  <span class="s1">&#39;select id, source, target, cost from edges&#39;</span><span class="p">,</span>
+  <span class="s1">'select id, source, target, cost from edges'</span><span class="p">,</span>
   <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+------+------+------+----------</span>
@@ -1290,12 +1165,12 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Observera</p>
+<p class="admonition-title">Anteckning</p>
 <p>Detta gäller för alla signaturer av <code class="docutils literal notranslate"><span class="pre">pgr_DAGshortestPath</span></code></p>
 </div>
 </section>
 <section id="examples-for-one-to-many-with-one-route-result">
-<h4><a class="toc-backref" href="#id71" role="doc-backlink">Exempel för One to Many med ett ruttresultat</a><a class="headerlink" href="#examples-for-one-to-many-with-one-route-result" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id71" role="doc-backlink">Exempel för One to Many med ett ruttresultat</a><a class="headerlink" href="#examples-for-one-to-many-with-one-route-result" title="Länk till denna rubrik">¶</a></h4>
 <p class="rubric">Använda <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></p>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_bdAstar.html#one-to-many">this v3.5</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_bdAstar(
@@ -1342,10 +1217,10 @@
 <p class="rubric">Använda <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></p>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#one-to-many">this v3.8</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
   <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
-  <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
+  <span class="s1">'b'</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -1376,10 +1251,10 @@
 <p>För att få de gamla signaturkolumnnamnen: filtrera bort kolumnen <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> och byt namn på <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">end_pid</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">end_vid</span> <span class="n">AS</span> <span class="n">end_pid</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
   <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
-  <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
+  <span class="s1">'b'</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -1396,11 +1271,11 @@
 </div>
 </section>
 <section id="examples-for-many-to-one-with-one-route-result">
-<h4><a class="toc-backref" href="#id72" role="doc-backlink">Exempel för Many to One med ett ruttresultat</a><a class="headerlink" href="#examples-for-many-to-one-with-one-route-result" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id72" role="doc-backlink">Exempel för Many to One med ett ruttresultat</a><a class="headerlink" href="#examples-for-many-to-one-with-one-route-result" title="Länk till denna rubrik">¶</a></h4>
 <p class="rubric">Använda <code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code></p>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#many-to-one">this v3.8</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+    <span class="s1">'select id, source, target, cost, reverse_cost from edges'</span><span class="p">,</span>
       <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">17</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -1422,7 +1297,7 @@
 <p>Innan uppdatering av pgRouting räknas kolumnerna upp: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">start_vid</span> <span class="n">AS</span> <span class="n">start_pid</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
+    <span class="s1">'select id, source, target, cost, reverse_cost from edges'</span><span class="p">,</span>
       <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">17</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+------+------+------+----------</span>
@@ -1486,13 +1361,13 @@
 </div>
 </section>
 <section id="examples-for-many-to-many-with-one-route-result">
-<h4><a class="toc-backref" href="#id73" role="doc-backlink">Exempel för Many to Many med ett ruttresultat</a><a class="headerlink" href="#examples-for-many-to-many-with-one-route-result" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id73" role="doc-backlink">Exempel för Many to Many med ett ruttresultat</a><a class="headerlink" href="#examples-for-many-to-many-with-one-route-result" title="Länk till denna rubrik">¶</a></h4>
 <p class="rubric">Använda <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></p>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#many-to-many">this v3.8</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">'r'</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">1.4</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -1533,9 +1408,9 @@
 <p>För att få kolumnnamnen i den gamla versionen: byt namn på <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> och <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">end_pid</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">start_vid</span> <span class="n">AS</span> <span class="n">start_pid</span><span class="p">,</span> <span class="n">end_vid</span> <span class="n">AS</span> <span class="n">end_pid</span><span class="p">,</span><span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">'r'</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">1.4</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -1562,14 +1437,14 @@
 </div>
 </section>
 <section id="examples-for-combinations-with-one-route-result">
-<h4><a class="toc-backref" href="#id74" role="doc-backlink">Exempel på kombinationer med ett vägresultat</a><a class="headerlink" href="#examples-for-combinations-with-one-route-result" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id74" role="doc-backlink">Exempel på kombinationer med ett vägresultat</a><a class="headerlink" href="#examples-for-combinations-with-one-route-result" title="Länk till denna rubrik">¶</a></h4>
 <p class="rubric">Använda <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></p>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#combinations">this v3.8 `this</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="s1">'SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)'</span><span class="p">,</span>
+  <span class="s1">'r'</span><span class="p">,</span> <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -1606,10 +1481,10 @@
 <p>För att få kolumnnamnen i den gamla versionen: byt namn på <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> och <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">end_pid</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">start_vid</span> <span class="n">AS</span> <span class="n">start_pid</span><span class="p">,</span> <span class="n">end_vid</span> <span class="n">AS</span> <span class="n">end_pid</span><span class="p">,</span><span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
+  <span class="s1">'SELECT pid, edge_id, fraction, side from pointsOfInterest'</span><span class="p">,</span>
+  <span class="s1">'SELECT * FROM (VALUES (-1, 10), (6, -3)) AS combinations(source, target)'</span><span class="p">,</span>
+  <span class="s1">'r'</span><span class="p">,</span> <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -1633,7 +1508,7 @@
 </section>
 </section>
 <section id="migration-of-spanning-tree-functions">
-<h3><a class="toc-backref" href="#id50" role="doc-backlink">Migrering av spanning tree-funktioner</a><a class="headerlink" href="#migration-of-spanning-tree-functions" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id50" role="doc-backlink">Migrering av spanning tree-funktioner</a><a class="headerlink" href="#migration-of-spanning-tree-functions" title="Länk till denna rubrik">¶</a></h3>
 <p>De standardiserade <a class="reference internal" href="pgRouting-concepts.html#result-columns-for-spanning-tree-functions"><span class="std std-ref">Resultatkolumner för funktioner för spännträd</span></a> är <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
 <thead>
@@ -1710,7 +1585,7 @@
 </ul>
 </nav>
 <section id="migration-from-result-bfs">
-<span id="from-result-bfs"></span><h4><a class="toc-backref" href="#id75" role="doc-backlink">Migrering från <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code>.</a><a class="headerlink" href="#migration-from-result-bfs" title="Link to this heading">¶</a></h4>
+<span id="from-result-bfs"></span><h4><a class="toc-backref" href="#id75" role="doc-backlink">Migrering från <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code>.</a><a class="headerlink" href="#migration-from-result-bfs" title="Länk till denna rubrik">¶</a></h4>
 <p>Signaturer som ska migreras:</p>
 <ul class="simple">
 <li><p>Enstaka toppunkt</p></li>
@@ -1718,10 +1593,10 @@
 </ul>
 <p>Innan uppdatering av pgRouting räknas kolumnerna upp: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <section id="single-vertex-example-using-pgr-kruskaldd">
-<h5><a class="toc-backref" href="#id76" role="doc-backlink">Exempel på enstaka toppar med <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code></a><a class="headerlink" href="#single-vertex-example-using-pgr-kruskaldd" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id76" role="doc-backlink">Exempel på enstaka toppar med <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code></a><a class="headerlink" href="#single-vertex-example-using-pgr-kruskaldd" title="Länk till denna rubrik">¶</a></h5>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#single-vertex">this v3.6</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_kruskalDD</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">pred</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+-------+-----------+------+------+------+------+----------</span>
@@ -1737,7 +1612,7 @@
 <p>Innan uppdatering av pgRouting räknas kolumnerna upp: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_kruskalDD</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+-------+-----------+------+------+------+----------</span>
@@ -1752,10 +1627,10 @@
 </div>
 </section>
 <section id="multiple-vertices-example-using-pgr-kruskaldfs">
-<h5><a class="toc-backref" href="#id77" role="doc-backlink">Exempel på flera vertikaler med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a><a class="headerlink" href="#multiple-vertices-example-using-pgr-kruskaldfs" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id77" role="doc-backlink">Exempel på flera vertikaler med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a><a class="headerlink" href="#multiple-vertices-example-using-pgr-kruskaldfs" title="Länk till denna rubrik">¶</a></h5>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_kruskalDFS.html#multiple-vertices">this v3.6</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_kruskalDFS</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">max_depth</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">pred</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+-------+-----------+------+------+------+------+----------</span>
@@ -1778,7 +1653,7 @@
 <p>Innan uppdatering av pgRouting räknas kolumnerna upp: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_kruskalDFS</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id'</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">max_depth</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+-------+-----------+------+------+------+----------</span>
@@ -1801,7 +1676,7 @@
 </section>
 </section>
 <section id="migration-from-result-dij-dd">
-<span id="from-result-dij-dd"></span><h4><a class="toc-backref" href="#id78" role="doc-backlink">Migrering från <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-from-result-dij-dd" title="Link to this heading">¶</a></h4>
+<span id="from-result-dij-dd"></span><h4><a class="toc-backref" href="#id78" role="doc-backlink">Migrering från <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-from-result-dij-dd" title="Länk till denna rubrik">¶</a></h4>
 <p>Signaturer som ska migreras:</p>
 <ul class="simple">
 <li><p>Enstaka toppunkt</p></li>
@@ -1824,7 +1699,7 @@
 <li><p>byt namn på <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> till <code class="docutils literal notranslate"><span class="pre">from_v</span></code>.</p></li>
 </ul>
 <section id="single-vertex-example-using-pgr-drivingdistance">
-<h5><a class="toc-backref" href="#id79" role="doc-backlink">Exempel på en enda vertex med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#single-vertex-example-using-pgr-drivingdistance" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id79" role="doc-backlink">Exempel på en enda vertex med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#single-vertex-example-using-pgr-drivingdistance" title="Länk till denna rubrik">¶</a></h5>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-vertex">this v3.5</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_drivingDistance(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -1874,7 +1749,7 @@ FROM pgr_drivingDistance(
 </div>
 </section>
 <section id="multiple-vertices-example-using-pgr-drivingdistance">
-<h5><a class="toc-backref" href="#id80" role="doc-backlink">Exempel på flera toppar med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#multiple-vertices-example-using-pgr-drivingdistance" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id80" role="doc-backlink">Exempel på flera toppar med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#multiple-vertices-example-using-pgr-drivingdistance" title="Länk till denna rubrik">¶</a></h5>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#multiple-vertices">this v3.5</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
 FROM pgr_drivingDistance(
@@ -1926,7 +1801,7 @@ FROM pgr_drivingDistance(
 </section>
 </section>
 <section id="migration-of-result-generic-no-seq">
-<span id="from-result-generic-no-seq"></span><h4><a class="toc-backref" href="#id81" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-of-result-generic-no-seq" title="Link to this heading">¶</a></h4>
+<span id="from-result-generic-no-seq"></span><h4><a class="toc-backref" href="#id81" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></a><a class="headerlink" href="#migration-of-result-generic-no-seq" title="Länk till denna rubrik">¶</a></h4>
 <p>Signaturer som ska migreras:</p>
 <ul class="simple">
 <li><p>Enstaka toppunkt</p></li>
@@ -1950,7 +1825,7 @@ FROM pgr_drivingDistance(
 <li><p>Använd ett icke namngivet giltigt värde för <strong>körsida</strong> efter parametern <strong>avstånd</strong>.</p></li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Observera</p>
+<p class="admonition-title">Anteckning</p>
 <p>Standardvärde för parametern <strong>förarsida</strong></p>
 <p><em>parametern *driving side*</em> är namnlös och giltiga värden skiljer sig åt för riktade och oriktade grafer.</p>
 <ul class="simple">
@@ -1967,12 +1842,12 @@ FROM pgr_drivingDistance(
 </ul>
 </div>
 <section id="single-vertex-example-using-pgr-withpointsdd">
-<h5><a class="toc-backref" href="#id82" role="doc-backlink">Exempel på en enda toppunkt med <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><a class="headerlink" href="#single-vertex-example-using-pgr-withpointsdd" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id82" role="doc-backlink">Exempel på en enda toppunkt med <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><a class="headerlink" href="#single-vertex-example-using-pgr-withpointsdd" title="Länk till denna rubrik">¶</a></h5>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-vertex">this v3.5</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
-  -1, 3.3, &#39;r&#39;, details =&gt;true);
+  -1, 3.3, 'r', details =&gt;true);
  seq | depth | start_vid | pred | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+------+----------
    1 |     0 |        -1 |   -1 |   -1 |   -1 |    0 |        0
@@ -1992,7 +1867,7 @@ FROM pgr_drivingDistance(
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, node, edge, cost, agg_cost FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
-  -1, 3.3, &#39;r&#39;, details =&gt; true);
+  -1, 3.3, 'r', details =&gt; true);
  seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |   -1 |   -1 |    0 |        0
@@ -2006,12 +1881,12 @@ FROM pgr_drivingDistance(
 </div>
 </section>
 <section id="multiple-vertices-example-using-pgr-withpointsdd">
-<h5><a class="toc-backref" href="#id83" role="doc-backlink">Exempel på flera vertikaler med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><a class="headerlink" href="#multiple-vertices-example-using-pgr-withpointsdd" title="Link to this heading">¶</a></h5>
+<h5><a class="toc-backref" href="#id83" role="doc-backlink">Exempel på flera vertikaler med hjälp av <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><a class="headerlink" href="#multiple-vertices-example-using-pgr-withpointsdd" title="Länk till denna rubrik">¶</a></h5>
 <p>Migrering av <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-vertex">this v3.5</a> exempel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $$SELECT * FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
-  ARRAY[-1, 16], 3.3, &#39;l&#39;, equicost =&gt; true);
+  ARRAY[-1, 16], 3.3, 'l', equicost =&gt; true);
  seq | depth | start_vid | pred | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+------+----------
    1 |     0 |        -1 |   -1 |   -1 |   -1 |    0 |        0
@@ -2040,7 +1915,7 @@ FROM pgr_drivingDistance(
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, start_vid, node, edge, cost, agg_cost FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
-  ARRAY[-1, 16], 3.3, &#39;l&#39;, equicost =&gt; true) WHERE node &gt;= 0 OR cost = 0;
+  ARRAY[-1, 16], 3.3, 'l', equicost =&gt; true) WHERE node &gt;= 0 OR cost = 0;
  seq | start_vid | node | edge | cost | agg_cost
 -----+-----------+------+------+------+----------
    1 |        -1 |   -1 |   -1 |    0 |        0
@@ -2063,7 +1938,7 @@ FROM pgr_drivingDistance(
 </section>
 </section>
 <section id="migration-of-output-column-name-change">
-<h3><a class="toc-backref" href="#id60" role="doc-backlink">Ändring av namn på utdatakolumn vid migrering</a><a class="headerlink" href="#migration-of-output-column-name-change" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id60" role="doc-backlink">Ändring av namn på utdatakolumn vid migrering</a><a class="headerlink" href="#migration-of-output-column-name-change" title="Länk till denna rubrik">¶</a></h3>
 <p>De standardiserade resultatkolumnerna:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">color)</span></code></p></li>
@@ -2106,7 +1981,7 @@ FROM pgr_drivingDistance(
 </tbody>
 </table>
 <section id="migration-from-result-old-closure">
-<span id="from-old-closure"></span><h4><a class="toc-backref" href="#id61" role="doc-backlink">Migrering från <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></a><a class="headerlink" href="#migration-from-result-old-closure" title="Link to this heading">¶</a></h4>
+<span id="from-old-closure"></span><h4><a class="toc-backref" href="#id61" role="doc-backlink">Migrering från <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></a><a class="headerlink" href="#migration-from-result-old-closure" title="Länk till denna rubrik">¶</a></h4>
 <p>Migrering till: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vid,</span> <span class="pre">target_array)</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Varning</p>
@@ -2120,7 +1995,7 @@ FROM pgr_drivingDistance(
 </ul>
 </section>
 <section id="migration-from-result-toposort">
-<span id="from-toposort"></span><h4><a class="toc-backref" href="#id62" role="doc-backlink">Migrering från <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">sorted_v)</span></code></a><a class="headerlink" href="#migration-from-result-toposort" title="Link to this heading">¶</a></h4>
+<span id="from-toposort"></span><h4><a class="toc-backref" href="#id62" role="doc-backlink">Migrering från <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">sorted_v)</span></code></a><a class="headerlink" href="#migration-from-result-toposort" title="Länk till denna rubrik">¶</a></h4>
 <p>Migrering till: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node)</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Varning</p>
@@ -2133,7 +2008,7 @@ FROM pgr_drivingDistance(
 </ul>
 </section>
 <section id="migration-from-old-edge-color">
-<span id="from-old-edge-color"></span><h4><a class="toc-backref" href="#id63" role="doc-backlink">Migrering från <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></a><a class="headerlink" href="#migration-from-old-edge-color" title="Link to this heading">¶</a></h4>
+<span id="from-old-edge-color"></span><h4><a class="toc-backref" href="#id63" role="doc-backlink">Migrering från <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></a><a class="headerlink" href="#migration-from-old-edge-color" title="Länk till denna rubrik">¶</a></h4>
 <p>Migration till: <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">color)</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Varning</p>
@@ -2146,7 +2021,7 @@ FROM pgr_drivingDistance(
 </ul>
 </section>
 <section id="migration-from-old-node-color">
-<span id="from-old-node-color"></span><h4><a class="toc-backref" href="#id64" role="doc-backlink">Migrering från <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></a><a class="headerlink" href="#migration-from-old-node-color" title="Link to this heading">¶</a></h4>
+<span id="from-old-node-color"></span><h4><a class="toc-backref" href="#id64" role="doc-backlink">Migrering från <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></a><a class="headerlink" href="#migration-from-old-node-color" title="Länk till denna rubrik">¶</a></h4>
 <p>Migration till: <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">color)</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Varning</p>
@@ -2161,7 +2036,7 @@ FROM pgr_drivingDistance(
 </section>
 </section>
 <section id="migration-of-deleted-functions">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink">Migrering av borttagna funktioner</a><a class="headerlink" href="#migration-of-deleted-functions" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">Migrering av borttagna funktioner</a><a class="headerlink" href="#migration-of-deleted-functions" title="Länk till denna rubrik">¶</a></h2>
 <p>Funktionerna finns inte längre på pgRouting</p>
 <nav class="contents local" id="id4">
 <p class="topic-title">Innehåll</p>
@@ -2198,7 +2073,7 @@ FROM pgr_drivingDistance(
 </ul>
 </nav>
 <section id="migration-of-pgr-alphashape">
-<h3><a class="toc-backref" href="#id84" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a><a class="headerlink" href="#migration-of-pgr-alphashape" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id84" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a><a class="headerlink" href="#migration-of-pgr-alphashape" title="Länk till denna rubrik">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Föråldrat<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.8">v3.8.0</a></p>
@@ -2228,7 +2103,7 @@ FROM pgr_drivingDistance(
 </ul>
 </section>
 <section id="migration-of-pgr-nodenetwork">
-<h3><a class="toc-backref" href="#id85" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a><a class="headerlink" href="#migration-of-pgr-nodenetwork" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id85" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a><a class="headerlink" href="#migration-of-pgr-nodenetwork" title="Länk till denna rubrik">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Föråldrat<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.8">v3.8.0</a></p>
@@ -2242,7 +2117,7 @@ FROM pgr_drivingDistance(
 <p>Använd <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> och/eller använd <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a></p>
 </section>
 <section id="migration-of-pgr-createtopology">
-<h3><a class="toc-backref" href="#id86" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><a class="headerlink" href="#migration-of-pgr-createtopology" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id86" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code></a><a class="headerlink" href="#migration-of-pgr-createtopology" title="Länk till denna rubrik">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Föråldrat<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.8">v3.8.0</a></p>
@@ -2257,7 +2132,7 @@ FROM pgr_drivingDistance(
 </ul>
 <p><strong>Efter Deprecation:</strong> Användaren är ansvarig för att skapa den kompletta topologin.</p>
 <section id="build-a-routing-topology">
-<h4><a class="toc-backref" href="#id87" role="doc-backlink">Bygga upp en routingtopologi</a><a class="headerlink" href="#build-a-routing-topology" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id87" role="doc-backlink">Bygga upp en routingtopologi</a><a class="headerlink" href="#build-a-routing-topology" title="Länk till denna rubrik">¶</a></h4>
 <p>Den grundläggande informationen för att använda de flesta av pgRouting-funktionerna <code class="docutils literal notranslate"><span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">[reverse_cost]</span></code> är vad som i pgRouting kallas routingtopologin.</p>
 <p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> är valfritt men rekommenderas starkt för att minska databasens storlek på grund av storleken på geometrikolumnerna. I den här dokumentationen används dock <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> i den här dokumentationen.</p>
 <p>När data levereras med geometrier och det inte finns någon routningstopologi behövs det här steget.</p>
@@ -2265,7 +2140,7 @@ FROM pgr_drivingDistance(
 <p>Om kolumnerna inte finns måste de läggas till i tabellen i fråga. (se <a class="reference external" href="https://www.postgresql.org/docs/current/sql-altertable.html">ALTER TABLE</a>)</p>
 <p>Funktionen <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> används för att skapa en vertices-tabell baserad på kantidentifieraren och geometrin för kanten i grafen.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
-<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">'SELECT id, geom FROM edges ORDER BY id'</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">18</span>
 </pre></div>
 </div>
@@ -2287,7 +2162,7 @@ FROM pgr_drivingDistance(
 </section>
 </section>
 <section id="migration-of-pgr-createverticestable">
-<h3><a class="toc-backref" href="#id88" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a><a class="headerlink" href="#migration-of-pgr-createverticestable" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id88" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code></a><a class="headerlink" href="#migration-of-pgr-createverticestable" title="Länk till denna rubrik">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Föråldrat<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.8">v3.8.0</a></p>
@@ -2302,13 +2177,13 @@ FROM pgr_drivingDistance(
 </ul>
 <p><strong>Efter deprecation:</strong> Användaren är ansvarig för att skapa vertices-tabellen, index, etc. De kan använda <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> för det ändamålet.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
-<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">'SELECT id, geom FROM edges ORDER BY id'</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">17</span>
 </pre></div>
 </div>
 </section>
 <section id="migration-of-pgr-analyzeoneway">
-<h3><a class="toc-backref" href="#id89" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzeoneway" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id89" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzeoneway" title="Länk till denna rubrik">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Föråldrat<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.8">v3.8.0</a></p>
@@ -2343,7 +2218,7 @@ FROM pgr_drivingDistance(
 <p>Ett annat routningsproblem kan uppstå när det finns en kant i en odelad graf vars borttagning ökar antalet anslutna komponenter, och bron bara går åt ett håll.</p>
 <p>För att avgöra om broarna är enkelriktade eller inte.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">reverse_cost</span><span class="o">&lt;</span><span class="mi">0</span> <span class="n">AS</span> <span class="n">is_OneWway</span>
-<span class="n">FROM</span> <span class="n">pgr_bridges</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">pgr_bridges</span><span class="p">(</span><span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">)</span>
 <span class="n">JOIN</span> <span class="n">edges</span> <span class="n">ON</span> <span class="p">(</span><span class="n">edge</span> <span class="o">=</span> <span class="nb">id</span><span class="p">);</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">is_onewway</span>
 <span class="o">----+------------</span>
@@ -2359,7 +2234,7 @@ FROM pgr_drivingDistance(
 </div>
 </section>
 <section id="migration-of-pgr-analyzegraph">
-<h3><a class="toc-backref" href="#id90" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzegraph" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id90" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code></a><a class="headerlink" href="#migration-of-pgr-analyzegraph" title="Länk till denna rubrik">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Föråldrat<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pgrouting.org/3.8">v3.8.0</a></p>
@@ -2405,7 +2280,7 @@ FROM pgr_drivingDistance(
 <p>Till exempel:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
 <span class="o">-----+-----------+------</span>
@@ -2457,7 +2332,7 @@ WHERE degree = 1;
   <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span><span class="n">geom</span><span class="p">,</span> <span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="n">inhere</span>
   <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">where</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">),</span>
 <span class="n">results</span> <span class="n">AS</span> <span class="p">(</span>
-  <span class="n">SELECT</span> <span class="p">(</span><span class="n">pgr_findCloseEdges</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges WHERE id != &#39;</span> <span class="o">||</span> <span class="n">inhere</span> <span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">))</span><span class="o">.*</span>
+  <span class="n">SELECT</span> <span class="p">(</span><span class="n">pgr_findCloseEdges</span><span class="p">(</span><span class="s1">'SELECT id, geom FROM edges WHERE id != '</span> <span class="o">||</span> <span class="n">inhere</span> <span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">))</span><span class="o">.*</span>
   <span class="n">FROM</span> <span class="n">deadends</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="n">d</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">st_AsText</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">AS</span> <span class="n">point</span><span class="p">,</span> <span class="n">st_asText</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="n">edge</span>
 <span class="n">FROM</span> <span class="n">results</span> <span class="n">JOIN</span> <span class="n">deadends</span> <span class="n">d</span> <span class="n">USING</span> <span class="p">(</span><span class="n">geom</span><span class="p">);</span>
@@ -2483,7 +2358,7 @@ WHERE degree = 1;
 </div>
 </section>
 <section id="migration-of-pgr-trsp-vertices">
-<h3><a class="toc-backref" href="#id91" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (toppar)</a><a class="headerlink" href="#migration-of-pgr-trsp-vertices" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id91" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (toppar)</a><a class="headerlink" href="#migration-of-pgr-trsp-vertices" title="Länk till denna rubrik">¶</a></h3>
 <p>Underskrift:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="n">Edges</span> <span class="n">SQL</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
         <span class="p">[,</span><span class="n">restrict_sql</span> <span class="n">text</span><span class="p">]);</span>
@@ -2511,7 +2386,7 @@ WHERE degree = 1;
 <li><p><a class="reference internal" href="#migration-of-restrictions">Flyttning av restriktioner</a></p></li>
 </ul>
 <section id="use-pgr-dijkstra-when-there-are-no-restrictions">
-<h4><a class="toc-backref" href="#id101" role="doc-backlink">Använd <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> när det inte finns några begränsningar.</a><a class="headerlink" href="#use-pgr-dijkstra-when-there-are-no-restrictions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id101" role="doc-backlink">Använd <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> när det inte finns några begränsningar.</a><a class="headerlink" href="#use-pgr-dijkstra-when-there-are-no-restrictions" title="Länk till denna rubrik">¶</a></h4>
 <p>Använd <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> istället.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost
@@ -2549,7 +2424,7 @@ FROM pgr_dijkstra(
 </ul>
 </section>
 <section id="use-pgr-trsp-when-there-are-restrictions">
-<h4><a class="toc-backref" href="#id102" role="doc-backlink">Använd <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> när det finns begränsningar.</a><a class="headerlink" href="#use-pgr-trsp-when-there-are-restrictions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id102" role="doc-backlink">Använd <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> när det finns begränsningar.</a><a class="headerlink" href="#use-pgr-trsp-when-there-are-restrictions" title="Länk till denna rubrik">¶</a></h4>
 <p>Använd <a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> (One to One) istället.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost
@@ -2594,7 +2469,7 @@ FROM pgr_trsp(
 </section>
 </section>
 <section id="migration-of-pgr-trsp-edges">
-<h3><a class="toc-backref" href="#id94" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (kanter)</a><a class="headerlink" href="#migration-of-pgr-trsp-edges" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id94" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (kanter)</a><a class="headerlink" href="#migration-of-pgr-trsp-edges" title="Länk till denna rubrik">¶</a></h3>
 <p>Underskrift:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">source_edge</span> <span class="n">integer</span><span class="p">,</span> <span class="n">source_pos</span> <span class="n">float8</span><span class="p">,</span>
                  <span class="n">target_edge</span> <span class="n">integer</span><span class="p">,</span> <span class="n">target_pos</span> <span class="n">float8</span><span class="p">,</span>
@@ -2619,7 +2494,7 @@ FROM pgr_trsp(
 </ul>
 </section>
 <section id="migration-of-pgr-trspviavertices">
-<h3><a class="toc-backref" href="#id95" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviavertices" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id95" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviavertices" title="Länk till denna rubrik">¶</a></h3>
 <p>Underskrift:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trspViaVertices</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">vids</span> <span class="n">integer</span><span class="p">[],</span>
                   <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
@@ -2648,7 +2523,7 @@ FROM pgr_trsp(
 <li><p><a class="reference internal" href="#migration-of-restrictions">Flyttning av restriktioner</a></p></li>
 </ul>
 <section id="use-pgr-dijkstravia-when-there-are-no-restrictions">
-<h4><a class="toc-backref" href="#id103" role="doc-backlink">Använd <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> när det inte finns några begränsningar</a><a class="headerlink" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id103" role="doc-backlink">Använd <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> när det inte finns några begränsningar</a><a class="headerlink" href="#use-pgr-dijkstravia-when-there-are-no-restrictions" title="Länk till denna rubrik">¶</a></h4>
 <p>Använd <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia</span></a> istället.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2691,7 +2566,7 @@ WHERE edge != -1;
 </ul>
 </section>
 <section id="use-pgr-trspvia-when-there-are-restrictions">
-<h4><a class="toc-backref" href="#id104" role="doc-backlink">Använd <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> när det finns begränsningar</a><a class="headerlink" href="#use-pgr-trspvia-when-there-are-restrictions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id104" role="doc-backlink">Använd <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> när det finns begränsningar</a><a class="headerlink" href="#use-pgr-trspvia-when-there-are-restrictions" title="Länk till denna rubrik">¶</a></h4>
 <p>Använd <a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia</span></a> istället.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2749,7 +2624,7 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="migration-of-pgr-trspviaedges">
-<h3><a class="toc-backref" href="#id98" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviaedges" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id98" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviaedges" title="Länk till denna rubrik">¶</a></h3>
 <p>Underskrift:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trspViaEdges</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">eids</span> <span class="n">integer</span><span class="p">[],</span> <span class="n">pcts</span> <span class="n">float8</span><span class="p">[],</span>
                   <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
@@ -2778,13 +2653,13 @@ WHERE edge != -1;
 <li><p><a class="reference internal" href="#migration-of-restrictions">Flyttning av restriktioner</a></p></li>
 </ul>
 <section id="use-pgr-withpointsvia-when-there-are-no-restrictions">
-<h4><a class="toc-backref" href="#id105" role="doc-backlink">Använd <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> när det inte finns några begränsningar</a><a class="headerlink" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id105" role="doc-backlink">Använd <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> när det inte finns några begränsningar</a><a class="headerlink" href="#use-pgr-withpointsvia-when-there-are-no-restrictions" title="Länk till denna rubrik">¶</a></h4>
 <p>Använd <a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a> istället.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
   ARRAY[-4, -3, -6],
-  &#39;r&#39;, details =&gt; false);
+  'r', details =&gt; false);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
    1 |       1 |        1 |        -4 |      -3 |   -4 |    6 |  0.7 |        0 |              0
@@ -2811,7 +2686,7 @@ FROM pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
   ARRAY[-4, -3, -6],
-  &#39;r&#39;, details =&gt; false);
+  'r', details =&gt; false);
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -4 |   6 |  0.7
@@ -2837,14 +2712,14 @@ FROM pgr_withPointsVia(
 </ul>
 </section>
 <section id="use-pgr-trspvia-withpoints-when-there-are-restrictions">
-<h4><a class="toc-backref" href="#id106" role="doc-backlink">Använd <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> när det finns begränsningar</a><a class="headerlink" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id106" role="doc-backlink">Använd <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> när det finns begränsningar</a><a class="headerlink" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions" title="Länk till denna rubrik">¶</a></h4>
 <p>Använd <a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints</span></a> istället.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM new_restrictions$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
   ARRAY[-4, -3, -6],
-  &#39;r&#39;, details =&gt; false);
+  'r', details =&gt; false);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
    1 |       1 |        1 |        -4 |      -3 |   -4 |    6 |  0.7 |        0 |              0
@@ -2873,7 +2748,7 @@ FROM pgr_trspVia_withPoints(
   $$SELECT * FROM new_restrictions$$,
   $$SELECT * FROM (VALUES (1, 6, 0.3),(2, 12, 0.6),(3, 4, 0.7)) AS t(pid, edge_id, fraction)$$,
   ARRAY[-1, -2, -3],
-  &#39;r&#39;, details =&gt; false);
+  'r', details =&gt; false);
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   6 |  0.7
@@ -2902,9 +2777,9 @@ FROM pgr_trspVia_withPoints(
 </section>
 </section>
 <section id="not-yet-classified-migrations">
-<h2><a class="toc-backref" href="#id26" role="doc-backlink">Ännu ej klassificerade migrationer</a><a class="headerlink" href="#not-yet-classified-migrations" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Ännu ej klassificerade migrationer</a><a class="headerlink" href="#not-yet-classified-migrations" title="Länk till denna rubrik">¶</a></h2>
 <section id="migration-of-pgr-withpointsksp">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsksp" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsksp" title="Länk till denna rubrik">¶</a></h3>
 <p>Från och med <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a> <a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP</span></a> standardiseras resultatkolumnerna.</p>
 <dl class="field-list simple">
 <dt class="field-odd">från<span class="colon">:</span></dt>
@@ -2939,7 +2814,7 @@ FROM pgr_trspVia_withPoints(
 <li><p>Nya utdatakolumner är <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Observera</p>
+<p class="admonition-title">Anteckning</p>
 <p>Standardvärde för parametern <strong>förarsida</strong></p>
 <p><em>parametern *driving side*</em> är namnlös och giltiga värden skiljer sig åt för riktade och oriktade grafer.</p>
 <ul class="simple">
@@ -2956,7 +2831,7 @@ FROM pgr_trspVia_withPoints(
 </ul>
 </div>
 <section id="pgr-withpointsksp-one-to-one">
-<h4><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>En till en</cite>)<a class="headerlink" href="#pgr-withpointsksp-one-to-one" title="Link to this heading">¶</a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>En till en</cite>)<a class="headerlink" href="#pgr-withpointsksp-one-to-one" title="Länk till denna rubrik">¶</a></h4>
 <p>Använda <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP.html#signatures">det här</a> exemplet.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> innehåller parametervärdet <strong>start vid</strong>.</p></li>
@@ -2965,7 +2840,7 @@ FROM pgr_trspVia_withPoints(
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsKSP(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
-  -1, -2, 2, &#39;l&#39;);
+  -1, -2, 2, 'l');
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------
    1 |       1 |        1 |        -1 |      -2 |   -1 |    1 |  0.6 |        0
@@ -2989,7 +2864,7 @@ FROM pgr_trspVia_withPoints(
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, path_id, path_seq, node, edge, cost, agg_cost FROM pgr_withPointsKSP(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
-  -1, -2, 2, &#39;l&#39;);
+  -1, -2, 2, 'l');
  seq | path_id | path_seq | node | edge | cost | agg_cost
 -----+---------+----------+------+------+------+----------
    1 |       1 |        1 |   -1 |    1 |  0.6 |        0
@@ -3011,13 +2886,13 @@ FROM pgr_trspVia_withPoints(
 </div>
 </section>
 <section id="use-pgr-withpoints-when-there-are-no-restrictions">
-<h4>Använd <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> när det inte finns några begränsningar.<a class="headerlink" href="#use-pgr-withpoints-when-there-are-no-restrictions" title="Link to this heading">¶</a></h4>
+<h4>Använd <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> när det inte finns några begränsningar.<a class="headerlink" href="#use-pgr-withpoints-when-there-are-no-restrictions" title="Länk till denna rubrik">¶</a></h4>
 <p>Använd <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> (One to One) istället.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,
   -4, -3,
-  &#39;r&#39;, details =&gt; false);
+  'r', details =&gt; false);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |        -4 |      -3 |   -4 |    6 |  0.7 |        0
@@ -3035,7 +2910,7 @@ FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM (VALUES (1, 6, 0.3),(2, 12, 0.6)) AS t(pid, edge_id, fraction)$$,
   -1, -2,
-  &#39;r&#39;, details =&gt; false);
+  'r', details =&gt; false);
  seq | id1 | id2 | cost
 -----+-----+-----+------
    1 |  -1 |   6 |  0.7
@@ -3053,14 +2928,14 @@ FROM pgr_withPoints(
 </ul>
 </section>
 <section id="use-pgr-trsp-withpoints-when-there-are-restrictions">
-<h4>Använd <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> när det finns begränsningar.<a class="headerlink" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" title="Link to this heading">¶</a></h4>
+<h4>Använd <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> när det finns begränsningar.<a class="headerlink" href="#use-pgr-trsp-withpoints-when-there-are-restrictions" title="Länk till denna rubrik">¶</a></h4>
 <p>Använd <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints</span></a> istället.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM new_restrictions$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,
   -4, -3,
-  &#39;r&#39;, details =&gt; false);
+  'r', details =&gt; false);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |        -4 |      -3 |   -4 |    6 |  0.7 |        0
@@ -3085,7 +2960,7 @@ FROM pgr_trsp_withPoints(
   $$SELECT * FROM new_restrictions$$,
   $$SELECT * FROM (VALUES (1, 6, 0.3),(2, 12, 0.6)) AS t(pid, edge_id, fraction)$$,
   -1, -2,
-  &#39;r&#39;, details =&gt; false)
+  'r', details =&gt; false)
 WHERE edge != -1;
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -3110,7 +2985,7 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="migration-of-pgr-maxcardinalitymatch">
-<h3><a class="toc-backref" href="#id28" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a><a class="headerlink" href="#migration-of-pgr-maxcardinalitymatch" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">Migrering av <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a><a class="headerlink" href="#migration-of-pgr-maxcardinalitymatch" title="Länk till denna rubrik">¶</a></h3>
 <p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> works only for undirected graphs, therefore the
 <code class="docutils literal notranslate"><span class="pre">directed</span></code> flag has been removed.</p>
 <p>Startar från <a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">v3.4.0</a></p>
@@ -3176,11 +3051,11 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="migration-of-restrictions">
-<h2><a class="toc-backref" href="#id29" role="doc-backlink">Överföring av restriktioner</a><a class="headerlink" href="#migration-of-restrictions" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id29" role="doc-backlink">Överföring av restriktioner</a><a class="headerlink" href="#migration-of-restrictions" title="Länk till denna rubrik">¶</a></h2>
 <p>Startar från <a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">v3.4.0</a></p>
 <p>Strukturen på restriktionerna har förändrats:</p>
 <section id="old-restrictions-structure">
-<h3><a class="toc-backref" href="#id30" role="doc-backlink">Gammal begränsningsstruktur</a><a class="headerlink" href="#old-restrictions-structure" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">Gammal begränsningsstruktur</a><a class="headerlink" href="#old-restrictions-structure" title="Länk till denna rubrik">¶</a></h3>
 <p>På de föråldrade signaturerna:</p>
 <ul class="simple">
 <li><p>Kolumnen <code class="docutils literal notranslate"><span class="pre">rid</span></code> ignoreras</p></li>
@@ -3215,16 +3090,16 @@ WHERE edge != -1;
 </div>
 <p>Gamla restriktioner fylls på</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">old_restrictions</span> <span class="p">(</span><span class="n">rid</span><span class="p">,</span> <span class="n">to_cost</span><span class="p">,</span> <span class="n">target_id</span><span class="p">,</span> <span class="n">via_path</span><span class="p">)</span> <span class="n">VALUES</span>
-<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="s1">&#39;4&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span>  <span class="s1">&#39;8&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>  <span class="s1">&#39;7&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">2</span><span class="p">,</span>   <span class="mi">4</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span>  <span class="s1">&#39;5, 3&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;16&#39;</span><span class="p">);</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="s1">'4'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span>  <span class="s1">'8'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>  <span class="s1">'7'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span>   <span class="mi">4</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span>  <span class="s1">'5, 3'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="s1">'16'</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">5</span>
 </pre></div>
 </div>
 <section id="old-restrictions-contents">
-<h4>Gamla restriktioner innehåll<a class="headerlink" href="#old-restrictions-contents" title="Link to this heading">¶</a></h4>
+<h4>Gamla restriktioner innehåll<a class="headerlink" href="#old-restrictions-contents" title="Länk till denna rubrik">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">old_restrictions</span><span class="p">;</span>
  <span class="n">rid</span> <span class="o">|</span> <span class="n">to_cost</span> <span class="o">|</span> <span class="n">target_id</span> <span class="o">|</span> <span class="n">via_path</span>
 <span class="o">-----+---------+-----------+----------</span>
@@ -3255,7 +3130,7 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="new-restrictions-structure">
-<h3><a class="toc-backref" href="#id31" role="doc-backlink">Ny struktur för restriktioner</a><a class="headerlink" href="#new-restrictions-structure" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">Ny struktur för restriktioner</a><a class="headerlink" href="#new-restrictions-structure" title="Länk till denna rubrik">¶</a></h3>
 <ul class="simple">
 <li><p>Kolumnen <code class="docutils literal notranslate"><span class="pre">id</span></code> ignoreras</p></li>
 <li><p>Kolumn ”sökväg</p>
@@ -3308,7 +3183,7 @@ WHERE edge != -1;
 <li><p>Vid inspektion är vägen tydlig.</p></li>
 </ul>
 <section id="migration">
-<h4>Migrering<a class="headerlink" href="#migration" title="Link to this heading">¶</a></h4>
+<h4>Migrering<a class="headerlink" href="#migration" title="Länk till denna rubrik">¶</a></h4>
 <p>Att omvandla den gamla begränsningstabellen till den nya begränsningsstrukturen,</p>
 <ul class="simple">
 <li><p>Skapa en ny tabell med den nya begränsningsstrukturen.</p>
@@ -3330,7 +3205,7 @@ WHERE edge != -1;
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">rid</span> <span class="n">AS</span> <span class="nb">id</span><span class="p">,</span>
   <span class="n">_pgr_array_reverse</span><span class="p">(</span>
-    <span class="n">array_prepend</span><span class="p">(</span><span class="n">target_id</span><span class="p">,</span> <span class="n">string_to_array</span><span class="p">(</span><span class="n">via_path</span><span class="p">::</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">)::</span><span class="n">BIGINT</span><span class="p">[]))</span> <span class="n">AS</span> <span class="n">path</span><span class="p">,</span>
+    <span class="n">array_prepend</span><span class="p">(</span><span class="n">target_id</span><span class="p">,</span> <span class="n">string_to_array</span><span class="p">(</span><span class="n">via_path</span><span class="p">::</span><span class="n">text</span><span class="p">,</span> <span class="s1">','</span><span class="p">)::</span><span class="n">BIGINT</span><span class="p">[]))</span> <span class="n">AS</span> <span class="n">path</span><span class="p">,</span>
   <span class="n">to_cost</span> <span class="n">AS</span> <span class="n">cost</span>
   <span class="n">INTO</span> <span class="n">new_restrictions</span>
 <span class="n">FROM</span> <span class="n">old_restrictions</span><span class="p">;</span>
@@ -3354,7 +3229,7 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="see-also">
-<h2><a class="toc-backref" href="#id32" role="doc-backlink">Se även</a><a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id32" role="doc-backlink">Se även</a><a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgRouting-concepts.html"><span class="doc">pgRouting-koncept</span></a></p></li>
 </ul>
@@ -3379,8 +3254,8 @@ WHERE edge != -1;
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

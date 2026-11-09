@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=0e79a2cd"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -228,118 +228,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">pgRouting 概念</a><ul>
-<li><a class="reference internal" href="#graphs">图</a><ul>
-<li><a class="reference internal" href="#graph-definition">图定义</a></li>
-<li><a class="reference internal" href="#graph-with-cost"><code class="docutils literal notranslate"><span class="pre">cost</span></code> 图</a></li>
-<li><a class="reference internal" href="#graph-with-cost-and-reverse-cost">带有 <code class="docutils literal notranslate"><span class="pre">cost</span></code> 和 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的图</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#graphs-without-geometries">没有几何信息的图</a><ul>
-<li><a class="reference internal" href="#wiki-example">维基示例</a><ul>
-<li><a class="reference internal" href="#prepare-the-database">准备数据库</a></li>
-<li><a class="reference internal" href="#create-a-table">创建表</a></li>
-<li><a class="reference internal" href="#insert-the-data">插入数据</a></li>
-<li><a class="reference internal" href="#find-the-shortest-path">寻找最短路径</a></li>
-<li><a class="reference internal" href="#vertex-information">顶点信息</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#graphs-with-geometries">具有几何图形的图</a><ul>
-<li><a class="reference internal" href="#create-a-routing-database">创建路由数据库</a></li>
-<li><a class="reference internal" href="#load-data">加载数据</a></li>
-<li><a class="reference internal" href="#build-a-routing-topology">构建路由拓扑</a></li>
-<li><a class="reference internal" href="#adjust-costs">调整成本</a><ul>
-<li><a class="reference internal" href="#update-costs-to-length-of-geometry">将成本更新为几何形状的长度</a></li>
-<li><a class="reference internal" href="#update-costs-based-on-codes">根据代码更新成本</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#check-the-routing-topology">检查路由拓扑</a><ul>
-<li><a class="reference internal" href="#crossing-edges">交叉边</a><ul>
-<li><a class="reference internal" href="#fixing-an-intersection">修复交叉路口</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#touching-edges">相邻边线</a><ul>
-<li><a class="reference internal" href="#fixing-a-gap">弥补差距</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#connecting-components">连接组件</a></li>
-<li><a class="reference internal" href="#contraction-of-a-graph">图的收缩</a><ul>
-<li><a class="reference internal" href="#dead-ends">死端</a></li>
-<li><a class="reference internal" href="#linear-edges">线性边</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#function-s-structure">函数的结构</a></li>
-<li><a class="reference internal" href="#function-s-overloads">函数的重载</a><ul>
-<li><a class="reference internal" href="#one-to-one">One to One</a></li>
-<li><a class="reference internal" href="#one-to-many">One to Many</a></li>
-<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
-<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
-<li><a class="reference internal" href="#combinations">组合</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a><ul>
-<li><a class="reference internal" href="#general">常规</a></li>
-<li><a class="reference internal" href="#general-without-id">一般没有 <code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
-<li><a class="reference internal" href="#general-with-x-y">通常带有（X,Y)</a></li>
-<li><a class="reference internal" href="#flow">流</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#combinations-sql">分量 SQL</a></li>
-<li><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters">参数</a><ul>
-<li><a class="reference internal" href="#parameters-for-the-via-functions">Via 函数的参数</a></li>
-<li><a class="reference internal" href="#for-the-trsp-functions">对于 TRSP 函数</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">结果列</a><ul>
-<li><a class="reference internal" href="#result-columns-for-single-path-functions">Result columns for single path functions</a></li>
-<li><a class="reference internal" href="#result-columns-for-multiple-paths-functions">Result columns for multiple paths functions</a></li>
-<li><a class="reference internal" href="#result-columns-for-cost-functions">成本函数结果列</a></li>
-<li><a class="reference internal" href="#result-columns-for-flow-functions">流量函数的结果列</a></li>
-<li><a class="reference internal" href="#result-columns-for-spanning-tree-functions">生成树函数的结果列</a></li>
-<li><a class="reference internal" href="#result-columns-for-simple-spanning-tree-functions">Result columns for simple spanning tree functions</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#performance-tips">性能技巧</a><ul>
-<li><a class="reference internal" href="#for-the-routing-functions">对于路由功能</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#how-to-contribute">如何贡献</a></li>
-<li><a class="reference internal" href="#see-also">另请参阅</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="sampledata.html" title="Previous Chapter: 示例数据"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 示例数据</span>
-    </a>
-  </li>
-  <li>
-    <a href="routingFunctions.html" title="Next Chapter: 函数族"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">函数族 &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgRouting-concepts','zh-Hans'));  </script>
             
   <div class="line-block">
@@ -804,7 +693,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <h4><a class="toc-backref" href="#id57" role="doc-backlink">寻找最短路径</a><a class="headerlink" href="#find-the-shortest-path" title="Link to this heading">¶</a></h4>
 <p>为了解决这个例子，使用了 <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a>：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM wiki&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM wiki'</span><span class="p">,</span>
   <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -836,7 +725,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <h4><a class="toc-backref" href="#id58" role="doc-backlink">顶点信息</a><a class="headerlink" href="#vertex-information" title="Link to this heading">¶</a></h4>
 <p>要获取顶点信息，请使用 <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
-<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target FROM wiki&#39;</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">'SELECT id, source, target FROM wiki'</span><span class="p">);</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span>
 <span class="o">----+----------+-----------</span>
   <span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>
@@ -873,7 +762,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p>通常为每个项目创建一个数据库。</p>
 <p>一旦数据库可以工作，加载数据并在该数据库中构建路由应用程序。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">createdb</span> <span class="n">sampledata</span>
-<span class="n">psql</span> <span class="n">sampledata</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;CREATE EXTENSION pgrouting CASCADE&quot;</span>
+<span class="n">psql</span> <span class="n">sampledata</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"CREATE EXTENSION pgrouting CASCADE"</span>
 </pre></div>
 </div>
 </section>
@@ -943,7 +832,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p>如果这些列不存在，则需要将它们添加到相关表中。 （参见 <a class="reference external" href="https://www.postgresql.org/docs/current/sql-altertable.html">ALTER TABLE</a> ）</p>
 <p>函数 <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> 用于根据边标识符和图边的几何形状创建顶点表。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
-<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">'SELECT id, geom FROM edges ORDER BY id'</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">18</span>
 </pre></div>
 </div>
@@ -1028,20 +917,20 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">direction</span> <span class="n">TEXT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span>
-<span class="n">direction</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;B&#39;</span>   <span class="o">/*</span> <span class="n">both</span> <span class="n">ways</span> <span class="o">*/</span>
-           <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;FT&#39;</span>  <span class="o">/*</span> <span class="n">direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">LINESSTRING</span> <span class="o">*/</span>
-           <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&lt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;TF&#39;</span>  <span class="o">/*</span> <span class="n">reverse</span> <span class="n">direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">LINESTRING</span> <span class="o">*/</span>
-           <span class="n">ELSE</span> <span class="s1">&#39;&#39;</span> <span class="n">END</span><span class="p">;</span>
+<span class="n">direction</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">'B'</span>   <span class="o">/*</span> <span class="n">both</span> <span class="n">ways</span> <span class="o">*/</span>
+           <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">'FT'</span>  <span class="o">/*</span> <span class="n">direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">LINESSTRING</span> <span class="o">*/</span>
+           <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&lt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">'TF'</span>  <span class="o">/*</span> <span class="n">reverse</span> <span class="n">direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">LINESTRING</span> <span class="o">*/</span>
+           <span class="n">ELSE</span> <span class="s1">''</span> <span class="n">END</span><span class="p">;</span>
 <span class="n">UPDATE</span> <span class="mi">18</span>
 <span class="o">/*</span> <span class="n">unknown</span> <span class="o">*/</span>
 </pre></div>
 </div>
 <p>根据代码调整成本：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span>
-<span class="n">cost</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">direction</span> <span class="o">=</span> <span class="s1">&#39;B&#39;</span> <span class="n">OR</span> <span class="n">direction</span> <span class="o">=</span> <span class="s1">&#39;FT&#39;</span><span class="p">)</span>
+<span class="n">cost</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">direction</span> <span class="o">=</span> <span class="s1">'B'</span> <span class="n">OR</span> <span class="n">direction</span> <span class="o">=</span> <span class="s1">'FT'</span><span class="p">)</span>
        <span class="n">THEN</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
        <span class="n">ELSE</span> <span class="o">-</span><span class="mi">1</span> <span class="n">END</span><span class="p">,</span>
-<span class="n">reverse_cost</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">direction</span> <span class="o">=</span> <span class="s1">&#39;B&#39;</span> <span class="n">OR</span> <span class="n">direction</span> <span class="o">=</span> <span class="s1">&#39;TF&#39;</span><span class="p">)</span>
+<span class="n">reverse_cost</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">direction</span> <span class="o">=</span> <span class="s1">'B'</span> <span class="n">OR</span> <span class="n">direction</span> <span class="o">=</span> <span class="s1">'TF'</span><span class="p">)</span>
        <span class="n">THEN</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
        <span class="n">ELSE</span> <span class="o">-</span><span class="mi">1</span> <span class="n">END</span><span class="p">;</span>
 <span class="n">UPDATE</span> <span class="mi">18</span>
@@ -1163,7 +1052,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p class="rubric">使用示例（无结果输出）</p>
 <p>从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(18\)</span> 的路由无解。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
-<span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
 <span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
@@ -1194,7 +1083,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p>调用 <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> 并将新的线段添加到边缘表中。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span>
-<span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">'SELECT id, geom FROM edges'</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">4</span>
 </pre></div>
 </div>
@@ -1217,7 +1106,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">new_vertex</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="n">ev</span><span class="o">.*</span>
-  <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges WHERE old_id IS NOT NULL&#39;</span><span class="p">)</span> <span class="n">ev</span>
+  <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">'SELECT id, geom FROM edges WHERE old_id IS NOT NULL'</span><span class="p">)</span> <span class="n">ev</span>
   <span class="n">LEFT</span> <span class="n">JOIN</span> <span class="n">vertices</span> <span class="n">v</span> <span class="n">using</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
   <span class="n">WHERE</span> <span class="n">v</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">)</span>
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">vertices</span> <span class="p">(</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">geom</span><span class="p">)</span>
@@ -1243,7 +1132,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p class="rubric">示例结果</p>
 <p>从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(18\)</span> 的路径给出了解决方案。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
-<span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">18</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -1286,7 +1175,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p class="rubric">使用示例（无结果输出）</p>
 <p>从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(2\)</span> 的路由无解。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
-<span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span> <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span> <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
 <span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
@@ -1321,7 +1210,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p>调用 <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> 并将新的线段添加到边缘表中。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span>
-<span class="n">FROM</span> <span class="n">pgr_separateTouching</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_separateTouching</span><span class="p">(</span><span class="s1">'SELECT id, geom FROM edges'</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">2</span>
 </pre></div>
 </div>
@@ -1345,7 +1234,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p>如有新顶点，则插入。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">new_vertex</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="n">ev</span><span class="o">.*</span>
-  <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges WHERE old_id IS NOT NULL&#39;</span><span class="p">)</span> <span class="n">ev</span>
+  <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">'SELECT id, geom FROM edges WHERE old_id IS NOT NULL'</span><span class="p">)</span> <span class="n">ev</span>
   <span class="n">LEFT</span> <span class="n">JOIN</span> <span class="n">vertices</span> <span class="n">v</span> <span class="n">using</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
   <span class="n">WHERE</span> <span class="n">v</span> <span class="n">IS</span> <span class="n">NULL</span>
 <span class="p">)</span>
@@ -1373,7 +1262,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p class="rubric">示例结果</p>
 <p>从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(2\)</span> 的路径给出了解决方案。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
-<span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -1392,7 +1281,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <h3><a class="toc-backref" href="#id69" role="doc-backlink">连接组件</a><a class="headerlink" href="#connecting-components" title="Link to this heading">¶</a></h3>
 <p>要获取图的连通性：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
 <span class="o">-----+-----------+------</span>
@@ -1430,7 +1319,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p>在这个例子中，将使用 <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> 和 <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> 。</p>
 <p class="rubric">获取连接性</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
 <span class="o">-----+-----------+------</span>
@@ -1466,16 +1355,16 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p class="rubric">插入新边线</p>
 <p>使用 <a class="reference internal" href="pgr_separateCrossing.html"><span class="doc">pgr_separateCrossing</span></a> 和 <a class="reference internal" href="pgr_separateTouching.html"><span class="doc">pgr_separateTouching</span></a> 将结果插入边缘表。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
-<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM edges&#39;</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateCrossing</span><span class="p">(</span><span class="s1">'SELECT * FROM edges'</span><span class="p">)</span>
 <span class="n">UNION</span>
-<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateTouching</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM edges&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">pgr_separateTouching</span><span class="p">(</span><span class="s1">'SELECT * FROM edges'</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">6</span>
 </pre></div>
 </div>
 <p class="rubric">创建顶点表</p>
 <p>使用 <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> 创建该表。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">AS</span>
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">'SELECT id, geom FROM edges'</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">18</span>
 </pre></div>
 </div>
@@ -1505,7 +1394,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
 <span class="o">-----+-----------+------</span>
@@ -2883,8 +2772,8 @@ a Point.</p>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on 11月 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on 11月 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

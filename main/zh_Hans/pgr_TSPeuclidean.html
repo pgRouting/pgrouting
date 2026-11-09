@@ -13,8 +13,8 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=0e79a2cd"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -167,58 +167,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code></a><ul>
-<li><a class="reference internal" href="#description">描述</a><ul>
-<li><a class="reference internal" href="#problem-definition">问题定义</a></li>
-<li><a class="reference internal" href="#characteristics">特征</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#signatures">签名</a></li>
-<li><a class="reference internal" href="#parameters">参数</a><ul>
-<li><a class="reference internal" href="#tsp-optional-parameters">TSP 可选参数</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
-<li><a class="reference internal" href="#coordinates-sql">坐标SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">结果列</a></li>
-<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
-<li><a class="reference internal" href="#test-29-cities-of-western-sahara">测试西撒哈拉29个城市</a><ul>
-<li><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data">创建数据表并存储数据</a></li>
-<li><a class="reference internal" href="#adding-a-geometry-for-visual-purposes">添加几何图形（用于视觉目的）</a></li>
-<li><a class="reference internal" href="#total-tour-cost">旅游总费用</a></li>
-<li><a class="reference internal" href="#getting-a-geometry-of-the-tour">获取游览的几何形状</a></li>
-<li><a class="reference internal" href="#visual-results">视觉效果</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">另请参阅</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_TSP.html" title="Previous Chapter: pgr_TSP"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_TSP</span>
-    </a>
-  </li>
-  <li>
-    <a href="utilities-family.html" title="Next Chapter: 实用工具函数集"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">实用工具函数集 &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_TSPeuclidean','zh-Hans'));  </script>
             
   <div class="line-block" id="index-0">
@@ -244,7 +193,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 <p class="rubric">版本3.2.1</p>
 <ul class="simple">
-<li><p>使用 <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: metric TSP approx</a></p></li>
+<li><p>使用 <a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html">Boost: metric TSP approx</a></p></li>
 <li><p>Simulated Annealing算法不再受支持</p>
 <ul>
 <li><p>Simulated Annealing 算法相关参数被忽略： <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
@@ -307,7 +256,7 @@ in the worst case</em>:</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
 </section>
 </section>
 <section id="signatures">
@@ -581,7 +530,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - 函数族</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: 度量旅行商问题近似算法</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html">Boost: 度量旅行商问题近似算法</a></p></li>
 <li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">滑铁卢大学TSP研究</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">维基百科：旅行商问题</a></p></li>
 </ul>
@@ -606,8 +555,8 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Last updated on 11月 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Last updated on 11月 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

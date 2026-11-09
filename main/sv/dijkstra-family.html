@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=072f198e"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -157,53 +157,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">Dijkstra - Familj av funktioner</a><ul>
-<li><a class="reference internal" href="#introduction">Introduktion</a></li>
-<li><a class="reference internal" href="#parameters">Parametrar</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Valfria parametrar</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
-<li><a class="reference internal" href="#edges-sql">Kanter SQL</a></li>
-<li><a class="reference internal" href="#combinations-sql">Kombinationer SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#advanced-documentation">Avancerad dokumentation</a><ul>
-<li><a class="reference internal" href="#the-problem-definition-advanced-documentation">Problemdefinition (avancerad dokumentation)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="pgr_contractionHierarchies.html" title="Previous Chapter: pgr_contractionHierarchies - Experimentell"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_contracti...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_dijkstra.html" title="Next Chapter: pgr_dijkstra"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_dijkstra &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('dijkstra-family','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="dijkstra-family-of-functions">
-<h1>Dijkstra - Familj av funktioner<a class="headerlink" href="#dijkstra-family-of-functions" title="Link to this heading">¶</a></h1>
+<h1>Dijkstra - Familj av funktioner<a class="headerlink" href="#dijkstra-family-of-functions" title="Länk till denna rubrik">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> - Dijkstra’s algorithm for the shortest paths.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a> - Get the aggregate cost of the shortest paths.</p></li>
@@ -219,7 +180,7 @@ paths.</p></li>
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
-<h2>Introduktion<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<h2>Introduktion<a class="headerlink" href="#introduction" title="Länk till denna rubrik">¶</a></h2>
 <p>Dijkstras algoritm, skapad av den holländske datavetaren Edsger Dijkstra 1956. Det är en algoritm för grafsökning som löser problemet med kortaste vägen för en graf med icke-negativa kantvägskostnader, vilket ger en kortaste väg från ett startvertex till ett slutvertex. Den här implementationen kan användas med en riktad graf och en oriktad graf.</p>
 <p>De viktigaste egenskaperna är:</p>
 <ul class="simple">
@@ -249,7 +210,7 @@ paths.</p></li>
 <p>Dijkstra-familjens funktioner är baserade på Dijkstra-algoritmen.</p>
 </section>
 <section id="parameters">
-<h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<h2>Parametrar<a class="headerlink" href="#parameters" title="Länk till denna rubrik">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 19.4%" />
@@ -290,7 +251,7 @@ paths.</p></li>
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Valfria parametrar<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>Valfria parametrar<a class="headerlink" href="#optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Kolumn</p></th>
@@ -314,9 +275,9 @@ paths.</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Länk till denna rubrik">¶</a></h2>
 <section id="edges-sql">
-<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>Kanter SQL<a class="headerlink" href="#edges-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -374,7 +335,7 @@ paths.</p></li>
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>Kombinationer SQL<a class="headerlink" href="#combinations-sql" title="Link to this heading">¶</a></h3>
+<h3>Kombinationer SQL<a class="headerlink" href="#combinations-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -407,9 +368,9 @@ paths.</p></li>
 </section>
 </section>
 <section id="advanced-documentation">
-<h2>Avancerad dokumentation<a class="headerlink" href="#advanced-documentation" title="Link to this heading">¶</a></h2>
+<h2>Avancerad dokumentation<a class="headerlink" href="#advanced-documentation" title="Länk till denna rubrik">¶</a></h2>
 <section id="the-problem-definition-advanced-documentation">
-<h3>Problemdefinition (avancerad dokumentation)<a class="headerlink" href="#the-problem-definition-advanced-documentation" title="Link to this heading">¶</a></h3>
+<h3>Problemdefinition (avancerad dokumentation)<a class="headerlink" href="#the-problem-definition-advanced-documentation" title="Länk till denna rubrik">¶</a></h3>
 <p>Givet följande frågeställning:</p>
 <p>pgr_dijkstra(<span class="math notranslate nohighlight">\(sql, start_{vid}, end_{vid}, directed\)</span>)</p>
 <p>där <span class="math notranslate nohighlight">\(sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}`\)</span></p>
@@ -499,7 +460,7 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
 </section>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <p class="rubric">Index och tabeller</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
@@ -521,8 +482,8 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

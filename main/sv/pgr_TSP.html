@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
     <script src="_static/documentation_options.js?v=072f198e"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script src="_static/translations.js?v=55d7b627"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/translations.js?v=9581117f"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Sök" href="search.html" />
@@ -164,60 +164,14 @@
 
 <div class="container">
     <div class="row">
-      <div class="span3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code></a><ul>
-<li><a class="reference internal" href="#description">Beskrivning</a><ul>
-<li><a class="reference internal" href="#problem-definition">Definition av problem</a></li>
-<li><a class="reference internal" href="#characteristics">Egenskaper</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#signatures">Underskrifter</a></li>
-<li><a class="reference internal" href="#parameters">Parametrar</a><ul>
-<li><a class="reference internal" href="#tsp-optional-parameters">TSP valfria parametrar</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inner-queries">Inre frågor</a><ul>
-<li><a class="reference internal" href="#matrix-sql">Matrix SQL</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Resultat kolumner</a></li>
-<li><a class="reference internal" href="#additional-examples">Ytterligare exempel</a><ul>
-<li><a class="reference internal" href="#start-from-vertex-1">Start från toppunkten <span class="math notranslate nohighlight">\(1\)</span></a></li>
-<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymmetric-matrix">Använda intressepunkter för att generera en asymmetrisk matris.</a></li>
-<li><a class="reference internal" href="#connected-incomplete-data">Anslutna ofullständiga data</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">Se även</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="TSP-family.html" title="Previous Chapter: Resande säljare - Familj av funktioner"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Resande sälja...</span>
-    </a>
-  </li>
-  <li>
-    <a href="pgr_TSPeuclidean.html" title="Next Chapter: pgr_TSPeuclidean"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_TSPeuclidean &raquo;</span>
-    </a>
-  </li>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-        <div class="body span9 content" role="main">
+        <div class="body span12 content" role="main">
             <script> document.write(get_history('pgr_TSP','sv'));  </script>
             
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-tsp">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code><a class="headerlink" href="#pgr-tsp" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code><a class="headerlink" href="#pgr-tsp" title="Länk till denna rubrik">¶</a></h1>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - Approximation med hjälp av <em>metrisk</em> algoritm.</p></li>
 </ul>
@@ -237,7 +191,7 @@ precision,double precision,double precision,boolean)</p></li>
 </ul>
 <p class="rubric">Version 3.2.1</p>
 <ul class="simple">
-<li><p>Metrisk algoritm från <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost-biblioteket</a></p></li>
+<li><p>Metrisk algoritm från <a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html">Boost-biblioteket</a></p></li>
 <li><p>Simulated Annealing Algorithm stöds inte längre</p>
 <ul>
 <li><p>Parametrar relaterade till Simulated Annealing Algorithm ignoreras: <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
@@ -258,16 +212,16 @@ precision,double precision,double precision,boolean)</p></li>
 <li><p>Officiell funktion.</p></li>
 </ul>
 <section id="description">
-<h2>Beskrivning<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<h2>Beskrivning<a class="headerlink" href="#description" title="Länk till denna rubrik">¶</a></h2>
 <section id="problem-definition">
-<h3>Definition av problem<a class="headerlink" href="#problem-definition" title="Link to this heading">¶</a></h3>
+<h3>Definition av problem<a class="headerlink" href="#problem-definition" title="Länk till denna rubrik">¶</a></h3>
 <p>Problemet med den resande försäljaren (TSP) ställer följande fråga:</p>
 <blockquote>
 <div><p><em>Givet en lista över städer och avstånden mellan varje par av städer, vilken är den kortaste möjliga rutten som besöker varje stad exakt en gång och återvänder till ursprungsstaden?</em></p>
 </div></blockquote>
 </section>
 <section id="characteristics">
-<h3>Egenskaper<a class="headerlink" href="#characteristics" title="Link to this heading">¶</a></h3>
+<h3>Egenskaper<a class="headerlink" href="#characteristics" title="Länk till denna rubrik">¶</a></h3>
 <ul class="simple">
 <li><p>Detta problem är ett NP-svårt optimeringsproblem.</p></li>
 <li><p>Metrisk algoritm används</p></li>
@@ -347,11 +301,11 @@ precision,double precision,double precision,boolean)</p></li>
 </li>
 <li><p>Ett cykelförsök för att ta bort korsande kanter görs på TSP-resultaten.</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Öka grafen inuti" height="18" src="_images/boost-inside.jpeg" /></a> Boost-graf inuti</p>
 </section>
 </section>
 <section id="signatures">
-<h2>Underskrifter<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<h2>Underskrifter<a class="headerlink" href="#signatures" title="Länk till denna rubrik">¶</a></h2>
 <p class="rubric">Sammanfattning</p>
 <div class="signatures admonition" id="index-1">
 <p class="admonition-title"></p>
@@ -373,7 +327,7 @@ precision,double precision,double precision,boolean)</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
-<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 3</span>    'SELECT id, source, target, cost, reverse_cost FROM edges',
 <span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
 <span class="linenos"> 5</span>    directed =&gt; false) $$);
 <span class="linenos"> 6</span> seq | node | cost | agg_cost
@@ -398,7 +352,7 @@ precision,double precision,double precision,boolean)</p></li>
 </div>
 </section>
 <section id="parameters">
-<h2>Parametrar<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<h2>Parametrar<a class="headerlink" href="#parameters" title="Länk till denna rubrik">¶</a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -414,7 +368,7 @@ precision,double precision,double precision,boolean)</p></li>
 </tbody>
 </table>
 <section id="tsp-optional-parameters">
-<h3>TSP valfria parametrar<a class="headerlink" href="#tsp-optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>TSP valfria parametrar<a class="headerlink" href="#tsp-optional-parameters" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -454,9 +408,9 @@ precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Inre frågor<a class="headerlink" href="#inner-queries" title="Länk till denna rubrik">¶</a></h2>
 <section id="matrix-sql">
-<h3>Matrix SQL<a class="headerlink" href="#matrix-sql" title="Link to this heading">¶</a></h3>
+<h3>Matrix SQL<a class="headerlink" href="#matrix-sql" title="Länk till denna rubrik">¶</a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Kolumn</p></th>
@@ -482,7 +436,7 @@ precision,double precision,double precision,boolean)</p></li>
 </section>
 </section>
 <section id="result-columns">
-<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Resultat kolumner<a class="headerlink" href="#result-columns" title="Länk till denna rubrik">¶</a></h2>
 <p>Returnerar SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">nod,</span> <span class="pre">kostnad,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
 <thead>
@@ -520,7 +474,7 @@ precision,double precision,double precision,boolean)</p></li>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<h2>Ytterligare exempel<a class="headerlink" href="#additional-examples" title="Länk till denna rubrik">¶</a></h2>
 <nav class="contents local" id="innehall">
 <ul class="simple">
 <li><p><a class="reference internal" href="#start-from-vertex-1" id="id1">Start från toppunkten <span class="math notranslate nohighlight">\(1\)</span></a></p></li>
@@ -529,13 +483,13 @@ precision,double precision,double precision,boolean)</p></li>
 </ul>
 </nav>
 <section id="start-from-vertex-1">
-<h3><a class="toc-backref" href="#id1" role="doc-backlink">Start från toppunkten <span class="math notranslate nohighlight">\(1\)</span></a><a class="headerlink" href="#start-from-vertex-1" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">Start från toppunkten <span class="math notranslate nohighlight">\(1\)</span></a><a class="headerlink" href="#start-from-vertex-1" title="Länk till denna rubrik">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Linje 6</strong> <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=&gt;</span> <span class="pre">1</span></code></p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
-<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 3</span>    'SELECT id, source, target, cost, reverse_cost FROM edges',
 <span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
 <span class="linenos"> 5</span>    directed =&gt; false) $$,
 <span class="linenos"> 6</span>  start_id =&gt; 1);
@@ -561,7 +515,7 @@ precision,double precision,double precision,boolean)</p></li>
 </div>
 </section>
 <section id="using-points-of-interest-to-generate-an-asymmetric-matrix">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Använda intressepunkter för att generera en asymmetrisk matris.</a><a class="headerlink" href="#using-points-of-interest-to-generate-an-asymmetric-matrix" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Använda intressepunkter för att generera en asymmetrisk matris.</a><a class="headerlink" href="#using-points-of-interest-to-generate-an-asymmetric-matrix" title="Länk till denna rubrik">¶</a></h3>
 <p>För att generera en asymmetrisk matris:</p>
 <ul class="simple">
 <li><p><strong>Linje 4</strong> Informationen om <code class="docutils literal notranslate"><span class="pre">sidan</span></code> av <code class="docutils literal notranslate"><span class="pre">pointsOfInterset</span></code> ignoreras genom att inte inkludera den i frågan</p></li>
@@ -580,9 +534,9 @@ the <code class="docutils literal notranslate"><span class="pre">agg_cost</span>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_withPointsCostMatrix(
-<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;,
-<span class="linenos"> 4</span>    &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
-<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6], &#39;r&#39;,
+<span class="linenos"> 3</span>    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+<span class="linenos"> 4</span>    'SELECT pid, edge_id, fraction from pointsOfInterest',
+<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6], 'r',
 <span class="linenos"> 6</span>    directed =&gt; true) $$,
 <span class="linenos"> 7</span>  start_id =&gt; 7,
 <span class="linenos"> 8</span>  end_id =&gt; 11);
@@ -600,7 +554,7 @@ the <code class="docutils literal notranslate"><span class="pre">agg_cost</span>
 </div>
 </section>
 <section id="connected-incomplete-data">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Anslutna ofullständiga data</a><a class="headerlink" href="#connected-incomplete-data" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Anslutna ofullständiga data</a><a class="headerlink" href="#connected-incomplete-data" title="Länk till denna rubrik">¶</a></h3>
 <p>Med hjälp av valda kanter <span class="math notranslate nohighlight">\(\{2, 4, 5, 8, 9, 15\}\)</span> är matrisen inte komplett.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_dijkstraCostMatrix(
 <span class="linenos"> 2</span>  $q1$SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (2, 4, 5, 8, 9, 15)$q1$,
@@ -659,11 +613,11 @@ the <code class="docutils literal notranslate"><span class="pre">agg_cost</span>
 </section>
 </section>
 <section id="see-also">
-<h2>Se även<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Se även<a class="headerlink" href="#see-also" title="Länk till denna rubrik">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Resande säljare - Familj av funktioner</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Exempeldata</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: metrisk TSP ca</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html">Boost: metrisk TSP ca</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Problemet med den resande försäljaren</a></p></li>
 </ul>
 <p class="rubric">Index och tabeller</p>
@@ -687,8 +641,8 @@ the <code class="docutils literal notranslate"><span class="pre">agg_cost</span>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Senast uppdaterad nov. 07, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Senast uppdaterad den nov. 09, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>
