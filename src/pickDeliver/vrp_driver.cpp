@@ -138,7 +138,7 @@ void do_vrp(
              * All Vehicles must depart from same location
              */
             for (const auto &v : vehicles) {
-                if (v.start_node_id != depot_node && v.end_node_id != depot_node) {
+                if (v.start_node_id != depot_node || v.end_node_id != depot_node) {
                     err << "All vehicles must depart & arrive to same node";
                     return;
                 }
