@@ -40,8 +40,6 @@ extern "C" {
 #include "c_types/iid_t_rt.h"
 #include "c_types/schedule_rt.h"
 
-#include "drivers/vrp_driver.hpp"
-
 #include "cpp_common/report_messages.hpp"
 #include "cpp_common/utilities.hpp"
 #include "cpp_common/assert.hpp"
