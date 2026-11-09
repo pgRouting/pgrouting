@@ -19,7 +19,7 @@
 # Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>, 2026.
 # DeepL <noreply-mt-deepl@weblate.org>, 2026.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-11-07 14:13+0000\nPO-Revision-Date: 2026-11-10 02:39+0000\nLast-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 2026.10.1\nGenerated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-11-07 14:13+0000\nPO-Revision-Date: 2026-11-10 02:39+0000\nLast-Translator: DeepL <noreply-mt-deepl@weblate.org>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 2026.10.1\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - カテゴリ"
@@ -2400,7 +2400,7 @@ msgid "4.48"
 msgstr "4.48"
 
 msgid ":doc:`pgr_johnson`"
-msgstr ""
+msgstr ":doc:`pgr_johnson`"
 
 msgid ":doc:`pgr_floydWarshall`"
 msgstr ""
@@ -3915,9 +3915,8 @@ msgstr ""
 msgid "All deprecated functions will be removed on next major version 4.0.0"
 msgstr ""
 
-#, fuzzy
 msgid "Migration to standardized columns"
-msgstr "ダイクストラ関連機能"
+msgstr "標準カラムへの移行"
 
 msgid "There has been an effort to standardize function output columns names and types."
 msgstr ""
@@ -4017,9 +4016,8 @@ msgstr ""
 msgid "`Migration of cost functions`_"
 msgstr "ダイクストラ関連機能"
 
-#, fuzzy
 msgid "Migration of cost functions"
-msgstr "ダイクストラ関連機能"
+msgstr "コスト関数の移行"
 
 msgid "The standardized :ref:`pgRouting-concepts:Result columns for cost functions` are |matrix-result|"
 msgstr ""
@@ -4120,9 +4118,8 @@ msgstr ""
 msgid "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#many-to-many>`__ example."
 msgstr ""
 
-#, fuzzy
 msgid "Examples for Combinations for cost functions"
-msgstr "ダイクストラ関連機能"
+msgstr "コスト関数の組み合わせの例"
 
 msgid "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#combinations>`__ example."
 msgstr ""
@@ -4149,9 +4146,8 @@ msgstr "``pgr_edgeDisjointPaths``"
 msgid ":ref:`from_result_disjoint`"
 msgstr ":ref:`from_result_disjoint`"
 
-#, fuzzy
 msgid "Migration of |ksp-result|"
-msgstr "ダイクストラ関連機能"
+msgstr "ksp-result|の移行"
 
 #, fuzzy
 msgid "|nksp-result|"
