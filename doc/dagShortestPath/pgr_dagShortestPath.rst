@@ -261,8 +261,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: DAG shortest paths
-  <https://www.boost.org/libs/graph/doc/dag_shortest_paths.html>`__
+* :bgl:`Boost: DAG shortest paths <algorithms/shortest_paths/dag_shortest_paths.html>`
 * https://en.wikipedia.org/wiki/Topological_sorting
 
 .. rubric:: Indices and tables

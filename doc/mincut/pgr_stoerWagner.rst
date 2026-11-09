@@ -129,8 +129,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: Stoer Wagner min cut
-  <https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html>`__
+* :bgl:`Boost: Stoer Wagner min cut <algorithms/network_flow/stoer_wagner_min_cut.html>`
 * https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm
 
 .. rubric:: Indices and tables

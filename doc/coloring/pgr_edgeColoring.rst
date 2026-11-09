@@ -116,8 +116,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: Edge Coloring
-  <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__
+* :bgl:`Boost: Edge Coloring <algorithms/coloring/edge_coloring.html>`
 * `Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__
 
 .. rubric:: Indices and tables

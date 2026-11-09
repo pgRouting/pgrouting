@@ -115,8 +115,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: Boyer Myrvold
-  <https://www.boost.org/libs/graph/doc/boyer_myrvold.html>`__
+* :bgl:`Boost: Boyer Myrvold <algorithms/planar/boyer_myrvold.html>`
 
 .. rubric:: Indices and tables
 

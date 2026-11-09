@@ -133,8 +133,7 @@ See Also
 
 .. rubric:: References
 
-* `Boost: metric TSP approx
-  <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+* :bgl:`Boost: metric TSP approx <algorithms/utility/metric_tsp_approx.html>`
 * `University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__
 * `Wikipedia: Traveling Salesman Problem
   <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__

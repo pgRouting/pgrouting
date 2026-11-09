@@ -54,8 +54,61 @@ extensions = [
         'sphinx.ext.mathjax',
         'sphinx.ext.graphviz',
         'sphinx.ext.autosectionlabel',
-        ]
+                ]
+try:
+    import sphinx.ext.extlinks  # noqa: F401
+    extensions.append('sphinx.ext.extlinks')
+except ImportError:
+    pass
+
 autosectionlabel_prefix_document = True
+
+# External links that are used in several places.
+# Usage: :bgl:`Title <relative/path.html>`
+extlinks = {
+        'bgl': ('https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/%s', None),
+        'pr': ('https://github.com/pgRouting/pgrouting/pull/%s', 'PR #%s'),
+        'issue': ('https://github.com/pgRouting/pgrouting/issues/%s', 'Issue #%s'),
+        'milestone':
+        ('https://github.com/pgRouting/pgrouting/issues?utf8=%%E2%%9C%%93&q=milestone%%3A%%22Release%%20%s%%22',
+        'Milestone %s'),
+        }
+
+# When sphinx.ext.extlinks is unavailable (e.g. some packager setups), register
+# the same roles locally so the documentation still builds for every language.
+# code section assisted by big AI
+try:
+    import sphinx.ext.extlinks  # noqa: F401
+except ImportError:
+    import re
+    from docutils import nodes, utils
+    from docutils.parsers.rst import roles as _rst_roles
+
+    _explicit_title_re = re.compile(r'^(.+?)\s*(?<!\x00)<([^<]*?)>$', re.DOTALL)
+
+    def _split_explicit_title(text):
+        m = _explicit_title_re.match(text)
+        if m:
+            return True, m.group(1), m.group(2)
+        return False, text, text
+
+    def _make_link_role(name, base_url, caption):
+        def role(typ, rawtext, text, lineno, inliner, options=None, content=()):
+            text = utils.unescape(text)
+            has_explicit_title, title, part = _split_explicit_title(text)
+            full_url = base_url % part
+            if not has_explicit_title:
+                if caption is None:
+                    title = full_url
+                else:
+                    title = caption % part
+            pnode = nodes.reference(title, title, internal=False, refuri=full_url)
+            pnode['classes'].append('extlink-%s' % name)
+            return [pnode], []
+        return role
+
+    for _name, (_base_url, _caption) in extlinks.items():
+        _rst_roles.register_local_role(_name, _make_link_role(_name, _base_url, _caption))
 
 graphviz_dot='neato'
 
@@ -120,7 +173,6 @@ pygments_style = 'sphinx'
 
 gettext_allow_fuzzy_translations = False
 gettext_location = False
-gettext_compact = True
 gettext_uuid = False
 gettext_auto_build = True
 #For example: gettext_additional_targets = ['literal-block','raw','index','doctest-block']
@@ -181,9 +233,10 @@ html_last_updated_fmt = '%b %d, %Y'
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
+# No sidebar (the bootstrap theme already exposes the table of contents in the
+# navbar via the "Page" tab).
 html_sidebars = {
-	# '**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'],
-	# 'using/windows': ['windowssidebar.html', 'searchbox.html'],
+	'**': [],
 }
 
 # Additional templates that should be rendered to pages, maps page names to
@@ -320,27 +373,28 @@ pdf_stylesheets = ['sphinx','kerning','a4']
 # A list of folders to search for stylesheets. Example:
 pdf_style_path = ['.', '_styles']
 
-# Linkcheck configuration, see https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-the-linkcheck-builder
+
+#################
+# Linkcheck configuration,
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-the-linkcheck-builder
+#################
 
 # cases to ignore during link checking
 linkcheck_ignore = [
-    # link failing used in contraction-family
-    'https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf',
-
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
+    'https://github.com/pgRouting/pgrouting/commits',
+    r'https://github\.com/.*',
     r'https://github.com/pgRouting/pgrouting/issues/*',    # limit only pgrouting
-    r'https://github.com/pgRouting/pgrouting/archive/*',
     r'https://docs.pgrouting.org/3.8/*',
     # Currently has a problem
-    'https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html',
     r'https://www.overpass-api.de/*',
     # 403 Client error
     'https://gis.stackexchange.com/questions/tagged/pgrouting'
 ]
 
 linkcheck_timeout = 20
-linkcheck_retries = 5
+linkcheck_retries = 2
 linkcheck_anchors = False
 
 rst_epilog="""
@@ -382,7 +436,7 @@ rst_epilog="""
 .. |result-mincut| replace:: ``(seq, edge, cost, mincut)``
 .. |result-pickdrop| replace:: ``(seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo, travel_time, arrival_time, wait_time, service_time, departure_time)``
 .. |Boost| image:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph
+   :target: https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/
    :alt: Boost Graph inside
    :height: 18
 .. |epilog_end| replace:: just a marker for notes2news
