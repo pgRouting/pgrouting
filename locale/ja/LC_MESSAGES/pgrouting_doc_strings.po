@@ -3308,9 +3308,8 @@ msgstr ""
 msgid ":doc:`VRP-category`"
 msgstr ""
 
-#, fuzzy
 msgid "Shortest Path Category"
-msgstr "BFS - カテゴリ"
+msgstr "最短経路カテゴリー"
 
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ""
@@ -3686,9 +3685,8 @@ msgstr ""
 msgid ":doc:`KSP-category`"
 msgstr ""
 
-#, fuzzy
 msgid ":doc:`spanningTree-category`"
-msgstr ":doc:`DFS-category`"
+msgstr "doc:`spanningTree-category`。"
 
 msgid ":doc:`BFS-category`"
 msgstr ""
@@ -14589,9 +14587,8 @@ msgstr "pgr_trspViaVertices"
 msgid ":issue:`2748`: pgr_alphaShape"
 msgstr "pgr_alphashape"
 
-#, fuzzy
 msgid ":issue:`2751`: pgr_createTopology"
-msgstr "ダイクストラ関連機能"
+msgstr ":issue:`2751`: pgr_createTopology"
 
 msgid ":issue:`2752`: pgr_analyzeGraph"
 msgstr ""
@@ -14599,9 +14596,8 @@ msgstr ""
 msgid ":issue:`2755`: pgr_analyzeOneWay"
 msgstr ""
 
-#, fuzzy
 msgid ":issue:`2827`: pgr_createVerticesTable"
-msgstr "ダイクストラ関連機能"
+msgstr ":issue:`2827`: pgr_createVerticesTable"
 
 #, fuzzy
 msgid ":issue:`2886`: pgr_nodeNetwork"
@@ -15043,9 +15039,8 @@ msgstr ""
 msgid ":issue:`2850`: Rewrite pgr_nodeNetwork"
 msgstr ""
 
-#, fuzzy
 msgid "Deprecation of SQL functions"
-msgstr "ダイクストラ関連機能"
+msgstr "SQL関数の廃止"
 
 msgid ":issue:`2749`: Deprecate pgr_AlphaShape in 3.8"
 msgstr ""
