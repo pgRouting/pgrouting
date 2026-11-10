@@ -201,13 +201,13 @@ pgr_do_pickDeliver(
         *log_msg = to_pg_msg(log);
         *notice_msg = to_pg_msg(notice);
     } catch (AssertFailedException &except) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
         *err_msg = to_pg_msg(err);
         *log_msg = to_pg_msg(log);
     } catch (std::exception& except) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
         *err_msg = to_pg_msg(err);
@@ -232,7 +232,7 @@ pgr_do_pickDeliver(
         *err_msg = to_pg_msg(err);
         *log_msg = to_pg_msg(log);
     } catch(...) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
         *err_msg = to_pg_msg(err);
